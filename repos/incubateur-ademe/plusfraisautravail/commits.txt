@@ -1,3 +1,73 @@
+2026-09-29T14:07:42+02:00 - a5395af - Fabien Le Frapper : fix(cms): bring back the /solutions/ tag filters (#31)
+2026-09-28T15:55:55+02:00 - 593a258 - Fabien Le Frapper : Add wagtail treebeard package (#29)
+2026-09-28T14:52:44+02:00 - b80a45b - Fabien Le Frapper : chore(cms): stop running migrate_content_page_model on every deploy (#28)
+2026-09-28T14:32:26+02:00 - 262df42 - Fabien Le Frapper : Faq content page (#26)
+2026-09-22T07:40:31+02:00 - aee7b14 - Fabien Le Frapper : feat(cms): add Q/A snippets (question, theme) with DSFR preview (#24)
+2026-09-22T07:38:37+02:00 - 260718b - Fabien Le Frapper : comments
+2026-09-14T14:16:56+02:00 - 606f4b9 - Fabien Le Frapper : Unwrap emojis
+2026-09-14T09:15:14+02:00 - dd459f9 - Fabien Le Frapper : fix(cms): serve WebP renditions as image/webp, not octet-stream
+2026-09-09T16:47:14+02:00 - 7d12b32 - Fabien Le Frapper : fix(cms): fall back to the console mail backend when no relay password is set
+2026-09-09T16:09:29+02:00 - 9cc4c54 - Fabien Le Frapper : fix(cms): configure outgoing mail (Brevo SMTP) so the contact form stops 500ing
+2026-09-09T15:50:55+02:00 - fcf1a5d - Fabien Le Frapper : feat(cms): pass NOTION_TOKEN to the container for the contact form sync
+2026-09-09T15:41:17+02:00 - dba90b5 - Fabien Le Frapper : fix(climadiag): search from 3 characters, the upstream API rejects shorter queries
+2026-09-09T15:19:51+02:00 - af9a6b8 - Fabien Le Frapper : perf(cms): WebP renditions, media cached for a year
+2026-09-09T15:12:04+02:00 - fd63948 - Fabien Le Frapper : fix(cms): translate the footer "made with" line to French
+2026-09-09T14:58:46+02:00 - 0a65385 - Fabien Le Frapper : ci(cms): run the CMS tests against Postgres instead of SQLite
+2026-09-09T14:40:56+02:00 - f8e7520 - Fabien Le Frapper : feat(posthog): load and configure PostHog from code, through the /ph proxy
+2026-09-09T14:34:25+02:00 - f023f50 - Fabien Le Frapper : feat(proxy): 301 legacy hostnames to the canonical domain
+2026-09-09T14:05:35+02:00 - acb0fc8 - Fabien Le Frapper : perf(cms): revert container to 560 mvCPU, add Wagtail renditions cache
+2026-09-09T13:51:31+02:00 - bc2c110 - Fabien Le Frapper : perf(cms): raise container to 1120 mvCPU / 2 GiB
+2026-09-09T13:29:08+02:00 - 4acda09 - Fabien Le Frapper : fix(ci): remove empty env block left in deploy-autodiag workflow
+2026-09-09T13:28:00+02:00 - 7f4a51c - Fabien Le Frapper : feat: private network for the CMS database, pooled proxy upstreams, PostHog via /ph
+2026-09-09T12:55:33+02:00 - 69a5a69 - Fabien Le Frapper : serve production through scalingo proxy
+2026-09-09T12:52:51+02:00 - 3c1aad8 - Fabien Le Frapper : dynamic cms url
+2026-09-09T11:41:57+02:00 - 642503d - Fabien Le Frapper : Increase gunicorn timeout
+2026-09-09T11:40:21+02:00 - 5c887e7 - Fabien Le Frapper : Update - add buildpack config
+2026-09-09T11:34:31+02:00 - bc1968f - Fabien Le Frapper : set aws domains
+2026-09-09T11:29:43+02:00 - df58374 - Fabien Le Frapper : prepare mep
+2026-08-27T13:21:32+02:00 - f6f6b69 - Fabien Le Frapper : Update base url
+2026-08-27T13:12:04+02:00 - ca94b73 - Fabien Le Frapper : Rename cms media bucket
+2026-08-27T10:45:59+02:00 - bfce09a - Fabien Le Frapper : set s3 from production
+2026-08-03T15:12:30+02:00 - b01bb88 - Fabien Le Frapper : fix(cms): allow DEBUG to be enabled in prod via env var
+2026-07-29T17:37:20+02:00 - 3c90075 - Fabien Le Frapper : fix(cms): widen Docker build context to repo root for local packages
+2026-07-29T17:15:29+02:00 - bd97088 - Fabien Le Frapper : fix(ci): run CMS tests against Postgres instead of sqlite
+2026-07-29T16:21:31+02:00 - 56f9307 - Fabien Le Frapper : feat(infra): auto-trigger cms_manage job after each CMS deploy
+2026-07-29T16:17:15+02:00 - 77eb4b8 - Fabien Le Frapper : chore(cms): temporarily disable renditions/cache-control jobs
+2026-07-29T16:16:40+02:00 - 751b41f - Fabien Le Frapper : fix(cms): run migrations via cms_manage job, not the container boot path
+2026-07-29T16:07:49+02:00 - b8c7f6b - Fabien Le Frapper : feat(cms): add sites-conformes-rgaa package to make emojis accessible
+2026-07-29T15:30:14+02:00 - e52b5ba - Fabien Le Frapper : feat(cms): add sites-conformes-posthog package to identify team members
+2026-07-29T15:22:29+02:00 - 95a3d9c - Fabien Le Frapper : fix(cms): remove the 'Pages' heading from the /solutions/ catalog listing
+2026-07-29T15:19:27+02:00 - af1c4f7 - Fabien Le Frapper : feat(cms): add sites-conformes-header-logo package for header logo image
+2026-07-29T15:04:22+02:00 - 3b84be1 - Fabien Le Frapper : docs(footer-partners): translate README to French, make app label translatable
+2026-07-29T15:02:32+02:00 - db7d735 - Fabien Le Frapper : refactor(cms): extract footer partners into sites-conformes-footer-partners package
+2026-07-29T14:55:04+02:00 - 907a961 - Fabien Le Frapper : refactor(cms): rename wagtail-notion-contact package to wagtail-notion-form
+2026-07-29T14:41:41+02:00 - 0e93b68 - Fabien Le Frapper : feat(cms): add wagtail-notion-contact package for contact form -> Notion sync
+2026-07-29T14:33:22+02:00 - 0a9b30a - Fabien Le Frapper : fix(cms): match footer partners markup to DSFR spec, add uniform logo height
+2026-07-29T14:22:25+02:00 - d5828a8 - Fabien Le Frapper : Add footer extensions to cms
+2026-07-29T14:01:54+02:00 - fc4fe88 - Fabien Le Frapper : add media to gitignore
+2026-07-29T13:48:03+02:00 - 451e046 - Fabien Le Frapper : fix(just): source .env in sync-prod-media script
+2026-07-28T17:18:06+02:00 - 56a093c - Fabien Le Frapper : revert(cms): roll back media bucket to private, restore presigned URLs
+2026-07-28T16:42:05+02:00 - e342677 - Fabien Le Frapper : fix(infra): use startup_command, bake manage_jobs.sh into the image
+2026-07-28T16:35:12+02:00 - 49d291f - Fabien Le Frapper : fix(infra): run cms_manage command through a shell, raise timeout
+2026-07-28T16:09:35+02:00 - 03ebd8b - Fabien Le Frapper : fix(cms): make media bucket public-read, drop presigned URL auth
+2026-07-28T15:49:04+02:00 - 9ab1c18 - Fabien Le Frapper : feat(infra): add serverless-job module for one-off manage.py commands
+2026-07-28T15:32:49+02:00 - c9577c7 - Fabien Le Frapper : feat(cms): add S3 Cache-Control setting and backfill command
+2026-07-28T15:08:31+02:00 - d1779ee - Fabien Le Frapper : feat(infra): add custom domain support for api and cms
+2026-07-28T13:12:23+02:00 - 03842c3 - Fabien Le Frapper : fix(cms): register wagtail.contrib.settings context processor
+2026-07-28T12:58:27+02:00 - b4e9951 - Fabien Le Frapper : fix(cms): align settings with upstream sites-conformes conventions
+2026-07-28T12:47:03+02:00 - 7a2d98f - Fabien Le Frapper : fix(cms): keep min_scale=1 permanently, not just for diagnostics
+2026-07-28T12:44:50+02:00 - 8c5af0c - Fabien Le Frapper : revert diagnostic changes, keep ALLOWED_HOSTS=* with TODO, fix DSFR integrity
+2026-07-28T12:21:17+02:00 - a06fb46 - Fabien Le Frapper : diagnostic(cms): try ALLOWED_HOSTS="*" like qfdmo's preview containers do
+2026-07-28T12:18:26+02:00 - 9f03b4a - Fabien Le Frapper : diagnostic(cms): force min_scale=1, max_scale=1
+2026-07-28T12:03:20+02:00 - 801a9f1 - Fabien Le Frapper : diagnostic: bump failure_threshold from 5/10 to 20 on both probes
+2026-07-28T11:49:31+02:00 - d712ed2 - Fabien Le Frapper : diagnostic(cms): add bare /ping/ endpoint, point health check at it
+2026-07-28T11:43:35+02:00 - 0ea0e1f - Fabien Le Frapper : Revert "fix(cms): set gunicorn --timeout 120, matching qfdmo's known-working config"
+2026-07-28T11:43:25+02:00 - 9950521 - Fabien Le Frapper : fix(cms): set gunicorn --timeout 120, matching qfdmo's known-working config
+2026-07-28T11:39:58+02:00 - 2e5557d - Fabien Le Frapper : diagnostic(cms): point health check at /admin/login/ instead of /healthz/
+2026-07-28T11:21:46+02:00 - 1b61021 - Fabien Le Frapper : feat(cms): log the build SHA on gunicorn boot
+2026-07-28T10:53:17+02:00 - fea5b49 - Fabien Le Frapper : fix(cms): stop running migrations in the container's boot path
+2026-07-28T10:37:54+02:00 - 5846956 - Fabien Le Frapper : fix(cms): bump cpu/memory to 560mvCPU/1024MiB, up from module defaults
+2026-07-28T10:18:32+02:00 - e025378 - Fabien Le Frapper : fix(cms): add django.contrib.postgres to INSTALLED_APPS
 2026-07-28T02:13:12+02:00 - 0536a39 - Fabien Le Frapper : feat(ci): add tofu_replace workflow_dispatch input for one-off -replace
 2026-07-28T01:33:47+02:00 - 5cc6455 - Fabien Le Frapper : fix(cms): surface the real DB-connect error and fail fast instead of retrying blind
 2026-07-28T00:10:25+02:00 - bc1b03b - Fabien Le Frapper : fix: switch cms to public DB endpoint, drop private network attachment
