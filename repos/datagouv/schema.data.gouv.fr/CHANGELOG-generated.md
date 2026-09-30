@@ -1,11 +1,13 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 24 septembre 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 30/09/2026)
 
 ### Résumé
-L'activité de ce mois a été principalement axée sur la mise à jour régulière des contenus et des recommandations, garantissant ainsi la fraîcheur et la pertinence des informations disponibles sur la plateforme.
+Le projet a connu une activité régulière centrée sur l'enrichissement du catalogue de schémas et la mise à jour continue des contenus informatifs du site pour garantir la fraîcheur des données.
 
 ### Évolutions fonctionnelles
-- Actualisation continue des recommandations et des contenus informatifs du site web.
+- Ajout du nouveau schéma de données `risques-carto-di` ([#355](https://github.com/datagouv/schema.data.gouv.fr/pull/355))
 
 ### Évolutions techniques
-- Consolidation des fichiers de configuration du projet.
-- Maintenance des processus de déploiement.
+- Maintenance de la configuration via la correction de fichiers YAML et la mise à jour du fichier de consolidation.
+
+### Autres changements
+- Mises à jour fréquentes des recommandations et du contenu du site web.
