@@ -8,7 +8,8 @@
 │       ├── codeql-analysis.yml
 │       ├── deploy-qa.yml
 │       ├── qa.yml
-│       └── release.yml
+│       ├── release.yml
+│       └── renovate.yml
 ├── .gitignore
 ├── .husky
 │   ├── .gitignore
@@ -739,6 +740,10 @@
 │   │   │   │   ├── 30000113-02-initialize-technical-diagnosis-phase-for-existing-sites.js
 │   │   │   │   ├── 30000114-01-alter-table-action_metrics-remove-residual-scolaire-mediation-constraint.js
 │   │   │   │   ├── 30000114-02-alter-table-action_metrics-remove-obsolete-scolaire-niveau-constraints.js
+│   │   │   │   ├── 30000115-01-create_tables_action_comment_targets.js
+│   │   │   │   ├── 30000115-02-add-list-listPrivate-permissions-action_comment.js
+│   │   │   │   ├── 30000116-01-add-index-user_webapp_navigation_logs-datetime.js
+│   │   │   │   ├── 30000116-02-add-index-cities-departements-fk-columns.js
 │   │   │   │   └── common
 │   │   │   │       ├── create_covid_comment_permissions.js
 │   │   │   │       ├── create_plan_finances_permissions.js
@@ -922,6 +927,7 @@
 │   │   │   │   ├── actionComment
 │   │   │   │   │   ├── createComment
 │   │   │   │   │   │   ├── actionComment.createComment.route.ts
+│   │   │   │   │   │   ├── actionComment.createComment.spec.ts
 │   │   │   │   │   │   ├── actionComment.createComment.ts
 │   │   │   │   │   │   └── actionComment.createComment.validator.ts
 │   │   │   │   │   ├── deleteComment
@@ -947,6 +953,7 @@
 │   │   │   │   │   └── list
 │   │   │   │   │       ├── activity.list.route.ts
 │   │   │   │   │       ├── activity.list.ts
+│   │   │   │   │       ├── activity.list.validator.spec.ts
 │   │   │   │   │       └── activity.list.validator.ts
 │   │   │   │   ├── attachment
 │   │   │   │   │   └── archive
@@ -1101,6 +1108,7 @@
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   ├── shantytown.actorThemes.validator.ts
 │   │   │   │   │   │   ├── shantytown.id.validator.ts
+│   │   │   │   │   │   ├── shantytown.write.validator.spec.ts
 │   │   │   │   │   │   └── shantytown.write.validator.ts
 │   │   │   │   │   ├── addActor
 │   │   │   │   │   │   ├── shantytown.addActor.route.ts
@@ -1475,6 +1483,8 @@
 │   │   │   ├── models
 │   │   │   │   ├── Activity.md
 │   │   │   │   ├── _common
+│   │   │   │   │   ├── buildLocationClauseFragments.ts
+│   │   │   │   │   ├── isValidSqlIdentifier.ts
 │   │   │   │   │   ├── stringifyWhereClause.ts
 │   │   │   │   │   ├── types
 │   │   │   │   │   │   ├── Primitive.ts
@@ -1505,6 +1515,7 @@
 │   │   │   │   │   │   ├── insertShantytowns.ts
 │   │   │   │   │   │   └── insertTopics.ts
 │   │   │   │   │   ├── createComment
+│   │   │   │   │   │   ├── createComment.spec.ts
 │   │   │   │   │   │   └── createComment.ts
 │   │   │   │   │   ├── deleteComment
 │   │   │   │   │   │   └── deleteComment.ts
@@ -1542,6 +1553,7 @@
 │   │   │   │   │   │   └── mergeTopics.ts
 │   │   │   │   │   ├── fetchComments
 │   │   │   │   │   │   ├── ActionCommentRow.d.ts
+│   │   │   │   │   │   ├── fetchComments.spec.ts
 │   │   │   │   │   │   ├── fetchComments.ts
 │   │   │   │   │   │   └── serializeComment.ts
 │   │   │   │   │   ├── fetchReport
@@ -1680,6 +1692,7 @@
 │   │   │   │   │   │   ├── getFullTableName.ts
 │   │   │   │   │   │   ├── getKey.ts
 │   │   │   │   │   │   ├── getWhiteLists.ts
+│   │   │   │   │   │   ├── validateFullTableName.ts
 │   │   │   │   │   │   └── validateInput.ts
 │   │   │   │   │   ├── findOwners
 │   │   │   │   │   │   ├── RawOwner.d.ts
@@ -1769,6 +1782,7 @@
 │   │   │   │   │   └── updateThemes.ts
 │   │   │   │   ├── shantytownCommentModel
 │   │   │   │   │   ├── ShantytownCommentRow.d.ts
+│   │   │   │   │   ├── create.spec.ts
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── deleteComment.ts
 │   │   │   │   │   ├── findAll.ts
@@ -1878,12 +1892,13 @@
 │   │   │   │   │   │   │   ├── ShantytownUpdateData.d.ts
 │   │   │   │   │   │   │   └── __tests__
 │   │   │   │   │   │   │       └── type-consistency.spec.ts
-│   │   │   │   │   │   └── updateHelpers
-│   │   │   │   │   │       ├── archiveRelatedData.ts
-│   │   │   │   │   │       ├── archiveShantytownHistory.ts
-│   │   │   │   │   │       ├── partitionShantytownData.ts
-│   │   │   │   │   │       ├── updateMainShantytown.ts
-│   │   │   │   │   │       └── updateShantytownRelations.ts
+│   │   │   │   │   │   ├── updateHelpers
+│   │   │   │   │   │   │   ├── archiveRelatedData.ts
+│   │   │   │   │   │   │   ├── archiveShantytownHistory.ts
+│   │   │   │   │   │   │   ├── partitionShantytownData.ts
+│   │   │   │   │   │   │   ├── updateMainShantytown.ts
+│   │   │   │   │   │   │   └── updateShantytownRelations.ts
+│   │   │   │   │   │   └── validateDynamicSqlFragments.spec.ts
 │   │   │   │   │   ├── anonymizeOwners.ts
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── delete.ts
@@ -1938,12 +1953,9 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── statsModel
 │   │   │   │   │   ├── _common
-│   │   │   │   │   │   ├── averageCompletion.ts
 │   │   │   │   │   │   ├── convertToDateMapping.ts
 │   │   │   │   │   │   ├── decomposeForDiagramm.ts
 │   │   │   │   │   │   └── getArrayOfDates.ts
-│   │   │   │   │   ├── averageCompletionPercentage.ts
-│   │   │   │   │   ├── averageCompletionPercentageByDepartement.ts
 │   │   │   │   │   ├── getStats.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── meanTimeBeforeClosingDeclaration.ts
@@ -2014,7 +2026,8 @@
 │   │   │   │   │   ├── findOneByAccessId.ts
 │   │   │   │   │   ├── findOneByEmail.ts
 │   │   │   │   │   ├── findUsersToBeDeactivated.ts
-│   │   │   │   │   ├── getActionObservers.ts
+│   │   │   │   │   ├── getActionCommentWatchers.spec.ts
+│   │   │   │   │   ├── getActionCommentWatchers.ts
 │   │   │   │   │   ├── getAdminsFor.ts
 │   │   │   │   │   ├── getHistory.ts
 │   │   │   │   │   ├── getLocationWatchers.ts
@@ -2142,6 +2155,7 @@
 │   │   │   │   │   │   └── getDataYear.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── majicOwners
+│   │   │   │   │       ├── find.spec.ts
 │   │   │   │   │       └── find.ts
 │   │   │   │   ├── majicLogs
 │   │   │   │   │   ├── index.ts
@@ -2252,6 +2266,7 @@
 │   │   │   │   │   ├── exportTowns.fetchPastData.ts
 │   │   │   │   │   ├── exportTowns.generateExportFile.ts
 │   │   │   │   │   ├── exportTowns.getAllowedLocations.ts
+│   │   │   │   │   ├── exportTowns.regionalPermission.int.spec.ts
 │   │   │   │   │   ├── exportTowns.saveStats.ts
 │   │   │   │   │   ├── exportTowns.setQueryFilters.ts
 │   │   │   │   │   ├── exportTowns.spec.ts
@@ -2260,6 +2275,8 @@
 │   │   │   │   │   ├── find.ts
 │   │   │   │   │   ├── findJusticeReaders.spec.ts
 │   │   │   │   │   ├── findJusticeReaders.ts
+│   │   │   │   │   ├── findNearby.spec.ts
+│   │   │   │   │   ├── findNearby.ts
 │   │   │   │   │   ├── fixClosedStatus.spec.ts
 │   │   │   │   │   ├── fixClosedStatus.ts
 │   │   │   │   │   ├── forceUpdateWithoutChanges.spec.ts
@@ -2365,6 +2382,10 @@
 │   │   │       ├── checkPassword.ts
 │   │   │       ├── comment
 │   │   │       │   ├── assertIsCommentOwner.ts
+│   │   │       │   ├── commentTargetsValidatorChain.spec.ts
+│   │   │       │   ├── commentTargetsValidatorChain.ts
+│   │   │       │   ├── insertCommentTargets.spec.ts
+│   │   │       │   ├── insertCommentTargets.ts
 │   │   │       │   ├── runDeleteComment.ts
 │   │   │       │   ├── runUpdateComment.ts
 │   │   │       │   └── sanitizeCommentDescription.ts
@@ -2471,6 +2492,7 @@
 │   │       │   ├── Region.d.ts
 │   │       │   ├── Role.d.ts
 │   │       │   ├── Shantytown.d.ts
+│   │       │   ├── ShantytownActor.d.ts
 │   │       │   ├── ShantytownCommentEnriched.d.ts
 │   │       │   ├── ShantytownCommentGeneric.d.ts
 │   │       │   ├── ShantytownCommentRaw.d.ts
@@ -3259,7 +3281,8 @@
 │       │   │   │   │   │   │   ├── FicheActionJournalFormNouveauMessage.vue
 │       │   │   │   │   │   │   └── inputs
 │       │   │   │   │   │   │       ├── FormNouveauMessageInputAttachments.vue
-│       │   │   │   │   │   │       └── FormNouveauMessageInputMessage.vue
+│       │   │   │   │   │   │       ├── FormNouveauMessageInputMode.vue
+│       │   │   │   │   │   │       └── FormNouveauMessageInputTarget.vue
 │       │   │   │   │   │   └── FicheActionJournalListeDesMessages.vue
 │       │   │   │   │   └── FicheActionLocalisation.vue
 │       │   │   │   │       ├── FicheActionLocalisation.vue
@@ -3331,7 +3354,6 @@
 │       │   │   │   │   │   │   ├── FicheSiteJournalFormNouveauMessage.vue
 │       │   │   │   │   │   │   └── inputs
 │       │   │   │   │   │   │       ├── FormNouveauMessageInputAttachments.vue
-│       │   │   │   │   │   │       ├── FormNouveauMessageInputMessage.vue
 │       │   │   │   │   │   │       ├── FormNouveauMessageInputMode.vue
 │       │   │   │   │   │   │       ├── FormNouveauMessageInputTags.vue
 │       │   │   │   │   │   │       └── FormNouveauMessageInputTarget.vue
@@ -3691,6 +3713,9 @@
 │       │   │   │   │   ├── InputZoneInterventionGrille.vue
 │       │   │   │   │   ├── InputZoneInterventionValeur.vue
 │       │   │   │   │   └── InputZoneInterventionVide.vue
+│       │   │   │   ├── JournalFormNouveauMessage
+│       │   │   │   │   └── inputs
+│       │   │   │   │       └── FormNouveauMessageInputMessage.vue
 │       │   │   │   ├── Layout
 │       │   │   │   │   └── Layout.vue
 │       │   │   │   ├── LayoutError
@@ -3874,6 +3899,7 @@
 │       │   │   │   ├── BadgeSiteOjectifResorption.vue
 │       │   │   │   ├── useBadgeType.js
 │       │   │   │   ├── useClosureYears.js
+│       │   │   │   ├── useJournalMessageFormDropdown.js
 │       │   │   │   ├── useLastUpdated.js
 │       │   │   │   └── usePhoneVisibility.js
 │       │   │   ├── helpers
@@ -4138,7 +4164,8 @@
 │               ├── dsfr.js
 │               ├── openMail.js
 │               └── redirectToHome.js
+├── renovate.json
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-718 directories, 3767 files
+720 directories, 3792 files
