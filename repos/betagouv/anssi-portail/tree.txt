@@ -51,7 +51,8 @@
 │       ├── cellar-deploiement.yml
 │       ├── compare-financements.yml
 │       ├── deploiement-node.yml
-│       ├── deploiement-wc-demande-diag.yml
+│       ├── deploiement-webc-unique.yml
+│       ├── deploiement-webc.yml
 │       ├── deploiement.yml
 │       ├── grist-deploiement-financements.yml
 │       ├── grist-deploiement-guides.yml
@@ -357,6 +358,8 @@
 │   │   │   ├── adaptateurRechercheEntrepriseGouv.ts
 │   │   │   ├── adaptateurStatistiqueMiniTestsMémoire.ts
 │   │   │   ├── adaptateurStatistiqueMiniTestsPostgres.ts
+│   │   │   ├── adaptateurStatistiqueParcoursMémoire.ts
+│   │   │   ├── adaptateurStatistiqueParcoursPostgres.ts
 │   │   │   ├── cache.ts
 │   │   │   ├── clientHttp.ts
 │   │   │   ├── donneesEvenement.ts
@@ -404,6 +407,7 @@
 │   │   │   ├── PriseEnCompte.ts
 │   │   │   ├── adaptateurEmail.ts
 │   │   │   ├── adaptateurStatistiqueMiniTests.ts
+│   │   │   ├── adaptateurStatistiqueParcours.ts
 │   │   │   ├── besoinCyber.ts
 │   │   │   ├── entrepotFavori.ts
 │   │   │   ├── entrepotFinancement.ts
@@ -1112,6 +1116,11 @@
 │   │   │   │   │   └── scene-hero-mini-test.avif
 │   │   │   │   ├── reflexe-cyber
 │   │   │   │   │   ├── evenement-1.avif
+│   │   │   │   │   ├── evenement-2.avif
+│   │   │   │   │   ├── evenement-3.avif
+│   │   │   │   │   ├── evenement-4.avif
+│   │   │   │   │   ├── evenement-5.avif
+│   │   │   │   │   ├── evenement-6.avif
 │   │   │   │   │   ├── illustration-reflexe-cyber-animee.svg
 │   │   │   │   │   ├── role-communication.avif
 │   │   │   │   │   ├── role-direction.avif
@@ -1161,7 +1170,7 @@
 │   │   │   │       ├── heros-associations.avif
 │   │   │   │       ├── heros-collectivites.avif
 │   │   │   │       └── heros-entreprises.avif
-│   │   │   ├── stat-diagnostics-cyber.svg
+│   │   │   ├── stat-demarches-de-securisation.svg
 │   │   │   ├── stat-test-cyber.svg
 │   │   │   ├── stat-utilisateurs-inscrits.svg
 │   │   │   ├── surligne-gauche-droite-vert-clair.svg
@@ -1387,6 +1396,7 @@
 │   │   │   ├── mini-tests
 │   │   │   │   ├── CarteTest.svelte
 │   │   │   │   ├── IllustrationHeroMiniTest.svelte
+│   │   │   │   ├── LaptopAnime.svelte
 │   │   │   │   ├── MiniTests.svelte
 │   │   │   │   ├── PlanteAnimee.svelte
 │   │   │   │   ├── RadarMenaceAnime.svelte
@@ -1417,6 +1427,9 @@
 │   │   │   │   │           ├── Messages.svelte
 │   │   │   │   │           ├── Progression.svelte
 │   │   │   │   │           ├── Simulation.svelte
+│   │   │   │   │           ├── audio
+│   │   │   │   │           │   ├── index.ts
+│   │   │   │   │           │   └── sonotheque.ts
 │   │   │   │   │           ├── evenements.ts
 │   │   │   │   │           └── reflexes.ts
 │   │   │   │   └── vrai-faux
@@ -1560,7 +1573,20 @@
 │   │   │   │   │   ├── SectionPedagogique.svelte
 │   │   │   │   │   ├── SectionProgression.svelte
 │   │   │   │   │   ├── SectionRecyf.svelte
-│   │   │   │   │   └── SectionTuto.svelte
+│   │   │   │   │   ├── SectionTuto.svelte
+│   │   │   │   │   └── mesures
+│   │   │   │   │       ├── MesureANNUAIRE1.svelte
+│   │   │   │   │       ├── MesureAUTH1.svelte
+│   │   │   │   │       ├── MesureAUTH4.svelte
+│   │   │   │   │       ├── MesureCOMPADMIN10.svelte
+│   │   │   │   │       ├── MesureCONTINU1.svelte
+│   │   │   │   │       ├── MesureCRISE8.svelte
+│   │   │   │   │       ├── MesureEXO1.svelte
+│   │   │   │   │       ├── MesureFILTRE8.svelte
+│   │   │   │   │       ├── MesureMALWARE3.svelte
+│   │   │   │   │       ├── MesureMCO_MCS5.svelte
+│   │   │   │   │       ├── MesureRECENSEMENT1.svelte
+│   │   │   │   │       └── MesureRH2.svelte
 │   │   │   │   ├── mesure
 │   │   │   │   │   ├── Mesure.svelte
 │   │   │   │   │   ├── ModaleTutoriel.svelte
@@ -1722,7 +1748,6 @@
 │   │   │   │   ├── composantsAutorises.plugin.ts
 │   │   │   │   ├── erreurApi.ts
 │   │   │   │   ├── injecteNonce.plugin.ts
-│   │   │   │   ├── mouvementReduit.svelte.ts
 │   │   │   │   ├── rendu.svelte.ts
 │   │   │   │   └── visibilite.svelte.ts
 │   │   │   └── vite-env.d.ts
@@ -1896,6 +1921,25 @@
     │   ├── tsconfig.json
     │   ├── tsconfig.node.json
     │   └── vite.config.ts
+    ├── mini-test-maturite
+    │   ├── package.json
+    │   ├── plugin
+    │   │   └── remplaceVersionsDansPhp.ts
+    │   ├── public
+    │   │   ├── README.md
+    │   │   └── mini-test-maturite.php
+    │   ├── src
+    │   │   ├── MiniTestMaturite.svelte
+    │   │   ├── index.ts
+    │   │   ├── styles.scss
+    │   │   └── vite.d.ts
+    │   ├── tests
+    │   │   ├── page-test-demo-composant.html
+    │   │   ├── page-test-local-composant.html
+    │   │   └── page-test-prod-composant.html
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   └── vite.config.ts
     └── mini-test-vrai-faux
         ├── package.json
         ├── plugin
@@ -1915,4 +1959,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-303 directories, 1730 files
+310 directories, 1767 files

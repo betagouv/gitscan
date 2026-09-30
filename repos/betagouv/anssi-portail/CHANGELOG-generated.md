@@ -1,32 +1,41 @@
-## Changelog : anssi-portail (30 derniers jours, au 22/09/2026)
+## Changelog : anssi-portail (30 derniers jours, au 29 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance des outils interactifs avec le déploiement de la simulation "Réflexe Cyber" et d'une nouvelle série de "Mini-tests" (notamment un quiz Vrai/Faux). Parallèlement, le projet a franchi une étape technique majeure avec la migration de l'interface vers Svelte 5 et une modernisation complète de la suite de tests.
+Ce mois a été marqué par un développement intensif de nouveaux outils interactifs et une refonte majeure de l'expérience utilisateur. Le portail s'enrichit de nouveaux mini-tests (Vrai/Faux, Maturité Cyber) et d'un comparateur de financements. La simulation "Réflexes Cyber" a été profondément modernisée avec des animations, une intégration sonore et un parcours utilisateur plus fluide. L'ensemble de la plateforme a bénéficié d'améliorations de sécurité et d'une optimisation de l'accessibilité.
 
 ### Évolutions fonctionnelles
-- **Réflexe Cyber** : Déploiement complet du parcours de simulation, incluant le choix des rôles et scénarios, le suivi du score en temps réel, un minuteur animé et l'envoi des résultats vers Mattermost.
-- **Mini-tests** : Lancement d'un nouveau format de quiz (Vrai/Faux) avec affichage des scores, statistiques de réussite, estimation du temps de complétion et possibilité de partage social.
-- **Test d'Exposition** : Amélioration de l'expérience utilisateur avec l'ajout d'une carte interactive, de résumés contextuels, de badges de progression et d'un système de collecte d'avis.
-- **Comparateur de financements** : Ajout d'un nouvel outil permettant de comparer les aides disponibles et de générer des rapports de différences en Markdown.
-- **Accessibilité & UX** : 
-    - Suppression des animations non essentielles (confettis, animations de héros) pour améliorer l'accessibilité.
-    - Optimisation de la navigation mobile et uniformisation des fils d'Ariane sur l'ensemble du site.
-    - Amélioration de la visibilité des focus et des contrastes.
-- **Sécurité** : Renforcement des processus d'authentification avec l'exigence du MFA (authentification multi-facteurs) et ajout de limites de débit (rate limiting) sur les routes de connexion.
+- **Nouveaux outils et tests interactifs** :
+    - Déploiement des mini-tests "Vrai ou Faux" et "Maturité Cyber".
+    - Mise en ligne d'un nouveau comparateur de financements.
+    - Création d'une nouvelle page dédiée à l'outil d'exposition.
+- **Amélioration de l'expérience utilisateur (UX/UI)** :
+    - **Réflexes Cyber** : Refonte complète du parcours de simulation (choix des rôles et scénarios, nouvelles animations de transition, intégration du son et système de score amélioré).
+    - **Interactivité** : Ajout d'un système de réactions et de retours utilisateurs sur les mini-tests.
+    - **Visuels** : Intégration de nouveaux éléments graphiques (cartes animées, héros, confettis de succès, indicateurs de progression).
+    - **Statistiques** : Amélioration de l'affichage des scores et du nombre de tests réalisés pour les utilisateurs et les administrateurs.
+- **Optimisation des contenus** :
+    - Mise à jour des données d'exposition (statistiques 2025) et des guides (NIS2, ReCyF).
+    - Amélioration de la navigation mobile pour les parcours de sécurisation et les quiz.
 
 ### Évolutions techniques
-- **Migration Svelte 5** : Refonte massive de la bibliothèque de composants pour migrer vers Svelte 5 et activation du mode "Runes" pour une meilleure gestion de la réactivité.
-- **Modernisation des tests** : Migration complète de la suite de tests (backend, frontend et intégration) vers Vitest, incluant l'utilisation de mocks et d'assertions plus performantes.
-- **Optimisation CI/CD & Infrastructure** : 
-    - Amélioration des workflows GitHub Actions avec mise en cache des tests.
-    - Stabilisation des déploiements sur CleverCloud via une gestion native de pnpm.
-- **Refactoring & Performance** : 
-    - Nettoyage approfondi du projet (suppression de composants, styles CSS, images et variables inutilisés).
-    - Optimisation de la gestion des types avec Zod (passage de `z.infer` à `z.output`).
-    - Restructuration des adaptateurs de recherche et de gestion des données.
-- **IA & Outillage** : Intégration de nouveaux outils de développement basés sur le protocole MCP (Model Context Protocol) et mise à jour des outils de test Playwright.
+- **Sécurité et Authentification** :
+    - Renforcement de l'authentification avec l'exigence du MFA (Multi-Factor Authentication) via ProConnect.
+    - Mise en place d'un *rate limiting* sur les routes de connexion pour prévenir les attaques par force brute.
+- **Tests et Qualité** :
+    - Migration massive de la suite de tests (frontend et backend) vers Vitest.
+    - Amélioration de la couverture de tests et utilisation de mocks pour les environnements complexes.
+- **Infrastructure et Déploiement** :
+    - Optimisation de la gestion des dépendances avec pnpm (passage aux versions 11/12).
+    - Mise à jour des runners GitHub Actions et amélioration des processus de déploiement des composants Web (WebC).
+- **SEO et Web** :
+    - Nettoyage des URLs pour le référencement (suppression des extensions `.html`).
+    - Mise à jour du sitemap et gestion optimisée des ressources cross-origin (CORS).
 
 ### Autres changements
-- **SEO** : Optimisation des URLs par la suppression des extensions `.html` et ajout de dates de modification pour les contenus (contacts, services, ressources).
-- **Documentation** : Ajout d'un fichier `llms.txt` pour faciliter l'indexation par les modèles de langage.
-- **Qualité de code** : Durcissement des règles de linting pour interdire l'usage de styles en ligne dans les composants Svelte.
+- **Accessibilité** :
+    - Intégration de la détection du mode "réduction de mouvement" pour adapter les animations.
+    - Amélioration de l'accessibilité des composants interactifs (boutons, radio, navigation).
+- **Maintenance et Soin** :
+    - Nettoyage général du code (suppression de dépendances, d'images et de styles en ligne inutilisés).
+    - Corrections orthographiques et harmonisation du wording sur l'ensemble du portail.
+    - Mise à jour de la politique de confidentialité.
