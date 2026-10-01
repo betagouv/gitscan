@@ -1,3 +1,31 @@
+## [6.28.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.28.0...v6.28.1) (2026-09-10)
+
+
+### Bug Fixes
+
+* **ci:** authentifier le telechargement du plugin pulumi scaleway ([a3d59db](https://github.com/anct-cartographie-nationale/cartographie/commit/a3d59db103ff19909ddf0e882c122590dad36f4e))
+
+# [6.28.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.27.3...v6.28.0) (2026-09-10)
+
+
+### Features
+
+* **legal:** servir la declaration d'accessibilite sur /accessibilite ([a305368](https://github.com/anct-cartographie-nationale/cartographie/commit/a3053686f323391d51c5eb2ff2ca61d7fee25a80))
+
+## [6.27.3](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.27.2...v6.27.3) (2026-09-10)
+
+
+### Bug Fixes
+
+* **release:** declarer le depot dans package.json ([0c6ad7d](https://github.com/anct-cartographie-nationale/cartographie/commit/0c6ad7df4bdb45f3c0b57785fb1c6abbd6e749d4))
+
+## [6.27.2](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.27.1...v6.27.2) (2026-09-10)
+
+
+### Bug Fixes
+
+* **legal:** regenerate accessibility declaration and unify contact email ([cf82496](https://github.com/anct-cartographie-nationale/cartographie/commit/cf82496242662822a29569d879e1afa82254f6c3))
+
 ## [6.27.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.27.0...v6.27.1) (2026-07-10)
 
 
