@@ -128,6 +128,7 @@
 │   │       │   └── .gitkeep
 │   │       ├── dbt_project.yml
 │   │       ├── macros
+│   │       │   ├── acquisition_channel.sql
 │   │       │   ├── exclude_internal_distinct_ids.sql
 │   │       │   ├── generate_schema_name.sql
 │   │       │   └── slugify.sql
@@ -631,6 +632,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260915120000_add_mfa_challenge
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260925141542_optimize_matching_taxonomy_lookup
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -968,6 +971,7 @@
 │   │   │   └── widget.ts
 │   │   ├── services
 │   │   │   ├── __tests__
+│   │   │   │   ├── geoloc.test.ts
 │   │   │   │   ├── metabase.test.ts
 │   │   │   │   ├── mfa.test.ts
 │   │   │   │   ├── mission.test.ts
@@ -1034,10 +1038,19 @@
 │   │   │   ├── matching-engine
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── config.test.ts
-│   │   │   │   │   └── matching-engine.test.ts
+│   │   │   │   │   ├── matching-engine.test.ts
+│   │   │   │   │   └── ranking-params.test.ts
 │   │   │   │   ├── config.ts
+│   │   │   │   ├── dispositif-coverage.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   └── types.ts
+│   │   │   │   ├── ranking-params.ts
+│   │   │   │   ├── ranking-query.ts
+│   │   │   │   ├── ranking-types.ts
+│   │   │   │   ├── result-mapper.ts
+│   │   │   │   ├── score-utils.ts
+│   │   │   │   ├── taxonomy-scores.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── user-scoring.ts
 │   │   │   ├── metabase.ts
 │   │   │   ├── mfa.ts
 │   │   │   ├── mission-browse
@@ -1717,6 +1730,12 @@
 │   │   │   │   ├── home
 │   │   │   │   │   ├── hero-background-desktop.webp
 │   │   │   │   │   ├── hero-background-mobile.webp
+│   │   │   │   │   ├── mission-asc.webp
+│   │   │   │   │   ├── mission-gendarmerie.webp
+│   │   │   │   │   ├── mission-jva.webp
+│   │   │   │   │   ├── mission-police.webp
+│   │   │   │   │   ├── mission-roc.webp
+│   │   │   │   │   ├── mission-spv.webp
 │   │   │   │   │   ├── testimonial-education.webp
 │   │   │   │   │   ├── testimonial-memory.webp
 │   │   │   │   │   ├── testimonial-prevention-1.webp
@@ -1732,6 +1751,7 @@
 │   │   │   │   │       └── temoignage-3.webp
 │   │   │   │   └── logo
 │   │   │   │       ├── asc-logo.png
+│   │   │   │       ├── chacun-pour-tous.png
 │   │   │   │       ├── gendarmerie-logo.png
 │   │   │   │       ├── jva-logo.png
 │   │   │   │       ├── roc-logo.png
@@ -1785,10 +1805,10 @@
 │   │   │   │   ├── back-button.tsx
 │   │   │   │   ├── checkbox-group-rich.tsx
 │   │   │   │   ├── exit-modal.tsx
-│   │   │   │   ├── header.tsx
 │   │   │   │   ├── label.tsx
 │   │   │   │   ├── loading-recap.tsx
 │   │   │   │   ├── next-button.tsx
+│   │   │   │   ├── progress.tsx
 │   │   │   │   ├── radio-group-rich.tsx
 │   │   │   │   └── radio-group.tsx
 │   │   │   ├── results
@@ -1875,7 +1895,9 @@
 │   │   │   │   ├── precision-thematique.tsx
 │   │   │   │   ├── rythme.tsx
 │   │   │   │   └── statut.tsx
-│   │   │   └── results.tsx
+│   │   │   ├── results.tsx
+│   │   │   ├── robots.txt.ts
+│   │   │   └── sitemap.xml.ts
 │   │   ├── routes.ts
 │   │   ├── services
 │   │   │   ├── __tests__
@@ -2122,4 +2144,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-485 directories, 1725 files
+486 directories, 1746 files
