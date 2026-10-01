@@ -1,36 +1,38 @@
-## Changelog : proconnect-identite (30 derniers jours, au 24/09/2026)
+## Changelog : proconnect-identite (30 derniers jours, au 30 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration de l'autonomie des utilisateurs, notamment avec la possibilité de déconnecter une identité FranceConnect. Le projet a également renforcé la fiabilité des données d'organisation via l'intégration de l'API RNE et a consolidé sa sécurité par une meilleure gestion des limites de requêtes et la protection des données personnelles lors des exports.
+Ce mois-ci, les évolutions se sont concentrées sur le renforcement de la sécurité et la fiabilisation des données. Les utilisateurs bénéficient d'une meilleure gestion de l'authentification (notamment la possibilité de forcer le double facteur pour certaines organisations) et d'une validation plus rigoureuse des informations saisies (emails, noms). En parallèle, l'infrastructure a été optimisée pour être plus robuste, plus performante et plus respectueuse de la vie privée grâce à une meilleure anonymisation des données exportées.
 
 ### Évolutions fonctionnelles
-- **Gestion des identités** : Possibilité de déconnecter une identité FranceConnect depuis les informations personnelles [#2062](https://github.com/proconnect-gouv/proconnect-identite/issues/2062).
-- **Données d'organisation** : Utilisation de l'API RNE pour récupérer les informations des organisations, garantissant une meilleure précision.
-- **Expérience utilisateur (UX)** :
-    - Amélioration de la clarté des e-mails (réinitialisation 2FA, suppression de clé d'accès).
-    - Correction de la validation des adresses e-mail (gestion des formats invalides).
-    - Normalisation des noms pour la certification (gestion des accents et diacritiques).
-    - Retour au déclenchement manuel des passkeys (revert de l'auto-trigger [#2080](https://github.com/proconnect-gouv/proconnect-identite/issues/2080)).
-- **Sécurité et Confidentialité** :
-    - Correction d'une faille permettant de contourner le code de contact officiel.
-    - Anonymisation de la fonction occupée dans les données exportées pour protéger la vie privée.
-    - Enrichissement des alertes de sécurité avec le nom de la clé d'accès concernée.
-- **Nouvelle fonctionnalité** : Mise en place de la gestion des liens en attente.
+- **Sécurité et Authentification**
+  - Possibilité de forcer l'authentification à deux facteurs (2FA) par organisation [#2189](https://github.com/proconnect-gouv/proconnect-identite/pull/2189).
+  - Réintroduction de l'interface conditionnelle pour WebAuthn (Passkeys) [#2180](https://github.com/proconnect-gouv/proconnect-identite/pull/2180).
+  - Possibilité de déconnecter une identité FranceConnect [#2062](https://github.com/proconnect-gouv/proconnect-identite/pull/2062).
+  - Correction d'une faille permettant de contourner le code de contact officiel.
+- **Expérience Utilisateur et Validation**
+  - Amélioration de la validation des adresses email (gestion des domaines gratuits et correction des formats invalides).
+  - Amélioration des notifications de sécurité : inclusion du nom de la clé d'accès supprimée dans les emails d'alerte.
+  - Correction de la gestion des diacritiques (accents) lors de la normalisation des noms pour la certification.
+  - Nettoyage de l'interface utilisateur (suppression de liens d'aide en doublon).
+- **Gestion des données**
+  - Utilisation de l'API RNE pour récupérer les informations des organisations.
+  - Ajout de la dénomination usuelle des établissements.
+  - Anonymisation du champ "métier" (job) dans les données exportées pour renforcer la protection de la vie privée.
 
 ### Évolutions techniques
-- **Architecture** :
-    - Création d'un dépôt dédié pour les informations utilisateur FranceConnect.
-    - Localisation de certaines données et types (TrancheEffectifs, types d'authentificateurs) pour réduire la dépendance aux API externes.
-    - Refactorisation de l'usage des dépôts (homogénéisation des méthodes `get` et `find`).
-- **Sécurité** :
-    - Optimisation et ajustement du "rate limiting" pour mieux protéger l'API [#2166](https://github.com/proconnect-gouv/proconnect-identite/issues/2166) [#2138](https://github.com/proconnect-gouv/proconnect-identite/issues/2138).
-    - Blocage de l'indexation par les moteurs de recherche via `robots.txt`.
-    - Restriction du serveur Hono à son chemin de montage pour limiter la surface d'exposition.
-- **Optimisations** :
-    - Utilisation d'endpoints gratuits pour les services de "debounce" et les tests de santé (health checks).
-    - Refactorisation du processus de vérification des contacts officiels.
-    - Amélioration de la gestion des variables d'environnement (utilisation de `.dotenv`).
+- **Architecture et Refactoring**
+  - Migration de la gestion de l'environnement vers l'utilisation de "feature flags".
+  - Découplage de certaines dépendances (TrancheEffectifs, types WebAuthn) pour une gestion locale et autonome.
+  - Création d'un nouveau dépôt dédié à la gestion des informations utilisateur FranceConnect.
+  - Homogénéisation de l'utilisation des méthodes `get` et `find` au sein des services de données (repositories).
+- **Sécurité et Performance**
+  - Augmentation des limites de débit (rate limiting) basées sur l'IP pour l'API [#2197](https://github.com/proconnect-gouv/proconnect-identite/pull/2197) et optimisation de leur gestion [#2166](https://github.com/proconnect-gouv/proconnect-identite/pull/2166).
+  - Blocage de l'indexation par les moteurs de recherche via la configuration du fichier `robots.txt`.
+  - Restriction du serveur Hono à son chemin de montage pour limiter la surface d'exposition.
+- **Maintenance et Tests**
+  - Suppression des points de terminaison (endpoints) SIRENE obsolètes et nettoyage des tests de santé (health checks) associés.
+  - Amélioration de la robustesse des tests d'intégration via le mock de l'API de "debounce".
 
 ### Autres changements
-- **Automatisation** : Amélioration de la synchronisation quotidienne des listes d'administrations via Grist.
-- **Développement** : Ajout d'une commande "watch" pour faciliter l'exécution des tests [#2137](https://github.com/proconnect-gouv/proconnect-identite/issues/2137).
+- Synchronisation régulière de la liste des administrations via Grist.
+- Corrections de typographies dans la documentation et les messages de l'interface.
