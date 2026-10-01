@@ -1350,6 +1350,7 @@
 │   │   ├── healthcheck_job.rb
 │   │   ├── malware_scan_job.rb
 │   │   ├── malware_scan_retrieve_state_job.rb
+│   │   ├── refresh_stale_organizations_insee_payload_job.rb
 │   │   ├── register_organization_with_contacts_on_crm_job.rb
 │   │   └── update_organization_insee_payload_job.rb
 │   ├── lib
@@ -2656,7 +2657,8 @@
 │   │   ├── 20260619070911_migrate_api_entreprise_tva_scope_from_vies_to_dgfip.rb
 │   │   ├── 20260909164402_add_read_webhooks_scope_to_oauth_applications.rb
 │   │   ├── 20260918115707_create_bulk_update_for_api_entreprise_on_responsable_traitement.rb
-│   │   └── 20260921180000_create_settings.rb
+│   │   ├── 20260921180000_create_settings.rb
+│   │   └── 20260923120000_add_insee_consecutive_failures_to_organizations.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -3273,6 +3275,7 @@
 │   │   │   ├── replay_webhook_attempt_spec.rb
 │   │   │   ├── save_webhook_attempt_spec.rb
 │   │   │   └── test_webhook_spec.rb
+│   │   ├── enqueue_organization_insee_refresh_spec.rb
 │   │   ├── execute_authorization_request_bridge_spec.rb
 │   │   ├── find_or_create_applicant_from_api_spec.rb
 │   │   ├── find_or_create_organization_for_api_spec.rb
@@ -3302,6 +3305,7 @@
 │   │   ├── healthcheck_job_spec.rb
 │   │   ├── malware_scan_job_spec.rb
 │   │   ├── malware_scan_retrieve_state_job_spec.rb
+│   │   ├── refresh_stale_organizations_insee_payload_job_spec.rb
 │   │   ├── register_organization_with_contacts_on_crm_job_spec.rb
 │   │   └── update_organization_insee_payload_job_spec.rb
 │   ├── lib
@@ -3616,4 +3620,4 @@
     ├── .keep
     └── javascript
         └── .keep
-512 directories, 3245 files
+512 directories, 3249 files

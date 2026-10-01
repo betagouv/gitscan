@@ -1,40 +1,42 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et les processus d'instruction pour divers cas d'usage de données.",
+  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et les processus d'instruction pour divers services publics.",
   "language": "Ruby",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "Sécurité & Conformité",
     "API & Intégrations",
     "Suivi & Traçabilité",
-    "Gestion documentaire & Fichiers"
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Ruby",
     "Rails",
     "PostgreSQL",
     "Redis",
-    "GoodJob",
     "Doorkeeper",
-    "Pundit"
+    "Pundit",
+    "GoodJob",
+    "Stimulus",
+    "Turbo"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
     "Ruby on Rails",
-    "Webhooks & Événements",
     "Authentification (composant)",
+    "Webhooks & Événements",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "email-password",
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -43,22 +45,24 @@
   "tests": [
     "RSpec",
     "Cucumber",
-    "Capybara"
+    "Capybara",
+    "parallel_tests"
   ],
   "workflows": [
     "continuous-deployment.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-09-28T15:20:40+02:00",
-  "status": "active",
+  "lastActivity": "2026-09-30T18:46:59+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Git & DevOps",
-    "Docker & Conteneurs",
-    "Standards & Schémas",
-    "Sécurité & Auth"
+    "Ruby on Rails",
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "CI/CD & GitHub Actions",
+    "Docker & Conteneurs"
   ]
 }
