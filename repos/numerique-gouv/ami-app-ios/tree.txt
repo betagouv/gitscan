@@ -28,7 +28,6 @@
 │   │       └── Preview Assets.xcassets
 │   │           └── Contents.json
 │   └── Sources
-│       ├── AMIAppState.swift
 │       ├── App
 │       │   ├── AMIApp.swift
 │       │   └── AppDelegate.swift
@@ -43,10 +42,24 @@
 │       │       │   └── WebView-ViewModel.swift
 │       │       ├── WeakScriptMessageHandler.swift
 │       │       ├── WebViewDelegate.swift
+│       │       ├── WebViewLocalStorageManager.swift
 │       │       ├── WebViewNavigateToNewWindowProtocol.swift
 │       │       └── WebViewUserScriptsProtocol.swift
+│       ├── Composition
+│       │   ├── AMIAppState.swift
+│       │   └── DependencyContainer.swift
 │       ├── Core
-│       │   └── AppLog.swift
+│       │   ├── AppLog.swift
+│       │   └── Links
+│       │       ├── Data
+│       │       │   └── SpecialLinkHandler.swift
+│       │       ├── Domain
+│       │       │   ├── SpecialLinkError.swift
+│       │       │   ├── SpecialLinkProtocol.swift
+│       │       │   └── SpecialLinkType.swift
+│       │       └── Presentation
+│       │           ├── SpeciaLinkType+Alert.swift
+│       │           └── SpecialLinkError+Alert.swift
 │       ├── Data
 │       │   ├── Persistence
 │       │   │   ├── KeychainErrorMapping.swift
@@ -72,6 +85,7 @@
 │       │   │   ├── HomeView-ViewModel.swift
 │       │   │   └── HomeView.swift
 │       │   ├── Models
+│       │   │   ├── AlertModel.swift
 │       │   │   └── ServiceLinkViewModel.swift
 │       │   ├── Onboarding
 │       │   │   ├── OnboardingView.swift
@@ -93,8 +107,7 @@
 │       └── Utils
 │           ├── AppBundle.swift
 │           ├── Color.swift
-│           ├── Config.swift
-│           └── LogsExporter.swift
+│           └── Config.swift
 ├── AMITests
 │   └── AMITests.swift
 ├── AMIUITests
@@ -147,4 +160,4 @@
         │           └── UserDefaultsStorageTests.swift
         └── SupportingFiles
             └── Info.plist
-60 directories, 89 files
+65 directories, 97 files

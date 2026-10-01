@@ -1,42 +1,45 @@
 {
   "url": "https://github.com/numerique-gouv/ami-app-ios",
   "name": "ami-app-ios",
-  "description": "Application iOS dédiée au service AMI, permettant la réception de notifications et l'accès à des services via des WebViews sécurisées. Elle intègre des mécanismes de sécurité avancés tels que la biométrie et le support des Passkeys.",
+  "description": "Application iOS dédiée au service AMI, permettant aux utilisateurs de réaliser des démarches en ligne et de recevoir des notifications. Elle intègre des fonctionnalités avancées comme le support des Passkeys et la gestion de fichiers via WebView.",
   "language": "Swift",
   "features": [
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Interface utilisateur & Design"
+    "Formulaires & Démarches",
+    "Notifications & Alertes"
   ],
   "audience": "Grand public",
   "dependencies": [
+    "SwiftUI",
     "XcodeGen",
     "SwiftFormat",
     "SwiftLint",
     "SwiftGen",
-    "Ami Design System",
     "Firebase",
+    "AmiDesignSystem",
     "KeychainAccess"
   ],
   "components": [
     "Design System (DSFR & UI libs)",
     "Tests",
-    "Bibliothèques & Packages",
-    "Authentification (composant)"
+    "Bibliothèques & Packages"
   ],
   "auth": {
     "methods": [
       "passkey"
+    ],
+    "providers": [
+      "France Identité"
     ]
   },
-  "tests": "Tests unitaires via le module AMI-UnitTests, avec l'utilisation de SwiftLint et SwiftFormat pour assurer la qualité du code.",
-  "lastActivity": "2026-09-15T16:59:14+02:00",
+  "tests": "Unit tests (AMI-UnitTests), SwiftLint, SwiftFormat",
+  "lastActivity": "2026-09-30T17:23:26+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Design System & UI",
-    "Sécurité & Auth",
-    "Accessibilité"
+    "Sécurité & Auth"
   ]
 }

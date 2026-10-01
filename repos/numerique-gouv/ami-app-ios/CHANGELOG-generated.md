@@ -1,24 +1,24 @@
-## Changelog : ami-app-ios (30 derniers jours, au 15 septembre 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 30 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par l'amélioration de l'expérience utilisateur avec l'ajout du téléchargement de fichiers et la possibilité de lancer des démarches en ligne. L'infrastructure a également évolué avec la création d'un environnement de pré-production et le renforcement de la sécurité via l'activation des Passkeys sur l'environnement de staging.
+Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur au sein de la WebView, notamment pour faciliter le téléchargement de documents et la gestion des appels téléphoniques. L'application bénéficie également d'une meilleure intégration avec France Identité et d'une préparation accrue pour les environnements de préproduction, tout en consolidant sa structure technique pour plus de stabilité.
 
 ### Évolutions fonctionnelles
-- Possibilité de lancer une démarche en ligne ([#165](https://github.com/numerique-gouv/ami-app-ios/pull/165)).
-- Support du téléchargement de fichiers directement depuis la WebView ([#173](https://github.com/numerique-gouv/ami-app-ios/pull/173)).
-- Correction d'un bug provoquant une page blanche lors d'un second accès à une même application de revue ([#166](https://github.com/numerique-gouv/ami-app-ios/pull/166)).
-- Amélioration de l'ouverture des vues de destination depuis la vue partenaire.
-- Activation du support des Passkeys sur l'environnement de staging ([#171](https://github.com/numerique-gouv/ami-app-ios/pull/171)).
+- **Amélioration de la gestion documentaire** : support de nouveaux types de fichiers et possibilité de télécharger et d'enregistrer des documents directement depuis la WebView ([#183](https://github.com/numerique-gouv/ami-app-ios/pull/183), [#176](https://github.com/numerique-gouv/ami-app-ios/pull/176)).
+- **Gestion des liens spéciaux** : support des liens de type `tel:` permettant de lancer des appels téléphoniques directement depuis l'interface.
+- **Optimisation de l'expérience France Identité** : l'application est désormais capable de détecter et d'ouvrir directement l'application France Identité pour faciliter l'authentification.
+- **Navigation fluidifiée** : les services tiers ne s'ouvrent plus systématiquement dans une nouvelle fenêtre WebView, rendant la navigation plus naturelle ([#180](https://github.com/numerique-gouv/ami-app-ios/pull/180)).
+- **Système d'alertes amélioré** : mise en place d'un nouveau système d'alertes plus généraliste au sein de la WebView pour une meilleure communication avec l'utilisateur.
 
 ### Évolutions techniques
-- Création d'un environnement de pré-production (Preprod) dédié ([#161](https://github.com/numerique-gouv/ami-app-ios/pull/161)).
-- Refonte de la navigation dans la WebView via l'introduction d'un nouveau protocole de gestion des fenêtres.
-- Amélioration du système de téléchargement pour permettre le stockage local des fichiers sur l'appareil.
-- Optimisation de la gestion de la mémoire en supprimant le cache des ViewModels.
-- Mise à jour des configurations de sécurité et d'infrastructure (Firebase, domaines associés, gestion des secrets et des entitlements).
-- Migration de la gestion de la fermeture des vues (dismissal) vers SwiftUI.
+- **Montée de version** : passage de l'application à la version 0.5.0 ([#204](https://github.com/numerique-gouv/ami-app-ios/pull/204)).
+- **Refonte de l'architecture WebView** : introduction d'un `DependencyContainer` pour la couche de composition, d'un `SpecialLinkHandler` et passage à une version asynchrone du delegate `WKWebView`.
+- **Gestion des environnements** : ajout d'un flag Xcode dédié à la préproduction ([#202](https://github.com/numerique-gouv/ami-app-ios/pull/202)) et activation des Passkeys sur l'environnement de staging ([#172](https://github.com/numerique-gouv/ami-app-ios/pull/172)).
+- **Refactoring et nettoyage** : 
+    - Renommage de composants pour plus de clarté sémantique (ex: `Partner` devient `Service` ou `DestinationLink`).
+    - Suppression de fonctionnalités obsolètes comme le `LogExporter` et le bouton de téléchargement des logs ([#192](https://github.com/numerique-gouv/ami-app-ios/pull/192)).
+- **Sécurité et réseau** : ajout du header HTTP `Referer` dans les requêtes de service et optimisation de la gestion des cookies via un nouveau `WebViewLocalStorageManager`.
 
 ### Autres changements
-- Nettoyage des configurations de targets ([#162](https://github.com/numerique-gouv/ami-app-ios/pull/162)).
-- Refactorisation sémantique du code (renommage de plusieurs classes et méthodes pour une meilleure clarté, ex: `Partner` vers `Service` ou `Destination`).
-- Corrections de typos et amélioration de la documentation interne.
+- **Documentation** : mise à jour du README concernant la configuration nécessaire des fichiers `.env`.
+- **Maintenance** : nettoyage général du code, correction de typos et optimisation des messages de logs.
