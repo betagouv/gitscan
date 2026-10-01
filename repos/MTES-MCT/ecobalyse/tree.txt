@@ -226,6 +226,9 @@
 │   ├── docker
 │   │   ├── Dockerfile
 │   │   └── entrypoint.sh
+│   ├── docs
+│   │   ├── complements.md
+│   │   └── simapro_beef-with-bone_ratio.png
 │   ├── ecobalyse_data
 │   │   ├── bw
 │   │   │   ├── agribalyse.py
@@ -263,9 +266,8 @@
 │   ├── food
 │   │   ├── __init__.py
 │   │   ├── ecosystemic_services
-│   │   │   ├── README.md
 │   │   │   ├── ecosystemic_factors.csv
-│   │   │   ├── ecs_transformations.png
+│   │   │   ├── es_transformations.png
 │   │   │   ├── feed.json
 │   │   │   └── raw_to_transformed_ratios.json
 │   │   ├── taxonomy.json
@@ -351,6 +353,7 @@
 │   │   │   ├── capsule-125g-dosettes-proxy-pack-plastic-film.json
 │   │   │   ├── carrot-eu.json
 │   │   │   ├── carrot-fr.json
+│   │   │   ├── carrot-juice.json
 │   │   │   ├── carrot-non-ue.json
 │   │   │   ├── cauliflower-fr.json
 │   │   │   ├── cauliflower-organic.json
@@ -956,6 +959,8 @@
 │   │   │   ├── bleaching-average-aquatic-pollution-scenario.json
 │   │   │   ├── bleaching.json
 │   │   │   ├── carbon-fiber-manufacturing.json
+│   │   │   ├── carrot-juice-pressing.json
+│   │   │   ├── cheese-making-comte.json
 │   │   │   ├── conventional-spinning-40-nm.json
 │   │   │   ├── cooking-*.json  (9 files)
 │   │   │   ├── cooling.json
@@ -1004,7 +1009,8 @@
 │   │   │   ├── vehicle-*.json  (7 files)
 │   │   │   ├── washing-synthetic-fiber.json
 │   │   │   ├── weaving-40-nm-and-250-gm2.json
-│   │   │   └── weaving.json
+│   │   │   ├── weaving.json
+│   │   │   └── wheat-milling.json
 │   │   ├── ecoinvent-3-11
 │   │   │   ├── apple.json
 │   │   │   ├── apricot.json
@@ -1296,8 +1302,11 @@
 │   └── server-simple.js
 ├── docker-compose.yml
 ├── docs
-│   └── ADR
-│       └── manage-component-location.md
+│   ├── ADR
+│   │   └── manage-component-location.md
+│   ├── adding-a-generic-scope.md
+│   ├── dl_hierarchy_report.png
+│   └── ingredient-hierarchy.md
 ├── e2e
 │   ├── auth.spec.js
 │   ├── food-simulator.spec.js
@@ -1474,7 +1483,6 @@
 │   │   ├── Impact
 │   │   │   └── Definition.elm
 │   │   ├── Impact.elm
-│   │   ├── JournalEntry.elm
 │   │   ├── Key.elm
 │   │   ├── Notification.elm
 │   │   ├── Plausible.elm
@@ -1520,7 +1528,6 @@
 │   ├── Page
 │   │   ├── Admin
 │   │   │   ├── Account.elm
-│   │   │   ├── Component.elm
 │   │   │   ├── Process.elm
 │   │   │   └── Section.elm
 │   │   ├── Api.elm
@@ -1554,10 +1561,8 @@
 │   │   │   └── Error.elm
 │   │   ├── BackendHttp.elm
 │   │   ├── Common.elm
-│   │   ├── Component.elm
 │   │   ├── Contrib.elm
 │   │   ├── Db.elm
-│   │   ├── Journal.elm
 │   │   ├── Process.elm
 │   │   └── Version.elm
 │   ├── Route.elm
@@ -1579,8 +1584,14 @@
 │       ├── Comparator.elm
 │       ├── ComplementsDetails.elm
 │       ├── Component
+│       │   ├── AmountInput.elm
+│       │   ├── CompositionModal.elm
 │       │   ├── DownArrow.elm
+│       │   ├── ItemRow.elm
 │       │   ├── MassInput.elm
+│       │   ├── ProcessRow.elm
+│       │   ├── ProductionTable.elm
+│       │   ├── RegionSelector.elm
 │       │   ├── SplitInput.elm
 │       │   └── StagesBorder.elm
 │       ├── Component.elm
@@ -1675,4 +1686,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-132 directories, 1912 files
+133 directories, 1922 files
