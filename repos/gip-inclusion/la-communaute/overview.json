@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/gip-inclusion/la-communaute",
   "name": "la-communaute",
-  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange de contenus, la modération et la gestion de fiches pratiques.",
+  "description": "Plateforme communautaire dédiée à l'inclusion, facilitant les échanges via des forums, la consultation de fiches pratiques et la gestion de contenus éditoriaux. Elle intègre des outils de modération, de statistiques et de conformité RGPD.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
@@ -9,32 +9,35 @@
     "Contenu éditorial",
     "Commentaires & Discussions",
     "Statistiques & Rapports",
-    "Sécurité & Conformité",
+    "Recherche & Filtres",
+    "Notifications & Alertes",
     "Gestion des médias & Assets",
-    "Recherche & Filtres"
+    "Administration & Backoffice",
+    "Sécurité & Conformité"
   ],
   "audience": "Grand public",
   "dependencies": [
     "Django",
     "psycopg",
     "MinIO",
-    "Matomo",
     "Sentry",
-    "HTMX"
+    "Matomo",
+    "HTMX",
+    "Sass"
   ],
   "components": [
-    "Django",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "HTML / CSS / Templates visuels"
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "magic-link",
-      "oauth2",
-      "session"
+      "sso"
     ],
     "providers": [
       "ProConnect"
@@ -54,12 +57,11 @@
   "license": "ETALAB-2.0",
   "hasDocumentation": true,
   "tags": [
+    "Écosystème beta.gouv / État",
     "Python",
-    "Django & FastAPI",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Accessibilité",
-    "Données & Open Data"
+    "Django & FastAPI",
+    "Accessibilité"
   ]
 }
