@@ -11,6 +11,7 @@
 │   │   ├── guard_bash.py
 │   │   ├── guard_write_paths.py
 │   │   ├── hook_env.py
+│   │   ├── remind_data_access.py
 │   │   ├── ruff_edited.py
 │   │   └── stop_lint_gate.py
 │   ├── rules
@@ -74,6 +75,7 @@
 │       ├── c7d2b90e4f31_deactivate_legacy_tags.py
 │       ├── c89f7601677b_cron_schedule_default_to_crontab.py
 │       ├── d3f5a8c1b607_pending_tags.py
+│       ├── dc37fe3e0e50_conversation_engine_state.py
 │       ├── df20b48b49c5_drop_wishlist_table.py
 │       ├── e3f1a9c27b54_drop_pm_tables.py
 │       └── f45e6ddef488_user_favorites.py
@@ -90,6 +92,7 @@
 ├── biome.json
 ├── browser
 │   ├── conftest.py
+│   ├── test_notification.py
 │   └── test_socle.py
 ├── config
 │   ├── sources.yaml
@@ -160,7 +163,6 @@
 │   │   ├── 2026-08-12-paved-road-baseline.md
 │   │   ├── 2026-08-12-review-apps-ci-implementation.md
 │   │   └── 2026-08-22-paved-road-workflow.md
-│   ├── remarques-victor-2026-03-19.md
 │   ├── scaling-recommendations.md
 │   └── tally-integration.md
 ├── evals
@@ -213,12 +215,12 @@
 │   ├── sites
 │   │   ├── communaute.md
 │   │   ├── dora.md
-│   │   ├── emplois.md
 │   │   ├── marche.md
 │   │   ├── mon-recap.md
 │   │   ├── pilotage.md
-│   │   ├── plateforme.md
-│   │   └── rdv-insertion.md
+│   │   ├── plateforme-ex-emplois.md
+│   │   ├── rdv-insertion.md
+│   │   └── site-institutionnel.md
 │   ├── stats
 │   │   ├── actes-metier.md
 │   │   ├── candidats.md
@@ -267,34 +269,139 @@
 │   ├── taxonomy.py
 │   ├── tool_taxonomy.py
 │   ├── webinaires.py
-│   └── zendesk.py
+│   ├── zendesk.py
+│   └── zendesk_changeset.py
 ├── package-lock.json
 ├── package.json
 ├── paved-road
-│   └── telecharger-rapport-markdown
+│   ├── notification-reponse-prete
+│   │   ├── attestations
+│   │   │   ├── DOD-1.md
+│   │   │   ├── DOD-2.md
+│   │   │   ├── DOD-3.md
+│   │   │   ├── DOD-4.md
+│   │   │   ├── DOD-5.md
+│   │   │   └── DOD-6.md
+│   │   ├── definition-of-done.md
+│   │   ├── journal
+│   │   │   ├── 20260909T151341279764Z-673350c7.md
+│   │   │   ├── 20260909T153913561139Z-ad727c6f.md
+│   │   │   ├── 20260909T153914983585Z-6aa8dc48.md
+│   │   │   ├── 20260909T153917764603Z-b2898b01.md
+│   │   │   ├── 20260909T153920875745Z-68c9e794.md
+│   │   │   ├── 20260909T153923891474Z-aa61b92b.md
+│   │   │   ├── 20260909T153926758964Z-1e3e2eb2.md
+│   │   │   ├── 20260909T155104430493Z-ca653e8f.md
+│   │   │   ├── 20260909T155219540242Z-4a096b4a.md
+│   │   │   ├── 20260909T155220980135Z-d6e8fce4.md
+│   │   │   ├── 20260909T155224449164Z-078d433c.md
+│   │   │   ├── 20260909T155227250634Z-23956197.md
+│   │   │   ├── 20260909T155230100364Z-bea88e52.md
+│   │   │   └── 20260909T155233571549Z-2d86f17a.md
+│   │   └── retro.md
+│   ├── telecharger-rapport-markdown
+│   │   ├── attestations
+│   │   │   ├── DOD-1.md
+│   │   │   ├── DOD-2.md
+│   │   │   ├── DOD-3.md
+│   │   │   ├── DOD-4.md
+│   │   │   └── DOD-5.md
+│   │   ├── definition-of-done.md
+│   │   └── journal
+│   │       ├── 20260827T173209771862Z-7758a76e.md
+│   │       ├── 20260827T173216973864Z-1ebc4a8c.md
+│   │       ├── 20260827T173222041394Z-6b27e1df.md
+│   │       ├── 20260827T173227525702Z-427e4be0.md
+│   │       ├── 20260827T173233383128Z-b625896a.md
+│   │       ├── 20260827T174259219001Z-1d2676e9.md
+│   │       ├── 20260827T174301786524Z-30cce222.md
+│   │       ├── 20260827T174304250472Z-ba413054.md
+│   │       ├── 20260827T174306813302Z-ef93285f.md
+│   │       ├── 20260827T174309231849Z-0930025c.md
+│   │       ├── 20260827T180542742370Z-4af2a3f2.md
+│   │       ├── 20260827T180545242506Z-cf1d2c0a.md
+│   │       ├── 20260827T180547686140Z-88127885.md
+│   │       ├── 20260827T180550202276Z-ff62bb8e.md
+│   │       └── 20260827T180552681131Z-6abab2f1.md
+│   └── zendesk-write
 │       ├── attestations
 │       │   ├── DOD-1.md
+│       │   ├── DOD-10.md
+│       │   ├── DOD-11.md
+│       │   ├── DOD-12.md
+│       │   ├── DOD-13.md
+│       │   ├── DOD-14.md
+│       │   ├── DOD-15.md
+│       │   ├── DOD-16.md
+│       │   ├── DOD-17.md
 │       │   ├── DOD-2.md
 │       │   ├── DOD-3.md
 │       │   ├── DOD-4.md
-│       │   └── DOD-5.md
+│       │   ├── DOD-5.md
+│       │   ├── DOD-6.md
+│       │   ├── DOD-7.md
+│       │   ├── DOD-8.md
+│       │   └── DOD-9.md
 │       ├── definition-of-done.md
-│       └── journal
-│           ├── 20260827T173209771862Z-7758a76e.md
-│           ├── 20260827T173216973864Z-1ebc4a8c.md
-│           ├── 20260827T173222041394Z-6b27e1df.md
-│           ├── 20260827T173227525702Z-427e4be0.md
-│           ├── 20260827T173233383128Z-b625896a.md
-│           ├── 20260827T174259219001Z-1d2676e9.md
-│           ├── 20260827T174301786524Z-30cce222.md
-│           ├── 20260827T174304250472Z-ba413054.md
-│           ├── 20260827T174306813302Z-ef93285f.md
-│           ├── 20260827T174309231849Z-0930025c.md
-│           ├── 20260827T180542742370Z-4af2a3f2.md
-│           ├── 20260827T180545242506Z-cf1d2c0a.md
-│           ├── 20260827T180547686140Z-88127885.md
-│           ├── 20260827T180550202276Z-ff62bb8e.md
-│           └── 20260827T180552681131Z-6abab2f1.md
+│       ├── journal
+│       │   ├── 20260911T135512560918Z-10dc81f5.md
+│       │   ├── 20260911T135513090324Z-b5f0221d.md
+│       │   ├── 20260911T135513673491Z-0938dcdd.md
+│       │   ├── 20260911T135514249484Z-90f9f080.md
+│       │   ├── 20260911T135514810385Z-5a38ac79.md
+│       │   ├── 20260911T135515387348Z-05a8019c.md
+│       │   ├── 20260911T135515930628Z-0002156f.md
+│       │   ├── 20260911T135516496120Z-25dc33b6.md
+│       │   ├── 20260911T135517017723Z-db030add.md
+│       │   ├── 20260911T135517536522Z-05d03fb1.md
+│       │   ├── 20260911T135518065760Z-f6317567.md
+│       │   ├── 20260911T135518603597Z-c37229e8.md
+│       │   ├── 20260911T135519139816Z-dbc82210.md
+│       │   ├── 20260911T135519675696Z-5918af66.md
+│       │   ├── 20260911T135520231412Z-2c4a33d5.md
+│       │   ├── 20260911T135520971582Z-bce99f90.md
+│       │   ├── 20260911T135521633364Z-a6f3783e.md
+│       │   ├── 20260911T140530165391Z-060bac28.md
+│       │   ├── 20260911T140731718634Z-8d8864f7.md
+│       │   ├── 20260911T140739435618Z-cbf5a149.md
+│       │   ├── 20260911T141101800879Z-b970edab.md
+│       │   ├── 20260911T141111158889Z-553e2af6.md
+│       │   ├── 20260911T141112090207Z-73d001db.md
+│       │   ├── 20260911T141113027242Z-87c202c5.md
+│       │   ├── 20260911T141113967656Z-b2091fac.md
+│       │   ├── 20260911T141114902813Z-37479cc4.md
+│       │   ├── 20260911T141115985420Z-62c0cf59.md
+│       │   ├── 20260911T141117046386Z-df47bf34.md
+│       │   ├── 20260911T141118119111Z-ffab5a7f.md
+│       │   ├── 20260911T141119425218Z-e83ba585.md
+│       │   ├── 20260911T141120526885Z-719bec23.md
+│       │   ├── 20260911T141121743281Z-d766a234.md
+│       │   ├── 20260911T141122750866Z-51e7beda.md
+│       │   ├── 20260911T141123987277Z-c71ab466.md
+│       │   ├── 20260911T141125105315Z-fc6ca0fb.md
+│       │   ├── 20260911T141126155700Z-117e2aa2.md
+│       │   ├── 20260911T141127194902Z-ed805f23.md
+│       │   ├── 20260911T141128309575Z-2e552b61.md
+│       │   ├── 20260911T141136932208Z-13f97ff6.md
+│       │   ├── 20260915T210909512964Z-36e30ec3.md
+│       │   ├── 20260915T210910403425Z-c1ca68a7.md
+│       │   ├── 20260915T210911820166Z-a8885257.md
+│       │   ├── 20260915T210913264553Z-3f804738.md
+│       │   ├── 20260915T210914369145Z-b10fb3ca.md
+│       │   ├── 20260915T210915692388Z-475b2969.md
+│       │   ├── 20260915T210917183179Z-700a91da.md
+│       │   ├── 20260915T210918513478Z-d911d3a8.md
+│       │   ├── 20260915T210920348247Z-fb154455.md
+│       │   ├── 20260915T210921747252Z-9577a6a1.md
+│       │   ├── 20260915T210922792974Z-1d38c40e.md
+│       │   ├── 20260915T210923756784Z-79c9e8fc.md
+│       │   ├── 20260915T210924915915Z-d2d9f08e.md
+│       │   ├── 20260915T210926097884Z-a4db5ce6.md
+│       │   ├── 20260915T210927115164Z-1ec072f3.md
+│       │   ├── 20260915T210928048992Z-cf597951.md
+│       │   └── 20260915T210928973993Z-78a4bd8a.md
+│       ├── lentille.md
+│       └── retro.md
 ├── plugins
 │   └── paved-road
 │       ├── .claude-plugin
@@ -329,6 +436,8 @@
 │   ├── review_app.py
 │   └── smoke.py
 ├── skills
+│   ├── appli_monrecap_db
+│   │   └── SKILL.md
 │   ├── autometa_tables_db
 │   │   └── SKILL.md
 │   ├── compose_and_launch_job
@@ -420,14 +529,12 @@
 │   │   ├── SKILL.md
 │   │   └── scripts
 │   │       └── update_dashboard.py
-│   └── zendesk_query
-│       ├── SKILL.md
-│       └── scripts
-│           └── __init__.py
+│   └── zendesk
+│       └── SKILL.md
 ├── tests
 │   ├── __init__.py
 │   ├── conftest.py
-│   └── test_*.py  (132 files)
+│   └── test_*.py  (145 files)
 ├── uv.lock
 └── web
     ├── __init__.py
@@ -439,6 +546,7 @@
     ├── alerts.py
     ├── app.py
     ├── benchmark.py
+    ├── catchup.py
     ├── complexity.py
     ├── concurrency.py
     ├── config.py
@@ -449,6 +557,7 @@
     ├── database.py
     ├── db.py
     ├── deps.py
+    ├── engine_limits.py
     ├── environment.py
     ├── helpers.py
     ├── llm.py
@@ -494,10 +603,13 @@
     │   ├── js
     │   │   ├── actions.js
     │   │   ├── chat.js
+    │   │   ├── notify.js
     │   │   ├── render.js
     │   │   ├── stream.js
     │   │   └── utils.js
-    │   └── robots.txt
+    │   ├── robots.txt
+    │   └── sounds
+    │       └── notification.wav
     ├── stores
     │   ├── __init__.py
     │   ├── conversations.py
@@ -536,4 +648,4 @@
     │   └── tag_manager.html
     ├── uploads.py
     └── warmup.py
-114 directories, 555 files
+121 directories, 673 files

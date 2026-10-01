@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/gip-inclusion/autometa",
   "name": "autometa",
-  "description": "Assistant IA conçu pour l'analyse des données métier de la Plateforme de l'inclusion. Il combine les APIs Matomo et Metabase pour répondre à des questions en langage naturel et générer des rapports automatisés.",
+  "description": "Assistant IA conçu pour l'analyse des données métier de la Plateforme de l'inclusion. Il permet d'interroger les APIs Matomo et Metabase en langage naturel pour générer des rapports et des analyses statistiques automatisées.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Statistiques & Rapports",
     "Données & Schémas",
-    "API & Intégrations",
-    "Tableaux & Affichage"
+    "Recherche & Filtres",
+    "Tableaux & Affichage",
+    "Administration & Backoffice"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -17,9 +18,10 @@
     "Metabase API",
     "PostgreSQL",
     "Redis",
-    "MinIO",
     "SQLAlchemy",
     "Pandas",
+    "Statsmodels",
+    "Boto3",
     "Claude Code",
     "Ollama"
   ],
@@ -29,13 +31,15 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
-    "Templates & Moteurs de rendu",
     "ORM & Accès aux données",
-    "Scripts & Utilitaires"
+    "Scripts & Utilitaires",
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Google"
@@ -43,16 +47,16 @@
   },
   "tests": [
     "pytest",
+    "pytest-mock",
     "pytest-playwright",
     "ruff",
     "bandit"
   ],
   "workflows": [
     "deploy-staging.yml",
-    "deploy-prod.yml",
-    "_deploy.yml"
+    "deploy-prod.yml"
   ],
-  "lastActivity": "2026-09-14T15:31:26+02:00",
+  "lastActivity": "2026-09-30T19:04:08+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -60,10 +64,9 @@
     "Intelligence Artificielle & LLM",
     "Python",
     "Données & Open Data",
+    "NLP & ML",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "CI/CD & GitHub Actions",
-    "NLP & ML",
-    "Standards & Schémas"
+    "CI/CD & GitHub Actions"
   ]
 }
