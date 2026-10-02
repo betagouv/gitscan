@@ -591,6 +591,7 @@
 │   │   │   ├── CurrentSimulatorCard.tsx
 │   │   │   ├── DateChip.tsx
 │   │   │   ├── Distribution.css
+│   │   │   ├── EngineDocumentationRoutes.test.tsx
 │   │   │   ├── EngineDocumentationRoutes.tsx
 │   │   │   ├── EngineValue
 │   │   │   │   ├── Condition.tsx
@@ -717,14 +718,32 @@
 │   │   │   │       ├── SelectTauxRisque.tsx
 │   │   │   │       └── SelectTauxRisque.worker.ts
 │   │   │   ├── documentation
+│   │   │   │   ├── DocumentationBasePathProvider.test.tsx
+│   │   │   │   ├── DocumentationBasePathProvider.tsx
+│   │   │   │   ├── DocumentationLink.test.tsx
+│   │   │   │   ├── DocumentationLink.tsx
 │   │   │   │   ├── DocumentationRouter.tsx
 │   │   │   │   ├── MDXDocumentationIndex.tsx
 │   │   │   │   ├── References
+│   │   │   │   │   ├── ListeDeReferences.test.tsx
+│   │   │   │   │   ├── ListeDeReferences.tsx
 │   │   │   │   │   ├── Reference.tsx
-│   │   │   │   │   ├── References.tsx
-│   │   │   │   │   └── ReferencesList.tsx
+│   │   │   │   │   ├── useReferencesAAfficher.test.ts
+│   │   │   │   │   └── useReferencesAAfficher.ts
 │   │   │   │   ├── createMDXDocumentation.ts
-│   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── publicodes
+│   │   │   │       ├── DocumentationAccordion.tsx
+│   │   │   │       ├── DocumentationPageBody.tsx
+│   │   │   │       ├── ReferencesDeRegle.test.tsx
+│   │   │   │       ├── ReferencesDeRegle.tsx
+│   │   │   │       ├── ReferencesPublicodes.tsx
+│   │   │   │       ├── ResumeDeRegle.test.tsx
+│   │   │   │       ├── ResumeDeRegle.tsx
+│   │   │   │       ├── Visualiseur.tsx
+│   │   │   │       ├── documentationDeRegle.tsx
+│   │   │   │       ├── index.ts
+│   │   │   │       └── useRegleDuCheminCourant.ts
 │   │   │   ├── entreprise
 │   │   │   │   ├── EntrepriseDetails.tsx
 │   │   │   │   ├── EntrepriseDetailsCard.tsx
@@ -912,6 +931,7 @@
 │   │   │   ├── chip
 │   │   │   │   ├── index.stories.tsx
 │   │   │   │   └── index.tsx
+│   │   │   ├── componentsRendering.tsx
 │   │   │   ├── conversation
 │   │   │   │   └── index.tsx
 │   │   │   ├── documentation
@@ -924,7 +944,6 @@
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── Callout.stories.tsx
 │   │   │   │   ├── Callout.tsx
-│   │   │   │   ├── DocumentationMDXContainer.tsx
 │   │   │   │   ├── DocumentationPage.stories.tsx
 │   │   │   │   ├── DocumentationPage.tsx
 │   │   │   │   ├── ExemplePratique
@@ -933,6 +952,7 @@
 │   │   │   │   ├── Liseré
 │   │   │   │   │   ├── Liseré.stories.tsx
 │   │   │   │   │   └── index.tsx
+│   │   │   │   ├── MDXWrapper.tsx
 │   │   │   │   ├── Tableau
 │   │   │   │   │   ├── TableauSeuils.stories.tsx
 │   │   │   │   │   └── index.tsx
@@ -969,8 +989,6 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── markdown
 │   │   │   │   ├── HeadingWithAnchorLink.tsx
-│   │   │   │   ├── ImgRenderer.tsx
-│   │   │   │   ├── LinkRenderer.tsx
 │   │   │   │   ├── Markdown.tsx
 │   │   │   │   ├── MarkdownWithAnchorLinks.tsx
 │   │   │   │   ├── TextRenderer.tsx
@@ -1135,6 +1153,11 @@
 │   │   │   ├── Unites.ts
 │   │   │   ├── ValeurAnnuelle.test.ts
 │   │   │   ├── ValeurAnnuelle.ts
+│   │   │   ├── documentation
+│   │   │   │   ├── DocumentationDeValeur.ts
+│   │   │   │   ├── References.ts
+│   │   │   │   ├── documentationPublicodes.test.ts
+│   │   │   │   └── documentationPublicodes.ts
 │   │   │   ├── engine
 │   │   │   │   ├── MontantAdapter.ts
 │   │   │   │   ├── OuiNonAdapter.ts
@@ -1206,6 +1229,7 @@
 │   │   │   ├── useInitialRender.tsx
 │   │   │   ├── useInversionFail.ts
 │   │   │   ├── useIsEmbedded.tsx
+│   │   │   ├── useIsEmbeddedOnBPISite.tsx
 │   │   │   ├── useIsIddle.ts
 │   │   │   ├── useMediaQuery.ts
 │   │   │   ├── useNavigationOrigin.ts
@@ -1293,7 +1317,6 @@
 │   │   │   │   │   │   ├── RevenuTable.tsx
 │   │   │   │   │   │   ├── StatutChoice.tsx
 │   │   │   │   │   │   ├── StatutsPossibles.tsx
-│   │   │   │   │   │   ├── useIsEmbeddedBPI.tsx
 │   │   │   │   │   │   └── useSteps.ts
 │   │   │   │   │   ├── association.tsx
 │   │   │   │   │   ├── associé.tsx
@@ -1341,10 +1364,9 @@
 │   │   │   │   └── IntegrationTest.tsx
 │   │   │   ├── documentation
 │   │   │   │   ├── BackToSimulation.tsx
+│   │   │   │   ├── Documentation.test.tsx
 │   │   │   │   ├── Documentation.tsx
-│   │   │   │   ├── DocumentationAccordion.tsx
-│   │   │   │   ├── DocumentationLanding.tsx
-│   │   │   │   └── DocumentationPageBody.tsx
+│   │   │   │   └── DocumentationLanding.tsx
 │   │   │   ├── iframes
 │   │   │   │   ├── IframeFooter.tsx
 │   │   │   │   └── index.tsx
@@ -1448,9 +1470,12 @@
 │   │   │   │   │   │   ├── ChoixImposition.tsx
 │   │   │   │   │   │   ├── ChoixVersementLiberatoire.tsx
 │   │   │   │   │   │   ├── ComparaisonElement.tsx
+│   │   │   │   │   │   ├── ComparaisonListe.test.tsx
 │   │   │   │   │   │   ├── ComparaisonListe.tsx
 │   │   │   │   │   │   ├── DetailSimulation.tsx
 │   │   │   │   │   │   ├── ItemTitle.tsx
+│   │   │   │   │   │   ├── ModaleDeDocumentation.test.tsx
+│   │   │   │   │   │   ├── ModaleDeDocumentation.tsx
 │   │   │   │   │   │   ├── TableauRevenus.tsx
 │   │   │   │   │   │   └── WarningTooltip.tsx
 │   │   │   │   │   ├── metadata.ts
@@ -1912,4 +1937,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-331 directories, 1583 files
+333 directories, 1606 files

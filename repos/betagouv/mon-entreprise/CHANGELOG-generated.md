@@ -1,22 +1,26 @@
-## Changelog : mon-entreprise (30 derniers jours, au 29 septembre 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Ce mois a été marqué par des évolutions majeures, notamment le lancement d'un outil permettant de comparer différents statuts juridiques, une refonte visuelle de la page d'accueil et l'intégration complète des spécificités de cotisations sociales pour Mayotte. Le projet améliore également sa qualité de développement grâce à l'introduction d'une revue de code automatisée par intelligence artificielle.
+Ce mois a été marqué par des évolutions majeures, notamment le lancement d'un outil permettant de comparer différents modèles d'entreprise et une refonte complète de la page d'accueil. Les simulateurs ont été affinés pour plus de précision, particulièrement pour les utilisateurs de Mayotte, et la documentation a été largement modernisée pour offrir une meilleure expérience de consultation des règles métier.
 
 ### Évolutions fonctionnelles
-- **Nouveau comparateur de modèles** : Ajout d'une fonctionnalité permettant de comparer plusieurs statuts (ex: SASU vs EI) pour aider au choix du statut juridique, incluant la gestion des périodes de calcul et des objectifs fiscaux.
-- **Prise en compte de Mayotte** : Mise à jour complète des simulateurs (Salarié et Lodeom) pour intégrer les règles spécifiques à Mayotte (cotisations chômage, maladie, plafonds de sécurité sociale, etc.).
-- **Refonte de la page d'accueil** : Nouvelle structure de la page d'accueil avec l'ajout de sections "Qui sommes-nous", "Explorer les statuts" et un module de recherche/création.
-- **Nouveaux simulateurs** : Intégration des simulateurs dédiés aux profils Artisan et Commerçant.
-- **Améliorations du simulateur Lodeom** : Corrections de calculs, optimisation du parcours de questions et amélioration de l'affichage des répartitions.
-- **Documentation utilisateur** : Mise à jour des guides d'intégration (Iframe) et de la documentation de l'API pour les développeurs.
+- **Nouveau comparateur de modèles** : possibilité de comparer plusieurs statuts (ex: SASU, EI) en fonction d'objectifs précis (IR/IS, versement libératoire) et avec des périodes de calcul flexibles (mensuelles ou annuelles).
+- **Nouveaux simulateurs** : intégration des simulateurs dédiés aux profils Artisan et Commerçant.
+- **Mise à jour du simulateur Lodeom** : 
+    - Intégration complète des spécificités réglementaires et des taux pour Mayotte.
+    - Simplification du parcours utilisateur en supprimant des questions redondantes ou non applicables.
+    - Corrections sur le calcul des heures supplémentaires et de la rémunération brute.
+- **Refonte de la page d'accueil** : nouvelle interface plus intuitive incluant des sections "Qui sommes-nous", "Explorer les statuts" et un moteur de recherche/création direct.
+- **Améliorations des simulateurs existants** : corrections sur les calculs de la SASU (unités d'exonération) et de l'Impôt sur le Revenu (dividendes).
 
 ### Évolutions techniques
-- **Revue de code par IA** : Intégration d'un agent de revue automatique (Claude) dans le workflow de CI/CD pour analyser les Pull Requests.
-- **Refonte de la gestion des montants** : Refactorisation majeure de la logique métier liée aux montants (`Montant`) pour améliorer la précision et la lisibilité des calculs.
-- **Optimisation de la CI/CD** : Amélioration de la gestion des environnements de prévisualisation (*review apps*) et de leur cycle de vie.
-- **Migration et stabilité Next.js** : Diverses optimisations liées à l'utilisation de Next.js, incluant la correction de problèmes de rendu côté serveur (SSR) et de gestion des dépendances avec Turbopack.
+- **Refonte logicielle** : restructuration profonde du module de comparaison et de la logique de gestion des montants pour améliorer la maintenabilité du code.
+- **Automatisation de la qualité (CI/CD)** : mise en place d'une revue de code automatisée par intelligence artificielle (Claude) pour accélérer les cycles de développement.
+- **Optimisation du déploiement** : amélioration de la gestion des "Review Apps" pour des tests plus fiables et rapides.
+- **Accessibilité (a11y)** : corrections importantes des labels ARIA, de la gestion des contrastes de couleurs et de la navigation au clavier, notamment dans les formulaires.
+- **Performance et Tracking** : optimisation du chargement du tracking (Piano Analytics) et correction de problèmes liés au rendu côté serveur (SSR).
 
 ### Autres changements
-- **Documentation technique** : Rédaction de plusieurs documents d'architecture (ADR) concernant le fonctionnement du comparateur de modèles.
-- **Nettoyage du code** : Suppression de composants obsolètes et de règles de calcul non utilisées.
+- **Modernisation de la documentation** : passage au format MDX pour une meilleure gestion du contenu, amélioration de la visualisation des règles Publicodes et mise à jour de la documentation de l'API.
+- **Internationalisation (i18n)** : corrections de nombreuses traductions et uniformisation de la langue sur l'ensemble des composants.
+- **Nettoyage** : suppression de composants et de règles obsolètes pour alléger l'application.
