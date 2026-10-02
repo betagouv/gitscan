@@ -1,28 +1,26 @@
-## Changelog : anssi-recommandations-cyber (30 derniers jours, au 16 septembre 2026)
+## Changelog : anssi-recommandations-cyber (30 derniers jours, au 24/09/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de la consultation des documents produits par l'IA Albert et sur la robustesse du système. L'expérience utilisateur est enrichie par une meilleure présentation des résultats, tandis que l'infrastructure technique a été renforcée pour permettre une détection et un suivi plus précis des erreurs de communication avec les modèles d'intelligence artificielle.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la précision des réponses fournies par l'intelligence artificielle et sur la robustesse du système. L'application est désormais capable de mieux contextualiser les informations pour enrichir les paragraphes et dispose d'un système de surveillance renforcé pour détecter et identifier précisément les erreurs techniques lors des échanges avec le modèle d'IA.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la lecture des documents** : Introduction de la pagination pour l'affichage des segments (chunks) de documents issus d'Albert.
-- **Enrichissement du contexte** : Les paragraphes issus de la recherche sont désormais enrichis en intégrant les pages adjacentes pour offrir une meilleure compréhension contextuelle.
-- **Qualité des réponses** : Stabilisation du formatage des listes Markdown dans les instructions (prompts) envoyées à l'IA.
+- **Amélioration de l'enrichissement documentaire** : mise en place d'une stratégie de recherche par pages adjacentes et meilleure priorisation des preuves issues des guides pour des réponses plus pertinentes.
+- **Optimisation du formatage** : stabilisation du rendu des listes Markdown dans les réponses générées par l'IA.
 
 ### Évolutions techniques
-- **Observabilité et gestion des erreurs** :
-    - Intégration de Sentry via un consommateur dédié au bus d'événements pour une remontée automatique des exceptions.
-    - Spécification de types d'erreurs de communication distincts selon l'étape du processus (reformulation, reclassement ou génération) afin de faciliter le diagnostic.
-    - Publication systématique d'événements d'erreurs techniques sur le bus lors des échecs de communication avec le modèle.
-- **Architecture et Refactoring** :
-    - Renforcement de la cohérence du domaine en rendant l'injection du bus d'événements obligatoire pour les services clés (`ServiceAlbert`, `ReclasseurLLM`, `ReformulateurDeQuestion`).
-    - Extraction de méthodes explicites pour les appels au LLM afin de clarifier le code.
-- **Sécurité** :
-    - Correction de vulnérabilités sur plusieurs dépendances critiques (`nanoid`, `pip`, `idna`).
+- **Observabilité et gestion des erreurs** : 
+    - Implémentation d'un bus d'événements pour centraliser la gestion des erreurs.
+    - Intégration de Sentry pour la remontée automatique des incidents.
+    - Distinction précise des erreurs de communication selon l'étape du processus (reformulation, reclassement ou génération de texte).
+- **Optimisation du traitement IA** : 
+    - Amélioration de la gestion du contexte documentaire pour éviter le partage de segments de texte (chunks) entre les paragraphes enrichis.
+    - Garantie d'un contexte documentaire unique par paragraphe.
+- **Refactoring** : extraction de méthodes explicites pour les appels au LLM afin d'améliorer la maintenabilité du code.
 
 ### Autres changements
-- **Documentation** :
-    - Refonte de la structure documentaire avec la création d'un dossier `docs/` centralisé.
-    - Ajout de diagrammes d'architecture complets (modèle C4 via PlantUML).
-    - Documentation des conventions de tests et du fonctionnement du bus d'événements.
-- **Développement (IA Agents)** :
-    - Mise en place de fichiers d'instructions (`AGENTS.md`) et de compétences (`skills`) pour optimiser l'utilisation d'agents de codage (type Claude Code) sur le projet.
+- **Documentation** : 
+    - Création d'un nouveau dossier de documentation centralisé.
+    - Ajout de schémas d'architecture détaillés (modèle C4 en PlantUML).
+    - Documentation des conventions d'écriture des tests.
+- **Sécurité** : résolution de plusieurs vulnérabilités via la mise à jour de dépendances critiques (pip, nanoid, idna).
+- **Développement** : introduction de nouvelles conventions pour les agents de développement (skills TDD et Git).
