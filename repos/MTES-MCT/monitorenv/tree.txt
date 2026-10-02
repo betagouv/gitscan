@@ -415,7 +415,8 @@
 │   │   │   │                   │   │   │   └── SaveTag.kt
 │   │   │   │                   │   │   ├── themes
 │   │   │   │                   │   │   │   ├── GetThemes.kt
-│   │   │   │                   │   │   │   └── GetThemesByRegulatoryAreas.kt
+│   │   │   │                   │   │   │   ├── GetThemesByRegulatoryAreas.kt
+│   │   │   │                   │   │   │   └── SaveTheme.kt
 │   │   │   │                   │   │   ├── vessels
 │   │   │   │                   │   │   │   ├── GetVesselByShipId.kt
 │   │   │   │                   │   │   │   ├── SaveVesselAdditionalInformation.kt
@@ -462,7 +463,7 @@
 │   │   │   │                   │   │   │   │   │   │   └── ImageDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── missions
 │   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateMissionDataInput.kt
-│   │   │   │                   │   │   │   │   │   │   ├── CreaterOrUpdateMissionTagInput.kt
+│   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateMissionTagInput.kt
 │   │   │   │                   │   │   │   │   │   │   ├── MissionEnvActionControlInfractionDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   ├── MissionEnvActionControlPlanDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── MissionTagInput.kt
@@ -476,7 +477,7 @@
 │   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateReportingDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── ReportingSourceDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── tags
-│   │   │   │                   │   │   │   │   │   │   ├── CreaterOrUpdateTagInput.kt
+│   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateTagInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── TagInput.kt
 │   │   │   │                   │   │   │   │   │   ├── themes
 │   │   │   │                   │   │   │   │   │   │   └── ThemeInput.kt
@@ -585,6 +586,8 @@
 │   │   │   │                   │   │   │       │   │   └── PatchableMissionDataInput.kt
 │   │   │   │                   │   │   │       │   ├── stations
 │   │   │   │                   │   │   │       │   │   └── CreateOrUpdateStationDataInput.kt
+│   │   │   │                   │   │   │       │   ├── themes
+│   │   │   │                   │   │   │       │   │   └── CreateOrUpdateThemeInput.kt
 │   │   │   │                   │   │   │       │   └── users
 │   │   │   │                   │   │   │       │       └── AddUserDataInput.kt
 │   │   │   │                   │   │   │       └── outputs
@@ -1321,6 +1324,7 @@
 │   │       │                   │   │   ├── themes
 │   │       │                   │   │   │   ├── GetThemesByRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetThemesUTest.kt
+│   │       │                   │   │   │   ├── SaveThemeUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── ThemeFixture.kt
 │   │       │                   │   │   ├── vessels
@@ -1361,26 +1365,25 @@
 │   │       │                       │   │       └── EnvActionDataInputUTests.kt
 │   │       │                       │   └── endpoints
 │   │       │                       │       ├── bff
-│   │       │                       │       │   ├── v1
-│   │       │                       │       │   │   ├── AmpsITests.kt
-│   │       │                       │       │   │   ├── ControlUnitsITests.kt
-│   │       │                       │       │   │   ├── DashboardsITests.kt
-│   │       │                       │       │   │   ├── DepartmentAreaITests.kt
-│   │       │                       │       │   │   ├── InfractionsITest.kt
-│   │       │                       │       │   │   ├── LocalizedAreasITests.kt
-│   │       │                       │       │   │   ├── MissionsITests.kt
-│   │       │                       │       │   │   ├── NatinfsITests.kt
-│   │       │                       │       │   │   ├── RecentActivityITests.kt
-│   │       │                       │       │   │   ├── ReportingsITests.kt
-│   │       │                       │       │   │   ├── SeaFrontITest.kt
-│   │       │                       │       │   │   ├── SemaphoresITests.kt
-│   │       │                       │       │   │   ├── SpeciesITest.kt
-│   │       │                       │       │   │   ├── TagsITest.kt
-│   │       │                       │       │   │   ├── TestUtils.kt
-│   │       │                       │       │   │   ├── VesselsITest.kt
-│   │       │                       │       │   │   └── VigilanceAreasITests.kt
-│   │       │                       │       │   └── v2
-│   │       │                       │       │       └── RegulatoryAreasITests.kt
+│   │       │                       │       │   └── v1
+│   │       │                       │       │       ├── AmpsITests.kt
+│   │       │                       │       │       ├── ControlUnitsITests.kt
+│   │       │                       │       │       ├── DashboardsITests.kt
+│   │       │                       │       │       ├── DepartmentAreaITests.kt
+│   │       │                       │       │       ├── InfractionsITest.kt
+│   │       │                       │       │       ├── LocalizedAreasITests.kt
+│   │       │                       │       │       ├── MissionsITests.kt
+│   │       │                       │       │       ├── NatinfsITests.kt
+│   │       │                       │       │       ├── RecentActivityITests.kt
+│   │       │                       │       │       ├── RegulatoryAreasITests.kt
+│   │       │                       │       │       ├── ReportingsITests.kt
+│   │       │                       │       │       ├── SeaFrontITest.kt
+│   │       │                       │       │       ├── SemaphoresITests.kt
+│   │       │                       │       │       ├── SpeciesITest.kt
+│   │       │                       │       │       ├── TagsITest.kt
+│   │       │                       │       │       ├── TestUtils.kt
+│   │       │                       │       │       ├── VesselsITest.kt
+│   │       │                       │       │       └── VigilanceAreasITests.kt
 │   │       │                       │       ├── publicapi
 │   │       │                       │       │   ├── AdministrationsITests.kt
 │   │       │                       │       │   ├── ApiHealthcheckITests.kt
@@ -1492,7 +1495,10 @@
 │   │   │   │   ├── station_table
 │   │   │   │   │   ├── filters.spec.ts
 │   │   │   │   │   └── row_actions.spec.ts
-│   │   │   │   └── tag_table
+│   │   │   │   ├── tag_table
+│   │   │   │   │   ├── filters.spec.ts
+│   │   │   │   │   └── row_actions.spec.ts
+│   │   │   │   └── theme_table
 │   │   │   │       ├── filters.spec.ts
 │   │   │   │       └── row_actions.spec.ts
 │   │   │   ├── constants.ts
@@ -2841,6 +2847,23 @@
 │   │   │   │       │   └── utils.tsx
 │   │   │   │       └── useCases
 │   │   │   │           └── saveTag.ts
+│   │   │   ├── Themes
+│   │   │   │   └── components
+│   │   │   │       ├── Table
+│   │   │   │       │   ├── Columns
+│   │   │   │       │   │   └── constants.tsx
+│   │   │   │       │   ├── FilterBar.tsx
+│   │   │   │       │   ├── Form
+│   │   │   │       │   │   ├── Schema.ts
+│   │   │   │       │   │   ├── SubThemeForm.tsx
+│   │   │   │       │   │   ├── SubThemeTable.tsx
+│   │   │   │       │   │   └── ThemeForm.tsx
+│   │   │   │       │   ├── index.tsx
+│   │   │   │       │   ├── slice.ts
+│   │   │   │       │   ├── types.ts
+│   │   │   │       │   └── utils.tsx
+│   │   │   │       └── useCases
+│   │   │   │           └── saveTheme.ts
 │   │   │   ├── Vessel
 │   │   │   │   ├── components
 │   │   │   │   │   ├── MissionVesselForm
@@ -3199,6 +3222,7 @@
 │   │       │   └── sortCollectionByLocalizedProps.test.ts
 │   │       ├── coordinates.ts
 │   │       ├── dateDifferenceInHours.ts
+│   │       ├── dates.utils.ts
 │   │       ├── deleteTagTag.ts
 │   │       ├── deleteThemeTag.ts
 │   │       ├── drawFunctions.ts
@@ -3498,4 +3522,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-648 directories, 2852 files
+655 directories, 2869 files
