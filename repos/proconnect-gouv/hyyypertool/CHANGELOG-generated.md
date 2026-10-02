@@ -1,15 +1,18 @@
-## Changelog : hyyypertool (30 derniers jours, au 23/09/2026)
+## Changelog : hyyypertool (30 derniers jours, au 30 septembre 2026)
 
 ### Résumé
-Ce mois-ci, hyyypertool a progressé sur deux axes majeurs : l'efficacité opérationnelle, avec l'introduction de la création massive d'organisations, et la robustesse technique, grâce à une refonte complète de notre système de tests automatisés.
+Ce mois-ci, hyyypertool a renforcé ses capacités de gestion, notamment avec l'introduction de la création massive d'organisations. Une part importante des travaux a été consacrée à la modernisation de l'infrastructure de tests automatisés afin de garantir une meilleure stabilité et une plus grande fiabilité des fonctionnalités de modération.
 
 ### Évolutions fonctionnelles
-- Ajout de la création massive d'organisations via le numéro SIRET [#1762](https://github.com/proconnect-gouv/hyyypertool/issues/1762).
-- Amélioration de la gestion des domaines : la fonction de récupération ne retourne désormais que les domaines d'e-mails approuvés [#1782](https://github.com/proconnect-gouv/hyyypertool/issues/1782).
-- Correction du système de chat : bascule automatique vers une nouvelle conversation Crisp en cas de ticket obsolète [#1800](https://github.com/proconnect-gouv/hyyypertool/issues/1800).
+- Ajout de la création massive d'organisations via les numéros SIRET [#1762](https://github.com/proconnect-gouv/hyyypertool/issues/1762).
+- Amélioration de la gestion des domaines : la fonction de récupération des domaines retourne désormais uniquement les domaines de messagerie approuvés [#1782](https://github.com/proconnect-gouv/hyyypertool/issues/1782).
+- Correction de la gestion des conversations Crisp pour assurer une transition fluide vers les nouvelles conversations en cas de ticket obsolète [#1800](https://github.com/proconnect-gouv/hyyypertool/issues/1800).
 
 ### Évolutions techniques
-- **Tests de bout en bout (E2E) :** Migration massive de la suite de tests de Cypress vers Bunwright, incluant la gestion de la liste de modération et plusieurs scénarios métiers (vérification de domaine, gestion des membres internes, gestion des doublons) [#1801](https://github.com/proconnect-gouv/hyyypertool/issues/1801), [#1802](https://github.com/proconnect-gouv/hyyypertool/issues/1802), [#1803](https://github.com/proconnect-gouv/hyyypertool/issues/1803), [#1805](https://github.com/proconnect-gouv/hyyypertool/issues/1805), [#1809](https://github.com/proconnect-gouv/hyyypertool/issues/1809), [#1811](https://github.com/proconnect-gouv/hyyypertool/issues/1811), [#1815](https://github.com/proconnect-gouv/hyyypertool/issues/1815).
-- **Environnement de développement :** Ajout d'un Nix flake pour permettre un environnement de développement sans privilèges sudo [#1783](https://github.com/proconnect-gouv/hyyypertool/issues/1783).
-- **Architecture :** Extraction du thème Tailwind DSFR dans un package workspace dédié pour améliorer la modularité du projet [#1791](https://github.com/proconnect-gouv/hyyypertool/issues/1791).
-- **Maintenance :** Mise à jour de l'environnement d'exécution Bun (v1.4.2) [#1790](https://github.com/proconnect-gouv/hyyypertool/issues/1790) et actualisation des dépendances internes du projet [#1792](https://github.com/proconnect-gouv/hyyypertool/issues/1792).
+- **Refonte majeure de la suite de tests E2E** : Migration de l'infrastructure de tests (Cypress et Bunwright) vers un nouveau système basé sur Buncept pour une meilleure stabilité et une syntaxe simplifiée [#1827](https://github.com/proconnect-gouv/hyyypertool/issues/1827). Cela inclut le portage de l'ensemble des scénarios de tests critiques (gestion des membres, navigation, modération, vérification de domaines, etc.) [#1837](https://github.com/proconnect-gouv/hyyypertool/issues/1837), [#1835](https://github.com/proconnect-gouv/hyyypertool/issues/1835), [#1833](https://github.com/proconnect-gouv/hyyypertool/issues/1833).
+- **Amélioration de l'expérience développeur** :
+    - Mise en place de Nix pour permettre un environnement de développement local simplifié et sans privilèges root [#1783](https://github.com/proconnect-gouv/hyyypertool/issues/1783).
+    - Extraction du thème Tailwind DSFR dans un package dédié pour améliorer la modularité du projet [#1791](https://github.com/proconnect-gouv/hyyypertool/issues/1791).
+- **Maintenance et infrastructure** :
+    - Mise à jour du runtime Bun [#1790](https://github.com/proconnect-gouv/hyyypertool/issues/1790).
+    - Mise à jour des dépendances internes de l'écosystème ProConnect [#1792](https://github.com/proconnect-gouv/hyyypertool/issues/1792).
