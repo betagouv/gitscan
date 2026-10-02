@@ -1,26 +1,31 @@
-## Changelog : domifa (30 derniers jours, au 23 septembre 2026)
+## Changelog : domifa (30 derniers jours, au 30/09/2026)
 
 ### Résumé
-Ce mois-ci, domifa a bénéficié d'améliorations significatives pour faciliter le suivi des usagers, notamment via de nouveaux indicateurs de délais et une meilleure gestion des dates de domiciliation. L'expérience de navigation a été simplifiée pour les agents de pilotage, et la sécurité des données a été renforcée lors des modifications de profil.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur via une interface plus claire (couleurs, libellés, affichage des noms) et l'ajout d'indicateurs de suivi essentiels (délais de passage, dates de domiciliation). La fiabilité du système a également été renforcée par une meilleure gestion des envois d'emails et une optimisation des statistiques.
 
 ### Évolutions fonctionnelles
-- **Suivi des usagers :** Ajout de la gestion de la date de domiciliation et mise en place d'indicateurs visuels (pastilles de couleur) pour suivre les délais de passage et de décision.
-- **Clarté de l'interface :** Amélioration de l'identification des usagers dans les dossiers et les listes d'interaction grâce à l'affichage systématique du nom complet.
-- **Navigation et accès :** 
-    - Remplacement du menu "Administration" par "Pilotage" dans la barre de navigation [#4277](https://github.com/SocialGouv/domifa/pull/4277).
-    - Redirection automatique des profils spécifiques (DGCS, DDETS, DREETS) vers le portail de pilotage lors de la connexion.
-- **Nouveaux outils :** Ajout d'un formulaire de contact pour le support et intégration d'un onglet "Kit de communication" incluant une section FAQ [#4270](https://github.com/SocialGouv/domifa/pull/4270).
-- **Statistiques :** Corrections de l'affichage (CSS) et de la précision des chiffres dans les tableaux de bord statistiques [#4274](https://github.com/SocialGouv/domifa/pull/4274).
+- **Interface et Ergonomie** :
+    - Amélioration visuelle des titres, des boutons d'accès et des pastilles d'alerte (mise en conformité avec les tokens DSFR).
+    - Mise à jour des libellés dans le menu de pilotage [#4277](https://github.com/SocialGouv/domifa/pull/4277).
+    - Affichage du nom complet des usagers dans les dossiers, les notes et les listes d'interactions pour une meilleure identification.
+- **Suivi et Données** :
+    - Ajout de la date de domiciliation.
+    - Mise en place de nouveaux indicateurs visuels pour le suivi des délais de passage et des échéances de décision.
+    - Correction des calculs sur le formulaire d'inscription initiale.
+- **Statistiques et Communication** :
+    - Correction et alignement des données statistiques (comptages par région et chiffres globaux) [#4274](https://github.com/SocialGouv/domifa/pull/4274).
+    - Correction des modèles (templates) d'emails.
 
 ### Évolutions techniques
-- **Sécurité :** Renforcement du processus de mise à jour des adresses email (frontend et backend).
-- **Gestion des communications :** Amélioration du suivi des envois d'emails via la synchronisation des statuts de livraison Brevo.
-- **Maintenance et performance :**
-    - Optimisation de la confidentialité par le nettoyage des logs (Sentry et logs HTTP redigés).
-    - Allègement du backend par la suppression de Swagger et de migrations obsolètes.
-    - Mise à jour de l'environnement de test (passage à Jest 30).
-- **Refactoring :** Amélioration de la validation des données (DTO) côté backend et adoption de la bibliothèque `date-fns` pour la gestion des dates.
+- **Backend et Sécurité** :
+    - Amélioration du suivi des emails grâce au routage basé sur le statut de livraison Brevo.
+    - Renforcement de la confidentialité en masquant les données sensibles dans les logs et les événements Sentry.
+    - Nettoyage des logs inutiles et des migrations obsolètes.
+- **Maintenance et Performance** :
+    - Mise à jour de l'environnement de tests vers Jest 30.
+    - Optimisation du code via l'utilisation de la bibliothèque `date-fns` et la suppression de champs et packages inutilisés.
+    - Migration de la gestion des statistiques publiques vers un nouveau flux de contrôle (control flow).
+    - Amélioration de la stabilité de la chaîne de CI (Intégration Continue).
 
 ### Autres changements
-- **Contenu :** Mise à jour des composants et des textes des pages publiques (FAQ, impact, témoignages, actualités).
-- **Nettoyage :** Suppression de champs de données inutilisés et de packages obsolètes.
+- Mise à jour de la documentation technique.
