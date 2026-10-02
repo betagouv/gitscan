@@ -251,11 +251,13 @@
 │   │   │   └── views.py
 │   │   ├── emplois
 │   │   │   ├── __init__.py
+│   │   │   ├── api_client.py
 │   │   │   ├── serializers.py
 │   │   │   ├── tests
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── test_emplois_views.ambr
 │   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_emplois_api_client.py
 │   │   │   │   ├── test_emplois_mobilisation_event.py
 │   │   │   │   ├── test_emplois_orientations.py
 │   │   │   │   ├── test_emplois_serializers.py
@@ -278,8 +280,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── nexus_full_sync.py
-│   │   │   │       └── populate_metabase_nexus.py
+│   │   │   │       └── nexus_full_sync.py
 │   │   │   ├── sync.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
@@ -372,6 +373,7 @@
 │   │   │   │   ├── 0004_add_service_orientations_related_name.py
 │   │   │   │   ├── 0005_emploisorientationdata_and_more.py
 │   │   │   │   ├── 0006_emploisorientationdata_emplois_sync_uid.py
+│   │   │   │   ├── 0007_alter_orientation_status.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── serializers.py
@@ -504,6 +506,8 @@
 │   │   │   │   ├── 0019_service_horaires_accueil.py
 │   │   │   │   ├── 0020_alter_service_forms.py
 │   │   │   │   ├── 0021_recompute_sync_checksums_update_frequency.py
+│   │   │   │   ├── 0022_alter_savedsearch_kinds_alter_service_kind.py
+│   │   │   │   ├── 0023_remove_service_moderation.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
@@ -573,6 +577,8 @@
 │   │   │   │   ├── 0003_structureview_search_view.py
 │   │   │   │   ├── 0004_searchview_region.py
 │   │   │   │   ├── 0005_searchview_kinds_array.py
+│   │   │   │   ├── 0006_alter_orientationview_orientation_status.py
+│   │   │   │   ├── 0007_alter_searchview_kinds.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── tests
@@ -589,6 +595,7 @@
 │   │   │   │   └── 01_structure_national_labels.json.gz
 │   │   │   ├── management
 │   │   │   │   └── commands
+│   │   │   │       ├── backfill_structure_descriptions.py
 │   │   │   │       ├── delete_orphan_structures.py
 │   │   │   │       └── import_structures.py
 │   │   │   ├── migrations
@@ -596,10 +603,12 @@
 │   │   │   │   ├── 0002_seed_data.py
 │   │   │   │   ├── 0003_protect_structure_fks.py
 │   │   │   │   ├── 0004_structure_reseaux_porteurs.py
+│   │   │   │   ├── 0005_remove_in_progress_moderation_status.py
+│   │   │   │   ├── 0006_structure_name_max_length.py
+│   │   │   │   ├── 0007_structure_description.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
-│   │   │   ├── reseaux_porteurs_mappings.py
 │   │   │   ├── serializers.py
 │   │   │   ├── templates
 │   │   │   │   ├── admin
@@ -624,9 +633,9 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── test_import_structures.ambr
-│   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_admin_import_view.py
 │   │   │   │   ├── test_admin_url.py
+│   │   │   │   ├── test_backfill_structure_descriptions.py
 │   │   │   │   ├── test_delete_orphan_structures.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_import_structures.py
@@ -981,6 +990,7 @@
 │   │   │   │   ├── services.ts
 │   │   │   │   ├── structures.ts
 │   │   │   │   └── upload.ts
+│   │   │   ├── sentry.ts
 │   │   │   ├── types.ts
 │   │   │   ├── utils
 │   │   │   │   ├── api.ts
@@ -1000,7 +1010,6 @@
 │   │   │   │   ├── manager-department.ts
 │   │   │   │   ├── matomo.ts
 │   │   │   │   ├── misc.ts
-│   │   │   │   ├── moderation.ts
 │   │   │   │   ├── nexus.ts
 │   │   │   │   ├── opening-hours
 │   │   │   │   │   ├── constants.ts
@@ -1242,18 +1251,6 @@
 │   │   │   │   ├── history.svelte
 │   │   │   │   ├── info-line.svelte
 │   │   │   │   ├── linkedin-search-link.svelte
-│   │   │   │   ├── moderation
-│   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── +page.ts
-│   │   │   │   ├── moderation-button-menu.svelte
-│   │   │   │   ├── moderation-label.svelte
-│   │   │   │   ├── moderation-menu.svelte
-│   │   │   │   ├── services
-│   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   ├── +page.ts
-│   │   │   │   │   └── [slug]
-│   │   │   │   │       ├── +page.svelte
-│   │   │   │   │       └── +page.ts
 │   │   │   │   ├── small-link.svelte
 │   │   │   │   ├── structure-contacts.svelte
 │   │   │   │   ├── structures
@@ -1266,7 +1263,10 @@
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   └── +page.ts
 │   │   │   │   │   ├── filters.svelte
-│   │   │   │   │   ├── structure-modal.svelte
+│   │   │   │   │   ├── structure-card.svelte
+│   │   │   │   │   ├── structure-edit-links.svelte
+│   │   │   │   │   ├── structure-moderation-menu.svelte
+│   │   │   │   │   ├── structure-statuses.ts
 │   │   │   │   │   ├── structures-filters.ts
 │   │   │   │   │   ├── structures-map.svelte
 │   │   │   │   │   ├── structures-table.svelte
@@ -1476,4 +1476,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-277 directories, 1201 files
+274 directories, 1204 files

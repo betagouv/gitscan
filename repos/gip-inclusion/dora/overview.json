@@ -1,57 +1,62 @@
 {
   "url": "https://github.com/gip-inclusion/dora",
   "name": "dora",
-  "description": "Plateforme conçue pour faciliter l'accompagnement des personnes en insertion en centralisant les informations sur les services et en gérant les processus d'orientation.",
+  "description": "Plateforme conçue pour faciliter l'accompagnement des personnes en insertion et la gestion des services et territoires par les professionnels du secteur.",
   "language": "Python",
   "features": [
+    "Visualisation de données & Cartographie",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
     "Gestion métier générale",
     "Statistiques & Rapports",
     "Formulaires & Démarches",
-    "Données & Schémas"
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
+    "SvelteKit",
     "PostgreSQL",
     "PostGIS",
     "Redis",
     "SeaweedFS",
     "dbt",
-    "Svelte",
-    "Django REST Framework"
+    "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Pipeline de données",
-    "Authentification (composant)",
-    "Intelligence Artificielle / ML"
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
+      "oauth2",
+      "jwt",
       "session"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
-  "tests": "Pytest",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Pytest",
+    "Vitest"
   ],
-  "lastActivity": "2026-09-24T16:57:50+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-10-01T17:55:14+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "Python",
+    "TypeScript",
+    "Docker & Conteneurs",
     "Bases de données SQL",
-    "CI/CD & GitHub Actions",
     "SIG & Géospatial",
-    "ETL & Pipelines de données"
+    "CI/CD & GitHub Actions"
   ]
 }
