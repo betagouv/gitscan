@@ -37,6 +37,8 @@
 │       │   └── SKILL.md
 │       ├── sync-docs
 │       │   └── SKILL.md
+│       ├── ticket
+│       │   └── SKILL.md
 │       └── verif
 │           └── SKILL.md
 ├── .dockerignore
@@ -61,7 +63,9 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── adr
-│   │   └── 0001-configuration-a-trois-niveaux.md
+│   │   ├── 0001-configuration-a-trois-niveaux.md
+│   │   ├── 0002-trois-rangements-pour-ce-qu-un-connecteur-stocke.md
+│   │   └── 0003-le-geste-hors-dossier-et-la-cle-d-engagement.md
 │   ├── architecture.md
 │   ├── co-incubation-em-1498.md
 │   ├── deploiement.md
@@ -86,10 +90,17 @@
 │       ├── #27_annuler-un-depart.md
 │       ├── #28_metadonnees-de-compte.md
 │       ├── #29_startup-qui-s-arrete.md
+│       ├── #99_administrer-les-droits-scalingo.md
 │       └── lot-1.5_interface.md
 ├── e2e
+│   ├── anatomie.ts
+│   ├── collecte.spec.ts
+│   ├── faux-espace-membre.ts
 │   ├── participant.spec.ts
-│   └── session.ts
+│   ├── releve-visuel.spec.ts
+│   ├── semis-riche.ts
+│   ├── session.ts
+│   └── seuils-visuels.json
 ├── next.config.ts
 ├── package.json
 ├── playwright.config.ts
@@ -155,6 +166,16 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260916140111_compte_de_service_porte_son_systeme
 │   │   │   └── migration.sql
+│   │   ├── 20260917132551_ressource_contenue_par_une_autre
+│   │   │   └── migration.sql
+│   │   ├── 20260917141715_le_geste_hors_dossier_et_la_cle_d_engagement
+│   │   │   └── migration.sql
+│   │   ├── 20260917160000_le_compte_machine_porte_le_jeton_emis
+│   │   │   └── migration.sql
+│   │   ├── 20260917170000_une_etape_dit_si_son_echec_se_reprend
+│   │   │   └── migration.sql
+│   │   ├── 20260920090000_un_constat_de_compte_se_deduplique_sur_l_identifiant
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── prisma.config.ts
@@ -176,6 +197,7 @@
 │   │   │   └── redaction.ts
 │   │   ├── comptes-de-service
 │   │   │   ├── BoutonRevue.tsx
+│   │   │   ├── Declarer.test.tsx
 │   │   │   ├── Declarer.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
@@ -187,7 +209,8 @@
 │   │   │   ├── declaration-machine.integration.test.ts
 │   │   │   └── page.tsx
 │   │   ├── configuration
-│   │   │   ├── Reglage.tsx
+│   │   │   ├── Reglages.test.tsx
+│   │   │   ├── Reglages.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── constats
@@ -196,28 +219,40 @@
 │   │   │   ├── FileDesConstats.tsx
 │   │   │   ├── ToleranceConstat.tsx
 │   │   │   ├── actions.ts
-│   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── tolerance-par-cible.integration.test.ts
 │   │   ├── dossiers
 │   │   │   ├── FormulaireOuverture.tsx
 │   │   │   ├── [id]
 │   │   │   │   ├── AnnulationDossier.tsx
 │   │   │   │   ├── Etape.tsx
+│   │   │   │   ├── EtapeOperateur.tsx
+│   │   │   │   ├── Lancement.tsx
 │   │   │   │   ├── Participations.tsx
 │   │   │   │   ├── Pointage.tsx
+│   │   │   │   ├── PorteurDeRemises.tsx
+│   │   │   │   ├── Remises.tsx
 │   │   │   │   ├── actions.test.ts
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── ecran-du-dossier.test.ts
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── participation.test.ts
 │   │   │   │   ├── participation.ts
+│   │   │   │   ├── pointage-pendant-un-depart.integration.test.ts
 │   │   │   │   ├── redaction-execution.test.ts
 │   │   │   │   ├── redaction-execution.ts
 │   │   │   │   ├── redaction-participation.test.ts
-│   │   │   │   └── redaction-participation.ts
+│   │   │   │   ├── redaction-participation.ts
+│   │   │   │   ├── remise-du-jeton.test.tsx
+│   │   │   │   └── voie.ts
 │   │   │   ├── actions.ts
-│   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── renvoi-apres-refus.test.tsx
+│   │   ├── ecrans-releves.test.ts
 │   │   ├── error.tsx
 │   │   ├── files-de-travail.test.tsx
+│   │   ├── gestes
+│   │   │   └── actions.ts
 │   │   ├── global-error.tsx
 │   │   ├── healthz
 │   │   │   └── route.ts
@@ -242,24 +277,29 @@
 │   │   │   ├── ListeDesEtapes.test.tsx
 │   │   │   ├── actions.test.ts
 │   │   │   ├── actions.ts
+│   │   │   ├── ecran-des-modeles.test.tsx
 │   │   │   ├── incubateur
 │   │   │   │   └── page.tsx
 │   │   │   ├── lecture.ts
 │   │   │   ├── page.tsx
 │   │   │   ├── redaction.test.ts
 │   │   │   ├── redaction.ts
+│   │   │   ├── second-regard.integration.test.ts
 │   │   │   └── startup
 │   │   │       └── [ghid]
 │   │   │           └── page.tsx
 │   │   ├── moi
+│   │   │   ├── MesComptes.tsx
 │   │   │   ├── [...reste]
 │   │   │   │   └── page.tsx
 │   │   │   ├── dossiers
 │   │   │   │   └── [id]
 │   │   │   │       └── page.tsx
 │   │   │   ├── espace-du-participant.test.ts
+│   │   │   ├── mes-comptes.test.ts
 │   │   │   ├── not-found.tsx
-│   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── redaction.ts
 │   │   ├── not-found.tsx
 │   │   ├── page.tsx
 │   │   ├── personnes
@@ -278,18 +318,26 @@
 │   │   │   │   ├── RattacherStartup.tsx
 │   │   │   │   ├── RetirerRattachement.tsx
 │   │   │   │   ├── SectionComptesExternes.tsx
+│   │   │   │   ├── SectionGeste.tsx
+│   │   │   │   ├── SectionGestesConfirmes.tsx
 │   │   │   │   ├── SectionStartups.tsx
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── edit
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── edition.test.ts
 │   │   │   │   ├── edition.ts
 │   │   │   │   ├── fiche-et-modales.test.tsx
 │   │   │   │   ├── fusion.test.ts
+│   │   │   │   ├── geste-en-attente.integration.test.ts
+│   │   │   │   ├── geste-en-attente.ts
+│   │   │   │   ├── gestes-confirmes.integration.test.ts
+│   │   │   │   ├── gestes-confirmes.ts
 │   │   │   │   ├── libelles.ts
 │   │   │   │   ├── motifs.test.ts
 │   │   │   │   ├── motifs.ts
 │   │   │   │   ├── not-found.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── section-geste.test.tsx
 │   │   │   └── page.tsx
 │   │   ├── startups
 │   │   │   ├── Filtres.tsx
@@ -310,7 +358,10 @@
 │   │       └── page.tsx
 │   ├── cli
 │   │   ├── frontiere.test.ts
+│   │   ├── releve-ui.test.ts
+│   │   ├── releve-ui.ts
 │   │   ├── schema-politique.ts
+│   │   ├── seuils-ui.json
 │   │   ├── sync.ts
 │   │   └── verifier-politique.ts
 │   ├── collision-d-unicite.test.ts
@@ -354,6 +405,8 @@
 │   │   ├── execution.ts
 │   │   ├── fiche-manuelle.test.ts
 │   │   ├── fiche-manuelle.ts
+│   │   ├── geste.test.ts
+│   │   ├── geste.ts
 │   │   ├── identite.test.ts
 │   │   ├── identite.ts
 │   │   ├── inventaire.test.ts
@@ -413,13 +466,22 @@
 │   │   ├── derogation.ts
 │   │   ├── dossier.test.ts
 │   │   ├── dossier.ts
+│   │   ├── emission-de-jeton.integration.test.ts
+│   │   ├── env.test.ts
 │   │   ├── env.ts
+│   │   ├── espace-membre.contrat.test.ts
+│   │   ├── espace-membre.test.ts
 │   │   ├── espace-membre.ts
+│   │   ├── espace-perso.ts
 │   │   ├── execution.test.ts
 │   │   ├── execution.ts
+│   │   ├── fgp.test.ts
+│   │   ├── fgp.ts
 │   │   ├── fournisseurs.test.ts
 │   │   ├── fournisseurs.ts
 │   │   ├── gel-des-tolerances.integration.test.ts
+│   │   ├── geste-hors-dossier.integration.test.ts
+│   │   ├── geste.ts
 │   │   ├── inventaire.ts
 │   │   ├── modele-plan-edition.test.ts
 │   │   ├── modele-plan-edition.ts
@@ -432,6 +494,7 @@
 │   │   ├── session.ts
 │   │   ├── surcharges.ts
 │   │   └── sync
+│   │       ├── cle-de-constat-de-compte.integration.test.ts
 │   │       ├── collecte.integration.test.ts
 │   │       ├── collecte.test.ts
 │   │       ├── collecte.ts
@@ -450,11 +513,14 @@
 │   ├── proxy.test.ts
 │   ├── proxy.ts
 │   ├── test
-│   │   └── doubles
-│   │       ├── db.test.ts
-│   │       ├── db.ts
-│   │       └── session.ts
+│   │   ├── doubles
+│   │   │   ├── db.test.ts
+│   │   │   ├── db.ts
+│   │   │   └── session.ts
+│   │   ├── politique-jetable.test.ts
+│   │   └── politique-jetable.ts
 │   └── ui
+│       ├── Absent.tsx
 │       ├── Actions.module.css
 │       ├── Aide.tsx
 │       ├── ChampAvecListe.tsx
@@ -475,11 +541,22 @@
 │       │   ├── rendre-tuile.test.ts
 │       │   ├── rendre-tuile.ts
 │       │   ├── scalingo
+│       │   │   ├── Ecran.tsx
+│       │   │   ├── ParcScalingo.tsx
+│       │   │   ├── ecran-scalingo.test.tsx
+│       │   │   ├── lecture.integration.test.ts
+│       │   │   ├── lecture.ts
+│       │   │   ├── parc.ts
+│       │   │   ├── redaction.test.ts
+│       │   │   ├── redaction.ts
 │       │   │   └── tuiles.tsx
 │       │   ├── scope-attendu.test.ts
 │       │   └── scope-attendu.ts
+│       ├── dates.test.ts
 │       ├── dates.ts
 │       ├── dsfr
+│       │   ├── RemettreLeTheme.test.tsx
+│       │   ├── RemettreLeTheme.tsx
 │       │   ├── client.tsx
 │       │   ├── defaultColorScheme.ts
 │       │   ├── server.test.tsx
@@ -487,6 +564,7 @@
 │       ├── formulaire.ts
 │       ├── modale.test.tsx
 │       ├── modale.ts
+│       ├── navigation.test.ts
 │       ├── profils.ts
 │       ├── severites.ts
 │       ├── tolerance.ts
@@ -495,4 +573,4 @@
 ├── vitest.config.ts
 ├── vitest.setup.integration.ts
 └── vitest.setup.unite.ts
-93 directories, 404 files
+100 directories, 475 files
