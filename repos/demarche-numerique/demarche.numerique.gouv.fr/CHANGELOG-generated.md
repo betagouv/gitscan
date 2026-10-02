@@ -1,36 +1,41 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 29/09/2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Ce mois a été marqué par un effort important sur la résilience du système et la sécurité des accès. La plateforme gère désormais mieux les indisponibilités des services externes (comme l'API Entreprise) en permettant aux usagers de poursuivre leurs démarches en "mode dégradé". La sécurité a été renforcée pour les profils sensibles (administrateurs et experts) via l'obligation d'utiliser ProConnect et l'introduction de la double authentification (MFA). Enfin, l'interface a bénéficié de nombreuses améliorations d'accessibilité et de nouveaux outils de filtrage pour les agents.
+Ce mois a été marqué par une montée en puissance de la sécurité et de la résilience du système. Les évolutions majeures concernent l'obligation de passer par ProConnect pour les administrateurs, la mise en place d'un mode "dégradé" pour la saisie des données d'entreprises (SIRET/RNA) en cas d'indisponibilité des API externes, et une refonte profonde de la gestion des sessions. L'expérience des instructeurs a également été fluidifiée par de nouveaux outils de filtrage et une interface plus cohérente.
 
 ### Évolutions fonctionnelles
-- **Résilience des données externes :** Mise en place d'un mode dégradé pour les champs dépendants de l'API Entreprise (SIRET/RNA). En cas d'échec de l'API, l'usager peut valider sa saisie et une tentative de synchronisation est programmée automatiquement [#14059](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14059).
-- **Gestion du consentement (AMI) :** Amélioration du parcours de consentement des usagers, incluant un nouveau bloc de suivi sur la page de soumission et une compatibilité avec les applications mobiles [#13755](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13755).
-- **Sécurité des accès :** 
-    - Généralisation de l'usage de ProConnect pour les administrateurs et les experts [#13779](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13779).
-    - Renforcement de la sécurité des super-administrateurs avec l'obligation de MFA/OTP et un verrouillage automatique du compte après plusieurs échecs [#13936](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13936).
-- **Outils pour les instructeurs et administrateurs :** 
-    - Ajout de filtres par période pour les colonnes de dates [#14092](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14092).
-    - Refonte visuelle de l'interface d'administration avec l'utilisation de nouvelles tuiles de configuration pour une meilleure lisibilité.
-- **Accessibilité et Interface (UI) :** 
-    - Amélioration de l'accessibilité des composants de sélection (combobox/select) pour les technologies d'assistance [#14099](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14099).
-    - Intégration et mise à jour du widget "Gaufre" (La Suite) pour supporter le mode sombre et améliorer l'interactivité [#13262](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13262).
-    - Correction de divers problèmes de typographie et d'affichage des badges.
+- **Authentification et accès :**
+  - Généralisation de l'usage de ProConnect pour les administrateurs et les gestionnaires, avec une gestion stricte des invitations et des accès [#13779](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13779).
+  - Renforcement de la sécurité des comptes "Super Admin" via l'enrôlement obligatoire en OTP (code à usage unique) et un verrouillage automatique après plusieurs échecs.
+  - Amélioration de la gestion des sessions : expiration basée sur le rôle, enregistrement des sessions utilisateurs et déconnexion automatique lors d'un changement de mot de passe.
+- **Résilience des données (SIRET/RNA) :**
+  - Introduction d'un mode "dégradé" : en cas d'échec ou d'indisponibilité de l'API Entreprise, l'usager peut désormais poursuivre sa saisie sans être bloqué, avec un suivi spécifique pour l'instructeur.
+  - Amélioration de la clarté des messages d'erreur lors de l'utilisation des données externes.
+- **Gestion des dossiers et AMI (Appel à Manifestation d'Intérêt) :**
+  - Intégration du recueil du consentement usager pour les démarches AMI directement depuis le dossier.
+  - Ajout de nouveaux blocs d'information et de suivi du consentement dans l'interface usager.
+- **Outils pour les instructeurs :**
+  - Amélioration des capacités de filtrage, notamment par périodes de dates pour les colonnes de dossiers.
+  - Optimisation de la messagerie et de l'affichage de l'historique des événements d'un dossier.
 
 ### Évolutions techniques
-- **Sécurité et Isolation :** Implémentation d'un système de "sandboxing" (isolation via subprocess) pour le traitement des images (libvips) et l'exécution de commandes, afin de protéger l'infrastructure des données malveillantes [#13854](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13854).
-- **Optimisation des performances :** 
-    - Mise à jour vers Sidekiq 8 pour une meilleure gestion des tâches asynchrones [#13926](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13926).
-    - Optimisation des requêtes GraphQL via le préchargement (preloading) des données et le chargement à la demande des descripteurs de champs.
-    - Amélioration des index de base de données pour accélérer la recherche et le suivi de l'inactivité des utilisateurs.
-- **Refactoring et Architecture :** 
-    - Migration massive de templates HAML vers ERB pour une meilleure maintenance.
-    - Refonte de la logique de révision des dossiers pour assurer une meilleure intégrité des données lors des clones et des modifications.
-    - Nettoyage du moteur de recherche en optimisant l'utilisation des `tsvectors`.
-- **Infrastructure et CI/CD :** 
-    - Mise à jour de la chaîne de CI pour utiliser Ubuntu 24.04.
-    - Optimisation de la gestion des assets avec Vite et amélioration du cache des tests.
+- **Architecture et Performance :**
+  - Migration vers Sidekiq 8 pour une meilleure gestion des tâches de fond [#13926](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13926).
+  - Optimisation des performances de recherche via l'utilisation de `tsvector` et l'indexation des termes de recherche.
+  - Amélioration des temps de réponse grâce à un meilleur préchargement (preloading) des données (notices, templates, pièces jointes) dans les vues instructeurs.
+- **Sécurité et Robustesse :**
+  - Implémentation d'un sandboxing pour le traitement des images (via libvips) afin d'isoler les processus de décodage et protéger le serveur.
+  - Renforcement de la validation des URLs et des jetons (JWT) pour les API.
+  - Amélioration de la gestion des erreurs des API externes (Commune, Adresse, Entreprise) avec des mécanismes de retry et une meilleure distinction entre panne de service et rejet de jeton.
+- **Refactoring :**
+  - Migration massive de vues de HAML vers ERB pour une maintenance simplifiée.
+  - Création d'un composant `FixedFooterComponent` partagé pour uniformiser les pieds de page des formulaires et modales.
+  - Refonte de la gestion des composants de réglages via un nouveau composant `SettingsTileComponent`.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation technique (`AGENTS.md`) et des guides de configuration des variables d'environnement.
-- **Maintenance :** Nettoyage de code mort, suppression de vues obsolètes et de dépendances inutilisées.
+- **Accessibilité (a11y) :**
+  - Nombreuses corrections sur les composants de sélection (combobox/select) pour assurer une meilleure compatibilité avec les lecteurs d'écran.
+  - Amélioration de la structure des titres et de la gestion des contrastes dans les notifications et les menus.
+- **Documentation et Maintenance :**
+  - Mise à jour de la documentation technique (AGENTS.md) et de la FAQ.
+  - Nettoyage de code : suppression de nombreuses vues et dépendances obsolètes.
