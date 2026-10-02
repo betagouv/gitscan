@@ -110,10 +110,14 @@
 │   │       │   │   └── find_delivery.rb
 │   │       │   ├── show.rb
 │   │       │   └── states
-│   │       │       ├── update
+│   │       │       ├── shared
 │   │       │       │   ├── ensure_transition_allowed.rb
 │   │       │       │   └── write_state.rb
-│   │       │       └── update.rb
+│   │       │       ├── update.rb
+│   │       │       ├── update_with_reply
+│   │       │       │   ├── ensure_reply_accepted.rb
+│   │       │       │   └── write_reply.rb
+│   │       │       └── update_with_reply.rb
 │   │       └── sessions
 │   │           ├── create
 │   │           │   ├── check_authentication_level.rb
@@ -229,11 +233,13 @@
 │       │   ├── deliveries
 │       │   │   ├── _active_filters.html.erb
 │       │   │   ├── _archive_access.html.erb
+│       │   │   ├── _archive_link.html.erb
 │       │   │   ├── _attachments.html.erb
 │       │   │   ├── _filters.html.erb
 │       │   │   ├── _heading.html.erb
 │       │   │   ├── _pagination.html.erb
 │       │   │   ├── _receipt_callout.html.erb
+│       │   │   ├── _retrieval_callout.html.erb
 │       │   │   ├── _state_form.html.erb
 │       │   │   ├── _state_menu.html.erb
 │       │   │   ├── index.html.erb
@@ -419,6 +425,9 @@
 │   │   ├── portail_deliveries.rb
 │   │   ├── provider_sessions.rb
 │   │   └── subscriptions.rb
+│   ├── fixtures
+│   │   └── files
+│   │       └── decision.pdf
 │   ├── helpers
 │   │   └── portail
 │   │       ├── deliveries_helper_spec.rb
@@ -453,10 +462,14 @@
 │   │       │   │   └── find_delivery_spec.rb
 │   │       │   ├── show_spec.rb
 │   │       │   └── states
-│   │       │       ├── update
+│   │       │       ├── shared
 │   │       │       │   ├── ensure_transition_allowed_spec.rb
 │   │       │       │   └── write_state_spec.rb
-│   │       │       └── update_spec.rb
+│   │       │       ├── update_spec.rb
+│   │       │       ├── update_with_reply
+│   │       │       │   ├── ensure_reply_accepted_spec.rb
+│   │       │       │   └── write_reply_spec.rb
+│   │       │       └── update_with_reply_spec.rb
 │   │       └── sessions
 │   │           ├── create
 │   │           │   ├── check_authentication_level_spec.rb
@@ -585,4 +598,4 @@
     ├── .keep
     └── javascript
         └── .keep
-160 directories, 427 files
+164 directories, 436 files
