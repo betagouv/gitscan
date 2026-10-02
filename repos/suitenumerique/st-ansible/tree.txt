@@ -18,7 +18,10 @@
 │   ├── changelog.yaml
 │   ├── config.yaml
 │   └── fragments
-│       └── .gitkeep
+│       ├── .gitkeep
+│       ├── deps-messages.yml
+│       ├── keycloak-caddy.yml
+│       └── pymta.yml
 ├── cli
 │   ├── .dockerignore
 │   ├── CLAUDE.md
@@ -138,7 +141,8 @@
 │   │   ├── 02-workers.md
 │   │   ├── 03-mta-in.md
 │   │   ├── 04-socks-proxy.md
-│   │   └── 05-mpa.md
+│   │   ├── 05-mpa.md
+│   │   └── 06-pymta.md
 │   ├── 05-projects
 │   │   └── 01-projects.md
 │   ├── 06-docs
@@ -160,7 +164,7 @@
 │   │   │   ├── playbook_messages.yml
 │   │   │   ├── playbook_messages_workers.yml
 │   │   │   ├── playbook_mpa.yml
-│   │   │   ├── playbook_mtain.yml
+│   │   │   ├── playbook_pymta.yml
 │   │   │   └── playbook_socks_proxy.yml
 │   │   └── monitoring
 │   │       ├── drive.config.alloy.j2
@@ -352,6 +356,7 @@
     │   │   │   ├── messages.yml
     │   │   │   ├── mpa.yml
     │   │   │   ├── mta_in.yml
+    │   │   │   ├── pymta.yml
     │   │   │   ├── socks_proxy.yml
     │   │   │   └── workers.yml
     │   │   ├── deploy.yml
@@ -389,6 +394,9 @@
     │       │   │   └── worker-proxy.inc.j2
     │       │   └── unbound.conf.j2
     │       ├── mta_in
+    │       │   ├── compose.yaml.j2
+    │       │   └── env.j2
+    │       ├── pymta
     │       │   ├── compose.yaml.j2
     │       │   └── env.j2
     │       ├── socks_proxy
@@ -464,4 +472,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-121 directories, 345 files
+122 directories, 352 files

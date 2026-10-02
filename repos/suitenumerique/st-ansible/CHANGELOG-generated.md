@@ -1,16 +1,20 @@
-## Changelog : st-ansible (30 derniers jours, au 19 septembre 2026)
+## Changelog : st-ansible (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Le projet a franchi une étape importante avec la publication de la version 0.4.0. Les évolutions récentes apportent le support d'une nouvelle application (projects), améliorent l'expérience de gestion via l'outil en ligne de commande (CLI) et renforcent la sécurité des accès aux interfaces d'administration.
+Ce mois-ci a été marqué par la sortie de la version 0.4.0, apportant des fonctionnalités clés comme le support de l'application "Projets" et des améliorations significatives de l'outil en ligne de commande (CLI). La sécurité a également été renforcée, notamment par la gestion des accès aux interfaces d'administration, tandis que l'architecture réseau a été optimisée pour une meilleure intégration avec Caddy.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge de l'application "projects".
-- Amélioration de l'outil en ligne de commande (CLI) : optimisation du processus de mise à jour et ajout de la commande `rebootstrap`.
-- Renforcement de la sécurité : mise en place d'une liste blanche d'adresses IP (allowlist) pour l'accès aux interfaces d'administration Django via Caddy (concernant les services Drive et Meet).
+- **Nouvelles applications** : Ajout du support pour l'application "Projets".
+- **Amélioration de la CLI** : Optimisation du processus de mise à jour et ajout de la commande `rebootstrap`.
+- **Sécurité** : Mise en place d'une liste blanche d'adresses IP (allowlist) pour sécuriser l'accès aux interfaces d'administration Django (notamment pour Drive et Meet).
+- **Messagerie** : Introduction du nouveau composant `pymta` et dépréciation de l'ancien composant `mta-in`.
 
 ### Évolutions techniques
-- Migration de l'edge du service Drive vers Caddy.
-- Amélioration de la qualité du code de la CLI : nettoyage du code mort, suppression des doublons et application de nouvelles règles de linting (Ruff).
+- **Architecture & Réseau** : 
+    - Migration de l' "edge" vers Caddy pour le composant Drive.
+    - Support de Caddy en tant que proxy frontal pour l'image `messages-keycloak`.
+- **Qualité du code** : Refactoring de la CLI pour éliminer le code mort et les doublons, et application de nouvelles règles de qualité via Ruff.
+- **CI/CD** : Mise à jour des empreintes (digests) des GitHub Actions pour renforcer la sécurité des pipelines.
 
 ### Autres changements
-- Documentation de la procédure de publication (release) destinée aux mainteneurs.
+- **Documentation** : Publication de la procédure officielle de publication (release) destinée aux mainteneurs.
