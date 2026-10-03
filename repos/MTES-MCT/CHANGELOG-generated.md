@@ -1,28 +1,27 @@
-# Synthèse d'activité : MTES-MCT (du 10/09 au 17/09)
+# Synthèse d'activité : MTES-MCT (du 01/09 au 15/09/2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une modernisation profonde des interfaces et une montée en puissance des capacités d'analyse de données. L'intégration du Design System de l'État (DSFR) et les efforts de mise en conformité avec les normes d'accessibilité (RGAA) sur des projets comme [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) ou [vigieau](/repos/MTES-MCT/vigieau) améliorent significativement l'ergonomie et l'inclusion pour les utilisateurs finaux.
+L'activité de l'organisation cette semaine est marquée par une dynamique intense sur trois axes majeurs : l'amélioration de l'expérience utilisateur (UI/UX), la montée en puissance de l'intelligence artificielle et la sécurisation des données. De nombreux projets, notamment dans les domaines de l'urbanisme et de l'environnement, ont bénéficié de refontes graphiques et d'une mise en conformité accrue avec les normes d'accessibilité (RGAA).
 
-Parallèlement, de nouveaux usages émergent grâce à l'automatisation de processus clés, tels que l'autovalidation des dossiers dans [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) ou l'assistance pas-à-pas dans [otelo](/repos/MTES-MCT/otelo). Ces évolutions, couplées à des outils de reporting et de suivi enrichis ([vizeau](/repos/MTES-MCT/vizeau), [qualicharge](/repos/MTES-MCT/qualicharge)), offrent une meilleure aide à la décision pour les décideurs et les agents de terrain.
+On observe également une transition technologique importante avec la mise à jour de nombreux environnements de calcul (passage à R 4.6 et Python 3.13) et l'intégration de fonctionnalités d'automatisation, comme l'autovalidation de dossiers dans [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) ou l'assistance par IA dans [dossierfacile-demo-cnh](/repos/MTES-MCT/dossierfacile-demo-cnh). Ces évolutions visent à simplifier les parcours métiers tout en garantissant une plus grande fiabilité des données collectées.
 
 ## Sécurité
-- **Renforcement de l'authentification** : Mise en place de l'authentification à deux facteurs (2FA) dans [zero-logement-vacant-site-vitrine](/repos/MTES-MCT/zero-logement-vacant-site-vitrine) et introduction d'une authentification par token pour [ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner).
-- **Correction de vulnérabilités critiques** : Résolution de failles de type XSS et d'autorisation dans [envergo](/repos/MTES-MCT/envergo), et correction de vulnérabilités de type BOLA et déni de service (DoS) dans [mobilic-api](/repos/MTES-MCT/mobilic-api).
-- **Protection des données et des accès** : Sécurisation des webhooks dans [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) et amélioration de la gestion des clés API dans [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr).
-- **Maintenance de sécurité** : Résolution de vulnérabilités dans les dépendances pour [vigieau](/repos/MTES-MCT/vigieau).
+Plusieurs mesures de renforcement de la sécurité et de la protection des données ont été déployées :
+- **Authentification et accès** : Mise en place de l'authentification à deux facteurs (2FA) pour [zero-logement-vacant-site-vitrine](/repos/MTES-MCT/zero-logement-vacant-site-vitrine), sécurisation de l'accès Metabase via OAuth2 pour [mobilic-metabase](/repos/MTES-MCT/mobilic-metabase), et introduction d'une authentification par token pour [ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner).
+- **Protection contre les attaques et vulnérabilités** : Protection de l'API GraphQL contre les attaques par déni de service (DoS) et correction de vulnérabilités de type BOLA pour [mobilic-api](/repos/MTES-MCT/mobilic-api). Renforcement des en-têtes de sécurité (CSP) pour [dahlia](/repos/MTES-MCT/dahlia) et sécurisation des accès aux fichiers privés pour [envergo](/repos/MTES-MCT/envergo).
+- **Intégrité des données** : Prévention des injections SQL pour [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) et chiffrement de l'ID projet pour [potentiel](/repos/MTES-MCT/potentiel).
+- **Maintenance corrective** : Résolution de vulnérabilités dans les dépendances pour [vigieau](/repos/MTES-MCT/vigieau) et [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr).
 
 ## Autres changements notables
-- **Migrations technologiques majeures** : Passage à Inertia 3 et Maplibre 6 pour [vizeau](/repos/MTES-MCT/vizeau), migration vers React 18 pour [partaj](/repos/MTES-MCT/partaj), et mise à jour globale vers R 4.6.0 pour l'ensemble de la suite [parcours-r](/repos/MTES-MCT/parcours-r).
-- **Refontes d'interface (DSFR)** : Modernisation massive des interfaces utilisateur via le Design System de l'État pour [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles), [mobilic](/repos/MTES-MCT/mobilic) et [fonds-vert-espace-laureat](/repos/MTES-MCT/fonds-vert-espace-laureat).
-- **Intelligence Artificielle** : Déploiement du moteur de traitement documentaire DocIA (workflow v2) dans [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend).
-- **Infrastructure et Cloud** : Migration du stockage vers Scaleway S3 pour [envergo](/repos/MTES-MCT/envergo) et optimisation des pipelines de déploiement pour [prelevements-deau-web](/repos/MTES-MCT/prelevements-deau-web).
+- **Migrations technologiques majeures** : Passage à Inertia 3 et Maplibre 6 pour [vizeau](/repos/MTES-MCT/vizeau), mise à jour vers React 18 pour [partaj](/repos/MTES-MCT/partaj), et montée de version vers Spring Boot 4.1 pour [rapportnav2](/repos/MTES-MCT/rapportnav2).
+- **Évolutions des environnements de formation** : Mise à jour massive des environnements de calcul vers R 4.6 pour l'ensemble de la suite [parcours-r](/repos/MTES-MCT/parcours-r) et ses modules associés.
+- **Optimisations de performance** : Amélioration du rendu cartographique via `ST_asMVT` pour [monitorenv](/repos/MTES-MCT/monitorenv) et optimisation des processus d'anonymisation par mise en cache Redis pour [mobilic-api](/repos/MTES-MCT/mobilic-api).
+- **Refonte d'architecture** : Restructuration du parcours de scénarios pour [otelo](/repos/MTES-MCT/otelo) et passage à des fichiers LCI atomiques pour [ecobalyse-data](/repos/MTES-MCT/ecobalyse-data).
 
 ## Dépôts les plus actifs
-- [vizeau](/repos/MTES-MCT/vizeau) : Enrichissement des capacités d'exportation et migrations techniques majeures.
-- [mobilic](/repos/MTES-MCT/mobilic) : Renforcement du contrôle réglementaire et amélioration de l'expérience mobile.
-- [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) : Modernisation de l'interface (DSFR) et optimisation de la cartographie.
-- [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) : Introduction de l'autovalidation et de l'analyse documentaire par IA.
-- [monitorfish](/repos/MTES-MCT/monitorfish) : Fiabilisation de la saisie des rapports et enrichissement des données de navigation.
-- [otelo](/repos/MTES-MCT/otelo) : Lancement d'un assistant de simulation (wizard) et refonte de l'administration.
-- [parcours-r](/repos/MTES-MCT/parcours-r) : Mise à jour de l'infrastructure de formation et des environnements Docker.
-- [vigieau](/repos/MTES-MCT/vigieau) : Mise en conformité RGAA et fiabilisation de la reconstitution des données historiques.
+- [mobilic](/repos/MTES-MCT/mobilic) : Amélioration du suivi réglementaire des temps de repos et de l'expérience mobile.
+- [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) : Lancement de l'autovalidation des dossiers et renforcement du moteur d'IA documentaire.
+- [otelo](/repos/MTES-MCT/otelo) : Refonte de l'interface et introduction d'un assistant de simulation pas-à-pas.
+- [monitorfish](/repos/MTES-MCT/monitorfish) : Fiabilisation de la saisie des rapports de contrôle et de l'auto-sauvegarde.
+- [vigieau](/repos/MTES-MCT/vigieau) : Mise en conformité RGAA et gestion de la continuité des données historiques.
+- [parcours-r](/repos/MTES-MCT/parcours-r) : Mise à jour de l'infrastructure de déploiement et des environnements Docker pour la formation.

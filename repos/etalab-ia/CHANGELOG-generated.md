@@ -1,24 +1,24 @@
-# Synthèse d'activité : etalab-ia (du DD/MM au DD/MM)
+# Synthèse d'activité : etalab-ia (du 20/05 au 27/05)
 
 ## Résumé de l'activité
-L'activité de l'organisation a été marquée par une montée en puissance significative des capacités d'agents et des systèmes de RAG (Retrieval-Augmented Generation). Les projets [letta](/repos/etalab-ia/letta) et [letta-code](/repos/etalab-ia/letta-code) ont considérablement enrichi leurs fonctionnalités (planification, mémoire, sous-agents) et leur support de modèles, tandis que l'écosystème d'évaluation s'est consolidé avec le lancement de [eval-ocr-htr](/repos/etalab-ia/eval-ocr-htr) et l'amélioration de l'exportation des résultats vers Hugging Face pour [evalap](/repos/etalab-ia/evalap) et [eval-transcript](/repos/etalab-ia/eval-transcript).
+L'activité récente de l'organisation se concentre sur la maturation de l'écosystème RAG (Retrieval-Augmented Generation) et des agents intelligents. Les efforts ont permis de fluidifier le cycle de vie de la donnée, de l'ingestion automatisée avec [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) jusqu'à l'évaluation rigoureuse des performances via [evalap](/repos/etalab-ia/evalap) et [eval-transcript](/repos/etalab-ia/eval-transcript).
 
-Parallèlement, l'automatisation des flux de données s'est intensifiée, notamment via le pipeline reliant [mediatech](/repos/etalab-ia/mediatech) à l'API Albert grâce à [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api), facilitant ainsi l'accès à des données légales de haute qualité pour les applications d'IA.
+En parallèle, les outils de développement et d'interaction avec les LLM gagnent en robustesse et en fonctionnalités, notamment grâce aux évolutions de [letta](/repos/etalab-ia/letta) et [just-code](/repos/etalab-ia/just-code), qui introduisent des capacités de planification, de gestion de la mémoire et de sécurisation des environnements de travail.
 
 ## Sécurité
-- Renforcement de la protection des données par l'intégration de contrôles automatiques contre les fuites de secrets (via Gitleaks) dans [just-code](/repos/etalab-ia/just-code) et [eval-transcript](/repos/etalab-ia/eval-transcript).
-- Mise en place de mécanismes de vérification d'attestation pour garantir l'intégrité des composants dans [just-code](/repos/etalab-ia/just-code).
-- Amélioration de la gestion de la sécurité des clés API et de l'authentification dans [ragtime](/repos/etalab-ia/ragtime) et [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Renforcement de la conformité et de la sécurité avec l'intégration des guides de l'ANSSI et de la DINUM dans [skills](/repos/etalab-ia/skills).
+- Amélioration de la protection des données via la détection de secrets et un mode d'isolation complète dans [just-code](/repos/etalab-ia/just-code).
+- Gestion avancée des clés API (révocation, filtrage) et contrôle de consommation renforcé (rate limiting) dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Mise en place de vérifications de vulnérabilités en pré-push et de hooks de sécurité (gitleaks) dans [parcours-rag](/repos/etalab-ia/parcours-rag) et [eval-transcript](/repos/etalab-ia/eval-transcript).
 
 ## Autres changements notables
-- **Refonte logicielle majeure** : [just-code](/repos/etalab-ia/just-code) a migré vers un développement intégral en Go, offrant un binaire unique, un support Windows et des environnements d'exécution plus modernes (Lima, macOS).
-- **Évolution architecturale** : [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) adopte une "Clean Architecture" et intègre Langfuse pour une meilleure observabilité, tandis que [ragtime](/repos/etalab-ia/ragtime) (anciennement [rag-facile](/repos/etalab-ia/rag-facile)) a bénéficié d'une refonte pour une meilleure modularité et l'ajout de l'authentification via Supabase.
-- **Industrialisation des données** : Migration de la base de données vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et automatisation des mises à jour quotidiennes des dictionnaires dans [albert-data-collections](/repos/etalab-ia/albert-data-collections).
-- **Optimisation de l'infrastructure** : Amélioration des performances de déploiement pour [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) (support GPU H200) et [marker-serve](/repos/etalab-ia/marker-serve) (optimisation Docker).
+- Refonte architecturale et renommage de la plateforme RAG, passant de [rag-facile](/repos/etalab-ia/rag-facile) à [ragtime](/repos/etalab-ia/ragtime).
+- Migrations d'infrastructure majeures, incluant le passage vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et vers une "Clean Architecture" pour [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Passage à la version majeure 2.0.0 de [chartsgouv](/repos/etalab-ia/chartsgouv) pour une mise en conformité avec la version 6.1 du Design Système de l'État (DSFR).
+- Optimisation des processus de déploiement et de construction d'images Docker pour [marker-serve](/repos/etalab-ia/marker-serve) et [OpenGateRAG](/repos/etalab-ia/OpenGateRAG).
 
 ## Dépôts les plus actifs
-- [letta](/repos/etalab-ia/letta) : Évolutions majeures sur la gestion des conversations, les capacités d'agents et l'optimisation des prompts.
-- [lettabot](/repos/etalab-ia/lettabot) : Extension de l'intégration multi-plateformes (Slack, Discord, Telegram) et refonte du système de configuration.
-- [just-code](/repos/etalab-ia/just-code) : Transition vers le langage Go et élargissement de la compatibilité système (Windows, macOS).
-- [ragtime](/repos/etalab-ia/ragtime) : Refonte complète de l'architecture, ajout d'une interface CLI et intégration de Supabase.
-- [eval-transcript](/repos/etalab-ia/eval-transcript) : Ajout de nouveaux fournisseurs de transcription et implémentation d'un moteur de scoring par LLM.
+- [lettabot](/repos/etalab-ia/lettabot) : Extension massive des capacités d'intégration (Slack, Discord, Telegram) et refonte du système de configuration.
+- [letta](/repos/etalab-ia/letta) : Ajout de nouveaux modèles (Anthropic, Gemini) et de fonctionnalités avancées de gestion de la mémoire et des agents.
+- [rag-facile](/repos/etalab-ia/rag-facile) : Refonte complète de l'architecture interne et ajout de l'authentification via Supabase.
+- [evalap](/repos/etalab-ia/evalap) : Amélioration de l'exportation des résultats vers Hugging Face et de l'interface utilisateur de visualisation.
