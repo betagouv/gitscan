@@ -1,27 +1,21 @@
-## Changelog : apistration (30 derniers jours, au 25 septembre 2026)
+## Changelog : apistration (30 derniers jours, au 02 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par des évolutions majeures concernant la sécurité et l'extension des services. L'introduction d'une nouvelle version de l'introspection des jetons, le déploiement de preuves d'attestation vérifiables pour le service EAJE et l'enrichissement du catalogue des services "Associations" sont les points clés. Parallèlement, l'expérience d'administration a été améliorée grâce à une meilleure visibilité des erreurs et une interface plus intuitive.
+Ce mois-ci, Apistration a franchi des étapes importantes avec l'intégration de la gestion DataPass, une refonte majeure de la documentation des erreurs pour faciliter le travail des développeurs, et un renforcement significatif de la sécurité via de nouveaux mécanismes d'introspection de jetons et de contrôle d'accès par adresse IP.
 
 ### Évolutions fonctionnelles
-- **Nouvelle version de l'introspection de jetons** : Introduction d'un endpoint d'introspection en version 3, incluant la mise à jour des SDK officiels pour supporter cette nouvelle norme ([#415](https://github.com/datagouv/apistration/pull/415)).
-- **Attestations EAJE** : Mise en place d'un système de preuve d'attestation vérifiable, permettant le rendu de PDF signés et la possibilité de demander une preuve via un en-tête HTTP.
-- **Extension du service Associations** : Ajout de nouveaux points de terminaison pour les ressources "Associations" et mise à jour des SDK (v0.4.0).
-- **Améliorations de l'interface (Back-office & Portails)** :
-    - Optimisation visuelle du tableau de bord (succès affichés en vert).
-    - Amélioration des formulaires de requêtes manuelles : intégration de menus déroulants pour les valeurs énumérées OpenAPI et gestion facilitée des paramètres d'en-tête.
-    - Meilleure lisibilité des verdicts de vérification et alignement des champs de saisie.
-- **Transparence des erreurs** : Amélioration de la précision des messages d'erreur lors des échecs d'authentification (notamment pour les services INSEE et les jetons invalides) et affichage des réponses brutes des fournisseurs dans le back-office pour faciliter le diagnostic.
+- **Intégration de DataPass** : gestion complète du cycle de vie des demandes, authentification et consultation des formulaires associés [#455](https://github.com/datagouv/apistration/pull/455).
+- **Amélioration de la gestion des erreurs** : mise en place d'une nouvelle nomenclature des codes d'erreur, désormais exposée dans la documentation et les SDK pour simplifier le diagnostic des développeurs [#395](https://github.com/datagouv/apistration/pull/395), [#456](https://github.com/datagouv/apistration/pull/456).
+- **Évolutions EAJE** : support de l'attestation vérifiable via PDF et intégration de preuves d'attestation sécurisées dans les jetons [#427](https://github.com/datagouv/apistration/pull/427).
+- **Interface utilisateur** : ajout des logos institutionnels (data.gouv.fr et numerique.gouv.fr) en pied de page [#452](https://github.com/datagouv/apistration/pull/452) et optimisation de la lisibilité des tableaux de bord et des pages de vérification.
 
 ### Évolutions techniques
-- **Gestion de l'authentification** : Automatisation de la rotation des mots de passe pour le service INSEE et amélioration de la gestion des jetons par environnement.
-- **Architecture et compatibilité** : Mise à jour pour la compatibilité avec JSON 3 et ajustements des dépendances liées à Rails.
-- **DevOps et CI/CD** :
-    - Optimisation des workflows GitHub Actions via la variabilisation des cibles de déploiement.
-    - Amélioration de l'environnement de développement avec la gestion de bases de données de test via des *worktrees*.
-    - Résolution de problèmes de concurrence (race conditions) dans les pipelines de déploiement.
-- **Observabilité** : Amélioration du suivi des erreurs via Sentry et enrichissement des logs d'accès avec des codes d'erreur détaillés.
+- **Sécurité des jetons** : déploiement d'un nouvel endpoint d'introspection de jeton (v3) et mise à jour automatique des SDK officiels [#415](https://github.com/datagouv/apistration/pull/415).
+- **Contrôle d'accès renforcé** : imposition de plages d'adresses IP pour les jetons "éditeur" [#464](https://github.com/datagouv/apistration/pull/464) et obligation d'une date d'expiration pour tous les jetons [#459](https://github.com/datagouv/apistration/pull/459).
+- **Résilience de l'authentification** : automatisation de la rotation des mots de passe pour le fournisseur INSEE afin de limiter les risques d'incident [#383](https://github.com/datagouv/apistration/pull/383).
+- **Observabilité et conformité** : filtrage des données personnelles sensibles (dates et lieux de naissance) dans les logs et optimisation du suivi des erreurs via Sentry.
+- **Infrastructure et CI/CD** : amélioration des workflows de test (utilisation de worktrees) et flexibilité accrue des cibles de déploiement sur GitHub Actions.
 
 ### Autres changements
-- **Documentation** : Mises à jour importantes de la documentation technique pour les services INSEE, CNAV, MESRI et DGFiP.
-- **Nettoyage** : Suppression de composants obsolètes, ajustement des règles du fichier `robots.txt` pour les environnements hors production et nettoyage des fichiers de configuration.
+- **Documentation** : mises à jour importantes des guides techniques (CNAV, INSEE, procédures de rotation et nomenclature des erreurs).
+- **Maintenance** : nettoyage du code, suppression d'exemples de tests obsolètes et mise à jour de la compatibilité JSON 3.

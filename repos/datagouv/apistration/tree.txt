@@ -391,6 +391,8 @@
 │   ├── README.md
 │   ├── data
 │   │   ├── authorizations.yml
+│   │   ├── errors_entreprise.yml
+│   │   ├── errors_particulier.yml
 │   │   └── throttle.yml
 │   ├── endpoints
 │   │   ├── _swagger_shared
@@ -477,6 +479,7 @@
 │   │   │   └── v2_pole_emploi.yml
 │   │   ├── template.entreprise.yml.example
 │   │   └── template.particulier.yml.example
+│   ├── provider_quotas.md
 │   └── swagger
 │       ├── api_particulier_open_api_static
 │       │   └── v2.yaml
@@ -486,6 +489,7 @@
 ├── docs
 │   ├── cnav-api-secu.md
 │   ├── cnav-suivi-erreurs.md
+│   ├── nomenclature_erreurs.md
 │   └── rotation_mot_de_passe_insee.md
 ├── local-e2e
 │   └── insee
@@ -1356,11 +1360,11 @@
 │   │   │   ├── 200-seul-1_enfant-qf_caf_650.yaml
 │   │   │   ├── 200-seul-sans_enfant-qf_caf_2550.yaml
 │   │   │   ├── 200-usager-base-france_connect.yaml
-│   │   │   ├── 404-identite-cas-limite-erreur-phonetique.yaml
-│   │   │   ├── 404-identite-cas-limite-faute-de-frappe.yaml
-│   │   │   ├── 404-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml
-│   │   │   ├── 404-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml
 │   │   │   ├── 404.yaml
+│   │   │   ├── 422-identite-cas-limite-erreur-phonetique.yaml
+│   │   │   ├── 422-identite-cas-limite-faute-de-frappe.yaml
+│   │   │   ├── 422-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml
+│   │   │   ├── 422-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml
 │   │   │   ├── 429.yaml
 │   │   │   ├── 502.yaml
 │   │   │   ├── 504.yaml
@@ -1429,10 +1433,10 @@
 │   │   │   ├── 200_indetermine.yaml
 │   │   │   ├── 200_non_concerne.yaml
 │   │   │   ├── 200_pas_en_regle.yaml
-│   │   │   ├── 403_access_denied.yaml
 │   │   │   ├── 404.yaml
-│   │   │   ├── 429_quota_exceeded.yaml
-│   │   │   ├── 502_bad_gateway.yaml
+│   │   │   ├── 502_internal_error.yaml
+│   │   │   ├── 502_rate_limited.yaml
+│   │   │   ├── 502_unexpected_response.yaml
 │   │   │   ├── 504_gateway_timeout.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
@@ -1757,6 +1761,7 @@
 │   │   ├── controllers
 │   │   │   ├── api_controller.rb
 │   │   │   ├── api_entreprise
+│   │   │   │   ├── errors_nomenclature_controller.rb
 │   │   │   │   ├── inpi_proxy_controller.rb
 │   │   │   │   ├── ping_providers_controller.rb
 │   │   │   │   ├── privileges_controller.rb
@@ -1840,6 +1845,7 @@
 │   │   │   ├── api_entreprise_controller.rb
 │   │   │   ├── api_particulier
 │   │   │   │   ├── attestations_controller.rb
+│   │   │   │   ├── errors_nomenclature_controller.rb
 │   │   │   │   ├── france_connect_jwks_controller.rb
 │   │   │   │   ├── ping_providers_controller.rb
 │   │   │   │   ├── v2
@@ -1924,7 +1930,9 @@
 │   │   │   │   ├── cacheable.rb
 │   │   │   │   ├── can_expose_provider_response.rb
 │   │   │   │   ├── can_log_requests_info_for_debugging.rb
+│   │   │   │   ├── errors_nomenclature_declaration.rb
 │   │   │   │   ├── handle_editor_delegation.rb
+│   │   │   │   ├── handle_errors_nomenclature.rb
 │   │   │   │   ├── handle_ping_providers.rb
 │   │   │   │   ├── handle_tokens.rb
 │   │   │   │   ├── introspects_token.rb
@@ -1941,6 +1949,7 @@
 │   │   │   ├── abstract_specific_provider_error.rb
 │   │   │   ├── acoss_error.rb
 │   │   │   ├── ambiguous_delegation_error.rb
+│   │   │   ├── ants_error.rb
 │   │   │   ├── application_error.rb
 │   │   │   ├── bad_file_from_provider_error.rb
 │   │   │   ├── bad_request_error.rb
@@ -1958,7 +1967,6 @@
 │   │   │   ├── forbidden_error.rb
 │   │   │   ├── forbidden_ip_error.rb
 │   │   │   ├── gip_mds_error.rb
-│   │   │   ├── gone_error.rb
 │   │   │   ├── hosting_service_error.rb
 │   │   │   ├── infogreffe_error.rb
 │   │   │   ├── inpi_error.rb
@@ -1968,12 +1976,12 @@
 │   │   │   ├── invalid_recipient_error.rb
 │   │   │   ├── invalid_token_error.rb
 │   │   │   ├── maintenance_error.rb
+│   │   │   ├── men_error.rb
 │   │   │   ├── missing_mandatory_param_error.rb
 │   │   │   ├── network_error.rb
 │   │   │   ├── not_found_error.rb
 │   │   │   ├── not_implemented_yet_error.rb
 │   │   │   ├── open_api_example_error.rb
-│   │   │   ├── partial_content_error.rb
 │   │   │   ├── production_token_on_staging_error.rb
 │   │   │   ├── provider_*.rb  (9 files)
 │   │   │   ├── proxy_file_error.rb
@@ -1986,6 +1994,7 @@
 │   │   │   ├── unavailable_for_legal_reasons_error.rb
 │   │   │   ├── unexpected_redirection_error.rb
 │   │   │   ├── unknown_error.rb
+│   │   │   ├── unknown_operation_error.rb
 │   │   │   ├── unprocessable_entity_error.rb
 │   │   │   └── unsupported_api_version_error.rb
 │   │   ├── extractors
@@ -2121,9 +2130,11 @@
 │   │   │   │   ├── djepva
 │   │   │   │   │   └── document_url_helper.rb
 │   │   │   │   ├── host_methods_helpers.rb
+│   │   │   │   ├── month_validation.rb
 │   │   │   │   ├── resource_helpers.rb
 │   │   │   │   ├── use_ants_issued_ssl_certificate.rb
-│   │   │   │   └── validate_prenoms_format.rb
+│   │   │   │   ├── validate_prenoms_format.rb
+│   │   │   │   └── year_validation.rb
 │   │   │   ├── data_subvention
 │   │   │   │   └── subventions
 │   │   │   │       ├── authenticate.rb
@@ -2466,7 +2477,8 @@
 │   │   │   ├── string_normalizer.rb
 │   │   │   ├── swagger_data.rb
 │   │   │   ├── transliterator.rb
-│   │   │   └── user_resolution_middleware.rb
+│   │   │   ├── user_resolution_middleware.rb
+│   │   │   └── user_resolver.rb
 │   │   ├── models
 │   │   │   ├── access_log.rb
 │   │   │   ├── access_log_ping_view.rb
@@ -2523,7 +2535,8 @@
 │   │   │   │   ├── quotient_familial_v2.rb
 │   │   │   │   ├── retriever_organizer.rb
 │   │   │   │   ├── revenu_solidarite_active.rb
-│   │   │   │   └── validate_params.rb
+│   │   │   │   ├── validate_params.rb
+│   │   │   │   └── validate_transcogage_params.rb
 │   │   │   ├── cnetp
 │   │   │   │   ├── attestation_cotisations_conges_payes_chomage_intemperies
 │   │   │   │   │   └── upload_document.rb
@@ -2907,8 +2920,10 @@
 │   │   │   ├── encrypted_cache.rb
 │   │   │   ├── error_registry.rb
 │   │   │   ├── errors
+│   │   │   │   ├── baseline_errors.rb
 │   │   │   │   └── http_status_for_kind.rb
 │   │   │   ├── errors_backend.rb
+│   │   │   ├── errors_nomenclature.rb
 │   │   │   ├── extract_provider_from_path.rb
 │   │   │   ├── generate_code_sample_from_path.rb
 │   │   │   ├── hyperping_api.rb
@@ -2926,7 +2941,9 @@
 │   │   │   ├── open_api_schema_to_example.rb
 │   │   │   ├── openapi
 │   │   │   │   ├── error_examples_builder.rb
-│   │   │   │   └── error_injector.rb
+│   │   │   │   ├── error_injector.rb
+│   │   │   │   ├── errors_nomenclature_linker.rb
+│   │   │   │   └── errors_nomenclature_status_filler.rb
 │   │   │   ├── operation_id_resolver.rb
 │   │   │   ├── ping_service.rb
 │   │   │   ├── provider_raw_response.rb
@@ -2985,6 +3002,7 @@
 │   │   ├── brakeman
 │   │   ├── bundle
 │   │   ├── decrypt_gpg_json_params_from_unknown_provider_tracking_error.sh
+│   │   ├── generate_errors_nomenclature.rb
 │   │   ├── generate_jwt_token.rb
 │   │   ├── generate_swagger.sh
 │   │   ├── install.sh
@@ -3054,6 +3072,8 @@
 │   │   │   ├── production.rb
 │   │   │   └── test.rb
 │   │   ├── errors.yml
+│   │   ├── errors_entreprise.yml -> ../../commons/data/errors_entreprise.yml
+│   │   ├── errors_particulier.yml -> ../../commons/data/errors_particulier.yml
 │   │   ├── features.yml
 │   │   ├── forme_juridique.yml
 │   │   ├── gpg_public_keys_for_data_encryption
@@ -3071,6 +3091,7 @@
 │   │   │   ├── mime_types.rb
 │   │   │   ├── new_framework_defaults.rb
 │   │   │   ├── rack_attack.rb
+│   │   │   ├── rack_request_forwarded_priority.rb
 │   │   │   ├── rswag.rb
 │   │   │   ├── secret_key_base.rb
 │   │   │   ├── sentry.rb
@@ -3218,12 +3239,21 @@
 │   │   ├── acceptances
 │   │   │   ├── credentials_spec.rb
 │   │   │   ├── endpoints_with_test_case_spec.rb
+│   │   │   ├── error_codes_unicity_spec.rb
 │   │   │   ├── errors_config_valid_spec.rb
+│   │   │   ├── errors_nomenclature_conformity_spec.rb
+│   │   │   ├── errors_nomenclature_declarations_spec.rb
+│   │   │   ├── errors_nomenclature_delegations_spec.rb
+│   │   │   ├── errors_nomenclature_freshness_spec.rb
+│   │   │   ├── errors_nomenclature_layers_coverage_spec.rb
+│   │   │   ├── errors_nomenclature_platform_coverage_spec.rb
+│   │   │   ├── errors_nomenclature_swagger_coverage_spec.rb
 │   │   │   ├── expand_file_spec.rb
 │   │   │   ├── logstasher_custom_fields_spec.rb
 │   │   │   ├── maintenance_file_integrity_spec.rb
 │   │   │   ├── open_api_validation_spec.rb
-│   │   │   └── requests_debugging_integrity_spec.rb
+│   │   │   ├── requests_debugging_integrity_spec.rb
+│   │   │   └── swagger_provider_errors_spec.rb
 │   │   ├── builders
 │   │   │   ├── ants_dossier_immatriculation_soap_builder_spec.rb
 │   │   │   └── attestation_pdf_builder_spec.rb
@@ -3281,7 +3311,6 @@
 │   │   │   ├── expired_link_error_spec.rb
 │   │   │   ├── expired_token_error_spec.rb
 │   │   │   ├── gip_mds_error_spec.rb
-│   │   │   ├── gone_error_spec.rb
 │   │   │   ├── hosting_service_error_spec.rb
 │   │   │   ├── infogreffe_error_spec.rb
 │   │   │   ├── inpi_error_spec.rb
@@ -3296,7 +3325,6 @@
 │   │   │   ├── not_found_error_spec.rb
 │   │   │   ├── not_implemented_yet_error_spec.rb
 │   │   │   ├── open_api_example_error_spec.rb
-│   │   │   ├── partial_content_error_spec.rb
 │   │   │   ├── production_token_on_staging_error_spec.rb
 │   │   │   ├── provider_authentication_error_spec.rb
 │   │   │   ├── provider_conflict_error_spec.rb
@@ -4127,7 +4155,9 @@
 │   │   │   │   │   └── validate_params_generator_spec.rb
 │   │   │   │   └── validate_response
 │   │   │   │       └── validate_response_generator_spec.rb
+│   │   │   ├── ip_whitelist_spec.rb
 │   │   │   ├── jwt_user_spec.rb
+│   │   │   ├── nomenclature_coverage_guard_spec.rb
 │   │   │   ├── rate_limit_headers_middleware_spec.rb
 │   │   │   ├── referentials
 │   │   │   │   └── activite_principale_spec.rb
@@ -4137,7 +4167,8 @@
 │   │   │   ├── string_normalizer_spec.rb
 │   │   │   ├── swagger_data_spec.rb
 │   │   │   ├── transliterator_spec.rb
-│   │   │   └── user_resolution_middleware_spec.rb
+│   │   │   ├── user_resolution_middleware_spec.rb
+│   │   │   └── validate_response_emission_guard_spec.rb
 │   │   ├── models
 │   │   │   ├── authorization_request_security_settings_spec.rb
 │   │   │   ├── editor_delegation_spec.rb
@@ -4329,6 +4360,7 @@
 │   │   ├── rails_helper.rb
 │   │   ├── requests
 │   │   │   ├── api_entreprise
+│   │   │   │   ├── errors_nomenclature_spec.rb
 │   │   │   │   ├── ping_spec.rb
 │   │   │   │   ├── pings_spec.rb
 │   │   │   │   ├── privileges_spec.rb
@@ -4466,6 +4498,7 @@
 │   │   │   │               └── v4_spec.rb
 │   │   │   ├── api_particulier
 │   │   │   │   ├── attestations_spec.rb
+│   │   │   │   ├── errors_nomenclature_spec.rb
 │   │   │   │   ├── legacy_caf_famille_route_spec.rb
 │   │   │   │   ├── ping_spec.rb
 │   │   │   │   ├── pings_spec.rb
@@ -4551,6 +4584,7 @@
 │   │   │   ├── api_particulier_recipient_management_spec.rb
 │   │   │   ├── api_particulier_swagger_files_spec.rb
 │   │   │   ├── api_particulier_tracking_encrypted_params_spec.rb
+│   │   │   ├── caller_request_id_spec.rb
 │   │   │   ├── cors_spec.rb
 │   │   │   ├── custom_rate_limit_spec.rb
 │   │   │   ├── editor_delegation_spec.rb
@@ -4564,7 +4598,9 @@
 │   │   │   ├── rack_attack_for_api_entreprise_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_v2_spec.rb
+│   │   │   ├── rack_attack_spec.rb
 │   │   │   ├── throttle_override_spec.rb
+│   │   │   ├── token_resolution_consistency_spec.rb
 │   │   │   └── wrong_environment_token_spec.rb
 │   │   ├── serializers
 │   │   │   ├── api_entreprise
@@ -4656,7 +4692,9 @@
 │   │   │   ├── open_api_schema_to_example_spec.rb
 │   │   │   ├── openapi
 │   │   │   │   ├── error_examples_builder_spec.rb
-│   │   │   │   └── error_injector_spec.rb
+│   │   │   │   ├── error_injector_spec.rb
+│   │   │   │   ├── errors_nomenclature_linker_spec.rb
+│   │   │   │   └── errors_nomenclature_status_filler_spec.rb
 │   │   │   ├── ping_service_spec.rb
 │   │   │   ├── provider_raw_response_spec.rb
 │   │   │   ├── provider_response_debugging_service_spec.rb
@@ -4676,6 +4714,7 @@
 │   │   │   ├── activate_strict_vcr_request_matching_for_v3.rb
 │   │   │   ├── custom_cops
 │   │   │   │   └── open_payload_file.rb
+│   │   │   ├── fresh_user_resolution_per_controller_request.rb
 │   │   │   ├── helpers
 │   │   │   │   ├── authentication_stub.rb
 │   │   │   │   ├── common_errors_messages_helpers.rb
@@ -4703,6 +4742,8 @@
 │   │   │   │   ├── json_errors.rb
 │   │   │   │   ├── negated_matchers.rb
 │   │   │   │   └── self_hosted_doc.rb
+│   │   │   ├── nomenclature_coverage_guard.rb
+│   │   │   ├── nomenclature_walk.rb
 │   │   │   ├── provider_stubs
 │   │   │   │   ├── ants.rb
 │   │   │   │   ├── banque_de_france.rb
@@ -4734,7 +4775,10 @@
 │   │   │   ├── rswag_parameters_api_particulier.rb
 │   │   │   ├── rswag_resources_payloads.rb
 │   │   │   ├── shared_examples
+│   │   │   │   ├── birth_date_validator.rb
+│   │   │   │   ├── cnav_response_validator.rb
 │   │   │   │   ├── errors.rb
+│   │   │   │   ├── infogreffe_response_validator.rb
 │   │   │   │   ├── make_request_mocking_params.rb
 │   │   │   │   ├── mcp.rb
 │   │   │   │   ├── policies.rb
@@ -5479,6 +5523,9 @@
 │   │   │   │   │       ├── sun-fill.svg
 │   │   │   │   │       └── sun-line.svg
 │   │   │   │   ├── loading.gif
+│   │   │   │   ├── logos
+│   │   │   │   │   ├── datagouv.svg
+│   │   │   │   │   └── numerique-gouv.svg
 │   │   │   │   ├── mailers
 │   │   │   │   │   ├── api_entreprise
 │   │   │   │   │   │   └── header-logo-api.png
@@ -5576,6 +5623,7 @@
 │   │   │       │   ├── circles.scss
 │   │   │       │   ├── code.scss
 │   │   │       │   ├── endpoint_card.scss
+│   │   │       │   ├── footer_brand.scss
 │   │   │       │   ├── loader.scss
 │   │   │       │   ├── markdown_to_html.scss
 │   │   │       │   ├── modal.scss
@@ -5606,6 +5654,8 @@
 │   │   │   ├── abstract_hubee_api_client.rb
 │   │   │   ├── abstract_insee_api_client.rb
 │   │   │   ├── datagouv_api_client.rb
+│   │   │   ├── datapass_api_authentication.rb
+│   │   │   ├── datapass_api_client.rb
 │   │   │   ├── formulaire_qf_api_client.rb
 │   │   │   ├── hubee_api_authentication.rb
 │   │   │   ├── hubee_api_client.rb
@@ -5828,6 +5878,7 @@
 │   │   │   │           └── delegation_serializer.rb
 │   │   │   ├── editor_api_domain_constraint.rb
 │   │   │   ├── hub_signature.rb
+│   │   │   ├── personal_data_anonymizer.rb
 │   │   │   ├── robots_txt.rb
 │   │   │   └── seeds.rb
 │   │   ├── mailers
@@ -5940,14 +5991,17 @@
 │   │   │   └── provider
 │   │   │       └── dashboard_query.rb
 │   │   ├── services
+│   │   │   ├── abstract_errors_nomenclature.rb
 │   │   │   ├── abstract_open_api_definition.rb
 │   │   │   ├── access_logs_counts.rb
 │   │   │   ├── admin_api_token.rb
 │   │   │   ├── announcement_banner.rb
 │   │   │   ├── api_entreprise
+│   │   │   │   ├── errors_nomenclature.rb
 │   │   │   │   └── open_api_definition.rb
 │   │   │   ├── api_particulier
 │   │   │   │   ├── attestation_token.rb
+│   │   │   │   ├── errors_nomenclature.rb
 │   │   │   │   ├── open_api_definition.rb
 │   │   │   │   └── open_api_definition_v2.rb
 │   │   │   ├── conditional_cache_delete.rb
@@ -6254,15 +6308,16 @@
 │   │           ├── _alerts.html.erb
 │   │           ├── _announcement_banner.html.erb
 │   │           ├── _common_head_scripts.html.erb
-│   │           ├── _development_warning.html.erb
 │   │           ├── _faq_sidemenu_list_item.html.erb
 │   │           ├── _favicons.html.erb
+│   │           ├── _footer_brand.html.erb
 │   │           ├── _impersonate.html.erb
 │   │           ├── _loader.html.erb
 │   │           ├── _matomo.html.erb
 │   │           ├── _metabase.html.erb
 │   │           ├── _modal.html.erb
 │   │           ├── _newsletter_banner.html.erb
+│   │           ├── _test_environment_banner.html.erb
 │   │           ├── _tooltip.html.erb
 │   │           ├── admin
 │   │           │   └── _header.html.erb
@@ -6310,6 +6365,8 @@
 │   │           ├── changelogs
 │   │           │   ├── _subscription.html.erb
 │   │           │   └── index.html.erb
+│   │           ├── documentation
+│   │           │   └── _errors_nomenclature.html.erb
 │   │           ├── dsfr_chart
 │   │           │   ├── _bar.html.erb
 │   │           │   ├── _kpi.html.erb
@@ -6318,6 +6375,8 @@
 │   │           │   └── _header.html.erb
 │   │           ├── endpoints
 │   │           │   ├── _property.html.erb
+│   │           │   ├── _provider_errors.html.erb
+│   │           │   ├── _provider_errors_by_status.html.erb
 │   │           │   ├── _use_cases.html.erb
 │   │           │   ├── example.html.erb
 │   │           │   └── status.html.erb
@@ -6420,6 +6479,8 @@
 │   │   │   ├── sandbox.rb
 │   │   │   ├── staging.rb
 │   │   │   └── test.rb
+│   │   ├── errors_entreprise.yml -> ../../commons/data/errors_entreprise.yml
+│   │   ├── errors_particulier.yml -> ../../commons/data/errors_particulier.yml
 │   │   ├── i18n-tasks.yml
 │   │   ├── initializers
 │   │   │   ├── api_base_urls.rb
@@ -6445,6 +6506,7 @@
 │   │   │   ├── new_framework_defaults_7_0.rb
 │   │   │   ├── omniauth.rb
 │   │   │   ├── permissions_policy.rb
+│   │   │   ├── rack_request_forwarded_priority.rb
 │   │   │   ├── secret_key_base.rb
 │   │   │   ├── sentry.rb
 │   │   │   ├── sitemap_generator.rb
@@ -7215,6 +7277,8 @@
 │   │   │   └── expand_file_spec.rb
 │   │   ├── clients
 │   │   │   ├── datagouv_api_client_spec.rb
+│   │   │   ├── datapass_api_authentication_spec.rb
+│   │   │   ├── datapass_api_client_spec.rb
 │   │   │   ├── formulaire_qf_api_client_spec.rb
 │   │   │   ├── hubee_api_authentication_spec.rb
 │   │   │   ├── hubee_api_client_spec.rb
@@ -7331,12 +7395,16 @@
 │   │   │   ├── prolong_token_build_spec.rb
 │   │   │   ├── prolong_token_spec.rb
 │   │   │   ├── prolong_token_start_spec.rb
-│   │   │   └── provider
-│   │   │       ├── access_spec.rb
-│   │   │       ├── csv_exports_spec.rb
-│   │   │       ├── habilitations_filter_spec.rb
-│   │   │       └── navigation_spec.rb
+│   │   │   ├── provider
+│   │   │   │   ├── access_spec.rb
+│   │   │   │   ├── csv_exports_spec.rb
+│   │   │   │   ├── habilitations_filter_spec.rb
+│   │   │   │   └── navigation_spec.rb
+│   │   │   └── test_environment_banner_spec.rb
 │   │   ├── fixtures
+│   │   │   ├── datapass_api
+│   │   │   │   ├── demande.json
+│   │   │   │   └── formulaires.json
 │   │   │   ├── insee
 │   │   │   │   ├── 12000101100010.json
 │   │   │   │   ├── 13002526500013.json
@@ -7415,6 +7483,7 @@
 │   │   │   │       └── v1
 │   │   │   │           └── delegation_serializer_spec.rb
 │   │   │   ├── hub_signature_spec.rb
+│   │   │   ├── personal_data_anonymizer_spec.rb
 │   │   │   ├── seeds_spec.rb
 │   │   │   └── tasks
 │   │   │       └── sitemap_spec.rb
@@ -7603,4 +7672,4 @@
 │       └── .keep
 └── worktrees
     └── .gitkeep
-1528 directories, 6408 files
+1531 directories, 6474 files
