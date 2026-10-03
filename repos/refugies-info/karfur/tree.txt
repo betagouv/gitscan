@@ -29,7 +29,6 @@
 │   └── workflows
 │       ├── checks.yaml
 │       ├── chromatic.yaml
-│       ├── letta.yml
 │       ├── migrate_production.yaml
 │       ├── migrate_staging.yaml
 │       ├── release-please.yml
@@ -102,6 +101,7 @@
 ├── .worktreeinclude
 ├── AGENTS.md
 ├── CHANGELOG.md
+├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── LICENSE.md
 ├── README.md
@@ -270,7 +270,27 @@
 │   │   │   │   │   ├── ri-rencontre.png
 │   │   │   │   │   └── ri-sante.png
 │   │   │   │   ├── sources
-│   │   │   │   │   └── carif-oref-logo.png
+│   │   │   │   │   ├── carif-oref-auvergne-rhone-alpes.webp
+│   │   │   │   │   ├── carif-oref-bourgogne-franche-comte.webp
+│   │   │   │   │   ├── carif-oref-bretagne.webp
+│   │   │   │   │   ├── carif-oref-centre-val-de-loire.webp
+│   │   │   │   │   ├── carif-oref-corse.webp
+│   │   │   │   │   ├── carif-oref-grand-est.webp
+│   │   │   │   │   ├── carif-oref-guadeloupe.webp
+│   │   │   │   │   ├── carif-oref-guyane.webp
+│   │   │   │   │   ├── carif-oref-hauts-de-france.webp
+│   │   │   │   │   ├── carif-oref-ile-de-france.webp
+│   │   │   │   │   ├── carif-oref-la-reunion.webp
+│   │   │   │   │   ├── carif-oref-logo.png
+│   │   │   │   │   ├── carif-oref-martinique.webp
+│   │   │   │   │   ├── carif-oref-mayotte.webp
+│   │   │   │   │   ├── carif-oref-normandie.webp
+│   │   │   │   │   ├── carif-oref-nouvelle-aquitaine.webp
+│   │   │   │   │   ├── carif-oref-nouvelle-caledonie.webp
+│   │   │   │   │   ├── carif-oref-occitanie.webp
+│   │   │   │   │   ├── carif-oref-pays-de-la-loire.webp
+│   │   │   │   │   ├── carif-oref-provence-alpes-cote-d-azur.webp
+│   │   │   │   │   └── carif-oref-saint-martin.webp
 │   │   │   │   └── themes
 │   │   │   │       ├── icon_administratif.svg
 │   │   │   │       ├── icon_famille.svg
@@ -375,6 +395,7 @@
 │   │   │   │   ├── counts-mongo-vs-legacy.randomized.test.ts
 │   │   │   │   ├── counts-mongo-vs-legacy.seeded.test.ts
 │   │   │   │   ├── index.test.tsx
+│   │   │   │   ├── mentions-legales.test.tsx
 │   │   │   │   ├── publier.test.tsx
 │   │   │   │   ├── recherche.test.tsx
 │   │   │   │   └── traduire.test.tsx
@@ -725,6 +746,8 @@
 │   │   │   │       │   ├── card-icon-bubble.svg
 │   │   │   │       │   ├── card-icon-calendar.svg
 │   │   │   │       │   └── card-icon-check.svg
+│   │   │   │       ├── learn-french
+│   │   │   │       │   └── hero-illu.svg
 │   │   │   │       ├── mission-et-impact
 │   │   │   │       │   ├── community-ambassadeurs.png
 │   │   │   │       │   ├── community-cda.png
@@ -1220,6 +1243,8 @@
 │   │   │   │   │   │   │   │   ├── functions.ts
 │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   ├── Contributors.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── Contributors.test.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── Edition
 │   │   │   │   │   │   │   ├── AccordionsEdit
@@ -1314,6 +1339,7 @@
 │   │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   │   ├── SaveErrorModal
 │   │   │   │   │   │   │   │   │   ├── SaveErrorModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── SaveErrorModal.test.tsx
 │   │   │   │   │   │   │   │   │   ├── SaveErrorModal.tsx
 │   │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   │   ├── StepBar
@@ -1686,6 +1712,7 @@
 │   │   │   │   │   │       │   ├── WhiteWave.tsx
 │   │   │   │   │   │       │   └── index.ts
 │   │   │   │   │   │       ├── MobileApp
+│   │   │   │   │   │       │   ├── MobileApp.module.scss
 │   │   │   │   │   │       │   ├── MobileApp.tsx
 │   │   │   │   │   │       │   ├── MobileAppSmsForm
 │   │   │   │   │   │       │   │   ├── MobileAppSmsForm.tsx
@@ -1701,10 +1728,49 @@
 │   │   │   │   │   │       │   ├── WhyAccordions.tsx
 │   │   │   │   │   │       │   └── index.ts
 │   │   │   │   │   │       └── index.ts
-│   │   │   │   │   ├── recherche
-│   │   │   │   │   │   ├── HelpNotice
-│   │   │   │   │   │   │   ├── HelpNotice.tsx
+│   │   │   │   │   ├── learnFrench
+│   │   │   │   │   │   ├── CourseResults
+│   │   │   │   │   │   │   ├── CourseCard.tsx
+│   │   │   │   │   │   │   ├── CourseResults.tsx
+│   │   │   │   │   │   │   ├── MobileShareButton.tsx
+│   │   │   │   │   │   │   ├── PrintableCourseList.tsx
+│   │   │   │   │   │   │   ├── ShareResultsButtons.tsx
+│   │   │   │   │   │   │   ├── SingleLineTags.tsx
 │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── CourseTabs
+│   │   │   │   │   │   │   ├── CourseTabs.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── FiltersSidebar
+│   │   │   │   │   │   │   ├── FilterPill.tsx
+│   │   │   │   │   │   │   ├── FiltersSidebar.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── FullScreenPanel
+│   │   │   │   │   │   │   ├── FullScreenPanel.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Hero
+│   │   │   │   │   │   │   ├── Hero.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── HowToLearnFrench
+│   │   │   │   │   │   │   ├── HowToCard.tsx
+│   │   │   │   │   │   │   ├── HowToLearnFrench.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── LocationFilter
+│   │   │   │   │   │   │   ├── LocationFilter.tsx
+│   │   │   │   │   │   │   ├── LocationFilterButton.tsx
+│   │   │   │   │   │   │   ├── LocationPanel.tsx
+│   │   │   │   │   │   │   ├── LocationPopoverBody.tsx
+│   │   │   │   │   │   │   ├── UseMyPositionButton.tsx
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   └── useLocationSelection.ts
+│   │   │   │   │   │   ├── MobileToolbar
+│   │   │   │   │   │   │   ├── MobileToolbar.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SearchBar
+│   │   │   │   │   │   │   ├── SearchBar.module.css
+│   │   │   │   │   │   │   ├── SearchBar.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── recherche
 │   │   │   │   │   │   ├── LocationMenu
 │   │   │   │   │   │   │   ├── GeoLocationMenuItem.module.css
 │   │   │   │   │   │   │   ├── GeoLocationMenuItem.tsx
@@ -1841,6 +1907,8 @@
 │   │   │   │   │       │   ├── SectionTeam.tsx
 │   │   │   │   │       │   ├── SectionUsers.tsx
 │   │   │   │   │       │   ├── TeamCard.tsx
+│   │   │   │   │       │   ├── __tests__
+│   │   │   │   │       │   │   └── SectionImpact.test.tsx
 │   │   │   │   │       │   └── index.ts
 │   │   │   │   │       ├── publier
 │   │   │   │   │       │   ├── CardExample
@@ -1856,8 +1924,6 @@
 │   │   │   │   │               └── index.ts
 │   │   │   │   ├── Seo.tsx
 │   │   │   │   ├── UI
-│   │   │   │   │   ├── AccessibleNavigation
-│   │   │   │   │   │   └── AccessibleNavigation.tsx
 │   │   │   │   │   ├── AdminNeedButton
 │   │   │   │   │   │   ├── AdminNeedButton.module.scss
 │   │   │   │   │   │   ├── AdminNeedButton.tsx
@@ -2046,6 +2112,9 @@
 │   │   │   │   │   ├── Toast
 │   │   │   │   │   │   ├── Toast.module.scss
 │   │   │   │   │   │   ├── Toast.tsx
+│   │   │   │   │   │   ├── ToastPresence.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── ToastPresence.test.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── Tooltip
 │   │   │   │   │   │   ├── Tooltip.module.scss
@@ -2056,6 +2125,8 @@
 │   │   │   │   │   ├── EditDepartments
 │   │   │   │   │   │   ├── EditDepartments.module.scss
 │   │   │   │   │   │   ├── EditDepartments.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── EditDepartments.a11y.test.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── EditLanguage
 │   │   │   │   │   │   ├── EditLanguage.module.scss
@@ -2073,6 +2144,9 @@
 │   │   │   │   │   │   ├── ForgotPasswordMailSent.module.scss
 │   │   │   │   │   │   ├── ForgotPasswordMailSent.tsx
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── PasswordCriteriaLabel
+│   │   │   │   │   │   ├── PasswordCriteriaLabel.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── constants
@@ -2081,13 +2155,17 @@
 │   │   │   │   ├── custom-icons.css
 │   │   │   │   └── index.css
 │   │   │   ├── data
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── carifOrefCenters.test.ts
 │   │   │   │   ├── activatedLanguages.ts
 │   │   │   │   ├── activities.ts
 │   │   │   │   ├── agirOperators.ts
 │   │   │   │   ├── annuaireStepColors.ts
+│   │   │   │   ├── carifOrefCenters.ts
 │   │   │   │   ├── contentSources.ts
 │   │   │   │   ├── days.ts
 │   │   │   │   ├── departments.ts
+│   │   │   │   ├── learnFrench.ts
 │   │   │   │   ├── searchFilters.ts
 │   │   │   │   ├── storeLinks.ts
 │   │   │   │   ├── structurePartners.ts
@@ -2106,6 +2184,12 @@
 │   │   │   │   │   │   └── useDispositifTranslation.ts
 │   │   │   │   │   └── useDispositifTts.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── learnFrench
+│   │   │   │   │   ├── useActiveFilters.ts
+│   │   │   │   │   ├── useAutoSwitchToOnDemandTab.ts
+│   │   │   │   │   ├── useCourseSearch.ts
+│   │   │   │   │   ├── useFrenchCourseFilters.ts
+│   │   │   │   │   └── useIsDesktopLayout.ts
 │   │   │   │   ├── useAnonymousUserId.ts
 │   │   │   │   ├── useAuth
 │   │   │   │   │   ├── index.ts
@@ -2130,23 +2214,34 @@
 │   │   │   │   │   └── useParamsFromHistory.ts
 │   │   │   │   ├── useRTL.ts
 │   │   │   │   ├── useRegisterFlow.ts
+│   │   │   │   ├── useRouteAnnouncement.test.tsx
+│   │   │   │   ├── useRouteAnnouncement.ts
 │   │   │   │   ├── useRouterLocale.ts
 │   │   │   │   ├── useRtriLinks.ts
 │   │   │   │   ├── useSanitizedContent.ts
 │   │   │   │   ├── useScrollDirection.ts
+│   │   │   │   ├── useScrollToAnchor.test.tsx
 │   │   │   │   ├── useScrollToAnchor.ts
 │   │   │   │   ├── useScrolledBottomEvent.ts
 │   │   │   │   ├── useSearchEventName.ts
 │   │   │   │   ├── useSendSms.ts
+│   │   │   │   ├── useStopAudioOnLocaleChange.test.tsx
+│   │   │   │   ├── useStopAudioOnLocaleChange.ts
 │   │   │   │   ├── useStyleDisabled.ts
+│   │   │   │   ├── useSupportAvailability.ts
 │   │   │   │   ├── useThemeIcon.ts
+│   │   │   │   ├── useThrottledEmail.ts
 │   │   │   │   ├── useUniqueId.ts
 │   │   │   │   ├── useUser.ts
 │   │   │   │   └── useUtmz.ts
+│   │   │   ├── instrumentation-client.ts
+│   │   │   ├── instrumentation.ts
 │   │   │   ├── lib
 │   │   │   │   ├── agentDuplicateSearch.test.ts
 │   │   │   │   ├── agentDuplicateSearch.ts
 │   │   │   │   ├── agirOperators.ts
+│   │   │   │   ├── autosaveError.test.ts
+│   │   │   │   ├── autosaveError.ts
 │   │   │   │   ├── classname.test.ts
 │   │   │   │   ├── classname.ts
 │   │   │   │   ├── colors.ts
@@ -2155,8 +2250,12 @@
 │   │   │   │   ├── decodeHTMLEntities.ts
 │   │   │   │   ├── departments.ts
 │   │   │   │   ├── dispositif
+│   │   │   │   │   ├── canEdit.test.ts
 │   │   │   │   │   ├── canEdit.ts
+│   │   │   │   │   ├── canTranslate.test.ts
 │   │   │   │   │   ├── canTranslate.ts
+│   │   │   │   │   ├── getDispositifMarkdown.test.ts
+│   │   │   │   │   ├── getDispositifMarkdown.ts
 │   │   │   │   │   ├── getMetadataText.ts
 │   │   │   │   │   ├── getTranslationPageData.ts
 │   │   │   │   │   ├── index.ts
@@ -2179,9 +2278,21 @@
 │   │   │   │   ├── handleApiErrors.ts
 │   │   │   │   ├── hasRole.test.ts
 │   │   │   │   ├── hasRole.ts
+│   │   │   │   ├── humanizeRoutePattern.test.ts
+│   │   │   │   ├── humanizeRoutePattern.ts
 │   │   │   │   ├── index.test.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── isContentPage.ts
+│   │   │   │   ├── learnFrench
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── summarizeLocations.test.ts
+│   │   │   │   │   ├── courseSessions.test.ts
+│   │   │   │   │   ├── courseSessions.ts
+│   │   │   │   │   ├── frenchLevelLabels.ts
+│   │   │   │   │   ├── needLabels.ts
+│   │   │   │   │   ├── poiLocation.test.ts
+│   │   │   │   │   ├── poiLocation.ts
+│   │   │   │   │   └── summarizeLocations.ts
 │   │   │   │   ├── loginRedirect.test.ts
 │   │   │   │   ├── loginRedirect.ts
 │   │   │   │   ├── markdown
@@ -2192,12 +2303,14 @@
 │   │   │   │   ├── readAudio.ts
 │   │   │   │   ├── recherche
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── decodeUrlQuery.test.ts
 │   │   │   │   │   │   └── resultsDisplayRules.test.ts
 │   │   │   │   │   ├── buildUrlQuery.ts
 │   │   │   │   │   ├── decodeUrlQuery
 │   │   │   │   │   │   ├── decodeUrlQuery.compatibility.ts
 │   │   │   │   │   │   ├── decodeUrlQuery.ts
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── queryParam.ts
 │   │   │   │   │   ├── filterContents.ts
 │   │   │   │   │   ├── functions.ts
 │   │   │   │   │   ├── generateLightResults.ts
@@ -2230,6 +2343,7 @@
 │   │   │   │   ├── 404.tsx
 │   │   │   │   ├── _app.tsx
 │   │   │   │   ├── _document.tsx
+│   │   │   │   ├── _error.tsx
 │   │   │   │   ├── agir.tsx
 │   │   │   │   ├── api
 │   │   │   │   │   ├── agent
@@ -2296,7 +2410,10 @@
 │   │   │   │   ├── sitemap-index.xml
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── sitemap.tsx
-│   │   │   │   └── traduire.tsx
+│   │   │   │   ├── traduire.tsx
+│   │   │   │   ├── trouver-cours-francais
+│   │   │   │   │   └── print.tsx
+│   │   │   │   └── trouver-cours-francais.tsx
 │   │   │   ├── react-app-env.d.ts
 │   │   │   ├── routes.ts
 │   │   │   ├── scss
@@ -2543,6 +2660,7 @@
 │   │   ├── example-env-file.env
 │   │   ├── firebase.json
 │   │   ├── index.js
+│   │   ├── instrument.ts
 │   │   ├── jest.config.js
 │   │   ├── jest.setup.js
 │   │   ├── metro.config.js
@@ -2904,10 +3022,14 @@
 │   │   │   │   └── wrapWithProvidersAndRender.tsx
 │   │   │   ├── libs
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── getScreenFromUrl.test.tsx
+│   │   │   │   │   ├── getBottomInset.test.ts
+│   │   │   │   │   ├── getScreenFromUrl.test.tsx
+│   │   │   │   │   └── ttsReader.test.ts
+│   │   │   │   ├── audioSession.ts
 │   │   │   │   ├── backButton.ts
 │   │   │   │   ├── content.tsx
 │   │   │   │   ├── generateId.ts
+│   │   │   │   ├── getBottomInset.ts
 │   │   │   │   ├── getEnvironment.ts
 │   │   │   │   ├── getImageUri.ts
 │   │   │   │   ├── getScreenFromUrl.ts
@@ -3346,11 +3468,15 @@
 │   │   │   │   │   ├── sendgrid.types.ts
 │   │   │   │   │   └── templatesIds.ts
 │   │   │   │   ├── slack
+│   │   │   │   │   ├── sendSlackNotif.test.ts
 │   │   │   │   │   └── sendSlackNotif.ts
 │   │   │   │   └── twilio
 │   │   │   │       ├── index.ts
 │   │   │   │       └── sendSMS.ts
 │   │   │   ├── controllers
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── dispositifController.updateMainSponsor.test.ts
+│   │   │   │   │   └── userController.getUserInfo.test.ts
 │   │   │   │   ├── adminOptionController.ts
 │   │   │   │   ├── agirController.ts
 │   │   │   │   ├── appusersController.ts
@@ -3374,6 +3500,7 @@
 │   │   │   │   └── widgetController.ts
 │   │   │   ├── errors.test.ts
 │   │   │   ├── errors.ts
+│   │   │   ├── instrument.ts
 │   │   │   ├── libs
 │   │   │   │   ├── __fixtures__
 │   │   │   │   │   ├── activeLanguages.ts
@@ -3437,6 +3564,7 @@
 │   │   │   │   │   └── appusers.repository.ts
 │   │   │   │   ├── dispositif
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── dispositif.business.metadatas.test.ts
 │   │   │   │   │   │   ├── dispositif.origin.test.ts
 │   │   │   │   │   │   ├── dispositif.service.deleteLineBreaks.test.ts
 │   │   │   │   │   │   └── dispositif.service.state.tests.ts
@@ -3495,6 +3623,8 @@
 │   │   │   │   │   ├── snapshots.repository.ts
 │   │   │   │   │   └── snapshots.service.ts
 │   │   │   │   ├── structure
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── structure.service.test.ts
 │   │   │   │   │   ├── structure.repository.ts
 │   │   │   │   │   └── structure.service.ts
 │   │   │   │   ├── themes
@@ -3506,8 +3636,10 @@
 │   │   │   │   ├── users
 │   │   │   │   │   ├── LoginError.ts
 │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── user.service.test.ts
+│   │   │   │   │   │   ├── user.service.test.ts
+│   │   │   │   │   │   └── user.structures.test.ts
 │   │   │   │   │   ├── auth.ts
+│   │   │   │   │   ├── emailThrottle.ts
 │   │   │   │   │   ├── login2FA.ts
 │   │   │   │   │   ├── users.repository.ts
 │   │   │   │   │   └── users.service.ts
@@ -3558,6 +3690,8 @@
 │   │   │       │   │   ├── data.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── addSuggestion
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   └── log.test.ts
 │   │   │       │   │   ├── addSuggestion.ts
 │   │   │       │   │   ├── index.ts
 │   │   │       │   │   └── log.ts
@@ -3626,6 +3760,8 @@
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── modifyDispositifMainSponsor
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   └── log.test.ts
 │   │   │       │   │   ├── index.ts
 │   │   │       │   │   ├── log.ts
 │   │   │       │   │   └── modifyDispositifMainSponsor.ts
@@ -3641,7 +3777,9 @@
 │   │   │       │   ├── publishDispositif
 │   │   │       │   │   ├── index.ts
 │   │   │       │   │   ├── log.ts
+│   │   │       │   │   ├── publishDispositif.notifications.test.ts
 │   │   │       │   │   ├── publishDispositif.state.test.ts
+│   │   │       │   │   ├── publishDispositif.translations.test.ts
 │   │   │       │   │   └── publishDispositif.ts
 │   │   │       │   ├── structureReceiveDispositif
 │   │   │       │   │   ├── index.ts
@@ -3716,6 +3854,10 @@
 │   │   │       │       └── sendSubscriptionReminderMail.ts
 │   │   │       ├── misc
 │   │   │       │   ├── index.ts
+│   │   │       │   ├── reportClientError
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── reportClientError.test.ts
+│   │   │       │   │   └── reportClientError.ts
 │   │   │       │   └── verifyVersion
 │   │   │       │       ├── index.ts
 │   │   │       │       ├── verifyVersion.test.ts
@@ -3759,6 +3901,10 @@
 │   │   │       │   ├── contentLink
 │   │   │       │   │   ├── contentLink.test.ts
 │   │   │       │   │   ├── contentLink.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── courseListLink
+│   │   │       │   │   ├── courseListLink.test.ts
+│   │   │       │   │   ├── courseListLink.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   └── downloadApp
 │   │   │       │       ├── downloadApp.test.ts
@@ -3821,9 +3967,11 @@
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── publishTranslation
 │   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── publishTranslation.test.ts
 │   │   │       │   │   └── publishTranslation.ts
 │   │   │       │   ├── saveTranslation
 │   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── saveTranslation.test.ts
 │   │   │       │   │   └── saveTranslation.ts
 │   │   │       │   ├── sendFeedback
 │   │   │       │   │   ├── index.ts
@@ -3894,9 +4042,11 @@
 │   │   │       │   │   └── register.ts
 │   │   │       │   ├── resetPassword
 │   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── resetPassword.test.ts
 │   │   │       │   │   └── resetPassword.ts
 │   │   │       │   ├── sendCode
 │   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── sendCode.test.ts
 │   │   │       │   │   └── sendCode.ts
 │   │   │       │   ├── setNewPassword
 │   │   │       │   │   ├── index.ts
@@ -4053,7 +4203,11 @@
 │   ├── 1777100000000_RemoveNullParticipants.ts
 │   ├── 1780387153155_RemoveNullAvisUserIds.ts
 │   ├── 1781081221916_SetWebOnlyFalseForRCOActif.ts
-│   └── cli.ts
+│   ├── 1790066881000_BackfillOriginIdFromBomo.ts
+│   ├── 1790330000000_AddShortToNeeds.ts
+│   ├── 1790844823961_AddShortTranslationsToNeeds.ts
+│   ├── cli.ts
+│   └── origin-id-mapping.csv
 ├── package.json
 ├── packages
 │   ├── api-types
@@ -4092,10 +4246,12 @@
 │   │   │   ├── __tests__
 │   │   │   │   ├── constants.test.ts
 │   │   │   │   ├── helpers.test.ts
+│   │   │   │   ├── markdownToReadableText.test.ts
 │   │   │   │   └── remarkRestoreHierarchy.test.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── helpers.ts
 │   │   │   ├── index.ts
+│   │   │   ├── markdownToReadableText.ts
 │   │   │   └── remarkRestoreHierarchy.ts
 │   │   └── tsconfig.json
 │   ├── mongo
@@ -4126,6 +4282,12 @@
 │   │   │       ├── Widget.ts
 │   │   │       └── generics.ts
 │   │   └── tsconfig.json
+│   ├── sentry
+│   │   ├── package.json
+│   │   └── src
+│   │       ├── client.ts
+│   │       ├── edge.ts
+│   │       └── server.ts
 │   ├── typescript-config
 │   │   ├── CHANGELOG.md
 │   │   ├── base.json
@@ -4218,6 +4380,7 @@
 ├── postcss.config.mjs
 ├── release-please-config.json
 ├── scripts
+│   ├── anonymize.ts
 │   ├── generate-newsletter-token.js
 │   ├── rollback-gcp-secrets.sh
 │   └── update-gcp-secrets.sh
@@ -4259,4 +4422,4 @@
 │       └── tasks.md
 ├── tailwind.config.ts
 └── turbo.json
-964 directories, 3297 files
+991 directories, 3433 files

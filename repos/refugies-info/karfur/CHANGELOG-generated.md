@@ -1,30 +1,33 @@
-## Changelog : karfur (30 derniers jours, au 23 juillet 2026)
+## Changelog : karfur (30 derniers jours, au 02 octobre 2026)
 
 ### Résumé
-Les dernières mises à jour de karfur se concentrent sur l'amélioration de l'expérience utilisateur, notamment en affichant des informations plus complètes sur les dispositifs et démarches, et en corrigeant des bugs liés à la recherche et aux favoris. Des améliorations techniques ont également été apportées pour faciliter la synchronisation des données et améliorer la robustesse de l'application.
+Ce mois a été marqué par le développement majeur de l'**Espace FR**, une nouvelle section dédiée à l'apprentissage du français. Cette évolution apporte des outils de recherche complets, des filtres par niveau et localisation, ainsi qu'une expérience optimisée sur mobile. Parallèlement, un effort massif a été consenti pour améliorer l'accessibilité numérique (conformité RGAA) et renforcer la qualité des traductions pour les utilisateurs non-francophones.
 
 ### Évolutions fonctionnelles
-- Affichage du nom du responsable ou du financeur principal sur les pages des dispositifs et démarches. [#3847](https://github.com/refugies-info/karfur/pull/3847)
-- Possibilité de rendre le titre de la marque optionnel lors de la création ou modification d'un dispositif. [#3840](https://github.com/refugies-info/karfur/pull/3840)
-- Correction du comptage incorrect du nombre de contributeurs sur une démarche. [#3845](https://github.com/refugies-info/karfur/pull/3845)
-- Amélioration de la recherche sur les pages en langues autres que le français. [#3843](https://github.com/refugies-info/karfur/pull/3843)
-- Correction d'un bug empêchant l'accès aux fiches et l'ajout de favoris sur certains navigateurs. [#3839](https://github.com/refugies-info/karfur/pull/3839)
-- Correction de l'affichage des erreurs modales concernant les membres principaux. [#3839](https://github.com/refugies-info/karfur/pull/3839)
-- Correction du surlignage des niveaux de français sur l'interface utilisateur. [#3835](https://github.com/refugies-info/karfur/pull/3835)
-- Amélioration du maillage sémantique des mots-clés pour les démarches. [#3836](https://github.com/refugies-info/karfur/pull/3836)
+- **Lancement de l'Espace Apprentissage du Français (Espace FR) :**
+    - Mise en place d'un moteur de recherche de cours avec filtres avancés (localisation, niveau de langue, catégorie et public cible). [#3927](https://github.com/refugies-info/karfur/issues/3927)
+    - Ajout d'un carrousel de cours sur la page d'accueil et de nouveaux onglets de navigation (cours à venir, à la demande, tous les cours). [#3959](https://github.com/refugies-info/karfur/issues/3959)
+    - Optimisation de l'interface mobile : barre d'outils dédiée, filtres en plein écran et mise en page des fiches de cours adaptée aux petits écrans.
+    - Nouvelles options de consultation : possibilité de partager des cours par SMS et création d'une vue dédiée pour l'impression/export PDF.
+- **Amélioration de la recherche et de l'affichage :**
+    - Ajout de badges visuels pour identifier rapidement les cours "En ligne" ou les niveaux de français.
+    - Amélioration de la barre de recherche générale (mode "sticky" pour rester visible au scroll).
+    - Affichage de nouveaux indicateurs comme la mention "Début prochainement" pour les sessions imminentes.
+- **Internationalisation :**
+    - Extension et correction des traductions dans les 7 langues disponibles, assurant une cohérence sur l'ensemble des nouveaux contenus.
 
 ### Évolutions techniques
-- Amélioration de la copie de l'application construite pour inclure les chunks nécessaires au bon fonctionnement. [#3832](https://github.com/refugies-info/karfur/pull/3832)
-- Ajout de secrets pour l'API Grist dans la configuration Cloud Build pour la synchronisation des opérateurs AGIR. [#3830](https://github.com/refugies-info/karfur/pull/3830)
-- Implémentation de la synchronisation des opérateurs AGIR depuis Grist, avec gestion des erreurs et mise à jour des messages. [#3820](https://github.com/refugies-info/karfur/pull/3820)
-- Normalisation des opérateurs AGIR et ajout de tests associés. [#3820](https://github.com/refugies-info/karfur/pull/3820)
-- Publication du JSON des opérateurs sur Google Cloud Storage (GCS). [#3820](https://github.com/refugies-info/karfur/pull/3820)
-- Ajout de la lecture des opérateurs depuis le JSON stocké sur GCS. [#3820](https://github.com/refugies-info/karfur/pull/3820)
-- Amélioration de la gestion des erreurs de synchronisation des opérateurs AGIR. [#3820](https://github.com/refugies-info/karfur/pull/3820)
+- **Accessibilité (Conformité RGAA) :**
+    - Mise en conformité majeure des composants pour les lecteurs d'écran : structuration sémantique des listes (départements, publics, contacts), gestion du focus lors des recherches et des modales, et amélioration de la navigation clavier.
+    - Amélioration de l'accessibilité des formulaires (attributs autocomplete, labels explicites et gestion des messages d'erreur).
+- **Base de données et Backend :**
+    - Évolution du schéma de données pour inclure des identifiants courts (`short name`) et des références d'origine (`origin_id`) pour les besoins et dispositifs.
+    - Correction de problèmes de typage avec MongoDB.
+- **Sécurité :**
+    - Mise à jour de dépendances critiques pour corriger des vulnérabilités (notamment sur le package `image-size`).
 
 ### Autres changements
-- Ajout d'un hook pre-commit GitLeaks pour la détection de secrets.
-- Correction de la référence de version de lodash dans le fichier pnpm-workspace.yaml.
-- Amélioration des messages de synchronisation et ajustement du formatage du code pour la synchronisation AGIR.
-- Ajout d'un champ "shortName" pour les webhooks.
-- Ajout d'une couleur "short" pour les webhooks.
+- **Qualité et Workflow :**
+    - Rédaction et intégration d'un document de conventions de code pour harmoniser les développements de l'équipe.
+    - Optimisation du workflow de revue de code via l'amélioration des processus de CI/CD.
+    - Migration de la configuration de gestion de projet vers `pnpm-workspace.yaml`.
