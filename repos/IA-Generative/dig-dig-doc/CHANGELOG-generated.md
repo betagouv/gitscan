@@ -1,38 +1,52 @@
-## Changelog : dig-dig-doc (30 derniers jours, au 25 septembre 2026)
+## Changelog : dig-dig-doc (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois a marqué une étape majeure avec l'introduction de l'**Agent Helper**, un assistant intelligent capable d'interagir avec l'utilisateur via une interface de chat pour faciliter les analyses. La plateforme a également gagné en flexibilité grâce aux **analyses éphémères** (pour des tests rapides) et à l'automatisation des **résumés de documents et de dossiers**. L'interface utilisateur a été largement modernisée pour offrir une expérience plus fluide, plus intuitive et conforme aux standards du design système DSFR.
+Ce mois a marqué une étape majeure avec le lancement des capacités de génération de documents intelligents et l'amélioration profonde de l'analyse de dossiers. Les utilisateurs peuvent désormais créer des brouillons de documents basés sur des modèles, les prévisualiser en PDF et les exporter en formats ODT ou PDF. L'intelligence artificielle est plus intégrée que jamais, avec un assistant conversationnel directement accessible depuis les dossiers et une nouvelle fonctionnalité "éphémère" permettant des analyses rapides et temporaires.
 
 ### Évolutions fonctionnelles
-- **Assistant Intelligent (Agent Helper) :**
-  - Mise en place d'une interface de chat interactive pour l'agent ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
-  - Possibilité de choisir le modèle LLM utilisé pour les conversations et les agents.
-  - Ajout d'indicateurs visuels pour le suivi de la progression des tâches de l'agent.
-  - Support du protocole MCP pour étendre les capacités de l'assistant ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
-- **Analyses Éphémères :** Création d'un mode d'analyse temporaire permettant de lancer des processus rapides avec suppression automatique des données et nettoyage du stockage S3 ([#22](https://github.com/IA-Generative/dig-dig-doc/issues/22), [#23](https://github.com/IA-Generative/dig-dig-doc/issues/23), [#24](https://github.com/IA-Generative/dig-dig-doc/issues/24)).
-- **Gestion Documentaire Intelligente :**
-  - Génération automatique de résumés pour les documents et les dossiers avec système de versioning ([#52](https://github.com/IA-Generative/dig-dig-doc/issues/52)).
-  - Fonctionnalité « Dossier à ranger » proposant des suggestions d'analyse basées sur les résumés existants ([#54](https://github.com/IA-Generative/dig-dig-doc/issues/54)).
-- **Expérience Utilisateur & Interface :**
-  - **Profil & Statistiques :** Nouvelle page profil avec statistiques d'utilisation et respect du thème DSFR ([#61](https://github.com/IA-Generative/dig-dig-doc/issues/61)).
-  - **Navigation :** Modernisation de la page d'accueil, ajout d'une barre latérale (sidebar) rétractable, et réorganisation du menu utilisateur (déplacement du bouton Tâches) ([#62](https://github.com/IA-Generative/dig-dig-doc/issues/62)).
-  - **Aide & Tutoriels :** Intégration d'un système de tutoriels avec suivi de la progression de l'utilisateur.
-  - **Monitoring :** Ajout d'un accès direct aux tâches en cours et d'un tableau de bord de statistiques plateforme ([#60](https://github.com/IA-Generative/dig-dig-doc/issues/60)).
+
+**Génération et gestion de documents**
+- Mise en place de modèles de documents versionnés avec définition de champs personnalisés ([#138](https://github.com/IA-Generative/dig-dig-doc/issues/138), [#140](https://github.com/IA-Generative/dig-dig-doc/issues/140)).
+- Création de brouillons de documents avec génération automatique des valeurs de champs par agent IA ([#141](https://github.com/IA-Generative/dig-dig-doc/issues/141)).
+- Système d'assemblage, de stockage et de téléchargement des documents générés en formats ODT et PDF ([#143](https://github.com/IA-Generative/dig-dig-doc/issues/143)).
+- Ajout de la prévisualisation PDF et de la traçabilité des sources pour les brouillons ([#142](https://github.com/IA-Generative/dig-dig-doc/issues/142)).
+- Administration des modèles de documents et des prompts de génération via l'interface.
+
+**Analyse de dossiers et intelligence**
+- Nouveau modèle de données pour l'analyse de dossier incluant l'historique, la provenance et les propositions ([#112](https://github.com/IA-Generative/dig-dig-doc/issues/112), [#116](https://github.com/IA-Generative/dig-dig-doc/issues/116)).
+- Possibilité d'ajouter des notes internes versionnées avec des suggestions de l'IA ([#117](https://github.com/IA-Generative/dig-dig-doc/issues/117)).
+- Amélioration de la fiabilité avec des relances incrémentales et la conservation des apports lors des mises à jour d'analyse ([#119](https://github.com/IA-Generative/dig-dig-doc/issues/119)).
+- Système de validation des propositions avec journal de modification ([#114](https://github.com/IA-Generative/dig-dig-doc/issues/114)).
+
+**Expérience Chat et Assistant**
+- Refonte de l'interface de chat (style ChatGPT) avec affichage des étapes d'exécution des outils et des sources de données ([#104](https://github.com/IA-Generative/dig-dig-doc/issues/104)).
+- Accès direct à l'assistant conversationnel depuis le chat d'un dossier.
+- Amélioration de la navigation : pagination des messages et des listes de conversations, et gestion du mode responsive.
+
+**Nouveautés et mode Éphémère**
+- Introduction du mode "Éphémère" : permet de réaliser des analyses rapides qui sont automatiquement supprimées après exécution ([#22](https://github.com/IA-Generative/dig-dig-doc/issues/22), [#23](https://github.com/IA-Generative/dig-dig-doc/issues/23)).
+- Disponibilité de nouveaux SDK Python pour l'utilisation standard et éphémère de la plateforme.
+- Ajout d'une page profil utilisateur avec statistiques et accès aux tutoriels.
 
 ### Évolutions techniques
-- **Intelligence Artificielle :**
-  - Intégration de **LangGraph** pour la gestion des workflows de l'agent helper ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
-  - Optimisation de la compatibilité avec les modèles **Scaleway AI** (gestion des appels d'outils parallèles).
-- **Architecture Backend :**
-  - Implémentation du modèle de données et des API REST pour la gestion des conversations de l'agent ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
-  - Refactoring des composants d'administration pour une meilleure modularité.
-- **Infrastructure & DevOps :**
-  - Mise en place de charts **Helm** incluant la gestion de l'autoscaling avec KEDA et des probes de santé.
-  - Renforcement des pipelines CI/CD via GitHub Actions et GitLab CI.
-  - Amélioration de l'authentification **Keycloak** (mapping des rôles et gestion des profils).
-- **Qualité du code :** Nettoyage et formatage massif du code via **Ruff** pour le backend et le worker.
+
+**Infrastructure et Backend**
+- Déploiement d'un nouveau worker dédié au rendu de documents via LibreOffice ([#146](https://github.com/IA-Generative/dig-dig-doc/issues/146), [#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)).
+- Refactorisation des variables de configuration S3 pour respecter les standards AWS.
+- Amélioration de l'observabilité avec l'implémentation de logs au format JSON et des healthchecks étendus (Postgres, S3, Celery).
+- Optimisation du déploiement via Helm et KEDA (configuration du nombre minimal de réplicas).
+- Support du protocole MCP (Model Context Protocol) via un serveur dédié.
+
+**Frontend**
+- Intégration du Design System de l'État (DSFR) pour une interface plus cohérente et professionnelle.
+- Refactorisation des composants (notamment le sélecteur de modèles) pour une meilleure réutilisation.
+
+**CI/CD et Qualité**
+- Automatisation complète du cycle de release (images, charts Helm, versions).
+- Renforcement de la pipeline CI avec l'intégration de GitLab CI et de tests de contrat OpenAPI.
 
 ### Autres changements
-- **Conformité :** Mise en place de conditions générales d'utilisation (CGU) versionnées avec blocage de l'accès en cas de non-acceptation ([#58](https://github.com/IA-Generative/dig-dig-doc/issues/58)).
-- **Design :** Mise à jour de l'identité visuelle avec l'intégration du logo officiel Marianne (DSFR).
-- **Documentation :** Amélioration de la documentation de l'API OpenAPI et ajout de guides pour l'utilisation du serveur MCP.
+
+**Documentation**
+- Rédaction de la documentation pour l'API éphémère et l'utilisation du serveur MCP.
+- Mise à jour des README et des plans de tests de bout en bout.

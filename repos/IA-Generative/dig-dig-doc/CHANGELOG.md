@@ -1,5 +1,201 @@
 # Changelog
 
+## [0.9.0](https://github.com/IA-Generative/dig-dig-doc/compare/v0.8.0...v0.9.0) (2026-10-02)
+
+
+### Features
+
+* **backend:** logs JSON et détail des dépendances en échec sur /health/ready ([43a7a81](https://github.com/IA-Generative/dig-dig-doc/commit/43a7a81de2121f81255098758a1c831c45d2fa00))
+
+
+### Bug Fixes
+
+* **backend:** formatage ruff de logging_config ([7f69480](https://github.com/IA-Generative/dig-dig-doc/commit/7f69480a0f22905b13f056c0683501ce162e38a5))
+
+## [0.9.0-rc](https://github.com/IA-Generative/dig-dig-doc/compare/v0.8.0...v0.9.0-rc) (2026-10-02)
+
+
+### Features
+
+* **backend:** logs JSON et détail des dépendances en échec sur /health/ready ([b3a59d9](https://github.com/IA-Generative/dig-dig-doc/commit/b3a59d9cb6836ff3c1ad4bc24de96627b366ba83))
+
+
+### Bug Fixes
+
+* **backend:** formatage ruff de logging_config ([44b4835](https://github.com/IA-Generative/dig-dig-doc/commit/44b48352baf08d84357236e6b582b0af730d5cc5))
+
+## [0.8.0](https://github.com/IA-Generative/dig-dig-doc/compare/v0.7.0...v0.8.0) (2026-10-02)
+
+
+### Features
+
+* assemblage, stockage et téléchargement du document généré, ODT et PDF ([#143](https://github.com/IA-Generative/dig-dig-doc/issues/143)) ([872cfee](https://github.com/IA-Generative/dig-dig-doc/commit/872cfeed81ccf666f3e08f3fa00c0d0e7bb8d293))
+* **backend:** aperçu PDF, sources lisibles et valeurs sources modifiées d'un brouillon ([#142](https://github.com/IA-Generative/dig-dig-doc/issues/142)) ([807cc93](https://github.com/IA-Generative/dig-dig-doc/commit/807cc93841b7697c6f7aafbfd374e265cf89e3f5))
+* **backend:** brouillon de document, valeurs de champs versionnées et journal ([#140](https://github.com/IA-Generative/dig-dig-doc/issues/140)) ([f55f578](https://github.com/IA-Generative/dig-dig-doc/commit/f55f57809bbd076dfceabb058a3cf65fc2a50fb5))
+* **backend:** génération des champs de document, prompt versionné et API interne ([#141](https://github.com/IA-Generative/dig-dig-doc/issues/141)) ([1bb7502](https://github.com/IA-Generative/dig-dig-doc/commit/1bb7502b25a442dcca1267c5bf9c1350b0e46aef))
+* **backend:** migrer les validations de prédiction vers l'analyse de dossier ([#120](https://github.com/IA-Generative/dig-dig-doc/issues/120)) ([2eaa377](https://github.com/IA-Generative/dig-dig-doc/commit/2eaa377e24e3794126b315fac9ffc7157cf8cbc6))
+* **backend:** modèle de données de l'analyse de dossier ([#112](https://github.com/IA-Generative/dig-dig-doc/issues/112)) ([9094929](https://github.com/IA-Generative/dig-dig-doc/commit/90949294e4355f6a4bb78af88855b7a71f1a7152))
+* **backend:** modèles de document versionnés et définition des champs ([#138](https://github.com/IA-Generative/dig-dig-doc/issues/138)) ([f658466](https://github.com/IA-Generative/dig-dig-doc/commit/f658466cf674be88749178b9f1209cb39eba56c5))
+* **backend:** propositions de modification de l'analyse de dossier et journal de validation ([#114](https://github.com/IA-Generative/dig-dig-doc/issues/114)) ([0dd6609](https://github.com/IA-Generative/dig-dig-doc/commit/0dd660968d96df17a9245a6f884b680b426e4fe5))
+* **backend:** routes de création instructeur de l'analyse de dossier ([#112](https://github.com/IA-Generative/dig-dig-doc/issues/112)) ([4da520c](https://github.com/IA-Generative/dig-dig-doc/commit/4da520cb223df6b6541213632acf65f754a99689))
+* **backend:** un modèle de document appartient à une analyse ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([94ff074](https://github.com/IA-Generative/dig-dig-doc/commit/94ff07428c775261c90862111e5381931e3f4c16))
+* contrôle des modèles à l'import (polices, champs natifs, images) ([#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)) ([cfa0b30](https://github.com/IA-Generative/dig-dig-doc/commit/cfa0b30851da8ae377552e90df34f4e4f636bc20))
+* empreintes d'unités et extraction par document avec groupes de définitions ([#126](https://github.com/IA-Generative/dig-dig-doc/issues/126)) ([06efc41](https://github.com/IA-Generative/dig-dig-doc/commit/06efc419460846ccd8d6cdbc02f2dc7b51147911))
+* **frontend:** accès à l'assistant depuis le chat d'un dossier ([#104](https://github.com/IA-Generative/dig-dig-doc/issues/104)) ([d3b01df](https://github.com/IA-Generative/dig-dig-doc/commit/d3b01df26fd7160ee969459459ee71701cbe4704))
+* **frontend:** administration des modèles de document et du prompt de génération ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([6e06b61](https://github.com/IA-Generative/dig-dig-doc/commit/6e06b61588d32947161fff9cdf9df579b8d72de2))
+* **frontend:** champs d'un modèle en carrousel et aide à la rédaction ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([3a76ece](https://github.com/IA-Generative/dig-dig-doc/commit/3a76ece6f603389ca6abf7570ef7effc6a6093ec))
+* **frontend:** les modèles de document dans l'onglet Documents de l'analyse ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([85f2fed](https://github.com/IA-Generative/dig-dig-doc/commit/85f2fedf029a9fef516dcf62c85ba1a5bee2da05))
+* **frontend:** modèles de document par analyse, éléments sources choisis dans l'analyse ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([1c991b1](https://github.com/IA-Generative/dig-dig-doc/commit/1c991b1dc5e20c378c5524be91b43dd9b58dffb5))
+* **frontend:** revue d'un brouillon avec aperçu PDF et page des documents du dossier ([#142](https://github.com/IA-Generative/dig-dig-doc/issues/142)) ([cbb2b77](https://github.com/IA-Generative/dig-dig-doc/commit/cbb2b77ee88d6f53ffa0bc04d61d4ffd807f0cfc))
+* **frontend:** vue de l'analyse de dossier : provenance, historique et propositions ([#116](https://github.com/IA-Generative/dig-dig-doc/issues/116)) ([cfcac08](https://github.com/IA-Generative/dig-dig-doc/commit/cfcac080b04924f56cea2db1fc05ea31e15033d8))
+* générer l'analyse de dossier à chaque exécution (analyse, unités, éléments) ([#125](https://github.com/IA-Generative/dig-dig-doc/issues/125)) ([480b13f](https://github.com/IA-Generative/dig-dig-doc/commit/480b13f4504a88be16a430d4298d4c8f91bbc1c4))
+* le chat propose de modifier l'analyse de dossier, avec confirmation ([#115](https://github.com/IA-Generative/dig-dig-doc/issues/115)) ([3594da2](https://github.com/IA-Generative/dig-dig-doc/commit/3594da290445f48eb9ca1dd28de0b541c1b3a357))
+* notes internes d'un dossier, versionnées, avec propositions sur demande ([#117](https://github.com/IA-Generative/dig-dig-doc/issues/117)) ([e6a08bf](https://github.com/IA-Generative/dig-dig-doc/commit/e6a08bfcf9831ad53bd104a2d28136f2390f84f8))
+* proposer l'assistant depuis le chat du dossier avec la question pré-remplie ([#104](https://github.com/IA-Generative/dig-dig-doc/issues/104)) ([45c3f0a](https://github.com/IA-Generative/dig-dig-doc/commit/45c3f0a45a7bee473c731aba90e3b52c950d720f))
+* relance incrémentale, reprise des unités inchangées et apports conservés ([#119](https://github.com/IA-Generative/dig-dig-doc/issues/119)) ([26b5102](https://github.com/IA-Generative/dig-dig-doc/commit/26b51022001bc3e70dcb7a56b0903d06a57fd048))
+* verrou court par élément, présence et flux temps réel sur l'analyse ([#118](https://github.com/IA-Generative/dig-dig-doc/issues/118)) ([8e474f0](https://github.com/IA-Generative/dig-dig-doc/commit/8e474f08a48bd00c30d651d0754aedee3eea3c7d))
+* **worker:** agent de génération des valeurs de champs d'un document ([#141](https://github.com/IA-Generative/dig-dig-doc/issues/141)) ([b2c4b71](https://github.com/IA-Generative/dig-dig-doc/commit/b2c4b71f36365d69354f597e304bf5202ca8fde7))
+* **worker:** déployer document_render (CI, CD, Helm, KEDA, tests LibreOffice) ([#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)) ([90e2c64](https://github.com/IA-Generative/dig-dig-doc/commit/90e2c6407fe187dd93678d2568c3445f9af2ec92))
+* **worker:** worker document_render, remplissage de modèles ODT et PDF via LibreOffice ([#146](https://github.com/IA-Generative/dig-dig-doc/issues/146)) ([a33c224](https://github.com/IA-Generative/dig-dig-doc/commit/a33c22456db8d1a2a05d8db55021bd4bd9872e81))
+
+
+### Bug Fixes
+
+* **backend:** retirer un import inutilisé de la migration des notes ([#117](https://github.com/IA-Generative/dig-dig-doc/issues/117)) ([12fb0a7](https://github.com/IA-Generative/dig-dig-doc/commit/12fb0a7223f266e2f4aa17cee387ce8939443519))
+* **ci:** synchroniser dev après le commit de release du chart ([c72d30e](https://github.com/IA-Generative/dig-dig-doc/commit/c72d30e3785ecd6e7d9f4a218329490b5a8b7bce))
+* **worker:** configuration du worker de rendu (REDIS_URL, endpoint S3) et doc des secrets ([#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)) ([ee1d369](https://github.com/IA-Generative/dig-dig-doc/commit/ee1d36975761327b2d7f0b62758a6bc2071db054))
+* **worker:** corriger le healthcheck Celery des workers (celery@$HOSTNAME) ([e6c2327](https://github.com/IA-Generative/dig-dig-doc/commit/e6c23275d41f0e97a67702d9b284bda2432d7bb7))
+
+## [0.8.0-rc.1](https://github.com/IA-Generative/dig-dig-doc/compare/v0.8.0-rc...v0.8.0-rc.1) (2026-10-02)
+
+
+### Features
+
+* assemblage, stockage et téléchargement du document généré, ODT et PDF ([#143](https://github.com/IA-Generative/dig-dig-doc/issues/143)) ([4441475](https://github.com/IA-Generative/dig-dig-doc/commit/4441475e4dfd43ae38be560099cab8290495a687))
+* **backend:** aperçu PDF, sources lisibles et valeurs sources modifiées d'un brouillon ([#142](https://github.com/IA-Generative/dig-dig-doc/issues/142)) ([5e3272a](https://github.com/IA-Generative/dig-dig-doc/commit/5e3272a886d63e8d36ea5555ba0766340f0ef79c))
+* **backend:** brouillon de document, valeurs de champs versionnées et journal ([#140](https://github.com/IA-Generative/dig-dig-doc/issues/140)) ([b1a7714](https://github.com/IA-Generative/dig-dig-doc/commit/b1a77140592a54024729ce9b8b8a9800558251d4))
+* **backend:** génération des champs de document, prompt versionné et API interne ([#141](https://github.com/IA-Generative/dig-dig-doc/issues/141)) ([e36de42](https://github.com/IA-Generative/dig-dig-doc/commit/e36de42a0af54543ae1a5c5a93801f6937c4968a))
+* **backend:** migrer les validations de prédiction vers l'analyse de dossier ([#120](https://github.com/IA-Generative/dig-dig-doc/issues/120)) ([84fcd21](https://github.com/IA-Generative/dig-dig-doc/commit/84fcd215d7254470048cb29e03c5cfe0577c7ae2))
+* **backend:** modèle de données de l'analyse de dossier ([#112](https://github.com/IA-Generative/dig-dig-doc/issues/112)) ([cdf315b](https://github.com/IA-Generative/dig-dig-doc/commit/cdf315b22557fde1d2ec0b57e6343adbbc903982))
+* **backend:** modèles de document versionnés et définition des champs ([#138](https://github.com/IA-Generative/dig-dig-doc/issues/138)) ([9eac56c](https://github.com/IA-Generative/dig-dig-doc/commit/9eac56ca67ab52f2c39f289158e4dffda2176f3b))
+* **backend:** propositions de modification de l'analyse de dossier et journal de validation ([#114](https://github.com/IA-Generative/dig-dig-doc/issues/114)) ([bcac20e](https://github.com/IA-Generative/dig-dig-doc/commit/bcac20e95004d3f0e1ec091ad9d4d2d4214e135f))
+* **backend:** routes de création instructeur de l'analyse de dossier ([#112](https://github.com/IA-Generative/dig-dig-doc/issues/112)) ([73dfde4](https://github.com/IA-Generative/dig-dig-doc/commit/73dfde42ccd99036034848dbe1d4f6cf6d32b850))
+* **backend:** un modèle de document appartient à une analyse ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([4cf743f](https://github.com/IA-Generative/dig-dig-doc/commit/4cf743fcd9ca3f9e8d99bac984ec08977a1397f5))
+* contrôle des modèles à l'import (polices, champs natifs, images) ([#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)) ([5c3165b](https://github.com/IA-Generative/dig-dig-doc/commit/5c3165bc174ea770867f27999d2478b8ac04603e))
+* empreintes d'unités et extraction par document avec groupes de définitions ([#126](https://github.com/IA-Generative/dig-dig-doc/issues/126)) ([5cabfeb](https://github.com/IA-Generative/dig-dig-doc/commit/5cabfeb881694fdea6fa73ecc0e517f8fe9f5dfa))
+* **frontend:** administration des modèles de document et du prompt de génération ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([a84c33b](https://github.com/IA-Generative/dig-dig-doc/commit/a84c33b113d0d1160bc989281792237d5e3b5074))
+* **frontend:** champs d'un modèle en carrousel et aide à la rédaction ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([15c1cb2](https://github.com/IA-Generative/dig-dig-doc/commit/15c1cb2fcd46675037cec5d0fa0be4ae728883da))
+* **frontend:** les modèles de document dans l'onglet Documents de l'analyse ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([f1a1164](https://github.com/IA-Generative/dig-dig-doc/commit/f1a1164774b2429b7c6f6d5ce92836cbd01c05ec))
+* **frontend:** modèles de document par analyse, éléments sources choisis dans l'analyse ([#139](https://github.com/IA-Generative/dig-dig-doc/issues/139)) ([c76e182](https://github.com/IA-Generative/dig-dig-doc/commit/c76e1827c408a43b7c39a69940d8f96c5cce0157))
+* **frontend:** revue d'un brouillon avec aperçu PDF et page des documents du dossier ([#142](https://github.com/IA-Generative/dig-dig-doc/issues/142)) ([f63218a](https://github.com/IA-Generative/dig-dig-doc/commit/f63218a6214b12d7743fd0bd033663f490b87ee8))
+* **frontend:** vue de l'analyse de dossier : provenance, historique et propositions ([#116](https://github.com/IA-Generative/dig-dig-doc/issues/116)) ([2e3a31f](https://github.com/IA-Generative/dig-dig-doc/commit/2e3a31f3d4a5b9b18ce0027237af97c02ae43a5e))
+* générer l'analyse de dossier à chaque exécution (analyse, unités, éléments) ([#125](https://github.com/IA-Generative/dig-dig-doc/issues/125)) ([4f0ce47](https://github.com/IA-Generative/dig-dig-doc/commit/4f0ce47d6ac82273128e7e9ec142a571b2e6d07c))
+* le chat propose de modifier l'analyse de dossier, avec confirmation ([#115](https://github.com/IA-Generative/dig-dig-doc/issues/115)) ([3664726](https://github.com/IA-Generative/dig-dig-doc/commit/3664726da350c9f413fe90ba28792dfbf4e33a32))
+* notes internes d'un dossier, versionnées, avec propositions sur demande ([#117](https://github.com/IA-Generative/dig-dig-doc/issues/117)) ([454b684](https://github.com/IA-Generative/dig-dig-doc/commit/454b68421e1b59ac607f7b76239803846d5a6cab))
+* relance incrémentale, reprise des unités inchangées et apports conservés ([#119](https://github.com/IA-Generative/dig-dig-doc/issues/119)) ([5299199](https://github.com/IA-Generative/dig-dig-doc/commit/5299199d2eac8b5ee56a8b789746f8ba2c327531))
+* verrou court par élément, présence et flux temps réel sur l'analyse ([#118](https://github.com/IA-Generative/dig-dig-doc/issues/118)) ([db4cda9](https://github.com/IA-Generative/dig-dig-doc/commit/db4cda96ce7c18f769cbc1cfa8c9214ebeb2d74a))
+* **worker:** agent de génération des valeurs de champs d'un document ([#141](https://github.com/IA-Generative/dig-dig-doc/issues/141)) ([ee8bbe3](https://github.com/IA-Generative/dig-dig-doc/commit/ee8bbe3928b3a042b1665c6d15387818c1e5bc1e))
+* **worker:** déployer document_render (CI, CD, Helm, KEDA, tests LibreOffice) ([#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)) ([e75688c](https://github.com/IA-Generative/dig-dig-doc/commit/e75688c7aa32999b9f9bc9f546b18beea08959d8))
+* **worker:** worker document_render, remplissage de modèles ODT et PDF via LibreOffice ([#146](https://github.com/IA-Generative/dig-dig-doc/issues/146)) ([61759f5](https://github.com/IA-Generative/dig-dig-doc/commit/61759f50054b86fe20e9f391f941f182c6554ed3))
+
+
+### Bug Fixes
+
+* **backend:** retirer un import inutilisé de la migration des notes ([#117](https://github.com/IA-Generative/dig-dig-doc/issues/117)) ([77ca3fe](https://github.com/IA-Generative/dig-dig-doc/commit/77ca3fe2a3775c111434e1867306f66a15f705b6))
+* **worker:** configuration du worker de rendu (REDIS_URL, endpoint S3) et doc des secrets ([#148](https://github.com/IA-Generative/dig-dig-doc/issues/148)) ([2a21a07](https://github.com/IA-Generative/dig-dig-doc/commit/2a21a079cd1e2ab0f1fdadcebf77a009a9e5b55a))
+* **worker:** corriger le healthcheck Celery des workers (celery@$HOSTNAME) ([d00db19](https://github.com/IA-Generative/dig-dig-doc/commit/d00db19951331a857109e3a98198b362af343ba8))
+
+## [0.8.0-rc](https://github.com/IA-Generative/dig-dig-doc/compare/v0.7.0...v0.8.0-rc) (2026-10-01)
+
+
+### Features
+
+* **frontend:** accès à l'assistant depuis le chat d'un dossier ([#104](https://github.com/IA-Generative/dig-dig-doc/issues/104)) ([ab6cfdf](https://github.com/IA-Generative/dig-dig-doc/commit/ab6cfdf670a841142599f395f6dff3cd46e51942))
+* proposer l'assistant depuis le chat du dossier avec la question pré-remplie ([#104](https://github.com/IA-Generative/dig-dig-doc/issues/104)) ([ea6ddc0](https://github.com/IA-Generative/dig-dig-doc/commit/ea6ddc050c8b5e004a6475e9627cc1fda81ed3ef))
+
+## [0.7.0](https://github.com/IA-Generative/dig-dig-doc/compare/v0.6.0...v0.7.0) (2026-10-01)
+
+
+### Features
+
+* **backend:** endpoint de lecture d'une page de document (texte, zones, capture) ([7f9ef98](https://github.com/IA-Generative/dig-dig-doc/commit/7f9ef98895386e10a85472888afcfde7772353ed))
+* **backend:** pagination par curseur des messages d'une conversation ([8473593](https://github.com/IA-Generative/dig-dig-doc/commit/847359360610c29b982a7e2c90241a9bd858ae86)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** afficher les étapes d'outils dans ChatWindow ([a0d0259](https://github.com/IA-Generative/dig-dig-doc/commit/a0d0259f50eae9399d1607ceff5fcee9207e8837))
+* **frontend:** charger les messages du chat par pages au défilement vers le haut ([284cb15](https://github.com/IA-Generative/dig-dig-doc/commit/284cb156386a34d4f7e8453e0474679af0a4f93b)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** chat façon ChatGPT, sélecteur de modèle moderne, cartes sans débordement ([37cd958](https://github.com/IA-Generative/dig-dig-doc/commit/37cd958e4ba9002afe159815ee463b2351181864)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** ouvrir une source du chat dans une modale avec la page et le passage surligné ([a842f9b](https://github.com/IA-Generative/dig-dig-doc/commit/a842f9b03588783a3ad6ed62049246cbcd3e7c92))
+* **frontend:** sources du chat en pastilles compactes, extrait dans la modale ([ddd08ab](https://github.com/IA-Generative/dig-dig-doc/commit/ddd08ab854bc731b6cc7fe3eca4d1ef4c7e500b0))
+* **frontend:** util groupToolEvents et composant ToolStep ([4336ecc](https://github.com/IA-Generative/dig-dig-doc/commit/4336eccf925425720f0a6201c3fff4214356a429))
+
+
+### Bug Fixes
+
+* **frontend:** aide LLM des prompts classification/extraction, modèle et brouillon pris en compte ([b5b7452](https://github.com/IA-Generative/dig-dig-doc/commit/b5b7452a6d6bc6bbedfc325548c3c06fbbdec105))
+* **frontend:** ancrer la liste du ModelPicker directement sous le bouton ([500f92d](https://github.com/IA-Generative/dig-dig-doc/commit/500f92d4b9ab7771536118212224f8de7128f10b))
+* **frontend:** chat responsive et réponses de l'assistant sans bulle façon ChatGPT ([9f2fc84](https://github.com/IA-Generative/dig-dig-doc/commit/9f2fc845c3cb8a91caa638d01aee90411de87242)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** lire la liste paginée des conversations d'un dossier (items) ([486adb7](https://github.com/IA-Generative/dig-dig-doc/commit/486adb7ff2ef2c6d527eef5f2eb9ac4aafb4fb18))
+* **frontend:** lire la liste paginée des conversations de la barre latérale (items) ([541315e](https://github.com/IA-Generative/dig-dig-doc/commit/541315e52bf740fbb3df6f2702a2f300a662063d)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** ouvrir le flux SSE du chat après l'envoi du message pour afficher la réponse ([52006c2](https://github.com/IA-Generative/dig-dig-doc/commit/52006c207c5803c3b78cb954a00fabb4dce68109)), closes [#87](https://github.com/IA-Generative/dig-dig-doc/issues/87)
+* **frontend:** remettre le sélecteur de modèle dans l'en-tête du dossier ([d93ba5a](https://github.com/IA-Generative/dig-dig-doc/commit/d93ba5af50bdccbf8a4347bf6286a10fd85f83db))
+* **frontend:** remplacer findLast par une boucle dans groupToolEvents ([80b87ee](https://github.com/IA-Generative/dig-dig-doc/commit/80b87ee284d701d42ed0badb0d563c4579876f96))
+
+
+### Code Refactoring
+
+* **frontend:** retirer l'ajout de documents du chat du dossier ([8fc3b9f](https://github.com/IA-Generative/dig-dig-doc/commit/8fc3b9fcec32f2fd7a96eb3cd21441157ac515b0))
+* **frontend:** retirer la section Documents de la page détail du dossier ([023c529](https://github.com/IA-Generative/dig-dig-doc/commit/023c5290c611ab7627cacffc6dc2f59712905dc8))
+* **frontend:** un seul composant ModelPicker pour tous les choix de modèle ([c1cecdc](https://github.com/IA-Generative/dig-dig-doc/commit/c1cecdc6eae62b4f96f532e2c8e0464c12a63561))
+
+## [0.7.0-rc](https://github.com/IA-Generative/dig-dig-doc/compare/v0.6.0...v0.7.0-rc) (2026-10-01)
+
+
+### Features
+
+* **backend:** endpoint de lecture d'une page de document (texte, zones, capture) ([e82ab53](https://github.com/IA-Generative/dig-dig-doc/commit/e82ab53318167838845c7026115906b18b7bc732))
+* **backend:** pagination par curseur des messages d'une conversation ([db04026](https://github.com/IA-Generative/dig-dig-doc/commit/db0402600272a7cb0e5d317c6241c7dad13eaf0e)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** afficher les étapes d'outils dans ChatWindow ([936acc9](https://github.com/IA-Generative/dig-dig-doc/commit/936acc951ce03f6f9e5b77a7f80facf4168714bb))
+* **frontend:** charger les messages du chat par pages au défilement vers le haut ([a90abe5](https://github.com/IA-Generative/dig-dig-doc/commit/a90abe5fab857c0d4bc98049a0872572d1d179e7)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** chat façon ChatGPT, sélecteur de modèle moderne, cartes sans débordement ([88d6b0e](https://github.com/IA-Generative/dig-dig-doc/commit/88d6b0e5c02912c8e354c8753a4f69223b6abedb)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** ouvrir une source du chat dans une modale avec la page et le passage surligné ([0e8aefe](https://github.com/IA-Generative/dig-dig-doc/commit/0e8aefe4b11ce3dd58bcf03b275005f76252e6c8))
+* **frontend:** sources du chat en pastilles compactes, extrait dans la modale ([971d191](https://github.com/IA-Generative/dig-dig-doc/commit/971d191a205bae70b76f8351ae518cfe4f7cf4dd))
+* **frontend:** util groupToolEvents et composant ToolStep ([382a986](https://github.com/IA-Generative/dig-dig-doc/commit/382a986e8d68ff358ef89b036330d24f2daca425))
+
+
+### Bug Fixes
+
+* **frontend:** aide LLM des prompts classification/extraction, modèle et brouillon pris en compte ([54eef98](https://github.com/IA-Generative/dig-dig-doc/commit/54eef980e0f2275f5b9b915ac5425a9bdd02ba30))
+* **frontend:** ancrer la liste du ModelPicker directement sous le bouton ([f9749b6](https://github.com/IA-Generative/dig-dig-doc/commit/f9749b6ea77cf58fe67aa280ec41e68231514c75))
+* **frontend:** chat responsive et réponses de l'assistant sans bulle façon ChatGPT ([60b677b](https://github.com/IA-Generative/dig-dig-doc/commit/60b677b72c982962294cfedea3e0d4fd2e4379ba)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** lire la liste paginée des conversations d'un dossier (items) ([7388393](https://github.com/IA-Generative/dig-dig-doc/commit/738839321f414b4ee400148f4c2afbe7e7418e12))
+* **frontend:** lire la liste paginée des conversations de la barre latérale (items) ([5986ea4](https://github.com/IA-Generative/dig-dig-doc/commit/5986ea49f2eeaabde74dfc08260c5c3c6b4adbcb)), closes [#88](https://github.com/IA-Generative/dig-dig-doc/issues/88)
+* **frontend:** ouvrir le flux SSE du chat après l'envoi du message pour afficher la réponse ([33984f5](https://github.com/IA-Generative/dig-dig-doc/commit/33984f570803a08634c535e66afc779b6b230624)), closes [#87](https://github.com/IA-Generative/dig-dig-doc/issues/87)
+* **frontend:** remettre le sélecteur de modèle dans l'en-tête du dossier ([fdbc77e](https://github.com/IA-Generative/dig-dig-doc/commit/fdbc77e102b7858dcd42ba0229d40b0b5a94db48))
+* **frontend:** remplacer findLast par une boucle dans groupToolEvents ([ab08611](https://github.com/IA-Generative/dig-dig-doc/commit/ab08611235ea6b53395dfb60404439aa48205c07))
+
+
+### Code Refactoring
+
+* **frontend:** retirer l'ajout de documents du chat du dossier ([369045f](https://github.com/IA-Generative/dig-dig-doc/commit/369045f00c33b3062191c99780cac9e4964da720))
+* **frontend:** retirer la section Documents de la page détail du dossier ([4e20941](https://github.com/IA-Generative/dig-dig-doc/commit/4e2094149463ec4df14abb84340e0f88a933d083))
+* **frontend:** un seul composant ModelPicker pour tous les choix de modèle ([25df717](https://github.com/IA-Generative/dig-dig-doc/commit/25df7171781fe3c132e3fd04949275e9385626ab))
+
+## [0.6.0](https://github.com/IA-Generative/dig-dig-doc/compare/v0.5.5...v0.6.0) (2026-09-30)
+
+
+### Features
+
+* **chart:** composant worker_async_api pour le worker AsyncTaskAPI (désactivé par défaut) ([b913064](https://github.com/IA-Generative/dig-dig-doc/commit/b913064466097c85e90988671541390854173381)), closes [#79](https://github.com/IA-Generative/dig-dig-doc/issues/79)
+* **chart:** réglages non secrets du worker async_api en env, identifiants seuls en secret ([aa38cee](https://github.com/IA-Generative/dig-dig-doc/commit/aa38ceea2c32ba35c69f3f5c6275922fac67f4f8)), closes [#79](https://github.com/IA-Generative/dig-dig-doc/issues/79)
+* **ephemeral:** conserver le résultat d'un run et supprimer dossier, fichiers et analyse à sa fin ([bfb0afd](https://github.com/IA-Generative/dig-dig-doc/commit/bfb0afda0763d467847073b86c9a772586409a0f)), closes [#76](https://github.com/IA-Generative/dig-dig-doc/issues/76)
+* **sdks:** ajout des SDK Python standard (digdigdoc) et éphémère (digdigdoc-ephemeral) ([81049c3](https://github.com/IA-Generative/dig-dig-doc/commit/81049c3339df917805eafc87f16befdf3f05c86a)), closes [#76](https://github.com/IA-Generative/dig-dig-doc/issues/76)
+* **sdks:** modèles pydantic stricts en entrée/sortie et test de contrat OpenAPI ([13dd74d](https://github.com/IA-Generative/dig-dig-doc/commit/13dd74da8743d48288a419495cebd99106f4b3fa)), closes [#76](https://github.com/IA-Generative/dig-dig-doc/issues/76)
+* **worker:** worker async_api (mic-worker, sans Celery) pour AsyncTaskAPI ([bc28e67](https://github.com/IA-Generative/dig-dig-doc/commit/bc28e6745d0629e60c697f2e874f91e2abd847af)), closes [#79](https://github.com/IA-Generative/dig-dig-doc/issues/79)
+
+
+### Bug Fixes
+
+* **sdks:** analyze(cleanup=True) tolère l'analyse déjà supprimée par le serveur ([19ac4d4](https://github.com/IA-Generative/dig-dig-doc/commit/19ac4d456dfe6ed5e826d4213a1e98fc5194af7c)), closes [#76](https://github.com/IA-Generative/dig-dig-doc/issues/76)
+
 ## [0.5.5](https://github.com/IA-Generative/dig-dig-doc/compare/v0.5.4...v0.5.5) (2026-09-25)
 
 
