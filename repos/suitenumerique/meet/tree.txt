@@ -1,16 +1,16 @@
 .
+├── .codespellrc
 ├── .dockerignore
 ├── .github
-│   ├── ISSUE_TEMPLATE
-│   │   ├── Bug_report.md
-│   │   ├── Feature_request.md
-│   │   └── Support_question.md
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows
-│       ├── ci.yml
-│       ├── crowdin-download.yml
-│       ├── docker-hub.yml
-│       └── release-helm-chart.yaml
+│   ├── .trivyignore
+│   ├── workflows
+│   │   ├── changelog.yml
+│   │   ├── ci.yml
+│   │   ├── code-quality.yml
+│   │   ├── docker-hub.yml
+│   │   ├── release-helm-chart.yaml
+│   │   └── security.yml
+│   └── zizmor.yml
 ├── .gitignore
 ├── .gitlint
 ├── .gitmodules
@@ -85,6 +85,8 @@
 │   │       └── default.conf
 │   ├── files
 │   │   ├── etc
+│   │   │   ├── garage
+│   │   │   │   └── garage.toml
 │   │   │   └── nginx
 │   │   │       └── conf.d
 │   │   │           └── default.conf
@@ -133,6 +135,7 @@
 │   │   ├── authentication.md
 │   │   ├── calendar_integrations.md
 │   │   ├── recording.md
+│   │   ├── room-purge.md
 │   │   ├── signaling.md
 │   │   ├── subtitles.md
 │   │   ├── summarization.md
@@ -151,6 +154,7 @@
 │   │   ├── common.dist
 │   │   ├── common.e2e.dist
 │   │   ├── crowdin.dist
+│   │   ├── garage.dist
 │   │   ├── kc_postgresql.dist
 │   │   ├── kube-secret.dist
 │   │   ├── metadata_collector.dist
@@ -279,7 +283,8 @@
     │   │   │       ├── __init__.py
     │   │   │       ├── clean_pending_files.py
     │   │   │       ├── merge_duplicate_users.py
-    │   │   │       └── purge_deleted_files.py
+    │   │   │       ├── purge_deleted_files.py
+    │   │   │       └── purge_inactive_rooms.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_create_pg_trgm_extension.py
@@ -303,6 +308,8 @@
     │   │   │   ├── 0020_alter_file_upload_state.py
     │   │   │   ├── 0021_recording_external_process_id_alter_recording_status.py
     │   │   │   ├── 0022_user_default_room_access_level_and_more.py
+    │   │   │   ├── 0023_alter_recording_status.py
+    │   │   │   ├── 0024_room_last_started_at.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -370,7 +377,8 @@
     │   │   │   ├── commands
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_clean_pending_files.py
-    │   │   │   │   └── test_purge_deleted_files.py
+    │   │   │   │   ├── test_purge_deleted_files.py
+    │   │   │   │   └── test_purge_inactive_rooms.py
     │   │   │   ├── conftest.py
     │   │   │   ├── files
     │   │   │   │   ├── __init__.py
@@ -401,6 +409,7 @@
     │   │   │   │   ├── test_api_recordings_retrieve.py
     │   │   │   │   └── worker
     │   │   │   │       ├── __init__.py
+    │   │   │   │       ├── test_encoding_resolver.py
     │   │   │   │       ├── test_factories.py
     │   │   │   │       ├── test_mediator.py
     │   │   │   │       └── test_services.py
@@ -444,6 +453,7 @@
     │   │   │   ├── test_api_resource_accesses.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_api_users_room_preferences.py
+    │   │   │   ├── test_dockerflow.py
     │   │   │   ├── test_external_api_authentication.py
     │   │   │   ├── test_external_api_rooms.py
     │   │   │   ├── test_external_api_token.py
@@ -687,6 +697,7 @@
     │   │   │   ├── home
     │   │   │   │   ├── components
     │   │   │   │   │   ├── CreateMeetingMenu.tsx
+    │   │   │   │   │   ├── CreateUnregisteredMeetingButton.tsx
     │   │   │   │   │   ├── IntroSlider.tsx
     │   │   │   │   │   ├── JoinMeetingDialog.tsx
     │   │   │   │   │   ├── LaterMeetingDialog.tsx
@@ -719,6 +730,7 @@
     │   │   │   │   ├── NotificationProvider.tsx
     │   │   │   │   ├── NotificationType.ts
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── RecordingWaitingForTracksNotification.tsx
     │   │   │   │   │   ├── StyledToast.tsx
     │   │   │   │   │   ├── StyledToastContainer.tsx
     │   │   │   │   │   ├── Toast.tsx
@@ -755,8 +767,7 @@
     │   │   │   │           ├── EffectsButton.tsx
     │   │   │   │           ├── FocusButton.tsx
     │   │   │   │           ├── MuteButton.tsx
-    │   │   │   │           ├── ParticipantTileFocus.tsx
-    │   │   │   │           └── ZoomButton.tsx
+    │   │   │   │           └── ParticipantTileFocus.tsx
     │   │   │   ├── participants
     │   │   │   │   ├── api
     │   │   │   │   │   ├── enterRoom.ts
@@ -853,6 +864,7 @@
     │   │   │   │   │   ├── useMetadataCollectorEnabled.ts
     │   │   │   │   │   ├── useMutateRecording.ts
     │   │   │   │   │   ├── useRecordingStatuses.ts
+    │   │   │   │   │   ├── useRecordingWaitingForTracks.ts
     │   │   │   │   │   └── useRoomMetadata.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── routes
@@ -904,6 +916,9 @@
     │   │   │   │   │   │   ├── MuteAlertDialogProvider.tsx
     │   │   │   │   │   │   ├── RoomMetadataSynchronizer.tsx
     │   │   │   │   │   │   ├── ScreenShareErrorModal.tsx
+    │   │   │   │   │   │   ├── ScreenShareFullscreenButton.tsx
+    │   │   │   │   │   │   ├── ScreenShareZoomControls.tsx
+    │   │   │   │   │   │   ├── ScreenShareZoomableVideo.tsx
     │   │   │   │   │   │   ├── SidePanel.tsx
     │   │   │   │   │   │   ├── SyncDevicePreferences.tsx
     │   │   │   │   │   │   ├── Tools.tsx
@@ -977,6 +992,7 @@
     │   │   │   │   │   │   ├── useRoomData.ts
     │   │   │   │   │   │   ├── useRoomId.ts
     │   │   │   │   │   │   ├── useRoomPageTitle.ts
+    │   │   │   │   │   │   ├── useScreenShareZoom.ts
     │   │   │   │   │   │   ├── useSidePanel.ts
     │   │   │   │   │   │   ├── useSyncLiveKitMetadata.ts
     │   │   │   │   │   │   ├── useSyncTrackDeviceId.ts
@@ -994,7 +1010,8 @@
     │   │   │   │   │   │   └── RnnNoiseProcessor.ts
     │   │   │   │   │   └── utils
     │   │   │   │   │       ├── constants.ts
-    │   │   │   │   │       └── mediaPermissions.ts
+    │   │   │   │   │       ├── mediaPermissions.ts
+    │   │   │   │   │       └── screenShareZoom.ts
     │   │   │   │   ├── routes
     │   │   │   │   │   ├── Feedback.tsx
     │   │   │   │   │   └── Room.tsx
@@ -1271,9 +1288,9 @@
     │   │       ├── external_secret.yaml
     │   │       ├── external_secret_deployment.yaml
     │   │       ├── frontend_nginx_cm.yaml
+    │   │       ├── garage.yaml
     │   │       ├── kc-postgresql-sts.yaml
     │   │       ├── keycloak-sts.yaml
-    │   │       ├── minio.yaml
     │   │       ├── postgresql-sts.yaml
     │   │       └── redis.yaml
     │   ├── helmfile.yaml.gotmpl
@@ -1400,7 +1417,6 @@
         │   ├── __init__.py
         │   ├── api
         │   │   ├── __init__.py
-        │   │   ├── health.py
         │   │   ├── main.py
         │   │   └── route
         │   │       ├── __init__.py
@@ -1410,6 +1426,7 @@
         │   │   ├── analytics.py
         │   │   ├── celery_config.py
         │   │   ├── celery_worker.py
+        │   │   ├── checks.py
         │   │   ├── config.py
         │   │   ├── docs_service.py
         │   │   ├── file_service.py
@@ -1424,6 +1441,7 @@
         │   │   ├── models.py
         │   │   ├── prompt.py
         │   │   ├── security.py
+        │   │   ├── sentry.py
         │   │   ├── shared_models.py
         │   │   ├── transcript_formatter.py
         │   │   ├── types.py
@@ -1452,6 +1470,7 @@
         │   │   └── test_whisper_x_response.py
         │   └── unit
         │       ├── test_file_service.py
+        │       ├── test_sentry.py
         │       └── test_user_assign.py
         └── uv.lock
-273 directories, 1183 files
+273 directories, 1202 files
