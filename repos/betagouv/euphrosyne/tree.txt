@@ -16,6 +16,7 @@
 ├── .prettierignore
 ├── .pylintrc
 ├── .python-version
+├── AGENTS.md
 ├── EUPHROSYNE.md
 ├── LICENSE
 ├── Procfile
@@ -167,6 +168,7 @@
 │   └── tests
 │       ├── __init__.py
 │       ├── factories.py
+│       ├── test_access_event_permissions.py
 │       ├── test_admin.py
 │       ├── test_api_urls.py
 │       ├── test_api_views.py
@@ -541,6 +543,7 @@
 │   │   ├── models.py
 │   │   └── tests
 │   │       ├── __init__.py
+│   │       ├── test_api_permissions.py
 │   │       └── test_models.py
 │   ├── methods
 │   │   ├── __init__.py
@@ -842,7 +845,9 @@
 │   │   ├── api_views
 │   │   │   ├── __init__.py
 │   │   │   ├── test_calendar.py
+│   │   │   ├── test_image_and_object_permissions.py
 │   │   │   ├── test_objects.py
+│   │   │   ├── test_participation_permissions.py
 │   │   │   ├── test_participation_serializers.py
 │   │   │   ├── test_participation_views.py
 │   │   │   ├── test_permissions.py
@@ -1057,6 +1062,7 @@
 │   │   │   ├── test_pdf.py
 │   │   │   ├── test_text_utils.py
 │   │   │   └── test_views.py
+│   │   ├── test_api_permissions.py
 │   │   └── test_views.py
 │   ├── urls.py
 │   └── views.py
@@ -1092,11 +1098,13 @@
 │   ├── __init__.py
 │   ├── apps.py
 │   ├── backends.py
+│   ├── invitations.py
 │   ├── pipeline.py
 │   ├── templates
 │   │   └── oauth_complete_information_form.html
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── test_invitation_flow.py
 │   │   └── views
 │   │       ├── __init__.py
 │   │       └── test_user_complete_account_view.py
@@ -1236,13 +1244,16 @@
 │   │               └── change_list.html
 │   └── tests
 │       ├── __init__.py
+│       ├── test_api_permissions.py
 │       ├── test_api_views.py
 │       └── test_models.py
 ├── static_pages
 │   ├── __init__.py
 │   ├── apps.py
 │   ├── pages
-│   │   ├── accessibility_declaration.md
+│   │   ├── accessibility_declaration
+│   │   │   ├── en.md
+│   │   │   └── fr.md
 │   │   ├── accessibility_map.md
 │   │   ├── accessibility_multiyear_schema.md
 │   │   ├── cgu
@@ -1264,4 +1275,4 @@
 │   └── global.d.ts
 ├── vite.config.ts
 └── webpack.config.js
-270 directories, 996 files
+271 directories, 1006 files

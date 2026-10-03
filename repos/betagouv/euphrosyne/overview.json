@@ -1,17 +1,16 @@
 {
   "url": "https://github.com/betagouv/euphrosyne",
   "name": "euphrosyne",
-  "description": "Application web dédiée à la gestion et à l'exploration de données scientifiques issues d'analyses du patrimoine. Elle permet la gestion de projets de recherche, la documentation d'expériences et la visualisation de données.",
+  "description": "Application web dédiée à la gestion et à l'exploration de données scientifiques issues d'analyses du patrimoine. Elle facilite la gestion de projets, la documentation expérimentale et la visualisation de données pour la recherche.",
   "language": "Python",
   "features": [
     "Gestion métier générale",
-    "Collaboration & Workflow",
-    "Visualisation de données & Cartographie",
-    "Données & Schémas",
     "Suivi & Traçabilité",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Authentification & Accès"
+    "Données & Schémas",
+    "Collaboration & Workflow",
+    "API & Intégrations",
+    "Visualisation de données & Cartographie",
+    "Recherche & Filtres"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -21,31 +20,38 @@
     "Elasticsearch",
     "Azure Storage",
     "Webpack",
-    "Vitest",
-    "pytest"
+    "Axios",
+    "Sentry"
   ],
   "components": [
-    "Python (scripts & backend)",
     "Django",
+    "Python (scripts & backend)",
     "TypeScript / JavaScript",
     "React / Next.js",
     "API REST & GraphQL",
-    "Tests"
+    "PostgreSQL & SQL",
+    "Design System (DSFR & UI libs)",
+    "Intégrations services externes",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "jwt",
+      "session"
     ],
     "providers": [
       "ORCID"
     ]
   },
-  "tests": "Vitest (frontend), pytest (backend)",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Vitest",
+    "Pytest"
   ],
-  "lastActivity": "2026-08-27T05:18:49Z",
+  "workflows": [
+    "test.yaml"
+  ],
+  "lastActivity": "2026-10-01T19:41:45+02:00",
   "status": "active",
   "license": "ISC",
   "hasDocumentation": true,
@@ -53,8 +59,10 @@
     "Données & Open Data",
     "Python",
     "TypeScript",
-    "React & Next.js",
-    "CI/CD & GitHub Actions",
-    "Bases de données SQL"
+    "JavaScript",
+    "Django & FastAPI",
+    "Tests & Qualité",
+    "Design System & UI",
+    "Git & DevOps"
   ]
 }
