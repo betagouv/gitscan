@@ -62,6 +62,7 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── Docker.md
+│   ├── audit-trail.md
 │   ├── backup.md
 │   ├── coding-style.md
 │   ├── developing.md
@@ -288,6 +289,7 @@
 │   │   ├── management
 │   │   │   └── commands
 │   │   │       └── cleanup_audit_trails.py
+│   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   └── __init__.py
@@ -354,6 +356,7 @@
 │   │   ├── fixtures
 │   │   │   ├── fluxIAE_AnnexeFinanciere_22022022_112211.csv.gz
 │   │   │   └── fluxIAE_Structure_22022022_112211.csv.gz
+│   │   ├── fixtures.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -394,6 +397,13 @@
 │   │   ├── notifications.py
 │   │   ├── perms.py
 │   │   └── transfer.py
+│   ├── directory
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
 │   ├── eligibility
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -592,9 +602,10 @@
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
-│   │   │       ├── import_emplois_orientations.py
+│   │   │       ├── delete_orientations_documents.py
+│   │   │       ├── expire_orientations.py
 │   │   │       ├── import_structures_and_services.py
-│   │   │       └── sync_orientation_statuses.py
+│   │   │       └── send_orientations_reminder_emails.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_structure_opening_hours.py
@@ -610,8 +621,13 @@
 │   │   │   ├── 0012_alter_orientation_status_orientationtransitionlog.py
 │   │   │   ├── 0013_orientation_documents.py
 │   │   │   ├── 0014_orientationprocesslink.py
+│   │   │   ├── 0015_orientation_refusal_details_and_more.py
+│   │   │   ├── 0016_orientation_last_reminder_email_sent_at.py
+│   │   │   ├── 0017_remove_orientation_attachments_alter_orientation_id.py
+│   │   │   ├── 0018_remove_mobilizationevent_authenticated_user_has_organization.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── notifications.py
 │   │   ├── opening_hours.py
 │   │   └── utils.py
 │   ├── institutions
@@ -654,6 +670,7 @@
 │   │   │   ├── 0008_jobapplication_accepted_only_fields.py
 │   │   │   ├── 0009_alter_jobapplicationcomment_created_by.py
 │   │   │   ├── 0010_hard_remove_jobapplication_prehiring_guidance_days.py
+│   │   │   ├── 0011_jobapplication_one_job_seeker_per_approval.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -716,11 +733,6 @@
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── enums.py
-│   │   ├── management
-│   │   │   ├── __init__.py
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       └── populate_metabase_nexus.py
 │   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -1137,10 +1149,8 @@
 │   │   │   │   ├── job_application_accept_form.html
 │   │   │   │   ├── job_application_add_comment.html
 │   │   │   │   ├── job_application_answers.html
-│   │   │   │   ├── job_application_box_for_user.html
 │   │   │   │   ├── job_application_comments_counter.html
 │   │   │   │   ├── job_application_comments_list.html
-│   │   │   │   ├── job_application_creation_info.html
 │   │   │   │   ├── job_application_delete_comment.html
 │   │   │   │   ├── job_application_diagoriente_invite.html
 │   │   │   │   ├── job_application_external_transfer_progress.html
@@ -1175,7 +1185,6 @@
 │   │   │   │   ├── out_of_band_changes_on_job_application_state_update_siae.html
 │   │   │   │   ├── profile_infos.html
 │   │   │   │   ├── selected_job_applications.html
-│   │   │   │   ├── selected_jobs_list.html
 │   │   │   │   ├── siae_actions.html
 │   │   │   │   ├── siae_batch_actions.html
 │   │   │   │   ├── siae_batch_actions_modals.html
@@ -1531,6 +1540,7 @@
 │   │   ├── hijack
 │   │   │   └── notification.html
 │   │   ├── includes
+│   │   │   ├── applications_orientations_tabs.html
 │   │   │   ├── btn_dropdown_filter
 │   │   │   │   ├── checkboxes.html
 │   │   │   │   └── radio.html
@@ -1557,7 +1567,45 @@
 │   │   │   ├── tarteaucitron_matomo.html
 │   │   │   └── update_admin.html
 │   │   ├── insertion
+│   │   │   ├── email
+│   │   │   │   ├── accepted_for_beneficiary_body.md
+│   │   │   │   ├── accepted_for_beneficiary_subject.txt
+│   │   │   │   ├── accepted_for_referent_body.md
+│   │   │   │   ├── accepted_for_referent_subject.txt
+│   │   │   │   ├── accepted_for_sender_body.md
+│   │   │   │   ├── accepted_for_sender_subject.txt
+│   │   │   │   ├── accepted_for_structure_body.md
+│   │   │   │   ├── accepted_for_structure_subject.txt
+│   │   │   │   ├── expired_for_beneficiary_body.md
+│   │   │   │   ├── expired_for_beneficiary_subject.txt
+│   │   │   │   ├── expired_for_referent_body.md
+│   │   │   │   ├── expired_for_referent_subject.txt
+│   │   │   │   ├── expired_for_sender_body.md
+│   │   │   │   ├── expired_for_sender_subject.txt
+│   │   │   │   ├── expired_for_structure_body.md
+│   │   │   │   ├── expired_for_structure_subject.txt
+│   │   │   │   ├── new_for_beneficiary_body.md
+│   │   │   │   ├── new_for_beneficiary_subject.txt
+│   │   │   │   ├── new_for_referent_body.md
+│   │   │   │   ├── new_for_referent_subject.txt
+│   │   │   │   ├── new_for_sender_body.md
+│   │   │   │   ├── new_for_sender_subject.txt
+│   │   │   │   ├── new_for_structure_body.md
+│   │   │   │   ├── new_for_structure_subject.txt
+│   │   │   │   ├── new_link_for_structure_body.md
+│   │   │   │   ├── new_link_for_structure_subject.txt
+│   │   │   │   ├── refused_for_beneficiary_body.md
+│   │   │   │   ├── refused_for_beneficiary_subject.txt
+│   │   │   │   ├── refused_for_referent_body.md
+│   │   │   │   ├── refused_for_referent_subject.txt
+│   │   │   │   ├── refused_for_sender_body.md
+│   │   │   │   ├── refused_for_sender_subject.txt
+│   │   │   │   ├── refused_for_structure_body.md
+│   │   │   │   ├── refused_for_structure_subject.txt
+│   │   │   │   ├── reminder_for_structure_body.md
+│   │   │   │   └── reminder_for_structure_subject.txt
 │   │   │   ├── includes
+│   │   │   │   ├── checkboxes_formgroup.html
 │   │   │   │   ├── orientation_beneficiary_contact.html
 │   │   │   │   ├── orientation_credentials_list.html
 │   │   │   │   ├── orientation_disclaimer_alert.html
@@ -1578,7 +1626,8 @@
 │   │   │   │   │   │   ├── structures.html
 │   │   │   │   │   │   └── top_filters.html
 │   │   │   │   │   ├── list_counter.html
-│   │   │   │   │   └── list_orientations.html
+│   │   │   │   │   ├── list_orientations.html
+│   │   │   │   │   └── service_provider_actions.html
 │   │   │   │   ├── register_mobilization_event.html
 │   │   │   │   ├── structure_card_tab_description.html
 │   │   │   │   ├── structure_card_tab_services.html
@@ -1586,8 +1635,10 @@
 │   │   │   ├── orientation_select_job_seeker.html
 │   │   │   ├── orientation_wizard.html
 │   │   │   ├── orientations
+│   │   │   │   ├── ask_for_new_orientation_process_link.html
 │   │   │   │   ├── details.html
-│   │   │   │   └── list.html
+│   │   │   │   ├── list.html
+│   │   │   │   └── refuse.html
 │   │   │   ├── service_card.html
 │   │   │   ├── service_response_time.html
 │   │   │   └── structure_card.html
@@ -1628,6 +1679,7 @@
 │   │   │   ├── includes
 │   │   │   │   ├── advisor.html
 │   │   │   │   ├── assignment_actions.html
+│   │   │   │   ├── assignments_nav_tabs.html
 │   │   │   │   ├── badge_assignment_duration.html
 │   │   │   │   ├── button_display_advisor_contact_info.html
 │   │   │   │   ├── button_display_last_advisor_contact_info.html
@@ -1650,6 +1702,7 @@
 │   │   │   │   ├── last_advisor.html
 │   │   │   │   ├── list_counter.html
 │   │   │   │   ├── list_job_applications.html
+│   │   │   │   ├── list_orientations.html
 │   │   │   │   ├── list_reset_filters.html
 │   │   │   │   ├── list_results.html
 │   │   │   │   ├── nav_tabs.html
@@ -1661,6 +1714,7 @@
 │   │   │   ├── list.html
 │   │   │   ├── nir_modification_request.html
 │   │   │   ├── nir_modification_success.html
+│   │   │   ├── orientations.html
 │   │   │   ├── overview.html
 │   │   │   ├── step_check_job_seeker_nir.html
 │   │   │   ├── step_search_job_seeker_by_email.html
@@ -1679,6 +1733,7 @@
 │   │   │   ├── _organization_switcher_nexus.html
 │   │   │   ├── _organization_switcher_offcanvas.html
 │   │   │   ├── base.html
+│   │   │   ├── base_email_for_beneficiary_text_body.md
 │   │   │   ├── base_email_signature.txt
 │   │   │   ├── base_email_text_body.md
 │   │   │   ├── base_email_text_subject.txt
@@ -1689,8 +1744,6 @@
 │   │   ├── nexus
 │   │   │   ├── base_service.html
 │   │   │   ├── components
-│   │   │   │   ├── dropdown.html
-│   │   │   │   ├── dropdown_no_proconnect.html
 │   │   │   │   └── new_service.html
 │   │   │   ├── contact.html
 │   │   │   ├── dora.html
@@ -1959,6 +2012,7 @@
 │   │   │   ├── 0060_fill_jobseeker_assignments_from_gps.py
 │   │   │   ├── 0061_remove_jobseekerprofile_created_by_prescriber_organization.py
 │   │   │   ├── 0062_remove_jobseekerprofile_ft_gps_id.py
+│   │   │   ├── 0063_harmonize_deactivated_users.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -2012,7 +2066,6 @@
 │   │   │   └── __init__.py
 │   │   ├── immersion_facile.py
 │   │   ├── iso_standards.py
-│   │   ├── iterators.py
 │   │   ├── json.py
 │   │   ├── json_no_auto_fields_serializer.py
 │   │   ├── legal_terms.py
@@ -2078,7 +2131,6 @@
 │   │   │   ├── default_if_invalid.py
 │   │   │   ├── demo_accounts.py
 │   │   │   ├── dict_filters.py
-│   │   │   ├── dora.py
 │   │   │   ├── enums.py
 │   │   │   ├── format_filters.py
 │   │   │   ├── job_application_actions.py
@@ -2102,7 +2154,8 @@
 │   │   ├── tokens.py
 │   │   ├── triggers
 │   │   │   ├── __init__.py
-│   │   │   └── middleware.py
+│   │   │   ├── middleware.py
+│   │   │   └── migration.py
 │   │   ├── types.py
 │   │   ├── urls.py
 │   │   ├── validators.py
@@ -2152,7 +2205,6 @@
 │       │   ├── __init__.py
 │       │   ├── urls.py
 │       │   └── views.py
-│       ├── constants.py
 │       ├── dashboard
 │       │   ├── __init__.py
 │       │   ├── forms.py
@@ -2424,6 +2476,8 @@
     │   ├── __snapshots__
     │   │   └── test_campaigns.ambr
     │   ├── factories.py
+    │   ├── templates
+    │   │   └── body.md
     │   ├── test_admin.py
     │   ├── test_cache.py
     │   ├── test_campaigns.py
@@ -2451,6 +2505,8 @@
     │   ├── empty.pdf
     │   ├── empty.xlsx
     │   └── github.json
+    ├── directory
+    │   └── __init__.py
     ├── eligibility
     │   ├── __init__.py
     │   ├── admin_utils.py
@@ -2515,7 +2571,11 @@
     ├── insertion
     │   ├── __init__.py
     │   ├── __snapshots__
-    │   │   └── test_import_structures_and_services.ambr
+    │   │   ├── test_delete_orientations_documents.ambr
+    │   │   ├── test_expire_orientations.ambr
+    │   │   ├── test_import_structures_and_services.ambr
+    │   │   ├── test_notifications.ambr
+    │   │   └── test_send_orientations_reminder_emails.ambr
     │   ├── api_mocks
     │   │   ├── data_inclusion
     │   │   │   ├── doc
@@ -2536,12 +2596,14 @@
     │   │       └── services.json
     │   ├── factories.py
     │   ├── test_admin.py
-    │   ├── test_import_emplois_orientations.py
+    │   ├── test_delete_orientations_documents.py
+    │   ├── test_expire_orientations.py
     │   ├── test_import_structures_and_services.py
     │   ├── test_models.py
+    │   ├── test_notifications.py
     │   ├── test_opening_hours.py
     │   ├── test_orientation.py
-    │   └── test_sync_orientation_statuses.py
+    │   └── test_send_orientations_reminder_emails.py
     ├── institutions
     │   ├── __init__.py
     │   ├── factories.py
@@ -2609,8 +2671,7 @@
     │   ├── test_admin.py
     │   ├── test_middleware.py
     │   ├── test_models.py
-    │   ├── test_utils.py
-    │   └── tests_management_commands.py
+    │   └── test_utils.py
     ├── openid_connect
     │   ├── __init__.py
     │   ├── france_connect
@@ -2627,7 +2688,8 @@
     │   │   ├── __init__.py
     │   │   ├── testing.py
     │   │   └── tests.py
-    │   └── test_cleanup_oidc_states.py
+    │   ├── test_cleanup_oidc_states.py
+    │   └── tests.py
     ├── otp
     │   ├── __init__.py
     │   ├── factories.py
@@ -2684,7 +2746,8 @@
     │   ├── test_models.py
     │   ├── test_perms.py
     │   ├── test_sync_group_and_perms.py
-    │   └── test_terms_acceptance.py
+    │   ├── test_terms_acceptance.py
+    │   └── test_utils.py
     ├── utils
     │   ├── __init__.py
     │   ├── __snapshots__
@@ -2732,7 +2795,6 @@
     │   ├── test_diff.py
     │   ├── test_hijack.py
     │   ├── test_immersion_facile.py
-    │   ├── test_iterators.py
     │   ├── test_legal_terms.py
     │   ├── test_loaddata_bulk.py
     │   ├── test_logger.py
@@ -3025,4 +3087,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-499 directories, 2528 files
+502 directories, 2587 files

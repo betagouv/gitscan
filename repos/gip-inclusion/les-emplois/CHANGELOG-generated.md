@@ -1,40 +1,42 @@
-## Changelog : les-emplois (30 derniers jours, au 25 septembre 2026)
+## Changelog : les-emplois (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une évolution majeure de l'identité visuelle du projet, qui devient "La plateforme de l'inclusion". Les utilisateurs bénéficient d'une expérience enrichie grâce à la création d'un nouvel onglet de synthèse pour le suivi des dossiers, d'une gestion plus fluide des orientations et d'un système d'alertes amélioré (fins de contrat, webinaires). L'outil gagne également en fiabilité avec une piste d'audit renforcée et une meilleure automatisation de la gestion des dossiers salariés.
+Ce mois a été marqué par un changement d'identité majeur avec le passage de "Les Emplois de l'inclusion" à "La plateforme de l'inclusion". Les évolutions se sont concentrées sur l'amélioration du parcours d'orientation (notifications automatiques, gestion simplifiée par les services) et sur l'enrichissement de l'expérience utilisateur, notamment via la création d'un nouvel onglet de synthèse pour les profils usagers.
 
 ### Évolutions fonctionnelles
-- **Identité et Branding** : Transition complète vers le nouveau nom "La plateforme de l'inclusion" (logos, textes légaux, documentation et API).
-- **Suivi des usagers (Vue Synthèse)** : Création d'un nouvel onglet "Synthèse" regroupant les informations essentielles : conseiller référent, dernières candidatures, et informations sur les contrats en cours.
-- **Gestion des accompagnements et orientations** :
-    - Automatisation de la création d'un accompagnement lors de l'orientation d'un bénéficiaire.
-    - Mise en place de "liens magiques" pour permettre aux structures de consulter les détails d'une orientation de manière sécurisée.
-    - Ajout de filtres sur les accompagnements et possibilité d'archiver des dossiers.
-- **Alertes et notifications** :
-    - Mise en place de bannières d'alerte pour signaler les fins de contrat imminentes (pour les employeurs et prescripteurs).
-    - Ajout de notifications concernant les opportunités d'immersion.
-    - Introduction de bannières d'information pour les webinaires thématiques.
-- **Recherche et annuaire** :
-    - Amélioration de la recherche d'entreprises.
-    - Ajout de la géolocalisation des structures dans l'annuaire professionnel par ville.
-- **Gestion des dossiers salariés** : Amélioration de la gestion des erreurs lors de la synchronisation des fiches salariés et automatisation de certains traitements.
+- **Identité et Branding** : Rebranding complet du projet (nom, logos, mentions légales et documentation) pour devenir "La plateforme de l'inclusion".
+- **Parcours d'orientation** : 
+    - Amélioration du suivi avec l'envoi automatique d'e-mails (création, acceptation, refus, expiration et rappels).
+    - Possibilité pour les prestataires de services d'accepter ou de décliner une orientation directement depuis l'interface.
+    - Ajout de la possibilité pour les usagers de s'inscrire à des événements de mobilisation.
+- **Profils Usagers** : 
+    - Création d'un nouvel onglet "Synthèse" regroupant les informations clés (conseillers, fin de contrat, dernières candidatures).
+    - Mise à jour de la terminologie pour privilégier le terme "Usager" au détriment de "Candidat".
+- **Gestion des professionnels et prescripteurs** : 
+    - Réorganisation des menus d'affectation (prescripteurs et employeurs).
+    - Mise en place d'alertes et de compteurs pour les fins de contrat imminentes.
+    - Possibilité pour les professionnels de demander à devenir conseillers.
+- **PASS IAE** : Intégration de la clôture des PASS IAE via un formulaire interne (remplaçant l'outil externe Tally) avec notification automatique des usagers.
+- **Annuaire Pro** : Ajout de préférences de visibilité et de la géolocalisation des structures dans l'administration.
+- **Interface & Accessibilité** : 
+    - Ajout d'une déclaration d'accessibilité détaillée.
+    - Amélioration de l'ergonomie des filtres de recherche et des notifications à l'écran (toasts).
 
 ### Évolutions techniques
-- **Sécurité et Traçabilité** :
-    - Implémentation d'une piste d'audit (audit trail) pour suivre les actions sur la plateforme.
-    - Sécurisation des processus de fermeture des approbations (passage de requêtes GET à des méthodes sécurisées).
-    - Amélioration de la gestion des clés de sécurité (JWKS) avec mise en cache.
-- **Architecture et Refactoring** :
-    - Nettoyage du code avec la suppression de l'application de recommandations et de certains composants obsolètes.
-    - Refactorisation de la logique métier liée aux processus de fermeture des PASS IAE et aux orientations.
-- **Données et Statistiques** :
-    - Enrichissement des tableaux de bord Metabase avec de nouvelles métriques (délais de transition, données GEIQ, identifiants uniques).
-- **Performance et Qualité** :
-    - Optimisation des scripts de migration de données (CV).
-    - Amélioration de la suite de tests et de la gestion des snapshots.
-    - Intégration de nouveaux marqueurs de tracking Matomo pour analyser l'usage des offres et des filtres.
+- **Traçabilité** : Implémentation d'un système de piste d'audit (audit trail) pour suivre les actions et les sessions utilisateurs.
+- **Gestion des utilisateurs et sécurité** : 
+    - Refonte des processus de désactivation et de réactivation des comptes.
+    - Renforcement de l'obligation d'utiliser ProConnect pour l'authentification des professionnels.
+    - Amélioration de la sécurité des appels OIDC (vérification des nonces).
+- **Fiches salariés** : Sécurisation du processus d'upload des documents et automatisation du traitement de certaines erreurs de saisie.
+- **Performance** : 
+    - Optimisation du temps de démarrage du service (gain de 600 ms).
+    - Mise en cache des clés d'authentification (JWKS) pour accélérer les connexions.
+- **Emails** : Passage au format Markdown pour la rédaction des corps d'e-mails, permettant une mise en forme plus riche.
+- **Refactoring** : 
+    - Nettoyage important du code avec la suppression de modules obsolètes (DORA, recommandations, GPS).
+    - Optimisation de la structure des templates et des requêtes de base de données.
 
 ### Autres changements
-- **Accessibilité** : Publication d'une déclaration d'accessibilité détaillée.
-- **Documentation** : Mise à jour de la documentation technique et des explications relatives au SSO.
-- **Interface** : Nombreuses corrections typographiques, ajustements d'espacement et harmonisation de la mise en page pour améliorer la lisibilité.
+- **Documentation** : Mise à jour des guides d'installation locale et des explications sur le SSO.
+- **Qualité** : Amélioration de la couverture de tests et correction de nombreux problèmes de formatage (espaces, typographie).

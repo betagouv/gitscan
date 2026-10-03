@@ -5,25 +5,24 @@
   "language": "Python",
   "features": [
     "Recherche & Filtres",
+    "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "Notifications & Alertes",
     "Statistiques & Rapports",
     "Suivi & Traçabilité",
     "Gestion métier générale",
-    "Tableaux & Affichage"
+    "Authentification & Accès"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "MinIO",
     "Redis",
+    "MinIO",
     "GDAL",
-    "pytest",
     "uv",
-    "psycopg"
+    "pytest"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,34 +30,32 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Django",
-    "HTML / CSS / Templates visuels",
     "Authentification (composant)",
-    "Scripts & Utilitaires",
-    "ORM & Accès aux données"
+    "ORM & Accès aux données",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "mfa",
       "sso",
-      "mfa"
+      "jwt",
+      "session"
     ],
     "providers": [
-      "ProConnect",
-      "FranceConnect"
+      "ProConnect"
     ]
   },
   "tests": "pytest",
-  "lastActivity": "2026-09-21T00:00:00Z",
+  "lastActivity": "2026-09-28T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
-    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Accessibilité",
-    "Données & Open Data"
+    "Écosystème beta.gouv / État"
   ]
 }
