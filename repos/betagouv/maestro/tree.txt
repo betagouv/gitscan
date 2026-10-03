@@ -175,8 +175,6 @@
 │   │   │   │   │   └── PrescriptionModal.tsx
 │   │   │   │   ├── PrescriptionNotes
 │   │   │   │   │   └── PrescriptionNotes.tsx
-│   │   │   │   ├── PrescriptionStages
-│   │   │   │   │   └── PrescriptionStages.tsx
 │   │   │   │   └── PrescriptionSubstances
 │   │   │   │       └── PrescriptionSubstances.tsx
 │   │   │   ├── ProgrammingPlanDisplayStatusBadge
@@ -267,6 +265,9 @@
 │   │   │       ├── AppSelect
 │   │   │       │   ├── AppSelect.tsx
 │   │   │       │   └── AppSelectOption.ts
+│   │   │       ├── AppSelectionModal
+│   │   │       │   ├── AppSelectionModal.scss
+│   │   │       │   └── AppSelectionModal.tsx
 │   │   │       ├── AppTextAreaInput
 │   │   │       │   └── AppTextAreaInput.tsx
 │   │   │       ├── AppTextInput
@@ -403,7 +404,6 @@
 │   │       │   └── HomeViewContainer.stories.tsx
 │   │       ├── LaboratoryAgreementsView
 │   │       │   ├── LaboratoryAgreementsModal
-│   │       │   │   ├── LaboratoryAgreementsModal.scss
 │   │       │   │   ├── LaboratoryAgreementsModal.stories.tsx
 │   │       │   │   └── LaboratoryAgreementsModal.tsx
 │   │       │   ├── LaboratoryAgreementsTable
@@ -425,6 +425,8 @@
 │   │       ├── ProgrammingPlanSettingsView
 │   │       │   ├── ProgrammingPlanDeleteModal
 │   │       │   │   └── ProgrammingPlanDeleteModal.tsx
+│   │       │   ├── ProgrammingPlanDocuments
+│   │       │   │   └── ProgrammingPlanDocuments.tsx
 │   │       │   ├── ProgrammingPlanDomainCreateModal.tsx
 │   │       │   ├── ProgrammingPlanDomainView
 │   │       │   │   ├── ProgrammingPlanDomainView.stories.tsx
@@ -434,6 +436,17 @@
 │   │       │   ├── ProgrammingPlanGlobalSettings
 │   │       │   │   ├── ProgrammingPlanGlobalSettings.scss
 │   │       │   │   └── ProgrammingPlanGlobalSettings.tsx
+│   │       │   ├── ProgrammingPlanMatrixSettings
+│   │       │   │   ├── MatrixSelectionModal.scss
+│   │       │   │   ├── MatrixSelectionModal.stories.tsx
+│   │       │   │   ├── MatrixSelectionModal.tsx
+│   │       │   │   ├── MatrixSelectionRows.tsx
+│   │       │   │   ├── MatrixTag.scss
+│   │       │   │   ├── MatrixTag.tsx
+│   │       │   │   ├── ProgrammingPlanMatrixSettings.stories.tsx
+│   │       │   │   ├── ProgrammingPlanMatrixSettings.tsx
+│   │       │   │   ├── matrixSelection.test.ts
+│   │       │   │   └── matrixSelection.ts
 │   │       │   ├── ProgrammingPlanNationalCoordinators
 │   │       │   │   └── ProgrammingPlanNationalCoordinators.tsx
 │   │       │   ├── ProgrammingPlanSampleSettings
@@ -510,6 +523,7 @@
 │   │       │   │   └── ProgrammingPrescriptionTableParts.tsx
 │   │       │   ├── ProgrammingView.scss
 │   │       │   ├── ProgrammingView.tsx
+│   │       │   ├── prescriptionPlan.ts
 │   │       │   └── stories
 │   │       │       ├── ProgrammingViewDAOAInProgress.stories.tsx
 │   │       │       ├── ProgrammingViewDAOASubmittedToDepartments.stories.tsx
@@ -817,7 +831,13 @@
 │   │   │   ├── 127-diffusion-watermarks.ts
 │   │   │   ├── 128-sample-settings-substance-kinds.ts
 │   │   │   ├── 129-draft-sample-items-from-settings.ts
-│   │   │   └── 130-document-year-from-programming-plans.ts
+│   │   │   ├── 130-document-year-from-programming-plans.ts
+│   │   │   ├── 131-ppv-sub-plan-per-prescription.ts
+│   │   │   ├── 132-prescriptions-unique-sub-plan.ts
+│   │   │   ├── 132-stage-as-specific-data-field.ts
+│   │   │   ├── 133-sub-plans-matrix.ts
+│   │   │   ├── 134-sub-plans-matrices.ts
+│   │   │   └── 135-matrices-managed.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -884,6 +904,7 @@
 │   │   ├── kysely.ts
 │   │   ├── kysely.type.ts
 │   │   ├── laboratoryAgreementCheckRepository.ts
+│   │   ├── laboratoryAgreementRepository.test.ts
 │   │   ├── laboratoryAgreementRepository.ts
 │   │   ├── laboratoryAnalyticalCompetenceRepository.ts
 │   │   ├── laboratoryRepository.test.ts
@@ -898,10 +919,12 @@
 │   │   ├── noticesRepository.ts
 │   │   ├── notificationRepository.ts
 │   │   ├── prescriptionChangeRepository.ts
+│   │   ├── prescriptionRepository.test.ts
 │   │   ├── prescriptionRepository.ts
 │   │   ├── prescriptionSubstanceRepository.ts
 │   │   ├── programmingPlanDomainRepository.test.ts
 │   │   ├── programmingPlanDomainRepository.ts
+│   │   ├── programmingPlanRepository.test.ts
 │   │   ├── programmingPlanRepository.ts
 │   │   ├── programmingPlanSettingsRow.ts
 │   │   ├── programmingSubPlanRepository.ts
@@ -1021,6 +1044,7 @@
 │   │   ├── imapService
 │   │   │   ├── analysis-handler.integration.test.ts
 │   │   │   ├── analysis-handler.ts
+│   │   │   ├── extractError.test.ts
 │   │   │   ├── extractError.ts
 │   │   │   ├── index.ts
 │   │   │   ├── labErrorReply.test.ts
@@ -1061,6 +1085,7 @@
 │   │   │   ├── pdfService.test.ts
 │   │   │   └── pdfService.ts
 │   │   ├── prescriptionDiffusionService.ts
+│   │   ├── prescriptionImportService.test.ts
 │   │   ├── prescriptionImportService.ts
 │   │   ├── programmingPlanDeletionService.ts
 │   │   ├── programmingPlanDuplicationService.integration.test.ts
@@ -1175,7 +1200,6 @@
 │   │   │   ├── SSD2Referential.ts
 │   │   │   └── SandreToSSD2.ts
 │   │   ├── Stage.ts
-│   │   ├── SubStage.ts
 │   │   ├── alertEmails.ts
 │   │   └── region.test.ts
 │   ├── routes
@@ -1301,6 +1325,8 @@
 │   │   │   ├── ProgrammingPlans.test.ts
 │   │   │   ├── ProgrammingPlans.ts
 │   │   │   ├── ProgrammingSubPlan.ts
+│   │   │   ├── SubPlanMatrices.test.ts
+│   │   │   ├── SubPlanMatrices.ts
 │   │   │   ├── completedSubPlanSettings.test.ts
 │   │   │   └── completedSubPlanSettings.ts
 │   │   ├── SachaCommemoratif
@@ -1378,4 +1404,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-238 directories, 1142 files
+240 directories, 1166 files
