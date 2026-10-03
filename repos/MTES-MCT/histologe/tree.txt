@@ -40,6 +40,7 @@
 │   └── nginx
 │       └── server.location
 ├── .slugignore
+├── Aptfile
 ├── LICENSE
 ├── Makefile
 ├── Procfile
@@ -112,8 +113,9 @@
 │   │   │   │   │   └── back_partner_index.js
 │   │   │   │   ├── back_partner_view
 │   │   │   │   │   └── form_partner.js
-│   │   │   │   ├── back_profil_edit_email
-│   │   │   │   │   └── back_profil_edit_email.js
+│   │   │   │   ├── back_profil_edit
+│   │   │   │   │   ├── back_profil_edit_email.js
+│   │   │   │   │   └── back_profil_edit_password.js
 │   │   │   │   ├── back_signalement_edit_file
 │   │   │   │   │   └── back_signalement_edit_file.js
 │   │   │   │   ├── back_signalement_form
@@ -130,6 +132,8 @@
 │   │   │   │   │   ├── personal_note.js
 │   │   │   │   │   ├── toggle-suivi-auto.js
 │   │   │   │   │   └── zip_selection_photos.js
+│   │   │   │   ├── back_signalement_without_address
+│   │   │   │   │   └── back_signalement_without_address.js
 │   │   │   │   ├── back_territory_management_arrete_index
 │   │   │   │   │   └── back_territory_management_arrete_index.js
 │   │   │   │   ├── back_territory_management_document
@@ -203,6 +207,7 @@
 │   │       │   │   │   ├── AddressesHistoryHeader.vue
 │   │       │   │   │   ├── AddressesHistoryList.vue
 │   │       │   │   │   ├── AddressesHistoryListFilters.vue
+│   │       │   │   │   ├── AddressesHistoryListPagination.vue
 │   │       │   │   │   ├── AddressesHistoryMap.vue
 │   │       │   │   │   └── AddressesHistoryMapFilters.vue
 │   │       │   │   ├── composables
@@ -213,6 +218,8 @@
 │   │       │   │   └── types.ts
 │   │       │   ├── common
 │   │       │   │   ├── AppAutoComplete.vue
+│   │       │   │   ├── AppListCheckboxes.types.ts
+│   │       │   │   ├── AppListCheckboxes.vue
 │   │       │   │   ├── AppNumber.vue
 │   │       │   │   ├── AppSearch.vue
 │   │       │   │   ├── HistoBOTabHeader.vue
@@ -296,8 +303,10 @@
 │   │       │   │   ├── matomo.ts
 │   │       │   │   ├── requests.ts
 │   │       │   │   ├── services
+│   │       │   │   │   ├── addressCorrection.ts
 │   │       │   │   │   ├── componentValidator.ts
 │   │       │   │   │   ├── dictionaryManager.ts
+│   │       │   │   │   ├── dictionaryResolver.ts
 │   │       │   │   │   ├── disorderScreenNavigator.ts
 │   │       │   │   │   ├── profileUpdater.ts
 │   │       │   │   │   ├── subscreenManager.ts
@@ -435,15 +444,17 @@
 │   │   └── template-procedure.md
 │   └── postmortems
 │       ├── postmortem-2026-05-signature-key.md
-│       └── postmortem-2026-08-archivage-brouillon.md
+│       ├── postmortem-2026-08-archivage-brouillon.md
+│       └── postmortem-2026-09-html-formulaire-signalement.md
 ├── eslint.vanilla.config.mjs
 ├── eslint.vue.config.mjs
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (131 files)
+│   └── Version*.php  (134 files)
 ├── package-lock.json
 ├── package.json
+├── phpstan-dead-code.neon
 ├── phpstan.neon
 ├── phpunit.xml.dist
 ├── public
@@ -578,6 +589,7 @@
 │   └── upload-s3.sh
 ├── src
 │   ├── Command
+│   │   ├── ArchiveSignalementCommand.php
 │   │   ├── CreateSignalementPhotoVariantsCommand.php
 │   │   ├── Cron
 │   │   │   ├── AbstractCronCommand.php
@@ -598,6 +610,7 @@
 │   │   │   ├── ResetInjonctionNoResponseCommand.php
 │   │   │   ├── RetryFailedEmailsCommand.php
 │   │   │   ├── RetryFailedPushCommand.php
+│   │   │   ├── SendAskTravauxMiseEnConformiteCommand.php
 │   │   │   ├── SendDailyEmailsCommand.php
 │   │   │   ├── SendSuiviWaitingNotificationCommand.php
 │   │   │   ├── SynchronizeEsaboraSCHSCommand.php
@@ -619,12 +632,14 @@
 │   │   │   ├── ForceCloturesDossiersCommand.php
 │   │   │   ├── ForceEsaboraDossierClotureCommand.php
 │   │   │   ├── ManageSignalementAndAddressRelationCommand.php
+│   │   │   ├── MigrateSignalementDraftEtageCommand.php
+│   │   │   ├── RegenerateCodeSuiviCommand.php
+│   │   │   ├── ReinitMDPCommand.php
 │   │   │   ├── UpdateJobEventErrorsCommand.php
 │   │   │   └── UpdateSignalementInvariantRialCommand.php
 │   │   ├── UpdateCommunesCommand.php
 │   │   ├── UpdateMergedCommunesCommand.php
-│   │   ├── UpdateSignalementDocumentFieldsCommand.php
-│   │   └── UpdateSignalementGeolocalisationCommand.php
+│   │   └── UpdateSignalementDocumentFieldsCommand.php
 │   ├── Controller
 │   │   ├── .gitignore
 │   │   ├── Api
@@ -686,6 +701,7 @@
 │   │   │   ├── SignalementNoteController.php
 │   │   │   ├── SignalementSameAddressController.php
 │   │   │   ├── SignalementVisitesController.php
+│   │   │   ├── SignalementWithoutAddressController.php
 │   │   │   ├── SitemapController.php
 │   │   │   ├── TagController.php
 │   │   │   ├── TerritoryFilesController.php
@@ -939,6 +955,7 @@
 │   │   │   ├── Qualification.php
 │   │   │   ├── QualificationStatus.php
 │   │   │   ├── SISHDossierType.php
+│   │   │   ├── SignalementAddressAnomaly.php
 │   │   │   ├── SignalementDraftStatus.php
 │   │   │   ├── SignalementStatus.php
 │   │   │   ├── SuiviCategory.php
@@ -1039,6 +1056,10 @@
 │   │   ├── SuiviCreatedSubscriber.php
 │   │   └── WorkerMessageEventSubscriber.php
 │   ├── Exception
+│   │   ├── Address
+│   │   │   ├── CityNotFoundException.php
+│   │   │   ├── TerritoryInconsistentException.php
+│   │   │   └── TerritoryNotFoundForCityCodeException.php
 │   │   ├── File
 │   │   │   ├── EmptyFileException.php
 │   │   │   ├── MaxUploadSizeExceededException.php
@@ -1051,6 +1072,7 @@
 │   │   └── Suivi
 │   │       └── UsagerNotificationRequiredException.php
 │   ├── Factory
+│   │   ├── AddressFactory.php
 │   │   ├── AddressesHistoryListViewFactory.php
 │   │   ├── Api
 │   │   │   ├── FileFactory.php
@@ -1092,6 +1114,7 @@
 │   │   ├── AddSuiviType.php
 │   │   ├── AddTagType.php
 │   │   ├── AdminCancelInjonctionProcedureType.php
+│   │   ├── AffectationToggleType.php
 │   │   ├── AgentSelectionType.php
 │   │   ├── AutoAffectationRuleImportType.php
 │   │   ├── AutoAffectationRuleType.php
@@ -1136,6 +1159,7 @@
 │   │   ├── SearchPartnerType.php
 │   │   ├── SearchServiceSecoursRouteType.php
 │   │   ├── SearchSignalementInjonctionType.php
+│   │   ├── SearchSignalementWithoutAddressType.php
 │   │   ├── SearchTagType.php
 │   │   ├── SearchTerritoryFilesType.php
 │   │   ├── SearchUserType.php
@@ -1163,6 +1187,7 @@
 │   │   │   ├── CoordonneesSyndicType.php
 │   │   │   ├── InformationsGeneralesType.php
 │   │   │   ├── ProcedureAssuranceType.php
+│   │   │   ├── TravauxMiseEnConformiteType.php
 │   │   │   ├── TypeCompositionType.php
 │   │   │   └── UsagerSituationFoyerType.php
 │   │   ├── StopProcedureType.php
@@ -1228,7 +1253,6 @@
 │   │       │   └── DossierMessageSISHHandler.php
 │   │       ├── FileDuplicationMessageHandler.php
 │   │       ├── GenerateFileZipMessageHandler.php
-│   │       ├── HistoriqueEvenementsMessageHandler.php
 │   │       ├── Idoss
 │   │       │   └── DossierMessageHandler.php
 │   │       ├── InactiveUserExportMessageHandler.php
@@ -1256,6 +1280,9 @@
 │   │   │   ├── FileUpdater.php
 │   │   │   ├── JobEventCleaner.php
 │   │   │   ├── MessengerFailedCleaner.php
+│   │   │   ├── NotificationCleaner.php
+│   │   │   ├── NotificationDeleter.php
+│   │   │   ├── NotificationUpdater.php
 │   │   │   └── SignalementDraftCleaner.php
 │   │   ├── ClubEventRepository.php
 │   │   ├── CommuneRepository.php
@@ -1284,6 +1311,7 @@
 │   │   │   ├── Arrete
 │   │   │   │   └── ArreteQuery.php
 │   │   │   ├── Commune
+│   │   │   │   ├── CommuneEpciQuery.php
 │   │   │   │   └── CommuneStatisticsQuery.php
 │   │   │   ├── Dashboard
 │   │   │   │   ├── DossiersActiviteRecenteQuery.php
@@ -1296,12 +1324,18 @@
 │   │   │   │   ├── NouveauxDossiersKpiQuery.php
 │   │   │   │   └── SignalementsSansAffectationAccepteeQuery.php
 │   │   │   ├── EmailAlert
-│   │   │   │   ├── PartnerQueryService.php
-│   │   │   │   └── UserQueryService.php
+│   │   │   │   ├── AskFeedbackUsagerQuery.php
+│   │   │   │   ├── PartnerQuery.php
+│   │   │   │   └── UserQuery.php
+│   │   │   ├── EmailDeliveryIssueExistsQuery.php
 │   │   │   ├── InAppCommunication
 │   │   │   │   └── InAppCommunicationUserQuery.php
 │   │   │   ├── Interconnection
 │   │   │   │   └── JobEventQuery.php
+│   │   │   ├── Notification
+│   │   │   │   └── NotificationSuiviQuery.php
+│   │   │   ├── Partner
+│   │   │   │   └── PartnerLocalizationQuery.php
 │   │   │   ├── SignalementList
 │   │   │   │   ├── ExportIterableQuery.php
 │   │   │   │   ├── MapGeoDataQuery.php
@@ -1456,7 +1490,7 @@
 │   │   │   ├── Ban
 │   │   │   │   ├── AddressService.php
 │   │   │   │   └── Response
-│   │   │   │       ├── Address.php
+│   │   │   │       ├── BanAddress.php
 │   │   │   │       └── Poi.php
 │   │   │   ├── ProConnect
 │   │   │   │   ├── Model
@@ -1582,6 +1616,7 @@
 │   │   │   ├── SearchPartner.php
 │   │   │   ├── SearchServiceSecoursRoute.php
 │   │   │   ├── SearchSignalementInjonction.php
+│   │   │   ├── SearchSignalementWithoutAddress.php
 │   │   │   ├── SearchTag.php
 │   │   │   ├── SearchTerritoryFiles.php
 │   │   │   ├── SearchUser.php
@@ -1615,6 +1650,7 @@
 │   │   │   │   │   ├── ProfilEditEmailMailer.php
 │   │   │   │   │   └── ProfilEditPasswordMailer.php
 │   │   │   │   ├── Signalement
+│   │   │   │   │   ├── AskTravauxMiseEnConformiteMailer.php
 │   │   │   │   │   ├── AssignementNewMailer.php
 │   │   │   │   │   ├── ContinueFromDraftMailer.php
 │   │   │   │   │   ├── DownloadExportMailer.php
@@ -1644,7 +1680,9 @@
 │   │   │   │   │   ├── SignalementReminderInjonctionClotureUsagerMailer.php
 │   │   │   │   │   ├── SignalementUsagerCloseInjonctionBailleurMailer.php
 │   │   │   │   │   ├── SignalementUserExportMailer.php
-│   │   │   │   │   └── SignalementValidationMailer.php
+│   │   │   │   │   ├── SignalementValidationMailer.php
+│   │   │   │   │   ├── TempRegeneratedCodeSuiviMailer.php
+│   │   │   │   │   └── TempReinitMdpMailer.php
 │   │   │   │   ├── SignalementDraft
 │   │   │   │   │   └── SignalementDraftPendingBailleurPrevenuMailer.php
 │   │   │   │   ├── Suivi
@@ -1732,6 +1770,7 @@
 │   │   │   ├── ReferenceGenerator.php
 │   │   │   ├── SearchFilter.php
 │   │   │   ├── SearchFilterOptionDataProvider.php
+│   │   │   ├── SignalementAddressAnomalyChecker.php
 │   │   │   ├── SignalementAddressUpdater.php
 │   │   │   ├── SignalementAffectationHelper.php
 │   │   │   ├── SignalementApiFactory.php
@@ -1749,7 +1788,6 @@
 │   │   │   ├── SignalementSameAddressArreteFinder.php
 │   │   │   ├── SignalementUpdateService.php
 │   │   │   ├── Suivi
-│   │   │   │   ├── HistoriqueEvenementsGenerator.php
 │   │   │   │   ├── SuiviCategoryMapper.php
 │   │   │   │   ├── SuiviDescriptionHelper.php
 │   │   │   │   ├── SuiviHelper.php
@@ -1841,6 +1879,8 @@
 │       ├── Behaviour
 │       │   └── MonthYearValidatorTrait.php
 │       ├── DateNaissanceValidatorTrait.php
+│       ├── DifferentFromCurrentPassword.php
+│       ├── DifferentFromCurrentPasswordValidator.php
 │       ├── EmailFormatValidator.php
 │       ├── InseeToExclude.php
 │       ├── InseeToExcludeValidator.php
@@ -1880,30 +1920,15 @@
 │   │   ├── _demande-lien-signalement-ok.html.twig
 │   │   ├── _demande-lien-signalement-rate-limit.html.twig
 │   │   ├── _modal-duplicate-addresses.html.twig
-│   │   ├── _modal_accept_affectation.html.twig
-│   │   ├── _modal_accept_signalement.html.twig
-│   │   ├── _modal_affectation.html.twig
-│   │   ├── _modal_affectation_selects.html.twig
-│   │   ├── _modal_agents_subscription.html.twig
-│   │   ├── _modal_close_demarche_acceleree.html.twig
 │   │   ├── _modal_closed_territory.html.twig
-│   │   ├── _modal_cloture.html.twig
 │   │   ├── _modal_dpe.html.twig
 │   │   ├── _modal_duplicate.html.twig
-│   │   ├── _modal_edit_nde.html.twig
 │   │   ├── _modal_file_delete.html.twig
 │   │   ├── _modal_form_bo_quit_validation.html.twig
 │   │   ├── _modal_historique_affectation.html.twig
 │   │   ├── _modal_localisation.html.twig
 │   │   ├── _modal_partner_delete.html.twig
 │   │   ├── _modal_pick_localisation.html.twig
-│   │   ├── _modal_refus_affectation.html.twig
-│   │   ├── _modal_refus_signalement.html.twig
-│   │   ├── _modal_reinit_affectation.html.twig
-│   │   ├── _modal_reopen_signalement.html.twig
-│   │   ├── _modal_send_lien_suivi.html.twig
-│   │   ├── _modal_transfer_subscription.html.twig
-│   │   ├── _modal_upload_files.html.twig
 │   │   ├── _modal_upload_files_usager.html.twig
 │   │   ├── _modal_user_create.html.twig
 │   │   ├── _modal_user_create_email.html.twig
@@ -1923,9 +1948,12 @@
 │   │   ├── metabase
 │   │   │   └── _iframe.html.twig
 │   │   └── signalement
+│   │       ├── _affectation_selects.html.twig
 │   │       ├── _panel-add-suivi.html.twig
+│   │       ├── _panel-affectation.html.twig
 │   │       ├── _panel-close-affectation.html.twig
 │   │       ├── _panel-close-signalement.html.twig
+│   │       ├── _panel-upload-files.html.twig
 │   │       ├── conclude-procedure.html.twig
 │   │       ├── desordre-precision-label.html.twig
 │   │       ├── display_alert.html.twig
@@ -2101,21 +2129,6 @@
 │   │   │   │   │   └── _subscriptions-list.html.twig
 │   │   │   │   ├── bloc-suivis.html.twig
 │   │   │   │   ├── criticite-qualifications.html.twig
-│   │   │   │   ├── edit-modals
-│   │   │   │   │   ├── edit-address.html.twig
-│   │   │   │   │   ├── edit-composition-logement.html.twig
-│   │   │   │   │   ├── edit-coordonnees-agence.html.twig
-│   │   │   │   │   ├── edit-coordonnees-bailleur.html.twig
-│   │   │   │   │   ├── edit-coordonnees-foyer.html.twig
-│   │   │   │   │   ├── edit-coordonnees-syndic.html.twig
-│   │   │   │   │   ├── edit-coordonnees-tiers.html.twig
-│   │   │   │   │   ├── edit-file.html.twig
-│   │   │   │   │   ├── edit-informations-logement.html.twig
-│   │   │   │   │   ├── edit-invite-tiers.html.twig
-│   │   │   │   │   ├── edit-logement-vacant.html.twig
-│   │   │   │   │   ├── edit-procedure-demarches.html.twig
-│   │   │   │   │   ├── edit-situation-foyer.html.twig
-│   │   │   │   │   └── edit-suivi.html.twig
 │   │   │   │   ├── header
 │   │   │   │   │   ├── _address.html.twig
 │   │   │   │   │   ├── _badges.html.twig
@@ -2124,7 +2137,6 @@
 │   │   │   │   │   ├── _logement-vacant.html.twig
 │   │   │   │   │   ├── _main-action.html.twig
 │   │   │   │   │   ├── _menu.html.twig
-│   │   │   │   │   ├── _tags-with-modal.html.twig
 │   │   │   │   │   ├── _tags.html.twig
 │   │   │   │   │   ├── _title-with-status.html.twig
 │   │   │   │   │   └── _title.html.twig
@@ -2140,6 +2152,36 @@
 │   │   │   │   │   ├── information-syndic.html.twig
 │   │   │   │   │   └── information-tiers.html.twig
 │   │   │   │   ├── nde.html.twig
+│   │   │   │   ├── panels
+│   │   │   │   │   ├── _panel-accept-affectation.html.twig
+│   │   │   │   │   ├── _panel-accept-signalement.html.twig
+│   │   │   │   │   ├── _panel-agents-subscription.html.twig
+│   │   │   │   │   ├── _panel-close-demarche-acceleree.html.twig
+│   │   │   │   │   ├── _panel-cloture.html.twig
+│   │   │   │   │   ├── _panel-deny-affectation.html.twig
+│   │   │   │   │   ├── _panel-deny-signalement.html.twig
+│   │   │   │   │   ├── _panel-edit-address.html.twig
+│   │   │   │   │   ├── _panel-edit-composition-logement-etage.html.twig
+│   │   │   │   │   ├── _panel-edit-composition-logement.html.twig
+│   │   │   │   │   ├── _panel-edit-coordonnees-agence.html.twig
+│   │   │   │   │   ├── _panel-edit-coordonnees-bailleur.html.twig
+│   │   │   │   │   ├── _panel-edit-coordonnees-foyer.html.twig
+│   │   │   │   │   ├── _panel-edit-coordonnees-syndic.html.twig
+│   │   │   │   │   ├── _panel-edit-coordonnees-tiers.html.twig
+│   │   │   │   │   ├── _panel-edit-file.html.twig
+│   │   │   │   │   ├── _panel-edit-informations-logement.html.twig
+│   │   │   │   │   ├── _panel-edit-logement-vacant.html.twig
+│   │   │   │   │   ├── _panel-edit-nde.html.twig
+│   │   │   │   │   ├── _panel-edit-procedure-demarches.html.twig
+│   │   │   │   │   ├── _panel-edit-situation-foyer.html.twig
+│   │   │   │   │   ├── _panel-edit-suivi.html.twig
+│   │   │   │   │   ├── _panel-invite-tiers.html.twig
+│   │   │   │   │   ├── _panel-manage-tags.html.twig
+│   │   │   │   │   ├── _panel-pick-localisation.html.twig
+│   │   │   │   │   ├── _panel-reinit-affectation.html.twig
+│   │   │   │   │   ├── _panel-reopen-signalement.html.twig
+│   │   │   │   │   ├── _panel-send-lien-suivi.html.twig
+│   │   │   │   │   └── _panel-transfer-subscription.html.twig
 │   │   │   │   ├── partners.html.twig
 │   │   │   │   ├── photos-album.html.twig
 │   │   │   │   ├── photos-documents.html.twig
@@ -2159,14 +2201,14 @@
 │   │   │   │   ├── user-declaration-situations.html.twig
 │   │   │   │   └── visites
 │   │   │   │       ├── bloc-visites.html.twig
-│   │   │   │       ├── modals
-│   │   │   │       │   ├── visites-modal-add.html.twig
-│   │   │   │       │   ├── visites-modal-cancel.html.twig
-│   │   │   │       │   ├── visites-modal-confirm.html.twig
-│   │   │   │       │   ├── visites-modal-edit.html.twig
-│   │   │   │       │   ├── visites-modal-reschedule.html.twig
-│   │   │   │       │   ├── visites-modal-upload-files.html.twig
-│   │   │   │       │   └── visites-modals.html.twig
+│   │   │   │       ├── panels
+│   │   │   │       │   ├── _panel-add-visite.html.twig
+│   │   │   │       │   ├── _panel-cancel-visite.html.twig
+│   │   │   │       │   ├── _panel-confirm-visite.html.twig
+│   │   │   │       │   ├── _panel-edit-visite.html.twig
+│   │   │   │       │   ├── _panel-reschedule-visite.html.twig
+│   │   │   │       │   ├── _panel-upload-files-visite.html.twig
+│   │   │   │       │   └── visites-panels.html.twig
 │   │   │   │       ├── visite-item.html.twig
 │   │   │   │       ├── visite-status.html.twig
 │   │   │   │       ├── visites-buttons.html.twig
@@ -2202,6 +2244,10 @@
 │   │   │   ├── index.html.twig
 │   │   │   └── need_validation_card.html.twig
 │   │   ├── signalement_export
+│   │   │   └── index.html.twig
+│   │   ├── signalement_without_address
+│   │   │   ├── _panel-bulk-link-address-rows.html.twig
+│   │   │   ├── _title-and-table-list-results.html.twig
 │   │   │   └── index.html.twig
 │   │   ├── sitemap
 │   │   │   └── index.html.twig
@@ -2273,6 +2319,7 @@
 │   │   ├── accuse_reception_email.html.twig
 │   │   ├── affectation_email.html.twig
 │   │   ├── ask_bail_dpe_signalement_email.html.twig
+│   │   ├── ask_travaux_mise_en_conformite_email.html.twig
 │   │   ├── base_email.html.twig
 │   │   ├── closed_to_partner_signalement_email.html.twig
 │   │   ├── closed_to_partners_signalement_email.html.twig
@@ -2333,6 +2380,7 @@
 │   │   │   ├── informations-generales.html.twig
 │   │   │   ├── procedure-assurance.html.twig
 │   │   │   ├── situation-foyer.html.twig
+│   │   │   ├── travaux-mise-en-conformite.html.twig
 │   │   │   └── type-composition.html.twig
 │   │   ├── flash-messages.html.twig
 │   │   ├── formulaire_signalement.html.twig
@@ -2388,6 +2436,7 @@
 │   ├── FixturesHelper.php
 │   ├── Functional
 │   │   ├── Command
+│   │   │   ├── ArchiveSignalementCommandTest.php
 │   │   │   ├── Cron
 │   │   │   │   ├── AnonymizeExpiredAccountCommandTest.php
 │   │   │   │   ├── AskFeedbackUsagerCommandTest.php
@@ -2399,6 +2448,7 @@
 │   │   │   │   ├── RemindInjonctionSignalementCommandTest.php
 │   │   │   │   ├── RemindPendingDraftsCommandTest.php
 │   │   │   │   ├── ResetInjonctionNoResponseCommandTest.php
+│   │   │   │   ├── SendAskTravauxMiseEnConformiteCommandTest.php
 │   │   │   │   ├── SendDailyEmailsCommandTest.php
 │   │   │   │   └── SendSuiviWaitingNotificationAndDelayedCommandTest.php
 │   │   │   ├── LoadEpciCommandTest.php
@@ -2473,6 +2523,7 @@
 │   │   │   ├── SignalementEditControllerTest.php
 │   │   │   ├── SignalementFileControllerTest.php
 │   │   │   ├── SignalementInvitationControllerTest.php
+│   │   │   ├── SignalementWithoutAddressControllerTest.php
 │   │   │   ├── StatistiquesControllerTest.php
 │   │   │   ├── SuiviBailleurControllerTest.php
 │   │   │   ├── UserAccountControllerTest.php
@@ -2512,7 +2563,6 @@
 │   │   │   └── UserManagerTest.php
 │   │   ├── Messenger
 │   │   │   └── MessageHandler
-│   │   │       ├── HistoriqueEvenementsMessageHandlerTest.php
 │   │   │       ├── InactiveUserExportMessageHandlerTest.php
 │   │   │       ├── ListExportMessageHandlerTest.php
 │   │   │       ├── PdfExportMessageHandlerTest.php
@@ -2526,7 +2576,6 @@
 │   │   │   ├── BailleurRepositoryTest.php
 │   │   │   ├── Behaviour
 │   │   │   │   └── AffectationUpdaterTest.php
-│   │   │   ├── CommuneRepositoryTest.php
 │   │   │   ├── DesordreCritereRepositoryTest.php
 │   │   │   ├── EpciRepositoryTest.php
 │   │   │   ├── FileRepositoryTest.php
@@ -2535,6 +2584,8 @@
 │   │   │   ├── Query
 │   │   │   │   ├── Address
 │   │   │   │   │   └── AddressesHistoryQueryTest.php
+│   │   │   │   ├── Commune
+│   │   │   │   │   └── CommuneEpciQueryTest.php
 │   │   │   │   ├── Dashboard
 │   │   │   │   │   ├── DossiersActiviteRecenteQueryTest.php
 │   │   │   │   │   ├── DossiersAvecRelanceSansReponseTest.php
@@ -2543,6 +2594,8 @@
 │   │   │   │   │   ├── DossiersSuivisUsagerQueryTest.php
 │   │   │   │   │   ├── KpiQueryTest.php
 │   │   │   │   │   └── SignalementsSansAffectationAccepteeQueryTest.php
+│   │   │   │   ├── EmailAlert
+│   │   │   │   │   └── AskFeedbackUsagerQueryTest.php
 │   │   │   │   ├── Interconnection
 │   │   │   │   │   ├── JobEventQueryTest.php
 │   │   │   │   │   └── JobEventRepositoryTest.php
@@ -2607,6 +2660,7 @@
 │   │   │   │   │   └── QualificationStatusServiceTest.php
 │   │   │   │   ├── ReferenceGeneratorTest.php
 │   │   │   │   ├── SearchFilterOptionDataProviderTest.php
+│   │   │   │   ├── SignalementAddressAnomalyCheckerTest.php
 │   │   │   │   ├── SignalementBuilderTest.php
 │   │   │   │   ├── Suivi
 │   │   │   │   │   └── SuiviSeenMarkerTest.php
@@ -2652,8 +2706,7 @@
 │   │   │   ├── PushEsaboraDossierCommandTest.php
 │   │   │   ├── PushIdossDossierCommandTest.php
 │   │   │   ├── UpdateMergedCommunesCommandTest.php
-│   │   │   ├── UpdateSignalementDocumentFieldsCommandTest.php
-│   │   │   └── UpdateSignalementGeolocalisationCommandTest.php
+│   │   │   └── UpdateSignalementDocumentFieldsCommandTest.php
 │   │   ├── Dto
 │   │   │   ├── AddressesHistoryListViewTest.php
 │   │   │   ├── AddressesHistorySignalementViewTest.php
@@ -2862,9 +2915,7 @@
 │   │   │   │   ├── SignalementFileProcessorTest.php
 │   │   │   │   ├── SignalementInputValueMapperTest.php
 │   │   │   │   ├── SignalementProfileOccupantMapperTest.php
-│   │   │   │   ├── SignalementSameAddressArreteFinderTest.php
 │   │   │   │   └── Suivi
-│   │   │   │       ├── HistoriqueEvenementsGeneratorTest.php
 │   │   │   │       └── SuiviMentionExtractorTest.php
 │   │   │   └── TimezoneProviderTest.php
 │   │   ├── Twig
@@ -2888,6 +2939,7 @@
 │   │       ├── AdresseOccupantValidatorTest.php
 │   │       ├── Behaviour
 │   │       │   └── MonthYearValidatorTraitTest.php
+│   │       ├── DifferentFromCurrentPasswordValidatorTest.php
 │   │       ├── EmailFormatValidatorTest.php
 │   │       ├── InseeToExcludeValidatorTest.php
 │   │       ├── InseeToIncludeValidatorTest.php
@@ -2925,10 +2977,6 @@
 │   │   ├── sample.jpg
 │   │   ├── sample.pdf
 │   │   └── sample.png
-│   ├── lighthouse
-│   │   ├── auth.js
-│   │   ├── lighthouserc.auth.json
-│   │   └── lighthouserc.json
 │   └── phpstan-bootstrap.php
 ├── tmp
 │   └── .gitgnore
@@ -2937,6 +2985,12 @@
 │   │   ├── demo-silo.postman_environment.json
 │   │   ├── local-silo.postman_environment.json
 │   │   └── signal-logement.postman_collection.json
+│   ├── lighthouse
+│   │   ├── auth.js
+│   │   ├── lighthouserc.auth.json
+│   │   ├── lighthouserc.json
+│   │   ├── package-lock.json
+│   │   └── package.json
 │   ├── newman
 │   │   ├── .npmrc
 │   │   ├── package-lock.json
@@ -3004,6 +3058,7 @@
 │               │       ├── error
 │               │       │   └── ws_dossier_adresse.json
 │               │       ├── ws_arrete_main_levee_dossier_sas.json
+│               │       ├── ws_arrete_modificatif_dossier_sas.json
 │               │       ├── ws_arretes_dossier_sas.json
 │               │       ├── ws_arretes_dossier_sas_termine.json
 │               │       ├── ws_arretes_dossier_sas_termine_insalubrite.json
@@ -3041,4 +3096,4 @@
 │   ├── security.fr.yaml
 │   └── validators.fr.xlf
 └── webpack.config.js
-507 directories, 2683 files
+514 directories, 2734 files
