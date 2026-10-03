@@ -127,6 +127,7 @@
 │   │   │       └── .gitkeep
 │   │   └── docker-compose.yml
 │   ├── keycloak
+│   │   ├── .buildpacks
 │   │   ├── docker-compose.yml
 │   │   ├── readme.md
 │   │   ├── scalingo-buildpack
@@ -2280,6 +2281,9 @@
     │   │   │       ├── getAAPLogUsers.ts
     │   │   │       ├── getAAPLogs.ts
     │   │   │       └── logAAPAuditEvent.ts
+    │   │   ├── accompagnement
+    │   │   │   └── features
+    │   │   │       └── accompagnement.helpers.ts
     │   │   ├── account
     │   │   │   ├── account.authorization.test.ts
     │   │   │   ├── account.graphql
@@ -2400,6 +2404,7 @@
     │   │   │   │   ├── sendPreviousEmailCandidateEmail.ts
     │   │   │   │   └── sendPreviousOrganismCandidateChangeOrganismEmail.ts
     │   │   │   ├── features
+    │   │   │   │   ├── accompagnement.test.ts
     │   │   │   │   ├── addExperienceToCandidacy.test.ts
     │   │   │   │   ├── addExperienceToCandidacy.ts
     │   │   │   │   ├── archiveCandidacy.test.ts
@@ -2429,6 +2434,8 @@
     │   │   │   │   ├── getCandidacyCandidateInfoByCandidacyId.ts
     │   │   │   │   ├── getCandidacyCcns.ts
     │   │   │   │   ├── getCandidacyConventionCollectiveById.ts
+    │   │   │   │   ├── getCandidacyCountByCohorteId.test.ts
+    │   │   │   │   ├── getCandidacyCountByCohorteId.ts
     │   │   │   │   ├── getCandidacyCountByStatus.ts
     │   │   │   │   ├── getCandidacyDropOutByCandidacyId.ts
     │   │   │   │   ├── getCandidacyFinancingMethodById.ts
@@ -2575,6 +2582,7 @@
     │   │   │       ├── candidate.url.helpers.ts
     │   │   │       └── keycloak.utils.ts
     │   │   ├── certification-authority
+    │   │   │   ├── certification-authority.authorization.test.ts
     │   │   │   ├── certification-authority.graphql
     │   │   │   ├── certification-authority.loaders.ts
     │   │   │   ├── certification-authority.resolvers.ts
@@ -2590,7 +2598,6 @@
     │   │   │       ├── assignCandidaciesToCertificationAuthorityLocalAccount.ts
     │   │   │       ├── assignCandidacyToCertificationAuthorityLocalAccounts.test.ts
     │   │   │       ├── assignCandidacyToCertificationAuthorityLocalAccounts.ts
-    │   │   │       ├── canUserManageCertifiationAuthorityLocalAccount.ts
     │   │   │       ├── certificationAuthorityAcceptCgu.ts
     │   │   │       ├── createCertificationAuthority.ts
     │   │   │       ├── createCertificationAuthorityLocalAccount.ts
@@ -2627,6 +2634,7 @@
     │   │   │       ├── getHumanAccountByCertificationAuthorityLocalAccountId.ts
     │   │   │       ├── getLastProfessionalCguCertificateur.ts
     │   │   │       ├── getMetabaseIframeUrl.ts
+    │   │   │       ├── getMetabaseIframeUrlForLocalAccount.ts
     │   │   │       ├── getMetabaseIframeUrlForRegistryManager.ts
     │   │   │       ├── getOrganismsByAccountId.ts
     │   │   │       ├── getPaginatedCertifications.ts
@@ -2996,8 +3004,10 @@
     │   │   │   ├── organism.types.ts
     │   │   │   └── security
     │   │   │       ├── isGestionnaireOfMaisonMereAAP.security.ts
+    │   │   │       ├── isGestionnaireOfMaisonMereAAPOfOrganismByDataArg.ts
     │   │   │       ├── isGestionnaireOfMaisonMereAAPOfOrganismByIdArg.ts
     │   │   │       ├── isOwnerOfOrganism.ts
+    │   │   │       ├── isOwnerOfOrganismByDataArg.ts
     │   │   │       ├── isOwnerOfOrganismByIdArg.ts
     │   │   │       ├── isOwnerOrCanManageOrganism.security.ts
     │   │   │       ├── organismByIdArg.security.ts
@@ -3153,6 +3163,8 @@
     │   │   │       │   ├── isGestionnaireOfCommanditaireVaeCollective.ts
     │   │   │       │   ├── isGestionnaireOfSousCompteVaeCollective.test.ts
     │   │   │       │   ├── isGestionnaireOfSousCompteVaeCollective.ts
+    │   │   │       │   ├── isGestionnaireOrSousCompteOfCommanditaireVaeCollective.test.ts
+    │   │   │       │   ├── isGestionnaireOrSousCompteOfCommanditaireVaeCollective.ts
     │   │   │       │   ├── isUserOwnerOfCandidate.ts
     │   │   │       │   ├── whenHasRole.ts
     │   │   │       │   └── whenHasRoleButNotOthers.ts
@@ -3188,18 +3200,23 @@
     │   │       │   ├── getCertificationCohortesByCohorteId.ts
     │   │       │   ├── getCohorteVAECollectiveByCodeInscription.ts
     │   │       │   ├── getCohorteVAECollectiveById.ts
+    │   │       │   ├── getCohortesVaeCollectivesByCommanditaireVaeCollectiveId.test.ts
     │   │       │   ├── getCohortesVaeCollectivesByCommanditaireVaeCollectiveId.ts
     │   │       │   ├── getCohortesVaeCollectivesForConnectedAap.ts
     │   │       │   ├── getCohortesVaeCollectivesForConnectedCertificationAuthorityOrLocalAccount.ts
-    │   │       │   ├── getCommanditaireVaeCollectiveByGestionnaireAccountId.ts
     │   │       │   ├── getCommanditaireVaeCollectiveById.ts
+    │   │       │   ├── getCommanditaireVaeCollectiveForAccountId.test.ts
+    │   │       │   ├── getCommanditaireVaeCollectiveForAccountId.ts
     │   │       │   ├── getCommanditaireVaeCollectives.ts
     │   │       │   ├── getMetabaseDashboardIframeUrlVaeCollective.ts
     │   │       │   ├── getPermissionsForRole.ts
     │   │       │   ├── getRolesSpecificToSousCompteAndCohorteVaeCollective.ts
     │   │       │   ├── getSousCompteVaeCollectiveById.ts
     │   │       │   ├── getSousComptesByCommanditaireVaeCollectiveId.ts
+    │   │       │   ├── getUserPermissions.test.ts
     │   │       │   ├── getUserPermissions.ts
+    │   │       │   ├── getUserPermissionsSpecificToSousCompteAndCohorte.test.ts
+    │   │       │   ├── getUserPermissionsSpecificToSousCompteAndCohorte.ts
     │   │       │   ├── getUserPermissionsSpecifictoSousCompte.ts
     │   │       │   ├── getVaeCollectiveRolesFromKeycloakRoles.ts
     │   │       │   ├── publishCohorteVAECollective.ts
@@ -3211,6 +3228,7 @@
     │   │       ├── security
     │   │       │   ├── hasVaeCollectivePermission.test.ts
     │   │       │   └── hasVaeCollectivePermission.ts
+    │   │       ├── vae-collective.candidacyCount.test.ts
     │   │       ├── vae-collective.cohorteVaeCollective.test.ts
     │   │       ├── vae-collective.cohortesVaeCollectivesForConnectedAap.test.ts
     │   │       ├── vae-collective.cohortesVaeCollectivesForConnectedCertificationAuthorityOrLocalAccount.test.ts
@@ -4750,6 +4768,18 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260916081403_add_permissions_to_new_lecteur_cohorte_and_editeur_cohorte_vae_collective_roles
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260916090930_create_accompagnement_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260921123804_add_sous_compte_vae_collective_role
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260924100000_cascade_delete_role_specific_on_cohorte_vae_collective
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260929100223_rename_accompagnement_fkey_constraint
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260930102101_add_last_login_at_to_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260930155240_certification_authority_local_account_dashboard_feature
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -5368,7 +5398,10 @@
     │   │   │   │   │   │   │   │       │   │   ├── createVaeCollectiveCandidacy.hook.ts
     │   │   │   │   │   │   │   │       │   │   └── page.tsx
     │   │   │   │   │   │   │   │       │   ├── getVaeCollective.hook.ts
-    │   │   │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │   │   │       │   ├── page.tsx
+    │   │   │   │   │   │   │   │       │   └── search-certification
+    │   │   │   │   │   │   │   │       │       ├── page.tsx
+    │   │   │   │   │   │   │   │       │       └── search-certification.hooks.ts
     │   │   │   │   │   │   │   │       ├── _components
     │   │   │   │   │   │   │   │       │   └── VaeCollectiveCodeForm.component.tsx
     │   │   │   │   │   │   │   │       └── page.tsx
@@ -5860,6 +5893,9 @@
     │   │   │   └── pictograms
     │   │   │       ├── city-hall.svg
     │   │   │       └── information.svg
+    │   │   ├── cohorts
+    │   │   │   └── pictograms
+    │   │   │       └── presse-card.svg
     │   │   ├── images
     │   │   │   ├── fvae_logo.svg
     │   │   │   └── pictograms
@@ -5878,18 +5914,24 @@
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── access-rights-card
     │   │   │   │   │   │   │   │   │   │   └── AccessRightsCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── candidacy-count-card
+    │   │   │   │   │   │   │   │   │   │   └── CandidacyCountCard.tsx
     │   │   │   │   │   │   │   │   │   ├── certifications-card
     │   │   │   │   │   │   │   │   │   │   └── CertificationsCard.tsx
     │   │   │   │   │   │   │   │   │   ├── delete-cohorte-button
     │   │   │   │   │   │   │   │   │   │   ├── DeleteCohorteButton.tsx
     │   │   │   │   │   │   │   │   │   │   └── actions.ts
-    │   │   │   │   │   │   │   │   │   ├── generate-cohorte-code-inscription-button
-    │   │   │   │   │   │   │   │   │   │   ├── GenerateCohorteCodeInscriptionButton.tsx
-    │   │   │   │   │   │   │   │   │   │   └── actions.ts
     │   │   │   │   │   │   │   │   │   ├── organism-card
     │   │   │   │   │   │   │   │   │   │   └── OrganismCard.tsx
-    │   │   │   │   │   │   │   │   │   └── registration-code-display
-    │   │   │   │   │   │   │   │   │       └── RegistrationCodeDisplay.tsx
+    │   │   │   │   │   │   │   │   │   └── registration-code-card
+    │   │   │   │   │   │   │   │   │       ├── RegistrationCodeCard.tsx
+    │   │   │   │   │   │   │   │   │       ├── generate-cohorte-code-inscription-button
+    │   │   │   │   │   │   │   │   │       │   ├── GenerateCohorteCodeInscriptionButton.tsx
+    │   │   │   │   │   │   │   │   │       │   └── actions.ts
+    │   │   │   │   │   │   │   │   │       ├── registration-code-display
+    │   │   │   │   │   │   │   │   │       │   └── RegistrationCodeDisplay.tsx
+    │   │   │   │   │   │   │   │   │       └── registration-code-not-generated-warning
+    │   │   │   │   │   │   │   │   │           └── RegistrationCodeNotGeneratedWarning.tsx
     │   │   │   │   │   │   │   │   ├── aaps
     │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   ├── organism-card
@@ -5961,7 +6003,10 @@
     │   │   │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   └── page.tsx
-    │   │   │   │   │   │   └── dashboard
+    │   │   │   │   │   │   ├── dashboard
+    │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   └── parametres
+    │   │   │   │   │   │       ├── actions.ts
     │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   └── page.tsx
     │   │   │   │   └── layout.tsx
@@ -6076,6 +6121,7 @@
     │   │   │   │   │   │   ├── certifications-selectionnees
     │   │   │   │   │   │   │   └── certifications-selectionnees.spec.ts
     │   │   │   │   │   │   ├── cohorte.accessRightsCard.spec.ts
+    │   │   │   │   │   │   ├── cohorte.candidacyCountCard.spec.ts
     │   │   │   │   │   │   ├── cohorte.certificationsCard.spec.ts
     │   │   │   │   │   │   ├── cohorte.deleteCohorteButton.spec.ts
     │   │   │   │   │   │   ├── cohorte.generateCodeInscriptionButton.spec.ts
@@ -6099,8 +6145,10 @@
     │   │   │   │   │   ├── comptesUtilisateur.spec.ts
     │   │   │   │   │   └── nouveau-compte-utilisateur
     │   │   │   │   │       └── nouveauCompteUtilisateur.spec.ts
-    │   │   │   │   └── dashboard
-    │   │   │   │       └── dashboard.spec.ts
+    │   │   │   │   ├── dashboard
+    │   │   │   │   │   └── dashboard.spec.ts
+    │   │   │   │   └── parametres
+    │   │   │   │       └── parametres.spec.ts
     │   │   │   └── commanditaires.spec.ts
     │   │   ├── forgot-password
     │   │   │   └── forgotPassword.spec.ts
@@ -6123,7 +6171,8 @@
     │   │           │   │   └── step1.html
     │   │           │   └── tokens
     │   │           │       ├── adminToken.json
-    │   │           │       └── gestionnaireVaeCollectiveToken.json
+    │   │           │       ├── gestionnaireVaeCollectiveToken.json
+    │   │           │       └── sousCompteVaeCollectiveToken.json
     │   │           ├── getBaseUrlTest.ts
     │   │           ├── mockActiveFeatures.ts
     │   │           └── mockGetUserPermissions.ts
@@ -6511,4 +6560,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2176 directories, 4337 files
+2192 directories, 4370 files
