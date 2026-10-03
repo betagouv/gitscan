@@ -1,31 +1,18 @@
-## Changelog : transfers (30 derniers jours, au 30 septembre 2026)
+## Changelog : transfers (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la fiabilité des transferts de fichiers volumineux et la sécurisation de l'application. Les utilisateurs bénéficieront d'une meilleure gestion des téléchargements chiffrés (reprise après interruption) et d'une interface plus claire pour les transferts confidentiels. La sécurité globale a également été renforcée, tant au niveau de l'infrastructure que de l'accès à l'administration.
+Les récentes évolutions se sont concentrées sur la fiabilité des téléchargements de fichiers volumineux et la sécurisation des transferts confidentiels. L'expérience utilisateur a été fluidifiée, notamment grâce à une meilleure gestion des reprises de téléchargement et un suivi plus précis de la livraison des fichiers auprès des destinataires.
 
 ### Évolutions fonctionnelles
-- **Amélioration des téléchargements :**
-    - Gestion de la reprise des téléchargements volumineux et chiffrés en cas d'interruption (notamment sur Firefox).
-    - Ajout d'un suivi de progression et d'une meilleure gestion des erreurs de téléchargement.
-- **Expérience de transfert :**
-    - Meilleure visibilité sur l'état de livraison pour chaque destinataire.
-    - Optimisation de l'interface des transferts confidentiels pour une lecture plus simple et une gestion facilitée du partage de clés.
-- **Interface utilisateur (UI) :**
-    - Harmonisation du sélecteur d'applications avec le reste de la Suite.
-    - Suppression des temps d'attente inutiles lors du rechargement de la page.
-    - Amélioration des retours visuels lors des processus de scan de fichiers.
+- **Amélioration de l'expérience de téléchargement** : les téléchargements de gros fichiers chiffrés sont désormais plus robustes (notamment sur Firefox), supportent la reprise après une interruption et affichent un meilleur suivi de l'état et des erreurs.
+- **Optimisation des transferts confidentiels** : l'interface est plus claire, l'accès est mieux contrôlé et les instructions pour le partage des clés de déchiffrement ont été améliorées.
+- **Suivi de livraison** : affichage de l'état de réception pour chaque destinataire, permettant de ne plus rester en attente d'une confirmation globale lors de l'envoi.
+- **Améliorations de l'interface (UI)** : l'application est plus fluide lors des rechargements de page, l'affichage des délais dans les emails est plus réaliste, et le sélecteur d'applications est désormais plus cohérent avec le reste de la Suite.
 
 ### Évolutions techniques
-- **Sécurité :**
-    - Restriction de l'accès à l'administration Django via une liste blanche d'adresses IP.
-    - Renforcement de la sécurité de la chaîne d'approvisionnement (supply chain) du frontend.
-    - Implémentation de capacités signées pour sécuriser la reprise des téléchargements.
-- **Optimisation et Backend :**
-    - Optimisation du processus de scan de fichiers (gestion des budgets d'attente et évitement des scans redondants).
-    - Amélioration de la fiabilité de la mise à jour du registre de clés.
-- **Infrastructure et CI/CD :**
-    - Passage à des images backend "distroless" pour réduire la surface d'attaque.
+- **Renforcement de la sécurité** : restriction de l'accès à l'administration Django par une liste blanche d'IP, sécurisation de la chaîne d'approvisionnement (supply chain) du frontend et utilisation de capacités signées pour la reprise des téléchargements.
+- **Fiabilité du traitement des fichiers** : optimisation de la gestion des scans de fichiers pour éviter les doublons et amélioration de la gestion des Service Workers pour garantir la continuité des téléchargements.
+- **Infrastructure et CI/CD** : publication d'images backend "distroless" pour réduire la surface d'attaque et amélioration des logs du serveur Caddy.
 
 ### Autres changements
-- **Communication :** Correction des modèles d'emails pour éviter de promettre des délais de traitement irréalistes.
-- **Observabilité :** Ajout de logs pour le serveur Caddy.
+- **Uniformisation de la nomenclature** : renommage systématique de "transferts" en "transfers" dans l'ensemble du projet pour harmoniser le code et les identifiants.
