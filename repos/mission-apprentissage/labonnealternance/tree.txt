@@ -170,6 +170,7 @@
 │   └── terminals.json
 ├── .yarn
 │   ├── patches
+│   │   ├── react-notion-x-npm-7.10.0-bc6011c92e.patch
 │   │   └── zod-npm-3.21.4-9f570b215c.patch
 │   ├── plugins
 │   │   ├── @yarnpkg
@@ -279,6 +280,7 @@
 │   │   │   │   └── linkedin
 │   │   │   │       └── linkedin.client.ts
 │   │   │   ├── filename.ts
+│   │   │   ├── logger.test.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── sentry
 │   │   │   │   ├── sentry.fastify.ts
@@ -309,6 +311,9 @@
 │   │   │       ├── jwt-utils.ts
 │   │   │       ├── log-message.ts
 │   │   │       ├── mail-utils.ts
+│   │   │       ├── mask-personal-data.test.ts
+│   │   │       ├── mask-personal-data.ts
+│   │   │       ├── mongodb-utils.search-indexes.test.ts
 │   │   │       ├── mongodb-utils.ts
 │   │   │       ├── region-insee-codes.ts
 │   │   │       ├── send-tracking-event.ts
@@ -345,6 +350,7 @@
 │   │   │   │   ├── emails.controller.ts
 │   │   │   │   ├── etablissement-recruteur.controller.test.ts
 │   │   │   │   ├── etablissement-recruteur.controller.ts
+│   │   │   │   ├── etablissement.controller.test.ts
 │   │   │   │   ├── etablissement.controller.ts
 │   │   │   │   ├── formations.controller.ts
 │   │   │   │   ├── formulaire.controller.test.ts
@@ -370,8 +376,10 @@
 │   │   │   │   ├── v2
 │   │   │   │   │   ├── application.controller.v2.ts
 │   │   │   │   │   ├── applications.controller.v2.test.ts
+│   │   │   │   │   ├── appointment-links.controller.v2.test.ts
 │   │   │   │   │   ├── appointment.controller.v2.test.ts
 │   │   │   │   │   ├── appointment.controller.v2.ts
+│   │   │   │   │   ├── jobs.controller.v2.test.ts
 │   │   │   │   │   └── jobs.controller.v2.ts
 │   │   │   │   ├── v3
 │   │   │   │   │   └── jobs
@@ -390,6 +398,7 @@
 │   │   ├── index.ts
 │   │   ├── jobs
 │   │   │   ├── anonymization
+│   │   │   │   ├── anonimize-users-with-accounts.test.ts
 │   │   │   │   ├── anonimize-users-with-accounts.ts
 │   │   │   │   ├── anonymize-applicant-and-applications.test.ts
 │   │   │   │   ├── anonymize-applicant-and-applications.ts
@@ -704,10 +713,7 @@
 │   │   │   ├── one-time-job
 │   │   │   │   ├── analyze-cfa-block-list.ts
 │   │   │   │   ├── analyze-closed-companies.ts
-│   │   │   │   ├── clean-closed-companies.test.ts
-│   │   │   │   ├── clean-closed-companies.ts
-│   │   │   │   ├── renvoi-mail-creation-compte.ts
-│   │   │   │   └── resync-lba-jobs-partners-stats.ts
+│   │   │   │   └── renvoi-mail-creation-compte.ts
 │   │   │   ├── partenaire-export
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   ├── export-jobs-to-s3-v2.test.ts.snap
@@ -748,10 +754,12 @@
 │   │   │   │   ├── recruiter-offer-expiration-reminder-job.test.ts
 │   │   │   │   ├── recruiter-offer-expiration-reminder-job.ts
 │   │   │   │   ├── reset-api-key.ts
+│   │   │   │   ├── update-siret-infos-in-error-job.test.ts
 │   │   │   │   └── update-siret-infos-in-error-job.ts
 │   │   │   ├── referentiel-rome
 │   │   │   │   └── referentiel-rome.ts
 │   │   │   ├── search
+│   │   │   │   ├── analyze-search-queries.test.ts
 │   │   │   │   ├── analyze-search-queries.ts
 │   │   │   │   ├── generate-search-items-collection.test.ts
 │   │   │   │   ├── generate-search-items-collection.ts
@@ -785,7 +793,6 @@
 │   │   │   ├── 20260717120000-normalize-userswithaccounts-origin.ts
 │   │   │   ├── 20260720104100-remove-opco-short-name.ts
 │   │   │   ├── 20260727210718-seed-search-items-keywords-cache.ts
-│   │   │   ├── 20260728110908-remove-inactive-recruteurs-from-search-items.ts
 │   │   │   ├── 20260728150000-sanitize-offer-titles.ts
 │   │   │   ├── 20260811224141-add-offer-creation-index-jobs-partners.ts
 │   │   │   ├── 20260818182821-reseed-search-synonyms-generic-word-pollution.ts
@@ -798,8 +805,16 @@
 │   │   │   ├── 20260901163000-normalize-naf-jobs-partners.ts
 │   │   │   ├── 20260911180000-backfill-search-items-admin-codes.ts
 │   │   │   ├── 20260915103000-cancel-cfa-jobs-5447.ts
+│   │   │   ├── 20260915143000-backfill-offer-status-history-lba-5429.ts
 │   │   │   ├── 20260922170000-backfill-application-cv-deleted-at-5495.ts
-│   │   │   └── 20260922180000-merge-orphan-anonymized-applications.ts
+│   │   │   ├── 20260922180000-merge-orphan-anonymized-applications.ts
+│   │   │   ├── 20260922180000-search-collections-par-mode-5389.ts
+│   │   │   ├── 20260923090000-drop-search-items-5526.ts
+│   │   │   ├── 20260925100000-seo-diplomes-lot1-5539.ts
+│   │   │   ├── 20260928183655-clear-rome-content-custom-offers-5590.ts
+│   │   │   ├── 20260928200000-backfill-missing-apply-url-jobs-partners.ts
+│   │   │   ├── 20260930160000-drop-phantom-collections-5618.ts
+│   │   │   └── 20260930170000-unset-application-count-jobs-partners.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -860,6 +875,8 @@
 │   │       │   └── admin-area.ts
 │   │       ├── geolocation.service.ts
 │   │       ├── job-opportunity.service.types.ts
+│   │       ├── job-partner-status.service.test.ts
+│   │       ├── job-partner-status.service.ts
 │   │       ├── jobs
 │   │       │   └── job-opportunity
 │   │       │       ├── __snapshots__
@@ -875,6 +892,8 @@
 │   │       ├── mistralai
 │   │       │   ├── mistralai.service.test.ts
 │   │       │   └── mistralai.service.ts
+│   │       ├── offre-moderation.service.test.ts
+│   │       ├── offre-moderation.service.ts
 │   │       ├── opco.service.ts
 │   │       ├── organization.service.test.ts
 │   │       ├── organization.service.ts
@@ -909,6 +928,7 @@
 │   │       │   ├── search-transient-retry.ts
 │   │       │   ├── search.service.test.ts
 │   │       │   └── search.service.ts
+│   │       ├── select-role-for-entreprise.test.ts
 │   │       ├── seo.service.ts
 │   │       ├── sessions.service.ts
 │   │       ├── sitemap.service.ts
@@ -943,9 +963,7 @@
 │   │       ├── mail-candidat-entretien.mjml.ejs
 │   │       ├── mail-candidat-hardbounce.mjml.ejs
 │   │       ├── mail-candidat-offre-emploi.mjml.ejs
-│   │       ├── mail-candidat-recruteur-lba.mjml.ejs
 │   │       ├── mail-candidat-refus.mjml.ejs
-│   │       ├── mail-candidature-partenaire.mjml.ejs
 │   │       ├── mail-candidature-spontanee.mjml.ejs
 │   │       ├── mail-candidature.mjml.ejs
 │   │       ├── mail-cfa-delegation.mjml.ejs
@@ -986,7 +1004,13 @@
 │   │   │   │   └── model.test.ts
 │   │   │   └── migrations
 │   │   │       ├── backfill-application-cv-deleted-at-5495.test.ts
-│   │   │       └── normalize-naf-jobs-partners.test.ts
+│   │   │       ├── backfill-missing-apply-url-jobs-partners.test.ts
+│   │   │       ├── backfill-offer-status-history-lba-5429.test.ts
+│   │   │       ├── clear-rome-content-custom-offers-5590.test.ts
+│   │   │       ├── drop-search-items-5526.test.ts
+│   │   │       ├── normalize-naf-jobs-partners.test.ts
+│   │   │       ├── search-collections-par-mode-5389.test.ts
+│   │   │       └── seo-diplomes-lot1-5539.test.ts
 │   │   ├── mocks
 │   │   │   ├── mockApiBal.ts
 │   │   │   ├── mockApiEntreprise.ts
@@ -1009,6 +1033,7 @@
 │   │       ├── loadEnvForTests.ts
 │   │       ├── login.test.utils.ts
 │   │       ├── mongo.test.utils.ts
+│   │       ├── search-index.test.utils.ts
 │   │       ├── server.test.utils.ts
 │   │       ├── setup.ts
 │   │       ├── user.test.utils.ts
@@ -1078,7 +1103,6 @@
 │   │   │   ├── anonymized-applicant.model.ts
 │   │   │   ├── anonymized-applications.model.ts
 │   │   │   ├── anonymized-appointments.model.ts
-│   │   │   ├── anonymized-recruiters.model.ts
 │   │   │   ├── anonymized-users-with-accounts.model.ts
 │   │   │   ├── anonymized-users.model.ts
 │   │   │   ├── apicalls.model.ts
@@ -1106,7 +1130,6 @@
 │   │   │   ├── etablissement.model.ts
 │   │   │   ├── formation.model.ts
 │   │   │   ├── france-travail-access.model.ts
-│   │   │   ├── geolocations.model.ts
 │   │   │   ├── index.ts
 │   │   │   ├── job-partners
 │   │   │   │   └── job-partners.model.test.ts
@@ -1142,7 +1165,6 @@
 │   │   │   ├── raw-leboncoin.model.ts
 │   │   │   ├── raw-linkedin.model.ts
 │   │   │   ├── raw-meteojob.model.ts
-│   │   │   ├── raw-monster.model.ts
 │   │   │   ├── raw-nos-talents-nos-emplois.model.ts
 │   │   │   ├── raw-pass.model.ts
 │   │   │   ├── raw-recruteurs-lba.model.ts
@@ -1159,11 +1181,13 @@
 │   │   │   ├── role-management.model.ts
 │   │   │   ├── role-management360.model.ts
 │   │   │   ├── rome.model.ts
-│   │   │   ├── search-items-keywords.model.ts
-│   │   │   ├── search-items.model.ts
+│   │   │   ├── search-corpus.model.ts
+│   │   │   ├── search-jobs-keywords.model.ts
+│   │   │   ├── search-jobs.model.ts
 │   │   │   ├── search-queries.model.ts
 │   │   │   ├── search-suggestions.model.ts
 │   │   │   ├── search-synonyms.model.ts
+│   │   │   ├── search-trainings.model.ts
 │   │   │   ├── seo-diplome.model.ts
 │   │   │   ├── seo-metier.model.ts
 │   │   │   ├── seo-ville.model.ts
@@ -1234,6 +1258,8 @@
 │   │   │   ├── get-last-status-event.test.ts
 │   │   │   ├── get-last-status-event.ts
 │   │   │   ├── index.ts
+│   │   │   ├── job-description.utils.test.ts
+│   │   │   ├── job-description.utils.ts
 │   │   │   ├── naf-utils.test.ts
 │   │   │   ├── naf-utils.ts
 │   │   │   ├── object-utils.ts
@@ -1364,6 +1390,7 @@
 │   │   │   │       │   ├── search.params.utils.ts
 │   │   │   │       │   ├── search.tracking.utils.test.ts
 │   │   │   │       │   └── search.tracking.utils.ts
+│   │   │   │       ├── page.test.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── _components
 │   │   │   │   └── DetailZoneLayout.tsx
@@ -1371,6 +1398,7 @@
 │   │   │   │   └── [id]
 │   │   │   │       ├── DetailRendezVousRendererClient.tsx
 │   │   │   │       ├── layout.tsx
+│   │   │   │       ├── not-found.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── emploi
 │   │   │   │   ├── [type]
@@ -1380,14 +1408,16 @@
 │   │   │   │   │           ├── JobDetailRendererClient.tsx
 │   │   │   │   │           ├── loading.tsx
 │   │   │   │   │           └── page.tsx
-│   │   │   │   └── layout.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── not-found.tsx
 │   │   │   ├── formation
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── [intitule-formation]
 │   │   │   │   │       ├── TrainingDetailRendererClient.tsx
 │   │   │   │   │       ├── loading.tsx
 │   │   │   │   │       └── page.tsx
-│   │   │   │   └── layout.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── not-found.tsx
 │   │   │   ├── formulaire-intention
 │   │   │   │   ├── FormulaireIntentionPage.tsx
 │   │   │   │   ├── layout.tsx
@@ -1494,7 +1524,9 @@
 │   │   │   │   ├── const.ts
 │   │   │   │   ├── decouvrir-l-alternance
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── prevention-des-risques-professionnels-pour-les-apprentis
+│   │   │   │   ├── prevention-des-risques-professionnels-pour-les-apprentis
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── rediger-son-offre-d-alternance
 │   │   │   │       └── page.tsx
 │   │   │   ├── guide-alternant
 │   │   │   │   ├── a-propos-des-formations
@@ -1539,6 +1571,7 @@
 │   │   │   │   ├── [slug]
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
+│   │   │   ├── not-found.tsx
 │   │   │   ├── plan-du-site
 │   │   │   │   └── page.tsx
 │   │   │   └── statistiques
@@ -1560,6 +1593,7 @@
 │   │   │   ├── mentions-legales
 │   │   │   │   ├── MentionLegalesRendererClient.tsx
 │   │   │   │   └── page.tsx
+│   │   │   ├── notion-renderer-patch.test.ts
 │   │   │   └── politique-de-confidentialite
 │   │   │       ├── PDCRendererClient.tsx
 │   │   │       └── page.tsx
@@ -1617,11 +1651,18 @@
 │   │   │       │   │   ├── OffreProlongationModal.tsx
 │   │   │       │   │   ├── OffresTabs.tsx
 │   │   │       │   │   ├── OffresTabsMenu.tsx
-│   │   │       │   │   └── UpsertOffre.tsx
+│   │   │       │   │   ├── UpsertOffre.tsx
+│   │   │       │   │   ├── ameliorer-ia.utils.test.ts
+│   │   │       │   │   └── ameliorer-ia.utils.ts
 │   │   │       │   ├── administration
 │   │   │       │   │   ├── _components
-│   │   │       │   │   │   └── EtablissementComponent.tsx
+│   │   │       │   │   │   ├── AdminSearchInput.tsx
+│   │   │       │   │   │   ├── EtablissementComponent.tsx
+│   │   │       │   │   │   ├── MultiSelect.tsx
+│   │   │       │   │   │   └── SearchClearButton.tsx
 │   │   │       │   │   ├── _utils
+│   │   │       │   │   │   ├── admin-search-validation.test.ts
+│   │   │       │   │   │   ├── admin-search-validation.ts
 │   │   │       │   │   │   ├── lbaCompaniesColumns.tsx
 │   │   │       │   │   │   ├── offresPartenairesColumns.tsx
 │   │   │       │   │   │   └── recruteursColumns.tsx
@@ -1630,7 +1671,10 @@
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── gestion-des-administrateurs
 │   │   │       │   │   │   ├── _components
-│   │   │       │   │   │   │   └── AdminUserForm.tsx
+│   │   │       │   │   │   │   ├── AdminConfirmationModal.tsx
+│   │   │       │   │   │   │   ├── AdminUserForm.tsx
+│   │   │       │   │   │   │   ├── admin-user-form.schema.test.ts
+│   │   │       │   │   │   │   └── admin-user-form.schema.ts
 │   │   │       │   │   │   ├── gestionDesAdministrateurs.tsx
 │   │   │       │   │   │   ├── page.tsx
 │   │   │       │   │   │   └── user
@@ -1861,9 +1905,11 @@
 │   │   │       └── page.tsx
 │   │   ├── (rdva)
 │   │   │   ├── layout.tsx
+│   │   │   ├── not-found.tsx
 │   │   │   ├── optout
 │   │   │   │   └── unsubscribe
 │   │   │   │       └── [id]
+│   │   │   │           ├── LienNonAutorise.tsx
 │   │   │   │           ├── OptoutUnsubscribePage.tsx
 │   │   │   │           └── page.tsx
 │   │   │   ├── premium
@@ -1958,7 +2004,6 @@
 │   │       └── field-validations.ts
 │   ├── components
 │   │   ├── DepotOffre
-│   │   │   ├── InfosDiffusionOffre.tsx
 │   │   │   ├── RomeDetail.tsx
 │   │   │   ├── RomeDetailReadOnly.tsx
 │   │   │   └── RomeDetailWithQuery.tsx
@@ -1994,6 +2039,7 @@
 │   │   │   │   ├── ContratBlock.tsx
 │   │   │   │   ├── EmployeurPresentationBlock.tsx
 │   │   │   │   ├── HiringCountBox.tsx
+│   │   │   │   ├── InlineField.tsx
 │   │   │   │   ├── ItemDetailApplicationStatus.tsx
 │   │   │   │   ├── ItemDetailCard.tsx
 │   │   │   │   ├── ItemDistanceToCenter.tsx
@@ -2007,7 +2053,9 @@
 │   │   │   │   ├── NavigationButtons.tsx
 │   │   │   │   ├── get-company-google-search-link.ts
 │   │   │   │   ├── get-company-size.ts
-│   │   │   │   └── getJobPublishedTimeAndApplications.tsx
+│   │   │   │   ├── getJobPublishedTimeAndApplications.tsx
+│   │   │   │   ├── job-description.utils.test.ts
+│   │   │   │   └── job-description.utils.ts
 │   │   │   ├── JobPostingSchema.tsx
 │   │   │   ├── LbaJobComponents
 │   │   │   │   ├── LbaJobAcces.tsx
@@ -2017,7 +2065,8 @@
 │   │   │   │   ├── LbaJobEngagement.tsx
 │   │   │   │   ├── LbaJobEngagementTag.tsx
 │   │   │   │   ├── LbaJobQualites.tsx
-│   │   │   │   └── LbaJobTechniques.tsx
+│   │   │   │   ├── LbaJobTechniques.tsx
+│   │   │   │   └── lba-job-rome-blocks.test.ts
 │   │   │   ├── PartnerJobComponents
 │   │   │   │   ├── GeiqJobDetail.tsx
 │   │   │   │   ├── PartnerJobDetail.tsx
@@ -2128,7 +2177,8 @@
 │   │   ├── contextLogo.tsx
 │   │   └── contextWidget.tsx
 │   ├── e2e
-│   │   └── instant-navigation.spec.ts
+│   │   ├── instant-navigation.spec.ts
+│   │   └── not-found-layout.spec.ts
 │   ├── images.d.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
@@ -2334,7 +2384,8 @@
 │   │   │   │   ├── header.svg
 │   │   │   │   ├── illu-votre-besoin.svg
 │   │   │   │   ├── prevention-des-risques-professionnels-pour-les-apprentis.svg
-│   │   │   │   └── recruteur.svg
+│   │   │   │   ├── recruteur.svg
+│   │   │   │   └── rediger-son-offre-d-alternance.svg
 │   │   │   ├── head_with_bulb.svg
 │   │   │   ├── home_hero_background.svg
 │   │   │   ├── home_pics
@@ -2771,7 +2822,8 @@
 │       ├── sentry-filters.utils.ts
 │       ├── strutils.ts
 │       ├── tools.ts
-│       └── use-search-params-record.ts
+│       ├── use-search-params-record.ts
+│       └── validation-messages.ts
 ├── vitest.config.ts
 └── yarn.lock
-508 directories, 2836 files
+509 directories, 2887 files
