@@ -101,10 +101,15 @@
 │   │   │       ├── home.html
 │   │   │       ├── login.html
 │   │   │       └── manage
+│   │   │           ├── add_edit_checklist.html
+│   │   │           ├── add_edit_page.html
 │   │   │           ├── add_edit_partner.html
+│   │   │           ├── add_edit_section.html
 │   │   │           ├── add_edit_service.html
 │   │   │           ├── detail_user.html
 │   │   │           ├── list_access.html
+│   │   │           ├── list_checklists.html
+│   │   │           ├── list_pages.html
 │   │   │           ├── list_partners.html
 │   │   │           ├── list_services.html
 │   │   │           ├── search_user.html
@@ -116,13 +121,14 @@
 │   │   │   ├── manage
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── test_access.py
+│   │   │   │   ├── test_checklist.py
+│   │   │   │   ├── test_page.py
 │   │   │   │   ├── test_partner.py
 │   │   │   │   ├── test_send_notification.py
 │   │   │   │   ├── test_service.py
 │   │   │   │   └── test_user.py
 │   │   │   ├── test_access_denied.py
 │   │   │   ├── test_api.py
-│   │   │   ├── test_audit_entry.py
 │   │   │   ├── test_home.py
 │   │   │   ├── test_login.py
 │   │   │   ├── test_logout.py
@@ -135,7 +141,9 @@
 │   │       └── manage
 │   │           ├── __init__.py
 │   │           ├── access_views.py
+│   │           ├── checklist_views.py
 │   │           ├── notification_views.py
+│   │           ├── page_views.py
 │   │           ├── partner_views.py
 │   │           ├── service_views.py
 │   │           └── user_views.py
@@ -197,18 +205,33 @@
 │   │   │   ├── test_login_callback_silent_ami_fi.py
 │   │   │   ├── test_login_silent_ami_fi.py
 │   │   │   ├── test_logout.py
+│   │   │   ├── test_logout_callback.py
 │   │   │   └── test_relogin.py
 │   │   ├── urls.py
 │   │   └── views.py
 │   ├── checklist
 │   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
-│   │   │       └── create_checklist_from_doc.py
+│   │   │       ├── create_checklist_from_doc.py
+│   │   │       ├── data
+│   │   │       │   ├── CNMSS001.json
+│   │   │       │   ├── F16225.json
+│   │   │       │   ├── F2485.json
+│   │   │       │   ├── F3109.json
+│   │   │       │   └── F39617.json
+│   │   │       └── init_checklists.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_all.py
 │   │   │   ├── test_command.py
 │   │   │   ├── test_node_to_markdown.py
 │   │   │   └── test_structure.py
@@ -224,8 +247,7 @@
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       └── delete-expired-fi-sessions.py
+│   │   │       └── __init__.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_fi_session.py
@@ -240,7 +262,6 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
 │   │   │   ├── test_authorize.py
-│   │   │   ├── test_delete-expired-fi-sessions_command.py
 │   │   │   ├── test_jwks.py
 │   │   │   ├── test_logout.py
 │   │   │   ├── test_models.py
@@ -279,7 +300,6 @@
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
-│   │   │       ├── delete-published-scheduled-notifications.py
 │   │   │       └── publish-scheduled-notifications.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -306,6 +326,7 @@
 │   │   │   ├── 0022_partner.py
 │   │   │   ├── 0023_partner.py
 │   │   │   ├── 0024_partner.py
+│   │   │   ├── 0025_add_user_id_index.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── push.py
@@ -320,10 +341,20 @@
 │   │       │   └── v2
 │   │       │       ├── __init__.py
 │   │       │       └── test_partner_events.py
-│   │       ├── test_delete-published-scheduled-notifications_command.py
 │   │       ├── test_migrations.py
 │   │       ├── test_publish-scheduled-notifications_command.py
 │   │       └── test_websocket.py
+│   ├── page
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_all.py
 │   ├── partner
 │   │   ├── __init__.py
 │   │   ├── api_urls.py
@@ -334,12 +365,18 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_partner.py
 │   │   │   ├── 0003_partner.py
+│   │   │   ├── 0004_add_ip_allow_list.py
+│   │   │   ├── 0005_partner.py
+│   │   │   ├── 0006_partner.py
+│   │   │   ├── 0007_displayed_on_front.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── schemas.py
 │   │   ├── serializers.py
 │   │   └── tests
 │   │       ├── __init__.py
 │   │       ├── test_api_views.py
+│   │       ├── test_authentication.py
 │   │       └── test_models.py
 │   ├── replication
 │   │   ├── app.py
@@ -361,6 +398,7 @@
 │   │   │   ├── 0010_content_subheading.py
 │   │   │   ├── 0011_partner.py
 │   │   │   ├── 0012_partner.py
+│   │   │   ├── 0013_registration_deleted_at.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── router.py
@@ -387,6 +425,7 @@
 │   │   │   ├── 0009_partner.py
 │   │   │   ├── 0010_partner.py
 │   │   │   ├── 0011_partner.py
+│   │   │   ├── 0012_service_name.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── schemas.py
@@ -418,6 +457,8 @@
 │   │   │   ├── 0007_partner.py
 │   │   │   ├── 0008_device_id.py
 │   │   │   ├── 0009_device_id.py
+│   │   │   ├── 0010_add_registration_user_id_index.py
+│   │   │   ├── 0011_registration_deleted_at.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -443,6 +484,7 @@
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
+│   │   │       ├── cleanup-db.py
 │   │   │       └── generate-identity-tokens.py
 │   │   ├── middleware.py
 │   │   ├── schemas.py
@@ -451,11 +493,14 @@
 │   │   └── tests
 │   │       ├── __init__.py
 │   │       ├── test_all.py
+│   │       ├── test_cleanup_db_command.py
 │   │       ├── test_expiration_rules.py
 │   │       ├── test_generate-identity-tokens.py
 │   │       ├── test_generate_identity_tokens_in_file.py
 │   │       ├── test_httpx.py
-│   │       └── test_schema.py
+│   │       ├── test_schema.py
+│   │       ├── test_sentry.py
+│   │       └── test_trusted_urls.py
 │   ├── well_known
 │   │   ├── __init__.py
 │   │   ├── tests
@@ -499,10 +544,10 @@
 │   │   │   ├── app.html
 │   │   │   ├── hooks.client.ts
 │   │   │   ├── lib
-│   │   │   │   ├── ConnectedHomepage.svelte
-│   │   │   │   ├── ConnectedHomepage.svelte.test.ts
 │   │   │   │   ├── Installation.svelte
 │   │   │   │   ├── Installation.svelte.test.ts
+│   │   │   │   ├── access-key.test.ts
+│   │   │   │   ├── access-key.ts
 │   │   │   │   ├── address.test.ts
 │   │   │   │   ├── address.ts
 │   │   │   │   ├── addressesFromBAN.test.ts
@@ -513,11 +558,16 @@
 │   │   │   │   ├── ami-navigation.ts
 │   │   │   │   ├── api-agenda.test.ts
 │   │   │   │   ├── api-agenda.ts
+│   │   │   │   ├── api-checklist.test.ts
 │   │   │   │   ├── api-checklist.ts
 │   │   │   │   ├── api-consents.test.ts
 │   │   │   │   ├── api-consents.ts
+│   │   │   │   ├── api-content-page.test.ts
+│   │   │   │   ├── api-content-page.ts
 │   │   │   │   ├── api-followup.test.ts
 │   │   │   │   ├── api-followup.ts
+│   │   │   │   ├── api-partners.test.ts
+│   │   │   │   ├── api-partners.ts
 │   │   │   │   ├── api-services.test.ts
 │   │   │   │   ├── api-services.ts
 │   │   │   │   ├── assets
@@ -533,6 +583,13 @@
 │   │   │   │   ├── auto-promo.ts
 │   │   │   │   ├── banner.test.ts
 │   │   │   │   ├── banner.ts
+│   │   │   │   ├── bridges
+│   │   │   │   │   ├── nativeBridge.test.ts
+│   │   │   │   │   ├── nativeBridge.ts
+│   │   │   │   │   ├── nativeInfos.test.ts
+│   │   │   │   │   ├── nativeInfos.ts
+│   │   │   │   │   ├── webappBridge.test.ts
+│   │   │   │   │   └── webappBridge.ts
 │   │   │   │   ├── checklist.test.ts
 │   │   │   │   ├── checklist.ts
 │   │   │   │   ├── citiesFromGeoAPIAndBAN.test.ts
@@ -562,6 +619,7 @@
 │   │   │   │   │   ├── Toasts.svelte
 │   │   │   │   │   ├── Toasts.svelte.test.ts
 │   │   │   │   │   ├── Toggle.svelte
+│   │   │   │   │   ├── Toggle.svelte.test.ts
 │   │   │   │   │   ├── followup
 │   │   │   │   │   │   ├── Followup.svelte
 │   │   │   │   │   │   ├── Followup.svelte.test.ts
@@ -572,9 +630,7 @@
 │   │   │   │   │   │   ├── FollowupItemDetail.svelte.test.ts
 │   │   │   │   │   │   ├── FollowupItemDetailHeader.svelte
 │   │   │   │   │   │   ├── FollowupItemDetailHeader.svelte.test.ts
-│   │   │   │   │   │   ├── FollowupNoConsent.svelte
-│   │   │   │   │   │   ├── FollowupParentItemDetail.svelte
-│   │   │   │   │   │   └── FollowupParentItemDetail.svelte.test.ts
+│   │   │   │   │   │   └── FollowupNoConsent.svelte
 │   │   │   │   │   └── modal
 │   │   │   │   │       ├── AgendaItemModal.svelte
 │   │   │   │   │       ├── AgendaItemModal.svelte.test.ts
@@ -592,14 +648,15 @@
 │   │   │   │   │       └── ZonePreferencesFooter.svelte
 │   │   │   │   ├── consents.test.ts
 │   │   │   │   ├── consents.ts
-│   │   │   │   ├── data
-│   │   │   │   │   └── checklists
-│   │   │   │   │       ├── CNMSS001.json
-│   │   │   │   │       ├── F16225.json
-│   │   │   │   │       └── F3109.json
+│   │   │   │   ├── contact.test.ts
+│   │   │   │   ├── contact.ts
+│   │   │   │   ├── content-page.test.ts
+│   │   │   │   ├── content-page.ts
 │   │   │   │   ├── dsfr-icon.test.ts
 │   │   │   │   ├── dsfr-icon.ts
 │   │   │   │   ├── dsfr.ts
+│   │   │   │   ├── emoji.test.ts
+│   │   │   │   ├── emoji.ts
 │   │   │   │   ├── followup.test.ts
 │   │   │   │   ├── followup.ts
 │   │   │   │   ├── france-connect.test.ts
@@ -607,15 +664,13 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── initializeDataFromAPI.test.ts
 │   │   │   │   ├── initializeDataFromAPI.ts
-│   │   │   │   ├── markdown-truncate.d.ts
 │   │   │   │   ├── markdown.test.ts
 │   │   │   │   ├── markdown.ts
 │   │   │   │   ├── matomo.ts
-│   │   │   │   ├── nativeEvents.test.ts
-│   │   │   │   ├── nativeEvents.ts
-│   │   │   │   ├── nativeInfos.ts
 │   │   │   │   ├── notifications.test.ts
 │   │   │   │   ├── notifications.ts
+│   │   │   │   ├── partners.test.ts
+│   │   │   │   ├── partners.ts
 │   │   │   │   ├── prettyDate.test.ts
 │   │   │   │   ├── prettyDate.ts
 │   │   │   │   ├── procedure.test.ts
@@ -634,12 +689,17 @@
 │   │   │   │   │   ├── preferences.ts
 │   │   │   │   │   ├── toast.svelte.test.ts
 │   │   │   │   │   └── toast.svelte.ts
+│   │   │   │   ├── telemetry.test.ts
+│   │   │   │   ├── telemetry.ts
 │   │   │   │   ├── types
 │   │   │   │   │   └── components
 │   │   │   │   │       └── toggletag.ts
+│   │   │   │   ├── urlAliases.test.ts
+│   │   │   │   ├── urlAliases.ts
 │   │   │   │   ├── utils.test.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── routes
+│   │   │   │   ├── +error.svelte
 │   │   │   │   ├── +layout.svelte
 │   │   │   │   ├── +layout.ts
 │   │   │   │   ├── +page.svelte
@@ -677,7 +737,8 @@
 │   │   │   │   │   ├── archived
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   ├── +page.ts
-│   │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   │   ├── page.svelte.test.ts
+│   │   │   │   │   │   └── page.test.ts
 │   │   │   │   │   ├── item
 │   │   │   │   │   │   └── [partner_id]
 │   │   │   │   │   │       └── [item_type]
@@ -694,9 +755,13 @@
 │   │   │   │   │   │                               ├── +page.ts
 │   │   │   │   │   │                               ├── page.svelte.test.ts
 │   │   │   │   │   │                               └── page.test.ts
-│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   ├── page.svelte.test.ts
+│   │   │   │   │   └── page.test.ts
 │   │   │   │   ├── forbidden
 │   │   │   │   │   └── +page.svelte
+│   │   │   │   ├── help-center
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── layout.svelte.test.ts
 │   │   │   │   ├── layout.test.ts
 │   │   │   │   ├── login
@@ -713,7 +778,15 @@
 │   │   │   │   ├── notifications-welcome-page
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── page
+│   │   │   │   │   └── [page_slug]
+│   │   │   │   │       ├── +page.svelte
+│   │   │   │   │       ├── [section_slug]
+│   │   │   │   │       │   ├── +page.svelte
+│   │   │   │   │       │   └── page.svelte.test.ts
+│   │   │   │   │       └── page.svelte.test.ts
 │   │   │   │   ├── page.svelte.test.ts
+│   │   │   │   ├── page.test.ts
 │   │   │   │   ├── passkey-authentication
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
@@ -721,7 +794,9 @@
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── consents
 │   │   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── page.svelte.test.ts
+│   │   │   │   │   │   └── page.test.ts
 │   │   │   │   │   ├── notifications
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   └── page.svelte.test.ts
@@ -786,8 +861,11 @@
 │   │   │   │   ├── city-search.svg
 │   │   │   │   ├── community.svg
 │   │   │   │   ├── custom
-│   │   │   │   │   ├── external-link-line.svg
+│   │   │   │   │   ├── customer-2-line.svg
 │   │   │   │   │   ├── flight-land-line.svg
+│   │   │   │   │   ├── folder-check-line.svg
+│   │   │   │   │   ├── folder-open-line.svg
+│   │   │   │   │   ├── indeterminate-circle-line.svg
 │   │   │   │   │   ├── infinity-line.svg
 │   │   │   │   │   ├── more-2-fill.svg
 │   │   │   │   │   ├── search-eye-fill.svg
@@ -823,4 +901,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-162 directories, 663 files
+170 directories, 733 files
