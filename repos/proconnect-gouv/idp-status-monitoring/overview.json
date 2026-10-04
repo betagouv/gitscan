@@ -1,12 +1,12 @@
 {
   "url": "https://github.com/proconnect-gouv/idp-status-monitoring",
   "name": "idp-status-monitoring",
-  "description": "Cette application permet d'accéder aux points de terminaison de statut disponibles sur le RIE (Réseau Interministériel de l'État) depuis l'internet public, dans le but d'afficher leur statut sur notre page de statut publique. Elle convertit les requêtes HTTP en messages RabbitMQ et vice versa.",
+  "description": "Cette application sert de pont entre l'internet public et les points de terminaison de statut du RIE (Réseau Interministériel de l'État). Elle convertit les requêtes HTTP en messages RabbitMQ pour permettre le monitoring du réseau sur une page de statut publique.",
   "language": "TypeScript",
   "features": [
     "Monitoring & Logs",
-    "Communication avec RabbitMQ",
-    "Gestion des requêtes HTTP"
+    "API & Intégrations",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -14,29 +14,28 @@
     "amqp-connection-manager",
     "hono",
     "zod",
-    "uuid"
+    "uuid",
+    "consola"
   ],
   "components": [
-    "Producteur (Producer)",
-    "Consommateur (Consumer)",
     "API REST & GraphQL",
-    "File d'attente RabbitMQ",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "TypeScript / JavaScript",
+    "Webhooks & Événements",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "none"
-    ]
+    ],
+    "providers": []
   },
-  "tests": [
-    "Tests d'intégration",
-    "Tests unitaires (avec Bun)"
-  ],
+  "tests": "Tests unitaires avec Bun et tests d'intégration",
   "workflows": [
-    "CI",
-    "Docker Build"
+    "ci.yml",
+    "docker.yml"
   ],
-  "lastActivity": "2026-07-31T15:27:18+02:00",
+  "lastActivity": "2026-10-02T19:43:12+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -48,12 +47,9 @@
   },
   "tags": [
     "Monitoring & Observabilité",
-    "status",
-    "idp",
-    "rabbitmq",
-    "TypeScript",
     "Docker & Conteneurs",
-    "Données & Open Data",
-    "rie"
+    "TypeScript",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions"
   ]
 }
