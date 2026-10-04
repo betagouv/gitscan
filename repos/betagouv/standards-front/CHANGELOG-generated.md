@@ -1,14 +1,14 @@
-## Changelog : standards-front (30 derniers jours, au 28 juillet 2026)
+## Changelog : standards-front (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Les dernières évolutions se concentrent sur l'amélioration de la visibilité des données des incubateurs et la simplification de la navigation pour faciliter la consultation des indicateurs clés et des résumés de services.
+Cette période est marquée par une mise à jour majeure avec l'intégration des nouveaux standards version 2.1. L'outil est également devenu plus tolérant lors des évaluations en ignorant désormais les variations de ponctuation, ce qui réduit les alertes non pertinentes pour les utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la vue des incubateurs** : passage à un affichage sous forme de tableau, meilleur formatage des phases et ajout de compteurs pour les services et évaluations actifs [#185](https://github.com/betagouv/standards-front/pull/185).
-- **Optimisation de la page de résumé** : introduction d'une liste de résumé et ajout d'informations de démarrage supplémentaires [#190](https://github.com/betagouv/standards-front/pull/190).
-- **Navigation** : simplification du menu de l'en-tête pour une utilisation plus fluide.
+- Intégration et déploiement des nouveaux standards version 2.1 [#208](https://github.com/betagouv/standards-front/pull/208)
+- Amélioration de la précision des évaluations : le système ignore désormais les changements de ponctuation pour éviter des signalements inutiles [#207](https://github.com/betagouv/standards-front/pull/207)
 
 ### Évolutions techniques
-- **Composants UI** : ajout de la possibilité de personnaliser la description des légendes de tableau.
-- **Dépendances et performance** : mise à jour vers les versions récentes de `dsfr-view-components` et intégration de `rack-mini-profiler` pour le suivi des performances.
-- **Maintenance et stabilité** : résolution de problèmes de tests instables via la mise à jour de `espace_membre-ruby` et ajustement de la configuration Zeitwerk ; refactorisation de la classe `EspaceMembre::Startup`.
+- Mise à jour de la configuration pour supporter le passage aux standards 2.1
+
+### Autres changements
+- Mise à jour de la documentation (README) concernant le déploiement des nouveaux standards
