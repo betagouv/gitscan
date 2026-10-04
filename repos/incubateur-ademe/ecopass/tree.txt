@@ -130,6 +130,14 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260827131548_product_url
 │   │   │   └── migration.sql
+│   │   ├── 20260903124259_export_count
+│   │   │   └── migration.sql
+│   │   ├── 20260910120758_export_type
+│   │   │   └── migration.sql
+│   │   ├── 20260916111349_add_audience
+│   │   │   └── migration.sql
+│   │   ├── 20260923134915_followed_brands
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   └── seed
@@ -165,7 +173,7 @@
 │   │   ├── document.svg
 │   │   ├── environment.svg
 │   │   ├── etiquette.svg
-│   │   ├── gtin_prefixes.png
+│   │   ├── gtin_prefixes.svg
 │   │   ├── homebanner-pro.png
 │   │   ├── homebanner.svg
 │   │   ├── homejeans.png
@@ -242,6 +250,11 @@
 │   │   │   │       └── route.ts
 │   │   │   └── stats
 │   │   │       └── route.ts
+│   │   ├── auth
+│   │   │   └── error
+│   │   │       ├── conflit
+│   │   │       │   └── page.tsx
+│   │   │       └── page.tsx
 │   │   ├── conditions-generales-utilisation
 │   │   │   └── page.tsx
 │   │   ├── declaration-simplifiee
@@ -261,9 +274,7 @@
 │   │   │   └── page.tsx
 │   │   ├── layout.tsx
 │   │   ├── login
-│   │   │   ├── page.tsx
-│   │   │   └── public
-│   │   │       └── page.tsx
+│   │   │   └── page.tsx
 │   │   ├── logout
 │   │   │   ├── franceconnect
 │   │   │   │   └── page.tsx
@@ -318,6 +329,8 @@
 │   │   │   ├── CreateUserForm.tsx
 │   │   │   ├── StatsTable.module.css
 │   │   │   └── StatsTable.tsx
+│   │   ├── Auth
+│   │   │   └── ErrorPageClient.tsx
 │   │   ├── Block
 │   │   │   ├── BackLink.module.css
 │   │   │   ├── BackLink.tsx
@@ -339,9 +352,6 @@
 │   │   │   ├── Loading.tsx
 │   │   │   ├── LoadingButton.tsx
 │   │   │   └── ProConnect.tsx
-│   │   ├── CategoryDropdown
-│   │   │   ├── CategoryDropdown.module.css
-│   │   │   └── CategoryDropdown.tsx
 │   │   ├── Declaration
 │   │   │   ├── BrandAutocomplete.module.css
 │   │   │   ├── BrandAutocomplete.tsx
@@ -363,6 +373,12 @@
 │   │   │   ├── Ecobalyse.tsx
 │   │   │   ├── En.tsx
 │   │   │   └── Fr.tsx
+│   │   ├── Dropdown
+│   │   │   ├── CategoryDropdown.tsx
+│   │   │   ├── CountryDropdown.tsx
+│   │   │   ├── Dropdown.module.css
+│   │   │   ├── Dropdown.tsx
+│   │   │   └── MaterialDropdown.tsx
 │   │   ├── Footer
 │   │   │   └── Footer.tsx
 │   │   ├── Header
@@ -410,6 +426,7 @@
 │   │   │   ├── Brand
 │   │   │   │   ├── BrandOrganization.tsx
 │   │   │   │   ├── Brands.tsx
+│   │   │   │   ├── FollowedBrands.tsx
 │   │   │   │   ├── GTINPrefixes.module.css
 │   │   │   │   ├── GTINPrefixes.tsx
 │   │   │   │   ├── MyBrands.tsx
@@ -447,11 +464,12 @@
 │   │   │   ├── ConfidenceLevelBadge.tsx
 │   │   │   ├── DownloadExport.tsx
 │   │   │   ├── DownloadScore.tsx
-│   │   │   ├── DownloadScores.tsx
 │   │   │   ├── DurabilityBadge.module.css
 │   │   │   ├── DurabilityBadge.tsx
-│   │   │   ├── Exports.tsx
-│   │   │   ├── ExportsTable.tsx
+│   │   │   ├── Export
+│   │   │   │   ├── ExportProducts.tsx
+│   │   │   │   ├── Exports.tsx
+│   │   │   │   └── ExportsTable.tsx
 │   │   │   ├── ImpactCo2Script.tsx
 │   │   │   ├── InfoTriScript.tsx
 │   │   │   ├── NewExport.tsx
@@ -563,19 +581,19 @@
 │   │   │   ├── redirect.ts
 │   │   │   └── user.ts
 │   │   ├── cron
-│   │   │   ├── weeklyDeclarationNotifications.test.ts
-│   │   │   └── weeklyDeclarationNotifications.ts
+│   │   │   ├── dailyDeclarationNotifications.test.ts
+│   │   │   └── dailyDeclarationNotifications.ts
 │   │   ├── download.ts
 │   │   ├── emails
 │   │   │   ├── email.ts
 │   │   │   └── views
+│   │   │       ├── daily-declaration-changed.ejs
+│   │   │       ├── daily-owner-low-medium-alert.ejs
 │   │   │       ├── reset.ejs
 │   │   │       ├── test-upload-error.ejs
 │   │   │       ├── test-upload-success.ejs
 │   │   │       ├── upload-error.ejs
 │   │   │       ├── upload-success.ejs
-│   │   │       ├── weekly-declaration-changed.ejs
-│   │   │       ├── weekly-owner-low-medium-alert.ejs
 │   │   │       ├── welcome-citoyen.ejs
 │   │   │       └── welcome.ejs
 │   │   ├── format.ts
@@ -609,6 +627,8 @@
 │   │   ├── api
 │   │   │   ├── products.test.ts
 │   │   │   └── products.ts
+│   │   ├── auth
+│   │   │   └── logoutHelpers.ts
 │   │   ├── authorization
 │   │   │   └── authorizations.ts
 │   │   ├── brands
@@ -637,7 +657,6 @@
 │   │   ├── organization
 │   │   │   ├── brands.test.ts
 │   │   │   ├── brands.ts
-│   │   │   ├── canDeclare.ts
 │   │   │   └── types.ts
 │   │   ├── parsing
 │   │   │   ├── csv
@@ -649,9 +668,11 @@
 │   │   │   ├── parsing.ts
 │   │   │   └── parsingTest.ts
 │   │   ├── product
+│   │   │   ├── audienceMassMapping.ts
 │   │   │   ├── category.test.ts
 │   │   │   ├── category.ts
 │   │   │   ├── confidence.ts
+│   │   │   ├── declarant.ts
 │   │   │   └── impacts.ts
 │   │   ├── queue
 │   │   │   ├── exports.test.ts
@@ -693,7 +714,6 @@
 │       ├── Home.tsx
 │       ├── Informations.module.css
 │       ├── Informations.tsx
-│       ├── Login.tsx
 │       ├── Logout.tsx
 │       ├── MentionsLegales.tsx
 │       ├── MyOrganization.tsx
@@ -709,4 +729,4 @@
 │       ├── SimplifiedDeclaration.tsx
 │       └── Statistics.tsx
 └── tsconfig.json
-173 directories, 538 files
+182 directories, 549 files
