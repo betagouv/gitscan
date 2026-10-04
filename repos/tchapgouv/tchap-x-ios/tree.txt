@@ -1,6 +1,10 @@
 .
 ├── .agents
 │   └── skills
+│       ├── constrained-tests
+│       │   └── SKILL.md
+│       ├── periphery-cleanup
+│       │   └── SKILL.md
 │       └── swift-concurrency-pro
 │           ├── SKILL.md
 │           ├── agents
@@ -73,6 +77,20 @@
 │       ├── AccessibilityTests.xctestplan
 │       ├── Info.plist
 │       └── target.yml
+├── BuildExtensions
+│   ├── Package.resolved
+│   ├── Package.swift
+│   ├── Sources
+│   │   ├── Macros
+│   │   │   ├── AppHook.swift
+│   │   │   └── UserPreference.swift
+│   │   └── MacrosImplementation
+│   │       ├── AppHookMacro.swift
+│   │       ├── Plugin.swift
+│   │       └── UserPreferenceMacro.swift
+│   └── Tests
+│       └── MacrosTests
+│           └── UserPreferenceMacroTests.swift
 ├── CHANGES.md
 ├── CHANGES_TCHAP.md
 ├── CLAUDE.md
@@ -345,9 +363,14 @@
 │   │   │       ├── CompoundHook.swift
 │   │   │       ├── DeveloperOptionsScreenHook.swift
 │   │   │       ├── OAuthPresenterHook.swift
+│   │   │       ├── RecoveryKeyScreenHook.swift
 │   │   │       ├── RemoteSettingsHook.swift
+│   │   │       ├── RoomDetailsScreenHook.swift
+│   │   │       ├── RoomMemberDetailsScreenHook.swift
 │   │   │       ├── RoomScreenHook.swift
-│   │   │       └── TracingHook.swift
+│   │   │       ├── TracingHook.swift
+│   │   │       ├── UserProfileScreenHook.swift
+│   │   │       └── UserSessionHook.swift
 │   │   ├── Application
 │   │   │   ├── AppCoordinator.swift
 │   │   │   ├── AppCoordinatorProtocol.swift
@@ -372,14 +395,13 @@
 │   │   │   │   ├── AudioPlaybackSpeed.swift
 │   │   │   │   ├── FrequentlyUsedEmoji.swift
 │   │   │   │   ├── LiveLocationSession.swift
-│   │   │   │   ├── MapTilerSettings.swift
+│   │   │   │   ├── MapTilerConfiguration.swift
 │   │   │   │   ├── OAuthConfiguration.swift
 │   │   │   │   ├── RageshakeConfiguration.swift
 │   │   │   │   ├── RemotePreference.swift
 │   │   │   │   ├── RoomListActivityVisibility.swift
 │   │   │   │   ├── TrackedUserDefaults.swift
 │   │   │   │   ├── UserDefaultsProtocol.swift
-│   │   │   │   ├── UserPreference.swift
 │   │   │   │   └── VolatileUserDefaults.swift
 │   │   │   ├── TargetConfiguration.swift
 │   │   │   └── Windowing
@@ -427,6 +449,7 @@
 │   │   │   ├── ClassicAppManagerMock.swift
 │   │   │   ├── ClientProxyMock.swift
 │   │   │   ├── ComposerDraftServiceMock.swift
+│   │   │   ├── ContentScannerServiceMock.swift
 │   │   │   ├── ElementCallServiceMock.swift
 │   │   │   ├── Generated
 │   │   │   │   └── GeneratedMocks.swift
@@ -511,7 +534,6 @@
 │   │   │   │   ├── FileManager.swift
 │   │   │   │   ├── HTMLParserStyle.swift
 │   │   │   │   ├── ImageCache.swift
-│   │   │   │   ├── Label.swift
 │   │   │   │   ├── NSItemProvider.swift
 │   │   │   │   ├── NSRegularExpresion.swift
 │   │   │   │   ├── Observable.swift
@@ -521,6 +543,7 @@
 │   │   │   │   ├── Publisher.swift
 │   │   │   │   ├── Result.swift
 │   │   │   │   ├── Section.swift
+│   │   │   │   ├── SentryEvent.swift
 │   │   │   │   ├── Snapshotting.swift
 │   │   │   │   ├── String.swift
 │   │   │   │   ├── Task.swift
@@ -531,7 +554,6 @@
 │   │   │   │   ├── URLComponents.swift
 │   │   │   │   ├── URLSession.swift
 │   │   │   │   ├── UTType.swift
-│   │   │   │   ├── XCTestCase.swift
 │   │   │   │   └── XCUIElement.swift
 │   │   │   ├── HTMLParsing
 │   │   │   │   ├── AttributedStringBuilder.swift
@@ -583,6 +605,7 @@
 │   │   │   │   │   └── ShimmerModifier.swift
 │   │   │   │   ├── Backports.swift
 │   │   │   │   ├── ElementNavigationStack.swift
+│   │   │   │   ├── InverseMask.swift
 │   │   │   │   ├── Layout
 │   │   │   │   │   ├── CustomLayoutLabelStyle.swift
 │   │   │   │   │   ├── FullscreenDialog.swift
@@ -595,7 +618,6 @@
 │   │   │   │   ├── Search.swift
 │   │   │   │   ├── ShouldScrollOnKeyboardDidShow.swift
 │   │   │   │   ├── Styles
-│   │   │   │   │   ├── ElementTextFieldStyle.swift
 │   │   │   │   │   └── FormButtonStyles.swift
 │   │   │   │   ├── VerificationBadge.swift
 │   │   │   │   ├── ViewModel
@@ -605,10 +627,12 @@
 │   │   │   │   └── Views
 │   │   │   │       ├── AppActivityView.swift
 │   │   │   │       ├── AvatarHeaderView.swift
+│   │   │   │       ├── AvatarSettingsButtonLabel.swift
 │   │   │   │       ├── BadgeLabel.swift
 │   │   │   │       ├── BadgeView.swift
 │   │   │   │       ├── BlurEffectView.swift
 │   │   │   │       ├── ComposerDisabledView.swift
+│   │   │   │       ├── ContentScanningView.swift
 │   │   │   │       ├── CopyTextButton.swift
 │   │   │   │       ├── EditAvatarButtonStyle.swift
 │   │   │   │       ├── EditRoomAddressListRow.swift
@@ -640,6 +664,7 @@
 │   │   │   ├── TestablePreview
 │   │   │   │   ├── TestablePreview.swift
 │   │   │   │   └── TestablePreviewsDictionary.swift
+│   │   │   ├── TextFieldAdapter.swift
 │   │   │   ├── UserAgentBuilder.swift
 │   │   │   ├── UserIndicator
 │   │   │   │   ├── UserIndicator.swift
@@ -700,13 +725,6 @@
 │   │   │   │   │   └── View
 │   │   │   │   │       └── LoginScreen.swift
 │   │   │   │   ├── OAuthAuthenticationPresenter.swift
-│   │   │   │   ├── ServerConfirmationScreen
-│   │   │   │   │   ├── ServerConfirmationScreenCoordinator.swift
-│   │   │   │   │   ├── ServerConfirmationScreenModels.swift
-│   │   │   │   │   ├── ServerConfirmationScreenViewModel.swift
-│   │   │   │   │   ├── ServerConfirmationScreenViewModelProtocol.swift
-│   │   │   │   │   └── View
-│   │   │   │   │       └── ServerConfirmationScreen.swift
 │   │   │   │   ├── ServerSelectionScreen
 │   │   │   │   │   ├── ServerSelectionScreenCoordinator.swift
 │   │   │   │   │   ├── ServerSelectionScreenModels.swift
@@ -822,18 +840,11 @@
 │   │   │   │   ├── TimelineMediaPreviewModifier.swift
 │   │   │   │   ├── TimelineMediaPreviewViewModel.swift
 │   │   │   │   └── View
+│   │   │   │       ├── TimelineMediaContentScanningFailureView.swift
 │   │   │   │       ├── TimelineMediaPreviewController.swift
 │   │   │   │       ├── TimelineMediaPreviewDetailsView.swift
 │   │   │   │       ├── TimelineMediaPreviewFileExportPicker.swift
 │   │   │   │       └── TimelineMediaPreviewRedactConfirmationView.swift
-│   │   │   ├── GlobalSearchScreen
-│   │   │   │   ├── GlobalSearchScreenCoordinator.swift
-│   │   │   │   ├── GlobalSearchScreenModels.swift
-│   │   │   │   ├── GlobalSearchScreenViewModel.swift
-│   │   │   │   ├── GlobalSearchScreenViewModelProtocol.swift
-│   │   │   │   └── View
-│   │   │   │       ├── GlobalSearchScreen.swift
-│   │   │   │       └── GlobalSearchScreenCell.swift
 │   │   │   ├── HomeScreen
 │   │   │   │   ├── HomeScreenCoordinator.swift
 │   │   │   │   ├── HomeScreenModels.swift
@@ -937,6 +948,7 @@
 │   │   │   │           ├── AudioFileEventsTimelineView.swift
 │   │   │   │           ├── FileMediaEventsTimelineView.swift
 │   │   │   │           ├── ImageMediaEventsTimelineView.swift
+│   │   │   │           ├── ScanStateMediaEventsTimelineViews.swift
 │   │   │   │           ├── SeparatorMediaEventsTimelineView.swift
 │   │   │   │           ├── VideoMediaEventsTimelineView.swift
 │   │   │   │           └── VoiceMessageMediaEventsTimelineView.swift
@@ -1162,6 +1174,13 @@
 │   │   │   │   ├── RoomThreadListScreenViewModelProtocol.swift
 │   │   │   │   └── View
 │   │   │   │       └── RoomThreadListScreen.swift
+│   │   │   ├── SearchScreen
+│   │   │   │   ├── SearchScreenCoordinator.swift
+│   │   │   │   ├── SearchScreenModels.swift
+│   │   │   │   ├── SearchScreenViewModel.swift
+│   │   │   │   ├── SearchScreenViewModelProtocol.swift
+│   │   │   │   └── View
+│   │   │   │       └── SearchScreen.swift
 │   │   │   ├── SecureBackup
 │   │   │   │   ├── SecureBackupKeyBackupScreen
 │   │   │   │   │   ├── SecureBackupKeyBackupScreenCoordinator.swift
@@ -1257,7 +1276,9 @@
 │   │   │   │   │   ├── SettingsScreenViewModel.swift
 │   │   │   │   │   ├── SettingsScreenViewModelProtocol.swift
 │   │   │   │   │   └── View
-│   │   │   │   │       └── SettingsScreen.swift
+│   │   │   │   │       ├── SettingsScreen.swift
+│   │   │   │   │       ├── SettingsScreenUserStatusPickerView.swift
+│   │   │   │   │       └── SettingsScreenUserStatusRow.swift
 │   │   │   │   └── UserDetailsEditScreen
 │   │   │   │       ├── UserDetailsEditScreenCoordinator.swift
 │   │   │   │       ├── UserDetailsEditScreenModels.swift
@@ -1342,7 +1363,6 @@
 │   │   │   │       ├── Style
 │   │   │   │       │   ├── AccessibleLongPress.swift
 │   │   │   │       │   ├── LongPressWithFeedback.swift
-│   │   │   │       │   ├── SwipeToReplyView.swift
 │   │   │   │       │   ├── ThreadDecorator.swift
 │   │   │   │       │   ├── TimelineBubbleLayout.swift
 │   │   │   │       │   ├── TimelineItemAccessibilityModifier.swift
@@ -1361,14 +1381,20 @@
 │   │   │   │       │   └── TimelineThreadSummaryView.swift
 │   │   │   │       ├── TimelineItemDebugView.swift
 │   │   │   │       ├── TimelineItemViews
+│   │   │   │       │   ├── ActiveCallTimelineItemView.swift
 │   │   │   │       │   ├── AudioRoomTimelineView.swift
 │   │   │   │       │   ├── CallInviteRoomTimelineView.swift
 │   │   │   │       │   ├── CallNotificationRoomTimelineView.swift
 │   │   │   │       │   ├── CollapsibleRoomTimelineView.swift
+│   │   │   │       │   ├── ContentScanningFailureView.swift
 │   │   │   │       │   ├── EmoteRoomTimelineView.swift
 │   │   │   │       │   ├── EncryptedRoomTimelineView.swift
 │   │   │   │       │   ├── FileRoomTimelineView.swift
 │   │   │   │       │   ├── FormattedBodyText.swift
+│   │   │   │       │   ├── GalleryGridView.swift
+│   │   │   │       │   ├── GalleryItemTileView.swift
+│   │   │   │       │   ├── GalleryListView.swift
+│   │   │   │       │   ├── GalleryRoomTimelineView.swift
 │   │   │   │       │   ├── HighlightedTimelineItemModifier.swift
 │   │   │   │       │   ├── ImageRoomTimelineView.swift
 │   │   │   │       │   ├── LiveLocationRoomTimelineView.swift
@@ -1453,10 +1479,16 @@
 │   │   │   ├── Client
 │   │   │   │   ├── Client.swift
 │   │   │   │   ├── ClientProxy.swift
-│   │   │   │   └── ClientProxyProtocol.swift
+│   │   │   │   ├── ClientProxyProtocol.swift
+│   │   │   │   └── HomeserverHistoryManager.swift
 │   │   │   ├── ComposerDraft
 │   │   │   │   ├── ComposerDraftService.swift
 │   │   │   │   └── ComposerDraftServiceProtocol.swift
+│   │   │   ├── ContentScanner
+│   │   │   │   ├── ContentScannerProxy.swift
+│   │   │   │   ├── ContentScannerProxyProtocol.swift
+│   │   │   │   ├── ContentScannerService.swift
+│   │   │   │   └── ContentScannerServiceProtocol.swift
 │   │   │   ├── ElementCall
 │   │   │   │   ├── CXProviderProtocol.swift
 │   │   │   │   ├── ElementCallConfiguration.swift
@@ -1514,6 +1546,8 @@
 │   │   │   ├── Polls
 │   │   │   │   ├── PollInteractionHandler.swift
 │   │   │   │   └── PollInteractionHandlerProtocol.swift
+│   │   │   ├── Presence
+│   │   │   │   └── PresenceService.swift
 │   │   │   ├── Room
 │   │   │   │   ├── BannedRoomProxy.swift
 │   │   │   │   ├── InvitedRoomProxy.swift
@@ -1555,6 +1589,9 @@
 │   │   │   ├── RoomDirectorySearch
 │   │   │   │   ├── RoomDirectorySearchProxy.swift
 │   │   │   │   └── RoomDirectorySearchProxyProtocol.swift
+│   │   │   ├── Search
+│   │   │   │   ├── SearchServiceProxy.swift
+│   │   │   │   └── SearchServiceProxyProtocol.swift
 │   │   │   ├── SecureBackup
 │   │   │   │   ├── SecureBackupController.swift
 │   │   │   │   └── SecureBackupControllerProtocol.swift
@@ -1575,7 +1612,7 @@
 │   │   │   │   └── StateMachineFactory.swift
 │   │   │   ├── Timeline
 │   │   │   │   ├── Fixtures
-│   │   │   │   │   └── RoomTimelineItemFixtures.swift
+│   │   │   │   │   └── TimelineFixtures.swift
 │   │   │   │   ├── GeoURI.swift
 │   │   │   │   ├── IntentionalMentions.swift
 │   │   │   │   ├── TimelineController
@@ -1610,6 +1647,8 @@
 │   │   │   │   │   │   │   ├── EmoteRoomTimelineItemContent.swift
 │   │   │   │   │   │   │   ├── FileRoomTimelineItem.swift
 │   │   │   │   │   │   │   ├── FileRoomTimelineItemContent.swift
+│   │   │   │   │   │   │   ├── GalleryRoomTimelineItem.swift
+│   │   │   │   │   │   │   ├── GalleryRoomTimelineItemContent.swift
 │   │   │   │   │   │   │   ├── ImageRoomTimelineItem.swift
 │   │   │   │   │   │   │   ├── ImageRoomTimelineItemContent.swift
 │   │   │   │   │   │   │   ├── LiveLocationRoomTimelineItem.swift
@@ -1657,7 +1696,7 @@
 │   │   │   │   ├── UserDiscoveryServiceProtocol.swift
 │   │   │   │   ├── UserIdentityProxy.swift
 │   │   │   │   ├── UserIdentityProxyProtocol.swift
-│   │   │   │   └── UserProfileProxy.swift
+│   │   │   │   └── UserProfile.swift
 │   │   │   └── VoiceMessage
 │   │   │       ├── VoiceMessageCache.swift
 │   │   │       ├── VoiceMessageCacheProtocol.swift
@@ -1818,6 +1857,10 @@
 │   │   ├── PreviewTests.swift
 │   │   └── __Snapshots__
 │   │       └── PreviewTests
+│   │           ├── activeCallTimelineItemView.iPad-en-GB-0.png
+│   │           ├── activeCallTimelineItemView.iPad-pseudo-0.png
+│   │           ├── activeCallTimelineItemView.iPhone-en-GB-0.png
+│   │           ├── activeCallTimelineItemView.iPhone-pseudo-0.png
 │   │           ├── advancedSettingsScreen.iPad-en-GB-0.png
 │   │           ├── advancedSettingsScreen.iPad-pseudo-0.png
 │   │           ├── advancedSettingsScreen.iPhone-16-en-GB-0.png
@@ -1836,10 +1879,14 @@
 │   │           ├── analyticsSettingsScreen.iPad-pseudo-0.png
 │   │           ├── analyticsSettingsScreen.iPhone-en-GB-0.png
 │   │           ├── analyticsSettingsScreen.iPhone-pseudo-0.png
-│   │           ├── appLockScreen.iPad-en-GB-0.png
-│   │           ├── appLockScreen.iPad-pseudo-0.png
-│   │           ├── appLockScreen.iPhone-en-GB-0.png
-│   │           ├── appLockScreen.iPhone-pseudo-0.png
+│   │           ├── appLockScreen.Unlock-iPad-en-GB.png
+│   │           ├── appLockScreen.Unlock-iPad-pseudo.png
+│   │           ├── appLockScreen.Unlock-iPhone-en-GB.png
+│   │           ├── appLockScreen.Unlock-iPhone-pseudo.png
+│   │           ├── appLockScreen.Verify-iPad-en-GB.png
+│   │           ├── appLockScreen.Verify-iPad-pseudo.png
+│   │           ├── appLockScreen.Verify-iPhone-en-GB.png
+│   │           ├── appLockScreen.Verify-iPhone-pseudo.png
 │   │           ├── appLockSetupBiometricsScreen.Face-ID-iPad-en-GB.png
 │   │           ├── appLockSetupBiometricsScreen.Face-ID-iPad-pseudo.png
 │   │           ├── appLockSetupBiometricsScreen.Face-ID-iPhone-en-GB.png
@@ -1880,6 +1927,10 @@
 │   │           ├── audioMediaEventsTimelineView.iPad-pseudo-0.png
 │   │           ├── audioMediaEventsTimelineView.iPhone-en-GB-0.png
 │   │           ├── audioMediaEventsTimelineView.iPhone-pseudo-0.png
+│   │           ├── audioRoomTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── audioRoomTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── audioRoomTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── audioRoomTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── audioRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── audioRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── audioRoomTimelineView.iPhone-en-GB-0.png
@@ -1928,6 +1979,10 @@
 │   │           ├── avatarHeaderView.Room-iPad-pseudo.png
 │   │           ├── avatarHeaderView.Room-iPhone-en-GB.png
 │   │           ├── avatarHeaderView.Room-iPhone-pseudo.png
+│   │           ├── avatarSettingsButtonLabel.iPad-en-GB-0.png
+│   │           ├── avatarSettingsButtonLabel.iPad-pseudo-0.png
+│   │           ├── avatarSettingsButtonLabel.iPhone-en-GB-0.png
+│   │           ├── avatarSettingsButtonLabel.iPhone-pseudo-0.png
 │   │           ├── badgeLabel.iPad-en-GB-0.png
 │   │           ├── badgeLabel.iPad-pseudo-0.png
 │   │           ├── badgeLabel.iPhone-en-GB-0.png
@@ -1996,6 +2051,10 @@
 │   │           ├── composerToolbar.iPad-pseudo-0.png
 │   │           ├── composerToolbar.iPhone-en-GB-0.png
 │   │           ├── composerToolbar.iPhone-pseudo-0.png
+│   │           ├── contentScanningFailureView.iPad-en-GB-0.png
+│   │           ├── contentScanningFailureView.iPad-pseudo-0.png
+│   │           ├── contentScanningFailureView.iPhone-en-GB-0.png
+│   │           ├── contentScanningFailureView.iPhone-pseudo-0.png
 │   │           ├── copyTextButton.iPad-en-GB-0.png
 │   │           ├── copyTextButton.iPad-pseudo-0.png
 │   │           ├── copyTextButton.iPhone-en-GB-0.png
@@ -2080,10 +2139,6 @@
 │   │           ├── editRoomAddressScreen.With-alias-iPad-pseudo.png
 │   │           ├── editRoomAddressScreen.With-alias-iPhone-en-GB.png
 │   │           ├── editRoomAddressScreen.With-alias-iPhone-pseudo.png
-│   │           ├── elementTextFieldStyle.iPad-en-GB-0.png
-│   │           ├── elementTextFieldStyle.iPad-pseudo-0.png
-│   │           ├── elementTextFieldStyle.iPhone-en-GB-0.png
-│   │           ├── elementTextFieldStyle.iPhone-pseudo-0.png
 │   │           ├── emojiPickerScreen.Screen-iPad-en-GB.png
 │   │           ├── emojiPickerScreen.Screen-iPad-pseudo.png
 │   │           ├── emojiPickerScreen.Screen-iPhone-16-en-GB.png
@@ -2118,6 +2173,10 @@
 │   │           ├── fileMediaEventsTimelineView.iPad-pseudo-0.png
 │   │           ├── fileMediaEventsTimelineView.iPhone-en-GB-0.png
 │   │           ├── fileMediaEventsTimelineView.iPhone-pseudo-0.png
+│   │           ├── fileRoomTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── fileRoomTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── fileRoomTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── fileRoomTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── fileRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── fileRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── fileRoomTimelineView.iPhone-en-GB-0.png
@@ -2198,14 +2257,42 @@
 │   │           ├── fullscreenDialog.Plain-iPad-pseudo.png
 │   │           ├── fullscreenDialog.Plain-iPhone-en-GB.png
 │   │           ├── fullscreenDialog.Plain-iPhone-pseudo.png
-│   │           ├── globalSearchScreen.iPad-en-GB-0.png
-│   │           ├── globalSearchScreen.iPad-pseudo-0.png
-│   │           ├── globalSearchScreen.iPhone-en-GB-0.png
-│   │           ├── globalSearchScreen.iPhone-pseudo-0.png
-│   │           ├── globalSearchScreenListRow.iPad-en-GB-0.png
-│   │           ├── globalSearchScreenListRow.iPad-pseudo-0.png
-│   │           ├── globalSearchScreenListRow.iPhone-en-GB-0.png
-│   │           ├── globalSearchScreenListRow.iPhone-pseudo-0.png
+│   │           ├── galleryRoomTimelineView.1-image-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.1-image-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.1-image-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.1-image-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.2-images-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.2-images-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.2-images-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.2-images-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.3-images-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.3-images-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.3-images-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.3-images-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.4-images-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.4-images-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.4-images-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.4-images-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.5-images-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.5-images-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.5-images-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.5-images-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.6-images-with-caption-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.6-images-with-caption-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.6-images-with-caption-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.6-images-with-caption-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.File-list-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.File-list-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.File-list-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.File-list-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-files-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-files-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-files-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-files-iPhone-pseudo.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-iPad-en-GB.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-iPad-pseudo.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-iPhone-en-GB.png
+│   │           ├── galleryRoomTimelineView.Mixed-content-scan-iPhone-pseudo.png
 │   │           ├── highlightedTimelineItemModifier.Layout-iPad-en-GB.png
 │   │           ├── highlightedTimelineItemModifier.Layout-iPad-pseudo.png
 │   │           ├── highlightedTimelineItemModifier.Layout-iPhone-en-GB.png
@@ -2268,6 +2355,10 @@
 │   │           ├── homeScreenRoomCell.Notifications-State-iPad-pseudo.png
 │   │           ├── homeScreenRoomCell.Notifications-State-iPhone-en-GB.png
 │   │           ├── homeScreenRoomCell.Notifications-State-iPhone-pseudo.png
+│   │           ├── homeScreenRoomCell.Room-Heroes-iPad-en-GB.png
+│   │           ├── homeScreenRoomCell.Room-Heroes-iPad-pseudo.png
+│   │           ├── homeScreenRoomCell.Room-Heroes-iPhone-en-GB.png
+│   │           ├── homeScreenRoomCell.Room-Heroes-iPhone-pseudo.png
 │   │           ├── identityConfirmationScreen.Actions-iPad-en-GB.png
 │   │           ├── identityConfirmationScreen.Actions-iPad-pseudo.png
 │   │           ├── identityConfirmationScreen.Actions-iPhone-en-GB.png
@@ -2284,10 +2375,18 @@
 │   │           ├── identityConfirmedScreen.iPad-pseudo-0.png
 │   │           ├── identityConfirmedScreen.iPhone-en-GB-0.png
 │   │           ├── identityConfirmedScreen.iPhone-pseudo-0.png
+│   │           ├── imageMediaEventsTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── imageMediaEventsTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── imageMediaEventsTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── imageMediaEventsTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── imageMediaEventsTimelineView.iPad-en-GB-0.png
 │   │           ├── imageMediaEventsTimelineView.iPad-pseudo-0.png
 │   │           ├── imageMediaEventsTimelineView.iPhone-en-GB-0.png
 │   │           ├── imageMediaEventsTimelineView.iPhone-pseudo-0.png
+│   │           ├── imageRoomTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── imageRoomTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── imageRoomTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── imageRoomTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── imageRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── imageRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── imageRoomTimelineView.iPhone-en-GB-0.png
@@ -2528,6 +2627,10 @@
 │   │           ├── linkNewDeviceScreen.Unsupported-iPad-pseudo.png
 │   │           ├── linkNewDeviceScreen.Unsupported-iPhone-en-GB.png
 │   │           ├── linkNewDeviceScreen.Unsupported-iPhone-pseudo.png
+│   │           ├── linkNewDeviceScreen.Verifying-iPad-en-GB.png
+│   │           ├── linkNewDeviceScreen.Verifying-iPad-pseudo.png
+│   │           ├── linkNewDeviceScreen.Verifying-iPhone-en-GB.png
+│   │           ├── linkNewDeviceScreen.Verifying-iPhone-pseudo.png
 │   │           ├── liveLocationRoomTimelineView.Bubbles-iPad-en-GB.png
 │   │           ├── liveLocationRoomTimelineView.Bubbles-iPad-pseudo.png
 │   │           ├── liveLocationRoomTimelineView.Bubbles-iPhone-en-GB.png
@@ -2672,6 +2775,10 @@
 │   │           ├── mentionSuggestionItemView.User-no-display-name-iPad-pseudo.png
 │   │           ├── mentionSuggestionItemView.User-no-display-name-iPhone-en-GB.png
 │   │           ├── mentionSuggestionItemView.User-no-display-name-iPhone-pseudo.png
+│   │           ├── mentionSuggestionItemView.User-with-status-iPad-en-GB.png
+│   │           ├── mentionSuggestionItemView.User-with-status-iPad-pseudo.png
+│   │           ├── mentionSuggestionItemView.User-with-status-iPhone-en-GB.png
+│   │           ├── mentionSuggestionItemView.User-with-status-iPhone-pseudo.png
 │   │           ├── messageComposer.Replying-iPad-en-GB.png
 │   │           ├── messageComposer.Replying-iPad-pseudo.png
 │   │           ├── messageComposer.Replying-iPhone-en-GB.png
@@ -2780,6 +2887,10 @@
 │   │           ├── pillView.User-iPad-pseudo.png
 │   │           ├── pillView.User-iPhone-en-GB.png
 │   │           ├── pillView.User-iPhone-pseudo.png
+│   │           ├── pillView.User-with-Status-iPad-en-GB.png
+│   │           ├── pillView.User-with-Status-iPad-pseudo.png
+│   │           ├── pillView.User-with-Status-iPhone-en-GB.png
+│   │           ├── pillView.User-with-Status-iPhone-pseudo.png
 │   │           ├── pillView.User-with-a-long-name-iPad-en-GB.png
 │   │           ├── pillView.User-with-a-long-name-iPad-pseudo.png
 │   │           ├── pillView.User-with-a-long-name-iPhone-en-GB.png
@@ -2788,6 +2899,10 @@
 │   │           ├── pillView.User-with-missing-name-iPad-pseudo.png
 │   │           ├── pillView.User-with-missing-name-iPhone-en-GB.png
 │   │           ├── pillView.User-with-missing-name-iPhone-pseudo.png
+│   │           ├── pillView.User-with-status-and-long-name-iPad-en-GB.png
+│   │           ├── pillView.User-with-status-and-long-name-iPad-pseudo.png
+│   │           ├── pillView.User-with-status-and-long-name-iPhone-en-GB.png
+│   │           ├── pillView.User-with-status-and-long-name-iPhone-pseudo.png
 │   │           ├── pillViewOnBubble.iPad-en-GB-0.png
 │   │           ├── pillViewOnBubble.iPad-pseudo-0.png
 │   │           ├── pillViewOnBubble.iPhone-en-GB-0.png
@@ -2992,10 +3107,6 @@
 │   │           ├── qRCodeLoginScreen.Scanning-iPad-pseudo.png
 │   │           ├── qRCodeLoginScreen.Scanning-iPhone-en-GB.png
 │   │           ├── qRCodeLoginScreen.Scanning-iPhone-pseudo.png
-│   │           ├── qRCodeLoginScreen.Showing-expired-iPad-en-GB.png
-│   │           ├── qRCodeLoginScreen.Showing-expired-iPad-pseudo.png
-│   │           ├── qRCodeLoginScreen.Showing-expired-iPhone-en-GB.png
-│   │           ├── qRCodeLoginScreen.Showing-expired-iPhone-pseudo.png
 │   │           ├── qRCodeLoginScreen.Showing-iPad-en-GB.png
 │   │           ├── qRCodeLoginScreen.Showing-iPad-pseudo.png
 │   │           ├── qRCodeLoginScreen.Showing-iPhone-en-GB.png
@@ -3200,6 +3311,10 @@
 │   │           ├── roomMembersListMemberCell.iPad-pseudo-0.png
 │   │           ├── roomMembersListMemberCell.iPhone-en-GB-0.png
 │   │           ├── roomMembersListMemberCell.iPhone-pseudo-0.png
+│   │           ├── roomMembersListScreen.Active-Room-Call-iPad-en-GB.png
+│   │           ├── roomMembersListScreen.Active-Room-Call-iPad-pseudo.png
+│   │           ├── roomMembersListScreen.Active-Room-Call-iPhone-en-GB.png
+│   │           ├── roomMembersListScreen.Active-Room-Call-iPhone-pseudo.png
 │   │           ├── roomMembersListScreen.Admin-Banned-iPad-en-GB.png
 │   │           ├── roomMembersListScreen.Admin-Banned-iPad-pseudo.png
 │   │           ├── roomMembersListScreen.Admin-Banned-iPhone-16-en-GB.png
@@ -3218,6 +3333,10 @@
 │   │           ├── roomMembersListScreen.Empty-Search-iPad-pseudo.png
 │   │           ├── roomMembersListScreen.Empty-Search-iPhone-en-GB.png
 │   │           ├── roomMembersListScreen.Empty-Search-iPhone-pseudo.png
+│   │           ├── roomMembersListScreen.In-Call-iPad-en-GB.png
+│   │           ├── roomMembersListScreen.In-Call-iPad-pseudo.png
+│   │           ├── roomMembersListScreen.In-Call-iPhone-en-GB.png
+│   │           ├── roomMembersListScreen.In-Call-iPhone-pseudo.png
 │   │           ├── roomMembersListScreen.Invites-iPad-en-GB.png
 │   │           ├── roomMembersListScreen.Invites-iPad-pseudo.png
 │   │           ├── roomMembersListScreen.Invites-iPhone-en-GB.png
@@ -3305,6 +3424,30 @@
 │   │           ├── sFNumberedListView.iPad-pseudo-0.png
 │   │           ├── sFNumberedListView.iPhone-en-GB-0.png
 │   │           ├── sFNumberedListView.iPhone-pseudo-0.png
+│   │           ├── scanStateMediaEventsTimelineViews.iPad-en-GB-0.png
+│   │           ├── scanStateMediaEventsTimelineViews.iPad-pseudo-0.png
+│   │           ├── scanStateMediaEventsTimelineViews.iPhone-en-GB-0.png
+│   │           ├── scanStateMediaEventsTimelineViews.iPhone-pseudo-0.png
+│   │           ├── searchScreen.Empty-iPad-en-GB.png
+│   │           ├── searchScreen.Empty-iPad-pseudo.png
+│   │           ├── searchScreen.Empty-iPhone-en-GB.png
+│   │           ├── searchScreen.Empty-iPhone-pseudo.png
+│   │           ├── searchScreen.Loading-messages-iPad-en-GB.png
+│   │           ├── searchScreen.Loading-messages-iPad-pseudo.png
+│   │           ├── searchScreen.Loading-messages-iPhone-en-GB.png
+│   │           ├── searchScreen.Loading-messages-iPhone-pseudo.png
+│   │           ├── searchScreen.Messages-iPad-en-GB.png
+│   │           ├── searchScreen.Messages-iPad-pseudo.png
+│   │           ├── searchScreen.Messages-iPhone-en-GB.png
+│   │           ├── searchScreen.Messages-iPhone-pseudo.png
+│   │           ├── searchScreen.No-results-iPad-en-GB.png
+│   │           ├── searchScreen.No-results-iPad-pseudo.png
+│   │           ├── searchScreen.No-results-iPhone-en-GB.png
+│   │           ├── searchScreen.No-results-iPhone-pseudo.png
+│   │           ├── searchScreen.Rooms-iPad-en-GB.png
+│   │           ├── searchScreen.Rooms-iPad-pseudo.png
+│   │           ├── searchScreen.Rooms-iPhone-en-GB.png
+│   │           ├── searchScreen.Rooms-iPhone-pseudo.png
 │   │           ├── secureBackupKeyBackupScreen.Set-up-iPad-en-GB.png
 │   │           ├── secureBackupKeyBackupScreen.Set-up-iPad-pseudo.png
 │   │           ├── secureBackupKeyBackupScreen.Set-up-iPhone-en-GB.png
@@ -3420,30 +3563,22 @@
 │   │           ├── separatorRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── separatorRoomTimelineView.iPhone-en-GB-0.png
 │   │           ├── separatorRoomTimelineView.iPhone-pseudo-0.png
-│   │           ├── serverConfirmationScreen.Login-iPad-en-GB.png
-│   │           ├── serverConfirmationScreen.Login-iPad-pseudo.png
-│   │           ├── serverConfirmationScreen.Login-iPhone-en-GB.png
-│   │           ├── serverConfirmationScreen.Login-iPhone-pseudo.png
-│   │           ├── serverConfirmationScreen.Picker-iPad-en-GB.png
-│   │           ├── serverConfirmationScreen.Picker-iPad-pseudo.png
-│   │           ├── serverConfirmationScreen.Picker-iPhone-en-GB.png
-│   │           ├── serverConfirmationScreen.Picker-iPhone-pseudo.png
-│   │           ├── serverConfirmationScreen.Register-iPad-en-GB.png
-│   │           ├── serverConfirmationScreen.Register-iPad-pseudo.png
-│   │           ├── serverConfirmationScreen.Register-iPhone-en-GB.png
-│   │           ├── serverConfirmationScreen.Register-iPhone-pseudo.png
-│   │           ├── serverSelection.iPad-en-GB-0.png
-│   │           ├── serverSelection.iPad-en-GB-1.png
-│   │           ├── serverSelection.iPad-en-GB-2.png
-│   │           ├── serverSelection.iPad-pseudo-0.png
-│   │           ├── serverSelection.iPad-pseudo-1.png
-│   │           ├── serverSelection.iPad-pseudo-2.png
-│   │           ├── serverSelection.iPhone-en-GB-0.png
-│   │           ├── serverSelection.iPhone-en-GB-1.png
-│   │           ├── serverSelection.iPhone-en-GB-2.png
-│   │           ├── serverSelection.iPhone-pseudo-0.png
-│   │           ├── serverSelection.iPhone-pseudo-1.png
-│   │           ├── serverSelection.iPhone-pseudo-2.png
+│   │           ├── serverSelection.Empty-iPad-en-GB.png
+│   │           ├── serverSelection.Empty-iPad-pseudo.png
+│   │           ├── serverSelection.Empty-iPhone-en-GB.png
+│   │           ├── serverSelection.Empty-iPhone-pseudo.png
+│   │           ├── serverSelection.Error-iPad-en-GB.png
+│   │           ├── serverSelection.Error-iPad-pseudo.png
+│   │           ├── serverSelection.Error-iPhone-en-GB.png
+│   │           ├── serverSelection.Error-iPhone-pseudo.png
+│   │           ├── serverSelection.Matrix-org-iPad-en-GB.png
+│   │           ├── serverSelection.Matrix-org-iPad-pseudo.png
+│   │           ├── serverSelection.Matrix-org-iPhone-en-GB.png
+│   │           ├── serverSelection.Matrix-org-iPhone-pseudo.png
+│   │           ├── serverSelection.Picker-iPad-en-GB.png
+│   │           ├── serverSelection.Picker-iPad-pseudo.png
+│   │           ├── serverSelection.Picker-iPhone-en-GB.png
+│   │           ├── serverSelection.Picker-iPhone-pseudo.png
 │   │           ├── sessionVerification.Accepting-Challenge-iPad-en-GB.png
 │   │           ├── sessionVerification.Accepting-Challenge-iPad-pseudo.png
 │   │           ├── sessionVerification.Accepting-Challenge-iPhone-en-GB.png
@@ -3520,6 +3655,14 @@
 │   │           ├── settingsScreen.Default-iPad-pseudo.png
 │   │           ├── settingsScreen.Default-iPhone-en-GB.png
 │   │           ├── settingsScreen.Default-iPhone-pseudo.png
+│   │           ├── settingsScreenUserStatusPickerView.iPad-en-GB-0.png
+│   │           ├── settingsScreenUserStatusPickerView.iPad-pseudo-0.png
+│   │           ├── settingsScreenUserStatusPickerView.iPhone-en-GB-0.png
+│   │           ├── settingsScreenUserStatusPickerView.iPhone-pseudo-0.png
+│   │           ├── settingsScreenUserStatusRow.iPad-en-GB-0.png
+│   │           ├── settingsScreenUserStatusRow.iPad-pseudo-0.png
+│   │           ├── settingsScreenUserStatusRow.iPhone-en-GB-0.png
+│   │           ├── settingsScreenUserStatusRow.iPhone-pseudo-0.png
 │   │           ├── shimmerOverlay.iPad-en-GB-0.png
 │   │           ├── shimmerOverlay.iPad-pseudo-0.png
 │   │           ├── shimmerOverlay.iPhone-en-GB-0.png
@@ -3612,6 +3755,10 @@
 │   │           ├── staticLocationSheet.Static-pin-location-iPad-pseudo.png
 │   │           ├── staticLocationSheet.Static-pin-location-iPhone-en-GB.png
 │   │           ├── staticLocationSheet.Static-pin-location-iPhone-pseudo.png
+│   │           ├── stickerRoomTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── stickerRoomTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── stickerRoomTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── stickerRoomTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── stickerRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── stickerRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── stickerRoomTimelineView.iPhone-en-GB-0.png
@@ -3620,10 +3767,6 @@
 │   │           ├── swipeRightAction.iPad-pseudo-0.png
 │   │           ├── swipeRightAction.iPhone-en-GB-0.png
 │   │           ├── swipeRightAction.iPhone-pseudo-0.png
-│   │           ├── swipeToReplyView.iPad-en-GB-0.png
-│   │           ├── swipeToReplyView.iPad-pseudo-0.png
-│   │           ├── swipeToReplyView.iPhone-en-GB-0.png
-│   │           ├── swipeToReplyView.iPhone-pseudo-0.png
 │   │           ├── test_*.png  (1302 files)
 │   │           ├── textRoomTimelineView.Bubble-RTL-iPad-en-GB.png
 │   │           ├── textRoomTimelineView.Bubble-RTL-iPad-pseudo.png
@@ -3741,6 +3884,10 @@
 │   │           ├── timelineItemStyler.Bubbles-iPad-pseudo.png
 │   │           ├── timelineItemStyler.Bubbles-iPhone-en-GB.png
 │   │           ├── timelineItemStyler.Bubbles-iPhone-pseudo.png
+│   │           ├── timelineMediaContentScanningFailureView.iPad-en-GB-0.png
+│   │           ├── timelineMediaContentScanningFailureView.iPad-pseudo-0.png
+│   │           ├── timelineMediaContentScanningFailureView.iPhone-en-GB-0.png
+│   │           ├── timelineMediaContentScanningFailureView.iPhone-pseudo-0.png
 │   │           ├── timelineMediaPreviewDetailsView.Image-iPad-en-GB.png
 │   │           ├── timelineMediaPreviewDetailsView.Image-iPad-pseudo.png
 │   │           ├── timelineMediaPreviewDetailsView.Image-iPhone-en-GB.png
@@ -3769,6 +3916,10 @@
 │   │           ├── timelineReadReceiptsView.iPad-pseudo-0.png
 │   │           ├── timelineReadReceiptsView.iPhone-en-GB-0.png
 │   │           ├── timelineReadReceiptsView.iPhone-pseudo-0.png
+│   │           ├── timelineReplyView.Content-Scanner-iPad-en-GB.png
+│   │           ├── timelineReplyView.Content-Scanner-iPad-pseudo.png
+│   │           ├── timelineReplyView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── timelineReplyView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── timelineReplyView.iPad-en-GB-0.png
 │   │           ├── timelineReplyView.iPad-pseudo-0.png
 │   │           ├── timelineReplyView.iPhone-en-GB-0.png
@@ -3857,6 +4008,10 @@
 │   │           ├── videoMediaEventsTimelineView.iPad-pseudo-0.png
 │   │           ├── videoMediaEventsTimelineView.iPhone-en-GB-0.png
 │   │           ├── videoMediaEventsTimelineView.iPhone-pseudo-0.png
+│   │           ├── videoRoomTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── videoRoomTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── videoRoomTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── videoRoomTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── videoRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── videoRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── videoRoomTimelineView.iPhone-en-GB-0.png
@@ -3893,6 +4048,10 @@
 │   │           ├── voiceMessageRoomPlaybackView.iPad-pseudo-0.png
 │   │           ├── voiceMessageRoomPlaybackView.iPhone-en-GB-0.png
 │   │           ├── voiceMessageRoomPlaybackView.iPhone-pseudo-0.png
+│   │           ├── voiceMessageRoomTimelineView.Content-Scanner-iPad-en-GB.png
+│   │           ├── voiceMessageRoomTimelineView.Content-Scanner-iPad-pseudo.png
+│   │           ├── voiceMessageRoomTimelineView.Content-Scanner-iPhone-en-GB.png
+│   │           ├── voiceMessageRoomTimelineView.Content-Scanner-iPhone-pseudo.png
 │   │           ├── voiceMessageRoomTimelineView.iPad-en-GB-0.png
 │   │           ├── voiceMessageRoomTimelineView.iPad-pseudo-0.png
 │   │           ├── voiceMessageRoomTimelineView.iPhone-en-GB-0.png
@@ -3920,15 +4079,16 @@
 ├── SECURITY.md
 ├── Secrets
 │   ├── Secrets.pkl
+│   ├── Secrets.swift
 │   └── vendor
 │       └── package-2
 │           └── pkg.pkl-lang.org
 │               └── github.com
 │                   └── element-hq
 │                       └── pkl-tools
-│                           └── staticcode@1.0.1
-│                               ├── staticcode@1.0.1.json
-│                               └── staticcode@1.0.1.zip
+│                           └── staticcode@1.1.0
+│                               ├── staticcode@1.1.0.json
+│                               └── staticcode@1.1.0.zip
 ├── ShareExtension
 │   ├── Sources
 │   │   ├── ShareExtensionViewController.swift
@@ -4018,42 +4178,39 @@
 │   │   │   │   ├── TchapFeatureFlag.swift
 │   │   │   │   ├── TchapLabelViewModifier.swift
 │   │   │   │   ├── TchapPermalinks.swift
+│   │   │   │   ├── TchapRemoteSettingsHook.swift
 │   │   │   │   └── TchapRoomHeaderViewRoomPropertiesBadgesView.swift
-│   │   │   ├── Screens
-│   │   │   │   ├── AccountExpiredScreen
-│   │   │   │   │   ├── AccountExpiredScreenCoordinator.swift
-│   │   │   │   │   ├── AccountExpiredScreenModels.swift
-│   │   │   │   │   ├── AccountExpiredScreenViewModel.swift
-│   │   │   │   │   ├── AccountExpiredScreenViewModelProtocol.swift
-│   │   │   │   │   └── View
-│   │   │   │   │       └── AccountExpiredScreen.swift
-│   │   │   │   ├── Authentication
-│   │   │   │   │   └── DecideHomeServerScreen
-│   │   │   │   │       ├── DecideHomeServerScreenCoordinator.swift
-│   │   │   │   │       ├── DecideHomeServerScreenModels.swift
-│   │   │   │   │       ├── DecideHomeServerScreenViewModel.swift
-│   │   │   │   │       ├── DecideHomeServerScreenViewModelProtocol.swift
-│   │   │   │   │       └── View
-│   │   │   │   │           └── DecideHomeServerScreen.swift
-│   │   │   │   ├── HomeScreen
-│   │   │   │   │   └── View
-│   │   │   │   │       └── TchapOfflineScreenBanner.swift
-│   │   │   │   └── Onboarding
-│   │   │   │       └── TchapWelcomeScreen
-│   │   │   │           ├── TchapWelcomeScreenCoordinator.swift
-│   │   │   │           ├── TchapWelcomeScreenModels.swift
-│   │   │   │           ├── TchapWelcomeScreenViewModel.swift
-│   │   │   │           ├── TchapWelcomeScreenViewModelProtocol.swift
-│   │   │   │           └── View
-│   │   │   │               └── TchapWelcomeScreen.swift
-│   │   │   ├── Timeline
-│   │   │   │   ├── EventBasedMessageTimelineItemProtocol+BWI.swift
-│   │   │   │   ├── ScanStateRoomTimelineItem.swift
-│   │   │   │   └── ScanStateVirtualEventHelper.swift
-│   │   │   └── Views
-│   │   │       └── ContentScanner
-│   │   │           ├── TimelineItemScanStatusFileView.swift
-│   │   │           └── TimelineItemScanStatusImageView.swift
+│   │   │   └── Screens
+│   │   │       ├── AccountExpiredScreen
+│   │   │       │   ├── AccountExpiredScreenCoordinator.swift
+│   │   │       │   ├── AccountExpiredScreenModels.swift
+│   │   │       │   ├── AccountExpiredScreenViewModel.swift
+│   │   │       │   ├── AccountExpiredScreenViewModelProtocol.swift
+│   │   │       │   └── View
+│   │   │       │       └── AccountExpiredScreen.swift
+│   │   │       ├── Authentication
+│   │   │       │   └── DecideHomeServerScreen
+│   │   │       │       ├── DecideHomeServerScreenCoordinator.swift
+│   │   │       │       ├── DecideHomeServerScreenModels.swift
+│   │   │       │       ├── DecideHomeServerScreenViewModel.swift
+│   │   │       │       ├── DecideHomeServerScreenViewModelProtocol.swift
+│   │   │       │       └── View
+│   │   │       │           └── DecideHomeServerScreen.swift
+│   │   │       ├── HomeScreen
+│   │   │       │   └── View
+│   │   │       │       └── TchapOfflineScreenBanner.swift
+│   │   │       ├── Onboarding
+│   │   │       │   └── TchapWelcomeScreen
+│   │   │       │       ├── TchapWelcomeScreenCoordinator.swift
+│   │   │       │       ├── TchapWelcomeScreenModels.swift
+│   │   │       │       ├── TchapWelcomeScreenViewModel.swift
+│   │   │       │       ├── TchapWelcomeScreenViewModelProtocol.swift
+│   │   │       │       └── View
+│   │   │       │           └── TchapWelcomeScreen.swift
+│   │   │       └── Timeline
+│   │   │           └── View
+│   │   │               └── TimelineItemViews
+│   │   │                   └── EventBasedTimelineItemProtocol+ContentScanner.swift
 │   │   └── UnitTests
 │   │       └── Sources
 │   │           ├── MatrixIdFromStringTests.swift
@@ -4161,6 +4318,7 @@
 │   │   │   ├── CI
 │   │   │   │   ├── AccessibilityTests.swift
 │   │   │   │   ├── CI.swift
+│   │   │   │   ├── CPUConstraint.swift
 │   │   │   │   ├── ConfigureNightly.swift
 │   │   │   │   ├── ConfigureProduction.swift
 │   │   │   │   ├── IntegrationTests.swift
@@ -4301,6 +4459,12 @@
 │   │           ├── invites-1-iPhone-16-en-GB.UI.png
 │   │           ├── invites-iPad-10th-generation-en-GB.UI.png
 │   │           ├── invites-iPhone-16-en-GB.UI.png
+│   │           ├── linkNewDevice.testAppLockPINVerification-iPad-en-GB-1.png
+│   │           ├── linkNewDevice.testAppLockPINVerification-iPad-en-GB-2.png
+│   │           ├── linkNewDevice.testAppLockPINVerification-iPad-en-GB-4.png
+│   │           ├── linkNewDevice.testAppLockPINVerification-iPhone-en-GB-1.png
+│   │           ├── linkNewDevice.testAppLockPINVerification-iPhone-en-GB-2.png
+│   │           ├── linkNewDevice.testAppLockPINVerification-iPhone-en-GB-4.png
 │   │           ├── linkNewDevice.testFlow-iPad-en-GB-1.png
 │   │           ├── linkNewDevice.testFlow-iPad-en-GB-2.png
 │   │           ├── linkNewDevice.testFlow-iPad-en-GB-3.png
@@ -4309,6 +4473,12 @@
 │   │           ├── linkNewDevice.testFlow-iPhone-en-GB-2.png
 │   │           ├── linkNewDevice.testFlow-iPhone-en-GB-3.png
 │   │           ├── linkNewDevice.testFlow-iPhone-en-GB-99.png
+│   │           ├── linkNewDevice.testForceLogout-iPad-en-GB-4.png
+│   │           ├── linkNewDevice.testForceLogout-iPad-en-GB-5.png
+│   │           ├── linkNewDevice.testForceLogout-iPad-en-GB-6.png
+│   │           ├── linkNewDevice.testForceLogout-iPhone-en-GB-4.png
+│   │           ├── linkNewDevice.testForceLogout-iPhone-en-GB-5.png
+│   │           ├── linkNewDevice.testForceLogout-iPhone-en-GB-6.png
 │   │           ├── login-*.png  (6 files)
 │   │           ├── pollFormScreen.testEmptyScreen-iPad-en-GB.png
 │   │           ├── pollFormScreen.testEmptyScreen-iPhone-en-GB.png
@@ -4420,10 +4590,8 @@
 │   │           ├── userSessionScreen.testSpaceExploration-iPhone-en-GB-*.png  (10 files)
 │   │           ├── userSessionScreen.testUserSessionFlows-iPad-en-GB-1.png
 │   │           ├── userSessionScreen.testUserSessionFlows-iPad-en-GB-2.png
-│   │           ├── userSessionScreen.testUserSessionFlows-iPad-en-GB-3.png
 │   │           ├── userSessionScreen.testUserSessionFlows-iPhone-en-GB-1.png
 │   │           ├── userSessionScreen.testUserSessionFlows-iPhone-en-GB-2.png
-│   │           ├── userSessionScreen.testUserSessionFlows-iPhone-en-GB-3.png
 │   │           ├── userSessionScreen.testUserSessionReply-iPad-en-GB.png
 │   │           ├── userSessionScreen.testUserSessionReply-iPhone-en-GB.png
 │   │           ├── userSessionScreenReply-iPad-10th-generation-en-GB.UI.png
@@ -4463,7 +4631,9 @@
 │   │   ├── ClassicAppMediaLoaderTests.swift
 │   │   ├── CompletionSuggestionServiceTests.swift
 │   │   ├── ComposerToolbarViewModelTests.swift
+│   │   ├── ContentScannerServiceTests.swift
 │   │   ├── CreateRoomViewModelTests.swift
+│   │   ├── CurrentValuePublisherTests.swift
 │   │   ├── DateTests.swift
 │   │   ├── DeactivateAccountScreenViewModelTests.swift
 │   │   ├── DeclineAndBlockScreenViewModelTests.swift
@@ -4478,6 +4648,7 @@
 │   │   ├── GlobalSearchScreenViewModelTests.swift
 │   │   ├── HomeScreenRoomTests.swift
 │   │   ├── HomeScreenViewModelTests.swift
+│   │   ├── HomeserverHistoryManagerTests.swift
 │   │   ├── IdentityConfirmationScreenViewModelTests.swift
 │   │   ├── InviteUsersViewModelTests.swift
 │   │   ├── JoinRoomScreenViewModelTests.swift
@@ -4487,6 +4658,7 @@
 │   │   │   ├── CollapsibleFlowLayoutTests.swift
 │   │   │   └── LayoutMocks.swift
 │   │   ├── LegalInformationScreenViewModelTests.swift
+│   │   ├── LinkNewDeviceScreenViewModelTests.swift
 │   │   ├── LiveLocationManagerTests.swift
 │   │   ├── LocalizationTests.swift
 │   │   ├── LocationSharingScreenViewModelTests.swift
@@ -4494,8 +4666,8 @@
 │   │   ├── LoginScreenViewModelTests.swift
 │   │   ├── ManageRoomMemberSheetViewModelTests.swift
 │   │   ├── MapTilerURLBuilderTests.swift
-│   │   ├── MatrixClientWellKnownTests.swift
 │   │   ├── MatrixEntityRegexTests.swift
+│   │   ├── MediaEventsTimelineScreenViewModelTests.swift
 │   │   ├── MediaPlayerProviderTests.swift
 │   │   ├── MediaProvider
 │   │   │   ├── MediaLoaderTests.swift
@@ -4522,6 +4694,8 @@
 │   │   ├── PillContextTests.swift
 │   │   ├── PinnedEventsBannerStateTests.swift
 │   │   ├── PollFormScreenViewModelTests.swift
+│   │   ├── PollTests.swift
+│   │   ├── PresenceServiceTests.swift
 │   │   ├── QRCodeLoginScreenViewModelTests.swift
 │   │   ├── RemotePreferenceTests.swift
 │   │   ├── ReportContentScreenViewModelTests.swift
@@ -4548,6 +4722,7 @@
 │   │   ├── RoomSummaryProviderTests.swift
 │   │   ├── RoomSummaryTests.swift
 │   │   ├── RoomTests.swift
+│   │   ├── SearchScreenViewModelTests.swift
 │   │   ├── SecureBackupKeyBackupScreenViewModelTests.swift
 │   │   ├── SecureBackupLogoutConfirmationScreenViewModelTests.swift
 │   │   ├── SecureBackupRecoveryKeyScreenViewModelTests.swift
@@ -4568,6 +4743,8 @@
 │   │   ├── StringTests.swift
 │   │   ├── TestUtilities
 │   │   │   ├── DeferredFulfillment.swift
+│   │   │   ├── Extensions
+│   │   │   │   └── NavigationCoordinators.swift
 │   │   │   └── WaitingConfirmation.swift
 │   │   ├── TimelineItemFactoryTests.swift
 │   │   ├── TimelineMediaPreviewDataSourceTests.swift
@@ -4637,11 +4814,6 @@
 │   │   │   │           └── Package.resolved
 │   │   │   └── xcshareddata
 │   │   │       └── IDETemplateMacros.plist
-│   │   ├── Inspector.xcworkspace
-│   │   │   └── xcshareddata
-│   │   │       └── swiftpm
-│   │   │           └── Package.resolved
-│   │   ├── Podfile
 │   │   ├── Podfile.lock
 │   │   ├── Resources
 │   │   │   ├── Assets.xcassets
@@ -4653,31 +4825,29 @@
 │   │   │   │       └── Contents.json
 │   │   │   ├── Entitlements.entitlements
 │   │   │   └── Info.plist
-│   │   ├── Sources
-│   │   │   ├── Components
-│   │   │   │   ├── BigIconScreen.swift
-│   │   │   │   ├── ButtonsScreen.swift
-│   │   │   │   ├── ListScreen.swift
-│   │   │   │   ├── TextFieldsScreen.swift
-│   │   │   │   └── TitleAndIconScreen.swift
-│   │   │   ├── CompoundInspectorApp.swift
-│   │   │   ├── Screen.swift
-│   │   │   ├── ScreenContent.swift
-│   │   │   ├── SidebarList.swift
-│   │   │   ├── System Components
-│   │   │   │   ├── ActionSheetScreen.swift
-│   │   │   │   ├── AlertScreen.swift
-│   │   │   │   ├── ContextMenuScreen.swift
-│   │   │   │   ├── NavigationBarScreen.swift
-│   │   │   │   └── ShareSheetScreen.swift
-│   │   │   └── Tokens
-│   │   │       ├── AllCases.swift
-│   │   │       ├── ColorsScreen.swift
-│   │   │       ├── FontsScreen.swift
-│   │   │       ├── GradientsScreen.swift
-│   │   │       └── IconsScreen.swift
-│   │   └── ci_scripts
-│   │       └── ci_post_clone.sh
+│   │   └── Sources
+│   │       ├── Components
+│   │       │   ├── BigIconScreen.swift
+│   │       │   ├── ButtonsScreen.swift
+│   │       │   ├── ListScreen.swift
+│   │       │   ├── TextFieldsScreen.swift
+│   │       │   └── TitleAndIconScreen.swift
+│   │       ├── CompoundInspectorApp.swift
+│   │       ├── Screen.swift
+│   │       ├── ScreenContent.swift
+│   │       ├── SidebarList.swift
+│   │       ├── System Components
+│   │       │   ├── ActionSheetScreen.swift
+│   │       │   ├── AlertScreen.swift
+│   │       │   ├── ContextMenuScreen.swift
+│   │       │   ├── NavigationBarScreen.swift
+│   │       │   └── ShareSheetScreen.swift
+│   │       └── Tokens
+│   │           ├── AllCases.swift
+│   │           ├── ColorsScreen.swift
+│   │           ├── FontsScreen.swift
+│   │           ├── GradientsScreen.swift
+│   │           └── IconsScreen.swift
 │   ├── LICENSE
 │   ├── LICENSE-COMMERCIAL
 │   ├── Package.resolved
@@ -4693,6 +4863,7 @@
 │   │       ├── Buttons
 │   │       │   └── SendButton.swift
 │   │       ├── Colors
+│   │       │   ├── CompoundBackground.swift
 │   │       │   ├── CompoundColors.swift
 │   │       │   ├── CompoundGradients.swift
 │   │       │   └── CompoundUIColors.swift
@@ -4752,6 +4923,8 @@
 │   │           │   ├── compoundIcon.Form-iPad-en-US.png
 │   │           │   ├── compoundIcon.Form-iPhone-16-en-US.png
 │   │           │   ├── compoundIcon.Form-iPhone-en-US.png
+│   │           │   ├── compoundTextFieldStyle.iPad-en-US-0.png
+│   │           │   ├── compoundTextFieldStyle.iPhone-en-US-0.png
 │   │           │   ├── compoundToggleStyle.iPad-en-US-0.png
 │   │           │   ├── compoundToggleStyle.iPhone-en-US-0.png
 │   │           │   ├── listInlinePicker.iPad-en-US-0.png
@@ -4809,4 +4982,4 @@
 ├── project-tchap-x.yml
 ├── project.yml
 └── renovate.json
-566 directories, 5718 files
+572 directories, 5885 files

@@ -1,53 +1,49 @@
 {
   "url": "https://github.com/tchapgouv/tchap-x-ios",
   "name": "tchap-x-ios",
-  "description": "Client iOS pour le protocole Matrix basé sur Element. Cette application est une réécriture complète de Tchap iOS utilisant le Matrix Rust SDK pour assurer une meilleure performance et une base de code partagée.",
+  "description": "Client iOS pour le protocole Matrix basé sur Element. Cette application est une réécriture complète utilisant le SDK Matrix en Rust pour assurer une performance optimale et une base de code partagée.",
   "language": "Swift",
   "features": [
     "Authentification & Accès",
     "Sécurité & Conformité",
     "Interface utilisateur & Design",
-    "Collaboration & Workflow",
-    "Gestion des profils & Comptes",
-    "Notifications & Alertes"
+    "Notifications & Alertes",
+    "Temps réel & WebSocket",
+    "Gestion des médias & Assets"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Matrix Rust SDK",
-    "Element",
     "Fastlane",
-    "PostHog",
-    "MapLibre"
+    "SwiftUI"
   ],
   "components": [
     "Design System (DSFR & UI libs)",
     "Tests",
     "Bibliothèques & Packages",
-    "Authentification (composant)",
-    "Intégrations services externes"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "sso",
-      "jwt"
+      "oauth2"
     ]
   },
-  "tests": "Unit tests, UI tests, and snapshot testing",
-  "workflows": [
-    "unit_tests.yml",
-    "record_snapshots"
+  "tests": [
+    "XCUITest",
+    "Unit tests",
+    "Snapshot testing"
   ],
-  "lastActivity": "2026-08-18T15:51:58+02:00",
+  "workflows": [
+    "unit-tests.yml"
+  ],
+  "lastActivity": "2026-09-21T10:58:34+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
-    "Communication & Messagerie",
     "Design System & UI",
-    "CI/CD & GitHub Actions",
-    "Tests & Qualité",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Accessibilité",
+    "Git & DevOps"
   ]
 }
