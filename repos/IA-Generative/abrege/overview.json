@@ -1,61 +1,59 @@
 {
   "url": "https://github.com/IA-Generative/abrege",
   "name": "abrege",
-  "description": "Outil de résumé de documents scalable utilisant une architecture Map-Reduce pour traiter des fichiers volumineux. Il intègre l'OCR, le scraping web et la génération de questions-réponses via des LLM.",
+  "description": "Outil de résumé de documents scalable utilisant une architecture Map-Reduce asynchrone pour traiter des fichiers volumineux. Il permet l'extraction de texte, l'OCR, la génération de questions-réponses et l'analyse sémantique.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Suivi & Traçabilité",
-    "Interface utilisateur & Design"
+    "Recherche & Filtres",
+    "Suivi & Traçabilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Redis",
+    "RabbitMQ",
     "MinIO",
     "OpenAI",
     "Keycloak",
-    "Langfuse",
-    "Celery",
-    "Docker",
-    "Vue.js"
+    "KEDA",
+    "Langfuse"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "TypeScript / JavaScript",
-    "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
+    "Docker & Conteneurs",
     "Celery & Queue asynchrone",
     "Authentification (composant)",
-    "Intégrations services externes",
-    "CI/CD & Déploiement"
+    "Kubernetes & Helm",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
-      "sso",
+      "oauth2",
+      "api-key",
+      "session",
       "jwt"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests unitaires, API et E2E via Makefile",
+  "tests": "Tests unitaires, API et end-to-end via Makefile (Pytest pour le backend)",
   "workflows": [
-    "CI/CD"
+    "CI/CD via GitHub Actions"
   ],
-  "lastActivity": "2026-07-18T00:00:00Z",
+  "lastActivity": "2026-10-01T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
     "Python",
-    "Docker & Conteneurs",
     "NLP & ML",
-    "CI/CD & GitHub Actions",
-    "TypeScript",
-    "JavaScript"
+    "Docker & Conteneurs",
+    "Git & DevOps",
+    "Documentation"
   ]
 }

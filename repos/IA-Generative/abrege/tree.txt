@@ -6,19 +6,20 @@
 ├── .flake8
 ├── .github
 │   ├── releases
+│   │   ├── .release-please-manifest-prerelease.json
+│   │   ├── .release-please-manifest.json
 │   │   ├── release-please-config-prerelease.json
-│   │   ├── release-please-config-release.json
-│   │   ├── release-please-manifest-prerelease.json
-│   │   └── release-please-manifest.json
+│   │   └── release-please-config-release.json
 │   └── workflows
 │       ├── cd.yml
 │       ├── ci.yml
+│       ├── clean-cache.yml
 │       ├── dso-auto-sync.yaml
 │       ├── lint.yml
-│       ├── release.yml
 │       └── unit-tests.yml
 ├── .gitignore
 ├── .gitlab-ci-dso.yml
+├── .gitleaks.toml
 ├── .husky
 │   ├── commit-msg
 │   └── pre-commit
@@ -73,22 +74,29 @@
 │   │   │   │   └── resume-card.png
 │   │   │   ├── auto-imports.d.ts
 │   │   │   ├── components
+│   │   │   │   ├── AppFooter.vue
 │   │   │   │   ├── AppHeader.vue
 │   │   │   │   ├── AppToaster.vue
 │   │   │   │   ├── CopiedTextTab.vue
 │   │   │   │   ├── CustomCard.vue
 │   │   │   │   ├── CustomTabs.vue
 │   │   │   │   ├── DsfrDropdown.vue
+│   │   │   │   ├── ExtractionStatusBadge.vue
 │   │   │   │   ├── ParamsResume.vue
 │   │   │   │   ├── ProgressBar.vue
 │   │   │   │   ├── ResumeInfoBulle.vue
 │   │   │   │   ├── ResumeResult.vue
 │   │   │   │   ├── SideBar.vue
+│   │   │   │   ├── TaskChunksModal.vue
+│   │   │   │   ├── TaskEntitiesModal.vue
+│   │   │   │   ├── TaskQAModal.vue
 │   │   │   │   ├── TaskTab.vue
+│   │   │   │   ├── TopicBadges.vue
 │   │   │   │   ├── UploadDocumentTab.vue
 │   │   │   │   └── UrlTab.vue
 │   │   │   ├── components.d.ts
 │   │   │   ├── composables
+│   │   │   │   ├── use-backend-health.ts
 │   │   │   │   ├── use-resume-generator.ts
 │   │   │   │   └── use-toaster.ts
 │   │   │   ├── interfaces
@@ -101,8 +109,8 @@
 │   │   │   │   ├── abrege.ts
 │   │   │   │   └── user.ts
 │   │   │   ├── utils
+│   │   │   │   ├── auth.ts
 │   │   │   │   ├── constants.ts
-│   │   │   │   ├── keycloak.ts
 │   │   │   │   └── methods.ts
 │   │   │   └── views
 │   │   │       ├── Index.vue
@@ -132,21 +140,21 @@
 │       │   │   ├── base.py
 │       │   │   └── summary
 │       │   │       ├── __init__.py
+│       │   │       ├── chunk_chain.py
+│       │   │       ├── entity_chain.py
 │       │   │       ├── parallele_summary_chain.py
-│       │   │       └── qa_chain.py
+│       │   │       ├── qa_chain.py
+│       │   │       └── topic_chain.py
 │       │   ├── modules
 │       │   │   ├── __init__.py
-│       │   │   ├── audio.py
 │       │   │   ├── base.py
 │       │   │   ├── cache.py
 │       │   │   ├── doc.py
 │       │   │   ├── documents
-│       │   │   │   ├── __init__.py
-│       │   │   │   └── openoffice.py
+│       │   │   │   └── __init__.py
 │       │   │   ├── image.py
 │       │   │   ├── ocr.py
-│       │   │   ├── url.py
-│       │   │   └── video.py
+│       │   │   └── url.py
 │       │   ├── prompts
 │       │   │   ├── __init__.py
 │       │   │   ├── prompting.py
@@ -164,7 +172,6 @@
 │       │       ├── images.py
 │       │       ├── lazy_pdf.py
 │       │       ├── text.py
-│       │       ├── tokenizer.py
 │       │       └── url_parser.py
 │       ├── api
 │       │   ├── Dockerfile
@@ -176,13 +183,17 @@
 │       │   │   ├── __init__.py
 │       │   │   └── security
 │       │   │       ├── __init__.py
+│       │   │       ├── claims.py
 │       │   │       ├── factory.py
+│       │   │       ├── internal.py
+│       │   │       ├── keycloak_client.py
+│       │   │       ├── session.py
 │       │   │       └── token.py
 │       │   ├── main.py
 │       │   ├── routes
 │       │   │   ├── __init__.py
+│       │   │   ├── auth.py
 │       │   │   ├── document_summary.py
-│       │   │   ├── external_loader.py
 │       │   │   ├── health.py
 │       │   │   ├── summarize.py
 │       │   │   └── task.py
@@ -196,7 +207,8 @@
 │       │       ├── cors.py
 │       │       └── url.py
 │       ├── config
-│       │   └── logging.yaml
+│       │   ├── logging.yaml
+│       │   └── uvicorn_logging.yaml
 │       ├── evaluation
 │       │   ├── Readme.md
 │       │   ├── __init__.py
@@ -217,20 +229,25 @@
 │       │   ├── script.py.mako
 │       │   └── versions
 │       │       ├── 27cd95557285_add_position.py
+│       │       ├── 58a1a7d19d25_add_model_name_to_qa_entities_topics.py
+│       │       ├── 59da8d2368b0_add_qa_items_entities_relationships.py
 │       │       ├── 6fdb21e394c9_add_group_id_and_content_hash.py
 │       │       ├── 7c2d9f69f1f3_initiate.py
+│       │       ├── 9c8b63f3d19e_add_topics_table.py
+│       │       ├── a6a89dc14674_add_details_status_columns_to_tasks.py
+│       │       ├── d476c6e01513_add_chunks_table.py
 │       │       └── fee9b70a042f_feat_move_content_to_input_result_to_.py
 │       ├── pyproject.toml
 │       ├── src
 │       │   ├── __init__.py
 │       │   ├── clients
 │       │   │   ├── __init__.py
+│       │   │   ├── internal_api.py
 │       │   │   └── ocr_client.py
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   ├── celery.py
-│       │   │   ├── connector.py
-│       │   │   ├── minio.py
+│       │   │   ├── keycloak.py
 │       │   │   ├── redis.py
 │       │   │   ├── s3.py
 │       │   │   └── sentry.py
@@ -244,13 +261,17 @@
 │       │   │   └── db.py
 │       │   ├── schemas
 │       │   │   ├── __init__.py
+│       │   │   ├── chunk.py
 │       │   │   ├── code_error.py
 │       │   │   ├── content.py
+│       │   │   ├── entity.py
 │       │   │   ├── health.py
 │       │   │   ├── pagination.py
 │       │   │   ├── parameters.py
+│       │   │   ├── qa_item.py
 │       │   │   ├── result.py
-│       │   │   └── task.py
+│       │   │   ├── task.py
+│       │   │   └── topic.py
 │       │   └── utils
 │       │       ├── __init__.py
 │       │       ├── logger.py
@@ -260,33 +281,36 @@
 │       │   ├── abrege_service
 │       │   │   ├── models
 │       │   │   │   ├── summary
-│       │   │   │   │   └── test_async_map_reduce.py
+│       │   │   │   │   ├── test_async_map_reduce.py
+│       │   │   │   │   ├── test_chunk_chain.py
+│       │   │   │   │   ├── test_entity_chain.py
+│       │   │   │   │   └── test_topic_chain.py
 │       │   │   │   └── test_base_service_model.py
 │       │   │   ├── modules
-│       │   │   │   ├── documents
-│       │   │   │   │   └── test_openoffice_documents.py
-│       │   │   │   ├── test_audio_module.py
 │       │   │   │   ├── test_base_module.py
 │       │   │   │   ├── test_doc_module.py
 │       │   │   │   ├── test_image_module.py
 │       │   │   │   ├── test_ocr_module.py
-│       │   │   │   ├── test_url_module.py
-│       │   │   │   └── test_video_module.py
+│       │   │   │   └── test_url_module.py
 │       │   │   ├── prompt
 │       │   │   │   └── test_prompting_process.py
+│       │   │   ├── test_classify_topics_task.py
+│       │   │   ├── test_extract_details_tasks.py
 │       │   │   ├── test_main.py
 │       │   │   └── utils
 │       │   │       ├── test_content_type_utils.py
-│       │   │       ├── test_text_utils.py
-│       │   │       └── test_tokenizer_utils.py
+│       │   │       └── test_text_utils.py
 │       │   ├── api
 │       │   │   ├── client
 │       │   │   │   └── test_llm_guard_client.py
 │       │   │   ├── core
 │       │   │   │   └── security
+│       │   │   │       ├── test_factory.py
+│       │   │   │       ├── test_internal.py
 │       │   │   │       └── test_security_token.py
 │       │   │   ├── fastapi.py
 │       │   │   ├── routes
+│       │   │   │   ├── test_auth.py
 │       │   │   │   ├── test_document_summarize.py
 │       │   │   │   ├── test_health_router.py
 │       │   │   │   ├── test_summarize.py
@@ -308,9 +332,13 @@
 │       │   │   ├── schemas
 │       │   │   │   ├── connector
 │       │   │   │   │   └── test_s3_connector.py
+│       │   │   │   ├── test_chunk.py
 │       │   │   │   ├── test_code_error_access.py
+│       │   │   │   ├── test_entity.py
+│       │   │   │   ├── test_qa_item.py
 │       │   │   │   ├── test_task.py
-│       │   │   │   └── test_task_schema_position.py
+│       │   │   │   ├── test_task_schema_position.py
+│       │   │   │   └── test_topic.py
 │       │   │   └── utils
 │       │   │       ├── test_logger.py
 │       │   │       └── test_url.py
@@ -332,49 +360,154 @@
 │       │       ├── tabFicSol2.doc
 │       │       └── test_text.txt
 │       └── uv.lock
-├── charts
-│   └── abrege
-│       ├── Chart.yaml
-│       ├── templates
-│       │   ├── deployment.yaml
-│       │   ├── ingress.yaml
-│       │   ├── service-api.yaml
-│       │   └── service-streamlit.yaml
-│       └── values.yaml
+├── ci
+│   └── configs
+│       └── ct.yaml
 ├── commitlint.config.js
+├── docker
+│   └── keycloak
+│       └── realm-mirai.json
 ├── docker-compose.frontend.yml
 ├── docker-compose.test.yaml
 ├── docker-compose.yaml
 ├── docs
 │   ├── diagram.md
+│   ├── document-insights.md
 │   ├── images
 │   │   ├── abrege-url-ezgif.com-optimize.gif
 │   │   ├── document-abrege-ezgif.com-optimize.gif
+│   │   ├── document-insights
+│   │   │   ├── 01-topics-badges.png
+│   │   │   ├── 02-topics-expanded.png
+│   │   │   ├── 03-details-dropdown.png
+│   │   │   ├── 04-qa-modal.png
+│   │   │   ├── 05-entities-modal-list.png
+│   │   │   ├── 06-entities-modal-graph.png
+│   │   │   ├── 07-chunks-modal.png
+│   │   │   ├── 08-chunks-modal-pending.png
+│   │   │   ├── 09-topics-tooltip.png
+│   │   │   └── 10-instructions-fields.png
 │   │   └── texte-abrege-ezgif.com-optimize.gif
+│   ├── routes.md
+│   ├── security
+│   │   └── readme.md
 │   └── variables.md
+├── helm
+│   ├── .helmignore
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── README.md.gotmpl
+│   ├── charts
+│   │   ├── cluster-0.8.1.tgz
+│   │   ├── postgres-0.19.6.tgz
+│   │   ├── redis-0.27.9.tgz
+│   │   └── rustfs-0.10.0.tgz
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── api
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── cronjobs.yaml
+│   │   ├── extra-objects.yaml
+│   │   ├── frontend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   ├── statefulset.yaml
+│   │   │   └── vite-config.yaml
+│   │   ├── gateway.yaml
+│   │   ├── httproute.yaml
+│   │   ├── ingress.yaml
+│   │   ├── jobs.yaml
+│   │   ├── pullsecret.yaml
+│   │   └── worker
+│   │       ├── celery-config.yaml
+│   │       ├── clusterrole.yaml
+│   │       ├── clusterrolebinding.yaml
+│   │       ├── configmap.yaml
+│   │       ├── deployment.yaml
+│   │       ├── grpcroute.yaml
+│   │       ├── hpa.yaml
+│   │       ├── httproute.yaml
+│   │       ├── ingress.yaml
+│   │       ├── metrics.yaml
+│   │       ├── networkpolicy.yaml
+│   │       ├── pdb.yaml
+│   │       ├── pullsecret.yaml
+│   │       ├── role.yaml
+│   │       ├── rolebinding.yaml
+│   │       ├── scaledobject.yaml
+│   │       ├── secret.yaml
+│   │       ├── service.yaml
+│   │       ├── serviceaccount.yaml
+│   │       ├── servicemonitor.yaml
+│   │       ├── statefulset.yaml
+│   │       └── triggerauthentication.yaml
+│   ├── test-values.yaml
+│   └── values.yaml
 ├── package.json
 ├── pnpm-lock.yaml
 ├── scripts
 │   └── wait-for-llm-guard.sh
 └── sdk
-    ├── .python-version
-    ├── README.md
-    ├── abrege_sdk
-    │   ├── __init__.py
-    │   ├── client_async.py
-    │   ├── client_sync.py
-    │   ├── exceptions.py
-    │   └── schemas
-    │       ├── __init__.py
-    │       ├── code_error.py
-    │       ├── content.py
-    │       ├── health.py
-    │       ├── parameters.py
-    │       ├── result.py
-    │       └── task.py
-    ├── pyproject.toml
-    ├── tests
-    │   └── abrege_sdk
-    │       └── test_sync_clinet.py
-    └── uv.lock
-90 directories, 289 files
+    └── python
+        ├── .python-version
+        ├── README.md
+        ├── abrege_sdk
+        │   ├── __init__.py
+        │   ├── client_async.py
+        │   ├── client_sync.py
+        │   ├── exceptions.py
+        │   └── schemas
+        │       ├── __init__.py
+        │       ├── chunk.py
+        │       ├── code_error.py
+        │       ├── content.py
+        │       ├── entity.py
+        │       ├── health.py
+        │       ├── pagination.py
+        │       ├── parameters.py
+        │       ├── qa_item.py
+        │       ├── result.py
+        │       ├── task.py
+        │       └── topic.py
+        ├── pyproject.toml
+        ├── tests
+        │   └── abrege_sdk
+        │       ├── test_async_client.py
+        │       └── test_sync_clinet.py
+        └── uv.lock
+99 directories, 413 files
