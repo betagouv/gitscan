@@ -1,26 +1,27 @@
-## Changelog : api-partenaires (30 derniers jours, au 22 septembre 2026)
+## Changelog : api-partenaires (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité et de la fiabilité de la validation des domaines autorisés. L'intégration des données de l'annuaire administratif de la DILA a été approfondie pour garantir que les domaines déclarés sont authentiques et correctement tracés, tout en automatisant les contrôles de cohérence pour prévenir les erreurs de configuration.
+Cette période a été marquée par un renforcement significatif de la sécurité et de la validation des domaines, notamment grâce à l'automatisation des contrôles via l'annuaire de la DILA. Nous avons également amélioré la fiabilité de la gestion des collaborateurs et optimisé le processus de déploiement pour plus de régularité.
 
 ### Évolutions fonctionnelles
-- **Renforcement de la validation des domaines :** Refus systématique des domaines de messagerie génériques dans la liste blanche ([#57](https://github.com/proconnect-gouv/api-partenaires/issues/57)).
-- **Amélioration de la conformité DILA :** Meilleure gestion des domaines attestés par la DILA, incluant la validation des domaines déclarés sur un canal unique ([#64](https://github.com/proconnect-gouv/api-partenaires/issues/64), [#68](https://github.com/proconnect-gouv/api-partenaires/issues/68)).
-- **Traçabilité accrue :** Chaque ligne de la liste blanche est désormais liée à sa fiche DILA correspondante, permettant de savoir précisément quelle source atteste quel domaine ([#69](https://github.com/proconnect-gouv/api-partenaires/issues/69), [#70](https://github.com/proconnect-gouv/api-partenaires/issues/70)).
+- **Renforcement de la validation des domaines** :
+    - Interdiction d'attacher un domaine déjà utilisé par un autre fournisseur [#87](https://github.com/proconnect-gouv/api-partenaires/pull/87).
+    - Blocage des domaines génériques (type boîte mail) et des domaines figurant sur une liste d'exclusion (incluant les domaines parents) [#84](https://github.com/proconnect-gouv/api-partenaires/pull/84).
+    - Amélioration de la validation des domaines attestés par la DILA pour garantir leur conformité avec l'annuaire administratif [#64](https://github.com/proconnect-gouv/api-partenaires/pull/64).
+- **Sécurité des accès** : Suppression des permissions de type "roles" des scopes par défaut pour limiter les droits par défaut [#e5e875b](https://github.com/proconnect-gouv/api-partenaires/commit/e5e875b).
+- **Corrections de bugs** : Résolution d'un problème entraînant la suppression incorrecte de collaborateurs lors de mises à jour partielles [#77](https://github.com/proconnect-gouv/api-partenaires/pull/77).
 
 ### Évolutions techniques
-- **Sécurité et Accès :**
-  - Suppression des rôles des scopes par défaut pour limiter les privilèges accordés par défaut ([#52](https://github.com/proconnect-gouv/api-partenaires/issues/52)).
-- **Automatisation et Fiabilité :**
-  - Mise en place de vérifications automatiques de la liste blanche lors des Pull Requests ([#58](https://github.com/proconnect-gouv/api-partenaires/issues/58)) et via une tâche planifiée quotidienne ([#54](https://github.com/proconnect-gouv/api-partenaires/issues/54)).
-  - Ajout d'un contrôle de syntaxe (parsing) pour la configuration de la liste blanche OIDC ([#53](https://github.com/proconnect-gouv/api-partenaires/issues/53)).
-  - Vérification systématique de la cohérence entre la liste blanche et l'export de données de la DILA ([#65](https://github.com/proconnect-gouv/api-partenaires/issues/65)).
-- **Optimisation des performances :**
-  - Implémentation d'un système de mise en cache de l'export de la DILA pour accélérer les processus de vérification ([#59](https://github.com/proconnect-gouv/api-partenaires/issues/59), [#62](https://github.com/proconnect-gouv/api-partenaires/issues/62)).
-  - Création d'un index pour identifier rapidement quelle fiche déclare chaque domaine ([#63](https://github.com/proconnect-gouv/api-partenaires/issues/63)).
-  - Ajout de logs pour monitorer l'efficacité du cache (hits/misses).
+- **Automatisation et CI/CD** :
+    - Mise en place d'un processus de release automatisé avec `release-it` et un versionnage de type CalVer [#85](https://github.com/proconnect-gouv/api-partenaires/pull/85).
+    - Intégration de contrôles automatiques de la configuration et de la liste d'autorisation (allowlist) directement dans le pipeline CI [#53](https://github.com/proconnect-gouv/api-partenaires/pull/53), [#58](https://github.com/proconnect-gouv/api-partenaires/pull/58).
+- **Gestion des données et infrastructure** :
+    - Automatisation de la récupération et de la mise en cache quotidienne de l'annuaire administratif de la DILA pour assurer la fraîcheur des données [#59](https://github.com/proconnect-gouv/api-partenaires/pull/59), [#62](https://github.com/proconnect-gouv/api-partenaires/pull/62).
+    - Amélioration de la traçabilité en enregistrant la source d'attestation pour chaque domaine autorisé [#56](https://github.com/proconnect-gouv/api-partenaires/pull/56).
+- **Observabilité et expérience développeur** :
+    - Amélioration de la lisibilité des erreurs de configuration, désormais affichées de manière concise par problème rencontré [#81](https://github.com/proconnect-gouv/api-partenaires/pull/81).
+    - Ajout de logs pour suivre l'état du cache lors de la récupération des données DILA.
 
 ### Autres changements
-- **Maintenance et DevOps :**
-  - Fixation de la version de Bun via le `packageManager` pour garantir la reproductibilité des environnements ([#55](https://github.com/proconnect-gouv/api-partenaires/issues/55)).
-  - Refactoring des types de sources de la liste blanche pour utiliser les énumérations Zod ([#67](https://github.com/proconnect-gouv/api-partenaires/issues/67)).
+- **Documentation** : Ajout d'un guide de contribution détaillant le processus de release [#86](https://github.com/proconnect-gouv/api-partenaires/pull/86).
+- **Nettoyage** : Suppression des fichiers README d'exemples par scénario pour alléger le dépôt [#91](https://github.com/proconnect-gouv/api-partenaires/pull/91).
