@@ -1,16 +1,18 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "Une plateforme open-source de partage de fichiers collaboratif permettant le stockage, l'édition et la gestion sécurisée de documents avec un contrôle d'accès granulaire.",
+  "description": "Un outil open-source dédié au stockage, à l'édition et au partage de fichiers avec un contrôle d'accès granulaire et des capacités de collaboration.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Sécurité & Conformité",
+    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Infrastructure & Stockage",
-    "Interface utilisateur & Design"
+    "Sécurité & Conformité",
+    "Statistiques & Rapports",
+    "Collaboration & Workflow",
+    "Gestion des médias & Assets"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,10 +21,10 @@
     "PostgreSQL",
     "Docker",
     "Kubernetes",
+    "Celery",
     "Playwright",
     "JMeter",
-    "Collabora",
-    "OnlyOffice"
+    "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,34 +34,37 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Authentification (composant)",
-    "Stockage objet"
+    "Celery & Queue asynchrone",
+    "Intégrations services externes"
   ],
   "auth": {
     "methods": [
-      "oauth2",
       "sso",
-      "jwt"
+      "jwt",
+      "oauth2"
     ],
     "providers": [
-      "ProConnect"
+      "ProConnect",
+      "Keycloak"
     ]
   },
-  "tests": [
-    "Playwright",
-    "JMeter"
+  "tests": "Playwright (E2E), JMeter (load tests), Django tests",
+  "workflows": [
+    "Docker Hub workflow",
+    "CI/CD"
   ],
-  "lastActivity": "2026-09-24T18:39:24+02:00",
-  "status": "active",
+  "lastActivity": "2026-10-01T11:43:10+02:00",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Sécurité & Auth"
+    "CI/CD & GitHub Actions",
+    "Sécurité & Auth",
+    "Documentation"
   ]
 }

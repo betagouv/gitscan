@@ -244,7 +244,8 @@
     │   │   │   ├── accesses.py
     │   │   │   ├── item_exports.py
     │   │   │   ├── sdk_relay.py
-    │   │   │   └── search_indexers.py
+    │   │   │   ├── search_indexers.py
+    │   │   │   └── uploads.py
     │   │   ├── signals.py
     │   │   ├── storage
     │   │   │   ├── __init__.py
@@ -322,10 +323,12 @@
     │   │   │   │   ├── test_api_items_search.py
     │   │   │   │   ├── test_api_items_search_fulltext.py
     │   │   │   │   ├── test_api_items_search_location.py
+    │   │   │   │   ├── test_api_items_throttling.py
     │   │   │   │   ├── test_api_items_trashbin.py
     │   │   │   │   ├── test_api_items_tree.py
     │   │   │   │   ├── test_api_items_update.py
-    │   │   │   │   └── test_api_items_wopi.py
+    │   │   │   │   ├── test_api_items_wopi.py
+    │   │   │   │   └── test_api_upload_reservations.py
     │   │   │   ├── storage
     │   │   │   │   ├── test_cache.py
     │   │   │   │   └── test_creator_storage_compute_backend.py
@@ -402,7 +405,8 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── e2e_fixture_filters.py
-    │   │   │       └── e2e_fixture_search.py
+    │   │   │       ├── e2e_fixture_search.py
+    │   │   │       └── e2e_fixture_upload_quota.py
     │   │   ├── serializers.py
     │   │   ├── tests
     │   │   │   └── test_api_e2e.py
@@ -1014,6 +1018,7 @@
     │   │   │   │   │   ├── starred.spec.ts
     │   │   │   │   │   ├── storage-gauge.spec.ts
     │   │   │   │   │   ├── trash.spec.ts
+    │   │   │   │   │   ├── upload-quota.spec.ts
     │   │   │   │   │   ├── upload.spec.ts
     │   │   │   │   │   ├── url-file-preview.spec.ts
     │   │   │   │   │   ├── user-reconciliation.spec.ts
@@ -1130,4 +1135,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-258 directories, 874 files
+258 directories, 879 files

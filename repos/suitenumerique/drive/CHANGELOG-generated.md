@@ -1,32 +1,20 @@
-## Changelog : drive (30 derniers jours, au 24/09/2026)
+## Changelog : drive (30 derniers jours, au 1er octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a introduit une gestion beaucoup plus flexible des restrictions d'accès, permettant de sécuriser ou de libérer des dossiers par simple déplacement dans l'arborescence. Ces évolutions s'accompagnent d'une optimisation majeure de la performance du moteur de permissions et d'une modernisation de l'infrastructure de stockage locale.
+Ce mois-ci, le projet a franchi une étape majeure avec l'introduction d'un système de gestion des restrictions beaucoup plus granulaire, permettant un contrôle précis sur l'accès aux dossiers et fichiers. Le processus de téléchargement a été renforcé pour plus de fiabilité, et l'interface utilisateur a été affinée pour améliorer la navigation et le rendu des documents.
 
 ### Évolutions fonctionnelles
-- **Gestion des accès et restrictions** : 
-    - Nouveau système permettant de restreindre ou de lever une restriction sur un dossier par simple déplacement (attachement/détachement) dans l'arborescence.
-    - Les dossiers restreints sont désormais masqués de la vue principale et exclus des résultats de recherche et des exports.
-    - Possibilité de cibler d'autres éléments pour appliquer des restrictions.
-- **Sécurité et droits** : Renforcement du contrôle des droits d'upload pour la création de documents à la racine du drive.
-- **Interface utilisateur** : 
-    - Amélioration du rendu des fichiers PDF (gestion des polices et des décodeurs).
-    - Correction de la gestion des langues du navigateur et rafraîchissement automatique de la vue "Récents" après modification d'un élément.
+- **Nouveau système de restrictions** : possibilité d'activer ou désactiver des restrictions sur des éléments, de cibler des dossiers spécifiques et de masquer les éléments restreints des résultats de recherche et des exports.
+- **Fiabilisation des téléchargements** : le système réserve désormais l'espace de stockage nécessaire avant de valider un upload et communique la taille des fichiers pour une gestion plus robuste.
+- **Amélioration de l'interface** : correction de la vue "Récents" qui ne se mettait pas à jour correctement, meilleure gestion des langues de navigateur et amélioration du rendu des fichiers PDF.
+- **Sécurité accrue** : mise en place de limitations de débit (rate limiting) sur la création d'éléments et renforcement des droits d'upload à la racine.
 
 ### Évolutions techniques
-- **Infrastructure et stockage** : 
-    - Remplacement de MinIO par RustFS pour le stockage d'objets en environnement local.
-    - Mise à jour des déploiements Helm pour permettre la configuration de variables d'environnement spécifiques au backend.
-- **Backend et Performance** : 
-    - Refonte profonde du moteur de permissions pour une gestion plus modulaire des capacités et des rôles.
-    - Optimisation de la vitesse de recherche des ancêtres dans l'arborescence.
-    - Mise en place d'un pool de connexions PostgreSQL (`psycopg_pool`) pour améliorer la gestion de la base de données.
-- **Qualité et Observabilité** : 
-    - Ajout d'une suite de tests de charge avec JMeter (scénarios de sessions utilisateurs et de lecture intensive).
-    - Intégration du monitoring de performance via Sentry.
-    - Amélioration de l'environnement de tests de bout en bout (E2E).
-- **Développement** : Optimisation du processus de build des dépendances frontend via conteneur et amélioration des règles Makefile.
+- **Optimisation des performances** : accélération de la recherche de hiérarchie (ancêtres) et implémentation d'un pool de connexions pour la base de données PostgreSQL.
+- **Infrastructure et DevOps** : remplacement de MinIO par RustFS pour le stockage d'objets en local et mise à jour des configurations Docker et Helm.
+- **Refactoring** : migration vers la bibliothèque de composants UI officielle (`@gouvfr-lasuite/ui-components`) et restructuration de la logique de gestion des permissions pour plus de modularité.
+- **Qualité et tests** : renforcement de la couverture des tests de bout en bout (E2E), notamment sur la corbeille et les réservations d'upload, et amélioration des tests de charge.
 
 ### Autres changements
-- **Documentation** : Mise à jour du README (ajout de badges) et documentation technique des paramètres de permissions du backend.
-- **Maintenance** : Nettoyage des variables d'environnement inutilisées et gestion des versions de release (0.22.0 et 0.23.0).
+- **Documentation** : mise à jour de la documentation technique, notamment sur les paramètres de permissions et les exemples de serveurs de ressources.
+- **Nettoyage** : suppression de variables d'environnement inutilisées et simplification de certains flux du backend.
