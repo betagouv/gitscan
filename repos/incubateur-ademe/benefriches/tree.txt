@@ -26,10 +26,6 @@
 │       │   └── SKILL.md
 │       ├── security-review
 │       │   └── SKILL.md
-│       ├── to-spec
-│       │   └── SKILL.md
-│       ├── to-tickets
-│       │   └── SKILL.md
 │       ├── wizard-form
 │       │   └── SKILL.md
 │       ├── worktree
@@ -45,68 +41,38 @@
 │   │       └── security-rules.md
 │   ├── hooks
 │   │   ├── block-env-read.sh
+│   │   ├── block-hook-bypass.mjs
+│   │   ├── block-hook-bypass.spec.mjs
 │   │   ├── format-check.sh
 │   │   └── worktree-setup.sh
 │   ├── rules
 │   │   ├── api
-│   │   │   ├── api-architecture.md
-│   │   │   ├── api-controller.md
-│   │   │   ├── api-domain-events.md
-│   │   │   ├── api-integration-testing.md
-│   │   │   ├── api-migrations.md
-│   │   │   ├── api-modules-and-di.md
-│   │   │   ├── api-naming.md
-│   │   │   ├── api-query.md
-│   │   │   ├── api-repository.md
-│   │   │   ├── api-unit-testing.md
-│   │   │   └── api-usecase.md
+│   │   │   ├── api-core.md
+│   │   │   ├── api-db-migrations.md
+│   │   │   ├── api-http.md
+│   │   │   ├── api-persistence.md
+│   │   │   └── api-testing.md
 │   │   └── testing.md
 │   ├── settings.json
 │   └── skills
-│       ├── adr
-│       │   └── SKILL.md
-│       ├── code-reviewer
-│       │   ├── SKILL.md
-│       │   └── reference
-│       │       ├── api.md
-│       │       ├── cross-cutting.md
-│       │       └── web.md
-│       ├── create-database-migration
-│       │   └── SKILL.md
-│       ├── create-e2e-test
-│       │   └── SKILL.md
-│       ├── e2e-coverage-check
-│       │   └── SKILL.md
-│       ├── fix-ci
-│       │   └── SKILL.md
-│       ├── react-best-practices
-│       │   ├── SKILL.md
-│       │   └── examples.md
-│       ├── reflect
-│       │   └── SKILL.md
-│       ├── run-e2e-tests
-│       │   └── SKILL.md
-│       ├── security-review
-│       │   └── SKILL.md
-│       ├── to-spec
-│       │   └── SKILL.md
-│       ├── to-tickets
-│       │   └── SKILL.md
-│       ├── wizard-form
-│       │   └── SKILL.md
-│       ├── worktree
-│       │   └── SKILL.md
-│       └── worktree-merge
-│           └── SKILL.md
+│       ├── adr -> ../../.agents/skills/adr
+│       ├── code-reviewer -> ../../.agents/skills/code-reviewer
+│       ├── create-database-migration -> ../../.agents/skills/create-database-migration
+│       ├── create-e2e-test -> ../../.agents/skills/create-e2e-test
+│       ├── e2e-coverage-check -> ../../.agents/skills/e2e-coverage-check
+│       ├── fix-ci -> ../../.agents/skills/fix-ci
+│       ├── react-best-practices -> ../../.agents/skills/react-best-practices
+│       ├── reflect -> ../../.agents/skills/reflect
+│       ├── run-e2e-tests -> ../../.agents/skills/run-e2e-tests
+│       ├── security-review -> ../../.agents/skills/security-review
+│       ├── wizard-form -> ../../.agents/skills/wizard-form
+│       ├── worktree -> ../../.agents/skills/worktree
+│       └── worktree-merge -> ../../.agents/skills/worktree-merge
 ├── .codex
 │   ├── agents
 │   │   ├── e2e-coverage-checker.toml
 │   │   └── security-reviewer.toml
 │   ├── config.toml
-│   ├── hooks
-│   │   ├── block-env-read.sh
-│   │   ├── format-check.sh
-│   │   └── worktree-setup.sh
 │   └── hooks.json
 ├── .dockerignore
 ├── .env.e2e
@@ -131,6 +97,8 @@
 ├── .talismanrc
 ├── .tooling
 │   ├── oxlint
+│   │   ├── api-conventions.mjs
+│   │   ├── api-conventions.spec.mjs
 │   │   └── architecture-boundaries.mjs
 │   ├── prettierrc.js
 │   └── tsconfig.base.json
@@ -149,6 +117,7 @@
 │   │   ├── .lintstagedrc
 │   │   ├── .oxlintrc.json
 │   │   ├── .prettierrc.mjs
+│   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md
 │   │   ├── Dockerfile
 │   │   ├── README.md
@@ -223,9 +192,9 @@
 │   │   │   │   │   │   ├── DeterministicTokenGenerator.ts
 │   │   │   │   │   │   └── RandomTokenGenerator.ts
 │   │   │   │   │   ├── user-repository
-│   │   │   │   │   │   ├── InMemoryAuthUserRepository.ts
+│   │   │   │   │   │   ├── InMemoryUserRepository.ts
 │   │   │   │   │   │   ├── SqlUserRepository.integration-spec.ts
-│   │   │   │   │   │   └── SqlUsersRepository.ts
+│   │   │   │   │   │   └── SqlUserRepository.ts
 │   │   │   │   │   └── verified-email-repository
 │   │   │   │   │       ├── SqlVerifiedEmailRepository.ts
 │   │   │   │   │       └── VerifiedEmailRepository.ts
@@ -271,8 +240,8 @@
 │   │   │   │       │   ├── getCarbonStorageFromSoilDistribution.spec.ts
 │   │   │   │       │   └── getCarbonStorageFromSoilDistribution.ts
 │   │   │   │       └── usecases
-│   │   │   │           ├── getCityCarbonStoragePerSoilsCategory.spec.ts
-│   │   │   │           └── getCityCarbonStoragePerSoilsCategory.ts
+│   │   │   │           ├── getCityCarbonStoragePerSoilsCategory.usecase.spec.ts
+│   │   │   │           └── getCityCarbonStoragePerSoilsCategory.usecase.ts
 │   │   │   ├── healthcheck
 │   │   │   │   ├── healthcheck.controller.integration-spec.ts
 │   │   │   │   ├── healthcheck.controller.ts
@@ -316,6 +285,52 @@
 │   │   │   │           ├── backfillCrmContacts.usecase.ts
 │   │   │   │           ├── syncNewsletterSubscriptions.usecase.spec.ts
 │   │   │   │           └── syncNewsletterSubscriptions.usecase.ts
+│   │   │   ├── notifications
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── primary
+│   │   │   │   │   │   ├── notifications.module.ts
+│   │   │   │   │   │   ├── sendLifecycleEmailPreview.integration-spec.ts
+│   │   │   │   │   │   ├── sendLifecycleEmailPreview.script.ts
+│   │   │   │   │   │   ├── sendWelcomeEmailOnUserAccountCreated.handler.integration-spec.ts
+│   │   │   │   │   │   └── sendWelcomeEmailOnUserAccountCreated.handler.ts
+│   │   │   │   │   └── secondary
+│   │   │   │   │       ├── lifecycle-email-delivery
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailDeliveryQuery.ts
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailDeliveryRepository.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailDeliveryQuery.integration-spec.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailDeliveryQuery.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailDeliveryRepository.integration-spec.ts
+│   │   │   │   │       │   └── SqlLifecycleEmailDeliveryRepository.ts
+│   │   │   │   │       ├── lifecycle-email-recipient
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailRecipientQuery.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailRecipientQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlLifecycleEmailRecipientQuery.ts
+│   │   │   │   │       └── mailer
+│   │   │   │   │           ├── FakeMailer.ts
+│   │   │   │   │           └── SmtpMailer.ts
+│   │   │   │   └── core
+│   │   │   │       ├── gateways
+│   │   │   │       │   ├── LifecycleEmailDeliveryQuery.ts
+│   │   │   │       │   ├── LifecycleEmailDeliveryRepository.ts
+│   │   │   │       │   ├── LifecycleEmailRecipientQuery.ts
+│   │   │   │       │   └── Mailer.ts
+│   │   │   │       ├── models
+│   │   │   │       │   └── lifecycleEmail.ts
+│   │   │   │       ├── previews
+│   │   │   │       │   └── lifecycleEmailPreviewSamples.ts
+│   │   │   │       ├── services
+│   │   │   │       │   ├── lifecycleEmailSender.spec.ts
+│   │   │   │       │   └── lifecycleEmailSender.ts
+│   │   │   │       ├── templates
+│   │   │   │       │   ├── emailLayout.spec.ts
+│   │   │   │       │   ├── emailLayout.ts
+│   │   │   │       │   ├── welcomeEmail.spec.ts
+│   │   │   │       │   └── welcomeEmail.ts
+│   │   │   │       └── usecases
+│   │   │   │           ├── sendLifecycleEmailPreview.usecase.spec.ts
+│   │   │   │           ├── sendLifecycleEmailPreview.usecase.ts
+│   │   │   │           ├── sendWelcomeEmail.usecase.spec.ts
+│   │   │   │           └── sendWelcomeEmail.usecase.ts
 │   │   │   ├── photovoltaic-performance
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
@@ -330,8 +345,8 @@
 │   │   │   │       ├── gateways
 │   │   │   │       │   └── PhotovoltaicDataProvider.ts
 │   │   │   │       └── usecases
-│   │   │   │           ├── getPhotovoltaicExpectedPerformanceUseCase.ts
-│   │   │   │           └── getPhotovoltaicExpectedPerformanceUseCase.usecase.spec.ts
+│   │   │   │           ├── getPhotovoltaicExpectedPerformance.usecase.spec.ts
+│   │   │   │           └── getPhotovoltaicExpectedPerformance.usecase.ts
 │   │   │   ├── reconversion-compatibility
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
@@ -439,7 +454,7 @@
 │   │   │   │           ├── generateReconversionProjectFromTemplate.usecase.ts
 │   │   │   │           ├── getReconversionProject.usecase.ts
 │   │   │   │           ├── getReconversionProjectFeatures.usecase.ts
-│   │   │   │           ├── getUserReconversionProjectsBySite.spec.ts
+│   │   │   │           ├── getUserReconversionProjectsBySite.usecase.spec.ts
 │   │   │   │           ├── getUserReconversionProjectsBySite.usecase.ts
 │   │   │   │           ├── quickComputeUrbanProjectImpactsOnFricheUseCase.usecase.ts
 │   │   │   │           ├── updateReconversionProject.usecase.spec.ts
@@ -545,7 +560,9 @@
 │   │   │   │   │       │   ├── 20260901132453_add-revoked_at-to-token_authentication_attempts.ts
 │   │   │   │   │       │   ├── 20260907151615_rename-aldo-columns-and-add-anct-zoneage-in-cities-table.ts
 │   │   │   │   │       │   ├── 20260916085824_add-terrain-dvf-columns-in-city-stats-table.ts
-│   │   │   │   │       │   └── 20260916093325_add-anct-stats-columns-in-city-stats-table.ts
+│   │   │   │   │       │   ├── 20260916093325_add-anct-stats-columns-in-city-stats-table.ts
+│   │   │   │   │       │   ├── 20260922124312_create-table-lifecycle-email-deliveries.ts
+│   │   │   │   │       │   └── 20260922124313_add-lifecycle-emails-unsubscribed-at-to-users-table.ts
 │   │   │   │   │       ├── scripts
 │   │   │   │   │       │   ├── README.md
 │   │   │   │   │       │   ├── initialize-or-update-cities.ts
@@ -621,7 +638,7 @@
 │   │   │   │       │   ├── MutabilityEvaluationQuery.ts
 │   │   │   │       │   └── SiteEvaluationQuery.ts
 │   │   │   │       └── usecases
-│   │   │   │           ├── getUserSiteEvaluations.spec.ts
+│   │   │   │           ├── getUserSiteEvaluations.usecase.spec.ts
 │   │   │   │           └── getUserSiteEvaluations.usecase.ts
 │   │   │   ├── sites
 │   │   │   │   ├── adapters
@@ -639,7 +656,7 @@
 │   │   │   │   │       │   ├── SqlSitesQuery.integration-spec.ts
 │   │   │   │   │       │   └── SqlSitesQuery.ts
 │   │   │   │   │       └── site-repository
-│   │   │   │   │           ├── InMemorySiteRepository.ts
+│   │   │   │   │           ├── InMemorySitesRepository.ts
 │   │   │   │   │           ├── SqlSiteRepository.integration-spec.ts
 │   │   │   │   │           └── SqlSiteRepository.ts
 │   │   │   │   └── core
@@ -686,8 +703,8 @@
 │   │   │   │   │   │   ├── stats.controller.ts
 │   │   │   │   │   │   └── stats.module.ts
 │   │   │   │   │   └── secondary
-│   │   │   │   │       ├── SqlPeriodicityStatsQuery.ts
-│   │   │   │   │       └── SqlStatsQuery.ts
+│   │   │   │   │       ├── SqlReconversionProjectAndSiteImpactsQuery.ts
+│   │   │   │   │       └── SqlReconversionProjectByPeriodicityQuery.ts
 │   │   │   │   └── core
 │   │   │   │       └── usecases
 │   │   │   │           ├── computeEvaluatedProjectStats.usecase.ts
@@ -703,14 +720,18 @@
 │   │   │   │   │       │   ├── InMemoryCityImpactsQuery.ts
 │   │   │   │   │       │   ├── SqlCityImpactsQuery.integration-spec.ts
 │   │   │   │   │       │   └── SqlCityImpactsQuery.ts
-│   │   │   │   │       └── city-rurality-query
-│   │   │   │   │           ├── InMemoryCityRuralityQuery.ts
-│   │   │   │   │           ├── SqlCityRuralityQuery.integration-spec.ts
-│   │   │   │   │           └── SqlCityRuralityQuery.ts
+│   │   │   │   │       ├── city-rurality-query
+│   │   │   │   │       │   ├── InMemoryCityRuralityQuery.ts
+│   │   │   │   │       │   ├── SqlCityRuralityQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlCityRuralityQuery.ts
+│   │   │   │   │       └── municipality-capital-expenditures-query
+│   │   │   │   │           ├── ApiMunicipalCapitalExpendituresQuery.ts
+│   │   │   │   │           └── FakeMunicipalityCapitalExpendituresProvider.ts
 │   │   │   │   └── core
 │   │   │   │       ├── gateways
 │   │   │   │       │   ├── CityImpactsDataProvider.ts
-│   │   │   │       │   └── CityRuralityQuery.ts
+│   │   │   │       │   ├── CityRuralityQuery.ts
+│   │   │   │       │   └── MunicipalityCapitalExpendituresProvider.ts
 │   │   │   │       └── usecases
 │   │   │   │           ├── getCityRurality.usecase.spec.ts
 │   │   │   │           └── getCityRurality.usecase.ts
@@ -722,7 +743,7 @@
 │   │   │       │   │   └── users.module.ts
 │   │   │       │   └── secondary
 │   │   │       │       ├── user-feature-alert-repository
-│   │   │       │       │   ├── InMemoryUserFeatureAlertRepository.ts
+│   │   │       │       │   ├── InMemoryUserFeatureAlertsRepository.ts
 │   │   │       │       │   ├── SqlUserFeatureAlertRepository.integration-spec.ts
 │   │   │       │       │   └── SqlUserFeatureAlertRepository.ts
 │   │   │       │       └── user-query
@@ -752,6 +773,7 @@
 │   │   ├── .oxlintrc.json
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.mjs
+│   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md
 │   │   ├── fixtures
 │   │   │   ├── auth.fixtures.ts
@@ -897,6 +919,7 @@
 │       ├── .oxlintrc.json
 │       ├── .prettierignore
 │       ├── .prettierrc.mjs
+│       ├── AGENTS.md
 │       ├── CLAUDE.md
 │       ├── Dockerfile
 │       ├── docker-entrypoint.sh
@@ -2704,6 +2727,8 @@
 │       │   │   │       └── useSyncCreationStepWithRouteQuery.ts
 │       │   │   ├── my-evaluations
 │       │   │   │   ├── application
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── evaluationsList.reducer.spec.ts
 │       │   │   │   │   ├── evaluationsList.actions.ts
 │       │   │   │   │   └── evaluationsList.reducer.ts
 │       │   │   │   ├── core
@@ -2797,7 +2822,6 @@
 │       │   │   │   │       ├── __tests__
 │       │   │   │   │       │   ├── impactsOnboardingSkip.spec.ts
 │       │   │   │   │       │   ├── index.ts
-│       │   │   │   │       │   ├── projectImpacts.mock.ts
 │       │   │   │   │       │   ├── projectImpacts.selectors.spec.ts
 │       │   │   │   │       │   ├── projectImpactsEconomicBalance.selectors.spec.ts
 │       │   │   │   │       │   ├── projectImpactsEnvironmental.selectors.spec.ts
@@ -3036,12 +3060,14 @@
 │       │   │   │       ├── project-development-score
 │       │   │   │       │   ├── ProjectDevelopmentEnvironmentScore.tsx
 │       │   │   │       │   ├── ProjectDevelopmentFullTimeJobsScore.tsx
-│       │   │   │       │   ├── ProjectDevelopmentIconFail.tsx
-│       │   │   │       │   ├── ProjectDevelopmentIconSuccess.tsx
+│       │   │   │       │   ├── ProjectDevelopmentGrade.tsx
+│       │   │   │       │   ├── ProjectDevelopmentLocalAuthorityFinancesScore.tsx
 │       │   │   │       │   ├── ProjectDevelopmentLocalPeopleAndCompanyScore.tsx
 │       │   │   │       │   ├── ProjectDevelopmentMetricCard.tsx
 │       │   │   │       │   ├── ProjectDevelopmentScoreGradeScale.tsx
+│       │   │   │       │   ├── ProjectDevelopmentScoreGradeTextBadge.tsx
 │       │   │   │       │   ├── ProjectDevelopmentScorePage.tsx
+│       │   │   │       │   ├── colors.ts
 │       │   │   │       │   └── index.tsx
 │       │   │   │       ├── project-features
 │       │   │   │       │   ├── DevelopmentPlanFeatures.tsx
@@ -3188,7 +3214,18 @@
 │       │   │   │           │   ├── AboutImpactsContent.tsx
 │       │   │   │           │   ├── aboutBenefrichesContent.ts
 │       │   │   │           │   ├── documentation
-│       │   │   │           │   │   └── ImpactDocumentation.tsx
+│       │   │   │           │   │   ├── ImpactDocumentation.tsx
+│       │   │   │           │   │   ├── content
+│       │   │   │           │   │   │   ├── 00-intro.mdx
+│       │   │   │           │   │   │   ├── 01-statuquo.mdx
+│       │   │   │           │   │   │   ├── 02-projet.mdx
+│       │   │   │           │   │   │   ├── 03-agregation.mdx
+│       │   │   │           │   │   │   ├── 04-analyse-cout-benefice.mdx
+│       │   │   │           │   │   │   ├── 05-beneficiaires.mdx
+│       │   │   │           │   │   │   ├── 06-analyse-couts-evites.mdx
+│       │   │   │           │   │   │   ├── 07-score-d-impact.mdx
+│       │   │   │           │   │   │   └── 08-methodologie.mdx
+│       │   │   │           │   │   └── mdxComponents.tsx
 │       │   │   │           │   ├── impactGroupCategory.ts
 │       │   │   │           │   └── summary.ts
 │       │   │   │           ├── project-badge
@@ -3394,6 +3431,8 @@
 │       │   │   └── user-feature-alerts
 │       │   │       ├── core
 │       │   │       │   ├── CreateFeatureAlertGateway.ts
+│       │   │       │   ├── __tests__
+│       │   │       │   │   └── userFeatureAlert.reducer.spec.ts
 │       │   │       │   ├── createFeatureAlert.action.ts
 │       │   │       │   ├── loadFeatureAlerts.action.ts
 │       │   │       │   ├── userFeatureAlert.reducer.ts
@@ -3414,8 +3453,6 @@
 │       │   │   │   ├── carbonEmissions.ts
 │       │   │   │   ├── dates
 │       │   │   │   │   └── index.ts
-│       │   │   │   ├── filter-by-name
-│       │   │   │   │   └── filterByName.ts
 │       │   │   │   ├── format-number
 │       │   │   │   │   ├── formatCarbonStorage.ts
 │       │   │   │   │   ├── formatNumber.spec.ts
@@ -3458,6 +3495,7 @@
 │       │   │   │   ├── stepVariant.types.ts
 │       │   │   │   ├── urbanProject.ts
 │       │   │   │   └── wizard-form
+│       │   │   │       ├── AGENTS.md
 │       │   │   │       ├── CLAUDE.md
 │       │   │   │       ├── helpers
 │       │   │   │       │   ├── applyStepChanges.spec.ts
@@ -3680,11 +3718,17 @@
 │   │   ├── 0013-migrate-api-test-suite-from-vitest-to-node-test.md
 │   │   ├── 0014-migrate-api-to-esm.md
 │   │   ├── 0015-extract-wizard-form-engine-via-injected-lens.md
+│   │   ├── 0016-route-all-lifecycle-emails-through-a-single-sender-with-an-idempotent-delivery-ledger.md
 │   │   └── README.md
 │   ├── feature-example.md
 │   ├── incidents
 │   │   └── 2026-06-connect-crm-outage.md
+│   ├── lifecycle-emails.md
 │   ├── onboarding.md
+│   ├── qa
+│   │   └── lifecycle-emails
+│   │       ├── 01.md
+│   │       └── 02.md
 │   ├── scripts.md
 │   └── specs
 │       ├── 2026-03-23-buildings-reuse-and-construction-design.md
@@ -3700,6 +3744,7 @@
 │       ├── .oxlintrc.json
 │       ├── .prettierignore
 │       ├── .prettierrc.mjs
+│       ├── AGENTS.md
 │       ├── CLAUDE.md
 │       ├── package.json
 │       ├── src
@@ -3740,6 +3785,8 @@
 │       │   ├── co2eq
 │       │   │   ├── convertCarbonToCO2eq.ts
 │       │   │   └── index.ts
+│       │   ├── filter-by-name
+│       │   │   └── index.ts
 │       │   ├── financial
 │       │   │   ├── index.ts
 │       │   │   ├── propertyTaxes.ts
@@ -3758,6 +3805,44 @@
 │       │   ├── reconversion-project-impacts
 │       │   │   ├── computeImpactsWithBreakEvenLevel.spec.ts
 │       │   │   ├── computeImpactsWithBreakEvenLevel.ts
+│       │   │   ├── development-score
+│       │   │   │   ├── computeProjectDevelopmentScore.spec.ts
+│       │   │   │   ├── computeProjectDevelopmentScore.ts
+│       │   │   │   ├── environment
+│       │   │   │   │   ├── co2EqEmissions.score.spec.ts
+│       │   │   │   │   ├── co2EqEmissions.score.ts
+│       │   │   │   │   ├── ecosystemServices.score.spec.ts
+│       │   │   │   │   ├── ecosystemServices.score.ts
+│       │   │   │   │   ├── soilsQuality.score.spec.ts
+│       │   │   │   │   ├── soilsQuality.score.ts
+│       │   │   │   │   ├── waterQuality.score.spec.ts
+│       │   │   │   │   ├── waterQuality.score.ts
+│       │   │   │   │   ├── zanCompliance.score.spec.ts
+│       │   │   │   │   └── zanCompliance.score.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── jobs
+│       │   │   │   │   ├── fullTimeJobs.score.spec.ts
+│       │   │   │   │   └── fullTimeJobs.score.ts
+│       │   │   │   ├── local-authority-finances
+│       │   │   │   │   ├── localAuthorityFinances.score.spec.ts
+│       │   │   │   │   └── localAuthorityFinances.score.ts
+│       │   │   │   ├── local-people-quality-of-life
+│       │   │   │   │   ├── accessToHealthCare.score.spec.ts
+│       │   │   │   │   ├── accessToHealthCare.score.ts
+│       │   │   │   │   ├── accessToLocalStore.score.spec.ts
+│       │   │   │   │   ├── accessToLocalStore.score.ts
+│       │   │   │   │   ├── fricheAccidents.score.spec.ts
+│       │   │   │   │   ├── fricheAccidents.score.ts
+│       │   │   │   │   ├── livingEnvironment.score.spec.ts
+│       │   │   │   │   ├── livingEnvironment.score.ts
+│       │   │   │   │   ├── localHealthiness.score.spec.ts
+│       │   │   │   │   ├── localHealthiness.score.ts
+│       │   │   │   │   ├── trafficSecurity.score.spec.ts
+│       │   │   │   │   └── trafficSecurity.score.ts
+│       │   │   │   ├── readFeatures.helpers.spec.ts
+│       │   │   │   ├── readFeatures.helpers.ts
+│       │   │   │   ├── scoring.helpers.spec.ts
+│       │   │   │   └── scoring.helpers.ts
 │       │   │   ├── documentation-calculs-impacts.md
 │       │   │   ├── economic-balance
 │       │   │   │   ├── projectDevelopmentEconomicBalance.spec.ts
@@ -3768,6 +3853,9 @@
 │       │   │   │   ├── formatImpacts.ts
 │       │   │   │   ├── socioEconomic.types.ts
 │       │   │   │   └── types.ts
+│       │   │   ├── group-impacts
+│       │   │   │   ├── groupIndirectEconomicImpactsByBearer.ts
+│       │   │   │   └── index.ts
 │       │   │   ├── index.ts
 │       │   │   ├── indirect-impacts
 │       │   │   │   ├── fullTimeJobs.helper.ts
@@ -3811,6 +3899,10 @@
 │       │   │   │       │   └── YearlyUrbanFreshnessRelatedImpacts.ts
 │       │   │   │       ├── urbanProjectImpacts.spec.ts
 │       │   │   │       └── urbanProjectImpacts.ts
+│       │   │   ├── mocks
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── projectDevelopmentScore.mock.ts
+│       │   │   │   └── projectImpacts.mock.ts
 │       │   │   ├── projectImpacts.types.ts
 │       │   │   └── projectImpactsDataView.types.ts
 │       │   ├── reconversion-projects
@@ -3964,7 +4056,13 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── scripts
+    ├── check-env-files.mjs
+    ├── check-env-files.spec.mjs
     ├── create-worktree.sh
     ├── prime-worktree.sh
-    └── remove-worktree.sh
-1041 directories, 2928 files
+    ├── remove-worktree.sh
+    ├── sync-agent-config.mjs
+    ├── sync-agent-config.spec.mjs
+    ├── sync-agent-skills.mjs
+    └── sync-agent-skills.spec.mjs
+1062 directories, 3005 files

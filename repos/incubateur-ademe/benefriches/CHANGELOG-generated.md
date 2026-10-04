@@ -1,35 +1,33 @@
-## Changelog : benefriches (30 derniers jours, au 22 septembre 2026)
+## Changelog : benefriches (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois-ci, bénéfriches a franchi une étape importante dans l'amélioration de l'expérience utilisateur avec un nouveau parcours d'accueil (onboarding) plus fluide et un assistant de modification de site nettement plus intuitif. La précision des analyses a également été renforcée par l'intégration de nouvelles données statistiques et l'actualisation des données foncières.
+Ce mois-ci, bénéfriches a franchi une étape importante dans l'amélioration de l'expérience utilisateur avec un nouveau parcours d'accueil (onboarding) et un assistant de mise à jour de site plus intuitif et sécurisé. Les capacités de simulation ont été enrichies par l'introduction d'un nouveau score de développement et une mise à jour majeure des données de référence (statistiques ANCT, données DVF et zonages urbains), garantissant des analyses d'impact plus précises et actualisées.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'expérience utilisateur (UX) :**
+- **Parcours utilisateur & Interface :**
     - Refonte complète du parcours d'onboarding avec un nouveau flux en 3 étapes.
-    - Modernisation de l'assistant de modification de site (wizard) : ajout d'un indicateur d'état de sauvegarde, d'avertissements en cas de modifications non enregistrées et d'une navigation plus cohérente.
-    - Ajout de points d'entrée directs pour "Modifier le site" depuis les pages de résumé et d'évaluation.
-- **Précision des données et des calculs :**
-    - Enrichissement des statistiques urbaines avec l'intégration des données de l'ANCT (Observatoire des territoires).
-    - Mise à jour des données DVF avec les transactions de 2025 et ajout des données relatives aux terrains.
-    - Affinement des algorithmes de calcul d'impact (zonage ABC) et optimisation des conditions de calcul pour éviter les résultats non significatifs.
-- **Corrections d'interface :**
-    - Amélioration de l'autocomplétion des adresses et de la gestion de la navigation lors de la saisie.
-    - Corrections de textes et de mise en forme dans les descriptions de sites et de sols.
+    - Amélioration de l'assistant de mise à jour des sites : ajout de sous-groupes, gestion de l'état de sauvegarde, avertissements en cas de modifications non enregistrées et possibilité de modifier les zones urbaines personnalisées.
+    - Ajout de liens de modification directe dans les étapes du résumé de site.
+- **Calculs & Données :**
+    - Intégration d'un nouveau "score de développement" calculé à partir des impacts du projet.
+    - Mise à jour massive des données de référence : intégration des statistiques de l'Observatoire des Territoires (ANCT), des transactions DVF 2025 et des nouveaux zonages urbains (ABC/ALDO).
+    - Optimisation des calculs d'impact (augmentation de la valeur foncière locale et kilomètres évités) selon les nouveaux critères de zonage.
+- **Corrections :**
+    - Correction de l'affichage des surfaces de zones humides dans les modales de régulation de l'eau.
+    - Amélioration de la gestion des contacts CRM (nettoyage automatique des caractères interdits dans les noms).
 
 ### Évolutions techniques
-- **Refonte de l'architecture front-end :**
-    - Migration massive des flux de création de sites (sites classiques, zones urbaines, sites express) vers un nouveau moteur de formulaires unifié (*wizard-form engine*).
-    - Optimisation de la gestion des modales d'impact via les paramètres d'URL.
-- **Évolutions de l'API et du backend :**
-    - Ajout d'un endpoint de mise à jour des sites (`PUT /sites/:siteId`).
-    - Amélioration de la robustesse de l'intégration CRM (gestion des erreurs, nettoyage des caractères spéciaux, synchronisation des contacts).
-    - Augmentation des limites de requêtes (*rate limiting*) pour améliorer la disponibilité.
-    - Mise en place d'un mécanisme de révocation des jetons d'authentification.
-- **Qualité et Tests :**
-    - Extension significative de la couverture de tests de bout en bout (E2E) sur les flux de mise à jour et d'inéligibilité.
-    - Introduction de tests de régression pour l'accessibilité (ARIA snapshots) et le comportement métier.
+- **Architecture & State Management :**
+    - Migration de la gestion d'état Redux dans l'application web (passage de `createSlice` à `createReducer`).
+    - Refactorisation de l'API pour aligner les fichiers de cas d'utilisation et d'adaptateurs sur les conventions du projet.
+- **Qualité & Tests :**
+    - Renforcement de la qualité du code via l'intégration d'Oxlint (nouvelles règles de convention API et de gestion des imports).
+    - Augmentation de la couverture de tests de bout en bout (E2E) sur les flux de mise à jour de site et les scénarios d'inéligibilité.
+- **Infrastructure & Intégration :**
+    - Amélioration de la robustesse de la connexion au CRM Connect (validation des configurations et récupération des contacts lors d'interruptions de service).
+    - Mise en place d'un script de prévisualisation autonome pour les emails de cycle de vie.
 
 ### Autres changements
-- **Documentation :** Fusion et simplification de la documentation des scripts API.
-- **SEO & Web :** Ajout des balises de vérification pour Google Search Console.
-- **Outils de développement :** Mise à jour des configurations pour les outils d'assistance au code (Claude/Codex).
+- **Documentation :** Mise à jour de la documentation technique concernant le nouveau référentiel du score de développement.
+- **Outils de développement :** Optimisation et configuration des agents IA (Codex/Claude) pour l'assistance au développement et la revue de code.
+- **Nettoyage :** Suppression de compétences et de scripts obsolètes dans les outils internes.
