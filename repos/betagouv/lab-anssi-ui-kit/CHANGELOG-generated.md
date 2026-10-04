@@ -1,22 +1,27 @@
-## Changelog : lab-anssi-ui-kit (30 derniers jours, au 30/09/2026)
+## Changelog : lab-anssi-ui-kit (30 derniers jours, au 1er octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a bénéficié d'une montée en maturité importante, axée sur la robustesse et la qualité du code. Outre l'ajout de nouveaux composants et l'amélioration de l'accessibilité, un travail conséquent a été réalisé pour renforcer la fiabilité des tests et la précision du typage TypeScript, garantissant ainsi une base plus stable pour les développeurs.
+Ce mois a été marqué par un effort important pour rendre les composants plus flexibles grâce à l'ajout de zones de contenu personnalisables (slots) et la possibilité de rendre de nombreuses propriétés optionnelles. Parallèlement, une refonte majeure de la qualité du code a été opérée pour renforcer la robustesse, le typage et la fiabilité de la bibliothèque.
 
 ### Évolutions fonctionnelles
-- **Nouveautés** : Ajout du composant `DsfrShare`.
-- **Accessibilité** : Amélioration de la visibilité du focus et correction d'un problème de boucle de focus dans les modales contenant des boutons imbriqués.
-- **Composants Lab** : Ajustements responsives pour le Bandeau de page (affichage mobile) et le Centre d'aide (positionnement des icônes).
-- **Composants DSFR** : Rendu de la propriété `disabled` réactive et correction du comportement du menu déroulant (`DsfrDropdown`).
-- **Icônes** : Ajout de l'icône "gamepad", compatibilité avec les styles DSFR et possibilité de personnaliser la taille des icônes.
-- **Interface** : Optimisation des espacements et des paddings dans le bloc fonctionnalité.
+- **Flexibilité accrue des composants :** Ajout massif de "slots" (zones de contenu personnalisables) et rendu de nombreuses propriétés optionnelles (titres, descriptions, labels) sur une large gamme de composants (LAB et DSFR), permettant une utilisation beaucoup plus souple.
+- **Nouveautés :** Introduction du composant `DsfrShare`.
+- **Améliorations de l'expérience utilisateur :**
+    - Correction de la gestion du focus dans les modales (boutons imbriqués).
+    - Correction de l'affichage mobile du `LabAnssiBandeauPage`.
+    - Optimisation des espacements (padding) et de la réactivité des composants (notamment l'état `disabled`).
+    - Amélioration de la cohérence visuelle des icônes et correction d'un bug de recherche dans le `DsfrDropdown`.
 
 ### Évolutions techniques
-- **Qualité et Typage** : Refonte majeure de la gestion des types (TypeScript) pour éliminer les `any` et corriger les erreurs `null/undefined`, ainsi qu'une optimisation de la configuration ESLint.
-- **Tests et Storybook** : Optimisation du workflow de test des stories, exclusion des exemples des tests et amélioration de la conformité des stories aux standards DSFR.
-- **CI/CD et Outillage** : Intégration de `svelte-check` pour la validation des types, mise en place de `lint-staged` et uniformisation des scripts de formatage (Prettier).
-- **Sécurité** : Correction d'une violation de la politique de sécurité de contenu (CSP) dans la navigation du header.
+- **Qualité et Typage :** 
+    - Renforcement de la robustesse via un typage plus strict (remplacement des `any` par des types explicites) et correction des erreurs de compilation `svelte-check`.
+    - Intégration de l'analyse statique (ESLint) et de `lint-staged` directement dans la chaîne de CI.
+- **Fiabilité de la distribution :** 
+    - Correction de la génération des fichiers de distribution dans le dossier `dist/`.
+    - Résolution des problèmes de désynchronisation entre le `package.json` et le lockfile.
+- **Optimisation CI/CD :** Simplification et optimisation des workflows de test pour Storybook.
+- **Sécurité :** Correction d'une violation de politique de sécurité de contenu (CSP) sur la navigation du header.
 
 ### Autres changements
-- Mise à jour de la documentation concernant le processus de release.
-- Plusieurs montées de version publiées (passage de la version 1.60.10 à 1.61.3).
+- **Versions :** Montée en version du projet de la v1.61.0 à la v1.61.3.
+- **Documentation :** Correction des chemins d'images dans les stories Storybook.
