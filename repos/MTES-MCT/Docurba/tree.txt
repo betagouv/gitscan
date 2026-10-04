@@ -56,7 +56,8 @@
 │   │   │   │       ├── collectivites_en_base.py
 │   │   │   │       ├── event_type_add_scope_pplh_ppilh.py
 │   │   │   │       ├── import_dgaln_zan_objects.py
-│   │   │   │       └── link_events_with_event_types.py
+│   │   │   │       ├── link_events_with_event_types.py
+│   │   │   │       └── populate_procedure_name_complement.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
@@ -113,16 +114,20 @@
 │   │   │   │   ├── 0053_alter_procedure_vaut_pdm_alter_procedure_vaut_plh_and_more.py
 │   │   │   │   ├── 0054_remove_sql_unused_functions.py
 │   │   │   │   ├── 0055_remove_procedure_status_functions.py
+│   │   │   │   ├── 0056_make_project_sharing_role_non_nullable.py
+│   │   │   │   ├── 0057_procedure_name_complement.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
 │   │   │   │       ├── create_table_procedures.sql
 │   │   │   │       ├── create_table_procedures_perimetres.sql
 │   │   │   │       ├── create_table_projects.sql
+│   │   │   │       ├── create_table_projects_sharing.sql
 │   │   │   │       ├── drop_table_doc_frise_events.sql
 │   │   │   │       ├── drop_table_procedures.sql
 │   │   │   │       ├── drop_table_procedures_perimetres.sql
-│   │   │   │       └── drop_table_projects.sql
+│   │   │   │       ├── drop_table_projects.sql
+│   │   │   │       └── drop_table_projects_sharing.sql
 │   │   │   ├── models.py
 │   │   │   └── utils.py
 │   │   ├── history
@@ -156,10 +161,8 @@
 │   │   │   ├── 404.html
 │   │   │   ├── admin
 │   │   │   │   ├── core
-│   │   │   │   │   ├── commune
-│   │   │   │   │   │   └── procedures.html
-│   │   │   │   │   └── event
-│   │   │   │   │       └── change_event_form.html
+│   │   │   │   │   └── commune
+│   │   │   │   │       └── procedures.html
 │   │   │   │   └── users
 │   │   │   │       └── change_user_form.html
 │   │   │   ├── core
@@ -194,9 +197,13 @@
 │   │   │   ├── api
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── views.py
+│   │   │   ├── consumed_apis
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── pipedrive.py
 │   │   │   ├── emails.py
 │   │   │   ├── enums.py
-│   │   │   └── password_validation.py
+│   │   │   ├── password_validation.py
+│   │   │   └── urls.py
 │   │   └── www
 │   │       ├── __init__.py
 │   │       ├── api
@@ -246,7 +253,8 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── test_event_type_add_scope_pplh_ppilh.py
-│   │   │   │       └── test_link_events_with_event_types.py
+│   │   │   │       ├── test_link_events_with_event_types.py
+│   │   │   │       └── test_populate_procedure_name_complement.py
 │   │   │   ├── test_admin.py
 │   │   │   └── test_models.py
 │   │   ├── history
@@ -263,6 +271,11 @@
 │   │   │   └── test_rotate_passwords_management_command.py
 │   │   ├── utils
 │   │   │   ├── __init__.py
+│   │   │   ├── consumed_apis
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── pipedrive_mocks.py
+│   │   │   │   └── test_pipedrive.py
+│   │   │   ├── test_urls.py
 │   │   │   └── test_validators.py
 │   │   └── www
 │   │       ├── __init__.py
@@ -845,7 +858,6 @@
 │   │   ├── matomo.js
 │   │   ├── mdParser.js
 │   │   ├── notifications.js
-│   │   ├── nuxt3api.js
 │   │   ├── pac.js
 │   │   ├── pdfMake.js
 │   │   ├── print.js
@@ -861,8 +873,6 @@
 │   │   ├── utils.js
 │   │   └── zanSurvey.js
 │   ├── scalingo.json
-│   ├── scripts
-│   │   └── 940_updateProceduresColPorteuse.mjs
 │   ├── server-middleware
 │   │   ├── Data
 │   │   │   ├── INSEE
@@ -1096,4 +1106,4 @@
 └── supabase
     ├── .gitignore
     └── config.toml
-221 directories, 919 files
+221 directories, 929 files
