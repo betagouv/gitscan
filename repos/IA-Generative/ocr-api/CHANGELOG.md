@@ -29,6 +29,58 @@
 - code clean
 - :art: change minio vars
 
+## [0.21.1](https://github.com/IA-Generative/ocr-api/compare/v0.21.0...v0.21.1) (2026-09-30)
+
+
+### Bug Fixes
+
+* **ci:** drop the YouTube SDK methods and make the paddle opencv install deterministic ([65f64ac](https://github.com/IA-Generative/ocr-api/commit/65f64ac19cb02aa217165742f1ec553ddd414e05))
+* **client:** upgrade libexpat in the nginx image (CVE-2026-93990) ([5641a9d](https://github.com/IA-Generative/ocr-api/commit/5641a9dfa3bf3588dd6869f5cf4e5bac1021cebd))
+* **docker:** drop the removed media group and directory from the paddle image ([933002c](https://github.com/IA-Generative/ocr-api/commit/933002c33e3d6df5f2c06c99fd82ce9f16d7ab17))
+
+## [0.21.1-rc](https://github.com/IA-Generative/ocr-api/compare/v0.21.0...v0.21.1-rc) (2026-09-30)
+
+
+### Bug Fixes
+
+* **ci:** drop the YouTube SDK methods and make the paddle opencv install deterministic ([7042087](https://github.com/IA-Generative/ocr-api/commit/7042087d6459be524f3015757e9f35d478babfd2))
+* **client:** upgrade libexpat in the nginx image (CVE-2026-93990) ([cc7c170](https://github.com/IA-Generative/ocr-api/commit/cc7c1709aecaffa982cb41932b27b53403afee35))
+* **docker:** drop the removed media group and directory from the paddle image ([38a875e](https://github.com/IA-Generative/ocr-api/commit/38a875e3d6ada314e7f1f3d9109366668bd89696))
+
+## [0.21.0](https://github.com/IA-Generative/ocr-api/compare/v0.20.2...v0.21.0) (2026-09-30)
+
+
+### Features
+
+* **purge:** periodic purge of old tasks via Celery Beat ([3ac5dee](https://github.com/IA-Generative/ocr-api/commit/3ac5dee726bc6c3dc20a224e5cee759177f67996))
+
+
+### Bug Fixes
+
+* **pipeline:** remove LLM-based OCR/form extraction entirely ([8f4d8c4](https://github.com/IA-Generative/ocr-api/commit/8f4d8c412ba2ef6be3ff2ff357fb3eed8b15e28f))
+
+
+### Code Refactoring
+
+* **purge:** schedule purge with a Celery crontab instead of a plain interval ([90b53f1](https://github.com/IA-Generative/ocr-api/commit/90b53f1d672067fdd64e54d8cb4bc3243a57a181))
+
+## [0.21.0-rc](https://github.com/IA-Generative/ocr-api/compare/v0.20.2...v0.21.0-rc) (2026-09-28)
+
+
+### Features
+
+* **purge:** periodic purge of old tasks via Celery Beat ([e0f17e0](https://github.com/IA-Generative/ocr-api/commit/e0f17e0f47296c09612429385bf7a968561f9a4d))
+
+
+### Bug Fixes
+
+* **pipeline:** remove LLM-based OCR/form extraction entirely ([55a2357](https://github.com/IA-Generative/ocr-api/commit/55a23578e57766109c3d15a474467f7b18bb78fa))
+
+
+### Code Refactoring
+
+* **purge:** schedule purge with a Celery crontab instead of a plain interval ([1e2213c](https://github.com/IA-Generative/ocr-api/commit/1e2213c96703f7c4e333c2fba7b8d72c25a951a8))
+
 ## [0.20.2](https://github.com/IA-Generative/ocr-api/compare/v0.20.1...v0.20.2) (2026-09-16)
 
 
