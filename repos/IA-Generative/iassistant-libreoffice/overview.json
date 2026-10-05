@@ -1,40 +1,47 @@
 {
   "url": "https://github.com/IA-Generative/iassistant-libreoffice",
   "name": "iassistant-libreoffice",
-  "description": "Une extension pour LibreOffice (Writer et Calc) intégrant des fonctionnalités d'intelligence artificielle générative pour l'aide à la rédaction, la reformulation et l'analyse de données.",
+  "description": "Assistant IA pour LibreOffice permettant d'automatiser la rédaction et l'analyse de données dans Writer et Calc. Il propose des fonctionnalités de reformulation, de résumé et de génération de formules complexes.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
     "Simulation & Calcul",
     "Statistiques & Rapports",
-    "Suivi & Traçabilité"
+    "Interface utilisateur & Design"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "LibreOffice",
-    "OpenAI-compatible API",
+    "OpenAI API",
     "OpenTelemetry",
-    "Keycloak"
+    "Keycloak",
+    "pytest",
+    "ruff"
   ],
   "components": [
     "Python (scripts & backend)",
     "Intelligence Artificielle / ML",
     "Scripts & Utilitaires",
+    "Tests",
     "Intégrations services externes"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
       "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "pytest",
-  "lastActivity": "2026-09-02T16:38:47+02:00",
-  "status": "maintained",
+  "tests": "Pytest (unitaires et intégration)",
+  "workflows": [
+    "CI/CD (tests unitaires, intégration et build smoke)"
+  ],
+  "lastActivity": "2026-10-02T18:10:35+02:00",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
@@ -42,6 +49,7 @@
     "Python",
     "NLP & ML",
     "Plugins & Extensions",
-    "Documentation"
+    "Documentation",
+    "Git & DevOps"
   ]
 }

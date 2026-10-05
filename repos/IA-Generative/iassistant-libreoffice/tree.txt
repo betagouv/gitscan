@@ -2,6 +2,9 @@
 ├── .claude
 │   └── settings.json
 ├── .gitattributes
+├── .github
+│   └── workflows
+│       └── ci.yml
 ├── .gitignore
 ├── CLAUDE.md
 ├── README.md
@@ -37,7 +40,9 @@
 │   ├── TELEMETRY.md
 │   ├── TEST-HUMAIN-2026-07-26.md
 │   ├── deploy-auto-update-report.md
-│   └── notice-utilisateur.md
+│   ├── donnees-locales.md
+│   ├── notice-utilisateur.md
+│   └── update-natif-libreoffice.md
 ├── main.py
 ├── oxt
 │   ├── Accelerators.xcu
@@ -129,6 +134,7 @@
 │   ├── bump-version.sh
 │   ├── deploy-release.sh
 │   ├── dev-launch.sh
+│   ├── inject_update_feed.py
 │   ├── smoke-deploy.sh
 │   └── test-update.sh
 ├── src
@@ -167,7 +173,9 @@
 │       │   │   ├── calc_tools.py
 │       │   │   └── writer_tools.py
 │       │   └── ui_thread.py
+│       ├── credentials.py
 │       ├── entrypoint.py
+│       ├── feed_rewrite.py
 │       ├── formatting
 │       │   ├── __init__.py
 │       │   ├── ast_nodes.py
@@ -205,6 +213,8 @@
 │       │   └── toolbar-transform.png
 │       ├── idl
 │       │   └── XPromptFunction.idl
+│       ├── local_config.py
+│       ├── log_setup.py
 │       ├── menu_actions
 │       │   ├── __init__.py
 │       │   ├── calc.py
@@ -226,6 +236,7 @@
     │   └── sample_calc.ods
     ├── integration
     │   ├── __init__.py
+    │   ├── conftest.py
     │   ├── mock_http.py
     │   ├── test_full_enrollment_flow.py
     │   └── test_telemetry_wire_contract.py
@@ -278,24 +289,41 @@
         ├── test_calc_menu_actions.py
         ├── test_calc_prompt_function.py
         ├── test_config_atomic_write.py
+        ├── test_config_cache_secrets.py
         ├── test_config_fetch_perf.py
+        ├── test_credentials.py
+        ├── test_data_paths.py
         ├── test_documentation_url.py
         ├── test_enrollment.py
+        ├── test_feed_rewrite.py
         ├── test_formatting_html.py
         ├── test_formatting_markdown.py
         ├── test_formatting_uno_writer.py
+        ├── test_install_changes.py
         ├── test_llm_relay_error.py
         ├── test_llm_token_auth.py
+        ├── test_local_config.py
+        ├── test_local_config_migration.py
+        ├── test_log_hygiene.py
+        ├── test_log_setup.py
         ├── test_models_fetch.py
+        ├── test_native_route.py
+        ├── test_native_update.py
         ├── test_otel_attributes.py
         ├── test_prompts_calc_path.py
         ├── test_pump_events_safety.py
+        ├── test_reload_config.py
+        ├── test_secret_routing.py
         ├── test_security_flow.py
         ├── test_set_config.py
+        ├── test_settings_token_field.py
+        ├── test_storage_wiring.py
         ├── test_summarize_writer.py
+        ├── test_telemetry_defaults.py
         ├── test_token_logic.py
+        ├── test_uninstall_wipe.py
         ├── test_update_blocked.py
         ├── test_update_directive.py
         ├── test_update_features.py
         └── test_user_agent.py
-33 directories, 267 files
+35 directories, 293 files
