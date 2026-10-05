@@ -13,20 +13,15 @@ https://beta.gouv.fr/startups/csplab.html
 
 Le monorepo est organisé en services :
 
-- **dev** : Service pour les outils de développement
 - **notebook** : Service Jupyter pour l'analyse et le prototypage
 
 ### Prérequis
 
-- [mise](https://mise.jdx.dev/getting-started.html) : lanceur de tâches du repo ([docs/mise.md](docs/mise.md)), il installe et épingle lui-même les outils (node, pnpm, uv).
+- [mise](https://mise.jdx.dev/getting-started.html) : lanceur de tâches du repo ([docs/mise.md](docs/mise.md)), il installe et épingle lui-même les outils déclarés dans la section `[tools]` de `mise.toml`.
 - Docker + Docker Compose (Colima, Docker Desktop, OrbStack…)
 - [scw](https://www.scaleway.com/en/docs/scaleway-cli/quickstart/), installé par mise : les secrets des services sont lus dans Scaleway Secret Manager. `scw init` enregistre une [clé d'API](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) et le projet CSPLab (identifiants fournis par l'équipe) dans `~/.config/scw/config.yaml`.
 - [poppler](https://poppler.freedesktop.org/) : requis pour le service OCR en local (géré automatiquement en production via l'`Aptfile`)
 - [tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html) avec le pack de langue française (`tesseract-lang` sur macOS, `tesseract-ocr-fra` sur Linux) — requis pour le service OCR en local (géré automatiquement en production via l'`Aptfile`)
-
-### Optionnel
-
-- [commitizen](https://commitizen-tools.github.io/commitizen/)
 
 ## Installation de l'environnement de dev
 
@@ -51,10 +46,10 @@ Pour personnaliser Docker Compose (ex : changer les ports), voir [docs/docker_co
 ```bash
 mise run lint:fix
 git add .
-bin/cz commit
+git commit
 ```
 
-`bin/cz` encadre la rédaction de message de commit au format du projet ; `mise run lint` vérifie le tout avant de pousser.
+Le hook commit-msg vérifie le format de chaque message de commit, et la CI celui du titre de PR. `mise x -- cz commit`, facultatif, remplace `git commit` en posant les questions qui composent le message. `mise run lint` vérifie le tout avant de pousser.
 
 ### Format des messages de commit
 
@@ -64,10 +59,26 @@ Les commits et les titres de PR suivent le format [Conventional Commits](https:/
 <type>(<scope>): <subject>
 ```
 
-Types autorisés : `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`. Le scope est généralement le service ou la fonctionnalité concernée.
+Types autorisés : `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`. Le changelog range les entrées par scope ; la liste des scopes est donc fermée, et un scope hors liste est refusé au commit comme au titre de PR :
+
+| Scope | Périmètre |
+|---|---|
+| `recruteur` | Espace recruteur |
+| `candidatures` | Candidatures et parcours candidat |
+| `messages` | Messagerie |
+| `identite` | Authentification et comptes |
+| `ingestion` | Service d'ingestion |
+| `referentiel` | Données de référence |
+| `ocr` | Service OCR |
+| `notebook` | Notebooks d'analyse |
+| `design-system` | Composants d'interface génériques, hors domaine fonctionnel |
+| `tooling` | Outillage de développement, CI |
+| `release` | Versions et changelog |
+
+Un changement technique (`web`, `front`, `ui`…) prend le scope du domaine fonctionnel qu'il touche ; un composant d'interface générique, utilisé par plusieurs domaines, prend `design-system`. La liste est déclarée deux fois dans `cz.toml` (le motif `schema_pattern` et les choix de la question `scope`) : modifier les deux ensemble.
 
 **Exemples :**
 
-- `feat(candidate-infrastructure): ajoute le support de l'authentification HTTP basic`
-- `fix(api): corrige un bug d'authentification`
-- `docs(readme): met à jour le guide d'installation`
+- `feat(identite): ajoute le support de l'authentification HTTP basic`
+- `fix(recruteur): corrige le filtre des offres`
+- `docs(tooling): met à jour le guide d'installation`

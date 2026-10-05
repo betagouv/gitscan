@@ -10,17 +10,20 @@
 │   │   │   └── action.yml
 │   │   ├── scalingo-deploy
 │   │   │   └── action.yml
+│   │   ├── sentry-release
+│   │   │   └── action.yml
 │   │   └── setup-mise
 │   │       └── action.yml
 │   ├── auto_assign.yml
 │   ├── pull_request_template.md
+│   ├── scripts
+│   │   └── storybook-review-comment.mjs
 │   └── workflows
 │       ├── auto_assign.yml
 │       ├── chore.yml
 │       ├── chore_create_pr_for_changelog.yml
 │       ├── chore_create_release.yml
 │       ├── chore_require_pr_fields.yml
-│       ├── dev.yml
 │       ├── ingestion.yml
 │       ├── lib_version_bump.yml
 │       ├── libs.yml
@@ -30,7 +33,6 @@
 │       ├── storybook_pages.yml
 │       └── web.yml
 ├── .gitignore
-├── .pre-commit-config.yaml
 ├── .prettierrc.json
 ├── .vscode
 │   ├── extensions.json
@@ -38,9 +40,7 @@
 ├── LICENSE
 ├── README.md
 ├── bin
-│   ├── cz
-│   ├── git-commit-msg-hook
-│   ├── git-pre-commit-hook
+│   ├── compose-up
 │   ├── manage
 │   ├── publish-notebooks
 │   ├── restore-web-db
@@ -48,11 +48,7 @@
 │   └── upgrade-deps
 ├── csplab-frontend.code-workspace
 ├── csplab.code-workspace
-├── dev
-│   ├── .python-version
-│   ├── mise.toml
-│   ├── pyproject.toml
-│   └── uv.lock
+├── cz.toml
 ├── docker-compose.yml
 ├── docs
 │   ├── ADR
@@ -94,6 +90,7 @@
 │   ├── redis-example
 │   ├── rustfs-example
 │   └── web-example
+├── hk.pkl
 ├── infra
 │   └── postgres
 │       ├── create-ingestion-db.sql
@@ -138,7 +135,8 @@
 │   │   │   ├── metier.py
 │   │   │   ├── offer.py
 │   │   │   ├── organisme.py
-│   │   │   └── source.py
+│   │   │   ├── source.py
+│   │   │   └── talentsoft_organisme.py
 │   │   ├── events
 │   │   │   ├── __init__.py
 │   │   │   └── organisme_events.py
@@ -239,8 +237,10 @@
     │   │       ├── import_offers.py
     │   │       ├── import_organismes.py
     │   │       ├── load_sources.py
+    │   │       ├── prepare_talentsoft_organisations.py
     │   │       ├── publish_offer.py
     │   │       ├── publish_organismes.py
+    │   │       ├── publish_talentsoft_organisations.py
     │   │       ├── save_raw_offer.py
     │   │       └── save_webhook.py
     │   ├── bin
@@ -252,6 +252,7 @@
     │   │   ├── import_organismes.py
     │   │   ├── inject_scaleway_env.sh
     │   │   ├── organismes_pipeline.py
+    │   │   ├── prepare_publish_talentsoft_organisations.py
     │   │   ├── run_migrations.sh
     │   │   ├── start_flower.sh
     │   │   ├── start_web.sh
@@ -267,6 +268,7 @@
     │   │   │   ├── niveaux_d_experience.csv
     │   │   │   ├── niveaux_de_diplome.csv
     │   │   │   ├── niveaux_de_langue.csv
+    │   │   │   ├── organisations.csv
     │   │   │   ├── oui_non.csv
     │   │   │   ├── pays.csv
     │   │   │   ├── regions.csv
@@ -275,7 +277,8 @@
     │   │   │   ├── types_de_contrat.csv
     │   │   │   ├── verses.csv
     │   │   │   └── zones_geo.csv
-    │   │   └── categories_entite_geographique_exercice.csv
+    │   │   ├── categories_entite_geographique_exercice.csv
+    │   │   └── statuts_juridiques_publics.csv
     │   ├── domain
     │   │   ├── __init__.py
     │   │   ├── entities
@@ -297,6 +300,8 @@
     │   │   │   ├── publish_offer_gateway.py
     │   │   │   ├── publish_offer_input.py
     │   │   │   ├── publish_organismes_gateway.py
+    │   │   │   ├── publish_talentsoft_organismes_gateway.py
+    │   │   │   ├── siret_lookup_gateway.py
     │   │   │   └── sources_gateway.py
     │   │   ├── repositories
     │   │   │   ├── __init__.py
@@ -332,14 +337,17 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── offer_upsert_payload.py
     │   │   │   │   ├── organisme_upsert_payload.py
-    │   │   │   │   └── talentsoft_dtos.py
+    │   │   │   │   ├── talentsoft_dtos.py
+    │   │   │   │   └── talentsoft_organisme_upsert_payload.py
     │   │   │   ├── finess_organisme_gateway.py
     │   │   │   ├── gipcdg_organisme_gateway.py
+    │   │   │   ├── recherche_entreprises_gateway.py
     │   │   │   ├── talentsoft_client.py
     │   │   │   ├── web_archive_gateway.py
     │   │   │   ├── web_offers_by_source_gateway.py
     │   │   │   ├── web_publish_offer_gateway.py
     │   │   │   ├── web_publish_organismes_gateway.py
+    │   │   │   ├── web_publish_talentsoft_organismes_gateway.py
     │   │   │   └── web_sources_gateway.py
     │   │   ├── gateways
     │   │   │   ├── __init__.py
@@ -347,6 +355,7 @@
     │   │   │   ├── lambert93.py
     │   │   │   ├── offers_cleaner.py
     │   │   │   ├── organismes_cleaner.py
+    │   │   │   ├── rate_limiter.py
     │   │   │   └── transcoding.py
     │   │   ├── models
     │   │   │   ├── __init__.py
@@ -369,7 +378,8 @@
     │   │       ├── 20260606_0000_add_archived_at_to_raw_offers.py
     │   │       ├── 20260610_0751_merge_talentsoft_webhooks_and_archived_.py
     │   │       ├── 20260617_0000_add_action_type_to_webhooks.py
-    │   │       └── 20260819_0000_add_raw_organismes.py
+    │   │       ├── 20260819_0000_add_raw_organismes.py
+    │   │       └── 20260918_0000_add_dila_siret_found_to_raw_organismes.py
     │   ├── mise.ci.toml
     │   ├── mise.toml
     │   ├── presentation
@@ -390,6 +400,7 @@
     │   │   │   ├── test_archive_offer_usecase.py
     │   │   │   ├── test_clean_raw_offer_usecase.py
     │   │   │   ├── test_clean_raw_organismes_usecase.py
+    │   │   │   ├── test_flower_proxy.py
     │   │   │   ├── test_health.py
     │   │   │   ├── test_import_organismes_usecase.py
     │   │   │   ├── test_load_sources_usecase.py
@@ -434,9 +445,13 @@
     │   │       ├── test_load_sources_usecase.py
     │   │       ├── test_main.py
     │   │       ├── test_organismes_cleaner.py
+    │   │       ├── test_prepare_talentsoft_organisations_usecase.py
     │   │       ├── test_process_webhook_task.py
     │   │       ├── test_publish_offer_usecase.py
     │   │       ├── test_publish_organismes_usecase.py
+    │   │       ├── test_publish_talentsoft_organisations_usecase.py
+    │   │       ├── test_rate_limiter.py
+    │   │       ├── test_recherche_entreprises_gateway.py
     │   │       ├── test_save_raw_offer_usecase.py
     │   │       ├── test_save_webhook_usecase.py
     │   │       ├── test_sentry.py
@@ -444,7 +459,8 @@
     │   │       ├── test_talentsoft_client_repository.py
     │   │       ├── test_value_objects.py
     │   │       ├── test_web_offers_by_source_gateway.py
-    │   │       └── test_web_publish_offer_gateway.py
+    │   │       ├── test_web_publish_offer_gateway.py
+    │   │       └── test_web_publish_talentsoft_organismes_gateway.py
     │   └── uv.lock
     ├── notebook
     │   ├── .python-version
@@ -549,6 +565,7 @@
         │   │   ├── __init__.py
         │   │   ├── context_services
         │   │   │   ├── __init__.py
+        │   │   │   ├── login_log.py
         │   │   │   └── organisme_permission_service.py
         │   │   ├── dtos
         │   │   │   ├── __init__.py
@@ -568,6 +585,9 @@
         │   │       └── update_organisme.py
         │   ├── ingestion
         │   │   ├── __init__.py
+        │   │   ├── errors
+        │   │   │   ├── __init__.py
+        │   │   │   └── application_errors_ingestion.py
         │   │   ├── interfaces
         │   │   │   ├── __init__.py
         │   │   │   ├── archive_offer_by_reference_input.py
@@ -580,6 +600,10 @@
         │   │   │   ├── supprimer_organismes_input.py
         │   │   │   ├── upsert_offers_input.py
         │   │   │   └── upsert_organismes_input.py
+        │   │   ├── services
+        │   │   │   ├── __init__.py
+        │   │   │   ├── talentsoft_organisme_detail.py
+        │   │   │   └── upsert_talentsoft_organismes.py
         │   │   └── usecases
         │   │       ├── __init__.py
         │   │       ├── archive_offer_by_reference.py
@@ -598,11 +622,12 @@
         │       ├── __init__.py
         │       ├── context_services
         │       │   ├── __init__.py
+        │       │   ├── candidature_agent_service.py
+        │       │   ├── organisme_agent_service.py
         │       │   └── recrutement_agent_service.py
         │       ├── dtos
         │       │   ├── __init__.py
         │       │   ├── agent_organisme_read_models.py
-        │       │   ├── note_read_models.py
         │       │   ├── recrutement_read_models.py
         │       │   └── recrutement_request.py
         │       ├── errors
@@ -610,20 +635,29 @@
         │       ├── services
         │       │   ├── __init__.py
         │       │   ├── add_recrutement_agent.py
+        │       │   ├── candidature_detail.py
+        │       │   ├── conversation_stubs.py
+        │       │   ├── create_conversation.py
+        │       │   ├── create_note.py
+        │       │   ├── delete_note.py
+        │       │   ├── list_conversations.py
+        │       │   ├── list_documents.py
         │       │   ├── list_motifs_refus.py
+        │       │   ├── list_notes.py
         │       │   ├── list_recrutement_agents.py
-        │       │   ├── note_query_service_interface.py
         │       │   ├── organisme_agent_query_service_interface.py
+        │       │   ├── read_conversation.py
+        │       │   ├── read_document.py
         │       │   ├── recrutement_query_service_interface.py
+        │       │   ├── reply_conversation.py
         │       │   ├── revoke_recrutement_agent.py
         │       │   ├── search_agent_by_email.py
         │       │   ├── set_recrutements_responsable.py
+        │       │   ├── update_note.py
         │       │   └── update_recrutement_agent.py
         │       └── usecases
         │           ├── attach_organisme_agent.py
         │           ├── changer_etape_candidatures.py
-        │           ├── creer_note.py
-        │           ├── editer_note.py
         │           ├── get_organisme_recruteur.py
         │           ├── get_recrutement_detail.py
         │           ├── get_recrutement_etapes.py
@@ -633,9 +667,7 @@
         │           ├── initialize_organisme_steps.py
         │           ├── list_organisme_agents.py
         │           ├── lister_mes_recrutements.py
-        │           ├── lister_notes_candidature.py
         │           ├── revoke_organisme_agent.py
-        │           ├── supprimer_note.py
         │           ├── update_organisme_agent.py
         │           ├── update_organisme_steps.py
         │           └── update_recrutement_etapes.py
@@ -653,6 +685,7 @@
         │   ├── logger_names.py
         │   ├── settings
         │   │   ├── __init__.py
+        │   │   ├── _keys.py
         │   │   ├── _sentry.py
         │   │   ├── base.py
         │   │   ├── dev.py
@@ -782,7 +815,6 @@
         │       │   ├── __init__.py
         │       │   ├── candidature_recruteur.py
         │       │   ├── etape_recrutement.py
-        │       │   ├── note.py
         │       │   ├── organisme_recruteur.py
         │       │   └── recrutement.py
         │       ├── errors
@@ -796,13 +828,11 @@
         │       │   ├── __init__.py
         │       │   ├── candidature_events.py
         │       │   ├── etape_events.py
-        │       │   ├── note_events.py
         │       │   ├── organisme_recruteur_events.py
         │       │   └── recrutement_events.py
         │       ├── repositories
         │       │   ├── __init__.py
         │       │   ├── candidature_recruteur_repository_interface.py
-        │       │   ├── note_repository_interface.py
         │       │   ├── organisme_agent_repository_interface.py
         │       │   ├── organisme_repository_interface.py
         │       │   ├── recrutement_agent_repository_interface.py
@@ -867,6 +897,7 @@
         │   │   │   │   │   └── CspCheckbox.vue
         │   │   │   │   ├── CspCheckboxGroup
         │   │   │   │   │   ├── CspCheckboxGroup.stories.ts
+        │   │   │   │   │   ├── CspCheckboxGroup.test.ts
         │   │   │   │   │   └── CspCheckboxGroup.vue
         │   │   │   │   ├── CspCombobox
         │   │   │   │   │   ├── CspCombobox.stories.ts
@@ -878,15 +909,19 @@
         │   │   │   │   │   ├── CspDataTable.vue
         │   │   │   │   │   ├── cells
         │   │   │   │   │   │   └── ElapsedDaysCell.vue
+        │   │   │   │   │   ├── table-sizes.scss
         │   │   │   │   │   └── table.ts
         │   │   │   │   ├── CspDialog
         │   │   │   │   │   ├── CspDialog.stories.ts
+        │   │   │   │   │   ├── CspDialog.test.ts
         │   │   │   │   │   └── CspDialog.vue
         │   │   │   │   ├── CspDrawer
         │   │   │   │   │   ├── CspDrawer.stories.ts
+        │   │   │   │   │   ├── CspDrawer.test.ts
         │   │   │   │   │   └── CspDrawer.vue
         │   │   │   │   ├── CspDropdownMenu
         │   │   │   │   │   ├── CspDropdownMenu.stories.ts
+        │   │   │   │   │   ├── CspDropdownMenu.types.ts
         │   │   │   │   │   └── CspDropdownMenu.vue
         │   │   │   │   ├── CspEmptyState
         │   │   │   │   │   ├── CspEmptyState.stories.ts
@@ -894,11 +929,15 @@
         │   │   │   │   ├── CspErrorState
         │   │   │   │   │   ├── CspErrorState.stories.ts
         │   │   │   │   │   └── CspErrorState.vue
+        │   │   │   │   ├── CspFiltersDrawer
+        │   │   │   │   │   ├── CspFiltersDrawer.stories.ts
+        │   │   │   │   │   └── CspFiltersDrawer.vue
         │   │   │   │   ├── CspIcon
         │   │   │   │   │   ├── CspIcon.stories.ts
         │   │   │   │   │   └── CspIcon.vue
         │   │   │   │   ├── CspInput
         │   │   │   │   │   ├── CspInput.stories.ts
+        │   │   │   │   │   ├── CspInput.test.ts
         │   │   │   │   │   └── CspInput.vue
         │   │   │   │   ├── CspMeta
         │   │   │   │   │   ├── CspMeta.stories.ts
@@ -917,16 +956,26 @@
         │   │   │   │   │   └── CspRadio.vue
         │   │   │   │   ├── CspRadioGroup
         │   │   │   │   │   ├── CspRadioGroup.stories.ts
+        │   │   │   │   │   ├── CspRadioGroup.test.ts
         │   │   │   │   │   └── CspRadioGroup.vue
+        │   │   │   │   ├── CspSearchBar
+        │   │   │   │   │   ├── CspSearchBar.stories.ts
+        │   │   │   │   │   ├── CspSearchBar.test.ts
+        │   │   │   │   │   └── CspSearchBar.vue
         │   │   │   │   ├── CspSegmentedControl
         │   │   │   │   │   ├── CspSegmentedControl.stories.ts
         │   │   │   │   │   └── CspSegmentedControl.vue
         │   │   │   │   ├── CspSelect
         │   │   │   │   │   ├── CspSelect.stories.ts
+        │   │   │   │   │   ├── CspSelect.test.ts
         │   │   │   │   │   └── CspSelect.vue
         │   │   │   │   ├── CspSeparator
         │   │   │   │   │   ├── CspSeparator.stories.ts
         │   │   │   │   │   └── CspSeparator.vue
+        │   │   │   │   ├── CspSequenceNav
+        │   │   │   │   │   ├── CspSequenceNav.stories.ts
+        │   │   │   │   │   ├── CspSequenceNav.test.ts
+        │   │   │   │   │   └── CspSequenceNav.vue
         │   │   │   │   ├── CspSkeleton
         │   │   │   │   │   ├── CspSkeleton.stories.ts
         │   │   │   │   │   ├── CspSkeleton.vue
@@ -961,15 +1010,20 @@
         │   │   │   │   │   └── useCspTagGroup.ts
         │   │   │   │   ├── CspTextarea
         │   │   │   │   │   ├── CspTextarea.stories.ts
+        │   │   │   │   │   ├── CspTextarea.test.ts
         │   │   │   │   │   └── CspTextarea.vue
         │   │   │   │   ├── CspToast
         │   │   │   │   │   ├── CspToast.stories.ts
         │   │   │   │   │   ├── CspToast.vue
         │   │   │   │   │   ├── CspToastProvider.vue
+        │   │   │   │   │   ├── CspToaster.test.ts
         │   │   │   │   │   └── CspToaster.vue
-        │   │   │   │   └── CspTooltip
-        │   │   │   │       ├── CspTooltip.stories.ts
-        │   │   │   │       └── CspTooltip.vue
+        │   │   │   │   ├── CspTooltip
+        │   │   │   │   │   ├── CspTooltip.stories.ts
+        │   │   │   │   │   └── CspTooltip.vue
+        │   │   │   │   └── CspUnsavedChangesDialog
+        │   │   │   │       ├── CspUnsavedChangesDialog.stories.ts
+        │   │   │   │       └── CspUnsavedChangesDialog.vue
         │   │   │   └── layout
         │   │   │       ├── CspAppShell
         │   │   │       │   ├── CspAppShell.types.ts
@@ -983,6 +1037,7 @@
         │   │   │       └── CspSidebar
         │   │   │           ├── CspSidebar.stories.ts
         │   │   │           ├── CspSidebar.vue
+        │   │   │           ├── CspSidebarDropdown.vue
         │   │   │           ├── CspSidebarGroup.vue
         │   │   │           ├── CspSidebarItem.vue
         │   │   │           ├── CspSidebarLogo.vue
@@ -998,6 +1053,8 @@
         │   │   │   │   ├── useMinimumPending.test.ts
         │   │   │   │   └── useMinimumPending.ts
         │   │   │   ├── data
+        │   │   │   │   ├── useTableSelection.test.ts
+        │   │   │   │   ├── useTableSelection.ts
         │   │   │   │   ├── useTextSearch.test.ts
         │   │   │   │   └── useTextSearch.ts
         │   │   │   ├── dnd
@@ -1007,7 +1064,9 @@
         │   │   │   ├── navigation
         │   │   │   │   ├── tabs.ts
         │   │   │   │   ├── useRouteTab.test.ts
-        │   │   │   │   └── useRouteTab.ts
+        │   │   │   │   ├── useRouteTab.ts
+        │   │   │   │   ├── useUnsavedChanges.test.ts
+        │   │   │   │   └── useUnsavedChanges.ts
         │   │   │   ├── storage
         │   │   │   │   ├── useDraft.test.ts
         │   │   │   │   └── useDraft.ts
@@ -1016,6 +1075,10 @@
         │   │   │       ├── useColorMode.ts
         │   │   │       ├── useDisclosure.test.ts
         │   │   │       ├── useDisclosure.ts
+        │   │   │       ├── useMediaQuery.test.ts
+        │   │   │       ├── useMediaQuery.ts
+        │   │   │       ├── useRequest.test.ts
+        │   │   │       ├── useRequest.ts
         │   │   │       ├── useSidebar.test.ts
         │   │   │       ├── useSidebar.ts
         │   │   │       ├── useToast.test.ts
@@ -1026,22 +1089,47 @@
         │   │   │   │   ├── api.ts
         │   │   │   │   ├── columns.ts
         │   │   │   │   ├── components
+        │   │   │   │   │   ├── CandidatureActivites.test.ts
+        │   │   │   │   │   ├── CandidatureActivites.vue
+        │   │   │   │   │   ├── CandidatureActivitesList.vue
+        │   │   │   │   │   ├── CandidatureCv.test.ts
+        │   │   │   │   │   ├── CandidatureCv.vue
+        │   │   │   │   │   ├── CandidatureDocuments.test.ts
+        │   │   │   │   │   ├── CandidatureDocuments.vue
+        │   │   │   │   │   ├── CandidatureHistorique.test.ts
+        │   │   │   │   │   ├── CandidatureHistorique.vue
+        │   │   │   │   │   ├── CandidatureKanbanCard.test.ts
         │   │   │   │   │   ├── CandidatureKanbanCard.vue
         │   │   │   │   │   ├── CandidatureKanbanColumn.vue
+        │   │   │   │   │   ├── CandidatureNoteForm.test.ts
+        │   │   │   │   │   ├── CandidatureNoteForm.vue
+        │   │   │   │   │   ├── CandidatureNotes.test.ts
+        │   │   │   │   │   ├── CandidatureNotes.vue
         │   │   │   │   │   ├── CandidaturesFiltersDrawer.vue
         │   │   │   │   │   ├── CandidaturesKanbanBoard.vue
         │   │   │   │   │   ├── CandidaturesViewSwitch.vue
         │   │   │   │   │   ├── ChangerEtapeDrawer.vue
+        │   │   │   │   │   ├── ChangerEtapePopover.test.ts
+        │   │   │   │   │   ├── ChangerEtapePopover.vue
+        │   │   │   │   │   ├── RefusCandidatureDialog.test.ts
+        │   │   │   │   │   ├── RefusCandidatureDialog.vue
         │   │   │   │   │   ├── SelectionActionBar.vue
         │   │   │   │   │   └── cells
         │   │   │   │   │       └── EtapeRecrutementCell.vue
         │   │   │   │   ├── composables
+        │   │   │   │   │   ├── useCandidatureActivites.ts
+        │   │   │   │   │   ├── useCandidatureDetail.ts
+        │   │   │   │   │   ├── useCandidatureDocuments.ts
+        │   │   │   │   │   ├── useCandidatureNavigation.ts
+        │   │   │   │   │   ├── useCandidatureNotes.ts
         │   │   │   │   │   ├── useCandidatures.test.ts
         │   │   │   │   │   ├── useCandidatures.ts
         │   │   │   │   │   ├── useCandidaturesFilters.test.ts
         │   │   │   │   │   ├── useCandidaturesFilters.ts
+        │   │   │   │   │   ├── useEtapeChange.ts
         │   │   │   │   │   ├── useKanbanSelection.test.ts
-        │   │   │   │   │   └── useKanbanSelection.ts
+        │   │   │   │   │   ├── useKanbanSelection.ts
+        │   │   │   │   │   └── useRefusCandidature.ts
         │   │   │   │   ├── constants
         │   │   │   │   │   └── candidature.ts
         │   │   │   │   ├── format.ts
@@ -1051,11 +1139,18 @@
         │   │   │   │   ├── utils
         │   │   │   │   │   ├── candidat.test.ts
         │   │   │   │   │   ├── candidat.ts
+        │   │   │   │   │   ├── file.ts
         │   │   │   │   │   ├── filters.test.ts
-        │   │   │   │   │   └── filters.ts
+        │   │   │   │   │   ├── filters.ts
+        │   │   │   │   │   ├── position.test.ts
+        │   │   │   │   │   └── position.ts
         │   │   │   │   └── views
+        │   │   │   │       ├── CandidaturePanelView.test.ts
+        │   │   │   │       ├── CandidaturePanelView.vue
+        │   │   │   │       ├── CandidaturesKanbanView.test.ts
         │   │   │   │       ├── CandidaturesKanbanView.vue
         │   │   │   │       ├── CandidaturesListeView.vue
+        │   │   │   │       ├── CandidaturesView.test.ts
         │   │   │   │       └── CandidaturesView.vue
         │   │   │   ├── equipe-recrutement
         │   │   │   │   ├── api.ts
@@ -1063,6 +1158,7 @@
         │   │   │   │   ├── components
         │   │   │   │   │   ├── AjoutMembreEquipeDrawer.test.ts
         │   │   │   │   │   ├── AjoutMembreEquipeDrawer.vue
+        │   │   │   │   │   ├── EquipeRecrutementSection.test.ts
         │   │   │   │   │   ├── EquipeRecrutementSection.vue
         │   │   │   │   │   └── cells
         │   │   │   │   │       └── MembreActionsCell.vue
@@ -1091,12 +1187,37 @@
         │   │   │   │   ├── types.ts
         │   │   │   │   └── views
         │   │   │   │       └── OffreEtapesRecrutementView.vue
+        │   │   │   ├── messages
+        │   │   │   │   ├── api.ts
+        │   │   │   │   ├── attachments.ts
+        │   │   │   │   ├── components
+        │   │   │   │   │   ├── ConversationThread.test.ts
+        │   │   │   │   │   ├── ConversationThread.vue
+        │   │   │   │   │   ├── ConversationsList.vue
+        │   │   │   │   │   ├── MessageAttachments.vue
+        │   │   │   │   │   ├── MessageComposer.test.ts
+        │   │   │   │   │   ├── MessageComposer.vue
+        │   │   │   │   │   ├── MessagesSection.test.ts
+        │   │   │   │   │   ├── MessagesSection.vue
+        │   │   │   │   │   ├── NewConversationForm.test.ts
+        │   │   │   │   │   └── NewConversationForm.vue
+        │   │   │   │   ├── composables
+        │   │   │   │   │   ├── useConversationMessages.test.ts
+        │   │   │   │   │   ├── useConversationMessages.ts
+        │   │   │   │   │   └── useConversations.ts
+        │   │   │   │   ├── constants
+        │   │   │   │   │   └── message.ts
+        │   │   │   │   ├── multipart.ts
+        │   │   │   │   ├── queries.ts
+        │   │   │   │   └── types.ts
         │   │   │   ├── organismes
         │   │   │   │   ├── api.ts
         │   │   │   │   ├── columns.ts
         │   │   │   │   ├── components
+        │   │   │   │   │   ├── AgentRechercheForm.vue
         │   │   │   │   │   ├── AttachAgentDrawer.test.ts
         │   │   │   │   │   ├── AttachAgentDrawer.vue
+        │   │   │   │   │   ├── OrganismeAgentsSection.test.ts
         │   │   │   │   │   ├── OrganismeAgentsSection.vue
         │   │   │   │   │   ├── OrganismeFormDrawer.test.ts
         │   │   │   │   │   ├── OrganismeFormDrawer.vue
@@ -1108,6 +1229,8 @@
         │   │   │   │   │       └── OrganismeNomCell.vue
         │   │   │   │   ├── composables
         │   │   │   │   │   ├── useAgentActions.ts
+        │   │   │   │   │   ├── useAgentParEmail.test.ts
+        │   │   │   │   │   ├── useAgentParEmail.ts
         │   │   │   │   │   ├── useAjoutMembre.test.ts
         │   │   │   │   │   ├── useAjoutMembre.ts
         │   │   │   │   │   ├── useOrganismeAgents.test.ts
@@ -1132,6 +1255,8 @@
         │   │   │       ├── api.ts
         │   │   │       ├── columns.ts
         │   │   │       ├── components
+        │   │   │       │   ├── AssignationResponsableDrawer.test.ts
+        │   │   │       │   ├── AssignationResponsableDrawer.vue
         │   │   │       │   ├── RecrutementsActifsFiltersDrawer.vue
         │   │   │       │   ├── RecrutementsArchivesFiltersDrawer.vue
         │   │   │       │   ├── RecrutementsTables.stories.ts
@@ -1140,6 +1265,8 @@
         │   │   │       │       ├── OffreActionsCell.vue
         │   │   │       │       └── OffreIntituleCell.vue
         │   │   │       ├── composables
+        │   │   │       │   ├── useAssignationResponsable.test.ts
+        │   │   │       │   ├── useAssignationResponsable.ts
         │   │   │       │   ├── useRecrutements.test.ts
         │   │   │       │   ├── useRecrutements.ts
         │   │   │       │   ├── useRecrutementsFilters.test.ts
@@ -1189,6 +1316,8 @@
         │   │   │   │       └── ddr-006-etats-asynchrones.md
         │   │   │   └── useStoryOpenState.ts
         │   │   ├── styles
+        │   │   │   ├── breakpoints.scss
+        │   │   │   ├── breakpoints.ts
         │   │   │   ├── csp-variables.css
         │   │   │   ├── dsfr-tokens-decisions.css
         │   │   │   ├── dsfr-tokens-options.css
@@ -1197,6 +1326,11 @@
         │   │   │   └── theme.css
         │   │   ├── test
         │   │   │   ├── browser.ts
+        │   │   │   ├── fixtures
+        │   │   │   │   ├── candidatures.ts
+        │   │   │   │   ├── equipe.ts
+        │   │   │   │   ├── organismes.ts
+        │   │   │   │   └── utilisateur.ts
         │   │   │   ├── render.ts
         │   │   │   └── setup.ts
         │   │   ├── types
@@ -1316,13 +1450,26 @@
         │   │   │   │   ├── 0031_alter_sourcemodel_type.py
         │   │   │   │   ├── 0032_alter_sourcemodel_id.py
         │   │   │   │   ├── 0033_alter_source_optional_api_fields.py
+        │   │   │   │   ├── 0034_talentsoftorganismemodel.py
+        │   │   │   │   ├── 0035_alter_talentsoftorganismemodel_organisme.py
+        │   │   │   │   ├── 0036_purge_talentsoftorganismemodel.py
+        │   │   │   │   ├── 0037_talentsoftorganismemodel_code.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
         │   │   │       ├── api_log.py
         │   │   │       ├── api_log_daily_aggregation.py
         │   │   │       ├── raw_document.py
-        │   │   │       └── source.py
+        │   │   │       ├── source.py
+        │   │   │       └── talentsoft_organisme.py
+        │   │   ├── messagerie
+        │   │   │   ├── __init__.py
+        │   │   │   ├── admin.py
+        │   │   │   ├── apps.py
+        │   │   │   ├── migrations
+        │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   └── __init__.py
+        │   │   │   └── models.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
@@ -1403,6 +1550,11 @@
         │   │   │   │   ├── 0040_offermodel_local_job_code.py
         │   │   │   │   ├── 0041_offermodel_functional_area_code.py
         │   │   │   │   ├── 0042_populate_offer_functional_area_code.py
+        │   │   │   │   ├── 0043_offermodel_talentsoft_organisme_entity_code.py
+        │   │   │   │   ├── 0044_normalize_offer_external_id.py
+        │   │   │   │   ├── 0045_remove_duplicate_corps.py
+        │   │   │   │   ├── 0046_alter_corpsmodel_code.py
+        │   │   │   │   ├── 0047_remove_offermodel_external_id.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1462,8 +1614,7 @@
         │   │   ├── commons
         │   │   │   ├── __init__.py
         │   │   │   ├── audit_log_django_factory.py
-        │   │   │   ├── audit_log_factory.py
-        │   │   │   └── stat_snapshot_factory.py
+        │   │   │   └── audit_log_factory.py
         │   │   ├── datetime_utils.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
@@ -1479,7 +1630,6 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── api_log_daily_agg_model_factory.py
         │   │   │   ├── api_log_django_factory.py
-        │   │   │   ├── api_log_model_factory.py
         │   │   │   ├── document_django_factory.py
         │   │   │   ├── document_factory.py
         │   │   │   ├── ingres_corps_factories.py
@@ -1487,13 +1637,16 @@
         │   │   │   ├── offer_payload_factory.py
         │   │   │   ├── source_django_factory.py
         │   │   │   ├── source_factory.py
+        │   │   │   ├── talentsoft_organisme_django_factory.py
         │   │   │   └── vectorized_document_factory.py
+        │   │   ├── messagerie
+        │   │   │   ├── __init__.py
+        │   │   │   └── conversation_django_factory.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
         │   │   │   ├── candidature_recruteur_factory.py
         │   │   │   ├── etapes_recrutement_factory.py
         │   │   │   ├── note_django_factory.py
-        │   │   │   ├── note_factory.py
         │   │   │   ├── organisme_factory.py
         │   │   │   ├── recrutement_django_factory.py
         │   │   │   └── recrutement_factory.py
@@ -1508,6 +1661,8 @@
         │   │   │   ├── metier_factory.py
         │   │   │   ├── offer_django_factory.py
         │   │   │   └── offer_factory.py
+        │   │   ├── seed_documents
+        │   │   │   └── cv.pdf
         │   │   └── seed_recruteur_datas.py
         │   ├── gateways
         │   │   ├── __init__.py
@@ -1533,7 +1688,6 @@
         │   │   ├── candidature_mapper.py
         │   │   ├── candidature_recruteur_mapper.py
         │   │   ├── metier_mapper.py
-        │   │   ├── note_mapper.py
         │   │   ├── offer_mapper.py
         │   │   ├── organisme_identite_mapper.py
         │   │   ├── organisme_recruteur_mapper.py
@@ -1571,8 +1725,6 @@
         │       ├── recruteur
         │       │   ├── __init__.py
         │       │   ├── postgres_candidature_recruteur_repository.py
-        │       │   ├── postgres_note_query_service.py
-        │       │   ├── postgres_note_repository.py
         │       │   ├── postgres_organisme_agent_query_service.py
         │       │   ├── postgres_organisme_agent_repository.py
         │       │   ├── postgres_organisme_repository.py
@@ -1603,6 +1755,7 @@
         │   │   ├── __init__.py
         │   │   ├── openapi_hooks.py
         │   │   ├── serializers.py
+        │   │   ├── token_views.py
         │   │   ├── urls.py
         │   │   └── views.py
         │   ├── assets
@@ -1683,6 +1836,7 @@
         │   ├── context_processors.py
         │   ├── identite
         │   │   ├── __init__.py
+        │   │   ├── admin_site.py
         │   │   ├── apps.py
         │   │   ├── management
         │   │   │   ├── __init__.py
@@ -1721,9 +1875,11 @@
         │   │       ├── offer_detail.py
         │   │       ├── offer_summaries.py
         │   │       ├── offers.py
+        │   │       ├── organisation_detail.py
         │   │       ├── organismes.py
         │   │       ├── referentials.py
-        │   │       └── sources.py
+        │   │       ├── sources.py
+        │   │       └── talentsoft_organismes.py
         │   ├── middleware
         │   │   ├── __init__.py
         │   │   ├── api_request_logger.py
@@ -1742,6 +1898,11 @@
         │   │       ├── __init__.py
         │   │       ├── agent_search.py
         │   │       ├── agents.py
+        │   │       ├── candidature_conversation_detail.py
+        │   │       ├── candidature_conversations.py
+        │   │       ├── candidature_detail.py
+        │   │       ├── candidature_logs.py
+        │   │       ├── documents.py
         │   │       ├── notes.py
         │   │       ├── organisme_agents.py
         │   │       ├── organisme_detail.py
@@ -1798,12 +1959,15 @@
         │   │   │   ├── Marianne-Regular.woff2
         │   │   │   ├── Marianne-Regular_Italic.woff
         │   │   │   └── Marianne-Regular_Italic.woff2
-        │   │   └── js
-        │   │       ├── drawer.js
-        │   │       ├── matomo-tracking.js
-        │   │       ├── redoc.standalone.js
-        │   │       ├── redoc.standalone.js.map
-        │   │       └── toast.js
+        │   │   ├── js
+        │   │   │   ├── drawer.js
+        │   │   │   ├── matomo-tracking.js
+        │   │   │   ├── notice.js
+        │   │   │   ├── redoc.standalone.js
+        │   │   │   ├── redoc.standalone.js.map
+        │   │   │   └── toast.js
+        │   │   └── recruteur
+        │   │       └── sample-cv.pdf
         │   └── templates
         │       ├── 403.html
         │       ├── 404.html
@@ -1852,6 +2016,7 @@
         │       │   ├── privacy.html
         │       │   └── terms.html
         │       ├── partials
+        │       │   ├── _notice_pause_produit.html
         │       │   ├── footer.html
         │       │   └── header.html
         │       └── registration
@@ -1893,20 +2058,29 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   └── recruteur
         │   │       ├── __init__.py
+        │   │       ├── context_services
+        │   │       │   ├── __init__.py
+        │   │       │   ├── test_candidature_agent_service.py
+        │   │       │   └── test_recrutement_agent_service.py
         │   │       ├── test_add_recrutement_agent.py
         │   │       ├── test_attach_organisme_agent.py
+        │   │       ├── test_candidature_detail.py
         │   │       ├── test_changer_etape_candidatures.py
+        │   │       ├── test_create_conversation.py
         │   │       ├── test_get_recrutement_detail.py
         │   │       ├── test_get_recrutement_etapes.py
         │   │       ├── test_get_recrutement_kanban.py
         │   │       ├── test_get_recrutement_liste.py
         │   │       ├── test_init_recrutement_etapes.py
+        │   │       ├── test_list_documents.py
         │   │       ├── test_list_motifs_refus.py
         │   │       ├── test_list_recrutement_agents.py
         │   │       ├── test_lister_mes_recrutements.py
-        │   │       ├── test_lister_note_usecases.py
-        │   │       ├── test_note_usecases.py
+        │   │       ├── test_notes_services.py
         │   │       ├── test_organisme_steps.py
+        │   │       ├── test_read_conversation.py
+        │   │       ├── test_read_document.py
+        │   │       ├── test_reply_conversation.py
         │   │       ├── test_revoke_recrutement_agent.py
         │   │       ├── test_search_agent_by_email.py
         │   │       ├── test_set_recrutements_responsable.py
@@ -1914,7 +2088,8 @@
         │   │       └── test_update_recrutement_etapes.py
         │   ├── config
         │   │   ├── __init__.py
-        │   │   └── test_storages.py
+        │   │   ├── test_storages.py
+        │   │   └── test_urls.py
         │   ├── conftest.py
         │   ├── domain
         │   │   ├── __init__.py
@@ -1930,11 +2105,12 @@
         │   │   └── recruteur
         │   │       ├── __init__.py
         │   │       ├── test_candidature_recruteur.py
-        │   │       ├── test_note.py
         │   │       ├── test_organisme.py
         │   │       └── test_recrutement.py
         │   ├── infrastructure
         │   │   ├── __init__.py
+        │   │   ├── authentication
+        │   │   │   └── test_api_key_authentication_log.py
         │   │   ├── authentification
         │   │   │   ├── __init__.py
         │   │   │   └── test_api_key_authentication.py
@@ -1988,6 +2164,9 @@
         │   │   │   ├── test_source_admin.py
         │   │   │   ├── test_upsert_offers.py
         │   │   │   └── test_vectorize_documents.py
+        │   │   ├── messagerie
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_conversation_models.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
         │   │   │   ├── test_changer_etape_candidatures.py
@@ -1997,9 +2176,6 @@
         │   │   │   ├── test_get_recrutement_liste.py
         │   │   │   ├── test_init_recrutement_etapes.py
         │   │   │   ├── test_lister_mes_recrutements.py
-        │   │   │   ├── test_note_query_service.py
-        │   │   │   ├── test_note_repository.py
-        │   │   │   ├── test_notes_usecases.py
         │   │   │   ├── test_organisme_admin.py
         │   │   │   ├── test_organisme_agent_query_service.py
         │   │   │   ├── test_organisme_agent_repository.py
@@ -2020,6 +2196,8 @@
         │   │       └── test_admin.py
         │   ├── presentation
         │   │   ├── __init__.py
+        │   │   ├── api
+        │   │   │   └── test_token_login_log.py
         │   │   ├── ats
         │   │   │   ├── __init__.py
         │   │   │   ├── e2e
@@ -2060,6 +2238,7 @@
         │   │   │   └── test_serializers.py
         │   │   ├── conftest.py
         │   │   ├── identite
+        │   │   │   ├── test_admin_site.py
         │   │   │   └── views
         │   │   │       ├── __init__.py
         │   │   │       ├── test_login.py
@@ -2093,19 +2272,27 @@
         │   │   │       ├── test_offer_detail.py
         │   │   │       ├── test_offer_summaries.py
         │   │   │       ├── test_offers_by_source.py
+        │   │   │       ├── test_organisation_detail.py
         │   │   │       ├── test_referentials.py
         │   │   │       ├── test_supprimer_organismes.py
         │   │   │       ├── test_upsert_offers.py
         │   │   │       ├── test_upsert_organismes.py
+        │   │   │       ├── test_upsert_talentsoft_organismes.py
         │   │   │       └── test_views.py
         │   │   ├── pages
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_home_e2e.py
         │   │   │   └── test_views.py
         │   │   └── recruteur
         │   │       ├── __init__.py
         │   │       ├── test_views_agent_search.py
         │   │       ├── test_views_agents.py
         │   │       ├── test_views_ats_base.py
+        │   │       ├── test_views_candidature_conversation_detail.py
+        │   │       ├── test_views_candidature_conversations.py
+        │   │       ├── test_views_candidature_detail.py
+        │   │       ├── test_views_candidature_logs.py
+        │   │       ├── test_views_documents.py
         │   │       ├── test_views_notes.py
         │   │       ├── test_views_organisme_agents.py
         │   │       ├── test_views_organisme_detail.py
@@ -2124,6 +2311,7 @@
         │       ├── dates.py
         │       ├── form_test_utils.py
         │       ├── interface_aware_mock.py
+        │       ├── message_documents.py
         │       ├── mock_api_response_factory.py
         │       ├── mock_embedding_generator.py
         │       ├── openapi_test_utils.py
@@ -2136,4 +2324,4 @@
         │       └── test_storages.py
         ├── uv.lock
         └── vite.config.ts
-393 directories, 1745 files
+414 directories, 1912 files

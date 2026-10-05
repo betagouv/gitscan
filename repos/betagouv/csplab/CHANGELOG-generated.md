@@ -1,36 +1,21 @@
-## Changelog : csplab (30 derniers jours, au 17 septembre 2026)
+## Changelog : csplab (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes majeures dans la gestion des organisations et des équipes de recrutement. L'accent a été mis sur la robustesse de l'infrastructure avec l'intégration du stockage S3 et de la gestion des secrets Scaleway, ainsi que sur une refonte architecturale (ADR-009) visant à simplifier le code. Les fonctionnalités de gestion des membres et des processus de recrutement ont été considérablement enrichies pour offrir un contrôle plus fin aux utilisateurs.
+Ce mois-ci, la plateforme a franchi une étape majeure avec l'introduction d'un système de messagerie intégré, permettant de communiquer directement au sein des dossiers de candidature. La gestion des candidats a été considérablement simplifiée grâce à un nouveau panneau de détail centralisant les documents, les notes et l'historique. Enfin, les capacités d'importation automatique de données (notamment depuis Talentsoft) ont été renforcées pour garantir une plus grande fiabilité des informations.
 
 ### Évolutions fonctionnelles
-- **Gestion des recrutements et des équipes** : 
-    - Possibilité d'ajouter, modifier ou révoquer des membres au sein d'une équipe de recrutement, avec une gestion précise des rôles [#1445](https://github.com/betagouv/csplab/issues/1445), [#1416](https://github.com/betagouv/csplab/issues/1416), [#1412](https://github.com/betagouv/csplab/issues/1412), [#1409](https://github.com/betagouv/csplab/issues/1409).
-    - Gestion des motifs de refus pour les candidatures [#1432](https://github.com/betagouv/csplab/issues/1432), [#1431](https://github.com/betagouv/csplab/issues/1431).
-    - Assignation de responsables sur plusieurs recrutements d'un organisme simultanément [#1452](https://github.com/betagouv/csplab/issues/1452).
-- **Gestion des organismes** : 
-    - Nouvelles capacités de création, modification, consultation détaillée et suppression d'organismes [#1386](https://github.com/betagouv/csplab/issues/1386), [#1291](https://github.com/betagouv/csplab/issues/1291), [#1290](https://github.com/betagouv/csplab/issues/1290), [#1283](https://github.com/betagouv/csplab/issues/1283), [#1208](https://github.com/betagouv/csplab/issues/1208).
-    - Gestion des membres rattachés aux organismes (ajout, modification et révocation de rôles) [#1273](https://github.com/betagouv/csplab/issues/1273), [#1269](https://github.com/betagouv/csplab/issues/1269), [#1264](https://github.com/betagouv/csplab/issues/1264), [#1223](https://github.com/betagouv/csplab/issues/1223).
-- **Identité et Expérience Utilisateur** : 
-    - Amélioration de l'identité avec la récupération automatique du nom et du prénom via ProConnect [#1451](https://github.com/betagouv/csplab/issues/1451) et la normalisation des emails en minuscules pour éviter les erreurs de recherche [#1471](https://github.com/betagouv/csplab/issues/1471).
-    - Redirection automatique vers la page de connexion après une déconnexion [#1384](https://github.com/betagouv/csplab/issues/1384).
-- **Ingestion de données** : 
-    - Enrichissement du pipeline d'ingestion avec l'import des organismes de la DILA [#1262](https://github.com/betagouv/csplab/issues/1262) et des établissements FINESS [#1190](https://github.com/betagouv/csplab/issues/1190).
-    - Amélioration du mapping et du transcodage des données issues de TalentSoft [#1411](https://github.com/betagouv/csplab/issues/1411), [#1403](https://github.com/betagouv/csplab/issues/1403).
+- **Messagerie et collaboration** : Mise en place d'un système complet de messagerie permettant de démarrer des conversations, d'y répondre, de joindre des fichiers et de consulter l'historique des échanges directement depuis une candidature [#1678](https://github.com/betagouv/csplab/issues/1678), [#1666](https://github.com/betagouv/csplab/issues/1666), [#1664](https://github.com/betagouv/csplab/issues/1664).
+- **Gestion des candidatures** : Création d'un panneau de détail (modale/tiroir) pour les candidatures permettant de consulter les CV et documents, d'ajouter des notes, de modifier l'étape du processus et de naviguer rapidement entre les candidats [#1549](https://github.com/betagouv/csplab/issues/1549), [#1562](https://github.com/betagouv/csplab/issues/1562), [#1493](https://github.com/betagouv/csplab/issues/1493), [#1489](https://github.com/betagouv/csplab/issues/1489).
+- **Gestion des équipes de recrutement** : Amélioration de la gestion des membres des équipes (ajout, modification ou retrait de membres et de rôles) et possibilité d'assigner des responsables à plusieurs recrutements simultanément [#1437](https://github.com/betagouv/csplab/issues/1437), [#1412](https://github.com/betagouv/csplab/issues/1412), [#1483](https://github.com/betagouv/csplab/issues/1483), [#1452](https://github.com/betagouv/csplab/issues/1452).
+- **Interface utilisateur** : Harmonisation visuelle de l'interface (barre latérale, en-têtes, espacements) et amélioration de la clarté des messages d'état et des notifications d'erreur [#1575](https://github.com/betagouv/csplab/issues/1575), [#1589](https://github.com/betagouv/csplab/issues/1589), [#1604](https://github.com/betagouv/csplab/issues/1604).
+- **Identité et sécurité** : Renforcement de la traçabilité (connexions, création de profils) et alignement des droits d'accès pour les superviseurs et le staff [#1651](https://github.com/betagouv/csplab/issues/1651), [#1641](https://github.com/betagouv/csplab/issues/1641), [#1593](https://github.com/betagouv/csplab/issues/1593).
 
 ### Évolutions techniques
-- **Infrastructure et Stockage** : 
-    - Mise en place du stockage S3 pour la gestion des documents des candidats [#1473](https://github.com/betagouv/csplab/issues/1473), [#1472](https://github.com/betagouv/csplab/issues/1472).
-    - Intégration de la gestion des secrets via Scaleway Secret Manager pour les différents composants (web, ingestion, ocr) [#1302](https://github.com/betagouv/csplab/issues/1302), [#1301](https://github.com/betagouv/csplab/issues/1301), [#1280](https://github.com/betagouv/csplab/issues/1280).
-- **Architecture (ADR-009)** : 
-    - Refonte majeure pour revenir à un usage plus idiomatique de Django, simplifiant la structure globale du projet [#1305](https://github.com/betagouv/csplab/issues/1305).
-    - Généralisation de l'utilisation de "factories" pour la génération de données de test sur l'ensemble des contextes (identitée, recrutement, ingestion, etc.) [#1362](https://github.com/betagouv/csplab/issues/1362), [#1363](https://github.com/betagouv/csplab/issues/1363), [#1364](https://github.com/betagouv/csplab/issues/1364), [#1365](https://github.com/betagouv/csplab/issues/1365), [#1371](https://github.com/betagouv/csplab/issues/1371), [#1400](https://github.com/betagouv/csplab/issues/1400).
-- **Qualité et Tests** : 
-    - Renforcement de la stratégie de tests avec l'introduction de `testing-library` pour le frontend [#1481](https://github.com/betagouv/csplab/issues/1481) et l'optimisation des tests backend via `pytest-xdist` avec des bases Redis dédiées [#1448](https://github.com/betagouv/csplab/issues/1448).
-- **Outils et CI/CD** : 
-    - Migration vers les *Conventional Commits* pour automatiser la génération du changelog et des releases [#1415](https://github.com/betagouv/csplab/issues/1415), [#1444](https://github.com/betagouv/csplab/issues/1444).
-    - Adoption de `mise` pour la gestion unifiée des outils de développement et des tâches de workflow [#1332](https://github.com/betagouv/csplab/issues/1332), [#1276](https://github.com/betagouv/csplab/issues/1276).
+- **Ingestion de données** : Optimisation et fiabilisation du pipeline d'ingestion (Talentsoft et ARS), incluant une meilleure gestion des codes entités, le filtrage des établissements et une réduction de la consommation mémoire [#1615](https://github.com/betagouv/csplab/issues/1615), [#1650](https://github.com/betagouv/csplab/issues/1650), [#1369](https://github.com/betagouv/csplab/issues/1369).
+- **Architecture et tests** : Migration vers les *Conventional Commits* et mise en œuvre d'une nouvelle stratégie de tests basée sur les factories (ADR-009) pour accroître la robustesse du code [#1415](https://github.com/betagouv/csplab/issues/1415), [#1362](https://github.com/betagouv/csplab/issues/1362).
+- **Infrastructure et CI/CD** : Modernisation des outils de développement (remplacement de pre-commit par `hk`, installation de `commitizen`) et optimisation de la gestion des secrets Scaleway et des déploiements Sentry [#1654](https://github.com/betagouv/csplab/issues/1654), [#1599](https://github.com/betagouv/csplab/issues/1599), [#1410](https://github.com/betagouv/csplab/issues/1410).
+- **Stockage** : Mise en place de l'infrastructure de stockage objet S3 pour la gestion pérenne des documents des candidats [#1472](https://github.com/betagouv/csplab/issues/1472).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique concernant la gestion des secrets Scaleway [#1410](https://github.com/betagouv/csplab/issues/1410) et la documentation du rate limiting dans l'API OpenAPI [#1345](https://github.com/betagouv/csplab/issues/1345).
-- **Nettoyage** : Refactorisation de divers enums et renommage de méthodes pour améliorer la cohérence du code [#1428](https://github.com/betagouv/csplab/issues/1428), [#1314](https://github.com/betagouv/csplab/issues/1314).
+- **Documentation** : Mise à jour de la documentation technique et des schémas OpenAPI [#1410](https://github.com/betagouv/csplab/issues/1410), [#1388](https://github.com/betagouv/csplab/issues/1388).
+- **Maintenance** : Nettoyage du code et suppression de fonctions obsolètes [#1557](https://github.com/betagouv/csplab/issues/1557).
