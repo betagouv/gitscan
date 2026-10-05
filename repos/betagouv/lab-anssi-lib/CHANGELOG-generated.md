@@ -1,4 +1,10 @@
-## Changelog : lab-anssi-lib (30 derniers jours, au 01/09/2026)
+## Changelog : lab-anssi-lib (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Aucun changement significatif n'a été apporté au projet au cours des 30 derniers jours. Les activités récentes concernent uniquement la maintenance automatique des dépendances.
+Cette période est marquée par la publication de la version 2.3.0 de la librairie, qui apporte une amélioration de la qualité des résumés d'articles au sein du composant CRISP.
+
+### Évolutions fonctionnelles
+- Enrichissement des résumés d'articles pour le composant CRISP.
+
+### Autres changements
+- Passage à la version 2.3.0.
