@@ -8,6 +8,11 @@ and this project adheres to
 
 ### Added
 
+- 👷(ci) lint, typecheck, build and test the collaboration server (yhub)
+- 👷(ci) check the load-test tooling: swarm, canary, k6 and dashboards
+- 👷(ci) cancel the superseded runs of a pull request
+- ✨(backend) add mention endpoint with cooldown-limited email
+  notification #2447
 - 🚩(setting) add feature flag on Duplicate with Children #2721
 - 💄(frontend) redesign 404 error standalone page #2696
 - 💄(frontend) redesign 403 access denied page #2720
@@ -49,6 +54,7 @@ and this project adheres to
 - ✨(collaboration) add an admin reset-connections endpoint on yhub
 - ✨(collaboration) add a create-ydoc endpoint on yhub
 - 🔧(backend) fine tune redis cache options
+- ✨(frontend) make the full last-update date available #1215
 - ✨(collaboration) soft-migrate legacy S3 documents into yhub
 - ✨(collaboration) replay legacy s3 version history into yhub
 - ✨(backend) add a service to call the yhub REST API
@@ -69,6 +75,7 @@ and this project adheres to
 
 ### Changed
 
+- 🛂(backend) let users allowed to comment list each other's accesses #2447
 - ♻️(collaboration) migrate the collaboration server from hocuspocus to yhub
 - 💥(y-provider) y-provider becomes converter-only
 - 💥(backend) move the resource server JWKS from `/api/{version}/jwks` to
@@ -76,16 +83,24 @@ and this project adheres to
 - 🔧(collaboration) adapt docker stack for development purpose
 - 🔧(helm) run a valkey for the backend and one for yhub in dev and feature
 - ✨(frontend) turn pasted doc links into interlinks #2713
+- 💄(frontend) redesign 401 error standalone page #2716
 
 ### Fixed
 
+- 🐛(documentation) fix minio port and keycloak realm in the k8s guide #2751
+- 🐛(collaboration) bound the calls yhub makes to the backend with a timeout,
+  `YHUB_BACKEND_REQUEST_TIMEOUT_MS`, 5s by default #2753
+- 🐛(backend) compensate document duplication failures #2755
 - 🐛(frontend) open search results in a new tab with ctrl/cmd+click #2719
 - 🐛(docker) pull minio images from pgsty
 - 🐛(backend) retry the duplicate of a document on a tree path collision
+- 🐛(frontend) keep caption and alignment when replacing an image #2730
 - 🐛(frontend) clear callout background on Backspace #2052
 - 🐛(export) keep image aspect ratio in PDF columns #2670
 - 🐛(frontend) fix redirect after deleting a document #2706
 - 🐛(frontend) keep documents draggable with a mouse when zoomed #2727
+- 📝(docs) fix markdown typo in installation README #2766
+- 🐛(i18n) export locale correctly #2750
 
 ### Removed
 

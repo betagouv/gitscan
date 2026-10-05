@@ -1,35 +1,21 @@
-## Changelog : docs (30 derniers jours, au 28 septembre 2026)
+## Changelog : docs (30 derniers jours, au octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une transition technologique majeure avec le passage du serveur de collaboration vers YHub, renforçant la robustesse de la synchronisation. L'expérience utilisateur a été enrichie par l'arrivée de nouveaux blocs de contenu (mathématiques, diagrammes), un meilleur support du mode hors-ligne et des améliorations significatives sur l'exportation et l'accessibilité.
+Ce mois a été marqué par une transition majeure de l'infrastructure de collaboration vers YHub, apportant une plus grande robustesse et le support du mode hors ligne. Nous avons également introduit un nouveau système de mentions avec notifications par email, enrichi les options d'exportation et affiné l'interface utilisateur pour une expérience plus fluide.
 
 ### Évolutions fonctionnelles
-- **Nouvelles capacités d'édition** : Ajout de blocs de mathématiques et de diagrammes dans l'éditeur, et possibilité de télécharger les documents au format Markdown.
-- **Amélioration de l'exportation** : Support de l'exportation des présentations en PDF (avec filigrane du logo) et maintien du ratio d'aspect des images dans les colonnes PDF.
-- **Expérience utilisateur (UX)** : 
-    - Support du mode hors-ligne pour l'arborescence et le contenu.
-    - Transformation automatique des liens de documents collés en liens internes (interlinking).
-    - Ouverture des résultats de recherche dans un nouvel onglet via Ctrl/Cmd+clic.
-    - Amélioration de la gestion de l'historique des versions (granularité configurable et affichage progressif des données migrées).
-- **Interface & Accessibilité** : 
-    - Refonte des pages d'erreur (404, 403) et de la page de confirmation d'email.
-    - Amélioration de l'accessibilité (gestion du focus, masquage des emojis décoratifs pour les lecteurs d'écran).
-    - Ajout d'indications de raccourcis clavier dans les menus.
+- **Système de mentions** : ajout de notifications par email (traitées de manière asynchrone), gestion fine des accès (exclusion des lecteurs des mentions) et amélioration du contenu des emails.
+- **Collaboration et Édition** : support du mode hors ligne, accès à l'historique des versions, duplication de documents avec sous-documents et amélioration de l'interliage automatique lors du collage de liens.
+- **Interface et UX** : refonte des pages d'erreur (401, 403, 404) et de la page de confirmation d'email ; nouveaux raccourcis clavier (mode présentation) ; sélection de langue simplifiée et gestion améliorée des images (conservation des légendes et alignements lors du remplacement).
+- **Export et Navigation** : nouvelles options d'export (Markdown, PDF avec gestion des ratios d'image) ; ouverture des résultats de recherche dans un nouvel onglet et défilement automatique vers les blocs liés.
 
 ### Évolutions techniques
-- **Migration de la collaboration** : Transition complète du serveur de collaboration de Hocuspocus vers YHub, incluant la migration logicielle des documents et de l'historique des versions depuis S3.
-- **Architecture Backend** : 
-    - Refonte de la gestion du contenu des documents via le service YHub.
-    - Implémentation de nouveaux endpoints de gestion (reset de connexion, restauration, création de documents).
-    - Optimisation des performances via l'amélioration des requêtes SQL et de la gestion du cache Redis.
-- **Sécurité & Authentification** : Renforcement de la sécurité par l'utilisation systématique de tokens JWT pour les services de conversion et le fournisseur de collaboration.
-- **Infrastructure & DevOps** : 
-    - Mise à jour des déploiements Helm (version 6.0.0-alpha.1).
-    - Remplacement de Minio par Silo/S3 pour le stockage.
-    - Mise en place d'un monitoring avancé avec Prometheus et Grafana, et ajout de tests de charge (k6) incluant des "canaries" de navigateur pour mesurer la perception utilisateur sous charge.
-- **Tests** : Extension significative de la couverture E2E et stabilisation des tests pour réduire la volatilité (flakiness).
+- **Moteur de collaboration** : migration complète du serveur de collaboration de HocusPocus vers YHub (v0.9.0), incluant la migration des documents et de l'historique depuis le stockage S3 legacy.
+- **Infrastructure et Déploiement** : déploiement de la version 6.0.0-alpha.1 du chart Helm, intégration de métriques Prometheus et amélioration des outils de tests de charge (scénarios k6, canaries de navigation et tableaux de bord Grafana).
+- **Sécurité et Backend** : renforcement de l'authentification via JWT, ajout de limitations de débit (throttling) sur les endpoints de mentions et validation stricte des identifiants (UUID).
+- **Développement et CI/CD** : migration du serveur YHub en TypeScript, amélioration des tests E2E et ajout de la validation (lint, typecheck, build) pour le serveur de collaboration.
+- **Optimisations** : remplacement de Minio par Silo et optimisation des requêtes SQL et du cache Redis.
 
 ### Autres changements
-- **Documentation** : Mise à jour complète de la documentation technique (architecture, installation et guides de migration vers YHub).
-- **Internationalisation** : Mise à jour des chaînes de caractères traduites (i18n).
-- **Maintenance** : Nettoyage du code, suppression de dépendances obsolètes (whitenoise) et optimisation des processus de développement (Docker, Tilt).
+- **Documentation** : mise à jour des guides d'installation (YHub, Kubernetes/Helm) et de la documentation d'architecture.
+- **Internationalisation** : mise à jour des chaînes traduites et optimisation du processus d'export pour Crowdin.
