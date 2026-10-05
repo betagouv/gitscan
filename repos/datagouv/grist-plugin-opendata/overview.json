@@ -1,25 +1,28 @@
 {
   "url": "https://github.com/datagouv/grist-plugin-opendata",
   "name": "grist-plugin-opendata",
-  "description": "Ce plugin Grist permet de publier et de récupérer des données sur data.gouv.fr, ainsi que de créer des templates métiers à partir de schémas.",
+  "description": "Plugin pour Grist permettant de publier et de récupérer des données sur data.gouv.fr, ainsi que de valider la conformité des données via des schémas.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Tableaux & Affichage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Vue",
     "@gouvfr/dsfr",
     "@gouvminint/vue-dsfr",
-    "grist-api",
-    "papaparse"
+    "axios",
+    "papaparse",
+    "vue-router",
+    "vuex"
   ],
   "components": [
-    "API REST & GraphQL",
     "TypeScript / JavaScript",
-    "Vue.js / Nuxt"
+    "Vue.js / Nuxt",
+    "Docker & Conteneurs",
+    "Intégrations services externes"
   ],
   "auth": {
     "methods": [
@@ -27,24 +30,25 @@
     ],
     "providers": []
   },
-  "tests": null,
+  "tests": "ESLint",
   "workflows": [
-    "ci.yml"
+    "ci.yml",
+    "docker.yml"
   ],
-  "lastActivity": "2025-11-01T17:37:24Z",
+  "lastActivity": "2026-10-02T17:45:41+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 5,
-    "forks": 5,
-    "contributors": null,
+    "stars": 6,
+    "forks": 6,
     "openIssues": 12
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Vue.js & Nuxt"
+    "Vue.js & Nuxt",
+    "Plugins & Extensions"
   ]
 }

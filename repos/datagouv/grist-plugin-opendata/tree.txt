@@ -3,13 +3,17 @@
 ├── .env.dev
 ├── .github
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       └── docker.yml
 ├── .gitignore
 ├── .nvmrc
 ├── Dockerfile
+├── Dockerfile.dev
 ├── LICENSE
 ├── README.md
-├── babel.config.js
+├── docker
+│   ├── cors-headers.conf
+│   └── nginx.conf
 ├── docker-compose.yml
 ├── docs
 │   ├── README.md
@@ -29,12 +33,13 @@
 │   │   ├── datagouv8.png
 │   │   └── datagouv9.png
 │   └── validata.md
-├── jsconfig.json
-├── package-lock.json
+├── eslint.config.mjs
+├── index.html
 ├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── public
 │   ├── favicon.ico
-│   ├── index.html
 │   └── oauth-callback.html
 ├── src
 │   ├── App.vue
@@ -73,6 +78,7 @@
 │   │       │   ├── records.ts
 │   │       │   └── report.ts
 │   │       └── useValidationReport.ts
+│   ├── env.d.ts
 │   ├── main.ts
 │   ├── router
 │   │   └── index.ts
@@ -85,5 +91,5 @@
 │   │   └── index.ts
 │   └── utils.ts
 ├── tsconfig.json
-└── vue.config.js
-17 directories, 71 files
+└── vite.config.ts
+18 directories, 76 files

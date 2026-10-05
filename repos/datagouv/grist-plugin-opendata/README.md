@@ -35,7 +35,7 @@ La manière la plus simple de développer avec ce plugin est d'utiliser Docker :
 
 ```bash
 # 1. Copier le fichier de configuration (première fois uniquement)
-cp env.dev .env
+cp .env.dev .env
 # Puis éditez le fichier .env pour configurer VUE_APP_DATAGOUV_CLIENT_ID si nécessaire
 
 # 2. Lancer Grist + Plugin avec hot-reload
@@ -62,7 +62,7 @@ docker run -p 8484:8484 -it gristlabs/grist
 ```
 
 ```
-npm install
+pnpm install
 ```
 
 ### Configuration du plugin
@@ -74,30 +74,44 @@ cp .env.dev .env
 
 Et procédez aux adaptations `.env` comme décrit dans les commentaires.
 
-Enfin sourcez le fichier pour charger les variables :
-```bash
-source .env
-```
+Vite charge le fichier `.env` automatiquement, il n'y a rien à sourcer.
 
 ### Compilation et _hot reload_ pour le développement
 
-Après avoir chargé les variables d'environnement:
-
 ```
-npm run serve
+pnpm run dev
 ```
 
 ### Compilation et minification pour la production
 
 ```
-npm run build
+pnpm run build
 ```
+
+### Image Docker de production
+
+L'image servie par nginx se construit avec les mêmes variables, passées en
+`--build-arg` :
+
+```bash
+docker build -t grist-plugin-opendata \
+  --build-arg VUE_APP_VALIDATA_URL \
+  --build-arg VUE_APP_DATAGOUV_CLIENT_ID \
+  --build-arg VUE_APP_DATAGOUV_IMPORT_URL \
+  --build-arg VUE_APP_DATAGOUV_TABULAR_API \
+  --build-arg VUE_APP_GRIST_CHEAT_URL \
+  --build-arg VUE_APP_GRIST_URL \
+  --build-arg VUE_APP_DATAGOUV_PUBLISH_URL \
+  .
+```
+
+La construction échoue si une variable lue par le code est absente ou vide.
 
 ### Analyse avec [ESLint](https://eslint.org/)
 ```
-npm run lint
+pnpm run lint
 ```
 
 ### Configuration personnalisée
 
-Voir [la documentation Vue CLI](https://cli.vuejs.org/config/).
+Voir [la documentation Vite](https://vite.dev/config/) et `vite.config.ts`.
