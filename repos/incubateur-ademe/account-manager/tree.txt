@@ -176,6 +176,12 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260920090000_un_constat_de_compte_se_deduplique_sur_l_identifiant
 │   │   │   └── migration.sql
+│   │   ├── 20261001122244_retirer_les_valeurs_mortes
+│   │   │   └── migration.sql
+│   │   ├── 20261002150000_un_plan_confirme_garde_ce_qu_il_a_lu
+│   │   │   └── migration.sql
+│   │   ├── 20261003090000_une_reference_appartient_a_un_compte
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── prisma.config.ts
@@ -244,6 +250,7 @@
 │   │   │   │   ├── redaction-participation.test.ts
 │   │   │   │   ├── redaction-participation.ts
 │   │   │   │   ├── remise-du-jeton.test.tsx
+│   │   │   │   ├── voie.test.ts
 │   │   │   │   └── voie.ts
 │   │   │   ├── actions.ts
 │   │   │   ├── page.tsx
@@ -301,6 +308,9 @@
 │   │   │   ├── page.tsx
 │   │   │   └── redaction.ts
 │   │   ├── not-found.tsx
+│   │   ├── objets-possedes
+│   │   │   ├── ecran.test.ts
+│   │   │   └── page.tsx
 │   │   ├── page.tsx
 │   │   ├── personnes
 │   │   │   ├── EnteteTri.tsx
@@ -320,6 +330,7 @@
 │   │   │   │   ├── SectionComptesExternes.tsx
 │   │   │   │   ├── SectionGeste.tsx
 │   │   │   │   ├── SectionGestesConfirmes.tsx
+│   │   │   │   ├── SectionObjetsPossedes.tsx
 │   │   │   │   ├── SectionStartups.tsx
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── edit
@@ -336,6 +347,7 @@
 │   │   │   │   ├── motifs.test.ts
 │   │   │   │   ├── motifs.ts
 │   │   │   │   ├── not-found.tsx
+│   │   │   │   ├── objets-de-la-fiche.test.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── section-geste.test.tsx
 │   │   │   └── page.tsx
@@ -366,6 +378,7 @@
 │   │   └── verifier-politique.ts
 │   ├── collision-d-unicite.test.ts
 │   ├── connectors
+│   │   ├── github.contrat.test.ts
 │   │   ├── github.test.ts
 │   │   ├── github.ts
 │   │   ├── index.test.ts
@@ -421,6 +434,8 @@
 │   │   ├── membre.ts
 │   │   ├── modele-plan.test.ts
 │   │   ├── modele-plan.ts
+│   │   ├── objets-possedes.test.ts
+│   │   ├── objets-possedes.ts
 │   │   ├── octroi.test.ts
 │   │   ├── octroi.ts
 │   │   ├── participation.test.ts
@@ -435,6 +450,8 @@
 │   │   ├── rapprochement.ts
 │   │   ├── rattachement-startup.test.ts
 │   │   ├── rattachement-startup.ts
+│   │   ├── reference.test.ts
+│   │   ├── reference.ts
 │   │   ├── revue.test.ts
 │   │   ├── revue.ts
 │   │   ├── startups.test.ts
@@ -448,6 +465,7 @@
 │   ├── garde-de-session.test.ts
 │   ├── identifiant-reserve.test.ts
 │   ├── lib
+│   │   ├── acces-echus.ts
 │   │   ├── actions.test.ts
 │   │   ├── actions.ts
 │   │   ├── appartenance.ts
@@ -486,6 +504,7 @@
 │   │   ├── modele-plan-edition.test.ts
 │   │   ├── modele-plan-edition.ts
 │   │   ├── modele-plan.ts
+│   │   ├── objets-possedes.ts
 │   │   ├── participation.ts
 │   │   ├── policy.ts
 │   │   ├── rappels-connexion.test.ts
@@ -494,6 +513,7 @@
 │   │   ├── session.ts
 │   │   ├── surcharges.ts
 │   │   └── sync
+│   │       ├── acces-echu.integration.test.ts
 │   │       ├── cle-de-constat-de-compte.integration.test.ts
 │   │       ├── collecte.integration.test.ts
 │   │       ├── collecte.test.ts
@@ -508,7 +528,8 @@
 │   │       ├── perimetre-echeance.test.ts
 │   │       ├── perimetre.test.ts
 │   │       ├── perimetre.ts
-│   │       └── rapprochement.ts
+│   │       ├── rapprochement.ts
+│   │       └── references.integration.test.ts
 │   ├── mots-de-l-interface.test.ts
 │   ├── proxy.test.ts
 │   ├── proxy.ts
@@ -573,4 +594,4 @@
 ├── vitest.config.ts
 ├── vitest.setup.integration.ts
 └── vitest.setup.unite.ts
-100 directories, 475 files
+104 directories, 492 files
