@@ -1,19 +1,18 @@
-## Changelog : ocapi (30 derniers jours, au 30 juillet 2026)
+## Changelog : ocapi (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Cette version apporte des améliorations à la génération des permis, notamment dans la logique de rendu. Des corrections ont été apportées au tri de l'historique des articles et à la détermination du répertoire racine du projet. L'ajout d'un nouveau fournisseur Deepseek et des corrections de typage améliorent la robustesse et les capacités du système.
+Ce mois-ci, le projet a principalement renforcé ses capacités d'intelligence artificielle en intégrant de nouveaux modèles de langage et en améliorant la fiabilité du traitement des données et de la gestion de l'historique.
 
 ### Évolutions fonctionnelles
-- Amélioration de la logique de rendu des permis consolidés. [#163](https://github.com/mte-dgpr/ocapi/issues/163)
-- Correction du tri de l'historique des articles. [#162](https://github.com/mte-dgpr/ocapi/issues/162)
-- Ajout du fournisseur Deepseek pour l'évaluation et le traitement du langage naturel. [#153](https://github.com/mte-dgpr/ocapi/issues/153)
+- Amélioration de la stabilité du marquage des opérations et de la gestion de l'historique [#165](https://github.com/mte-dgpr/ocapi/issues/165)
+- Correction du traitement des cibles secondaires (passage automatique de `None` à `ALL`) [#172](https://github.com/mte-dgpr/ocapi/issues/172)
 
 ### Évolutions techniques
-- Refactorisation de la détermination du répertoire racine du projet pour une meilleure gestion des configurations et des templates inclus dans la construction du wheel. [#157](https://github.com/mte-dgpr/ocapi/issues/157) & [d133872](https://github.com/mte-dgpr/ocapi/commit/d133872)
-- Correction de problèmes de typage.
-- Amélioration de la gestion des erreurs lors de l'évaluation.
+- Extension du support des modèles d'IA avec l'intégration de l'API Albert et de nouveaux modèles récents [#176](https://github.com/mte-dgpr/ocapi/issues/176) [#174](https://github.com/mte-dgpr/ocapi/issues/174)
+- Optimisation de la gestion des appels API : ajout de clés pour l'évaluation des coûts et augmentation du timeout à 150s [#176](https://github.com/mte-dgpr/ocapi/issues/176)
+- Audit du code et corrections liées à l'intégration de Claude [#170](https://github.com/mte-dgpr/ocapi/issues/170)
+- Amélioration de la gestion des erreurs lors de l'application des opérations via l'ajout de codes d'erreur
+- Refactorisation du code pour supprimer des vérifications redondantes dans le bloc `apply_ops`
 
 ### Autres changements
-- Mise à jour de la documentation README.
-- Ajout d'un fichier `.gitattributes`.
-- Suppression de fonctions inutilisées.
+- Mise à jour de la documentation concernant l'utilisation des LLM et les procédures d'ajout de nouveaux modèles [#174](https://github.com/mte-dgpr/ocapi/issues/174)
