@@ -42,8 +42,14 @@
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── agri_send_daily_alertes.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_create_alerte.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals
@@ -59,21 +65,31 @@
 │   │   │       │       ├── background.webp
 │   │   │       │       └── slalom.svg
 │   │   │       └── results.css
+│   │   ├── stats.py
 │   │   ├── tasks.py
 │   │   ├── templates
 │   │   │   └── agri
 │   │   │       ├── _partials
+│   │   │       │   ├── create_alerte_ok.html
 │   │   │       │   ├── more_results_from_type.html
 │   │   │       │   ├── results_less.html
 │   │   │       │   └── send-results-by-mail-ok.html
 │   │   │       ├── about.html
+│   │   │       ├── alerte_list.html
 │   │   │       ├── blocks
-│   │   │       │   └── home
-│   │   │       │       └── themes.html
+│   │   │       │   ├── home
+│   │   │       │   │   └── themes.html
+│   │   │       │   └── mail
+│   │   │       │       ├── footer.mjml
+│   │   │       │       ├── header.mjml
+│   │   │       │       └── selection.mjml
 │   │   │       ├── home.html
 │   │   │       ├── mail
+│   │   │       │   ├── alerte.mjml
+│   │   │       │   ├── alerte_created.mjml
 │   │   │       │   └── results.mjml
 │   │   │       ├── modals
+│   │   │       │   ├── create_alerte.html
 │   │   │       │   ├── external_link_information.html
 │   │   │       │   ├── feedback_on_themes_sujets.html
 │   │   │       │   └── send_results_by_mail.html
@@ -84,6 +100,7 @@
 │   │   │   ├── factories.py
 │   │   │   ├── test_prepare_e2e.py
 │   │   │   ├── test_signal_handlers.py
+│   │   │   ├── test_stats.py
 │   │   │   ├── test_tasks.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
@@ -185,6 +202,7 @@
 │   │   │   ├── 0078_organisme_adresse_organisme_telephone.py
 │   │   │   ├── 0079_organisme_parent.py
 │   │   │   ├── 0080_organisme_horaires_organisme_siren.py
+│   │   │   ├── 0081_specificitelocale.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals
@@ -206,11 +224,13 @@
 │   │   │       ├── images
 │   │   │       │   └── placeholder.1x1.svg
 │   │   │       └── parent_aide_detail.css
+│   │   ├── stats.py
 │   │   ├── tasks.py
 │   │   ├── templates
 │   │   │   ├── admin
 │   │   │   │   └── aides
 │   │   │   │       ├── aide
+│   │   │   │       │   ├── change_form.html
 │   │   │   │       │   ├── change_form_object_tools.html
 │   │   │   │       │   ├── dashboard.html
 │   │   │   │       │   ├── duplicate.html
@@ -240,6 +260,7 @@
 │   │   │   ├── test_commands.py
 │   │   │   ├── test_interop.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_stats.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
 │   │   └── views.py
@@ -263,6 +284,7 @@
 │   │   ├── static
 │   │   │   └── aides_feedback
 │   │   │       └── base.css
+│   │   ├── stats.py
 │   │   ├── templates
 │   │   │   └── aides_feedback
 │   │   │       ├── _partials
@@ -272,6 +294,11 @@
 │   │   │       │   └── update_feedback_on_aides_ok.html
 │   │   │       └── blocks
 │   │   │           └── create_feedback_on_aides.html
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── factories.py
+│   │   │   └── test_stats.py
 │   │   ├── urls.py
 │   │   └── views.py
 │   ├── pac
@@ -420,6 +447,7 @@
 ├── deployment
 │   └── scalingo
 │       └── bin
+│           ├── aides_daily_tasks.sh
 │           └── start-web.sh
 ├── docker-compose.yml
 ├── documentation
@@ -443,6 +471,10 @@
 ├── package.json
 ├── pyproject.toml
 ├── scripts
+│   ├── carte-deploiement-aides-agri
+│   │   ├── data
+│   │   │   └── .gitignore
+│   │   └── main.py
 │   ├── chefs-sea
 │   │   ├── .gitignore
 │   │   └── extract.py
@@ -494,6 +526,9 @@
 │   │   └── uv.lock
 │   └── upgrade-python-deps.sh
 ├── static
+│   ├── admin
+│   │   └── css
+│   │       └── index_custom.css
 │   └── vendor
 │       ├── DSFRChart.css
 │       ├── DSFRChart.js
@@ -506,8 +541,9 @@
 ├── templates
 │   ├── admin
 │   │   ├── change_form_object_tools.html
-│   │   └── includes
-│   │       └── fieldset.html
+│   │   ├── includes
+│   │   │   └── fieldset.html
+│   │   └── index_custom.html
 │   ├── two_factor
 │   │   └── _base.html
 │   └── ui
@@ -530,4 +566,4 @@
     ├── favicon.ico
     ├── robots-non-prod.txt
     └── robots-prod.txt
-136 directories, 396 files
+144 directories, 424 files
