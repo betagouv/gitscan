@@ -10,11 +10,17 @@ and this project adheres to
 
 ### Added
 
+- ✨(helm) import environment variables from Secrets and ConfigMaps
 - 🔒(backend) throttle meeting link generation
 - 🔒️(backend) add a daily cap on room creation
 - 🔧(summary) add setting to control Sentry traces sampling rate
 - ✨(frontend) let signed-out visitors start a meeting
 - ✨(backend) expose `allow_unregistered_rooms` in the frontend configuration
+
+### Changed
+
+- ✨(frontend) warn users when the connection falls back to TURN
+- 🔧(backend) configure the technical documentation url
 
 ### Fixed
 
@@ -26,6 +32,9 @@ and this project adheres to
 - 🐛(summary) disable default S3 checksums for GCS-compatible storage
 - 🔒️(summary) redact meeting content from Sentry events
 - 🐛(frontend) hide tooltips until they have a computed placement
+- 🐛(brevo) use django-lasuite for marketing management
+- ♿️(frontend) expose loading state to assistive technology
+- 🐛(frontend) honour Keep hand raised when picture-in-picture is open
 
 ## [1.33.0] - 2026-09-30
 
@@ -156,7 +165,6 @@ and this project adheres to
 ### Added
 
 - ✨(any) let any authenticated user manage the lobby on trusted rooms
-
 ### Changed
 
 - 📱(frontend) collapse mobile control bar items on narrow viewports
