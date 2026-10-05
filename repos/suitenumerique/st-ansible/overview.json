@@ -18,27 +18,30 @@
     "Keycloak",
     "Restic",
     "Caddy",
+    "Typer",
     "Jinja2"
   ],
   "components": [
     "Ansible & IaC",
     "Docker & Conteneurs",
     "Python (scripts & backend)",
-    "Templates & Moteurs de rendu",
+    "CI/CD & Déploiement",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "none"
+      "sso"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
-  "tests": "Molecule, Pytest",
+  "tests": [
+    "pytest",
+    "molecule"
+  ],
   "workflows": [
-    "ansible.yml",
-    "changelog.yml",
-    "cli-docker.yml",
-    "cli-tests.yml"
+    "GitHub Actions"
   ],
   "lastActivity": "2026-10-01T00:35:07+02:00",
   "status": "maintained",
@@ -47,14 +50,13 @@
   "metrics": {
     "stars": 9,
     "forks": 2,
-    "openIssues": 10
+    "openIssues": 13
   },
   "tags": [
     "Git & DevOps",
-    "Docker & Conteneurs",
     "Python",
+    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Documentation",
     "Déploiement & Hosting"
   ]
 }
