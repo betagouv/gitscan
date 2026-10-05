@@ -5,7 +5,7 @@ Ce repository a pour objectif de mettre en place rapidement une infrastructure A
 ## Installation
 
 ```bash
-git clone git@github.com:etalab/data-engineering-stack.git
+git clone git@github.com:datagouv/data-engineering-stack.git
 cd data-engineering-stack
 
 # Create directories necessary for Airflow to work
@@ -25,15 +25,13 @@ docker compose up -d
 # If you have kept the default values: http://localhost:8080 and airflow:airflow as user:pwd
 ```
 
-## Import our DAGs
+## Importer les DAGs de data.gouv.fr
+
 ```bash
 cd dags
 git clone git@github.com:datagouv/datagouvfr_data_pipelines.git
 ```
 
-## Refresh dags
+Patienter quelques minutes pour qu'Airflow détecte les nouveaux DAGs.
 
-```bash
-# Airflow used to have a little time before dag refreshing when dag is created. You can force refreshing with :
-./refreshBagDags.sh
-```
+Pour installer un environnement de développement pour les DAGs (version de Python, lint, format, tests, pre-commit), lire le README du dépôt des DAGs : `dags/datagouvfr_data_pipelines/README.md`.

@@ -1,15 +1,13 @@
-## Changelog : data-engineering-stack (30 derniers jours, au 22 mai 2026)
+## Changelog : data-engineering-stack (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Ce mois-ci, la stack a été mise à niveau vers Airflow 3, apportant des améliorations de performance et de nouvelles fonctionnalités.  Des ajustements ont également été effectués pour aligner l'environnement de développement sur la production, incluant la synchronisation des dépendances et une correction de typographie.
-
-### Évolutions fonctionnelles
-- Mise à jour d'Airflow de la version 3.1.7 vers la version 3.2.1 [#63](https://github.com/datagouv/data-engineering-stack/issues/63).
-- Migration complète vers Airflow 3 [#60](https://github.com/datagouv/data-engineering-stack/issues/60).
+Les récentes mises à jour visent principalement à assainir le projet en supprimant des éléments obsolètes, en optimisant la gestion des dépendances et en améliorant la qualité de la documentation pour les utilisateurs francophones.
 
 ### Évolutions techniques
-- Synchronisation des dépendances avec l'environnement de production [#62](https://github.com/datagouv/data-engineering-stack/issues/62).
-- Ajustements pour répondre aux exigences de production [#64](https://github.com/datagouv/data-engineering-stack/issues/64).
+- Optimisation de la gestion des dépendances via l'ajout de nouveaux packages et le tri du fichier `requirements.txt` [#66](https://github.com/datagouv/data-engineering-stack/pull/66), [#74](https://github.com/datagouv/data-engineering-stack/pull/74).
+- Configuration de la version attendue pour l'outil `uv`.
+- Suppression du script obsolète `refreshDagBags.sh` [#71](https://github.com/datagouv/data-engineering-stack/pull/71).
 
 ### Autres changements
-- Correction d'une faute de frappe [#774803d](https://github.com/datagouv/data-engineering-stack/commit/774803d).
+- Amélioration de la documentation : traduction du README, correction d'URL et uniformisation de l'usage de la langue française [#72](https://github.com/datagouv/data-engineering-stack/pull/72).
+- Clarification des instructions pour l'environnement de développement via une redirection vers le dépôt des DAGs.
