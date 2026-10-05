@@ -1,13 +1,14 @@
 .
 ├── .changeset
-│   ├── config.json
-│   └── inline-field-variant.md
+│   ├── bold-mangos-join.md
+│   └── config.json
 ├── .dockerignore
 ├── .github
 │   └── workflows
 │       ├── front-dependencies-installation.yml
 │       └── main.yml
 ├── .gitignore
+├── .nvmrc
 ├── Dockerfile
 ├── LICENSE
 ├── Makefile
@@ -49,6 +50,8 @@
 │   │   ├── common.d.ts
 │   │   ├── cunningham.ts
 │   │   ├── e2e
+│   │   │   ├── context-menu
+│   │   │   │   └── context-menu-checked.spec.tsx
 │   │   │   ├── file-preview
 │   │   │   │   ├── audio-preview.spec.tsx
 │   │   │   │   ├── file-preview-actions.spec.tsx
@@ -57,6 +60,9 @@
 │   │   │   │   ├── pdf-preview-error.spec.tsx
 │   │   │   │   ├── pdf-preview-links.spec.tsx
 │   │   │   │   ├── pdf-preview-mixed-sizes.spec.tsx
+│   │   │   │   ├── pdf-preview-scanned.spec.tsx
+│   │   │   │   ├── pdf-preview-scanned.spec.tsx-snapshots
+│   │   │   │   │   └── scanned-page-1-chromium.png
 │   │   │   │   ├── pdf-preview-security.spec.tsx
 │   │   │   │   ├── pdf-preview.spec.tsx
 │   │   │   │   ├── unsupported-file-preview.spec.tsx
@@ -68,6 +74,7 @@
 │   │   │   │   └── help-menu.spec.tsx
 │   │   │   ├── helpers
 │   │   │   │   ├── fixtures.ts
+│   │   │   │   ├── mount-context-menu.tsx
 │   │   │   │   ├── mount-filter.tsx
 │   │   │   │   ├── mount-help-menu.tsx
 │   │   │   │   ├── mount-la-gaufre.tsx
@@ -130,6 +137,7 @@
 │   │   │   │       ├── monet_1.jpeg
 │   │   │   │       ├── nuissance_sonores.mp3
 │   │   │   │       ├── pdf_corrupted.pdf
+│   │   │   │       ├── pdf_scanned_jpx_jbig2.pdf
 │   │   │   │       ├── pv_cm.pdf
 │   │   │   │       └── test-unsupported.bin
 │   │   │   ├── switch-theme.gif
@@ -480,6 +488,13 @@
 │   │   │   │   │   │   ├── index.stories.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── tokens.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── header-banner
+│   │   │   │   │   ├── HeaderBanner.tsx
+│   │   │   │   │   ├── header-banner.stories.tsx
+│   │   │   │   │   ├── index.scss
+│   │   │   │   │   ├── index.spec.tsx
+│   │   │   │   │   ├── index.tsx
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── help-menu
 │   │   │   │   │   ├── HelpMenu.mdx
@@ -919,10 +934,9 @@
 │   │   │   │   │   ├── left-panel
 │   │   │   │   │   │   ├── LeftPanel.tsx
 │   │   │   │   │   │   └── index.scss
-│   │   │   │   │   ├── right-panel
-│   │   │   │   │   │   ├── RightPanel.tsx
-│   │   │   │   │   │   └── index.scss
-│   │   │   │   │   └── utils.ts
+│   │   │   │   │   └── right-panel
+│   │   │   │   │       ├── RightPanel.tsx
+│   │   │   │   │       └── index.scss
 │   │   │   │   ├── loader
 │   │   │   │   │   ├── Spinner.tsx
 │   │   │   │   │   ├── _base.scss
@@ -949,9 +963,8 @@
 │   │   │   │   │   ├── ModalProvider.tsx
 │   │   │   │   │   ├── ModalTabLayout.tsx
 │   │   │   │   │   ├── PreBuilt.stories.tsx
-│   │   │   │   │   ├── _base.scss
+│   │   │   │   │   ├── _index.scss
 │   │   │   │   │   ├── index.mdx
-│   │   │   │   │   ├── index.scss
 │   │   │   │   │   ├── index.spec.tsx
 │   │   │   │   │   ├── index.stories.tsx
 │   │   │   │   │   ├── index.tsx
@@ -1125,6 +1138,7 @@
 │   │   │   │   │   │   └── stories
 │   │   │   │   │   │       ├── ShareModal.mdx
 │   │   │   │   │   │       ├── ShareModalExample.tsx
+│   │   │   │   │   │       ├── ShareModalExtensionsExample.tsx
 │   │   │   │   │   │       └── share-modal.stories.tsx
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── users-invitation
@@ -1269,7 +1283,6 @@
 │   │   │   │   └── nl-NL.json
 │   │   │   ├── style-stories.scss
 │   │   │   ├── styles
-│   │   │   │   ├── _variables.scss
 │   │   │   │   └── fonts.scss
 │   │   │   ├── tests
 │   │   │   │   ├── AnimateMock.ts
@@ -1343,7 +1356,6 @@
 │       │   │   ├── tsconfig.build.json
 │       │   │   └── tsconfig.json
 │       │   └── lib
-│       │       ├── Compatibility.spec.ts
 │       │       ├── cunningham-tokens.ts
 │       │       ├── cunningham.ts
 │       │       ├── index.spec.ts
@@ -1360,4 +1372,4 @@
 ├── tsconfig.node.json
 ├── turbo.json
 └── yarn.lock
-171 directories, 1191 files
+174 directories, 1200 files
