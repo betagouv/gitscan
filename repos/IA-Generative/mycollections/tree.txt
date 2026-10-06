@@ -1,7 +1,11 @@
 .
 ├── .env.integration.example
+├── .github
+│   └── workflows
+│       └── tests.yml
 ├── .gitignore
 ├── .gitleaks.toml
+├── .pre-commit-config.yaml
 ├── CLAUDE.md
 ├── README.md
 ├── TODO.md
@@ -17,7 +21,10 @@
 │   │   ├── source-fenetre-de-lecture.png
 │   │   └── source-page-en-onglet.png
 │   └── sources.md
+├── mise.toml
 ├── myrag
+│   ├── .python-version
+│   ├── CHANGELOG.md
 │   ├── DEPLOYMENT.md
 │   ├── Dockerfile
 │   ├── app
@@ -42,7 +49,9 @@
 │   │   │   └── db.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
+│   │   │   ├── _acces_navigateur.py
 │   │   │   ├── _collectif_commun.py
+│   │   │   ├── _droits.py
 │   │   │   ├── accueil.py
 │   │   │   ├── amorces.py
 │   │   │   ├── articles.py
@@ -62,6 +71,7 @@
 │   │   │   ├── playground_bank.py
 │   │   │   ├── publication.py
 │   │   │   ├── qr_cache_router.py
+│   │   │   ├── recherche.py
 │   │   │   ├── sources.py
 │   │   │   └── sync.py
 │   │   ├── security_utils.py
@@ -105,6 +115,7 @@
 │   │   │   ├── journal.py
 │   │   │   ├── keycloak_client.py
 │   │   │   ├── legifrance_client.py
+│   │   │   ├── liens.py
 │   │   │   ├── morceau.py
 │   │   │   ├── nommage.py
 │   │   │   ├── openrag_client.py
@@ -116,8 +127,9 @@
 │   │   │   └── sync_service.py
 │   │   ├── static
 │   │   │   └── graph_view.html
-│   │   └── templates
-│   │       └── article_view.html
+│   │   ├── templates
+│   │   │   └── article_view.html
+│   │   └── version.py
 │   ├── build-graph.py
 │   ├── data
 │   │   └── ceseda-v3
@@ -131,6 +143,8 @@
 │   │   │   └── main.css
 │   │   ├── components
 │   │   │   ├── CarteCollection.vue
+│   │   │   ├── EtatDuService.vue
+│   │   │   ├── FilAriane.vue
 │   │   │   ├── WizardStepper.vue
 │   │   │   ├── collectif
 │   │   │   │   ├── Avancement.vue
@@ -159,7 +173,10 @@
 │   │   │   ├── useCategories.ts
 │   │   │   ├── useChat.ts
 │   │   │   ├── useCollectif.ts
+│   │   │   ├── useEtatService.ts
+│   │   │   ├── usePiegeFocus.ts
 │   │   │   └── useTitreCollection.ts
+│   │   ├── error.vue
 │   │   ├── layouts
 │   │   │   └── default.vue
 │   │   ├── middleware
@@ -206,26 +223,35 @@
 │   │   │   └── favicon.svg
 │   │   ├── tests
 │   │   │   └── unit
-│   │   │       ├── access.test.ts
 │   │   │       ├── accueil.test.ts
 │   │   │       ├── catalogue.test.ts
 │   │   │       ├── collectif.test.ts
 │   │   │       ├── collectionName.test.ts
 │   │   │       ├── corpus.test.ts
-│   │   │       └── extrait.test.ts
+│   │   │       ├── etatService.test.ts
+│   │   │       ├── extrait.test.ts
+│   │   │       ├── filAriane.test.ts
+│   │   │       ├── groupes.test.ts
+│   │   │       ├── libelles.test.ts
+│   │   │       ├── playground.test.ts
+│   │   │       └── retour.test.ts
 │   │   ├── tsconfig.json
 │   │   ├── types
 │   │   │   └── collection.ts
 │   │   ├── utils
-│   │   │   ├── access.ts
 │   │   │   ├── accueil.ts
 │   │   │   ├── capacites.ts
 │   │   │   ├── catalogue.ts
 │   │   │   ├── collectif.ts
 │   │   │   ├── collectionName.ts
 │   │   │   ├── corpus.ts
+│   │   │   ├── etatService.ts
 │   │   │   ├── extrait.ts
+│   │   │   ├── filAriane.ts
+│   │   │   ├── groupes.ts
+│   │   │   ├── libelles.ts
 │   │   │   ├── playground.ts
+│   │   │   ├── retour.ts
 │   │   │   └── sanitize.ts
 │   │   └── vitest.config.ts
 │   ├── k8s
@@ -247,22 +273,42 @@
 │   ├── owui-plugin.yaml
 │   ├── prompts
 │   │   └── prompt-import-ceseda.md
+│   ├── pyproject.toml
 │   ├── pytest.ini
-│   ├── requirements.txt
+│   ├── requirements-e2e.txt
+│   ├── scripts
+│   │   └── version_json.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
 │   │   ├── e2e
-│   │   │   └── __init__.py
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── _sso.py
+│   │   │   ├── conftest.py
+│   │   │   ├── fixtures
+│   │   │   │   └── note-de-controle.md
+│   │   │   ├── test_01_acces.py
+│   │   │   ├── test_02_accueil_catalogue.py
+│   │   │   ├── test_03_bac_a_sable.py
+│   │   │   ├── test_04_creation_collection.py
+│   │   │   ├── test_05_publication_assistant.py
+│   │   │   ├── test_06_demandes.py
+│   │   │   ├── test_07_guide.py
+│   │   │   ├── test_08_administration.py
+│   │   │   ├── test_09_captures.py
+│   │   │   ├── test_10_mobile_et_clavier.py
+│   │   │   └── test_11_recherche_portail.py
 │   │   ├── integration
 │   │   │   └── __init__.py
 │   │   └── unit
 │   │       ├── __init__.py
-│   │       └── test_*.py  (53 files)
+│   │       └── test_*.py  (65 files)
+│   ├── uv.lock
 │   └── watch-ingest.sh
 ├── openwebui
 │   ├── README.md
 │   └── feedback_forwarder.py
 ├── setup-keycloak.sh
 └── sync_keycloak_openrag.py
-47 directories, 272 files
+51 directories, 326 files
