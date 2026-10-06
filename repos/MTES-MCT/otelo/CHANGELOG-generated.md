@@ -1,17 +1,19 @@
-## Changelog : otelo (30 derniers jours, au 23 août 2026)
+## Changelog : otelo (30 derniers jours, au 21 septembre 2026)
 
 ### Résumé
-Otelo renforce l'accompagnement de ses utilisateurs grâce à l'introduction d'un assistant de simulation pas-à-pas (wizard) et d'un nouveau mode tutoriel. Ces évolutions visent à simplifier la création de scénarios, de la configuration initiale jusqu'à l'analyse des résultats. Parallèlement, la plateforme améliore ses capacités de pilotage avec une refonte de l'administration et la mise en place d'outils de suivi d'usage.
+Ce mois-ci, l'accent a été mis sur l'amélioration de l'accompagnement utilisateur grâce à l'introduction d'un nouvel assistant de simulation (wizard) et d'un système de tutoriel interactif. La sécurité de la plateforme a été considérablement renforcée (authentification à deux facteurs, protection contre les abus) et de nouveaux outils d'analyse, comme la pyramide des âges et la fonctionnalité Docurba, ont été intégrés.
 
 ### Évolutions fonctionnelles
-- **Accompagnement utilisateur** : Mise en place d'un assistant (wizard) guidant l'utilisateur de la configuration jusqu'à l'obtention des résultats, incluant la gestion des documents d'urbanisme et la décomposition des estimations. [#55](https://github.com/MTES-MCT/otelo/pull/55), [#56](https://github.com/MTES-MCT/otelo/pull/56)
-- **Aide à la prise en main** : Introduction d'un mode tutoriel interactif couvrant les six étapes clés de la création de scénarios. [#53](https://github.com/MTES-MCT/otelo/pull/53)
-- **Planification et temporalité** : Ajout d'un volet (drawer) dédié à la planification territoriale et intégration du millésime dans le cadrage temporel. [#54](https://github.com/MTES-MCT/otelo/pull/54)
-- **Corrections d'exports** : Résolution de problèmes concernant l'encodage des accents et la gestion des noms de fichiers lors des exports Excel.
+- **Accompagnement et tutoriels** : Mise en place d'un assistant (wizard) guidant l'utilisateur de la configuration aux résultats (incluant les documents d'urbanisme et la décomposition des estimations) et déploiement d'un nouveau mode tutoriel interactif couvrant les étapes de création.
+- **Analyses et graphiques** : Ajout de la pyramide des âges et corrections des graphiques de taux EPCI concernant la largeur automatique et les données démographiques [#69](https://github.com/MTES-MCT/otelo/pull/69).
+- **Nouvelles fonctionnalités** : Intégration de la fonctionnalité "Docurba" et ajout de l'authentification à deux facteurs (2FA).
+- **Gestion des données et exports** : Correction des noms de groupes lors des fusions d'EPCI [#68](https://github.com/MTES-MCT/otelo/pull/68), détection des doublons d'exports PowerPoint [#64](https://github.com/MTES-MCT/otelo/pull/64) et corrections sur les exports Excel.
+- **Administration et suivi** : Refonte de l'interface d'administration et mise en place du suivi d'usage via Matomo et base de données.
 
 ### Évolutions techniques
-- **Suivi et Administration** : Implémentation de la mesure d'usage (via base de données et Matomo) et refonte complète de l'interface d'administration. [#57](https://github.com/MTES-MCT/otelo/pull/57)
-- **Architecture** : Refactorisation du parcours de scénario via la création d'un registre unique des étapes pour une meilleure gestion du flux utilisateur.
+- **Sécurité renforcée** : Implémentation de la politique de sécurité du contenu (CSP), des en-têtes de sécurité, de la limitation de débit (rate limiting) sur les routes sensibles et de la résolution d'IP CIDR [#66](https://github.com/MTES-MCT/otelo/pull/66).
+- **Architecture et Code** : Refactorisation du registre des étapes du parcours de scénario pour une meilleure gestion des flux et validation des variables d'environnement via Zod.
+- **Infrastructure et CI/CD** : Optimisation des processus de build (gestion du cache Next.js, support monorepo) et ajustements de la configuration de la CI.
 
 ### Autres changements
-- Corrections mineures d'interface (bouton de signalement, fautes de frappe) et renommage de certains éléments.
+- Corrections de typographies et ajustements mineurs de l'interface utilisateur (bouton de signalement, modale de bienvenue).

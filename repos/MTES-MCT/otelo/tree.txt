@@ -14,11 +14,12 @@
 │   │   ├── .vscode
 │   │   │   └── settings.json
 │   │   ├── docker-compose.yml
-│   │   ├── import-error.sql
 │   │   ├── jest.config.json
 │   │   ├── nest-cli.json
 │   │   ├── package.json
 │   │   ├── prisma
+│   │   │   ├── checks
+│   │   │   │   └── projections.sql
 │   │   │   ├── migrations
 │   │   │   │   ├── 0_init
 │   │   │   │   │   └── migration.sql
@@ -104,9 +105,13 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260520140000_rp_add_millesime
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260521000000_add_millesime_rp_tables
+│   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260526000000_remove_historical_demographic_series
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260527000000_docurba_file_cache
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260706120000_flag_dordogne_epcis_no_insee_projection
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260707120000_demographic_evolution_scenarios_nullable
 │   │   │   │   │   └── migration.sql
@@ -124,6 +129,24 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260823120000_rename_bassins_aout_2026
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260824100000_add_projection_zones
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260824100100_add_projection_indicators
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260826180000_backfill_rp_tables_missing_millesimes
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260826200000_add_epci_contours
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260901120000_add_rate_limits
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260901140000_add_two_factor
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260909120000_export_request_id_and_supersede
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260910120000_drop_api_consumer_encrypted_key
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260910130000_scope_demographic_custom_to_user
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -134,23 +157,24 @@
 │   │   │   ├── accommodation-rates
 │   │   │   │   ├── accommodation-rates.controller.spec.ts
 │   │   │   │   ├── accommodation-rates.controller.ts
+│   │   │   │   ├── accommodation-rates.dto.ts
 │   │   │   │   ├── accommodation-rates.module.ts
 │   │   │   │   ├── accommodation-rates.service.spec.ts
 │   │   │   │   └── accommodation-rates.service.ts
 │   │   │   ├── admin
 │   │   │   │   ├── admin.controller.spec.ts
 │   │   │   │   ├── admin.controller.ts
+│   │   │   │   ├── admin.dto.ts
 │   │   │   │   ├── admin.module.ts
 │   │   │   │   ├── admin.service.spec.ts
 │   │   │   │   └── admin.service.ts
 │   │   │   ├── auth
-│   │   │   │   ├── auth.controller.spec.ts
-│   │   │   │   ├── auth.controller.ts
 │   │   │   │   ├── auth.module.ts
 │   │   │   │   ├── auth.service.spec.ts
 │   │   │   │   ├── auth.service.ts
 │   │   │   │   ├── better-auth.spec.ts
-│   │   │   │   └── better-auth.ts
+│   │   │   │   ├── better-auth.ts
+│   │   │   │   └── proconnect-userinfo.spec.ts
 │   │   │   ├── bad-quality
 │   │   │   │   ├── bad-quality.module.ts
 │   │   │   │   ├── bad-quality.service.spec.ts
@@ -159,6 +183,7 @@
 │   │   │   │   ├── bassin.module.ts
 │   │   │   │   ├── bassin.service.spec.ts
 │   │   │   │   └── bassin.service.ts
+│   │   │   ├── body-validation.spec.ts
 │   │   │   ├── calculation
 │   │   │   │   ├── calculation.module.ts
 │   │   │   │   ├── coefficient-calculation
@@ -197,6 +222,7 @@
 │   │   │   │   │   │   └── mauvaise-qualite-b14
 │   │   │   │   │   │       ├── bad-quality.service.spec.ts
 │   │   │   │   │   │       └── bad-quality.service.ts
+│   │   │   │   │   ├── estimation-parity.spec.ts
 │   │   │   │   │   ├── needs-calculation-cli.module.ts
 │   │   │   │   │   ├── needs-calculation.module.ts
 │   │   │   │   │   ├── needs-calculation.service.spec.ts
@@ -213,9 +239,21 @@
 │   │   │   │   ├── cli.module.ts
 │   │   │   │   ├── cli.ts
 │   │   │   │   ├── commands
+│   │   │   │   │   ├── backfill-epci-contours.command.ts
 │   │   │   │   │   ├── backfill-epcis-geo.command.ts
 │   │   │   │   │   ├── import-backup.command.ts
 │   │   │   │   │   ├── import-csv.command.ts
+│   │   │   │   │   ├── import-projections.command.spec.ts
+│   │   │   │   │   ├── import-projections.command.ts
+│   │   │   │   │   ├── projections
+│   │   │   │   │   │   ├── projection-column-parser.spec.ts
+│   │   │   │   │   │   ├── projection-column-parser.ts
+│   │   │   │   │   │   ├── projection-row-merger.spec.ts
+│   │   │   │   │   │   ├── projection-row-merger.ts
+│   │   │   │   │   │   ├── projection-sheets.config.ts
+│   │   │   │   │   │   ├── projection-workbook-reader.ts
+│   │   │   │   │   │   ├── projection-zone-resolver.spec.ts
+│   │   │   │   │   │   └── projection-zone-resolver.ts
 │   │   │   │   │   ├── recalculate-results.command.ts
 │   │   │   │   │   ├── sync-docurba.command.ts
 │   │   │   │   │   └── update-user-types.command.ts
@@ -226,6 +264,7 @@
 │   │   │   │   │   ├── api-consumer.ts
 │   │   │   │   │   ├── authenticated-user.ts
 │   │   │   │   │   ├── control-access.decorator.ts
+│   │   │   │   │   ├── exclude-open-api.decorator.ts
 │   │   │   │   │   └── public.decorator.ts
 │   │   │   │   ├── exceptions
 │   │   │   │   │   └── auth.exceptions.ts
@@ -239,18 +278,26 @@
 │   │   │   │   └── utils
 │   │   │   │       ├── content-disposition.spec.ts
 │   │   │   │       ├── content-disposition.ts
+│   │   │   │       ├── csv-upload.ts
 │   │   │   │       ├── csv.spec.ts
 │   │   │   │       ├── csv.ts
 │   │   │   │       ├── date-range.spec.ts
 │   │   │   │       ├── date-range.ts
 │   │   │   │       ├── email-anonymizer.ts
-│   │   │   │       └── encryption.ts
+│   │   │   │       ├── http-error.spec.ts
+│   │   │   │       ├── http-error.ts
+│   │   │   │       ├── json-for-script.spec.ts
+│   │   │   │       └── json-for-script.ts
 │   │   │   ├── config
-│   │   │   │   ├── env.validation.ts
-│   │   │   │   └── environment.ts
+│   │   │   │   ├── env.ts
+│   │   │   │   ├── trusted-proxies.spec.ts
+│   │   │   │   ├── trusted-proxies.ts
+│   │   │   │   ├── two-factor-bypass.spec.ts
+│   │   │   │   └── two-factor-bypass.ts
 │   │   │   ├── consumers
 │   │   │   │   ├── consumers.controller.spec.ts
 │   │   │   │   ├── consumers.controller.ts
+│   │   │   │   ├── consumers.dto.ts
 │   │   │   │   ├── consumers.module.ts
 │   │   │   │   ├── consumers.service.spec.ts
 │   │   │   │   └── consumers.service.ts
@@ -269,6 +316,7 @@
 │   │   │   ├── data-visualisation
 │   │   │   │   ├── data-visualisation.controller.spec.ts
 │   │   │   │   ├── data-visualisation.controller.ts
+│   │   │   │   ├── data-visualisation.dto.ts
 │   │   │   │   ├── data-visualisation.module.ts
 │   │   │   │   ├── data-visualisation.service.spec.ts
 │   │   │   │   └── data-visualisation.service.ts
@@ -276,24 +324,34 @@
 │   │   │   │   ├── prisma.module.ts
 │   │   │   │   └── prisma.service.ts
 │   │   │   ├── demographic-evolution
+│   │   │   │   ├── aggregate-across-epcis.spec.ts
+│   │   │   │   ├── aggregate-across-epcis.ts
 │   │   │   │   ├── demographic-evolution.controller.spec.ts
 │   │   │   │   ├── demographic-evolution.controller.ts
+│   │   │   │   ├── demographic-evolution.dto.ts
 │   │   │   │   ├── demographic-evolution.module.ts
 │   │   │   │   ├── demographic-evolution.service.spec.ts
 │   │   │   │   └── demographic-evolution.service.ts
 │   │   │   ├── demographic-evolution-custom
 │   │   │   │   ├── demographic-evolution-custom.controller.ts
 │   │   │   │   ├── demographic-evolution-custom.module.ts
+│   │   │   │   ├── demographic-evolution-custom.service.spec.ts
 │   │   │   │   └── demographic-evolution-custom.service.ts
 │   │   │   ├── docs
 │   │   │   │   └── API_EXTERNAL.md
 │   │   │   ├── docurba
+│   │   │   │   ├── docurba.contract.spec.ts
 │   │   │   │   ├── docurba.controller.ts
+│   │   │   │   ├── docurba.dto.spec.ts
+│   │   │   │   ├── docurba.dto.ts
 │   │   │   │   ├── docurba.module.ts
+│   │   │   │   ├── docurba.service.spec.ts
 │   │   │   │   └── docurba.service.ts
 │   │   │   ├── email
+│   │   │   │   ├── email.contract.spec.ts
 │   │   │   │   ├── email.controller.spec.ts
 │   │   │   │   ├── email.controller.ts
+│   │   │   │   ├── email.dto.ts
 │   │   │   │   ├── email.module.ts
 │   │   │   │   ├── email.service.spec.ts
 │   │   │   │   ├── email.service.ts
@@ -314,6 +372,7 @@
 │   │   │   ├── epcis
 │   │   │   │   ├── epcis.controller.spec.ts
 │   │   │   │   ├── epcis.controller.ts
+│   │   │   │   ├── epcis.dto.ts
 │   │   │   │   ├── epcis.module.ts
 │   │   │   │   ├── epcis.service.spec.ts
 │   │   │   │   └── epcis.service.ts
@@ -333,8 +392,14 @@
 │   │   │   │   │   ├── chart-generation.module.ts
 │   │   │   │   │   ├── chart-generation.service.spec.ts
 │   │   │   │   │   ├── chart-generation.service.ts
+│   │   │   │   │   ├── chart-runtime.spec.ts
+│   │   │   │   │   ├── chart-runtime.ts
 │   │   │   │   │   └── colors.ts
+│   │   │   │   ├── export-powerpoint.contract.spec.ts
+│   │   │   │   ├── export-powerpoint.controller.integration-spec.ts
+│   │   │   │   ├── export-powerpoint.controller.spec.ts
 │   │   │   │   ├── export-powerpoint.controller.ts
+│   │   │   │   ├── export-powerpoint.dto.ts
 │   │   │   │   ├── export-powerpoint.module.ts
 │   │   │   │   ├── export-powerpoint.service.spec.ts
 │   │   │   │   ├── export-powerpoint.service.ts
@@ -342,6 +407,9 @@
 │   │   │   │   │   ├── placeholder-generation.module.ts
 │   │   │   │   │   ├── placeholder-generation.service.spec.ts
 │   │   │   │   │   └── placeholder-generation.service.ts
+│   │   │   │   ├── powerpoint-requests.service.integration-spec.ts
+│   │   │   │   ├── powerpoint-requests.service.spec.ts
+│   │   │   │   ├── powerpoint-requests.service.ts
 │   │   │   │   └── zip
 │   │   │   │       ├── zip.module.ts
 │   │   │   │       ├── zip.service.spec.ts
@@ -355,6 +423,7 @@
 │   │   │   │   └── external.service.ts
 │   │   │   ├── feedback
 │   │   │   │   ├── feedback.controller.ts
+│   │   │   │   ├── feedback.dto.ts
 │   │   │   │   ├── feedback.module.ts
 │   │   │   │   ├── feedback.service.spec.ts
 │   │   │   │   └── feedback.service.ts
@@ -389,16 +458,29 @@
 │   │   │   │   └── physical-inadequation.service.ts
 │   │   │   ├── preview
 │   │   │   │   ├── preview.controller.ts
+│   │   │   │   ├── preview.dto.ts
 │   │   │   │   ├── preview.module.ts
+│   │   │   │   ├── preview.service.spec.ts
 │   │   │   │   └── preview.service.ts
+│   │   │   ├── projections
+│   │   │   │   ├── age-pyramid.service.spec.ts
+│   │   │   │   ├── age-pyramid.service.ts
+│   │   │   │   ├── projection-zones.service.spec.ts
+│   │   │   │   ├── projection-zones.service.ts
+│   │   │   │   ├── projections.controller.spec.ts
+│   │   │   │   ├── projections.controller.ts
+│   │   │   │   ├── projections.dto.spec.ts
+│   │   │   │   ├── projections.dto.ts
+│   │   │   │   ├── projections.module.ts
+│   │   │   │   ├── projections.service.spec.ts
+│   │   │   │   └── projections.service.ts
 │   │   │   ├── results
-│   │   │   │   ├── preview.controller.ts
-│   │   │   │   ├── preview.service.ts
 │   │   │   │   ├── results.controller.spec.ts
 │   │   │   │   ├── results.controller.ts
 │   │   │   │   ├── results.module.ts
 │   │   │   │   ├── results.service.spec.ts
 │   │   │   │   └── results.service.ts
+│   │   │   ├── route-access.spec.ts
 │   │   │   ├── rp-insee
 │   │   │   │   ├── rp-insee.module.ts
 │   │   │   │   ├── rp-insee.service.spec.ts
@@ -416,6 +498,7 @@
 │   │   │   │   ├── data
 │   │   │   │   │   └── data.ts
 │   │   │   │   ├── data-visualisation
+│   │   │   │   │   ├── age-pyramid.ts
 │   │   │   │   │   └── data-visualisation.ts
 │   │   │   │   ├── demographic-evolution
 │   │   │   │   │   └── demographic-evolution.ts
@@ -424,11 +507,16 @@
 │   │   │   │   ├── email
 │   │   │   │   │   └── email.ts
 │   │   │   │   ├── epci-group.ts
+│   │   │   │   ├── epcis
+│   │   │   │   │   └── epci-contour.ts
 │   │   │   │   ├── export-powerpoint
 │   │   │   │   │   └── export-powerpoint.ts
 │   │   │   │   ├── feedback
 │   │   │   │   │   └── submit-feedback.ts
 │   │   │   │   ├── json.ts
+│   │   │   │   ├── projections
+│   │   │   │   │   └── projections.ts
+│   │   │   │   ├── query.ts
 │   │   │   │   ├── results
 │   │   │   │   │   └── results.ts
 │   │   │   │   ├── scenarios
@@ -450,8 +538,10 @@
 │   │   │   ├── simulations
 │   │   │   │   ├── simulation-changes.service.spec.ts
 │   │   │   │   ├── simulation-changes.service.ts
+│   │   │   │   ├── simulations.contract.spec.ts
 │   │   │   │   ├── simulations.controller.spec.ts
 │   │   │   │   ├── simulations.controller.ts
+│   │   │   │   ├── simulations.dto.ts
 │   │   │   │   ├── simulations.module.ts
 │   │   │   │   ├── simulations.service.spec.ts
 │   │   │   │   └── simulations.service.ts
@@ -463,20 +553,24 @@
 │   │   │   │   ├── audience-statistics.service.ts
 │   │   │   │   ├── statistics-exports.controller.ts
 │   │   │   │   ├── statistics-exports.service.ts
+│   │   │   │   ├── statistics.controller.spec.ts
 │   │   │   │   ├── statistics.controller.ts
 │   │   │   │   ├── statistics.module.ts
-│   │   │   │   └── statistics.service.ts
+│   │   │   │   ├── statistics.service.ts
+│   │   │   │   └── team.ts
 │   │   │   ├── stock-requirements
 │   │   │   │   ├── stock-requirements.module.ts
 │   │   │   │   ├── stock-requirements.service.spec.ts
 │   │   │   │   └── stock-requirements.service.ts
 │   │   │   ├── types
 │   │   │   │   └── prisma-json.ts
+│   │   │   ├── uploads.contract.spec.ts
 │   │   │   ├── users
 │   │   │   │   ├── user-type.utils.ts
 │   │   │   │   ├── users-import.controller.spec.ts
 │   │   │   │   ├── users.controller.spec.ts
 │   │   │   │   ├── users.controller.ts
+│   │   │   │   ├── users.dto.ts
 │   │   │   │   ├── users.module.ts
 │   │   │   │   ├── users.service.spec.ts
 │   │   │   │   └── users.service.ts
@@ -486,7 +580,13 @@
 │   │   │       └── vacancy.service.ts
 │   │   ├── test
 │   │   │   ├── app.e2e-spec.ts
+│   │   │   ├── fixtures.ts
+│   │   │   ├── http-app.ts
+│   │   │   ├── integration-database.ts
+│   │   │   ├── integration-env.ts
+│   │   │   ├── integration-setup.ts
 │   │   │   ├── jest-e2e.json
+│   │   │   ├── jest-integration.json
 │   │   │   └── jest-setup.ts
 │   │   ├── tsconfig.build.json
 │   │   ├── tsconfig.cli.json
@@ -673,6 +773,8 @@
 │       │   │   ├── (unauthenticated)
 │       │   │   │   ├── (auth)
 │       │   │   │   │   ├── connexion
+│       │   │   │   │   │   ├── double-authentification
+│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── inscription
 │       │   │   │   │   │   └── page.tsx
@@ -766,15 +868,15 @@
 │       │   │   │   ├── admin
 │       │   │   │   │   ├── consumers
 │       │   │   │   │   │   ├── [id]
-│       │   │   │   │   │   │   ├── key
-│       │   │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   │   ├── regenerate-key
 │       │   │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── users
 │       │   │   │   │       └── [id]
-│       │   │   │   │           └── access
+│       │   │   │   │           ├── access
+│       │   │   │   │           │   └── route.ts
+│       │   │   │   │           └── region
 │       │   │   │   │               └── route.ts
 │       │   │   │   ├── bassin
 │       │   │   │   │   └── epcis
@@ -842,6 +944,8 @@
 │       │   │   │   │   ├── preview
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── request-powerpoint
+│       │   │   │   │   │   ├── check
+│       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── statistics
@@ -939,6 +1043,7 @@
 │       │   │   │   ├── login-form.tsx
 │       │   │   │   ├── reset-password-form.tsx
 │       │   │   │   ├── sign-up-form.tsx
+│       │   │   │   ├── two-factor-form.tsx
 │       │   │   │   ├── unauthorized-actions.tsx
 │       │   │   │   └── user-type-selection-modal.tsx
 │       │   │   ├── brand-top.tsx
@@ -953,6 +1058,7 @@
 │       │   │   │   ├── customized-dot.tsx
 │       │   │   │   ├── data-visualisation
 │       │   │   │   │   ├── accommodation-evolution-charts.module.css
+│       │   │   │   │   ├── age-pyramid-chart.tsx
 │       │   │   │   │   ├── bad-housing-charts.tsx
 │       │   │   │   │   ├── colors.ts
 │       │   │   │   │   ├── household-sizes-chart.tsx
@@ -1005,6 +1111,9 @@
 │       │   │   ├── navigation
 │       │   │   │   ├── header-navigation-client.tsx
 │       │   │   │   └── header-navigation.tsx
+│       │   │   ├── onboarding
+│       │   │   │   ├── welcome-content.ts
+│       │   │   │   └── welcome-modal.tsx
 │       │   │   ├── quick-access-items.tsx
 │       │   │   ├── report-issue-button.tsx
 │       │   │   ├── simulations
@@ -1081,6 +1190,7 @@
 │       │   │   │   │   ├── demographic-settings-simulation-side-menu-title.tsx
 │       │   │   │   │   ├── demographic-settings-simulation-side-menu.tsx
 │       │   │   │   │   ├── demographic-settings-simulation-stepper.tsx
+│       │   │   │   │   ├── epci-tabs.tsx
 │       │   │   │   │   ├── epcis-accommodation-rates
 │       │   │   │   │   │   ├── aggregated-parc-comparison-chart.tsx
 │       │   │   │   │   │   ├── aggregated-secondary-parc-comparison-chart.tsx
@@ -1163,6 +1273,7 @@
 │       │   │   │   │   ├── select-territorial-issues.tsx
 │       │   │   │   │   ├── simulation-form-context-wrapper.tsx
 │       │   │   │   │   ├── simulation-side-menu.module.css
+│       │   │   │   │   ├── stepper-with-tutorial.module.css
 │       │   │   │   │   ├── update-simulation-form.tsx
 │       │   │   │   │   ├── wizard-aside
 │       │   │   │   │   │   ├── creation-estimation-card.tsx
@@ -1177,6 +1288,7 @@
 │       │   │   │   │   ├── wizard-step-tracker.tsx
 │       │   │   │   │   └── wizard-steps.ts
 │       │   │   │   ├── tutorial
+│       │   │   │   │   ├── bad-housing-tutorial-button.tsx
 │       │   │   │   │   ├── results-tutorial-button.tsx
 │       │   │   │   │   ├── tutorial-button.tsx
 │       │   │   │   │   ├── tutorial-content.ts
@@ -1192,6 +1304,7 @@
 │       │   │   ├── skip-links.tsx
 │       │   │   ├── table
 │       │   │   │   ├── accommodation-evolution-table.tsx
+│       │   │   │   ├── age-pyramid-table.tsx
 │       │   │   │   ├── epcis-details-table.tsx
 │       │   │   │   ├── lovac-accommodation-evolution-table.tsx
 │       │   │   │   ├── population-evolution-table.module.css
@@ -1251,19 +1364,21 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   └── use-*.ts  (60 files)
+│       │   │   └── use-*.ts  (64 files)
 │       │   ├── lib
 │       │   │   ├── TRACKING.md
 │       │   │   ├── api
 │       │   │   │   └── admin-proxy.ts
 │       │   │   ├── auth
 │       │   │   │   ├── client.ts
+│       │   │   │   ├── post-login-destination.ts
 │       │   │   │   └── server.ts
 │       │   │   └── tracking.ts
 │       │   ├── providers
 │       │   │   └── tanstack-client.tsx
 │       │   ├── schemas
 │       │   │   ├── accommodation-evolution.ts
+│       │   │   ├── age-pyramid.ts
 │       │   │   ├── bassin.ts
 │       │   │   ├── contact-form.ts
 │       │   │   ├── demographic-evolution-custom.ts
@@ -1291,14 +1406,15 @@
 │       │   │   ├── get-departments-details.ts
 │       │   │   └── simulation
 │       │   │       ├── get-dashboard-list.ts
+│       │   │       ├── get-epci-contours.ts
 │       │   │       └── get-grouped-simulations-with-results.ts
 │       │   ├── types
 │       │   │   └── simulation-page-props.ts
 │       │   └── utils
 │       │       ├── calculation-helpers.ts
+│       │       ├── carto-basemap.ts
 │       │       ├── date-helpers.ts
 │       │       ├── epci-group-name.ts
-│       │       ├── estimation-breakdown.ts
 │       │       ├── format-numbers.ts
 │       │       ├── omphale-label.ts
 │       │       ├── projection.ts
@@ -1313,6 +1429,10 @@
 │   └── shared
 │       ├── package.json
 │       ├── src
+│       │   ├── auth
+│       │   │   └── two-factor.ts
+│       │   ├── calculations
+│       │   │   └── estimation-breakdown.ts
 │       │   ├── enums
 │       │   │   ├── b11-etablissement.ts
 │       │   │   ├── b15-surocc.ts
@@ -1360,4 +1480,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-396 directories, 1025 files
+417 directories, 1128 files
