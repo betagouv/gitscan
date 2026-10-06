@@ -115,22 +115,29 @@
 │   │       │   ├── clean_cnaf_2_after_qf_batch.ipynb
 │   │       │   ├── clean_cnaf_2a_aah_aeeh.ipynb
 │   │       │   ├── clean_cnaf_lib.py
-│   │       │   └── test_clean_cnaf_lib.py
+│   │       │   ├── reconcile_cnaf_lib.py
+│   │       │   ├── reconcile_cnaf_raw_with_codes.ipynb
+│   │       │   ├── test_clean_cnaf_lib.py
+│   │       │   └── test_reconcile_cnaf_lib.py
 │   │       ├── cnous
 │   │       │   ├── clean_cnous.ipynb
 │   │       │   ├── clean_cnous_lib.py
 │   │       │   └── test_clean_cnous_lib.py
 │   │       ├── franceconnect
 │   │       │   ├── README.md
+│   │       │   ├── check_confirmed.sql
 │   │       │   ├── check_writeback.sql
 │   │       │   ├── clean_fc_lib.py
 │   │       │   ├── clean_franceconnect.ipynb
 │   │       │   ├── export_eligible_pending.sql
 │   │       │   ├── fc_pipeline.py
+│   │       │   ├── match_beneficiaires.sql
 │   │       │   ├── run_fc_pipeline.sh
 │   │       │   ├── test_clean_fc_lib.py
 │   │       │   ├── test_fc_pipeline.py
+│   │       │   ├── test_match_beneficiaires.py
 │   │       │   ├── writeback_codes.ipynb
+│   │       │   ├── writeback_confirmed.sql
 │   │       │   └── writeback_verdict.sql
 │   │       ├── generate_codes_lib.py
 │   │       ├── generate_new_codes.ipynb
@@ -192,7 +199,7 @@
 │       │   ├── venv.yml
 │       │   └── visidata.yml
 │       └── templates
-│           ├── pass-sport-fc.env.j2
+│           ├── pass-sport-nb-logs.sh.j2
 │           ├── pass-sport-nb.sh.j2
 │           ├── pass-sport-qf-batch@.service.j2
 │           ├── pass-sport-sudoers.j2
@@ -200,6 +207,15 @@
 ├── docs
 │   ├── README.md
 │   └── index.html
+├── lamp01
+│   ├── .gitignore
+│   ├── README.md
+│   ├── compose.yml
+│   ├── db-init
+│   │   ├── 00-schema.sql
+│   │   └── 01-beneficiaire-cnaf-extra-field.sql
+│   ├── inject_csv.sh
+│   └── seed-fc-test.csv
 ├── proxy
 │   ├── servers.conf.erb
 │   └── waf_rules.conf
@@ -219,11 +235,8 @@
 │   │   ├── pass-sport-logo.png
 │   │   └── right-lines.png
 │   ├── components
-│   │   ├── PageTitle
-│   │   │   ├── PageTitle.tsx
-│   │   │   └── styles.module.scss
-│   │   └── eligibility-test-banner
-│   │       ├── EligibilityTestBanner.tsx
+│   │   └── PageTitle
+│   │       ├── PageTitle.tsx
 │   │       └── styles.module.scss
 │   ├── env.example.local
 │   ├── eslint.config.mjs
@@ -331,6 +344,7 @@
 │   │           ├── pass_sport_not_existing_error.png
 │   │           └── simon-running.webp
 │   ├── scripts
+│   │   ├── add-note-to-conversations-for-non-existing-qf.mjs
 │   │   ├── generate-communes-dataset.mjs
 │   │   ├── scalingo-cleanup.sh
 │   │   ├── send-in-mass-aeeh.mjs
@@ -341,6 +355,7 @@
 │   │   └── unresolve-boursiers.mjs
 │   ├── src
 │   │   ├── app
+│   │   │   ├── Matomo.test.tsx
 │   │   │   ├── Matomo.tsx
 │   │   │   ├── [...404]
 │   │   │   │   └── page.tsx
@@ -370,6 +385,8 @@
 │   │   │   │       ├── pdf
 │   │   │   │       │   └── route.ts
 │   │   │   │       ├── pivot.ts
+│   │   │   │       ├── relance
+│   │   │   │       │   └── route.ts
 │   │   │   │       ├── result
 │   │   │   │       │   └── route.ts
 │   │   │   │       ├── session.ts
@@ -393,6 +410,7 @@
 │   │   │   │   ├── highlight
 │   │   │   │   │   └── Highlight.tsx
 │   │   │   │   ├── je-donne-mon-avis-btn
+│   │   │   │   │   ├── JeDonneMonAvisBtn.test.tsx
 │   │   │   │   │   └── JeDonneMonAvisBtn.tsx
 │   │   │   │   ├── know-more
 │   │   │   │   │   ├── KnowMore.tsx
@@ -429,8 +447,10 @@
 │   │   │   │   ├── socialMediaLinks
 │   │   │   │   │   ├── SocialMediaLinks.tsx
 │   │   │   │   │   └── styles.module.scss
-│   │   │   │   └── tarte-au-citron
-│   │   │   │       └── tarte-au-citron.tsx
+│   │   │   │   ├── tarte-au-citron
+│   │   │   │   │   └── tarte-au-citron.tsx
+│   │   │   │   └── track-event-on-mount
+│   │   │   │       └── TrackEventOnMount.tsx
 │   │   │   ├── constants
 │   │   │   │   ├── cookie-manager.ts
 │   │   │   │   ├── display-type.ts
@@ -480,7 +500,9 @@
 │   │   │   │   ├── eligibility-test.ts
 │   │   │   │   ├── france-connect.ts
 │   │   │   │   ├── queue.ts
-│   │   │   │   └── redis.ts
+│   │   │   │   ├── redis.ts
+│   │   │   │   ├── relance-availability.ts
+│   │   │   │   └── relance.ts
 │   │   │   ├── sitemap.ts
 │   │   │   ├── tac-dsfr.scss
 │   │   │   ├── utilities.module.scss
@@ -504,12 +526,6 @@
 │   │   │       │   │   │   └── styles.module.scss
 │   │   │       │   │   ├── find-club-card
 │   │   │       │   │   │   ├── FindClubCard.tsx
-│   │   │       │   │   │   └── styles.module.scss
-│   │   │       │   │   ├── hero
-│   │   │       │   │   │   ├── Hero.tsx
-│   │   │       │   │   │   └── styles.module.scss
-│   │   │       │   │   ├── hero-panel
-│   │   │       │   │   │   ├── HeroPanel.tsx
 │   │   │       │   │   │   └── styles.module.scss
 │   │   │       │   │   ├── main-tiles
 │   │   │       │   │   │   ├── MainTiles.tsx
@@ -586,10 +602,10 @@
 │   │   │       │   │   │   ├── BeneficiaryRecap.ct.tsx
 │   │   │       │   │   │   ├── BeneficiaryRecap.test.tsx
 │   │   │       │   │   │   ├── BeneficiaryRecap.tsx
-│   │   │       │   │   │   ├── PostLoginFlow.tsx
-│   │   │       │   │   │   ├── PostLoginInfoForm.tsx
-│   │   │       │   │   │   ├── ResultPanel.tsx
-│   │   │       │   │   │   └── style.module.scss
+│   │   │       │   │   │   ├── CodePdfDownloadLink.tsx
+│   │   │       │   │   │   ├── EnqueueRetry.tsx
+│   │   │       │   │   │   ├── RelanceButton.tsx
+│   │   │       │   │   │   └── ResultPanel.tsx
 │   │   │       │   │   ├── radio-buttons-group
 │   │   │       │   │   │   ├── RadioButtonsGroup.tsx
 │   │   │       │   │   │   └── styles.module.scss
@@ -610,10 +626,13 @@
 │   │   │       │   │   │       └── RecipientEmailInput.tsx
 │   │   │       │   │   └── types
 │   │   │       │   │       └── types.ts
+│   │   │       │   ├── constants
+│   │   │       │   │   └── maintenance.ts
 │   │   │       │   ├── helpers
 │   │   │       │   │   ├── countries.ts
 │   │   │       │   │   ├── helper.spec.ts
-│   │   │       │   │   └── helper.tsx
+│   │   │       │   │   ├── helper.tsx
+│   │   │       │   │   └── tracking.ts
 │   │   │       │   ├── hooks
 │   │   │       │   │   ├── use-ask-consent-for-support.ts
 │   │   │       │   │   ├── use-recipient-email.ts
@@ -702,6 +721,7 @@
 │   │   │           │   ├── ContactSection
 │   │   │           │   │   └── ContactSection.tsx
 │   │   │           │   ├── ContentSection
+│   │   │           │   │   ├── ContentSection.test.tsx
 │   │   │           │   │   ├── ContentSection.tsx
 │   │   │           │   │   └── styles.module.scss
 │   │   │           │   ├── PopularityLevel
@@ -734,13 +754,17 @@
 │   │   │   │   └── verdict
 │   │   │   │       └── route.test.ts
 │   │   │   └── france-connect
-│   │   │       └── pdf
+│   │   │       ├── pdf
+│   │   │       │   └── route.test.ts
+│   │   │       └── relance
 │   │   │           └── route.test.ts
 │   │   ├── helpers
 │   │   │   └── builders
 │   │   │       └── confirm-response-body.ts
-│   │   └── services
-│   │       └── lca-job-id.test.ts
+│   │   ├── services
+│   │   │   └── lca-job-id.test.ts
+│   │   └── utils
+│   │       └── cookie.test.ts
 │   ├── tsconfig.json
 │   ├── types
 │   │   ├── City.ts
@@ -768,6 +792,8 @@
 │       ├── eligibility-test.ts
 │       ├── email.ts
 │       ├── faq.ts
+│       ├── matomo-category.ts
+│       ├── matomo.ts
 │       ├── simplified-eligibility-test-usage.spec.ts
 │       ├── simplified-eligibility-test-usage.ts
 │       ├── string.spec.ts
@@ -790,6 +816,16 @@
     │   ├── 0007_split_history_payload.sql
     │   ├── 0008_widen_enfant_projection.sql
     │   ├── 0009_drop_email_verifications.sql
+    │   ├── 0010_add_lca_check_attempts.sql
+    │   ├── 0011_add_code_email_columns.sql
+    │   ├── 0012_add_caisse.sql
+    │   ├── 0013_situation_boursier.sql
+    │   ├── 0014_drop_lca_check_attempts.sql
+    │   ├── 0015_drop_job_id_views.sql
+    │   ├── 0016_add_allocataire_conjoint.sql
+    │   ├── 0017_add_fc_relance_view.sql
+    │   ├── 0018_add_relance_allowed.sql
+    │   ├── 0019_add_query_indexes.sql
     │   └── meta
     │       ├── 0000_snapshot.json
     │       ├── 0001_snapshot.json
@@ -801,6 +837,16 @@
     │       ├── 0007_snapshot.json
     │       ├── 0008_snapshot.json
     │       ├── 0009_snapshot.json
+    │       ├── 0010_snapshot.json
+    │       ├── 0011_snapshot.json
+    │       ├── 0012_snapshot.json
+    │       ├── 0013_snapshot.json
+    │       ├── 0014_snapshot.json
+    │       ├── 0015_snapshot.json
+    │       ├── 0016_snapshot.json
+    │       ├── 0017_snapshot.json
+    │       ├── 0018_snapshot.json
+    │       ├── 0019_snapshot.json
     │       └── _journal.json
     ├── drizzle.config.ts
     ├── package.json
@@ -816,53 +862,74 @@
     │   │   └── schema.ts
     │   ├── eligibility
     │   │   ├── calls.ts
+    │   │   ├── candidates.ts
     │   │   ├── checkpoint.ts
     │   │   ├── client.ts
+    │   │   ├── rate-gate.ts
     │   │   ├── real-client.ts
     │   │   ├── sequence.ts
-    │   │   └── types.ts
+    │   │   ├── types.ts
+    │   │   └── verdicts.ts
     │   ├── email
     │   │   ├── link-mobility.ts
     │   │   └── notify.ts
+    │   ├── env.ts
     │   ├── index.ts
     │   ├── instrument.ts
     │   ├── jobs
+    │   │   ├── fc-code-emails-rows.ts
+    │   │   ├── fc-code-emails.ts
+    │   │   ├── fc-relance.ts
     │   │   ├── france-connect.ts
     │   │   ├── lca.ts
     │   │   └── shared.ts
-    │   ├── lca
-    │   │   ├── candidates.ts
-    │   │   ├── client.ts
-    │   │   ├── history.ts
-    │   │   ├── mock-client.ts
-    │   │   ├── process.ts
-    │   │   ├── real-client.ts
-    │   │   └── types.ts
     │   ├── load-env.ts
     │   ├── log.ts
+    │   ├── paris-time.ts
     │   ├── queues.ts
     │   └── scripts
+    │       ├── aeeh-422-replay.ts
+    │       ├── enqueue-fc-code-emails.ts
     │       ├── qf-batch-workdir -> ../../../data/2026/partners/qf-batch-workdir/
     │       ├── qf-batch.ts
+    │       ├── rate-config.ts
+    │       ├── rate-gate-probe.ts
     │       ├── rate-pacer.ts
     │       ├── run-qf-batch.sh
+    │       ├── send-test-email.ts
     │       └── split-csv.sh
     ├── test
     │   ├── e2e
+    │   │   ├── aeeh-fallback.e2e.test.ts
     │   │   ├── atomicity.e2e.test.ts
+    │   │   ├── checkpoint-resume.e2e.test.ts
     │   │   ├── dedup.e2e.test.ts
+    │   │   ├── fc-code-emails.e2e.test.ts
+    │   │   ├── fc-relance-qf-backfill.e2e.test.ts
+    │   │   ├── fc-relance.e2e.test.ts
     │   │   ├── harness.ts
     │   │   ├── history.e2e.test.ts
     │   │   ├── lca.e2e.test.ts
     │   │   ├── pipeline.e2e.test.ts
+    │   │   ├── provider-data-error.e2e.test.ts
+    │   │   ├── rate-gate-job.e2e.test.ts
+    │   │   ├── rate-gate.e2e.test.ts
     │   │   ├── ratelimit.e2e.test.ts
-    │   │   └── stale-job-requeue.e2e.test.ts
+    │   │   ├── stale-job-requeue.e2e.test.ts
+    │   │   └── validation-error.e2e.test.ts
     │   └── unit
+    │       ├── calls.test.ts
     │       ├── candidates.test.ts
+    │       ├── checkpoint.test.ts
     │       ├── cnous-params.test.ts
+    │       ├── fc-code-emails-rows.test.ts
+    │       ├── qf-batch.test.ts
     │       ├── qf-params.test.ts
-    │       └── rate-pacer.test.ts
+    │       ├── rate-gate.test.ts
+    │       ├── rate-pacer.test.ts
+    │       ├── sequence.test.ts
+    │       └── verdicts.test.ts
     ├── tsconfig.build.json
     ├── tsconfig.json
     └── vitest.config.ts
-222 directories, 645 files
+225 directories, 709 files

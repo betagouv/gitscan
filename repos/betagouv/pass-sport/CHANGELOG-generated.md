@@ -1,24 +1,28 @@
-## Changelog : pass-sport (30 derniers jours, au 09/09/2026)
+## Changelog : pass-sport (30 derniers jours, au 05 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a connu une évolution majeure de son interface, notamment pour le parcours "Famille Complète" qui bénéficie d'un nouveau design et de nouvelles fonctionnalités de téléchargement. Le processus d'éligibilité a été simplifié pour faciliter les démarches des utilisateurs. Parallèlement, la stabilité technique et la sécurité du service ont été renforcées par des optimisations de l'infrastructure et des processus de traitement de données en arrière-plan.
+Ce mois-ci, l'évolution majeure concerne l'intégration et le renforcement du parcours via FranceConnect, incluant de nouveaux mécanismes de relance et une meilleure gestion des erreurs. Les règles de calcul de l'éligibilité ont également été affinées pour mieux prendre en compte les situations familiales (conjoints) et les bénéficiaires de certaines aides (AAH, AEEH, boursiers).
 
 ### Évolutions fonctionnelles
-- **Refonte de l'expérience "Famille Complète" (FC) :** Nouvelle interface utilisateur pour le parcours FC, incluant un design modernisé des résultats et la possibilité de télécharger un document PDF ([#536](https://github.com/betagouv/pass-sport/pull/536)).
-- **Simplification du parcours utilisateur :** Amélioration du test d'éligibilité et optimisation du pré-remplissage des formulaires pour les parcours hors FC ([#532](https://github.com/betagouv/pass-sport/pull/532), [#520](https://github.com/betagouv/pass-sport/pull/520)).
-- **Nouveaux services de notification :** Mise en place de l'envoi d'e-mails de confirmation et d'information pour les utilisateurs ([#527](https://github.com/betagouv/pass-sport/pull/527)).
-- **Amélioration de la navigation :** Ajout de raccourcis vers le code, intégration de la section "Ma demande" dans le menu et affichage des informations de contact pour le parcours FC.
-- **Précisions sur les dossiers :** Ajout de détails concernant les pass enfants pour les dossiers de type "Famille Complète".
-- **Clarification des contenus :** Mise à jour des libellés (wording) pour faciliter la compréhension du téléchargement du code et des différents parcours.
+- **Intégration FranceConnect** : déploiement du support de connexion FranceConnect, mise en place d'un système de relance pour les utilisateurs et amélioration de la continuité du parcours en cas d'interruption. [#627](https://github.com/betagouv/pass-sport/pull/627), [#641](https://github.com/betagouv/pass-sport/pull/641), [#597](https://github.com/betagouv/pass-sport/pull/597)
+- **Affinement de l'éligibilité** : 
+    - Mise à jour des règles de matching pour inclure les conjoints et améliorer la détection des bénéficiaires AAH/AEEH via le nom de famille.
+    - Intégration de la situation de boursier dans les critères de calcul.
+- **Communication et expérience utilisateur** :
+    - Mise à jour des modèles d'emails (expéditeur, sujets et contenus) et simplification des formulations liées à l'éligibilité.
+    - Ajout d'un kit de communication (flyer) pour accompagner le service.
+    - Corrections d'interface, notamment sur la barre de navigation et l'accessibilité des URLs.
 
 ### Évolutions techniques
-- **Optimisation de l'infrastructure Nginx :** Amélioration de la résilience (gestion des échecs d'upstream) et renforcement de la sécurité via un meilleur système de limitation de débit (*rate limiting*) basé sur l'IP réelle.
-- **Optimisation des traitements de données (Batchs) :** Passage en appels asynchrones pour les processus de calcul, amélioration de la traçabilité des erreurs (stockage JSON) et ajustement de la gestion de la concurrence.
-- **Amélioration de la gestion géographique :** Intégration des données INSEE en mémoire pour optimiser les recherches de localisation.
-- **Renforcement de la qualité logicielle :** Ajout de configurations Playwright pour les tests d'interface et refactorisation du système d'alertes ([#526](https://github.com/betagouv/pass-sport/pull/526)).
-- **Gestion des données :** Séparation des flux de données AEEH et AAH pour une meilleure précision des calculs.
+- **Fiabilité et performance** :
+    - Optimisation des performances via l'ajout d'index en base de données. [#608](https://github.com/betagouv/pass-sport/pull/608)
+    - Mise en place d'un limiteur de débit (*rate limiter*) sur le worker pour protéger les appels API.
+    - Amélioration de la résilience de l'infrastructure Nginx (gestion des échecs d'upstream et optimisation du *keep-alive*). [#570](https://github.com/betagouv/pass-sport/pull/570)
+- **Observabilité et maintenance** :
+    - Amélioration du suivi des erreurs avec Sentry (intégration des *source maps* et gestion du CSP).
+    - Mise à jour du plan de marquage Matomo pour un meilleur suivi analytique. [#573](https://github.com/betagouv/pass-sport/pull/573)
+    - Corrections de la chaîne CI/CD et des tâches planifiées (cron) via Ansible. [#604](https://github.com/betagouv/pass-sport/pull/604)
 
 ### Autres changements
-- **Communication :** Mise à jour des supports de communication (flyers et kit de communication).
-- **Conformité et structure :** Actualisation de la politique de confidentialité, du sitemap et de la structure des pages du site.
-- **Maintenance :** Nettoyage du code, mise à jour de la documentation et des notebooks de données.
+- **Nettoyage** : suppression de code et d'index inutilisés, et retrait de l'usage des codes QR.
+- **Documentation** : mises à jour diverses de la documentation et du sitemap.
