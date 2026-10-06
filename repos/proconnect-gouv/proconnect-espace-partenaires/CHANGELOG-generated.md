@@ -1,13 +1,20 @@
-## Changelog : proconnect-espace-partenaires (30 derniers jours, au 21 septembre 2026)
+## Changelog : proconnect-espace-partenaires (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur le renforcement des mécanismes d'authentification et l'enrichissement de la documentation technique. L'objectif est de faciliter l'intégration des partenaires en clarifiant la gestion des erreurs et en améliorant la fiabilité des tests automatisés.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité des accès et l'amélioration de l'accompagnement des partenaires via une mise à jour majeure de la documentation technique et métier.
+
+### Évolutions fonctionnelles
+- Amélioration de la sécurité des comptes avec la gestion du MFA et l'envoi de codes OTP par e-mail [#470](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/470).
 
 ### Évolutions techniques
-- Amélioration des processus d'authentification, notamment via Keycloak [#444](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/444), Entra ID [#448](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/448) et la gestion du `sub uid` [#442](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/442).
-- Optimisation de la suite de tests de bout en bout (E2E) grâce à l'utilisation d'un fournisseur ProConnect simulé (mock) [#453](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/453).
+- Optimisation des mécanismes d'authentification via Keycloak [#444](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/444) et Entra ID [#448](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/448).
+- Amélioration de la fiabilité des tests avec l'intégration d'un fournisseur ProConnect simulé (mock) pour la suite de tests de bout en bout (E2E) [#453](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/453).
 
 ### Autres changements
-- **Documentation de la gestion des erreurs** : ajout de détails sur les messages d'erreur de rôles [#464](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/464), les exceptions RIE pour les FS [#452](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/452) et l'erreur `invalid_client` [#443](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/443).
-- **Support et contact** : mise à jour des informations de support, incluant l'adresse email dédiée [#467](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/467) et la description du canal Tchap [#466](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/466).
-- **Corrections documentaires diverses** : mise à jour du lien DSFR [#462](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/462), correction de la direction des requêtes dans le référentiel IP et actualisation de l'URL de test RIE [#445](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/445).
+- **Documentation technique et métier** :
+    - Ajout de sections dédiées à la sécurité, aux aspects métier [#469](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/469) et aux exceptions RIE pour les fournisseurs de services (FS) [#452](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/452).
+    - Harmonisation des pages eIDAS (FI/FS) [#471](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/471) et clarification de la conformité MFA [#473](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/473).
+    - Documentation des messages d'erreur liés aux rôles [#464](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/464).
+- **Support et navigation** :
+    - Mise à jour des informations de contact (e-mail de support [#467](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/467) et canal Tchap [#466](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/466)).
+    - Nettoyage de l'interface documentaire (retrait de la sidebar [#468](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/468)) et correction de liens (DSFR [#462](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/462), référentiel IP).
