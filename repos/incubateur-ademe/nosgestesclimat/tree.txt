@@ -29,19 +29,7 @@
 ├── bench
 │   └── index.ts
 ├── data
-│   ├── actions_v1
-│   │   ├── actions.publicodes
-│   │   ├── alimentation.publicodes
-│   │   ├── divers.publicodes
-│   │   ├── logement.publicodes
-│   │   ├── services sociétaux.publicodes
-│   │   └── transport
-│   │       ├── avion.publicodes
-│   │       ├── boulot.publicodes
-│   │       ├── deux roues.publicodes
-│   │       ├── ferry.publicodes
-│   │       └── voiture.publicodes
-│   ├── actions_v2
+│   ├── actions
 │   │   ├── actions.publicodes
 │   │   ├── alimentation
 │   │   │   └── alimentation.publicodes
@@ -67,6 +55,7 @@
 │   │   │   │   ├── traitement_refus_CS.png
 │   │   │   │   ├── traitements_OMR.png
 │   │   │   │   └── traitements_déchetterie.png
+│   │   │   ├── petit déjeuners.publicodes
 │   │   │   └── repas.publicodes
 │   │   ├── bilan.publicodes
 │   │   ├── commun.publicodes
@@ -164,9 +153,9 @@
 │   │       └── translated-rules-en.yaml
 │   ├── ui
 │   │   ├── organisations.publicodes
-│   │   ├── pédagogie.publicodes
 │   │   └── ui.publicodes
 │   └── utilisateur
+│       ├── profil.publicodes
 │       └── utilisateur.publicodes
 ├── dev-server.ts
 ├── index.d.ts
@@ -245,7 +234,6 @@
 │   │   ├── translate-personas.js
 │   │   ├── translate-rules.mjs
 │   │   └── translateRegionModel.js
-│   ├── initialExtendedSituationToJSON.mjs
 │   ├── migration
 │   │   ├── checkMigrationCoverage.mjs
 │   │   ├── checkMigrationFile.mjs
@@ -274,9 +262,6 @@
 │   │   │       ├── analyse_CA_NAF.json
 │   │   │       └── liste_SDES_traitée.json
 │   │   └── utils.js
-│   ├── situation
-│   │   ├── generateExtendedSituationDottedNames.mjs
-│   │   └── getExtendedSituationFromSituation.mjs
 │   ├── uiToJSON.mjs
 │   └── voiture
 │       ├── ademe-car-labelling.csv
@@ -287,11 +272,10 @@
     ├── commons.mjs
     ├── testBornes.mjs
     ├── testOptim.mjs
-    ├── testPedagogie.mjs
     ├── testPersonas.mjs
     ├── testSituationCoverage.mjs
     ├── testTranslation.mjs
     └── unit
         ├── bornes.test.mjs
         └── utils.mjs
-53 directories, 243 files
+50 directories, 230 files
