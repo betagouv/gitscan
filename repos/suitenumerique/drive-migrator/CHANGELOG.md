@@ -45,19 +45,32 @@ and this project adheres to
 - add MFA/OTP support to Resana Keycloak login flow
 - add migration user email/name columns and search to workspace admin #143
 - add admin actions to reset a user's Resana or Drive connection #198
+- add PostHog events for login, sync and migration outcome
+- add opt-in per-file migration integrity report #235
+- show migrated/source file counts and gaps on workspace cards #235
+- lock Resana workspace and grant folder access during migration #215
 
 ### Changed
 
+- show ProConnect logo on connect page for zip target
+- update the name of LaSuite Drive in mail
+- update the logo in mail header
 - add tooltip for cropped title
 - update zip archive download journey
 - specify logo fichiers
 - derive DRIVE_API_BASE_URL and DRIVE_FRONTEND_URL from DRIVE_BASE_URL #103
 - update cunningham tokens
 - replace unmaintained retry package with tenacity
+- rename the members CSV of archive and Drive exports to
+  users_list_by_migrator.csv, so it no longer overwrites a source file #235
 - switch Resana source auth to PKCE + bridge flow #190
 
 ### Fixed
 
+- patch remaining frontend dependency vulnerabilities
+- patch remaining mail dependency vulnerabilities
+- patch Handlebars and js-yaml vulnerabilities in the API client generator
+- remove vulnerable legacy tooling and crypto polyfills from Storybook
 - fix illustration page finish
 - fix CI checks (self-hosted runner deps, gitlint job, test-back env vars)
 - fix Resana access token refresh crashing with KeyError: 'access_token'
@@ -67,8 +80,15 @@ and this project adheres to
 - fix export crash on folder/file names containing "/" #165
 - fix lint-git print() check matching removed lines instead of only added ones
 - fix error modal looping infinitely on connect page #138
+- use a more complete Resana API endpoint to list workspace users #213
 - retry Drive upload-ended notification on transient network timeouts #176
+- retry Drive API calls on transient 5xx errors instead of failing #208
 - retry Resana file download and skip failing files instead of aborting #175
+- exclude Resana workspaces where user isn't Animateur from migration #110 #160
+- exclude Resana personal workspaces from migration by default #163
+- fix user.csv not generated for locked Resana workspaces #169
+- fix accented filenames mangled in workspace ZIP export #166
+- pull MinIO images from Chainguard since quay.io pulls are gated
 
 ### Removed
 

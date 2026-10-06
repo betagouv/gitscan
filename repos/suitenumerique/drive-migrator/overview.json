@@ -1,67 +1,57 @@
 {
   "url": "https://github.com/suitenumerique/drive-migrator",
   "name": "drive-migrator",
-  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage de documents pour assurer l'interopérabilité et la portabilité des données.",
+  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il permet d'assurer l'interopérabilité et la portabilité des données entre des instances comme Resana et LaSuite Drive.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
+    "Infrastructure & Stockage",
     "Suivi & Traçabilité"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Redis",
-    "PostgreSQL",
     "Celery",
     "Next.js",
-    "Keycloak",
+    "PostgreSQL",
+    "Redis",
     "MinIO",
-    "Boto3",
-    "Tenacity"
+    "Keycloak",
+    "Nginx"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "TypeScript / JavaScript"
+    "Authentification (composant)",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "mfa"
+      "jwt",
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": [
-    "Pytest",
-    "Jest"
-  ],
-  "workflows": [
-    "backend.yml",
-    "frontend.yml",
-    "security.yml"
-  ],
-  "lastActivity": "2026-09-04T17:24:08+02:00",
+  "tests": "pytest",
+  "lastActivity": "2026-10-05T09:00:01+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 7,
-    "forks": 2,
-    "openIssues": 40
-  },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
+    "Python",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Python"
+    "ETL & Pipelines de données",
+    "Git & DevOps"
   ]
 }

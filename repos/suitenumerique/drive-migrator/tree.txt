@@ -54,6 +54,7 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── drive-migrator-schema.png
+│   ├── migration-integrity-check.md
 │   └── tsclient.md
 ├── env.d
 │   └── development
@@ -75,6 +76,7 @@
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
+    │   │   ├── analytics.py
     │   │   ├── api
     │   │   │   ├── __init__.py
     │   │   │   ├── fields.py
@@ -162,6 +164,8 @@
     │   │   │   ├── 0024_workspace_is_truncated_alter_user_language.py
     │   │   │   ├── 0025_user_resana_csrf_token_and_more.py
     │   │   │   ├── 0026_workspace_download_errors_alter_user_language.py
+    │   │   │   ├── 0027_extrataskinfo_integrity_check_passed_and_more.py
+    │   │   │   ├── 0028_workspace_source_lock_state.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── osmose
@@ -176,6 +180,7 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── folder_creator.py
     │   │   │   ├── folder_helper.py
+    │   │   │   ├── integrity.py
     │   │   │   └── tasks.py
     │   │   ├── retry_utils.py
     │   │   ├── sources
@@ -193,11 +198,13 @@
     │   │   │       ├── backend.py
     │   │   │       ├── interstis_client.py
     │   │   │       ├── migrator_auth.py
+    │   │   │       ├── resana_lock_client.py
     │   │   │       ├── resana_members_client.py
     │   │   │       ├── token_manager.py
     │   │   │       └── urls.py
     │   │   ├── static
     │   │   │   └── images
+    │   │   │       ├── logo-la-suite.png
     │   │   │       ├── logo-suite-numerique.png
     │   │   │       └── mail-header-background.png
     │   │   ├── templates
@@ -225,8 +232,10 @@
     │   │   │   │   ├── drive
     │   │   │   │   │   ├── __init__.py
     │   │   │   │   │   ├── test_drive_backend.py
+    │   │   │   │   │   ├── test_drive_backend_integrity.py
     │   │   │   │   │   ├── test_drive_backend_retry_config.py
-    │   │   │   │   │   └── test_drive_destination.py
+    │   │   │   │   │   ├── test_drive_destination.py
+    │   │   │   │   │   └── test_drive_integrity.py
     │   │   │   │   ├── test_archive.py
     │   │   │   │   ├── test_resana.py
     │   │   │   │   └── test_resana_refresh_job.py
@@ -246,7 +255,8 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_export_task.py
     │   │   │   │   ├── test_folder_creator.py
-    │   │   │   │   └── test_folder_helper.py
+    │   │   │   │   ├── test_folder_helper.py
+    │   │   │   │   └── test_integrity.py
     │   │   │   ├── sources
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── osmose
@@ -258,6 +268,8 @@
     │   │   │   │   │   ├── test_interstis_client.py
     │   │   │   │   │   ├── test_migrator_auth.py
     │   │   │   │   │   ├── test_resana_backend.py
+    │   │   │   │   │   ├── test_resana_backend_lock.py
+    │   │   │   │   │   ├── test_resana_lock_client.py
     │   │   │   │   │   ├── test_resana_members_client.py
     │   │   │   │   │   └── test_token_manager.py
     │   │   │   │   └── test_filesystem.py
@@ -265,9 +277,12 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── test_admin.py
+    │   │   │   ├── test_admin_integrity.py
+    │   │   │   ├── test_analytics.py
     │   │   │   ├── test_api_available_destinations.py
     │   │   │   ├── test_api_migration_config.py
     │   │   │   ├── test_api_resana_auth.py
+    │   │   │   ├── test_api_synchronize.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_api_workspaces.py
     │   │   │   ├── test_api_workspaces_process.py
@@ -543,4 +558,4 @@
         │   └── openapi-typescript-codegen
         │       └── generate_api_client_local.sh
         └── yarn.lock
-128 directories, 417 files
+128 directories, 432 files
