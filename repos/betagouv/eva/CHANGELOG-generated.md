@@ -1,13 +1,13 @@
-## Changelog : eva (30 derniers jours, au 30 juillet 2026)
+## Changelog : eva (30 derniers jours, au 22 septembre 2026)
 
 ### Résumé
-Cette mise à jour apporte une correction de l'affichage du titre de l'inventaire et supprime une fonctionnalité obsolète du store de l'accueil. Ces changements visent à améliorer la clarté de l'interface utilisateur et à maintenir la propreté du code.
+Les récentes mises à jour visent à sécuriser le parcours de l'utilisateur en améliorant la gestion de la navigation et en garantissant la cohérence des données saisies.
 
 ### Évolutions fonctionnelles
-- Correction du titre de l'inventaire affiché dans l'onglet. [#9970d31](https://github.com/betagouv/eva/commit/9970d31)
+- **Amélioration de la navigation** : détection et gestion du bouton "retour" du navigateur lorsqu'une situation d'évaluation est en cours.
+- **Fiabilisation de la saisie** : normalisation automatique des codes de campagne pour assurer la cohérence des données.
 
 ### Évolutions techniques
-- Suppression de la fonction `enregistreDonneesComplementaires` du store de l'accueil, supprimant du code inutilisé. [#0b12ab9](https://github.com/betagouv/eva/commit/0b12ab9)
-
-### Autres changements
-- Mise à jour des dépendances. [#5ccd2b1](https://github.com/betagouv/eva/commit/5ccd2b1)
+- **Optimisation du code** : suppression de duplications dans la logique de gestion du retour arrière du navigateur.
+- **Tests** : correction des tests Jest suite à la mise à jour de la bibliothèque `query-string`.
+- **Maintenance** : mise à jour des dépendances du projet.
