@@ -11,6 +11,7 @@
 ├── .npmrc
 ├── .prettierrc
 ├── Dockerfile
+├── MAP_PLAN.md
 ├── Procfile
 ├── README.md
 ├── crvif-redirection
@@ -51,6 +52,9 @@
 │   ├── 0031_melted_thor.sql
 │   ├── 0032_bright_lucky_pierre.sql
 │   ├── 0033_normal_sumo.sql
+│   ├── 0034_ancient_songbird.sql
+│   ├── 0035_thick_leech.sql
+│   ├── 0036_military_rick_jones.sql
 │   ├── init
 │   │   ├── 0_create-publication.sql
 │   │   └── 1_create_keycloak.sql
@@ -89,6 +93,9 @@
 │       ├── 0031_snapshot.json
 │       ├── 0032_snapshot.json
 │       ├── 0033_snapshot.json
+│       ├── 0034_snapshot.json
+│       ├── 0035_snapshot.json
+│       ├── 0036_snapshot.json
 │       └── _journal.json
 ├── docker-compose.test.yaml
 ├── docker-compose.yaml
@@ -256,6 +263,7 @@
 │   │   │   │   ├── sent.svg
 │   │   │   │   └── welcome.svg
 │   │   │   ├── components
+│   │   │   │   ├── BackHomeButton.tsx
 │   │   │   │   ├── Banner.tsx
 │   │   │   │   ├── Chip.tsx
 │   │   │   │   ├── DocumentTypeSelector.tsx
@@ -273,6 +281,7 @@
 │   │   │   │   ├── ReportSearch.tsx
 │   │   │   │   ├── SearchModal.tsx
 │   │   │   │   ├── SmartAddressInput.tsx
+│   │   │   │   ├── SortableTable.tsx
 │   │   │   │   ├── Spinner.tsx
 │   │   │   │   ├── StatsCharts.tsx
 │   │   │   │   ├── SyncForm.tsx
@@ -299,6 +308,7 @@
 │   │   │   │   └── db.ts
 │   │   │   ├── envVars.ts
 │   │   │   ├── features
+│   │   │   │   ├── CadastreMapModal.tsx
 │   │   │   │   ├── DisabledContext.tsx
 │   │   │   │   ├── ImmeubleAutocomplete.tsx
 │   │   │   │   ├── InfoForm.tsx
@@ -313,12 +323,20 @@
 │   │   │   │   │   └── SpeechRecorder.tsx
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── LoginForm.tsx
-│   │   │   │   │   └── SignupForm.tsx
+│   │   │   │   │   ├── SessionExpiredModal.tsx
+│   │   │   │   │   ├── SignupForm.tsx
+│   │   │   │   │   └── sessionExpired.ts
 │   │   │   │   ├── chips
 │   │   │   │   │   └── useChipOptions.tsx
 │   │   │   │   ├── idb.ts
 │   │   │   │   ├── map
-│   │   │   │   │   └── MapLibre.tsx
+│   │   │   │   │   ├── LocalisationMap.tsx
+│   │   │   │   │   ├── MapLibre.tsx
+│   │   │   │   │   ├── MonumentMapModal.tsx
+│   │   │   │   │   ├── MonumentPickerMap.tsx
+│   │   │   │   │   ├── localisationTypes.ts
+│   │   │   │   │   ├── planSituationSnapshot.ts
+│   │   │   │   │   └── waitForIdle.ts
 │   │   │   │   ├── menu
 │   │   │   │   │   ├── ClauseMenu.tsx
 │   │   │   │   │   ├── HelpMenu.tsx
@@ -332,12 +350,12 @@
 │   │   │   │   ├── polyfill.ts
 │   │   │   │   ├── report
 │   │   │   │   │   ├── AppSearchBar.tsx
+│   │   │   │   │   ├── NoReportAlert.tsx
 │   │   │   │   │   ├── ReportActions.tsx
 │   │   │   │   │   ├── ReportList.tsx
 │   │   │   │   │   └── ReportListItem.tsx
 │   │   │   │   ├── sentry.ts
 │   │   │   │   ├── state-report
-│   │   │   │   │   ├── ImageSyncModal.tsx
 │   │   │   │   │   ├── MHAddressAutocomplete.tsx
 │   │   │   │   │   ├── StateReportActions.tsx
 │   │   │   │   │   ├── StateReportForm.tsx
@@ -354,6 +372,8 @@
 │   │   │   │   │   │   └── StateReportAlertsMenu.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   └── useUnsyncedAttachments.ts
+│   │   │   │   │   ├── localisationAttachment.ts
+│   │   │   │   │   ├── localisationSnapshot.ts
 │   │   │   │   │   ├── pdf
 │   │   │   │   │   │   ├── AlertsReminder.tsx
 │   │   │   │   │   │   ├── ConstatPdf.edit.tsx
@@ -363,6 +383,7 @@
 │   │   │   │   │   │   ├── ConstatPdf.sent.tsx
 │   │   │   │   │   │   ├── ConstatPdf.view.tsx
 │   │   │   │   │   │   └── ConstatPdfContext.ts
+│   │   │   │   │   ├── planSituationAttachment.ts
 │   │   │   │   │   ├── side-menu
 │   │   │   │   │   │   ├── StateReportSideMenu.store.tsx
 │   │   │   │   │   │   └── StateReportSideMenu.tsx
@@ -371,7 +392,8 @@
 │   │   │   │   │   │   ├── ConstatGeneral.tsx
 │   │   │   │   │   │   ├── ContexteVisite.tsx
 │   │   │   │   │   │   ├── MonumentHistorique.tsx
-│   │   │   │   │   │   └── PlanDeSituationModal.tsx
+│   │   │   │   │   │   ├── PlanDeSituationModal.tsx
+│   │   │   │   │   │   └── SectionLocalisationModal.tsx
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── suggestionsMachine.ts
 │   │   │   │   ├── text-editor
@@ -380,26 +402,33 @@
 │   │   │   │   │   ├── TextEditorContext.tsx
 │   │   │   │   │   └── TextEditorToolbar.tsx
 │   │   │   │   ├── upload
+│   │   │   │   │   ├── ColorSelection.tsx
 │   │   │   │   │   ├── DrawingCanvas.tsx
 │   │   │   │   │   ├── KonvaDrawingCanvas.tsx
 │   │   │   │   │   ├── UploadImage.tsx
 │   │   │   │   │   ├── UploadImageButton.tsx
 │   │   │   │   │   ├── UploadReportImage.tsx
 │   │   │   │   │   ├── hooks
-│   │   │   │   │   │   └── useAttachmentImages.ts
+│   │   │   │   │   │   ├── useAttachmentImages.ts
+│   │   │   │   │   │   ├── useBatchUpload.ts
+│   │   │   │   │   │   └── useUnsyncedReportAttachments.ts
 │   │   │   │   │   ├── machines
 │   │   │   │   │   │   ├── attachmentUploadMachine.ts
 │   │   │   │   │   │   └── thumbnailMachine.ts
+│   │   │   │   │   ├── pendingUploadsStore.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── useDocumentQueries.tsx
+│   │   │   │   ├── useServiceType.tsx
 │   │   │   │   └── userSettings.ts
 │   │   │   ├── hooks
 │   │   │   │   ├── useActiveSection.tsx
 │   │   │   │   ├── useAppStatus.tsx
 │   │   │   │   ├── useCanEditReport.tsx
 │   │   │   │   ├── useFormWithFocus.tsx
+│   │   │   │   ├── useGeolocation.ts
 │   │   │   │   ├── useIntersectionObserver.tsx
 │   │   │   │   ├── useIsDesktop.tsx
+│   │   │   │   ├── useIsOnline.ts
 │   │   │   │   ├── useLocalStorageState.tsx
 │   │   │   │   └── useUserSettings.tsx
 │   │   │   ├── index.css
@@ -413,6 +442,7 @@
 │   │   │   │   ├── account.tsx
 │   │   │   │   ├── admin.lazy.tsx
 │   │   │   │   ├── cgu.tsx
+│   │   │   │   ├── compte.tsx
 │   │   │   │   ├── connexion.tsx
 │   │   │   │   ├── constat-validation.$token.tsx
 │   │   │   │   ├── constat.$constatId.tsx
@@ -473,21 +503,26 @@
 └── tests
     ├── admin.spec.ts
     ├── attachment-redirect.spec.ts
+    ├── auth-errors.spec.ts
     ├── compte-rendu.spec.ts
     ├── constat-validation.spec.ts
     ├── constat-with-alerts.spec.ts
     ├── constat.spec.ts
     ├── fixtures
+    │   ├── not-an-image.txt
     │   ├── test-image.jpg
     │   └── test-image.png
     ├── image-drawing-legend.spec.ts
     ├── image-upload-compte-rendu.spec.ts
     ├── image-upload-constat.spec.ts
     ├── keycloak-entrypoint.sh
+    ├── map-smoke.spec.ts
     ├── realm-template.json
     ├── setup.ts
     ├── stats.spec.ts
+    ├── sync.spec.ts
     ├── teardown.ts
+    ├── upload-errors.spec.ts
     ├── user.spec.ts
     └── utils.ts
-71 directories, 421 files
+71 directories, 456 files
