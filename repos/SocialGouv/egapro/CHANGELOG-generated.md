@@ -1,32 +1,21 @@
-## Changelog : egapro (30 derniers jours, au 29 septembre 2026)
+## Changelog : egapro (30 derniers jours, au 08 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la mise en conformité de l'accessibilité (RGAA), la fiabilisation du parcours de déclaration (rémunération et avis CSE) et l'enrichissement des outils de suivi. L'ouverture de l'observatoire public et l'amélioration de la gestion des données d'export (API SUIT) constituent les évolutions majeures de cette période.
+Ce mois-ci, les efforts se sont concentrés sur une mise en conformité majeure avec les normes d'accessibilité (RGAA) et une clarification globale des parcours de déclaration. La sécurité de l'interface d'administration a été renforcée, tandis que la précision des données exportées et la robustesse de l'infrastructure ont été améliorées pour offrir une expérience plus fiable aux entreprises et aux administrateurs.
 
 ### Évolutions fonctionnelles
-- **Accessibilité (RGAA)** : Améliorations massives pour l'utilisation au clavier, la lecture par synthèse vocale des graphiques et tableaux, la gestion du zoom et la navigation structurée [#4616](https://github.com/SocialGouv/egapro/issues/4616).
-- **Parcours de déclaration** : 
-    - Optimisation de la déclaration de rémunération (gestion des saisies non numériques, clarification des libellés et suppression des dates bloquantes) [#4656](https://github.com/SocialGouv/egapro/issues/4656).
-    - Fiabilisation du processus de consultation et de dépôt des avis CSE [#4437](https://github.com/SocialGouv/egapro/issues/4437).
-    - Correction de bugs bloquant la soumission des dossiers [#4541](https://github.com/SocialGouv/egapro/issues/4541).
-- **Espace Entreprise (Mon Espace)** : Mise à jour des informations de l'entreprise, gestion des entreprises étrangères (bandeau pays) et ajout de badges de suivi de statut (Clôturée/Incomplète) [#4442](https://github.com/SocialGouv/egapro/issues/4442).
-- **Export et Données** : 
-    - Amélioration de l'API SUIT avec l'exposition des effectifs par quartile et l'alignement des écarts G [#4536](https://github.com/SocialGouv/egapro/issues/4536).
-    - Affichage de la taille des fichiers lors du téléchargement [#4499](https://github.com/SocialGouv/egapro/issues/4499).
-- **Nouvelles fonctionnalités** : 
-    - Lancement de l'observatoire public [#4360](https://github.com/SocialGouv/egapro/issues/4360).
-    - Ajout de filtres par tranche d'effectif dans le tableau des déclarations pour les administrateurs [#4498](https://github.com/SocialGouv/egapro/issues/4498).
-    - Mise en place d'un journal d'activité utilisateur anonymisé pour l'audit [#4526](https://github.com/SocialGouv/egapro/issues/4526).
+- **Accessibilité (RGAA) :** Améliorations massives pour faciliter la navigation au clavier, la gestion du zoom (200%), la lecture des tableaux de données et l'annonce des messages de statut par les lecteurs d'écran.
+- **Parcours de déclaration et CSE :** Clarification des libellés (effectifs, rémunérations, avis du CSE), gestion des erreurs de saisie non numériques et ajustement des règles d'affichage des indicateurs pour éviter les informations superflues.
+- **Espace Utilisateur ("Mon espace") :** Mise à jour de l'interface avec de nouveaux badges de statut pour les déclarations, nettoyage des informations de profil et simplification de l'affichage des entreprises.
+- **Administration et Export :** Ajout de filtres par tranche d'effectifs dans le tableau des déclarations [#4498] et amélioration de la précision des données exportées (API SUIT et fichiers), notamment sur les effectifs par quartile et les écarts de rémunération.
+- **Aide et Notifications :** Mise à jour de la FAQ et suppression de liens vers des modèles ou fichiers indisponibles.
 
 ### Évolutions techniques
-- **Architecture & API** : 
-    - Refactorisation des routes statiques et des schémas tRPC pour une meilleure typage et modularité.
-    - Centralisation des contrôles de verrouillage (lock) et de la gestion des sessions.
-- **Infrastructure & CI/CD** : 
-    - Optimisation des tests E2E via l'utilisation de shards parallèles pour réduire le temps de validation [#4556](https://github.com/SocialGouv/egapro/issues/4556).
-    - Amélioration de la gestion des images de stockage (MinIO) dans les environnements de test.
-- **Sécurité** : Renforcement de la sécurité de l'espace administrateur par l'exigence de la double authentification [#4482](https://github.com/SocialGouv/egapro/issues/4482) et masquage des erreurs techniques dans les réponses API pour éviter les fuites d'informations.
+- **Sécurité :** Implémentation de la double authentification (2FA) pour l'accès à l'espace administrateur [#4482] et anonymisation des journaux d'activité utilisateur pour la conformité [#4526].
+- **Infrastructure et CI/CD :** Sécurisation des emails d'administration via des *sealed-secrets* [#4705] et optimisation des tests de bout en bout (E2E) avec un parallélisme accru dans la CI [#4556].
+- **Architecture et Refactoring :** Centralisation des routes statiques, des utilitaires de formatage et des schémas de validation (Zod) pour améliorer la maintenabilité. Uniformisation des scripts de projet en TypeScript.
+- **API :** Optimisation des contrôles de verrouillage et amélioration de la couverture des routes auditées.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique de l'API SUIT [#4527](https://github.com/SocialGouv/egapro/issues/4527).
-- **Maintenance** : Uniformisation des scripts de projet en TypeScript et nettoyage de plusieurs composants et écrans obsolètes.
+- **Documentation :** Génération automatique de la documentation de l'API SUIT à partir du code [#4527].
+- **Outils :** Ajout d'un kit de reprise de données (V1) pour faciliter les migrations [#4469].

@@ -118,7 +118,7 @@
 │   ├── env
 │   │   ├── dev
 │   │   │   ├── templates
-│   │   │   │   ├── admin.configmap.yaml
+│   │   │   │   ├── admin.sealed-secret.yaml
 │   │   │   │   ├── api.sealed-secret.yaml
 │   │   │   │   ├── clamav.configmap.yaml
 │   │   │   │   ├── gip-mds-import-job.yaml
@@ -139,7 +139,7 @@
 │   │   │   └── values.yaml
 │   │   ├── preprod
 │   │   │   ├── templates
-│   │   │   │   ├── admin.configmap.yaml
+│   │   │   │   ├── admin.sealed-secret.yaml
 │   │   │   │   ├── api.sealed-secret.yaml
 │   │   │   │   ├── clamav.configmap.yaml
 │   │   │   │   ├── gip-mds-import.sealed-secret.yaml
@@ -752,6 +752,7 @@
 │   │   │   │   │   │   ├── AdminDeclarationDetailPage.tsx
 │   │   │   │   │   │   ├── AdminDeclarationsPage.tsx
 │   │   │   │   │   │   ├── CancelDeclarationButton.tsx
+│   │   │   │   │   │   ├── DeclarationTable.module.scss
 │   │   │   │   │   │   ├── DeclarationTable.tsx
 │   │   │   │   │   │   ├── DetailSections.tsx
 │   │   │   │   │   │   ├── SearchForm.tsx
@@ -807,17 +808,28 @@
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── settings
 │   │   │   │   │   │   ├── AdminSettingsPage.tsx
-│   │   │   │   │   │   ├── CampaignDeadlinesForm.tsx
+│   │   │   │   │   │   ├── AdminSettingsSections.tsx
+│   │   │   │   │   │   ├── CommonCalendarForm.tsx
+│   │   │   │   │   │   ├── DeadlineFieldset.tsx
 │   │   │   │   │   │   ├── LockTimeoutForm.tsx
+│   │   │   │   │   │   ├── RemunerationDeadlinesForm.tsx
 │   │   │   │   │   │   ├── RepresentationCampaignForm.tsx
+│   │   │   │   │   │   ├── SettingsFields.tsx
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── AdminSettingsPage.test.tsx
-│   │   │   │   │   │   │   ├── CampaignDeadlinesForm.test.tsx
+│   │   │   │   │   │   │   ├── AdminSettingsSections.test.tsx
+│   │   │   │   │   │   │   ├── CommonCalendarForm.test.tsx
 │   │   │   │   │   │   │   ├── LockTimeoutForm.test.tsx
+│   │   │   │   │   │   │   ├── RemunerationDeadlinesForm.test.tsx
 │   │   │   │   │   │   │   ├── RepresentationCampaignForm.test.tsx
-│   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   │   ├── SettingsFields.test.tsx
+│   │   │   │   │   │   │   ├── schemas.test.ts
+│   │   │   │   │   │   │   └── yearOptions.test.ts
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── schemas.ts
+│   │   │   │   │   │   ├── remunerationDeadlineGroups.ts
+│   │   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   └── yearOptions.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── adminMfaGuard.test.ts
@@ -1924,6 +1936,7 @@
 │   │   │   │   │   │   │   ├── adminDeclarations.releaseLock.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.search.test.ts
 │   │   │   │   │   │   │   ├── adminReferents.test.ts
+│   │   │   │   │   │   │   ├── adminSettings.integration.test.ts
 │   │   │   │   │   │   │   ├── adminSettings.test.ts
 │   │   │   │   │   │   │   ├── adminStats.getUsersPerCompany.integration.test.ts
 │   │   │   │   │   │   │   ├── adminStats.gipWorkforceBounds.integration.test.ts
@@ -2285,4 +2298,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-375 directories, 1912 files
+375 directories, 1925 files
