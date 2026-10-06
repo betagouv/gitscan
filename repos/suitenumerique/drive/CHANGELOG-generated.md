@@ -1,20 +1,33 @@
-## Changelog : drive (30 derniers jours, au 1er octobre 2026)
+## Changelog : drive (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure avec l'introduction d'un système de gestion des restrictions beaucoup plus granulaire, permettant un contrôle précis sur l'accès aux dossiers et fichiers. Le processus de téléchargement a été renforcé pour plus de fiabilité, et l'interface utilisateur a été affinée pour améliorer la navigation et le rendu des documents.
+Cette période a été marquée par un renforcement significatif de la sécurité et de la fiabilité du système de transfert de fichiers. Les améliorations se concentrent sur une meilleure gestion des droits d'accès lors de l'upload, une protection accrue contre les abus via la limitation de débit, ainsi que des optimisations de performance sur le backend et l'infrastructure de stockage local.
 
 ### Évolutions fonctionnelles
-- **Nouveau système de restrictions** : possibilité d'activer ou désactiver des restrictions sur des éléments, de cibler des dossiers spécifiques et de masquer les éléments restreints des résultats de recherche et des exports.
-- **Fiabilisation des téléchargements** : le système réserve désormais l'espace de stockage nécessaire avant de valider un upload et communique la taille des fichiers pour une gestion plus robuste.
-- **Amélioration de l'interface** : correction de la vue "Récents" qui ne se mettait pas à jour correctement, meilleure gestion des langues de navigateur et amélioration du rendu des fichiers PDF.
-- **Sécurité accrue** : mise en place de limitations de débit (rate limiting) sur la création d'éléments et renforcement des droits d'upload à la racine.
+- **Gestion des droits d'importation** : Désactivation de la création de nouveaux documents pour les utilisateurs ne disposant pas des droits d'upload nécessaires.
+- **Expérience utilisateur (UX)** : 
+    - Correction de l'affichage de la vue "Récents" qui ne se mettait pas à jour automatiquement après une modification.
+    - Amélioration de la gestion des langues du navigateur (correction pour les langues sans région spécifiée).
+- **Visualisation de documents** : Correction du rendu des fichiers PDF (gestion des polices et des décodeurs `pdf.js`).
 
 ### Évolutions techniques
-- **Optimisation des performances** : accélération de la recherche de hiérarchie (ancêtres) et implémentation d'un pool de connexions pour la base de données PostgreSQL.
-- **Infrastructure et DevOps** : remplacement de MinIO par RustFS pour le stockage d'objets en local et mise à jour des configurations Docker et Helm.
-- **Refactoring** : migration vers la bibliothèque de composants UI officielle (`@gouvfr-lasuite/ui-components`) et restructuration de la logique de gestion des permissions pour plus de modularité.
-- **Qualité et tests** : renforcement de la couverture des tests de bout en bout (E2E), notamment sur la corbeille et les réservations d'upload, et amélioration des tests de charge.
+- **Sécurité et gestion des uploads** :
+    - Mise en place d'une réservation de la taille de fichier déclarée avant l'autorisation de l'upload pour une meilleure gestion des ressources.
+    - Implémentation d'une limitation de débit (*rate limiting*) sur les points de terminaison de création d'éléments pour prévenir les abus.
+    - Nettoyage automatique des éléments en attente (*pending*) en cas d'échec de l'opération.
+- **Performances et Backend** :
+    - Optimisation de la vitesse de recherche de l'ancêtre lisible le plus élevé dans l'arborescence.
+    - Introduction de la gestion du pool de connexions `psycopg` pour optimiser les interactions avec PostgreSQL.
+- **Infrastructure et DevOps** :
+    - Remplacement de MinIO par RustFS pour le stockage objet en environnement local.
+    - Amélioration des déploiements Helm permettant la configuration de variables d'environnement spécifiques pour le backend.
+    - Optimisation du processus d'installation des dépendances frontend via conteneur.
+- **Sécurité (Mises à jour)** :
+    - Application de correctifs de sécurité critiques sur plusieurs composants clés : Django, Next.js, PyJWT et Sharp.
+- **Refactoring** :
+    - Migration vers le package unifié `@gouvfr-lasuite/ui-components`.
+    - Centralisation de la liste des langues dans la configuration i18n.
 
 ### Autres changements
-- **Documentation** : mise à jour de la documentation technique, notamment sur les paramètres de permissions et les exemples de serveurs de ressources.
-- **Nettoyage** : suppression de variables d'environnement inutilisées et simplification de certains flux du backend.
+- **Documentation** : Documentation des paramètres de permissions du backend et mise à jour des exemples pour le serveur de ressources.
+- **Maintenance** : Nettoyage des scripts SQL, des règles Makefile et suppression de variables d'environnement inutilisées.
