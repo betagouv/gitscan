@@ -1,17 +1,16 @@
 ## Changelog : st-ansible (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Cette période a été marquée par la sortie de la version 0.4.0, apportant des améliorations de sécurité pour les interfaces d'administration, de nouveaux composants de messagerie et une optimisation de l'outil de commande (CLI) pour faciliter les mises à jour et les réinstallations du système.
+La version 0.4.0 a été publiée. Cette mise à jour apporte des améliorations à l'outil de commande (CLI), renforce la sécurité des accès aux interfaces d'administration et optimise l'architecture réseau de certains services grâce à l'utilisation de Caddy.
 
 ### Évolutions fonctionnelles
-- **Interface de commande (CLI) :** Amélioration du processus de mise à jour et ajout de la commande `rebootstrap` pour faciliter les réinstallations.
-- **Sécurité :** Mise en place d'une liste blanche d'adresses IP (allowlist) pour sécuriser l'accès aux interfaces d'administration Django (concernant les services Docs, Drive et Meet).
-- **Messagerie :** Introduction du nouveau composant `pymta` et dépréciation de l'ancien composant `mta-in`.
+- Amélioration de l'outil de commande (CLI) : ajout de la commande `rebootstrap` et optimisation du processus de mise à jour.
+- Messagerie : introduction du composant `pymta` et dépréciation de `mta-in`.
+- Sécurité : ajout de la possibilité de restreindre l'accès aux interfaces d'administration Django (`docs`, `drive` et `meet`) via une liste blanche d'adresses IP.
 
 ### Évolutions techniques
-- **Architecture :** Migration de l'edge du service `drive` vers `caddy`.
-- **Architecture :** Support de l'utilisation de Caddy en frontal de l'image `messages-keycloak`.
-- **CI/CD :** Mise à jour des digests des GitHub Actions.
+- Architecture réseau : migration de l'accès "edge" vers Caddy pour le service `drive` et support de Caddy en amont de l'image `messages-keycloak`.
+- CI/CD : mise à jour des empreintes (digests) des GitHub Actions.
 
 ### Autres changements
-- **Qualité du code :** Nettoyage de l'interface CLI (suppression du code mort et des doublons) et application des règles de linting Ruff.
+- Qualité du code : nettoyage de l'outil CLI (suppression de code mort et de doublons) et application des règles de linting Ruff.
