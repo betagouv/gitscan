@@ -3,11 +3,16 @@
 │   └── skills
 │       ├── integrer-landing-page
 │       │   └── SKILL.md
-│       └── migration-javascript-vers-typescript
+│       ├── migration-javascript-vers-typescript
+│       │   └── SKILL.md
+│       └── revue-impact-renovate
 │           └── SKILL.md
 ├── .dockerignore
 ├── .env.template
 ├── .github
+│   ├── actions
+│   │   └── preparer-environnement-node
+│   │       └── action.yml
 │   ├── renovate.json
 │   └── workflows
 │       ├── codeql-analysis.yml
@@ -15,7 +20,6 @@
 │       ├── deploiement-dev.yml
 │       ├── deploiement.yml
 │       ├── node.js.yml
-│       ├── renovate.yml
 │       ├── securite-ci.yml
 │       └── tests-accessibilite.yml
 ├── .gitignore
@@ -188,10 +192,16 @@
 │   ├── 20260827070434_ajouteEtatLectureNotificationsTransactionnelles.js
 │   ├── 20260902142327_ajouteDateSuppressionNotificationsNouveaute.js
 │   ├── 20260907133254_ajouteDateExpirationNotificationTransactionnelle.js
+│   ├── 20260921152600_creationTableClesApi.js
+│   ├── 20260922141100_ajouteDateExpirationClesApi.js
+│   ├── 20260923090000_creationTableApiPubliqueAudit.js
+│   ├── 20260930145849_creationTableGroupesServices.js
+│   ├── 20261005160310_creationTableAssociationServicesGroupes.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
-├── playwright.config.ts
+├── playwright.accessibilite.config.ts
+├── playwright.integration.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── public
@@ -517,9 +527,11 @@
 │   │   ├── html-entities-2.6.0.min.js
 │   │   ├── jquery-3.7.1.min.js
 │   │   └── selectize-0.15.2.min.js
+│   ├── cleApi.mjs
 │   ├── connexion.mjs
 │   ├── creation-compte.mjs
 │   ├── creationV2.mjs
+│   ├── groupes.mjs
 │   ├── header.js
 │   ├── home.js
 │   ├── listeMesures.mjs
@@ -568,6 +580,7 @@
 │   └── visiteGuideeSPA.mjs
 ├── scripts
 │   ├── clever-cloud
+│   │   ├── post-build-api-clever.sh
 │   │   ├── post-build-clever.sh
 │   │   └── pre-run-clever.sh
 │   ├── console-admin.sh
@@ -601,10 +614,13 @@
 │   └── ui-kit
 │       └── maj.sh
 ├── server.ts
+├── serverApiPublique.ts
 ├── src
 │   ├── adaptateurs
 │   │   ├── adaptateurAuditAdminOrganisations.interface.ts
 │   │   ├── adaptateurAuditAdminOrganisationsPostgres.ts
+│   │   ├── adaptateurAuditApiPublique.interface.ts
+│   │   ├── adaptateurAuditApiPubliquePostgres.ts
 │   │   ├── adaptateurChiffrement.interface.ts
 │   │   ├── adaptateurChiffrement.ts
 │   │   ├── adaptateurChiffrementChaCha20.ts
@@ -612,6 +628,7 @@
 │   │   ├── adaptateurEnvironnement.interface.ts
 │   │   ├── adaptateurEnvironnement.js
 │   │   ├── adaptateurGestionErreur.interface.ts
+│   │   ├── adaptateurGestionErreurAvecDuplicationWebhook.ts
 │   │   ├── adaptateurGestionErreurSentry.ts
 │   │   ├── adaptateurGestionErreurVide.ts
 │   │   ├── adaptateurHorloge.ts
@@ -660,6 +677,7 @@
 │   │   ├── excel
 │   │   │   └── LecteurExcel.ts
 │   │   ├── fabriqueAdaptateurAuditAdminOrganisations.ts
+│   │   ├── fabriqueAdaptateurAuditApiPublique.ts
 │   │   ├── fabriqueAdaptateurChiffrement.js
 │   │   ├── fabriqueAdaptateurGestionErreur.js
 │   │   ├── fabriqueAdaptateurJournalMSS.js
@@ -678,6 +696,36 @@
 │   ├── annuaire
 │   │   ├── serviceAnnuaire.interface.ts
 │   │   └── serviceAnnuaire.js
+│   ├── apiPublique
+│   │   ├── documentation
+│   │   │   ├── Documentation.svelte
+│   │   │   ├── chargeComposantSvelte.ts
+│   │   │   ├── modeleDocumentation.ts
+│   │   │   └── pageDocumentation.ts
+│   │   ├── mappers
+│   │   │   ├── homologation.mapper.ts
+│   │   │   ├── indiceCyber.mapper.ts
+│   │   │   ├── mesures.mapper.ts
+│   │   │   ├── risques.mapper.ts
+│   │   │   └── services.mapper.ts
+│   │   ├── middlewares
+│   │   │   ├── auditApiPublique.ts
+│   │   │   ├── authentificationParCleApi.ts
+│   │   │   ├── chargeServiceAccessible.ts
+│   │   │   ├── limiteDeDebitParCleApi.ts
+│   │   │   └── politiqueSecuriteDocumentation.ts
+│   │   ├── mssApiPublique.ts
+│   │   ├── routes
+│   │   │   ├── routesApiPubliqueV1.ts
+│   │   │   └── routesDocumentation.ts
+│   │   └── schemas
+│   │       ├── erreur.schema.ts
+│   │       ├── homologation.schema.ts
+│   │       ├── indiceCyber.schema.ts
+│   │       ├── mesures.schema.ts
+│   │       ├── openApi.schema.ts
+│   │       ├── risques.schema.ts
+│   │       └── services.schema.ts
 │   ├── bdd
 │   │   ├── knex.ts
 │   │   └── knexJournal.ts
@@ -690,8 +738,12 @@
 │   │   │   ├── consigneAdminNommeSurOrganisationDansJournal.ts
 │   │   │   ├── consigneAdminRetireDeOrganisationDansJournal.ts
 │   │   │   ├── consigneAutorisationsModifieesDansJournal.js
+│   │   │   ├── consigneCleApiCreeeDansJournal.ts
+│   │   │   ├── consigneCleApiRevoqueeDansJournal.ts
 │   │   │   ├── consigneCompletudeDansJournal.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.ts
+│   │   │   ├── consigneGroupeServicesCreeDansJournal.ts
+│   │   │   ├── consigneGroupeServicesSupprimeDansJournal.ts
 │   │   │   ├── consigneModificationMesureEnMasseDansJournal.js
 │   │   │   ├── consigneNotificationEcheanceMesureBientotExpiree.ts
 │   │   │   ├── consigneNotificationInvitationsServices.ts
@@ -710,6 +762,7 @@
 │   │   │   ├── consigneRoleUtilisateurAdministreAttribueDansJournal.ts
 │   │   │   ├── consigneServiceSupprimeDansJournal.js
 │   │   │   ├── consigneServiceV1MigreEnV2DansJournal.js
+│   │   │   ├── consigneServicesDuGroupeModifiesDansJournal.ts
 │   │   │   ├── consigneSimulationMigrationReferentielCreeeDansJournal.ts
 │   │   │   ├── consigneTeleversementModelesMesureSpecifiqueRealiseDansJournal.js
 │   │   │   ├── consigneTeleversementServicesRealiseDansJournal.js
@@ -745,10 +798,14 @@
 │   │   ├── evenementAdminRetireDeOrganisation.ts
 │   │   ├── evenementAutorisationsServiceModifiees.js
 │   │   ├── evenementCguAccepteesParUtilisateur.js
+│   │   ├── evenementCleApiCreee.ts
+│   │   ├── evenementCleApiRevoquee.ts
 │   │   ├── evenementContributeurAjoute.ts
 │   │   ├── evenementDescriptionServiceModifiee.js
 │   │   ├── evenementDossierHomologationFinalise.js
 │   │   ├── evenementDossierHomologationImporte.js
+│   │   ├── evenementGroupeServicesCree.ts
+│   │   ├── evenementGroupeServicesSupprime.ts
 │   │   ├── evenementInvitationUtilisateurEnvoyee.js
 │   │   ├── evenementMesureModifieeEnMasse.js
 │   │   ├── evenementMesureServiceModifiee.js
@@ -763,6 +820,7 @@
 │   │   ├── evenementServiceRattacheAPrestataire.js
 │   │   ├── evenementServiceSupprime.js
 │   │   ├── evenementServiceV1MigreEnV2.js
+│   │   ├── evenementServicesDuGroupeModifies.ts
 │   │   ├── evenementServicesImportes.js
 │   │   ├── evenementSimulationMigrationReferentielCreee.ts
 │   │   ├── evenementUtilisateurInscrit.js
@@ -779,7 +837,9 @@
 │   │   ├── depotDonneesAutorisations.interface.ts
 │   │   ├── depotDonneesAutorisations.js
 │   │   ├── depotDonneesBrouillonService.ts
+│   │   ├── depotDonneesClesApi.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.js
+│   │   ├── depotDonneesGroupesServices.ts
 │   │   ├── depotDonneesModelesMesureSpecifique.js
 │   │   ├── depotDonneesNotifications.js
 │   │   ├── depotDonneesNotificationsExpirationHomologation.js
@@ -847,6 +907,7 @@
 │   │   ├── avis.ts
 │   │   ├── base.ts
 │   │   ├── brouillonService.ts
+│   │   ├── cleApi.ts
 │   │   ├── completudeMesures.js
 │   │   ├── contributeur.ts
 │   │   ├── convertisseurDescriptionV1BrouillonV2.ts
@@ -875,6 +936,7 @@
 │   │   │   ├── adminOrganisations.ts
 │   │   │   ├── traceAudit.ts
 │   │   │   └── utilisateurAdministre.ts
+│   │   ├── groupeServices.ts
 │   │   ├── identite.ts
 │   │   ├── indiceCyber.js
 │   │   ├── indiceCyber.type.ts
@@ -890,12 +952,16 @@
 │   │   │   ├── evenementAdminNommeSurOrganisation.ts
 │   │   │   ├── evenementAdminRetireDeOrganisation.ts
 │   │   │   ├── evenementCguAcceptees.js
+│   │   │   ├── evenementCleApiCreee.ts
+│   │   │   ├── evenementCleApiRevoquee.ts
 │   │   │   ├── evenementCollaboratifServiceModifie.js
 │   │   │   ├── evenementCompletudeServiceModifiee.commun.ts
 │   │   │   ├── evenementCompletudeServiceModifiee.serviceV1.ts
 │   │   │   ├── evenementCompletudeServiceModifiee.serviceV2.ts
 │   │   │   ├── evenementCompletudeServiceModifiee.ts
 │   │   │   ├── evenementConnexionUtilisateur.ts
+│   │   │   ├── evenementGroupeServicesCree.ts
+│   │   │   ├── evenementGroupeServicesSupprime.ts
 │   │   │   ├── evenementMesureModifieeEnMasse.js
 │   │   │   ├── evenementModelesMesureSpecifiqueImportes.js
 │   │   │   ├── evenementNotificationTransactionnelleModifiee.ts
@@ -910,6 +976,7 @@
 │   │   │   ├── evenementServiceMigreEnV2.js
 │   │   │   ├── evenementServiceRattacheAPrestataire.js
 │   │   │   ├── evenementServiceSupprime.js
+│   │   │   ├── evenementServicesDuGroupeModifies.ts
 │   │   │   ├── evenementServicesImportes.ts
 │   │   │   └── evenementSimulationMigrationReferentielCreee.ts
 │   │   ├── listeItems.ts
@@ -954,10 +1021,10 @@
 │   │   │   └── securiteService.ts
 │   │   ├── pointsAcces.js
 │   │   ├── profils
-│   │   │   ├── mesures.js
-│   │   │   ├── profil.js
-│   │   │   ├── regle.js
-│   │   │   └── regles.js
+│   │   │   ├── mesures.ts
+│   │   │   ├── profil.ts
+│   │   │   ├── regle.ts
+│   │   │   └── regles.ts
 │   │   ├── risque.ts
 │   │   ├── risqueGeneral.ts
 │   │   ├── risqueSpecifique.ts
@@ -1059,8 +1126,12 @@
 │   │   │   ├── routesConnecteApiAdmin.schema.ts
 │   │   │   ├── routesConnecteApiAdmin.ts
 │   │   │   ├── routesConnecteApiBrouillonService.ts
+│   │   │   ├── routesConnecteApiCleApi.schema.ts
+│   │   │   ├── routesConnecteApiCleApi.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.ts
 │   │   │   ├── routesConnecteApiExplicationRisquesV2.ts
+│   │   │   ├── routesConnecteApiGroupesServices.schema.ts
+│   │   │   ├── routesConnecteApiGroupesServices.ts
 │   │   │   ├── routesConnecteApiModeleMesureSpecifique.ts
 │   │   │   ├── routesConnecteApiNotifications.schema.ts
 │   │   │   ├── routesConnecteApiNotifications.ts
@@ -1192,6 +1263,8 @@
 │   │   ├── parcoursService.pug
 │   │   ├── preferences.pug
 │   │   ├── profil.pug
+│   │   ├── profilCleApi.pug
+│   │   ├── profilGroupes.pug
 │   │   ├── referentielMesures.pug
 │   │   ├── securisezServiceNumerique.pug
 │   │   ├── securite.pug
@@ -1324,6 +1397,13 @@
 │   │   │   └── kit
 │   │   │       ├── ListeNotifications.svelte
 │   │   │       └── Notification.svelte
+│   │   ├── cleApi
+│   │   │   ├── CleApi.svelte
+│   │   │   ├── FormulaireCreationCleApi.svelte
+│   │   │   ├── ModaleRevocationCleApi.svelte
+│   │   │   ├── cleApi.api.ts
+│   │   │   ├── cleApi.d.ts
+│   │   │   └── cleApi.ts
 │   │   ├── connexion
 │   │   │   ├── Connexion.svelte
 │   │   │   ├── connexion.d.ts
@@ -1429,6 +1509,13 @@
 │   │   │   │   └── autorisations.store.ts
 │   │   │   └── suppression
 │   │   │       └── SuppressionContributeur.svelte
+│   │   ├── groupes
+│   │   │   ├── Groupes.svelte
+│   │   │   ├── ModaleRenommageGroupe.svelte
+│   │   │   ├── ModaleSuppressionGroupe.svelte
+│   │   │   ├── groupes.api.ts
+│   │   │   ├── groupes.d.ts
+│   │   │   └── groupes.ts
 │   │   ├── index.html
 │   │   ├── indiceCyber
 │   │   │   ├── IndiceCyber.svelte
@@ -1619,6 +1706,8 @@
 │   │   │   └── preferences.types.ts
 │   │   ├── profil
 │   │   │   ├── Profil.svelte
+│   │   │   ├── SelectionDomaineSpecialite.svelte
+│   │   │   ├── SelectionNombreServices.svelte
 │   │   │   ├── profil.d.ts
 │   │   │   └── profil.ts
 │   │   ├── rapportTeleversement
@@ -1688,13 +1777,15 @@
 │   │   │   ├── simulationV2.ts
 │   │   │   └── simulationv2.api.ts
 │   │   ├── tableauDeBord
+│   │   │   ├── AccordeonDesServices.svelte
 │   │   │   ├── ActionsDesServices.svelte
 │   │   │   ├── BandeauBlog.svelte
 │   │   │   ├── BandeauFiltres.svelte
 │   │   │   ├── CarteDePromotion.svelte
 │   │   │   ├── TableauDeBord.svelte
-│   │   │   ├── TableauDesServices.svelte
+│   │   │   ├── TableauDeServices.svelte
 │   │   │   ├── TableauVide.svelte
+│   │   │   ├── TableauxDesServicesAvecActions.svelte
 │   │   │   ├── Tuiles.svelte
 │   │   │   ├── donneesVisiteGuidee.ts
 │   │   │   ├── elementsDeService
@@ -1835,6 +1926,7 @@
 │   │   │   ├── rechercheOrganisation.ts
 │   │   │   ├── referentielNiveauxSecurite.ts
 │   │   │   ├── stores
+│   │   │   │   ├── fileMisesAJour.store.ts
 │   │   │   │   ├── modelesMesureSpecifique.store.ts
 │   │   │   │   ├── notifications.store.ts
 │   │   │   │   ├── nouveautesPage.store.ts
@@ -1848,6 +1940,7 @@
 │   │   │   │   ├── ActionsTiroir.svelte
 │   │   │   │   ├── ContenuTiroir.svelte
 │   │   │   │   ├── DocumentTelechargeable.svelte
+│   │   │   │   ├── TiroirAssociationGroupesServices.svelte
 │   │   │   │   ├── TiroirDuplication.svelte
 │   │   │   │   ├── TiroirExportMesures.svelte
 │   │   │   │   ├── TiroirExportServices.svelte
@@ -1893,6 +1986,7 @@
 │   │   ├── tsconfig.json
 │   │   ├── ui
 │   │   │   └── stores
+│   │   │       ├── fileMisesAJour.store.spec.ts
 │   │   │       ├── notifications.store.spec.ts
 │   │   │       ├── nouveautesPage.store.spec.ts
 │   │   │       └── vraisemblanceRisqueV2.store.spec.ts
@@ -1907,6 +2001,7 @@
 ├── test
 │   ├── adaptateurs
 │   │   ├── adaptateurAuditAdminOrganisationsPostgres.spec.ts
+│   │   ├── adaptateurAuditApiPubliquePostgres.spec.ts
 │   │   ├── adaptateurChiffrement.spec.ts
 │   │   ├── adaptateurChiffrementChaCha20.spec.ts
 │   │   ├── adaptateurEnvironnement.spec.js
@@ -1915,6 +2010,7 @@
 │   │   ├── adaptateurOidc.spec.ts
 │   │   ├── adaptateurPostgres.spec.js
 │   │   ├── adaptateurPostgresTS.spec.ts
+│   │   ├── adaptateurProfilAnssi.spec.js
 │   │   ├── adaptateurRechercheEntrepriseAPI.spec.js
 │   │   ├── adaptateurStatistiquesPostgres.spec.ts
 │   │   ├── excel
@@ -1927,6 +2023,22 @@
 │   │   └── verifieFichierServi.js
 │   ├── annuaire
 │   │   └── serviceAnnuaire.spec.js
+│   ├── apiPublique
+│   │   ├── documentation
+│   │   │   ├── ComposantTest.svelte
+│   │   │   ├── chargeComposantSvelte.spec.ts
+│   │   │   └── modeleDocumentation.spec.ts
+│   │   ├── middlewares
+│   │   │   ├── auditApiPublique.spec.ts
+│   │   │   ├── authentificationParCleApi.spec.ts
+│   │   │   ├── chargeServiceAccessible.spec.ts
+│   │   │   └── limiteDeDebitParCleApi.spec.ts
+│   │   ├── mssApiPublique.spec.ts
+│   │   ├── routes
+│   │   │   ├── routesApiPubliqueV1.spec.ts
+│   │   │   └── routesDocumentation.spec.ts
+│   │   └── schemas
+│   │       └── openApi.schema.spec.ts
 │   ├── bus
 │   │   ├── abonnements
 │   │   │   ├── consigneAcceptationCguDansJournal.spec.js
@@ -1935,8 +2047,12 @@
 │   │   │   ├── consigneAdminNommeSurOrganisationDansJournal.spec.ts
 │   │   │   ├── consigneAdminRetireDeOrganisationDansJournal.spec.ts
 │   │   │   ├── consigneAutorisationsModifieesDansJournal.spec.js
+│   │   │   ├── consigneCleApiCreeeDansJournal.spec.ts
+│   │   │   ├── consigneCleApiRevoqueeDansJournal.spec.ts
 │   │   │   ├── consigneCompletudeDansJournal.spec.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.spec.ts
+│   │   │   ├── consigneGroupeServicesCreeDansJournal.spec.ts
+│   │   │   ├── consigneGroupeServicesSupprimeDansJournal.spec.ts
 │   │   │   ├── consigneModificationMesureEnMasseDansJournal.spec.js
 │   │   │   ├── consigneNotificationEcheanceMesureBientotExpiree.spec.ts
 │   │   │   ├── consigneNotificationInvitationsServices.spec.ts
@@ -1955,6 +2071,7 @@
 │   │   │   ├── consigneRoleUtilisateurAdministreAttribueDansJournal.spec.ts
 │   │   │   ├── consigneServiceSupprimeDansJournal.spec.js
 │   │   │   ├── consigneServiceV1MigreEnV2DansJournal.spec.js
+│   │   │   ├── consigneServicesDuGroupeModifiesDansJournal.spec.ts
 │   │   │   ├── consigneSimulationMigrationReferentielCreeeDansJournal.spec.ts
 │   │   │   ├── consigneTeleversementModelesMesureSpecifiqueRealiseDansJournal.spec.js
 │   │   │   ├── consigneTeleversementServicesRealiseDansJournal.spec.js
@@ -2028,7 +2145,9 @@
 │   │   ├── depotDonneesAdminsOrganisations.spec.ts
 │   │   ├── depotDonneesAutorisations.spec.js
 │   │   ├── depotDonneesBrouillonService.spec.ts
+│   │   ├── depotDonneesClesApi.spec.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.spec.js
+│   │   ├── depotDonneesGroupesServices.spec.ts
 │   │   ├── depotDonneesModelesMesureSpecifique.spec.js
 │   │   ├── depotDonneesNotifications.spec.js
 │   │   ├── depotDonneesNotificationsExpirationHomologation.spec.js
@@ -2056,7 +2175,8 @@
 │   │   ├── anssi.ppt
 │   │   ├── anssi.pptx
 │   │   ├── logo_mss.png
-│   │   └── middleware.js
+│   │   ├── middleware.js
+│   │   └── sentryNodeVide.ts
 │   ├── modeles
 │   │   ├── acteurHomologation.spec.ts
 │   │   ├── acteursHomologation.spec.ts
@@ -2069,6 +2189,7 @@
 │   │   ├── avis.spec.ts
 │   │   ├── base.spec.ts
 │   │   ├── brouillonService.spec.ts
+│   │   ├── cleApi.spec.ts
 │   │   ├── completudeMesures.spec.js
 │   │   ├── contributeur.spec.ts
 │   │   ├── convertisseurDescriptionV1BrouillonV2.spec.ts
@@ -2092,6 +2213,7 @@
 │   │   ├── fonctionnalitesSpecifiques.spec.js
 │   │   ├── gestionOrganisations
 │   │   │   └── adminOrganisations.spec.ts
+│   │   ├── groupeServices.spec.ts
 │   │   ├── identite.spec.ts
 │   │   ├── indiceCyber.spec.js
 │   │   ├── informationsHomologation.spec.js
@@ -2103,9 +2225,13 @@
 │   │   │   ├── evenementAdminNommeSurOrganisation.spec.ts
 │   │   │   ├── evenementAdminRetireDeOrganisation.spec.ts
 │   │   │   ├── evenementCguAcceptees.spec.js
+│   │   │   ├── evenementCleApiCreee.spec.ts
+│   │   │   ├── evenementCleApiRevoquee.spec.ts
 │   │   │   ├── evenementCollaboratifServiceModifie.spec.js
 │   │   │   ├── evenementCompletudeServiceModifiee.spec.ts
 │   │   │   ├── evenementConnexionUtilisateur.spec.ts
+│   │   │   ├── evenementGroupeServicesCree.spec.ts
+│   │   │   ├── evenementGroupeServicesSupprime.spec.ts
 │   │   │   ├── evenementMesureModifieeEnMasse.spec.js
 │   │   │   ├── evenementModelesMesureSpecifiqueImportes.spec.js
 │   │   │   ├── evenementNotificationTransactionnelleModifiee.spec.ts
@@ -2119,6 +2245,7 @@
 │   │   │   ├── evenementRoleUtilisateurAdministreAttribue.spec.ts
 │   │   │   ├── evenementServiceRattacheAPrestataire.spec.js
 │   │   │   ├── evenementServiceSupprime.spec.js
+│   │   │   ├── evenementServicesDuGroupeModifies.spec.ts
 │   │   │   ├── evenementServicesImportes.spec.ts
 │   │   │   └── evenementSimulationMigrationReferentielCreee.spec.ts
 │   │   ├── listesRisques.spec.js
@@ -2158,8 +2285,8 @@
 │   │   │   └── securiteService.spec.ts
 │   │   ├── pointsAcces.spec.js
 │   │   ├── profils
-│   │   │   ├── profil.spec.js
-│   │   │   └── regles.spec.js
+│   │   │   ├── profil.spec.ts
+│   │   │   └── regles.spec.ts
 │   │   ├── risque.spec.ts
 │   │   ├── risqueGeneral.spec.ts
 │   │   ├── risqueSpecifique.spec.ts
@@ -2229,8 +2356,10 @@
 │   │   │   ├── routesConnecteApi.spec.js
 │   │   │   ├── routesConnecteApiAdmin.spec.ts
 │   │   │   ├── routesConnecteApiBrouillonService.spec.ts
+│   │   │   ├── routesConnecteApiCleApi.spec.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.spec.ts
 │   │   │   ├── routesConnecteApiExplicationRisquesV2.spec.ts
+│   │   │   ├── routesConnecteApiGroupesServices.spec.ts
 │   │   │   ├── routesConnecteApiModeleMesureSpecifique.spec.ts
 │   │   │   ├── routesConnecteApiNotifications.spec.ts
 │   │   │   ├── routesConnecteApiService.spec.js
@@ -2263,6 +2392,7 @@
 │   │   │   └── routesNonConnecteWebhooks.spec.ts
 │   │   └── testeurMSS.js
 │   ├── sel
+│   │   ├── inventaireHachagesSha256.spec.ts
 │   │   └── serviceVerificationCoherenceSels.spec.js
 │   ├── session
 │   │   └── serviceGestionnaireSession.spec.ts
@@ -2291,7 +2421,16 @@
 │   ├── pagesConnecteesAdministrationOrganisations.spec.ts
 │   ├── pagesConnecteesService.spec.ts
 │   ├── pagesPubliques.spec.ts
+│   ├── parcoursHomologation.spec.ts
 │   └── visiteGuidee.spec.ts
+├── test_integration
+│   ├── aideAuxTests.ts
+│   ├── creationCompte.spec.ts
+│   ├── creationServiceV2.spec.ts
+│   ├── globalSetup.ts
+│   ├── pagesAdmin.spec.ts
+│   ├── pagesSupervision.spec.ts
+│   └── tsconfig.json
 ├── test_migrations
 │   ├── 20221102134033_changeProvenanceService.spec.js
 │   ├── 20221130100733_suppressionStatutMesureNonConcerne.spec.js
@@ -2304,4 +2443,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-296 directories, 2140 files
+313 directories, 2262 files

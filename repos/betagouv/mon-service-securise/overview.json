@@ -1,16 +1,15 @@
 {
   "url": "https://github.com/betagouv/mon-service-securise",
   "name": "mon-service-securise",
-  "description": "Ce service aide les collectivités territoriales et les entités publiques à sécuriser et à homologuer leurs services publics numériques, tels que les sites web, les applications mobiles et les API.",
+  "description": "Service numérique destiné à accompagner les collectivités territoriales et les entités publiques dans la sécurisation et l'homologation de leurs services publics numériques (sites web, applications mobiles et API).",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion des profils & Comptes",
+    "Notifications & Alertes",
     "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Suivi & Traçabilité",
+    "Formulaires & Démarches"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,10 +17,12 @@
     "Svelte",
     "PostgreSQL",
     "Knex",
-    "TypeScript",
-    "Pug",
     "Zod",
-    "OpenID Connect"
+    "OpenID Connect",
+    "Bcrypt",
+    "Pug",
+    "Helmet",
+    "Axios"
   ],
   "components": [
     "API REST & GraphQL",
@@ -34,11 +35,11 @@
   ],
   "auth": {
     "methods": [
+      "jwt",
       "mfa",
       "sso",
-      "jwt",
-      "session",
-      "email-password"
+      "api-key",
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -47,6 +48,7 @@
   "tests": [
     "Vitest",
     "Playwright",
+    "Supertest",
     "Axe-core"
   ],
   "workflows": [
@@ -54,17 +56,16 @@
     "codeql-analysis.yml",
     "deploiement.yml"
   ],
-  "lastActivity": "2026-09-09T17:18:37+02:00",
+  "lastActivity": "2026-10-07T16:48:26+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "TypeScript",
     "Sécurité & Auth",
+    "TypeScript",
     "Docker & Conteneurs",
     "Design System & UI",
-    "CI/CD & GitHub Actions",
-    "Accessibilité"
+    "CI/CD & GitHub Actions"
   ]
 }
