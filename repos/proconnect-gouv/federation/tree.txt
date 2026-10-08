@@ -24,6 +24,7 @@
 │   ├── .dockerignore
 │   ├── .env.example
 │   ├── .gitignore
+│   ├── .npmrc
 │   ├── Dockerfile
 │   ├── README.md
 │   ├── cypress
@@ -83,10 +84,8 @@
 │   │       ├── request.js
 │   │       └── reset.js
 │   ├── cypress.config.js
-│   ├── fixtures
-│   │   ├── User.yml
-│   │   └── xmlMockedString.js
 │   ├── nest-cli.json
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── public
 │   │   ├── favicon.ico
@@ -127,6 +126,7 @@
 │   │   │   ├── validate-select-value.js
 │   │   │   ├── validateAccountCreate.js
 │   │   │   └── validateAccountUpdate.js
+│   │   ├── robots.txt
 │   │   └── style
 │   │       ├── configuration.less
 │   │       ├── constants.less
@@ -256,6 +256,9 @@
 │   │   │   ├── file-storage.mongodb.entity.ts
 │   │   │   ├── file-storage.service.spec.ts
 │   │   │   └── file-storage.service.ts
+│   │   ├── fixtures
+│   │   │   ├── load.ts
+│   │   │   └── user.fixture.ts
 │   │   ├── form
 │   │   │   ├── dto
 │   │   │   │   ├── form-validation-error.dto.ts
@@ -374,51 +377,51 @@
 │   │           └── validate-with.validator.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
-│   ├── views
-│   │   ├── .gitkeep
-│   │   ├── account
-│   │   │   ├── creation.ejs
-│   │   │   ├── enrollment.ejs
-│   │   │   ├── list.ejs
-│   │   │   └── userAccount.ejs
-│   │   ├── configuration
-│   │   │   └── indisponibilite.ejs
-│   │   ├── exception
-│   │   │   ├── 400.ejs
-│   │   │   ├── 403.ejs
-│   │   │   ├── 404.ejs
-│   │   │   ├── 413.ejs
-│   │   │   └── 500.ejs
-│   │   ├── federation-user
-│   │   │   └── list.ejs
-│   │   ├── identity-provider
-│   │   │   ├── creation.ejs
-│   │   │   ├── list.ejs
-│   │   │   └── update.ejs
-│   │   ├── login.ejs
-│   │   ├── notification
-│   │   │   ├── create.ejs
-│   │   │   ├── information.ejs
-│   │   │   └── update.ejs
-│   │   ├── partials
-│   │   │   ├── algorithms-error.ejs
-│   │   │   ├── choose-items-number-to-show.ejs
-│   │   │   ├── dropdownAccount.ejs
-│   │   │   ├── global-errors-handler.ejs
-│   │   │   ├── head.ejs
-│   │   │   ├── header.ejs
-│   │   │   ├── hidden-form.ejs
-│   │   │   ├── pagination.ejs
-│   │   │   ├── resource-server.ejs
-│   │   │   ├── scopes.ejs
-│   │   │   ├── search.ejs
-│   │   │   └── sort-table.ejs
-│   │   └── service-provider
-│   │       ├── creation.ejs
-│   │       ├── generate-new-client-secret.ejs
-│   │       ├── list.ejs
-│   │       └── update.ejs
-│   └── yarn.lock
+│   └── views
+│       ├── .gitkeep
+│       ├── account
+│       │   ├── creation.ejs
+│       │   ├── enrollment.ejs
+│       │   ├── list.ejs
+│       │   └── userAccount.ejs
+│       ├── configuration
+│       │   └── indisponibilite.ejs
+│       ├── exception
+│       │   ├── 400.ejs
+│       │   ├── 403.ejs
+│       │   ├── 404.ejs
+│       │   ├── 413.ejs
+│       │   └── 500.ejs
+│       ├── federation-user
+│       │   └── list.ejs
+│       ├── identity-provider
+│       │   ├── creation.ejs
+│       │   ├── list.ejs
+│       │   └── update.ejs
+│       ├── login.ejs
+│       ├── notification
+│       │   ├── create.ejs
+│       │   ├── information.ejs
+│       │   └── update.ejs
+│       ├── partials
+│       │   ├── algorithms-error.ejs
+│       │   ├── choose-items-number-to-show.ejs
+│       │   ├── dropdownAccount.ejs
+│       │   ├── global-errors-handler.ejs
+│       │   ├── head.ejs
+│       │   ├── header.ejs
+│       │   ├── hidden-form.ejs
+│       │   ├── pagination.ejs
+│       │   ├── resource-server.ejs
+│       │   ├── scopes.ejs
+│       │   ├── search.ejs
+│       │   ├── sort-table.ejs
+│       │   └── sp-advanced-settings.ejs
+│       └── service-provider
+│           ├── creation.ejs
+│           ├── generate-new-client-secret.ejs
+│           ├── list.ejs
+│           └── update.ejs
 ├── back
 │   ├── .dockerignore
 │   ├── .gitignore
@@ -434,6 +437,8 @@
 │   │   └── tracked-event.md
 │   ├── apps
 │   │   └── core-fca-low
+│   │       ├── .mocks
+│   │       │   └── config.ts
 │   │       ├── src
 │   │       │   ├── app.module.ts
 │   │       │   ├── config
@@ -495,6 +500,7 @@
 │   │       │   │   │   ├── after-get-oidc-callback-session.dto.ts
 │   │       │   │   │   ├── after-redirect-to-idp-with-email-session.dto.ts
 │   │       │   │   │   ├── after-redirect-to-idp-with-idp-id-session.dto.ts
+│   │       │   │   │   ├── after-redirect-to-rie-warning-session.dto.ts
 │   │       │   │   │   └── user-session.dto.ts
 │   │       │   │   └── verify-email.dto.ts
 │   │       │   ├── enums
@@ -555,6 +561,7 @@
 │   │       │   │   │   ├── form-validation.js
 │   │       │   │   │   ├── go-back.js
 │   │       │   │   │   ├── matomo.js
+│   │       │   │   │   ├── multifi-preselection.js
 │   │       │   │   │   └── unshow-notice.js
 │   │       │   │   └── robots.txt
 │   │       │   ├── services
@@ -567,6 +574,8 @@
 │   │       │   │   ├── identity.sanitizer.spec.ts
 │   │       │   │   ├── identity.sanitizer.ts
 │   │       │   │   └── index.ts
+│   │       │   ├── test-bench.spec.ts
+│   │       │   ├── test-bench.ts
 │   │       │   ├── validators
 │   │       │   │   ├── index.ts
 │   │       │   │   ├── is-phone-number-simple-validator.spec.ts
@@ -586,6 +595,7 @@
 │   │       │       │   ├── skiplinks.ejs
 │   │       │       │   └── test-env-warning.ejs
 │   │       │       ├── interaction.ejs
+│   │       │       ├── rie-idp-warning.ejs
 │   │       │       └── verify-email.ejs
 │   │       └── tsconfig.app.json
 │   ├── global.d.ts
@@ -1249,8 +1259,11 @@
 │   │   ├── 20260708100033-fix_default_value_for_isMfaCompliant.ts
 │   │   ├── 20260713141446-remove_email_field_in_service_provider.ts
 │   │   ├── 20260731082824-delete_multiple_tokens_per_email.ts
-│   │   └── 20260807183716-rename_fqdns_to_attachedEmailDomains.ts
+│   │   ├── 20260807183716-rename_fqdns_to_attachedEmailDomains.ts
+│   │   ├── 20261001145454-unset_status_url_field.ts
+│   │   └── 20261005134700-add_bool_is-xda-enabled_for_sp.ts
 │   ├── nest-cli.json
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── scripts
 │   │   ├── README.md
@@ -1268,39 +1281,22 @@
 │   │       └── main.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
-│   ├── tsconfig.spec.json
-│   └── yarn.lock
+│   └── tsconfig.spec.json
 ├── compose.yaml
 ├── csmr-rie
 │   ├── .gitignore
+│   ├── .npmrc
 │   ├── Dockerfile
-│   ├── jest-setup-file.ts
-│   ├── jest.config.ts
-│   ├── nest-cli.json
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── src
-│   │   ├── app.module.ts
-│   │   ├── config
-│   │   │   ├── app.ts
-│   │   │   ├── index.ts
-│   │   │   ├── logger.ts
-│   │   │   └── rie-broker.ts
-│   │   ├── controllers
-│   │   │   ├── csmr-http-proxy.controller.spec.ts
-│   │   │   ├── csmr-http-proxy.controller.ts
-│   │   │   ├── health.controller.spec.ts
-│   │   │   ├── health.controller.ts
-│   │   │   └── index.ts
-│   │   ├── dto
-│   │   │   ├── bridge-payload.dto.ts
-│   │   │   ├── csmr-http-proxy.config.ts
-│   │   │   └── index.ts
-│   │   ├── index.ts
-│   │   └── main.ts
-│   ├── tsconfig.app.json
-│   ├── tsconfig.json
-│   ├── tsconfig.spec.json
-│   └── yarn.lock
+│   │   ├── http.test.ts
+│   │   ├── http.ts
+│   │   ├── logger.ts
+│   │   ├── main.ts
+│   │   ├── rpc.test.ts
+│   │   └── rpc.ts
+│   └── tsconfig.json
 ├── docker
 │   ├── .dockerignore
 │   ├── .env
@@ -1417,17 +1413,20 @@
 │               └── app.csr
 ├── mock-data-provider
 │   ├── .gitignore
+│   ├── .npmrc
 │   ├── Dockerfile
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── src
 │   │   ├── app.test.ts
 │   │   ├── app.ts
 │   │   └── main.ts
-│   ├── tsconfig.json
-│   └── yarn.lock
+│   └── tsconfig.json
 ├── mock-identity-provider
 │   ├── .gitignore
+│   ├── .npmrc
 │   ├── Dockerfile
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── src
 │   │   ├── app.test.ts
@@ -1440,11 +1439,12 @@
 │   │   │   ├── memory_adapter.ts
 │   │   │   └── policy.ts
 │   │   └── user-data.ts
-│   ├── tsconfig.json
-│   └── yarn.lock
+│   └── tsconfig.json
 ├── mock-service-provider
 │   ├── .gitignore
+│   ├── .npmrc
 │   ├── Dockerfile
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── src
 │   │   ├── app.test.ts
@@ -1452,8 +1452,7 @@
 │   │   ├── decrypt.ts
 │   │   ├── index.ejs
 │   │   └── main.ts
-│   ├── tsconfig.json
-│   └── yarn.lock
+│   └── tsconfig.json
 └── quality
     ├── .cypress-cucumber-preprocessorrc.json
     ├── .gitignore
@@ -1623,17 +1622,18 @@
     │               ├── idp-proconnect-identite-steps.ts
     │               ├── interaction-idp-selection-steps.ts
     │               ├── interaction-steps.ts
+    │               ├── rie-idp-warning-steps.ts
     │               ├── service-provider-error-steps.ts
     │               ├── service-provider-steps.ts
     │               └── technical-error-steps.ts
     ├── cypress-base.config.ts
     ├── cypress-fca-low-visual.config.ts
     ├── cypress-fca-low.config.ts
+    ├── package-lock.json
     ├── package.json
     ├── scripts
     │   ├── get-business-logs.ts
     │   ├── multiple-cucumber-html-reporter.ts
     │   └── parse-business-log.ts
-    ├── tsconfig.json
-    └── yarn.lock
-372 directories, 1266 files
+    └── tsconfig.json
+370 directories, 1268 files

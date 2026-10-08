@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "Plateforme de fédération d'identité pour ProConnect, permettant un accès sécurisé aux services de l'État pour les professionnels. Elle gère l'authentification, la gestion des fournisseurs d'identité et la sécurité des sessions.",
+  "description": "Plateforme de fédération d'identité permettant l'accès sécurisé des professionnels aux services de l'État. Elle assure la gestion de l'authentification, des rôles et l'interopérabilité via des protocoles standards.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
+    "API & Intégrations",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
     "Administration & Backoffice",
-    "API & Intégrations"
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -17,21 +17,21 @@
     "Docker",
     "MongoDB",
     "PostgreSQL",
+    "Redis",
+    "RabbitMQ",
     "Cypress",
     "Jest",
-    "OIDC Provider",
-    "TypeORM",
-    "Mongoose"
+    "OIDC Provider"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "MongoDB & NoSQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "MongoDB & NoSQL",
     "Tests",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
@@ -42,20 +42,26 @@
       "email-password"
     ]
   },
-  "tests": "Jest (unitaires), Cypress (E2E), tests de snapshot",
-  "lastActivity": "2026-09-11T16:13:23+02:00",
+  "tests": [
+    "Jest",
+    "Cypress"
+  ],
+  "workflows": [
+    "Docker build",
+    "CI/CD"
+  ],
+  "lastActivity": "2026-10-07T17:43:04+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Node.js, NestJS & Express",
     "Docker & Conteneurs",
     "Sécurité & Auth",
     "SSO & Identité fédérée",
+    "Node.js, NestJS & Express",
     "Bases de données SQL",
-    "Bases de données NoSQL",
-    "Tests & Qualité"
+    "Bases de données NoSQL"
   ]
 }
