@@ -1,37 +1,19 @@
-## Changelog : dora (30 derniers jours, au 02/10/2026)
+## Changelog : dora (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois-ci, Dora a bénéficié d'une simplification importante de la gestion des structures et des services, avec des formulaires plus intuitifs et une meilleure organisation des données. Les gestionnaires de territoires disposent désormais d'outils de pilotage plus performants grâce à une refonte de leur tableau de bord. Parallèlement, l'infrastructure a été modernisée pour améliorer la fiabilité du stockage et le suivi des erreurs.
+Ce mois-ci, Dora a franchi une étape importante dans l'amélioration de l'expérience des gestionnaires de territoires grâce à la refonte de leur tableau de bord et de leur page d'accueil. La gestion des structures a été considérablement simplifiée pour gagner en efficacité, tandis que plusieurs optimisations techniques et de sécurité ont été déployées pour renforcer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Gestion des structures et services**
-    - Simplification de la fiche et du formulaire d'édition des structures [#1383](https://github.com/gip-inclusion/dora/issues/1383).
-    - Fusion de la présentation et du résumé en une description unique pour les structures [#1384](https://github.com/gip-inclusion/dora/issues/1384).
-    - Possibilité de rattacher des structures à un réseau porteur [#1382](https://github.com/gip-inclusion/dora/issues/1382).
-    - Amélioration de la gestion des services : correction de la synchronisation avec les modèles [#1370](https://github.com/gip-inclusion/dora/issues/1370), ajout des horaires d'accueil et correction des doublons de formulaires [#1354](https://github.com/gip-inclusion/dora/issues/1354).
-    - Suppression des processus de modération devenus obsolètes pour les structures [#1380](https://github.com/gip-inclusion/dora/issues/1380) et les services [#1378](https://github.com/gip-inclusion/dora/issues/1378).
-    - Ajout d'une option vide pour le champ typologie des structures dans l'administration [#1398](https://github.com/gip-inclusion/dora/issues/1398).
-- **Expérience utilisateur et interface**
-    - Refonte complète du tableau de bord et de la page d'accueil pour les gestionnaires de territoires [#1349](https://github.com/gip-inclusion/dora/issues/1349), [#1339](https://github.com/gip-inclusion/dora/issues/1339).
-    - Support du format Markdown pour les bandeaux d'avertissement [#1404](https://github.com/gip-inclusion/dora/issues/1404) et amélioration du rendu des descriptions [#1364](https://github.com/gip-inclusion/dora/issues/1364).
-    - Ajout de fonctionnalités de recherche par communes et EPCI [#1340](https://github.com/gip-inclusion/dora/issues/1340).
-    - Optimisation de l'export des orientations pour inclure les données des emplois [#1361](https://github.com/gip-inclusion/dora/issues/1361) et ajout de champs pour l'export vers data.inclusion [#1345](https://github.com/gip-inclusion/dora/issues/1345).
-    - Amélioration de la gestion des erreurs de formulaire pour l'utilisateur [#1392](https://github.com/gip-inclusion/dora/issues/1392).
-    - Sécurisation des données en empêchant la publication de liens de mobilisation internes [#1360](https://github.com/gip-inclusion/dora/issues/1360).
+- **Gestion des territoires** : Refonte complète du tableau de bord des gestionnaires de territoires [#1349](https://github.com/gip-inclusion/dora/issues/1349) et mise en place d'une nouvelle page d'accueil dédiée [#1339](https://github.com/gip-inclusion/dora/issues/1339).
+- **Gestion des structures** : Simplification des formulaires et des fiches structures [#1383](https://github.com/gip-inclusion/dora/issues/1383), fusion des champs de résumé et de présentation en une description unique [#1384](https://github.com/gip-inclusion/dora/issues/1384), possibilité de rattacher les structures à un réseau porteur [#1382](https://github.com/gip-inclusion/dora/issues/1382) et ajout d'une option vide pour la typologie des structures [#1398](https://github.com/gip-inclusion/dora/issues/1398).
+- **Services et données** : Amélioration de l'export des orientations reçues [#1361](https://github.com/gip-inclusion/dora/issues/1361), sécurisation du téléchargement des exports via un lien envoyé par e-mail [#1405](https://github.com/gip-inclusion/dora/issues/1405), ajout de champs pour l'interopérabilité avec data.inclusion [#1345](https://github.com/gip-inclusion/dora/issues/1345) et correction de la synchronisation des services avec leurs modèles [#1370](https://github.com/gip-inclusion/dora/issues/1370).
+- **Recherche et interface** : Ajout d'une route de recherche pour les communes et les EPCI [#1340](https://github.com/gip-inclusion/dora/issues/1340), support du Markdown pour les bandeaux d'avertissement [#1404](https://github.com/gip-inclusion/dora/issues/1404) et amélioration de la gestion des fichiers Office (.doc, .xls) lors des uploads [#1415](https://github.com/gip-inclusion/dora/issues/1415).
+- **Processus métier** : Suppression de la modération des services [#1378](https://github.com/gip-inclusion/dora/issues/1378) et du statut de modération "en cours" pour les structures [#1380](https://github.com/gip-inclusion/dora/issues/1380).
 
 ### Évolutions techniques
-- **Infrastructure et stockage**
-    - Migration du stockage S3 local de MinIO vers SeaweedFS [#1376](https://github.com/gip-inclusion/dora/issues/1376).
-- **Authentification et sécurité**
-    - Correction de la génération du token DRF lors de l'authentification via ProConnect [#1363](https://github.com/gip-inclusion/dora/issues/1363).
-- **Performance et outils de développement**
-    - Optimisation du chargement des structures pour le personnel afin d'éviter les surcharges de données [#1353](https://github.com/gip-inclusion/dora/issues/1353).
-    - Migration vers la version 11 du SDK Sentry pour un meilleur suivi des erreurs [#1397](https://github.com/gip-inclusion/dora/issues/1397).
-    - Ajout d'une commande pour l'anonymisation des données [#1321](https://github.com/gip-inclusion/dora/issues/1321).
-    - Amélioration de la compatibilité de la pagination avec les navigateurs plus anciens [#1391](https://github.com/gip-inclusion/dora/issues/1391).
+- **Infrastructure et stockage** : Migration du stockage local de MinIO vers SeaweedFS [#1376](https://github.com/gip-inclusion/dora/issues/1376) et migration des applications parentes vers le projet Scalingo dora-staging [#1430](https://github.com/gip-inclusion/dora/issues/1430).
+- **Performance et CI/CD** : Optimisation du chargement des structures pour éviter les surcharges lors des accès administratifs [#1353](https://github.com/gip-inclusion/dora/issues/1353), mise à jour du SDK Sentry [#1397](https://github.com/gip-inclusion/dora/issues/1397), ajustements de la configuration CI/CD pour les environnements de test [#1414](https://github.com/gip-inclusion/dora/issues/1414) et correction de la compatibilité de la pagination sur certains navigateurs [#1391](https://github.com/gip-inclusion/dora/issues/1391).
+- **Sécurité et outils** : Correction de la génération du token lors de l'authentification ProConnect [#1363](https://github.com/gip-inclusion/dora/issues/1363) et ajout d'une commande d'anonymisation des données [#1321](https://github.com/gip-inclusion/dora/issues/1321).
 
 ### Autres changements
-- **Maintenance et configuration**
-    - Nettoyage du code : suppression des pages et endpoints d'administration obsolètes pour les services [#1377](https://github.com/gip-inclusion/dora/issues/1377) et nettoyage de la commande de statistiques Nexus [#1389](https://github.com/gip-inclusion/dora/issues/1389).
-    - Mise à jour de la politique de sécurité de contenu (CSP) pour intégrer Matomo [#1409](https://github.com/gip-inclusion/dora/issues/1409).
-    - Actualisation des configurations de staging et de la CI (URL Dora et image MinIO) [#1357](https://github.com/gip-inclusion/dora/issues/1357), [#1355](https://github.com/gip-inclusion/dora/issues/1355).
+- **Nettoyage** : Suppression du menu « Mon portail » dans Nexus [#1416](https://github.com/gip-inclusion/dora/issues/1416) et suppression de code obsolète lié à l'administration des services [#1377](https://github.com/gip-inclusion/dora/issues/1377).

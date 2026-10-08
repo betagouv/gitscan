@@ -286,7 +286,6 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── tests_management_commands.ambr
-│   │   │   │   ├── test_sync.py
 │   │   │   │   ├── test_views.py
 │   │   │   │   └── tests_management_commands.py
 │   │   │   ├── urls.py
@@ -356,6 +355,7 @@
 │   │   │   │   ├── base.py
 │   │   │   │   ├── dora.py
 │   │   │   │   └── emplois.py
+│   │   │   ├── export_link.py
 │   │   │   ├── management
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
@@ -411,6 +411,7 @@
 │   │   │   │   ├── orientation-rejected-beneficiary.mjml
 │   │   │   │   ├── orientation-rejected-prescriber.mjml
 │   │   │   │   ├── orientation-rejected-structure.mjml
+│   │   │   │   ├── orientations-export-link.mjml
 │   │   │   │   └── partials
 │   │   │   │       ├── block-attachments.html
 │   │   │   │       ├── block-beneficiary.html
@@ -791,12 +792,6 @@
 │   │   │   │   │   ├── logo-communaute-inclusion.svg
 │   │   │   │   │   ├── logo-data-inclusion.svg
 │   │   │   │   │   ├── logo-dora.svg
-│   │   │   │   │   ├── logo-emploi-inclusion.svg
-│   │   │   │   │   ├── logo-marche-inclusion.svg
-│   │   │   │   │   ├── logo-monrecap.svg
-│   │   │   │   │   ├── logo-pilotage-inclusion.svg
-│   │   │   │   │   ├── logo-plateforme-inclusion-mono.svg
-│   │   │   │   │   ├── logo-plateforme-inclusion.svg
 │   │   │   │   │   ├── logo-rf.svg
 │   │   │   │   │   └── partners
 │   │   │   │   │       ├── logo_actionlogement.png
@@ -986,6 +981,7 @@
 │   │   │   │   ├── emplois-orientation.ts
 │   │   │   │   ├── geo.ts
 │   │   │   │   ├── nexus.ts
+│   │   │   │   ├── orientations.ts
 │   │   │   │   ├── saved-search.ts
 │   │   │   │   ├── services.ts
 │   │   │   │   ├── structures.ts
@@ -1226,14 +1222,6 @@
 │   │   │   │   ├── menu-aide.svelte
 │   │   │   │   ├── menu-mes-structures.svelte
 │   │   │   │   ├── menu-mon-compte.svelte
-│   │   │   │   ├── menu-nexus
-│   │   │   │   │   ├── consts.ts
-│   │   │   │   │   ├── menu-inscription-base.svelte
-│   │   │   │   │   ├── menu-inscription-emplois.svelte
-│   │   │   │   │   ├── menu-inscription-proconnect.svelte
-│   │   │   │   │   ├── menu-mon-portail-service-item.svelte
-│   │   │   │   │   ├── menu-mon-portail.svelte
-│   │   │   │   │   └── menu-nexus.svelte
 │   │   │   │   ├── menu.svelte
 │   │   │   │   ├── skip-link.svelte
 │   │   │   │   ├── sub-menu-dropdown.svelte
@@ -1333,15 +1321,19 @@
 │   │   │   │   ├── handle-orientation.svelte
 │   │   │   │   ├── link-expired.svelte
 │   │   │   │   ├── sub-title.svelte
-│   │   │   │   └── suivi
-│   │   │   │       ├── +layout.svelte
-│   │   │   │       ├── +layout.ts
+│   │   │   │   ├── suivi
+│   │   │   │   │   ├── +layout.svelte
+│   │   │   │   │   ├── +layout.ts
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── export-warning-modal.svelte
+│   │   │   │   │   ├── orientation-export.ts
+│   │   │   │   │   ├── orientations-export-card.svelte
+│   │   │   │   │   ├── orientations-stats-display.svelte
+│   │   │   │   │   └── state.svelte.ts
+│   │   │   │   └── telechargement
 │   │   │   │       ├── +page.svelte
-│   │   │   │       ├── export-warning-modal.svelte
-│   │   │   │       ├── orientation-export.ts
-│   │   │   │       ├── orientations-export-card.svelte
-│   │   │   │       ├── orientations-stats-display.svelte
-│   │   │   │       └── state.svelte.ts
+│   │   │   │       ├── +page.ts
+│   │   │   │       └── export-download.svelte
 │   │   │   ├── recherche
 │   │   │   │   ├── +page.svelte
 │   │   │   │   ├── +page.ts
@@ -1458,6 +1450,7 @@
 │   │   │   ├── illu-orientation.png
 │   │   │   ├── illu-saisir.png
 │   │   │   ├── illu-saved-search-notification.png
+│   │   │   ├── illu-telechargement.png
 │   │   │   ├── logo-dora-email-new.png
 │   │   │   └── logo-dora-mini.png
 │   │   ├── favicon.v2.ico
@@ -1476,4 +1469,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-274 directories, 1204 files
+274 directories, 1197 files
