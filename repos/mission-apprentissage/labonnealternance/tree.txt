@@ -813,6 +813,7 @@
 │   │   │   ├── 20260925100000-seo-diplomes-lot1-5539.ts
 │   │   │   ├── 20260928183655-clear-rome-content-custom-offers-5590.ts
 │   │   │   ├── 20260928200000-backfill-missing-apply-url-jobs-partners.ts
+│   │   │   ├── 20260929100000-seo-diplomes-lot2-5604.ts
 │   │   │   ├── 20260930160000-drop-phantom-collections-5618.ts
 │   │   │   └── 20260930170000-unset-application-count-jobs-partners.ts
 │   │   ├── security
@@ -835,6 +836,8 @@
 │   │       ├── application.service.ts
 │   │       ├── appointment.service.ts
 │   │       ├── bal.service.ts
+│   │       ├── brevo-contact-attributes.test.ts
+│   │       ├── brevo-contact-attributes.ts
 │   │       ├── brevo.service.test.ts
 │   │       ├── brevo.service.ts
 │   │       ├── cache-classification.service.test.ts
@@ -1010,7 +1013,8 @@
 │   │   │       ├── drop-search-items-5526.test.ts
 │   │   │       ├── normalize-naf-jobs-partners.test.ts
 │   │   │       ├── search-collections-par-mode-5389.test.ts
-│   │   │       └── seo-diplomes-lot1-5539.test.ts
+│   │   │       ├── seo-diplomes-lot1-5539.test.ts
+│   │   │       └── seo-diplomes-lot2-5604.test.ts
 │   │   ├── mocks
 │   │   │   ├── mockApiBal.ts
 │   │   │   ├── mockApiEntreprise.ts
@@ -1408,6 +1412,9 @@
 │   │   │   │   │           ├── JobDetailRendererClient.tsx
 │   │   │   │   │           ├── loading.tsx
 │   │   │   │   │           └── page.tsx
+│   │   │   │   ├── _utils
+│   │   │   │   │   ├── emploi.metadata.utils.test.ts
+│   │   │   │   │   └── emploi.metadata.utils.ts
 │   │   │   │   ├── layout.tsx
 │   │   │   │   └── not-found.tsx
 │   │   │   ├── formation
@@ -1603,6 +1610,7 @@
 │   │   │   │   ├── Badge.tsx
 │   │   │   │   ├── Bandeau.tsx
 │   │   │   │   ├── CfaDelegationContent.tsx
+│   │   │   │   ├── CfaSelectionList.tsx
 │   │   │   │   ├── ClotureRecrutementForm.tsx
 │   │   │   │   ├── ConnectionActions.tsx
 │   │   │   │   ├── CustomTooltip.tsx
@@ -1646,6 +1654,7 @@
 │   │   │       │   │   ├── FormulaireEditionOffreStep3CFA.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreStep4FtSupport.tsx
 │   │   │       │   │   ├── InformationLegaleEntreprise.tsx
+│   │   │       │   │   ├── JobStartDateFields.tsx
 │   │   │       │   │   ├── ListeOffres.tsx
 │   │   │       │   │   ├── ModificationCompteEmail.tsx
 │   │   │       │   │   ├── OffreProlongationModal.tsx
@@ -2001,6 +2010,7 @@
 │   │   ├── contants.ts
 │   │   ├── dayjs.ts
 │   │   └── validation
+│   │       ├── field-validations.test.ts
 │   │       └── field-validations.ts
 │   ├── components
 │   │   ├── DepotOffre
@@ -2826,4 +2836,4 @@
 │       └── validation-messages.ts
 ├── vitest.config.ts
 └── yarn.lock
-509 directories, 2887 files
+510 directories, 2896 files
