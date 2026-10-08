@@ -187,6 +187,7 @@
 │   │   │   ├── bootstrap.ts
 │   │   │   ├── importTool.ts
 │   │   │   ├── index.ts
+│   │   │   ├── legacyUiConfigMigration.test.ts
 │   │   │   ├── ports
 │   │   │   │   ├── CompileData.ts
 │   │   │   │   ├── ComptoirDuLibreApi.ts
@@ -203,7 +204,6 @@
 │   │   │   ├── types
 │   │   │   │   ├── SoftwareTypes.ts
 │   │   │   │   └── index.ts
-│   │   │   ├── uiConfigDeploymentExamples.test.ts
 │   │   │   ├── uiConfigSchema.ts
 │   │   │   ├── usecases
 │   │   │   │   ├── auth
@@ -250,6 +250,8 @@
 │   │   │   ├── ApiTypes.ts
 │   │   │   └── index.ts
 │   │   ├── rpc
+│   │   │   ├── authRoutes.test.ts
+│   │   │   ├── authRoutes.ts
 │   │   │   ├── context.ts
 │   │   │   ├── createTestCaller.ts
 │   │   │   ├── import-from-inner-identifiers.ts
@@ -300,10 +302,9 @@
 │   │   ├── .env.sample
 │   │   ├── README.md
 │   │   ├── customization
-│   │   │   ├── translations
-│   │   │   │   ├── en.json
-│   │   │   │   └── fr.json
-│   │   │   └── ui-config.json
+│   │   │   └── translations
+│   │   │       ├── en.json
+│   │   │       └── fr.json
 │   │   ├── docker-compose.yml
 │   │   └── nginx
 │   │       └── default.conf
@@ -323,6 +324,7 @@
 │       ├── docker-compose.yml
 │       └── nginx
 │           └── default.conf
+├── docker-compose.pentest.yml
 ├── docker-compose.preprod.yml
 ├── docker-compose.prod.yml
 ├── docker-compose.resources.yml
@@ -960,6 +962,7 @@
 │   ├── issue-491-context.md
 │   ├── issue-491-plan.md
 │   ├── issue-491-worklog.md
+│   ├── pentesting-with-strix.md
 │   ├── public-api.md
 │   ├── sill.en.md
 │   └── sill.md
@@ -973,6 +976,7 @@
 │   │   ├── admin.auth.spec.ts
 │   │   ├── auth.setup.ts
 │   │   ├── declaration.auth.spec.ts
+│   │   ├── oidc-browser-binding.spec.ts
 │   │   ├── software-catalog.spec.ts
 │   │   └── software-details.spec.ts
 │   └── tsconfig.json
@@ -999,6 +1003,10 @@
 ├── nginx
 │   └── default.conf
 ├── package.json
+├── pentest
+│   ├── keycloak-realm.json
+│   ├── nginx.conf
+│   └── strix-instructions.md
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── renovate.json
@@ -1327,4 +1335,4 @@
 │   ├── tsconfig.json
 │   └── vite.config.ts
 └── yarn-error.log
-139 directories, 1231 files
+140 directories, 1238 files

@@ -1,22 +1,25 @@
-## Changelog : catalogi (30 derniers jours, au 25 septembre 2026)
+## Changelog : catalogi (30 derniers jours, au 07 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'ergonomie de l'interface et la simplification de la gestion des données. L'ajout de nouvelles commandes en ligne de commande facilite l'importation de références, tandis que la documentation de l'API a été renforcée pour offrir une meilleure visibilité aux développeurs utilisant les exports de données.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité (notamment sur l'authentification et la prévention de certaines vulnérabilités), l'amélioration de l'expérience développeur via de nouveaux outils en ligne de commande et une meilleure documentation de l'API. L'interface utilisateur a également été affinée pour offrir un rendu plus propre.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur** : l'écran d'accueil est désormais plus épuré lorsqu'aucun cas d'usage n'est défini et le logo a été corrigé.
-- **Outils en ligne de commande (CLI)** : ajout de fonctionnalités permettant d'importer et de mettre à jour des références via la ligne de commande [#577](https://github.com/codegouvfr/catalogi/issues/577).
-- **Documentation API** : mise à disposition d'une interface Swagger UI autonome pour documenter l'export public v2.
+- **Outils de gestion (CLI) :** Ajout de commandes en ligne de commande pour faciliter l'importation et la mise à jour des références [#577](https://github.com/codegouvfr/catalogi/issues/577).
+- **API :** Mise à disposition d'une interface Swagger UI autonome pour documenter l'export public v2.
+- **Interface utilisateur :** Amélioration de la clarté de la page d'accueil lorsqu'aucun cas d'usage n'est sélectionné et correction du logo.
+- **Données :** Amélioration de la précision de l'identification des logiciels libres grâce à un meilleur ciblage des éléments Wikidata et des identifiants Zenodo.
 
 ### Évolutions techniques
-- **API & Logique métier** :
-  - Correction du mécanisme de résolution des identifiants de projet GitLab [#575](https://github.com/codegouvfr/catalogi/issues/575).
-  - Amélioration de la gestion des préfixes de documentation lors de l'utilisation de proxys.
-  - Renforcement de la validation du schéma public par rapport aux types de logiciels originaux.
-  - Sécurisation pour empêcher les déclarations exécutables et les URLs d'instance.
-- **Tests & Qualité** :
-  - Optimisation de la suite de tests de l'API, notamment la vérification des schémas générés sans nécessiter de serveur HTTP.
-  - Amélioration de la gestion et de l'isolation des données de test (fixtures) pour la configuration de l'interface et le catalogue public.
+- **Sécurité :** 
+    - Correction d'une vulnérabilité liée à l'authentification OIDC (vuln-0008) en liant les transactions au navigateur initiateur.
+    - Mise en place d'un environnement de test d'intrusion (pentest) local et éphémère.
+    - Prévention des déclarations d'exécutables et des URLs d'instance.
+- **API & Backend :**
+    - Correction de la gestion des préfixes de documentation lors de l'utilisation de proxys.
+    - Renforcement de la validation des schémas publics par rapport aux types de logiciels originaux.
+    - Optimisation de la résolution des identifiants de projets GitLab [#575](https://github.com/codegouvfr/catalogi/issues/575).
+- **Tests :** Amélioration significative de la couverture et de la structure des tests pour l'API et les configurations de l'interface utilisateur.
 
 ### Autres changements
-- Correction de la configuration de build concernant le nom du projet.
+- **Documentation :** Mise à jour de la documentation de déploiement suite à des revues de code.
+- **Nettoyage :** Suppression de l'importation des anciennes configurations d'interface utilisateur lors des nouvelles installations pour simplifier le processus.
