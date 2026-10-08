@@ -1,40 +1,44 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 25 septembre 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une intégration majeure de l'intelligence artificielle pour automatiser l'importation et la classification des plans de transition. La plateforme a également évolué pour offrir une gestion plus fine des leviers d'action des collectivités et a préparé la transition vers le nouveau référentiel CR, tout en renforçant la robustesse de la gestion documentaire.
+Ce mois a été marqué par une avancée majeure dans l'automatisation des processus grâce à l'intégration de l'intelligence artificielle pour l'importation de plans d'action. La plateforme a également franchi une étape clé avec le déploiement des fonctionnalités liées à la démarche PCAET (pilotage et dépôt) et l'amélioration des outils d'aide à la décision (priorisation des leviers) pour les collectivités.
 
 ### Évolutions fonctionnelles
-- **Intelligence Artificielle (Bêta) :** 
-  - Introduction d'un outil d'importation de plans assisté par l'IA (Gemini), permettant la classification automatique des fiches par levier.
-  - Mise en place d'un contrôle humain obligatoire : les plans importés par IA doivent être vérifiés avant le dépôt du PCAET.
-  - Système de quotas pour limiter l'utilisation des ressources IA par collectivité.
-- **Gestion des Collectivités & Leviers :**
-  - Refonte de l'interface des leviers : affichage détaillé des catégories, des actions rattachées et de la mobilisation par volet.
-  - Ajout d'un système de notation (0 à 3) pour évaluer la mobilisation d'une collectivité sur chaque volet.
-  - Gestion des périmètres géographiques secondaires pour les EPCI.
-- **Suivi des PCAET & Instructions :**
-  - Amélioration du cycle d'instruction avec un vocabulaire de statuts unifié et des notifications automatiques pour les services et pilotes.
-  - Meilleure visibilité sur les dossiers en cours d'élaboration et les dépôts effectués hors plateforme.
-- **Référentiels & Indicateurs :**
-  - Automatisation du calcul des scores indicatifs en fonction des valeurs d'indicateurs et de leur suivi.
-  - Possibilité pour les utilisateurs de déclarer un indicateur comme "non applicable".
-  - Déploiement de la procédure de bascule vers le référentiel CR (avec modale de confirmation et gestion des archives).
-- **Gestion Documentaire :**
-  - Possibilité de télécharger l'ensemble des documents d'une mesure via une archive ZIP.
-  - Amélioration de la gestion des fichiers volumineux et des doublons lors du dépôt.
+- **Démarche PCAET** : 
+    - Mise en place d'un parcours complet de dépôt et d'instruction, incluant une nouvelle interface de pilotage et de suivi des étapes.
+    - Ajout d'une page de démonstration interactive et d'une FAQ dédiée pour accompagner les utilisateurs.
+    - Amélioration des notifications par email tout au long du cycle de vie du dossier.
+- **Importation assistée par IA** : 
+    - Capacité d'importer et de structurer automatiquement des plans d'action à partir de documents PDF ou Word via l'IA.
+    - Extraction automatique de données clés : partenaires, financements, moyens humains, priorités et dates.
+    - Introduction d'une étape de vérification humaine obligatoire pour valider les données extraites avant leur intégration.
+- **Priorisation et Leviers** : 
+    - Nouveaux outils de visualisation pour l'aide à la décision : matrice impact × mobilisation, treemap cliquable et histogrammes par catégorie.
+    - Possibilité pour les collectivités de qualifier la pertinence de leurs leviers et de leurs catégories d'action.
+- **Gestion des indicateurs et référentiels** : 
+    - Transition vers le nouveau référentiel (CR) avec gestion des archives et des droits d'affichage.
+    - Amélioration du calcul des scores indicatifs et gestion de la périodicité des indicateurs.
+- **Gestion documentaire** : 
+    - Amélioration du dépôt de preuves et des documents d'audit, avec support du téléchargement groupé (format ZIP).
+    - Meilleure gestion de la confidentialité des fichiers.
 
 ### Évolutions techniques
-- **IA & LLM :** Migration de l'appel aux modèles vers Vertex AI (Gemini) via un compte de service backend pour une meilleure gestion de la sécurité et des quotas.
-- **Architecture & Refactoring :**
-  - Suppression définitive du module "Panier" et de ses composants associés.
-  - Migration de la gestion des formulaires de contact vers un endpoint backend dédié.
-  - Refonte du système de dépôt de documents utilisant des jetons signés et le transport résumable.
-- **Infrastructure & CI/CD :**
-  - Mise en place de Nx Cloud pour optimiser les performances des builds et des tests.
-  - Transition des processus de déploiement vers des Dockerfiles natifs (sortie d'Earthly).
-  - Optimisation des workflows de maintenance de la base de données et de la CI.
-- **Outils de support :** Enrichissement de l'intégration avec Crisp pour permettre aux agents de support de visualiser les informations CRM directement dans les conversations.
+- **Architecture et API** : 
+    - Migration progressive de l'accès aux données de PostgREST vers tRPC pour une meilleure cohérence et fiabilité.
+    - Refonte de la gestion des documents utilisant des jetons signés et le transport résumable pour plus de robustesse.
+- **Intelligence Artificielle (LLM)** : 
+    - Intégration de Vertex AI (Gemini) comme moteur principal, avec gestion fine des quotas par collectivité et optimisation du traitement des documents longs (chunking).
+    - Mise en place d'un système de suivi et d'évaluation des performances de l'IA.
+- **Infrastructure et Backend** : 
+    - Migration vers Strapi 5.
+    - Nettoyage de la stack technique : suppression de l'application "panier" et de ses dépendances obsolètes.
+    - Optimisation des pipelines CI/CD pour accélérer les builds et améliorer la gestion du cache.
 
 ### Autres changements
-- **Documentation :** Mise à jour importante des décisions d'architecture (ADR) concernant la périodicité des indicateurs, l'utilisation de l'IA et les stratégies de déploiement.
-- **Nettoyage :** Suppression de nombreuses fonctions obsolètes (Supabase edge functions, vues inutilisées) et de code mort.
+- **Interface Utilisateur (UI)** : 
+    - Création de nouveaux composants partagés (BetaLabel, ButtonGroup, Accordion) pour harmoniser le design.
+    - Amélioration de l'accessibilité (navigation au clavier) et de la réactivité des composants.
+- **Documentation** : 
+    - Mise à jour importante des ADR (Architecture Decision Records) concernant le cycle de vie des données et la périodicité des indicateurs.
+- **Nettoyage** : 
+    - Suppression de code mort et de fonctionnalités non utilisées.

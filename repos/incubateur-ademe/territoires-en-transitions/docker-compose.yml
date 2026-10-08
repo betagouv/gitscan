@@ -34,7 +34,7 @@ x-dev-values:
 services:
   # ——————————————————————————— Base de données ———————————————————————————
   # Postgres 15 (parité prod/CI, cf. supabase/config.toml major_version) —
-  # l'image Supabase embarque extensions (pg_net, pg_cron, http…), rôles et
+  # l'image Supabase embarque extensions (pg_cron, http…), rôles et
   # schémas auth/storage requis par les migrations sqitch.
   db:
     profiles: [supabase]
@@ -108,8 +108,6 @@ services:
       - ./.docker/kong/kong.template.yml:/home/kong/kong.template.yml:ro
     depends_on:
       gotrue:
-        condition: service_started
-      rest:
         condition: service_started
     healthcheck:
       test: ['CMD', 'kong', 'health']
@@ -189,26 +187,6 @@ services:
     volumes:
       - ./supabase/templates:/usr/share/nginx/html:ro
 
-  # ———————————————————————————— API REST ——————————————————————————————————
-  rest:
-    profiles: [supabase]
-    image: postgrest/postgrest:v13.0.7
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD:-postgres}@db:5432/postgres
-      # storage retire : plus aucun appel PostgREST ne le vise, et l exposer
-      # laissait lire storage.objects au JWT de l utilisateur.
-      PGRST_DB_SCHEMAS: public # supabase/config.toml [api].schemas
-      PGRST_DB_EXTRA_SEARCH_PATH: public,extensions
-      PGRST_DB_MAX_ROWS: '5000'
-      PGRST_DB_ANON_ROLE: anon
-      PGRST_DB_USE_LEGACY_GUCS: 'false'
-      PGRST_JWT_SECRET: *jwt-secret
-      PGRST_APP_SETTINGS_JWT_SECRET: *jwt-secret
-      PGRST_APP_SETTINGS_JWT_EXP: '3600'
-
   # ———————————————————————————— Storage ———————————————————————————————————
   storage:
     profiles: [supabase]
@@ -216,14 +194,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
-      rest:
-        condition: service_started
     environment:
       ANON_KEY: *anon-key
       SERVICE_KEY: *service-role-key
       AUTH_JWT_SECRET: *jwt-secret
       DATABASE_URL: postgres://supabase_storage_admin:${POSTGRES_PASSWORD:-postgres}@db:5432/postgres
-      POSTGREST_URL: http://rest:3000
       FILE_SIZE_LIMIT: '52428800' # 50MiB (supabase/config.toml)
       STORAGE_BACKEND: file
       FILE_STORAGE_BACKEND_PATH: /var/lib/storage
@@ -283,9 +258,6 @@ services:
       POSTGRES_PASSWORD: *pg-password
       POSTGRES_USER_READ_WRITE: postgres
       PG_META_CRYPTO_KEY: ${PG_META_CRYPTO_KEY:-dev-crypto-key}
-      PGRST_DB_SCHEMAS: public,storage
-      PGRST_DB_MAX_ROWS: '5000'
-      PGRST_DB_EXTRA_SEARCH_PATH: public,extensions
       DEFAULT_ORGANIZATION_NAME: Territoires en Transitions
       DEFAULT_PROJECT_NAME: tet-local
       SUPABASE_URL: http://kong:8000
@@ -420,6 +392,9 @@ services:
   # le premier boot prend quelques minutes.
   strapi:
     profiles: [strapi]
+    # Tag versionné : changer de version de Node reconstruit l'image d'office
+    # au lieu de réutiliser l'ancienne image locale.
+    image: tet-strapi:node24
     build:
       context: .docker/strapi
       args:
@@ -436,11 +411,12 @@ services:
       APP_KEYS: ${STRAPI_APP_KEYS:-devKeyA,devKeyB}
       API_TOKEN_SALT: ${STRAPI_API_TOKEN_SALT:-dev-api-token-salt}
       ADMIN_JWT_SECRET: ${STRAPI_ADMIN_JWT_SECRET:-dev-admin-jwt-secret}
-      JWT_SECRET: ${STRAPI_JWT_SECRET:-dev-jwt-secret}
+      ENCRYPTION_KEY: ${STRAPI_ENCRYPTION_KEY:-dev-encryption-key}
       TRANSFER_TOKEN_SALT: ${STRAPI_TRANSFER_TOKEN_SALT:-dev-transfer-token-salt}
       # Token API read-only seedé au bootstrap (strapi/src/index.ts) pour que le
-      # site lise l'API locale. Doit rester égal à NEXT_PUBLIC_STRAPI_KEY dans
-      # apps/site/.env. Valeur non secrète : Strapi local jetable, read-only.
+      # site lise l'API locale. À reporter dans NEXT_PUBLIC_STRAPI_KEY de
+      # apps/site/.env.local (voir apps/site/README.md). Valeur non secrète :
+      # Strapi local jetable, read-only.
       STRAPI_LOCAL_READONLY_TOKEN: ${STRAPI_LOCAL_READONLY_TOKEN:-local-dev-readonly-token}
       DATABASE_CLIENT: postgres
       DATABASE_HOST: strapi-db
@@ -636,6 +612,9 @@ services:
       <<: *nx-env
       APP: site
       SITE_PORT: ${SITE_PORT:-3001}
+      # Page Démarche PCAET visible en local ; en prod, elle reste masquée tant
+      # que la variable n'est pas posée sur l'hébergeur.
+      PCAET_LAUNCHED: ${PCAET_LAUNCHED:-true}
     depends_on:
       <<: *app-depends
       strapi: { condition: service_started }

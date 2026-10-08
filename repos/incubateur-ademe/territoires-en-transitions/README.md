@@ -70,7 +70,7 @@ Cela permet de bénéficier des avantages suivants par rapport aux markdown empl
 
   - [gotrue](https://github.com/netlify/gotrue) pour l'authentification OAuth2
   - [PostgreSQL](https://www.postgresql.org/) la base qui nous apporte le typage et la consistence des données.
-  - [PostgREST](https://postgrest.org/en/stable/) qui transforme la base de donnée en une API RESTful.
+  - [Storage](https://github.com/supabase/storage) pour les fichiers (documents, preuves).
 
 - le `business` est développé en Python 🐍.
 
@@ -141,7 +141,6 @@ cause :
 | `handlebars` | `@hey-api/openapi-ts` | épinglage exact |
 | `undici@7` | `@module-federation/dts-plugin` | épinglage exact |
 | `svgo@3` | `@svgr/plugin-svgo` | **downgrade volontaire**, voir ci-dessous |
-| `eslint-plugin-react-hooks` | `eslint-config-next` | **gel volontaire**, voir ci-dessous |
 | les autres | divers | correctif de sécurité disponible sans changement de majeure |
 
 Règles de maintenance :
@@ -158,15 +157,6 @@ le fork `@trysound/sax` par `sax` ≥ 1.5, qui impose une limite d'entités XML 
 exceeds max entity count »). `svgo` 4 corrigerait le problème mais reste inatteignable :
 `@svgr/webpack` est bloqué en 8.1.0 et exige `svgo` ^3. Ne pas remonter ce pin sans
 remplacer d'abord la chaîne `@svgr/*`.
-
-⚠️ `eslint-plugin-react-hooks` est **gelé en 7.0.1**, et ce pour une raison qui n'a
-rien à voir avec la sécurité : `eslint-config-next` le déclare en `^7.0.0`, donc un
-`pnpm update` fait glisser vers 7.1.x, qui promeut en **erreurs** les règles du React
-Compiler (`react-hooks/refs`, `react-hooks/set-state-in-effect`). Cela remonte 18
-erreurs sur du code préexistant (`ui` 3, `site` 12, `app` 3) et casse le lint.
-
-Adopter ces règles est un chantier à part entière — chaque cas demande de revoir
-l'effet ou la ref concernés. Le jour où il est mené, retirer cette surcharge.
 
 ### Variables d'environnement
 
@@ -310,8 +300,6 @@ make cms-pull   # ⚠ remplace tout le contenu Strapi local
 ```
 
 Prérequis : `STRAPI_REMOTE_URL` et `STRAPI_TRANSFER_TOKEN` dans le `.env` racine (via `make env-set`). Le token doit être un **transfer token** (Settings → Transfer tokens sur le remote, permission *pull*) — un API token classique ne fonctionne pas.
-
-Il ne reste qu'une edge function Deno ([`supabase/functions/`](./supabase/functions/)) : `send_users_to_brevo`, appelée uniquement par des fonctions SQL via `net.http_post`, et seulement en production — la table `automatisation.supabase_function_url` qui porte son URL n'est pas alimentée en local. Rien ne l'exécute donc sur la stack de développement, et kong répond 503 sur `/functions/v1/`.
 
 ### Réinitialiser complètement la base
 
