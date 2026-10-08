@@ -301,6 +301,8 @@
 │   │   │   │   ├── schedules.py
 │   │   │   │   ├── start_dates.py
 │   │   │   │   └── tags.py
+│   │   │   ├── psql
+│   │   │   │   └── utils.py
 │   │   │   ├── tasks
 │   │   │   │   ├── airflow_logic
 │   │   │   │   │   └── trigger_dag_task.py
@@ -401,7 +403,8 @@
 │   │   │   │       └── business_logic
 │   │   │   │           ├── test_copy_db_data.py
 │   │   │   │           ├── test_copy_db_schema.py
-│   │   │   │           └── test_copy_displayed_data_from_warehouse.py
+│   │   │   │           ├── test_copy_displayed_data_from_warehouse.py
+│   │   │   │           └── test_export_opendata_csv_to_s3.py
 │   │   │   ├── clone
 │   │   │   │   ├── tasks
 │   │   │   │   │   ├── airflow_logic
@@ -465,6 +468,8 @@
 │   │   │   ├── shared
 │   │   │   │   ├── config
 │   │   │   │   │   └── test_shared_config_models.py
+│   │   │   │   ├── psql
+│   │   │   │   │   └── test_utils.py
 │   │   │   │   ├── tasks
 │   │   │   │   │   ├── airflow_logic
 │   │   │   │   │   │   └── test_packages_compatibility.py
@@ -1045,7 +1050,8 @@
 │   ├── e2e_run_sample_dag.sh
 │   ├── infrastructure
 │   │   ├── backup-db.sh
-│   │   └── delete_old_images.py
+│   │   ├── delete_old_images.py
+│   │   └── preview_destroy.sh
 │   ├── restore_prod_locally.sh
 │   ├── restore_prod_to_preprod.sh
 │   └── sql
@@ -1069,6 +1075,10 @@
     ├── .slugignore
     ├── Dockerfile
     ├── Makefile
+    ├── assistant
+    │   ├── __init__.py
+    │   ├── apps.py
+    │   └── urls.py
     ├── bin
     │   └── entrypoint.sh
     ├── core
@@ -1287,6 +1297,7 @@
     │   │       ├── import_data_ademe.py
     │   │       ├── import_infos_tris.py
     │   │       ├── import_redirects_from_legacy_website.py
+    │   │       ├── mark_infotri_decorative.py
     │   │       ├── migrate_legacy_produit_index_page.py
     │   │       └── migrate_produits_legacy.py
     │   ├── middleware.py
@@ -1500,6 +1511,7 @@
     │   │   ├── 0002_searchterm_disabled.py
     │   │   └── __init__.py
     │   ├── models.py
+    │   ├── ranking.py
     │   ├── score_breakdown.py
     │   └── wagtail_hooks.py
     ├── settings
@@ -2003,6 +2015,8 @@
     │           └── t_9_bonus_legacy_parameter_iframe.html
     ├── tsconfig.json
     └── unit_tests
+        ├── assistant
+        │   └── test_script_redirect.py
         ├── conftest.py
         ├── core
         │   ├── templatetags
@@ -2086,9 +2100,10 @@
         ├── search_tests
         │   ├── __init__.py
         │   ├── test_purge_orphan_searchterm_index.py
+        │   ├── test_ranking.py
         │   ├── test_score_breakdown.py
         │   ├── test_search_term.py
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-383 directories, 1710 files
+387 directories, 1721 files
