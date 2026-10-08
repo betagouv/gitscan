@@ -146,6 +146,7 @@
     │   │   │   ├── 0015_alter_accountservice_api_key.py
     │   │   │   ├── 0016_team_external_id_alter_team_users.py
     │   │   │   ├── 0017_teamwebhook_protocol.py
+    │   │   │   ├── 0018_organization_domain_list_lowercase.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── plugins
@@ -410,6 +411,7 @@
     │   │   ├── apps.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
+    │   │   │   ├── 0002_remove_refreshtoken_access_token_and_more.py
     │   │   │   └── __init__.py
     │   │   └── models.py
     │   ├── manage.py
@@ -452,13 +454,13 @@
     │   │   ├── desk
     │   │   │   ├── .env.development
     │   │   │   ├── .env.test
-    │   │   │   ├── .eslintrc.js
     │   │   │   ├── .gitignore
     │   │   │   ├── .prettierignore
     │   │   │   ├── README.md
     │   │   │   ├── conf
     │   │   │   │   └── default.conf
     │   │   │   ├── cunningham.ts
+    │   │   │   ├── eslint.config.mjs
     │   │   │   ├── jest
     │   │   │   │   └── mocks
     │   │   │   │       ├── fileMock.js
@@ -857,7 +859,6 @@
     │   │   │   ├── tsconfig.json
     │   │   │   └── version.json
     │   │   └── e2e
-    │   │       ├── .eslintrc.js
     │   │       ├── .gitignore
     │   │       ├── __tests__
     │   │       │   ├── app-desk
@@ -881,24 +882,27 @@
     │   │       │   │   ├── teams-delete.spec.ts
     │   │       │   │   └── teams-panel.spec.ts
     │   │       │   └── helpers.ts
+    │   │       ├── eslint.config.mjs
     │   │       ├── package.json
     │   │       ├── playwright.config.ts
     │   │       └── tsconfig.json
     │   ├── package.json
     │   ├── packages
-    │   │   ├── eslint-config-people
-    │   │   │   ├── .eslintrc.js
-    │   │   │   ├── common.js
-    │   │   │   ├── jest.js
-    │   │   │   ├── next.js
+    │   │   ├── eslint-plugin-people
+    │   │   │   ├── base.js
+    │   │   │   ├── eslint.config.mjs
+    │   │   │   ├── index.d.ts
+    │   │   │   ├── index.js
     │   │   │   ├── package.json
-    │   │   │   └── playwright.js
+    │   │   │   ├── playwright.js
+    │   │   │   ├── test.js
+    │   │   │   └── typescript.js
     │   │   └── i18n
-    │   │       ├── .eslintrc.js
     │   │       ├── .gitignore
     │   │       ├── __tests__
     │   │       │   ├── i18n.test.ts
     │   │       │   └── translations.test.ts
+    │   │       ├── eslint.config.mjs
     │   │       ├── format-deploy.mjs
     │   │       ├── i18next-parser.config.jest.mjs
     │   │       ├── i18next-parser.config.mjs
@@ -980,4 +984,4 @@
         │   └── openapi-typescript-codegen
         │       └── generate_api_client_local.sh
         └── yarn.lock
-225 directories, 757 files
+225 directories, 761 files

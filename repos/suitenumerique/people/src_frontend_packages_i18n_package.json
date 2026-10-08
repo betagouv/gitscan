@@ -7,13 +7,13 @@
     "extract-translation:desk": "yarn i18next ../../apps/desk/**/*.{ts,tsx} -c ./i18next-parser.config.mjs -o ./locales/desk/translations-crowdin.json",
     "format-deploy": "yarn format-deploy:desk",
     "format-deploy:desk": "node ./format-deploy.mjs --app=desk --output=../../apps/desk/src/i18n/translations.json",
-    "lint": "eslint --ext .js,.ts,.mjs .",
+    "lint": "eslint",
     "test": "jest"
   },
   "dependencies": {
     "@types/jest": "30.0.0",
     "@types/node": "*",
-    "eslint-config-people": "*",
+    "eslint-plugin-people": "*",
     "eslint-plugin-import": "2.32.0",
     "i18next-parser": "9.4.0",
     "jest": "30.2.0",
