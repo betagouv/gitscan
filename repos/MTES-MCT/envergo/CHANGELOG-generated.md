@@ -1,32 +1,27 @@
-## Changelog : envergo (30 derniers jours, au 29 septembre 2026)
+## Changelog : envergo (30 derniers jours, au 06/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'expérience de simulation (passage à la version 2) et une amélioration significative de la précision des données réglementaires. L'outil est désormais plus performant dans la gestion et la catégorisation des espèces protégées et des zones réglementées (Natura 2000, sites classés, etc.), tout en offrant une interface plus claire et mieux structurée pour l'utilisateur.
+Ce mois a été marqué par une refonte majeure de l'expérience de simulation (V2) et une modernisation profonde de la gestion des Démarches Numériques (DN). Les capacités de gestion des données de biodiversité ont été enrichies, notamment par une meilleure catégorisation des espèces, tandis que l'interface utilisateur a été affinée pour améliorer la clarté des informations et la navigation.
 
 ### Évolutions fonctionnelles
-- **Nouvelle expérience de simulation (V2) :** Déploiement d'un nouveau parcours utilisateur incluant une nouvelle page d'affichage des résultats et la possibilité de consulter des scénarios alternatifs [#1236](https://github.com/MTES-MCT/envergo/issues/1236), [#1254](https://github.com/MTES-MCT/envergo/issues/1254), [#1255](https://github.com/MTES-MCT/envergo/issues/1255).
-- **Amélioration de la gestion réglementaire :** 
-    - Optimisation de la catégorisation des espèces et des réglementations (RU, Natura 2000, sites protégés, sites classés, etc.).
-    - Meilleure gestion des périodes d'interdiction (AHR) avec l'utilisation de plages de dates.
-- **Interface utilisateur (UI) et expérience (UX) :**
-    - Refonte de la présentation des espèces : utilisation de tableaux rétractables pour plus de clarté et meilleure organisation des listes.
-    - Mise à jour de la navigation : nouveau menu plus intuitif et ajout de filtres par catégorie [#1231](https://github.com/MTES-MCT/envergo/issues/1231).
-    - Amélioration de la lisibilité des informations de contact et des libellés (ex: passage de "point d'eau" à "pièce d'eau").
-    - Ajout d'informations sur les alignements d'arbres directement sur la page d'accueil.
-- **Cartographie :** Ajout d'infobulles (tooltips) sur les cartes et mise à jour du logo Dossier Nature.
+- **Nouvelle expérience de simulation (V2) :** Déploiement de nouveaux parcours de simulation, incluant de nouvelles pages d'affichage et de gestion des alternatives ([#1236](https://github.com/MTES-MCT/envergo/issues/1236), [#1254](https://github.com/MTES-MCT/envergo/issues/1254), [#1255](https://github.com/MTES-MCT/envergo/issues/1255)).
+- **Gestion des Démarches Numériques (DN) :** Amélioration du suivi avec l'envoi automatique de récépissés lors de la soumission ou du redémarrage d'une instruction ([#1292](https://github.com/MTES-MCT/envergo/issues/1292)).
+- **Biodiversité et Espèces :** Possibilité de multi-catégoriser les espèces (Natura 2000, sites protégés, etc.) et amélioration de la présentation des tableaux d'espèces.
+- **Interface et Ergonomie :**
+    - Ajout d'un bloc d'alerte d'urgence sur la page d'accueil ([#1322](https://github.com/MTES-MCT/envergo/issues/1322)).
+    - Mise à jour globale des libellés (Urbanisme, Haies, etc.) pour plus de clarté et de précision.
+    - Amélioration de la recherche de projets et de la gestion des contacts.
+    - Correction de bugs d'affichage (écrans blancs sur anciens navigateurs, problèmes de recherche).
+- **Cartographie :** Ajout de nouvelles cartes dans les paramètres départementaux et correction de problèmes d'affichage des cartes de haies ([#1315](https://github.com/MTES-MCT/envergo/issues/1315)).
 
 ### Évolutions techniques
-- **Architecture et structure :** 
-    - Restructuration profonde des URLs du projet et de l'architecture des pages pour une meilleure maintenance [#1282](https://github.com/MTES-MCT/envergo/issues/1282).
-    - Séparation des pages de résumé de projet et de résultats de la "moulinette".
-- **Stockage et infrastructure :** 
-    - Implémentation complète du stockage sur S3 pour la gestion des fichiers et sécurisation de l'accès aux fichiers privés [#1261](https://github.com/MTES-MCT/envergo/issues/1261).
-- **Performances et sécurité :**
-    - Optimisation des requêtes de données (HRU) et mise en place d'un système de cache pour la densité [#1266](https://github.com/MTES-MCT/envergo/issues/1266), [#1238](https://github.com/MTES-MCT/envergo/issues/1238).
-    - Renforcement de la sécurité des données de statistiques [#1265](https://github.com/MTES-MCT/envergo/issues/1265) et amélioration de l'API d'autorisation [#1244](https://github.com/MTES-MCT/envergo/issues/1244).
-- **Qualité logicielle (CI/CD) :** 
-    - Ajout d'une vérification automatique des migrations de base de données dans le pipeline d'intégration continue [#1259](https://github.com/MTES-MCT/envergo/issues/1259).
+- **Architecture :** Refactorisation majeure de la logique "Démarche Numérique" dans un module dédié pour une meilleure maintenabilité ([#1317](https://github.com/MTES-MCT/envergo/issues/1317)).
+- **Stockage et Infrastructure :**
+    - Mise en place d'un nouveau système de stockage via S3 pour la gestion sécurisée des fichiers privés ([#1261](https://github.com/MTES-MCT/envergo/issues/1261)).
+    - Optimisation de la configuration Nginx pour le proxy de fichiers.
+- **Performances :** Optimisation des calculs de densité et des requêtes de base de données pour les zones HRU/RU ([#1267](https://github.com/MTES-MCT/envergo/issues/1267), [#1238](https://github.com/MTES-MCT/envergo/issues/1238)).
+- **Base de données :** Migrations importantes pour supporter le nouveau modèle d'objets DN et la catégorisation complexe des espèces.
 
 ### Autres changements
-- **Documentation :** Mise à jour du README concernant les procédures d'anonymisation des données.
-- **Maintenance :** Nettoyage important du code (suppression de fichiers et de fonctions obsolètes) et amélioration de la couverture des tests automatisés.
+- **Documentation :** Mise à jour du README (mention de l'anonymisation et de la stack technique) et de la documentation de collaboration.
+- **Qualité du code :** Nettoyage des commentaires, corrections de linting et amélioration de la suite de tests automatisés.
