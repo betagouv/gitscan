@@ -276,6 +276,7 @@
     │   │   │   └── viewsets.py
     │   │   ├── factories.py
     │   │   ├── fields.py
+    │   │   ├── hashers.py
     │   │   ├── logging_filters.py
     │   │   ├── management
     │   │   │   ├── __init__.py
@@ -310,6 +311,7 @@
     │   │   │   ├── 0022_user_default_room_access_level_and_more.py
     │   │   │   ├── 0023_alter_recording_status.py
     │   │   │   ├── 0024_room_last_started_at.py
+    │   │   │   ├── 0025_application_client_secret_sha256.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -451,6 +453,7 @@
     │   │   │   ├── test_api_resource_accesses.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_api_users_room_preferences.py
+    │   │   │   ├── test_application_secret_hashers.py
     │   │   │   ├── test_dockerflow.py
     │   │   │   ├── test_external_api_authentication.py
     │   │   │   ├── test_external_api_rooms.py
@@ -709,7 +712,6 @@
     │   │   │   │   │   ├── FocusLayout.tsx
     │   │   │   │   │   ├── GridLayout.tsx
     │   │   │   │   │   ├── PaginationControl.tsx
-    │   │   │   │   │   ├── PaginationIndicator.tsx
     │   │   │   │   │   ├── PinAnnouncer.tsx
     │   │   │   │   │   ├── RoomContentArea.tsx
     │   │   │   │   │   └── StageLayout.tsx
@@ -809,7 +811,6 @@
     │   │   │   │   │   └── layout
     │   │   │   │   │       ├── PipFocusLayout.tsx
     │   │   │   │   │       ├── PipGridLayout.tsx
-    │   │   │   │   │       ├── PipPagination.tsx
     │   │   │   │   │       ├── PipScreenShareLayout.tsx
     │   │   │   │   │       ├── PipStage.tsx
     │   │   │   │   │       └── StageFrame.tsx
@@ -1022,6 +1023,7 @@
     │   │   │   │       ├── getParticipantIsAuthenticated.ts
     │   │   │   │       ├── getParticipantIsRoomAdminOrOwner.ts
     │   │   │   │       ├── getParticipantName.ts
+    │   │   │   │       ├── isRoomValid.test.ts
     │   │   │   │       ├── isRoomValid.ts
     │   │   │   │       ├── isSubsetOf.ts
     │   │   │   │       └── telephony.ts
@@ -1266,7 +1268,8 @@
     │   ├── tsconfig.app.json
     │   ├── tsconfig.json
     │   ├── tsconfig.node.json
-    │   └── vite.config.ts
+    │   ├── vite.config.ts
+    │   └── vitest.config.ts
     ├── helm
     │   ├── env.d
     │   │   ├── common.yaml.gotmpl
@@ -1286,12 +1289,7 @@
     │   │       ├── clustersecretstore.yaml
     │   │       ├── external_secret.yaml
     │   │       ├── external_secret_deployment.yaml
-    │   │       ├── frontend_nginx_cm.yaml
-    │   │       ├── garage.yaml
-    │   │       ├── kc-postgresql-sts.yaml
-    │   │       ├── keycloak-sts.yaml
-    │   │       ├── postgresql-sts.yaml
-    │   │       └── redis.yaml
+    │   │       └── frontend_nginx_cm.yaml
     │   ├── helmfile.yaml.gotmpl
     │   └── meet
     │       ├── Chart.yaml
@@ -1472,4 +1470,4 @@
         │       ├── test_sentry.py
         │       └── test_user_assign.py
         └── uv.lock
-273 directories, 1201 files
+273 directories, 1199 files

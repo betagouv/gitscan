@@ -8,6 +8,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- ⚡️(backend) hash application secrets with SHA-256
+- ⚡️(backend) reduce domain queries on the application token endpoint
+
+### Fixed
+
+- 🔒️(backend) prevent editing client id and secret in Django admin
+
+## [1.34.0] - 2026-10-07
+
 ### Added
 
 - ✨(helm) import environment variables from Secrets and ConfigMaps
@@ -16,6 +27,8 @@ and this project adheres to
 - 🔧(summary) add setting to control Sentry traces sampling rate
 - ✨(frontend) let signed-out visitors start a meeting
 - ✨(backend) expose `allow_unregistered_rooms` in the frontend configuration
+- ✅(frontend) add vitest so the frontend can carry unit tests
+- ♿️(frontend) make participant pagination readable and keyboard reachable #1775
 
 ### Changed
 
@@ -165,6 +178,7 @@ and this project adheres to
 ### Added
 
 - ✨(any) let any authenticated user manage the lobby on trusted rooms
+
 ### Changed
 
 - 📱(frontend) collapse mobile control bar items on narrow viewports
