@@ -4,15 +4,13 @@
   "description": "Application de traçabilité du gibier sauvage, de la chasse à la consommation. Elle permet de numériser le suivi sanitaire des carcasses tout au long de la chaîne alimentaire.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
     "Suivi & Traçabilité",
     "Statistiques & Rapports",
     "Administration & Backoffice",
-    "Interface utilisateur & Design",
-    "Notifications & Alertes"
+    "Notifications & Alertes",
+    "Authentification & Accès",
+    "API & Intégrations",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -24,9 +22,12 @@
     "Vite",
     "Expo",
     "Playwright",
-    "Zustand",
+    "Vitest",
     "Tailwind CSS",
-    "@codegouvfr/react-dsfr"
+    "Zustand",
+    "Zod",
+    "Sentry",
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -34,32 +35,39 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
-    "CI/CD & Déploiement",
+    "ORM & Accès aux données",
     "Tests",
-    "Authentification (composant)",
-    "ORM & Accès aux données"
+    "Gestion d'état"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "api-key"
+      "api-key",
+      "session"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
     "Vitest",
     "Playwright"
   ],
-  "lastActivity": "2026-10-01T13:06:09+02:00",
+  "workflows": [
+    "shai-hulud-check.yml"
+  ],
+  "lastActivity": "2026-10-07T17:25:26+02:00",
   "status": "maintained",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "TypeScript",
     "React & Next.js",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Design System & UI"
+    "Node.js, NestJS & Express",
+    "Tests & Qualité",
+    "Accessibilité",
+    "Données & Open Data"
   ]
 }

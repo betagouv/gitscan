@@ -1,31 +1,18 @@
-## Changelog : zacharie (30 derniers jours, au 1er octobre 2026)
+## Changelog : zacharie (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois-ci, Zacharie a franchi une étape importante dans l'amélioration de l'expérience des fédérations avec une refonte de leurs tableaux de bord et un accès élargi aux données départementales. Le suivi de la traçabilité a été fluidifié, notamment pour les circuits courts et les processus de vente/don. Parallèlement, une attention majeure a été portée à la sécurité des données personnelles et à la performance de l'application, qui est désormais deux fois plus légère au chargement.
+Ce mois-ci, les développements se sont concentrés sur la robustesse du mode hors ligne, la sécurisation des données utilisateurs et l'amélioration des outils de pilotage pour les fédérations. L'application est désormais plus légère, plus sûre et offre une expérience de saisie sur le terrain plus fluide et fiable.
 
 ### Évolutions fonctionnelles
-- **Tableaux de bord et statistiques** : Refonte visuelle du tableau de bord des fédérations selon les nouvelles maquettes [#641] et possibilité pour les fédérations nationales et régionales d'accéder aux tableaux de bord départementaux [#696]. Les statistiques Metabase sont également mises à jour pour le nouveau modèle de fiche [#679].
-- **Traçabilité et flux de travail** : 
-    - Amélioration du circuit court : l'expéditeur reçoit désormais une copie de la fiche et est alerté si le destinataire ne l'a pas reçue [#695].
-    - Optimisation de la gestion des retours : correction des flux de carcasses renvoyées pour éviter les doublons ou les erreurs d'attribution [#688, #691, #654].
-    - Ajout de nouveaux champs utiles : possibilité d'ajouter un numéro de bon de réception [#577] et des commentaires optionnels sur les carcasses [#607].
-- **Vente et Don** : Simplification de l'interface de vente/don pour plus de clarté [#619, #620] et possibilité pour les chasseurs d'ajouter directement des collecteurs professionnels comme destinataires [#659].
-- **Administration** : 
-    - Création simplifiée de destinataires (commerces, cantines, associations, etc.) directement depuis l'interface d'administration [#652].
-    - Nouveaux outils de gestion des utilisateurs : affichage du nombre de carcasses/fiches par utilisateur et gestion des blocages de compte (déblocage, réinitialisation) [#663, #640].
-- **Export et données** : L'export Excel des fiches inclut désormais le nombre d'animaux acceptés pour le petit gibier [#683].
+- **Mode hors ligne et synchronisation** : Amélioration significative de la fiabilité (persistance des saisies lors des mises à jour ou des déconnexions, gestion des conflits de versions, reprise automatique de la connexion après une coupure) et optimisation du stockage local [#709, #700, #699, #702, #705].
+- **Sécurité et gestion des accès** : Renforcement des contrôles (changement d'email sécurisé par mot de passe, gestion stricte des droits d'administration, protection contre les liens malveillants) et protection de la vie privée (exclusion des données sensibles des logs et de Sentry) [#750, #748, #682, #680, #678, #671].
+- **Évolutions métier** : Nouveaux tableaux de bord pour les fédérations nationales et régionales [#696], amélioration du parcours de vente/don (gestion des destinataires et des carcasses) [#620, #614, #652], et enrichissement des exports Excel [#683].
+- **Expérience utilisateur (UI/UX)** : Optimisation de l'ergonomie mobile, amélioration des formulaires de saisie (suggestions de communes, dates, espèces) et corrections de l'affichage [#639, #658, #645, #647].
 
 ### Évolutions techniques
-- **Sécurité et protection des données** : 
-    - Renforcement de la confidentialité : les mots de passe, jetons de session et données personnelles ne sont plus transmis aux outils de suivi (Sentry) ou dans les logs [#682].
-    - Sécurisation des échanges : correction de failles de redirection malveillante [#678], protection des clés privées lors de la modification des accords de partage [#675] et limitation des tentatives de connexion pour prévenir les attaques par force brute [#673].
-    - Sécurisation de l'API : obligation d'utiliser un secret de session en production [#671].
-- **Performance** : Optimisation majeure ayant permis de diviser par deux le poids de l'application lors du chargement initial [#643].
-- **Infrastructure et outils** : 
-    - Intégration de ProConnect pour les administrateurs [#605].
-    - Amélioration de l'observabilité avec l'ajout de dimensions personnalisées dans Matomo pour suivre les rôles et statuts des utilisateurs [#632].
-    - Utilisation de la nouvelle bibliothèque `react-dsfr-chart` pour les graphiques [#650].
+- **Performance** : Réduction de 50 % du poids de l'application au chargement [#643] et optimisation des lectures disque pour améliorer la réactivité [#742].
+- **Architecture** : Optimisation du stockage des données hors ligne pour les comptes professionnels (ETG, SVI, collecteurs) afin d'alléger l'empreinte mémoire [#709].
 
 ### Autres changements
-- Mise à jour de la documentation interne et de la configuration de formatage du code (Prettier) [#637].
-- Désactivation de ProConnect en environnement de développement pour faciliter les tests [#638].
+- Documentation technique (audit de la synchronisation hors ligne et du rechargement des données locales) [#737, #704].
+- Maintenance (nettoyage des dépendances inutilisées) [#751].

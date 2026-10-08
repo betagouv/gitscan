@@ -89,6 +89,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260928100000_bug_investigation
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20261005100000_sync_version
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261007100000_api_key_scope_user_login
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -140,12 +144,14 @@
 │   │   │   ├── sync-route-carcasse-primary.test.ts
 │   │   │   ├── sync-route-roundtrip.test.ts
 │   │   │   ├── sync-route.test.ts
+│   │   │   ├── sync-version.test.ts
 │   │   │   ├── trichine-status.test.ts
 │   │   │   ├── user-email-change.test.ts
 │   │   │   ├── user-entity.test.ts
 │   │   │   ├── user-invite.test.ts
 │   │   │   ├── user-numero-cfei.test.ts
-│   │   │   └── user-onboarding-finished.test.ts
+│   │   │   ├── user-onboarding-finished.test.ts
+│   │   │   └── user-trouver-premier-detenteur.test.ts
 │   │   ├── assets
 │   │   │   ├── etablissements-traitement-sanitaire.json
 │   │   │   ├── fonts
@@ -262,7 +268,6 @@
 │   │   │   ├── brevo.ts
 │   │   │   ├── expo-push.ts
 │   │   │   ├── matomo.ts
-│   │   │   ├── sendToTchap.ts
 │   │   │   └── sentry.ts
 │   │   ├── types
 │   │   │   ├── api-key.ts
@@ -309,6 +314,7 @@
 │   │       ├── sync-errors.ts
 │   │       ├── sync-fei.ts
 │   │       ├── sync-scope.ts
+│   │       ├── sync-version.ts
 │   │       ├── trichine-status.ts
 │   │       ├── trichine.ts
 │   │       ├── user-entities.ts
@@ -324,6 +330,7 @@
 │   ├── CLAUDE.md
 │   ├── README.md
 │   ├── __tests__
+│   │   ├── carcasses-registry-hydration.test.ts
 │   │   ├── create-new-carcasse.test.ts
 │   │   ├── trichine.test.ts
 │   │   ├── update-carcasse-status.test.ts
@@ -762,6 +769,10 @@
 │   │   │   ├── 20260924100000_federations_as_entities
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260928100000_bug_investigation
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261005100000_sync_version
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261007100000_api_key_scope_user_login
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -1230,6 +1241,7 @@
 │   │   │   ├── svi-carcasses-a-venir.ts
 │   │   │   ├── svi-download-certificats.ts
 │   │   │   ├── svi-tracabilite-amont.ts
+│   │   │   ├── sync-data.test.ts
 │   │   │   ├── sync-data.ts
 │   │   │   ├── transmission-labels.test.ts
 │   │   │   ├── transmission-labels.ts
@@ -1246,11 +1258,15 @@
 │   │   │   ├── user-onboarded.client.ts
 │   │   │   └── user.ts
 │   │   ├── utils-offline
+│   │   │   ├── get-most-fresh-user.test.ts
 │   │   │   ├── get-most-fresh-user.ts
+│   │   │   ├── use-is-offline.test.ts
 │   │   │   └── use-is-offline.ts
 │   │   ├── vite-env.d.ts
 │   │   └── zustand
+│   │       ├── idb-sliced-storage.test.ts
 │   │       ├── idb-sliced-storage.ts
+│   │       ├── store.test.ts
 │   │       ├── store.ts
 │   │       └── user.ts
 │   ├── tailwind.css
@@ -1263,6 +1279,7 @@
 │   └── vitest.setup.ts
 ├── doc
 │   ├── Instruction 2021-555_final.pdf
+│   ├── audit-local-first-2026-10.md
 │   ├── automatic reload.md
 │   ├── bug-resolution.md
 │   ├── emails.md
@@ -1274,6 +1291,7 @@
 │   │   ├── img1.png
 │   │   ├── img2.png
 │   │   └── project_overview.md
+│   ├── rechargement-complet.md
 │   ├── remix pwa offline
 │   ├── trichine-todo.md
 │   └── trichine.md
@@ -1473,7 +1491,14 @@
 │   │       ├── 137-matomo-custom-dimensions.spec.ts
 │   │       ├── 138-titres-des-pages.spec.ts
 │   │       ├── 139-admin-creation-destinataire.spec.ts
-│   │       ├── 140-changement-email-mot-de-passe.spec.ts
+│   │       ├── 140-changement-email-interdit.spec.ts
+│   │       ├── 143-version-obsolete-ecrasee.spec.ts
+│   │       ├── 147-registre-carcasses-hors-ligne-apres-rechargement.spec.ts
+│   │       ├── 149-detenteurs-initiaux-persistes-hors-ligne.spec.ts
+│   │       ├── 150-retour-en-ligne-apres-connexion-tres-lente.spec.ts
+│   │       ├── 151-changement-version-store-garde-non-synchronise.spec.ts
+│   │       ├── 152-service-worker-ne-cache-pas-l-api.spec.ts
+│   │       ├── 153-creation-de-compte-connecte-garde-les-fiches.spec.ts
 │   │       ├── comptes-vides-desktop.spec.ts
 │   │       ├── comptes-vides-mobile.spec.ts
 │   │       ├── connexion.spec.ts
@@ -1553,4 +1578,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-345 directories, 1228 files
+349 directories, 1249 files
