@@ -1,33 +1,24 @@
-## Changelog : benefriches (30 derniers jours, au 02/10/2026)
+## Changelog : benefriches (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois-ci, bénéfriches a franchi une étape importante dans l'amélioration de l'expérience utilisateur avec un nouveau parcours d'accueil (onboarding) et un assistant de mise à jour de site plus intuitif et sécurisé. Les capacités de simulation ont été enrichies par l'introduction d'un nouveau score de développement et une mise à jour majeure des données de référence (statistiques ANCT, données DVF et zonages urbains), garantissant des analyses d'impact plus précises et actualisées.
+Ce mois a été marqué par deux axes majeurs : l'amélioration de la précision des calculs d'impact (score de développement) et le déploiement d'un système complet de communication automatisée par email. L'expérience utilisateur a également été fluidifiée grâce à un nouvel onboarding et une simplification des formulaires de saisie.
 
 ### Évolutions fonctionnelles
-- **Parcours utilisateur & Interface :**
-    - Refonte complète du parcours d'onboarding avec un nouveau flux en 3 étapes.
-    - Amélioration de l'assistant de mise à jour des sites : ajout de sous-groupes, gestion de l'état de sauvegarde, avertissements en cas de modifications non enregistrées et possibilité de modifier les zones urbaines personnalisées.
-    - Ajout de liens de modification directe dans les étapes du résumé de site.
-- **Calculs & Données :**
-    - Intégration d'un nouveau "score de développement" calculé à partir des impacts du projet.
-    - Mise à jour massive des données de référence : intégration des statistiques de l'Observatoire des Territoires (ANCT), des transactions DVF 2025 et des nouveaux zonages urbains (ABC/ALDO).
-    - Optimisation des calculs d'impact (augmentation de la valeur foncière locale et kilomètres évités) selon les nouveaux critères de zonage.
-- **Corrections :**
-    - Correction de l'affichage des surfaces de zones humides dans les modales de régulation de l'eau.
-    - Amélioration de la gestion des contacts CRM (nettoyage automatique des caractères interdits dans les noms).
+- **Calculs et Scores** : Amélioration de la précision du "score de développement", notamment pour les projets photovoltaïques et les calculs liés à la décontamination des sols.
+- **Système d'emails** : Mise en place d'un cycle de vie complet d'emails automatisés (bienvenue, rappels quotidiens, résumés d'impacts à la création de projet) incluant la gestion des désinscriptions et un design conforme au DSFR.
+- **Expérience Utilisateur (UX)** : 
+    - Refonte du parcours d'onboarding avec un nouveau flux en 3 étapes.
+    - Simplification des formulaires de décontamination (regroupés en une seule étape).
+    - Amélioration de la navigation via une barre latérale plus intuitive et un assistant de mise à jour (wizard) harmonisé.
+    - Accès facilité au chat de support, même pour les visiteurs non connectés.
+- **Données de référence** : Mise à jour des bases de données de villes avec les dernières statistiques de l'ANCT, les zonages (ABC/ALDO) et les données foncières DVF 2025.
 
 ### Évolutions techniques
-- **Architecture & State Management :**
-    - Migration de la gestion d'état Redux dans l'application web (passage de `createSlice` à `createReducer`).
-    - Refactorisation de l'API pour aligner les fichiers de cas d'utilisation et d'adaptateurs sur les conventions du projet.
-- **Qualité & Tests :**
-    - Renforcement de la qualité du code via l'intégration d'Oxlint (nouvelles règles de convention API et de gestion des imports).
-    - Augmentation de la couverture de tests de bout en bout (E2E) sur les flux de mise à jour de site et les scénarios d'inéligibilité.
-- **Infrastructure & Intégration :**
-    - Amélioration de la robustesse de la connexion au CRM Connect (validation des configurations et récupération des contacts lors d'interruptions de service).
-    - Mise en place d'un script de prévisualisation autonome pour les emails de cycle de vie.
+- **Infrastructure** : Migration vers NestJS 12.
+- **Architecture** : Refactorisation importante pour centraliser les calculs de score, les indicateurs d'impact et les formatteurs de données dans un module partagé (`shared`), améliorant la cohérence entre l'API et le Web.
+- **Fiabilité** : Ajout d'un mécanisme de relance automatique (*retry sweeper*) pour garantir la délivrance des emails.
+- **Sécurité et API** : Amélioration de l'identification des auteurs lors de la création de projets et de sites en utilisant les jetons d'accès (access tokens).
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation technique concernant le nouveau référentiel du score de développement.
-- **Outils de développement :** Optimisation et configuration des agents IA (Codex/Claude) pour l'assistance au développement et la revue de code.
-- **Nettoyage :** Suppression de compétences et de scripts obsolètes dans les outils internes.
+- **Documentation** : Restructuration de la documentation (séparation de la doc "impacts" sur une page dédiée) et ajout de nouveaux guides de contrôle qualité (QA).
+- **Maintenance** : Nettoyage de la configuration des agents de développement et corrections typographiques diverses.

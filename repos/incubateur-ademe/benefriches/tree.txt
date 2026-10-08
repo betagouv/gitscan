@@ -103,7 +103,6 @@
 │   ├── prettierrc.js
 │   └── tsconfig.base.json
 ├── AGENTS.md
-├── CLAUDE.md
 ├── Dockerfile.dev
 ├── LICENSE
 ├── Makefile
@@ -118,7 +117,6 @@
 │   │   ├── .oxlintrc.json
 │   │   ├── .prettierrc.mjs
 │   │   ├── AGENTS.md
-│   │   ├── CLAUDE.md
 │   │   ├── Dockerfile
 │   │   ├── README.md
 │   │   ├── data
@@ -288,12 +286,27 @@
 │   │   │   ├── notifications
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
+│   │   │   │   │   │   ├── notifications.controller.integration-spec.ts
+│   │   │   │   │   │   ├── notifications.controller.ts
 │   │   │   │   │   │   ├── notifications.module.ts
+│   │   │   │   │   │   ├── readLifecycleEmailContact.spec.ts
+│   │   │   │   │   │   ├── readLifecycleEmailContact.ts
+│   │   │   │   │   │   ├── retryLifecycleEmailDeliveries.integration-spec.ts
+│   │   │   │   │   │   ├── retryLifecycleEmailDeliveries.script.ts
+│   │   │   │   │   │   ├── sendDailyLifecycleReminders.script.ts
+│   │   │   │   │   │   ├── sendFirstProjectReminders.integration-spec.ts
+│   │   │   │   │   │   ├── sendFirstSiteReminders.integration-spec.ts
 │   │   │   │   │   │   ├── sendLifecycleEmailPreview.integration-spec.ts
 │   │   │   │   │   │   ├── sendLifecycleEmailPreview.script.ts
+│   │   │   │   │   │   ├── sendProjectImpactsSummaryOnReconversionProjectCreated.handler.integration-spec.ts
+│   │   │   │   │   │   ├── sendProjectImpactsSummaryOnReconversionProjectCreated.handler.ts
 │   │   │   │   │   │   ├── sendWelcomeEmailOnUserAccountCreated.handler.integration-spec.ts
 │   │   │   │   │   │   └── sendWelcomeEmailOnUserAccountCreated.handler.ts
 │   │   │   │   │   └── secondary
+│   │   │   │   │       ├── lifecycle-email-cohort
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailCohortQuery.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailCohortQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlLifecycleEmailCohortQuery.ts
 │   │   │   │   │       ├── lifecycle-email-delivery
 │   │   │   │   │       │   ├── InMemoryLifecycleEmailDeliveryQuery.ts
 │   │   │   │   │       │   ├── InMemoryLifecycleEmailDeliveryRepository.ts
@@ -301,36 +314,86 @@
 │   │   │   │   │       │   ├── SqlLifecycleEmailDeliveryQuery.ts
 │   │   │   │   │       │   ├── SqlLifecycleEmailDeliveryRepository.integration-spec.ts
 │   │   │   │   │       │   └── SqlLifecycleEmailDeliveryRepository.ts
+│   │   │   │   │       ├── lifecycle-email-project
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailProjectQuery.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailProjectQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlLifecycleEmailProjectQuery.ts
 │   │   │   │   │       ├── lifecycle-email-recipient
 │   │   │   │   │       │   ├── InMemoryLifecycleEmailRecipientQuery.ts
 │   │   │   │   │       │   ├── SqlLifecycleEmailRecipientQuery.integration-spec.ts
 │   │   │   │   │       │   └── SqlLifecycleEmailRecipientQuery.ts
-│   │   │   │   │       └── mailer
-│   │   │   │   │           ├── FakeMailer.ts
-│   │   │   │   │           └── SmtpMailer.ts
+│   │   │   │   │       ├── lifecycle-email-site
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailSiteQuery.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailSiteQuery.integration-spec.ts
+│   │   │   │   │       │   └── SqlLifecycleEmailSiteQuery.ts
+│   │   │   │   │       ├── lifecycle-email-subscription
+│   │   │   │   │       │   ├── InMemoryLifecycleEmailSubscriptionRepository.ts
+│   │   │   │   │       │   ├── SqlLifecycleEmailSubscriptionRepository.integration-spec.ts
+│   │   │   │   │       │   └── SqlLifecycleEmailSubscriptionRepository.ts
+│   │   │   │   │       ├── mailer
+│   │   │   │   │       │   ├── FakeMailer.ts
+│   │   │   │   │       │   └── SmtpMailer.ts
+│   │   │   │   │       ├── project-impacts
+│   │   │   │   │       │   └── FakeProjectImpactsCalculator.ts
+│   │   │   │   │       └── unsubscribe-token
+│   │   │   │   │           ├── HmacUnsubscribeTokenService.spec.ts
+│   │   │   │   │           └── HmacUnsubscribeTokenService.ts
 │   │   │   │   └── core
+│   │   │   │       ├── events
+│   │   │   │       │   └── lifecycleEmailsUnsubscribed.event.ts
 │   │   │   │       ├── gateways
+│   │   │   │       │   ├── LifecycleEmailCohortQuery.ts
 │   │   │   │       │   ├── LifecycleEmailDeliveryQuery.ts
 │   │   │   │       │   ├── LifecycleEmailDeliveryRepository.ts
+│   │   │   │       │   ├── LifecycleEmailProjectQuery.ts
 │   │   │   │       │   ├── LifecycleEmailRecipientQuery.ts
-│   │   │   │       │   └── Mailer.ts
+│   │   │   │       │   ├── LifecycleEmailSiteQuery.ts
+│   │   │   │       │   ├── LifecycleEmailSubscriptionRepository.ts
+│   │   │   │       │   ├── Mailer.ts
+│   │   │   │       │   ├── ProjectImpactsCalculator.ts
+│   │   │   │       │   └── UnsubscribeTokenService.ts
 │   │   │   │       ├── models
-│   │   │   │       │   └── lifecycleEmail.ts
+│   │   │   │       │   ├── lifecycleEmail.ts
+│   │   │   │       │   ├── lifecycleEmailContact.ts
+│   │   │   │       │   ├── reminderWindow.spec.ts
+│   │   │   │       │   └── reminderWindow.ts
 │   │   │   │       ├── previews
 │   │   │   │       │   └── lifecycleEmailPreviewSamples.ts
 │   │   │   │       ├── services
 │   │   │   │       │   ├── lifecycleEmailSender.spec.ts
-│   │   │   │       │   └── lifecycleEmailSender.ts
+│   │   │   │       │   ├── lifecycleEmailSender.ts
+│   │   │   │       │   └── projectImpactsSummaryContent.ts
 │   │   │   │       ├── templates
+│   │   │   │       │   ├── contactSections.ts
 │   │   │   │       │   ├── emailLayout.spec.ts
 │   │   │   │       │   ├── emailLayout.ts
+│   │   │   │       │   ├── firstProjectReminderEmail.spec.ts
+│   │   │   │       │   ├── firstProjectReminderEmail.ts
+│   │   │   │       │   ├── firstSiteReminderEmail.spec.ts
+│   │   │   │       │   ├── firstSiteReminderEmail.ts
+│   │   │   │       │   ├── projectImpactsSummaryCards.ts
+│   │   │   │       │   ├── projectImpactsSummaryEmail.spec.ts
+│   │   │   │       │   ├── projectImpactsSummaryEmail.ts
+│   │   │   │       │   ├── reminderGreeting.ts
+│   │   │   │       │   ├── unsubscribeUrl.spec.ts
+│   │   │   │       │   ├── unsubscribeUrl.ts
 │   │   │   │       │   ├── welcomeEmail.spec.ts
 │   │   │   │       │   └── welcomeEmail.ts
 │   │   │   │       └── usecases
+│   │   │   │           ├── retryLifecycleEmailDeliveries.usecase.spec.ts
+│   │   │   │           ├── retryLifecycleEmailDeliveries.usecase.ts
+│   │   │   │           ├── sendFirstProjectReminders.usecase.spec.ts
+│   │   │   │           ├── sendFirstProjectReminders.usecase.ts
+│   │   │   │           ├── sendFirstSiteReminders.usecase.spec.ts
+│   │   │   │           ├── sendFirstSiteReminders.usecase.ts
 │   │   │   │           ├── sendLifecycleEmailPreview.usecase.spec.ts
 │   │   │   │           ├── sendLifecycleEmailPreview.usecase.ts
+│   │   │   │           ├── sendProjectImpactsSummaryEmail.usecase.spec.ts
+│   │   │   │           ├── sendProjectImpactsSummaryEmail.usecase.ts
 │   │   │   │           ├── sendWelcomeEmail.usecase.spec.ts
-│   │   │   │           └── sendWelcomeEmail.usecase.ts
+│   │   │   │           ├── sendWelcomeEmail.usecase.ts
+│   │   │   │           ├── unsubscribeFromLifecycleEmails.usecase.spec.ts
+│   │   │   │           └── unsubscribeFromLifecycleEmails.usecase.ts
 │   │   │   ├── photovoltaic-performance
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
@@ -440,8 +503,6 @@
 │   │   │   │           ├── archiveReconversionProject.usecase.ts
 │   │   │   │           ├── computeProjectUrbanSprawlImpactsComparison.usecase.spec.ts
 │   │   │   │           ├── computeProjectUrbanSprawlImpactsComparison.usecase.ts
-│   │   │   │           ├── computeReconversionProjectBreakEvenLevel.usecase.spec.ts
-│   │   │   │           ├── computeReconversionProjectBreakEvenLevel.usecase.ts
 │   │   │   │           ├── computeReconversionProjectImpacts.usecase.spec.ts
 │   │   │   │           ├── computeReconversionProjectImpacts.usecase.ts
 │   │   │   │           ├── createReconversionProject.usecase.spec.ts
@@ -452,6 +513,8 @@
 │   │   │   │           ├── generateAndSaveReconversionProjectFromTemplate.usecase.ts
 │   │   │   │           ├── generateReconversionProjectFromTemplate.usecase.spec.ts
 │   │   │   │           ├── generateReconversionProjectFromTemplate.usecase.ts
+│   │   │   │           ├── getProjectImpactsAnalysisUseCase.usecase.spec.ts
+│   │   │   │           ├── getProjectImpactsAnalysisUseCase.usecase.ts
 │   │   │   │           ├── getReconversionProject.usecase.ts
 │   │   │   │           ├── getReconversionProjectFeatures.usecase.ts
 │   │   │   │           ├── getUserReconversionProjectsBySite.usecase.spec.ts
@@ -562,7 +625,8 @@
 │   │   │   │   │       │   ├── 20260916085824_add-terrain-dvf-columns-in-city-stats-table.ts
 │   │   │   │   │       │   ├── 20260916093325_add-anct-stats-columns-in-city-stats-table.ts
 │   │   │   │   │       │   ├── 20260922124312_create-table-lifecycle-email-deliveries.ts
-│   │   │   │   │       │   └── 20260922124313_add-lifecycle-emails-unsubscribed-at-to-users-table.ts
+│   │   │   │   │       │   ├── 20260922124313_add-lifecycle-emails-unsubscribed-at-to-users-table.ts
+│   │   │   │   │       │   └── 20260929114815_add-attempts-and-last-attempted-at-to-lifecycle-email-deliveries-table.ts
 │   │   │   │   │       ├── scripts
 │   │   │   │   │       │   ├── README.md
 │   │   │   │   │       │   ├── initialize-or-update-cities.ts
@@ -774,7 +838,6 @@
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.mjs
 │   │   ├── AGENTS.md
-│   │   ├── CLAUDE.md
 │   │   ├── fixtures
 │   │   │   ├── auth.fixtures.ts
 │   │   │   └── helpers
@@ -920,7 +983,6 @@
 │       ├── .prettierignore
 │       ├── .prettierrc.mjs
 │       ├── AGENTS.md
-│       ├── CLAUDE.md
 │       ├── Dockerfile
 │       ├── docker-entrypoint.sh
 │       ├── embed.html
@@ -936,6 +998,10 @@
 │       │   │   ├── favicon-32.png
 │       │   │   └── manifest.webmanifest
 │       │   ├── img
+│       │   │   ├── emails
+│       │   │   │   ├── avoided-costs-analysis.png
+│       │   │   │   ├── cost-benefit-analysis.png
+│       │   │   │   └── impacts-evaluation.png
 │       │   │   ├── homepage-hero.svg
 │       │   │   ├── icons
 │       │   │   │   └── demo.svg
@@ -1209,6 +1275,8 @@
 │       │   │   │   │   │   ├── renewableEnergyLabelMapping.ts
 │       │   │   │   │   │   ├── siteRelatedLocalAuthorities.action.ts
 │       │   │   │   │   │   ├── soilsCarbonStorage.types.ts
+│       │   │   │   │   │   ├── soilsDecontamination.spec.ts
+│       │   │   │   │   │   ├── soilsDecontamination.ts
 │       │   │   │   │   │   └── stakeholders.ts
 │       │   │   │   │   ├── project.types.ts
 │       │   │   │   │   ├── renewable-energy
@@ -1365,23 +1433,16 @@
 │       │   │   │   │   │       │   │   ├── involvesReinstatement.schema.ts
 │       │   │   │   │   │       │   │   ├── involvesReinstatement.selectors.ts
 │       │   │   │   │   │       │   │   └── involvesReinstatement.stepperConfig.ts
-│       │   │   │   │   │       │   ├── soils-decontamination-introduction
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationIntroduction.handler.ts
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationIntroduction.step.spec.ts
-│       │   │   │   │   │       │   │   └── soilsDecontaminationIntroduction.stepperConfig.ts
-│       │   │   │   │   │       │   ├── soils-decontamination-selection
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationSelection.handler.spec.ts
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationSelection.handler.ts
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationSelection.schema.ts
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationSelection.selectors.ts
-│       │   │   │   │   │       │   │   ├── soilsDecontaminationSelection.step.spec.ts
-│       │   │   │   │   │       │   │   └── soilsDecontaminationSelection.stepperConfig.ts
-│       │   │   │   │   │       │   └── soils-decontamination-surface-area
-│       │   │   │   │   │       │       ├── soilsDecontaminationSurfaceArea.handler.ts
-│       │   │   │   │   │       │       ├── soilsDecontaminationSurfaceArea.schema.ts
-│       │   │   │   │   │       │       ├── soilsDecontaminationSurfaceArea.selector.ts
-│       │   │   │   │   │       │       ├── soilsDecontaminationSurfaceArea.step.spec.ts
-│       │   │   │   │   │       │       └── soilsDecontaminationSurfaceArea.stepperConfig.ts
+│       │   │   │   │   │       │   ├── soils-decontamination
+│       │   │   │   │   │       │   │   ├── soilsDecontamination.handler.ts
+│       │   │   │   │   │       │   │   ├── soilsDecontamination.schema.ts
+│       │   │   │   │   │       │   │   ├── soilsDecontamination.selector.ts
+│       │   │   │   │   │       │   │   ├── soilsDecontamination.step.spec.ts
+│       │   │   │   │   │       │   │   └── soilsDecontamination.stepperConfig.ts
+│       │   │   │   │   │       │   └── soils-decontamination-introduction
+│       │   │   │   │   │       │       ├── soilsDecontaminationIntroduction.handler.ts
+│       │   │   │   │   │       │       ├── soilsDecontaminationIntroduction.step.spec.ts
+│       │   │   │   │   │       │       └── soilsDecontaminationIntroduction.stepperConfig.ts
 │       │   │   │   │   │       ├── soils-transformation
 │       │   │   │   │   │       │   ├── soils-transformation-climate-and-biodiversity-impact-notice
 │       │   │   │   │   │       │   │   ├── soilsTransformationClimateAndBiodiversityImpactNotice.handler.ts
@@ -1497,7 +1558,7 @@
 │       │   │   │   │   │   │   │   ├── buildings
 │       │   │   │   │   │   │   │   │   └── buildingsNavigation.step.spec.ts
 │       │   │   │   │   │   │   │   ├── decontamination
-│       │   │   │   │   │   │   │   │   ├── decontaminationPlanSelection.step.spec.ts
+│       │   │   │   │   │   │   │   │   ├── soilsDecontamination.step.spec.ts
 │       │   │   │   │   │   │   │   │   └── soilsDecontaminationIntroduction.step.spec.ts
 │       │   │   │   │   │   │   │   ├── expenses
 │       │   │   │   │   │   │   │   │   ├── expensesInstallation.handler.spec.ts
@@ -1698,18 +1759,14 @@
 │       │   │   │   │   │   │   │   │   ├── soilsCarbonSummary.handler.ts
 │       │   │   │   │   │   │   │   │   ├── soilsCarbonSummary.selector.ts
 │       │   │   │   │   │   │   │   │   └── soilsCarbonSummary.stepperConfig.ts
+│       │   │   │   │   │   │   │   ├── soils-decontamination
+│       │   │   │   │   │   │   │   │   ├── soilsDecontamination.handler.ts
+│       │   │   │   │   │   │   │   │   ├── soilsDecontamination.schema.ts
+│       │   │   │   │   │   │   │   │   ├── soilsDecontamination.selector.ts
+│       │   │   │   │   │   │   │   │   └── soilsDecontamination.stepperConfig.ts
 │       │   │   │   │   │   │   │   ├── soils-decontamination-introduction
 │       │   │   │   │   │   │   │   │   ├── soilsDecontaminationIntroduction.handler.ts
 │       │   │   │   │   │   │   │   │   └── soilsDecontaminationIntroduction.stepperConfig.ts
-│       │   │   │   │   │   │   │   ├── soils-decontamination-selection
-│       │   │   │   │   │   │   │   │   ├── soilsDecontaminationSelection.handler.ts
-│       │   │   │   │   │   │   │   │   ├── soilsDecontaminationSelection.schema.ts
-│       │   │   │   │   │   │   │   │   └── soilsDecontaminationSelection.stepperConfig.ts
-│       │   │   │   │   │   │   │   ├── soils-decontamination-surface-area
-│       │   │   │   │   │   │   │   │   ├── soilsDecontaminationSurfaceArea.handler.ts
-│       │   │   │   │   │   │   │   │   ├── soilsDecontaminationSurfaceArea.schema.ts
-│       │   │   │   │   │   │   │   │   ├── soilsDecontaminationSurfaceArea.selector.ts
-│       │   │   │   │   │   │   │   │   └── soilsDecontaminationSurfaceArea.stepperConfig.ts
 │       │   │   │   │   │   │   │   └── soils-summary
 │       │   │   │   │   │   │   │       ├── soilsSummary.handler.ts
 │       │   │   │   │   │   │   │       ├── soilsSummary.selector.ts
@@ -1932,13 +1989,11 @@
 │       │   │   │       │   │           ├── SoilsTransformationProjectForm.tsx
 │       │   │   │       │   │           └── index.tsx
 │       │   │   │       │   ├── soils-decontamination
+│       │   │   │       │   │   ├── decontamination
+│       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   ├── introduction
 │       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── involves-reinstatement
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── selection
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── surface-area
+│       │   │   │       │   │   └── involves-reinstatement
 │       │   │   │       │   │       └── index.tsx
 │       │   │   │       │   ├── stakeholders
 │       │   │   │       │   │   ├── developer
@@ -1995,13 +2050,10 @@
 │       │   │   │       │   │   │   ├── SoilsCarbonStorageComparison.tsx
 │       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   ├── soils-decontamination
-│       │   │   │       │   │   │   ├── introduction
-│       │   │   │       │   │   │   │   └── SoilsDecontaminationIntroduction.tsx
-│       │   │   │       │   │   │   ├── selection
-│       │   │   │       │   │   │   │   └── SoilsDecontaminationSelection.tsx
-│       │   │   │       │   │   │   └── surface-area
-│       │   │   │       │   │   │       ├── SoilsDecontaminationSurfaceArea.spec.tsx
-│       │   │   │       │   │   │       └── SoilsDecontaminationSurfaceArea.tsx
+│       │   │   │       │   │   │   ├── SoilsDecontaminationForm.spec.tsx
+│       │   │   │       │   │   │   ├── SoilsDecontaminationForm.tsx
+│       │   │   │       │   │   │   └── introduction
+│       │   │   │       │   │   │       └── SoilsDecontaminationIntroduction.tsx
 │       │   │   │       │   │   ├── stakeholder-form
 │       │   │   │       │   │   │   ├── StakeholderForm.tsx
 │       │   │   │       │   │   │   └── index.tsx
@@ -2103,11 +2155,9 @@
 │       │   │   │       │   ├── soils
 │       │   │   │       │   │   ├── carbon-summary
 │       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── decontamination
+│       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   ├── decontamination-introduction
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── decontamination-selection
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── decontamination-surface-area
 │       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   ├── involves-reinstatement
 │       │   │   │       │   │   │   ├── InvolvesReinstatementForm.tsx
@@ -2725,6 +2775,22 @@
 │       │   │   │       │   └── index.tsx
 │       │   │   │       ├── useSurfaceAreaInputMode.ts
 │       │   │   │       └── useSyncCreationStepWithRouteQuery.ts
+│       │   │   ├── lifecycle-emails
+│       │   │   │   ├── core
+│       │   │   │   │   ├── LifecycleEmailsGateway.ts
+│       │   │   │   │   ├── lifecycleEmailsUnsubscribe.reducer.ts
+│       │   │   │   │   ├── lifecycleEmailsUnsubscribe.selectors.ts
+│       │   │   │   │   ├── lifecycleEmailsUnsubscribe.spec.ts
+│       │   │   │   │   └── unsubscribeLinkOpened.action.ts
+│       │   │   │   ├── infrastructure
+│       │   │   │   │   └── lifecycle-emails-service
+│       │   │   │   │       ├── HttpLifecycleEmailsService.ts
+│       │   │   │   │       └── InMemoryLifecycleEmailsService.ts
+│       │   │   │   └── views
+│       │   │   │       └── unsubscribe
+│       │   │   │           ├── UnsubscribePage.spec.tsx
+│       │   │   │           ├── UnsubscribePage.tsx
+│       │   │   │           └── index.tsx
 │       │   │   ├── my-evaluations
 │       │   │   │   ├── application
 │       │   │   │   │   ├── __tests__
@@ -2825,9 +2891,11 @@
 │       │   │   │   │       │   ├── projectImpacts.selectors.spec.ts
 │       │   │   │   │       │   ├── projectImpactsEconomicBalance.selectors.spec.ts
 │       │   │   │   │       │   ├── projectImpactsEnvironmental.selectors.spec.ts
+│       │   │   │   │       │   ├── projectImpactsEvaluationPeriod.spec.ts
 │       │   │   │   │       │   ├── projectImpactsFetching.spec.ts
 │       │   │   │   │       │   ├── projectImpactsSocial.selectors.spec.ts
-│       │   │   │   │       │   └── projectImpactsSocioEconomic.selectors.spec.ts
+│       │   │   │   │       │   ├── projectImpactsSocioEconomic.selectors.spec.ts
+│       │   │   │   │       │   └── projectSummary.selector.spec.ts
 │       │   │   │   │       ├── actions
 │       │   │   │   │       │   ├── fetchQuickImpactsForUrbanProjectOnFriche.action.ts
 │       │   │   │   │       │   ├── impactsOnboardingSkip.actions.ts
@@ -2846,7 +2914,6 @@
 │       │   │   │   │           ├── projectSummary.selector.ts
 │       │   │   │   │           └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
 │       │   │   │   ├── core
-│       │   │   │   │   ├── cropImpactsByEvaluationPeriod.ts
 │       │   │   │   │   ├── group-impacts
 │       │   │   │   │   │   ├── extractDetailsGroup.ts
 │       │   │   │   │   │   ├── extractDetailsKeyName.type.ts
@@ -2859,7 +2926,6 @@
 │       │   │   │   │   ├── projectImpactsEnvironmental.ts
 │       │   │   │   │   ├── projectImpactsSocial.ts
 │       │   │   │   │   ├── projectImpactsSocioEconomic.ts
-│       │   │   │   │   ├── projectKeyImpactIndicators.ts
 │       │   │   │   │   └── projects.types.ts
 │       │   │   │   ├── infrastructure
 │       │   │   │   │   ├── project-features-service
@@ -3043,6 +3109,7 @@
 │       │   │   │       ├── project-break-even-level
 │       │   │   │       │   ├── ProjectBreakEvenLevelActionBar.tsx
 │       │   │   │       │   ├── ProjectBreakEvenLevelSection.tsx
+│       │   │   │       │   ├── ProjectBreakEvenLevelSummary.spec.tsx
 │       │   │   │       │   ├── ProjectBreakEvenLevelSummary.tsx
 │       │   │   │       │   ├── ProjectBreakEvenLevelTab.tsx
 │       │   │   │       │   ├── charts
@@ -3060,15 +3127,16 @@
 │       │   │   │       ├── project-development-score
 │       │   │   │       │   ├── ProjectDevelopmentEnvironmentScore.tsx
 │       │   │   │       │   ├── ProjectDevelopmentFullTimeJobsScore.tsx
-│       │   │   │       │   ├── ProjectDevelopmentGrade.tsx
 │       │   │   │       │   ├── ProjectDevelopmentLocalAuthorityFinancesScore.tsx
 │       │   │   │       │   ├── ProjectDevelopmentLocalPeopleAndCompanyScore.tsx
-│       │   │   │       │   ├── ProjectDevelopmentMetricCard.tsx
-│       │   │   │       │   ├── ProjectDevelopmentScoreGradeScale.tsx
-│       │   │   │       │   ├── ProjectDevelopmentScoreGradeTextBadge.tsx
 │       │   │   │       │   ├── ProjectDevelopmentScorePage.tsx
-│       │   │   │       │   ├── colors.ts
-│       │   │   │       │   └── index.tsx
+│       │   │   │       │   ├── index.tsx
+│       │   │   │       │   └── layout
+│       │   │   │       │       ├── ProjectDevelopmentGrade.tsx
+│       │   │   │       │       ├── ProjectDevelopmentMetricCard.tsx
+│       │   │   │       │       ├── ProjectDevelopmentScoreGradeScale.tsx
+│       │   │   │       │       ├── ProjectDevelopmentScoreGradeTextBadge.tsx
+│       │   │   │       │       └── colors.ts
 │       │   │   │       ├── project-features
 │       │   │   │       │   ├── DevelopmentPlanFeatures.tsx
 │       │   │   │       │   ├── DevelopmentPlanInstallationExpenses.tsx
@@ -3225,6 +3293,7 @@
 │       │   │   │           │   │   │   ├── 06-analyse-couts-evites.mdx
 │       │   │   │           │   │   │   ├── 07-score-d-impact.mdx
 │       │   │   │           │   │   │   └── 08-methodologie.mdx
+│       │   │   │           │   │   ├── index.tsx
 │       │   │   │           │   │   └── mdxComponents.tsx
 │       │   │   │           │   ├── impactGroupCategory.ts
 │       │   │   │           │   └── summary.ts
@@ -3354,13 +3423,15 @@
 │       │   │   │   │   │   ├── authLinkNotReceivedHelpRequested.action.spec.ts
 │       │   │   │   │   │   ├── authTokenErrorHelpRequested.action.spec.ts
 │       │   │   │   │   │   ├── onboardingWelcomeHelpRequested.action.spec.ts
-│       │   │   │   │   │   └── supportChatListeners.spec.ts
+│       │   │   │   │   │   ├── supportChatListeners.spec.ts
+│       │   │   │   │   │   └── unsubscribeLinkInvalidHelpRequested.action.spec.ts
 │       │   │   │   │   ├── authLinkNotReceivedHelpRequested.action.ts
 │       │   │   │   │   ├── authTokenErrorHelpRequested.action.ts
 │       │   │   │   │   ├── gateways
 │       │   │   │   │   │   └── SupportChatGateway.ts
 │       │   │   │   │   ├── onboardingWelcomeHelpRequested.action.ts
-│       │   │   │   │   └── supportChatListeners.ts
+│       │   │   │   │   ├── supportChatListeners.ts
+│       │   │   │   │   └── unsubscribeLinkInvalidHelpRequested.action.ts
 │       │   │   │   └── infrastructure
 │       │   │   │       └── support-chat-service
 │       │   │   │           ├── CrispSupportChatService.ts
@@ -3455,7 +3526,6 @@
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── format-number
 │       │   │   │   │   ├── formatCarbonStorage.ts
-│       │   │   │   │   ├── formatNumber.spec.ts
 │       │   │   │   │   └── formatNumber.ts
 │       │   │   │   ├── gateways
 │       │   │   │   │   ├── AddressSearchGateway.ts
@@ -3496,7 +3566,6 @@
 │       │   │   │   ├── urbanProject.ts
 │       │   │   │   └── wizard-form
 │       │   │   │       ├── AGENTS.md
-│       │   │   │       ├── CLAUDE.md
 │       │   │   │       ├── helpers
 │       │   │   │       │   ├── applyStepChanges.spec.ts
 │       │   │   │       │   ├── applyStepChanges.ts
@@ -3719,6 +3788,7 @@
 │   │   ├── 0014-migrate-api-to-esm.md
 │   │   ├── 0015-extract-wizard-form-engine-via-injected-lens.md
 │   │   ├── 0016-route-all-lifecycle-emails-through-a-single-sender-with-an-idempotent-delivery-ledger.md
+│   │   ├── 0017-opt-out-lifecycle-emails-with-a-stateless-hmac-unsubscribe-token.md
 │   │   └── README.md
 │   ├── feature-example.md
 │   ├── incidents
@@ -3726,9 +3796,10 @@
 │   ├── lifecycle-emails.md
 │   ├── onboarding.md
 │   ├── qa
-│   │   └── lifecycle-emails
-│   │       ├── 01.md
-│   │       └── 02.md
+│   │   └── merge-project-decontamination-steps
+│   │       ├── 33.md
+│   │       ├── 34.md
+│   │       └── 35.md
 │   ├── scripts.md
 │   └── specs
 │       ├── 2026-03-23-buildings-reuse-and-construction-design.md
@@ -3745,7 +3816,6 @@
 │       ├── .prettierignore
 │       ├── .prettierrc.mjs
 │       ├── AGENTS.md
-│       ├── CLAUDE.md
 │       ├── package.json
 │       ├── src
 │       │   ├── adapters
@@ -3759,7 +3829,11 @@
 │       │   │   │   ├── getCityRurality.dto.ts
 │       │   │   │   └── index.ts
 │       │   │   ├── index.ts
+│       │   │   ├── lifecycle-emails
+│       │   │   │   ├── index.ts
+│       │   │   │   └── unsubscribe.dto.ts
 │       │   │   ├── reconversion-projects
+│       │   │   │   ├── createReconversionProject.dto.ts
 │       │   │   │   ├── getReconversionProjectFeatures.dto.ts
 │       │   │   │   ├── getReconversionProjectImpacts.dto.ts
 │       │   │   │   └── index.ts
@@ -3783,14 +3857,22 @@
 │       │   │       ├── getUrbanSprawlImpactsComparison.dto.ts
 │       │   │       └── index.ts
 │       │   ├── co2eq
+│       │   │   ├── averageFrenchAnnualEmissions.ts
 │       │   │   ├── convertCarbonToCO2eq.ts
 │       │   │   └── index.ts
 │       │   ├── filter-by-name
+│       │   │   ├── filterByName.spec.ts
 │       │   │   └── index.ts
 │       │   ├── financial
 │       │   │   ├── index.ts
 │       │   │   ├── propertyTaxes.ts
 │       │   │   └── propertyTransferDuties.ts
+│       │   ├── format-number
+│       │   │   ├── formatImpactValue.spec.ts
+│       │   │   ├── formatImpactValue.ts
+│       │   │   ├── formatNumber.spec.ts
+│       │   │   ├── formatNumber.ts
+│       │   │   └── index.ts
 │       │   ├── index.ts
 │       │   ├── local-authority
 │       │   │   ├── formatCityWithPlacePreposition.spec.ts
@@ -3849,6 +3931,12 @@
 │       │   │   │   ├── projectDevelopmentEconomicBalance.ts
 │       │   │   │   ├── projectOperatingEconomicBalance.spec.ts
 │       │   │   │   └── projectOperatingEconomicBalance.ts
+│       │   │   ├── evaluation-period
+│       │   │   │   ├── cropImpactsByEvaluationPeriod.spec.ts
+│       │   │   │   ├── cropImpactsByEvaluationPeriod.ts
+│       │   │   │   ├── defaultEvaluationPeriod.spec.ts
+│       │   │   │   ├── defaultEvaluationPeriod.ts
+│       │   │   │   └── index.ts
 │       │   │   ├── format-impacts
 │       │   │   │   ├── formatImpacts.ts
 │       │   │   │   ├── socioEconomic.types.ts
@@ -3899,12 +3987,22 @@
 │       │   │   │       │   └── YearlyUrbanFreshnessRelatedImpacts.ts
 │       │   │   │       ├── urbanProjectImpacts.spec.ts
 │       │   │   │       └── urbanProjectImpacts.ts
+│       │   │   ├── key-impact-indicators
+│       │   │   │   ├── breakEvenHorizon.spec.ts
+│       │   │   │   ├── breakEvenHorizon.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── keyImpactIndicators.spec.ts
+│       │   │   │   └── keyImpactIndicators.ts
 │       │   │   ├── mocks
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── projectDevelopmentScore.mock.ts
 │       │   │   │   └── projectImpacts.mock.ts
 │       │   │   ├── projectImpacts.types.ts
-│       │   │   └── projectImpactsDataView.types.ts
+│       │   │   ├── projectImpactsDataView.types.ts
+│       │   │   └── summary-cards
+│       │   │       ├── index.ts
+│       │   │       ├── summaryCards.spec.ts
+│       │   │       └── summaryCards.ts
 │       │   ├── reconversion-projects
 │       │   │   ├── _common
 │       │   │   │   ├── creationMode.ts
@@ -3975,6 +4073,9 @@
 │       │   │   ├── objects
 │       │   │   │   ├── filterObject.spec.ts
 │       │   │   │   └── filterObject.ts
+│       │   │   ├── percentage
+│       │   │   │   ├── percentageDifference.spec.ts
+│       │   │   │   └── percentageDifference.ts
 │       │   │   ├── round-numbers
 │       │   │   │   └── roundNumbers.ts
 │       │   │   ├── strings
@@ -4065,4 +4166,4 @@
     ├── sync-agent-config.spec.mjs
     ├── sync-agent-skills.mjs
     └── sync-agent-skills.spec.mjs
-1062 directories, 3005 files
+1077 directories, 3091 files
