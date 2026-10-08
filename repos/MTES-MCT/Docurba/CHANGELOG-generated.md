@@ -1,34 +1,35 @@
-## Changelog : Docurba (30 derniers jours, au 2 octobre 2026)
+## Changelog : Docurba (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois-ci, Docurba a franchi des étapes importantes concernant l'expérience utilisateur et la sécurité. Les processus d'inscription, de vérification de compte et de réinitialisation de mot de passe ont été largement améliorés et sécurisés. Parallèlement, la plateforme renforce sa fiabilité métier avec de nouvelles règles de validation pour la création de procédures et une gestion plus robuste des données via un système d'archivage plutôt que de suppression.
+Ce mois-ci, Docurba a bénéficié d'améliorations significatives concernant la gestion des utilisateurs, notamment via un nouveau système de vérification par email et une gestion plus fluide des inscriptions. L'interface d'administration a été enrichie pour offrir un meilleur contrôle sur les procédures et le partage de projets. Parallèlement, un important travail de nettoyage et de restructuration technique a été mené pour renforcer la sécurité de l'API et optimiser les performances globales de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Gestion des utilisateurs** : 
-    - Réactivation de la création de comptes utilisateurs.
-    - Amélioration du parcours d'inscription (gestion des erreurs de connexion, gestion des e-mails déjà existants et sécurisation des champs).
-    - Mise en place de la réinitialisation globale des mots de passe.
-    - Envoi automatique d'e-mails de vérification lors de la validation d'un profil.
-- **Gestion des procédures** :
+- **Gestion des utilisateurs** : Réactivation de la création de comptes utilisateurs avec un nouveau flux de vérification par email et des messages d'erreur plus explicites lors de la connexion.
+- **Administration renforcée** : 
+    - Ajout de filtres par type de procédure dans l'interface d'administration Django.
+    - Amélioration de la gestion du partage de projets (affichage et suppression facilités).
+    - Possibilité de vérifier les profils directement depuis l'administration.
+- **Suivi et traçabilité** : 
+    - Meilleure visibilité sur l'historique des modifications (affichage de l'auteur de la dernière édition et du créateur des sections dans l'interface Nuxt).
     - Affichage des dates d'approbation des procédures parentes dans les formulaires de procédures secondaires.
-    - Nouvelles règles de blocage de la création de procédures pour garantir la cohérence des données (cas des communes absentes ou des configurations spécifiques EPCI).
-    - Ajout du champ `name_complement` pour enrichir les données des procédures.
-- **Administration** :
-    - Amélioration de l'interface d'administration pour la gestion des projets partagés et la vérification des profils.
+- **Données métier** : Ajout d'un champ "complément de nom" pour les procédures.
+- **Contrôles de saisie** : Mise en place de règles de blocage pour la création de procédures dans certains contextes de communes ou d'EPCI.
 
 ### Évolutions techniques
-- **Sécurité et API** :
-    - Migration des API vers Django Rest Framework (DRF) et passage des API en mode "privé par défaut".
-    - Renforcement de la sécurité des données via l'ajustement des permissions Row Level Security (RLS).
-    - Mise en place de mécanismes de "rate limiting" plus élevés pour prévenir les abus.
-- **Intégrations tierces** :
-    - Déploiement de l'intégration Sendgrid pour une gestion professionnelle et fiable des envois d'e-mails.
-    - Intégration du client Pipedrive pour automatiser la vérification des utilisateurs.
-- **Architecture et Maintenance** :
-    - Nettoyage approfondi du frontend Nuxt (suppression du code mort et des endpoints API inutilisés).
-    - Refactorisation de la structure du backend Django (réorganisation des applications et des dossiers exposés).
-    - Transition d'une stratégie de suppression de données vers un système d'archivage des événements pour préserver l'historique.
-    - Optimisation de la gestion des sessions utilisateurs pour éviter les durées infinies.
+- **Architecture et API** : 
+    - Migration de plusieurs vues vers Django Rest Framework (DRF) et sécurisation des API par défaut.
+    - Nettoyage important de l'API avec la suppression de nombreux points de terminaison (endpoints) inutilisés.
+    - Réorganisation de la structure des dossiers du projet (regroupement des applications API).
+- **Intégrations tierces** : 
+    - Implémentation d'un client Pipedrive pour automatiser la vérification des utilisateurs.
+    - Refonte complète du système d'envoi d'emails via l'intégration de Sendgrid.
+- **Sécurité et Performance** : 
+    - Renforcement du *rate limiting* via Nginx.
+    - Sécurisation des sessions utilisateurs (suppression des sessions à durée infinie) et ajustement des permissions de base de données (RLS).
+- **Maintenance et Refactoring** : 
+    - Transition d'une logique de suppression vers une logique d'archivage pour les événements afin de préserver l'intégrité des données.
+    - Suppression des résidus de Nuxt3 et nettoyage du code mort.
 
 ### Autres changements
-- Ajout d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités par les chercheurs en sécurité.
+- **Sécurité** : Ajout d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités.
+- **Infrastructure** : Mise à jour du plan Scalingo.
