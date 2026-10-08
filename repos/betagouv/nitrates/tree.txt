@@ -9,7 +9,6 @@
 │   ├── scripts
 │   │   ├── _scalingo_oneoff.sh
 │   │   ├── deploy_dev_code.sh
-│   │   ├── deploy_dev_reload.sh
 │   │   ├── deploy_dev_smoke.sh
 │   │   ├── deploy_dev_snapshot.sh
 │   │   ├── deploy_release_code.sh
@@ -26,18 +25,13 @@
 │       └── s3_backup.yml
 ├── .gitignore
 ├── .npmrc
-├── .plans
-│   ├── 61_data_structure_referentiels_v4.md
-│   └── 61_data_structure_referentiels_v5.md
 ├── .pre-commit-config.yaml
 ├── .prettierrc
-├── .pylintrc
 ├── .python-version
 ├── .secrets.baseline
 ├── .slugignore
 ├── .stylelintrc
 ├── Aptfile
-├── COVERAGE.md
 ├── LICENSE
 ├── Procfile
 ├── README.md
@@ -95,14 +89,18 @@
 ├── conftest.py
 ├── cron.README.md
 ├── cron.json
-├── crop_svg_viewbox.mjs
 ├── docker-compose.e2e.yml
 ├── docker-compose.yml
 ├── docs
 │   ├── DEPLOYMENT.md
-│   ├── guh.md
-│   ├── moulinette.md
-│   └── services_externes.md
+│   ├── conception
+│   │   ├── 61_data_structure_referentiels_v4.md
+│   │   └── 61_data_structure_referentiels_v5.md
+│   ├── envergo-upstream
+│   │   ├── guh.md
+│   │   ├── moulinette.md
+│   │   └── services_externes.md
+│   └── seo_geo.md
 ├── e2e
 │   ├── amenagement
 │   │   ├── evaluations
@@ -134,6 +132,7 @@
 │       ├── capture_zar.spec.ts
 │       ├── carte_430_fertilisant_choix_unique.spec.ts
 │       ├── carte_430_q1_sur_vs_juste_avant.spec.ts
+│       ├── carte_531.spec.ts
 │       ├── debug_view.spec.ts
 │       ├── definitions_glossaire.spec.ts
 │       ├── map_overlays.spec.ts
@@ -405,6 +404,7 @@
 │   │   │   ├── 0029_merge_20260413_1454.py
 │   │   │   ├── 0030_alter_map_map_type.py
 │   │   │   ├── 0031_alter_map_map_type.py
+│   │   │   ├── 0032_map_versioning.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tasks.py
@@ -706,11 +706,13 @@
 │   │   ├── README.md
 │   │   ├── __init__.py
 │   │   ├── admin.py
+│   │   ├── admin_perimetre.py
 │   │   ├── apps.py
 │   │   ├── assets
 │   │   │   ├── REF_CULTURES_GROUPES_CULTURES_2024.csv
 │   │   │   ├── zone_montagne_communes_2026-04-30.csv
-│   │   │   └── zones_est_grand_est.csv
+│   │   │   ├── zones_est_grand_est.csv
+│   │   │   └── zones_mais_bretagne.csv
 │   │   ├── auth.py
 │   │   ├── bassins.py
 │   │   ├── constants.py
@@ -718,7 +720,8 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── compilateur.py
 │   │   │   ├── glossaire.py
-│   │   │   └── loader.py
+│   │   │   ├── loader.py
+│   │   │   └── pages.py
 │   │   ├── fixtures
 │   │   │   └── initial_referentiels.json
 │   │   ├── form_backfill.py
@@ -749,13 +752,18 @@
 │   │   │       ├── ingest_miro_widget_ids.py
 │   │   │       ├── ingest_miro_widget_ids_par_ge.py
 │   │   │       ├── ingest_miro_widget_ids_zar.py
+│   │   │       ├── liens_references.py
 │   │   │       ├── load_arbres_actifs.py
+│   │   │       ├── millesimes_sig.py
 │   │   │       ├── nettoyer_residus_calculatrice.py
 │   │   │       ├── nuclei_scan.py
 │   │   │       ├── provision_admin.py
 │   │   │       ├── provision_carte_98.py
 │   │   │       ├── provision_zones_est.py
+│   │   │       ├── provisionner_pc_bretagne.py
+│   │   │       ├── provisionner_pc_hdf_467.py
 │   │   │       ├── rapport_resolution_pc.py
+│   │   │       ├── remplir_liens_pc_467.py
 │   │   │       ├── seed_branches_validation.py
 │   │   │       ├── seed_branches_validation_couvert.py
 │   │   │       ├── seed_branches_validation_par_ge.py
@@ -764,6 +772,7 @@
 │   │   │       ├── seed_geodata_e2e.py
 │   │   │       ├── seed_referentiels.py
 │   │   │       └── validate_arbres_actifs.py
+│   │   ├── matrice.py
 │   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -799,8 +808,15 @@
 │   │   │   ├── 0031_codeprescription_remplir_zone_application.py
 │   │   │   ├── 0032_contenurichdsfr_glossaire.py
 │   │   │   ├── 0033_retour_type_bug.py
+│   │   │   ├── 0034_lienreference.py
+│   │   │   ├── 0035_seed_pages_footer.py
+│   │   │   ├── 0036_seed_page_donnees_personnelles.py
+│   │   │   ├── 0037_couleur_zone.py
+│   │   │   ├── 0038_seed_couleurs_zones.py
+│   │   │   ├── 0039_external_observator_permissions.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── models_carto.py
 │   │   ├── models_contenu_rich.py
 │   │   ├── models_ouverture.py
 │   │   ├── models_referentiels.py
@@ -822,6 +838,10 @@
 │   │   │       ├── capture_validation.mjs
 │   │   │       ├── capture_viewer.mjs
 │   │   │       └── capture_yaml.mjs
+│   │   ├── sig
+│   │   │   ├── zar_hauts-de-france_20260923.zip
+│   │   │   └── zar_par7_grand-est_juillet2026.zip
+│   │   ├── sig_versioning.py
 │   │   ├── specs
 │   │   │   ├── .gitkeep
 │   │   │   ├── arbre_decision_national.yaml
@@ -831,10 +851,12 @@
 │   │   │   │   ├── national.yaml
 │   │   │   │   ├── region_32.yaml
 │   │   │   │   ├── region_44.yaml
+│   │   │   │   ├── region_53.yaml
 │   │   │   │   └── zar_44.yaml
 │   │   │   ├── contenus_rich.yaml
 │   │   │   ├── grammaire.yaml
 │   │   │   ├── pc_blocs.yaml
+│   │   │   ├── pc_bretagne.json
 │   │   │   ├── snapshot_miro
 │   │   │   │   ├── README.md
 │   │   │   │   ├── arbre_complet
@@ -857,6 +879,7 @@
 │   │   │   │   │       │   └── _RAPPORT.md
 │   │   │   │   │       ├── mapping_widget_ids.json
 │   │   │   │   │       └── widgets.json
+│   │   │   │   ├── crop_svg_viewbox.mjs
 │   │   │   │   ├── culture_principale
 │   │   │   │   │   └── 2026-05-08
 │   │   │   │   │       ├── README.md
@@ -902,9 +925,10 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
-│   │   │   └── test_*.py  (101 files)
+│   │   │   └── test_*.py  (134 files)
 │   │   ├── urls.py
 │   │   ├── views.py
+│   │   ├── views_admin_matrice.py
 │   │   ├── views_admin_nuclei.py
 │   │   ├── views_admin_ouverture.py
 │   │   ├── views_admin_validation.py
@@ -913,6 +937,7 @@
 │   │   ├── views_contenu_rich_preview.py
 │   │   ├── views_probe.py
 │   │   ├── views_retour.py
+│   │   ├── views_seo.py
 │   │   ├── views_yaml_browser.py
 │   │   ├── yaml_admin
 │   │   │   ├── __init__.py
@@ -938,7 +963,8 @@
 │   │   │   └── validator.py
 │   │   ├── zonage_montagne.py
 │   │   ├── zonage_note_5.py
-│   │   └── zonage_zones_est.py
+│   │   ├── zonage_zones_est.py
+│   │   └── zonage_zones_mais_bretagne.py
 │   ├── pages
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -1219,11 +1245,17 @@
 │   │   │   ├── calculatrice-calendrier.test.js
 │   │   │   ├── calendrier.css
 │   │   │   ├── calendrier_bornes_layout.js
+│   │   │   ├── carte_preferences.js
+│   │   │   ├── carte_preferences.test.js
 │   │   │   ├── cascade.js
 │   │   │   ├── construction.css
 │   │   │   ├── construction.js
 │   │   │   ├── definitions.css
 │   │   │   ├── definitions.js
+│   │   │   ├── documents
+│   │   │   │   ├── par-ge-annexe2-modalites-reliquats.pdf
+│   │   │   │   ├── par-ge-annexe3-sols-faible-dispo-azote.pdf
+│   │   │   │   └── par-hdf-annexe1-reliquats-et-definitions.pdf
 │   │   │   ├── drawer_conditions.js
 │   │   │   ├── feedback_popup.css
 │   │   │   ├── feedback_popup.js
@@ -2016,13 +2048,10 @@
 │   │   │   ├── _footer.html
 │   │   │   ├── _header.html
 │   │   │   ├── _nav.html
-│   │   │   ├── accessibilite.html
 │   │   │   ├── admin
 │   │   │   │   └── contenu_rich_preview.html
 │   │   │   ├── base.html
-│   │   │   ├── contact_us.html
 │   │   │   ├── definitions.html
-│   │   │   ├── donnees_personnelles.html
 │   │   │   ├── form.html
 │   │   │   ├── fragments
 │   │   │   │   ├── _bug_floater.html
@@ -2039,9 +2068,15 @@
 │   │   │   │   ├── _qc_sous_form.html
 │   │   │   │   └── _questions_complementaires.html
 │   │   │   ├── home.html
-│   │   │   ├── mentions_legales.html
+│   │   │   ├── page_riche.html
 │   │   │   ├── prescription_detail.html
 │   │   │   ├── result.html
+│   │   │   ├── seo
+│   │   │   │   ├── _json_ld.html
+│   │   │   │   ├── llms.txt
+│   │   │   │   ├── robots.txt
+│   │   │   │   ├── robots_hors_prod.txt
+│   │   │   │   └── sitemap.xml
 │   │   │   ├── simulateur.html
 │   │   │   └── yaml_browser
 │   │   │       ├── detail.html
@@ -2049,6 +2084,8 @@
 │   │   ├── nitrates_admin
 │   │   │   ├── base.html
 │   │   │   ├── clone_confirm.html
+│   │   │   ├── matrice
+│   │   │   │   └── index.html
 │   │   │   ├── ouverture
 │   │   │   │   ├── _item.html
 │   │   │   │   └── index.html
@@ -2152,6 +2189,7 @@
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_backends.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_models_couverture.py
 │   │   │   ├── test_tasks.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
@@ -2191,6 +2229,7 @@
 │       │   └── admin.py
 │       ├── tests
 │       │   ├── __init__.py
+│       │   ├── test_socle_nitrates.py
 │       │   └── test_validators.py
 │       ├── tools.py
 │       ├── urls.py
@@ -2232,4 +2271,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-280 directories, 2054 files
+285 directories, 2121 files

@@ -1,27 +1,29 @@
-## Changelog : nitrates (30 derniers jours, au 14 septembre 2026)
+## Changelog : nitrates (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois-ci, nitrates a bénéficié d'une amélioration significative de son ergonomie et de son interface, notamment grâce à un alignement renforcé sur le Design System de l'État (DSFR). Le parcours utilisateur a été fluidifié par une gestion plus intelligente des questions de saisie. En parallèle, des travaux importants ont été menés sur la surveillance et la stabilité de l'infrastructure pour garantir une meilleure fiabilité du service.
+Ce mois a été marqué par une mise à jour majeure de l'interface cartographique et une mise en conformité importante des pages légales. Le projet a également intégré les nouvelles données réglementaires pour la Bretagne (PAR Bretagne 2026) et a renforcé ses outils d'administration pour permettre une gestion plus souple des calendriers d'épandage.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'interface (UI) :** Alignement des champs de dates sur les standards DSFR [#252], ajout de badges pour les rappels de période dans le volet de conditions [#487] et refonte visuelle de l'encart récapitulatif (couleurs, mise en page et espacements) [#408].
-- **Optimisation de l'expérience utilisateur (UX) :** 
-    - Simplification du questionnaire en sautant automatiquement les questions de sous-fertilisants lorsqu'un seul choix est disponible [#430].
-    - Accès facilité aux définitions en rendant toute la surface des labels cliquable [#436].
-    - Amélioration de la gestion de l'encart d'avis (affichage latéral lors de l'intention de sortie) [#435].
-- **Données et contenus :** Mise à jour des référentiels réglementaires et ajustement des blocs de calcul pour les plafonds [#0d7a9fc9].
-- **Corrections :** Rectification des libellés pour les questions complémentaires et correction de l'affichage des types de fertilisants dans les encarts [#408].
+- **Cartographie et simulateur** : 
+    - Amélioration significative de l'ergonomie de la carte : gestion du plein écran, raccourcis clavier, états de chargement des zones et mémorisation des couches actives [#531].
+    - Mise à jour des couleurs des zones (ZV) avec une nouvelle palette et des niveaux de remplissage ajustés, désormais modifiables via l'administration [#555].
+    - Correction d'un bug empêchant la soumission du formulaire lors de la consultation du dépliant réglementaire.
+- **Données et réglementation** :
+    - Intégration des données et du zonage pour le PAR Bretagne 2026 [#566].
+    - Enrichissement des blocs de "Questions Complémentaires" (PC) avec des liens syndiqués et des contenus plus détaillés [#467, #254].
+- **Interface et accessibilité** :
+    - Mise en conformité des pages légales (CGU, accessibilité, données personnelles) suite aux retours juridiques [#550].
+    - Amélioration de l'accessibilité via l'adoption des composants DSFR (champs de dates, badges de rappel) [#252, #487].
+    - Ajout d'un encart d'aide contextuel (exit-intent) pour guider l'utilisateur [#435].
 
 ### Évolutions techniques
-- **Observabilité et monitoring :** 
-    - Mise en place d'une télémétrie continue de l'infrastructure vers Sentry [#476].
-    - Ajout de sondes de surveillance sur l'environnement de staging pour mieux détecter les ralentissements.
-    - Amélioration des protocoles de mesure de performance.
-- **Infrastructure et Ops :** 
-    - Optimisation de la configuration Gunicorn pour résoudre des problèmes de performance sur l'environnement de staging [#456].
-    - Automatisation et ajustement des redémarrages nocturnes pour stabiliser l'exécution des tâches planifiées (crons).
-    - Amélioration de la résilience des tâches ponctuelles (*one-offs*).
-- **Sécurité :** Mise en conformité avec la RFC 9116 via l'implémentation du fichier `security.txt` [#443].
-- **Tests et Analytics :** 
-    - Alignement des tests de bout en bout (E2E) sur les comportements réels de l'application [#493].
-    - Ajout de suivi analytique Matomo sur les champs de dates du calendrier [#252].
+- **Administration** : Création d'une nouvelle "matrice" de gestion des calendriers d'épandage (playground) permettant de configurer plus facilement les questions complémentaires et les périodes de couverture [#529].
+- **Observabilité et performance** : 
+    - Intégration de la télémétrie infrastructure via Sentry pour un meilleur suivi des erreurs [#476].
+    - Optimisation des performances de Gunicorn sur l'environnement de staging [#456].
+- **Gestion des données SIG** : Mise en place d'un versionnement des couches SIG et d'une gestion par millésime pour garantir la cohérence des données affichées [#492].
+- **SEO et Web** : Optimisation du référencement et de l'accessibilité pour les modèles d'IA via l'implémentation de `robots.txt`, `sitemap.xml` et `llms.txt` [#565, #290].
+- **Sécurité** : Mise à jour de la politique de sécurité du contenu (CSP) pour autoriser les médias de domaines spécifiques [#547].
+
+### Autres changements
+- **Hygiène du dépôt** : Nettoyage de la documentation (README), suppression d'outils obsolètes et restructuration des tests pour une meilleure couverture du code.
