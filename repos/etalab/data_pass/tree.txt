@@ -2031,6 +2031,8 @@
 │       │   ├── revoke.html.erb
 │       │   ├── revoke.text.erb
 │       │   ├── shared
+│       │   │   ├── _hubee_file_retention_notice.html.erb
+│       │   │   ├── _hubee_file_retention_notice.text.erb
 │       │   │   ├── _with_reason_body.html.erb
 │       │   │   └── dgfip_sandbox
 │       │   │       ├── approve.text.erb
@@ -2337,6 +2339,7 @@
 │       │   ├── cgu_api_impot_particulier_bas.html.erb
 │       │   ├── cgu_api_impot_particulier_prod.html.erb
 │       │   ├── mentions_legales.html.erb
+│       │   ├── plan_action_accessibilite.html.erb
 │       │   └── politique_confidentialite.html.erb
 │       ├── stats
 │       │   ├── index.html.erb
@@ -2868,6 +2871,7 @@
 │   │   ├── email_steps.rb
 │   │   ├── france_connect_authorizations_steps.rb
 │   │   ├── habilitation_types_steps.rb
+│   │   ├── hubee_steps.rb
 │   │   ├── impersonation_steps.rb
 │   │   ├── instructions_steps.rb
 │   │   ├── instructor_draft_requests_steps.rb
@@ -3054,71 +3058,74 @@
 │   │   │   └── instruction
 │   │   │       └── authorization_definition
 │   │   │           └── automated_emails_component_spec.rb
-│   │   └── previews
-│   │       ├── applicant
-│   │       │   └── demande_alerts_component_preview.rb
-│   │       ├── application_preview.rb
-│   │       ├── atoms
-│   │       │   ├── action_card_component_preview.rb
-│   │       │   ├── color_badge_component_preview.rb
-│   │       │   ├── config_block_component_preview.rb
-│   │       │   ├── copy_button_component_preview.rb
-│   │       │   ├── definition_block_component_preview.rb
-│   │       │   └── form_buttons_component_preview.rb
-│   │       ├── authorization_header_component_preview.rb
-│   │       ├── dashboard
-│   │       │   └── blank_state_component_preview.rb
-│   │       ├── flash_alert_component_preview.rb
-│   │       ├── habilitation
-│   │       │   ├── origin_header_info_preview.rb
-│   │       │   └── user_alerts_component_preview.rb
-│   │       ├── historical_authorization_request_event_icon_component_preview.rb
-│   │       ├── molecules
-│   │       │   ├── admin
-│   │       │   │   ├── blocks_selection_component_preview.rb
-│   │       │   │   ├── contact_types_selector_component_preview.rb
-│   │       │   │   ├── data_provider_form_component_preview.rb
-│   │       │   │   ├── data_provider_selector_component_preview.rb
-│   │       │   │   ├── links_form_section_component_preview.rb
-│   │       │   │   ├── name_with_uid_preview_component_preview.rb
-│   │       │   │   └── scopes_editor_component_preview.rb
-│   │       │   ├── duration_card_component_preview.rb
-│   │       │   ├── instruction
-│   │       │   │   ├── authorization_definition
-│   │       │   │   │   ├── automated_email_component_preview.rb
-│   │       │   │   │   ├── card_component_preview.rb
-│   │       │   │   │   ├── config_block_component_preview.rb
-│   │       │   │   │   ├── forms_header_component_preview.rb
-│   │       │   │   │   ├── show_header_component_preview.rb
-│   │       │   │   │   └── titled_header_component_preview.rb
-│   │       │   │   ├── form
-│   │       │   │   │   ├── card_component_preview.rb
-│   │       │   │   │   ├── config_block_component_preview.rb
-│   │       │   │   │   └── show_header_component_preview.rb
-│   │       │   │   ├── user_rights
-│   │       │   │   │   ├── readonly_rights_list_component_preview.rb
-│   │       │   │   │   └── right_field_component_preview.rb
-│   │       │   │   └── wide_header_preview.rb
-│   │       │   ├── instructor_banner_notice_component_preview.rb
-│   │       │   ├── stat_card_component_preview.rb
-│   │       │   └── update_in_progress_notice_component_preview.rb
-│   │       └── organisms
-│   │           ├── admin
-│   │           │   └── habilitation_type_form_component_preview.rb
-│   │           ├── authorization_request_forms
-│   │           │   └── legal_framework_component_preview.rb
-│   │           ├── instruction
-│   │           │   ├── authorization_definition
-│   │           │   │   └── automated_emails_component_preview.rb
-│   │           │   └── user_rights
-│   │           │       └── table_component_preview.rb
-│   │           └── stats
-│   │               ├── duration_cards_component_preview.rb
-│   │               ├── filters_component_preview.rb
-│   │               ├── loading_overlay_component_preview.rb
-│   │               ├── summary_cards_component_preview.rb
-│   │               ├── time_series_chart_component_preview.rb
-│   │               └── transcription_component_preview.rb
+│   │   ├── previews
+│   │   │   ├── applicant
+│   │   │   │   └── demande_alerts_component_preview.rb
+│   │   │   ├── application_preview.rb
+│   │   │   ├── atoms
+│   │   │   │   ├── action_card_component_preview.rb
+│   │   │   │   ├── color_badge_component_preview.rb
+│   │   │   │   ├── config_block_component_preview.rb
+│   │   │   │   ├── copy_button_component_preview.rb
+│   │   │   │   ├── definition_block_component_preview.rb
+│   │   │   │   └── form_buttons_component_preview.rb
+│   │   │   ├── authorization_header_component_preview.rb
+│   │   │   ├── dashboard
+│   │   │   │   └── blank_state_component_preview.rb
+│   │   │   ├── flash_alert_component_preview.rb
+│   │   │   ├── habilitation
+│   │   │   │   ├── origin_header_info_preview
+│   │   │   │   │   └── in_header.html.erb
+│   │   │   │   ├── origin_header_info_preview.rb
+│   │   │   │   └── user_alerts_component_preview.rb
+│   │   │   ├── historical_authorization_request_event_icon_component_preview.rb
+│   │   │   ├── molecules
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── blocks_selection_component_preview.rb
+│   │   │   │   │   ├── contact_types_selector_component_preview.rb
+│   │   │   │   │   ├── data_provider_form_component_preview.rb
+│   │   │   │   │   ├── data_provider_selector_component_preview.rb
+│   │   │   │   │   ├── links_form_section_component_preview.rb
+│   │   │   │   │   ├── name_with_uid_preview_component_preview.rb
+│   │   │   │   │   └── scopes_editor_component_preview.rb
+│   │   │   │   ├── duration_card_component_preview.rb
+│   │   │   │   ├── instruction
+│   │   │   │   │   ├── authorization_definition
+│   │   │   │   │   │   ├── automated_email_component_preview.rb
+│   │   │   │   │   │   ├── card_component_preview.rb
+│   │   │   │   │   │   ├── config_block_component_preview.rb
+│   │   │   │   │   │   ├── forms_header_component_preview.rb
+│   │   │   │   │   │   ├── show_header_component_preview.rb
+│   │   │   │   │   │   └── titled_header_component_preview.rb
+│   │   │   │   │   ├── form
+│   │   │   │   │   │   ├── card_component_preview.rb
+│   │   │   │   │   │   ├── config_block_component_preview.rb
+│   │   │   │   │   │   └── show_header_component_preview.rb
+│   │   │   │   │   ├── user_rights
+│   │   │   │   │   │   ├── readonly_rights_list_component_preview.rb
+│   │   │   │   │   │   └── right_field_component_preview.rb
+│   │   │   │   │   └── wide_header_preview.rb
+│   │   │   │   ├── instructor_banner_notice_component_preview.rb
+│   │   │   │   ├── stat_card_component_preview.rb
+│   │   │   │   └── update_in_progress_notice_component_preview.rb
+│   │   │   └── organisms
+│   │   │       ├── admin
+│   │   │       │   └── habilitation_type_form_component_preview.rb
+│   │   │       ├── authorization_request_forms
+│   │   │       │   └── legal_framework_component_preview.rb
+│   │   │       ├── instruction
+│   │   │       │   ├── authorization_definition
+│   │   │       │   │   └── automated_emails_component_preview.rb
+│   │   │       │   └── user_rights
+│   │   │       │       └── table_component_preview.rb
+│   │   │       └── stats
+│   │   │           ├── duration_cards_component_preview.rb
+│   │   │           ├── filters_component_preview.rb
+│   │   │           ├── loading_overlay_component_preview.rb
+│   │   │           ├── summary_cards_component_preview.rb
+│   │   │           ├── time_series_chart_component_preview.rb
+│   │   │           └── transcription_component_preview.rb
+│   │   └── previews_rendering_spec.rb
 │   ├── controllers
 │   │   ├── api
 │   │   │   └── frontal_controller_spec.rb
@@ -3140,6 +3147,7 @@
 │   │   ├── authorization_request_form_decorator_spec.rb
 │   │   ├── eligibility_option_decorator_spec.rb
 │   │   ├── eligibility_rule_decorator_spec.rb
+│   │   ├── message_template_decorator_spec.rb
 │   │   ├── organization_decorator_spec.rb
 │   │   └── service_provider_decorator_spec.rb
 │   ├── docs
@@ -3584,6 +3592,7 @@
 │   │   ├── sessions_helpers.rb
 │   │   ├── shared_examples
 │   │   │   ├── generators.rb
+│   │   │   ├── identity_attribute_synchronized_only_when_filled.rb
 │   │   │   └── new_authorization_request_facade.rb
 │   │   └── sql_query_counter.rb
 │   ├── tmp
@@ -3620,4 +3629,4 @@
     ├── .keep
     └── javascript
         └── .keep
-512 directories, 3249 files
+513 directories, 3257 files
