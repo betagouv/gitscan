@@ -15,12 +15,13 @@
 │       ├── ci.yml
 │       ├── e2e.yml
 │       ├── labeler.yml
-│       ├── release.yml
-│       └── release_cron.yaml
+│       ├── prune_release_branches.yml
+│       └── release.yml
 ├── .gitignore
 ├── .prettierignore
 ├── .release-it-changeset
-│   └── .gitkeep
+│   ├── .gitkeep
+│   └── 1791493649-feature.md
 ├── .scalingo
 │   └── buildpack
 │       ├── README.md
@@ -91,34 +92,11 @@
 │   ├── features
 │   │   ├── auth
 │   │   │   └── connexion.feature
-│   │   ├── delivrability-domain
-│   │   │   └── delivrability-email-domain.feature
-│   │   ├── moderations
-│   │   │   ├── filter_by_moderator.feature
-│   │   │   ├── handle_big_organization.feature
-│   │   │   ├── manage_external_domain.feature
-│   │   │   ├── moderation_detail.feature
-│   │   │   ├── reject_blocking_moderation.feature
-│   │   │   ├── select_verification_type.feature
-│   │   │   └── validate_similar_moderations.feature
-│   │   ├── organizations
-│   │   │   ├── dinum.feature
-│   │   │   ├── domains_copy_button_after_refresh.feature
-│   │   │   ├── member_actions.feature
-│   │   │   ├── table_pagination.feature
-│   │   │   └── yes_we_hack_domain_verification.feature
-│   │   ├── response-templates
-│   │   │   └── list.feature
 │   │   ├── security
 │   │   │   └── visitor_read_only.feature
-│   │   ├── team
-│   │   │   ├── acces_equipe.feature
-│   │   │   └── gestion_equipe.feature
-│   │   └── users
-│   │       ├── jean_bon.feature
-│   │       ├── raphael_alpha.feature
-│   │       ├── raphael_beta.feature
-│   │       └── table_pagination.feature
+│   │   └── team
+│   │       ├── acces_equipe.feature
+│   │       └── gestion_equipe.feature
 │   ├── package.json
 │   └── tsconfig.json
 ├── flake.lock
@@ -145,25 +123,6 @@
 │   │   │   ├── index.tsx
 │   │   │   └── indext.test.tsx
 │   │   └── tsconfig.json
-│   ├── release-it-changeset-plugin
-│   │   ├── README.md
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── index.test.ts
-│   │   │   └── index.ts
-│   │   └── tsconfig.json
-│   ├── release-it-gitmoji-changelog-plugin
-│   │   ├── README.md
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── index.test.ts
-│   │   │   └── index.ts
-│   │   └── tsconfig.json
-│   ├── release-it-plugin-types
-│   │   ├── README.md
-│   │   ├── package.json
-│   │   └── src
-│   │       └── index.d.ts
 │   └── tailwind-dsfr
 │       ├── package.json
 │       └── theme.css
@@ -420,11 +379,17 @@
 │       │   │       └── usecase
 │       │   │           ├── CountUserMemberships.test.ts
 │       │   │           ├── CountUserMemberships.ts
+│       │   │           ├── DeleteUser.test.ts
+│       │   │           ├── DeleteUser.ts
 │       │   │           ├── GetUserInfo.ts
+│       │   │           ├── RemoveMemberFromOrganization.test.ts
+│       │   │           ├── RemoveMemberFromOrganization.ts
 │       │   │           ├── ResetMFA.test.ts
 │       │   │           ├── ResetMFA.ts
 │       │   │           ├── ResetPassword.test.ts
 │       │   │           ├── ResetPassword.ts
+│       │   │           ├── RevokeIdentity.test.ts
+│       │   │           ├── RevokeIdentity.ts
 │       │   │           ├── SuggestSameUserEmails.test.ts
 │       │   │           ├── SuggestSameUserEmails.ts
 │       │   │           └── index.ts
@@ -555,6 +520,8 @@
 │       │   │   ├── domains-deliverability
 │       │   │   │   ├── AddDomain.tsx
 │       │   │   │   ├── Table.tsx
+│       │   │   │   ├── __features__
+│       │   │   │   │   └── delivrability_email_domain.feature.test.ts
 │       │   │   │   ├── context.ts
 │       │   │   │   ├── get_email_deliverability_whitelist.query.ts
 │       │   │   │   ├── index.test.ts
@@ -603,12 +570,19 @@
 │       │   │   │   │   ├── accept_blocking_moderation.feature.test.ts
 │       │   │   │   │   ├── add_external_member.feature.test.ts
 │       │   │   │   │   ├── add_internal_member.feature.test.ts
+│       │   │   │   │   ├── filter_by_moderator.feature.test.ts
 │       │   │   │   │   ├── filter_by_service_provider.feature.test.ts
+│       │   │   │   │   ├── handle_big_organization.feature.test.ts
 │       │   │   │   │   ├── handle_duplicate_requests.feature.test.ts
+│       │   │   │   │   ├── manage_external_domain.feature.test.ts
 │       │   │   │   │   ├── manage_internal_domain.feature.test.ts
+│       │   │   │   │   ├── moderation_detail.feature.test.ts
 │       │   │   │   │   ├── moderation_list.feature.test.ts
+│       │   │   │   │   ├── reject_blocking_moderation.feature.test.ts
 │       │   │   │   │   ├── reprocess_completed_moderation.feature.test.ts
+│       │   │   │   │   ├── select_verification_type.feature.test.ts
 │       │   │   │   │   ├── tab_navigation.feature.test.ts
+│       │   │   │   │   ├── validate_similar_moderations.feature.test.ts
 │       │   │   │   │   └── verify_domain.feature.test.ts
 │       │   │   │   ├── context.test.ts
 │       │   │   │   ├── context.ts
@@ -647,6 +621,12 @@
 │       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   ├── not-found.tsx
 │       │   │   │   │   └── page.tsx
+│       │   │   │   ├── __features__
+│       │   │   │   │   ├── dinum.feature.test.ts
+│       │   │   │   │   ├── domains_copy_button_after_refresh.feature.test.ts
+│       │   │   │   │   ├── member_actions.feature.test.ts
+│       │   │   │   │   ├── table_pagination.feature.test.ts
+│       │   │   │   │   └── yes_we_hack_domain_verification.feature.test.ts
 │       │   │   │   ├── context.ts
 │       │   │   │   ├── domains
 │       │   │   │   │   ├── get_unverified_domains.query.test.ts
@@ -670,6 +650,8 @@
 │       │   │   ├── readyz
 │       │   │   │   └── index.ts
 │       │   │   ├── response-templates
+│       │   │   │   ├── __features__
+│       │   │   │   │   └── list.feature.test.ts
 │       │   │   │   ├── detail.page.tsx
 │       │   │   │   ├── get_response_template.query.ts
 │       │   │   │   ├── get_response_templates.query.ts
@@ -712,6 +694,11 @@
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   └── page.tsx
+│       │   │   │   ├── __features__
+│       │   │   │   │   ├── jean_bon.feature.test.ts
+│       │   │   │   │   ├── raphael_alpha.feature.test.ts
+│       │   │   │   │   ├── raphael_beta.feature.test.ts
+│       │   │   │   │   └── table_pagination.feature.test.ts
 │       │   │   │   ├── context.ts
 │       │   │   │   ├── get_users_list.query.ts
 │       │   │   │   ├── index.test.ts
@@ -937,6 +924,5 @@
 │       │       ├── urls.test.ts
 │       │       └── urls.ts
 │       └── tsconfig.json
-├── test-teardown.preload.ts
 └── tsconfig.json
-216 directories, 725 files
+209 directories, 718 files

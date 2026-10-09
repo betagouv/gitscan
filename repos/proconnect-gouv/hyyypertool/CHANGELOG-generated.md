@@ -1,18 +1,20 @@
-## Changelog : hyyypertool (30 derniers jours, au 30 septembre 2026)
+## Changelog : hyyypertool (30 derniers jours, au 08/10/2026)
 
 ### Résumé
-Ce mois-ci, hyyypertool a renforcé ses capacités de gestion, notamment avec l'introduction de la création massive d'organisations. Une part importante des travaux a été consacrée à la modernisation de l'infrastructure de tests automatisés afin de garantir une meilleure stabilité et une plus grande fiabilité des fonctionnalités de modération.
+Ce mois-ci, l'effort principal a porté sur la stabilisation et la performance de l'outil. Une refonte majeure de la suite de tests automatisés a été réalisée pour garantir la fiabilité des fonctionnalités, accompagnée d'une optimisation des processus de déploiement continu. Quelques corrections mineures ont également été apportées pour améliorer l'expérience de support et la navigation.
 
 ### Évolutions fonctionnelles
-- Ajout de la création massive d'organisations via les numéros SIRET [#1762](https://github.com/proconnect-gouv/hyyypertool/issues/1762).
-- Amélioration de la gestion des domaines : la fonction de récupération des domaines retourne désormais uniquement les domaines de messagerie approuvés [#1782](https://github.com/proconnect-gouv/hyyypertool/issues/1782).
-- Correction de la gestion des conversations Crisp pour assurer une transition fluide vers les nouvelles conversations en cas de ticket obsolète [#1800](https://github.com/proconnect-gouv/hyyypertool/issues/1800).
+- Correction du lien vers la liste des dirigeants sur l'annuaire-entreprises [#1847](https://github.com/proconnect-gouv/hyyypertool/issues/1847).
+- Ajout de l'adresse e-mail de support Crisp lors des actions de support [#1846](https://github.com/proconnect-gouv/hyyypertool/issues/1846).
+- Amélioration de la gestion des conversations Crisp pour assurer un repli automatique vers une nouvelle conversation en cas de ticket obsolète [#1800](https://github.com/proconnect-gouv/hyyypertool/issues/1800).
 
 ### Évolutions techniques
-- **Refonte majeure de la suite de tests E2E** : Migration de l'infrastructure de tests (Cypress et Bunwright) vers un nouveau système basé sur Buncept pour une meilleure stabilité et une syntaxe simplifiée [#1827](https://github.com/proconnect-gouv/hyyypertool/issues/1827). Cela inclut le portage de l'ensemble des scénarios de tests critiques (gestion des membres, navigation, modération, vérification de domaines, etc.) [#1837](https://github.com/proconnect-gouv/hyyypertool/issues/1837), [#1835](https://github.com/proconnect-gouv/hyyypertool/issues/1835), [#1833](https://github.com/proconnect-gouv/hyyypertool/issues/1833).
-- **Amélioration de l'expérience développeur** :
-    - Mise en place de Nix pour permettre un environnement de développement local simplifié et sans privilèges root [#1783](https://github.com/proconnect-gouv/hyyypertool/issues/1783).
-    - Extraction du thème Tailwind DSFR dans un package dédié pour améliorer la modularité du projet [#1791](https://github.com/proconnect-gouv/hyyypertool/issues/1791).
-- **Maintenance et infrastructure** :
-    - Mise à jour du runtime Bun [#1790](https://github.com/proconnect-gouv/hyyypertool/issues/1790).
-    - Mise à jour des dépendances internes de l'écosystème ProConnect [#1792](https://github.com/proconnect-gouv/hyyypertool/issues/1792).
+- **Tests E2E :** Migration massive de la suite de tests de fonctionnalités vers un nouveau moteur (`buncept`) afin d'améliorer la robustesse et la maintenance des tests [#1827](https://github.com/proconnect-gouv/hyyypertool/issues/1827), [#1866](https://github.com/proconnect-gouv/hyyypertool/issues/1866).
+- **CI/CD :** Optimisation de la vitesse d'exécution des tests grâce au partitionnement (sharding) sur plusieurs runners simultanés [#1881](https://github.com/proconnect-gouv/hyyypertool/issues/1881), [#1894](https://github.com/proconnect-gouv/hyyypertool/issues/1894).
+- **CI/CD :** Automatisation et amélioration du workflow de publication des versions (releases) via `release-action` [#1857](https://github.com/proconnect-gouv/hyyypertool/issues/1857), [#1864](https://github.com/proconnect-gouv/hyyypertool/issues/1864).
+- **Architecture :** Modularisation du thème Tailwind du Design System (DSFR) en l'extrayant dans un package dédié au sein du workspace [#1791](https://github.com/proconnect-gouv/hyyypertool/issues/1791).
+- **Infrastructure :** Mise à jour de l'environnement d'exécution vers Bun 1.4.2 [#1790](https://github.com/proconnect-gouv/hyyypertool/issues/1790).
+
+### Autres changements
+- Nettoyage du code et suppression de signatures redondantes déjà gérées par Crisp [#1891](https://github.com/proconnect-gouv/hyyypertool/issues/1891).
+- Suppression des commentaires de release automatiques sur GitHub pour épurer les notifications [#1861](https://github.com/proconnect-gouv/hyyypertool/issues/1861).
