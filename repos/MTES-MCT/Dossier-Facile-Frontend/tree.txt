@@ -5,13 +5,18 @@
 │   ├── ISSUE_TEMPLATE
 │   │   └── accessibility-report.md
 │   ├── dependabot.yml
+│   ├── scripts
+│   │   └── scalingo-deploy.sh
 │   └── workflows
 │       ├── codeql-analysis.yml
+│       ├── deploy.yml
 │       ├── e2e.yml
 │       └── www.yml
 ├── .gitignore
 ├── .npmrc
 ├── .nvmrc
+├── .vscode
+│   └── extensions.json
 ├── AGENTS.md
 ├── LICENSE
 ├── README.md
@@ -112,6 +117,7 @@
 │   │   │   ├── FranceConnectIdentity.ts
 │   │   │   ├── GeoJson.ts
 │   │   │   ├── Guarantor.ts
+│   │   │   ├── NamesForm.ts
 │   │   │   ├── OwnerUser.ts
 │   │   │   ├── PartnerAccess.ts
 │   │   │   ├── Property.ts
@@ -147,7 +153,10 @@
 │   ├── tsconfig.json
 │   └── vitest.config.ts
 ├── docs
-│   └── dependency-audit.md
+│   ├── README.md
+│   ├── dependency-audit.md
+│   ├── document-analysis-error-strategies.md
+│   └── document-analysis-guide.md
 ├── e2e-tests
 │   ├── .gitignore
 │   ├── README.md
@@ -184,6 +193,7 @@
 │   │       │   └── tenant.ts
 │   │       ├── cypress.d.ts
 │   │       ├── e2e.ts
+│   │       ├── mailbox.ts
 │   │       ├── testAccounts.ts
 │   │       └── users.ts
 │   ├── cypress-preprod.config.ts
@@ -212,7 +222,8 @@
 │   │   ├── App.vue
 │   │   ├── __tests__
 │   │   │   ├── DpeNumberValidator.spec.ts
-│   │   │   └── DpeService.spec.ts
+│   │   │   ├── DpeService.spec.ts
+│   │   │   └── OwnerService.spec.ts
 │   │   ├── assets
 │   │   │   ├── FranceRenov.svg
 │   │   │   ├── button-je-donne-mon-avis.svg
@@ -312,6 +323,7 @@
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
+├── package-lock.json
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -433,6 +445,7 @@
 │   │   │   ├── FileHeader.vue
 │   │   │   ├── FilePreview.vue
 │   │   │   ├── FileReinsurance.vue
+│   │   │   ├── FileStatusAlert.vue
 │   │   │   ├── GuarantorChoice.vue
 │   │   │   ├── GuarantorDocuments.vue
 │   │   │   ├── GuarantorStep0.vue
@@ -454,14 +467,16 @@
 │   │   │   │   ├── AnalysisFinalForm.spec.ts
 │   │   │   │   ├── AnalysisPreview.spec.ts
 │   │   │   │   ├── AnalysisWrapper.spec.ts
-│   │   │   │   ├── CompletedFileBanner.spec.ts
 │   │   │   │   ├── CoupleInformation.spec.ts
+│   │   │   │   ├── FileHeader.spec.ts
 │   │   │   │   ├── FileRowListItem.spec.ts
+│   │   │   │   ├── FileStatusAlert.spec.ts
 │   │   │   │   ├── FinancialAnalysisErrorBannerContent.spec.ts
 │   │   │   │   ├── FinancialRecap.spec.ts
 │   │   │   │   ├── FrenchTaxForm.spec.ts
 │   │   │   │   ├── IdentityForm.spec.ts
 │   │   │   │   ├── MissingMonthDescription.spec.ts
+│   │   │   │   ├── ProfessionalAnalysisErrorStrategy.spec.ts
 │   │   │   │   ├── ResidencyAnalysisErrorBannerContent.spec.ts
 │   │   │   │   ├── ResidencyAnalysisStep.spec.ts
 │   │   │   │   ├── RowListItem.spec.ts
@@ -471,9 +486,11 @@
 │   │   │   │   ├── TenantPanel.spec.ts
 │   │   │   │   ├── UploadFileFinancialWithAnalysis.spec.ts
 │   │   │   │   ├── UploadFileWithAnalysis.spec.ts
-│   │   │   │   └── ValidationRequestCallout.spec.ts
+│   │   │   │   ├── UploadFilesMainActivity.spec.ts
+│   │   │   │   ├── ValidationRequestCallout.spec.ts
+│   │   │   │   ├── VisaleAnalysisErrorStrategy.spec.ts
+│   │   │   │   └── useAnalysisStateMachine.spec.ts
 │   │   │   ├── account
-│   │   │   │   ├── CompletedFileBanner.vue
 │   │   │   │   ├── DefaultShareSection.vue
 │   │   │   │   ├── GuarantorsSection.vue
 │   │   │   │   ├── PartnersSection.vue
@@ -481,11 +498,17 @@
 │   │   │   │   └── ValidationRequestCallout.vue
 │   │   │   ├── analysis
 │   │   │   │   ├── AnalysisBanners.vue
+│   │   │   │   ├── AnalysisErrorBlock.vue
 │   │   │   │   ├── AnalysisWrapper.vue
 │   │   │   │   ├── BannerIconTextLine.vue
 │   │   │   │   ├── GenericAnalysisErrorContent.vue
 │   │   │   │   ├── UploadFileWithAnalysis.vue
-│   │   │   │   └── analysisBannerLayout.css
+│   │   │   │   ├── analysisBannerLayout.css
+│   │   │   │   ├── strategies
+│   │   │   │   │   ├── BaseAnalysisErrorStrategy.ts
+│   │   │   │   │   ├── ProfessionalAnalysisErrorStrategy.ts
+│   │   │   │   │   └── VisaleAnalysisErrorStrategy.ts
+│   │   │   │   └── useAnalysisStateMachine.ts
 │   │   │   ├── common
 │   │   │   │   ├── BackLinkRow.vue
 │   │   │   │   ├── GuarantorBadge.vue
@@ -1116,4 +1139,4 @@
     ├── tsconfig.vitest.json
     ├── vite.config.ts
     └── vitest.config.ts
-157 directories, 1008 files
+160 directories, 1028 files
