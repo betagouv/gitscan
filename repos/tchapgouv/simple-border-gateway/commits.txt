@@ -1,0 +1,53 @@
+2026-10-07T23:59:53+02:00 - b919251 - Mathieu Velten : Use map
+2026-09-23T17:48:08+02:00 - 0b8dfc9 - Mathieu Velten : Fix previous commit...
+2026-09-23T17:41:47+02:00 - f9a5a01 - Mathieu Velten : Also remove :80 from Host header
+2026-09-23T11:37:34+02:00 - 6900725 - Mathieu Velten : Do not conflate all errors to 413 when reading the body
+2026-09-23T11:26:39+02:00 - ca03f90 - Mathieu Velten : http_gateway: also call handle_response in outbound handle_request
+2026-09-23T10:01:36+02:00 - a07b21c - Mathieu Velten : Disallow redirects and add timeout to HTTP client
+2026-09-22T17:48:31+02:00 - 40b3592 - Mathieu Velten : Handle lowercase HTTP method in config files
+2026-09-22T17:30:30+02:00 - 8f2f3c2 - Mathieu Velten : Split cli and services handling out of main file
+2026-09-22T17:30:30+02:00 - 651d9e5 - Mathieu Velten : Refactor tests to use services+cli abstractions
+2026-09-22T16:35:25+02:00 - b3b9d63 - Mathieu Velten : Switch to using endpoint definition for outgoing non matrix traffic
+2026-09-22T16:20:58+02:00 - 8062e28 - Mathieu Velten : format
+2026-09-22T01:22:26+02:00 - 907b32c - Mathieu Velten : Simplify convert request/response helpers
+2026-09-22T01:06:17+02:00 - 939c440 - Mathieu Velten : Avoid copying whole buffer on signature verification
+2026-09-21T20:18:31+02:00 - 91e58aa - Mathieu Velten : Use matchit instead of regex (#16)
+2026-09-21T11:40:39+02:00 - 0a73deb - Mathieu Velten : format
+2026-09-21T11:28:03+02:00 - 881c91b - Mathieu Velten : Fix upstream proxy auth logic
+2026-09-20T23:31:49+02:00 - f2f3bfb - Mathieu Velten : Reverse DNS is a blocking syscall, run it on the blocking pool
+2026-09-20T23:16:13+02:00 - d7e327f - Mathieu Velten : Wrap InboundGatewayState in Arc to avoid cloning it on each req
+2026-09-20T21:28:21+02:00 - 5f56179 - Mathieu Velten : Well knowns are always hosted on base domain
+2026-09-20T21:02:22+02:00 - b44e9a0 - Mathieu Velten : Put back network access for app build, not sure why
+2026-09-20T20:55:12+02:00 - d256957 - Mathieu Velten : listen_adress typo...
+2026-09-20T20:53:01+02:00 - 521019b - Mathieu Velten : Add GHA docker cache support
+2026-09-20T20:46:58+02:00 - 7945a3e - Mathieu Velten : Add deny_unknown_fields on config structs
+2026-09-20T20:34:21+02:00 - 766b87e - Mathieu Velten : Improve dockerfile
+2026-09-20T17:45:38+02:00 - 892d237 - Mathieu Velten : Rework docker build
+2026-09-20T15:52:18+02:00 - 77c60ce - Mathieu Velten : Update and pin GH actions
+2026-09-20T01:40:40+02:00 - ca1549f - Mathieu Velten : Fix speed up build
+2026-09-20T01:21:29+02:00 - 91d6067 - Mathieu Velten : Validate destination field of X-Matrix auth header
+2026-09-20T01:07:12+02:00 - 82a16c0 - Mathieu Velten : Try to speed up builds
+2026-09-19T16:14:13+02:00 - a07805a - Mathieu Velten : Validate the config completely before triggering services restart
+2026-09-19T14:52:52+02:00 - f38ad89 - Mathieu Velten : Wait for tasks to be terminated when reloading config
+2026-09-19T14:34:30+02:00 - a31a83c - Mathieu Velten : Remove useless mock.delete()
+2026-09-19T14:27:50+02:00 - 11cb19a - Mathieu Velten : Fix upstream proxy support and add auth to it
+2026-09-19T14:12:38+02:00 - 991df99 - Mathieu Velten : Fix --inbound/outbound-only confusion
+2026-09-19T14:11:23+02:00 - 8419122 - Mathieu Velten : Switch to rust 2024
+2026-09-15T23:10:37+02:00 - 2e8a050 - Mathieu Velten : Update deps
+2026-09-10T13:09:58+02:00 - ad2d931 - Mathieu Velten : Update deps
+2026-09-05T22:38:11+02:00 - e6d5dbc - JoFrost : Feat: ruleset per server (#14)
+2026-08-31T13:54:27+02:00 - e83e864 - Mathieu Velten : Retrieve origin server name from xmatrix auth header when avail
+2026-08-13T15:39:07+02:00 - 9ec846c - Mathieu Velten : Update deps
+2026-08-12T13:19:31+02:00 - a69b150 - JoFrost : fix(config): avoid double string conversion for base_url
+2026-08-12T13:19:31+02:00 - 4658975 - JoFrost : fix(config): use ascii lowercase
+2026-08-12T13:19:31+02:00 - 3bdb991 - JoFrost : feat(config): add auto lowercase for domains
+2026-08-12T13:19:31+02:00 - 1914649 - JoFrost : feat(config): handle base url special case
+2026-07-23T13:40:48+02:00 - 4556796 - Mathieu Velten : Update deps
+2026-07-23T13:37:40+02:00 - 1edc621 - Mathieu Velten : lint
+2026-07-23T13:36:27+02:00 - fffe115 - Mathieu Velten : Fix sample conf
+2026-07-23T13:34:33+02:00 - 1f2a557 - JoFrost : Add documentation on how to deploy the gateway (#12)
+2026-07-23T12:53:54+02:00 - 1499348 - Mathieu Velten : Lowercase host inferred from the req
+2026-07-23T12:52:59+02:00 - 53543d1 - Mathieu Velten : Fix tests
+2026-07-23T12:33:07+02:00 - 7d85631 - Mathieu Velten : Map server_name too so we can answer well known endpoints properly
+2026-07-20T15:57:28+02:00 - 05987c1 - Mathieu Velten : Update more deps
+2026-07-20T15:55:22+02:00 - e90c06e - Mathieu Velten : Update all deps

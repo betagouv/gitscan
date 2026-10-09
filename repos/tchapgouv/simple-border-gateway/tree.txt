@@ -1,4 +1,5 @@
 .
+├── .dockerignore
 ├── .github
 │   └── workflows
 │       ├── build.yaml
@@ -9,9 +10,12 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
-├── docker-bake.hcl
+├── docs
+│   └── HOWTO.md
 ├── sample-config.toml
+├── sample-ruleset.toml
 ├── src
+│   ├── cli.rs
 │   ├── config.rs
 │   ├── http_gateway
 │   │   ├── inbound.rs
@@ -27,8 +31,10 @@
 │   │   ├── util.rs
 │   │   └── xmatrix.rs
 │   ├── outbound.rs
+│   ├── services.rs
 │   └── util.rs
 └── tests
+    ├── common.rs
     ├── inbound.rs
     └── outbound.rs
-7 directories, 26 files
+8 directories, 31 files
