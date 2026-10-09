@@ -1,20 +1,29 @@
-## Changelog : mobilic (30 derniers jours, au 23 septembre 2026)
+## Changelog : mobilic (30 derniers jours, au 7 octobre 2026)
 
 ### Résumé
-Ce mois-ci, Mobilic a renforcé ses capacités de contrôle réglementaire et l'expérience utilisateur mobile. Les évolutions majeures concernent une meilleure précision du suivi des seuils de repos pour les administrateurs, l'introduction de nouvelles bannières d'alerte pour les employés (notamment sur la saisie en temps réel) et l'amélioration de l'accessibilité de la plateforme.
+Les récentes évolutions se concentrent sur l'amélioration de la fiabilité de l'interface d'administration et la précision du suivi réglementaire (seuils de repos). L'expérience utilisateur sur mobile (PWA) a été renforcée par un système d'alertes plus clair, et l'accessibilité du projet a été améliorée avec l'ajout de nouvelles pages d'information.
 
 ### Évolutions fonctionnelles
-- **Alertes et notifications :** Mise en place de bannières d'alerte pour les employés (notamment pour signaler les saisies en temps réel) et déploiement des notifications push. [#920](https://github.com/MTES-MCT/mobilic/pull/920), [#964](https://github.com/MTES-MCT/mobilic/pull/964)
-- **Gestion administrative :** Amélioration du suivi des seuils de repos hebdomadaires par employé et par type d'activité, avec l'ajout de colonnes de repos et d'alertes de seuil dans les vues hebdomadaires et mensuelles. [#934](https://github.com/MTES-MCT/mobilic/pull/934), [#965](https://github.com/MTES-MCT/mobilic/pull/965)
-- **Nouvelles pages et contenus :** Ajout d'une page dédiée au schéma pluriannuel et intégration du logo Rota dans la section des partenaires. [#940](https://github.com/MTES-MCT/mobilic/pull/940), [#955](https://github.com/MTES-MCT/mobilic/pull/955)
-- **Expérience mobile (PWA) :** Accès direct au tunnel de création de mission via le menu de navigation et corrections de l'affichage des boutons d'activité.
-- **Gestion des utilisateurs :** Correction de l'affichage des employés inactifs dans le tableau de bord administrateur.
+- **Accessibilité et information** : Ajout d'une page "Schéma pluriannuel" pour améliorer la transparence et l'accessibilité des données. [#955](https://github.com/MTES-MCT/mobilic/pull/955)
+- **Système d'alertes (PWA)** : Amélioration de l'affichage des alertes pour les utilisateurs (bannières cumulables, fermables et mieux ancrées dans la page). [#961](https://github.com/MTES-MCT/mobilic/pull/961), [#964](https://github.com/MTES-MCT/mobilic/pull/964)
+- **Conformité réglementaire** : Optimisation de la gestion des seuils de repos hebdomadaires et alignement des indicateurs sur les minima légaux. [#965](https://github.com/MTES-MCT/mobilic/pull/965), [#958](https://github.com/MTES-MCT/mobilic/pull/958)
+- **Gestion administrative** : 
+    - Amélioration du filtrage des employés (exclusion des utilisateurs n'ayant jamais utilisé la plateforme).
+    - Meilleure visibilité des statuts de mission et des missions en cours.
+    - Possibilité d'ajouter un type de déplacement lors de la saisie d'activités. [#941](https://github.com/MTES-MCT/mobilic/pull/941)
+- **Formulaires** : Amélioration des formulaires de contrôle avec l'inclusion automatique du type de transport. [#928](https://github.com/MTES-MCT/mobilic/pull/928)
 
 ### Évolutions techniques
-- **Refonte de l'interface :** Migration du menu latéral vers le composant SideMenu du Design System (DSFR). [#953](https://github.com/MTES-MCT/mobilic/pull/953)
-- **Architecture et fiabilité :** Centralisation du `ActionsContext` pour une portée globale et migration de la gestion des seuils hebdomadaires du client vers le backend. [#949](https://github.com/MTES-MCT/mobilic/pull/949)
-- **Maintenance et robustesse :** Résolution de problèmes de linting, correction de la gestion des tokens de rafraîchissement (Sentry) et unification des comportements entre le front et le back pour les options de mission. [#914](https://github.com/MTES-MCT/mobilic/pull/914)
+- **Optimisation des performances** : 
+    - Amélioration de la fluidité de l'administration via une meilleure pagination et la réduction des appels API redondants. [#917](https://github.com/MTES-MCT/mobilic/pull/917), [#988](https://github.com/MTES-MCT/mobilic/pull/988), [#935](https://github.com/MTES-MCT/mobilic/pull/935)
+    - Augmentation de la taille des pages de données (de 10 à 50 entrées) pour un affichage plus efficace.
+- **Infrastructure et CI/CD** : 
+    - Mise à jour de la configuration CircleCI vers la version 2.1. [#975](https://github.com/MTES-MCT/mobilic/pull/975)
+    - Suppression des anciens processus de déploiement Scalingo. [#976](https://github.com/MTES-MCT/mobilic/pull/976)
+- **Observabilité** : Mise en place du suivi du temps de chargement (login vers tableau de bord) via Sentry pour identifier les lenteurs. [#967](https://github.com/MTES-MCT/mobilic/pull/967)
+- **Stabilité** : Restauration de fonctionnalités critiques (gestion des tokens API, mise en page PWA et calcul des statuts) suite à une erreur de fusion.
+- **Résilience** : Amélioration de la robustesse des processus d'export de données. [#972](https://github.com/MTES-MCT/mobilic/pull/972)
 
 ### Autres changements
-- **Accessibilité :** Mise à jour de la déclaration d'accessibilité et corrections typographiques sur les pages informatives.
-- **Nettoyage :** Suppression de code mort et de garde inutilisés dans l'interface d'administration.
+- **Nettoyage** : Suppression de code mort, de labels inutilisés et de guards de sécurité obsolètes.
+- **Interface (UI)** : Ajustements cosmétiques sur les espacements, les polices de caractères et les indicateurs de navigation.
