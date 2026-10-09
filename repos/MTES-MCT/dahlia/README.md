@@ -88,8 +88,9 @@ sont montées sur `/api/auth/*`.
 | `PROCONNECT_URL`           | Domaine de base ProConnect (intégration : `https://fca.integ01.dev-agentconnect.fr`). Les endpoints OIDC sont sous `/api/v2`. |
 
 > Côté espace partenaire ProConnect, déclarer la **redirect URI**
-> `http://localhost:3000/api/auth/oauth2/callback/proconnect` et la
-> **post-logout redirect URI** `http://localhost:3000/`.
+> `http://localhost:3000/api/auth/callback/proconnect` et la
+> **post-logout redirect URI** `http://localhost:3000/logout` (cette route
+> redirige ensuite vers l'accueil)
 
 ### Flux
 
@@ -166,14 +167,37 @@ les Route Handlers ne le traversent pas). Elle vit dans un module unique,
   `CaseFile` (`{}` pour un administrateur sans juridiction, `{ jurisdictionId: { in: […] } }` sinon) ;
 - `caseFileRelationScopeWhere()` → le même filtre porté par la relation
   `caseFile`, pour les tables satellites (`AttachedFile`, `CaseFileEvent`) ;
-- `canAccessCaseFile(caseFileNumber)` → garde des Server Actions qui écrivent sur
-  un dossier sans le lire.
+- `canAccessCaseFile({ jurisdictionCode, caseFileNumber })` → garde des Server
+  Actions qui écrivent sur un dossier sans le lire.
 
 Conséquences côté UI : un dossier hors périmètre est un **404** (`notFound()`),
 indistinguable d'un dossier inexistant ; les routes de pièces répondent 404 ;
 l'export `.xlsx` ne contient que les dossiers du périmètre ; et un utilisateur
 non administrateur sans aucune juridiction voit un message d'explication à la
 place du tableau.
+
+## Journalisation d'audit
+
+Chaque événement d'audit est une ligne JSON `{"type":"audit",…}` sur la sortie
+standard, collectée par le drain de logs de la plateforme. Rien n'est persisté
+en base. Le module est [app/lib/audit-log.ts](app/lib/audit-log.ts).
+
+**Refus** (`outcome` : `"denied"`, avec acteur, motif, adresse IP et
+horodatage) :
+
+| Action               | Motif                                           | Cas                                                                                       |
+| -------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `auth.login.failed`  | code d'erreur OAuth, ou `http_<statut>`         | callback ProConnect en échec (souvent sans compte local ; la cible porte le `providerId`) |
+| `auth.access.denied` | `not_validated`                                 | session valide, compte pas encore validé                                                  |
+| `auth.admin.denied`  | `unauthenticated`, `not_validated`, `not_admin` | page `/admin` ou Server Action d'administration refusée                                   |
+| `auth.scope.denied`  | `out_of_scope`                                  | dossier ou pièce hors périmètre, ou identifiant inconnu (la réponse HTTP reste un 404)    |
+
+La cible d'un refus de périmètre indique la ressource (`case_file` ou
+`attached_file`) et ses identifiants.
+
+**Mutations d'administration réussies** (acteur, action, cible, horodatage, sans
+`outcome`) : `user.create`, `user.update`, `user.delete`, `tag.create`,
+`tag.update`, `tag.delete`, `division.update`, `jurisdiction.update`.
 
 ## En-têtes de sécurité HTTP
 
@@ -248,19 +272,20 @@ sauf si `<JURIDICTION>_TELERECOURS_JURISDICTION` la surcharge :
 
 ### Options
 
-| Option                           | Défaut                    | Description                                                                                                                                                                                                      |
-| -------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--jurisdiction <code>`          | `TA069`                   | Juridiction Dahlia : préfixe des variables `<code>_TELERECOURS_*` et valeur stockée en base. L'en-tête API reprend ce code, sauf si `<code>_TELERECOURS_JURISDICTION` le surcharge.                              |
-| `--page <n>`                     | `0`                       | Page de départ (0-based) pour la liste des dossiers (Phase A). Le script continue ensuite jusqu'à la dernière page.                                                                                              |
-| `--size <n>`                     | `30`                      | Nombre de dossiers par page lors de l'appel à `/api/case-file`.                                                                                                                                                  |
-| `--sort <champ>`                 | _(aucun)_                 | Critère de tri transmis tel quel à l'API (paramètre `sort`).                                                                                                                                                     |
-| `--all`                          | `false`                   | Récupère **tous** les dossiers sans filtre de statut. Sans ce flag, seuls les dossiers « en cours » sont demandés (groupes INPROGRESS de l'API Télérecours, hors « Terminé »).                                   |
-| `--legalEntityDivisionIds <ids>` | env `…_DIVISIONS`         | Liste d'IDs de divisions à filtrer, séparés par des virgules (ex. `2488,1234`). Surcharge la variable d'env. Sert aussi à cibler les dossiers à enrichir (Phases B/C).                                           |
-| `--anonymize`                    | `true` sauf si `ENV=prod` | Anonymise les acteurs (requérants/défendeurs) avant insertion en base. Le défaut dépend de la variable d'env `ENV` : anonymisation activée en dev/preprod, désactivée en prod.                                   |
-| `--enrich <all\|ongoing\|none>`  | `ongoing`                 | Contrôle les Phases B et C : `ongoing` enrichit les dossiers actifs (hors « Terminé ») ; `all` inclut aussi les dossiers terminés ; `none` saute les Phases B et C. N'affecte pas la réconciliation (Phase A.5). |
-| `--classify`                     | `false`                   | Exécute la Phase D : déduit `litigationType`, `rightType` et `summary` de chaque dossier du périmètre à partir de son texte (titre, décision). Voir « Classification automatique ».                              |
-| `--classify-overwrite`           | `false`                   | Implique `--classify`. Réécrit aussi les caractéristiques **déjà renseignées** (par défaut, seuls les champs vides sont remplis, pour ne pas écraser la saisie des utilisateurs).                                |
-| `--help`, `-h`                   | —                         | Affiche la liste des options et quitte sans rien scraper.                                                                                                                                                        |
+| Option                           | Défaut                    | Description                                                                                                                                                                                                                                                                                  |
+| -------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--jurisdiction <code>`          | `TA069`                   | Juridiction Dahlia : préfixe des variables `<code>_TELERECOURS_*` et valeur stockée en base. L'en-tête API reprend ce code, sauf si `<code>_TELERECOURS_JURISDICTION` le surcharge.                                                                                                          |
+| `--page <n>`                     | `0`                       | Page de départ (0-based) pour la liste des dossiers (Phase A). Le script continue ensuite jusqu'à la dernière page.                                                                                                                                                                          |
+| `--size <n>`                     | `30`                      | Nombre de dossiers par page lors de l'appel à `/api/case-file`.                                                                                                                                                                                                                              |
+| `--sort <champ>`                 | _(aucun)_                 | Critère de tri transmis tel quel à l'API (paramètre `sort`).                                                                                                                                                                                                                                 |
+| `--all`                          | `false`                   | Récupère **tous** les dossiers sans filtre de statut. Sans ce flag, seuls les dossiers « en cours » sont demandés (groupes INPROGRESS de l'API Télérecours, hors « Terminé »).                                                                                                               |
+| `--legalEntityDivisionIds <ids>` | env `…_DIVISIONS`         | Liste d'IDs de divisions à filtrer, séparés par des virgules (ex. `2488,1234`). Surcharge la variable d'env. Sert aussi à cibler les dossiers à enrichir (Phases B/C).                                                                                                                       |
+| `--anonymize`                    | `true` sauf si `ENV=prod` | Anonymise les acteurs (requérants/défendeurs) avant insertion en base. Le défaut dépend de la variable d'env `ENV` : anonymisation activée en dev/preprod, désactivée en prod.                                                                                                               |
+| `--enrich <all\|ongoing\|none>`  | `ongoing`                 | Contrôle les Phases B et C : `ongoing` enrichit les dossiers actifs (hors « Terminé ») ; `all` inclut aussi les dossiers terminés ; `none` saute les Phases B et C. N'affecte pas la réconciliation (Phase A.5).                                                                             |
+| `--force`                        | `false`                   | Phases B et C : supprime les événements, les pièces (avec leurs métadonnées Dahlia : nom, numéro, commentaire) et les liens entre dossiers présents en base mais plus renvoyés par Télérecours pour le dossier. Utile pour nettoyer les données fusionnées par une collision d'identifiants. |
+| `--classify`                     | `false`                   | Exécute la Phase D : déduit `litigationType`, `rightType` et `summary` de chaque dossier du périmètre à partir de son texte (titre, décision). Voir « Classification automatique ».                                                                                                          |
+| `--classify-overwrite`           | `false`                   | Implique `--classify`. Réécrit aussi les caractéristiques **déjà renseignées** (par défaut, seuls les champs vides sont remplis, pour ne pas écraser la saisie des utilisateurs).                                                                                                            |
+| `--help`, `-h`                   | —                         | Affiche la liste des options et quitte sans rien scraper.                                                                                                                                                                                                                                    |
 
 ### Déroulé du script
 
@@ -352,7 +377,7 @@ data/
     phase-b-enrich.ts          # phaseB
     phase-c-related.ts         # phaseC + linkRelatedCaseFiles
     phase-d-classify.ts        # phaseD — classification (opt-in via --classify)
-    where.ts                   # divisionWhere / enrichmentTargetsWhere (fragments Prisma, purs)
+    where.ts                   # divisionWhere / scrapedPerimeterWhere (fragments Prisma, purs)
   classification/
     types.ts                   # champs analysés, attributs déduits, forme d'une règle
     normalize.ts               # normalizeText (minuscules, sans accent, ponctuation aplatie)
@@ -378,8 +403,8 @@ Trois principes guident cette organisation :
 3. **Phases A.5 (réconciliation)** — après la Phase A, tout dossier présent en
    base dans le périmètre scrapé mais **absent** de la liste renvoyée par
    Télérecours est marqué supprimé (soft-delete `isDeleted`/`deletedAt`). Le
-   périmètre reflète le scope du scrape (divisions ciblées, et hors « Terminé »
-   sans `--all`).
+   périmètre reflète le scope du scrape (juridiction Dahlia `--jurisdiction`,
+   divisions ciblées, et hors « Terminé » sans `--all`).
 
 La webapp réutilise une partie de ce code : `enrichCaseFile`
 (`data/persistence/enrich-case-file.ts`), `getTelerecoursCaseFileClient` et
@@ -402,7 +427,7 @@ réseau ni base réelle**, en mockant l'API Télérecours à deux niveaux :
   pas : retry sur 429/5xx, `AuthenticationError` sur 401 (déclenchant la
   reconnexion en amont), et le parsing de l'en-tête `Content-Disposition`.
 
-Les fonctions pures (`parseArgs`, `divisionWhere`/`enrichmentTargetsWhere`,
+Les fonctions pures (`parseArgs`, `divisionWhere`/`scrapedPerimeterWhere`,
 `describeError`, `findLastProducerId`) ont des tests unitaires directs. Le délai
 de rate-limiting (`rateLimitMs`) est injectable et fixé à `0` dans les tests pour
 ne pas attendre réellement.
@@ -410,7 +435,7 @@ ne pas attendre réellement.
 ## Classification automatique des dossiers
 
 Les caractéristiques métier d'un dossier — `litigationType` (type de contentieux)
-et `rightType` (DALO / DAHO) — sont saisies à la main dans l'application. Un
+et `rightType` (DALO / DAHO / ni DALO ni DAHO) — sont saisies à la main dans l'application. Un
 moteur de règles (`data/classification/`) permet de les **déduire du texte
 scrapé** : aujourd'hui le titre Télérecours, demain la décision (les deux champs
 sont déjà exposés au moteur).
@@ -435,15 +460,15 @@ pnpm classify:case-files -- --jurisdiction TA069 --dry-run --export-csv audits/c
 
 ### Options du script
 
-| Option                           | Défaut     | Description                                                                                                                                                                                                                           |
-| -------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--jurisdiction <code>`          | _(requis)_ | Code juridiction (`Jurisdiction.shortName`, ex. `TA069`). Sans lui ni `--all-jurisdictions`, le script affiche l'aide.                                                                                                                |
-| `--all-jurisdictions`            | `false`    | Traite tous les dossiers, toutes juridictions confondues.                                                                                                                                                                             |
-| `--legalEntityDivisionIds <ids>` | _(aucun)_  | Restreint le traitement à des divisions (ids séparés par des virgules).                                                                                                                                                               |
-| `--overwrite`                    | `false`    | Réécrit les champs déjà renseignés. Par défaut, seuls les champs vides sont remplis : la saisie utilisateur est intacte.                                                                                                              |
-| `--dry-run`                      | `false`    | Affiche ce qui serait écrit, sans rien modifier.                                                                                                                                                                                      |
-| `--verbose`                      | `false`    | Une ligne par dossier modifié (déjà implicite en `--dry-run`).                                                                                                                                                                        |
-| `--export-csv <fichier>`         | _(aucun)_  | Écrit le résultat dans un CSV : `caseFileNumber, title, status, litigationType, rightType, summary, rules`. Les dossiers classés d'abord, puis **tous** les non reconnus (numéro, titre et statut, colonnes de classification vides). |
+| Option                           | Défaut     | Description                                                                                                                                                                                                                                             |
+| -------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--jurisdiction <code>`          | _(requis)_ | Code juridiction (`Jurisdiction.shortName`, ex. `TA069`). Sans lui ni `--all-jurisdictions`, le script affiche l'aide.                                                                                                                                  |
+| `--all-jurisdictions`            | `false`    | Traite tous les dossiers, toutes juridictions confondues.                                                                                                                                                                                               |
+| `--legalEntityDivisionIds <ids>` | _(aucun)_  | Restreint le traitement à des divisions (ids séparés par des virgules).                                                                                                                                                                                 |
+| `--overwrite`                    | `false`    | Réécrit les champs déjà renseignés. Par défaut, seuls les champs vides sont remplis : la saisie utilisateur est intacte.                                                                                                                                |
+| `--dry-run`                      | `false`    | Affiche ce qui serait écrit, sans rien modifier.                                                                                                                                                                                                        |
+| `--verbose`                      | `false`    | Une ligne par dossier modifié (déjà implicite en `--dry-run`).                                                                                                                                                                                          |
+| `--export-csv <fichier>`         | _(aucun)_  | Écrit le résultat dans un CSV : `jurisdictionCode, caseFileNumber, title, status, litigationType, rightType, summary, rules`. Les dossiers classés d'abord, puis **tous** les non reconnus (numéro, titre et statut, colonnes de classification vides). |
 
 Les dossiers sans titre (`NULL` ou vide) sont ignorés : ils n'ont aucun texte à
 analyser, ils ne sont donc ni comptés ni listés dans les non-reconnus.
@@ -469,15 +494,20 @@ réécrire les champs existants). Les dossiers soft-supprimés sont toujours exc
    liberté » vs « Référé suspension »).
 4. L'écriture en base ne touche jamais un champ que les règles n'ont pas produit,
    ni — sans `--overwrite` — un champ déjà renseigné.
+5. Chaque champ écrit est tracé dans la table `classification_field_changes`
+   (dossier, champ, ancienne et nouvelle valeur, règle, `changedAt`), dans la
+   même transaction que la mise à jour du dossier. Rien n'est tracé en
+   `--dry-run`.
 
-Les règles sont ordonnées en quatre sections :
+Les règles sont ordonnées en sections :
 
-| Section                                    | Rôle                                                                                                                                                               |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| A. Type de droit                           | Acronyme explicite (`DALO`/`DAHO`) prioritaire sur le vocabulaire générique (« logement » / « hébergement »).                                                      |
-| B. Situations ne qualifiant pas le recours | Alimentent seulement `summary` (exécution de jugement, carence en hébergement d'urgence…), avant la section C car plus informatives que le libellé du contentieux. |
-| C. Type de contentieux                     | Marqueurs explicites : liquidation d'astreinte, référé, indemnitaire, injonction, excès de pouvoir.                                                                |
-| D. Situations qualifiantes                 | `summary` **et** `litigationType` (refus de reconnaissance prioritaire, rejet de la commission, absence de proposition…).                                          |
+| Section                                    | Rôle                                                                                                                                                                       |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0. Ni DALO ni DAHO                         | Référé liberté, hébergement d'urgence, arrêté / amende / collectivité : posent `rightType = NI_DALO_NI_DAHO` en premier, aucune autre règle ne peut alors poser DALO/DAHO. |
+| A. Type de droit                           | Absence de proposition d'hébergement → DAHO, puis acronyme explicite (`DALO`/`DAHO`) prioritaire sur le vocabulaire générique (« logement » / « hébergement »).            |
+| B. Situations ne qualifiant pas le recours | Alimentent seulement `summary` (exécution de jugement, carence en hébergement d'urgence…), avant la section C car plus informatives que le libellé du contentieux.         |
+| C. Type de contentieux                     | Marqueurs explicites : liquidation d'astreinte, référé, indemnitaire, injonction, excès de pouvoir.                                                                        |
+| D. Situations qualifiantes                 | `summary` **et** `litigationType` (refus de reconnaissance prioritaire, rejet de la commission, absence de proposition…).                                                  |
 
 ### Ajouter une règle
 
@@ -495,12 +525,40 @@ Source de vérité : `prisma/schema/*.prisma`. Le diagramme ci-dessous est gén�
 manuellement à partir de ces fichiers ; pensez à le mettre à jour lors d'un
 changement de schéma.
 
+### Identifiants Télérecours et `jurisdictionCode`
+
+Les identifiants Télérecours (numéro de dossier, acteur, événement, pièce,
+audience, conclusion, chambre) ne sont uniques **qu'au sein d'une juridiction**,
+en général un tribunal administratif (TA069, TA034…). Chaque table concernée porte une
+colonne `jurisdictionCode` (code du tribunal Télérecours) qui fait partie de sa clé
+primaire et de toutes ses clés étrangères composites : `CaseFile` a pour clé
+`(jurisdictionCode, caseFileNumber)`, `Actor` `(jurisdictionCode, id)`, etc. Une
+ligne ne peut donc pas relier des objets de deux tribunaux. Les catalogues
+nationaux (`Quality`, `Measure`, `Status`, `Urgency`, `ConclusionOperativePart`,
+`LegalEntityDivision`, `FileFamilyType`) restent globaux.
+
+`jurisdictionCode` n'est pas la juridiction Dahlia : TA069 et TA069bis sont deux
+instances (`Jurisdiction.shortName`) du même tribunal, et partagent
+`jurisdictionCode = TA069`. Ce code est enregistré sur `Jurisdiction` à sa
+création, depuis `<shortName>_TELERECOURS_JURISDICTION` (à défaut le
+`shortName`). Le scraper refuse de tourner si la variable ne correspond plus à la
+valeur en base. L'URL d'un dossier est `/case_files/<jurisdictionCode>/<caseFileNumber>` ;
+les anciennes URL `/case_files/<caseFileNumber>` redirigent quand le numéro est
+sans ambiguïté.
+
+La migration `jurisdiction_code_composite_keys` déduit le tribunal des dossiers
+(`jurisdictionId`, qui ne doit jamais être `NULL`) et duplique par tribunal les
+lignes déjà fusionnées par une collision (acteurs, audiences, conclusions,
+chambres, événements). Après son déploiement, relancer un scrape complet
+(`--all --enrich all`) de chaque juridiction pour corriger leur contenu.
+
 Le champ `CaseFile.summary` est **déprécié** (plus affiché ni saisi dans
 l'application) mais conservé en base.
 
 ```mermaid
 erDiagram
     CaseFile {
+        string jurisdictionCode PK
         string caseFileNumber PK
         string title "nullable"
         DateTime creationDate "nullable"
@@ -540,7 +598,8 @@ erDiagram
     Jurisdiction {
         int id PK
         string name
-        string shortName UK "code Télérecours, ex. TA069"
+        string shortName UK "instance Dahlia, ex. TA069bis"
+        string jurisdictionCode "tribunal Télérecours, ex. TA069"
     }
 
     Urgency {
@@ -558,11 +617,13 @@ erDiagram
     }
 
     Chamber {
+        string jurisdictionCode PK
         int id PK
         string name
     }
 
     Hearing {
+        string jurisdictionCode PK
         string hearingId PK
         DateTime convocationDate
         string room
@@ -572,6 +633,7 @@ erDiagram
     }
 
     CaseFileHearing {
+        string jurisdictionCode PK_FK
         string caseFileNumber PK_FK
         string hearingId PK_FK
     }
@@ -585,14 +647,27 @@ erDiagram
     }
 
     CaseFileTag {
+        string jurisdictionCode PK_FK
         string caseFileNumber PK_FK
         int tagId PK_FK
         DateTime createdAt
     }
 
-    Conclusion {
+    ClassificationFieldChange {
         int id PK
+        string jurisdictionCode FK
+        string caseFileNumber FK
+        string field "litigationType | rightType | summary"
+        string previousValue "nullable"
+        string newValue
+        string ruleId
+        DateTime changedAt
+    }
+
+    Conclusion {
+        string jurisdictionCode PK_FK
         string hearingId PK_FK
+        int id PK
         string conclusionSense
         DateTime publicationDate
         string author "nullable"
@@ -605,6 +680,7 @@ erDiagram
     }
 
     Actor {
+        string jurisdictionCode PK
         int id PK
         string firstName "nullable"
         string lastName "nullable"
@@ -631,6 +707,7 @@ erDiagram
     }
 
     CaseFileEvent {
+        string jurisdictionCode PK_FK
         int id PK
         int subEventId
         DateTime eventDate
@@ -654,6 +731,7 @@ erDiagram
     }
 
     AttachedFile {
+        string jurisdictionCode PK_FK
         string encodedFileId PK
         string originalFileName
         string fileName
@@ -670,11 +748,13 @@ erDiagram
     }
 
     RelatedCaseFile {
+        string jurisdictionCode PK_FK
         string caseFileNumber PK_FK
         string relatedCaseFileNumber PK_FK
     }
 
     LastDecisionReading {
+        string jurisdictionCode PK_FK
         string caseFileNumber PK_FK
         DateTime readingDate
         DateTime notificationDate "nullable"
@@ -714,6 +794,7 @@ erDiagram
     Hearing             ||--o{ CaseFileHearing : "caseFiles"
     CaseFile            ||--o{ CaseFileTag : "caseFileTags"
     Tag                 ||--o{ CaseFileTag : "dossiers étiquetés"
+    CaseFile            ||--o{ ClassificationFieldChange : "classificationFieldChanges"
     Actor               ||--o{ CaseFile : "mainClaimant"
     Actor               ||--o{ CaseFile : "mainDefender"
     Actor               |o--o{ CaseFile : "lastProducer"

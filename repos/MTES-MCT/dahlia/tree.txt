@@ -115,22 +115,25 @@
 │   │   │       ├── actions.unit.test.ts
 │   │   │       └── page.tsx
 │   │   ├── case_files
-│   │   │   ├── [caseFileNumber]
-│   │   │   │   ├── actions.integration.test.ts
-│   │   │   │   ├── actions.ts
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── pieces
-│   │   │   │   │   ├── [encodedFileId]
-│   │   │   │   │   │   ├── actions.ts
-│   │   │   │   │   │   ├── actions.unit.test.ts
-│   │   │   │   │   │   └── data
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   └── download
-│   │   │   │   │       ├── route.ts
-│   │   │   │   │       └── route.unit.test.ts
-│   │   │   │   └── telerecours-sync
-│   │   │   │       ├── route.ts
-│   │   │   │       └── route.unit.test.ts
+│   │   │   ├── [jurisdictionCode]
+│   │   │   │   └── [caseFileNumber]
+│   │   │   │       ├── actions.integration.test.ts
+│   │   │   │       ├── actions.ts
+│   │   │   │       ├── actions.unit.test.ts
+│   │   │   │       ├── page.tsx
+│   │   │   │       ├── pieces
+│   │   │   │       │   ├── [encodedFileId]
+│   │   │   │       │   │   ├── actions.ts
+│   │   │   │       │   │   ├── actions.unit.test.ts
+│   │   │   │       │   │   └── data
+│   │   │   │       │   │       ├── route.ts
+│   │   │   │       │   │       └── route.unit.test.ts
+│   │   │   │       │   └── download
+│   │   │   │       │       ├── route.ts
+│   │   │   │       │       └── route.unit.test.ts
+│   │   │   │       └── telerecours-sync
+│   │   │   │           ├── route.ts
+│   │   │   │           └── route.unit.test.ts
 │   │   │   ├── export
 │   │   │   │   └── route.ts
 │   │   │   └── page.tsx
@@ -156,6 +159,7 @@
 │   ├── layout.unit.test.tsx
 │   ├── lib
 │   │   ├── admin-actions.ts
+│   │   ├── admin-actions.unit.test.ts
 │   │   ├── audit-log.ts
 │   │   ├── audit-log.unit.test.ts
 │   │   ├── auth-client.ts
@@ -166,6 +170,8 @@
 │   │   ├── case-file-enums.ts
 │   │   ├── case-file-format.ts
 │   │   ├── case-file-format.unit.test.ts
+│   │   ├── case-file-key.ts
+│   │   ├── case-file-key.unit.test.ts
 │   │   ├── case-file-scope.integration.test.ts
 │   │   ├── case-file-scope.ts
 │   │   ├── case-file-scope.unit.test.ts
@@ -176,6 +182,8 @@
 │   │   ├── case-file-tags.ts
 │   │   ├── case-files-dashboard-columns.ts
 │   │   ├── case-files-dashboard-columns.unit.test.ts
+│   │   ├── client-error.ts
+│   │   ├── client-error.unit.test.ts
 │   │   ├── dashboard-filter.ts
 │   │   ├── dashboard-filter.unit.test.ts
 │   │   ├── data
@@ -197,6 +205,7 @@
 │   │   │   ├── tags.unit.test.ts
 │   │   │   ├── users.ts
 │   │   │   └── users.unit.test.ts
+│   │   ├── development-detail.ts
 │   │   ├── divisions-table.ts
 │   │   ├── fetch-paginated-table-data.ts
 │   │   ├── form-actions.ts
@@ -231,6 +240,9 @@
 │   │   ├── test-support
 │   │   │   └── case-file-actors.fixture.ts
 │   │   └── users-table.ts
+│   ├── logout
+│   │   ├── route.ts
+│   │   └── route.unit.test.ts
 │   ├── mentions-legales
 │   │   └── page.tsx
 │   ├── page-titles.unit.test.tsx
@@ -293,7 +305,9 @@
 │       │   ├── environment-banner.tsx
 │       │   ├── environment-banner.unit.test.tsx
 │       │   ├── header-dahlia.tsx
-│       │   └── header-dahlia.unit.test.tsx
+│       │   ├── header-dahlia.unit.test.tsx
+│       │   ├── logout-link.tsx
+│       │   └── logout-link.unit.test.tsx
 │       ├── pending-validation.tsx
 │       ├── pending-validation.unit.test.tsx
 │       ├── piece-viewer.tsx
@@ -362,11 +376,13 @@
 │   │   ├── match-comed-decision.ts
 │   │   └── match-comed-decision.unit.test.ts
 │   ├── persistence
+│   │   ├── case-file-key.ts
 │   │   ├── content-hash.ts
 │   │   ├── content-hash.unit.test.ts
 │   │   ├── enrich-case-file.ts
 │   │   ├── enrich-case-file.unit.test.ts
 │   │   ├── paginate.ts
+│   │   ├── upsert-case-file-actors.integration.test.ts
 │   │   ├── upsert-case-file-actors.ts
 │   │   ├── upsert-case-file-actors.unit.test.ts
 │   │   ├── upsert-case-file.ts
@@ -385,6 +401,7 @@
 │   │   ├── phase-a0-status-catalog.unit.test.ts
 │   │   ├── phase-b-enrich.ts
 │   │   ├── phase-c-related.ts
+│   │   ├── phase-c-related.unit.test.ts
 │   │   ├── phase-d-classify.ts
 │   │   ├── pipeline.ts
 │   │   ├── pipeline.unit.test.ts
@@ -594,6 +611,12 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260928155030_optional_assigned_division
 │   │   │   └── migration.sql
+│   │   ├── 20261002214911_classification_field_changes
+│   │   │   └── migration.sql
+│   │   ├── 20261007120000_jurisdiction_code_composite_keys
+│   │   │   └── migration.sql
+│   │   ├── 20261007150000_case_file_actors_main_per_court
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -601,6 +624,7 @@
 │       ├── case_file.prisma
 │       ├── case_file_actor.prisma
 │       ├── chamber.prisma
+│       ├── classification_field_change.prisma
 │       ├── conclusion.prisma
 │       ├── hearing.prisma
 │       ├── jurisdiction.prisma
@@ -627,4 +651,4 @@
 ├── vitest.config.mts
 ├── vitest.integration.config.mts
 └── vitest.unit.config.mts
-105 directories, 571 files
+110 directories, 590 files

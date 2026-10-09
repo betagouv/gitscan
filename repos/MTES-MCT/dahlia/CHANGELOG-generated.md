@@ -1,15 +1,33 @@
-## Changelog : dahlia (30 derniers jours, au 28 septembre 2026)
+## Changelog : dahlia (30 derniers jours, au 07 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par l'introduction de nouvelles capacités de classification et de gestion documentaire, notamment via l'ajout de mots-clés et l'exportation de résultats. L'expérience utilisateur a été affinée par une meilleure gestion des téléchargements et une interface plus claire, tandis que la sécurité et la traçabilité de l'application ont été considérablement renforcées.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives pour faciliter la gestion quotidienne des dossiers (ajout de mots-clés, synchronisation automatique, exports enrichis) et d'un renforcement important de la sécurité et de la traçabilité des actions effectuées par les administrateurs.
 
 ### Évolutions fonctionnelles
-- **Classification et enrichissement** : Introduction d'un service de classification [#123](https://github.com/MTES-MCT/dahlia/issues/123), possibilité d'ajouter des mots-clés (anciennement tags) aux dossiers [#137](https://github.com/MTES-MCT/dahlia/issues/137) et ajout d'une option pour cibler précisément les dossiers à enrichir [#144](https://github.com/MTES-MCT/dahlia/issues/144).
-- **Exports et téléchargements** : Exportation des résultats de classification [#129](https://github.com/MTES-MCT/dahlia/issues/129) (incluant désormais le statut des dossiers [#153](https://github.com/MTES-MCT/dahlia/issues/153)) et amélioration de la nomenclature des fichiers ZIP téléchargés pour utiliser le nom du dossier [#143](https://github.com/MTES-MCT/dahlia/issues/143) [#118](https://github.com/MTES-MCT/dahlia/issues/118).
-- **Gestion des dossiers** : Identification des décisions de la COMED [#156](https://github.com/MTES-MCT/dahlia/issues/156), synchronisation automatique lors de l'accès à un dossier [#145](https://github.com/MTES-MCT/dahlia/issues/145) et possibilité de synchronisation massive pour certains départements [#159](https://github.com/MTES-MCT/dahlia/issues/159).
-- **Interface et accessibilité** : Amélioration de l'ergonomie via le renommage de certains éléments (Tags $\rightarrow$ Mots clés, Admin $\rightarrow$ Juridiction, etc.) [#146](https://github.com/MTES-MCT/dahlia/issues/146) et mise à disposition des pages de mentions légales pour l'ensemble des utilisateurs [#151](https://github.com/MTES-MCT/dahlia/issues/151) [#155](https://github.com/MTES-MCT/dahlia/issues/155).
+- **Gestion des dossiers** : 
+    - Ajout de la fonctionnalité de mots-clés (tags) pour les dossiers [#137].
+    - Possibilité de préciser les dossiers à enrichir via une nouvelle option [#144].
+    - Synchronisation automatique des dossiers lors de chaque accès [#145] et possibilité de synchroniser l'ensemble des dossiers d'une juridiction spécifique [#159].
+    - Utilisation du nom du dossier pour le nommage des fichiers ZIP téléchargés [#143].
+- **Classification et Export** : 
+    - Exportation des résultats de la classification [#129] incluant désormais le champ "statut" [#153].
+    - Mise en place de nouvelles règles de classification [#170].
+- **Expérience utilisateur (UX)** : 
+    - Clarification de l'interface via le renommage de certains termes (ex: "Tags" devient "Mots clés") [#146].
+    - Amélioration de la gestion des erreurs (messages moins verbeux [#173] et masquage des erreurs techniques Prisma [#157]).
+    - Gestion de la déconnexion avec redirection automatique vers ProConnect [#169].
+    - Mise à disposition des pages de mentions légales pour tous les utilisateurs [#155] et les administrateurs [#151].
+- **Corrections** : 
+    - Isolation de la suppression des dossiers pour éviter tout impact sur les autres juridictions [#161].
+    - Identification et distinction des décisions de la COMED [#156].
 
 ### Évolutions techniques
-- **Sécurité et traçabilité** : Renforcement de la sécurité via l'ajout de headers de sécurité [#131](https://github.com/MTES-MCT/dahlia/issues/131) et l'ajustement des règles de sécurité du navigateur (CSP) [#142](https://github.com/MTES-MCT/dahlia/issues/142). Mise en place de logs pour les actions administratives afin d'assurer la traçabilité [#158](https://github.com/MTES-MCT/dahlia/issues/158) et masquage des erreurs techniques (Prisma) pour éviter toute fuite d'information [#157](https://github.com/MTES-MCT/dahlia/issues/157).
-- **Performance et architecture** : Passage de la synchronisation des dossiers en mode asynchrone [#152](https://github.com/MTES-MCT/dahlia/issues/152) et gestion d'instances distinctes pour répondre à des besoins spécifiques [#160](https://github.com/MTES-MCT/dahlia/issues/160).
-- **Maintenance de sécurité** : Plusieurs mises à jour critiques de dépendances pour corriger des failles de sécurité [#124](https://github.com/MTES-MCT/dahlia/issues/124) [#125](https://github.com/MTES-MCT/dahlia/issues/125) [#126](https://github.com/MTES-MCT/dahlia/issues/126) [#127](https://github.com/MTES-MCT/dahlia/issues/127) [#128](https://github.com/MTES-MCT/dahlia/issues/128).
+- **Sécurité et Traçabilité** : 
+    - Mise en place de logs d'audit pour tracer les refus d'accès [#174] et les actions réalisées dans l'interface d'administration [#158].
+    - Renforcement de la sécurité via l'ajout de headers de sécurité [#131] et la mise à jour de librairies critiques pour corriger des alertes de sécurité [#167, #166].
+    - Amélioration du contrôle de session pour les droits administrateur [#171].
+- **Architecture et Performance** : 
+    - Passage de la synchronisation des dossiers en mode asynchrone pour améliorer la réactivité [#152].
+    - Modification de la structure de la clé primaire pour inclure le `JurisdictionCode` sur les éléments dépendants d'un dossier [#175].
+    - Assouplissement des règles de sécurité d'affichage (x-frame) pour permettre la consultation des pièces jointes [#142].
+    - Gestion d'instances distinctes pour certains processus métier [#160].
