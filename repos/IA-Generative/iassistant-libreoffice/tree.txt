@@ -1,17 +1,19 @@
 .
 ├── .claude
 │   └── settings.json
-├── .gitattributes
 ├── .github
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       ├── lint-commits.yml
+│       └── release.yml
 ├── .gitignore
+├── .release-please-manifest.json
+├── CHANGELOG.md
 ├── CLAUDE.md
 ├── README.md
 ├── bench
 │   └── scaleway_model_comparison.md
 ├── config
-│   ├── bootstrap.server.minimal.json
 │   ├── calc-functions.json
 │   ├── config.default.example.json
 │   ├── keycloak-client-export.example.json
@@ -23,8 +25,6 @@
 │       ├── config.default.kubernetes.example.json
 │       ├── config.default.local-llm.json
 │       └── config.default.production.example.json
-├── dist
-│   └── mirai.example.oxt
 ├── dm-config.json
 ├── dm-manifest.json
 ├── docs
@@ -120,6 +120,7 @@
 │   ├── scale-architecture.md
 │   └── update-prompt-creation-llm-auth.md
 ├── pyproject.toml
+├── release-please-config.json
 ├── scripts
 │   ├── 00-clean-install.sh
 │   ├── 01-init-default-config.sh
@@ -131,9 +132,9 @@
 │   ├── 07-package-release.sh
 │   ├── _make_sample_ods.py
 │   ├── _make_sample_odt.py
-│   ├── bump-version.sh
 │   ├── deploy-release.sh
 │   ├── dev-launch.sh
+│   ├── dm_manifest.py
 │   ├── inject_update_feed.py
 │   ├── smoke-deploy.sh
 │   └── test-update.sh
@@ -184,6 +185,7 @@
 │       │   ├── insert.py
 │       │   ├── markdown_parser.py
 │       │   └── uno_writer.py
+│       ├── i18n.py
 │       ├── icons
 │       │   ├── icones.png
 │       │   ├── mascot16.png
@@ -226,9 +228,9 @@
 │           ├── dsfr.py
 │           └── palette.py
 └── tests
-    ├── RAPPORT-richard-menucontext.md
     ├── TEST-MANUEL-utilisateur.md
     ├── __init__.py
+    ├── conftest.py
     ├── fixtures
     │   ├── formula_test.ods
     │   ├── gen_formula_test.py
@@ -252,7 +254,6 @@
     └── unit
         ├── __init__.py
         ├── conftest.py
-        ├── conftest_probe.py
         ├── core
         │   ├── test_append_mode.py
         │   ├── test_capabilities.py
@@ -266,7 +267,6 @@
         │   ├── test_llm_client_native.py
         │   ├── test_llm_client_telemetry.py
         │   ├── test_llm_reasoning_budget.py
-        │   ├── test_no_entrypoint_import.py
         │   ├── test_orchestrator_loop.py
         │   ├── test_palette_build.py
         │   ├── test_presets_calc.py
@@ -283,6 +283,14 @@
         │   ├── test_ui_thread.py
         │   ├── test_worker_execution.py
         │   └── test_writer_replace_paragraphs.py
+        ├── rules
+        │   ├── test_dispatch_routes.py
+        │   ├── test_import_graph.py
+        │   ├── test_install_path.py
+        │   ├── test_no_entrypoint_import.py
+        │   ├── test_pump_events_safety.py
+        │   ├── test_shell_budget.py
+        │   └── test_test_surface.py
         ├── test_action_dispatch.py
         ├── test_bootstrap_insecure_ssl.py
         ├── test_build_oxt_smoke.py
@@ -293,12 +301,14 @@
         ├── test_config_fetch_perf.py
         ├── test_credentials.py
         ├── test_data_paths.py
+        ├── test_dm_manifest.py
         ├── test_documentation_url.py
         ├── test_enrollment.py
         ├── test_feed_rewrite.py
         ├── test_formatting_html.py
         ├── test_formatting_markdown.py
         ├── test_formatting_uno_writer.py
+        ├── test_i18n.py
         ├── test_install_changes.py
         ├── test_llm_relay_error.py
         ├── test_llm_token_auth.py
@@ -311,14 +321,12 @@
         ├── test_native_update.py
         ├── test_otel_attributes.py
         ├── test_prompts_calc_path.py
-        ├── test_pump_events_safety.py
         ├── test_reload_config.py
         ├── test_secret_routing.py
         ├── test_security_flow.py
         ├── test_set_config.py
         ├── test_settings_token_field.py
         ├── test_storage_wiring.py
-        ├── test_summarize_writer.py
         ├── test_telemetry_defaults.py
         ├── test_token_logic.py
         ├── test_uninstall_wipe.py
@@ -326,4 +334,4 @@
         ├── test_update_directive.py
         ├── test_update_features.py
         └── test_user_agent.py
-35 directories, 293 files
+35 directories, 301 files
