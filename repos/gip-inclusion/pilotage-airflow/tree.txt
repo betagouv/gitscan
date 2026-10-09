@@ -72,6 +72,7 @@
 │   ├── dbt_offre_insertion.py
 │   ├── dbt_oneshot.py
 │   ├── dbt_snapshot.py
+│   ├── dbt_tous_les_pros.py
 │   ├── dbt_weekly.py
 │   ├── dgefp_get_etp.py
 │   ├── dsn_data_ingest.py
@@ -162,6 +163,7 @@
 │   │   │   │   └── int_thematiques_clpe.sql
 │   │   │   ├── dora
 │   │   │   │   ├── int_dora__actes_metier.sql
+│   │   │   │   ├── int_dora__active_user.sql
 │   │   │   │   ├── int_dora__imer.sql
 │   │   │   │   ├── int_dora__mobilisation_to_orientation.sql
 │   │   │   │   ├── int_dora__mobilisationevent_user.sql
@@ -170,9 +172,11 @@
 │   │   │   │   ├── int_dora__service_structure.sql
 │   │   │   │   ├── int_dora__structure_members.sql
 │   │   │   │   ├── int_dora__structure_non_obsolete.sql
+│   │   │   │   ├── int_dora__tous_les_pros.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── emplois
 │   │   │   │   ├── int_emplois__actes_metier.sql
+│   │   │   │   ├── int_emplois__tous_les_pros.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── esat
 │   │   │   │   ├── int_esat__completed_answers.sql
@@ -189,6 +193,7 @@
 │   │   │   │   └── properties.yml
 │   │   │   ├── gps
 │   │   │   │   ├── int_gps__actes_metier.sql
+│   │   │   │   ├── int_gps__tous_les_pros.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── int_communes_base.sql
 │   │   │   ├── int_communes_code_postal.sql
@@ -197,9 +202,11 @@
 │   │   │   ├── int_origine_derniere_candidature_par_candidat.sql
 │   │   │   ├── marche
 │   │   │   │   ├── int_marche__actes_metier.sql
+│   │   │   │   ├── int_marche__tous_les_pros.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── monrecap
 │   │   │   │   ├── int_monrecap__actes_metier.sql
+│   │   │   │   ├── int_monrecap__tous_les_pros.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── oneshot
 │   │   │   │   ├── france_travail
@@ -208,9 +215,15 @@
 │   │   │   │   └── offre_insertion
 │   │   │   │       ├── int_metriques_offre_insertion.sql
 │   │   │   │       └── int_offre_insertion.sql
+│   │   │   ├── pilotage
+│   │   │   │   ├── _properties.yml
+│   │   │   │   ├── int_pilotage__tous_les_pros.sql
+│   │   │   │   └── int_pilotage__visites_tb_prives.sql
 │   │   │   ├── properties.yml
 │   │   │   └── rdvi
+│   │   │       ├── _properties.yml
 │   │   │       ├── int_rdvi__actes_metiers.sql
+│   │   │       ├── int_rdvi__tous_les_pros.sql
 │   │   │       └── properties.yml
 │   │   ├── legacy
 │   │   │   ├── daily
@@ -310,6 +323,12 @@
 │   │   │   │   │   └── fct_offre_insertion.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── matomo__actes_metier.sql
+│   │   │   ├── monrecap
+│   │   │   │   ├── Commandes.sql
+│   │   │   │   ├── Contacts.sql
+│   │   │   │   ├── barometre.sql
+│   │   │   │   ├── monrecap_starmetric.sql
+│   │   │   │   └── properties.yml
 │   │   │   ├── oneshot
 │   │   │   │   ├── atigip.sql
 │   │   │   │   ├── candidats_decrochage.sql
@@ -330,6 +349,7 @@
 │   │   │   │       ├── fct_sorties_emploi_siae_secteur_activite.sql
 │   │   │   │       ├── fct_sorties_emploi_siae_sexe.sql
 │   │   │   │       └── properties.yml
+│   │   │   ├── pdi_base_unique_tous_les_pros.sql
 │   │   │   ├── properties.yml
 │   │   │   └── weekly
 │   │   │       ├── accompagnement_freins.sql
@@ -368,25 +388,6 @@
 │   │   │       ├── taux_couverture_global_trimestre.sql
 │   │   │       ├── taux_couverture_mensuel.sql
 │   │   │       └── taux_couverture_trimestre.sql
-│   │   ├── monrecap
-│   │   │   ├── marts
-│   │   │   │   ├── Commandes.sql
-│   │   │   │   ├── Contacts.sql
-│   │   │   │   ├── barometre.sql
-│   │   │   │   ├── monrecap_starmetric.sql
-│   │   │   │   └── properties.yml
-│   │   │   └── staging
-│   │   │       ├── properties.yml
-│   │   │       ├── stg_baro_commandes_starmetric.sql
-│   │   │       ├── stg_barometre_starmetric.sql
-│   │   │       ├── stg_commandes_max.sql
-│   │   │       ├── stg_commandes_starmetric.sql
-│   │   │       ├── stg_contacts_commandeurs.sql
-│   │   │       ├── stg_contacts_non_commandeurs.sql
-│   │   │       ├── stg_departement_derniere_commandes.sql
-│   │   │       ├── stg_derniere_commandes.sql
-│   │   │       ├── stg_starmetric.sql
-│   │   │       └── stg_total_reponses.sql
 │   │   ├── reporting
 │   │   │   ├── data_inclusion
 │   │   │   │   ├── properties.yml
@@ -398,6 +399,7 @@
 │   │   │   │   └── structures_v1_dpt.sql
 │   │   │   ├── properties.yml
 │   │   │   ├── rpt_dora__imer.sql
+│   │   │   ├── rpt_dora__orientations.sql
 │   │   │   ├── rpt_esat__answer_coverage_by_region.sql
 │   │   │   ├── rpt_esat__low_confidence_potential_answers.sql
 │   │   │   ├── rpt_esat__survey_answers.sql
@@ -418,6 +420,7 @@
 │   │       │   ├── stg_dora__service.sql
 │   │       │   ├── stg_dora__structure.sql
 │   │       │   ├── stg_dora__structure_member.sql
+│   │       │   ├── stg_dora__structureinfosview.sql
 │   │       │   └── stg_dora__user.sql
 │   │       ├── dsn
 │   │       │   ├── stg_dsn_geographie_nature_contrat.sql
@@ -429,8 +432,11 @@
 │   │       │   └── stg_dsn_siae_sexe.sql
 │   │       ├── emplois
 │   │       │   ├── _properties.yml
+│   │       │   ├── stg_emplois__collaborations.sql
 │   │       │   ├── stg_emplois__fiches_de_poste.sql
-│   │       │   └── stg_emplois__imer.sql
+│   │       │   ├── stg_emplois__imer.sql
+│   │       │   ├── stg_emplois__institutions.sql
+│   │       │   └── stg_emplois__utilisateurs.sql
 │   │       ├── esat
 │   │       │   ├── properties.yml
 │   │       │   ├── stg_esat__answer_field_exclusions.sql
@@ -446,6 +452,9 @@
 │   │       │   ├── _properties.yml
 │   │       │   ├── stg_geiq__assessments.sql
 │   │       │   └── stg_geiq__contracts.sql
+│   │       ├── gps
+│   │       │   ├── properties.yml
+│   │       │   └── stg_gps__log_data.sql
 │   │       ├── insee
 │   │       │   ├── properties.yml
 │   │       │   ├── stg_insee_arrondissements.sql
@@ -463,6 +472,7 @@
 │   │       │   ├── properties.yml
 │   │       │   ├── stg_marche__perimeters.sql
 │   │       │   ├── stg_marche__siae_offers.sql
+│   │       │   ├── stg_marche__siae_users.sql
 │   │       │   ├── stg_marche__siaes.sql
 │   │       │   ├── stg_marche__tenders.sql
 │   │       │   └── stg_marche__users.sql
@@ -470,9 +480,26 @@
 │   │       │   ├── stg_matomo__monthly_department_visits.sql
 │   │       │   ├── stg_matomo__monthly_visits.sql
 │   │       │   └── stg_matomo__properties.yml
+│   │       ├── monrecap
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_baro_commandes_starmetric.sql
+│   │       │   ├── stg_barometre_starmetric.sql
+│   │       │   ├── stg_commandes_max.sql
+│   │       │   ├── stg_commandes_starmetric.sql
+│   │       │   ├── stg_contacts_commandeurs.sql
+│   │       │   ├── stg_contacts_non_commandeurs.sql
+│   │       │   ├── stg_departement_derniere_commandes.sql
+│   │       │   ├── stg_derniere_commandes.sql
+│   │       │   ├── stg_starmetric.sql
+│   │       │   └── stg_total_reponses.sql
+│   │       ├── pilotage
+│   │       │   ├── properties.yml
+│   │       │   └── stg_pilotage__visites.sql
 │   │       ├── properties.yml
 │   │       ├── rdvi
 │   │       │   ├── properties.yml
+│   │       │   ├── stg_rdvi__agent_roles.sql
+│   │       │   ├── stg_rdvi__agents.sql
 │   │       │   ├── stg_rdvi__departments.sql
 │   │       │   ├── stg_rdvi__follow_ups.sql
 │   │       │   ├── stg_rdvi__invitations.sql
@@ -561,15 +588,22 @@
 │       ├── test_doublons_structures_fluxIAE.sql
 │       ├── test_etp_conventionnes.sql
 │       ├── test_etp_realises.sql
+│       ├── test_fct_dora__imer_dora_is_logged_imer_matches_int_dora_imer.sql
+│       ├── test_fct_dora__imer_emplois_is_logged_imer_matches_user_kind.sql
 │       ├── test_fct_dora__imer_rowcount_matches_sources.sql
 │       ├── test_fdp_tension.sql
 │       ├── test_fluxIAE_EtatMensuelIndiv_v2_sum_etp.sql
 │       ├── test_fluxIAE_salarie.sql
 │       ├── test_int_di__structure_mapping_source_structure_count.sql.sql
+│       ├── test_int_dora__actes_metier_imer_match_fct.sql
+│       ├── test_int_dora__actes_metier_orientations_match_fct.sql
+│       ├── test_int_dora__imer_rowcount_by_is_logged_matches_mobilisationevent.sql
+│       ├── test_int_dora__imer_rowcount_by_kind_matches_sources.sql
 │       ├── test_logins_utilisatateurs_count_match.sql
 │       ├── test_marche_structures.sql
 │       ├── test_nombre_freins.sql
 │       ├── test_potentiel_structures.sql
+│       ├── test_rpt_dora__orientations_rowcount_matches_fact.sql
 │       ├── test_source_opcs.sql
 │       ├── test_stg_accompagnement_freins.sql
 │       ├── test_stg_accompagnement_pro.sql
@@ -653,4 +687,4 @@
     ├── test_common_dates.py
     ├── test_common_db.py
     └── test_dags.py
-96 directories, 644 files
+98 directories, 676 files
