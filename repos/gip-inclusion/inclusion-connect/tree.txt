@@ -7,7 +7,8 @@
 │   ├── dependabot.yml
 │   ├── pull_request_template.md
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       └── dependabot-auto-merge.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .pylintrc
@@ -48,7 +49,6 @@
 │   │   ├── __init__.py
 │   │   ├── forms.py
 │   │   ├── helpers.py
-│   │   ├── middleware.py
 │   │   ├── urls.py
 │   │   └── views.py
 │   ├── admin
@@ -172,12 +172,9 @@
 │   │   │   └── users
 │   │   │       └── user
 │   │   │           └── invalidate_password_confirm.html
-│   │   ├── change_password.html
 │   │   ├── django_bootstrap5
 │   │   │   └── form_errors.html
 │   │   ├── email_confirmation.html
-│   │   ├── includes
-│   │   │   └── new_password.html
 │   │   ├── layout
 │   │   │   ├── _header.html
 │   │   │   ├── account.html
@@ -188,12 +185,7 @@
 │   │   ├── login.html
 │   │   ├── oauth2_provider
 │   │   │   └── logout_confirm.html
-│   │   ├── oidc_authorize.html
-│   │   ├── otp_confirm_device.html
-│   │   ├── otp_devices.html
-│   │   ├── password_reset.html
-│   │   ├── password_reset_confirm.html
-│   │   └── verify_otp.html
+│   │   └── oidc_authorize.html
 │   ├── urls.py
 │   ├── users
 │   │   ├── __init__.py
@@ -206,7 +198,6 @@
 │   │   └── models.py
 │   ├── utils
 │   │   ├── oidc.py
-│   │   ├── password_validation.py
 │   │   ├── templatetags
 │   │   │   ├── inclusionconnect_fields.py
 │   │   │   └── theme_inclusion.py
@@ -227,8 +218,7 @@
     ├── __snapshots__
     │   ├── test_builtin_views.ambr
     │   ├── test_functional.ambr
-    │   ├── test_logging.ambr
-    │   └── test_template_tags.ambr
+    │   └── test_logging.ambr
     ├── accounts
     │   ├── __init__.py
     │   ├── __snapshots__
@@ -250,7 +240,6 @@
     ├── test_functional.py
     ├── test_logging.py
     ├── test_security.py
-    ├── test_template_tags.py
     ├── users
     │   ├── __init__.py
     │   ├── __snapshots__
@@ -261,4 +250,4 @@
     └── utils
         ├── __init__.py
         └── tests.py
-55 directories, 316 files
+54 directories, 306 files

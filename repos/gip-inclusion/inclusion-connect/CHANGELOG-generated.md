@@ -1,12 +1,27 @@
-## Changelog : inclusion-connect (30 derniers jours, au 28 septembre 2026)
+## Changelog : inclusion-connect (30 derniers jours, au 08/10/2026)
 
 ### Résumé
-Les récentes interventions se sont concentrées sur le renforcement de la sécurité du protocole d'authentification (OIDC) et le nettoyage de la base de code.
+Ce mois-ci, le projet a introduit un **mode Démo** complet, conçu pour simplifier les tests et les démonstrations en supprimant les contraintes de mot de passe et en limitant l'usage à des e-mails internes. Parallèlement, des améliorations ont été apportées à l'expérience de connexion et à l'automatisation des processus de test et de maintenance.
+
+### Évolutions fonctionnelles
+- **Introduction d'un mode Démo** :
+    - Connexion simplifiée sans saisie de mot de passe.
+    - Possibilité de choisir le prénom et le nom de l'utilisateur.
+    - Restriction de l'utilisation aux adresses e-mail internes uniquement.
+    - Ajout d'une bannière visuelle pour identifier clairement l'utilisation du mode démo.
+- **Gestion des utilisateurs** :
+    - Activation automatique des utilisateurs inactifs.
+    - Suppression des fonctionnalités liées aux mots de passe et à l'OTP (One-Time Password) pour simplifier les parcours de test.
+- **Interface utilisateur** :
+    - Amélioration du template de la page de connexion.
 
 ### Évolutions techniques
-- **Sécurité & Authentification** : Amélioration de la gestion des secrets clients via l'implémentation du hachage (`hash_client_secret`) dans les configurations OIDC.
-- **Tests** : Sécurisation de la suite de tests en supprimant l'utilisation d'un secret client par défaut.
-- **Dépendances** : Mise à jour de la bibliothèque de gestion OAuth2 (`django-oauth-toolkit` vers la version 3.4.1).
+- **CI/CD** : Automatisation de la fusion des Pull Requests de mise à jour des dépendances (Dependabot).
+- **Tests** :
+    - Optimisation de la commande de test (`make test`).
+    - Simplification de l'environnement de test par la suppression de la dépendance à Elasticsearch dans les configurations de test.
+    - Nettoyage et suppression de code superflu dans la suite de tests.
 
 ### Autres changements
-- **Nettoyage** : Suppression d'un ancien template devenu obsolète.
+- Mise à jour de la documentation (README).
+- Nettoyage du dépôt (suppression d'anciens templates et de code obsolète).
