@@ -254,8 +254,8 @@
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
 │   │   │   │   ├── 1786973009184-add-usager-date-anciennete-dom.ts
-│   │   │   │   ├── 1789650923733-auto-migration.ts
-│   │   │   │   ├── 1789650942380-email-delivery-issue-report.ts
+│   │   │   │   ├── 1787065723037-add-password-history.ts
+│   │   │   │   ├── 1791448691664-analyse-familles-ayants-droits.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -314,6 +314,7 @@
 │   │   │   ├── auth
 │   │   │   │   ├── auth.module.ts
 │   │   │   │   ├── decorators
+│   │   │   │   │   ├── AllowExpiredPassword.decorator.ts
 │   │   │   │   │   ├── AllowUserProfiles.decorator.ts
 │   │   │   │   │   ├── AllowUserStructureRoles.decorator.ts
 │   │   │   │   │   ├── AllowUserSupervisorRoles.decorator.ts
@@ -328,6 +329,7 @@
 │   │   │   │   │   ├── current-user.decorator.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── guards
+│   │   │   │   │   ├── AppUserGuard.guard.spec.ts
 │   │   │   │   │   ├── AppUserGuard.guard.ts
 │   │   │   │   │   ├── CanGetUserStructure.guard.ts
 │   │   │   │   │   ├── app-throttler
@@ -596,6 +598,17 @@
 │   │   │   │   │   ├── contact-support.controller.ts
 │   │   │   │   │   ├── contact-support.dto.ts
 │   │   │   │   │   └── contact-support.module.ts
+│   │   │   │   ├── familles
+│   │   │   │   │   ├── constants
+│   │   │   │   │   │   └── FAMILLES_ANALYSIS.const.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── famillesAnalysis.service.spec.ts
+│   │   │   │   │   │   ├── famillesAnalysis.service.ts
+│   │   │   │   │   │   ├── famillesMatching.spec.ts
+│   │   │   │   │   │   ├── famillesMatching.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── types
+│   │   │   │   │       └── famillesAnalysis.types.ts
 │   │   │   │   ├── health
 │   │   │   │   │   ├── health.controller.ts
 │   │   │   │   │   ├── health.module.ts
@@ -905,6 +918,8 @@
 │   │   │   │   │       └── structures-merge.types.ts
 │   │   │   │   └── users
 │   │   │   │       ├── controllers
+│   │   │   │       │   ├── handleEditMyPasswordRequest.ts
+│   │   │   │       │   ├── users-supervisor.controller.spec.ts
 │   │   │   │       │   ├── users-supervisor.controller.ts
 │   │   │   │       │   ├── users.controller.security-tests.ts
 │   │   │   │       │   ├── users.controller.spec.ts
@@ -925,6 +940,8 @@
 │   │   │   │       │   ├── usager-login.dto.ts
 │   │   │   │       │   ├── user-edit.dto.ts
 │   │   │   │       │   └── user.dto.ts
+│   │   │   │       ├── e2e
+│   │   │   │       │   └── password-renewal.e2e.spec.ts
 │   │   │   │       ├── services
 │   │   │   │       │   ├── crons
 │   │   │   │       │   │   ├── expired-temporary-block-cleaner.service.ts
@@ -1595,15 +1612,21 @@
 │   │   │       ├── common-user
 │   │   │       │   ├── StructureSessionRecord.type.ts
 │   │   │       │   ├── constants
+│   │   │       │   │   ├── PASSWORD_POLICY.const.ts
 │   │   │       │   │   ├── USER_STATUS_CAN_BE_MANAGED.const.ts
 │   │   │       │   │   ├── USER_STATUS_LABELS.const.ts
 │   │   │       │   │   ├── USER_STATUS_VALUES.const.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── functions
+│   │   │       │   │   ├── getPasswordChangeStatus.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── interfaces
 │   │   │       │   │   ├── common-user.interface.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   └── types
+│   │   │       │       ├── PasswordChangeStatus.type.ts
+│   │   │       │       ├── PasswordDateInput.type.ts
 │   │   │       │       ├── UserDeleteMotif.type.ts
 │   │   │       │       ├── UserStatus.type.ts
 │   │   │       │       └── index.ts
@@ -2020,6 +2043,10 @@
 │   │   │   │   │   │   │   │   ├── assign-referrers.component.html
 │   │   │   │   │   │   │   │   ├── assign-referrers.component.spec.ts
 │   │   │   │   │   │   │   │   └── assign-referrers.component.ts
+│   │   │   │   │   │   │   ├── edit-password-form
+│   │   │   │   │   │   │   │   ├── edit-password-form.component.html
+│   │   │   │   │   │   │   │   ├── edit-password-form.component.spec.ts
+│   │   │   │   │   │   │   │   └── edit-password-form.component.ts
 │   │   │   │   │   │   │   ├── edit-user
 │   │   │   │   │   │   │   │   ├── edit-user.component.html
 │   │   │   │   │   │   │   │   ├── edit-user.component.spec.ts
@@ -2028,6 +2055,10 @@
 │   │   │   │   │   │   │   │   ├── register-user-admin.component.html
 │   │   │   │   │   │   │   │   ├── register-user-admin.component.spec.ts
 │   │   │   │   │   │   │   │   └── register-user-admin.component.ts
+│   │   │   │   │   │   │   ├── renew-password
+│   │   │   │   │   │   │   │   ├── renew-password.component.html
+│   │   │   │   │   │   │   │   ├── renew-password.component.spec.ts
+│   │   │   │   │   │   │   │   └── renew-password.component.ts
 │   │   │   │   │   │   │   └── user-profil
 │   │   │   │   │   │   │       ├── user-profil.component.css
 │   │   │   │   │   │   │       ├── user-profil.component.html
@@ -2753,6 +2784,7 @@
 │   │   │   │   │   ├── login
 │   │   │   │   │   │   └── login-container.svg
 │   │   │   │   │   ├── logo-dsfr.svg
+│   │   │   │   │   ├── logo-icon.svg
 │   │   │   │   │   ├── logo-ministere.jpg
 │   │   │   │   │   ├── logo.png
 │   │   │   │   │   ├── logo.svg
@@ -3007,6 +3039,22 @@
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── log-context-formatter.ts
 │   │   │   │   │   │       └── user-activity-log.ts
+│   │   │   │   │   ├── my-account
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   ├── edit-password-form
+│   │   │   │   │   │   │   │   ├── edit-password-form.component.html
+│   │   │   │   │   │   │   │   ├── edit-password-form.component.spec.ts
+│   │   │   │   │   │   │   │   └── edit-password-form.component.ts
+│   │   │   │   │   │   │   ├── my-account
+│   │   │   │   │   │   │   │   ├── my-account.component.html
+│   │   │   │   │   │   │   │   ├── my-account.component.spec.ts
+│   │   │   │   │   │   │   │   └── my-account.component.ts
+│   │   │   │   │   │   │   └── renew-password
+│   │   │   │   │   │   │       ├── renew-password.component.html
+│   │   │   │   │   │   │       ├── renew-password.component.spec.ts
+│   │   │   │   │   │   │       └── renew-password.component.ts
+│   │   │   │   │   │   ├── my-account-routing.module.ts
+│   │   │   │   │   │   └── my-account.module.ts
 │   │   │   │   │   ├── otp
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   └── otp-modal
@@ -3796,4 +3844,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-879 directories, 2919 files
+892 directories, 2954 files

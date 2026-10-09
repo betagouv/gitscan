@@ -1,28 +1,26 @@
 {
   "url": "https://github.com/SocialGouv/domifa",
   "name": "domifa",
-  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et permettant aux personnes sans domicile stable d'accéder à leurs droits.",
+  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
   "language": "TypeScript",
   "features": [
+    "Gestion métier générale",
     "Gestion des utilisateurs & Permissions",
     "Statistiques & Rapports",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Administration & Backoffice",
-    "Suivi & Traçabilité",
-    "Gestion des établissements & Structures"
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "NestJS",
     "Angular",
     "PostgreSQL",
-    "Docker",
     "TypeORM",
-    "Brevo",
-    "Sentry",
-    "Matomo"
+    "Docker",
+    "Lerna",
+    "Pnpm",
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,25 +29,26 @@
     "Docker & Conteneurs",
     "Node.js / NestJS",
     "Angular / Svelte / Autres SPA",
-    "ORM & Accès aux données",
     "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
+      "email-password",
+      "jwt",
       "mfa"
     ]
   },
-  "tests": "Tests unitaires et d'intégration (Jest)",
-  "lastActivity": "2026-09-30T00:00:00Z",
+  "tests": "Tests unitaires pour le frontend, le portail usagers et le backend, ainsi que des tests d'intégration pour le backend.",
+  "lastActivity": "2026-10-08T00:00:00Z",
   "status": "maintained",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
+    "Bases de données SQL",
     "Docker & Conteneurs",
     "Node.js, NestJS & Express",
-    "Angular, Svelte & autres SPA",
-    "Bases de données SQL"
+    "Emploi, Social & Logement",
+    "Angular, Svelte & autres SPA"
   ]
 }

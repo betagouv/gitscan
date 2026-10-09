@@ -1,31 +1,31 @@
-## Changelog : domifa (30 derniers jours, au 30/09/2026)
+## Changelog : domifa (30 derniers jours, au 08/10/2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur via une interface plus claire (couleurs, libellés, affichage des noms) et l'ajout d'indicateurs de suivi essentiels (délais de passage, dates de domiciliation). La fiabilité du système a également été renforcée par une meilleure gestion des envois d'emails et une optimisation des statistiques.
+Ce mois-ci, domifa a connu des évolutions significatives axées sur l'amélioration de l'expérience utilisateur et le renforcement de la sécurité. Les principaux changements incluent une refonte visuelle de l'interface (header, logo, couleurs), l'ajout de la gestion des bénéficiaires familiaux, et la mise en place de nouvelles politiques de sécurité pour la gestion des mots de passe.
 
 ### Évolutions fonctionnelles
-- **Interface et Ergonomie** :
-    - Amélioration visuelle des titres, des boutons d'accès et des pastilles d'alerte (mise en conformité avec les tokens DSFR).
-    - Mise à jour des libellés dans le menu de pilotage [#4277](https://github.com/SocialGouv/domifa/pull/4277).
-    - Affichage du nom complet des usagers dans les dossiers, les notes et les listes d'interactions pour une meilleure identification.
-- **Suivi et Données** :
-    - Ajout de la date de domiciliation.
-    - Mise en place de nouveaux indicateurs visuels pour le suivi des délais de passage et des échéances de décision.
-    - Correction des calculs sur le formulaire d'inscription initiale.
-- **Statistiques et Communication** :
-    - Correction et alignement des données statistiques (comptages par région et chiffres globaux) [#4274](https://github.com/SocialGouv/domifa/pull/4274).
-    - Correction des modèles (templates) d'emails.
+- **Gestion des bénéficiaires** : Ajout de la fonctionnalité de gestion des ayants droit et bénéficiaires au sein des familles [#4291](https://github.com/SocialGouv/domifa/pull/4291).
+- **Sécurité des comptes** : 
+    - Mise en place d'un renouvellement obligatoire du mot de passe après une période d'inactivité prolongée.
+    - Instauration d'une expiration des mots de passe à 60 mois.
+    - Ajout de la possibilité de consulter l'historique des changements de mots de passe.
+- **Interface Utilisateur (UI) & Ergonomie** :
+    - **Identité visuelle** : Mise à jour du header, de la page de connexion et du logo.
+    - **Lisibilité** : Ajustement des couleurs des boutons d'accès, des titres et des pastilles d'indicateurs (notamment pour les délais de décision et de passage).
+    - **Affichage des données** : Utilisation du nom complet des usagers dans les titres des dossiers et des notes pour une meilleure identification.
+    - **Statistiques** : Corrections de l'affichage CSS et alignement des données de statistiques régionales.
+- **Nouveautés** : Ajout de la saisie de la date de domiciliation dans l'interface.
 
 ### Évolutions techniques
-- **Backend et Sécurité** :
-    - Amélioration du suivi des emails grâce au routage basé sur le statut de livraison Brevo.
-    - Renforcement de la confidentialité en masquant les données sensibles dans les logs et les événements Sentry.
-    - Nettoyage des logs inutiles et des migrations obsolètes.
-- **Maintenance et Performance** :
-    - Mise à jour de l'environnement de tests vers Jest 30.
-    - Optimisation du code via l'utilisation de la bibliothèque `date-fns` et la suppression de champs et packages inutilisés.
-    - Migration de la gestion des statistiques publiques vers un nouveau flux de contrôle (control flow).
-    - Amélioration de la stabilité de la chaîne de CI (Intégration Continue).
+- **Base de données** : Intégration de nouvelles migrations pour supporter la gestion des bénéficiaires et l'historique des mots de passe.
+- **Backend & Sécurité** : 
+    - Ajout de "guards" pour sécuriser le processus de renouvellement de mot de passe.
+    - Amélioration du suivi des emails via le statut de livraison de Brevo.
+- **Maintenance & Performance** :
+    - Mise à jour de l'environnement de test vers Jest 30.
+    - Nettoyage des dépendances obsolètes (notamment OpenTelemetry) et correction de vulnérabilités.
+    - Optimisation de la gestion des logs et des événements Sentry.
+    - Migration vers la bibliothèque `date-fns` pour une meilleure gestion des dates.
 
 ### Autres changements
-- Mise à jour de la documentation technique.
+- **Documentation** : Mise à jour des composants de présentation (FAQ, pages d'impact et de découverte).

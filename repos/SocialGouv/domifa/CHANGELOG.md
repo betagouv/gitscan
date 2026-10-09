@@ -1,3 +1,83 @@
+## [2.279.1](https://github.com/SocialGouv/domifa/compare/v2.279.0...v2.279.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* **back:** replace command by migration file ([500d66a](https://github.com/SocialGouv/domifa/commit/500d66a3611908c2881a124f07672ee6a311d533))
+
+# [2.279.0](https://github.com/SocialGouv/domifa/compare/v2.278.0...v2.279.0) (2026-10-07)
+
+
+### Features
+
+* **front:** add domain super admin ([d7c1bf4](https://github.com/SocialGouv/domifa/commit/d7c1bf418b3c880178a247a697523e5356dcadd6))
+
+# [2.278.0](https://github.com/SocialGouv/domifa/compare/v2.277.0...v2.278.0) (2026-10-06)
+
+
+### Features
+
+* **back:** ayant-droit.md ([06eff1f](https://github.com/SocialGouv/domifa/commit/06eff1f6474b2e68c6999c98fdb654d604051171))
+* **back:** benefiicaries migration ([9d4ef2a](https://github.com/SocialGouv/domifa/commit/9d4ef2a4bb452120b3cb6c13b70654bdf791617b))
+* **back:** code review ([8735085](https://github.com/SocialGouv/domifa/commit/8735085122ef155b5b8352ec92d4706b2303a6ec))
+* **back:** code review ([f701940](https://github.com/SocialGouv/domifa/commit/f70194045546debf25beb73d15d83af0b394df7e))
+* **back:** code review ([d7fd4e2](https://github.com/SocialGouv/domifa/commit/d7fd4e229667b2411a95a468ae69501e252b74c0))
+* **back:** code review ([07d1230](https://github.com/SocialGouv/domifa/commit/07d1230a335628e71dabf3dfbfa49faec8603749))
+* ayants-droits.md ([d96c47e](https://github.com/SocialGouv/domifa/commit/d96c47e7e0197ad42b519b3f4d40f630223fdd4f))
+* delete .md ayants-droits ([ebe1c64](https://github.com/SocialGouv/domifa/commit/ebe1c642e21fc76417c0cb3d6bd1e1cfed0596fe))
+* manage family beneficiaries ([78072d4](https://github.com/SocialGouv/domifa/commit/78072d49a9360240404c0f01156ff57989bbf7c0))
+
+# [2.277.0](https://github.com/SocialGouv/domifa/compare/v2.276.0...v2.277.0) (2026-10-06)
+
+
+### Features
+
+* **front:** update header and login page ([b2f62dc](https://github.com/SocialGouv/domifa/commit/b2f62dc2b61109e8a16a3f6cfafe317aa6f70ed6))
+* **front, back:** code review ([729e149](https://github.com/SocialGouv/domifa/commit/729e149593363f62921b3b3442e6cb6a21f21ded))
+
+# [2.276.0](https://github.com/SocialGouv/domifa/compare/v2.275.0...v2.276.0) (2026-10-05)
+
+
+### Features
+
+* **front:** change color button for access ([f363ad5](https://github.com/SocialGouv/domifa/commit/f363ad5166a3cf3316cdc1eb4bf62021c973209f))
+
+# [2.275.0](https://github.com/SocialGouv/domifa/compare/v2.274.0...v2.275.0) (2026-10-05)
+
+
+### Bug Fixes
+
+* **front:** code review ([a667073](https://github.com/SocialGouv/domifa/commit/a6670731ebc8ebdf3dc73312845c732789dcc856))
+
+
+### Features
+
+* **front:** change color title and buttons ([2073352](https://github.com/SocialGouv/domifa/commit/2073352ddf9a0134ddccd194daad9b2fa3af847a))
+
+# [2.274.0](https://github.com/SocialGouv/domifa/compare/v2.273.0...v2.274.0) (2026-10-05)
+
+
+### Bug Fixes
+
+* **backend:** code review ([b31815d](https://github.com/SocialGouv/domifa/commit/b31815d77133e28e7228bcae0e4ce40bf5208b63))
+
+
+### Features
+
+* **back:** adding guard for renew password ([b77819d](https://github.com/SocialGouv/domifa/commit/b77819daaa59fd66b229b7336742347ab233246e))
+* **back:** code review ([2f0ece1](https://github.com/SocialGouv/domifa/commit/2f0ece1e1989a9dd2d51673598c4a7816c50e27e))
+* **back:** code review ([0445015](https://github.com/SocialGouv/domifa/commit/04450155507354346fa584d13b76aa007b148c92))
+* **back:** code review ([5bb085a](https://github.com/SocialGouv/domifa/commit/5bb085a5ead6e0b04bee27438f2b8983dd1b4fd6))
+* **back:** code review ([305232a](https://github.com/SocialGouv/domifa/commit/305232af26a05b304a846d8713d5ee067bcc29cd))
+* **back:** code review ([130c2f0](https://github.com/SocialGouv/domifa/commit/130c2f0cf5c9f9dd39755def81b23038ddaa9120))
+* **back:** code review ([50e7325](https://github.com/SocialGouv/domifa/commit/50e73259bec2d0c7126cd5d644d4a12a46807edd))
+* **back:** code review ([a5bd2b8](https://github.com/SocialGouv/domifa/commit/a5bd2b88f80a06c94e6a6612f9b417682219cb82))
+* **back:** end to end tests ([9c71d0e](https://github.com/SocialGouv/domifa/commit/9c71d0eb6a0fed13510355f47d52cac4523f6eb2))
+* **backend:** code review ([480ae7e](https://github.com/SocialGouv/domifa/commit/480ae7e5aee0a62409aabd5a8c237703e6338895))
+* **common:** password expiration to 60 months ([3b131ad](https://github.com/SocialGouv/domifa/commit/3b131ad38c322f08e4026b89ca492424dba12c6a))
+* **frontend:** force password renewal after long time of inactivity ([bd165fd](https://github.com/SocialGouv/domifa/commit/bd165fd14460571c7cf4cb9682ad0ae2b8d6040f))
+* **frontend:** force password renewal after long time of inactivity ([5339cd6](https://github.com/SocialGouv/domifa/commit/5339cd636a98b19dd6b53fe41ca37eb58f29709b))
+
 # [2.273.0](https://github.com/SocialGouv/domifa/compare/v2.272.0...v2.273.0) (2026-09-30)
 
 
