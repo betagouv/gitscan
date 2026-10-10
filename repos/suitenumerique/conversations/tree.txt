@@ -294,6 +294,7 @@
     │   │   │   │   │   ├── test_add_document_rag_search_tool_from_setting.py
     │   │   │   │   │   ├── test_check_should_enable_rag.py
     │   │   │   │   │   ├── test_datagouv_connector.py
+    │   │   │   │   │   ├── test_datagouv_force.py
     │   │   │   │   │   ├── test_document_context_window.py
     │   │   │   │   │   ├── test_extract_co2_from_usage.py
     │   │   │   │   │   ├── test_handle_input_documents_indexing.py
@@ -365,6 +366,7 @@
     │   │   │   ├── test_rate_limiting.py
     │   │   │   ├── test_settings_isolation.py
     │   │   │   ├── test_tasks.py
+    │   │   │   ├── test_tasks_periodic.py
     │   │   │   ├── tools
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_document_generic_search_rag.py
@@ -483,8 +485,10 @@
     │   │   ├── staan_settings.py
     │   │   ├── tests
     │   │   │   ├── __init__.py
+    │   │   │   ├── test_settings_celery_beat.py
     │   │   │   ├── test_settings_docs.py
     │   │   │   ├── test_settings_llm_configurations.py
+    │   │   │   ├── test_settings_logging.py
     │   │   │   ├── test_settings_oidc_refresh_token_key.py
     │   │   │   └── test_settings_staan.py
     │   │   ├── urls.py
@@ -570,6 +574,7 @@
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_api_users_analytics.py
     │   │   │   ├── test_brevo.py
     │   │   │   ├── test_enums.py
     │   │   │   ├── test_maintenance.py
@@ -685,6 +690,7 @@
     │   │   │   │   │   │       ├── checkmark-filled.svg
     │   │   │   │   │   │       ├── checkmark.svg
     │   │   │   │   │   │       ├── clipboard.svg
+    │   │   │   │   │   │       ├── datagouv.svg
     │   │   │   │   │   │       ├── doc.svg
     │   │   │   │   │   │       ├── euro-filled.svg
     │   │   │   │   │   │       ├── file-doc.svg
@@ -725,6 +731,7 @@
     │   │   │   │   │   ├── DropButton.tsx
     │   │   │   │   │   ├── DropdownMenu.tsx
     │   │   │   │   │   ├── Effect.tsx
+    │   │   │   │   │   ├── ErrorFallback.tsx
     │   │   │   │   │   ├── Icon.tsx
     │   │   │   │   │   ├── InfiniteScroll.tsx
     │   │   │   │   │   ├── Link.tsx
@@ -736,6 +743,7 @@
     │   │   │   │   │   ├── ToggleSwitch.tsx
     │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   ├── Box.spec.tsx
+    │   │   │   │   │   │   ├── ErrorFallback.test.tsx
     │   │   │   │   │   │   └── Link.test.tsx
     │   │   │   │   │   ├── index.ts
     │   │   │   │   │   ├── quick-search
@@ -765,6 +773,8 @@
     │   │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   │   └── ConfigProvider.test.tsx
     │   │   │   │   │   │   ├── api
+    │   │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   │   └── useConfig.test.tsx
     │   │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   │   └── useConfig.tsx
     │   │   │   │   │   │   ├── hooks
@@ -793,7 +803,11 @@
     │   │   │   │   │   │   │   └── useReindexProjectAttachment.tsx
     │   │   │   │   │   │   ├── hooks
     │   │   │   │   │   │   │   └── useUploadFile.tsx
-    │   │   │   │   │   │   └── types.tsx
+    │   │   │   │   │   │   ├── types.tsx
+    │   │   │   │   │   │   └── utils
+    │   │   │   │   │   │       ├── __tests__
+    │   │   │   │   │   │       │   └── fileTypes.test.ts
+    │   │   │   │   │   │       └── fileTypes.ts
     │   │   │   │   │   ├── auth
     │   │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   │   └── silentLogin.test.ts
@@ -830,8 +844,10 @@
     │   │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   │   ├── Banner.test.tsx
     │   │   │   │   │   │   │   ├── BannerStack.test.tsx
-    │   │   │   │   │   │   │   └── StatusBanner.test.tsx
-    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   │   ├── StatusBanner.test.tsx
+    │   │   │   │   │   │   │   └── useNewVersionBanner.test.tsx
+    │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   └── useNewVersionBanner.ts
     │   │   │   │   │   ├── chat
     │   │   │   │   │   │   ├── api
     │   │   │   │   │   │   │   ├── __tests__
@@ -920,6 +936,8 @@
     │   │   │   │   │   │   │   ├── useFileUrls.tsx
     │   │   │   │   │   │   │   └── useSourceMetadata.ts
     │   │   │   │   │   │   ├── stores
+    │   │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   │   └── useChatPreferencesStore.test.ts
     │   │   │   │   │   │   │   ├── useChatPreferencesStore.ts
     │   │   │   │   │   │   │   ├── usePendingChatStore.ts
     │   │   │   │   │   │   │   └── useScrollStore.ts
@@ -999,7 +1017,8 @@
     │   │   │   │   │   │   │   │   ├── LeftPanelSearch.tsx
     │   │   │   │   │   │   │   │   ├── LeftPanelSearchModal.tsx
     │   │   │   │   │   │   │   │   └── __tests__
-    │   │   │   │   │   │   │   │       └── LeftPanelProjectItem.test.tsx
+    │   │   │   │   │   │   │   │       ├── LeftPanelProjectItem.test.tsx
+    │   │   │   │   │   │   │   │       └── LeftPanelSearch.test.tsx
     │   │   │   │   │   │   │   └── projects
     │   │   │   │   │   │   │       ├── ModalIconColorPicker.tsx
     │   │   │   │   │   │   │       ├── ModalProjectForm.tsx
@@ -1043,7 +1062,11 @@
     │   │   │   │   │   │   │   └── settings.svg
     │   │   │   │   │   │   ├── components
     │   │   │   │   │   │   │   ├── SettingsButton.tsx
-    │   │   │   │   │   │   │   └── SettingsModal.tsx
+    │   │   │   │   │   │   │   ├── SettingsModal.tsx
+    │   │   │   │   │   │   │   ├── SettingsToggleRow.tsx
+    │   │   │   │   │   │   │   └── __tests__
+    │   │   │   │   │   │   │       ├── SettingsModal.test.tsx
+    │   │   │   │   │   │   │       └── SettingsToggleRow.test.tsx
     │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   └── sources-panel
     │   │   │   │   │       ├── SourcePanel.tsx
@@ -1084,6 +1107,8 @@
     │   │   │   │   │   │   └── PosthogAnalytic.test.tsx
     │   │   │   │   │   └── index.ts
     │   │   │   │   ├── stores
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   └── useSentryStore.test.tsx
     │   │   │   │   │   ├── index.ts
     │   │   │   │   │   ├── useResponsiveStore.tsx
     │   │   │   │   │   └── useSentryStore.tsx
@@ -1173,8 +1198,6 @@
     │   │   │   ├── _helpers.tpl
     │   │   │   ├── backend_celery_beat.yaml
     │   │   │   ├── backend_celery_worker.yaml
-    │   │   │   ├── backend_cronjob_deindex.yaml
-    │   │   │   ├── backend_cronjob_model_health.yaml
     │   │   │   ├── backend_deployment.yaml
     │   │   │   ├── backend_job.yml
     │   │   │   ├── backend_job_createsuperuser.yaml
@@ -1221,4 +1244,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-238 directories, 985 files
+244 directories, 1002 files

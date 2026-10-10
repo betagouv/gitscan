@@ -1,20 +1,28 @@
-## Changelog : conversations (30 derniers jours, au 28 septembre 2026)
+## Changelog : conversations (30 derniers jours, au 8 octobre 2026)
 
 ### Résumé
-Ce mois-ci, Conversations s'enrichit de nouveaux outils puissants (recherche web, génération de présentations, connecteur data.gouv) et améliore significativement la fluidité de l'interface de chat. Le projet renforce également sa robustesse technique via une mise à jour majeure de son SDK d'IA et l'implémentation de nouveaux cadres d'évaluation pour garantir la qualité des réponses.
+Ce mois-ci, Conversations s'enrichit de nouveaux outils de recherche et de génération de documents (web, data.gouv, présentations) tout en améliorant l'expérience utilisateur lors des mises à jour. Un effort majeur a été porté sur la protection de la vie privée en garantissant que les échanges des utilisateurs ne sont plus enregistrés dans les journaux système ni transmis à la télémétrie.
 
 ### Évolutions fonctionnelles
-- **Nouveaux outils IA** : ajout de la recherche web via Staan, de la génération de présentations (slide decks) et d'un connecteur pour data.gouv.
-- **Amélioration de l'interface (UI/UX)** : remplacement des actions d'entrée par un menu déroulant "+", affichage de la taille des conversations dans l'administration, et meilleure gestion visuelle du streaming des réponses.
-- **Fiabilité du chat** : corrections sur la gestion de l'historique, la prévention des doubles envois et la reprise après échec de connexion.
-- **Gestion de l'usage** : introduction de limitations de débit (throttling) pour la création de projets et de conversations, avec des messages d'information pour l'utilisateur en cas de limite atteinte.
+- **Nouveaux outils et connecteurs** : ajout de la recherche web (Staan), du connecteur data.gouv et d'un outil de génération de présentations (slide decks).
+- **Amélioration de l'interface** : remplacement des actions de saisie par un nouveau menu déroulant "+" pour plus de clarté.
+- **Expérience utilisateur et fiabilité** : 
+    - Meilleure gestion des mises à jour avec une demande de rechargement de la page pour éviter l'utilisation de versions obsolètes.
+    - Affichage d'une page d'erreur explicite au lieu d'une page blanche en cas de problème.
+    - Possibilité pour l'utilisateur de forcer l'utilisation du connecteur data.gouv pour une interaction spécifique.
+- **Correction** : support amélioré des fichiers Markdown dont le type MIME est manquant.
 
 ### Évolutions techniques
-- **Mise à jour majeure** : migration vers le SDK Vercel AI v5 et adaptation du format de stockage des messages.
-- **Tests et évaluation** : déploiement d'un nouveau framework d'évaluation comportementale pour mesurer la qualité des réponses de l'IA.
-- **Infrastructure et CI/CD** : remplacement de MinIO par RustFS pour le développement local et la CI, optimisation des images de conteneurs et audit de sécurité des workflows GitHub Actions.
-- **Optimisations backend** : refactorisation du module de configuration et amélioration de la stabilité des requêtes de listes.
+- **Confidentialité et sécurité** : renforcement de la protection des données en empêchant l'enregistrement des prompts utilisateurs dans les logs et la télémétrie.
+- **Infrastructure et déploiement** :
+    - Migration des tâches périodiques vers Celery Beat.
+    - Optimisation de l'environnement de développement et de la CI en remplaçant MinIO par RustFS.
+    - Sécurisation des ports de développement (limités à `localhost`).
+- **Performance et stabilité** :
+    - Optimisation de la lecture de la configuration pour réduire les entrées/sorties (I/O).
+    - Réduction du bruit dans les logs (ASGI) et optimisation de la gestion des images CI.
+- **Tests** : amélioration de la robustesse des tests frontend (mocking de composants et découplage des tests de langue).
 
 ### Autres changements
-- **Documentation** : révision de la procédure de publication des versions (release).
-- **Internationalisation** : mises à jour des traductions ([#717](https://github.com/suitenumerique/conversations/pull/717), [#711](https://github.com/suitenumerique/conversations/pull/711)).
+- **Documentation** : ajout de détails sur les procédures de release et de déploiement.
+- **Internationalisation** : mise à jour des chaînes de caractères traduites [#769](https://github.com/suitenumerique/conversations/pull/769).
