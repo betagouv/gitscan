@@ -51,7 +51,6 @@
 ├── dn
 │   ├── README.md
 │   ├── __init__.py
-│   ├── __main__.py
 │   ├── client.py
 │   ├── extract.py
 │   └── formatter.py
@@ -121,10 +120,12 @@
 ├── grist
 │   ├── README.md
 │   ├── __init__.py
+│   ├── base_url.py
 │   ├── client.py
-│   └── column_cache.py
+│   ├── column_cache.py
+│   ├── columns.py
+│   └── formatter.py
 ├── grist_processor_working_all.py
-├── hide_id_columns.py
 ├── jest.config.js
 ├── jest.setup.js
 ├── package-lock.json
@@ -133,6 +134,11 @@
 ├── pyproject.toml
 ├── repetable_processor.py
 ├── schema_utils.py
+├── security
+│   ├── README.md
+│   ├── __init__.py
+│   ├── ip_blocklist.py
+│   └── ip_blocklist_store.py
 ├── static
 │   ├── img
 │   │   ├── Cadrage OTP 6.png
@@ -161,6 +167,7 @@
 │   ├── __init__.py
 │   ├── environment_config.py
 │   ├── error_parser.py
+│   ├── filters.py
 │   ├── scheduled_sync.py
 │   ├── sync_manager.py
 │   ├── sync_result_parser.py
@@ -198,6 +205,7 @@
 │       ├── integration
 │       │   ├── __init__.py
 │       │   ├── test_app.py
+│       │   ├── test_ip_blocklist.py
 │       │   ├── test_sync_pipeline_grist.py
 │       │   └── test_websocket.py
 │       └── unit
@@ -213,20 +221,27 @@
 │           │   ├── test_extract.py
 │           │   └── test_formatter.py
 │           ├── grist
+│           │   ├── __init__.py
+│           │   ├── test_base_url.py
 │           │   ├── test_client.py
-│           │   └── test_column_cache.py
+│           │   ├── test_column_cache.py
+│           │   ├── test_columns.py
+│           │   └── test_formatter.py
+│           ├── security
+│           │   ├── test_ip_blocklist.py
+│           │   └── test_ip_blocklist_store.py
 │           ├── sync
 │           │   ├── tasks
 │           │   │   ├── test_instructeurs.py
 │           │   │   └── test_labels.py
 │           │   ├── test_environment_config.py
 │           │   ├── test_error_parser.py
+│           │   ├── test_filters.py
 │           │   ├── test_scheduled_sync.py
 │           │   └── test_sync_result_parser.py
 │           ├── test_app.py
 │           ├── test_deleted_dossiers_checker.py
 │           ├── test_grist_processor.py
-│           ├── test_hide_id_columns.py
 │           ├── test_repetable_processor.py
 │           ├── test_schema_utils.py
 │           ├── test_sync_manager.py
@@ -235,6 +250,7 @@
 │               ├── test_formatter.py
 │               ├── test_log.py
 │               ├── test_log_progress.py
+│               ├── test_rate_limited_session.py
 │               └── test_timing.py
 └── utils
     ├── README.md
@@ -243,6 +259,7 @@
     ├── constants.py
     ├── formatter.py
     ├── log.py
+    ├── rate_limited_session.py
     ├── socketio.py
     └── timing.py
-42 directories, 205 files
+44 directories, 220 files
