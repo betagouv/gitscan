@@ -367,7 +367,12 @@
 │   │   │   │   │   │   │   │       │       │   ├── action.view.tsx
 │   │   │   │   │   │   │   │       │       │   ├── components.new-referentiel
 │   │   │   │   │   │   │   │       │       │   │   ├── indicateurs-score
+│   │   │   │   │   │   │   │       │       │   │   │   ├── filter-lignes-from-annee-reference.utils.spec.ts
+│   │   │   │   │   │   │   │       │       │   │   │   ├── filter-lignes-from-annee-reference.utils.ts
+│   │   │   │   │   │   │   │       │       │   │   │   ├── group-lignes-by-annee.utils.spec.ts
+│   │   │   │   │   │   │   │       │       │   │   │   ├── group-lignes-by-annee.utils.ts
 │   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-list.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-modal-resultats.rows.tsx
 │   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-modal-resultats.table.tsx
 │   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-modal-resultats.tsx
 │   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-modal.tsx
@@ -487,9 +492,9 @@
 │   │   │   │   │   │   │   ├── demandes-avis
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── layout.tsx
-│   │   │   │   │   │   ├── accueil
-│   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   ├── actions-reference
+│   │   │   │   │   │   │   ├── [actionDeReferenceId]
+│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── affichage-referentiels
 │   │   │   │   │   │   │   ├── layout.tsx
@@ -576,9 +581,6 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── signup
 │   │   │   │       └── page.tsx
-│   │   │   ├── api
-│   │   │   │   └── version
-│   │   │   │       └── route.ts
 │   │   │   ├── app.css
 │   │   │   ├── global-error.tsx
 │   │   │   ├── global.css
@@ -586,14 +588,15 @@
 │   │   │   ├── not-found.tsx
 │   │   │   ├── public-env.script.tsx
 │   │   │   ├── root-providers.tsx
-│   │   │   └── third-party-providers.tsx
+│   │   │   ├── third-party-providers.tsx
+│   │   │   └── version
+│   │   │       └── route.ts
 │   │   ├── content-security-policy.config.ts
 │   │   ├── cors.config.ts
 │   │   ├── eslint
 │   │   │   ├── no-hardcoded-ui-copy.mjs
 │   │   │   └── no-hardcoded-ui-copy.spec.mjs
 │   │   ├── eslint.config.mjs
-│   │   ├── instrumentation-client.ts
 │   │   ├── instrumentation.ts
 │   │   ├── next-env.d.ts
 │   │   ├── next.config.ts
@@ -944,6 +947,8 @@
 │   │   │   │   │   ├── use-add-preuves.ts
 │   │   │   │   │   ├── use-add-rapport-visite.ts
 │   │   │   │   │   └── use-invalidate-documents.ts
+│   │   │   │   ├── get-collectivite-for-request.server.spec.ts
+│   │   │   │   ├── get-collectivite-for-request.server.ts
 │   │   │   │   ├── membres
 │   │   │   │   │   ├── invite-membre
 │   │   │   │   │   │   ├── invite-membre.button.tsx
@@ -1016,6 +1021,7 @@
 │   │   │   │   │   ├── affichage-referentiels.page.tsx
 │   │   │   │   │   └── use-update-collectivite-preferences.ts
 │   │   │   │   ├── priorisation-leviers
+│   │   │   │   │   ├── action-de-reference-summary.card.spec.tsx
 │   │   │   │   │   ├── action-de-reference-summary.card.tsx
 │   │   │   │   │   ├── levier-card-info.tsx
 │   │   │   │   │   ├── preselection.filters.spec.tsx
@@ -1153,6 +1159,7 @@
 │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   ├── create.page.tsx
 │   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── autosave-keys.ts
 │   │   │   │   │   │   ├── use-avis-recus.ts
 │   │   │   │   │   │   ├── use-create-and-link-plan.ts
 │   │   │   │   │   │   ├── use-delete-demarche-pcaet.ts
@@ -1191,7 +1198,11 @@
 │   │   │   │   │   ├── erreur-acces
 │   │   │   │   │   │   ├── erreur-acces.page.spec.tsx
 │   │   │   │   │   │   └── erreur-acces.page.tsx
+│   │   │   │   │   ├── import-programme
+│   │   │   │   │   │   ├── import-programme.context.tsx
+│   │   │   │   │   │   └── propose-import-programme.modal.tsx
 │   │   │   │   │   ├── instruction
+│   │   │   │   │   │   ├── clear-dossier-instruction-cookie.tsx
 │   │   │   │   │   │   ├── contexte-instruction.banner.tsx
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-contexte-instruction.ts
@@ -1215,6 +1226,8 @@
 │   │   │   │   │   │   │   ├── finaliser-instruction.modal.spec.tsx
 │   │   │   │   │   │   │   ├── finaliser-instruction.modal.tsx
 │   │   │   │   │   │   │   └── use-etapes-instruction-side-panel.tsx
+│   │   │   │   │   │   ├── dossier-instruction-cookie.spec.ts
+│   │   │   │   │   │   ├── dossier-instruction-cookie.ts
 │   │   │   │   │   │   ├── dossier-instruction-path.spec.ts
 │   │   │   │   │   │   ├── dossier-instruction-path.ts
 │   │   │   │   │   │   ├── dossier-instruction-ref.ts
@@ -1463,9 +1476,12 @@
 │   │   │   │   │   │   │   │   ├── details.view.tsx
 │   │   │   │   │   │   │   │   ├── editable-item.tsx
 │   │   │   │   │   │   │   │   ├── form-section.tsx
-│   │   │   │   │   │   │   │   └── planning
-│   │   │   │   │   │   │   │       ├── index.tsx
-│   │   │   │   │   │   │   │       └── planning-schema.ts
+│   │   │   │   │   │   │   │   ├── planning
+│   │   │   │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   │   │   │   └── planning-schema.ts
+│   │   │   │   │   │   │   │   └── secteurs
+│   │   │   │   │   │   │   │       ├── fiche-secteurs.list.tsx
+│   │   │   │   │   │   │   │       └── index.tsx
 │   │   │   │   │   │   │   ├── documents
 │   │   │   │   │   │   │   │   ├── DocumentPicto.tsx
 │   │   │   │   │   │   │   │   ├── add-fiche-document.modal.tsx
@@ -1550,6 +1566,8 @@
 │   │   │   │   │   │   │   │   └── use-fiche-sous-actions.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-get-fiche-secteurs.ts
+│   │   │   │   │   │   │   ├── use-upsert-fiche-secteurs.ts
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheAction.ts
 │   │   │   │   │   │   │   └── useFichesActionLiees.ts
@@ -1656,6 +1674,14 @@
 │   │   │   │   │   │       └── sorting-parameters.ts
 │   │   │   │   │   ├── plan-types-to-options.spec.ts
 │   │   │   │   │   ├── plan-types-to-options.ts
+│   │   │   │   │   ├── secteurs-counts
+│   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-list-plan-fiches-secteurs-a-verifier.ts
+│   │   │   │   │   │   │   └── use-list-plan-secteurs-counts.ts
+│   │   │   │   │   │   ├── format-plan-secteurs-counts.spec.ts
+│   │   │   │   │   │   ├── format-plan-secteurs-counts.ts
+│   │   │   │   │   │   ├── plan-secteurs-verification.panel.tsx
+│   │   │   │   │   │   └── plan-secteurs.button.tsx
 │   │   │   │   │   ├── show-plan
 │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   ├── axe-node.adapter.spec.ts
@@ -1995,6 +2021,8 @@
 │   │   │   │   │   │   ├── download-snapshots.dropdown.tsx
 │   │   │   │   │   │   └── evolutions-snapshots.dropdown.tsx
 │   │   │   │   │   ├── evolutions-score-total.chart.tsx
+│   │   │   │   │   ├── has-mixed-referentiel-versions.spec.ts
+│   │   │   │   │   ├── has-mixed-referentiel-versions.ts
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   └── updateSnapshotName
 │   │   │   │   │       ├── update-snapshot-name.button.tsx
@@ -2135,9 +2163,13 @@
 │   │   │   │   └── utils.ts
 │   │   │   ├── shared
 │   │   │   │   ├── actions-de-reference
+│   │   │   │   │   ├── action-de-reference-detail.link.tsx
 │   │   │   │   │   ├── action-de-reference.card.spec.tsx
 │   │   │   │   │   ├── action-de-reference.card.stories.tsx
 │   │   │   │   │   ├── action-de-reference.card.tsx
+│   │   │   │   │   ├── action-de-reference.content.spec.tsx
+│   │   │   │   │   ├── action-de-reference.content.tsx
+│   │   │   │   │   ├── action-de-reference.view.tsx
 │   │   │   │   │   ├── actions-de-reference.contract.ts
 │   │   │   │   │   ├── actions-de-reference.filters.spec.tsx
 │   │   │   │   │   ├── actions-de-reference.filters.stories.tsx
@@ -2152,6 +2184,7 @@
 │   │   │   │   │   │   ├── clean-search-params.ts
 │   │   │   │   │   │   ├── use-actions-de-reference-search-params.spec.ts
 │   │   │   │   │   │   ├── use-actions-de-reference-search-params.ts
+│   │   │   │   │   │   ├── use-get-action-de-reference.ts
 │   │   │   │   │   │   ├── use-list-actions-de-reference.ts
 │   │   │   │   │   │   └── use-update-action-de-reference.ts
 │   │   │   │   │   ├── discard-changes-confirm.modal.stories.tsx
@@ -2485,6 +2518,9 @@
 │   │   │       ├── error
 │   │   │       │   ├── error.card.tsx
 │   │   │       │   └── error.page.tsx
+│   │   │       ├── error-tracking
+│   │   │       │   ├── capture-exception.server.ts
+│   │   │       │   └── capture-exception.ts
 │   │   │       ├── fetch-and-save-file.spec.ts
 │   │   │       ├── fetch-and-save-file.ts
 │   │   │       ├── file.ts
@@ -2503,15 +2539,15 @@
 │   │   │       ├── posthog
 │   │   │       │   └── use-is-feature-flag-enabled.ts
 │   │   │       ├── react-query
+│   │   │       │   ├── autosave-status
+│   │   │       │   │   ├── autosave-status.spec.ts
+│   │   │       │   │   ├── autosave-status.ts
+│   │   │       │   │   └── use-autosave-status.ts
 │   │   │       │   └── use-mutation-cache-subscriber.tsx
 │   │   │       ├── runtime-env
 │   │   │       │   └── validate-runtime-env.ts
 │   │   │       ├── save-blob.ts
 │   │   │       ├── scroll-reset.tsx
-│   │   │       ├── sentry
-│   │   │       │   ├── sentry-client.lazy.tsx
-│   │   │       │   ├── sentry.server.config.ts
-│   │   │       │   └── sentry.utils.ts
 │   │   │       ├── shasum256.ts
 │   │   │       ├── to-locale-fixed.ts
 │   │   │       ├── to-percent-string.ts
@@ -3021,6 +3057,7 @@
 │   │   │   │   │       ├── groupement.table.ts
 │   │   │   │   │       ├── groupement.test-fixture.ts
 │   │   │   │   │       ├── imports-banatic.table.ts
+│   │   │   │   │       ├── imports-code-siren-commune.table.ts
 │   │   │   │   │       ├── imports-commune.table.ts
 │   │   │   │   │       ├── imports-departement.table.ts
 │   │   │   │   │       ├── imports-epci-commune.table.ts
@@ -3920,6 +3957,44 @@
 │   │   │   │   │   │   └── fiche-annexes.service.ts
 │   │   │   │   │   ├── fiche-duplication
 │   │   │   │   │   │   └── fiche-duplication.service.ts
+│   │   │   │   │   ├── fiche-secteurs
+│   │   │   │   │   │   ├── communs-secteurs-api.service.ts
+│   │   │   │   │   │   ├── communs-secteurs-api.test-fixture.ts
+│   │   │   │   │   │   ├── complete-fiche-secteurs.service.ts
+│   │   │   │   │   │   ├── complete-plan-secteurs
+│   │   │   │   │   │   │   ├── complete-plan-secteurs.e2e-spec.ts
+│   │   │   │   │   │   │   ├── complete-plan-secteurs.module.ts
+│   │   │   │   │   │   │   ├── complete-plan-secteurs.queue.ts
+│   │   │   │   │   │   │   ├── complete-plan-secteurs.service.ts
+│   │   │   │   │   │   │   ├── complete-plan-secteurs.worker.ts
+│   │   │   │   │   │   │   └── enqueue-complete-plan-secteurs.service.ts
+│   │   │   │   │   │   ├── fiche-action-secteur-attribution.table.ts
+│   │   │   │   │   │   ├── fiche-secteurs-attribution.repository.ts
+│   │   │   │   │   │   ├── fiche-secteurs-eligibilite.repository.ts
+│   │   │   │   │   │   ├── fiche-secteurs.rules.ts
+│   │   │   │   │   │   ├── get-fiche-secteurs.input.ts
+│   │   │   │   │   │   ├── get-fiche-secteurs.output.ts
+│   │   │   │   │   │   ├── get-fiche-secteurs.router.e2e-spec.ts
+│   │   │   │   │   │   ├── get-fiche-secteurs.router.ts
+│   │   │   │   │   │   ├── get-fiche-secteurs.service.ts
+│   │   │   │   │   │   ├── list-plan-fiches-secteurs-a-verifier.input.ts
+│   │   │   │   │   │   ├── list-plan-fiches-secteurs-a-verifier.output.ts
+│   │   │   │   │   │   ├── list-plan-fiches-secteurs-a-verifier.repository.ts
+│   │   │   │   │   │   ├── list-plan-fiches-secteurs-a-verifier.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-plan-fiches-secteurs-a-verifier.router.ts
+│   │   │   │   │   │   ├── list-plan-fiches-secteurs-a-verifier.service.ts
+│   │   │   │   │   │   ├── list-plan-secteurs-counts.input.ts
+│   │   │   │   │   │   ├── list-plan-secteurs-counts.output.ts
+│   │   │   │   │   │   ├── list-plan-secteurs-counts.repository.ts
+│   │   │   │   │   │   ├── list-plan-secteurs-counts.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-plan-secteurs-counts.router.ts
+│   │   │   │   │   │   ├── list-plan-secteurs-counts.service.ts
+│   │   │   │   │   │   ├── plan-fiches-secteurs.repository.ts
+│   │   │   │   │   │   ├── secteur-reglementaire.column.ts
+│   │   │   │   │   │   ├── upsert-fiche-secteurs.input.ts
+│   │   │   │   │   │   ├── upsert-fiche-secteurs.router.e2e-spec.ts
+│   │   │   │   │   │   ├── upsert-fiche-secteurs.router.ts
+│   │   │   │   │   │   └── upsert-fiche-secteurs.service.ts
 │   │   │   │   │   ├── fiches.module.ts
 │   │   │   │   │   ├── fiches.router.ts
 │   │   │   │   │   ├── fiches.test-fixture.ts
@@ -3935,6 +4010,9 @@
 │   │   │   │   │   │   ├── list-fiches.router.ts
 │   │   │   │   │   │   └── list-fiches.service.ts
 │   │   │   │   │   ├── migrations
+│   │   │   │   │   │   ├── backfill-fiche-secteurs
+│   │   │   │   │   │   │   ├── backfill-fiche-secteurs.e2e-spec.ts
+│   │   │   │   │   │   │   └── backfill-fiche-secteurs.ts
 │   │   │   │   │   │   ├── fix-sous-actions-ordering
 │   │   │   │   │   │   │   ├── fix-sous-actions-ordering.spec.ts
 │   │   │   │   │   │   │   └── fix-sous-actions-ordering.ts
@@ -4631,6 +4709,8 @@
 │   │   │   │   │   ├── actions-de-reference.router.e2e-spec.ts
 │   │   │   │   │   ├── actions-de-reference.router.ts
 │   │   │   │   │   ├── actions-de-reference.trpc-errors.ts
+│   │   │   │   │   ├── get-action-de-reference
+│   │   │   │   │   │   └── get-action-de-reference.service.ts
 │   │   │   │   │   ├── list-actions-de-reference
 │   │   │   │   │   │   └── list-actions-de-reference.service.ts
 │   │   │   │   │   ├── load-actions-de-reference.e2e-spec.ts
@@ -4695,6 +4775,8 @@
 │   │   │   │   │       │   ├── confirm-oidc-identity-linked-to-user.router.e2e-spec.ts
 │   │   │   │   │       │   ├── confirm-oidc-identity-linked-to-user.router.ts
 │   │   │   │   │       │   └── confirm-oidc-identity-linked-to-user.service.ts
+│   │   │   │   │       ├── create-collectivite-from-imports
+│   │   │   │   │       │   └── create-collectivite-from-imports.service.ts
 │   │   │   │   │       ├── create-supabase-session.service.spec.ts
 │   │   │   │   │       ├── create-supabase-session.service.ts
 │   │   │   │   │       ├── create-user-oidc-identity
@@ -4844,6 +4926,8 @@
 │   │   │       ├── concurrency-limiter.spec.ts
 │   │   │       ├── concurrency-limiter.ts
 │   │   │       ├── config
+│   │   │       │   ├── build-queue-redis-connection.spec.ts
+│   │   │       │   ├── build-queue-redis-connection.ts
 │   │   │       │   ├── configuration.model.ts
 │   │   │       │   ├── configuration.module.ts
 │   │   │       │   ├── configuration.service.ts
@@ -4895,6 +4979,9 @@
 │   │   │       ├── email
 │   │   │       │   ├── email.service.e2e-spec.ts
 │   │   │       │   └── email.service.ts
+│   │   │       ├── error-tracking
+│   │   │       │   ├── capture-exception.ts
+│   │   │       │   └── error-tracking.client.ts
 │   │   │       ├── excel
 │   │   │       │   ├── export-excel.utils.spec.ts
 │   │   │       │   └── export-excel.utils.ts
@@ -4986,13 +5073,13 @@
 │   │   │       │   └── run-preview.sh
 │   │   │       ├── postgresql-error-codes.enum.ts
 │   │   │       ├── result.type.ts
-│   │   │       ├── sentry-init.ts
 │   │   │       ├── sleep.utils.ts
 │   │   │       ├── string.utils.ts
 │   │   │       ├── supabase
 │   │   │       │   ├── document-storage.errors.ts
 │   │   │       │   ├── document-storage.service.ts
 │   │   │       │   └── supabase-cookie-parser.ts
+│   │   │       ├── telemetry-init.ts
 │   │   │       ├── test-fixture.utils.ts
 │   │   │       ├── token-rate-limiter.spec.ts
 │   │   │       ├── token-rate-limiter.ts
@@ -5701,14 +5788,6 @@
 │       │   │   ├── posthog-collectivites-sync.service.spec.ts
 │       │   │   ├── posthog-collectivites-sync.service.ts
 │       │   │   └── posthog.module.ts
-│       │   ├── sentry
-│       │   │   ├── controllers
-│       │   │   │   └── sentry-notification.controller.ts
-│       │   │   ├── models
-│       │   │   │   └── SentryEventWebhookPayload.ts
-│       │   │   ├── sentry-notification.module.ts
-│       │   │   └── services
-│       │   │       └── sentry-notification.service.ts
 │       │   ├── sirene
 │       │   │   ├── sirene.model.ts
 │       │   │   ├── sirene.module.ts
@@ -5718,7 +5797,6 @@
 │       │   │   ├── database
 │       │   │   │   ├── database.module.ts
 │       │   │   │   └── database.service.ts
-│       │   │   ├── mattermost-notification.service.ts
 │       │   │   ├── sleep.utils.ts
 │       │   │   ├── trpc
 │       │   │   │   └── trpc-client.service.ts
@@ -5985,6 +6063,7 @@
 │   │   │   │   ├── pcaet_documents_aval.sql
 │   │   │   │   ├── pcaet_documents_plans_annexes.sql
 │   │   │   │   ├── pcaet_ees_absorbe_etude_impact.sql
+│   │   │   │   ├── pcaet_plan_actions_inclusion_declaree.sql
 │   │   │   │   ├── pcaet_plan_chaleur_froid_commune_membre.sql
 │   │   │   │   ├── pcaet_programme_actions.sql
 │   │   │   │   ├── pcaet_saisine_hors_plateforme.sql
@@ -6207,7 +6286,7 @@
 │   │   │   │   ├── export@v2.29.0.sql
 │   │   │   │   ├── export@v2.30.0.sql
 │   │   │   │   ├── export@v2.49.0.sql
-│   │   │   │   ├── fiche_*.sql  (12 files)
+│   │   │   │   ├── fiche_*.sql  (13 files)
 │   │   │   │   ├── fiches.sql
 │   │   │   │   ├── fiches@v2.102.0.sql
 │   │   │   │   ├── fiches@v2.28.0.sql
@@ -6596,6 +6675,7 @@
 │   │   │   │   ├── pcaet_documents_aval.sql
 │   │   │   │   ├── pcaet_documents_plans_annexes.sql
 │   │   │   │   ├── pcaet_ees_absorbe_etude_impact.sql
+│   │   │   │   ├── pcaet_plan_actions_inclusion_declaree.sql
 │   │   │   │   ├── pcaet_plan_chaleur_froid_commune_membre.sql
 │   │   │   │   ├── pcaet_programme_actions.sql
 │   │   │   │   ├── pcaet_saisine_hors_plateforme.sql
@@ -6818,7 +6898,7 @@
 │   │   │   │   ├── export@v2.29.0.sql
 │   │   │   │   ├── export@v2.30.0.sql
 │   │   │   │   ├── export@v2.49.0.sql
-│   │   │   │   ├── fiche_*.sql  (12 files)
+│   │   │   │   ├── fiche_*.sql  (13 files)
 │   │   │   │   ├── fiches.sql
 │   │   │   │   ├── fiches@v2.102.0.sql
 │   │   │   │   ├── fiches@v2.28.0.sql
@@ -7207,6 +7287,7 @@
 │   │       │   ├── pcaet_documents_aval.sql
 │   │       │   ├── pcaet_documents_plans_annexes.sql
 │   │       │   ├── pcaet_ees_absorbe_etude_impact.sql
+│   │       │   ├── pcaet_plan_actions_inclusion_declaree.sql
 │   │       │   ├── pcaet_plan_chaleur_froid_commune_membre.sql
 │   │       │   ├── pcaet_programme_actions.sql
 │   │       │   ├── pcaet_saisine_hors_plateforme.sql
@@ -7429,7 +7510,7 @@
 │   │       │   ├── export@v2.29.0.sql
 │   │       │   ├── export@v2.30.0.sql
 │   │       │   ├── export@v2.49.0.sql
-│   │       │   ├── fiche_*.sql  (12 files)
+│   │       │   ├── fiche_*.sql  (13 files)
 │   │       │   ├── fiches.sql
 │   │       │   ├── fiches@v2.102.0.sql
 │   │       │   ├── fiches@v2.28.0.sql
@@ -8172,6 +8253,8 @@
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.schema.ts
 │   │   │   │       │   ├── demarche-pcaet-topic-kind.enum.schema.ts
 │   │   │   │       │   ├── demarche-pcaet-vulnerabilite-niveau.enum.schema.ts
+│   │   │   │       │   ├── demarche-pcaet-vulnerabilite.rules.spec.ts
+│   │   │   │       │   ├── demarche-pcaet-vulnerabilite.rules.ts
 │   │   │   │       │   └── demarche-pcaet-vulnerabilite.schema.ts
 │   │   │   │       ├── pcaet-assujettissement.rules.spec.ts
 │   │   │   │       ├── pcaet-assujettissement.rules.ts
@@ -8264,13 +8347,17 @@
 │   │   │   │   │   ├── fiche-budget.schema.ts
 │   │   │   │   │   ├── fiche-etape.schema.ts
 │   │   │   │   │   ├── fiche-note.schema.ts
+│   │   │   │   │   ├── fiche-secteurs.schema.ts
 │   │   │   │   │   ├── fiche-sharing.schema.ts
 │   │   │   │   │   ├── fiche.schema.ts
 │   │   │   │   │   ├── participation-citoyenne.enum.schema.ts
 │   │   │   │   │   ├── pilier-eci.enum.schema.ts
 │   │   │   │   │   ├── priorite.enum.schema.ts
+│   │   │   │   │   ├── secteur-reglementaire.enum.schema.ts
 │   │   │   │   │   ├── statut.enum.schema.ts
 │   │   │   │   │   └── utils
+│   │   │   │   │       ├── fiche-secteurs.rules.spec.ts
+│   │   │   │   │       ├── fiche-secteurs.rules.ts
 │   │   │   │   │       ├── fiche-status-color.utils.ts
 │   │   │   │   │       ├── fiche.rules.spec.ts
 │   │   │   │   │       └── fiche.rules.ts
@@ -8865,6 +8952,10 @@
 │       │   │   │   └── index.ts
 │       │   │   ├── VisibleWhen
 │       │   │   │   └── index.tsx
+│       │   │   ├── autosave-badge
+│       │   │   │   ├── autosave-badge.stories.tsx
+│       │   │   │   ├── autosave-badge.tsx
+│       │   │   │   └── index.ts
 │       │   │   ├── inline-edit
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── inline-edit.wrapper.stories.tsx
@@ -9209,4 +9300,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1462 directories, 8123 files
+1469 directories, 8210 files
