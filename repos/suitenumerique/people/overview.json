@@ -1,35 +1,36 @@
 {
   "url": "https://github.com/suitenumerique/people",
   "name": "people",
-  "description": "Application de gestion des utilisateurs, des équipes et de la distribution des permissions pour l'écosystème La Suite. Elle permet de centraliser l'identité et les accès au sein de l'infrastructure numérique.",
+  "description": "Application de gestion des utilisateurs, des équipes et de la distribution des permissions pour l'écosystème La Suite.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Gestion des équipes & Partenaires",
     "Authentification & Accès",
     "Administration & Backoffice",
+    "Statistiques & Rapports",
     "Gestion des profils & Comptes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Django",
     "Django Rest Framework",
     "PostgreSQL",
     "Redis",
     "Celery",
     "Keycloak",
-    "Docker",
-    "Nginx",
-    "uv"
+    "Next.js",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
-    "Python (scripts & backend)",
+    "React / Next.js",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
+    "Python (scripts & backend)",
+    "Celery & Queue asynchrone",
     "Authentification (composant)",
-    "Celery & Queue asynchrone"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
@@ -37,20 +38,24 @@
       "session"
     ]
   },
-  "tests": "pytest, e2e tests",
+  "tests": [
+    "pytest"
+  ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-07T10:03:15Z",
-  "status": "maintained",
+  "lastActivity": "2026-10-08T12:48:39Z",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
+    "React & Next.js",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Bases de données SQL",
+    "TypeScript"
   ]
 }

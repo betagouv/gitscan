@@ -1,16 +1,21 @@
-## Changelog : people (30 derniers jours, au [date])
+## Changelog : people (30 derniers jours, au 08/10/2026)
 
 ### Résumé
-Cette période est marquée par une simplification majeure de l'application avec le retrait des fonctionnalités liées à OAuth2 et aux fournisseurs d'identité (IdP). La sécurité a été renforcée concernant la gestion des domaines d'e-mails et l'environnement de développement frontend a été modernisé.
+Cette période est marquée par un renforcement de la sécurité et une simplification de l'application. Nous avons supprimé les fonctionnalités liées à l'authentification OAuth2 pour alléger le système et amélioré la confidentialité des données en limitant l'accès aux configurations de domaine pour certains profils d'utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Sécurité** : Renforcement de la vérification des domaines d'e-mails des organisations pour assurer une correspondance exacte.
-- **Authentification** : Suppression des fonctionnalités liées à OAuth2 et aux fournisseurs d'identité (IdP).
+- **Sécurité et confidentialité** : La configuration des domaines est désormais masquée pour les utilisateurs disposant uniquement de droits de lecture sur un domaine.
 
 ### Évolutions techniques
-- **Base de données** : Nettoyage des tables obsolètes suite au retrait des fonctionnalités OAuth2.
-- **Frontend** : Modernisation de la chaîne de qualité avec le passage à ESLint 9 et la transformation de la configuration en plugin.
-- **Configuration** : Mise à jour des configurations applicatives pour Desk, l'internationalisation (i18n) et les tests E2E.
+- **Sécurité** :
+    - Amélioration de la précision de la correspondance des domaines d'e-mails pour les organisations.
+    - Mise à jour de la bibliothèque `urllib3` vers la version 2.8.0 pour corriger des vulnérabilités.
+- **Refactoring et simplification** :
+    - Suppression des fonctionnalités et des tables de base de données liées à OAuth2 et aux fournisseurs d'identité (IdP).
+- **Qualité de code et Frontend** :
+    - Migration vers ESLint 9, incluant la transformation de la configuration de linting en un plugin dédié.
+    - Mise à jour des configurations applicatives frontend (desk, i18n et e2e).
 
 ### Autres changements
-- **Qualité du code** : Refactoring de variables pour assurer la conformité avec les standards Sonar.
+- Mise à jour des chaînes de caractères traduites (i18n).
+- Nettoyage de code pour la conformité aux standards de qualité (Sonar).
