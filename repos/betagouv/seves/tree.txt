@@ -7,7 +7,8 @@
 │   │   └── fonctionnalité.md
 │   ├── dependabot.yml
 │   └── workflows
-│       └── django.yml
+│       ├── django.yml
+│       └── go.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .python-version
@@ -158,6 +159,7 @@
 │   │   ├── 0064_auto_20260727_1357.py
 │   │   ├── 0065_create_sa_group.py
 │   │   ├── 0066_remove_contact_contact_agent_email_only_and_more.py
+│   │   ├── 0067_alter_document_document_type.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
@@ -201,7 +203,8 @@
 │   │       │   └── widgets
 │   │       │       ├── treeselect.mjs
 │   │       │       ├── treeselect_dsfr.css
-│   │       │       └── treeselect_dsfr.mjs
+│   │       │       ├── treeselect_dsfr.mjs
+│   │       │       └── virtual_option_list.mjs
 │   │       ├── forms.js
 │   │       ├── forms.mjs
 │   │       ├── free_links.js
@@ -269,6 +272,7 @@
 │   │   │   │   ├── document_uploads.html
 │   │   │   │   └── widgets
 │   │   │   │       └── treeselect.html
+│   │   │   ├── landing.html
 │   │   │   ├── login.html
 │   │   │   ├── message_detail.html
 │   │   │   ├── message_form.html
@@ -346,6 +350,8 @@
 │   ├── admin.py
 │   ├── apps.py
 │   ├── context_processors.py
+│   ├── doc_templates
+│   │   └── evenement_animal.docx
 │   ├── filters.py
 │   ├── forms
 │   │   ├── __init__.py
@@ -356,6 +362,11 @@
 │   │   ├── message.py
 │   │   └── veterinaire.py
 │   ├── formsets.py
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       └── set_evenement_animal_commune_from_coordinates.py
 │   ├── managers.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -385,6 +396,17 @@
 │   │   ├── 0024_populate_espece_is_highlighted.py
 │   │   ├── 0025_populate_maladie_especes_concernees.py
 │   │   ├── 0026_merge_20260916_1739.py
+│   │   ├── 0027_auto_20260918_1036.py
+│   │   ├── 0028_evenementanimal_typage_champ_libre_and_more.py
+│   │   ├── 0029_situationuniteregle.py
+│   │   ├── 0030_populate_situation_unite_regle.py
+│   │   ├── 0031_update_laboratoires_data.py
+│   │   ├── 0032_alter_analyse_methode.py
+│   │   ├── 0033_analyse_analyse_methode_required_unless_en_attente.py
+│   │   ├── 0034_remove_evenementanimal_evenementanimal_type_lieu_consistent_with_statut_animal_and_more.py
+│   │   ├── 0035_alter_evenementanimal_code_insee_and_more.py
+│   │   ├── 0036_evenementanimal_departement.py
+│   │   ├── 0037_alter_maladie_description_type.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -394,25 +416,40 @@
 │   │   ├── laboratoire.py
 │   │   ├── maladie.py
 │   │   ├── methode_analyse.py
+│   │   ├── situation_unite.py
+│   │   ├── typage.py
 │   │   └── veterinaire.py
+│   ├── referentiels
+│   │   ├── __init__.py
+│   │   └── situation_unite.py
 │   ├── static
 │   │   └── sa
 │   │       ├── adis.mjs
 │   │       ├── analyse.mjs
 │   │       ├── detenteur.mjs
+│   │       ├── espece_autres.mjs
 │   │       ├── espece_grouping.mjs
 │   │       ├── especes_concernees.mjs
 │   │       ├── evenement_animal_details.css
+│   │       ├── evenement_animal_details.js
 │   │       ├── evenement_animal_form.css
+│   │       ├── evenement_list.css
+│   │       ├── evenement_list.mjs
+│   │       ├── informations.mjs
 │   │       ├── localisation_from_detenteur.mjs
 │   │       ├── maladie_description_message.mjs
+│   │       ├── situation_unite.mjs
+│   │       ├── typage.mjs
 │   │       └── veterinaire.mjs
 │   ├── templates
 │   │   └── sa
 │   │       ├── _analyse_modal.html
+│   │       ├── _date_range_filter.html
 │   │       ├── _evenement_analyses.html
 │   │       ├── _evenement_animal_actions_navigation.html
+│   │       ├── _evenement_animal_advanced_filters.html
 │   │       ├── _evenement_animal_badges.html
+│   │       ├── _evenement_animal_infos.html
 │   │       ├── _evenement_veterinaires.html
 │   │       ├── _veterinaire_modal.html
 │   │       ├── base.html
@@ -427,6 +464,8 @@
 │   │       │   └── veterinaire_base_set.html
 │   │       └── widgets
 │   │           └── latlon.html
+│   ├── templatetags
+│   │   └── statut_tags.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -441,8 +480,11 @@
 │   │   ├── test_evenement_animal_fin_de_suivi.py
 │   │   ├── test_evenement_animal_list.py
 │   │   ├── test_evenement_animal_list_order.py
+│   │   ├── test_evenement_animal_typage.py
 │   │   ├── test_evenement_animal_veterinaire.py
-│   │   └── test_models.py
+│   │   ├── test_models.py
+│   │   ├── test_set_evenement_animal_commune_from_coordinates.py
+│   │   └── test_situation_unite_referentiel.py
 │   ├── urls.py
 │   └── views
 │       ├── __init__.py
@@ -647,6 +689,10 @@
 │   └── widgets.py
 ├── static
 │   └── images
+│       ├── domaine-aliments.jpg
+│       ├── domaine-animale.jpg
+│       ├── domaine-vegetaux.jpg
+│       ├── hero-app.webp
 │       ├── login.jpeg
 │       ├── marianne.png
 │       ├── ovoid.svg
@@ -802,6 +848,11 @@
 │   │   ├── 0128_auto_20260610_1036.py
 │   │   ├── 0129_auto_20260619_1521.py
 │   │   ├── 0130_on_puccinia_kuehnii.py
+│   │   ├── 0131_auto_20260911_1432.py
+│   │   ├── 0132_on_xylotrechus_rufilius.py
+│   │   ├── 0133_alter_evenement_numero_europhyt.py
+│   │   ├── 0134_alter_lieu_code_insee_etablissement.py
+│   │   ├── 0135_on_papilio_demodocus.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1108,4 +1159,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-88 directories, 1022 files
+93 directories, 1068 files
