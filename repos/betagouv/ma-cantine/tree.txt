@@ -41,6 +41,7 @@
 │   │   ├── App.vue
 │   │   ├── components
 │   │   │   ├── AppBadgeCanteen.vue
+│   │   │   ├── AppBadgeDiagnostic.vue
 │   │   │   ├── AppBadgeSiretSiren.vue
 │   │   │   ├── AppBanners.vue
 │   │   │   ├── AppBlueCard.vue
@@ -70,6 +71,7 @@
 │   │   │   ├── CanteenButtonClaim.vue
 │   │   │   ├── CanteenButtonJoin.vue
 │   │   │   ├── CanteenButtonLink.vue
+│   │   │   ├── CanteenDiagnosticsList.vue
 │   │   │   ├── CanteenDisplayInformations.vue
 │   │   │   ├── CanteenEstablishmentCard.vue
 │   │   │   ├── CanteenEstablishmentSearch.vue
@@ -82,16 +84,18 @@
 │   │   │   ├── CanteenModalManagerRemove.vue
 │   │   │   ├── CanteenModalSatelliteAdd.vue
 │   │   │   ├── CanteenModalSatelliteRemove.vue
-│   │   │   ├── CanteenSidebarTitle.vue
 │   │   │   ├── CanteenTableManagers.vue
-│   │   │   ├── CanteenTeledeclarationPdf.vue
 │   │   │   ├── CanteensTable.vue
 │   │   │   ├── CanteensTableSatellites.vue
 │   │   │   ├── DiagnosticEgalimComplete.vue
 │   │   │   ├── DiagnosticEgalimSimple.vue
+│   │   │   ├── DiagnosticModalCancel.vue
+│   │   │   ├── DiagnosticPdf.vue
 │   │   │   ├── DiagnosticPurchasesLinked.vue
 │   │   │   ├── DiagnosticSatellitesLinked.vue
+│   │   │   ├── DiagnosticSummary.vue
 │   │   │   ├── DiagnosticSummaryAccordions.vue
+│   │   │   ├── DiagnosticSummaryTile.vue
 │   │   │   ├── DsfrBooleanRadio.vue
 │   │   │   ├── EdibleChart.vue
 │   │   │   ├── EmphasiseText.vue
@@ -106,10 +110,19 @@
 │   │   │   ├── FilterByYears.vue
 │   │   │   ├── GestionnaireEmptyCanteen.vue
 │   │   │   ├── GestionnaireGuides.vue
+│   │   │   ├── GestionnaireSidebarTitle.vue
 │   │   │   ├── GestionnaireTeledeclarationNav.vue
 │   │   │   ├── GraphBase.vue
 │   │   │   ├── GraphGauge.vue
 │   │   │   ├── GraphPie.vue
+│   │   │   ├── IconAward.vue
+│   │   │   ├── IconLink.vue
+│   │   │   ├── IconMacaronAppro.vue
+│   │   │   ├── IconMacaronBase.vue
+│   │   │   ├── IconMacaronDiversification.vue
+│   │   │   ├── IconMacaronInfo.vue
+│   │   │   ├── IconMacaronPlastic.vue
+│   │   │   ├── IconMacaronWaste.vue
 │   │   │   ├── ImportAdminCallout.vue
 │   │   │   ├── ImportCard.vue
 │   │   │   ├── ImportDeprecatedWarning.vue
@@ -146,6 +159,7 @@
 │   │   │   ├── TunnelTeledeclarationAccordionItem.vue
 │   │   │   ├── TunnelTeledeclarationAccordionsGroup.vue
 │   │   │   ├── TunnelTeledeclarationField.vue
+│   │   │   ├── TunnelTeledeclarationGroupTitle.vue
 │   │   │   ├── TunnelTeledeclarationIconCheck.vue
 │   │   │   ├── TunnelTeledeclarationModal.vue
 │   │   │   ├── TunnelTeledeclarationModalErrors.vue
@@ -270,6 +284,7 @@
 │   │       ├── GestionnaireTunnelApproOrigine.vue
 │   │       ├── GestionnaireTunnelApproRecapitulatif.vue
 │   │       ├── GestionnaireTunnelApproSaisie.vue
+│   │       ├── GestionnaireTunnelApproTeledeclares.vue
 │   │       ├── GestionnaireTunnelConvives.vue
 │   │       ├── GestionnaireTunnelGaspillage.vue
 │   │       ├── GestionnaireTunnelPlastique.vue
@@ -328,7 +343,6 @@
 │   │   └── wastemeasurement.py
 │   ├── templates
 │   │   ├── canteen_join_request.html
-│   │   ├── canteen_not_found.html
 │   │   ├── contact_canteen.html
 │   │   ├── teledeclaration_campaign_2024
 │   │   │   ├── canteen.html
@@ -501,7 +515,6 @@
 │   │   ├── test_canteen_images.py
 │   │   ├── test_canteen_managers.py
 │   │   ├── test_canteen_ministries.py
-│   │   ├── test_canteen_not_found.py
 │   │   ├── test_canteen_published.py
 │   │   ├── test_canteen_statistics.py
 │   │   ├── test_canteen_status.py
@@ -638,6 +651,7 @@
 │       ├── commands.py
 │       ├── dates.py
 │       ├── file_import.py
+│       ├── fill_creation.py
 │       ├── images.py
 │       ├── siret.py
 │       ├── tests
@@ -655,10 +669,12 @@
 │   │   ├── blogtag.py
 │   │   ├── canteen.py
 │   │   ├── communityevent.py
+│   │   ├── definitionlocal.py
 │   │   ├── diagnostic.py
 │   │   ├── importfailure.py
 │   │   ├── managerinvitation.py
 │   │   ├── message.py
+│   │   ├── oauth2.py
 │   │   ├── partner.py
 │   │   ├── partnertype.py
 │   │   ├── purchase.py
@@ -686,6 +702,7 @@
 │   │   ├── importfailure.py
 │   │   ├── managerinvitation.py
 │   │   ├── message.py
+│   │   ├── oauth2.py
 │   │   ├── partner.py
 │   │   ├── partnertype.py
 │   │   ├── purchase.py
@@ -1019,6 +1036,10 @@
 │   │   ├── 0275_diagnostic_valeur_famille_aocaop_igp_stg.py
 │   │   ├── 0276_alter_canteen_textfield_to_charfield_max_255.py
 │   │   ├── 0277_alter_diagnostic_complete_not_applicable_cleanup.py
+│   │   ├── 0278_canteen_declaration_donnees_2026_and_more.py
+│   │   ├── 0279_diagnostic_definition_local.py
+│   │   ├── 0280_diagnostic_pourcentage_appro_fields.py
+│   │   ├── 0281_oauth2providerapplicationextra.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1027,8 +1048,10 @@
 │   │   ├── canteen.py
 │   │   ├── communityevent.py
 │   │   ├── creation_source.py
+│   │   ├── definitionlocal.py
 │   │   ├── diagnostic.py
 │   │   ├── diagnostic_teledeclaration_dates.py
+│   │   ├── diagnostic_teledeclaration_egalim_objectives.py
 │   │   ├── diagnostic_teledeclaration_field_groups.py
 │   │   ├── diagnostic_teledeclaration_fields.py
 │   │   ├── geo.py
@@ -1037,6 +1060,7 @@
 │   │   ├── importtype.py
 │   │   ├── managerinvitation.py
 │   │   ├── message.py
+│   │   ├── oauth2.py
 │   │   ├── partner.py
 │   │   ├── partnertype.py
 │   │   ├── purchase.py
@@ -1095,10 +1119,12 @@
 │   │   ├── test_diagnostic.py
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostic_teledeclaration_dates.py
+│   │   ├── test_diagnostic_teledeclaration_egalim_objectives.py
 │   │   ├── test_fixtures.py
 │   │   ├── test_history.py
 │   │   ├── test_manager_invitation.py
 │   │   ├── test_messages.py
+│   │   ├── test_oauth2.py
 │   │   ├── test_purchase.py
 │   │   ├── test_resource_action.py
 │   │   ├── test_sector.py
@@ -1118,13 +1144,21 @@
 │   ├── .sqlfluff
 │   ├── README.md
 │   ├── dbt_project.yml
+│   ├── macros
+│   │   ├── groupe_spe.sql
+│   │   ├── libelle_ministere.sql
+│   │   ├── libelles_categories.sql
+│   │   ├── libelles_secteurs.sql
+│   │   └── referentiel_secteurs.sql
 │   ├── models
 │   │   ├── intermediate
 │   │   │   ├── int_canteens_enriched.sql
+│   │   │   ├── int_spe_canteens_inscrites.sql
 │   │   │   ├── int_spe_inscriptions.sql
-│   │   │   └── int_spe_waste.sql
+│   │   │   ├── int_spe_waste.sql
+│   │   │   └── int_spe_waste_by_canteen.sql
 │   │   ├── marts
-│   │   │   ├── mart_canteens.sql
+│   │   │   ├── mart_cantines.sql
 │   │   │   ├── mart_spe_bilan.sql
 │   │   │   ├── mart_spe_bilan_ate.sql
 │   │   │   ├── mart_spe_bilan_iso.sql
@@ -1143,6 +1177,7 @@
 │   │       ├── sources.yml
 │   │       ├── stg_canteen_managers.sql
 │   │       ├── stg_canteens.sql
+│   │       ├── stg_canteens_all.sql
 │   │       ├── stg_diagnostics.sql
 │   │       ├── stg_teledeclarations.sql
 │   │       ├── stg_teledeclarations_invalides.sql
@@ -1150,7 +1185,9 @@
 │   │       └── stg_waste_measurements.sql
 │   ├── package-lock.yml
 │   ├── packages.yml
-│   └── profiles.yml
+│   ├── profiles.yml
+│   └── tests
+│       └── assert_codes_secteurs_et_ministeres_ont_un_libelle.sql
 ├── docs
 │   ├── ONBOARDING.md
 │   ├── api.html
@@ -1450,7 +1487,7 @@
 │   │       ├── export_dataset.py
 │   │       ├── generate_geo_data_to_json.py
 │   │       ├── generate_import_schema.py
-│   │       ├── teledeclaration_fill_egalim_fields.py
+│   │       ├── purchase_fill_creation_user_and_source.py
 │   │       ├── teledeclaration_fix_old.py
 │   │       ├── teledeclaration_generate_1td1site.py
 │   │       ├── teledeclaration_resubmit.py
@@ -1469,25 +1506,27 @@
 │   │   ├── __init__.py
 │   │   ├── test_admin.py
 │   │   ├── test_brevo_user_data.py
+│   │   ├── test_canteen_fill_creation_user_and_source.py
 │   │   ├── test_canteen_fill_declaration_donnees_year_field.py
 │   │   ├── test_canteen_migrate_central_to_groupe.py
 │   │   ├── test_canteen_update_geolocation_data_using_siret.py
 │   │   ├── test_canteen_update_pat_data_using_city_insee_code.py
 │   │   ├── test_dbt_run.py
 │   │   ├── test_diagnostic_fill_computed_fields.py
+│   │   ├── test_diagnostic_fill_creation_user_and_source.py
 │   │   ├── test_diagnostic_fill_invalid_warning_reason_list.py
 │   │   ├── test_etl_analysis.py
 │   │   ├── test_etl_common.py
 │   │   ├── test_etl_open_data.py
 │   │   ├── test_geolocation_bot.py
-│   │   ├── test_teledeclaration_fill_egalim_fields.py
+│   │   ├── test_purchase_fill_creation_user_and_source.py
+│   │   ├── test_sentry.py
 │   │   ├── test_teledeclaration_fix_old.py
 │   │   ├── test_teledeclaration_generate_1td1site_2024.py
 │   │   ├── test_teledeclaration_generate_1td1site_2025.py
 │   │   ├── test_teledeclaration_resubmit.py
 │   │   ├── test_teledeclaration_submit_correction.py
 │   │   ├── test_teledeclaration_submit_outside_of_campaign.py
-│   │   ├── test_utils.py
 │   │   └── test_wastemeasurement_fill_creation_user_and_source.py
 │   ├── urls.py
 │   ├── utils.py
@@ -1512,6 +1551,7 @@
 │   │   ├── base_site.html
 │   │   └── data
 │   │       ├── canteen_textchoices.html
+│   │       ├── definitionlocal_textchoices.html
 │   │       └── sector_textchoices.html
 │   ├── locale
 │   │   └── fr
@@ -1880,9 +1920,10 @@
     │   └── moncomptepro.py
     ├── tests
     │   ├── __init__.py
+    │   ├── test_moncomptepro.py
     │   ├── test_registration.py
     │   ├── test_robots.py
     │   └── test_sitemap.py
     ├── urls.py
     └── views.py
-147 directories, 1813 files
+149 directories, 1852 files
