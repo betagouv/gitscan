@@ -1,23 +1,23 @@
-# Synthèse d'activité : gip-inclusion (du 29/06 au 01/10)
+# Synthèse d'activité : gip-inclusion (du 01/09 au 08/10)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation a été marquée par des transformations d'identité majeures, notamment le rebranding de "La plateforme de l'inclusion" ([les-emplois](/repos/gip-inclusion/les-emplois)) et de "Match Europe" ([grist-custom-forms](/repos/gip-inclusion/grist-custom-forms)). Ces évolutions s'accompagnent d'une amélioration significative de l'expérience utilisateur, avec des tableaux de bord enrichis ([immersion-facile](/repos/gip-inclusion/immersion-facile), [eures-beta](/repos/gip-inclusion/eures-beta)) et des outils de recherche plus intelligents et intuitifs ([data-inclusion](/repos/gip-inclusion/data-inclusion), [dora](/repos/gip-inclusion/dora)).
+L'activité de cette période est marquée par des transformations majeures d'identité et de fonctionnalités, notamment avec le rebranding de [les-emplois](/repos/gip-inclusion/les-emplois) en "La plateforme de l'inclusion" et de [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) vers "Match Europe". L'organisation a considérablement enrichi ses outils avec l'introduction d'un mode démo pour [inclusion-connect](/repos/gip-inclusion/inclusion-connect), de nouveaux modèles de rapports PDF via [export_merged_pull_requests](/repos/gip-inclusion/export_merged_pull_requests), et des capacités de matching et de gestion des candidatures accrues pour [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms). 
 
-Parallèlement, l'organisation a franchi des étapes technologiques clés pour soutenir sa croissance. La migration vers Airflow 3 ([pilotage-airflow](/repos/gip-inclusion/pilotage-airflow)) et l'adoption de déploiements en mode serverless ([fluo-proto](/repos/gip-inclusion/fluo-proto)) renforcent la fiabilité des flux de données et la scalabilité des services, garantissant ainsi une plateforme plus robuste pour les utilisateurs finaux.
+Parallèlement, un effort important a été déployé pour moderniser les infrastructures, notamment via le passage au serverless pour [fluo-proto](/repos/gip-inclusion/fluo-proto) et le déploiement complet de l'environnement pour le projet "emplois-cnav" dans [infrastructure](/repos/gip-inclusion/infrastructure). Ces évolutions visent à améliorer l'expérience utilisateur, la fiabilité des données et la scalabilité des services.
 
 ## Sécurité
-- **Renforcement de l'authentification et des accès** : Amélioration de la gestion des secrets pour le protocole OIDC ([inclusion-connect](/repos/gip-inclusion/inclusion-connect), [les-emplois](/repos/gip-inclusion/les-emplois)) et mise en place de clés API spécifiques par client ([autometa-jobs](/repos/gip-inclusion/autometa-jobs)).
-- **Protection des interfaces et des données** : Renforcement de la politique de sécurité (CSP) pour les intégrations en iframe ([plateforme-accueil](/repos/gip-inclusion/plateforme-accueil)) et suppression des mots de passe codés en dur dans les environnements de prototype ([fluo-proto](/repos/gip-inclusion/fluo-proto)).
-- **Traçabilité et audit** : Implémentation de systèmes de pistes d'audit pour assurer le suivi des actions critiques ([les-emplois](/repos/gip-inclusion/les-emplois), [api-relay-cnav](/repos/gip-inclusion/api-relay-cnav)).
+- **Renforcement des politiques d'accès et de contrôle** : Mise en place de la gestion des secrets (SOPS, Secret Manager) dans [infrastructure](/repos/gip-inclusion/infrastructure) et sécurisation des authentifications (ProConnect, JWKS) pour [les-emplois](/repos/gip-inclusion/les-emplois) et [dora](/repos/gip-inclusion/dora).
+- **Amélioration de la traçabilité** : Implémentation de journaux d'audit complets dans [les-emplois](/repos/gip-inclusion/les-emplois), [api-relay-cnav](/repos/gip-inclusion/api-relay-cnav) et [autometa-jobs](/repos/gip-inclusion/autometa-jobs).
+- **Protection des interfaces et des données** : Renforcement de la politique de sécurité (CSP) pour l'intégration iframe dans [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) et suppression des mots de passe codés en dur dans [fluo-proto](/repos/gip-inclusion/fluo-proto).
 
 ## Autres changements notables
-- **Migrations d'infrastructure majeures** : Passage à Airflow 3 ([pilotage-airflow](/repos/gip-inclusion/pilotage-airflow)), migration vers SeaweedFS pour le stockage ([dora](/repos/gip-inclusion/dora)) et adoption de RustFS pour l'optimisation système ([autometa](/repos/gip-inclusion/autometa)).
-- **Internationalisation** : Mise en place de la gestion multi-langues (i18n) pour le site institutionnel ([site-institutionnel-2025](/repos/gip-inclusion/site-institutionnel-2025)).
-- **Modernisation du déploiement** : Transition vers une architecture de conteneurs serverless pour les prototypes ([fluo-proto](/repos/gip-inclusion/fluo-proto)).
+- **Modernisation de l'infrastructure** : Transition vers un déploiement de conteneurs serverless pour [fluo-proto](/repos/gip-inclusion/fluo-proto) et mise en place de l'architecture Kubernetes/réseau pour le projet "emplois-cnav" dans [infrastructure](/repos/gip-inclusion/infrastructure).
+- **Migrations de stockage** : Migration des données de MinIO vers SeaweedFS et RustFS pour [dora](/repos/gip-inclusion/dora) et [autometa](/repos/gip-inclusion/autometa).
+- **Internationalisation** : Mise en place de la gestion des traductions (i18n) pour le [site-institutionnel-2025](/repos/gip-inclusion/site-institutionnel-2025).
 
 ## Dépôts les plus actifs
-- [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) : Migration majeure de l'infrastructure et enrichissement massif des modèles de données.
-- [dora](/repos/gip-inclusion/dora) : Refonte de l'expérience utilisateur pour les gestionnaires et évolutions importantes de l'infrastructure de stockage.
-- [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) : Rebranding vers Match Europe et optimisation des processus de matching et de candidatures.
-- [les-emplois](/repos/gip-inclusion/les-emplois) : Transformation identitaire et renforcement de la sécurité et de la traçabilité.
-- [immersion-facile](/repos/gip-inclusion/immersion-facile) : Amélioration des tableaux de bord et des fonctionnalités de gestion des conventions.
+- [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) : Rebranding complet, gestion des candidatures spontanées et nouveaux outils d'analytics.
+- [infrastructure](/repos/gip-inclusion/infrastructure) : Déploiement massif de l'architecture dédiée à "emplois-cnav" et sécurisation des accès.
+- [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) : Enrichissement des modèles de reporting et optimisation des pipelines de données.
+- [les-emplois](/repos/gip-inclusion/les-emplois) : Refonte de l'identité, nouveau système d'orientation et renforcement de la traçabilité.
+- [autometa](/repos/gip-inclusion/autometa) : Intégration de nouvelles sources de données et capacités d'analyse statistique avancées.

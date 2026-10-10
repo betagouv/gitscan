@@ -1,17 +1,17 @@
-# Synthèse d'activité : refugies-info (du XX/XX au XX/XX)
+# Synthèse d'activité : refugies-info (du [Date de début] au [Date de fin])
 
 ## Résumé de l'activité
-Cette semaine, l'organisation a franchi des étapes importantes dans l'amélioration de l'expérience utilisateur et de l'accessibilité de ses outils. Le lancement de l'Espace Apprentissage du Français dans [karfur](/repos/refugies-info/karfur) offre de nouveaux parcours pédagogiques enrichis par des fonctions de recherche et de partage mobile (SMS, PDF). 
+Cette semaine, l'activité a été marquée par une amélioration significative de l'expérience utilisateur et des fonctionnalités métier. [playground](/repos/refugies-info/playground) a progressé sur ses capacités de traduction assistée par IA et sur la gestion des flux de travail (workflows), offrant ainsi des outils plus précis et mieux structurés pour les utilisateurs. 
 
-En parallèle, [playground](/repos/refugies-info/playground) renforce ses capacités d'intelligence artificielle pour la traduction et optimise la gestion des contenus grâce à une interface de métadonnées repensée et un nouveau système de notifications intégrées à Slack. Ces évolutions visent à rendre les outils plus intuitifs et plus performants pour les utilisateurs finaux.
+Parallèlement, [karfur](/repos/refugies-info/karfur) a franchi une étape importante avec le lancement de l'« Espace FR », qui introduit de nouveaux outils de recherche, de navigation et d'exportation PDF. Ces évolutions s'accompagnent d'un effort de mise en conformité pour l'accessibilité numérique (RGAA), garantissant un usage plus inclusif.
 
 ## Sécurité
-- Correction de vulnérabilités de sécurité critiques dans [karfur](/repos/refugies-info/karfur).
+- Renforcement de la protection contre les injections HTML via l'intégration de `dompurify` dans [karfur](/repos/refugies-info/karfur).
 
 ## Autres changements notables
-- **Accessibilité et Design** : Mise en conformité majeure avec les normes RGAA (lecteurs d'écran et navigation clavier) dans [karfur](/repos/refugies-info/karfur) et mise à jour importante du Design System avec de nouveaux composants DSFR dans [playground](/repos/refugies-info/playground).
-- **Évolutions structurelles** : Refactorisation de la gestion des rôles utilisateurs dans [playground](/repos/refugies-info/playground) et évolution du schéma de données pour intégrer de nouvelles références dans [karfur](/repos/refugies-info/karfur).
+- Refactorisation de l'architecture de gestion des rôles utilisateurs dans [playground](/repos/refugies-info/playground).
+- Évolutions de l'infrastructure de données dans [karfur](/repos/refugies-info/karfur), incluant une migration de la base de données pour l'intégration de nouveaux identifiants et une optimisation des performances des requêtes MongoDB.
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Amélioration des fonctionnalités d'IA, de l'interface de gestion des contenus et du système de notifications.
-- [karfur](/repos/refugies-info/karfur) : Expansion de l'offre pédagogique, optimisation de l'expérience mobile et renforcement de l'accessibilité.
+- [playground](/repos/refugies-info/playground) : Amélioration des outils de traduction par IA, de la gestion des métadonnées et des systèmes de notification.
+- [karfur](/repos/refugies-info/karfur) : Lancement de l'Espace FR, mise en conformité d'accessibilité et optimisations techniques de la base de données.

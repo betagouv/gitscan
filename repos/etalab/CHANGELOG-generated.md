@@ -1,19 +1,21 @@
-# Synthèse d'activité : etalab (du 22/09 au 01/10)
+# Synthèse d'activité : etalab (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par des avancées majeures dans deux domaines clés : la mobilité et les services publics numériques. Pour le secteur des transports, l'accent a été mis sur l'amélioration de la qualité et de la validation des données (NeTEx, GTFS) via des outils plus performants et des interfaces d'administration enrichies, facilitant la gestion des jeux de données.
+L'activité de cette période est marquée par une consolidation importante des outils de gestion des données de transport et une extension des services de données publiques. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur des interfaces d'administration [transport-site](/repos/etalab/transport-site), l'évolution des schémas de données pour offrir plus de flexibilité [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) et l'enrichissement des bases de données de mobilité [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage).
 
-Pour les services publics, la plateforme [data_pass](/repos/etalab/data_pass) a connu une évolution significative, notamment avec le déploiement de nouveaux parcours dédiés à la petite enfance (EAJE) et une robustesse accrue des échanges avec l'INSEE. Ces évolutions visent à offrir une expérience utilisateur plus fluide et des services plus fiables pour les citoyens et les partenaires.
+Parallèlement, les services d'accès aux données (API) ont bénéficié de renforcements majeurs en termes de stabilité et de sécurité, notamment pour la synchronisation de flux massifs [data_pass](/repos/etalab/data_pass) et la gestion des accès administratifs [admin_api_entreprise](/repos/etalab/admin_api_entreprise). Ces évolutions garantissent une meilleure fiabilité et une plus grande capacité d'intégration pour les partenaires utilisant les services de l'État.
 
 ## Sécurité
-- **Renforcement des accès et de la confidentialité** : mise en place du chiffrement des cookies dans [transport-site](/repos/etalab/transport-site), mise à jour des scopes OAuth et renforcement de la validation des adresses IP dans [data_pass](/repos/etalab/data_pass), ainsi que la rotation annuelle des tokens de webhook dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
-- **Gestion des droits** : restauration des droits d'accès (scope) pour le composant datapass dans [formulaire-qf](/repos/etalab/formulaire-qf) et migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+- **Protection des accès et des sessions** : Mise en place du chiffrement des cookies [transport-site](/repos/etalab/transport-site), rotation annuelle des tokens webhook [admin_api_entreprise](/repos/etalab/admin_api_entreprise) et migration des scopes de tokens vers des demandes d'autorisation [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+- **Contrôle des flux** : Renforcement de la validation des adresses IP pour sécuriser les connexions [data_pass](/repos/etalab/data_pass).
 
 ## Autres changements notables
-- **Évolutions architecturales et performance** : introduction de l'architecture "data packages" pour permettre l'extension des schémas dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide), optimisation de la consommation mémoire via l'allocateur `jemalloc` dans [transport-validator](/repos/etalab/transport-validator), et mise en place de mécanismes de résilience (circuit breaker, rate limiting) pour l'intégration de l'INSEE dans [data_pass](/repos/etalab/data_pass).
-- **Améliorations techniques et infrastructure** : corrections critiques du backend S3 (suppression de fichiers et gestion des types MIME) dans [flask-storage](/repos/etalab/flask-storage) et passage au chargement asynchrone des statuts via Turbo Frame dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+- **Optimisation de la performance et de la stabilité** : Refonte majeure de la synchronisation des données INSEE avec l'introduction de mécanismes de gestion de débit et de "circuit breaker" [data_pass](/repos/etalab/data_pass), et passage à un allocateur mémoire plus efficace pour optimiser la consommation de ressources du validateur GTFS [transport-validator](/repos/etalab/transport-validator).
+- **Évolutions architecturales** : Introduction de l'architecture "data packages" permettant d'étendre les schémas de données de manière flexible sans modifier la structure de base [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide).
+- **Maintenance infrastructurelle** : Résolution de bugs critiques sur le stockage S3 concernant la suppression de fichiers et la détection des types de contenu [flask-storage](/repos/etalab/flask-storage).
 
 ## Dépôts les plus actifs
-- [data_pass](/repos/etalab/data_pass) : Refonte majeure incluant de nouveaux parcours utilisateurs, des intégrations API renforcées et une optimisation de l'infrastructure.
-- [transport-site](/repos/etalab/transport-site) : Améliorations significatives de l'interface d'administration et des outils de validation de données de transport.
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Évolutions centrées sur la gestion des accès, les nouvelles intégrations API et la sécurité.
+- [transport-site](/repos/etalab/transport-site) : Améliorations significatives de l'interface d'administration et des outils de validation des données NeTEx.
+- [data_pass](/repos/etalab/data_pass) : Extension de l'offre de données (intégration du parcours EAJE) et refonte de la synchronisation des flux.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Évolutions sur la gestion des tokens et intégration de nouveaux partenaires (CNOUS, MSA, MEN).
+- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Publication de la version 2.4.0 du profil France NeTEx avec des clarifications structurelles.

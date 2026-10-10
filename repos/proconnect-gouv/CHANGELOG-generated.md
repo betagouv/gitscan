@@ -1,27 +1,22 @@
-# Synthèse d'activité : proconnect-gouv (du 01/09 au 30/09)
+# Synthèse d'activité : proconnect-gouv (du 01/10 au 10/10)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur la robustesse et l'extension de son écosystème. Les efforts ont porté sur le renforcement de la sécurité des accès (2FA, WebAuthn) et la garantie de la continuité de service grâce à de nouveaux mécanismes de secours en cas d'indisponibilité de services tiers [federation](/repos/proconnect-gouv/federation). 
+L'activité récente est marquée par un renforcement significatif de la sécurité des accès et de la gestion des identités, notamment via l'amélioration des mécanismes d'authentification multi-facteurs (MFA) et la protection accrue de la vie privée. Ces évolutions visent à offrir une expérience plus fluide et sécurisée pour les utilisateurs finaux tout en garantissant une meilleure fiabilité des données grâce à l'intégration de nouvelles sources officielles comme l'API RNE.
 
-Parallèlement, l'organisation enrichit son offre avec le lancement de plusieurs nouveaux outils, notamment un thème visuel pour Tailwind CSS [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme), un service de résolution DNS [mx-resolver](/repos/proconnect-gouv/mx-resolver) et un buildpack pour le déploiement d'applications Bun [bun-buildpack](/repos/proconnect-gouv/bun-buildpack). Ces évolutions visent à offrir une expérience plus fiable aux utilisateurs finaux tout en simplifiant l'intégration pour les partenaires [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
+Parallèlement, l'organisation diversifie son écosystème avec le lancement de plusieurs nouveaux outils et services, incluant un thème de design system pour Tailwind CSS [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme), un service de résolution DNS [mx-resolver](/repos/proconnect-gouv/mx-resolver) et un buildpack pour Bun [bun-buildpack](/repos/proconnect-gouv/bun-buildpack). L'accompagnement des partenaires est également une priorité, avec une mise à jour majeure de la documentation technique et métier [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
 
 ## Sécurité
-- Renforcement de l'authentification via le forçage de la 2FA par organisation, la réintroduction de l'interface WebAuthn (Passkeys) et l'augmentation du rate limiting [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Amélioration de la protection des données par l'anonymisation des exports et la sécurisation des accès via la suppression des rôles de scopes par défaut [proconnect-identite](/repos/proconnect-gouv/proconnect-identite), [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- Sécurisation des processus de validation des domaines pour les partenaires [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- Adoption de l'algorithme de signature RS256 par défaut et correction de failles liées aux politiques de sécurité de contenu (CSP) [federation](/repos/proconnect-gouv/federation).
-- Mise à jour des mécanismes d'authentification multi-facteurs (MFA) [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) et correction de vulnérabilités de dépendances [class-validator](/repos/proconnect-gouv/class-validator).
+- **Renforcement de l'authentification** : Généralisation du MFA, possibilité de forcer le 2FA par organisation [proconnect-identite](/repos/proconnect-gouv/proconnect-identite), gestion des codes OTP par e-mail [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) et mise à jour des flux d'authentification [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client).
+- **Protection des données et de l'infrastructure** : Mise en place de politiques de limitation de débit (rate limiting) [proconnect-identite](/repos/proconnect-gouv/proconnect-identite), restriction des rôles pour la confidentialité [federation](/repos/proconnect-gouv/federation) et blocage de l'indexation des interfaces sensibles par les moteurs de recherche [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [federation](/repos/proconnect-gouv/federation).
+- **Sécurisation des accès API** : Suppression des permissions de rôles par défaut dans les scopes [api-partenaires](/repos/proconnect-gouv/api-partenaires).
 
 ## Autres changements notables
-- Refonte majeure de l'infrastructure de tests automatisés (E2E) vers un système basé sur Buncept pour améliorer la stabilité [hyyypertool](/repos/proconnect-gouv/hyyypertool).
-- Mise en place de mécanismes de résilience (fallback sur cache) pour assurer la continuité de service lors d'indisponibilités des API externes [federation](/repos/proconnect-gouv/federation).
-- Modernisation de l'environnement de développement avec l'introduction de Nix [hyyypertool](/repos/proconnect-gouv/hyyypertool).
-- Optimisation des processus d'authentification via l'intégration de Keycloak et Entra ID [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
-- Migration vers une gestion par "feature flags" et découplage de dépendances critiques pour accroître l'autonomie du système [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- **Migrations et refontes techniques** : Migration majeure vers la version 8 de `oidc-provider` [federation](/repos/proconnect-gouv/federation), refonte massive de la suite de tests E2E vers un nouveau moteur [hyyypertool](/repos/proconnect-gouv/hyyypertool) et migration vers l'API RNE pour la gestion des organisations [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- **Nouveaux projets et services** : Lancement du thème DSFR pour Tailwind [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme), du service de résolution MX [mx-resolver](/repos/proconnect-gouv/mx-resolver), du buildpack pour Scalingo [bun-buildpack](/repos/proconnect-gouv/bun-buildpack) et d'un fournisseur d'identité de test [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp).
+- **Évolutions des outils de développement** : Enrichissement de la bibliothèque de validation avec de nouveaux validateurs spécialisés (IBAN, ISO, UUID) [class-validator](/repos/proconnect-gouv/class-validator).
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Évolutions majeures sur la sécurité, l'authentification et la protection des données.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Refonte de la suite de tests et amélioration de l'expérience développeur.
-- [federation](/repos/proconnect-gouv/federation) : Amélioration de la résilience du système et optimisation de l'infrastructure.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Renforcement de l'authentification et enrichissement de la documentation technique.
-- [api-partenaires](/repos/proconnect-gouv/api-partenaires) : Sécurisation des domaines et optimisation des performances.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Améliorations majeures de la sécurité, de la gestion des données et de l'expérience utilisateur.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Renforcement de la sécurité des comptes et mise à jour massive de la documentation.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Optimisation de la CI/CD, de la suite de tests et de l'infrastructure.
+- [federation](/repos/proconnect-gouv/federation) : Migrations techniques importantes et améliorations de l'expérience utilisateur.

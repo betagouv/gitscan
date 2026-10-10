@@ -1,21 +1,22 @@
-# Synthèse d'activité : codegouvfr (du 15/09 au 22/09)
+# Synthèse d'activité : codegouvfr (du 09/10 au 15/10)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur l'optimisation de la gestion des données et l'amélioration de l'expérience utilisateur. Les outils de catalogue et de déploiement ([sill-deploy](/repos/codegouvfr/sill-deploy), [catalogi](/repos/codegouvfr/catalogi)) bénéficient de nouvelles capacités d'importation, de nouveaux outils en ligne de commande et d'une meilleure documentation API. 
+L'activité récente de l'organisation est marquée par une optimisation des processus de gestion de données et une amélioration de l'expérience utilisateur. Les efforts se sont concentrés sur la fiabilité des imports de logiciels ([catalogi](/repos/codegouvfr/catalogi), [sill-deploy](/repos/codegouvfr/sill-deploy)), l'accessibilité et la performance des interfaces ([react-dsfr](/repos/codegouvfr/react-dsfr), [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr)), ainsi que sur l'enrichissement des outils de cartographie et de décision ([cartonum](/repos/codegouvfr/cartonum), [floss-criteria](/repos/codegouvfr/floss-criteria)).
 
-Parallèlement, la bibliothèque de composants graphiques ([react-dsfr](/repos/codegouvfr/react-dsfr)) gagne en performance et en accessibilité, tandis que de nouveaux projets émergent pour structurer l'évaluation des logiciels ([floss-criteria](/repos/codegouvfr/floss-criteria)) et enrichir la cartographie des actifs numériques ([cartonum](/repos/codegouvfr/cartonum)).
+Ces évolutions permettent aux utilisateurs finaux de bénéficier d'outils plus rapides, plus sécurisés et de processus d'importation de données plus robustes, tout en structurant de nouveaux cadres d'évaluation pour le logiciel libre.
 
 ## Sécurité
-- Renforcement de la validation des schémas publics et sécurisation des URLs et des déclarations exécutables dans [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi).
-- Ajout de fonctionnalités de gestion des mots de passe et des coffres-forts partagés dans [cartonum](/repos/codegouvfr/cartonum).
+- Renforcement de la sécurité de l'authentification OIDC et de l'API (protection contre les déclarations d'exécutables et d'URLs d'instance) dans [catalogi](/repos/codegouvfr/catalogi).
+- Mise en place d'un environnement local dédié aux tests d'intrusion (pentest) pour [catalogi](/repos/codegouvfr/catalogi).
+- Amélioration de la validation des schémas publics et de la gestion des préfixes de documentation via proxy dans [sill-deploy](/repos/codegouvfr/sill-deploy).
 
 ## Autres changements notables
-- **Optimisation des performances** : Réduction significative de l'empreinte CSS pour alléger le chargement des pages dans [react-dsfr](/repos/codegouvfr/react-dsfr).
-- **Évolutions d'infrastructure** : Migration de la configuration de l'interface utilisateur vers PostgreSQL pour permettre une gestion plus dynamique dans [sill-deploy](/repos/codegouvfr/sill-deploy).
-- **Lancement de projets** : Initialisation de nouveaux dépôts pour la structuration des critères d'évaluation des logiciels libres ([floss-criteria](/repos/codegouvfr/floss-criteria)) et la mise en place d'une nouvelle documentation ([documentation-no](/repos/codegouvfr/documentation-no)).
+- Optimisation majeure de la performance de [react-dsfr](/repos/codegouvfr/react-dsfr) via une nouvelle fonctionnalité permettant de ne charger que le CSS des composants réellement utilisés.
+- Migration de la configuration de l'interface utilisateur vers PostgreSQL pour permettre une gestion dynamique et persistante dans [sill-deploy](/repos/codegouvfr/sill-deploy).
+- Initialisation de nouveaux projets de structuration de critères d'évaluation ([floss-criteria](/repos/codegouvfr/floss-criteria)) et de documentation ([documentation-no](/repos/codegouvfr/documentation-no)).
 
 ## Dépôts les plus actifs
-- [sill-deploy](/repos/codegouvfr/sill-deploy) : Amélioration de l'administration, de la performance des imports et de la documentation API.
-- [react-dsfr](/repos/codegouvfr/react-dsfr) : Optimisation du chargement CSS et renforcement de l'accessibilité des composants.
-- [catalogi](/repos/codegouvfr/catalogi) : Évolution de l'ergonomie, ajout d'outils CLI et sécurisation de l'API.
-- [cartonum](/repos/codegouvfr/cartonum) : Extension des fonctionnalités de cartographie, de sauvegarde et de gestion documentaire.
+- [catalogi](/repos/codegouvfr/catalogi) : Amélioration de la fiabilité des imports, renforcement de la sécurité et ajout d'outils en ligne de commande.
+- [sill-deploy](/repos/codegouvfr/sill-deploy) : Optimisation des performances d'importation et nouveaux outils d'administration de l'interface.
+- [react-dsfr](/repos/codegouvfr/react-dsfr) : Travaux sur l'optimisation du poids du CSS et l'accessibilité des composants.
+- [cartonum](/repos/codegouvfr/cartonum) : Enrichissement des fonctionnalités de cartographie et de gestion documentaire.

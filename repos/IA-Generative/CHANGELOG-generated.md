@@ -1,25 +1,24 @@
-# Synthèse d'activité : IA-Generative (du 16/09 au 23/09)
+# Synthèse d'activité : IA-Generative (du 20/05 au 23/09)
 
 ## Résumé de l'activité
-L'activité de la semaine est marquée par une accélération majeure des capacités d'intelligence documentaire et d'automatisation. Les produits phares évoluent vers des fonctionnalités de pointe, notamment avec l'intégration de systèmes RAG (Retrieval-Augmented Generation) dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF), la génération de documents par IA dans [dig-dig-doc](/repos/IA-Generative/dig-dig-doc), et l'ajout de capacités de recherche web et de questions-réponses dans [abrege](/repos/IA-Generative/abrege).
+Cette période est marquée par une montée en puissance des capacités d'intelligence artificielle et une amélioration significative de l'expérience utilisateur à travers l'écosystème. L'organisation a franchi des étapes clés dans la gestion documentaire intelligente avec de nouvelles fonctionnalités de génération et d'analyse ([dig-dig-doc](/repos/IA-Generative/dig-dig-doc), [mcr](/repos/IA-Generative/mcr)) et a renforcé ses capacités d'automatisation via des extensions n8n ([n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api)).
 
-Parallèlement, l'organisation renforce l'expérience utilisateur et l'accompagnement (onboarding) sur des outils comme [drive](/repos/IA-Generative/drive) et [IAssistant-Direct](/repos/IA-Generative/IAssistant-Direct), tout en consolidant la robustesse technique de l'infrastructure pour soutenir ces nouveaux usages.
+Parallèlement, un effort majeur a été porté sur l'accompagnement des utilisateurs (onboarding) et la stabilisation des interfaces ([drive](/repos/IA-Generative/drive), [IAssistant-Direct](/repos/IA-Generative/IAssistant-Direct)), tout en intégrant des technologies de pointe comme le protocole MCP ou le RAG pour rendre les outils plus contextuels et performants.
 
 ## Sécurité
-- **Protection contre les attaques IA** : Renforcement de la sécurité contre les injections de prompt (OWASP LLM01) dans [owuiapps-agents](/repos/IA-Generative/owuiapps-agents).
-- **Authentification forte** : Implémentation de l'authentification à deux facteurs (2FA/TOTP) pour [myvault](/repos/IA-Generative/myvault) et gestion fine des niveaux de sécurité eIDAS pour ProConnect dans [keycloak-jar-test](/repos/IA-Generative/keycloak-jar-test).
-- **Durcissement des accès et des données** : Mise en place de protections contre les abus (rate limiting), chiffrement des notes sensibles dans [myvault](/repos/IA-Generative/myvault), et sécurisation des jetons JWT/PKCE dans [dictaphone](/repos/IA-Generative/dictaphone).
-- **Sécurité infrastructurelle** : Durcissement des images Docker et des contextes de sécurité dans [ocr-api](/repos/IA-Generative/ocr-api) et vérification des checksums des binaires dans [device-management](/repos/IA-Generative/device-management).
+- **Protection contre les attaques IA** : Renforcement de la sécurité contre les injections de prompt et mise en place de détecteurs d'anomalies ([owuiapps-agents](/repos/IA-Generative/owuiapps-agents)).
+- **Gestion des accès et authentification** : Généralisation de l'authentification à deux facteurs (2FA/TOTP) et gestion fine des niveaux de sécurité eIDAS ([myvault](/repos/IA-Generative/myvault), [keycloak-jar-test](/repos/IA-Generative/keycloak-jar-test)).
+- **Protection des données sensibles** : Utilisation des coffres-forts natifs de l'OS pour le stockage des secrets, nettoyage des logs pour éviter les fuites de jetons et chiffrement des notes personnelles ([iassistant-libreoffice](/repos/IA-Generative/iassistant-libreoffice), [dictaphone](/repos/IA-Generative/dictaphone), [myvault](/repos/IA-Generative/myvault)).
+- **Durcissement des infrastructures** : Sécurisation des API (clés M2M, protection CSRF), passage à l'exécution en mode "non-root" pour les conteneurs et vérification systématique des checksums des binaires ([ocr-api](/repos/IA-Generative/ocr-api), [abrege](/repos/IA-Generative/abrege), [device-management](/repos/IA-Generative/device-management)).
 
 ## Autres changements notables
-- **Évolutions architecturales majeures** : Migration vers une architecture en microservices pour [mcr](/repos/IA-Generative/mcr) et passage d'une gestion de files d'attente Kafka à Redis pour [kevent-ai](/repos/IA-Generative/kevent-ai).
-- **Intégration de nouveaux modèles** : Support opérationnel des modèles GLM-5.2 de Scaleway via [claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway).
-- **Optimisation de la recherche** : Migration du moteur de recherche de Qdrant vers Meilisearch pour améliorer la recherche hybride dans [Muffin](/repos/IA-Generative/Muffin).
-- **Modernisation DevOps** : Amélioration des processus de build et de déploiement (CI/CD) pour [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) et [n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api).
+- **Évolutions architecturales majeures** : Migration vers une architecture en microservices ([mcr](/repos/IA-Generative/mcr)), remplacement de Kafka par Redis pour la gestion des files d'attente ([kevent-ai](/repos/IA-Generative/kevent-ai)) et passage de Qdrant à Meilisearch pour optimiser la recherche hybride ([Muffin](/repos/IA-Generative/Muffin)).
+- **Nouvelles capacités d'IA et protocoles** : Support du protocole MCP ([dig-dig-doc](/repos/IA-Generative/dig-dig-doc)), intégration de systèmes RAG ([Stirling-PDF](/repos/IA-Generative/Stirling-PDF)) et intégration opérationnelle des modèles GLM-5.2 de Scaleway ([claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway)).
+- **Modernisation de la CI/CD et de l'infrastructure** : Migration du build vers BuildKit rootless ([mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions)), automatisation des environnements de preview ([mirai-api](/repos/IA-Generative/mirai-api)) et amélioration de la gestion des ressources Kubernetes ([claim-controller](/repos/IA-Generative/claim-controller)).
 
 ## Dépôts les plus actifs
-- [ocr-api](/repos/IA-Generative/ocr-api) : Passage à la version 0.20.0 avec un nouveau SDK TypeScript et une interface modernisée.
-- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité, le chiffrement et l'authentification multi-facteurs.
-- [dig-dig-doc](/repos/IA-Generative/dig-dig-doc) : Lancement de fonctionnalités avancées de génération et d'analyse de documents.
-- [abrege](/repos/IA-Generative/abrege) : Extension significative des capacités (QA, scraping web, gestion des tâches).
-- [claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway) : Intégration de nouveaux modèles et stabilisation de la passerelle API.
+- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité, le chiffrement et la robustesse du système.
+- [iassistant-libreoffice](/repos/IA-Generative/iassistant-libreoffice) : Sortie de la version 0.3.0 avec internationalisation et refonte du système de mise à jour.
+- [mcr](/repos/IA-Generative/mcr) : Refactorisation majeure de l'architecture vers les microservices et optimisation du pipeline de transcription.
+- [abrege](/repos/IA-Generative/abrege) : Ajout de capacités d'analyse sémantique avancées et modernisation de l'interface.
+- [claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway) : Intégration des modèles Scaleway et optimisation de la gestion des tokens.
