@@ -1,38 +1,34 @@
-## Changelog : proconnect-identite (30 derniers jours, au 30 septembre 2026)
+## Changelog : proconnect-identite (30 derniers jours, au 09/10/2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur le renforcement de la sécurité et la fiabilisation des données. Les utilisateurs bénéficient d'une meilleure gestion de l'authentification (notamment la possibilité de forcer le double facteur pour certaines organisations) et d'une validation plus rigoureuse des informations saisies (emails, noms). En parallèle, l'infrastructure a été optimisée pour être plus robuste, plus performante et plus respectueuse de la vie privée grâce à une meilleure anonymisation des données exportées.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité (authentification forte, limitation de débit) et l'amélioration de la fiabilité des données (intégration de l'API RNE, validation des emails). Le projet a également progressé sur la protection de la vie privée via l'anonymisation des données exportées et l'optimisation des processus de déploiement.
 
 ### Évolutions fonctionnelles
-- **Sécurité et Authentification**
-  - Possibilité de forcer l'authentification à deux facteurs (2FA) par organisation [#2189](https://github.com/proconnect-gouv/proconnect-identite/pull/2189).
-  - Réintroduction de l'interface conditionnelle pour WebAuthn (Passkeys) [#2180](https://github.com/proconnect-gouv/proconnect-identite/pull/2180).
-  - Possibilité de déconnecter une identité FranceConnect [#2062](https://github.com/proconnect-gouv/proconnect-identite/pull/2062).
-  - Correction d'une faille permettant de contourner le code de contact officiel.
-- **Expérience Utilisateur et Validation**
-  - Amélioration de la validation des adresses email (gestion des domaines gratuits et correction des formats invalides).
-  - Amélioration des notifications de sécurité : inclusion du nom de la clé d'accès supprimée dans les emails d'alerte.
-  - Correction de la gestion des diacritiques (accents) lors de la normalisation des noms pour la certification.
-  - Nettoyage de l'interface utilisateur (suppression de liens d'aide en doublon).
-- **Gestion des données**
-  - Utilisation de l'API RNE pour récupérer les informations des organisations.
-  - Ajout de la dénomination usuelle des établissements.
-  - Anonymisation du champ "métier" (job) dans les données exportées pour renforcer la protection de la vie privée.
+- **Sécurité et authentification** :
+    - Possibilité de forcer l'authentification à deux facteurs (2FA) par organisation [#2184](https://github.com/proconnect-gouv/proconnect-identite/pull/2184).
+    - Vérification du MFA avant de permettre l'enrôlement d'un nouveau dispositif.
+    - Rétablissement de l'interface conditionnelle WebAuthn (Conditional UI) pour une expérience de connexion plus fluide [#2180](https://github.com/proconnect-gouv/proconnect-identite/pull/2180).
+- **Gestion des utilisateurs et données** :
+    - Amélioration de la validation des adresses email (gestion des domaines gratuits et correction de formats invalides).
+    - Normalisation des noms (gestion des accents/diacritiques) pour les processus de certification.
+    - Ajout de la "dénomination usuelle" pour les établissements.
+    - Anonymisation des intitulés de poste dans les données exportées pour protéger la vie privée.
+- **Expérience utilisateur et alertes** :
+    - Inclusion du nom de la clé d'accès dans les emails d'alerte de sécurité et lors de la suppression d'une passkey.
+    - Correction de l'affichage des erreurs lors de la correspondance de données (birth_country, FranceConnect) [#2162](https://github.com/proconnect-gouv/proconnect-identite/pull/2162).
 
 ### Évolutions techniques
-- **Architecture et Refactoring**
-  - Migration de la gestion de l'environnement vers l'utilisation de "feature flags".
-  - Découplage de certaines dépendances (TrancheEffectifs, types WebAuthn) pour une gestion locale et autonome.
-  - Création d'un nouveau dépôt dédié à la gestion des informations utilisateur FranceConnect.
-  - Homogénéisation de l'utilisation des méthodes `get` et `find` au sein des services de données (repositories).
-- **Sécurité et Performance**
-  - Augmentation des limites de débit (rate limiting) basées sur l'IP pour l'API [#2197](https://github.com/proconnect-gouv/proconnect-identite/pull/2197) et optimisation de leur gestion [#2166](https://github.com/proconnect-gouv/proconnect-identite/pull/2166).
-  - Blocage de l'indexation par les moteurs de recherche via la configuration du fichier `robots.txt`.
-  - Restriction du serveur Hono à son chemin de montage pour limiter la surface d'exposition.
-- **Maintenance et Tests**
-  - Suppression des points de terminaison (endpoints) SIRENE obsolètes et nettoyage des tests de santé (health checks) associés.
-  - Amélioration de la robustesse des tests d'intégration via le mock de l'API de "debounce".
+- **Sécurité et infrastructure** :
+    - Mise à jour et ajustement de la politique de limitation de débit (rate limiting) par adresse IP [#2197](https://github.com/proconnect-gouv/proconnect-identite/pull/2197), [#2166](https://github.com/proconnect-gouv/proconnect-identite/pull/2166).
+    - Blocage de l'indexation par les moteurs de recherche via le fichier `robots.txt`.
+- **Architecture et optimisation** :
+    - Migration vers l'utilisation de l'API RNE pour la récupération des informations d'organisation.
+    - Création d'un nouveau dépôt dédié pour la gestion des informations utilisateurs FranceConnect.
+    - Refonte de la gestion des salutations (greetings) et du processus de vérification des contacts officiels.
+    - Optimisation des performances en réduisant les appels externes (RNE, SIRENE) lors de certaines opérations.
+- **CI/CD et déploiement** :
+    - Mise en place d'un nouveau workflow de release utilisant le versioning CalVer [#2216](https://github.com/proconnect-gouv/proconnect-identite/pull/2216).
 
 ### Autres changements
 - Synchronisation régulière de la liste des administrations via Grist.
-- Corrections de typographies dans la documentation et les messages de l'interface.
+- Nettoyage du code : suppression de fonctions obsolètes (SIRENE health check) et de code mort.

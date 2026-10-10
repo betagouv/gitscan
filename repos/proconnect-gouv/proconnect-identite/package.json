@@ -1,6 +1,6 @@
 {
   "name": "proconnect-identite",
-  "version": "1.0.0",
+  "version": "2026.10.4",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -49,7 +49,7 @@
     "test:workspaces": "npm run test --if-present --workspaces",
     "update-one-mocked-organization": "UPDATE_SNAPSHOT=True tsx mocks/entreprise.api.gouv.fr/add-establishment.ts",
     "update-organization-info": "tsx scripts/update-organizations-info.ts",
-    "version": "changeset version && npm install --package-lock-only",
+    "version-packages": "changeset version && npm install --package-lock-only",
     "watch:assets": "NODE_ENV=development vite build --clearScreen false --watch",
     "watch:ejs": "CHOKIDAR_USEPOLLING=true copy-and-watch --clean --watch \"src/views/**/*.ejs\" src/views/*.ejs build/views/",
     "watch:js": "tsc --watch --preserveWatchOutput",
@@ -69,6 +69,25 @@
       "prettier-plugin-organize-imports",
       "prettier-plugin-sql"
     ]
+  },
+  "release-it": {
+    "git": {
+      "tagMatch": "[0-9]*.[0-9]*.[0-9]*"
+    },
+    "github": {
+      "release": true
+    },
+    "hooks": {
+      "after:git:release": "git switch -c release/${version} && git push origin release/${version}"
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@csmith/release-it-calver-plugin": {
+        "cycle": "month"
+      }
+    }
   },
   "dependencies": {
     "@proconnect-gouv/proconnect.api_entreprise": "workspace:*",
@@ -99,7 +118,7 @@
     "http-errors": "^2.0.0",
     "ioredis": "^6.0.0",
     "lodash-es": "^4.18.1",
-    "moment": "^2.30.1",
+    "moment": "^2.31.0",
     "moment-timezone": "^0.6.3",
     "morgan": "^1.12.1",
     "nocache": "^4.0.0",
@@ -140,7 +159,7 @@
     "@types/pg": "^8.15.5",
     "@types/qrcode": "^1.5.5",
     "axe-core": "^4.12.1",
-    "concurrently": "^10.0.5",
+    "concurrently": "^10.0.6",
     "copy-and-watch": "^0.1.8",
     "csv": "^6.6.3",
     "cypress": "^15.15.0",
