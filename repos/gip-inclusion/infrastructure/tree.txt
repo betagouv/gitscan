@@ -11,11 +11,13 @@
 │       └── terraform-orchestrator.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
+├── .sops.yaml
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Makefile
 ├── README.md
 ├── infrastructure
+│   ├── SOPS.md
 │   ├── _modules
 │   │   └── dns
 │   │       └── records
@@ -25,6 +27,102 @@
 │   │               ├── main.tf
 │   │               ├── providers.tf
 │   │               └── variables.tf
+│   ├── emplois-cnav
+│   │   ├── database
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── main.tf
+│   │   │       ├── providers.tf
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
+│   │   ├── iam
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── locals.tf
+│   │   │       ├── main.tf
+│   │   │       ├── providers.tf
+│   │   │       ├── secrets.enc.yaml
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
+│   │   ├── instances
+│   │   │   ├── ogc
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── outputs.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   └── strongswan
+│   │   │       └── terraform
+│   │   │           ├── .terraform.lock.hcl
+│   │   │           ├── README.md
+│   │   │           ├── backend.tf
+│   │   │           ├── data.tf
+│   │   │           ├── locals.tf
+│   │   │           ├── main.tf
+│   │   │           ├── providers.tf
+│   │   │           ├── secrets.enc.yaml
+│   │   │           ├── templates
+│   │   │           │   ├── strongswan-extra-ips.service
+│   │   │           │   ├── strongswan-extra-ips.sh.tpl
+│   │   │           │   ├── swanctl.overrides.conf
+│   │   │           │   └── vpn-bcrs.conf.tpl
+│   │   │           ├── terraform.tfvars
+│   │   │           └── variables.tf
+│   │   ├── kubernetes
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── locals.tf
+│   │   │       ├── main.tf
+│   │   │       ├── providers.tf
+│   │   │       ├── secrets.enc.yaml
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
+│   │   ├── network
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── locals.tf
+│   │   │       ├── main.tf
+│   │   │       ├── providers.tf
+│   │   │       ├── secrets.enc.yaml
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
+│   │   ├── registry
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── main.tf
+│   │   │       ├── providers.tf
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
+│   │   └── secret-manager
+│   │       └── terraform
+│   │           ├── .terraform.lock.hcl
+│   │           ├── README.md
+│   │           ├── backend.tf
+│   │           ├── data.tf
+│   │           ├── main.tf
+│   │           ├── providers.tf
+│   │           ├── terraform.tfvars
+│   │           └── variables.tf
 │   ├── iac-gip-inclusion
 │   │   ├── buckets
 │   │   │   └── iac-gip-inclusion-tfstate
@@ -79,6 +177,16 @@
 │   │   │   │       ├── terraform.tfvars
 │   │   │   │       └── variables.tf
 │   │   │   ├── emplois
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── emplois-cnav
 │   │   │   │   └── terraform
 │   │   │   │       ├── .terraform.lock.hcl
 │   │   │   │       ├── README.md
@@ -215,6 +323,10 @@
 │               └── variables.tf
 ├── makefiles
 │   ├── base.mk
+│   ├── sops.mk
 │   └── terraform.mk
-└── pyproject.toml
-52 directories, 167 files
+├── pyproject.toml
+└── scripts
+    └── pre-commit
+        └── ensure-sops-encrypted.sh
+75 directories, 256 files
