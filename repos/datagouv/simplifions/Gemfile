@@ -1,11 +1,12 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.3"
+gem "rails", "~> 8.1.4"
+gem "json", "< 3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.7"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -20,20 +21,36 @@ gem "view_component"
 # Chain-of-command pipelines (Grist import)
 gem "interactor"
 
-# Rend le markdown du catalogue Grist (safe par défaut : HTML brut et URLs dangereuses neutralisés)
+# Suivi des erreurs (sandbox, staging, production) ; inactif sans sentry_dsn dans les credentials
+gem "sentry-rails"
+
+# Rend le markdown du catalogue Grist (HTML brut autorisé, nettoyé par sanitize dans ApplicationHelper#markdown)
 gem "commonmarker"
 
 # Store Active Storage blobs in PostgreSQL, shared by every host [https://github.com/blocknotes/active_storage_db]
 gem "active_storage_db"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+# Authentification de l'administration : comptes locaux, sans inscription ni e-mail
+gem "devise"
+
+gem "strong_migrations"
+
+# Historique des modifications des fiches de l'administration, avec leur auteur
+gem "paper_trail", "~> 17.0"
+
+# Recherche des listes de l'administration, comme DataPass
+gem "ransack", "~> 5.0"
+
+# Pagination de l'administration et du catalogue, gabarits DSFR de DataPass
+gem "kaminari", "~> 1.2"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapter for Rails.cache
 gem "solid_cache"
+
+gem "solid_queue", "~> 1.7"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -55,6 +72,8 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
+
+  gem "active_record_doctor"
 end
 
 group :development do

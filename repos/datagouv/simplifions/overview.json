@@ -1,33 +1,35 @@
 {
   "url": "https://github.com/datagouv/simplifions",
   "name": "simplifions",
-  "description": "Catalogue des données accessibles aux acteurs publics pour simplifier les démarches de leurs usagers.",
+  "description": "Catalogue des données destiné aux acteurs publics pour faciliter la simplification des démarches des usagers. Il propose des solutions, des cas d'usage et des démarches pour améliorer l'accès aux données.",
   "language": "Ruby",
   "features": [
     "Recherche & Filtres",
     "Visualisation de données & Cartographie",
-    "Données & Schémas",
-    "Interface utilisateur & Design",
-    "Contenu éditorial"
+    "Administration & Backoffice",
+    "Contenu éditorial",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
+    "Devise",
     "Puma",
-    "Turbo",
     "Stimulus",
-    "DSFR",
-    "Docker"
+    "Turbo",
+    "ViewComponent",
+    "Sentry",
+    "Grist"
   ],
   "components": [
-    "Ruby (scripts & backend)",
+    "Ruby on Rails",
     "PostgreSQL & SQL",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
+    "Templates & Moteurs de rendu",
     "CI/CD & Déploiement",
-    "HTML / CSS / Templates visuels",
-    "Templates & Moteurs de rendu"
+    "Scripts & Utilitaires",
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
@@ -37,30 +39,24 @@
   "tests": [
     "RSpec",
     "Rubocop",
-    "Capybara",
-    "Selenium",
     "Brakeman",
-    "Bundler-audit"
+    "Bundler-audit",
+    "Capybara",
+    "Selenium"
   ],
   "workflows": [
-    "ci.yml",
-    "https-deploy-production.yaml",
-    "https-deploy-sandbox.yaml",
-    "https-deploy-staging.yaml"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-09-09T10:54:27+02:00",
+  "lastActivity": "2026-10-09T15:33:56+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "contributors": 0,
-    "openIssues": 3
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "Ruby",
+    "Ruby on Rails",
+    "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
     "HTML, CSS & Web"

@@ -1,12 +1,54 @@
 .
+├── .active_record_doctor.rb
 ├── .claude
+│   ├── settings.json
 │   └── skills
-│       └── new-article
-│           └── SKILL.md
+│       ├── new-article
+│       │   └── SKILL.md
+│       └── verify-simplifions
+│           ├── SKILL.md
+│           ├── drive.rb
+│           ├── features
+│           │   ├── README.md
+│           │   ├── admin-brouillon.md
+│           │   ├── admin-colonne-actions.md
+│           │   ├── admin-dates.md
+│           │   ├── admin-erreurs-formulaire.md
+│           │   ├── admin-formulaire-modifie.md
+│           │   ├── admin-formulaire-solution.md
+│           │   ├── admin-fournisseurs-de-services.md
+│           │   ├── admin-historique.md
+│           │   ├── admin-homonymes.md
+│           │   ├── admin-image-refusee.md
+│           │   ├── admin-integrations-de-l-api.md
+│           │   ├── admin-integrations-en-ligne.md
+│           │   ├── admin-lecture-seule.md
+│           │   ├── admin-libelles.md
+│           │   ├── admin-liste-filtrable.md
+│           │   ├── admin-listes.md
+│           │   ├── admin-navigation.md
+│           │   ├── admin-onglets.md
+│           │   ├── admin-pages-liees.md
+│           │   ├── admin-previsualisation.md
+│           │   ├── admin-recommandations-demarche.md
+│           │   ├── admin-recommandations-en-ligne.md
+│           │   ├── admin-saisie-solution.md
+│           │   ├── admin-saisies-controlees.md
+│           │   ├── admin-supprimer-demarche.md
+│           │   ├── admin-vocabulaires.md
+│           │   ├── catalogue-cas-usages.md
+│           │   ├── connexion-admin.md
+│           │   ├── contenu-html-grist.md
+│           │   ├── fiche-cas-usage.md
+│           │   ├── import-grist.md
+│           │   ├── rafraichissement-admin.md
+│           │   └── rafraichissement-nuit.md
+│           └── harness.rb
 ├── .dockerignore
 ├── .gitattributes
 ├── .github
 │   ├── dependabot.yml
+│   ├── pull_request_template.md
 │   └── workflows
 │       ├── ci.yml
 │       ├── https-deploy-production.yaml
@@ -17,6 +59,7 @@
 ├── .rubocop.yml
 ├── .rubocop_todo.yml
 ├── .ruby-version
+├── CLAUDE.md
 ├── Dockerfile
 ├── Dockerfile.dev
 ├── Gemfile
@@ -1016,6 +1059,9 @@
 │   │   │   │       ├── typhoon-line.svg
 │   │   │   │       ├── windy-fill.svg
 │   │   │   │       └── windy-line.svg
+│   │   │   ├── logos
+│   │   │   │   ├── datagouv.svg
+│   │   │   │   └── numerique-gouv.svg
 │   │   │   ├── simplifions
 │   │   │   │   ├── accueil-picto-community.svg
 │   │   │   │   ├── accueil-picto-conclusion.svg
@@ -1067,6 +1113,18 @@
 │   │   ├── solution_card_component.html.erb
 │   │   └── solution_card_component.rb
 │   ├── controllers
+│   │   ├── admin
+│   │   │   ├── base_controller.rb
+│   │   │   ├── dashboard_controller.rb
+│   │   │   ├── demarches_controller.rb
+│   │   │   ├── historiques_controller.rb
+│   │   │   ├── integrations_controller.rb
+│   │   │   ├── organisations_controller.rb
+│   │   │   ├── rafraichissements_controller.rb
+│   │   │   ├── recommandations_controller.rb
+│   │   │   ├── solutions_controller.rb
+│   │   │   ├── types_acteurs_controller.rb
+│   │   │   └── vocabulaires_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── articles_controller.rb
 │   │   ├── concerns
@@ -1074,6 +1132,8 @@
 │   │   ├── demarches_controller.rb
 │   │   ├── pages_controller.rb
 │   │   └── solutions_controller.rb
+│   ├── form_builders
+│   │   └── dsfr_form_builder.rb
 │   ├── helpers
 │   │   ├── application_helper.rb
 │   │   └── articles_helper.rb
@@ -1091,21 +1151,29 @@
 │   │   ├── application.js
 │   │   └── controllers
 │   │       ├── application.js
+│   │       ├── carousel_controller.js
+│   │       ├── champs_fiche_controller.js
 │   │       ├── endpoints_controller.js
 │   │       ├── form_controller.js
+│   │       ├── formulaire_modifie_controller.js
 │   │       ├── index.js
 │   │       ├── integratrices_controller.js
+│   │       ├── liste_filtrable_controller.js
+│   │       ├── onglets_controller.js
 │   │       ├── sirene_demo_controller.js
 │   │       └── toc_controller.js
 │   ├── jobs
-│   │   └── application_job.rb
+│   │   ├── application_job.rb
+│   │   └── rafraichir_catalogue_job.rb
 │   ├── mailers
 │   │   └── application_mailer.rb
 │   ├── models
+│   │   ├── admin.rb
 │   │   ├── application_record.rb
 │   │   ├── article.rb
 │   │   ├── concerns
-│   │   │   └── .keep
+│   │   │   ├── .keep
+│   │   │   └── brouillonnable.rb
 │   │   ├── demarche.rb
 │   │   ├── integration.rb
 │   │   ├── organisation.rb
@@ -1119,13 +1187,76 @@
 │   │       ├── import.rb
 │   │       └── persist_catalogue.rb
 │   └── views
+│       ├── admin
+│       │   ├── _cases_filtrables.html.erb
+│       │   ├── _erreurs.html.erb
+│       │   ├── _fiche.html.erb
+│       │   ├── _liens_vers_les_fiches.html.erb
+│       │   ├── _onglets.html.erb
+│       │   ├── _vocabulaires.html.erb
+│       │   ├── base
+│       │   │   ├── _entete_page.html.erb
+│       │   │   ├── _recherche.html.erb
+│       │   │   └── _visible_et_modifie_le.html.erb
+│       │   ├── dashboard
+│       │   │   └── index.html.erb
+│       │   ├── demarches
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── historiques
+│       │   │   ├── _versions.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── integrations
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _formulaire_de_ligne.html.erb
+│       │   │   ├── _ligne.html.erb
+│       │   │   ├── destroy.turbo_stream.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── ligne.turbo_stream.erb
+│       │   │   └── new.html.erb
+│       │   ├── organisations
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── previsualisation.html.erb
+│       │   ├── recommandations
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _formulaire_de_ligne.html.erb
+│       │   │   ├── _ligne.html.erb
+│       │   │   ├── _tableau.html.erb
+│       │   │   ├── destroy.turbo_stream.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── ligne.turbo_stream.erb
+│       │   │   └── new.html.erb
+│       │   ├── solutions
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── types_acteurs
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   └── vocabulaires
+│       │       ├── _form.html.erb
+│       │       ├── edit.html.erb
+│       │       ├── index.html.erb
+│       │       ├── new.html.erb
+│       │       └── show.html.erb
 │       ├── application
 │       │   ├── _badge_operateur.html.erb
 │       │   ├── _bloc_modification.html.erb
 │       │   ├── _breadcrumb.html.erb
 │       │   ├── _contenu.html.erb
 │       │   ├── _entete_page.html.erb
-│       │   ├── _pagination.html.erb
+│       │   ├── _integration_indicator.html.erb
 │       │   ├── _public_vise.html.erb
 │       │   ├── _solution_integratrice.html.erb
 │       │   ├── _sommaire.html.erb
@@ -1141,6 +1272,17 @@
 │       ├── demarches
 │       │   ├── _recommandation.html.erb
 │       │   └── show.html.erb
+│       ├── devise
+│       │   └── sessions
+│       │       └── new.html.erb
+│       ├── kaminari
+│       │   ├── _first_page.html.erb
+│       │   ├── _gap.html.erb
+│       │   ├── _last_page.html.erb
+│       │   ├── _next_page.html.erb
+│       │   ├── _page.html.erb
+│       │   ├── _paginator.html.erb
+│       │   └── _prev_page.html.erb
 │       ├── layouts
 │       │   ├── _footer.html.erb
 │       │   ├── _header.html.erb
@@ -1203,12 +1345,20 @@
 │   ├── initializers
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
+│   │   ├── devise.rb
 │   │   ├── filter_parameter_logging.rb
-│   │   └── inflections.rb
+│   │   ├── inflections.rb
+│   │   ├── ransack.rb
+│   │   ├── sentry.rb
+│   │   ├── solid_queue_frontal.rb
+│   │   └── strong_migrations.rb
 │   ├── locales
+│   │   ├── devise.fr.yml
 │   │   ├── en.yml
 │   │   └── fr.yml
 │   ├── puma.rb
+│   ├── queue.yml
+│   ├── recurring.yml
 │   ├── routes.rb
 │   └── storage.yml
 ├── config.ru
@@ -1226,12 +1376,25 @@
 │   │   ├── 20260826142000_renommer_le_slug_suivi_des_tiers_aides.rb
 │   │   ├── 20260831160500_ajouter_cree_le_aux_solutions.rb
 │   │   ├── 20260831165000_normaliser_les_urls_des_solutions.rb
-│   │   └── 20260901153000_ajouter_les_slugs_des_acteurs_et_unaccent.rb
+│   │   ├── 20260901153000_ajouter_les_slugs_des_acteurs_et_unaccent.rb
+│   │   ├── 20260911142500_ajouter_les_metadonnees_datagouv_aux_solutions.rb
+│   │   ├── 20260911172500_ajouter_les_badges_de_l_organisation_datagouv.rb
+│   │   ├── 20260915141500_ajouter_les_types_de_solution.rb
+│   │   ├── 20260928085509_devise_create_admins.rb
+│   │   ├── 20261001091500_indexer_les_tables_de_jointure.rb
+│   │   ├── 20261002110000_creer_les_tables_solid_queue.rb
+│   │   ├── 20261005150000_dater_les_fiches_creees_dans_l_admin.rb
+│   │   ├── 20261005160000_exiger_un_slug_de_vocabulaire.rb
+│   │   ├── 20261006100000_exiger_un_niveau_de_recommandation.rb
+│   │   ├── 20261007114003_create_versions.rb
+│   │   ├── 20261007180000_ajouter_un_brouillon_aux_fiches.rb
+│   │   └── 20261007200000_ajouter_un_brouillon_aux_recommandations.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── lib
 │   └── tasks
 │       ├── .keep
+│       ├── datagouv.rake
 │       └── grist.rake
 ├── log
 │   └── .keep
@@ -1244,12 +1407,13 @@
 │   ├── favicon.ico
 │   └── robots.txt
 ├── script
-│   ├── .keep
-│   └── recette_parite.rb
+│   └── .keep
 ├── spec
 │   ├── components
 │   │   ├── dataservice_card_component_spec.rb
 │   │   └── solution_card_component_spec.rb
+│   ├── config
+│   │   └── recurring_spec.rb
 │   ├── fixtures
 │   │   └── grist
 │   │       ├── API_et_datasets_fournis.json
@@ -1264,35 +1428,49 @@
 │   │       ├── Solutions.json
 │   │       ├── Types_de_simplification.json
 │   │       └── Usagers.json
+│   ├── form_builders
+│   │   └── dsfr_form_builder_spec.rb
 │   ├── helpers
 │   │   ├── application_helper_spec.rb
 │   │   └── articles_helper_spec.rb
+│   ├── initializers
+│   │   └── sentry_spec.rb
 │   ├── interactors
 │   │   └── grist
 │   │       ├── attach_images_spec.rb
 │   │       └── fetch_tables_spec.rb
+│   ├── jobs
+│   │   └── rafraichir_catalogue_job_spec.rb
+│   ├── migrations
+│   │   └── dater_les_fiches_creees_dans_l_admin_spec.rb
 │   ├── models
 │   │   ├── demarche_spec.rb
 │   │   ├── integration_spec.rb
+│   │   ├── organisation_spec.rb
 │   │   ├── recommandation_spec.rb
 │   │   ├── solution_spec.rb
+│   │   ├── type_acteur_spec.rb
 │   │   └── vocabulaire_spec.rb
 │   ├── organizers
 │   │   └── grist
 │   │       └── import_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── admin
+│   │   │   ├── crud_spec.rb
+│   │   │   └── historique_spec.rb
+│   │   ├── admin_spec.rb
 │   │   ├── articles_spec.rb
 │   │   ├── demarches_spec.rb
+│   │   ├── matomo_spec.rb
 │   │   ├── pages_spec.rb
 │   │   ├── seo_spec.rb
 │   │   └── solutions_spec.rb
-│   ├── script
-│   │   └── recette_parite_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
 │   │   └── grist_stubs.rb
 │   └── tasks
+│       ├── datagouv_import_spec.rb
 │       └── grist_import_spec.rb
 ├── storage
 │   └── .keep
@@ -1306,4 +1484,4 @@
     ├── .keep
     └── javascript
         └── .keep
-104 directories, 1421 files
+128 directories, 1575 files
