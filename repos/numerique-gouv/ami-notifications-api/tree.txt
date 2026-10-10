@@ -478,6 +478,8 @@
 │   │   ├── api_urls.py
 │   │   ├── api_views.py
 │   │   ├── apps.py
+│   │   ├── csp.py
+│   │   ├── drf.py
 │   │   ├── httpx.py
 │   │   ├── jwks_client.py
 │   │   ├── management
@@ -494,6 +496,7 @@
 │   │       ├── __init__.py
 │   │       ├── test_all.py
 │   │       ├── test_cleanup_db_command.py
+│   │       ├── test_csp.py
 │   │       ├── test_expiration_rules.py
 │   │       ├── test_generate-identity-tokens.py
 │   │       ├── test_generate_identity_tokens_in_file.py
@@ -620,6 +623,8 @@
 │   │   │   │   │   ├── Toasts.svelte.test.ts
 │   │   │   │   │   ├── Toggle.svelte
 │   │   │   │   │   ├── Toggle.svelte.test.ts
+│   │   │   │   │   ├── ZonePreferences.svelte
+│   │   │   │   │   ├── ZonePreferences.svelte.test.ts
 │   │   │   │   │   ├── followup
 │   │   │   │   │   │   ├── Followup.svelte
 │   │   │   │   │   │   ├── Followup.svelte.test.ts
@@ -639,13 +644,7 @@
 │   │   │   │   │       ├── FollowupItemModal.svelte
 │   │   │   │   │       ├── FollowupItemModal.svelte.test.ts
 │   │   │   │   │       ├── LightModal.svelte
-│   │   │   │   │       ├── Modal.svelte
-│   │   │   │   │       ├── Modal.svelte.test.ts
-│   │   │   │   │       ├── NavWithBackButtonModal.svelte
-│   │   │   │   │       ├── ServicesItemModal.svelte
-│   │   │   │   │       ├── ZonePreferences.svelte
-│   │   │   │   │       ├── ZonePreferences.svelte.test.ts
-│   │   │   │   │       └── ZonePreferencesFooter.svelte
+│   │   │   │   │       └── ServicesItemModal.svelte
 │   │   │   │   ├── consents.test.ts
 │   │   │   │   ├── consents.ts
 │   │   │   │   ├── contact.test.ts
@@ -800,7 +799,12 @@
 │   │   │   │   │   ├── notifications
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   └── page.svelte.test.ts
-│   │   │   │   │   └── pages.svelte.test.ts
+│   │   │   │   │   ├── pages.svelte.test.ts
+│   │   │   │   │   └── zones
+│   │   │   │   │       ├── +page.svelte
+│   │   │   │   │       └── city
+│   │   │   │   │           ├── +page.svelte
+│   │   │   │   │           └── page.svelte.test.ts
 │   │   │   │   ├── procedure
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
@@ -901,4 +905,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-170 directories, 733 files
+172 directories, 735 files

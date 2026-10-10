@@ -1,12 +1,14 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "API de notifications pour l'Application Mobile Interministérielle (AMI). Elle permet de gérer l'envoi de notifications push et le stockage des endpoints pour les clients web et mobiles.",
+  "description": "API de notifications pour l'Application Mobile Interministérielle (AMI). Elle permet de gérer la création et la liste des notifications, ainsi que le stockage des URLs de push pour les clients web et mobiles.",
   "language": "Python",
   "features": [
     "Notifications & Alertes",
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
-    "Authentification & Accès"
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -15,13 +17,15 @@
     "PostgreSQL",
     "Svelte",
     "Webpush",
+    "FranceConnect",
     "uv",
     "Ruff",
-    "Biome"
+    "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Webhooks & Événements",
@@ -29,10 +33,9 @@
   ],
   "auth": {
     "methods": [
+      "sso",
       "oauth2",
-      "jwt",
-      "passkey",
-      "sso"
+      "jwt"
     ],
     "providers": [
       "FranceConnect"
@@ -40,20 +43,22 @@
   },
   "tests": [
     "pytest",
-    "pytest-django"
+    "pytest-django",
+    "pytest-asyncio"
   ],
   "workflows": [
-    "Pipelines de tests CI pour iOS et Android"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-10-02T16:47:13+02:00",
+  "lastActivity": "2026-10-09T17:56:19+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
+    "Communication & Messagerie",
     "Écosystème beta.gouv / État",
     "Python",
-    "Django & FastAPI",
-    "Communication & Messagerie",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Django & FastAPI"
   ]
 }
