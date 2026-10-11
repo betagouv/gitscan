@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "Une solution de visioconférence simple et performante basée sur LiveKit. Elle propose des fonctionnalités de partage d'écran, de chat sécurisé, d'enregistrement et de transcription de réunions.",
+  "description": "Une solution de visioconférence simple et performante basée sur LiveKit, offrant des fonctionnalités de haute qualité comme l'enregistrement et la transcription de réunions. Elle est conçue pour être auto-hébergée et souveraine.",
   "language": "Python",
   "features": [
-    "Collaboration & Workflow",
     "Temps réel & WebSocket",
+    "Collaboration & Workflow",
+    "Sécurité & Conformité",
     "Communication & Messagerie",
     "Gestion des médias & Assets",
-    "Authentification & Accès",
     "Interface utilisateur & Design",
     "Accessibilité & i18n"
   ],
@@ -16,11 +16,13 @@
   "dependencies": [
     "LiveKit",
     "Django Rest Framework",
+    "React",
     "Vite.js",
-    "React Aria",
+    "PostHog",
+    "Sentry",
     "Redis",
-    "PostgreSQL",
-    "BrowserStack"
+    "Docker",
+    "Kubernetes"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,39 +32,39 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Celery & Queue asynchrone",
+    "Authentification (composant)",
     "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "sso",
-      "session"
+      "session",
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "BrowserStack",
-    "Vitest"
+    "Vitest",
+    "BrowserStack"
   ],
   "workflows": [
-    "CI/CD workflows"
+    "CI/CD"
   ],
   "lastActivity": "2026-10-07T00:00:00Z",
-  "status": "maintained",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
+    "Communication & Messagerie",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
     "Python",
-    "Bases de données SQL",
     "Docker & Conteneurs",
-    "Communication & Messagerie",
     "CI/CD & GitHub Actions",
-    "Accessibilité"
+    "Accessibilité",
+    "Sécurité & Auth"
   ]
 }

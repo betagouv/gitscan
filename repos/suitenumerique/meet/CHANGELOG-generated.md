@@ -1,36 +1,37 @@
-## Changelog : meet (30 derniers jours, au 07/10/2026)
+## Changelog : meet (30 derniers jours, au 11 octobre 2026)
 
 ### Résumé
-Cette période a été marquée par une amélioration majeure de l'expérience de partage d'écran, incluant désormais des fonctions de zoom et de panoramique. Un effort conséquent a également été déployé pour renforcer la sécurité de l'application (correction de vulnérabilités et protection des secrets) et moderniser les outils de développement pour les contributeurs.
+Ce mois-ci, meet a franchi des étapes importantes pour améliorer l'expérience de partage d'écran grâce à l'ajout de fonctions de zoom et de panoramique. La sécurité a été une priorité absolue avec la correction de nombreuses vulnérabilités et le renforcement des mécanismes d'authentification. Enfin, l'accessibilité a été nettement améliorée pour offrir une meilleure expérience aux utilisateurs utilisant des technologies d'assistance.
 
 ### Évolutions fonctionnelles
-- **Partage d'écran** : Ajout de contrôles de zoom et de panoramique (via souris ou clavier) et amélioration de l'interface de la barre d'outils.
-- **Accessibilité** : Amélioration de la navigation au clavier pour le zoom, de la pagination des participants et de la communication des états de chargement aux technologies d'assistance.
+- **Partage d'écran** : Ajout de fonctionnalités de zoom et de panoramique lors du partage d'écran, avec un support complet pour la molette de la souris et la navigation au clavier.
+- **Accès aux réunions** : Les visiteurs non connectés peuvent désormais démarrer une réunion.
+- **Enregistrements** : Possibilité de configurer l'encodage spécifiquement pour chaque enregistrement via l'API.
+- **Accessibilité** : 
+    - Amélioration de la navigation au clavier pour la pagination des participants et les contrôles de zoom.
+    - Meilleure visibilité des états de chargement pour les technologies d'assistance.
+    - Ajout de contours de focus visibles sur les éléments de menu.
 - **Expérience utilisateur** : 
-    - Possibilité pour les visiteurs non connectés de démarrer une réunion.
-    - Ajout d'un signal sonore lors de l'arrivée en salle d'attente.
-    - Notifications d'alerte en cas de bascule de connexion sur le protocole TURN.
-    - Clarification des messages et permissions concernant l'enregistrement vidéo.
+    - Notifications visuelles en cas de bascule de connexion vers le protocole TURN.
+    - Amélioration de la gestion des sons de la salle d'attente et des infobulles.
 
 ### Évolutions techniques
 - **Sécurité** : 
-    - Hachage des secrets d'application en SHA-256 et protection contre la modification des identifiants clients dans l'administration.
-    - Correction de nombreuses vulnérabilités critiques (CVE) sur Django, PyJWT, libssl et d'autres dépendances système.
-    - Mise en place de limitations (throttling) pour la génération de liens de réunion et de quotas quotidiens pour la création de salles.
-- **Infrastructure & Environnement de développement** :
-    - Migration de la stack de développement vers Garage (remplacement de MinIO) et support de Podman en mode rootless.
-    - Modernisation de la stack locale (Node 22, support Nix) et optimisation des images Docker.
-    - Amélioration des déploiements Helm (support de `envFrom` et gestion des sondes de santé).
-- **Backend & Performance** :
-    - Optimisation des performances en réduisant les requêtes de domaine sur l'endpoint des tokens.
-    - Automatisation de la purge des salles inactives via une tâche planifiée (cronjob).
-    - Amélioration de la gestion des échecs d'enregistrement (LiveKit egress).
-- **CI/CD & Qualité** :
-    - Migration de la CI vers des workflows partagés et ajout de scans de vulnérabilités (Menshen).
-    - Introduction de tests unitaires frontend avec Vitest.
-- **Observabilité** : 
-    - Renforcement de la confidentialité sur Sentry (redaction du contenu des réunions) et meilleur contrôle de l'échantillonnage des traces.
+    - Correction massive de vulnérabilités critiques (CVE) sur diverses dépendances (Django, PyJWT, libssl, libpcre2, etc.).
+    - Renforcement de la protection des données : hachage des secrets d'application en SHA-256 et limitation quotidienne de la création de salles.
+    - Sécurisation du flux de la salle d'attente (lobby) en supprimant la dépendance aux cookies.
+- **Authentification** : 
+    - Introduction d'un point de terminaison d'échange de jetons pour faciliter l'intégration de meet dans des iframes.
+    - Support de l'authentification alternative via les fragments d'URL.
+- **Infrastructure & DevOps** : 
+    - Migration de l'environnement de développement local vers Garage (en remplacement de MinIO).
+    - Optimisation des déploiements Helm (support de `envFrom` et rendu des sondes de santé).
+    - Migration de la CI vers des workflows GitHub Actions partagés et ajout de scans de vulnérabilités (Menshen).
+    - Mise en place d'une tâche automatisée (cronjob) pour purger les salles inactives.
+- **Performance & Tests** : 
+    - Réduction des requêtes de domaine sur l'endpoint de jetons d'application.
+    - Intégration de Vitest pour permettre l'exécution de tests unitaires sur le frontend.
 
 ### Autres changements
-- **Documentation** : Mise à jour des guides de migration (Brevo) et du fichier `UPGRADE.md`.
-- **Nettoyage** : Suppression de vues API inutilisées, de templates GitHub obsolètes et de workflows Crowdin non utilisés.
+- **Documentation** : Mises à jour du README, du CHANGELOG et du guide de mise à niveau (UPGRADE.md).
+- **Nettoyage** : Suppression de logs de console inutiles et de composants API obsolètes.

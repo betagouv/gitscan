@@ -266,7 +266,8 @@
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
-    │   │   │   └── livekit.py
+    │   │   │   ├── livekit.py
+    │   │   │   └── user_token.py
     │   │   ├── enums.py
     │   │   ├── external_api
     │   │   │   ├── __init__.py
@@ -312,6 +313,7 @@
     │   │   │   ├── 0023_alter_recording_status.py
     │   │   │   ├── 0024_room_last_started_at.py
     │   │   │   ├── 0025_application_client_secret_sha256.py
+    │   │   │   ├── 0026_alter_application_scopes.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -349,7 +351,8 @@
     │   │   │   ├── room_management.py
     │   │   │   ├── room_roles.py
     │   │   │   ├── sip_management.py
-    │   │   │   └── subtitle.py
+    │   │   │   ├── subtitle.py
+    │   │   │   └── transit_code.py
     │   │   ├── static
     │   │   │   └── images
     │   │   │       ├── logo-suite-numerique.png
@@ -443,7 +446,8 @@
     │   │   │   │   ├── test_presence.py
     │   │   │   │   ├── test_room_management.py
     │   │   │   │   ├── test_sip_management.py
-    │   │   │   │   └── test_subtitle.py
+    │   │   │   │   ├── test_subtitle.py
+    │   │   │   │   └── test_transit_code.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
@@ -451,13 +455,16 @@
     │   │   │   │   └── test_connection_test.py
     │   │   │   ├── test_api_diagnostics.py
     │   │   │   ├── test_api_resource_accesses.py
+    │   │   │   ├── test_api_user_access_token_authentication.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_api_users_exchange_access_token.py
     │   │   │   ├── test_api_users_room_preferences.py
     │   │   │   ├── test_application_secret_hashers.py
     │   │   │   ├── test_dockerflow.py
     │   │   │   ├── test_external_api_authentication.py
     │   │   │   ├── test_external_api_rooms.py
     │   │   │   ├── test_external_api_token.py
+    │   │   │   ├── test_external_api_users.py
     │   │   │   ├── test_models_applications.py
     │   │   │   ├── test_models_recording.py
     │   │   │   ├── test_models_recording_accesses.py
@@ -469,7 +476,8 @@
     │   │   │   ├── test_utils.py
     │   │   │   ├── test_utils_build_telephony_config.py
     │   │   │   ├── test_utils_detect_mimetype.py
-    │   │   │   └── test_utils_format_telephony_phone_number.py
+    │   │   │   ├── test_utils_format_telephony_phone_number.py
+    │   │   │   └── utils.py
     │   │   ├── urls.py
     │   │   ├── utils.py
     │   │   └── validators.py
@@ -644,17 +652,20 @@
     │   │   │   ├── auth
     │   │   │   │   ├── api
     │   │   │   │   │   ├── ApiUser.ts
+    │   │   │   │   │   ├── exchangeAccessToken.ts
     │   │   │   │   │   ├── fetchUser.ts
     │   │   │   │   │   ├── patchUser.ts
     │   │   │   │   │   ├── updateUserPreferences.ts
     │   │   │   │   │   ├── useSyncUserPreferencesWithBackend.tsx
     │   │   │   │   │   └── useUser.tsx
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── TransitCodeGate.tsx
     │   │   │   │   │   └── UserAware.tsx
     │   │   │   │   └── utils
     │   │   │   │       ├── authUrl.ts
     │   │   │   │       ├── logout.ts
-    │   │   │   │       └── silentLogin.ts
+    │   │   │   │       ├── silentLogin.ts
+    │   │   │   │       └── transitCode.ts
     │   │   │   ├── chat
     │   │   │   │   ├── components
     │   │   │   │   │   ├── Chat.tsx
@@ -690,11 +701,15 @@
     │   │   │   │   └── utils
     │   │   │   │       └── downloadConnectionTestReport.ts
     │   │   │   ├── files
-    │   │   │   │   └── api
-    │   │   │   │       ├── createFile.ts
-    │   │   │   │       ├── deleteFile.ts
-    │   │   │   │       ├── listFiles.ts
-    │   │   │   │       └── types.ts
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── createFile.ts
+    │   │   │   │   │   ├── deleteFile.ts
+    │   │   │   │   │   ├── listFiles.ts
+    │   │   │   │   │   └── types.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   └── useResolvedMediaUrls.ts
+    │   │   │   │   └── utils
+    │   │   │   │       └── resolveMediaUrl.ts
     │   │   │   ├── home
     │   │   │   │   ├── components
     │   │   │   │   │   ├── CreateMeetingMenu.tsx
@@ -1018,6 +1033,7 @@
     │   │   │   │   └── utils
     │   │   │   │       ├── canTestAudioOutput.ts
     │   │   │   │       ├── generateRoomId.ts
+    │   │   │   │       ├── getLiveKitAuthHeaders.ts
     │   │   │   │       ├── getParticipantBackgroundGradient.ts
     │   │   │   │       ├── getParticipantColor.ts
     │   │   │   │       ├── getParticipantIsAuthenticated.ts
@@ -1026,6 +1042,7 @@
     │   │   │   │       ├── isRoomValid.test.ts
     │   │   │   │       ├── isRoomValid.ts
     │   │   │   │       ├── isSubsetOf.ts
+    │   │   │   │       ├── resolveAudioOutputDeviceId.ts
     │   │   │   │       └── telephony.ts
     │   │   │   ├── sdk
     │   │   │   │   ├── api
@@ -1092,6 +1109,7 @@
     │   │   │   ├── useApplyA11yFonts.ts
     │   │   │   ├── useDelayUnmount.tsx
     │   │   │   ├── useEscapeToClose.ts
+    │   │   │   ├── useHash.ts
     │   │   │   ├── useHumanizeDuration.ts
     │   │   │   ├── useLoginHint.ts
     │   │   │   ├── usePrevious.ts
@@ -1225,6 +1243,7 @@
     │   │   │   └── useCloseDialog.tsx
     │   │   ├── routes.ts
     │   │   ├── stores
+    │   │   │   ├── accessToken.ts
     │   │   │   ├── accessibility.ts
     │   │   │   ├── chat.ts
     │   │   │   ├── connectionObserver.ts
@@ -1234,6 +1253,7 @@
     │   │   │   ├── keyboardShortcuts.ts
     │   │   │   ├── konami.ts
     │   │   │   ├── layout.ts
+    │   │   │   ├── lobby.ts
     │   │   │   ├── muteDialog.ts
     │   │   │   ├── notifications.ts
     │   │   │   ├── permissions.ts
@@ -1470,4 +1490,4 @@
         │       ├── test_sentry.py
         │       └── test_user_assign.py
         └── uv.lock
-273 directories, 1199 files
+275 directories, 1217 files
