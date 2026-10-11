@@ -1,67 +1,49 @@
 {
   "url": "https://github.com/betagouv/transports-sanitaires",
   "name": "transports-sanitaires",
-  "description": "Simulateur permettant de déterminer l'éligibilité et le mode de transport sanitaire approprié en fonction de critères spécifiques et de règles métier complexes.",
+  "description": "Simulateur d'éligibilité pour les transports sanitaires permettant de tester des situations et de générer des formulaires CERFA pré-remplis. Le projet utilise Publicodes pour la gestion des règles métier et inclut des outils d'analyse de données.",
   "language": "TypeScript",
   "features": [
     "Simulation & Calcul",
     "Formulaires & Démarches",
     "Statistiques & Rapports",
-    "Suivi & Traçabilité",
-    "Interface utilisateur & Design",
-    "Gestion des établissements & Structures"
+    "Données & Schémas"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "@codegouvfr/react-dsfr",
-    "@publicodes/forms",
-    "@publicodes/react-ui",
-    "publicodes",
-    "react",
-    "express",
-    "vitest",
-    "js-yaml",
+    "React",
+    "Publicodes",
+    "Express",
+    "Vitest",
+    "Biome",
+    "Zod",
     "pdf-lib",
+    "xlsx",
     "notion-client",
-    "xlsx"
+    "@codegouvfr/react-dsfr"
   ],
   "components": [
     "React / Next.js",
     "TypeScript / JavaScript",
     "API REST & GraphQL",
-    "Design System (DSFR & UI libs)",
     "Publicodes & Règles métier",
-    "Scripts & Utilitaires",
-    "Documentation & Schémas"
+    "Tests",
+    "Design System (DSFR & UI libs)",
+    "Scripts & Utilitaires"
   ],
-  "auth": {
-    "methods": [
-      "none"
-    ]
-  },
-  "tests": [
-    "Vitest",
-    "Testing Library"
-  ],
+  "tests": "Vitest",
   "workflows": [
-    "ci.yml"
+    "pnpm verifier"
   ],
-  "lastActivity": "2026-08-18T13:54:45+02:00",
-  "status": "active",
-  "license": null,
+  "lastActivity": "2026-09-29T10:21:25+02:00",
+  "status": "maintained",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 0
-  },
   "tags": [
     "Transport & Mobilité",
-    "Santé & Épidémiologie",
-    "Simulation & Calcul",
     "TypeScript",
-    "Design System & UI",
+    "React & Next.js",
     "Données & Open Data",
-    "Git & DevOps"
+    "Écosystème beta.gouv / État",
+    "Tests & Qualité"
   ]
 }
