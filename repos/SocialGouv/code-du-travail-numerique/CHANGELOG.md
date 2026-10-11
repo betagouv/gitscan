@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.247.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.246.0...v4.247.0) (2026-10-06)
+
+
+### Features
+
+* **convention-collective:** redirection de la CC 3225 vers la 3230 ([#7549](https://github.com/SocialGouv/code-du-travail-numerique/issues/7549)) ([8696ef7](https://github.com/SocialGouv/code-du-travail-numerique/commit/8696ef73a6fe5286cefffd344bec62776a322790))
+
+
+
+
+
+# [4.246.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.245.0...v4.246.0) (2026-10-05)
+
+
+### Bug Fixes
+
+* **contenu:** harmonisation du titre de la page sur le rôle des textes avec le libellé du menu ([#7547](https://github.com/SocialGouv/code-du-travail-numerique/issues/7547)) ([2671207](https://github.com/SocialGouv/code-du-travail-numerique/commit/26712074f56d32d8538b46ddacefdbf6168e5477))
+
+
+### Features
+
+* **actualite:** amélioration du SEO sur les actualités ([#7506](https://github.com/SocialGouv/code-du-travail-numerique/issues/7506)) ([7c31c89](https://github.com/SocialGouv/code-du-travail-numerique/commit/7c31c89cc7da7dd5b69f2fd483facf3e01ad10bc))
+* **matomo:** mesure d'audience sans cookie après refus des cookies ([#7545](https://github.com/SocialGouv/code-du-travail-numerique/issues/7545)) ([642281f](https://github.com/SocialGouv/code-du-travail-numerique/commit/642281f4f336012e04a1061e18ba95319effb5ee))
+
+
+
+
+
+# [4.245.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.244.0...v4.245.0) (2026-10-02)
+
+
+### Features
+
+* **sea:** tracking de la campagne SEA 2026 sur toutes les pages ([#7543](https://github.com/SocialGouv/code-du-travail-numerique/issues/7543)) ([9c8ec6b](https://github.com/SocialGouv/code-du-travail-numerique/commit/9c8ec6b1b0a871b86dc4a427df77cd7cd3de6332))
+
+
+
+
+
+# [4.244.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.243.0...v4.244.0) (2026-09-23)
+
+
+### Bug Fixes
+
+* **outils:** correction d'une typo sur le titre des résultats des accords d'entreprise ([#7504](https://github.com/SocialGouv/code-du-travail-numerique/issues/7504)) ([9aed736](https://github.com/SocialGouv/code-du-travail-numerique/commit/9aed7363e2337aab62a63864bd253180ec5ecf3a))
+
+
+### Features
+
+* **contribution:** retrait du bloc sur la convention collective ([#7491](https://github.com/SocialGouv/code-du-travail-numerique/issues/7491)) ([4ea76b3](https://github.com/SocialGouv/code-du-travail-numerique/commit/4ea76b3f69d7225f655dac4f2b1fcf90de30dc6f))
+* **contributions:** fiches infos dans « Fiches pratiques » et tag de type sur les cartes ([#7475](https://github.com/SocialGouv/code-du-travail-numerique/issues/7475)) ([a6a06d8](https://github.com/SocialGouv/code-du-travail-numerique/commit/a6a06d81adf680b36034c67e4c96cfbc1a5276d2))
+* **contributions:** rubrique « Explorez nos thématiques » à la place des articles liés ([#7479](https://github.com/SocialGouv/code-du-travail-numerique/issues/7479)) ([b767f1e](https://github.com/SocialGouv/code-du-travail-numerique/commit/b767f1e9e2c9b8b94dea48e2bb06d993b86543d5))
+* **outils:** mise en avant du nouveau simulateur d'indemnité de mise ou départ à la retraite ([#7505](https://github.com/SocialGouv/code-du-travail-numerique/issues/7505)) ([53cc3a2](https://github.com/SocialGouv/code-du-travail-numerique/commit/53cc3a28dc1e05c97c77a4ed3ac870d393e09188))
+* **outils:** simulateur d'indemnité de départ à la retraite ([#7502](https://github.com/SocialGouv/code-du-travail-numerique/issues/7502)) ([79619fd](https://github.com/SocialGouv/code-du-travail-numerique/commit/79619fda14ebab95b0c7f31d77c5edea30e9fecc))
+* **service-public:** injection d'un bloc "une réponse plus précise" pour renvoyer sur nos contributions ([#7477](https://github.com/SocialGouv/code-du-travail-numerique/issues/7477)) ([7a2e68b](https://github.com/SocialGouv/code-du-travail-numerique/commit/7a2e68be83ce1700fe63369619f40f052583d1c2))
+* **tracking:** ajout du tracking des chatbots AI ([#7501](https://github.com/SocialGouv/code-du-travail-numerique/issues/7501)) ([1c35ad9](https://github.com/SocialGouv/code-du-travail-numerique/commit/1c35ad9d6e6ea08501bc7b7fab4291f3047c7195))
+
+
+
+
+
 # [4.243.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.242.0...v4.243.0) (2026-09-08)
 
 

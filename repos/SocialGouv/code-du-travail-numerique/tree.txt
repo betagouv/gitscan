@@ -96,6 +96,8 @@
 │   │   ├── .prettierrc.mjs
 │   │   ├── CHANGELOG.md
 │   │   ├── LICENSE
+│   │   ├── __tests__
+│   │   │   └── proxy.test.ts
 │   │   ├── app
 │   │   │   ├── [...not-found]
 │   │   │   │   └── page.tsx
@@ -106,7 +108,9 @@
 │   │   │   ├── actualite
 │   │   │   │   ├── [slug]
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── rss.xml
+│   │   │   │       └── route.ts
 │   │   │   ├── api
 │   │   │   │   ├── contribution-rating
 │   │   │   │   │   └── route.ts
@@ -193,6 +197,8 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── indemnite-precarite
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── indemnite-retraite
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── indemnite-rupture-conventionnelle
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── page.tsx
@@ -239,6 +245,8 @@
 │   │   │       │   └── page.tsx
 │   │   │       ├── indemnite-precarite
 │   │   │       │   └── page.tsx
+│   │   │       ├── indemnite-retraite
+│   │   │       │   └── page.tsx
 │   │   │       ├── indemnite-rupture-conventionnelle
 │   │   │       │   └── page.tsx
 │   │   │       ├── modeles-de-courriers
@@ -273,6 +281,7 @@
 │   │   │   ├── google6147ec315bc44cce.html
 │   │   │   ├── static
 │   │   │   │   ├── assets
+│   │   │   │   │   ├── explore-themes-mapping.csv
 │   │   │   │   │   ├── fonts
 │   │   │   │   │   │   ├── Merriweather_400.eot
 │   │   │   │   │   │   ├── Merriweather_400.svg
@@ -338,6 +347,7 @@
 │   │   │   │   │       ├── good-to-know.svg
 │   │   │   │   │       ├── indemnite-licenciement.png
 │   │   │   │   │       ├── indemnite-precarite.png
+│   │   │   │   │       ├── indemnite-retraite.png
 │   │   │   │   │       ├── indemnite-rupture-conventionnelle.png
 │   │   │   │   │       ├── infographies-download.svg
 │   │   │   │   │       ├── legifrance.svg
@@ -543,6 +553,7 @@
 │   │   │   │       └── types.ts
 │   │   │   ├── config.ts
 │   │   │   ├── e2e
+│   │   │   │   ├── actualites.e2e.ts
 │   │   │   │   ├── article-code-du-travail.e2e.ts
 │   │   │   │   ├── besoin-plus-informations.e2e.ts
 │   │   │   │   ├── canonical-urls.e2e.ts
@@ -550,6 +561,7 @@
 │   │   │   │   ├── contributions-search.e2e.ts
 │   │   │   │   ├── contributions.e2e.ts
 │   │   │   │   ├── conventions-collectives.e2e.ts
+│   │   │   │   ├── cookies-matomo.e2e.ts
 │   │   │   │   ├── fiche-ministere-travail.e2e.ts
 │   │   │   │   ├── fiche-service-public.e2e.ts
 │   │   │   │   ├── global-setup.ts
@@ -577,6 +589,7 @@
 │   │   │   │   │   ├── heures-recherche-emploi.e2e.ts
 │   │   │   │   │   ├── indemnite-licenciement.e2e.ts
 │   │   │   │   │   ├── indemnite-precarite.e2e.ts
+│   │   │   │   │   ├── indemnite-retraite.e2e.ts
 │   │   │   │   │   ├── indemnite-rupture-co.e2e.ts
 │   │   │   │   │   ├── preavis-demission.e2e.ts
 │   │   │   │   │   ├── preavis-licenciement.e2e.ts
@@ -610,15 +623,33 @@
 │   │   │       ├── actualite
 │   │   │       │   ├── NewsContainer.tsx
 │   │   │       │   ├── NewsList.tsx
+│   │   │       │   ├── __tests__
+│   │   │       │   │   ├── NewsItem.test.tsx
+│   │   │       │   │   ├── __snapshots__
+│   │   │       │   │   │   └── rss.test.ts.snap
+│   │   │       │   │   ├── rss.test.ts
+│   │   │       │   │   ├── rssRoute.test.ts
+│   │   │       │   │   └── rssRouteNoCache.test.ts
 │   │   │       │   ├── component
 │   │   │       │   │   └── NewsItem.tsx
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── queries.ts
+│   │   │       │   ├── rss.ts
 │   │   │       │   └── type.ts
 │   │   │       ├── analytics
 │   │   │       │   ├── __tests__
 │   │   │       │   │   ├── config.test.ts
 │   │   │       │   │   └── eventName.test.ts
+│   │   │       │   ├── ai-chatbot-tracking
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   ├── detection.test.ts
+│   │   │       │   │   │   ├── telemetry.test.ts
+│   │   │       │   │   │   └── trackAiChatbotRequest.test.ts
+│   │   │       │   │   ├── constants.ts
+│   │   │       │   │   ├── detection.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── telemetry.ts
+│   │   │       │   │   └── trackAiChatbotRequest.ts
 │   │   │       │   ├── config.ts
 │   │   │       │   ├── eventName.ts
 │   │   │       │   ├── index.ts
@@ -661,6 +692,7 @@
 │   │   │       │   ├── List.tsx
 │   │   │       │   ├── ListWithArrow.tsx
 │   │   │       │   ├── LogoLink.tsx
+│   │   │       │   ├── PublishedDate.tsx
 │   │   │       │   ├── References.tsx
 │   │   │       │   ├── ReferencesList.tsx
 │   │   │       │   ├── RelatedItems.tsx
@@ -674,6 +706,7 @@
 │   │   │       │   │   ├── ContentMeta.test.tsx
 │   │   │       │   │   ├── DisplayContent.test.tsx
 │   │   │       │   │   ├── Html.test.tsx
+│   │   │       │   │   ├── PublishedDate.test.tsx
 │   │   │       │   │   ├── ReferenceList.test.tsx
 │   │   │       │   │   ├── RelatedItems.test.tsx
 │   │   │       │   │   ├── Share.test.tsx
@@ -718,6 +751,7 @@
 │   │   │       │   │   ├── ContributionAgreement.test.tsx
 │   │   │       │   │   ├── ContributionAgreementDeclinations.test.tsx
 │   │   │       │   │   ├── cc-funnel.tracking.test.tsx
+│   │   │       │   │   ├── contribution-enterprise-prefill.test.tsx
 │   │   │       │   │   ├── contribution-generic.tracking.test.tsx
 │   │   │       │   │   ├── contributions.test.tsx
 │   │   │       │   │   ├── externalArrival.test.ts
@@ -725,6 +759,18 @@
 │   │   │       │   │   ├── ui.ts
 │   │   │       │   │   └── useContentViewTracking.test.ts
 │   │   │       │   ├── contributionUtils.ts
+│   │   │       │   ├── explore-themes
+│   │   │       │   │   ├── ExploreThemes.tsx
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   ├── ExploreThemes.test.tsx
+│   │   │       │   │   │   ├── mapping.test.ts
+│   │   │       │   │   │   ├── parse-mapping-csv.test.ts
+│   │   │       │   │   │   ├── queries.es.test.ts
+│   │   │       │   │   │   └── queries.test.ts
+│   │   │       │   │   ├── mapping.ts
+│   │   │       │   │   ├── parse-mapping-csv.ts
+│   │   │       │   │   ├── queries.ts
+│   │   │       │   │   └── type.ts
 │   │   │       │   ├── externalArrival.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── queries.ts
@@ -956,6 +1002,13 @@
 │   │   │       │   │   ├── index.ts
 │   │   │       │   │   ├── type.ts
 │   │   │       │   │   └── utils.ts
+│   │   │       │   ├── contributions
+│   │   │       │   │   ├── ContributionPromo.tsx
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   ├── ContributionPromo.test.tsx
+│   │   │       │   │   │   └── injectContributionPromos.test.ts
+│   │   │       │   │   ├── config.ts
+│   │   │       │   │   └── injectContributionPromos.ts
 │   │   │       │   └── queries.ts
 │   │   │       ├── glossaire
 │   │   │       │   ├── AlphabeticList.tsx
@@ -998,6 +1051,7 @@
 │   │   │       │   ├── Themes.tsx
 │   │   │       │   ├── Tools.tsx
 │   │   │       │   ├── __tests__
+│   │   │       │   │   ├── HomeNewsCard.test.tsx
 │   │   │       │   │   ├── __snapshots__
 │   │   │       │   │   │   └── index.test.tsx.snap
 │   │   │       │   │   └── index.test.tsx
@@ -1134,6 +1188,7 @@
 │   │   │       │   │   │       └── ListLayout.test.tsx.snap
 │   │   │       │   │   ├── component
 │   │   │       │   │   │   ├── Section.tsx
+│   │   │       │   │   │   ├── TypeBadge.tsx
 │   │   │       │   │   │   └── __tests__
 │   │   │       │   │   │       └── Section.test.tsx
 │   │   │       │   │   └── index.ts
@@ -1810,6 +1865,28 @@
 │   │   │       │   │   │   ├── index.ts
 │   │   │       │   │   │   └── store.ts
 │   │   │       │   │   └── types.ts
+│   │   │       │   ├── indemnite-retraite
+│   │   │       │   │   ├── IndemniteRetraiteSimulator.tsx
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   ├── parcours.test.tsx
+│   │   │       │   │   │   └── tracking.test.tsx
+│   │   │       │   │   ├── events
+│   │   │       │   │   │   └── useIndemniteRetraiteEventEmitter.tsx
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── steps
+│   │   │       │   │       ├── Anciennete
+│   │   │       │   │       │   └── index.tsx
+│   │   │       │   │       ├── Introduction
+│   │   │       │   │       │   ├── components
+│   │   │       │   │       │   │   ├── Intro.tsx
+│   │   │       │   │       │   │   └── index.ts
+│   │   │       │   │       │   └── index.tsx
+│   │   │       │   │       ├── Resultat
+│   │   │       │   │       │   ├── Eligible.tsx
+│   │   │       │   │       │   ├── Ineligible.tsx
+│   │   │       │   │       │   ├── index.tsx
+│   │   │       │   │       │   └── utils.ts
+│   │   │       │   │       └── index.ts
 │   │   │       │   ├── indemnite-rupture-conventionnelle
 │   │   │       │   │   ├── IndemniteRuptureCoSimulator.tsx
 │   │   │       │   │   ├── __tests__
@@ -2215,16 +2292,20 @@
 │   │   │       │   │   │   ├── theme.test.tsx.snap
 │   │   │       │   │   │   └── themes.test.tsx.snap
 │   │   │       │   │   ├── queries.es.test.ts
+│   │   │       │   │   ├── sortByThemeOrder.test.ts
 │   │   │       │   │   ├── theme.test.tsx
 │   │   │       │   │   └── themes.test.tsx
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── queries.ts
+│   │   │       │   ├── sortByThemeOrder.ts
 │   │   │       │   └── tracking.ts
 │   │   │       ├── utils
 │   │   │       │   ├── __tests__
 │   │   │       │   │   ├── __snapshots__
 │   │   │       │   │   │   └── groupByThemes.test.ts.snap
 │   │   │       │   │   ├── array.test.ts
+│   │   │       │   │   ├── consent.test.ts
+│   │   │       │   │   ├── date.test.ts
 │   │   │       │   │   ├── groupByThemes.test.ts
 │   │   │       │   │   └── hash.test.ts
 │   │   │       │   ├── array.ts
@@ -2293,6 +2374,7 @@
 │   │   │   │   │   │   │   └── calculate.spec.ts
 │   │   │   │   │   │   ├── indemnite-licenciement
 │   │   │   │   │   │   │   ├── anciennete.spec.ts
+│   │   │   │   │   │   │   ├── arret-travail.spec.ts
 │   │   │   │   │   │   │   ├── calculate.spec.ts
 │   │   │   │   │   │   │   ├── calculateResult.spec.ts
 │   │   │   │   │   │   │   ├── formule.spec.ts
@@ -2303,6 +2385,13 @@
 │   │   │   │   │   │   │   ├── calculate.spec.ts
 │   │   │   │   │   │   │   ├── ineligibility-conventions.spec.ts
 │   │   │   │   │   │   │   └── ineligibility.spec.ts
+│   │   │   │   │   │   ├── indemnite-retraite
+│   │   │   │   │   │   │   ├── arret-travail.spec.ts
+│   │   │   │   │   │   │   ├── formule.spec.ts
+│   │   │   │   │   │   │   ├── indemnite.spec.ts
+│   │   │   │   │   │   │   ├── references.spec.ts
+│   │   │   │   │   │   │   ├── scenarios-metier.spec.ts
+│   │   │   │   │   │   │   └── situation-front.spec.ts
 │   │   │   │   │   │   ├── preavis-demission
 │   │   │   │   │   │   │   └── calculate.spec.ts
 │   │   │   │   │   │   ├── preavis-licenciement
@@ -2314,6 +2403,7 @@
 │   │   │   │   │   │   │       ├── depart-mise.spec.ts
 │   │   │   │   │   │   │       └── references.spec.ts
 │   │   │   │   │   │   └── rupture-conventionnelle
+│   │   │   │   │   │       ├── arret-travail.spec.ts
 │   │   │   │   │   │       ├── calculate.spec.ts
 │   │   │   │   │   │       ├── calculateResult.spec.ts
 │   │   │   │   │   │       ├── formule.spec.ts
@@ -2323,9 +2413,11 @@
 │   │   │   │   │   ├── heures-recherche-emploi.yaml
 │   │   │   │   │   ├── indemnite-licenciement.yaml
 │   │   │   │   │   ├── indemnite-precarite.yaml
+│   │   │   │   │   ├── indemnite-retraite.yaml
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── ineligibility-indemnite-licenciement.ts
 │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
+│   │   │   │   │   ├── ineligibility-indemnite-retraite.ts
 │   │   │   │   │   ├── ineligibility-rupture-conventionnelle.ts
 │   │   │   │   │   ├── preavis-demission.yaml
 │   │   │   │   │   ├── preavis-licenciement.yaml
@@ -3830,6 +3922,7 @@
 │   │   │   │   ├── modeles-heures-recherche-emploi.json
 │   │   │   │   ├── modeles-indemnite-licenciement.json
 │   │   │   │   ├── modeles-indemnite-precarite.json
+│   │   │   │   ├── modeles-indemnite-retraite.json
 │   │   │   │   ├── modeles-preavis-demission.json
 │   │   │   │   ├── modeles-preavis-licenciement.json
 │   │   │   │   ├── modeles-preavis-retraite.json
@@ -3853,6 +3946,7 @@
 │   │   │       │       └── mapper.ts
 │   │   │       ├── IndemniteLicenciementPublicodes.ts
 │   │   │       ├── IndemnitePrecaritePublicodes.ts
+│   │   │       ├── IndemniteRetraitePublicodes.ts
 │   │   │       ├── PreavisDemissionPublicodes.ts
 │   │   │       ├── PreavisLicenciementPublicodes.ts
 │   │   │       ├── PreavisRetraitePublicodes.ts
@@ -3972,4 +4066,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-964 directories, 3010 files
+985 directories, 3083 files

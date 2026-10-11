@@ -1,21 +1,20 @@
-## Changelog : code-du-travail-numerique (30 derniers jours, au 08/09/2026)
+## Changelog : code-du-travail-numerique (30 derniers jours, au 2026-10-06)
 
 ### Résumé
-Cette période a été marquée par une amélioration de l'expérience utilisateur, notamment via la refonte du parcours de l'indemnité de précarité pour éviter les blocages et l'optimisation de la navigation (nouveau fil d'Ariane). Des corrections ont également été apportées pour améliorer le référencement (SEO) et la fiabilité des données analytiques de suivi.
+Ce mois-ci, la plateforme s'enrichit d'un nouveau simulateur d'indemnités de départ à la retraite et améliore la navigation de ses contenus pédagogiques. Nous avons également renforcé la visibilité du site via l'optimisation du référencement (SEO) et perfectionné nos outils de mesure d'audience pour mieux respecter la vie privée des utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Parcours utilisateur :**
-  - Refonte complète du parcours de l'indemnité de précarité pour éliminer les points de blocage ([#7285](https://github.com/SocialGouv/code-du-travail-numerique/issues/7285)).
-  - Ajout de liens vers des pages personnalisées dans la vue générique des contributions ([#7434](https://github.com/SocialGouv/code-du-travail-numerique/issues/7434)).
-- **Navigation et SEO :**
-  - Mise en place d'un nouveau fil d'Ariane pour les contenus natifs ([#7378](https://github.com/SocialGouv/code-du-travail-numerique/issues/7378), [#7443](https://github.com/SocialGouv/code-du-travail-numerique/issues/7443)).
-  - Correction de la structure des titres (SEO) pour le NPS ([#7454](https://github.com/SocialGouv/code-du-travail-numerique/issues/7454)).
-- **Corrections d'interface :**
-  - Correction de la hiérarchie des titres et de leur taille dans les réponses des contributions ([#7468](https://github.com/SocialGouv/code-du-travail-numerique/issues/7468), [#7439](https://github.com/SocialGouv/code-du-travail-numerique/issues/7439), [#7440](https://github.com/SocialGouv/code-du-travail-numerique/issues/7440)).
-  - Résolution d'un problème de bouton "Suivant" grisé lors du retour à l'étape Informations dans l'outil ([#7445](https://github.com/SocialGouv/code-du-travail-numerique/issues/7445)).
+- **Nouveaux outils** : Création et mise en avant du simulateur d'indemnités de mise ou de départ à la retraite ([#7502](https://github.com/SocialGouv/code-du-travail-numerique/issues/7502), [#7505](https://github.com/SocialGouv/code-du-travail-numerique/issues/7505)).
+- **Navigation et expérience utilisateur** : 
+    - Refonte de la section contributions avec une nouvelle rubrique « Explorez nos thématiques » ([#7479](https://github.com/SocialGouv/code-du-travail-numerique/issues/7479)) et intégration de fiches pratiques ([#7475](https://github.com/SocialGouv/code-du-travail-numerique/issues/7475)).
+    - Ajout d'un bloc d'orientation (« une réponse plus précise ») pour rediriger vers nos contributions ([#7477](https://github.com/SocialGouv/code-du-travail-numerique/issues/7477)).
+    - Nettoyage de l'interface avec le retrait de certains blocs de convention collective ([#7491](https://github.com/SocialGouv/code-du-travail-numerique/issues/7491)).
+- **Contenu et corrections** : 
+    - Redirection automatique de la convention collective 3225 vers la 3230 ([#7549](https://github.com/SocialGouv/code-du-travail-numerique/issues/7549)).
+    - Harmonisation des titres de pages et correction de coquilles dans les outils ([#7547](https://github.com/SocialGouv/code-du-travail-numerique/issues/7547), [#7504](https://github.com/SocialGouv/code-du-travail-numerique/issues/7504)).
+    - Amélioration du référencement naturel (SEO) des actualités ([#7506](https://github.com/SocialGouv/code-du-travail-numerique/issues/7506)).
 
 ### Évolutions techniques
-- **Analytique (Matomo) :**
-  - Amélioration du suivi des données avec la mise en place d'un entonnoir (funnel) sur le choix de la convention collective des contributions ([#7463](https://github.com/SocialGouv/code-du-travail-numerique/issues/7463), [#7469](https://github.com/SocialGouv/code-du-travail-numerique/issues/7469)).
-  - Ajout du suivi du nombre de conventions collectives trouvées ([#7428](https://github.com/SocialGouv/code-du-travail-numerique/issues/7428), [#7442](https://github.com/SocialGouv/code-du-travail-numerique/issues/7442)).
-  - Correction d'un bug de perte de données lors de l'envoi d'événements analytiques ([#7449](https://github.com/SocialGouv/code-du-travail-numerique/issues/7449)).
+- **Analyse et tracking** : 
+    - Optimisation de la mesure d'audience via Matomo pour permettre un suivi sans cookies après refus de l'utilisateur ([#7545](https://github.com/SocialGouv/code-du-travail-numerique/issues/7545)).
+    - Mise en place du tracking pour la campagne SEA 2026 ([#7543](https://github.com/SocialGouv/code-du-travail-numerique/issues/7543)) et pour les interactions avec les chatbots IA ([#7501](https://github.com/SocialGouv/code-du-travail-numerique/issues/7501)).
