@@ -1,44 +1,51 @@
-## Changelog : les-emplois (30 derniers jours, au 04/10/2026)
+## Changelog : les-emplois (30 derniers jours, au 10 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une évolution majeure de l'identité du service, qui devient "La plateforme de l'inclusion". Au-delà du rebranding, les fonctionnalités de suivi ont été considérablement enrichies, notamment avec un nouveau système complet de gestion des orientations (acceptation, refus, notifications automatiques) et une vue "Synthèse" pour les profils des usagers. La fiabilité et la traçabilité du système ont également été renforcées par la mise en place d'un journal d'audit.
+Ce mois a été marqué par une transformation majeure de l'identité visuelle de la plateforme, désormais nommée "La plateforme de l'inclusion". Les évolutions se sont concentrées sur l'automatisation et la fluidification du parcours d'orientation (insertion), l'enrichissement du profil des usagers avec une nouvelle vue d'ensemble, et le renforcement de la traçabilité grâce à la mise en place d'un système d'audit.
 
 ### Évolutions fonctionnelles
 
-**Identité et Interface**
-- **Rebranding complet** : Changement de nom du service en "La plateforme de l'inclusion" sur l'ensemble de l'interface, de l'API et de la documentation.
-- **Amélioration des profils usagers** : Ajout d'un onglet "Synthèse" (Overview) regroupant les informations clés (derniers accompagnements, candidatures, informations contractuelles).
-- **Refonte de l'interface** : Harmonisation des icônes d'organisation, suppression de badges obsolètes et amélioration de l'accessibilité (déclaration de conformité).
+**Parcours d'orientation (Insertion)**
+- Refonte complète de l'expérience utilisateur pour les orientations : nouveau wizard, pages de détails des orientations et des structures.
+- Automatisation du suivi : expiration automatique des orientations et envoi de notifications par email (création, acceptation, refus, rappels automatiques aux structures).
+- Amélioration des fonctionnalités pour les prestataires : possibilité d'accepter ou de refuser une orientation avec saisie de motifs détaillés.
+- Gestion simplifiée des accès via des liens magiques (magic links) permettant une consultation anonyme des détails de l'orientation.
 
-**Gestion des Orientations et Accompagnements**
-- **Cycle de vie des orientations** : Les prestataires de services peuvent désormais accepter ou refuser une orientation. Le système gère automatiquement l'expiration des orientations et l'envoi de notifications par email aux bénéficiaires et aux émetteurs.
-- **Gestion des accompagnements (Assignments)** : Amélioration des outils de gestion pour les professionnels (création, édition, archivage et filtrage des accompagnements).
-- **Alertes contractuelles** : Mise en place de compteurs et de bannières pour signaler les fins de contrat imminentes.
+**Profil Usager**
+- Création d'un nouvel onglet "Vue d'ensemble" (expérimental) regroupant les informations clés : conseillers référents, état des contrats et dernières candidatures.
+- Amélioration de la gestion des affectations avec l'ajout de filtres et d'une icône d'archivage pour les anciennes affectations.
+- Ajout d'alertes contextuelles (ex: opportunités d'immersion, fin de contrat proche).
+- Mise à jour de la terminologie : généralisation du terme "Usager" en remplacement de "Candidat".
 
-**Gestion métier et Administration**
-- **Clôture des PASS IAE** : Les employeurs peuvent désormais clôturer un PASS IAE directement via un formulaire interne, avec notification automatique de l'usager.
-- **Annuaire Pro** : Ajout de fonctionnalités de géolocalisation des structures dans l'administration et de préférences de visibilité.
-- **Gestion des utilisateurs** : Amélioration du processus de désactivation des utilisateurs et possibilité pour un professionnel désactivé de créer un nouveau compte.
+**Gestion des dossiers employés**
+- Refonte du workflow de gestion des dossiers : nouveaux états, transitions améliorées et gestion dynamique des badges de statut.
+- Amélioration de la visibilité dans l'interface d'administration (suivi des mises à jour des données surveillées).
 
-**Communications**
-- **Emails système** : Amélioration de la qualité des communications avec l'ajout de salutations et le passage au format Markdown pour une meilleure mise en page.
+**Accès et Sécurité**
+- Généralisation de l'usage de ProConnect : l'authentification devient obligatoire pour tous les professionnels et institutionnels.
+- Amélioration du processus d'activation et de récupération de compte pour les professionnels.
+
+**Interface et Marque**
+- Changement de branding : nouveau nom ("La plateforme de l'inclusion"), nouveaux logos et mise à jour de l'identité visuelle sur l'ensemble du site.
+- Harmonisation de l'interface (icônes des organisations, mise en page des formulaires d'extension d'approbation).
 
 ### Évolutions techniques
 
-**Sécurité et Authentification**
-- **Intégration ProConnect** : Optimisation du processus d'activation et amélioration de la gestion des clés de sécurité (cache sur les clés JWKS).
-- **Traçabilité (Audit Trail)** : Implémentation d'un système de suivi d'audit pour enregistrer les actions et identifier les navigateurs lors des appels de connexion.
+**Traçabilité et Audit**
+- Implémentation d'un système d'audit (audit trail) pour suivre les actions critiques et les informations de navigation (browser, IP).
 
-**Performance et Architecture**
-- **Optimisation du démarrage** : Réduction du temps de résolution d'URL lors de la configuration initiale (gain de 600 ms).
-- **Refactoring de la gestion des utilisateurs** : Centralisation de la logique de désactivation pour garantir la cohérence des données.
-- **Robustesse des données** : Amélioration de la gestion des fichiers (employee_record) avec des vérifications de noms de fichiers et des mécanismes de verrouillage d'objets lors des uploads.
+**Performance et Optimisation**
+- Optimisation du temps de démarrage du service (gain de 600ms en évitant la résolution d'URL au setup).
+- Amélioration des performances via l'utilisation de méthodes de queryset optimisées et la mise en cache des clés de sécurité (JWKS).
 
-**Qualité et Tests**
-- **Tests automatisés** : Refactoring important de la suite de tests (pytest) et des "factories" pour améliorer la stabilité et la rapidité des tests.
-- **Correction de types** : Réduction significative des erreurs de typage (mypy).
+**Communications**
+- Modernisation des emails : passage au format Markdown pour le corps des messages et ajout d'alternatives texte/HTML pour une meilleure délivrabilité.
+
+**Infrastructure et Qualité**
+- Amélioration de la CI/CD, notamment pour le déploiement des "review apps".
+- Renforcement de la qualité du code via des corrections de typage (mypy) et une meilleure gestion des tests (mocking, isolation des scopes Sentry).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique, notamment sur le fonctionnement du SSO et du journal d'audit.
-- **Nettoyage** : Suppression de plusieurs commandes de gestion obsolètes et de code non utilisé (notamment les composants liés à DORA).
-- **Maintenance** : Correction de nombreuses coquilles, espaces insécables et problèmes d'accents dans l'interface.
+- Nettoyage important du code : suppression des dépendances et des commandes liées à l'ancien système DORA.
+- Mise à jour de la documentation technique et des pages légales/accessibilité pour refléter le nouveau branding.
+- Refactorisation de plusieurs composants utilitaires et gestion des fichiers de configuration.

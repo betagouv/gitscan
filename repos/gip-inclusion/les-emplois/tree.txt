@@ -157,7 +157,6 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_servicetoken.py
-│   │   │   ├── 0003_create_existing_tokens.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── nexus
@@ -444,8 +443,10 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       └── delete_old_emails.py
+│   │   ├── markdown.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_email_body_html.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── tasks.py
@@ -464,6 +465,7 @@
 │   │   │       ├── detect_missing_asp_files.py
 │   │   │       ├── employee_record.py
 │   │   │       ├── employee_records_status.py
+│   │   │       ├── migrate_employee_record_update_notifications.py
 │   │   │       ├── resend_employee_records.py
 │   │   │       ├── sanitize_employee_records.py
 │   │   │       ├── transfer_employee_records.py
@@ -472,6 +474,7 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_employeerecord_ntt_and_more.py
 │   │   │   ├── 0003_employeerecord_watched_data_updated_at.py
+│   │   │   ├── 0004_alter_employeerecord_status.py
 │   │   │   └── __init__.py
 │   │   ├── mocks
 │   │   │   ├── __init__.py
@@ -625,6 +628,10 @@
 │   │   │   ├── 0016_orientation_last_reminder_email_sent_at.py
 │   │   │   ├── 0017_remove_orientation_attachments_alter_orientation_id.py
 │   │   │   ├── 0018_remove_mobilizationevent_authenticated_user_has_organization.py
+│   │   │   ├── 0019_service_and_structure_di_fields.py
+│   │   │   ├── 0020_backfill_orientation_response_delay.py
+│   │   │   ├── 0021_remove_dora_service_fields.py
+│   │   │   ├── 0022_remove_service_contact_is_public.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -739,6 +746,7 @@
 │   │   │   ├── 0002_activatedservice.py
 │   │   │   ├── 0003_nexusmembership_source_id_alter_nexusmembership_id.py
 │   │   │   ├── 0004_activatedservice_user_service_unique.py
+│   │   │   ├── 0005_remove_activatedservice_user_service_unique_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── utils.py
@@ -1362,8 +1370,7 @@
 │   │   │   │   ├── alert.html
 │   │   │   │   └── alert_global.html
 │   │   │   ├── boxes
-│   │   │   │   ├── c-box--dashboard.html
-│   │   │   │   └── c-box_nexus_activated_service.html
+│   │   │   │   └── c-box--dashboard.html
 │   │   │   ├── c-info.html
 │   │   │   ├── c-navinfo.html
 │   │   │   ├── c-title.html
@@ -1382,7 +1389,7 @@
 │   │   │       ├── dashboard_title_content.html
 │   │   │       ├── dora_card.html
 │   │   │       ├── edit_job_seeker_info_form.html
-│   │   │       ├── edit_job_seeker_sso_alert.html
+│   │   │       ├── edit_user_sso_alert.html
 │   │   │       ├── employer_company_card.html
 │   │   │       ├── employer_employees_card.html
 │   │   │       ├── employer_evaluation_campaigns_card.html
@@ -1605,6 +1612,7 @@
 │   │   │   │   ├── reminder_for_structure_body.md
 │   │   │   │   └── reminder_for_structure_subject.txt
 │   │   │   ├── includes
+│   │   │   │   ├── access_conditions_di.html
 │   │   │   │   ├── checkboxes_formgroup.html
 │   │   │   │   ├── orientation_beneficiary_contact.html
 │   │   │   │   ├── orientation_credentials_list.html
@@ -1629,9 +1637,11 @@
 │   │   │   │   │   ├── list_orientations.html
 │   │   │   │   │   └── service_provider_actions.html
 │   │   │   │   ├── register_mobilization_event.html
+│   │   │   │   ├── service_response_time.html
 │   │   │   │   ├── structure_card_tab_description.html
 │   │   │   │   ├── structure_card_tab_services.html
-│   │   │   │   └── structure_card_tabs.html
+│   │   │   │   ├── structure_card_tabs.html
+│   │   │   │   └── updated_on_badge.html
 │   │   │   ├── orientation_select_job_seeker.html
 │   │   │   ├── orientation_wizard.html
 │   │   │   ├── orientations
@@ -1640,7 +1650,6 @@
 │   │   │   │   ├── list.html
 │   │   │   │   └── refuse.html
 │   │   │   ├── service_card.html
-│   │   │   ├── service_response_time.html
 │   │   │   └── structure_card.html
 │   │   ├── institutions
 │   │   │   ├── deactivate_member.html
@@ -1660,7 +1669,6 @@
 │   │   ├── itou_staff_views
 │   │   │   ├── export_job_applications_unknown_to_ft.html
 │   │   │   ├── import_aci_convergence_phc.html
-│   │   │   ├── import_fs_3437_from_asp.html
 │   │   │   ├── merge_users.html
 │   │   │   └── merge_users_confirm.html
 │   │   ├── job_seekers_views
@@ -1741,24 +1749,6 @@
 │   │   │   └── previous_step.html
 │   │   ├── logout
 │   │   │   └── warning.html
-│   │   ├── nexus
-│   │   │   ├── base_service.html
-│   │   │   ├── components
-│   │   │   │   └── new_service.html
-│   │   │   ├── contact.html
-│   │   │   ├── dora.html
-│   │   │   ├── emplois_inactive.html
-│   │   │   ├── emplois_job_descriptions.html
-│   │   │   ├── emplois_no_companies.html
-│   │   │   ├── homepage.html
-│   │   │   ├── layout
-│   │   │   │   ├── base.html
-│   │   │   │   └── header.html
-│   │   │   ├── login.html
-│   │   │   ├── marche.html
-│   │   │   ├── mon_recap.html
-│   │   │   ├── pilotage.html
-│   │   │   └── structures.html
 │   │   ├── otp_views
 │   │   │   ├── enrollment_step_0_intro.html
 │   │   │   ├── enrollment_step_1_choose_device_type.html
@@ -2027,7 +2017,6 @@
 │   │   │   ├── api_particulier.py
 │   │   │   ├── data_inclusion.py
 │   │   │   ├── datadog.py
-│   │   │   ├── dora.py
 │   │   │   ├── enums.py
 │   │   │   ├── exceptions.py
 │   │   │   ├── france_travail_agent.py
@@ -2138,7 +2127,6 @@
 │   │   │   ├── list_filters.py
 │   │   │   ├── matomo.py
 │   │   │   ├── nav.py
-│   │   │   ├── nexus.py
 │   │   │   ├── organization_switcher.py
 │   │   │   ├── otp.py
 │   │   │   ├── pilotage.py
@@ -2281,10 +2269,6 @@
 │       │   ├── urls.py
 │       │   └── views.py
 │       ├── middleware.py
-│       ├── nexus
-│       │   ├── __init__.py
-│       │   ├── urls.py
-│       │   └── views.py
 │       ├── otp_views
 │       │   ├── __init__.py
 │       │   ├── enums.py
@@ -2347,7 +2331,6 @@
 │   ├── test.in
 │   └── test.txt
 ├── scripts
-│   ├── clever-deploy
 │   ├── create-sidecar-instance.sh
 │   ├── delete-buckets
 │   ├── import-iae.sh
@@ -2518,9 +2501,17 @@
     │   ├── test_iae.py
     │   └── test_tasks.py
     ├── emails
+    │   ├── __snapshots__
+    │   │   └── test_html.ambr
     │   ├── conftest.py
+    │   ├── templates
+    │   │   ├── domain_allowlist_body.md
+    │   │   ├── html_body.md
+    │   │   ├── markdown_body.md
+    │   │   └── subject.txt
     │   ├── test_admin.py
     │   ├── test_commands.py
+    │   ├── test_html.py
     │   └── test_tasks.py
     ├── employee_record
     │   ├── __init__.py
@@ -2537,6 +2528,7 @@
     │   ├── test_archive_employee_records.py
     │   ├── test_detect_missing_asp_files.py
     │   ├── test_employee_record_command.py
+    │   ├── test_migrate_employee_record_update_notifications.py
     │   ├── test_mocks.py
     │   ├── test_models.py
     │   ├── test_notifications.py
@@ -2577,23 +2569,19 @@
     │   │   ├── test_notifications.ambr
     │   │   └── test_send_orientations_reminder_emails.ambr
     │   ├── api_mocks
-    │   │   ├── data_inclusion
-    │   │   │   ├── doc
-    │   │   │   │   ├── frais.json
-    │   │   │   │   ├── modes-accueil.json
-    │   │   │   │   ├── modes-mobilisation.json
-    │   │   │   │   ├── personnes-mobilisatrices.json
-    │   │   │   │   ├── publics.json
-    │   │   │   │   ├── reseaux-porteurs.json
-    │   │   │   │   ├── thematiques.json
-    │   │   │   │   └── types-services.json
-    │   │   │   ├── services.json
-    │   │   │   ├── sources.json
-    │   │   │   └── structures.json
-    │   │   └── dora
-    │   │       ├── disabled-dora-form-di-structures.json
-    │   │       ├── reference-data.json
-    │   │       └── services.json
+    │   │   └── data_inclusion
+    │   │       ├── doc
+    │   │       │   ├── frais.json
+    │   │       │   ├── modes-accueil.json
+    │   │       │   ├── modes-mobilisation.json
+    │   │       │   ├── personnes-mobilisatrices.json
+    │   │       │   ├── publics.json
+    │   │       │   ├── reseaux-porteurs.json
+    │   │       │   ├── thematiques.json
+    │   │       │   └── types-services.json
+    │   │       ├── services.json
+    │   │       ├── sources.json
+    │   │       └── structures.json
     │   ├── factories.py
     │   ├── test_admin.py
     │   ├── test_delete_orientations_documents.py
@@ -2764,7 +2752,6 @@
     │   │   │   └── test_metabase.ambr
     │   │   ├── test_api_particulier.py
     │   │   ├── test_datadog_api.py
-    │   │   ├── test_dora.py
     │   │   ├── test_entreprise_api.py
     │   │   ├── test_france_travail_agent.py
     │   │   ├── test_geiq_label.py
@@ -3012,11 +2999,6 @@
         ├── middleware
         │   ├── __init__.py
         │   └── tests.py
-        ├── nexus
-        │   ├── __init__.py
-        │   ├── __snapshots__
-        │   │   └── test_views.ambr
-        │   └── test_views.py
         ├── otp_views
         │   ├── __init__.py
         │   ├── __snapshots__
@@ -3087,4 +3069,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-502 directories, 2587 files
+497 directories, 2574 files
