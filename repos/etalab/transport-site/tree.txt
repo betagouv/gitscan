@@ -262,7 +262,6 @@
 │       │   │   │   ├── oauth.ex
 │       │   │   │   ├── organization.ex
 │       │   │   │   ├── resources.ex
-│       │   │   │   ├── reuses.ex
 │       │   │   │   └── user.ex
 │       │   │   └── client.ex
 │       │   ├── db
@@ -575,7 +574,8 @@
 │       │   │   │   ├── explore_channel.ex
 │       │   │   │   └── user_socket.ex
 │       │   │   ├── components
-│       │   │   │   └── colorful_button.ex
+│       │   │   │   ├── colorful_button.ex
+│       │   │   │   └── pagination.ex
 │       │   │   ├── controllers
 │       │   │   │   ├── aoms_controller.ex
 │       │   │   │   ├── atom_controller.ex
@@ -598,6 +598,7 @@
 │       │   │   │   ├── gbfs_to_geojson_controller.ex
 │       │   │   │   ├── geojson_conversion_controller.ex
 │       │   │   │   ├── landing_pages_controller.ex
+│       │   │   │   ├── netex_validation_details.ex
 │       │   │   │   ├── page_controller.ex
 │       │   │   │   ├── pagination_helpers.ex
 │       │   │   │   ├── resource_controller.ex
@@ -662,7 +663,6 @@
 │       │   │   │   ├── on_demand_validation_select_live.ex
 │       │   │   │   ├── on_demand_validation_select_live.html.heex
 │       │   │   │   ├── proxy_requests_count_live.ex
-│       │   │   │   ├── reuses_live.ex
 │       │   │   │   ├── send_now_on_nap_notification_view.ex
 │       │   │   │   ├── siri_querier_live.ex
 │       │   │   │   ├── siri_querier_live.html.heex
@@ -670,6 +670,7 @@
 │       │   │   │   ├── user_space_datasets_live.ex
 │       │   │   │   ├── validate_dataset_view.ex
 │       │   │   │   └── validate_resource_live.ex
+│       │   │   ├── markdown_template_engine.ex
 │       │   │   ├── plugs
 │       │   │   │   ├── custom_secure_browser_headers.ex
 │       │   │   │   ├── halt.ex
@@ -725,7 +726,6 @@
 │       │   │   │   │   ├── _resource_validation_summary_gtfs.html.heex
 │       │   │   │   │   ├── _resource_validation_summary_netex.html.heex
 │       │   │   │   │   ├── _resources_container.html.heex
-│       │   │   │   │   ├── _reuser_message.html.heex
 │       │   │   │   │   ├── details.html.heex
 │       │   │   │   │   └── index.html.heex
 │       │   │   │   ├── email
@@ -787,8 +787,8 @@
 │       │   │   │   │   ├── _breaking_news.html.heex
 │       │   │   │   │   ├── _footer.html.heex
 │       │   │   │   │   ├── _header.html.heex
-│       │   │   │   │   ├── app.html.heex
-│       │   │   │   │   └── email.html.heex
+│       │   │   │   │   ├── email.html.heex
+│       │   │   │   │   └── root.html.heex
 │       │   │   │   ├── page
 │       │   │   │   │   ├── _home_autocomplete.html.heex
 │       │   │   │   │   ├── accessibility.html.md
@@ -890,6 +890,7 @@
 │       │   │       ├── netex_report_components.ex
 │       │   │       ├── page_view.ex
 │       │   │       ├── resource_view.ex
+│       │   │       ├── reuse_markdown.ex
 │       │   │       ├── reuse_view.ex
 │       │   │       ├── reuser_space_view.ex
 │       │   │       ├── seo_metadata.ex
@@ -1353,8 +1354,7 @@
 │           │       ├── community_resources_test.exs
 │           │       ├── datasets_test.exs
 │           │       ├── discussions_test.exs
-│           │       ├── resources_test.exs
-│           │       └── reuses_test.exs
+│           │       └── resources_test.exs
 │           ├── db
 │           │   ├── administrative_division_test.exs
 │           │   ├── contact_test.exs
@@ -1448,6 +1448,7 @@
 │           │   ├── live_case.ex
 │           │   ├── live_view_test_helpers.ex
 │           │   ├── mocks.ex
+│           │   ├── netex_test_data.ex
 │           │   ├── netex_validation_report.ex
 │           │   ├── platform.ex
 │           │   ├── tmp_file.ex
@@ -1512,6 +1513,7 @@
 │           │   │   ├── consolidate_bnlc_job_test.exs
 │           │   │   ├── consolidate_lez_job_test.exs
 │           │   │   ├── conversions
+│           │   │   │   ├── generic_converter_test.exs
 │           │   │   │   ├── gtfs_to_geojson_converter_job_test.exs
 │           │   │   │   ├── netex_to_geojson_converter_job_test.exs
 │           │   │   │   ├── single_gtfs_to_geojson_converter_job_test.exs
@@ -1612,7 +1614,8 @@
 │           │       └── validator_selection_test.exs
 │           ├── transport_web
 │           │   ├── components
-│           │   │   └── colorful_button_test.exs
+│           │   │   ├── colorful_button_test.exs
+│           │   │   └── pagination_test.exs
 │           │   ├── controllers
 │           │   │   ├── aoms_controller_test.exs
 │           │   │   ├── api
@@ -1668,7 +1671,6 @@
 │           │   │   ├── proxy_config_live_test.exs
 │           │   │   ├── proxy_requests_count_live_test.exs
 │           │   │   ├── rate_limiter_live_test.exs
-│           │   │   ├── reuses_live_test.exs
 │           │   │   ├── user_space_datasets_live_test.exs
 │           │   │   └── validate_resource_live_test.exs
 │           │   ├── plugs
@@ -1693,7 +1695,8 @@
 │           │       ├── markdown_handler_test.exs
 │           │       ├── no_html_in_markdown_templates_test.exs
 │           │       ├── page_view_test.exs
-│           │       └── resource_view_test.exs
+│           │       ├── resource_view_test.exs
+│           │       └── reuse_markdown_test.exs
 │           ├── unlock
 │           │   ├── batch_metrics_test.exs
 │           │   ├── config_fetcher_test.exs
@@ -1739,6 +1742,9 @@
 ├── docker-compose.yml
 ├── docker_phoenix_startup.sh
 ├── docs
+│   ├── adr
+│   │   ├── 001-http-client.md
+│   │   └── README.md
 │   ├── contacts.md
 │   ├── data_model.livemd
 │   ├── inventaire_donnees_geographiques_septembre_2023.md
@@ -1829,4 +1835,4 @@
     │   └── siri_request_parsing.exs
     ├── siri_check.exs
     └── subquery.exs
-183 directories, 1668 files
+184 directories, 1673 files
