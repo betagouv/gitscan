@@ -1,63 +1,54 @@
 {
   "url": "https://github.com/tchapgouv/matrix-authentication-service",
   "name": "matrix-authentication-service",
-  "description": "Service de gestion des utilisateurs et d'authentification pour les serveurs Matrix. Il permet de supporter les nouvelles API d'authentification de Matrix (MSC3861).",
+  "description": "Service de gestion des utilisateurs et d'authentification pour les serveurs Matrix. Il permet de centraliser l'authentification via diverses méthodes pour les homeservers Matrix.",
   "language": "Rust",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
-    "API & Intégrations"
+    "Gestion des profils & Comptes"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Axum",
-    "Tokio",
-    "SQLx",
-    "Sea-query",
-    "Async-graphql",
-    "Sentry",
-    "Docker",
+    "Rust",
     "React",
-    "TanStack",
-    "Tailwind CSS"
+    "PostgreSQL",
+    "GraphQL",
+    "Docker",
+    "Sentry",
+    "pnpm"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs",
-    "Rust & Go",
     "TypeScript / JavaScript",
-    "Authentification (composant)"
+    "Docker & Conteneurs",
+    "Authentification (composant)",
+    "Microservices & Architecture",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "jwt",
-      "session",
-      "sso"
+      "session"
     ]
   },
-  "tests": [
-    "Clippy",
-    "insta",
-    "happy-dom"
-  ],
+  "tests": "Tests unitaires, tests d'intégration, tests de snapshot et tests de régression.",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-16T11:42:15+02:00",
-  "status": "active",
+  "lastActivity": "2026-10-09T19:10:26+02:00",
+  "status": "maintained",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Sécurité & Auth",
     "Communication & Messagerie",
     "Docker & Conteneurs",
-    "Git & DevOps",
     "SSO & Identité fédérée",
-    "TypeScript",
-    "Documentation"
+    "Git & DevOps"
   ]
 }
