@@ -1,16 +1,17 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Plateforme destinée à accompagner les employeurs de la fonction publique dans leurs processus de recrutement et de gestion des organisations. Elle intègre des services d'ingestion de données, d'OCR et d'analyse via des notebooks.",
+  "description": "Plateforme destinée à accompagner les employeurs de la fonction publique dans leurs processus de recrutement et de gestion des candidatures.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Gestion métier générale",
-    "Authentification & Accès",
-    "Données & Schémas",
-    "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
-    "Collaboration & Workflow"
+    "API & Intégrations",
+    "Gestion des utilisateurs & Permissions",
+    "Intelligence Artificielle & NLP",
+    "Collaboration & Workflow",
+    "Gestion des profils & Comptes",
+    "Suivi & Traçabilité",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,48 +19,44 @@
     "PostgreSQL",
     "Redis",
     "Qdrant",
-    "Scaleway Secret Manager",
+    "Docker",
+    "Scaleway",
     "Tesseract",
-    "Poppler"
+    "Poppler",
+    "pnpm"
   ],
   "components": [
-    "Python (scripts & backend)",
-    "PostgreSQL & SQL",
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
+    "Documentation & Schémas",
     "Stockage objet",
-    "CI/CD & Déploiement",
-    "Authentification (composant)"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "sso"
-    ],
-    "providers": [
-      "ProConnect"
+      "api-key",
+      "session",
+      "jwt"
     ]
   },
-  "tests": [
-    "pytest",
-    "pytest-xdist",
-    "testing-library"
-  ],
+  "tests": "Pytest, testing-library, factory-boy",
   "workflows": [
-    "GitHub Actions",
-    "mise"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-10-02T15:42:12Z",
+  "lastActivity": "2026-10-08T15:37:55Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
-    "Intelligence Artificielle & LLM",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Données & Open Data"
+    "Intelligence Artificielle & LLM",
+    "Données & Open Data",
+    "Bases de données SQL",
+    "CI/CD & GitHub Actions"
   ]
 }
