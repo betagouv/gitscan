@@ -344,6 +344,7 @@
 │   │   │   │   │   ├── formations.controller.ts
 │   │   │   │   │   ├── jobs-partners.controller.test.ts
 │   │   │   │   │   └── jobs-partners.controller.ts
+│   │   │   │   ├── application.controller.test.ts
 │   │   │   │   ├── application.controller.ts
 │   │   │   │   ├── appointment-request.controller.ts
 │   │   │   │   ├── core.controller.ts
@@ -465,8 +466,7 @@
 │   │   │   │   │   └── import-from-stream-in-xml.test.ts.snap
 │   │   │   │   ├── apec
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── import-apec.test.ts.snap
-│   │   │   │   │   │   └── importApec.test.ts.snap
+│   │   │   │   │   │   └── import-apec.test.ts.snap
 │   │   │   │   │   ├── apec-mapper.ts
 │   │   │   │   │   ├── import-apec.test.input.xml
 │   │   │   │   │   ├── import-apec.test.ts
@@ -594,8 +594,7 @@
 │   │   │   │   ├── hellowork-buddi
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   ├── hello-work-buddi-mapper.test.ts.snap
-│   │   │   │   │   │   ├── import-hello-work-buddi.test.ts.snap
-│   │   │   │   │   │   └── importHelloWorkBuddi.test.ts.snap
+│   │   │   │   │   │   └── import-hello-work-buddi.test.ts.snap
 │   │   │   │   │   ├── hello-work-buddi-mapper.test.ts
 │   │   │   │   │   ├── hello-work-buddi-mapper.ts
 │   │   │   │   │   ├── import-hello-work-buddi.test.input.xml
@@ -750,6 +749,7 @@
 │   │   │   │   ├── disable-api-user.ts
 │   │   │   │   ├── nurturing-entreprises.test.ts
 │   │   │   │   ├── nurturing-entreprises.ts
+│   │   │   │   ├── opco-reminder-job.test.ts
 │   │   │   │   ├── opco-reminder-job.ts
 │   │   │   │   ├── recruiter-offer-expiration-reminder-job.test.ts
 │   │   │   │   ├── recruiter-offer-expiration-reminder-job.ts
@@ -815,7 +815,9 @@
 │   │   │   ├── 20260928200000-backfill-missing-apply-url-jobs-partners.ts
 │   │   │   ├── 20260929100000-seo-diplomes-lot2-5604.ts
 │   │   │   ├── 20260930160000-drop-phantom-collections-5618.ts
-│   │   │   └── 20260930170000-unset-application-count-jobs-partners.ts
+│   │   │   ├── 20260930170000-unset-application-count-jobs-partners.ts
+│   │   │   ├── 20261006120000-normalize-lba-offer-origin-5645.ts
+│   │   │   └── 20261007120000-cancel-france-travail-directemploi-jobs-5656.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -1011,6 +1013,7 @@
 │   │   │       ├── backfill-offer-status-history-lba-5429.test.ts
 │   │   │       ├── clear-rome-content-custom-offers-5590.test.ts
 │   │   │       ├── drop-search-items-5526.test.ts
+│   │   │       ├── normalize-lba-offer-origin-5645.test.ts
 │   │   │       ├── normalize-naf-jobs-partners.test.ts
 │   │   │       ├── search-collections-par-mode-5389.test.ts
 │   │   │       ├── seo-diplomes-lot1-5539.test.ts
@@ -1267,6 +1270,8 @@
 │   │   │   ├── naf-utils.test.ts
 │   │   │   ├── naf-utils.ts
 │   │   │   ├── object-utils.ts
+│   │   │   ├── offer-expiration.test.ts
+│   │   │   ├── offer-expiration.ts
 │   │   │   ├── rate-limit-description.ts
 │   │   │   ├── search-url-compat.test.ts
 │   │   │   ├── search-url-compat.ts
@@ -2066,6 +2071,7 @@
 │   │   │   │   ├── getJobPublishedTimeAndApplications.tsx
 │   │   │   │   ├── job-description.utils.test.ts
 │   │   │   │   └── job-description.utils.ts
+│   │   │   ├── JobPostingSchema.test.ts
 │   │   │   ├── JobPostingSchema.tsx
 │   │   │   ├── LbaJobComponents
 │   │   │   │   ├── LbaJobAcces.tsx
@@ -2077,6 +2083,7 @@
 │   │   │   │   ├── LbaJobQualites.tsx
 │   │   │   │   ├── LbaJobTechniques.tsx
 │   │   │   │   └── lba-job-rome-blocks.test.ts
+│   │   │   ├── OffreIndisponibleMention.tsx
 │   │   │   ├── PartnerJobComponents
 │   │   │   │   ├── GeiqJobDetail.tsx
 │   │   │   │   ├── PartnerJobDetail.tsx
@@ -2095,7 +2102,9 @@
 │   │   │   ├── TagOffreEmploi.tsx
 │   │   │   ├── TagRecrutementUrgent.tsx
 │   │   │   ├── TrainingSchema.tsx
-│   │   │   └── ValorisationCandidatureSpontanee.tsx
+│   │   │   ├── ValorisationCandidatureSpontanee.tsx
+│   │   │   ├── offre-indisponible.utils.test.ts
+│   │   │   └── offre-indisponible.utils.ts
 │   │   ├── JsonLdScript.tsx
 │   │   ├── MailCard.tsx
 │   │   ├── ModalReadOnly.tsx
@@ -2816,6 +2825,7 @@
 │       ├── get-item-id.ts
 │       ├── get-session.ts
 │       ├── get-static-data.ts
+│       ├── is-offer-active.test.ts
 │       ├── is-offer-active.ts
 │       ├── is-widget.utils.ts
 │       ├── lba-item.types.ts
@@ -2836,4 +2846,4 @@
 │       └── validation-messages.ts
 ├── vitest.config.ts
 └── yarn.lock
-510 directories, 2896 files
+510 directories, 2906 files
