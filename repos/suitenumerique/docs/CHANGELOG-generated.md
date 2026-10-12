@@ -1,21 +1,49 @@
-## Changelog : docs (30 derniers jours, au octobre 2026)
+## Changelog : docs (30 derniers jours, au 09/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une transition majeure de l'infrastructure de collaboration vers YHub, apportant une plus grande robustesse et le support du mode hors ligne. Nous avons également introduit un nouveau système de mentions avec notifications par email, enrichi les options d'exportation et affiné l'interface utilisateur pour une expérience plus fluide.
+Ce mois a été marqué par le passage à la version majeure 6.0.0, introduisant une refonte profonde de l'architecture de collaboration via l'intégration de YHub. Pour les utilisateurs, cela se traduit par une plateforme plus stable, de nouvelles fonctionnalités comme le téléchargement en Markdown et une gestion améliorée des mentions et des liens internes. L'interface utilisateur a également été modernisée, notamment via la refonte des pages d'erreur et l'ajout de raccourcis clavier.
 
 ### Évolutions fonctionnelles
-- **Système de mentions** : ajout de notifications par email (traitées de manière asynchrone), gestion fine des accès (exclusion des lecteurs des mentions) et amélioration du contenu des emails.
-- **Collaboration et Édition** : support du mode hors ligne, accès à l'historique des versions, duplication de documents avec sous-documents et amélioration de l'interliage automatique lors du collage de liens.
-- **Interface et UX** : refonte des pages d'erreur (401, 403, 404) et de la page de confirmation d'email ; nouveaux raccourcis clavier (mode présentation) ; sélection de langue simplifiée et gestion améliorée des images (conservation des légendes et alignements lors du remplacement).
-- **Export et Navigation** : nouvelles options d'export (Markdown, PDF avec gestion des ratios d'image) ; ouverture des résultats de recherche dans un nouvel onglet et défilement automatique vers les blocs liés.
+- **Collaboration et Documents**
+  - Introduction d'un système de mentions avec notifications par email (envoyées de manière asynchrone).
+  - Possibilité de dupliquer des documents en incluant leurs sous-documents.
+  - Support du mode hors-ligne pour l'arborescence des documents.
+  - Conversion automatique des liens de documents collés en liens internes (interlinks).
+  - Ajout d'une option de téléchargement des documents au format Markdown.
+- **Interface Utilisateur (UI/UX)**
+  - Refonte visuelle des pages d'erreur (401, 403 et 404) pour une meilleure expérience.
+  - Ajout d'un raccourci clavier pour activer le mode présentation.
+  - Amélioration de la recherche : possibilité d'ouvrir les résultats dans un nouvel onglet avec Ctrl/Cmd+clic.
+  - Amélioration de la gestion des images : conservation de la légende et de l'alignement lors du remplacement d'une image.
+  - Affichage des indications de raccourcis clavier dans les options de documents.
+- **Corrections**
+  - Résolution de bugs sur le glisser-déposer, la recherche/remplacement, et l'affichage des commentaires.
+  - Correction de problèmes de rendu lors de l'impression en PDF.
 
 ### Évolutions techniques
-- **Moteur de collaboration** : migration complète du serveur de collaboration de HocusPocus vers YHub (v0.9.0), incluant la migration des documents et de l'historique depuis le stockage S3 legacy.
-- **Infrastructure et Déploiement** : déploiement de la version 6.0.0-alpha.1 du chart Helm, intégration de métriques Prometheus et amélioration des outils de tests de charge (scénarios k6, canaries de navigation et tableaux de bord Grafana).
-- **Sécurité et Backend** : renforcement de l'authentification via JWT, ajout de limitations de débit (throttling) sur les endpoints de mentions et validation stricte des identifiants (UUID).
-- **Développement et CI/CD** : migration du serveur YHub en TypeScript, amélioration des tests E2E et ajout de la validation (lint, typecheck, build) pour le serveur de collaboration.
-- **Optimisations** : remplacement de Minio par Silo et optimisation des requêtes SQL et du cache Redis.
+- **Architecture de Collaboration**
+  - Migration majeure du serveur de collaboration de HocusPocus vers YHub.
+  - Implémentation de la suppression logique (soft-delete) synchronisée avec le serveur YHub.
+  - Optimisation de la gestion des connexions de collaboration (réinitialisation automatique lors de la suppression d'un document ou d'un changement d'accès).
+  - Migration des documents hérités (S3) vers le nouveau système YHub.
+- **Sécurité et Authentification**
+  - Renforcement de la sécurité des mentions (validation UUID, contrôle d'accès explicite, limitation du débit).
+  - Amélioration de la gestion des jetons JWT (ajout de l'audience, exposition d'un endpoint JWKS, support des jetons RS256 mis en cache).
+  - Utilisation de jetons JWT pour sécuriser les services de conversion.
+- **Infrastructure et DevOps**
+  - Mise en place d'une suite complète de tests de charge (scénarios k6, dashboards Grafana, et canaris de navigateur pour mesurer la perception utilisateur).
+  - Amélioration de la CI/CD avec l'ajout de tests de linting, typechecking et build pour le serveur de collaboration.
+  - Optimisation des images Docker (passage à des images "slim" pour YHub et suppression de pip dans l'image backend).
+  - Mise à jour des déploiements Helm (support des métriques Prometheus via ServiceMonitor/PodMonitor et gestion de l'indexation des moteurs de recherche).
+  - Remplacement de Minio par Silo dans la configuration Docker.
+- **Observabilité**
+  - Ajout de métriques Prometheus personnalisées pour le backend et YHub.
+  - Intégration de la remontée d'erreurs YHub vers Sentry.
 
 ### Autres changements
-- **Documentation** : mise à jour des guides d'installation (YHub, Kubernetes/Helm) et de la documentation d'architecture.
-- **Internationalisation** : mise à jour des chaînes traduites et optimisation du processus d'export pour Crowdin.
+- **Documentation**
+  - Mise à jour de la documentation d'architecture.
+  - Finalisation du guide de mise à niveau vers YHub et des instructions d'installation.
+  - Correction de la documentation Kubernetes (guides Keycloak et Minio).
+- **Internationalisation**
+  - Mise à jour et nettoyage des chaînes de caractères traduites (i18n).
