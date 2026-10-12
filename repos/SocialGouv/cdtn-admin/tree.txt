@@ -136,9 +136,10 @@
 │   │       │   ├── __init__.py
 │   │       │   ├── _runner.py
 │   │       │   ├── ingest_all.py
-│   │       │   ├── ingest_completion_contributions.py
 │   │       │   ├── ingest_nps_scores.py
-│   │       │   └── ingest_simulateurs.py
+│   │       │   ├── ingest_simulateurs.py
+│   │       │   ├── ingest_taux_contributions.py
+│   │       │   └── ingest_taux_personnalisation.py
 │   │       ├── config.py
 │   │       ├── connectors
 │   │       │   ├── __init__.py
@@ -149,10 +150,12 @@
 │   │       ├── py.typed
 │   │       └── reports
 │   │           ├── __init__.py
-│   │           ├── completion_contributions.py
 │   │           ├── completion_simulateurs.py
-│   │           ├── contrib_monthly_views.py
-│   │           └── nps_scores.py
+│   │           ├── nps_scores.py
+│   │           ├── taux_contributions.py
+│   │           └── taux_personnalisation_simulateurs.py
+│   ├── tests
+│   │   └── test_taux_contributions.py
 │   └── uv.lock
 ├── docker-compose.yml
 ├── lerna.json
@@ -163,6 +166,7 @@
 │   ├── clean-kali-vigueur-alerts
 │   │   └── package-lock.json
 │   ├── connect_db.sh
+│   ├── docker-prepare-manifests.js
 │   ├── dump_db.sh
 │   ├── dump_db_at.sh
 │   ├── reset_from_dump.sh
@@ -2281,4 +2285,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-597 directories, 1726 files
+598 directories, 1729 files
