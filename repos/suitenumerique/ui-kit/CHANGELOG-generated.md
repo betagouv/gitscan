@@ -1,20 +1,20 @@
-## Changelog : ui-kit (30 derniers jours, au 28 septembre 2026)
+## Changelog : ui-kit (30 derniers jours, au 07/10/2026)
 
 ### Résumé
-Ce mois-ci, le design system s'enrichit de nouveaux éléments d'interface, notamment des bannières et des options de personnalisation pour les menus. Les outils de développement ont également été améliorés pour offrir une meilleure expérience de test et de prévisualisation, tout en optimisant la réactivité de l'interface.
+Cette période est marquée par l'enrichissement des composants de mise en page avec l'ajout de bannières, une amélioration de l'accessibilité des onglets et une gestion plus fluide des droits d'accès aux dossiers. L'outil de documentation (Storybook) a également été rendu plus ergonomique pour les développeurs.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux éléments d'interface : composant `HeaderBanner` et intégration d'un emplacement (`slot`) `topBanner` dans le `MainLayout`.
-- Enrichissement du `ContextMenu` avec l'ajout de la propriété `isChecked` pour les éléments de menu.
-- Amélioration de la flexibilité du `ShareModal` permettant l'extension de `SharedItemRow`.
-- Ajout de nouveaux tokens de design pour renforcer la cohérence visuelle.
-- Correction de problèmes de mise en page (layout) sur le composant `Modal`.
+- **Mise en page et bannières** : ajout du composant `HeaderBanner` et intégration d'un emplacement (`slot`) pour une bannière supérieure dans le `MainLayout`.
+- **Amélioration des composants** :
+    - `Tabs` : ajout de variantes accessibles et de la possibilité de contrôler la sélection.
+    - `Modal` : correction de problèmes de mise en page.
+- **Gestion des accès et partage** :
+    - Simplification de l'état des modales de partage et de la confirmation des changements d'accès aux dossiers.
+    - Amélioration de l'aperçu (`preview`) pour afficher immédiatement l'absence d'accès sans tenter de charger le contenu.
 
 ### Évolutions techniques
-- Amélioration de l'expérience de développement dans Storybook : ajout d'un sélecteur de thème et persistance de la langue sélectionnée lors de la navigation entre les composants et la documentation.
-- Optimisation des performances de l'interface responsive via l'ajout d'un mécanisme de "debounce" sur les écouteurs d'événements de redimensionnement.
-- Refactorisation des hooks de calendrier pour centraliser l'utilisation de `react-aria`.
-- Mise à jour de l'environnement d'exécution vers Node 24.
+- **Optimisation des performances** : ajout d'un mécanisme de *debounce* sur l'écouteur d'événements de redimensionnement pour améliorer la réactivité de l'interface.
+- **Amélioration de Storybook** : ajout d'un sélecteur de thème et persistance de la langue sélectionnée lors de la navigation entre les histoires et la documentation.
 
 ### Autres changements
-- Nettoyage du fichier CHANGELOG.
+- Nettoyage du fichier `CHANGELOG`.

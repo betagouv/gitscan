@@ -1,6 +1,5 @@
 .
 ├── .changeset
-│   ├── bold-mangos-join.md
 │   └── config.json
 ├── .dockerignore
 ├── .github
@@ -55,6 +54,7 @@
 │   │   │   ├── file-preview
 │   │   │   │   ├── audio-preview.spec.tsx
 │   │   │   │   ├── file-preview-actions.spec.tsx
+│   │   │   │   ├── folder-access-denied.spec.tsx
 │   │   │   │   ├── heic-file-preview.spec.tsx
 │   │   │   │   ├── image-preview.spec.tsx
 │   │   │   │   ├── pdf-preview-error.spec.tsx
@@ -84,6 +84,7 @@
 │   │   │   │   ├── mount-share-modal.tsx
 │   │   │   │   ├── mount-smart-scroller.tsx
 │   │   │   │   ├── mount-storage-gauge.tsx
+│   │   │   │   ├── mount-tabs.tsx
 │   │   │   │   ├── mount-upload.tsx
 │   │   │   │   └── pdf-helpers.ts
 │   │   │   ├── la-gaufre
@@ -97,10 +98,12 @@
 │   │   │   │   └── share-modal-import.spec.tsx
 │   │   │   ├── share-modal
 │   │   │   │   ├── share-modal-basics.spec.tsx
+│   │   │   │   ├── share-modal-extensions.spec.tsx
 │   │   │   │   ├── share-modal-import-integration.spec.tsx
 │   │   │   │   ├── share-modal-invitations.spec.tsx
 │   │   │   │   ├── share-modal-link-settings.spec.tsx
 │   │   │   │   ├── share-modal-members.spec.tsx
+│   │   │   │   ├── share-modal-restrict.spec.tsx
 │   │   │   │   ├── share-modal-search-field.spec.tsx
 │   │   │   │   └── share-modal-search-invite.spec.tsx
 │   │   │   ├── smart-scroller
@@ -109,6 +112,8 @@
 │   │   │   │   ├── storage-gauge-bar.spec.tsx
 │   │   │   │   ├── storage-gauge-button.spec.tsx
 │   │   │   │   └── storage-gauge-information.spec.tsx
+│   │   │   ├── tabs
+│   │   │   │   └── tabs.spec.tsx
 │   │   │   └── upload
 │   │   │       └── upload.spec.tsx
 │   │   ├── package.json
@@ -161,6 +166,7 @@
 │   │   │   │   │       ├── mime-doc.svg
 │   │   │   │   │       ├── mime-docs-mini.svg
 │   │   │   │   │       ├── mime-folder-mini.svg
+│   │   │   │   │       ├── mime-folder-restricted.svg
 │   │   │   │   │       ├── mime-grist-mini.svg
 │   │   │   │   │       ├── mime-grist.svg
 │   │   │   │   │       ├── mime-image-mini.svg
@@ -1035,6 +1041,9 @@
 │   │   │   │   │       ├── image-viewer
 │   │   │   │   │       │   ├── ImageViewer.scss
 │   │   │   │   │       │   └── ImageViewer.tsx
+│   │   │   │   │       ├── no-access
+│   │   │   │   │       │   ├── NoAccessPreview.scss
+│   │   │   │   │       │   └── NoAccessPreview.tsx
 │   │   │   │   │       ├── not-supported
 │   │   │   │   │       │   └── NotSupportedPreview.tsx
 │   │   │   │   │       ├── pdf-preview
@@ -1122,8 +1131,15 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── modal
+│   │   │   │   │   │   ├── ShareAccessConfirmationModal.tsx
+│   │   │   │   │   │   ├── ShareInvitationsSection.tsx
+│   │   │   │   │   │   ├── ShareMembersActions.tsx
+│   │   │   │   │   │   ├── ShareMembersSection.tsx
 │   │   │   │   │   │   ├── ShareModal.tsx
+│   │   │   │   │   │   ├── ShareModalFooter.tsx
 │   │   │   │   │   │   ├── ShareSearchField.tsx
+│   │   │   │   │   │   ├── ShareSearchResults.tsx
+│   │   │   │   │   │   ├── ShowMoreButton.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── items
 │   │   │   │   │   │   │   ├── SearchUserItem.tsx
@@ -1134,12 +1150,19 @@
 │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   ├── share-items.stories.tsx
 │   │   │   │   │   │   │   └── share-modal-icons.tsx
+│   │   │   │   │   │   ├── searchResults.ts
 │   │   │   │   │   │   ├── share-modal.scss
-│   │   │   │   │   │   └── stories
-│   │   │   │   │   │       ├── ShareModal.mdx
-│   │   │   │   │   │       ├── ShareModalExample.tsx
-│   │   │   │   │   │       ├── ShareModalExtensionsExample.tsx
-│   │   │   │   │   │       └── share-modal.stories.tsx
+│   │   │   │   │   │   ├── stories
+│   │   │   │   │   │   │   ├── ShareModal.mdx
+│   │   │   │   │   │   │   ├── ShareModalExample.tsx
+│   │   │   │   │   │   │   ├── ShareModalExtensionsExample.tsx
+│   │   │   │   │   │   │   └── share-modal.stories.tsx
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── useShareImport.ts
+│   │   │   │   │   │   ├── useShareModalLayout.ts
+│   │   │   │   │   │   ├── useShareSearch.test.ts
+│   │   │   │   │   │   ├── useShareSearch.ts
+│   │   │   │   │   │   └── visibility.ts
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── users-invitation
 │   │   │   │   │   │   ├── InvitationUserSelectorList.tsx
@@ -1172,6 +1195,7 @@
 │   │   │   │   │   │   └── storage-gauge-information.stories.tsx
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── tabs
+│   │   │   │   │   ├── Tabs.mdx
 │   │   │   │   │   ├── Tabs.tsx
 │   │   │   │   │   ├── index.scss
 │   │   │   │   │   ├── index.tsx
@@ -1372,4 +1396,4 @@
 ├── tsconfig.node.json
 ├── turbo.json
 └── yarn.lock
-174 directories, 1200 files
+176 directories, 1222 files
