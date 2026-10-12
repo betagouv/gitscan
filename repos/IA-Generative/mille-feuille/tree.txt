@@ -1,0 +1,1079 @@
+.
+├── .env.example
+├── .github
+│   ├── releases
+│   │   ├── .release-please-manifest-prerelease.json
+│   │   ├── .release-please-manifest.json
+│   │   ├── release-please-config-prerelease.json
+│   │   └── release-please-config-release.json
+│   └── workflows
+│       ├── cd.yml
+│       ├── ci.yml
+│       ├── clean-cache.yml
+│       ├── lint.yml
+│       ├── sdks.yml
+│       └── unit-tests.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .gitleaks.toml
+├── .pre-commit-config.yaml
+├── .trivyignore.yaml
+├── CHANGELOG.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── backend
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── alembic.ini
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── celery_client.py
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── collaboration.py
+│   │   │   ├── database.py
+│   │   │   ├── events.py
+│   │   │   ├── keycloak.py
+│   │   │   ├── llm.py
+│   │   │   ├── redis.py
+│   │   │   ├── sharing.py
+│   │   │   └── storage.py
+│   │   ├── connectors.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   ├── dossier_guard.py
+│   │   │   └── security
+│   │   │       ├── __init__.py
+│   │   │       ├── acting_user.py
+│   │   │       ├── admin.py
+│   │   │       ├── claims.py
+│   │   │       ├── ephemeral.py
+│   │   │       ├── factory.py
+│   │   │       ├── internal.py
+│   │   │       ├── keycloak_client.py
+│   │   │       ├── session.py
+│   │   │       └── share_token.py
+│   │   ├── db.py
+│   │   ├── logging_config.py
+│   │   ├── main.py
+│   │   ├── mcp
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── auth.py
+│   │   │   ├── helper_server.py
+│   │   │   └── server.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── agent_chat_event.py
+│   │   │   ├── agent_conversation.py
+│   │   │   ├── analyse.py
+│   │   │   ├── analyse_ephemere.py
+│   │   │   ├── analyse_share.py
+│   │   │   ├── analysis_proposal.py
+│   │   │   ├── app_token.py
+│   │   │   ├── app_user.py
+│   │   │   ├── base.py
+│   │   │   ├── cgu.py
+│   │   │   ├── cgu_acceptance.py
+│   │   │   ├── chat_event.py
+│   │   │   ├── conversation.py
+│   │   │   ├── document_draft.py
+│   │   │   ├── document_page.py
+│   │   │   ├── document_template.py
+│   │   │   ├── dossier.py
+│   │   │   ├── dossier_access.py
+│   │   │   ├── dossier_analysis.py
+│   │   │   ├── dossier_ephemere.py
+│   │   │   ├── dossier_event.py
+│   │   │   ├── dossier_note.py
+│   │   │   ├── ephemeral_result.py
+│   │   │   ├── execution_log.py
+│   │   │   ├── feedback.py
+│   │   │   ├── generated_document.py
+│   │   │   ├── generation_prompt.py
+│   │   │   ├── notification.py
+│   │   │   ├── report.py
+│   │   │   ├── summary.py
+│   │   │   ├── user_preference.py
+│   │   │   ├── user_task.py
+│   │   │   └── work_slot.py
+│   │   ├── repositories
+│   │   │   ├── agent_conversation_repository.py
+│   │   │   ├── analyse_repository.py
+│   │   │   ├── analysis_collaboration_repository.py
+│   │   │   ├── analysis_proposal_repository.py
+│   │   │   ├── app_token_repository.py
+│   │   │   ├── cgu_acceptance_repository.py
+│   │   │   ├── cgu_repository.py
+│   │   │   ├── dashboard_repository.py
+│   │   │   ├── document_draft_repository.py
+│   │   │   ├── document_template_repository.py
+│   │   │   ├── dossier_access_repository.py
+│   │   │   ├── dossier_analysis_repository.py
+│   │   │   ├── dossier_event_repository.py
+│   │   │   ├── dossier_note_repository.py
+│   │   │   ├── dossier_repository.py
+│   │   │   ├── ephemeral_repository.py
+│   │   │   ├── generated_document_repository.py
+│   │   │   ├── notification_repository.py
+│   │   │   ├── report_repository.py
+│   │   │   ├── tracking_repository.py
+│   │   │   ├── user_directory_repository.py
+│   │   │   ├── user_preference_repository.py
+│   │   │   └── work_slot_repository.py
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── admin_document_templates.py
+│   │   │   ├── admin_generation_prompt.py
+│   │   │   ├── admin_reports.py
+│   │   │   ├── admin_stats.py
+│   │   │   ├── admin_tasks.py
+│   │   │   ├── agent_conversations.py
+│   │   │   ├── analyses.py
+│   │   │   ├── analysis_collaboration.py
+│   │   │   ├── analysis_proposals.py
+│   │   │   ├── app_tokens.py
+│   │   │   ├── assist.py
+│   │   │   ├── auth.py
+│   │   │   ├── cgu.py
+│   │   │   ├── conversations.py
+│   │   │   ├── dashboard.py
+│   │   │   ├── document_drafts.py
+│   │   │   ├── dossier_analyses.py
+│   │   │   ├── dossier_events.py
+│   │   │   ├── dossier_notes.py
+│   │   │   ├── dossiers.py
+│   │   │   ├── ephemeral.py
+│   │   │   ├── generated_documents.py
+│   │   │   ├── health.py
+│   │   │   ├── internal.py
+│   │   │   ├── internal_agent.py
+│   │   │   ├── models.py
+│   │   │   ├── notifications.py
+│   │   │   ├── profile.py
+│   │   │   ├── reports.py
+│   │   │   ├── tracking.py
+│   │   │   ├── user_tasks.py
+│   │   │   ├── users.py
+│   │   │   └── work_slots.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── agent_conversation.py
+│   │   │   ├── analyse.py
+│   │   │   ├── analysis_collaboration.py
+│   │   │   ├── analysis_proposal.py
+│   │   │   ├── app_token.py
+│   │   │   ├── cgu.py
+│   │   │   ├── dashboard.py
+│   │   │   ├── document_draft.py
+│   │   │   ├── document_template.py
+│   │   │   ├── dossier.py
+│   │   │   ├── dossier_analysis.py
+│   │   │   ├── dossier_event.py
+│   │   │   ├── dossier_note.py
+│   │   │   ├── ephemeral.py
+│   │   │   ├── generated_document.py
+│   │   │   ├── health.py
+│   │   │   ├── llm.py
+│   │   │   ├── models.py
+│   │   │   ├── notification.py
+│   │   │   ├── pagination.py
+│   │   │   ├── profile.py
+│   │   │   ├── report.py
+│   │   │   ├── tracking.py
+│   │   │   ├── user_task.py
+│   │   │   └── work_slot.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── analysis_builder.py
+│   │   │   ├── analysis_carryover.py
+│   │   │   ├── custom_fields.py
+│   │   │   ├── dashboard_stats.py
+│   │   │   ├── document_assembly.py
+│   │   │   ├── document_fields.py
+│   │   │   ├── document_template_sources.py
+│   │   │   ├── dossier_access.py
+│   │   │   ├── due_date.py
+│   │   │   ├── ephemeral_run_service.py
+│   │   │   ├── generation_prompt.py
+│   │   │   ├── notification_messages.py
+│   │   │   ├── prediction_validation.py
+│   │   │   ├── slot_occurrences.py
+│   │   │   └── user_task_service.py
+│   │   └── tasks.py
+│   ├── migrations
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 20260922_2207_80d46debbe61_initial_schema.py
+│   │       ├── 20260922_2236_42c763907a77_conversations_and_document_metadata.py
+│   │       ├── 20260922_2257_e64f2799cc05_execution_logs_document_pages_and_.py
+│   │       ├── 20260923_0834_0464cba98183_bounding_boxes_as_their_own_table.py
+│   │       ├── 20260923_0843_4c1ea39cba4b_predictions_and_message_sources_as_sets_.py
+│   │       ├── 20260923_0910_c624935c6b31_app_tokens_for_machine_to_machine_access.py
+│   │       ├── 20260923_0949_f3ace41df805_screenshot_key_on_document_pages.py
+│   │       ├── 20260923_1007_597c7128b6c2_text_extraction_status_on_dossier_.py
+│   │       ├── 20260923_1310_a1b2c3d4e5f6_unique_conversation_per_dossier_user.py
+│   │       ├── 20260923_1320_b2c3d4e5f6a7_conversation_model_column.py
+│   │       ├── 20260923_1400_d4e5f6a7b8c9_chat_events_table.py
+│   │       ├── 20260923_1601_572981f30ad1_model_field_on_conversations_and_agents.py
+│   │       ├── 20260923_1700_fc20e773c29f_message_feedback_thumbs_up_down_reasons_.py
+│   │       ├── 20260923_1711_6b724f3d02fa_reports_bug_idea_question_with_admin_.py
+│   │       ├── 20260924_1017_7f1e8bb1c9da_ephemeral_analysis_and_dossier_.py
+│   │       ├── 20260924_1058_6b349e53d77a_add_created_by_to_analyse_ephemere.py
+│   │       ├── 20260924_1112_2b084dba1bc8_add_created_by_to_dossier_ephemere.py
+│   │       ├── 20260925_0849_d44d56718aa9_add_agent_conversations_agent_messages_.py
+│   │       ├── 20260925_1000_a1b2c3d4e5f7_add_summaries_file_hash_summary_status.py
+│   │       ├── 20260925_1400_b3c4d5e6f7a8_dossier_a_ranger_suggestions.py
+│   │       ├── 20260925_1900_c5d6e7f8a9b0_cgus_versioned_terms_of_service.py
+│   │       ├── 20260925_2000_d6e7f8a9b0c1_cgu_acceptances_table.py
+│   │       ├── 20260925_2100_e7f8a9b0c1d2_user_preferences_table.py
+│   │       ├── 20260925_2200_f8a9b0c1d2e3_user_tasks_table.py
+│   │       ├── 20260930_1538_9c4e7a1d3b52_ephemeral_results_table.py
+│   │       ├── 20261001_2210_1a2b3c4d5e6f_analyse_de_dossier_elements_versions_.py
+│   │       ├── 20261001_2225_2b3c4d5e6f7a_propositions_de_modification_de_l_.py
+│   │       ├── 20261001_2336_4d5e6f7a8b9c_notes_internes_des_dossiers.py
+│   │       ├── 20261002_0010_5e6f7a8b9c0d_presence_et_verrou_par_element.py
+│   │       ├── 20261002_0900_3c4d5e6f7a8b_migrate_prediction_validations.py
+│   │       ├── 20261002_1300_6f7a8b9c0d1e_modeles_de_document.py
+│   │       ├── 20261002_1500_7a8b9c0d1e2f_brouillons_de_document.py
+│   │       ├── 20261002_1700_8b9c0d1e2f3a_generation_des_champs_de_document.py
+│   │       ├── 20261002_1900_9c0d1e2f3a4b_documents_generes.py
+│   │       ├── 20261002_2100_a0b1c2d3e4f5_modeles_de_document_par_analyse.py
+│   │       ├── 20261003_0900_b1c2d3e4f5a6_avertissements_des_modeles.py
+│   │       ├── 20261007_1000_c2d3e4f5a6b7_statuts_de_dossier.py
+│   │       ├── 20261007_1400_d3e4f5a6b7c8_journal_d_evenements_du_dossier.py
+│   │       ├── 20261008_0900_e4f5a6b7c8d9_echeance_des_dossiers.py
+│   │       ├── 20261009_0900_f5a6b7c8d9e0_affectation_des_dossiers.py
+│   │       ├── 20261010_0900_a6b7c8d9e0f1_reference_des_dossiers.py
+│   │       ├── 20261011_0900_b7c8d9e0f1a2_creneaux_de_traitement.py
+│   │       ├── 20261012_0900_c8d9e0f1a2b3_notifications.py
+│   │       ├── 20261013_0900_d9e0f1a2b3c4_acces_aux_dossiers.py
+│   │       └── 20261014_0900_e0f1a2b3c4d5_colonnes_personnalisees.py
+│   ├── pyproject.toml
+│   ├── scripts
+│   │   └── generate_data_model.py
+│   ├── tests
+│   │   ├── .env.testing
+│   │   ├── access_support.py
+│   │   ├── conftest.py
+│   │   ├── document_helpers.py
+│   │   └── test_*.py  (49 files)
+│   └── uv.lock
+├── ct.yaml
+├── docker
+│   └── keycloak
+│       └── mille-feuille-realm.json
+├── docker-compose.override.yaml
+├── docker-compose.yaml
+├── docs
+│   ├── backend
+│   │   ├── acces-aux-dossiers.md
+│   │   ├── acces-de-l-agent-assistant.md
+│   │   ├── affectation-des-dossiers.md
+│   │   ├── assemblage-des-documents.md
+│   │   ├── brouillons-de-document.md
+│   │   ├── colonnes-personnalisees.md
+│   │   ├── creneaux-de-traitement.md
+│   │   ├── data-model.png
+│   │   ├── echeance-du-dossier.md
+│   │   ├── extraction-par-document.md
+│   │   ├── generation-des-champs.md
+│   │   ├── journal-du-dossier.md
+│   │   ├── migration-validations-prediction.md
+│   │   ├── modeles-de-document.md
+│   │   ├── notifications.md
+│   │   ├── relance-incrementale.md
+│   │   ├── relance-incrementale.png
+│   │   ├── statuts-de-dossier.md
+│   │   ├── tableau-de-bord.md
+│   │   └── tableau-de-suivi.md
+│   ├── e2e
+│   │   └── README.md
+│   ├── ephemeral-api.md
+│   ├── exemple-contentieux-administratif
+│   │   ├── 01-analyse.md
+│   │   ├── 02-classification.md
+│   │   ├── 03-extraction.md
+│   │   ├── 05-statuts.md
+│   │   ├── 06-echeance.md
+│   │   ├── 07-colonnes-personnalisees.md
+│   │   ├── README.md
+│   │   ├── agents
+│   │   │   ├── 01-recevabilite.md
+│   │   │   ├── 02-moyens-et-conclusions.md
+│   │   │   ├── 03-pieces-et-chronologie.md
+│   │   │   └── 04-plan-memoire-en-defense.md
+│   │   └── dossier-exemple
+│   │       ├── 00-scenario.md
+│   │       ├── 01-requete.md
+│   │       ├── 02-decision-attaquee.md
+│   │       ├── 03-accuse-reception.md
+│   │       ├── 04-recours-gracieux.md
+│   │       ├── 05-bordereau-pieces.md
+│   │       ├── 06-courrier-greffe.md
+│   │       └── pdf
+│   │           ├── 01-requete.pdf
+│   │           ├── 02-decision-attaquee.pdf
+│   │           ├── 03-accuse-reception.pdf
+│   │           ├── 04-recours-gracieux.pdf
+│   │           ├── 05-bordereau-pieces.pdf
+│   │           └── 06-courrier-greffe.pdf
+│   ├── exemple-contentieux-etrangers
+│   │   ├── 01-analyse.md
+│   │   ├── 02-classification.md
+│   │   ├── 03-extraction.md
+│   │   ├── 05-statuts.md
+│   │   ├── 06-echeance.md
+│   │   ├── 07-colonnes-personnalisees.md
+│   │   ├── README.md
+│   │   ├── agents
+│   │   │   ├── 01-recevabilite.md
+│   │   │   ├── 02-identite-et-presence.md
+│   │   │   ├── 03-moyens-et-pieces.md
+│   │   │   └── 04-plan-memoire-en-defense.md
+│   │   └── dossier-exemple
+│   │       ├── 00-scenario.md
+│   │       ├── 01-requete.md
+│   │       ├── 02-arrete-attaque.md
+│   │       ├── 03-pv-notification.md
+│   │       ├── 04-recepisse-aide-juridictionnelle.md
+│   │       ├── 05-decision-aide-juridictionnelle.md
+│   │       ├── 06-bordereau-pieces.md
+│   │       ├── 07-courrier-greffe.md
+│   │       └── pdf
+│   │           ├── 01-requete.pdf
+│   │           ├── 02-arrete-attaque.pdf
+│   │           ├── 03-pv-notification.pdf
+│   │           ├── 04-recepisse-aide-juridictionnelle.pdf
+│   │           ├── 05-decision-aide-juridictionnelle.pdf
+│   │           ├── 06-bordereau-pieces.pdf
+│   │           └── 07-courrier-greffe.pdf
+│   ├── exemple-contentieux-securite-routiere
+│   │   ├── 01-analyse.md
+│   │   ├── 02-classification.md
+│   │   ├── 03-extraction.md
+│   │   ├── 05-statuts.md
+│   │   ├── 06-echeance.md
+│   │   ├── 07-colonnes-personnalisees.md
+│   │   ├── README.md
+│   │   ├── agents
+│   │   │   ├── 01-recevabilite.md
+│   │   │   ├── 02-coherence-des-faits.md
+│   │   │   ├── 03-moyens-et-regularite.md
+│   │   │   └── 04-plan-memoire-en-defense.md
+│   │   └── dossier-exemple
+│   │       ├── 00-scenario.md
+│   │       ├── 01-requete.md
+│   │       ├── 02-arrete-suspension.md
+│   │       ├── 03-proces-verbal-controle.md
+│   │       ├── 04-certificat-verification-ethylometre.md
+│   │       ├── 05-pv-notification.md
+│   │       ├── 06-courrier-greffe.md
+│   │       └── pdf
+│   │           ├── 01-requete.pdf
+│   │           ├── 02-arrete-suspension.pdf
+│   │           ├── 03-proces-verbal-controle.pdf
+│   │           ├── 04-certificat-verification-ethylometre.pdf
+│   │           ├── 05-pv-notification.pdf
+│   │           └── 06-courrier-greffe.pdf
+│   ├── exemple-instruction-administrative
+│   │   ├── 01-analyse.md
+│   │   ├── 02-classification.md
+│   │   ├── 03-extraction.md
+│   │   ├── 05-statuts.md
+│   │   ├── 06-echeance.md
+│   │   ├── 07-colonnes-personnalisees.md
+│   │   ├── README.md
+│   │   ├── agents
+│   │   │   ├── 01-completude.md
+│   │   │   ├── 02-coherence-croisee.md
+│   │   │   ├── 03-signaux-d-anomalie.md
+│   │   │   └── 04-synthese-instructeur.md
+│   │   └── dossier-exemple
+│   │       ├── 00-scenario.md
+│   │       ├── 01-formulaire-demande.md
+│   │       ├── 02-carte-identite.md
+│   │       ├── 03-justificatif-domicile.md
+│   │       ├── 04-avis-imposition.md
+│   │       ├── 05-rib.md
+│   │       └── pdf
+│   │           ├── 01-formulaire-demande.pdf
+│   │           ├── 02-carte-identite.pdf
+│   │           ├── 03-justificatif-domicile.pdf
+│   │           ├── 04-avis-imposition.pdf
+│   │           └── 05-rib.pdf
+│   ├── features.md
+│   ├── frontend
+│   │   ├── App-collapsed.png
+│   │   ├── App.png
+│   │   ├── acces-aux-dossiers
+│   │   │   ├── 01-pastille-restreint.png
+│   │   │   ├── 02-creation-d-un-dossier-restreint.png
+│   │   │   ├── 03-acces-au-dossier.png
+│   │   │   ├── 04-confirmation-des-pertes-d-acces.png
+│   │   │   ├── 05-suivi-dossiers-restreints.png
+│   │   │   ├── 06-definir-l-acces-en-lot.png
+│   │   │   ├── 07-notification-d-un-dossier-non-accessible.png
+│   │   │   ├── 08-lecture-seule-pour-un-non-administrateur.png
+│   │   │   └── README.md
+│   │   ├── analyse-dossier
+│   │   │   ├── README.md
+│   │   │   ├── analyse-dossier.png
+│   │   │   ├── chat-propositions-traitees.png
+│   │   │   ├── chat-propositions.png
+│   │   │   ├── edition-verrouillee.png
+│   │   │   ├── historique-et-differences.png
+│   │   │   ├── lien-depuis-le-dossier.png
+│   │   │   ├── modifier-une-proposition.png
+│   │   │   ├── notes-historique.png
+│   │   │   ├── notes-internes.png
+│   │   │   ├── notes-propositions.png
+│   │   │   ├── pagination-des-entites-20-par-page.png
+│   │   │   ├── pagination-des-listes.png
+│   │   │   ├── presence-verrou.png
+│   │   │   └── verrou-refuse.png
+│   │   ├── components
+│   │   │   ├── analyses
+│   │   │   │   ├── AddAgentModal.png
+│   │   │   │   ├── AgentCard.png
+│   │   │   │   ├── EntitiesEditor.png
+│   │   │   │   └── LabelsEditor.png
+│   │   │   └── dossiers
+│   │   │       ├── CreateDossierModal.png
+│   │   │       └── ExecutionPanel.png
+│   │   ├── documents-du-dossier
+│   │   │   ├── 01-documents-du-dossier.png
+│   │   │   ├── 02-agent-en-cours.png
+│   │   │   ├── 03-revue-du-brouillon.png
+│   │   │   ├── 04-sources-d-une-valeur.png
+│   │   │   ├── 05-historique-d-un-champ.png
+│   │   │   ├── 06-confirmer-un-document-incomplet.png
+│   │   │   ├── 07-document-genere.png
+│   │   │   └── README.md
+│   │   ├── echeance-du-dossier
+│   │   │   ├── 01-reglage-de-l-echeance.png
+│   │   │   ├── 02-historique-des-seuils.png
+│   │   │   ├── 03-liste-des-dossiers.png
+│   │   │   ├── 04-filtre-echeance-depassee.png
+│   │   │   ├── 05-tri-par-echeance.png
+│   │   │   ├── 06-echeance-dans-le-dossier.png
+│   │   │   ├── 07-modifier-l-echeance.png
+│   │   │   ├── 08-historique-du-dossier.png
+│   │   │   └── README.md
+│   │   ├── helper-agent-access
+│   │   │   ├── README.md
+│   │   │   ├── dossier-bouton-assistant.png
+│   │   │   ├── modale-assistant.png
+│   │   │   ├── proposition-assistant.png
+│   │   │   └── question-prerempli.png
+│   │   ├── historique-du-dossier
+│   │   │   ├── 01-historique-du-dossier.png
+│   │   │   ├── 02-avec-les-consultations.png
+│   │   │   ├── 03-filtre-par-auteur.png
+│   │   │   ├── 04-filtre-par-type.png
+│   │   │   └── README.md
+│   │   ├── modeles-de-document
+│   │   │   ├── 01-administration-prompt.png
+│   │   │   ├── 02-onglet-documents-de-l-analyse.png
+│   │   │   ├── 03-nouveau-modele-carrousel.png
+│   │   │   ├── 04-aide-a-la-redaction.png
+│   │   │   ├── 05-points-a-corriger.png
+│   │   │   ├── 06-source-inconnue.png
+│   │   │   ├── 07-modele-existant-et-historique.png
+│   │   │   ├── 08-rapport-du-serveur.png
+│   │   │   ├── 09-source-inconnue-serveur.png
+│   │   │   ├── 10-controle-a-l-import.png
+│   │   │   └── README.md
+│   │   ├── pages
+│   │   │   ├── AnalyseDetailPage.png
+│   │   │   ├── AnalysesPage.png
+│   │   │   ├── DossierDetailPage.png
+│   │   │   └── DossiersPage.png
+│   │   ├── relance-de-l-analyse
+│   │   │   ├── 01-analyse-en-echec.png
+│   │   │   ├── 02-analyse-mise-a-jour.png
+│   │   │   ├── 03-analyse-relancee.png
+│   │   │   └── README.md
+│   │   ├── resultats-du-dossier
+│   │   │   ├── 01-cartes-de-resultats.png
+│   │   │   ├── 02-detail-classification.png
+│   │   │   ├── 03-detail-entites.png
+│   │   │   ├── 04-detail-entites-page-2.png
+│   │   │   ├── 05-page-d-une-classification.png
+│   │   │   ├── 06-page-d-une-entite.png
+│   │   │   └── README.md
+│   │   ├── statuts-de-dossier
+│   │   │   ├── 01-onglet-statuts.png
+│   │   │   ├── 02-historique-des-statuts.png
+│   │   │   ├── 03-remplacer-un-statut-utilise.png
+│   │   │   ├── 04-liste-des-dossiers.png
+│   │   │   ├── 05-filtre-par-statut.png
+│   │   │   ├── 06-statut-dans-le-dossier.png
+│   │   │   └── README.md
+│   │   ├── tableau-de-bord
+│   │   │   ├── 01-tableau-de-bord.png
+│   │   │   ├── 02-calendrier-du-mois.png
+│   │   │   ├── 03-liste-des-urgences.png
+│   │   │   ├── 04-recherche-et-filtres.png
+│   │   │   ├── 05-planifier-un-creneau.png
+│   │   │   ├── 06-repetition-et-rappels-personnalises.png
+│   │   │   ├── 07-indicateurs.png
+│   │   │   ├── 08-notifications.png
+│   │   │   ├── 09-dossiers-a-prendre-en-charge.png
+│   │   │   ├── 10-activite-recente.png
+│   │   │   ├── 11-invitation-a-planifier.png
+│   │   │   ├── 12-planification-rapide.png
+│   │   │   ├── 13-creneau-cree.png
+│   │   │   ├── 14-deplacer-un-creneau.png
+│   │   │   ├── 15-deplacer-vers-un-autre-jour.png
+│   │   │   └── README.md
+│   │   └── tableau-de-suivi
+│   │       ├── 01-onglet-suivi.png
+│   │       ├── 02-filtres.png
+│   │       ├── 03-affectation-en-lot.png
+│   │       ├── 04-definition-d-une-colonne.png
+│   │       ├── 05-menu-options.png
+│   │       ├── 06-choix-des-colonnes.png
+│   │       ├── 07-champs-personnalises.png
+│   │       ├── 08-historique-des-champs.png
+│   │       ├── 09-edition-en-cellule.png
+│   │       ├── 10-vue-transversale.png
+│   │       ├── 11-vue-transversale-une-analyse.png
+│   │       ├── 12-affectation-confirmee.png
+│   │       ├── 13-filtres-sur-les-colonnes.png
+│   │       └── README.md
+│   ├── mcp-helper-agent-plan.md
+│   └── secrets.md
+├── frontend
+│   ├── .DS_Store
+│   ├── .dockerignore
+│   ├── .dsfr.yml
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── docker
+│   │   └── nginx.conf
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   ├── CHANGELOG.md
+│   │   ├── cgu.md
+│   │   ├── marianne-icone.png
+│   │   └── tutorials
+│   │       ├── 01-demarrage.md
+│   │       ├── 02-documents.md
+│   │       ├── 03-pipeline.md
+│   │       ├── 04-assistant.md
+│   │       └── 05-partage.md
+│   ├── scripts
+│   │   ├── doc-screenshots.mjs
+│   │   └── screenshot.mjs
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── components
+│   │   │   ├── CguGate.vue
+│   │   │   ├── ChatWindow.vue
+│   │   │   ├── HelperAgentModal.vue
+│   │   │   ├── InfoModal.vue
+│   │   │   ├── MarkdownText.vue
+│   │   │   ├── ModelPicker.vue
+│   │   │   ├── PaginationBar.vue
+│   │   │   ├── ReportFormModal.vue
+│   │   │   ├── SourceViewerModal.vue
+│   │   │   ├── TaskDrawer.vue
+│   │   │   ├── ToolSteps.vue
+│   │   │   ├── TutorialModal.vue
+│   │   │   ├── UserMenu.vue
+│   │   │   ├── access
+│   │   │   │   ├── AccessBadge.vue
+│   │   │   │   ├── AccessModal.vue
+│   │   │   │   ├── BulkAccessModal.vue
+│   │   │   │   └── GroupPicker.vue
+│   │   │   ├── admin
+│   │   │   │   ├── AdminCguTab.vue
+│   │   │   │   ├── AdminDocumentGenerationTab.vue
+│   │   │   │   ├── AdminReportsTab.vue
+│   │   │   │   ├── AdminStatsTab.vue
+│   │   │   │   ├── AdminTasksTab.vue
+│   │   │   │   ├── GenerationPromptPanel.vue
+│   │   │   │   └── documentTemplates
+│   │   │   │       ├── AssistedTextarea.vue
+│   │   │   │       ├── DocumentTemplateEditor.vue
+│   │   │   │       └── TemplateFieldRow.vue
+│   │   │   ├── analyses
+│   │   │   │   ├── AddAgentModal.vue
+│   │   │   │   ├── AgentCard.vue
+│   │   │   │   ├── AgentToolsEditor.vue
+│   │   │   │   ├── CreateAnalyseModal.vue
+│   │   │   │   ├── DueSettingsEditor.vue
+│   │   │   │   ├── EntitiesEditor.vue
+│   │   │   │   ├── LabelsEditor.vue
+│   │   │   │   ├── LlmAssistButton.vue
+│   │   │   │   ├── PromptEditor.vue
+│   │   │   │   └── VersionHistory.vue
+│   │   │   ├── analysis
+│   │   │   │   ├── ChatProposals.vue
+│   │   │   │   ├── ElementHistoryModal.vue
+│   │   │   │   ├── NotesPanel.vue
+│   │   │   │   └── ProposalCard.vue
+│   │   │   ├── dashboard
+│   │   │   │   ├── ActivityModal.vue
+│   │   │   │   ├── AgendaToolbar.vue
+│   │   │   │   ├── BarList.vue
+│   │   │   │   ├── DashboardHeader.vue
+│   │   │   │   ├── MetricCard.vue
+│   │   │   │   ├── MetricsDetailModal.vue
+│   │   │   │   ├── MetricsRow.vue
+│   │   │   │   ├── NotificationsModal.vue
+│   │   │   │   ├── SlotEditorModal.vue
+│   │   │   │   ├── SlotQuickPicker.vue
+│   │   │   │   ├── UnassignedModal.vue
+│   │   │   │   ├── UrgencyCalendar.vue
+│   │   │   │   ├── UrgencyFilters.vue
+│   │   │   │   ├── UrgencyListView.vue
+│   │   │   │   └── UrgencyRow.vue
+│   │   │   ├── documents
+│   │   │   │   ├── DraftFieldCard.vue
+│   │   │   │   ├── FieldHistoryModal.vue
+│   │   │   │   ├── FieldValueEditor.vue
+│   │   │   │   └── PdfPreview.vue
+│   │   │   ├── dossiers
+│   │   │   │   ├── CreateDossierModal.vue
+│   │   │   │   ├── DossierDocuments.vue
+│   │   │   │   ├── DossierDueBadge.vue
+│   │   │   │   ├── DossierResults.vue
+│   │   │   │   ├── DossierResultsDetail.vue
+│   │   │   │   ├── DueDatePicker.vue
+│   │   │   │   ├── FeedbackReasonsModal.vue
+│   │   │   │   ├── PageThumbnail.vue
+│   │   │   │   └── RelaunchBanner.vue
+│   │   │   ├── history
+│   │   │   │   ├── EventFilters.vue
+│   │   │   │   └── EventTimeline.vue
+│   │   │   ├── statuses
+│   │   │   │   ├── StatusReplacementModal.vue
+│   │   │   │   ├── StatusesEditor.vue
+│   │   │   │   ├── WorkflowStatusBadge.vue
+│   │   │   │   └── WorkflowStatusPicker.vue
+│   │   │   └── tracking
+│   │   │       ├── BulkAssignBar.vue
+│   │   │       ├── CellEditor.vue
+│   │   │       ├── ColumnHelp.vue
+│   │   │       ├── ColumnsModal.vue
+│   │   │       ├── CustomFieldsModal.vue
+│   │   │       ├── TrackingFilters.vue
+│   │   │       ├── TrackingTable.vue
+│   │   │       ├── TrackingView.vue
+│   │   │       └── TrackingViewsBar.vue
+│   │   ├── composables
+│   │   │   ├── useAdminStats.ts
+│   │   │   ├── useAdminTasks.ts
+│   │   │   ├── useAgentConversations.ts
+│   │   │   ├── useAnalyses.ts
+│   │   │   ├── useAnalysisLive.ts
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useCgu.ts
+│   │   │   ├── useChatStream.ts
+│   │   │   ├── useConversations.ts
+│   │   │   ├── useDashboard.ts
+│   │   │   ├── useDocumentDrafts.ts
+│   │   │   ├── useDocumentTemplates.ts
+│   │   │   ├── useDossierAccess.ts
+│   │   │   ├── useDossierAnalysis.ts
+│   │   │   ├── useDossierEvents.ts
+│   │   │   ├── useDossierNotes.ts
+│   │   │   ├── useDossierResults.ts
+│   │   │   ├── useDossiers.ts
+│   │   │   ├── useHelperAgent.ts
+│   │   │   ├── useLlmAssist.ts
+│   │   │   ├── useLlmComplete.ts
+│   │   │   ├── useModels.ts
+│   │   │   ├── useMyConversations.ts
+│   │   │   ├── useNotifications.ts
+│   │   │   ├── usePageSize.ts
+│   │   │   ├── useProfile.ts
+│   │   │   ├── useReports.ts
+│   │   │   ├── useReportsAdmin.ts
+│   │   │   ├── useTheme.ts
+│   │   │   ├── useTrackingApi.ts
+│   │   │   ├── useTrackingPrefs.ts
+│   │   │   ├── useTutorials.ts
+│   │   │   ├── useUrgencyFilters.ts
+│   │   │   └── useUserTasks.ts
+│   │   ├── env.d.ts
+│   │   ├── main.ts
+│   │   ├── pages
+│   │   │   ├── AdministrationPage.vue
+│   │   │   ├── AnalyseDetailPage.vue
+│   │   │   ├── AnalysesPage.vue
+│   │   │   ├── DashboardPage.vue
+│   │   │   ├── DocumentReviewPage.vue
+│   │   │   ├── DossierAnalysisPage.vue
+│   │   │   ├── DossierDetailPage.vue
+│   │   │   ├── DossierDocumentsPage.vue
+│   │   │   ├── DossierHistoryPage.vue
+│   │   │   ├── DossiersPage.vue
+│   │   │   ├── ProfilePage.vue
+│   │   │   ├── TrackingPage.vue
+│   │   │   ├── WelcomePage.vue
+│   │   │   └── analyse
+│   │   │       ├── AnalyseAgentsTab.vue
+│   │   │       ├── AnalyseClassificationTab.vue
+│   │   │       ├── AnalyseDocumentsTab.vue
+│   │   │       ├── AnalyseExtractionTab.vue
+│   │   │       ├── AnalyseStatusesTab.vue
+│   │   │       └── AnalyseTrackingTab.vue
+│   │   ├── router
+│   │   │   └── index.ts
+│   │   ├── types
+│   │   │   ├── access.ts
+│   │   │   ├── admin.ts
+│   │   │   ├── agentConversation.ts
+│   │   │   ├── analyse.ts
+│   │   │   ├── cgu.ts
+│   │   │   ├── conversation.ts
+│   │   │   ├── dashboard.ts
+│   │   │   ├── documentDraft.ts
+│   │   │   ├── documentTemplate.ts
+│   │   │   ├── dossier.ts
+│   │   │   ├── dossierAnalysis.ts
+│   │   │   ├── dossierEvent.ts
+│   │   │   ├── dossierNote.ts
+│   │   │   ├── profile.ts
+│   │   │   ├── report.ts
+│   │   │   ├── schedule.ts
+│   │   │   ├── tracking.ts
+│   │   │   └── userTask.ts
+│   │   └── utils
+│   │       ├── api.ts
+│   │       ├── assistantSuggestion.ts
+│   │       ├── csv.ts
+│   │       ├── dates.ts
+│   │       ├── documentTemplateValidation.ts
+│   │       ├── dossierEvents.ts
+│   │       ├── due.ts
+│   │       ├── groupToolEvents.ts
+│   │       ├── highlightExcerpt.ts
+│   │       ├── markdown.ts
+│   │       ├── recurrence.ts
+│   │       ├── textDiff.ts
+│   │       └── trackingFields.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── millefeuille
+│   ├── .helmignore
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── README.md.gotmpl
+│   ├── charts
+│   │   ├── cluster-0.8.1.tgz
+│   │   └── redis-0.27.9.tgz
+│   ├── templates
+│   │   ├── NOTES.txt
+│   │   ├── _helpers.tpl
+│   │   ├── backend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── cronjobs.yaml
+│   │   ├── extra-objects.yaml
+│   │   ├── frontend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── gateway.yaml
+│   │   ├── httproute.yaml
+│   │   ├── ingress.yaml
+│   │   ├── jobs.yaml
+│   │   ├── pullsecret.yaml
+│   │   ├── validation.yaml
+│   │   ├── worker_agent
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_async_api
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_document
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   └── worker_render
+│   │       ├── clusterrole.yaml
+│   │       ├── clusterrolebinding.yaml
+│   │       ├── configmap.yaml
+│   │       ├── daemonset.yaml
+│   │       ├── deployment.yaml
+│   │       ├── grpcroute.yaml
+│   │       ├── hpa.yaml
+│   │       ├── httproute.yaml
+│   │       ├── ingress.yaml
+│   │       ├── metrics.yaml
+│   │       ├── networkpolicy.yaml
+│   │       ├── pdb.yaml
+│   │       ├── pullsecret.yaml
+│   │       ├── role.yaml
+│   │       ├── rolebinding.yaml
+│   │       ├── secret.yaml
+│   │       ├── service.yaml
+│   │       ├── serviceaccount.yaml
+│   │       ├── servicemonitor.yaml
+│   │       └── statefulset.yaml
+│   ├── test-values-daemonset.yaml
+│   ├── test-values-statefulset.yaml
+│   ├── test-values.yaml
+│   ├── values
+│   │   └── common-values.yaml
+│   ├── values.schema.json
+│   └── values.yaml
+├── sdks
+│   └── python
+│       ├── millefeuille
+│       │   ├── README.md
+│       │   ├── pyproject.toml
+│       │   ├── src
+│       │   │   └── millefeuille
+│       │   │       ├── __init__.py
+│       │   │       ├── _files.py
+│       │   │       ├── _http.py
+│       │   │       ├── _polling.py
+│       │   │       ├── analyses.py
+│       │   │       ├── client.py
+│       │   │       ├── dossiers.py
+│       │   │       ├── exceptions.py
+│       │   │       ├── llm_models.py
+│       │   │       ├── models.py
+│       │   │       ├── py.typed
+│       │   │       └── tokens.py
+│       │   ├── tests
+│       │   │   ├── conftest.py
+│       │   │   ├── test_client.py
+│       │   │   ├── test_contract.py
+│       │   │   ├── test_integration.py
+│       │   │   ├── test_models.py
+│       │   │   └── test_resources.py
+│       │   └── uv.lock
+│       ├── millefeuille-ephemeral
+│       │   ├── README.md
+│       │   ├── pyproject.toml
+│       │   ├── src
+│       │   │   └── millefeuille_ephemeral
+│       │   │       ├── __init__.py
+│       │   │       ├── _ttl.py
+│       │   │       ├── analyses.py
+│       │   │       ├── client.py
+│       │   │       ├── exceptions.py
+│       │   │       ├── models.py
+│       │   │       ├── py.typed
+│       │   │       └── runs.py
+│       │   ├── tests
+│       │   │   ├── conftest.py
+│       │   │   ├── test_contract.py
+│       │   │   ├── test_ephemeral.py
+│       │   │   └── test_integration.py
+│       │   └── uv.lock
+│       ├── openapi.json
+│       ├── scripts
+│       │   └── update_openapi.sh
+│       └── testing
+│           └── contract.py
+└── worker
+    ├── agent_execution
+    │   ├── Dockerfile
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── agent_graph.py
+    │   │   ├── analysis_tools.py
+    │   │   ├── api_client.py
+    │   │   ├── bm25.py
+    │   │   ├── celery_app.py
+    │   │   ├── chat_graph.py
+    │   │   ├── config.py
+    │   │   ├── document_generation.py
+    │   │   ├── extraction_planner.py
+    │   │   ├── fingerprint.py
+    │   │   ├── helper_graph.py
+    │   │   ├── helper_tools.py
+    │   │   ├── llm.py
+    │   │   ├── note_tools.py
+    │   │   ├── storage.py
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   ├── agent.py
+    │   │   │   ├── chat.py
+    │   │   │   ├── classification.py
+    │   │   │   ├── document_fields.py
+    │   │   │   ├── extraction.py
+    │   │   │   ├── helper_chat.py
+    │   │   │   ├── note_proposals.py
+    │   │   │   ├── suggestion.py
+    │   │   │   └── summary.py
+    │   │   └── tools.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_agent_task.py
+    │   │   ├── test_analysis_tools.py
+    │   │   ├── test_api_client.py
+    │   │   ├── test_bm25_tools.py
+    │   │   ├── test_celery_app.py
+    │   │   ├── test_config.py
+    │   │   ├── test_document_fields.py
+    │   │   ├── test_extraction_planner.py
+    │   │   ├── test_helper_chat_task.py
+    │   │   ├── test_helper_tools.py
+    │   │   ├── test_llm.py
+    │   │   ├── test_note_proposals.py
+    │   │   ├── test_suggestion.py
+    │   │   ├── test_summary.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    ├── async_api
+    │   ├── .env.example
+    │   ├── Dockerfile
+    │   ├── Dockerfile.dockerignore
+    │   ├── README.md
+    │   ├── contrat.json
+    │   ├── main.py
+    │   ├── pyproject.toml
+    │   ├── src
+    │   │   ├── __init__.py
+    │   │   ├── config.py
+    │   │   ├── exceptions.py
+    │   │   ├── logger.py
+    │   │   ├── messages.py
+    │   │   └── task.py
+    │   ├── tests
+    │   │   ├── conftest.py
+    │   │   ├── test_contract.py
+    │   │   └── test_task.py
+    │   └── uv.lock
+    ├── document_process
+    │   ├── Dockerfile
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── api_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── parsing.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_api_client.py
+    │   │   ├── test_celery_app.py
+    │   │   ├── test_config.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    └── document_render
+        ├── .dockerignore
+        ├── Dockerfile
+        ├── README.md
+        ├── app
+        │   ├── __init__.py
+        │   ├── celery_app.py
+        │   ├── config.py
+        │   ├── inspection.py
+        │   ├── odt_template.py
+        │   ├── pdf.py
+        │   ├── storage.py
+        │   └── tasks.py
+        ├── pyproject.toml
+        ├── tests
+        │   ├── conftest.py
+        │   ├── fixtures
+        │   │   └── modele-libreoffice.odt
+        │   ├── test_config.py
+        │   ├── test_inspection.py
+        │   ├── test_odt_template.py
+        │   └── test_pdf_and_tasks.py
+        └── uv.lock
+118 directories, 1008 files
