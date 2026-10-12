@@ -97,7 +97,9 @@
     │   │   │   └── resolvers
     │   │   │       ├── __init__.py
     │   │   │       ├── access_entitlement_resolver.py
+    │   │   │       ├── adc_admin_entitlement_resolver.py
     │   │   │       ├── admin_entitlement_resolver.py
+    │   │   │       ├── bal_admin_entitlement_resolver.py
     │   │   │       ├── calendars_access_entitlement_resolver.py
     │   │   │       ├── drive_access_entitlement_resolver.py
     │   │   │       ├── drive_storage_entitlement_resolver.py
@@ -113,6 +115,7 @@
     │   │   ├── management
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── create_demo_operator.py
     │   │   │       ├── createsuperuser.py
     │   │   │       ├── demo_data.py
     │   │   │       ├── drop_all_tables.py
@@ -149,6 +152,7 @@
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── __init__.py
+    │   │   │   ├── bal.py
     │   │   │   ├── dns.py
     │   │   │   ├── domainnames.py
     │   │   │   ├── domains.py
@@ -181,7 +185,9 @@
     │   │   │           ├── servicesubscription
     │   │   │           │   ├── bulk_subscribe.html
     │   │   │           │   ├── bulk_subscribe_results.html
-    │   │   │           │   └── change_list.html
+    │   │   │           │   ├── change_form.html
+    │   │   │           │   ├── change_list.html
+    │   │   │           │   └── proconnect_manual_actions.html
     │   │   │           └── user
     │   │   │               ├── add_passwordless.html
     │   │   │               └── change_list.html
@@ -198,6 +204,7 @@
     │   │   │   │   ├── test_entitlements.py
     │   │   │   │   ├── test_entitlements_adc.py
     │   │   │   │   ├── test_entitlements_admin.py
+    │   │   │   │   ├── test_entitlements_bal.py
     │   │   │   │   ├── test_entitlements_calendars.py
     │   │   │   │   ├── test_entitlements_drive.py
     │   │   │   │   ├── test_entitlements_meet.py
@@ -209,10 +216,12 @@
     │   │   │   │   ├── test_external_service_api.py
     │   │   │   │   ├── test_lagaufre.py
     │   │   │   │   ├── test_metrics.py
+    │   │   │   │   ├── test_operator_metrics.py
     │   │   │   │   ├── test_operators.py
     │   │   │   │   ├── test_organization_identifier_serializer.py
     │   │   │   │   ├── test_organizations.py
     │   │   │   │   ├── test_organizations_accounts.py
+    │   │   │   │   ├── test_organizations_filters.py
     │   │   │   │   ├── test_service_logo.py
     │   │   │   │   ├── test_services.py
     │   │   │   │   ├── test_services_proconnect.py
@@ -231,6 +240,8 @@
     │   │   │   │   ├── test_operator_service_config.py
     │   │   │   │   ├── test_organization.py
     │   │   │   │   └── test_users.py
+    │   │   │   ├── test_create_demo_operator.py
+    │   │   │   ├── test_dns.py
     │   │   │   ├── test_domains_candidates.py
     │   │   │   ├── test_dpnt_import.py
     │   │   │   ├── test_metrics_scraping.py
@@ -252,8 +263,9 @@
     │   ├── entrypoint
     │   ├── gunicorn.conf.py
     │   ├── manage.py
-    │   ├── poetry.lock
-    │   └── pyproject.toml
+    │   ├── pyproject.toml
+    │   ├── strip-python.sh
+    │   └── uv.lock
     ├── frontend
     │   ├── .dockerignore
     │   ├── .gitignore
@@ -310,6 +322,8 @@
     │   │   │   │       │   ├── Header.tsx
     │   │   │   │       │   └── index.scss
     │   │   │   │       └── left-panel
+    │   │   │   │           ├── LeftPanel.scss
+    │   │   │   │           ├── LeftPanel.tsx
     │   │   │   │           ├── LeftPanelMobile.scss
     │   │   │   │           └── LeftPanelMobile.tsx
     │   │   │   └── ui
@@ -329,6 +343,7 @@
     │   │   │           ├── organization
     │   │   │           │   └── RpntBadge.tsx
     │   │   │           ├── service
+    │   │   │           │   ├── ChoiceModal.tsx
     │   │   │           │   ├── DomainMultiSelectModal.tsx
     │   │   │           │   ├── DomainSelectorModal.tsx
     │   │   │           │   ├── DomainsModal.tsx
@@ -343,6 +358,7 @@
     │   │   │           │   │       ├── StoragePickerEntitlementField.scss
     │   │   │           │   │       └── StoragePickerEntitlementField.tsx
     │   │   │           │   └── implementations
+    │   │   │           │       ├── BalServiceBlock.tsx
     │   │   │           │       ├── DomainsServiceBlock.tsx
     │   │   │           │       ├── DriveServiceBlock.tsx
     │   │   │           │       ├── ExtendedAdminServiceBlock.tsx
@@ -368,6 +384,9 @@
     │   │   │       ├── [operator_id]
     │   │   │       │   ├── index.scss
     │   │   │       │   ├── index.tsx
+    │   │   │       │   ├── metrics
+    │   │   │       │   │   ├── index.scss
+    │   │   │       │   │   └── index.tsx
     │   │   │       │   └── organizations
     │   │   │       │       ├── [id].tsx
     │   │   │       │       ├── index.scss
@@ -378,8 +397,9 @@
     │   │       ├── cunningham-tokens-sass.scss
     │   │       ├── cunningham-tokens.css
     │   │       ├── cunningham-tokens.ts
-    │   │       └── globals.scss
+    │   │       ├── globals.scss
+    │   │       └── legacy-tokens.scss
     │   └── tsconfig.json
     └── keycloak
         └── realm.json
-79 directories, 305 files
+80 directories, 324 files

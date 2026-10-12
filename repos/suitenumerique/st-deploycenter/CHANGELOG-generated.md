@@ -1,15 +1,23 @@
-## Changelog : st-deploycenter (30 derniers jours, au 14 septembre 2026)
+## Changelog : st-deploycenter (30 derniers jours, au 02 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'introduction de nouveaux services liés à ProConnect et à la gestion des domaines. Parallèlement, la sécurité et la fiabilité du processus de déploiement ont été considérablement renforcées.
+Ce mois-ci, les évolutions se sont concentrées sur le renforcement des capacités d'administration et de pilotage. L'ajout d'un tableau de bord de métriques et de nouvelles permissions permet une gestion plus fine des opérateurs, tandis que des améliorations d'interface et de gestion des droits fluidifient l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Introduction d'une nouvelle API ProConnect et d'un service dédié à la gestion des domaines [#60](https://github.com/suitenumerique/st-deploycenter/pull/60).
-- Correction de plusieurs problèmes d'affichage de l'interface utilisateur (UI) sur les blocs ProConnect.
+- **Pilotage et administration** :
+    - Ajout d'un tableau de bord de métriques pour le suivi des opérateurs.
+    - Introduction de la permission `can_admin_operators` pour une gestion accrue des rôles.
+    - Amélioration de la résolution des droits (entitlements) pour l'annuaire des collectivités.
+- **Expérience utilisateur et API** :
+    - Affichage des codes postaux dans les listes déroulantes des communes pour faciliter la saisie.
+    - Extension de l'utilisation des clés d'API externes sur plusieurs points de terminaison (endpoints) opérateurs.
+    - Correction de la gestion des emails pour les administrateurs d'organisation (la correspondance est désormais insensible à la casse).
 
 ### Évolutions techniques
-- Optimisation majeure du processus de déploiement incluant l'utilisation de Caddy, de builds "distroless", le filtrage par adresse IP et le support de la double authentification (2FA) [#61](https://github.com/suitenumerique/st-deploycenter/pull/61).
-- Amélioration des scripts de gestion des listes d'autorisation (allowlist) pour ProConnect.
-
-### Autres changements
-- Mise en conformité du formatage du code (Prettier) pour les fichiers de listes d'autorisation.
+- **Infrastructure et services** :
+    - Intégration du service BAL.
+    - Optimisation des scripts de liste blanche (allowlist) pour Proconnect.
+- **Maintenance et corrections** :
+    - Mise à jour du kit d'interface utilisateur (UI Kit).
+    - Correction d'un problème de cache lors de la vérification DNS.
+    - Régénération du fichier de verrouillage (lockfile) pour assurer la stabilité des déploiements.
