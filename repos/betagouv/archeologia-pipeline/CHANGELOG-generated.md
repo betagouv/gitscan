@@ -1,31 +1,29 @@
-## Changelog : archeologia-pipeline (30 derniers jours, au 17 septembre 2026)
+## Changelog : archeologia-pipeline (30 derniers jours, au 11 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance importante du plugin, avec le passage de la version 0.8.0 à la version 0.11.0. Les utilisateurs bénéficient désormais de nouvelles méthodes de visualisation des données LiDAR et d'une interface plus intuitive pour consulter les résultats de détection. La fiabilité des analyses a été renforcée par une meilleure gestion des limites de traitement et une présentation plus claire des niveaux de confiance des objets détectés.
+Cette période a été marquée par une amélioration majeure de l'accompagnement utilisateur et de la capacité d'analyse des résultats. L'introduction d'un manuel d'aide directement intégré à l'interface et d'un système de profilage des scores permet désormais aux utilisateurs de mieux comprendre et d'ajuster la fiabilité de la détection par intelligence artificielle. De nouveaux produits de visualisation et des rapports de traitement automatisés enrichissent également les livrables produits.
 
 ### Évolutions fonctionnelles
-- **Nouvelles visualisations** : Ajout de deux nouveaux produits de visualisation pour l'étape 2 : le relief coloré (CRIM) et l'ouverture prismatique (PRISM).
-- **Amélioration de la lecture des résultats** : 
-    - Remplacement des scores numériques de détection par une échelle de confiance textuelle plus compréhensible (Douteux, Possible, Probable, Très probable).
-    - Amélioration de la présentation des fiches de structures (illustrations, provenance des données, etc.).
-- **Gestion du catalogue d'entités** : 
-    - Intégration de nouveaux modèles de détection (notamment pour les tranchées).
-    - Nettoyage du catalogue avec le retrait de certaines classes obsolètes (talus, fosse, abri et axes linéaires de parcellaires).
-- **Expérience utilisateur (UI)** : 
-    - Correction des problèmes de défilement de la fenêtre et de l'affichage des libellés d'onglets.
-    - Amélioration du cadrage des icônes et des vignettes de cartes.
-- **Gestion de projet** : Ajout d'une bibliothèque de configurations permettant de sauvegarder et de recharger les réglages spécifiques d'un chantier.
+- **Aide et documentation intégrée** : Remplacement de la notice externe par un manuel intégré à l'interface, incluant une recherche globale (Ctrl+F), une aide contextuelle, et des captures d'écran interactives.
+- **Analyse de performance (Profils)** : Création d'un nouvel outil de profilage des scores permettant de visualiser l'équilibre entre précision et rappel, de tester dynamiquement des seuils de détection et d'exporter ces métriques.
+- **Nouveaux produits de visualisation** : Ajout de nouveaux produits de traitement, notamment l'ouverture (OPNS), le relief coloré (CRIM) et l'ouverture prismatique (PRISM).
+- **Amélioration des rapports et fiches** : 
+    - Génération d'un rapport de traitement complet au format HTML dans le dossier de sortie.
+    - Distinction claire entre les fiches de "classe" et les fiches de "modèle".
+    - Ajout de métriques de fiabilité observée directement dans les fiches de classe.
+    - Amélioration de l'ergonomie des fiches avec des fonctions de survol croisé entre la carte et la liste.
+- **Gestion des données** : Intégration de la grille IGN (via WFS Géoplateforme) et possibilité de sauvegarder/recharger les configurations de chantier.
 
 ### Évolutions techniques
-- **Optimisation du traitement** : 
-    - Parallélisation de la préparation des images pour le mode `existing_rvt`.
-    - Mise en place d'une règle de centroïde : chaque dalle de traitement ne rapporte désormais que les objets centrés dans sa cellule, améliorant la précision de l'attribution.
-- **Fiabilisation de la vision par ordinateur** : 
-    - Implémentation d'un "halo inter-dalles" pour mieux traiter les objets situés aux limites des zones de calcul.
-    - Durcissement de la chaîne de traitement (parité ONNX et gestion stricte des fichiers annexes) pour garantir la reproductibilité des résultats.
-- **Automatisation** : Création d'un lanceur "headless" (sans interface graphique) pour permettre l'exécution automatisée du pipeline sur des jeux de données denses.
-- **Robustesse** : Correction de l'orchestrateur pour une meilleure gestion des noms de modèles et des erreurs de processus.
+- **Refonte de l'interface utilisateur (UI)** : 
+    - Modernisation de la vue d'exécution (étape 4) avec une frise d'état et un journal de bord amélioré.
+    - Restructuration de l'arborescence des fichiers de sortie pour séparer les livrables des fichiers techniques.
+- **Optimisation du pipeline de données** : 
+    - Amélioration de la gestion des fichiers LiDAR (écriture atomique des fichiers .laz et correction de compatibilité PDAL).
+    - Optimisation du traitement des images pour le mode "existing_rvt" via une parallélisation.
+- **Intelligence Artificielle** : Amélioration de la précision de l'inférence par un recentrage des objets détectés.
+- **Packaging et déploiement** : Correction du processus de création des archives ZIP pour exclure les fichiers non essentiels (catalogues privés, sauvegardes horodatées).
 
 ### Autres changements
-- **Intégrité des données** : Mise en place massive de sommes de contrôle (checksums) via Talisman pour garantir l'intégrité des fichiers de configuration, de documentation et de visualisation.
-- **Documentation** : Mise à jour du README et des guides d'utilisation concernant les mesures parcellaires et la provenance des données.
+- **Intégrité et sécurité** : Renforcement de la vérification de l'intégrité des fichiers via l'ajout systématique de sommes de contrôle (checksums).
+- **Maintenance** : Mise à jour de la documentation de recette et nettoyage des workflows de développement.

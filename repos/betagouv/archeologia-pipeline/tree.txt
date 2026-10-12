@@ -1,9 +1,11 @@
 .
 ├── .claude
+│   ├── commands
+│   │   ├── livraison.md
+│   │   └── recette.md
+│   ├── settings.json
 │   └── skills
-│       ├── fiche-classe-plugin
-│       │   └── SKILL.md
-│       └── installer-modele-plugin
+│       └── manuel-integre
 │           └── SKILL.md
 ├── .githooks
 │   ├── pre-push
@@ -14,6 +16,33 @@
 ├── LICENSE.txt
 ├── README.md
 ├── __init__.py
+├── aide
+│   ├── 01-installer.md
+│   ├── 02-premier-traitement.md
+│   ├── 03-etape-1-source.md
+│   ├── 04-etape-2-produits.md
+│   ├── 05-etape-3-detection.md
+│   ├── 06-etape-4-verifications.md
+│   ├── 07-etape-5-traitement.md
+│   ├── 08-resultats.md
+│   ├── 09-depannage.md
+│   ├── 10-glossaire.md
+│   └── img
+│       ├── etape1-selection-dalles.jpg
+│       ├── etape1-source.png
+│       ├── etape2-fiche-produit.png
+│       ├── etape2-produits.png
+│       ├── etape3-carte-avancee.png
+│       ├── etape3-detection.png
+│       ├── etape3-fiche-classe.png
+│       ├── etape4-verifications.png
+│       ├── installer-authentification.png
+│       ├── installer-depot.png
+│       ├── installer-proxy.png
+│       ├── installer-zip.png
+│       ├── resultats-legende-fiabilite.jpg
+│       ├── run-fin.png
+│       └── run-journal.png
 ├── config.example.json
 ├── conftest.py
 ├── data
@@ -46,6 +75,8 @@
 │   │   ├── MNT.jpg
 │   │   ├── MSTP.jpg
 │   │   ├── M_HS.jpg
+│   │   ├── OPNS.jpg
+│   │   ├── OPNS_neg.jpg
 │   │   ├── PRISM.jpg
 │   │   ├── SLO.jpg
 │   │   ├── SLRM.jpg
@@ -53,11 +84,14 @@
 │   │   └── VAT.jpg
 │   ├── models
 │   │   └── .gitkeep
-│   └── third_party
-│       └── cv_runner_onnx
-│           └── windows
-│               └── build_info.json
+│   ├── quadrillage_france.zip
+│   ├── third_party
+│   │   └── cv_runner_onnx
+│   │       └── windows
+│   │           └── build_info.json
+│   └── zones_corpus.json
 ├── dev
+│   ├── build_quadrillage_from_wfs.py
 │   ├── build_quadrillage_index.py
 │   ├── demo_comite
 │   │   ├── README.md
@@ -80,25 +114,25 @@
 │   │   ├── injecter_fiches.py
 │   │   ├── page_choix.py
 │   │   ├── page_choix_indices.py
-│   │   └── reporter_sur_drive.py
+│   │   ├── reporter_sur_drive.py
+│   │   └── zones_corpus.py
 │   ├── make_htpasswd.py
 │   ├── package_plugin.py
+│   ├── rendu_hors_ecran.py
 │   ├── requirements
 │   │   ├── build.lock
 │   │   ├── build.txt
 │   │   ├── export.txt
 │   │   └── test.txt
 │   ├── requirements.txt
-│   ├── runner_onnx
-│   │   ├── README.md
-│   │   ├── build.py
-│   │   ├── cv_runner_onnx.spec
-│   │   ├── cv_runner_onnx_cli.py
-│   │   └── export_to_onnx.py
-│   └── sync_skills_training.py
+│   └── runner_onnx
+│       ├── README.md
+│       ├── build.py
+│       ├── cv_runner_onnx.spec
+│       ├── cv_runner_onnx_cli.py
+│       └── export_to_onnx.py
 ├── docs
-│   ├── img
-│   │   └── README.md
+│   ├── contrats.md
 │   ├── model_contract.md
 │   ├── reference-parametres-briques.html
 │   └── superpowers
@@ -137,19 +171,29 @@
 │   │   │   └── registry.py
 │   │   ├── services
 │   │   │   ├── __init__.py
+│   │   │   ├── aide.py
+│   │   │   ├── arborescence.py
+│   │   │   ├── bilan_fiabilite.py
 │   │   │   ├── cache_guard.py
+│   │   │   ├── carte_zones.py
+│   │   │   ├── citations.py
 │   │   │   ├── class_fiche.py
 │   │   │   ├── config_store.py
+│   │   │   ├── cout_modele.py
 │   │   │   ├── cv_post_service.py
 │   │   │   ├── detection_symbology.py
 │   │   │   ├── fiabilite.py
+│   │   │   ├── fiabilite_observee.py
 │   │   │   ├── finalize_service.py
 │   │   │   ├── grid_view.py
 │   │   │   ├── indice_fiche.py
 │   │   │   ├── indices_model.py
 │   │   │   ├── layer_purge.py
 │   │   │   ├── model_orchestrator.py
+│   │   │   ├── profil_scores.py
 │   │   │   ├── proxy_config.py
+│   │   │   ├── rapport_run.py
+│   │   │   ├── recolorer_annotation.py
 │   │   │   ├── reglages_defaut.py
 │   │   │   ├── rvt_kernel_context.py
 │   │   │   ├── source_modes.py
@@ -233,6 +277,7 @@
 │       ├── dialogs
 │       │   ├── __init__.py
 │       │   ├── _model_info_data.py
+│       │   ├── aide_dialog.py
 │       │   ├── class_info_dialog.py
 │       │   ├── config_dialogs.py
 │       │   ├── indice_info_dialog.py
@@ -267,6 +312,7 @@
 │       │   │   ├── info.svg
 │       │   │   ├── link.svg
 │       │   │   ├── lock.svg
+│       │   │   ├── modele.svg
 │       │   │   ├── play.svg
 │       │   │   ├── pointcloud.svg
 │       │   │   ├── raster.svg
@@ -278,11 +324,14 @@
 │       ├── visualisation_tab.py
 │       ├── widgets
 │       │   ├── __init__.py
+│       │   ├── bilan_fiabilite.py
 │       │   ├── card.py
+│       │   ├── carte_zones.py
 │       │   ├── collapsible.py
 │       │   ├── entity_card.py
 │       │   ├── indice_card.py
 │       │   ├── no_wheel.py
+│       │   ├── profil_scores.py
 │       │   ├── stage_button.py
 │       │   ├── stepper_rail.py
 │       │   ├── toast.py
@@ -310,5 +359,5 @@
     │   └── test_runners_integration.py
     └── unit
         ├── __init__.py
-        └── test_*.py  (114 files)
-45 directories, 381 files
+        └── test_*.py  (129 files)
+46 directories, 444 files
