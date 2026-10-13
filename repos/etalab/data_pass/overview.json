@@ -1,40 +1,42 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et les processus d'instruction pour divers services publics.",
+  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et les processus d'instruction pour diverses API et services de données.",
   "language": "Ruby",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "API & Intégrations",
     "Sécurité & Conformité",
-    "Suivi & Traçabilité",
-    "Notifications & Alertes"
+    "API & Intégrations",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Ruby",
     "Rails",
     "PostgreSQL",
     "Redis",
     "GoodJob",
     "Doorkeeper",
-    "OmniAuth"
+    "Omniauth",
+    "Stimulus",
+    "Turbo"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Ruby on Rails",
-    "Authentification (composant)",
     "Webhooks & Événements",
-    "CI/CD & Déploiement"
+    "Authentification (composant)",
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "email-password"
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -49,16 +51,18 @@
     "continuous-deployment.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-10-08T15:44:54+02:00",
+  "lastActivity": "2026-10-12T16:16:48+02:00",
   "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Git & DevOps",
-    "Docker & Conteneurs",
+    "Ruby",
+    "Bases de données SQL",
+    "Sécurité & Auth",
     "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
     "Standards & Schémas"
   ]
 }

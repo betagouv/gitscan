@@ -4,6 +4,7 @@
 ├── .env.example
 ├── .gitattributes
 ├── .github
+│   ├── PULL_REQUEST_TEMPLATE.md
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── https-deploy-production.yaml
@@ -17,6 +18,7 @@
 ├── .ruby-version
 ├── .simplecov
 ├── CLAUDE.md
+├── CONTRIBUTING.md
 ├── Dockerfile
 ├── Gemfile
 ├── Gemfile.lock
@@ -1103,6 +1105,8 @@
 │   │   ├── authorization_decorator.rb
 │   │   ├── authorization_request_decorator.rb
 │   │   ├── authorization_request_form_decorator.rb
+│   │   ├── concerns
+│   │   │   └── contact_wording.rb
 │   │   ├── eligibility_option_decorator.rb
 │   │   ├── eligibility_rule_decorator.rb
 │   │   ├── instructor_draft_request_decorator.rb
@@ -1194,7 +1198,6 @@
 │   │   ├── application_interactor.rb
 │   │   ├── assign_create_params_for_create_authorization_request.rb
 │   │   ├── assign_default_data_to_authorization_request.rb
-│   │   ├── assign_documents_to_instructor_draft_request.rb
 │   │   ├── assign_france_connect_defaults.rb
 │   │   ├── assign_latest_production_data_in_authorization_request.rb
 │   │   ├── assign_params_to_authorization_request.rb
@@ -1283,6 +1286,7 @@
 │   │   ├── send_invitation_email_instructor_draft_request.rb
 │   │   ├── stats
 │   │   │   └── fetch_stats_data.rb
+│   │   ├── sync_instructor_draft_request_documents.rb
 │   │   ├── transition_authorization_request_to_revoked_if_needed.rb
 │   │   ├── transition_authorization_request_to_stage_of_authorization.rb
 │   │   ├── trigger_authorization_request_event.rb
@@ -1355,8 +1359,19 @@
 │   │   └── update_organization_insee_payload_job.rb
 │   ├── lib
 │   │   ├── seeds
+│   │   │   ├── authorization_request_in_state.rb
+│   │   │   ├── boursiers_habilitation_type.rb
+│   │   │   ├── clamart_hubee_cert_dc_request.rb
+│   │   │   ├── context.rb
+│   │   │   ├── dem_commune_reference_requests.rb
+│   │   │   ├── historical_requests.rb
 │   │   │   ├── message_templates.rb
-│   │   │   └── stats.rb
+│   │   │   ├── oauth_application.rb
+│   │   │   ├── reference_organizations.rb
+│   │   │   ├── stats_volume_requests.rb
+│   │   │   ├── test_accounts.rb
+│   │   │   ├── verified_emails.rb
+│   │   │   └── webhooks.rb
 │   │   └── seeds.rb
 │   ├── mailers
 │   │   ├── abstract_instruction_mailer.rb
@@ -3143,6 +3158,7 @@
 │   │   ├── redirect_from_v1_controller_spec.rb
 │   │   └── reopen_authorizations_controller_spec.rb
 │   ├── decorators
+│   │   ├── authorization_decorator_spec.rb
 │   │   ├── authorization_request_decorator_spec.rb
 │   │   ├── authorization_request_form_decorator_spec.rb
 │   │   ├── eligibility_option_decorator_spec.rb
@@ -3227,12 +3243,18 @@
 │   │   ├── files
 │   │   │   └── dinum.png
 │   │   └── insee
+│   │       ├── 11004301500012.json
+│   │       ├── 11006801200050.json
+│   │       ├── 13000495500014.json
+│   │       ├── 13002437500011.json
 │   │       ├── 13002526500013.json
 │   │       ├── 21920023500014.json
 │   │       ├── 21920023500022.json
-│   │       └── 22690001700014.json
+│   │       ├── 22690001700014.json
+│   │       └── 32816124500027.json
 │   ├── form_builders
 │   │   ├── authorization_request_form_builder_spec.rb
+│   │   ├── authorization_request_form_from_instructor_builder_spec.rb
 │   │   └── dsfr_form_builder_spec.rb
 │   ├── forms
 │   │   └── instruction
@@ -3302,6 +3324,7 @@
 │   │   ├── run_malware_scan_on_documents_spec.rb
 │   │   ├── stats
 │   │   │   └── fetch_stats_data_spec.rb
+│   │   ├── sync_instructor_draft_request_documents_spec.rb
 │   │   ├── update_organization_insee_payload_spec.rb
 │   │   └── validate_api_data_keys_spec.rb
 │   ├── jobs
@@ -3317,6 +3340,9 @@
 │   │   ├── register_organization_with_contacts_on_crm_job_spec.rb
 │   │   └── update_organization_insee_payload_job_spec.rb
 │   ├── lib
+│   │   ├── seeds
+│   │   │   ├── authorization_request_in_state_spec.rb
+│   │   │   └── stats_volume_requests_spec.rb
 │   │   └── seeds_spec.rb
 │   ├── logging
 │   │   └── logstasher_spec.rb
@@ -3365,7 +3391,8 @@
 │   │   │   ├── formulaire_qf_spec.rb
 │   │   │   ├── hubee_cert_dc_spec.rb
 │   │   │   ├── hubee_dila_spec.rb
-│   │   │   └── produits_dinum_spec.rb
+│   │   │   ├── produits_dinum_spec.rb
+│   │   │   └── services_cisirh_spec.rb
 │   │   ├── authorization_request_changelog_spec.rb
 │   │   ├── authorization_request_event_spec.rb
 │   │   ├── authorization_request_form_spec.rb
@@ -3491,9 +3518,11 @@
 │   │   ├── developer
 │   │   │   └── oauth_application_policy_spec.rb
 │   │   ├── habilitation_type_policy_spec.rb
-│   │   └── instruction
-│   │       ├── authorization_definition_policy_spec.rb
-│   │       └── user_right_policy_spec.rb
+│   │   ├── instruction
+│   │   │   ├── authorization_definition_policy_spec.rb
+│   │   │   ├── authorization_request_policy_spec.rb
+│   │   │   └── user_right_policy_spec.rb
+│   │   └── organization_policy_spec.rb
 │   ├── queries
 │   │   ├── authorization_request_events_query_spec.rb
 │   │   ├── authorization_requests_mentions_query_spec.rb
@@ -3629,4 +3658,4 @@
     ├── .keep
     └── javascript
         └── .keep
-513 directories, 3257 files
+515 directories, 3284 files
