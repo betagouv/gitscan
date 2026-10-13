@@ -46,6 +46,7 @@
 │   └── config.toml
 ├── .env.template
 ├── .envrc
+├── .gitattributes
 ├── .github
 │   └── workflows
 │       ├── cellar-deploiement.yml
@@ -142,6 +143,8 @@
 │   │   ├── 20260910125401_ajouteFicheGestionIdentitesAuxMesures.ts
 │   │   ├── 20260910130640_nettoieLibellesLiensMesures.ts
 │   │   ├── 20260915125321_ajouteDonneeReactionExpositionReflexesCyber.ts
+│   │   ├── 20261008152530_migreTutorielsEnProcedures.ts
+│   │   ├── 20261012090000_videLiensMesuresPorteursParProcedures.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -151,6 +154,11 @@
 │   │   │   └── migrationHash.ts
 │   │   ├── api
 │   │   │   ├── adaptateurJWT.ts
+│   │   │   ├── blog
+│   │   │   │   ├── ressourceArticle.ts
+│   │   │   │   ├── ressourceArticles.ts
+│   │   │   │   ├── ressourceAvisArticle.ts
+│   │   │   │   └── ressourceRetourArticle.schema.ts
 │   │   │   ├── clefRateLimit.ts
 │   │   │   ├── configurationServeur.ts
 │   │   │   ├── erreurs.ts
@@ -251,7 +259,6 @@
 │   │   │   ├── ressourceLlmsTxt.ts
 │   │   │   ├── ressourcePageConnexion.ts
 │   │   │   ├── ressourcePageContact.ts
-│   │   │   ├── ressourcePageCrisp.ts
 │   │   │   ├── ressourcePageRessource.ts
 │   │   │   ├── ressourcePageService.ts
 │   │   │   ├── ressourcePagesJekyll.ts
@@ -284,28 +291,29 @@
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
 │   │   │   ├── consigneAvisMesureDonneDansJournal.ts
+│   │   │   ├── consigneAvisUtilisateurDonneDansJournal.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.ts
-│   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
-│   │   │   ├── consigneEvenementCompteCreeDansJournal.ts
-│   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.ts
-│   │   │   ├── consigneEvenementMesureConsulteeDansJournal.ts
-│   │   │   ├── consigneEvenementMesurePriseEnCompteDansJournal.ts
-│   │   │   ├── consigneEvenementModuleTerminéDansJournal.ts
-│   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.ts
-│   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.ts
-│   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
-│   │   │   ├── consigneEvenementTestExpositionRealiseDansJournal.ts
-│   │   │   ├── consigneEvenementTestRealiseDansJournal.ts
-│   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.ts
+│   │   │   ├── consigneCompteCreeDansJournal.ts
+│   │   │   ├── consigneMAJFavorisUtilisateurDansJournal.ts
+│   │   │   ├── consigneMesureConsulteeDansJournal.ts
+│   │   │   ├── consigneMesurePriseEnCompteDansJournal.ts
+│   │   │   ├── consigneModuleTerminéDansJournal.ts
 │   │   │   ├── consigneParcoursAllegeTermineDansJournal.ts
 │   │   │   ├── consigneParcoursChangeDansJournal.ts
 │   │   │   ├── consigneParcoursCompletTermineDansJournal.ts
 │   │   │   ├── consigneParcoursRejointDansJournal.ts
+│   │   │   ├── consigneProprieteTestRevendiqueeDansJournal.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.ts
 │   │   │   ├── consigneReflexesCyberReponseSoumiseDansJournal.ts
 │   │   │   ├── consigneReflexesCyberReponseTermineDansJournal.ts
+│   │   │   ├── consigneRetourArticleDonneDansJournal.ts
+│   │   │   ├── consigneRetourExperienceDonneDansJournal.ts
 │   │   │   ├── consigneRetourMiniTestDonneDansJournal.ts
+│   │   │   ├── consigneSimulationNis2TermineeDansJournal.ts
+│   │   │   ├── consigneTestExpositionRealiseDansJournal.ts
+│   │   │   ├── consigneTestRealiseDansJournal.ts
+│   │   │   ├── consigneUtilisateurConnecteDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
 │   │   │   ├── evenements
@@ -324,6 +332,7 @@
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── questionnaireVraiFauxReponseSoumise.ts
 │   │   │   │   ├── questionnaireVraiFauxTermine.ts
+│   │   │   │   ├── retourArticleDonne.ts
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── retourMiniTestDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
@@ -333,6 +342,7 @@
 │   │   │   │   └── utilisateurConnecte.ts
 │   │   │   ├── miseAJourFavorisUtilisateur.ts
 │   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.ts
+│   │   │   ├── notifieRetourNegatifSurArticle.ts
 │   │   │   └── notifieRetourNegatifSurMiniTest.ts
 │   │   ├── entrepotModulePostgres.ts
 │   │   ├── express.d.ts
@@ -360,6 +370,9 @@
 │   │   │   ├── adaptateurStatistiqueMiniTestsPostgres.ts
 │   │   │   ├── adaptateurStatistiqueParcoursMémoire.ts
 │   │   │   ├── adaptateurStatistiqueParcoursPostgres.ts
+│   │   │   ├── aseptisationDuHtml.ts
+│   │   │   ├── blog
+│   │   │   │   └── entrepotArticleCrisp.ts
 │   │   │   ├── cache.ts
 │   │   │   ├── clientHttp.ts
 │   │   │   ├── donneesEvenement.ts
@@ -368,6 +381,7 @@
 │   │   │   │   │   ├── adaptateurDom.ts
 │   │   │   │   │   ├── adaptateurLienCanonique.ts
 │   │   │   │   │   ├── adaptateurLiensSeo.ts
+│   │   │   │   │   ├── adaptateurMetadonnees.ts
 │   │   │   │   │   └── adaptateurTitre.ts
 │   │   │   │   ├── adaptateurEnrichissement.ts
 │   │   │   │   ├── chargementProprietes
@@ -379,7 +393,7 @@
 │   │   │   │   │   ├── chargeurGuides.ts
 │   │   │   │   │   └── chargeurRessourcesCyber.ts
 │   │   │   │   ├── composantsAutorises.genere.ts
-│   │   │   │   └── résolveurDePage.ts
+│   │   │   │   └── resolveurDePage.ts
 │   │   │   ├── entrepotFavoriPostgres.ts
 │   │   │   ├── entrepotFinancementGrist.ts
 │   │   │   ├── entrepotGrist.ts
@@ -409,6 +423,10 @@
 │   │   │   ├── adaptateurStatistiqueMiniTests.ts
 │   │   │   ├── adaptateurStatistiqueParcours.ts
 │   │   │   ├── besoinCyber.ts
+│   │   │   ├── blog
+│   │   │   │   ├── article.ts
+│   │   │   │   ├── entrepotArticle.ts
+│   │   │   │   └── resumeArticle.ts
 │   │   │   ├── entrepotFavori.ts
 │   │   │   ├── entrepotFinancement.ts
 │   │   │   ├── entrepotGuide.ts
@@ -506,6 +524,11 @@
 │   │   ├── admin
 │   │   │   └── migrationHash.spec.ts
 │   │   ├── api
+│   │   │   ├── blog
+│   │   │   │   ├── constructeurDeResumeDArticle.ts
+│   │   │   │   ├── ressourceArticle.spec.ts
+│   │   │   │   ├── ressourceArticles.spec.ts
+│   │   │   │   └── ressourceRetourArticle.spec.ts
 │   │   │   ├── clefRateLimit.spec.ts
 │   │   │   ├── cookie.ts
 │   │   │   ├── fauxObjets.ts
@@ -580,7 +603,6 @@
 │   │   │   ├── ressourceInfosSite.spec.ts
 │   │   │   ├── ressourcePageConnexion.spec.ts
 │   │   │   ├── ressourcePageContact.spec.ts
-│   │   │   ├── ressourcePageCrisp.spec.ts
 │   │   │   ├── ressourcePageRessource.spec.ts
 │   │   │   ├── ressourcePageService.spec.ts
 │   │   │   ├── ressourcePagesJekyll.spec.ts
@@ -604,31 +626,33 @@
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
 │   │   │   ├── consigneAvisMesureDansJournal.spec.ts
+│   │   │   ├── consigneAvisUtilisateurDonneDansJournal.spec.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.spec.ts
-│   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
-│   │   │   ├── consigneEvenementCompteCreeDansJournal.spec.ts
-│   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.spec.ts
-│   │   │   ├── consigneEvenementMesureConsulteeDansJournal.spec.ts
-│   │   │   ├── consigneEvenementMesurePriseEnCompteDansJournal.spec.ts
-│   │   │   ├── consigneEvenementModuleTermineDansJournal.spec.ts
-│   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.spec.ts
-│   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.spec.ts
-│   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
-│   │   │   ├── consigneEvenementTestExpositionRealiseDansJournal.spec.ts
-│   │   │   ├── consigneEvenementTestRealiseDansJournal.spec.ts
-│   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.spec.ts
+│   │   │   ├── consigneCompteCreeDansJournal.spec.ts
+│   │   │   ├── consigneMAJFavorisUtilisateurDansJournal.spec.ts
+│   │   │   ├── consigneMesureConsulteeDansJournal.spec.ts
+│   │   │   ├── consigneMesurePriseEnCompteDansJournal.spec.ts
+│   │   │   ├── consigneModuleTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursAllegeTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursChangeDansJournal.spec.ts
 │   │   │   ├── consigneParcoursCompletTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
+│   │   │   ├── consigneProprieteTestRevendiqueeDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.spec.ts
 │   │   │   ├── consigneReflexesCyberReponseSoumiseDansJournal.spec.ts
 │   │   │   ├── consigneReflexesCyberTermineDansJournal.spec.ts
+│   │   │   ├── consigneRetourArticleDonneDansJournal.spec.ts
+│   │   │   ├── consigneRetourExperienceDonneDansJournal.spec.ts
 │   │   │   ├── consigneRetourMiniTestDonneDansJournal.spec.ts
+│   │   │   ├── consigneSimulationNis2TermineeDansJournal.spec.ts
+│   │   │   ├── consigneTestExpositionRealiseDansJournal.spec.ts
+│   │   │   ├── consigneTestRealiseDansJournal.spec.ts
+│   │   │   ├── consigneUtilisateurConnecteDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
 │   │   │   ├── envoieEmailCreationCompte.spec.ts
 │   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.spec.ts
+│   │   │   ├── notifieRetourNegatifSurArticle.spec.ts
 │   │   │   └── notifieRetourNegatifSurMiniTest.spec.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotGristGenerique.ts
@@ -641,10 +665,12 @@
 │   │   │   │   ├── adaptateurEnrichissement.spec.ts
 │   │   │   │   └── chargementProprietes
 │   │   │   │       └── ChargeurFilAriane.spec.ts
+│   │   │   ├── entrepotArticleCrisp.spec.ts
 │   │   │   ├── entrepotFinancementGrist.spec.ts
 │   │   │   ├── entrepotGrist.spec.ts
 │   │   │   ├── entrepotGuideGrist.spec.ts
 │   │   │   ├── entrepotGuideTravailGrist.spec.ts
+│   │   │   ├── entrepotUtilisateurMPAPostgres.spec.ts
 │   │   │   ├── fournisseurClientHttp.ts
 │   │   │   ├── generateurDocument.spec.ts
 │   │   │   ├── markdown.spec.ts
@@ -687,6 +713,7 @@
 │   │   │   ├── EntrepotPriseEnCompteMemoire.ts
 │   │   │   ├── EntrepotSessionDeGroupeMemoire.ts
 │   │   │   ├── EntrepôtModuleMémoire.ts
+│   │   │   ├── entrepotArticleMemoire.ts
 │   │   │   ├── entrepotExigenceMemoire.ts
 │   │   │   ├── entrepotFavoriMemoire.ts
 │   │   │   ├── entrepotFinancementMemoire.ts
@@ -810,11 +837,8 @@
 │   ├── _data
 │   │   ├── catalogue.yml
 │   │   ├── contacts.yml
-│   │   ├── meta-description.yml
-│   │   ├── parcours-approfondir.yml
-│   │   └── parcours-debuter.yml
+│   │   └── meta-description.yml
 │   ├── _includes
-│   │   ├── action-parcours-avec-items.html
 │   │   ├── avis-utilisateur.html
 │   │   ├── balises-meta-seo.html
 │   │   ├── bandeau-maintenance.html
@@ -834,7 +858,6 @@
 │   │   ├── defaut.html
 │   │   ├── guide.html
 │   │   ├── page-statique.html
-│   │   ├── parcours.html
 │   │   ├── partage-linkedin.html
 │   │   ├── sans-menu.html
 │   │   ├── service.html
@@ -978,7 +1001,6 @@
 │   │   │   ├── icone-contact-site-web.svg
 │   │   │   ├── icone-contact-telephone.svg
 │   │   │   ├── icone-contenu.svg
-│   │   │   ├── icone-erreur-blanche.svg
 │   │   │   ├── icone-filtre-plein.svg
 │   │   │   ├── icone-filtre-vide.svg
 │   │   │   ├── icone-fleche-droite-cercle-plein.svg
@@ -1212,7 +1234,6 @@
 │   │       ├── maintenance.scss
 │   │       ├── niveaux-maturite.scss
 │   │       ├── page-statique.scss
-│   │       ├── parcours.scss
 │   │       ├── prestataires-labellises.scss
 │   │       ├── responsive.scss
 │   │       ├── service.scss
@@ -1225,6 +1246,7 @@
 │   ├── confidentialite.html
 │   ├── confirmation-abonnement-infolettre.html
 │   ├── connexion.html
+│   ├── conseils-cyber.html
 │   ├── contacts.html
 │   ├── creation-compte.html
 │   ├── demande-aide-mon-aide-cyber.html
@@ -1323,6 +1345,12 @@
 │   │   │   │   ├── IllustrationConnexionInscription.svelte
 │   │   │   │   └── animation
 │   │   │   │       └── ConnexionInscription.svelte
+│   │   │   ├── conseils-cyber
+│   │   │   │   ├── Article.svelte
+│   │   │   │   ├── ConseilsCyber.svelte
+│   │   │   │   ├── EncartParcoursSecurisationArticle.svelte
+│   │   │   │   ├── ListeArticles.svelte
+│   │   │   │   └── article.type.ts
 │   │   │   ├── contacts
 │   │   │   │   ├── Contacts.svelte
 │   │   │   │   ├── FiltresContacts.svelte
@@ -1337,12 +1365,13 @@
 │   │   │   │   ├── SelectionDomaineSpecialite.svelte
 │   │   │   │   └── creationCompte.d.ts
 │   │   │   ├── demande-aide-mon-aide-cyber
+│   │   │   │   ├── BadgeOrganisationsAccompagnées.svelte
 │   │   │   │   ├── ConfirmationCreationDemandeAide.svelte
 │   │   │   │   ├── DemandeAideMAC.svelte
 │   │   │   │   ├── DemandeDiagnosticSimplifiee.svelte
 │   │   │   │   ├── DialogueSortieDiagnostic.svelte
 │   │   │   │   ├── DonneesFormulaireDemandeAide.ts
-│   │   │   │   ├── EncartLienVersDemandeDiagnostic.svelte
+│   │   │   │   ├── EncartLienVersParcoursCyberdepart.svelte
 │   │   │   │   ├── FoireAuxQuestions.svelte
 │   │   │   │   ├── FormulaireDemandeAide.svelte
 │   │   │   │   ├── FormulaireDemandeSimplifiee.svelte
@@ -1530,8 +1559,6 @@
 │   │   │   │   ├── NiveauxMaturite.type.ts
 │   │   │   │   ├── SelectNiveauMaturite.svelte
 │   │   │   │   └── calculeIdNiveau.ts
-│   │   │   ├── page-crisp
-│   │   │   │   └── PageCrisp.svelte
 │   │   │   ├── parcours
 │   │   │   │   ├── ActionParcoursAvecItems.svelte
 │   │   │   │   └── itemDuParcours.ts
@@ -1588,9 +1615,10 @@
 │   │   │   │   │       ├── MesureRECENSEMENT1.svelte
 │   │   │   │   │       └── MesureRH2.svelte
 │   │   │   │   ├── mesure
+│   │   │   │   │   ├── CartesLiensProcédures.svelte
 │   │   │   │   │   ├── Mesure.svelte
 │   │   │   │   │   ├── ModaleTutoriel.svelte
-│   │   │   │   │   └── TutorielMesure.svelte
+│   │   │   │   │   └── Procedure.svelte
 │   │   │   │   ├── mesure.ts
 │   │   │   │   ├── modales
 │   │   │   │   │   ├── ModaleBadgeCyberdepartDebloque.svelte
@@ -1603,6 +1631,8 @@
 │   │   │   │       ├── VueListeMesures.svelte
 │   │   │   │       └── VueModule.svelte
 │   │   │   ├── passerelles
+│   │   │   │   ├── blog
+│   │   │   │   │   └── articles.ts
 │   │   │   │   ├── mini-tests
 │   │   │   │   │   └── publicationRéponses.ts
 │   │   │   │   └── statistiquesMSC.ts
@@ -1657,7 +1687,6 @@
 │   │   │   │   ├── LegendeLigne.svelte
 │   │   │   │   ├── LegendeRadarSessionGroupe.svelte
 │   │   │   │   ├── MaturiteUtilisateur.svelte
-│   │   │   │   ├── MessageNonResponsabilite.svelte
 │   │   │   │   ├── ModaleNouvelleSessionGroupe.svelte
 │   │   │   │   ├── PartageTest.svelte
 │   │   │   │   ├── PropositionRefaireTest.svelte
@@ -1825,10 +1854,8 @@
 │   ├── nis2.html
 │   ├── niveaux-maturite.html
 │   ├── package.json
-│   ├── parcours-approfondir.html
 │   ├── parcours-complet.html
 │   ├── parcours-cyberdepart.html
-│   ├── parcours-debuter.html
 │   ├── parcours-securisation-complet.html
 │   ├── parcours-securisation.html
 │   ├── partage-badge-cyberdepart.html
@@ -1842,7 +1869,6 @@
 │   │   ├── matomoTagManager.js
 │   │   ├── metadonneesConnexion.js
 │   │   ├── optOutMatomo.js
-│   │   ├── parcours.js
 │   │   ├── scroll.js
 │   │   └── service.js
 │   ├── securite.html
@@ -1959,4 +1985,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-310 directories, 1767 files
+315 directories, 1788 files
