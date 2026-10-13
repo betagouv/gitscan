@@ -1,25 +1,24 @@
-## Changelog : menshen (30 derniers jours, au 02 octobre 2026)
+## Changelog : menshen (30 derniers jours, au 02/10/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur le renforcement de la sécurité (chiffrement et hachage), l'amélioration de la robustesse de l'API lors de l'introspection de jetons et une simplification de l'utilisation de la bibliothèque client pour les développeurs.
+Les récentes évolutions se concentrent sur le renforcement de la sécurité (chiffrement des secrets et nouveaux algorithmes de hachage), l'amélioration de la robustesse de l'API lors de l'introspection de jetons et une simplification de la bibliothèque client pour une meilleure expérience développeur.
 
 ### Évolutions fonctionnelles
-- **Flexibilité de l'API** : prise en charge des champs email vides et des types de jetons d'accès opaques lors des réponses d'introspection.
-- **Gestion des secrets clients** : ajout d'une option de configuration pour l'utilisation de caractères spéciaux et support des séquences de pourcentage dans les secrets.
-- **Environnement de test** : enrichissement du playground avec une nouvelle variante "proconnect" et correction des données de démonstration.
+- **Amélioration de l'introspection** : support des champs email vides et des jetons d'accès opaques dans les réponses d'introspection.
+- **Gestion des secrets clients** : support des caractères spéciaux (séquences de pourcentage) et ajout d'une option de configuration (`use_special_chars`) pour contrôler la complexité de génération des secrets.
+- **Environnement de test** : ajout d'une variante "proconnect" dans le playground pour faciliter les démonstrations.
 
 ### Évolutions techniques
 - **Sécurité renforcée** : 
     - Adoption d'Argon2 comme algorithme de hachage de mot de passe par défaut.
     - Mise en place du chiffrement pour les secrets clients des fournisseurs de services (SP).
-    - Restauration de la gestion de la liste des hachages de mots de passe.
-- **Refactoring du client** : simplification et clarification des noms de classes pour une meilleure ergonomie (ex: `TokenExchangeClient` au lieu de `MenshenClient`).
-- **Optimisation et maintenance** : 
-    - Réduction des appels inutiles à la base de données lors de la sauvegarde des identifiants de service.
-    - Nettoyage de l'interface d'administration Django.
+    - Restauration de la liste des hacheurs de mots de passe.
+- **Optimisation des performances** : réduction des appels inutiles à la base de données lors de la gestion des identifiants des fournisseurs de services.
+- **Refactorisation du client** : simplification et clarification des noms de classes (ex: `MenshenClient` devient `TokenExchangeClient`, `MenshenConfiguration` devient `Configuration`).
 - **Infrastructure et Build** : 
     - Migration vers le système de build `uv`.
     - Correction du workflow de publication des paquets sur PyPI.
 
 ### Autres changements
-- **Documentation** : ajout de la documentation relative aux actions disponibles depuis les services de la suite.
+- **Documentation** : ajout de la documentation concernant les actions disponibles via les services `lasuite`.
+- **Maintenance** : nettoyage de l'interface d'administration (suppression de propriétés inconnues) et correction des données de test (fixtures) du playground.
