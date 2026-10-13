@@ -1,21 +1,19 @@
-## Changelog : people (30 derniers jours, au 08/10/2026)
+## Changelog : people (30 derniers jours, au 12 octobre 2026)
 
 ### Résumé
-Cette période est marquée par un renforcement de la sécurité et une simplification de l'application. Nous avons supprimé les fonctionnalités liées à l'authentification OAuth2 pour alléger le système et amélioré la confidentialité des données en limitant l'accès aux configurations de domaine pour certains profils d'utilisateurs.
+Cette période est marquée par une simplification majeure du système d'authentification et un renforcement de la sécurité, notamment sur la gestion des domaines et la protection des accès. L'accent a également été mis sur la modernisation des outils de développement et de la chaîne de déploiement.
 
 ### Évolutions fonctionnelles
-- **Sécurité et confidentialité** : La configuration des domaines est désormais masquée pour les utilisateurs disposant uniquement de droits de lecture sur un domaine.
+- **Sécurité des domaines** : Renforcement de la validation des domaines d'e-mail des organisations pour garantir une correspondance exacte.
+- **Gestion des permissions** : Restriction de la visibilité de la configuration des domaines pour les utilisateurs disposant uniquement d'un droit de lecture.
 
 ### Évolutions techniques
-- **Sécurité** :
-    - Amélioration de la précision de la correspondance des domaines d'e-mails pour les organisations.
-    - Mise à jour de la bibliothèque `urllib3` vers la version 2.8.0 pour corriger des vulnérabilités.
-- **Refactoring et simplification** :
-    - Suppression des fonctionnalités et des tables de base de données liées à OAuth2 et aux fournisseurs d'identité (IdP).
-- **Qualité de code et Frontend** :
-    - Migration vers ESLint 9, incluant la transformation de la configuration de linting en un plugin dédié.
-    - Mise à jour des configurations applicatives frontend (desk, i18n et e2e).
+- **Simplification de l'authentification** : Suppression des fonctionnalités liées à OAuth2 et aux fournisseurs d'identité (IdP), incluant le nettoyage des tables de base de données associées.
+- **Qualité du code (Frontend)** : Migration vers ESLint 9 et transformation de la configuration de linting en plugin pour une meilleure gestion des règles de développement.
+- **CI/CD** : Mise à jour de l'ensemble des GitHub Actions (checkout, setup-python, setup-node, cache, upload-artifact) pour optimiser les pipelines.
+- **Sécurité** : Mise à jour de la bibliothèque `urllib3` pour corriger des vulnérabilités.
 
 ### Autres changements
-- Mise à jour des chaînes de caractères traduites (i18n).
-- Nettoyage de code pour la conformité aux standards de qualité (Sonar).
+- **Internationalisation** : Mise à jour des chaînes de caractères traduites.
+- **Maintenance et configuration** : Mise à jour des configurations des applications (desk, i18n, e2e) et nettoyage de variables pour respecter les standards Sonar.
+- **Release** : Publication de la version 1.26.1.
