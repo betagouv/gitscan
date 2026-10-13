@@ -1,61 +1,53 @@
 {
   "url": "https://github.com/SocialGouv/infra-apps",
   "name": "infra-apps",
-  "description": "Ce dépôt contient les manifestes Kubernetes permettant le déploiement et la gestion des applications de l'infrastructure via ArgoCD. Il assure la configuration et la mise à jour des ressources pour diverses plateformes, notamment Iterion.",
-  "language": "Python",
+  "description": "Ce dépôt contient les manifestes Kubernetes pour le déploiement des ressources d'infrastructure via ArgoCD. Il gère notamment les environnements de production, le stockage objet et les runners de CI.",
+  "language": "YAML",
   "features": [
-    "Authentification & Accès",
+    "Infrastructure & Stockage",
     "Sécurité & Conformité",
-    "Monitoring & Logs",
-    "Infrastructure & Stockage"
+    "Authentification & Accès",
+    "Collaboration & Workflow"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Kubernetes",
     "ArgoCD",
-    "Helm",
-    "KEDA",
     "SeaweedFS",
     "MinIO",
-    "NATS",
-    "Valkey",
-    "Metabase",
-    "ClamAV"
+    "ClamAV",
+    "OVH Cloud"
   ],
   "components": [
+    "Kubernetes & Helm",
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
-    "Authentification (composant)",
-    "Stockage objet",
-    "Python (scripts & backend)"
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso",
-      "jwt"
+      "jwt",
+      "sso"
     ],
     "providers": [
       "GitHub"
     ]
   },
-  "tests": "Tests E2E et exigences de tests mentionnés dans les commits et fichiers de configuration.",
+  "tests": "Tests E2E et runners de CI (ARC)",
   "workflows": [
-    "ArgoCD GitOps",
-    "CI/CD via GitHub Actions"
+    "ArgoCD",
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-10-02T13:43:51+02:00",
+  "lastActivity": "2026-10-11T21:57:21+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Git & DevOps",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
     "CI/CD & GitHub Actions",
-    "Déploiement & Hosting",
-    "Python",
-    "Sécurité & Auth",
-    "Monitoring & Observabilité"
+    "Kubernetes & Helm",
+    "Déploiement & Hosting"
   ]
 }

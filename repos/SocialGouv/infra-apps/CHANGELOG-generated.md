@@ -1,28 +1,27 @@
-## Changelog : infra-apps (30 derniers jours, au 02/10/2026)
+## Changelog : infra-apps (30 derniers jours, au 11/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une migration majeure de l'infrastructure de stockage d'Iterion vers SeaweedFS et une série de mises à jour visant à stabiliser les environnements de production. Nous avons également renforcé la fiabilité des runners de CI (ARC) et déployé de nouveaux services de sécurité, notamment ClamAV pour le projet Domifa.
+Ce mois a été marqué par une transition majeure de l'infrastructure de stockage, passant de MinIO à SeaweedFS, ainsi que par une montée en puissance de la plateforme Iterion avec l'intégration de nouveaux modèles d'IA (Opus 5.5, GPT-6). Les capacités de calcul (runners CI) ont également été stabilisées et optimisées pour mieux gérer les pics de charge.
 
 ### Évolutions fonctionnelles
-- **Identité numérique :** `iterion.cloud` devient l'URL publique officielle et canonique de la plateforme.
-- **Intelligence Artificielle :** Support des nouveaux modèles d'IA, notamment Opus 5.5 et GPT-6.
-- **Nouvelle fonctionnalité :** Le système de déploiement est désormais capable d'envoyer des emails.
-- **Interface :** Amélioration de la gestion de la session dans le Studio pour faciliter le retour après une authentification.
+- **Nouveaux modèles IA** : Déploiement des runtimes pour Opus 5.5 et GPT-6 sur Iterion.
+- **Interface Studio** : Refonte de l'accès au Studio, désormais disponible sous le chemin `/studio`.
+- **Gestion d'infrastructure** : Mise à disposition d'un outil CLI signé pour le redémarrage du plan de contrôle Kubernetes sur OVH.
 
 ### Évolutions techniques
-- **Migration du stockage objet :** Bascule complète de MinIO vers SeaweedFS. Ce processus a inclus la synchronisation des données (mirroring), la validation de la cohérence et le retrait définitif de MinIO de la production.
-- **Optimisation de l'infrastructure Iterion :**
-    - Mise à jour massive des composants serveur et runner (montée en version vers la v3.223.0).
-    - Amélioration de la gestion des ressources : limitation de la mémoire des pods de calcul (8Gi) et application de `PriorityClass` pour garantir la priorité des pods de la plateforme sur les pods de calcul.
-    - Renforcement de la sécurité : rotation des clés JWT SeaweedFS et des mots de passe, et durcissement via le pinning des images par digest pour garantir l'immuabilité des déploiements [#67](https://github.com/SocialGouv/infra-apps/issues/67).
-- **Fiabilité des Runners (ARC) :**
-    - Stabilisation des runners via une meilleure gestion de l'API `dind` et des instances `inotify`.
-    - Mise en place d'alertes en cas d'interruption des runners pour éviter les blocages de la file d'attente de fusion [#54](https://github.com/SocialGouv/infra-apps/issues/54).
-- **Sécurité & Conformité :**
-    - Déploiement de ClamAV sur l'infrastructure OVH pour le projet Domifa, incluant l'ajustement des politiques réseau (NetworkPolicies).
-    - Scellement des tokens de forge dans tous les namespaces `ci-`.
-- **Outils de gestion :** Création d'un CLI signé pour permettre le redémarrage du plan de contrôle Kubernetes via l'API OVH.
+- **Stockage objet** : Migration complète du stockage de MinIO vers SeaweedFS, incluant la synchronisation des données et le retrait définitif de MinIO de la production.
+- **Plateforme Iterion** :
+    - Déploiement de la première "sovereign pool" (v3.249.0).
+    - Amélioration du routage des modèles (Claude, honorabilite pool) et sécurisation des accès via des références de clés pour les JWT et les URIs MongoDB.
+    - Amélioration de la stabilité via le "digest pinning" des serveurs et des runners pour garantir l'immuabilité des déploiements [#2313].
+- **CI/CD (ARC Runners)** :
+    - Migration des runners vers un nodepool dédié pour une meilleure gestion des ressources et des pics de demande.
+    - Amélioration de la robustesse des runners : gestion des limites `inotify` [#70, #55], attente de l'API `dind` au démarrage [#56], et alertes en cas d'interruption de service [#54].
+    - Optimisation de la gestion du cache (Go, Node) et sécurisation des conteneurs privilégiés par digest [#71, #67].
+- **Sécurité** :
+    - Déploiement de ClamAV sur l'environnement de production OVH pour l'application Domifa.
+    - Ajustement des politiques réseau (NetworkPolicies) pour ClamAV afin de permettre les flux intra-namespace.
 
 ### Autres changements
-- **Déclassement :** Retrait du composant `charon-carnets`.
-- **Documentation :** Mise à jour des notes techniques concernant Corepack et le couplage entre les images de runners et les digests serveurs.
+- **Documentation** : Mise à jour des notes techniques concernant l'utilisation de Corepack et le couplage entre les images de runners et les digests des serveurs.
+- **Nettoyage** : Retrait des jobs de migration SeaweedFS une fois la synchronisation validée.
