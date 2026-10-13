@@ -1,3 +1,4 @@
-## Changelog : grist-custom-widgets-fr-admin (30 derniers jours)
+## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 14/09/2026)
 
-Aucune évolution significative n'a été enregistrée sur cette période. Les activités récentes concernent exclusivement des mises à jour de dépendances de routine.
+### Résumé
+Aucune évolution notable n'a été enregistrée au cours des 30 derniers jours. Les activités récentes concernent exclusivement des mises à jour de routine des dépendances.
