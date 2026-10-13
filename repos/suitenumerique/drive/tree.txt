@@ -108,6 +108,7 @@
 │   ├── release.md
 │   ├── resource_server.md
 │   ├── s3_mirroring.md
+│   ├── scaling.md
 │   ├── setup-find.md
 │   ├── setup-local-network.md
 │   └── user_account_reconciliation.md
@@ -230,6 +231,7 @@
     │   │   │   ├── 0027_item_quota_excluded.py
     │   │   │   ├── 0028_item_creator_size_quota_idx.py
     │   │   │   ├── 0030_item_add_restriction_target.py
+    │   │   │   ├── 0031_item_parent_path_idx.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── permissions
@@ -254,10 +256,13 @@
     │   │   │   └── storage_compute_backend.py
     │   │   ├── tasks
     │   │   │   ├── item.py
+    │   │   │   ├── management_commands.py
     │   │   │   ├── search.py
     │   │   │   └── user_reconciliation.py
     │   │   ├── templates
     │   │   │   └── core
+    │   │   │       ├── admin
+    │   │   │       │   └── user_top_files.html
     │   │   │       └── generate_document.html
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
@@ -341,10 +346,12 @@
     │   │   │   │   │   ├── test_process_item_purge.py
     │   │   │   │   │   ├── test_rename_file.py
     │   │   │   │   │   └── test_update_suspicious_item_file_hash.py
+    │   │   │   │   ├── test_management_commands.py
     │   │   │   │   └── test_user_reconciliation.py
     │   │   │   ├── test_admin_items.py
     │   │   │   ├── test_admin_malware_detection.py
     │   │   │   ├── test_admin_user_reconciliation.py
+    │   │   │   ├── test_admin_users.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_entitlements.py
     │   │   │   ├── test_api_entitlements_deploycenter.py
@@ -364,6 +371,7 @@
     │   │   │   ├── test_models_item_accesses.py
     │   │   │   ├── test_models_items.py
     │   │   │   ├── test_models_items_indexer.py
+    │   │   │   ├── test_models_items_path_lookups.py
     │   │   │   ├── test_models_items_restricted.py
     │   │   │   ├── test_models_items_restrictions.py
     │   │   │   ├── test_models_items_root.py
@@ -372,12 +380,16 @@
     │   │   │   ├── test_services_item_exports.py
     │   │   │   ├── test_services_search_indexers.py
     │   │   │   ├── test_settings.py
+    │   │   │   ├── test_utils_quota.py
+    │   │   │   ├── test_utils_sizes.py
     │   │   │   └── utils
     │   │   │       └── urls.py
     │   │   ├── urls.py
     │   │   └── utils
     │   │       ├── analytics.py
-    │   │       └── item_title.py
+    │   │       ├── item_title.py
+    │   │       ├── quota.py
+    │   │       └── sizes.py
     │   ├── demo
     │   │   ├── __init__.py
     │   │   ├── defaults.py
@@ -386,10 +398,14 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── create_demo.py
-    │   │   │       └── create_reconciliation_demo.py
+    │   │   │       ├── create_perf_dataset.py
+    │   │   │       ├── create_reconciliation_demo.py
+    │   │   │       └── profile_endpoints.py
     │   │   └── tests
     │   │       ├── __init__.py
-    │   │       └── test_commands_create_demo.py
+    │   │       ├── test_commands_create_demo.py
+    │   │       ├── test_commands_create_perf_dataset.py
+    │   │       └── test_commands_profile_endpoints.py
     │   ├── drive
     │   │   ├── __init__.py
     │   │   ├── celery_app.py
@@ -510,7 +526,6 @@
     │   │   │   ├── README.md
     │   │   │   ├── __mocks__
     │   │   │   │   ├── fileMock.js
-    │   │   │   │   ├── pretty-bytes.js
     │   │   │   │   └── saxen.js
     │   │   │   ├── conf
     │   │   │   │   └── default.conf
@@ -782,6 +797,7 @@
     │   │   │   │   │   │       ├── __tests__
     │   │   │   │   │   │       │   ├── dateFilters.test.ts
     │   │   │   │   │   │       │   ├── dropTraversal.test.ts
+    │   │   │   │   │   │       │   ├── formatSize.test.ts
     │   │   │   │   │   │       │   ├── formatSizeTo.test.ts
     │   │   │   │   │   │       │   └── ordering.test.ts
     │   │   │   │   │   │       ├── dateFilters.ts
@@ -1135,4 +1151,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-258 directories, 879 files
+259 directories, 894 files

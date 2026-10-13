@@ -11,11 +11,31 @@ and this project adheres to
 ### Added
 
 - ✨(backend) rate limit the item creation endpoints
+- ✨(backend) add a command to generate a production sized dataset
+- ✨(backend) add a command to profile the main API endpoints
+- ✨(backend) schedule management commands with celery beat
+- ✨(backend) capture a posthog event on template based creation
+- ✨(backend) capture posthog events on item deletion
+- ✨(backend) capture a posthog event on conversion request
+- ✨(backend) capture a posthog event on folder export
+- ✨(wopi) capture a posthog event on document edition
+- ✨(backend) show and change the storage quota exclusion of items
+- ✨(backend) show user storage quota and biggest files in the admin
+- ✨(backend) set the storage limit override of users in GB in the admin
 
 ### Changed
 
 - 🔧(docker) replace MinIO with RustFS for local object storage
 - ✨(backend) require a size reservation to upload a file
+- ♻️(backend,frontend) format sizes the same way in the admin and the app
+- 🔧(helm) relax the backend readiness probe
+
+### Fixed
+
+- ⚡️(backend) speed up the item list, recents and favorites on large databases
+- 🐛(backend) do not clean a pending item whose upload just ended
+- 🐛(backend) purge the stored object of stale pending items
+- 🔒️(backend) serve WOPI file content as a sandboxed download
 
 ## [v0.23.0] - 2026-09-23
 
