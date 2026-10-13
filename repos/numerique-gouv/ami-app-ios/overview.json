@@ -1,23 +1,22 @@
 {
   "url": "https://github.com/numerique-gouv/ami-app-ios",
   "name": "ami-app-ios",
-  "description": "Application iOS dédiée au service AMI, permettant aux utilisateurs de réaliser des démarches en ligne et de recevoir des notifications. Elle intègre des fonctionnalités avancées comme le support des Passkeys et la gestion de fichiers via WebView.",
+  "description": "Application iOS pour le service AMI, utilisant une architecture WebView pour l'accès aux services web. Elle permet la gestion de documents, l'authentification via France Identité et le support des Passkeys.",
   "language": "Swift",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Formulaires & Démarches",
+    "Interface utilisateur & Design",
     "Notifications & Alertes"
   ],
   "audience": "Grand public",
   "dependencies": [
-    "SwiftUI",
     "XcodeGen",
     "SwiftFormat",
     "SwiftLint",
     "SwiftGen",
-    "Firebase",
     "AmiDesignSystem",
+    "Firebase",
     "KeychainAccess"
   ],
   "components": [
@@ -27,19 +26,20 @@
   ],
   "auth": {
     "methods": [
-      "passkey"
+      "passkey",
+      "sso"
     ],
     "providers": [
       "France Identité"
     ]
   },
-  "tests": "Unit tests (AMI-UnitTests), SwiftLint, SwiftFormat",
-  "lastActivity": "2026-09-30T17:23:26+02:00",
+  "tests": "Tests unitaires (AMI-UnitTests)",
+  "lastActivity": "2026-10-06T15:03:08+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Design System & UI",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Accessibilité"
   ]
 }
