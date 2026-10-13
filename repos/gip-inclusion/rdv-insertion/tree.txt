@@ -1,6 +1,7 @@
 .
 ├── .browserslistrc
 ├── .buildpacks
+├── .coderabbit.yaml
 ├── .env.example
 ├── .env.test
 ├── .erdconfig
@@ -31,9 +32,11 @@
 ├── .well-known
 │   └── security.txt
 ├── .yarnrc
+├── AGENTS.md
 ├── CLAUDE.md
 ├── Gemfile
 ├── Gemfile.lock
+├── LICENSE
 ├── Makefile
 ├── Procfile
 ├── Procfile.dev
@@ -222,6 +225,8 @@
 │   │   ├── motif_category_blueprint.rb
 │   │   ├── organisation_blueprint.rb
 │   │   ├── participation_blueprint.rb
+│   │   ├── plateforme_inclusion
+│   │   │   └── user_blueprint.rb
 │   │   ├── rdv_blueprint.rb
 │   │   ├── tag_blueprint.rb
 │   │   └── user_blueprint.rb
@@ -235,10 +240,13 @@
 │   │   ├── pdf_generator_client.rb
 │   │   ├── primotexto_client.rb
 │   │   ├── rdv_solidarites_client.rb
+│   │   ├── rdv_solidarites_oauth_client.rb
 │   │   └── slack_client.rb
 │   ├── controllers
 │   │   ├── accept_cgus_controller.rb
 │   │   ├── api
+│   │   │   ├── plateforme_inclusion
+│   │   │   │   └── users_controller.rb
 │   │   │   └── v1
 │   │   │       ├── application_controller.rb
 │   │   │       ├── departments_controller.rb
@@ -695,6 +703,7 @@
 │   │   ├── agent_session_factory.rb
 │   │   ├── agents_rdv.rb
 │   │   ├── api_call.rb
+│   │   ├── api_credentials.rb
 │   │   ├── application_record.rb
 │   │   ├── archive.rb
 │   │   ├── blocked_invitations_counter.rb
@@ -804,7 +813,10 @@
 │   │   │   ├── referent_assignation.rb
 │   │   │   ├── user.rb
 │   │   │   └── webhook_endpoint.rb
-│   │   ├── rdv_solidarites_credentials.rb
+│   │   ├── rdv_solidarites_authentication
+│   │   │   ├── oauth.rb
+│   │   │   └── shared_secret.rb
+│   │   ├── rdv_solidarites_oauth_token.rb
 │   │   ├── rdv_solidarites_webhook_job_wrapper.rb
 │   │   ├── referent_assignation.rb
 │   │   ├── sidekiq
@@ -1834,6 +1846,7 @@
 │   │   ├── 20260611120000_add_null_constraint_on_motif_booking_delays.rb
 │   │   ├── 20260618110000_add_unique_index_to_creneau_opening_requests.rb
 │   │   ├── 20260619131224_replace_invitations_trigger_with_origin.rb
+│   │   ├── 20260721201052_create_rdv_solidarites_oauth_tokens.rb
 │   │   └── 20260811170650_remove_rdv_solidarites_agent_role_id_from_agent_roles.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -1843,7 +1856,8 @@
 │   ├── INSTALL.md
 │   ├── SCHEMA_DATA.md
 │   ├── api
-│   │   └── description.md
+│   │   ├── description.md
+│   │   └── plateforme_inclusion.md
 │   ├── architecture_rdv-insertion.png
 │   ├── domain_model.png
 │   └── resources
@@ -1945,6 +1959,7 @@
 │   │   ├── participation.rb
 │   │   ├── post_rdv_orientation.rb
 │   │   ├── rdv.rb
+│   │   ├── rdv_solidarites_oauth_token.rb
 │   │   ├── referent_assignation.rb
 │   │   ├── stat.rb
 │   │   ├── super_admin_authentication_request.rb
@@ -2141,12 +2156,14 @@
 │   │   │   └── through_sign_in_form_spec.rb
 │   │   ├── agent_session_factory_spec.rb
 │   │   ├── agent_spec.rb
+│   │   ├── api_credentials_spec.rb
 │   │   ├── archive_spec.rb
 │   │   ├── category_configuration
 │   │   │   └── creneau_availability_spec.rb
 │   │   ├── category_configuration_spec.rb
 │   │   ├── concerns
 │   │   │   ├── agent
+│   │   │   │   ├── rdv_solidarites_client_spec.rb
 │   │   │   │   └── super_admin_authentication_spec.rb
 │   │   │   ├── has_attached_image_spec.rb
 │   │   │   ├── participation
@@ -2172,7 +2189,10 @@
 │   │   ├── orientation_spec.rb
 │   │   ├── orientation_type_spec.rb
 │   │   ├── participation_spec.rb
-│   │   ├── rdv_solidarites_credentials_spec.rb
+│   │   ├── rdv_solidarites_authentication
+│   │   │   ├── oauth_spec.rb
+│   │   │   └── shared_secret_spec.rb
+│   │   ├── rdv_solidarites_oauth_token_spec.rb
 │   │   ├── rdv_spec.rb
 │   │   ├── sidekiq
 │   │   │   └── scheduler_spec.rb
@@ -2197,8 +2217,11 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── api
+│   │   │   ├── plateforme_inclusion
+│   │   │   │   └── users_request_spec.rb
 │   │   │   └── v1
 │   │   │       ├── departments_request_spec.rb
+│   │   │       ├── oauth_token_requirement_spec.rb
 │   │   │       ├── rdvs_request_spec.rb
 │   │   │       └── users_request_spec.rb
 │   │   ├── brevo_mail_webhooks_spec.rb
@@ -2338,4 +2361,4 @@
 │   └── v1
 │       └── api.json
 └── yarn.lock
-348 directories, 1998 files
+353 directories, 2016 files
