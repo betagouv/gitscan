@@ -1,12 +1,12 @@
-## Changelog : dossierfacile-data (30 derniers jours, au 19 août 2026)
+## Changelog : dossierfacile-data (30 derniers jours, au 08/10/2026)
 
 ### Résumé
-Ce mois-ci, le projet a enrichi les données disponibles en intégrant le statut de demande de validation des locataires. Parallèlement, des optimisations de performance et des corrections techniques ont été apportées pour fiabiliser le pipeline de transformation des données.
-
-### Évolutions fonctionnelles
-- Ajout de la donnée relative au statut de demande de validation des locataires (`validation_requested`) [#80](https://github.com/MTES-MCT/dossierfacile-data/pull/80).
+Les récentes interventions ont principalement porté sur la stabilisation des pipelines de données. Les corrections effectuées visent à résoudre des erreurs liées aux nouvelles stratégies de réplication et aux évolutions de schémas, garantissant ainsi une meilleure fiabilité et une meilleure traçabilité historique des données.
 
 ### Évolutions techniques
-- Optimisation des performances de la base de données via l'ajout d'index sur les tables [#74](https://github.com/MTES-MCT/dossierfacile-data/pull/74).
-- Correction de la stratégie d'incrémentation des données (incremental strategy) pour assurer la fiabilité des flux [#81](https://github.com/MTES-MCT/dossierfacile-data/pull/81).
-- Résolution d'un problème technique lié à l'exécution des commandes dbt [#82](https://github.com/MTES-MCT/dossierfacile-data/pull/82).
+- Correction d'erreurs liées à la mise en œuvre de la nouvelle stratégie de réplication des données [#85](https://github.com/MTES-MCT/dossierfacile-data/issues/85).
+- Refonte du modèle `user_feature` en `user_feature_history` pour assurer un meilleur suivi de l'historique des données [#84](https://github.com/MTES-MCT/dossierfacile-data/issues/84).
+- Résolution d'une erreur de schéma dans la table `staging_tenant_log` causée par une colonne obsolète [#86](https://github.com/MTES-MCT/dossierfacile-data/issues/86).
+
+### Autres changements
+- Mise à jour de la documentation du projet (README.md) [#78](https://github.com/MTES-MCT/dossierfacile-data/issues/78).
