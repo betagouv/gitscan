@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.10.7,<0.13.0"]
+build-backend = "uv_build"
 
 [project]
 name = "migrator"
-version = "0.1.0"
+version = "0.8.10"
 authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -18,12 +18,12 @@ classifiers = [
 ]
 description = "An application to print markdown to pdf from a set of managed templates."
 keywords = ["Django", "Contacts", "Templates", "RBAC"]
-license = { file = "LICENSE" }
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "Brotli==1.2.0",
-    "PyJWT==2.13.0",
+    "pyjwt==2.15.1",
     "WeasyPrint>=60.2",
     "boto3==1.35.64",
     "celery[redis]==5.3.6",
@@ -38,7 +38,7 @@ dependencies = [
     "django-redis==5.4.0",
     "django-storages[s3]==1.14.2",
     "django-timezone-field>=5.1",
-    "django==5.2.16",
+    "django==5.2.17",
     "djangorestframework==3.17.2",
     "dockerflow==2022.8.0",
     "drf_spectacular==0.26.5",
@@ -87,12 +87,16 @@ dev = [
     "types-requests==2.31.0.10",
 ]
 
-[tool.setuptools]
-packages = { find = { where = ["."], exclude = ["tests"] } }
-zip-safe = true
+[tool.uv]
+package = false
 
-[tool.distutils.bdist_wheel]
-universal = true
+[tool.uv.build-backend]
+module-root = ""
+source-exclude = [
+    "**/tests/**",
+    "**/test_*.py",
+    "**/tests.py",
+]
 
 [tool.ruff]
 exclude = [

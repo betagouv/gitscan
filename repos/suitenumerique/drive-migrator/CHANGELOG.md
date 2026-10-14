@@ -10,6 +10,27 @@ and this project adheres to
 
 ### Added
 
+- Attach a CSV of files that failed to migrate to the notification e-mail #256
+
+### Changed
+
+- Use Drive's resource server (external APIs) instead of frontend APIs
+
+#### Dependencies
+
+- Upgrade `Django` to `5.2.17`
+- Upgrade `PyJWT` to `2.15.1`
+
+### Fixed
+
+- list locked Resana workspaces the user is Animateur of
+- Refuse source files resolving out of their folder in the local workspace
+- Reset previous workspace migration errors when a new migration starts #256
+
+## [v0.8.10] - 2026-10-07
+
+### Added
+
 - setup Celery
 - setup Flower
 - setup S3 configuration
@@ -49,6 +70,8 @@ and this project adheres to
 - add opt-in per-file migration integrity report #235
 - show migrated/source file counts and gaps on workspace cards #235
 - lock Resana workspace and grant folder access during migration #215
+- add Drive status and root folder id to the workspace admin CSV export
+- add workspace size and file types to PostHog migration_finished event
 
 ### Changed
 
@@ -84,15 +107,18 @@ and this project adheres to
 - retry Drive upload-ended notification on transient network timeouts #176
 - retry Drive API calls on transient 5xx errors instead of failing #208
 - retry Resana file download and skip failing files instead of aborting #175
+- skip and list files refused by Drive instead of failing the migration
+- declare the file size when creating Drive items, required by recent Drive
 - exclude Resana workspaces where user isn't Animateur from migration #110 #160
 - exclude Resana personal workspaces from migration by default #163
 - fix user.csv not generated for locked Resana workspaces #169
 - fix accented filenames mangled in workspace ZIP export #166
 - pull MinIO images from Chainguard since quay.io pulls are gated
+- share migrated Drive workspaces with the exact member email, not a lookalike
 
 ### Removed
 
 - delete unused var in Makefile
 
-
-[unreleased]: https://github.com/numerique-gouv/impress/main
+[unreleased]: https://github.com/suitenumerique/drive-migrator/compare/v0.8.10...HEAD
+[v0.8.10]: https://github.com/suitenumerique/drive-migrator/releases/v0.8.10

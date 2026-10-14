@@ -35,7 +35,8 @@
 │   ├── start-kind.sh
 │   ├── state
 │   ├── terraform
-│   └── update_openapi_schema
+│   ├── update_openapi_schema
+│   └── uv
 ├── docker
 │   ├── auth
 │   │   └── realm.json
@@ -71,6 +72,7 @@
     ├── backend
     │   ├── .gitignore
     │   ├── .pylintrc
+    │   ├── .python-version
     │   ├── MANIFEST.in
     │   ├── __init__.py
     │   ├── core
@@ -166,6 +168,7 @@
     │   │   │   ├── 0026_workspace_download_errors_alter_user_language.py
     │   │   │   ├── 0027_extrataskinfo_integrity_check_passed_and_more.py
     │   │   │   ├── 0028_workspace_source_lock_state.py
+    │   │   │   ├── 0029_workspace_upload_errors.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── osmose
@@ -234,14 +237,17 @@
     │   │   │   │   │   ├── test_drive_backend.py
     │   │   │   │   │   ├── test_drive_backend_integrity.py
     │   │   │   │   │   ├── test_drive_backend_retry_config.py
+    │   │   │   │   │   ├── test_drive_backend_users.py
     │   │   │   │   │   ├── test_drive_destination.py
+    │   │   │   │   │   ├── test_drive_file_rejection.py
     │   │   │   │   │   └── test_drive_integrity.py
     │   │   │   │   ├── test_archive.py
     │   │   │   │   ├── test_resana.py
     │   │   │   │   └── test_resana_refresh_job.py
     │   │   │   ├── models
     │   │   │   │   ├── __init__.py
-    │   │   │   │   └── test_workspace.py
+    │   │   │   │   ├── test_workspace.py
+    │   │   │   │   └── test_workspace_failed_files_csv.py
     │   │   │   ├── osmose
     │   │   │   │   ├── test_osmose_file.py
     │   │   │   │   └── test_osmose_page_walker.py
@@ -290,7 +296,8 @@
     │   │   │   ├── test_mails_manager.py
     │   │   │   ├── test_migration_0025_clear_legacy_resana_tokens.py
     │   │   │   ├── test_models_user.py
-    │   │   │   └── test_retry_utils.py
+    │   │   │   ├── test_retry_utils.py
+    │   │   │   └── test_utils.py
     │   │   ├── urls.py
     │   │   └── utils.py
     │   ├── demo
@@ -320,7 +327,7 @@
     │   │   └── wsgi.py
     │   ├── manage.py
     │   ├── pyproject.toml
-    │   └── setup.py
+    │   └── uv.lock
     ├── frontend
     │   ├── .prettierignore
     │   ├── .prettierrc.js
@@ -545,6 +552,7 @@
     │   │   ├── fail.mjml
     │   │   ├── partial
     │   │   │   ├── banner.mjml
+    │   │   │   ├── failed_files.mjml
     │   │   │   ├── footer.mjml
     │   │   │   ├── header.mjml
     │   │   │   └── support.mjml
@@ -558,4 +566,4 @@
         │   └── openapi-typescript-codegen
         │       └── generate_api_client_local.sh
         └── yarn.lock
-128 directories, 432 files
+128 directories, 440 files
