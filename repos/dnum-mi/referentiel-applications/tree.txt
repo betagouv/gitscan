@@ -23,6 +23,7 @@
 │   │   ├── qa-signalements-abonnements.md
 │   │   ├── qa-time.md
 │   │   └── qa-transverse.md
+│   ├── dependabot.yml
 │   ├── scripts
 │   │   ├── board-sync.mjs
 │   │   └── check-swagger-drift.mjs
@@ -34,12 +35,14 @@
 │       ├── qa-sync.yml
 │       ├── release-build.yml
 │       ├── release.yml
+│       ├── security-audit.yml
 │       └── tests-unit.yml
 ├── .gitignore
 ├── .gitlab-ci-dso.yml
 ├── .husky
 │   ├── commit-msg
 │   └── pre-commit
+├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc
 ├── .release-please-manifest.json
@@ -58,6 +61,8 @@
 │   │   └── hosting-normalization.md
 │   ├── nest-cli.json
 │   ├── package.json
+│   ├── patches
+│   │   └── pptxgenjs@4.0.1.patch
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
 │   ├── prisma
@@ -414,7 +419,18 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260922143431_add_value_for_data_update_frequency
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260923080000_cascade_report_history_on_report_delete
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260929100000_index_technology_stack_search
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261001140000_add_technology_list_permission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261009120000_add_grist_sync_permission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261009130000_add_user_grist_settings
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
+│   │   ├── qa-correlation-fixtures.ts
 │   │   ├── schema
 │   │   │   ├── action-log.prisma
 │   │   │   ├── applications.prisma
@@ -445,6 +461,7 @@
 │   │   │   └── users.prisma
 │   │   ├── seed-qa.ts
 │   │   └── seed.ts
+│   ├── prisma.config.ts
 │   ├── src
 │   │   ├── action-log
 │   │   │   ├── action-log.controller.ts
@@ -503,6 +520,9 @@
 │   │   │   │   └── application-export.map.ts
 │   │   │   ├── prisma-query-builder.service.spec.ts
 │   │   │   ├── prisma-query-builder.service.ts
+│   │   │   ├── product-export.service.ts
+│   │   │   ├── product-powerpoint.spec.ts
+│   │   │   ├── product-powerpoint.ts
 │   │   │   ├── search
 │   │   │   │   ├── application-search.service.spec.ts
 │   │   │   │   └── application-search.service.ts
@@ -541,9 +561,13 @@
 │   │   │   │   ├── user-id.decorator.ts
 │   │   │   │   └── user.decorator.ts
 │   │   │   ├── dto
+│   │   │   │   ├── api-error.dto.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── paginated-response.dto.ts
 │   │   │   │   └── pagination.dto.ts
+│   │   │   ├── filters
+│   │   │   │   ├── all-exceptions.filter.spec.ts
+│   │   │   │   └── all-exceptions.filter.ts
 │   │   │   ├── guards
 │   │   │   │   └── permission.guard.ts
 │   │   │   ├── http
@@ -567,6 +591,7 @@
 │   │   │       ├── organization-scope.utils.spec.ts
 │   │   │       ├── organization-scope.utils.ts
 │   │   │       ├── quality-actions.utils.ts
+│   │   │       ├── quality.utils.spec.ts
 │   │   │       ├── quality.utils.ts
 │   │   │       └── types.ts
 │   │   ├── compliances
@@ -580,6 +605,8 @@
 │   │   │   │   └── update-compliance.dto.ts
 │   │   │   ├── entities
 │   │   │   │   └── compliance.entity.ts
+│   │   │   ├── errors
+│   │   │   │   └── ecoindex-unavailable.exception.ts
 │   │   │   └── utils
 │   │   │       ├── compliance.utils.ts
 │   │   │       ├── ecoindex-ssrf.spec.ts
@@ -599,6 +626,8 @@
 │   │   │   │   ├── correlation.config.ts
 │   │   │   │   ├── database.config.ts
 │   │   │   │   ├── email.config.ts
+│   │   │   │   ├── grist.config.spec.ts
+│   │   │   │   ├── grist.config.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── jwt-validation.config.spec.ts
 │   │   │   │   ├── jwt-validation.config.ts
@@ -666,6 +695,20 @@
 │   │   │       ├── user-permissions-changed.template.html
 │   │   │       └── user-unblocked.template.html
 │   │   ├── enum.ts
+│   │   ├── grist
+│   │   │   ├── dto
+│   │   │   │   ├── grist-record.dto.ts
+│   │   │   │   ├── grist-sync-report.dto.ts
+│   │   │   │   ├── grist-sync.dto.spec.ts
+│   │   │   │   └── grist-sync.dto.ts
+│   │   │   ├── grist-api-key.spec.ts
+│   │   │   ├── grist-api-key.ts
+│   │   │   ├── grist.client.ts
+│   │   │   ├── grist.controller.spec.ts
+│   │   │   ├── grist.controller.ts
+│   │   │   ├── grist.module.ts
+│   │   │   ├── grist.service.spec.ts
+│   │   │   └── grist.service.ts
 │   │   ├── health
 │   │   │   ├── dto
 │   │   │   │   └── health-check.dto.ts
@@ -733,6 +776,7 @@
 │   │   ├── logger
 │   │   │   ├── logger.module.ts
 │   │   │   ├── logger.service.ts
+│   │   │   ├── logging.service.ts
 │   │   │   └── request-logging.interceptor.ts
 │   │   ├── main.ts
 │   │   ├── maintenance
@@ -803,10 +847,6 @@
 │   │   │   ├── prisma.module.ts
 │   │   │   ├── prisma.service.spec.ts
 │   │   │   └── prisma.service.ts
-│   │   ├── product
-│   │   │   └── application
-│   │   │       └── dto
-│   │   │           └── relation-type.dto.ts
 │   │   ├── quality-campaign
 │   │   │   ├── cron
 │   │   │   │   └── quality-campaign-cron.service.ts
@@ -820,7 +860,8 @@
 │   │   ├── relationship
 │   │   │   ├── application
 │   │   │   │   └── dto
-│   │   │   │       └── relation-application.dto.ts
+│   │   │   │       ├── relation-application.dto.ts
+│   │   │   │       └── relation-type.dto.ts
 │   │   │   ├── correlation
 │   │   │   │   ├── application
 │   │   │   │   │   └── dto
@@ -873,15 +914,13 @@
 │   │   │   ├── saved-filter.module.ts
 │   │   │   ├── saved-filter.service.spec.ts
 │   │   │   └── saved-filter.service.ts
-│   │   ├── services
-│   │   │   └── logging.service.ts
 │   │   ├── stats
 │   │   │   ├── application
 │   │   │   │   ├── dto
 │   │   │   │   │   └── get-iq-avg-grouped.dto.ts
 │   │   │   │   ├── stats.service.ts
 │   │   │   │   └── use-cases
-│   │   │   │       └── get-iq-avg-grouped.use-case.ts.ts
+│   │   │   │       └── get-iq-avg-grouped.use-case.ts
 │   │   │   ├── cron
 │   │   │   │   └── stats.cron.service.ts
 │   │   │   ├── infrastructure
@@ -929,6 +968,7 @@
 │   │   │   ├── dto
 │   │   │   │   ├── end-of-life.dto.ts
 │   │   │   │   └── technology.dto.ts
+│   │   │   ├── end-of-life.controller.spec.ts
 │   │   │   ├── end-of-life.controller.ts
 │   │   │   ├── end-of-life.service.spec.ts
 │   │   │   ├── end-of-life.service.ts
@@ -958,7 +998,7 @@
 │   │   │   ├── token.module.ts
 │   │   │   ├── token.service.spec.ts
 │   │   │   ├── token.service.ts
-│   │   │   └── use-cases.ts
+│   │   │   └── use-cases
 │   │   │       ├── token-control.use-case.spec.ts
 │   │   │       └── token-control.use-case.ts
 │   │   ├── user
@@ -982,6 +1022,7 @@
 │   │   │   │   └── scoped-permission.service.ts
 │   │   │   ├── user-connexion-log.service.spec.ts
 │   │   │   ├── user-connexion-log.service.ts
+│   │   │   ├── user-grist.service.spec.ts
 │   │   │   ├── user-maia.service.spec.ts
 │   │   │   ├── user-permission-log.service.ts
 │   │   │   ├── user-permissions.interceptor.ts
@@ -1004,8 +1045,12 @@
 │   │   ├── action-log-controller.e2e-spec.ts
 │   │   ├── action-log.e2e-spec.ts
 │   │   ├── actor-email-case.e2e-spec.ts
+│   │   ├── actor-type-perms-matrix.e2e-spec.ts
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
+│   │   ├── application-delete.e2e-spec.ts
+│   │   ├── application-export.e2e-spec.ts
+│   │   ├── application-product-export.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
 │   │   ├── auth-level-userinfo.e2e-spec.ts
 │   │   ├── auth-level.e2e-spec.ts
@@ -1017,6 +1062,7 @@
 │   │   ├── data-family.e2e-spec.ts
 │   │   ├── data-sensibility.e2e-spec.ts
 │   │   ├── delegated-auth.e2e-spec.ts
+│   │   ├── error-format.e2e-spec.ts
 │   │   ├── fakers
 │   │   │   ├── actor-type.faker.ts
 │   │   │   ├── actor.faker.ts
@@ -1052,6 +1098,8 @@
 │   │   ├── mdit-campaign.e2e-spec.ts
 │   │   ├── metadata-impersonator.e2e-spec.ts
 │   │   ├── migration-recheck-eol.e2e-spec.ts
+│   │   ├── notifications.e2e-spec.ts
+│   │   ├── organization-security.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
 │   │   ├── permission-guard-sql-injection.e2e-spec.ts
 │   │   ├── relations.e2e-spec.ts
@@ -1067,9 +1115,13 @@
 │   │   ├── technical-debt-info.e2e-spec.ts
 │   │   ├── technologies-contract.e2e-spec.ts
 │   │   ├── technologies.e2e-spec.ts
+│   │   ├── technology-access.e2e-spec.ts
+│   │   ├── technology-search.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   ├── token-impersonation.e2e-spec.ts
 │   │   ├── token-lifecycle.e2e-spec.ts
+│   │   ├── types
+│   │   │   └── base-service.typecheck.ts
 │   │   ├── user-block.e2e-spec.ts
 │   │   ├── user-connexion-log.e2e-spec.ts
 │   │   ├── user-list-scope-format.e2e-spec.ts
@@ -1092,6 +1144,8 @@
 │       ├── 0006-dsfr-primevue-client-openapi.md
 │       ├── 0007-permissions-trois-couches-secrets.md
 │       ├── 0008-niveau-authentification-carte-agent-2fa.md
+│       ├── 0009-structure-modules-backend.md
+│       ├── 0010-rate-limiting-krakend.md
 │       └── README.md
 ├── docker-compose.ci.yml
 ├── docker-compose.grist.yml
@@ -1113,10 +1167,12 @@
 │   ├── 12-exploitation-deploiement.md
 │   ├── 13-integration-iap.md
 │   ├── README.md
+│   ├── application-form.md
 │   ├── assets
 │   │   ├── database-erd-full.svg
 │   │   └── database-erd-overview.svg
 │   ├── catalogue-donnees.md
+│   ├── guide-utilisateur.md
 │   └── server-paginated-tables.md
 ├── e2e
 │   ├── .gitignore
@@ -1149,6 +1205,7 @@
 │   │   └── user-profile.page.ts
 │   ├── support
 │   │   ├── actor-import-xlsx.ts
+│   │   ├── correlation-fixtures.ts
 │   │   ├── db.ts
 │   │   ├── global-cleanup.ts
 │   │   ├── helpers.ts
@@ -1164,6 +1221,7 @@
 │   │   ├── catalogue-filtres.spec.ts
 │   │   ├── catalogue.spec.ts
 │   │   ├── conformites.spec.ts
+│   │   ├── correlations.spec.ts
 │   │   ├── data-application.spec.ts
 │   │   ├── fiche-application.spec.ts
 │   │   ├── historique.spec.ts
@@ -1182,6 +1240,7 @@
 │       └── required-fixtures.spec.ts
 ├── eslint.config.js
 ├── frontend
+│   ├── .dockerignore
 │   ├── .editorconfig
 │   ├── .env.development
 │   ├── .gitignore
@@ -1204,6 +1263,8 @@
 │   │   └── swagger.yaml
 │   ├── openapi-ts.config.ts
 │   ├── package.json
+│   ├── patches
+│   │   └── @gouvminint__vue-dsfr@8.15.0.patch
 │   ├── playwright.config.ts
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
@@ -1229,6 +1290,8 @@
 │   ├── src
 │   │   ├── App.vue
 │   │   ├── api
+│   │   │   ├── api-result.spec.ts
+│   │   │   ├── api-result.ts
 │   │   │   ├── call-api.spec.ts
 │   │   │   ├── call-api.ts
 │   │   │   ├── fetch-with-timeout.spec.ts
@@ -1239,6 +1302,7 @@
 │   │   ├── chart
 │   │   │   └── time-chart.builder.ts
 │   │   ├── components
+│   │   │   ├── AccessibleAutocomplete.spec.ts
 │   │   │   ├── AccessibleAutocomplete.vue
 │   │   │   ├── ActorActions.vue
 │   │   │   ├── AppLoader.vue
@@ -1246,7 +1310,10 @@
 │   │   │   ├── ApplicationCardView.vue
 │   │   │   ├── ApplicationMetadatasTab.vue
 │   │   │   ├── ApplicationOverview.vue
+│   │   │   ├── ApplicationProductExport.spec.ts
+│   │   │   ├── ApplicationProductExport.vue
 │   │   │   ├── ApplicationReportsTab.vue
+│   │   │   ├── ApplicationSearchActions.spec.ts
 │   │   │   ├── ApplicationSearchActions.vue
 │   │   │   ├── ApplicationTableView.vue
 │   │   │   ├── BlockedAccessScreen.vue
@@ -1258,8 +1325,11 @@
 │   │   │   ├── MaintenanceBanner.spec.ts
 │   │   │   ├── MaintenanceBanner.vue
 │   │   │   ├── MarkdownDisplay.vue
+│   │   │   ├── MarkdownEditor.spec.ts
 │   │   │   ├── MarkdownEditor.vue
+│   │   │   ├── PaginationFooter.spec.ts
 │   │   │   ├── PaginationFooter.vue
+│   │   │   ├── PermissionSelect.spec.ts
 │   │   │   ├── PermissionSelect.vue
 │   │   │   ├── PermissionWritePriorityRestart.vue
 │   │   │   ├── QualityNextActions.vue
@@ -1290,6 +1360,7 @@
 │   │   │   │   ├── AdminCorrelationsTab.spec.ts
 │   │   │   │   ├── AdminCorrelationsTab.vue
 │   │   │   │   ├── AdminEmailLogsTab.vue
+│   │   │   │   ├── AdminHostingOptionsTab.vue
 │   │   │   │   ├── AdminLabelSourcesTab.vue
 │   │   │   │   ├── AdminMditCampaignsTab.vue
 │   │   │   │   ├── AdminOrganizationsTab.vue
@@ -1304,8 +1375,11 @@
 │   │   │   │   ├── AppPermsMatrixHistory.vue
 │   │   │   │   ├── BusinessDivisionActions.vue
 │   │   │   │   ├── EmailLogContentModal.vue
+│   │   │   │   ├── HostingOptionActions.spec.ts
+│   │   │   │   ├── HostingOptionActions.vue
 │   │   │   │   ├── LabelSourceActions.vue
 │   │   │   │   ├── MditCampaignActions.vue
+│   │   │   │   ├── OrganizationActions.spec.ts
 │   │   │   │   ├── OrganizationActions.vue
 │   │   │   │   ├── QualityCampaignActions.vue
 │   │   │   │   ├── TagActions.vue
@@ -1336,10 +1410,26 @@
 │   │   │   │   ├── DataApplicationTab.vue
 │   │   │   │   └── DataExposureModal.vue
 │   │   │   ├── form
+│   │   │   │   ├── ApplicationForm.spec.ts
 │   │   │   │   ├── ApplicationForm.vue
 │   │   │   │   ├── LinkForm.vue
 │   │   │   │   ├── SponsorEmailsInput.vue
-│   │   │   │   └── StatusForm.vue
+│   │   │   │   ├── StatusForm.vue
+│   │   │   │   └── application
+│   │   │   │       ├── ApplicationContactFields.vue
+│   │   │   │       ├── ApplicationContactSteps.spec.ts
+│   │   │   │       ├── ApplicationDetailsStep.spec.ts
+│   │   │   │       ├── ApplicationDetailsStep.vue
+│   │   │   │       ├── ApplicationMainStep.spec.ts
+│   │   │   │       ├── ApplicationMainStep.vue
+│   │   │   │       ├── ApplicationMoaStep.vue
+│   │   │   │       ├── ApplicationMoeStep.vue
+│   │   │   │       ├── application-form.types.ts
+│   │   │   │       ├── application-form.validation.spec.ts
+│   │   │   │       ├── application-form.validation.ts
+│   │   │   │       ├── use-application-form-actions.spec.ts
+│   │   │   │       ├── use-application-form-actions.ts
+│   │   │   │       └── use-application-form-state.ts
 │   │   │   ├── hosting
 │   │   │   │   ├── HostingList.vue
 │   │   │   │   └── HostingModal.vue
@@ -1349,6 +1439,8 @@
 │   │   │   ├── modal
 │   │   │   │   ├── CreateQualityCampaignModal.vue
 │   │   │   │   ├── DeleteConfirmationModal.vue
+│   │   │   │   ├── GristSyncModal.spec.ts
+│   │   │   │   ├── GristSyncModal.vue
 │   │   │   │   ├── RelationModal.spec.ts
 │   │   │   │   ├── RelationModal.vue
 │   │   │   │   └── ReportModal.vue
@@ -1375,6 +1467,7 @@
 │   │   │   ├── stats
 │   │   │   │   ├── ApplicationsChart.vue
 │   │   │   │   ├── ApplicationsIqChart.vue
+│   │   │   │   ├── GlobalStats.spec.ts
 │   │   │   │   ├── GlobalStats.vue
 │   │   │   │   └── IqChart.vue
 │   │   │   ├── technical-debt
@@ -1387,6 +1480,8 @@
 │   │   │   │   ├── TechnologyTab.spec.ts
 │   │   │   │   └── TechnologyTab.vue
 │   │   │   └── users
+│   │   │       ├── UserGristSettings.spec.ts
+│   │   │       ├── UserGristSettings.vue
 │   │   │       ├── UserInfoTab.spec.ts
 │   │   │       ├── UserInfoTab.vue
 │   │   │       ├── UserPermissionList.vue
@@ -1434,7 +1529,8 @@
 │   │   │   ├── breakpoint.ts
 │   │   │   ├── data-catalog.constants.ts
 │   │   │   ├── dictionary.ts
-│   │   │   └── min-char-for-search.ts
+│   │   │   ├── min-char-for-search.ts
+│   │   │   └── pagination.ts
 │   │   ├── main.css
 │   │   ├── main.ts
 │   │   ├── models
@@ -1443,6 +1539,7 @@
 │   │   │   ├── relations.ts
 │   │   │   └── user.ts
 │   │   ├── router
+│   │   │   ├── index.spec.ts
 │   │   │   ├── index.ts
 │   │   │   ├── nav-items.spec.ts
 │   │   │   ├── nav-items.ts
@@ -1454,14 +1551,17 @@
 │   │   │   └── impersonation.ts
 │   │   ├── stores
 │   │   │   ├── actorTypeStore.ts
+│   │   │   ├── applicationStore.spec.ts
 │   │   │   ├── applicationStore.ts
 │   │   │   ├── correlationStore.ts
+│   │   │   ├── endOfLifeStore.spec.ts
 │   │   │   ├── endOfLifeStore.ts
 │   │   │   ├── hostingStore.spec.ts
 │   │   │   ├── hostingStore.ts
 │   │   │   ├── metadataStore.spec.ts
 │   │   │   ├── metadataStore.ts
 │   │   │   ├── notificationStore.ts
+│   │   │   ├── organizationStore.spec.ts
 │   │   │   ├── organizationStore.ts
 │   │   │   ├── qualityCampaignStore.ts
 │   │   │   ├── relationStore.ts
@@ -1519,8 +1619,10 @@
 │   │   │   ├── NotificationsPage.vue
 │   │   │   ├── QualityPage.vue
 │   │   │   ├── ReportsPage.vue
+│   │   │   ├── SiteMapPage.spec.ts
 │   │   │   ├── SiteMapPage.vue
 │   │   │   ├── TimePage.vue
+│   │   │   ├── UserProfilePage.spec.ts
 │   │   │   └── UserProfilePage.vue
 │   │   └── vite-env.d.ts
 │   ├── tests
@@ -1536,6 +1638,7 @@
 │   │   ├── reports.spec.ts
 │   │   ├── savedFilters.spec.ts
 │   │   ├── searchHeader.spec.ts
+│   │   ├── technologyAccess.spec.ts
 │   │   ├── utils.ts
 │   │   └── vue.spec.ts
 │   ├── tsconfig.app.json
@@ -1547,7 +1650,6 @@
 │   └── vitest.config.ts
 ├── keycloak
 │   └── realm-export.json
-├── krakend.json
 ├── package.json
 ├── pgadmin.json
 ├── pnpm-lock.yaml
@@ -1581,4 +1683,4 @@
 │       ├── sync-issue.mjs
 │       └── sync-issue.test.mjs
 └── release-please-config.json
-390 directories, 1193 files
+399 directories, 1286 files

@@ -38,11 +38,13 @@ services:
     command: sh -c "pnpm db:generate:client && pnpm start:dev"
     environment:
       - DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres
-      - ALLOWED_ORIGINS=http://localhost:5173,http://localhost:8080,http://krakend:8080
+      - ALLOWED_ORIGINS=http://localhost:5173,http://localhost:8080
       - OIDC_CONFIG_URL=http://localhost:8082/realms/referentiel-applications/.well-known/openid-configuration
       - OIDC_JWKS_URL=http://keycloak:8080/realms/referentiel-applications/protocol/openid-connect/certs
       - OIDC_CLIENT_ID=referentiel-applications
       - LOG_LEVEL=debug
+      # Chiffrement des clés d'API Grist en base : valeur de développement uniquement.
+      - GRIST_ENCRYPTION_KEY=${GRIST_ENCRYPTION_KEY:-dev-only-grist-encryption-key}
       # - NON_ACTOR_PERMISSIONS=readBase
       - SMTP_HOST=mailpit
       - SMTP_PORT=1025
@@ -92,7 +94,7 @@ services:
   prisma-studio:
     build:
       context: ./backend
-    command: npx prisma studio
+    command: pnpm exec prisma studio
     environment:
       - DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres
       - OIDC_CONFIG_URL=http://localhost:8082/realms/referentiel-applications/.well-known/openid-configuration
@@ -134,7 +136,7 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    command: sh -c "npm install -g pnpm && pnpm install && pnpm dev"
+    command: sh -c "pnpm install --frozen-lockfile --config.confirmModulesPurge=false && pnpm dev"
     environment:
       - VITE_RDA_MATOMO_URL=http://localhost:8083
       - VITE_RDA_MATOMO_SITE_ID=1

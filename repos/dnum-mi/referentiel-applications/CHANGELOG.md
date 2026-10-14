@@ -1,5 +1,85 @@
 # Changelog
 
+## [1.98.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.97.0...v1.98.0) (2026-10-13)
+
+
+### Features
+
+* add grist sync ([#2876](https://github.com/dnum-mi/referentiel-applications/issues/2876)) ([3d77e57](https://github.com/dnum-mi/referentiel-applications/commit/3d77e575ab20d7ee77ac79cd38b86de34037b9a8))
+
+
+### Bug Fixes
+
+* can modify userappperm ([#2865](https://github.com/dnum-mi/referentiel-applications/issues/2865)) ([070ccab](https://github.com/dnum-mi/referentiel-applications/commit/070ccab8b4db4058a4b45fb8f87f6da157180c59))
+
+## [1.97.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.96.0...v1.97.0) (2026-10-07)
+
+
+### Features
+
+* export product cards to PowerPoint ([#2833](https://github.com/dnum-mi/referentiel-applications/issues/2833)) ([88ae194](https://github.com/dnum-mi/referentiel-applications/commit/88ae194056537c7a94380ea68f98b1208151c4e3))
+
+
+### Bug Fixes
+
+* admin scoped cannot remove orga ([#2827](https://github.com/dnum-mi/referentiel-applications/issues/2827)) ([572275c](https://github.com/dnum-mi/referentiel-applications/commit/572275c712ae869cf36e08e2c61efc76def603d6))
+* complete notification filtering and read actions ([#2772](https://github.com/dnum-mi/referentiel-applications/issues/2772)) ([b6f69e0](https://github.com/dnum-mi/referentiel-applications/commit/b6f69e04360105f4581e73ceba6337eff94c1c86))
+* excel pagination ([#2829](https://github.com/dnum-mi/referentiel-applications/issues/2829)) ([1092f76](https://github.com/dnum-mi/referentiel-applications/commit/1092f76f385ea063fd840a968395669a4ccad347))
+* **front:** use named routes for footer mandatory and operator links ([#2797](https://github.com/dnum-mi/referentiel-applications/issues/2797)) ([301a894](https://github.com/dnum-mi/referentiel-applications/commit/301a894bca8c16e48c12f8b0671baa500083f69c))
+* rgaa focus is now stable in page application ([#2831](https://github.com/dnum-mi/referentiel-applications/issues/2831)) ([3ee00c1](https://github.com/dnum-mi/referentiel-applications/commit/3ee00c17dcaa0973e8fc2250cc04cc5e14267ab1))
+* **security:** remove vulnerable tooling dependencies ([#2862](https://github.com/dnum-mi/referentiel-applications/issues/2862)) ([23d954f](https://github.com/dnum-mi/referentiel-applications/commit/23d954fab4fed5d14a5ef0bef43ca74aaa01ec19))
+* **security:** update dependencies and harden application access ([#2802](https://github.com/dnum-mi/referentiel-applications/issues/2802)) ([bd777df](https://github.com/dnum-mi/referentiel-applications/commit/bd777dfd3cb0a79d4b11d4b1c9c4aeea9dfd0af5))
+* update aria and delete dead slot ([#2863](https://github.com/dnum-mi/referentiel-applications/issues/2863)) ([41c41d0](https://github.com/dnum-mi/referentiel-applications/commit/41c41d046d97fce0344d00570fef42a082fac41a))
+
+## [1.96.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.95.0...v1.96.0) (2026-10-01)
+
+
+### Features
+
+* restrict technology access by capability and scope ([#2803](https://github.com/dnum-mi/referentiel-applications/issues/2803)) ([2a22352](https://github.com/dnum-mi/referentiel-applications/commit/2a223529055281bb52dd3c5898e23e070b7a3ee6))
+
+
+### Bug Fixes
+
+* **api:** validate PATCH bodies for data-catalog and perms matrix ([#2799](https://github.com/dnum-mi/referentiel-applications/issues/2799)) ([20e342b](https://github.com/dnum-mi/referentiel-applications/commit/20e342b3b51e2706f638f6f1d5346c62e8a82099))
+
+## [1.95.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.94.0...v1.95.0) (2026-09-29)
+
+
+### Features
+
+* add admin panel for managing hosting options ([#2763](https://github.com/dnum-mi/referentiel-applications/issues/2763)) ([5d5f9cc](https://github.com/dnum-mi/referentiel-applications/commit/5d5f9ccb1f4ab5d818ee1e3fcd2f18e37afa8558))
+* add replacement tag for non commisionned app ([#2771](https://github.com/dnum-mi/referentiel-applications/issues/2771)) ([5791b17](https://github.com/dnum-mi/referentiel-applications/commit/5791b177c18a606016dd3c1c7d3074e37e987d8f))
+* update doc with user guide and remove krakend ([#2764](https://github.com/dnum-mi/referentiel-applications/issues/2764)) ([21d0514](https://github.com/dnum-mi/referentiel-applications/commit/21d05147a02b8e84f0fa7307580f8d0eb86b8248))
+
+
+### Bug Fixes
+
+* index technology stacks in application search ([#2770](https://github.com/dnum-mi/referentiel-applications/issues/2770)) ([c9798d4](https://github.com/dnum-mi/referentiel-applications/commit/c9798d48a9ae8d4bd927bbbf8f8ec8d23b8f5f46))
+* remove beta tester invitation from home ([#2769](https://github.com/dnum-mi/referentiel-applications/issues/2769)) ([f0ee95f](https://github.com/dnum-mi/referentiel-applications/commit/f0ee95f0a9fbc95cf902126a41446c48441d367d))
+* restore MAIA suggestions after lookup failures ([#2774](https://github.com/dnum-mi/referentiel-applications/issues/2774)) ([cc2b916](https://github.com/dnum-mi/referentiel-applications/commit/cc2b9162f48e36df6dd1ffb83161fff77262ea00))
+
+## [1.94.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.93.1...v1.94.0) (2026-09-25)
+
+
+### Features
+
+* **api:** add a global exception filter and a normalized error contract ([#2292](https://github.com/dnum-mi/referentiel-applications/issues/2292)) ([#2738](https://github.com/dnum-mi/referentiel-applications/issues/2738)) ([b4d57ad](https://github.com/dnum-mi/referentiel-applications/commit/b4d57ad04dd29140011fe3dee7257c4d87e5409f))
+
+
+### Bug Fixes
+
+* add if exist for enum value quaterly ([#2742](https://github.com/dnum-mi/referentiel-applications/issues/2742)) ([da81751](https://github.com/dnum-mi/referentiel-applications/commit/da8175110cd2ba15b7b7953aadbcbf9416625cf8))
+
+## [1.93.1](https://github.com/dnum-mi/referentiel-applications/compare/v1.93.0...v1.93.1) (2026-09-24)
+
+
+### Bug Fixes
+
+* add quaterly value ([#2713](https://github.com/dnum-mi/referentiel-applications/issues/2713)) ([0a65c13](https://github.com/dnum-mi/referentiel-applications/commit/0a65c13c85be6f7e60fa94ba2c81b1a73484e6b0))
+* **applications:** cascade report history on delete, map blocking constraints to 409 ([#2542](https://github.com/dnum-mi/referentiel-applications/issues/2542)) ([#2711](https://github.com/dnum-mi/referentiel-applications/issues/2711)) ([153d7f4](https://github.com/dnum-mi/referentiel-applications/commit/153d7f4c1d4d24612dc4b9e36c9538aa57528391))
+* user has correct scoped admin ([#2737](https://github.com/dnum-mi/referentiel-applications/issues/2737)) ([4a7f769](https://github.com/dnum-mi/referentiel-applications/commit/4a7f769ce30021f481a45a982027d2fb0197dfed))
+
 ## [1.93.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.92.0...v1.93.0) (2026-09-22)
 
 
@@ -304,7 +384,7 @@
 * **e2e:** disambiguate "Détails de la modification" heading locator (HIS-04/05/07/10) ([#1966](https://github.com/dnum-mi/referentiel-applications/issues/1966)) ([cdd2011](https://github.com/dnum-mi/referentiel-applications/commit/cdd2011dc663a9a49ca7bb4c65d5bf2144208272))
 * total value for mdit is now correct ([#1923](https://github.com/dnum-mi/referentiel-applications/issues/1923)) ([600bdf6](https://github.com/dnum-mi/referentiel-applications/commit/600bdf6de677cc5b6e3a3407df0a7b8fd8305576))
 * update refapptable  with sorting ([#1916](https://github.com/dnum-mi/referentiel-applications/issues/1916)) ([01de11c](https://github.com/dnum-mi/referentiel-applications/commit/01de11cf14615be13d851b2ade5485ffa414fa98))
-* update search page POM with defautl value for sorting ([#1965](https://github.com/dnum-mi/referentiel-applications/issues/1965)) ([55632de](https://github.com/dnum-mi/referentiel-applications/commit/55632de574d9c7254023d3f03b3c25d2c7cc9e7b))
+* update search page POM with default value for sorting ([#1965](https://github.com/dnum-mi/referentiel-applications/issues/1965)) ([55632de](https://github.com/dnum-mi/referentiel-applications/commit/55632de574d9c7254023d3f03b3c25d2c7cc9e7b))
 
 ## [1.80.1](https://github.com/dnum-mi/referentiel-applications/compare/v1.80.0...v1.80.1) (2026-06-26)
 
@@ -425,7 +505,7 @@
 ### Features
 
 * :lipstick: update refapp logo ([#1689](https://github.com/dnum-mi/referentiel-applications/issues/1689)) ([312ead5](https://github.com/dnum-mi/referentiel-applications/commit/312ead51e1e6db7adf1f33d9ecf9ec60f66139bb))
-* :sparkles: add mulitple rgaa compliances ([#1684](https://github.com/dnum-mi/referentiel-applications/issues/1684)) ([37167a4](https://github.com/dnum-mi/referentiel-applications/commit/37167a4f301d020e18dc1579eb542ad60b8278e5))
+* :sparkles: add multiple rgaa compliances ([#1684](https://github.com/dnum-mi/referentiel-applications/issues/1684)) ([37167a4](https://github.com/dnum-mi/referentiel-applications/commit/37167a4f301d020e18dc1579eb542ad60b8278e5))
 
 
 ### Bug Fixes
@@ -556,7 +636,7 @@
 * add direction metier into columns and move filter to actor filter ([#1573](https://github.com/dnum-mi/referentiel-applications/issues/1573)) ([6b36d5a](https://github.com/dnum-mi/referentiel-applications/commit/6b36d5a3f68d56656b416ceb9532cf2e293bd79a))
 * add hosting active inactive mode ([#1590](https://github.com/dnum-mi/referentiel-applications/issues/1590)) ([d7e2fc8](https://github.com/dnum-mi/referentiel-applications/commit/d7e2fc860c3dbae99e814034ec5f87529bfa062e))
 * add pagination on organization ([#1569](https://github.com/dnum-mi/referentiel-applications/issues/1569)) ([d66d1a6](https://github.com/dnum-mi/referentiel-applications/commit/d66d1a6c27094b4ffd11fddabc0a74a9e75a7132))
-* typing improvement pagingation type in swagger ([#1576](https://github.com/dnum-mi/referentiel-applications/issues/1576)) ([11179c7](https://github.com/dnum-mi/referentiel-applications/commit/11179c703fd705d7bc7d2424ce2a4626bc00aa18))
+* typing improvement pagination type in swagger ([#1576](https://github.com/dnum-mi/referentiel-applications/issues/1576)) ([11179c7](https://github.com/dnum-mi/referentiel-applications/commit/11179c703fd705d7bc7d2424ce2a4626bc00aa18))
 
 
 ### Bug Fixes
@@ -639,7 +719,7 @@
 
 * add token active limit ([#1478](https://github.com/dnum-mi/referentiel-applications/issues/1478)) ([b740bd8](https://github.com/dnum-mi/referentiel-applications/commit/b740bd866bbea70ba395ccdaaa5b6e848e0b93bd))
 * do not refresh app list when user use input search relation ([#1473](https://github.com/dnum-mi/referentiel-applications/issues/1473)) ([14a189b](https://github.com/dnum-mi/referentiel-applications/commit/14a189b3e99a9fba6020e29fce80767a2849a677))
-* remove redondant bug title template title format ([#1486](https://github.com/dnum-mi/referentiel-applications/issues/1486)) ([509b9be](https://github.com/dnum-mi/referentiel-applications/commit/509b9be805c37875282101717661d2c97292727d))
+* remove redundant bug title template title format ([#1486](https://github.com/dnum-mi/referentiel-applications/issues/1486)) ([509b9be](https://github.com/dnum-mi/referentiel-applications/commit/509b9be805c37875282101717661d2c97292727d))
 
 ## [1.62.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.61.0...v1.62.0) (2026-02-13)
 
