@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Plateforme d'orchestration pour workflows d'IA agentiques, permettant de construire, exécuter et gérer des agents complexes via un langage déclaratif et une interface visuelle.",
+  "description": "Plateforme d'orchestration pour workflows d'agents d'IA, permettant de définir des processus complexes via un DSL déclaratif. Elle offre un plan de contrôle pour gérer l'exécution, le budget et la supervision humaine des agents.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
@@ -9,53 +9,59 @@
     "Interface utilisateur & Design",
     "Sécurité & Conformité",
     "Administration & Backoffice",
-    "Monitoring & Logs",
-    "Données & Schémas",
-    "Infrastructure & Stockage"
+    "Suivi & Traçabilité",
+    "Gestion des utilisateurs & Permissions",
+    "Monitoring & Logs"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Go",
     "MongoDB",
     "NATS JetStream",
-    "Docker",
     "Kubernetes",
+    "Docker",
     "Prometheus",
     "Grafana",
-    "TypeScript SDK"
+    "TypeScript"
   ],
   "components": [
     "API REST & GraphQL",
-    "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "MongoDB & NoSQL",
+    "TypeScript / JavaScript",
     "Intelligence Artificielle / ML",
+    "MongoDB & NoSQL",
     "CI/CD & Déploiement",
-    "Webhooks & Événements",
-    "Documentation & Schémas"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "sso",
+      "oauth2",
       "api-key",
-      "jwt"
+      "sso",
+      "jwt",
+      "session"
+    ],
+    "providers": [
+      "GitHub",
+      "GitLab"
     ]
   },
-  "tests": "Adversarial review loops and automated validation",
   "workflows": [
-    "GitHub Actions"
+    "Helm deployment",
+    "CI/CD"
   ],
-  "lastActivity": "2026-09-27T00:00:00Z",
+  "lastActivity": "2026-10-13T00:00:00Z",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
-    "TypeScript",
-    "Docker & Conteneurs",
     "Git & DevOps",
+    "Docker & Conteneurs",
+    "Kubernetes & Helm",
+    "TypeScript",
     "CI/CD & GitHub Actions",
-    "Standards & Schémas"
+    "Sécurité & Auth"
   ]
 }
