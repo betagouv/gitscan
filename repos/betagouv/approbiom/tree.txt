@@ -10,11 +10,14 @@
 ├── .prettierrc
 ├── README.md
 ├── docs
-│   └── adr
-│       ├── 0001-multi-widget-frontend-architecture.md
-│       ├── 0002-grist-desktop-as-local-integration-environment.md
-│       ├── 0003-leaflet-for-map.md
-│       └── template-nygard.md
+│   ├── adr
+│   │   ├── 0001-multi-widget-frontend-architecture.md
+│   │   ├── 0002-grist-desktop-as-local-integration-environment.md
+│   │   ├── 0003-leaflet-for-map.md
+│   │   ├── 0004-attachment-metadata-for-non-owners.md
+│   │   └── template-nygard.md
+│   └── e2e
+│       └── import-ademe.md
 ├── eslint.config.js
 ├── index.html
 ├── package.json
@@ -31,7 +34,10 @@
 │   │   │   │   ├── attachment.ts
 │   │   │   │   ├── crb.ts
 │   │   │   │   ├── demande-subvention.ts
+│   │   │   │   ├── document-extractor-approvisionnement.ts
+│   │   │   │   ├── entreprise-search.ts
 │   │   │   │   ├── entreprise.ts
+│   │   │   │   ├── extracted-approvisionnement.ts
 │   │   │   │   ├── installation.ts
 │   │   │   │   ├── instruction.ts
 │   │   │   │   ├── plan-d-approvisionnement.ts
@@ -41,17 +47,32 @@
 │   │   │   └── services
 │   │   │       ├── approvisionnement-stats.test.ts
 │   │   │       ├── approvisionnement-stats.ts
+│   │   │       ├── count-imported-approvisionnements.test.ts
+│   │   │       ├── count-imported-approvisionnements.ts
+│   │   │       ├── extract-approvisionnement-from-document.test.ts
+│   │   │       ├── extract-approvisionnement-from-document.ts
+│   │   │       ├── find-entreprise-by-siret.test.ts
+│   │   │       ├── find-entreprise-by-siret.ts
 │   │   │       ├── get-update-instruction.ts
+│   │   │       ├── import-extracted-approvisionnements.test.ts
+│   │   │       ├── import-extracted-approvisionnements.ts
 │   │   │       ├── plan-detail.test.ts
 │   │   │       ├── plan-detail.ts
+│   │   │       ├── plan-view.test.ts
+│   │   │       ├── plan-view.ts
+│   │   │       ├── update-extracted-approvisionnement.test.ts
+│   │   │       ├── update-extracted-approvisionnement.ts
 │   │   │       └── update-is-plan-laureat-for-programme-aide.ts
 │   │   ├── domain
 │   │   │   ├── entities
+│   │   │   │   ├── approvisionnement.test.ts
 │   │   │   │   ├── approvisionnement.ts
 │   │   │   │   ├── attachment.ts
 │   │   │   │   ├── crb.ts
 │   │   │   │   ├── demande-subvention.ts
 │   │   │   │   ├── entreprise.ts
+│   │   │   │   ├── extracted-approvisionnement.test.ts
+│   │   │   │   ├── extracted-approvisionnement.ts
 │   │   │   │   ├── installation.ts
 │   │   │   │   ├── instruction.test.ts
 │   │   │   │   ├── instruction.ts
@@ -64,34 +85,49 @@
 │   │   │       ├── commune.ts
 │   │   │       ├── departement.test.ts
 │   │   │       ├── departement.ts
+│   │   │       ├── extracted-approvisionnement-controle.ts
+│   │   │       ├── extracted-approvisionnement-provenance-repartition.ts
 │   │   │       ├── pays.ts
 │   │   │       ├── phase-instruction.ts
 │   │   │       ├── plan-statut.ts
 │   │   │       ├── provenance.ts
 │   │   │       ├── region.ts
+│   │   │       ├── siret.test.ts
+│   │   │       ├── siret.ts
+│   │   │       ├── tonnage.test.ts
+│   │   │       ├── tonnage.ts
 │   │   │       └── usage.ts
 │   │   └── errors.ts
 │   ├── infrastructure
 │   │   ├── grist
 │   │   │   ├── adapters
 │   │   │   │   ├── grist-adapter-a-importer-approvisionnement.ts
-│   │   │   │   ├── grist-adapter-approvisionnement.test.ts
-│   │   │   │   ├── grist-adapter-approvisionnement.ts
+│   │   │   │   ├── grist-adapter-approvisionnement
+│   │   │   │   │   ├── grist-adapter-approvisionnement.test.ts
+│   │   │   │   │   ├── grist-adapter-approvisionnement.ts
+│   │   │   │   │   └── utils.ts
+│   │   │   │   ├── grist-adapter-attachment.test.ts
 │   │   │   │   ├── grist-adapter-attachment.ts
 │   │   │   │   ├── grist-adapter-crb.ts
 │   │   │   │   ├── grist-adapter-demande-subvention.ts
 │   │   │   │   ├── grist-adapter-entreprise.ts
+│   │   │   │   ├── grist-adapter-extracted-approvisionnement
+│   │   │   │   │   ├── grist-adapter-extracted-approvisionnement.test.ts
+│   │   │   │   │   ├── grist-adapter-extracted-approvisionnement.ts
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── grist-adapter-installation.test.ts
 │   │   │   │   ├── grist-adapter-installation.ts
 │   │   │   │   ├── grist-adapter-instruction.ts
 │   │   │   │   ├── grist-adapter-plan.test.ts
 │   │   │   │   ├── grist-adapter-plan.ts
+│   │   │   │   ├── grist-adapter-programme-aide.test.ts
 │   │   │   │   ├── grist-adapter-programme-aide.ts
 │   │   │   │   ├── grist-adapter-referentiel-geo.ts
 │   │   │   │   ├── grist-adapter-ressource.ts
 │   │   │   │   └── grist-on-record-attachment.ts
 │   │   │   ├── helpers
 │   │   │   │   ├── grist-attachments.ts
+│   │   │   │   ├── grist-document-states.ts
 │   │   │   │   ├── grist-get-access-token.ts
 │   │   │   │   ├── grist-helpers.test.ts
 │   │   │   │   ├── grist-helpers.ts
@@ -100,14 +136,25 @@
 │   │   │       ├── grist-plugin-api.d.ts
 │   │   │       └── grist-tables.ts
 │   │   ├── import-bcib-bciat
+│   │   │   ├── find-in-text.ts
 │   │   │   ├── helpers.test.ts
 │   │   │   ├── helpers.ts
 │   │   │   ├── importRows.ts
+│   │   │   ├── match-fournisseur.test.ts
+│   │   │   ├── match-fournisseur.ts
+│   │   │   ├── match-ressource.test.ts
+│   │   │   ├── match-ressource.ts
 │   │   │   └── transform-provenance
 │   │   │       ├── generate-place-names.ts
 │   │   │       ├── place-names.json
 │   │   │       ├── reference-data.ts
+│   │   │       ├── transform-provenance.test.ts
 │   │   │       └── transform-provenance.ts
+│   │   ├── referentiel-entreprise
+│   │   │   ├── annuaire-entreprises.test.ts
+│   │   │   ├── annuaire-entreprises.ts
+│   │   │   ├── recherche-entreprises-adapter.test.ts
+│   │   │   └── recherche-entreprises-adapter.ts
 │   │   └── referentiel-geo
 │   │       ├── communes.json
 │   │       ├── countries-contours.json
@@ -121,6 +168,7 @@
 │   └── react
 │       ├── components
 │       │   ├── Alert
+│       │   │   ├── Alert.test.tsx
 │       │   │   ├── Alert.tsx
 │       │   │   └── index.ts
 │       │   ├── AsyncGate.tsx
@@ -129,17 +177,48 @@
 │       │   │   ├── Badge.tsx
 │       │   │   ├── Badge.types.ts
 │       │   │   └── index.ts
+│       │   ├── Combobox
+│       │   │   ├── Combobox.css
+│       │   │   ├── Combobox.test.tsx
+│       │   │   ├── Combobox.tsx
+│       │   │   ├── Combobox.types.ts
+│       │   │   └── index.ts
+│       │   ├── CopyButton
+│       │   │   ├── CopyButton.test.tsx
+│       │   │   ├── CopyButton.tsx
+│       │   │   ├── CopyButton.types.ts
+│       │   │   └── index.ts
 │       │   ├── DataTable
 │       │   │   ├── DataTable.css
 │       │   │   ├── DataTable.test.tsx
 │       │   │   ├── DataTable.tsx
 │       │   │   ├── DataTable.types.ts
 │       │   │   └── index.ts
+│       │   ├── DismissibleTag
+│       │   │   ├── DismissibleTag.test.tsx
+│       │   │   ├── DismissibleTag.tsx
+│       │   │   ├── DismissibleTag.types.ts
+│       │   │   └── index.ts
+│       │   ├── FournisseurField
+│       │   │   ├── FournisseurField.test.tsx
+│       │   │   ├── FournisseurField.tsx
+│       │   │   ├── NewFournisseurPanel.css
+│       │   │   ├── NewFournisseurPanel.test.tsx
+│       │   │   ├── NewFournisseurPanel.tsx
+│       │   │   ├── index.ts
+│       │   │   ├── siret.test.ts
+│       │   │   └── siret.ts
 │       │   ├── Map
 │       │   │   ├── Map.css
 │       │   │   ├── Map.test.tsx
 │       │   │   ├── Map.tsx
 │       │   │   ├── Map.types.ts
+│       │   │   └── index.ts
+│       │   ├── Modal
+│       │   │   ├── Modal.css
+│       │   │   ├── Modal.test.tsx
+│       │   │   ├── Modal.tsx
+│       │   │   ├── Modal.types.ts
 │       │   │   └── index.ts
 │       │   ├── MultiSelect
 │       │   │   ├── MultiSelect.css
@@ -147,6 +226,10 @@
 │       │   │   ├── MultiSelect.tsx
 │       │   │   ├── MultiSelect.types.ts
 │       │   │   ├── getOptions.ts
+│       │   │   └── index.ts
+│       │   ├── PlanHeader
+│       │   │   ├── PlanHeader.css
+│       │   │   ├── PlanHeader.tsx
 │       │   │   └── index.ts
 │       │   ├── Radio
 │       │   │   ├── Radio.test.tsx
@@ -172,6 +255,11 @@
 │       │   │   ├── Select.tsx
 │       │   │   ├── Select.types.ts
 │       │   │   └── index.ts
+│       │   ├── SelectableTag
+│       │   │   ├── SelectableTag.test.tsx
+│       │   │   ├── SelectableTag.tsx
+│       │   │   ├── SelectableTag.types.ts
+│       │   │   └── index.ts
 │       │   ├── TabNav
 │       │   │   ├── TabNav.css
 │       │   │   ├── TabNav.test.tsx
@@ -194,7 +282,10 @@
 │       │   │   ├── Toggle.tsx
 │       │   │   ├── Toggle.types.ts
 │       │   │   └── index.ts
+│       │   ├── document-icon.ts
 │       │   └── grist-render-error.tsx
+│       ├── format.test.ts
+│       ├── format.ts
 │       └── hooks
 │           ├── UseAsyncState.ts
 │           └── useAsyncState.test.ts
@@ -236,6 +327,288 @@
     │       ├── main.tsx
     │       ├── utils.test.ts
     │       └── utils.ts
+    ├── approvisionnements-import-document
+    │   ├── README.md
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── components
+    │       │   ├── Screen.tsx
+    │       │   ├── ScreenImportFromDoc
+    │       │   │   ├── DocumentContext
+    │       │   │   │   ├── DocumentContext.css
+    │       │   │   │   ├── DocumentContext.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── DocumentPicker
+    │       │   │   │   ├── DocumentPicker.css
+    │       │   │   │   ├── DocumentPicker.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── Extraction
+    │       │   │   │   ├── Extraction.css
+    │       │   │   │   ├── Extraction.test.tsx
+    │       │   │   │   ├── Extraction.tsx
+    │       │   │   │   ├── ExtractionFailure.tsx
+    │       │   │   │   ├── ExtractionLoading.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ReextractModal
+    │       │   │   │   ├── ReextractModal.css
+    │       │   │   │   ├── ReextractModal.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ScreenImportFromDoc.css
+    │       │   │   ├── ScreenImportFromDoc.test.tsx
+    │       │   │   ├── ScreenImportFromDoc.tsx
+    │       │   │   ├── Verification
+    │       │   │   │   ├── DistributionList.tsx
+    │       │   │   │   ├── ImportModal
+    │       │   │   │   │   ├── ImportModal.test.tsx
+    │       │   │   │   │   ├── ImportModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── ProvenanceEditor
+    │       │   │   │   │   ├── ProvenanceEditor.css
+    │       │   │   │   │   ├── ProvenanceEditor.test.tsx
+    │       │   │   │   │   ├── ProvenanceEditor.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── ReviewModal
+    │       │   │   │   │   ├── ReviewModal.css
+    │       │   │   │   │   ├── ReviewModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── Verification.css
+    │       │   │   │   ├── Verification.test.tsx
+    │       │   │   │   ├── Verification.tsx
+    │       │   │   │   ├── extracted-line.test.ts
+    │       │   │   │   ├── extracted-line.ts
+    │       │   │   │   └── index.ts
+    │       │   │   └── index.ts
+    │       │   ├── usePlanData.test.ts
+    │       │   └── usePlanData.ts
+    │       ├── fake-data
+    │       │   ├── approvisionnements.test.ts
+    │       │   ├── approvisionnements.ts
+    │       │   ├── attachments.ts
+    │       │   ├── demandes-subvention.ts
+    │       │   ├── departements.ts
+    │       │   ├── entreprise-search.ts
+    │       │   ├── entreprises.ts
+    │       │   ├── extract-data.ts
+    │       │   ├── extracted-approvisionnements.test.ts
+    │       │   ├── extracted-approvisionnements.ts
+    │       │   ├── extracted-lines.ts
+    │       │   ├── plans.ts
+    │       │   ├── ports.ts
+    │       │   ├── programmes-aide.ts
+    │       │   └── ressources.ts
+    │       ├── format-extracted-at.test.ts
+    │       ├── format-extracted-at.ts
+    │       ├── index.css
+    │       ├── main.tsx
+    │       ├── ports.ts
+    │       └── referentiels.ts
+    ├── approvisionnements-plan
+    │   ├── README.md
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── approvisionnement-form.test.ts
+    │       ├── approvisionnement-form.ts
+    │       ├── approvisionnement-rows.test.ts
+    │       ├── approvisionnement-rows.ts
+    │       ├── components
+    │       │   ├── FournisseurField
+    │       │   │   ├── FournisseurField.test.tsx
+    │       │   │   ├── FournisseurField.tsx
+    │       │   │   ├── NewFournisseurPanel.css
+    │       │   │   ├── NewFournisseurPanel.test.tsx
+    │       │   │   ├── NewFournisseurPanel.tsx
+    │       │   │   ├── index.ts
+    │       │   │   ├── siret.test.ts
+    │       │   │   └── siret.ts
+    │       │   ├── NewPaysForm
+    │       │   │   ├── NewPaysForm.css
+    │       │   │   ├── NewPaysForm.test.tsx
+    │       │   │   ├── NewPaysForm.tsx
+    │       │   │   └── index.ts
+    │       │   ├── PlanHeader
+    │       │   │   ├── PlanHeader.css
+    │       │   │   ├── PlanHeader.tsx
+    │       │   │   └── index.ts
+    │       │   ├── Screen.test.tsx
+    │       │   ├── Screen.tsx
+    │       │   ├── ScreenImportFromDoc
+    │       │   │   ├── DocumentContext
+    │       │   │   │   ├── DocumentContext.css
+    │       │   │   │   ├── DocumentContext.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── DocumentPicker
+    │       │   │   │   ├── DocumentPicker.css
+    │       │   │   │   ├── DocumentPicker.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── Extraction
+    │       │   │   │   ├── Extraction.css
+    │       │   │   │   ├── Extraction.test.tsx
+    │       │   │   │   ├── Extraction.tsx
+    │       │   │   │   ├── ExtractionFailure.tsx
+    │       │   │   │   ├── ExtractionLoading.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ReextractModal
+    │       │   │   │   ├── ReextractModal.css
+    │       │   │   │   ├── ReextractModal.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ScreenImportFromDoc.css
+    │       │   │   ├── ScreenImportFromDoc.test.tsx
+    │       │   │   ├── ScreenImportFromDoc.tsx
+    │       │   │   ├── Verification
+    │       │   │   │   ├── DistributionList.tsx
+    │       │   │   │   ├── ImportModal
+    │       │   │   │   │   ├── ImportModal.css
+    │       │   │   │   │   ├── ImportModal.test.tsx
+    │       │   │   │   │   ├── ImportModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── ProvenanceEditor
+    │       │   │   │   │   ├── ProvenanceEditor.css
+    │       │   │   │   │   ├── ProvenanceEditor.test.tsx
+    │       │   │   │   │   ├── ProvenanceEditor.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── ReviewModal
+    │       │   │   │   │   ├── ReviewModal.css
+    │       │   │   │   │   ├── ReviewModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── Verification.css
+    │       │   │   │   ├── Verification.test.tsx
+    │       │   │   │   ├── Verification.tsx
+    │       │   │   │   ├── extracted-line.test.ts
+    │       │   │   │   ├── extracted-line.ts
+    │       │   │   │   └── index.ts
+    │       │   │   └── index.ts
+    │       │   ├── ScreenPlanApprovisionnement
+    │       │   │   ├── EmptyPlan
+    │       │   │   │   ├── EmptyPlan.css
+    │       │   │   │   ├── EmptyPlan.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ExtractionsInProgress
+    │       │   │   │   ├── ExtractionsInProgress.css
+    │       │   │   │   ├── ExtractionsInProgress.test.tsx
+    │       │   │   │   ├── ExtractionsInProgress.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ScreenPlanApprovisionnement.tsx
+    │       │   │   ├── TabApprovisionnement
+    │       │   │   │   ├── AddApprovisionnementModal
+    │       │   │   │   │   ├── AddApprovisionnementModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── ApprovisionnementModal
+    │       │   │   │   │   ├── ApprovisionnementModal.css
+    │       │   │   │   │   ├── ApprovisionnementModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── DeleteApprovisionnementModal
+    │       │   │   │   │   ├── DeleteApprovisionnementModal.css
+    │       │   │   │   │   ├── DeleteApprovisionnementModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── TabApprovisionnement.css
+    │       │   │   │   ├── TabApprovisionnement.test.tsx
+    │       │   │   │   ├── TabApprovisionnement.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── TabSynthese
+    │       │   │   │   ├── RessourceFilter.css
+    │       │   │   │   ├── RessourceFilter.test.tsx
+    │       │   │   │   ├── RessourceFilter.tsx
+    │       │   │   │   ├── TabSynthese.css
+    │       │   │   │   ├── TabSynthese.test.tsx
+    │       │   │   │   ├── TabSynthese.tsx
+    │       │   │   │   ├── index.ts
+    │       │   │   │   ├── synthese.test.ts
+    │       │   │   │   └── synthese.ts
+    │       │   │   └── index.ts
+    │       │   ├── ScreenSelectPlan
+    │       │   │   ├── ScreenSelectPlan.css
+    │       │   │   ├── ScreenSelectPlan.tsx
+    │       │   │   └── index.ts
+    │       │   ├── usePlanData.test.ts
+    │       │   └── usePlanData.ts
+    │       ├── constant.ts
+    │       ├── fake-data
+    │       │   ├── approvisionnements.test.ts
+    │       │   ├── approvisionnements.ts
+    │       │   ├── attachments.ts
+    │       │   ├── demandes-subvention.ts
+    │       │   ├── departements.ts
+    │       │   ├── entreprise-search.ts
+    │       │   ├── entreprises.ts
+    │       │   ├── extract-data.ts
+    │       │   ├── extracted-approvisionnements.test.ts
+    │       │   ├── extracted-approvisionnements.ts
+    │       │   ├── extracted-lines.ts
+    │       │   ├── plans.ts
+    │       │   ├── ports.ts
+    │       │   ├── programmes-aide.ts
+    │       │   └── ressources.ts
+    │       ├── format-extracted-at.test.ts
+    │       ├── format-extracted-at.ts
+    │       ├── index.css
+    │       ├── main.tsx
+    │       ├── ports.ts
+    │       └── referentiels.ts
+    ├── approvisionnements-saisie-manuelle
+    │   ├── README.md
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── approvisionnement-form.test.ts
+    │       ├── approvisionnement-form.ts
+    │       ├── approvisionnement-rows.test.ts
+    │       ├── approvisionnement-rows.ts
+    │       ├── components
+    │       │   ├── Screen.test.tsx
+    │       │   ├── Screen.tsx
+    │       │   ├── ScreenPlanApprovisionnement
+    │       │   │   ├── EmptyPlan
+    │       │   │   │   ├── EmptyPlan.css
+    │       │   │   │   ├── EmptyPlan.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── ScreenPlanApprovisionnement.tsx
+    │       │   │   ├── TabApprovisionnement
+    │       │   │   │   ├── ApprovisionnementModal
+    │       │   │   │   │   ├── ApprovisionnementModal.css
+    │       │   │   │   │   ├── ApprovisionnementModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── DeleteApprovisionnementModal
+    │       │   │   │   │   ├── DeleteApprovisionnementModal.css
+    │       │   │   │   │   ├── DeleteApprovisionnementModal.tsx
+    │       │   │   │   │   └── index.ts
+    │       │   │   │   ├── TabApprovisionnement.css
+    │       │   │   │   ├── TabApprovisionnement.test.tsx
+    │       │   │   │   ├── TabApprovisionnement.tsx
+    │       │   │   │   └── index.ts
+    │       │   │   ├── TabSynthese
+    │       │   │   │   ├── RessourceFilter.css
+    │       │   │   │   ├── RessourceFilter.test.tsx
+    │       │   │   │   ├── RessourceFilter.tsx
+    │       │   │   │   ├── TabSynthese.css
+    │       │   │   │   ├── TabSynthese.test.tsx
+    │       │   │   │   ├── TabSynthese.tsx
+    │       │   │   │   ├── index.ts
+    │       │   │   │   ├── synthese.test.ts
+    │       │   │   │   └── synthese.ts
+    │       │   │   └── index.ts
+    │       │   ├── ScreenSelectPlan
+    │       │   │   ├── ScreenSelectPlan.css
+    │       │   │   ├── ScreenSelectPlan.tsx
+    │       │   │   └── index.ts
+    │       │   ├── usePlanData.test.ts
+    │       │   └── usePlanData.ts
+    │       ├── fake-data
+    │       │   ├── approvisionnements.test.ts
+    │       │   ├── approvisionnements.ts
+    │       │   ├── demandes-subvention.ts
+    │       │   ├── departements.ts
+    │       │   ├── entreprise-search.ts
+    │       │   ├── entreprises.ts
+    │       │   ├── plans.ts
+    │       │   ├── ports.ts
+    │       │   ├── programmes-aide.ts
+    │       │   └── ressources.ts
+    │       ├── index.css
+    │       ├── main.tsx
+    │       ├── ports.ts
+    │       └── referentiels.ts
     ├── concurrence
     │   ├── index.html
     │   └── src
@@ -255,18 +628,123 @@
     │       ├── components
     │       │   └── Import.tsx
     │       └── main.tsx
+    ├── import-ademe
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── components
+    │       │   ├── Screen.tsx
+    │       │   ├── extraction
+    │       │   │   ├── Extraction.css
+    │       │   │   ├── Extraction.tsx
+    │       │   │   ├── ExtractionFailure.tsx
+    │       │   │   ├── ExtractionLoading.tsx
+    │       │   │   ├── ExtractionSuccess.tsx
+    │       │   │   ├── extraction.types.ts
+    │       │   │   └── index.ts
+    │       │   ├── import-context
+    │       │   │   ├── ImportContext.css
+    │       │   │   ├── ImportContext.tsx
+    │       │   │   └── index.ts
+    │       │   ├── selection
+    │       │   │   ├── AttachmentPicker.test.tsx
+    │       │   │   ├── AttachmentPicker.tsx
+    │       │   │   ├── Selection.css
+    │       │   │   ├── Selection.tsx
+    │       │   │   └── index.ts
+    │       │   └── verification
+    │       │       ├── DistributionList.tsx
+    │       │       ├── DocumentData.tsx
+    │       │       ├── FoundData.tsx
+    │       │       ├── FournisseurField.test.tsx
+    │       │       ├── FournisseurField.tsx
+    │       │       ├── ImportActions.tsx
+    │       │       ├── ImportedData.tsx
+    │       │       ├── NewFournisseurPanel.test.tsx
+    │       │       ├── NewFournisseurPanel.tsx
+    │       │       ├── NewPaysForm.test.tsx
+    │       │       ├── NewPaysForm.tsx
+    │       │       ├── ProvenanceEditor.tsx
+    │       │       ├── Verification.css
+    │       │       ├── Verification.tsx
+    │       │       └── index.ts
+    │       ├── constant.ts
+    │       ├── download-and-extract.ts
+    │       ├── extract-document.test.ts
+    │       ├── extract-document.ts
+    │       ├── extracted-approvisionnement-port.ts
+    │       ├── fake-data
+    │       │   ├── attachments.ts
+    │       │   ├── demandes-subvention.ts
+    │       │   ├── departements.ts
+    │       │   ├── entreprise-search.ts
+    │       │   ├── entreprises.ts
+    │       │   ├── extract-data.ts
+    │       │   ├── extracted-approvisionnements.ts
+    │       │   ├── extracted-lines.ts
+    │       │   ├── plans.ts
+    │       │   ├── ports.ts
+    │       │   ├── programmes-aide.ts
+    │       │   └── ressources.ts
+    │       ├── find-entreprise-by-siret.test.ts
+    │       ├── find-entreprise-by-siret.ts
+    │       ├── format-extracted-at.test.ts
+    │       ├── format-extracted-at.ts
+    │       ├── import-line.test.ts
+    │       ├── import-line.ts
+    │       ├── import-progress.test.ts
+    │       ├── import-progress.ts
+    │       ├── index.css
+    │       ├── main.tsx
+    │       ├── siret.test.ts
+    │       └── siret.ts
     ├── playground
     │   ├── index.html
     │   └── src
     │       ├── App.tsx
     │       ├── index.css
     │       └── main.tsx
-    └── ressource
+    ├── rechercher-entreprise
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── components
+    │       │   ├── AnnuaireSearchLink.tsx
+    │       │   ├── EntrepriseResult.tsx
+    │       │   ├── EntrepriseSearch.css
+    │       │   ├── EntrepriseSearch.test.tsx
+    │       │   └── EntrepriseSearch.tsx
+    │       ├── index.css
+    │       └── main.tsx
+    ├── ressource
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── components
+    │       │   ├── RechercheDePlan.css
+    │       │   └── RechercheDePlan.tsx
+    │       └── main.tsx
+    └── tech
         ├── index.html
         └── src
             ├── App.tsx
+            ├── comparison-analysis.test.ts
+            ├── comparison-analysis.ts
             ├── components
-            │   ├── RechercheDePlan.css
-            │   └── RechercheDePlan.tsx
-            └── main.tsx
-59 directories, 212 files
+            │   ├── Accordion.tsx
+            │   ├── Comparisons.tsx
+            │   ├── JsonTree.tsx
+            │   ├── RawResultView.tsx
+            │   ├── ResultView.tsx
+            │   ├── StateComparison.tsx
+            │   ├── StatePicker.tsx
+            │   └── UserActions.tsx
+            ├── hooks
+            │   └── useRawResult.ts
+            ├── index.css
+            ├── main.tsx
+            ├── types
+            │   └── compare-version.d.ts
+            ├── user-actions.test.ts
+            └── user-actions.ts
+135 directories, 614 files
