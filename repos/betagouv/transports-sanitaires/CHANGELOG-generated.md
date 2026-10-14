@@ -1,27 +1,38 @@
 ## Changelog : transports-sanitaires (30 derniers jours, au 29 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par une mise à jour majeure du modèle d'éligibilité (passage à la version 9.7.3) et une refonte profonde du système de génération des formulaires administratifs. Le simulateur est désormais plus précis et cohérent, grâce à une liaison directe entre les règles métier et le remplissage automatique des documents officiels (Cerfa, DAP, PMT), tout en améliorant la lisibilité des exports PDF.
+Ce mois a été marqué par une montée en version majeure (v9.7.3) centrée sur la fiabilité des documents administratifs et la précision du simulateur. L'évolution majeure réside dans l'implémentation d'un système de "mapping documentaire" qui automatise et sécurise le remplissage des formulaires (Cerfa, DAP, PMT). Les règles de calcul liées aux situations médicales spécifiques (radiothérapie, EHPAD, etc.) ont été affinées pour garantir une simulation plus proche de la réalité.
 
 ### Évolutions fonctionnelles
-- **Mise à jour du modèle** : Intégration de la version 9.7.3 du modèle d'éligibilité ([#3](https://github.com/betagouv/transports-sanitaires/pull/3)).
-- **Automatisation des formulaires** : Les tableaux de remplissage des documents (Cerfa, DAP, PMT et S3141) sont désormais pilotés par un mapping documentaire, garantissant que les données saisies correspondent exactement aux exigences des formulaires.
-- **Optimisation du Cerfa** : Le texte médical est désormais intégré intégralement dans le formulaire Cerfa, supprimant la nécessité de fournir une annexe séparée ([#12](https://github.com/betagouv/transports-sanitaires/pull/12)).
-- **Amélioration de l'expérience utilisateur** :
-    - Possibilité de saisir les précisions médicales directement dans l'interface ([#15](https://github.com/betagouv/transports-sanitaires/pull/15)).
-    - Déduction automatique de certains lieux pour éviter de poser des questions redondantes ([#11](https://github.com/betagouv/transports-sanitaires/pull/11)).
-    - Meilleure lisibilité des adresses dans les documents PDF générés ([#14](https://github.com/betagouv/transports-sanitaires/pull/14)).
-- **Corrections de bugs** :
-    - Résolution de problèmes de cohérence sur les destinations d'urgence et les retours pénitentiaires ([#4](https://github.com/betagouv/transports-sanitaires/pull/4), [#5](https://github.com/betagouv/transports-sanitaires/pull/5)).
-    - Correction des exceptions liées à la radiothérapie et aux établissements (EHPAD/USLD) ([#6](https://github.com/betagouv/transports-sanitaires/pull/6), [#7](https://github.com/betagouv/transports-sanitaires/pull/7), [#8](https://github.com/betagouv/transports-sanitaires/pull/8)).
-    - Correction de l'affichage des adresses lors de la navigation arrière dans le simulateur.
+
+**Formulaires et documents administratifs**
+- Automatisation du pré-remplissage des formulaires Cerfa, DAP, PMT et S3141 grâce à un nouveau socle de mapping documentaire. [#14](https://github.com/betagouv/transports-sanitaires/issues/14)
+- Intégration directe du texte médical intégral dans les formulaires Cerfa, supprimant la nécessité d'ajouter des annexes. [#12](https://github.com/betagouv/transports-sanitaires/issues/12)
+- Amélioration de la lisibilité des adresses dans les documents PDF générés. [#14](https://github.com/betagouv/transports-sanitaires/issues/14)
+
+**Simulation et expérience utilisateur**
+- Amélioration de la précision de la saisie des informations médicales via une saisie directe. [#15](https://github.com/betagouv/transports-sanitaires/issues/15)
+- Affichage des lieux déduits lors de l'étape de résultat de la simulation. [#11](https://github.com/betagouv/transports-sanitaires/issues/11)
+- Requalification automatique de la convocation lorsque le trajet est modifié.
+- Meilleure gestion de l'orientation vers la caisse d'assurance maladie pour le patient.
+
+**Corrections de bugs**
+- Résolution de plusieurs anomalies de calcul liées aux exceptions médicales (radiothérapie, transferts compatibles, séjours en EHPAD/USLD). [#6](https://github.com/betagouv/transports-sanitaires/issues/6), [#7](https://github.com/betagouv/transports-sanitaires/issues/7), [#8](https://github.com/betagouv/transports-sanitaires/issues/8)
+- Correction de problèmes de cohérence sur les destinations d'urgence et les retours pénitentiaires. [#4](https://github.com/betagouv/transports-sanitaires/issues/4), [#5](https://github.com/betagouv/transports-sanitaires/issues/5)
+- Correction de l'affichage des adresses et des totaux de permission (DAP) dans les documents. [#2](https://github.com/betagouv/transports-sanitaires/issues/2), [#9](https://github.com/betagouv/transports-sanitaires/issues/9)
 
 ### Évolutions techniques
-- **Refactorisation de la logique métier** : Optimisation de l'ordre des questions (ex: l'urgence est désormais posée après le trajet) et découplage de certains composants pour une meilleure maintenance ([#17](https://github.com/betagouv/transports-sanitaires/pull/17), [51ed317]).
-- **Restructuration du code** : Réorganisation du dossier `secretariat/` en dossiers dédiés pour clarifier l'architecture ([c43aed5]).
-- **Sécurité** : Mise à jour de la dépendance `qs` pour corriger des vulnérabilités identifiées ([c30a967]).
-- **Analytique** : Stabilisation du suivi des données en figeant le nommage des événements Matomo ([94b23bd]).
+
+**Architecture et Refactoring**
+- Refonte de la structure du code pour isoler les modules de gestion des formulaires Cerfa.
+- Réorganisation des dossiers internes (notamment le dossier `secretariat/`) pour une meilleure maintenance.
+- Stabilisation du nommage des événements Matomo pour fiabiliser le suivi analytique.
+
+**Qualité et Sécurité**
+- Mise à jour de la bibliothèque `qs` pour corriger des vulnérabilités de sécurité (avis GHSA).
+- Renforcement de la couverture de tests unitaires sur les nouveaux mécanismes de mapping documentaire (DAP, PMT, S3141).
+- Mise à jour des recettes de tests pour accompagner les versions 9.7.x.
 
 ### Autres changements
-- **Documentation** : Réorganisation complète de la documentation vers une structure de "divulgation progressive" (`docs/knowledge/`) et mise à jour systématique du README pour les nouvelles versions.
-- **Tests** : Augmentation significative de la couverture de tests sur les nouveaux champs liés au mapping documentaire et mise à jour des suites de tests (recettes) pour accompagner les versions 9.7.x.
+- Refonte de la documentation technique avec une organisation par "connaissances" (`docs/knowledge/`) pour une divulgation progressive de l'information.
+- Mise à jour régulière du README et de la documentation d'intégration.
