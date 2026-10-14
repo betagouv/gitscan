@@ -6,6 +6,7 @@
 │       ├── attest-helm.yml
 │       ├── build-docker.yml
 │       ├── cd.yml
+│       ├── check-jobs.yml
 │       ├── ci.yml
 │       ├── clean-cache.yml
 │       ├── clean-images.yml
@@ -37,6 +38,7 @@
 │       ├── attest-helm-charts.test.sh
 │       ├── build-docker-credentials.test.sh
 │       ├── build-docker-oci-metadata.test.sh
+│       ├── check-jobs-results.test.sh
 │       ├── clean-cache-refs.test.sh
 │       ├── clean-images-guard.test.sh
 │       ├── credential-validation.test.sh
@@ -45,11 +47,20 @@
 │       ├── permission-union.test.sh
 │       ├── release-app-automerge.test.sh
 │       ├── release-app-manifest-sync.test.sh
+│       ├── release-app-prerelease-anchor.test.sh
 │       ├── release-app-prerelease-sync-assert.test.sh
+│       ├── release-app-release-assertions.test.sh
 │       ├── release-helm-channels.test.sh
+│       ├── release-helm-local-publish.test.sh
+│       ├── release-helm-publish.test.sh
 │       ├── release-helm-signing.test.sh
+│       ├── release-npm-provenance.test.sh
 │       ├── run.sh
+│       ├── scan-report-link.test.sh
+│       ├── shell-declared.test.sh
+│       ├── sync-prerelease-branch-rebase.test.sh
 │       ├── sync-prerelease-branch.test.sh
+│       ├── test-helm-target-branch.test.sh
 │       ├── update-helm-chart-automerge.test.sh
 │       ├── update-helm-chart-injection.test.sh
 │       ├── update-helm-chart-local-push.test.sh
@@ -85,6 +96,7 @@
 │       ├── 70-clean-cache.md
 │       ├── 71-clean-images.md
 │       ├── 72-sync-cpin.md
+│       ├── 80-check-jobs.md
 │       └── 90-monorepo-release.md
 ├── git-hooks
 │   ├── commit-msg
@@ -101,4 +113,4 @@
 │       └── signed-commit
 ├── release-please-config.json
 └── renovate.json
-14 directories, 89 files
+14 directories, 101 files

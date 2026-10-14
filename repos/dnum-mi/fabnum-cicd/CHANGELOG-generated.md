@@ -1,20 +1,23 @@
-## Changelog : fabnum-cicd (30 derniers jours, au 22 septembre 2026)
+## Changelog : fabnum-cicd (30 derniers jours, au 13/10/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la standardisation de la construction des images Docker via l'adoption des normes OCI et sur l'amélioration de la fiabilité des workflows. Plusieurs corrections ont été apportées pour stabiliser les processus de scan de sécurité et de nettoyage des images.
+Ce mois-ci, le projet a franchi une étape importante avec la synchronisation des workflows réutilisables vers la version 0.40.0 de la référence (upstream). Ces évolutions renforcent la fiabilité des processus de publication et de construction d'images Docker, tout en optimisant la structure de validation de la chaîne CI/CD.
 
 ### Évolutions fonctionnelles
-- **build-docker** : Ajout de labels et d'annotations OCI standards, avec la possibilité pour l'utilisateur de les désactiver.
-- **build-docker** : Le tag `TAG_SHORT_SHA` est désormais optionnel et désactivé par défaut.
-- **update-helm-chart** : En mode local, le push s'effectue désormais avec l'application configurée.
+- **build-docker** : Ajout de labels et d'annotations conformes aux standards OCI, avec la possibilité pour les utilisateurs de désactiver ce jeu de métadonnées.
+- **release-app** : Amélioration de la logique de publication pour éviter la création de branches de pré-version redondantes.
 
 ### Évolutions techniques
-- **scan-gitleaks** : Correction pour limiter le périmètre du scan à la référence (ref) actuellement extraite.
-- **clean-images** : Le workflow ne s'interrompt plus si la suppression de la dernière version taguée d'un package échoue.
-- **workflows** : Suppression du filtre de branche dans les liens pointant vers l'onglet de sécurité.
-- **tests** : Amélioration de l'exécution des blocs de code extraits en utilisant directement le shell du runner.
-- **actionlint** : Mise à jour de la configuration pour autoriser les labels `ubuntu-26.04`.
+- **Synchronisation majeure** : Mise à jour des workflows réutilisables avec la version upstream 0.40.0 et intégration des correctifs associés.
+- **Optimisation de la CI** : Centralisation de la validation des pipelines derrière un contrôle unique obligatoire pour simplifier le suivi des échecs.
+- **Amélioration de `sync-prerelease-branch`** : 
+    - Intégration de correctifs de revue issus de l'upstream.
+    - Gestion automatisée des conflits de fichiers de release lors des opérations de rebase.
+    - Support de l'authentification via un token GitHub App pour les opérations de push.
+- **Qualité et Tests** : 
+    - Extension de la couverture de tests pour couvrir les nouveaux workflows synchronisés.
+    - Correction de la configuration CI pour assurer la compatibilité avec les labels Ubuntu 26.04.
+    - Correction des tests d'exécution de blocs de code dans le shell du runner.
 
 ### Autres changements
-- Documentation de la protection de la dernière version taguée dans le workflow `clean-images`.
-- Documentation de l'entrée `TAG_SHORT_SHA` pour le workflow `build-docker`.
+- Mise à jour de la documentation technique en français suite à la synchronisation des workflows.

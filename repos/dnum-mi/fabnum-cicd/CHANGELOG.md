@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.22.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.21.0...v0.22.0) (2026-10-08)
+
+
+### Features
+
+* **release-app:** assert the release anchor and skip an identical prerelease branch ([8e8901b](https://github.com/dnum-mi/fabnum-cicd/commit/8e8901b1436f2f0893d9f53b986dfcf603238538))
+* **sync-prerelease-branch:** anchor release-please and merge release-file conflicts on rebase ([d94c3d6](https://github.com/dnum-mi/fabnum-cicd/commit/d94c3d6e298b3eefe4572956c8f6d72fdb1d8f22))
+* **sync-prerelease-branch:** port the 5 review fixes from upstream ([e0665a3](https://github.com/dnum-mi/fabnum-cicd/commit/e0665a32c7936465e499e1ee39201a2a2284ea07))
+
+
+### Dependencies
+
+* **deps:** update actions/download-artifact to v8.0.2 ([9486375](https://github.com/dnum-mi/fabnum-cicd/commit/948637592d954e0f01c772427581a2e3865e14e6))
+* **deps:** update actions/setup-node to v7.1.0 ([a0975c6](https://github.com/dnum-mi/fabnum-cicd/commit/a0975c63e6e129fb347951afc2db03611519535d))
+* **deps:** update actions/upload-artifact to v7.0.2 ([3413297](https://github.com/dnum-mi/fabnum-cicd/commit/34132972a8d5c6fcd6910ca9285f76b47b23271e))
+* **deps:** update helm/kind-action to v1.15.1 ([8bea8a5](https://github.com/dnum-mi/fabnum-cicd/commit/8bea8a568d22faaae8128c68968a5fe89b69216c))
+
+## [0.21.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.20.1...v0.21.0) (2026-10-02)
+
+
+### Features
+
+* **sync-prerelease-branch:** push with a GitHub App token when one is supplied ([8e7c553](https://github.com/dnum-mi/fabnum-cicd/commit/8e7c5532aa85a19d65ba08711055e38a788fb0b5))
+
+## [0.20.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.20.0...v0.20.1) (2026-10-01)
+
+
+### Dependencies
+
+* **deps:** update github/codeql-action to v4.38.2 ([935a0ac](https://github.com/dnum-mi/fabnum-cicd/commit/935a0ac45b04eed8a3e6e2e63bb970137b3a6893))
+* **deps:** update sonarsource/sonarqube-scan-action to v8.3.0 ([4d522b6](https://github.com/dnum-mi/fabnum-cicd/commit/4d522b6c910bdedb09586f097d42af92e7710b09))
+
 ## [0.20.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.19.3...v0.20.0) (2026-09-22)
 
 
