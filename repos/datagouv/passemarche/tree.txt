@@ -101,17 +101,39 @@
 │   │   │   └── sync_status_success.png
 │   │   └── stylesheets
 │   │       ├── application.css
-│   │       ├── attestation_pdf.css
+│   │       ├── grouping.css
+│   │       ├── homepage.css
+│   │       ├── lot_config.css
 │   │       └── motifs_exclusion_accordion.css
 │   ├── components
 │   │   ├── README.md
 │   │   ├── alert_icon_component.html.erb
 │   │   ├── alert_icon_component.rb
+│   │   ├── buyer
+│   │   │   ├── lot_row_component.html.erb
+│   │   │   ├── lot_row_component.rb
+│   │   │   ├── lot_type_badge_component.html.erb
+│   │   │   ├── lot_type_badge_component.rb
+│   │   │   ├── lot_type_picker_panel_component.html.erb
+│   │   │   └── lot_type_picker_panel_component.rb
 │   │   ├── check_icon_component.html.erb
 │   │   ├── check_icon_component.rb
+│   │   ├── email_component.html.erb
+│   │   ├── email_component.rb
+│   │   ├── grouping
+│   │   │   ├── bordered_block_component.html.erb
+│   │   │   ├── bordered_block_component.rb
+│   │   │   ├── composition_members_table_component.html.erb
+│   │   │   ├── composition_members_table_component.rb
+│   │   │   ├── dashboard_members_table_component.html.erb
+│   │   │   ├── dashboard_members_table_component.rb
+│   │   │   ├── member_actions_component.html.erb
+│   │   │   ├── member_actions_component.rb
+│   │   │   ├── section_title_with_edit_component.html.erb
+│   │   │   └── section_title_with_edit_component.rb
+│   │   ├── grouping_invitation_email_component.rb
 │   │   ├── icon_component.html.erb
 │   │   ├── icon_component.rb
-│   │   ├── magic_link_email_component.html.erb
 │   │   ├── magic_link_email_component.rb
 │   │   ├── market_attribute_response
 │   │   │   ├── api_display
@@ -176,8 +198,13 @@
 │   │   │   ├── textarea_component.rb
 │   │   │   ├── url_input_component.html.erb
 │   │   │   └── url_input_component.rb
+│   │   ├── shared
+│   │   │   ├── market_info_sidebar_component.html.erb
+│   │   │   └── market_info_sidebar_component.rb
 │   │   ├── source_badge_component.html.erb
-│   │   └── source_badge_component.rb
+│   │   ├── source_badge_component.rb
+│   │   ├── status_notice_component.html.erb
+│   │   └── status_notice_component.rb
 │   ├── components.md
 │   ├── concerns
 │   │   ├── lot_label_concern.rb
@@ -214,7 +241,13 @@
 │   │   │   ├── company_identifications_controller.rb
 │   │   │   ├── dashboards_controller.rb
 │   │   │   ├── deadline_passed_controller.rb
+│   │   │   ├── grouping_composition_confirmations_controller.rb
+│   │   │   ├── grouping_compositions_controller.rb
+│   │   │   ├── grouping_dashboards_controller.rb
+│   │   │   ├── grouping_invitations_controller.rb
 │   │   │   ├── grouping_legal_types_controller.rb
+│   │   │   ├── grouping_submissions_controller.rb
+│   │   │   ├── lot_selection_modes_controller.rb
 │   │   │   ├── lot_selections_controller.rb
 │   │   │   ├── market_applications_controller.rb
 │   │   │   ├── sessions_controller.rb
@@ -228,6 +261,9 @@
 │   │   │       ├── application_mode_guard.rb
 │   │   │       ├── authentication.rb
 │   │   │       ├── groupement_feature_guard.rb
+│   │   │       ├── grouping_member_guard.rb
+│   │   │       ├── magic_link_session.rb
+│   │   │       ├── mandataire_grouping_guard.rb
 │   │   │       ├── market_application_guard.rb
 │   │   │       ├── webhook_submission.rb
 │   │   │       └── wizard_routable.rb
@@ -273,6 +309,9 @@
 │   │   │   └── make_request.rb
 │   │   ├── build_resource.rb
 │   │   ├── candidate
+│   │   │   ├── add_grouping_member.rb
+│   │   │   ├── complete_grouping_member.rb
+│   │   │   ├── confirm_grouping_composition.rb
 │   │   │   ├── create_applications_for_mode.rb
 │   │   │   ├── delete_attached_file.rb
 │   │   │   ├── delete_unattached_blob.rb
@@ -280,7 +319,10 @@
 │   │   │   ├── find_or_create_user.rb
 │   │   │   ├── generate_and_send_magic_link.rb
 │   │   │   ├── prepare_document_scan_status.rb
+│   │   │   ├── remove_grouping_member.rb
 │   │   │   ├── set_grouping_legal_type.rb
+│   │   │   ├── set_lot_selection_modes.rb
+│   │   │   ├── set_up_grouping_member_application.rb
 │   │   │   ├── validate_email_format.rb
 │   │   │   └── validate_siret.rb
 │   │   ├── carif_oref
@@ -309,7 +351,7 @@
 │   │   │   ├── download_document.rb
 │   │   │   └── make_request.rb
 │   │   ├── download_document.rb
-│   │   ├── fetch_buyer_name
+│   │   ├── fetch_raison_sociale
 │   │   │   ├── extract_name.rb
 │   │   │   └── make_request.rb
 │   │   ├── fntp
@@ -327,6 +369,7 @@
 │   │   ├── make_request.rb
 │   │   ├── map_api_data.rb
 │   │   ├── mark_application_as_completed.rb
+│   │   ├── mark_grouping_as_submitted.rb
 │   │   ├── opqibi
 │   │   │   ├── build_resource.rb
 │   │   │   └── make_request.rb
@@ -343,6 +386,7 @@
 │   │   │   ├── build_resource.rb
 │   │   │   ├── download_document.rb
 │   │   │   └── make_request.rb
+│   │   ├── queue_grouping_submission_webhook.rb
 │   │   ├── queue_market_application_webhook.rb
 │   │   ├── reset_market_application.rb
 │   │   ├── rge
@@ -366,6 +410,7 @@
 │   │       ├── clipboard_controller.js
 │   │       ├── collapsible_list_controller.js
 │   │       ├── collapsible_rows_controller.js
+│   │       ├── company_name_resolution_controller.js
 │   │       ├── conditional_fields_controller.js
 │   │       ├── configuration_toggle_controller.js
 │   │       ├── dialog_trigger_controller.js
@@ -373,12 +418,14 @@
 │   │       ├── drag_reorder_controller.js
 │   │       ├── dropdown_controller.js
 │   │       ├── enable_on_choice_controller.js
+│   │       ├── enable_on_fill_controller.js
 │   │       ├── file_delete_controller.js
 │   │       ├── hello_controller.js
 │   │       ├── index.js
 │   │       ├── input_type_hint_controller.js
 │   │       ├── input_validation_controller.js
 │   │       ├── lot_selection_controller.js
+│   │       ├── lot_selection_mode_controller.js
 │   │       ├── lot_type_picker_controller.js
 │   │       ├── modal_controller.js
 │   │       ├── radio_toggle_controller.js
@@ -409,13 +456,16 @@
 │   │   ├── fetch_rne_data_job.rb
 │   │   ├── fetch_urssaf_data_job.rb
 │   │   ├── generate_public_market_configuration_summary_pdf_job.rb
+│   │   ├── grouping_submission_webhook_job.rb
 │   │   ├── market_application_webhook_job.rb
 │   │   ├── public_market_webhook_job.rb
+│   │   ├── resolve_grouping_member_company_name_job.rb
 │   │   ├── scan_document_job.rb
 │   │   └── webhook_job.rb
 │   ├── mailers
 │   │   ├── application_mailer.rb
-│   │   └── auth_mailer.rb
+│   │   ├── auth_mailer.rb
+│   │   └── grouping_invitation_mailer.rb
 │   ├── models
 │   │   ├── admin_user.rb
 │   │   ├── application_record.rb
@@ -423,6 +473,7 @@
 │   │   ├── category.rb
 │   │   ├── concerns
 │   │   │   ├── completable.rb
+│   │   │   ├── groupement_wizard_steps.rb
 │   │   │   ├── market_attribute_response
 │   │   │   │   ├── checkbox_field_behavior.rb
 │   │   │   │   ├── file_attachable.rb
@@ -481,7 +532,7 @@
 │   │   ├── complete_market_application.rb
 │   │   ├── cotisation_retraite.rb
 │   │   ├── dgfip.rb
-│   │   ├── fetch_buyer_name.rb
+│   │   ├── fetch_raison_sociale.rb
 │   │   ├── fntp.rb
 │   │   ├── insee.rb
 │   │   ├── opqibi.rb
@@ -490,6 +541,7 @@
 │   │   ├── qualifelec.rb
 │   │   ├── rge.rb
 │   │   ├── rne.rb
+│   │   ├── submit_grouping.rb
 │   │   └── urssaf.rb
 │   ├── policies
 │   │   ├── application_policy.rb
@@ -501,7 +553,8 @@
 │   │   ├── api_block_status_presenter.rb
 │   │   ├── candidate
 │   │   │   ├── application_mode_presenter.rb
-│   │   │   └── grouping_legal_type_presenter.rb
+│   │   │   ├── grouping_dashboard_presenter.rb
+│   │   │   └── lot_selection_mode_presenter.rb
 │   │   ├── market_application_presenter.rb
 │   │   ├── public_market
 │   │   │   └── wizard_steps_builder.rb
@@ -523,7 +576,8 @@
 │   │   ├── editor_sync_service.rb
 │   │   ├── export_socle_de_base_csv_service.rb
 │   │   ├── feature_flags
-│   │   │   └── groupement.rb
+│   │   │   ├── groupement.rb
+│   │   │   └── lot_limit.rb
 │   │   ├── file_security_scanner.rb
 │   │   ├── identifier_generation_service.rb
 │   │   ├── import_socle_de_base_csv_service.rb
@@ -592,8 +646,6 @@
 │       │   │   ├── _category_accordion.html.erb
 │       │   │   ├── _field_checkbox.html.erb
 │       │   │   ├── _field_display.html.erb
-│       │   │   ├── _lot_row.html.erb
-│       │   │   ├── _lot_type_badge.html.erb
 │       │   │   ├── _lot_type_error.html.erb
 │       │   │   ├── _rc_notice_modal.html.erb
 │       │   │   ├── _scope_tags.html.erb
@@ -626,7 +678,29 @@
 │       │   │   └── index.html.erb
 │       │   ├── deadline_passed
 │       │   │   └── show.html.erb
+│       │   ├── grouping_composition_confirmations
+│       │   │   └── show.html.erb
+│       │   ├── grouping_compositions
+│       │   │   ├── _composition_actions.html.erb
+│       │   │   ├── _member_form.html.erb
+│       │   │   ├── _removal_errors.html.erb
+│       │   │   ├── _removal_modal.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── grouping_dashboards
+│       │   │   ├── _lots_section.html.erb
+│       │   │   ├── _market_info.html.erb
+│       │   │   ├── _partial_submission_modal.html.erb
+│       │   │   ├── _solo_application_section.html.erb
+│       │   │   ├── _submission_section.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── grouping_invitations
+│       │   │   ├── expired.html.erb
+│       │   │   └── not_found.html.erb
 │       │   ├── grouping_legal_types
+│       │   │   └── show.html.erb
+│       │   ├── grouping_submissions
+│       │   │   └── show.html.erb
+│       │   ├── lot_selection_modes
 │       │   │   └── show.html.erb
 │       │   ├── lot_selections
 │       │   │   ├── _market_info_card.html.erb
@@ -645,8 +719,13 @@
 │       │   ├── sessions
 │       │   │   ├── new.html.erb
 │       │   │   └── sent.html.erb
+│       │   ├── shared
+│       │   │   └── _confirmation_modal.html.erb
 │       │   └── sync_status
 │       │       └── show.html.erb
+│       ├── grouping_invitation_mailer
+│       │   ├── invitation.html.erb
+│       │   └── invitation.text.erb
 │       ├── home
 │       │   ├── _advantages_section.html.erb
 │       │   ├── buyer.html.erb
@@ -729,7 +808,6 @@
 │           ├── _pdf_environment_indicator.html.erb
 │           ├── _renamed_documents_section.html.erb
 │           ├── _select_all_button.html.erb
-│           ├── _sidebar_market_info.html.erb
 │           ├── _subcategory_attributes.html.erb
 │           └── _value_with_badge.html.erb
 ├── bin
@@ -859,7 +937,9 @@
 │   │   ├── 20260715095835_change_whodunnit_to_string_on_versions.rb
 │   │   ├── 20260724135926_add_application_mode_to_market_applications.rb
 │   │   ├── 20260729095329_create_groupings.rb
-│   │   └── 20260729100623_create_grouping_members.rb
+│   │   ├── 20260729100623_create_grouping_members.rb
+│   │   ├── 20260804154855_add_company_name_to_grouping_members.rb
+│   │   └── 20260928082853_add_submission_to_groupings.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -921,7 +1001,8 @@
 │   ├── dgfip_chiffres_affaires_hybrid_mode.feature
 │   ├── document_display_naming.feature
 │   ├── ess_integration.feature
-│   ├── grouping_legal_type.feature
+│   ├── grouping_*.feature  (6 files)
+│   ├── lot_selection_mode.feature
 │   ├── motifs_exclusion_accordion.feature
 │   ├── motifs_exclusion_attestation_display.feature
 │   ├── motifs_exclusion_badge_colors.feature
@@ -950,7 +1031,11 @@
 │   │   ├── document_display_naming_steps.rb
 │   │   ├── ess_steps.rb
 │   │   ├── fast_track_steps.rb
+│   │   ├── grouping_composition_steps.rb
+│   │   ├── grouping_dashboard_steps.rb
+│   │   ├── grouping_invitation_join_steps.rb
 │   │   ├── grouping_legal_type_steps.rb
+│   │   ├── lot_selection_mode_steps.rb
 │   │   ├── motifs_exclusion_accordion_steps.rb
 │   │   ├── motifs_exclusion_attestation_steps.rb
 │   │   ├── motifs_exclusion_badge_colors_steps.rb
@@ -1005,7 +1090,17 @@
 ├── spec
 │   ├── components
 │   │   ├── alert_icon_component_spec.rb
+│   │   ├── buyer
+│   │   │   ├── lot_row_component_spec.rb
+│   │   │   ├── lot_type_badge_component_spec.rb
+│   │   │   └── lot_type_picker_panel_component_spec.rb
 │   │   ├── check_icon_component_spec.rb
+│   │   ├── grouping
+│   │   │   ├── bordered_block_component_spec.rb
+│   │   │   ├── composition_members_table_component_spec.rb
+│   │   │   ├── dashboard_members_table_component_spec.rb
+│   │   │   ├── member_actions_component_spec.rb
+│   │   │   └── section_title_with_edit_component_spec.rb
 │   │   ├── market_attribute_response
 │   │   │   ├── base_component_spec.rb
 │   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component_spec.rb
@@ -1030,6 +1125,13 @@
 │   │   │   ├── text_input_component_spec.rb
 │   │   │   └── textarea_component_spec.rb
 │   │   ├── previews
+│   │   │   ├── grouping
+│   │   │   │   ├── bordered_block_component_preview.rb
+│   │   │   │   ├── composition_members_table_component_preview.rb
+│   │   │   │   ├── dashboard_members_table_component_preview.rb
+│   │   │   │   ├── member_actions_component_preview.rb
+│   │   │   │   ├── preview_data.rb
+│   │   │   │   └── section_title_with_edit_component_preview.rb
 │   │   │   └── market_attribute_response
 │   │   │       ├── api_display
 │   │   │       │   ├── france_competences_component_preview.rb
@@ -1056,6 +1158,8 @@
 │   │   │       │   └── progress_bar_component_preview.rb
 │   │   │       ├── text_input_component_preview.rb
 │   │   │       └── textarea_component_preview.rb
+│   │   ├── shared
+│   │   │   └── market_info_sidebar_component_spec.rb
 │   │   └── source_badge_component_spec.rb
 │   ├── concerns
 │   │   └── market_presenter_concern_spec.rb
@@ -1125,13 +1229,19 @@
 │   │   │   ├── build_resource_spec.rb
 │   │   │   └── make_request_spec.rb
 │   │   ├── candidate
+│   │   │   ├── add_grouping_member_spec.rb
+│   │   │   ├── complete_grouping_member_spec.rb
+│   │   │   ├── confirm_grouping_composition_spec.rb
 │   │   │   ├── create_applications_for_mode_spec.rb
 │   │   │   ├── delete_attached_file_spec.rb
 │   │   │   ├── delete_unattached_blob_spec.rb
 │   │   │   ├── find_market_application_spec.rb
 │   │   │   ├── prepare_document_scan_status_spec.rb
+│   │   │   ├── remove_grouping_member_spec.rb
 │   │   │   ├── request_magic_link_spec.rb
 │   │   │   ├── set_grouping_legal_type_spec.rb
+│   │   │   ├── set_lot_selection_modes_spec.rb
+│   │   │   ├── set_up_grouping_member_application_spec.rb
 │   │   │   ├── validate_email_format_spec.rb
 │   │   │   └── validate_siret_spec.rb
 │   │   ├── carif_oref
@@ -1158,7 +1268,7 @@
 │   │   │   ├── download_document_spec.rb
 │   │   │   └── make_request_spec.rb
 │   │   ├── download_document_spec.rb
-│   │   ├── fetch_buyer_name
+│   │   ├── fetch_raison_sociale
 │   │   │   ├── extract_name_spec.rb
 │   │   │   └── make_request_spec.rb
 │   │   ├── fntp
@@ -1174,6 +1284,7 @@
 │   │   │   └── make_request_spec.rb
 │   │   ├── map_api_data_spec.rb
 │   │   ├── mark_application_as_completed_spec.rb
+│   │   ├── mark_grouping_as_submitted_spec.rb
 │   │   ├── opqibi
 │   │   │   ├── build_resource_spec.rb
 │   │   │   └── make_request_spec.rb
@@ -1225,13 +1336,17 @@
 │   │   ├── fetch_rne_data_job_spec.rb
 │   │   ├── fetch_urssaf_data_job_spec.rb
 │   │   ├── generate_public_market_configuration_summary_pdf_job_spec.rb
+│   │   ├── grouping_submission_webhook_job_spec.rb
 │   │   ├── market_application_webhook_job_spec.rb
 │   │   ├── public_market_webhook_job_spec.rb
+│   │   ├── resolve_grouping_member_company_name_job_spec.rb
 │   │   └── scan_document_job_spec.rb
 │   ├── mailers
 │   │   ├── auth_mailer_spec.rb
+│   │   ├── grouping_invitation_mailer_spec.rb
 │   │   └── previews
-│   │       └── auth_mailer_preview.rb
+│   │       ├── auth_mailer_preview.rb
+│   │       └── grouping_invitation_mailer_preview.rb
 │   ├── models
 │   │   ├── admin_spec.rb
 │   │   ├── admin_user_spec.rb
@@ -1285,7 +1400,7 @@
 │   │   ├── complete_market_application_spec.rb
 │   │   ├── cotisation_retraite_spec.rb
 │   │   ├── dgfip_spec.rb
-│   │   ├── fetch_buyer_name_spec.rb
+│   │   ├── fetch_raison_sociale_spec.rb
 │   │   ├── fntp_spec.rb
 │   │   ├── insee_spec.rb
 │   │   ├── opqibi_spec.rb
@@ -1294,6 +1409,7 @@
 │   │   ├── qualifelec_spec.rb
 │   │   ├── rge_spec.rb
 │   │   ├── rne_spec.rb
+│   │   ├── submit_grouping_spec.rb
 │   │   └── urssaf_spec.rb
 │   ├── policies
 │   │   └── lot_selection_policy_spec.rb
@@ -1303,7 +1419,8 @@
 │   │   ├── api_block_status_presenter_spec.rb
 │   │   ├── candidate
 │   │   │   ├── application_mode_presenter_spec.rb
-│   │   │   └── grouping_legal_type_presenter_spec.rb
+│   │   │   ├── grouping_dashboard_presenter_spec.rb
+│   │   │   └── lot_selection_mode_presenter_spec.rb
 │   │   ├── market_application_presenter_spec.rb
 │   │   ├── public_market_presenter_spec.rb
 │   │   └── socle_de_base_presenter_spec.rb
@@ -1323,6 +1440,7 @@
 │   │   │       │   └── attestation_spec.rb
 │   │   │       ├── market_applications_spec.rb
 │   │   │       └── public_markets_spec.rb
+│   │   ├── application_layout_spec.rb
 │   │   ├── buyer
 │   │   │   ├── lots_spec.rb
 │   │   │   ├── public_markets_spec.rb
@@ -1333,7 +1451,13 @@
 │   │   │   ├── application_modes_spec.rb
 │   │   │   ├── company_identifications_spec.rb
 │   │   │   ├── dashboards_spec.rb
+│   │   │   ├── grouping_composition_confirmations_spec.rb
+│   │   │   ├── grouping_compositions_spec.rb
+│   │   │   ├── grouping_dashboards_spec.rb
+│   │   │   ├── grouping_invitations_spec.rb
 │   │   │   ├── grouping_legal_types_spec.rb
+│   │   │   ├── grouping_submissions_spec.rb
+│   │   │   ├── lot_selection_modes_spec.rb
 │   │   │   ├── lot_selections_spec.rb
 │   │   │   ├── market_applications_spec.rb
 │   │   │   ├── sessions_spec.rb
@@ -1355,7 +1479,8 @@
 │   │   ├── editor_sync_service_spec.rb
 │   │   ├── export_socle_de_base_csv_service_spec.rb
 │   │   ├── feature_flags
-│   │   │   └── groupement_spec.rb
+│   │   │   ├── groupement_spec.rb
+│   │   │   └── lot_limit_spec.rb
 │   │   ├── file_security_scanner_spec.rb
 │   │   ├── identifier_generation_service_spec.rb
 │   │   ├── import_socle_de_base_csv_service_spec.rb
@@ -1417,29 +1542,7 @@
 ├── test
 │   └── components
 │       └── previews
-│           ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component_preview.rb
-│           ├── capacite_economique_financiere_effectifs_moyens_annuels_component_preview.rb
-│           ├── capacites_techniques_professionnelles_outillage_echantillons_component_preview.rb
-│           ├── checkbox_with_document_component_preview.rb
-│           ├── document_item_component_preview.rb
-│           ├── email_input_component_preview.rb
-│           ├── file_or_textarea_component_preview.rb
-│           ├── file_upload_component_preview.rb
-│           ├── file_upload_field_component_preview.rb
-│           ├── france_competences_component_preview.rb
-│           ├── inline_file_upload_component_preview.rb
-│           ├── inline_url_input_component_preview.rb
-│           ├── magic_link_email_component_preview.rb
-│           ├── opqibi_component_preview.rb
-│           ├── phone_input_component_preview.rb
-│           ├── presentation_intervenants_component_preview.rb
-│           ├── progress_bar_component_preview.rb
-│           ├── qualiopi_component_preview.rb
-│           ├── radio_with_file_and_text_component_preview.rb
-│           ├── realisations_livraisons_component_preview.rb
-│           ├── text_input_component_preview.rb
-│           ├── textarea_component_preview.rb
-│           └── textarea_field_component_preview.rb
+│           └── magic_link_email_component_preview.rb
 ├── tmp
 │   ├── .keep
 │   ├── pids
@@ -1454,4 +1557,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-235 directories, 1278 files
+250 directories, 1371 files
