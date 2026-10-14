@@ -6,6 +6,32 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) add a setting for the http fallback polling interval #2827
+- ✨(backend) add a setting to turn off awareness on the http fallback #2827
+
+### Changed
+
+- ⚡️(yhub) skip the `users/me` call for callers without a session cookie
+- 🔧(helm) allow to set the period and failure threshold of probes
+
+### Fixed
+
+- 🐛(frontend) stop the http fallback when the collaboration server refuses it
+- 🐛(backend) bypass throttling on access/me action from yhub
+- 🐛(frontend) switch language when the current one is untranslated #2790
+- 🐛(frontend) keep the loading skeleton until an empty doc has synced #2817
+### Changed
+
+- ♿️(frontend) fix the accessibility of the document tree #2769
+
+### Removed
+
+- 🔥(backend) remove `ForceSessionMiddleware`, an orphan of the removed
+  non-websocket save safeguard
+
+
 ## [v6.0.0] - 2026-10-05
 
 ### Added

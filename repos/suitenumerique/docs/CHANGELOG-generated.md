@@ -1,49 +1,43 @@
-## Changelog : docs (30 derniers jours, au 09/10/2026)
+## Changelog : docs (30 derniers jours, au 13 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par le passage à la version majeure 6.0.0, introduisant une refonte profonde de l'architecture de collaboration via l'intégration de YHub. Pour les utilisateurs, cela se traduit par une plateforme plus stable, de nouvelles fonctionnalités comme le téléchargement en Markdown et une gestion améliorée des mentions et des liens internes. L'interface utilisateur a également été modernisée, notamment via la refonte des pages d'erreur et l'ajout de raccourcis clavier.
+Ce mois a été marqué par une transition majeure de l'architecture de collaboration vers le nouveau serveur YHub, apportant une plus grande robustesse et un support du mode hors-ligne. L'expérience utilisateur a été enrichie par de nouvelles capacités d'édition (duplication avec sous-documents, interliens automatiques) et un système de mentions plus performant. L'ensemble de l'infrastructure a également été renforcé pour permettre un meilleur monitoring et des tests de charge plus précis.
 
 ### Évolutions fonctionnelles
-- **Collaboration et Documents**
-  - Introduction d'un système de mentions avec notifications par email (envoyées de manière asynchrone).
-  - Possibilité de dupliquer des documents en incluant leurs sous-documents.
-  - Support du mode hors-ligne pour l'arborescence des documents.
-  - Conversion automatique des liens de documents collés en liens internes (interlinks).
-  - Ajout d'une option de téléchargement des documents au format Markdown.
-- **Interface Utilisateur (UI/UX)**
-  - Refonte visuelle des pages d'erreur (401, 403 et 404) pour une meilleure expérience.
-  - Ajout d'un raccourci clavier pour activer le mode présentation.
-  - Amélioration de la recherche : possibilité d'ouvrir les résultats dans un nouvel onglet avec Ctrl/Cmd+clic.
-  - Amélioration de la gestion des images : conservation de la légende et de l'alignement lors du remplacement d'une image.
-  - Affichage des indications de raccourcis clavier dans les options de documents.
-- **Corrections**
-  - Résolution de bugs sur le glisser-déposer, la recherche/remplacement, et l'affichage des commentaires.
-  - Correction de problèmes de rendu lors de l'impression en PDF.
+- **Édition et contenu** :
+  - Ajout de la possibilité de télécharger les documents au format Markdown.
+  - Introduction de la duplication de documents avec prise en charge des sous-documents.
+  - Transformation automatique des liens de documents collés en interliens.
+  - Amélioration de l'exportation PDF (maintien du ratio d'aspect des images et gestion des titres).
+  - Support du défilement automatique vers un bloc lié en mode lecture seule.
+- **Interactions et interface** :
+  - Mise en place d'un système de mentions avec notifications par email (asynchrones et limitées par un délai de refroidissement).
+  - Ajout de raccourcis clavier pour le mode présentation et indications visuelles des raccourcis dans les options.
+  - Amélioration de la navigation : ouverture des résultats de recherche dans un nouvel onglet via Ctrl/Cmd+clic.
+  - Redesign des pages d'erreur (401, 403 et 404) pour une meilleure expérience utilisateur.
+  - Amélioration de l'accessibilité, notamment sur la structure de l'arbre documentaire [#2769](https://github.com/suitenumerique/docs/issues/2769).
+- **Gestion des fichiers** :
+  - Ajout d'un avertissement avant l'envoi de fichiers dépassant la taille limite autorisée.
 
 ### Évolutions techniques
-- **Architecture de Collaboration**
-  - Migration majeure du serveur de collaboration de HocusPocus vers YHub.
-  - Implémentation de la suppression logique (soft-delete) synchronisée avec le serveur YHub.
-  - Optimisation de la gestion des connexions de collaboration (réinitialisation automatique lors de la suppression d'un document ou d'un changement d'accès).
-  - Migration des documents hérités (S3) vers le nouveau système YHub.
-- **Sécurité et Authentification**
-  - Renforcement de la sécurité des mentions (validation UUID, contrôle d'accès explicite, limitation du débit).
-  - Amélioration de la gestion des jetons JWT (ajout de l'audience, exposition d'un endpoint JWKS, support des jetons RS256 mis en cache).
-  - Utilisation de jetons JWT pour sécuriser les services de conversion.
-- **Infrastructure et DevOps**
-  - Mise en place d'une suite complète de tests de charge (scénarios k6, dashboards Grafana, et canaris de navigateur pour mesurer la perception utilisateur).
-  - Amélioration de la CI/CD avec l'ajout de tests de linting, typechecking et build pour le serveur de collaboration.
-  - Optimisation des images Docker (passage à des images "slim" pour YHub et suppression de pip dans l'image backend).
-  - Mise à jour des déploiements Helm (support des métriques Prometheus via ServiceMonitor/PodMonitor et gestion de l'indexation des moteurs de recherche).
-  - Remplacement de Minio par Silo dans la configuration Docker.
-- **Observabilité**
-  - Ajout de métriques Prometheus personnalisées pour le backend et YHub.
-  - Intégration de la remontée d'erreurs YHub vers Sentry.
+- **Architecture de collaboration** :
+  - Migration du serveur de collaboration de HocusPocus vers YHub, permettant notamment le support du mode hors-ligne.
+  - Mise en place d'outils de migration pour transférer les anciens documents (S3) vers la nouvelle infrastructure.
+  - Optimisation de la synchronisation et de la gestion des connexions lors de la suppression ou de la modification de documents.
+- **Sécurité et Authentification** :
+  - Publication de la clé publique JWT via un endpoint JWKS.
+  - Renforcement de la sécurité des endpoints de collaboration et de la validation des tokens.
+- **Observabilité et Performance** :
+  - Intégration de métriques Prometheus et de tableaux de bord Grafana pour le suivi des performances et de la charge.
+  - Ajout d'un outil de test de charge complet incluant des scénarios k6 et des "canaries" de navigateur pour mesurer l'expérience utilisateur sous charge.
+- **Infrastructure et CI/CD** :
+  - Optimisation des images Docker (passage à des versions "slim").
+  - Amélioration des pipelines CI pour inclure les tests de charge et la vérification du serveur de collaboration.
+  - Mise à jour des configurations Helm pour permettre une gestion plus fine des sondes (probes) et de l'indexation des moteurs de recherche.
 
 ### Autres changements
-- **Documentation**
-  - Mise à jour de la documentation d'architecture.
-  - Finalisation du guide de mise à niveau vers YHub et des instructions d'installation.
-  - Correction de la documentation Kubernetes (guides Keycloak et Minio).
-- **Internationalisation**
-  - Mise à jour et nettoyage des chaînes de caractères traduites (i18n).
+- **Documentation** :
+  - Mise à jour complète de la documentation technique, incluant les guides d'installation, de migration vers YHub et de tests de charge.
+  - Correction de plusieurs erreurs de typographie dans le README d'installation.
+- **Internationalisation** :
+  - Mise à jour importante des chaînes de caractères traduites et amélioration de la gestion du sélecteur de langue.
