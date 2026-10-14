@@ -7,27 +7,18 @@
   },
   "scripts": {
     "dev": "bun run --hot src/index.ts",
+    "explain:domain": "bun run scripts/explain_domain.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "bun run format:check && bun run typecheck",
     "lint:apotropaic": "bun run scripts/apotropaic.ts",
     "lint:config": "bun run scripts/lint_config.ts",
-    "release": "release-it",
     "test": "bun test src",
     "typecheck": "tsc --noEmit"
   },
   "release-it": {
-    "git": {
-      "commitMessage": ":bookmark: release ${version}"
-    },
     "github": {
-      "comments": {
-        "submit": true
-      },
       "release": true
-    },
-    "hooks": {
-      "before:release": "bun x prettier --write package.json && git add package.json"
     },
     "npm": {
       "publish": false
@@ -45,18 +36,16 @@
   },
   "dependencies": {
     "@proconnect-gouv/proconnect.core": "^1.0.2",
-    "hono": "4.13.9",
+    "hono": "4.13.13",
     "mongodb": "6.21.0",
     "zod": "4.6.5"
   },
   "devDependencies": {
-    "@csmith/release-it-calver-plugin": "2026.9.0",
     "@tsconfig/bun": "1.0.11",
     "@types/bun": "1.4.2",
     "prettier": "3.9.9",
     "prettier-plugin-organize-imports": "4.3.0",
-    "release-it": "21.1.0",
     "typescript": "7.0.2"
   },
-  "version": "2026.10.0"
+  "version": "2026.10.1"
 }

@@ -1,27 +1,37 @@
-## Changelog : api-partenaires (30 derniers jours, au 02/10/2026)
+## Changelog : api-partenaires (30 derniers jours, au 13 octobre 2026)
 
 ### Résumé
-Cette période a été marquée par un renforcement significatif de la sécurité et de la validation des domaines, notamment grâce à l'automatisation des contrôles via l'annuaire de la DILA. Nous avons également amélioré la fiabilité de la gestion des collaborateurs et optimisé le processus de déploiement pour plus de régularité.
+Ce mois a été marqué par un renforcement significatif de la sécurité et de la fiabilité de la validation des domaines. L'intégration massive des données de la DILA et l'alignement sur les standards de l'INSEE permettent une gestion plus rigoureuse des domaines autorisés, tout en offrant une meilleure visibilité aux utilisateurs sur les raisons d'acceptation ou de refus de leurs demandes.
 
 ### Évolutions fonctionnelles
-- **Renforcement de la validation des domaines** :
-    - Interdiction d'attacher un domaine déjà utilisé par un autre fournisseur [#87](https://github.com/proconnect-gouv/api-partenaires/pull/87).
-    - Blocage des domaines génériques (type boîte mail) et des domaines figurant sur une liste d'exclusion (incluant les domaines parents) [#84](https://github.com/proconnect-gouv/api-partenaires/pull/84).
-    - Amélioration de la validation des domaines attestés par la DILA pour garantir leur conformité avec l'annuaire administratif [#64](https://github.com/proconnect-gouv/api-partenaires/pull/64).
-- **Sécurité des accès** : Suppression des permissions de type "roles" des scopes par défaut pour limiter les droits par défaut [#e5e875b](https://github.com/proconnect-gouv/api-partenaires/commit/e5e875b).
-- **Corrections de bugs** : Résolution d'un problème entraînant la suppression incorrecte de collaborateurs lors de mises à jour partielles [#77](https://github.com/proconnect-gouv/api-partenaires/pull/77).
+- **Amélioration de la validation des domaines** :
+    - Refus des domaines déjà détenus par un autre fournisseur [#87](https://github.com/proconnect-gouv/api-partenaires/pull/87).
+    - Refus des domaines de messagerie génériques (ex: gmail.com) [#57](https://github.com/proconnect-gouv/api-partenaires/pull/57).
+    - Refus des domaines figurant sur la liste d'exclusion (domaines parents, domaines gratuits) [#84](https://github.com/proconnect-gouv/api-partenaires/pull/84).
+- **Expérience utilisateur et clarté** :
+    - Ajout d'explications détaillées sur les raisons pour lesquelles un domaine est accepté ou refusé [#128](https://github.com/proconnect-gouv/api-partenaires/pull/128).
+- **Intégrité des données** :
+    - Vérification de la conformité des noms de communes avec l'orthographe officielle du COG (INSEE) [#125](https://github.com/proconnect-gouv/api-partenaires/pull/125).
+    - Refus des lignes DILA ne comportant pas le nom de leur collectivité [#127](https://github.com/proconnect-gouv/api-partenaires/pull/127).
+- **Extension de la base de confiance** :
+    - Importation massive de nouveaux domaines attestés par la DILA [#42](https://github.com/proconnect-gouv/api-partenaires/pull/42).
 
 ### Évolutions techniques
-- **Automatisation et CI/CD** :
-    - Mise en place d'un processus de release automatisé avec `release-it` et un versionnage de type CalVer [#85](https://github.com/proconnect-gouv/api-partenaires/pull/85).
-    - Intégration de contrôles automatiques de la configuration et de la liste d'autorisation (allowlist) directement dans le pipeline CI [#53](https://github.com/proconnect-gouv/api-partenaires/pull/53), [#58](https://github.com/proconnect-gouv/api-partenaires/pull/58).
-- **Gestion des données et infrastructure** :
-    - Automatisation de la récupération et de la mise en cache quotidienne de l'annuaire administratif de la DILA pour assurer la fraîcheur des données [#59](https://github.com/proconnect-gouv/api-partenaires/pull/59), [#62](https://github.com/proconnect-gouv/api-partenaires/pull/62).
-    - Amélioration de la traçabilité en enregistrant la source d'attestation pour chaque domaine autorisé [#56](https://github.com/proconnect-gouv/api-partenaires/pull/56).
-- **Observabilité et expérience développeur** :
-    - Amélioration de la lisibilité des erreurs de configuration, désormais affichées de manière concise par problème rencontré [#81](https://github.com/proconnect-gouv/api-partenaires/pull/81).
-    - Ajout de logs pour suivre l'état du cache lors de la récupération des données DILA.
+- **Automatisation et intégration DILA** :
+    - Mise en place de la récupération et de la mise en cache quotidienne de l'annuaire administratif de la DILA [#62](https://github.com/proconnect-gouv/api-partenaires/pull/62) [#59](https://github.com/proconnect-gouv/api-partenaires/pull/59).
+    - Liaison systématique des domaines de la liste d'autorisation à leurs fiches DILA respectives [#69](https://github.com/proconnect-gouv/api-partenaires/pull/69) [#70](https://github.com/proconnect-gouv/api-partenaires/pull/70).
+- **Robustesse et CI/CD** :
+    - Amélioration de la lisibilité des erreurs de configuration dans la CI [#81](https://github.com/proconnect-gouv/api-partenaires/pull/81).
+    - Ajout de statistiques de monitoring pour le linting (`lint:apotropaic`) [#121](https://github.com/proconnect-gouv/api-partenaires/pull/121).
+    - Optimisation des validateurs de domaines (reconstruction de ports et de racines de noms) [#124](https://github.com/proconnect-gouv/api-partenaires/pull/124) [#123](https://github.com/proconnect-gouv/api-partenaires/pull/123).
+- **Sécurité** :
+    - Suppression des scopes de rôles des scopes par défaut pour renforcer le principe de moindre privilège [e5e875b](https://github.com/proconnect-gouv/api-partenaires/commit/e5e875b).
+- **Corrections** :
+    - Correction d'un bug lors des mises à jour partielles pour préserver les collaborateurs [0ad9578](https://github.com/proconnect-gouv/api-partenaires/commit/0ad9578).
 
 ### Autres changements
-- **Documentation** : Ajout d'un guide de contribution détaillant le processus de release [#86](https://github.com/proconnect-gouv/api-partenaires/pull/86).
-- **Nettoyage** : Suppression des fichiers README d'exemples par scénario pour alléger le dépôt [#91](https://github.com/proconnect-gouv/api-partenaires/pull/91).
+- **Processus de release** :
+    - Adoption du versionnage CalVer via `release-it` [#85](https://github.com/proconnect-gouv/api-partenaires/pull/85).
+    - Ajout d'un guide de contribution documentant le processus de release [#86](https://github.com/proconnect-gouv/api-partenaires/pull/86).
+- **Nettoyage** :
+    - Suppression des fichiers README d'exemples par scénario [#91](https://github.com/proconnect-gouv/api-partenaires/pull/91).
