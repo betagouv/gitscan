@@ -13,6 +13,10 @@
 │       ├── docker-publish.yml
 │       └── st-transfers-ghcr.yml
 ├── .gitignore
+├── .oss-scanner
+│   ├── Dockerfile
+│   ├── Dockerfile.dockerignore
+│   └── threat_model.md
 ├── LICENSE
 ├── Makefile
 ├── Procfile
@@ -52,6 +56,7 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── permissions.py
     │   │   │   ├── serializers.py
+    │   │   │   ├── throttling.py
     │   │   │   ├── utils.py
     │   │   │   └── viewsets
     │   │   │       ├── __init__.py
@@ -65,7 +70,17 @@
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
-    │   │   │   └── urls.py
+    │   │   │   ├── drf.py
+    │   │   │   ├── urls.py
+    │   │   │   └── views.py
+    │   │   ├── entitlements
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base.py
+    │   │   │   │   ├── deploycenter.py
+    │   │   │   │   └── static.py
+    │   │   │   └── factory.py
     │   │   ├── enums.py
     │   │   ├── factories.py
     │   │   ├── management
@@ -87,6 +102,12 @@
     │   │   │   ├── 0005_transferfile_scan_fields.py
     │   │   │   ├── 0006_transfer_confidential_transfer_encryption_chunk_size_and_more.py
     │   │   │   ├── 0007_recipient_token_and_download_receipts.py
+    │   │   │   ├── 0008_transferfile_unscannable_status.py
+    │   │   │   ├── 0009_transferfile_scan_report.py
+    │   │   │   ├── 0010_alter_user_timezone.py
+    │   │   │   ├── 0011_user_claims.py
+    │   │   │   ├── 0012_transferevent_audit_event_types.py
+    │   │   │   ├── 0013_transferevent_quota_index.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -96,6 +117,7 @@
     │   │   │   ├── recipient_activity.py
     │   │   │   ├── s3.py
     │   │   │   ├── s3_sweep.py
+    │   │   │   ├── safe_http.py
     │   │   │   ├── scan_auth.py
     │   │   │   └── scan_budget.py
     │   │   ├── tasks.py
@@ -119,8 +141,10 @@
     │   │   │   ├── test_api_drafts.py
     │   │   │   ├── test_api_transfers.py
     │   │   │   ├── test_api_webhook.py
+    │   │   │   ├── test_authentication.py
     │   │   │   ├── test_clean_orphan_s3_command.py
     │   │   │   ├── test_encryption.py
+    │   │   │   ├── test_entitlements_deploycenter.py
     │   │   │   ├── test_middlewares.py
     │   │   │   ├── test_models.py
     │   │   │   ├── test_s3_cleanup_drafts.py
@@ -130,9 +154,11 @@
     │   │   │   ├── test_s3_content_disposition.py
     │   │   │   ├── test_s3_live_smoke.py
     │   │   │   ├── test_scan_auth.py
+    │   │   │   ├── test_security_hardening.py
     │   │   │   ├── test_services_email.py
     │   │   │   └── test_tasks_invitations.py
-    │   │   └── urls.py
+    │   │   ├── urls.py
+    │   │   └── utils.py
     │   ├── entrypoint
     │   ├── gunicorn.conf.py
     │   ├── manage.py
@@ -162,6 +188,7 @@
     │   ├── package.json
     │   ├── public
     │   │   ├── images
+    │   │   │   ├── main-error.svg
     │   │   │   ├── transfers-favicon.svg
     │   │   │   ├── transfers-icon.svg
     │   │   │   ├── transfers-logo.png
@@ -185,6 +212,11 @@
     │   │   │   ├── config
     │   │   │   │   ├── constants.ts
     │   │   │   │   └── index.ts
+    │   │   │   ├── errors
+    │   │   │   │   └── components
+    │   │   │   │       ├── Error.tsx
+    │   │   │   │       ├── ErrorPageLayout.tsx
+    │   │   │   │       └── _errors.scss
     │   │   │   ├── i18n
     │   │   │   │   ├── conf.ts
     │   │   │   │   ├── initI18n.ts
@@ -273,6 +305,8 @@
     │   │   │   │   └── transfers
     │   │   │   │       └── $id.tsx
     │   │   │   ├── _app.tsx
+    │   │   │   ├── errors
+    │   │   │   │   └── index.tsx
     │   │   │   └── t
     │   │   │       └── $token.tsx
     │   │   └── styles
@@ -293,4 +327,4 @@
     │   └── vitest.config.ts
     └── keycloak
         └── realm.json
-70 directories, 225 files
+76 directories, 253 files

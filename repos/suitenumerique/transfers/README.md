@@ -43,6 +43,17 @@ local Keycloak — no ProConnect needed. See [`docs/authentication.md`](docs/aut
 
 Recipient count in email mode is hard-capped at 50 (in the serializer).
 
+Abuse limits:
+
+| Setting | Default | Effect |
+|---|---|---|
+| `THROTTLE_USER_OUTBOUND_RECIPIENTS` | `200/day` | Invitation emails one agent may trigger per sliding period, all transfers together (finalize answers 429 past it). `count/period` with period `minute`, `hour` or `day`; empty to disable |
+| `API_DRAFT_ADD_FILE_THROTTLE_RATE` | `300/hour` | Files an agent may attach (browser uploads and Drive imports) |
+| `API_TRANSFER_RESEND_THROTTLE_RATE` | `30/hour` | Invitation re-sends per agent |
+| `API_PUBLIC_DOWNLOAD_THROTTLE_RATE` | `1000/hour` | Download page + file URL calls per visitor IP (per user when signed in) |
+
+Throttle counters live in the default cache (Redis in production).
+
 ## Configuration
 
 S3 / storage:
@@ -180,8 +191,8 @@ Client → Edge router (Scalingo) → HAProxy → Caddy → Gunicorn
 
 | Variable | Default | Description |
 |---|---|---|
-| `TRANSFERS_FRONTEND_TRUSTED_PROXIES` | _(empty: trust no proxy)_ | Space-separated CIDR list of the proxies whose `X-Forwarded-For` sets the client IP. On Scalingo, set `private_ranges`: the routers sit on private addresses that are not published, and the container port is only reachable through them. Do not use `private_ranges` where untrusted machines share the private network. **Unset on Scalingo, the audit log records the router's address instead of the user's.** |
-| `DJANGO_ADMIN_IP_ALLOWLIST` | `0.0.0.0/0 ::/0` (everyone) | Space-separated CIDR list of the client IPs admitted on the admin URL; Caddy answers 403 to the others. Leave it unset to keep the admin open — an empty value admits no one. |
+| `TRANSFERS_FRONTEND_TRUSTED_PROXIES` | _(empty: trust no proxy)_ | Space-separated CIDR list of the proxies whose `X-Forwarded-For` sets the client IP. **Set it to your proxies' CIDRs, never to `private_ranges`**: a published container port is reached through a bridge gateway on a private address, so trusting that range lets any client set `X-Forwarded-For` and walk past the admin allowlist — `bin/smoke-test-front` covers exactly that. Left unset, `{client_ip}` is whatever connects to Caddy — HAProxy in the chain above, not the edge router, and behind a NAT the container's own gateway — so the audit log records that hop instead of the user and the allowlist filters on the wrong address. |
+| `DJANGO_ADMIN_IP_ALLOWLIST` | `0.0.0.0/0 ::/0` (everyone) | Space-separated CIDR list of the client IPs admitted on the admin URL; Caddy answers 403 to the others. Leave it unset to keep the admin open — an empty value admits no one. It is compared against the `{client_ip}` the row above establishes, so narrowing this one while trusting no proxy filters on the proxy's address, not the user's. A 403 you did not expect: read Caddy's access log for that request and compare `client_ip` — the address that was matched — with the address you expect the client to have. If it is not the client's, the logged `X-Forwarded-For` shows the chain the proxy sent and therefore which hop was taken instead, and the row above needs your proxies' CIDRs. The two values differ whenever the chain has more than one hop, so that on its own proves nothing. |
 | `TRANSFERS_FRONTEND_BACKEND_SERVER` | `localhost:8000` | `host:port` of the Django backend Caddy proxies `/api/*`, `/static/*` and the admin URL to. |
 
 `make test-front-distroless` builds the production image and checks all
@@ -202,6 +213,12 @@ Instances can optionally allow users to attach files from a [Drive](https://gith
 | `DRIVE_SDK_URL` | No | `/sdk` | Path (or absolute URL) to the Drive SDK endpoint |
 | `DRIVE_API_URL` | No | `/api/v1.0` | Path (or absolute URL) to the Drive API |
 | `DRIVE_APP_NAME` | No | `Drive` | Display name shown in UI labels |
+| `DRIVE_IMPORT_ALLOW_PRIVATE_NETWORKS` | No | `False` (`True` in Development) | Let server-side Drive imports reach private / loopback addresses. Leave off in production |
+
+Server-side imports (`source_url`) are fetched by the worker, so they are
+locked down: the URL must share the scheme and host of `DRIVE_BASE_URL`
+(any `source_url` is refused while it is empty), redirects are followed by
+hand, and every hop must resolve to a public address.
 
 **Drive side** — the Drive instance must allow the Transfers origin:
 
