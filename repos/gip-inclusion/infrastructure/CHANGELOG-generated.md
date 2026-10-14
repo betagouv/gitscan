@@ -1,25 +1,28 @@
-## Changelog : infrastructure (30 derniers jours, au 06/10/2026)
+## Changelog : infrastructure (30 derniers jours, au 13 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par un travail intensif sur le déploiement de l'infrastructure dédiée au projet "emplois-cnav". L'essentiel des efforts a porté sur la mise en place de l'architecture de base (réseau, bases de données, Kubernetes) et le renforcement de la sécurité via une meilleure gestion des secrets et des accès.
+Ce mois a été marqué par un déploiement majeur de l'infrastructure dédiée à l'environnement "emplois-cnav", incluant la mise en place complète des réseaux, du cluster Kubernetes et des bases de données. Parallèlement, la sécurité a été renforcée par l'intégration de nouveaux outils de gestion de secrets et l'optimisation de la gestion des domaines et du DNS.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la messagerie** : Optimisation de la fiabilité des emails via Brevo grâce à l'ajout de nouveaux enregistrements DNS (authentification du sous-domaine 'reply' et activation du service de parsing entrant).
+- **Gestion des domaines** : Récupération du domaine `inclusion.gouv.fr` pour l'utilisation de Bitwarden.
+- **Authentification** : Configuration de la base de données pour le service Authentik dans l'environnement emplois-cnav.
 
 ### Évolutions techniques
-- **Déploiement de l'infrastructure "emplois-cnav"** : Mise en place complète des modules fondamentaux, incluant :
-    - Le cluster Kubernetes et le registre de conteneurs.
-    - Le réseau (configuration avec doubles réseaux privés) et l'instance VPN Strongswan.
-    - Les modules de bases de données et d'instances Windows (OGC).
-    - La gestion des identités (IAM) et la configuration de la base de données Authentik.
-- **Sécurité et gestion des secrets** :
-    - Intégration de SOPS pour sécuriser les entrées sensibles de Terraform.
-    - Mise en place du module Secret Manager et sécurisation des secrets de la base de données Authentik.
-    - Renforcement des permissions IAM pour permettre aux développeurs la gestion locale de certaines ressources d'état et l'accès aux versions antérieures de l'état pour "emplois-cnav".
-    - Correction de dérives de permissions sur les bases de données pour assurer la cohérence des droits.
-- **CI/CD et maintenance de l'infrastructure** :
-    - Mise à jour de la version de Terraform dans la chaîne de CI (passage à la version 1.16.5).
-    - Assouplissement de la version du fournisseur Scaleway pour faciliter les mises à jour.
+- **Déploiement de l'environnement "emplois-cnav"** : Mise en place complète de l'infrastructure comprenant :
+    - Réseau (double réseau privé).
+    - Cluster Kubernetes et registre de conteneurs.
+    - Modules de bases de données et de gestion de secrets.
+    - Instance VPN (Strongswan) et instances Windows (OGC).
+- **DNS & Messagerie** : 
+    - Configuration des enregistrements DNS pour les services Brevo (parsing entrant et authentification du sous-domaine 'reply').
+    - Mise en place de la configuration DNS pour emplois-cnav.
+- **Sécurité & IAM** :
+    - Implémentation de SOPS pour la sécurisation des entrées Terraform sensibles.
+    - Gestion des secrets pour ArgoCD et Authentik.
+    - Optimisation des permissions IAM (accès local pour les développeurs, gestion des droits sur les bases de données et application IAM pour l'API-Relay).
+- **Maintenance & CI/CD** :
+    - Mise à jour régulière de la version de Terraform utilisée dans la CI.
+    - Verrouillage et mise à jour des fournisseurs (providers) Terraform.
 
 ### Autres changements
-- Mise à jour de la documentation technique Terraform.
+- Mise à jour de la documentation technique via `terraform-docs`.
