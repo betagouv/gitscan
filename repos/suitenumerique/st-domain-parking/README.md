@@ -178,14 +178,13 @@ into the Let's Encrypt rate limits.
 
 That comes from [certmagic-s3](https://github.com/techknowlogick/certmagic-s3),
 which is **vendored** into `caddy/certmagic-s3/` and compiled in with `xcaddy`
-from local source rather than fetched by version. The reasons, the upstream
-bugs that motivated it, and the local fixes are all in
-[`caddy/certmagic-s3/VENDORED.md`](caddy/certmagic-s3/VENDORED.md) — briefly:
-the latest release deletes the entire bucket during OCSP cleanup
-([#21](https://github.com/techknowlogick/certmagic-s3/issues/21)), and its
-Caddyfile block does not parse
-([#19](https://github.com/techknowlogick/certmagic-s3/issues/19)). Both are
-fixed on master but unreleased, so we build the commit we read.
+from local source rather than fetched by version. The reasons and the local
+changes are in [`caddy/certmagic-s3/VENDORED.md`](caddy/certmagic-s3/VENDORED.md).
+Upstream v1.5.0 fixes the bucket deletion during OCSP cleanup
+([#21](https://github.com/techknowlogick/certmagic-s3/issues/21)) and the
+Caddyfile block that did not parse
+([#19](https://github.com/techknowlogick/certmagic-s3/issues/19)). The vendored
+copy is that release plus four local changes. We build the code we read.
 
 ```sh
 make vendor-test      # gofmt + go vet + go test, in a container
@@ -205,7 +204,7 @@ vendor drop cannot ship silently.
       "commune_name": "Brigny",
       "commune_zipcode": "87200",
       "email": "contact@brigny.fr",
-      "service_public_url": "https://lannuaire.service-public.fr/nouvelle-aquitaine/haute-vienne/mairie-87030-01",
+      "service_public_url": "https://lannuaire.service-public.gouv.fr/nouvelle-aquitaine/haute-vienne/mairie-87030-01",
       "siret": "21870030000013"
     }
   ]
@@ -218,8 +217,17 @@ A bare list of domain objects is also accepted.
 entry would render a page with gaps in it, which is worse than a build that
 refuses to run. Every value is validated — the domain as a hostname, the
 zipcode as 5 digits, the SIRET as 14, the email as an address, and
-`service_public_url` as a `lannuaire.service-public.fr` URL. One bad entry
+`service_public_url` as a `lannuaire.service-public.gouv.fr` URL (the
+pre-move `lannuaire.service-public.fr` form is also accepted). One bad entry
 fails the whole build.
+
+**An empty list is refused too.** Removing the last domain would delete every
+page *and* every `.parked` marker, and those markers are what allow Caddy to
+hold certificates at all — so a feed that empties itself for a moment would
+cost a full re-issuance of the estate, against the rate limits, long after the
+feed was put right. An empty answer is treated like an unreachable one: logged,
+skipped, previous build still served. Unparking everything on purpose means
+stopping the service, not emptying the list.
 
 The page is served from `www.<domain>`; a leading `www.` in the domain list is
 stripped, so the two can never disagree. `siret` builds the *Présence

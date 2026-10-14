@@ -1,10 +1,7 @@
-## Changelog : st-domain-parking (30 derniers jours, au 20 août 2026)
+## Changelog : st-domain-parking (30 derniers jours, au 13 octobre 2026)
 
 ### Résumé
-Le service de parking de domaine a été initialement mis en place. Cette phase de lancement a permis d'établir la structure de base du projet et de stabiliser l'environnement de construction technique.
-
-### Évolutions fonctionnelles
-- Mise en place initiale (bootstrap) de l'ensemble du service de parking de domaine.
+Les récentes évolutions se sont concentrées sur le renforcement de la sécurité et de la fiabilité du système lors des échanges de données.
 
 ### Évolutions techniques
-- Correction de l'étape de construction `xcaddy` dans le Dockerfile pour garantir un build fiable du serveur web [#2](https://github.com/suitenumerique/st-domain-parking/pull/2).
+- Renforcement de la sécurité lors de l'interopérabilité en interdisant l'utilisation de listes vides.
