@@ -145,6 +145,7 @@
 │   │   ├── 20260915125321_ajouteDonneeReactionExpositionReflexesCyber.ts
 │   │   ├── 20261008152530_migreTutorielsEnProcedures.ts
 │   │   ├── 20261012090000_videLiensMesuresPorteursParProcedures.ts
+│   │   ├── 20261013082438_supprime-les-prefixes-lien-mesure.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -225,7 +226,21 @@
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   ├── ressourceDemandesAide.schema.ts
 │   │   │   │   └── ressourceDemandesAide.ts
-│   │   │   ├── msc.ts
+│   │   │   ├── msc
+│   │   │   │   ├── enregistreRoutes.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── middlewares
+│   │   │   │   │   ├── cookies.ts
+│   │   │   │   │   ├── gestionDErreurs.ts
+│   │   │   │   │   └── rateLimit.ts
+│   │   │   │   └── routes
+│   │   │   │       ├── API.ts
+│   │   │   │       ├── authentification.ts
+│   │   │   │       ├── fichiersStatiques.ts
+│   │   │   │       ├── financements.ts
+│   │   │   │       ├── redirections.ts
+│   │   │   │       ├── statiques.ts
+│   │   │   │       └── visas.ts
 │   │   │   ├── nis2
 │   │   │   │   ├── ressourceExigencesNis2.schema.ts
 │   │   │   │   ├── ressourceExigencesNis2.ts
@@ -240,6 +255,10 @@
 │   │   │   │   ├── ressourceApresDeconnexionOIDC.ts
 │   │   │   │   ├── ressourceConnexionOIDC.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.ts
+│   │   │   ├── outils
+│   │   │   │   ├── modele-annuaire-de-crise.xlsx
+│   │   │   │   ├── ressourceModeleAnnuaireDeCrise.ts
+│   │   │   │   └── ressourceRappelMiseAJourAnnuaireContacts.ts
 │   │   │   ├── ressourceAbonnementInfolettre.schema.ts
 │   │   │   ├── ressourceAbonnementInfolettre.ts
 │   │   │   ├── ressourceAnnuaireDepartements.ts
@@ -250,6 +269,7 @@
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
 │   │   │   ├── ressourceAvisUtilisateur.schema.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
+│   │   │   ├── ressourceContacts.ts
 │   │   │   ├── ressourceControleContenuListeConfiance.ts
 │   │   │   ├── ressourceDocumentRessource.ts
 │   │   │   ├── ressourceFinancement.ts
@@ -259,6 +279,7 @@
 │   │   │   ├── ressourceLlmsTxt.ts
 │   │   │   ├── ressourcePageConnexion.ts
 │   │   │   ├── ressourcePageContact.ts
+│   │   │   ├── ressourcePageCrisp.ts
 │   │   │   ├── ressourcePageRessource.ts
 │   │   │   ├── ressourcePageService.ts
 │   │   │   ├── ressourcePagesJekyll.ts
@@ -385,15 +406,18 @@
 │   │   │   │   │   └── adaptateurTitre.ts
 │   │   │   │   ├── adaptateurEnrichissement.ts
 │   │   │   │   ├── chargementProprietes
+│   │   │   │   │   ├── chargeurContacts.ts
 │   │   │   │   │   ├── chargeurCrisp.ts
 │   │   │   │   │   ├── chargeurDeProps.ts
 │   │   │   │   │   ├── chargeurExigences.ts
 │   │   │   │   │   ├── chargeurFilAriane.ts
 │   │   │   │   │   ├── chargeurFinancements.ts
 │   │   │   │   │   ├── chargeurGuides.ts
+│   │   │   │   │   ├── chargeurPageCrisp.ts
 │   │   │   │   │   └── chargeurRessourcesCyber.ts
 │   │   │   │   ├── composantsAutorises.genere.ts
 │   │   │   │   └── resolveurDePage.ts
+│   │   │   ├── entrepotContactStatique.ts
 │   │   │   ├── entrepotFavoriPostgres.ts
 │   │   │   ├── entrepotFinancementGrist.ts
 │   │   │   ├── entrepotGrist.ts
@@ -427,6 +451,10 @@
 │   │   │   │   ├── article.ts
 │   │   │   │   ├── entrepotArticle.ts
 │   │   │   │   └── resumeArticle.ts
+│   │   │   ├── contacts
+│   │   │   │   ├── contacts.ts
+│   │   │   │   ├── entrepotContact.ts
+│   │   │   │   └── libellesRegions.ts
 │   │   │   ├── entrepotFavori.ts
 │   │   │   ├── entrepotFinancement.ts
 │   │   │   ├── entrepotGuide.ts
@@ -589,6 +617,9 @@
 │   │   │   │   ├── ressourceApresDeconnexionOIDC.spec.ts
 │   │   │   │   ├── ressourceConnexionOIDC.spec.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
+│   │   │   ├── outils
+│   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
+│   │   │   │   └── ressourceRappelMiseAJourAnnuaireContacts.spec.ts
 │   │   │   ├── ressourceAbonnementInfolettre.spec.ts
 │   │   │   ├── ressourceAnnuaireDepartements.spec.ts
 │   │   │   ├── ressourceAnnuaireOrganisations.spec.ts
@@ -596,6 +627,7 @@
 │   │   │   ├── ressourceAnnuaireSecteursActivite.spec.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.spec.ts
 │   │   │   ├── ressourceAvisUtilisateur.spec.ts
+│   │   │   ├── ressourceContacts.spec.ts
 │   │   │   ├── ressourceDocumentRessource.spec.ts
 │   │   │   ├── ressourceFinancement.spec.ts
 │   │   │   ├── ressourceFinancements.spec.ts
@@ -603,6 +635,7 @@
 │   │   │   ├── ressourceInfosSite.spec.ts
 │   │   │   ├── ressourcePageConnexion.spec.ts
 │   │   │   ├── ressourcePageContact.spec.ts
+│   │   │   ├── ressourcePageCrisp.spec.ts
 │   │   │   ├── ressourcePageRessource.spec.ts
 │   │   │   ├── ressourcePageService.spec.ts
 │   │   │   ├── ressourcePagesJekyll.spec.ts
@@ -664,7 +697,9 @@
 │   │   │   ├── enrichissement
 │   │   │   │   ├── adaptateurEnrichissement.spec.ts
 │   │   │   │   └── chargementProprietes
-│   │   │   │       └── ChargeurFilAriane.spec.ts
+│   │   │   │       ├── ChargeurContacts.spec.ts
+│   │   │   │       ├── ChargeurFilAriane.spec.ts
+│   │   │   │       └── ChargeurPageCrisp.spec.ts
 │   │   │   ├── entrepotArticleCrisp.spec.ts
 │   │   │   ├── entrepotFinancementGrist.spec.ts
 │   │   │   ├── entrepotGrist.spec.ts
@@ -807,36 +842,8 @@
 │   ├── Gemfile
 │   ├── Gemfile.lock
 │   ├── _config.yml
-│   ├── _contacts
-│   │   ├── fr-20r.md
-│   │   ├── fr-971.md
-│   │   ├── fr-972.md
-│   │   ├── fr-973.md
-│   │   ├── fr-974.md
-│   │   ├── fr-976.md
-│   │   ├── fr-ara.md
-│   │   ├── fr-bfc.md
-│   │   ├── fr-bl.md
-│   │   ├── fr-bre.md
-│   │   ├── fr-cp.md
-│   │   ├── fr-cvl.md
-│   │   ├── fr-ges.md
-│   │   ├── fr-hdf.md
-│   │   ├── fr-idf.md
-│   │   ├── fr-mf.md
-│   │   ├── fr-naq.md
-│   │   ├── fr-nc.md
-│   │   ├── fr-nor.md
-│   │   ├── fr-occ.md
-│   │   ├── fr-pac.md
-│   │   ├── fr-pdl.md
-│   │   ├── fr-pf.md
-│   │   ├── fr-pm.md
-│   │   ├── fr-tf.md
-│   │   └── fr-wf.md
 │   ├── _data
 │   │   ├── catalogue.yml
-│   │   ├── contacts.yml
 │   │   └── meta-description.yml
 │   ├── _includes
 │   │   ├── avis-utilisateur.html
@@ -845,7 +852,6 @@
 │   │   ├── carte-item.html
 │   │   ├── centre-aide.html
 │   │   ├── composant-svelte.html
-│   │   ├── contact-region.html
 │   │   ├── donnees-structurees-indexation.html
 │   │   ├── footer.html
 │   │   ├── head.html
@@ -1183,6 +1189,8 @@
 │   │   │   │   ├── illustration-diagnostic.png
 │   │   │   │   ├── mesure-*.avif  (58 files)
 │   │   │   │   ├── module-*.svg  (6 files)
+│   │   │   │   ├── outils
+│   │   │   │   │   └── icone-telechargement-xlsx.svg
 │   │   │   │   └── visuel-cyberdepart.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
@@ -1260,6 +1268,7 @@
 │   │   └── ajout-document.html
 │   ├── guides.html
 │   ├── inscription.html
+│   ├── kit-relais.html
 │   ├── lib-svelte
 │   │   ├── .gitignore
 │   │   ├── .prettierrc.cjs
@@ -1356,7 +1365,6 @@
 │   │   │   │   ├── FiltresContacts.svelte
 │   │   │   │   ├── NoteInformation.svelte
 │   │   │   │   ├── SelectSecteurContacts.svelte
-│   │   │   │   ├── contacts.donnees.ts
 │   │   │   │   ├── contacts.ts
 │   │   │   │   └── contacts.type.ts
 │   │   │   ├── creation-compte
@@ -1419,7 +1427,7 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (55 files)
+│   │   │   ├── main-*.ts  (56 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1559,6 +1567,9 @@
 │   │   │   │   ├── NiveauxMaturite.type.ts
 │   │   │   │   ├── SelectNiveauMaturite.svelte
 │   │   │   │   └── calculeIdNiveau.ts
+│   │   │   ├── page-crisp
+│   │   │   │   ├── PageCrisp.svelte
+│   │   │   │   └── pageCrisp.type.ts
 │   │   │   ├── parcours
 │   │   │   │   ├── ActionParcoursAvecItems.svelte
 │   │   │   │   └── itemDuParcours.ts
@@ -1617,8 +1628,15 @@
 │   │   │   │   ├── mesure
 │   │   │   │   │   ├── CartesLiensProcédures.svelte
 │   │   │   │   │   ├── Mesure.svelte
-│   │   │   │   │   ├── ModaleTutoriel.svelte
-│   │   │   │   │   └── Procedure.svelte
+│   │   │   │   │   └── boite-a-outils
+│   │   │   │   │       ├── BoiteAOutils.svelte
+│   │   │   │   │       ├── BoiteAOutilsCrise8.svelte
+│   │   │   │   │       ├── BoiteAOutilsGenerique.svelte
+│   │   │   │   │       ├── EtapeProcedure.svelte
+│   │   │   │   │       ├── EtapesProcedure.svelte
+│   │   │   │   │       ├── OutilRappelMiseAJourAnnuaire.svelte
+│   │   │   │   │       ├── OutilsModeleAnnuaireDeCrise.svelte
+│   │   │   │   │       └── Procedure.svelte
 │   │   │   │   ├── mesure.ts
 │   │   │   │   ├── modales
 │   │   │   │   │   ├── ModaleBadgeCyberdepartDebloque.svelte
@@ -1985,4 +2003,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-315 directories, 1788 files
+323 directories, 1799 files

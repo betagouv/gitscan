@@ -1,38 +1,31 @@
-## Changelog : anssi-portail (30 derniers jours, au 12 octobre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 14 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance de l'interactivité du portail. Le lancement de la simulation "Réflexes cyber" et l'intégration d'un nouveau blog enrichissent l'expérience utilisateur. Parallèlement, le "Parcours de sécurisation" est désormais mieux mis en avant sur l'ensemble du site, et de nouveaux outils, comme le comparateur de financements, ont été déployés pour accompagner les organisations.
+Ce mois-ci, le portail a franchi une étape majeure avec le déploiement de la simulation interactive "Réflexes Cyber" et la mise en place d'un nouveau système de blog. L'expérience utilisateur est renforcée par une meilleure visibilité des parcours de sécurisation sur l'ensemble du site et l'ajout de nouveaux outils pratiques, comme le comparateur de financements et des modèles d'annuaire de crise.
 
 ### Évolutions fonctionnelles
-- **Simulation "Réflexes cyber"** : 
-    - Mise en place d'une expérience immersive avec intégration du son, d'animations (transitions, pulsations, confettis) et d'un système de score.
-    - Amélioration du parcours utilisateur (choix des rôles et scénarios, gestion du minuteur, feedback immédiat).
-    - Optimisation de l'affichage sur petits écrans et amélioration de l'accessibilité (détection du mouvement réduit).
-- **Blog et contenus** :
-    - Déploiement d'une section blog complète (affichage des articles, gestion des résumés, sitemap).
-    - Ajout d'un système de retours utilisateurs sur les articles pour améliorer la qualité du contenu.
-- **Parcours de sécurisation** :
-    - Meilleure visibilité du parcours via son intégration dans le menu principal, le pied de page, le héros de la page d'accueil et les résultats de tests.
-    - Ajout d'animations sur les cartes et les vignettes pour dynamiser la navigation.
-- **Mini-tests et outils** :
-    - Amélioration des tests de maturité, d'exposition et "Vrai/Faux" (compatibilité mobile, animations et nouveaux indicateurs de score).
-    - Mise en place d'un outil de comparaison des financements.
-    - Refonte de la "Boîte à outils" incluant désormais un onglet dédié aux procédures prioritaires.
-- **Sécurité et authentification** :
-    - Renforcement de la sécurité avec l'exigence du MFA (authentification multi-facteurs) via ProConnect et l'ajout de limitations de débit (rate limiting) sur les routes de connexion.
+- **Simulation "Réflexes Cyber"** : Lancement complet de l'outil de simulation incluant le choix de rôles et de scénarios, des animations interactives, la gestion du son, ainsi que l'affichage du score final et des résultats.
+- **Nouveau système de Blog** : Mise en place d'une gestion complète des articles (affichage, récupération par slug, mise en cache) et intégration d'un mécanisme de retours utilisateurs.
+- **Outils de financement** : Ajout d'un comparateur de financements permettant de générer des rapports de différences au format Markdown.
+- **Boîte à outils** : 
+    - Intégration de nouvelles procédures (notamment la procédure de CRISE.8).
+    - Ajout d'un outil permettant de télécharger un modèle d'annuaire de crise au format XLSX.
+- **Parcours de sécurisation** : Intégration visuelle accrue du parcours dans le menu, le héros de la page d'accueil, les résultats des tests et le pied de page.
+- **Mini-tests** : Amélioration des tests de maturité et d'exposition avec un mode autonome, des statistiques de résultats et des corrections d'affichage.
+- **Contacts** : Amélioration de la gestion des contacts régionaux et passage à un affichage côté serveur.
 
 ### Évolutions techniques
-- **Tests et qualité** :
-    - Migration complète des moteurs de tests (frontend et backend) vers **Vitest** pour plus de rapidité et de fiabilité.
-    - Amélioration de la couverture de tests et centralisation des mocks.
-- **Infrastructure et déploiement** :
-    - Optimisation des pipelines CI/CD (GitHub Actions) avec mise en cache des tests et mise à jour des runners.
-    - Stabilisation des déploiements sur CleverCloud et gestion optimisée des versions de `pnpm`.
-- **Architecture et performance** :
-    - Refactoring de plusieurs composants pour une meilleure conformité au Design System (DSFR).
-    - Optimisation des performances via la mise en cache des articles du blog et des données de recherche.
-    - Centralisation de la gestion des dépendances via le catalogue `pnpm`.
+- **Refonte de l'architecture API** : Réorganisation majeure de la gestion des routes (API, statiques, authentification, financements) et des middlewares pour une meilleure maintenabilité.
+- **Optimisation des performances** : Mise en place de mécanismes de cache pour les articles du blog et les résumés afin d'accélérer le chargement.
+- **Modernisation de la Toolchain** : 
+    - Migration vers pnpm 12.
+    - Optimisation de la gestion des dépendances par la suppression de nombreux "overrides" obsolètes.
+    - Mise à jour des runners GitHub Actions.
+- **Qualité et Tests** : 
+    - Amélioration de la structure des tests et passage aux spies Vitest.
+    - Automatisation du déploiement des composants de mini-tests.
 
 ### Autres changements
-- **Contenu et SEO** : Mise à jour des métadonnées SEO (titres, descriptions, réseaux sociaux), de la politique de confidentialité et des informations de contact.
-- **Maintenance** : Nettoyage du code (suppression des anciens services Crisp et des anciens "feature flags") et harmonisation de la terminologie (ex: passage de "tutoriels" à "procédures").
+- **SEO & Visibilité** : Mise à jour massive des métadonnées (titres, descriptions, liens réseaux sociaux) et ajout des articles du blog au sitemap.
+- **Nettoyage** : Suppression des fichiers Jekyll obsolètes, des anciens services Crisp et nettoyage de commentaires ou de variables inutiles.
+- **Conformité** : Mise à jour des mentions dans la politique de confidentialité.
