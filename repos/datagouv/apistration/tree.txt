@@ -1925,8 +1925,7 @@
 │   │   │   │   │   ├── civility_parameters.rb
 │   │   │   │   │   ├── france_connectable.rb
 │   │   │   │   │   ├── generates_attestation_proof.rb
-│   │   │   │   │   ├── requires_france_connect.rb
-│   │   │   │   │   └── transcogage.rb
+│   │   │   │   │   └── requires_france_connect.rb
 │   │   │   │   ├── cacheable.rb
 │   │   │   │   ├── can_expose_provider_response.rb
 │   │   │   │   ├── can_log_requests_info_for_debugging.rb
@@ -2059,10 +2058,12 @@
 │   │   │   │       ├── make_request.rb
 │   │   │   │       └── validate_response.rb
 │   │   │   ├── civility
+│   │   │   │   ├── extract_code_commune_from_transcogage.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance.rb
 │   │   │   │   ├── validate_code_cog_insee_pays_naissance.rb
 │   │   │   │   ├── validate_date_naissance.rb
 │   │   │   │   ├── validate_nom_naissance.rb
+│   │   │   │   ├── validate_nom_usage.rb
 │   │   │   │   ├── validate_prenoms.rb
 │   │   │   │   └── validate_sexe_etat_civil.rb
 │   │   │   ├── cnav
@@ -2083,7 +2084,6 @@
 │   │   │   │   ├── complementaire_sante_solidaire
 │   │   │   │   │   ├── build_resource.rb
 │   │   │   │   │   └── validate_response.rb
-│   │   │   │   ├── extract_code_commune_from_transcogage.rb
 │   │   │   │   ├── make_request.rb
 │   │   │   │   ├── participation_familiale_eaje
 │   │   │   │   │   ├── build_attestation_proof.rb
@@ -2099,6 +2099,7 @@
 │   │   │   │   │   ├── validate_period.rb
 │   │   │   │   │   ├── validate_response.rb
 │   │   │   │   │   └── validate_year.rb
+│   │   │   │   ├── replace_typographic_apostrophes.rb
 │   │   │   │   ├── revenu_solidarite_active
 │   │   │   │   │   ├── build_resource.rb
 │   │   │   │   │   └── validate_response.rb
@@ -2168,10 +2169,13 @@
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── dictionaries
 │   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   ├── complete_with_local_dictionary.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── liasses_fiscales
 │   │   │   │   │   ├── build_resource_without_dictionary.rb
 │   │   │   │   │   ├── enrich_resource_with_dictionary.rb
+│   │   │   │   │   ├── retrieve_dictionaries_from_cache_or_remote.rb
+│   │   │   │   │   ├── retrieve_dictionaries_with_fallback.rb
 │   │   │   │   │   ├── retrieve_dictionary_from_cache_or_remote.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── liens_capitalistiques
@@ -2928,7 +2932,11 @@
 │   │   │   ├── generate_code_sample_from_path.rb
 │   │   │   ├── hyperping_api.rb
 │   │   │   ├── insee
-│   │   │   │   └── password_derivation.rb
+│   │   │   │   ├── accepted_password.rb
+│   │   │   │   ├── authentication_backoff.rb
+│   │   │   │   ├── grant_refusal.rb
+│   │   │   │   ├── password_derivation.rb
+│   │   │   │   └── token_renewal.rb
 │   │   │   ├── jwt_token_service.rb
 │   │   │   ├── log_stasher_fields_builder.rb
 │   │   │   ├── maintenance_service.rb
@@ -3000,6 +3008,7 @@
 │   ├── bin
 │   │   ├── augment_openapi_files.rb
 │   │   ├── brakeman
+│   │   ├── brakeman_ignore
 │   │   ├── bundle
 │   │   ├── decrypt_gpg_json_params_from_unknown_provider_tracking_error.sh
 │   │   ├── generate_errors_nomenclature.rb
@@ -3060,7 +3069,8 @@
 │   │   │       ├── 2022.json
 │   │   │       ├── 2023.json
 │   │   │       ├── 2024.json
-│   │   │       └── 2025.json
+│   │   │       ├── 2025.json
+│   │   │       └── 2026.json
 │   │   ├── encrypt_data_signer_data.yml
 │   │   ├── endpoints
 │   │   │   ├── api_entreprise -> ../../../commons/endpoints/api_entreprise
@@ -3882,10 +3892,12 @@
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   ├── dictionaries
 │   │   │   │   │   ├── build_resource_spec.rb
+│   │   │   │   │   ├── complete_with_local_dictionary_spec.rb
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   ├── liasses_fiscales
 │   │   │   │   │   ├── build_resource_without_dictionary_spec.rb
 │   │   │   │   │   ├── enrich_resource_with_dictionary_spec.rb
+│   │   │   │   │   ├── retrieve_dictionaries_from_cache_or_remote_spec.rb
 │   │   │   │   │   ├── retrieve_dictionary_from_cache_or_remote_spec.rb
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   ├── liens_capitalistiques
@@ -4337,6 +4349,7 @@
 │   │   │   │   └── certifications_batiment_spec.rb
 │   │   │   ├── qualifelec
 │   │   │   │   └── certificats_spec.rb
+│   │   │   ├── retriever_organizer_nested_spec.rb
 │   │   │   ├── retriever_organizer_spec.rb
 │   │   │   ├── rnm
 │   │   │   │   └── entreprises_artisanales_spec.rb
@@ -4502,6 +4515,7 @@
 │   │   │   │   ├── legacy_caf_famille_route_spec.rb
 │   │   │   │   ├── ping_spec.rb
 │   │   │   │   ├── pings_spec.rb
+│   │   │   │   ├── transcogage_spec.rb
 │   │   │   │   ├── v2
 │   │   │   │   │   ├── cnav
 │   │   │   │   │   │   ├── allocation_adulte_handicape_spec.rb
@@ -4538,6 +4552,7 @@
 │   │   │   │       │   ├── participation_familiale_eaje_with_france_connect_spec.rb
 │   │   │   │       │   ├── prime_activite_with_civility_spec.rb
 │   │   │   │       │   ├── prime_activite_with_france_connect_spec.rb
+│   │   │   │       │   ├── quotient_familial_nom_usage_spec.rb
 │   │   │   │       │   ├── quotient_familial_with_civility_spec.rb
 │   │   │   │       │   ├── quotient_familial_with_france_connect_spec.rb
 │   │   │   │       │   ├── revenu_solidarite_active_with_civility_spec.rb
@@ -4598,6 +4613,7 @@
 │   │   │   ├── rack_attack_for_api_entreprise_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_v2_spec.rb
+│   │   │   ├── rack_attack_for_france_connect_spec.rb
 │   │   │   ├── rack_attack_spec.rb
 │   │   │   ├── throttle_override_spec.rb
 │   │   │   ├── token_resolution_consistency_spec.rb
@@ -4680,6 +4696,8 @@
 │   │   │   ├── generate_code_sample_from_path_spec.rb
 │   │   │   ├── hyperping_api_spec.rb
 │   │   │   ├── insee
+│   │   │   │   ├── accepted_password_spec.rb
+│   │   │   │   ├── authentication_backoff_spec.rb
 │   │   │   │   └── password_derivation_spec.rb
 │   │   │   ├── jwt_token_service_spec.rb
 │   │   │   ├── maintenance_service_spec.rb
@@ -5599,7 +5617,6 @@
 │   │   │       ├── api_entreprise
 │   │   │       │   ├── pages
 │   │   │       │   │   ├── .gitkeep
-│   │   │       │   │   ├── attestations.scss
 │   │   │       │   │   ├── catalogue.scss
 │   │   │       │   │   ├── home
 │   │   │       │   │   │   ├── _section_developers.scss
@@ -5691,7 +5708,6 @@
 │   │   │   │   ├── changelogs_controller.rb
 │   │   │   │   ├── delegations_controller.rb
 │   │   │   │   ├── documentation_controller.rb
-│   │   │   │   ├── download_attestations_controller.rb
 │   │   │   │   ├── endpoints_controller.rb
 │   │   │   │   ├── errors_controller.rb
 │   │   │   │   ├── faq_controller.rb
@@ -5765,11 +5781,8 @@
 │   │   │   ├── editor_decorator.rb
 │   │   │   ├── endpoint_decorator.rb
 │   │   │   └── token_decorator.rb
-│   │   ├── errors
-│   │   │   └── siade_client_error.rb
 │   │   ├── facade
 │   │   │   ├── api_request_facade.rb
-│   │   │   ├── entreprise_with_attestations_facade.rb
 │   │   │   └── token_stats_facade.rb
 │   │   ├── formatters
 │   │   │   ├── csv_formatter.rb
@@ -5872,12 +5885,14 @@
 │   │   │   ├── api_entreprise_domain_constraint.rb
 │   │   │   ├── api_particulier_domain_constraint.rb
 │   │   │   ├── authorization_request_condition_facade.rb
+│   │   │   ├── csv_formula_neutralizer.rb
 │   │   │   ├── editor
 │   │   │   │   └── api
 │   │   │   │       └── v1
 │   │   │   │           └── delegation_serializer.rb
 │   │   │   ├── editor_api_domain_constraint.rb
 │   │   │   ├── hub_signature.rb
+│   │   │   ├── new_tab_safe_html_converter.rb
 │   │   │   ├── personal_data_anonymizer.rb
 │   │   │   ├── robots_txt.rb
 │   │   │   └── seeds.rb
@@ -5943,7 +5958,6 @@
 │   │   │   ├── editor.rb
 │   │   │   ├── editor_delegation.rb
 │   │   │   ├── editor_token.rb
-│   │   │   ├── entreprise.rb
 │   │   │   ├── magic_link.rb
 │   │   │   ├── organization.rb
 │   │   │   ├── prolong_token_wizard.rb
@@ -5984,7 +5998,6 @@
 │   │   │       └── send_expiration_notices.rb
 │   │   ├── policies
 │   │   │   ├── application_policy.rb
-│   │   │   ├── download_attestations_policy.rb
 │   │   │   ├── editor_token_policy.rb
 │   │   │   └── token_policy.rb
 │   │   ├── queries
@@ -6021,7 +6034,6 @@
 │   │   │   ├── open_api_schema_to_example.rb
 │   │   │   ├── open_bureau_date.rb
 │   │   │   ├── siade
-│   │   │   │   ├── attestation_downloader.rb
 │   │   │   │   └── manual_request.rb
 │   │   │   ├── siade.rb
 │   │   │   └── status_page.rb
@@ -6114,11 +6126,6 @@
 │   │       │   │   ├── _banner.html.erb
 │   │       │   │   ├── _menu.html.erb
 │   │       │   │   └── index.html.erb
-│   │       │   ├── download_attestations
-│   │       │   │   ├── _result.html.erb
-│   │       │   │   ├── create.html.erb
-│   │       │   │   ├── create.turbo_stream.erb
-│   │       │   │   └── new.html.erb
 │   │       │   ├── endpoints
 │   │       │   │   ├── _details.html.erb
 │   │       │   │   ├── _endpoint.html.erb
@@ -6347,6 +6354,7 @@
 │   │           ├── authorization_requests
 │   │           │   ├── _breadcrumb.html.erb
 │   │           │   ├── _header.html.erb
+│   │           │   ├── _organization.html.erb
 │   │           │   ├── _summary.html.erb
 │   │           │   ├── actions
 │   │           │   │   ├── _no_action.html.erb
@@ -6429,6 +6437,7 @@
 │   │               └── profile.html.erb
 │   ├── bin
 │   │   ├── brakeman
+│   │   ├── brakeman_ignore
 │   │   ├── bundle
 │   │   ├── deploy
 │   │   ├── generate_swagger.sh
@@ -6614,7 +6623,27 @@
 │   │   │   ├── 20260721100000_add_apis_to_editors.rb
 │   │   │   ├── 20260721100001_backfill_editor_apis.rb
 │   │   │   ├── 20260721120000_rename_delegations_enabled_to_editor_tokens_enabled_on_editors.rb
-│   │   │   └── 20260723120000_add_throttle_overrides_to_authorization_request_security_settings.rb
+│   │   │   ├── 20260723120000_add_throttle_overrides_to_authorization_request_security_settings.rb
+│   │   │   ├── 20261005120000_add_unique_index_on_user_authorization_request_roles_role.rb
+│   │   │   ├── 20261012104527_add_jobs_finished_at_to_good_job_batches.rb
+│   │   │   ├── 20261012104528_add_index_good_jobs_concurrency_key_created_at.rb
+│   │   │   ├── 20261012104529_add_index_good_jobs_job_class.rb
+│   │   │   ├── 20261012104530_add_index_good_jobs_finished_at_for_cleanup.rb
+│   │   │   ├── 20261012104531_remove_extraneous_finished_at_index.rb
+│   │   │   ├── 20261012104532_add_lock_type_to_good_jobs.rb
+│   │   │   ├── 20261012104533_add_index_good_jobs_for_candidate_dequeue_unlocked.rb
+│   │   │   ├── 20261012104534_add_index_good_jobs_priority_scheduled_at.rb
+│   │   │   ├── 20261012104535_add_index_good_jobs_queue_name.rb
+│   │   │   ├── 20261012104536_add_index_good_jobs_created_at.rb
+│   │   │   ├── 20261012104537_add_index_good_jobs_discarded.rb
+│   │   │   ├── 20261012104538_add_index_good_jobs_scheduled_at_and_queue_name.rb
+│   │   │   ├── 20261012104539_add_index_good_jobs_on_unfinished_or_errored.rb
+│   │   │   ├── 20261012104540_add_index_good_jobs_discarded_job_class.rb
+│   │   │   ├── 20261012104541_add_index_good_jobs_dequeue_by_queue.rb
+│   │   │   ├── 20261012104542_add_index_good_job_executions_on_scheduled_at.rb
+│   │   │   ├── 20261012104543_add_batch_query_indexes.rb
+│   │   │   ├── 20261012104544_remove_redundant_good_jobs_indexes.rb
+│   │   │   └── 20261012104545_reorder_good_jobs_cron_index.rb
 │   │   ├── schema.rb
 │   │   ├── seeds.rb
 │   │   └── views
@@ -7304,8 +7333,7 @@
 │   │   │   └── token_decorator_spec.rb
 │   │   ├── endpoint_ping_urls_consistency_spec.rb
 │   │   ├── facade
-│   │   │   ├── api_request_facade_spec.rb
-│   │   │   └── entreprise_with_attestations_facade_spec.rb
+│   │   │   └── api_request_facade_spec.rb
 │   │   ├── factories
 │   │   │   ├── access_logs.rb
 │   │   │   ├── admin_activities.rb
@@ -7343,7 +7371,6 @@
 │   │   │   │   ├── changelogs_spec.rb
 │   │   │   │   ├── create_token_magic_link_spec.rb
 │   │   │   │   ├── documentation_spec.rb
-│   │   │   │   ├── download_attestations_spec.rb
 │   │   │   │   ├── editor_space_link_spec.rb
 │   │   │   │   ├── endpoints
 │   │   │   │   │   ├── index_spec.rb
@@ -7380,7 +7407,8 @@
 │   │   │   │   ├── show_token_from_magic_link_spec.rb
 │   │   │   │   ├── show_token_spec.rb
 │   │   │   │   ├── signin_process_datapass_spec.rb
-│   │   │   │   └── stats_spec.rb
+│   │   │   │   ├── stats_spec.rb
+│   │   │   │   └── token_pages_escaping_spec.rb
 │   │   │   ├── authorization_requests
 │   │   │   │   └── delegations_spec.rb
 │   │   │   ├── datapass_webhooks
@@ -7478,6 +7506,7 @@
 │   │   ├── lib
 │   │   │   ├── access_token_spec.rb
 │   │   │   ├── authorization_request_condition_facade_spec.rb
+│   │   │   ├── csv_formula_neutralizer_spec.rb
 │   │   │   ├── editor
 │   │   │   │   └── api
 │   │   │   │       └── v1
@@ -7536,7 +7565,6 @@
 │   │   │   ├── editor_delegation_spec.rb
 │   │   │   ├── editor_spec.rb
 │   │   │   ├── editor_token_spec.rb
-│   │   │   ├── entreprise_spec.rb
 │   │   │   ├── magic_link_spec.rb
 │   │   │   ├── organization_spec.rb
 │   │   │   ├── prolong_token_wizard_spec.rb
@@ -7580,6 +7608,8 @@
 │   │   │   │           ├── delegations_spec.rb
 │   │   │   │           └── host_routing_spec.rb
 │   │   │   ├── open_api_spec.rb
+│   │   │   ├── proconnect_authorization_spec.rb
+│   │   │   ├── proconnect_callback_spec.rb
 │   │   │   └── robots_txt_spec.rb
 │   │   ├── scopes_consistency_spec.rb
 │   │   ├── services
@@ -7596,13 +7626,13 @@
 │   │   │   ├── insee
 │   │   │   │   ├── password_derivation_spec.rb
 │   │   │   │   └── password_rotation_spec.rb
+│   │   │   ├── markdown_interpolator_spec.rb
 │   │   │   ├── metabase_embed_service_spec.rb
 │   │   │   ├── migrate_legacy_token_service_spec.rb
 │   │   │   ├── open_api_endpoint_spec.rb
 │   │   │   ├── open_api_schema_to_example_spec.rb
 │   │   │   ├── open_bureau_date_spec.rb
 │   │   │   ├── siade
-│   │   │   │   ├── attestation_downloader_spec.rb
 │   │   │   │   └── manual_request_spec.rb
 │   │   │   └── status_page_spec.rb
 │   │   ├── spec_helper.rb
@@ -7617,6 +7647,8 @@
 │   │   │   │   └── credentials_helpers.rb
 │   │   │   ├── hubee_api_mocks.rb
 │   │   │   ├── insee_sirene_api_mocks.rb
+│   │   │   ├── matchers
+│   │   │   │   └── expose_window_opener.rb
 │   │   │   ├── shared_examples
 │   │   │   │   ├── controllers
 │   │   │   │   │   ├── authenticated_users_controller.rb
@@ -7672,4 +7704,4 @@
 │       └── .keep
 └── worktrees
     └── .gitkeep
-1531 directories, 6474 files
+1530 directories, 6507 files
