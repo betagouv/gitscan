@@ -1,10 +1,12 @@
-## Changelog : upptime (30 derniers jours, au 12 octobre 2026)
+## Changelog : upptime (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Le projet est actuellement en phase de fonctionnement opérationnel stable. L'activité récente se concentre sur la surveillance continue des services et la mise à jour automatique des indicateurs de disponibilité.
+Le projet a principalement bénéficié de plusieurs mises à jour de sa version principale et assure une maintenance continue de ses indicateurs de disponibilité via ses processus automatisés.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance principale `@upptime` vers la version 1.45.0.
+- Mise à jour de la dépendance principale `@upptime` (progression de la v1.44.1 à la v1.46.0).
 
 ### Autres changements
-- Mise à jour automatisée des graphiques de performance et des résumés de statut (README) pour garantir une visibilité en temps réel de l'état de santé des services surveillés.
+- Maintenance automatisée des rapports de statut :
+    - Actualisation régulière des graphiques de disponibilité et de performance.
+    - Mise à jour systématique du résumé de statut et du fichier README pour refléter l'état de santé actuel des services surveillés.
