@@ -1,20 +1,25 @@
-## Changelog : securix (30 derniers jours, au 02 octobre 2026)
+## Changelog : securix (30 derniers jours, au 14 octobre 2026)
 
 ### Résumé
-Ce mois-ci, SecurixOS a bénéficié d'améliorations majeures visant à renforcer la fiabilité des mises à jour automatiques et la robustesse du système. L'expérience utilisateur a été affinée avec de meilleures options de configuration de l'interface et de l'installation, tandis que la documentation a été intégralement refondue pour offrir un support bilingue (français/anglais) complet.
+Ce mois-ci, SecurixOS a bénéficié de plusieurs améliorations visant à renforcer la fiabilité du système et à enrichir l'expérience utilisateur. Les mises à jour automatiques sont désormais plus robustes, de nouveaux outils de gestion pour les clés Yubikey ont été intégrés, et l'interface utilisateur a été affinée, notamment pour la gestion des raccourcis clavier et l'écran de connexion.
 
 ### Évolutions fonctionnelles
-- **Sécurité et interface** : Masquage des comptes administrateurs sur l'écran de connexion SDDM pour limiter l'exposition des comptes privilégiés [#265](https://github.com/cloud-gouv/securix/pull/265).
-- **Interface de bureau** : Amélioration de la gestion des raccourcis clavier sous l'environnement Sway via l'utilisation des codes de touches (keycode) [#262](https://github.com/cloud-gouv/securix/pull/262).
-- **Réseau** : La gestion des tunnels SSH via le proxy HTTP est désormais sécurisée et conditionnée par l'option `auth.sshForward`.
-- **Installation** : Correction d'une erreur logique dans le terminal d'auto-installation concernant le saut des vérifications préliminaires [#267](https://github.com/cloud-gouv/securix/pull/267).
+- **Nouveaux outils communautaires** : Ajout d'un outil pour la réinitialisation des clés Yubikey [#302](https://github.com/cloud-gouv/securix/issues/302).
+- **Interface utilisateur** :
+    - Amélioration de la gestion des raccourcis clavier dans l'environnement Sway via l'utilisation des codes de touches [#262](https://github.com/cloud-gouv/securix/issues/262).
+    - Masquage des comptes administrateurs sur l'écran de connexion SDDM pour plus de discrétion [#265](https://github.com/cloud-gouv/securix/issues/265).
 
 ### Évolutions techniques
-- **Mises à jour automatiques** : Optimisation du processus de mise à jour avec une stratégie de tentatives exponentielles (backoff) et suppression systématique des anciennes générations après un succès [#276](https://github.com/cloud-gouv/securix/pull/276), [#277](https://github.com/cloud-gouv/securix/pull/277).
-- **Réseau (IPsec)** : Amélioration de la correspondance des noms de domaine (DNs) pour l'IPsec, permettant une identification indépendante de l'ordre des éléments [#279](https://github.com/cloud-gouv/securix/pull/279).
-- **Optimisation matérielle** : Ajustement du gestionnaire de fréquence CPU pour assurer un fonctionnement optimal sur les machines de type x13 [#273](https://github.com/cloud-gouv/securix/pull/273).
-- **Maintenance Nix** : Résolution de plusieurs erreurs d'évaluation Nix introduites lors de modifications récentes [#269](https://github.com/cloud-gouv/securix/pull/269).
-- **Tests** : Correction d'une condition de concurrence (race condition) dans les tests du portail.
+- **Fiabilisation des mises à jour automatiques** : 
+    - Mise en place d'une stratégie de tentatives avec backoff exponentiel et meilleure gestion de la suppression des anciennes versions du système [#276](https://github.com/cloud-gouv/securix/issues/276).
+    - Correction d'un problème de temporisation dans le module de récupération automatique [#277](https://github.com/cloud-gouv/securix/issues/277).
+- **Réseau et Sécurité** :
+    - Optimisation de la correspondance des noms de domaine (DN) pour les connexions IPsec, indépendamment de leur ordre [#279](https://github.com/cloud-gouv/securix/issues/279).
+    - Implémentation d'un système de rapport de télémétrie de base pour la communauté.
+- **Système et Robustesse** :
+    - Optimisation de la gestion de la fréquence CPU pour les machines de type x13 [#273](https://github.com/cloud-gouv/securix/issues/273).
+    - Corrections de diverses erreurs d'évaluation Nix [#269](https://github.com/cloud-gouv/securix/issues/269), de conditions dans l'installateur automatique [#267](https://github.com/cloud-gouv/securix/issues/267), du générateur d'inventaire [#303](https://github.com/cloud-gouv/securix/issues/303) et de la gestion des utilisateurs via sudo [#284](https://github.com/cloud-gouv/securix/issues/284).
 
 ### Autres changements
-- **Documentation** : Refonte complète de la documentation pour un support bilingue (français/anglais), incluant de nouveaux guides d'ingénierie et de déploiement, l'ajout de diagrammes et le support de Mermaid.
+- **Documentation** : Corrections typographiques dans le fichier README [#297](https://github.com/cloud-gouv/securix/issues/297).
+- **Configuration** : Ajout de nouveaux modules par défaut à la section communautaire.
