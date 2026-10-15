@@ -1,46 +1,20 @@
-## Changelog : maestro (30 derniers jours, au 01/10/2026)
+## Changelog : maestro (30 derniers jours, au 14 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme Maestro a connu une évolution majeure de son module de paramétrage, offrant une gestion beaucoup plus fine des plans, des sous-plans et des matrices. Les droits d'accès ont également été affinés pour mieux répondre aux besoins des différents profils d'utilisateurs (nationaux, régionaux, départementaux), tout en améliorant la fluidité de la programmation et du suivi des activités.
+Ce mois-ci, Maestro a franchi une étape importante dans la flexibilité de son moteur de paramétrage. Les utilisateurs peuvent désormais configurer de manière beaucoup plus fine les plans, les échantillons et les substances. Parallèlement, des efforts significatifs ont été déployés pour renforcer l'anonymisation des données et affiner les droits d'accès selon les différents rôles administratifs.
 
 ### Évolutions fonctionnelles
-
-**Paramétrage et configuration**
-- Gestion avancée des matrices au niveau des plans ([#1590](https://github.com/betagouv/maestro/issues/1590), [#1582](https://github.com/betagouv/maestro/issues/1582), [#1568](https://github.com/betagouv/maestro/issues/1568)).
-- Possibilité de dupliquer des domaines, des plans ou des sous-plans ([#1550](https://github.com/betagouv/maestro/issues/1550)).
-- Amélioration de la gestion des échantillons : configuration des analytes (possibilité de mettre plusieurs analytes par échantillon) et calcul automatique via le paramétrage ([#1524](https://github.com/betagouv/maestro/issues/1524), [#1513](https://github.com/betagouv/maestro/issues/1513), [#1484](https://github.com/betagouv/maestro/issues/1484)).
-- Nouvelles options de gestion : modification des titres de plans ([#1583](https://github.com/betagouv/maestro/issues/1583)), ajout d'IT direct sur le plan ([#1541](https://github.com/betagouv/maestro/issues/1541)), notion de propriétaire ([#1453](https://github.com/betagouv/maestro/issues/1453)), gestion de l'état "Terminer" ([#1441](https://github.com/betagouv/maestro/issues/1441)) et notion de surcharge entre plan et sous-plans ([#1412](https://github.com/betagouv/maestro/issues/1412)).
-- Suppression sécurisée des domaines, plans et sous-plans non terminés ([#1475](https://github.com/betagouv/maestro/issues/1475)).
-- Flexibilité accrue sur les ressources (l'année est désormais optionnelle) et les descripteurs (ajout d'un type date) ([#1540](https://github.com/betagouv/maestro/issues/1540), [#1491](https://github.com/betagouv/maestro/issues/1491)).
-
-**Programmation et suivi**
-- Introduction d'une fonctionnalité de suivi des activités ([#1221](https://github.com/betagouv/maestro/issues/1221)).
-- Ouverture des droits d'importation de la programmation aux coordinateurs régionaux et départementaux ([#1578](https://github.com/betagouv/maestro/issues/1578)).
-- Améliorations de l'interface utilisateur : ajout d'un bouton de retour en haut de page ([#1539](https://github.com/betagouv/maestro/issues/1539)) et tri des sous-plans par numéro ([#1537](https://github.com/betagouv/maestro/issues/1537)).
-
-**Gestion des accès et utilisateurs**
-- Élargissement des droits des coordinateurs nationaux : accès en lecture seule au dictionnaire des descripteurs ([#1536](https://github.com/betagouv/maestro/issues/1536)) et visibilité de tous les domaines ([#1462](https://github.com/betagouv/maestro/issues/1462)).
-- Meilleure visibilité des commentaires nationaux pour les coordinateurs régionaux ([#1452](https://github.com/betagouv/maestro/issues/1452)).
-- Ajout de fonctionnalités dédiées au support utilisateur ([#1538](https://github.com/betagouv/maestro/issues/1538)).
-
-**Divers**
-- Migration de la messagerie de Mattermost vers Tchap ([#1430](https://github.com/betagouv/maestro/issues/1430)).
-- Corrections de bugs : recherche d'entreprises ([#1473](https://github.com/betagouv/maestro/issues/1473)), émetteur des emails automatiques ([#1567](https://github.com/betagouv/maestro/issues/1567)) et modification de la localisation des prélèvements ([#1414](https://github.com/betagouv/maestro/issues/1414)).
+- **Paramétrage avancé** : ajout de nouveaux modes de programmation [#1670], possibilité de créer, renommer ou modifier des plans [#1667, #1665, #1583], gestion des contextes au niveau du plan [#1609] et fonction de duplication d'éléments (domaine, plan ou sous-plan) [#1550].
+- **Gestion des prélèvements et échantillons** : configuration fine des modalités d'échantillonnage [#1641], des substances [#1629], des analytes [#1476, #1513] et des matrices [#1568, #1582, #1590, #1603]. Le calcul des échantillons et de leurs exemplaires est désormais automatisé via le paramétrage [#1524].
+- **Programmation et suivi** : ajout d'un système de suivi de la programmation [#1221], détermination automatique du nom des sous-plans [#1591] et correction de l'affichage des tableaux de programmation pour certains profils [#1630].
+- **Droits et accès** : gestion affinée des rôles avec un accès en lecture seule au dictionnaire pour les coordinateurs nationaux [#1536], ouverture de l'import de programmation aux coordinateurs régionaux et départementaux [#1578] et correction des accès pour les prélèveurs [#1502].
+- **Sécurité et conformité** : renforcement de l'anonymisation des données, notamment pour les outils de visualisation comme Metabase [#1628].
+- **Corrections diverses** : correction des étiquettes PPV [#1607], de l'émetteur des emails automatiques [#1567] et de la méthode d'analyse GIRPA [#1565].
 
 ### Évolutions techniques
-
-**Architecture et Refactoring**
-- Restructuration du module PPV en sous-plans ([#1512](https://github.com/betagouv/maestro/issues/1512)).
-- Déplacement des matrices de prescription vers les sous-plans ([#1580](https://github.com/betagouv/maestro/issues/1580)).
-- Nettoyage du code : suppression de la gestion du mode offline ([#1523](https://github.com/betagouv/maestro/issues/1523)) et du code mort dans la partie programmation ([#1522](https://github.com/betagouv/maestro/issues/1522)).
-- Refactoring des étapes (stages) ([#1566](https://github.com/betagouv/maestro/issues/1566)).
-
-**Base de données et Infrastructure**
-- Optimisation de la table des prescriptions via l'ajout de contraintes et la suppression de colonnes obsolètes ([#1577](https://github.com/betagouv/maestro/issues/1577)).
-- Correction de migrations de base de données.
-
-**Qualité et Build**
-- Corrections de types pour les routes et amélioration de la stabilité des tests ([#1589](https://github.com/betagouv/maestro/issues/1589)).
+- **Architecture et Refactoring** : remplacement de la bibliothèque i18n par une solution interne [#1661], refactorisation de la gestion des substances (passage de "Any" à Mono/Multi) [#1608] et séparation des PPV en sous-plans [#1512].
+- **Base de données** : mise à jour de PostgreSQL [#1632] et renforcement de l'intégrité des données via l'ajout de contraintes sur la table des prescriptions [#1577].
+- **Maintenance et optimisation** : suppression de code mort [#1522], de la gestion du mode hors-ligne [#1523] et de plusieurs dépendances NPM (uuid, dotenv, compose-middleware, etc.). Amélioration de la précision des logs pour les routes inconnues [#1663].
 
 ### Autres changements
-- Passage du projet sous licence MIT ([#1489](https://github.com/betagouv/maestro/issues/1489)).
+- Passage du projet sous licence MIT [#1489].

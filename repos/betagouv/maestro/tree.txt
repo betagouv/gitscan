@@ -159,8 +159,6 @@
 │   │   │   │   ├── PrescriptionActionBar
 │   │   │   │   │   ├── PrescriptionActionBar.scss
 │   │   │   │   │   └── PrescriptionActionBar.tsx
-│   │   │   │   ├── PrescriptionBreadcrumb
-│   │   │   │   │   └── PrescriptionBreadcrumb.tsx
 │   │   │   │   ├── PrescriptionCommentsModal
 │   │   │   │   │   ├── PrescriptionCommentAuthor.tsx
 │   │   │   │   │   ├── PrescriptionCommentsModal.scss
@@ -168,13 +166,6 @@
 │   │   │   │   │   └── PrescriptionCommentsModalPPV.stories.tsx
 │   │   │   │   ├── PrescriptionDistributionBadge
 │   │   │   │   │   └── PrescriptionDistributionBadge.tsx
-│   │   │   │   ├── PrescriptionEditSubstances
-│   │   │   │   │   └── PrescriptionEditSubstances.tsx
-│   │   │   │   ├── PrescriptionModal
-│   │   │   │   │   ├── PrescriptionModal.scss
-│   │   │   │   │   └── PrescriptionModal.tsx
-│   │   │   │   ├── PrescriptionNotes
-│   │   │   │   │   └── PrescriptionNotes.tsx
 │   │   │   │   └── PrescriptionSubstances
 │   │   │   │       └── PrescriptionSubstances.tsx
 │   │   │   ├── ProgrammingPlanDisplayStatusBadge
@@ -335,6 +326,7 @@
 │   │   │   ├── fetchUtils.test.ts
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── maplibre.ts
+│   │   │   ├── modalUtils.ts
 │   │   │   ├── sampleLaboratories.test.ts
 │   │   │   ├── sampleLaboratories.ts
 │   │   │   ├── stringUtils.test.ts
@@ -423,11 +415,18 @@
 │   │       │   ├── NotificationsView.scss
 │   │       │   └── NotificationsView.tsx
 │   │       ├── ProgrammingPlanSettingsView
+│   │       │   ├── ProgrammingPlanAnalysisSettings
+│   │       │   │   ├── ProgrammingPlanAnalysisSettings.scss
+│   │       │   │   └── ProgrammingPlanAnalysisSettings.tsx
+│   │       │   ├── ProgrammingPlanCreateModal
+│   │       │   │   └── ProgrammingPlanCreateModal.tsx
 │   │       │   ├── ProgrammingPlanDeleteModal
 │   │       │   │   └── ProgrammingPlanDeleteModal.tsx
 │   │       │   ├── ProgrammingPlanDocuments
 │   │       │   │   └── ProgrammingPlanDocuments.tsx
 │   │       │   ├── ProgrammingPlanDomainCreateModal.tsx
+│   │       │   ├── ProgrammingPlanDomainRenameModal
+│   │       │   │   └── ProgrammingPlanDomainRenameModal.tsx
 │   │       │   ├── ProgrammingPlanDomainView
 │   │       │   │   ├── ProgrammingPlanDomainView.stories.tsx
 │   │       │   │   └── ProgrammingPlanDomainView.tsx
@@ -451,6 +450,7 @@
 │   │       │   │   └── ProgrammingPlanNationalCoordinators.tsx
 │   │       │   ├── ProgrammingPlanSampleSettings
 │   │       │   │   ├── ProgrammingPlanSampleCopyModal.tsx
+│   │       │   │   ├── ProgrammingPlanSampleProcedureSettings.tsx
 │   │       │   │   ├── ProgrammingPlanSampleSettings.scss
 │   │       │   │   ├── ProgrammingPlanSampleSettings.tsx
 │   │       │   │   ├── programmingPlanSamples.test.ts
@@ -543,7 +543,9 @@
 │   │       │   │   ├── ContextStep
 │   │       │   │   │   ├── ContextStep.stories.tsx
 │   │       │   │   │   ├── ContextStep.tsx
-│   │       │   │   │   └── SampleCompany.tsx
+│   │       │   │   │   ├── SampleCompany.tsx
+│   │       │   │   │   ├── sampleLegalContext.test.ts
+│   │       │   │   │   └── sampleLegalContext.ts
 │   │       │   │   ├── DraftSample.tsx
 │   │       │   │   ├── ItemsStep
 │   │       │   │   │   ├── ItemsStep.stories.tsx
@@ -678,6 +680,11 @@
 │   ├── data
 │   │   └── regions.json
 │   ├── database
+│   │   ├── anonymization
+│   │   │   ├── README.md
+│   │   │   ├── maskingCoverage.integration.test.ts
+│   │   │   ├── maskingExceptions.ts
+│   │   │   └── masking_rules.sql
 │   │   ├── migrations
 │   │   │   ├── 001-uuid-extension.ts
 │   │   │   ├── 002-users.ts
@@ -837,7 +844,17 @@
 │   │   │   ├── 132-stage-as-specific-data-field.ts
 │   │   │   ├── 133-sub-plans-matrix.ts
 │   │   │   ├── 134-sub-plans-matrices.ts
-│   │   │   └── 135-matrices-managed.ts
+│   │   │   ├── 135-matrices-managed.ts
+│   │   │   ├── 136-samples-matrices.ts
+│   │   │   ├── 136-sub-plan-context.ts
+│   │   │   ├── 137-context-managed.ts
+│   │   │   ├── 137-remove-any-substance-kind.ts
+│   │   │   ├── 138-sub-plan-prescription-settings-managed.ts
+│   │   │   ├── 139-sub-plan-substances-managed.ts
+│   │   │   ├── 140-sample-procedure-managed.ts
+│   │   │   ├── 141-drop-programming-plan-contexts.ts
+│   │   │   ├── 142-drop-programming-plan-unused-columns.ts
+│   │   │   └── 143-drop-programming-plan-distribution-kind.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -893,6 +910,7 @@
 │   │   ├── analysisReportDocumentsRepository.ts
 │   │   ├── analysisRepository.test.ts
 │   │   ├── analysisRepository.ts
+│   │   ├── analysisResidueRepository.test.ts
 │   │   ├── analysisResidueRepository.ts
 │   │   ├── companyRepository.test.ts
 │   │   ├── companyRepository.ts
@@ -921,7 +939,6 @@
 │   │   ├── prescriptionChangeRepository.ts
 │   │   ├── prescriptionRepository.test.ts
 │   │   ├── prescriptionRepository.ts
-│   │   ├── prescriptionSubstanceRepository.ts
 │   │   ├── programmingPlanDomainRepository.test.ts
 │   │   ├── programmingPlanDomainRepository.ts
 │   │   ├── programmingPlanRepository.test.ts
@@ -944,6 +961,8 @@
 │   │   ├── sampleStatusViews.test.ts
 │   │   ├── specificDataFieldConfigRepository.test.ts
 │   │   ├── specificDataFieldConfigRepository.ts
+│   │   ├── subPlansDistributionKind.test.ts
+│   │   ├── subPlansDistributionKind.ts
 │   │   ├── userRepository.test.ts
 │   │   └── userRepository.ts
 │   ├── routers
@@ -1136,6 +1155,7 @@
 │   │   └── templates.ts
 │   ├── test
 │   │   ├── db-manager.ts
+│   │   ├── departments.geojson
 │   │   ├── globalSetup.ts
 │   │   ├── seed
 │   │   │   ├── 001-companies.ts
@@ -1301,8 +1321,7 @@
 │   │   │   ├── PrescriptionChange.ts
 │   │   │   ├── PrescriptionComments.ts
 │   │   │   ├── PrescriptionCounts.ts
-│   │   │   ├── PrescriptionImport.ts
-│   │   │   └── PrescriptionSubstance.ts
+│   │   │   └── PrescriptionImport.ts
 │   │   ├── ProgrammingPlan
 │   │   │   ├── Context.ts
 │   │   │   ├── DistributionKind.ts
@@ -1324,7 +1343,10 @@
 │   │   │   ├── ProgrammingPlanStatus.ts
 │   │   │   ├── ProgrammingPlans.test.ts
 │   │   │   ├── ProgrammingPlans.ts
+│   │   │   ├── ProgrammingSubPlan.test.ts
 │   │   │   ├── ProgrammingSubPlan.ts
+│   │   │   ├── SampleProcedure.test.ts
+│   │   │   ├── SampleProcedure.ts
 │   │   │   ├── SubPlanMatrices.test.ts
 │   │   │   ├── SubPlanMatrices.ts
 │   │   │   ├── completedSubPlanSettings.test.ts
@@ -1341,6 +1363,8 @@
 │   │   │   ├── SampleItem.test.ts
 │   │   │   ├── SampleItem.ts
 │   │   │   ├── SampleItemRecipientKind.ts
+│   │   │   ├── SampleMatrix.test.ts
+│   │   │   ├── SampleMatrix.ts
 │   │   │   ├── SampleSpecificDataAttribute.ts
 │   │   │   ├── SampleStatus.ts
 │   │   │   ├── SampleStep.ts
@@ -1404,4 +1428,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-240 directories, 1166 files
+240 directories, 1190 files
