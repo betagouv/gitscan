@@ -283,6 +283,7 @@
 │   │   │   ├── logger.test.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── sentry
+│   │   │   │   ├── sentry-pii.test.ts
 │   │   │   │   ├── sentry.fastify.ts
 │   │   │   │   ├── sentry.test.ts
 │   │   │   │   └── sentry.ts
@@ -317,6 +318,7 @@
 │   │   │       ├── mongodb-utils.ts
 │   │   │       ├── region-insee-codes.ts
 │   │   │       ├── send-tracking-event.ts
+│   │   │       ├── sentry-utils.test.ts
 │   │   │       ├── sentry-utils.ts
 │   │   │       ├── session.service.ts
 │   │   │       ├── slack-utils.ts
@@ -341,6 +343,8 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── eligible-trainings-for-appointment.controller.ts
 │   │   │   │   │   ├── etablissement.controller.ts
+│   │   │   │   │   ├── feedback-forms.controller.test.ts
+│   │   │   │   │   ├── feedback-forms.controller.ts
 │   │   │   │   │   ├── formations.controller.ts
 │   │   │   │   │   ├── jobs-partners.controller.test.ts
 │   │   │   │   │   └── jobs-partners.controller.ts
@@ -353,6 +357,8 @@
 │   │   │   │   ├── etablissement-recruteur.controller.ts
 │   │   │   │   ├── etablissement.controller.test.ts
 │   │   │   │   ├── etablissement.controller.ts
+│   │   │   │   ├── feedback-forms.controller.test.ts
+│   │   │   │   ├── feedback-forms.controller.ts
 │   │   │   │   ├── formations.controller.ts
 │   │   │   │   ├── formulaire.controller.test.ts
 │   │   │   │   ├── formulaire.controller.ts
@@ -460,6 +466,11 @@
 │   │   │   │   └── migrations.ts
 │   │   │   ├── mise-en-relation
 │   │   │   │   └── send-mise-en-relation.ts
+│   │   │   ├── moderation
+│   │   │   │   ├── moderation-jobs.test.ts
+│   │   │   │   ├── purge-moderation-texts.ts
+│   │   │   │   ├── rejeu-classification.ts
+│   │   │   │   └── retry-classification.ts
 │   │   │   ├── offre-partenaire
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   ├── fill-siret-infos-for-partners.test.ts.snap
@@ -745,6 +756,8 @@
 │   │   │   │   ├── sync-etablissements-and-formations.test.ts
 │   │   │   │   └── sync-etablissements-and-formations.ts
 │   │   │   ├── recruiters
+│   │   │   │   ├── auto-validation-rate-alert.test.ts
+│   │   │   │   ├── auto-validation-rate-alert.ts
 │   │   │   │   ├── create-api-user.ts
 │   │   │   │   ├── disable-api-user.ts
 │   │   │   │   ├── nurturing-entreprises.test.ts
@@ -806,6 +819,7 @@
 │   │   │   ├── 20260911180000-backfill-search-items-admin-codes.ts
 │   │   │   ├── 20260915103000-cancel-cfa-jobs-5447.ts
 │   │   │   ├── 20260915143000-backfill-offer-status-history-lba-5429.ts
+│   │   │   ├── 20260922160000-add-feedback-forms-indexes.ts
 │   │   │   ├── 20260922170000-backfill-application-cv-deleted-at-5495.ts
 │   │   │   ├── 20260922180000-merge-orphan-anonymized-applications.ts
 │   │   │   ├── 20260922180000-search-collections-par-mode-5389.ts
@@ -817,10 +831,13 @@
 │   │   │   ├── 20260930160000-drop-phantom-collections-5618.ts
 │   │   │   ├── 20260930170000-unset-application-count-jobs-partners.ts
 │   │   │   ├── 20261006120000-normalize-lba-offer-origin-5645.ts
-│   │   │   └── 20261007120000-cancel-france-travail-directemploi-jobs-5656.ts
+│   │   │   ├── 20261007120000-cancel-france-travail-directemploi-jobs-5656.ts
+│   │   │   ├── 20261012120000-add-rolemanagements-created-at-index.ts
+│   │   │   └── 20261014120000-add-jobs-partners-moderations-indexes.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
+│   │   │   ├── access-token.service.logging.test.ts
 │   │   │   ├── access-token.service.test.ts
 │   │   │   ├── access-token.service.ts
 │   │   │   ├── authentication.service.ts
@@ -837,6 +854,8 @@
 │   │       ├── application.service.test.ts
 │   │       ├── application.service.ts
 │   │       ├── appointment.service.ts
+│   │       ├── auto-validation-reasons.ts
+│   │       ├── bal.service.test.ts
 │   │       ├── bal.service.ts
 │   │       ├── brevo-contact-attributes.test.ts
 │   │       ├── brevo-contact-attributes.ts
@@ -869,7 +888,10 @@
 │   │       │   └── api-alternance
 │   │       │       ├── certification.fixture.ts
 │   │       │       └── certification.service.ts
+│   │       ├── feedback-form.service.ts
+│   │       ├── feedback-response.service.ts
 │   │       ├── formation.service.ts
+│   │       ├── formulaire-notifications.service.test.ts
 │   │       ├── formulaire-notifications.service.ts
 │   │       ├── formulaire.service.test.ts
 │   │       ├── formulaire.service.ts
@@ -889,6 +911,11 @@
 │   │       │       ├── job-opportunity-request-context.ts
 │   │       │       ├── job-opportunity.service.test.ts
 │   │       │       └── job-opportunity.service.ts
+│   │       ├── jobs-partners-moderation-account.test.ts
+│   │       ├── jobs-partners-moderation-alerts.ts
+│   │       ├── jobs-partners-moderation-reasons.ts
+│   │       ├── jobs-partners-moderation.service.test.ts
+│   │       ├── jobs-partners-moderation.service.ts
 │   │       ├── lbaitem.shared.service.types.ts
 │   │       ├── lbajob.service.ts
 │   │       ├── login.service.ts
@@ -897,6 +924,12 @@
 │   │       ├── mistralai
 │   │       │   ├── mistralai.service.test.ts
 │   │       │   └── mistralai.service.ts
+│   │       ├── offre-classification
+│   │       │   ├── offre-classification.eval-dataset.ts
+│   │       │   ├── offre-classification.eval.ts
+│   │       │   ├── offre-classification.prompt.ts
+│   │       │   ├── offre-classification.service.test.ts
+│   │       │   └── offre-classification.service.ts
 │   │       ├── offre-moderation.service.test.ts
 │   │       ├── offre-moderation.service.ts
 │   │       ├── opco.service.ts
@@ -1008,6 +1041,7 @@
 │   │   │   ├── common
 │   │   │   │   └── model.test.ts
 │   │   │   └── migrations
+│   │   │       ├── add-rolemanagements-created-at-index-5411.test.ts
 │   │   │       ├── backfill-application-cv-deleted-at-5495.test.ts
 │   │   │       ├── backfill-missing-apply-url-jobs-partners.test.ts
 │   │   │       ├── backfill-offer-status-history-lba-5429.test.ts
@@ -1041,6 +1075,7 @@
 │   │       ├── login.test.utils.ts
 │   │       ├── mongo.test.utils.ts
 │   │       ├── search-index.test.utils.ts
+│   │       ├── sentry-capture.test.utils.ts
 │   │       ├── server.test.utils.ts
 │   │       ├── setup.ts
 │   │       ├── user.test.utils.ts
@@ -1065,7 +1100,9 @@
 │   │   │   ├── referers.ts
 │   │   │   ├── regex.ts
 │   │   │   ├── search.ts
-│   │   │   └── session.ts
+│   │   │   ├── session.ts
+│   │   │   ├── ui-routes.test.ts
+│   │   │   └── ui-routes.ts
 │   │   ├── fixtures
 │   │   │   ├── application.fixture.ts
 │   │   │   ├── appointment.fixture.ts
@@ -1135,6 +1172,10 @@
 │   │   │   ├── entreprises-managed-by-cfa.model.ts
 │   │   │   ├── errors.model.ts
 │   │   │   ├── etablissement.model.ts
+│   │   │   ├── feedback-display-count.model.ts
+│   │   │   ├── feedback-display.model.ts
+│   │   │   ├── feedback-form.model.ts
+│   │   │   ├── feedback-response.model.ts
 │   │   │   ├── formation.model.ts
 │   │   │   ├── france-travail-access.model.ts
 │   │   │   ├── index.ts
@@ -1145,6 +1186,7 @@
 │   │   │   ├── job.model.test.ts
 │   │   │   ├── job.model.ts
 │   │   │   ├── jobs-partners-computed.model.ts
+│   │   │   ├── jobs-partners-moderation.model.ts
 │   │   │   ├── jobs-partners.model.ts
 │   │   │   ├── jobs.model.ts
 │   │   │   ├── lba-item.model.ts
@@ -1220,6 +1262,7 @@
 │   │   │   ├── eligible-trainings-for-appointment.routes.ts
 │   │   │   ├── emails.routes.ts
 │   │   │   ├── etablissement.routes.ts
+│   │   │   ├── feedback-forms.routes.ts
 │   │   │   ├── formations.routes.ts
 │   │   │   ├── formulaire.route.ts
 │   │   │   ├── index.test.ts
@@ -1262,6 +1305,8 @@
 │   │   │   ├── detect-url-and-emails.test.ts
 │   │   │   ├── detect-url-and-emails.ts
 │   │   │   ├── enum-utils.ts
+│   │   │   ├── feedback-url-params.test.ts
+│   │   │   ├── feedback-url-params.ts
 │   │   │   ├── get-last-status-event.test.ts
 │   │   │   ├── get-last-status-event.ts
 │   │   │   ├── index.ts
@@ -1277,7 +1322,9 @@
 │   │   │   ├── search-url-compat.ts
 │   │   │   ├── sitemap-utils.ts
 │   │   │   ├── string-utils.test.ts
-│   │   │   └── string-utils.ts
+│   │   │   ├── string-utils.ts
+│   │   │   ├── ui-routes.utils.test.ts
+│   │   │   └── ui-routes.utils.ts
 │   │   └── validators
 │   │       ├── name-validator.test.ts
 │   │       ├── name-validator.ts
@@ -1677,11 +1724,53 @@
 │   │   │       │   │   ├── _utils
 │   │   │       │   │   │   ├── admin-search-validation.test.ts
 │   │   │       │   │   │   ├── admin-search-validation.ts
+│   │   │       │   │   │   ├── feedbackFormsColumns.tsx
 │   │   │       │   │   │   ├── lbaCompaniesColumns.tsx
 │   │   │       │   │   │   ├── offresPartenairesColumns.tsx
 │   │   │       │   │   │   └── recruteursColumns.tsx
 │   │   │       │   │   ├── compte
 │   │   │       │   │   │   ├── layout.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── formulaires-feedback
+│   │   │       │   │   │   ├── FeedbackFormsList.tsx
+│   │   │       │   │   │   ├── [slug]
+│   │   │       │   │   │   │   ├── FeedbackFormDefinition.tsx
+│   │   │       │   │   │   │   ├── FeedbackFormDetail.tsx
+│   │   │       │   │   │   │   ├── FeedbackFormResultsSummary.tsx
+│   │   │       │   │   │   │   ├── FeedbackQuestionStats.tsx
+│   │   │       │   │   │   │   ├── feedbackResults.utils.test.ts
+│   │   │       │   │   │   │   ├── feedbackResults.utils.ts
+│   │   │       │   │   │   │   ├── modification
+│   │   │       │   │   │   │   │   ├── FeedbackFormEdition.tsx
+│   │   │       │   │   │   │   │   └── page.tsx
+│   │   │       │   │   │   │   ├── page.tsx
+│   │   │       │   │   │   │   └── previsualisation
+│   │   │       │   │   │   │       ├── FeedbackFormPreview.tsx
+│   │   │       │   │   │   │       ├── PreviewTrialCard.tsx
+│   │   │       │   │   │   │       ├── page.tsx
+│   │   │       │   │   │   │       ├── previewTrials.test.ts
+│   │   │       │   │   │   │       └── previewTrials.ts
+│   │   │       │   │   │   ├── _components
+│   │   │       │   │   │   │   ├── ConditionalDisplayField.tsx
+│   │   │       │   │   │   │   ├── ConfirmationActionFormulaire.tsx
+│   │   │       │   │   │   │   ├── FeedbackFormBuilder.tsx
+│   │   │       │   │   │   │   ├── FeedbackFormLoadError.tsx
+│   │   │       │   │   │   │   ├── QuestionsField.tsx
+│   │   │       │   │   │   │   ├── TriggerConditionField.tsx
+│   │   │       │   │   │   │   └── TriggerScopeField.tsx
+│   │   │       │   │   │   ├── _utils
+│   │   │       │   │   │   │   ├── duplicateFeedbackForm.test.ts
+│   │   │       │   │   │   │   ├── duplicateFeedbackForm.ts
+│   │   │       │   │   │   │   ├── feedbackFormActions.test.ts
+│   │   │       │   │   │   │   ├── feedbackFormActions.ts
+│   │   │       │   │   │   │   ├── feedbackTrigger.labels.test.ts
+│   │   │       │   │   │   │   ├── feedbackTrigger.labels.ts
+│   │   │       │   │   │   │   ├── questionDrafts.test.ts
+│   │   │       │   │   │   │   ├── questionDrafts.ts
+│   │   │       │   │   │   │   └── useFeedbackFormStatusChange.ts
+│   │   │       │   │   │   ├── creation
+│   │   │       │   │   │   │   ├── FeedbackFormCreation.tsx
+│   │   │       │   │   │   │   └── page.tsx
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── gestion-des-administrateurs
 │   │   │       │   │   │   ├── _components
@@ -1948,7 +2037,6 @@
 │   │   │   ├── CustomDSFRInput.tsx
 │   │   │   ├── CustomFormControl.tsx
 │   │   │   ├── CustomInput.tsx
-│   │   │   ├── CustomRadio.tsx
 │   │   │   ├── DeclarationExactCheckbox.tsx
 │   │   │   ├── ErrorComponent.tsx
 │   │   │   ├── Footer.tsx
@@ -2175,6 +2263,16 @@
 │   │   │   │       ├── BorderedBox.tsx
 │   │   │   │       └── DepotSimplifieLayout.tsx
 │   │   │   └── index.ts
+│   │   ├── feedback
+│   │   │   ├── FeedbackLauncher.tsx
+│   │   │   ├── FeedbackWidget.tsx
+│   │   │   ├── feedbackEvents.ts
+│   │   │   ├── feedbackTrigger.utils.test.ts
+│   │   │   ├── feedbackTrigger.utils.ts
+│   │   │   ├── feedbackWidget.utils.test.ts
+│   │   │   ├── feedbackWidget.utils.ts
+│   │   │   ├── useFeedbackSession.ts
+│   │   │   └── useFeedbackTrigger.ts
 │   │   ├── head.tsx
 │   │   └── tsconfig.json
 │   ├── config
@@ -2757,6 +2855,7 @@
 │   │       └── notion.css
 │   ├── scripts
 │   │   ├── .gitignore
+│   │   ├── generate-ui-routes.mjs
 │   │   ├── notion-api-stub.mjs
 │   │   ├── perf-budget.mjs
 │   │   └── perf-budget.test.ts
@@ -2846,4 +2945,4 @@
 │       └── validation-messages.ts
 ├── vitest.config.ts
 └── yarn.lock
-510 directories, 2906 files
+520 directories, 2995 files
