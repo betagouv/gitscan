@@ -1,54 +1,56 @@
 {
   "url": "https://github.com/betagouv/sylvasan",
   "name": "sylvasan",
-  "description": "Application facilitant le relevé et le suivi des problèmes sanitaires des arbres en forêt. Elle permet la saisie de données sur le terrain via une application mobile et la gestion des informations via une interface web.",
+  "description": "Application destinée à faciliter le relevé et le suivi des problèmes sanitaires des arbres en forêt, comprenant des interfaces web et mobiles pour les agents de terrain.",
   "language": "Python",
   "features": [
     "Visualisation de données & Cartographie",
     "Formulaires & Démarches",
-    "Données & Schémas",
-    "Recherche & Filtres",
     "Gestion des médias & Assets",
-    "Suivi & Traçabilité",
     "Statistiques & Rapports",
-    "Gestion des utilisateurs & Permissions"
+    "Recherche & Filtres",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Django REST Framework",
     "PostgreSQL",
-    "Vite",
+    "Vue.js",
     "Ionic",
-    "Boto3",
-    "Authlib",
-    "Maplibre GL"
+    "Maplibre-gl",
+    "Sentry",
+    "Boto3"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Python (scripts & backend)",
+    "Vue.js / Nuxt",
     "TypeScript / JavaScript",
+    "Python (scripts & backend)",
+    "Design System (DSFR & UI libs)",
     "SIG & Géospatial",
-    "Authentification (composant)",
-    "Intégrations services externes",
-    "ORM & Accès aux données",
-    "Design System (DSFR & UI libs)"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "jwt",
+      "api-key"
     ],
     "providers": [
       "DSF"
     ]
   },
-  "tests": "Vitest, Django tests, pre-commit",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Vitest",
+    "factory_boy",
+    "Faker"
   ],
-  "lastActivity": "2026-09-01T15:43:25+02:00",
+  "workflows": [
+    "GitHub Actions",
+    "dependabot"
+  ],
+  "lastActivity": "2026-10-14T15:48:06+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,7 +59,9 @@
     "Python",
     "Bases de données SQL",
     "SIG & Géospatial",
-    "Données & Open Data",
-    "CI/CD & GitHub Actions"
+    "TypeScript",
+    "JavaScript",
+    "CI/CD & GitHub Actions",
+    "Environnement & Énergie"
   ]
 }

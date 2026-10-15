@@ -47,9 +47,12 @@
 │   │       ├── migrations
 │   │       │   └── __init__.py
 │   │       ├── models.py
+│   │       ├── sync_vocabularies_api.py
 │   │       ├── tests
 │   │       │   ├── __init__.py
-│   │       │   └── test_oauth.py
+│   │       │   ├── test_oauth.py
+│   │       │   ├── test_sync_dsf_vocabularies_command.py
+│   │       │   └── test_sync_vocabularies_api.py
 │   │       ├── urls.py
 │   │       └── views
 │   │           ├── __init__.py
@@ -58,10 +61,12 @@
 │   │   ├── __init__.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
+│   │   │   ├── api_key.py
 │   │   │   ├── membership.py
 │   │   │   ├── organisation.py
 │   │   │   └── pole.py
 │   │   ├── apps.py
+│   │   ├── authentication.py
 │   │   ├── factories
 │   │   │   ├── __init__.py
 │   │   │   ├── membership.py
@@ -72,9 +77,13 @@
 │   │   │   ├── 0002_alter_membership_unique_together.py
 │   │   │   ├── 0003_pole_dsf_code.py
 │   │   │   ├── 0004_remove_manager_role.py
+│   │   │   ├── 0005_apikey.py
+│   │   │   ├── 0006_organisation_vocabulary_categories.py
+│   │   │   ├── 0007_backfill_organisation_vocabulary_categories.py
 │   │   │   └── __init__.py
 │   │   ├── models
 │   │   │   ├── __init__.py
+│   │   │   ├── api_key.py
 │   │   │   ├── membership.py
 │   │   │   ├── organisation.py
 │   │   │   └── pole.py
@@ -125,6 +134,7 @@
 │   │   │   ├── test_export_responses.py
 │   │   │   ├── test_get_responses.py
 │   │   │   ├── test_response_geo.py
+│   │   │   ├── test_response_images.py
 │   │   │   ├── test_responses_geo_data.py
 │   │   │   └── test_retrieve_response.py
 │   │   ├── urls.py
@@ -134,6 +144,14 @@
 │   │       └── response_geo.py
 │   ├── static
 │   │   └── .keep
+│   ├── stats
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_stats.py
+│   │   ├── urls.py
+│   │   └── views.py
 │   ├── surveys
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -158,6 +176,8 @@
 │   │   │   ├── 0003_vocabularyentry_is_active.py
 │   │   │   ├── 0004_historicalsurveyfollowup_surveyfollowup.py
 │   │   │   ├── 0005_alter_historicalsurveyfollowup_action_label_and_more.py
+│   │   │   ├── 0006_historicalvocabularyset_is_active_and_more.py
+│   │   │   ├── 0007_alter_vocabularyset_unique_together_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models
 │   │   │   ├── __init__.py
@@ -268,7 +288,8 @@
 │   │   ├── 0005-champ-image-serialisation-stockage.md
 │   │   ├── 0006-bundler-les-icones-remixicon-dans-l-app-mobile.md
 │   │   ├── 0007-injection-capacites-plateforme-dans-field-renderer.md
-│   │   └── 0008-clusters-marqueurs-geojson-layers.md
+│   │   ├── 0008-clusters-marqueurs-geojson-layers.md
+│   │   └── 0009-categories-de-vocabulaire.md
 │   └── dat
 │       └── permissions.md
 ├── mobile
@@ -525,6 +546,8 @@
 │   │   │   ├── HelloWorld.vue
 │   │   │   ├── MapDownloader.vue
 │   │   │   ├── MapField.vue
+│   │   │   ├── MapStylePicker.vue
+│   │   │   ├── MapStyleToggle.vue
 │   │   │   ├── ResponseBadge.vue
 │   │   │   ├── ResponsePinCard.vue
 │   │   │   ├── SummaryImage.vue
@@ -536,6 +559,7 @@
 │   │   │   ├── useCanAddFollowUp.ts
 │   │   │   ├── useGeoPins.ts
 │   │   │   ├── useMapPins.ts
+│   │   │   ├── useMapStyle.ts
 │   │   │   ├── useOfflineMap.ts
 │   │   │   └── useOfflineMaps.ts
 │   │   ├── icon-collections.ts
@@ -575,6 +599,7 @@
 │   │   ├── style.css
 │   │   └── utils
 │   │       ├── autoSync.ts
+│   │       ├── camera.ts
 │   │       ├── data-fetching.ts
 │   │       ├── imageStorage.ts
 │   │       └── ui.ts
@@ -612,6 +637,7 @@
 │       ├── auth.ts
 │       ├── date.ts
 │       ├── defaultValues.ts
+│       ├── image.ts
 │       ├── survey.ts
 │       └── validateField.ts
 └── web
@@ -626,6 +652,9 @@
     ├── package-lock.json
     ├── package.json
     ├── public
+    │   ├── .well-known
+    │   │   ├── pgp-publickey.txt
+    │   │   └── security.txt
     │   └── favicon-marianne.png
     ├── src
     │   ├── App.vue
@@ -684,6 +713,7 @@
     │   │   ├── ResponseListPage.vue
     │   │   ├── ResponsePage.vue
     │   │   ├── SignUpPage.vue
+    │   │   ├── StatsPage.vue
     │   │   ├── SurveyCreationModificationPage.vue
     │   │   ├── SurveyListPage.vue
     │   │   ├── SurveyPage.vue
@@ -697,12 +727,14 @@
     │   └── utils
     │       └── data-fetching.ts
     ├── tests
-    │   └── stores
-    │       └── root.test.ts
+    │   ├── stores
+    │   │   └── root.test.ts
+    │   └── validation
+    │       └── nested-array.test.ts
     ├── tsconfig.app.json
     ├── tsconfig.json
     ├── tsconfig.node.json
     ├── typed-router.d.ts
     ├── vite.config.ts
     └── vitest.config.ts
-166 directories, 541 files
+170 directories, 569 files
