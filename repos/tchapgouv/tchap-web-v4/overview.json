@@ -1,35 +1,33 @@
 {
   "url": "https://github.com/tchapgouv/tchap-web-v4",
   "name": "tchap-web-v4",
-  "description": "Application web de messagerie instantanée sécurisée basée sur le protocole Matrix, conçue pour le secteur public français. Elle permet des communications chiffrées, des appels audio/vidéo et la gestion d'espaces de travail collaboratifs.",
+  "description": "Application de messagerie instantanée sécurisée pour le secteur public français, basée sur le protocole Matrix. Elle permet la collaboration via des salons, des appels audio/vidéo et des espaces de travail.",
   "language": "TypeScript",
   "features": [
     "Collaboration & Workflow",
     "Authentification & Accès",
     "Notifications & Alertes",
-    "Interface utilisateur & Design",
-    "Temps réel & WebSocket",
-    "Gestion des utilisateurs & Permissions"
+    "Sécurité & Conformité",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Matrix protocol",
     "React",
     "pnpm",
-    "Element Web",
-    "Vitepress"
+    "Vitest",
+    "Playwright"
   ],
   "components": [
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
-    "CI/CD & Déploiement",
     "Tests",
     "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
       "session"
     ],
     "providers": [
@@ -37,23 +35,24 @@
     ]
   },
   "tests": [
-    "Jest",
+    "Vitest",
     "Playwright",
     "BrowserStack"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-07-04T00:00:00Z",
+  "lastActivity": "2026-09-23T00:00:00Z",
   "status": "maintained",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "TypeScript",
     "React & Next.js",
-    "CI/CD & GitHub Actions",
-    "Design System & UI",
-    "Accessibilité"
+    "TypeScript",
+    "JavaScript",
+    "HTML, CSS & Web",
+    "Tests & Qualité",
+    "Sécurité & Auth"
   ]
 }
