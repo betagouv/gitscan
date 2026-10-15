@@ -1,33 +1,42 @@
-## Changelog : les-emplois (30 derniers jours, au 12 octobre 2026)
+## Changelog : les-emplois (30 derniers jours, au 14/10/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape majeure avec son rebranding sous le nom de "La plateforme de l'inclusion", incluant une mise à jour complète de l'identité visuelle. Les utilisateurs bénéficieront d'une gestion des orientations beaucoup plus fluide et automatisée, ainsi que d'un nouvel espace de suivi pour les candidats. Côté technique, le système est devenu plus robuste et traçable grâce à l'implémentation d'un journal d'audit et à une mise à jour majeure de l'environnement Python.
+Ce mois a été marqué par une refonte majeure de l'identité visuelle de la plateforme, désormais nommée "La plateforme de l'inclusion", et par une amélioration significative de l'expérience utilisateur. Les fonctionnalités liées à l'insertion ont été profondément modernisées avec un nouveau tunnel d'orientation automatisé et un système de notifications par email. La visibilité des parcours usagers a également été renforcée grâce à de nouveaux outils de pilotage et des vues de profil enrichies.
 
 ### Évolutions fonctionnelles
-- **Identité visuelle et accessibilité** : Rebranding complet vers "La plateforme de l'inclusion" (nouveaux logos, noms et mentions légales) et ajout d'une déclaration d'accessibilité détaillée.
-- **Parcours d'orientation (Insertion)** : 
-    - Refonte complète de l'interface (wizard d'orientation et pages de détails pour les services et structures).
-    - Automatisation des notifications par email (création, acceptation, refus, rappels automatiques aux structures et expiration).
-    - Ajout de fonctionnalités de gestion : motifs de refus détaillés, dates de création et expiration automatique des orientations.
-- **Expérience Candidat (Usager)** : 
-    - Création d'un nouvel onglet "Vue d'ensemble" sur le profil usager regroupant les informations clés (conseillers, fin de contrat, dernières candidatures).
-    - Ajout d'un onglet dédié au suivi des orientations.
-- **Recherche et Visibilité** : 
-    - Amélioration des résultats de recherche de services (affichage des modes de mobilisation et des délais de réponse attendus).
-    - Ajout d'une option de visibilité pour les professionnels dans l'Annuaire Pro.
-- **Gestion des candidatures** : Fermeture automatique des recrutements en cas de refus pour le motif "pas de recrutement en cours".
+- **Identité et Interface** : 
+    - Renommage global de la plateforme en "La plateforme de l'inclusion" (logos, textes légaux, documentation).
+    - Harmonisation de l'iconographie des organisations et amélioration de la mise en page des formulaires.
+    - Changement de terminologie : utilisation privilégiée du terme "usager" au lieu de "candidat".
+- **Parcours Usager** : 
+    - Création d'un nouvel onglet "Aperçu" sur le profil de l'usager, centralisant les informations sur les contrats, les conseillers et les dernières candidatures.
+    - Ajout d'un badge visuel pour identifier les usagers résidant en zone QPV (Quartier Prioritaire de la Politique de la Ville).
+- **Gestion de l'Insertion** : 
+    - Refonte complète du tunnel d'orientation (redesign des pages de détail et de structure).
+    - Automatisation du cycle de vie des orientations : expiration automatique, gestion des motifs de refus et envoi de notifications par email (acceptation, refus, rappels).
+    - Possibilité pour les prestataires de services d'accepter ou de décliner une orientation directement via l'interface.
+- **Recherche et Pilotage** : 
+    - Amélioration de la recherche de services avec l'affichage des modes de mobilisation et des délais de réponse attendus.
+    - Mise en place de nouveaux tableaux de bord de pilotage (export Metabase, indicateurs GEIQ, suivi des fins de parcours).
+- **Candidatures** : 
+    - Fermeture automatique des recrutements en cas de refus motivé par une absence de poste disponible.
 
 ### Évolutions techniques
-- **Infrastructure et Performance** : 
-    - Migration vers Python 3.14.
-    - Optimisation du temps de démarrage du service (gain de 600ms).
-- **Sécurité et Traçabilité** : 
-    - Implémentation d'une piste d'audit (audit trail) pour suivre les actions utilisateurs, les adresses IP et les navigateurs.
-    - Renforcement de la gestion de l'authentification (ProConnect et OpenID Connect) avec mise en cache des clés JWKS.
-- **Gestion des dossiers employés (Employee Record)** : Refonte majeure du workflow (nouveaux états, gestion des transitions de statut et amélioration de la gestion des erreurs de synchronisation).
-- **Système de communication** : Migration des modèles d'emails vers le format Markdown et amélioration de la compatibilité des messages (alternance HTML/Texte).
-- **Qualité logicielle** : Amélioration de la robustesse des tests automatisés et optimisation des processus de CI/CD (notamment pour les "review apps").
+- **Infrastructure et Environnement** : 
+    - Migration de l'environnement vers Python 3.14.
+    - Optimisation des processus de déploiement et de la CI.
+- **Sécurité et Authentification** : 
+    - Renforcement de l'authentification via ProConnect (gestion des clés JWKS, audit trail amélioré).
+    - Amélioration de la traçabilité des actions (audit trail) incluant la capture des adresses IP et des informations de navigation.
+    - Sécurisation de la création de comptes pour éviter les doublons.
+- **Gestion des données et Workflow** : 
+    - Refonte du système de gestion des dossiers employés (*Employee Records*) avec un nouveau workflow de statuts et une gestion plus robuste des fichiers joints.
+    - Optimisation des performances de l'interface d'administration, notamment sur les tables volumineuses (pagination et hiérarchie des dates optimisées).
+- **Qualité logicielle** : 
+    - Nettoyage important du code (suppression de modules et de pages obsolètes comme "nexus").
+    - Amélioration de la robustesse des tests et de la gestion des erreurs de type.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique concernant le SSO et la piste d'audit.
-- **Maintenance** : Nettoyage du code et suppression de fonctionnalités obsolètes (modules Nexus, dépendances DORA inutilisées).
+- Mise à jour de la documentation technique et des commentaires de code.
+- Amélioration de la qualité du code via le renforcement des règles de linting (Ruff, DjLint).
+- Amélioration de la gestion des emails (support du format Markdown et amélioration des signatures).

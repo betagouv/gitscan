@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi par le biais de tiers ou en autoprescription.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
@@ -9,11 +9,10 @@
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Tableaux & Affichage",
     "Suivi & Traçabilité",
-    "Gestion métier générale",
-    "Gestion des établissements & Structures",
-    "Administration & Backoffice"
+    "Accessibilité & i18n",
+    "Tableaux & Affichage",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -22,9 +21,9 @@
     "PostGIS",
     "Redis",
     "MinIO",
-    "GDAL",
     "uv",
-    "pytest"
+    "pytest",
+    "GDAL"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,39 +32,31 @@
     "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "ORM & Accès aux données",
-    "Tests",
-    "Scripts & Utilitaires",
-    "HTML / CSS / Templates visuels"
+    "Templates & Moteurs de rendu",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "magic-link",
-      "mfa",
+      "oauth2",
       "sso",
-      "session",
-      "jwt"
+      "mfa"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": "pytest",
-  "workflows": [
-    "CI/CD",
-    "review apps"
-  ],
   "lastActivity": "2026-10-12T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
+    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Écosystème beta.gouv / État",
-    "Accessibilité"
+    "Accessibilité",
+    "Sécurité & Auth"
   ]
 }

@@ -729,10 +729,12 @@
 │   │   │   ├── memberships.py
 │   │   │   ├── mobilization_events.py
 │   │   │   ├── organizations.py
+│   │   │   ├── orientations.py
 │   │   │   ├── prolongation_requests.py
 │   │   │   ├── prolongations.py
 │   │   │   ├── rome_codes.py
 │   │   │   ├── selected_jobs.py
+│   │   │   ├── services.py
 │   │   │   ├── suspensions.py
 │   │   │   ├── users.py
 │   │   │   └── utils.py
@@ -858,7 +860,8 @@
 │   │   │       ├── fill_job_seeker_profile_asp_uid_changes.py
 │   │   │       ├── geolocate_jobseeker_addresses.py
 │   │   │       ├── move_job_applications.py
-│   │   │       └── redact_zendesk_attachments.py
+│   │   │       ├── redact_zendesk_attachments.py
+│   │   │       └── resend_employee_record_update_notifications.py
 │   │   └── sample_user_geoloc.csv
 │   ├── search
 │   │   ├── __init__.py
@@ -1252,9 +1255,7 @@
 │   │   │       ├── external_transfer_siaes_search_results.html
 │   │   │       └── internal_transfer.html
 │   │   ├── approvals
-│   │   │   ├── base_details.html
 │   │   │   ├── close.html
-│   │   │   ├── contracts.html
 │   │   │   ├── declare_prolongation.html
 │   │   │   ├── details.html
 │   │   │   ├── email
@@ -1414,6 +1415,7 @@
 │   │   │       │   ├── _prescriber_public_links.html
 │   │   │       │   ├── dgefp.html
 │   │   │       │   ├── employer.html
+│   │   │       │   ├── geiq.html
 │   │   │       │   ├── prescriber.html
 │   │   │       │   ├── prescriber_dept.html
 │   │   │       │   ├── prescriber_ft.html
@@ -2006,6 +2008,8 @@
 │   │   │   ├── 0061_remove_jobseekerprofile_created_by_prescriber_organization.py
 │   │   │   ├── 0062_remove_jobseekerprofile_ft_gps_id.py
 │   │   │   ├── 0063_harmonize_deactivated_users.py
+│   │   │   ├── 0064_remove_user_identity_provider_kind_and_more.py
+│   │   │   ├── 0065_user_inclusion_staff.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -2702,6 +2706,7 @@
     │   ├── __init__.py
     │   ├── test_move_job_applications.py
     │   ├── test_redact_zendesk_attachments.py
+    │   ├── test_resend_employee_record_update_notifications.py
     │   └── test_users_geolocation.py
     ├── search
     │   ├── __init__.py
@@ -3078,4 +3083,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-500 directories, 2580 files
+500 directories, 2585 files
