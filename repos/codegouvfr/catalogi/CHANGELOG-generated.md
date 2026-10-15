@@ -1,28 +1,26 @@
-## Changelog : catalogi (30 derniers jours, au 09/10/2026)
+## Changelog : catalogi (30 derniers jours, au 12 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la fiabilisation de l'importation des données et le renforcement de la sécurité de l'application. L'expérience utilisateur a été légèrement affinée avec une interface plus propre, tandis que de nouveaux outils en ligne de commande ont été introduits pour faciliter la gestion des références.
+Les récentes évolutions de Catalogi se concentrent sur l'amélioration de l'importation de données, l'ajout d'outils de gestion en ligne de commande et le renforcement de la sécurité. L'expérience utilisateur est également affinée avec une interface plus propre et une meilleure documentation de l'API.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur** :
-  - Amélioration de la clarté de la page d'accueil lorsqu'aucun cas d'usage n'est sélectionné.
-  - Correction de l'affichage du logo.
+- **Outils d'administration** : Ajout de commandes en ligne de commande pour faciliter l'importation et la mise à jour des références [#577](https://github.com/codegouvfr/catalogi/issues/577).
+- **Export de données** : Nouvelle possibilité d'exporter les données Codemeta sous forme de dump de la base de données.
+- **Documentation API** : Mise à disposition d'une interface Swagger UI autonome pour documenter l'export public v2.
+- **Interface utilisateur** : Amélioration de la clarté de la page d'accueil (lorsqu'aucun cas d'usage n'est présent) et correction du logo.
 
 ### Évolutions techniques
-- **Importation et gestion des données** :
-  - Amélioration de la précision de l'importation des logiciels via une meilleure gestion des identifiants (Zenodo, GitLab [#575], et CNLL).
-  - Optimisation de la détection des licences de logiciels libres en utilisant les données Wikidata.
-  - Correction de la gestion des doublons et des lignes non récupérées lors des processus d'import.
-- **API et Sécurité** :
-  - Renforcement de la sécurité de l'authentification OIDC en liant les transactions au navigateur initiateur.
-  - Ajout d'une interface Swagger UI autonome pour documenter l'export public v2.
-  - Sécurisation de l'API pour empêcher les déclarations d'exécutables et les URLs d'instance.
-  - Correction de la gestion des préfixes de documentation lors de l'utilisation de proxys.
-- **Outils et Développement** :
-  - Introduction de nouvelles fonctionnalités en ligne de commande (CLI) pour l'importation et la mise à jour des références [#577].
-  - Mise en place d'un environnement local dédié aux tests d'intrusion (pentest).
-  - Amélioration de la robustesse des tests (validation des schémas API et détection des logiciels libres).
+- **Sécurité** : Correction d'une vulnérabilité liée à la liaison des transactions de connexion OIDC au navigateur initiateur (vuln-0008) et création d'un environnement de test d'intrusion (pentest) local.
+- **Gestion des données et imports** : 
+    - Optimisation des processus d'importation (gestion des identifiants Zenodo, suppression des doublons et amélioration de la correspondance CNLL).
+    - Affinement de la détection des licences de logiciels libres via Wikidata.
+- **API & Backend** : 
+    - Amélioration de la gestion des préfixes de documentation derrière les proxys.
+    - Renforcement de la validation des schémas publics par rapport aux types de logiciels originaux.
+    - Correction de la résolution des identifiants de projets GitLab [#575](https://github.com/codegouvfr/catalogi/issues/575).
+- **Tests et Qualité** : Amélioration de la couverture de tests pour l'API (validation des schémas sans serveur HTTP) et mise à jour des tests relatifs aux licences libres.
 
 ### Autres changements
-- Mise à jour de la documentation de déploiement.
-- Nettoyage du code et ajustements de style.
+- **Documentation** : Mise à jour de la documentation de déploiement.
+- **Configuration** : Suppression de l'importation des configurations d'interface utilisateur obsolètes lors des nouvelles installations.
+- **Maintenance** : Nettoyage du code (style) et refactorisation du système de journalisation (timelog).
