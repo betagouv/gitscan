@@ -444,6 +444,8 @@
 │   │       │   ├── config
 │   │       │   │   ├── api-entreprise.ts
 │   │       │   │   ├── app.ts
+│   │       │   │   ├── cross-device-authentication.spec.ts
+│   │       │   │   ├── cross-device-authentication.ts
 │   │       │   │   ├── email-validator.ts
 │   │       │   │   ├── email-verification.ts
 │   │       │   │   ├── exceptions.ts
@@ -462,6 +464,8 @@
 │   │       │   ├── controllers
 │   │       │   │   ├── accessibility.controller.spec.ts
 │   │       │   │   ├── accessibility.controller.ts
+│   │       │   │   ├── cross-device-authentication.controller.spec.ts
+│   │       │   │   ├── cross-device-authentication.controller.ts
 │   │       │   │   ├── email-verification.controller.spec.ts
 │   │       │   │   ├── email-verification.controller.ts
 │   │       │   │   ├── health.controller.spec.ts
@@ -595,6 +599,9 @@
 │   │       │       │   ├── skiplinks.ejs
 │   │       │       │   └── test-env-warning.ejs
 │   │       │       ├── interaction.ejs
+│   │       │       ├── proceed-to-cross-device-authentication.ejs
+│   │       │       ├── review-cross-device-authentication-request.ejs
+│   │       │       ├── review-cross-device-authentication-requests.ejs
 │   │       │       ├── rie-idp-warning.ejs
 │   │       │       └── verify-email.ejs
 │   │       └── tsconfig.app.json
@@ -748,6 +755,32 @@
 │   │   │   │   └── types
 │   │   │   │       ├── index.ts
 │   │   │   │       └── template-exposed.type.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── cross-device-authentication
+│   │   │   ├── src
+│   │   │   │   ├── cross-device-authentication.module.ts
+│   │   │   │   ├── cross-device-authentication.service.spec.ts
+│   │   │   │   ├── cross-device-authentication.service.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── cross-device-authentication-config.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── request-status.enum.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── xda-base.exception.ts
+│   │   │   │   │   ├── xda-not-enabled.exception.ts
+│   │   │   │   │   └── xda-request-not-found.exception.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── format-user-agent.spec.ts
+│   │   │   │   │   ├── format-user-agent.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schemas
+│   │   │   │       ├── cross-device-authentication-request.schema.ts
+│   │   │   │       └── index.ts
 │   │   │   └── tsconfig.lib.json
 │   │   ├── cryptography
 │   │   │   ├── src
@@ -1260,6 +1293,7 @@
 │   │   ├── 20260713141446-remove_email_field_in_service_provider.ts
 │   │   ├── 20260731082824-delete_multiple_tokens_per_email.ts
 │   │   ├── 20260807183716-rename_fqdns_to_attachedEmailDomains.ts
+│   │   ├── 20261001134549-disable_roles_scopes_for_all_sp.ts
 │   │   ├── 20261001145454-unset_status_url_field.ts
 │   │   └── 20261005134700-add_bool_is-xda-enabled_for_sp.ts
 │   ├── nest-cli.json
@@ -1531,7 +1565,8 @@
     │   │   │   ├── deconnexion-usager.feature
     │   │   │   ├── fournisseur-données.feature
     │   │   │   ├── hybridge.feature
-    │   │   │   └── reconciliation-pci.feature
+    │   │   │   ├── reconciliation-pci.feature
+    │   │   │   └── xda.feature
     │   │   └── visuel
     │   │       └── validation-visuelle-fca-low.feature
     │   ├── plugins
@@ -1617,6 +1652,7 @@
     │       └── usager
     │           └── steps
     │               ├── contact-support-steps.ts
+    │               ├── cross-device-authentication-steps.ts
     │               ├── email-verification-steps.ts
     │               ├── identity-provider-steps.ts
     │               ├── idp-proconnect-identite-steps.ts
@@ -1636,4 +1672,4 @@
     │   ├── multiple-cucumber-html-reporter.ts
     │   └── parse-business-log.ts
     └── tsconfig.json
-370 directories, 1268 files
+377 directories, 1297 files
