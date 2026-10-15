@@ -1,0 +1,80 @@
+.
+├── .github
+│   ├── releases
+│   │   ├── .release-please-manifest-prerelease.json
+│   │   ├── .release-please-manifest.json
+│   │   ├── release-please-config-prerelease.json
+│   │   └── release-please-config-release.json
+│   └── workflows
+│       ├── cd.yml
+│       ├── ci.yml
+│       ├── clean-cache.yml
+│       ├── lint.yml
+│       └── unit-tests.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .gitleaks.toml
+├── .pre-commit-config.yaml
+├── .trivyignore.yaml
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── backend
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── auth
+│   │   │   ├── __init__.py
+│   │   │   ├── dependencies.py
+│   │   │   ├── exchange.py
+│   │   │   └── models.py
+│   │   ├── config.py
+│   │   ├── downstream.py
+│   │   ├── main.py
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── downstream.py
+│   │   │   ├── health.py
+│   │   │   ├── mcp_datetime.py
+│   │   │   └── tools.py
+│   │   └── version.py
+│   ├── pyproject.toml
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── test_health.py
+│   │   └── test_tools.py
+│   └── uv.lock
+├── ci
+│   └── configs
+│       └── ct.yaml
+├── docker-compose.yml
+├── helm
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── ci
+│   │   └── ci-values.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── deployment.yaml
+│   │   ├── mcp-datetime.yaml
+│   │   ├── secret-oidc.yaml
+│   │   └── service.yaml
+│   └── values.yaml
+├── keycloak
+│   └── toolmesh-realm.json
+└── mcp-datetime
+    ├── .dockerignore
+    ├── Dockerfile
+    ├── app
+    │   ├── __init__.py
+    │   ├── auth.py
+    │   └── server.py
+    ├── pyproject.toml
+    ├── tests
+    │   ├── __init__.py
+    │   └── test_server.py
+    └── uv.lock
+18 directories, 61 files
