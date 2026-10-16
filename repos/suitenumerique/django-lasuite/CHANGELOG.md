@@ -10,7 +10,22 @@ and this project adheres to
 
 ### Added
 
+- ✨(malware) add ICAP backend to scan files with an ICAP-compatible 
+  antivirus engine
+
+### Fixed
+
+- 🔇(marketing) remove debug print leaking PII in Brevo backend
+
+## [0.0.30] - 2026-09-30
+
+### Added
+
 - ✨(oidc) allow to send the RP-initiated logout request with POST
+
+### Fixed
+
+- 🐛(oidc) handle replayed OIDC callback state gracefully
 
 ## [0.0.29] - 2026-08-25
 
@@ -245,7 +260,8 @@ and this project adheres to
 - ✨(oidc) add the authentication backends #2
 - ✨(oidc) add refresh token tools #3
 
-[unreleased]: https://github.com/suitenumerique/django-lasuite/compare/v0.0.29...main
+[unreleased]: https://github.com/suitenumerique/django-lasuite/compare/v0.0.30...main
+[0.0.30]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.30
 [0.0.29]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.29
 [0.0.28]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.28
 [0.0.27]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.27
