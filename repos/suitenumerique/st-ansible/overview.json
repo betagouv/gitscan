@@ -1,39 +1,41 @@
 {
   "url": "https://github.com/suitenumerique/st-ansible",
   "name": "st-ansible",
-  "description": "Collection Ansible pour le déploiement des applications de La Suite Territoriale sur des systèmes Debian en utilisant des conteneurs Podman rootless gérés par systemd.",
+  "description": "Collection Ansible pour le déploiement des applications de La Suite Territoriale sur Debian via des conteneurs Podman rootless. Elle inclut un outil CLI en Python pour automatiser le bootstrapping et l'exploitation des environnements.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
     "Sécurité & Conformité",
-    "Statistiques & Rapports",
     "Collaboration & Workflow",
+    "Administration & Backoffice",
     "Monitoring & Logs",
     "Infrastructure & Stockage"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Ansible",
     "Podman",
-    "Python",
-    "Keycloak",
-    "Restic",
+    "systemd",
     "Caddy",
-    "Typer",
-    "Jinja2"
+    "Redis",
+    "PostgreSQL",
+    "Keycloak",
+    "Celery",
+    "Restic"
   ],
   "components": [
     "Ansible & IaC",
     "Docker & Conteneurs",
     "Python (scripts & backend)",
-    "CI/CD & Déploiement",
     "Scripts & Utilitaires",
+    "CI/CD & Déploiement",
     "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "sso"
+      "oauth2",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Keycloak"
@@ -46,15 +48,10 @@
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-01T00:35:07+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-10-14T23:28:59+02:00",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 10,
-    "forks": 3,
-    "openIssues": 14
-  },
   "tags": [
     "Git & DevOps",
     "Docker & Conteneurs",
