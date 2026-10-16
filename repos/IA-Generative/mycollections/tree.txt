@@ -2,24 +2,50 @@
 ├── .env.integration.example
 ├── .github
 │   └── workflows
+│       ├── branches.yml
+│       ├── cd.yml
+│       ├── ci.yml
+│       ├── clean-preview-images.yml
+│       ├── preview.yml
 │       └── tests.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── .pre-commit-config.yaml
+├── .release-please-manifest.json
+├── .yamllint
 ├── CLAUDE.md
 ├── README.md
 ├── TODO.md
+├── deploy
+│   └── helm
+│       └── mycollections
+│           ├── .helmignore
+│           ├── Chart.yaml
+│           ├── templates
+│           │   ├── _helpers.tpl
+│           │   ├── backend.yaml
+│           │   ├── configmap.yaml
+│           │   ├── cronjob-feedback.yaml
+│           │   ├── extra.yaml
+│           │   ├── frontend.yaml
+│           │   ├── ingress.yaml
+│           │   ├── job-nettoyage-preview.yaml
+│           │   └── pvc.yaml
+│           └── values.yaml
 ├── docker-compose.integration.yaml
 ├── docs
 │   ├── adr
-│   │   └── ADR-0001-collections-collaboratives-modele-et-etats.md
+│   │   ├── ADR-0001-collections-collaboratives-modele-et-etats.md
+│   │   └── ADR-0002-generation-de-questions-par-persona.md
 │   ├── collectif.md
 │   ├── drive-find-architecture.md
+│   ├── generation.md
 │   ├── images
 │   │   ├── accueil.png
 │   │   ├── source-bulle.png
 │   │   ├── source-fenetre-de-lecture.png
 │   │   └── source-page-en-onglet.png
+│   ├── qualite.md
 │   └── sources.md
 ├── mise.toml
 ├── myrag
@@ -35,6 +61,23 @@
 │   │   ├── auth.py
 │   │   ├── config.py
 │   │   ├── database.py
+│   │   ├── generation
+│   │   │   ├── __init__.py
+│   │   │   ├── adapter_prompts.py
+│   │   │   ├── execution.py
+│   │   │   ├── modele.py
+│   │   │   ├── morceaux.py
+│   │   │   ├── moteur.py
+│   │   │   ├── prompts
+│   │   │   │   ├── KeyphrasesExtractor_keyphrases_extractor_prompt_french.json
+│   │   │   │   ├── LISEZMOI.md
+│   │   │   │   ├── NERExtractor_n_e_r_prompt_french.json
+│   │   │   │   ├── paire_simple_entites_query_answer_generation_prompt_french.json
+│   │   │   │   ├── paire_simple_entites_themes_personas_matching_prompt_french.json
+│   │   │   │   ├── paire_simple_mots_cles_query_answer_generation_prompt_french.json
+│   │   │   │   └── paire_simple_mots_cles_themes_personas_matching_prompt_french.json
+│   │   │   ├── resultats.py
+│   │   │   └── suggestion.py
 │   │   ├── guide
 │   │   │   ├── 1-dire-ce-qui-manque.md
 │   │   │   ├── 2-rassembler-cinq-collegues-et-un-garant.md
@@ -64,6 +107,7 @@
 │   │   │   ├── eval_datasets.py
 │   │   │   ├── feedback.py
 │   │   │   ├── fiches.py
+│   │   │   ├── generation.py
 │   │   │   ├── graph.py
 │   │   │   ├── guide.py
 │   │   │   ├── ingest.py
@@ -71,6 +115,7 @@
 │   │   │   ├── playground_bank.py
 │   │   │   ├── publication.py
 │   │   │   ├── qr_cache_router.py
+│   │   │   ├── qualite.py
 │   │   │   ├── recherche.py
 │   │   │   ├── sources.py
 │   │   │   └── sync.py
@@ -103,12 +148,16 @@
 │   │   │   │   ├── base.py
 │   │   │   │   └── drive.py
 │   │   │   ├── corpus.py
+│   │   │   ├── debit.py
 │   │   │   ├── doublons.py
 │   │   │   ├── etats.py
 │   │   │   ├── eval_service.py
+│   │   │   ├── export_questions.py
 │   │   │   ├── feedback_service.py
 │   │   │   ├── feedback_store.py
 │   │   │   ├── fiche_assistant.py
+│   │   │   ├── formats.py
+│   │   │   ├── generation_store.py
 │   │   │   ├── graph_builder.py
 │   │   │   ├── job_store.py
 │   │   │   ├── job_tracker.py
@@ -116,14 +165,25 @@
 │   │   │   ├── keycloak_client.py
 │   │   │   ├── legifrance_client.py
 │   │   │   ├── liens.py
+│   │   │   ├── mesure
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── execution.py
+│   │   │   │   ├── juge.py
+│   │   │   │   └── verdict.py
+│   │   │   ├── mesure_store.py
+│   │   │   ├── migration_questions.py
 │   │   │   ├── morceau.py
+│   │   │   ├── nettoyage_preview.py
 │   │   │   ├── nommage.py
 │   │   │   ├── openrag_client.py
 │   │   │   ├── owui_client.py
 │   │   │   ├── owui_feedback_sync.py
 │   │   │   ├── pseudo.py
 │   │   │   ├── qr_cache.py
+│   │   │   ├── qualite.py
+│   │   │   ├── questions_store.py
 │   │   │   ├── relais.py
+│   │   │   ├── reponse.py
 │   │   │   └── sync_service.py
 │   │   ├── static
 │   │   │   └── graph_view.html
@@ -134,6 +194,7 @@
 │   ├── data
 │   │   └── ceseda-v3
 │   │       └── graph.json
+│   ├── docker-compose.auth.yaml
 │   ├── docker-compose.yaml
 │   ├── frontend
 │   │   ├── .dockerignore
@@ -156,14 +217,30 @@
 │   │   │   │   └── Signalements.vue
 │   │   │   ├── corpus
 │   │   │   │   └── Documents.vue
-│   │   │   └── playground
-│   │   │       ├── BankCard.vue
-│   │   │       ├── BankFilter.vue
-│   │   │       ├── ChatMessage.vue
-│   │   │       ├── DebugAccordion.vue
-│   │   │       ├── SourceChip.vue
-│   │   │       ├── SourceViewer.vue
-│   │   │       └── VoteBar.vue
+│   │   │   ├── depot
+│   │   │   │   └── Zone.vue
+│   │   │   ├── generation
+│   │   │   │   ├── ChoixPersonas.vue
+│   │   │   │   └── Personas.vue
+│   │   │   ├── playground
+│   │   │   │   ├── BankCard.vue
+│   │   │   │   ├── BankFilter.vue
+│   │   │   │   ├── ChatMessage.vue
+│   │   │   │   ├── DebugAccordion.vue
+│   │   │   │   ├── SourceChip.vue
+│   │   │   │   ├── SourceViewer.vue
+│   │   │   │   └── VoteBar.vue
+│   │   │   └── qualite
+│   │   │       ├── Avis.vue
+│   │   │       ├── ChampEditable.vue
+│   │   │       ├── Courbe.vue
+│   │   │       ├── JeuDeQuestions.vue
+│   │   │       ├── Leviers.vue
+│   │   │       ├── Mesurer.vue
+│   │   │       ├── Mesures.vue
+│   │   │       ├── Rediger.vue
+│   │   │       ├── Synthese.vue
+│   │   │       └── Volet.vue
 │   │   ├── composables
 │   │   │   ├── useAdminAuth.ts
 │   │   │   ├── useApi.ts
@@ -174,7 +251,9 @@
 │   │   │   ├── useChat.ts
 │   │   │   ├── useCollectif.ts
 │   │   │   ├── useEtatService.ts
+│   │   │   ├── useGeneration.ts
 │   │   │   ├── usePiegeFocus.ts
+│   │   │   ├── useQualite.ts
 │   │   │   └── useTitreCollection.ts
 │   │   ├── error.vue
 │   │   ├── layouts
@@ -207,6 +286,7 @@
 │   │   │   │       ├── playground.vue
 │   │   │   │       ├── prompt.vue
 │   │   │   │       ├── publish.vue
+│   │   │   │       ├── qualite.vue
 │   │   │   │       └── upload.vue
 │   │   │   ├── deconnexion.vue
 │   │   │   ├── demandes
@@ -217,6 +297,8 @@
 │   │   │   │   └── index.vue
 │   │   │   ├── index.vue
 │   │   │   └── mes-collections.vue
+│   │   ├── plugins
+│   │   │   └── 00.config-execution.client.ts
 │   │   ├── public
 │   │   │   ├── apple-touch-icon.png
 │   │   │   ├── exemple-evaluation.json
@@ -227,13 +309,17 @@
 │   │   │       ├── catalogue.test.ts
 │   │   │       ├── collectif.test.ts
 │   │   │       ├── collectionName.test.ts
+│   │   │       ├── configExecution.test.ts
 │   │   │       ├── corpus.test.ts
+│   │   │       ├── depot.test.ts
 │   │   │       ├── etatService.test.ts
 │   │   │       ├── extrait.test.ts
 │   │   │       ├── filAriane.test.ts
+│   │   │       ├── generation.test.ts
 │   │   │       ├── groupes.test.ts
 │   │   │       ├── libelles.test.ts
 │   │   │       ├── playground.test.ts
+│   │   │       ├── qualite.test.ts
 │   │   │       └── retour.test.ts
 │   │   ├── tsconfig.json
 │   │   ├── types
@@ -244,13 +330,17 @@
 │   │   │   ├── catalogue.ts
 │   │   │   ├── collectif.ts
 │   │   │   ├── collectionName.ts
+│   │   │   ├── configExecution.ts
 │   │   │   ├── corpus.ts
+│   │   │   ├── depot.ts
 │   │   │   ├── etatService.ts
 │   │   │   ├── extrait.ts
 │   │   │   ├── filAriane.ts
+│   │   │   ├── generation.ts
 │   │   │   ├── groupes.ts
 │   │   │   ├── libelles.ts
 │   │   │   ├── playground.ts
+│   │   │   ├── qualite.ts
 │   │   │   ├── retour.ts
 │   │   │   └── sanitize.ts
 │   │   └── vitest.config.ts
@@ -266,6 +356,8 @@
 │   │   ├── secret.yaml.template
 │   │   ├── service-backend.yaml
 │   │   └── service-frontend.yaml
+│   ├── mock
+│   │   └── openrag-mockoon.json
 │   ├── owui
 │   │   ├── feedback_outlet.py
 │   │   ├── pipe_myrag_filter.py
@@ -300,15 +392,19 @@
 │   │   │   ├── test_10_mobile_et_clavier.py
 │   │   │   └── test_11_recherche_portail.py
 │   │   ├── integration
-│   │   │   └── __init__.py
+│   │   │   ├── __init__.py
+│   │   │   └── test_generation_moteur.py
 │   │   └── unit
 │   │       ├── __init__.py
-│   │       └── test_*.py  (65 files)
+│   │       └── test_*.py  (79 files)
 │   ├── uv.lock
 │   └── watch-ingest.sh
 ├── openwebui
 │   ├── README.md
 │   └── feedback_forwarder.py
+├── release-please-config.json
+├── renovate.json
 ├── setup-keycloak.sh
-└── sync_keycloak_openrag.py
-51 directories, 326 files
+├── sync_keycloak_openrag.py
+└── version.txt
+63 directories, 424 files
