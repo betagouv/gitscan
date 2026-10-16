@@ -96,6 +96,7 @@
 │   │   │   │   └── reverse_proxy
 │   │   │   │       ├── extra-conf.d
 │   │   │   │       │   ├── .gitkeep
+│   │   │   │       │   ├── host_vhost.conf.template.jinja2
 │   │   │   │       │   └── limit_req.conf.template.jinja2
 │   │   │   │       ├── extra-includes
 │   │   │   │       │   └── .gitkeep
@@ -171,7 +172,7 @@
 │   │   │   ├── 10-wan.link.jinja2
 │   │   │   ├── 10-wan.network.jinja2
 │   │   │   ├── nftables.service
-│   │   │   └── resolved.conf
+│   │   │   └── resolved.conf.jinja2
 │   │   └── tmux
 │   │       └── tmux.conf.template.jinja2
 │   └── inventories
@@ -187,6 +188,7 @@
 │   │   ├── Dockerfile
 │   │   ├── conf.d
 │   │   │   ├── 00_docker.conf
+│   │   │   ├── 01_redact.conf
 │   │   │   ├── 02_prometheus.conf
 │   │   │   ├── 03_nginx.conf
 │   │   │   ├── 04_fail2ban.conf
@@ -195,43 +197,62 @@
 │   │   │   ├── 20_labels.conf
 │   │   │   ├── 50_parse_json.conf
 │   │   │   └── 90_output.conf
-│   │   └── fluent.conf
-│   └── reverse_proxy
+│   │   ├── fluent.conf
+│   │   └── tests
+│   │       └── redact.sh
+│   ├── reverse_proxy
+│   │   ├── Dockerfile
+│   │   ├── files
+│   │   │   ├── reload.sh
+│   │   │   └── templates
+│   │   │       ├── conf.d
+│   │   │       │   ├── cache.conf.template
+│   │   │       │   ├── default.conf.template
+│   │   │       │   ├── expires.conf.template
+│   │   │       │   ├── gzip.conf.template
+│   │   │       │   ├── headers.conf.template
+│   │   │       │   ├── logging.conf.template
+│   │   │       │   └── maintenance_ips.conf.template
+│   │   │       ├── includes
+│   │   │       │   ├── error_page_json.conf.template
+│   │   │       │   ├── location_acme.conf.template
+│   │   │       │   ├── location_common.conf.template
+│   │   │       │   ├── location_maintenance.conf.template
+│   │   │       │   ├── location_monitoring.conf.template
+│   │   │       │   ├── location_none.conf.template
+│   │   │       │   ├── proxy.conf.template
+│   │   │       │   ├── proxy_sub_path.conf.template
+│   │   │       │   ├── ssl-params.conf.template
+│   │   │       │   └── ssl.conf.template
+│   │   │       ├── modsecurity.d
+│   │   │       │   └── modsecurity-override.conf.template
+│   │   │       └── nginx.conf.template
+│   │   └── tests
+│   │       ├── cache
+│   │       │   ├── docker-compose.yml
+│   │       │   ├── locations
+│   │       │   │   └── 01_app.conf.template
+│   │       │   ├── run.sh
+│   │       │   ├── srv
+│   │       │   │   └── .gitignore
+│   │       │   └── upstream
+│   │       │       └── default.conf
+│   │       ├── docker-compose.yml
+│   │       ├── locations
+│   │       │   └── 01_demo.conf.template
+│   │       ├── maintenance-on.sh
+│   │       └── system
+│   │           ├── 503.html
+│   │           ├── 503.svg
+│   │           ├── 5xx.html
+│   │           ├── 5xx.svg
+│   │           ├── favicon.svg
+│   │           └── marianne.svg
+│   └── runner
+│       ├── .dockerignore
 │       ├── Dockerfile
-│       ├── files
-│       │   ├── reload.sh
-│       │   └── templates
-│       │       ├── conf.d
-│       │       │   ├── default.conf.template
-│       │       │   ├── expires.conf.template
-│       │       │   ├── gzip.conf.template
-│       │       │   ├── headers.conf.template
-│       │       │   ├── logging.conf.template
-│       │       │   └── maintenance_ips.conf.template
-│       │       ├── includes
-│       │       │   ├── error_page_json.conf.template
-│       │       │   ├── location_acme.conf.template
-│       │       │   ├── location_common.conf.template
-│       │       │   ├── location_maintenance.conf.template
-│       │       │   ├── location_monitoring.conf.template
-│       │       │   ├── proxy.conf.template
-│       │       │   ├── proxy_sub_path.conf.template
-│       │       │   └── ssl.conf.template
-│       │       ├── modsecurity.d
-│       │       │   └── modsecurity-override.conf.template
-│       │       └── nginx.conf.template
-│       └── tests
-│           ├── docker-compose.yml
-│           ├── locations
-│           │   └── 01_demo.conf.template
-│           ├── maintenance-on.sh
-│           └── system
-│               ├── 503.html
-│               ├── 503.svg
-│               ├── 5xx.html
-│               ├── 5xx.svg
-│               ├── favicon.svg
-│               └── marianne.svg
+│       ├── PLATFORMS
+│       └── entrypoint.sh
 ├── docs
 │   ├── gpg.md
 │   ├── manage_access.md
@@ -239,6 +260,14 @@
 │   ├── provisionning.md
 │   └── yubikey.md
 └── products
+    ├── analytics
+    │   ├── authorizations
+    │   │   ├── .openpgp-keyid
+    │   │   ├── .openpgp-pubkey
+    │   │   └── habilitations.yml
+    │   ├── inventories
+    │   │   └── env.ini
+    │   └── nftables.base.conf.jinja2
     ├── api
     │   ├── authorizations
     │   │   ├── .openpgp-keyid
@@ -258,14 +287,6 @@
     │   ├── nftables.production.conf.jinja2
     │   └── nftables.recette.conf.jinja2
     ├── data
-    │   ├── authorizations
-    │   │   ├── .openpgp-keyid
-    │   │   ├── .openpgp-pubkey
-    │   │   └── habilitations.yml
-    │   ├── inventories
-    │   │   └── env.ini
-    │   └── nftables.production.conf.jinja2
-    ├── lab
     │   ├── authorizations
     │   │   ├── .openpgp-keyid
     │   │   ├── .openpgp-pubkey
@@ -304,6 +325,14 @@
     │   ├── inventories
     │   │   └── env.ini
     │   └── nftables.production.conf.jinja2
+    ├── runner
+    │   ├── authorizations
+    │   │   ├── .openpgp-keyid
+    │   │   ├── .openpgp-pubkey
+    │   │   └── habilitations.yml
+    │   ├── inventories
+    │   │   └── env.ini
+    │   └── nftables.base.conf.jinja2
     ├── sentry
     │   ├── authorizations
     │   │   ├── .openpgp-keyid
@@ -330,4 +359,4 @@
         ├── inventories
         │   └── env.ini
         └── nftables.production.conf.jinja2
-96 directories, 236 files
+105 directories, 256 files

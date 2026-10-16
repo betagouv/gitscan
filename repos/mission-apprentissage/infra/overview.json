@@ -1,13 +1,14 @@
 {
   "url": "https://github.com/mission-apprentissage/infra",
   "name": "infra",
-  "description": "Ce dépôt contient la configuration de base des serveurs ainsi que des images Docker personnalisées pour l'infrastructure Mna.",
+  "description": "Ce dépôt contient la configuration de base des serveurs ainsi que les images Docker personnalisées pour l'infrastructure de la mission apprentissage.",
   "language": "Shell",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
     "Sécurité & Conformité",
     "Monitoring & Logs",
-    "Gestion documentaire & Fichiers"
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -20,19 +21,13 @@
     "modsecurity"
   ],
   "components": [
-    "API REST & GraphQL",
+    "Documentation & Schémas",
+    "CI/CD & Déploiement",
     "Docker & Conteneurs",
-    "Ansible",
-    "Reverse Proxy",
-    "Fluentd",
-    "Monitoring",
-    "Configuration des serveurs"
+    "Serveurs web & Proxy",
+    "Scripts & Utilitaires",
+    "Ansible & IaC"
   ],
-  "auth": {
-    "methods": [
-      "ssh"
-    ]
-  },
   "tests": "Tests Docker Compose pour le reverse proxy.",
   "workflows": [
     "_password-rotate.yml",
@@ -50,7 +45,7 @@
     "scheduled-all-servers-password-rotate.yml",
     "scheduled-all-servers-reboot.yml"
   ],
-  "lastActivity": "2026-07-03T21:34:50+02:00",
+  "lastActivity": "2026-10-15T00:20:52+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,17 +56,12 @@
     "openIssues": 1
   },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Docker",
-    "Ansible",
-    "Nginx",
-    "Reverse Proxy",
-    "Monitoring",
-    "Sécurité",
-    "Infrastructure",
-    "Fluentd",
-    "Logs",
-    "Fail2ban"
+    "Docker & Conteneurs",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Monitoring & Observabilité",
+    "Sécurité & Auth",
+    "Documentation"
   ]
 }

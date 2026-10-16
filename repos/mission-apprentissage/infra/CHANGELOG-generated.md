@@ -1,16 +1,23 @@
-## Changelog : infra (30 derniers jours, au 24 juillet 2026)
+## Changelog : infra (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'observabilité de l'infrastructure avec l'ajout de métriques MongoDB exposées au monitoring, ainsi que sur l'amélioration de la lisibilité des logs via Fluentd. Des corrections mineures et des tâches de maintenance ont également été effectuées.
+Ce mois-ci, l'infrastructure a franchi une étape importante vers plus de sécurité et d'autonomie. Les principaux changements concernent le déploiement d'un réseau privé pour isoler les services de production et la mise en place de serveurs d'exécution (runners) dédiés pour l'automatisation. L'outil d'analyse Matomo a également été intégré à l'écosystème.
 
 ### Évolutions fonctionnelles
-- Ajout de l'exposition du port de métriques MongoDB (9946) vers le monitoring pour le cluster LBA. [#225](https://github.com/mission-apprentissage/infra/issues/225)
-- Amélioration de la lisibilité des logs Fluentd en mappant les niveaux de log numériques à leurs noms correspondants. [#224](https://github.com/mission-apprentissage/infra/issues/224)
-- Correction d'un problème lié à la hauteur du terminal dans tmux. [#226](https://github.com/mission-apprentissage/infra/issues/226)
+- Intégration de l'outil d'analyse Matomo [#235](https://github.com/mission-apprentissage/infra/pull/235).
 
 ### Évolutions techniques
-- Mise à jour des habilitations.
-- Rotation du secret principal SOPS.
+- **Infrastructure privée et réseau :**
+    - Mise en œuvre de mécanismes pour supporter l'infrastructure privée [#237](https://github.com/mission-apprentissage/infra/pull/237).
+    - Déploiement de `bal.production` sur un réseau privé.
+    - Configuration de serveurs virtuels (vhosts) Nginx pour les serveurs privés [#238](https://github.com/mission-apprentissage/infra/pull/238).
+    - Ajustements des règles de pare-feu (Nftables) et des configurations VLAN pour les environnements de staging et de production.
+- **CI/CD et automatisation :**
+    - Mise en place de runners GitHub auto-hébergés [#236](https://github.com/mission-apprentissage/infra/pull/236).
+    - Sécurisation des runners via l'importation des clés OpenPGP des dépôts directement dans les conteneurs.
+    - Mise à jour de l'image Docker utilisée par les runners.
+- **Disponibilité et maintenance :**
+    - Exclusion de `bal.production` des cycles de redémarrage automatique programmés afin de garantir une disponibilité continue.
 
 ### Autres changements
-- Correction d'une faute de frappe. [#43648b6](https://github.com/mission-apprentissage/infra/commit/43648b6)
+- Corrections de diverses fautes de frappe dans la documentation et les fichiers de configuration.
