@@ -1,28 +1,29 @@
-## Changelog : conversations (30 derniers jours, au 8 octobre 2026)
+## Changelog : conversations (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Ce mois-ci, Conversations s'enrichit de nouveaux outils de recherche et de génération de documents (web, data.gouv, présentations) tout en améliorant l'expérience utilisateur lors des mises à jour. Un effort majeur a été porté sur la protection de la vie privée en garantissant que les échanges des utilisateurs ne sont plus enregistrés dans les journaux système ni transmis à la télémétrie.
+Ce mois-ci, Conversations a considérablement enrichi ses capacités de recherche grâce à l'intégration de nouveaux outils comme Staan et le connecteur data.gouv. L'expérience utilisateur a été fluidifiée avec une interface plus intuitive et une meilleure gestion des mises à jour du service. Enfin, un effort majeur a été porté sur la protection de la vie privée, garantissant qu'aucune donnée de conversation n'est enregistrée dans les journaux ou la télémétrie.
 
 ### Évolutions fonctionnelles
-- **Nouveaux outils et connecteurs** : ajout de la recherche web (Staan), du connecteur data.gouv et d'un outil de génération de présentations (slide decks).
-- **Amélioration de l'interface** : remplacement des actions de saisie par un nouveau menu déroulant "+" pour plus de clarté.
-- **Expérience utilisateur et fiabilité** : 
-    - Meilleure gestion des mises à jour avec une demande de rechargement de la page pour éviter l'utilisation de versions obsolètes.
-    - Affichage d'une page d'erreur explicite au lieu d'une page blanche en cas de problème.
-    - Possibilité pour l'utilisateur de forcer l'utilisation du connecteur data.gouv pour une interaction spécifique.
-- **Correction** : support amélioré des fichiers Markdown dont le type MIME est manquant.
+- **Nouveaux outils de recherche** : intégration de l'outil de recherche web Staan et du connecteur data.gouv.
+- **Modernisation de l'interface** : remplacement des actions d'entrée par un menu déroulant "+" et amélioration de l'affichage du module d'impact carbone.
+- **Amélioration de l'expérience utilisateur** : 
+    - Mise en place de notifications pour demander le rechargement de la page après un déploiement.
+    - Affichage d'une page d'erreur explicite au lieu d'un écran blanc en cas de problème.
+    - Ajustement des messages d'alerte lors de pics de trafic.
+    - Possibilité pour l'utilisateur de forcer l'utilisation du connecteur DataGouv.
+- **Corrections** : amélioration de la gestion des téléchargements de fichiers Markdown et stabilisation de l'ordre d'affichage de la liste des projets.
+- **Internationalisation** : mise à jour des chaînes de caractères traduites [#769](https://github.com/suitenumerique/conversations/pull/769).
 
 ### Évolutions techniques
-- **Confidentialité et sécurité** : renforcement de la protection des données en empêchant l'enregistrement des prompts utilisateurs dans les logs et la télémétrie.
-- **Infrastructure et déploiement** :
+- **Confidentialité et sécurité** : 
+    - Garantie que les requêtes des utilisateurs (prompts) ne sont plus enregistrées dans les logs ni transmises à la télémétrie.
+    - Correction de vulnérabilités (CVE) sur les dépendances `pydantic-ai` et `handlebars`.
+    - Sécurisation des accès Docker en environnement de développement.
+- **Architecture et performance** : 
     - Migration des tâches périodiques vers Celery Beat.
-    - Optimisation de l'environnement de développement et de la CI en remplaçant MinIO par RustFS.
-    - Sécurisation des ports de développement (limités à `localhost`).
-- **Performance et stabilité** :
-    - Optimisation de la lecture de la configuration pour réduire les entrées/sorties (I/O).
-    - Réduction du bruit dans les logs (ASGI) et optimisation de la gestion des images CI.
-- **Tests** : amélioration de la robustesse des tests frontend (mocking de composants et découplage des tests de langue).
+    - Optimisation de la lecture de la configuration (cache) et réduction des rechargements de drapeaux de fonctionnalités (feature flags).
+- **Infrastructure et CI/CD** : remplacement de MinIO par RustFS pour les environnements de développement local et de CI ; ajustement de la configuration Docker pour la CI.
+- **Tests** : amélioration de la robustesse des tests frontend via le mock de composants et le découplage des tests de langue.
 
 ### Autres changements
-- **Documentation** : ajout de détails sur les procédures de release et de déploiement.
-- **Internationalisation** : mise à jour des chaînes de caractères traduites [#769](https://github.com/suitenumerique/conversations/pull/769).
+- **Documentation** : ajout d'une politique d'utilisation de l'IA et des pull requests, et documentation détaillée des procédures de déploiement.
