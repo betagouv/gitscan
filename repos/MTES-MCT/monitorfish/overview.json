@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/monitorfish",
   "name": "monitorfish",
-  "description": "Logiciel de surveillance et de contrôle des activités des navires de pêche, conçu pour le Centre National de Surveillance des Pêches (CNSP) afin d'améliorer la détection des fraudes et le suivi de la conformité.",
+  "description": "Logiciel de surveillance et de contrôle des activités des navires de pêche. Il permet la visualisation des positions en temps réel, la détection de fraudes et la gestion des rapports d'inspection pour le Centre National de Surveillance des Pêches.",
   "language": "Java",
   "features": [
     "Visualisation de données & Cartographie",
@@ -9,7 +9,8 @@
     "Gestion des signalements",
     "Administration & Backoffice",
     "Suivi & Traçabilité",
-    "Sécurité & Conformité"
+    "Notifications & Alertes",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,30 +19,40 @@
     "GeoServer",
     "Keycloak",
     "Kafka",
-    "Spring Boot",
+    "Flyway",
     "React",
     "Cypress",
-    "Flyway"
+    "Sentry",
+    "Prefect"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "SIG & Géospatial"
+    "TypeScript / JavaScript",
+    "Python (scripts & backend)",
+    "SIG & Géospatial",
+    "Authentification (composant)",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "sso"
+      "sso",
+      "jwt"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Cypress",
-  "lastActivity": "2026-09-01T16:51:44+02:00",
+  "tests": [
+    "Cypress",
+    "Puppeteer"
+  ],
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-10-15T11:22:25+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -51,6 +62,8 @@
     "Docker & Conteneurs",
     "Monitoring & Observabilité",
     "Sécurité & Auth",
-    "Écosystème beta.gouv / État"
+    "Python",
+    "TypeScript",
+    "CI/CD & GitHub Actions"
   ]
 }
