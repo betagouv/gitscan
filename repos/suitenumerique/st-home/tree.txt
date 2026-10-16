@@ -53,6 +53,8 @@
 │   │   ├── test_check_website.py
 │   │   ├── test_communes.py
 │   │   ├── test_conformance.py
+│   │   ├── test_domain_ownership.py
+│   │   ├── test_epci_memberships.py
 │   │   └── test_lib.py
 │   ├── uv.lock
 │   └── worker.py
@@ -64,7 +66,6 @@
 ├── instrumentation-client.ts
 ├── instrumentation.ts
 ├── knip.json
-├── next-env.d.ts
 ├── next.config.mjs
 ├── package-lock.json
 ├── package.json
@@ -117,6 +118,7 @@
 │   │   ├── reunion.svg
 │   │   └── services.svg
 │   ├── images
+│   │   ├── Illu ANSM.png
 │   │   ├── anct.png
 │   │   ├── anct2.png
 │   │   ├── anssi.png
@@ -140,6 +142,7 @@
 │   │   │   ├── suite-basic.jpg
 │   │   │   └── suite-ecosystem.svg
 │   │   ├── carto.png
+│   │   ├── code.svg
 │   │   ├── coin-bottom-left.svg
 │   │   ├── coin-bottom-right.svg
 │   │   ├── coin-top-left.svg
@@ -149,15 +152,63 @@
 │   │   ├── illu-lst.svg
 │   │   ├── interest-share.svg
 │   │   ├── interest-test.svg
+│   │   ├── logo-afnic.png
+│   │   ├── logo-amf.png
+│   │   ├── logo-anct-small.png
 │   │   ├── logo-anct.svg
+│   │   ├── logo-anssi.png
+│   │   ├── logo-declic.png
 │   │   ├── logo-declic.svg
 │   │   ├── logo-incubateur.svg
 │   │   ├── logo-ndd.svg
+│   │   ├── logo-proconnect-new.svg
 │   │   ├── logo-proconnect.svg
 │   │   ├── logo-st.svg
+│   │   ├── map-pin.svg
 │   │   ├── plane.svg
+│   │   ├── puzzle.svg
+│   │   ├── rcpnt-messagerie-mono.svg
 │   │   ├── rcpnt-messagerie.svg
+│   │   ├── rcpnt-site-mono.svg
 │   │   ├── rcpnt-site.svg
+│   │   ├── services-illlu
+│   │   │   ├── adresses-bal-schema.webp
+│   │   │   ├── adresses-features-1.webp
+│   │   │   ├── adresses-features-2.webp
+│   │   │   ├── adresses-features-3.webp
+│   │   │   ├── adresses-hero.webp
+│   │   │   ├── adresses-top.webp
+│   │   │   ├── annuaire-features-1.webp
+│   │   │   ├── annuaire-features-2.webp
+│   │   │   ├── annuaire-features-3.webp
+│   │   │   ├── annuaire-hero.webp
+│   │   │   ├── annuaire-top.webp
+│   │   │   ├── domaines-banners.webp
+│   │   │   ├── domaines-hero.webp
+│   │   │   ├── domaines-top.webp
+│   │   │   ├── fichiers-features-1.webp
+│   │   │   ├── fichiers-features-2.webp
+│   │   │   ├── fichiers-features-3.webp
+│   │   │   ├── fichiers-hero.webp
+│   │   │   ├── fichiers-top.webp
+│   │   │   ├── messages-features-1.webp
+│   │   │   ├── messages-features-2.webp
+│   │   │   ├── messages-features-3.webp
+│   │   │   ├── messages-hero.webp
+│   │   │   ├── messages-top.webp
+│   │   │   ├── rdv-features-1.webp
+│   │   │   ├── rdv-features-2.webp
+│   │   │   ├── rdv-features-3.webp
+│   │   │   ├── rdv-hero.webp
+│   │   │   └── rdv-top.webp
+│   │   ├── services-logos
+│   │   │   ├── adresses.png
+│   │   │   ├── annuaire.png
+│   │   │   ├── domaines.png
+│   │   │   ├── fichiers.png
+│   │   │   ├── messages.png
+│   │   │   └── rdv.png
+│   │   ├── shield-check.svg
 │   │   ├── socle.svg
 │   │   └── suite-territoriale-hero.png
 │   ├── parent_areas.json
@@ -165,6 +216,7 @@
 ├── scripts
 │   ├── __tests__
 │   │   └── prebuild.test.ts
+│   ├── build-arrondissement-geojson.ts
 │   ├── check-actions.sh
 │   ├── db-check.ts
 │   ├── db-drop.ts
@@ -193,6 +245,8 @@
 │   │   ├── Share.tsx
 │   │   ├── StatsSlider.tsx
 │   │   ├── TrialContact.tsx
+│   │   ├── icons
+│   │   │   └── uikit.tsx
 │   │   ├── map
 │   │   │   ├── context
 │   │   │   │   ├── MapContext.tsx
@@ -227,29 +281,56 @@
 │   │   │       ├── Breadcrumb.tsx
 │   │   │       ├── MapButton.tsx
 │   │   │       └── SidePanel.tsx
-│   │   └── onboarding
-│   │       ├── CommuneInfo.tsx
-│   │       ├── DepartmentPresenceView.tsx
-│   │       ├── ErrorView.tsx
-│   │       ├── OPSNBasicView.tsx
-│   │       ├── OperatorServicesBlock.tsx
-│   │       ├── OrganisationPresenceView.tsx
-│   │       ├── ServiceIllustration.tsx
-│   │       ├── ServicePicker.tsx
-│   │       └── UsedServicesView.tsx
+│   │   ├── onboarding
+│   │   │   ├── CommuneInfo.tsx
+│   │   │   ├── DepartmentPresenceView.tsx
+│   │   │   ├── ErrorView.tsx
+│   │   │   ├── OPSNBasicView.tsx
+│   │   │   ├── OperatorServicesBlock.tsx
+│   │   │   ├── OrganisationPresenceView.tsx
+│   │   │   ├── ServiceIllustration.tsx
+│   │   │   ├── ServicePicker.tsx
+│   │   │   └── UsedServicesView.tsx
+│   │   └── services
+│   │       ├── ServiceBanner.tsx
+│   │       ├── ServiceEligibility.tsx
+│   │       ├── ServiceFaq.tsx
+│   │       ├── ServiceFeatures.tsx
+│   │       ├── ServiceFoundations.tsx
+│   │       ├── ServiceHero.tsx
+│   │       ├── ServicePartners.tsx
+│   │       ├── ServiceProConnect.tsx
+│   │       ├── ServiceSteps.tsx
+│   │       ├── ServiceTestimonials.tsx
+│   │       └── ServiceTrial.tsx
 │   ├── layouts
 │   │   └── page.tsx
 │   ├── lib
 │   │   ├── cache.ts
 │   │   ├── db.ts
+│   │   ├── dbUrl.ts
 │   │   ├── departmentsRegion.ts
 │   │   ├── docs2dsfr
 │   │   │   ├── client.tsx
 │   │   │   ├── components.tsx
 │   │   │   └── server.tsx
 │   │   ├── hooks.ts
+│   │   ├── rpntActions.ts
+│   │   ├── rpntFilters.ts
+│   │   ├── rpntScopes.ts
 │   │   ├── schema.ts
 │   │   ├── scrollToHash.ts
+│   │   ├── services
+│   │   │   ├── annuaire.tsx
+│   │   │   ├── deployment.ts
+│   │   │   ├── domaines.tsx
+│   │   │   ├── fichiers.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── mes-adresses.tsx
+│   │   │   ├── messages.tsx
+│   │   │   ├── nav.ts
+│   │   │   ├── rendez-vous.tsx
+│   │   │   └── types.ts
 │   │   ├── string.ts
 │   │   └── useActiveSection.ts
 │   ├── pages
@@ -271,6 +352,9 @@
 │   │   │   │   ├── services.ts
 │   │   │   │   └── stats.ts
 │   │   │   └── rcpnt
+│   │   │       ├── actions-export.ts
+│   │   │       ├── actions-list.ts
+│   │   │       ├── actions.ts
 │   │   │       ├── hist.ts
 │   │   │       └── stats.ts
 │   │   ├── bienvenue
@@ -280,6 +364,7 @@
 │   │   ├── carto-deploy-incub-embed.tsx
 │   │   ├── cartographie-deploiement.tsx
 │   │   ├── conformite
+│   │   │   ├── actions.tsx
 │   │   │   ├── cartographie.tsx
 │   │   │   └── referentiel.tsx
 │   │   ├── healthz.tsx
@@ -287,12 +372,16 @@
 │   │   ├── mentions-legales.tsx
 │   │   ├── partenaires.tsx
 │   │   ├── politique-de-confidentialite.tsx
+│   │   ├── services
+│   │   │   └── [slug].tsx
 │   │   └── services.tsx
 │   ├── styles
 │   │   ├── cartographie-conformite.module.css
 │   │   ├── cartographie-deploiement.module.css
 │   │   ├── communesearch.css
-│   │   └── global.css
+│   │   ├── conformite-actions.module.css
+│   │   ├── global.css
+│   │   └── services.module.css
 │   └── types
 │       └── index.ts
 ├── tests-playwright
@@ -302,10 +391,12 @@
 │   ├── mentions-legales.spec.ts
 │   └── politique-confidentialite.spec.ts
 ├── tests-vitest
-│   └── index.spec.tsx
+│   ├── index.spec.tsx
+│   ├── serviceEligibility.spec.ts
+│   └── servicesNav.spec.ts
 ├── tsconfig.json
 ├── vitest.config.mts
 └── webcomponents
     ├── demo.html
     └── st-collectivite-search.tsx
-48 directories, 351 files
+54 directories, 436 files
