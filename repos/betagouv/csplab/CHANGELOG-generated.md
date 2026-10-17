@@ -1,35 +1,36 @@
-## Changelog : csplab (30 derniers jours, au 08/10/2026)
+## Changelog : csplab (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience de gestion des recrutements. L'introduction d'un système de messagerie intégré et d'un panneau de détails pour les candidatures permet désormais une collaboration plus fluide entre les recruteurs. Parallèlement, l'automatisation et la précision de l'importation des données (notamment via Talentsoft) ont été renforcées pour garantir une meilleure fiabilité des informations.
+Ce mois-ci, la plateforme a franchi une étape importante avec l'amélioration significative de la gestion des candidatures (ajout de notes, historique d'activité et interface plus fluide) et l'introduction d'un système de messagerie collaborative pour faciliter les échanges. Le processus d'importation de données a également été enrichi pour mieux intégrer les informations provenant de Talentsoft, tandis que l'architecture technique a été modernisée pour garantir une meilleure stabilité et évolutivité du système.
 
 ### Évolutions fonctionnelles
-- **Gestion des candidatures** :
-    - Mise en place d'un panneau de candidature complet permettant de visualiser le CV, les documents, l'historique d'activité et d'ajouter des notes [#1562](https://github.com/betagouv/csplab/issues/1562).
-    - Amélioration de la navigation et de l'ergonomie du Kanban pour la sélection et le passage d'une étape à l'autre [#1753](https://github.com/betagouv/csplab/issues/1753), [#1477](https://github.com/betagouv/csplab/issues/1477).
-    - Ajout de la possibilité de saisir un motif lors du refus d'une candidature [#1506](https://github.com/betagouv/csplab/issues/1506).
-- **Messagerie et collaboration** :
-    - Déploiement d'un système de messagerie permettant de créer des conversations, d'échanger des messages et de joindre des fichiers directement dans le cadre d'une candidature [#1678](https://github.com/betagouv/csplab/issues/1678), [#1666](https://github.com/betagouv/csplab/issues/1666), [#1747](https://github.com/betagouv/csplab/issues/1747).
-- **Pilotage du recrutement** :
-    - Amélioration de la gestion des équipes de recrutement (ajout, modification et révocation de membres/rôles) [#1409](https://github.com/betagouv/csplab/issues/1409), [#1416](https://github.com/betagouv/csplab/issues/1416).
-    - Possibilité d'assigner des responsables à plusieurs recrutements de manière groupée [#1483](https://github.com/betagouv/csplab/issues/1483).
-- **Ingestion de données** :
-    - Optimisation de l'importation des offres (Talentsoft) avec une meilleure gestion des champs critiques (dates de vacance, export UNIF, entités DGAFP) [#1815](https://github.com/betagouv/csplab/issues/1815), [#1716](https://github.com/betagouv/csplab/issues/1716).
-    - Ajout de la possibilité d'afficher les offres actives par source [#1763](https://github.com/betagouv/csplab/issues/1763).
+- **Gestion des candidatures** : 
+    - Ajout de la possibilité de rédiger et consulter des notes sur une candidature [#1805](https://github.com/betagouv/csplab/issues/1805).
+    - Intégration de l'historique d'activité et des dernières actions directement dans le panneau de candidature [#1668](https://github.com/betagouv/csplab/issues/1668).
+    - Amélioration de l'ergonomie avec un nouveau panneau de candidature (sous forme de modale) accessible depuis la liste ou le kanban [#1569](https://github.com/betagouv/csplab/issues/1569), [#1477](https://github.com/betagouv/csplab/issues/1477).
+    - Ajout d'un garde-fou demandant un motif avant de refuser une candidature [#1506](https://github.com/betagouv/csplab/issues/1506).
+- **Messagerie collaborative** : 
+    - Mise en place complète du système de messagerie : création de conversations, envoi de messages et possibilité de joindre des fichiers [#1678](https://github.com/betagouv/csplab/issues/1678), [#1666](https://github.com/betagouv/csplab/issues/1666).
+    - Possibilité de répondre directement à une conversation depuis le panneau d'une candidature [#1664](https://github.com/betagouv/csplab/issues/1664).
+- **Interface Recruteur** : 
+    - Nouvelles capacités d'assignation de responsables de recrutement en lot [#1483](https://github.com/betagouv/csplab/issues/1483).
+    - Amélioration de la visibilité des documents et des détails des candidats pour les agents autorisés [#1475](https://github.com/betagouv/csplab/issues/1475), [#1462](https://github.com/betagouv/csplab/issues/1462).
+    - Optimisations visuelles : en-tête de page fixe (sticky), harmonisation des composants et alignement des données dans les tableaux [#1892](https://github.com/betagouv/csplab/issues/1892), [#1575](https://github.com/betagouv/csplab/issues/1575), [#1857](https://github.com/betagouv/csplab/issues/1857).
+- **Ingestion de données** : 
+    - Enrichissement des données importées depuis Talentsoft (emails des candidats, contacts de l'offre, dates de vacance de poste) [#1946](https://github.com/betagouv/csplab/issues/1946), [#1936](https://github.com/betagouv/csplab/issues/1936), [#1812](https://github.com/betagouv/csplab/issues/1812).
+    - Francisation des champs et des réponses de l'API d'ingestion pour une meilleure lisibilité [#1852](https://github.com/betagouv/csplab/issues/1852), [#1847](https://github.com/betagouv/csplab/issues/1847).
 
 ### Évolutions techniques
-- **Architecture et Backend** :
-    - Refactoring majeur de la gestion des permissions et des rôles (conformément à l'ADR-009) pour une structure plus robuste [#1771](https://github.com/betagouv/csplab/issues/1771), [#1427](https://github.com/betagouv/csplab/issues/1427).
-    - Migration du système de messagerie vers un stockage en base de données pour assurer la persistance des échanges [#1681](https://github.com/betagouv/csplab/issues/1681).
-    - Mise en place du stockage des documents candidats sur S3 pour une meilleure gestion des fichiers [#1472](https://github.com/betagouv/csplab/issues/1472).
-- **Sécurité et Identité** :
-    - Renforcement de la sécurité de l'authentification via la limitation du débit (rate limiting) sur les rejets d'API-Key [#1807](https://github.com/betagouv/csplab/issues/1807) et la journalisation des tentatives de connexion [#1660](https://github.com/betagouv/csplab/issues/1660).
-    - Sécurisation des accès en bloquant automatiquement les agents révoqués ou les organismes supprimés [#1762](https://github.com/betagouv/csplab/issues/1762), [#1597](https://github.com/betagouv/csplab/issues/1597).
-- **Infrastructure et Qualité** :
-    - Automatisation de la création de "review apps" pour faciliter les tests et les revues de code [#1760](https://github.com/betagouv/csplab/issues/1760).
-    - Adoption des *Conventional Commits* pour automatiser la génération du changelog [#1415](https://github.com/betagouv/csplab/issues/1415).
-    - Amélioration de la couverture de tests front-end avec l'intégration de `testing-library` [#1481](https://github.com/betagouv/csplab/issues/1481).
+- **Architecture (ADR-009)** : Refonte majeure de plusieurs services clés (identité, recrutement, organismes) pour s'aligner sur le nouveau standard architectural du projet [#1877](https://github.com/betagouv/csplab/issues/1877), [#1940](https://github.com/betagouv/csplab/issues/1940), [#1916](https://github.com/betagouv/csplab/issues/1916), [#1808](https://github.com/betagouv/csplab/issues/1808).
+- **Sécurité & Identité** : 
+    - Renforcement de la protection contre les abus via la limitation du débit (rate limiting) sur les requêtes anonymes et les clés d'API [#1964](https://github.com/betagouv/csplab/issues/1964), [#1807](https://github.com/betagouv/csplab/issues/1807).
+    - Amélioration de la traçabilité avec le log des tentatives de connexion et de la création de profils [#1660](https://github.com/betagouv/csplab/issues/1660), [#1641](https://github.com/betagouv/csplab/issues/1641).
+- **Infrastructure & Stockage** : 
+    - Mise en place du stockage objet S3 pour la gestion des documents et fichiers des candidats [#1472](https://github.com/betagouv/csplab/issues/1472).
+    - Optimisation du processus d'ingestion (gestion optionnelle de Qdrant, pagination des API, fiabilisation de l'archivage) [#1955](https://github.com/betagouv/csplab/issues/1955), [#1967](https://github.com/betagouv/csplab/issues/1967).
 
 ### Autres changements
-- Mise à jour de la documentation de l'API d'ingestion [#1727](https://github.com/betagouv/csplab/issues/1727).
-- Nettoyage général du code et des tests.
+- **Documentation** : 
+    - Ajout de pages d'aide et de contact dans la documentation de l'API [#1920](https://github.com/betagouv/csplab/issues/1920).
+    - Mise à jour des guides de correspondance technique pour l'ingestion des données Talentsoft [#1789](https://github.com/betagouv/csplab/issues/1789).
+- **Tooling** : Modernisation de la chaîne de développement avec le remplacement de `pre-commit` par `hk` [#1654](https://github.com/betagouv/csplab/issues/1654).
