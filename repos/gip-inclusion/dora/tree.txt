@@ -156,7 +156,6 @@
 │   │   │   ├── commands.py
 │   │   │   ├── constants.py
 │   │   │   ├── csv_user_import.py
-│   │   │   ├── di_v1.py
 │   │   │   ├── emails.py
 │   │   │   ├── exceptions_handler.py
 │   │   │   ├── file_upload_validators.py
@@ -164,7 +163,6 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── backfill_di_v1.py
 │   │   │   │       ├── delete_orphaned_uploads.py
 │   │   │   │       ├── generate_security_report.py
 │   │   │   │       ├── import_ft_users.py
@@ -195,7 +193,6 @@
 │   │   │   │   ├── test_csv_user_import.py
 │   │   │   │   ├── test_datanymizer_config.py
 │   │   │   │   ├── test_delete_orphaned_uploads.py
-│   │   │   │   ├── test_di_v1.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_file_upload_validators.py
 │   │   │   │   ├── test_mixins.py
@@ -246,7 +243,8 @@
 │   │   │   │   ├── test_management_commands.py
 │   │   │   │   ├── test_reverse_search.py
 │   │   │   │   ├── test_search.py
-│   │   │   │   └── test_search_epcis_and_cities.py
+│   │   │   │   ├── test_search_epcis_and_cities.py
+│   │   │   │   └── test_zone_eligibilite_choices.py
 │   │   │   ├── utils.py
 │   │   │   └── views.py
 │   │   ├── emplois
@@ -254,14 +252,10 @@
 │   │   │   ├── api_client.py
 │   │   │   ├── serializers.py
 │   │   │   ├── tests
-│   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── test_emplois_views.ambr
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_emplois_api_client.py
 │   │   │   │   ├── test_emplois_mobilisation_event.py
-│   │   │   │   ├── test_emplois_orientations.py
-│   │   │   │   ├── test_emplois_serializers.py
-│   │   │   │   └── test_emplois_views.py
+│   │   │   │   └── test_emplois_orientations.py
 │   │   │   ├── urls.py
 │   │   │   └── views.py
 │   │   ├── logs
@@ -374,6 +368,7 @@
 │   │   │   │   ├── 0005_emploisorientationdata_and_more.py
 │   │   │   │   ├── 0006_emploisorientationdata_emplois_sync_uid.py
 │   │   │   │   ├── 0007_alter_orientation_status.py
+│   │   │   │   ├── 0008_alter_orientation_original_service_name.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── serializers.py
@@ -509,6 +504,8 @@
 │   │   │   │   ├── 0021_recompute_sync_checksums_update_frequency.py
 │   │   │   │   ├── 0022_alter_savedsearch_kinds_alter_service_kind.py
 │   │   │   │   ├── 0023_remove_service_moderation.py
+│   │   │   │   ├── 0024_alter_service_name_and_more.py
+│   │   │   │   ├── 0025_recompute_sync_checksums_model_editable_fields.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
@@ -596,7 +593,6 @@
 │   │   │   │   └── 01_structure_national_labels.json.gz
 │   │   │   ├── management
 │   │   │   │   └── commands
-│   │   │   │       ├── backfill_structure_descriptions.py
 │   │   │   │       ├── delete_orphan_structures.py
 │   │   │   │       └── import_structures.py
 │   │   │   ├── migrations
@@ -607,6 +603,7 @@
 │   │   │   │   ├── 0005_remove_in_progress_moderation_status.py
 │   │   │   │   ├── 0006_structure_name_max_length.py
 │   │   │   │   ├── 0007_structure_description.py
+│   │   │   │   ├── 0008_drop_structure_short_desc.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
@@ -636,7 +633,6 @@
 │   │   │   │   │   └── test_import_structures.ambr
 │   │   │   │   ├── test_admin_import_view.py
 │   │   │   │   ├── test_admin_url.py
-│   │   │   │   ├── test_backfill_structure_descriptions.py
 │   │   │   │   ├── test_delete_orphan_structures.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_import_structures.py
@@ -850,6 +846,7 @@
 │   │   │   │   │   ├── date-label.svelte
 │   │   │   │   │   ├── dropdown-menu.svelte
 │   │   │   │   │   ├── external-link-icon.svelte
+│   │   │   │   │   ├── field-group.svelte
 │   │   │   │   │   ├── fieldset.svelte
 │   │   │   │   │   ├── hamburger.svelte
 │   │   │   │   │   ├── info.svelte
@@ -950,18 +947,27 @@
 │   │   │   │   │   │   ├── field-category.svelte
 │   │   │   │   │   │   ├── field-model.svelte
 │   │   │   │   │   │   ├── field-subcategory.svelte
-│   │   │   │   │   │   ├── fields-address.svelte
-│   │   │   │   │   │   ├── fields-contact.svelte
-│   │   │   │   │   │   ├── fields-duration.svelte
-│   │   │   │   │   │   ├── fields-place.svelte
-│   │   │   │   │   │   ├── fields-presentation.svelte
-│   │   │   │   │   │   ├── fields-publics.svelte
-│   │   │   │   │   │   ├── fields-typology.svelte
+│   │   │   │   │   │   ├── fieldgroup-access-conditions.svelte
+│   │   │   │   │   │   ├── fieldgroup-address.svelte
+│   │   │   │   │   │   ├── fieldgroup-duration.svelte
+│   │   │   │   │   │   ├── fieldgroup-funding-labels.svelte
+│   │   │   │   │   │   ├── fieldgroup-modalities.svelte
+│   │   │   │   │   │   ├── fieldgroup-perimeter.svelte
+│   │   │   │   │   │   ├── fieldgroup-presentation.svelte
+│   │   │   │   │   │   ├── fieldgroup-publics.svelte
+│   │   │   │   │   │   ├── fieldgroup-typology.svelte
+│   │   │   │   │   │   ├── fieldset-contact.svelte
+│   │   │   │   │   │   ├── fieldset-eligibility.svelte
+│   │   │   │   │   │   ├── fieldset-notifications.svelte
+│   │   │   │   │   │   ├── fieldset-principal-info.svelte
+│   │   │   │   │   │   ├── fieldset-reception-conditions.svelte
 │   │   │   │   │   │   ├── model-menu.svelte
 │   │   │   │   │   │   ├── service-state-update-select.svelte
 │   │   │   │   │   │   ├── set-as-updated-modal.svelte
 │   │   │   │   │   │   ├── synchronized-icon.svelte
-│   │   │   │   │   │   └── update-needed-icon.svelte
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── update-needed-icon.svelte
+│   │   │   │   │   │   └── use-structure-info-button.svelte
 │   │   │   │   │   ├── structure-card.svelte
 │   │   │   │   │   └── tally-popup.svelte
 │   │   │   │   ├── ui
@@ -987,6 +993,8 @@
 │   │   │   │   ├── structures.ts
 │   │   │   │   └── upload.ts
 │   │   │   ├── sentry.ts
+│   │   │   ├── server
+│   │   │   │   └── client-ip.ts
 │   │   │   ├── types.ts
 │   │   │   ├── utils
 │   │   │   │   ├── api.ts
@@ -1054,14 +1062,7 @@
 │   │   │   │       └── +server.ts
 │   │   │   ├── (modeles-services)
 │   │   │   │   ├── _common
-│   │   │   │   │   ├── fields-documents.svelte
-│   │   │   │   │   ├── fields-modalities-beneficiary.svelte
-│   │   │   │   │   ├── fields-modalities-coach.svelte
-│   │   │   │   │   ├── fields-modalities.svelte
-│   │   │   │   │   ├── fields-perimeter.svelte
-│   │   │   │   │   ├── fields-periodicity.svelte
-│   │   │   │   │   ├── fields-structure.svelte
-│   │   │   │   │   └── modalities-order.ts
+│   │   │   │   │   └── fields-structure.svelte
 │   │   │   │   ├── components
 │   │   │   │   │   └── service-body
 │   │   │   │   │       ├── prevent-fake-orientation-modal.svelte
@@ -1070,20 +1071,22 @@
 │   │   │   │   │       ├── service-mobilisation.svelte
 │   │   │   │   │       └── service-presentation
 │   │   │   │   │           ├── components
+│   │   │   │   │           │   ├── service-card-block.svelte
+│   │   │   │   │           │   ├── service-card.svelte
+│   │   │   │   │           │   ├── service-external-link.svelte
+│   │   │   │   │           │   ├── service-field.svelte
 │   │   │   │   │           │   ├── service-list.svelte
 │   │   │   │   │           │   ├── service-section.svelte
 │   │   │   │   │           │   └── service-subsection.svelte
+│   │   │   │   │           ├── service-conditions.svelte
 │   │   │   │   │           ├── service-description.svelte
 │   │   │   │   │           ├── service-di-identification.svelte
-│   │   │   │   │           ├── service-documents.svelte
+│   │   │   │   │           ├── service-eligibility.svelte
 │   │   │   │   │           ├── service-key-informations
-│   │   │   │   │           │   ├── service-duration.svelte
 │   │   │   │   │           │   ├── service-key-information-label.svelte
-│   │   │   │   │           │   ├── service-key-information-section.svelte
-│   │   │   │   │           │   └── service-key-informations.svelte
-│   │   │   │   │           ├── service-other-informations.svelte
+│   │   │   │   │           │   └── service-key-information-section.svelte
 │   │   │   │   │           ├── service-presentation.svelte
-│   │   │   │   │           └── service-steps.svelte
+│   │   │   │   │           └── service-typology.svelte
 │   │   │   │   ├── modeles
 │   │   │   │   │   ├── [slug]
 │   │   │   │   │   │   ├── +page.svelte
@@ -1469,4 +1472,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-274 directories, 1197 files
+274 directories, 1200 files
