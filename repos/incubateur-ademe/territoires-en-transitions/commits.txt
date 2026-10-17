@@ -1,3 +1,188 @@
+2026-10-15T18:00:52+02:00 - b3a6f27 - Gaël Servaud : feat(analysis): fait tourner l'analyse des fiches sur Mistral AI, choisi dans le code
+2026-10-15T17:38:41+02:00 - f82c337 - Gaël Servaud : feat(priorisation): même contenu de tooltip sur la matrice, le treemap et le barchart
+2026-10-15T17:38:41+02:00 - c944a03 - Gaël Servaud : refactor(side-panel): l'en-tête du panneau se complète au lieu d'être remplacé
+2026-10-15T17:38:41+02:00 - b797951 - Gaël Servaud : fix(priorisation): masque la pertinence du levier en mode visite
+2026-10-15T17:38:41+02:00 - 564afce - Gaël Servaud : feat(priorisation): l'index d'impact potentiel somme à 100 entre leviers et entre catégories
+2026-10-15T17:38:41+02:00 - 32b8129 - Gaël Servaud : fix(priorisation): aligne les tooltips de la matrice et du barchart sur celui du treemap
+2026-10-15T17:38:41+02:00 - 1545b1b - Gaël Servaud : fix(priorisation): le bouton de pertinence du volet prend la taille xs et sa largeur de contenu
+2026-10-15T17:38:41+02:00 - 0e88b32 - Gaël Servaud : fix(priorisation): le contour de la tuile choisie du treemap fait 2 px et ne s'anime plus
+2026-10-15T17:09:25+02:00 - ee66485 - Marc Rutkowski : ci(database): épingle la CLI AWS et force le client de transfert S3 classique
+2026-10-15T17:09:25+02:00 - 57cf124 - Marc Rutkowski : ci(database): renomme cd-restore-preprod.yml en restore-database.yml
+2026-10-15T17:09:25+02:00 - 462317e - Marc Rutkowski : ci(database): permet de cibler staging dans la restauration manuelle d'un backup
+2026-10-15T17:09:25+02:00 - 4603b84 - Marc Rutkowski : ci(database): met à jour la clé d'accès aux backups
+2026-10-15T15:25:27+02:00 - 4e2f960 - Gaël Servaud : feat(llm): trace les appels Gemini avec identifiant, empreinte du prompt et délai du premier octet
+2026-10-15T15:09:30+02:00 - 3b8d764 - Emilien Escalle : feat(indicateurs): ouvre les cadences mensuelle, trimestrielle et semestrielle
+2026-10-15T13:59:31+02:00 - ae1b69d - Gaël Servaud : fix(llm): demande un niveau de réflexion à Gemini 3.5 Flash au lieu d'un budget de tokens
+2026-10-15T13:02:55+02:00 - 3ae1c33 - Gaël Servaud : fix(priorisation): améliore la lisibilité des leviers non pertinents de la matrice (fond blanc débordant, contour contrasté)
+2026-10-15T12:12:43+02:00 - fe74ec6 - Gaël Servaud : feat(priorisation): aligne l'affichage de la matrice sur la maquette (libellés de quadrants et d'axes, sans ligne d'axe)
+2026-10-15T12:12:43+02:00 - e4ade7e - Gaël Servaud : feat(priorisation): remplace l'impulsion de sélection de la matrice par un contour primary et retire l'animation de survol
+2026-10-15T12:12:43+02:00 - e3aa1f0 - Gaël Servaud : feat(priorisation): dessine les leviers non pertinents en cercle pointillé dans la matrice et sa légende
+2026-10-15T12:12:43+02:00 - ddf81a5 - Gaël Servaud : feat(priorisation): renomme l'outil en « Aide à la priorisation » dans la nav et le titre
+2026-10-15T12:12:43+02:00 - bcf18ae - Gaël Servaud : feat(priorisation): ajoute l'encart « Intelligence artificielle » à la première étape de la visite et retire son paragraphe d'introduction
+2026-10-15T12:12:43+02:00 - bc64ceb - Gaël Servaud : fix(actions-de-reference): préfixe l'impact du nom du levier dès que l'action en porte plusieurs
+2026-10-15T12:12:43+02:00 - adc8c7b - Gaël Servaud : test(e2e): cible le fil d'Ariane par son nom exact après le renommage de l'outil
+2026-10-15T12:12:43+02:00 - 9d27604 - Gaël Servaud : feat(priorisation): met en avant la seule tuile sélectionnée dans le Mondrian au lieu du levier entier
+2026-10-15T12:12:43+02:00 - 73854ed - Gaël Servaud : feat(priorisation): masque les badges de levier et de catégorie des cartes du volet d'un levier
+2026-10-15T12:12:43+02:00 - 5d6a947 - Gaël Servaud : test(priorisation): nomme le test de la nav d'après « Aide à la priorisation »
+2026-10-15T12:12:43+02:00 - 5b32f1a - Gaël Servaud : feat(priorisation): ajoute le lien « Méthodologie » désactivé à côté de la relance de la visite
+2026-10-15T12:12:43+02:00 - 4f6a4f8 - Gaël Servaud : feat(priorisation): met en avant la barre du sous-levier ouvert dans le volet du classement
+2026-10-15T12:12:43+02:00 - 1bf2f0a - Gaël Servaud : feat(actions-de-reference): refond la vue détaillée (description, secteur, levier, catégorie, impact) sans badges dans l'en-tête
+2026-10-15T12:06:06+02:00 - d7ae547 - mehdilouraoui : refactor(plans): sort les squelettes du volet des secteurs
+2026-10-15T12:06:06+02:00 - 75cdf8a - mehdilouraoui : fix(plans): le volet des secteurs charge sans layout shift
+2026-10-15T11:37:43+02:00 - 9c883ca - Gaël Servaud : fix(llm): ramène le délai de la mobilisation à 45 s et celui de la classification à 60 s
+2026-10-15T11:28:22+02:00 - e487782 - Gaël Servaud : fix(llm): borne le délai des appels d'analyse à 120 s et abandonne après trois échecs sans statut HTTP
+2026-10-15T10:48:00+02:00 - 0559cac - Gaël Servaud : fix(ui): aligne le PageHeader en ligne à partir de la largeur lg
+2026-10-14T23:39:33+02:00 - 551f19f - Emilien Escalle : refactor(indicateurs): prépare les règles de cohérence sous le contrat annuel
+2026-10-14T22:57:11+02:00 - e9fd7a1 - Emilien Escalle : feat(indicateurs): complète les métadonnées et sécurise la saisie annuelle
+2026-10-14T22:57:11+02:00 - 94d83f7 - Emilien Escalle : test(indicateurs): utilise le champ objectif après la saisie du résultat
+2026-10-14T21:45:46+02:00 - 81b2e01 - Emilien Escalle : refactor(indicateurs): isole et sécurise l’import du catalogue
+2026-10-14T20:46:57+02:00 - 54f9e36 - Emilien Escalle : fix(indicateurs): fiabilise les contrôles de restauration et de retour arrière
+2026-10-14T19:49:52+02:00 - 2a0d583 - Emilien Escalle : refactor(indicateurs): prépare le reporting par période
+2026-10-14T19:33:32+02:00 - e3217f0 - Emilien Escalle : fix(indicateurs): normalise la recherche des sources de formule
+2026-10-14T19:33:32+02:00 - 6b44f0c - Emilien Escalle : fix(indicateurs): valide les dépendances des formules avant activation
+2026-10-14T19:33:32+02:00 - 57c794a - Emilien Escalle : fix(indicateurs): couvre toutes les références de formule en SQL
+2026-10-14T19:13:37+02:00 - d1571e1 - Gaël Servaud : refactor(actions-de-reference): remplace levier et categorie par les tableaux leviers et categories
+2026-10-14T18:48:00+02:00 - e658d0f - Gaël Servaud : feat(analysis): précise l'échelle 0-3 du prompt de mobilisation
+2026-10-14T18:42:50+02:00 - dff2b8f - Gaël Servaud : feat(priorisation): bloque la vue tant qu'aucune fiche ne mobilise de levier
+2026-10-14T18:42:50+02:00 - 789acf8 - Gaël Servaud : test(priorisation): rattache une fiche aux leviers des specs restantes
+2026-10-14T18:42:50+02:00 - 20a65b4 - Gaël Servaud : test(priorisation): ajoute une mobilisation aux parcours qui ouvrent la matrice
+2026-10-14T17:53:48+02:00 - eb39839 - Gaël Servaud : feat(priorisation): aligne le classement des sous-leviers sur la maquette
+2026-10-14T17:51:41+02:00 - b411af5 - Gaël Servaud : feat(priorisation): rapproche le treemap de la maquette et signale les 2 leviers à prioriser
+2026-10-14T17:45:51+02:00 - bf2e621 - Emilien Escalle : refactor(indicateurs): prépare les nouvelles périodicités sans les activer
+2026-10-14T17:45:51+02:00 - 5794b22 - Emilien Escalle : test: isole les données des leviers et stabilise le survol des audits
+2026-10-14T17:45:51+02:00 - 0cdfa68 - Emilien Escalle : fix(indicateurs): préserve les dates annuelles et évite le faux doublon à la saisie
+2026-10-14T17:17:42+02:00 - d815e5d - Gaël Servaud : test(priorisation): passe le rôle admin par la collectivité créée, pas par le fixture
+2026-10-14T17:17:42+02:00 - b15bb79 - Gaël Servaud : test(priorisation): la visite de la CI utilise un levier avec actions et un administrateur
+2026-10-14T17:17:42+02:00 - a8c4cda - Gaël Servaud : test(priorisation): type statusOf du spec de la liste avec ActionDeReferenceId
+2026-10-14T17:17:42+02:00 - 7f9194b - Gaël Servaud : fix(shared): la visite guidée bloque les clics sur l'élément mis en évidence
+2026-10-14T17:17:42+02:00 - 7b35da8 - Gaël Servaud : test(priorisation): ajoute « Ouvrir ce levier » aux libellés de bouton de la visite
+2026-10-14T17:17:42+02:00 - 76d6be0 - Gaël Servaud : test(priorisation): le bouton de pertinence ne reçoit pas de clic pendant la visite
+2026-10-14T17:17:42+02:00 - 584bdff - Gaël Servaud : feat(priorisation): la visite guidée repère le levier à prioriser et ses actions
+2026-10-14T17:17:42+02:00 - 2208614 - Gaël Servaud : test(priorisation): la cible de la visite n'est attachée qu'à une seule action
+2026-10-14T17:17:42+02:00 - 193e4e3 - Gaël Servaud : fix(priorisation): la cible de la visite ne vise que la première action de référence
+2026-10-14T16:58:51+02:00 - cf3f598 - Leny Bernard : feat(demarches): le badge « À vérifier » signale aussi les secteurs réglementaires à renseigner, à la place de leur colonne
+2026-10-14T16:58:51+02:00 - c4db23a - Leny Bernard : fix(demarches): le nombre d'actions des plans du programme compte les sous-actions, comme l'en-tête du plan
+2026-10-14T16:58:51+02:00 - 4a6c7e0 - Leny Bernard : fix(plans): les compteurs de l'en-tête du plan n'affichent plus leur nombre deux fois
+2026-10-14T16:56:29+02:00 - 770a623 - Gaël Servaud : fix(actions-de-reference): restreint les colonnes lues par les tests du router au shape du domaine
+2026-10-14T16:56:29+02:00 - 0e2ca38 - Gaël Servaud : refactor(actions-de-reference): nomme les variables du test de colonnes tableau par leur entité
+2026-10-14T16:56:29+02:00 - 08037f1 - Gaël Servaud : refactor(actions-de-reference): déclare les colonnes leviers et categories dans le schéma Drizzle
+2026-10-14T16:44:11+02:00 - 4ea9744 - Fred Arnoux : chore(data_layer): tableau_de_bord_module n'utilise plus moddatetime, l'extension est retirée
+2026-10-14T15:52:58+02:00 - dccea0e - Emilien Escalle : test(indicateurs): saisit le curseur depuis son bord
+2026-10-14T15:52:58+02:00 - 41057bc - Emilien Escalle : fix(indicateurs): interrompt le défilement à la prise du curseur
+2026-10-14T15:52:58+02:00 - 26b99b5 - Emilien Escalle : fix(indicateurs): améliore la lisibilité du tableau des valeurs
+2026-10-14T15:52:58+02:00 - 2393c47 - Emilien Escalle : test(indicateurs): couvre la navigation du tableau en e2e
+2026-10-14T15:50:38+02:00 - ce20f0e - Leny Bernard : feat(demarches): liste et consultation en lecture seule des démarches PCAET pour les visiteurs
+2026-10-14T15:50:38+02:00 - 4479d53 - Leny Bernard : feat(demarches): ouvre la lecture des démarches PCAET adoptées et archivées à qui consulte la collectivité
+2026-10-14T15:43:54+02:00 - c0019b4 - Leny Bernard : feat(site): remplace la vidéo de démo YouTube par celle de tube.numerique.gouv.fr
+2026-10-14T15:24:03+02:00 - cf95954 - mehdilouraoui : fix(plans): le volet des secteurs se retrouve par l'URL et se vide après enregistrement
+2026-10-14T15:24:03+02:00 - 089806b - mehdilouraoui : fix(plans): le volet des secteurs n'affiche « Tout est traité » qu'une fois la liste chargée
+2026-10-14T14:35:19+02:00 - c4e5d6f - Emilien Escalle : fix(seed): qualifie les types des actions de référence
+2026-10-14T14:35:19+02:00 - b793b69 - Emilien Escalle : refactor(indicateurs): retire les hypothèses de changement de périodicité
+2026-10-14T14:35:19+02:00 - 7b9b1bb - Emilien Escalle : test(indicateurs): privilégie les parcours e2e annuels
+2026-10-14T14:35:19+02:00 - 7b25f6d - Emilien Escalle : test(indicateurs): respecte la sélection des versions annuelles
+2026-10-14T14:35:19+02:00 - 3557c17 - Emilien Escalle : refactor(indicateurs): réutilise le libellé des objectifs du graphique
+2026-10-14T14:35:19+02:00 - 15ea096 - Emilien Escalle : refactor(indicateurs): prépare le calendrier et les rendus annuels
+2026-10-14T14:35:19+02:00 - 0fb1167 - Emilien Escalle : fix(indicateurs): isole les métadonnées des versions de source
+2026-10-14T14:24:32+02:00 - e900bb6 - Gaël Servaud : test(shared): le détail vérifie « Sauvegarder » enfoncé après l'ajout depuis la priorisation
+2026-10-14T14:24:32+02:00 - e8a027a - Gaël Servaud : feat(shared): affiche les collectivités liées à une action de référence
+2026-10-14T14:24:32+02:00 - c5f097e - Gaël Servaud : fix(shared): le panneau des collectivités liées ignore la collectivité courante
+2026-10-14T14:24:32+02:00 - ba8535f - Gaël Servaud : test(priorisation): les cartes d'action du volet et de la présélection ont un titre h2
+2026-10-14T14:24:32+02:00 - b74a59e - Gaël Servaud : refactor(shared): corrige les constats de revue sur la carte d'action de référence
+2026-10-14T14:24:32+02:00 - 6ed0d98 - Gaël Servaud : test(shared): le panneau des collectivités liées compte les seules autres collectivités
+2026-10-14T14:24:32+02:00 - 166cbea - Gaël Servaud : test(priorisation): les e2e lisent l'état sauvegardé sur le bouton « Sauvegarder »
+2026-10-14T13:39:52+02:00 - 8a5995e - Gaël Servaud : feat(actions-de-reference): ajoute le code metier, les leviers et les categories multiples
+2026-10-14T12:47:38+02:00 - 290dd32 - Leny Bernard : fix(demarches): sérialise les publications PCAET d'une même collectivité
+2026-10-14T12:47:38+02:00 - 0c12a8c - Leny Bernard : feat(demarches): archive le PCAET précédent à l'adoption du suivant
+2026-10-14T12:26:02+02:00 - 0aa1fe4 - Gaël Servaud : feat(priorisation): nouveau haut de page avec analyse, leviers à prioriser et actions sauvegardées
+2026-10-14T12:00:00+02:00 - db37781 - Fred Arnoux : fix(plans): l'éditeur du titre d'une sous-action se ferme sans modification
+2026-10-14T11:43:53+02:00 - e3c2f46 - Marc Rutkowski : feat(referentiels): l'écran super-admin choisit librement mode et affichage de chaque référentiel
+2026-10-14T11:43:53+02:00 - 983c631 - Marc Rutkowski : fix(collectivites): la mutation publique des préférences ne peut plus poser populatedFromCaeEci
+2026-10-14T11:34:23+02:00 - 97e73ac - Gaël Servaud : test(priorisation): le bouton de pertinence se trouve sans correspondance exacte du nom
+2026-10-14T11:34:23+02:00 - 549ee12 - Gaël Servaud : feat(priorisation): en-tête du volet levier conforme à la maquette
+2026-10-14T11:11:12+02:00 - 97000c2 - Leny Bernard : fix(app): le lien Collectivités du sur-menu ne mène plus à un 404 depuis l'espace d'un service déconcentré
+2026-10-14T10:42:29+02:00 - c1a7d19 - Emilien Escalle : refactor(indicateurs): unifie la préparation des données annuelles
+2026-10-14T10:11:13+02:00 - 26cbdca - Gaël Servaud : feat(priorisation): remplace la présélection par la sauvegarde d'actions, comme dans le prototype
+2026-10-14T09:56:04+02:00 - df6f8cd - Marc Rutkowski : fix(referentiels): le reset des préférences garde en écriture un référentiel CAE/ECI saisi récemment
+2026-10-14T09:55:47+02:00 - ec31d4b - Marc Rutkowski : fix(referentiels): la bascule vers TE reprend scores et éléments liés sur les mesures désactivées
+2026-10-14T09:55:47+02:00 - 3444901 - Marc Rutkowski : style(referentiels): applique prettier aux fichiers de la bascule vers TE modifiés
+2026-10-14T09:07:51+02:00 - 5c2d3da - Emilien Escalle : feat(indicateurs): réunit la saisie des résultats et objectifs
+2026-10-14T00:53:05+02:00 - f73587e - Emilien Escalle : fix(referentiels): sérialise les remplacements de sélection du score
+2026-10-14T00:41:12+02:00 - ba49b97 - Emilien Escalle : fix(indicateurs): protège la saisie annuelle des doubles soumissions
+2026-10-14T00:41:12+02:00 - 9f5ada3 - Emilien Escalle : fix(indicateurs): isole les corrections annuelles et les graphiques
+2026-10-14T00:41:12+02:00 - 533e4f3 - Emilien Escalle : chore(indicateurs): retire la restauration des corrections annuelles
+2026-10-13T23:02:08+02:00 - f181a4e - Emilien Escalle : feat(indicateurs): ajoute une écriture atomique de lots annuels
+2026-10-13T23:02:08+02:00 - aba5b37 - Emilien Escalle : fix(indicateurs): préserve le succès des lots après commit
+2026-10-13T20:42:06+02:00 - c26b4dd - Emilien Escalle : refactor(indicateurs): centralise les périodicités prises en charge
+2026-10-13T20:42:06+02:00 - c0d89ff - Emilien Escalle : fix(indicateurs): respecte la périodicité définie pour le graphique
+2026-10-13T20:42:06+02:00 - 8b56b2c - Emilien Escalle : fix(indicateurs): explicite le type des données par période
+2026-10-13T20:42:06+02:00 - 662c422 - Emilien Escalle : refactor(indicateurs): nomme le helper indicateur-periodes
+2026-10-13T20:42:06+02:00 - 4a1cf33 - Emilien Escalle : test(indicateurs): vérifie la détection des requêtes de valeurs
+2026-10-13T20:42:06+02:00 - 38e10ce - Emilien Escalle : refactor(indicateurs): supprime les proxies du contrat de période
+2026-10-13T20:42:06+02:00 - 31ead10 - Emilien Escalle : fix(indicateurs): renseigne la périodicité des stories
+2026-10-13T20:42:06+02:00 - 0f2fb34 - Emilien Escalle : refactor(indicateurs): centralise les conversions annuelles
+2026-10-13T20:42:06+02:00 - 095d700 - Emilien Escalle : refactor(indicateurs): unifie le contrat des périodes
+2026-10-13T16:24:07+02:00 - 617e019 - Gaël Servaud : feat(actions-de-reference): ajoute le retour « utile » sur la page détail
+2026-10-13T16:16:56+02:00 - 7dab7c3 - Gaël Servaud : refactor(nav): range « Actions de référence » dans le menu Super Admin
+2026-10-13T16:01:22+02:00 - c8289d7 - Fred Arnoux : fix(tools): image indépendante de l'environnement, avec healthcheck via node
+2026-10-13T15:49:52+02:00 - 90230fe - Fred Arnoux : fix(ci): ne réutilise une image que si sa provenance est attestée pour le commit déployé
+2026-10-13T15:31:08+02:00 - ee88437 - Fred Arnoux : fix(backend): image indépendante de l'environnement, avec healthcheck via node
+2026-10-13T15:30:21+02:00 - 9477821 - Leny Bernard : fix(invitation): le mail de rattachement ouvre la collectivité invitée au lieu d'une 404
+2026-10-13T14:44:43+02:00 - c3f0fe5 - Leny Bernard : fix(demarches): traite aussi un nouvel échec d'un import IA repris
+2026-10-13T14:44:43+02:00 - 6b55c77 - Leny Bernard : feat(plans): reprend un import IA interrompu ou en échec à sa dernière étape terminée
+2026-10-13T12:30:26+02:00 - 4c08a98 - Gaël Servaud : feat(priorisation): suggère une action de référence depuis un levier
+2026-10-13T12:17:08+02:00 - e77445d - Gaël Servaud : feat(priorisation): ajoute la visite guidée de la page
+2026-10-13T12:00:01+02:00 - 8d71f36 - Fred Arnoux : fix(plans): un filtre « sans service pilote » décoché n'écrase plus le filtre par service
+2026-10-13T11:18:17+02:00 - 627d3fa - Fred Arnoux : fix(plans): les erreurs de notification du rapport sont loguées en niveau error
+2026-10-13T11:02:04+02:00 - 84bf909 - Gaël Servaud : feat(shared): la liste des fiches liées écarte celles de la collectivité courante côté API
+2026-10-13T10:54:58+02:00 - 9f8d34d - Marc Rutkowski : feat(referentiels): le palier de dernière activité passe de 1 à 2 ans pour l'engagement CAE/ECi nécessaire à la bascule
+2026-10-13T10:54:58+02:00 - 7e072c9 - Marc Rutkowski : docs(referentiels): le PRD de la bascule CR applique partout la règle de remplissage aux référentiels archivés
+2026-10-13T10:54:58+02:00 - 68691a0 - Marc Rutkowski : fix(referentiels): un référentiel dont les statuts sont tous remis à « non renseigné » est considéré vide
+2026-10-13T10:54:58+02:00 - 5fbfce3 - Marc Rutkowski : feat(app): la page support « Affichage des référentiels » signale les référentiels archivés
+2026-10-13T10:54:58+02:00 - 5991d4c - Marc Rutkowski : feat(app): les référentiels archivés passent après les référentiels actifs dans le menu « Programmes et démarches »
+2026-10-13T10:54:58+02:00 - 1614b95 - Marc Rutkowski : feat(referentiels): le reset des préférences n'archive rien tant que la bascule est bloquée
+2026-10-13T10:54:58+02:00 - 04b59ca - Marc Rutkowski : feat(referentiels): un référentiel CAE/ECI archivé reste visible sauf s'il est vide
+2026-10-13T10:30:46+02:00 - f6ec242 - Gaël Servaud : fix(shared): le bouton « Ça m'intéresse » reprend la taille et l'icône du design
+2026-10-13T10:30:46+02:00 - f22f530 - Gaël Servaud : feat(shared): la page d'une action de référence montre ses mises en œuvre
+2026-10-13T10:30:46+02:00 - 7fd873c - Gaël Servaud : feat(shared): la liste des fiches liées écarte celles de la collectivité courante
+2026-10-13T10:30:46+02:00 - 7a31440 - Gaël Servaud : refactor(shared): nomme les fiches liées d'une action de référence, plus « mises en œuvre »
+2026-10-13T10:30:46+02:00 - 5650d69 - Gaël Servaud : refactor(shared): retire le filtre des fiches de la collectivité courante de la liste
+2026-10-13T10:20:46+02:00 - c57a880 - Gaël Servaud : feat(shared): ajoute le hook et le tooltip des visites guidées
+2026-10-13T07:53:54+02:00 - cb499f8 - Emilien Escalle : refactor(indicateurs): isole les adaptations annuelles restantes
+2026-10-13T07:53:54+02:00 - b8706a1 - Emilien Escalle : refactor(indicateurs): applique les retours de revue (type GES, nettoyage)
+2026-10-13T07:53:54+02:00 - aee75c8 - Emilien Escalle : docs(indicateurs): référence la préparation annuelle séparée
+2026-10-13T07:53:54+02:00 - 9845c6c - Emilien Escalle : refactor(labels): centralise les libellés du score et des émissions GES
+2026-10-13T07:53:54+02:00 - 9747e33 - Emilien Escalle : test(indicateurs): couvre les régressions annuelles en e2e
+2026-10-13T07:53:54+02:00 - 1e5ccfc - Emilien Escalle : refactor(indicateurs): retire le lint du découpage périodicité
+2026-10-12T21:39:00+02:00 - 6a518f8 - Fred Arnoux : feat(api): appels navigateur au backend par l'origine de l'app (opt-in)
+2026-10-12T21:39:00+02:00 - 5e73ceb - Fred Arnoux : feat(auth): nom du cookie de session Supabase configurable par environnement
+2026-10-12T21:39:00+02:00 - 50ba3c9 - Fred Arnoux : docs(plans): backend same-origin et cookie host-only
+2026-10-12T20:02:26+02:00 - fc72b2e - Emilien Escalle : fix(indicateurs): conserve la lecture des dates annuelles historiques
+2026-10-12T20:02:26+02:00 - e485d16 - Emilien Escalle : fix(indicateurs): fiabilise les parcours annuels
+2026-10-12T20:02:26+02:00 - d5efffe - Emilien Escalle : docs(indicateurs): référence la livraison annuelle autonome
+2026-10-12T20:02:26+02:00 - c981b47 - Emilien Escalle : fix(indicateurs): conserve l'éditeur ouvert en cas d'échec
+2026-10-12T20:02:26+02:00 - c1dd9a1 - Emilien Escalle : docs(ui): illustre la sauvegarde asynchrone dans Storybook
+2026-10-12T20:02:26+02:00 - a4fda05 - Emilien Escalle : refactor(indicateurs): isole les obligations annuelles dans le PCAET
+2026-10-12T20:02:26+02:00 - a10473f - Emilien Escalle : refactor(indicateurs): utilise les périodes dans la grille PCAET
+2026-10-12T20:02:26+02:00 - 65187c4 - Emilien Escalle : docs(indicateurs): précise la cible du retour au socle annuel
+2026-10-12T20:02:26+02:00 - 02dff4a - Emilien Escalle : refactor(indicateurs): découple la grille des années et mutations PCAET
+2026-10-12T18:15:04+02:00 - 1079dde - Emilien Escalle : fix(app): corrige le typage du test de navigation collectivité
+2026-10-12T17:29:20+02:00 - 4fbd41b - Gaël Servaud : feat(priorisation): ajoute « Outils de priorisation » dans la nav derrière le flag is-priorisation-enabled
+2026-10-12T17:18:48+02:00 - 244086f - Gaël Servaud : feat(shared): ajoute le registre de cibles des visites guidées
+2026-10-12T17:06:45+02:00 - cd2959f - Gaël Servaud : feat(shared): liste les fiches liées à une action de référence
+2026-10-12T17:06:45+02:00 - ad4b163 - Gaël Servaud : feat(shared): lie des fiches à une action de référence depuis l'admin
+2026-10-12T16:42:42+02:00 - e936720 - Gaël Servaud : refactor(plans): extrait le bandeau de la page fiche en composant partagé
+2026-10-12T16:17:15+02:00 - 9d9a915 - mehdilouraoui : fix(plans): affiche la description des actions en texte dans le volet des secteurs
+2026-10-12T16:07:25+02:00 - 324c1ae - Leny Bernard : fix(demarches): un admin peut changer les pilotes d'une démarche à tout statut
+2026-10-12T15:39:38+02:00 - d445c76 - Emilien Escalle : feat(indicateurs): prépare le contrat de période annuel
+2026-10-12T14:10:54+02:00 - 3a2ce5a - Marc Rutkowski : feat(referentiels): listActions renvoie le tag coremeasure et les thématiques des mesures
+2026-10-12T14:10:54+02:00 - 16866c5 - Marc Rutkowski : feat(referentiels): ajoute les colonnes Adaptation, Labellisation Gold et Thématiques dans le tableau du référentiel CR
+2026-10-12T11:25:51+02:00 - ebb0ca2 - Leny Bernard : quick fix outlined button
+2026-10-12T11:25:51+02:00 - 9de5a7d - Leny Bernard : feat(plans): l'import IA d'un plan PCAET propose les secteurs réglementaires de chaque action
+2026-10-12T10:55:42+02:00 - a86f193 - Leny Bernard : feat(plans): enregistre la durée, les appels et les jetons de chaque étape d'un import IA, et son résumé chiffré
+2026-10-12T10:55:42+02:00 - 978538b - Leny Bernard : test(demarches): le contenu d'un plan du dossier d'instruction porte son statut
+2026-10-12T10:55:42+02:00 - 822e005 - Leny Bernard : fix(plans): rafraîchit un plan ouvert pendant son import, ne compte plus les plans en import dans la recherche et bloque le double clic de suppression
+2026-10-12T10:55:42+02:00 - 313608c - Leny Bernard : feat(plans): affiche un plan importé par IA dès le lancement et confirme le ré-import d'un même fichier
+2026-10-12T10:00:31+02:00 - 8824ab0 - Emilien Escalle : feat(indicateurs): ajoute une année depuis l’en-tête du tableau
 2026-10-09T17:51:41+02:00 - 406857d - Leny Bernard : fix(demarches): garde la bannière d'instruction sur le plan ouvert depuis le dossier
 2026-10-09T15:43:59+02:00 - e17c39c - Leny Bernard : feat(demarches): indique l'état d'enregistrement des tableaux du diagnostic et des documents PCAET
 2026-10-09T14:50:29+02:00 - eed5154 - Fred Arnoux : fix(backend): connexion Redis des queues avec authentification et TLS
