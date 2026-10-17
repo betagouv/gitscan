@@ -1,19 +1,18 @@
 {
   "url": "https://github.com/SocialGouv/egapro",
   "name": "egapro",
-  "description": "Plateforme gouvernementale permettant aux entreprises de déclarer leur index de l'égalité professionnelle femmes-hommes conformément à la directive européenne.",
+  "description": "Plateforme gouvernementale de déclaration de l'index de l'égalité professionnelle femmes-hommes. Elle permet aux entreprises de mesurer et déclarer les écarts de rémunération conformément à la directive européenne sur la transparence salariale.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Visualisation de données & Cartographie",
     "Authentification & Accès",
+    "Formulaires & Démarches",
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches",
-    "Administration & Backoffice",
-    "Tableaux & Affichage"
+    "Sécurité & Conformité",
+    "Tableaux & Affichage",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -21,54 +20,53 @@
     "TypeScript",
     "PostgreSQL",
     "Drizzle ORM",
-    "pnpm",
+    "DSFR",
+    "ProConnect",
     "Playwright",
     "Vitest",
-    "DSFR",
-    "MinIO",
-    "Matomo",
-    "Valkey",
-    "APISIX"
+    "pnpm"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "React / Next.js",
+    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
+    "API REST & GraphQL",
     "Docker & Conteneurs",
     "Authentification (composant)",
     "CI/CD & Déploiement",
-    "Scripts & Utilitaires"
+    "Tests"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "sso",
+      "mfa"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "Vitest",
-    "Playwright",
-    "Lighthouse"
+    "Playwright (E2E)",
+    "Vitest (Unitaires)",
+    "Lighthouse (Audit)",
+    "Biome (Linting)"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2025-10-08T00:00:00Z",
+  "lastActivity": "2026-10-08T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
     "Bases de données SQL",
-    "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Design System & UI"
+    "Sécurité & Auth",
+    "Design System & UI",
+    "Accessibilité",
+    "CI/CD & GitHub Actions"
   ]
 }

@@ -18,7 +18,7 @@ Le système repose sur **7 indicateurs** d'égalité. Les 6 premiers sont calcul
 | D | Écart médian de rémunération variable | Écart médian sur la rémunération variable |
 | E | Proportion de bénéficiaires de rémunération variable | Part des salariés percevant une rémunération variable, par sexe |
 | F | Répartition par quartile | Distribution des effectifs dans les quartiles de rémunération |
-| **G** | **Écart par catégories de salariés** | **Écart de rémunération (base + variable) par catégorie d'emploi — calculé par l'entreprise** |
+| **G** | **Écart par catégorie de salariés** | **Écart de rémunération (base + variable) par catégorie d'emploi — calculé par l'entreprise** |
 
 ### Le 7e indicateur (indicateur G)
 
@@ -127,6 +127,8 @@ docker compose up -d
 # Lancer le serveur de dev
 pnpm dev:app
 ```
+
+> `docker-compose.yml` est réservé au développement local : ses services portent des identifiants par défaut publics (ceux écrits dans le fichier) et ne publient leurs ports que sur `127.0.0.1`. Ne jamais l'utiliser tel quel sur une machine exposée.
 
 L'application est accessible sur [http://localhost:3000](http://localhost:3000).
 
