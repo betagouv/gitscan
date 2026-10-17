@@ -1,31 +1,24 @@
-## Changelog : OTP-DS-to-Grist (30 derniers jours, au 08/10/2026)
+## Changelog : OTP-DS-to-Grist (30 derniers jours, au 17 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le connecteur a considérablement gagné en robustesse et en rapidité. Les utilisateurs peuvent désormais gérer la synchronisation automatique de plusieurs démarches simultanément. Des améliorations majeures ont été apportées à la sécurité du système et à la performance du traitement des données, tout en corrigeant des problèmes d'affichage et de perte de données sur certains champs.
+Ce mois-ci, le projet a franchi une étape importante avec l'intégration de nouveaux agents d'intelligence artificielle et un renforcement significatif de la sécurité. Les performances de synchronisation ont également été optimisées pour offrir une expérience plus fluide et une gestion des données plus fiable.
 
 ### Évolutions fonctionnelles
-- **Multi-démarches :** Gestion de la synchronisation automatique pour plusieurs démarches simultanément ([#491](https://github.com/betagouv/OTP-DS-to-Grist/issues/491)).
+- **Intelligence Artificielle :** Expansion des capacités avec l'ajout de nouveaux agents (dn, grist, @logs) et mise à jour de l'agent reviewer.
 - **Expérience utilisateur :**
-    - La synchronisation est désormais forcée automatiquement lors du changement de filtre ([#488](https://github.com/betagouv/OTP-DS-to-Grist/issues/488)).
-    - Correction de l'affichage du bandeau de suivi de synchronisation ([#512](https://github.com/betagouv/OTP-DS-to-Grist/issues/512)).
-- **Fiabilité des données :** Correction d'un problème entraînant la perte de données dans les champs de type "carte" ([#497](https://github.com/betagouv/OTP-DS-to-Grist/issues/497)).
-- **Intelligence Artificielle :** Mise à jour des capacités des agents IA.
+    - Mise en place de l'auto-enregistrement multiple ([#514](https://github.com/betagouv/OTP-DS-to-Grist/issues/514)).
+    - Amélioration de l'interface de synchronisation via la correction du bandeau d'affichage ([#512](https://github.com/betagouv/OTP-DS-to-Grist/issues/512)) et la synchronisation forcée lors du changement de filtre ([#488](https://github.com/betagouv/OTP-DS-to-Grist/issues/488)).
+- **Corrections :** Résolution de la perte de données dans les champs "carte" ([#497](https://github.com/betagouv/OTP-DS-to-Grist/issues/497)) et correction de l'OCR dans les colonnes de pièces jointes ([#558](https://github.com/betagouv/OTP-DS-to-Grist/issues/558)).
 
 ### Évolutions techniques
-- **Performance & Optimisation :**
-    - Accélération de la synchronisation via la récupération des dossiers par lots ([#536](https://github.com/betagouv/OTP-DS-to-Grist/issues/536)).
-    - Optimisation du cache pour les blocs répétables afin de réduire le temps d'exécution ([#504](https://github.com/betagouv/OTP-DS-to-Grist/issues/504)).
-- **Sécurité :**
-    - Mise en place de protections contre les attaques par force brute via Fail2Ban ([#547](https://github.com/betagouv/OTP-DS-to-Grist/issues/547)).
-    - Restriction des URLs Grist autorisées pour sécuriser les échanges ([#551](https://github.com/betagouv/OTP-DS-to-Grist/issues/551)).
-- **Robustesse du système :**
-    - Amélioration de l'auto-sauvegarde pour les contextes multi-démarches ([#514](https://github.com/betagouv/OTP-DS-to-Grist/issues/514)).
-    - Correction de la gestion des clés pour les lignes répétables ([#549](https://github.com/betagouv/OTP-DS-to-Grist/issues/549)).
-    - Refactorisation de la gestion des sessions avec limitation de débit (rate limiting) pour une meilleure stabilité ([#534](https://github.com/betagouv/OTP-DS-to-Grist/issues/534)).
+- **Sécurité et Authentification :**
+    - Implémentation de l'authentification via les tokens Grist ([#566](https://github.com/betagouv/OTP-DS-to-Grist/issues/566), [#562](https://github.com/betagouv/OTP-DS-to-Grist/issues/562)).
+    - Renforcement de la protection du service avec l'ajout de Fail2ban ([#547](https://github.com/betagouv/OTP-DS-to-Grist/issues/547)), la restriction des URLs Grist ([#551](https://github.com/betagouv/OTP-DS-to-Grist/issues/551)) et une meilleure logique de vérification des accès ([#574](https://github.com/betagouv/OTP-DS-to-Grist/issues/574)).
+- **Optimisation de la synchronisation :**
+    - Amélioration des performances via la récupération des dossiers par lots ([#536](https://github.com/betagouv/OTP-DS-to-Grist/issues/536)) et l'optimisation des mécanismes de cache pour Grist ([#554](https://github.com/betagouv/OTP-DS-to-Grist/issues/554)) et les blocs répétables ([#504](https://github.com/betagouv/OTP-DS-to-Grist/issues/504)).
+    - Fiabilisation de la gestion des lignes répétables ([#549](https://github.com/betagouv/OTP-DS-to-Grist/issues/549)) et isolation de la gestion des limites de débit (rate-limiting) ([#534](https://github.com/betagouv/OTP-DS-to-Grist/issues/534)).
+- **Corrections techniques :** Résolution des échecs de lecture Grist ([#555](https://github.com/betagouv/OTP-DS-to-Grist/issues/555)).
 
 ### Autres changements
-- **Documentation :** Mises à jour régulières du README et de la documentation des agents.
-- **Infrastructure & Dev :**
-    - Nettoyage de la configuration Docker et amélioration du support pour les environnements Codespaces ([#509](https://github.com/betagouv/OTP-DS-to-Grist/issues/509)).
-    - Maintenance de modules internes ([#515](https://github.com/betagouv/OTP-DS-to-Grist/issues/515)).
-- **Interface :** Correction des chemins de polices de caractères pour le design système DSFR.
+- Organisation et maintenance du module DN ([#515](https://github.com/betagouv/OTP-DS-to-Grist/issues/515)).
+- Correction des chemins pour les ressources statiques (polices de caractères).
