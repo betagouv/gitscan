@@ -832,6 +832,7 @@
 │   │   │   ├── 20260930170000-unset-application-count-jobs-partners.ts
 │   │   │   ├── 20261006120000-normalize-lba-offer-origin-5645.ts
 │   │   │   ├── 20261007120000-cancel-france-travail-directemploi-jobs-5656.ts
+│   │   │   ├── 20261009120000-search-items-opco.ts
 │   │   │   ├── 20261012120000-add-rolemanagements-created-at-index.ts
 │   │   │   └── 20261014120000-add-jobs-partners-moderations-indexes.ts
 │   │   ├── security
@@ -895,7 +896,6 @@
 │   │       ├── formulaire-notifications.service.ts
 │   │       ├── formulaire.service.test.ts
 │   │       ├── formulaire.service.ts
-│   │       ├── ftjob.service.ts
 │   │       ├── ftjob.service.types.ts
 │   │       ├── geo-administrative
 │   │       │   ├── admin-area.test.ts
@@ -1317,6 +1317,8 @@
 │   │   │   ├── object-utils.ts
 │   │   │   ├── offer-expiration.test.ts
 │   │   │   ├── offer-expiration.ts
+│   │   │   ├── opco-search-filter.test.ts
+│   │   │   ├── opco-search-filter.ts
 │   │   │   ├── rate-limit-description.ts
 │   │   │   ├── search-url-compat.test.ts
 │   │   │   ├── search-url-compat.ts
@@ -1431,6 +1433,7 @@
 │   │   │   │       │   ├── use-detail-navigation.ts
 │   │   │   │       │   ├── use-dialog-a11y.ts
 │   │   │   │       │   ├── use-lock-body-scroll.ts
+│   │   │   │       │   ├── use-search-results.test.ts
 │   │   │   │       │   ├── use-search-results.ts
 │   │   │   │       │   └── use-visual-viewport-size.ts
 │   │   │   │       ├── _utils
@@ -2039,6 +2042,7 @@
 │   │   │   ├── CustomInput.tsx
 │   │   │   ├── DeclarationExactCheckbox.tsx
 │   │   │   ├── ErrorComponent.tsx
+│   │   │   ├── FocusedTitle.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   ├── FormComponents
 │   │   │   │   ├── MultiSelectField.tsx
@@ -2050,6 +2054,8 @@
 │   │   │   │   ├── DefaultContainer.tsx
 │   │   │   │   ├── NavigationAdmin.tsx
 │   │   │   │   └── index.tsx
+│   │   │   ├── LiveStatus.test.tsx
+│   │   │   ├── LiveStatus.tsx
 │   │   │   ├── ModalCloseButton.tsx
 │   │   │   ├── NotFound.tsx
 │   │   │   ├── PublicHeader.tsx
@@ -2057,6 +2063,8 @@
 │   │   │   │   └── RechercheFormTitle.tsx
 │   │   │   ├── Title
 │   │   │   │   └── ModalTitle.tsx
+│   │   │   ├── ToastAnnouncer.tsx
+│   │   │   ├── ToastContent.tsx
 │   │   │   ├── TwoColumnFormLayout.tsx
 │   │   │   ├── WidgetAwareHeader.tsx
 │   │   │   ├── WidgetTester.tsx
@@ -2130,6 +2138,7 @@
 │   │   │   │   ├── WidgetCandidatureLba.tsx
 │   │   │   │   ├── WidgetPostulerError.tsx
 │   │   │   │   └── services
+│   │   │   │       ├── get-schema.test.ts
 │   │   │   │       ├── get-schema.ts
 │   │   │   │       └── submit-candidature.ts
 │   │   │   ├── CandidatureParTelephone.tsx
@@ -2236,7 +2245,6 @@
 │   │   │   │   └── InformationsSiret.tsx
 │   │   │   ├── ExportButton
 │   │   │   │   └── ExportButtonNew.tsx
-│   │   │   ├── LoadingEmptySpace.tsx
 │   │   │   ├── PaginationReactQuery.tsx
 │   │   │   ├── UserValidationHistory.tsx
 │   │   │   ├── assets
@@ -2295,7 +2303,8 @@
 │   │   └── contextWidget.tsx
 │   ├── e2e
 │   │   ├── instant-navigation.spec.ts
-│   │   └── not-found-layout.spec.ts
+│   │   ├── not-found-layout.spec.ts
+│   │   └── recherche-live-status.spec.ts
 │   ├── images.d.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
@@ -2362,26 +2371,17 @@
 │   │   │       └── Marianne-Thin_Italic.woff2
 │   │   ├── images
 │   │   │   ├── 1j1s
-│   │   │   │   ├── arrow.svg
-│   │   │   │   ├── bulb.svg
-│   │   │   │   ├── candidature.png
-│   │   │   │   ├── ciel.webp
-│   │   │   │   ├── depot-offre.png
-│   │   │   │   ├── detail-offre.png
-│   │   │   │   ├── dialog.svg
-│   │   │   │   ├── graph.svg
-│   │   │   │   ├── heart.svg
+│   │   │   │   ├── enveloppe.webp
+│   │   │   │   ├── france.webp
 │   │   │   │   ├── illustration-lba.svg
-│   │   │   │   ├── jeune-garcon.webp
-│   │   │   │   ├── jeunes.webp
-│   │   │   │   ├── logo-1j1s.svg
-│   │   │   │   ├── mobile-left.webp
-│   │   │   │   ├── mobile-right.webp
-│   │   │   │   ├── personna.png
-│   │   │   │   ├── plus-jaune.svg
-│   │   │   │   ├── scroll.svg
-│   │   │   │   ├── sparks-left.svg
-│   │   │   │   └── sparks-right.svg
+│   │   │   │   ├── job-post.webp
+│   │   │   │   ├── loupe.webp
+│   │   │   │   ├── mains.webp
+│   │   │   │   ├── mobile-candidatures.webp
+│   │   │   │   ├── mobile-offres.webp
+│   │   │   │   ├── partner.webp
+│   │   │   │   ├── personna.webp
+│   │   │   │   └── sourcing.webp
 │   │   │   ├── 5xx.svg
 │   │   │   ├── aucunCfa.svg
 │   │   │   ├── book.svg
@@ -2851,6 +2851,7 @@
 │   │   │   └── carte-d-etudiant-des-metiers.zip
 │   │   └── styles
 │   │       ├── application.css
+│   │       ├── fonts-marianne-extrabold.css
 │   │       ├── fonts.css
 │   │       └── notion.css
 │   ├── scripts
@@ -2930,6 +2931,8 @@
 │       ├── lba-item.types.ts
 │       ├── local-storage.ts
 │       ├── matomo-utils.ts
+│       ├── opco-search-filter.utils.test.ts
+│       ├── opco-search-filter.utils.ts
 │       ├── plausible.ts
 │       ├── reload-guard.utils.ts
 │       ├── request-utils.ts
@@ -2939,10 +2942,11 @@
 │       ├── routes.utils.ts
 │       ├── sentry-filters.utils.test.ts
 │       ├── sentry-filters.utils.ts
+│       ├── strutils.test.ts
 │       ├── strutils.ts
 │       ├── tools.ts
 │       ├── use-search-params-record.ts
 │       └── validation-messages.ts
 ├── vitest.config.ts
 └── yarn.lock
-520 directories, 2995 files
+520 directories, 2999 files
