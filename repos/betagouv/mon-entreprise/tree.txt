@@ -658,6 +658,7 @@
 │   │   │   │   │   ├── ListeQuestions.test.tsx
 │   │   │   │   │   ├── ListeQuestions.tsx
 │   │   │   │   │   ├── QuestionCourante.tsx
+│   │   │   │   │   ├── QuestionFournie.test.tsx
 │   │   │   │   │   ├── QuestionFournie.tsx
 │   │   │   │   │   ├── QuestionPublicodes.tsx
 │   │   │   │   │   └── QuestionsPrincipales.tsx
@@ -720,17 +721,24 @@
 │   │   │   ├── documentation
 │   │   │   │   ├── DocumentationBasePathProvider.test.tsx
 │   │   │   │   ├── DocumentationBasePathProvider.tsx
+│   │   │   │   ├── DocumentationDeQuestion.ts
+│   │   │   │   ├── DocumentationHelpButton.test.tsx
+│   │   │   │   ├── DocumentationHelpButton.tsx
 │   │   │   │   ├── DocumentationLink.test.tsx
 │   │   │   │   ├── DocumentationLink.tsx
-│   │   │   │   ├── DocumentationRouter.tsx
-│   │   │   │   ├── MDXDocumentationIndex.tsx
+│   │   │   │   ├── MDX
+│   │   │   │   │   ├── DocumentationIndex.tsx
+│   │   │   │   │   ├── DocumentationRouter.tsx
+│   │   │   │   │   ├── createDocumentation.ts
+│   │   │   │   │   ├── documentationMDX.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── References
+│   │   │   │   │   ├── LiensUtiles.tsx
 │   │   │   │   │   ├── ListeDeReferences.test.tsx
 │   │   │   │   │   ├── ListeDeReferences.tsx
 │   │   │   │   │   ├── Reference.tsx
 │   │   │   │   │   ├── useReferencesAAfficher.test.ts
 │   │   │   │   │   └── useReferencesAAfficher.ts
-│   │   │   │   ├── createMDXDocumentation.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── publicodes
 │   │   │   │       ├── DocumentationAccordion.tsx
@@ -838,7 +846,9 @@
 │   │   │   │   │   ├── imposition.ts
 │   │   │   │   │   ├── modeleComparable.ts
 │   │   │   │   │   ├── situation.test.ts
-│   │   │   │   │   └── situation.ts
+│   │   │   │   │   ├── situation.ts
+│   │   │   │   │   ├── situationQueryString.test.ts
+│   │   │   │   │   └── situationQueryString.ts
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── ComparaisonStatutsContext.tsx
 │   │   │   │   │   └── useComparateur.ts
@@ -858,6 +868,32 @@
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── FrontalierSuisseContext.tsx
 │   │   │   │   │   └── useFrontalierSuisse.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── salarié
+│   │   │   │   ├── domaine
+│   │   │   │   │   ├── SituationSalarie.test.ts
+│   │   │   │   │   ├── SituationSalarie.ts
+│   │   │   │   │   └── lodeom
+│   │   │   │   │       ├── CoefficientT.test.ts
+│   │   │   │   │       ├── CoefficientT.ts
+│   │   │   │   │       ├── ExonerationMoisParMois.test.ts
+│   │   │   │   │       ├── ExonerationMoisParMois.ts
+│   │   │   │   │       ├── MoisParMois.test.ts
+│   │   │   │   │       ├── MoisParMois.ts
+│   │   │   │   │       ├── Options.ts
+│   │   │   │   │       ├── ParametresReduction.test.ts
+│   │   │   │   │       ├── ParametresReduction.ts
+│   │   │   │   │       ├── Reduction.test.ts
+│   │   │   │   │       ├── Reduction.ts
+│   │   │   │   │       ├── Repartition.test.ts
+│   │   │   │   │       ├── Repartition.ts
+│   │   │   │   │       ├── SmicEquivalent.test.ts
+│   │   │   │   │       ├── SmicEquivalent.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── publicodes.test.ts
+│   │   │   │   │       ├── publicodes.ts
+│   │   │   │   │       └── test
+│   │   │   │   │           └── fixtures.ts
 │   │   │   │   └── index.ts
 │   │   │   └── économie-collaborative
 │   │   │       ├── domaine
@@ -997,6 +1033,7 @@
 │   │   │   │   ├── index.stories.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── molecules
+│   │   │   │   ├── HelpButton.tsx
 │   │   │   │   ├── InfoBulle.stories.tsx
 │   │   │   │   ├── InfoBulle.tsx
 │   │   │   │   ├── InfoButton.stories.tsx
@@ -1169,7 +1206,7 @@
 │   │   │   │   ├── engineSingleton.ts
 │   │   │   │   └── listeLesVariablesManquantes.ts
 │   │   │   ├── estPasQuestionEnListeNoire.ts
-│   │   │   ├── parametre-situation.ts
+│   │   │   ├── parametresUrl.ts
 │   │   │   ├── publicodes
 │   │   │   │   ├── AutoEntrepreneurContexteDansPublicodes.ts
 │   │   │   │   ├── DottedName.ts
@@ -1480,19 +1517,33 @@
 │   │   │   │   │   │   └── WarningTooltip.tsx
 │   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── questions
+│   │   │   │   │   │   ├── AcreDocumentation.en.mdx
+│   │   │   │   │   │   ├── AcreDocumentation.fr.mdx
 │   │   │   │   │   │   ├── AcreQuestion.tsx
-│   │   │   │   │   │   ├── ActiviteRéglementeeQuestion.tsx
+│   │   │   │   │   │   ├── ActiviteReglementeeDocumentation.en.mdx
+│   │   │   │   │   │   ├── ActiviteReglementeeDocumentation.fr.mdx
+│   │   │   │   │   │   ├── ActiviteReglementeeQuestion.tsx
 │   │   │   │   │   │   ├── AutresRevenusQuestion.tsx
 │   │   │   │   │   │   ├── EnfantsQuestion.tsx
+│   │   │   │   │   │   ├── MethodeImpotDocumentation.en.mdx
+│   │   │   │   │   │   ├── MethodeImpotDocumentation.fr.mdx
 │   │   │   │   │   │   ├── MethodeImpotQuestion.tsx
-│   │   │   │   │   │   ├── NatureActivitéQuestion.tsx
+│   │   │   │   │   │   ├── NatureActiviteDocumentation.en.mdx
+│   │   │   │   │   │   ├── NatureActiviteDocumentation.fr.mdx
+│   │   │   │   │   │   ├── NatureActiviteQuestion.tsx
 │   │   │   │   │   │   ├── ParentIsoleQuestion.tsx
 │   │   │   │   │   │   ├── ReponseActivite.tsx
 │   │   │   │   │   │   ├── ReponseFoyerFiscal.tsx
 │   │   │   │   │   │   ├── ReponseImpot.tsx
 │   │   │   │   │   │   ├── SituationFamilialeQuestion.tsx
+│   │   │   │   │   │   ├── TVADocumentation.en.mdx
+│   │   │   │   │   │   ├── TVADocumentation.fr.mdx
 │   │   │   │   │   │   ├── TVAQuestion.tsx
+│   │   │   │   │   │   ├── TauxImpositionDocumentation.en.mdx
+│   │   │   │   │   │   ├── TauxImpositionDocumentation.fr.mdx
 │   │   │   │   │   │   ├── TauxImpositionQuestion.tsx
+│   │   │   │   │   │   ├── TypeActiviteDocumentation.en.mdx
+│   │   │   │   │   │   ├── TypeActiviteDocumentation.fr.mdx
 │   │   │   │   │   │   ├── TypeActiviteQuestion.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── utils.ts
@@ -1618,6 +1669,7 @@
 │   │   │   │   │           └── locationDeMeubléHelpers.tsx
 │   │   │   │   ├── lodeom
 │   │   │   │   │   ├── Goals.tsx
+│   │   │   │   │   ├── Lodeom.test.tsx
 │   │   │   │   │   ├── Lodeom.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── BarèmeSwitch.tsx
@@ -1636,9 +1688,7 @@
 │   │   │   │   │   │   ├── Warnings.tsx
 │   │   │   │   │   │   └── ZoneSwitch.tsx
 │   │   │   │   │   ├── metadata.ts
-│   │   │   │   │   ├── simulationConfig.ts
-│   │   │   │   │   ├── utils.test.ts
-│   │   │   │   │   └── utils.ts
+│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── médecin
 │   │   │   │   │   ├── AvertissementMédecin.tsx
 │   │   │   │   │   ├── Médecin.test.tsx
@@ -1937,4 +1987,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-333 directories, 1606 files
+338 directories, 1651 files

@@ -1,26 +1,27 @@
-## Changelog : mon-entreprise (30 derniers jours, au 01/10/2026)
+## Changelog : mon-entreprise (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par des évolutions majeures, notamment le lancement d'un outil permettant de comparer différents modèles d'entreprise et une refonte complète de la page d'accueil. Les simulateurs ont été affinés pour plus de précision, particulièrement pour les utilisateurs de Mayotte, et la documentation a été largement modernisée pour offrir une meilleure expérience de consultation des règles métier.
+Ce mois-ci, le projet a connu des évolutions majeures, notamment une refonte complète de la page d'accueil et une mise à jour approfondie des règles de calcul pour Mayotte. L'outil de comparaison a également été enrichi de nouvelles fonctionnalités de partage et d'une documentation plus accessible, tandis que le moteur de calcul a été stabilisé par un important travail de restructuration technique.
 
 ### Évolutions fonctionnelles
-- **Nouveau comparateur de modèles** : possibilité de comparer plusieurs statuts (ex: SASU, EI) en fonction d'objectifs précis (IR/IS, versement libératoire) et avec des périodes de calcul flexibles (mensuelles ou annuelles).
-- **Nouveaux simulateurs** : intégration des simulateurs dédiés aux profils Artisan et Commerçant.
-- **Mise à jour du simulateur Lodeom** : 
-    - Intégration complète des spécificités réglementaires et des taux pour Mayotte.
-    - Simplification du parcours utilisateur en supprimant des questions redondantes ou non applicables.
-    - Corrections sur le calcul des heures supplémentaires et de la rémunération brute.
-- **Refonte de la page d'accueil** : nouvelle interface plus intuitive incluant des sections "Qui sommes-nous", "Explorer les statuts" et un moteur de recherche/création direct.
-- **Améliorations des simulateurs existants** : corrections sur les calculs de la SASU (unités d'exonération) et de l'Impôt sur le Revenu (dividendes).
+- **Mise en conformité pour Mayotte** : Intégration des spécificités locales dans les simulations (calcul de la Lodeom, ajustements du SMIC, cotisations sociales et avertissements spécifiques).
+- **Amélioration du comparateur** : 
+    - Création de liens de partage intelligents qui n'enregistrent que les modifications par rapport à la situation initiale.
+    - Accès facilité à la documentation des valeurs en un seul clic.
+    - Meilleure gestion du décodage des valeurs dans l'URL.
+- **Refonte de l'accueil** : Nouvelle interface de la page d'accueil avec l'ajout de sections de navigation ("Qui sommes-nous", "Explorer les statuts", etc.) pour une meilleure découverte des services.
+- **Nouveaux simulateurs** : Ajout des simulateurs dédiés aux profils "Artisan" et "Commerçant".
 
 ### Évolutions techniques
-- **Refonte logicielle** : restructuration profonde du module de comparaison et de la logique de gestion des montants pour améliorer la maintenabilité du code.
-- **Automatisation de la qualité (CI/CD)** : mise en place d'une revue de code automatisée par intelligence artificielle (Claude) pour accélérer les cycles de développement.
-- **Optimisation du déploiement** : amélioration de la gestion des "Review Apps" pour des tests plus fiables et rapides.
-- **Accessibilité (a11y)** : corrections importantes des labels ARIA, de la gestion des contrastes de couleurs et de la navigation au clavier, notamment dans les formulaires.
-- **Performance et Tracking** : optimisation du chargement du tracking (Piano Analytics) et correction de problèmes liés au rendu côté serveur (SSR).
+- **Refonte du moteur Lodeom** : Restructuration profonde du code pour améliorer la maintenabilité, incluant une meilleure organisation des domaines de calcul et une couverture de tests accrue.
+- **Optimisation du comparateur** : Amélioration de la sérialisation des données et de la synchronisation entre l'interface utilisateur et l'URL.
+- **Amélioration de la CI/CD** : Optimisation du workflow de revue de code par IA pour rendre les retours plus pertinents et éviter les échecs de pipeline inutiles.
+- **Accessibilité et Design** : 
+    - Amélioration de l'accessibilité (A11y) sur les composants de saisie.
+    - Correction de contrastes de couleurs pour respecter les normes d'accessibilité (AAA).
+    - Optimisation des composants de type "Card" et "Callout".
 
 ### Autres changements
-- **Modernisation de la documentation** : passage au format MDX pour une meilleure gestion du contenu, amélioration de la visualisation des règles Publicodes et mise à jour de la documentation de l'API.
-- **Internationalisation (i18n)** : corrections de nombreuses traductions et uniformisation de la langue sur l'ensemble des composants.
-- **Nettoyage** : suppression de composants et de règles obsolètes pour alléger l'application.
+- **Modernisation de la documentation** : Refonte du système de documentation utilisant MDX, permettant un rendu plus riche et une meilleure organisation des règles métier.
+- **Internationalisation (i18n)** : Mise à jour et correction de nombreuses traductions sur l'ensemble de la plateforme.
+- **Tests** : Renforcement significatif de la suite de tests (unitaires et intégration) sur les modules de calcul et les composants de documentation.
