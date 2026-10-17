@@ -185,7 +185,8 @@
 │   ├── 20260615000001_drop_marrainage_tables.js
 │   ├── 20260615000001_drop_users_tjm_column.js
 │   ├── 20260617000001_add_contact_fields_to_startups.js
-│   └── 20260618000001_add_startups_incubators_table.ts
+│   ├── 20260618000001_add_startups_incubators_table.ts
+│   └── 20261016000001_add_user_id_lock_to_dinum_emails.js
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
@@ -351,6 +352,8 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── validateNewMember.test.ts
 │   │   │   │   │   │   └── verifyNewMember.test.ts
+│   │   │   │   │   ├── dinumEmails.spec.ts
+│   │   │   │   │   ├── dinumEmails.ts
 │   │   │   │   │   ├── get-dimail-email.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── managePrimaryEmailForUser.ts
@@ -446,6 +449,7 @@
 │   │   ├── FicheHeader.tsx
 │   │   ├── FichePicture.tsx
 │   │   ├── Formation
+│   │   │   ├── FormationAdresseField.tsx
 │   │   │   ├── FormationCard.tsx
 │   │   │   ├── FormationDateTimeFields.tsx
 │   │   │   ├── FormationImagePicker.tsx
@@ -496,6 +500,7 @@
 │   │   │   │   ├── BlocConfigurerEmailPrincipal.tsx
 │   │   │   │   ├── BlocConfigurerEmailSecondaire.tsx
 │   │   │   │   ├── ChangeSecondaryEmail.tsx
+│   │   │   │   ├── DinumEmailsAdmin.tsx
 │   │   │   │   ├── EmailContainer.tsx
 │   │   │   │   └── WebMailButtons.tsx
 │   │   │   ├── MemberBrevoEventList.tsx
@@ -613,8 +618,9 @@
 │   │   │   ├── memberEvents.ts
 │   │   │   ├── members.ts
 │   │   │   └── updateMemberInfo.ts
-│   │   ├── airtable.ts
 │   │   ├── auth
+│   │   │   ├── findUsersByLoginEmail.spec.ts
+│   │   │   ├── findUsersByLoginEmail.ts
 │   │   │   └── hashToken.ts
 │   │   ├── authoptions.ts
 │   │   ├── canEditMember.spec.ts
@@ -696,8 +702,6 @@
 │   │   ├── member.utils.ts
 │   │   ├── memberPageProps.ts
 │   │   ├── openapi.ts
-│   │   ├── parseParticipantsCsv.spec.ts
-│   │   ├── parseParticipantsCsv.ts
 │   │   ├── pgAdpter.spec.ts
 │   │   ├── pgAdpter.ts
 │   │   ├── rateLimit.spec.ts
@@ -718,6 +722,7 @@
 │   │   │   ├── actionEvent.ts
 │   │   │   └── index.ts
 │   │   ├── actions
+│   │   │   ├── formationProposal.spec.ts
 │   │   │   ├── formationProposal.ts
 │   │   │   ├── image.ts
 │   │   │   ├── incubator.ts
@@ -821,4 +826,4 @@
 │                   │   └── memberValidationEmail.ts
 │                   └── updateSecondaryEmail.ejs
 └── tsconfig.json
-179 directories, 644 files
+179 directories, 649 files
