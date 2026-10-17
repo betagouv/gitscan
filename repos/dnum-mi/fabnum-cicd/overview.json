@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/dnum-mi/fabnum-cicd",
   "name": "fabnum-cicd",
-  "description": "Ce dépôt centralise des workflows GitHub Actions réutilisables et des git hooks pour maintenir la cohérence et la qualité du code dans tous les dépôts de la Fabrique Numérique.",
-  "language": "YAML",
+  "description": "Ce dépôt centralise les workflows GitHub Actions réutilisables et les git hooks pour maintenir la cohérence et la qualité du code dans tous les dépôts de la Fabrique Numérique.",
+  "language": "TypeScript",
   "features": [
     "Tests & QA",
     "Sécurité & Conformité",
-    "Collaboration & Workflow",
     "Infrastructure & Stockage",
-    "Suivi & Traçabilité"
+    "Collaboration & Workflow",
+    "Suivi & Traçabilité",
+    "Monitoring & Logs"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -20,23 +21,27 @@
     "Gitleaks",
     "Cosign",
     "NPM",
-    "Release-please"
+    "ESLint",
+    "Chart-testing"
   ],
   "components": [
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
-    "Tests",
-    "Scripts & Utilitaires",
     "Kubernetes & Helm",
-    "Documentation & Schémas"
+    "Tests",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "none"
-    ],
-    "providers": []
+    ]
   },
-  "tests": "Linting (YAML, Helm, Commits), tests d'installation Helm via Kind et tests d'exécution de commandes dans des images Docker.",
+  "tests": [
+    "ESLint",
+    "yamllint",
+    "chart-testing",
+    "kind"
+  ],
   "workflows": [
     "lint-commits.yml",
     "lint-helm.yml",
@@ -62,7 +67,7 @@
     "sync-cpin.yml",
     "check-jobs.yml"
   ],
-  "lastActivity": "2026-10-13T18:33:47+02:00",
+  "lastActivity": "2026-10-14T10:32:59+02:00",
   "status": "maintained",
   "license": null,
   "hasDocumentation": true,
