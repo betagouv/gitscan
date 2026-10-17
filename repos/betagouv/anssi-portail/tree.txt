@@ -258,7 +258,8 @@
 │   │   │   ├── outils
 │   │   │   │   ├── modele-annuaire-de-crise.xlsx
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.ts
-│   │   │   │   └── ressourceRappelMiseAJourAnnuaireContacts.ts
+│   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.ts
+│   │   │   │   └── serviceModeleAnnuaireDeCrise.ts
 │   │   │   ├── ressourceAbonnementInfolettre.schema.ts
 │   │   │   ├── ressourceAbonnementInfolettre.ts
 │   │   │   ├── ressourceAnnuaireDepartements.ts
@@ -319,6 +320,7 @@
 │   │   │   ├── consigneMesureConsulteeDansJournal.ts
 │   │   │   ├── consigneMesurePriseEnCompteDansJournal.ts
 │   │   │   ├── consigneModuleTerminéDansJournal.ts
+│   │   │   ├── consigneOutilTelechargeDansJournal.ts
 │   │   │   ├── consigneParcoursAllegeTermineDansJournal.ts
 │   │   │   ├── consigneParcoursChangeDansJournal.ts
 │   │   │   ├── consigneParcoursCompletTermineDansJournal.ts
@@ -346,6 +348,7 @@
 │   │   │   │   ├── mesureConsultee.ts
 │   │   │   │   ├── mesurePriseEnCompte.ts
 │   │   │   │   ├── moduleTermine.ts
+│   │   │   │   ├── outilTelecharge.ts
 │   │   │   │   ├── parcoursAllegeTermine.ts
 │   │   │   │   ├── parcoursChange.ts
 │   │   │   │   ├── parcoursCompletTermine.ts
@@ -619,7 +622,8 @@
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
 │   │   │   ├── outils
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
-│   │   │   │   └── ressourceRappelMiseAJourAnnuaireContacts.spec.ts
+│   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.spec.ts
+│   │   │   │   └── serviceModeleAnnuaireDeCrise.spec.ts
 │   │   │   ├── ressourceAbonnementInfolettre.spec.ts
 │   │   │   ├── ressourceAnnuaireDepartements.spec.ts
 │   │   │   ├── ressourceAnnuaireOrganisations.spec.ts
@@ -666,6 +670,7 @@
 │   │   │   ├── consigneMesureConsulteeDansJournal.spec.ts
 │   │   │   ├── consigneMesurePriseEnCompteDansJournal.spec.ts
 │   │   │   ├── consigneModuleTermineDansJournal.spec.ts
+│   │   │   ├── consigneOutilTelechargeDansJournal.spec.ts
 │   │   │   ├── consigneParcoursAllegeTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursChangeDansJournal.spec.ts
 │   │   │   ├── consigneParcoursCompletTermineDansJournal.spec.ts
@@ -806,6 +811,18 @@
 │   │           └── constructeurGuideGrist.ts
 │   ├── tsconfig.json
 │   └── vitest.config.js
+├── contacts-sectoriels
+│   ├── eslint.config.mjs
+│   ├── package.json
+│   ├── src
+│   │   ├── calculeCodeSecteurContact.ts
+│   │   ├── codesSecteurContact.ts
+│   │   └── index.ts
+│   ├── tests
+│   │   └── calculeCodeSecteurContact.spec.ts
+│   ├── tsconfig.build.json
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── default.nix
 ├── demande-diag
 │   ├── .gitignore
@@ -1190,6 +1207,7 @@
 │   │   │   │   ├── mesure-*.avif  (58 files)
 │   │   │   │   ├── module-*.svg  (6 files)
 │   │   │   │   ├── outils
+│   │   │   │   │   ├── icone-telechargement-ics.svg
 │   │   │   │   │   └── icone-telechargement-xlsx.svg
 │   │   │   │   └── visuel-cyberdepart.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
@@ -1257,7 +1275,8 @@
 │   ├── conseils-cyber.html
 │   ├── contacts.html
 │   ├── creation-compte.html
-│   ├── demande-aide-mon-aide-cyber.html
+│   ├── cyberdepart
+│   │   └── diagnostic-gratuit.html
 │   ├── entreprises.html
 │   ├── exposition.html
 │   ├── favicon.ico
@@ -1361,8 +1380,10 @@
 │   │   │   │   ├── ListeArticles.svelte
 │   │   │   │   └── article.type.ts
 │   │   │   ├── contacts
+│   │   │   │   ├── CarteContact.svelte
 │   │   │   │   ├── Contacts.svelte
 │   │   │   │   ├── FiltresContacts.svelte
+│   │   │   │   ├── LigneContact.svelte
 │   │   │   │   ├── NoteInformation.svelte
 │   │   │   │   ├── SelectSecteurContacts.svelte
 │   │   │   │   ├── contacts.ts
@@ -1634,6 +1655,7 @@
 │   │   │   │   │       ├── BoiteAOutilsGenerique.svelte
 │   │   │   │   │       ├── EtapeProcedure.svelte
 │   │   │   │   │       ├── EtapesProcedure.svelte
+│   │   │   │   │       ├── Outil.svelte
 │   │   │   │   │       ├── OutilRappelMiseAJourAnnuaire.svelte
 │   │   │   │   │       ├── OutilsModeleAnnuaireDeCrise.svelte
 │   │   │   │   │       └── Procedure.svelte
@@ -1818,8 +1840,6 @@
 │   │   │   │       ├── rechercheParSource.store.spec.ts
 │   │   │   │       ├── rechercheParTypologie.store.spec.ts
 │   │   │   │       └── recherches.store.spec.ts
-│   │   │   ├── contacts
-│   │   │   │   └── contacts.spec.ts
 │   │   │   ├── financements
 │   │   │   │   └── stores
 │   │   │   │       ├── financementsFiltre.store.spec.ts
@@ -2003,4 +2023,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-323 directories, 1799 files
+326 directories, 1816 files
