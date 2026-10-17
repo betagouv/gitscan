@@ -1,22 +1,21 @@
-# Synthèse d'activité : demarche-numerique (du 15/09 au 21/09/2026)
+# Synthèse d'activité : demarche-numerique (du 14/09 au 21/09)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une montée en puissance des capacités d'extraction de données et une consolidation des outils de gestion. [la_taupe](/repos/demarche-numerique/la_taupe) franchit une étape clé avec un moteur d'OCR plus performant, permettant une lecture plus précise et automatisée des documents bancaires (RIB). Parallèlement, [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) se concentre sur l'amélioration de l'expérience des administrateurs et la robustesse des processus métier.
+L'activité de cette période est marquée par une montée en puissance de l'automatisation et un renforcement de la sécurité des services. L'outil d'extraction de données [la_taupe](/repos/demarche-numerique/la_taupe) gagne significativement en précision et en capacité de traitement, tandis que la plateforme principale [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) améliore sa résilience face aux indisponibilités de services tiers et la protection de ses accès critiques.
 
-L'organisation amorce également de nouveaux chantiers structurants avec l'initialisation de projets dédiés à la documentation de nouvelle génération et à la création d'un espace d'échange pour l'ensemble de l'écosystème.
+Parallèlement, l'écosystème s'élargit avec l'initialisation de nouveaux projets structurants, notamment pour la documentation de la nouvelle version de la démarche et la création d'un espace d'échange dédié à la communauté.
 
 ## Sécurité
-- Renforcement de la sécurité des comptes "Super Admin" via l'enrôlement OTP et le verrouillage automatique sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- Mise en place d'un sandboxing (via libvips) pour sécuriser le traitement des images sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- Sécurisation des API par la validation des URLs et des jetons JWT sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Renforcement de la sécurité des comptes "Super Admin" via l'enrôlement OTP et le verrouillage automatique dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Implémentation d'un sandboxing pour le traitement des images (libvips) afin de sécuriser le serveur dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Autres changements notables
-- **Amélioration de l'OCR et du traitement de données :** Passage à un nouveau moteur d'OCR (PP-OCR v6 tiny) et ajout du traitement par lots (batch) via CLI pour [la_taupe](/repos/demarche-numerique/la_taupe).
-- **Flexibilité du stockage :** Extension de la prise en charge des protocoles S3 et Swift pour [ds_proxy](/repos/demarche-numerique/ds_proxy).
-- **Optimisation de l'infrastructure :** Migration vers Sidekiq 8 pour une meilleure gestion des tâches de fond sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- **Lancement de nouveaux projets :** Initialisation des dépôts pour la nouvelle documentation ([doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr)) et l'espace de partage communautaire ([commun.demarche.numerique.gouv.fr](/repos/demarche-numerique/commun.demarche.numerique.gouv.fr)).
+- **Optimisation de l'extraction de données :** Passage à un nouveau moteur OCR plus performant et ajout de fonctionnalités de traitement par lots (batch) pour [la_taupe](/repos/demarche-numerique/la_taupe).
+- **Résilience et performance :** Introduction d'un mode "dégradé" pour la saisie des données d'entreprise en cas d'indisponibilité des API et migration vers Sidekiq 8 dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- **Flexibilité de stockage :** Ajout de la prise en charge des protocoles S3 et Swift ainsi qu'une simplification des dépendances pour [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- **Lancement de nouveaux projets :** Initialisation des dépôts pour la documentation de la version 2 ([doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr)) et pour l'espace de partage de l'écosystème ([commun.demarche.numerique.gouv.fr](/repos/demarche-numerique/commun.demarche.numerique.gouv.fr)).
 
 ## Dépôts les plus actifs
-- [la_taupe](/repos/demarche-numerique/la_taupe) : Évolutions majeures sur la précision de l'extraction des données bancaires et les performances de l'OCR.
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Améliorations fonctionnelles pour les instructeurs et renforcement de la sécurité applicative.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Optimisation de la configuration et ajout de nouveaux types de stockage.
+- [la_taupe](/repos/demarche-numerique/la_taupe) : Évolutions majeures de l'OCR, de la précision d'extraction des RIB et ajout du traitement par lots.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Améliorations de la sécurité, de la résilience du service et des performances de recherche.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Extension des capacités de stockage et optimisation de l'infrastructure.

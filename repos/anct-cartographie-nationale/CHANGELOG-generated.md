@@ -1,20 +1,18 @@
 # Synthèse d'activité : anct-cartographie-nationale (du 12/09 au 19/09)
 
 ## Résumé de l'activité
-L'activité récente est principalement axée sur l'amélioration de la qualité et de la fiabilité des données géographiques. Grâce à de nouveaux mécanismes de déduplication et de filtrage plus précis, les outils [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) et [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique) offrent désormais une meilleure gestion des doublons et des informations de localisation.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la qualité et de la fiabilité des données géographiques, ainsi que sur la mise en conformité des services. Les efforts ont porté sur la déduplication des lieux et l'enrichissement des informations d'accessibilité, garantissant ainsi des données plus précises et un meilleur usage pour les utilisateurs finaux ([mednum-cli](/repos/anct-cartographie-nationale/mednum-cli), [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique), [cartographie](/repos/anct-cartographie-nationale/cartographie)).
 
-Parallèlement, l'organisation renforce la conformité et l'expérience utilisateur, notamment avec la mise en place de déclarations d'accessibilité dans [cartographie](/repos/anct-cartographie-nationale/cartographie), garantissant un service plus inclusif et conforme aux attentes légales.
+Parallèlement, l'organisation a renforcé la robustesse de ses infrastructures et la sécurité de ses processus de publication, assurant une meilleure stabilité et une distribution plus sûre des outils ([cartographie](/repos/anct-cartographie-nationale/cartographie), [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique)).
 
 ## Sécurité
-- Renforcement de la sécurité des déploiements dans [cartographie](/repos/anct-cartographie-nationale/cartographie) via la suppression des jetons npm statiques et l'amélioration de l'authentification pour les plugins d'infrastructure (Pulumi Scaleway).
+- Sécurisation de la publication des paquets via l'adoption du mécanisme "Trusted Publishing" ([mednum-cli](/repos/anct-cartographie-nationale/mednum-cli), [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique)).
+- Renforcement de la sécurité des déploiements par la suppression des jetons statiques et l'amélioration de l'authentification des plugins d'infrastructure ([cartographie](/repos/anct-cartographie-nationale/cartographie)).
 
 ## Autres changements notables
-- **Évolutions architecturales et changements majeurs :**
-    - Refonte du processus de déduplication dans [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique), introduisant des changements de rupture (*breaking changes*) pour optimiser la validation des données.
-    - Restructuration de l'architecture de [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) pour une meilleure gestion des fonctionnalités et refactoring de l'injection de dépendances dans [cartographie](/repos/anct-cartographie-nationale/cartographie).
-- **Modernisation de la chaîne de développement (DevEx) et CI/CD :**
-    - Adoption de nouveaux standards de développement (passage à Biome) et sécurisation des publications via le mécanisme "Trusted Publishing" pour [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) et [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique).
-    - Optimisation des workflows de release et de la CI/CD pour [cartographie](/repos/anct-cartographie-nationale/cartographie).
+- **Refonte de la gestion des données :** Mise en place d'un nouveau processus de déduplication des lieux, entraînant des changements de compatibilité pour les utilisateurs de la bibliothèque ([lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique)).
+- **Évolutions architecturales :** Refonte de l'architecture pour la gestion des fonctionnalités et modernisation de la chaîne de développement ([mednum-cli](/repos/anct-cartographie-nationale/mednum-cli)).
+- **Optimisation CI/CD :** Amélioration des workflows de release et de la détection automatique des changements majeurs ([cartographie](/repos/anct-cartographie-nationale/cartographie), [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique)).
 
 ## Dépôts les plus actifs
 - [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Amélioration de la précision des données et de l'interface de ligne de commande.

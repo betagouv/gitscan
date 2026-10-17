@@ -1,17 +1,15 @@
 # Synthèse d'activité : refugies-info (du [Date de début] au [Date de fin])
 
 ## Résumé de l'activité
-Cette semaine, l'activité a été marquée par une amélioration significative de l'expérience utilisateur et des fonctionnalités métier. [playground](/repos/refugies-info/playground) a progressé sur ses capacités de traduction assistée par IA et sur la gestion des flux de travail (workflows), offrant ainsi des outils plus précis et mieux structurés pour les utilisateurs. 
-
-Parallèlement, [karfur](/repos/refugies-info/karfur) a franchi une étape importante avec le lancement de l'« Espace FR », qui introduit de nouveaux outils de recherche, de navigation et d'exportation PDF. Ces évolutions s'accompagnent d'un effort de mise en conformité pour l'accessibilité numérique (RGAA), garantissant un usage plus inclusif.
+L'activité de cette semaine est marquée par une amélioration significative de l'accessibilité et de l'expérience utilisateur. Le lancement de l'« Espace FR » dans [karfur](/repos/refugies-info/karfur) offre de nouveaux usages grâce à la recherche de cours et au partage facilité par SMS ou PDF, tout en garantissant une meilleure inclusion via la mise en conformité RGAA. Parallèlement, [playground](/repos/refugies-info/playground) renforce ses capacités de gestion de contenu grâce à des optimisations de l'IA et améliore la communication interne avec l'intégration de notifications Slack.
 
 ## Sécurité
 - Renforcement de la protection contre les injections HTML via l'intégration de `dompurify` dans [karfur](/repos/refugies-info/karfur).
 
 ## Autres changements notables
-- Refactorisation de l'architecture de gestion des rôles utilisateurs dans [playground](/repos/refugies-info/playground).
-- Évolutions de l'infrastructure de données dans [karfur](/repos/refugies-info/karfur), incluant une migration de la base de données pour l'intégration de nouveaux identifiants et une optimisation des performances des requêtes MongoDB.
+- Refactorisation de la gestion des rôles et renforcement du typage des données dans [playground](/repos/refugies-info/playground).
+- Migration de la base de données pour l'intégration de l'identifiant d'origine (`origin_id`) et optimisation des performances des requêtes MongoDB dans [karfur](/repos/refugies-info/karfur).
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Amélioration des outils de traduction par IA, de la gestion des métadonnées et des systèmes de notification.
-- [karfur](/repos/refugies-info/karfur) : Lancement de l'Espace FR, mise en conformité d'accessibilité et optimisations techniques de la base de données.
+- [playground](/repos/refugies-info/playground) : Évolutions majeures sur l'interface de gestion, les outils de notification et l'optimisation de l'IA.
+- [karfur](/repos/refugies-info/karfur) : Lancement de nouveaux services de recherche, mise en conformité d'accessibilité et optimisations de l'infrastructure de données.

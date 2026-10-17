@@ -1,16 +1,17 @@
 # Synthèse d'activité : france-connect (du 11/05 au 18/05)
 
 ## Résumé de l'activité
-L'activité récente s'est concentrée sur l'amélioration de l'expérience utilisateur et de l'accompagnement client. Des optimisations ont été apportées au tableau de bord, notamment pour une utilisation mobile plus fluide et une meilleure gestion des sessions. L'ajout de liens de support contextuels sur les pages d'erreur et l'intégration de nouveaux éléments visuels pour les futurs fournisseurs d'identité visent à rendre le parcours utilisateur plus intuitif et sécurisant [sources](/repos/france-connect/sources).
+L'activité récente de FranceConnect s'est concentrée sur l'optimisation de l'expérience utilisateur et l'élargissement de l'écosystème de services. Les utilisateurs bénéficient d'une interface plus fluide, notamment sur mobile, et d'un meilleur accompagnement en cas d'erreur grâce à l'ajout de liens de support contextuels. Par ailleurs, l'intégration de nouveaux prestataires via l'eIDASBridge et la préparation de l'arrivée de l'IdP Yris renforcent la diversité et l'accessibilité des services proposés dans [sources](/repos/france-connect/sources).
 
 ## Sécurité
-- Renforcement de l'isolation réseau par la séparation des consommateurs MongoDB selon le niveau d'assurance (faible ou élevé) [sources](/repos/france-connect/sources).
-- Mise en place d'avertissements de sécurité pour prévenir l'utilisateur lorsqu'il tente de désactiver l'intégralité de ses identifiants [sources](/repos/france-connect/sources).
+- Renforcement de la traçabilité et du diagnostic grâce à l'ajout de logs métier détaillés (incluant l'IP et le port client) dans [sources](/repos/france-connect/sources).
+- Amélioration de l'isolation réseau par la séparation des consommateurs MongoDB selon le niveau d'assurance (faible ou élevé) dans [sources](/repos/france-connect/sources).
+- Mise en place de mécanismes de prévention, comme l'affichage d'un avertissement lorsque l'utilisateur désactive l'ensemble de ses identifiants, dans [sources](/repos/france-connect/sources).
 
 ## Autres changements notables
-- Amélioration de la traçabilité et du diagnostic grâce à l'ajout de logs métier détaillés (incluant l'IP et le port client) [sources](/repos/france-connect/sources).
-- Refactorisation de l'architecture logicielle pour optimiser le partage de code entre les différentes applications [sources](/repos/france-connect/sources).
-- Renforcement de la fiabilité du système via l'implémentation de tests de comportement (BDD) sur les notifications et l'historique de connexion [sources](/repos/france-connect/sources).
+- Migration majeure vers la version 6 de `react-router-dom` dans [sources](/repos/france-connect/sources).
+- Refactorisation de l'architecture des dossiers et des composants pour améliorer la maintenabilité et le partage de code entre les applications React dans [sources](/repos/france-connect/sources).
+- Renforcement de la qualité logicielle via l'implémentation de tests BDD (Behavior Driven Development) pour valider les notifications et l'historique de connexion dans [sources](/repos/france-connect/sources).
 
 ## Dépôts les plus actifs
-- [sources](/repos/france-connect/sources) : Évolutions centrées sur l'expérience utilisateur, la sécurité et la robustesse technique du système.
+- [sources](/repos/france-connect/sources) : Travaux divers portant sur l'amélioration de l'expérience utilisateur, la sécurité et la refactorisation technique de l'infrastructure.

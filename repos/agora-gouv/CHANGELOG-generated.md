@@ -1,25 +1,22 @@
-# Synthèse d'activité : agora-gouv (du 01/07 au 27/08)
+# Synthèse d'activité : agora-gouv (du 20/08 au 23/09)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'enrichissement de l'expérience utilisateur et le renforcement des outils de gestion de contenu. Les utilisateurs bénéficient de nouvelles fonctionnalités telles que l'identification des auteurs de réponses, l'utilisation de clusters de mots pour les thématiques hebdomadaires et une amélioration de la fluidité du partage de contenu sur mobile ([agora-app](/repos/agora-gouv/agora-app)).
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la modernisation des infrastructures. Les utilisateurs bénéficieront d'une interface plus intuitive et conforme aux standards de design (DSFR) dans [agora-app](/repos/agora-gouv/agora-app) et [agora-front](/repos/agora-gouv/agora-front), ainsi que de nouvelles fonctionnalités de partage et de visibilité des auteurs de contributions.
 
-Parallèlement, des efforts importants ont été déployés pour améliorer la traçabilité et la modération, notamment via l'ajout de motifs de refus pour les contributions et de nouveaux outils d'administration ([agora-back](/repos/agora-gouv/agora-back)). Ces évolutions visent à rendre la plateforme plus intuitive pour les citoyens et plus robuste pour les équipes de gestion ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).
+Parallèlement, des efforts importants ont été déployés pour renforcer la fiabilité du système, notamment via l'automatisation de la gestion des certificats de sécurité et la migration vers de nouvelles versions technologiques pour le contenu, impactant directement la stabilité de [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) et [agora-back](/repos/agora-gouv/agora-back).
 
 ## Sécurité
-- Renforcement de la sécurité réseau via l'ajout d'un filtrage par adresse IP sur l'instance Metabase ([agora-metabase-scalingo](/repos/agora-gouv/agora-metabase-scalingo)).
-- Automatisation et sécurisation de la gestion des certificats SSL via l'intégration de Sectigo et l'automatisation des processus ACME ([agora-back](/repos/agora-gouv/agora-back), [agora-front](/repos/agora-gouv/agora-front), [agora-app](/repos/agora-gouv/agora-app)).
+- Automatisation de la gestion des certificats SSL via le protocole ACME (Sectigo) pour sécuriser les échanges sur [agora-back](/repos/agora-gouv/agora-back) et [agora-app](/repos/agora-gouv/agora-app).
+- Simplification et sécurisation de la gestion des certificats SSL au sein de l'application [agora-front](/repos/agora-gouv/agora-front).
+- Renforcement de la sécurité de l'accès à l'instance Metabase par l'ajout d'un filtrage par adresse IP via NGINX dans [agora-metabase-scalingo](/repos/agora-gouv/agora-metabase-scalingo).
 
 ## Autres changements notables
-- **Migrations et infrastructure** :
-    - Migration majeure de la plateforme de gestion de contenu vers Strapi V5 ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).
-    - Optimisation des performances serveur (ajustements Nginx, gestion de la mémoire Node.js) et mise à jour de l'environnement d'exécution ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).
-    - Refonte de l'algorithme de calcul des tendances ([agora-back](/repos/agora-gouv/agora-back)).
-    - Simplification de la gestion du cache Redis ([agora-back](/repos/agora-gouv/agora-back)).
-- **Interface et Design** :
-    - Mise en conformité de l'application mobile avec le Design System FR (DSFR) ([agora-app](/repos/agora-gouv/agora-app)).
-    - Amélioration de la clarté des interfaces et de l'éditeur de texte enrichi ([agora-front](/repos/agora-gouv/agora-front), [agora-app](/repos/agora-gouv/agora-app)).
+- Migration majeure de la plateforme de gestion de contenu vers Strapi V5 dans [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi).
+- Optimisation des performances et de la stabilité du serveur (mémoire Node.js, configurations Nginx) dans [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi).
+- Refonte de l'algorithme de calcul des tendances (versions V3 et V4) dans [agora-back](/repos/agora-gouv/agora-back).
+- Amélioration de la gestion du cache Redis et des processus de nettoyage dans [agora-back](/repos/agora-gouv/agora-back).
 
 ## Dépôts les plus actifs
-- [agora-back](/repos/agora-gouv/agora-back) : Évolutions majeures des fonctionnalités métier, de l'API et de l'automatisation des certificats.
-- [agora-app](/repos/agora-gouv/agora-app) : Améliorations de l'expérience utilisateur mobile et mise en conformité au design système.
-- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Migration technologique majeure et optimisations de performance.
+- [agora-back](/repos/agora-gouv/agora-back) : Évolutions majeures des fonctionnalités d'administration, de l'API et des algorithmes de tendances.
+- [agora-app](/repos/agora-gouv/agora-app) : Améliorations de l'expérience mobile, du partage de contenu et de la conformité au design system.
+- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Migration technologique majeure et optimisation des performances de l'infrastructure de contenu.

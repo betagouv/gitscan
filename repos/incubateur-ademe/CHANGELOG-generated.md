@@ -1,23 +1,23 @@
-# Synthèse d'activité : incubateur-ademe (du 01/08 au 31/08)
+# Synthèse d'activité : incubateur-ademe (du 01/04 au 30/10)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une forte progression de l'expérience utilisateur et de la précision des outils de simulation environnementale. Les efforts se sont concentrés sur l'enrichissement des données de profil ([nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat)), le déploiement de nouveaux assistants intelligents ([quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets)) et l'élargissement de l'audience des services, notamment vers le secteur privé ([plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site)).
+L'activité récente de l'organisation est marquée par une montée en puissance des outils d'aide à la décision et une amélioration significative de la précision des modèles de calcul d'impact environnemental. L'intégration de l'intelligence artificielle dans [territories-en-transitions](/repos/incubateur-ademe/territories-en-transitions) et la refonte complète de l'expérience utilisateur sur des projets comme [benefriches](/repos/incubateur-ademe/benefriches) ou [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) témoignent d'une volonté de rendre les données climatiques plus accessibles et actionnables pour les utilisateurs finaux.
 
-Parallèlement, une modernisation structurelle profonde est engagée pour assurer la pérennité et la fiabilité des services. Cela se traduit par des migrations technologiques majeures vers des frameworks récents ([territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions), [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site)) et un renforcement significatif de l'observabilité et du suivi analytique ([nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app), [tacct](/repos/incubateur-ademe/tacct)).
+Parallèlement, l'infrastructure a bénéficié de migrations technologiques majeures vers des solutions plus modernes (Strapi 5, NestJS 12), renforçant la robustesse et la scalabilité des services ([plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site), [plusfraichemaville-cms](/repos/incubateur-ademe/plusfraichemaville-cms)). L'automatisation de la gestion des accès et des processus de déploiement a également été un axe fort pour sécuriser et fluidifier l'exploitation des outils ([account-manager](/repos/incubateur-ademe/account-manager), [scalingo-watcher](/repos/incubateur-ademe/scalingo-watcher)).
 
 ## Sécurité
-- Renforcement de la gestion des accès via l'authentification à deux facteurs (2FA) et le support SSO ([roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles), [grafana](/repos/incubateur-ademe/grafana)).
-- Automatisation de l'offboarding pour sécuriser les accès aux plateformes tierces comme GitHub et Notion ([account-manager](/repos/incubateur-ademe/account-manager)).
-- Sécurisation des secrets de base de données et rotation des mots de passe ([quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets)).
+- **Gestion des accès et authentification** : Renforcement de la sécurité via l'authentification 2FA (passkeys, OTP) dans [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) et migration vers une authentification centralisée (FGP) pour [grafana](/repos/incubateur-ademe/grafana).
+- **Gouvernance et Offboarding** : Automatisation du retrait des accès (GitHub, Notion) pour sécuriser la gestion des comptes dans [account-manager](/repos/incubateur-ademe/account-manager).
+- **Maintenance corrective** : Résolution d'alertes de sécurité (CodeQL, Dependabot) dans [scalingo-watcher](/repos/incubateur-ademe/scalingo-watcher) et amélioration de la gestion du 2FA dans [vaultwarden](/repos/incubateur-ademe/vaultwarden).
 
 ## Autres changements notables
-- **Migrations technologiques et d'infrastructure** : Passage massif à Strapi 5 ([territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions), [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site), [plusfraichemaville-cms](/repos/incubateur-ademe/plusfraichemaville-cms)), migration vers Scaleway ([quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets)) et passage à MariaDB ([tacct](/repos/incubateur-ademe/tacct)).
-- **Développement d'outils de design** : Création d'une interface visuelle (Builder UI) pour la personnalisation du Design System Français ([dsfr-override](/repos/incubateur-ademe/dsfr-override)).
-- **Amélioration de l'observabilité** : Intégration poussée d'outils de monitoring et de suivi des erreurs pour garantir la stabilité ([nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app), [tacct](/repos/incubateur-ademe/tacct)).
+- **Migrations technologiques majeures** : Passage à Strapi 5 pour [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) et [plusfraichemaville-cms](/repos/incubateur-ademe/plusfraichemaville-cms), et adoption de NestJS 12 pour [benefriches](/repos/incubateur-ademe/benefriches).
+- **Évolutions architecturales** : Migration vers tRPC pour [territories-en-transitions](/repos/incubateur-ademe/territories-en-transitions) et refonte modulaire en TypeScript pour [fine-grained-proxy](/repos/incubateur-ademe/fine-grained-proxy).
+- **Outils de développement et Design System** : Création d'un "Builder UI" pour la personnalisation visuelle du Design System dans [dsfr-override](/repos/incubateur-ademe/dsfr-override) et optimisation des déploiements monorepos avec [ngc-scalingo-buildpack](/repos/incubateur-ademe/ngc-scalingo-buildpack).
 
 ## Dépôts les plus actifs
-- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Amélioration de la précision des modèles de calcul et enrichissement des profils utilisateurs.
-- [account-manager](/repos/incubateur-ademe/account-manager) : Automatisation de la gestion des accès et suivi de la conformité des ressources.
-- [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) : Migrations d'infrastructure majeures et déploiement de l'Assistant V2.
-- [benefriches](/repos/incubateur-ademe/benefriches) : Mise en place d'un système de communication automatisé et amélioration des scores d'impact.
-- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Refonte de l'aide à la décision et ouverture du service aux entreprises privées.
+- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) (et ses composants) : Amélioration majeure du modèle de calcul d'empreinte carbone et de l'expérience de simulation.
+- [account-manager](/repos/incubateur-ademe/account-manager) : Automatisation poussée de la gestion des accès, des ressources et du suivi de conformité.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Refonte de l'onboarding, du système d'emails automatisés et précision des scores d'impact.
+- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ouverture du service aux entreprises privées et modernisation de l'infrastructure.
+- [publicodes-commun](/repos/incubateur-ademe/publicodes-commun) : Mise à jour des données du mix électrique 2025 et stabilisation des processus de publication.
