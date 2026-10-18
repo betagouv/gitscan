@@ -1,37 +1,31 @@
 ## Changelog : Docurba (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Ce mois-ci, Docurba a franchi une étape importante dans la précision de la gestion documentaire et la traçabilité des actions. Les utilisateurs bénéficient d'une meilleure visibilité sur l'origine des modifications (auteurs des sections) et d'une gestion plus fine des procédures (nouveaux types, calcul automatique des noms). L'administration a également été renforcée pour offrir un meilleur contrôle sur les comptes utilisateurs et le partage de projets.
+Ce mois-ci, Docurba a franchi une étape importante dans la traçabilité et la fiabilité des données. Les utilisateurs bénéficient d'une meilleure visibilité sur l'origine des modifications (qui a créé ou modifié quoi) et d'un contrôle plus strict lors de la création de procédures. La plateforme est également plus robuste grâce à une gestion optimisée des comptes utilisateurs et une amélioration des processus d'archivage.
 
 ### Évolutions fonctionnelles
+- **Amélioration de la traçabilité** : Affichage systématique de l'auteur des dernières modifications et de l'auteur de la création des sections dans les trames.
 - **Gestion des procédures** : 
-    - Ajout du champ "complément de nom" et automatisation du calcul du nom de la procédure.
-    - Introduction de nouveaux types de procédures (ex: Révision) et amélioration de la gestion des types de documents.
-    - Meilleure visibilité des données clés : affichage des dates d'approbation des procédures parentes et inclusion des communes déléguées dans le calcul des zones.
-    - Mise en place d'un système d'archivage pour les événements au lieu d'une suppression pure et simple.
-- **Expérience utilisateur (Interface Nuxt)** :
-    - Amélioration de la traçabilité : affichage de l'auteur de la dernière modification et de l'auteur de la création des sections.
-    - Optimisation de l'édition : meilleure gestion de l'ouverture des sections et de la continuité des auteurs lors de la copie de sections entre départements.
-    - Contrôle de saisie : blocage de la création de procédures dans certains contextes géographiques (absence de commune ou configuration EPCI spécifique).
-- **Administration et Utilisateurs** :
-    - Réactivation de la création de comptes utilisateurs et automatisation de l'envoi d'emails de vérification.
-    - Amélioration de l'interface d'administration pour la gestion du partage de projets et la vérification des profils.
-    - Possibilité de désactiver l'inscription des nouveaux utilisateurs.
+    - Automatisation du calcul des noms de procédures pour plus de cohérence.
+    - Ajout de nouveaux champs (complément de nom) et affichage des dates d'approbation des procédures parentes.
+    - Mise en place de règles de validation pour empêcher la création de procédures sans commune ou dans des contextes EPCI non conformes.
+- **Administration et utilisateurs** :
+    - Amélioration du filtrage par type de procédure dans l'interface d'administration.
+    - Activation de la vérification des comptes utilisateurs par email.
+    - Meilleure gestion du partage de projets avec une interface de suppression et d'affichage améliorée.
+    - Intégration de Pipedrive pour automatiser la vérification des profils utilisateurs.
 
 ### Évolutions techniques
-- **Architecture Backend (Django)** :
-    - Refactorisation majeure des énumérations (enums) pour une meilleure structure du code.
-    - Optimisation des API internes pour le listage et le filtrage des procédures.
-    - Amélioration de la robustesse via l'implémentation de mécanismes de tentatives automatiques (Tenacity) en cas d'échec.
-- **Infrastructure et DevOps** :
-    - Optimisation des "Review Apps" (gestion dynamique des ressources et mise à jour du nommage).
-    - Mise en place de sauvegardes pour l'outil Metabase.
-    - Nettoyage des endpoints API inutilisés côté Nuxt.
-- **Base de données et Tests** :
-    - Mise à jour et résolution de conflits dans les migrations de base de données.
-    - Renforcement de l'intégrité des données (contraintes de non-nullité sur les rôles de partage).
-    - Amélioration de la qualité des tests : correction de tests instables ("flaky tests"), nettoyage des snapshots et ajout de nouvelles usines de test (Factories).
+- **Optimisation de l'API** : Nettoyage important des points de terminaison (endpoints) inutilisés et refactorisation des énumérations (enums) pour une structure de code plus propre.
+- **Gestion des données et fiabilité** :
+    - Transition d'un système de suppression vers un système d'archivage pour les événements.
+    - Mise en place de mécanismes de tentatives automatiques (retries) pour gérer les échecs temporaires.
+    - Correction de tests instables et mise à jour des migrations de base de données.
+- **Infrastructure et CI/CD** :
+    - Optimisation des "Review Apps" pour une meilleure gestion des ressources.
+    - Mise en place de sauvegardes pour l'outil de BI Metabase.
+    - Augmentation des limites de débit (rate limiting) pour améliorer la stabilité du service.
 
 ### Autres changements
-- Suppression de Nuxt3 et nettoyage du code mort.
-- Augmentation des limites de débit (rate limiting) pour la sécurité.
+- **Nettoyage** : Suppression de code mort, de snapshots orphelins et de variables d'environnement inutilisées.
+- **Documentation** : Mise à jour des snapshots de l'API d'export.
