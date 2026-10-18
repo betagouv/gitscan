@@ -1,7 +1,10 @@
-## Changelog : dockerfiles (30 derniers jours, au 14 septembre 2026)
+## Changelog : dockerfiles (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Le dépôt s'enrichit d'un nouvel outil permettant de piloter les machines virtuelles de la plateforme Outscale directement via un conteneur Docker.
+Ce mois-ci, le projet a enrichi sa collection d'outils avec une nouvelle image dédiée à l'infrastructure (OpenTofu) et a optimisé ses processus d'automatisation pour garantir que seuls les changements validés déclenchent la création de nouvelles images.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau Dockerfile dédié à la gestion de la puissance des machines virtuelles Outscale (OSC VM Power) [#41](https://github.com/cloud-gouv/dockerfiles/pull/41).
+- Ajout d'une nouvelle image Docker dédiée aux déploiements avec OpenTofu.
+
+### Évolutions techniques
+- Optimisation des pipelines CI/CD pour restreindre l'exécution des builds aux seules Pull Requests validées et fusionnées dans la branche principale (`main`).
