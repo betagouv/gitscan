@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/SocialGouv/fiches-travail-data",
   "name": "fiches-travail-data",
-  "description": "Ce projet propose des données structurées au format JSON extraites du site travail-emploi.gouv.fr. Il facilite l'intégration des informations relatives au travail et à l'emploi dans d'autres applications.",
+  "description": "Ce projet fournit des données structurées au format JSON extraites du site travail-emploi.gouv.fr. Il permet d'automatiser la récupération et la mise à jour des fiches relatives au travail et à l'emploi.",
   "language": "TypeScript",
   "features": [
     "Données & Schémas"
@@ -9,10 +9,12 @@
   "audience": "Développeurs",
   "dependencies": [
     "got",
+    "@socialgouv/cdtn-slugify",
+    "@socialgouv/legi-data",
     "p-limit",
     "talisman",
-    "@socialgouv/cdtn-slugify",
-    "@socialgouv/legi-data"
+    "unist-util-find",
+    "unist-util-visit"
   ],
   "components": [
     "TypeScript / JavaScript",
@@ -23,16 +25,15 @@
   "auth": {
     "methods": [
       "none"
-    ],
-    "providers": []
+    ]
   },
   "tests": "Jest",
   "workflows": [
     "Node.js CI",
     "Release"
   ],
-  "lastActivity": "2026-10-09T00:00:00Z",
-  "status": "maintained",
+  "lastActivity": "2026-10-16T00:00:00Z",
+  "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
