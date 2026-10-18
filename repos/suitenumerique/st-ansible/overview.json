@@ -1,50 +1,44 @@
 {
   "url": "https://github.com/suitenumerique/st-ansible",
   "name": "st-ansible",
-  "description": "Collection Ansible pour le déploiement des applications de La Suite Territoriale sur Debian via des conteneurs Podman rootless. Elle inclut un outil CLI en Python pour automatiser le bootstrapping et l'exploitation des environnements.",
+  "description": "Collection Ansible pour le déploiement des applications de La Suite Territoriale sur Debian en utilisant des conteneurs Podman rootless gérés par systemd.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Sécurité & Conformité",
     "Collaboration & Workflow",
-    "Administration & Backoffice",
-    "Monitoring & Logs",
-    "Infrastructure & Stockage"
+    "Infrastructure & Stockage",
+    "Administration & Backoffice"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Ansible",
     "Podman",
     "systemd",
     "Caddy",
-    "Redis",
-    "PostgreSQL",
     "Keycloak",
-    "Celery",
-    "Restic"
+    "Redis",
+    "Restic",
+    "FastAPI"
   ],
   "components": [
     "Ansible & IaC",
     "Docker & Conteneurs",
     "Python (scripts & backend)",
-    "Scripts & Utilitaires",
     "CI/CD & Déploiement",
-    "Authentification (composant)"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "session"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": [
-    "pytest",
-    "molecule"
-  ],
+  "tests": "pytest, molecule",
   "workflows": [
     "GitHub Actions"
   ],
