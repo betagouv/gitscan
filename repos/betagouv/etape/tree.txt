@@ -52,6 +52,7 @@
 │       └── web-design-guidelines -> ../../.agents/skills/web-design-guidelines
 ├── .dockerignore
 ├── .editorconfig
+├── .env.example
 ├── .github
 │   ├── actions
 │   │   └── deployer-statique
@@ -84,6 +85,8 @@
 │   │   │   ├── migrations
 │   │   │   │   ├── 20260917141651_create_auth_tables
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261008150000_bind_session_and_account_to_front
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -97,6 +100,12 @@
 │   │   │   │   ├── auth-flow-exception.filter.ts
 │   │   │   │   ├── auth.controller.ts
 │   │   │   │   ├── auth.module.ts
+│   │   │   │   ├── csrf.guard.test.ts
+│   │   │   │   ├── csrf.guard.ts
+│   │   │   │   ├── front.guard.test.ts
+│   │   │   │   ├── front.guard.ts
+│   │   │   │   ├── front.test.ts
+│   │   │   │   ├── front.ts
 │   │   │   │   ├── identity-claims.test.ts
 │   │   │   │   ├── identity-claims.ts
 │   │   │   │   ├── identity-provider.test.ts
@@ -111,8 +120,10 @@
 │   │   │   │       ├── session.service.test.ts
 │   │   │   │       ├── session.service.ts
 │   │   │   │       ├── session.store.ts
+│   │   │   │       ├── session.types.test.ts
 │   │   │   │       └── session.types.ts
 │   │   │   ├── config
+│   │   │   │   ├── env.test.ts
 │   │   │   │   └── env.ts
 │   │   │   ├── database
 │   │   │   │   ├── database.module.ts
@@ -120,6 +131,48 @@
 │   │   │   └── main.ts
 │   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
+│   ├── back-office
+│   │   ├── .env.example
+│   │   ├── eslint.config.mjs
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── App.tsx
+│   │   │   ├── index.css
+│   │   │   ├── lib
+│   │   │   │   └── clients.ts
+│   │   │   ├── main.tsx
+│   │   │   ├── navigation
+│   │   │   │   ├── error-screens.tsx
+│   │   │   │   ├── root-layout.tsx
+│   │   │   │   ├── router.ts
+│   │   │   │   └── routes.tsx
+│   │   │   └── vite-env.d.ts
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
+│   ├── front-office
+│   │   ├── .env.example
+│   │   ├── eslint.config.mjs
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── App.tsx
+│   │   │   ├── index.css
+│   │   │   ├── lib
+│   │   │   │   └── clients.ts
+│   │   │   ├── main.tsx
+│   │   │   ├── navigation
+│   │   │   │   ├── error-screens.tsx
+│   │   │   │   ├── root-layout.tsx
+│   │   │   │   ├── router.ts
+│   │   │   │   └── routes.tsx
+│   │   │   └── vite-env.d.ts
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
 │   ├── keycloak-theme
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
@@ -189,9 +242,10 @@
 │   │   ├── public
 │   │   │   ├── file.svg
 │   │   │   ├── fonts
-│   │   │   │   ├── OpenSans-Bold.ttf
-│   │   │   │   ├── OpenSans-Regular.ttf
-│   │   │   │   └── OpenSans-SemiBold.ttf
+│   │   │   │   ├── BricolageGrotesque-SemiBold.ttf
+│   │   │   │   ├── Geist-Bold.ttf
+│   │   │   │   ├── Geist-Regular.ttf
+│   │   │   │   └── Geist-SemiBold.ttf
 │   │   │   ├── globe.svg
 │   │   │   ├── ministere-travail-logo.svg
 │   │   │   ├── next.svg
@@ -281,8 +335,6 @@
 │       │   └── transitions-pro-logo.svg
 │       ├── src
 │       │   ├── app
-│       │   │   ├── compte
-│       │   │   │   └── page.tsx
 │       │   │   ├── favicon.ico
 │       │   │   ├── globals.css
 │       │   │   ├── layout.tsx
@@ -294,9 +346,6 @@
 │       │   │   ├── formation-collective.jpg
 │       │   │   └── hero-reflexion.jpg
 │       │   ├── components
-│       │   │   ├── account-details.tsx
-│       │   │   ├── auth-flow-notice.tsx
-│       │   │   ├── auth-menu.tsx
 │       │   │   ├── footer-anchor.tsx
 │       │   │   ├── main-nav.tsx
 │       │   │   ├── nav-link.figma.tsx
@@ -321,10 +370,8 @@
 │       │   │   ├── home.ts
 │       │   │   └── mentions-legales.ts
 │       │   └── lib
-│       │       ├── auth.ts
 │       │       ├── footer.ts
-│       │       ├── navigation.ts
-│       │       └── use-session.ts
+│       │       └── navigation.ts
 │       └── tsconfig.json
 ├── deploy
 │   ├── .env.example
@@ -333,7 +380,10 @@
 │   ├── keycloak-start.sh
 │   ├── nginx-auth-proxy.inc
 │   ├── nginx-auth.conf
-│   └── nginx.conf
+│   ├── nginx-front-headers.inc
+│   ├── nginx-front.inc
+│   ├── nginx-hostnames.envsh
+│   └── nginx.conf.template
 ├── docker-compose.prod.yml
 ├── docker-compose.yml
 ├── docs
@@ -369,10 +419,56 @@
 ├── keycloak
 │   └── realms
 │       ├── README.md
+│       ├── etape-back-office-realm.json
 │       └── etape-realm.json
 ├── package-lock.json
 ├── package.json
 ├── packages
+│   ├── api-client
+│   │   ├── eslint.config.mjs
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── api-error.ts
+│   │   │   ├── app-notices.test.ts
+│   │   │   ├── app-notices.ts
+│   │   │   ├── auth-flow-messages.test.ts
+│   │   │   ├── auth-flow-messages.ts
+│   │   │   ├── auth-flow.test.ts
+│   │   │   ├── auth-flow.ts
+│   │   │   ├── csrf.ts
+│   │   │   ├── http-client.test.ts
+│   │   │   ├── http-client.ts
+│   │   │   ├── http-status.ts
+│   │   │   ├── index.ts
+│   │   │   ├── is-api-error-body.test.ts
+│   │   │   ├── is-api-error-body.ts
+│   │   │   ├── login-attempts.test.ts
+│   │   │   ├── login-attempts.ts
+│   │   │   ├── query-client.test.ts
+│   │   │   ├── query-client.ts
+│   │   │   ├── session-clients.test.ts
+│   │   │   ├── session-clients.ts
+│   │   │   ├── session-query.ts
+│   │   │   ├── session.test.ts
+│   │   │   ├── session.ts
+│   │   │   ├── startup-access.test.ts
+│   │   │   ├── startup-access.ts
+│   │   │   ├── testing
+│   │   │   │   ├── memory-storage.ts
+│   │   │   │   └── start-test-server.ts
+│   │   │   └── use-session-expired.ts
+│   │   └── tsconfig.json
+│   ├── api-contract
+│   │   ├── eslint.config.mjs
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── auth
+│   │   │   │   ├── auth.routes.ts
+│   │   │   │   └── auth.schemas.ts
+│   │   │   ├── build-route-path.ts
+│   │   │   ├── index.ts
+│   │   │   └── route-definition.ts
+│   │   └── tsconfig.json
 │   ├── eslint-config
 │   │   ├── README.md
 │   │   ├── base.js
@@ -390,6 +486,9 @@
 │       ├── src
 │       │   ├── components
 │       │   │   ├── accordion.tsx
+│       │   │   ├── action-notice.test.tsx
+│       │   │   ├── action-notice.tsx
+│       │   │   ├── alert-dialog.tsx
 │       │   │   ├── back-to-top.tsx
 │       │   │   ├── badge.tsx
 │       │   │   ├── button.tsx
@@ -402,11 +501,17 @@
 │       │   │   ├── form.tsx
 │       │   │   ├── input.tsx
 │       │   │   ├── label.tsx
+│       │   │   ├── notice-screen.test.tsx
+│       │   │   ├── notice-screen.tsx
+│       │   │   ├── pending-screen.test.tsx
+│       │   │   ├── pending-screen.tsx
 │       │   │   ├── prose.tsx
 │       │   │   ├── radio-group.tsx
 │       │   │   ├── section.tsx
 │       │   │   ├── select.tsx
 │       │   │   ├── separator.tsx
+│       │   │   ├── session-expired-dialog.test.tsx
+│       │   │   ├── session-expired-dialog.tsx
 │       │   │   ├── skip-links.tsx
 │       │   │   ├── sonner.tsx
 │       │   │   ├── tabs.tsx
@@ -417,10 +522,11 @@
 │       │   │   └── utils.ts
 │       │   └── styles
 │       │       └── globals.css
-│       └── tsconfig.json
+│       ├── tsconfig.json
+│       └── vitest.config.ts
 ├── paths.mjs
 ├── scripts
 │   └── assemble-static.mjs
 ├── skills-lock.json
 └── turbo.json
-93 directories, 388 files
+107 directories, 480 files

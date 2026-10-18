@@ -1,33 +1,29 @@
-## Changelog : etape (30 derniers jours, au 24 septembre 2026)
+## Changelog : etape (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'expérience utilisateur du simulateur, incluant une réécriture des règles métier et une nouvelle interface pour le questionnaire et les résultats. Parallèlement, la plateforme a franchi des étapes importantes de maturité technique avec la migration de son infrastructure de déploiement et la mise en place de standards de développement plus stricts.
+Ce mois a été marqué par une transformation majeure de la plateforme, tant sur le plan visuel que technique. L'interface a été intégralement modernisée grâce à l'adoption d'un nouveau design system, offrant une meilleure lisibilité et une expérience utilisateur plus fluide. En parallèle, l'infrastructure a été profondément restructurée pour séparer le front-office du back-office et renforcer la sécurité globale du système.
 
 ### Évolutions fonctionnelles
-- **Refonte du simulateur** : Révision complète du parcours de questionnement et de la page de résultats pour mieux correspondre aux règles métier ([#56](https://github.com/betagouv/etape/issues/56)).
-- **Nouvelles fonctionnalités** :
-    - Intégration de l'authentification via FranceConnect ([#16](https://github.com/betagouv/etape/issues/16)).
-    - Possibilité de télécharger les résultats de la simulation au format PDF, avec des liens cliquables et une mise en page optimisée ([#49](https://github.com/betagouv/etape/issues/49)).
-- **Améliorations de l'expérience utilisateur (UX/UI)** :
-    - Optimisation du questionnaire : gestion de la barre de progression, meilleur positionnement des messages d'erreur, et comportement plus intuitif des boutons "Suivant" et "Précédent".
-    - Affichage de l'ancienneté amélioré (format date) et simplification de l'écran de situation.
-    - Correction de l'affichage des données dans les tableaux de rendu.
-- **Contenu** : Mise à jour du glossaire (ajout des notions de brouillon, accusé et historique) et bascule vers le service du portail CEP national.
+- **Refonte visuelle complète** : Adoption d'un nouveau design system incluant de nouvelles typographies (Geist, Bricolage Grotesque), une nouvelle palette de couleurs et des composants d'interface améliorés (dialogues d'alerte, états des champs). [#78](https://github.com/betagouv/etape/pull/78)
+- **Amélioration de l'accessibilité** : Optimisation des contrastes pour les textes secondaires et meilleure visibilité des surfaces de l'interface.
+- **Nouvelles fonctionnalités d'authentification** : Intégration de FranceConnect [#16](https://github.com/betagouv/etape/issues/16).
+- **Expérience utilisateur (UX) de session** : Amélioration de la gestion des sessions (écrans d'attente, gestion des erreurs de connexion et de l'expiration de session) pour éviter les boucles de redirection. [#73](https://github.com/betagouv/etape/pull/73)
+- **Documents PDF** : Mise à jour du style et des polices des documents de résultats générés.
 
 ### Évolutions techniques
-- **Backend & Architecture** :
-    - Migration de NestJS de la version 11 vers la version 12.
-    - Refactorisation de l'API avec une séparation plus nette des couches et adoption de TanStack Query.
-    - Mise en place de contrats de routes partagés.
-- **Infrastructure & CI/CD** :
-    - Migration du système de déploiement : abandon de Vercel au profit d'un nouveau circuit basé sur des machines virtuelles gérées via Ansible.
-    - Automatisation du déploiement sur l'environnement de développement à chaque fusion sur la branche principale.
-    - Renforcement de la chaîne de tests avec l'ajout de tests de bout en bout pour le registre Harbor ([#57](https://github.com/betagouv/etape/issues/57)).
-    - Intégration d'outils de suivi (Matomo et Sentry).
-- **Qualité du code** :
-    - Instauration de nouvelles conventions de nommage (français/anglais) et de règles de typage strictes.
-    - Mise en place d'outils de revue automatique pour les pratiques React et l'accessibilité.
+- **Modernisation de la stack front-end** : Migration des applications front-office et back-office vers Vite pour des performances accrues. [#71](https://github.com/betagouv/etape/pull/71)
+- **Migration de l'API** : Passage de NestJS vers la version 12.
+- **Nouvelle architecture de déploiement** : Séparation physique du front-office et du back-office avec des origines distinctes et des domaines (realms) Keycloak dédiés. [#75](https://github.com/betagouv/etape/pull/75)
+- **Navigation** : Intégration de TanStack Router pour une gestion plus robuste du routage.
+- **Renforcement de la sécurité** : 
+    - Mise en place de protections CSRF sur les requêtes de modification de données.
+    - Sécurisation des cookies de session via le préfixe `__Host-`.
+    - Retrait des secrets et valeurs sensibles des fichiers versionnés et des exemples d'environnement.
+- **Optimisation du client API** : Ajout d'intercepteurs Axios et amélioration de la gestion des erreurs et des sessions au sein du client.
+- **Qualité et Infrastructure** : 
+    - Ajout de tests de bout en bout (E2E) pour le registre Harbor. [#57](https://github.com/betagouv/etape/pull/57)
+    - Correction d'un conflit de dépendances sur le `ThrottlerGuard` de NestJS. [#68](https://github.com/betagouv/etape/pull/68)
 
 ### Autres changements
-- **Documentation** : Mise à jour massive de la documentation technique (stack front-end, pratiques React, procédures d'infrastructure Ansible et guides d'accessibilité).
-- **Nettoyage** : Correction de nombreux écarts de nommage et alignement avec le Design System.
+- **Documentation** : Mise à jour importante des guides sur l'authentification, le routage, la gestion des sessions et les bonnes pratiques React. [#54](https://github.com/betagouv/etape/pull/54)
+- **Nettoyage** : Optimisation du lockfile Vite et nettoyage des fichiers de configuration.

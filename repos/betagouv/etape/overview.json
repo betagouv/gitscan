@@ -1,24 +1,27 @@
 {
   "url": "https://github.com/betagouv/etape",
   "name": "etape",
-  "description": "ETAPE est une plateforme conçue pour accompagner les salariés dans leur transition professionnelle. Elle propose notamment un simulateur d'éligibilité à divers dispositifs d'aide.",
+  "description": "Plateforme permettant aux salariés de préparer leur transition professionnelle grâce à un simulateur d'éligibilité et un accompagnement personnalisé.",
   "language": "TypeScript",
   "features": [
-    "Formulaires & Démarches",
-    "Aides & Éligibilité",
-    "Authentification & Accès",
     "Simulation & Calcul",
+    "Authentification & Accès",
+    "Formulaires & Démarches",
+    "Gestion documentaire & Fichiers",
     "Interface utilisateur & Design"
   ],
   "audience": "Grand public",
   "dependencies": [
     "Next.js",
     "NestJS",
-    "Prisma",
+    "React",
     "PostgreSQL",
+    "Prisma",
     "Keycloak",
+    "Turborepo",
     "Tailwind CSS",
-    "Turborepo"
+    "TanStack Query",
+    "Zod"
   ],
   "components": [
     "API REST & GraphQL",
@@ -26,24 +29,30 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "CI/CD & Déploiement",
     "Authentification (composant)",
-    "Design System (DSFR & UI libs)",
-    "Microservices & Architecture"
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "email-password"
+      "jwt",
+      "session"
     ],
     "providers": [
-      "FranceConnect"
+      "FranceConnect",
+      "Keycloak"
     ]
   },
-  "tests": "vitest",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Vitest",
+    "Tests de bout en bout (E2E)"
   ],
-  "lastActivity": "2026-09-24T18:49:18+02:00",
+  "workflows": [
+    "CI/CD via Ansible",
+    "Déploiement automatique sur fusion"
+  ],
+  "lastActivity": "2026-10-15T14:34:36+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -52,8 +61,7 @@
     "TypeScript",
     "React & Next.js",
     "Docker & Conteneurs",
-    "Bases de données SQL",
     "CI/CD & GitHub Actions",
-    "Design System & UI"
+    "Bases de données SQL"
   ]
 }
