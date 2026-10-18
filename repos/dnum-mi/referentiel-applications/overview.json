@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/dnum-mi/referentiel-applications",
   "name": "referentiel-applications",
-  "description": "Catalogue et outil de gouvernance des métadonnées des applications du ministère de l'Intérieur. Il permet de centraliser les informations sur le statut, la conformité, l'hébergement et la dette technique des applications.",
+  "description": "RefApp est un catalogue et un outil de gouvernance destiné à répertorier les applications du ministère de l'Intérieur. Il sert de point de vérité unique pour gérer les métadonnées telles que le statut, la conformité, l'hébergement et la dette technique.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
     "Administration & Backoffice",
+    "Recherche & Filtres",
+    "Statistiques & Rapports",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas",
-    "Suivi & Traçabilité",
-    "Recherche & Filtres"
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,7 +19,9 @@
     "PostgreSQL",
     "Vue.js",
     "Keycloak",
-    "Docker"
+    "DSFR",
+    "Docker",
+    "pnpm"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,25 +32,25 @@
     "Docker & Conteneurs",
     "Node.js / NestJS",
     "Authentification (composant)",
-    "Documentation & Schémas",
-    "CI/CD & Déploiement"
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "sso"
+      "jwt"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests E2E",
+  "tests": [
+    "E2E tests"
+  ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-13T00:00:00Z",
-  "status": "active",
+  "lastActivity": "2026-10-14T00:00:00Z",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -56,8 +58,8 @@
     "TypeScript",
     "Vue.js & Nuxt",
     "Node.js, NestJS & Express",
-    "Docker & Conteneurs",
     "Bases de données SQL",
+    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
     "Design System & UI",
     "Sécurité & Auth"

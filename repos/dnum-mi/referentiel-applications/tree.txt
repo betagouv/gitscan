@@ -429,6 +429,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20261009130000_add_user_grist_settings
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20261015085418_preserve_used_actor_types
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── qa-correlation-fixtures.ts
 │   │   ├── schema
@@ -480,6 +482,7 @@
 │   │   ├── actorType
 │   │   │   ├── actorType.controller.ts
 │   │   │   ├── actorType.module.ts
+│   │   │   ├── actorType.service.spec.ts
 │   │   │   ├── actorType.service.ts
 │   │   │   └── dto
 │   │   │       ├── actor-type-filters.dto.ts
@@ -510,6 +513,9 @@
 │   │   │   │   ├── get-application.dto.ts
 │   │   │   │   ├── search-application.dto.ts
 │   │   │   │   └── technical-debt-point.dto.ts
+│   │   │   ├── export-html.spec.ts
+│   │   │   ├── export-html.ts
+│   │   │   ├── export.service.spec.ts
 │   │   │   ├── export.service.ts
 │   │   │   ├── infrastructure
 │   │   │   │   └── repository
@@ -520,7 +526,10 @@
 │   │   │   │   └── application-export.map.ts
 │   │   │   ├── prisma-query-builder.service.spec.ts
 │   │   │   ├── prisma-query-builder.service.ts
+│   │   │   ├── product-export.service.spec.ts
 │   │   │   ├── product-export.service.ts
+│   │   │   ├── product-export.view.ts
+│   │   │   ├── product-html.ts
 │   │   │   ├── product-powerpoint.spec.ts
 │   │   │   ├── product-powerpoint.ts
 │   │   │   ├── search
@@ -529,6 +538,7 @@
 │   │   │   ├── types
 │   │   │   │   └── application.type.ts
 │   │   │   ├── usecases
+│   │   │   │   ├── application-export.usecase.spec.ts
 │   │   │   │   └── application-export.usecase.ts
 │   │   │   └── view.service.ts
 │   │   ├── auth-level
@@ -670,6 +680,7 @@
 │   │   │   │   └── email-cron.service.ts
 │   │   │   ├── dto
 │   │   │   │   └── email-log.dto.ts
+│   │   │   ├── email-accessibility.spec.ts
 │   │   │   ├── email-log.service.ts
 │   │   │   ├── email-templates.services.spec.ts
 │   │   │   ├── email-templates.services.ts
@@ -703,6 +714,8 @@
 │   │   │   │   └── grist-sync.dto.ts
 │   │   │   ├── grist-api-key.spec.ts
 │   │   │   ├── grist-api-key.ts
+│   │   │   ├── grist-columns.spec.ts
+│   │   │   ├── grist-columns.ts
 │   │   │   ├── grist.client.ts
 │   │   │   ├── grist.controller.spec.ts
 │   │   │   ├── grist.controller.ts
@@ -944,6 +957,9 @@
 │   │   │   ├── statuses.module.ts
 │   │   │   └── statuses.service.ts
 │   │   ├── swagger-config.ts
+│   │   ├── swagger-documentation-language.ts
+│   │   ├── swagger-ui-accessibility.spec.ts
+│   │   ├── swagger-ui-accessibility.ts
 │   │   ├── tag
 │   │   │   ├── dto
 │   │   │   │   └── tag.dto.ts
@@ -1036,6 +1052,7 @@
 │   │       ├── constants.util.ts
 │   │       ├── escape-html.util.spec.ts
 │   │       ├── escape-html.util.ts
+│   │       ├── export.util.ts
 │   │       ├── functions.ts
 │   │       ├── request-size.util.ts
 │   │       ├── sanitize-headers.util.ts
@@ -1045,12 +1062,14 @@
 │   │   ├── action-log-controller.e2e-spec.ts
 │   │   ├── action-log.e2e-spec.ts
 │   │   ├── actor-email-case.e2e-spec.ts
+│   │   ├── actor-type-delete.e2e-spec.ts
 │   │   ├── actor-type-perms-matrix.e2e-spec.ts
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
 │   │   ├── application-delete.e2e-spec.ts
 │   │   ├── application-export.e2e-spec.ts
 │   │   ├── application-product-export.e2e-spec.ts
+│   │   ├── application-technology-filter.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
 │   │   ├── auth-level-userinfo.e2e-spec.ts
 │   │   ├── auth-level.e2e-spec.ts
@@ -1083,6 +1102,7 @@
 │   │   │   ├── stats.faker.ts
 │   │   │   ├── tag.faker.ts
 │   │   │   ├── technical-debt-info.faker.ts
+│   │   │   ├── user.faker.spec.ts
 │   │   │   └── user.faker.ts
 │   │   ├── getToken.ts
 │   │   ├── global-setup.ts
@@ -1116,6 +1136,7 @@
 │   │   ├── technologies-contract.e2e-spec.ts
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── technology-access.e2e-spec.ts
+│   │   ├── technology-export.e2e-spec.ts
 │   │   ├── technology-search.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   ├── token-impersonation.e2e-spec.ts
@@ -1182,6 +1203,7 @@
 │   │   └── test.ts
 │   ├── package.json
 │   ├── playwright.config.ts
+│   ├── playwright.rgaa.config.ts
 │   ├── playwright.unit.config.ts
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
@@ -1306,20 +1328,30 @@
 │   │   │   ├── AccessibleAutocomplete.vue
 │   │   │   ├── ActorActions.vue
 │   │   │   ├── AppLoader.vue
+│   │   │   ├── AppToaster.spec.ts
 │   │   │   ├── AppToaster.vue
+│   │   │   ├── AppUpdateNotice.spec.ts
+│   │   │   ├── AppUpdateNotice.vue
 │   │   │   ├── ApplicationCardView.vue
 │   │   │   ├── ApplicationMetadatasTab.vue
 │   │   │   ├── ApplicationOverview.vue
 │   │   │   ├── ApplicationProductExport.spec.ts
 │   │   │   ├── ApplicationProductExport.vue
+│   │   │   ├── ApplicationReportsTab.spec.ts
 │   │   │   ├── ApplicationReportsTab.vue
 │   │   │   ├── ApplicationSearchActions.spec.ts
 │   │   │   ├── ApplicationSearchActions.vue
 │   │   │   ├── ApplicationTableView.vue
 │   │   │   ├── BlockedAccessScreen.vue
+│   │   │   ├── ColumnCustomization.spec.ts
 │   │   │   ├── ColumnCustomization.vue
+│   │   │   ├── DsfrHeaderAccessibility.spec.ts
+│   │   │   ├── DsfrModalAccessibility.spec.ts
+│   │   │   ├── DsfrTabsAccessibility.spec.ts
+│   │   │   ├── EmailPreviewModal.spec.ts
 │   │   │   ├── EmailPreviewModal.vue
 │   │   │   ├── ImpersonationBanner.vue
+│   │   │   ├── InformationsGenerales.spec.ts
 │   │   │   ├── InformationsGenerales.vue
 │   │   │   ├── LinksTab.vue
 │   │   │   ├── MaintenanceBanner.spec.ts
@@ -1331,39 +1363,53 @@
 │   │   │   ├── PaginationFooter.vue
 │   │   │   ├── PermissionSelect.spec.ts
 │   │   │   ├── PermissionSelect.vue
+│   │   │   ├── PermissionWritePriorityRestart.spec.ts
 │   │   │   ├── PermissionWritePriorityRestart.vue
 │   │   │   ├── QualityNextActions.vue
 │   │   │   ├── QualityScoreBar.vue
 │   │   │   ├── QualityTab.vue
+│   │   │   ├── RefAppTable.spec.ts
 │   │   │   ├── RefAppTable.vue
+│   │   │   ├── RelationGraphList.vue
+│   │   │   ├── RelationShipGraph.spec.ts
 │   │   │   ├── RelationShipGraph.vue
 │   │   │   ├── RelationshipsTab.vue
 │   │   │   ├── Report
 │   │   │   │   ├── Notes.vue
+│   │   │   │   ├── ReportControls.spec.ts
 │   │   │   │   ├── ReportStatusTag.vue
 │   │   │   │   └── ReportsTab.vue
 │   │   │   ├── ReportPermissionSelect.vue
+│   │   │   ├── StatusTab.spec.ts
 │   │   │   ├── StatusTab.vue
 │   │   │   ├── SuggestionsInput.spec.ts
 │   │   │   ├── SuggestionsInput.vue
 │   │   │   ├── WeakAuthBanner.spec.ts
 │   │   │   ├── WeakAuthBanner.vue
 │   │   │   ├── actor
+│   │   │   │   ├── ActorForm.spec.ts
 │   │   │   │   ├── ActorForm.vue
+│   │   │   │   ├── ActorTab.spec.ts
 │   │   │   │   └── ActorTab.vue
 │   │   │   ├── admin
 │   │   │   │   ├── AdminActionLogsTab.vue
+│   │   │   │   ├── AdminActionNames.spec.ts
+│   │   │   │   ├── AdminActorActions.spec.ts
 │   │   │   │   ├── AdminActorActions.vue
 │   │   │   │   ├── AdminActorsTab.vue
+│   │   │   │   ├── AdminBatchData.spec.ts
 │   │   │   │   ├── AdminBatchData.vue
 │   │   │   │   ├── AdminBusinessDivisionsTab.vue
 │   │   │   │   ├── AdminCorrelationsTab.spec.ts
 │   │   │   │   ├── AdminCorrelationsTab.vue
 │   │   │   │   ├── AdminEmailLogsTab.vue
+│   │   │   │   ├── AdminHistoryAccessibility.spec.ts
 │   │   │   │   ├── AdminHostingOptionsTab.vue
 │   │   │   │   ├── AdminLabelSourcesTab.vue
+│   │   │   │   ├── AdminLogAnnouncements.spec.ts
 │   │   │   │   ├── AdminMditCampaignsTab.vue
 │   │   │   │   ├── AdminOrganizationsTab.vue
+│   │   │   │   ├── AdminPermsMatrixTab.spec.ts
 │   │   │   │   ├── AdminPermsMatrixTab.vue
 │   │   │   │   ├── AdminQualityCampaignsTab.vue
 │   │   │   │   ├── AdminServerPaginatedTabs.spec.ts
@@ -1371,17 +1417,23 @@
 │   │   │   │   ├── AdminTokensTab.spec.ts
 │   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
+│   │   │   │   ├── AppPermsMatrix.spec.ts
 │   │   │   │   ├── AppPermsMatrix.vue
 │   │   │   │   ├── AppPermsMatrixHistory.vue
+│   │   │   │   ├── BusinessDivisionActions.spec.ts
 │   │   │   │   ├── BusinessDivisionActions.vue
 │   │   │   │   ├── EmailLogContentModal.vue
 │   │   │   │   ├── HostingOptionActions.spec.ts
 │   │   │   │   ├── HostingOptionActions.vue
+│   │   │   │   ├── LabelSourceActions.spec.ts
 │   │   │   │   ├── LabelSourceActions.vue
+│   │   │   │   ├── MditCampaignActions.spec.ts
 │   │   │   │   ├── MditCampaignActions.vue
 │   │   │   │   ├── OrganizationActions.spec.ts
 │   │   │   │   ├── OrganizationActions.vue
+│   │   │   │   ├── QualityCampaignActions.spec.ts
 │   │   │   │   ├── QualityCampaignActions.vue
+│   │   │   │   ├── TagActions.spec.ts
 │   │   │   │   ├── TagActions.vue
 │   │   │   │   ├── UserActions.spec.ts
 │   │   │   │   ├── UserActions.vue
@@ -1392,14 +1444,18 @@
 │   │   │   │   ├── admin-correlations.utils.spec.ts
 │   │   │   │   └── admin-correlations.utils.ts
 │   │   │   ├── business-division
+│   │   │   │   ├── BusinessDivisionSearch.spec.ts
 │   │   │   │   └── BusinessDivisionSearch.vue
 │   │   │   ├── common
 │   │   │   │   ├── OrganizationSearchSelect.spec.ts
 │   │   │   │   ├── OrganizationSearchSelect.vue
+│   │   │   │   ├── TagSearchSelect.spec.ts
 │   │   │   │   └── TagSearchSelect.vue
 │   │   │   ├── compliances
 │   │   │   │   ├── ComplianceForm.vue
+│   │   │   │   ├── CompliancesAccordionManager.spec.ts
 │   │   │   │   ├── CompliancesAccordionManager.vue
+│   │   │   │   ├── RgaaComplianceSection.spec.ts
 │   │   │   │   └── RgaaComplianceSection.vue
 │   │   │   ├── data-application
 │   │   │   │   ├── DataApplicationDetail.spec.ts
@@ -1408,11 +1464,13 @@
 │   │   │   │   ├── DataApplicationModal.vue
 │   │   │   │   ├── DataApplicationTab.spec.ts
 │   │   │   │   ├── DataApplicationTab.vue
+│   │   │   │   ├── DataExposureModal.spec.ts
 │   │   │   │   └── DataExposureModal.vue
 │   │   │   ├── form
 │   │   │   │   ├── ApplicationForm.spec.ts
 │   │   │   │   ├── ApplicationForm.vue
 │   │   │   │   ├── LinkForm.vue
+│   │   │   │   ├── SponsorEmailsInput.spec.ts
 │   │   │   │   ├── SponsorEmailsInput.vue
 │   │   │   │   ├── StatusForm.vue
 │   │   │   │   └── application
@@ -1456,23 +1514,33 @@
 │   │   │   │   ├── CampaignFilter.vue
 │   │   │   │   ├── ComplianceFilter.vue
 │   │   │   │   ├── DataFilter.vue
+│   │   │   │   ├── FilterAccessibility.spec.ts
 │   │   │   │   ├── HostingFilter.vue
 │   │   │   │   ├── PriorityRestartFilter.vue
 │   │   │   │   ├── QualityFilter.vue
 │   │   │   │   ├── RelationFilter.vue
+│   │   │   │   ├── SavedFiltersPanel.spec.ts
+│   │   │   │   ├── SavedFiltersPanel.technology.spec.ts
 │   │   │   │   ├── SavedFiltersPanel.vue
 │   │   │   │   ├── SearchHeader.vue
+│   │   │   │   ├── SidebarFilter.spec.ts
 │   │   │   │   ├── SidebarFilter.vue
-│   │   │   │   └── StatusFilter.vue
+│   │   │   │   ├── StatusFilter.vue
+│   │   │   │   ├── TechnologyFilter.spec.ts
+│   │   │   │   └── TechnologyFilter.vue
 │   │   │   ├── stats
 │   │   │   │   ├── ApplicationsChart.vue
 │   │   │   │   ├── ApplicationsIqChart.vue
 │   │   │   │   ├── GlobalStats.spec.ts
 │   │   │   │   ├── GlobalStats.vue
-│   │   │   │   └── IqChart.vue
+│   │   │   │   ├── IqChart.vue
+│   │   │   │   ├── StatisticsChartTable.vue
+│   │   │   │   └── charts-accessibility.spec.ts
 │   │   │   ├── technical-debt
 │   │   │   │   ├── TechnicalDebtCard.vue
+│   │   │   │   ├── TechnicalDebtChart.spec.ts
 │   │   │   │   ├── TechnicalDebtChart.vue
+│   │   │   │   ├── TechnicalDebtModal.spec.ts
 │   │   │   │   └── TechnicalDebtModal.vue
 │   │   │   ├── technology
 │   │   │   │   ├── TechnologyForm.spec.ts
@@ -1484,9 +1552,12 @@
 │   │   │       ├── UserGristSettings.vue
 │   │   │       ├── UserInfoTab.spec.ts
 │   │   │       ├── UserInfoTab.vue
+│   │   │       ├── UserPermissionList.spec.ts
 │   │   │       ├── UserPermissionList.vue
 │   │   │       ├── UserPermissions.vue
+│   │   │       ├── UserTokensTab.spec.ts
 │   │   │       ├── UserTokensTab.vue
+│   │   │       ├── UsrFollowTab.spec.ts
 │   │   │       └── UsrFollowTab.vue
 │   │   ├── composables
 │   │   │   ├── report
@@ -1503,6 +1574,7 @@
 │   │   │   ├── use-auth-level.spec.ts
 │   │   │   ├── use-auth-level.ts
 │   │   │   ├── use-blocked-access.ts
+│   │   │   ├── use-column-preferences.spec.ts
 │   │   │   ├── use-column-preferences.ts
 │   │   │   ├── use-d3-graph.ts
 │   │   │   ├── use-date.ts
@@ -1513,6 +1585,7 @@
 │   │   │   ├── use-maintenance-mode.spec.ts
 │   │   │   ├── use-maintenance-mode.ts
 │   │   │   ├── use-mdit-campaigns.ts
+│   │   │   ├── use-mermaid.spec.ts
 │   │   │   ├── use-mermaid.ts
 │   │   │   ├── use-modal.ts
 │   │   │   ├── use-notification-icon.ts
@@ -1523,6 +1596,8 @@
 │   │   │   ├── use-sanitize-utils.ts
 │   │   │   ├── use-server-paginated-table.spec.ts
 │   │   │   ├── use-server-paginated-table.ts
+│   │   │   ├── use-submission-focus.spec.ts
+│   │   │   ├── use-submission-focus.ts
 │   │   │   └── use-technical-debt-chart.ts
 │   │   ├── constants
 │   │   │   ├── accessibility-declaration.ts
@@ -1530,7 +1605,8 @@
 │   │   │   ├── data-catalog.constants.ts
 │   │   │   ├── dictionary.ts
 │   │   │   ├── min-char-for-search.ts
-│   │   │   └── pagination.ts
+│   │   │   ├── pagination.ts
+│   │   │   └── primevue-locale.ts
 │   │   ├── main.css
 │   │   ├── main.ts
 │   │   ├── models
@@ -1548,7 +1624,8 @@
 │   │   │   ├── authentication.spec.ts
 │   │   │   ├── authentication.ts
 │   │   │   ├── config.ts
-│   │   │   └── impersonation.ts
+│   │   │   ├── impersonation.ts
+│   │   │   └── keycloak-session-policy.spec.ts
 │   │   ├── stores
 │   │   │   ├── actorTypeStore.ts
 │   │   │   ├── applicationStore.spec.ts
@@ -1560,15 +1637,18 @@
 │   │   │   ├── hostingStore.ts
 │   │   │   ├── metadataStore.spec.ts
 │   │   │   ├── metadataStore.ts
+│   │   │   ├── notificationStore.spec.ts
 │   │   │   ├── notificationStore.ts
 │   │   │   ├── organizationStore.spec.ts
 │   │   │   ├── organizationStore.ts
 │   │   │   ├── qualityCampaignStore.ts
 │   │   │   ├── relationStore.ts
+│   │   │   ├── reportStore.spec.ts
 │   │   │   ├── reportStore.ts
 │   │   │   ├── savedFilterStore.ts
 │   │   │   ├── statisticsStore.spec.ts
 │   │   │   ├── statisticsStore.ts
+│   │   │   ├── toasterStore.spec.ts
 │   │   │   ├── toasterStore.ts
 │   │   │   ├── userStore.spec.ts
 │   │   │   └── userStore.ts
@@ -1579,8 +1659,13 @@
 │   │   ├── utils
 │   │   │   ├── api-error.spec.ts
 │   │   │   ├── api-error.ts
+│   │   │   ├── chart.spec.ts
 │   │   │   ├── chart.ts
+│   │   │   ├── column-width.ts
 │   │   │   ├── cssVars.ts
+│   │   │   ├── download-blob.ts
+│   │   │   ├── email-web-preview.spec.ts
+│   │   │   ├── email-web-preview.ts
 │   │   │   ├── email.ts
 │   │   │   ├── eol-status.spec.ts
 │   │   │   ├── eol-status.ts
@@ -1588,11 +1673,15 @@
 │   │   │   ├── generator-utils.ts
 │   │   │   ├── get-ecoindex-grade.ts
 │   │   │   ├── get-time-quadrant.ts
+│   │   │   ├── import-report-export.spec.ts
+│   │   │   ├── import-report-export.ts
+│   │   │   ├── iq-distribution.ts
 │   │   │   ├── log-dsfr-version.ts
 │   │   │   ├── quality-next-actions.spec.ts
 │   │   │   ├── quality-next-actions.ts
 │   │   │   ├── quality.ts
 │   │   │   ├── regex.ts
+│   │   │   ├── relation-graph.ts
 │   │   │   ├── relation-update.spec.ts
 │   │   │   ├── relation-update.ts
 │   │   │   ├── roles-utils.ts
@@ -1606,7 +1695,9 @@
 │   │   │   ├── AccessibilityPage.vue
 │   │   │   ├── AdminPage.spec.ts
 │   │   │   ├── AdminPage.vue
+│   │   │   ├── ApplicationPage.delete.spec.ts
 │   │   │   ├── ApplicationPage.vue
+│   │   │   ├── ApplicationSearchPage.spec.ts
 │   │   │   ├── ApplicationSearchPage.vue
 │   │   │   ├── CreateApplicationPage.vue
 │   │   │   ├── EndOfLifePage.spec.ts
@@ -1614,13 +1705,16 @@
 │   │   │   ├── ErrorPage.vue
 │   │   │   ├── HomePage.vue
 │   │   │   ├── MetadataDetailPage.vue
+│   │   │   ├── MetadataPage.spec.ts
 │   │   │   ├── MetadataPage.vue
 │   │   │   ├── NotFoundPage.vue
+│   │   │   ├── NotificationsPage.spec.ts
 │   │   │   ├── NotificationsPage.vue
 │   │   │   ├── QualityPage.vue
 │   │   │   ├── ReportsPage.vue
 │   │   │   ├── SiteMapPage.spec.ts
 │   │   │   ├── SiteMapPage.vue
+│   │   │   ├── TimePage.spec.ts
 │   │   │   ├── TimePage.vue
 │   │   │   ├── UserProfilePage.spec.ts
 │   │   │   └── UserProfilePage.vue
@@ -1639,6 +1733,7 @@
 │   │   ├── savedFilters.spec.ts
 │   │   ├── searchHeader.spec.ts
 │   │   ├── technologyAccess.spec.ts
+│   │   ├── technologyExports.spec.ts
 │   │   ├── utils.ts
 │   │   └── vue.spec.ts
 │   ├── tsconfig.app.json
@@ -1649,6 +1744,7 @@
 │   ├── vitest-setup.ts
 │   └── vitest.config.ts
 ├── keycloak
+│   ├── README.md
 │   └── realm-export.json
 ├── package.json
 ├── pgadmin.json
@@ -1656,6 +1752,115 @@
 ├── pnpm-workspace.yaml
 ├── qa
 │   ├── README.md
+│   ├── at-windows
+│   │   ├── .gitattributes
+│   │   ├── .gitignore
+│   │   ├── .nvmrc
+│   │   ├── README.md
+│   │   ├── eslint.config.mjs
+│   │   ├── fixtures
+│   │   │   ├── AT-C01.html
+│   │   │   ├── AT-C02.html
+│   │   │   ├── AT-C03.html
+│   │   │   ├── AT-D01.html
+│   │   │   ├── AT-D01.oracle.json
+│   │   │   ├── AT-D02.html
+│   │   │   ├── AT-D02.oracle.json
+│   │   │   ├── AT-D03.csv
+│   │   │   ├── AT-D03.html
+│   │   │   ├── AT-D03.oracle.json
+│   │   │   ├── AT-S01.html
+│   │   │   ├── AT-S02.html
+│   │   │   ├── AT-S03.html
+│   │   │   ├── AT-S04.html
+│   │   │   ├── at-import-synthetic.xlsx
+│   │   │   ├── documents-provenance.json
+│   │   │   ├── exports-provenance.json
+│   │   │   ├── inputs.json
+│   │   │   ├── manifest.json
+│   │   │   ├── rendered-styles.css
+│   │   │   ├── ri-README.md
+│   │   │   ├── ri-icons.json
+│   │   │   ├── ri-info.json
+│   │   │   ├── ri-license.txt
+│   │   │   ├── ri-provenance.json
+│   │   │   ├── swagger
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── index.html
+│   │   │   │   ├── openapi-synthetic.json
+│   │   │   │   ├── package.json
+│   │   │   │   ├── provenance.json
+│   │   │   │   ├── swagger-ui-bundle.js
+│   │   │   │   ├── swagger-ui-standalone-preset.js
+│   │   │   │   └── swagger-ui.css
+│   │   │   ├── synthetic-catalogue.xlsx
+│   │   │   ├── synthetic-inputs.json
+│   │   │   └── synthetic-product.pptx
+│   │   ├── interactive.config.ts
+│   │   ├── package.json
+│   │   ├── playwright.config.ts
+│   │   ├── pnpm-lock.yaml
+│   │   ├── pnpm-workspace.yaml
+│   │   ├── tests
+│   │   │   ├── admin-catalogue-cases.ts
+│   │   │   ├── admin-interactive-utils.ts
+│   │   │   ├── admin-users-interactive-utils.ts
+│   │   │   ├── application-interactive-utils.ts
+│   │   │   ├── exports-swagger-utils.ts
+│   │   │   ├── fixture.ts
+│   │   │   ├── forms-interactive-utils.ts
+│   │   │   ├── general-interactive-utils.ts
+│   │   │   ├── grist-interactive-utils.ts
+│   │   │   ├── interactive-utils.ts
+│   │   │   ├── last-families-interactive-utils.ts
+│   │   │   ├── native-utils.ts
+│   │   │   ├── nvda-admin-catalogues.spec.ts
+│   │   │   ├── nvda-admin-users.spec.ts
+│   │   │   ├── nvda-admin.spec.ts
+│   │   │   ├── nvda-application.spec.ts
+│   │   │   ├── nvda-cases.spec.ts
+│   │   │   ├── nvda-exports.spec.ts
+│   │   │   ├── nvda-forms.spec.ts
+│   │   │   ├── nvda-general.spec.ts
+│   │   │   ├── nvda-graphs.spec.ts
+│   │   │   ├── nvda-grist.spec.ts
+│   │   │   ├── nvda-last-families.spec.ts
+│   │   │   ├── nvda-operations.spec.ts
+│   │   │   ├── nvda-personal.spec.ts
+│   │   │   ├── nvda-profile-notifications.spec.ts
+│   │   │   ├── nvda-remaining.spec.ts
+│   │   │   ├── nvda-selection.spec.ts
+│   │   │   ├── nvda-shared.spec.ts
+│   │   │   ├── nvda-smoke.spec.ts
+│   │   │   ├── nvda-suggestions.spec.ts
+│   │   │   ├── nvda-supplement-g7.spec.ts
+│   │   │   ├── nvda-supplement-g8.spec.ts
+│   │   │   ├── nvda-swagger.spec.ts
+│   │   │   ├── nvda-ui.spec.ts
+│   │   │   ├── operations-interactive-utils.ts
+│   │   │   ├── personal-interactive-utils.ts
+│   │   │   ├── profile-notifications-native.ts
+│   │   │   ├── profile-notifications-utils.ts
+│   │   │   ├── remaining-interactive-utils.ts
+│   │   │   ├── selection-interactive-utils.ts
+│   │   │   ├── shared-interactive-utils.ts
+│   │   │   ├── supplement-interactive-utils.ts
+│   │   │   └── supplement-native-utils.ts
+│   │   ├── tools
+│   │   │   ├── acquire-jaws-installer.ps1
+│   │   │   ├── capture-jaws-history.ps1
+│   │   │   ├── focus-browser-window.ps1
+│   │   │   ├── inspect-jaws-setup.ps1
+│   │   │   ├── install-jaws-approved.ps1
+│   │   │   ├── jaws-content-action.ps1
+│   │   │   ├── jaws-content-cases.mjs
+│   │   │   ├── jaws-smoke.mjs
+│   │   │   ├── preflight-jaws-powershell51.ps1
+│   │   │   ├── prepare-jaws-demo.ps1
+│   │   │   ├── run-interactive-isolated.mjs
+│   │   │   ├── serve-interactive.mjs
+│   │   │   └── verify-inputs.mjs
+│   │   └── tsconfig.json
 │   ├── protocoles
 │   │   ├── accueil.md
 │   │   ├── actions-crud.md
@@ -1683,4 +1888,4 @@
 │       ├── sync-issue.mjs
 │       └── sync-issue.test.mjs
 └── release-please-config.json
-399 directories, 1286 files
+405 directories, 1485 files
