@@ -1,26 +1,19 @@
-## Changelog : playground (30 derniers jours, au 13 août 2026)
+## Changelog : playground (30 derniers jours, au 08/10/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante dans l'automatisation et la personnalisation du workflow éditorial. Les utilisateurs bénéficient désormais d'un système de notifications (internes et Slack), d'une meilleure gestion des profils et d'outils de traduction assistés par IA plus flexibles. L'interface a également été largement modernisée pour faciliter la gestion des métadonnées et la navigation grâce à de nouveaux filtres et composants visuels.
+Ce mois-ci, les efforts se sont concentrés sur la stabilisation du workflow de traduction et l'amélioration de la réactivité de l'équipe grâce à l'intégration de notifications Slack. Parallèlement, une phase importante de préparation technique a été entamée pour la migration de l'infrastructure d'intelligence artificielle (agents) afin de garantir une transition fluide et une meilleure qualité de génération.
 
 ### Évolutions fonctionnelles
-- **Notifications & Communication** : Mise en place du système de notifications internes [#314](https://github.com/refugies-info/playground/issues/1415) et ajout de la possibilité d'envoyer des notifications vers Slack.
-- **Gestion des traductions** : Ajout d'un bouton pour régénérer une traduction via l'IA [#306](https://github.com/refugies-info/playground/issues/1378) et intégration de métadonnées dans le workflow de traduction [#313](https://github.com/refugies-info/playground/issues/1379).
-- **Profil utilisateur** : Possibilité d'importer une photo de profil (avatar) pour les utilisateurs [#307](https://github.com/refugies-info/playground/issues/1203).
-- **Métadonnées & Contenu** : Refonte complète de l'interface de la page des métadonnées [#302](https://github.com/refugies-info/playground/issues/1387), ajout de champs pour les "informations pratiques" [#308](https://github.com/refugies-info/playground/issues/1224) et pour les descriptions de points d'intérêt (POI).
-- **Navigation & Filtres** : Introduction de nouveaux filtres par date (date picker) sur la page de workflow [#309](https://github.com/refugies-info/playground/issues/1371) et sur l'onglet d'importation [#310](https://github.com/refugies-info/playground/issues/1421).
-- **Interface (UI/UX)** : 
-    - Amélioration de la visibilité du statut de publication dans le header des fiches [#312](https://github.com/refugies-info/playground/issues/1423).
-    - Ajout de nouvelles fenêtres surgissantes (pop-ups) pour la publication [#305](https://github.com/refugies-info/playground/issues/1383) et pour signaler la modification d'une fiche [#303](https://github.com/refugies-info/playground/issues/1381).
-- **Gestion des statuts** : Correction du comportement de changement automatique de statut [#311](https://github.com/refugies-info/playground/issues/1422) et levée des restrictions sur le changement de conformité [#298](https://github.com/refugies-info/playground/issues/1341).
+- **Amélioration du suivi des traductions** : Correction des problèmes de publication et de gestion des statuts après une régénération par l'IA ([#346](https://github.com/refugies-info/playground/pull/346), [#343](https://github.com/refugies-info/playground/pull/343)).
+- **Nouvelles informations et visibilité** : Ajout de la date de publication dans les tableaux de bord ([#335](https://github.com/refugies-info/playground/pull/335)), amélioration de l'affichage des liens externes et correction de la visibilité des enregistrements publiés pour les traducteurs ([#341](https://github.com/refugies-info/playground/pull/341)).
+- **Système d'alertes** : Mise en place de notifications Slack pour signaler les échecs de traduction et l'état de fin des processus d'intégration continue ([#351](https://github.com/refugies-info/playground/pull/351)).
 
 ### Évolutions techniques
-- **Architecture & Données** : 
-    - Refactorisation de la gestion des rôles utilisateurs [#316](https://github.com/refugies-info/playground/issues/316).
-    - Renforcement du typage des données, notamment pour les champs email de contact [#315](https://github.com/refugies-info/playground/issues/1424).
-- **Qualité & IA** : Investigation et correction de bugs liés au module de "langage clair" [#319](https://github.com/refugies-info/playground/issues/1436).
-- **Design System** : Mise à jour majeure de l'interface utilisateur avec l'intégration de nouveaux composants (inputs DSFR, gestion des bordures et des couleurs de thèmes).
+- **Optimisation de l'IA (LLM)** : Forçage du modèle sur Letta pour corriger des problèmes de qualité de traduction ([#349](https://github.com/refugies-info/playground/pull/349)) et enregistrement systématique du modèle utilisé dans les rapports de l'agent ([#342](https://github.com/refugies-info/playground/pull/342)).
+- **Préparation de la migration des agents** : Durcissement de l'interface API Letta v1 en prévision de la migration vers le nouveau SDK ([#340](https://github.com/refugies-info/playground/pull/340)) et planification de la transition technique.
+- **Base de données et traçabilité** : Ajout du champ `origin_id` pour améliorer la traçabilité des données lors des envois de webhooks ([#337](https://github.com/refugies-info/playground/pull/337)).
+- **CI/CD** : Optimisation des workflows de revue de code et stabilisation des déclencheurs de tests.
 
 ### Autres changements
-- Nettoyage régulier du code (suppression de code mort et de commentaires inutiles).
-- Corrections de linting et de formatage.
+- **Documentation** : Rédaction approfondie du plan de migration des agents et ajout d'une documentation sur les conventions de codage ([#328](https://github.com/refugies-info/playground/pull/328)).
+- **Maintenance** : Nettoyage de la configuration du workspace (pnpm) et des scripts d'enregistrement d'outils.

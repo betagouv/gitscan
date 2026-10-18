@@ -11,10 +11,11 @@
 ├── .gemini
 │   └── settings.json
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── checks.yml
 │       ├── chromatic.yml
-│       └── letta.yml
+│       └── notify-production-deploy.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── .husky
@@ -266,10 +267,14 @@
 │   │   │   │   │       ├── IngestionVersionCell.tsx
 │   │   │   │   │       ├── ModalitesEntreesSortiesCell.tsx
 │   │   │   │   │       ├── OnlineStatusCell.tsx
-│   │   │   │   │       ├── QualityScoreCell.tsx
 │   │   │   │   │       ├── SessionPeriodCell.tsx
 │   │   │   │   │       ├── WorkStatusCell.tsx
 │   │   │   │   │       └── index.ts
+│   │   │   │   ├── notifications
+│   │   │   │   │   ├── NotificationFilters.tsx
+│   │   │   │   │   ├── NotificationRow.tsx
+│   │   │   │   │   ├── NotificationsPanel.tsx
+│   │   │   │   │   └── notification-presentation.tsx
 │   │   │   │   └── translation-editor
 │   │   │   │       ├── SourcePane.tsx
 │   │   │   │       ├── TranslationActions.tsx
@@ -289,11 +294,15 @@
 │   │   │   ├── config
 │   │   │   │   └── features.ts
 │   │   │   ├── contexts
+│   │   │   │   ├── NotificationsContext.tsx
 │   │   │   │   └── SidebarContext.tsx
 │   │   │   ├── hooks
 │   │   │   │   ├── useAutosave.ts
 │   │   │   │   └── useUrlFilters.ts
+│   │   │   ├── instrumentation-client.ts
+│   │   │   ├── instrumentation.ts
 │   │   │   ├── lib
+│   │   │   │   ├── activity-log-badge.ts
 │   │   │   │   ├── auth.ts
 │   │   │   │   ├── authz.ts
 │   │   │   │   ├── column-factories.tsx
@@ -319,6 +328,7 @@
 │   │   │   │   ├── search-params.ts
 │   │   │   │   ├── supabase
 │   │   │   │   │   └── client.ts
+│   │   │   │   ├── url-builder.test.ts
 │   │   │   │   ├── url-builder.ts
 │   │   │   │   ├── work-status.ts
 │   │   │   │   └── workflow-utils.ts
@@ -332,6 +342,7 @@
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── metadata-actions.ts
 │   │   │   │   ├── note-actions.ts
+│   │   │   │   ├── notification-actions.ts
 │   │   │   │   ├── notifications.ts
 │   │   │   │   ├── permission-helper.ts
 │   │   │   │   ├── profiles.ts
@@ -372,6 +383,14 @@
 ├── documentation
 │   ├── README.md
 │   ├── agent-migration
+│   │   ├── 01-decision.md
+│   │   ├── 02-current-state.md
+│   │   ├── 03-production-agents-audit.md
+│   │   ├── 04-agent-sdk-changes.md
+│   │   ├── 05-delivery-plan.md
+│   │   ├── 06-production-rollback.md
+│   │   ├── 07-v1-removal-and-backup.md
+│   │   ├── 08-linear-and-appendix.md
 │   │   ├── README.md
 │   │   ├── agent-knowledge
 │   │   │   ├── CHANGELOG.md
@@ -433,6 +452,7 @@
 │   │       └── translation-preview.md
 │   ├── guides
 │   │   ├── README.md
+│   │   ├── coding-conventions.md
 │   │   ├── deployment.md
 │   │   ├── di-ingestion-record-implementation.md
 │   │   ├── di-ingestion-testing.md
@@ -475,6 +495,7 @@
 │   │   │   ├── dispositifs.json
 │   │   │   └── dispositifs.yaml
 │   │   ├── src
+│   │   │   ├── agents.test.ts
 │   │   │   ├── agents.ts
 │   │   │   ├── clients.ts
 │   │   │   ├── index.ts
@@ -568,6 +589,12 @@
 │   │   │   └── yaml.test.ts
 │   │   ├── tsconfig.json
 │   │   └── velite.config.ts
+│   ├── sentry
+│   │   ├── package.json
+│   │   └── src
+│   │       ├── client.ts
+│   │       ├── edge.ts
+│   │       └── server.ts
 │   ├── shared
 │   │   ├── package.json
 │   │   ├── src
@@ -744,8 +771,10 @@
 │   │   │   │   │   │   │   ├── FrAlertWarningFill.tsx
 │   │   │   │   │   │   │   ├── FrArrowLeftSFirstLine.tsx
 │   │   │   │   │   │   │   ├── FrArrowLeftSLineDouble.tsx
+│   │   │   │   │   │   │   ├── FrArrowRightDownCircleFill.tsx
 │   │   │   │   │   │   │   ├── FrArrowRightSLastLine.tsx
 │   │   │   │   │   │   │   ├── FrArrowRightSLineDouble.tsx
+│   │   │   │   │   │   │   ├── FrArrowRightUpCircleFill.tsx
 │   │   │   │   │   │   │   ├── FrAvalanchesFill.tsx
 │   │   │   │   │   │   │   ├── FrAvalanchesLine.tsx
 │   │   │   │   │   │   │   ├── FrBold.tsx
@@ -783,6 +812,8 @@
 │   │   │   │   │   │   │   ├── UserSettingLine.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── manual
+│   │   │   │   │   │       ├── FrMarkAsReadLine.tsx
+│   │   │   │   │   │       ├── FrMarkAsUnreadLine.tsx
 │   │   │   │   │   │       ├── FrRefreshLine2.tsx
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── index.ts
@@ -806,6 +837,10 @@
 │   │   │   │   ├── input
 │   │   │   │   │   ├── Input.stories.tsx
 │   │   │   │   │   ├── Input.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── notification-button
+│   │   │   │   │   ├── NotificationButton.stories.tsx
+│   │   │   │   │   ├── NotificationButton.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── papa-ia
 │   │   │   │   │   ├── PapaIA.stories.tsx
@@ -907,7 +942,6 @@
 │   ├── ingest-di.ts
 │   ├── inspect-workflow.ts
 │   ├── list-agents.ts
-│   ├── register-metadata-validator-tool.ts
 │   ├── run-di-ingestion-workflow.ts
 │   ├── seed-ingestion.ts
 │   ├── validate-corpus.ts
@@ -1038,7 +1072,9 @@
 │   │   ├── 20260803151753_add_avatar_url_workflow.sql
 │   │   ├── 20260805140000_add_update_translation_metadata_field_rpc.sql
 │   │   ├── 20260807124601_add_notifications.sql
-│   │   └── 20260807145941_enable_realtime_notifications.sql
+│   │   ├── 20260807145941_enable_realtime_notifications.sql
+│   │   ├── 20260821143000_derive_archived_at_in_workflows_enriched.sql
+│   │   └── 20260924084411_translators_read_editorial_publications.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -1051,9 +1087,10 @@
 │   │   ├── 10_translation_records.sql
 │   │   ├── 11_publication_records.sql
 │   │   ├── 12_ri1242_versioning.sql
+│   │   ├── 13_notifications.sql
 │   │   └── 99_backfill_fks.sql
 │   └── seed.sql
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-231 directories, 827 files
+235 directories, 860 files

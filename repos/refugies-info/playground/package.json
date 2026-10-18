@@ -4,26 +4,6 @@
   "description": "Editorial workflow platform for Refugies.info content management",
   "private": true,
   "packageManager": "pnpm@10.29.3",
-  "pnpm": {
-    "overrides": {
-      "undici-types": "6.18.2",
-      "vite": "6.4.2",
-      "caniuse-lite": "1.0.30001756",
-      "semver": "7.7.1",
-      "fast-uri": "3.1.2",
-      "lodash": "4.18.1",
-      "devalue": "5.8.1",
-      "minimatch@5": "5.1.8",
-      "minimatch@9": "9.0.7",
-      "undici": "7.24.0"
-    },
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "better-sqlite3",
-      "esbuild",
-      "sharp"
-    ]
-  },
   "scripts": {
     "prepare": "husky",
     "build": "turbo build",
@@ -49,8 +29,6 @@
     "letta:sync": "docker compose -f docker-compose.letta.yml restart letta && sleep 10",
     "letta:init": "pnpm letta:up && pnpm letta:pull && pnpm letta:sync && LETTA_BASE_URL=http://localhost:8283 pnpm agents:create-local",
     "agents:create-local": "tsx scripts/create-local-agents.ts",
-    "register:metadata-validator": "tsx scripts/register-metadata-validator-tool.ts",
-    "update:metadata-schema": "tsx scripts/update-metadata-schema-block.ts",
     "generate:json": "tsx scripts/generate-json.ts",
     "generate:md": "tsx scripts/generate-md.ts",
     "copy:schema": "tsx scripts/copy-schema.ts",
@@ -72,17 +50,17 @@
     "@playground/supabase": "workspace:*",
     "@refugies-info/di": "workspace:*",
     "@types/js-yaml": "^4.0.9",
-    "commander": "^14.0.2",
-    "cve-lite-cli": "1.18.1",
-    "dotenv": "^17.2.3",
-    "husky": "^9.1.7",
-    "knip": "^5.70.0",
-    "lint-staged": "^16.2.7",
-    "postcss": "^8.5.15",
-    "tsx": "^4.20.6",
-    "turbo": "^2.9.14",
     "@workflow/cli": "4.2.10",
-    "@workflow/next": "4.0.10"
+    "@workflow/next": "4.0.10",
+    "commander": "^14.0.3",
+    "cve-lite-cli": "1.34.0",
+    "dotenv": "^17.4.2",
+    "husky": "^9.1.7",
+    "knip": "^5.88.1",
+    "lint-staged": "^16.4.0",
+    "postcss": "8.5.28",
+    "tsx": "^4.23.15",
+    "turbo": "^2.10.11"
   },
   "lint-staged": {
     "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
