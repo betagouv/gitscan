@@ -1,7 +1,7 @@
-## Changelog : betamap (30 derniers jours, au 10 octobre 2026)
+## Changelog : betamap (30 derniers jours, au 17 octobre 2026)
 
 ### Résumé
-Les récentes mises à jour ont principalement porté sur l'actualisation des données relatives aux startups afin de garantir la précision des informations affichées dans l'outil de visualisation.
+L'outil a bénéficié de plusieurs mises à jour de ses données pour garantir que les informations concernant l'écosystème des startups présentées sur la carte sont les plus récentes possibles.
 
 ### Évolutions fonctionnelles
-- Actualisation régulière du référentiel des startups pour maintenir la pertinence de la cartographie.
+- Actualisation régulière de la base de données des startups répertoriées.
