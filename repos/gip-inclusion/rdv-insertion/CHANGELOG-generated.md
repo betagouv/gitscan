@@ -1,25 +1,22 @@
-## Changelog : rdv-insertion (30 derniers jours, au 08/10/2026)
+## Changelog : rdv-insertion (30 derniers jours, au 17 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur l'amélioration de la fiabilité des données (gestion des numéros de téléphone, normalisation des identités) et sur la stabilisation des outils de suivi. Le service gagne en robustesse technique, notamment sur la gestion des statistiques et du monitoring, tout en enrichissant ses capacités d'interface via l'API.
+Ce mois-ci, les efforts se sont concentrés sur la fiabilisation des données (gestion des numéros de téléphone, identifiants NIR et logique des orientations) et sur l'amélioration de la stabilité du système. De nouvelles capacités de recherche ont été ajoutées via l'API, et les outils de suivi d'erreurs ont été optimisés pour réduire le bruit technique et améliorer la réactivité du support.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la gestion des contacts** : Correction de la détection des codes pays pour les numéros mobiles des DROM ([#3397](https://github.com/gip-inclusion/rdv-insertion/issues/3397)).
-- **Nouvelle capacité de recherche** : Ajout d'un point d'accès (endpoint) permettant de rechercher des utilisateurs de la plateforme de l'inclusion via l'API ([#3385](https://github.com/gip-inclusion/rdv-insertion/issues/3385)).
-- **Fiabilisation des données utilisateurs** : 
-    - Normalisation du NIR lors de l'assignation pour garantir l'unicité par département ([#3384](https://github.com/gip-inclusion/rdv-insertion/issues/3384)).
-    - Optimisation de l'attribution des utilisateurs après enrichissement des données CNAF ([#3380](https://github.com/gip-inclusion/rdv-insertion/issues/3380)).
-- **Corrections d'interface et de flux** :
-    - Correction des liens de redirection dans les modales de confirmation ([#3381](https://github.com/gip-inclusion/rdv-insertion/issues/3381)).
-    - Résolution d'un plantage de l'API lors de l'invitation d'utilisateurs sans catégorie de motif ([#3387](https://github.com/gip-inclusion/rdv-insertion/issues/3387)).
+- Ajout d'un point de terminaison (endpoint) de recherche d'utilisateurs pour la plateforme de l'inclusion ([#3385](https://github.com/gip-inclusion/rdv-insertion/issues/3385)).
+- Amélioration du suivi des dossiers : enregistrement de la date de clôture lors des modifications ([#3400](https://github.com/gip-inclusion/rdv-insertion/issues/3400)).
+- Correction de la gestion des numéros de téléphone pour les départements d'outre-mer (DROM) ([#3397](https://github.com/gip-inclusion/rdv-insertion/issues/3397)).
+- Optimisation de la logique des orientations (meilleure détection des chevauchements et gestion du statut d'activité) ([#3408](https://github.com/gip-inclusion/rdv-insertion/issues/3408)).
+- Renforcement de l'intégrité des données utilisateurs via la normalisation du NIR lors de l'assignation ([#3384](https://github.com/gip-inclusion/rdv-insertion/issues/3384)).
+- Stabilisation de l'API pour éviter les plantages lors de l'invitation d'utilisateurs sans catégorie de motif ([#3387](https://github.com/gip-inclusion/rdv-insertion/issues/3387)).
 
 ### Évolutions techniques
-- **Optimisation de l'authentification** : Renforcement de l'usage du jeton OAuth de RDV-Solidarités ([#3375](https://github.com/gip-inclusion/rdv-insertion/issues/3375)) et amélioration de la gestion des transactions de jetons ([#3379](https://github.com/gip-inclusion/rdv-insertion/issues/3379)).
-- **Stabilité du système et monitoring** :
-    - Optimisation du calcul des statistiques pour prévenir les erreurs de mémoire dans les conteneurs ([#3382](https://github.com/gip-inclusion/rdv-insertion/issues/3382)).
-    - Nettoyage important des alertes Sentry pour réduire le bruit (limites de taux, alertes métier non pertinentes, doublons par IP) ([#3389](https://github.com/gip-inclusion/rdv-insertion/issues/3389), [#3390](https://github.com/gip-inclusion/rdv-insertion/issues/3390), [#3383](https://github.com/gip-inclusion/rdv-insertion/issues/3383)).
-- **Configuration des outils d'analyse** : Correction de la configuration de Matomo via les variables d'environnement ([#3393](https://github.com/gip-inclusion/rdv-insertion/issues/3393), [#3394](https://github.com/gip-inclusion/rdv-insertion/issues/3394)).
+- **Gestion des erreurs et monitoring** : Optimisation de Sentry pour filtrer les alertes non pertinentes (limites de débit, alertes métier) ([#3389](https://github.com/gip-inclusion/rdv-insertion/issues/3389), [#3390](https://github.com/gip-inclusion/rdv-insertion/issues/3390), [#3383](https://github.com/gip-inclusion/rdv-insertion/issues/3383)) et amélioration de la gestion des jetons d'accès lors des interactions avec France Travail ([#3404](https://github.com/gip-inclusion/rdv-insertion/issues/3404)).
+- **Stabilité et performance** : Sécurisation du calcul des statistiques pour prévenir les dépassements de mémoire dans les conteneurs ([#3382](https://github.com/gip-inclusion/rdv-insertion/issues/3382)) et correction de l'intégrité des contraintes de dépendance sur les tables d'agents ([#3407](https://github.com/gip-inclusion/rdv-insertion/issues/3407)).
+- **Analytique** : Amélioration de la configuration de Matomo et de sa gestion via les variables d'environnement ([#3394](https://github.com/gip-inclusion/rdv-insertion/issues/3394), [#3393](https://github.com/gip-inclusion/rdv-insertion/issues/3393)).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation de l'API, du schéma de données et création d'un guide de conventions pour les agents ([#3392](https://github.com/gip-inclusion/rdv-insertion/issues/3392), [#3391](https://github.com/gip-inclusion/rdv-insertion/issues/3391), [#3386](https://github.com/gip-inclusion/rdv-insertion/issues/3386)).
-- **Maintenance et conformité** : Ajout de la licence MIT ([#3401](https://github.com/gip-inclusion/rdv-insertion/issues/3401)) et intégration de CodeRabbit pour l'automatisation des revues de code ([#3402](https://github.com/gip-inclusion/rdv-insertion/issues/3402)).
+- **Documentation** : Mise à jour de la documentation de l'API ([#3386](https://github.com/gip-inclusion/rdv-insertion/issues/3386)), des schémas de données ([#3392](https://github.com/gip-inclusion/rdv-insertion/issues/3392)) et des conventions relatives aux agents ([#3391](https://github.com/gip-inclusion/rdv-insertion/issues/3391)).
+- **Outils et conformité** : Ajout de la licence MIT ([#3401](https://github.com/gip-inclusion/rdv-insertion/issues/3401)) et configuration de l'outil de revue de code CodeRabbit ([#3402](https://github.com/gip-inclusion/rdv-insertion/issues/3402), [#3405](https://github.com/gip-inclusion/rdv-insertion/issues/3405)).
+- **Tests** : Révision des cas de tests pour les évaluations ([#3403](https://github.com/gip-inclusion/rdv-insertion/issues/3403)).
