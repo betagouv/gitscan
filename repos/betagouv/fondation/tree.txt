@@ -137,6 +137,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20261009120000_ties_observations_to_their_session
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261013110000_marks_inactive_magistrats
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261013120000_searches_magistrat_names
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -180,7 +184,8 @@
 │   │   │       ├── listNominationFilesRawQuery.sql
 │   │   │       ├── lockAgendasRawQuery.sql
 │   │   │       ├── searchMagistratRawQuery.sql
-│   │   │       └── searchMagistratTotalCountRawQuery.sql
+│   │   │       ├── searchMagistratTotalCountRawQuery.sql
+│   │   │       └── updateMagistratStatusesRawQuery.sql
 │   │   ├── prisma.config.ts
 │   │   ├── public-endpoints.json
 │   │   ├── scalingo
@@ -323,6 +328,7 @@
 │   │   │   │   │   │   ├── domain
 │   │   │   │   │   │   │   ├── justice-presentation-plan-content.spec.ts
 │   │   │   │   │   │   │   ├── justice-presentation-plan-content.ts
+│   │   │   │   │   │   │   ├── justice-presentation-plan-settings.ts
 │   │   │   │   │   │   │   ├── justice-presentation-plan.spec.ts
 │   │   │   │   │   │   │   └── justice-presentation-plan.ts
 │   │   │   │   │   │   ├── infrastructure
@@ -402,6 +408,7 @@
 │   │   │   │   │           ├── list-feedbacks-as-excel.query.spec.ts
 │   │   │   │   │           └── list-feedbacks-as-excel.query.ts
 │   │   │   │   ├── framework
+│   │   │   │   │   ├── app-version.ts
 │   │   │   │   │   ├── clock.ts
 │   │   │   │   │   ├── config
 │   │   │   │   │   │   ├── config.constants.ts
@@ -422,6 +429,10 @@
 │   │   │   │   │   ├── files
 │   │   │   │   │   │   ├── content-disposition.spec.ts
 │   │   │   │   │   │   ├── content-disposition.ts
+│   │   │   │   │   │   ├── delete-unused-files.cli.spec.ts
+│   │   │   │   │   │   ├── delete-unused-files.cli.ts
+│   │   │   │   │   │   ├── files-cli.module.spec.ts
+│   │   │   │   │   │   ├── files-cli.module.ts
 │   │   │   │   │   │   ├── files.controller.ts
 │   │   │   │   │   │   ├── files.module.ts
 │   │   │   │   │   │   ├── files.spec.ts
@@ -430,6 +441,9 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── mime-type.spec.ts
 │   │   │   │   │   │   ├── mime-type.ts
+│   │   │   │   │   │   ├── missing-from-storage.filter.spec.ts
+│   │   │   │   │   │   ├── missing-from-storage.filter.ts
+│   │   │   │   │   │   ├── missing-from-storage.ts
 │   │   │   │   │   │   ├── multipart
 │   │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   │   ├── index.ts
@@ -540,7 +554,9 @@
 │   │   │   │   │   │   ├── magistrat-name.spec.ts
 │   │   │   │   │   │   ├── magistrat-name.ts
 │   │   │   │   │   │   ├── magistrat-phone-numbers.spec.ts
-│   │   │   │   │   │   └── magistrat-phone-numbers.ts
+│   │   │   │   │   │   ├── magistrat-phone-numbers.ts
+│   │   │   │   │   │   ├── magistrat-position.spec.ts
+│   │   │   │   │   │   └── magistrat-position.ts
 │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   │   └── magistrat.dto.ts
@@ -654,6 +670,7 @@
 │   │   │   │   ├── session
 │   │   │   │   │   ├── summaries
 │   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   ├── summary.spec.ts
 │   │   │   │   │   │   │   └── summary.ts
 │   │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   │   ├── queries
@@ -779,6 +796,7 @@
 │   │   │   │   │   │   ├── nomination-file.policies.spec.ts
 │   │   │   │   │   │   └── nomination-file.policies.ts
 │   │   │   │   │   ├── priority.enum.ts
+│   │   │   │   │   ├── proposing-authority.enum.ts
 │   │   │   │   │   ├── report-file-usage.enum.ts
 │   │   │   │   │   ├── report-state.enum.ts
 │   │   │   │   │   ├── role.enum.ts
@@ -1053,6 +1071,7 @@
 │       │   │   │   │   ├── document.fixture.ts
 │       │   │   │   │   ├── official-report
 │       │   │   │   │   │   ├── OfficialReportBreadCrumb.tsx
+│       │   │   │   │   │   ├── OfficialReportForm.test.tsx
 │       │   │   │   │   │   ├── OfficialReportForm.tsx
 │       │   │   │   │   │   └── editor
 │       │   │   │   │   │       ├── OfficialReportDocumentEditor.stories.tsx
@@ -1075,6 +1094,7 @@
 │       │   │   │   │       ├── PresentationAgendaCommentsStep.test.tsx
 │       │   │   │   │       ├── PresentationAgendaCommentsStep.tsx
 │       │   │   │   │       ├── PresentationAgendaSelectionTable.tsx
+│       │   │   │   │       ├── PresentationAuthoring.test.tsx
 │       │   │   │   │       ├── PresentationAuthoring.tsx
 │       │   │   │   │       ├── PresentationBreadcrumb.tsx
 │       │   │   │   │       ├── PresentationMetadataStep.tsx
@@ -1088,6 +1108,7 @@
 │       │   │   │   │   ├── OfficialReportContext.types.ts
 │       │   │   │   │   ├── OfficialReportProvider.tsx
 │       │   │   │   │   ├── PresentPlanModalProvider.tsx
+│       │   │   │   │   ├── PresentationPlanProvider.test.tsx
 │       │   │   │   │   ├── PresentationPlanProvider.tsx
 │       │   │   │   │   ├── present-plan-modal.context.ts
 │       │   │   │   │   ├── presentation-plan.context.ts
@@ -1117,10 +1138,8 @@
 │       │   │   │       └── feedback-invitation.utils.ts
 │       │   │   ├── jobs
 │       │   │   │   ├── components
-│       │   │   │   │   ├── JobFileNode.tsx
-│       │   │   │   │   ├── JobFilesBranch.tsx
-│       │   │   │   │   ├── JobFilesTree.tsx
-│       │   │   │   │   └── JobsListItem.tsx
+│       │   │   │   │   ├── JobFilesList.tsx
+│       │   │   │   │   └── JobStatusBadge.tsx
 │       │   │   │   ├── context
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── job.context.ts
@@ -1128,7 +1147,6 @@
 │       │   │   │   ├── types
 │       │   │   │   │   └── job.types.ts
 │       │   │   │   └── utils
-│       │   │   │       ├── format-job-date.utils.ts
 │       │   │   │       ├── format-job-duration.utils.ts
 │       │   │   │       ├── job-status.utils.ts
 │       │   │   │       └── tree.utils.ts
@@ -1146,18 +1164,21 @@
 │       │   │   │       ├── MagistratObservationsSection.tsx
 │       │   │   │       ├── MagistratPhoneNumberDeleteModal.tsx
 │       │   │   │       ├── MagistratPhoneNumberModal.tsx
-│       │   │   │       └── MagistratPhoneNumbersSection.tsx
+│       │   │   │       ├── MagistratPhoneNumbersSection.tsx
+│       │   │   │       ├── MagistratSearch.stories.tsx
+│       │   │   │       ├── MagistratSearch.test.tsx
+│       │   │   │       ├── MagistratSearch.tsx
+│       │   │   │       ├── MagistratSearchCard.stories.tsx
+│       │   │   │       ├── MagistratSearchCard.test.tsx
+│       │   │   │       └── MagistratSearchCard.tsx
 │       │   │   ├── members
 │       │   │   │   └── components
 │       │   │   │       ├── DetailsMember.tsx
-│       │   │   │       ├── DetailsMemberHeader.tsx
-│       │   │   │       ├── DetailsMemberStats.tsx
 │       │   │   │       ├── JurisdictionAutocomplete.tsx
 │       │   │   │       ├── JurisdictionSelector.tsx
 │       │   │   │       ├── MemberDisplayTitle.tsx
 │       │   │   │       ├── MemberList.tsx
 │       │   │   │       ├── MemberListHeader.tsx
-│       │   │   │       ├── MemberListStateCell.tsx
 │       │   │   │       └── MemberTitle.tsx
 │       │   │   ├── nomination-files-table
 │       │   │   │   ├── components
@@ -1343,7 +1364,9 @@
 │       │   │   │       └── useMyFilesFilter.ts
 │       │   │   ├── sessions
 │       │   │   │   └── components
-│       │   │   │       ├── ManageArchivedSessions.tsx
+│       │   │   │       ├── ArchivedSessions.stories.tsx
+│       │   │   │       ├── ArchivedSessions.test.tsx
+│       │   │   │       ├── ArchivedSessions.tsx
 │       │   │   │       ├── ManageSession.tsx
 │       │   │   │       └── SessionStatusBadge.tsx
 │       │   │   ├── summary
@@ -1379,7 +1402,7 @@
 │       │   │   │       └── useOpenSummaryAttachment.ts
 │       │   │   └── transparence
 │       │   │       ├── components
-│       │   │       │   ├── NouvelleTransparence.tsx
+│       │   │       │   ├── NewTransparence.tsx
 │       │   │       │   ├── SessionBlock.tsx
 │       │   │       │   ├── SessionCsmList.tsx
 │       │   │       │   ├── SessionGardeDesSceauxList.tsx
@@ -1437,6 +1460,7 @@
 │       │   │       │   └── session
 │       │   │       │       ├── SessionCommentField.tsx
 │       │   │       │       ├── SessionCommentPanel.tsx
+│       │   │       │       ├── SessionNotFound.tsx
 │       │   │       │       ├── SessionTabs.test.tsx
 │       │   │       │       ├── SessionTabs.tsx
 │       │   │       │       ├── SessionValidationBanner.tsx
@@ -1497,6 +1521,7 @@
 │       │   │   │   ├── DocumentDraftBanner.tsx
 │       │   │   │   ├── DocumentDriftBanner.tsx
 │       │   │   │   ├── DocumentValidatedBanner.stories.tsx
+│       │   │   │   ├── DocumentValidatedBanner.test.tsx
 │       │   │   │   ├── DocumentValidatedBanner.tsx
 │       │   │   │   ├── agenda
 │       │   │   │   │   ├── AgendaEditPage.tsx
@@ -1516,6 +1541,7 @@
 │       │   │   │       ├── PresentationRemovedAgendasBanner.tsx
 │       │   │   │       ├── PresentationUpsertPage.tsx
 │       │   │   │       ├── PresentationsLayout.tsx
+│       │   │   │       ├── PresentationsPreviewPage.test.tsx
 │       │   │   │       ├── PresentationsPreviewPage.tsx
 │       │   │   │       ├── PresentationsTabAgendas.tsx
 │       │   │   │       ├── PresentationsTabPast.tsx
@@ -1530,7 +1556,8 @@
 │       │   │   │   ├── HelpPageButton.tsx
 │       │   │   │   └── UserManualPage.tsx
 │       │   │   ├── magistrats
-│       │   │   │   └── MagistratDetailsPage.tsx
+│       │   │   │   ├── MagistratDetailsPage.tsx
+│       │   │   │   └── MagistratSearchPage.tsx
 │       │   │   ├── members
 │       │   │   │   ├── DetailsMemberPage.tsx
 │       │   │   │   └── MemberListPage.tsx
@@ -1546,7 +1573,8 @@
 │       │   │   ├── sessions
 │       │   │   │   ├── ArchivedSessionsPage.tsx
 │       │   │   │   ├── LolfiRedirectMagistratPage.tsx
-│       │   │   │   └── ManageSessionPage.tsx
+│       │   │   │   ├── ManageSessionPage.tsx
+│       │   │   │   └── MemberArchivedSessionsPage.tsx
 │       │   │   ├── spaces
 │       │   │   │   ├── admin
 │       │   │   │   │   ├── AdminFeedbacksPage.stories.tsx
@@ -1555,8 +1583,7 @@
 │       │   │   │   │   ├── AdminJobsPage.tsx
 │       │   │   │   │   ├── AdminUserDetailPage.tsx
 │       │   │   │   │   ├── AdminUserListPage.tsx
-│       │   │   │   │   ├── IngestLolfiArchivePage.tsx
-│       │   │   │   │   └── jobs-page-outlet-context.type.ts
+│       │   │   │   │   └── IngestLolfiArchivePage.tsx
 │       │   │   │   ├── member
 │       │   │   │   │   └── MemberContentLayout.tsx
 │       │   │   │   └── secretariat-general
@@ -1564,7 +1591,7 @@
 │       │   │   ├── summary
 │       │   │   │   └── SummaryPage.tsx
 │       │   │   └── transparence
-│       │   │       ├── NouvelleTransparencePage.tsx
+│       │   │       ├── NewTransparencePage.tsx
 │       │   │       ├── SessionCommentPage.tsx
 │       │   │       ├── SessionsPage.tsx
 │       │   │       ├── TransparenceAttachmentsTab.tsx
@@ -1588,6 +1615,7 @@
 │       │   │   ├── magistrats.queries.ts
 │       │   │   ├── members.queries.ts
 │       │   │   ├── nomination-sessions.queries.ts
+│       │   │   ├── observations.queries.test.tsx
 │       │   │   ├── observations.queries.ts
 │       │   │   ├── query-client.ts
 │       │   │   ├── reports.queries.ts
@@ -1645,6 +1673,12 @@
 │       │   │   │   │   ├── OutcomeBadge.tsx
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── outcome-badge.utils.ts
+│       │   │   │   ├── pinned-header
+│       │   │   │   │   ├── PinnedHeader.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── presentation-moment
+│       │   │   │   │   ├── PresentationMoment.tsx
+│       │   │   │   │   └── index.ts
 │       │   │   │   ├── priority-badge
 │       │   │   │   │   ├── PriorityBadge.stories.tsx
 │       │   │   │   │   ├── PriorityBadge.tsx
@@ -1688,6 +1722,10 @@
 │       │   │   │   ├── role.enum.ts
 │       │   │   │   └── type-de-saisine.enum.ts
 │       │   │   ├── hooks
+│       │   │   │   ├── useAttachmentFailureToast
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── useAttachmentFailureToast.test.tsx
+│       │   │   │   │   └── useAttachmentFailureToast.ts
 │       │   │   │   ├── useAwaitableModal
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── useAwaitableModal.test.ts
@@ -1709,6 +1747,9 @@
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── useFoldWithScroll.ts
 │       │   │   │   │   └── usePinnedBar.ts
+│       │   │   │   ├── useRequestFailure
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── useRequestFailure.ts
 │       │   │   │   ├── useScrollToTop
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useScrollToTop.ts
@@ -1761,26 +1802,25 @@
 │       │   │       │   ├── CommentEditor.tsx
 │       │   │       │   └── index.ts
 │       │   │       ├── data-table
+│       │   │       │   ├── Checkbox.tsx
+│       │   │       │   ├── DataTable.fixtures.tsx
+│       │   │       │   ├── DataTable.stories.tsx
+│       │   │       │   ├── DataTable.test.tsx
 │       │   │       │   ├── DataTable.tsx
-│       │   │       │   ├── ReactTableBody.tsx
-│       │   │       │   ├── ReactTableColumnVisibility.tsx
-│       │   │       │   ├── ReactTableContent.tsx
-│       │   │       │   ├── ReactTableFilterColumn.tsx
-│       │   │       │   ├── ReactTableFilterColumnAsyncList.tsx
-│       │   │       │   ├── ReactTableFilterSearch.tsx
-│       │   │       │   ├── ReactTableHead.tsx
-│       │   │       │   ├── ReactTablePagination.tsx
-│       │   │       │   ├── ReactTableWrapper.tsx
+│       │   │       │   ├── DataTableAsyncListFilter.tsx
+│       │   │       │   ├── DataTableCount.tsx
+│       │   │       │   ├── DataTableFilters.test.tsx
+│       │   │       │   ├── DataTableFilters.tsx
+│       │   │       │   ├── data-table.types.d.ts
 │       │   │       │   ├── hooks
-│       │   │       │   │   ├── assert-is-page-size.ts
 │       │   │       │   │   ├── data-table-parsers.ts
 │       │   │       │   │   ├── data-table-state.ts
-│       │   │       │   │   ├── useDataTable.ts
-│       │   │       │   │   ├── useDataTablePaginationItemLabel.ts
-│       │   │       │   │   ├── useDataTableState.ts
-│       │   │       │   │   └── useQueryDataTableState.ts
+│       │   │       │   │   ├── useDataTableSearch.ts
+│       │   │       │   │   ├── useDataTableUrlState.ts
+│       │   │       │   │   ├── useSelectionColumn.tsx
+│       │   │       │   │   └── useTableVirtualizer.ts
 │       │   │       │   ├── index.ts
-│       │   │       │   └── page-sizes.ts
+│       │   │       │   └── rowCell.tsx
 │       │   │       ├── details
 │       │   │       │   ├── DetailsCard.tsx
 │       │   │       │   ├── DetailsHeader.stories.tsx
@@ -1791,6 +1831,9 @@
 │       │   │       │   ├── Dropdown.stories.tsx
 │       │   │       │   ├── Dropdown.test.tsx
 │       │   │       │   ├── Dropdown.tsx
+│       │   │       │   └── index.ts
+│       │   │       ├── error-page
+│       │   │       │   ├── ErrorPageLayout.tsx
 │       │   │       │   └── index.ts
 │       │   │       ├── expandable-text
 │       │   │       │   ├── ExpandableText.stories.tsx
@@ -1828,18 +1871,6 @@
 │       │   │       │   ├── Modal.test.tsx
 │       │   │       │   ├── Modal.tsx
 │       │   │       │   └── index.ts
-│       │   │       ├── new-table
-│       │   │       │   ├── Checkbox.tsx
-│       │   │       │   ├── NewTable.fixtures.tsx
-│       │   │       │   ├── NewTable.stories.tsx
-│       │   │       │   ├── NewTable.test.tsx
-│       │   │       │   ├── NewTable.tsx
-│       │   │       │   ├── hooks
-│       │   │       │   │   ├── useSelectionColumn.tsx
-│       │   │       │   │   └── useTableVirtualizer.ts
-│       │   │       │   ├── index.ts
-│       │   │       │   ├── new-table.types.d.ts
-│       │   │       │   └── rowCell.tsx
 │       │   │       ├── ovoid.tsx
 │       │   │       ├── required-label
 │       │   │       │   ├── RequiredLabel.stories.tsx
@@ -1908,13 +1939,14 @@
 │       │   │   ├── Colors.mdx
 │       │   │   ├── Swatch.tsx
 │       │   │   └── index.css
-│       │   ├── tanstack-react-table.d.ts
 │       │   ├── test-utils
 │       │   │   └── factories
 │       │   │       ├── session-nomination-file.factory.ts
 │       │   │       └── session-outcomes.factory.ts
 │       │   ├── utils
 │       │   │   ├── InvalidMimeType.error.ts
+│       │   │   ├── app-version.test.ts
+│       │   │   ├── app-version.ts
 │       │   │   ├── audition-expectation.util.test.ts
 │       │   │   ├── audition-expectation.util.ts
 │       │   │   ├── date-only.util.test.ts
@@ -1933,7 +1965,6 @@
 │       │   │   ├── route-path.utils.test.ts
 │       │   │   ├── route-path.utils.ts
 │       │   │   ├── session.utils.ts
-│       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.test.ts
 │       │   │   ├── string.utils.ts
 │       │   │   ├── time-only.util.ts
@@ -1987,6 +2018,7 @@
 │       └── vitest.setup.ts
 ├── bin
 │   ├── api.sh
+│   ├── deploy-staging.sh
 │   └── lolfi-freshness.sh
 ├── docs
 │   └── adr
@@ -2052,4 +2084,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-431 directories, 1623 files
+436 directories, 1650 files

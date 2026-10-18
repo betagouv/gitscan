@@ -1,20 +1,41 @@
-## Changelog : fondation (30 derniers jours, au 12 octobre 2026)
+## Changelog : fondation (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration du suivi des sessions et des auditions, le renforcement des mécanismes de feedback utilisateur et l'optimisation de l'affichage des informations (magistrats, rapports). L'intégration des notifications via Tchap a également été consolidée pour une meilleure réactivité des équipes.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur (navigation plus fluide, nouveaux tableaux de données) et la fiabilisation de la gestion des sessions et des documents. La sécurité de l'accès a été renforcée et les alertes ont été basculées vers Tchap pour une meilleure intégration avec les outils de l'État.
 
 ### Évolutions fonctionnelles
-- **Gestion des sessions et auditions** : Planification et liste des auditions [#679](https://github.com/betagouv/fondation/issues/679), publication des tableaux d'audition aux membres [#687](https://github.com/betagouv/fondation/issues/687), gestion des commentaires de session pour pré-remplir les avis [#662](https://github.com/betagouv/fondation/issues/662) et signalement des avis ne correspondant plus aux ordres du jour [#658](https://github.com/betagouv/fondation/issues/658).
-- **Feedback et satisfaction** : Activation de la fonctionnalité "Je donne mon avis" [#644](https://github.com/betagouv/fondation/issues/644), mise en place de sondages de satisfaction globaux avec historique [#686](https://github.com/betagouv/fondation/issues/686) et possibilité de recueillir des avis par session [#681](https://github.com/betagouv/fondation/issues/681).
-- **Gestion documentaire** : Amélioration du suivi du statut des fichiers [#696](https://github.com/betagouv/fondation/issues/696), maintien des documents en brouillon jusqu'à validation [#657](https://github.com/betagouv/fondation/issues/657), gestion des rapports officiels et de leurs ordres du jour [#670](https://github.com/betagouv/fondation/issues/670), [#663](https://github.com/betagouv/fondation/issues/663) et ajout de sauts de ligne dans les blocs de documents [#671](https://github.com/betagouv/fondation/issues/671).
-- **Interface et informations** : Affichage des numéros de téléphone des magistrats [#682](https://github.com/betagouv/fondation/issues/682), amélioration de l'affichage des noms [#691](https://github.com/betagouv/fondation/issues/691), affichage des formations en badges [#697](https://github.com/betagouv/fondation/issues/697) et optimisation de la barre de session (ancrage et défilement) [#651](https://github.com/betagouv/fondation/issues/651), [#649](https://github.com/betagouv/fondation/issues/649).
-- **Corrections diverses** : Distinction entre les brouillons et les documents actifs [#661](https://github.com/betagouv/fondation/issues/661), sélection automatique des contacts de justice [#694](https://github.com/betagouv/fondation/issues/694) et corrections sur les métadonnées des rapports [#690](https://github.com/betagouv/fondation/issues/690).
+- **Nouvelles fonctionnalités** :
+    - Accès aux sessions archivées pour les membres, avec détails sur le type et la date d'archivage ([#728](https://github.com/betagouv/fondation/issues/728)).
+    - Recherche de magistrats par nom directement depuis la navigation ([#719](https://github.com/betagouv/fondation/issues/719)).
+    - Mise en place d'un système de sondage de satisfaction global avec historique des réponses ([#686](https://github.com/betagouv/fondation/issues/686)).
+    - Nouveaux outils pour le secrétariat : publication de la table des auditions ([#687](https://github.com/betagouv/fondation/issues/687)) et pré-remplissage des avis via les commentaires de session ([#662](https://github.com/betagouv/fondation/issues/662)).
+    - Affichage de la composition des sessions via des badges visuels ([#697](https://github.com/betagouv/fondation/issues/697)).
+- **Améliorations de l'interface et de l'expérience utilisateur (UX)** :
+    - Unification des écrans de secrétariat et d'administration via l'utilisation de DataTables ([#726](https://github.com/betagouv/fondation/issues/726)).
+    - Migration des alertes de Mattermost vers Tchap ([#689](https://github.com/betagouv/fondation/issues/689)).
+    - Amélioration de la lisibilité des noms (affichage du nom de jeune fille et du prénom) ([#691](https://github.com/betagouv/fondation/issues/691)).
+    - Optimisation de la barre de session et de l'en-tête lors du défilement ([#651](https://github.com/betagouv/fondation/issues/651)).
+    - Clarification des libellés (ex: "Voir mon rapport" pour les rapports de rapporteur) ([#717](https://github.com/betagouv/fondation/issues/717)).
+- **Corrections** :
+    - Fiabilisation de la gestion des rapports officiels et de leur lien avec les ordres du jour ([#725](https://github.com/betagouv/fondation/issues/725), [#670](https://github.com/betagouv/fondation/issues/670), [#658](https://github.com/betagouv/fondation/issues/658)).
+    - Amélioration du cycle de vie des documents (maintien en mode brouillon jusqu'à validation, suivi correct du statut du fichier) ([#657](https://github.com/betagouv/fondation/issues/657), [#696](https://github.com/betagouv/fondation/issues/696)).
+    - Corrections diverses sur l'affichage des informations (restitution des temps, commentaires, et gestion des doublons de recherche) ([#711](https://github.com/betagouv/fondation/issues/711), [#710](https://github.com/betagouv/fondation/issues/710), [#694](https://github.com/betagouv/fondation/issues/694)).
 
 ### Évolutions techniques
-- **Architecture et Refactoring** : Résolution des cycles d'importation entre les modules [#695](https://github.com/betagouv/fondation/issues/695), passage à une communication via services entre les modules [#692](https://github.com/betagouv/fondation/issues/692), refactorisation des concepts d'énumérations [#648](https://github.com/betagouv/fondation/issues/648) et renforcement du typage avec Prisma [#660](https://github.com/betagouv/fondation/issues/660).
-- **Notifications et Intégrations** : Migration des alertes vers Tchap [#689](https://github.com/betagouv/fondation/issues/689), amélioration du rendu HTML des changelogs dans Tchap [#698](https://github.com/betagouv/fondation/issues/698) et automatisation des notifications de déploiement et d'échec sur Tchap [#709](https://github.com/betagouv/fondation/issues/709).
-- **Sécurité et Infrastructure** : Correction de vulnérabilités sur `multer` et `qs` [#673](https://github.com/betagouv/fondation/issues/673), encodage des noms de fichiers pour le stockage S3 [#712](https://github.com/betagouv/fondation/issues/712) et optimisation de la suppression des fichiers après transaction [#659](https://github.com/betagouv/fondation/issues/659).
-- **Base de données** : Résolution de problèmes liés aux migrations et au squash de la base de données [#708](https://github.com/betagouv/fondation/issues/708), [#705](https://github.com/betagouv/fondation/issues/705).
+- **Sécurité** : Renforcement de la robustesse de la connexion par mot de passe contre les tentatives de devinettes et les caractères spéciaux ([#732](https://github.com/betagouv/fondation/issues/732)).
+- **Gestion des données et stockage** :
+    - Optimisation du nettoyage des fichiers orphelins sur le stockage S3 ([#733](https://github.com/betagouv/fondation/issues/733), [#659](https://github.com/betagouv/fondation/issues/659)).
+    - Amélioration de la gestion des métadonnées et de l'encodage des noms de fichiers ([#712](https://github.com/betagouv/fondation/issues/712)).
+    - Correction des erreurs de lecture lorsque des fichiers sont manquants dans le stockage ([#729](https://github.com/betagouv/fondation/issues/729)).
+    - Rattrapage (backfill) de la taille des pièces jointes pour les fichiers anciens ([#731](https://github.com/betagouv/fondation/issues/731)).
+- **Architecture et Refactoring** :
+    - Refactorisation des modules pour favoriser l'utilisation de services et supprimer les cycles d'importation ([#692](https://github.com/betagouv/fondation/issues/692), [#695](https://github.com/betagouv/fondation/issues/695)).
+    - Amélioration de la gestion des migrations de base de données ([#708](https://github.com/betagouv/fondation/issues/708), [#705](https://github.com/betagouv/fondation/issues/705)).
+- **Infrastructure et CI/CD** :
+    - Alignement des versions de PostgreSQL (local, CI et production) ([#727](https://github.com/betagouv/fondation/issues/727)).
+    - Automatisation des notifications de déploiement et d'échec de release vers Tchap ([#709](https://github.com/betagouv/fondation/issues/709)).
+    - Ajout d'un script de déploiement pour l'environnement de staging ([#701](https://github.com/betagouv/fondation/issues/701)).
+    - Synchronisation des clients OpenAPI générés ([#730](https://github.com/betagouv/fondation/issues/730)).
 
 ### Autres changements
-- **Documentation et Données** : Mise à jour de la documentation concernant l'import LOLFI [#684](https://github.com/betagouv/fondation/issues/684) et ajout de données fictives LOLFI pour les environnements de test [#683](https://github.com/betagouv/fondation/issues/683).
+- Mise à jour de la documentation concernant l'importation des données LOLFI ([#684](https://github.com/betagouv/fondation/issues/684)).
