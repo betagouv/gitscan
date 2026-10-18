@@ -1,18 +1,18 @@
-## Changelog : zacharie (30 derniers jours, au 07/10/2026)
+## Changelog : zacharie (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur la robustesse du mode hors ligne, la sécurisation des données utilisateurs et l'amélioration des outils de pilotage pour les fédérations. L'application est désormais plus légère, plus sûre et offre une expérience de saisie sur le terrain plus fluide et fiable.
+Ce mois-ci, Zacharie a franchi une étape importante avec l'intégration de la gestion de la trichine et le renforcement des outils pour les laboratoires (exports de données et ajout de photos). L'application est devenue nettement plus performante, avec un poids au chargement divisé par deux, et offre une expérience beaucoup plus fiable en mode hors ligne grâce à une gestion optimisée de la synchronisation des données.
 
 ### Évolutions fonctionnelles
-- **Mode hors ligne et synchronisation** : Amélioration significative de la fiabilité (persistance des saisies lors des mises à jour ou des déconnexions, gestion des conflits de versions, reprise automatique de la connexion après une coupure) et optimisation du stockage local [#709, #700, #699, #702, #705].
-- **Sécurité et gestion des accès** : Renforcement des contrôles (changement d'email sécurisé par mot de passe, gestion stricte des droits d'administration, protection contre les liens malveillants) et protection de la vie privée (exclusion des données sensibles des logs et de Sentry) [#750, #748, #682, #680, #678, #671].
-- **Évolutions métier** : Nouveaux tableaux de bord pour les fédérations nationales et régionales [#696], amélioration du parcours de vente/don (gestion des destinataires et des carcasses) [#620, #614, #652], et enrichissement des exports Excel [#683].
-- **Expérience utilisateur (UI/UX)** : Optimisation de l'ergonomie mobile, amélioration des formulaires de saisie (suggestions de communes, dates, espèces) et corrections de l'affichage [#639, #658, #645, #647].
+- **Gestion de la trichine et laboratoires** : Mise en place de l'espace dédié à la gestion de la trichine [#596], possibilité pour les laboratoires d'exporter des données (pools, échantillons, fiches) vers leurs LIMS en CSV ou JSON [#793], et ajout de la possibilité de joindre des photos de larves aux fiches de confirmation [#788].
+- **Administration et pilotage** : Amélioration des outils d'administration (création de nouveaux destinataires, gestion des invitations, accès aux tableaux de bord départementaux pour les fédérations) [#652], [#784], [#696], [#774] et nouveaux exports de bilans d'anomalies pour le SVI [#753].
+- **Fiabilité et synchronisation** : Amélioration majeure de la robustesse du mode hors ligne, de la gestion des conflits de synchronisation et de la reprise de connexion [#719], [#700], [#699], [#656]. L'application supporte désormais l'utilisation dans plusieurs onglets simultanément [#772].
+- **Corrections et sécurité** : Restriction de la modification des champs selon les rôles utilisateurs [#771], correction des filtres de recherche et de la fluidité des listes de carcasses [#782], [#781], [#780], et renforcement de la protection des données personnelles et des accès API [#682], [#676].
 
 ### Évolutions techniques
-- **Performance** : Réduction de 50 % du poids de l'application au chargement [#643] et optimisation des lectures disque pour améliorer la réactivité [#742].
-- **Architecture** : Optimisation du stockage des données hors ligne pour les comptes professionnels (ETG, SVI, collecteurs) afin d'alléger l'empreinte mémoire [#709].
+- **Performance** : Réduction de 50 % du poids de l'application au chargement [#643] et optimisation de la réactivité des listes et des filtres de recherche [#781], [#780].
+- **Qualité et CI/CD** : Accélération des tests E2E dans la chaîne de CI [#798] et renforcement des processus de vérification automatique sur les Pull Requests [#778].
+- **Observabilité** : Intégration de nouveaux événements de suivi Matomo pour affiner l'analyse de l'usage et des rôles administrateurs [#777], [#632].
 
 ### Autres changements
-- Documentation technique (audit de la synchronisation hors ligne et du rechargement des données locales) [#737, #704].
-- Maintenance (nettoyage des dépendances inutilisées) [#751].
+- **Documentation** : Rédaction de la documentation technique concernant l'audit de la synchronisation hors ligne et le processus de rechargement des données locales [#737], [#704].

@@ -9,6 +9,7 @@
 │       ├── claude-code-review.yml
 │       ├── claude.yml
 │       ├── format.yml
+│       ├── pr-checklist.yml
 │       ├── shai-hulud-check.yml
 │       └── tests.yml
 ├── .gitignore
@@ -79,7 +80,23 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260827090000_etg_demande_numero_bon_reception
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260828120000_trichine_annulation_ftp
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260831120000_trichine_reference_labo_par_labo
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260902090000_trichine_document_email_entrant
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260902160000_trichine_document_rattachement_source
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260902173000_email_entrant
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904090000_trichine_ocr_rapports
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904140000_trichine_rattachement_indice
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20260907120000_drop_resume_nombre_de_carcasses
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260908120000_entity_code_trichine
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260918093211_last_login_at
 │   │   │   │   └── migration.sql
@@ -93,6 +110,12 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20261007100000_api_key_scope_user_login
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20261008120000_exclude_from_stats
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261014100000_history_tables
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261015100000_entity_history_code_trichine
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -101,20 +124,30 @@
 │   │   ├── 20260818_backfill-brevo-contacts-commerce-de-detail.ts
 │   │   ├── 20260819_normalize_native_push_tokens.sql
 │   │   ├── 20260827_normalize_empty_numero_cfei.sql
+│   │   ├── 20260908_trichine_reference_code_etablissement.sql
 │   │   ├── 20260911_clear_carcasse_usage_domestique_transmises.sql
+│   │   ├── 20261008_exclude_from_stats_comptes_entites_de_test.sql
 │   │   ├── 251203-clean-old-users.js
 │   │   ├── copy-db-from-source.sh
 │   │   ├── copy-schema-to-app-side.js
 │   │   ├── fill-ccg-db.ts
 │   │   ├── import-official-cfei.ts
 │   │   ├── populate-test-db.ts
-│   │   └── seed-trichine-labos.ts
+│   │   ├── seed-trichine-jeu-de-test-labos.ts
+│   │   ├── seed-trichine-labo-demo.ts
+│   │   ├── seed-trichine-labos.ts
+│   │   ├── seed-trichine-scenario-svi.ts
+│   │   └── simuler-mail-entrant-trichine.ts
 │   ├── src
 │   │   ├── __tests__
 │   │   │   ├── admin-lockout.test.ts
+│   │   │   ├── admin-trichine-route.test.ts
 │   │   │   ├── admin-user-entity.test.ts
+│   │   │   ├── admin-user-invitation.test.ts
 │   │   │   ├── albert.test.ts
+│   │   │   ├── bilan-anomalies.test.ts
 │   │   │   ├── bug-investigator.test.ts
+│   │   │   ├── carcasse-count-route.test.ts
 │   │   │   ├── carcasse-full-reload.test.ts
 │   │   │   ├── carcasse-refusees-route.test.ts
 │   │   │   ├── carcasse-side-effects.test.ts
@@ -128,7 +161,12 @@
 │   │   │   ├── federation-access.test.ts
 │   │   │   ├── fei-side-effects.test.ts
 │   │   │   ├── fei-url.test.ts
+│   │   │   ├── fixtures
+│   │   │   │   └── rapport-lvd-lda39.ts
+│   │   │   ├── history-tables.test.ts
+│   │   │   ├── lims-parse.test.ts
 │   │   │   ├── notifications.test.ts
+│   │   │   ├── pdf-text.test.tsx
 │   │   │   ├── permissions-carcasse-ownership.test.ts
 │   │   │   ├── permissions-sync-write.test.ts
 │   │   │   ├── redact-personal-data.test.ts
@@ -145,7 +183,19 @@
 │   │   │   ├── sync-route-roundtrip.test.ts
 │   │   │   ├── sync-route.test.ts
 │   │   │   ├── sync-version.test.ts
+│   │   │   ├── trichine-document-upload.test.ts
+│   │   │   ├── trichine-echantillons-bulk-route.test.ts
+│   │   │   ├── trichine-email.test.ts
+│   │   │   ├── trichine-feature-flag.test.ts
+│   │   │   ├── trichine-ftp-pdf.test.tsx
+│   │   │   ├── trichine-ftp-photo-route.test.ts
+│   │   │   ├── trichine-inbound-email.test.ts
+│   │   │   ├── trichine-inbound-ocr.test.ts
+│   │   │   ├── trichine-inbound-webhook-route.test.ts
+│   │   │   ├── trichine-pool-document-route.test.ts
+│   │   │   ├── trichine-report-parse.test.ts
 │   │   │   ├── trichine-status.test.ts
+│   │   │   ├── trichine-svi-guards.test.ts
 │   │   │   ├── user-email-change.test.ts
 │   │   │   ├── user-entity.test.ts
 │   │   │   ├── user-invite.test.ts
@@ -194,6 +244,8 @@
 │   │   │   │   ├── fei.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── official-cfei.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   ├── trichine.ts
 │   │   │   │   ├── user-entity.ts
 │   │   │   │   └── user.ts
 │   │   │   ├── api-key-approval.ts
@@ -227,6 +279,7 @@
 │   │   │   ├── feis.ts
 │   │   │   ├── index.ts
 │   │   │   ├── relance-inscription.ts
+│   │   │   ├── trichine-ocr.ts
 │   │   │   └── utils.ts
 │   │   ├── data
 │   │   │   └── departements-regions.json
@@ -237,8 +290,8 @@
 │   │   │   ├── passport.ts
 │   │   │   ├── quiz-rate-limit.ts
 │   │   │   ├── rate-limit.ts
-│   │   │   ├── validateUser.ts
-│   │   │   └── version-check.ts
+│   │   │   ├── trichine-feature.ts
+│   │   │   └── validateUser.ts
 │   │   ├── mock-proconnect.ts
 │   │   ├── prisma.ts
 │   │   ├── scripts
@@ -258,14 +311,18 @@
 │   │   │   ├── 20251114_proposition_fiche_Zacharie_circuits_courts.docx
 │   │   │   ├── get-consigne-docx.ts
 │   │   │   ├── get-fiche-pdf.tsx
+│   │   │   ├── get-ftp-pdf.tsx
 │   │   │   ├── get-header-docx.ts
 │   │   │   ├── get-laissez-passer-sanitaire.ts
 │   │   │   ├── get-levee-saisie-docx.ts
-│   │   │   └── get-saisie-docx.ts
+│   │   │   ├── get-saisie-docx.ts
+│   │   │   └── trichine-email.ts
 │   │   ├── third-parties
 │   │   │   ├── albert.ts
+│   │   │   ├── brevo-inbound.ts
 │   │   │   ├── brevo-templates.ts
 │   │   │   ├── brevo.ts
+│   │   │   ├── cellar.ts
 │   │   │   ├── expo-push.ts
 │   │   │   ├── matomo.ts
 │   │   │   └── sentry.ts
@@ -278,13 +335,16 @@
 │   │   │   ├── error.ts
 │   │   │   ├── fei.ts
 │   │   │   ├── matomo-event.ts
+│   │   │   ├── mupdf.d.ts
 │   │   │   ├── request.ts
 │   │   │   ├── responses.ts
 │   │   │   └── user.ts
 │   │   └── utils
 │   │       ├── admin-list-filters.ts
 │   │       ├── api.ts
+│   │       ├── bilan-anomalies.ts
 │   │       ├── carcasse-access.ts
+│   │       ├── carcasse-prise-en-charge.ts
 │   │       ├── carcasse-side-effects.ts
 │   │       ├── clean-display-name.ts
 │   │       ├── cookie.ts
@@ -301,6 +361,9 @@
 │   │       ├── get-carcasse-status.ts
 │   │       ├── invite-user.ts
 │   │       ├── is-carcasse-done.ts
+│   │       ├── lims-mapping.ts
+│   │       ├── lims-parse.ts
+│   │       ├── pdf-text.ts
 │   │       ├── redact-personal-data.ts
 │   │       ├── refreshMaterializedViews.ts
 │   │       ├── sanitize.ts
@@ -308,14 +371,9 @@
 │   │       ├── send-onboarding-email.ts
 │   │       ├── session-token.ts
 │   │       ├── sort-things-by-type-and-id.server.ts
-│   │       ├── sync-carcasse-intermediaire.ts
-│   │       ├── sync-carcasse-modification-request.ts
-│   │       ├── sync-carcasse.ts
-│   │       ├── sync-errors.ts
-│   │       ├── sync-fei.ts
-│   │       ├── sync-scope.ts
-│   │       ├── sync-version.ts
-│   │       ├── trichine-status.ts
+│   │       ├── svi.ts
+│   │       ├── sync-*.ts  (7 files)
+│   │       ├── trichine-*.ts  (8 files)
 │   │       ├── trichine.ts
 │   │       ├── user-entities.ts
 │   │       └── user.ts
@@ -330,8 +388,9 @@
 │   ├── CLAUDE.md
 │   ├── README.md
 │   ├── __tests__
-│   │   ├── carcasses-registry-hydration.test.ts
 │   │   ├── create-new-carcasse.test.ts
+│   │   ├── trichine-prelevabilite.test.ts
+│   │   ├── trichine-repartition.test.ts
 │   │   ├── trichine.test.ts
 │   │   ├── update-carcasse-status.test.ts
 │   │   └── update-fei-scoping.test.ts
@@ -760,7 +819,23 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260827090000_etg_demande_numero_bon_reception
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260828120000_trichine_annulation_ftp
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260831120000_trichine_reference_labo_par_labo
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260902090000_trichine_document_email_entrant
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260902160000_trichine_document_rattachement_source
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260902173000_email_entrant
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904090000_trichine_ocr_rapports
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904140000_trichine_rattachement_indice
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20260907120000_drop_resume_nombre_de_carcasses
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260908120000_entity_code_trichine
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260918093211_last_login_at
 │   │   │   │   └── migration.sql
@@ -773,6 +848,12 @@
 │   │   │   ├── 20261005100000_sync_version
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20261007100000_api_key_scope_user_login
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261008120000_exclude_from_stats
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261014100000_history_tables
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261015100000_entity_history_code_trichine
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -893,6 +974,7 @@
 │   │   │       ├── mail-send.svg
 │   │   │       └── success.svg
 │   │   ├── components
+│   │   │   ├── AdminDeletedBanner.tsx
 │   │   │   ├── AnomaliePicker.tsx
 │   │   │   ├── BottomNavigation.tsx
 │   │   │   ├── CCGNouveau.tsx
@@ -934,6 +1016,7 @@
 │   │   │   ├── MultiSelectDropDownMenu.tsx
 │   │   │   ├── NotFound.tsx
 │   │   │   ├── OfflineMode.tsx
+│   │   │   ├── OfflineSingleTabGate.tsx
 │   │   │   ├── PageNotFound.tsx
 │   │   │   ├── PartenaireNouveau.tsx
 │   │   │   ├── PendingModifRequestsAlertModal.tsx
@@ -949,15 +1032,33 @@
 │   │   │   ├── Section.tsx
 │   │   │   ├── SelectCustom.tsx
 │   │   │   ├── SviCarcassesAVenirModal.tsx
+│   │   │   ├── SyncRejectionsNotice.tsx
 │   │   │   ├── TableFilterable.tsx
 │   │   │   ├── TrichineSection.tsx
 │   │   │   ├── UnexpectedError.tsx
 │   │   │   ├── VideoOverlay.tsx
-│   │   │   └── federation-dashboard
-│   │   │       ├── DepartementsTable.tsx
-│   │   │       ├── KpiTile.tsx
-│   │   │       ├── SectionSuiviSanitaire.tsx
-│   │   │       └── SectionValorisation.tsx
+│   │   │   ├── federation-dashboard
+│   │   │   │   ├── DepartementsTable.tsx
+│   │   │   │   ├── KpiTile.tsx
+│   │   │   │   ├── SectionSuiviSanitaire.tsx
+│   │   │   │   └── SectionValorisation.tsx
+│   │   │   ├── laboratoire
+│   │   │   │   ├── ExportButtons.tsx
+│   │   │   │   ├── LarvePhotos.tsx
+│   │   │   │   ├── PoolCard.tsx
+│   │   │   │   ├── PoolDocuments.tsx
+│   │   │   │   └── cellules.tsx
+│   │   │   └── trichine
+│   │   │       ├── LienTrichine.tsx
+│   │   │       ├── TrichineChaine.tsx
+│   │   │       ├── TrichineChronologie.tsx
+│   │   │       ├── TrichineDetailPage.tsx
+│   │   │       ├── TrichineFTPPdfActions.tsx
+│   │   │       ├── TrichineIntrouvable.tsx
+│   │   │       ├── TrichineListPage.tsx
+│   │   │       ├── TrichineRechercheReference.tsx
+│   │   │       ├── TrichineResultatCard.tsx
+│   │   │       └── wizard-ui.tsx
 │   │   ├── data
 │   │   │   ├── anomalies
 │   │   │   │   ├── gros.json
@@ -988,6 +1089,7 @@
 │   │   │   ├── accessibility.tsx
 │   │   │   ├── admin
 │   │   │   │   ├── admin-router.tsx
+│   │   │   │   ├── admin-search.tsx
 │   │   │   │   ├── api-key-add.tsx
 │   │   │   │   ├── api-key.$apiKeyId.tsx
 │   │   │   │   ├── api-keys.tsx
@@ -1005,6 +1107,7 @@
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── lesions.tsx
 │   │   │   │   ├── quiz.tsx
+│   │   │   │   ├── trichine.tsx
 │   │   │   │   ├── user-add.tsx
 │   │   │   │   ├── user.$userId.tsx
 │   │   │   │   └── users.tsx
@@ -1128,10 +1231,15 @@
 │   │   │   │   ├── federation-ma-federation.tsx
 │   │   │   │   └── federation-router.tsx
 │   │   │   ├── laboratoire
+│   │   │   │   ├── laboratoire-echantillons.tsx
 │   │   │   │   ├── laboratoire-ftp.tsx
 │   │   │   │   ├── laboratoire-ftps.tsx
+│   │   │   │   ├── laboratoire-index.tsx
 │   │   │   │   ├── laboratoire-layout.tsx
+│   │   │   │   ├── laboratoire-pool-detail.tsx
+│   │   │   │   ├── laboratoire-pools.tsx
 │   │   │   │   ├── laboratoire-profil.tsx
+│   │   │   │   ├── laboratoire-results-import.tsx
 │   │   │   │   └── laboratoire-router.tsx
 │   │   │   ├── landing-demarches.tsx
 │   │   │   ├── landing-pros.tsx
@@ -1171,15 +1279,24 @@
 │   │   │   │   └── svi-router.tsx
 │   │   │   ├── tableau-de-bord-redirect.tsx
 │   │   │   └── trichine
+│   │   │       ├── trichine-echantillon-detail.tsx
+│   │   │       ├── trichine-echantillons.tsx
 │   │   │       ├── trichine-ftp-detail.tsx
+│   │   │       ├── trichine-ftps.tsx
+│   │   │       ├── trichine-index.tsx
+│   │   │       ├── trichine-layout.tsx
 │   │   │       ├── trichine-nouveau-pool.tsx
 │   │   │       ├── trichine-nouvelle-ftp.tsx
-│   │   │       └── trichine-tableau.tsx
+│   │   │       ├── trichine-pool-detail.tsx
+│   │   │       ├── trichine-pools.tsx
+│   │   │       └── trichine-prelevement-wizard.tsx
 │   │   ├── service-worker.ts
 │   │   ├── services
+│   │   │   ├── api.test.ts
 │   │   │   ├── api.ts
 │   │   │   ├── indexed-db.ts
 │   │   │   ├── laboratoire.ts
+│   │   │   ├── matomo-events.ts
 │   │   │   ├── matomo.test.ts
 │   │   │   ├── matomo.ts
 │   │   │   ├── recherche-entreprises.ts
@@ -1188,6 +1305,7 @@
 │   │   │   ├── usePWAManager.js
 │   │   │   └── useSaveScroll.ts
 │   │   ├── sw
+│   │   │   ├── new-version-prompt.tsx
 │   │   │   ├── register.ts
 │   │   │   └── web-push-notifications.ts
 │   │   ├── types
@@ -1196,6 +1314,7 @@
 │   │   │   ├── filter.ts
 │   │   │   └── transmission-steps.ts
 │   │   ├── utils
+│   │   │   ├── admin-fei-destinataire.ts
 │   │   │   ├── anomalies-referentiel.ts
 │   │   │   ├── bph-motifs.ts
 │   │   │   ├── carcasse-deja-envoyee.test.ts
@@ -1209,15 +1328,24 @@
 │   │   │   ├── dates-to-iso.test.ts
 │   │   │   ├── dates-to-iso.ts
 │   │   │   ├── disconnect.ts
+│   │   │   ├── download-api-file.ts
+│   │   │   ├── download-ftp-pdf.ts
 │   │   │   ├── etablissementsTraitementSaintaire.test.ts
 │   │   │   ├── etablissementsTraitementSaintaire.ts
+│   │   │   ├── export-bilan-anomalies.ts
 │   │   │   ├── export-carcasses.ts
 │   │   │   ├── export-transmissions.ts
+│   │   │   ├── export-trichine.ts
+│   │   │   ├── file-to-base64.ts
 │   │   │   ├── filter-carcasse.ts
 │   │   │   ├── get-*.ts  (19 files)
 │   │   │   ├── get-previous-detenteur-from-transmission.tsx
+│   │   │   ├── has-unsynced-data.test.ts
+│   │   │   ├── has-unsynced-data.ts
 │   │   │   ├── is-carcasse-done.test.ts
 │   │   │   ├── is-carcasse-done.ts
+│   │   │   ├── is-fei-excluded-by-quick-filters.test.ts
+│   │   │   ├── is-fei-excluded-by-quick-filters.ts
 │   │   │   ├── lesions.ts
 │   │   │   ├── load-carcasses-refusees.ts
 │   │   │   ├── load-carcasses.ts
@@ -1226,6 +1354,7 @@
 │   │   │   ├── map-fei-fields-to-carcasse.ts
 │   │   │   ├── merge-fetched-items.ts
 │   │   │   ├── modif-requests.ts
+│   │   │   ├── offline-single-tab.ts
 │   │   │   ├── quiz-shuffle.ts
 │   │   │   ├── sanitize-redirect.test.ts
 │   │   │   ├── sanitize-redirect.ts
@@ -1243,18 +1372,24 @@
 │   │   │   ├── svi-tracabilite-amont.ts
 │   │   │   ├── sync-data.test.ts
 │   │   │   ├── sync-data.ts
+│   │   │   ├── tabs-broadcast.ts
 │   │   │   ├── transmission-labels.test.ts
 │   │   │   ├── transmission-labels.ts
 │   │   │   ├── trichine-hooks.ts
+│   │   │   ├── trichine-list-params.ts
+│   │   │   ├── trichine-prelevabilite.ts
+│   │   │   ├── trichine-repartition.ts
 │   │   │   ├── trichine.ts
 │   │   │   ├── update-carcasse-anomalies.ts
 │   │   │   ├── usage-domestique.ts
 │   │   │   ├── useCarcasseStatusAndRefus.tsx
+│   │   │   ├── useCarcassesRegistry.ts
 │   │   │   ├── useGetCommunesDeChasseFavorites.ts
 │   │   │   ├── useLocalStorage.ts
 │   │   │   ├── useMinimumWidth.ts
 │   │   │   ├── useNativePushToken.ts
 │   │   │   ├── usePrefillPremierDétenteur.ts
+│   │   │   ├── user-onboarded.client.test.ts
 │   │   │   ├── user-onboarded.client.ts
 │   │   │   └── user.ts
 │   │   ├── utils-offline
@@ -1285,6 +1420,7 @@
 │   ├── emails.md
 │   ├── federations.md
 │   ├── from_fei_to_carcasse.md
+│   ├── matomo.md
 │   ├── proconnect-admin.md
 │   ├── project_overview
 │   │   ├── img1.1.png
@@ -1356,6 +1492,7 @@
 │   │   │   └── fiche_dispatch_multi_destinataires.spec.ts
 │   │   ├── etg
 │   │   │   ├── 141-export-excel-animaux-acceptes.spec.ts
+│   │   │   ├── 156-filtres-rapides-fiches.spec.ts
 │   │   │   ├── 45-reception-avec-stockage-ccg.spec.ts
 │   │   │   ├── 48-vue-carcasses-agregee.spec.ts
 │   │   │   ├── 49-onboarding-incomplet-acces-restreint.spec.ts
@@ -1399,6 +1536,7 @@
 │   │   │   ├── 12-profil-examinateur.spec.ts
 │   │   │   ├── 13-ccg-creation-profil.spec.ts
 │   │   │   ├── 15-fiche-svi-cloturee-vue-chasseur.spec.ts
+│   │   │   ├── 156-association-autre-membre-apres-certification.spec.ts
 │   │   │   ├── 16-fiche-circuit-court-livree-vue-chasseur.spec.ts
 │   │   │   ├── 17-fiche-refusee-par-etg-vue-chasseur.spec.ts
 │   │   │   ├── 18-date-future-refusee.spec.ts
@@ -1419,6 +1557,7 @@
 │   │   │   ├── 33-proprietaire-initial-verrouille-apres-transmission.spec.ts
 │   │   │   ├── 34-dernier-admin-association.spec.ts
 │   │   │   ├── 34-renvoi-puis-retour-a-l-association.spec.ts
+│   │   │   ├── 35-choix-commune-dans-la-liste.spec.ts
 │   │   │   ├── README.md
 │   │   │   └── fiche_circuit-long_simple_examinateur.spec.ts
 │   │   ├── federation
@@ -1449,6 +1588,8 @@
 │   │   │   ├── 46-etape-carcasses-soustraction.spec.ts
 │   │   │   ├── 47-hint-ajout-destinataire.spec.ts
 │   │   │   ├── 48-carcasses-renvoyees-a-attribuer.spec.ts
+│   │   │   ├── 49-ajout-destinataire-consommateur-final.spec.ts
+│   │   │   ├── 50-circuit-court-partiel-reste-a-attribuer.spec.ts
 │   │   │   ├── README.md
 │   │   │   └── fiche_circuit-long_simple_premier-detenteur.spec.ts
 │   │   ├── svi
@@ -1470,7 +1611,8 @@
 │   │   │   ├── 87-fiche-sans-carcasse-a-inspecter.spec.ts
 │   │   │   ├── 88-svi-autre-departement.spec.ts
 │   │   │   ├── 89-acceptee-carcasses-restent-visibles.spec.ts
-│   │   │   └── 90-acceptation-un-clic.spec.ts
+│   │   │   ├── 90-acceptation-un-clic.spec.ts
+│   │   │   └── 91-bilan-saison-export.spec.ts
 │   │   └── transverse
 │   │       ├── 104-offline-create-online-sync.spec.ts
 │   │       ├── 105-role-based-route-access-matrix.spec.ts
@@ -1493,12 +1635,17 @@
 │   │       ├── 139-admin-creation-destinataire.spec.ts
 │   │       ├── 140-changement-email-interdit.spec.ts
 │   │       ├── 143-version-obsolete-ecrasee.spec.ts
+│   │       ├── 144-modifications-refusees-et-etat-sync.spec.ts
 │   │       ├── 147-registre-carcasses-hors-ligne-apres-rechargement.spec.ts
+│   │       ├── 148-nouvelle-version-proposee.spec.ts
 │   │       ├── 149-detenteurs-initiaux-persistes-hors-ligne.spec.ts
 │   │       ├── 150-retour-en-ligne-apres-connexion-tres-lente.spec.ts
 │   │       ├── 151-changement-version-store-garde-non-synchronise.spec.ts
 │   │       ├── 152-service-worker-ne-cache-pas-l-api.spec.ts
 │   │       ├── 153-creation-de-compte-connecte-garde-les-fiches.spec.ts
+│   │       ├── 154-liste-carcasses-a-jour-hors-ligne.spec.ts
+│   │       ├── 154-plusieurs-onglets.spec.ts
+│   │       ├── 155-retour-en-ligne-apres-echec-user-me.spec.ts
 │   │       ├── comptes-vides-desktop.spec.ts
 │   │       ├── comptes-vides-mobile.spec.ts
 │   │       ├── connexion.spec.ts
@@ -1571,6 +1718,7 @@
 │   ├── carcasses-funnel.sql
 │   ├── carcasses-intermediaires-stats.sql
 │   ├── carcasses-svi-stats.sql
+│   ├── clean-views.sql
 │   ├── fei-debug.sql
 │   ├── fei-stats.sql
 │   ├── france-stats.sql
@@ -1578,4 +1726,4 @@
 ├── package-lock.json
 ├── package.json
 └── tsconfig.json
-349 directories, 1249 files
+374 directories, 1385 files
