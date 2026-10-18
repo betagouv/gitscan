@@ -1,30 +1,25 @@
-## Changelog : pilotage-airflow (30 derniers jours, au 08/10/2026)
+## Changelog : pilotage-airflow (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'enrichissement des capacités de reporting, notamment avec l'ajout de nouveaux modèles pour les orientations et les données GEIQ. Les données relatives aux utilisateurs et aux structures (IMER) ont été affinées pour offrir une vision plus précise. Parallèlement, l'infrastructure de données a été optimisée pour gagner en fiabilité et en sécurité.
+Ce mois a été marqué par un enrichissement significatif des données de pilotage, notamment sur les thématiques d'orientation et des professionnels. Les travaux ont également porté sur l'optimisation de l'orchestration des flux pour éviter les conflits de synchronisation et sur le renforcement de la sécurité et de la qualité des données traitées.
 
 ### Évolutions fonctionnelles
-- **Nouveaux modèles de données** : Ajout de modèles de reporting pour les orientations et intégration des modèles GEIQ.
-- **Enrichissement des informations** : 
-    - Ajout de précisions sur le profil utilisateur (type d'utilisateur, statut d'administrateur d'organisation).
-    - Amélioration du modèle IMER incluant désormais les structures non-connectées et des vues d'informations détaillées.
-    - Ajout de nouvelles colonnes et données pour le suivi Dora.
-- **Amélioration du suivi métier** : 
-    - Consolidation des sources d'actes métiers dans une table agrégée mensuelle.
-    - Mise à jour des sources de données pour les emplois.
-    - Nouveaux calculs pour les montants accordés et conventionnés.
-- **Corrections** : Résolution d'un bug sur les données Dora.
+- **Enrichissement des données et nouveaux modèles** :
+    - Création de nouveaux modèles de reporting pour les orientations et d'un modèle consolidé pour les professionnels ("all pros").
+    - Ajout de nouvelles informations dans les modèles : colonnes de refus, type d'utilisateur (`user_kind`) dans les orientations, nouvelles colonnes DORA et intégration des informations de structure dans le modèle IMER.
+- **Amélioration de la qualité des données** :
+    - Affinement des réponses ESAT grâce à l'application d'exclusions basées sur l'analyse des commentaires libres.
+    - Corrections de bugs sur les données DORA.
 
 ### Évolutions techniques
-- **Orchestration Airflow** : 
-    - Modification de l'heure de lancement du DAG d'inclusion de données.
-    - Suppression du DAG `dbt_imer` devenu obsolète.
-- **Pipelines de données** : Mise à jour du récupérateur (fetcher) Dora et intégration de nouveaux imports pour accompagner les nouveaux modèles.
-- **Sécurité et Qualité** : 
-    - Mise à jour de sécurité (notamment `pyjwt`).
-    - Optimisation des tests DBT pour éviter les exécutions indirectes inutiles.
-    - Ajustement de la sévérité des tests de relation (passage en mode "warning") pour améliorer la fluidité des déploiements.
-- **Maintenance du schéma** : Nettoyage de structures et de colonnes obsolètes (`structures.opening_hours_details`).
+- **Optimisation de l'orchestration** :
+    - Ajustement des horaires de lancement des tâches DBT pour éviter les chevauchements entre les flux (notamment entre DORA et la synchronisation "Le Marché").
+- **Maintenance des pipelines de données** :
+    - Mise à jour du récupérateur (*fetcher*) DORA pour intégrer les nouveaux modèles métier (IMER et orientations).
+    - Changement de la source de données pour les emplois.
+    - Ajustements des schémas de base de données et suppression de champs obsolètes.
+- **Sécurité et maintenance** :
+    - Application de mises à jour de sécurité et de dépendances critiques (notamment `pyjwt` et `urllib3`).
 
 ### Autres changements
-- Correction de la nomenclature de certains modèles pour une meilleure clarté.
+- **Refactorisation** : Renommage d'un modèle pour améliorer la clarté et la cohérence du projet.
