@@ -64,7 +64,8 @@
 │   │       │   └── states_controller.rb
 │   │       ├── deliveries_controller.rb
 │   │       ├── errors_controller.rb
-│   │       └── sessions_controller.rb
+│   │       ├── sessions_controller.rb
+│   │       └── subscriptions_controller.rb
 │   ├── events
 │   │   └── portail
 │   │       ├── access
@@ -81,6 +82,7 @@
 │   │       ├── deliveries_helper.rb
 │   │       ├── delivery_events_helper.rb
 │   │       ├── delivery_navigation_helper.rb
+│   │       ├── subscriptions_helper.rb
 │   │       └── support_helper.rb
 │   ├── interactors
 │   │   ├── api
@@ -120,20 +122,24 @@
 │   │       │       │   ├── ensure_reply_accepted.rb
 │   │       │       │   └── write_reply.rb
 │   │       │       └── update_with_reply.rb
-│   │       └── sessions
-│   │           ├── create
-│   │           │   ├── check_authentication_level.rb
-│   │           │   ├── check_second_factor.rb
-│   │           │   ├── exchange_code.rb
-│   │           │   ├── find_agent.rb
-│   │           │   ├── find_membership.rb
-│   │           │   ├── open_session.rb
-│   │           │   ├── sync_agent_identity.rb
-│   │           │   └── verify_id_token.rb
-│   │           ├── create.rb
-│   │           ├── deny
-│   │           │   └── record_refusal.rb
-│   │           └── deny.rb
+│   │       ├── sessions
+│   │       │   ├── create
+│   │       │   │   ├── check_authentication_level.rb
+│   │       │   │   ├── check_second_factor.rb
+│   │       │   │   ├── exchange_code.rb
+│   │       │   │   ├── find_agent.rb
+│   │       │   │   ├── find_membership.rb
+│   │       │   │   ├── open_session.rb
+│   │       │   │   ├── sync_agent_identity.rb
+│   │       │   │   └── verify_id_token.rb
+│   │       │   ├── create.rb
+│   │       │   ├── deny
+│   │       │   │   └── record_refusal.rb
+│   │       │   └── deny.rb
+│   │       └── subscriptions
+│   │           ├── index
+│   │           │   └── fetch_list.rb
+│   │           └── index.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
@@ -182,12 +188,12 @@
 │   │   │   │   ├── event.rb
 │   │   │   │   ├── list.rb
 │   │   │   │   ├── page.rb
-│   │   │   │   ├── recipient.rb
 │   │   │   │   ├── reply.rb
 │   │   │   │   ├── state_message.rb
 │   │   │   │   └── summary.rb
 │   │   │   ├── delivery.rb
 │   │   │   ├── event_author.rb
+│   │   │   ├── organization.rb
 │   │   │   ├── pagination.rb
 │   │   │   ├── safe_filename.rb
 │   │   │   ├── subscription
@@ -197,7 +203,8 @@
 │   │   └── subscription.rb
 │   ├── policies
 │   │   └── portail
-│   │       └── delivery_policy.rb
+│   │       ├── delivery_policy.rb
+│   │       └── subscription_policy.rb
 │   ├── queries
 │   │   └── api
 │   │       └── delivery_criteria_resolver.rb
@@ -259,12 +266,14 @@
 │       │   │   ├── denied.html.erb
 │       │   │   ├── failure.html.erb
 │       │   │   └── step_up.html.erb
-│       │   └── shared
-│       │       ├── _beta_notice.html.erb
-│       │       ├── _flash.html.erb
-│       │       ├── _footer.html.erb
-│       │       ├── _header.html.erb
-│       │       └── _skip_links.html.erb
+│       │   ├── shared
+│       │   │   ├── _beta_notice.html.erb
+│       │   │   ├── _flash.html.erb
+│       │   │   ├── _footer.html.erb
+│       │   │   ├── _header.html.erb
+│       │   │   └── _skip_links.html.erb
+│       │   └── subscriptions
+│       │       └── index.html.erb
 │       └── pwa
 │           ├── manifest.json.erb
 │           └── service-worker.js
@@ -359,6 +368,7 @@
 │   └── RUNBOOK.md
 ├── features
 │   ├── portail
+│   │   ├── abonnements.feature
 │   │   ├── accueil.feature
 │   │   ├── connexion_proconnect.feature
 │   │   └── teledossiers.feature
@@ -370,6 +380,7 @@
 │       ├── env.rb
 │       └── world.rb
 ├── lib
+│   ├── logfmt_formatter.rb
 │   ├── phone_number.rb
 │   ├── portail
 │   │   ├── archive.rb
@@ -386,7 +397,8 @@
 │   └── tasks
 │       ├── .keep
 │       ├── cucumber.rake
-│       └── security.rake
+│       ├── security.rake
+│       └── test_accounts.rake
 ├── log
 │   └── .keep
 ├── public
@@ -478,19 +490,23 @@
 │   │       │       │   ├── ensure_reply_accepted_spec.rb
 │   │       │       │   └── write_reply_spec.rb
 │   │       │       └── update_with_reply_spec.rb
-│   │       └── sessions
-│   │           ├── create
-│   │           │   ├── check_authentication_level_spec.rb
-│   │           │   ├── check_second_factor_spec.rb
-│   │           │   ├── exchange_code_spec.rb
-│   │           │   ├── find_agent_spec.rb
-│   │           │   ├── find_membership_spec.rb
-│   │           │   ├── open_session_spec.rb
-│   │           │   ├── sync_agent_identity_spec.rb
-│   │           │   └── verify_id_token_spec.rb
-│   │           ├── create_spec.rb
-│   │           └── deny
-│   │               └── record_refusal_spec.rb
+│   │       ├── sessions
+│   │       │   ├── create
+│   │       │   │   ├── check_authentication_level_spec.rb
+│   │       │   │   ├── check_second_factor_spec.rb
+│   │       │   │   ├── exchange_code_spec.rb
+│   │       │   │   ├── find_agent_spec.rb
+│   │       │   │   ├── find_membership_spec.rb
+│   │       │   │   ├── open_session_spec.rb
+│   │       │   │   ├── sync_agent_identity_spec.rb
+│   │       │   │   └── verify_id_token_spec.rb
+│   │       │   ├── create_spec.rb
+│   │       │   └── deny
+│   │       │       └── record_refusal_spec.rb
+│   │       └── subscriptions
+│   │           ├── index
+│   │           │   └── fetch_list_spec.rb
+│   │           └── index_spec.rb
 │   ├── jobs
 │   │   ├── api
 │   │   │   └── purge_stale_tokens_job_spec.rb
@@ -498,6 +514,7 @@
 │   │       ├── purge_access_decisions_job_spec.rb
 │   │       └── purge_provider_sessions_job_spec.rb
 │   ├── lib
+│   │   ├── logfmt_formatter_spec.rb
 │   │   ├── phone_number_spec.rb
 │   │   └── portail
 │   │       ├── archive_spec.rb
@@ -548,7 +565,8 @@
 │   │   └── subscription_spec.rb
 │   ├── policies
 │   │   └── portail
-│   │       └── delivery_policy_spec.rb
+│   │       ├── delivery_policy_spec.rb
+│   │       └── subscription_policy_spec.rb
 │   ├── queries
 │   │   └── api
 │   │       └── delivery_criteria_resolver_spec.rb
@@ -577,7 +595,8 @@
 │   │       │   ├── archives_spec.rb
 │   │       │   └── states_spec.rb
 │   │       ├── deliveries_spec.rb
-│   │       └── sessions_spec.rb
+│   │       ├── sessions_spec.rb
+│   │       └── subscriptions_spec.rb
 │   ├── routing
 │   │   └── api
 │   │       └── oauth_routes_spec.rb
@@ -610,4 +629,4 @@
     ├── .keep
     └── javascript
         └── .keep
-165 directories, 447 files
+170 directories, 461 files
