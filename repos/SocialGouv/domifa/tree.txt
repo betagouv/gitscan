@@ -46,6 +46,7 @@
 │       ├── review.yml
 │       └── unit-tests.yml
 ├── .gitignore
+├── .gitlab-ci.yml
 ├── .kontinuous
 │   ├── config.yaml
 │   ├── env
@@ -253,9 +254,6 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1786973009184-add-usager-date-anciennete-dom.ts
-│   │   │   │   ├── 1787065723037-add-password-history.ts
-│   │   │   │   ├── 1791448691664-analyse-familles-ayants-droits.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -337,6 +335,7 @@
 │   │   │   │   │   │   ├── app-throttler.bot-guard.spec.ts
 │   │   │   │   │   │   ├── app-throttler.constants.ts
 │   │   │   │   │   │   ├── app-throttler.guard.ts
+│   │   │   │   │   │   ├── app-throttler.rate-limit-autoblock.spec.ts
 │   │   │   │   │   │   ├── app-throttler.types.ts
 │   │   │   │   │   │   ├── app-throttler.utils.ts
 │   │   │   │   │   │   ├── index.ts
@@ -432,6 +431,9 @@
 │   │   │   │   │   ├── structure-doc
 │   │   │   │   │   │   ├── StructureDocTable.typeorm.ts
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── support-session
+│   │   │   │   │   │   ├── SupportSessionTable.typeorm.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── usager
 │   │   │   │   │   │   ├── UsagerDocsTable.typeorm.ts
 │   │   │   │   │   │   ├── UsagerEntretienTable.typeorm.ts
@@ -515,6 +517,9 @@
 │   │   │   │       ├── structure-doc
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   └── structureDocRepository.service.ts
+│   │   │   │       ├── support-session
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   └── supportSessionRepository.service.ts
 │   │   │   │       ├── usager
 │   │   │   │       │   ├── _tests
 │   │   │   │       │   │   └── usagerRepository.service.spec.ts
@@ -916,6 +921,12 @@
 │   │   │   │   │   ├── structures.creation-full.spec.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       └── structures-merge.types.ts
+│   │   │   │   ├── support-session
+│   │   │   │   │   ├── support-session-expiry-cleaner.service.ts
+│   │   │   │   │   ├── support-session.controller.spec.ts
+│   │   │   │   │   ├── support-session.controller.ts
+│   │   │   │   │   ├── support-session.module.ts
+│   │   │   │   │   └── support-session.service.ts
 │   │   │   │   └── users
 │   │   │   │       ├── controllers
 │   │   │   │       │   ├── handleEditMyPasswordRequest.ts
@@ -948,6 +959,7 @@
 │   │   │   │       │   │   └── expired-token-cleaner.service.ts
 │   │   │   │       │   ├── get-user-repository.service.ts
 │   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── passwordFlowSentry.helper.ts
 │   │   │   │       │   ├── tests
 │   │   │   │       │   │   ├── user-structure-creator.service.spec.ts
 │   │   │   │       │   │   └── userSecurityResetPasswordInitiator.service.spec.ts
@@ -1504,6 +1516,16 @@
 │   │   │   │       ├── StructureStatsSexe.interface.ts
 │   │   │   │       ├── StructureStatsTranchesAge.interface.ts
 │   │   │   │       └── index.ts
+│   │   │   ├── support-mode
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── ActivateSupportSessionResponse.interface.ts
+│   │   │   │   │   ├── SupportSession.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── types
+│   │   │   │       ├── SupportSessionRevokedReason.type.ts
+│   │   │   │       ├── SupportSessionStatus.type.ts
+│   │   │   │       └── index.ts
 │   │   │   ├── telephone
 │   │   │   │   ├── COUNTRY_CODES.const.ts
 │   │   │   │   ├── COUNTRY_CODES_TIMEZONE.const.ts
@@ -1635,6 +1657,7 @@
 │   │   │       │   ├── constants
 │   │   │       │   │   ├── ALL_USER_STRUCTURE_EMAIL_STATUSES.const.ts
 │   │   │       │   │   ├── ALL_USER_STRUCTURE_ROLES.const.ts
+│   │   │       │   │   ├── SUPPORT_READ_ROLES.const.ts
 │   │   │       │   │   ├── USER_FONCTIONS.const.ts
 │   │   │       │   │   ├── USER_FONCTION_LABELS.const.ts
 │   │   │       │   │   ├── USER_STRUCTURE_EMAIL_STATUS_LABELS.const.ts
@@ -1695,6 +1718,7 @@
 │   │   ├── .prettierignore
 │   │   ├── CHANGELOG.md
 │   │   ├── Dockerfile
+│   │   ├── Dockerfile.runtime
 │   │   ├── LICENSE
 │   │   ├── angular.json
 │   │   ├── jest-global-mocks.ts
@@ -1759,7 +1783,8 @@
 │   │   │   │   ├── interceptors
 │   │   │   │   │   ├── jwt.interceptor.ts
 │   │   │   │   │   ├── matomo.interceptor.ts
-│   │   │   │   │   └── server-error.interceptor.ts
+│   │   │   │   │   ├── server-error.interceptor.ts
+│   │   │   │   │   └── support-mode-write.interceptor.ts
 │   │   │   │   ├── modules
 │   │   │   │   │   ├── admin-portail-usagers
 │   │   │   │   │   │   ├── admin-portail-usagers-routing.module.ts
@@ -1909,34 +1934,38 @@
 │   │   │   │   │   │   │   │       ├── welcome-modal.component.html
 │   │   │   │   │   │   │   │       ├── welcome-modal.component.spec.ts
 │   │   │   │   │   │   │   │       └── welcome-modal.component.ts
-│   │   │   │   │   │   │   └── static-pages
-│   │   │   │   │   │   │       ├── cgu
-│   │   │   │   │   │   │       │   ├── cgu.component.html
-│   │   │   │   │   │   │       │   ├── cgu.component.spec.ts
-│   │   │   │   │   │   │       │   └── cgu.component.ts
-│   │   │   │   │   │   │       ├── landing-page-portail
-│   │   │   │   │   │   │       │   ├── landing-page-portail.component.html
-│   │   │   │   │   │   │       │   ├── landing-page-portail.component.scss
-│   │   │   │   │   │   │       │   ├── landing-page-portail.component.spec.ts
-│   │   │   │   │   │   │       │   └── landing-page-portail.component.ts
-│   │   │   │   │   │   │       ├── mentions-legales
-│   │   │   │   │   │   │       │   ├── mentions-legales.component.html
-│   │   │   │   │   │   │       │   ├── mentions-legales.component.spec.ts
-│   │   │   │   │   │   │       │   └── mentions-legales.component.ts
-│   │   │   │   │   │   │       ├── partenaires
-│   │   │   │   │   │   │       │   ├── partenaires.component.html
-│   │   │   │   │   │   │       │   └── partenaires.component.ts
-│   │   │   │   │   │   │       ├── politique
-│   │   │   │   │   │   │       │   ├── politique.component.html
-│   │   │   │   │   │   │       │   ├── politique.component.spec.ts
-│   │   │   │   │   │   │       │   └── politique.component.ts
-│   │   │   │   │   │   │       ├── rgaa
-│   │   │   │   │   │   │       │   ├── rgaa.component.html
-│   │   │   │   │   │   │       │   ├── rgaa.component.spec.ts
-│   │   │   │   │   │   │       │   └── rgaa.component.ts
-│   │   │   │   │   │   │       └── temoignages
-│   │   │   │   │   │   │           ├── temoignages.component.html
-│   │   │   │   │   │   │           └── temoignages.component.ts
+│   │   │   │   │   │   │   ├── static-pages
+│   │   │   │   │   │   │   │   ├── cgu
+│   │   │   │   │   │   │   │   │   ├── cgu.component.html
+│   │   │   │   │   │   │   │   │   ├── cgu.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── cgu.component.ts
+│   │   │   │   │   │   │   │   ├── landing-page-portail
+│   │   │   │   │   │   │   │   │   ├── landing-page-portail.component.html
+│   │   │   │   │   │   │   │   │   ├── landing-page-portail.component.scss
+│   │   │   │   │   │   │   │   │   ├── landing-page-portail.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── landing-page-portail.component.ts
+│   │   │   │   │   │   │   │   ├── mentions-legales
+│   │   │   │   │   │   │   │   │   ├── mentions-legales.component.html
+│   │   │   │   │   │   │   │   │   ├── mentions-legales.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── mentions-legales.component.ts
+│   │   │   │   │   │   │   │   ├── partenaires
+│   │   │   │   │   │   │   │   │   ├── partenaires.component.html
+│   │   │   │   │   │   │   │   │   └── partenaires.component.ts
+│   │   │   │   │   │   │   │   ├── politique
+│   │   │   │   │   │   │   │   │   ├── politique.component.html
+│   │   │   │   │   │   │   │   │   ├── politique.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── politique.component.ts
+│   │   │   │   │   │   │   │   ├── rgaa
+│   │   │   │   │   │   │   │   │   ├── rgaa.component.html
+│   │   │   │   │   │   │   │   │   ├── rgaa.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── rgaa.component.ts
+│   │   │   │   │   │   │   │   └── temoignages
+│   │   │   │   │   │   │   │       ├── temoignages.component.html
+│   │   │   │   │   │   │   │       └── temoignages.component.ts
+│   │   │   │   │   │   │   └── support-mode-banner
+│   │   │   │   │   │   │       ├── support-mode-banner.component.css
+│   │   │   │   │   │   │       ├── support-mode-banner.component.html
+│   │   │   │   │   │   │       └── support-mode-banner.component.ts
 │   │   │   │   │   │   ├── general.module.spec.ts
 │   │   │   │   │   │   ├── general.module.ts
 │   │   │   │   │   │   └── services
@@ -2135,7 +2164,8 @@
 │   │   │   │   │   │   │   ├── clean-str.directive.ts
 │   │   │   │   │   │   │   ├── digit-only.directive.ts
 │   │   │   │   │   │   │   ├── has-role.directive.ts
-│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   └── support-mode-disable.directive.ts
 │   │   │   │   │   │   ├── pipes
 │   │   │   │   │   │   │   ├── aria-hide-emoji.pipe.ts
 │   │   │   │   │   │   │   ├── fonction-format.pipe.spec.ts
@@ -2157,10 +2187,13 @@
 │   │   │   │   │   │   │   ├── seo.service.ts
 │   │   │   │   │   │   │   └── tally.service.ts
 │   │   │   │   │   │   ├── shared.module.ts
-│   │   │   │   │   │   └── types
-│   │   │   │   │   │       ├── CustomToast.type.ts
-│   │   │   │   │   │       ├── CustomToastClass.type.ts
-│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   │   ├── types
+│   │   │   │   │   │   │   ├── CustomToast.type.ts
+│   │   │   │   │   │   │   ├── CustomToastClass.type.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── utils
+│   │   │   │   │   │       ├── report-password-change-error.spec.ts
+│   │   │   │   │   │       └── report-password-change-error.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── elements
@@ -2829,12 +2862,14 @@
 │   │   ├── tsconfig.app.json
 │   │   ├── tsconfig.json
 │   │   └── tsconfig.spec.json
+│   ├── nginx-runtime-env.sh
 │   ├── nginx.conf
 │   ├── portail-admins
 │   │   ├── .eslintrc.json
 │   │   ├── .gitignore
 │   │   ├── .prettierignore
 │   │   ├── Dockerfile
+│   │   ├── Dockerfile.runtime
 │   │   ├── angular.json
 │   │   ├── jest-global-mocks.ts
 │   │   ├── jest.config.js
@@ -3199,7 +3234,9 @@
 │   │   │   │   │   │   │   ├── CustomToastClass.type.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── utils
-│   │   │   │   │   │       └── matches-search-term.ts
+│   │   │   │   │   │       ├── matches-search-term.ts
+│   │   │   │   │   │       ├── report-password-change-error.spec.ts
+│   │   │   │   │   │       └── report-password-change-error.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   └── national-stats
@@ -3242,6 +3279,9 @@
 │   │   │   │   │   │   │   │   ├── structure-stats.component.html
 │   │   │   │   │   │   │   │   ├── structure-stats.component.spec.ts
 │   │   │   │   │   │   │   │   └── structure-stats.component.ts
+│   │   │   │   │   │   │   ├── structure-support-sessions
+│   │   │   │   │   │   │   │   ├── structure-support-sessions.component.html
+│   │   │   │   │   │   │   │   └── structure-support-sessions.component.ts
 │   │   │   │   │   │   │   └── users
 │   │   │   │   │   │   │       ├── users.component.css
 │   │   │   │   │   │   │       ├── users.component.html
@@ -3364,6 +3404,7 @@
 │   │   ├── .gitignore
 │   │   ├── .prettierignore
 │   │   ├── Dockerfile
+│   │   ├── Dockerfile.runtime
 │   │   ├── angular.json
 │   │   ├── jest-global-mocks.ts
 │   │   ├── jest.config.js
@@ -3569,8 +3610,6 @@
 │   │   │   │       │   ├── partenaire-dihal.png
 │   │   │   │       │   ├── partenaire-fabrique-numerique.png
 │   │   │   │       │   └── partenaire-unccas.jpg
-│   │   │   │       ├── login
-│   │   │   │       │   └── main-container.svg
 │   │   │   │       ├── logo-dsfr.svg
 │   │   │   │       ├── logo-mini.svg
 │   │   │   │       ├── logo-ministere.jpg
@@ -3591,6 +3630,7 @@
 │       ├── .gitignore
 │       ├── .prettierignore
 │       ├── Dockerfile
+│       ├── Dockerfile.runtime
 │       ├── angular.json
 │       ├── jest-global-mocks.ts
 │       ├── jest.config.js
@@ -3820,10 +3860,7 @@
 │       │   │   └── images
 │       │   │       ├── home.svg
 │       │   │       ├── login
-│       │   │       │   ├── contact.svg
-│       │   │       │   └── main-container.svg
-│       │   │       ├── logo-dsfr.svg
-│       │   │       ├── logo-mini.svg
+│       │   │       │   └── contact.svg
 │       │   │       ├── news.svg
 │       │   │       └── partenaires
 │       │   │           ├── 1jeune1solution.png
@@ -3844,4 +3881,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-892 directories, 2954 files
+900 directories, 2983 files

@@ -4,12 +4,12 @@
   "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
   "language": "TypeScript",
   "features": [
-    "Gestion métier générale",
     "Gestion des utilisateurs & Permissions",
     "Statistiques & Rapports",
     "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Administration & Backoffice"
+    "Sécurité & Conformité",
+    "Gestion métier générale",
+    "Authentification & Accès"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,9 +18,11 @@
     "PostgreSQL",
     "TypeORM",
     "Docker",
-    "Lerna",
     "Pnpm",
-    "Brevo"
+    "Lerna",
+    "Brevo",
+    "Sentry",
+    "Matomo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,26 +31,28 @@
     "Docker & Conteneurs",
     "Node.js / NestJS",
     "Angular / Svelte / Autres SPA",
+    "ORM & Accès aux données",
     "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "jwt",
-      "mfa"
+      "mfa",
+      "session"
     ]
   },
-  "tests": "Tests unitaires pour le frontend, le portail usagers et le backend, ainsi que des tests d'intégration pour le backend.",
-  "lastActivity": "2026-10-08T00:00:00Z",
-  "status": "maintained",
+  "tests": "Tests unitaires (Frontend, Backend, Portail usagers) et tests d'intégration (Backend) utilisant Jest.",
+  "lastActivity": "2026-10-14T00:00:00Z",
+  "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Bases de données SQL",
     "Docker & Conteneurs",
     "Node.js, NestJS & Express",
-    "Emploi, Social & Logement",
-    "Angular, Svelte & autres SPA"
+    "Angular, Svelte & autres SPA",
+    "Bases de données SQL",
+    "Emploi, Social & Logement"
   ]
 }

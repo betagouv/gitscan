@@ -1,3 +1,69 @@
+# [2.284.0](https://github.com/SocialGouv/domifa/compare/v2.283.0...v2.284.0) (2026-10-14)
+
+
+### Bug Fixes
+
+* **backend, frontend:** regenerate test dumps with support_session, add store provider in spec ([1998592](https://github.com/SocialGouv/domifa/commit/19985925ff68f1ec075861eb9bd4efe48097fe85))
+* ci failing ([7702ba0](https://github.com/SocialGouv/domifa/commit/7702ba0af23f37efe3ae29c676d12868bc9e2608))
+
+
+### Features
+
+* **back, front:** adding end to end test ([38ef936](https://github.com/SocialGouv/domifa/commit/38ef93611e79f33c25f5d0c9a681befbed4069bb))
+* **back, front, admin:** disable form on support mode ([722d538](https://github.com/SocialGouv/domifa/commit/722d538270b91b78fea75713d3b8d59d4deadb99))
+* **back, front, admin:** new process support mode ([f9f42ff](https://github.com/SocialGouv/domifa/commit/f9f42ffb84acbf2aeb11a67f176cc3e9a8c6b1fe))
+* **back; front:** fix code review ([6ccb592](https://github.com/SocialGouv/domifa/commit/6ccb59202c4b987a936412b84dcc3b3d676a818b))
+* **frontend:** cgu condition oninit ([de9ff4a](https://github.com/SocialGouv/domifa/commit/de9ff4a61c57373cf07ecd7381f438fa71779c0f))
+* **frontend:** escape cgu for support mode user ([39735bf](https://github.com/SocialGouv/domifa/commit/39735bf89d6ff337504addf4f087d6200014fd33))
+
+# [2.283.0](https://github.com/SocialGouv/domifa/compare/v2.282.0...v2.283.0) (2026-10-14)
+
+
+### Bug Fixes
+
+* **back:** add uuid more secure ([e97e048](https://github.com/SocialGouv/domifa/commit/e97e04893bb589a39727b38651d7a64d4c07e89f))
+* **backend:** harden ayants droits validation and randomize uuid in anonymizer ([e49e901](https://github.com/SocialGouv/domifa/commit/e49e901ceb5ef3ae8ff398e4acd0cc81855e9ca1))
+
+
+### Features
+
+* **back:** add uuid for beneficiaries ([f349b99](https://github.com/SocialGouv/domifa/commit/f349b990c0d9a6c869f56b490896c2d9be2fe416))
+* **back:** adding uuid for beneficiaries ([15f9470](https://github.com/SocialGouv/domifa/commit/15f9470d6c91a4f6cb96c13880f473d48ee3ce92))
+* **back:** fix code review ([9929c90](https://github.com/SocialGouv/domifa/commit/9929c90385f1b2c03d5922618f70e3eca2e2628b))
+* **front, back:** code review ([148130b](https://github.com/SocialGouv/domifa/commit/148130b3167b43fbae97f22b469abed1f3f82906))
+
+# [2.282.0](https://github.com/SocialGouv/domifa/compare/v2.281.0...v2.282.0) (2026-10-14)
+
+
+### Bug Fixes
+
+* code review ([5681035](https://github.com/SocialGouv/domifa/commit/56810355de620c6b643702724373e693980e8725))
+* **backend, frontend:** change password resquest failing ([7f2a59b](https://github.com/SocialGouv/domifa/commit/7f2a59b06e2feade705c0b7238b634b4e4716a53))
+
+
+### Features
+
+* **back:** add password update on admin tables ([0e74cad](https://github.com/SocialGouv/domifa/commit/0e74cad311c8132bb1db54dd8d556846d6262e0d))
+* **back:** fix password flow sentry ([1c830a3](https://github.com/SocialGouv/domifa/commit/1c830a377f2e299023744325864a3d681b94e877))
+* **back:** fix tests password flow ([93dd959](https://github.com/SocialGouv/domifa/commit/93dd959999e566d08bda3edf4d38a28bf9d79677))
+* **front:** add captureMessages ([ada28c1](https://github.com/SocialGouv/domifa/commit/ada28c1a9cefe940e5a3b0320f3111e438dfc036))
+
+# [2.281.0](https://github.com/SocialGouv/domifa/compare/v2.280.0...v2.281.0) (2026-10-12)
+
+
+### Features
+
+* audit access p2 and p3 ([f2f1bc2](https://github.com/SocialGouv/domifa/commit/f2f1bc2a4d7912daee29852ca5a287356aebc770))
+
+# [2.280.0](https://github.com/SocialGouv/domifa/compare/v2.279.1...v2.280.0) (2026-10-12)
+
+
+### Features
+
+* **admin, pilotage:** update login page ([de2e9db](https://github.com/SocialGouv/domifa/commit/de2e9dbf8c267e807f9d9f4bbaf4f658cec5e1c4))
+* **front:** update renew password page ([7cfda51](https://github.com/SocialGouv/domifa/commit/7cfda51ff8b48a0538a7140e5b21908b6a872bd4))
+* change header login mon domifa ([f366333](https://github.com/SocialGouv/domifa/commit/f366333ab7b35ba1855d01d6f81557372565c019))
+
 ## [2.279.1](https://github.com/SocialGouv/domifa/compare/v2.279.0...v2.279.1) (2026-10-08)
 
 

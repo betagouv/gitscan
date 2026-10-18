@@ -1,31 +1,28 @@
-## Changelog : domifa (30 derniers jours, au 08/10/2026)
+## Changelog : domifa (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Ce mois-ci, domifa a connu des évolutions significatives axées sur l'amélioration de l'expérience utilisateur et le renforcement de la sécurité. Les principaux changements incluent une refonte visuelle de l'interface (header, logo, couleurs), l'ajout de la gestion des bénéficiaires familiaux, et la mise en place de nouvelles politiques de sécurité pour la gestion des mots de passe.
+Les dernières semaines ont été marquées par l'introduction d'un mode "support" pour sécuriser les tests et l'assistance, ainsi que par une refonte de l'interface de connexion. La sécurité a été renforcée via une meilleure gestion de l'expiration des mots de passe et une identification plus robuste des bénéficiaires.
 
 ### Évolutions fonctionnelles
-- **Gestion des bénéficiaires** : Ajout de la fonctionnalité de gestion des ayants droit et bénéficiaires au sein des familles [#4291](https://github.com/SocialGouv/domifa/pull/4291).
-- **Sécurité des comptes** : 
-    - Mise en place d'un renouvellement obligatoire du mot de passe après une période d'inactivité prolongée.
-    - Instauration d'une expiration des mots de passe à 60 mois.
-    - Ajout de la possibilité de consulter l'historique des changements de mots de passe.
-- **Interface Utilisateur (UI) & Ergonomie** :
-    - **Identité visuelle** : Mise à jour du header, de la page de connexion et du logo.
-    - **Lisibilité** : Ajustement des couleurs des boutons d'accès, des titres et des pastilles d'indicateurs (notamment pour les délais de décision et de passage).
-    - **Affichage des données** : Utilisation du nom complet des usagers dans les titres des dossiers et des notes pour une meilleure identification.
-    - **Statistiques** : Corrections de l'affichage CSS et alignement des données de statistiques régionales.
-- **Nouveautés** : Ajout de la saisie de la date de domiciliation dans l'interface.
+- **Mode Support :** Création d'un mode dédié permettant de simuler des processus sans impacter les données réelles (désactivation automatique des formulaires et des boutons d'action).
+- **Sécurité et Accès :**
+    - Mise en place de l'expiration des mots de passe (60 mois) et de l'historique des changements.
+    - Amélioration des droits de consultation de l'historique et de l'audit des accès ([#4314](https://github.com/SocialGouv/domifa/pull/4314)).
+- **Gestion des bénéficiaires :** Amélioration de la gestion des ayants droit et des membres de la famille ([#4291](https://github.com/SocialGouv/domifa/pull/4291)).
+- **Interface Utilisateur :**
+    - Refonte de la page de connexion et des en-têtes ([#4313](https://github.com/SocialGouv/domifa/pull/4313), [#4307](https://github.com/SocialGouv/domifa/pull/4307)).
+    - Mise à jour de la charte graphique (couleurs des boutons et des titres) ([#4311](https://github.com/SocialGouv/domifa/pull/4311), [#4303](https://github.com/SocialGouv/domifa/pull/4303)).
 
 ### Évolutions techniques
-- **Base de données** : Intégration de nouvelles migrations pour supporter la gestion des bénéficiaires et l'historique des mots de passe.
-- **Backend & Sécurité** : 
-    - Ajout de "guards" pour sécuriser le processus de renouvellement de mot de passe.
-    - Amélioration du suivi des emails via le statut de livraison de Brevo.
-- **Maintenance & Performance** :
-    - Mise à jour de l'environnement de test vers Jest 30.
-    - Nettoyage des dépendances obsolètes (notamment OpenTelemetry) et correction de vulnérabilités.
-    - Optimisation de la gestion des logs et des événements Sentry.
-    - Migration vers la bibliothèque `date-fns` pour une meilleure gestion des dates.
+- **Infrastructure et CI/CD :**
+    - Migration de l'environnement de développement et de production vers Node.js 24.
+    - Optimisation des pipelines GitLab (gestion des images runtime et injection d'URLs au démarrage).
+- **Architecture et Données :**
+    - Migration vers les UUID v7 pour une identification plus performante et sécurisée des bénéficiaires et ayants droit.
+    - Renforcement des validations de données et de la sécurité des processus d'authentification.
+- **Tests et Observabilité :**
+    - Ajout de tests de bout en bout (E2E).
+    - Amélioration du suivi des erreurs et de la capture de messages via Sentry.
 
 ### Autres changements
-- **Documentation** : Mise à jour des composants de présentation (FAQ, pages d'impact et de découverte).
+- Nettoyage des migrations de base de données et suppression de dépendances inutilisées.
