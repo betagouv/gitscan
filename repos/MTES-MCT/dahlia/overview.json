@@ -1,11 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/dahlia",
   "name": "dahlia",
-  "description": "Application d'aide à l'organisation des défenses des dossiers DALO, DAHO et DAHU. Elle permet de centraliser et de gérer les dossiers de contentieux liés au droit au logement pour les départements.",
+  "description": "Application d'aide à l'organisation des défenses des dossiers DALO, DAHO et DAHU. Elle permet de récupérer et de gérer les dossiers de contentieux liés au droit au logement via l'API Télérecours.",
   "language": "TypeScript",
   "features": [
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Authentification & Accès",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Administration & Backoffice",
     "Suivi & Traçabilité",
     "Gestion métier générale"
   ],
@@ -16,16 +20,18 @@
     "Prisma",
     "better-auth",
     "@codegouvfr/react-dsfr",
-    "Vitest"
+    "Vitest",
+    "Husky"
   ],
   "components": [
     "React / Next.js",
-    "TypeScript / JavaScript",
     "PostgreSQL & SQL",
-    "ORM & Accès aux données",
+    "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Pipeline de données",
+    "Scripts & Utilitaires",
+    "Tests",
+    "ORM & Accès aux données",
     "Design System (DSFR & UI libs)"
   ],
   "auth": {
@@ -39,14 +45,18 @@
     ]
   },
   "tests": "Vitest",
+  "workflows": [
+    "Husky (pre-commit hooks)"
+  ],
   "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
-    "React & Next.js",
     "TypeScript",
-    "Bases de données SQL",
+    "React & Next.js",
     "Docker & Conteneurs",
-    "Design System & UI",
-    "ETL & Pipelines de données"
+    "Bases de données SQL",
+    "CI/CD & GitHub Actions",
+    "Standards & Schémas"
   ]
 }
