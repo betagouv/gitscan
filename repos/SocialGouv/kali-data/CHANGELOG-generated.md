@@ -1,7 +1,7 @@
-## Changelog : kali-data (30 derniers jours, au 26 septembre 2026)
+## Changelog : kali-data (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Le projet a assuré la continuité de ses exports de données via des mises à jour régulières et automatisées des conventions collectives. Ces actualisations garantissent la fraîcheur et la précision des informations disponibles dans les fichiers JSON.
+Le projet a assuré la mise à jour régulière et continue des données de conventions collectives, garantissant la fraîcheur des informations exportées depuis l'API DILA.
 
 ### Évolutions fonctionnelles
-- Mise à jour régulière des données issues de l'API DILA (plusieurs itérations de synchronisation effectuées entre le 3 et le 26 septembre 2026).
+- Actualisation périodique des jeux de données de conventions collectives (plusieurs cycles de mise à jour effectués entre le 22 septembre et le 16 octobre 2026).
