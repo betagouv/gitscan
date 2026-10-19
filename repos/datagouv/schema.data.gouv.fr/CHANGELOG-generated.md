@@ -1,13 +1,15 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 16 octobre 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 19 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a enrichi son catalogue avec de nouveaux schémas de données et a bénéficié d'améliorations techniques pour garantir la stabilité et la fiabilité de la génération du site web.
+Ce mois-ci, la plateforme a enrichi son catalogue avec l'intégration de nouveaux schémas de données. Des améliorations techniques ont également été apportées pour stabiliser le processus de génération du site et optimiser la gestion des configurations.
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux schémas de données : schémas ACEN et `risques-carto-di` ([#355](https://github.com/datagouv/schema.data.gouv.fr/issues/355)).
-- Mise à jour régulière des contenus du site et des recommandations de bonnes pratiques.
+- Ajout de nouveaux schémas de données : schémas ACEN et schémas risques-carto-di ([#355](https://github.com/datagouv/schema.data.gouv.fr/pull/355)).
 
 ### Évolutions techniques
-- Résolution des erreurs de dépassement de mémoire (Out Of Memory) lors de la construction du site via l'augmentation de la limite de la pile Node ([#359](https://github.com/datagouv/schema.data.gouv.fr/issues/359)).
-- Optimisation de la gestion de la configuration par la consolidation des fichiers de configuration.
-- Correction de la syntaxe de certains fichiers de configuration YAML.
+- Résolution de problèmes de mémoire lors de la génération du site (build) via l'augmentation de la limite de mémoire (heap limit) de Node.js ([#359](https://github.com/datagouv/schema.data.gouv.fr/pull/359)).
+- Optimisation de la gestion de la configuration par la consolidation de fichiers.
+- Correction de la syntaxe des fichiers de configuration YAML.
+
+### Autres changements
+- Mises à jour régulières du contenu du site web et des recommandations de bonnes pratiques.
