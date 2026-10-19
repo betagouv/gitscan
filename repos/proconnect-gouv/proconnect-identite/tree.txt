@@ -2,7 +2,7 @@
 ├── .changeset
 │   ├── README.md
 │   ├── config.json
-│   └── delete-dead-find-users-by-organization-params.md
+│   └── sync-grist.md
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -29,6 +29,7 @@
 ├── .prettierignore
 ├── .release-it-changeset
 │   └── .gitkeep
+├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── Dockerfile
 ├── LICENSE
@@ -425,6 +426,8 @@
 │   │   │   │   ├── generate-pin-token.ts
 │   │   │   │   ├── generate-token.test.ts
 │   │   │   │   ├── generate-token.ts
+│   │   │   │   ├── get-trusted-referrer-path-from-request.test.ts
+│   │   │   │   ├── get-trusted-referrer-path-from-request.ts
 │   │   │   │   ├── get-trusted-referrer-path.test.ts
 │   │   │   │   ├── get-trusted-referrer-path.ts
 │   │   │   │   ├── hash-password.test.ts
@@ -600,6 +603,14 @@
 │   │   │   ├── OtpEmail.test.tsx
 │   │   │   ├── OtpEmail.test.tsx.snapshot
 │   │   │   ├── OtpEmail.tsx
+│   │   │   ├── PasswordChanged.stories.tsx
+│   │   │   ├── PasswordChanged.test.tsx
+│   │   │   ├── PasswordChanged.test.tsx.snapshot
+│   │   │   ├── PasswordChanged.tsx
+│   │   │   ├── QuitOrganization.stories.tsx
+│   │   │   ├── QuitOrganization.test.tsx
+│   │   │   ├── QuitOrganization.test.tsx.snapshot
+│   │   │   ├── QuitOrganization.tsx
 │   │   │   ├── ResetPassword.stories.tsx
 │   │   │   ├── ResetPassword.test.tsx
 │   │   │   ├── ResetPassword.test.tsx.snapshot
@@ -1183,7 +1194,12 @@
 │   ├── middlewares
 │   │   ├── connection-count.ts
 │   │   ├── csrf-protection.ts
-│   │   ├── navigation-guards.ts
+│   │   ├── navigation-guards
+│   │   │   ├── guards.ts
+│   │   │   ├── index.ts
+│   │   │   ├── internals.ts
+│   │   │   ├── meta.ts
+│   │   │   └── process.ts
 │   │   └── rate-limiter.ts
 │   ├── repositories
 │   │   ├── oidc-provider-adapter-for-clients.ts
@@ -1355,4 +1371,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-234 directories, 1206 files
+235 directories, 1221 files
