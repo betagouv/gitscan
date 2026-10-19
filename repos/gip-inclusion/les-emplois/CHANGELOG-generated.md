@@ -1,42 +1,22 @@
-## Changelog : les-emplois (30 derniers jours, au 14/10/2026)
+## Changelog : les-emplois (30 derniers jours, au 16/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'identité visuelle de la plateforme, désormais nommée "La plateforme de l'inclusion", et par une amélioration significative de l'expérience utilisateur. Les fonctionnalités liées à l'insertion ont été profondément modernisées avec un nouveau tunnel d'orientation automatisé et un système de notifications par email. La visibilité des parcours usagers a également été renforcée grâce à de nouveaux outils de pilotage et des vues de profil enrichies.
+Ce mois-ci, la plateforme a franchi une étape importante avec la refonte complète du parcours d'orientation pour s'aligner sur les standards de data·inclusion. Les outils de pilotage ont été enrichis par de nouveaux tableaux de bord et des capacités d'export de données. Parallèlement, l'expérience utilisateur a été affinée via une meilleure visibilité des parcours (badges QPV, fins de contrat) et une gestion des accès renforcée. Ces évolutions sont soutenues par une montée en version technique majeure (Python 3.14) et une optimisation significative des processus de tests et de déploiement.
 
 ### Évolutions fonctionnelles
-- **Identité et Interface** : 
-    - Renommage global de la plateforme en "La plateforme de l'inclusion" (logos, textes légaux, documentation).
-    - Harmonisation de l'iconographie des organisations et amélioration de la mise en page des formulaires.
-    - Changement de terminologie : utilisation privilégiée du terme "usager" au lieu de "candidat".
-- **Parcours Usager** : 
-    - Création d'un nouvel onglet "Aperçu" sur le profil de l'usager, centralisant les informations sur les contrats, les conseillers et les dernières candidatures.
-    - Ajout d'un badge visuel pour identifier les usagers résidant en zone QPV (Quartier Prioritaire de la Politique de la Ville).
-- **Gestion de l'Insertion** : 
-    - Refonte complète du tunnel d'orientation (redesign des pages de détail et de structure).
-    - Automatisation du cycle de vie des orientations : expiration automatique, gestion des motifs de refus et envoi de notifications par email (acceptation, refus, rappels).
-    - Possibilité pour les prestataires de services d'accepter ou de décliner une orientation directement via l'interface.
-- **Recherche et Pilotage** : 
-    - Amélioration de la recherche de services avec l'affichage des modes de mobilisation et des délais de réponse attendus.
-    - Mise en place de nouveaux tableaux de bord de pilotage (export Metabase, indicateurs GEIQ, suivi des fins de parcours).
-- **Candidatures** : 
-    - Fermeture automatique des recrutements en cas de refus motivé par une absence de poste disponible.
+- **Parcours d'orientation** : Refonte complète du tunnel d'orientation et des pages de détails pour l'intégration de data·inclusion ; automatisation des notifications par email (rappels, acceptations, refus) et gestion intégrée des pièces jointes.
+- **Suivi des usagers** : Ajout d'un onglet "Orientations" sur la fiche usager, affichage de badges de localisation (QPV) et meilleure visibilité des situations de fin de parcours et des fins de contrat imminentes.
+- **Pilotage et statistiques** : Création d'un nouveau tableau de bord d'évaluation GEIQ, possibilité d'exporter les orientations et les services vers Metabase, et nouveaux indicateurs de comptage des employés en fin de parcours.
+- **Recherche et interface** : Amélioration des formulaires de recherche en page d'accueil, mise à jour de la navigation (candidatures, orientations), harmonisation des icônes et passage de la liste des candidatures en vue tableau.
+- **Gestion des comptes et accès** : Renforcement de l'usage de ProConnect pour le personnel, amélioration du processus de création/désactivation des comptes professionnels et blocage de la création de comptes en double.
+- **Candidatures** : Amélioration du suivi des candidatures et possibilité de fermer un recrutement en cas de refus pour "absence de poste".
 
 ### Évolutions techniques
-- **Infrastructure et Environnement** : 
-    - Migration de l'environnement vers Python 3.14.
-    - Optimisation des processus de déploiement et de la CI.
-- **Sécurité et Authentification** : 
-    - Renforcement de l'authentification via ProConnect (gestion des clés JWKS, audit trail amélioré).
-    - Amélioration de la traçabilité des actions (audit trail) incluant la capture des adresses IP et des informations de navigation.
-    - Sécurisation de la création de comptes pour éviter les doublons.
-- **Gestion des données et Workflow** : 
-    - Refonte du système de gestion des dossiers employés (*Employee Records*) avec un nouveau workflow de statuts et une gestion plus robuste des fichiers joints.
-    - Optimisation des performances de l'interface d'administration, notamment sur les tables volumineuses (pagination et hiérarchie des dates optimisées).
-- **Qualité logicielle** : 
-    - Nettoyage important du code (suppression de modules et de pages obsolètes comme "nexus").
-    - Amélioration de la robustesse des tests et de la gestion des erreurs de type.
+- **Core et Infrastructure** : Passage à Python 3.14, remplacement de MinIO par RustFS et ajout de Gunicorn pour la gestion du serveur.
+- **Performance** : Optimisation des pages d'administration (pagination et hiérarchie des dates) et réduction du temps de configuration initiale du système.
+- **CI/CD et Tests** : Accélération de la suite de tests via le partitionnement (sharding) en 4 flux, mise en cache des bibliothèques spatiales et amélioration globale de la stabilité et de la vitesse des tests.
+- **Architecture et Sécurité** : Refonte du workflow de gestion des dossiers employés, nettoyage des composants obsolètes (Nexus, DORA) et renforcement de la traçabilité (audit trail) incluant les détails de connexion et de navigation.
 
 ### Autres changements
-- Mise à jour de la documentation technique et des commentaires de code.
-- Amélioration de la qualité du code via le renforcement des règles de linting (Ruff, DjLint).
-- Amélioration de la gestion des emails (support du format Markdown et amélioration des signatures).
+- **Documentation** : Ajout de la documentation concernant la piste d'audit (audit trail).
+- **Maintenance** : Nettoyage du code mort, suppression de fichiers statiques inutilisés et mise à jour des configurations de domaine et de thèmes.

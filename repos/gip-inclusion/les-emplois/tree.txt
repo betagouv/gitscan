@@ -679,6 +679,7 @@
 │   │   │   ├── 0009_alter_jobapplicationcomment_created_by.py
 │   │   │   ├── 0010_hard_remove_jobapplication_prehiring_guidance_days.py
 │   │   │   ├── 0011_jobapplication_one_job_seeker_per_approval.py
+│   │   │   ├── 0012_remove_jobapplication_one_job_seeker_per_approval_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -750,6 +751,7 @@
 │   │   │   ├── 0003_nexusmembership_source_id_alter_nexusmembership_id.py
 │   │   │   ├── 0004_activatedservice_user_service_unique.py
 │   │   │   ├── 0005_remove_activatedservice_user_service_unique_and_more.py
+│   │   │   ├── 0006_nexususer_public_id.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── utils.py
@@ -866,6 +868,7 @@
 │   ├── search
 │   │   ├── __init__.py
 │   │   ├── apps.py
+│   │   ├── enums.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_fix_savedsearch_queryparams_20251022_1512.py
@@ -905,68 +908,33 @@
 │   │   │   └── itou.css
 │   │   ├── favicon.ico
 │   │   ├── img
-│   │   │   ├── content
-│   │   │   │   ├── 5engagements.png
-│   │   │   │   ├── agrement.png
-│   │   │   │   ├── avant_apres.png
-│   │   │   │   └── parcours.png
 │   │   │   ├── dashboard
 │   │   │   │   ├── banner-statistiques-pilotage-bg.jpg
 │   │   │   │   ├── card-header-bg-diagoriente.png
 │   │   │   │   ├── card-header-bg-dora.png
 │   │   │   │   ├── card-header-bg-immersion-facile.png
 │   │   │   │   └── card-header-bg-mon-recap-booklet.png
-│   │   │   ├── edit_siae_header.svg
 │   │   │   ├── employee_record
 │   │   │   │   └── asp_upload.svg
-│   │   │   ├── employee_records
 │   │   │   ├── franceconnect-bouton-hover.svg
 │   │   │   ├── franceconnect-bouton.svg
 │   │   │   ├── ft_connect_btn.svg
 │   │   │   ├── home
-│   │   │   │   ├── bg-communaute-mobile.png
-│   │   │   │   ├── bg-communaute.png
-│   │   │   │   ├── illustration-01.png
-│   │   │   │   ├── illustration-02.png
-│   │   │   │   ├── illustration-03.png
-│   │   │   │   ├── illustration-04.png
-│   │   │   │   └── illustration-05.png
+│   │   │   │   └── illustration-search.webp
 │   │   │   ├── illustration-card-no-result.png
 │   │   │   ├── illustration-error.png
 │   │   │   ├── illustration-mon-recap.png
 │   │   │   ├── illustration-pc.svg
-│   │   │   ├── je-donne-mon-avis.svg
 │   │   │   ├── job_seeker_criteria.png
 │   │   │   ├── job_seeker_signup.png
 │   │   │   ├── job_seeker_situation.png
 │   │   │   ├── job_seeker_start.png
 │   │   │   ├── login.svg
 │   │   │   ├── logo-france-travail.svg
-│   │   │   ├── logo_dora.svg
-│   │   │   ├── logo_header.svg
 │   │   │   ├── logo_metatags.png
-│   │   │   ├── logo_ministere_du_travail.svg
-│   │   │   ├── logo_rdv_insertion.svg
-│   │   │   ├── nexus
-│   │   │   │   ├── presentation_communaute.png
-│   │   │   │   ├── presentation_dora.png
-│   │   │   │   ├── presentation_infos_structure.png
-│   │   │   │   ├── presentation_marche.png
-│   │   │   │   ├── presentation_monrecap.png
-│   │   │   │   └── presentation_pilotage.png
 │   │   │   ├── no_email.svg
-│   │   │   ├── pass_iae
-│   │   │   │   ├── logo_pass_iae.svg
-│   │   │   │   └── logo_pass_iae_suspended.svg
-│   │   │   ├── pdf
-│   │   │   │   └── logoMinTravail.png
 │   │   │   ├── pro_connect_bouton.svg
 │   │   │   ├── pro_connect_bouton_hover.svg
-│   │   │   ├── search-bg-left.png
-│   │   │   ├── search-bg-right.png
-│   │   │   ├── stats
-│   │   │   │   ├── metabase-department-filter.png
-│   │   │   │   └── metabase-download-icon.png
 │   │   │   └── welcoming_tour
 │   │   │       ├── candidat_1.svg
 │   │   │       ├── candidat_2.svg
@@ -994,18 +962,14 @@
 │   │   │   ├── overview_survey_control_popup.js
 │   │   │   ├── overview_survey_test_popup.js
 │   │   │   ├── plateforme_accueil_embed.js
+│   │   │   ├── services_search_select2.js
 │   │   │   ├── siae_evaluations_sample_selection.js
 │   │   │   ├── sliding_search.js
 │   │   │   ├── sliding_tabs.js
 │   │   │   └── utils.js
 │   │   ├── pdf
 │   │   │   ├── cerfa_15059-02.pdf
-│   │   │   ├── pacte_dambition_iae.pdf
 │   │   │   └── syntheseSecurite.pdf
-│   │   ├── photos
-│   │   │   ├── employer.jpg
-│   │   │   ├── job_seeker.jpg
-│   │   │   └── prescriber.jpg
 │   │   ├── templates
 │   │   │   ├── modele_bilan_prolongation_PASS_IAE.xlsx
 │   │   │   └── modele_decision_sanction_controle_a_posteriori.docx
@@ -1801,6 +1765,7 @@
 │   │   │   │   ├── saved_searches.html
 │   │   │   │   ├── saved_searches_settings_modal_content.html
 │   │   │   │   ├── services_orientation_banner.html
+│   │   │   │   ├── services_search_form.html
 │   │   │   │   ├── siaes_search_content.html
 │   │   │   │   ├── siaes_search_form.html
 │   │   │   │   ├── siaes_search_results.html
@@ -1812,7 +1777,7 @@
 │   │   │   ├── search_home.html
 │   │   │   ├── services
 │   │   │   │   ├── includes
-│   │   │   │   │   ├── form.html
+│   │   │   │   │   ├── funding_labels_filter.html
 │   │   │   │   │   ├── results.html
 │   │   │   │   │   └── summary.html
 │   │   │   │   └── results.html
@@ -2963,6 +2928,8 @@
         │   └── test_forms.py
         ├── home
         │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── tests.ambr
         │   └── tests.py
         ├── insertion_views
         │   ├── __init__.py
@@ -3083,4 +3050,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-500 directories, 2585 files
+495 directories, 2557 files

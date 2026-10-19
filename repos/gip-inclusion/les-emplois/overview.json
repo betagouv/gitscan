@@ -1,18 +1,16 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi par le biais de tiers ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi. La plateforme facilite l'orientation et le suivi des parcours d'insertion professionnelle.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Suivi & Traçabilité",
-    "Accessibilité & i18n",
-    "Tableaux & Affichage",
-    "Gestion métier générale"
+    "Suivi & Traçabilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -21,42 +19,45 @@
     "PostGIS",
     "Redis",
     "MinIO",
+    "GDAL",
     "uv",
     "pytest",
-    "GDAL"
+    "Ruff"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu",
-    "ORM & Accès aux données"
+    "Tests"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso",
-      "mfa"
+      "jwt",
+      "mfa",
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": "pytest",
+  "workflows": [
+    "pre-commit",
+    "GitHub Actions"
+  ],
   "lastActivity": "2026-10-12T00:00:00Z",
-  "status": "active",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
-    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Accessibilité",
-    "Sécurité & Auth"
+    "CI/CD & GitHub Actions",
+    "Design System & UI"
   ]
 }
