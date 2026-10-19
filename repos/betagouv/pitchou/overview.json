@@ -1,32 +1,29 @@
 {
   "url": "https://github.com/betagouv/pitchou",
   "name": "pitchou",
-  "description": "Outil de gestion et de contrôle des dérogations pour les espèces protégées. Il permet de centraliser et de sauvegarder les données issues de l'API Démarche Numérique.",
+  "description": "Application dédiée au contrôle des dérogations d'espèces protégées. Elle permet la gestion des dossiers, la saisie de données et le suivi administratif via une interface dédiée.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Visualisation de données & Cartographie",
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Formulaires & Démarches",
+    "Visualisation de données & Cartographie",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Svelte",
+    "SvelteKit",
     "Node.js",
     "PostgreSQL",
     "Knex",
     "MapLibre GL",
-    "AWS SDK",
-    "Brevo",
-    "Sentry",
     "Playwright",
-    "Vitest",
-    "DSFR"
+    "DSFR",
+    "S3",
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -36,13 +33,15 @@
     "Docker & Conteneurs",
     "Node.js / NestJS",
     "Tests",
+    "Angular / Svelte / Autres SPA",
     "Stockage objet",
     "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "sso",
-      "api-key"
+      "api-key",
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -52,17 +51,20 @@
     "Playwright",
     "Vitest"
   ],
-  "lastActivity": "2026-10-12T18:32:20+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-10-17T16:08:22+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
+    "JavaScript",
     "Docker & Conteneurs",
     "Design System & UI",
     "SIG & Géospatial",
-    "Données & Open Data",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Stockage objet"
   ]
 }

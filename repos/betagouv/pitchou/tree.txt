@@ -552,6 +552,7 @@
 │       │   │   │   │   ├── exportDossiers.ts
 │       │   │   │   │   ├── formatDossierFull.test.ts
 │       │   │   │   │   ├── formatDossierFull.ts
+│       │   │   │   │   ├── prescriptionImport.test.ts
 │       │   │   │   │   └── requestWrappers.ts
 │       │   │   │   ├── createCapObjectFromURLs.ts
 │       │   │   │   ├── dataPaths.ts
@@ -736,11 +737,20 @@
 │       │       │       │   │   ├── Prescriptions
 │       │       │       │   │   │   ├── Prescription.svelte
 │       │       │       │   │   │   ├── PrescriptionControles.svelte
+│       │       │       │   │   │   ├── PrescriptionImport.svelte
+│       │       │       │   │   │   ├── PrescriptionImport.svelte.test.ts
 │       │       │       │   │   │   ├── PrescriptionSummary.svelte
-│       │       │       │   │   │   └── PrescriptionsEditTable.svelte
+│       │       │       │   │   │   ├── PrescriptionsEditTable.svelte
+│       │       │       │   │   │   └── SurfaceConversionReview.svelte
 │       │       │       │   │   ├── Prescriptions.svelte
 │       │       │       │   │   ├── Prescriptions.svelte.test.ts
 │       │       │       │   │   ├── controle.ts
+│       │       │       │   │   ├── decisionAdministrative
+│       │       │       │   │   │   ├── errors.test.ts
+│       │       │       │   │   │   ├── errors.ts
+│       │       │       │   │   │   ├── quantities.test.ts
+│       │       │       │   │   │   └── quantities.ts
+│       │       │       │   │   ├── decisionAdministrative.test.ts
 │       │       │       │   │   ├── decisionAdministrative.ts
 │       │       │       │   │   ├── decisionAdministrativeForm.ts
 │       │       │       │   │   └── prescriptions.ts
@@ -1894,12 +1904,13 @@
 │       ├── script.js
 │       └── styles.css
 ├── documentation
-│   └── adr
-│       ├── 0001-structure-impact-species-in-database.en.md
-│       ├── 0001-structure-impact-species-in-database.md
-│       ├── 0002-structure-porteur-de-projet-in-database.en.md
-│       ├── 0002-structure-porteur-de-projet-in-database.md
-│       └── README.md
+│   ├── adr
+│   │   ├── 0001-structure-impact-species-in-database.en.md
+│   │   ├── 0001-structure-impact-species-in-database.md
+│   │   ├── 0002-structure-porteur-de-projet-in-database.en.md
+│   │   ├── 0002-structure-porteur-de-projet-in-database.md
+│   │   └── README.md
+│   └── test-email-capture.md
 ├── flake.lock
 ├── flake.nix
 ├── justfile
@@ -2305,6 +2316,10 @@
 │   │   │   │   └── queryGraphQL.ts
 │   │   │   ├── dossiersDownloadTracking.test.ts
 │   │   │   ├── emailEnvironment.test.ts
+│   │   │   ├── emails
+│   │   │   │   ├── capture.test.ts
+│   │   │   │   ├── capture.ts
+│   │   │   │   └── delivery.ts
 │   │   │   ├── emails.test.ts
 │   │   │   ├── emails.ts
 │   │   │   ├── especeProtegee.ts
@@ -2589,4 +2604,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-313 directories, 2319 files
+315 directories, 2332 files
