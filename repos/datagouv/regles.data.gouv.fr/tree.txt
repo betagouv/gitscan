@@ -1,22 +1,117 @@
 .
 ├── .editorconfig
 ├── .github
+│   ├── pull_request_template.md
 │   └── workflows
+│       ├── check.yml
+│       ├── pages.yml
 │       └── pr-title.yml
 ├── .gitignore
 ├── .miserc.toml
 ├── CONTRIBUTING.md
 ├── README.md
+├── contract
+│   ├── .python-version
+│   ├── README.md
+│   ├── decisions
+│   │   └── ADR-0001-data-validator.md
+│   ├── docs
+│   │   └── integration.md
+│   ├── mise.lock
+│   ├── mise.toml
+│   ├── pyproject.toml
+│   ├── schema.json
+│   ├── src
+│   │   └── contract
+│   │       └── __init__.py
+│   └── uv.lock
+├── core
+│   ├── mise.toml
+│   ├── package.json
+│   ├── scripts
+│   │   └── generate.ts
+│   ├── src
+│   │   ├── example-record.ts
+│   │   ├── index.ts
+│   │   ├── record.test.ts
+│   │   ├── record.ts
+│   │   ├── registry.test.ts
+│   │   └── registry.ts
+│   └── tsconfig.json
+├── data
+│   └── ministereAgriculture
+│       └── prestagri
+│           └── aideScolarite.json
 ├── docs
 │   ├── architecture.md
 │   ├── decisions
 │   │   ├── ADR-0000-principe.md
 │   │   ├── ADR-0001-monorepo-par-paquets.md
-│   │   └── ADR-0002-mise.md
+│   │   ├── ADR-0002-mise.md
+│   │   ├── ADR-0003-types-de-la-fiche.md
+│   │   ├── ADR-0004-site-statique.md
+│   │   └── ADR-0005-identites-du-site.md
 │   └── mise.md
+├── eslint.config.mjs
 ├── hk.pkl
 ├── mise.dev.lock
 ├── mise.dev.toml
 ├── mise.lock
-└── mise.toml
-5 directories, 16 files
+├── mise.toml
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── sites
+│   ├── gouv-fr
+│   │   ├── app
+│   │   │   ├── app.config.ts
+│   │   │   └── components
+│   │   │       ├── SiteLayout.vue
+│   │   │       ├── UiBreadcrumb.vue
+│   │   │       └── UiCardList.vue
+│   │   ├── mise.toml
+│   │   ├── nuxt.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── white-label
+│       ├── app
+│       │   ├── app.config.ts
+│       │   ├── assets
+│       │   │   └── main.css
+│       │   └── components
+│       │       ├── SiteLayout.vue
+│       │       ├── UiBreadcrumb.vue
+│       │       └── UiCardList.vue
+│       ├── mise.toml
+│       ├── nuxt.config.ts
+│       ├── package.json
+│       └── tsconfig.json
+└── web
+    ├── app
+    │   ├── app.vue
+    │   ├── error.vue
+    │   ├── plugins
+    │   │   └── site-name.ts
+    │   └── views
+    │       ├── CatalogueView.vue
+    │       └── RecordView.vue
+    ├── catalogue
+    │   ├── record.test.ts
+    │   ├── record.ts
+    │   └── routes.ts
+    ├── mise.toml
+    ├── nuxt.config.ts
+    ├── package.json
+    ├── server
+    │   ├── api
+    │   │   └── records
+    │   │       ├── [identifier].get.ts
+    │   │       └── index.get.ts
+    │   └── utils
+    │       └── registry.ts
+    ├── shared
+    │   └── types
+    │       ├── app-config.d.ts
+    │       └── ui.ts
+    └── tsconfig.json
+35 directories, 81 files
