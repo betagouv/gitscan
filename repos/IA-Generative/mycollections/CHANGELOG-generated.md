@@ -1,21 +1,40 @@
-## Changelog : mycollections (30 derniers jours, au 15/10/2026)
+## Changelog : mycollections (30 derniers jours, au 17 octobre 2026)
 
 ### Résumé
-Ce mois-ci, mycollections a franchi une étape importante dans la maturité de son interface et de ses processus de gestion. Les utilisateurs bénéficient d'une expérience plus fluide, notamment sur mobile, et de nouvelles fonctionnalités liées à la qualité de la génération IA. En parallèle, l'infrastructure a été renforcée pour garantir une meilleure sécurité et une stabilité accrue lors de l'indexation des documents.
+Ce mois a été marqué par une amélioration significative de l'expérience utilisateur, rendant l'interface plus intuitive, accessible sur mobile et plus claire grâce à des messages en français. De nouvelles fonctionnalités de pilotage de la qualité ont été introduites pour mieux contrôler les réponses de l'IA. Parallèlement, l'infrastructure technique a été modernisée pour garantir des déploiements plus robustes et une sécurité renforcée.
 
 ### Évolutions fonctionnelles
-- **Génération & Qualité** : Introduction de questions par persona, de jeux de questions de référence et d'une page dédiée au suivi de la Qualité [#61].
-- **Catalogue & Recherche** : Ajout de catégories repliables [#42], amélioration de la précision des résultats de recherche et de la visibilité des catégories.
-- **Expérience Utilisateur (UX)** : Optimisation de l'ergonomie mobile (accès au menu, gestion du focus), amélioration de l'accessibilité, généralisation des messages d'erreur en français et enrichissement du parcours d'accueil.
-- **Gestion des Collections** : Amélioration du flux de publication (historique lisible, archivage), intégration simplifiée avec l'assistant et gestion plus intuitive des demandes utilisateurs (formulaires repliables).
-- **Visualisation & Sources** : Passage du graphe en mode plein écran, possibilité d'importer des graphes externes et amélioration de la lisibilité des sources via un proxy sécurisé.
+- **Génération et Qualité** : Introduction de la génération de questions par persona, d'un jeu de questions de référence et d'une nouvelle page dédiée au pilotage de la Qualité [#61].
+- **Recherche et Catalogue** : 
+    - Amélioration du catalogue avec des catégories repliables et une meilleure visibilité des titres.
+    - Mise en place d'un nouveau contrat de recherche (MirAI) via de nouvelles API de recherche.
+    - Ajout d'indicateurs de précision sur les résultats de recherche (seuils minimums).
+- **Expérience Utilisateur (UX) et Accessibilité** :
+    - Optimisation de l'ergonomie mobile (menu repositionné, gestion du focus clavier, navigation facilitée).
+    - Généralisation des messages d'erreur et d'information en français pour une meilleure compréhension.
+    - Amélioration de la consultation des sources (aperçus au survol, lecture d'extraits).
+    - Interface de création et de publication simplifiée (étapes de création plus claires, historique de publication lisible).
+- **Gestion des Collections** : 
+    - Amélioration des fiches de collection (onglets, consultation du corpus, boutons d'action explicites).
+    - Nouveau système de gestion des demandes et de satisfaction des utilisateurs.
 
 ### Évolutions techniques
-- **Sécurité & Accès** : Renforcement des droits d'administration (gestion par variables), gestion granulaire des permissions sur les actions critiques (archiver, purger) et sécurisation des liens partagés.
-- **Indexation & Données** : Amélioration de la résilience de l'indexation (reprise automatique après redémarrage), suppression des doublons lors de la réindexation et optimisation du découpage des documents.
-- **Infrastructure & CI/CD** : Migration de la gestion des dépendances vers `uv`, mise en place d'une nouvelle chaîne CI/CD, déploiement via Helm et mise à jour de l'image Nginx pour corriger une vulnérabilité critique.
-- **Observabilité** : Ajout d'endpoints pour le versioning de l'application et le suivi de l'état de santé (healthcheck) des dépendances.
+- **Déploiement et CI/CD** : 
+    - Intégration d'ArgoCD pour la gestion des déploiements.
+    - Mise en place d'une nouvelle chaîne de CI/CD (v0.23.0) incluant les environnements de preview et de bêta.
+    - Amélioration des charts Helm pour une meilleure gestion des versions de l'application.
+- **Sécurité et Accès** :
+    - Renforcement des contrôles d'accès sur l'ensemble des routes de l'API.
+    - Gestion des droits "Superadmin" via des variables d'environnement.
+    - Correction de vulnérabilités critiques via la mise à jour de l'image de base Nginx.
+- **Fiabilité et Performance** :
+    - Amélioration de la résilience de l'indexation (reprise automatique après un redémarrage).
+    - Optimisation de la compatibilité avec OpenRAG pour la lecture des métadonnées des sources.
+    - Unification de la configuration frontend via un fichier `/config.json` pour simplifier l'usage d'une image unique.
+- **Outils et Tests** :
+    - Migration de la gestion des dépendances vers `uv` pour plus de rapidité et de fiabilité.
+    - Renforcement de la couverture de tests avec une nouvelle suite de tests de bout en bout (E2E) couvrant les parcours critiques.
 
 ### Autres changements
-- **Documentation** : Mise à jour du README, des procédures de déploiement et de la documentation relative à la consultation des sources.
-- **Nettoyage** : Retrait des identifiants d'infrastructure du code source pour des raisons de sécurité.
+- **Documentation** : Mise à jour de la documentation technique (stratégie de branches, procédures de déploiement neutres) et du guide utilisateur (README).
+- **Nettoyage** : Retrait des identifiants d'infrastructure sensibles du code source pour plus de sécurité.
