@@ -1,4 +1,4 @@
 ## Changelog : calendrier.api.gouv.fr (30 derniers jours, au 01/10/2026)
 
 ### Résumé
-Le service est resté stable durant les 30 derniers jours. Aucune nouvelle fonctionnalité, amélioration technique ou modification de la documentation n'a été effectuée sur le dépôt.
+Aucune évolution fonctionnelle ou technique n'a été apportée à l'API au cours des 30 derniers jours. L'activité enregistrée se limite à une tâche de maintenance automatique visant à assurer la continuité des processus de déploiement (GitHub Actions).
