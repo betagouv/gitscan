@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/monlogementetudiant",
   "name": "monlogementetudiant",
-  "description": "Plateforme d'aide à la recherche de logement pour les étudiants. Elle permet de consulter des offres de résidences et de recevoir des alertes de disponibilité.",
+  "description": "Plateforme d'aide à la recherche de logement pour les étudiants. Elle permet de trouver des résidences, de gérer les disponibilités et de recevoir des alertes personnalisées par email.",
   "language": "TypeScript",
   "features": [
     "Recherche & Filtres",
     "Notifications & Alertes",
+    "Gestion des établissements & Structures",
     "Visualisation de données & Cartographie",
-    "Gestion des profils & Comptes",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Gestion des profils & Comptes"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -19,21 +20,19 @@
     "PostgreSQL",
     "PostGIS",
     "Leaflet",
-    "TanStack Query",
-    "Zod",
     "Brevo",
+    "S3",
     "Matomo",
-    "S3"
+    "Biome"
   ],
   "components": [
     "React / Next.js",
     "TypeScript / JavaScript",
     "PostgreSQL & SQL",
+    "API REST & GraphQL",
+    "Docker & Conteneurs",
     "Design System (DSFR & UI libs)",
-    "ORM & Accès aux données",
-    "Scripts & Utilitaires",
-    "Intégrations services externes",
-    "Docker & Conteneurs"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
@@ -41,8 +40,13 @@
       "session"
     ]
   },
-  "tests": "Tests unitaires mentionnés dans la structure CLI",
+  "tests": "Tests unitaires",
+  "workflows": [
+    "Déploiement Scalingo",
+    "Tâches planifiées (cron)"
+  ],
   "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
@@ -51,7 +55,6 @@
     "Bases de données SQL",
     "Emploi, Social & Logement",
     "Éducation & Formation",
-    "Accessibilité",
-    "Docker & Conteneurs"
+    "Design System & UI"
   ]
 }
