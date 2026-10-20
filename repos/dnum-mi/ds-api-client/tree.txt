@@ -4,7 +4,8 @@
 │   └── workflows
 │       ├── ci.yml
 │       ├── create_release.yml
-│       └── publish.yml
+│       ├── publish.yml
+│       └── publish_in_github.yml
 ├── .gitignore
 ├── .husky
 │   ├── pre-commit
@@ -13,6 +14,9 @@
 ├── .prettierrc
 ├── CHANGELOG.md
 ├── README.md
+├── codegen
+│   ├── codegen.ts
+│   └── download-schema-graphql.sh
 ├── package-lock.json
 ├── package.json
 ├── src
@@ -38,16 +42,26 @@
 │   │   │   ├── AvisFragment.ts
 │   │   │   ├── ChampDescriptorFragment.ts
 │   │   │   ├── ChampFragment.ts
+│   │   │   ├── ColumnFragment.ts
+│   │   │   ├── CommuneFragment.ts
 │   │   │   ├── DeletedDossierFragment.ts
 │   │   │   ├── DemarcheDescriptorFragment.ts
+│   │   │   ├── DepartementFragment.ts
 │   │   │   ├── DossierFragment.ts
+│   │   │   ├── EngagementJuridiqueFragment.ts
+│   │   │   ├── EpciFragment.ts
 │   │   │   ├── FileFragment.ts
 │   │   │   ├── GeoAreaFragment.ts
+│   │   │   ├── LabelFragment.ts
 │   │   │   ├── MessageFragment.ts
+│   │   │   ├── PaysFragment.ts
 │   │   │   ├── PersonneMoraleFragment.ts
 │   │   │   ├── PieceJustificativeFragment.ts
+│   │   │   ├── RNFFragment.ts
+│   │   │   ├── RegionFragment.ts
 │   │   │   ├── RevisionFragment.ts
-│   │   │   └── RootChampFragment.ts
+│   │   │   ├── RootChampFragment.ts
+│   │   │   └── ServiceFragment.ts
 │   │   ├── getDemarche.ts
 │   │   ├── getDemarcheDeletedDossiers.ts
 │   │   ├── getDemarcheDossierCustomChamps.ts
@@ -64,7 +78,8 @@
 ├── test
 │   ├── ds-api.e2e-spec.ts
 │   ├── env.example
-│   └── jest-e2e.json
+│   ├── jest-e2e.json
+│   └── setup-env.ts
 ├── tsconfig.build.json
 └── tsconfig.json
-12 directories, 57 files
+13 directories, 71 files
