@@ -10,6 +10,7 @@
 ├── .rspec
 ├── .rubocop.yml
 ├── .ruby-version
+├── CLAUDE.md
 ├── Gemfile
 ├── Gemfile.lock
 ├── Guardfile
@@ -771,8 +772,10 @@
 │   ├── rails
 │   ├── rake
 │   ├── remote-console
+│   ├── remove_worktree.sh
 │   ├── rspec
 │   ├── setup
+│   ├── setup_worktree.sh
 │   ├── spring
 │   └── stream-remote-logs
 ├── config
@@ -812,6 +815,7 @@
 │   ├── locales
 │   │   ├── en.yml
 │   │   └── fr.yml
+│   ├── logstasher.yml
 │   ├── puma.rb
 │   ├── routes.rb
 │   ├── settings
@@ -838,7 +842,21 @@
 │   │   ├── 20240828152227_add_validations_to_collectivities.rb
 │   │   ├── 20240917154302_add_departement_to_collectivities.rb
 │   │   ├── 20240918133535_migrate_departement_production_collectivities.rb
-│   │   └── 20241003132344_add_not_null_constraint_to_departement.rb
+│   │   ├── 20241003132344_add_not_null_constraint_to_departement.rb
+│   │   ├── 20261014115020_create_good_job_settings.rb
+│   │   ├── 20261014115021_create_index_good_jobs_jobs_on_priority_created_at_when_unfinished.rb
+│   │   ├── 20261014115022_create_good_job_batches.rb
+│   │   ├── 20261014115023_create_good_job_executions.rb
+│   │   ├── 20261014115024_create_good_jobs_error_event.rb
+│   │   ├── 20261014115025_recreate_good_job_cron_indexes_with_conditional.rb
+│   │   ├── 20261014115026_create_good_job_labels.rb
+│   │   ├── 20261014115027_create_good_job_labels_index.rb
+│   │   ├── 20261014115028_remove_good_job_active_id_index.rb
+│   │   ├── 20261014115029_create_index_good_job_jobs_for_candidate_lookup.rb
+│   │   ├── 20261014115030_create_good_job_execution_error_backtrace.rb
+│   │   ├── 20261014115031_create_good_job_process_lock_ids.rb
+│   │   ├── 20261014115032_create_good_job_process_lock_indexes.rb
+│   │   └── 20261014115033_create_good_job_execution_duration.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -1007,4 +1025,4 @@
     ├── .keep
     └── javascript
         └── .keep
-123 directories, 927 files
+123 directories, 945 files
