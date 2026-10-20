@@ -1,23 +1,22 @@
 {
   "url": "https://github.com/gip-inclusion/inclusion-connect",
   "name": "inclusion-connect",
-  "description": "Inclusion Connect est un service de Single Sign-On (SSO) permettant aux utilisateurs d'accéder à plusieurs applications avec un identifiant unique. Il est principalement utilisé dans des environnements de démonstration et de recette.",
+  "description": "Inclusion Connect est un service de Single Sign-On (SSO) permettant aux utilisateurs d'accéder à plusieurs services de l'insertion avec un identifiant unique. Il est actuellement utilisé comme solution d'authentification pour des environnements de recette ou de démonstration.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design"
+    "Interface utilisateur & Design",
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "PostgreSQL",
     "Django REST Framework",
     "Django OAuth Toolkit",
-    "PyJWT",
+    "PostgreSQL",
     "Gunicorn",
+    "PyJWT",
     "Sentry-SDK"
   ],
   "components": [
@@ -25,15 +24,14 @@
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Authentification (composant)",
-    "Docker & Conteneurs",
-    "Templates & Moteurs de rendu"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "jwt",
       "mfa",
-      "oauth2"
+      "sso"
     ]
   },
   "tests": [
@@ -43,17 +41,12 @@
     "coverage"
   ],
   "workflows": [
-    "GitHub Actions"
+    "GitHub Actions",
+    "Dependabot"
   ],
-  "lastActivity": "2026-10-12T02:50:47Z",
+  "lastActivity": "2026-10-20T01:04:54Z",
   "status": "maintained",
-  "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 3,
-    "forks": 2,
-    "openIssues": 1
-  },
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
