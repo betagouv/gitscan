@@ -8,29 +8,55 @@ and this project adheres to
 
 ### Added
 
-- ✨(backend) add a setting for the http fallback polling interval #2827
-- ✨(backend) add a setting to turn off awareness on the http fallback #2827
+- ✨(docspec) handle DocSpec 4xx/5xx import errors distinctly #2552
+- 🌐(frontend) add Crowdin translator context #2785
 
 ### Changed
 
-- ⚡️(yhub) skip the `users/me` call for callers without a session cookie
-- 🔧(helm) allow to set the period and failure threshold of probes
+- ♻️(frontend) replace outdated AGPL mentions of BlockNote XL packages #2775
+- 💄(frontend) update upload loader and error ui #2778
+- ⬆️(yhub) upgrade @y/hub to 0.10.1 #2853
+- ♿️(frontend) allow opening the home button in a new tab #2839
+- 💄(frontend) use 12px for error page home links #2809
 
 ### Fixed
 
-- 🐛(frontend) stop the http fallback when the collaboration server refuses it
-- 🐛(backend) bypass throttling on access/me action from yhub
-- 🐛(frontend) switch language when the current one is untranslated #2790
-- 🐛(frontend) keep the loading skeleton until an empty doc has synced #2817
+- 🐛(frontend) wrap long text in the print export #2813
+- 🔒️(backend) bind comment thread to the path document on creation #2838
+- 🐛(frontend) fix search highlight hidden inside code blocks #2681
+- 🔒️(backend) require present document access for thread and comment 
+  writes #2840
+- 🐛(backend) enforce resource server action restrictions on the external 
+  API #2745
+
+## [v6.0.1] - 2026-10-15
+
+### Added
+
+- ✨(backend) add a setting for the http fallback polling interval #2827
+- ✨(backend) add a setting to turn off awareness on the http fallback #2827
+- ✨(backend) add a setting to send json on the http fallback #2829
+- ⚡️(yhub) cache authz verdicts to cut backend calls on connections #2832
+
 ### Changed
 
+- ⚡️(yhub) skip the `users/me` call for callers without a session
+  cookie #2830
+- 🔧(helm) allow to set the period and failure threshold of probes #2828
 - ♿️(frontend) fix the accessibility of the document tree #2769
+
+### Fixed
+
+- 🐛(frontend) stop the http fallback when the collaboration server
+  refuses it #2827
+- 🐛(backend) bypass throttling on access/me action from yhub #2811
+- 🐛(frontend) switch language when the current one is untranslated #2790
+- 🐛(frontend) keep the loading skeleton until an empty doc has synced #2817
 
 ### Removed
 
 - 🔥(backend) remove `ForceSessionMiddleware`, an orphan of the removed
-  non-websocket save safeguard
-
+  non-websocket save safeguard #2830
 
 ## [v6.0.0] - 2026-10-05
 
@@ -1670,7 +1696,8 @@ and this project adheres to
 - ✨(frontend) Coming Soon page (#67)
 - 🚀 Impress, project to manage your documents easily and collaboratively.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/v6.0.0...main
+[unreleased]: https://github.com/suitenumerique/docs/compare/v6.0.1...main
+[v6.0.1]: https://github.com/suitenumerique/docs/releases/v6.0.1
 [v6.0.0]: https://github.com/suitenumerique/docs/releases/v6.0.0
 [v5.7.0]: https://github.com/suitenumerique/docs/releases/v5.7.0
 [v5.6.1]: https://github.com/suitenumerique/docs/releases/v5.6.1
