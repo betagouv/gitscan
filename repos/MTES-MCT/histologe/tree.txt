@@ -1,5 +1,6 @@
 .
 ├── .ai
+│   ├── ADDRESSES_HISTORY_FILTRES.md
 │   ├── AI_STARTER.md
 │   └── AJOUT_DONNEES.md
 ├── .buildpacks
@@ -7,6 +8,9 @@
 │   ├── matomo
 │   │   ├── db.env
 │   │   └── update-config-ini.sh
+│   ├── metabase
+│   │   ├── incident-resources.sql
+│   │   └── resources-report.sql
 │   ├── mysql
 │   │   └── init.sql
 │   ├── nginx
@@ -41,6 +45,7 @@
 │       └── server.location
 ├── .slugignore
 ├── Aptfile
+├── CLAUDE.md
 ├── LICENSE
 ├── Makefile
 ├── Procfile
@@ -85,8 +90,6 @@
 │   │   │   ├── controllers
 │   │   │   │   ├── activate_account
 │   │   │   │   │   └── activate_account.js
-│   │   │   │   ├── back_addresses_history
-│   │   │   │   │   └── back_addresses_history.js
 │   │   │   │   ├── back_api_user
 │   │   │   │   │   └── back_api_user.js
 │   │   │   │   ├── back_archived_signalements
@@ -173,6 +176,7 @@
 │   │   │       │   ├── component_search_autocomplete.js
 │   │   │       │   ├── component_search_checkbox.js
 │   │   │       │   ├── component_select_all_checkbox.js
+│   │   │       │   ├── maplibre-worker.js
 │   │   │       │   ├── pick-localisation.js
 │   │   │       │   └── rnb-map-controller.js
 │   │   │       ├── cookie
@@ -184,6 +188,7 @@
 │   │   │       ├── file
 │   │   │       │   └── file_delete.js
 │   │   │       ├── form
+│   │   │       │   ├── ajax_form_errors.js
 │   │   │       │   ├── ajax_form_handler.js
 │   │   │       │   ├── ajax_form_steps.js
 │   │   │       │   └── form_helper.js
@@ -204,6 +209,7 @@
 │   │       │   │   ├── AddressesHistory.vue
 │   │       │   │   ├── api.ts
 │   │       │   │   ├── components
+│   │       │   │   │   ├── AddressMapPopupContent.vue
 │   │       │   │   │   ├── AddressesHistoryHeader.vue
 │   │       │   │   │   ├── AddressesHistoryList.vue
 │   │       │   │   │   ├── AddressesHistoryListFilters.vue
@@ -212,16 +218,21 @@
 │   │       │   │   │   └── AddressesHistoryMapFilters.vue
 │   │       │   │   ├── composables
 │   │       │   │   │   ├── useAddressesHistoryFilters.ts
-│   │       │   │   │   └── useAddressesHistoryStore.ts
+│   │       │   │   │   ├── useAddressesHistoryStore.ts
+│   │       │   │   │   └── useFilteredSuggestions.ts
 │   │       │   │   ├── services
+│   │       │   │   │   ├── AddressFilterService.ts
 │   │       │   │   │   └── activeFiltersBuilder.ts
-│   │       │   │   └── types.ts
+│   │       │   │   ├── types.ts
+│   │       │   │   └── utils
+│   │       │   │       └── displayHelpers.ts
 │   │       │   ├── common
 │   │       │   │   ├── AppAutoComplete.vue
 │   │       │   │   ├── AppListCheckboxes.types.ts
 │   │       │   │   ├── AppListCheckboxes.vue
 │   │       │   │   ├── AppNumber.vue
 │   │       │   │   ├── AppSearch.vue
+│   │       │   │   ├── AppToggleCheckboxes.vue
 │   │       │   │   ├── HistoBOTabHeader.vue
 │   │       │   │   ├── HistoButton.vue
 │   │       │   │   ├── HistoCheckbox.vue
@@ -229,6 +240,7 @@
 │   │       │   │   ├── HistoInterfaceSelectOption.ts
 │   │       │   │   ├── HistoMultiSelect.vue
 │   │       │   │   ├── HistoSelect.vue
+│   │       │   │   ├── HistoToggle.vue
 │   │       │   │   ├── external
 │   │       │   │   │   ├── HistoDataTable.vue
 │   │       │   │   │   ├── HistoDatePicker.vue
@@ -440,6 +452,7 @@
 │   │   ├── README.md
 │   │   ├── procedure-database-deletion.md
 │   │   ├── procedure-dns-compromission.md
+│   │   ├── procedure-metabase-compromission.md
 │   │   ├── template-postmortem.md
 │   │   └── template-procedure.md
 │   └── postmortems
@@ -451,7 +464,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (134 files)
+│   └── Version*.php  (136 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan-dead-code.neon
@@ -629,13 +642,6 @@
 │   │   ├── SlugifyDocumentSignalementCommand.php
 │   │   ├── Temp
 │   │   │   ├── .gitignore
-│   │   │   ├── ForceCloturesDossiersCommand.php
-│   │   │   ├── ForceEsaboraDossierClotureCommand.php
-│   │   │   ├── ManageSignalementAndAddressRelationCommand.php
-│   │   │   ├── MigrateSignalementDraftEtageCommand.php
-│   │   │   ├── RegenerateCodeSuiviCommand.php
-│   │   │   ├── ReinitMDPCommand.php
-│   │   │   ├── UpdateJobEventErrorsCommand.php
 │   │   │   └── UpdateSignalementInvariantRialCommand.php
 │   │   ├── UpdateCommunesCommand.php
 │   │   ├── UpdateMergedCommunesCommand.php
@@ -679,6 +685,7 @@
 │   │   │   ├── ConfigServiceSecoursController.php
 │   │   │   ├── DashboardController.php
 │   │   │   ├── DashboardTabPanelController.php
+│   │   │   ├── DocumentIAToolController.php
 │   │   │   ├── ExportSignalementController.php
 │   │   │   ├── HistoryEntryController.php
 │   │   │   ├── InAppCommunicationController.php
@@ -848,6 +855,7 @@
 │   │   │       ├── AffectationResponse.php
 │   │   │       ├── ArreteResponse.php
 │   │   │       ├── SignalementResponse.php
+│   │   │       ├── SignalementSummaryResponse.php
 │   │   │       ├── SuiviResponse.php
 │   │   │       └── UserMeResponse.php
 │   │   ├── Command
@@ -1129,6 +1137,7 @@
 │   │   ├── DataTransformer
 │   │   │   └── PolygonToWktTransformer.php
 │   │   ├── DemandeLienSignalementType.php
+│   │   ├── DocumentIAType.php
 │   │   ├── EditTagType.php
 │   │   ├── ImportArreteType.php
 │   │   ├── InAppCommunicationType.php
@@ -1352,8 +1361,14 @@
 │   │   │   │   ├── SituationStatisticsQuery.php
 │   │   │   │   ├── StatusStatisticsQuery.php
 │   │   │   │   └── VisiteStatisticsQuery.php
+│   │   │   ├── User
+│   │   │   │   ├── UserAffectationQuery.php
+│   │   │   │   ├── UserSearchFilterQuery.php
+│   │   │   │   └── UserSubscriptionQuery.php
 │   │   │   └── Zone
-│   │   │       └── ZonePaginatorQuery.php
+│   │   │       ├── ZoneLocalizationQuery.php
+│   │   │       ├── ZonePaginatorQuery.php
+│   │   │       └── ZoneSignalementQuery.php
 │   │   ├── ServiceSecoursRouteRepository.php
 │   │   ├── SignalementDraftRepository.php
 │   │   ├── SignalementProcedureRepository.php
@@ -1492,6 +1507,8 @@
 │   │   │   │   └── Response
 │   │   │   │       ├── BanAddress.php
 │   │   │   │       └── Poi.php
+│   │   │   ├── DocumentIA
+│   │   │   │   └── DocumentIAService.php
 │   │   │   ├── ProConnect
 │   │   │   │   ├── Model
 │   │   │   │   │   ├── JWK.php
@@ -1630,6 +1647,7 @@
 │   │   │   │   │   ├── AccountActivationBoMailer.php
 │   │   │   │   │   ├── AccountActivationFoMailer.php
 │   │   │   │   │   ├── AccountActivationReminderMailer.php
+│   │   │   │   │   ├── AccountAuthCodeMailer.php
 │   │   │   │   │   ├── AccountDeleteMailer.php
 │   │   │   │   │   ├── AccountLostPasswordMailer.php
 │   │   │   │   │   ├── AccountNewTerritoryMailer.php
@@ -1754,6 +1772,7 @@
 │   │   │   │   ├── DesordreTraitementPieces.php
 │   │   │   │   └── DesordreTraitementProcessor.php
 │   │   │   ├── Export
+│   │   │   │   ├── AddressesHistoryExporter.php
 │   │   │   │   ├── ServiceSecoursPdfGenerator.php
 │   │   │   │   ├── SignalementExportFiltersDisplay.php
 │   │   │   │   ├── SignalementExportHeader.php
@@ -1827,13 +1846,16 @@
 │   │   └── UploadHandlerService.php
 │   ├── Specification
 │   │   ├── Affectation
+│   │   │   ├── AccompagnementTravailleurSocialSpecification.php
 │   │   │   ├── AllocataireSpecification.php
 │   │   │   ├── CodeInseeSpecification.php
+│   │   │   ├── DemandeLogementSocialSpecification.php
 │   │   │   ├── ParcSpecification.php
 │   │   │   ├── PartnerExcludeSpecification.php
 │   │   │   ├── PartnerTypeSpecification.php
 │   │   │   ├── ProcedureSuspecteeSpecification.php
-│   │   │   └── ProfilDeclarantSpecification.php
+│   │   │   ├── ProfilDeclarantSpecification.php
+│   │   │   └── ZoneSpecification.php
 │   │   ├── AndSpecification.php
 │   │   ├── Context
 │   │   │   ├── PartnerSignalementContext.php
@@ -1911,7 +1933,9 @@
 │       ├── ValidProfileDeclarant.php
 │       ├── ValidProfileDeclarantValidator.php
 │       ├── ValueLessThanOtherValue.php
-│       └── ValueLessThanOtherValueValidator.php
+│       ├── ValueLessThanOtherValueValidator.php
+│       ├── ZoneIds.php
+│       └── ZoneIdsValidator.php
 ├── symfony.lock
 ├── templates
 │   ├── _partials
@@ -1963,7 +1987,6 @@
 │   ├── back
 │   │   ├── _nav_bo_profile_link.html.twig
 │   │   ├── addresses-history
-│   │   │   ├── carte-facile.html.twig
 │   │   │   └── index.html.twig
 │   │   ├── admin-territory-files
 │   │   │   ├── _table-list-results.html.twig
@@ -2193,6 +2216,7 @@
 │   │   │   │   │   ├── tab-documents.html.twig
 │   │   │   │   │   ├── tab-foyer.html.twig
 │   │   │   │   │   ├── tab-notes.html.twig
+│   │   │   │   │   ├── tab-orientation.html.twig
 │   │   │   │   │   └── tab-situation.html.twig
 │   │   │   │   ├── tabs.html.twig
 │   │   │   │   ├── user-declaration-desordre-item.html.twig
@@ -2263,6 +2287,7 @@
 │   │   ├── territory-management
 │   │   │   └── index.html.twig
 │   │   ├── tools
+│   │   │   ├── document-ia.html.twig
 │   │   │   └── rial.html.twig
 │   │   ├── user
 │   │   │   ├── export-inactive-accounts.html.twig
@@ -2311,6 +2336,7 @@
 │   │   ├── desordres-and-precisions-choices.html.twig
 │   │   └── desordres.html.twig
 │   ├── emails
+│   │   ├── account_auth_code_email.html.twig
 │   │   ├── account_new_territory_email.html.twig
 │   │   ├── account_remove_from_territory_email.html.twig
 │   │   ├── account_user_soon_archived_email.html.twig
@@ -2455,6 +2481,7 @@
 │   │   │   ├── MergePartnersCommandTest.php
 │   │   │   └── NotifyVisitsCommandTest.php
 │   │   ├── Controller
+│   │   │   ├── AddressesHistoryControllerTest.php
 │   │   │   ├── Api
 │   │   │   │   ├── AffectationUpdateControllerTest.php
 │   │   │   │   ├── ArreteCreateControllerTest.php
@@ -2488,6 +2515,7 @@
 │   │   │   │   ├── HistoryEntryControllerTest.php
 │   │   │   │   ├── InAppCommunicationControllerTest.php
 │   │   │   │   ├── InterconnexionControllerTest.php
+│   │   │   │   ├── MetabaseControllerTest.php
 │   │   │   │   ├── ProfilControllerTest.php
 │   │   │   │   ├── RialToolControllerTest.php
 │   │   │   │   ├── SignalementActionControllerTest.php
@@ -2603,12 +2631,16 @@
 │   │   │   │   │   ├── ExportIterableQueryTest.php
 │   │   │   │   │   ├── MapGeoDataQueryTest.php
 │   │   │   │   │   └── QueryBuilderFactoryTest.php
-│   │   │   │   └── Statistics
-│   │   │   │       └── CountStatisticsQueryTest.php
+│   │   │   │   ├── Statistics
+│   │   │   │   │   └── CountStatisticsQueryTest.php
+│   │   │   │   ├── User
+│   │   │   │   │   └── UserAffectationQueryTest.php
+│   │   │   │   └── Zone
+│   │   │   │       ├── ZoneLocalizationQueryTest.php
+│   │   │   │       └── ZoneSignalementQueryTest.php
 │   │   │   ├── SignalementRepositoryTest.php
 │   │   │   ├── SuiviRepositoryTest.php
-│   │   │   ├── UserRepositoryTest.php
-│   │   │   └── ZoneRepositoryTest.php
+│   │   │   └── UserRepositoryTest.php
 │   │   ├── Scheduler
 │   │   │   └── MessageHandler
 │   │   │       ├── SyncEsaboraSCHSMessageHandlerTest.php
@@ -2679,13 +2711,16 @@
 │   │   │   └── UploadHandlerServiceTest.php
 │   │   └── Specification
 │   │       ├── Affectation
+│   │       │   ├── AccompagnementTravailleurSocialSpecificationTest.php
 │   │       │   ├── AllocataireSpecificationTest.php
 │   │       │   ├── CodeInseeSpecificationTest.php
+│   │       │   ├── DemandeLogementSocialSpecificationTest.php
 │   │       │   ├── ParcSpecificationTest.php
 │   │       │   ├── PartnerExcludeSpecificationTest.php
 │   │       │   ├── PartnerTypeSpecificationTest.php
 │   │       │   ├── ProcedureSuspecteeSpecificationTest.php
-│   │       │   └── ProfilDeclarantSpecificationTest.php
+│   │       │   ├── ProfilDeclarantSpecificationTest.php
+│   │       │   └── ZoneSpecificationTest.php
 │   │       ├── AndSpecificationTest.php
 │   │       └── Signalement
 │   │           ├── FirstAffectationAcceptedSpecificationTest.php
@@ -2792,7 +2827,8 @@
 │   │   │   ├── Provider
 │   │   │   │   └── SignalementUserProviderTest.php
 │   │   │   └── Voter
-│   │   │       └── TabPanelVoterTest.php
+│   │   │       ├── TabPanelVoterTest.php
+│   │   │       └── ZoneVoterTest.php
 │   │   ├── Serializer
 │   │   │   └── SignalementDraftRequestNormalizerTest.php
 │   │   ├── Service
@@ -2856,6 +2892,8 @@
 │   │   │   ├── Gouv
 │   │   │   │   ├── Ban
 │   │   │   │   │   └── AddressServiceTest.php
+│   │   │   │   ├── DocumentIA
+│   │   │   │   │   └── DocumentIAServiceTest.php
 │   │   │   │   ├── ProConnect
 │   │   │   │   │   ├── ProConnectAuthenticationTest.php
 │   │   │   │   │   ├── ProConnectContextTest.php
@@ -2902,10 +2940,13 @@
 │   │   │   │   └── MenuBuilderTest.php
 │   │   │   ├── Metabase
 │   │   │   │   └── DashboardUrlGeneratorTest.php
+│   │   │   ├── Security
+│   │   │   │   └── TwoFactorConditionTest.php
 │   │   │   ├── Signalement
 │   │   │   │   ├── DesordreTraitement
 │   │   │   │   │   └── DesordreTraitementProcessorTest.php
 │   │   │   │   ├── Export
+│   │   │   │   │   ├── AddressesHistoryExporterTest.php
 │   │   │   │   │   ├── SignalementExportPdfTest.php
 │   │   │   │   │   └── SignalementExporterTest.php
 │   │   │   │   ├── Qualification
@@ -2949,7 +2990,8 @@
 │   │       ├── TelephoneFormatValidatorTest.php
 │   │       ├── ValidPartnerTypeValidatorTest.php
 │   │       ├── ValidProfileDeclarantValidatorTest.php
-│   │       └── ValueLessThanOtherValueValidatorTest.php
+│   │       ├── ValueLessThanOtherValueValidatorTest.php
+│   │       └── ZoneIdsValidatorTest.php
 │   ├── UserHelper.php
 │   ├── bootstrap.php
 │   ├── e2e
@@ -3096,4 +3138,4 @@
 │   ├── security.fr.yaml
 │   └── validators.fr.xlf
 └── webpack.config.js
-514 directories, 2734 files
+521 directories, 2771 files
