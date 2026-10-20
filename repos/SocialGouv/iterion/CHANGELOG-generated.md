@@ -1,35 +1,35 @@
-## Changelog : iterion (30 derniers jours, au 13 octobre 2026)
+## Changelog : iterion (30 derniers jours, au 20 octobre 2026)
 
 ### Résumé
-Iterion a franchi une étape majeure dans la maturité de son orchestration d'agents. Les évolutions récentes se concentrent sur la simplification de la création de processus via un nouveau système de définition (DSL), le renforcement de la sécurité et de l'isolation des environnements d'exécution, ainsi que l'amélioration de la visibilité sur la performance et les coûts via de nouveaux outils de supervision.
+Ce mois-ci, Iterion a franchi une étape clé dans la maturité de son orchestration d'agents IA. Les évolutions majeures se concentrent sur l'intelligence du routage des modèles (LLM routing), le renforcement de la sécurité via un isolation accrue des environnements d'exécution (sandboxing) et l'enrichissement des capacités d'administration pour les gestionnaires de plateformes. La gestion des ressources et des budgets a également été affinée pour offrir un contrôle plus granulaire sur les coûts et la souveraineté des données.
 
 ### Évolutions fonctionnelles
-- **Bots & Agents**
-  - Lancement de `gitops-warden 0.2.0` incluant des verdicts en français, le rendu Helm et des liens de suivi de run ([#2389](https://github.com/SocialGouv/iterion/issues/2389)).
-  - Mise à jour majeure de l'agent d'accessibilité `Acci` (v3) basée sur le moteur ultra11y ([#2387](https://github.com/SocialGouv/iterion/issues/2387)).
-  - Amélioration de la surveillance de production avec le système `Argus` (intégration des flux Sentry et Loki) ([#1869](https://github.com/SocialGouv/iterion/issues/1869), [#1702](https://github.com/SocialGouv/iterion/issues/1702)).
-- **Interface Studio & Administration**
-  - Ajout de nouveaux écrans d'administration pour la gestion des rôles des bots, des environnements sandbox, et du suivi de la consommation des crédits ([#1443](https://github.com/SocialGouv/iterion/issues/1443), [#1445](https://github.com/SocialGouv/iterion/issues/1445), [#1442](https://github.com/SocialGouv/iterion/issues/1442)).
-  - Optimisation de la console d'administration avec une navigation par sections et une meilleure gestion des hiérarchies d'organisation ([#2365](https://github.com/SocialGouv/iterion/issues/2365)).
-  - Nouvelle vue "Source" par fichier dans le Studio pour une meilleure inspection du code ([#1738](https://github.com/SocialGouv/iterion/issues/1738)).
-- **Gestion des modèles LLM**
-  - Introduction d'une politique de routage adaptatif permettant de gérer les modèles par niveau (organisation, équipe, bot) ([#2110](https://github.com/SocialGouv/iterion/issues/2110), [#2126](https://github.com/SocialGouv/iterion/issues/2126)).
-  - Mise en place de politiques de repli (fallback) personnalisables pour les fournisseurs de modèles ([#2309](https://github.com/SocialGouv/iterion/issues/2309)).
+- **Routage intelligent des modèles (LLM Routing) :** Introduction d'une politique de routage adaptative permettant des configurations personnalisées (overrides) par modèle ou fournisseur, avec une gestion fine au niveau de l'organisation et de l'équipe [#2586](https://github.com/SocialGouv/iterion/issues/2586) ([#2210](https://github.com/SocialGouv/iterion/issues/2210), [#2126](https://github.com/SocialGouv/iterion/issues/2126), [#2159](https://github.com/SocialGouv/iterion/issues/2159)).
+- **Administration et Studio :** 
+    - Ajout de nouveaux écrans d'administration pour la gestion des rôles de bots, des variables de sandbox et des credentials de la plateforme [#1443](https://github.com/SocialGouv/iterion/issues/1443) ([#1461](https://github.com/SocialGouv/iterion/issues/1461)).
+    - L'inspecteur de workflow permet désormais d'éditer directement les permissions des outils [#2383](https://github.com/SocialGouv/iterion/issues/2383).
+    - Amélioration de la gestion des webhooks et des postures de fusion (merge-gate) depuis le Studio [#2479](https://github.com/SocialGouv/iterion/issues/2479).
+- **Gestion des Bots et GitOps :** Mise à jour de GitOps-warden (v0.2.0) incluant des verdicts en français, le rendu Helm et des liens directs vers les runs [#2389](https://github.com/SocialGouv/iterion/issues/2389). Amélioration de la navigation dans le catalogue des bots par catégories et tags [#1520](https://github.com/SocialGouv/iterion/issues/1520).
+- **Contrôle des ressources et budgets :** 
+    - Possibilité de réserver une capacité de budget spécifique pour une charge de travail plutôt que de simplement la plafonner [#1099](https://github.com/SocialGouv/iterion/issues/1099).
+    - Option de mise en pause automatique d'un run dès que son plafond de budget est atteint [#2263](https://github.com/SocialGouv/iterion/issues/2263).
+- **Expérience Développeur (DSL & CLI) :** 
+    - Amélioration du langage DSL avec une validation plus stricte des contraintes de variables au lancement et une meilleure préservation des commentaires lors de la mise en forme [#2328](https://github.com/SocialGouv/iterion/issues/2328), [#1628](https://github.com/SocialGouv/iterion/issues/1628), [#1616](https://github.com/SocialGouv/iterion/issues/1616).
+    - Nouvelle commande CLI pour reprendre massivement tous les runs bloqués par l'usage, avec un filtrage par code d'erreur [#2249](https://github.com/SocialGouv/iterion/issues/2249).
 
 ### Évolutions techniques
-- **Langage de définition (DSL)**
-  - Refonte majeure du DSL (projet "Author YAML twin") pour améliorer la validation, le formatage et la gestion des commentaires lors de l'écriture des workflows ([#1720](https://github.com/SocialGouv/iterion/issues/1720), [#1664](https://github.com/SocialGouv/iterion/issues/1664), [#1344](https://github.com/SocialGouv/iterion/issues/1344)).
-  - Renforcement de la validation des variables et des contraintes dès la phase de lancement ([#2329](https://github.com/SocialGouv/iterion/issues/2329)).
-- **Infrastructure & Cloud**
-  - Déploiement de "Sovereign Runner Pools" pour garantir une isolation stricte des ressources par pool ([#2273](https://github.com/SocialGouv/iterion/issues/2273)).
-  - Intégration de SeaweedFS comme magasin d'objets pour l'environnement de développement ([#1943](https://github.com/SocialGouv/iterion/issues/1943)).
-- **Sécurité & Isolation**
-  - Implémentation du "Sovereign Sealing" pour sécuriser les secrets et l'identité des processus au sein des pools ([#2236](https://github.com/SocialGouv/iterion/issues/2236)).
-  - Durcissement de l'isolation des sandboxes (refus des liens symboliques, protection des variables d'environnement de l'hôte) ([#2360](https://github.com/SocialGouv/iterion/issues/2360), [#2325](https://github.com/SocialGouv/iterion/issues/2325)).
-- **Runtime & Performance**
-  - Optimisation de l'attribution des coûts et du suivi des jetons (tokens) par tâche ([#2255](https://github.com/SocialGouv/iterion/issues/2255), [#2241](https://github.com/SocialGouv/iterion/issues/2241)).
-  - Amélioration de la résilience des exécutions via une gestion plus robuste de la reprise (resume) de sessions ([#2332](https://github.com/SocialGouv/iterion/issues/2332), [#1490](https://github.com/SocialGouv/iterion/issues/1490)).
+- **Sécurité et Isolation (Sandboxing) :** 
+    - Renforcement massif de l'isolation des processus : refus des liens symboliques (symlinks), isolation des credentials et de l'egress LLM, et protection contre les redirections de l'environnement hôte [#2310](https://github.com/SocialGouv/iterion/issues/2310), [#2339](https://github.com/SocialGouv/iterion/issues/2339), [#2321](https://github.com/SocialGouv/iterion/issues/2321), [#2325](https://github.com/SocialGouv/iterion/issues/2325), [#2472](https://github.com/SocialGouv/iterion/issues/2472), [#2478](https://github.com/SocialGouv/iterion/issues/2478).
+    - Implémentation du "scellement souverain" pour les secrets et les pools, garantissant que les clés de chiffrement restent hors des pods [#2236](https://github.com/SocialGouv/iterion/issues/2236).
+- **Infrastructure et Cloud :** 
+    - Introduction de pools de runners souverains (un déploiement par pool) [#2273](https://github.com/SocialGouv/iterion/issues/2273).
+    - Adoption de SeaweedFS comme stockage d'objets pour l'environnement de développement [#1943](https://github.com/SocialGouv/iterion/issues/1943), [#2089](https://github.com/SocialGouv/iterion/issues/2089).
+- **Fiabilité et CI/CD :** 
+    - Mise en place de sondes de santé pour surveiller les délais d'exécution des runners [#2578](https://github.com/SocialGouv/iterion/issues/2578).
+    - Amélioration de la détection des régressions d'accessibilité (a11y) dans le Studio [#2347](https://github.com/SocialGouv/iterion/issues/2347).
+    - Optimisation de la CI avec un partitionnement déterministe des tests et une meilleure gestion du parallélisme [#2568](https://github.com/SocialGouv/iterion/issues/2568), [#2213](https://github.com/SocialGouv/iterion/issues/2213).
+- **Gestion des flux et identités :** Les commandes du plan de contrôle et les baux (leases) de run portent désormais l'identité admise du run pour une meilleure traçabilité [#2270](https://github.com/SocialGouv/iterion/issues/2270), [#2266](https://github.com/SocialGouv/iterion/issues/2266).
 
 ### Autres changements
-- **Documentation** : Mise à jour importante de la documentation technique, notamment sur le nouveau DSL et la structure des domaines d'agents ([#1342](https://github.com/SocialGouv/iterion/issues/1342), [#2106](https://github.com/SocialGouv/iterion/issues/2106)).
-- **Nettoyage** : Suppression de plusieurs composants et fonctions obsolètes (legacy) pour alléger le système ([#2298](https://github.com/SocialGouv/iterion/issues/2298)).
+- **Documentation :** Refonte majeure de la documentation technique incluant des diagrammes de base de données (ERD) complets et zoomables en SVG [#2582](https://github.com/SocialGouv/iterion/issues/2582), [#2579](https://github.com/SocialGouv/iterion/issues/2579), ainsi que des cartes visuelles des flux de fonctionnalités [#2561](https://github.com/SocialGouv/iterion/issues/2561).
+- **Documentation :** Mise à jour des guides sur la structure des domaines et des sessions interactives des agents [#2106](https://github.com/SocialGouv/iterion/issues/2106), [#2070](https://github.com/SocialGouv/iterion/issues/2070).
