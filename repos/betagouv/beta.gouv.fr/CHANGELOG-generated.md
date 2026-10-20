@@ -1,11 +1,11 @@
-## Changelog : beta.gouv.fr (30 derniers jours, au 13 octobre 2026)
+## Changelog : beta.gouv.fr (30 derniers jours, au 19 octobre 2026)
 
 ### Résumé
-Les évolutions de ce mois se sont concentrées sur la maintenance des données et l'amélioration de l'API. Ces changements permettent une meilleure précision des informations affichées et facilitent l'utilisation des données par les développeurs tiers.
+Les récentes évolutions se concentrent sur l'amélioration de la précision des données affichées, l'enrichissement des informations disponibles via l'API et la maintenance régulière de la base de données.
 
 ### Évolutions fonctionnelles
-- Mise à jour du nom de la startup "archeo-data" qui devient "archeodonnees" [#21708](https://github.com/betagouv/beta.gouv.fr/pull/21708)
+- Mise à jour des données : correction du nom de la startup "archeo-data", désormais répertoriée sous le nom "archeodonnees" [#21708](https://github.com/betagouv/beta.gouv.fr/pull/21708).
 
 ### Évolutions techniques
-- **API** : Ajout de l'identifiant du produit dans les réponses JSON de la version 3 pour améliorer l'intégration des données [#21693](https://github.com/betagouv/beta.gouv.fr/pull/21693)
-- **Base de données** : Série de mises à jour automatiques de la structure de la base de données pour assurer la maintenance du système [#21685](https://github.com/betagouv/beta.gouv.fr/pull/21685) à [#21707](https://github.com/betagouv/beta.gouv.fr/pull/21707)
+- API : l'identifiant du produit est désormais exposé dans les réponses JSON de la version 3 [#21693](https://github.com/betagouv/beta.gouv.fr/pull/21693).
+- Maintenance : exécution de plusieurs mises à jour de la base de données pour assurer la synchronisation et la cohérence des informations [#21712](https://github.com/betagouv/beta.gouv.fr/pull/21712).
