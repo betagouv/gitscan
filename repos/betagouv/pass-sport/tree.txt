@@ -22,6 +22,7 @@
 │   └── launch.json
 ├── CLAUDE.md
 ├── README.md
+├── compose.waf.yml
 ├── compose.yml
 ├── data
 │   ├── .env.example
@@ -106,11 +107,17 @@
 │   │       └── merge_cnaf_msa.ipynb
 │   ├── 2026
 │   │   ├── README.md
+│   │   ├── dashboard
+│   │   │   ├── README.md
+│   │   │   ├── load_dashboard.sql
+│   │   │   └── run_dashboard.sh
 │   │   ├── linkmobility
 │   │   │   └── 1_email_campaign.ipynb
 │   │   └── partners
 │   │       ├── clean_miquelon.ipynb
 │   │       ├── cnaf
+│   │       │   ├── 10_06_2026_clean_cnaf_aeeh.ipynb
+│   │       │   ├── 10_06_2026_cnaf_aeeh_deduplication.ipynb
 │   │       │   ├── clean_cnaf_1_before_qf_batch.ipynb
 │   │       │   ├── clean_cnaf_2_after_qf_batch.ipynb
 │   │       │   ├── clean_cnaf_2a_aah_aeeh.ipynb
@@ -170,6 +177,7 @@
 │       ├── generate_new_code_from_csv.ipynb
 │       ├── generate_random_data.ipynb
 │       ├── get_missing_beneficiaries.ipynb
+│       ├── scalingo_tunnel.sh
 │       ├── test_codes_utils.py
 │       ├── test_data_utils.py
 │       └── test_emailing_utils.py
@@ -485,7 +493,7 @@
 │   │   │   ├── layout.tsx
 │   │   │   ├── manifest.ts
 │   │   │   ├── page.tsx
-│   │   │   ├── robot.ts
+│   │   │   ├── robots.ts
 │   │   │   ├── services
 │   │   │   │   ├── __mocks__
 │   │   │   │   │   └── fetch-code.ts
@@ -495,6 +503,8 @@
 │   │   │   │   ├── communes-client.ts
 │   │   │   │   ├── communes.spec.ts
 │   │   │   │   ├── communes.ts
+│   │   │   │   ├── dashboard.ts
+│   │   │   │   ├── database.ts
 │   │   │   │   ├── eligibility-job.ts
 │   │   │   │   ├── eligibility-test.spec.ts
 │   │   │   │   ├── eligibility-test.ts
@@ -504,6 +514,15 @@
 │   │   │   │   ├── relance-availability.ts
 │   │   │   │   └── relance.ts
 │   │   │   ├── sitemap.ts
+│   │   │   ├── tableau-de-bord
+│   │   │   │   ├── components
+│   │   │   │   │   ├── Graphiques.tsx
+│   │   │   │   │   ├── TableauDetail.tsx
+│   │   │   │   │   └── graphiques.module.scss
+│   │   │   │   ├── model.test.ts
+│   │   │   │   ├── model.ts
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── style.module.scss
 │   │   │   ├── tac-dsfr.scss
 │   │   │   ├── utilities.module.scss
 │   │   │   └── v2
@@ -826,6 +845,9 @@
     │   ├── 0017_add_fc_relance_view.sql
     │   ├── 0018_add_relance_allowed.sql
     │   ├── 0019_add_query_indexes.sql
+    │   ├── 0020_add_lca_dashboard.sql
+    │   ├── 0021_lca_tableaux_de_bord_age.sql
+    │   ├── 0022_lca_tableaux_de_bord_federation.sql
     │   └── meta
     │       ├── 0000_snapshot.json
     │       ├── 0001_snapshot.json
@@ -847,6 +869,9 @@
     │       ├── 0017_snapshot.json
     │       ├── 0018_snapshot.json
     │       ├── 0019_snapshot.json
+    │       ├── 0020_snapshot.json
+    │       ├── 0021_snapshot.json
+    │       ├── 0022_snapshot.json
     │       └── _journal.json
     ├── drizzle.config.ts
     ├── package.json
@@ -932,4 +957,4 @@
     ├── tsconfig.build.json
     ├── tsconfig.json
     └── vitest.config.ts
-225 directories, 709 files
+228 directories, 731 files
