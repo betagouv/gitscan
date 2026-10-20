@@ -1,20 +1,29 @@
-## Changelog : espace-membre-next (30 derniers jours, au 16 octobre 2026)
+## Changelog : espace-membre-next (30 derniers jours, au 19 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration du module de formation (migration de données, notifications et gestion de l'agenda) et sur la fiabilisation de la gestion des emails via Dimail. Plusieurs formulaires administratifs ont également été affinés pour améliorer l'expérience utilisateur.
+Ce mois-ci, les efforts se sont concentrés sur la sécurisation des accès via l'amélioration du parcours d'authentification (ProConnect et MFA) et l'ouverture de l'écosystème grâce à une nouvelle API REST. Des corrections importantes ont également été apportées à la gestion des formations, des formulaires de demande et de la synchronisation des adresses e-mail professionnelles.
 
 ### Évolutions fonctionnelles
-- Formations : Migration vers Grist, ajout de notifications et d'invitations d'agenda [#1533](https://github.com/betagouv/espace-membre-next/issues/1533), et corrections sur l'e-learning ainsi que la gestion des listes d'attente [#1558](https://github.com/betagouv/espace-membre-next/issues/1558), [#1564](https://github.com/betagouv/espace-membre-next/issues/1564).
-- Dimail : Amélioration de la synchronisation des adresses, du statut des emails et de la réactivation des boîtes [#1588](https://github.com/betagouv/espace-membre-next/issues/1588).
-- Formulaires : Optimisation du formulaire de demandes d'OPS [#1554](https://github.com/betagouv/espace-membre-next/issues/1554) et du formulaire Segur pour les demandes d'accès [#1553](https://github.com/betagouv/espace-membre-next/issues/1553).
-- Calendrier : Résolution de problèmes liés à l'affichage des événements [#1546](https://github.com/betagouv/espace-membre-next/issues/1546), [#1547](https://github.com/betagouv/espace-membre-next/issues/1547).
-- Navigation : Mise à jour du lien vers la page des services OPS [#1545](https://github.com/betagouv/espace-membre-next/issues/1545).
+- **Authentification et sécurité** :
+    - Amélioration du parcours de connexion ProConnect, incluant la gestion du MFA par lien magique [#1569] et la possibilité de relancer une session après un refus [#1597].
+    - Meilleure gestion des adresses e-mail lors de la connexion (distinction entre e-mail personnel et principal) [#1596].
+- **Gestion des formations** :
+    - Corrections sur le module e-learning, la gestion des adresses pour le présentiel et la logique des listes d'attente pour les sessions sans limite [#1558, #1564].
+- **Services et formulaires** :
+    - Optimisation des formulaires de demandes d'OPS [#1554] et d'accès Ségur [#1553].
+    - Mise à jour de la navigation vers les services et correction des événements de calendrier [#1545, #1547].
+- **Communication** :
+    - Amélioration de la synchronisation, du statut et de la réactivation des adresses Dimail [#1588].
 
 ### Évolutions techniques
-- Sécurité : Application de correctifs de sécurité [#1543](https://github.com/betagouv/espace-membre-next/issues/1543).
-- Infrastructure : Correction de la syntaxe des tâches planifiées (cron) sur Scalingo [#1555](https://github.com/betagouv/espace-membre-next/issues/1555).
-- Tests : Ajout de tests automatisés pour le processus de connexion par email [#1566](https://github.com/betagouv/espace-membre-next/issues/1566).
+- **API et Intégration** :
+    - Lancement de l'API v1 REST avec support de clés d'API à portée restreinte pour plus de sécurité [#1518].
+- **Infrastructure et Automatisation** :
+    - Refonte de l'architecture des tâches planifiées (cron) avec des créneaux fixes déclarés dans le code pour une meilleure stabilité [#1590].
+    - Corrections liées au déploiement et à la syntaxe des tâches cron sur Scalingo [#1595, #1555].
+- **Qualité et Tests** :
+    - Renforcement de la couverture de tests, notamment sur la connexion par e-mail [#1566] et la resynchronisation des tests unitaires imbriqués [#1594].
 
 ### Autres changements
-- Documentation : Ajout de l'onboarding développeur aux défis de la communauté [#1565](https://github.com/betagouv/espace-membre-next/issues/1565).
-- Maintenance : Amélioration des descriptions d'alertes incluant des liens vers les référents techniques [#1544](https://github.com/betagouv/espace-membre-next/issues/1544).
+- Amélioration de la documentation des alertes avec l'ajout de liens vers les référents techniques [#1544].
+- Ajout de l'onboarding pour les développeurs dans le cadre des challenges communautaires [#1565].

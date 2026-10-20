@@ -28,12 +28,39 @@
 │   ├── a11y-html-has-lang.spec.ts
 │   ├── a11y-keyboard-interactions.spec.ts
 │   ├── a11y-label-has-associated-control.spec.ts
+│   ├── api-envelope.spec.ts
+│   ├── api-identifier.spec.ts
+│   ├── api-key-auth.spec.ts
+│   ├── api-key-personal-owner.spec.ts
+│   ├── api-key-token.spec.ts
+│   ├── api-keys-events.spec.ts
+│   ├── api-keys-maintenance.spec.ts
+│   ├── api-keys-perimeter-matrix.spec.ts
+│   ├── api-keys-writable-perimeters.spec.ts
+│   ├── api-openapi.spec.ts
+│   ├── api-pagination.spec.ts
+│   ├── api-problem.spec.ts
+│   ├── api-v1-incubator-members-perimeter.spec.ts
+│   ├── api-v1-incubators.spec.ts
+│   ├── api-v1-members-perimeter.spec.ts
+│   ├── api-v1-perimeters.spec.ts
+│   ├── api-v1-scopes.spec.ts
+│   ├── api-v1-smoke.spec.ts
+│   ├── api-v1-startup-representation.spec.ts
+│   ├── api-v1-write-errors.spec.ts
+│   ├── authorization-api-key.spec.ts
+│   ├── authorization-member.spec.ts
+│   ├── authorization-startup.spec.ts
+│   ├── authorization-team.spec.ts
 │   ├── env-setup.ts
 │   ├── htmlbuilder.spec.ts
+│   ├── queries-authorization.spec.ts
+│   ├── queries-user-incubators.spec.ts
 │   ├── seed
 │   │   └── fake_data.ts
 │   ├── startups.json
 │   ├── test-account.ts
+│   ├── test-api-guard.ts
 │   ├── test-api-incubator-members.ts
 │   ├── test-api-member-detail.ts
 │   ├── test-api-startup-members.ts
@@ -45,14 +72,18 @@
 │   ├── test-startups.ts
 │   ├── users.json
 │   └── utils
+│       ├── apiKey.ts
 │       ├── fakeData.ts
 │       ├── index.ts
 │       ├── users-data.ts
 │       └── utils.ts
+├── connexion.md
 ├── cron.json
 ├── database.md
 ├── docker-compose.yml
 ├── docker-entrypoint.sh
+├── docs
+│   └── api-keys.md
 ├── e2e
 │   ├── account.spec.ts
 │   ├── api.spec.ts
@@ -61,6 +92,7 @@
 │   ├── community.spec.ts
 │   ├── dashboard.spec.ts
 │   ├── incubator.spec.ts
+│   ├── legacy-email-login.spec.ts
 │   ├── login.spec.ts
 │   ├── member.edit.secu.spec.ts
 │   ├── member.edit.spec.ts
@@ -186,6 +218,10 @@
 │   ├── 20260615000001_drop_users_tjm_column.js
 │   ├── 20260617000001_add_contact_fields_to_startups.js
 │   ├── 20260618000001_add_startups_incubators_table.ts
+│   ├── 20260815000001_incubators_ghid_not_null.ts
+│   ├── 20260815000002_add_api_keys_table.ts
+│   ├── 20260816000001_add_api_keys_confirmed_at.ts
+│   ├── 20261015000001_add_pending_primary_email_to_users.js
 │   └── 20261016000001_add_user_id_lock_to_dinum_emails.js
 ├── next.config.js
 ├── package-lock.json
@@ -235,9 +271,16 @@
 │   │   │       ├── BreadCrumbs.tsx
 │   │   │       ├── PrivateLayout.tsx
 │   │   │       ├── account
+│   │   │       │   ├── api-keys
+│   │   │       │   │   └── [uuid]
+│   │   │       │   │       └── page.tsx
 │   │   │       │   ├── base-info
 │   │   │       │   │   └── page.tsx
 │   │   │       │   └── page.tsx
+│   │   │       ├── admin
+│   │   │       │   ├── api-keys
+│   │   │       │   │   └── page.tsx
+│   │   │       │   └── layout.tsx
 │   │   │       ├── community
 │   │   │       │   ├── [id]
 │   │   │       │   │   ├── admin-update
@@ -267,6 +310,8 @@
 │   │   │       │       └── page.tsx
 │   │   │       ├── incubators
 │   │   │       │   ├── [id]
+│   │   │       │   │   ├── api-keys
+│   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── info-form
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   └── page.tsx
@@ -311,13 +356,13 @@
 │   │   ├── (public)
 │   │   │   ├── accessibilite
 │   │   │   │   └── page.tsx
-│   │   │   ├── keskispasse
-│   │   │   │   └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── login
 │   │   │   │   └── page.tsx
-│   │   │   └── signin
-│   │   │       ├── SiginClientPage.tsx
+│   │   │   ├── signin
+│   │   │   │   ├── SiginClientPage.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── support
 │   │   │       └── page.tsx
 │   │   ├── BreadCrumbProvider.tsx
 │   │   ├── Matomo.tsx
@@ -326,12 +371,21 @@
 │   │   │   ├── admin
 │   │   │   │   └── actions
 │   │   │   │       └── index.ts
+│   │   │   ├── api-keys
+│   │   │   │   └── actions
+│   │   │   │       ├── confirmApiKey.ts
+│   │   │   │       ├── createPersonalApiKey.ts
+│   │   │   │       ├── createServiceApiKey.ts
+│   │   │   │       ├── perimeter.ts
+│   │   │   │       └── revokeApiKey.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...nextauth]
 │   │   │   │       └── route.ts
 │   │   │   ├── demandes
 │   │   │   │   └── segur
 │   │   │   │       └── actions.ts
+│   │   │   ├── docs
+│   │   │   │   └── page.tsx
 │   │   │   ├── formations
 │   │   │   │   ├── actions.ts
 │   │   │   │   └── image
@@ -356,11 +410,13 @@
 │   │   │   │   │   ├── dinumEmails.ts
 │   │   │   │   │   ├── get-dimail-email.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── managePrimaryEmailForUser.ts
+│   │   │   │   │   ├── primaryEmail.ts
 │   │   │   │   │   ├── updateUserEvent.spec.ts
 │   │   │   │   │   ├── updateUserEvent.ts
 │   │   │   │   │   ├── validateNewMember.ts
-│   │   │   │   │   └── verifyNewMember.ts
+│   │   │   │   │   ├── verifyNewMember.ts
+│   │   │   │   │   ├── webmailAccess.spec.ts
+│   │   │   │   │   └── webmailAccess.ts
 │   │   │   │   └── updateMember.ts
 │   │   │   ├── members
 │   │   │   │   └── actions
@@ -369,36 +425,6 @@
 │   │   │   │   └── actions
 │   │   │   │       ├── createOrganization.ts
 │   │   │   │       └── updateOrganization.ts
-│   │   │   ├── protected
-│   │   │   │   ├── (deprecated)
-│   │   │   │   │   ├── incubator
-│   │   │   │   │   │   └── route.ts
-│   │   │   │   │   ├── member
-│   │   │   │   │   │   └── [username]
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   └── startup
-│   │   │   │   │       ├── [startupId]
-│   │   │   │   │       │   └── route.ts
-│   │   │   │   │       └── route.ts
-│   │   │   │   ├── incubators
-│   │   │   │   │   ├── [ghid]
-│   │   │   │   │   │   ├── members
-│   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   ├── route.ts
-│   │   │   │   │   │   └── startups
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   └── route.ts
-│   │   │   │   ├── members
-│   │   │   │   │   └── [username]
-│   │   │   │   │       └── route.ts
-│   │   │   │   ├── openapi.json
-│   │   │   │   │   └── route.ts
-│   │   │   │   └── startups
-│   │   │   │       ├── [ghid]
-│   │   │   │       │   ├── members
-│   │   │   │       │   │   └── route.ts
-│   │   │   │       │   └── route.ts
-│   │   │   │       └── route.ts
 │   │   │   ├── services
 │   │   │   │   └── ops
 │   │   │   │       └── actions.ts
@@ -411,10 +437,33 @@
 │   │   │   │       │       └── route.ts
 │   │   │   │       ├── list.ts
 │   │   │   │       └── upload.ts
-│   │   │   └── teams
-│   │   │       └── actions
-│   │   │           ├── createTeam.ts
-│   │   │           └── updateTeam.ts
+│   │   │   ├── teams
+│   │   │   │   └── actions
+│   │   │   │       ├── createTeam.ts
+│   │   │   │       └── updateTeam.ts
+│   │   │   └── v1
+│   │   │       ├── incubators
+│   │   │       │   ├── [id]
+│   │   │       │   │   ├── members
+│   │   │       │   │   │   └── route.ts
+│   │   │       │   │   ├── route.ts
+│   │   │       │   │   └── startups
+│   │   │       │   │       └── route.ts
+│   │   │       │   └── route.ts
+│   │   │       ├── members
+│   │   │       │   ├── [id]
+│   │   │       │   │   └── route.ts
+│   │   │       │   └── route.ts
+│   │   │       ├── openapi.json
+│   │   │       │   └── route.ts
+│   │   │       └── startups
+│   │   │           ├── [id]
+│   │   │           │   ├── members
+│   │   │           │   │   └── route.ts
+│   │   │           │   ├── route.ts
+│   │   │           │   └── standards
+│   │   │           │       └── route.ts
+│   │   │           └── route.ts
 │   │   ├── context
 │   │   │   └── ClientContextProvider.tsx
 │   │   ├── error.tsx
@@ -424,6 +473,15 @@
 │   │   ├── layout.tsx
 │   │   └── not-found.tsx
 │   ├── components
+│   │   ├── ApiKeys
+│   │   │   ├── ApiKeyCreateForm.tsx
+│   │   │   ├── ApiKeyDetailActions.tsx
+│   │   │   ├── ApiKeyReveal.tsx
+│   │   │   ├── ApiKeyTable.tsx
+│   │   │   ├── ApiKeysTab.tsx
+│   │   │   ├── PerimeterSelect.tsx
+│   │   │   ├── ScopeCheckboxes.tsx
+│   │   │   └── index.ts
 │   │   ├── AutoComplete.tsx
 │   │   ├── BadgeEmailPlan.tsx
 │   │   ├── BaseInfoUpdatePage
@@ -481,6 +539,10 @@
 │   │   │   ├── IncubatorUpdate.tsx
 │   │   │   └── index.ts
 │   │   ├── LastChange.tsx
+│   │   ├── LegacyEmailLogin
+│   │   │   ├── LegacyEmailLoginException.tsx
+│   │   │   ├── LegacyEmailLoginForm.tsx
+│   │   │   └── LegacyEmailLoginNotice.tsx
 │   │   ├── LoginPage
 │   │   │   ├── Login.tsx
 │   │   │   └── index.ts
@@ -502,6 +564,7 @@
 │   │   │   │   ├── ChangeSecondaryEmail.tsx
 │   │   │   │   ├── DinumEmailsAdmin.tsx
 │   │   │   │   ├── EmailContainer.tsx
+│   │   │   │   ├── ResendWebmailAccess.tsx
 │   │   │   │   └── WebMailButtons.tsx
 │   │   │   ├── MemberBrevoEventList.tsx
 │   │   │   ├── MemberCard.tsx
@@ -612,21 +675,66 @@
 │   ├── instrumentation.ts
 │   ├── lib
 │   │   ├── actions
+│   │   │   ├── createMember.spec.ts
 │   │   │   ├── createMember.ts
 │   │   │   ├── image.ts
 │   │   │   ├── memberBrevo.ts
 │   │   │   ├── memberEvents.ts
 │   │   │   ├── members.ts
 │   │   │   └── updateMemberInfo.ts
+│   │   ├── api
+│   │   │   ├── bearer.ts
+│   │   │   ├── identifier.ts
+│   │   │   ├── pagination.ts
+│   │   │   ├── perimeter.ts
+│   │   │   ├── problem.ts
+│   │   │   ├── startupRepresentation.ts
+│   │   │   └── withApiV1.ts
+│   │   ├── api-keys
+│   │   │   ├── listItem.ts
+│   │   │   ├── ownerExpiration.ts
+│   │   │   ├── perimeterOptions.ts
+│   │   │   ├── token.ts
+│   │   │   └── writablePerimeters.ts
 │   │   ├── auth
+│   │   │   ├── accountSecurity.spec.ts
+│   │   │   ├── fakeProConnect.spec.ts
+│   │   │   ├── fakeProConnect.ts
 │   │   │   ├── findUsersByLoginEmail.spec.ts
 │   │   │   ├── findUsersByLoginEmail.ts
-│   │   │   └── hashToken.ts
+│   │   │   ├── hashToken.ts
+│   │   │   ├── legacyEmailLogin
+│   │   │   │   ├── README.md
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── adapter.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── eligibility.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── legacyEmailLogin.spec.ts
+│   │   │   │   ├── population.ts
+│   │   │   │   ├── provider.ts
+│   │   │   │   ├── rateLimit.spec.ts
+│   │   │   │   ├── rateLimit.ts
+│   │   │   │   ├── reminder.ts
+│   │   │   │   └── signIn.ts
+│   │   │   ├── loginStatus.spec.ts
+│   │   │   ├── loginStatus.ts
+│   │   │   ├── pendingPrimaryEmail.spec.ts
+│   │   │   ├── pendingPrimaryEmail.ts
+│   │   │   ├── proConnectAcr.spec.ts
+│   │   │   ├── proConnectAcr.ts
+│   │   │   ├── secondaryEmailGuard.ts
+│   │   │   ├── sessionMfa.ts
+│   │   │   └── switchLegacyExtPrimaryEmail.ts
 │   │   ├── authoptions.ts
-│   │   ├── canEditMember.spec.ts
-│   │   ├── canEditMember.ts
-│   │   ├── canEditStartup.spec.ts
-│   │   ├── canEditStartup.ts
+│   │   ├── authorization
+│   │   │   ├── apiKey.ts
+│   │   │   ├── incubator.ts
+│   │   │   ├── index.ts
+│   │   │   ├── member.ts
+│   │   │   ├── startup.ts
+│   │   │   ├── subject.ts
+│   │   │   └── team.ts
 │   │   ├── canManageFormation.ts
 │   │   ├── canValidateRestrictedChecklistItem.spec.ts
 │   │   ├── canValidateRestrictedChecklistItem.ts
@@ -644,7 +752,6 @@
 │   │   ├── copyToClipBoard.ts
 │   │   ├── date.ts
 │   │   ├── db.ts
-│   │   ├── deprecation.ts
 │   │   ├── dimail
 │   │   │   ├── client.spec.ts
 │   │   │   ├── client.ts
@@ -658,6 +765,7 @@
 │   │   │   ├── send-email-to-team-when-new-member.spec.ts
 │   │   │   ├── send-email-to-team-when-new-member.ts
 │   │   │   ├── send-validation-email.ts
+│   │   │   ├── send-verification-email.spec.ts
 │   │   │   ├── send-verification-email.ts
 │   │   │   └── sendInBlue.ts
 │   │   ├── env.ts
@@ -684,6 +792,10 @@
 │   │   ├── kysely
 │   │   │   ├── index.ts
 │   │   │   ├── queries
+│   │   │   │   ├── apiKeyPerimeters.ts
+│   │   │   │   ├── apiKeys.ts
+│   │   │   │   ├── apiMembers.ts
+│   │   │   │   ├── authorization.ts
 │   │   │   │   ├── dimail.ts
 │   │   │   │   ├── incubators.ts
 │   │   │   │   ├── missions.ts
@@ -701,11 +813,12 @@
 │   │   ├── member.ts
 │   │   ├── member.utils.ts
 │   │   ├── memberPageProps.ts
+│   │   ├── onboarding
+│   │   │   ├── startMemberOnboarding.spec.ts
+│   │   │   └── startMemberOnboarding.ts
 │   │   ├── openapi.ts
 │   │   ├── pgAdpter.spec.ts
 │   │   ├── pgAdpter.ts
-│   │   ├── rateLimit.spec.ts
-│   │   ├── rateLimit.ts
 │   │   ├── routes.ts
 │   │   ├── s3.ts
 │   │   ├── searchCommune.ts
@@ -715,6 +828,7 @@
 │   │   ├── url.ts
 │   │   ├── utils.spec.ts
 │   │   ├── utils.ts
+│   │   ├── withRetry.spec.ts
 │   │   └── withRetry.ts
 │   ├── middleware.ts
 │   ├── models
@@ -733,8 +847,14 @@
 │   │   │   ├── startup.ts
 │   │   │   └── team.ts
 │   │   ├── api
+│   │   │   ├── apiKey.ts
+│   │   │   ├── envelope.ts
 │   │   │   ├── incubator.ts
 │   │   │   ├── member.ts
+│   │   │   ├── perimeter.ts
+│   │   │   ├── problem.ts
+│   │   │   ├── scope.ts
+│   │   │   ├── standards.ts
 │   │   │   └── startup.ts
 │   │   ├── brevoEvent.ts
 │   │   ├── brevoInfo.ts
@@ -771,27 +891,32 @@
 │   ├── routes
 │   │   └── routes.ts
 │   ├── scripts
-│   │   ├── clean-teams-members.ts
+│   │   ├── cron
+│   │   │   ├── jobs.ts
+│   │   │   └── run.ts
 │   │   ├── export-to-www.sh
 │   │   ├── github-schemas.ts
 │   │   ├── import-from-www.ts
 │   │   ├── import-teams-from-www.ts
-│   │   ├── recreate-email-if-user-active.ts
+│   │   ├── legacy-email-login-report.ts
+│   │   ├── runJobs.spec.ts
+│   │   ├── runJobs.ts
+│   │   ├── seed-api-key-profiles.ts
 │   │   ├── setup-grist-ops-table.ts
 │   │   ├── setup-grist-segur-table.ts
-│   │   ├── sync-dinum-emails.ts
-│   │   ├── sync-matrix-accounts.ts
 │   │   ├── update-local-files.ts
 │   │   └── utils.ts
 │   └── server
 │       ├── config
 │       │   ├── admin.config.ts
+│       │   ├── apiKeys.config.ts
 │       │   ├── email.config.ts
 │       │   └── index.ts
 │       ├── gracefulExit.ts
 │       ├── queueing
 │       │   ├── client.ts
 │       │   └── workers
+│       │       ├── api-keys-maintenance.ts
 │       │       ├── clean-teams-members.ts
 │       │       ├── create-dimail-mailbox.spec.ts
 │       │       ├── create-dimail-mailbox.ts
@@ -806,9 +931,15 @@
 │       └── views
 │           └── templates
 │               └── emails
+│                   ├── ApiKeyReminderEmail
+│                   │   ├── ApiKeyReminderEmail.mjml.ejs
+│                   │   └── ApiKeyReminderEmail.ts
 │                   ├── EmailCreatedDimail
 │                   │   ├── EmailCreatedDimail.mjml.ejs
 │                   │   └── EmailCreatedDimail.ts
+│                   ├── LegacyEmailLoginReminder
+│                   │   ├── LegacyEmailLoginReminder.mjml.ejs
+│                   │   └── LegacyEmailLoginReminder.ts
 │                   ├── LoginEmail
 │                   │   ├── LoginEmail.mjml.ejs
 │                   │   └── LoginEmail.ts
@@ -826,4 +957,4 @@
 │                   │   └── memberValidationEmail.ts
 │                   └── updateSecondaryEmail.ejs
 └── tsconfig.json
-179 directories, 649 files
+193 directories, 766 files
