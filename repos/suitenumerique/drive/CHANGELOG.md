@@ -8,6 +8,28 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) show the last login of users in the admin
+- ✨(backend) filter users sharing an email in the admin
+- ✨(backend) merge users from the admin
+- ✨(backend) show the release in the admin header
+- ✨(backend) transfer items from a user to another in the admin
+- ✨(backend) deactivate the least recently used duplicates in the admin
+- ✨(backend) add SDK_ENABLED setting to gate the sdk relay
+- ✨(frontend) hide sdk pages when SDK_ENABLED is off
+
+### Fixed
+
+- 🐛(backend) log in the active user when several users share an email
+- 🔒️(wopi) verify WOPI request proofs whatever the item upload state
+- 🐛(backend) keep re-analyzed items ready when the analysis fails
+- ⚡️(backend) speed up the trashbin on large databases
+
+### Removed
+
+- 🔥(backend) remove unused default authentication backend
+
 ## [v0.24.0] - 2026-10-09
 
 ### Added
@@ -24,6 +46,10 @@ and this project adheres to
 - ✨(backend) show and change the storage quota exclusion of items
 - ✨(backend) show user storage quota and biggest files in the admin
 - ✨(backend) set the storage limit override of users in GB in the admin
+- ✨(backend) add opt-in prometheus metrics on /metrics
+- ✨(backend) add database pool and celery queue metrics
+- ✨(backend) add business metrics to the prometheus endpoint
+- ✨(helm) add metrics monitors and ingress
 
 ### Changed
 
@@ -31,6 +57,7 @@ and this project adheres to
 - ✨(backend) require a size reservation to upload a file
 - ♻️(backend,frontend) format sizes the same way in the admin and the app
 - 🔧(helm) relax the backend readiness probe
+- ⚡️(docker) build the frontend assets once on the native platform
 
 ### Fixed
 

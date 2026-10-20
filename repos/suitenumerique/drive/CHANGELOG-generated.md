@@ -1,35 +1,37 @@
-## Changelog : drive (30 derniers jours, au 15 octobre 2026)
+## Changelog : drive (30 derniers jours, au 19 octobre 2026)
 
 ### Résumé
-Cette période a été marquée par une amélioration significative de la gestion du stockage pour les administrateurs et une optimisation majeure des performances pour les utilisateurs manipulant de gros volumes de données. La fiabilité des téléchargements et la sécurité des accès ont également été renforcées.
+Ce mois a été marqué par une montée en puissance significative de l'outil d'administration et une optimisation majeure des performances pour les bases de données volumineuses. Les administrateurs disposent désormais de leviers beaucoup plus précis pour gérer les utilisateurs et les quotas de stockage. Parallèlement, le système est devenu plus robuste et observable grâce à l'intégration de nouveaux outils de monitoring et de suivi d'activité.
 
 ### Évolutions fonctionnelles
-- **Gestion du stockage (Admin) :**
-  - Amélioration de la visibilité sur les quotas utilisateurs (affichage du quota total et des fichiers les plus volumineux).
-  - Possibilité de définir des limites de stockage en Go directement depuis l'interface d'administration.
-  - Nouvelle gestion des exclusions de quota, permettant d'exclure certains éléments ou dossiers entiers du calcul de l'espace utilisé.
-- **Expérience de téléchargement :**
-  - Amélioration de la fiabilité des uploads grâce à une réservation préalable de l'espace disque.
-  - Uniformisation de l'affichage des tailles de fichiers entre l'interface utilisateur et l'administration.
-- **Sécurité et accès :**
-  - Restriction de la création de nouveaux éléments pour les utilisateurs n'ayant pas les droits de téléchargement nécessaires.
-  - Mise en place de limites de débit (rate limiting) sur les points d'entrée de création d'éléments.
+
+**Administration (Interface d'administration)**
+- **Gestion des utilisateurs** : Possibilité de fusionner des comptes, de transférer des éléments d'un utilisateur à un autre et de filtrer les utilisateurs partageant une même adresse e-mail.
+- **Gestion des quotas** : Amélioration du contrôle du stockage avec l'affichage des quotas complets, des fichiers les plus volumineux et la possibilité d'exclure certains éléments (et leurs descendants) du calcul du quota.
+- **Visibilité accrue** : Affichage de la dernière date de connexion des utilisateurs et de la version actuelle du logiciel dans l'en-tête.
+- **Gestion des doublons** : Possibilité de désactiver les doublons les moins récemment utilisés.
+
+**Utilisateurs et API**
+- **Corbeille** : Amélioration de la visibilité de la corbeille pour ne lister que les éléments appartenant aux sous-arborescences possédées par l'utilisateur.
+- **Téléchargement** : Amélioration du processus d'upload avec une réservation de la taille du fichier déclarée avant l'autorisation du transfert.
+- **Interface** : Masquage automatique des pages liées au SDK lorsque celui-ci est désactivé.
 
 ### Évolutions techniques
-- **Optimisations de performance :**
-  - Refonte des requêtes pour l'affichage des listes de fichiers, des favoris et des éléments récents afin d'éviter les scans complets de tables et d'accélérer le traitement sur les bases de données volumineuses.
-  - Optimisation de la recherche des ancêtres et de la résolution des rôles utilisateurs via les chemins de fichiers.
-- **Observabilité et monitoring :**
-  - Intégration de PostHog pour le suivi des événements clés (création via modèle, conversion, export de dossier, suppression et édition de documents via WOPI).
-  - Ajout de commandes pour profiler les principaux points d'entrée de l'API.
-- **Infrastructure et déploiement :**
-  - Migration du stockage objet local en environnement Docker vers RustFS.
-  - Optimisation de la gestion des connexions PostgreSQL via l'activation du pooling (psycopg_pool).
-  - Ajustements des configurations Helm pour la flexibilité des variables d'environnement et la robustesse des sondes de disponibilité (readiness probes).
-- **Tests et Qualité :**
-  - Amélioration de la couverture des tests de bout en bout (e2e) sur les processus de téléchargement et de suppression.
-  - Ajout d'une commande pour générer des jeux de données de taille "production" pour les tests de charge.
+
+**Performances et Optimisation**
+- **Requêtes de données** : Optimisation massive des performances pour la récupération des listes d'éléments, des favoris et des éléments récents (utilisation de plages de chemins et de sous-requêtes pour éviter les scans de tables complets).
+- **Arborescence** : Accélération de la recherche des ancêtres et des liens de parenté pour les éléments de la corbeille et des listes.
+
+**Observabilité et Monitoring**
+- **Métriques Prometheus** : Mise en place de métriques détaillées (base de données, files d'attente Celery, métriques métier) via un endpoint `/metrics`.
+- **Suivi d'activité (Posthog)** : Intégration de l'événementiel pour suivre les actions clés (création via modèle, conversion, export de dossier, suppression, édition de documents).
+
+**Infrastructure et Sécurité**
+- **Déploiement (Helm/Docker)** : Ajout de moniteurs de métriques et d'ingress dans Helm ; optimisation de la construction des assets frontend dans Docker.
+- **Stockage** : Remplacement de MinIO par RustFS pour le stockage objet en environnement local.
+- **Sécurité** : Mise en place de la limitation du débit (rate limiting) sur la création d'éléments et renforcement de la vérification des preuves de requêtes WOPI.
+- **Fiabilité** : Amélioration de la gestion des connexions à la base de données (pool psycopg) et de la planification des tâches asynchrones avec Celery Beat.
 
 ### Autres changements
-- **Documentation :** Ajout de documentation technique sur la stratégie de mise à l'échelle (scaling) des requêtes d'items.
-- **Nettoyage :** Suppression de valeurs codées en dur et mise à jour de la terminologie concernant le stockage objet.
+- **Documentation** : Documentation des métriques Prometheus et mise à jour des exemples de serveurs de ressources.
+- **Outils de développement** : Ajout de commandes pour profiler les points de terminaison de l'API et générer des jeux de données de taille de production.

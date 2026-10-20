@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "Une plateforme open-source de partage de fichiers collaboratif permettant le stockage, l'édition et la gestion granulaire des accès. Elle est conçue pour faciliter le travail d'équipe en toute sécurité.",
+  "description": "LaSuite Drive est une solution open-source de stockage et de partage de fichiers collaboratifs. Elle permet une gestion granulaire des accès et l'édition de documents en ligne via le protocole WOPI.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Authentification & Accès",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Collaboration & Workflow",
     "Sécurité & Conformité",
-    "Infrastructure & Stockage",
-    "Gestion des médias & Assets"
+    "Statistiques & Rapports",
+    "Collaboration & Workflow"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,10 +19,9 @@
     "Next.js",
     "PostgreSQL",
     "Celery",
-    "Playwright",
     "Docker",
     "Kubernetes",
-    "WOPI",
+    "Playwright",
     "PostHog",
     "Sentry"
   ],
@@ -34,38 +33,38 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Authentification (composant)",
+    "Celery & Queue asynchrone",
     "Stockage objet",
-    "Tests"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "jwt",
       "sso",
-      "oauth2"
+      "jwt",
+      "session"
     ],
     "providers": [
       "ProConnect"
     ]
   },
-  "tests": "Playwright pour les tests de bout en bout (e2e)",
-  "workflows": [
-    "Docker Hub workflow",
-    "GitHub Actions"
+  "tests": [
+    "Playwright",
+    "JMeter"
   ],
-  "lastActivity": "2026-10-15T00:13:16+02:00",
+  "workflows": [
+    "Docker Hub workflow"
+  ],
+  "lastActivity": "2026-10-19T16:25:44+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "TypeScript",
     "Python",
+    "TypeScript",
+    "Docker & Conteneurs",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Documentation"
+    "CI/CD & GitHub Actions"
   ]
 }
