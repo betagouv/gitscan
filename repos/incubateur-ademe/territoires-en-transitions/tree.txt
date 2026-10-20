@@ -958,6 +958,7 @@
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── hash-file.utils.ts
 │   │   │   │   │   │   ├── upload-to-storage.ts
+│   │   │   │   │   │   ├── use-upload-file.spec.ts
 │   │   │   │   │   │   ├── use-upload-file.ts
 │   │   │   │   │   │   ├── validate-file.spec.ts
 │   │   │   │   │   │   └── validate-file.ts
@@ -1711,6 +1712,8 @@
 │   │   │   │   │   │   ├── create-plan.modal.tsx
 │   │   │   │   │   │   └── create-plan.view.tsx
 │   │   │   │   │   ├── import-plan
+│   │   │   │   │   │   ├── ai-import-progress.spec.tsx
+│   │   │   │   │   │   ├── ai-import-progress.stories.tsx
 │   │   │   │   │   │   ├── ai-import-progress.tsx
 │   │   │   │   │   │   ├── ai-import-steps.model.spec.ts
 │   │   │   │   │   │   ├── ai-import-steps.model.ts
@@ -1939,6 +1942,7 @@
 │   │   │   │   │   │   └── rounded-vertical-border.tsx
 │   │   │   │   │   ├── download-documents.button.tsx
 │   │   │   │   │   ├── format-action-filters-to-categories.ts
+│   │   │   │   │   ├── format-mesure-label.ts
 │   │   │   │   │   ├── get-prev-and-next-action-links.utils.tsx
 │   │   │   │   │   ├── sub-action
 │   │   │   │   │   │   └── sub-action.description.tsx
@@ -2188,6 +2192,7 @@
 │   │   │   │   │   ├── progress-bar.tsx
 │   │   │   │   │   ├── score.progress-bar.tsx
 │   │   │   │   │   ├── score.ratio-badge.tsx
+│   │   │   │   │   ├── score.show.spec.tsx
 │   │   │   │   │   └── score.show.tsx
 │   │   │   │   ├── switch-to-te-confirm.modal
 │   │   │   │   │   ├── bullet-list.tsx
@@ -2219,6 +2224,8 @@
 │   │   │   │   │   │   ├── LabellisationInfo.tsx
 │   │   │   │   │   │   ├── Scores.tsx
 │   │   │   │   │   │   ├── Star.tsx
+│   │   │   │   │   │   ├── build-score-donut-option.spec.ts
+│   │   │   │   │   │   ├── build-score-donut-option.ts
 │   │   │   │   │   │   ├── build-score-donut-tooltip.spec.ts
 │   │   │   │   │   │   └── build-score-donut-tooltip.ts
 │   │   │   │   │   ├── referentiel-card.skeleton.tsx
@@ -2242,6 +2249,7 @@
 │   │   │   │   │   ├── action-de-reference-dismissed.list.tsx
 │   │   │   │   │   ├── action-de-reference-expand.toggle.tsx
 │   │   │   │   │   ├── action-de-reference-info.item.tsx
+│   │   │   │   │   ├── action-de-reference-interest.buttons.spec.tsx
 │   │   │   │   │   ├── action-de-reference-interest.buttons.tsx
 │   │   │   │   │   ├── action-de-reference.badges.tsx
 │   │   │   │   │   ├── action-de-reference.card.spec.tsx
@@ -2429,7 +2437,9 @@
 │   │   │   │   │   ├── FichesActionsDropdown
 │   │   │   │   │   │   └── FichesActionsDropdown.tsx
 │   │   │   │   │   ├── MesuresReferentielsDropdown
-│   │   │   │   │   │   └── MesuresReferentielsDropdown.tsx
+│   │   │   │   │   │   ├── MesuresReferentielsDropdown.tsx
+│   │   │   │   │   │   ├── filter-mesures.spec.ts
+│   │   │   │   │   │   └── filter-mesures.ts
 │   │   │   │   │   ├── PlansActionDropdown.tsx
 │   │   │   │   │   ├── ficheAction
 │   │   │   │   │   │   ├── CiblesDropdown
@@ -2942,6 +2952,7 @@
 │   │   │   │   │   ├── samples
 │   │   │   │   │   │   ├── document_test.pdf
 │   │   │   │   │   │   └── document_test_2.pdf
+│   │   │   │   │   ├── storage-object.repository.ts
 │   │   │   │   │   ├── store-document
 │   │   │   │   │   │   ├── calculate-document-hash.utils.ts
 │   │   │   │   │   │   ├── store-document.errors.ts
@@ -3926,6 +3937,7 @@
 │   │   │   │   │   │   │   ├── classify-secteurs.schema.ts
 │   │   │   │   │   │   │   ├── classify-secteurs.spec.ts
 │   │   │   │   │   │   │   └── classify-secteurs.ts
+│   │   │   │   │   │   ├── compute-import-metrics.spec.ts
 │   │   │   │   │   │   ├── compute-import-metrics.ts
 │   │   │   │   │   │   ├── consolidate-actions
 │   │   │   │   │   │   │   ├── consolidate-actions.prompt.ts
@@ -3970,6 +3982,8 @@
 │   │   │   │   │   │   │   ├── similar-titles.ts
 │   │   │   │   │   │   │   ├── structure-units.spec.ts
 │   │   │   │   │   │   │   └── structure-units.ts
+│   │   │   │   │   │   ├── keep-succeeded-batches.spec.ts
+│   │   │   │   │   │   ├── keep-succeeded-batches.ts
 │   │   │   │   │   │   ├── normalize-text
 │   │   │   │   │   │   │   ├── normalize-pages.spec.ts
 │   │   │   │   │   │   │   └── normalize-pages.ts
@@ -4035,6 +4049,7 @@
 │   │   │   │   │   │   ├── consolidation.prompt.ts
 │   │   │   │   │   │   ├── enrichment.prompt.ts
 │   │   │   │   │   │   ├── extraction.prompt.ts
+│   │   │   │   │   │   ├── field-rules.ts
 │   │   │   │   │   │   ├── hierarchie.prompt.ts
 │   │   │   │   │   │   ├── ignore-directive.ts
 │   │   │   │   │   │   ├── ocr.prompt.ts
@@ -4362,6 +4377,7 @@
 │   │   │   │   │   │   ├── import-plan.module.ts
 │   │   │   │   │   │   ├── import-plan.router.e2e-spec.ts
 │   │   │   │   │   │   ├── import-plan.router.ts
+│   │   │   │   │   │   ├── import-plan.service.spec.ts
 │   │   │   │   │   │   ├── import-plan.service.ts
 │   │   │   │   │   │   ├── import.errors.ts
 │   │   │   │   │   │   ├── parsers
@@ -4869,6 +4885,12 @@
 │   │   │   │   │   │   ├── migrate-collectivite-data.repository.ts
 │   │   │   │   │   │   ├── migrate-collectivite-data.service.e2e-spec.ts
 │   │   │   │   │   │   └── migrate-collectivite-data.service.ts
+│   │   │   │   │   ├── repair-switch-to-te-statuts
+│   │   │   │   │   │   ├── repair-switch-to-te-statuts.e2e-spec.ts
+│   │   │   │   │   │   ├── repair-switch-to-te-statuts.repository.ts
+│   │   │   │   │   │   ├── repair-switch-to-te-statuts.rules.spec.ts
+│   │   │   │   │   │   ├── repair-switch-to-te-statuts.rules.ts
+│   │   │   │   │   │   └── repair-switch-to-te-statuts.service.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── action-cible.spec.ts
 │   │   │   │   │   │   ├── action-cible.ts
@@ -5240,6 +5262,7 @@
 │   │   │       │   ├── is-transient-error.spec.ts
 │   │   │       │   ├── is-transient-error.ts
 │   │   │       │   ├── llm-call-recorder.ts
+│   │   │       │   ├── llm-observer.spec.ts
 │   │   │       │   ├── llm-observer.ts
 │   │   │       │   ├── llm-tier.ts
 │   │   │       │   ├── llm.errors.ts
@@ -8230,6 +8253,8 @@
 │   │   │   │       ├── contributeur.spec.ts
 │   │   │   │       ├── financeurs-draft.spec.ts
 │   │   │   │       ├── lecteur-readonly-description.spec.ts
+│   │   │   │       ├── mesures-liees.pom.ts
+│   │   │   │       ├── mesures-liees.spec.ts
 │   │   │   │       ├── mutualiser-action.spec.ts
 │   │   │   │       └── sous-actions.pom.ts
 │   │   │   └── plans
@@ -8449,7 +8474,8 @@
 │   │   │   │   │   ├── preuve-reglementaire-definition.schema.ts
 │   │   │   │   │   ├── preuve-reglementaire.schema.ts
 │   │   │   │   │   ├── preuve-type.enum.schema.ts
-│   │   │   │   │   └── preuve.schema.ts
+│   │   │   │   │   ├── preuve.schema.ts
+│   │   │   │   │   └── upload-decision-kind.enum.ts
 │   │   │   │   ├── export-connect.schema.ts
 │   │   │   │   ├── financeur-tag.schema.ts
 │   │   │   │   ├── identite-collectivite.schema.ts
@@ -9040,6 +9066,7 @@
 │       │   │   │   ├── ButtonGroup.behavior.test.tsx
 │       │   │   │   ├── ButtonGroup.stories.tsx
 │       │   │   │   ├── ButtonGroup.tsx
+│       │   │   │   ├── button-menu.stacking.stories.tsx
 │       │   │   │   ├── button-menu.stories.tsx
 │       │   │   │   ├── button-menu.tsx
 │       │   │   │   ├── index.ts
@@ -9575,4 +9602,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1490 directories, 8491 files
+1491 directories, 8517 files
