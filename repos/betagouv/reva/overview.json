@@ -1,43 +1,51 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "Plateforme monorepo dédiée à la gestion de la Validation des Acquis de l'Expérience (VAE) en France. Elle regroupe des API et des applications web pour les candidats, les organismes et l'administration.",
+  "description": "REVA est un monorepo gérant l'écosystème France VAE, comprenant des API GraphQL et REST ainsi que des applications web pour les candidats, les organismes et l'administration.",
   "language": "TypeScript",
   "features": [
     "API & Intégrations",
     "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
     "Formulaires & Démarches",
-    "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité"
+    "Suivi & Traçabilité",
+    "Gestion métier générale"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Agents de l'Administration, Professionnels et Grand public",
   "dependencies": [
     "Fastify",
     "Next.js",
     "Prisma",
     "Keycloak",
     "Strapi",
+    "Metabase",
     "PostgreSQL",
     "Traefik",
-    "Metabase",
-    "Datadog",
-    "Brevo"
+    "Vitest",
+    "Cypress",
+    "Playwright",
+    "Brevo",
+    "URQL"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
+    "Docker & Conteneurs",
+    "Node.js / NestJS",
     "Authentification (composant)",
-    "Documentation & Schémas"
+    "Tests",
+    "CMS (Strapi, Wagtail…)",
+    "ORM & Accès aux données",
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
+      "mfa",
       "oauth2",
-      "jwt",
-      "session",
-      "mfa"
+      "jwt"
     ],
     "providers": [
       "Keycloak"
@@ -48,14 +56,18 @@
     "Cypress",
     "Playwright"
   ],
-  "lastActivity": "2026-10-02T22:34:08+02:00",
-  "status": "active",
+  "lastActivity": "2026-10-16T16:14:04+02:00",
+  "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
     "React & Next.js",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Docker & Conteneurs",
+    "Design System & UI",
+    "Node.js, NestJS & Express"
   ]
 }

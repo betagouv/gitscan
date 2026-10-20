@@ -1412,6 +1412,9 @@
     │   │   │   │   │   │   │   │   ├── [certificationAuthorityId]
     │   │   │   │   │   │   │   │   │   ├── certificationAuthority.hooks.ts
     │   │   │   │   │   │   │   │   │   ├── certifications
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── AddCertificationsModal.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── RemoveAllCertificationsModal.tsx
     │   │   │   │   │   │   │   │   │   │   ├── certifications.hooks.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── comptes-collaborateurs
@@ -1895,8 +1898,6 @@
     │   │   │   │   └── FancyUpload.tsx
     │   │   │   ├── feasibility-decision-history
     │   │   │   │   └── FeasibilityDecisionHistory.tsx
-    │   │   │   ├── feasibility-decison-history
-    │   │   │   │   └── FeasibilityDecisionHistory.component.tsx
     │   │   │   ├── feature-flipping
     │   │   │   │   └── featureFlipping.tsx
     │   │   │   ├── footer
@@ -2426,6 +2427,8 @@
     │   │   │   │   ├── existsCandidacyWithActiveStatus.ts
     │   │   │   │   ├── getActiveCandidaciesByCandidateId.ts
     │   │   │   │   ├── getCandicacies.ts
+    │   │   │   │   ├── getCandidaciesByCohorteId.test.ts
+    │   │   │   │   ├── getCandidaciesByCohorteId.ts
     │   │   │   │   ├── getCandidaciesForAAP.ts
     │   │   │   │   ├── getCandidaciesForCertificationAuthority.test.ts
     │   │   │   │   ├── getCandidaciesForCertificationAuthority.ts
@@ -3021,7 +3024,6 @@
     │   │   │   │   ├── createCompetenceBlocsFromRncp.ts
     │   │   │   │   ├── deleteCertificationCompetenceBloc.ts
     │   │   │   │   ├── entreprise.ts
-    │   │   │   │   ├── getActiveCertifications.ts
     │   │   │   │   ├── getAdditionalDocumentsFilaNamesAndUrlsByCertificationAdditionalInfoId.ts
     │   │   │   │   ├── getAdditionalInfoByCertificationId.ts
     │   │   │   │   ├── getCandidacyFinancingMethods.ts
@@ -3031,6 +3033,7 @@
     │   │   │   │   ├── getCertificationCompetencesByBlocId.ts
     │   │   │   │   ├── getCertificationPrerequisitesByCertificationId.ts
     │   │   │   │   ├── getCertificationWithReducedRequirementsById.ts
+    │   │   │   │   ├── getCertifications.ts
     │   │   │   │   ├── getCompetenceBlocById.ts
     │   │   │   │   ├── getCompetenceBlocsByCertificationId.ts
     │   │   │   │   ├── getConventionCollectiveById.ts
@@ -3074,6 +3077,7 @@
     │   │   │   │   ├── updateCertificationStructureAndCertificationAuthorities.test.ts
     │   │   │   │   ├── updateCertificationStructureAndCertificationAuthorities.ts
     │   │   │   │   ├── updateCertificationWithPrerequisitesFromFC.ts
+    │   │   │   │   ├── updateCertificationWithRncpExpiresAt.ts
     │   │   │   │   ├── updateCertificationWithRncpFields.ts
     │   │   │   │   ├── updateCertificationWithRncpFieldsAndSubDomains.ts
     │   │   │   │   ├── updateCertificationsVisibility.test.ts
@@ -4780,6 +4784,12 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260930155240_certification_authority_local_account_dashboard_feature
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261006090951_add_isaap_flag_to_sous_compte_vaeco
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261007113000_add_certification_authority_structure_label_to_searchable_text_of_certification_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261012130526_add_new_dv_page_feature
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4943,13 +4953,16 @@
     │   │   │   ├── invalid-link.png
     │   │   │   ├── letter-with-sent-icon.png
     │   │   │   ├── pictograms
+    │   │   │   │   ├── accessibility.svg
     │   │   │   │   ├── avatar.svg
     │   │   │   │   ├── binders.svg
+    │   │   │   │   ├── calendar.svg
     │   │   │   │   ├── city-hall.svg
     │   │   │   │   ├── company.svg
     │   │   │   │   ├── conclusion.svg
     │   │   │   │   ├── contract.svg
     │   │   │   │   ├── culture.svg
+    │   │   │   │   ├── document-download.svg
     │   │   │   │   ├── ecosystem.svg
     │   │   │   │   ├── human-cooperation.svg
     │   │   │   │   ├── in-progress.svg
@@ -5260,7 +5273,6 @@
     │   │   │   │   │   │   │   │   │   │   │   ├── CompetenciesBlocksSection.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── DecisionIncompleteAlert.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── EligibilitySection.tsx
-    │   │   │   │   │   │   │   │   │   │   │   ├── FeasibilityDecisionHistory.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── PrerequisitesSection.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── SendFileCertificateurSection.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── SwornStatementSection.tsx
@@ -5326,6 +5338,28 @@
     │   │   │   │   │   │   │   │   │   │   │       │   └── ReadOnlyReadyForJuryEstimatedDateTab.tsx
     │   │   │   │   │   │   │   │   │   │   │       └── ready-for-jury-estimated-date-tab
     │   │   │   │   │   │   │   │   │   │   │           └── ReadyForJuryEstimatedAtTab.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── dossierDeValidation.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── dossier-de-validation-v2
+    │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   ├── DateAndSubmissionTiles.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── ResourcesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── tabs
+    │   │   │   │   │   │   │   │   │   │   │       ├── read-only-dossier-de-validation-tab
+    │   │   │   │   │   │   │   │   │   │   │       │   └── ReadOnlyDossierDeValidationTab.tsx
+    │   │   │   │   │   │   │   │   │   │   │       └── read-only-ready-for-jury-estimated-date-tab
+    │   │   │   │   │   │   │   │   │   │   │           └── ReadOnlyReadyForJuryEstimatedDateTab.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── date-previsionnelle
+    │   │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   │   └── DatePrevisionnelleResourcesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── depot-dv
+    │   │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   │   ├── DepotDvForm.tsx
+    │   │   │   │   │   │   │   │   │   │   │   │   ├── DepotDvResourcesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   │   └── PreviousDossierAccordion.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── depotDossierDeValidation.hook.ts
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── dossierDeValidation.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── dropout
@@ -5478,7 +5512,7 @@
     │   │   │   ├── fancy-upload
     │   │   │   │   └── FancyUpload.tsx
     │   │   │   ├── feasibility-decision-history
-    │   │   │   │   └── FeasibilityDecisionHistory.component.tsx
+    │   │   │   │   └── FeasibilityDecisionHistory.tsx
     │   │   │   ├── feature-flipping
     │   │   │   │   └── featureFlipping.tsx
     │   │   │   ├── footer
@@ -5940,6 +5974,10 @@
     │   │   │   │   │   │   │   │   │   │       └── OrganismsSearchBar.tsx
     │   │   │   │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   ├── candidatures
+    │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   └── CandidacyCard.tsx
+    │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── certifications
     │   │   │   │   │   │   │   │   │   ├── [certificationId]
     │   │   │   │   │   │   │   │   │   │   ├── _components
@@ -6114,6 +6152,8 @@
     │   │   │   │   │   ├── cohorte
     │   │   │   │   │   │   ├── aaps
     │   │   │   │   │   │   │   └── aaps.spec.ts
+    │   │   │   │   │   │   ├── candidatures
+    │   │   │   │   │   │   │   └── candidatures.spec.ts
     │   │   │   │   │   │   ├── certifications
     │   │   │   │   │   │   │   ├── certification
     │   │   │   │   │   │   │   │   └── certification.spec.ts
@@ -6560,4 +6600,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2192 directories, 4370 files
+2207 directories, 4395 files

@@ -1,43 +1,34 @@
-## Changelog : reva (30 derniers jours, au 02 octobre 2026)
+## Changelog : reva (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions ont principalement porté sur l'enrichissement du module **VAE Collective** avec l'introduction des "sous-comptes", permettant une gestion plus granulaire des droits d'accès. La sécurité a été renforcée par le déploiement de la double authentification (2FA) et l'expérience utilisateur a été améliorée grâce à la création de nouveaux tableaux de bord pour les administrateurs et les gestionnaires de registre.
+Ce mois-ci, l'écosystème REVA a franchi des étapes importantes avec la refonte du parcours de dépôt de dossier pour les candidats et l'enrichissement des fonctionnalités pour les structures collectives, notamment via une meilleure gestion des sous-comptes. La gestion administrative des certifications a été simplifiée et la structure technique a été renforcée pour améliorer la sécurité et la gestion des droits d'accès.
 
 ### Évolutions fonctionnelles
-
-**VAE Collective & Sous-comptes**
-- Introduction des **sous-comptes** : possibilité de connexion dédiée, gestion des paramètres et interface spécifique pour les sous-comptes.
-- Gestion fine des droits : création d'une page "Droits d'accès" et de composants permettant de définir des rôles spécifiques par cohorte (lecture, modification, création).
-- Amélioration de la navigation : ajout d'une barre de recherche pour les listes de sous-comptes et gestion des permissions de visibilité des cohortes.
-
-**Expérience Candidat**
-- Flexibilité des certifications : les candidats peuvent désormais choisir leur certification pour les VAE collectives proposant plusieurs options.
-- Parcours dématérialisé : amélioration du flux de candidature autonome permettant de modifier les objectifs et expériences si le dossier est incomplet.
-- Corrections diverses : correction de liens dans les pages de rendez-vous et amélioration de la clarté des libellés.
-
-**Administration & Pilotage**
-- Nouveaux tableaux de bord : mise à disposition d'interfaces de pilotage pour les comptes de certification locale et les gestionnaires de registre.
-- Pilotage des cohortes : ajout d'une carte indiquant le nombre de candidatures directement sur la page de la cohorte.
-- Gestion des dossiers : ajout de filtres pour visualiser les candidatures actives pour les organismes (AAP).
+- **Parcours Candidat** : 
+    - Mise en place d'un nouveau parcours de dépôt de dossier (DV) sur une page dédiée, incluant une gestion dynamique des dates et des blocs de ressources.
+    - Amélioration de l'affichage des informations de faisabilité (badges et tuiles) et de l'historique des décisions.
+    - Possibilité de choisir une certification spécifique lors d'une démarche de VAE collective multi-certifications.
+- **VAE Collective** : 
+    - Ajout d'une page de suivi des candidatures et d'un espace de gestion des paramètres pour les sous-comptes.
+    - Amélioration de l'interface de gestion des sous-comptes (affichage de tags AAP, formulaires de création plus robustes et gestion des erreurs améliorée).
+    - Meilleure visibilité des permissions sur les cartes de cohortes et les éléments de gestion.
+- **Administration** : 
+    - Création d'un tableau de bord dédié aux comptes locaux d'autorités de certification.
+    - Simplification de la gestion des certifications grâce à l'ajout de fenêtres modales pour l'ajout et la suppression de certifications.
+    - Amélioration de l'ergonomie des liens relatifs aux autorités de certification sur l'ensemble des interfaces.
 
 ### Évolutions techniques
-
-**Sécurité & Authentification**
-- **Double authentification (2FA)** : activation de la 2FA par email pour les comptes de la VAE Collective.
-- **Refonte de l'autorisation** : migration des vérifications d'autorisation "inline" vers un système de politiques (`withPolicies`) pour une meilleure sécurité et maintenabilité.
-- **Gestion des rôles** : optimisation de la gestion des rôles via l'utilisation des types de rôles Keycloak plutôt que de simples chaînes de caractères.
-
-**API & Données**
-- **Nouveau modèle métier** : introduction d'un objet "accompagnement" pour dissocier la notion de suivi de la candidature elle-même.
-- **Migration API** : passage de l'API France Compétences RNCP de la version 2 à la version 4.
-- **Base de données** : ajout du champ `lastLoginAt` pour le suivi des connexions et implémentation d'une relation many-to-many pour les comptes de certification locale.
-- **Anonymisation** : ajout d'un script pour l'anonymisation complète de la base de données.
-
-**Infrastructure**
-- Mise à jour de l'image Docker de **Keycloak** et correction des buildpacks pour l'environnement de déploiement.
-- Ajustements de la configuration **Traefik** concernant la réinitialisation des mots de passe.
+- **Sécurité & Autorisation** : 
+    - Refonte majeure du système de gestion des droits via la migration vers des politiques centralisées (`withPolicies`).
+    - Introduction de nouveaux rôles et permissions spécifiques pour la gestion des sous-comptes (ex: rôle `SOUS_COMPTE_VAE_COLLECTIVE`).
+- **Architecture & Données** : 
+    - Introduction d'un nouvel objet métier `accompagnement` pour dissocier la notion de candidature de son mode d'accompagnement (autonome ou accompagné).
+    - Ajout de la traçabilité de la dernière connexion (`lastLoginAt`) dans la table des comptes.
+    - Mise en place de "feature flags" pour permettre un déploiement progressif des nouvelles pages de dépôt de dossier.
+- **Fiabilité de l'API** : 
+    - Amélioration de la robustesse lors de la création d'autorités de certification grâce à l'implémentation de mécanismes de rollback en cas d'échec.
+    - Optimisation des requêtes GraphQL et de la gestion des permissions par cohorte.
 
 ### Autres changements
-- Nettoyage du code (suppression d'imports inutilisés).
-- Renommage de contraintes de clés étrangères dans la base de données.
-- Mise à jour des scripts de notification par email pour les organismes.
+- **Infrastructure** : Modification de la configuration Traefik (désactivation de la réinitialisation de mot de passe Metabase).
+- **Maintenance** : Nettoyage de code (suppression d'imports inutilisés) et renommage de contraintes de base de données pour une meilleure clarté.
