@@ -1,26 +1,23 @@
-## Changelog : catalogi (30 derniers jours, au 12 octobre 2026)
+## Changelog : catalogi (30 derniers jours, au 16 octobre 2026)
 
 ### Résumé
-Les récentes évolutions de Catalogi se concentrent sur l'amélioration de l'importation de données, l'ajout d'outils de gestion en ligne de commande et le renforcement de la sécurité. L'expérience utilisateur est également affinée avec une interface plus propre et une meilleure documentation de l'API.
+Ce mois-ci, les efforts se sont concentrés sur la fiabilité de l'importation des données et l'amélioration de l'expérience utilisateur via de nouveaux outils en ligne de commande. Des correctifs de sécurité importants et de nouvelles capacités d'exportation de données (Codemeta) ont également été intégrés pour renforcer la robustesse et l'interopérabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Outils d'administration** : Ajout de commandes en ligne de commande pour faciliter l'importation et la mise à jour des références [#577](https://github.com/codegouvfr/catalogi/issues/577).
-- **Export de données** : Nouvelle possibilité d'exporter les données Codemeta sous forme de dump de la base de données.
-- **Documentation API** : Mise à disposition d'une interface Swagger UI autonome pour documenter l'export public v2.
-- **Interface utilisateur** : Amélioration de la clarté de la page d'accueil (lorsqu'aucun cas d'usage n'est présent) et correction du logo.
+- **Nouveaux outils en ligne de commande** : ajout de fonctionnalités permettant d'importer et de mettre à jour des références directement via le terminal ([#577](https://github.com/codegouvfr/catalogi/issues/577)).
+- **Fiabilisation de l'importation de données** : 
+    - Amélioration de la résolution des identifiants GitLab ([#575](https://github.com/codegouvfr/catalogi/issues/575)).
+    - Meilleure gestion des identifiants Zenodo et des sources de données (CNLL, gestion des doublons et des liens externes).
+- **Améliorations de l'interface utilisateur** : affichage plus clair de la page d'accueil lorsqu'aucun cas d'usage n'est défini et correction du logo.
 
 ### Évolutions techniques
-- **Sécurité** : Correction d'une vulnérabilité liée à la liaison des transactions de connexion OIDC au navigateur initiateur (vuln-0008) et création d'un environnement de test d'intrusion (pentest) local.
-- **Gestion des données et imports** : 
-    - Optimisation des processus d'importation (gestion des identifiants Zenodo, suppression des doublons et amélioration de la correspondance CNLL).
+- **Gestion des données (Codemeta)** : ajout d'une fonctionnalité d'exportation de la base de données au format Codemeta et amélioration de la gestion des types et des versions.
+- **Sécurité** : correction d'une vulnérabilité liée au processus de connexion OIDC pour mieux lier les transactions au navigateur initiateur.
+- **Qualité et tests** : 
     - Affinement de la détection des licences de logiciels libres via Wikidata.
-- **API & Backend** : 
-    - Amélioration de la gestion des préfixes de documentation derrière les proxys.
-    - Renforcement de la validation des schémas publics par rapport aux types de logiciels originaux.
-    - Correction de la résolution des identifiants de projets GitLab [#575](https://github.com/codegouvfr/catalogi/issues/575).
-- **Tests et Qualité** : Amélioration de la couverture de tests pour l'API (validation des schémas sans serveur HTTP) et mise à jour des tests relatifs aux licences libres.
+    - Amélioration de la couverture de tests (ex: détection de la licence pour Apache HTTP Server).
+- **Infrastructure de développement** : mise en place d'un environnement local dédié aux tests d'intrusion (pentest).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation de déploiement.
-- **Configuration** : Suppression de l'importation des configurations d'interface utilisateur obsolètes lors des nouvelles installations.
-- **Maintenance** : Nettoyage du code (style) et refactorisation du système de journalisation (timelog).
+- **Documentation** : mise à jour et correction de la documentation relative au déploiement.
+- **Configuration** : suppression de l'importation des anciennes configurations d'interface utilisateur lors des nouvelles installations pour garantir un état propre.
