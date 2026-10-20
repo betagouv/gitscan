@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-espace-partenaires",
   "name": "proconnect-espace-partenaires",
-  "description": "Cette application permet aux partenaires de ProConnect (fournisseurs de services et d'identité) de créer de nouveaux identifiants en environnement de préproduction et de consulter la documentation d'implémentation.",
+  "description": "Cette application permet aux partenaires de ProConnect, tels que les fournisseurs de services et d'identité, de créer des identifiants en environnement de préproduction et de consulter la documentation technique d'implémentation.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Gestion des équipes & Partenaires"
+    "Gestion des équipes & Partenaires",
+    "Formulaires & Démarches",
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -17,8 +18,8 @@
     "Prisma",
     "PostgreSQL",
     "MongoDB",
-    "Playwright",
     "NextAuth.js",
+    "Playwright",
     "@codegouvfr/react-dsfr"
   ],
   "components": [
@@ -27,40 +28,36 @@
     "MongoDB & NoSQL",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
-    "Tests",
+    "Authentification (composant)",
     "API REST & GraphQL",
-    "Docker & Conteneurs"
+    "Tests"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "mfa",
-      "sso"
+      "session",
+      "mfa"
     ],
     "providers": [
       "Keycloak",
       "Microsoft Entra ID"
     ]
   },
-  "tests": [
-    "Playwright",
-    "ESLint",
-    "Prettier"
-  ],
+  "tests": "Playwright pour les tests end-to-end, tests unitaires, linting avec ESLint et formatage avec Prettier.",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-01T14:37:41+02:00",
+  "lastActivity": "2026-10-19T09:08:48+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Docker & Conteneurs",
     "Sécurité & Auth",
-    "Design System & UI"
+    "Design System & UI",
+    "Docker & Conteneurs",
+    "Écosystème beta.gouv / État"
   ]
 }
