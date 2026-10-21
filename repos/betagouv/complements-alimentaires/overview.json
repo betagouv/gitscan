@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/betagouv/complements-alimentaires",
   "name": "complements-alimentaires",
-  "description": "Plateforme de gestion des déclarations de compléments alimentaires. Elle permet aux professionnels de soumettre leurs produits et assure la transparence via l'Open Data.",
+  "description": "Plateforme de gestion et de déclaration des compléments alimentaires. Elle permet aux entreprises de réaliser leurs déclarations réglementaires et facilite l'accès aux données publiques via des exports Open Data.",
   "language": "Python",
   "features": [
     "Formulaires & Démarches",
-    "Administration & Backoffice",
     "Données & Schémas",
+    "Administration & Backoffice",
     "Recherche & Filtres",
-    "Notifications & Alertes",
+    "Statistiques & Rapports",
     "Authentification & Accès"
   ],
   "audience": "Professionnels",
@@ -18,9 +18,10 @@
     "PostgreSQL",
     "Redis",
     "Celery",
+    "Docker",
     "Brevo",
-    "Matomo",
-    "Sentry"
+    "Sentry",
+    "Matomo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,32 +31,35 @@
     "Django",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Design System (DSFR & UI libs)",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "sso",
+      "email-password",
+      "session"
     ],
     "providers": [
       "ProConnect"
     ]
   },
-  "tests": "Django test, pytest",
+  "tests": "pytest, Django test",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-15T11:55:35+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-10-20T11:13:27+02:00",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Vue.js & Nuxt",
+    "JavaScript",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Design System & UI"
+    "Bases de données SQL",
+    "Accessibilité"
   ]
 }
