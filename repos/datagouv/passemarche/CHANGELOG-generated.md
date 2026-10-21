@@ -1,30 +1,22 @@
-## Changelog : passemarche (30 derniers jours, au 12 octobre 2026)
+## Changelog : passemarche (30 derniers jours, au 20 octobre 2026)
 
 ### Résumé
-Ce mois-ci, l'application a franchi une étape majeure dans la gestion des groupements d'entreprises. Les mandataires disposent désormais d'un tableau de bord complet pour piloter et soumettre la candidature de leur groupe, tandis que les co-traitants bénéficient d'un parcours d'invitation plus fluide et sécurisé. L'interface s'enrichit également d'un support pour la langue anglaise et d'une meilleure flexibilité sur la gestion des lots.
+Ce mois-ci, l'application a franchi une étape majeure dans la gestion des candidatures en groupement. Le travail collaboratif est désormais au cœur de l'expérience : les co-traitants peuvent rejoindre un groupement, remplir leur partie et sélectionner leurs lots de manière autonome, permettant au mandataire de soumettre l'ensemble de la candidature en un clic.
 
 ### Évolutions fonctionnelles
-- **Gestion des groupements** :
-    - Mise en place d'un tableau de bord de suivi et de soumission pour le mandataire [#526](https://github.com/datagouv/passemarche/issues/526).
-    - Ajout d'un tableau récapitulatif des lots sur le dashboard avec des fenêtres de confirmation pour les retraits de lots ou de co-traitants [#536](https://github.com/datagouv/passemarche/issues/536).
-    - Amélioration du parcours des co-traitants : création automatique de la candidature lors de l'acceptation de l'invitation et accès direct au suivi du groupement [#578](https://github.com/datagouv/passemarche/issues/578).
-    - Possibilité pour le mandataire de soumettre l'intégralité de la candidature du groupement via un nouveau processus dédié [#574](https://github.com/datagouv/passemarche/issues/574).
-- **Expérience utilisateur & Flexibilité** :
-    - Ajout d'un sélecteur de langue (Français/Anglais) dans l'en-tête de l'application [#530](https://github.com/datagouv/passemarche/issues/530).
-    - Introduction d'une option permettant de désactiver la limitation du nombre de lots par candidat [#630](https://github.com/datagouv/passemarche/issues/630).
-    - Clarification des messages de confirmation lors de la transmission des candidatures à la plateforme [#622](https://github.com/datagouv/passemarche/issues/622).
+- **Collaboration en groupement** : les co-traitants peuvent désormais rejoindre un groupement via une invitation, sauvegarder leur partie en brouillon et la transmettre au mandataire ([#572](https://github.com/datagouv/passemarche/pull/572)).
+- **Gestion des lots** : les co-traitants peuvent sélectionner les lots qui les concernent au sein du périmètre du groupement ([#562](https://github.com/datagouv/passemarche/pull/562)). Une option permet également de désactiver la limitation du nombre de lots par candidat ([#563](https://github.com/datagouv/passemarche/pull/563)).
+- **Soumission simplifiée** : le mandataire peut désormais soumettre la candidature complète du groupement, ce qui verrouille automatiquement l'accès aux modifications pour tous les membres ([#549](https://github.com/datagouv/passemarche/pull/549), [#568](https://github.com/datagouv/passemarche/pull/568)).
+- **Tableau de bord et suivi** : amélioration de l'interface de suivi pour le mandataire, incluant la visualisation des lots et le statut de progression des membres du groupement ([#526](https://github.com/datagouv/passemarche/pull/526)).
+- **Communications et notifications** : refonte des emails (mise en page, images intégrées, terminologie plus précise) et ajout de notifications lors de la transmission des formulaires ou de la soumission finale ([#569](https://github.com/datagouv/passemarche/pull/569), [#570](https://github.com/datagouv/passemarche/pull/570)).
+- **Expérience utilisateur** : création de pages dédiées pour la gestion des invitations (cas où l'invitation est expirée ou non trouvée) ([#534](https://github.com/datagouv/passemarche/pull/534)).
 
 ### Évolutions techniques
-- **Architecture & Refactoring** :
-    - Migration des composants de gestion des lots et des membres du groupement vers des `ViewComponents` pour améliorer la modularité et la maintenance [#541](https://github.com/datagouv/passemarche/issues/541), [#540](https://github.com/datagouv/passemarche/issues/540), [#562](https://github.com/datagouv/passemarche/issues/562).
-    - Refactorisation de la logique du parcours de création de groupement (wizard) [#526](https://github.com/datagouv/passemarche/issues/526).
-    - Découpage du fichier CSS principal en fichiers thématiques par domaine pour une meilleure organisation du design [#539](https://github.com/datagouv/passemarche/issues/539).
-- **Outils de développement** :
-    - Optimisation des previews Lookbook et de leur intégration avec l'autoloading Zeitwerk [#554](https://github.com/datagouv/passemarche/issues/554), [#542](https://github.com/datagouv/passemarche/issues/542).
+- **Traçabilité et audit** : mise en place d'un historique complet des modifications des membres et des groupements via l'intégration de `paper_trail` ([#570](https://github.com/datagouv/passemarche/pull/570)).
+- **Refactoring de l'interface** : migration de composants clés (gestion des lots, membres du groupement) vers `ViewComponents` pour une meilleure modularité et réutilisation ([#541](https://github.com/datagouv/passemarche/pull/541), [#540](https://github.com/datagouv/passemarche/pull/540)).
+- **Architecture CSS** : découpage du fichier CSS principal en fichiers thématiques par domaine pour faciliter la maintenance ([#539](https://github.com/datagouv/passemarche/pull/539)).
+- **Tests** : renforcement significatif de la couverture de tests (Cucumber et RSpec) sur les parcours critiques de groupement, de co-traitance et de soumission.
 
 ### Autres changements
-- **Corrections diverses** :
-    - Gestion des cas d'invitations expirées ou introuvables avec l'affichage de pages dédiées [#617](https://github.com/datagouv/passemarche/issues/617).
-    - Corrections de bugs d'affichage (colonnes de grille), de redirections et d'encodage (PDF/UTF-8).
-    - Corrections de typos et d'accords dans les messages de l'interface.
-    - Finalisation et correction des traductions anglaises.
+- **Internationalisation** : amélioration et correction de la traduction anglaise du tableau de bord des groupements ([#538](https://github.com/datagouv/passemarche/pull/538)).
+- **Correction PDF** : résolution d'un problème d'encodage UTF-8 pour les dates dans les documents PDF générés ([#542](https://github.com/datagouv/passemarche/pull/542)).

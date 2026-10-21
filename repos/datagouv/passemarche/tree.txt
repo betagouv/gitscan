@@ -77,6 +77,7 @@
 │   │   │   ├── icon-candidacy-mixte.svg
 │   │   │   ├── icon-candidacy-solo.svg
 │   │   │   ├── icon-commun-only.svg
+│   │   │   ├── icon-email-warning.png
 │   │   │   ├── icon-fournitures-only.svg
 │   │   │   ├── icon-fournitures.svg
 │   │   │   ├── icon-info.svg
@@ -91,7 +92,7 @@
 │   │   │   ├── icon-travaux.png
 │   │   │   ├── icon-travaux.svg
 │   │   │   ├── icon-warning-triangle.svg
-│   │   │   ├── passe-marche-logo-email.jpg
+│   │   │   ├── passe-marche-logo-email.png
 │   │   │   ├── passe-marche-logo.png
 │   │   │   ├── passport-check-blue.svg
 │   │   │   ├── passport-check-white.svg
@@ -132,6 +133,9 @@
 │   │   │   ├── section_title_with_edit_component.html.erb
 │   │   │   └── section_title_with_edit_component.rb
 │   │   ├── grouping_invitation_email_component.rb
+│   │   ├── grouping_member_completion_email_component.rb
+│   │   ├── grouping_member_removal_email_component.rb
+│   │   ├── grouping_submission_email_component.rb
 │   │   ├── icon_component.html.erb
 │   │   ├── icon_component.rb
 │   │   ├── magic_link_email_component.rb
@@ -199,6 +203,8 @@
 │   │   │   ├── url_input_component.html.erb
 │   │   │   └── url_input_component.rb
 │   │   ├── shared
+│   │   │   ├── confirmation_layout_component.html.erb
+│   │   │   ├── confirmation_layout_component.rb
 │   │   │   ├── market_info_sidebar_component.html.erb
 │   │   │   └── market_info_sidebar_component.rb
 │   │   ├── source_badge_component.html.erb
@@ -318,6 +324,7 @@
 │   │   │   ├── find_market_application.rb
 │   │   │   ├── find_or_create_user.rb
 │   │   │   ├── generate_and_send_magic_link.rb
+│   │   │   ├── notify_mandataire_of_co_traitant_completion.rb
 │   │   │   ├── prepare_document_scan_status.rb
 │   │   │   ├── remove_grouping_member.rb
 │   │   │   ├── set_grouping_legal_type.rb
@@ -370,6 +377,7 @@
 │   │   ├── map_api_data.rb
 │   │   ├── mark_application_as_completed.rb
 │   │   ├── mark_grouping_as_submitted.rb
+│   │   ├── notify_co_traitants_of_grouping_submission.rb
 │   │   ├── opqibi
 │   │   │   ├── build_resource.rb
 │   │   │   └── make_request.rb
@@ -465,7 +473,10 @@
 │   ├── mailers
 │   │   ├── application_mailer.rb
 │   │   ├── auth_mailer.rb
-│   │   └── grouping_invitation_mailer.rb
+│   │   ├── grouping_invitation_mailer.rb
+│   │   ├── grouping_member_completion_mailer.rb
+│   │   ├── grouping_member_removal_mailer.rb
+│   │   └── grouping_submission_mailer.rb
 │   ├── models
 │   │   ├── admin_user.rb
 │   │   ├── application_record.rb
@@ -695,7 +706,8 @@
 │       │   │   └── show.html.erb
 │       │   ├── grouping_invitations
 │       │   │   ├── expired.html.erb
-│       │   │   └── not_found.html.erb
+│       │   │   ├── not_found.html.erb
+│       │   │   └── removed.html.erb
 │       │   ├── grouping_legal_types
 │       │   │   └── show.html.erb
 │       │   ├── grouping_submissions
@@ -703,11 +715,13 @@
 │       │   ├── lot_selection_modes
 │       │   │   └── show.html.erb
 │       │   ├── lot_selections
+│       │   │   ├── _how_it_works_card.html.erb
 │       │   │   ├── _market_info_card.html.erb
 │       │   │   └── show.html.erb
 │       │   ├── market_applications
 │       │   │   ├── _field_display.html.erb
 │       │   │   ├── _motifs_exclusion_contestation.html.erb
+│       │   │   ├── _save_draft_button.html.erb
 │       │   │   ├── _sidemenu_subcategories.html.erb
 │       │   │   ├── _stepper.html.erb
 │       │   │   ├── _wizard_nav.html.erb
@@ -722,10 +736,20 @@
 │       │   ├── shared
 │       │   │   └── _confirmation_modal.html.erb
 │       │   └── sync_status
+│       │       ├── _co_traitant_confirmation.html.erb
 │       │       └── show.html.erb
 │       ├── grouping_invitation_mailer
 │       │   ├── invitation.html.erb
 │       │   └── invitation.text.erb
+│       ├── grouping_member_completion_mailer
+│       │   ├── completed.html.erb
+│       │   └── completed.text.erb
+│       ├── grouping_member_removal_mailer
+│       │   ├── removed.html.erb
+│       │   └── removed.text.erb
+│       ├── grouping_submission_mailer
+│       │   ├── submitted.html.erb
+│       │   └── submitted.text.erb
 │       ├── home
 │       │   ├── _advantages_section.html.erb
 │       │   ├── buyer.html.erb
@@ -939,7 +963,9 @@
 │   │   ├── 20260729095329_create_groupings.rb
 │   │   ├── 20260729100623_create_grouping_members.rb
 │   │   ├── 20260804154855_add_company_name_to_grouping_members.rb
-│   │   └── 20260928082853_add_submission_to_groupings.rb
+│   │   ├── 20260928082853_add_submission_to_groupings.rb
+│   │   ├── 20261015090000_add_invitation_token_digest_to_versions.rb
+│   │   └── 20261019090000_prefix_versions_whodunnit.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -1001,7 +1027,7 @@
 │   ├── dgfip_chiffres_affaires_hybrid_mode.feature
 │   ├── document_display_naming.feature
 │   ├── ess_integration.feature
-│   ├── grouping_*.feature  (6 files)
+│   ├── grouping_*.feature  (8 files)
 │   ├── lot_selection_mode.feature
 │   ├── motifs_exclusion_accordion.feature
 │   ├── motifs_exclusion_attestation_display.feature
@@ -1031,10 +1057,7 @@
 │   │   ├── document_display_naming_steps.rb
 │   │   ├── ess_steps.rb
 │   │   ├── fast_track_steps.rb
-│   │   ├── grouping_composition_steps.rb
-│   │   ├── grouping_dashboard_steps.rb
-│   │   ├── grouping_invitation_join_steps.rb
-│   │   ├── grouping_legal_type_steps.rb
+│   │   ├── grouping_*.rb  (6 files)
 │   │   ├── lot_selection_mode_steps.rb
 │   │   ├── motifs_exclusion_accordion_steps.rb
 │   │   ├── motifs_exclusion_attestation_steps.rb
@@ -1101,6 +1124,7 @@
 │   │   │   ├── dashboard_members_table_component_spec.rb
 │   │   │   ├── member_actions_component_spec.rb
 │   │   │   └── section_title_with_edit_component_spec.rb
+│   │   ├── magic_link_email_component_spec.rb
 │   │   ├── market_attribute_response
 │   │   │   ├── base_component_spec.rb
 │   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component_spec.rb
@@ -1159,6 +1183,7 @@
 │   │   │       ├── text_input_component_preview.rb
 │   │   │       └── textarea_component_preview.rb
 │   │   ├── shared
+│   │   │   ├── confirmation_layout_component_spec.rb
 │   │   │   └── market_info_sidebar_component_spec.rb
 │   │   └── source_badge_component_spec.rb
 │   ├── concerns
@@ -1236,6 +1261,7 @@
 │   │   │   ├── delete_attached_file_spec.rb
 │   │   │   ├── delete_unattached_blob_spec.rb
 │   │   │   ├── find_market_application_spec.rb
+│   │   │   ├── notify_mandataire_of_co_traitant_completion_spec.rb
 │   │   │   ├── prepare_document_scan_status_spec.rb
 │   │   │   ├── remove_grouping_member_spec.rb
 │   │   │   ├── request_magic_link_spec.rb
@@ -1344,9 +1370,15 @@
 │   ├── mailers
 │   │   ├── auth_mailer_spec.rb
 │   │   ├── grouping_invitation_mailer_spec.rb
+│   │   ├── grouping_member_completion_mailer_spec.rb
+│   │   ├── grouping_member_removal_mailer_spec.rb
+│   │   ├── grouping_submission_mailer_spec.rb
 │   │   └── previews
 │   │       ├── auth_mailer_preview.rb
-│   │       └── grouping_invitation_mailer_preview.rb
+│   │       ├── grouping_invitation_mailer_preview.rb
+│   │       ├── grouping_member_completion_mailer_preview.rb
+│   │       ├── grouping_member_removal_mailer_preview.rb
+│   │       └── grouping_submission_mailer_preview.rb
 │   ├── models
 │   │   ├── admin_spec.rb
 │   │   ├── admin_user_spec.rb
@@ -1557,4 +1589,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-250 directories, 1371 files
+253 directories, 1407 files
