@@ -239,11 +239,13 @@
 │   │       │   │   │   ├── tracking_campaign_funnel_daily.sql
 │   │       │   │   │   ├── tracking_campaign_session.sql
 │   │       │   │   │   ├── tracking_engagement_kpi_daily.sql
-│   │       │   │   │   ├── tracking_funnel_step_daily.sql
+│   │       │   │   │   ├── tracking_event.sql
 │   │       │   │   │   ├── tracking_matching_engine_ranking_daily.sql
 │   │       │   │   │   ├── tracking_mission_click.sql
 │   │       │   │   │   ├── tracking_page_view_daily.sql
 │   │       │   │   │   ├── tracking_publisher_stock_share.sql
+│   │       │   │   │   ├── tracking_quiz_answer.sql
+│   │       │   │   │   ├── tracking_quiz_funnel_step.sql
 │   │       │   │   │   ├── tracking_quiz_session.sql
 │   │       │   │   │   ├── tracking_recommendation.sql
 │   │       │   │   │   └── tracking_scoring_kpi_daily.sql
@@ -312,6 +314,7 @@
 │   │       │       │   └── stg_stat_event__print.sql
 │   │       │       ├── tracking
 │   │       │       │   ├── __models.yml
+│   │       │       │   ├── stg_tracking__email_capture.sql
 │   │       │       │   ├── stg_tracking__event.sql
 │   │       │       │   ├── stg_tracking__mission_clicked.sql
 │   │       │       │   ├── stg_tracking__mission_detail_viewed.sql
@@ -442,7 +445,8 @@
 │   │       │   ├── v0-mission-list-response.json
 │   │       │   ├── v0-mission-paris-001-response.json
 │   │       │   ├── v0-mission-search-response.json
-│   │       │   └── v0-missions.json
+│   │       │   ├── v0-missions.json
+│   │       │   └── v2-mission-list-response.json
 │   │       └── smoke-test.sh
 │   ├── nodemon.json
 │   ├── package.json
@@ -634,6 +638,14 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260925141542_optimize_matching_taxonomy_lookup
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260929120000_add_mission_updated_at_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260930120000_add_publisher_alerting_fields
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261013133201_matching_mission_catalog
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261013140456_matching_mission_values
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -648,6 +660,7 @@
 │   │   ├── check-stat-event-orphan-mission-fields.ts
 │   │   ├── cleanup-duplicate-organizations.ts
 │   │   ├── cleanup-orphan-activities.ts
+│   │   ├── compare-mission-v0-v2.ts
 │   │   ├── compare-widget-browse.ts
 │   │   ├── explain-matching-result.ts
 │   │   ├── fill-missions-type.ts
@@ -874,6 +887,10 @@
 │   │   │   ├── rdb-backup
 │   │   │   │   ├── client.ts
 │   │   │   │   └── handler.ts
+│   │   │   ├── rebuild-matching-catalog
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── handler.test.ts
+│   │   │   │   └── handler.ts
 │   │   │   ├── report
 │   │   │   │   ├── fonts
 │   │   │   │   │   ├── Marianne.ts
@@ -924,10 +941,12 @@
 │   │   ├── middlewares
 │   │   │   ├── __tests__
 │   │   │   │   ├── authorization.test.ts
-│   │   │   │   └── brevo-webhook.test.ts
+│   │   │   │   ├── brevo-webhook.test.ts
+│   │   │   │   └── compression.test.ts
 │   │   │   ├── authorization.ts
 │   │   │   ├── body-parser-error-handler.ts
 │   │   │   ├── brevo-webhook.ts
+│   │   │   ├── compression.ts
 │   │   │   ├── cors.ts
 │   │   │   ├── error-handler.ts
 │   │   │   ├── helmet.ts
@@ -944,6 +963,7 @@
 │   │   │   ├── import-rna.ts
 │   │   │   ├── import.ts
 │   │   │   ├── login-history.ts
+│   │   │   ├── matching-catalog.ts
 │   │   │   ├── mfa-challenge.ts
 │   │   │   ├── mission-activity.ts
 │   │   │   ├── mission-address.ts
@@ -971,6 +991,7 @@
 │   │   │   └── widget.ts
 │   │   ├── services
 │   │   │   ├── __tests__
+│   │   │   │   ├── cache.test.ts
 │   │   │   │   ├── geoloc.test.ts
 │   │   │   │   ├── metabase.test.ts
 │   │   │   │   ├── mfa.test.ts
@@ -1008,16 +1029,16 @@
 │   │   │   ├── brevo
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── email.spec.ts
-│   │   │   │   │   ├── mission-content.test.ts
 │   │   │   │   │   └── utils.spec.ts
 │   │   │   │   ├── attachment.ts
 │   │   │   │   ├── client.ts
 │   │   │   │   ├── contact.ts
 │   │   │   │   ├── email.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── mission-content.ts
+│   │   │   │   ├── newsletter.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── cache.ts
 │   │   │   ├── campaign.ts
 │   │   │   ├── data-gouv
 │   │   │   │   ├── api.ts
@@ -1042,7 +1063,10 @@
 │   │   │   │   │   └── ranking-params.test.ts
 │   │   │   │   ├── config.ts
 │   │   │   │   ├── dispositif-coverage.ts
+│   │   │   │   ├── eligibility-query.ts
+│   │   │   │   ├── geographic-prefilter-query.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── mission-values-query.ts
 │   │   │   │   ├── ranking-params.ts
 │   │   │   │   ├── ranking-query.ts
 │   │   │   │   ├── ranking-types.ts
@@ -1060,12 +1084,16 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── transformers.ts
 │   │   │   │   └── widget-filters.ts
+│   │   │   ├── mission-count-cache.ts
 │   │   │   ├── mission-diffusion
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── index.test.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── mission-email
-│   │   │   │   └── index.ts
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── mission-content.test.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── mission-content.ts
 │   │   │   ├── mission-enrichment
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── builder.test.ts
@@ -1122,8 +1150,6 @@
 │   │   │   │   └── types.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
-│   │   │   ├── newsletter
-│   │   │   │   └── index.ts
 │   │   │   ├── observability
 │   │   │   │   └── metrics.ts
 │   │   │   ├── organization.ts
@@ -1283,7 +1309,8 @@
 │   │   │   ├── leboncoin.ts
 │   │   │   └── mission
 │   │   │       ├── controller.ts
-│   │   │       └── helpers.ts
+│   │   │       ├── helpers.ts
+│   │   │       └── schema.ts
 │   │   └── worker
 │   │       ├── __tests__
 │   │       │   ├── mission-enrichment.test.ts
@@ -1350,6 +1377,7 @@
 │   │   │   │   │   │   └── view.test.ts
 │   │   │   │   │   ├── v2
 │   │   │   │   │   │   ├── activity.test.ts
+│   │   │   │   │   │   ├── mission-list.test.ts
 │   │   │   │   │   │   └── mission.test.ts
 │   │   │   │   │   ├── warning.test.ts
 │   │   │   │   │   └── widget.test.ts
@@ -1383,6 +1411,7 @@
 │   │   │   │   │   └── report.handler.test.ts
 │   │   │   │   └── talent
 │   │   │   │       └── talent.handler.test.ts
+│   │   │   ├── matching-geographic-prefilter.test.ts
 │   │   │   └── services
 │   │   │       ├── mission-diffusion.test.ts
 │   │   │       ├── mission.test.ts
@@ -1566,6 +1595,7 @@
 │   │   │   ├── cgu
 │   │   │   │   └── index.jsx
 │   │   │   ├── mission
+│   │   │   │   ├── Edit.jsx
 │   │   │   │   ├── View.jsx
 │   │   │   │   └── index.jsx
 │   │   │   ├── my-missions
@@ -1591,8 +1621,10 @@
 │   │   │   │   │   ├── Annonceur.jsx
 │   │   │   │   │   ├── AnnonceurCreation.jsx
 │   │   │   │   │   ├── DemarcheSimplifiee.jsx
+│   │   │   │   │   ├── DeploymentUser.jsx
 │   │   │   │   │   ├── Diffuseur.jsx
 │   │   │   │   │   ├── DiffuseurCreation.jsx
+│   │   │   │   │   ├── ExpectedApplications.jsx
 │   │   │   │   │   ├── Informations.jsx
 │   │   │   │   │   └── Members.jsx
 │   │   │   │   └── index.jsx
@@ -1685,14 +1717,18 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── index.ts
-│   │   │   └── resources
+│   │   │   ├── resources
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── metabase.ts
+│   │   │   │   ├── mission-browse.ts
+│   │   │   │   ├── mission-domain.ts
+│   │   │   │   ├── mission-email.ts
+│   │   │   │   ├── mission-match.ts
+│   │   │   │   ├── newsletter.ts
+│   │   │   │   └── user-scoring.ts
+│   │   │   └── utils
 │   │   │       ├── index.ts
-│   │   │       ├── mission-browse.ts
-│   │   │       ├── mission-domain.ts
-│   │   │       ├── mission-email.ts
-│   │   │       ├── mission-match.ts
-│   │   │       ├── newsletter.ts
-│   │   │       └── user-scoring.ts
+│   │   │       └── metabase.ts
 │   │   └── tsconfig.json
 │   └── taxonomy
 │       ├── .gitignore
@@ -1744,11 +1780,19 @@
 │   │   │   │   │   ├── testimonial-skill.webp
 │   │   │   │   │   └── testimonial-solidarity.webp
 │   │   │   │   ├── landings
-│   │   │   │   │   └── defis-engagement
-│   │   │   │   │       ├── hero.webp
-│   │   │   │   │       ├── temoignage-1.webp
-│   │   │   │   │       ├── temoignage-2.webp
-│   │   │   │   │       └── temoignage-3.webp
+│   │   │   │   │   ├── chacun-pour-tous
+│   │   │   │   │   │   ├── hero.webp
+│   │   │   │   │   │   ├── histoire-1.webp
+│   │   │   │   │   │   ├── histoire-2.webp
+│   │   │   │   │   │   ├── histoire-3.webp
+│   │   │   │   │   │   └── histoire-4.webp
+│   │   │   │   │   ├── defis-engagement
+│   │   │   │   │   │   ├── hero.webp
+│   │   │   │   │   │   ├── temoignage-1.webp
+│   │   │   │   │   │   ├── temoignage-2.webp
+│   │   │   │   │   │   └── temoignage-3.webp
+│   │   │   │   │   └── engagement-securite
+│   │   │   │   │       └── hero.webp
 │   │   │   │   └── logo
 │   │   │   │       ├── asc-logo.png
 │   │   │   │       ├── chacun-pour-tous.png
@@ -1757,8 +1801,24 @@
 │   │   │   │       ├── roc-logo.png
 │   │   │   │       └── spv-logo.png
 │   │   │   └── svg
+│   │   │       ├── chacun-pour-tous
+│   │   │       │   ├── badge.svg
+│   │   │       │   ├── carte.svg
+│   │   │       │   ├── casque-traits.svg
+│   │   │       │   ├── casque.svg
+│   │   │       │   ├── curseur-traits.svg
+│   │   │       │   ├── curseur.svg
+│   │   │       │   ├── gilet.svg
+│   │   │       │   └── symbole.svg
 │   │   │       ├── double-quotes.svg
+│   │   │       ├── engagement-securite
+│   │   │       │   ├── benevole-1.svg
+│   │   │       │   ├── benevole-2.svg
+│   │   │       │   ├── gendarme.svg
+│   │   │       │   ├── pompier.svg
+│   │   │       │   └── scratch.svg
 │   │   │       ├── long-trace.svg
+│   │   │       ├── mission-alert-trace.svg
 │   │   │       ├── trace.svg
 │   │   │       ├── ttm-logo.svg
 │   │   │       └── zig-zag-arrow.svg
@@ -1768,17 +1828,28 @@
 │   │   │   │   ├── hero.tsx
 │   │   │   │   ├── how-it-works.tsx
 │   │   │   │   ├── mission-examples.tsx
-│   │   │   │   ├── partners.tsx
 │   │   │   │   └── testimonials.tsx
 │   │   │   ├── landings
-│   │   │   │   └── defis-engagement
-│   │   │   │       ├── cadre-mineurs.tsx
-│   │   │   │       ├── etapes.tsx
-│   │   │   │       ├── hero.tsx
-│   │   │   │       ├── histoires.tsx
-│   │   │   │       ├── missions.tsx
-│   │   │   │       ├── questions.tsx
-│   │   │   │       └── terrain-de-jeu.tsx
+│   │   │   │   ├── chacun-pour-tous
+│   │   │   │   │   ├── bon-pour-toi.tsx
+│   │   │   │   │   ├── etapes-vie.tsx
+│   │   │   │   │   ├── hero-visual.tsx
+│   │   │   │   │   ├── histoires.tsx
+│   │   │   │   │   └── questions.tsx
+│   │   │   │   ├── defis-engagement
+│   │   │   │   │   ├── cadre-mineurs.tsx
+│   │   │   │   │   ├── histoires.tsx
+│   │   │   │   │   ├── questions.tsx
+│   │   │   │   │   └── terrain-de-jeu.tsx
+│   │   │   │   ├── engagement-securite
+│   │   │   │   │   ├── hero-visual.tsx
+│   │   │   │   │   ├── presentation.tsx
+│   │   │   │   │   └── questions.tsx
+│   │   │   │   ├── etapes.tsx
+│   │   │   │   ├── hero.tsx
+│   │   │   │   ├── location-filter.tsx
+│   │   │   │   ├── mission-alert-card.tsx
+│   │   │   │   └── missions.tsx
 │   │   │   ├── layout
 │   │   │   │   ├── beta-banner.tsx
 │   │   │   │   ├── cookie-consent-manager.tsx
@@ -1800,7 +1871,8 @@
 │   │   │   │   ├── filters.tsx
 │   │   │   │   ├── match-mission-card.tsx
 │   │   │   │   ├── mission-card.tsx
-│   │   │   │   └── mission-tag.tsx
+│   │   │   │   ├── mission-tag.tsx
+│   │   │   │   └── missions-browser.tsx
 │   │   │   ├── quiz
 │   │   │   │   ├── back-button.tsx
 │   │   │   │   ├── checkbox-group-rich.tsx
@@ -1817,12 +1889,20 @@
 │   │   │   │   ├── lazy-mission-map.tsx
 │   │   │   │   ├── matching-debug-modal.css
 │   │   │   │   ├── matching-debug-modal.tsx
+│   │   │   │   ├── mission-alert-banner.tsx
 │   │   │   │   ├── mission-map.tsx
 │   │   │   │   ├── profile-modal.tsx
 │   │   │   │   ├── results-filters-modal.tsx
 │   │   │   │   ├── results-filters.tsx
 │   │   │   │   └── results-missions.tsx
+│   │   │   ├── stats
+│   │   │   │   ├── bar-chart.tsx
+│   │   │   │   ├── chart-data-table.tsx
+│   │   │   │   ├── chart-library.ts
+│   │   │   │   ├── departments-map.tsx
+│   │   │   │   └── questions-chart.tsx
 │   │   │   └── ui
+│   │   │       ├── bottom-sheet.tsx
 │   │   │       ├── carousel.tsx
 │   │   │       ├── combobox.tsx
 │   │   │       ├── gradient-bg.tsx
@@ -1835,11 +1915,11 @@
 │   │   │   ├── __tests__
 │   │   │   │   └── quiz-flow.test.ts
 │   │   │   ├── partners.ts
+│   │   │   ├── public-stats.ts
 │   │   │   ├── quiz-flow
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── q1.ts
-│   │   │   │   ├── q2.ts
 │   │   │   │   ├── q3.ts
+│   │   │   │   ├── q4.ts
 │   │   │   │   └── types.ts
 │   │   │   ├── quiz-options.ts
 │   │   │   └── results-filters.ts
@@ -1850,6 +1930,8 @@
 │   │   │   ├── useIsMobile.ts
 │   │   │   └── useMissionResults.ts
 │   │   ├── main.css
+│   │   ├── middlewares
+│   │   │   └── canonical-host.ts
 │   │   ├── root.tsx
 │   │   ├── routes
 │   │   │   ├── _index.tsx
@@ -1862,7 +1944,9 @@
 │   │   │   ├── api.user-scoring.$id.ts
 │   │   │   ├── api.user-scoring.ts
 │   │   │   ├── landings
-│   │   │   │   └── defis-engagement.tsx
+│   │   │   │   ├── chacun-pour-tous.tsx
+│   │   │   │   ├── defis-engagement.tsx
+│   │   │   │   └── engagement-securite.tsx
 │   │   │   ├── mentions-legales.tsx
 │   │   │   ├── mission-detail.tsx
 │   │   │   ├── missions.tsx
@@ -1875,34 +1959,23 @@
 │   │   │   │   ├── age.tsx
 │   │   │   │   ├── autonomie.tsx
 │   │   │   │   ├── domaine-engagement.tsx
-│   │   │   │   ├── duree.tsx
+│   │   │   │   ├── email.tsx
 │   │   │   │   ├── equipe.tsx
 │   │   │   │   ├── handicap.tsx
-│   │   │   │   ├── imprevu.tsx
-│   │   │   │   ├── interaction.tsx
 │   │   │   │   ├── localisation.tsx
 │   │   │   │   ├── mobilite.tsx
 │   │   │   │   ├── motivation-recherche.tsx
-│   │   │   │   ├── motivation.tsx
-│   │   │   │   ├── precision-competences.tsx
-│   │   │   │   ├── precision-domaine.tsx
-│   │   │   │   ├── precision-formation-onisep.tsx
-│   │   │   │   ├── precision-international.tsx
-│   │   │   │   ├── precision-parcoursup-formation-nom.tsx
-│   │   │   │   ├── precision-parcoursup-formation.tsx
-│   │   │   │   ├── precision-reprendre-activite.tsx
-│   │   │   │   ├── precision-servir-pays.tsx
-│   │   │   │   ├── precision-thematique.tsx
-│   │   │   │   ├── rythme.tsx
-│   │   │   │   └── statut.tsx
+│   │   │   │   └── rythme.tsx
 │   │   │   ├── results.tsx
 │   │   │   ├── robots.txt.ts
-│   │   │   └── sitemap.xml.ts
+│   │   │   ├── sitemap.xml.ts
+│   │   │   └── statistiques.tsx
 │   │   ├── routes.ts
 │   │   ├── services
 │   │   │   ├── __tests__
 │   │   │   │   ├── cookie-consent.test.ts
-│   │   │   │   └── matching.test.ts
+│   │   │   │   ├── matching.test.ts
+│   │   │   │   └── public-stats.test.ts
 │   │   │   ├── api
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── index.test.ts
@@ -1919,10 +1992,14 @@
 │   │   │   ├── matching.ts
 │   │   │   ├── mission-browse.ts
 │   │   │   ├── newsletter.ts
+│   │   │   ├── public-stats.ts
+│   │   │   ├── sentry.server.ts
 │   │   │   ├── sentry.ts
+│   │   │   ├── server-observability.ts
 │   │   │   ├── tracking
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── consent.test.ts
+│   │   │   │   │   ├── email-capture.test.ts
 │   │   │   │   │   ├── gtm.test.ts
 │   │   │   │   │   ├── index-consent.test.ts
 │   │   │   │   │   ├── posthog.test.ts
@@ -1946,28 +2023,48 @@
 │   │       ├── __tests__
 │   │       │   ├── beta-banner.test.ts
 │   │       │   ├── campaign-attribution.test.ts
+│   │       │   ├── canonical-host.test.ts
 │   │       │   ├── conditions.test.ts
 │   │       │   ├── geo.test.ts
 │   │       │   ├── internal-user-flag.test.ts
+│   │       │   ├── landing-missions.test.ts
 │   │       │   ├── layout.test.ts
 │   │       │   ├── mission.test.ts
+│   │       │   ├── public-stats.test.ts
 │   │       │   ├── quiz.test.ts
 │   │       │   ├── results-filters.test.ts
-│   │       │   └── string.test.ts
+│   │       │   ├── seo.test.ts
+│   │       │   ├── string.test.ts
+│   │       │   └── value-cache.test.ts
 │   │       ├── beta-banner.ts
 │   │       ├── campaign-attribution.ts
+│   │       ├── canonical-host.ts
 │   │       ├── conditions.ts
 │   │       ├── geo.ts
 │   │       ├── internal-user-flag.ts
+│   │       ├── landing-missions.ts
 │   │       ├── layout.ts
 │   │       ├── mission.ts
 │   │       ├── motion.ts
+│   │       ├── public-stats.ts
 │   │       ├── quiz.ts
 │   │       ├── results-filters.ts
-│   │       └── string.ts
+│   │       ├── seo.ts
+│   │       ├── string.ts
+│   │       └── value-cache.ts
 │   ├── eslint.config.cjs
 │   ├── package.json
 │   ├── playwright.config.ts
+│   ├── public
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon.ico
+│   │   ├── logo.png
+│   │   ├── og-image.png
+│   │   └── site.webmanifest
 │   ├── react-router.config.ts
 │   ├── tests
 │   │   └── e2e
@@ -2144,4 +2241,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-486 directories, 1746 files
+502 directories, 1827 files
