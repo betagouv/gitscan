@@ -1,0 +1,48 @@
+2026-10-20T09:57:56+02:00 - d8689e4 - aminedhobb : fix(review): Point to the findings without telling that they do not block the merge, which reads as a failure that does not block and depends on the rules of the branch
+2026-10-20T00:43:12+02:00 - 5b3d8c5 - aminedhobb : feat(review): Select the files to review in .relecteur/config.toml, so that a repository keeps no configuration of the engine
+2026-10-20T00:10:35+02:00 - dbb7943 - aminedhobb : fix(review): Post the findings in a review without a body, the summary already telling that they do not block the merge
+2026-10-19T23:07:40+02:00 - a7320e8 - aminedhobb : feat(review): Review pull requests in CI as relecteur eval reviews a case, resumes included, and post the findings ourselves, without open-code-review's action
+2026-10-19T22:54:39+02:00 - c5c170a - aminedhobb : feat(review): Send again a request that the model's rate limit refused, once the minute has passed, for the engine not to give up its files
+2026-10-19T22:32:02+02:00 - b0f46b9 - aminedhobb : refactor(review): Name the engine's statuses and failure classes, and the helpers that read them, after what they hold
+2026-10-17T01:50:30+02:00 - 4a7f2d7 - aminedhobb : feat(review): Review pull requests in CI with a GitHub Action, and summarize each review in French
+2026-10-17T01:50:30+02:00 - 9bb2c6f - aminedhobb : fix(evals): Classify a 503 answer as the engine does, as a provider error
+2026-10-14T17:20:24+02:00 - afa48f6 - aminedhobb : feat(evals): Remove forbidden remarks, which matched a finding by its position alone and never decided the verdict
+2026-10-14T11:32:13+02:00 - 472d76e - aminedhobb : feat(evals): Choose the model and the judge in the repository's configuration, and reach Anthropic's API
+2026-10-14T11:31:29+02:00 - 54e64f1 - aminedhobb : feat(evals): Read each silence case as the reviewer would, and judge review comments from the code
+2026-10-11T20:44:00+02:00 - ac4d092 - aminedhobb : fix(evals): Resume a review whose requests timed out without any response
+2026-10-11T18:16:42+02:00 - fc5e4f1 - aminedhobb : docs(evals): Tell why the largest pull requests need one group at a time on Albert
+2026-10-11T18:16:28+02:00 - ed7ec5f - aminedhobb : feat(evals): Let a finding find one expected defect at most, the one the judge is the most confident about
+2026-10-11T18:03:50+02:00 - a97a2d9 - aminedhobb : feat(evals): Double the pause before each resume of a review cut short by the rate limit
+2026-10-10T01:38:29+02:00 - 9507f1a - aminedhobb : feat(evals): Review with the repository's instructions and settings, and judge saved reviews again
+2026-10-09T17:30:52+02:00 - f517225 - aminedhobb : feat(evals): Give the average time and tokens per review at the end of the report
+2026-10-09T17:15:15+02:00 - 25de053 - aminedhobb : refactor(evals): Ask judges for a probability, and find defects with a DefectFinder
+2026-10-09T12:22:09+02:00 - d5b628f - aminedhobb : feat(evals): Read the keys from the evaluated repository's dotenv file
+2026-10-09T11:23:16+02:00 - ec5bec3 - aminedhobb : feat(evals): Leave the review comments labelled minor out of defect cases
+2026-10-08T16:19:28+02:00 - 7343732 - aminedhobb : feat(evals): Resume a review that timeouts cut short, and quiet the relay
+2026-10-08T11:38:03+02:00 - 7881ca6 - aminedhobb : feat(evals): Report the time and tokens each review took
+2026-10-08T02:20:27+02:00 - 5634fdc - aminedhobb : feat(evals): Let an expected defect span several lines
+2026-10-08T02:19:56+02:00 - d570b9a - aminedhobb : feat(evals): Resume a review that the model's rate limit cut short
+2026-10-08T02:01:28+02:00 - 65b3620 - aminedhobb : feat(evals): Review at the engine's high effort
+2026-10-08T01:50:02+02:00 - 7e79d6a - aminedhobb : feat(evals): Have the engine review 2 groups of files at a time
+2026-10-08T01:07:01+02:00 - f4101d4 - aminedhobb : fix(evals): Ask the judge for the same failure from the same cause
+2026-10-08T00:03:13+02:00 - f79b778 - aminedhobb : feat(evals): Draft cases from review comments that applied a written convention
+2026-10-07T23:36:42+02:00 - c15e661 - aminedhobb : feat(evals): Link each fix, and hand drafted cases over uncommitted
+2026-10-06T17:14:58+02:00 - e59cfdd - aminedhobb : feat(evals): Add a skill drafting evaluation cases from a repository's history
+2026-10-05T22:55:44+02:00 - e3a88b9 - aminedhobb : fix(evals): Keep the albert judge on Albert whatever model reviews
+2026-10-05T22:30:03+02:00 - 61fd1e5 - aminedhobb : feat(evals): Score defect cases with a position pre-filter and an injected judge
+2026-10-05T21:07:54+02:00 - e61bd9a - aminedhobb : refactor(evals): Keep engine constants private and immutable
+2026-10-02T00:35:15+02:00 - e4d6026 - aminedhobb : feat(evals): Fail cases the reviewer did not finish, and give no verdict when nothing was reviewed
+2026-10-02T00:34:16+02:00 - c7ca529 - aminedhobb : refactor(evals): Apply the review's cleanups
+2026-10-02T00:25:45+02:00 - f4b0b05 - aminedhobb : chore(evals): Stop tracking build artifacts
+2026-10-01T23:53:54+02:00 - 1296cb7 - aminedhobb : docs(evals): State the git version open-code-review requires
+2026-10-01T23:52:19+02:00 - 4b7cf6a - aminedhobb : test(evals): Name test cases after what sets them apart
+2026-10-01T23:14:17+02:00 - cfa987e - aminedhobb : refactor(evals): Validate cases against declarative field rules
+2026-10-01T22:36:29+02:00 - 653dfb3 - aminedhobb : refactor(evals): Annotate public interfaces only
+2026-10-01T01:31:18+02:00 - 32f5600 - aminedhobb : feat(evals): Describe cases in plain words and count every merged case
+2026-09-30T23:38:43+02:00 - 96dd834 - aminedhobb : feat(evals): Read cases from .relecteur/cases by default
+2026-09-30T23:07:01+02:00 - 6a88cbb - aminedhobb : feat(evals): Relay model requests so Albert lets DeepSeek call tools
+2026-09-30T22:54:19+02:00 - 9b756f6 - aminedhobb : test(evals): Replace hand-written engine outputs with recorded runs
+2026-09-30T22:30:26+02:00 - 594f717 - aminedhobb : fix(evals): Read a review without comments, recorded from a real run
+2026-09-30T21:53:21+02:00 - 16e1194 - aminedhobb : fix(evals): Default to the model id Albert actually serves
+2026-09-30T16:31:05+02:00 - 9767f69 - aminedhobb : refactor(evals): Keep the scorer pure and report runs without a verdict
+2026-09-30T16:23:49+02:00 - 2304a31 - aminedhobb : feat(evals): Replay negative cases with open-code-review and give a verdict

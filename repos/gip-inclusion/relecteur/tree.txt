@@ -1,0 +1,75 @@
+.
+├── .github
+│   └── workflows
+│       └── tests.yml
+├── .gitignore
+├── README.md
+├── action.yml
+├── pyproject.toml
+├── skills
+│   └── build-eval-cases
+│       └── SKILL.md
+├── src
+│   └── relecteur
+│       ├── __init__.py
+│       ├── cases.py
+│       ├── cli.py
+│       ├── config.py
+│       ├── github.py
+│       ├── judges.py
+│       ├── model.py
+│       ├── open_code_review.py
+│       ├── proxy.py
+│       ├── repository.py
+│       ├── review.py
+│       ├── scorer.py
+│       └── summary.py
+└── tests
+    ├── conftest.py
+    ├── fixtures
+    │   ├── cases
+    │   │   ├── invalid
+    │   │   │   ├── abbreviated-sha.toml
+    │   │   │   ├── ceiling-below-defects.toml
+    │   │   │   ├── defect-without-lines.toml
+    │   │   │   ├── escaped-review-in-words.toml
+    │   │   │   ├── missing-head.toml
+    │   │   │   ├── misspelled-field.toml
+    │   │   │   ├── negative-ceiling.toml
+    │   │   │   ├── not-toml.toml
+    │   │   │   ├── other-location-without-path.toml
+    │   │   │   └── pr-without-title.toml
+    │   │   └── suite
+    │   │       ├── approved-without-comment.toml
+    │   │       ├── defect-over-two-lines.toml
+    │   │       ├── fixed-after-approval.toml
+    │   │       └── thumbs-up-without-remark.toml
+    │   ├── judges
+    │   │   ├── README.md
+    │   │   ├── albert-other-defect.json
+    │   │   └── albert-same-defect.json
+    │   └── open_code_review
+    │       ├── README.md
+    │       ├── no-supported-files.json
+    │       ├── overloaded.json
+    │       ├── rate-limited.json
+    │       ├── refused-key.json
+    │       ├── request-timed-out.json
+    │       ├── silent.json
+    │       ├── timed-out.json
+    │       ├── token-budget-reached.json
+    │       ├── tool-rounds-exhausted.json
+    │       ├── unknown-model.json
+    │       └── with-comments.json
+    ├── test_cases.py
+    ├── test_config.py
+    ├── test_github.py
+    ├── test_judges.py
+    ├── test_model.py
+    ├── test_open_code_review.py
+    ├── test_proxy.py
+    ├── test_repository.py
+    ├── test_review.py
+    ├── test_scorer.py
+    └── test_summary.py
+14 directories, 60 files
