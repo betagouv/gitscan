@@ -1,18 +1,29 @@
-## Changelog : egapro (30 derniers jours, au 15 octobre 2026)
+## Changelog : egapro (30 derniers jours, au 20 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une phase intense de renforcement de la sécurité et d'amélioration de l'accessibilité. Les utilisateurs bénéficieront d'une interface plus claire, notamment sur les écarts de rémunération et les documents PDF, ainsi que de parcours de déclaration plus fluides. Parallèlement, la plateforme a été considérablement sécurisée pour garantir une meilleure protection des données et une conformité accrue.
+Ce mois a été marqué par un effort majeur de renforcement de la sécurité et de mise en conformité de la plateforme. L'accessibilité numérique (RGAA) a été considérablement améliorée pour garantir une expérience inclusive. Côté utilisateur, la clarté des données a été optimisée (notamment sur les écarts de rémunération) et de nouvelles fonctionnalités de gestion documentaire ont été introduites. En coulisses, le projet prépare une montée en puissance technique avec la transition vers PostgreSQL V2.
 
 ### Évolutions fonctionnelles
-- **Déclarations et exports** : Amélioration de la clarté des écarts de rémunération avec l'affichage du sens des écarts et l'ajout de la mention « en faveur de » ([#4792](https://github.com/SocialGouv/egapro/issues/4792), [#4736](https://github.com/SocialGouv/egapro/issues/4736)). Le design du PDF des données préremplies a été revu ([#4830](https://github.com/SocialGouv/egapro/issues/4830)) et l'export CSV a été aligné sur les standards du contrat DGT ([#4854](https://github.com/SocialGouv/egapro/issues/4854)).
-- **Mon Espace** : Simplification de l'interface par le retrait de la navigation principale pour se concentrer sur les démarches ([#4821](https://github.com/SocialGouv/egapro/issues/4821)). Ajout de la possibilité de déposer un rapport d'évaluation conjointe en cas de mise en demeure ([#4825](https://github.com/SocialGouv/egapro/issues/4825)) et amélioration des informations contextuelles (infobulles pour les entreprises de moins de 100 salariés [#4786](https://github.com/SocialGouv/egapro/issues/4786), bandeau d'archives [#4744](https://github.com/SocialGouv/egapro/issues/4744)).
-- **Accessibilité (RGAA)** : Travaux majeurs pour améliorer l'expérience des utilisateurs de technologies d'assistance, incluant une meilleure gestion du zoom, la navigation au clavier dans les tableaux de rémunération, et la structuration des graphiques statistiques ([#4592](https://github.com/SocialGouv/egapro/issues/4592), [#4593](https://github.com/SocialGouv/egapro/issues/4593), [#4605](https://github.com/SocialGouv/egapro/issues/4605)).
-- **Expérience utilisateur et légal** : Mise en place de versionsnées pour les CGU et la politique de confidentialité ([#4828](https://github.com/SocialGouv/egapro/issues/4828)), harmonisation du vocabulaire (utilisation systématique de « transmettre » au lieu de « soumettre » [#4728](https://github.com/SocialGouv/egapro/issues/4728)) et corrections de divers libellés pour plus de clarté.
+- **Amélioration de l'accessibilité (RGAA) :** Travaux massifs pour rendre l'interface plus inclusive (navigation au clavier, compatibilité avec le zoom, structuration des tableaux et des graphiques, et gestion des messages d'état) [#4607](https://github.com/SocialGouv/egapro/issues/4607), [#4592](https://github.com/SocialGouv/egapro/issues/4592), [#4614](https://github.com/SocialGouv/egapro/issues/4614).
+- **Clarté des données et indicateurs :** 
+    - Affichage systématique du sens des écarts sur toutes les vues [#4792](https://github.com/SocialGouv/egapro/issues/4792).
+    - Harmonisation de l'affichage des chiffres (troncation à 2 décimales pour éviter les incohérences) [#4730](https://github.com/SocialGouv/egapro/issues/4730), [#4785](https://github.com/SocialGouv/egapro/issues/4785).
+    - Mise à jour des libellés pour plus de précision (indicateur G, effectifs, termes de transmission) [#4817](https://github.com/SocialGouv/egapro/issues/4817), [#4728](https://github.com/SocialGouv/egapro/issues/4728).
+- **Nouvelles fonctionnalités et gestion :**
+    - Nouveau design pour le PDF des données préremplies [#4830](https://github.com/SocialGouv/egapro/issues/4830).
+    - Possibilité de déposer un rapport d'évaluation conjointe en cas de mise en demeure dans l'espace personnel [#4825](https://github.com/SocialGouv/egapro/issues/4825).
+    - Gestion optimisée des entreprises étrangères et des échéances par démarche [#4735](https://github.com/SocialGouv/egapro/issues/4735), [#4742](https://github.com/SocialGouv/egapro/issues/4742).
+- **Conformité légale :** Mise en place de CGU versionnées et d'une nouvelle politique de confidentialité [#4828](https://github.com/SocialGouv/egapro/issues/4828).
 
 ### Évolutions techniques
-- **Sécurité** : Renforcement global de la plateforme incluant la mise en place d'en-têtes de sécurité HTTP et d'une CSP ([#4763](https://github.com/SocialGouv/egapro/issues/4763)), la protection contre le CSRF lors de la déconnexion ([#4755](https://github.com/SocialGouv/egapro/issues/4755)), la limitation de débit (rate limiting) sur l'API ([#4762](https://github.com/SocialGouv/egapro/issues/4762)) et la restriction de l'accès administratif aux seuls agents publics ([#4760](https://github.com/SocialGouv/egapro/issues/4760)).
-- **Infrastructure et CI/CD** : Optimisation des pipelines de tests (E2E et audits Lighthouse) ([#4867](https://github.com/SocialGouv/egapro/issues/4867), [#4556](https://github.com/SocialGouv/egapro/issues/4556)) et sécurisation de la gestion des secrets dans les environnements de test ([#4761](https://github.com/SocialGouv/egapro/issues/4761)).
-- **API et Données** : Refactorisation de l'API publique pour limiter l'exposition des données de consultation ([#4793](https://github.com/SocialGouv/egapro/issues/4793)) et harmonisation du traitement des dates en utilisant le format UTC ([#4732](https://github.com/SocialGouv/egapro/issues/4732)).
+- **Sécurité renforcée :**
+    - Mise en place de mesures de protection robustes : en-têtes HTTP de sécurité, politique de sécurité du contenu (CSP) et protection contre le CSRF [#4763](https://github.com/SocialGouv/egapro/issues/4763), [#4755](https://github.com/SocialGouv/egapro/issues/4755).
+    - Sécurisation des accès : restriction de l'administration aux agents publics, nouveaux modes de double authentification (2FA) et protection des endpoints d'export [#4760](https://github.com/SocialGouv/egapro/issues/4760), [#4816](https://github.com/SocialGouv/egapro/issues/4816), [#4753](https://github.com/SocialGouv/egapro/issues/4753).
+    - Protection contre les abus : limitation du débit (rate limiting) et anonymisation des données envoyées aux outils de suivi (Sentry) [#4762](https://github.com/SocialGouv/egapro/issues/4762), [#4902](https://github.com/SocialGouv/egapro/issues/4902).
+- **Infrastructure et Architecture :**
+    - Préparation de la migration vers PostgreSQL V2 [#4824](https://github.com/SocialGouv/egapro/issues/4824).
+    - Refactoring de l'API publique pour limiter l'exposition des données de consultation [#4793](https://github.com/SocialGouv/egapro/issues/4793).
+    - Optimisation de la CI/CD : intégration de tests Lighthouse, amélioration des tests de bout en bout (e2e) et sécurisation des processus de fusion [#4867](https://github.com/SocialGouv/egapro/issues/4867), [#4829](https://github.com/SocialGouv/egapro/issues/4829).
 
 ### Autres changements
-- **Documentation** : Ajout de précisions concernant la génération des journaux d'activité et leurs durées de conservation ([#4774](https://github.com/SocialGouv/egapro/issues/4774)).
+- **Documentation :** Publication des règles relatives à la génération des journaux d'action et à leurs durées de conservation [#4774](https://github.com/SocialGouv/egapro/issues/4774).

@@ -235,6 +235,7 @@
 │   ├── matomo-cnil-exemption.md
 │   ├── parcours-utilisateurs.md
 │   ├── plan-de-tracking.md
+│   ├── postgresql-v2-upgrade.md
 │   ├── release.md
 │   ├── reprise-donnees-v1.md
 │   └── strategie-tracking.md
@@ -397,6 +398,7 @@
 │   │   │   ├── backfill-company-region-department.ts
 │   │   │   ├── check-cahier.ts
 │   │   │   ├── check-journal.ts
+│   │   │   ├── check-postgres-upgrade.ts
 │   │   │   ├── check-suit-connection.ts
 │   │   │   ├── cleanup-error-diagnostic.ts
 │   │   │   ├── copy-dsfr.ts
@@ -413,6 +415,7 @@
 │   │   │   ├── import-v1-representation.ts
 │   │   │   ├── migrate.ts
 │   │   │   ├── post-process-schema-wiki.ts
+│   │   │   ├── postgres-upgrade-report.ts
 │   │   │   ├── report-grille.ts
 │   │   │   ├── seed-demo-observatory.ts
 │   │   │   ├── seed-demo-stats.ts
@@ -426,15 +429,18 @@
 │   │   │   │   ├── middleware.csp.test.ts
 │   │   │   │   ├── middleware.test.ts
 │   │   │   │   ├── middlewareRequest.ts
-│   │   │   │   └── scripts
-│   │   │   │       ├── check-journal.test.ts
-│   │   │   │       ├── checkCahier.test.ts
-│   │   │   │       ├── generate-mock-gip-data.test.ts
-│   │   │   │       ├── helpers
-│   │   │   │       │   └── playwrightReportFixture.ts
-│   │   │   │       ├── migrationV1References.test.ts
-│   │   │   │       ├── reportGrille.test.ts
-│   │   │   │       └── reportGrilleCli.test.ts
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── check-journal.test.ts
+│   │   │   │   │   ├── checkCahier.test.ts
+│   │   │   │   │   ├── checkPostgresUpgrade.integration.test.ts
+│   │   │   │   │   ├── checkPostgresUpgrade.test.ts
+│   │   │   │   │   ├── generate-mock-gip-data.test.ts
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   └── playwrightReportFixture.ts
+│   │   │   │   │   ├── migrationV1References.test.ts
+│   │   │   │   │   ├── reportGrille.test.ts
+│   │   │   │   │   └── reportGrilleCli.test.ts
+│   │   │   │   └── sentry.config.test.ts
 │   │   │   ├── app
 │   │   │   │   ├── acces-backoffice
 │   │   │   │   │   └── page.tsx
@@ -1829,6 +1835,11 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── shared
 │   │   │   │   │       └── remunerationDemarcheNavigation.ts
+│   │   │   │   ├── observability
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── sentryPrivacy.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── sentryPrivacy.ts
 │   │   │   │   ├── profile
 │   │   │   │   │   ├── ProfileModal.module.scss
 │   │   │   │   │   ├── ProfileModal.tsx
@@ -2213,7 +2224,6 @@
 │   │   │   │       ├── cseRequiredContentTypes.ts
 │   │   │   │       ├── cseRequirementSync.ts
 │   │   │   │       ├── declarationLockService.ts
-│   │   │   │       ├── fetch.d.ts
 │   │   │   │       ├── fileStreaming.ts
 │   │   │   │       ├── fileUpload.ts
 │   │   │   │       ├── fileValidation.ts
@@ -2387,6 +2397,8 @@
 │   │   ├── compute_cost.sh
 │   │   ├── create_linked_branch.sh
 │   │   ├── dispatch_plan.sh
+│   │   ├── e2e_port_pool.sh
+│   │   ├── e2e_port_pool.test.sh
 │   │   ├── ensure_epic_branch.sh
 │   │   ├── epic_loop.sh
 │   │   ├── epic_state.sh
@@ -2404,6 +2416,7 @@
 │   │   ├── run_architect_rework.sh
 │   │   ├── run_doc_writer.sh
 │   │   ├── run_e2e_dev.sh
+│   │   ├── run_e2e_dev.test.sh
 │   │   ├── set_ticket_date.sh
 │   │   ├── set_ticket_size.sh
 │   │   ├── set_ticket_status.sh
@@ -2416,4 +2429,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-379 directories, 2039 files
+381 directories, 2050 files
