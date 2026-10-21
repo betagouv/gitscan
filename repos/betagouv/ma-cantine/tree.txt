@@ -65,6 +65,7 @@
 │   │   │   ├── AppRawHTML.vue
 │   │   │   ├── AppRessources.vue
 │   │   │   ├── AppSeparator.vue
+│   │   │   ├── AppTooltipHover.vue
 │   │   │   ├── BannerAlert.vue
 │   │   │   ├── BannerEnv.vue
 │   │   │   ├── BannerInfo.vue
@@ -95,6 +96,7 @@
 │   │   │   ├── DiagnosticSatellitesLinked.vue
 │   │   │   ├── DiagnosticSummary.vue
 │   │   │   ├── DiagnosticSummaryAccordions.vue
+│   │   │   ├── DiagnosticSummaryAppro.vue
 │   │   │   ├── DiagnosticSummaryTile.vue
 │   │   │   ├── DsfrBooleanRadio.vue
 │   │   │   ├── EdibleChart.vue
@@ -113,6 +115,7 @@
 │   │   │   ├── GestionnaireSidebarTitle.vue
 │   │   │   ├── GestionnaireTeledeclarationNav.vue
 │   │   │   ├── GraphBase.vue
+│   │   │   ├── GraphEgalim.vue
 │   │   │   ├── GraphGauge.vue
 │   │   │   ├── GraphPie.vue
 │   │   │   ├── IconAward.vue
@@ -123,6 +126,7 @@
 │   │   │   ├── IconMacaronInfo.vue
 │   │   │   ├── IconMacaronPlastic.vue
 │   │   │   ├── IconMacaronWaste.vue
+│   │   │   ├── IconOSAMonochrome.vue
 │   │   │   ├── ImportAdminCallout.vue
 │   │   │   ├── ImportCard.vue
 │   │   │   ├── ImportDeprecatedWarning.vue
@@ -142,11 +146,9 @@
 │   │   │   ├── ObservatoryGraphEconomicModel.vue
 │   │   │   ├── ObservatoryGraphEgalim.vue
 │   │   │   ├── ObservatoryGraphManagementType.vue
-│   │   │   ├── ObservatoryGraphMeatFishEgalim.vue
 │   │   │   ├── ObservatoryGraphMeatFrance.vue
 │   │   │   ├── ObservatoryGraphProductionType.vue
 │   │   │   ├── ObservatoryGraphSectors.vue
-│   │   │   ├── ObservatoryGraphSustainable.vue
 │   │   │   ├── ObservatoryHero.vue
 │   │   │   ├── ObservatoryNumbers.vue
 │   │   │   ├── ObservatoryPurchases.vue
@@ -158,6 +160,7 @@
 │   │   │   ├── SourceChart.vue
 │   │   │   ├── TunnelTeledeclarationAccordionItem.vue
 │   │   │   ├── TunnelTeledeclarationAccordionsGroup.vue
+│   │   │   ├── TunnelTeledeclarationAutofill.vue
 │   │   │   ├── TunnelTeledeclarationField.vue
 │   │   │   ├── TunnelTeledeclarationGroupTitle.vue
 │   │   │   ├── TunnelTeledeclarationIconCheck.vue
@@ -166,6 +169,7 @@
 │   │   │   ├── TunnelTeledeclarationModalQuit.vue
 │   │   │   ├── TunnelTeledeclarationSidebar.vue
 │   │   │   ├── TunnelTeledeclarationTopNav.vue
+│   │   │   ├── TunnelTeledeclarationUPSABanner.vue
 │   │   │   ├── WasteMeasurementDetail.vue
 │   │   │   ├── WasteMeasurementSteps
 │   │   │   │   ├── BreakdownBySource.vue
@@ -222,6 +226,7 @@
 │   │   │   ├── diagnostics.js
 │   │   │   ├── diagnosticsBadge.js
 │   │   │   ├── diagnosticsFields.js
+│   │   │   ├── diagnosticsMacaron.js
 │   │   │   ├── filters.js
 │   │   │   ├── imports.js
 │   │   │   ├── managers.js
@@ -518,7 +523,6 @@
 │   │   ├── test_canteen_published.py
 │   │   ├── test_canteen_statistics.py
 │   │   ├── test_canteen_status.py
-│   │   ├── test_canteen_territory.py
 │   │   ├── test_canteens.py
 │   │   ├── test_canteens_create_import.py
 │   │   ├── test_canteens_managers_import.py
@@ -532,6 +536,7 @@
 │   │   ├── test_diagnostics_complete_schema_import.py
 │   │   ├── test_diagnostics_simple_import.py
 │   │   ├── test_diagnostics_simple_schema_import.py
+│   │   ├── test_event_log_middleware.py
 │   │   ├── test_initial_data.py
 │   │   ├── test_inquiry.py
 │   │   ├── test_messages.py
@@ -671,6 +676,7 @@
 │   │   ├── communityevent.py
 │   │   ├── definitionlocal.py
 │   │   ├── diagnostic.py
+│   │   ├── eventlog.py
 │   │   ├── importfailure.py
 │   │   ├── managerinvitation.py
 │   │   ├── message.py
@@ -699,6 +705,7 @@
 │   │   ├── canteen.py
 │   │   ├── communityevent.py
 │   │   ├── diagnostic.py
+│   │   ├── eventlog.py
 │   │   ├── importfailure.py
 │   │   ├── managerinvitation.py
 │   │   ├── message.py
@@ -1040,6 +1047,17 @@
 │   │   ├── 0279_diagnostic_definition_local.py
 │   │   ├── 0280_diagnostic_pourcentage_appro_fields.py
 │   │   ├── 0281_oauth2providerapplicationextra.py
+│   │   ├── 0282_diagnostic_generated_from_purchases_and_more.py
+│   │   ├── 0283_diagnostic_tunnel_appro_max_length.py
+│   │   ├── 0284_diagnostic_pourcentage_viandes_volailles_produits_de_la_mer_egalim.py
+│   │   ├── 0285_diagnostic_is_filled.py
+│   │   ├── 0286_eventlog.py
+│   │   ├── 0287_eventlog_from_importfailure.py
+│   │   ├── 0288_eventlog_canteen.py
+│   │   ├── 0289_diagnostic_pourcentage_origine.py
+│   │   ├── 0290_diagnostic_pourcentage_famille_origine.py
+│   │   ├── 0291_remove_user_departments_and_more.py
+│   │   ├── 0292_remove_user_username.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1054,6 +1072,7 @@
 │   │   ├── diagnostic_teledeclaration_egalim_objectives.py
 │   │   ├── diagnostic_teledeclaration_field_groups.py
 │   │   ├── diagnostic_teledeclaration_fields.py
+│   │   ├── eventlog.py
 │   │   ├── geo.py
 │   │   ├── historyauthenticationmethod.py
 │   │   ├── importfailure.py
@@ -1079,9 +1098,6 @@
 │   │   ├── CHANGELOG_CANTINES.MD
 │   │   ├── CHANGELOG_TELEDECLARATIONS.MD
 │   │   ├── README.md
-│   │   ├── export_analysis
-│   │   │   ├── schema_cantines.json
-│   │   │   └── schema_teledeclarations.json
 │   │   ├── export_opendata
 │   │   │   ├── schema_cantines.json
 │   │   │   └── schema_teledeclarations.json
@@ -1120,22 +1136,26 @@
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostic_teledeclaration_dates.py
 │   │   ├── test_diagnostic_teledeclaration_egalim_objectives.py
+│   │   ├── test_eventlog.py
 │   │   ├── test_fixtures.py
 │   │   ├── test_history.py
 │   │   ├── test_manager_invitation.py
 │   │   ├── test_messages.py
+│   │   ├── test_migration_0287_eventlog_from_importfailure.py
 │   │   ├── test_oauth2.py
 │   │   ├── test_purchase.py
 │   │   ├── test_resource_action.py
 │   │   ├── test_sector.py
 │   │   ├── test_teledeclaration.py
 │   │   ├── test_user.py
+│   │   ├── test_utils.py
 │   │   └── test_waste_action.py
 │   ├── utils.py
 │   └── validators
 │       ├── __init__.py
 │       ├── canteen.py
 │       ├── diagnostic.py
+│       ├── diagnostic_teledeclaration.py
 │       ├── purchase.py
 │       ├── user.py
 │       └── wastemeasurement.py
@@ -1443,7 +1463,6 @@
 │   │       │   └── index.vue
 │   │       ├── PurchasesHome.vue
 │   │       ├── PurchasesSummary.vue
-│   │       ├── TerritoryCanteens.vue
 │   │       ├── VideoTutorial.vue
 │   │       └── WasteActionsPage
 │   │           ├── ResourceActionDialog.vue
@@ -1480,10 +1499,11 @@
 │   │       ├── canteen_siret_recherche_entreprises_cache_csv.py
 │   │       ├── canteen_update_geolocation_data_using_siret.py
 │   │       ├── canteen_update_pat_data_using_city_insee_code.py
-│   │       ├── compare_datasets.py
 │   │       ├── diagnostic_fill_computed_fields.py
 │   │       ├── diagnostic_fill_creation_user_and_source.py
 │   │       ├── diagnostic_fill_invalid_warning_reason_list.py
+│   │       ├── eventlog_backfill_api.py
+│   │       ├── eventlog_backfill_imports.py
 │   │       ├── export_dataset.py
 │   │       ├── generate_geo_data_to_json.py
 │   │       ├── generate_import_schema.py
@@ -1497,6 +1517,7 @@
 │   │       └── wastemeasurement_fill_creation_user_and_source.py
 │   ├── middleware
 │   │   ├── __init__.py
+│   │   ├── event_log_middleware.py
 │   │   └── redirect_middleware.py
 │   ├── sentry.py
 │   ├── settings.py
@@ -1518,6 +1539,8 @@
 │   │   ├── test_etl_analysis.py
 │   │   ├── test_etl_common.py
 │   │   ├── test_etl_open_data.py
+│   │   ├── test_eventlog_backfill_api.py
+│   │   ├── test_eventlog_backfill_imports.py
 │   │   ├── test_geolocation_bot.py
 │   │   ├── test_purchase_fill_creation_user_and_source.py
 │   │   ├── test_sentry.py
@@ -1832,6 +1855,7 @@
     │   │   │   ├── diagnostic.png
     │   │   │   └── publier.png
     │   │   ├── lighthouse.png
+    │   │   ├── logo-osa-couleur.svg
     │   │   ├── logo_transparent.png
     │   │   ├── logo_transparent_white.png
     │   │   ├── ma-cantine-logo-light.jpg
@@ -1852,7 +1876,6 @@
     │   │   │   ├── search.svg
     │   │   │   ├── self-training.svg
     │   │   │   ├── success.svg
-    │   │   │   ├── teledeclaration-saisie-automatique.svg
     │   │   │   ├── teledeclaration-saisie-detaillee.svg
     │   │   │   ├── teledeclaration-saisie-simplifiee.svg
     │   │   │   └── voir-webinaires.svg
@@ -1926,4 +1949,4 @@
     │   └── test_sitemap.py
     ├── urls.py
     └── views.py
-149 directories, 1852 files
+148 directories, 1876 files
