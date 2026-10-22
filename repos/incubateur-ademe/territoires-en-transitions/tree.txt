@@ -1085,8 +1085,8 @@
 │   │   │   │   │   │   │   └── use-upsert-pertinence.ts
 │   │   │   │   │   │   ├── levier-panel
 │   │   │   │   │   │   │   ├── action-de-reference-preselection.card.tsx
-│   │   │   │   │   │   │   ├── keep-categorie.spec.ts
-│   │   │   │   │   │   │   ├── keep-categorie.ts
+│   │   │   │   │   │   │   ├── keep-categories.spec.ts
+│   │   │   │   │   │   │   ├── keep-categories.ts
 │   │   │   │   │   │   │   ├── levier-actions-de-reference.list.spec.tsx
 │   │   │   │   │   │   │   ├── levier-actions-de-reference.list.tsx
 │   │   │   │   │   │   │   ├── levier.header.tsx
@@ -1095,11 +1095,14 @@
 │   │   │   │   │   │   │   ├── pertinence-toggle.spec.tsx
 │   │   │   │   │   │   │   ├── pertinence-toggle.tsx
 │   │   │   │   │   │   │   ├── suggest-action.alert.tsx
+│   │   │   │   │   │   │   ├── suggest-action.form.spec.tsx
 │   │   │   │   │   │   │   ├── suggest-action.form.tsx
 │   │   │   │   │   │   │   ├── to-levier-subtitle.spec.ts
 │   │   │   │   │   │   │   ├── to-levier-subtitle.ts
 │   │   │   │   │   │   │   ├── use-levier-side-panel.spec.tsx
 │   │   │   │   │   │   │   ├── use-levier-side-panel.ts
+│   │   │   │   │   │   │   ├── use-saved-action-toasts.spec.ts
+│   │   │   │   │   │   │   ├── use-saved-action-toasts.ts
 │   │   │   │   │   │   │   └── use-send-action-suggestion.ts
 │   │   │   │   │   │   ├── leviers-view.ts
 │   │   │   │   │   │   ├── leviers-without-potentiel.list.tsx
@@ -1107,7 +1110,10 @@
 │   │   │   │   │   │   ├── priorisation-leviers.view.tsx
 │   │   │   │   │   │   ├── priorisation.summary.tsx
 │   │   │   │   │   │   ├── select-levier.ts
-│   │   │   │   │   │   └── use-leviers-view-with-tour.ts
+│   │   │   │   │   │   ├── use-levier-nudge.ts
+│   │   │   │   │   │   ├── use-leviers-view-with-tour.ts
+│   │   │   │   │   │   ├── use-open-levier-from-url.spec.tsx
+│   │   │   │   │   │   └── use-open-levier-from-url.ts
 │   │   │   │   │   ├── priorisation-tour
 │   │   │   │   │   │   ├── priorisation-tour-intro.spec.tsx
 │   │   │   │   │   │   ├── priorisation-tour-intro.tsx
@@ -1404,6 +1410,11 @@
 │   │   │   │   │   │   └── card
 │   │   │   │   │   │       ├── base-update-fiche.modal.tsx
 │   │   │   │   │   │       ├── edit-fiche.modal.tsx
+│   │   │   │   │   │       ├── fiche-access.badges.spec.tsx
+│   │   │   │   │   │       ├── fiche-access.badges.tsx
+│   │   │   │   │   │       ├── fiche-card-hover.actions.tsx
+│   │   │   │   │   │       ├── fiche-card-link.action.spec.tsx
+│   │   │   │   │   │       ├── fiche-card-link.action.tsx
 │   │   │   │   │   │       ├── fiche.card.tsx
 │   │   │   │   │   │       ├── fiche.completion.tsx
 │   │   │   │   │   │       ├── fiche.footer.tsx
@@ -1519,9 +1530,6 @@
 │   │   │   │   │   │   ├── content
 │   │   │   │   │   │   │   ├── actions-liees
 │   │   │   │   │   │   │   │   ├── actions-liees.view.tsx
-│   │   │   │   │   │   │   │   ├── card
-│   │   │   │   │   │   │   │   │   ├── fiche-action.card.tsx
-│   │   │   │   │   │   │   │   │   └── fiche-action.footer.tsx
 │   │   │   │   │   │   │   │   ├── fiche.picto.tsx
 │   │   │   │   │   │   │   │   └── side-menu
 │   │   │   │   │   │   │   │       ├── fiches-selector.grid.tsx
@@ -1538,7 +1546,7 @@
 │   │   │   │   │   │   │   │   │   └── labels.tsx
 │   │   │   │   │   │   │   │   ├── details.view.tsx
 │   │   │   │   │   │   │   │   ├── editable-item.tsx
-│   │   │   │   │   │   │   │   ├── form-section.tsx
+│   │   │   │   │   │   │   │   ├── form-section.card.tsx
 │   │   │   │   │   │   │   │   ├── planning
 │   │   │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   │   │   └── planning-schema.ts
@@ -1629,6 +1637,7 @@
 │   │   │   │   │   │   │   │   └── use-fiche-sous-actions.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-fiche-navigation.ts
 │   │   │   │   │   │   │   ├── use-get-fiche-secteurs.ts
 │   │   │   │   │   │   │   ├── use-upsert-fiche-secteurs.ts
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
@@ -1678,6 +1687,9 @@
 │   │   │   │   │   │   │       ├── priority.tsx
 │   │   │   │   │   │   │       └── status.tsx
 │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── navigation
+│   │   │   │   │   │   │   ├── fiche-navigation.buttons.tsx
+│   │   │   │   │   │   │   └── plan-fiche-navigation.ts
 │   │   │   │   │   │   └── share-fiche
 │   │   │   │   │   │       ├── fiche-share-editor.form-section.tsx
 │   │   │   │   │   │       ├── fiche-share-info.tsx
@@ -1862,6 +1874,7 @@
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   ├── styles.css
 │   │   │   │   │   ├── useModifierStateRef.ts
+│   │   │   │   │   ├── useReferentiel.spec.ts
 │   │   │   │   │   └── useReferentiel.ts
 │   │   │   │   ├── Historique
 │   │   │   │   │   ├── DetailModificationWrapper.tsx
@@ -1944,6 +1957,10 @@
 │   │   │   │   │   ├── format-action-filters-to-categories.ts
 │   │   │   │   │   ├── format-mesure-label.ts
 │   │   │   │   │   ├── get-prev-and-next-action-links.utils.tsx
+│   │   │   │   │   ├── merge-actions-query-results.spec.ts
+│   │   │   │   │   ├── merge-actions-query-results.ts
+│   │   │   │   │   ├── patch-action-explication-in-cache.spec.ts
+│   │   │   │   │   ├── patch-action-explication-in-cache.ts
 │   │   │   │   │   ├── sub-action
 │   │   │   │   │   │   └── sub-action.description.tsx
 │   │   │   │   │   ├── use-action-availability.ts
@@ -2149,6 +2166,7 @@
 │   │   │   │   │   ├── audit-columns-scope.ts
 │   │   │   │   │   ├── audit-input-cell.tsx
 │   │   │   │   │   ├── empty-cell.tsx
+│   │   │   │   │   ├── expand-shortcuts.tooltip-label.tsx
 │   │   │   │   │   ├── referentiel-table.adaptation.cell.tsx
 │   │   │   │   │   ├── referentiel-table.audit-notes.cell.tsx
 │   │   │   │   │   ├── referentiel-table.audit-ordre-du-jour.cell.tsx
@@ -2178,6 +2196,8 @@
 │   │   │   │   │   ├── referentiel-table.tsx
 │   │   │   │   │   ├── remove-stale-pending-detaille-a-la-tache.spec.ts
 │   │   │   │   │   ├── remove-stale-pending-detaille-a-la-tache.ts
+│   │   │   │   │   ├── toggle-rows-expanded-by-level.spec.ts
+│   │   │   │   │   ├── toggle-rows-expanded-by-level.ts
 │   │   │   │   │   ├── use-get-referentiel-table-filters-state.ts
 │   │   │   │   │   ├── use-list-referentiel-table-columns.tsx
 │   │   │   │   │   ├── use-referentiel-table-column-visibility.spec.ts
@@ -2185,6 +2205,7 @@
 │   │   │   │   │   ├── use-referentiel-table-data.ts
 │   │   │   │   │   ├── use-referentiel-table-row-expanded.ts
 │   │   │   │   │   ├── use-referentiel-thematique-view.tsx
+│   │   │   │   │   ├── utils.spec.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── scores
 │   │   │   │   │   ├── progress-bar-with-tooltip.tsx
@@ -2241,16 +2262,16 @@
 │   │   │   │   └── utils.ts
 │   │   │   ├── shared
 │   │   │   │   ├── actions-de-reference
-│   │   │   │   │   ├── action-de-reference-ademe.badge.tsx
 │   │   │   │   │   ├── action-de-reference-collectivites.panel.spec.tsx
 │   │   │   │   │   ├── action-de-reference-collectivites.panel.stories.tsx
 │   │   │   │   │   ├── action-de-reference-collectivites.panel.tsx
 │   │   │   │   │   ├── action-de-reference-detail.link.tsx
 │   │   │   │   │   ├── action-de-reference-dismissed.list.tsx
 │   │   │   │   │   ├── action-de-reference-expand.toggle.tsx
-│   │   │   │   │   ├── action-de-reference-info.item.tsx
 │   │   │   │   │   ├── action-de-reference-interest.buttons.spec.tsx
 │   │   │   │   │   ├── action-de-reference-interest.buttons.tsx
+│   │   │   │   │   ├── action-de-reference-save.toggle.tsx
+│   │   │   │   │   ├── action-de-reference-type.badge.tsx
 │   │   │   │   │   ├── action-de-reference.badges.tsx
 │   │   │   │   │   ├── action-de-reference.card.spec.tsx
 │   │   │   │   │   ├── action-de-reference.card.stories.tsx
@@ -2293,6 +2314,8 @@
 │   │   │   │   │   ├── linked-fiches.list.tsx
 │   │   │   │   │   ├── search-bar.tsx
 │   │   │   │   │   ├── to-action-de-reference-interest-control.ts
+│   │   │   │   │   ├── to-back-breadcrumb-item.spec.ts
+│   │   │   │   │   ├── to-back-breadcrumb-item.ts
 │   │   │   │   │   ├── to-levier-impacts.spec.ts
 │   │   │   │   │   ├── to-levier-impacts.ts
 │   │   │   │   │   ├── update-action-de-reference.container.tsx
@@ -2300,6 +2323,7 @@
 │   │   │   │   │   ├── update-action-de-reference.form.stories.tsx
 │   │   │   │   │   ├── update-action-de-reference.form.tsx
 │   │   │   │   │   ├── use-action-de-reference-update-access.ts
+│   │   │   │   │   ├── use-back-breadcrumb-item.ts
 │   │   │   │   │   ├── use-send-usefulness-response.ts
 │   │   │   │   │   └── use-update-action-de-reference-side-panel.ts
 │   │   │   │   ├── guided-tour
@@ -2314,6 +2338,8 @@
 │   │   │   │   │   ├── use-guided-tour.ts
 │   │   │   │   │   ├── use-seen-guided-tour-version.spec.ts
 │   │   │   │   │   └── use-seen-guided-tour-version.ts
+│   │   │   │   ├── secteurs
+│   │   │   │   │   └── secteur-colors.ts
 │   │   │   │   └── thematiques
 │   │   │   │       ├── thematiques.dropdown.tsx
 │   │   │   │       ├── use-get-thematique-and-sous-thematique-options.ts
@@ -2353,8 +2379,11 @@
 │   │   │   │   │           ├── get-chart-option.ts
 │   │   │   │   │           └── make-fiches-action-url-with-params.ts
 │   │   │   │   └── referentiels
+│   │   │   │       ├── mesures-referentiels.filtre.spec.ts
+│   │   │   │       ├── mesures-referentiels.filtre.ts
 │   │   │   │       ├── mesures.module-page.tsx
-│   │   │   │       └── mesures.module.tsx
+│   │   │   │       ├── mesures.module.tsx
+│   │   │   │       └── use-mesures-module-filtre.ts
 │   │   │   ├── tailwind-design-tokens.test.ts
 │   │   │   ├── ui
 │   │   │   │   ├── Markdown
@@ -2401,6 +2430,7 @@
 │   │   │   │   │   │   ├── matrix.chart.tsx
 │   │   │   │   │   │   ├── place-labels.spec.ts
 │   │   │   │   │   │   ├── place-labels.ts
+│   │   │   │   │   │   ├── point-callout.tsx
 │   │   │   │   │   │   ├── project-points.spec.ts
 │   │   │   │   │   │   ├── project-points.ts
 │   │   │   │   │   │   ├── quadrant.tsx
@@ -2433,6 +2463,12 @@
 │   │   │   │   ├── date-range
 │   │   │   │   │   ├── date-range.inline-editor.spec.tsx
 │   │   │   │   │   └── date-range.inline-editor.tsx
+│   │   │   │   ├── detailed-action
+│   │   │   │   │   ├── cover.banner.tsx
+│   │   │   │   │   ├── detailed-action.layout.tsx
+│   │   │   │   │   ├── field.title.tsx
+│   │   │   │   │   ├── item.row.tsx
+│   │   │   │   │   └── section.card.tsx
 │   │   │   │   ├── dropdownLists
 │   │   │   │   │   ├── FichesActionsDropdown
 │   │   │   │   │   │   └── FichesActionsDropdown.tsx
@@ -2526,7 +2562,6 @@
 │   │   │   │       │   ├── Kbd.css
 │   │   │   │       │   └── index.tsx
 │   │   │   │       ├── SpinnerLoader.tsx
-│   │   │   │       ├── card-cover.banner.tsx
 │   │   │   │       ├── floating-ui
 │   │   │   │       │   ├── DropdownFloater.tsx
 │   │   │   │       │   ├── ToastFloater.spec.tsx
@@ -2687,7 +2722,7 @@
 │   │   │       │   ├── download-file-mutation-options.ts
 │   │   │       │   ├── toast-context.tsx
 │   │   │       │   ├── toast-liaison-comptes.tsx
-│   │   │       │   ├── use-base-toast.spec.ts
+│   │   │       │   ├── use-base-toast.spec.tsx
 │   │   │       │   ├── use-base-toast.tsx
 │   │   │       │   └── use-mutation-toast.tsx
 │   │   │       ├── toggle-array-value.ts
@@ -3116,6 +3151,8 @@
 │   │   │   │   │   │   ├── personnalisation-consequences.service.ts
 │   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.spec.ts
 │   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.ts
+│   │   │   │   │   │   ├── personnalisation-questions-actives.rules.spec.ts
+│   │   │   │   │   │   ├── personnalisation-questions-actives.rules.ts
 │   │   │   │   │   │   ├── personnalisation-questions-actives.service.e2e-spec.ts
 │   │   │   │   │   │   ├── personnalisation-questions-actives.service.spec.ts
 │   │   │   │   │   │   ├── personnalisation-questions-actives.service.ts
@@ -3861,6 +3898,8 @@
 │   │   │   │   │   │   ├── french-date-to-iso.ts
 │   │   │   │   │   │   ├── normalize-plan-labels.spec.ts
 │   │   │   │   │   │   ├── normalize-plan-labels.ts
+│   │   │   │   │   │   ├── remove-duplicated-content.spec.ts
+│   │   │   │   │   │   ├── remove-duplicated-content.ts
 │   │   │   │   │   │   ├── text-to-rich-text.spec.ts
 │   │   │   │   │   │   └── text-to-rich-text.ts
 │   │   │   │   │   ├── ai-plan-import-job.repository.ts
@@ -3884,10 +3923,13 @@
 │   │   │   │   │   │   └── validate-ooxml-archive.ts
 │   │   │   │   │   ├── eval
 │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── describe-workbook-analysis.spec.ts
+│   │   │   │   │   │   ├── describe-workbook-analysis.ts
 │   │   │   │   │   │   ├── eval-metrics.spec.ts
 │   │   │   │   │   │   ├── eval-metrics.ts
 │   │   │   │   │   │   ├── eval.module.ts
 │   │   │   │   │   │   ├── references
+│   │   │   │   │   │   │   ├── ccpg-suivi-2021.json
 │   │   │   │   │   │   │   ├── csma-pcaet-2021.json
 │   │   │   │   │   │   │   └── lyon-pcaet-2030.json
 │   │   │   │   │   │   └── run-ai-import-eval.ts
@@ -3917,6 +3959,7 @@
 │   │   │   │   │   │   ├── ai-plan-import-job.ts
 │   │   │   │   │   │   ├── ai-plan-import-step-run.table.ts
 │   │   │   │   │   │   ├── disableable-field.ts
+│   │   │   │   │   │   ├── extracted-action.spec.ts
 │   │   │   │   │   │   ├── extracted-action.ts
 │   │   │   │   │   │   ├── import-checkpoint.ts
 │   │   │   │   │   │   ├── import-job-stats.ts
@@ -3932,8 +3975,47 @@
 │   │   │   │   │   ├── pipeline
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   ├── build-test-pdf.ts
+│   │   │   │   │   │   │   ├── build-test-workbook.ts
 │   │   │   │   │   │   │   └── sample.pdf
+│   │   │   │   │   │   ├── analyze-workbook
+│   │   │   │   │   │   │   ├── analyze-workbook.real-file.spec.ts
+│   │   │   │   │   │   │   ├── analyze-workbook.spec.ts
+│   │   │   │   │   │   │   ├── analyze-workbook.ts
+│   │   │   │   │   │   │   ├── build-tabular-actions.spec.ts
+│   │   │   │   │   │   │   ├── build-tabular-actions.ts
+│   │   │   │   │   │   │   ├── classify-column-attribute.spec.ts
+│   │   │   │   │   │   │   ├── classify-column-attribute.ts
+│   │   │   │   │   │   │   ├── classify-grid-rows.spec.ts
+│   │   │   │   │   │   │   ├── classify-grid-rows.ts
+│   │   │   │   │   │   │   ├── classify-sheets.spec.ts
+│   │   │   │   │   │   │   ├── classify-sheets.ts
+│   │   │   │   │   │   │   ├── detect-table-header.spec.ts
+│   │   │   │   │   │   │   ├── detect-table-header.ts
+│   │   │   │   │   │   │   ├── infer-form-layout.spec.ts
+│   │   │   │   │   │   │   ├── infer-form-layout.ts
+│   │   │   │   │   │   │   ├── infer-sheet-layout.spec.ts
+│   │   │   │   │   │   │   ├── infer-sheet-layout.ts
+│   │   │   │   │   │   │   ├── map-tabular-statut.spec.ts
+│   │   │   │   │   │   │   ├── map-tabular-statut.ts
+│   │   │   │   │   │   │   ├── match-column-label.spec.ts
+│   │   │   │   │   │   │   ├── match-column-label.ts
+│   │   │   │   │   │   │   ├── profile-columns.spec.ts
+│   │   │   │   │   │   │   ├── profile-columns.ts
+│   │   │   │   │   │   │   ├── read-csv-grid.spec.ts
+│   │   │   │   │   │   │   ├── read-csv-grid.ts
+│   │   │   │   │   │   │   ├── read-nested-levels.spec.ts
+│   │   │   │   │   │   │   ├── read-nested-levels.ts
+│   │   │   │   │   │   │   ├── read-outline.spec.ts
+│   │   │   │   │   │   │   ├── read-outline.ts
+│   │   │   │   │   │   │   ├── read-workbook-grid.spec.ts
+│   │   │   │   │   │   │   ├── read-workbook-grid.ts
+│   │   │   │   │   │   │   ├── render-tabular-fiche.spec.ts
+│   │   │   │   │   │   │   ├── render-tabular-fiche.ts
+│   │   │   │   │   │   │   ├── sheet-grid.ts
+│   │   │   │   │   │   │   ├── sheet-layout.spec.ts
+│   │   │   │   │   │   │   └── sheet-layout.ts
 │   │   │   │   │   │   ├── classify-secteurs
+│   │   │   │   │   │   │   ├── classify-secteurs.prompt.ts
 │   │   │   │   │   │   │   ├── classify-secteurs.schema.ts
 │   │   │   │   │   │   │   ├── classify-secteurs.spec.ts
 │   │   │   │   │   │   │   └── classify-secteurs.ts
@@ -3958,6 +4040,7 @@
 │   │   │   │   │   │   │   ├── detect-document-tome.spec.ts
 │   │   │   │   │   │   │   └── detect-document-tome.ts
 │   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   ├── document-page.spec.ts
 │   │   │   │   │   │   │   └── document-page.ts
 │   │   │   │   │   │   ├── enrich-sous-actions
 │   │   │   │   │   │   │   ├── apply-enrichments.spec.ts
@@ -3985,6 +4068,8 @@
 │   │   │   │   │   │   ├── keep-succeeded-batches.spec.ts
 │   │   │   │   │   │   ├── keep-succeeded-batches.ts
 │   │   │   │   │   │   ├── normalize-text
+│   │   │   │   │   │   │   ├── clean-text.spec.ts
+│   │   │   │   │   │   │   ├── clean-text.ts
 │   │   │   │   │   │   │   ├── normalize-pages.spec.ts
 │   │   │   │   │   │   │   └── normalize-pages.ts
 │   │   │   │   │   │   ├── pipeline-checkpoint.ts
@@ -4028,6 +4113,8 @@
 │   │   │   │   │   │   │   ├── scout-units.spec.ts
 │   │   │   │   │   │   │   └── scout-units.ts
 │   │   │   │   │   │   ├── segment-document
+│   │   │   │   │   │   │   ├── cut-tabular-units.spec.ts
+│   │   │   │   │   │   │   ├── cut-tabular-units.ts
 │   │   │   │   │   │   │   ├── cut-units.spec.ts
 │   │   │   │   │   │   │   ├── cut-units.ts
 │   │   │   │   │   │   │   ├── detect-headings.ts
@@ -4710,6 +4797,10 @@
 │   │   │   │   │       ├── validate-audit.router.ts
 │   │   │   │   │       └── validate-audit.service.ts
 │   │   │   │   ├── list-actions
+│   │   │   │   │   ├── list-action-definitions.input.ts
+│   │   │   │   │   ├── list-action-definitions.router.e2e-spec.ts
+│   │   │   │   │   ├── list-action-definitions.router.ts
+│   │   │   │   │   ├── list-action-definitions.service.ts
 │   │   │   │   │   ├── list-action-summaries.request.ts
 │   │   │   │   │   ├── list-actions-grouped-by-id.input.ts
 │   │   │   │   │   ├── list-actions.errors.ts
@@ -4721,6 +4812,7 @@
 │   │   │   │   │   ├── action-computed-points.table.ts
 │   │   │   │   │   ├── action-definition-tag.table.ts
 │   │   │   │   │   ├── action-definition.table.ts
+│   │   │   │   │   ├── action-depth.column.ts
 │   │   │   │   │   ├── action-node.view.ts
 │   │   │   │   │   ├── action-pilote.table.ts
 │   │   │   │   │   ├── action-relation.table.ts
@@ -4846,6 +4938,7 @@
 │   │   │   │   │   │   ├── list-snapshots.controller.ts
 │   │   │   │   │   │   ├── list-snapshots.service.e2e-spec.ts
 │   │   │   │   │   │   └── list-snapshots.service.ts
+│   │   │   │   │   ├── snapshot-without-payloads.utils.ts
 │   │   │   │   │   ├── snapshot.table.ts
 │   │   │   │   │   ├── snapshots.constants.ts
 │   │   │   │   │   ├── snapshots.errors.ts
@@ -6354,6 +6447,7 @@
 │   │   │   │   ├── drop-reponse-historique-triggers.sql
 │   │   │   │   ├── drop-save-reponse.sql
 │   │   │   │   ├── drop_business_evaluation.sql
+│   │   │   │   ├── drop_client_scores_dependances.sql
 │   │   │   │   ├── drop_client_scores_triggers.sql
 │   │   │   │   ├── justification.sql
 │   │   │   │   ├── question.sql
@@ -6973,6 +7067,7 @@
 │   │   │   │   ├── drop-reponse-historique-triggers.sql
 │   │   │   │   ├── drop-save-reponse.sql
 │   │   │   │   ├── drop_business_evaluation.sql
+│   │   │   │   ├── drop_client_scores_dependances.sql
 │   │   │   │   ├── drop_client_scores_triggers.sql
 │   │   │   │   ├── justification.sql
 │   │   │   │   ├── question.sql
@@ -7592,6 +7687,7 @@
 │   │       │   ├── drop-reponse-historique-triggers.sql
 │   │       │   ├── drop-save-reponse.sql
 │   │       │   ├── drop_business_evaluation.sql
+│   │       │   ├── drop_client_scores_dependances.sql
 │   │       │   ├── drop_client_scores_triggers.sql
 │   │       │   ├── justification.sql
 │   │       │   ├── question.sql
@@ -8154,6 +8250,7 @@
 │   │   │   ├── phase-1-periodicites-des-indicateurs.md
 │   │   │   ├── phase-2-catalogue-et-parcours-electrification.md
 │   │   │   └── phase-3-cadrage-reporting.md
+│   │   ├── 2026-10-01-001-perf-optim-refetch-referentiel-score-plan.md
 │   │   └── 2026-10-09-001-refactor-backend-same-origin-cookie-host-only-plan.md
 │   └── solutions
 │       ├── architecture-patterns
@@ -8249,6 +8346,8 @@
 │   │   │   │   │   ├── list-fiches-filter.spec.ts
 │   │   │   │   │   └── list-fiches.pom.ts
 │   │   │   │   └── show-fiche
+│   │   │   │       ├── actions-liees.pom.ts
+│   │   │   │       ├── actions-liees.spec.ts
 │   │   │   │       ├── breadcrumbs-navigation.spec.ts
 │   │   │   │       ├── contributeur.spec.ts
 │   │   │   │       ├── financeurs-draft.spec.ts
@@ -8256,6 +8355,7 @@
 │   │   │   │       ├── mesures-liees.pom.ts
 │   │   │   │       ├── mesures-liees.spec.ts
 │   │   │   │       ├── mutualiser-action.spec.ts
+│   │   │   │       ├── notes-saisie.spec.ts
 │   │   │   │       └── sous-actions.pom.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
@@ -8691,6 +8791,7 @@
 │   │   │   │   │   ├── action-statut.schema.ts
 │   │   │   │   │   ├── action-thematique-sgpe.enum.ts
 │   │   │   │   │   ├── action-type.enum.ts
+│   │   │   │   │   ├── list-action-definitions.output.ts
 │   │   │   │   │   └── list-actions.input.ts
 │   │   │   │   ├── historique
 │   │   │   │   │   ├── historique-item.schema.ts
@@ -8749,6 +8850,8 @@
 │   │   │   │   │       ├── start-new-audit-cycle.rules-errors.ts
 │   │   │   │   │       ├── start-new-audit-cycle.rules.spec.ts
 │   │   │   │   │       └── start-new-audit-cycle.rules.ts
+│   │   │   │   ├── merge-action-definitions-and-state.spec.ts
+│   │   │   │   ├── merge-action-definitions-and-state.ts
 │   │   │   │   ├── referentiel-definition.schema.ts
 │   │   │   │   ├── referentiel-id.enum.ts
 │   │   │   │   ├── referentiel-label.enum.ts
@@ -9254,6 +9357,11 @@
 │       │   │   │   └── index.ts
 │       │   │   ├── VisibleWhen
 │       │   │   │   └── index.tsx
+│       │   │   ├── action-card
+│       │   │   │   ├── action-card.spec.tsx
+│       │   │   │   ├── action-card.stories.tsx
+│       │   │   │   ├── action-card.tsx
+│       │   │   │   └── index.ts
 │       │   │   ├── autosave-badge
 │       │   │   │   ├── autosave-badge.stories.tsx
 │       │   │   │   ├── autosave-badge.tsx
@@ -9602,4 +9710,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1491 directories, 8517 files
+1495 directories, 8621 files

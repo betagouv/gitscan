@@ -1,3 +1,78 @@
+2026-10-21T23:26:35+02:00 - 311931a - Emilien Escalle : test(plans): renseigner les auteurs des liens de thématiques
+2026-10-21T23:26:35+02:00 - 2bfd515 - Emilien Escalle : feat(plans): ajouter le filtre sans thématique (TET-7809)
+2026-10-21T21:40:52+02:00 - aeefce0 - Emilien Escalle : feat(plans): naviguer entre les fiches action d'un plan
+2026-10-21T21:40:52+02:00 - a83252d - Emilien Escalle : fix(collectivites): attendre la synchronisation du contexte d'instruction
+2026-10-21T19:18:49+02:00 - cc04d97 - Leny Bernard : fix(plans): la description d'une fiche importée ne reprend plus ce qui a sa place dans un autre champ
+2026-10-21T19:18:49+02:00 - bcc2114 - Leny Bernard : fix(plans): signale les fiches complétées par leur seul n° et garde les colonnes inconnues des onglets d'indicateurs
+2026-10-21T19:18:49+02:00 - b39941e - Leny Bernard : fix(plans): borne la grille d'un onglet et compare les fiches sur leur chemin compacté
+2026-10-21T19:18:49+02:00 - ac1b12e - Leny Bernard : test(plans): les faux modèles des e2e répondent aussi aux effets attendus
+2026-10-21T19:18:49+02:00 - 83a7496 - Leny Bernard : feat(plans): l'import IA lit la structure des tableurs avant d'appeler le modèle
+2026-10-21T19:18:49+02:00 - 7d118ba - Leny Bernard : test(plans): le test de bornage de la grille ne fusionne plus une colonne entière
+2026-10-21T19:18:49+02:00 - 1efc0b7 - Leny Bernard : fix(plans): la consolidation rend aussi les objectifs, et un nombre décimal n'est plus pris pour un numéro de liste
+2026-10-21T19:18:49+02:00 - 09d1a22 - Leny Bernard : feat(plans): l'import IA propose les effets attendus de chaque action
+2026-10-21T19:03:08+02:00 - a75fa5d - Emilien Escalle : feat(indicateurs): exporter un indicateur en Excel depuis sa vignette
+2026-10-21T19:03:08+02:00 - 8600816 - Emilien Escalle : test(indicateurs): privilégier la couverture e2e de l’export Excel
+2026-10-21T18:43:00+02:00 - cfc6685 - Gaël Servaud : fix(app): le volet latéral tient dans l'écran sans avoir à faire défiler la page
+2026-10-21T18:42:42+02:00 - 82b7c5e - Gaël Servaud : refactor(actions-de-reference): détail aligné sur la mise en page de la fiche, avec retour à la page d'origine
+2026-10-21T18:41:02+02:00 - d584317 - Gaël Servaud : feat(collectivites): la carte de priorisation colore chaque levier selon son secteur, comme le Mondrian SNBC
+2026-10-21T17:48:00+02:00 - 6e7eb8b - Gaël Servaud : feat(plans): le volet « Lier une action » lie et dissocie par une icône au lieu d'une case à cocher
+2026-10-21T17:03:57+02:00 - dd71fbd - Fred Arnoux : chore(referentiels): supprime les vues et fonctions qui lisent encore les anciennes tables de scores
+2026-10-21T17:03:57+02:00 - d85ca35 - Fred Arnoux : chore(collectivites): supprime delete_collectivite_test, qui n'est plus appelée
+2026-10-21T17:03:57+02:00 - 3db89a0 - Fred Arnoux : fix(referentiels): liste les colonnes de indicateur_collectivite dans le revert de crm_usages
+2026-10-21T16:52:28+02:00 - f4d2eab - Marc Rutkowski : perf(referentiels): sépare définitions et état des actions d'un référentiel
+2026-10-21T16:52:28+02:00 - e3818b6 - Marc Rutkowski : fix(referentiels): la version renvoyée par listActionDefinitions correspond toujours aux définitions
+2026-10-21T16:52:28+02:00 - bf52c06 - Marc Rutkowski : docs(referentiels): explique pourquoi un écart de version traité reste marqué
+2026-10-21T16:52:28+02:00 - bd74647 - Marc Rutkowski : docs(plans): plan d'allègement de listActionsGroupedById après recalcul des scores
+2026-10-21T16:52:28+02:00 - 7c090a1 - Marc Rutkowski : perf(referentiels): ne charge que les référentiels des mesures demandées
+2026-10-21T16:52:28+02:00 - 5eb82e3 - Marc Rutkowski : perf(referentiels): la mise à jour du commentaire d'une mesure ne recharge plus listActionsGroupedById
+2026-10-21T16:52:28+02:00 - 4dd49a9 - Marc Rutkowski : perf(referentiels): les mutations de statut et de score ne renvoient plus le snapshot complet
+2026-10-21T16:52:28+02:00 - 1ac5d9c - Marc Rutkowski : fix(referentiels): la mise à jour optimiste du commentaire d'une mesure s'applique
+2026-10-21T16:52:28+02:00 - 060f41a - Marc Rutkowski : fix(referentiels): les onglets restés sur l'ancien front ne plantent plus sur listActionsGroupedById
+2026-10-21T16:40:11+02:00 - 66e6494 - Gaël Servaud : refactor(plans): les actions de survol de FicheCard sortent dans FicheCardHoverActions, libellés par appLabels
+2026-10-21T16:40:11+02:00 - 564d237 - Gaël Servaud : refactor(plans): le volet « Lier une action » utilise FicheCard, FicheActionCard disparaît
+2026-10-21T16:15:18+02:00 - be0023b - Emilien Escalle : fix(app): autorise le chargement de la toolbar PostHog dans la CSP
+2026-10-21T15:06:51+02:00 - 8540c55 - Gaël Servaud : refactor(plans): les cartes fiche reposent sur ActionCard comme la carte d'action de référence
+2026-10-20T19:55:25+02:00 - 595c39b - Emilien Escalle : test(plans): attend la fermeture du sélecteur avant la saisie
+2026-10-20T19:55:25+02:00 - 4db83a3 - Emilien Escalle : fix(plans): protège les brouillons des mises à jour concurrentes
+2026-10-20T19:55:25+02:00 - 1702f02 - Emilien Escalle : fix(plans): préserve la saisie des notes de suivi
+2026-10-20T18:47:14+02:00 - 9ad3a94 - Emilien Escalle : fix(indicateurs): fiabilise l’import des populations par lots
+2026-10-20T17:34:59+02:00 - d6f52fd - Marc Rutkowski : feat(collectivites): supprime le choix du référentiel du programme à l'onboarding
+2026-10-20T16:31:38+02:00 - b9e17af - Gaël Servaud : feat(priorisation): la carte d'une action de référence se surligne au survol comme une carte d'action
+2026-10-20T16:22:24+02:00 - 3623dfb - Leny Bernard : fix(plans): revoit le wording de vérification des plans importés par IA
+2026-10-20T16:17:58+02:00 - a382020 - Gaël Servaud : feat(ui): ActionCard, une carte à actions de survol et surbrillance
+2026-10-20T16:14:47+02:00 - cc87352 - Gaël Servaud : feat(priorisation): la présélection vide propose d'ouvrir le levier le plus important
+2026-10-20T16:14:47+02:00 - b6aa649 - Gaël Servaud : feat(priorisation): le volet d'un levier filtre par plusieurs catégories et n'a plus de recherche
+2026-10-20T16:14:47+02:00 - aa1da23 - Gaël Servaud : feat(priorisation): sauvegarder ou retirer une action du volet affiche un toast avec un lien
+2026-10-20T16:14:47+02:00 - 51e49c0 - Gaël Servaud : feat(priorisation): le libellé d'une action de référence n'indique plus ADEME
+2026-10-20T16:14:47+02:00 - 41b2172 - Gaël Servaud : feat(priorisation): « Il manque une action » confirme l'envoi par un toast et laisse le formulaire ouvert
+2026-10-20T16:14:47+02:00 - 35ebbf7 - Gaël Servaud : feat(priorisation): une action sauvegardée propose « Retirer » à la place de « Sauvegarder »
+2026-10-20T14:54:19+02:00 - fbb2b92 - Marc Rutkowski : fix(referentiels): rétablit les raccourcis Shift/Alt pour déplier les lignes d'un même niveau
+2026-10-20T14:54:19+02:00 - 4c9a761 - Marc Rutkowski : feat(referentiels): généralise les raccourcis pour plier/déplier les lignes d'un même niveau à la vue tabulaire
+2026-10-20T14:24:48+02:00 - 9530042 - Marc Rutkowski : fix(personnalisations): masque en cascade les questions dont la question parente est masquée
+2026-10-20T14:24:48+02:00 - 241ef01 - Marc Rutkowski : feat(personnalisations): refuse à l'import les dépendances circulaires entre expressions de visibilité
+2026-10-20T13:25:32+02:00 - 6334400 - mehdilouraoui : fix(personne-tag): conserve les pilotes de démarche et de plan au rattachement
+2026-10-20T12:16:27+02:00 - 7a84d70 - Emilien Escalle : fix(ui): annonce le nombre de catégories de filtres masquées
+2026-10-20T12:16:27+02:00 - 13a746c - Emilien Escalle : fix(tableaux-de-bord): rétablit le regroupement des filtres (TET-7679)
+2026-10-20T11:51:43+02:00 - edbe3f1 - Leny Bernard : refactor(demarches): améliore l'affichage des plans et la clarté de l'import IA
+2026-10-20T11:10:13+02:00 - f0e2f85 - Leny Bernard : fix(plans): suivi de l'import IA aligné à gauche dans une modale resserrée
+2026-10-20T11:10:13+02:00 - a98e8f7 - Leny Bernard : fix(site): un peu plus d'air entre l'introduction de la démo PCAET et la vidéo
+2026-10-20T11:02:00+02:00 - 35ef064 - Leny Bernard : fix(demarches): statut lisible en entier et « Continuer » pour un dossier instruit dans la liste
+2026-10-20T10:59:02+02:00 - 2d4a0af - Emilien Escalle : fix(reports): corrige le rendu des motifs des indicateurs (TET-8201)
+2026-10-20T10:33:23+02:00 - 6da0d1b - Gaël Servaud : fix(priorisation): le treemap et la status bar utilisent la police Marianne, et deux clics rapides ne surlignent plus deux catégories
+2026-10-20T10:23:37+02:00 - e9d3a03 - Marc Rutkowski : feat(tdb-perso): filtre les mesures pilotées selon l'affichage des référentiels
+2026-10-20T10:23:37+02:00 - d77b2ad - Marc Rutkowski : fix(make): cite les chemins passés à make lint files=…
+2026-10-20T09:42:25+02:00 - fe44a74 - Gaël Servaud : fix(priorisation): la légende de la matrice s'aligne à gauche
+2026-10-20T09:42:25+02:00 - fb0c91b - Gaël Servaud : feat(priorisation): le CTA du levier prioritaire devient « Afficher » et le bloc des actions sauvegardées n'a plus de description
+2026-10-20T09:42:25+02:00 - f9cdfaa - Gaël Servaud : feat(priorisation): les points de la matrice ont un liseret blanc et un anneau gris au survol, primary à la sélection
+2026-10-20T09:42:25+02:00 - ce9d7ad - Gaël Servaud : feat(priorisation): le lien « Méthodologie » affiche l'icône de lien externe
+2026-10-20T09:42:25+02:00 - c310ffe - Gaël Servaud : feat(design-tokens): ajoute le rouge très pâle error.4 (#FFEFEF)
+2026-10-20T09:42:25+02:00 - a522ff0 - Gaël Servaud : feat(priorisation): « Terminer » la visite guidée referme le volet comme l'abandon
+2026-10-20T09:42:25+02:00 - 8e87312 - Gaël Servaud : feat(priorisation): le levier à prioriser reçoit un pulse et un « Commencez ici : cliquez sur un point gris »
+2026-10-20T09:42:25+02:00 - 86fa7c3 - Gaël Servaud : feat(priorisation): un clic sur le point déjà sélectionné referme le volet
+2026-10-20T09:42:25+02:00 - 5161aaf - Gaël Servaud : feat(priorisation): uniformise l'espacement entre les textes des tooltips de graphiques
+2026-10-20T09:42:25+02:00 - 3ba4a8e - Gaël Servaud : feat(priorisation): le quadrant « levier à prioriser » prend le fond error.4
+2026-10-20T09:42:25+02:00 - 35ad11f - Gaël Servaud : fix(priorisation): la matrice utilise la police Marianne
+2026-10-20T09:42:25+02:00 - 2ea9e58 - Gaël Servaud : feat(priorisation): la matrice n'anime plus son apparition
 2026-10-19T19:13:50+02:00 - ba7a58f - Emilien Escalle : fix(referentiels): harmonise les scores de la synthèse (TET-7897)
 2026-10-19T19:13:50+02:00 - 4fd26ae - Emilien Escalle : test(referentiels): évite le chargement dynamique de ui dans le test du score
 2026-10-19T16:33:42+02:00 - 0dbb8cd - Emilien Escalle : fix(indicateurs): inclut les enfants participant au score (TET-7970)
