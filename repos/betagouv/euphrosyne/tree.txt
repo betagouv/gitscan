@@ -83,7 +83,8 @@
 │   │           └── change_list_results.html
 │   ├── tests
 │   │   ├── __init__.py
-│   │   └── test_tally_hook.py
+│   │   ├── test_tally_hook.py
+│   │   └── test_tally_security.py
 │   └── urls.py
 ├── conftest.py
 ├── cron.json
@@ -180,7 +181,32 @@
 │   ├── configuring_lab_methods.md
 │   ├── configuring_run_metadata.md
 │   ├── features.md
-│   └── project_data_lifecycle.md
+│   ├── project_data_lifecycle.md
+│   └── technical_architecture_document
+│       ├── README.md
+│       └── assets
+│           ├── donnees-authentification.mmd
+│           ├── donnees-authentification.svg
+│           ├── donnees-experiences.mmd
+│           ├── donnees-experiences.svg
+│           ├── donnees-formation.mmd
+│           ├── donnees-formation.svg
+│           ├── donnees-projets.mmd
+│           ├── donnees-projets.svg
+│           ├── donnees-stockage.mmd
+│           ├── donnees-stockage.svg
+│           ├── services-bureau-distant.mmd
+│           ├── services-bureau-distant.svg
+│           ├── services-catalogue.mmd
+│           ├── services-catalogue.svg
+│           ├── services-exploitation.mmd
+│           ├── services-exploitation.svg
+│           ├── services-plateforme.mmd
+│           ├── services-plateforme.svg
+│           ├── services-radioprotection.mmd
+│           ├── services-radioprotection.svg
+│           ├── services-upload.mmd
+│           └── services-upload.svg
 ├── documentation
 │   ├── MRD_AGLAE_LP_100624.mwb
 │   └── relational_data_model.mwb
@@ -273,6 +299,7 @@
 │   ├── project_data.py
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── test_directory_requests.py
 │   │   ├── test_download_urls.py
 │   │   ├── test_hooks.py
 │   │   ├── test_project_data.py
@@ -381,6 +408,7 @@
 │   │   ├── __init__.py
 │   │   ├── test_admin.py
 │   │   ├── test_cron_config.py
+│   │   ├── test_mailers.py
 │   │   ├── test_nav.py
 │   │   └── test_script_json_data.py
 │   ├── urls.py
@@ -463,9 +491,6 @@
 │   │       │   ├── methods.ts
 │   │       │   └── schedule-form.ts
 │   │       ├── run-data-downloader.js
-│   │       ├── snippet.js
-│   │       ├── snippets
-│   │       │   └── tabular_formset_row.ts
 │   │       ├── storage-service.ts
 │   │       ├── upload-sas-url-mixin.ts
 │   │       └── utils.js
@@ -519,7 +544,6 @@
 │   ├── js_tests
 │   │   ├── _jsdom_mocks
 │   │   │   └── gettext.js
-│   │   ├── snippet.spec.js
 │   │   └── utils.spec.js
 │   ├── management
 │   │   ├── __init__.py
@@ -631,10 +655,8 @@
 │   │   │       │   └── RunObjectGroupProjectImportModal.tsx
 │   │   │       ├── object
 │   │   │       │   └── form.js
-│   │   │       ├── objectgroup-inline-handlers.js
 │   │   │       ├── pages
 │   │   │       │   ├── objectgroup-import-provider.js
-│   │   │       │   ├── objectgroup-inline.js
 │   │   │       │   ├── objectgroup.ts
 │   │   │       │   └── objectgroup_popup_response.js
 │   │   │       ├── services.ts
@@ -1038,13 +1060,6 @@
 │   │   ├── 0001_initial.py
 │   │   └── __init__.py
 │   ├── models.py
-│   ├── pdf_export
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   │   ├── image_utils.py
-│   │   ├── pdf.py
-│   │   ├── text_utils.py
-│   │   └── views.py
 │   ├── static
 │   │   └── css
 │   │       └── pages
@@ -1056,12 +1071,6 @@
 │   │       └── notebook.html
 │   ├── tests
 │   │   ├── __init__.py
-│   │   ├── pdf_export
-│   │   │   ├── __init__.py
-│   │   │   ├── test_image_utils.py
-│   │   │   ├── test_pdf.py
-│   │   │   ├── test_text_utils.py
-│   │   │   └── test_views.py
 │   │   ├── test_api_permissions.py
 │   │   └── test_views.py
 │   ├── urls.py
@@ -1083,10 +1092,14 @@
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── nav.py
-│   └── providers
+│   ├── providers
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   └── mailjet.py
+│   └── tests
 │       ├── __init__.py
-│       ├── base.py
-│       └── mailjet.py
+│       ├── test_admin.py
+│       └── test_mailjet.py
 ├── manage.py
 ├── objectstorage
 │   ├── __init__.py
@@ -1216,6 +1229,7 @@
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── test_email_utils.py
+│   │   ├── test_html_email_escaping.py
 │   │   └── test_names.py
 │   └── view_mixins.py
 ├── standard
@@ -1275,4 +1289,4 @@
 │   └── global.d.ts
 ├── vite.config.ts
 └── webpack.config.js
-271 directories, 1006 files
+271 directories, 1020 files
