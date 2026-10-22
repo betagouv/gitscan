@@ -1,18 +1,22 @@
-## Changelog : b3desk (30 derniers jours, au 24 juillet 2026)
+## Changelog : b3desk (30 derniers jours, au 21 octobre 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'interface utilisateur, notamment l'affichage du nom de la réunion dans l'interface d'administration. Des corrections ont également été apportées pour améliorer la stabilité et la configuration de l'environnement de développement, ainsi que des mises à jour de traductions.
+Cette période a été marquée par l'avancement significatif de l'interface d'administration avec le déploiement du troisième lot de fonctionnalités du Backoffice et la gestion du transfert de propriété des réunions. Des efforts importants ont également été consacrés au renforcement de la sécurité (protection des clés API et jetons) et à la modernisation de la structure du code.
 
 ### Évolutions fonctionnelles
-- Affichage du nom de la réunion dans l'interface d'administration. [#382](https://github.com/numerique-gouv/b3desk/pull/382)
+- **Administration** : Déploiement du troisième lot de fonctionnalités pour le Backoffice [#375].
+- **Gestion des réunions** : Ajout de la fonctionnalité de transfert de propriété des réunions [#391].
+- **Expérience utilisateur** : 
+    - Amélioration de la gestion des erreurs lors des tentatives de connexion SIP lorsque le service est désactivé.
+    - Correction d'erreurs dans la console et sécurisation de l'affichage des noms de réunions et de groupes dans les messages de notification.
 
 ### Évolutions techniques
-- Correction de la configuration réseau dans l'environnement Docker pour les tests CI. [#392](https://github.com/numerique-gouv/b3desk/issues/392)
-- Amélioration de la documentation concernant la configuration réseau persistante pour BigBlueButton en local.
-- Intégration de la fonctionnalité de transcription IA (travaux en cours). [#362](https://github.com/numerique-gouv/b3desk/issues/362)
-- Mise à jour de la base de données de test pour inclure le modèle de groupes. [#387](https://github.com/numerique-gouv/b3desk/issues/387)
+- **Sécurité** : Suppression de l'enregistrement (logging) des clés API Nextcloud et des jetons utilisateurs pour éviter toute fuite de données sensibles.
+- **Refactoring** : Suppression du code JavaScript embarqué pour améliorer la structure et la maintenabilité du projet [#439].
+- **Infrastructure et CI/CD** : 
+    - Correction de la chaîne d'intégration continue (CI).
+    - Mise à jour des exigences de version Python (fin du support des versions antérieures à 3.14).
+- **Tests** : Amélioration de la fiabilité de la suite de tests (correction de tests cassés et mise à jour de `pytest-iam`).
 
 ### Autres changements
-- Corrections de fautes de frappe dans le code.
-- Correction d'une erreur d'import.
-- Backoffice lot 2 : Améliorations diverses de l'interface d'administration. [#374](https://github.com/numerique-gouv/b3desk/issues/374)
+- Mises à jour diverses des dépendances du projet.

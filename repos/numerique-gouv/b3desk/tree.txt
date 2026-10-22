@@ -1,9 +1,12 @@
 .
 ├── .gitguardian.yaml
 ├── .github
+│   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
+│       ├── Check_changelog.yml
 │       ├── Check_lint.yml
 │       ├── Check_local_run.yml
+│       ├── Check_security.yml
 │       ├── Check_translations.yml
 │       ├── Documentation.yml
 │       ├── Release.yml
@@ -13,10 +16,19 @@
 ├── .ignore
 ├── .pre-commit-config.yaml
 ├── .readthedocs.yaml
+├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
 ├── bigbluebutton
+├── changelog.d
+│   ├── 20260916_172026_eloi.md
+│   ├── 20260917_122317_eloi.md
+│   ├── 20260922_113153_sebastien_329_transfer_meeting_ownership.md
+│   ├── 20260922_121849_sebastien_176_admin_interface_lot_3.md
+│   ├── 20261001_143439_sebastien_417_remove_inline_js.md
+│   ├── README.md
+│   └── new_fragment.md.j2
 ├── docker-compose.override.yml
 ├── docker-compose.preprod.yml
 ├── docker-compose.prod.yml
@@ -43,6 +55,7 @@
 │   │   └── translation.md
 │   ├── index.rst
 │   └── maintainers
+│       ├── changelog.rst
 │       ├── codeReview.md
 │       ├── deployment.md
 │       ├── fileSharingProcess.md
@@ -194,6 +207,8 @@
 │   └── keycloak.sh
 ├── postgres.env
 ├── pyproject.toml
+├── scripts
+│   └── changelog_migration_head.py
 ├── tokenmock
 │   ├── Dockerfile
 │   ├── app.py
@@ -2305,11 +2320,14 @@
 │   │   │   │   ├── home.svg
 │   │   │   │   └── webinaire.svg
 │   │   │   ├── js
+│   │   │   │   ├── copy-in-clipboard.js
 │   │   │   │   ├── dropzone-min.js
 │   │   │   │   ├── dropzone.css
 │   │   │   │   ├── file_picker.js
+│   │   │   │   ├── group-members.js
 │   │   │   │   ├── join-authenticated.js
 │   │   │   │   ├── layout.js
+│   │   │   │   ├── matomo.js
 │   │   │   │   ├── meeting-form.js
 │   │   │   │   ├── meeting.js
 │   │   │   │   ├── scampi-modal.js
@@ -2334,7 +2352,7 @@
 │   │   ├── tasks.py
 │   │   ├── templates
 │   │   │   ├── admin
-│   │   │   │   ├── add_group_members_page.html
+│   │   │   │   ├── add_group_members.html
 │   │   │   │   ├── delete_group.html
 │   │   │   │   ├── group_form.html
 │   │   │   │   ├── group_form_content.html
@@ -2380,6 +2398,7 @@
 │   │   │   │   ├── end.html
 │   │   │   │   ├── file_picker.html
 │   │   │   │   ├── files.html
+│   │   │   │   ├── files_previous_page.html
 │   │   │   │   ├── filesform.html
 │   │   │   │   ├── form.html
 │   │   │   │   ├── id.html
@@ -2392,14 +2411,18 @@
 │   │   │   │   │   ├── mail_available_recording_notification_body.txt
 │   │   │   │   │   ├── mail_body.txt
 │   │   │   │   │   ├── mail_href.txt
+│   │   │   │   │   ├── mail_new_owner_body.html
+│   │   │   │   │   ├── mail_new_owner_body.txt
 │   │   │   │   │   ├── mail_remove_delegation_body.html
 │   │   │   │   │   ├── mail_remove_delegation_body.txt
 │   │   │   │   │   └── mail_subject.txt
 │   │   │   │   ├── modals
 │   │   │   │   │   ├── delegate-confirmation.html
 │   │   │   │   │   ├── delete.html
-│   │   │   │   │   └── invite.html
+│   │   │   │   │   ├── invite.html
+│   │   │   │   │   └── transfert-ownership-confirmation.html
 │   │   │   │   ├── recordings.html
+│   │   │   │   ├── recordings_previous_page.html
 │   │   │   │   ├── row.html
 │   │   │   │   ├── signin_links.html
 │   │   │   │   ├── visio_code_form.html
@@ -2435,18 +2458,21 @@
 │   │       ├── 9d4ba8cf710a_remove_obsolete_meeting_attributes.py
 │   │       ├── 9dd2b54b4b11_rename_meeting_user_id_to_owner_id.py
 │   │       ├── a1b2c3d4e5f6_remove_is_default_from_meeting_files.py
+│   │       ├── a3203f74e042_align_schema_with_models.py
 │   │       ├── a3a6e932b2ae_add_group_table_and_ai_summary.py
+│   │       ├── a84397b15b7f_save_meeting_urls_and_bbb_meeting_id.py
 │   │       ├── c25342fd2428_voicebridge_managed_by_b3desk.py
 │   │       ├── f68adee062bf_user_preferred_username.py
 │   │       └── fd08854f3582_disable_ai_summary_by_default.py
 │   ├── misc
-│   │   ├── gunicorn.py
+│   │   ├── gunicorn.conf.py
 │   │   ├── job.cron
 │   │   ├── run_webserver.sh
 │   │   └── wsgi.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
+│   │   ├── html_validation.py
 │   │   ├── meeting
 │   │   │   ├── test_bbb_callback.py
 │   │   │   ├── test_captcha.py
@@ -2455,7 +2481,8 @@
 │   │   │   ├── test_meeting.py
 │   │   │   ├── test_meeting_files.py
 │   │   │   ├── test_recordings.py
-│   │   │   └── test_shadow_meeting.py
+│   │   │   ├── test_shadow_meeting.py
+│   │   │   └── test_transfert_ownership.py
 │   │   ├── test_admin.py
 │   │   ├── test_api.py
 │   │   ├── test_authentication.py
@@ -2463,10 +2490,12 @@
 │   │   ├── test_cli.py
 │   │   ├── test_default.py
 │   │   ├── test_group.py
+│   │   ├── test_http_client.py
 │   │   ├── test_migrations.py
 │   │   ├── test_nextcloud.py
 │   │   ├── test_satisfaction_poll.py
 │   │   ├── test_settings.py
+│   │   ├── test_shorty.py
 │   │   ├── test_tasks.py
 │   │   ├── test_user.py
 │   │   └── test_utils.py
@@ -2494,4 +2523,4 @@
 │           └── LC_MESSAGES
 │               └── messages.po
 └── web.env.example
-197 directories, 2343 files
+199 directories, 2370 files
