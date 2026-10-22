@@ -45,7 +45,6 @@
 │   │   │       ├── 2026-08-04-le-tableau-des-dossiers-socle-et-surcouches.md
 │   │   │       ├── 2026-10-07-tables-lolfi-lisibles-par-tous-les-modules.md
 │   │   │       └── 2026-10-09-acces-entre-modules-par-les-services.md
-│   │   ├── nest-cli.json
 │   │   ├── package.json
 │   │   ├── prisma
 │   │   │   ├── generators
@@ -140,6 +139,20 @@
 │   │   │   │   ├── 20261013110000_marks_inactive_magistrats
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20261013120000_searches_magistrat_names
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261019120000_keeps_user_emails_in_lower_case
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261020100000_drops_unused_draft_affectation_index
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261020110000_deactivates_users
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261021100000_official_report_file_notes
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261021120000_keeps_user_status_history
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261021130000_keeps_admin_right_history
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261021140000_separates_admin_right_from_role
 │   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
@@ -247,8 +260,6 @@
 │   │   │   │   │   │   └── infrastructure
 │   │   │   │   │   │       ├── agendas.dto.ts
 │   │   │   │   │   │       ├── agendas.filter.ts
-│   │   │   │   │   │       ├── events
-│   │   │   │   │   │       │   └── on-agenda-invalidated.event-handler.ts
 │   │   │   │   │   │       ├── finders
 │   │   │   │   │   │       │   ├── agenda-render-context.finder.ts
 │   │   │   │   │   │       │   └── agenda-version.finder.ts
@@ -298,8 +309,6 @@
 │   │   │   │   │   │   │       ├── official-report-snapshot.spec.ts
 │   │   │   │   │   │   │       └── official-report-snapshot.ts
 │   │   │   │   │   │   ├── infrastructure
-│   │   │   │   │   │   │   ├── events
-│   │   │   │   │   │   │   │   └── on-official-report-invalidated.event-handler.ts
 │   │   │   │   │   │   │   ├── finders
 │   │   │   │   │   │   │   │   ├── official-report-render-context.finder.ts
 │   │   │   │   │   │   │   │   └── official-report-version.finder.ts
@@ -332,8 +341,6 @@
 │   │   │   │   │   │   │   ├── justice-presentation-plan.spec.ts
 │   │   │   │   │   │   │   └── justice-presentation-plan.ts
 │   │   │   │   │   │   ├── infrastructure
-│   │   │   │   │   │   │   ├── events
-│   │   │   │   │   │   │   │   └── on-presentation-plan-invalidated.event-handler.ts
 │   │   │   │   │   │   │   ├── presentation-plan-status.ts
 │   │   │   │   │   │   │   ├── presentation-plans.dto.ts
 │   │   │   │   │   │   │   ├── presentation-plans.filter.ts
@@ -363,10 +370,9 @@
 │   │   │   │   │       │   ├── agenda-progress.spec.ts
 │   │   │   │   │       │   ├── agenda-progress.ts
 │   │   │   │   │       │   ├── doc-file-name.ts
+│   │   │   │   │       │   ├── doc-invalidation.ts
 │   │   │   │   │       │   ├── doc-nomination-file-outcome.ts
-│   │   │   │   │       │   ├── doc-system-update-cause.ts
-│   │   │   │   │       │   └── invalidation
-│   │   │   │   │       │       └── official-report-invalidated.integration-event.ts
+│   │   │   │   │       │   └── doc-system-update-cause.ts
 │   │   │   │   │       └── infrastructure
 │   │   │   │   │           ├── agenda-content.ts
 │   │   │   │   │           ├── docs.controller.ts
@@ -374,6 +380,8 @@
 │   │   │   │   │           ├── document-trace.ts
 │   │   │   │   │           ├── draft-changes-by.spec.ts
 │   │   │   │   │           ├── draft-changes-by.ts
+│   │   │   │   │           ├── edited-html.spec.ts
+│   │   │   │   │           ├── edited-html.ts
 │   │   │   │   │           ├── finders
 │   │   │   │   │           │   ├── acted-nomination-files.finder.ts
 │   │   │   │   │           │   ├── agenda.finder.ts
@@ -385,13 +393,17 @@
 │   │   │   │   │           │   ├── find-session-docs.query.ts
 │   │   │   │   │           │   ├── is-session-ready-for-doc-generation.query.ts
 │   │   │   │   │           │   └── list-secretaries-general.query.ts
-│   │   │   │   │           └── services
-│   │   │   │   │               └── renderers
-│   │   │   │   │                   ├── common.html.spec.ts
-│   │   │   │   │                   ├── common.html.ts
-│   │   │   │   │                   ├── helpers.spec.ts
-│   │   │   │   │                   ├── helpers.ts
-│   │   │   │   │                   └── templates.types.ts
+│   │   │   │   │           ├── services
+│   │   │   │   │           │   └── renderers
+│   │   │   │   │           │       ├── common.html.spec.ts
+│   │   │   │   │           │       ├── common.html.ts
+│   │   │   │   │           │       ├── helpers.spec.ts
+│   │   │   │   │           │       ├── helpers.ts
+│   │   │   │   │           │       ├── safe-html.spec.ts
+│   │   │   │   │           │       ├── safe-html.ts
+│   │   │   │   │           │       └── templates.types.ts
+│   │   │   │   │           └── use-cases
+│   │   │   │   │               └── invalidate-docs.use-case.ts
 │   │   │   │   ├── feedback
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── feedback.spec.ts
@@ -413,6 +425,7 @@
 │   │   │   │   │   ├── config
 │   │   │   │   │   │   ├── config.constants.ts
 │   │   │   │   │   │   ├── config.module.ts
+│   │   │   │   │   │   ├── config.schema.spec.ts
 │   │   │   │   │   │   ├── config.schema.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── database
@@ -429,6 +442,8 @@
 │   │   │   │   │   ├── files
 │   │   │   │   │   │   ├── content-disposition.spec.ts
 │   │   │   │   │   │   ├── content-disposition.ts
+│   │   │   │   │   │   ├── delete-unreferenced-objects.cli.spec.ts
+│   │   │   │   │   │   ├── delete-unreferenced-objects.cli.ts
 │   │   │   │   │   │   ├── delete-unused-files.cli.spec.ts
 │   │   │   │   │   │   ├── delete-unused-files.cli.ts
 │   │   │   │   │   │   ├── files-cli.module.spec.ts
@@ -587,7 +602,6 @@
 │   │   │   │   ├── members
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── jurisdiction.ts
-│   │   │   │   │   │   ├── member-enums.ts
 │   │   │   │   │   │   ├── member.spec.ts
 │   │   │   │   │   │   └── member.ts
 │   │   │   │   │   ├── index.ts
@@ -700,6 +714,8 @@
 │   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.spec.ts
 │   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.ts
 │   │   │   │   │       │   ├── nomination-file-snapshot.ts
+│   │   │   │   │       │   ├── session-label.spec.ts
+│   │   │   │   │       │   ├── session-label.ts
 │   │   │   │   │       │   ├── session-transparence-file-status.spec.ts
 │   │   │   │   │       │   ├── session-transparence-file-status.ts
 │   │   │   │   │       │   ├── session-transparence.spec.ts
@@ -801,12 +817,16 @@
 │   │   │   │   │   ├── report-state.enum.ts
 │   │   │   │   │   ├── role.enum.ts
 │   │   │   │   │   ├── statut-affectation.enum.ts
-│   │   │   │   │   └── type-de-saisine.enum.ts
+│   │   │   │   │   ├── type-de-saisine.enum.ts
+│   │   │   │   │   ├── user-duty.enum.ts
+│   │   │   │   │   ├── user-status.enum.ts
+│   │   │   │   │   └── user-title.enum.ts
 │   │   │   │   └── simple-auth
 │   │   │   │       ├── domain
 │   │   │   │       │   ├── auth-impersonation.ts
 │   │   │   │       │   ├── auth-password.ts
 │   │   │   │       │   ├── auth-session.ts
+│   │   │   │       │   ├── auth-user.spec.ts
 │   │   │   │       │   └── auth-user.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── infrastructure
@@ -822,6 +842,7 @@
 │   │   │   │       │   ├── guards
 │   │   │   │       │   │   └── development-environment.guard.ts
 │   │   │   │       │   ├── openid-auth.controller.ts
+│   │   │   │       │   ├── password-hasher.ts
 │   │   │   │       │   ├── queries
 │   │   │   │       │   │   ├── details-user-from-impesronation-id.query.ts
 │   │   │   │       │   │   ├── details-user-from-session-id.query.ts
@@ -881,6 +902,9 @@
 │   │   │       ├── noop.ts
 │   │   │       ├── promises.ts
 │   │   │       ├── result.ts
+│   │   │       ├── rich-text-html.spec.ts
+│   │   │       ├── rich-text-html.ts
+│   │   │       ├── sanitize-html.ts
 │   │   │       ├── time-only.spec.ts
 │   │   │       ├── time-only.ts
 │   │   │       ├── time.ts
@@ -909,6 +933,8 @@
 │   │   ├── src
 │   │   │   ├── fixtures
 │   │   │   │   ├── auth.fixture.ts
+│   │   │   │   ├── docs.fixture.ts
+│   │   │   │   ├── lolfi.fixture.ts
 │   │   │   │   └── session.fixture.ts
 │   │   │   ├── fixtures.ts
 │   │   │   ├── generated
@@ -932,13 +958,17 @@
 │   │   │   │       └── types.ts
 │   │   │   ├── global.d.ts
 │   │   │   ├── specs
+│   │   │   │   ├── administration.e2e-spec.ts
 │   │   │   │   ├── affectation.e2e-spec.ts
+│   │   │   │   ├── agenda.e2e-spec.ts
 │   │   │   │   ├── auditions.e2e-spec.ts
-│   │   │   │   ├── docs.e2e-spec.ts
 │   │   │   │   ├── feedback.e2e-spec.ts
 │   │   │   │   ├── lolfi.e2e-spec.ts
 │   │   │   │   ├── magistrat.e2e-spec.ts
 │   │   │   │   ├── members.e2e-spec.ts
+│   │   │   │   ├── notice.e2e-spec.ts
+│   │   │   │   ├── observation.e2e-spec.ts
+│   │   │   │   ├── official-report.e2e-spec.ts
 │   │   │   │   ├── outcome.e2e-spec.ts
 │   │   │   │   ├── report.e2e-spec.ts
 │   │   │   │   ├── session.e2e-spec.ts
@@ -946,8 +976,10 @@
 │   │   │   │   └── summary.e2e-spec.ts
 │   │   │   ├── steps.ts
 │   │   │   ├── utils
+│   │   │   │   ├── cookies.ts
 │   │   │   │   ├── e2e-tokens.ts
 │   │   │   │   ├── files.ts
+│   │   │   │   ├── observation.ts
 │   │   │   │   ├── seed.ts
 │   │   │   │   └── wait-for.ts
 │   │   │   └── vitest.d.ts
@@ -1019,7 +1051,6 @@
 │       │   │   │   │   ├── DocumentBlocksEditor.tsx
 │       │   │   │   │   ├── DocumentHtmlEditor.stories.tsx
 │       │   │   │   │   ├── DocumentHtmlEditor.tsx
-│       │   │   │   │   ├── DocumentScreen.stories.tsx
 │       │   │   │   │   ├── DocumentScreen.tsx
 │       │   │   │   │   ├── DocumentViewer.tsx
 │       │   │   │   │   ├── JusticeContactSelector.tsx
@@ -1065,8 +1096,10 @@
 │       │   │   │   │   │   ├── doc-block.css
 │       │   │   │   │   │   ├── proposed-text.test.ts
 │       │   │   │   │   │   ├── proposed-text.ts
+│       │   │   │   │   │   ├── tiptap-node-to-html.test.ts
 │       │   │   │   │   │   ├── tiptap-node-to-html.ts
 │       │   │   │   │   │   └── useBlockActive.ts
+│       │   │   │   │   ├── document-blocks.fixtures.ts
 │       │   │   │   │   ├── document-content.ts
 │       │   │   │   │   ├── document.fixture.ts
 │       │   │   │   │   ├── official-report
@@ -1079,6 +1112,7 @@
 │       │   │   │   │   │       ├── blocks
 │       │   │   │   │   │       │   ├── OfficialReportConclusionBlock.tsx
 │       │   │   │   │   │       │   ├── OfficialReportFileBlock.tsx
+│       │   │   │   │   │       │   ├── OfficialReportFileNote.tsx
 │       │   │   │   │   │       │   ├── OfficialReportIntroBlock.tsx
 │       │   │   │   │   │       │   ├── OfficialReportSectionIntroBlock.tsx
 │       │   │   │   │   │       │   ├── OfficialReportSectionTitleBlock.tsx
@@ -1119,13 +1153,10 @@
 │       │   │   ├── feedback
 │       │   │   │   ├── components
 │       │   │   │   │   ├── AdminFeedbackForm.tsx
-│       │   │   │   │   ├── FeedbackForm.stories.tsx
 │       │   │   │   │   ├── FeedbackForm.test.tsx
 │       │   │   │   │   ├── FeedbackForm.tsx
 │       │   │   │   │   ├── FeedbackHeader.tsx
-│       │   │   │   │   ├── FeedbackHeaderButton.stories.tsx
 │       │   │   │   │   ├── FeedbackHeaderButton.tsx
-│       │   │   │   │   ├── FeedbackInvitation.stories.tsx
 │       │   │   │   │   ├── FeedbackInvitation.test.tsx
 │       │   │   │   │   ├── FeedbackInvitation.tsx
 │       │   │   │   │   ├── FeedbackLastAnswerNotice.tsx
@@ -1153,24 +1184,20 @@
 │       │   │   ├── magistrats
 │       │   │   │   └── components
 │       │   │   │       ├── MagistratDetailsContent.tsx
-│       │   │   │       ├── MagistratDetailsHeader.stories.tsx
 │       │   │   │       ├── MagistratDetailsHeader.tsx
-│       │   │   │       ├── MagistratIdentityCard.stories.tsx
 │       │   │   │       ├── MagistratIdentityCard.tsx
 │       │   │   │       ├── MagistratNominationFilesSection.test.tsx
 │       │   │   │       ├── MagistratNominationFilesSection.tsx
-│       │   │   │       ├── MagistratNominationFilesTable.stories.tsx
 │       │   │   │       ├── MagistratNominationFilesTable.tsx
 │       │   │   │       ├── MagistratObservationsSection.tsx
 │       │   │   │       ├── MagistratPhoneNumberDeleteModal.tsx
 │       │   │   │       ├── MagistratPhoneNumberModal.tsx
 │       │   │   │       ├── MagistratPhoneNumbersSection.tsx
-│       │   │   │       ├── MagistratSearch.stories.tsx
 │       │   │   │       ├── MagistratSearch.test.tsx
 │       │   │   │       ├── MagistratSearch.tsx
-│       │   │   │       ├── MagistratSearchCard.stories.tsx
 │       │   │   │       ├── MagistratSearchCard.test.tsx
-│       │   │   │       └── MagistratSearchCard.tsx
+│       │   │   │       ├── MagistratSearchCard.tsx
+│       │   │   │       └── MagistratStatusBadge.tsx
 │       │   │   ├── members
 │       │   │   │   └── components
 │       │   │   │       ├── DetailsMember.tsx
@@ -1178,8 +1205,7 @@
 │       │   │   │       ├── JurisdictionSelector.tsx
 │       │   │   │       ├── MemberDisplayTitle.tsx
 │       │   │   │       ├── MemberList.tsx
-│       │   │   │       ├── MemberListHeader.tsx
-│       │   │   │       └── MemberTitle.tsx
+│       │   │   │       └── MemberListHeader.tsx
 │       │   │   ├── nomination-files-table
 │       │   │   │   ├── components
 │       │   │   │   │   ├── AffectationVersionStatusBadge.tsx
@@ -1210,13 +1236,13 @@
 │       │   │   │   │       ├── ObservantsCell.tsx
 │       │   │   │   │       ├── magistrat-side-panel
 │       │   │   │   │       │   ├── components
+│       │   │   │   │       │   │   ├── MagistratSidePanel.stories.tsx
 │       │   │   │   │       │   │   ├── MagistratSidePanel.tsx
 │       │   │   │   │       │   │   ├── MagistratSidePanelContent.tsx
 │       │   │   │   │       │   │   ├── SidePanelTrigger.test.tsx
 │       │   │   │   │       │   │   ├── SidePanelTrigger.tsx
 │       │   │   │   │       │   │   ├── audition-date
 │       │   │   │   │       │   │   │   ├── AuditionBanner.tsx
-│       │   │   │   │       │   │   │   ├── AuditionDate.stories.tsx
 │       │   │   │   │       │   │   │   ├── AuditionDate.test.tsx
 │       │   │   │   │       │   │   │   ├── AuditionDate.tsx
 │       │   │   │   │       │   │   │   ├── AuditionDateForm.test.tsx
@@ -1224,10 +1250,8 @@
 │       │   │   │   │       │   │   │   ├── AuditionRequestToggle.test.tsx
 │       │   │   │   │       │   │   │   └── AuditionRequestToggle.tsx
 │       │   │   │   │       │   │   ├── biography
-│       │   │   │   │       │   │   │   ├── Biography.stories.tsx
 │       │   │   │   │       │   │   │   └── Biography.tsx
 │       │   │   │   │       │   │   ├── career-info
-│       │   │   │   │       │   │   │   ├── CareerInfo.stories.tsx
 │       │   │   │   │       │   │   │   └── CareerInfo.tsx
 │       │   │   │   │       │   │   ├── frozen-file
 │       │   │   │   │       │   │   │   ├── FrozenFileBanner.test.tsx
@@ -1235,25 +1259,21 @@
 │       │   │   │   │       │   │   ├── header
 │       │   │   │   │       │   │   │   ├── AffectationFields.test.tsx
 │       │   │   │   │       │   │   │   ├── AffectationFields.tsx
-│       │   │   │   │       │   │   │   ├── Header.stories.tsx
 │       │   │   │   │       │   │   │   ├── Header.test.tsx
 │       │   │   │   │       │   │   │   ├── Header.tsx
 │       │   │   │   │       │   │   │   └── MissingSecondReporterBanner.tsx
 │       │   │   │   │       │   │   ├── member-memo
-│       │   │   │   │       │   │   │   ├── MemberMemo.stories.tsx
 │       │   │   │   │       │   │   │   ├── MemberMemo.test.tsx
 │       │   │   │   │       │   │   │   └── MemberMemo.tsx
 │       │   │   │   │       │   │   ├── missing-evaluation
 │       │   │   │   │       │   │   │   ├── MissingEvaluation.test.tsx
 │       │   │   │   │       │   │   │   └── MissingEvaluation.tsx
 │       │   │   │   │       │   │   ├── outcome
-│       │   │   │   │       │   │   │   ├── Outcome.stories.tsx
 │       │   │   │   │       │   │   │   ├── Outcome.test.tsx
 │       │   │   │   │       │   │   │   ├── Outcome.tsx
 │       │   │   │   │       │   │   │   ├── OutcomeSelect.test.tsx
 │       │   │   │   │       │   │   │   └── OutcomeSelect.tsx
 │       │   │   │   │       │   │   └── sg-comment
-│       │   │   │   │       │   │       ├── SgComment.stories.tsx
 │       │   │   │   │       │   │       ├── SgComment.test.tsx
 │       │   │   │   │       │   │       └── SgComment.tsx
 │       │   │   │   │       │   ├── context
@@ -1329,7 +1349,6 @@
 │       │   │   │   │   ├── ObservationsList.test.tsx
 │       │   │   │   │   ├── ObservationsList.tsx
 │       │   │   │   │   └── observations-section
-│       │   │   │   │       ├── Observations.stories.tsx
 │       │   │   │   │       ├── Observations.test.tsx
 │       │   │   │   │       └── Observations.tsx
 │       │   │   │   ├── context
@@ -1345,15 +1364,11 @@
 │       │   │   │   │   ├── AttachedFilesList.tsx
 │       │   │   │   │   ├── AutoSaveNotice.tsx
 │       │   │   │   │   ├── HeaderReportList.tsx
-│       │   │   │   │   ├── ReportAttachmentsCard.stories.tsx
 │       │   │   │   │   ├── ReportAttachmentsCard.tsx
-│       │   │   │   │   ├── ReportCommentCard.stories.tsx
 │       │   │   │   │   ├── ReportCommentCard.tsx
-│       │   │   │   │   ├── ReportDetailsHeader.stories.tsx
 │       │   │   │   │   ├── ReportDetailsHeader.tsx
 │       │   │   │   │   ├── ReportEditor.tsx
 │       │   │   │   │   ├── ReportListViewToggle.tsx
-│       │   │   │   │   ├── ReportMagistratCard.stories.tsx
 │       │   │   │   │   ├── ReportMagistratCard.tsx
 │       │   │   │   │   ├── ReportNavigation.test.tsx
 │       │   │   │   │   ├── ReportNavigation.tsx
@@ -1364,35 +1379,28 @@
 │       │   │   │       └── useMyFilesFilter.ts
 │       │   │   ├── sessions
 │       │   │   │   └── components
-│       │   │   │       ├── ArchivedSessions.stories.tsx
 │       │   │   │       ├── ArchivedSessions.test.tsx
 │       │   │   │       ├── ArchivedSessions.tsx
+│       │   │   │       ├── ArchivedSessionsTable.stories.tsx
+│       │   │   │       ├── ArchivedSessionsTable.tsx
 │       │   │   │       ├── ManageSession.tsx
 │       │   │   │       └── SessionStatusBadge.tsx
 │       │   │   ├── summary
 │       │   │   │   ├── components
-│       │   │   │   │   ├── SummaryAlerts.stories.tsx
 │       │   │   │   │   ├── SummaryAlerts.test.tsx
 │       │   │   │   │   ├── SummaryAlerts.tsx
-│       │   │   │   │   ├── SummaryAttachmentsCard.stories.tsx
 │       │   │   │   │   ├── SummaryAttachmentsCard.tsx
-│       │   │   │   │   ├── SummaryContentCard.stories.tsx
 │       │   │   │   │   ├── SummaryContentCard.test.tsx
 │       │   │   │   │   ├── SummaryContentCard.tsx
-│       │   │   │   │   ├── SummaryDetailsContent.stories.tsx
 │       │   │   │   │   ├── SummaryDetailsContent.tsx
-│       │   │   │   │   ├── SummaryDetailsHeader.stories.tsx
 │       │   │   │   │   ├── SummaryDetailsHeader.tsx
 │       │   │   │   │   ├── SummaryEditor.tsx
-│       │   │   │   │   ├── SummaryIdentityCard.stories.tsx
 │       │   │   │   │   ├── SummaryIdentityCard.tsx
 │       │   │   │   │   ├── SummaryNotFound.tsx
-│       │   │   │   │   ├── SummaryObservationsCard.stories.tsx
 │       │   │   │   │   ├── SummaryObservationsCard.tsx
 │       │   │   │   │   ├── SummaryReaderSelector.tsx
 │       │   │   │   │   └── summary-section
 │       │   │   │   │       ├── SummaryButton.tsx
-│       │   │   │   │       ├── SummarySection.stories.tsx
 │       │   │   │   │       ├── SummarySection.tsx
 │       │   │   │   │       ├── summary-text.test.ts
 │       │   │   │   │       └── summary-text.ts
@@ -1447,7 +1455,6 @@
 │       │   │       │   ├── nomination-file-attachments
 │       │   │       │   │   ├── AddNominationFileAttachmentModal.test.tsx
 │       │   │       │   │   ├── AddNominationFileAttachmentModal.tsx
-│       │   │       │   │   ├── Attachments.stories.tsx
 │       │   │       │   │   ├── Attachments.test.tsx
 │       │   │       │   │   ├── Attachments.tsx
 │       │   │       │   │   ├── NominationFileAttachmentTypeTag.tsx
@@ -1471,10 +1478,8 @@
 │       │   │       │       ├── TableauDeBordResumeDetails.tsx
 │       │   │       │       ├── TransparenceActions.test.tsx
 │       │   │       │       └── TransparenceActions.tsx
-│       │   │       ├── hooks
-│       │   │       │   └── useSessionCommentDraft.ts
-│       │   │       └── labels
-│       │   │           └── labels-mappers.ts
+│       │   │       └── hooks
+│       │   │           └── useSessionCommentDraft.ts
 │       │   ├── generated
 │       │   │   └── api
 │       │   │       ├── client
@@ -1517,15 +1522,14 @@
 │       │   │   ├── auth
 │       │   │   │   └── LoginPage.tsx
 │       │   │   ├── documents
-│       │   │   │   ├── DocumentDraftBanner.stories.tsx
 │       │   │   │   ├── DocumentDraftBanner.tsx
 │       │   │   │   ├── DocumentDriftBanner.tsx
-│       │   │   │   ├── DocumentValidatedBanner.stories.tsx
 │       │   │   │   ├── DocumentValidatedBanner.test.tsx
 │       │   │   │   ├── DocumentValidatedBanner.tsx
 │       │   │   │   ├── agenda
 │       │   │   │   │   ├── AgendaEditPage.tsx
 │       │   │   │   │   ├── AgendaPage.tsx
+│       │   │   │   │   ├── AgendaPreviewPage.stories.tsx
 │       │   │   │   │   ├── AgendaPreviewPage.tsx
 │       │   │   │   │   ├── AgendaReportersChangedBanner.tsx
 │       │   │   │   │   ├── AgendaUpdateFilesPage.tsx
@@ -1534,6 +1538,7 @@
 │       │   │   │   │   ├── OfficialReportChangedSinceValidationBanner.tsx
 │       │   │   │   │   ├── OfficialReportEditPage.tsx
 │       │   │   │   │   ├── OfficialReportPage.tsx
+│       │   │   │   │   ├── OfficialReportPreviewPage.stories.tsx
 │       │   │   │   │   └── OfficialReportPreviewPage.tsx
 │       │   │   │   └── presentations
 │       │   │   │       ├── PresentationDriftBanner.tsx
@@ -1541,6 +1546,7 @@
 │       │   │   │       ├── PresentationRemovedAgendasBanner.tsx
 │       │   │   │       ├── PresentationUpsertPage.tsx
 │       │   │   │       ├── PresentationsLayout.tsx
+│       │   │   │       ├── PresentationsPreviewPage.stories.tsx
 │       │   │   │       ├── PresentationsPreviewPage.test.tsx
 │       │   │   │       ├── PresentationsPreviewPage.tsx
 │       │   │   │       ├── PresentationsTabAgendas.tsx
@@ -1550,24 +1556,30 @@
 │       │   │   ├── error
 │       │   │   │   └── ErrorPage.tsx
 │       │   │   ├── feedback
+│       │   │   │   ├── FeedbackPage.stories.tsx
 │       │   │   │   └── FeedbackPage.tsx
 │       │   │   ├── help
 │       │   │   │   ├── HelpPage.tsx
 │       │   │   │   ├── HelpPageButton.tsx
 │       │   │   │   └── UserManualPage.tsx
 │       │   │   ├── magistrats
+│       │   │   │   ├── MagistratDetailsPage.stories.tsx
 │       │   │   │   ├── MagistratDetailsPage.tsx
+│       │   │   │   ├── MagistratSearchPage.stories.tsx
 │       │   │   │   └── MagistratSearchPage.tsx
 │       │   │   ├── members
+│       │   │   │   ├── DetailsMemberPage.stories.tsx
 │       │   │   │   ├── DetailsMemberPage.tsx
 │       │   │   │   └── MemberListPage.tsx
 │       │   │   ├── observations
+│       │   │   │   ├── ObservationDetailsPage.stories.tsx
 │       │   │   │   └── ObservationDetailsPage.tsx
 │       │   │   ├── reports
 │       │   │   │   ├── MemberAttachmentsTab.tsx
 │       │   │   │   ├── MemberAuditionsTab.tsx
 │       │   │   │   ├── MemberSessionLayout.tsx
 │       │   │   │   ├── ReportListPage.tsx
+│       │   │   │   ├── ReportOverviewPage.stories.tsx
 │       │   │   │   ├── ReportOverviewPage.tsx
 │       │   │   │   └── member-session-outlet-context.type.ts
 │       │   │   ├── sessions
@@ -1577,10 +1589,10 @@
 │       │   │   │   └── MemberArchivedSessionsPage.tsx
 │       │   │   ├── spaces
 │       │   │   │   ├── admin
-│       │   │   │   │   ├── AdminFeedbacksPage.stories.tsx
 │       │   │   │   │   ├── AdminFeedbacksPage.tsx
 │       │   │   │   │   ├── AdminJobDetailsPage.tsx
 │       │   │   │   │   ├── AdminJobsPage.tsx
+│       │   │   │   │   ├── AdminUserDetailPage.stories.tsx
 │       │   │   │   │   ├── AdminUserDetailPage.tsx
 │       │   │   │   │   ├── AdminUserListPage.tsx
 │       │   │   │   │   └── IngestLolfiArchivePage.tsx
@@ -1589,6 +1601,7 @@
 │       │   │   │   └── secretariat-general
 │       │   │   │       └── SecretariatGeneralPage.tsx
 │       │   │   ├── summary
+│       │   │   │   ├── SummaryPage.stories.tsx
 │       │   │   │   └── SummaryPage.tsx
 │       │   │   └── transparence
 │       │   │       ├── NewTransparencePage.tsx
@@ -1682,6 +1695,7 @@
 │       │   │   │   ├── priority-badge
 │       │   │   │   │   ├── PriorityBadge.stories.tsx
 │       │   │   │   │   ├── PriorityBadge.tsx
+│       │   │   │   │   ├── PriorityBadgeList.stories.tsx
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── report-state-tag
 │       │   │   │   │   ├── ReportStateTag.stories.tsx
@@ -1694,10 +1708,14 @@
 │       │   │   │   │   ├── ReporterTagList.stories.tsx
 │       │   │   │   │   ├── ReporterTagList.tsx
 │       │   │   │   │   └── index.ts
-│       │   │   │   └── title-name-icons
-│       │   │   │       ├── TitleNameIcons.stories.tsx
-│       │   │   │       ├── TitleNameIcons.test.tsx
-│       │   │   │       ├── TitleNameIcons.tsx
+│       │   │   │   ├── title-name-icons
+│       │   │   │   │   ├── TitleNameIcons.stories.tsx
+│       │   │   │   │   ├── TitleNameIcons.test.tsx
+│       │   │   │   │   ├── TitleNameIcons.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── user-status-badge
+│       │   │   │       ├── UserStatusBadge.stories.tsx
+│       │   │   │       ├── UserStatusBadge.tsx
 │       │   │   │       └── index.ts
 │       │   │   ├── context
 │       │   │   │   ├── archived-session
@@ -1720,7 +1738,8 @@
 │       │   │   │   ├── priorite.enum.ts
 │       │   │   │   ├── report-status.enum.ts
 │       │   │   │   ├── role.enum.ts
-│       │   │   │   └── type-de-saisine.enum.ts
+│       │   │   │   ├── type-de-saisine.enum.ts
+│       │   │   │   └── user-status.enum.ts
 │       │   │   ├── hooks
 │       │   │   │   ├── useAttachmentFailureToast
 │       │   │   │   │   ├── index.ts
@@ -1765,12 +1784,16 @@
 │       │   │   │   │   └── useTab.ts
 │       │   │   │   └── useUnsavedChangesGuard.tsx
 │       │   │   ├── storybook
+│       │   │   │   ├── PageStory.tsx
 │       │   │   │   ├── StoryQueryClient.tsx
 │       │   │   │   ├── Welcome.mdx
+│       │   │   │   ├── document-lifecycles.fixtures.ts
 │       │   │   │   ├── msw.handlers.ts
 │       │   │   │   ├── seeded-nomination-files.ts
 │       │   │   │   ├── session-files.fixtures.ts
 │       │   │   │   ├── session.handlers.ts
+│       │   │   │   ├── story-session.ts
+│       │   │   │   ├── story-users.ts
 │       │   │   │   └── summary.fixtures.ts
 │       │   │   └── ui
 │       │   │       ├── Breadcrumb.tsx
@@ -1970,7 +1993,9 @@
 │       │   │   ├── time-only.util.ts
 │       │   │   ├── transparences-breadcrumb.utils.tsx
 │       │   │   ├── types.util.ts
-│       │   │   └── user.utils.ts
+│       │   │   ├── user.utils.ts
+│       │   │   ├── with-screenshot-urls.test.ts
+│       │   │   └── with-screenshot-urls.ts
 │       │   └── vite-env.d.ts
 │       ├── tests
 │       │   ├── e2e
@@ -2023,7 +2048,9 @@
 ├── docs
 │   └── adr
 │       ├── 2026-06-emploi-de-l-anglais.md
-│       └── 2026-10-09-nom-complet-d-un-magistrat.md
+│       ├── 2026-10-09-nom-complet-d-un-magistrat.md
+│       ├── 2026-10-19-regles-metier-servies-comme-capacites.md
+│       └── 2026-10-20-compilation-avec-typescript-7.md
 ├── package.json
 ├── packages
 │   ├── documents-assets
@@ -2042,8 +2069,6 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   └── index.ts
-│   │   ├── test
-│   │   │   └── documents-assets.test.ts
 │   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
 │   └── lolfi
@@ -2071,17 +2096,21 @@
 │       │   ├── index.ts
 │       │   └── types.ts
 │       ├── test
+│       │   ├── __snapshots__
+│       │   │   └── lolfi.test.ts.snap
 │       │   ├── fictitious-archive.test.ts
-│       │   ├── lolfi.test.ts
-│       │   └── lolfi.test.ts.snapshot
+│       │   └── lolfi.test.ts
 │       ├── tsconfig.build.json
-│       └── tsconfig.json
+│       ├── tsconfig.fictitious-archive.json
+│       ├── tsconfig.json
+│       └── vitest.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── renovate.json
 ├── scripts
 │   └── changelog.js
-└── vendor
-    ├── .gitkeep
-    └── xlsx-0.20.3.tgz
-436 directories, 1650 files
+├── vendor
+│   ├── .gitkeep
+│   └── xlsx-0.20.3.tgz
+└── vitest.config.ts
+440 directories, 1675 files
