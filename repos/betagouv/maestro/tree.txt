@@ -277,6 +277,7 @@
 │   │   │   ├── useDocumentTitle.tsx
 │   │   │   ├── useForm.tsx
 │   │   │   ├── useMatomoTagManager.tsx
+│   │   │   ├── useMatrixReferential.ts
 │   │   │   ├── usePartialSample.tsx
 │   │   │   ├── usePrescriptionFilters.tsx
 │   │   │   ├── useSamplesLink.tsx
@@ -301,6 +302,7 @@
 │   │   │   ├── laboratoryResidueMapping.service.ts
 │   │   │   ├── localPrescription.service.ts
 │   │   │   ├── mascarade.service.ts
+│   │   │   ├── matrix.service.ts
 │   │   │   ├── mockApiClient.ts
 │   │   │   ├── notice.service.ts
 │   │   │   ├── notification.service.ts
@@ -326,6 +328,7 @@
 │   │   │   ├── fetchUtils.test.ts
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── maplibre.ts
+│   │   │   ├── matrixLabels.ts
 │   │   │   ├── modalUtils.ts
 │   │   │   ├── sampleLaboratories.test.ts
 │   │   │   ├── sampleLaboratories.ts
@@ -664,6 +667,7 @@
 │   │   ├── laboratoryResidueMappingController.ts
 │   │   ├── localPrescriptionController.ts
 │   │   ├── mascaradeController.ts
+│   │   ├── matrixController.ts
 │   │   ├── noticeController.ts
 │   │   ├── notificationController.ts
 │   │   ├── prescriptionController.ts
@@ -854,7 +858,10 @@
 │   │   │   ├── 140-sample-procedure-managed.ts
 │   │   │   ├── 141-drop-programming-plan-contexts.ts
 │   │   │   ├── 142-drop-programming-plan-unused-columns.ts
-│   │   │   └── 143-drop-programming-plan-distribution-kind.ts
+│   │   │   ├── 143-drop-programming-plan-distribution-kind.ts
+│   │   │   ├── 144-matrices.ts
+│   │   │   ├── 145-plans-without-stages-not-completed.ts
+│   │   │   └── 146-sub-plan-prescription-on-create.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -933,6 +940,7 @@
 │   │   ├── localPrescriptionCommentRepository.ts
 │   │   ├── localPrescriptionRepository.ts
 │   │   ├── localPrescriptionSubstanceKindLaboratoryRepository.ts
+│   │   ├── matrixRepository.ts
 │   │   ├── noticesRepository.test.ts
 │   │   ├── noticesRepository.ts
 │   │   ├── notificationRepository.ts
@@ -987,6 +995,7 @@
 │   │   │   ├── laboratory.router.test.ts
 │   │   │   ├── laboratoryResidueMapping.router.test.ts
 │   │   │   ├── localPrescription.router.test.ts
+│   │   │   ├── matrix.router.test.ts
 │   │   │   ├── notices.router.test.ts
 │   │   │   ├── notification.router.test.ts
 │   │   │   ├── prescription.router.test.ts
@@ -1099,6 +1108,8 @@
 │   │   │   ├── index.ts
 │   │   │   ├── mailService.ts
 │   │   │   └── nodemailerService.ts
+│   │   ├── matrixService.test.ts
+│   │   ├── matrixService.ts
 │   │   ├── notificationService.ts
 │   │   ├── pdfService
 │   │   │   ├── pdfService.test.ts
@@ -1205,11 +1216,6 @@
 │   │   ├── Laboratory.test.ts
 │   │   ├── Laboratory.ts
 │   │   ├── LegalContext.ts
-│   │   ├── Matrix
-│   │   │   ├── Matrix.ts
-│   │   │   ├── MatrixKind.ts
-│   │   │   ├── MatrixLabels.ts
-│   │   │   └── MatrixListByKind.ts
 │   │   ├── OptionnalBoolean.ts
 │   │   ├── QuantityUnit.ts
 │   │   ├── Region.ts
@@ -1233,6 +1239,7 @@
 │   │   ├── documents.routes.ts
 │   │   ├── laboratories.routes.ts
 │   │   ├── mascarade.routes.ts
+│   │   ├── matrices.routes.ts
 │   │   ├── notices.routes.ts
 │   │   ├── notifications.routes.ts
 │   │   ├── prescriptions.routes.ts
@@ -1310,6 +1317,9 @@
 │   │   │   ├── LocalPrescriptionComment.ts
 │   │   │   ├── LocalPrescriptionKey.ts
 │   │   │   └── LocalPrescriptionSubstanceKindLaboratory.ts
+│   │   ├── Matrix
+│   │   │   ├── MatrixReferential.test.ts
+│   │   │   └── MatrixReferential.ts
 │   │   ├── Notice
 │   │   │   └── Notice.ts
 │   │   ├── Notification
@@ -1400,6 +1410,7 @@
 │   │   ├── documentFixtures.ts
 │   │   ├── laboratoryAgreementFixtures.ts
 │   │   ├── laboratoryFixtures.ts
+│   │   ├── matrixFixtures.ts
 │   │   ├── notificationFixtures.ts
 │   │   ├── prescriptionFixtures.ts
 │   │   ├── programmingPlanFixtures.ts
@@ -1430,4 +1441,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-240 directories, 1192 files
+240 directories, 1203 files

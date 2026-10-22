@@ -1,25 +1,25 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Plateforme de gestion et de paramétrage de programmes de prélèvements et d'échantillonnage. Elle permet de configurer des plans, de suivre la programmation et de gérer les droits d'accès.",
+  "description": "Plateforme de gestion et de programmation de prélèvements permettant le paramétrage granulaire de données métier et l'automatisation des calculs d'échantillons.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
     "Gestion des utilisateurs & Permissions",
+    "Simulation & Calcul",
     "Statistiques & Rapports",
-    "Suivi & Traçabilité",
-    "Données & Schémas",
     "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
-    "KnexJS",
     "S3",
+    "KnexJS",
     "Dex",
     "Vitest",
-    "Biome",
-    "Zod"
+    "Zod",
+    "Node.js",
+    "Browserless"
   ],
   "components": [
     "API REST & GraphQL",
@@ -38,11 +38,13 @@
       "Dex"
     ]
   },
-  "tests": "Vitest",
-  "workflows": [
-    "semantic-release"
+  "tests": [
+    "Vitest"
   ],
-  "lastActivity": "2026-10-15T15:57:33+02:00",
+  "workflows": [
+    "Semantic-release"
+  ],
+  "lastActivity": "2026-10-21T16:54:32+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -51,6 +53,6 @@
     "TypeScript",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "CI/CD & GitHub Actions"
   ]
 }
