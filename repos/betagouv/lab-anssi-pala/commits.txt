@@ -1,0 +1,186 @@
+2026-10-21T08:42:06+02:00 - 435b687 - Pierre Leroy : Ajoute la durée et le nombre de fichiers nombre de fichier analysé  au message mattermost
+2026-10-20T16:34:24+02:00 - 52b8d35 - Pierre Leroy : [SOIN] Regroupe les informations de commits dans `InformationsDeCommits` ... `premierCommit`, `dernierCommit` et `nombreDeJours` forment un seul champ optionnel `informationsDeCommits`, en paramètre de `execute` et dans l'événement `SCAN_TERMINÉ`
+2026-10-20T16:34:24+02:00 - 916d93b - Pierre Leroy : Ajoute la durée d'exécution du scan à la fin de scan ... relevée par la CLI dans `scan-manifest.json` (`startedAt` et `completedAt`), non renseignée quand le manifeste est absent ou illisible
+2026-10-20T16:34:24+02:00 - fd0183e - Pierre Leroy : Ajoute le nombre de fichiers du périmètre à la fin de scan ... dérivé du `config.yaml` déjà lu par `LanceScan`, non renseigné quand le périmètre n'est pas contraignant
+2026-10-20T16:34:24+02:00 - a19acc0 - Pierre Leroy : Ajoute le nombre de jours de la fenêtre à la fin de scan ... paramètre optionnel de `execute`, publié dans l'événement `SCAN_TERMINÉ`
+2026-10-20T16:34:24+02:00 - 6afec29 - Pierre Leroy : Ajoute le hash du dernier commit à la fin de scan ... paramètre optionnel de `execute`, publié dans l'événement `SCAN_TERMINÉ`
+2026-10-20T16:34:24+02:00 - 1bccdc3 - Pierre Leroy : Ajoute le hash du premier commit à la fin de scan ... paramètre optionnel de `execute`, publié dans l'événement `SCAN_TERMINÉ`
+2026-10-20T13:21:43+02:00 - 0bc4da5 - Bertrand Bougon : [CORRECTION] Filtre seulement les fichiers modifiés existants
+2026-10-20T11:55:42+02:00 - e527918 - Bertrand Bougon : Enchaîne le scan complet sur plusieurs cibles ... prépare l'environnement une fois puis scanne chaque cible l'une après l'autre ; poursuit malgré l'échec d'une cible (code de sortie = nombre d'échecs). La CLI prend --cible (répétable) ou --cibles <json>, en remplacement de --project/--url
+2026-10-20T11:55:42+02:00 - a9b827b - Bertrand Bougon : Ajoute le domaine des cibles au scan complet ... dérive le nom depuis l'URL du dépôt et valide la liste (en ligne ou fichier JSON ; noms uniques)
+2026-10-19T19:01:31+02:00 - 44834ec - Bertrand Bougon : Passe prettier sur la documentation
+2026-10-19T19:01:31+02:00 - de47f41 - Bertrand Bougon : [CORRECTION] Corrige l’exécution de la CI
+2026-10-19T18:07:34+02:00 - 319fe94 - Bertrand Bougon : [CORRECTION] Ne publie pas sur Mattermost si l’URL n’est pas fournie
+2026-10-19T17:04:02+02:00 - 5d1a02b - Bertrand Bougon : Ajoute un ADR sur la gestion de l’app CLever Cloud
+2026-10-19T16:52:29+02:00 - 3fad17f - Bertrand Bougon : Ajoute un ADR sur comment expliciter les erreurs rencontrées lors d’un scan
+2026-10-19T16:40:47+02:00 - 9e8e289 - Bertrand Bougon : Ne lance pas de scan Codex si aucun fichier modifié spécifié dans la config
+2026-10-19T15:39:09+02:00 - 98d7f5c - Bertrand Bougon : Fournis des fonctions d’aide pour générer les dépendances des différents outils
+2026-10-19T15:39:09+02:00 - cc5a5f4 - Bertrand Bougon : Lance un scan de bout en bout
+2026-10-19T14:21:44+02:00 - 69e91e6 - Bertrand Bougon : [CORRECTION] Débraye la vérification du .env lorsque l’on est en production
+2026-10-19T14:20:29+02:00 - 9cae8d4 - Bertrand Bougon : Applique prettier
+2026-10-19T11:38:21+02:00 - a8cb858 - Bertrand Bougon : Ajoute une étape pour déployer PALA sur la démo
+2026-10-19T11:17:46+02:00 - 2a0c204 - Bertrand Bougon : Ajoute un docker file pour le déploiement sur CC
+2026-10-19T09:22:41+02:00 - 402217e - Bertrand Bougon : [CI] Ajoute le déploiement sur l’environnement de démo
+2026-10-16T18:20:26+02:00 - bf7d782 - Bertrand Bougon : Mets à jour le README
+2026-10-16T17:07:02+02:00 - 9fb308a - Bertrand Bougon : Réessaie le proxy avant un scan pour tolérer un démarrage à froid
+2026-10-16T16:10:28+02:00 - 5fdee84 - Bertrand Bougon : [SOIN] Retire les commentaires de provenance vers les scripts bash ... les en-têtes ne renvoient plus aux .sh supprimés (run-scan, run-shannon, bootstrap…) ; le contenu utile des commentaires est conservé
+2026-10-16T16:10:28+02:00 - fc6c833 - Bertrand Bougon : Supprime l'outillage bash non maintenu
+2026-10-16T16:10:28+02:00 - 40f5350 - Bertrand Bougon : [SOIN] Retire les fixtures codex-security.env devenues inertes ... scan, validate, lanceScan et valideFinding ne fabriquent plus de faux codex-security.env (LITELLM_MASTER_KEY) : plus aucun check ne lit ce fichier depuis le découplage
+2026-10-16T16:10:28+02:00 - e02992a - Bertrand Bougon : [SOIN] Retire la constante CHEMIN_FICHIER_ENV_CODEX orpheline ... plus aucun code ne référence codex-security.env
+2026-10-16T16:10:28+02:00 - a6ef92b - Bertrand Bougon : génère-env ne produit plus codex-security.env ... plus aucun composant ne lit ce fichier ; génère-env ne génère que outils/shannon/shannon.env (et valide toujours le .env racine)
+2026-10-16T16:10:28+02:00 - 211329b - Bertrand Bougon : Rend le fichier d'environnement d'un outil optionnel ... `PreparationOutil.fichierEnvironnement` devient facultatif ; codex-security n'en a plus (tout vient du .env racine) et disparaît du récap du bootstrap ; Shannon conserve le sien
+2026-10-16T16:10:28+02:00 - a24ffb7 - Bertrand Bougon : N'exige plus codex-security.env avant un scan ou une validation ... scan et validate lisent le proxy dans le .env racine ; le check d'existence de codex-security.env (relique du flux fichier) est retiré de prepareExecutionCodex
+2026-10-16T16:10:28+02:00 - 4248c76 - Bertrand Bougon : Passe les identifiants fournisseur au conteneur depuis le process ... le conteneur proxy hérite FOURNISSEUR_BASE_URL et FOURNISSEUR_API_KEY du process (du .env racine) via `-e <nom>`, au lieu de `--env-file codex-security.env` ; valeurs hors de l'argv, et le conteneur ne dépend plus de ce fichier
+2026-10-16T16:10:28+02:00 - 23947a3 - Bertrand Bougon : [CORRECTION] Aligne le port publié et le port d'écoute du proxy local ... conteneur et publication docker utilisent le même port (celui de LITELLM_BASE_URL, défaut 4000) ; sans cet alignement, une URL avec un port ≠ 4000 publiait vers un port où LiteLLM n'écoutait pas
+2026-10-16T16:10:28+02:00 - c32be9a - Bertrand Bougon : [SOIN] Découple proxy() de codex-security.env ... `pourCodexSecurity().proxy()` ne prend plus de `systemeDeFichier` (tout vient du .env racine) ; `DemarreProxy` perd sa dépendance au système de fichier devenue inutile
+2026-10-16T16:10:28+02:00 - e9002c0 - Bertrand Bougon : [SOIN] Supprime portLiteLLM, désormais sans consommateur ... l'adresse du proxy vient de LITELLM_BASE_URL ; `proxy()` ne lit plus PORT_LITE_LLM dans codex-security.env (paramètre systemeDeFichier conservé, découplage complet en phase 2.1)
+2026-10-16T16:10:28+02:00 - 0ae2520 - Bertrand Bougon : Dérive l'adresse du proxy local de LITELLM_BASE_URL ... démarre-proxy publie le conteneur et sonde sa disponibilité à l'URL de `urlLiteLLMConfiguree()` ; `ConfigurationProxy` porte `url` au lieu de `port`, l'adaptateur docker en extrait hôte et port
+2026-10-16T14:54:13+02:00 - ad0ed00 - Bertrand Bougon : Aligne le template et le README sur le .env racine source de vérité ... codex-security.env ne porte plus que FOURNISSEUR_* + LITELLM_API_KEY/CODEX_API_KEY (recopiés) ; retrait de LITELLM_MASTER_KEY et de LITELLM_BASE_URL du template ; README : URL et clé du proxy obligatoires dans le .env racine
+2026-10-16T14:54:13+02:00 - 71af106 - Bertrand Bougon : Exige LITELLM_BASE_URL et LITELLM_API_KEY dans le .env racine ... le .env racine étant désormais la source de vérité du proxy, `verifiePresenceFichierRacine` échoue tôt si l'URL ou la clé du proxy manquent
+2026-10-16T14:54:13+02:00 - 0359132 - Bertrand Bougon : Lis l'URL du proxy depuis le .env racine, sans la stocker ailleurs ... génère-config et le health check du scan/validate utilisent `urlLiteLLMConfiguree()` (LITELLM_BASE_URL du .env racine) ; retrait de `urlLiteLLM` de `EnvironnementProxy`, du fallback 127.0.0.1 et de l'écriture de l'URL dans codex-security.env
+2026-10-16T14:54:13+02:00 - eb589c0 - Bertrand Bougon : Lis la clé LITELLM_API_KEY du .env racine au lieu de la générer ... la clé est créée côté proxy (app LiteLLM distante ou conteneur local) et fournie dans le .env racine ; `proxy().jeton` la lit depuis l'environnement, génère-env la recopie telle quelle. Supprime `GenerateurDeJeton` (port, adaptateur, double) devenu inutile
+2026-10-16T14:54:13+02:00 - e8feda9 - Bertrand Bougon : Documente le proxy LiteLLM distant via `LITELLM_BASE_URL` ... template codex-security.env, README codex-security (cas PaaS/Clever) et aide de la commande scan : proxy local par défaut, ou app hébergée via `LITELLM_BASE_URL`
+2026-10-16T14:54:13+02:00 - bb2e9c1 - Bertrand Bougon : Persiste LITELLM_BASE_URL dans codex-security.env quand il est configuré ... génère-env recopie l'URL du proxy du `.env` racine vers codex-security.env (relue par `proxy()`) ; absente, le proxy local par défaut s'applique
+2026-10-16T14:54:13+02:00 - 385ec8c - Bertrand Bougon : Vérifie la présence du proxy sur son URL plutôt que 127.0.0.1 ... le health check préalable au scan et à la validation interroge `urlLiteLLM` (proxy local ou distant) ; le message d'erreur renvoie vers démarre-proxy ou `LITELLM_BASE_URL`
+2026-10-16T14:54:13+02:00 - 9217ec9 - Bertrand Bougon : Pointe la config de scan vers l'URL du proxy plutôt que son port ... `ConfigurationCible` prend `urlProxy` (base_url = `<url>/v1`) alimentée par `proxy.urlLiteLLM`, pour viser le proxy local comme l'app distante sur PaaS
+2026-10-16T14:54:13+02:00 - 3baca67 - Bertrand Bougon : Expose l'URL du proxy LiteLLM, configurable via `LITELLM_BASE_URL` ... `EnvironnementProxy.urlLiteLLM` vaut http://127.0.0.1:<port> en local, ou l'app distante quand `LITELLM_BASE_URL` est défini (slash final normalisé), en vue du déploiement du proxy sur un PaaS
+2026-10-15T15:38:51+02:00 - b13c74e - Bertrand Bougon : Renomme chemins en fichiersModifies
+2026-10-15T15:38:51+02:00 - 56a2553 - Bertrand Bougon : Annonce la mise à jour de la copie de travail en première étape ... génère-config affiche « Mise à jour de la copie de travail : <copie> » avant le diff, pour tracer le pull dans les logs d'automatisation
+2026-10-15T15:38:50+02:00 - dd3fec1 - Bertrand Bougon : Met à jour la copie de travail de la cible avant de générer la config ... génère-config fait d'abord un `git pull --ff-only` du dépôt cible, pour que la fenêtre glissante voie les derniers commits ; port `DepotGit.metAJour` + adaptateur ligne de commande
+2026-10-15T15:38:49+02:00 - d7b08cb - Bertrand Bougon : Rends la cible obligatoire
+2026-10-15T15:38:48+02:00 - 481ea83 - Bertrand Bougon : Rend paramétrable la fenêtre du git diff via l'option `--jours` ... `execute(nomCible, nombreDeJours)` ; `--jours` (défaut 7) valide un entier positif
+2026-10-15T15:38:47+02:00 - bdf2867 - Bertrand Bougon : Délimite le périmètre du scan par le git diff de la copie de travail de la cible ... port `DepotGit` (fichiers modifiés sur 7 jours glissants) ; génère-config lit cible/copies/<cible> au lieu d'un périmètre codé en dur
+2026-10-15T15:38:46+02:00 - f343cd0 - Bertrand Bougon : Expose la génération de config en ligne de commande ... commande `génère-config` avec l'option `--cible`, branchée dans la composition
+2026-10-15T15:38:45+02:00 - e983af5 - Bertrand Bougon : Écrit la config Codex ciblée depuis l'environnement et renvoie son chemin ... `GenereConfigCible` lit le fournisseur et le proxy, écrit le fichier et renvoie son chemin pour le scan (--config)
+2026-10-15T15:38:44+02:00 - 219fd2c - Bertrand Bougon : Génère le chemin du fichier de config, distinct par cible ... `cheminConfigCible` : prépare l'industrialisation de plusieurs projets cibles
+2026-10-15T15:38:43+02:00 - 86ff9a2 - Bertrand Bougon : Génère le YAML d'une configuration de scan Codex Security ciblée ... objet-valeur `ConfigurationCible` sérialisé via la librairie `yaml`
+2026-10-15T15:38:42+02:00 - a3943ef - Bertrand Bougon : [SOIN] Ajoute la dépendance `yaml` ... pour écrire des fichiers de config YAML valides plutôt qu'à la main
+2026-10-15T15:38:41+02:00 - 44866ce - Bertrand Bougon : [SOIN] Shannon dérive la copie de travail de la cible via `Cible` ... au lieu de reconstruire `cible/copies/<nom>` à la main
+2026-10-15T15:38:40+02:00 - 742d72c - Bertrand Bougon : [SOIN] Isole `Cible` dans le domaine environnement et `CibleBootstrap` ... `Cible` (nom + copie de travail) devient un concept partagé ; `CibleBootstrap` porte l'url (et la branche), seules utiles au clone
+2026-10-15T15:38:39+02:00 - 4a04313 - Bertrand Bougon : Affiche les constats dans la messagerie Mattermost
+2026-10-15T15:38:38+02:00 - a0b1d7b - Bertrand Bougon : Ajoute les constats retournés par le scan
+2026-10-15T15:38:37+02:00 - ec808ea - Bertrand Bougon : Poste sur la messagerie un message sur le résultat du scan
+2026-10-15T08:54:23+02:00 - 43b3394 - Bertrand Bougon : Publie un événement à chaque fin de scan Codex Security ... `LanceScan` publie `SCAN_TERMINÉ` (cible, résultat, coût) sur le bus, en réussite comme en échec
+2026-10-15T08:54:23+02:00 - 1b8375d - Bertrand Bougon : Extrais le coût d'un scan dans l'objet-valeur `Cout` ... `calculeCout` centralise le calcul ; `EstimationDuCout` s'appuie dessus sans changer son affichage
+2026-10-15T08:54:23+02:00 - 91eb1d4 - Bertrand Bougon : Ajoute un bus d'événements en mémoire ... port `BusEvenements` et son adaptateur `BusEvenementsPALA`, sur lequel on publie et on s'abonne par nom d'événement
+2026-10-15T08:54:23+02:00 - a4ddd78 - Bertrand Bougon : [SOIN] Retire les commentaires devenus superflus de `Tarifs`
+2026-10-15T08:54:23+02:00 - 3575a22 - Bertrand Bougon : [SOIN] Corrige le nom du dossier de tests `adapteurs` en `adaptateurs`
+2026-10-14T09:06:05+02:00 - 7c1ca88 - Bertrand Bougon : Fournis la clé d’API du fournisseur dans la déclaration du modèle pour Shannon
+2026-10-13T17:33:19+02:00 - 3bf73eb - Bertrand Bougon : [REMANIEMENT] Répercute le renommage du `check-tool-calls` en `vérifie-appels-outils-llm` de la CLI Node sur la CLI bash
+2026-10-13T17:33:17+02:00 - b251661 - Bertrand Bougon : [REMANIEMENT] Renomme le script check-tool-calls en vérifie-appels-outils-llm
+2026-10-13T17:32:16+02:00 - 94a7b0d - Bertrand Bougon : [REMANIEMENT] Répercute le renommage du `start-proxy` en `demarre-proxy` de la CLI Node sur la CLI bash
+2026-10-13T17:32:15+02:00 - ad7dffb - Bertrand Bougon : [REMANIEMENT] Renomme le script start-proxy en démarre-proxy
+2026-10-13T17:32:14+02:00 - 31fc24e - Bertrand Bougon : [REMANIEMENT] Répercute le renommage du generate-env en genere-env de la CLI Node sur la CLI bash
+2026-10-13T17:32:13+02:00 - db1460b - Bertrand Bougon : [REMANIEMENT] Renomme le script generate-env en génère-env
+2026-10-13T17:32:12+02:00 - 2ea25ad - Bertrand Bougon : Initie la CI
+2026-10-13T17:32:11+02:00 - 54eb9cb - Bertrand Bougon : Lance Shannon directement avec node dans les scripts bash
+2026-10-13T17:32:10+02:00 - 17da477 - Bertrand Bougon : Le bootstrap construit la CLI Shannon si elle n'est pas déjà construite
+2026-10-13T17:32:06+02:00 - 46962d8 - Bertrand Bougon : [CORRECTION] Corrige l’exécution de la vérification des outils
+2026-10-13T10:17:52+02:00 - 6f18ba9 - Bertrand Bougon : Documente la démarche publique du dépôt
+2026-10-13T09:40:20+02:00 - 84e0f0b - Bertrand Bougon : La génération des fichiers d’env crée les variables pour Shannon
+2026-10-13T09:40:19+02:00 - 510ff21 - Bertrand Bougon : [REMANIEMENT] Extrais la génération de l’environnement Codex Security
+2026-10-13T09:40:18+02:00 - 7e9e909 - Bertrand Bougon : Retire la variable DOTENV_CONFIG_PATH du script scan
+2026-10-13T09:40:17+02:00 - 419952e - Bertrand Bougon : Nettoie les tests sur le démarrage du proxy
+2026-10-13T09:40:16+02:00 - e52a9b8 - Bertrand Bougon : Déplace la responsabilité de fournir le fichier de config par défaut à la CLI
+2026-10-13T09:40:15+02:00 - c76b361 - Bertrand Bougon : Reprend les tests sautés maintenant que les variables d’environnement sont correctement positionnées
+2026-10-13T09:40:14+02:00 - 8c8be27 - Bertrand Bougon : Supprime la variable d’environnement CONFIG, la config est passée en argument des CLI (si non une config par défaut est appliquée
+2026-10-13T09:40:13+02:00 - 823b81b - Bertrand Bougon : Retouche l’usage de la commande de scan lorsque l’utilisateur fournit le paramètre --help
+2026-10-13T09:40:12+02:00 - 8f11905 - Bertrand Bougon : Supprime la variable d’environnement CIBLE, la cible est obligatoire en argument des CLI
+2026-10-13T09:40:11+02:00 - 24ffa9d - Bertrand Bougon : Passe la cible en argument à la CLI pour le scan et pour la validation de Codex Security
+2026-10-13T09:40:10+02:00 - 78c6f44 - Bertrand Bougon : [REMANIEMENT] Détermine le dossier de sortie de résultat automatiquement
+2026-10-13T09:40:09+02:00 - 9161897 - Bertrand Bougon : [REMANIEMENT] Harmonise le domaine CodexSecurity
+2026-10-13T09:40:08+02:00 - f7dfe32 - Bertrand Bougon : [REMANIEMENT] Déplace le champ portLiteLLM de EnvironnementCodexSecurity vers EnvironnementProxy
+2026-10-13T09:40:07+02:00 - 2f5ad61 - Bertrand Bougon : [CORRECTION] Adapte le script de scan codex
+2026-10-13T09:40:06+02:00 - 98faca0 - Bertrand Bougon : [REMANIEMENT] Remplace LITELLM_PORT par PORT_LITE_LLM ... dans les sorties, la documentation et les scripts bash, comme le lit déjà l'outillage TS
+2026-10-13T09:40:06+02:00 - 98e75ad - Bertrand Bougon : [REMANIEMENT] Remplace CODEX_TARGET, CODEX_CONFIG et CODEX_OUTPUT par CIBLE, CONFIG et SORTIE ... dans les sorties, la documentation et les scripts bash
+2026-10-13T09:40:05+02:00 - 5d5a9d1 - Bertrand Bougon : [REMANIEMENT] Adapte la documentation aux variables FOURNISSEUR_*
+2026-10-13T09:40:04+02:00 - 09ab235 - Bertrand Bougon : [REMANIEMENT] Alimente Shannon avec l'URL et la clé du fournisseur ... SHANNON_AI_API_KEY vaut FOURNISSEUR_API_KEY ; les descriptions pi deviennent des gabarits complétés de FOURNISSEUR_BASE_URL au lancement (configs/genere/, non versionné)
+2026-10-13T09:40:03+02:00 - 16f5b52 - Bertrand Bougon : [REMANIEMENT] Vérifie les appels d'outils à l'URL FOURNISSEUR_BASE_URL ... l'URL n'est plus lue dans la description pi : l'option `--models-config` de `check-tool-calls` et `DescriptionPi` sont supprimées
+2026-10-13T09:40:02+02:00 - 293463e - Bertrand Bougon : [REMANIEMENT] Charge le .env racine pour les commandes Shannon ... `shannon`, `shannon-smoke` et `check-tool-calls` lisent désormais les variables FOURNISSEUR_*
+2026-10-13T09:40:01+02:00 - 359db64 - Bertrand Bougon : [REMANIEMENT] Remplace les variables Albert et Scaleway du proxy par FOURNISSEUR_* ... FOURNISSEUR_NOM, FOURNISSEUR_BASE_URL et FOURNISSEUR_API_KEY remplacent ALBERT_BASE_URL, ALBERT_API_KEY et SCALEWAY_DEEPSEEK_API_KEY ; l'URL Scaleway n'est plus écrite en dur dans la config LiteLLM
+2026-10-13T09:24:40+02:00 - df99b70 - Bertrand Bougon : [REMANIEMENT] Initie la modification de la gestion des variables d’environnement
+2026-10-13T09:24:39+02:00 - 3aec42d - Bertrand Bougon : [NETTOYAGE] Renomme les méthodes de la console
+2026-10-13T09:10:28+02:00 - 6ab2b08 - Bertrand Bougon : [NETTOYAGE] Remplace l’appel à test dans les tests par it
+2026-10-13T09:10:27+02:00 - 1e4560c - Bertrand Bougon : [NETTOYAGE] Applique prettier
+2026-10-13T09:10:26+02:00 - 928f38b - Bertrand Bougon : [NETTOYAGE] Revoit la manière d’estimer le coût d’un scan
+2026-10-13T09:10:25+02:00 - 63b59f6 - Bertrand Bougon : [NETTOYAGE] Sépare les tests du code de prod
+2026-10-13T09:10:24+02:00 - c0d4b38 - Bertrand Bougon : Déplace tout l’outillage javascript dans son propre répertoire
+2026-10-13T09:10:24+02:00 - 974b227 - Bertrand Bougon : Mets à jour les chemins des scripts bash dans la documentation
+2026-10-13T09:10:23+02:00 - 6e01c36 - Bertrand Bougon : Déplace les scripts bash de Shannon dans `outillage/bash/shannon`
+2026-10-13T09:10:22+02:00 - 099d046 - Bertrand Bougon : Déplace les scripts bash de Codex Security dans `outillage/bash/codex-security`
+2026-10-13T09:10:21+02:00 - 3450540 - Bertrand Bougon : Déplace les préparations des outils dans `outillage/bash/<outil>`
+2026-10-13T09:10:20+02:00 - 09ca081 - Bertrand Bougon : Déplace le bootstrap racine dans `outillage/bash`
+2026-10-13T09:10:19+02:00 - e6b7112 - Bertrand Bougon : Ajuste et nettoie la documentation liée à Codex Security
+2026-10-13T09:10:18+02:00 - a69762e - Bertrand Bougon : Nettoie le fichier détaillant les versions d’outils
+2026-10-13T09:10:17+02:00 - 628fbd2 - Bertrand Bougon : Ajuste le README à l’arrivée de l’outillage en typescript
+2026-10-13T09:10:16+02:00 - 53108a3 - Bertrand Bougon : Colore la sortie console de vérification des apples au modèle
+2026-10-13T09:10:15+02:00 - 3cebd5b - Bertrand Bougon : Ne commite pas la configuration mcp
+2026-10-13T09:10:14+02:00 - 4c9895b - Bertrand Bougon : Colore la sortie console des pentest
+2026-10-13T09:10:13+02:00 - de7a67e - Bertrand Bougon : Colore la sortie console de la validation
+2026-10-13T09:10:12+02:00 - e481941 - Bertrand Bougon : Colore la sortie console du scan et de l’estimation des coûts
+2026-10-13T09:10:11+02:00 - dc116d5 - Bertrand Bougon : Colore la sortie console du démarrage du proxy LiteLLM
+2026-10-13T09:10:10+02:00 - b683ec9 - Bertrand Bougon : Colore la sortie console de la génération des variables d’environnement
+2026-10-13T09:10:09+02:00 - 88e6e23 - Bertrand Bougon : [CORRECTION] Arrête proprement la console quand le tube de sortie est fermé ... EPIPE (ex. pnpm scan --help | head) : sortie sans erreur au lieu d'un plantage ; les autres erreurs d'écriture remontent toujours ; flux injectables pour les tests
+2026-10-13T09:10:08+02:00 - 943175b - Bertrand Bougon : Ajoute une aide propre à `pnpm scan` ... options ajoutées par défaut (consignes, --verbose) et moyen de les remplacer, variables, renvoi vers l'aide de codex-security scan ; l'aide ne lance plus de scan
+2026-10-13T09:10:07+02:00 - aef278e - Bertrand Bougon : Ajoute par défaut les consignes de scan et --verbose à `pnpm scan` ... sans consignes DeepSeek n'écrit pas findings.json, sans --verbose le coût n'est pas calculable ; chaque option reste celle de l'utilisateur s'il la fournit
+2026-10-13T09:10:06+02:00 - 1401eeb - Bertrand Bougon : Colore la sortie console de la préparation de l’environnement
+2026-10-13T09:10:05+02:00 - 535dcb8 - Bertrand Bougon : Ajoute la possibilité de colorer la sortie console
+2026-10-13T09:10:04+02:00 - 0949133 - Bertrand Bougon : Documente l'outillage TypeScript en parallèle des scripts bash/Python ... équivalences des commandes, différences voulues (agnostique du fournisseur), architecture hexagonale et tests ; ajout d'un outil par une PreparationOutil
+2026-10-13T09:10:03+02:00 - efbb775 - Bertrand Bougon : Ajoute la commande `pnpm check-tool-calls` ... --model et --models-config (relatif au répertoire d'appel), adaptateur fetch d'une API Chat Completions quelconque
+2026-10-13T09:10:02+02:00 - 3b60d74 - Bertrand Bougon : Ajoute le cas d'usage `VerifieAppelsOutils` de Shannon, agnostique du fournisseur ... modèle de SHANNON_AI_MODEL (ou imposé), URL lue dans sa description pi, clé SHANNON_AI_API_KEY ; émission et multi-tour jugés sur RUNS essais ; remplace ALBERT_MODEL/ALBERT_BASE_URL du script Python ; port ApiChat
+2026-10-13T09:10:01+02:00 - f465272 - Bertrand Bougon : Ajoute la commande `pnpm shannon-smoke` ... serveur node:http de la cible triviale sur 127.0.0.1 (remplace python3 -m http.server), protégé contre la sortie du dossier servi
+2026-10-13T09:10:01+02:00 - 3c15436 - Bertrand Bougon : Ajoute le cas d'usage `LancePassageDeFumee` de Shannon ... cible triviale servie le temps du run et toujours arrêtée, modèle de shannon.env exigé et description pi déduite (agnostique du fournisseur), SMOKE_PORT/SMOKE_REAL/SMOKE_WORKSPACE ; service InstallationShannon partagé avec le pentest
+2026-10-13T09:10:00+02:00 - e1ebf05 - Bertrand Bougon : Ajoute la commande `pnpm shannon` ... options de run-shannon.sh, chemins relatifs résolus depuis le répertoire d'appel, aide avec exemple ; adaptateur direnv de la CLI Shannon
+2026-10-13T09:09:59+02:00 - 2aa2d38 - Bertrand Bougon : Ajoute le cas d'usage `LancePentest` de Shannon ... prérequis et app joignable, URL vue du conteneur, modèle et description pi, workspace horodaté ou repris, coût estimé depuis la session en best-effort ; port Shannon, domaine UrlApplication et SpecModele
+2026-10-13T09:09:58+02:00 - 14d76b2 - Bertrand Bougon : Ajoute la commande `pnpm validate` ... --finding-file obligatoire et résolu depuis le répertoire d'appel ; adaptateur du SDK Codex Security chargé depuis outils/codex-security
+2026-10-13T09:09:57+02:00 - c279e0a - Bertrand Bougon : Ajoute le cas d'usage `ValideFinding` de Codex Security ... résumé validation-result.json et rapport dans une sortie horodatée, synthèse d'une ligne, validation toujours fermée ; port ValidationCodex, Console.trace
+2026-10-13T09:09:56+02:00 - bd637bf - Bertrand Bougon : Ajoute la commande `pnpm scan` ... options transmises telles quelles à codex-security scan ; log journalisé à côté de la sortie ; chemins relatifs résolus depuis le répertoire d'appel ; coût estimé par EstimeCout
+2026-10-13T09:09:55+02:00 - 98fc430 - Bertrand Bougon : Ajoute le cas d'usage `LanceScan` de Codex Security ... prérequis (CLI, proxy, cible), sortie horodatée ou CODEX_OUTPUT avec le log à côté, jeton local seul et identité Codex isolée, coût estimé en best-effort ; service PrepareExecutionCodex partagé avec la validation
+2026-10-13T09:09:54+02:00 - 63592bc - Bertrand Bougon : Ajoute la commande `pnpm start-proxy` ... adaptateurs docker, fetch et temporisation, racine de composition réutilisant la génération de l'environnement
+2026-10-13T09:09:53+02:00 - 34e5e2f - Bertrand Bougon : Ajoute le cas d'usage `DemarreProxy` de Codex Security ... génère l'environnement, remplace le conteneur (plafond de budget appliqué seulement avec une base), attend le proxy 60 × 2 s ; ports ConteneurProxy, Reseau, Attente et Console.ecrit
+2026-10-13T09:09:52+02:00 - c3246fc - Bertrand Bougon : Ajoute la commande `pnpm generate-env` ... adaptateur commander, adaptateurs process.env et randomBytes, racine de composition
+2026-10-13T09:09:51+02:00 - df3c469 - Bertrand Bougon : Ajoute le cas d'usage `GenereEnvironnementProxy` de Codex Security ... dérive l'environnement du proxy du .env racine : jeton local conservé, Scaleway facultative, clés jamais affichées ; ports Environnement et GenerateurDeJeton
+2026-10-13T09:09:50+02:00 - 7fd0f3d - Bertrand Bougon : Ajoute la commande `pnpm bootstrap` ... adaptateurs git, npm et patchs Shannon, racine de composition avec le registre des outils
+2026-10-13T09:09:49+02:00 - f77d532 - Bertrand Bougon : Ajoute l'adaptateur de ligne de commande du bootstrap TypeScript ... --project/--url indissociables (usage 2), --branch, aide avec exemples
+2026-10-13T09:09:48+02:00 - 4462bfb - Bertrand Bougon : Ajoute la préparation de Shannon au bootstrap TypeScript ... réapplique les patchs locaux, signale ceux déjà appliqués ; port DepotShannon
+2026-10-13T09:09:47+02:00 - de93dd1 - Bertrand Bougon : Ajoute la préparation de Codex Security au bootstrap TypeScript ... installe la CLI seulement si elle est absente ; port CliCodexSecurity
+2026-10-13T09:09:46+02:00 - 54a7513 - Bertrand Bougon : Ajoute le cas d'usage `PrepareEnvironnement` du bootstrap TypeScript ... sous-modules, copie de travail de la cible (conservée si présente), registre des préparations d'outils, récapitulatif ; ports Git et SystemeDeFichier étendus
+2026-10-13T09:09:45+02:00 - dac8a65 - Bertrand Bougon : Ajoute la commande `pnpm estimer-cout` ... adaptateur commander (usage 2, erreur 1), adaptateurs Node et racine de composition ; sortie identique à estimer-cout.py
+2026-10-13T09:09:44+02:00 - 2da071a - Bertrand Bougon : Ajoute le cas d'usage `EstimeCout` de l'outillage TypeScript ... relevé de tokens Codex ou Shannon, Albert gratuit, tarifs Scaleway ; ports SystemeDeFichier et Console avec leurs doubles en mémoire
+2026-10-13T09:09:43+02:00 - a18f761 - Bertrand Bougon : Ajoute l'outillage TypeScript (Node 24, vitest, tsc, commander) ... socle du portage en parallèle des scripts bash/Python : exécution native des .ts par Node 24
+2026-10-13T09:09:42+02:00 - ef93111 - Bertrand Bougon : Conserve uniquement les configes exemple
+2026-10-13T09:09:41+02:00 - 994d0a2 - Bertrand Bougon : Ajoute un plafond de coût configurable au proxy LiteLLM de Codex ... prix par modèle (Albert 0, Scaleway 0,40/0,80 €/M) + max_budget/budget_duration ; enforcement via LITELLM_DATABASE_URL passée par start-proxy.sh (sinon suivi seul) ; README Codex (section Maîtrise du coût) et note budget Shannon
+2026-10-13T09:09:40+02:00 - b57f008 - Bertrand Bougon : Affiche les fournisseurs réellement configurés dans generate-env.sh ... le message final listait seulement ALBERT_BASE_URL, trompeur pour un scan Scaleway ; il indique désormais Albert et, si sa clé est présente, Scaleway
+2026-10-13T09:09:40+02:00 - 2bde8b4 - Bertrand Bougon : Corrige des références de variables résiduelles dans le bootstrap
+2026-10-13T09:09:39+02:00 - 8ed78f8 - Bertrand Bougon : [CORRECTION] Écrit le log de scan à côté du dossier de sortie, pas dedans ... Codex exige --output-dir vide au démarrage ; le tee dans le dossier le faisait échouer (« output directory is not empty »)
+2026-10-13T09:09:38+02:00 - da4c814 - Bertrand Bougon : Passe Codex Security sur DeepSeek par défaut et ajoute un template de config générique ... config-defaut.yaml (DeepSeek/Albert, dépôt entier) remplace gpt-oss comme défaut ; config-cible.template.yaml à copier par cible ; CODEX_TARGET requis (agnostique) ; README et en-têtes mis à jour
+2026-10-13T09:09:37+02:00 - 7090e31 - Bertrand Bougon : Affiche une estimation du coût en fin de scan (Codex et Shannon) ... scripts/estimer-cout.py (tokens × tarif fournisseur, Albert gratuit) branché dans run-scan.sh (log capturé) et run-shannon.sh (session.json) ; READMEs mis à jour
+2026-10-13T09:09:36+02:00 - 06c37a1 - Bertrand Bougon : Documente le lancement séquentiel des outils dans le README racine ... Codex Security d'abord (analyse statique, débusque les failles) puis Shannon (validation dynamique) ; intro et section Sécurité rendues agnostiques de la cible
+2026-10-13T09:09:35+02:00 - 5273831 - Bertrand Bougon : Rend Shannon agnostique de la cible : runner généraliste et templates par intention ... run-shannon.sh (--project/--url/--config) remplace les scripts spécifiques ; templates config-<intention>-cible + un exemple de focus concret ; README avec prérequis (instance locale, /etc/hosts Linux/macOS/Windows) et liste des configs ; .gitignore généralisé
+2026-10-13T09:09:34+02:00 - 6a2e3bc - Bertrand Bougon : Rend le dépôt agnostique de la cible : bootstrap paramétrable (--project/--url)
+2026-10-13T09:09:33+02:00 - 2a3379b - Bertrand Bougon : Retire un outil écarté après évaluation
+2026-10-13T09:09:32+02:00 - 8e7f15a - Bertrand Bougon : Ajoute un modèle servi par le fournisseur au proxy
+2026-10-13T09:09:31+02:00 - 7111743 - Bertrand Bougon : Ajoute une configuration Shannon pour un fournisseur en Chat Completions direct
+2026-10-13T09:09:30+02:00 - 8ef5661 - Bertrand Bougon : [CORRECTION] Retire le format de sortie imposé à DeepSeek dans le proxy ... sous json_schema ou json_object, DeepSeek chez Scaleway n'appelle plus aucun outil et validate échoue sans analyse ; le schéma passe en consigne
+2026-10-13T09:09:29+02:00 - 6210edf - Bertrand Bougon : Ajoute une cible de scan et sa configuration Codex Security
+2026-10-13T09:09:28+02:00 - 0e024f0 - Bertrand Bougon : Rend les consignes de scan indépendantes de la cible ... périmètre fourni par le SDK via ecrit-artefacts-scan.py --liste-perimetre, contrôles fondés sur l'OWASP API Security Top 10
+2026-10-13T09:09:27+02:00 - 7845274 - Bertrand Bougon : Ignore les copies locales de cibles
+2026-10-13T09:09:26+02:00 - 6f23e9f - Bertrand Bougon : Ajoute DeepSeek V4 Flash (Scaleway) au proxy LiteLLM de Codex Security ... clé Scaleway confinée au proxy, paramètres d'échantillonnage imposés par LiteLLM, hook json_schema réservé à gpt-oss, config de scan dédiée
+2026-10-13T09:09:25+02:00 - ba524da - Bertrand Bougon : Impose une décision justifiée par fichier dans les scans gpt-oss-120b ... le script d'artefacts exige une surface par fichier du périmètre, cohérente avec les findings ; brouillon écrit avec printf, le heredoc échouant dans le bac à sable
+2026-10-13T09:09:25+02:00 - 9b03c2d - Bertrand Bougon : Confie l'écriture des artefacts de scan à un script fourni à l'agent ... le modèle n'écrit plus qu'un brouillon JSON ; consignes explicites sur exec_command (apply_patch indisponible)
+2026-10-13T09:09:24+02:00 - 149011d - Bertrand Bougon : Ajoute des consignes de scan pas à pas pour gpt-oss-120b ... chemin sans sous-agents ni exploration du plugin, script d'écriture des artefacts validé hors ligne par le finaliseur
+2026-10-13T09:09:23+02:00 - 9f6b432 - Bertrand Bougon : Remplace dans le proxy LiteLLM le format json_schema par json_object
+2026-10-13T09:09:22+02:00 - 5b71fa3 - Bertrand Bougon : Durcit Codex Security et ajoute la validation via le SDK
+2026-10-13T09:09:21+02:00 - 8cb705f - Bertrand Bougon : Ajoute Codex Security, branché sur un fournisseur via un proxy LiteLLM
+2026-10-13T09:09:20+02:00 - d7c90dd - Bertrand Bougon : Réécrit la documentation pour un dépôt multi-outils
+2026-10-13T09:09:19+02:00 - 829376b - Bertrand Bougon : Rend le bootstrap générique vis-à-vis des outils
+2026-10-13T09:09:18+02:00 - 4cf8d58 - Bertrand Bougon : Regroupe les outils de liaison entre outils dans passerelles/
+2026-10-13T09:09:17+02:00 - 22fc577 - Bertrand Bougon : Regroupe l'outillage Shannon dans outils/shannon
+2026-10-13T09:09:16+02:00 - 9900c2d - Bertrand Bougon : Regroupe l'outillage d'un outil écarté dans son dossier
+2026-10-13T09:09:15+02:00 - 3d10caf - Bertrand Bougon : Déplace les sous-modules des outils dans outils/<outil>/source
+2026-10-13T09:09:14+02:00 - 0d70715 - Bertrand Bougon : Déclare la cible et les outils en sous-modules
+2026-10-13T09:09:13+02:00 - cfbc975 - Bertrand Bougon : Ajoute une passerelle d'export SARIF entre outils
+2026-10-13T09:09:12+02:00 - de770b3 - Bertrand Bougon : Ajoute l'outillage Shannon
+2026-10-13T09:09:11+02:00 - 7f5e133 - Bertrand Bougon : Ajoute la documentation initiale du POC d'audit
+2026-10-13T09:09:10+02:00 - 582940d - Bertrand Bougon : [SOIN] Ajoute le .gitignore et les modèles d'environnement
+2026-10-12T17:00:37+02:00 - 066142a - bbougon : Initial commit

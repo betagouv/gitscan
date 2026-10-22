@@ -1,0 +1,38 @@
+{
+  "name": "pala-outillage",
+  "private": true,
+  "description": "Outillage TypeScript du laboratoire d'audit (en parallèle des scripts bash/Python)",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "estimer-cout": "node outillage/javascript/src/composition/estimer-cout.ts",
+    "bootstrap": "node outillage/javascript/src/composition/bootstrap.ts",
+    "format:corrige": "prettier --write .",
+    "format:verifie": "prettier --check .",
+    "génère-env": "node --require dotenv/config outillage/javascript/src/composition/genere-env.ts",
+    "génère-config": "node --require dotenv/config outillage/javascript/src/composition/genere-config.ts",
+    "démarre-proxy": "node --require dotenv/config outillage/javascript/src/composition/demarre-proxy.ts",
+    "scan-complet": "node --require dotenv/config outillage/javascript/src/composition/scan-complet.ts",
+    "scan": "node --require dotenv/config outillage/javascript/src/composition/scan.ts",
+    "validate": "node outillage/javascript/src/composition/validate.ts",
+    "shannon": "node --require dotenv/config outillage/javascript/src/composition/shannon.ts",
+    "shannon-smoke": "node --require dotenv/config outillage/javascript/src/composition/shannon-smoke.ts",
+    "vérifie-appels-outils-llm": "node --require dotenv/config outillage/javascript/src/composition/verifie-appels-outils-llm.ts"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "date-fns": "^4.4.0",
+    "dotenv": "^18.0.4",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.0",
+    "prettier": "^3.9.9",
+    "typescript": "7.0.2",
+    "vitest": "5.0.2"
+  }
+}

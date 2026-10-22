@@ -1,0 +1,293 @@
+.
+├── .env.example
+├── .github
+│   ├── actions
+│   │   ├── installer-cc
+│   │   │   └── action.yml
+│   │   └── preparer-environnement
+│   │       └── action.yml
+│   └── workflows
+│       ├── ci.yaml
+│       └── deploiement.yml
+├── .gitignore
+├── .gitmodules
+├── .prettierignore
+├── .prettierrc
+├── LICENSE
+├── README.md
+├── cible
+│   └── .gitkeep
+├── documentation
+│   ├── ADRs
+│   │   ├── 0001-expliciter-origine-erreur-message-scan.md
+│   │   └── 0002-conserver-les-repos-cibles-et-installations-codex-au-demarrage.md
+│   ├── ajouter-un-outil.md
+│   ├── albert-api.md
+│   ├── demarche.md
+│   ├── scaleway-ai-api.md
+│   └── versions.md
+├── outillage
+│   └── javascript
+│       ├── src
+│       │   ├── bootstrap
+│       │   │   ├── adaptateurs
+│       │   │   │   └── GitEnLigneDeCommande.ts
+│       │   │   ├── application
+│       │   │   │   └── prepareEnvironnement.ts
+│       │   │   ├── cli.ts
+│       │   │   ├── domaine
+│       │   │   │   ├── CibleBootstrap.ts
+│       │   │   │   └── PreparationOutil.ts
+│       │   │   └── ports
+│       │   │       └── Git.ts
+│       │   ├── codex-security
+│       │   │   ├── adaptateurs
+│       │   │   │   ├── ConteneurProxyDocker.ts
+│       │   │   │   ├── DepotGitEnLigneDeCommande.ts
+│       │   │   │   ├── ScannerCodexSecurityNpm.ts
+│       │   │   │   └── ValidationCodexSdk.ts
+│       │   │   ├── application
+│       │   │   │   ├── demarreProxy.ts
+│       │   │   │   ├── genereConfigCible.ts
+│       │   │   │   ├── lanceScan.ts
+│       │   │   │   ├── prepareCodexSecurity.ts
+│       │   │   │   ├── prepareExecutionCodex.ts
+│       │   │   │   └── valideFinding.ts
+│       │   │   ├── cli
+│       │   │   │   ├── demarre-proxy.ts
+│       │   │   │   ├── genere-config.ts
+│       │   │   │   ├── scan.ts
+│       │   │   │   └── validate.ts
+│       │   │   ├── domaine
+│       │   │   │   ├── ConfigScan.ts
+│       │   │   │   ├── ConfigurationCible.ts
+│       │   │   │   ├── DossierDeSortie.ts
+│       │   │   │   ├── Perimetre.ts
+│       │   │   │   ├── cheminConfig.ts
+│       │   │   │   ├── cheminEnvironnement.ts
+│       │   │   │   ├── constat.ts
+│       │   │   │   ├── dureeDuScan.ts
+│       │   │   │   ├── fenetreDeModification.ts
+│       │   │   │   ├── informationsDeCommits.ts
+│       │   │   │   ├── proxyLocal.ts
+│       │   │   │   ├── scanNonEffectue.ts
+│       │   │   │   └── scanTermine.ts
+│       │   │   └── ports
+│       │   │       ├── ConteneurProxy.ts
+│       │   │       ├── DepotGit.ts
+│       │   │       ├── EnvironnementCodex.ts
+│       │   │       ├── ScannerCodexSecurity.ts
+│       │   │       └── ValidationCodex.ts
+│       │   ├── composition
+│       │   │   ├── bootstrap.ts
+│       │   │   ├── demarre-proxy.ts
+│       │   │   ├── dependances.ts
+│       │   │   ├── estimer-cout.ts
+│       │   │   ├── genere-config.ts
+│       │   │   ├── genere-env.ts
+│       │   │   ├── notificationScan.ts
+│       │   │   ├── scan-complet.ts
+│       │   │   ├── scan.ts
+│       │   │   ├── shannon-smoke.ts
+│       │   │   ├── shannon.ts
+│       │   │   ├── validate.ts
+│       │   │   └── verifie-appels-outils-llm.ts
+│       │   ├── cout
+│       │   │   ├── application
+│       │   │   │   └── estimationDuCout.ts
+│       │   │   ├── cli.ts
+│       │   │   └── domaine
+│       │   │       ├── Tarifs.ts
+│       │   │       ├── consommationDeTokens.ts
+│       │   │       └── cout.ts
+│       │   ├── environnement
+│       │   │   ├── application
+│       │   │   │   └── genereEnvironnement.ts
+│       │   │   ├── cli
+│       │   │   │   └── genere-env.ts
+│       │   │   └── domaine
+│       │   │       └── Cible.ts
+│       │   ├── messagerie
+│       │   │   ├── adaptateurs
+│       │   │   │   └── messagerieMattermost.ts
+│       │   │   └── domaine
+│       │   │       └── messagerieInstantanee.ts
+│       │   ├── noyau
+│       │   │   ├── adaptateurs
+│       │   │   │   └── node
+│       │   │   │       ├── AttenteTemporisee.ts
+│       │   │   │       ├── HorlogeSysteme.ts
+│       │   │   │       ├── ReseauFetch.ts
+│       │   │   │       ├── SystemeDeFichierNode.ts
+│       │   │   │       ├── apiHTTPFetch.ts
+│       │   │   │       ├── busEvenementsPALA.ts
+│       │   │   │       ├── consoleNode.ts
+│       │   │   │       └── processus.ts
+│       │   │   ├── environnement.ts
+│       │   │   ├── ligne-de-commande.ts
+│       │   │   └── ports
+│       │   │       ├── Attente.ts
+│       │   │       ├── BusEvenements.ts
+│       │   │       ├── Console.ts
+│       │   │       ├── Horloge.ts
+│       │   │       ├── Reseau.ts
+│       │   │       ├── SystemeDeFichier.ts
+│       │   │       └── apiHTTP.ts
+│       │   ├── scan-complet
+│       │   │   ├── application
+│       │   │   │   └── lanceScanComplet.ts
+│       │   │   ├── cli
+│       │   │   │   └── scanComplet.ts
+│       │   │   └── domaine
+│       │   │       └── cibles.ts
+│       │   └── shannon
+│       │       ├── adaptateurs
+│       │       │   ├── ApiChatFetch.ts
+│       │       │   ├── DepotShannonGit.ts
+│       │       │   ├── ServeurCibleFumeeHttp.ts
+│       │       │   └── ShannonNode.ts
+│       │       ├── application
+│       │       │   ├── descriptionPiDuFournisseur.ts
+│       │       │   ├── installationShannon.ts
+│       │       │   ├── lancePassageDeFumee.ts
+│       │       │   ├── lancePentest.ts
+│       │       │   ├── prepareShannon.ts
+│       │       │   └── verifieAppelsOutilsLLM.ts
+│       │       ├── cli
+│       │       │   ├── shannon-smoke.ts
+│       │       │   ├── shannon.ts
+│       │       │   └── verifie-appels-outils-llm.ts
+│       │       ├── domaine
+│       │       │   ├── SondeAppelsOutils.ts
+│       │       │   ├── SpecModele.ts
+│       │       │   └── UrlApplication.ts
+│       │       └── ports
+│       │           ├── ApiChat.ts
+│       │           ├── DepotShannon.ts
+│       │           ├── ServeurCibleFumee.ts
+│       │           └── Shannon.ts
+│       └── test
+│           ├── bootstrap
+│           │   ├── application
+│           │   │   └── prepareEnvironnement.spec.ts
+│           │   └── cli.spec.ts
+│           ├── codex-security
+│           │   ├── application
+│           │   │   ├── demarreProxy.spec.ts
+│           │   │   ├── genereConfigCible.spec.ts
+│           │   │   ├── lanceScan.spec.ts
+│           │   │   ├── prepareCodexSecurity.spec.ts
+│           │   │   └── valideFinding.spec.ts
+│           │   ├── cli
+│           │   │   ├── demarre-proxy.spec.ts
+│           │   │   ├── genere-config.spec.ts
+│           │   │   ├── scan.spec.ts
+│           │   │   └── validate.spec.ts
+│           │   └── domaine
+│           │       ├── cheminConfig.spec.ts
+│           │       ├── configScan.spec.ts
+│           │       ├── configurationCible.spec.ts
+│           │       ├── constat.spec.ts
+│           │       ├── dureeDuScan.spec.ts
+│           │       ├── perimetre.spec.ts
+│           │       └── proxyLocal.spec.ts
+│           ├── cout
+│           │   ├── application
+│           │   │   └── estimationDuCout.spec.ts
+│           │   ├── cli.spec.ts
+│           │   └── domaine
+│           │       └── cout.spec.ts
+│           ├── doubles
+│           │   ├── ApiChatSimulee.ts
+│           │   ├── AttenteInstantanee.ts
+│           │   ├── ConsoleEnMemoire.ts
+│           │   ├── ConteneurProxySimule.ts
+│           │   ├── DepotGitEnMemoire.ts
+│           │   ├── DepotShannonSimule.ts
+│           │   ├── EstimationDuCoutSimulee.ts
+│           │   ├── EtapesScanCompletSimulee.ts
+│           │   ├── GitSimule.ts
+│           │   ├── HorlogeFigee.ts
+│           │   ├── PreparationOutilSimulee.ts
+│           │   ├── ReseauSimule.ts
+│           │   ├── ScannerCodexSecuritySimulee.ts
+│           │   ├── ServeurCibleFumeeSimule.ts
+│           │   ├── ShannonSimule.ts
+│           │   ├── SystemeDeFichierEnMemoire.ts
+│           │   ├── ValidationCodexSimulee.ts
+│           │   └── environnement.ts
+│           ├── environnement
+│           │   ├── application
+│           │   │   └── genereEnvironnement.spec.ts
+│           │   └── cli
+│           │       └── genere-env.spec.ts
+│           ├── messagerie
+│           │   └── adaptateurs
+│           │       └── messagerieMattermost.spec.ts
+│           ├── noyau
+│           │   ├── adaptateurs
+│           │   │   └── node
+│           │   │       ├── busEvenementsPALA.spec.ts
+│           │   │       └── consoleNode.spec.ts
+│           │   └── environnement.spec.ts
+│           ├── scan-complet
+│           │   ├── application
+│           │   │   └── lanceScanComplet.spec.ts
+│           │   ├── cli
+│           │   │   └── scanComplet.spec.ts
+│           │   └── domaine
+│           │       └── cibles.spec.ts
+│           └── shannon
+│               ├── application
+│               │   ├── lancePassageDeFumee.spec.ts
+│               │   ├── lancePentest.spec.ts
+│               │   ├── prepareShannon.spec.ts
+│               │   └── verifieAppelsOutilsLLM.spec.ts
+│               └── cli
+│                   ├── shannon-smoke.spec.ts
+│                   ├── shannon.spec.ts
+│                   └── verifie-appels-outils-llm.spec.ts
+├── outils
+│   ├── codex-security
+│   │   ├── README.md
+│   │   ├── configs
+│   │   │   ├── albert-minimal.yaml
+│   │   │   ├── config-cible.template.yaml
+│   │   │   ├── config-defaut.yaml
+│   │   │   ├── consignes-scan.md
+│   │   │   └── scaleway-deepseek-minimal.yaml
+│   │   ├── litellm
+│   │   │   ├── Dockerfile
+│   │   │   ├── config.yaml
+│   │   │   └── json_schema_to_object.py
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── scripts
+│   │   │   ├── ecrit-artefacts-scan.py
+│   │   │   └── validate.mjs
+│   │   └── source
+│   └── shannon
+│       ├── README.md
+│       ├── configs
+│       │   ├── config-analyse-cible.template.yaml
+│       │   ├── config-authentification-cible.template.yaml
+│       │   ├── config-creation-compte-cible.template.yaml
+│       │   ├── config-focus-cible.template.yaml
+│       │   ├── config-sast-cible.template.yaml
+│       │   ├── models.albert.json
+│       │   └── models.scaleway.json
+│       ├── patches
+│       │   └── bash-timeout-30s.patch
+│       ├── scripts
+│       │   └── verifie_appels_outils_llm.py
+│       ├── shannon.env.template
+│       ├── smoke-target
+│       │   └── index.html
+│       └── source
+├── package.json
+├── pnpm-lock.yaml
+├── scripts
+│   └── estimer-cout.py
+├── tsconfig.json
+└── vitest.config.ts
+87 directories, 205 files
