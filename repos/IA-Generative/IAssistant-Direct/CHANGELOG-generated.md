@@ -1,21 +1,18 @@
-## Changelog : IAssistant-Direct (30 derniers jours, au 31 mai 2026)
+## Changelog : IAssistant-Direct (30 derniers jours, au 21 octobre 2026)
 
 ### Résumé
-Cette mise à jour majeure apporte des améliorations significatives à l'expérience utilisateur, notamment un assistant d'onboarding pour les nouveaux utilisateurs et une meilleure compatibilité avec différents environnements réseau. Le projet a également été renommé et bénéficie d'une gestion améliorée des sessions hors ligne et d'un accès direct pour les utilisateurs DGX.
+Ce mois-ci, le projet a franchi une étape majeure avec l'introduction de la "Bulle + IA", une interface interactive permettant d'accéder directement aux fonctionnalités d'intelligence artificielle sur les sites web compatibles. Nous avons également renforcé la fiabilité des réponses dans la section "Mes collections" et assuré une compatibilité accrue avec Firefox, tout en stabilisant les processus d'authentification.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de bienvenue pour guider les nouveaux utilisateurs lors du premier lancement de l'extension. [#1](https://github.com/IA-Generative/IAssistant-Direct/pull/1)
-- Amélioration de la compatibilité avec les environnements intranet et internet pour la communication (COMU).
-- L'extension injecte maintenant le content script sur `comu.din.gouv.fr` pour une meilleure prise en charge.
-- Renommage de l'extension en IAssistant-Direct.
-- Implémentation d'un accès direct pour les utilisateurs DGX.
-- Nouvelle mascotte Mirai remplace l'ancienne image de l'extension.
+- **Déploiement de la "Bulle + IA"** : Mise en place de la détection automatique des sites compatibles, d'un panneau conversationnel et d'une interface popup personnalisable (opacité réglable). [#7](https://github.com/IA-Generative/IAssistant-Direct/pull/7), [#8](https://github.com/IA-Generative/IAssistant-Direct/pull/8), [#13](https://github.com/IA-Generative/IAssistant-Direct/pull/13)
+- **Amélioration de "Mes collections"** : Ajout de badges pour identifier les réponses fiables, affichage de la source des assistants et présentation structurée via des plans de réponse. [#15](https://github.com/IA-Generative/IAssistant-Direct/pull/15)
+- **Optimisation de l'expérience Firefox** : Amélioration du flux de connexion pour garantir une navigation fluide sur ce navigateur. [#14](https://github.com/IA-Generative/IAssistant-Direct/pull/14)
 
 ### Évolutions techniques
-- Correction d'un problème avec l'URL Keycloak, permettant une configuration plus flexible.
-- Suppression de la nécessité de configurer `bootstrap_url` et `relayAssistantBaseUrl` dans la configuration servie.
-- Amélioration de la gestion des sessions hors ligne, avec une durée de validité de 6 mois.
+- **Fiabilisation de l'authentification** : Correction des pertes de session PKCE liées à l'arrêt du Service Worker et amélioration du diagnostic des erreurs de connexion Keycloak. [#10](https://github.com/IA-Generative/IAssistant-Direct/pull/10), [#11](https://github.com/IA-Generative/IAssistant-Direct/pull/11)
+- **Compatibilité Firefox ESR** : Adaptation de la gestion de l'arrière-plan via `background.scripts` pour supporter les versions de Firefox ne gérant pas les Service Workers. [#6](https://github.com/IA-Generative/IAssistant-Direct/pull/6)
+- **Qualité et CI/CD** : Intégration de tests de fumée (*smoke tests*) pour valider les étapes de build et de déploiement automatique.
 
 ### Autres changements
-- Mise à jour de la version de l'extension à v1.2.3.
-- Ajout d'un wizard d'onboarding pour une expérience utilisateur plus guidée.
+- **Documentation** : Mise à jour des guides d'architecture (onboarding) et des spécifications fonctionnelles concernant la bulle d'interface et les contrats de recherche. [#2](https://github.com/IA-Generative/IAssistant-Direct/pull/2), [#4](https://github.com/IA-Generative/IAssistant-Direct/pull/4)
+- **Tests et Recettes** : Campagnes de tests intensives sur les interfaces "Mes collections" et la "Bulle" pour assurer la stabilité sur Chrome et Firefox ESR.

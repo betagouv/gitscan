@@ -13,11 +13,14 @@
 │   ├── image.png
 │   └── mascotte-mirai.png
 ├── docs
+│   ├── ARCHITECTURE.md
 │   ├── TESTING.md
 │   ├── adr-dgx-deployment.md
+│   ├── adr-plugin-dm-integration.md
 │   ├── demande-changement-deploiement-navigateur.md
 │   ├── dm-integration-plan.md
 │   ├── keycloak-offline-tokens.md
+│   ├── plan-bulle-mes-collections.md
 │   └── prompt-dm-integration.md
 ├── icons
 │   ├── icon128.png
@@ -29,9 +32,16 @@
 ├── scripts
 │   ├── build.sh
 │   ├── deploy-release.sh
+│   ├── recette-bulle
+│   │   ├── README.md
+│   │   ├── chrome.mjs
+│   │   ├── firefox.mjs
+│   │   ├── recette.sh
+│   │   └── scenarios.mjs
 │   ├── recette-dgx-handoff.md
 │   ├── recette.py
-│   └── register-dm.sh
+│   ├── register-dm.sh
+│   └── smoke-deploy.sh
 ├── src
 │   ├── auth.js
 │   ├── background.js
@@ -42,12 +52,21 @@
 │   ├── dm
 │   │   ├── bootstrap.js
 │   │   ├── config.json
+│   │   ├── dm-config.json
 │   │   ├── manifest.json
 │   │   └── telemetry.js
+│   ├── mescollections
+│   │   ├── api.js
+│   │   ├── bulle.js
+│   │   ├── correspond.js
+│   │   ├── doublure.js
+│   │   ├── doublure.json
+│   │   └── sites.js
 │   ├── mirai_loader.gif
 │   ├── options.html
 │   ├── options.js
 │   ├── overlay.js
+│   ├── popup-mescollections.js
 │   ├── popup.css
 │   ├── popup.html
 │   ├── popup.js
@@ -55,11 +74,20 @@
 │   ├── welcome.html
 │   └── welcome.js
 └── tests
+    ├── RAPPORT-richard-menucontext.md
+    ├── TEST-MANUEL-utilisateur.md
     ├── auth.test.js
     ├── background.test.js
+    ├── build-smoke.test.js
     ├── dm-bootstrap.test.js
     ├── dm-telemetry.test.js
     ├── manifest-html.test.js
+    ├── mescollections-api.test.js
+    ├── mescollections-background.test.js
+    ├── mescollections-bulle.test.js
+    ├── mescollections-correspond.test.js
+    ├── mescollections-sites.test.js
+    ├── popup-mescollections.test.js
     ├── setup.js
     └── url-refactoring.test.js
-10 directories, 54 files
+12 directories, 80 files
