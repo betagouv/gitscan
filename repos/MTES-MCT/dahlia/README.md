@@ -130,13 +130,14 @@ complément des champs fermés (`litigationType`, `rightType`).
   supprimé. La modale liste alors les dossiers concernés (liens ouverts dans un
   nouvel onglet). La règle est vérifiée dans la Server Action _et_ garantie en
   base par la clé étrangère `case_file_tags.tagId ON DELETE RESTRICT`.
-- **Pose d'un tag** : depuis la modale « Détails du dossier ». Le champ est un
+- **Pose d'un tag** : depuis le bloc « Qualification du dossier » (onglet Synthèse). Le champ est un
   combobox : le focus ouvre la liste, la saisie la filtre (insensible à la casse
   et aux accents). Les utilisateurs **ne peuvent pas créer** de tag depuis là.
-- **Affichage** : sous le statut, à la fois dans la liste des dossiers et dans
-  l'en-tête de la fiche — les deux passent par le même composant
+- **Affichage** : sous le statut dans la liste des dossiers (composant
   [app/ui/case-file/case-file-identity.tsx](app/ui/case-file/case-file-identity.tsx),
-  qui rend le bloc nom + titre + statut + tags.
+  qui rend le bloc nom + titre + statut + tags), et dans le résumé du bloc
+  « Qualification du dossier » de la fiche. L'en-tête de la fiche n'affiche pas
+  les tags.
 - **Recherche et filtre** : la facette `mc:` du tableau de bord (ex.
   `mc:urgent`, ou `mc:"à relancer"` pour un libellé multi-mots), disponible
   aussi via le bouton de filtre de la colonne « Dossier ». Les libellés de tags
@@ -443,6 +444,12 @@ moteur de règles (`data/classification/`) permet de les **déduire du texte
 scrapé** : aujourd'hui le titre Télérecours, demain la décision (les deux champs
 sont déjà exposés au moteur).
 
+Chaque valeur posée par le moteur est tracée dans `classification_field_changes`.
+Le bloc « Qualification du dossier » (onglet Synthèse) demande une revue par un
+agent tant qu'un changement de `litigationType` ou `rightType` est plus récent
+que `case_files.qualificationValidatedAt`. Enregistrer le bloc ne met cette date
+à jour que si une revue était en attente : sinon, seuls les champs sont enregistrés.
+
 Le champ `summary` (anciennement la « Raison ») est **déprécié** : il n'apparaît
 plus dans les formulaires ni dans le nom d'affichage des dossiers. La colonne
 reste en base et le moteur de classification continue de la remplir.
@@ -581,6 +588,10 @@ erDiagram
         DateTime lastStatusDate
         string lastHearingId FK "nullable"
         string procedureState "nullable"
+        string comment "nullable"
+        string comDaloNumber "nullable"
+        DateTime comedDecisionDate "nullable, date"
+        DateTime qualificationValidatedAt "nullable"
         int chamberId FK "nullable"
         int mainClaimantId FK
         int mainDefenderId FK "nullable"

@@ -1,23 +1,22 @@
 {
   "url": "https://github.com/MTES-MCT/dahlia",
   "name": "dahlia",
-  "description": "Application d'aide à l'organisation des défenses des dossiers DALO, DAHO et DAHU. Elle permet de récupérer et de gérer les dossiers de contentieux liés au droit au logement via l'API Télérecours.",
+  "description": "Application d'aide à l'organisation des défenses des dossiers DALO, DAHO et DAHU. Elle permet de récupérer les dossiers de contentieux du droit au logement via l'API Télérecours et de gérer leur suivi et leur classification.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
     "Suivi & Traçabilité",
-    "Gestion métier générale"
+    "Tableaux & Affichage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Next.js",
-    "PostgreSQL",
     "Prisma",
+    "PostgreSQL",
     "better-auth",
     "@codegouvfr/react-dsfr",
     "Vitest",
@@ -28,11 +27,11 @@
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "API REST & GraphQL",
     "Authentification (composant)",
+    "Documentation & Schémas",
     "Scripts & Utilitaires",
-    "Tests",
-    "ORM & Accès aux données",
-    "Design System (DSFR & UI libs)"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
@@ -46,16 +45,20 @@
   },
   "tests": "Vitest",
   "workflows": [
-    "Husky (pre-commit hooks)"
+    "Husky (pre-commit)",
+    "pnpm scrape:telerecours",
+    "pnpm classify:case-files"
   ],
-  "status": "maintained",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "TypeScript",
+    "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "React & Next.js",
+    "TypeScript",
     "Docker & Conteneurs",
-    "Bases de données SQL",
+    "Sécurité & Auth",
     "CI/CD & GitHub Actions",
     "Standards & Schémas"
   ]

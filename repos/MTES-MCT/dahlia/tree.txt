@@ -167,11 +167,14 @@
 │   │   ├── auth.unit.test.ts
 │   │   ├── carried-search-params.ts
 │   │   ├── case-file-actors.ts
+│   │   ├── case-file-comment.ts
 │   │   ├── case-file-enums.ts
 │   │   ├── case-file-format.ts
 │   │   ├── case-file-format.unit.test.ts
 │   │   ├── case-file-key.ts
 │   │   ├── case-file-key.unit.test.ts
+│   │   ├── case-file-qualification.ts
+│   │   ├── case-file-qualification.unit.test.ts
 │   │   ├── case-file-scope.integration.test.ts
 │   │   ├── case-file-scope.ts
 │   │   ├── case-file-scope.unit.test.ts
@@ -199,6 +202,8 @@
 │   │   │   ├── jurisdictions.unit.test.ts
 │   │   │   ├── piece-content.ts
 │   │   │   ├── piece-content.unit.test.ts
+│   │   │   ├── related-case-files.ts
+│   │   │   ├── related-case-files.unit.test.ts
 │   │   │   ├── statuses.ts
 │   │   │   ├── statuses.unit.test.ts
 │   │   │   ├── tags.ts
@@ -287,19 +292,26 @@
 │       │   ├── case-file-details-card.tsx
 │       │   └── case-file-details-card.unit.test.tsx
 │       ├── case-file
+│       │   ├── case-file-comments-panel.tsx
+│       │   ├── case-file-comments-panel.unit.test.tsx
 │       │   ├── case-file-identity.tsx
 │       │   ├── case-file-identity.unit.test.tsx
+│       │   ├── case-file-info-panel.tsx
+│       │   ├── case-file-info-panel.unit.test.tsx
+│       │   ├── case-file-qualification-panel.tsx
+│       │   ├── case-file-qualification-panel.unit.test.tsx
 │       │   ├── case-file-telerecours-sync.tsx
 │       │   ├── case-file-telerecours-sync.unit.test.tsx
+│       │   ├── case-file-telerecours-title.tsx
 │       │   └── tag-badge.tsx
 │       ├── form
-│       │   ├── case-file-details-editor.tsx
 │       │   ├── case-files-search-by-status.tsx
 │       │   ├── case-files-search-by-status.unit.test.tsx
 │       │   ├── case-files-search.tsx
 │       │   ├── case-files-search.unit.test.tsx
 │       │   ├── hidden-field.tsx
 │       │   ├── hidden-field.unit.test.tsx
+│       │   ├── production-deadline-fields.tsx
 │       │   ├── search-bar.tsx
 │       │   ├── search-bar.unit.test.tsx
 │       │   ├── table-search-bar.tsx
@@ -315,6 +327,10 @@
 │       │   ├── header-dahlia.unit.test.tsx
 │       │   ├── logout-link.tsx
 │       │   └── logout-link.unit.test.tsx
+│       ├── panel
+│       │   ├── collapsible-panel.tsx
+│       │   ├── collapsible-panel.unit.test.tsx
+│       │   └── panel-frame.ts
 │       ├── pending-validation.tsx
 │       ├── pending-validation.unit.test.tsx
 │       ├── piece-viewer.tsx
@@ -343,11 +359,14 @@
 │       │   ├── table-pagination-footer.unit.test.tsx
 │       │   ├── use-table-page-size.ts
 │       │   └── use-table-page-size.unit.test.ts
-│       └── tabs
-│           ├── case-file-tab-nav.tsx
-│           ├── case-file-tab-nav.unit.test.tsx
-│           ├── case-file-tabs.tsx
-│           └── case-file-tabs.unit.test.tsx
+│       ├── tabs
+│       │   ├── case-file-tab-nav.tsx
+│       │   ├── case-file-tab-nav.unit.test.tsx
+│       │   ├── case-file-tabs.tsx
+│       │   └── case-file-tabs.unit.test.tsx
+│       └── text
+│           ├── expandable-text.tsx
+│           └── expandable-text.unit.test.tsx
 ├── cron.json
 ├── data
 │   ├── anonymize.ts
@@ -626,6 +645,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20261012082357_telerecours_sync_rate_limit
 │   │   │   └── migration.sql
+│   │   ├── 20261016134509_case_file_qualification
+│   │   │   └── migration.sql
+│   │   ├── 20261016141722_case_file_comment
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -661,4 +684,4 @@
 ├── vitest.config.mts
 ├── vitest.integration.config.mts
 └── vitest.unit.config.mts
-111 directories, 599 files
+115 directories, 618 files
