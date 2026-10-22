@@ -151,6 +151,7 @@
 │   │   │   │   ├── ImportReport.ts
 │   │   │   │   ├── NotifyImportFailureContext.ts
 │   │   │   │   ├── NotifyImportSuccessContext.ts
+│   │   │   │   ├── PaginatedResult.ts
 │   │   │   │   ├── ParserInfo.ts
 │   │   │   │   ├── ParserPath.ts
 │   │   │   │   ├── ParserScheme.ts
@@ -284,7 +285,9 @@
 │   │   │   │   │   │   ├── index.http.ts
 │   │   │   │   │   │   ├── provider.http.ts
 │   │   │   │   │   │   ├── rna-siren.http.ts
-│   │   │   │   │   │   ├── search.http.ts
+│   │   │   │   │   │   ├── search
+│   │   │   │   │   │   │   ├── search.http.ts
+│   │   │   │   │   │   │   └── search.mapper.ts
 │   │   │   │   │   │   ├── subvention.http.ts
 │   │   │   │   │   │   ├── tools.http.test.ts
 │   │   │   │   │   │   ├── tools.http.ts
@@ -302,7 +305,10 @@
 │   │   │   │   │           │   ├── chorus.parser.ts
 │   │   │   │   │           │   └── chorus.validator.ts
 │   │   │   │   │           ├── download-and-import.pipeline.ts
+│   │   │   │   │           ├── errors
+│   │   │   │   │           │   └── no-sirene-import.error.ts
 │   │   │   │   │           ├── import-notifier.ts
+│   │   │   │   │           ├── import-pipeline.ts
 │   │   │   │   │           ├── rna
 │   │   │   │   │           │   ├── __snapshots__
 │   │   │   │   │           │   │   └── rna.mapper.test.ts.snap
@@ -310,18 +316,24 @@
 │   │   │   │   │           │   ├── rna.dto.ts
 │   │   │   │   │           │   ├── rna.mapper.test.ts
 │   │   │   │   │           │   ├── rna.mapper.ts
-│   │   │   │   │           │   ├── rna.parser.test.ts
-│   │   │   │   │           │   ├── rna.parser.ts
 │   │   │   │   │           │   ├── rna.pipeline.test.ts
 │   │   │   │   │           │   └── rna.pipeline.ts
 │   │   │   │   │           ├── sirene-establishment
 │   │   │   │   │           │   ├── sirene-establishment.dto.ts
 │   │   │   │   │           │   ├── sirene-establishment.fixture.ts
+│   │   │   │   │           │   ├── sirene-establishment.mapper.ts
 │   │   │   │   │           │   ├── sirene-establishment.parser.test.ts
 │   │   │   │   │           │   ├── sirene-establishment.parser.ts
 │   │   │   │   │           │   ├── sirene-establishment.pipeline.test.ts
 │   │   │   │   │           │   └── sirene-establishment.pipeline.ts
 │   │   │   │   │           └── sirene-unite-legale
+│   │   │   │   │               ├── SireneUniteLegaleDto.ts
+│   │   │   │   │               ├── __fixtures__
+│   │   │   │   │               │   └── sirene-unite-legale.dto.fixture.ts
+│   │   │   │   │               ├── __snapshots__
+│   │   │   │   │               │   └── sirene-unite-legale.mapper.test.ts.snap
+│   │   │   │   │               ├── sirene-unite-legale.mapper.test.ts
+│   │   │   │   │               ├── sirene-unite-legale.mapper.ts
 │   │   │   │   │               ├── sirene-unite-legale.pipeline.test.ts
 │   │   │   │   │               └── sirene-unite-legale.pipeline.ts
 │   │   │   │   └── outputs
@@ -351,22 +363,10 @@
 │   │   │   │       │   │   ├── data-bretagne.port.ts
 │   │   │   │       │   │   ├── data-bretagne.validator.test.ts
 │   │   │   │       │   │   └── data-bretagne.validator.ts
-│   │   │   │       │   ├── data-gouv
-│   │   │   │       │   │   ├── data-gouv.adapter.test.ts
-│   │   │   │       │   │   ├── data-gouv.adapter.ts
-│   │   │   │       │   │   └── data-gouv.port.ts
-│   │   │   │       │   └── recherche-entreprises
-│   │   │   │       │       ├── @types
-│   │   │   │       │       │   └── RechercheEntreprisesDto.ts
-│   │   │   │       │       ├── __fixtures__
-│   │   │   │       │       │   └── recherche-entreprise.fixture.ts
-│   │   │   │       │       ├── recherche-entreprises.adapter.test.ts
-│   │   │   │       │       ├── recherche-entreprises.adapter.ts
-│   │   │   │       │       ├── recherche-entreprises.mapper.test.ts
-│   │   │   │       │       ├── recherche-entreprises.mapper.ts
-│   │   │   │       │       ├── recherche-entreprises.port.ts
-│   │   │   │       │       ├── recherche-entreprises.service.test.ts
-│   │   │   │       │       └── recherche-entreprises.service.ts
+│   │   │   │       │   └── data-gouv
+│   │   │   │       │       ├── data-gouv.adapter.test.ts
+│   │   │   │       │       ├── data-gouv.adapter.ts
+│   │   │   │       │       └── data-gouv.port.ts
 │   │   │   │       ├── db
 │   │   │   │       │   ├── @types
 │   │   │   │       │   │   ├── FlatDbo.ts
@@ -383,6 +383,14 @@
 │   │   │   │       │   │   │   └── ApplicationFlatDbo.ts
 │   │   │   │       │   │   ├── application-flat.adapter.ts
 │   │   │   │       │   │   └── application-flat.port.ts
+│   │   │   │       │   ├── association-search
+│   │   │   │       │   │   ├── @types
+│   │   │   │       │   │   │   └── AssociationSearchDbo.ts
+│   │   │   │       │   │   ├── __fixtures__
+│   │   │   │       │   │   │   └── association-search.fixture.ts
+│   │   │   │       │   │   ├── association-search.adapter.ts
+│   │   │   │       │   │   ├── association-search.mapper.ts
+│   │   │   │       │   │   └── association-search.port.ts
 │   │   │   │       │   ├── configurations
 │   │   │   │       │   │   ├── configurations.adapter.test.ts
 │   │   │   │       │   │   ├── configurations.adapter.ts
@@ -511,10 +519,13 @@
 │   │   │   │       │   │   ├── search.adapter.ts
 │   │   │   │       │   │   └── search.port.ts
 │   │   │   │       │   ├── sirene
+│   │   │   │       │   │   ├── SireneUniteLegaleDbo.ts
 │   │   │   │       │   │   ├── __fixtures__
-│   │   │   │       │   │   │   └── sirene-establishment.fixture.ts
+│   │   │   │       │   │   │   ├── sirene-establishment.fixture.ts
+│   │   │   │       │   │   │   └── sirene-unite-legale.fixture.ts
 │   │   │   │       │   │   ├── __snapshots__
-│   │   │   │       │   │   │   └── sirene-establishment.mapper.test.ts.snap
+│   │   │   │       │   │   │   ├── sirene-establishment.mapper.test.ts.snap
+│   │   │   │       │   │   │   └── sirene-unite-legale.mapper.test.ts.snap
 │   │   │   │       │   │   ├── sirene-establishment.adapter.test.ts
 │   │   │   │       │   │   ├── sirene-establishment.adapter.ts
 │   │   │   │       │   │   ├── sirene-establishment.dbo.ts
@@ -522,6 +533,8 @@
 │   │   │   │       │   │   ├── sirene-establishment.mapper.ts
 │   │   │   │       │   │   ├── sirene-establishment.port.ts
 │   │   │   │       │   │   ├── sirene-unite-legale.adapter.ts
+│   │   │   │       │   │   ├── sirene-unite-legale.mapper.test.ts
+│   │   │   │       │   │   ├── sirene-unite-legale.mapper.ts
 │   │   │   │       │   │   └── sirene-unite-legale.port.ts
 │   │   │   │       │   ├── state-budget-program
 │   │   │   │       │   │   ├── @types
@@ -554,12 +567,6 @@
 │   │   │   │       │   │   ├── unite-legale-entreprise.adapter.ts
 │   │   │   │       │   │   ├── unite-legale-entreprise.mapper.ts
 │   │   │   │       │   │   └── unite-legale-entreprise.port.ts
-│   │   │   │       │   ├── unite-legale-name
-│   │   │   │       │   │   ├── @types
-│   │   │   │       │   │   │   └── UniteLegaleNameDbo.ts
-│   │   │   │       │   │   ├── unite-legale-name.adapter.ts
-│   │   │   │       │   │   ├── unite-legale-name.mapper.ts
-│   │   │   │       │   │   └── unite-legale-name.port.ts
 │   │   │   │       │   └── user
 │   │   │   │       │       ├── @errors
 │   │   │   │       │       │   └── UserUpdateError.ts
@@ -606,12 +613,15 @@
 │   │   │   │   └── static-implements.decorator.ts
 │   │   │   ├── domain
 │   │   │   │   ├── __fixtures__
+│   │   │   │   │   ├── association-search.fixture.ts
 │   │   │   │   │   ├── bodacc.fixture.ts
 │   │   │   │   │   ├── establishment.fixture.ts
-│   │   │   │   │   └── rna.fixture.ts
+│   │   │   │   │   ├── rna.fixture.ts
+│   │   │   │   │   └── unite-legale.fixture.ts
 │   │   │   │   ├── errors
 │   │   │   │   │   └── MissingFieldError.ts
 │   │   │   │   ├── structures
+│   │   │   │   │   ├── SearchStructureEntity.ts
 │   │   │   │   │   ├── associations
 │   │   │   │   │   │   └── BodaccRecordEntity.ts
 │   │   │   │   │   └── establishments
@@ -639,6 +649,7 @@
 │   │   │   │       ├── NewUserEntity.ts
 │   │   │   │       └── UserEntity.ts
 │   │   │   ├── entities
+│   │   │   │   ├── AssociationSearchEntity.ts
 │   │   │   │   ├── DomaineFonctionnelEntity.ts
 │   │   │   │   ├── GrantFlatEntity.ts
 │   │   │   │   ├── MinistryEntity.ts
@@ -648,7 +659,6 @@
 │   │   │   │   ├── SireneUniteLegaleEntity.ts
 │   │   │   │   ├── StateBudgetProgramEntity.ts
 │   │   │   │   ├── UniteLegaleEntrepriseEntity.ts
-│   │   │   │   ├── UniteLegaleNameEntity.ts
 │   │   │   │   └── flats
 │   │   │   │       ├── ApplicationFlatEntity.ts
 │   │   │   │       ├── FlatEntity.ts
@@ -726,15 +736,6 @@
 │   │   │   │   │   ├── IdentifierError.ts
 │   │   │   │   │   ├── association-identifier.service.test.ts
 │   │   │   │   │   └── association-identifier.service.ts
-│   │   │   │   ├── association-name
-│   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   └── AssociationName.ts
-│   │   │   │   │   ├── associationName.service.test.ts
-│   │   │   │   │   ├── associationName.service.ts
-│   │   │   │   │   ├── entities
-│   │   │   │   │   │   └── AssociationNameEntity.ts
-│   │   │   │   │   └── mappers
-│   │   │   │   │       └── association-name.mapper.ts
 │   │   │   │   ├── associations
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── AssociationsProvider.ts
@@ -1180,21 +1181,6 @@
 │   │   │   │   │   │   ├── scdl.mapper.ts
 │   │   │   │   │   │   ├── scdl.service.test.ts
 │   │   │   │   │   │   └── scdl.service.ts
-│   │   │   │   │   ├── sirene
-│   │   │   │   │   │   ├── @types
-│   │   │   │   │   │   │   ├── SireneUniteLegaleDbo.ts
-│   │   │   │   │   │   │   ├── SireneUniteLegaleDto.ts
-│   │   │   │   │   │   │   └── __fixtures__
-│   │   │   │   │   │   │       └── sirene-stock-unite-legale.fixture.ts
-│   │   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   │   ├── StockUniteLegale.parquet
-│   │   │   │   │   │   │   ├── StockUniteLegale_utf8.zip
-│   │   │   │   │   │   │   └── sirene-unite-legale.fixture.ts
-│   │   │   │   │   │   └── mappers
-│   │   │   │   │   │       ├── __snapshots__
-│   │   │   │   │   │       │   └── sirene-unite-legale.mapper.test.ts.snap
-│   │   │   │   │   │       ├── sirene-unite-legale.mapper.test.ts
-│   │   │   │   │   │       └── sirene-unite-legale.mapper.ts
 │   │   │   │   │   ├── subventia
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   ├── subventia.dto.ts
@@ -1217,11 +1203,8 @@
 │   │   │   │   │   │       │   └── Validation.ts
 │   │   │   │   │   │       ├── subventia.validator.test.ts
 │   │   │   │   │   │       └── subventia.validator.ts
-│   │   │   │   │   ├── unite-legale-entreprise
-│   │   │   │   │   │   └── unite-legale.entreprise.service.ts
-│   │   │   │   │   └── unite-legale-name
-│   │   │   │   │       ├── unite-legale.name.service.test.ts
-│   │   │   │   │       └── unite-legale.name.service.ts
+│   │   │   │   │   └── unite-legale-entreprise
+│   │   │   │   │       └── unite-legale.entreprise.service.ts
 │   │   │   │   ├── rna-siren
 │   │   │   │   │   ├── rna-siren.service.test.ts
 │   │   │   │   │   └── rna-siren.service.ts
@@ -1243,8 +1226,6 @@
 │   │   │   │   │   │   ├── BudgetLine.ts
 │   │   │   │   │   │   ├── LegalInformations.ts
 │   │   │   │   │   │   └── ProviderInformations.ts
-│   │   │   │   │   ├── mappers
-│   │   │   │   │   │   └── association-name-dto.mapper.ts
 │   │   │   │   │   ├── search.service.test.ts
 │   │   │   │   │   └── search.service.ts
 │   │   │   │   ├── stats
@@ -1385,11 +1366,16 @@
 │   │   │   │       └── provider-value.mapper.ts
 │   │   │   └── usecases
 │   │   │       ├── download-file.ts
-│   │   │       └── remove-file.ts
+│   │   │       ├── remove-file.ts
+│   │   │       └── search
+│   │   │           ├── get-association-name.ts
+│   │   │           ├── sanitize-search-text.ts
+│   │   │           ├── search.test.ts
+│   │   │           ├── search.ts
+│   │   │           └── split-text-in-tokens.ts
 │   │   ├── tests
 │   │   │   ├── __fixtures__
 │   │   │   │   ├── allocators.fixture.ts
-│   │   │   │   ├── association-name.fixture.ts
 │   │   │   │   ├── association-visits.fixture.ts
 │   │   │   │   ├── association.fixture.ts
 │   │   │   │   ├── data-bretagne.fixture.json
@@ -1402,6 +1388,7 @@
 │   │   │   ├── __helpers__
 │   │   │   │   ├── ayncIterableHelper.ts
 │   │   │   │   ├── expect-any.helper.ts
+│   │   │   │   ├── fake-date.ts
 │   │   │   │   ├── resetTokenHelper.ts
 │   │   │   │   ├── tokenHelper.ts
 │   │   │   │   └── userHelper.ts
@@ -1417,28 +1404,45 @@
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   ├── chorus.xlsx
-│   │   │   │   │   │   ├── diff-maj-time.rna-waldec.parquet
 │   │   │   │   │   │   ├── multiple-batch.rna-waldec.parquet
 │   │   │   │   │   │   ├── multiple-batch.sirene-establishment.parquet
-│   │   │   │   │   │   ├── remote.sirene-stock-unite-legale.parquet
-│   │   │   │   │   │   └── sirene-establishment.parquet
+│   │   │   │   │   │   ├── rna-waldec
+│   │   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   │   ├── latest-rna-waldec.parquet
+│   │   │   │   │   │   │   └── old-rna-waldec.parquet
+│   │   │   │   │   │   ├── sirene-establishment.parquet
+│   │   │   │   │   │   └── unite-legale
+│   │   │   │   │   │       ├── README.md
+│   │   │   │   │   │       ├── latest-unite-legale.parquet
+│   │   │   │   │   │       └── old-unite-legale.parquet
 │   │   │   │   │   ├── cli
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   ├── establishment.cli.spec.ts.snap
 │   │   │   │   │   │   │   ├── helios.cli.spec.ts.snap
-│   │   │   │   │   │   │   └── rna.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── rna.cli.spec.ts.snap
+│   │   │   │   │   │   │   └── sirene-stock-unite-legale.cli.spec.ts.snap
 │   │   │   │   │   │   ├── establishment.cli.spec.ts
 │   │   │   │   │   │   ├── helios.cli.spec.ts
 │   │   │   │   │   │   ├── helios.fixture.ods
-│   │   │   │   │   │   └── rna.cli.spec.ts
-│   │   │   │   │   └── cron
+│   │   │   │   │   │   ├── rna.cli.spec.ts
+│   │   │   │   │   │   └── sirene-stock-unite-legale.cli.spec.ts
+│   │   │   │   │   ├── cron
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   ├── chorus.cron.spec.ts.snap
+│   │   │   │   │   │   │   ├── rna.cron.spec.ts.snap
+│   │   │   │   │   │   │   └── sirene-stock.cron.spec.ts.snap
+│   │   │   │   │   │   ├── chorus.cron.spec.ts
+│   │   │   │   │   │   ├── rna.cron.spec.ts
+│   │   │   │   │   │   └── sirene-stock.cron.spec.ts
+│   │   │   │   │   ├── http
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── search.http.spec.ts.snap
+│   │   │   │   │   │   └── search.http.spec.ts
+│   │   │   │   │   └── pipelines
+│   │   │   │   │       ├── README.md
 │   │   │   │   │       ├── __snapshots__
-│   │   │   │   │       │   ├── chorus.cron.spec.ts.snap
-│   │   │   │   │       │   ├── rna.cron.spec.ts.snap
-│   │   │   │   │       │   └── sirene-stock.cron.spec.ts.snap
-│   │   │   │   │       ├── chorus.cron.spec.ts
-│   │   │   │   │       ├── rna.cron.spec.ts
-│   │   │   │   │       └── sirene-stock.cron.spec.ts
+│   │   │   │   │       │   └── association-search-update.spec.ts.snap
+│   │   │   │   │       └── association-search-update.spec.ts
 │   │   │   │   └── outputs
 │   │   │   │       └── db
 │   │   │   │           └── __fixtures__
@@ -1475,7 +1479,6 @@
 │   │   │   │   │   │   ├── fonjep.cli.spec.ts.snap
 │   │   │   │   │   │   ├── osiris.cli.spec.ts.snap
 │   │   │   │   │   │   ├── scdl.cli.spec.ts.snap
-│   │   │   │   │   │   ├── sirene-stock-unite-legale.cli.spec.ts.snap
 │   │   │   │   │   │   └── subventia.cli.spec.ts.snap
 │   │   │   │   │   ├── amounts-vs-program-region.cli.spec.ts
 │   │   │   │   │   ├── chorus.cli.spec.ts
@@ -1487,7 +1490,6 @@
 │   │   │   │   │   ├── gispro.cli.spec.ts
 │   │   │   │   │   ├── osiris.cli.spec.ts
 │   │   │   │   │   ├── scdl.cli.spec.ts
-│   │   │   │   │   ├── sirene-stock-unite-legale.cli.spec.ts
 │   │   │   │   │   └── subventia.cli.spec.ts
 │   │   │   │   ├── cron
 │   │   │   │   │   ├── __snapshots__
@@ -1518,8 +1520,7 @@
 │   │   │   │       └── tools.http.spec.ts
 │   │   │   └── modules
 │   │   │       ├── __snapshots__
-│   │   │       │   ├── providers.spec.ts.snap
-│   │   │       │   └── search.spec.ts.snap
+│   │   │       │   └── providers.spec.ts.snap
 │   │   │       ├── configurations.spec.ts
 │   │   │       ├── providers
 │   │   │       │   ├── api-entreprise
@@ -1528,7 +1529,6 @@
 │   │   │       │       └── dauphin-gispro.adapter.spec.ts
 │   │   │       ├── providers.spec.ts
 │   │   │       ├── rna-siren.spec.ts
-│   │   │       ├── search.spec.ts
 │   │   │       └── user
 │   │   │           ├── __fixtures__
 │   │   │           │   └── entity.ts
@@ -1709,7 +1709,9 @@
 │   │   │   │   ├── ScdlGrantStandardDto.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── search
-│   │   │   │   ├── AssociationNameDto.ts
+│   │   │   │   ├── PaginatedRechercheAssociationDto.ts
+│   │   │   │   ├── PaginatedResultDto.ts
+│   │   │   │   ├── RechercheAssociationDto.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── shared
 │   │   │   │   ├── Adresse.ts
@@ -1770,6 +1772,8 @@
 │   │   │   │   │       └── svg404.svg
 │   │   │   │   ├── components
 │   │   │   │   │   ├── ActionGroup.svelte
+│   │   │   │   │   ├── AdvancedSearchBar
+│   │   │   │   │   │   └── AdvancedSearchBar.svelte
 │   │   │   │   │   ├── AgentTypeStep
 │   │   │   │   │   │   ├── AgentTypeStep.controller.test.ts
 │   │   │   │   │   │   ├── AgentTypeStep.controller.ts
@@ -1781,6 +1785,14 @@
 │   │   │   │   │   │   ├── AssociationCard.controller.test.ts
 │   │   │   │   │   │   ├── AssociationCard.controller.ts
 │   │   │   │   │   │   └── AssociationCard.svelte
+│   │   │   │   │   ├── AssociationItem
+│   │   │   │   │   │   ├── AssociationItem.controller.test.ts
+│   │   │   │   │   │   ├── AssociationItem.controller.ts
+│   │   │   │   │   │   └── AssociationItem.svelte
+│   │   │   │   │   ├── AssociationTag
+│   │   │   │   │   │   ├── AssociationTag.controller.test.ts
+│   │   │   │   │   │   ├── AssociationTag.controller.ts
+│   │   │   │   │   │   └── AssociationTag.svelte
 │   │   │   │   │   ├── Auth
 │   │   │   │   │   │   ├── Auth.controller.test.ts
 │   │   │   │   │   │   ├── Auth.controller.ts
@@ -2139,6 +2151,8 @@
 │   │   │   │   │       └── list
 │   │   │   │   │           ├── +page.svelte
 │   │   │   │   │           └── AdminUserAccountList.controller.ts
+│   │   │   │   ├── advanced-search
+│   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── association
 │   │   │   │   │   └── [identifier]
 │   │   │   │   │       ├── +page.svelte
@@ -2354,4 +2368,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-535 directories, 1821 files
+536 directories, 1834 files

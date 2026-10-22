@@ -1,18 +1,22 @@
-## Changelog : api-subventions-asso (30 derniers jours, au 30 septembre 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 20 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les travaux ont porté sur l'amélioration de la fiabilité des données associatives (notamment pour les contacts et les coordonnées bancaires) et sur la modernisation technique de l'interface et des processus de traitement. Ces évolutions permettent une gestion plus performante et plus précise des informations issues du RNA et de Sirene.
+Ce mois a été principalement consacré à l'amélioration de l'expérience de recherche. Les utilisateurs bénéficient désormais d'une interface web plus riche (recherche avancée, historique, nouveaux affichages) et de résultats plus précis et complets grâce à l'intégration de nouvelles données et à une optimisation du moteur de recherche de l'API.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des données BODACC sur l'interface web.
-- Amélioration de la gestion des documents du Répertoire National des Associations (RNA) lors des mises à jour après le premier import [#4034](https://github.com/betagouv/api-subventions-asso/issues/4034).
-- Correction des structures de données concernant les contacts et les coordonnées bancaires (RIB) [#4033](https://github.com/betagouv/api-subventions-asso/issues/4033).
+- **Amélioration de la recherche (Interface web) :**
+    - Mise en place d'une recherche avancée [#4051](https://github.com/betagouv/api-subventions-asso/issues/4057).
+    - Refonte visuelle de l'historique de recherche [#4050](https://github.com/betagouv/api-subventions-asso/issues/4058) et de l'affichage des résultats [#4044](https://github.com/betagouv/api-subventions-asso/issues/4059).
+    - Ajout de la correction orthographique (spellcheck) dans les champs de saisie [#4051](https://github.com/betagouv/api-subventions-asso/issues/4051).
+    - Corrections d'affichage sur les tags d'associations et les espacements [#4050](https://github.com/betagouv/api-subventions-asso/issues/4050).
+- **Amélioration de l'API :**
+    - Ajout du nom Sirene dans les résultats de recherche [#4061](https://github.com/betagouv/api-subventions-asso/issues/4065).
+    - Correction de la gestion des identifiants RNA erronés pour les entités légales Sirene.
+    - Amélioration de la robustesse de la recherche via une meilleure gestion de la casse des mots saisis.
 
 ### Évolutions techniques
-- Modernisation de l'interface utilisateur via la migration des composants vers la syntaxe "runes" de Svelte [#3969](https://github.com/betagouv/api-subventions-asso/issues/3969) ([#4011](https://github.com/betagouv/api-subventions-asso/issues/4011)).
-- Optimisation du pipeline de données Sirene (unités légales) par l'intégration du format Parquet [#4038](https://github.com/betagouv/api-subventions-asso/issues/4038).
-- Optimisation du flux de données en privilégiant l'utilisation des collections RNA et Sirene avant l'API associations [#4021](https://github.com/betagouv/api-subventions-asso/issues/4021).
-- Ajout de scripts permettant l'exécution manuelle des tâches automatisées (cron) liées au RNA et à Sirene.
-
-### Autres changements
-- Nettoyage des tests de l'API (suppression de mocks d'environnement inutiles).
+- **Refactorisation et performance :**
+    - Refonte complète du moteur de recherche de l'API [#4035](https://github.com/betagouv/api-subventions-asso/issues/4040).
+    - Migration des composants frontend vers la nouvelle syntaxe "Svelte runes" pour optimiser la réactivité [#3969](https://github.com/betagouv/api-subventions-asso/issues/4011).
+- **Tests et maintenance :**
+    - Amélioration du fichier de test pour les tâches planifiées (cron) [#4047](https://github.com/betagouv/api-subventions-asso/issues/4063).
