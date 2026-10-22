@@ -84,6 +84,7 @@
 │   ├── installation.md
 │   ├── interoperabilities.md
 │   ├── llm-configuration.md
+│   ├── metrics.md
 │   ├── minio-to-rustfs.md
 │   ├── model-fallback.md
 │   ├── presentations.md
@@ -247,6 +248,7 @@
     │   │   │   ├── 0012_chatconversationattachment_index_state_and_more.py
     │   │   │   ├── 0013_chatconversation_history_summary_and_more.py
     │   │   │   ├── 0014_chatconversation_chat_chatco_updated_e2bf86_idx.py
+    │   │   │   ├── 0015_chatstreamchunk.py
     │   │   │   └── __init__.py
     │   │   ├── model_health.py
     │   │   ├── model_routing.py
@@ -257,6 +259,7 @@
     │   │   │   └── albert_models.py
     │   │   ├── rate_limiting.py
     │   │   ├── serializers.py
+    │   │   ├── stream_chunks.py
     │   │   ├── tasks.py
     │   │   ├── tests
     │   │   │   ├── __init__.py
@@ -309,7 +312,10 @@
     │   │   │   │   │   ├── test_run_agent_summary.py
     │   │   │   │   │   ├── test_self_documentation_tool.py
     │   │   │   │   │   ├── test_smart_web_search.py
+    │   │   │   │   │   ├── test_stream_chunks.py
+    │   │   │   │   │   ├── test_stream_chunks_tool_rounds.py
     │   │   │   │   │   ├── test_stream_methods.py
+    │   │   │   │   │   ├── test_stream_metrics.py
     │   │   │   │   │   └── test_thinking_history_stripping.py
     │   │   │   │   ├── pydantic_ui_message_converter
     │   │   │   │   │   ├── __init__.py
@@ -356,6 +362,7 @@
     │   │   │   ├── test_assistant_health.py
     │   │   │   ├── test_docs_client.py
     │   │   │   ├── test_document_context_builder.py
+    │   │   │   ├── test_keepalive_beat.py
     │   │   │   ├── test_legacy_message_formats.py
     │   │   │   ├── test_llm_configuration.py
     │   │   │   ├── test_local_media_url_processors.py
@@ -396,6 +403,7 @@
     │   │   │       │   │   ├── test_conversation.py
     │   │   │       │   │   ├── test_conversation_concatenate_system_messages.py
     │   │   │       │   │   ├── test_conversation_image_guard.py
+    │   │   │       │   │   ├── test_conversation_metrics.py
     │   │   │       │   │   ├── test_conversation_model_routing.py
     │   │   │       │   │   ├── test_conversation_search_with_document_id.py
     │   │   │       │   │   ├── test_conversation_search_with_document_id_retry.py
@@ -481,6 +489,7 @@
     │   │   │       └── default.json
     │   │   ├── observability_settings.py
     │   │   ├── oidc_settings.py
+    │   │   ├── prometheus_settings.py
     │   │   ├── settings.py
     │   │   ├── staan_settings.py
     │   │   ├── tests
@@ -490,6 +499,7 @@
     │   │   │   ├── test_settings_llm_configurations.py
     │   │   │   ├── test_settings_logging.py
     │   │   │   ├── test_settings_oidc_refresh_token_key.py
+    │   │   │   ├── test_settings_prometheus.py
     │   │   │   └── test_settings_staan.py
     │   │   ├── urls.py
     │   │   └── wsgi.py
@@ -523,12 +533,14 @@
     │   │   │   ├── serializers.py
     │   │   │   └── utils.py
     │   │   ├── filters.py
+    │   │   ├── instrumentation.py
     │   │   ├── management
     │   │   │   ├── __init__.py
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── bucket_cors.py
     │   │   │       └── celery_check.py
+    │   │   ├── metrics.py
     │   │   ├── middleware.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
@@ -577,10 +589,12 @@
     │   │   │   ├── test_api_users_analytics.py
     │   │   │   ├── test_brevo.py
     │   │   │   ├── test_enums.py
+    │   │   │   ├── test_instrumentation.py
     │   │   │   ├── test_maintenance.py
     │   │   │   ├── test_middleware_async.py
     │   │   │   ├── test_models_access_bypass_email.py
     │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_prometheus_metrics.py
     │   │   │   └── test_settings.py
     │   │   └── urls.py
     │   ├── demo
@@ -949,6 +963,7 @@
     │   │   │   │   │   │       ├── getMessageCo2Impact.ts
     │   │   │   │   │   │       ├── getMessageText.ts
     │   │   │   │   │   │       ├── impactCo2.ts
+    │   │   │   │   │   │       ├── isMessageInterrupted.ts
     │   │   │   │   │   │       └── shiki.ts
     │   │   │   │   │   ├── feedback
     │   │   │   │   │   │   └── Feedback.tsx
@@ -1212,8 +1227,10 @@
     │   │   │   ├── ingress_posthog_assets.yaml
     │   │   │   ├── llm_configuration_file_cm.yaml
     │   │   │   ├── media_svc.yaml
+    │   │   │   ├── podmonitor.yaml
     │   │   │   ├── posthog_assets_svc.yaml
     │   │   │   ├── posthog_svc.yaml
+    │   │   │   ├── servicemonitor.yaml
     │   │   │   └── theme_customization_file_cm.yaml
     │   │   └── values.yaml
     │   ├── env.d
@@ -1244,4 +1261,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-244 directories, 1002 files
+244 directories, 1019 files

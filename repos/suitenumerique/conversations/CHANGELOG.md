@@ -10,10 +10,15 @@ and this project adheres to
 
 ### Added
 
+- ✨(back) add opt-in prometheus metrics on `/metrics`
+- ✨(back) measure model requests, chat streams and outgoing calls
+- ✨(helm) add a ServiceMonitor and a PodMonitor for the backend metrics
 - 📝(project) add pull request and AI usage policy
+- ✨(back) make the Sentry backend traces sample rate configurable
 
 ### Changed
 
+- 🔧(docker) replace maildev with mailcatcher like other La Suite projects
 - ⬆️(dependencies) upgrade back-end and front-end dependencies
 - ⬆️(back) upgrade pydantic-ai to 2.52.0 and switch to httpx2
 - 💄(back) change high traffic wording and lower alert level
@@ -55,6 +60,8 @@ and this project adheres to
 
 ### Fixed
 
+- 🐛(back) keep a turn that is interrupted by appending it as it is produced
+- 🚸(front) wait for an answer still generating after leaving the conversation
 - ✅(back) make the project list query counts independent of test order
 - 👷(ci) pull the MinIO images from quay.io instead of Docker Hub
 - 🐛(ci) fix the CHANGELOG check failing when a pull request is opened

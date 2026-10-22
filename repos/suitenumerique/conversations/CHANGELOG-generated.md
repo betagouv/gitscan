@@ -1,29 +1,20 @@
-## Changelog : conversations (30 derniers jours, au 15 octobre 2026)
+## Changelog : conversations (30 derniers jours, au 21 octobre 2026)
 
 ### Résumé
-Ce mois-ci, Conversations a considérablement enrichi ses capacités de recherche grâce à l'intégration de nouveaux outils comme Staan et le connecteur data.gouv. L'expérience utilisateur a été fluidifiée avec une interface plus intuitive et une meilleure gestion des mises à jour du service. Enfin, un effort majeur a été porté sur la protection de la vie privée, garantissant qu'aucune donnée de conversation n'est enregistrée dans les journaux ou la télémétrie.
+Ce mois-ci, les efforts se sont concentrés sur la fiabilité de l'expérience de chat, notamment grâce à une meilleure gestion des réponses interrompues, et sur le renforcement de la confidentialité des données. De nouvelles capacités de recherche web ont été intégrées et la surveillance du système a été considérablement améliorée pour garantir une meilleure stabilité et une meilleure visibilité des performances.
 
 ### Évolutions fonctionnelles
-- **Nouveaux outils de recherche** : intégration de l'outil de recherche web Staan et du connecteur data.gouv.
-- **Modernisation de l'interface** : remplacement des actions d'entrée par un menu déroulant "+" et amélioration de l'affichage du module d'impact carbone.
-- **Amélioration de l'expérience utilisateur** : 
-    - Mise en place de notifications pour demander le rechargement de la page après un déploiement.
-    - Affichage d'une page d'erreur explicite au lieu d'un écran blanc en cas de problème.
-    - Ajustement des messages d'alerte lors de pics de trafic.
-    - Possibilité pour l'utilisateur de forcer l'utilisation du connecteur DataGouv.
-- **Corrections** : amélioration de la gestion des téléchargements de fichiers Markdown et stabilisation de l'ordre d'affichage de la liste des projets.
-- **Internationalisation** : mise à jour des chaînes de caractères traduites [#769](https://github.com/suitenumerique/conversations/pull/769).
+- **Expérience de chat améliorée** : gestion plus fluide des interruptions de réponse, affichage clair des outils en cours d'exécution et meilleure gestion de l'affichage lors des rechargements.
+- **Nouvelles capacités** : intégration de l'outil de recherche web Staan et possibilité pour l'utilisateur de forcer l'utilisation du connecteur DataGouv pour un tour de discussion.
+- **Interface et robustesse** : amélioration de la gestion des erreurs (affichage d'une page de rechargement au lieu d'un écran blanc), notifications de mise à jour de version et meilleure prise en charge des fichiers Markdown en pièces jointes.
+- **Ajustements UI** : affinage de l'interface pour le module d'impact carbone et modification des messages d'alerte en cas de trafic élevé.
 
 ### Évolutions techniques
-- **Confidentialité et sécurité** : 
-    - Garantie que les requêtes des utilisateurs (prompts) ne sont plus enregistrées dans les logs ni transmises à la télémétrie.
-    - Correction de vulnérabilités (CVE) sur les dépendances `pydantic-ai` et `handlebars`.
-    - Sécurisation des accès Docker en environnement de développement.
-- **Architecture et performance** : 
-    - Migration des tâches périodiques vers Celery Beat.
-    - Optimisation de la lecture de la configuration (cache) et réduction des rechargements de drapeaux de fonctionnalités (feature flags).
-- **Infrastructure et CI/CD** : remplacement de MinIO par RustFS pour les environnements de développement local et de CI ; ajustement de la configuration Docker pour la CI.
-- **Tests** : amélioration de la robustesse des tests frontend via le mock de composants et le découplage des tests de langue.
+- **Confidentialité et sécurité** : renforcement de la protection des données en garantissant que les prompts des utilisateurs ne sont jamais enregistrés dans les journaux (logs) ou la télémétrie. Correction de plusieurs vulnérabilités (CVE) sur les dépendances.
+- **Observabilité** : mise en place de métriques Prometheus pour le suivi précis des requêtes de modèles, des flux de chat et des appels sortants. Configuration ajustable du taux d'échantillonnage des traces Sentry.
+- **Infrastructure et développement** : optimisation de l'environnement de développement local (passage à RustFS et Mailcatcher) et automatisation des tâches périodiques via Celery Beat.
+- **Optimisations** : amélioration des performances de chargement de la configuration et de la télémétrie.
 
 ### Autres changements
-- **Documentation** : ajout d'une politique d'utilisation de l'IA et des pull requests, et documentation détaillée des procédures de déploiement.
+- **Documentation** : ajout d'une politique d'utilisation de l'IA et de la procédure détaillée de déploiement.
+- **Internationalisation** : mise à jour des chaînes de traduction [#769](https://github.com/suitenumerique/conversations/pull/769).
