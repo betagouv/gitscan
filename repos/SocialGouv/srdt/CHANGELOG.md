@@ -1,3 +1,52 @@
+## [1.57.1](https://github.com/SocialGouv/srdt/compare/v1.57.0...v1.57.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **api:** improve knn search ([7e7ba0d](https://github.com/SocialGouv/srdt/commit/7e7ba0db23a41a91c6822dcb471fca4c22e25abc))
+
+# [1.57.0](https://github.com/SocialGouv/srdt/compare/v1.56.2...v1.57.0) (2026-10-19)
+
+
+### Features
+
+* improve jurisprudences ([9f7f234](https://github.com/SocialGouv/srdt/commit/9f7f234c496b165cd57d2dadb0c705a8fe2465cd))
+
+## [1.56.2](https://github.com/SocialGouv/srdt/compare/v1.56.1...v1.56.2) (2026-10-16)
+
+
+### Bug Fixes
+
+* **web:** respect rerank order for search results ([5b89fff](https://github.com/SocialGouv/srdt/commit/5b89ffffd1b7a0632dffe21ef710864d904236af))
+
+## [1.56.1](https://github.com/SocialGouv/srdt/compare/v1.56.0...v1.56.1) (2026-10-13)
+
+
+### Bug Fixes
+
+* **web:** build ProConnect logout URL server-side ([#438](https://github.com/SocialGouv/srdt/issues/438)) ([e9f8dae](https://github.com/SocialGouv/srdt/commit/e9f8daebb83323c56ae4af59a1da1f0ae2ebba21))
+
+# [1.56.0](https://github.com/SocialGouv/srdt/compare/v1.55.1...v1.56.0) (2026-10-13)
+
+
+### Features
+
+* **web:** rendre la recherche jurisprudentielle optionnelle ([#437](https://github.com/SocialGouv/srdt/issues/437)) ([ec45d57](https://github.com/SocialGouv/srdt/commit/ec45d57d9cc2c9dc51d8d736410f896a3c8ac522))
+
+## [1.55.1](https://github.com/SocialGouv/srdt/compare/v1.55.0...v1.55.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* **api:** clean url allow legifrance CC links [#404](https://github.com/SocialGouv/srdt/issues/404) ([#420](https://github.com/SocialGouv/srdt/issues/420)) ([1052376](https://github.com/SocialGouv/srdt/commit/10523764c8da7e24a1c8d8ac5ea8dd61fcd7094c))
+
+# [1.55.0](https://github.com/SocialGouv/srdt/compare/v1.54.1...v1.55.0) (2026-10-05)
+
+
+### Features
+
+* link articles [#322](https://github.com/SocialGouv/srdt/issues/322) ([#430](https://github.com/SocialGouv/srdt/issues/430)) ([c1f56e7](https://github.com/SocialGouv/srdt/commit/c1f56e77f96e2183d410d439cf2f84dacbeb0cc4))
+
 ## [1.54.1](https://github.com/SocialGouv/srdt/compare/v1.54.0...v1.54.1) (2026-09-24)
 
 

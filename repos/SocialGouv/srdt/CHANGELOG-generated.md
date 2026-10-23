@@ -1,17 +1,18 @@
-## Changelog : srdt (30 derniers jours, au 24 septembre 2026)
+## Changelog : srdt (30 derniers jours, au 21/10/2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de la précision des réponses juridiques, notamment grâce à une meilleure intégration de la jurisprudence dans le système d'intelligence artificielle. L'expérience utilisateur a également été enrichie par une meilleure visibilité des sources et des outils de manipulation des réponses plus intuitifs.
+Les récentes évolutions se concentrent sur l'amélioration de la précision et de la flexibilité de la recherche juridique. Les utilisateurs bénéficient désormais d'une meilleure gestion des jurisprudences, de liens directs vers les articles de loi et d'une navigation plus fluide, notamment grâce à la possibilité de rendre la recherche jurisprudentielle optionnelle et à la correction de certains flux d'authentification.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la visibilité des sources** : les sources sont désormais affichées dans un panneau latéral ([#409](https://github.com/SocialGouv/srdt/issues/409)) et incluent des détails précis comme le numéro de pourvoi et la date pour la jurisprudence ([#419](https://github.com/SocialGouv/srdt/issues/419)).
-- **Précision du contexte** : la convention collective est désormais systématiquement précisée après la première réponse ([#424](https://github.com/SocialGouv/srdt/issues/424)).
-- **Nouvelles interactions utilisateur** : possibilité de copier une section spécifique d'une réponse plutôt que l'intégralité ([#426](https://github.com/SocialGouv/srdt/issues/426)).
-- **Optimisation de l'affichage** : les titres de jurisprudence incluent désormais les références de la décision et les résultats sont reclassés (rerank) pour une meilleure pertinence.
-- **Nettoyage de l'interface** : suppression du lien de support de l'en-tête ([#405](https://github.com/SocialGouv/srdt/issues/405)).
+- **Recherche et précision juridique**
+    - Amélioration de la gestion et de la qualité des jurisprudences.
+    - La recherche jurisprudentielle peut désormais être rendue optionnelle [#437](https://github.com/SocialGouv/srdt/issues/437).
+    - Ajout de liens directs vers les articles de loi [#322](https://github.com/SocialGouv/srdt/issues/322) ([#430](https://github.com/SocialGouv/srdt/issues/430)).
+    - Correction de l'ordre d'affichage des résultats de recherche pour respecter le réordonnancement (rerank).
+    - Amélioration de la prise en charge des liens vers le Code du travail sur Légifrance [#404](https://github.com/SocialGouv/srdt/issues/404) ([#420](https://github.com/SocialGouv/srdt/issues/420)).
+- **Navigation et accès**
+    - Correction du processus de déconnexion via ProConnect pour assurer un fonctionnement correct côté serveur [#438](https://github.com/SocialGouv/srdt/issues/438).
 
 ### Évolutions techniques
-- **Optimisation de l'IA et du RAG** : intégration de la jurisprudence dans le processus RAG, ajustement des prompts pour renforcer la rigueur des réponses et fixation de la température à 0.3 pour les appels Mistral afin de stabiliser la génération.
-- **Refonte et évolutions API** : restructuration de l'architecture de l'API, ajout de la recherche dans les accords complets ([#399](https://github.com/SocialGouv/srdt/issues/399)) et mise à jour de l'intégration Judilibre ([#411](https://github.com/SocialGouv/srdt/issues/411)).
-- **Performance et gestion du contexte** : limitation de l'historique de conversation à 12 entrées pour optimiser la gestion de la mémoire de l'IA ([#417](https://github.com/SocialGouv/srdt/issues/417), [#423](https://github.com/SocialGouv/srdt/issues/423)).
-- **Sécurité et maintenance** : amélioration des processus d'anonymisation et des logs, mise à jour des domaines pour Proconnect ([#422](https://github.com/SocialGouv/srdt/issues/422)) et correction de bugs d'affichage liés à `react-markdown` ([#425](https://github.com/SocialGouv/srdt/issues/425)).
+- Optimisation de la recherche de proximité (k-NN) au niveau de l'API pour de meilleures performances de recherche.
+- Renforcement des mécanismes d'anonymisation des données et amélioration de la qualité des journaux d'événements (logs).

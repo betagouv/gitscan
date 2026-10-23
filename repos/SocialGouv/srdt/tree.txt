@@ -12,6 +12,7 @@
 │       ├── release.yml
 │       ├── review-auto.yaml
 │       └── review.yaml
+├── .gitignore
 ├── .kontinuous
 │   ├── config.yaml
 │   ├── env
@@ -83,6 +84,7 @@
 │       └── text
 │           ├── anonymiser.py
 │           ├── chunker.py
+│           ├── legi_links.py
 │           ├── reference_extractor.py
 │           ├── tokenizer.py
 │           └── url_cleaner.py
@@ -116,7 +118,9 @@
     │   │   │   └── page.tsx
     │   │   ├── api
     │   │   │   ├── auth
-    │   │   │   │   └── [...nextauth]
+    │   │   │   │   ├── [...nextauth]
+    │   │   │   │   │   └── route.ts
+    │   │   │   │   └── proconnect-logout
     │   │   │   │       └── route.ts
     │   │   │   ├── conversations
     │   │   │   │   └── save
@@ -160,7 +164,9 @@
     │   │   │   ├── auth-options.ts
     │   │   │   ├── get-authorized-session.ts
     │   │   │   ├── has-valid-debug-token.ts
-    │   │   │   └── proconnect-logout.ts
+    │   │   │   ├── proconnect-domain.ts
+    │   │   │   ├── proconnect-logout.ts
+    │   │   │   └── sign-out-with-proconnect.ts
     │   │   └── db
     │   │       ├── conversations.ts
     │   │       ├── hash-user.ts
@@ -169,6 +175,7 @@
     │   ├── modules
     │   │   ├── api
     │   │   │   ├── client.ts
+    │   │   │   ├── jurisprudence-filter.ts
     │   │   │   ├── prepare.ts
     │   │   │   ├── process.ts
     │   │   │   └── prompt-builders.ts
@@ -231,10 +238,15 @@
     │   │   │   └── version.ts
     │   │   └── statistiques
     │   │       └── StatistiquesContent.tsx
+    │   ├── prompts
+    │   │   ├── generate.ts
+    │   │   ├── index.ts
+    │   │   ├── jurisprudence-filter.ts
+    │   │   └── shared.ts
     │   ├── types
     │   │   ├── next-auth.d.ts
     │   │   ├── png.d.ts
     │   │   └── svg.d.ts
     │   └── types.ts
     └── tsconfig.json
-61 directories, 178 files
+63 directories, 188 files
