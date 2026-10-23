@@ -1,5 +1,5 @@
 .
-├── .claude
+├── .agents
 │   └── skills
 │       └── integrer-landing-page
 │           ├── SKILL.md
@@ -10,6 +10,9 @@
 │               ├── Composant.svelte
 │               ├── _page.scss
 │               └── page.pug
+├── .claude
+│   └── skills -> ../.agents/skills
+├── .envrc
 ├── .github
 │   └── workflows
 │       ├── deploiement.yml
@@ -19,8 +22,10 @@
 ├── .gitignore
 ├── .nvmrc
 ├── .pre-commit-config.yaml
-├── .prettierrc.json
-├── CLAUDE.md
+├── .prettierignore
+├── .prettierrc.cjs
+├── AGENTS.md
+├── DEVELOPER.md
 ├── LICENSE
 ├── README.md
 ├── back
@@ -162,6 +167,8 @@
 │   │   │   ├── ressourceRessourcesCyber.spec.ts
 │   │   │   ├── ressourceSelectionsEleves.spec.ts
 │   │   │   ├── ressourceSelectionsEnseignants.spec.ts
+│   │   │   ├── ressourceSelectionsEntrainement.spec.ts
+│   │   │   ├── ressourceSelectionsMesure.spec.ts
 │   │   │   ├── ressourceUtilisateurs.spec.ts
 │   │   │   └── ressourcesPages.spec.ts
 │   │   ├── bus
@@ -208,7 +215,7 @@
 │   │   └── pagesStatiques.spec.ts
 │   ├── tsconfig.json
 │   ├── tsconfig.typecheck.json
-│   ├── vitest.config.ts
+│   ├── vitest.config.mts
 │   └── vues
 │       ├── 404.pug
 │       ├── annexes
@@ -247,8 +254,10 @@
 │       ├── nouveau-jeu.pug
 │       ├── operation-cactus.pug
 │       ├── passe-ton-hack-d-abord.pug
+│       ├── se-former.pug
 │       ├── selection-eleves.pug
 │       └── selection-enseignants.pug
+├── default.nix
 ├── docker-compose.yml
 ├── docker-entrypoint-initdb.d
 │   └── initialise.sql
@@ -373,37 +382,45 @@
 │   │   │   └── ZoneIdentification.svelte
 │   │   ├── relai
 │   │   │   └── FicheRelai.svelte
+│   │   ├── se-former
+│   │   │   ├── SeFormer.svelte
+│   │   │   ├── SectionJeMeForme.svelte
+│   │   │   └── SectionJeMeTeste.svelte
 │   │   ├── selections
 │   │   │   └── Selection.svelte
 │   │   ├── sentry.ts
 │   │   ├── stores
 │   │   │   └── profil.ts
-│   │   └── style
-│   │       ├── _contenu-deux-colonnes.scss
-│   │       ├── _couleurs.scss
-│   │       ├── _encart-chiffres-cles.scss
-│   │       ├── _encart-cyberenjeux.scss
-│   │       ├── _encart-selections.scss
-│   │       ├── _encart-soutiens.scss
-│   │       ├── _entete.scss
-│   │       ├── _fonts.scss
-│   │       ├── _global.scss
-│   │       ├── _grille.scss
-│   │       ├── _page-404.scss
-│   │       ├── _page-accueil.scss
-│   │       ├── _page-connexion.scss
-│   │       ├── _page-cyber-en-jeux.scss
-│   │       ├── _page-evenements.scss
-│   │       ├── _page-france-cybersecurity-challenge.scss
-│   │       ├── _page-non-autorise.scss
-│   │       ├── _page-nouveau-jeu.scss
-│   │       ├── _page-operation-cactus.scss
-│   │       ├── _page-passe-ton-hack-d-abord.scss
-│   │       ├── _page-selection-enseignants.scss
-│   │       ├── _page-statistiques.scss
-│   │       ├── _pages-annexes.scss
-│   │       ├── _points-de-rupture.scss
-│   │       └── _standard.scss
+│   │   ├── style
+│   │   │   ├── _contenu-deux-colonnes.scss
+│   │   │   ├── _couleurs.scss
+│   │   │   ├── _encart-chiffres-cles.scss
+│   │   │   ├── _encart-cyberenjeux.scss
+│   │   │   ├── _encart-selections.scss
+│   │   │   ├── _encart-soutiens.scss
+│   │   │   ├── _entete.scss
+│   │   │   ├── _fonts.scss
+│   │   │   ├── _global.scss
+│   │   │   ├── _grille.scss
+│   │   │   ├── _page-404.scss
+│   │   │   ├── _page-accueil.scss
+│   │   │   ├── _page-connexion.scss
+│   │   │   ├── _page-cyber-en-jeux.scss
+│   │   │   ├── _page-evenements.scss
+│   │   │   ├── _page-france-cybersecurity-challenge.scss
+│   │   │   ├── _page-non-autorise.scss
+│   │   │   ├── _page-nouveau-jeu.scss
+│   │   │   ├── _page-operation-cactus.scss
+│   │   │   ├── _page-passe-ton-hack-d-abord.scss
+│   │   │   ├── _page-se-former.scss
+│   │   │   ├── _page-selection-enseignants.scss
+│   │   │   ├── _page-statistiques.scss
+│   │   │   ├── _pages-annexes.scss
+│   │   │   ├── _points-de-rupture.scss
+│   │   │   └── _standard.scss
+│   │   ├── utils
+│   │   │   └── injecteNonce.plugin.ts
+│   │   └── vite-env.d.ts
 │   ├── statique
 │   │   ├── assets
 │   │   │   ├── fonts
@@ -517,6 +534,24 @@
 │   │   │       │       └── video-placeholder.jpg
 │   │   │       ├── persos-accueil.svg
 │   │   │       ├── retour_experience.avif
+│   │   │       ├── se-former
+│   │   │       │   ├── icone-manette-jeux-videos.svg
+│   │   │       │   ├── icone-personnage-devant-ordinateur.svg
+│   │   │       │   ├── icone-rond-avec-coche-rouge.svg
+│   │   │       │   ├── icone-trophee.svg
+│   │   │       │   ├── illustration-carte-metier-hacker-ethique.avif
+│   │   │       │   ├── illustration-fond-metier-hacker-ethique.avif
+│   │   │       │   ├── illustration-logo-atelier-rgpd.avif
+│   │   │       │   ├── illustration-logo-cyberclass.avif
+│   │   │       │   ├── illustration-logo-secnum.avif
+│   │   │       │   ├── illustration-logo-senscyber.avif
+│   │   │       │   ├── illustration-pix-3-amis-avec-ordinateur.avif
+│   │   │       │   ├── illustration-pix-famille-navigue-sur-tablette.avif
+│   │   │       │   ├── illustration-pix-fille-tshirt-orange-avec-ordinateur-qui-sentraine.avif
+│   │   │       │   ├── illustration-pix-fille-tshirt-orange-ordinateur-etape-2.avif
+│   │   │       │   ├── illustration-pix-garcon-pull-bleu-ordinateur-etape-1.avif
+│   │   │       │   ├── illustration-pix-jeune-fille-chemise-bleu-avec-tablette.avif
+│   │   │       │   └── illustration-pix-trophee-avec-certificat.avif
 │   │   │       ├── soutiens
 │   │   │       │   ├── CNED.avif
 │   │   │       │   ├── ComCyber.avif
@@ -590,6 +625,9 @@
 │   ├── tsconfig.typecheck.json
 │   ├── vite.config.ts
 │   └── vitest.config.ts
+├── npins
+│   ├── default.nix
+│   └── sources.json
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -599,5 +637,6 @@
 │   │   ├── post-build-clever.sh
 │   │   └── pre-run-clever.sh
 │   └── get-node-version.sh
+├── shell.nix
 └── tsconfig.base.json
-84 directories, 518 files
+90 directories, 551 files
