@@ -1,13 +1,12 @@
-## Changelog : grist-docker-image (30 derniers jours, au 07/09/2026)
+## Changelog : grist-docker-image (30 derniers jours, au 21 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur la mise à jour de l'application Grist vers ses dernières versions stables afin de garantir un environnement à jour, ainsi que sur l'amélioration de l'interface visuelle.
+Les récentes mises à jour se sont concentrées sur l'amélioration de l'identité visuelle de l'interface et sur la stabilisation de l'image Docker, notamment par l'optimisation de l'environnement de construction et la gestion rigoureuse des versions de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface utilisateur via des ajustements CSS ([#75](https://github.com/gristgouv/grist-docker-image/pull/75)).
+- Intégration de la police de caractères Marianne [#81](https://github.com/gristgouv/grist-docker-image/pull/81).
+- Intégration de nouveaux éléments via la pull request [#84](https://github.com/gristgouv/grist-docker-image/pull/84).
 
 ### Évolutions techniques
-- Mise à jour du cœur de l'application (`grist-core`) vers la version 1.7.18 ([#76](https://github.com/gristgouv/grist-docker-image/pull/76), [#77](https://github.com/gristgouv/grist-docker-image/pull/77)) puis vers la version 1.7.19 ([#79](https://github.com/gristgouv/grist-docker-image/pull/79)).
-
-### Autres changements
-- Gestion et création des tags d'images pour les nouvelles versions déployées.
+- **Optimisation de l'image** : Mise à jour de la base Alpine pour utiliser la dernière version du builder Node.js.
+- **Gestion des versions** : Mise à jour de l'application Grist via la PR [#83](https://github.com/gristgouv/grist-docker-image/pull/83), suivie d'un retour à la version précédente (revert de la v1.7.21) pour garantir la stabilité de l'image.
