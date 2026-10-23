@@ -1,27 +1,23 @@
-## Changelog : inclusion-connect (30 derniers jours, au 20 octobre 2026)
+## Changelog : inclusion-connect (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a introduit un mode "Démo" complet pour faciliter les présentations et les tests, en simplifiant considérablement le parcours d'accès. L'authentification a été allégée par la suppression de certaines étapes (mots de passe, OTP) et l'automatisation de la maintenance technique a été renforcée.
+Ce mois-ci, le projet a introduit un "Mode Démo" complet pour faciliter les tests et les démonstrations, permettant de naviguer sans mot de passe. Parallèlement, le système d'authentification a été simplifié par la suppression des fonctionnalités liées aux mots de passe et aux codes OTP (One-Time Password).
 
 ### Évolutions fonctionnelles
-- **Introduction d'un mode Démo** :
-    - Ajout d'une bannière distinctive pour signaler le mode démo.
-    - Suppression de la saisie de mot de passe pour simplifier l'accès.
-    - Restriction de l'utilisation aux adresses e-mail internes.
-    - Possibilité de personnaliser le prénom et le nom lors de la connexion.
-- **Simplification de l'authentification** :
-    - Suppression des fonctionnalités liées aux mots de passe et au code OTP (One-Time Password).
-- **Gestion des utilisateurs** :
-    - Activation automatique des utilisateurs inactifs.
-    - Amélioration de l'interface visuelle du formulaire de connexion.
+- **Introduction d'un mode démo** :
+    - Possibilité de tester le service sans saisie de mot de passe.
+    - Ajout d'une bannière d'information pour signaler l'utilisation du mode démo.
+    - Restriction de l'utilisation aux adresses e-mails internes.
+    - Possibilité de personnaliser le nom et le prénom lors de l'utilisation de ce mode.
+- **Simplification de l'authentification** : suppression des fonctionnalités liées aux mots de passe et à l'authentification par OTP.
+- **Amélioration de l'interface** : optimisation du template de la page de connexion.
 
 ### Évolutions techniques
-- **Automatisation et CI/CD** :
-    - Mise en place de l'auto-merge pour les mises à jour de dépendances (Dependabot) via une application GitHub dédiée.
-- **Infrastructure et Environnement** :
-    - Ajout de `gunicorn` aux dépendances pour le serveur de production.
-    - Optimisation de l'environnement de test : amélioration de la commande `make test` et suppression de la dépendance Elasticsearch dans les réglages de test.
+- **Automatisation de la maintenance** : mise en place d'une application GitHub pour l'auto-merge des Pull Requests de Dependabot, fluidifiant la gestion des mises à jour de dépendances.
+- **Optimisation des tests** :
+    - Amélioration de la commande `make test`.
+    - Nettoyage du code de test et suppression de hacks liés à Elasticsearch.
+- **Infrastructure** : ajout de `gunicorn` aux dépendances pour le serveur d'application.
 
 ### Autres changements
 - Mise à jour de la documentation (README).
-- Nettoyage du code de test et suppression de code obsolète.
