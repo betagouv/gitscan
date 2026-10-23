@@ -36,6 +36,7 @@
 │   ├── consoleAdministration.js
 │   ├── consoleAnalyseDonnees.js
 │   ├── consoleBrevo.ts
+│   ├── consoleReportingCrm.ts
 │   ├── duplicationEnMasseDeServices
 │   │   ├── cli.js
 │   │   └── duplicationEnMasseDeServices.js
@@ -197,6 +198,8 @@
 │   ├── 20260923090000_creationTableApiPubliqueAudit.js
 │   ├── 20260930145849_creationTableGroupesServices.js
 │   ├── 20261005160310_creationTableAssociationServicesGroupes.js
+│   ├── 20261008100000_creationTableGroupesEntites.js
+│   ├── 20261008100100_creationTableAssociationEntitesGroupes.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -206,6 +209,7 @@
 ├── pnpm-workspace.yaml
 ├── public
 │   ├── accueilInscription.mjs
+│   ├── adminEntites.mjs
 │   ├── adminStatistiques.mjs
 │   ├── apresAuthentification.js
 │   ├── assets
@@ -416,6 +420,7 @@
 │   │   │   │   │   ├── besoinsSecurite.svg
 │   │   │   │   │   ├── communauteMSS.png
 │   │   │   │   │   ├── encart_homologation.png
+│   │   │   │   │   ├── groupesServices.svg
 │   │   │   │   │   ├── indiceCyber.png
 │   │   │   │   │   ├── indiceCyberPersonnalise.png
 │   │   │   │   │   ├── lancementRoadmap.png
@@ -586,6 +591,7 @@
 │   ├── console-admin.sh
 │   ├── console-analyse-donnees.sh
 │   ├── console-brevo.sh
+│   ├── console-reporting-crm.sh
 │   ├── dev-init-sel.js
 │   ├── dev_init_sel.sh
 │   ├── get-node-version.sh
@@ -686,12 +692,22 @@
 │   │   ├── fabriqueAdaptateurPersistance.js
 │   │   ├── fabriqueAdaptateurPersistanceTS.ts
 │   │   ├── fabriqueAdaptateurProfilAnssi.js
+│   │   ├── fabriqueAdaptateurReportingCrm.js
 │   │   ├── fabriqueAdaptateurStatistiques.ts
 │   │   ├── fabriqueAdaptateurSupervision.ts
 │   │   ├── fabriqueAdaptateurTracking.js
 │   │   ├── fabriqueServiceStatistiquesAdmin.ts
+│   │   ├── gestionErreur
+│   │   │   ├── enrichissementErreurAxiosSentry.ts
+│   │   │   ├── optionsSentry.ts
+│   │   │   └── scrubbingEvenementSentry.ts
 │   │   ├── indiceCyberSvg.ts
 │   │   ├── persistanceTS.interface.ts
+│   │   ├── reportingCrm
+│   │   │   ├── adaptateurReportingCrm.interface.ts
+│   │   │   ├── adaptateurReportingCrm.memoire.ts
+│   │   │   ├── adaptateurReportingCrm.twentyRest.ts
+│   │   │   └── clientHttpCrm.ts
 │   │   └── serviceStatistiquesAdmin.ts
 │   ├── annuaire
 │   │   ├── serviceAnnuaire.interface.ts
@@ -742,6 +758,9 @@
 │   │   │   ├── consigneCleApiRevoqueeDansJournal.ts
 │   │   │   ├── consigneCompletudeDansJournal.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.ts
+│   │   │   ├── consigneEntitesDuGroupeModifieesDansJournal.ts
+│   │   │   ├── consigneGroupeEntitesCreeDansJournal.ts
+│   │   │   ├── consigneGroupeEntitesSupprimeDansJournal.ts
 │   │   │   ├── consigneGroupeServicesCreeDansJournal.ts
 │   │   │   ├── consigneGroupeServicesSupprimeDansJournal.ts
 │   │   │   ├── consigneModificationMesureEnMasseDansJournal.js
@@ -778,10 +797,17 @@
 │   │   │   ├── metAJourParrainage.js
 │   │   │   ├── modifieLienEntrepriseEtContactBrevo.js
 │   │   │   ├── modifieLienServiceEtSuperviseurs.ts
-│   │   │   ├── modifieRattachementServiceEtAdmins.ts
+│   │   │   ├── modifieRattachementServiceAuxSuperviseursEtAdmins.ts
 │   │   │   ├── rattacheServiceEtAdmins.ts
+│   │   │   ├── rattacheServiceEtSuperviseurs.ts
 │   │   │   ├── relieEntrepriseEtContactBrevo.js
 │   │   │   ├── relieServiceEtSuperviseurs.ts
+│   │   │   ├── reporting-bizdev
+│   │   │   │   ├── consigneImportDeServicesDansCrm.ts
+│   │   │   │   ├── consigneNouvelUtilisateurDansCrm.ts
+│   │   │   │   ├── metAJourNombreDHomologationsDeLEntiteDansCrm.ts
+│   │   │   │   ├── metAJourNombreDeServicesDeLEntiteDansCrm.ts
+│   │   │   │   └── metAJourNombreDeServicesEnProprietaireDansCrm.ts
 │   │   │   ├── sauvegardeEvolutionIndiceCyber.js
 │   │   │   ├── sauvegardeNotificationTransactionnelleContributeurMentionneDansMesure.ts
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.js
@@ -796,7 +822,7 @@
 │   │   ├── evenementActiviteMesureAjoutee.ts
 │   │   ├── evenementAdminNommeSurOrganisation.ts
 │   │   ├── evenementAdminRetireDeOrganisation.ts
-│   │   ├── evenementAutorisationsServiceModifiees.js
+│   │   ├── evenementAutorisationsServiceModifiees.ts
 │   │   ├── evenementCguAccepteesParUtilisateur.js
 │   │   ├── evenementCleApiCreee.ts
 │   │   ├── evenementCleApiRevoquee.ts
@@ -804,6 +830,9 @@
 │   │   ├── evenementDescriptionServiceModifiee.js
 │   │   ├── evenementDossierHomologationFinalise.js
 │   │   ├── evenementDossierHomologationImporte.js
+│   │   ├── evenementEntitesDuGroupeModifiees.ts
+│   │   ├── evenementGroupeEntitesCree.ts
+│   │   ├── evenementGroupeEntitesSupprime.ts
 │   │   ├── evenementGroupeServicesCree.ts
 │   │   ├── evenementGroupeServicesSupprime.ts
 │   │   ├── evenementInvitationUtilisateurEnvoyee.js
@@ -818,7 +847,7 @@
 │   │   ├── evenementRisquesV2ServiceModifies.ts
 │   │   ├── evenementRoleUtilisateurAdministreAttribue.ts
 │   │   ├── evenementServiceRattacheAPrestataire.js
-│   │   ├── evenementServiceSupprime.js
+│   │   ├── evenementServiceSupprime.ts
 │   │   ├── evenementServiceV1MigreEnV2.js
 │   │   ├── evenementServicesDuGroupeModifies.ts
 │   │   ├── evenementServicesImportes.js
@@ -839,6 +868,7 @@
 │   │   ├── depotDonneesBrouillonService.ts
 │   │   ├── depotDonneesClesApi.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.js
+│   │   ├── depotDonneesGroupesEntites.ts
 │   │   ├── depotDonneesGroupesServices.ts
 │   │   ├── depotDonneesModelesMesureSpecifique.js
 │   │   ├── depotDonneesNotifications.js
@@ -903,7 +933,7 @@
 │   │   │   ├── fabriqueAutorisation.ts
 │   │   │   ├── gestionDroits.ts
 │   │   │   ├── procedureSuppressionContributeur.ts
-│   │   │   └── procedureSuppressionContributeurAdmin.ts
+│   │   │   └── procedureSuppressionContributeurDePerimetre.ts
 │   │   ├── avis.ts
 │   │   ├── base.ts
 │   │   ├── brouillonService.ts
@@ -936,6 +966,7 @@
 │   │   │   ├── adminOrganisations.ts
 │   │   │   ├── traceAudit.ts
 │   │   │   └── utilisateurAdministre.ts
+│   │   ├── groupeEntites.ts
 │   │   ├── groupeServices.ts
 │   │   ├── identite.ts
 │   │   ├── indiceCyber.js
@@ -960,6 +991,9 @@
 │   │   │   ├── evenementCompletudeServiceModifiee.serviceV2.ts
 │   │   │   ├── evenementCompletudeServiceModifiee.ts
 │   │   │   ├── evenementConnexionUtilisateur.ts
+│   │   │   ├── evenementEntitesDuGroupeModifiees.ts
+│   │   │   ├── evenementGroupeEntitesCree.ts
+│   │   │   ├── evenementGroupeEntitesSupprime.ts
 │   │   │   ├── evenementGroupeServicesCree.ts
 │   │   │   ├── evenementGroupeServicesSupprime.ts
 │   │   │   ├── evenementMesureModifieeEnMasse.js
@@ -1125,6 +1159,8 @@
 │   │   │   ├── routesConnecteApi.schema.ts
 │   │   │   ├── routesConnecteApiAdmin.schema.ts
 │   │   │   ├── routesConnecteApiAdmin.ts
+│   │   │   ├── routesConnecteApiAdminGroupesEntites.schema.ts
+│   │   │   ├── routesConnecteApiAdminGroupesEntites.ts
 │   │   │   ├── routesConnecteApiBrouillonService.ts
 │   │   │   ├── routesConnecteApiCleApi.schema.ts
 │   │   │   ├── routesConnecteApiCleApi.ts
@@ -1337,6 +1373,7 @@
 │   │   │   ├── Tuiles.svelte
 │   │   │   └── adminAdministrateurs.ts
 │   │   ├── adminEntites
+│   │   │   ├── AccordeonDesEntites.svelte
 │   │   │   ├── AdminEntites.svelte
 │   │   │   ├── LignesDuTableau
 │   │   │   │   ├── BadgeAdministrateur.svelte
@@ -1344,6 +1381,8 @@
 │   │   │   │   ├── NombreServices.svelte
 │   │   │   │   ├── NombreUtilisateurs.svelte
 │   │   │   │   └── NommerUnAdmin.svelte
+│   │   │   ├── TableauDesEntites.svelte
+│   │   │   ├── TiroirAssociationGroupesEntites.svelte
 │   │   │   ├── TiroirGestion
 │   │   │   │   ├── ActionsSurConfirmationSuppression.svelte
 │   │   │   │   ├── ActionsSurInvitation.svelte
@@ -1513,9 +1552,11 @@
 │   │   │   ├── Groupes.svelte
 │   │   │   ├── ModaleRenommageGroupe.svelte
 │   │   │   ├── ModaleSuppressionGroupe.svelte
+│   │   │   ├── OngletGroupes.svelte
 │   │   │   ├── groupes.api.ts
 │   │   │   ├── groupes.d.ts
-│   │   │   └── groupes.ts
+│   │   │   ├── groupes.ts
+│   │   │   └── groupesEntites.api.ts
 │   │   ├── index.html
 │   │   ├── indiceCyber
 │   │   │   ├── IndiceCyber.svelte
@@ -1688,6 +1729,7 @@
 │   │   │   ├── pagesService.ts
 │   │   │   ├── pagesServiceGerees.ts
 │   │   │   ├── store
+│   │   │   │   ├── actionsTitrePageService.store.ts
 │   │   │   │   ├── afficheTitrePageService.store.ts
 │   │   │   │   ├── pageCourante.store.ts
 │   │   │   │   ├── pageDepuisURL.ts
@@ -1851,6 +1893,7 @@
 │   │   │   └── tiroir.ts
 │   │   ├── typesBasiquesSvelte.ts
 │   │   ├── ui
+│   │   │   ├── AccordeonGroupe.svelte
 │   │   │   ├── AsterisqueChampRequis.svelte
 │   │   │   ├── AucunResultatRecherche.svelte
 │   │   │   ├── Avertissement.svelte
@@ -2015,6 +2058,10 @@
 │   │   ├── adaptateurStatistiquesPostgres.spec.ts
 │   │   ├── excel
 │   │   │   └── LecteurExcel.spec.ts
+│   │   ├── gestionErreur
+│   │   │   ├── enrichissementErreurAxiosSentry.spec.ts
+│   │   │   ├── optionsSentry.spec.ts
+│   │   │   └── scrubbingEvenementSentry.spec.ts
 │   │   └── serviceStatistiquesAdmin.spec.ts
 │   ├── aides
 │   │   ├── cookie.js
@@ -2051,6 +2098,9 @@
 │   │   │   ├── consigneCleApiRevoqueeDansJournal.spec.ts
 │   │   │   ├── consigneCompletudeDansJournal.spec.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.spec.ts
+│   │   │   ├── consigneEntitesDuGroupeModifieesDansJournal.spec.ts
+│   │   │   ├── consigneGroupeEntitesCreeDansJournal.spec.ts
+│   │   │   ├── consigneGroupeEntitesSupprimeDansJournal.spec.ts
 │   │   │   ├── consigneGroupeServicesCreeDansJournal.spec.ts
 │   │   │   ├── consigneGroupeServicesSupprimeDansJournal.spec.ts
 │   │   │   ├── consigneModificationMesureEnMasseDansJournal.spec.js
@@ -2087,10 +2137,17 @@
 │   │   │   ├── metAJourParrainage.spec.js
 │   │   │   ├── modifieLienEntrepriseEtContactBrevo.spec.js
 │   │   │   ├── modifieLienServiceEtSuperviseurs.spec.ts
-│   │   │   ├── modifieRattachementServiceEtAdmins.spec.ts
+│   │   │   ├── modifieRattachementServiceAuxSuperviseursEtAdmins.spec.ts
 │   │   │   ├── rattacheServiceEtAdmins.spec.ts
+│   │   │   ├── rattacheServiceEtSuperviseurs.spec.ts
 │   │   │   ├── relieEntrepriseEtContactBrevo.spec.js
 │   │   │   ├── relieServiceEtSuperviseurs.spec.ts
+│   │   │   ├── reporting-bizdev
+│   │   │   │   ├── consigneImportDeServicesDansCrm.spec.ts
+│   │   │   │   ├── consigneNouvelUtilisateurDansCrm.spec.ts
+│   │   │   │   ├── metAJourNombreDHomologationsDeLEntiteDansCrm.spec.ts
+│   │   │   │   ├── metAJourNombreDeServicesDeLEntiteDansCrm.spec.ts
+│   │   │   │   └── metAJourNombreDeServicesEnProprietaireDansCrm.spec.ts
 │   │   │   ├── sauvegardeEvolutionIndiceCyber.spec.js
 │   │   │   ├── sauvegardeNotificationTransactionnelleContributeurMentionneDansMesure.spec.ts
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.spec.js
@@ -2102,7 +2159,7 @@
 │   │   ├── aides
 │   │   │   └── busPourLesTests.js
 │   │   ├── busEvenements.spec.js
-│   │   ├── evenementAutorisationsServiceModifiees.spec.js
+│   │   ├── evenementAutorisationsServiceModifiees.spec.ts
 │   │   ├── evenementContributeurAjoute.spec.ts
 │   │   ├── evenementDescriptionServiceModifiee.spec.js
 │   │   ├── evenementDossierHomologationFinalise.spec.js
@@ -2113,7 +2170,7 @@
 │   │   ├── evenementNouvelleConnexionUtilisateur.spec.ts
 │   │   ├── evenementRisqueServiceModifie.spec.ts
 │   │   ├── evenementRisquesV2ServiceModifies.spec.ts
-│   │   ├── evenementServiceSupprime.spec.js
+│   │   ├── evenementServiceSupprime.spec.ts
 │   │   ├── evenementServicesImportes.spec.js
 │   │   ├── evenementUtilisateurInscrit.spec.js
 │   │   └── evenementUtilisateurModifie.spec.js
@@ -2147,6 +2204,7 @@
 │   │   ├── depotDonneesBrouillonService.spec.ts
 │   │   ├── depotDonneesClesApi.spec.ts
 │   │   ├── depotDonneesEvolutionsIndiceCyber.spec.js
+│   │   ├── depotDonneesGroupesEntites.spec.ts
 │   │   ├── depotDonneesGroupesServices.spec.ts
 │   │   ├── depotDonneesModelesMesureSpecifique.spec.js
 │   │   ├── depotDonneesNotifications.spec.js
@@ -2183,9 +2241,10 @@
 │   │   ├── autorisations
 │   │   │   ├── ajoutContributeurSurServices.spec.js
 │   │   │   ├── autorisation.spec.ts
+│   │   │   ├── fabriqueAutorisation.spec.ts
 │   │   │   ├── gestionDroits.spec.ts
 │   │   │   ├── procedureSuppressionContributeur.spec.ts
-│   │   │   └── procedureSuppressionContributeurAdmin.spec.ts
+│   │   │   └── procedureSuppressionContributeurDePerimetre.spec.ts
 │   │   ├── avis.spec.ts
 │   │   ├── base.spec.ts
 │   │   ├── brouillonService.spec.ts
@@ -2213,6 +2272,7 @@
 │   │   ├── fonctionnalitesSpecifiques.spec.js
 │   │   ├── gestionOrganisations
 │   │   │   └── adminOrganisations.spec.ts
+│   │   ├── groupeEntites.spec.ts
 │   │   ├── groupeServices.spec.ts
 │   │   ├── identite.spec.ts
 │   │   ├── indiceCyber.spec.js
@@ -2230,6 +2290,9 @@
 │   │   │   ├── evenementCollaboratifServiceModifie.spec.js
 │   │   │   ├── evenementCompletudeServiceModifiee.spec.ts
 │   │   │   ├── evenementConnexionUtilisateur.spec.ts
+│   │   │   ├── evenementEntitesDuGroupeModifiees.spec.ts
+│   │   │   ├── evenementGroupeEntitesCree.spec.ts
+│   │   │   ├── evenementGroupeEntitesSupprime.spec.ts
 │   │   │   ├── evenementGroupeServicesCree.spec.ts
 │   │   │   ├── evenementGroupeServicesSupprime.spec.ts
 │   │   │   ├── evenementMesureModifieeEnMasse.spec.js
@@ -2355,6 +2418,7 @@
 │   │   ├── connecte
 │   │   │   ├── routesConnecteApi.spec.js
 │   │   │   ├── routesConnecteApiAdmin.spec.ts
+│   │   │   ├── routesConnecteApiAdminGroupesEntites.spec.ts
 │   │   │   ├── routesConnecteApiBrouillonService.spec.ts
 │   │   │   ├── routesConnecteApiCleApi.spec.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.spec.ts
@@ -2443,4 +2507,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-313 directories, 2262 files
+318 directories, 2321 files
