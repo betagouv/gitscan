@@ -1,39 +1,46 @@
-## Changelog : anssi-portail (30 derniers jours, au 16 octobre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 22 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le portail a franchi une étape majeure avec l'intégration complète du **parcours de sécurisation** à travers toutes les interfaces (accueil, menu, résultats de tests). L'expérience utilisateur a été considérablement enrichie par une refonte de la simulation **"Réflexes Cyber"**, devenue plus immersive grâce à l'ajout de sons et d'animations. La **boîte à outils** s'est également étoffée avec un nouveau modèle d'annuaire de crise téléchargeable et une base de contacts (nationaux, régionaux et sectoriels) mise à jour. Enfin, le lancement de la section **Blog** permet désormais de diffuser des contenus éditoriaux et de recueillir les avis des utilisateurs.
+Cette période a été marquée par un enrichissement majeur de la "Boîte à outils" avec l'ajout de nombreux modèles de documents et de nouveaux contacts. L'expérience de simulation "Réflexes cyber" a été considérablement améliorée grâce à l'ajout de sons et d'animations, tandis que le "Parcours de sécurisation" est désormais mieux intégré et visible sur l'ensemble du portail. Enfin, un nouveau système de blog a été déployé pour faciliter la diffusion de contenus.
 
 ### Évolutions fonctionnelles
-- **Parcours de sécurisation** : Intégration globale sur le portail (affichage dans le menu, le héros de la page d'accueil, les pieds de page et les résultats des tests de maturité/réflexes).
-- **Réflexes Cyber (Simulation)** : 
-    - Amélioration de l'interactivité avec l'ajout de sons, d'animations de transition et de retours visuels (pulsations, indicateurs de commandes bloquées).
-    - Optimisation de l'interface pour les petits écrans et amélioration de la clarté des instructions.
-    - Possibilité d'envoyer les résultats et retours directement via Mattermost.
-- **Boîte à outils** : 
-    - Mise à disposition d'un modèle d'annuaire de crise téléchargeable au format XLSX.
-    - Enrichissement et mise à jour des listes de contacts (nationaux, régionaux et sectoriels).
-    - Ajout d'un outil de rappel dans la procédure de gestion de crise.
-- **Mini-tests** : 
-    - Déploiement du nouveau test de maturité (compatible mode autonome avec recommandations personnalisées).
-    - Amélioration des tests "Exposition" et "Vrai-Faux" (statistiques, affichage des scores et interface).
-- **Blog** : Création de la section blog avec gestion des articles, des résumés et un système de collecte des retours utilisateurs.
-- **Statistiques** : Mise à jour des compteurs d'organisations accompagnées et de diagnostics réalisés.
-- **Badge Cyberdépart** : Ajout d'un badge de reconnaissance conditionnel selon le parcours de l'utilisateur.
+
+**Boîte à outils**
+- Ajout de nouveaux modèles personnalisés : revue des droits d'accès, revue de comptes utilisateurs, liste d'activités et modification de mots de passe.
+- Possibilité de télécharger les modèles de documents (format XLSX).
+- Intégration de nouveaux contacts : nationaux, régionaux et sectoriels.
+- Mise en place d'un système de retours utilisateurs directement depuis l'interface des outils.
+
+**Réflexes cyber (Simulation)**
+- Amélioration de l'immersion avec l'ajout d'ambiances sonores et d'animations (transitions entre événements, pulsations des métriques, apparition des rôles).
+- Optimisation de l'interface : meilleure gestion des scores, des instructions sur mobile et ajout d'illustrations pour les événements.
+
+**Parcours de sécurisation**
+- Visibilité accrue : le parcours est désormais accessible via le menu, le pied de page, les résultats des tests de maturité et les simulations.
+- Amélioration visuelle avec l'ajout d'animations sur les cartes de parcours.
+
+**Blog et Contenu**
+- Déploiement d'un nouveau système de blog permettant la lecture d'articles via leur titre (slug) et l'affichage de résumés.
+- Ajout d'un système d'avis utilisateurs sur les articles pour recueillir les impressions des lecteurs.
+
+**Tests de maturité et Mini-tests**
+- Déploiement de nouveaux modules de tests (composants "Exposition" et "Vrai/Faux").
+- Amélioration de la présentation des résultats et de l'interface utilisateur.
 
 ### Évolutions techniques
-- **Architecture & Modularité** : 
-    - Refactoring massif pour isoler les responsabilités : routes (API, statiques, authentification), middlewares, configuration des cookies, du rate limiting et des redirections.
-    - Création d'un module dédié pour la gestion des contacts sectoriels.
-    - Mutualisation de la logique de traitement des utilisateurs et des composants de procédures.
-- **Optimisation des performances** : 
-    - Mise en place du rendu côté serveur (SSR) pour la page "Conseils Cyber" et le "Kit Relais".
-    - Implémentation d'un système de mise en cache pour les articles du blog.
-- **Infrastructure & Tooling** : 
-    - Migration vers `pnpm` v12.
-    - Amélioration des processus de déploiement des composants de mini-tests.
-    - Renforcement de la suite de tests avec l'utilisation de spies Vitest.
+
+**Architecture et API**
+- Réorganisation et simplification des routes API pour les outils, les annuaires et les mini-tests.
+- Refactorisation de la logique de manipulation des fichiers Excel (XLSX) et de la gestion du temps (adaptateur horloge).
+- Migration vers Express 5.3 et mise à jour de l'infrastructure (GitHub Runner).
+- Mise en place du rendu côté serveur (SSR) pour certaines pages et du système de cache pour les articles du blog.
+
+**Qualité et Maintenance**
+- Refactorisation importante pour regrouper les fichiers par domaine (annuaire de crise, liste d'activités, modification de mots de passe, etc.).
+- Amélioration de la gestion des erreurs avec un composant 404 réutilisable.
+- Mise à jour des règles de linting et automatisation du tri des imports.
 
 ### Autres changements
-- **Contenu & SEO** : Mise à jour des métadonnées SEO, des titres pour les réseaux sociaux et harmonisation de la terminologie (ex: remplacement de "tutoriel" par "procédure").
-- **Nettoyage** : Suppression des anciens services (Crisp), des drapeaux de fonctionnalités (feature flags) obsolètes et des dépendances inutiles.
-- **Maintenance** : Corrections orthographiques et typographiques diverses sur l'ensemble du portail.
+- Mise à jour des métadonnées SEO (titres et descriptions pour les réseaux sociaux).
+- Nettoyage du code (suppression de commentaires inutiles et de dépendances obsolètes).
+- Amélioration de l'accessibilité (prise en compte du mode "mouvement réduit").

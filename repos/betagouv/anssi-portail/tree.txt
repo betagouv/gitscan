@@ -23,6 +23,8 @@
 │       │   ├── SKILL.md
 │       │   └── references
 │       │       └── design-system-et-assets.md
+│       ├── mettre-a-jour-boite-a-outils-mesure
+│       │   └── SKILL.md
 │       ├── mettre-a-jour-playwright-cli
 │       │   └── SKILL.md
 │       ├── nouvelle-migration-knex
@@ -234,7 +236,11 @@
 │   │   │   │   │   ├── gestionDErreurs.ts
 │   │   │   │   │   └── rateLimit.ts
 │   │   │   │   └── routes
-│   │   │   │       ├── API.ts
+│   │   │   │       ├── API
+│   │   │   │       │   ├── annuaire.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── miniTests.ts
+│   │   │   │       │   └── outils.ts
 │   │   │   │       ├── authentification.ts
 │   │   │   │       ├── fichiersStatiques.ts
 │   │   │   │       ├── financements.ts
@@ -256,10 +262,30 @@
 │   │   │   │   ├── ressourceConnexionOIDC.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.ts
 │   │   │   ├── outils
-│   │   │   │   ├── modele-annuaire-de-crise.xlsx
-│   │   │   │   ├── ressourceModeleAnnuaireDeCrise.ts
+│   │   │   │   ├── modeleAnnuaireDeCrise
+│   │   │   │   │   ├── modele-annuaire-de-crise.xlsx
+│   │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.ts
+│   │   │   │   │   └── serviceModeleAnnuaireDeCrise.ts
+│   │   │   │   ├── modeleListeDActivites
+│   │   │   │   │   ├── modele-liste-d-activites.xlsx
+│   │   │   │   │   ├── ressourceModeleListeDActivites.ts
+│   │   │   │   │   └── serviceModeleListeDActivites.ts
+│   │   │   │   ├── modeleModificationMotsDePasse
+│   │   │   │   │   ├── modele-modifications-mots-de-passe.xlsx
+│   │   │   │   │   ├── ressourceModeleModificationsMotsDePasse.ts
+│   │   │   │   │   └── serviceModeleModificationMotsDePasse.ts
+│   │   │   │   ├── modeleRevueComptesUtilisateurs
+│   │   │   │   │   ├── modele-revue-comptes-utilisateurs.xlsx
+│   │   │   │   │   ├── ressourceModeleRevueComptesUtilisateurs.ts
+│   │   │   │   │   └── serviceModeleRevueComptesUtilisateurs.ts
+│   │   │   │   ├── modeleRevueDroitsDAcces
+│   │   │   │   │   ├── modele-revue-droits-d-acces.xlsx
+│   │   │   │   │   ├── ressourceModeleRevueDroitsDAcces.ts
+│   │   │   │   │   └── serviceModeleRevueDroitsDAcces.ts
 │   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.ts
-│   │   │   │   └── serviceModeleAnnuaireDeCrise.ts
+│   │   │   │   ├── ressourceRappelMiseÀJourListeDActivites.ts
+│   │   │   │   ├── ressourceRetoursSurOutil.ts
+│   │   │   │   └── serviceEditionXLSX.ts
 │   │   │   ├── ressourceAbonnementInfolettre.schema.ts
 │   │   │   ├── ressourceAbonnementInfolettre.ts
 │   │   │   ├── ressourceAnnuaireDepartements.ts
@@ -295,6 +321,7 @@
 │   │   │   ├── ressourceUtilisateurs.schema.ts
 │   │   │   ├── ressourceUtilisateurs.ts
 │   │   │   ├── ressourceVisa.ts
+│   │   │   ├── retourUtilisateur.schema.ts
 │   │   │   ├── routesPagesConnectees.ts
 │   │   │   ├── schemas.ts
 │   │   │   ├── session.ts
@@ -305,7 +332,6 @@
 │   │   │   │   ├── ressourceResultatsDeTest.schema.ts
 │   │   │   │   ├── ressourceResultatsDeTest.ts
 │   │   │   │   ├── ressourceResultatsSessionDeGroupe.ts
-│   │   │   │   ├── ressourceRetourTestMaturite.schema.ts
 │   │   │   │   ├── ressourceSessionDeGroupe.ts
 │   │   │   │   └── ressourceSessionsDeGroupe.ts
 │   │   │   └── zod.ts
@@ -333,6 +359,7 @@
 │   │   │   ├── consigneRetourArticleDonneDansJournal.ts
 │   │   │   ├── consigneRetourExperienceDonneDansJournal.ts
 │   │   │   ├── consigneRetourMiniTestDonneDansJournal.ts
+│   │   │   ├── consigneRetourOutilDonneDansJournal.ts
 │   │   │   ├── consigneSimulationNis2TermineeDansJournal.ts
 │   │   │   ├── consigneTestExpositionRealiseDansJournal.ts
 │   │   │   ├── consigneTestRealiseDansJournal.ts
@@ -359,6 +386,7 @@
 │   │   │   │   ├── retourArticleDonne.ts
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── retourMiniTestDonne.ts
+│   │   │   │   ├── retourOutilDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── simulationReflexesCyberReponseSoumise.ts
 │   │   │   │   ├── simulationReflexesCyberTermine.ts
@@ -367,7 +395,8 @@
 │   │   │   ├── miseAJourFavorisUtilisateur.ts
 │   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.ts
 │   │   │   ├── notifieRetourNegatifSurArticle.ts
-│   │   │   └── notifieRetourNegatifSurMiniTest.ts
+│   │   │   ├── notifieRetourNegatifSurMiniTest.ts
+│   │   │   └── notifieRetourNegatifSurOutil.ts
 │   │   ├── entrepotModulePostgres.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
@@ -532,6 +561,8 @@
 │   │   │   │       │   └── RegleTypeDeStructure.ts
 │   │   │   │       └── specifications-completes.csv
 │   │   │   ├── niveauDeSatisfaction.ts
+│   │   │   ├── outils
+│   │   │   │   └── outils.ts
 │   │   │   ├── parcours.ts
 │   │   │   ├── referentielDepartements.ts
 │   │   │   ├── referentielDomainesDeSpecialite.ts
@@ -622,8 +653,18 @@
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
 │   │   │   ├── outils
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
+│   │   │   │   ├── ressourceModeleListeDActivites.spec.ts
+│   │   │   │   ├── ressourceModeleModificationsMotsDePasse.spec.ts
+│   │   │   │   ├── ressourceModeleRevueComptesUtilisateurs.spec.ts
+│   │   │   │   ├── ressourceModeleRevueDroitsDAcces.spec.ts
 │   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.spec.ts
-│   │   │   │   └── serviceModeleAnnuaireDeCrise.spec.ts
+│   │   │   │   ├── ressourceRappelMiseAJourListDActivites.spec.ts
+│   │   │   │   ├── ressourceRetoursSurOutil.spec.ts
+│   │   │   │   ├── serviceModeleAnnuaireDeCrise.spec.ts
+│   │   │   │   ├── serviceModeleListeDActivites.spec.ts
+│   │   │   │   ├── serviceModeleModificationMotsDePasse.spec.ts
+│   │   │   │   ├── serviceModeleRevueComptesUtilisateurs.spec.ts
+│   │   │   │   └── serviceModeleRevueDroitsDAcces.spec.ts
 │   │   │   ├── ressourceAbonnementInfolettre.spec.ts
 │   │   │   ├── ressourceAnnuaireDepartements.spec.ts
 │   │   │   ├── ressourceAnnuaireOrganisations.spec.ts
@@ -1208,7 +1249,9 @@
 │   │   │   │   ├── module-*.svg  (6 files)
 │   │   │   │   ├── outils
 │   │   │   │   │   ├── icone-telechargement-ics.svg
-│   │   │   │   │   └── icone-telechargement-xlsx.svg
+│   │   │   │   │   ├── icone-telechargement-xlsx.svg
+│   │   │   │   │   ├── jeu-carte-reflexes-cyber.svg
+│   │   │   │   │   └── jeu-reflexes-cyber-en-ligne.svg
 │   │   │   │   └── visuel-cyberdepart.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
@@ -1248,7 +1291,6 @@
 │   │   │   └── trois-mains-croisees.svg
 │   │   └── styles
 │   │       ├── 403.scss
-│   │       ├── 404.scss
 │   │       ├── accueil.scss
 │   │       ├── catalogue.scss
 │   │       ├── commun.scss
@@ -1341,6 +1383,8 @@
 │   │   │   │   │   ├── BoutonsDocumentsGuide.svelte
 │   │   │   │   │   ├── ChoixFiltreCollection.svelte
 │   │   │   │   │   ├── ChoixFiltreLangue.svelte
+│   │   │   │   │   ├── EncartLienVersParcoursComplet.svelte
+│   │   │   │   │   ├── EncartLienVersParcoursCyberdepart.svelte
 │   │   │   │   │   ├── FiltreCollection.svelte
 │   │   │   │   │   ├── FiltreLangue.svelte
 │   │   │   │   │   ├── Guide.svelte
@@ -1400,7 +1444,6 @@
 │   │   │   │   ├── DemandeDiagnosticSimplifiee.svelte
 │   │   │   │   ├── DialogueSortieDiagnostic.svelte
 │   │   │   │   ├── DonneesFormulaireDemandeAide.ts
-│   │   │   │   ├── EncartLienVersParcoursCyberdepart.svelte
 │   │   │   │   ├── FoireAuxQuestions.svelte
 │   │   │   │   ├── FormulaireDemandeAide.svelte
 │   │   │   │   ├── FormulaireDemandeSimplifiee.svelte
@@ -1448,7 +1491,7 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (56 files)
+│   │   │   ├── main-*.ts  (57 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1646,20 +1689,37 @@
 │   │   │   │   │       ├── MesureMCO_MCS5.svelte
 │   │   │   │   │       ├── MesureRECENSEMENT1.svelte
 │   │   │   │   │       └── MesureRH2.svelte
-│   │   │   │   ├── mesure
+│   │   │   │   ├── mesure.ts
+│   │   │   │   ├── mesures
 │   │   │   │   │   ├── CartesLiensProcédures.svelte
 │   │   │   │   │   ├── Mesure.svelte
 │   │   │   │   │   └── boite-a-outils
 │   │   │   │   │       ├── BoiteAOutils.svelte
-│   │   │   │   │       ├── BoiteAOutilsCrise8.svelte
-│   │   │   │   │       ├── BoiteAOutilsGenerique.svelte
 │   │   │   │   │       ├── EtapeProcedure.svelte
 │   │   │   │   │       ├── EtapesProcedure.svelte
-│   │   │   │   │       ├── Outil.svelte
-│   │   │   │   │       ├── OutilRappelMiseAJourAnnuaire.svelte
-│   │   │   │   │       ├── OutilsModeleAnnuaireDeCrise.svelte
-│   │   │   │   │       └── Procedure.svelte
-│   │   │   │   ├── mesure.ts
+│   │   │   │   │       ├── Procedure.svelte
+│   │   │   │   │       └── personnalisee
+│   │   │   │   │           ├── BoiteAOutilsAUTH1.svelte
+│   │   │   │   │           ├── BoiteAOutilsCOMPTE4.svelte
+│   │   │   │   │           ├── BoiteAOutilsCRISE8.svelte
+│   │   │   │   │           ├── BoiteAOutilsDROITS2.svelte
+│   │   │   │   │           ├── BoiteAOutilsEXO1.svelte
+│   │   │   │   │           ├── BoiteAOutilsRECENSEMENT1.svelte
+│   │   │   │   │           ├── BoiteAOutilsRECENSEMENT2.svelte
+│   │   │   │   │           ├── BoiteAOutilsRECENSEMENT3.svelte
+│   │   │   │   │           └── outils
+│   │   │   │   │               ├── OutilJeuCarteReflexesCyber.svelte
+│   │   │   │   │               ├── OutilJeuReflexesCyberEnLigne.svelte
+│   │   │   │   │               ├── OutilModeleAnnuaireDeCrise.svelte
+│   │   │   │   │               ├── OutilModeleDActivites.svelte
+│   │   │   │   │               ├── OutilModeleModificationMotsDePasse.svelte
+│   │   │   │   │               ├── OutilModeleRevueComptesUtilisateurs.svelte
+│   │   │   │   │               ├── OutilModeleRevueDroitsDAcces.svelte
+│   │   │   │   │               ├── OutilRappelMiseAJourActivites.svelte
+│   │   │   │   │               ├── OutilRappelMiseAJourAnnuaire.svelte
+│   │   │   │   │               └── patrons
+│   │   │   │   │                   ├── OutilLien.svelte
+│   │   │   │   │                   └── OutilTelechargement.svelte
 │   │   │   │   ├── modales
 │   │   │   │   │   ├── ModaleBadgeCyberdepartDebloque.svelte
 │   │   │   │   │   ├── ModaleModuleCyberdepartTermine.svelte
@@ -1761,6 +1821,7 @@
 │   │   │   │   └── stores
 │   │   │   │       └── questionnaire.store.ts
 │   │   │   ├── ui
+│   │   │   │   ├── 404.svelte
 │   │   │   │   ├── Accordeon.svelte
 │   │   │   │   ├── Alerte.svelte
 │   │   │   │   ├── Alternatives.svelte
@@ -1794,6 +1855,7 @@
 │   │   │   │   ├── Modale.svelte
 │   │   │   │   ├── MotEnExergue.svelte
 │   │   │   │   ├── Notice.svelte
+│   │   │   │   ├── Popover.svelte
 │   │   │   │   ├── Reactions.svelte
 │   │   │   │   ├── RetourUtilisateurSurContenu.svelte
 │   │   │   │   ├── Separateur.svelte
@@ -2023,4 +2085,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-326 directories, 1816 files
+337 directories, 1868 files
