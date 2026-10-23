@@ -12,8 +12,8 @@
 ├── .gitignore
 ├── .kanelrc.cjs
 ├── .npmrc
-├── .prettierignore
-├── .prettierrc.json
+├── .oxfmtrc.json
+├── .oxlintrc.json
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── LICENSE
@@ -26,6 +26,7 @@
 │   │   │   ├── app.css
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
+│   │   │   ├── env.ts
 │   │   │   ├── hooks.client.ts
 │   │   │   ├── hooks.server.test.ts
 │   │   │   ├── hooks.server.ts
@@ -63,6 +64,7 @@
 │   │   │   │   │   │   ├── toolbarButtons.ts
 │   │   │   │   │   │   └── video.ts
 │   │   │   │   │   └── RichTextEditor.svelte
+│   │   │   │   ├── dossierActeurs.ts
 │   │   │   │   ├── dossierLocation.test.ts
 │   │   │   │   ├── dossierLocation.ts
 │   │   │   │   ├── pageHeader.svelte.ts
@@ -206,8 +208,9 @@
 │   │   │   │   │   │   └── +page.svelte
 │   │   │   │   │   ├── logout
 │   │   │   │   │   │   └── +server.ts
-│   │   │   │   │   └── proconnect
-│   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── proconnect
+│   │   │   │   │   │   └── +server.ts
+│   │   │   │   │   └── redirects.test.ts
 │   │   │   │   ├── changelog
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── DeleteEntryModal.svelte
@@ -398,7 +401,6 @@
 │   │   │       ├── favicon.ico
 │   │   │       ├── favicon.svg
 │   │   │       └── manifest.webmanifest
-│   │   ├── svelte.config.js
 │   │   ├── tests
 │   │   │   └── vitest.config.ts
 │   │   ├── tsconfig.json
@@ -409,7 +411,9 @@
 │       │   ├── app.css
 │       │   ├── app.d.ts
 │       │   ├── app.html
+│       │   ├── env.ts
 │       │   ├── hooks.client.ts
+│       │   ├── hooks.server.test.ts
 │       │   ├── hooks.server.ts
 │       │   ├── instrumentation.server.ts
 │       │   ├── lib
@@ -472,15 +476,22 @@
 │       │   │   │   │   ├── dateFiltering.test.ts
 │       │   │   │   │   ├── dossiersSearch.test.ts
 │       │   │   │   │   ├── dossiersSearch.ts
+│       │   │   │   │   ├── dossiersSearchActeurs.test.ts
 │       │   │   │   │   ├── dossiersSearchPorteur.test.ts
 │       │   │   │   │   ├── especesFilterOptions.test.ts
 │       │   │   │   │   ├── especesFilterOptions.ts
 │       │   │   │   │   ├── especesFiltering.test.ts
 │       │   │   │   │   ├── exportFiltering.svelte.test.ts
+│       │   │   │   │   ├── filterChips
+│       │   │   │   │   │   ├── assignment.ts
+│       │   │   │   │   │   └── status.ts
 │       │   │   │   │   ├── filterChips.test.ts
 │       │   │   │   │   ├── filterChips.ts
 │       │   │   │   │   ├── filterOptions.test.ts
 │       │   │   │   │   ├── filterOptions.ts
+│       │   │   │   │   ├── filtering
+│       │   │   │   │   │   ├── date.ts
+│       │   │   │   │   │   └── instructeur.ts
 │       │   │   │   │   ├── filtering.test.ts
 │       │   │   │   │   ├── filtering.ts
 │       │   │   │   │   ├── listModel.ts
@@ -509,8 +520,9 @@
 │       │   │   │   ├── TagEcheance.svelte
 │       │   │   │   ├── TagPhase.svelte
 │       │   │   │   ├── TagPhase.svelte.test.ts
-│       │   │   │   └── common
-│       │   │   │       └── ExpandCollapse.svelte
+│       │   │   │   ├── common
+│       │   │   │   │   └── ExpandCollapse.svelte
+│       │   │   │   └── selectOptions.test.ts
 │       │   │   ├── dossier
 │       │   │   │   ├── activiteIcon.ts
 │       │   │   │   ├── displayDossier.test.ts
@@ -556,10 +568,16 @@
 │       │   │   │   │   └── requestWrappers.ts
 │       │   │   │   ├── createCapObjectFromURLs.ts
 │       │   │   │   ├── dataPaths.ts
+│       │   │   │   ├── debounce.test.ts
+│       │   │   │   ├── debounce.ts
 │       │   │   │   ├── dossierCommentaireCapabilities.test.ts
 │       │   │   │   ├── dossierCommentaireCapabilities.ts
 │       │   │   │   ├── dossierFollowerCapabilities.ts
-│       │   │   │   └── main.ts
+│       │   │   │   ├── http.test.ts
+│       │   │   │   ├── http.ts
+│       │   │   │   ├── main.ts
+│       │   │   │   ├── storage.test.ts
+│       │   │   │   └── storage.ts
 │       │   │   ├── state
 │       │   │   │   └── store.svelte.ts
 │       │   │   ├── stats
@@ -585,7 +603,9 @@
 │       │       │   │   ├── CompactHeader.svelte.test.ts
 │       │       │   │   ├── Header.svelte
 │       │       │   │   └── Navbar.svelte
-│       │       │   └── before-ses-lockdown.ts
+│       │       │   ├── before-ses-lockdown.ts
+│       │       │   ├── tracking.test.ts
+│       │       │   └── tracking.ts
 │       │       ├── LoginViaEmail
 │       │       │   ├── LoginViaEmail.svelte
 │       │       │   └── serveur.ts
@@ -736,6 +756,7 @@
 │       │       │       │   │   ├── FormDecisionAdministrative.svelte.test.ts
 │       │       │       │   │   ├── Prescriptions
 │       │       │       │   │   │   ├── Prescription.svelte
+│       │       │       │   │   │   ├── Prescription.svelte.test.ts
 │       │       │       │   │   │   ├── PrescriptionControles.svelte
 │       │       │       │   │   │   ├── PrescriptionImport.svelte
 │       │       │       │   │   │   ├── PrescriptionImport.svelte.test.ts
@@ -746,6 +767,7 @@
 │       │       │       │   │   ├── Prescriptions.svelte.test.ts
 │       │       │       │   │   ├── controle.ts
 │       │       │       │   │   ├── decisionAdministrative
+│       │       │       │   │   │   ├── controles.ts
 │       │       │       │   │   │   ├── errors.test.ts
 │       │       │       │   │   │   ├── errors.ts
 │       │       │       │   │   │   ├── quantities.test.ts
@@ -761,8 +783,11 @@
 │       │       │       │   ├── DossierDetailProjet
 │       │       │       │   │   ├── Accordion.svelte
 │       │       │       │   │   ├── Cartographie.svelte
+│       │       │       │   │   ├── CartographieProjet.fixture.svelte
 │       │       │       │   │   ├── CartographieReview.svelte.test.ts
 │       │       │       │   │   ├── DetailLayout.svelte.test.ts
+│       │       │       │   │   ├── DossierActeurs.svelte
+│       │       │       │   │   ├── DossierActeurs.svelte.test.ts
 │       │       │       │   │   ├── DossierDetailProjet.svelte.test.ts
 │       │       │       │   │   ├── EspecesImpactTable.svelte
 │       │       │       │   │   ├── EspecesImpactTable.svelte.test.ts
@@ -775,6 +800,9 @@
 │       │       │       │   │   ├── FieldChange.svelte.test.ts
 │       │       │       │   │   ├── FieldChangeLayout.svelte.test.ts
 │       │       │       │   │   ├── InformationsProjet.svelte
+│       │       │       │   │   ├── PiecesJointes
+│       │       │       │   │   │   ├── filename.test.ts
+│       │       │       │   │   │   └── filename.ts
 │       │       │       │   │   ├── PiecesJointes.svelte
 │       │       │       │   │   ├── PorteurDeProjet.svelte
 │       │       │       │   │   ├── PorteurDeProjet.svelte.test.ts
@@ -783,6 +811,8 @@
 │       │       │       │   │   ├── ProjectField.svelte
 │       │       │       │   │   ├── ReviewFieldFixture.svelte
 │       │       │       │   │   ├── Scientifique.svelte
+│       │       │       │   │   ├── acteurs.test.ts
+│       │       │       │   │   ├── acteurs.ts
 │       │       │       │   │   ├── detail.fixture.ts
 │       │       │       │   │   ├── especes.test.ts
 │       │       │       │   │   ├── especes.ts
@@ -800,8 +830,12 @@
 │       │       │       │   │   ├── GeneratedDocuments.svelte
 │       │       │       │   │   ├── fill.test.ts
 │       │       │       │   │   ├── fill.ts
+│       │       │       │   │   ├── generationTags
+│       │       │       │   │   │   ├── scientific.ts
+│       │       │       │   │   │   └── species.ts
 │       │       │       │   │   ├── generationTags.test.ts
 │       │       │       │   │   ├── generationTags.ts
+│       │       │       │   │   ├── tagFormatting.test.ts
 │       │       │       │   │   ├── tagFormatting.ts
 │       │       │       │   │   └── templates.ts
 │       │       │       │   ├── DossierGenerationDocuments.svelte
@@ -824,6 +858,7 @@
 │       │       │       │   │   ├── NouveauCommentaireForm.svelte
 │       │       │       │   │   ├── PhaseTimeline.svelte
 │       │       │       │   │   ├── PhaseTimeline.svelte.test.ts
+│       │       │       │   │   ├── commentaires.test.ts
 │       │       │       │   │   ├── commentaires.ts
 │       │       │       │   │   ├── commentairesPending.svelte.test.ts
 │       │       │       │   │   ├── commentairesResponseRace.svelte.test.ts
@@ -1000,9 +1035,11 @@
 │       │       │   │   ├── AARRIChartTooltip.svelte
 │       │       │   │   ├── AARRICurrentState.svelte
 │       │       │   │   ├── AARRIEvolutionChart.svelte
+│       │       │   │   ├── AARRIIndicatorsContent.svelte
 │       │       │   │   ├── MatrixImpact.svelte
 │       │       │   │   └── chart.ts
 │       │       │   ├── IndicatorsAARRI.svelte
+│       │       │   ├── IndicatorsAARRI.svelte.test.ts
 │       │       │   ├── StatsContent
 │       │       │   │   ├── BiodiversiteImpactStats.svelte
 │       │       │   │   ├── ConformiteStats.svelte
@@ -1086,11 +1123,11 @@
 │       │   │   └── file-copy-2-line.svg
 │       │   └── style
 │       │       └── custom-icons.css
-│       ├── svelte.config.js
 │       ├── tests
 │       │   ├── README.md
 │       │   ├── e2e
 │       │   │   ├── assign-dossier-followers.spec.ts
+│       │   │   ├── dossier-cartographie.spec.ts
 │       │   │   ├── dossier-commentaires.spec.ts
 │       │   │   ├── dossier-echeance.spec.ts
 │       │   │   ├── dossier-historique.spec.ts
@@ -1157,6 +1194,9 @@
 │       │   │   ├── controle-notification-http.test.ts
 │       │   │   ├── decision-fichier-cleanup.test.ts
 │       │   │   ├── declaration-accessibilite.test.ts
+│       │   │   ├── dossier-acteur-lifecycle.test.ts
+│       │   │   ├── dossier-acteur-read.test.ts
+│       │   │   ├── dossier-acteur-save.test.ts
 │       │   │   ├── dossier-cnpn-email
 │       │   │   │   ├── persistence.test.ts
 │       │   │   │   ├── setup.ts
@@ -1909,6 +1949,8 @@
 │   │   ├── 0001-structure-impact-species-in-database.md
 │   │   ├── 0002-structure-porteur-de-projet-in-database.en.md
 │   │   ├── 0002-structure-porteur-de-projet-in-database.md
+│   │   ├── 0003-structure-dossier-acteur-in-database.en.md
+│   │   ├── 0003-structure-dossier-acteur-in-database.md
 │   │   └── README.md
 │   └── test-email-capture.md
 ├── flake.lock
@@ -1925,6 +1967,8 @@
 │   │   │   ├── decisionAdministrative.ts
 │   │   │   ├── departements.test.ts
 │   │   │   ├── departements.ts
+│   │   │   ├── dossierActeur.test.ts
+│   │   │   ├── dossierActeur.ts
 │   │   │   ├── dossierFormOptions
 │   │   │   │   ├── regionOptions.ts
 │   │   │   │   ├── requirements.test.ts
@@ -1941,6 +1985,7 @@
 │   │   │   │   ├── impactGroup.test.ts
 │   │   │   │   ├── impactGroup.ts
 │   │   │   │   ├── importSpreadsheet.ts
+│   │   │   │   ├── importUrl.test.ts
 │   │   │   │   ├── importUrl.ts
 │   │   │   │   ├── listeRouge.test.ts
 │   │   │   │   ├── listeRouge.ts
@@ -1974,6 +2019,7 @@
 │   │   │   ├── referentielTypeImpactMethodeMoyenDePoursuite.fixture.ts
 │   │   │   ├── referentielTypeImpactMethodeMoyenDePoursuite.ts
 │   │   │   ├── spreadsheet.ts
+│   │   │   ├── storageUpload.test.ts
 │   │   │   ├── storageUpload.ts
 │   │   │   ├── stringManipulation.test.ts
 │   │   │   ├── stringManipulation.ts
@@ -2096,7 +2142,10 @@
 │   │   │   ├── 20260916120000_ajout-statut-liste-rouge.ts
 │   │   │   ├── 20261006120000_create-porteur-de-projet.ts
 │   │   │   ├── 20261009120000_drop-personne-contact-columns.ts
-│   │   │   └── 20261012120000_fix-perturbation-label-typo.ts
+│   │   │   ├── 20261011120000_create-dossier-acteur.ts
+│   │   │   ├── 20261012120000_fix-perturbation-label-typo.ts
+│   │   │   ├── 20261020120000_drop-dossier-deposant.ts
+│   │   │   └── 20261021120000_fill-dossier-acteur-from-identite-dossier.ts
 │   │   ├── package.json
 │   │   ├── referentielTypeImpactMethodeMoyenDePoursuite.test.ts
 │   │   ├── scripts
@@ -2202,12 +2251,16 @@
 │   │   │   │   ├── decision_administrative.ts
 │   │   │   │   ├── dossier
 │   │   │   │   │   ├── access.ts
+│   │   │   │   │   ├── acteurs.ts
 │   │   │   │   │   ├── entityMigration.test.ts
 │   │   │   │   │   ├── export
 │   │   │   │   │   │   └── queries.ts
 │   │   │   │   │   ├── export.ts
 │   │   │   │   │   ├── full.ts
 │   │   │   │   │   ├── fullColumns.ts
+│   │   │   │   │   ├── fullFormat
+│   │   │   │   │   │   ├── attachments.ts
+│   │   │   │   │   │   └── decisions.ts
 │   │   │   │   │   ├── fullFormat.ts
 │   │   │   │   │   ├── fullQueries.ts
 │   │   │   │   │   ├── groupe.ts
@@ -2223,6 +2276,10 @@
 │   │   │   │   │   ├── write.test.ts
 │   │   │   │   │   └── write.ts
 │   │   │   │   ├── dossier.ts
+│   │   │   │   ├── dossier_acteur
+│   │   │   │   │   ├── history.test.ts
+│   │   │   │   │   └── history.ts
+│   │   │   │   ├── dossier_acteur.ts
 │   │   │   │   ├── dossier_admin
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── delete.ts
@@ -2246,6 +2303,9 @@
 │   │   │   │   │   └── files.ts
 │   │   │   │   ├── dossier_cnpn_email.ts
 │   │   │   │   ├── dossier_search.ts
+│   │   │   │   ├── edge_dossier__fichier_pieces_jointes_petitionnaire
+│   │   │   │   │   ├── candidates.ts
+│   │   │   │   │   └── edges.ts
 │   │   │   │   ├── edge_dossier__fichier_pieces_jointes_petitionnaire.ts
 │   │   │   │   ├── especes_impactees.fixture.ts
 │   │   │   │   ├── especes_impactees.test.ts
@@ -2287,6 +2347,7 @@
 │   │   │   │   ├── other_attachment.ts
 │   │   │   │   ├── personne.test.ts
 │   │   │   │   ├── personne.ts
+│   │   │   │   ├── personne_physique.ts
 │   │   │   │   ├── pgErrors.ts
 │   │   │   │   ├── piece_jointe.ts
 │   │   │   │   ├── porteur_de_projet.ts
@@ -2377,6 +2438,7 @@
 │   │   │   │       ├── DecisionAdministrative.ts
 │   │   │   │       ├── DemarcheNumerique88444SynchronizationResult.ts
 │   │   │   │       ├── Dossier.ts
+│   │   │   │       ├── DossierActeur.ts
 │   │   │   │       ├── DossierCnpnEmailSentEvent.ts
 │   │   │   │       ├── DossierSearch.ts
 │   │   │   │       ├── EdgeCapDossierGroupeInstructeurs.ts
@@ -2422,6 +2484,7 @@
 │   │   │   │   ├── api.ts
 │   │   │   │   ├── apiSchema.ts
 │   │   │   │   └── schema.ts
+│   │   │   ├── dossierActeur.ts
 │   │   │   ├── dossierExport.ts
 │   │   │   ├── dossierSource.ts
 │   │   │   ├── especes.d.ts
@@ -2554,6 +2617,9 @@
 │       ├── aarri
 │       │   └── delete-evenements.ts
 │       ├── delete-expired-sessions.ts
+│       ├── import-bdc
+│       │   ├── text.test.ts
+│       │   └── text.ts
 │       ├── import-bdc.ts
 │       ├── import-modifications-especes.ts
 │       ├── import-taxref.ts
@@ -2572,6 +2638,8 @@
 │       │   │   └── scientificColumns.ts
 │       │   ├── makeCommonDossierColumnsForSync88444.ts
 │       │   ├── makeDossiersForSynchronization
+│       │   │   ├── getDossierActeurs88444.test.ts
+│       │   │   ├── getDossierActeurs88444.ts
 │       │   │   ├── getPersonnesEntreprisesData88444.test.ts
 │       │   │   ├── getPersonnesEntreprisesData88444.ts
 │       │   │   ├── mappingContracts.ts
@@ -2580,11 +2648,17 @@
 │       │   │   └── persistenceMapping.ts
 │       │   ├── makeDossiersForSynchronization.ts
 │       │   ├── notification-baseline.test.ts
+│       │   ├── prepareDossiersForPersistence
+│       │   │   ├── entreprises.ts
+│       │   │   └── personnes.ts
 │       │   ├── prepareDossiersForPersistence.test.ts
 │       │   ├── prepareDossiersForPersistence.ts
 │       │   ├── synchronization-dossier-88444.ts
 │       │   ├── synchronization-notification.test.ts
 │       │   ├── synchronization-notification.ts
+│       │   ├── synchronizeDemarcheNumerique
+│       │   │   ├── preparation.ts
+│       │   │   └── relations.ts
 │       │   ├── synchronizeDemarcheNumerique.ts
 │       │   ├── synchronizeDossierFiles.ts
 │       │   └── synchronizeDossierRelations.ts
@@ -2604,4 +2678,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-315 directories, 2332 files
+325 directories, 2396 files
