@@ -13,9 +13,11 @@
 ├── .pre-commit-config.yaml
 ├── .release-please-manifest.json
 ├── .yamllint
+├── AGENTS.md
 ├── CLAUDE.md
 ├── README.md
 ├── TODO.md
+├── commitlint.config.js
 ├── deploy
 │   └── helm
 │       └── mycollections
@@ -36,9 +38,15 @@
 ├── docs
 │   ├── adr
 │   │   ├── ADR-0001-collections-collaboratives-modele-et-etats.md
-│   │   └── ADR-0002-generation-de-questions-par-persona.md
+│   │   ├── ADR-0002-generation-de-questions-par-persona.md
+│   │   ├── ADR-0003-assistants-de-recherche.md
+│   │   └── README.md
+│   ├── agents.md
+│   ├── assistants.md
+│   ├── clients.md
 │   ├── collectif.md
 │   ├── drive-find-architecture.md
+│   ├── entraide.md
 │   ├── generation.md
 │   ├── images
 │   │   ├── accueil.png
@@ -61,6 +69,13 @@
 │   │   ├── auth.py
 │   │   ├── config.py
 │   │   ├── database.py
+│   │   ├── doublure
+│   │   │   ├── __init__.py
+│   │   │   └── assistants
+│   │   │       ├── fiche.json
+│   │   │       ├── fiches_sources.json
+│   │   │       ├── plan.json
+│   │   │       └── resultat.json
 │   │   ├── generation
 │   │   │   ├── __init__.py
 │   │   │   ├── adapter_prompts.py
@@ -85,25 +100,55 @@
 │   │   │   ├── 4-verifier-avant-de-publier.md
 │   │   │   ├── 5-entretenir.md
 │   │   │   └── 6-interroger-depuis-vos-si.md
+│   │   ├── harnais
+│   │   │   ├── __init__.py
+│   │   │   ├── apparieur.py
+│   │   │   ├── connecteurs
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── eligibilite.py
+│   │   │   │   └── openrag.py
+│   │   │   ├── contrat.py
+│   │   │   ├── execution.py
+│   │   │   ├── fiables.py
+│   │   │   ├── fusion.py
+│   │   │   ├── interfaces.py
+│   │   │   ├── journal.py
+│   │   │   ├── perimetre.py
+│   │   │   └── plan
+│   │   │       ├── __init__.py
+│   │   │       ├── regles.py
+│   │   │       └── toutes_les_sources.py
 │   │   ├── main.py
+│   │   ├── mcp
+│   │   │   ├── __init__.py
+│   │   │   └── serveur.py
 │   │   ├── models
 │   │   │   ├── __init__.py
+│   │   │   ├── collectif.py
 │   │   │   ├── collection.py
-│   │   │   └── db.py
+│   │   │   ├── db.py
+│   │   │   ├── entraide.py
+│   │   │   ├── generation.py
+│   │   │   └── qualite.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
 │   │   │   ├── _acces_navigateur.py
 │   │   │   ├── _collectif_commun.py
+│   │   │   ├── _commun.py
 │   │   │   ├── _droits.py
 │   │   │   ├── accueil.py
 │   │   │   ├── amorces.py
 │   │   │   ├── articles.py
+│   │   │   ├── assistants.py
+│   │   │   ├── assistants_doublure.py
 │   │   │   ├── bus.py
 │   │   │   ├── categories.py
 │   │   │   ├── collectif.py
 │   │   │   ├── collections.py
 │   │   │   ├── corpus.py
 │   │   │   ├── demandes.py
+│   │   │   ├── embed.py
+│   │   │   ├── entraide.py
 │   │   │   ├── eval_datasets.py
 │   │   │   ├── feedback.py
 │   │   │   ├── fiches.py
@@ -111,6 +156,7 @@
 │   │   │   ├── graph.py
 │   │   │   ├── guide.py
 │   │   │   ├── ingest.py
+│   │   │   ├── openai_compat.py
 │   │   │   ├── playground.py
 │   │   │   ├── playground_bank.py
 │   │   │   ├── publication.py
@@ -138,24 +184,32 @@
 │   │   │   │   ├── sdis.py
 │   │   │   │   ├── ssmsi.py
 │   │   │   │   └── tabulaire.py
+│   │   │   ├── assistant_droits.py
+│   │   │   ├── assistant_recherche.py
+│   │   │   ├── assistant_store.py
 │   │   │   ├── capacites.py
 │   │   │   ├── categorie_store.py
 │   │   │   ├── chunker.py
 │   │   │   ├── collectif_store.py
 │   │   │   ├── collection_store.py
+│   │   │   ├── connecteurs_declares.py
 │   │   │   ├── connectors
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── base.py
 │   │   │   │   └── drive.py
 │   │   │   ├── corpus.py
 │   │   │   ├── debit.py
+│   │   │   ├── demarrage.py
 │   │   │   ├── doublons.py
+│   │   │   ├── entraide_recommandations.py
+│   │   │   ├── entraide_store.py
 │   │   │   ├── etats.py
 │   │   │   ├── eval_service.py
 │   │   │   ├── export_questions.py
 │   │   │   ├── feedback_service.py
 │   │   │   ├── feedback_store.py
-│   │   │   ├── fiche_assistant.py
+│   │   │   ├── fenetre_par_minute.py
+│   │   │   ├── fiche_socle.py
 │   │   │   ├── formats.py
 │   │   │   ├── generation_store.py
 │   │   │   ├── graph_builder.py
@@ -171,6 +225,7 @@
 │   │   │   │   ├── juge.py
 │   │   │   │   └── verdict.py
 │   │   │   ├── mesure_store.py
+│   │   │   ├── migration_assistants.py
 │   │   │   ├── migration_questions.py
 │   │   │   ├── morceau.py
 │   │   │   ├── nettoyage_preview.py
@@ -184,8 +239,10 @@
 │   │   │   ├── questions_store.py
 │   │   │   ├── relais.py
 │   │   │   ├── reponse.py
+│   │   │   ├── sites.py
 │   │   │   ├── sources_openrag.py
-│   │   │   └── sync_service.py
+│   │   │   ├── sync_service.py
+│   │   │   └── tchap.py
 │   │   ├── static
 │   │   │   └── graph_view.html
 │   │   ├── templates
@@ -204,10 +261,21 @@
 │   │   ├── assets
 │   │   │   └── main.css
 │   │   ├── components
-│   │   │   ├── CarteCollection.vue
 │   │   │   ├── EtatDuService.vue
 │   │   │   ├── FilAriane.vue
+│   │   │   ├── NavigationPrincipale.vue
+│   │   │   ├── SitesDeclares.vue
 │   │   │   ├── WizardStepper.vue
+│   │   │   ├── agents
+│   │   │   │   └── InterrogerAvecAgent.vue
+│   │   │   ├── assistants
+│   │   │   │   ├── Cadre.vue
+│   │   │   │   ├── EncadreDoublure.vue
+│   │   │   │   ├── Fiables.vue
+│   │   │   │   ├── QualiteSources.vue
+│   │   │   │   ├── Resultat.vue
+│   │   │   │   ├── SousMenu.vue
+│   │   │   │   └── Trace.vue
 │   │   │   ├── collectif
 │   │   │   │   ├── Avancement.vue
 │   │   │   │   ├── EtapesCollection.vue
@@ -220,6 +288,11 @@
 │   │   │   │   └── Documents.vue
 │   │   │   ├── depot
 │   │   │   │   └── Zone.vue
+│   │   │   ├── fiche
+│   │   │   │   ├── AvisCollegues.vue
+│   │   │   │   ├── Consignes.vue
+│   │   │   │   ├── MenuPlus.vue
+│   │   │   │   └── ZoneSensible.vue
 │   │   │   ├── generation
 │   │   │   │   ├── ChoixPersonas.vue
 │   │   │   │   └── Personas.vue
@@ -231,36 +304,44 @@
 │   │   │   │   ├── SourceChip.vue
 │   │   │   │   ├── SourceViewer.vue
 │   │   │   │   └── VoteBar.vue
-│   │   │   └── qualite
-│   │   │       ├── Avis.vue
-│   │   │       ├── ChampEditable.vue
-│   │   │       ├── Courbe.vue
-│   │   │       ├── JeuDeQuestions.vue
-│   │   │       ├── Leviers.vue
-│   │   │       ├── Mesurer.vue
-│   │   │       ├── Mesures.vue
-│   │   │       ├── Rediger.vue
-│   │   │       ├── Synthese.vue
-│   │   │       └── Volet.vue
+│   │   │   ├── qualite
+│   │   │   │   ├── Avis.vue
+│   │   │   │   ├── ChampEditable.vue
+│   │   │   │   ├── Courbe.vue
+│   │   │   │   ├── JeuDeQuestions.vue
+│   │   │   │   ├── Leviers.vue
+│   │   │   │   ├── Mesurer.vue
+│   │   │   │   ├── Mesures.vue
+│   │   │   │   ├── Rediger.vue
+│   │   │   │   ├── Synthese.vue
+│   │   │   │   └── Volet.vue
+│   │   │   └── wizard
+│   │   │       └── Etape.vue
 │   │   ├── composables
 │   │   │   ├── useAdminAuth.ts
 │   │   │   ├── useApi.ts
+│   │   │   ├── useAssistants.ts
 │   │   │   ├── useAuth.ts
 │   │   │   ├── useBank.ts
 │   │   │   ├── useCapacites.ts
 │   │   │   ├── useCategories.ts
 │   │   │   ├── useChat.ts
 │   │   │   ├── useCollectif.ts
+│   │   │   ├── useEntraide.ts
 │   │   │   ├── useEtatService.ts
 │   │   │   ├── useGeneration.ts
+│   │   │   ├── useMesAgents.ts
 │   │   │   ├── usePiegeFocus.ts
 │   │   │   ├── useQualite.ts
-│   │   │   └── useTitreCollection.ts
+│   │   │   ├── useTitreCollection.ts
+│   │   │   └── useTitresSources.ts
 │   │   ├── error.vue
+│   │   ├── eslint.config.mjs
 │   │   ├── layouts
 │   │   │   └── default.vue
 │   │   ├── middleware
-│   │   │   └── admin-only.ts
+│   │   │   ├── admin-only.ts
+│   │   │   └── capacite.ts
 │   │   ├── nginx.conf
 │   │   ├── nuxt.config.ts
 │   │   ├── package-lock.json
@@ -277,6 +358,17 @@
 │   │   │   │   │   ├── step-4.vue
 │   │   │   │   │   └── step-5.vue
 │   │   │   │   └── index.vue
+│   │   │   ├── assistants
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── bac-a-sable.vue
+│   │   │   │   │   ├── consignes.vue
+│   │   │   │   │   ├── fiables.vue
+│   │   │   │   │   ├── index.vue
+│   │   │   │   │   ├── publication.vue
+│   │   │   │   │   ├── qualite.vue
+│   │   │   │   │   └── sources.vue
+│   │   │   │   ├── index.vue
+│   │   │   │   └── nouveau.vue
 │   │   │   ├── auth
 │   │   │   │   └── callback.vue
 │   │   │   ├── c
@@ -293,6 +385,10 @@
 │   │   │   ├── demandes
 │   │   │   │   ├── [id].vue
 │   │   │   │   └── index.vue
+│   │   │   ├── entraide
+│   │   │   │   ├── [id].vue
+│   │   │   │   ├── index.vue
+│   │   │   │   └── nouveau.vue
 │   │   │   ├── guide
 │   │   │   │   ├── [slug].vue
 │   │   │   │   └── index.vue
@@ -307,6 +403,12 @@
 │   │   ├── tests
 │   │   │   └── unit
 │   │   │       ├── accueil.test.ts
+│   │   │       ├── agents.test.ts
+│   │   │       ├── assistants-consignes.test.ts
+│   │   │       ├── assistants-sources.test.ts
+│   │   │       ├── assistants.test.ts
+│   │   │       ├── bandeau.test.ts
+│   │   │       ├── capacites.test.ts
 │   │   │       ├── catalogue.test.ts
 │   │   │       ├── chatMessage.test.ts
 │   │   │       ├── collectif.test.ts
@@ -314,20 +416,28 @@
 │   │   │       ├── configExecution.test.ts
 │   │   │       ├── corpus.test.ts
 │   │   │       ├── depot.test.ts
+│   │   │       ├── entraide.test.ts
 │   │   │       ├── etatService.test.ts
 │   │   │       ├── extrait.test.ts
+│   │   │       ├── fiche.test.ts
 │   │   │       ├── filAriane.test.ts
 │   │   │       ├── generation.test.ts
 │   │   │       ├── groupes.test.ts
 │   │   │       ├── libelles.test.ts
+│   │   │       ├── navigation.test.ts
 │   │   │       ├── playground.test.ts
 │   │   │       ├── qualite.test.ts
-│   │   │       └── retour.test.ts
+│   │   │       ├── retour.test.ts
+│   │   │       ├── sites.test.ts
+│   │   │       └── wizard.test.ts
 │   │   ├── tsconfig.json
 │   │   ├── types
 │   │   │   └── collection.ts
 │   │   ├── utils
 │   │   │   ├── accueil.ts
+│   │   │   ├── agents.ts
+│   │   │   ├── assistants.ts
+│   │   │   ├── bandeau.ts
 │   │   │   ├── capacites.ts
 │   │   │   ├── catalogue.ts
 │   │   │   ├── collectif.ts
@@ -335,16 +445,21 @@
 │   │   │   ├── configExecution.ts
 │   │   │   ├── corpus.ts
 │   │   │   ├── depot.ts
+│   │   │   ├── entraide.ts
 │   │   │   ├── etatService.ts
 │   │   │   ├── extrait.ts
+│   │   │   ├── fiche.ts
 │   │   │   ├── filAriane.ts
 │   │   │   ├── generation.ts
 │   │   │   ├── groupes.ts
 │   │   │   ├── libelles.ts
+│   │   │   ├── navigation.ts
 │   │   │   ├── playground.ts
 │   │   │   ├── qualite.ts
 │   │   │   ├── retour.ts
-│   │   │   └── sanitize.ts
+│   │   │   ├── sanitize.ts
+│   │   │   ├── sites.ts
+│   │   │   └── wizard.ts
 │   │   └── vitest.config.ts
 │   ├── k8s
 │   │   ├── configmap.yaml
@@ -371,6 +486,7 @@
 │   ├── pytest.ini
 │   ├── requirements-e2e.txt
 │   ├── scripts
+│   │   ├── banc.py
 │   │   └── version_json.py
 │   ├── tests
 │   │   ├── __init__.py
@@ -392,13 +508,64 @@
 │   │   │   ├── test_08_administration.py
 │   │   │   ├── test_09_captures.py
 │   │   │   ├── test_10_mobile_et_clavier.py
-│   │   │   └── test_11_recherche_portail.py
+│   │   │   ├── test_11_recherche_portail.py
+│   │   │   ├── test_12_navigation.py
+│   │   │   ├── test_13_assistants.py
+│   │   │   ├── test_14_accueil.py
+│   │   │   └── test_15_entraide.py
+│   │   ├── entraide
+│   │   │   ├── __init__.py
+│   │   │   ├── test_entraide.py
+│   │   │   └── test_entraide_schema.py
+│   │   ├── harnais
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── fixtures
+│   │   │   │   └── banc
+│   │   │   │       ├── sejour-des-etrangers.json
+│   │   │   │       ├── seuils.json
+│   │   │   │       └── une-source.json
+│   │   │   ├── test_banc.py
+│   │   │   ├── test_connecteur_declare.py
+│   │   │   ├── test_connecteur_eligibilite.py
+│   │   │   ├── test_connecteur_groupes.py
+│   │   │   ├── test_execution.py
+│   │   │   ├── test_fiables.py
+│   │   │   ├── test_fusion.py
+│   │   │   ├── test_journal_plan.py
+│   │   │   ├── test_mcp.py
+│   │   │   ├── test_perimetre.py
+│   │   │   ├── test_plan_executer.py
+│   │   │   ├── test_plan_regles.py
+│   │   │   ├── test_qualite_assistant.py
+│   │   │   └── test_route_search_assistant.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
 │   │   │   └── test_generation_moteur.py
+│   │   ├── non_regression
+│   │   │   ├── __init__.py
+│   │   │   ├── _outils.py
+│   │   │   ├── fixtures
+│   │   │   │   ├── accueil
+│   │   │   │   │   └── mes_collections.json
+│   │   │   │   ├── demandes
+│   │   │   │   │   └── parcours.json
+│   │   │   │   ├── playground
+│   │   │   │   │   └── chat.json
+│   │   │   │   └── recherche_v1
+│   │   │   │       ├── scopes.json
+│   │   │   │       ├── search_avec_scope.json
+│   │   │   │       └── search_sans_scope.json
+│   │   │   ├── test_accueil.py
+│   │   │   ├── test_capacites_defauts.py
+│   │   │   ├── test_demandes.py
+│   │   │   ├── test_owui_manifeste.py
+│   │   │   ├── test_playground_chat.py
+│   │   │   ├── test_recherche_v1.py
+│   │   │   └── test_wizard_questions.py
 │   │   └── unit
 │   │       ├── __init__.py
-│   │       └── test_*.py  (80 files)
+│   │       └── test_*.py  (96 files)
 │   ├── uv.lock
 │   └── watch-ingest.sh
 ├── openwebui
@@ -409,4 +576,4 @@
 ├── setup-keycloak.sh
 ├── sync_keycloak_openrag.py
 └── version.txt
-63 directories, 427 files
+86 directories, 587 files

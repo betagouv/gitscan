@@ -1,40 +1,35 @@
-## Changelog : mycollections (30 derniers jours, au 17 octobre 2026)
+## Changelog : mycollections (30 derniers jours, au 22 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience utilisateur, rendant l'interface plus intuitive, accessible sur mobile et plus claire grâce à des messages en français. De nouvelles fonctionnalités de pilotage de la qualité ont été introduites pour mieux contrôler les réponses de l'IA. Parallèlement, l'infrastructure technique a été modernisée pour garantir des déploiements plus robustes et une sécurité renforcée.
+Ce mois a été marqué par une évolution majeure du projet avec l'introduction des **Assistants de recherche**, permettant de créer, tester et piloter des agents intelligents. L'expérience utilisateur a été profondément modernisée avec une nouvelle interface (accueil compact, catalogue amélioré) et l'ajout d'un réseau d'entraide entre utilisateurs. Parallèlement, la robustesse technique a été renforcée par une meilleure gestion de l'indexation et une sécurité accrue.
 
 ### Évolutions fonctionnelles
-- **Génération et Qualité** : Introduction de la génération de questions par persona, d'un jeu de questions de référence et d'une nouvelle page dédiée au pilotage de la Qualité [#61].
-- **Recherche et Catalogue** : 
-    - Amélioration du catalogue avec des catégories repliables et une meilleure visibilité des titres.
-    - Mise en place d'un nouveau contrat de recherche (MirAI) via de nouvelles API de recherche.
-    - Ajout d'indicateurs de précision sur les résultats de recherche (seuils minimums).
-- **Expérience Utilisateur (UX) et Accessibilité** :
-    - Optimisation de l'ergonomie mobile (menu repositionné, gestion du focus clavier, navigation facilitée).
-    - Généralisation des messages d'erreur et d'information en français pour une meilleure compréhension.
-    - Amélioration de la consultation des sources (aperçus au survol, lecture d'extraits).
-    - Interface de création et de publication simplifiée (étapes de création plus claires, historique de publication lisible).
-- **Gestion des Collections** : 
-    - Amélioration des fiches de collection (onglets, consultation du corpus, boutons d'action explicites).
-    - Nouveau système de gestion des demandes et de satisfaction des utilisateurs.
+- **Nouveaux Assistants de recherche** :
+    - Mise en place d'un assistant de création complet (wizard en 5 étapes) pour configurer les sources et les consignes.
+    - Introduction d'un mode "bac à sable" pour tester les réponses et visualiser le raisonnement de l'assistant.
+    - Ajout de fonctionnalités de pilotage : archivage, restauration et évaluation de la qualité/fiabilité des réponses.
+- **Réseau d'entraide** : Nouveau système permettant de publier des appels, de proposer des solutions et de répondre aux besoins de la communauté.
+- **Refonte de l'interface utilisateur** :
+    - Nouvel accueil compact et menu optimisé.
+    - Catalogue de collections amélioré avec tri par satisfaction/fraîcheur et gestion des avis utilisateurs.
+    - Fiches de collections et d'assistants enrichies (onglets historique, consignes, qualité et accès).
+    - Amélioration de l'ergonomie mobile et intégration renforcée du Design System (DSFR).
+- **Amélioration de la recherche** : Affichage de titres plus lisibles pour les sections et gestion plus précise des résultats (bornes basses).
 
 ### Évolutions techniques
-- **Déploiement et CI/CD** : 
-    - Intégration d'ArgoCD pour la gestion des déploiements.
-    - Mise en place d'une nouvelle chaîne de CI/CD (v0.23.0) incluant les environnements de preview et de bêta.
-    - Amélioration des charts Helm pour une meilleure gestion des versions de l'application.
+- **Architecture et Intelligence Artificielle** :
+    - Implémentation d'un serveur **MCP (Model Context Protocol)** pour exposer les outils des assistants.
+    - Refactorisation du backend vers des modèles de données plus robustes (Pydantic) pour la gestion des questions et de la qualité.
 - **Sécurité et Accès** :
-    - Renforcement des contrôles d'accès sur l'ensemble des routes de l'API.
-    - Gestion des droits "Superadmin" via des variables d'environnement.
-    - Correction de vulnérabilités critiques via la mise à jour de l'image de base Nginx.
-- **Fiabilité et Performance** :
-    - Amélioration de la résilience de l'indexation (reprise automatique après un redémarrage).
-    - Optimisation de la compatibilité avec OpenRAG pour la lecture des métadonnées des sources.
-    - Unification de la configuration frontend via un fichier `/config.json` pour simplifier l'usage d'une image unique.
-- **Outils et Tests** :
-    - Migration de la gestion des dépendances vers `uv` pour plus de rapidité et de fiabilité.
-    - Renforcement de la couverture de tests avec une nouvelle suite de tests de bout en bout (E2E) couvrant les parcours critiques.
+    - Correction de plusieurs vulnérabilités critiques (certifi, pillow, nginx).
+    - Renforcement du contrôle d'accès via des liens signés et une gestion des droits basée sur des groupes administrateurs configurables.
+    - Mise à jour de la gestion du SSO et de la configuration frontend.
+- **Fiabilité et Infrastructure** :
+    - Optimisation de l'indexation : reprise automatique après redémarrage et prévention des doublons.
+    - Modernisation de la gestion des dépendances backend avec `uv`.
+    - Mise en place de nouveaux workflows de déploiement (ArgoCD, Helm charts) et renforcement de la CI/CD.
+    - Extension de la couverture de tests (E2E, unitaires frontend et backend).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique (stratégie de branches, procédures de déploiement neutres) et du guide utilisateur (README).
-- **Nettoyage** : Retrait des identifiants d'infrastructure sensibles du code source pour plus de sécurité.
+- **Documentation** : Mise à jour majeure de la documentation technique (ADR, AGENTS.md, README) et des guides d'utilisation.
+- **Qualité du code** : Intégration de contrôles de qualité automatisés (linting, type-checking) pour le frontend et le backend.

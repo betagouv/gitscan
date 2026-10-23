@@ -45,7 +45,7 @@ La diffusion d'une collection se fait à travers plusieurs canaux, à différent
 - **Le collectif** : quand une donnée manque, on la **demande** ; une demande qui rassemble assez de collègues et un garant devient un chantier, amorcé depuis ce qui existe (open data, Légifrance, fichiers du service), vérifié, puis publié. Modèle, états et routes → [docs/collectif.md](docs/collectif.md) ; le guide en six étapes est servi par l'application (`/guide`, sources dans [myrag/app/guide/](myrag/app/guide/)).
 - **Wizard 5 étapes** de création d'une collection : source, métadonnées, ingestion, évaluation, publication.
 - **Connecteurs de source** : fichiers locaux (PDF/MD/DOCX…), URL distante, Légifrance (API PISTE), **Drive (Suite Numérique)** — indexation à la demande d'un dossier Drive partagé.
-- **Chunking intelligent** (4 stratégies : auto, article, chunk, directory) avec stockage du fichier source sur PVC pour permettre la réindexation.
+- **Chunking intelligent** (4 stratégies : article, section, qr, longueur — et `auto` qui détecte) avec stockage du fichier source sur PVC pour permettre la réindexation.
 - **Archivage / purge réversible** d'une collection : archiver = dépublier OWUI + cacher du catalog (data conservée). Purger = hard-delete (OpenRAG partition + fichiers + DB en cascade). Modale de confirmation stricte avec re-saisie du nom.
 - **Publication vers Open WebUI** : la collection devient un modèle `openrag-<nom>` utilisable comme outil ou alias dans OWUI, avec visibilité par groupe Keycloak.
 - **Feedback OWUI** : ingestion des retours utilisateurs (👍/👎) via `POST /api/feedback/ingest`, review/promote vers `QRCache` (réponses curées servies directement) ou vers un `EvalDataset`. Un service de **pull automatique** depuis la DB OWUI ([myrag/app/services/owui_feedback_sync.py](myrag/app/services/owui_feedback_sync.py), CronJob K8s toutes les 15 min) mirror les feedbacks sur modèles `openrag-*` côté MyRAG, idempotent sur `owui_message_id`.
@@ -69,6 +69,24 @@ La diffusion d'une collection se fait à travers plusieurs canaux, à différent
 - **Questions générées par persona** (expérimental, extra `generation`) : à partir des passages d'une collection, ragas rédige des paires question / réponse de référence du point de vue de personas décrits par le gestionnaire ; relecture valider / rejeter, exports JSON et CSV, coût affiché. Voir [docs/generation.md](docs/generation.md).
 - **Graph de références croisées** (NetworkX + Cytoscape.js) pour les collections le supportant.
 - **Sync Keycloak ↔ OpenRAG** : propagation des groupes `rag-query/<collection>` vers les partitions.
+
+### Le chantier des assistants de recherche (en cours, sous drapeaux)
+
+Décision et découpage : [ADR-0003](docs/adr/ADR-0003-assistants-de-recherche.md). Chaque
+paragraphe ci-dessous appartient à un lot, qui le complète.
+
+**Assistants de recherche** — une fiche-donnée (sources, consignes, réponses fiables) et un
+harnais unique derrière toutes les entrées ; voir [docs/assistants.md](docs/assistants.md).
+
+**Clients** — le socle Open WebUI et la fenêtre embarquée ; voir [docs/clients.md](docs/clients.md).
+
+**Accueil et menus** — à venir.
+
+**Assistant de création, étape 4** — à venir.
+
+**Connecteur Resana** — à venir.
+
+**Réseau d'entraide** — voir [docs/entraide.md](docs/entraide.md).
 
 ## Architecture
 
@@ -180,7 +198,10 @@ Prérequis : Docker, [mise](https://mise.jdx.dev/) (pour uv + node). Pour le **s
 mise install     # uv + node 22
 # 1. Démarrer les dépendances
 cd ../owuicore-main      && docker compose up -d   # Keycloak + OWUI + Pipelines + Tika
-cd ../openrag            && docker compose --profile cpu up -d
+# OpenRAG : le compose vit dans infra/compose/ (y poser le .env d'OpenRAG).
+# -p openrag fixe les noms utilisés à l'étape 2 (réseau openrag_default,
+# container openrag-openrag-cpu-1).
+cd ../openrag/infra/compose && docker compose -p openrag --profile cpu up -d
 
 # 2. Démarrer MyRAG backend (image Docker locale)
 cd ../mycollections
@@ -215,16 +236,21 @@ n'ont pas de valeur par défaut ici : le **registre** d'images (`<REGISTRE>`), l
 (`<NAMESPACE>`) et les **adresses** publiques. OpenRAG peut tourner ailleurs que dans le
 cluster ; la base PostgreSQL `myrag` doit exister avant le premier démarrage.
 
-> **Les adresses du SSO sont cuites dans l'image du frontend** : Nuxt en mode statique lit
-> `KEYCLOAK_URL`, `KEYCLOAK_REALM` et `KEYCLOAK_CLIENT_ID` à la construction, pas au démarrage.
-> Les changer impose de reconstruire l'image — modifier un ConfigMap n'y fait rien.
+> **Les adresses du SSO et de l'API ne sont plus à cuire dans l'image** : l'interface lit
+> `/config.json` **au démarrage** (`frontend/utils/configExecution.ts` ; clés `myragApiUrl`,
+> `keycloakUrl`, `keycloakRealm`, `keycloakClientId`, `authEnabled`, `appTitle`). Montez ce
+> fichier dans `/usr/share/nginx/html/config.json` (le chart `deploy/helm/mycollections` le fait
+> depuis `frontend.config`) : la même image sert alors tous les environnements. Sans lui,
+> l'interface garde les valeurs de construction (build args, utiles en développement local
+> seulement).
+> Exception : `NUXT_PUBLIC_MESAGENTS_BASE_URL` (Mes agents, voir [docs/agents.md](docs/agents.md))
+> reste lue à la construction de l'image ; la changer impose de la reconstruire.
 
 ```bash
 # Construire et pousser (TOUJOURS linux/amd64 : un Mac ARM64 produit sinon « exec format error »)
 TAG=$(git rev-parse --short HEAD)
 docker buildx build --platform linux/amd64 --push -t <REGISTRE>/myrag-backend:$TAG  myrag/
-docker buildx build --platform linux/amd64 --push -t <REGISTRE>/myrag-frontend:$TAG \
-  --build-arg KEYCLOAK_URL=https://<votre-sso> myrag/frontend/
+docker buildx build --platform linux/amd64 --push -t <REGISTRE>/myrag-frontend:$TAG myrag/frontend/
 
 # Appliquer (secret.yaml se remplit localement depuis secret.yaml.template, et ne se commite pas)
 cp myrag/k8s/secret.yaml.template myrag/k8s/secret.yaml  # puis éditer
@@ -281,9 +307,11 @@ Procédure détaillée (création de la base, compte de service Drive, dépannag
 ## Documentation
 
 - [docs/sources.md](docs/sources.md) — lire les sources d'une réponse : écrans, et règles à ne pas défaire.
+- [docs/agents.md](docs/agents.md) — interroger une collection avec un agent de Mes agents : la variable, la portée Keycloak `mesagents-agents`, et le fait que rien ne transite côté serveur.
 - [docs/collectif.md](docs/collectif.md) — le collectif : modèle, états, routes, fil d'avancement ; décision dans [ADR-0001](docs/adr/ADR-0001-collections-collaboratives-modele-et-etats.md).
 - [docs/qualite.md](docs/qualite.md) — piloter la qualité : jeu de questions de référence, mesure par un juge IA, avis, leviers ; migration des anciens jeux de test et réponses validées.
 - [docs/generation.md](docs/generation.md) — générer des paires question / réponse par persona (ragas) : déroulé d'un run, coût, réglages, limites ; décision dans [ADR-0002](docs/adr/ADR-0002-generation-de-questions-par-persona.md).
+- [docs/assistants.md](docs/assistants.md), [docs/clients.md](docs/clients.md), [docs/entraide.md](docs/entraide.md) — le chantier des assistants de recherche ; décision dans [ADR-0003](docs/adr/ADR-0003-assistants-de-recherche.md). Index des décisions : [docs/adr/](docs/adr/README.md).
 - [myrag/app/guide/](myrag/app/guide/) — le guide « Soyez acteurs vous-mêmes », en six étapes, servi par l'application.
 - [docs/drive-find-architecture.md](docs/drive-find-architecture.md) — comment Drive et son moteur de recherche s'articulent.
 - [CLAUDE.md](CLAUDE.md) — repères pour travailler dans le dépôt : dépendances, architecture interne, fichiers clés, variables d'environnement, problèmes connus.
