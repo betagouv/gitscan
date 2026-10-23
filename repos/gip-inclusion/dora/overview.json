@@ -1,29 +1,31 @@
 {
   "url": "https://github.com/gip-inclusion/dora",
   "name": "dora",
-  "description": "Plateforme facilitant l'accompagnement des personnes en insertion et la gestion des structures et services par les acteurs de terrain. Elle permet la gestion des territoires, le suivi des orientations et l'interopérabilité des données.",
+  "description": "Plateforme destinée à faciliter l'accompagnement des personnes en insertion et la gestion des structures et services de proximité.",
   "language": "Python",
   "features": [
-    "Gestion métier générale",
-    "Recherche & Filtres",
-    "Statistiques & Rapports",
     "Gestion documentaire & Fichiers",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design",
-    "Données & Schémas"
+    "API & Intégrations",
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Gestion des établissements & Structures",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "SvelteKit",
+    "Django REST Framework",
     "PostgreSQL",
     "PostGIS",
     "Redis",
     "SeaweedFS",
-    "Scalingo",
     "Sentry",
+    "Matomo",
     "dbt",
-    "SQLAlchemy"
+    "SvelteKit"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,9 +33,9 @@
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "CI/CD & Déploiement",
-    "ORM & Accès aux données",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Stockage objet",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
@@ -46,24 +48,23 @@
     ]
   },
   "tests": [
-    "Pytest",
-    "Vitest"
+    "pytest",
+    "vitest"
   ],
   "workflows": [
     "Scalingo review apps",
-    "tools/release.sh"
+    "CI/CD"
   ],
-  "lastActivity": "2026-10-16T16:20:42+02:00",
-  "status": "maintained",
-  "license": null,
+  "lastActivity": "2026-10-22T14:43:34+02:00",
+  "status": "active",
   "hasDocumentation": true,
   "tags": [
+    "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
-    "TypeScript",
     "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Données & Open Data",
-    "Écosystème beta.gouv / État"
+    "SIG & Géospatial"
   ]
 }
