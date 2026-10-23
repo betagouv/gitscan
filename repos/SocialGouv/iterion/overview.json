@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Plateforme d'orchestration pour workflows d'agents IA, permettant de définir, exécuter et superviser des processus multi-agents complexes via un langage DSL déclaratif. Elle offre un plan de contrôle pour gérer les budgets, l'isolation et l'auditabilité des agents.",
+  "description": "Iterion est une plateforme de contrôle pour l'orchestration de workflows d'agents IA. Elle permet de définir des cycles de travail complexes via un DSL déclaratif, tout en assurant l'auditabilité, la gestion des budgets et l'isolation des exécutions.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
     "Collaboration & Workflow",
-    "Administration & Backoffice",
-    "Sécurité & Conformité",
     "Interface utilisateur & Design",
+    "Sécurité & Conformité",
+    "Administration & Backoffice",
+    "Suivi & Traçabilité",
     "Monitoring & Logs",
     "Gestion des utilisateurs & Permissions"
   ],
@@ -16,10 +17,11 @@
   "dependencies": [
     "Go",
     "TypeScript",
+    "MongoDB",
+    "NATS JetStream",
+    "S3",
     "Docker",
     "Kubernetes",
-    "MongoDB",
-    "NATS",
     "Prometheus",
     "Grafana",
     "Helm"
@@ -31,13 +33,14 @@
     "Kubernetes & Helm",
     "MongoDB & NoSQL",
     "Intelligence Artificielle / ML",
-    "Rust & Go",
-    "Webhooks & Événements"
+    "CI/CD & Déploiement",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
-      "api-key",
+      "oauth2",
       "sso",
+      "api-key",
       "jwt"
     ],
     "providers": [
@@ -45,7 +48,11 @@
       "GitLab"
     ]
   },
-  "lastActivity": "2026-10-19T00:00:00Z",
+  "tests": "Tests avec partitionnement déterministe",
+  "workflows": [
+    "CI/CD pipelines"
+  ],
+  "lastActivity": "2026-10-22T00:00:00Z",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,7 +60,9 @@
     "Intelligence Artificielle & LLM",
     "TypeScript",
     "Docker & Conteneurs",
+    "Kubernetes & Helm",
     "Git & DevOps",
-    "Kubernetes & Helm"
+    "CI/CD & GitHub Actions",
+    "Standards & Schémas"
   ]
 }

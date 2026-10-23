@@ -3,6 +3,442 @@
 Generated from Conventional Commits at each release. Older majors are archived
 under [docs/changelog/](https://github.com/SocialGouv/iterion/tree/main/docs/changelog).
 
+## [3.284.1](https://github.com/SocialGouv/iterion/compare/v3.284.0...v3.284.1) (2026-10-22)
+
+### Bug Fixes
+
+* **bots:** the claude reviewer slots declare their tool surface — on claw an empty list is no tools at all ([#2706](https://github.com/SocialGouv/iterion/issues/2706)) ([d74fda3](https://github.com/SocialGouv/iterion/commit/d74fda336b9441f9c35be985d7610e19db7a19a2)), closes [#2705](https://github.com/SocialGouv/iterion/issues/2705), references [SocialGouv/iterion#2705](https://github.com/SocialGouv/iterion/issues/2705)
+
+    <details><summary>why</summary>
+
+    review-pr's claude reviewer slots (reviewer_claude, reviewer_claude_glance) shipped with no `tools:` list. On claude_code that reads as "no restriction" and the CLI's native roster applies; on claw the list IS the whole surface, so the slots dispatched with tool_count 0 — the model could not run one git command and answered the output schema with a stub whose summary said "placeholder", which the pipeline merged, published ("Revi — aucun problème détecté") and used to green `revi/review` on the…
+
+    </details>
+* **runtime:** the unit of a usage park is the provider wall ([#2708](https://github.com/SocialGouv/iterion/issues/2708)) ([8143922](https://github.com/SocialGouv/iterion/commit/81439221d26d575ea2194fd1e60dffe88b50b750)), closes [#2451](https://github.com/SocialGouv/iterion/issues/2451) [#2450](https://github.com/SocialGouv/iterion/issues/2450), references [#2451](https://github.com/SocialGouv/iterion/issues/2451)
+
+    <details><summary>why</summary>
+
+    Every reader of a usage park keyed on its own heuristic: the owner heard "Run failed" once per park (~25 pushes a day on a weekly wall), a probe's free re-park pushed too, a single wait could spend max_attempts x budget probe pods (120 at the defaults against 24 by design), and the pull-request notice gate could not tell the wall it was told about from a new one. The operator's decision (#2451, option A): the ANNOUNCED INSTANT is the unit — it is persisted on the retry row (`UsageParkWall`, fs…
+
+    </details>
+
+## [3.284.0](https://github.com/SocialGouv/iterion/compare/v3.283.0...v3.284.0) (2026-10-22)
+
+### Features
+
+* **server,forge:** the Studio's board writes post as the repository's minted bot ([#2704](https://github.com/SocialGouv/iterion/issues/2704)) ([1c4f5a2](https://github.com/SocialGouv/iterion/commit/1c4f5a24d0b1f0193e8eb14684d0158ad176db76)), closes [#2681](https://github.com/SocialGouv/iterion/issues/2681), references [#2630](https://github.com/SocialGouv/iterion/issues/2630)
+
+    <details><summary>why</summary>
+
+    On a GitLab connection that mints per-repository project bots, the review lane posted as the minted bot (#2630) while the board lane — a card pushed to a forge issue, a pull request opened or merged from a card — still posted as the person whose OAuth grant bootstrapped the connection; on a GitHub App connection the same gesture posted as the App. One Studio gesture, two identities.
+
+    </details>
+
+## [3.283.0](https://github.com/SocialGouv/iterion/compare/v3.282.0...v3.283.0) (2026-10-22)
+
+### Features
+
+* **server,lease,cli:** the watch-health answer names the lease holder from any replica ([#2695](https://github.com/SocialGouv/iterion/issues/2695)) ([8fb71c3](https://github.com/SocialGouv/iterion/commit/8fb71c3fcd5412b826a27b2a1e3f1c43448a19cb)), closes [#2680](https://github.com/SocialGouv/iterion/issues/2680)
+
+    <details><summary>why</summary>
+
+    The assistant sweep runs on one replica — the holder of the assistant-watch-sweep lease — and the watch-health route answered for whichever replica the load balancer hit: nine answers in ten said elected=false and nothing said who sweeps.
+
+    </details>
+* **studio:** a run's deliverables — rendered markdown at a shareable address, listed in the run summary, reachable in the Artifacts drawer ([#2700](https://github.com/SocialGouv/iterion/issues/2700)) ([8db90b1](https://github.com/SocialGouv/iterion/commit/8db90b137700859380940692da839e971ba335e1)), references [#2690](https://github.com/SocialGouv/iterion/issues/2690) [#2690](https://github.com/SocialGouv/iterion/issues/2690)
+
+    <details><summary>why</summary>
+
+    The Artifacts drawer's Files section sat under a `flex-1 min-h-0` that collapsed to zero below a tall list of published outputs: the operator saw "6 files" and no Download button. The section now keeps its natural height and the panel scrolls as a whole.
+
+    </details>
+
+### Bug Fixes
+
+* **runner,chart:** a sovereign pool's env dials are pinned ahead of the platform bot-vars record ([#2702](https://github.com/SocialGouv/iterion/issues/2702)) ([941aa79](https://github.com/SocialGouv/iterion/commit/941aa79f1c989eee3bb035798c5fb277ab5376c4)), closes [#2697](https://github.com/SocialGouv/iterion/issues/2697)
+
+    <details><summary>why</summary>
+
+    A pool pod's own env block names its gateway on every routing dial (ITERION_VIBE_MODEL_*, ITERION_VIBE_PROVIDER_*, the *_FALLBACK rescue dial). The platform bot-vars record is installed by the runner with precedence setting > pod env > .bot default, so a model id stored for the shared fleet's vendor reached every pool pod: route 1 carried the record's vendor id under the pool's gateway hint, the authored vendor rescue route carried the pool's gateway id under its vendor hint,…
+
+    </details>
+
+## [3.282.0](https://github.com/SocialGouv/iterion/compare/v3.281.3...v3.282.0) (2026-10-22)
+
+### Features
+
+* **dsl,model,dryrun,queue:** a tool node declares what the engine expands in its bodies ([#2694](https://github.com/SocialGouv/iterion/issues/2694)) ([30dcd15](https://github.com/SocialGouv/iterion/commit/30dcd15ef01903a1d878f2cffe87493f08d06980)), references [#1522](https://github.com/SocialGouv/iterion/issues/1522)
+
+    <details><summary>why</summary>
+
+    The engine rewrites the braced environment forms of every tool body before the body reaches its reader, and an author had no way to decline. A `language: js` body whose `${count}` belongs to the language, a `${NAME:-default}` a shell is meant to resolve itself, a published `.bot` a third party must be able to read as what it executes: all three were silently rewritten, and the C188 lint had no remedy to point at.
+
+    </details>
+
+## [3.281.3](https://github.com/SocialGouv/iterion/compare/v3.281.2...v3.281.3) (2026-10-22)
+
+### Bug Fixes
+
+* **bots,runner:** a mono-GPT review merges on the GPT family, and a supervisor watching only excluded nodes is not a route ([#2684](https://github.com/SocialGouv/iterion/issues/2684)) ([162a36f](https://github.com/SocialGouv/iterion/commit/162a36f6f9abcaf088d4de38eecf5d6268196dd9)), closes [#2467](https://github.com/SocialGouv/iterion/issues/2467), references [#1828](https://github.com/SocialGouv/iterion/issues/1828) [#1828](https://github.com/SocialGouv/iterion/issues/1828)
+
+    <details><summary>why</summary>
+
+    `mono_family` is resolved from the run's credentials, and claude is the preferred family (`reviewtopology.monoPreference`), so a launch resolves `gpt` only where no Claude credential serves. review-pr nonetheless sent such a run to `converge` and to the `pacer` supervisor, both pinned to the Anthropic wire, AFTER the GPT reviewer had already spent: the merge died, the run never reached `pr_gate`, and the `revi/review` gate stayed dark on a GPT-only tenant until someone set three env vars plus…
+
+    </details>
+* **forge,server:** the token refresh sweep runs on one elected replica, and a lost refresh race writes nothing ([#2686](https://github.com/SocialGouv/iterion/issues/2686)) ([273d077](https://github.com/SocialGouv/iterion/commit/273d077fbc7d0cd0a87f904262e6840a2866075d)), closes [#2682](https://github.com/SocialGouv/iterion/issues/2682), references [#2685](https://github.com/SocialGouv/iterion/issues/2685)
+
+    <details><summary>why</summary>
+
+    A GitLab OAuth connection (PIC, team VAO) flipped to needs_reauth at 07:57:40Z while its row kept the previous expiry: three server pods had run their refresh sweep within five seconds — the ReplicaSet had just been rolled, so every replica's ticker was phase-aligned. GitLab rotates refresh tokens: whoever refreshes first consumes the token, the next replica's refresh is answered invalid_grant (ErrUnauthorized here), markRevoked flagged the connection and persisted the loser's stale copy over…
+
+    </details>
+
+## [3.281.2](https://github.com/SocialGouv/iterion/compare/v3.281.1...v3.281.2) (2026-10-22)
+
+### Bug Fixes
+
+* **claw:** structured output through OpenAI-compatible gateways survives hidden reasoning ([#2664](https://github.com/SocialGouv/iterion/issues/2664)) ([298db1f](https://github.com/SocialGouv/iterion/commit/298db1f4a69f0e2279ea127e09e74c63b60f09d9)), closes [#2651](https://github.com/SocialGouv/iterion/issues/2651)
+
+    <details><summary>why</summary>
+
+    A claw node with tools and an output schema on openai_compatible/scaleway/glm-5.x lost its lot on every measured failure (glm-5.3 3/3, glm-5.2 4/5 then 5/11): the tool loop's final turn and the schema-forced recovery pass both came back with output_tokens equal to max_tokens (claw's 8192 default, the node sets none) and empty content. The budget went to hidden reasoning that claw's chat-completions translator drops (reasoning_content), the gateway's finish_reason "length" reached iterion as a…
+
+    </details>
+* compare serialized ASTs for author fragments ([#2572](https://github.com/SocialGouv/iterion/issues/2572)) ([6ecb1f0](https://github.com/SocialGouv/iterion/commit/6ecb1f0676d76d7d4696ddeb0a810cc8aed2b538))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 2 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+* enforce taxonomy release floors ([#2573](https://github.com/SocialGouv/iterion/issues/2573)) ([2229417](https://github.com/SocialGouv/iterion/commit/22294179b24518db033bcd34d7bfec65ae40ef8b))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 3 local (announced 8, ceiling 50) Adversarial-Model: kimi-code
+
+    </details>
+* **studio:** severity, text and control tokens hold their WCAG bars, and the guards read the JSX ([#2638](https://github.com/SocialGouv/iterion/issues/2638)) ([57e7a16](https://github.com/SocialGouv/iterion/commit/57e7a16bf46221b7fcc840f8567061dececcf889)), closes [#2506](https://github.com/SocialGouv/iterion/issues/2506) [#2505](https://github.com/SocialGouv/iterion/issues/2505), references [#a6adb8](https://github.com/SocialGouv/iterion/issues/a6adb8) [#667080](https://github.com/SocialGouv/iterion/issues/667080) [#a5b4fc](https://github.com/SocialGouv/iterion/issues/a5b4fc) [#2527](https://github.com/SocialGouv/iterion/issues/2527)
+
+    <details><summary>why</summary>
+
+    RGAA 3.2 / 3.3 in the studio: the token layer, the sites that bypassed it, and guards that read what ships instead of a regex over one JSX shape.
+
+    </details>
+
+## [3.281.1](https://github.com/SocialGouv/iterion/compare/v3.281.0...v3.281.1) (2026-10-22)
+
+### Bug Fixes
+
+* **model,dryrun:** read a tool body's environment once, and preview what runs ([#2672](https://github.com/SocialGouv/iterion/issues/2672)) ([579c3f8](https://github.com/SocialGouv/iterion/commit/579c3f88909e242af55dc50ba15d37128f566f47)), references [#1607](https://github.com/SocialGouv/iterion/issues/1607) [#1522](https://github.com/SocialGouv/iterion/issues/1522)
+
+    <details><summary>why</summary>
+
+    A tool body's `${NAME}` and `${NAME:-default}` forms were read by three executor sites, each calling `expandBracedEnv` on the engine's own environment — and by nothing at all in `pkg/dryrun`, which rendered the AUTHORED text and held THAT to `bash -n`. So `validate --exec` and its syntax verdict judged text the engine will not hand the shell, and a production deep-scan pass whose run-id guard reads a braced default has been rejected since 16/09 for want of this reading.
+
+    </details>
+* **studio:** keyboard focus is visible on every focusable element — a ≥3:1 focus-ring token, xyflow and virtuoso counter-rules ([#2622](https://github.com/SocialGouv/iterion/issues/2622)) ([e3d8391](https://github.com/SocialGouv/iterion/commit/e3d839152b56b583ef72fd32836333cc8a8a0b23)), closes [#2524](https://github.com/SocialGouv/iterion/issues/2524), references [#2524](https://github.com/SocialGouv/iterion/issues/2524) [#2506](https://github.com/SocialGouv/iterion/issues/2506) [#2505](https://github.com/SocialGouv/iterion/issues/2505) [#4f46e5](https://github.com/SocialGouv/iterion/issues/4f46e5)
+
+    <details><summary>why</summary>
+
+    RGAA 10.7 / WCAG 2.4.7 (#2524): the audit's rendered probe found 28 occurrences where a Tab press produced no visible change. One class, three causes — the indicator was too faint, or reset by a library stylesheet, or reset by a library inline style:
+
+    </details>
+
+## [3.281.0](https://github.com/SocialGouv/iterion/compare/v3.280.0...v3.281.0) (2026-10-22)
+
+### Features
+
+* **secrets,server,cli,studio:** a tenant's OpenAI-compatible gateway is a credential record, and a key can be restricted to repositories ([#2671](https://github.com/SocialGouv/iterion/issues/2671)) ([05caafa](https://github.com/SocialGouv/iterion/commit/05caafa74f4f6dee67287f24db231fbfa652aaf5)), references [#2005](https://github.com/SocialGouv/iterion/issues/2005) [#2652](https://github.com/SocialGouv/iterion/issues/2652) [#2005](https://github.com/SocialGouv/iterion/issues/2005)
+
+    <details><summary>why</summary>
+
+    A team that must spend its own LLM gateway (a PLIAGE LiteLLM endpoint in front of Scaleway models) had one option: a dedicated runner pool carrying the key in its pod environment, one pool and one forked bot per team. This is PR-A of #2005 (ADR-131): the RECORD half. Provider openai_compatible joins the BYOK vocabulary; its key carries base_url, the gateway root, canonical at write (https only, host lower-cased and in punycode, literal addresses as net.IP prints them, no default port, no…
+
+    </details>
+
+## [3.280.0](https://github.com/SocialGouv/iterion/compare/v3.279.1...v3.280.0) (2026-10-22)
+
+### Features
+
+* **server,cloudpublisher:** the board and ticket launch lanes resolve the run's routing policy ([#2667](https://github.com/SocialGouv/iterion/issues/2667)) ([b3c4a2d](https://github.com/SocialGouv/iterion/commit/b3c4a2ddb81784064684f3fb2fc4fe8a8581ddc4)), references [#2000](https://github.com/SocialGouv/iterion/issues/2000) [#2006](https://github.com/SocialGouv/iterion/issues/2006) [#2000](https://github.com/SocialGouv/iterion/issues/2000) [#2005](https://github.com/SocialGouv/iterion/issues/2005)
+
+    <details><summary>why</summary>
+
+    The cloud board dispatcher (processBoardCard) and the pipeline admission lane (launchTicketNow — the Ready sweep and the operator's "launch now") were the only two of the six pkg/server launch lanes that resolved NO routing policy and no retry contract: a card- or ticket-launched run carried none of the tenant's override cells, none of its `providers:` allowlist and none of the bot's retry directive. Each lane now calls resolveRunLLMRoutePolicy and its retry twin on the team the launch is FOR…
+
+    </details>
+* warn on unchecked root vars subscripts ([#2570](https://github.com/SocialGouv/iterion/issues/2570)) ([c7b1774](https://github.com/SocialGouv/iterion/commit/c7b17747fb495842eaa467b5359afa7fd24755db))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 2 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+
+### Bug Fixes
+
+* **forge:** the project-bot mint and rotation always name an expiry GitLab accepts ([#2663](https://github.com/SocialGouv/iterion/issues/2663)) ([00b2765](https://github.com/SocialGouv/iterion/commit/00b27658c903a1dd558ee63d25bafa8650552c7c)), closes [#2653](https://github.com/SocialGouv/iterion/issues/2653)
+
+    <details><summary>why</summary>
+
+    The first live enable through an OAuth project-bot connection (PIC GitLab v19.4.2-ee) was refused: `POST /projects/:id/access_tokens` answered 400 "expires_at is missing". The mint omitted `expires_at` so that GitLab would apply its default maximum, but ResourceAccessTokens::CreateService refuses a request without the key before any default applies — on every 19.x with the allow_resource_access_token_creation_without_expiry_date flag off, and on any instance enforcing token expiry — and the…
+
+    </details>
+* **runtime,ir,model,dryrun:** a node on auto reads the route default_backend names, pre-run as at dispatch ([#2658](https://github.com/SocialGouv/iterion/issues/2658)) ([23a3751](https://github.com/SocialGouv/iterion/commit/23a375172ebdab539cdaceb5e008152d2d0bb5fc)), closes [#2428](https://github.com/SocialGouv/iterion/issues/2428), references [#1727](https://github.com/SocialGouv/iterion/issues/1727) [#2426](https://github.com/SocialGouv/iterion/issues/2426)
+
+    <details><summary>why</summary>
+
+    Both pre-run readings of a node's tool surface — the catalogue's prompt-injection boundary (`ToolSurfaceWriteReason`) and shared-worktree admission (`isMutatingNodeCtx`) — kept their own copy of dispatch's step 1 and substituted the workflow's `default_backend:` only where the node's `backend:` expanded to NOTHING. A node spelling `backend: auto` was therefore read as a route left to the host, while `model.ClawExecutor.resolveBackendName` had already routed it through the workflow default: the…
+
+    </details>
+* **sandbox:** a sandboxed tool node proves its end instead of trusting the exec client ([#2659](https://github.com/SocialGouv/iterion/issues/2659)) ([709d588](https://github.com/SocialGouv/iterion/commit/709d588976e86b03089247421c6f7bb4d31ddc7f))
+
+    <details><summary>why</summary>
+
+    In a sandbox, a tool node's verdict was the local exec client's exit status (kubectl exec, docker exec). client-go reads an error stream that closed without a status as success, so a stream lost behind the client ends it with status 0 and whatever output had arrived: the node succeeded with {result: ""} while its command kept running in the container. Measured on a long gate node: it finished 52 minutes into a 2-3.5 h script with an empty result and no error, and the script went on applying…
+
+    </details>
+* **server,store:** the sweeps ask the store for the watchers, one replica sweeps, the hand-off asks for the PR's runs ([#2654](https://github.com/SocialGouv/iterion/issues/2654)) ([b3e8694](https://github.com/SocialGouv/iterion/commit/b3e869440c8c7cf5df68854656ddeab7321e3363)), closes [#2636](https://github.com/SocialGouv/iterion/issues/2636)
+
+    <details><summary>why</summary>
+
+    Measured on ovh-prod (21/10): 10 server pods at ~1 CPU each with the HPA pinned at its maximum, the Mongo primary at 6 CPU and 487 MB/s out, for zero runs watching a card. Store.ListRuns is a collection scan with an in-memory sort (filter on deleted_at, sort on created_at, no index), and two periodic sweeps ran it on every replica then loaded every run whole: the assistant run-watch sweep every 20 s, the orphan reconcile every 60 s (which, on the lock-less cloud store, dropped each run it…
+
+    </details>
+
+## [3.279.1](https://github.com/SocialGouv/iterion/compare/v3.279.0...v3.279.1) (2026-10-22)
+
+### Bug Fixes
+
+* reconcile launch admission with resolved bots ([#2554](https://github.com/SocialGouv/iterion/issues/2554)) ([fd96290](https://github.com/SocialGouv/iterion/commit/fd96290847515cdadc170bd7d101fafffc1ce28d)), references [pre-#2613](https://github.com/pre-/issues/2613)
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 5 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+* retry private ultra11y npm installs ([#2548](https://github.com/SocialGouv/iterion/issues/2548)) ([bed5b66](https://github.com/SocialGouv/iterion/commit/bed5b6605844c2b7ed1a98ebc5342be483cee89d))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 2 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.279.0](https://github.com/SocialGouv/iterion/compare/v3.278.0...v3.279.0) (2026-10-21)
+
+### Features
+
+* **dsl,bots:** C188 — a braced env read the engine answers before the shell (slice 1 of [#1522](https://github.com/SocialGouv/iterion/issues/1522)) ([#2656](https://github.com/SocialGouv/iterion/issues/2656)) ([9808cd7](https://github.com/SocialGouv/iterion/commit/9808cd78a7c50acd22d5057442987ca44e42e692))
+
+    <details><summary>why</summary>
+
+    The record for #1522, landed verbatim from the reviewed design (e2-expand-env-hatch at 5c9a8408f): the env_expansion property, the C188 lint where the engine's answering defeats an assignment, and the validate --exec truth duty. The docs map row is regenerated (task map:gen).
+
+    </details>
+
+### Bug Fixes
+
+* complete create-only authoring transactions ([#2569](https://github.com/SocialGouv/iterion/issues/2569)) ([1cd0d12](https://github.com/SocialGouv/iterion/commit/1cd0d12cf2594747f71c831f709595f4b67c663f))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 1 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+* keep long organization menus reachable ([#2560](https://github.com/SocialGouv/iterion/issues/2560)) ([a44e02a](https://github.com/SocialGouv/iterion/commit/a44e02a9f8f32f0b1d600d17bdedcdc2f7de1706))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 1 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+* **secrets,server:** api-key updates patch the named fields and refuse rows from a newer build ([#2652](https://github.com/SocialGouv/iterion/issues/2652)) ([a02086c](https://github.com/SocialGouv/iterion/commit/a02086cff3327ca35d2029943bcddffdbab88477)), references [#2005](https://github.com/SocialGouv/iterion/issues/2005) [#2005](https://github.com/SocialGouv/iterion/issues/2005)
+
+    <details><summary>why</summary>
+
+    An api-key update replaced the whole Mongo document with the handler's copy of the row. Two things that copy cannot hold were lost on every PATCH: the columns this server build does not know (what a newer server writes on the same row during a rolling update, or leaves behind after a rollback — the gateway credential of #2005 adds the first such column), and the current value of the fields the request did not name (an is_default a concurrent ClearDefault had just lowered, the last_used_at the…
+
+    </details>
+* use a valid artifact node for cloud preflight ([#2559](https://github.com/SocialGouv/iterion/issues/2559)) ([f9eeaa8](https://github.com/SocialGouv/iterion/commit/f9eeaa875d77d4358e081c9dfe3625bc2c3daff7))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 1 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.278.0](https://github.com/SocialGouv/iterion/compare/v3.277.3...v3.278.0) (2026-10-21)
+
+### Features
+
+* **forge,server,studio:** a GitLab OAuth bootstrap mints a project bot per repository ([#2649](https://github.com/SocialGouv/iterion/issues/2649)) ([36b397e](https://github.com/SocialGouv/iterion/commit/36b397e384aadf782852afaad8349b08a8a87adf)), closes [#2630](https://github.com/SocialGouv/iterion/issues/2630)
+
+    <details><summary>why</summary>
+
+    Connecting a GitLab repository took three manual steps where GitHub takes one, because an OAuth grant acts as the person who authorised it: a connection made with it posts as that person and, through the bot-author guard, stops auto-reviewing that person's own merge requests. This makes OAuth the bootstrap and a project access token minted by iterion the durable bot identity.
+
+    </details>
+
+### Bug Fixes
+
+* preserve spend on oversized claw results ([#2601](https://github.com/SocialGouv/iterion/issues/2601)) ([8a33f6c](https://github.com/SocialGouv/iterion/commit/8a33f6cd7dedcbb0050873826ff01796225302b2))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 3 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.277.3](https://github.com/SocialGouv/iterion/compare/v3.277.2...v3.277.3) (2026-10-21)
+
+### Bug Fixes
+
+* scope sandbox runner homes by run branch ([#2599](https://github.com/SocialGouv/iterion/issues/2599)) ([047859f](https://github.com/SocialGouv/iterion/commit/047859f25074cf94286d23ad08ab28b5811b4014))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 3 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.277.2](https://github.com/SocialGouv/iterion/compare/v3.277.1...v3.277.2) (2026-10-21)
+
+### Bug Fixes
+
+* reset undo history after replacing a document ([#2611](https://github.com/SocialGouv/iterion/issues/2611)) ([576abfe](https://github.com/SocialGouv/iterion/commit/576abfe5176915666b63c266a9f256f26e4aba9e))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 1 local (announced 3, ceiling 5) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.277.1](https://github.com/SocialGouv/iterion/compare/v3.277.0...v3.277.1) (2026-10-21)
+
+### Bug Fixes
+
+* report missing GitLab review bodies ([#2595](https://github.com/SocialGouv/iterion/issues/2595)) ([b017fb7](https://github.com/SocialGouv/iterion/commit/b017fb7f0472b0fb95eed7cf94b9279a2c52e91e))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 2 local (announced 6, ceiling 20) Adversarial-Model: kimi-code
+
+    </details>
+* root Claw file tools at the run workspace ([#2597](https://github.com/SocialGouv/iterion/issues/2597)) ([8ab5777](https://github.com/SocialGouv/iterion/commit/8ab57773a94cff555fc8f6a0dd41296e0a268118))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 1 local (announced 6, ceiling 20) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.277.0](https://github.com/SocialGouv/iterion/compare/v3.276.0...v3.277.0) (2026-10-21)
+
+### Features
+
+* **forge,cloudsched,server,studio:** the integration record carries the routing policy, and every projection reads it ([#2615](https://github.com/SocialGouv/iterion/issues/2615)) ([92faa49](https://github.com/SocialGouv/iterion/commit/92faa496ef2ffbdc207ecf980a3330ea5aad85c5)), references [#2006](https://github.com/SocialGouv/iterion/issues/2006) [#2006](https://github.com/SocialGouv/iterion/issues/2006) [#2607](https://github.com/SocialGouv/iterion/issues/2607)
+
+    <details><summary>why</summary>
+
+    Slice 3 of 6 (#2006, ADR-129): `RepoIntegration.Routing` lands beside LaunchVars and reaches every projection — webhook config, integration record, scheduled rows (with a RoutingFromIntegration provenance flag so an operator's row-level block and the integration's projection stay distinct), the park echo, the org-approval apply path, the credential preview's trusted-var narrowing, and a repo-scoped studio editor that renders parked saves and blast-radius warnings.
+
+    </details>
+* **llmroute,model,cloudpublisher,runner:** the tenant's provider allowlist holds at the gate and at dispatch ([#2605](https://github.com/SocialGouv/iterion/issues/2605)) ([1d41c59](https://github.com/SocialGouv/iterion/commit/1d41c59ddef1c74c36eeb0f2bd34ae05fe0d025f)), references [#2006](https://github.com/SocialGouv/iterion/issues/2006) [#2006](https://github.com/SocialGouv/iterion/issues/2006)
+
+    <details><summary>why</summary>
+
+    Slices 1-2 of the revi routing arc (#2006) stored the tenant's `providers:` allowlist and folded it into the launch view, but nothing enforced it: a launch still resolved rescue routes, sealed credentials and armed dispatch chains for providers the tenant forbids. This change makes a non-empty list an enforcement question at the walk (ADR-129 §5).
+
+    </details>
+
+### Bug Fixes
+
+* **studio:** drafts track their provenance, reloads reload the right file ([#2614](https://github.com/SocialGouv/iterion/issues/2614)) ([c1bbbda](https://github.com/SocialGouv/iterion/commit/c1bbbdab85d19ec8073dabd67cc204b2570db6af)), closes [#1790](https://github.com/SocialGouv/iterion/issues/1790) [#1791](https://github.com/SocialGouv/iterion/issues/1791)
+
+    <details><summary>why</summary>
+
+    Draft tabs now record which document they were opened from via a WeakMap on the DocumentStore: a reload of the underlying file reloads the drafts that actually came from it, not every open draft. The Source buffer is only discarded once the install was accepted, and the reload banner offers "Load it" through the confirm hook. Manual loads go through replaceDocument with race guards so a stale read cannot clobber a newer buffer.
+
+    </details>
+
+## [3.276.0](https://github.com/SocialGouv/iterion/compare/v3.275.0...v3.276.0) (2026-10-20)
+
+### Features
+
+* **backend:** claw nodes read the repository's AGENTS.md ([#2616](https://github.com/SocialGouv/iterion/issues/2616)) ([1821f43](https://github.com/SocialGouv/iterion/commit/1821f430a20a0ca51587aef6dfe2debe545534df)), closes [#2078](https://github.com/SocialGouv/iterion/issues/2078)
+
+    <details><summary>why</summary>
+
+    A claw node received no project instruction file while claude_code, codex and pi all read one — the parity doctrine asks for a capability to be wired or typed-refused, and the operator arbitrated for wiring it: claw now receives the repository's instruction root the way claude code does.
+
+    </details>
+
+## [3.275.0](https://github.com/SocialGouv/iterion/compare/v3.274.0...v3.275.0) (2026-10-20)
+
+### Features
+
+* **task:** the demo task ships its token ceiling — RGAA_DEMO_TOKENS, 5M ([#2593](https://github.com/SocialGouv/iterion/issues/2593)) ([#2612](https://github.com/SocialGouv/iterion/issues/2612)) ([52d7c1f](https://github.com/SocialGouv/iterion/commit/52d7c1fab682338dfe484f0fa71b7e1a4eb9b50b))
+
+    <details><summary>why</summary>
+
+    The first real end-to-end run hit the bot's 3M TOKEN ceiling at 91% (2 729 032), in merge_refutations — a full run's wall is the token budget, not dollars. The task now ships --max-tokens 5M (RGAA_DEMO_TOKENS overrides), the colleague doc carries the resume line that finished the run for real, and the bot bilan records the path: egress-killed sandbox run (0 $), sandbox-off run, resume, FINISHED at 42% provisional with report integrity ok.
+
+    </details>
+
+### Bug Fixes
+
+* **server,botregistry,cli:** a launch's bot identity is the server's resolution, never the requester's label ([#2613](https://github.com/SocialGouv/iterion/issues/2613)) ([08a07d3](https://github.com/SocialGouv/iterion/commit/08a07d39a5ea18a93c37d8b8740cbe4cec4234bd)), closes [#1368](https://github.com/SocialGouv/iterion/issues/1368), references [#1363](https://github.com/SocialGouv/iterion/issues/1363) [#2607](https://github.com/SocialGouv/iterion/issues/2607)
+
+    <details><summary>why</summary>
+
+    handleLaunchRun seeded botID from strings.TrimSpace(req.BotID) and kept that value whenever the launch carried an inline source, so the requester-typed string — matching no catalog entry — flowed into spec.BotID and from there into three credential reads that treated it as an identity: the BYOK workload audience (secrets.Resolve), bot secret bindings (secrets.ResolveGenericWithBindings) and credpool pledges (credpool.Request.BotID → Pledge.AvailableForLaunch). A caller able to POST /api/runs…
+
+    </details>
+
+## [3.274.0](https://github.com/SocialGouv/iterion/compare/v3.273.0...v3.274.0) (2026-10-20)
+
+### Features
+
+* **dsl,cli:** the YAML remedies key on the reader's structured cause, not its prose ([#2604](https://github.com/SocialGouv/iterion/issues/2604)) ([f98eefb](https://github.com/SocialGouv/iterion/commit/f98eefbeb18ef352ac5cc5da16d59bc7aa0e701d)), closes [#2404](https://github.com/SocialGouv/iterion/issues/2404), references [#1783](https://github.com/SocialGouv/iterion/issues/1783)
+
+    <details><summary>why</summary>
+
+    The YAML remedies answered a reader's refusal by matching its message text. Nine adversarial rounds on #1783's extension found nothing but regressions of that design: one string answered four cause families (`cannot unmarshal` told apart only by the Go type the reading decodes into), a line count the quoted-span strip falsified, a clause scoped to the wrong key, a delimiter-paired span an author's backtick splits — each fix a second structural patch over the same text-matching seam.
+
+    </details>
+* **task:** one command produces the RGAA report — task demo:rgaa-audit ([#2593](https://github.com/SocialGouv/iterion/issues/2593)) ([#2598](https://github.com/SocialGouv/iterion/issues/2598)) ([109c2b8](https://github.com/SocialGouv/iterion/commit/109c2b8937c6a3e35f34d8bc3490781e8abf2b9c)), references [#2587](https://github.com/SocialGouv/iterion/issues/2587)
+
+    <details><summary>why</summary>
+
+    The colleague-facing demo path (#2593): task demo:rgaa-audit builds the studio and the binary, resolves the pin-verified engine, installs the chromium the rendered scan needs, and runs rgaa-audit over this very studio — report FR, page grid, annex and ledger under .rgaa-demo/. The committed ledger keeps unchanged criteria from being re-adjudicated (~$20-30 a run; RGAA_DEMO_BUDGET overrides the ceiling).
+
+    </details>
+
+### Bug Fixes
+
+* **studio:** name every form control the audit left unnamed (RGAA 11.1) ([#2556](https://github.com/SocialGouv/iterion/issues/2556)) ([#2590](https://github.com/SocialGouv/iterion/issues/2590)) ([b92c27b](https://github.com/SocialGouv/iterion/commit/b92c27ba82ac92e95d2e44944ed57075a7fcc86b))
+
+    <details><summary>why</summary>
+
+    Placeholder-only search fields, bare TagInput chips, an sr-only file input, an inline rename input, and the wizard's select/free-text questions all rendered controls whose accessible name was empty — a placeholder is not a label (RGAA 11.1, ticket #2556).
+
+    </details>
+
+## [3.273.0](https://github.com/SocialGouv/iterion/compare/v3.272.0...v3.273.0) (2026-10-20)
+
+### Features
+
+* **mdcode:** fence detection reads CommonMark's block phase ([#2587](https://github.com/SocialGouv/iterion/issues/2587)) ([4d76ba7](https://github.com/SocialGouv/iterion/commit/4d76ba7f0770139b9f983a88e0fe34ad50daa17f)), closes [#2395](https://github.com/SocialGouv/iterion/issues/2395), references [#1723](https://github.com/SocialGouv/iterion/issues/1723)
+
+    <details><summary>why</summary>
+
+    The catalogue-fence reading behind FenceScanner was a line-by-line approximation with a stated limit: 123 of the 14 580 adversarial field shapes of the #1723 review still leaked past it through the real generator — every one carrying a fence delimiter four or more columns in, or held by a list marker the line-by-line reading cannot see as a container — and the source gate refused none of them, so guarantee (3), the gate refuses every shape the generator cannot repair, was false. Three candidate…
+
+    </details>
+
 ## [3.272.0](https://github.com/SocialGouv/iterion/compare/v3.271.1...v3.272.0) (2026-10-19)
 
 ### Features

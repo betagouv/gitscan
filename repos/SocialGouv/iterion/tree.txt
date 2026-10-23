@@ -165,6 +165,8 @@
 │   ├── campaign_gate_commands_test.go
 │   ├── campaign_steward_test.go
 │   ├── campaign_supervisor_test.go
+│   ├── catalog_braced_env_test.go
+│   ├── catalog_capability_tool_surface_test.go
 │   ├── catalog_chat_refs_test.go
 │   ├── catalog_command_refs_test.go
 │   ├── catalog_current_models_test.go
@@ -478,10 +480,13 @@
 │   │   └── skills
 │   │       └── ticket-context.md
 │   ├── review_pr_audited_sha_test.go
+│   ├── review_pr_body_missing_test.go
+│   ├── review_pr_claw_reviewer_tools_test.go
 │   ├── review_pr_concise_test.go
 │   ├── review_pr_finding_id_test.go
 │   ├── review_pr_gate_health_test.go
 │   ├── review_pr_glm_route_test.go
+│   ├── review_pr_mono_gpt_merge_test.go
 │   ├── review_pr_review_base_test.go
 │   ├── review_pr_run_details_test.go
 │   ├── review_pr_scope_gate_test.go
@@ -839,7 +844,7 @@
 │   │   ├── plugin.go
 │   │   ├── reliability.go
 │   │   ├── remote.go
-│   │   ├── remote_*.go  (21 files)
+│   │   ├── remote_*.go  (22 files)
 │   │   ├── report.go
 │   │   ├── resume.go
 │   │   ├── rewind.go
@@ -1111,6 +1116,8 @@
 │   │   ├── 127-an-agent-nodes-processes-end-with-the-node.md
 │   │   ├── 128-a-repositorys-suites-run-at-every-lots-gate.md
 │   │   ├── 129-per-integration-typed-routing-overrides.md
+│   │   ├── 130-env-expansion-opt-out-for-tool-bodies.md
+│   │   ├── 131-tenant-gateway-credential.md
 │   │   └── README.md
 │   ├── agents
 │   │   ├── README.md
@@ -1129,6 +1136,7 @@
 │   │   │   ├── engine-bot-agnostic.md
 │   │   │   ├── input-drop-traps.md
 │   │   │   ├── input-reaches-the-model.md
+│   │   │   ├── rgaa-audit-run.md
 │   │   │   ├── run-link.md
 │   │   │   ├── shipped-workflow-corpus.md
 │   │   │   ├── skills.md
@@ -1440,6 +1448,7 @@
 │   ├── repo-scope.md
 │   ├── resume.md
 │   ├── revi-billy-loop.md
+│   ├── revi-rollout.md
 │   ├── review-merge-gate.md
 │   ├── review-scope.md
 │   ├── reviews
@@ -1825,6 +1834,7 @@
 │   │   ├── forge_enable_prose_test.go
 │   │   ├── links.go
 │   │   ├── links_test.go
+│   │   ├── queue_schema_prose_test.go
 │   │   └── testdata
 │   │       └── github-anchors
 │   │           ├── changelog-head.tsv
@@ -1865,8 +1875,12 @@
 │   │   ├── httpx_strict_test.go
 │   │   └── vary_test.go
 │   ├── mdcode
+│   │   ├── blockphase_test.go
+│   │   ├── committedfiles_test.go
 │   │   ├── mdcode.go
-│   │   └── mdcode_test.go
+│   │   ├── mdcode_test.go
+│   │   └── testdata
+│   │       └── committed-reading.txt
 │   ├── pricingtest
 │   │   └── pricingtest.go
 │   ├── proctest
@@ -1875,7 +1889,8 @@
 │   │   └── leakguard_other.go
 │   ├── retryprobetest
 │   │   ├── property.go
-│   │   └── store.go
+│   │   ├── store.go
+│   │   └── wall_test.go
 │   ├── safepath
 │   │   ├── safepath.go
 │   │   └── safepath_test.go
@@ -1917,6 +1932,7 @@
 │   │   ├── manager_test.go
 │   │   ├── opsdispatch.go
 │   │   ├── opsdispatch_test.go
+│   │   ├── opsdispatch_usage_park_test.go
 │   │   ├── run_health_test.go
 │   │   ├── webhook.go
 │   │   └── webhook_test.go
@@ -2007,7 +2023,9 @@
 │   │   │   ├── client_sandbox_proxy_linux_test.go
 │   │   │   ├── client_sandbox_proxy_test.go
 │   │   │   ├── compatgw_test.go
-│   │   │   └── env.go
+│   │   │   ├── env.go
+│   │   │   ├── reasoning.go
+│   │   │   └── reasoning_test.go
 │   │   ├── cost
 │   │   │   ├── cost.go
 │   │   │   ├── cost_specrate_test.go
@@ -2183,6 +2201,7 @@
 │   │   │   ├── async_ask_test.go
 │   │   │   ├── async_backend_test.go
 │   │   │   ├── background_work_hooks_test.go
+│   │   │   ├── braced_env_reads_pin_test.go
 │   │   │   ├── cache_marshal_test.go
 │   │   │   ├── capabilities.go
 │   │   │   ├── capabilities_generation_test.go
@@ -2190,7 +2209,7 @@
 │   │   │   ├── capabilities_public_test.go
 │   │   │   ├── chain_dispatch_test.go
 │   │   │   ├── chain_skip_test.go
-│   │   │   ├── claw_*.go  (39 files)
+│   │   │   ├── claw_*.go  (41 files)
 │   │   │   ├── codex_client_version_test.go
 │   │   │   ├── cooldown_auth_test.go
 │   │   │   ├── cursors.go
@@ -2204,7 +2223,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (62 files)
+│   │   │   ├── executor_*.go  (64 files)
 │   │   │   ├── expand_braced_env_linear_test.go
 │   │   │   ├── fallback_prereq_test.go
 │   │   │   ├── forfait_first_walk_test.go
@@ -2248,6 +2267,8 @@
 │   │   │   ├── preview_url_test.go
 │   │   │   ├── privacy_redaction_test.go
 │   │   │   ├── process_env_policy_test.go
+│   │   │   ├── provider_allowlist.go
+│   │   │   ├── provider_allowlist_test.go
 │   │   │   ├── provider_hint.go
 │   │   │   ├── provider_hint_test.go
 │   │   │   ├── registry.go
@@ -2255,6 +2276,7 @@
 │   │   │   ├── registry_moonshot_test.go
 │   │   │   ├── registry_xai_test.go
 │   │   │   ├── resolve_backend_test.go
+│   │   │   ├── resolve_chain_pool_pins_test.go
 │   │   │   ├── resolve_chain_test.go
 │   │   │   ├── retry_resumes_session_test.go
 │   │   │   ├── review_companion.go
@@ -2289,15 +2311,14 @@
 │   │   │   ├── stream_error_class_test.go
 │   │   │   ├── stream_error_wire_test.go
 │   │   │   ├── streaming_types.go
+│   │   │   ├── structured_recovery.go
+│   │   │   ├── structured_recovery_test.go
 │   │   │   ├── subagent.go
 │   │   │   ├── subagent_permission_test.go
 │   │   │   ├── system_reminder.go
 │   │   │   ├── system_reminder_test.go
 │   │   │   ├── template_*.go  (5 files)
-│   │   │   ├── tool_aliases_test.go
-│   │   │   ├── tool_attachment.go
-│   │   │   ├── tool_attachment_test.go
-│   │   │   ├── tool_error_redaction_test.go
+│   │   │   ├── tool_*.go  (5 files)
 │   │   │   ├── turn_backend_label_test.go
 │   │   │   ├── turn_terminated_background_test.go
 │   │   │   ├── ultracode_claw_tools_test.go
@@ -2388,6 +2409,7 @@
 │   │   │   ├── claw_workspace_read.go
 │   │   │   ├── claw_workspace_read_fifo_test.go
 │   │   │   ├── claw_workspace_read_test.go
+│   │   │   ├── claw_workspace_write_test.go
 │   │   │   ├── policy.go
 │   │   │   ├── policy_aliases.go
 │   │   │   ├── policy_test.go
@@ -2707,6 +2729,7 @@
 │   │   ├── taxonomy_test.go
 │   │   └── tool_aliases_test.go
 │   ├── cli
+│   │   ├── ambiguous_code_test.go
 │   │   ├── author_document_test.go
 │   │   ├── auto_resume.go
 │   │   ├── auto_resume_test.go
@@ -2783,7 +2806,7 @@
 │   │   ├── reliability.go
 │   │   ├── reliability_test.go
 │   │   ├── remote.go
-│   │   ├── remote_*.go  (26 files)
+│   │   ├── remote_*.go  (28 files)
 │   │   ├── report.go
 │   │   ├── report_finish_stamps_test.go
 │   │   ├── report_test.go
@@ -2809,10 +2832,7 @@
 │   │   ├── studio.go
 │   │   ├── studio_bind_test.go
 │   │   ├── studio_test.go
-│   │   ├── subbot_grant_test.go
-│   │   ├── subbot_nested_test.go
-│   │   ├── subbot_parent_tree_test.go
-│   │   ├── subbot_shared_sandbox_test.go
+│   │   ├── subbot_*.go  (5 files)
 │   │   ├── supervise.go
 │   │   ├── templates
 │   │   │   ├── dispatch_bots
@@ -3161,6 +3181,7 @@
 │   │   ├── admission_launch_agreement_test.go
 │   │   ├── dryrun_test.go
 │   │   ├── effective_tools_test.go
+│   │   ├── env_expansion_test.go
 │   │   ├── executor.go
 │   │   ├── fallback_route_admission_test.go
 │   │   ├── fully_specified_launch_test.go
@@ -3285,6 +3306,7 @@
 │   │   │   ├── attachments_test.go
 │   │   │   ├── auto_memory_test.go
 │   │   │   ├── bench_test.go
+│   │   │   ├── braced_env_reads.go
 │   │   │   ├── budget_ceiling_test.go
 │   │   │   ├── budget_override.go
 │   │   │   ├── budget_override_test.go
@@ -3307,6 +3329,7 @@
 │   │   │   ├── empty_mcp_block_test.go
 │   │   │   ├── enum_membership_test.go
 │   │   │   ├── env_expand_test.go
+│   │   │   ├── env_expansion_test.go
 │   │   │   ├── env_overlay_test.go
 │   │   │   ├── equiv.go
 │   │   │   ├── equiv_order_test.go
@@ -3379,7 +3402,7 @@
 │   │   │   ├── uses_llm.go
 │   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (55 files)
+│   │   │   ├── validate_*.go  (59 files)
 │   │   │   ├── value_diag_positions_test.go
 │   │   │   ├── var_value.go
 │   │   │   ├── verified_action_test.go
@@ -3422,7 +3445,7 @@
 │   │   │   ├── list_line_end_test.go
 │   │   │   ├── lists_more_test.go
 │   │   │   ├── parser.go
-│   │   │   ├── parser_*.go  (32 files)
+│   │   │   ├── parser_*.go  (33 files)
 │   │   │   ├── preamble.go
 │   │   │   ├── preamble_boundary_test.go
 │   │   │   ├── preamble_test.go
@@ -3581,6 +3604,7 @@
 │   │   │   ├── declared_tools_test.go
 │   │   │   ├── description_test.go
 │   │   │   ├── directive_window_test.go
+│   │   │   ├── env_expansion_test.go
 │   │   │   ├── fail_test.go
 │   │   │   ├── fallbacks_test.go
 │   │   │   ├── float_literal_test.go
@@ -3591,11 +3615,7 @@
 │   │   │   ├── memory_test.go
 │   │   │   ├── permission_test.go
 │   │   │   ├── presets_test.go
-│   │   │   ├── profile_inline_group_test.go
-│   │   │   ├── profile_inline_prompt_test.go
-│   │   │   ├── profile_prompts_test.go
-│   │   │   ├── profile_shapes_test.go
-│   │   │   ├── profile_test.go
+│   │   │   ├── profile_*.go  (5 files)
 │   │   │   ├── review_test.go
 │   │   │   ├── roundtrip_test.go
 │   │   │   ├── secrets_test.go
@@ -3609,18 +3629,14 @@
 │   │   │   ├── vars_enum_test.go
 │   │   │   ├── verified_action_test.go
 │   │   │   ├── verify.go
-│   │   │   ├── verify_empty_block_test.go
-│   │   │   ├── verify_group_test.go
-│   │   │   ├── verify_include_test.go
-│   │   │   ├── verify_order_test.go
-│   │   │   ├── verify_profile_header_test.go
-│   │   │   └── verify_prompt_body_test.go
+│   │   │   └── verify_*.go  (6 files)
 │   │   └── workflowfile
 │   │       ├── author_document_test.go
 │   │       ├── frontmatter.go
 │   │       ├── frontmatter_test.go
 │   │       ├── workflowfile.go
-│   │       └── workflowfile_test.go
+│   │       ├── workflowfile_test.go
+│   │       └── yamlcause.go
 │   ├── errtrack
 │   │   ├── crash.go
 │   │   ├── crash_test.go
@@ -3659,6 +3675,7 @@
 │   │   ├── command_map_test.go
 │   │   ├── connection_sealer.go
 │   │   ├── connection_store.go
+│   │   ├── connection_store_cas_test.go
 │   │   ├── declared.go
 │   │   ├── event_map.go
 │   │   ├── event_map_test.go
@@ -3732,6 +3749,8 @@
 │   │   │   ├── status_ratelimit_test.go
 │   │   │   └── token_permissions_test.go
 │   │   ├── gitlab
+│   │   │   ├── access_tokens.go
+│   │   │   ├── access_tokens_test.go
 │   │   │   ├── approvals.go
 │   │   │   ├── approvals_test.go
 │   │   │   ├── avatar.go
@@ -3768,12 +3787,16 @@
 │   │   ├── oauth_app_store.go
 │   │   ├── oauth_app_store_test.go
 │   │   ├── orchestrator.go
-│   │   ├── orchestrator_*.go  (14 files)
+│   │   ├── orchestrator_*.go  (15 files)
 │   │   ├── permission.go
 │   │   ├── permission_error.go
 │   │   ├── permission_error_test.go
 │   │   ├── preview.go
 │   │   ├── preview_test.go
+│   │   ├── project_bot.go
+│   │   ├── project_bot_rotate.go
+│   │   ├── project_bot_rotate_test.go
+│   │   ├── project_bot_test.go
 │   │   ├── provision_approval_store.go
 │   │   ├── quickactions.go
 │   │   ├── quickactions_test.go
@@ -3787,6 +3810,7 @@
 │   │   ├── repo_url.go
 │   │   ├── reviews.go
 │   │   ├── reviews_test.go
+│   │   ├── rv_*.go  (5 files)
 │   │   ├── security_read.go
 │   │   ├── security_read_test.go
 │   │   ├── status.go
@@ -4133,6 +4157,7 @@
 │   │   └── policy_test.go
 │   ├── runner
 │   │   ├── aggregate_tokens_test.go
+│   │   ├── ambiguous_code_test.go
 │   │   ├── bank_*.go  (5 files)
 │   │   ├── base_ref_test.go
 │   │   ├── bot_snapshot_test.go
@@ -4208,8 +4233,9 @@
 │   │   ├── superseded_window_test.go
 │   │   ├── typed_fail_test.go
 │   │   ├── unloadable_ir_test.go
-│   │   ├── usage_*.go  (21 files)
-│   │   └── workspace_reset_test.go
+│   │   ├── usage_*.go  (23 files)
+│   │   ├── workspace_reset_test.go
+│   │   └── workspace_tools_test.go
 │   ├── runops
 │   │   ├── lineage_test.go
 │   │   ├── readonly_vocabulary_test.go
@@ -4224,6 +4250,7 @@
 │   │   ├── admission.go
 │   │   ├── admission_fork_sandbox_test.go
 │   │   ├── admission_test.go
+│   │   ├── ambiguous_failure_record_test.go
 │   │   ├── answered_human_advance_test.go
 │   │   ├── answers_secret_test.go
 │   │   ├── artifact_contract.go
@@ -4249,7 +4276,7 @@
 │   │   ├── catalog_regen_scope_test.go
 │   │   ├── chaos_test.go
 │   │   ├── checkpoint.go
-│   │   ├── child_*.go  (10 files)
+│   │   ├── child_*.go  (11 files)
 │   │   ├── codex_union_append_test.go
 │   │   ├── codex_union_sweep_test.go
 │   │   ├── commit_uncommitted.go
@@ -4342,6 +4369,7 @@
 │   │   │   ├── capability_test.go
 │   │   │   ├── recovery.go
 │   │   │   ├── recovery_test.go
+│   │   │   ├── sandbox_unknown_end_test.go
 │   │   │   └── usage_limit_seam_test.go
 │   │   ├── recovery_compact_report_test.go
 │   │   ├── recovery_dispatch.go
@@ -4359,6 +4387,7 @@
 │   │   ├── router_secret_test.go
 │   │   ├── routing.go
 │   │   ├── run_*.go  (5 files)
+│   │   ├── runner_home_scope_test.go
 │   │   ├── runner_pool_doc_test.go
 │   │   ├── sandbox.go
 │   │   ├── sandbox_*.go  (29 files)
@@ -4388,6 +4417,7 @@
 │   │   ├── tool_surface_arm_guarantee_test.go
 │   │   ├── tool_surface_codex_test.go
 │   │   ├── tool_surface_declaration_test.go
+│   │   ├── tool_surface_dispatch_agreement_test.go
 │   │   ├── tool_surface_grid_test.go
 │   │   ├── tool_surface_guarantee_test.go
 │   │   ├── tool_surface_reason_test.go
@@ -4532,7 +4562,7 @@
 │   │   ├── source_kind_test.go
 │   │   ├── steer.go
 │   │   ├── subbot.go
-│   │   ├── subbot_*.go  (7 files)
+│   │   ├── subbot_*.go  (8 files)
 │   │   ├── trigger_emit.go
 │   │   ├── trigger_emit_test.go
 │   │   ├── unit_compile_test.go
@@ -4550,6 +4580,9 @@
 │   │   ├── mongo_test.go
 │   │   └── store.go
 │   ├── sandbox
+│   │   ├── completion.go
+│   │   ├── completion_linux_test.go
+│   │   ├── completion_test.go
 │   │   ├── devcontainer
 │   │   │   ├── devcontainer.go
 │   │   │   ├── devcontainer_test.go
@@ -4575,6 +4608,7 @@
 │   │   ├── errors.go
 │   │   ├── exec_helpers.go
 │   │   ├── execwrite.go
+│   │   ├── execwrite_internal_test.go
 │   │   ├── execwrite_test.go
 │   │   ├── factory.go
 │   │   ├── factory_helper_test.go
@@ -4670,7 +4704,7 @@
 │   │   ├── bindings.go
 │   │   ├── bindings_test.go
 │   │   ├── byok.go
-│   │   ├── byok_*.go  (6 files)
+│   │   ├── byok_*.go  (8 files)
 │   │   ├── codex_loadfrom_test.go
 │   │   ├── credential_shape.go
 │   │   ├── credential_shape_test.go
@@ -4705,9 +4739,9 @@
 │   │       ├── httpdial.go
 │   │       └── httpdial_test.go
 │   ├── server
-│   │   ├── admin_*.go  (16 files)
+│   │   ├── admin_*.go  (18 files)
 │   │   ├── agent_binding_cookie_test.go
-│   │   ├── assistant_*.go  (45 files)
+│   │   ├── assistant_*.go  (47 files)
 │   │   ├── audit_helper.go
 │   │   ├── audit_routes_test.go
 │   │   ├── auth_*.go  (15 files)
@@ -4720,9 +4754,9 @@
 │   │   ├── background_class_test.go
 │   │   ├── background_detached_join_test.go
 │   │   ├── background_join_test.go
-│   │   ├── board_*.go  (22 files)
+│   │   ├── board_*.go  (23 files)
 │   │   ├── boarddispatch.go
-│   │   ├── boarddispatch_*.go  (7 files)
+│   │   ├── boarddispatch_*.go  (8 files)
 │   │   ├── bot_*.go  (16 files)
 │   │   ├── bots_*.go  (9 files)
 │   │   ├── brand_routes.go
@@ -4766,12 +4800,16 @@
 │   │   │   ├── platform_tier_test.go
 │   │   │   ├── plugin_source_quarantine_test.go
 │   │   │   ├── policy_ladder_test.go
+│   │   │   ├── provider_allowlist_test.go
 │   │   │   ├── provider_coverage_test.go
 │   │   │   ├── publisher.go
 │   │   │   ├── publisher_*.go  (26 files)
 │   │   │   ├── refused_pinned_key_test.go
+│   │   │   ├── repo_audience_test.go
 │   │   │   ├── require_llm_credential_test.go
 │   │   │   ├── resume_trust_test.go
+│   │   │   ├── revi_integration_acceptance_test.go
+│   │   │   ├── routing_parity_integration_test.go
 │   │   │   ├── runner_pool_test.go
 │   │   │   ├── shared_tier_policy.go
 │   │   │   ├── skipped_reopens_test.go
@@ -4790,6 +4828,7 @@
 │   │   ├── cred_usage_routes.go
 │   │   ├── cred_usage_routes_test.go
 │   │   ├── credential_preview.go
+│   │   ├── credential_preview_repo_test.go
 │   │   ├── credential_preview_test.go
 │   │   ├── credpool_pledge_view_test.go
 │   │   ├── credpool_routes.go
@@ -4809,7 +4848,8 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_*.go  (95 files)
+│   │   ├── forge_*.go  (102 files)
+│   │   ├── gateway_key_inert_test.go
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_errtrack_test.go
@@ -4867,7 +4907,7 @@
 │   │   ├── pat_bearer_e2e_test.go
 │   │   ├── pat_routes.go
 │   │   ├── pat_routes_test.go
-│   │   ├── pipeline_*.go  (24 files)
+│   │   ├── pipeline_*.go  (25 files)
 │   │   ├── platform_settings.go
 │   │   ├── platform_settings_routing_test.go
 │   │   ├── platform_settings_test.go
@@ -4885,18 +4925,21 @@
 │   │   ├── projects_hotswap_test.go
 │   │   ├── queue_sweeper.go
 │   │   ├── queue_sweeper_test.go
+│   │   ├── r10_fix_verifier_test.go
+│   │   ├── r6_verifier_test.go
+│   │   ├── r7_fix_verifier_test.go
+│   │   ├── r8_fix_verifier_test.go
+│   │   ├── r9_fix_verifier_test.go
 │   │   ├── reattack_unit_test.go
 │   │   ├── recovery_passive_test.go
 │   │   ├── resume_source.go
 │   │   ├── resume_source_test.go
-│   │   ├── retry_*.go  (6 files)
+│   │   ├── retry_*.go  (8 files)
 │   │   ├── rewind_stored_source.go
 │   │   ├── rewind_stored_source_http_test.go
 │   │   ├── rewind_stored_source_test.go
-│   │   ├── route_recorder.go
-│   │   ├── route_resolve.go
-│   │   ├── route_resolve_bindings_test.go
-│   │   ├── route_resolve_test.go
+│   │   ├── route_*.go  (5 files)
+│   │   ├── routing_decode.go
 │   │   ├── routing_policy_routes.go
 │   │   ├── routing_policy_routes_test.go
 │   │   ├── run_delegation.go
@@ -4906,7 +4949,7 @@
 │   │   ├── runner_pool_reconciler.go
 │   │   ├── runner_pool_reconciler_test.go
 │   │   ├── runs.go
-│   │   ├── runs_*.go  (79 files)
+│   │   ├── runs_*.go  (80 files)
 │   │   ├── runview_fixture_test.go
 │   │   ├── safe_origin_test.go
 │   │   ├── schedule_outcome.go
@@ -4946,9 +4989,10 @@
 │   │   ├── valkey_stores.go
 │   │   ├── valkey_stores_test.go
 │   │   ├── watch_coordinator.go
+│   │   ├── watch_coordinator_fanout_test.go
 │   │   ├── watch_coordinator_test.go
 │   │   ├── watcher.go
-│   │   ├── webhooks_*.go  (47 files)
+│   │   ├── webhooks_*.go  (49 files)
 │   │   ├── workspace.go
 │   │   ├── workspace_handoff.go
 │   │   ├── workspace_handoff_test.go
@@ -5023,6 +5067,7 @@
 │   │   ├── lifecycle_negative_space_test.go
 │   │   ├── lifecycle_reserved_test.go
 │   │   ├── lifecycle_test.go
+│   │   ├── listruns_callers_test.go
 │   │   ├── lock.go
 │   │   ├── lock_test.go
 │   │   ├── lock_unix.go
@@ -5064,10 +5109,11 @@
 │   │   │   ├── runlogs.go
 │   │   │   ├── runner_builds_test.go
 │   │   │   ├── runs.go
-│   │   │   ├── runs_*.go  (5 files)
+│   │   │   ├── runs_*.go  (6 files)
 │   │   │   ├── schema_ttl_test.go
 │   │   │   ├── scratch_bank.go
 │   │   │   ├── store.go
+│   │   │   ├── store_indexes_conflict_test.go
 │   │   │   ├── tags.go
 │   │   │   ├── tags_test.go
 │   │   │   ├── tenant.go
@@ -5091,36 +5137,17 @@
 │   │   ├── resumable_test.go
 │   │   ├── retry.go
 │   │   ├── retry_circuit.go
+│   │   ├── reverse_query_cancel_test.go
 │   │   ├── route_decision.go
 │   │   ├── run.go
-│   │   ├── run_env.go
-│   │   ├── run_env_test.go
-│   │   ├── run_error.go
-│   │   ├── run_error_test.go
-│   │   ├── run_listing.go
-│   │   ├── run_probe_marker_chokepoint_test.go
-│   │   ├── run_test.go
-│   │   ├── run_version_test.go
+│   │   ├── run_*.go  (8 files)
 │   │   ├── runlog.go
 │   │   ├── runname.go
 │   │   ├── runname_test.go
 │   │   ├── spend.go
 │   │   ├── spend_test.go
 │   │   ├── store.go
-│   │   ├── store_artifacts.go
-│   │   ├── store_atomic.go
-│   │   ├── store_backend_session.go
-│   │   ├── store_delete.go
-│   │   ├── store_delete_guard_test.go
-│   │   ├── store_events.go
-│   │   ├── store_interactions.go
-│   │   ├── store_route_decisions.go
-│   │   ├── store_run.go
-│   │   ├── store_run_phantom_test.go
-│   │   ├── store_runfiles.go
-│   │   ├── store_scratch_bank.go
-│   │   ├── store_test.go
-│   │   ├── store_toolblobs.go
+│   │   ├── store_*.go  (14 files)
 │   │   ├── storedir.go
 │   │   ├── storedir_inherited_test.go
 │   │   ├── storedir_test.go
@@ -5167,6 +5194,7 @@
 │   │   ├── declared_test.go
 │   │   ├── enabled.go
 │   │   ├── enabled_test.go
+│   │   ├── eval_usage_test.go
 │   │   ├── format.go
 │   │   ├── gateway_watch_test.go
 │   │   ├── hookinstall.go
@@ -5247,6 +5275,7 @@
 │   │   ├── sent.go
 │   │   ├── sweep.go
 │   │   ├── sweep_test.go
+│   │   ├── usage_park_test.go
 │   │   └── webpush
 │   │       ├── sink.go
 │   │       ├── sink_test.go
@@ -5523,14 +5552,21 @@
 │   │   ├── __tests__
 │   │   │   ├── a11y
 │   │   │   │   ├── _adminNestLinks.ts
+│   │   │   │   ├── _cssTokens.ts
+│   │   │   │   ├── _jsx.ts
 │   │   │   │   ├── _scanner.ts
+│   │   │   │   ├── _tokens.ts
 │   │   │   │   ├── adminNestLinks.test.ts
 │   │   │   │   ├── axeHelpers.ts
 │   │   │   │   ├── broken-classes.test.ts
 │   │   │   │   ├── contrast.test.ts
+│   │   │   │   ├── css-tokens.test.ts
+│   │   │   │   ├── focus-ring.test.ts
+│   │   │   │   ├── jsx-scanner.test.ts
 │   │   │   │   ├── primitives.test.tsx
 │   │   │   │   ├── source-discipline.test.ts
 │   │   │   │   ├── stacking.test.ts
+│   │   │   │   ├── tokens-mirror.test.ts
 │   │   │   │   └── views.test.tsx
 │   │   │   ├── configShareArm.test.tsx
 │   │   │   ├── desktopBridge.test.ts
@@ -5720,6 +5756,7 @@
 │   │   │   ├── EditorView.tsx
 │   │   │   ├── EditorView.unsaved.test.tsx
 │   │   │   ├── FilePicker
+│   │   │   │   ├── FilePicker.test.tsx
 │   │   │   │   ├── FilePicker.tsx
 │   │   │   │   ├── searchResults.test.ts
 │   │   │   │   └── searchResults.ts
@@ -5738,10 +5775,12 @@
 │   │   │   │   ├── InspectorEditItem.tsx
 │   │   │   │   ├── InspectorEmpty.tsx
 │   │   │   │   ├── InspectorMulti.tsx
+│   │   │   │   ├── InspectorNode.test.tsx
 │   │   │   │   ├── InspectorNode.tsx
 │   │   │   │   └── NodeRunsChip.tsx
 │   │   │   ├── Library
 │   │   │   │   ├── LibraryItemCard.tsx
+│   │   │   │   ├── LibraryPanel.test.tsx
 │   │   │   │   └── LibraryPanel.tsx
 │   │   │   ├── MissingCLIBanner.tsx
 │   │   │   ├── ModelCapsCaption.test.tsx
@@ -5777,7 +5816,9 @@
 │   │   │   ├── Runs
 │   │   │   │   ├── ActiveFooter.tsx
 │   │   │   │   ├── ArtifactDiff.tsx
+│   │   │   │   ├── ArtifactFilesPanel.deeplink.test.tsx
 │   │   │   │   ├── ArtifactFilesPanel.tsx
+│   │   │   │   ├── AttachmentFieldInput.test.tsx
 │   │   │   │   ├── AttachmentFieldInput.tsx
 │   │   │   │   ├── BranchDiffModal.tsx
 │   │   │   │   ├── BrowserLivePane.tsx
@@ -5835,7 +5876,12 @@
 │   │   │   │   ├── ThinkingFooter.tsx
 │   │   │   │   ├── ToolRunningFooter.tsx
 │   │   │   │   ├── artifacts
-│   │   │   │   │   └── ArtifactsPanel.tsx
+│   │   │   │   │   ├── ArtifactsPanel.tsx
+│   │   │   │   │   ├── PreviewBody.test.tsx
+│   │   │   │   │   ├── PreviewBody.tsx
+│   │   │   │   │   ├── artifactFileLink.test.ts
+│   │   │   │   │   ├── artifactFileLink.ts
+│   │   │   │   │   └── useArtifactFiles.ts
 │   │   │   │   ├── budgetPillTooltip.test.ts
 │   │   │   │   ├── cancelTooltip.test.ts
 │   │   │   │   ├── conversation
@@ -5868,6 +5914,7 @@
 │   │   │   │   │   ├── CollapseButton.tsx
 │   │   │   │   │   ├── DetailHeader.test.tsx
 │   │   │   │   │   ├── DetailHeader.tsx
+│   │   │   │   │   ├── EventsTab.test.tsx
 │   │   │   │   │   ├── EventsTab.tsx
 │   │   │   │   │   ├── FollowLivePill.tsx
 │   │   │   │   │   ├── IterationCrumb.tsx
@@ -5963,6 +6010,8 @@
 │   │   │   │   │   ├── BackendsUsedRow.test.tsx
 │   │   │   │   │   ├── BackendsUsedRow.tsx
 │   │   │   │   │   ├── BotChip.tsx
+│   │   │   │   │   ├── DeliverablesRow.test.tsx
+│   │   │   │   │   ├── DeliverablesRow.tsx
 │   │   │   │   │   ├── DeploymentRow.test.tsx
 │   │   │   │   │   ├── DeploymentRow.tsx
 │   │   │   │   │   ├── ErrorHintRow.dom.test.tsx
@@ -5979,6 +6028,7 @@
 │   │   │   │   │   ├── RunInformationAccordion.test.tsx
 │   │   │   │   │   ├── RunInformationAccordion.tsx
 │   │   │   │   │   ├── RunNameEditor.tsx
+│   │   │   │   │   ├── RunTagsRow.test.tsx
 │   │   │   │   │   ├── RunTagsRow.tsx
 │   │   │   │   │   ├── SourceTicketRow.tsx
 │   │   │   │   │   ├── WSDisconnectBanner.tsx
@@ -6118,6 +6168,7 @@
 │   │   │   │   ├── ErrorBoundary.tsx
 │   │   │   │   ├── ErrorNotice.tsx
 │   │   │   │   ├── FeatureUnavailable.tsx
+│   │   │   │   ├── GateFileInput.test.tsx
 │   │   │   │   ├── GateFileInput.tsx
 │   │   │   │   ├── GlobalCommandPalette.tsx
 │   │   │   │   ├── InnerTabBar.tsx
@@ -6125,12 +6176,14 @@
 │   │   │   │   ├── LabelFilterPopover.tsx
 │   │   │   │   ├── MainSpinner.tsx
 │   │   │   │   ├── NavLinks.tsx
+│   │   │   │   ├── OrgSwitcher.test.tsx
 │   │   │   │   ├── OrgSwitcher.tsx
 │   │   │   │   ├── PanelLoading.tsx
 │   │   │   │   ├── ProvenanceChip.tsx
 │   │   │   │   ├── RepoSwitcher.tsx
 │   │   │   │   ├── RoleSelect.test.tsx
 │   │   │   │   ├── RoleSelect.tsx
+│   │   │   │   ├── RoutingPolicyEditor.tsx
 │   │   │   │   ├── RunTabHost.tsx
 │   │   │   │   ├── SchedulePolicyEditor.test.ts
 │   │   │   │   ├── SchedulePolicyEditor.tsx
@@ -6204,6 +6257,7 @@
 │   │   │       ├── ThemeToggle.tsx
 │   │   │       ├── ThinkingIndicator.tsx
 │   │   │       ├── Tooltip.tsx
+│   │   │       ├── WizardForm.test.tsx
 │   │   │       ├── WizardForm.tsx
 │   │   │       ├── hiddenSubtree.test.tsx
 │   │   │       ├── hiddenSubtree.ts
@@ -6576,6 +6630,7 @@
 │   │   │   │   ├── BotPicker.tsx
 │   │   │   │   ├── Column.tsx
 │   │   │   │   ├── ColumnDialogs.tsx
+│   │   │   │   ├── FieldDialog.test.tsx
 │   │   │   │   ├── Fields.tsx
 │   │   │   │   ├── IssueCard.test.tsx
 │   │   │   │   ├── IssueCard.tsx
@@ -6616,6 +6671,7 @@
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── issueModal
 │   │   │   │   │   ├── BotTab.tsx
+│   │   │   │   │   ├── Field.test.tsx
 │   │   │   │   │   ├── Field.tsx
 │   │   │   │   │   ├── LastRunSection.test.tsx
 │   │   │   │   │   ├── LastRunSection.tsx
@@ -6693,6 +6749,7 @@
 │   │   │   │   ├── toastMessages.test.ts
 │   │   │   │   └── toastMessages.ts
 │   │   │   ├── PipelineBoard
+│   │   │   │   ├── AddTaskDialog.test.tsx
 │   │   │   │   ├── AddTaskDialog.tsx
 │   │   │   │   ├── ArtifactFilePreviewDialog.test.tsx
 │   │   │   │   ├── ArtifactFilePreviewDialog.tsx
@@ -6746,12 +6803,14 @@
 │   │   │   │   ├── CloudConnectModal.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── RepoDetail
+│   │   │   │   ├── RepoRoutingSection.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── mergeGateCard.test.tsx
 │   │   │   │   ├── model.test.ts
 │   │   │   │   ├── model.ts
 │   │   │   │   ├── repoKey.test.ts
-│   │   │   │   └── repoKey.ts
+│   │   │   │   ├── repoKey.ts
+│   │   │   │   └── repoRouting.test.tsx
 │   │   │   ├── RestrictedShell.tsx
 │   │   │   ├── RunsAnalytics
 │   │   │   │   └── index.tsx
@@ -6788,6 +6847,7 @@
 │   │   │   │       ├── ProjectPicker.test.ts
 │   │   │   │       └── ProjectPicker.tsx
 │   │   │   ├── account
+│   │   │   │   ├── ApiKeys.test.tsx
 │   │   │   │   ├── ApiKeys.tsx
 │   │   │   │   ├── CredentialPreview.test.tsx
 │   │   │   │   ├── CredentialPreview.tsx
@@ -6806,6 +6866,8 @@
 │   │   │   │   ├── DLQAdminPage.tsx
 │   │   │   │   ├── OrgsAdminPage.tsx
 │   │   │   │   ├── PlatformBotsPage.tsx
+│   │   │   │   ├── PlatformForgeAppsPage.test.tsx
+│   │   │   │   ├── PlatformForgeAppsPage.tsx
 │   │   │   │   ├── PlatformLlmCredsPage.tsx
 │   │   │   │   ├── UsersAdminPage.tsx
 │   │   │   │   ├── adminRoutes.test.ts
@@ -6884,7 +6946,9 @@
 │   │   │   │           ├── DoneStep.tsx
 │   │   │   │           ├── GitHubAuthorize.tsx
 │   │   │   │           ├── NonAppMethods.tsx
+│   │   │   │           ├── NonGitHubAuthorize.test.tsx
 │   │   │   │           ├── NonGitHubAuthorize.tsx
+│   │   │   │           ├── PatFallback.test.tsx
 │   │   │   │           ├── PatFallback.tsx
 │   │   │   │           ├── ProviderStep.tsx
 │   │   │   │           ├── ReposStep.tsx
@@ -6894,7 +6958,13 @@
 │   │   │   │   ├── GovernanceTab.tsx
 │   │   │   │   ├── OrgPage.rank.test.tsx
 │   │   │   │   ├── OrgPage.tsx
-│   │   │   │   └── RoutingPolicySection.tsx
+│   │   │   │   ├── RoutingPolicySection.tsx
+│   │   │   │   ├── governanceLegacyReplace.test.tsx
+│   │   │   │   ├── governancePartialDeltas.test.tsx
+│   │   │   │   ├── governanceR7LegacyEmpty.test.tsx
+│   │   │   │   ├── governanceReplaceSemantics.test.tsx
+│   │   │   │   ├── governanceRoutingVisibility.test.tsx
+│   │   │   │   └── governanceSpokenEmpty.test.tsx
 │   │   │   ├── plugins
 │   │   │   │   ├── PluginCard.tsx
 │   │   │   │   ├── PluginConfigForm.tsx
@@ -6914,12 +6984,16 @@
 │   │   │           ├── UsageTab.tsx
 │   │   │           ├── WebhooksTab.tsx
 │   │   │           ├── __tests__
+│   │   │           │   ├── ConnectForm.projectBot.test.tsx
 │   │   │           │   ├── ConnectionCard.syncNow.test.tsx
 │   │   │           │   ├── EnableRepoPanel.guarantee.test.tsx
 │   │   │           │   ├── EnableRepoPanel.mergeGate.test.tsx
+│   │   │           │   ├── EnableRepoPanel.projectBot.test.tsx
 │   │   │           │   ├── IntegrationsTab.banner.test.tsx
 │   │   │           │   ├── IntegrationsTab.oauthApps.test.tsx
 │   │   │           │   ├── IntegrationsTab.unknownIntegrations.test.tsx
+│   │   │           │   ├── OAuthAppsSection.platform.test.tsx
+│   │   │           │   ├── RegisterOAuthAppForm.webhookBase.test.tsx
 │   │   │           │   ├── WebhookBaseRow.test.tsx
 │   │   │           │   └── WebhooksTab.tokenOnce.test.tsx
 │   │   │           ├── integrations
@@ -6928,6 +7002,7 @@
 │   │   │           │   ├── EnableRepoPanel.tsx
 │   │   │           │   ├── GitHubAppLogoHint.tsx
 │   │   │           │   ├── OAuthAppsSection.tsx
+│   │   │           │   ├── ProjectBotIdentity.tsx
 │   │   │           │   ├── RegisterOAuthAppForm.tsx
 │   │   │           │   ├── SchedulesSection.tsx
 │   │   │           │   ├── WebhookBaseRow.tsx
@@ -14345,4 +14420,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1849 directories, 14339 files
+1850 directories, 14497 files
