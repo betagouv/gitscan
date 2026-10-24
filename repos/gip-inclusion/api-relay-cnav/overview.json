@@ -1,11 +1,13 @@
 {
   "url": "https://github.com/gip-inclusion/api-relay-cnav",
   "name": "api-relay-cnav",
-  "description": "API de relais pour interroger la Caisse Nationale d'Assurance Vieillesse (CNAV). Elle permet d'interagir avec les services de la CNAV via une interface API sécurisée.",
+  "description": "API de relais permettant d'interroger la Caisse Nationale d'Assurance Vieillesse (CNAV). Elle assure une interface sécurisée et la traçabilité des échanges avec les services de la CNAV et InterOps.",
   "language": "Python",
   "features": [
     "API & Intégrations",
-    "Authentification & Accès"
+    "Authentification & Accès",
+    "Suivi & Traçabilité",
+    "Administration & Backoffice"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -14,21 +16,22 @@
     "psycopg",
     "httpx",
     "uwsgi",
-    "drf-spectacular"
+    "drf-spectacular",
+    "itoutils"
   ],
   "components": [
     "API REST & GraphQL",
     "Django",
     "Python (scripts & backend)",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "jwt",
       "session"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "pytest",
@@ -38,14 +41,14 @@
     "ci.yml",
     "git.yml"
   ],
-  "lastActivity": "2026-09-15T14:30:50Z",
+  "lastActivity": "2026-10-21T09:55:28Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 0,
-    "openIssues": 4
+    "openIssues": 5
   },
   "tags": [
     "Données & Open Data",
