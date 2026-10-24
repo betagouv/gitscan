@@ -8,9 +8,37 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- Support passkey sign-in in the `lst-dsfr` Keycloak theme (off by default)
+- Add the `lst-dsfr` login and account theme (Keycloakify, react-dsfr) with
+  the ProConnect look. The dev realm keeps the built-in themes.
+- `make test-keycloak-theme` runs the Playwright specs of the `lst-dsfr` theme
+  against Keycloak alone
+- Enable passkeys in the dev realm
+- Display a service message in a banner on top of the app, configured
+  from the site configuration in the Django admin
+- Warn that an auto-reply is active for the selected mailbox with a banner
+  instead of a header icon
+
 ### Changed
 
-- Bump keycloak to 26.8.0 and refresh the Alpine 3.24 digest in the Keycloak image
+- Bump keycloak to 26.8.1 and refresh the Alpine 3.24 digest in the Keycloak image
+- Bump Caddy to 2.11.7 in the Keycloak image, the frontend image and the
+  Scalingo post-frontend deploy script
+- Bump @gouvfr-lasuite/ui-components to 1.3.0
+
+### Removed
+
+- The DSFR theme jar `dsfr-2.3.4.jar`. A realm that selected the `DSFR` theme
+  must select `lst-dsfr` once after the upgrade
+
+### Security
+
+- The Keycloak image removes `emSign ECC Root CA - G3` from the Java trust
+  store after the eMudhra intermediate CA compromise of October 2026. The
+  Comodo `AAA Certificate Services` root is already absent from the base image
+
 
 ## [0.10.0] - 2026-09-29
 

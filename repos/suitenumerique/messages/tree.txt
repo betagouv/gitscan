@@ -17,6 +17,10 @@
 │       ├── messages-ghcr.yml
 │       └── messages.yml
 ├── .gitignore
+├── .oss-scanner
+│   ├── Dockerfile
+│   ├── Dockerfile.dockerignore
+│   └── threat_model.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -259,6 +263,7 @@
     │   │   │   ├── 0033_channel_is_active.py
     │   │   │   ├── 0034_channel_lookup_hash.py
     │   │   │   ├── 0035_address_normalization.py
+    │   │   │   ├── 0036_siteconfiguration.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -420,6 +425,7 @@
     │   │   │   │   ├── test_maildomainaccess.py
     │   │   │   │   ├── test_message_get_parsed_data.py
     │   │   │   │   ├── test_message_template.py
+    │   │   │   │   ├── test_site_configuration.py
     │   │   │   │   ├── test_thread_event.py
     │   │   │   │   ├── test_thread_snippet.py
     │   │   │   │   ├── test_user_abilities.py
@@ -457,6 +463,7 @@
     │   │   │   │   ├── test_task_send_message.py
     │   │   │   │   └── test_tiered_storage_tasks.py
     │   │   │   ├── test_admin_inbound_reprocess.py
+    │   │   │   ├── test_admin_site_configuration.py
     │   │   │   ├── test_checks.py
     │   │   │   ├── test_migration_address_normalization.py
     │   │   │   ├── test_push.py
@@ -499,10 +506,12 @@
     │   ├── caddy
     │   │   ├── Caddyfile
     │   │   └── entrypoint.sh
+    │   ├── compose.theme.yaml
     │   ├── compose.yaml
     │   ├── package-lock.json
     │   ├── package.json
     │   ├── playwright.config.ts
+    │   ├── playwright.theme.config.ts
     │   ├── src
     │   │   ├── __tests__
     │   │   │   ├── attachment-preview.spec.ts
@@ -517,6 +526,9 @@
     │   │   │   ├── signatures.spec.ts
     │   │   │   ├── thread-event.spec.ts
     │   │   │   └── thread-starred-read.spec.ts
+    │   │   ├── __theme__
+    │   │   │   ├── account.spec.ts
+    │   │   │   └── login.spec.ts
     │   │   ├── constants.ts
     │   │   ├── fixtures
     │   │   │   ├── attachment.png
@@ -911,7 +923,7 @@
     │   │   │   │   │   │   ├── channel.ts
     │   │   │   │   │   │   ├── channel_create_response.ts
     │   │   │   │   │   │   ├── channel_request.ts
-    │   │   │   │   │   │   ├── config_*.ts  (7 files)
+    │   │   │   │   │   │   ├── config_*.ts  (12 files)
     │   │   │   │   │   │   ├── contact.ts
     │   │   │   │   │   │   ├── contacts_list_params.ts
     │   │   │   │   │   │   ├── delivery_status_update_response.ts
@@ -1173,6 +1185,7 @@
     │   │   │   │       │       ├── page-content.tsx
     │   │   │   │       │       └── signature-data-grid.tsx
     │   │   │   │       ├── compose
+    │   │   │   │       │   ├── _sender-pending.scss
     │   │   │   │       │   ├── compose-dock-overflow
     │   │   │   │       │   │   └── index.tsx
     │   │   │   │       │   ├── compose-mobile-stack
@@ -1231,6 +1244,7 @@
     │   │   │   │       │   │   ├── autoreply-data-grid.tsx
     │   │   │   │       │   │   └── compose-autoreply-action.tsx
     │   │   │   │       │   ├── devices-view
+    │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   ├── user-devices-grid.tsx
     │   │   │   │       │   │   ├── web-push.test.ts
     │   │   │   │       │   │   └── web-push.ts
@@ -1302,7 +1316,11 @@
     │   │   │   │       │   ├── left-panel
     │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   └── index.tsx
-    │   │   │   │       │   └── no-mailbox.tsx
+    │   │   │   │       │   ├── no-mailbox.tsx
+    │   │   │   │       │   └── top-banners
+    │   │   │   │       │       ├── autoreply-banner.tsx
+    │   │   │   │       │       ├── service-message-banner.tsx
+    │   │   │   │       │       └── use-banner-dismissal.ts
     │   │   │   │       ├── mobile
     │   │   │   │       │   ├── bottom-bar
     │   │   │   │       │   │   ├── _index.scss
@@ -1375,13 +1393,9 @@
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── share-modal-extensions
     │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── access-role-dropdown.tsx
     │   │   │   │           │   │   ├── access-users-list.tsx
     │   │   │   │           │   │   ├── assigned-users-section.tsx
-    │   │   │   │           │   │   ├── index.ts
-    │   │   │   │           │   │   ├── invitation-user-selector.tsx
-    │   │   │   │           │   │   ├── share-member-item.tsx
-    │   │   │   │           │   │   └── share-modal.tsx
+    │   │   │   │           │   │   └── index.ts
     │   │   │   │           │   ├── thread-accesses-widget
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   └── index.tsx
@@ -1650,6 +1664,9 @@
     │   │   │       ├── date-helper.ts
     │   │   │       ├── errors
     │   │   │       │   └── index.ts
+    │   │   │       ├── i18n-helper
+    │   │   │       │   ├── index.test.ts
+    │   │   │       │   └── index.ts
     │   │   │       ├── mail-helper.test.tsx
     │   │   │       ├── mail-helper.tsx
     │   │   │       ├── mailbox-helper
@@ -1794,6 +1811,7 @@
     │   │   └── test_wire_roundtrip_fuzz.py
     │   └── uv.lock
     ├── keycloak
+    │   ├── .dockerignore
     │   ├── Dockerfile
     │   ├── bulk-role-membership
     │   │   ├── .gitignore
@@ -1823,8 +1841,67 @@
     │   │   └── map-group-attribute.js
     │   ├── tests
     │   │   └── test_bulk_role_membership.py
-    │   └── themes
-    │       └── dsfr-2.3.4.jar
+    │   └── theme
+    │       ├── .gitignore
+    │       ├── .npmrc
+    │       ├── README.md
+    │       ├── eslint.config.mjs
+    │       ├── index.html
+    │       ├── package-lock.json
+    │       ├── package.json
+    │       ├── src
+    │       │   ├── account
+    │       │   │   ├── App.tsx
+    │       │   │   ├── KcContext.ts
+    │       │   │   ├── KcPage.tsx
+    │       │   │   ├── account.css
+    │       │   │   ├── api.ts
+    │       │   │   ├── auth.ts
+    │       │   │   ├── components
+    │       │   │   │   ├── ActionAlert.tsx
+    │       │   │   │   ├── CredentialRow.tsx
+    │       │   │   │   └── Sidemenu.tsx
+    │       │   │   ├── i18n.ts
+    │       │   │   ├── pages
+    │       │   │   │   ├── AccountAndLogin.tsx
+    │       │   │   │   ├── DoubleAuthChoice.tsx
+    │       │   │   │   └── PersonalInfo.tsx
+    │       │   │   └── router.ts
+    │       │   ├── kc.gen.tsx
+    │       │   ├── login
+    │       │   │   ├── KcContext.ts
+    │       │   │   ├── KcPage.tsx
+    │       │   │   ├── KcPageStory.tsx
+    │       │   │   ├── Template.tsx
+    │       │   │   ├── classes.ts
+    │       │   │   ├── components
+    │       │   │   │   └── LogoutOtherSessions.tsx
+    │       │   │   ├── i18n.ts
+    │       │   │   ├── login.css
+    │       │   │   └── pages
+    │       │   │       ├── DeleteCredential.tsx
+    │       │   │       ├── Error.tsx
+    │       │   │       ├── Info.tsx
+    │       │   │       ├── Login.tsx
+    │       │   │       ├── LoginConfigTotp.tsx
+    │       │   │       ├── LoginOtp.tsx
+    │       │   │       ├── LoginPageExpired.tsx
+    │       │   │       ├── LoginUpdatePassword.tsx
+    │       │   │       ├── LoginUpdateProfile.tsx
+    │       │   │       ├── LogoutConfirm.tsx
+    │       │   │       ├── SelectAuthenticator.tsx
+    │       │   │       ├── WebauthnAuthenticate.tsx
+    │       │   │       ├── WebauthnError.tsx
+    │       │   │       └── WebauthnRegister.tsx
+    │       │   ├── main.tsx
+    │       │   └── shared
+    │       │       ├── Footer.tsx
+    │       │       ├── Header.tsx
+    │       │       ├── brand.ts
+    │       │       ├── dsfr.ts
+    │       │       └── layout.css
+    │       ├── tsconfig.json
+    │       └── vite.config.ts
     ├── mpa
     │   ├── README.md
     │   ├── rspamd
@@ -1898,4 +1975,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-391 directories, 1723 files
+403 directories, 1793 files
