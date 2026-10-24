@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/SocialGouv/legi-data",
   "name": "legi-data",
-  "description": "Ce projet permet l'extraction quotidienne des codes de loi de la base LEGI via l'API Légifrance. Les données sont mises à disposition au format JSON ou via une API TypeScript.",
+  "description": "Projet permettant l'extraction quotidienne des codes de loi de la base LEGI depuis l'API Légifrance. Les données sont mises à disposition au format JSON ou via une API TypeScript.",
   "language": "TypeScript",
   "features": [
     "API & Intégrations",
@@ -11,26 +11,27 @@
   "audience": "Développeurs",
   "dependencies": [
     "unist-util-find",
-    "unist-util-parents",
-    "@socialgouv/dila-api-client"
+    "unist-util-parents"
   ],
   "components": [
     "TypeScript / JavaScript",
+    "Pipeline de données",
     "Documentation & Schémas",
-    "Scripts & Utilitaires",
-    "Pipeline de données"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "none"
+      "oauth2"
+    ],
+    "providers": [
+      "DILA - Légifrance Beta"
     ]
   },
   "tests": "Jest",
   "workflows": [
-    "husky",
-    "data:update pipeline"
+    "Husky"
   ],
-  "lastActivity": "2026-09-12T00:00:00Z",
+  "lastActivity": "2026-10-22T00:00:00Z",
   "status": "experimental",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -39,6 +40,6 @@
     "TypeScript",
     "Standards & Schémas",
     "ETL & Pipelines de données",
-    "Legal & Conformité"
+    "Écosystème beta.gouv / État"
   ]
 }

@@ -1,3 +1,94 @@
+# [2.575.0](https://github.com/SocialGouv/legi-data/compare/v2.574.0...v2.575.0) (2026-10-22)
+
+
+### Features
+
+* **data:** 20261022_1907 update ([92aabb1](https://github.com/SocialGouv/legi-data/commit/92aabb138fc15a6452d16b248e809c37f7b8b942))
+
+# [2.574.0](https://github.com/SocialGouv/legi-data/compare/v2.573.0...v2.574.0) (2026-10-15)
+
+
+### Features
+
+* **data:** 20261015_1901 update ([b18e3d0](https://github.com/SocialGouv/legi-data/commit/b18e3d0416b0265636e4ecda87d46792f28d9874))
+
+# [2.573.0](https://github.com/SocialGouv/legi-data/compare/v2.572.0...v2.573.0) (2026-10-14)
+
+
+### Features
+
+* **data:** 20261014_1923 update ([88275a5](https://github.com/SocialGouv/legi-data/commit/88275a543bb6addcc5aa57f66e36465d01714dcc))
+
+# [2.572.0](https://github.com/SocialGouv/legi-data/compare/v2.571.0...v2.572.0) (2026-10-09)
+
+
+### Features
+
+* **data:** 20261009_2011 update ([6755be4](https://github.com/SocialGouv/legi-data/commit/6755be407ef79f5e33fb107e5366cb891fa4880e))
+
+# [2.571.0](https://github.com/SocialGouv/legi-data/compare/v2.570.0...v2.571.0) (2026-10-08)
+
+
+### Features
+
+* **data:** 20261008_2040 update ([c0ed34c](https://github.com/SocialGouv/legi-data/commit/c0ed34c3eb4c8e7d1938db9a4b71fd95732a5218))
+
+# [2.570.0](https://github.com/SocialGouv/legi-data/compare/v2.569.0...v2.570.0) (2026-10-06)
+
+
+### Features
+
+* **data:** 20261006_2015 update ([8841fd4](https://github.com/SocialGouv/legi-data/commit/8841fd4de84edd628c8fd4c4d907b1023d19aef5))
+
+# [2.569.0](https://github.com/SocialGouv/legi-data/compare/v2.568.0...v2.569.0) (2026-10-02)
+
+
+### Features
+
+* **data:** 20261002_1954 update ([4c4ab81](https://github.com/SocialGouv/legi-data/commit/4c4ab81b765ab31e4656a3dacf2d125f20548d0c))
+
+# [2.568.0](https://github.com/SocialGouv/legi-data/compare/v2.567.0...v2.568.0) (2026-10-01)
+
+
+### Features
+
+* **data:** 20261001_2040 update ([9e5be17](https://github.com/SocialGouv/legi-data/commit/9e5be177e79b147db1b3203b3035887bc5093d49))
+
+# [2.567.0](https://github.com/SocialGouv/legi-data/compare/v2.566.0...v2.567.0) (2026-09-30)
+
+
+### Features
+
+* **data:** 20260930_2004 update ([25f1544](https://github.com/SocialGouv/legi-data/commit/25f15449fd0aeb9dc579b471a9b74f520b025096))
+
+# [2.566.0](https://github.com/SocialGouv/legi-data/compare/v2.565.0...v2.566.0) (2026-09-29)
+
+
+### Features
+
+* **data:** 20260929_1953 update ([760817c](https://github.com/SocialGouv/legi-data/commit/760817c1e8c3c77fc7fccea0a6b72728727e26da))
+
+# [2.565.0](https://github.com/SocialGouv/legi-data/compare/v2.564.0...v2.565.0) (2026-09-20)
+
+
+### Features
+
+* **data:** 20260920_1802 update ([8a016b9](https://github.com/SocialGouv/legi-data/commit/8a016b9dac1efff73b1871b01bbfd9064f46f503))
+
+# [2.564.0](https://github.com/SocialGouv/legi-data/compare/v2.563.0...v2.564.0) (2026-09-19)
+
+
+### Features
+
+* **data:** 20260919_1749 update ([1d37de8](https://github.com/SocialGouv/legi-data/commit/1d37de84320f4509e3f10ac2a33103338fec19fa))
+
+# [2.563.0](https://github.com/SocialGouv/legi-data/compare/v2.562.0...v2.563.0) (2026-09-17)
+
+
+### Features
+
+* **data:** 20260917_1854 update ([90e83a6](https://github.com/SocialGouv/legi-data/commit/90e83a66bdcd42e8c225b7b2fc1ccf1e1f1a402a))
+
 # [2.562.0](https://github.com/SocialGouv/legi-data/compare/v2.561.0...v2.562.0) (2026-09-12)
 
 
