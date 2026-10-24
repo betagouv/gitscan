@@ -1,25 +1,26 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Plateforme de gestion et de programmation de prélèvements permettant le paramétrage granulaire de données métier et l'automatisation des calculs d'échantillons.",
+  "description": "Maestro est une plateforme de gestion et de programmation de prélèvements et de paramétrage de plans d'échantillonnage. Elle permet d'automatiser la génération de prescriptions et de gérer les droits d'accès pour différents profils de coordination.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
     "Gestion des utilisateurs & Permissions",
-    "Simulation & Calcul",
-    "Statistiques & Rapports",
-    "Administration & Backoffice"
+    "Recherche & Filtres",
+    "Tableaux & Affichage",
+    "Sécurité & Conformité",
+    "Formulaires & Démarches",
+    "Statistiques & Rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
+    "PostGIS",
     "S3",
-    "KnexJS",
     "Dex",
+    "KnexJS",
     "Vitest",
-    "Zod",
-    "Node.js",
-    "Browserless"
+    "Zod"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,6 +28,8 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
+    "CI/CD & Déploiement",
+    "ORM & Accès aux données",
     "Scripts & Utilitaires"
   ],
   "auth": {
@@ -38,13 +41,11 @@
       "Dex"
     ]
   },
-  "tests": [
-    "Vitest"
-  ],
+  "tests": "Vitest",
   "workflows": [
     "Semantic-release"
   ],
-  "lastActivity": "2026-10-21T16:54:32+02:00",
+  "lastActivity": "2026-10-22T15:03:24+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,6 +54,7 @@
     "TypeScript",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Sécurité & Auth"
   ]
 }
