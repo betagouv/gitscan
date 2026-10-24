@@ -1,45 +1,37 @@
-## Changelog : docs (30 derniers jours, au 2026-10-19)
+## Changelog : docs (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une transition architecturale majeure avec le passage du serveur de collaboration vers YHub, offrant une meilleure stabilité et un support du mode hors-ligne amélioré. L'expérience utilisateur a également été enrichie par de nouvelles options d'export, des raccourcis clavier et une interface plus intuitive, notamment pour la gestion des erreurs et des téléchargements.
+Ce mois a été marqué par une amélioration significative de la gestion administrative et de la collaboration. Les administrateurs disposent désormais d'outils plus puissants pour gérer les utilisateurs et les documents, tandis que les utilisateurs bénéficient d'un système de mentions par email et d'une interface plus intuitive (emojis, liens automatiques). La sécurité et les performances du système ont également été renforcées, notamment sur la partie recherche et gestion des accès.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** :
-  - Ajout de l'option de téléchargement au format Markdown.
-  - Introduction de raccourcis clavier pour accéder rapidement au mode présentation.
-  - Support du mode hors-ligne pour l'arborescence des documents.
-  - Transformation automatique des liens collés en liens internes (interlinks).
-  - Possibilité de dupliquer un document via le nouveau serveur de collaboration.
-- **Expérience utilisateur et Interface** :
-  - Refonte visuelle des pages d'erreur (401, 403 et 404) pour une navigation plus fluide.
-  - Amélioration de l'interface de chargement des fichiers (upload loader).
-  - Amélioration de la recherche : les résultats peuvent désormais s'ouvrir dans un nouvel onglet via Ctrl/Cmd+clic.
-  - Ajout d'indications visuelles pour les raccourcis clavier dans les options de document.
+- **Collaboration & Mentions** : 
+    - Mise en place d'un système de mentions avec notifications par email envoyées de manière asynchrone.
+    - Amélioration de l'éditeur : ajout d'un sélecteur d'emojis et transformation automatique des liens de documents collés en liens internes.
+- **Interface Utilisateur (UI/UX)** :
+    - Redesign des pages d'erreur (401, 403) et de l'interface de chargement des fichiers.
+    - Amélioration de la lisibilité : gestion automatique des titres longs et des textes dans les exports PDF.
+    - Optimisation de l'éditeur : limitation des niveaux de titres (H1 à H3) et suppression de certains éléments visuels superflus pour épurer l'interface.
+- **Administration** :
+    - Nouveaux outils de gestion des utilisateurs : fusion de comptes, transfert de documents et d'invitations, et filtrage des doublons par email.
+    - Meilleure visibilité : affichage de la date de dernière connexion des utilisateurs et de la version actuelle dans l'en-tête de l'administration [#2882](https://github.com/suitenumerique/docs/issues/2882).
 - **Accessibilité** :
-  - Amélioration de la navigation dans l'arborescence des documents pour les lecteurs d'écran.
-  - Optimisation de l'accessibilité des composants de chargement et des menus d'options.
-- **Corrections** :
-  - Résolution de problèmes de retour à la ligne lors de l'export de textes longs.
-  - Correction de l'affichage de la mise en évidence de la recherche dans les blocs de code.
-  - Correction de bugs liés au glisser-déposer sur certains formats d'écran.
+    - Améliorations pour les lecteurs d'écran et la navigation au clavier (boutons de menu, structure de l'arbre de documents, gestion du focus).
 
 ### Évolutions techniques
-- **Architecture et Collaboration** :
-  - Migration majeure du serveur de collaboration (passage de Hocuspocus à YHub).
-  - Mise en place d'un mécanisme de migration douce des anciens documents S3 vers YHub.
-  - Implémentation d'un mode de repli (fallback) via HTTP polling si les WebSockets sont bloqués.
+- **Performance** :
+    - Optimisation de la recherche d'utilisateurs via l'utilisation d'index trigrammes.
+    - Réduction de la charge serveur grâce à la mise en cache des décisions d'autorisation dans YHub.
 - **Sécurité** :
-  - Renforcement de l'authentification via la publication d'une clé publique JWT sur un endpoint JWKS.
-  - Durcissement des contrôles d'accès pour les mentions, les commentaires et les écritures de documents.
-  - Vérification des jetons JWT pour les services de conversion.
-- **Performance et Résilience** :
-  - Mise en cache des décisions d'autorisation pour réduire les appels au backend.
-  - Optimisation de la gestion des reconnexions et des réinitialisations de sessions de collaboration.
-- **Infrastructure et DevOps** :
-  - Migration de YHub-server vers TypeScript.
-  - Amélioration des déploiements Kubernetes via les charts Helm (gestion des probes et des ressources).
-  - Ajout d'outils de tests de charge complets (scénarios k6 et tableaux de bord Grafana).
+    - Renforcement des contrôles d'accès : les écritures de commentaires et de threads sont désormais strictement liées à l'accès au document.
+    - Mise à jour de dépendances critiques pour corriger des vulnérabilités (Pillow, Certifi).
+    - Sécurisation du système de mentions (validation UUID, limitation du débit/throttling).
+- **Infrastructure & Backend** :
+    - Optimisation des images Docker (passage en version "slim" et suppression de pip dans l'image backend).
+    - Introduction de nouveaux paramètres de configuration pour le mode de repli HTTP (intervalle de polling, gestion de l'awareness).
+    - Transition de l'infrastructure de stockage de Minio vers Silo.
+    - Amélioration des configurations Helm pour Kubernetes (gestion des probes).
 
 ### Autres changements
-- **Documentation** : Mise à jour importante des guides d'installation (YHub, Kubernetes, Keycloak) et de la documentation d'architecture.
-- **Internationalisation** : Amélioration du processus de traduction avec une meilleure intégration de Crowdin et mise à jour des chaînes de caractères.
+- **Internationalisation (i18n)** : Mises à jour massives des chaînes traduites et intégration du contexte Crowdin pour faciliter le travail des traducteurs.
+- **Documentation** : Corrections de typos dans le README d'installation et mise à jour des guides de déploiement Kubernetes (Keycloak et Minio).
+- **CI/CD** : Amélioration des workflows de test, incluant le linting et le type-checking du serveur de collaboration.

@@ -291,6 +291,11 @@
     │   │   │   ├── mail.py
     │   │   │   ├── search.py
     │   │   │   └── user_reconciliation.py
+    │   │   ├── templates
+    │   │   │   └── core
+    │   │   │       └── admin
+    │   │   │           ├── merge_users.html
+    │   │   │           └── transfer_documents.html
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
     │   │   │   └── extra_tags.py
@@ -375,6 +380,9 @@
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_admin_documents.py
+    │   │   │   ├── test_admin_site.py
+    │   │   │   ├── test_admin_users.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_jwks.py
     │   │   │   ├── test_api_throttling_document_throttle.py
@@ -410,6 +418,7 @@
     │   │   │   ├── test_signals.py
     │   │   │   ├── test_tasks_access.py
     │   │   │   ├── test_tasks_documents.py
+    │   │   │   ├── test_tasks_search.py
     │   │   │   ├── test_utils.py
     │   │   │   ├── test_utils_analytics.py
     │   │   │   ├── test_utils_create_tree_node_with_retry.py
@@ -1332,6 +1341,7 @@
     │   │       │   │   │   │   │   └── utils.test.tsx
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   ├── useCreateChildDoc.test.tsx
     │   │       │   │   │   │   │   │   └── useImportDoc.test.tsx
     │   │       │   │   │   │   │   ├── httpFallbackJson.ts
     │   │       │   │   │   │   │   ├── index.ts
@@ -1486,6 +1496,9 @@
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── doc-tree
+    │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── deleteAfterNumchild.test.tsx
+    │   │       │   │   │   │   │   └── utils.test.ts
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useDetach.tsx
@@ -1992,4 +2005,4 @@
         ├── tsconfig.json
         ├── vitest.config.mts
         └── yarn.lock
-343 directories, 1727 files
+347 directories, 1736 files

@@ -6,12 +6,38 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- ⚡️(backend) search users through the trigram indexes instead of a full scan
+
+## [v6.0.3] - 2026-10-23
+
+### Added
+
+- ✨(backend) show the last login of users in the admin #2882
+- ✨(backend) filter users sharing an email in the admin #2882
+- ✨(backend) show the release in the admin header #2882
+- ✨(backend) deactivate the least recently used duplicates in the admin #2882
+- ✨(backend) transfer created docs and invitations in reconciliations #2882
+- ✨(backend) merge users from the admin #2882
+- ✨(backend) transfer documents from a user to another in the admin #2882
+
+### Fixed
+
+- 🐛(backend) log in the active user when several users share an email #2882
+- 🐛(backend) refresh caches and search index after a user reconciliation #2882
+
+## [v6.0.2] - 2026-10-21
+
 ### Added
 
 - ✨(docspec) handle DocSpec 4xx/5xx import errors distinctly #2552
 - 🌐(frontend) add Crowdin translator context #2785
+- ✨(frontend) open the emoji picker when adding a document emoji #2777
 
 ### Changed
+
+- 💄(frontend) limit heading choices to levels 1–3
 
 - ♻️(frontend) replace outdated AGPL mentions of BlockNote XL packages #2775
 - 💄(frontend) update upload loader and error ui #2778
@@ -21,6 +47,9 @@ and this project adheres to
 
 ### Fixed
 
+- 🐛(frontend) don't add a reader's duplicate to the doc tree #2860
+- 🐛(frontend) fix confirmation modal for duplicating sub-docs #2860
+- 🐛(frontend) wrap long unbroken document titles #2852
 - 🐛(frontend) wrap long text in the print export #2813
 - 🔒️(backend) bind comment thread to the path document on creation #2838
 - 🐛(frontend) fix search highlight hidden inside code blocks #2681
@@ -28,6 +57,11 @@ and this project adheres to
   writes #2840
 - 🐛(backend) enforce resource server action restrictions on the external 
   API #2745
+- 🐛(backend) mark only the top duplicate as a copy, after its title #2855
+- 🐛(yhub) measure migration durations with a monotonic clock #2814
+- 🐛(backend) send the mention email when the cache is unreachable #2803
+- 🐛(backend) give media-auth its own throttle scope
+- 💄(frontend) remove the vertical line next to nested blocks #2825
 
 ## [v6.0.1] - 2026-10-15
 
@@ -1696,7 +1730,9 @@ and this project adheres to
 - ✨(frontend) Coming Soon page (#67)
 - 🚀 Impress, project to manage your documents easily and collaboratively.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/v6.0.1...main
+[unreleased]: https://github.com/suitenumerique/docs/compare/v6.0.3...main
+[v6.0.3]: https://github.com/suitenumerique/docs/releases/v6.0.3
+[v6.0.2]: https://github.com/suitenumerique/docs/releases/v6.0.2
 [v6.0.1]: https://github.com/suitenumerique/docs/releases/v6.0.1
 [v6.0.0]: https://github.com/suitenumerique/docs/releases/v6.0.0
 [v5.7.0]: https://github.com/suitenumerique/docs/releases/v5.7.0
