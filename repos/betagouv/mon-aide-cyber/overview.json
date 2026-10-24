@@ -1,27 +1,28 @@
 {
   "url": "https://github.com/betagouv/mon-aide-cyber",
   "name": "mon-aide-cyber",
-  "description": "Service numérique développé par l'ANSSI et BetaGouv pour accompagner les entités publiques et privées dans le renforcement de leur cybersécurité via une démarche proportionnée.",
+  "description": "Service numérique développé par l'ANSSI pour accompagner les entités publiques et privées dans le renforcement de leur cybersécurité via des démarches concrètes et proportionnées.",
   "language": "TypeScript",
   "features": [
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
-    "Aides & Éligibilité",
-    "Administration & Backoffice",
-    "Formulaires & Démarches"
+    "Formulaires & Démarches",
+    "Gestion des profils & Comptes",
+    "Statistiques & Rapports",
+    "Aides & Éligibilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Node.js",
     "PostgreSQL",
-    "Knex",
     "Vite",
     "Vitest",
-    "Express",
-    "React",
     "pnpm",
-    "Docker"
+    "Docker",
+    "Express",
+    "Knex",
+    "React",
+    "TypeScript",
+    "Storybook"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,9 +31,7 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Tests",
-    "Design System (DSFR & UI libs)",
-    "ORM & Accès aux données",
-    "CI/CD & Déploiement"
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
@@ -40,11 +39,15 @@
       "session"
     ]
   },
-  "tests": "Vitest pour les tests unitaires et d'intégration, avec utilisation de Docker pour la base de données de test.",
+  "tests": [
+    "Vitest",
+    "Storybook",
+    "Playwright"
+  ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-18T15:07:16+02:00",
+  "lastActivity": "2026-10-22T10:44:17+02:00",
   "status": "maintained",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -56,11 +59,9 @@
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "React & Next.js",
     "Docker & Conteneurs",
     "Sécurité & Auth",
-    "Bases de données SQL",
-    "CI/CD & GitHub Actions",
+    "Tests & Qualité",
     "Design System & UI"
   ]
 }
