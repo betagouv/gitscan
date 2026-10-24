@@ -1,25 +1,30 @@
-# Synthèse d'activité : betagouv (du 01/09 au 14/10)
+# Synthèse d'activité : betagouv (du 01/10 au 22/10)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une montée en puissance des fonctionnalités d'intelligence artificielle [science-infuse](/repos/betagouv/science-infuse) et une modernisation profonde des parcours usagers via l'intégration de solutions d'authentification comme FranceConnect [pass-sport](/repos/betagouv/pass-sport) ou ProConnect [stage-direct](/repos/betagouv/stage-direct). 
+L'activité de la semaine est marquée par des évolutions majeures sur des services publics clés, notamment la préparation de la campagne 2026 pour [ma-cantine](/repos/betagouv/ma-cantine) et l'intégration de nouveaux processus métier pour [pass-sport](/repos/betagouv/pass-sport). Plusieurs projets franchissent des étapes de modernisation technologique importantes, comme [pitchou](/repos/betagouv/pitchou) avec sa migration vers SvelteKit 3 ou [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice) qui refond son architecture pour améliorer la gestion documentaire et la génération de PDF.
 
-Parallèlement, un effort majeur est porté sur la fiabilité des outils de terrain, notamment avec l'amélioration du mode hors ligne [zacharie](/repos/betagouv/zacharie) et des outils cartographiques [sylvasan](/repos/betagouv/sylvasan). L'organisation renforce également ses capacités d'analyse de données et de pilotage pour les gestionnaires à travers de nouveaux tableaux de bord et l'intégration d'outils de statistiques [turgot-metabase](/repos/betagouv/turgot-metabase).
+L'innovation et la conformité sont également au cœur des développements, avec l'intégration de nouveaux moteurs d'intelligence artificielle dans [portail-rse-externe](/repos/betagouv/portail-rse-externe) et [science-infuse](/repos/betagouv/science-infuse), ainsi que la publication de la version 2.0 des [standards](/repos/betagouv/standards).
 
 ## Sécurité
-- **Corrections critiques** : Résolution d'une vulnérabilité de sécurité concernant la gestion des sessions utilisateurs [mon-suivi-justice](/repos/betagouv/mon-suivi-justice).
-- **Authentification et accès** : Renforcement massif contre les failles de type IDOR (accès non autorisé) [service-national-universel](/repos/betagouv/service-national-universel), [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives) et [recoco-plugins-mi-depafi](/repos/betagouv/recoco-plugins-mi-depafi). Mise en place de la double authentification (2FA) [reva](/repos/betagouv/reva) et amélioration des protocoles OAuth2 [rdv-service-public](/repos/betagouv/rdv-service-public).
-- **Protection des données et vie privée** : Mise en œuvre de mesures de protection des données personnelles (RGPD) via le masquage des logs [service-national-universel](/repos/betagouv/service-national-universel) et sécurisation de la transmission des données vers les outils de suivi [recoco-sync](/repos/betagouv/recoco-sync).
-- **Sécurité du cycle de développement (DevSecOps)** : Intégration d'outils d'analyse automatique des vulnérabilités et de la configuration (Bandit, Checkov, Zizmor) directement dans les pipelines CI/CD [transports-sanitaires-sites-conformes](/repos/betagouv/transports-sanitaires-sites-conformes), [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal).
+- Renforcement massif de la protection des données et de la lutte contre les accès non autorisés (failles IDOR, attaques CSRF) pour [service-national-universel](/repos/betagouv/service-national-universel) et [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives).
+- Correction d'une vulnérabilité critique concernant la gestion des sessions utilisateurs dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice).
+- Amélioration de l'authentification et de la gestion des accès (2FA, OAuth2, restriction d'API) pour [transports-sanitaires-sites-conformes](/repos/betagouv/transports-sanitaires-sites-conformes), [rdv-service-public](/repos/betagouv/rdv-service-public) et [rdv-service-public-metabase](/repos/betagouv/rdv-service-public-metabase).
+- Mise en place de protections contre les injections et sécurisation des chemins de fichiers pour [recoco-plugins-mi-depafi](/repos/betagouv/recoco-plugins-mi-depafi) et [recoco-sync](/repos/betagouv/recoco-sync).
+- Renforcement de la sécurité des infrastructures et des communications (WAF, politiques CSP) pour [seves](/repos/betagouv/seves) et [mon-logement-etudiant](/repos/betagouv/mon-logement-etudiant).
+- Mise à jour des dépendances pour corriger des vulnérabilités dans [mon-profil-anssi](/repos/betagouv/mon-profil-anssi) et [zacharie](/repos/betagouv/zacharie).
 
 ## Autres changements notables
-- **Évolutions architecturales** : Refonte majeure de la logique métier vers le serveur [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice), intégration d'un nouveau moteur d'intelligence artificielle v2 [portail-rse-externe](/repos/betagouv/portail-rse-externe) et restructuration profonde du moteur de calcul [mon-entreprise](/repos/betagouv/mon-entreprise).
-- **Versions et standards** : Publication de la version 2.0 des standards [standards](/repos/betagouv/standards) et lancement de la première version stable (V1.0.0) de [slack2tchap](/repos/betagouv/slack2tchap).
-- **Infrastructure** : Initialisation de l'infrastructure en tant que code (IaC) [nitrates-iac](/repos/betagouv/nitrates-iac) et déploiement de nouveaux services sur la plateforme Scalingo [scalingo-gotenberg](/repos/betagouv/scalingo-gotenberg).
+- Refonte profonde des moteurs de calcul et des interfaces pour [mon-entreprise](/repos/betagouv/mon-entreprise) et [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice).
+- Migration technologique majeure et modernisation de la stack pour [pitchou](/repos/betagouv/pitchou).
+- Transition vers une architecture "stateless" pour faciliter le déploiement de [slack2tchap](/repos/betagouv/slack2tchap).
+- Publication de la version 2.0 des [standards](/repos/betagouv/standards).
+- Intégration de nouveaux moteurs d'IA (v2) pour [portail-rse-externe](/repos/betagouv/portail-rse-externe).
 
 ## Dépôts les plus actifs
-- [zacharie](/repos/betagouv/zacharie) : Optimisation du mode hors ligne, de la sécurité des données et de l'expérience mobile.
-- [service-national-universel](/repos/betagouv/service-national-universel) : Sécurisation intensive des accès et simplification des parcours utilisateurs.
-- [maestro](/repos/betagouv/maestro) : Avancées majeures sur le paramétrage des plans et la gestion automatisée des prélèvements.
-- [mon-service-securise](/repos/betagouv/mon-service-securise) : Lancement d'une API publique et organisation des services par groupes.
-- [sylvasan](/repos/betagouv/sylvasan) : Amélioration des outils de terrain (cartographie, boussole, gestion photo).
-- [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice) : Modernisation de la stack technique et de la gestion documentaire.
+- [ma-cantine](/repos/betagouv/ma-cantine) : Préparation intensive de la campagne de télédéclaration 2026.
+- [mon-entreprise](/repos/betagouv/mon-entreprise) : Refonte de l'accueil et mise en conformité des règles de calcul pour Mayotte.
+- [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice) : Modernisation de l'architecture et amélioration de la gestion documentaire.
+- [pitchou](/repos/betagouv/pitchou) : Migration vers de nouvelles technologies et enrichissement des capacités de gestion.
+- [nitrates](/repos/betagouv/nitrates) : Mise à jour réglementaire et refonte de l'interface cartographique.
+- [pass-sport](/repos/betagouv/pass-sport) : Intégration de nouveaux processus métier et optimisation du parcours usager.
+- [sante-psy](/repos/betagouv/sante-psy) : Mise à jour majeure du parcours de gestion des étudiants.

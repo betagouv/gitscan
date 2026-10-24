@@ -1,26 +1,27 @@
-# Synthèse d'activité : numerique-gouv (du 01/09 au 30/09)
+# Synthèse d'activité : numerique-gouv (du 13/10 au 23/10)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une volonté de modernisation profonde, tant sur le plan architectural que sur celui de l'expérience utilisateur. Les efforts se sont concentrés sur l'amélioration de la sécurité (introduction des Passkeys et renforcement de l'authentification), l'accessibilité numérique et l'internationalisation des services.
+L'activité de cette période est marquée par des transformations structurelles majeures, notamment le rebranding de la solution de création de sites vers [sites-conformes](/repos/numerique-gouv/sites-conformes) et la refonte complète de l'architecture de [oots-france](/repos/numerique-gouv/oots-france) vers Ruby on Rails. Les efforts se sont également concentrés sur l'internationalisation des outils de création de sites et la modernisation de l'expérience utilisateur.
 
-Des projets majeurs comme [oots-france](/repos/numerique-gouv/oots-france) ont franchi des étapes clés avec des refontes technologiques complètes, tandis que l'écosystème mobile [ami](/repos/numerique-gouv/ami-app-ios) et [ami](/repos/numerique-gouv/ami-app-android) se modernise pour offrir des standards de sécurité et de performance accrus.
+Parallèlement, une montée en puissance de la sécurité est observée à travers l'adoption des Passkeys sur les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android), ainsi que le renforcement des protocoles d'authentification et de protection des données sur l'ensemble des services.
 
 ## Sécurité
-- **Authentification moderne** : Introduction du support des Passkeys pour une connexion plus sécurisée sur [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android), et renforcement de la double authentification (2FA) sur [sites-conformes](/repos/numerique-gouv/sites-conformes).
-- **Protection des infrastructures** : Durcissement des politiques de sécurité (CSP, gestion des cookies, listes blanches d'IP) sur [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et [francetransfert](/repos/numerique-gouv/francetransfert).
-- **Maintenance de sécurité** : Corrections de vulnérabilités critiques via la mise à jour de dépendances clés sur [django-dsfr](/repos/numerique-gouv/django-dsfr) et [dockerfiles](/repos/numerique-gouv/dockerfiles).
-- **Sécurité CI/CD** : Mise en place de contrôles automatiques des vulnérabilités lors des changements de dépendances sur [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Renforcement de l'authentification via la double authentification (2FA) dans [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Introduction du support des Passkeys pour une authentification moderne et sécurisée sur [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android).
+- Sécurisation des données sensibles par la suppression du logging des clés API et des jetons utilisateurs dans [b3desk](/repos/numerique-gouv/b3desk).
+- Amélioration de la protection contre les vulnérabilités via le contrôle automatique des CVE dans [sites-conformes](/repos/numerique-gouv/sites-conformes) et la mise à jour de dépendances critiques dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
+- Durcissement des politiques de sécurité (CSP, cookies, listes blanches d'IP) dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et [francetransfert](/repos/numerique-gouv/francetransfert).
 
 ## Autres changements notables
-- **Refontes architecturales** : Transition majeure vers Ruby on Rails pour [oots-france](/repos/numerique-gouv/oots-france) et restructuration de l'architecture mobile pour [ami-app-ios](/repos/numerique-gouv/ami-app-ios).
-- **Internationalisation** : Déploiement de fonctionnalités multilingues (sélecteur de langue, traduction des formulaires) sur [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1).
-- **Accessibilité (A11y)** : Travaux importants pour garantir une expérience inclusive et conforme sur [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage).
-- **Optimisation de la chaîne de développement** : Modernisation du reporting de tests avec Allure 3 sur [ami-system-tests](/repos/numerique-gouv/ami-system-tests) et automatisation des configurations de build sur [ami-app-android](/repos/numerique-gouv/ami-app-android).
-- **Lancement de projet** : Initialisation de [agent-harness](/repos/numerique-gouv/agent-harness), un nouvel environnement dédié à l'évaluation d'agents.
+- Migration architecturale majeure de [oots-france](/repos/numerique-gouv/oots-france) vers le framework Ruby on Rails avec intégration du Design System de l'État (DSFR).
+- Rebranding officiel du projet vers [sites-conformes-saas](/repos/numerique-gouv/sites-conformes-saas).
+- Modernisation de la chaîne de tests et du reporting (passage à Allure 3) pour [ami-system-tests](/repos/numerique-gouv/ami-system-tests).
+- Refonte de l'architecture des applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
+- Optimisation des processus de déploiement sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
 
 ## Dépôts les plus actifs
-- [oots-france](/repos/numerique-gouv/oots-france) : Migration architecturale complète et intégration du Design System de l'État.
-- [ami-app-android](/repos/numerique-gouv/ami-app-android) : Montée en puissance de la sécurité et automatisation des processus de déploiement.
-- [ami-system-tests](/repos/numerique-gouv/ami-system-tests) : Stabilisation de la suite de tests et modernisation de la chaîne CI/CD.
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Améliorations significatives sur l'internationalisation et l'interface utilisateur.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Évolutions fonctionnelles majeures et renforcement de la sécurité.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) : Travaux intensifs sur l'internationalisation et l'interface d'administration.
+- [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android) : Évolutions majeures sur la sécurité (Passkeys) et l'architecture.
+- [oots-france](/repos/numerique-gouv/oots-france) : Réécriture complète du système et modernisation de l'interface.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Amélioration des fonctionnalités de suivi, de gestion des consentements et de l'accessibilité.
+- [ami-system-tests](/repos/numerique-gouv/ami-system-tests) : Optimisation de la fiabilité des tests et de la chaîne CI/CD.

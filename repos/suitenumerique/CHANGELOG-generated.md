@@ -1,25 +1,26 @@
-# Synthèse d'activité : suitenumerique (du 01/10 au 15/10/2026)
+# Synthèse d'activité : suitenumerique (du 16/10 au 23/10/2026)
 
 ## Résumé de l'activité
-La période est marquée par une expansion majeure des capacités de communication, notamment avec l'intégration de la messagerie Matrix dans [hub](/repos/suitenumerique/hub) et une refonte profonde de l'expérience mobile pour [messages](/repos/suitenumerique/messages) et [dictaphone](/repos/suitenumerique/dictaphone). Parallèlement, la gestion des fichiers et du stockage gagne en puissance et en fiabilité grâce aux évolutions de [drive](/repos/suitenumerique/drive) et [transfers](/repos/suitenumerique/transfers).
+L'activité récente de l'organisation est marquée par une montée en puissance des services de communication et de gestion de données. L'intégration majeure de la messagerie Matrix dans [hub](/repos/suitenumerique/hub) et les avancées sur [dictaphone](/repos/suitenumerique/dictaphone) et [conversations](/repos/suitenumerique/conversations) renforcent l'offre collaborative de la suite. Parallèlement, [drive](/repos/suitenumerique/drive) et [transfers](/repos/suitenumerique/transfers) ont bénéficié d'optimisations cruciales pour la gestion de gros volumes et la fiabilité des échanges de fichiers.
 
-L'ensemble de l'organisation a fait de la sécurité et de la protection de la vie privée une priorité absolue. Les efforts se sont concentrés sur le durcissement des API, l'intégration de nouveaux outils de détection de malwares et la garantie de la confidentialité des échanges pour les utilisateurs finaux.
+L'accent a également été mis sur l'expérience utilisateur et le pilotage, avec de nouveaux outils d'administration dans [st-deploycenter](/repos/suitenumerique/st-deploycenter) et une interface enrichie pour [calendars](/repos/suitenumerique/calendars) et [docs](/repos/suitenumerique/docs). Ces évolutions visent à offrir une plateforme plus robuste, pilotable et accessible pour les utilisateurs finaux et les administrateurs.
 
 ## Sécurité
-- **Protection contre les attaques et vulnérabilités** : Renforcement des API contre les attaques SSRF ([transfers](/repos/suitenumerique/transfers), [file-scanner](/repos/suitenumerique/file-scanner)) et correction de nombreuses vulnérabilités critiques (CVE) sur les dépendances ([meet](/repos/suitenumerique/meet), [projects](/repos/suitenumerique/projects), [conversations](/repos/suitenumerique/conversations)).
-- **Détection de menaces** : Introduction d'un moteur de détection de malwares via le protocole ICAP ([django-lasuite](/repos/suitenumerique/django-lasuite)) et intégration de l'antivirus dans le flux de scan des fichiers ([st-ansible](/repos/suitenumerique/st-ansible)).
-- **Confidentialité et vie privée** : Garantie qu'aucune donnée de conversation (prompts) n'est enregistrée dans les journaux ou la télémétrie ([conversations](/repos/suitenumerique/conversations)).
-- **Authentification et accès** : Amélioration de la conformité aux standards de sécurité (RFC 9700) et de la gestion des déconnexions ([accounts](/repos/suitenumerique/accounts), [interop](/repos/suitenumerique/interop)), ainsi que le renforcement des permissions sur les domaines ([people](/repos/suitenumerique/people)).
-- **Chiffrement** : Adoption de l'algorithme Argon2 pour le hachage des mots de passe ([menshen](/repos/suitenumerique/menshen)).
+- **Protection contre les attaques réseau** : Renforcement de la sécurité contre les attaques SSRF dans [transfers](/repos/suitenumerique/transfers) et [file-scanner](/repos/suitenumerique/file-scanner).
+- **Détection de menaces** : Introduction d'un nouveau moteur de détection de malwares via le protocole ICAP dans [django-lasuite](/repos/suitenumerique/django-lasuite).
+- **Confidentialité et protection des données** : Garantie que les prompts utilisateurs ne sont pas enregistrés dans les journaux dans [conversations](/repos/suitenumerique/conversations) et masquage des clés API dans [messages](/repos/suitenumerique/messages).
+- **Correction de vulnérabilités** : Résolution de failles critiques (XSS, CVE diverses) dans [projects](/repos/suitenumerique/projects), [meet](/repos/suitenumerique/meet) et [people](/repos/suitenumerique/people).
+- **Durcissement de l'authentification** : Adoption de nouveaux algorithmes de hachage (Argon2) et amélioration des flux OIDC dans [menshen](/repos/suitenumerique/menshen) et [accounts](/repos/suitenumerique/accounts).
 
 ## Autres changements notables
-- **Modernisation des infrastructures de développement** : Lancement d'un dépôt de workflows CI/CD réutilisables pour standardiser les processus de l'organisation ([ci](/repos/suitenumerique/ci)) et migration du frontend de [calendars](/repos/suitenumerique/calendars) vers Vite pour de meilleures performances.
-- **Évolutions technologiques majeures** : Reconstruction complète du site de documentation avec Astro ([docs-website](/repos/suitenumerique/docs-website)) et migration du stockage vers RustFS pour [drive](/repos/suitenumerique/drive).
-- **Nouveaux services et outils** : Initialisation de nouveaux projets clés comme [encryption](/repos/suitenumerique/encryption) et [gallene-sdk](/repos/suitenumerique/gallene-sdk).
+- **Migrations d'infrastructure** : Passage massif du stockage objet de MinIO vers RustFS ou Silo pour [drive](/repos/suitenumerique/drive), [docs](/repos/suitenumerique/docs) et [accounts](/repos/suitenumerique/accounts).
+- **Standardisation du développement** : Lancement du dépôt [ci](/repos/suitenumerique/ci) proposant une bibliothèque de workflows GitHub Actions réutilisables pour l'ensemble de la suite.
+- **Modernisation technologique** : Migration du frontend vers Vite pour [calendars](/repos/suitenumerique/calendars) et reconstruction complète du site de documentation avec Astro pour [docs-website](/repos/suitenumerique/docs-website).
 
 ## Dépôts les plus actifs
-- [messages](/repos/suitenumerique/messages) : Refonte complète de l'interface mobile et renforcement de la sécurité.
-- [drive](/repos/suitenumerique/drive) : Optimisations majeures de performance et nouveaux outils d'administration du stockage.
-- [hub](/repos/suitenumerique/hub) : Intégration massive et complète de la messagerie Matrix.
-- [meet](/repos/suitenumerique/meet) : Améliorations de l'expérience de partage d'écran, de l'accessibilité et de la sécurité.
-- [st-ansible](/repos/suitenumerique/st-ansible) : Extension des services gérés (Conversations, Transfers) et durcissement de l'infrastructure.
+- [drive](/repos/suitenumerique/drive) : Optimisations de performance SQL, nouveaux outils d'administration et mise en place de l'observabilité.
+- [meet](/repos/suitenumerique/meet) : Améliorations du partage d'écran, de l'accessibilité et corrections de sécurité majeures.
+- [hub](/repos/suitenumerique/hub) : Intégration complète et temps réel de la messagerie Matrix.
+- [st-ansible](/repos/suitenumerique/st-ansible) : Introduction de nouveaux services (Conversations, Transfers) et optimisation de l'infrastructure réseau.
+- [dictaphone](/repos/suitenumerique/dictaphone) : Améliorations de l'expérience mobile et stabilisation du traitement audio.
+- [transfers](/repos/suitenumerique/transfers) : Sécurisation intensive de l'API et amélioration de la fiabilité des téléchargements volumineux.
