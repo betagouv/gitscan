@@ -1,15 +1,18 @@
-## Changelog : lasuite-landingpage (30 derniers jours, au 28 septembre 2026)
+## Changelog : lasuite-landingpage (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois-ci a été marqué par un effort majeur sur l'accessibilité numérique du site afin de garantir une expérience inclusive pour tous les utilisateurs. Parallèlement, plusieurs mises à jour de contenus (FAQ, mentions légales, informations éditoriales) ont été effectuées, et une annonce concernant une maintenance prévue en octobre a été publiée.
+Ce mois-ci, la plateforme a été enrichie de nouvelles fonctionnalités de contact et de mises à jour de contenu importantes (événements, maintenance, statistiques). Des optimisations techniques ont également été réalisées pour améliorer la gestion du routage, notamment pour l'intégration du site événementiel "On fait suite".
 
 ### Évolutions fonctionnelles
-- Mise à jour de la FAQ concernant le service Tchap [#250](https://github.com/numerique-gouv/lasuite-landingpage/issues/250) et [#252](https://github.com/numerique-gouv/lasuite-landingpage/issues/252).
-- Actualisation des informations éditoriales (Resana) [#246](https://github.com/numerique-gouv/lasuite-landingpage/issues/246) et des mentions légales [#249](https://github.com/numerique-gouv/lasuite-landingpage/issues/249).
-- Annonce d'une interruption de service pour maintenance prévue en octobre [#259](https://github.com/numerique-gouv/lasuite-landingpage/issues/259).
+- Ajout d'une modale de contact pour faciliter les échanges avec les utilisateurs ([#271](https://github.com/numerique-gouv/lasuite-landingpage/issues/271), [#270](https://github.com/numerique-gouv/lasuite-landingpage/issues/270), [#258](https://github.com/numerique-gouv/lasuite-landingpage/issues/258)).
+- Mise à jour de la section "Hero" avec l'ajout d'un nouveau teaser ([#272](https://github.com/numerique-gouv/lasuite-landingpage/issues/272)).
+- Correction d'un bug sur le widget d'intégration (embed) utilisé par les applications hôtes ([#277](https://github.com/numerique-gouv/lasuite-landingpage/issues/277)).
+- Actualisation des contenus éditoriaux et informatifs :
+    - Mise à jour des statistiques d'utilisateurs.
+    - Ajout de webinaires et mise à jour du calendrier Resana 2027 ([#268](https://github.com/numerique-gouv/lasuite-landingpage/issues/268)).
+    - Communication sur les périodes de maintenance ([#261](https://github.com/numerique-gouv/lasuite-landingpage/issues/261), [#259](https://github.com/numerique-gouv/lasuite-landingpage/issues/259)).
+    - Modifications de la barre d'information Tchap ([#265](https://github.com/numerique-gouv/lasuite-landingpage/issues/265), [#263](https://github.com/numerique-gouv/lasuite-landingpage/issues/263)).
+- Ajustements de l'interface utilisateur : modification de l'icône de l'en-tête pour "On fait suite" ([#260](https://github.com/numerique-gouv/lasuite-landingpage/issues/260)).
 
 ### Évolutions techniques
-- **Amélioration de l'accessibilité (A11y) :**
-    - Optimisation des textes alternatifs pour les logos d'organisations [#245](https://github.com/numerique-gouv/lasuite-landingpage/issues/245), le logo produit [#244](https://github.com/numerique-gouv/lasuite-landingpage/issues/244) et l'image de la roadmap [#243](https://github.com/numerique-gouv/lasuite-landingpage/issues/243).
-    - Amélioration de la navigation pour les technologies d'assistance (gestion des accordéons FAQ [#240](https://github.com/numerique-gouv/lasuite-landingpage/issues/240), structuration des listes de liens [#238](https://github.com/numerique-gouv/lasuite-landingpage/issues/238) et masquage des éléments décoratifs [#242](https://github.com/numerique-gouv/lasuite-landingpage/issues/242)).
-    - Renforcement de la sémantique et des étiquettes (liens de connexion mobile [#236](https://github.com/numerique-gouv/lasuite-landingpage/issues/236), titres de pages [#239](https://github.com/numerique-gouv/lasuite-landingpage/issues/239), transfert français [#247](https://github.com/numerique-gouv/lasuite-landingpage/issues/247) et témoignages [#237](https://github.com/numerique-gouv/lasuite-landingpage/issues/237), [#241](https://github.com/numerique-gouv/lasuite-landingpage/issues/241)).
+- Optimisation du routage pour permettre la coexistence du site événementiel "On fait suite" (sous le chemin `/onfaitsuite`) et des API de support ([#264](https://github.com/numerique-gouv/lasuite-landingpage/issues/264), [#273](https://github.com/numerique-gouv/lasuite-landingpage/issues/273)).

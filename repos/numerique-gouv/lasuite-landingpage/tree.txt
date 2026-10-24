@@ -99,6 +99,9 @@
 ├── package.json
 ├── postcss.config.js
 ├── public
+│   ├── altcha
+│   │   └── workers
+│   │       └── scrypt.js
 │   ├── assets
 │   │   ├── .gitkeep
 │   │   ├── bg-nid-abeille.webp
@@ -263,10 +266,108 @@
 │   ├── lasuite.webp
 │   ├── lasuite_logo.png
 │   ├── numeriquegouv.png
+│   ├── onfaitsuite
+│   │   ├── 404.html
+│   │   ├── _next
+│   │   │   └── static
+│   │   │       ├── chunks
+│   │   │       │   ├── 793-80cdf7734bf9df1a.js
+│   │   │       │   ├── 841-95aeda6a9dc4506e.js
+│   │   │       │   ├── 88-3c2d8ba84bc9b1dc.js
+│   │   │       │   ├── 942-8c24cebe803d0729.js
+│   │   │       │   ├── framework-8aa8eb631fc45178.js
+│   │   │       │   ├── main-8c7e092a39b73572.js
+│   │   │       │   ├── pages
+│   │   │       │   │   ├── _app-497b0056dbc46318.js
+│   │   │       │   │   ├── _error-0f9ef116eb8c1202.js
+│   │   │       │   │   ├── en-b1cb6e69dd2ceb12.js
+│   │   │       │   │   ├── fr-86f242676a5701cc.js
+│   │   │       │   │   ├── index-67070ee57ac4f2a2.js
+│   │   │       │   │   ├── mentions-legales-2b0499052c706fe2.js
+│   │   │       │   │   └── simulation-6d5784987947bb30.js
+│   │   │       │   ├── polyfills-42372ed130431b0a.js
+│   │   │       │   └── webpack-4cc6960a2a207ad7.js
+│   │   │       ├── css
+│   │   │       │   └── d27ef5d8ca265a84.css
+│   │   │       ├── dLf0u6E4f5VZ9Cc3AqW_o
+│   │   │       │   ├── _buildManifest.js
+│   │   │       │   └── _ssgManifest.js
+│   │   │       └── media
+│   │   │           └── logo.a110c539.svg
+│   │   ├── en.html
+│   │   ├── favicon-dark.ico
+│   │   ├── favicon.ico
+│   │   ├── fonts
+│   │   │   ├── Marianne-Bold.woff2
+│   │   │   ├── Marianne-Medium.woff2
+│   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── OFL.txt
+│   │   │   ├── PlayfairDisplay-Black.ttf
+│   │   │   ├── PlayfairDisplay-BlackItalic.ttf
+│   │   │   ├── PlayfairDisplay-Bold.ttf
+│   │   │   ├── PlayfairDisplay-BoldItalic.ttf
+│   │   │   ├── PlayfairDisplay-ExtraBold.ttf
+│   │   │   ├── PlayfairDisplay-ExtraBoldItalic.ttf
+│   │   │   ├── PlayfairDisplay-Italic.ttf
+│   │   │   ├── PlayfairDisplay-Medium.ttf
+│   │   │   ├── PlayfairDisplay-MediumItalic.ttf
+│   │   │   ├── PlayfairDisplay-Regular.ttf
+│   │   │   ├── PlayfairDisplay-SemiBold.ttf
+│   │   │   └── PlayfairDisplay-SemiBoldItalic.ttf
+│   │   ├── fr.html
+│   │   ├── images
+│   │   │   ├── Banniere.png
+│   │   │   ├── BanniereFooter.png
+│   │   │   ├── BanniereStage-1440.webp
+│   │   │   ├── BanniereStage-2160.webp
+│   │   │   ├── BanniereStage.png
+│   │   │   ├── BanniereStage.webp
+│   │   │   ├── BrickWall.png
+│   │   │   ├── Couch.png
+│   │   │   ├── Couch.webp
+│   │   │   ├── OnFaitSuite.png
+│   │   │   ├── OnFaitSuite.webp
+│   │   │   ├── devise.svg
+│   │   │   ├── events_photos
+│   │   │   │   └── OFS-*.jpg  (83 files)
+│   │   │   ├── link-blue.svg
+│   │   │   ├── link-grey.svg
+│   │   │   ├── logotype.svg
+│   │   │   ├── marianne.svg
+│   │   │   ├── miniature_yt.png
+│   │   │   └── products
+│   │   │       ├── assistant-illustration.png
+│   │   │       ├── assistant-logo.svg
+│   │   │       ├── docs-illustration.png
+│   │   │       ├── docs-logo.svg
+│   │   │       ├── fichiers-illustration.png
+│   │   │       ├── fichiers-logo.svg
+│   │   │       ├── francetransfert-illustration.png
+│   │   │       ├── francetransfert-logo.svg
+│   │   │       ├── grist-illustration.png
+│   │   │       ├── grist-logo.svg
+│   │   │       ├── messagerie-illustration.png
+│   │   │       ├── messagerie-logo.svg
+│   │   │       ├── tchap-illustration.png
+│   │   │       ├── tchap-logo.svg
+│   │   │       ├── transcript-illustration.png
+│   │   │       ├── transcripts-logo.svg
+│   │   │       ├── visio-illustration.png
+│   │   │       └── visio-logo.svg
+│   │   ├── index.html
+│   │   ├── locales
+│   │   │   ├── en.json
+│   │   │   └── fr.json
+│   │   ├── mentions-legales.html
+│   │   └── simulation.html
 │   ├── robots.txt
 │   ├── sitemap.xml
-│   └── suite-numerique.png
+│   ├── suite-numerique.png
+│   └── widgets
+│       └── support.js
 ├── renovate.json
+├── scripts
+│   └── build-widgets.mjs
 ├── src
 │   ├── assets
 │   │   ├── 404.svg
@@ -482,6 +583,13 @@
 │   │   │       ├── WarningTriangleIcon.tsx
 │   │   │       ├── WebinarIcon.tsx
 │   │   │       └── index.ts
+│   │   ├── support
+│   │   │   ├── AltchaWidget.tsx
+│   │   │   ├── SupportAttachments.tsx
+│   │   │   ├── SupportButton.tsx
+│   │   │   ├── SupportPanel.tsx
+│   │   │   ├── SupportSuccessToast.tsx
+│   │   │   └── types.ts
 │   │   └── ui-kit-v2
 │   │       └── Button.tsx
 │   ├── constant.ts
@@ -523,6 +631,11 @@
 │   │       └── Marianne-Thin_Italic-subset.woff2
 │   ├── hooks
 │   │   └── useLiveAnnouncer.ts
+│   ├── lib
+│   │   └── support
+│   │       ├── attachments.ts
+│   │       ├── channels.ts
+│   │       └── recipients.ts
 │   ├── locales
 │   │   ├── de.yml
 │   │   ├── en.yml
@@ -540,7 +653,11 @@
 │   │   │   ├── produits
 │   │   │   │   └── grist
 │   │   │   │       └── contact.ts
-│   │   │   └── services.ts
+│   │   │   ├── services.ts
+│   │   │   └── support
+│   │   │       ├── challenge.ts
+│   │   │       ├── config.ts
+│   │   │       └── deliver.ts
 │   │   ├── grist-2024-qr.tsx
 │   │   ├── grist-paris-summit-2024.tsx
 │   │   ├── index.tsx
@@ -598,12 +715,21 @@
 │   │   ├── dsfr.css
 │   │   ├── globals.css
 │   │   └── tailwind.css
+│   ├── types
+│   │   └── altcha.d.ts
 │   └── utils
 │       ├── get.ts
-│       ├── inject-crisp.ts
 │       ├── markdown.ts
 │       └── products.tsx
 ├── tailwind.config.ts
 ├── tsconfig.json
+├── widgets
+│   └── support
+│       ├── shims
+│       │   ├── next-link.tsx
+│       │   └── next-script.tsx
+│       └── src
+│           ├── entry.tsx
+│           └── widget-input.css
 └── yarn.lock
-96 directories, 512 files
+122 directories, 694 files
