@@ -1,30 +1,22 @@
-## Changelog : relecteur (30 derniers jours, au 20/10/2026)
+## Changelog : relecteur (30 derniers jours, au 22 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'intégration de la revue de code directement dans les pipelines CI (via GitHub Actions), permettant des résumés automatiques en français. L'outil est devenu beaucoup plus robuste face aux contraintes des modèles d'IA (gestion des limites de débit et des interruptions) et offre désormais des capacités avancées pour générer automatiquement des cas de test à partir de l'historique du projet.
+Ce mois-ci, relecteur a considérablement étendu ses capacités en devenant capable d'effectuer des revues de code directement sur les Pull Requests, y compris dans les dépôts privés. L'outil d'évaluation a également été enrichi pour être plus précis, plus résilient aux limites des API d'IA, et capable de générer automatiquement des cas de test à partir de l'historique du projet.
 
 ### Évolutions fonctionnelles
-- **Intégration CI/CD** : Possibilité d'exécuter des revues de Pull Requests directement dans la CI via une GitHub Action, avec génération de résumés en français.
-- **Configuration enrichie** : 
-    - Sélection précise des fichiers à réviser via le fichier `.relecteur/config.toml`.
-    - Choix du modèle d'IA et du "juge" directement dans la configuration du dépôt (support de l'API Anthropic).
-    - Utilisation des clés d'API et des paramètres spécifiques au dépôt évalué (via `.env`).
-- **Reporting amélioré** : Ajout de métriques de performance détaillées, incluant le temps moyen et le nombre de tokens consommés par revue.
-- **Génération de cas d'évaluation** : 
-    - Capacité de créer automatiquement des cas de test à partir de l'historique du dépôt ou des commentaires de revue existants.
-    - Possibilité de lier les corrections suggérées aux cas de test créés.
+- **Revue de Pull Requests (PR) :** Intégration de la revue automatique directement dans le flux de travail GitHub, avec affichage de résumés détaillés pour chaque revue au sein des checks de la PR.
+- **Support des dépôts privés :** Capacité désormais étendue pour analyser les projets privés via une gestion sécurisée des jetons d'accès.
+- **Configuration flexible :** Possibilité de sélectionner précisément les fichiers à réviser via le fichier de configuration `.relecteur/config.toml`.
+- **Génération automatique de cas de test :** Nouvelle compétence permettant de créer des cas d'évaluation à partir de l'historique du dépôt ou des commentaires de revue existants.
+- **Rapports enrichis :** Les rapports d'évaluation incluent désormais des métriques de consommation (temps moyen et nombre de tokens par revue).
 
 ### Évolutions techniques
-- **Résilience accrue** : 
-    - Amélioration de la gestion des limites de débit (rate limits) et des timeouts : le système peut désormais reprendre une revue là où elle s'était arrêtée après une pause automatique.
-    - Meilleure gestion des erreurs de service (classification des erreurs 503 comme erreurs de fournisseur).
-- **Optimisation du moteur d'évaluation** :
-    - Introduction d'un "DefectFinder" et utilisation de probabilités pour améliorer la précision du jugement des défauts.
-    - Amélioration du traitement des grandes Pull Requests en les segmentant par groupes de fichiers.
-    - Refonte du système de scoring pour une meilleure gestion des cas de "silence" (quand l'IA ne détecte rien).
-- **Refactoring** : Nettoyage des interfaces publiques, renommage des classes de statut pour plus de clarté et renforcement de l'immutabilité des constantes du moteur.
+- **Résilience accrue :** Amélioration de la gestion des erreurs réseau et des limites de débit (rate limits) des modèles d'IA, avec des mécanismes de reprise automatique des revues interrompues par un push ou un timeout.
+- **Moteur d'évaluation optimisé :** Refonte du système de détection des défauts utilisant des probabilités et un nouveau composant `DefectFinder`.
+- **Auto-évaluation :** Mise en place d'un pipeline CI/CD où relecteur utilise son propre moteur pour réviser ses propres Pull Requests.
+- **Optimisation du traitement :** Amélioration de la performance en traitant les fichiers par groupes lors des revues à haut effort.
 
 ### Autres changements
-- **Documentation** : Mise à jour des guides concernant la gestion des grandes Pull Requests et les prérequis de version Git.
-- **Tests et Qualité** : Amélioration de la fiabilité des tests en remplaçant les sorties simulées par des enregistrements de runs réels.
-- **Maintenance** : Arrêt du suivi des artefacts de build.
+- **Documentation :** Refonte majeure de la documentation, désormais disponible par défaut en français avec un guide de démarrage rapide structuré par audience.
+- **Comparatifs :** Ajout de comparaisons documentées avec des outils tiers (Claude Code Review, CodeRabbit et Greptile) pour expliciter la valeur ajoutée de relecteur.
+- **Clarification :** Précisions sur le fonctionnement du "juge" (seuil de probabilité) et sur l'utilisation des instructions de revue du dépôt.
