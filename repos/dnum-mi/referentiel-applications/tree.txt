@@ -431,6 +431,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20261015085418_preserve_used_actor_types
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20261021150000_add_beta_features_permission
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── qa-correlation-fixtures.ts
 │   │   ├── schema
@@ -566,8 +568,10 @@
 │   │   │   ├── base.service.ts
 │   │   │   ├── common.module.ts
 │   │   │   ├── decorators
+│   │   │   │   ├── beta-feature.metadata.ts
 │   │   │   │   ├── impersonator.decorator.ts
 │   │   │   │   ├── required-permissions.decorator.ts
+│   │   │   │   ├── requires-beta-feature.decorator.ts
 │   │   │   │   ├── user-id.decorator.ts
 │   │   │   │   └── user.decorator.ts
 │   │   │   ├── dto
@@ -579,6 +583,8 @@
 │   │   │   │   ├── all-exceptions.filter.spec.ts
 │   │   │   │   └── all-exceptions.filter.ts
 │   │   │   ├── guards
+│   │   │   │   ├── beta-feature.guard.spec.ts
+│   │   │   │   ├── beta-feature.guard.ts
 │   │   │   │   └── permission.guard.ts
 │   │   │   ├── http
 │   │   │   │   ├── outbound-dispatcher.spec.ts
@@ -643,6 +649,7 @@
 │   │   │   │   ├── jwt-validation.config.ts
 │   │   │   │   ├── maia.config.spec.ts
 │   │   │   │   ├── maia.config.ts
+│   │   │   │   ├── oidc.config.spec.ts
 │   │   │   │   ├── oidc.config.ts
 │   │   │   │   ├── technology.config.spec.ts
 │   │   │   │   └── technology.config.ts
@@ -706,6 +713,9 @@
 │   │   │       ├── user-permissions-changed.template.html
 │   │   │       └── user-unblocked.template.html
 │   │   ├── enum.ts
+│   │   ├── features
+│   │   │   ├── beta-features.spec.ts
+│   │   │   └── beta-features.ts
 │   │   ├── grist
 │   │   │   ├── dto
 │   │   │   │   ├── grist-record.dto.ts
@@ -787,8 +797,11 @@
 │   │   │   ├── links.module.ts
 │   │   │   └── links.service.ts
 │   │   ├── logger
+│   │   │   ├── logger.integration.spec.ts
+│   │   │   ├── logger.module.spec.ts
 │   │   │   ├── logger.module.ts
 │   │   │   ├── logger.service.ts
+│   │   │   ├── logging.service.spec.ts
 │   │   │   ├── logging.service.ts
 │   │   │   └── request-logging.interceptor.ts
 │   │   ├── main.ts
@@ -848,6 +861,8 @@
 │   │   ├── permissions
 │   │   │   ├── delegated-auth.spec.ts
 │   │   │   ├── delegated-auth.ts
+│   │   │   ├── impersonation-auth.spec.ts
+│   │   │   ├── impersonation-auth.ts
 │   │   │   ├── role-to-permissions.spec.ts
 │   │   │   └── role-to-permissions.ts
 │   │   ├── prisma
@@ -894,6 +909,7 @@
 │   │   │   ├── infrastructure
 │   │   │   │   └── repository
 │   │   │   │       ├── relation.repository.interface.ts
+│   │   │   │       ├── relation.repository.spec.ts
 │   │   │   │       └── relation.repository.ts
 │   │   │   ├── relation.controller.ts
 │   │   │   ├── relation.module.ts
@@ -1073,9 +1089,12 @@
 │   │   ├── applications.e2e-spec.ts
 │   │   ├── auth-level-userinfo.e2e-spec.ts
 │   │   ├── auth-level.e2e-spec.ts
+│   │   ├── beta-features.e2e-spec.ts
 │   │   ├── business-division.e2e-spec.ts
+│   │   ├── compliances-ecoindex-update.e2e-spec.ts
 │   │   ├── compliances.e2e-spec.ts
 │   │   ├── config.e2e-spec.ts
+│   │   ├── cost-containment-sort.e2e-spec.ts
 │   │   ├── cross-application-scoping.e2e-spec.ts
 │   │   ├── data-catalog.e2e-spec.ts
 │   │   ├── data-family.e2e-spec.ts
@@ -1109,8 +1128,10 @@
 │   │   ├── global-teardown.ts
 │   │   ├── hosting-option.e2e-spec.ts
 │   │   ├── hostings.e2e-spec.ts
+│   │   ├── impersonation-privilege-ceiling.e2e-spec.ts
 │   │   ├── impersonation.e2e-spec.ts
 │   │   ├── jest.setup.ts
+│   │   ├── jwt-profile.e2e-spec.ts
 │   │   ├── label-source.e2e-spec.ts
 │   │   ├── labels.e2e-spec.ts
 │   │   ├── links.e2e-spec.ts
@@ -1122,6 +1143,7 @@
 │   │   ├── organization-security.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
 │   │   ├── permission-guard-sql-injection.e2e-spec.ts
+│   │   ├── relation-graph-depth.e2e-spec.ts
 │   │   ├── relations.e2e-spec.ts
 │   │   ├── report-impersonator.e2e-spec.ts
 │   │   ├── reports.e2e-spec.ts
@@ -1141,6 +1163,7 @@
 │   │   ├── test-database.utils.ts
 │   │   ├── token-impersonation.e2e-spec.ts
 │   │   ├── token-lifecycle.e2e-spec.ts
+│   │   ├── token-regeneration.e2e-spec.ts
 │   │   ├── types
 │   │   │   └── base-service.typecheck.ts
 │   │   ├── user-block.e2e-spec.ts
@@ -1193,12 +1216,15 @@
 │   │   ├── database-erd-full.svg
 │   │   └── database-erd-overview.svg
 │   ├── catalogue-donnees.md
+│   ├── grafana
+│   │   └── api-usage.dashboard.json
 │   ├── guide-utilisateur.md
 │   └── server-paginated-tables.md
 ├── e2e
 │   ├── .gitignore
 │   ├── fixtures
 │   │   ├── api-client.ts
+│   │   ├── beta-tester.ts
 │   │   ├── datafeature.ts
 │   │   └── test.ts
 │   ├── package.json
@@ -1220,6 +1246,7 @@
 │   │   ├── home.page.ts
 │   │   ├── index.ts
 │   │   ├── quality.page.ts
+│   │   ├── relation-navigation.page.ts
 │   │   ├── reports.page.ts
 │   │   ├── search.page.ts
 │   │   ├── time.page.ts
@@ -1240,6 +1267,7 @@
 │   │   ├── accueil.spec.ts
 │   │   ├── actions-crud.spec.ts
 │   │   ├── administration-referentiels.spec.ts
+│   │   ├── beta-features.spec.ts
 │   │   ├── catalogue-filtres.spec.ts
 │   │   ├── catalogue.spec.ts
 │   │   ├── conformites.spec.ts
@@ -1252,6 +1280,7 @@
 │   │   ├── permissions.spec.ts
 │   │   ├── profil-utilisateur.spec.ts
 │   │   ├── qualite-generale.spec.ts
+│   │   ├── relation-navigation.spec.ts
 │   │   ├── rgaa.spec.ts
 │   │   ├── scope-acteurs.spec.ts
 │   │   ├── signalements-abonnements.spec.ts
@@ -1310,6 +1339,7 @@
 │   │   ├── manifest.json
 │   │   └── sw-force-reload.js
 │   ├── src
+│   │   ├── App.title.spec.ts
 │   │   ├── App.vue
 │   │   ├── api
 │   │   │   ├── api-result.spec.ts
@@ -1327,6 +1357,7 @@
 │   │   │   ├── AccessibleAutocomplete.spec.ts
 │   │   │   ├── AccessibleAutocomplete.vue
 │   │   │   ├── ActorActions.vue
+│   │   │   ├── AppLoader.spec.ts
 │   │   │   ├── AppLoader.vue
 │   │   │   ├── AppToaster.spec.ts
 │   │   │   ├── AppToaster.vue
@@ -1342,6 +1373,7 @@
 │   │   │   ├── ApplicationSearchActions.spec.ts
 │   │   │   ├── ApplicationSearchActions.vue
 │   │   │   ├── ApplicationTableView.vue
+│   │   │   ├── BetaBadge.vue
 │   │   │   ├── BlockedAccessScreen.vue
 │   │   │   ├── ColumnCustomization.spec.ts
 │   │   │   ├── ColumnCustomization.vue
@@ -1373,6 +1405,7 @@
 │   │   │   ├── RelationGraphList.vue
 │   │   │   ├── RelationShipGraph.spec.ts
 │   │   │   ├── RelationShipGraph.vue
+│   │   │   ├── RelationshipsTab.spec.ts
 │   │   │   ├── RelationshipsTab.vue
 │   │   │   ├── Report
 │   │   │   │   ├── Notes.vue
@@ -1573,6 +1606,8 @@
 │   │   │   ├── use-async-search.ts
 │   │   │   ├── use-auth-level.spec.ts
 │   │   │   ├── use-auth-level.ts
+│   │   │   ├── use-beta-features.spec.ts
+│   │   │   ├── use-beta-features.ts
 │   │   │   ├── use-blocked-access.ts
 │   │   │   ├── use-column-preferences.spec.ts
 │   │   │   ├── use-column-preferences.ts
@@ -1592,6 +1627,7 @@
 │   │   │   ├── use-notification-polling.ts
 │   │   │   ├── use-relation-manager.spec.ts
 │   │   │   ├── use-relation-manager.ts
+│   │   │   ├── use-rgaa-a11y.spec.ts
 │   │   │   ├── use-rgaa-a11y.ts
 │   │   │   ├── use-sanitize-utils.ts
 │   │   │   ├── use-server-paginated-table.spec.ts
@@ -1623,6 +1659,7 @@
 │   │   ├── services
 │   │   │   ├── authentication.spec.ts
 │   │   │   ├── authentication.ts
+│   │   │   ├── config.spec.ts
 │   │   │   ├── config.ts
 │   │   │   ├── impersonation.ts
 │   │   │   └── keycloak-session-policy.spec.ts
@@ -1642,6 +1679,7 @@
 │   │   │   ├── organizationStore.spec.ts
 │   │   │   ├── organizationStore.ts
 │   │   │   ├── qualityCampaignStore.ts
+│   │   │   ├── relationStore.spec.ts
 │   │   │   ├── relationStore.ts
 │   │   │   ├── reportStore.spec.ts
 │   │   │   ├── reportStore.ts
@@ -1696,6 +1734,7 @@
 │   │   │   ├── AdminPage.spec.ts
 │   │   │   ├── AdminPage.vue
 │   │   │   ├── ApplicationPage.delete.spec.ts
+│   │   │   ├── ApplicationPage.replacements.spec.ts
 │   │   │   ├── ApplicationPage.vue
 │   │   │   ├── ApplicationSearchPage.spec.ts
 │   │   │   ├── ApplicationSearchPage.vue
@@ -1888,4 +1927,4 @@
 │       ├── sync-issue.mjs
 │       └── sync-issue.test.mjs
 └── release-please-config.json
-405 directories, 1485 files
+408 directories, 1521 files

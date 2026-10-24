@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/dnum-mi/referentiel-applications",
   "name": "referentiel-applications",
-  "description": "RefApp est un catalogue et un outil de gouvernance destiné à répertorier les applications du ministère de l'Intérieur. Il sert de point de vérité unique pour gérer les métadonnées telles que le statut, la conformité, l'hébergement et la dette technique.",
+  "description": "Catalogue et gère les informations sur les applications utilisées au sein du ministère de l'Intérieur. Il sert de point de vérité unique pour répertorier et gouverner les métadonnées applicatives (statut, acteurs, conformité, hébergement, etc.).",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
     "Administration & Backoffice",
-    "Recherche & Filtres",
     "Statistiques & Rapports",
-    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Recherche & Filtres",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -31,25 +31,23 @@
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "Authentification (composant)",
-    "Documentation & Schémas"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "jwt",
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": [
-    "E2E tests"
-  ],
+  "tests": "E2E tests via pnpm",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-14T00:00:00Z",
+  "lastActivity": "2026-10-21T00:00:00Z",
   "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
@@ -58,10 +56,10 @@
     "TypeScript",
     "Vue.js & Nuxt",
     "Node.js, NestJS & Express",
-    "Bases de données SQL",
     "Docker & Conteneurs",
+    "Bases de données SQL",
     "CI/CD & GitHub Actions",
     "Design System & UI",
-    "Sécurité & Auth"
+    "Documentation"
   ]
 }
