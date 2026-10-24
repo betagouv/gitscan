@@ -2,12 +2,12 @@
 # drive package
 #
 [build-system]
-requires = ["uv_build>=0.11.7,<0.12.0"]
+requires = ["uv_build>=0.13.4,<0.14"]
 build-backend = "uv_build"
 
 [project]
 name = "drive"
-version = "0.24.0"
+version = "0.25.2"
 authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -25,7 +25,7 @@ license = "MIT"
 requires-python = "~=3.13.0"
 dependencies = [
     "boto3==1.42.91",
-    "Brotli==1.2.0",
+    "Brotli==1.2.1",
     "dj-database-url==3.1.2",
     "celery[redis]==5.6.3",
     "defusedxml==0.7.1",
@@ -34,7 +34,7 @@ dependencies = [
     "django-cors-headers==4.9.0",
     "django-countries==8.2.0",
     "django-filter==25.2",
-    "django-lasuite[all]==0.0.29",
+    "django-lasuite[all]==0.1.0",
     "django-ltree==0.6.0",
     "django-parler==2.3",
     "django-prometheus==2.5.0",
@@ -42,7 +42,7 @@ dependencies = [
     "django-redis==6.0.0",
     "django-storages[s3]==1.14.6",
     "django-timezone-field>=5.1",
-    "djangorestframework==3.17.2",
+    "djangorestframework==3.18.3",
     "djangorestframework-api-key==3.1.0",
     "dockerflow==2026.3.4",
     "drf_spectacular==0.29.0",
@@ -97,11 +97,10 @@ dev = [
 
 [tool.uv]
 constraint-dependencies = [
-    # Pin pillow above the versions vulnerable to CVE-2026-40192
-    # (FITS GZIP decompression bomb) and CVE-2026-54058 (McIdas AREA
-    # memory disclosure). Pulled transitively via easy_thumbnails,
-    # which has no upper bound on pillow.
-    "pillow>=12.3.0",
+    # Pin pillow above the versions vulnerable to the image decoder and
+    # encoder advisories fixed in 13.0.0. Pulled transitively via
+    # easy_thumbnails, which has no upper bound on pillow.
+    "pillow>=13.0.0",
     # Pin joserfc above the version vulnerable to CVE-2026-49852
     # (HMAC verify accepts an empty key). Pulled transitively via
     # django-lasuite, which has no upper bound on joserfc.

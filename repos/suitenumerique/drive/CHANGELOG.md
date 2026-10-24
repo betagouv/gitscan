@@ -8,6 +8,26 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Security
+
+- ⬆️(backend) upgrade djangorestframework to 3.18.3 to fix CVEs
+- ⬆️(backend) upgrade Brotli to 1.2.1 to fix a CVE
+
+## [v0.25.2] - 2026-10-22
+
+### Fixed
+
+- 🐛(backend) fix user's inactive token introspection failure
+  (upgrade to `django-lasuite==0.1.0`)
+
+## [v0.25.1] - 2026-10-22
+
+### Fixed
+
+- 🐛(backend) fix anonymous export of public folders
+
+## [v0.25.0] - 2026-10-19
+
 ### Added
 
 - ✨(backend) show the last login of users in the admin
@@ -606,7 +626,10 @@ and this project adheres to
 - 🌐(front) add english translation for rename modal
 - 🐛(global) fix wrong Content-Type on specific s3 implementations
 
-[unreleased]: https://github.com/suitenumerique/drive/compare/v0.24.0...main
+[unreleased]: https://github.com/suitenumerique/drive/compare/v0.25.2...main
+[v0.25.2]: https://github.com/suitenumerique/drive/releases/v0.25.2
+[v0.25.1]: https://github.com/suitenumerique/drive/releases/v0.25.1
+[v0.25.0]: https://github.com/suitenumerique/drive/releases/v0.25.0
 [v0.24.0]: https://github.com/suitenumerique/drive/releases/v0.24.0
 [v0.23.0]: https://github.com/suitenumerique/drive/releases/v0.23.0
 [v0.22.0]: https://github.com/suitenumerique/drive/releases/v0.22.0
