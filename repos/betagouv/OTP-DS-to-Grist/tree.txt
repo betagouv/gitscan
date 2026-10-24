@@ -53,7 +53,6 @@
 │   ├── __init__.py
 │   ├── database_manager.py
 │   └── models.py
-├── deleted_dossiers_checker.py
 ├── dn
 │   ├── README.md
 │   ├── __init__.py
@@ -179,11 +178,13 @@
 │   ├── error_parser.py
 │   ├── filters.py
 │   ├── scheduled_sync.py
+│   ├── sequencer.py
 │   ├── sync_manager.py
 │   ├── sync_result_parser.py
 │   └── tasks
 │       ├── README.md
 │       ├── __init__.py
+│       ├── deleted_dossiers.py
 │       ├── instructeurs.py
 │       └── labels.py
 ├── templates
@@ -219,6 +220,7 @@
 │       │   ├── conftest.py
 │       │   ├── test_app.py
 │       │   ├── test_ip_blocklist.py
+│       │   ├── test_sync_environment_handoff.py
 │       │   ├── test_sync_pipeline_grist.py
 │       │   └── test_websocket.py
 │       └── unit
@@ -247,15 +249,16 @@
 │           │   └── test_widget_token.py
 │           ├── sync
 │           │   ├── tasks
+│           │   │   ├── test_deleted_dossiers.py
 │           │   │   ├── test_instructeurs.py
 │           │   │   └── test_labels.py
 │           │   ├── test_environment_config.py
 │           │   ├── test_error_parser.py
 │           │   ├── test_filters.py
 │           │   ├── test_scheduled_sync.py
+│           │   ├── test_sequencer.py
 │           │   └── test_sync_result_parser.py
 │           ├── test_app.py
-│           ├── test_deleted_dossiers_checker.py
 │           ├── test_grist_processor.py
 │           ├── test_repetable_processor.py
 │           ├── test_schema_utils.py
@@ -277,4 +280,4 @@
     ├── rate_limited_session.py
     ├── socketio.py
     └── timing.py
-45 directories, 234 files
+45 directories, 237 files
