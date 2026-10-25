@@ -3,6 +3,7 @@ requires-python = ">=3.14"
 name = "aides-agri"
 version = "0.1.0"
 dependencies = [
+  "brevo-python~=5.1",
   "datagouv-client ~=0.5",
   "django ~=5.2",
   "django-admin-extra-buttons~=2.2",
@@ -25,7 +26,7 @@ dependencies = [
   "psycopg[binary]~=3.3",
   "qrcode ~=7.4",
   "requests~=2.34",
-  "sentry-sdk[django]~=2.70",
+  "sentry-sdk[django]~=2.71",
   "whitenoise ~=6.8",
 ]
 
@@ -48,8 +49,3 @@ omit = ["**/tests/*"]
 
 [tool.coverage.report]
 show_missing = true
-
-[tool.uv.workspace]
-members = [
-    "scripts/create-annuaire-chambres-agriculture",
-]

@@ -1,40 +1,19 @@
-## Changelog : aides-agri (30 derniers jours, au 02/10/2026)
+## Changelog : aides-agri (30 derniers jours, au 15/10/2026)
 
 ### Résumé
-Ce mois, la plateforme a franchi des étapes importantes pour mieux servir les agriculteurs, notamment avec l'introduction de notifications par email, une gestion plus fine des aides locales et une navigation plus fluide. L'outil renforce également sa visibilité et son utilité grâce à l'amélioration de la cartographie et à l'ouverture de ses données via data.gouv.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la précision des aides régionales et la fiabilisation de la gestion des données utilisateurs, notamment via le respect strict du consentement (opt-in) et la correction de l'intégration CRM. Les outils d'administration ont également été enrichis pour offrir une meilleure visibilité sur le catalogue et les usages.
 
 ### Évolutions fonctionnelles
-
-**Nouvelles fonctionnalités**
-- Mise en place de notifications par email pour informer les utilisateurs des nouvelles aides selon leurs critères [#743](https://github.com/betagouv/aides-agri/issues/743).
-- Possibilité d'associer une aide à plusieurs organismes porteurs [#726](https://github.com/betagouv/aides-agri/issues/726).
-- Amélioration de la recherche permettant de sélectionner l'ensemble des filières sur la page de résultats [#806](https://github.com/betagouv/aides-agri/issues/806).
-- Meilleure gestion des spécificités locales des aides et optimisation du choix du département [#841](https://github.com/betagouv/aides-agri/issues/841), [#838](https://github.com/betagouv/aides-agri/issues/838).
-- Création d'une page "À propos" pour présenter la plateforme [#637](https://github.com/betagouv/aides-agri/issues/637).
-- Clarification de la structure des fiches (distinction entre fiches mères et fiches minimales) [#851](https://github.com/betagouv/aides-agri/issues/851).
-
-**Améliorations de l'expérience utilisateur (UX/UI)**
-- Amélioration de la cartographie de déploiement des aides [#844](https://github.com/betagouv/aides-agri/issues/844), [#824](https://github.com/betagouv/aides-agri/issues/824).
-- Optimisation de la lisibilité des tableaux larges [#827](https://github.com/betagouv/aides-agri/issues/827) et de l'affichage de la page de résultats [#825](https://github.com/betagouv/aides-agri/issues/825).
-- Engagement pour l'amélioration continue de l'accessibilité [#807](https://github.com/betagouv/aides-agri/issues/807).
-- Correction de divers bugs d'affichage (CSS manquant [#848](https://github.com/betagouv/aides-agri/issues/848), page d'aide [#797](https://github.com/betagouv/aides-agri/issues/797)) et du composant de sélection multiple [#826](https://github.com/betagouv/aides-agri/issues/826).
-- Correction des liens externes dans les emails d'alerte [#862](https://github.com/betagouv/aides-agri/issues/862).
-- Mise à jour de la terminologie : "date de mise à jour" devient "date de vérification" [#793](https://github.com/betagouv/aides-agri/issues/793).
-
-**Administration et données**
-- Ajout de statistiques simples directement dans l'interface d'administration [#847](https://github.com/betagouv/aides-agri/issues/847).
-- Mise à jour des statistiques de la plateforme pour septembre 2026 [#861](https://github.com/betagouv/aides-agri/issues/861).
+- **Gestion des aides locales et régionales** : Amélioration de l'affichage et du choix des départements, et correction de bugs concernant la distinction entre aides métropolitaines et régionales [#841](https://github.com/betagouv/aides-agri/issues/841), [#892](https://github.com/betagouv/aides-agri/issues/892), [#893](https://github.com/betagouv/aides-agri/issues/893), [#895](https://github.com/betagouv/aides-agri/issues/895).
+- **Optimisation de l'administration** : Amélioration de la recherche d'aides dans le back-office et ajout de statistiques simples pour le pilotage [#847](https://github.com/betagouv/aides-agri/issues/847), [#914](https://github.com/betagouv/aides-agri/issues/914).
+- **Expérience utilisateur et contenu** : Clarification de la structure des fiches d'aides (fiches mères/minimales), corrections de l'affichage des résultats et des libellés, et gestion du bandeau d'absence d'aides locales [#846](https://github.com/betagouv/aides-agri/issues/846), [#851](https://github.com/betagouv/aides-agri/issues/851), [#868](https://github.com/betagouv/aides-agri/issues/868), [#905](https://github.com/betagouv/aides-agri/issues/905).
+- **Connaissance usagers** : Mise en place de nouveaux mécanismes de collecte de données pour mieux comprendre les besoins des agriculteurs [#890](https://github.com/betagouv/aides-agri/issues/890), [#904](https://github.com/betagouv/aides-agri/issues/904).
+- **Veille** : Intégration d'un processus de veille sur les nouvelles aides via le JORF [#814](https://github.com/betagouv/aides-agri/issues/814).
 
 ### Évolutions techniques
-
-**Backend et infrastructure**
-- Résolution de problèmes liés aux réglages de l'application Django [#787](https://github.com/betagouv/aides-agri/issues/787), [#788](https://github.com/betagouv/aides-agri/issues/788).
-
-**Analyse et outils**
-- Mise en place de la mesure d'actions utilisateurs sur la page de résultats pour améliorer l'analyse de l'usage [#823](https://github.com/betagouv/aides-agri/issues/823).
-- Développement d'un script pour la génération automatique de la carte de déploiement [#822](https://github.com/betagouv/aides-agri/issues/822).
+- **Fiabilisation du CRM et respect de la vie privée** : Corrections de l'API Brevo, respect rigoureux des choix d'opt-in des utilisateurs et amélioration de l'obfuscation des données personnelles [#906](https://github.com/betagouv/aides-agri/issues/906), [#907](https://github.com/betagouv/aides-agri/issues/907), [#908](https://github.com/betagouv/aides-agri/issues/908), [#909](https://github.com/betagouv/aides-agri/issues/909).
+- **Suivi et communications** : Correction des liens externes dans les emails d'alerte et mise en place du traçage des conversions sur les modales de liens externes [#862](https://github.com/betagouv/aides-agri/issues/862), [#874](https://github.com/betagouv/aides-agri/issues/874).
 
 ### Autres changements
-
-- Publication d'un jeu de données sur data.gouv pour permettre une exploitation facile via Excel [#809](https://github.com/betagouv/aides-agri/issues/809).
-- Mise à jour du fichier de sécurité `security.txt` [#791](https://github.com/betagouv/aides-agri/issues/791).
+- **Communication** : Mise à jour de la carte de déploiement du projet [#844](https://github.com/betagouv/aides-agri/issues/844), [#880](https://github.com/betagouv/aides-agri/issues/880).
+- **Données** : Actualisation des statistiques de la plateforme pour septembre 2026 [#861](https://github.com/betagouv/aides-agri/issues/861).

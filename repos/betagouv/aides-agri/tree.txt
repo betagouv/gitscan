@@ -79,10 +79,12 @@
 │   │   │       ├── blocks
 │   │   │       │   ├── home
 │   │   │       │   │   └── themes.html
-│   │   │       │   └── mail
-│   │   │       │       ├── footer.mjml
-│   │   │       │       ├── header.mjml
-│   │   │       │       └── selection.mjml
+│   │   │       │   ├── mail
+│   │   │       │   │   ├── footer.mjml
+│   │   │       │   │   ├── header.mjml
+│   │   │       │   │   └── selection.mjml
+│   │   │       │   └── results
+│   │   │       │       └── aide.html
 │   │   │       ├── home.html
 │   │   │       ├── mail
 │   │   │       │   ├── alerte.mjml
@@ -90,7 +92,6 @@
 │   │   │       │   └── results.mjml
 │   │   │       ├── modals
 │   │   │       │   ├── create_alerte.html
-│   │   │       │   ├── external_link_information.html
 │   │   │       │   ├── feedback_on_themes_sujets.html
 │   │   │       │   └── send_results_by_mail.html
 │   │   │       └── results.html
@@ -124,6 +125,7 @@
 │   │   │       ├── aides_load_zones_geographiques.py
 │   │   │       ├── aides_publish_illustrations_from_db.py
 │   │   │       ├── aides_send_daily_admin_notifications.py
+│   │   │       ├── aides_send_jorf_monitoring.py
 │   │   │       ├── aides_set_organisme_illustration.py
 │   │   │       ├── aides_unpublish_aides_having_invalid_link.py
 │   │   │       └── aides_update_ddt_from_service_public_api.py
@@ -203,6 +205,7 @@
 │   │   │   ├── 0079_organisme_parent.py
 │   │   │   ├── 0080_organisme_horaires_organisme_siren.py
 │   │   │   ├── 0081_specificitelocale.py
+│   │   │   ├── 0082_zonegeographique_is_metropole.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals
@@ -248,6 +251,8 @@
 │   │   │       ├── blocks
 │   │   │       │   ├── cta_signalement_aides.html
 │   │   │       │   └── parent_aide_detail__children.html
+│   │   │       ├── modals
+│   │   │       │   └── collect-user-data.html
 │   │   │       └── parent_aide_detail.html
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
@@ -276,6 +281,7 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_feedbackonaides_has_aide.py
+│   │   │   ├── 0003_alter_feedbackonaides_comments_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals
@@ -286,14 +292,16 @@
 │   │   │       └── base.css
 │   │   ├── stats.py
 │   │   ├── templates
-│   │   │   └── aides_feedback
-│   │   │       ├── _partials
-│   │   │       │   ├── create_feedback_aides_ok.html
-│   │   │       │   ├── feedback_themes_sujets_ok.html
-│   │   │       │   ├── update_feedback_on_aides_form.html
-│   │   │       │   └── update_feedback_on_aides_ok.html
-│   │   │       └── blocks
-│   │   │           └── create_feedback_on_aides.html
+│   │   │   ├── aides_feedback
+│   │   │   │   ├── _partials
+│   │   │   │   │   ├── feedback_themes_sujets_ok.html
+│   │   │   │   │   ├── update_feedback_on_aides_form.html
+│   │   │   │   │   └── update_feedback_on_aides_ok.html
+│   │   │   │   └── blocks
+│   │   │   │       └── create_feedback_on_aides.html
+│   │   │   └── dsfr
+│   │   │       └── form_field_snippets
+│   │   │           └── radioselect_with_side_labels_snippet.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
@@ -362,7 +370,9 @@
 │       │       ├── controllers
 │       │       │   ├── alert.js
 │       │       │   ├── dsfr_form.js
-│       │       │   └── matomo.js
+│       │       │   ├── external_links.js
+│       │       │   ├── matomo.js
+│       │       │   └── userdata-to-matomo.js
 │       │       ├── icons
 │       │       │   ├── percent-fill.svg
 │       │       │   ├── search-eye-fill.svg
@@ -391,6 +401,8 @@
 │       │       │   │   └── select_rich_options.html
 │       │       │   └── select_rich.html
 │       │       ├── components.html
+│       │       ├── modals
+│       │       │   └── external_link_information.html
 │       │       └── select_rich.html
 │       ├── templatetags
 │       │   ├── __init__.py
@@ -402,7 +414,8 @@
 │       │   ├── test_context_processors.py
 │       │   └── test_middlewares.py
 │       ├── urls.py
-│       └── views.py
+│       ├── views.py
+│       └── widgets.py
 ├── conf
 │   ├── __init__.py
 │   ├── admin.py
@@ -416,6 +429,7 @@
 │   │   │   ├── aides.py
 │   │   │   ├── anymail.py
 │   │   │   ├── axes.py
+│   │   │   ├── brevo.py
 │   │   │   ├── csp.py
 │   │   │   ├── datagouv.py
 │   │   │   ├── dsfr.py
@@ -471,60 +485,62 @@
 ├── package.json
 ├── pyproject.toml
 ├── scripts
-│   ├── carte-deploiement-aides-agri
-│   │   ├── data
+│   ├── dev
+│   │   ├── carte-deploiement-aides-agri
+│   │   │   ├── data
+│   │   │   │   └── .gitignore
+│   │   │   └── main.py
+│   │   ├── chefs-sea
+│   │   │   ├── .gitignore
+│   │   │   └── extract.py
+│   │   ├── create-annuaire-chambres-agriculture
+│   │   │   ├── README.md
+│   │   │   ├── create-ca.py
+│   │   │   ├── data
+│   │   │   │   └── .gitignore
+│   │   │   ├── main.py
+│   │   │   └── pyproject.toml
+│   │   ├── create-releases-history
+│   │   │   ├── README.md
+│   │   │   └── main.py
+│   │   ├── logos-services-deconcentres
+│   │   │   ├── README.md
+│   │   │   ├── create_ddt_ddtm.py
+│   │   │   ├── create_draaf_dreal.py
+│   │   │   ├── data
+│   │   │   │   └── .gitignore
+│   │   │   ├── download_logo_prefets.py
+│   │   │   ├── download_logo_prefets_regions.py
+│   │   │   ├── logos
+│   │   │   │   ├── daaf.png
+│   │   │   │   ├── ddt.png
+│   │   │   │   ├── ddtm.png
+│   │   │   │   ├── deal.png
+│   │   │   │   ├── draaf.png
+│   │   │   │   ├── dreal.png
+│   │   │   │   ├── driaaf.png
+│   │   │   │   └── drieat.png
+│   │   │   ├── merge_logos.sh
+│   │   │   ├── merge_logos_draaf_dreal.sh
+│   │   │   ├── pyproject.toml
+│   │   │   ├── scalingo-upload.sh
+│   │   │   └── uv.lock
+│   │   ├── pac
 │   │   │   └── .gitignore
-│   │   └── main.py
-│   ├── chefs-sea
-│   │   ├── .gitignore
-│   │   └── extract.py
-│   ├── create-annuaire-chambres-agriculture
-│   │   ├── README.md
-│   │   ├── create-ca.py
-│   │   ├── data
-│   │   │   └── .gitignore
-│   │   ├── main.py
-│   │   └── pyproject.toml
-│   ├── create-releases-history
-│   │   ├── README.md
-│   │   └── main.py
-│   ├── logos-services-deconcentres
-│   │   ├── README.md
-│   │   ├── create_ddt_ddtm.py
-│   │   ├── create_draaf_dreal.py
-│   │   ├── data
-│   │   │   └── .gitignore
-│   │   ├── download_logo_prefets.py
-│   │   ├── download_logo_prefets_regions.py
-│   │   ├── logos
-│   │   │   ├── daaf.png
-│   │   │   ├── ddt.png
-│   │   │   ├── ddtm.png
-│   │   │   ├── deal.png
-│   │   │   ├── draaf.png
-│   │   │   ├── dreal.png
-│   │   │   ├── driaaf.png
-│   │   │   └── drieat.png
-│   │   ├── merge_logos.sh
-│   │   ├── merge_logos_draaf_dreal.sh
-│   │   ├── pyproject.toml
-│   │   ├── scalingo-upload.sh
-│   │   └── uv.lock
-│   ├── pac
-│   │   └── .gitignore
-│   ├── pdf-to-structured-data
-│   │   ├── .gitignore
-│   │   ├── md-to-csv.py
-│   │   ├── pyproject.toml
-│   │   └── uv.lock
-│   ├── rebase-all-upgrade-branches.sh
-│   ├── set-ddt-id-service-public
-│   │   └── main.py
-│   ├── stress-test
-│   │   ├── main.py
-│   │   ├── pyproject.toml
-│   │   └── uv.lock
-│   └── upgrade-python-deps.sh
+│   │   ├── pdf-to-structured-data
+│   │   │   ├── .gitignore
+│   │   │   ├── md-to-csv.py
+│   │   │   ├── pyproject.toml
+│   │   │   └── uv.lock
+│   │   ├── rebase-all-upgrade-branches.sh
+│   │   ├── set-ddt-id-service-public
+│   │   │   └── main.py
+│   │   ├── stress-test
+│   │   │   ├── main.py
+│   │   │   ├── pyproject.toml
+│   │   │   └── uv.lock
+│   │   └── upgrade-python-deps.sh
+│   └── jorf.sh
 ├── static
 │   ├── admin
 │   │   └── css
@@ -566,4 +582,4 @@
     ├── favicon.ico
     ├── robots-non-prod.txt
     └── robots-prod.txt
-144 directories, 424 files
+150 directories, 434 files
