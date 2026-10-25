@@ -15,14 +15,9 @@
 │   │       └── .gitignore
 │   ├── php
 │   │   ├── Dockerfile
-│   │   ├── README.md
-│   │   ├── fichiers
-│   │   │   └── .gitignore
-│   │   └── scripts
-│   │       ├── demarrage_develop.sh
-│   │       ├── demarrage_prod.sh
-│   │       ├── demarrage_staging.sh
-│   │       └── demarrage_test.sh
+│   │   ├── demarrage.sh
+│   │   └── fichiers
+│   │       └── .gitignore
 │   ├── playwright
 │   │   └── Dockerfile
 │   ├── postgres
@@ -32,17 +27,14 @@
 │   │       ├── 000-create-database-precontest.sh
 │   │       ├── 000-creer-fonctions.sql
 │   │       └── 002-dev-chargement-agents.sql
-│   ├── prod
-│   │   ├── web.dockerfile
-│   │   └── worker.dockerfile
 │   └── vite
 │       └── Dockerfile
 ├── .dockerignore
 ├── .env.dist
 ├── .gitguardian.yaml
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
-│       ├── build-docker-image.yml
 │       ├── deploy-develop.yml
 │       ├── deploy-prod.yml
 │       ├── deploy-staging.yml
@@ -55,6 +47,7 @@
 │   ├── .env.dist
 │   ├── .gitignore
 │   ├── .php-cs-fixer.dist.php
+│   ├── Caddyfile
 │   ├── bin
 │   │   ├── console
 │   │   ├── phpunit
@@ -79,6 +72,7 @@
 │   │   │   ├── flysystem.yaml
 │   │   │   ├── framework.yaml
 │   │   │   ├── mailer.yaml
+│   │   │   ├── maker.yaml
 │   │   │   ├── monolog.yaml
 │   │   │   ├── nelmio_cors.yaml
 │   │   │   ├── notifier.yaml
@@ -135,7 +129,9 @@
 │   │   ├── Version20260708210430.php
 │   │   ├── Version20260724092141.php
 │   │   ├── Version20260724130358.php
-│   │   └── Version20260910133740.php
+│   │   ├── Version20260910133740.php
+│   │   ├── Version20261005134509.php
+│   │   └── Version20261022073907.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -339,7 +335,7 @@
 │   │   │   ├── ImporterDonneesFDOCommand.php
 │   │   │   ├── ImporterDonneesGeoCommand.php
 │   │   │   ├── InventaireDocumentsCommand.php
-│   │   │   ├── RecalculerNumeroSecuCommand.php
+│   │   │   ├── MijInvitationsRegenererCommand.php
 │   │   │   ├── SupprimerDossierCommand.php
 │   │   │   └── SupprimerRequerantCommand.php
 │   │   ├── Controller
@@ -500,6 +496,7 @@
 │   │   │   └── Voter
 │   │   │       └── FDODocumentVoter.php
 │   │   ├── Service
+│   │   │   ├── ConstructeurUsagerDepuisDeclaration.php
 │   │   │   ├── DataGouv
 │   │   │   │   ├── AbstractImporteurDataGouv.php
 │   │   │   │   ├── ImporteurBrigadeGendarmerie.php
@@ -512,8 +509,10 @@
 │   │   │   ├── DocumentManager.php
 │   │   │   ├── DossierManager.php
 │   │   │   ├── FusionneurDocuments.php
-│   │   │   ├── GenerateurReferenceCourte.php
+│   │   │   ├── GenerateurCodeInvitation.php
 │   │   │   ├── ImprimanteCourrier.php
+│   │   │   ├── Mail
+│   │   │   │   └── EnvoiInvitationDeposer.php
 │   │   │   ├── Mailer.php
 │   │   │   └── MontantAfficheur.php
 │   │   ├── Twig
@@ -709,9 +708,11 @@
 │   │   ├── Service
 │   │   │   ├── DataGouv
 │   │   │   │   └── ImporteurGeoCodeTest.php
+│   │   │   ├── DocumentManagerSecuriteTest.php
 │   │   │   ├── DocumentManagerTest.php
 │   │   │   ├── DossierManagerTest.php
 │   │   │   ├── FusionneurDocumentsTest.php
+│   │   │   ├── GenerateurCodeInvitationTest.php
 │   │   │   └── MontantAfficheurTest.php
 │   │   ├── bootstrap.php
 │   │   └── ressources
@@ -724,6 +725,15 @@
 │   │           ├── photo-2.jpg
 │   │           └── photo-3.webp
 │   └── yarn.lock
+├── clevercloud
+│   ├── cron.json
+│   ├── hooks
+│   │   └── pre_build.sh
+│   └── scripts
+│       ├── demarrage_develop.sh
+│       ├── demarrage_prod.sh
+│       ├── demarrage_staging.sh
+│       └── demarrage_test.sh
 ├── compose.yaml
 ├── docs
 │   ├── 001-Installation.md
@@ -778,412 +788,419 @@
 │   │   └── test-eligibilite.e2e.test.ts
 │   ├── tsconfig.json
 │   └── yarn.lock
-└── frontend
+├── frontend
+│   ├── .gitignore
+│   ├── eslint.config.ts
+│   ├── package.json
+│   ├── public
+│   │   └── .gitignore
+│   ├── src
+│   │   ├── apps
+│   │   │   ├── _init.ts
+│   │   │   ├── agent
+│   │   │   │   ├── _commun
+│   │   │   │   │   ├── composants
+│   │   │   │   │   │   └── MonCompte.tsx
+│   │   │   │   │   └── contexts
+│   │   │   │   │       ├── AgentContext.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── fdo
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── ModaleAjoutPieceJointe.tsx
+│   │   │   │   │   │   ├── ModalePrévisualiserPieceJointe.tsx
+│   │   │   │   │   │   └── affectation
+│   │   │   │   │   │       └── ModaleAutoAffectation.tsx
+│   │   │   │   │   ├── container.ts
+│   │   │   │   │   ├── fdo.tsx
+│   │   │   │   │   ├── fichiers
+│   │   │   │   │   │   └── documents
+│   │   │   │   │   │       ├── avis-d-intervention-en-cas-de-bris-de-porte.pdf
+│   │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre-pn.pdf
+│   │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre.pdf
+│   │   │   │   │   │       └── guide-de-remise-de-l-avis-d-intervention-apres-un-bris-de-porte.pdf
+│   │   │   │   │   ├── modeles
+│   │   │   │   │   │   ├── AffectationAgentFDO.ts
+│   │   │   │   │   │   ├── AgentFDO.ts
+│   │   │   │   │   │   ├── DeclarationFDOBrisPorte.ts
+│   │   │   │   │   │   └── EtablissementFDO.ts
+│   │   │   │   │   ├── query.ts
+│   │   │   │   │   ├── routes
+│   │   │   │   │   │   ├── __root.tsx
+│   │   │   │   │   │   ├── bris-de-porte
+│   │   │   │   │   │   │   ├── $reference
+│   │   │   │   │   │   │   │   ├── 1-bris-de-porte.tsx
+│   │   │   │   │   │   │   │   ├── 2-service-enqueteur.tsx
+│   │   │   │   │   │   │   │   ├── 3-usager.tsx
+│   │   │   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   │   ├── mes-declarations.tsx
+│   │   │   │   │   │   │   └── nouvelle-declaration.tsx
+│   │   │   │   │   │   ├── foire-aux-questions.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── les-documents.tsx
+│   │   │   │   │   │   ├── mon-compte.tsx
+│   │   │   │   │   │   └── requisition-serrurier.tsx
+│   │   │   │   │   ├── routeur
+│   │   │   │   │   │   ├── contexte.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── routeur-fdo.gen.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── agent.ts
+│   │   │   │   │   │   ├── declaration.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── tsconfig.json
+│   │   │   │   └── fip6
+│   │   │   │       ├── composants
+│   │   │   │       │   ├── dossiers
+│   │   │   │       │   │   ├── BadgeEtatDossier.tsx
+│   │   │   │       │   │   └── ListeDossiers.tsx
+│   │   │   │       │   ├── gestion
+│   │   │   │       │   │   ├── ValidationAgentPage.tsx
+│   │   │   │       │   │   └── index.ts
+│   │   │   │       │   └── pages
+│   │   │   │       │       └── RechercherDossierPage.tsx
+│   │   │   │       ├── container.ts
+│   │   │   │       ├── dossiers
+│   │   │   │       │   └── components
+│   │   │   │       │       ├── BadgesDossier.tsx
+│   │   │   │       │       ├── ListeDossierAAttribuer.tsx
+│   │   │   │       │       ├── ListeDossierACategoriser.tsx
+│   │   │   │       │       ├── ListeDossierAInstruire.tsx
+│   │   │   │       │       ├── ListeDossierATransmettre.tsx
+│   │   │   │       │       ├── ListeDossierAVerifier.tsx
+│   │   │   │       │       ├── ListeDossierArreteASigner.tsx
+│   │   │   │       │       ├── ListeDossierEnAttenteIndemnisation.tsx
+│   │   │   │       │       ├── ListeDossierPropositionASigner.tsx
+│   │   │   │       │       ├── ListeDossierRejetASigner.tsx
+│   │   │   │       │       ├── consultation
+│   │   │   │       │       │   ├── InfosDossier.tsx
+│   │   │   │       │       │   ├── PiecesJointes.tsx
+│   │   │   │       │       │   ├── action
+│   │   │   │       │       │   │   ├── AttributionAction.tsx
+│   │   │   │       │       │   │   ├── CloturerAction.tsx
+│   │   │   │       │       │   │   ├── DeciderIndemnisationAction.tsx
+│   │   │   │       │       │   │   ├── DeciderRejetAction.tsx
+│   │   │   │       │       │   │   ├── DemarrerInstructionAction.tsx
+│   │   │   │       │       │   │   ├── DossierActions.tsx
+│   │   │   │       │       │   │   ├── EnvoyerPourIndemnisationActionModale.tsx
+│   │   │   │       │       │   │   ├── GenererArretePaiementAction.tsx
+│   │   │   │       │       │   │   ├── MarquerIndemniseActionModale.tsx
+│   │   │   │       │       │   │   ├── RevenirArreteAction.tsx
+│   │   │   │       │       │   │   ├── RevenirInstructionAction.tsx
+│   │   │   │       │       │   │   ├── SignerArretePaiementAction.tsx
+│   │   │   │       │       │   │   ├── SignerCourrierAction.tsx
+│   │   │   │       │       │   │   └── index.ts
+│   │   │   │       │       │   ├── document
+│   │   │   │       │       │   │   └── EditeurDocument.tsx
+│   │   │   │       │       │   ├── editor
+│   │   │   │       │       │   │   ├── QuillEditor.tsx
+│   │   │   │       │       │   │   └── index.ts
+│   │   │   │       │       │   └── piecejointe
+│   │   │   │       │       │       ├── AjoutPieceJointe.tsx
+│   │   │   │       │       │       ├── ChampPieceJointe.tsx
+│   │   │   │       │       │       ├── MenuPieceJointe.tsx
+│   │   │   │       │       │       ├── PrevisualiserPieceJointe.tsx
+│   │   │   │       │       │       ├── SuppressionPieceJointe.tsx
+│   │   │   │       │       │       ├── TelechargerPieceJointe.tsx
+│   │   │   │       │       │       └── index.ts
+│   │   │   │       │       └── liste
+│   │   │   │       │           ├── DossierAAttribuer.ts
+│   │   │   │       │           ├── DossierACategoriser.ts
+│   │   │   │       │           ├── DossierAInstruire.ts
+│   │   │   │       │           ├── DossierATransmettre.ts
+│   │   │   │       │           ├── DossierAVerifier.ts
+│   │   │   │       │           ├── DossierArreteASigner.ts
+│   │   │   │       │           ├── DossierEnAttenteIndemnisation.ts
+│   │   │   │       │           ├── DossierPropositionASigner.ts
+│   │   │   │       │           ├── DossierRejetASigner.ts
+│   │   │   │       │           └── dossier-liste-element.css
+│   │   │   │       ├── fip6.tsx
+│   │   │   │       ├── modeles
+│   │   │   │       │   ├── AgentFIP6.ts
+│   │   │   │       │   ├── dossier.ts
+│   │   │   │       │   └── index.ts
+│   │   │   │       ├── query.ts
+│   │   │   │       ├── routes
+│   │   │   │       │   ├── __root.tsx
+│   │   │   │       │   ├── agents
+│   │   │   │       │   │   ├── gestion
+│   │   │   │       │   │   │   ├── actifs.tsx
+│   │   │   │       │   │   │   ├── inactifs.tsx
+│   │   │   │       │   │   │   └── index.tsx
+│   │   │   │       │   │   └── index.tsx
+│   │   │   │       │   ├── dossier
+│   │   │   │       │   │   ├── $id
+│   │   │   │       │   │   │   └── index.tsx
+│   │   │   │       │   │   └── index.tsx
+│   │   │   │       │   ├── dossiers
+│   │   │   │       │   │   ├── a-attribuer.tsx
+│   │   │   │       │   │   ├── a-categoriser.tsx
+│   │   │   │       │   │   ├── a-instruire.tsx
+│   │   │   │       │   │   ├── a-transmettre.tsx
+│   │   │   │       │   │   ├── a-verifier.tsx
+│   │   │   │       │   │   ├── arrete-a-signer.tsx
+│   │   │   │       │   │   ├── en-attente-indemnisation.tsx
+│   │   │   │       │   │   ├── en-instruction.tsx
+│   │   │   │       │   │   ├── index.tsx
+│   │   │   │       │   │   ├── mes-dossiers.tsx
+│   │   │   │       │   │   ├── proposition-a-signer.tsx
+│   │   │   │       │   │   ├── rechercher.tsx
+│   │   │   │       │   │   ├── rejet-a-signer.tsx
+│   │   │   │       │   │   └── usager
+│   │   │   │       │   │       └── $id.tsx
+│   │   │   │       │   ├── index.tsx
+│   │   │   │       │   └── mon-compte.tsx
+│   │   │   │       ├── routeur
+│   │   │   │       │   ├── contexte.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── routeur-fip6.gen.ts
+│   │   │   │       │   └── routeur-fip6.ts
+│   │   │   │       ├── services
+│   │   │   │       │   ├── agent.ts
+│   │   │   │       │   ├── dossier.d.ts
+│   │   │   │       │   └── dossier.ts
+│   │   │   │       └── tsconfig.json
+│   │   │   ├── public
+│   │   │   │   ├── components
+│   │   │   │   │   ├── Layout.tsx
+│   │   │   │   │   ├── formulaires
+│   │   │   │   │   │   └── eligibilite.schemas.ts
+│   │   │   │   │   ├── steps
+│   │   │   │   │   │   ├── BlockedNavButtons.tsx
+│   │   │   │   │   │   ├── ConditionalButtonsGroup.tsx
+│   │   │   │   │   │   ├── NavButtons.tsx
+│   │   │   │   │   │   ├── StepActionContentieuse.tsx
+│   │   │   │   │   │   ├── StepDateDecision.tsx
+│   │   │   │   │   │   ├── StepDiligences.tsx
+│   │   │   │   │   │   ├── StepPiecesProc.tsx
+│   │   │   │   │   │   ├── StepTypeDecision.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── container.ts
+│   │   │   │   ├── models
+│   │   │   │   │   └── TestEligibilite.ts
+│   │   │   │   ├── public.tsx
+│   │   │   │   ├── routes
+│   │   │   │   │   ├── __root.tsx
+│   │   │   │   │   └── dysfonctionnement
+│   │   │   │   │       └── tester-mon-eligibilite
+│   │   │   │   │           ├── 1-date-decision.tsx
+│   │   │   │   │           ├── 2-action-contentieuse.tsx
+│   │   │   │   │           ├── 3-type-decision.tsx
+│   │   │   │   │           ├── 4-pieces-procedure.tsx
+│   │   │   │   │           ├── 5-diligences.tsx
+│   │   │   │   │           ├── index.tsx
+│   │   │   │   │           ├── resultat.tsx
+│   │   │   │   │           └── test-eligibilite.tsx
+│   │   │   │   ├── routeur
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── routeur-public.gen.ts
+│   │   │   │   ├── services
+│   │   │   │   │   ├── TestEligibiliteManager.ts
+│   │   │   │   │   ├── eligibiliteStore.ts
+│   │   │   │   │   └── prescription.ts
+│   │   │   │   └── tsconfig.json
+│   │   │   ├── requerant
+│   │   │   │   ├── composants
+│   │   │   │   │   ├── IconeLigne.tsx
+│   │   │   │   │   ├── SelectionCivilite.tsx
+│   │   │   │   │   ├── TitreSection.tsx
+│   │   │   │   │   └── piecesJointes
+│   │   │   │   │       ├── AjouterPiecesJointesModale.tsx
+│   │   │   │   │       ├── PieceJointePanelNavigation.tsx
+│   │   │   │   │       ├── PrevisualiserFichier.tsx
+│   │   │   │   │       └── SupprimerPieceJointeModale.tsx
+│   │   │   │   ├── container.ts
+│   │   │   │   ├── dossier
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── PieceJointe
+│   │   │   │   │   │   │   └── AfficherPieceJointe.tsx
+│   │   │   │   │   │   └── TestEligibiliteBrisPorteForm.tsx
+│   │   │   │   │   ├── creation_de_compte.tsx
+│   │   │   │   │   ├── models
+│   │   │   │   │   │   └── Inscription.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── Object.ts
+│   │   │   │   │   │   └── devtools.js
+│   │   │   │   │   └── tester_mon_eligibilite.tsx
+│   │   │   │   ├── formulaires
+│   │   │   │   │   └── brisDePorte
+│   │   │   │   │       ├── 1-bris-porte.schema.ts
+│   │   │   │   │       ├── 2-infos-requerants.schema.ts
+│   │   │   │   │       └── 3-pieces-jointes.schema.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useClickOutside.ts
+│   │   │   │   │   └── useDebounce.ts
+│   │   │   │   ├── models
+│   │   │   │   │   ├── Adresse.ts
+│   │   │   │   │   ├── Civilite.ts
+│   │   │   │   │   ├── Commune.ts
+│   │   │   │   │   ├── Dossier.ts
+│   │   │   │   │   ├── EtatDossier.ts
+│   │   │   │   │   ├── Pays.ts
+│   │   │   │   │   ├── Personne.ts
+│   │   │   │   │   ├── PersonneMorale.ts
+│   │   │   │   │   ├── PersonnePhysique.ts
+│   │   │   │   │   ├── PieceJointe.ts
+│   │   │   │   │   ├── QualiteRequerant.ts
+│   │   │   │   │   ├── RapportAuLogement.ts
+│   │   │   │   │   ├── TypePersonneMoraleType.ts
+│   │   │   │   │   ├── TypePieceJointe.ts
+│   │   │   │   │   ├── Usager.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── query.ts
+│   │   │   │   ├── requerant.tsx
+│   │   │   │   ├── routes
+│   │   │   │   │   ├── __root.tsx
+│   │   │   │   │   └── requerant
+│   │   │   │   │       ├── dossier
+│   │   │   │   │       │   └── bris-de-porte
+│   │   │   │   │       │       └── $id
+│   │   │   │   │       │           ├── 1-bris-porte.tsx
+│   │   │   │   │       │           ├── 2-infos-requerant.tsx
+│   │   │   │   │       │           ├── 3-pieces-jointes.tsx
+│   │   │   │   │       │           ├── 4-recapitulatif.tsx
+│   │   │   │   │       │           ├── consulter-la-decision.tsx
+│   │   │   │   │       │           └── index.tsx
+│   │   │   │   │       ├── index.tsx
+│   │   │   │   │       └── mes-demandes.tsx
+│   │   │   │   ├── routeur
+│   │   │   │   │   ├── contexte.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── routeur-requerant.gen.ts
+│   │   │   │   ├── services
+│   │   │   │   │   ├── AdresseManager.ts
+│   │   │   │   │   ├── DossierManager.ts
+│   │   │   │   │   └── UsagerManager.ts
+│   │   │   │   ├── style
+│   │   │   │   │   ├── composants
+│   │   │   │   │   │   ├── IconeLigne.module.css
+│   │   │   │   │   │   ├── SuggestedInput.module.css
+│   │   │   │   │   │   └── piecesJointes
+│   │   │   │   │   │       └── PieceJointePanelNavigation.module.css
+│   │   │   │   │   └── form.module.css
+│   │   │   │   └── tsconfig.json
+│   │   │   └── sentry.ts
+│   │   ├── common
+│   │   │   ├── composants
+│   │   │   │   ├── Frise.css
+│   │   │   │   ├── Frise.tsx
+│   │   │   │   ├── ListeEtapes.tsx
+│   │   │   │   ├── Loader.tsx
+│   │   │   │   ├── document
+│   │   │   │   │   └── DocumentPDF.tsx
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── Chargement.css
+│   │   │   │   │   ├── Chargement.tsx
+│   │   │   │   │   ├── MiseEnAvant.tsx
+│   │   │   │   │   ├── Modale.tsx
+│   │   │   │   │   ├── Requis.tsx
+│   │   │   │   │   ├── Tableau.tsx
+│   │   │   │   │   ├── Tourniquet.css
+│   │   │   │   │   ├── Tourniquet.tsx
+│   │   │   │   │   └── champs
+│   │   │   │   │       ├── CodePostalInput.tsx
+│   │   │   │   │       ├── PaysSelect.tsx
+│   │   │   │   │       ├── RegExpInput.tsx
+│   │   │   │   │       ├── SuggestedInput.tsx
+│   │   │   │   │       ├── check
+│   │   │   │   │       │   ├── CheckInput.tsx
+│   │   │   │   │       │   ├── CheckRadioButtons.tsx
+│   │   │   │   │       │   ├── CheckSelect.tsx
+│   │   │   │   │       │   ├── CheckSuggestedInput.tsx
+│   │   │   │   │       │   └── CheckUpload.tsx
+│   │   │   │   │       ├── form
+│   │   │   │   │       │   ├── FormInput.tsx
+│   │   │   │   │       │   ├── FormRadioButtons.tsx
+│   │   │   │   │       │   ├── FormSelect.tsx
+│   │   │   │   │       │   ├── FormSuggestedInput.tsx
+│   │   │   │   │       │   ├── FormUpload.tsx
+│   │   │   │   │       │   └── TanstackFormField.d.ts
+│   │   │   │   │       └── pays.json
+│   │   │   │   ├── erreur
+│   │   │   │   │   ├── ErreurComposant.tsx
+│   │   │   │   │   └── NonTrouveComposant.tsx
+│   │   │   │   └── loader.css
+│   │   │   ├── models
+│   │   │   │   ├── Adresse.ts
+│   │   │   │   ├── Agent.ts
+│   │   │   │   ├── Document.ts
+│   │   │   │   ├── Dossier.ts
+│   │   │   │   ├── EtatDossier.ts
+│   │   │   │   ├── InstitutionSecuritePublique.ts
+│   │   │   │   ├── RapportAuLogement.ts
+│   │   │   │   ├── Redacteur.ts
+│   │   │   │   ├── Requerant.ts
+│   │   │   │   ├── TestEligibiliteBrisPorte.ts
+│   │   │   │   ├── TypeAttestation.ts
+│   │   │   │   ├── TypePersonneMorale.ts
+│   │   │   │   ├── Usager.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── rejet.ts
+│   │   │   ├── normalisation
+│   │   │   │   └── transformers
+│   │   │   │       ├── DateTransform.ts
+│   │   │   │       └── UndefinedTransform.ts
+│   │   │   ├── polyfill.ts
+│   │   │   ├── services
+│   │   │   │   ├── RequerantManager.ts
+│   │   │   │   ├── agent
+│   │   │   │   │   ├── document.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── courriel.ts
+│   │   │   │   ├── date.ts
+│   │   │   │   ├── devise.ts
+│   │   │   │   ├── divers.ts
+│   │   │   │   ├── dsfr.ts
+│   │   │   │   ├── fichier.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── object.ts
+│   │   │   └── validation
+│   │   │       └── index.ts
+│   │   ├── style
+│   │   │   ├── agents.css
+│   │   │   ├── index.css
+│   │   │   └── requerant
+│   │   │       └── dossier
+│   │   │           └── test_mon_eligibilite.css
+│   │   └── vite-env.d.ts
+│   ├── stylelint.config.ts
+│   ├── tests
+│   │   ├── apps
+│   │   │   ├── public
+│   │   │   │   ├── components
+│   │   │   │   │   └── formulaires
+│   │   │   │   │       └── eligibilite.schemas.test.ts
+│   │   │   │   ├── models
+│   │   │   │   │   └── TestEligibilite.test.ts
+│   │   │   │   └── services
+│   │   │   │       └── prescription.test.ts
+│   │   │   └── requerant
+│   │   │       └── models
+│   │   │           ├── Dossier.test.ts
+│   │   │           └── TypePieceJointe.test.ts
+│   │   ├── common
+│   │   │   ├── models
+│   │   │   │   └── Dossier.test.ts
+│   │   │   ├── services
+│   │   │   │   ├── date.test.ts
+│   │   │   │   └── object.test.ts
+│   │   │   └── validation
+│   │   │       └── index.test.ts
+│   │   ├── helpers.ts
+│   │   └── tsconfig.json
+│   ├── tsconfig.json
+│   ├── types
+│   │   └── index.d.ts
+│   ├── vite.config.ts
+│   ├── vitest.config.js
+│   └── yarn.lock
+└── maintenance
+    ├── .dsfr.yml
     ├── .gitignore
-    ├── eslint.config.ts
+    ├── README.md
+    ├── package-lock.json
     ├── package.json
-    ├── public
-    │   └── .gitignore
-    ├── src
-    │   ├── apps
-    │   │   ├── _init.ts
-    │   │   ├── agent
-    │   │   │   ├── _commun
-    │   │   │   │   ├── composants
-    │   │   │   │   │   └── MonCompte.tsx
-    │   │   │   │   └── contexts
-    │   │   │   │       ├── AgentContext.ts
-    │   │   │   │       └── index.ts
-    │   │   │   ├── fdo
-    │   │   │   │   ├── components
-    │   │   │   │   │   ├── ModaleAjoutPieceJointe.tsx
-    │   │   │   │   │   ├── ModalePrévisualiserPieceJointe.tsx
-    │   │   │   │   │   └── affectation
-    │   │   │   │   │       └── ModaleAutoAffectation.tsx
-    │   │   │   │   ├── container.ts
-    │   │   │   │   ├── fdo.tsx
-    │   │   │   │   ├── fichiers
-    │   │   │   │   │   └── documents
-    │   │   │   │   │       ├── avis-d-intervention-en-cas-de-bris-de-porte.pdf
-    │   │   │   │   │       ├── avis-d-intervention-en-cas-de-bris-de-porte_gn.pdf
-    │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre-pn.pdf
-    │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre.pdf
-    │   │   │   │   │       └── guide-de-remise-de-l-avis-d-intervention-apres-un-bris-de-porte.pdf
-    │   │   │   │   ├── modeles
-    │   │   │   │   │   ├── AffectationAgentFDO.ts
-    │   │   │   │   │   ├── AgentFDO.ts
-    │   │   │   │   │   ├── DeclarationFDOBrisPorte.ts
-    │   │   │   │   │   └── EtablissementFDO.ts
-    │   │   │   │   ├── query.ts
-    │   │   │   │   ├── routes
-    │   │   │   │   │   ├── __root.tsx
-    │   │   │   │   │   ├── bris-de-porte
-    │   │   │   │   │   │   ├── $reference
-    │   │   │   │   │   │   │   ├── 1-bris-de-porte.tsx
-    │   │   │   │   │   │   │   ├── 2-service-enqueteur.tsx
-    │   │   │   │   │   │   │   ├── 3-usager.tsx
-    │   │   │   │   │   │   │   └── index.tsx
-    │   │   │   │   │   │   ├── index.tsx
-    │   │   │   │   │   │   ├── mes-declarations.tsx
-    │   │   │   │   │   │   └── nouvelle-declaration.tsx
-    │   │   │   │   │   ├── foire-aux-questions.tsx
-    │   │   │   │   │   ├── index.tsx
-    │   │   │   │   │   ├── les-documents.tsx
-    │   │   │   │   │   ├── mon-compte.tsx
-    │   │   │   │   │   └── requisition-serrurier.tsx
-    │   │   │   │   ├── routeur
-    │   │   │   │   │   ├── contexte.ts
-    │   │   │   │   │   ├── index.ts
-    │   │   │   │   │   └── routeur-fdo.gen.ts
-    │   │   │   │   ├── services
-    │   │   │   │   │   ├── agent.ts
-    │   │   │   │   │   ├── declaration.ts
-    │   │   │   │   │   └── index.ts
-    │   │   │   │   └── tsconfig.json
-    │   │   │   └── fip6
-    │   │   │       ├── composants
-    │   │   │       │   ├── dossiers
-    │   │   │       │   │   ├── BadgeEtatDossier.tsx
-    │   │   │       │   │   └── ListeDossiers.tsx
-    │   │   │       │   ├── gestion
-    │   │   │       │   │   ├── ValidationAgentPage.tsx
-    │   │   │       │   │   └── index.ts
-    │   │   │       │   └── pages
-    │   │   │       │       └── RechercherDossierPage.tsx
-    │   │   │       ├── container.ts
-    │   │   │       ├── dossiers
-    │   │   │       │   └── components
-    │   │   │       │       ├── BadgesDossier.tsx
-    │   │   │       │       ├── ListeDossierAAttribuer.tsx
-    │   │   │       │       ├── ListeDossierACategoriser.tsx
-    │   │   │       │       ├── ListeDossierAInstruire.tsx
-    │   │   │       │       ├── ListeDossierATransmettre.tsx
-    │   │   │       │       ├── ListeDossierAVerifier.tsx
-    │   │   │       │       ├── ListeDossierArreteASigner.tsx
-    │   │   │       │       ├── ListeDossierEnAttenteIndemnisation.tsx
-    │   │   │       │       ├── ListeDossierPropositionASigner.tsx
-    │   │   │       │       ├── ListeDossierRejetASigner.tsx
-    │   │   │       │       ├── consultation
-    │   │   │       │       │   ├── InfosDossier.tsx
-    │   │   │       │       │   ├── PiecesJointes.tsx
-    │   │   │       │       │   ├── action
-    │   │   │       │       │   │   ├── AttributionAction.tsx
-    │   │   │       │       │   │   ├── CloturerAction.tsx
-    │   │   │       │       │   │   ├── DeciderIndemnisationAction.tsx
-    │   │   │       │       │   │   ├── DeciderRejetAction.tsx
-    │   │   │       │       │   │   ├── DemarrerInstructionAction.tsx
-    │   │   │       │       │   │   ├── DossierActions.tsx
-    │   │   │       │       │   │   ├── EnvoyerPourIndemnisationActionModale.tsx
-    │   │   │       │       │   │   ├── GenererArretePaiementAction.tsx
-    │   │   │       │       │   │   ├── MarquerIndemniseActionModale.tsx
-    │   │   │       │       │   │   ├── RevenirArreteAction.tsx
-    │   │   │       │       │   │   ├── RevenirInstructionAction.tsx
-    │   │   │       │       │   │   ├── SignerArretePaiementAction.tsx
-    │   │   │       │       │   │   ├── SignerCourrierAction.tsx
-    │   │   │       │       │   │   └── index.ts
-    │   │   │       │       │   ├── document
-    │   │   │       │       │   │   └── EditeurDocument.tsx
-    │   │   │       │       │   ├── editor
-    │   │   │       │       │   │   ├── QuillEditor.tsx
-    │   │   │       │       │   │   └── index.ts
-    │   │   │       │       │   └── piecejointe
-    │   │   │       │       │       ├── AjoutPieceJointe.tsx
-    │   │   │       │       │       ├── ChampPieceJointe.tsx
-    │   │   │       │       │       ├── MenuPieceJointe.tsx
-    │   │   │       │       │       ├── PrevisualiserPieceJointe.tsx
-    │   │   │       │       │       ├── SuppressionPieceJointe.tsx
-    │   │   │       │       │       ├── TelechargerPieceJointe.tsx
-    │   │   │       │       │       └── index.ts
-    │   │   │       │       └── liste
-    │   │   │       │           ├── DossierAAttribuer.ts
-    │   │   │       │           ├── DossierACategoriser.ts
-    │   │   │       │           ├── DossierAInstruire.ts
-    │   │   │       │           ├── DossierATransmettre.ts
-    │   │   │       │           ├── DossierAVerifier.ts
-    │   │   │       │           ├── DossierArreteASigner.ts
-    │   │   │       │           ├── DossierEnAttenteIndemnisation.ts
-    │   │   │       │           ├── DossierPropositionASigner.ts
-    │   │   │       │           ├── DossierRejetASigner.ts
-    │   │   │       │           └── dossier-liste-element.css
-    │   │   │       ├── fip6.tsx
-    │   │   │       ├── modeles
-    │   │   │       │   ├── AgentFIP6.ts
-    │   │   │       │   ├── dossier.ts
-    │   │   │       │   └── index.ts
-    │   │   │       ├── query.ts
-    │   │   │       ├── routes
-    │   │   │       │   ├── __root.tsx
-    │   │   │       │   ├── agents
-    │   │   │       │   │   ├── gestion
-    │   │   │       │   │   │   ├── actifs.tsx
-    │   │   │       │   │   │   ├── inactifs.tsx
-    │   │   │       │   │   │   └── index.tsx
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   ├── dossier
-    │   │   │       │   │   ├── $id
-    │   │   │       │   │   │   └── index.tsx
-    │   │   │       │   │   └── index.tsx
-    │   │   │       │   ├── dossiers
-    │   │   │       │   │   ├── a-attribuer.tsx
-    │   │   │       │   │   ├── a-categoriser.tsx
-    │   │   │       │   │   ├── a-instruire.tsx
-    │   │   │       │   │   ├── a-transmettre.tsx
-    │   │   │       │   │   ├── a-verifier.tsx
-    │   │   │       │   │   ├── arrete-a-signer.tsx
-    │   │   │       │   │   ├── en-attente-indemnisation.tsx
-    │   │   │       │   │   ├── en-instruction.tsx
-    │   │   │       │   │   ├── index.tsx
-    │   │   │       │   │   ├── mes-dossiers.tsx
-    │   │   │       │   │   ├── proposition-a-signer.tsx
-    │   │   │       │   │   ├── rechercher.tsx
-    │   │   │       │   │   ├── rejet-a-signer.tsx
-    │   │   │       │   │   └── usager
-    │   │   │       │   │       └── $id.tsx
-    │   │   │       │   ├── index.tsx
-    │   │   │       │   └── mon-compte.tsx
-    │   │   │       ├── routeur
-    │   │   │       │   ├── contexte.ts
-    │   │   │       │   ├── index.ts
-    │   │   │       │   ├── routeur-fip6.gen.ts
-    │   │   │       │   └── routeur-fip6.ts
-    │   │   │       ├── services
-    │   │   │       │   ├── agent.ts
-    │   │   │       │   ├── dossier.d.ts
-    │   │   │       │   └── dossier.ts
-    │   │   │       └── tsconfig.json
-    │   │   ├── public
-    │   │   │   ├── components
-    │   │   │   │   ├── Layout.tsx
-    │   │   │   │   ├── formulaires
-    │   │   │   │   │   └── eligibilite.schemas.ts
-    │   │   │   │   ├── steps
-    │   │   │   │   │   ├── BlockedNavButtons.tsx
-    │   │   │   │   │   ├── ConditionalButtonsGroup.tsx
-    │   │   │   │   │   ├── NavButtons.tsx
-    │   │   │   │   │   ├── StepActionContentieuse.tsx
-    │   │   │   │   │   ├── StepDateDecision.tsx
-    │   │   │   │   │   ├── StepDiligences.tsx
-    │   │   │   │   │   ├── StepPiecesProc.tsx
-    │   │   │   │   │   ├── StepTypeDecision.tsx
-    │   │   │   │   │   └── index.ts
-    │   │   │   │   └── types.ts
-    │   │   │   ├── container.ts
-    │   │   │   ├── models
-    │   │   │   │   └── TestEligibilite.ts
-    │   │   │   ├── public.tsx
-    │   │   │   ├── routes
-    │   │   │   │   ├── __root.tsx
-    │   │   │   │   └── dysfonctionnement
-    │   │   │   │       └── tester-mon-eligibilite
-    │   │   │   │           ├── 1-date-decision.tsx
-    │   │   │   │           ├── 2-action-contentieuse.tsx
-    │   │   │   │           ├── 3-type-decision.tsx
-    │   │   │   │           ├── 4-pieces-procedure.tsx
-    │   │   │   │           ├── 5-diligences.tsx
-    │   │   │   │           ├── index.tsx
-    │   │   │   │           ├── resultat.tsx
-    │   │   │   │           └── test-eligibilite.tsx
-    │   │   │   ├── routeur
-    │   │   │   │   ├── index.ts
-    │   │   │   │   └── routeur-public.gen.ts
-    │   │   │   ├── services
-    │   │   │   │   ├── TestEligibiliteManager.ts
-    │   │   │   │   ├── eligibiliteStore.ts
-    │   │   │   │   └── prescription.ts
-    │   │   │   └── tsconfig.json
-    │   │   ├── requerant
-    │   │   │   ├── composants
-    │   │   │   │   ├── IconeLigne.tsx
-    │   │   │   │   ├── SelectionCivilite.tsx
-    │   │   │   │   ├── TitreSection.tsx
-    │   │   │   │   └── piecesJointes
-    │   │   │   │       ├── AjouterPiecesJointesModale.tsx
-    │   │   │   │       ├── PieceJointePanelNavigation.tsx
-    │   │   │   │       ├── PrevisualiserFichier.tsx
-    │   │   │   │       └── SupprimerPieceJointeModale.tsx
-    │   │   │   ├── container.ts
-    │   │   │   ├── dossier
-    │   │   │   │   ├── components
-    │   │   │   │   │   ├── PieceJointe
-    │   │   │   │   │   │   └── AfficherPieceJointe.tsx
-    │   │   │   │   │   └── TestEligibiliteBrisPorteForm.tsx
-    │   │   │   │   ├── creation_de_compte.tsx
-    │   │   │   │   ├── models
-    │   │   │   │   │   └── Inscription.ts
-    │   │   │   │   ├── services
-    │   │   │   │   │   ├── Object.ts
-    │   │   │   │   │   └── devtools.js
-    │   │   │   │   └── tester_mon_eligibilite.tsx
-    │   │   │   ├── formulaires
-    │   │   │   │   └── brisDePorte
-    │   │   │   │       ├── 1-bris-porte.schema.ts
-    │   │   │   │       ├── 2-infos-requerants.schema.ts
-    │   │   │   │       └── 3-pieces-jointes.schema.ts
-    │   │   │   ├── hooks
-    │   │   │   │   ├── useClickOutside.ts
-    │   │   │   │   └── useDebounce.ts
-    │   │   │   ├── models
-    │   │   │   │   ├── Adresse.ts
-    │   │   │   │   ├── Civilite.ts
-    │   │   │   │   ├── Commune.ts
-    │   │   │   │   ├── Dossier.ts
-    │   │   │   │   ├── EtatDossier.ts
-    │   │   │   │   ├── Pays.ts
-    │   │   │   │   ├── Personne.ts
-    │   │   │   │   ├── PersonneMorale.ts
-    │   │   │   │   ├── PersonnePhysique.ts
-    │   │   │   │   ├── PieceJointe.ts
-    │   │   │   │   ├── QualiteRequerant.ts
-    │   │   │   │   ├── RapportAuLogement.ts
-    │   │   │   │   ├── TypePersonneMoraleType.ts
-    │   │   │   │   ├── TypePieceJointe.ts
-    │   │   │   │   ├── Usager.ts
-    │   │   │   │   └── index.ts
-    │   │   │   ├── query.ts
-    │   │   │   ├── requerant.tsx
-    │   │   │   ├── routes
-    │   │   │   │   ├── __root.tsx
-    │   │   │   │   └── requerant
-    │   │   │   │       ├── dossier
-    │   │   │   │       │   └── bris-de-porte
-    │   │   │   │       │       └── $id
-    │   │   │   │       │           ├── 1-bris-porte.tsx
-    │   │   │   │       │           ├── 2-infos-requerant.tsx
-    │   │   │   │       │           ├── 3-pieces-jointes.tsx
-    │   │   │   │       │           ├── 4-recapitulatif.tsx
-    │   │   │   │       │           ├── consulter-la-decision.tsx
-    │   │   │   │       │           └── index.tsx
-    │   │   │   │       ├── index.tsx
-    │   │   │   │       └── mes-demandes.tsx
-    │   │   │   ├── routeur
-    │   │   │   │   ├── contexte.ts
-    │   │   │   │   ├── index.ts
-    │   │   │   │   └── routeur-requerant.gen.ts
-    │   │   │   ├── services
-    │   │   │   │   ├── AdresseManager.ts
-    │   │   │   │   ├── DossierManager.ts
-    │   │   │   │   └── UsagerManager.ts
-    │   │   │   ├── style
-    │   │   │   │   ├── composants
-    │   │   │   │   │   ├── IconeLigne.module.css
-    │   │   │   │   │   ├── SuggestedInput.module.css
-    │   │   │   │   │   └── piecesJointes
-    │   │   │   │   │       └── PieceJointePanelNavigation.module.css
-    │   │   │   │   └── form.module.css
-    │   │   │   └── tsconfig.json
-    │   │   └── sentry.ts
-    │   ├── common
-    │   │   ├── composants
-    │   │   │   ├── Frise.css
-    │   │   │   ├── Frise.tsx
-    │   │   │   ├── ListeEtapes.tsx
-    │   │   │   ├── Loader.tsx
-    │   │   │   ├── document
-    │   │   │   │   └── DocumentPDF.tsx
-    │   │   │   ├── dsfr
-    │   │   │   │   ├── Chargement.css
-    │   │   │   │   ├── Chargement.tsx
-    │   │   │   │   ├── MiseEnAvant.tsx
-    │   │   │   │   ├── Modale.tsx
-    │   │   │   │   ├── Requis.tsx
-    │   │   │   │   ├── Tableau.tsx
-    │   │   │   │   ├── Tourniquet.css
-    │   │   │   │   ├── Tourniquet.tsx
-    │   │   │   │   └── champs
-    │   │   │   │       ├── CodePostalInput.tsx
-    │   │   │   │       ├── PaysSelect.tsx
-    │   │   │   │       ├── RegExpInput.tsx
-    │   │   │   │       ├── SuggestedInput.tsx
-    │   │   │   │       ├── check
-    │   │   │   │       │   ├── CheckInput.tsx
-    │   │   │   │       │   ├── CheckRadioButtons.tsx
-    │   │   │   │       │   ├── CheckSelect.tsx
-    │   │   │   │       │   ├── CheckSuggestedInput.tsx
-    │   │   │   │       │   └── CheckUpload.tsx
-    │   │   │   │       ├── form
-    │   │   │   │       │   ├── FormInput.tsx
-    │   │   │   │       │   ├── FormRadioButtons.tsx
-    │   │   │   │       │   ├── FormSelect.tsx
-    │   │   │   │       │   ├── FormSuggestedInput.tsx
-    │   │   │   │       │   ├── FormUpload.tsx
-    │   │   │   │       │   └── TanstackFormField.d.ts
-    │   │   │   │       └── pays.json
-    │   │   │   ├── erreur
-    │   │   │   │   ├── ErreurComposant.tsx
-    │   │   │   │   └── NonTrouveComposant.tsx
-    │   │   │   └── loader.css
-    │   │   ├── models
-    │   │   │   ├── Adresse.ts
-    │   │   │   ├── Agent.ts
-    │   │   │   ├── Document.ts
-    │   │   │   ├── Dossier.ts
-    │   │   │   ├── EtatDossier.ts
-    │   │   │   ├── InstitutionSecuritePublique.ts
-    │   │   │   ├── RapportAuLogement.ts
-    │   │   │   ├── Redacteur.ts
-    │   │   │   ├── Requerant.ts
-    │   │   │   ├── TestEligibiliteBrisPorte.ts
-    │   │   │   ├── TypeAttestation.ts
-    │   │   │   ├── TypePersonneMorale.ts
-    │   │   │   ├── Usager.ts
-    │   │   │   ├── index.ts
-    │   │   │   └── rejet.ts
-    │   │   ├── normalisation
-    │   │   │   └── transformers
-    │   │   │       ├── DateTransform.ts
-    │   │   │       └── UndefinedTransform.ts
-    │   │   ├── polyfill.ts
-    │   │   ├── services
-    │   │   │   ├── RequerantManager.ts
-    │   │   │   ├── agent
-    │   │   │   │   ├── document.ts
-    │   │   │   │   └── index.ts
-    │   │   │   ├── courriel.ts
-    │   │   │   ├── date.ts
-    │   │   │   ├── devise.ts
-    │   │   │   ├── divers.ts
-    │   │   │   ├── dsfr.ts
-    │   │   │   ├── fichier.ts
-    │   │   │   ├── index.ts
-    │   │   │   └── object.ts
-    │   │   └── validation
-    │   │       └── index.ts
-    │   ├── style
-    │   │   ├── agents.css
-    │   │   ├── index.css
-    │   │   └── requerant
-    │   │       └── dossier
-    │   │           └── test_mon_eligibilite.css
-    │   └── vite-env.d.ts
-    ├── stylelint.config.ts
-    ├── tests
-    │   ├── apps
-    │   │   ├── public
-    │   │   │   ├── components
-    │   │   │   │   └── formulaires
-    │   │   │   │       └── eligibilite.schemas.test.ts
-    │   │   │   ├── models
-    │   │   │   │   └── TestEligibilite.test.ts
-    │   │   │   └── services
-    │   │   │       └── prescription.test.ts
-    │   │   └── requerant
-    │   │       └── models
-    │   │           ├── Dossier.test.ts
-    │   │           └── TypePieceJointe.test.ts
-    │   ├── common
-    │   │   ├── models
-    │   │   │   └── Dossier.test.ts
-    │   │   ├── services
-    │   │   │   ├── date.test.ts
-    │   │   │   └── object.test.ts
-    │   │   └── validation
-    │   │       └── index.test.ts
-    │   ├── helpers.ts
-    │   └── tsconfig.json
-    ├── tsconfig.json
-    ├── types
-    │   └── index.d.ts
-    ├── vite.config.ts
-    ├── vitest.config.js
-    └── yarn.lock
-259 directories, 929 files
+    └── public
+        └── index.html
+263 directories, 942 files

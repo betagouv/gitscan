@@ -1,30 +1,19 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 16 septembre 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 23/10/2026)
 
 ### Résumé
-Cette période a été marquée par une amélioration significative de la gestion documentaire (génération de PDF, nouveaux formulaires) et de l'expérience de clôture des dossiers. Parallèlement, une refonte technique majeure a permis de simplifier l'application en déplaçant la logique métier vers le serveur et en modernisant l'ensemble de l'environnement technologique.
+Ce mois-ci, le projet a franchi une étape importante avec la modernisation de son infrastructure (passage à FrankenPHP) pour gagner en performance et en stabilité. Des améliorations de sécurité majeures ont été déployées pour protéger les échanges et les documents téléchargés, tandis que le parcours d'inscription et les outils de gestion pour les agents ont été simplifiés et harmonisés.
 
 ### Évolutions fonctionnelles
-- **Gestion des dossiers et clôture** : 
-    - Introduction d'une nouvelle interface (modale) pour la clôture des dossiers, incluant la saisie de motifs et d'explications.
-    - Possibilité pour les agents de la PN de s'affecter directement à un bâtiment de la PP.
-    - Amélioration du système de notifications (envoi à la DA et à la FIP3) [\#175](https://github.com/betagouv/mon-indemnisation-justice/pull/175).
-- **Documents et impressions** :
-    - Amélioration de la génération de PDF : conversion automatique des documents requis, gestion des fichiers incompatibles et export FIP3 en PDF [\#170](https://github.com/betagouv/mon-indemnisation-justice/pull/170).
-    - Utilisation des codes départements (ex: 2A, 976) dans les courriers officiels.
-    - Amélioration de la prévisualisation des fichiers signés et correction des problèmes d'affichage de PDF sur le navigateur Edge.
-    - Mise en place d'un système de détection et de remontée d'erreurs lors de l'impression [\#162](https://github.com/betagouv/mon-indemnisation-justice/pull/162).
-- **Formulaires** : Mise en place de nouveaux formulaires de déclaration et de téléversement de la DA [\#169](https://github.com/betagouv/mon-indemnisation-justice/pull/169).
-- **Corrections** : 
-    - Résolution de problèmes de doublons lors de l'affectation [\#163](https://github.com/betagouv/mon-indemnisation-justice/pull/163).
-    - Correction de bugs liés aux dates de marquage d'indemnisation et aux décalages de données entre le frontend et le backend.
+- **Expérience Agent :** Harmonisation des avis d'intervention pour l'ensemble des agents FDO [#177](https://github.com/betagouv/mon-indemnisation-justice/pull/177) et création d'une nouvelle vue de données pour les agents de l'administration [#183](https://github.com/betagouv/mon-indemnisation-justice/pull/183).
+- **Parcours Utilisateur :** Amélioration du processus de création de compte par invitation via FranceConnect et correction de plusieurs erreurs de saisie dans les formulaires.
+- **Information :** Mise en place d'une page de maintenance statique pour informer les utilisateurs lors des périodes d'indisponibilité du service.
 
 ### Évolutions techniques
-- **Refonte de l'architecture frontend** : Simplification majeure du code par la suppression de librairies de gestion d'état (MobX, Valtio) et de date-fns, en déléguant davantage de logique métier vers l'API.
-- **Modernisation de la stack** : Montée de version globale des composants critiques : PHP 8.5, Symfony 8.1, Node 24 et mise à jour des GitHub Actions.
-- **Fiabilisation de la génération de documents** : Migration vers l'utilisation de Firefox via Puppeteer pour assurer une meilleure stabilité des rendus PDF [\#166](https://github.com/betagouv/mon-indemnisation-justice/pull/166).
-- **Optimisations et tests** : 
-    - Amélioration des performances en optimisant les mécanismes de tentatives (retries) et la gestion du cache.
-    - Renforcement de la couverture de tests avec l'ajout de nouveaux tests unitaires.
+- **Infrastructure & Déploiement :** Migration de l'environnement de production vers FrankenPHP, simplification de l'usage de Docker (désormais limité à l'environnement de développement) et optimisation de la stratégie de déploiement.
+- **Sécurité :** Renforcement de la protection contre les failles XSS lors du téléchargement de pièces jointes et masquage des headers HTTP sensibles via la configuration Caddy [#184](https://github.com/betagouv/mon-indemnisation-justice/pull/184).
+- **Base de données :** Création d'une nouvelle vue via une migration pour optimiser l'accès aux données.
+- **CI/CD & Tests :** Optimisation de la chaîne d'intégration continue (correction de l'installation de `poppler-utils`) et mise à jour des suites de tests fonctionnels.
 
 ### Autres changements
-- Mise à jour de la documentation technique.
+- Mise à jour de certains textes de l'interface utilisateur.
+- Nettoyage des anciens scripts et méthodes de déploiement.
