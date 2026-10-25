@@ -1,29 +1,34 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 22 octobre 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une évolution majeure de l'offre de contenu avec l'implémentation de la nouvelle section "Se former et s'entraîner". Parallèlement, le projet a bénéficié d'un important travail de nettoyage technique et de refonte de l'identité visuelle (en-tête), visant à améliorer la qualité du code et la clarté de l'interface utilisateur.
+Ce mois-ci, la plateforme a franchi une étape importante avec l'ajout de nouveaux parcours pédagogiques via la section "Se former et s'entraîner". L'identité visuelle a été ajustée et une vaste opération de nettoyage technique a été menée pour moderniser le code et améliorer la stabilité de l'environnement de développement.
 
 ### Évolutions fonctionnelles
-- **Nouvelle section de formation** : Mise en ligne de la page "Se former et s'entraîner en ligne" (route `/se-former`) incluant ses vues et composants dédiés.
-- **Identité visuelle** : Mise à jour de l'en-tête avec le retrait du logo ANSSI et de la tagline "Innovation ANSSI".
-- **Améliorations de l'interface (UI)** :
-    - Optimisation de l'application du mode sombre sur les pages de sélection.
-    - Correction de l'affichage du bloc "Comment ça marche ?" sur la page d'accueil.
-- **Corrections éditoriales** : Ajustements du wording sur la page d'accueil et dans la section de présentation pour une meilleure clarté.
+- **Nouveaux contenus** : Implémentation de la page "Se former et s'entraîner en ligne" et de sa route dédiée.
+- **Nouveaux services** : Mise à disposition d'API pour les parcours de sélection "Je me mesure" et "Je m'entraîne".
+- **Améliorations de l'interface** :
+    - Optimisation de l'affichage du mode sombre.
+    - Corrections de textes (wording) sur la page d'accueil et les sections de présentation.
+    - Correction de l'affichage du bloc "Comment ça marche ?".
+    - Mise en place d'une image générique pour pallier l'absence d'illustrations.
+- **Identité visuelle** : Retrait du logo et de la tagline "Innovation ANSSI" de l'en-tête.
 
 ### Évolutions techniques
-- **Développement d'API** : Création de nouveaux points de terminaison (endpoints) pour gérer les sélections "Je me mesure" et "Je m'entraîne".
-- **Refactoring et nettoyage de code** :
-    - Suppression massive de surcharges de types (overrides) inutiles pour de nombreuses dépendances (Svelte, Axios, Lodash, Vitest, etc.), allégeant ainsi la base de code.
-    - Nettoyage des logs de debug liés à l'authentification.
-- **Environnement de développement et Outillage** :
-    - Introduction du shell Nix pour une meilleure reproductibilité de l'environnement.
-    - Mise en place du tri automatique des imports.
-    - Centralisation des instructions pour les agents d'intelligence artificielle.
-- **Optimisations de configuration** :
+- **Refactoring et nettoyage** : Suppression massive de surcharges de types inutiles sur de nombreuses bibliothèques (Axios, Svelte, Lodash, etc.) pour alléger le projet.
+- **Modernisation du socle** : 
     - Migration de la configuration Vitest vers le format ESM.
-    - Utilisation de `import.meta.dirname` pour les configurations Vite.
-    - Limitation des versions majeures de TypeScript et de Sentry pour stabiliser l'environnement.
+    - Utilisation de standards plus récents pour les configurations Vite (`import.meta.dirname`).
+- **Outillage de développement** :
+    - Introduction de Nix pour la gestion de l'environnement de travail (shell Nix).
+    - Automatisation du tri des imports.
+    - Centralisation des instructions pour les agents d'IA.
+- **Infrastructure et CI/CD** :
+    - Mise à jour de l'environnement de CI vers Ubuntu 26.04.
+    - Mise à jour de plusieurs workflows GitHub Actions.
+- **Maintenance et sécurité** :
+    - Mise à jour de dépendances critiques (Svelte, Knex, Axios, Zod, etc.).
+    - Nettoyage des logs de debug liés à l'authentification.
 
 ### Autres changements
-- **Documentation** : Réorganisation complète du guide de développement pour en faciliter la lecture.
+- **Documentation** : Réorganisation complète du guide de développement pour une meilleure lisibilité.
+- **Configuration** : Optimisation du planning des mises à jour automatiques (Renovate).
