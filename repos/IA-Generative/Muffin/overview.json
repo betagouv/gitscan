@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/IA-Generative/Muffin",
   "name": "Muffin",
-  "description": "Muffin est une plateforme de bases de connaissances documentaires dotée d'un agent de recherche conversationnel. Elle permet d'indexer des documents et d'interroger ces collections via un agent intelligent fournissant des citations vérifiables.",
+  "description": "Plateforme de gestion de connaissances documentaires dotée d'un agent de recherche conversationnel. Elle permet d'indexer des documents et d'interroger des collections via une interface de chat intelligente avec citations.",
   "language": "Python",
   "features": [
-    "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
     "Recherche & Filtres",
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Administration & Backoffice",
-    "Suivi & Traçabilité"
+    "Interface utilisateur & Design",
+    "Intelligence Artificielle & NLP"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,11 +19,11 @@
     "Celery",
     "Redis",
     "PostgreSQL",
+    "Qdrant",
     "Meilisearch",
     "Keycloak",
     "LangGraph",
     "Docker",
-    "Helm",
     "SearXNG"
   ],
   "components": [
@@ -39,20 +40,18 @@
   ],
   "auth": {
     "methods": [
+      "oauth2",
       "jwt",
-      "api-key"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests et linting",
   "workflows": [
-    "Helm chart linting",
-    "Release pipelines",
-    "GitLab CI/CD"
+    "CI/CD"
   ],
-  "lastActivity": "2026-09-19T00:00:00Z",
+  "lastActivity": "2026-10-23T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,8 +60,7 @@
     "Python",
     "TypeScript",
     "Docker & Conteneurs",
-    "Données & Open Data",
-    "CI/CD & GitHub Actions",
+    "NLP & ML",
     "Bases de données SQL"
   ]
 }

@@ -1,36 +1,38 @@
-## Changelog : Muffin (30 derniers jours, au 20 septembre 2026)
+## Changelog : Muffin (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Muffin a franchi une étape majeure en passant d'un outil de recherche à une plateforme de gestion de connaissances complète. Les évolutions récentes se concentrent sur la mesure de la qualité des réponses de l'IA (via un nouveau tableau de bord), l'ajout de capacités de recherche sur le web, et une gestion beaucoup plus fine des collections de documents. L'interface utilisateur a également été profondément modernisée pour offrir une expérience plus fluide et interactive.
+Ce mois a marqué une évolution majeure de Muffin, passant d'un outil de consultation à une plateforme de gestion documentaire active. Les nouveautés se concentrent sur la capacité de l'IA à proposer des modifications de documents ("documents vivants"), une refonte complète du moteur de recherche pour plus de précision, et une interface utilisateur considérablement simplifiée grâce à des assistants de configuration guidés.
 
 ### Évolutions fonctionnelles
-
-**Expérience de Chat & Agent**
-- **Recherche Web :** Intégration d'un outil de recherche sur internet via SearXNG, activable directement depuis l'interface.
-- **Transparence de l'IA :** Affichage détaillé de l'exécution de l'agent étape par étape et distinction visuelle des types de sources dans le panneau latéral.
-- **Gestion des sources :** Amélioration de la présentation des citations et des documents sources (cartes dédiées, modales de détails avec résumé et QA).
-- **Interactivité :** Ajout d'animations de type "streaming" pour les titres de conversation et possibilité de fixer (pin) des collections spécifiques à une recherche.
-- **Feedback utilisateur :** Mise en place d'un système de notation des réponses permettant de collecter et de persister les retours utilisateurs.
-
-**Gestion des Connaissances & Qualité**
-- **Tableau de bord Qualité :** Nouveau centre de pilotage pour suivre les métriques de performance de l'IA (coût, latence, longueur des discussions, etc.).
-- **Gestion des Collections :** Contrôle accru sur les collections (visibilité publique/privée, partage sécurisé par hash, et paramètres de traitement personnalisés).
-- **Gestion Documentaire :** Interface complète pour l'importation, la suppression et la réindexation des documents avec prévisualisation détaillée.
-- **Suivi des tâches :** Refonte de la page de gestion des tâches avec un tableau dépliable et paginé.
+- **Gestion des documents et édition :**
+    - Introduction des "documents vivants" permettant de gérer des révisions, des verrous d'édition et des propositions de modifications par l'IA.
+    - Amélioration de l'importation : gestion des fichiers ZIP volumineux par lots et extraction progressive des PDF longs avec suivi de la progression.
+    - Détection automatique des doublons lors de l'ajout de fichiers ou d'URL.
+- **Expérience de Chat et Agent :**
+    - L'assistant peut désormais poser des questions interactives (choix multiples ou texte libre) pour affiner les recherches [#344](https://github.com/IA-Generative/Muffin/issues/344).
+    - Suggestion de questions de démarrage basées sur les paires question-réponse stockées.
+    - L'agent peut désormais aider l'utilisateur sur l'utilisation de l'application via un guide utilisateur intégré.
+- **Organisation et Collections :**
+    - Mise en place d'une hiérarchie de sous-collections avec héritage automatique des droits d'accès.
+    - Possibilité d'effectuer des recherches transversales sur l'ensemble d'une arborescence de collections.
+- **Interface Utilisateur (Frontend) :**
+    - Nouveau système de configuration guidé (wizard) pour paramétrer les collections plus facilement.
+    - Amélioration de la visualisation des sources : encadrement précis des passages cités dans les documents et les captures d'écran.
+- **Administration :**
+    - Mise en place d'un suivi de la consommation des appels LLM pour les administrateurs.
 
 ### Évolutions techniques
-
-**Architecture & Intelligence Artificielle**
-- **Moteur de recherche :** Migration de Qdrant vers Meilisearch pour optimiser la recherche hybride.
-- **Nouveaux Workers :** Introduction de workers Celery dédiés pour le traitement des documents et l'évaluation automatique de la qualité.
-- **Agent de recherche :** Implémentation de LangGraph pour orchestrer les flux de l'agent et ajout d'un outil de contexte temporel pour l'IA ([#56](https://github.com/IA-Generative/Muffin/issues/56)).
-- **Évaluation automatisée :** Développement d'un système de scoring pour évaluer la pertinence des discussions et la qualité de la récupération d'informations (retrieval).
-
-**Infrastructure & Sécurité**
-- **Authentification :** Intégration de Keycloak pour la gestion des accès et de la sécurité.
-- **Déploiement :** Mise à jour des charts Helm (rebranding en "muffin") et ajout de SearXNG comme dépendance.
-- **Fiabilité :** Ajout de mécanismes de `HEALTHCHECK` dans les Dockerfiles et amélioration des pipelines CI/CD pour les releases.
+- **Moteur de recherche :** Remplacement de Meilisearch par une recherche hybride via **Qdrant** (combinant recherche dense et BM25) pour une meilleure pertinence des résultats [#355](https://github.com/IA-Generative/Muffin/issues/355).
+- **Optimisation de l'indexation :**
+    - Nouvelle stratégie de découpage (chunking) par LLM par défaut.
+    - Optimisation du traitement des documents longs par échantillonnage intelligent des pages, réduisant ainsi les coûts et le temps de traitement [#373](https://github.com/IA-Generative/Muffin/issues/373).
+    - Estimation en temps réel du coût en appels LLM lors de la configuration des collections [#375](https://github.com/IA-Generative/Muffin/issues/375).
+- **Architecture et Pipeline :**
+    - Refactorisation du worker pour séparer les étapes d'extraction, d'enrichissement et d'importation.
+    - Implémentation de logs de tâches structurés permettant un suivi en direct de l'avancement des processus.
+- **Infrastructure :**
+    - Mise à jour des charts Helm et ajustement des ressources pour les pods Qdrant.
 
 ### Autres changements
-- **Documentation :** Réécriture complète du README principal, création de documentations par service et documentation exhaustive de toutes les variables d'environnement.
-- **Nettoyage :** Refactorisation du code frontend (linting, TypeScript) et correction de messages d'erreur pour éviter l'affichage de détails techniques bruts aux utilisateurs.
+- **Documentation :** Mise à jour complète de la documentation concernant la recherche Qdrant, les procédures de sauvegarde et les paramètres de configuration des collections.
+- **Design :** Modernisation de la page d'accueil et ajout d'animations pour illustrer le fonctionnement de la plateforme.

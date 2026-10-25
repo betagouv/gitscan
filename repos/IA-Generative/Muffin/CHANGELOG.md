@@ -1,5 +1,888 @@
 # Changelog
 
+## [0.31.0](https://github.com/IA-Generative/Muffin/compare/v0.30.0...v0.31.0) (2026-10-23)
+
+
+### Features
+
+* **collections:** estimate the cost of settings that are typed and not saved yet ([#375](https://github.com/IA-Generative/Muffin/issues/375)) ([6f8ddf9](https://github.com/IA-Generative/Muffin/commit/6f8ddf998e0bd62d0fb8b670fc306a2775916ac7))
+* **collections:** the estimate of unsaved settings can take the way the chunks are cut ([24963b1](https://github.com/IA-Generative/Muffin/commit/24963b120b4c585bc0d877a6494c9efb47ba868c))
+* **frontend:** building blocks of the guided settings: fields, collapsible sections, profile cards ([ccaacda](https://github.com/IA-Generative/Muffin/commit/ccaacdad484a5b97ff3f06c5e8362b03c6f0e918))
+* **frontend:** draft, profiles and plain-language summaries of a collection's settings ([f7d71ea](https://github.com/IA-Generative/Muffin/commit/f7d71ea53d896a333f9282cd11e09500905ae3da))
+* **frontend:** flag a partial summary with the pages it covers ([#375](https://github.com/IA-Generative/Muffin/issues/375)) ([12b7cc0](https://github.com/IA-Generative/Muffin/commit/12b7cc0408cc56cfd2cc2a8a7058535cd56e5ab8))
+* **frontend:** guide the settings of a collection with a setup wizard and one save for everything ([a222d75](https://github.com/IA-Generative/Muffin/commit/a222d75357bb7d432080fa1f9fa8235cc6e3f9fa))
+* **frontend:** long documents section in the collection settings, with its estimate ([#375](https://github.com/IA-Generative/Muffin/issues/375)) ([0a9c787](https://github.com/IA-Generative/Muffin/commit/0a9c7874517cd68868ab09c0e1d8a76e4c6635bb))
+* **frontend:** validate the long documents settings and call the estimate ([#375](https://github.com/IA-Generative/Muffin/issues/375)) ([b25501a](https://github.com/IA-Generative/Muffin/commit/b25501a2dcb1cdcba5e16e72ce1f9ed1a88c96e3))
+
+## [0.30.0](https://github.com/IA-Generative/Muffin/compare/v0.29.1...v0.30.0) (2026-10-23)
+
+
+### Features
+
+* **agent:** flag partial summaries to the sufficiency judge ([9793aef](https://github.com/IA-Generative/Muffin/commit/9793aefff98fe3d7f65cd3c4018be4cf5df88336))
+* **enrichment:** send a document's windows a few at a time, each ending the next of its lane ([61e416c](https://github.com/IA-Generative/Muffin/commit/61e416cef9857e7c986b9ec0ed13cd449470f41f))
+* **indexing:** choose the windows and pages of a long document the same way every time ([#373](https://github.com/IA-Generative/Muffin/issues/373)) ([8af2e4c](https://github.com/IA-Generative/Muffin/commit/8af2e4cff49b03f3531bcf57ad44fc33fe8472ac))
+* **indexing:** estimate the calls to the model a document costs, checked against the worker ([#373](https://github.com/IA-Generative/Muffin/issues/373)) ([02423f3](https://github.com/IA-Generative/Muffin/commit/02423f3abdf6faa150c2eb0e78c529c3617e0c25))
+* **indexing:** fingerprint what a stage reads of a long document, only when it reads a part ([#373](https://github.com/IA-Generative/Muffin/issues/373)) ([6255cad](https://github.com/IA-Generative/Muffin/commit/6255cad14d9d908f101eb49899ca2d3a72a22f7d))
+* **indexing:** keep the pages a summary was made from, and prune the windows no longer read ([#373](https://github.com/IA-Generative/Muffin/issues/373)) ([9f0a2e6](https://github.com/IA-Generative/Muffin/commit/9f0a2e6ffc60834de3cf9774aacc06ef355e8bcd))
+* **indexing:** settings to read only part of a long document, validated as a whole ([#373](https://github.com/IA-Generative/Muffin/issues/373)) ([2fe75f3](https://github.com/IA-Generative/Muffin/commit/2fe75f348b0deff20791b3171c59ef86bb6901c3))
+* **worker:** read only a drawn share of the windows of a long document for qa and entities ([59247bf](https://github.com/IA-Generative/Muffin/commit/59247bf7b059f186453e68bbf7e3e492da07c0a5))
+* **worker:** summarize only the stretches of pages asked and say the summary is partial ([1c05d07](https://github.com/IA-Generative/Muffin/commit/1c05d0739f140c046e14ceae65a925302e61864d))
+
+
+### Bug Fixes
+
+* **enrichment:** send the windows of a document below its chunking and summary ([8d85e17](https://github.com/IA-Generative/Muffin/commit/8d85e17c925de899e746d974cba5e5c608743086))
+
+## [0.29.1](https://github.com/IA-Generative/Muffin/compare/v0.29.0...v0.29.1) (2026-10-23)
+
+
+### Bug Fixes
+
+* **chat:** frame the cited passage where it is on the page in the source modal ([03185b8](https://github.com/IA-Generative/Muffin/commit/03185b85fcf8d378bf0a91d2c84d4524cc245c50))
+
+## [0.29.0](https://github.com/IA-Generative/Muffin/compare/v0.28.0...v0.29.0) (2026-10-23)
+
+
+### Features
+
+* **agent:** end the run on multiple-choice questions instead of waiting for an answer ([#344](https://github.com/IA-Generative/Muffin/issues/344)) ([a3d4f46](https://github.com/IA-Generative/Muffin/commit/a3d4f468027ae772e2ed880dc199e588a9605bf4))
+* **chat:** an answer goes on with the collections and web search of the run that asked ([#344](https://github.com/IA-Generative/Muffin/issues/344)) ([2fc57e4](https://github.com/IA-Generative/Muffin/commit/2fc57e447663b43cd665055c873b9313a9bea7b2))
+* **chat:** card to answer the assistant's questions, in one click or in free text ([#344](https://github.com/IA-Generative/Muffin/issues/344)) ([7cf75ff](https://github.com/IA-Generative/Muffin/commit/7cf75ffb152966531568b81c934c514144c4aafc))
+* **chat:** keep the assistant's questions with its message and take the answers as a run ([#344](https://github.com/IA-Generative/Muffin/issues/344)) ([2d05111](https://github.com/IA-Generative/Muffin/commit/2d051112d19d840c0f32116e2e92cc8cb71842a4))
+
+
+### Bug Fixes
+
+* **helm:** give the Qdrant pods the resources the namespace quota requires ([4f81c2d](https://github.com/IA-Generative/Muffin/commit/4f81c2dd750d019d6add89eb91f37dffb5c60707))
+
+
+### Code Refactoring
+
+* **chat:** answer the questions of a run by its id and report them on the run ([#344](https://github.com/IA-Generative/Muffin/issues/344)) ([9f2c22a](https://github.com/IA-Generative/Muffin/commit/9f2c22ab287809705fe7498b20930b2509653632))
+
+## [0.28.0](https://github.com/IA-Generative/Muffin/compare/v0.27.0...v0.28.0) (2026-10-23)
+
+
+### Features
+
+* **agent:** decide 'already answered' on the dense cosine, look at the best of 3 candidates ([#355](https://github.com/IA-Generative/Muffin/issues/355)) ([b19b3ca](https://github.com/IA-Generative/Muffin/commit/b19b3ca7e230df15f4661bdc6cf8dfe0f8399809))
+* **search:** replace Meilisearch with Qdrant hybrid search (dense + BM25 IDF, RRF) ([e2b5403](https://github.com/IA-Generative/Muffin/commit/e2b5403254eeb9a0a79fa89716af2d3834dbcc98))
+
+
+### Bug Fixes
+
+* **ci:** start the Qdrant service in the backend unit tests ([#355](https://github.com/IA-Generative/Muffin/issues/355)) ([e8202c5](https://github.com/IA-Generative/Muffin/commit/e8202c5f0525fa5d0844b674f906bbaec7187bc2))
+* **release:** bump every Python service and its uv.lock with release-please ([d7208af](https://github.com/IA-Generative/Muffin/commit/d7208af870c0cd183cfb05457103ec0787d3f8ee))
+* **release:** bump muffin-backend in backend/uv.lock with release-please ([3d654a1](https://github.com/IA-Generative/Muffin/commit/3d654a12d237ffb39cff5c572aa9660b8521fec8))
+
+
+### Dependencies
+
+* **helm:** replace Meilisearch with a Qdrant sub-chart and a nightly snapshot ([#355](https://github.com/IA-Generative/Muffin/issues/355)) ([bb842ec](https://github.com/IA-Generative/Muffin/commit/bb842eccbb3b1e2376c908737d8a781f2e8c50f1))
+* **search:** add a Qdrant service to Docker Compose, the test stack and CI ([#355](https://github.com/IA-Generative/Muffin/issues/355)) ([e86df4f](https://github.com/IA-Generative/Muffin/commit/e86df4f3b736531818e1a79f888b823f5a7f4465))
+
+## [0.27.0](https://github.com/IA-Generative/Muffin/compare/v0.26.0...v0.27.0) (2026-10-23)
+
+
+### Features
+
+* **chat:** highlight the cited passage in the source modal, with a pager between cited pages ([6b484e2](https://github.com/IA-Generative/Muffin/commit/6b484e214d1a18d150b648c844433ed12640031d)), closes [#349](https://github.com/IA-Generative/Muffin/issues/349)
+* **chunking:** keep the exact position of each chunk in its pages and frame cited chunks there ([2ca9f1e](https://github.com/IA-Generative/Muffin/commit/2ca9f1ef1d47bf7b85b91065fc56f7c573199b14)), closes [#353](https://github.com/IA-Generative/Muffin/issues/353)
+* **documents:** keep the positioned text of pages, frame the cited passage on the screenshot ([a960728](https://github.com/IA-Generative/Muffin/commit/a96072875af08e4babf646718cd9a98747ec439e)), closes [#350](https://github.com/IA-Generative/Muffin/issues/350)
+* **entities:** find each entity in the text and keep the sentence behind each relation ([02a2bb4](https://github.com/IA-Generative/Muffin/commit/02a2bb478fa8c939e959fcee875a3e9b70b5c66c)), closes [#352](https://github.com/IA-Generative/Muffin/issues/352)
+* **qa:** frame the source of a question-answer pair where its passage is, in the tab and the chat ([6ab5df7](https://github.com/IA-Generative/Muffin/commit/6ab5df77dda1d257b6e80fd842ece85320586184)), closes [#351](https://github.com/IA-Generative/Muffin/issues/351)
+
+## [0.27.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.26.0...v0.27.0-rc) (2026-10-23)
+
+
+### Features
+
+* **chat:** highlight the cited passage in the source modal, with a pager between cited pages ([12560d1](https://github.com/IA-Generative/Muffin/commit/12560d1f7b8db7a52772c07a9b41f2f12ed11329)), closes [#349](https://github.com/IA-Generative/Muffin/issues/349)
+* **chunking:** keep the exact position of each chunk in its pages and frame cited chunks there ([fd08434](https://github.com/IA-Generative/Muffin/commit/fd08434b891b7cc169906530f11c45b950a55e91)), closes [#353](https://github.com/IA-Generative/Muffin/issues/353)
+* **documents:** keep the positioned text of pages, frame the cited passage on the screenshot ([17aace2](https://github.com/IA-Generative/Muffin/commit/17aace2771f8ea78d6e18a85fba5ad8227f84a06)), closes [#350](https://github.com/IA-Generative/Muffin/issues/350)
+* **entities:** find each entity in the text and keep the sentence behind each relation ([7f87886](https://github.com/IA-Generative/Muffin/commit/7f878868a02273bce81616b2607333c8779a2369)), closes [#352](https://github.com/IA-Generative/Muffin/issues/352)
+* **qa:** frame the source of a question-answer pair where its passage is, in the tab and the chat ([1997bc3](https://github.com/IA-Generative/Muffin/commit/1997bc3cd8fe71f772357c230346ed9c6124f584)), closes [#351](https://github.com/IA-Generative/Muffin/issues/351)
+
+## [0.26.0](https://github.com/IA-Generative/Muffin/compare/v0.25.0...v0.26.0) (2026-10-22)
+
+
+### Features
+
+* **documents:** relaunch the indexing of documents that ended in error, one by one or in bulk ([8389509](https://github.com/IA-Generative/Muffin/commit/8389509c5a7f9bf94d512d0171a7b2eeea43089b)), closes [#340](https://github.com/IA-Generative/Muffin/issues/340)
+
+## [0.26.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.25.0...v0.26.0-rc) (2026-10-22)
+
+
+### Features
+
+* **documents:** relaunch the indexing of documents that ended in error, one by one or in bulk ([4378956](https://github.com/IA-Generative/Muffin/commit/4378956ce210fb40b6c5112afe0ddd084af9b3b4)), closes [#340](https://github.com/IA-Generative/Muffin/issues/340)
+
+## [0.25.0](https://github.com/IA-Generative/Muffin/compare/v0.24.0...v0.25.0) (2026-10-22)
+
+
+### Features
+
+* **import:** at most a window of a ZIP import's documents are extracted at a time ([39337a4](https://github.com/IA-Generative/Muffin/commit/39337a4dc5e8c5781260d0fe278c20414c3ccc22)), closes [#335](https://github.com/IA-Generative/Muffin/issues/335)
+* **import:** read a big ZIP in batches of files, a window of them at a time ([5de4d01](https://github.com/IA-Generative/Muffin/commit/5de4d01195b3995cb190b9d333e17b71bd92f9fb)), closes [#334](https://github.com/IA-Generative/Muffin/issues/334)
+
+## [0.25.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.24.0...v0.25.0-rc) (2026-10-22)
+
+
+### Features
+
+* **import:** at most a window of a ZIP import's documents are extracted at a time ([dfabd3e](https://github.com/IA-Generative/Muffin/commit/dfabd3e6f9f8d8417e34e8c4dfad806dc69d1a5a)), closes [#335](https://github.com/IA-Generative/Muffin/issues/335)
+* **import:** read a big ZIP in batches of files, a window of them at a time ([8a1b3ab](https://github.com/IA-Generative/Muffin/commit/8a1b3aba90ef96e22cfb7ba436ece7367be1cc64)), closes [#334](https://github.com/IA-Generative/Muffin/issues/334)
+
+## [0.24.0](https://github.com/IA-Generative/Muffin/compare/v0.23.1...v0.24.0) (2026-10-22)
+
+
+### Features
+
+* **documents:** extract a long PDF in ranges of pages, with its progress and an estimate in logs ([9d83882](https://github.com/IA-Generative/Muffin/commit/9d8388273da888348b0241b34f6c454779240a38)), closes [#331](https://github.com/IA-Generative/Muffin/issues/331)
+
+## [0.23.1](https://github.com/IA-Generative/Muffin/compare/v0.23.0...v0.23.1) (2026-10-22)
+
+
+### Bug Fixes
+
+* **documents:** log a long document's progress, refuse non-page answers, parallelize its processing ([f28b3e9](https://github.com/IA-Generative/Muffin/commit/f28b3e9d3838cd672f46db263dcad778fc50b2e6)), closes [#324](https://github.com/IA-Generative/Muffin/issues/324)
+* **tasks:** make a revoked task stay revoked, wherever it is, with the tasks it started ([09fd4b3](https://github.com/IA-Generative/Muffin/commit/09fd4b309bcd44838f028f26776e73c29f8fb569)), closes [#326](https://github.com/IA-Generative/Muffin/issues/326)
+
+## [0.23.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.23.0...v0.23.1-rc) (2026-10-22)
+
+
+### Bug Fixes
+
+* **documents:** log a long document's progress, refuse non-page answers, parallelize its processing ([4311c62](https://github.com/IA-Generative/Muffin/commit/4311c62dbce53405a0c7b02250ffbadf7db91a75)), closes [#324](https://github.com/IA-Generative/Muffin/issues/324)
+* **tasks:** make a revoked task stay revoked, wherever it is, with the tasks it started ([1119f60](https://github.com/IA-Generative/Muffin/commit/1119f606b9210ba2d054e016c19158ce5ca92dee)), closes [#326](https://github.com/IA-Generative/Muffin/issues/326)
+
+## [0.23.0](https://github.com/IA-Generative/Muffin/compare/v0.22.0...v0.23.0) (2026-10-22)
+
+
+### Features
+
+* **chunking:** actually chunk by LLM, and make it the default strategy ([7a18370](https://github.com/IA-Generative/Muffin/commit/7a18370ff4a5c3b2c3b546a3bf2e6caa8401c9c7)), closes [#319](https://github.com/IA-Generative/Muffin/issues/319)
+
+## [0.23.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.22.0...v0.23.0-rc) (2026-10-22)
+
+
+### Features
+
+* **chunking:** actually chunk by LLM, and make it the default strategy ([8c7f0f2](https://github.com/IA-Generative/Muffin/commit/8c7f0f23252610f18791e65ef8ce3fed0cfc17a9)), closes [#319](https://github.com/IA-Generative/Muffin/issues/319)
+
+## [0.22.0](https://github.com/IA-Generative/Muffin/compare/v0.21.0...v0.22.0) (2026-10-22)
+
+
+### Features
+
+* **documents:** fetch a URL document again on demand, and give a long one time to download ([c7f7aef](https://github.com/IA-Generative/Muffin/commit/c7f7aefefce902bfa0cb7e3bdf85a2e96b140938)), closes [#312](https://github.com/IA-Generative/Muffin/issues/312)
+
+
+### Bug Fixes
+
+* **tests:** build the same ZIP bytes at every call in the collection import tests ([894d7a7](https://github.com/IA-Generative/Muffin/commit/894d7a7c4a690425591bfc21d3cc0e9b30a712fa)), closes [#314](https://github.com/IA-Generative/Muffin/issues/314)
+
+## [0.22.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.21.0...v0.22.0-rc) (2026-10-22)
+
+
+### Features
+
+* **documents:** fetch a URL document again on demand, and give a long one time to download ([3041465](https://github.com/IA-Generative/Muffin/commit/30414654f27c8c1c24ba1f8a57b9e6e6933ebcf0)), closes [#312](https://github.com/IA-Generative/Muffin/issues/312)
+
+
+### Bug Fixes
+
+* **tests:** build the same ZIP bytes at every call in the collection import tests ([66ce78d](https://github.com/IA-Generative/Muffin/commit/66ce78dd8afa95176236b88a28f9bf7250e651cf)), closes [#314](https://github.com/IA-Generative/Muffin/issues/314)
+
+## [0.21.0](https://github.com/IA-Generative/Muffin/compare/v0.20.0...v0.21.0) (2026-10-22)
+
+
+### Features
+
+* **tasks:** structured task logs, sent as tasks run and followed live by task or document ([cac15c7](https://github.com/IA-Generative/Muffin/commit/cac15c70256b528c7fbf3df7e0efa1b870167d36)), closes [#305](https://github.com/IA-Generative/Muffin/issues/305)
+
+
+### Bug Fixes
+
+* **documents:** no size or count limit by default on ZIP imports and uploaded files ([a195909](https://github.com/IA-Generative/Muffin/commit/a195909406a17dd788b8a5d64ea0b63812ea9f1d)), closes [#308](https://github.com/IA-Generative/Muffin/issues/308)
+
+## [0.21.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.20.0...v0.21.0-rc) (2026-10-22)
+
+
+### Features
+
+* **tasks:** structured task logs, sent as tasks run and followed live by task or document ([af4b8d0](https://github.com/IA-Generative/Muffin/commit/af4b8d034ee061f48239cd3ab7e69a9bf3d1231f)), closes [#305](https://github.com/IA-Generative/Muffin/issues/305)
+
+
+### Bug Fixes
+
+* **documents:** no size or count limit by default on ZIP imports and uploaded files ([95ae720](https://github.com/IA-Generative/Muffin/commit/95ae720cfa21e752d8578e48b0ff7a8dcbc2ed2c)), closes [#308](https://github.com/IA-Generative/Muffin/issues/308)
+
+## [0.20.0](https://github.com/IA-Generative/Muffin/compare/v0.19.1...v0.20.0) (2026-10-21)
+
+
+### Features
+
+* **documents:** hash every file, and tell when the same file or URL is added twice ([0a60930](https://github.com/IA-Generative/Muffin/commit/0a6093022231645b189c2b518c8a7a9ed47bdf7d))
+* **frontend:** ask before adding a file or a URL the collection already has ([f927c40](https://github.com/IA-Generative/Muffin/commit/f927c40d5424c84fda9ab0980cb7d7c5885f81b2))
+* **pipeline:** reuse what was computed for the same file, stage by stage ([52a7172](https://github.com/IA-Generative/Muffin/commit/52a7172ff4aa2548ffac127f62ca3bcbeecee8e3)), closes [#300](https://github.com/IA-Generative/Muffin/issues/300)
+
+
+### Bug Fixes
+
+* **pipeline:** make the pipeline's writes idempotent, and delete what it derives with the document ([09c2039](https://github.com/IA-Generative/Muffin/commit/09c20398462dbc3f304cff8ce90ca24307d6cccc)), closes [#299](https://github.com/IA-Generative/Muffin/issues/299)
+* **worker:** stop killing long tasks, bound what can hang where it happens ([f97aae9](https://github.com/IA-Generative/Muffin/commit/f97aae9d50476b35b4d1e848e678051725b75601)), closes [#294](https://github.com/IA-Generative/Muffin/issues/294)
+
+
+### Code Refactoring
+
+* **worker:** split document_process into extraction, enrichment and import/rebuild pods ([1815930](https://github.com/IA-Generative/Muffin/commit/1815930167e6d75ae1f7bcd11940effd15db5a61)), closes [#291](https://github.com/IA-Generative/Muffin/issues/291)
+
+## [0.20.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.19.1...v0.20.0-rc) (2026-10-21)
+
+
+### Features
+
+* **documents:** hash every file, and tell when the same file or URL is added twice ([1cb34ba](https://github.com/IA-Generative/Muffin/commit/1cb34ba953c514606e2c283455bf346f8f545b46))
+* **frontend:** ask before adding a file or a URL the collection already has ([de3d12e](https://github.com/IA-Generative/Muffin/commit/de3d12ec484c982136303d7ff5cdf949c9c634c0))
+* **pipeline:** reuse what was computed for the same file, stage by stage ([abff243](https://github.com/IA-Generative/Muffin/commit/abff2434cc9f6bbf9fef40df23aeb2db1724eb9b)), closes [#300](https://github.com/IA-Generative/Muffin/issues/300)
+
+
+### Bug Fixes
+
+* **pipeline:** make the pipeline's writes idempotent, and delete what it derives with the document ([5e47ed1](https://github.com/IA-Generative/Muffin/commit/5e47ed1181b7d553210e0edd26a1a715c0478501)), closes [#299](https://github.com/IA-Generative/Muffin/issues/299)
+* **worker:** stop killing long tasks, bound what can hang where it happens ([ddc6b2b](https://github.com/IA-Generative/Muffin/commit/ddc6b2b7067ba730e6e91caac9e74c569aee5ed8)), closes [#294](https://github.com/IA-Generative/Muffin/issues/294)
+
+
+### Code Refactoring
+
+* **worker:** split document_process into extraction, enrichment and import/rebuild pods ([0154215](https://github.com/IA-Generative/Muffin/commit/0154215b10c6c81eaa142016cd1a9819b60713a1)), closes [#291](https://github.com/IA-Generative/Muffin/issues/291)
+
+## [0.19.1](https://github.com/IA-Generative/Muffin/compare/v0.19.0...v0.19.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **documents:** ask when a URL is fetched again as it is added, and process the files URLs serve ([ba41c4b](https://github.com/IA-Generative/Muffin/commit/ba41c4b2fc2b0ee22748adfa98cb35b46567d510)), closes [#19](https://github.com/IA-Generative/Muffin/issues/19)
+
+## [0.19.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.19.0...v0.19.1-rc) (2026-10-21)
+
+
+### Bug Fixes
+
+* **documents:** ask when a URL is fetched again as it is added, and process the files URLs serve ([8f092f6](https://github.com/IA-Generative/Muffin/commit/8f092f60ba17bb4b7bd5838bf7089d5f8b375ed8)), closes [#19](https://github.com/IA-Generative/Muffin/issues/19)
+
+## [0.19.0](https://github.com/IA-Generative/Muffin/compare/v0.18.0...v0.19.0) (2026-10-21)
+
+
+### Features
+
+* **chat:** suggest starter questions on a new conversation, answered from the stored QA pair ([07a9425](https://github.com/IA-Generative/Muffin/commit/07a942595509bd9d9848a6bb43e127f146b1de00))
+* **collections:** rebuild a collection's search index blue/green on an embedding model change ([7b1a695](https://github.com/IA-Generative/Muffin/commit/7b1a6954c8606524e3cc6adf11b31f7715aa97d7))
+* **documents:** refresh URL documents on a schedule, reindexing only when the page changed ([01d9592](https://github.com/IA-Generative/Muffin/commit/01d959273d460552d9a44967471d9b75ae9f5769)), closes [#19](https://github.com/IA-Generative/Muffin/issues/19)
+* **evaluation:** add golden QA pairs, kept out of the retriever, to measure it fairly ([d612583](https://github.com/IA-Generative/Muffin/commit/d6125839a042ffc8eef7acce85de530585beee4a))
+
+
+### Bug Fixes
+
+* **collections:** import ZIPs of any size, streamed to storage and extracted member by member ([3ffb006](https://github.com/IA-Generative/Muffin/commit/3ffb00670c72211aa180110967b80f7bcf28688d))
+* **collections:** refuse a ZIP announcing too many entries before reading its directory ([06a8394](https://github.com/IA-Generative/Muffin/commit/06a83945bdb5fd10dd4fa91edc296786d3d9e657))
+* **frontend:** settings tab loader must resolve to void for the strict build ([3e61561](https://github.com/IA-Generative/Muffin/commit/3e6156155e6dec61bd3d1cee044a1bba05896502))
+
+## [0.19.0-rc.2](https://github.com/IA-Generative/Muffin/compare/v0.19.0-rc.1...v0.19.0-rc.2) (2026-10-21)
+
+
+### Features
+
+* **chat:** suggest starter questions on a new conversation, answered from the stored QA pair ([d734320](https://github.com/IA-Generative/Muffin/commit/d73432039a0c9e1a6b9eadbd623b7c3c42128e13))
+
+## [0.19.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.19.0-rc...v0.19.0-rc.1) (2026-10-21)
+
+
+### Features
+
+* **collections:** rebuild a collection's search index blue/green on an embedding model change ([deb7e3e](https://github.com/IA-Generative/Muffin/commit/deb7e3efceb54cebf6ab5c319e001aafb9b03335))
+
+
+### Bug Fixes
+
+* **frontend:** settings tab loader must resolve to void for the strict build ([d2385c7](https://github.com/IA-Generative/Muffin/commit/d2385c7e49b3148973531e7928289271135f3d84))
+
+## [0.19.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.18.0...v0.19.0-rc) (2026-10-21)
+
+
+### Features
+
+* **documents:** refresh URL documents on a schedule, reindexing only when the page changed ([f1fd6d7](https://github.com/IA-Generative/Muffin/commit/f1fd6d7ce3c324e642b9875a9a77dcb6ef0555c8)), closes [#19](https://github.com/IA-Generative/Muffin/issues/19)
+* **evaluation:** add golden QA pairs, kept out of the retriever, to measure it fairly ([958bd6d](https://github.com/IA-Generative/Muffin/commit/958bd6d4323a97c3d089f344a365618c6a483ed5))
+
+
+### Bug Fixes
+
+* **collections:** import ZIPs of any size, streamed to storage and extracted member by member ([73463c5](https://github.com/IA-Generative/Muffin/commit/73463c5dac9a57338ee279897fd63a9c28fd7470))
+* **collections:** refuse a ZIP announcing too many entries before reading its directory ([a17ace0](https://github.com/IA-Generative/Muffin/commit/a17ace06bcbf93cf1061299711d40090fd276edf))
+
+## [0.18.0](https://github.com/IA-Generative/Muffin/compare/v0.17.0...v0.18.0) (2026-10-21)
+
+
+### Features
+
+* **agent:** answer questions about using the application from a user guide ([77db4e6](https://github.com/IA-Generative/Muffin/commit/77db4e6187496230020ccad0fe9a5a100f81d6a4)), closes [#251](https://github.com/IA-Generative/Muffin/issues/251)
+* **agent:** tell the agent it can edit documents, and let it create Markdown ones ([bcaf39e](https://github.com/IA-Generative/Muffin/commit/bcaf39e733bfec3b4f0415547727c74adaf3e63f))
+* **documents:** compare a replacement with the current version before validating it ([00319e0](https://github.com/IA-Generative/Muffin/commit/00319e0e77daa11b90bee1147d229674d8ff4d69))
+
+
+### Bug Fixes
+
+* **security:** clear the Trivy alerts and make the CI fail on fixable critical ones ([2d3bc45](https://github.com/IA-Generative/Muffin/commit/2d3bc459a6624efbd11807ce2c0be45e7b78aae9))
+
+## [0.18.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.18.0-rc...v0.18.0-rc.1) (2026-10-21)
+
+
+### Features
+
+* **agent:** answer questions about using the application from a user guide ([f862f36](https://github.com/IA-Generative/Muffin/commit/f862f36957c93ea8d957d88fcce3f602cf9b9a12)), closes [#251](https://github.com/IA-Generative/Muffin/issues/251)
+
+## [0.18.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.17.1-rc...v0.18.0-rc) (2026-10-21)
+
+
+### Features
+
+* **agent:** tell the agent it can edit documents, and let it create Markdown ones ([b7ff2a0](https://github.com/IA-Generative/Muffin/commit/b7ff2a001d21ef88fe57cc4674cb09e3c5fe4884))
+* **documents:** compare a replacement with the current version before validating it ([1597718](https://github.com/IA-Generative/Muffin/commit/1597718c8c75ba0366465c1a78131c2cc40e72e4))
+
+## [0.17.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.17.0...v0.17.1-rc) (2026-10-21)
+
+
+### Bug Fixes
+
+* **security:** clear the Trivy alerts and make the CI fail on fixable critical ones ([484734d](https://github.com/IA-Generative/Muffin/commit/484734d9dd2aa46ac73689cd5473e9c84f8109f2))
+
+## [0.17.0](https://github.com/IA-Generative/Muffin/compare/v0.16.0...v0.17.0) (2026-10-21)
+
+
+### Features
+
+* **usage:** record every LLM call and show my consumption and everyone's to admins ([9be838a](https://github.com/IA-Generative/Muffin/commit/9be838a1fc03f7fd4142ed71657edd0974ea28b0))
+
+## [0.17.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.16.0...v0.17.0-rc) (2026-10-21)
+
+
+### Features
+
+* **usage:** record every LLM call and show my consumption and everyone's to admins ([52b1da6](https://github.com/IA-Generative/Muffin/commit/52b1da65ae9cbbbcb0f7a28a01fdff6036c42c17))
+
+## [0.16.0](https://github.com/IA-Generative/Muffin/compare/v0.15.1...v0.16.0) (2026-10-21)
+
+
+### Features
+
+* **frontend:** offer the user's own groups when sharing a collection ([3a261c1](https://github.com/IA-Generative/Muffin/commit/3a261c1fd30695da3946bea7a1f52f8c980ba6a8))
+
+
+### Bug Fixes
+
+* **frontend:** compact the settings carousel controls and explain them in tooltips ([7ef265d](https://github.com/IA-Generative/Muffin/commit/7ef265de1100dab3d0afb6f7fd98d1c3017f607c))
+
+## [0.16.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.15.2-rc...v0.16.0-rc) (2026-10-21)
+
+
+### Features
+
+* **frontend:** offer the user's own groups when sharing a collection ([d4d6664](https://github.com/IA-Generative/Muffin/commit/d4d66643d3f83076640c3738482147111ce9bbf0))
+
+## [0.15.2-rc](https://github.com/IA-Generative/Muffin/compare/v0.15.1...v0.15.2-rc) (2026-10-21)
+
+
+### Bug Fixes
+
+* **frontend:** compact the settings carousel controls and explain them in tooltips ([b1fd330](https://github.com/IA-Generative/Muffin/commit/b1fd330936f2811722c2d945d8b54e0521086c31))
+
+## [0.15.1](https://github.com/IA-Generative/Muffin/compare/v0.15.0...v0.15.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **collections:** show documents to every reader and count them on the cards ([e75c24f](https://github.com/IA-Generative/Muffin/commit/e75c24f54c45b36f2f71e31b3281834b5b965b65))
+* **frontend:** give collection cards a fixed size and truncate their text ([a1709ff](https://github.com/IA-Generative/Muffin/commit/a1709ff6e5dbc183954a7a5d0d12a34c60b07613))
+* **frontend:** show collection settings as a carousel with required and optional sections ([17437f1](https://github.com/IA-Generative/Muffin/commit/17437f1e01efa63d9c62bc0cf324ed434c240b75))
+
+## [0.15.1-rc.2](https://github.com/IA-Generative/Muffin/compare/v0.15.1-rc.1...v0.15.1-rc.2) (2026-10-21)
+
+
+### Bug Fixes
+
+* **frontend:** show collection settings as a carousel with required and optional sections ([89157dd](https://github.com/IA-Generative/Muffin/commit/89157ddbb6a4e71bb5bd52937bdb5f026aa0452e))
+
+## [0.15.1-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.15.1-rc...v0.15.1-rc.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **collections:** show documents to every reader and count them on the cards ([76d4b3d](https://github.com/IA-Generative/Muffin/commit/76d4b3d58b9afc8288d2bdceedd24488ad81377d))
+
+## [0.15.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.15.0...v0.15.1-rc) (2026-10-21)
+
+
+### Bug Fixes
+
+* **frontend:** give collection cards a fixed size and truncate their text ([4e80b43](https://github.com/IA-Generative/Muffin/commit/4e80b439acffcd62e92490044648df0e10c34f97))
+
+## [0.15.0](https://github.com/IA-Generative/Muffin/compare/v0.14.4...v0.15.0) (2026-10-20)
+
+
+### Features
+
+* **agent:** route sub-collections flat on their descriptions ([face975](https://github.com/IA-Generative/Muffin/commit/face97521f25bebceeca2a97b91d3fdb155a389a)), closes [#233](https://github.com/IA-Generative/Muffin/issues/233)
+* **agent:** route through the sub-collection tree within a budget ([fe14848](https://github.com/IA-Generative/Muffin/commit/fe14848b5eb06239ba933eeac76d437d4d5344fd)), closes [#219](https://github.com/IA-Generative/Muffin/issues/219)
+* **chat:** pin a collection with its sub-collections, cite with paths ([d7460d1](https://github.com/IA-Generative/Muffin/commit/d7460d18d811fe8a1375b6e6276b5486b5f837b9)), closes [#220](https://github.com/IA-Generative/Muffin/issues/220)
+* **collections:** add parent/child hierarchy for sub-collections ([6ab0c16](https://github.com/IA-Generative/Muffin/commit/6ab0c16d81019883784879a5dd291b3256f5ab6f)), closes [#214](https://github.com/IA-Generative/Muffin/issues/214)
+* **collections:** expose sub-collections through the API ([3d95b6c](https://github.com/IA-Generative/Muffin/commit/3d95b6cc539d3c60b2fb0d16372ba49885a735df)), closes [#215](https://github.com/IA-Generative/Muffin/issues/215)
+* **collections:** import a ZIP as a collection and its sub-collections ([33636a6](https://github.com/IA-Generative/Muffin/commit/33636a67313508b5b6fafd485e9bd9b3b8ea7f93)), closes [#223](https://github.com/IA-Generative/Muffin/issues/223)
+* **collections:** roll up a parent's description from its sub-collections ([dee1e73](https://github.com/IA-Generative/Muffin/commit/dee1e7311840872a7232ca499b0a394fcbf47d83)), closes [#218](https://github.com/IA-Generative/Muffin/issues/218)
+* **collections:** suggest where to attach a collection imported from a ZIP ([3d7bd04](https://github.com/IA-Generative/Muffin/commit/3d7bd040b08be3a50c502db6b128a8752a097d2a)), closes [#223](https://github.com/IA-Generative/Muffin/issues/223)
+* **frontend:** browse and manage sub-collections ([056de05](https://github.com/IA-Generative/Muffin/commit/056de05d5cad67a95a24251525ae0d1dd166e536)), closes [#221](https://github.com/IA-Generative/Muffin/issues/221)
+* **frontend:** import ZIPs and attach the collections they create ([6bffa39](https://github.com/IA-Generative/Muffin/commit/6bffa397e91417b724fb5848278269e9932aad3c)), closes [#223](https://github.com/IA-Generative/Muffin/issues/223)
+* **search:** opt-in search across a collection's sub-collections ([66dfbb3](https://github.com/IA-Generative/Muffin/commit/66dfbb3fafbd66f4ca68e31ec9128b05c77a822e)), closes [#217](https://github.com/IA-Generative/Muffin/issues/217)
+* **sharing:** inherit read access down the sub-collection tree ([1bb810e](https://github.com/IA-Generative/Muffin/commit/1bb810e655113f464b915db5f751b7e66e5d4354)), closes [#216](https://github.com/IA-Generative/Muffin/issues/216)
+
+## [0.15.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.14.4...v0.15.0-rc) (2026-10-20)
+
+
+### Features
+
+* **agent:** route sub-collections flat on their descriptions ([6a0b887](https://github.com/IA-Generative/Muffin/commit/6a0b88745a5bcc43108092df42dd50e646e60c31)), closes [#233](https://github.com/IA-Generative/Muffin/issues/233)
+* **agent:** route through the sub-collection tree within a budget ([5e1ff78](https://github.com/IA-Generative/Muffin/commit/5e1ff786fec1d3e135a5c36ad9ce64721d3b6dfd)), closes [#219](https://github.com/IA-Generative/Muffin/issues/219)
+* **chat:** pin a collection with its sub-collections, cite with paths ([aa2f8d5](https://github.com/IA-Generative/Muffin/commit/aa2f8d5e7c84e0fd57679df1b71490f65c814701)), closes [#220](https://github.com/IA-Generative/Muffin/issues/220)
+* **collections:** add parent/child hierarchy for sub-collections ([e756619](https://github.com/IA-Generative/Muffin/commit/e756619d39553ec91e78ddbd72d81fb9ec44b9ba)), closes [#214](https://github.com/IA-Generative/Muffin/issues/214)
+* **collections:** expose sub-collections through the API ([e0b6739](https://github.com/IA-Generative/Muffin/commit/e0b67390628a3542353df41fcd1a4efba054e956)), closes [#215](https://github.com/IA-Generative/Muffin/issues/215)
+* **collections:** import a ZIP as a collection and its sub-collections ([ae2a531](https://github.com/IA-Generative/Muffin/commit/ae2a5318ccf1029b6b974c11b06fc24d750efe0e)), closes [#223](https://github.com/IA-Generative/Muffin/issues/223)
+* **collections:** roll up a parent's description from its sub-collections ([743f1ee](https://github.com/IA-Generative/Muffin/commit/743f1ee1bfec73b59e9e33fe1a73e8dcff50b521)), closes [#218](https://github.com/IA-Generative/Muffin/issues/218)
+* **collections:** suggest where to attach a collection imported from a ZIP ([4b188e2](https://github.com/IA-Generative/Muffin/commit/4b188e24d47f3f18d77dba437dabd365142e201b)), closes [#223](https://github.com/IA-Generative/Muffin/issues/223)
+* **frontend:** browse and manage sub-collections ([5200c01](https://github.com/IA-Generative/Muffin/commit/5200c01730cbc9e1641eceae43e00300321c5bf3)), closes [#221](https://github.com/IA-Generative/Muffin/issues/221)
+* **frontend:** import ZIPs and attach the collections they create ([86dd512](https://github.com/IA-Generative/Muffin/commit/86dd512942ed1610adafb58540fad23470e64702)), closes [#223](https://github.com/IA-Generative/Muffin/issues/223)
+* **search:** opt-in search across a collection's sub-collections ([df046d2](https://github.com/IA-Generative/Muffin/commit/df046d239e0c38554f242f1bec5e09cad8976b8a)), closes [#217](https://github.com/IA-Generative/Muffin/issues/217)
+* **sharing:** inherit read access down the sub-collection tree ([6ab3616](https://github.com/IA-Generative/Muffin/commit/6ab36165c56d10e539baee3e22a9df528d993e39)), closes [#216](https://github.com/IA-Generative/Muffin/issues/216)
+
+## [0.14.4](https://github.com/IA-Generative/Muffin/compare/v0.14.3...v0.14.4) (2026-10-20)
+
+
+### Bug Fixes
+
+* **chart:** set ingress class and routes, add resources to the cnpg cluster ([ecd6d9d](https://github.com/IA-Generative/Muffin/commit/ecd6d9d3efbcd611241a45b75ec07eabd20e6627))
+
+## [0.14.3](https://github.com/IA-Generative/Muffin/compare/v0.14.2...v0.14.3) (2026-10-20)
+
+
+### Bug Fixes
+
+* **chart:** parametrize project and vault env through global values ([b962a9f](https://github.com/IA-Generative/Muffin/commit/b962a9f4d78777824b3ff9d792bec6e6be64bf3c))
+
+## [0.14.3-rc](https://github.com/IA-Generative/Muffin/compare/v0.14.2...v0.14.3-rc) (2026-10-20)
+
+
+### Bug Fixes
+
+* **chart:** parametrize project and vault env through global values ([bcd7493](https://github.com/IA-Generative/Muffin/commit/bcd7493882471946fbddb2ddfaf3b1eb04a73b65))
+
+## [0.14.2](https://github.com/IA-Generative/Muffin/compare/v0.14.1...v0.14.2) (2026-10-09)
+
+
+### Bug Fixes
+
+* **chart:** point image repositories to exploration/muffin-&lt;service&gt; ([6aab7e7](https://github.com/IA-Generative/Muffin/commit/6aab7e7bc2d3b581cb571c26cebc8e7580576bc5))
+
+## [0.14.2-rc](https://github.com/IA-Generative/Muffin/compare/v0.14.1...v0.14.2-rc) (2026-10-09)
+
+
+### Bug Fixes
+
+* **chart:** point image repositories to exploration/muffin-&lt;service&gt; ([5517e3e](https://github.com/IA-Generative/Muffin/commit/5517e3ea5b8cce0ae762beee5d20c7ae780d13fb))
+
+## [0.14.1](https://github.com/IA-Generative/Muffin/compare/v0.14.0...v0.14.1) (2026-10-09)
+
+
+### Bug Fixes
+
+* **ci:** name every image muffin/&lt;service&gt; ([b662221](https://github.com/IA-Generative/Muffin/commit/b66222118415e90d9580aa52cda2b50338386773))
+* **ci:** stop chart-testing from requiring a chart version bump in PRs ([7d795e8](https://github.com/IA-Generative/Muffin/commit/7d795e8570b0b0bc83ac0eace3f566b46fbaa449))
+* **helm:** run the migration job as a hook without pulling busybox from docker.io ([448594c](https://github.com/IA-Generative/Muffin/commit/448594c6c9a85d12df765a0cd967172df430e595))
+* **helm:** write the wait-for-postgres script as a block scalar ([0359ae0](https://github.com/IA-Generative/Muffin/commit/0359ae0ab1c2c2a0f9efcb54177462ac90b92aa1))
+
+## [0.14.1-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.14.1-rc...v0.14.1-rc.1) (2026-10-09)
+
+
+### Bug Fixes
+
+* **ci:** name every image muffin/&lt;service&gt; ([3f4d9cd](https://github.com/IA-Generative/Muffin/commit/3f4d9cd3d5d42420cda526cf6c913f74c2e987d0))
+
+## [0.14.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.14.0...v0.14.1-rc) (2026-10-09)
+
+
+### Bug Fixes
+
+* **ci:** stop chart-testing from requiring a chart version bump in PRs ([3a558f7](https://github.com/IA-Generative/Muffin/commit/3a558f779a6e06607d66ee7aeee2f9fadce418ba))
+* **helm:** run the migration job as a hook without pulling busybox from docker.io ([cac438a](https://github.com/IA-Generative/Muffin/commit/cac438ae8ac99c2885f62944dc1ff630fd6d3233))
+* **helm:** write the wait-for-postgres script as a block scalar ([4da41fc](https://github.com/IA-Generative/Muffin/commit/4da41fc981bef30078e9f5d74207ed9ef9e69abb))
+
+## [0.14.0](https://github.com/IA-Generative/Muffin/compare/v0.13.0...v0.14.0) (2026-10-08)
+
+
+### Features
+
+* **agent:** delegate the edit of a living document from the chat ([416f2d2](https://github.com/IA-Generative/Muffin/commit/416f2d227128a36933249c389af02748c18cc82a)), closes [#171](https://github.com/IA-Generative/Muffin/issues/171)
+* **document_edit:** add the Markdown applier and the editing agent ([42e2d33](https://github.com/IA-Generative/Muffin/commit/42e2d33566331129742b03afda7a6c10f9709588)), closes [#168](https://github.com/IA-Generative/Muffin/issues/168)
+* **document_edit:** typed edit operations and an in-place ODT applier ([ee2d430](https://github.com/IA-Generative/Muffin/commit/ee2d4305d1991e1d7ee9243183bbaab351f2793b)), closes [#168](https://github.com/IA-Generative/Muffin/issues/168)
+* **documents:** add the edit draft lifecycle with a PDF preview and image insertion ([57fe674](https://github.com/IA-Generative/Muffin/commit/57fe6741198d0c794a80fde303506c08a389d18d)), closes [#169](https://github.com/IA-Generative/Muffin/issues/169)
+* **documents:** download living document revisions and create Markdown from scratch ([7226b68](https://github.com/IA-Generative/Muffin/commit/7226b6887ef70e366c32f45b8691c6cae35f7de2)), closes [#172](https://github.com/IA-Generative/Muffin/issues/172)
+* **documents:** living documents with revisions and single-document reindex ([42aa742](https://github.com/IA-Generative/Muffin/commit/42aa742af01dd7212ce8ce26a3bc676488679381)), closes [#166](https://github.com/IA-Generative/Muffin/issues/166)
+* **documents:** soft edit lock and revision check for living documents ([afe40fd](https://github.com/IA-Generative/Muffin/commit/afe40fdfdb797d7283efd3c0c52edf895206bf40)), closes [#170](https://github.com/IA-Generative/Muffin/issues/170)
+* **frontend:** add the edit proposal UI for living documents ([6b811c6](https://github.com/IA-Generative/Muffin/commit/6b811c6a92067c3fa5c0c98f6d9241ff6994f3fa)), closes [#169](https://github.com/IA-Generative/Muffin/issues/169)
+* **frontend:** living documents UI with revision history and edit lock ([2693967](https://github.com/IA-Generative/Muffin/commit/2693967950ea7ed692f33a6065fca4819423dccd)), closes [#172](https://github.com/IA-Generative/Muffin/issues/172)
+* **worker:** add the document_edit worker skeleton ([6862cc5](https://github.com/IA-Generative/Muffin/commit/6862cc558f10cc38f234ad2828acbe6ec0df8738)), closes [#167](https://github.com/IA-Generative/Muffin/issues/167)
+* **worker:** index Markdown files as a single page without liteparse ([259c637](https://github.com/IA-Generative/Muffin/commit/259c637083714caca3f3cfba6da7600df904cba5))
+
+
+### Bug Fixes
+
+* **document_edit:** keep the agent from dropping footnotes and faking list edits ([b98b3ee](https://github.com/IA-Generative/Muffin/commit/b98b3ee958e04b57fe0a52d852ccec8c3ef0fc49)), closes [#168](https://github.com/IA-Generative/Muffin/issues/168)
+
+## [0.14.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.14.0-rc...v0.14.0-rc.1) (2026-10-08)
+
+
+### Features
+
+* **agent:** delegate the edit of a living document from the chat ([8988cce](https://github.com/IA-Generative/Muffin/commit/8988cce75f6db19c4547a26fb11cba21c028a21c)), closes [#171](https://github.com/IA-Generative/Muffin/issues/171)
+* **document_edit:** add the Markdown applier and the editing agent ([60d5fc6](https://github.com/IA-Generative/Muffin/commit/60d5fc6f0e7eb5e6cea697632f69e9d396e50ab5)), closes [#168](https://github.com/IA-Generative/Muffin/issues/168)
+* **document_edit:** typed edit operations and an in-place ODT applier ([320aeb2](https://github.com/IA-Generative/Muffin/commit/320aeb23ffc13b80ccdbd3e94c16692c1cb2e215)), closes [#168](https://github.com/IA-Generative/Muffin/issues/168)
+* **documents:** add the edit draft lifecycle with a PDF preview and image insertion ([9d330f6](https://github.com/IA-Generative/Muffin/commit/9d330f67a2769ca1565c23375a8713b864c42c60)), closes [#169](https://github.com/IA-Generative/Muffin/issues/169)
+* **frontend:** add the edit proposal UI for living documents ([deba37a](https://github.com/IA-Generative/Muffin/commit/deba37ad9a98f8c73d52bafac6443bfe51a8e094)), closes [#169](https://github.com/IA-Generative/Muffin/issues/169)
+
+
+### Bug Fixes
+
+* **document_edit:** keep the agent from dropping footnotes and faking list edits ([2ed64c1](https://github.com/IA-Generative/Muffin/commit/2ed64c12ba0a9ab1caf10621ca6fd2093b75becc)), closes [#168](https://github.com/IA-Generative/Muffin/issues/168)
+
+## [0.14.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.13.0...v0.14.0-rc) (2026-10-08)
+
+
+### Features
+
+* **documents:** download living document revisions and create Markdown from scratch ([584b276](https://github.com/IA-Generative/Muffin/commit/584b276d0badf5e38558e7ba43eb3fe67d39b516)), closes [#172](https://github.com/IA-Generative/Muffin/issues/172)
+* **documents:** living documents with revisions and single-document reindex ([08658c5](https://github.com/IA-Generative/Muffin/commit/08658c5221bd339f61b769a7cae5afa0dd1abaf6)), closes [#166](https://github.com/IA-Generative/Muffin/issues/166)
+* **documents:** soft edit lock and revision check for living documents ([ecc55d7](https://github.com/IA-Generative/Muffin/commit/ecc55d75603e0bd446c11d822391ed5bffa1bfee)), closes [#170](https://github.com/IA-Generative/Muffin/issues/170)
+* **frontend:** living documents UI with revision history and edit lock ([bb9c317](https://github.com/IA-Generative/Muffin/commit/bb9c3172dca63fd0292eaeb033270c0db53c1465)), closes [#172](https://github.com/IA-Generative/Muffin/issues/172)
+* **worker:** add the document_edit worker skeleton ([dcc2751](https://github.com/IA-Generative/Muffin/commit/dcc2751f96818b9dbe56a7f0fd313d5617054f62)), closes [#167](https://github.com/IA-Generative/Muffin/issues/167)
+* **worker:** index Markdown files as a single page without liteparse ([184ebc6](https://github.com/IA-Generative/Muffin/commit/184ebc608aff5e4cd358a28c93c338d67ff037b4))
+
+## [0.13.0](https://github.com/IA-Generative/Muffin/compare/v0.12.1...v0.13.0) (2026-09-29)
+
+
+### Features
+
+* **frontend:** animate the "how it works" process diagram ([8886045](https://github.com/IA-Generative/Muffin/commit/8886045d23e0530bf229354257b5e097d4f5dfbe))
+* **frontend:** modernize landing page with more content ([b5fd778](https://github.com/IA-Generative/Muffin/commit/b5fd778a285d96f3e4085ac9f48f0b126749eb02))
+
+## [0.13.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.12.1...v0.13.0-rc) (2026-09-29)
+
+
+### Features
+
+* **frontend:** animate the "how it works" process diagram ([5983ca7](https://github.com/IA-Generative/Muffin/commit/5983ca7212b9482ce01f2ecae3d4e96137be5cea))
+* **frontend:** modernize landing page with more content ([83f43f3](https://github.com/IA-Generative/Muffin/commit/83f43f3ad48742aab32b03a644869e1bb88f96a5))
+
+## [0.12.1](https://github.com/IA-Generative/Muffin/compare/v0.12.0...v0.12.1) (2026-09-25)
+
+
+### Bug Fixes
+
+* **chart:** empty className for ingress ([cbd477b](https://github.com/IA-Generative/Muffin/commit/cbd477b0fa2f0e4a005e59bfa7bff1d4561a1019))
+
+## [0.12.0](https://github.com/IA-Generative/Muffin/compare/v0.11.0...v0.12.0) (2026-09-24)
+
+
+### Features
+
+* landing page ([6bfcd9d](https://github.com/IA-Generative/Muffin/commit/6bfcd9df8b04980f008b044d8ffb3d774f7f3780))
+
+## [0.11.0](https://github.com/IA-Generative/Muffin/compare/v0.10.0...v0.11.0) (2026-09-22)
+
+
+### Features
+
+* **reports:** signaler un bug ou une idée depuis le menu utilisateur ([7bb4c16](https://github.com/IA-Generative/Muffin/commit/7bb4c16a2e63731e1aaa54c6802bfd82f899b531))
+
+
+### Code Refactoring
+
+* **admin:** séparer les outils admin en pages distinctes ([090467b](https://github.com/IA-Generative/Muffin/commit/090467b4b47a51b5f23b5b396c6141969ac1bd2c))
+
+## [0.11.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.10.0...v0.11.0-rc) (2026-09-22)
+
+
+### Features
+
+* **reports:** signaler un bug ou une idée depuis le menu utilisateur ([9697f65](https://github.com/IA-Generative/Muffin/commit/9697f65442d3e80815c4f725fd9b5740612580ad))
+
+
+### Code Refactoring
+
+* **admin:** séparer les outils admin en pages distinctes ([9df55ba](https://github.com/IA-Generative/Muffin/commit/9df55ba6320de98ade2e4b7893946a71cf15e790))
+
+## [0.10.0](https://github.com/IA-Generative/Muffin/compare/v0.9.0...v0.10.0) (2026-09-22)
+
+
+### Features
+
+* **cgu:** mandatory, versioned CGU acceptance gate ([d74bc89](https://github.com/IA-Generative/Muffin/commit/d74bc89ce0d30050329b9ae71cf8e389e5f7bdd9))
+* **collections:** header de fiche collection plus aéré ([a2c132f](https://github.com/IA-Generative/Muffin/commit/a2c132f977f49b3f9c9240cb7b39c84cfe406f27))
+* **collections:** hiérarchiser les onglets de la fiche collection ([a23e775](https://github.com/IA-Generative/Muffin/commit/a23e7752d5608afa8e99bd048b1b02b63d74e6e1))
+* **collections:** moderniser la fiche collection ([e8261df](https://github.com/IA-Generative/Muffin/commit/e8261dfa4854d4e635f579a2815a9b03c58fb4d2))
+* **onboarding:** guided tutorial for new users ([e8d5d52](https://github.com/IA-Generative/Muffin/commit/e8d5d521889e7023dcf513e0769f35d9fcd50844))
+
+## [0.10.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.9.0...v0.10.0-rc) (2026-09-22)
+
+
+### Features
+
+* **cgu:** mandatory, versioned CGU acceptance gate ([ee368a8](https://github.com/IA-Generative/Muffin/commit/ee368a8459bb284ffa3ed8cd3ac198ad1a6367bd))
+* **collections:** header de fiche collection plus aéré ([bfd143c](https://github.com/IA-Generative/Muffin/commit/bfd143c347eec1930150d9fbbaffd759ddbdefab))
+* **collections:** hiérarchiser les onglets de la fiche collection ([40491d4](https://github.com/IA-Generative/Muffin/commit/40491d4f15206586c137514a7bc65db3ec7bf655))
+* **collections:** moderniser la fiche collection ([7a872b7](https://github.com/IA-Generative/Muffin/commit/7a872b7c79a0d74e3ae51da40e1dca1c827ce87a))
+* **onboarding:** guided tutorial for new users ([d06a724](https://github.com/IA-Generative/Muffin/commit/d06a72457e8c86feab3922d23398cd63a033ea8d))
+
+## [0.9.0](https://github.com/IA-Generative/Muffin/compare/v0.8.0...v0.9.0) (2026-09-22)
+
+
+### Features
+
+* **agent:** index collection descriptions in Meilisearch, use it to pre-filter VDB routing ([68763c0](https://github.com/IA-Generative/Muffin/commit/68763c09c4b5ac2b261e1c5f238f7a028bafd931))
+* **conv-files:** auto-pin the conversation's temporary collection into new runs ([3a4ab3d](https://github.com/IA-Generative/Muffin/commit/3a4ab3d4dfe10e201004dcf16b2838df14f2aacc))
+* **conv-files:** repository + service for the temporary collection ([#89](https://github.com/IA-Generative/Muffin/issues/89)) ([f28a631](https://github.com/IA-Generative/Muffin/commit/f28a631a7d4290753a1b65639575531d755947df))
+* **conv-files:** rest endpoints for conversation documents ([#90](https://github.com/IA-Generative/Muffin/issues/90)) ([50563d6](https://github.com/IA-Generative/Muffin/commit/50563d62f8cad23d31d8064de4c53bb8a666cba8))
+* **conv-files:** suggest filing conversation uploads into a permanent collection ([28c0c94](https://github.com/IA-Generative/Muffin/commit/28c0c94e735be09e9a24cf3645f4c3aea82f230d))
+* **conv-files:** temporary collection model + migration ([#88](https://github.com/IA-Generative/Muffin/issues/88)) ([4133fc2](https://github.com/IA-Generative/Muffin/commit/4133fc21ea2526361b140756c98d2c8219a93ffe))
+* **conv-files:** upload files directly from the chat composer ([a756892](https://github.com/IA-Generative/Muffin/commit/a7568920550f3c38cad559c86eddd712e454abac))
+* **ui:** show the app version in the user menu, linking to the changelog ([0e420ba](https://github.com/IA-Generative/Muffin/commit/0e420bac3a7bb27836b9df4baacfa9d217f6c51f))
+* **ui:** show the current release's own notes in a modal, not the full changelog ([e8b3d23](https://github.com/IA-Generative/Muffin/commit/e8b3d23066f5459f85b5845995ffbc14bdbb12c4))
+
+
+### Code Refactoring
+
+* **agent:** drop the Postgres collection description embedding ([0fc7db2](https://github.com/IA-Generative/Muffin/commit/0fc7db2f493123e1f1d55c60e02a10e1233c3f46))
+
+## [0.9.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.8.0...v0.9.0-rc) (2026-09-22)
+
+
+### Features
+
+* **agent:** index collection descriptions in Meilisearch, use it to pre-filter VDB routing ([49e0a90](https://github.com/IA-Generative/Muffin/commit/49e0a9023947a506b5b0047c1396d644255557bb))
+* **conv-files:** auto-pin the conversation's temporary collection into new runs ([87d727f](https://github.com/IA-Generative/Muffin/commit/87d727fad57790716f2ae7dda6fc3f6a5ab8ebd0))
+* **conv-files:** repository + service for the temporary collection ([#89](https://github.com/IA-Generative/Muffin/issues/89)) ([b45a2ca](https://github.com/IA-Generative/Muffin/commit/b45a2ca4f354bd27b28b6e7bce27a598777183f8))
+* **conv-files:** rest endpoints for conversation documents ([#90](https://github.com/IA-Generative/Muffin/issues/90)) ([7e401f5](https://github.com/IA-Generative/Muffin/commit/7e401f565f8c12a67a75961cdd74da386efaae34))
+* **conv-files:** suggest filing conversation uploads into a permanent collection ([577440b](https://github.com/IA-Generative/Muffin/commit/577440bcacced8035eb760eb67d58bfe801650ea))
+* **conv-files:** temporary collection model + migration ([#88](https://github.com/IA-Generative/Muffin/issues/88)) ([366a975](https://github.com/IA-Generative/Muffin/commit/366a97502ac7a53dfd7a84c8188bbc30e32cb1dc))
+* **conv-files:** upload files directly from the chat composer ([6e76a98](https://github.com/IA-Generative/Muffin/commit/6e76a9852aa052f7282a07a496b3d23b319db999))
+* **ui:** show the app version in the user menu, linking to the changelog ([dd62c0f](https://github.com/IA-Generative/Muffin/commit/dd62c0f5ed1bbee68ed4f47410393edda60fefe7))
+* **ui:** show the current release's own notes in a modal, not the full changelog ([b0aae93](https://github.com/IA-Generative/Muffin/commit/b0aae93a7580000cc6747590a1859caafa743dd7))
+
+
+### Code Refactoring
+
+* **agent:** drop the Postgres collection description embedding ([035bc41](https://github.com/IA-Generative/Muffin/commit/035bc411aba3e629f3f3ad9f8e799d7144cb2abc))
+
+## [0.8.0](https://github.com/IA-Generative/Muffin/compare/v0.7.5...v0.8.0) (2026-09-21)
+
+
+### Features
+
+* **a11y:** read assistant answers aloud (text-to-speech) ([#111](https://github.com/IA-Generative/Muffin/issues/111)) ([a77eefa](https://github.com/IA-Generative/Muffin/commit/a77eefaf85d427c45994eeba6fb62ed9fe92d599))
+* **a11y:** voice dictation in the chat composer ([#108](https://github.com/IA-Generative/Muffin/issues/108)) ([85db72e](https://github.com/IA-Generative/Muffin/commit/85db72e14d1c84b5fb439598c74ef17090f14e98))
+* **agent:** identity node, answers 'who are you' without searching ([#99](https://github.com/IA-Generative/Muffin/issues/99)) ([ab2f77c](https://github.com/IA-Generative/Muffin/commit/ab2f77c1c693ec05303fc0ad427490a332f31ad5))
+* **agent:** suggest enabling web search when knowledge bases fall short ([#95](https://github.com/IA-Generative/Muffin/issues/95)) ([e33fcd3](https://github.com/IA-Generative/Muffin/commit/e33fcd3d6d6711823047f9c4f111d74297cc890f))
+* **prompts:** version the agent's system prompts, admin-editable ([4d1c4eb](https://github.com/IA-Generative/Muffin/commit/4d1c4eb05ac69f489a2e4931ae6738bba6297071))
+
+
+### Bug Fixes
+
+* **frontend:** declare SpeechRecognition types explicitly ([b41379a](https://github.com/IA-Generative/Muffin/commit/b41379a134959cd3b50f75a98f815dfb997f4eef))
+* **worker/document_process:** update DuckDB extension tests for lazy LOAD ([c7839d4](https://github.com/IA-Generative/Muffin/commit/c7839d4da0434ff0b6faa3ccb4ee46ac732d2a33))
+
+
+### Code Refactoring
+
+* **admin:** carousel + version dropdown for prompt editing ([8fcc964](https://github.com/IA-Generative/Muffin/commit/8fcc964e88f4c8f438075ddc9530e9e23122a9a5))
+
+## [0.8.0-rc.4](https://github.com/IA-Generative/Muffin/compare/v0.8.0-rc.3...v0.8.0-rc.4) (2026-09-21)
+
+
+### Features
+
+* **a11y:** read assistant answers aloud (text-to-speech) ([#111](https://github.com/IA-Generative/Muffin/issues/111)) ([23dcc05](https://github.com/IA-Generative/Muffin/commit/23dcc057ae7878eb33b4a1e9fd0cb8800c8b57ca))
+
+## [0.8.0-rc.3](https://github.com/IA-Generative/Muffin/compare/v0.8.0-rc.2...v0.8.0-rc.3) (2026-09-21)
+
+
+### Features
+
+* **a11y:** voice dictation in the chat composer ([#108](https://github.com/IA-Generative/Muffin/issues/108)) ([f158ffc](https://github.com/IA-Generative/Muffin/commit/f158ffcbdd046fadf517f770bddf8d73eef1548a))
+
+
+### Bug Fixes
+
+* **frontend:** declare SpeechRecognition types explicitly ([9513b68](https://github.com/IA-Generative/Muffin/commit/9513b68d20461166ea21270599b0f4eefdec7215))
+
+## [0.8.0-rc.2](https://github.com/IA-Generative/Muffin/compare/v0.8.0-rc.1...v0.8.0-rc.2) (2026-09-21)
+
+
+### Features
+
+* **agent:** suggest enabling web search when knowledge bases fall short ([#95](https://github.com/IA-Generative/Muffin/issues/95)) ([1918456](https://github.com/IA-Generative/Muffin/commit/19184565c259a0dc6fbcbc5523c2ffb815f6809e))
+
+## [0.8.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.8.0-rc...v0.8.0-rc.1) (2026-09-21)
+
+
+### Features
+
+* **agent:** identity node, answers 'who are you' without searching ([#99](https://github.com/IA-Generative/Muffin/issues/99)) ([d39e20a](https://github.com/IA-Generative/Muffin/commit/d39e20aa498c28ba0d248a4fe1179a89415adf8f))
+
+## [0.8.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.7.6-rc...v0.8.0-rc) (2026-09-21)
+
+
+### Features
+
+* **prompts:** version the agent's system prompts, admin-editable ([4414796](https://github.com/IA-Generative/Muffin/commit/441479682c734d1713e12857a19934e3fd49174c))
+
+
+### Code Refactoring
+
+* **admin:** carousel + version dropdown for prompt editing ([1889c8f](https://github.com/IA-Generative/Muffin/commit/1889c8fbd38156781798aa8d09511790484adcd5))
+
+## [0.7.6-rc](https://github.com/IA-Generative/Muffin/compare/v0.7.5...v0.7.6-rc) (2026-09-21)
+
+
+### Bug Fixes
+
+* **worker/document_process:** update DuckDB extension tests for lazy LOAD ([2846cd2](https://github.com/IA-Generative/Muffin/commit/2846cd25e3ac746b173bedf73e17c2704d4008e8))
+
+## [0.7.5](https://github.com/IA-Generative/Muffin/compare/v0.7.4...v0.7.5) (2026-09-21)
+
+
+### Bug Fixes
+
+* **frontend:** use DSFR favicon and set tab title to Muffin ([02feb3f](https://github.com/IA-Generative/Muffin/commit/02feb3fd062c6a79c2e97be7aa137bdae7e8dd9b))
+* pre-install DuckDB extensions in Docker to fix readOnlyRootFilesystem crash ([b528bcb](https://github.com/IA-Generative/Muffin/commit/b528bcb6b30ccff3a5374af43188d88a0168bdde))
+* **vector-store:** tolerate Meilisearch dropping the vectorStore experimental flag ([a8ddebb](https://github.com/IA-Generative/Muffin/commit/a8ddebb5cb79bb895057216401a6c7b9af3f7760))
+
+## [0.7.4](https://github.com/IA-Generative/Muffin/compare/v0.7.3...v0.7.4) (2026-09-21)
+
+
+### Bug Fixes
+
+* **auth:** make frontend/backend public URLs overridable for prod deployments ([9244448](https://github.com/IA-Generative/Muffin/commit/92444485cddd22df09f901e3dcccc44a92437df2))
+
+## [0.7.3](https://github.com/IA-Generative/Muffin/compare/v0.7.2...v0.7.3) (2026-09-20)
+
+
+### Bug Fixes
+
+* **ci:** update searxng helm repo URL in ct.yaml and cd.yml ([5ea87c8](https://github.com/IA-Generative/Muffin/commit/5ea87c8499ab8fe4b0405ce096d38d51d4125f1a))
+* **helm:** configure SearXNG to use existing Redis and fix permissions ([83db8b8](https://github.com/IA-Generative/Muffin/commit/83db8b833ac3a91b3581fd3a7b41fd26b4a8d2d8))
+* **helm:** correct probes to prevent production restart loop ([52da607](https://github.com/IA-Generative/Muffin/commit/52da60767bde6bf9a50d42545f1dd7ec7db72553))
+
+## [0.7.3-rc](https://github.com/IA-Generative/Muffin/compare/v0.7.2...v0.7.3-rc) (2026-09-20)
+
+
+### Bug Fixes
+
+* **helm:** configure SearXNG to use existing Redis and fix permissions ([5a62726](https://github.com/IA-Generative/Muffin/commit/5a62726cfb704ab2529a5b33803de419caab06bc))
+* **helm:** correct probes to prevent production restart loop ([1b5c07b](https://github.com/IA-Generative/Muffin/commit/1b5c07b04582afd3783edbb1deeb47f316131715))
+
+## [0.7.2](https://github.com/IA-Generative/Muffin/compare/v0.7.1...v0.7.2) (2026-09-20)
+
+
+### Bug Fixes
+
+* switch searxng chart to unknowniq repo v0.1.11 ([b62b72a](https://github.com/IA-Generative/Muffin/commit/b62b72a6c2fab70ebb1fc34f8693b9527a3b00fe))
+
+## [0.7.2-rc](https://github.com/IA-Generative/Muffin/compare/v0.7.1...v0.7.2-rc) (2026-09-20)
+
+
+### Bug Fixes
+
+* switch searxng chart to unknowniq repo v0.1.11 ([c921d8d](https://github.com/IA-Generative/Muffin/commit/c921d8dbfdcc67792a3203e8fb566512e0d8242a))
+
+## [0.7.1](https://github.com/IA-Generative/Muffin/compare/v0.7.0...v0.7.1) (2026-09-20)
+
+
+### Bug Fixes
+
+* make default aws variable name ([c7d9a94](https://github.com/IA-Generative/Muffin/commit/c7d9a94b0cfe2d84211c9352d46f2fdbb738a961))
+* update agent_execution test assertions for latency/token kwargs ([cb7f24b](https://github.com/IA-Generative/Muffin/commit/cb7f24b1c35e5135d6be413a01294d5aad5cdd2e))
+
+## [0.7.1-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.7.1-rc...v0.7.1-rc.1) (2026-09-20)
+
+
+### Bug Fixes
+
+* update agent_execution test assertions for latency/token kwargs ([2f14cd8](https://github.com/IA-Generative/Muffin/commit/2f14cd83c6b6d219db5714ca47d188b447726ccc))
+
+## [0.7.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.7.0...v0.7.1-rc) (2026-09-20)
+
+
+### Bug Fixes
+
+* make default aws variable name ([3fee939](https://github.com/IA-Generative/Muffin/commit/3fee9394238664e7c83870d7bc06f496c1cb31ff))
+
+## [0.7.0](https://github.com/IA-Generative/Muffin/compare/v0.6.0...v0.7.0) (2026-09-20)
+
+
+### Features
+
+* add tabular process ([a9fcc93](https://github.com/IA-Generative/Muffin/commit/a9fcc9397fc22db7858012b32761a6c7a63e603d))
+* agent execution for tabular data ([a5053bc](https://github.com/IA-Generative/Muffin/commit/a5053bc3e030604b2ac4544a9b558b7c9ed52b25))
+* head object ([8884420](https://github.com/IA-Generative/Muffin/commit/8884420845bc7b1358caf410b305fab935b48bbe))
+* summarize tabular data ([e567441](https://github.com/IA-Generative/Muffin/commit/e5674414695a5590cad18b7d9c58bd801d6b7040))
+* tabular ([8a908d2](https://github.com/IA-Generative/Muffin/commit/8a908d297fcc36095468c6599ce5ac8a1245dfb4))
+* tabular analysis ([d3f9500](https://github.com/IA-Generative/Muffin/commit/d3f9500824c47dfb4f6819b036184f1d1a74602e))
+
+
+### Bug Fixes
+
+* loader tabular data ([159b124](https://github.com/IA-Generative/Muffin/commit/159b124cb3cbeac86f1df2e10bb5b3b0153b6914))
+* separate tabular ([74466a9](https://github.com/IA-Generative/Muffin/commit/74466a964523e144f5684903f2b508777214ac2a))
+* tabular query pipeline — planner selection, SQL null handling, markdown answers ([24efc9a](https://github.com/IA-Generative/Muffin/commit/24efc9ac299424806ac1f7f9d2e05c2f884e93d5))
+
+
+### Code Refactoring
+
+* tasks ([fedef4e](https://github.com/IA-Generative/Muffin/commit/fedef4e6a75350dc826256f5dcfd249f8cef677e))
+
+## [0.7.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.6.0...v0.7.0-rc) (2026-09-20)
+
+
+### Features
+
+* add tabular process ([db3b4ca](https://github.com/IA-Generative/Muffin/commit/db3b4caf5f60c30d3e0cfadf5b7078a5136afe76))
+* agent execution for tabular data ([2e55bb6](https://github.com/IA-Generative/Muffin/commit/2e55bb60f654adbb4e3c1e5dcb59160c8176e163))
+* head object ([738ef82](https://github.com/IA-Generative/Muffin/commit/738ef8227a5779bd4f5c939aa0482e66a5cdaa95))
+* summarize tabular data ([2416fb2](https://github.com/IA-Generative/Muffin/commit/2416fb297e4d2c9e1328afcaf15b2a06fba8e764))
+* tabular ([222be3e](https://github.com/IA-Generative/Muffin/commit/222be3e84041f30646f316945a01008412f1c2c4))
+* tabular analysis ([c4b2da1](https://github.com/IA-Generative/Muffin/commit/c4b2da1a3ada45d368b43700eb287877618718b1))
+
+
+### Bug Fixes
+
+* loader tabular data ([b8dc73f](https://github.com/IA-Generative/Muffin/commit/b8dc73ff239e24d018d6a7e7ab9634c840fb6e65))
+* separate tabular ([973018d](https://github.com/IA-Generative/Muffin/commit/973018de2c635b5787278aaf4fdac3b26c8ffd43))
+* tabular query pipeline — planner selection, SQL null handling, markdown answers ([645853e](https://github.com/IA-Generative/Muffin/commit/645853ee0f991066baca42bfe489c44bef52d96b))
+
+
+### Code Refactoring
+
+* tasks ([4bb65f5](https://github.com/IA-Generative/Muffin/commit/4bb65f51b8ee6b2a04bb9c0418a0d0f9fd002064))
+
 ## [0.6.0](https://github.com/IA-Generative/Muffin/compare/v0.5.0...v0.6.0) (2026-09-19)
 
 

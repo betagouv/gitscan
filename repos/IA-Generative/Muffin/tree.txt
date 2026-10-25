@@ -1,5 +1,6 @@
 .
 ├── .github
+│   ├── dependabot.yml
 │   ├── releases
 │   │   ├── .release-please-manifest-prerelease.json
 │   │   ├── .release-please-manifest.json
@@ -30,17 +31,23 @@
 │   │   ├── config
 │   │   │   ├── __init__.py
 │   │   │   ├── database.py
+│   │   │   ├── documents.py
 │   │   │   ├── keycloak.py
 │   │   │   ├── llm.py
 │   │   │   ├── logging.py
-│   │   │   ├── meilisearch.py
+│   │   │   ├── qdrant.py
 │   │   │   ├── redis.py
+│   │   │   ├── runs.py
 │   │   │   ├── rustfs.py
 │   │   │   ├── sharing.py
 │   │   │   └── worker.py
 │   │   ├── connectors.py
 │   │   ├── core
 │   │   │   ├── __init__.py
+│   │   │   ├── bm25.py
+│   │   │   ├── file_hash.py
+│   │   │   ├── indexing_cost.py
+│   │   │   ├── page_ranges.py
 │   │   │   ├── security
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── claims.py
@@ -58,90 +65,163 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── app_settings.py
 │   │   │   ├── base.py
+│   │   │   ├── cgu.py
 │   │   │   ├── chunk.py
 │   │   │   ├── collection.py
+│   │   │   ├── collection_import.py
 │   │   │   ├── conversation.py
 │   │   │   ├── discussion_feedback.py
 │   │   │   ├── discussion_score.py
 │   │   │   ├── document.py
+│   │   │   ├── document_draft.py
+│   │   │   ├── document_refresh_schedule.py
+│   │   │   ├── document_revision.py
+│   │   │   ├── document_stage.py
+│   │   │   ├── document_tabular_profile.py
 │   │   │   ├── entity.py
 │   │   │   ├── evaluation.py
 │   │   │   ├── feedback.py
+│   │   │   ├── import_document.py
+│   │   │   ├── index_rebuild.py
 │   │   │   ├── message.py
+│   │   │   ├── prompt.py
 │   │   │   ├── qa.py
+│   │   │   ├── report.py
 │   │   │   ├── run.py
 │   │   │   ├── source.py
-│   │   │   └── task.py
+│   │   │   ├── task.py
+│   │   │   ├── task_log_entry.py
+│   │   │   └── token_usage.py
 │   │   ├── repositories
 │   │   │   ├── __init__.py
 │   │   │   ├── app_settings_repository.py
+│   │   │   ├── cgu_repository.py
 │   │   │   ├── chunk_repository.py
+│   │   │   ├── collection_hierarchy_repository.py
+│   │   │   ├── collection_import_repository.py
 │   │   │   ├── collection_repository.py
 │   │   │   ├── conversation_repository.py
 │   │   │   ├── discussion_feedback_repository.py
 │   │   │   ├── discussion_score_repository.py
+│   │   │   ├── document_draft_repository.py
+│   │   │   ├── document_refresh_repository.py
 │   │   │   ├── document_repository.py
+│   │   │   ├── document_revision_repository.py
+│   │   │   ├── document_stage_repository.py
 │   │   │   ├── entity_repository.py
 │   │   │   ├── evaluation_repository.py
 │   │   │   ├── feedback_repository.py
+│   │   │   ├── index_rebuild_repository.py
+│   │   │   ├── prompt_repository.py
 │   │   │   ├── qa_pair_repository.py
+│   │   │   ├── report_repository.py
 │   │   │   ├── run_repository.py
 │   │   │   ├── source_repository.py
-│   │   │   └── task_repository.py
+│   │   │   ├── task_log_repository.py
+│   │   │   ├── task_repository.py
+│   │   │   └── token_usage_repository.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
+│   │   │   ├── admin_cgu.py
+│   │   │   ├── admin_prompts.py
+│   │   │   ├── admin_reports.py
 │   │   │   ├── admin_settings.py
 │   │   │   ├── auth.py
+│   │   │   ├── cgu.py
+│   │   │   ├── collection_imports.py
 │   │   │   ├── collections.py
 │   │   │   ├── conversations.py
+│   │   │   ├── document_drafts.py
+│   │   │   ├── document_refresh.py
 │   │   │   ├── documents.py
+│   │   │   ├── filing.py
 │   │   │   ├── health.py
+│   │   │   ├── index_rebuilds.py
 │   │   │   ├── internal_collections.py
 │   │   │   ├── internal_conversations.py
+│   │   │   ├── internal_document_drafts.py
 │   │   │   ├── internal_documents.py
+│   │   │   ├── internal_edit_requests.py
 │   │   │   ├── internal_evaluation.py
 │   │   │   ├── internal_llm.py
 │   │   │   ├── internal_pipeline.py
+│   │   │   ├── internal_prompts.py
 │   │   │   ├── internal_runs.py
 │   │   │   ├── internal_tasks.py
+│   │   │   ├── living_documents.py
 │   │   │   ├── models.py
+│   │   │   ├── qa_pairs.py
+│   │   │   ├── qa_suggestions.py
 │   │   │   ├── quality.py
+│   │   │   ├── reports.py
 │   │   │   ├── runs.py
-│   │   │   └── tasks.py
+│   │   │   ├── tasks.py
+│   │   │   └── usage.py
 │   │   ├── schemas
 │   │   │   ├── __init__.py
 │   │   │   ├── app_settings.py
+│   │   │   ├── cgu.py
 │   │   │   ├── collection.py
+│   │   │   ├── collection_import.py
 │   │   │   ├── conversation.py
 │   │   │   ├── discussion_feedback.py
 │   │   │   ├── discussion_score.py
 │   │   │   ├── document.py
+│   │   │   ├── document_draft.py
 │   │   │   ├── evaluation.py
 │   │   │   ├── feedback.py
 │   │   │   ├── health.py
+│   │   │   ├── index_rebuild.py
 │   │   │   ├── internal_discussion_score.py
 │   │   │   ├── internal_document.py
+│   │   │   ├── internal_edit_request.py
 │   │   │   ├── internal_evaluation.py
 │   │   │   ├── internal_pipeline.py
 │   │   │   ├── internal_run.py
 │   │   │   ├── models.py
 │   │   │   ├── pagination.py
+│   │   │   ├── prompt.py
+│   │   │   ├── qa_suggestion.py
 │   │   │   ├── quality.py
+│   │   │   ├── question.py
+│   │   │   ├── report.py
 │   │   │   ├── run.py
-│   │   │   └── task.py
+│   │   │   ├── task.py
+│   │   │   └── usage.py
 │   │   └── services
 │   │       ├── __init__.py
 │   │       ├── app_settings_service.py
+│   │       ├── cgu_service.py
+│   │       ├── collection_hierarchy_service.py
+│   │       ├── collection_import_service.py
 │   │       ├── collection_service.py
 │   │       ├── conversation_service.py
+│   │       ├── creation_proposal_service.py
+│   │       ├── description_rollup_service.py
+│   │       ├── document_derived_data.py
+│   │       ├── document_draft_service.py
+│   │       ├── document_refresh_service.py
 │   │       ├── document_service.py
 │   │       ├── document_upload_service.py
+│   │       ├── editing_rights.py
 │   │       ├── embedding_model_lookup.py
 │   │       ├── evaluation_service.py
+│   │       ├── import_processing_queue.py
+│   │       ├── index_rebuild_service.py
+│   │       ├── index_vectors.py
+│   │       ├── living_document_service.py
+│   │       ├── page_highlights.py
+│   │       ├── prompt_service.py
+│   │       ├── qa_pair_service.py
+│   │       ├── qa_source.py
+│   │       ├── qa_suggestion_service.py
 │   │       ├── quality_service.py
+│   │       ├── report_service.py
+│   │       ├── result_reuse.py
 │   │       ├── run_service.py
 │   │       ├── search_service.py
 │   │       ├── task_service.py
+│   │       ├── usage_service.py
 │   │       └── vector_store.py
 │   ├── docs
 │   │   └── db-schema.png
@@ -172,7 +252,43 @@
 │   │       ├── 20260919_1530_5e9f8378ec61_add_discussion_scores_and_task_.py
 │   │       ├── 20260919_1600_49defa648bf4_add_discussion_feedbacks_and_hash.py
 │   │       ├── 20260919_2100_45e67f238e78_add_content_hash_to_evaluation_runs.py
-│   │       └── 20260919_2200_a1b2c3d4e8f9_add_latency_and_tokens_to_discussion_scores.py
+│   │       ├── 20260919_2200_a1b2c3d4e8f9_add_latency_and_tokens_to_discussion_scores.py
+│   │       ├── 20260920_1000_b3c4d5e6f7a8_add_document_tabular_profiles.py
+│   │       ├── 20260921_1457_4a5f9d2f6c06_add_prompt_versioning.py
+│   │       ├── 20260921_1830_36f8254392ae_seed_agent_identity_prompt.py
+│   │       ├── 20260921_1918_3e2a4a8c7bec_add_temporary_collection_fields.py
+│   │       ├── 20260921_1930_d3ef9214b942_publish_prompt_quality_improvements.py
+│   │       ├── 20260921_2306_88c0e06ef234_drop_collection_description_embeddings_.py
+│   │       ├── 20260921_2329_de60b21ac164_add_filing_suggestion_fields_to_.py
+│   │       ├── 20260921_2351_0e2dfb8a4e41_add_standalone_filing_holding_.py
+│   │       ├── 20260922_0749_142eabf70756_add_cgu_versioning_and_acceptance_.py
+│   │       ├── 20260922_1012_91fd1c728c90_add_reports_table.py
+│   │       ├── 20261008_1841_4f7b9d8801e4_add_living_documents_and_document_.py
+│   │       ├── 20261008_1859_d08dc97b5ff9_add_living_document_edit_lock.py
+│   │       ├── 20261008_2259_2453641a8e9f_add_document_drafts.py
+│   │       ├── 20261008_2339_4cdf987deaf9_add_run_edit_proposal_and_requester_.py
+│   │       ├── 20261020_1200_a44d4216a608_add_collection_parent_id.py
+│   │       ├── 20261021_0900_7cc7069610f1_add_run_sub_collection_exploration.py
+│   │       ├── 20261021_1400_137002274fee_add_collection_imports.py
+│   │       ├── 20261021_1600_e59419ac9e72_add_collection_import_attach_suggestion.py
+│   │       ├── 20261022_0900_7f754413fc28_add_token_usages.py
+│   │       ├── 20261022_1400_a43c9a9fd2c0_add_draft_upload_comparison.py
+│   │       ├── 20261023_0900_b7c4e1d9a2f3_seed_app_help_prompt.py
+│   │       ├── 20261023_1100_c8d2f4a6b1e9_add_golden_qa_pairs.py
+│   │       ├── 20261023_1500_d1e5a7c3f9b2_add_url_refresh_schedules.py
+│   │       ├── 20261024_0900_e2f6b8d4a0c3_add_index_rebuilds.py
+│   │       ├── 20261024_1200_f3a7c9e1b5d2_add_qa_pair_source.py
+│   │       ├── 20261025_0900_a4c8e2f6b0d3_refresh_schedule_kinds.py
+│   │       ├── 20261026_0900_b5d9f3a7c1e4_idempotent_pipeline_writes.py
+│   │       ├── 20261027_0900_c6e0a4f8b2d5_file_hash_and_stage_reuse.py
+│   │       ├── 20261028_0900_d7f1b5a9c3e6_task_log_entries.py
+│   │       ├── 20261029_0900_e8a2c6b0d4f7_import_documents_window.py
+│   │       ├── 20261030_0900_f9b3d7c1e5a8_import_batches.py
+│   │       ├── 20261031_0900_a1c4e7b9d2f6_page_text_boxes.py
+│   │       ├── 20261101_0900_b2d5f8a1c3e7_qa_source_position.py
+│   │       ├── 20261102_0900_c3e6a9b2d4f8_entity_mentions.py
+│   │       ├── 20261103_0900_d4f7b0c3e5a9_assistant_questions.py
+│   │       └── 20261104_0900_e5a8c1d4f6b0_summary_pages.py
 │   ├── pyproject.toml
 │   ├── tests
 │   │   ├── .env.testing
@@ -180,31 +296,77 @@
 │   │   ├── conftest.py
 │   │   ├── core
 │   │   │   ├── __init__.py
-│   │   │   └── security
-│   │   │       ├── __init__.py
-│   │   │       ├── conftest.py
-│   │   │       ├── test_factory.py
-│   │   │       ├── test_session.py
-│   │   │       └── test_worker_auth.py
-│   │   └── routers
+│   │   │   ├── security
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_factory.py
+│   │   │   │   ├── test_session.py
+│   │   │   │   └── test_worker_auth.py
+│   │   │   ├── test_bm25.py
+│   │   │   ├── test_indexing_cost.py
+│   │   │   ├── test_task_revocation.py
+│   │   │   └── test_tasks.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── test_collection_hierarchy.py
+│   │   │   └── test_temporary_collection.py
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── test_admin_cgu.py
+│   │   │   ├── test_admin_prompts.py
+│   │   │   ├── test_admin_reports.py
+│   │   │   ├── test_admin_settings.py
+│   │   │   ├── test_auth.py
+│   │   │   ├── test_cgu.py
+│   │   │   ├── test_collection_imports.py
+│   │   │   ├── test_collection_sharing.py
+│   │   │   ├── test_collections.py
+│   │   │   ├── test_conversations.py
+│   │   │   ├── test_creation_proposals.py
+│   │   │   ├── test_description_rollup.py
+│   │   │   ├── test_document_drafts.py
+│   │   │   ├── test_document_hash.py
+│   │   │   ├── test_documents.py
+│   │   │   ├── test_edit_delegation.py
+│   │   │   ├── test_entity_mentions.py
+│   │   │   ├── test_filing.py
+│   │   │   ├── test_golden_qa.py
+│   │   │   ├── test_health.py
+│   │   │   ├── test_index_rebuilds.py
+│   │   │   ├── test_inherited_access.py
+│   │   │   ├── test_internal_conversations.py
+│   │   │   ├── test_internal_documents.py
+│   │   │   ├── test_internal_evaluation.py
+│   │   │   ├── test_internal_llm.py
+│   │   │   ├── test_internal_pipeline.py
+│   │   │   ├── test_internal_prompts.py
+│   │   │   ├── test_internal_runs.py
+│   │   │   ├── test_internal_tasks.py
+│   │   │   ├── test_living_documents.py
+│   │   │   ├── test_models.py
+│   │   │   ├── test_page_text_boxes.py
+│   │   │   ├── test_pinned_sub_collections.py
+│   │   │   ├── test_pipeline_replay.py
+│   │   │   ├── test_qa_suggestions.py
+│   │   │   ├── test_reports.py
+│   │   │   ├── test_result_reuse.py
+│   │   │   ├── test_run_questions.py
+│   │   │   ├── test_runs.py
+│   │   │   ├── test_sampling_settings.py
+│   │   │   ├── test_sub_collections.py
+│   │   │   ├── test_tasks.py
+│   │   │   ├── test_url_refresh.py
+│   │   │   ├── test_usage.py
+│   │   │   └── test_window_pruning.py
+│   │   └── services
 │   │       ├── __init__.py
-│   │       ├── test_admin_settings.py
-│   │       ├── test_auth.py
-│   │       ├── test_collection_sharing.py
-│   │       ├── test_collections.py
-│   │       ├── test_conversations.py
-│   │       ├── test_documents.py
-│   │       ├── test_health.py
-│   │       ├── test_internal_conversations.py
-│   │       ├── test_internal_documents.py
-│   │       ├── test_internal_evaluation.py
-│   │       ├── test_internal_llm.py
-│   │       ├── test_internal_pipeline.py
-│   │       ├── test_internal_runs.py
-│   │       ├── test_internal_tasks.py
-│   │       ├── test_models.py
-│   │       ├── test_runs.py
-│   │       └── test_tasks.py
+│   │       ├── test_collection_hierarchy_service.py
+│   │       ├── test_collection_subtree_delete.py
+│   │       ├── test_conversation_file_upload.py
+│   │       ├── test_page_highlights.py
+│   │       ├── test_qa_source.py
+│   │       ├── test_search_scope.py
+│   │       └── test_vector_store.py
 │   └── uv.lock
 ├── ci
 │   └── configs
@@ -217,11 +379,105 @@
 ├── docker-compose-test.yaml
 ├── docker-compose.yaml
 ├── docs
+│   ├── assistant-questions.md
+│   ├── collection-hierarchy.md
 │   ├── collection-sharing.md
 │   ├── environment-variables.md
-│   └── research-agent-plan.md
+│   ├── images
+│   │   └── landing-page.png
+│   ├── indexing-llm-calls-cases.json
+│   ├── indexing-llm-calls.md
+│   ├── qdrant-backup.md
+│   ├── research-agent-plan.md
+│   ├── search.md
+│   ├── security-scans.md
+│   └── ui
+│       ├── admin
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── admin-index.png
+│       │       ├── prompt-carousel-overview.png
+│       │       ├── prompt-carousel-second-card.png
+│       │       └── prompt-past-version-readonly.png
+│       ├── cgu
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── admin-editor.png
+│       │       ├── gate-update.png
+│       │       └── viewer.png
+│       ├── chat
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── edit-01-proposal-card.png
+│       │       ├── edit-02-review.png
+│       │       ├── edit-03-validated.png
+│       │       ├── edit-04-no-longer-pending.png
+│       │       ├── voice-input-idle.png
+│       │       └── voice-output-button.png
+│       ├── collections
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── collections-00-list.png
+│       │       ├── collections-02-header-filled.png
+│       │       ├── collections-03-header-collapsed.png
+│       │       ├── collections-modernize-01-forced-edit.png
+│       │       ├── collections-modernize-02b-read-mode.png
+│       │       ├── collections-modernize-03-edit-mode.png
+│       │       ├── collections-sub-01-list.png
+│       │       ├── collections-sub-02-search.png
+│       │       ├── collections-sub-03-tab.png
+│       │       ├── collections-sub-04-breadcrumb.png
+│       │       ├── collections-sub-05-inherited.png
+│       │       ├── collections-sub-06-move.png
+│       │       ├── collections-sub-07-delete.png
+│       │       ├── collections-sub-08-chat-picker.png
+│       │       ├── collections-sub-09-go-further.png
+│       │       ├── collections-tabs-01-primary.png
+│       │       ├── collections-tabs-02-advanced-open.png
+│       │       ├── collections-tabs-03-chunks-active.png
+│       │       ├── collections-zip-01-documents-tab.png
+│       │       ├── collections-zip-02-filing.png
+│       │       ├── collections-zip-03-chat-chip.png
+│       │       ├── collections-zip-04-attach.png
+│       │       ├── living-01-documents-tab.png
+│       │       ├── living-02-revisions.png
+│       │       ├── living-03-revisions-locked.png
+│       │       ├── living-04-new-markdown.png
+│       │       ├── living-edit-01-request.png
+│       │       ├── living-edit-02-pending.png
+│       │       ├── living-edit-03-review.png
+│       │       ├── living-edit-04-images.png
+│       │       ├── living-edit-05-validated.png
+│       │       ├── living-edit-06-declined.png
+│       │       ├── living-edit-07-failed.png
+│       │       └── living-edit-08-markdown.png
+│       ├── filing
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── chat-suggestion-modal.png
+│       │       ├── no-match-create-collection.png
+│       │       └── review-page.png
+│       ├── onboarding
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── onboarding-01-step1.png
+│       │       ├── onboarding-03-last-step.png
+│       │       └── onboarding-05-manual-replay.png
+│       ├── reports
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── report-01-empty.png
+│       │       ├── report-02-filled.png
+│       │       ├── report-05-admin-expanded.png
+│       │       ├── report-07-admin-resolved.png
+│       │       └── report-08-user-sees-response.png
+│       └── user-menu
+│           ├── README.md
+│           └── screenshots
+│               └── release-notes-modal.png
 ├── frontend
 │   ├── .dockerignore
+│   ├── .env.production
 │   ├── .gitignore
 │   ├── .vscode
 │   │   └── extensions.json
@@ -233,8 +489,13 @@
 │   ├── package.json
 │   ├── pnpm-lock.yaml
 │   ├── public
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon.ico
 │   │   ├── favicon.svg
-│   │   └── icons.svg
+│   │   ├── icons.svg
+│   │   └── manifest.webmanifest
 │   ├── scripts
 │   │   ├── screenshot.mjs
 │   │   ├── test-keycloak-login.mjs
@@ -242,59 +503,145 @@
 │   │   └── verify-run-e2e.mjs
 │   ├── src
 │   │   ├── App.vue
+│   │   ├── assets
+│   │   │   └── settings-form.css
 │   │   ├── components
+│   │   │   ├── AddUrlModal.vue
+│   │   │   ├── AdminCguView.vue
+│   │   │   ├── AdminIndexView.vue
+│   │   │   ├── AdminPromptsView.vue
+│   │   │   ├── AdminReportsView.vue
 │   │   │   ├── AdminSettingsView.vue
+│   │   │   ├── AdminUsageView.vue
+│   │   │   ├── CguEditor.vue
+│   │   │   ├── CguGateModal.vue
+│   │   │   ├── CguViewerModal.vue
+│   │   │   ├── ChatCreateProposal.vue
+│   │   │   ├── ChatEditProposal.vue
 │   │   │   ├── ChatMessage.vue
+│   │   │   ├── ChatQuestions.vue
 │   │   │   ├── ChatSidebar.vue
 │   │   │   ├── ChatView.vue
 │   │   │   ├── ChatWindow.vue
+│   │   │   ├── CollectionAccessSettings.vue
 │   │   │   ├── CollectionChunksTab.vue
 │   │   │   ├── CollectionDetailView.vue
 │   │   │   ├── CollectionDocumentsTab.vue
 │   │   │   ├── CollectionEvaluationTab.vue
+│   │   │   ├── CollectionImportStatus.vue
 │   │   │   ├── CollectionPicker.vue
 │   │   │   ├── CollectionQaTab.vue
 │   │   │   ├── CollectionRelationsTab.vue
 │   │   │   ├── CollectionSettingsTab.vue
+│   │   │   ├── CollectionSetupWizard.vue
+│   │   │   ├── CollectionSubcollectionsTab.vue
 │   │   │   ├── CollectionsView.vue
 │   │   │   ├── ConfirmDeleteModal.vue
 │   │   │   ├── ConversationMenu.vue
 │   │   │   ├── DiscussionFeedbackPrompt.vue
 │   │   │   ├── DiscussionScorePanel.vue
 │   │   │   ├── DocumentDetailModal.vue
+│   │   │   ├── DraftReviewModal.vue
+│   │   │   ├── DuplicateDocumentsModal.vue
+│   │   │   ├── EntityOccurrencesModal.vue
 │   │   │   ├── ExecutionPanel.vue
 │   │   │   ├── FeedbackModal.vue
+│   │   │   ├── FileFilingModal.vue
+│   │   │   ├── FilingReviewView.vue
+│   │   │   ├── HomeView.vue
+│   │   │   ├── LivingDocumentEdit.vue
+│   │   │   ├── LivingDocumentRevisions.vue
+│   │   │   ├── LongDocumentsFields.vue
+│   │   │   ├── ModelSelect.vue
 │   │   │   ├── ModelSelector.vue
+│   │   │   ├── MoveCollectionModal.vue
+│   │   │   ├── NewMarkdownDocumentModal.vue
+│   │   │   ├── OnboardingModal.vue
 │   │   │   ├── PaginationControls.vue
+│   │   │   ├── ProfilePicker.vue
+│   │   │   ├── PromptEditor.vue
 │   │   │   ├── QualityDashboardView.vue
+│   │   │   ├── RefreshScheduleForm.vue
+│   │   │   ├── ReleaseNotesModal.vue
+│   │   │   ├── ReportModal.vue
+│   │   │   ├── ReportsAdminSection.vue
+│   │   │   ├── SettingsField.vue
 │   │   │   ├── SettingsModal.vue
+│   │   │   ├── SettingsSection.vue
 │   │   │   ├── SourceDocumentModal.vue
+│   │   │   ├── SourcePreview.vue
 │   │   │   ├── SourcesPanel.vue
+│   │   │   ├── TaskLogViewer.vue
 │   │   │   ├── TaskRow.vue
 │   │   │   ├── TaskTableRow.vue
-│   │   │   └── TasksView.vue
+│   │   │   ├── TasksView.vue
+│   │   │   ├── UrlRefreshSettings.vue
+│   │   │   ├── UsageView.vue
+│   │   │   └── usage
+│   │   │       ├── UsageCharts.vue
+│   │   │       ├── UsagePeriodSelector.vue
+│   │   │       └── WaterBottles.vue
 │   │   ├── composables
 │   │   │   ├── useAdminSettings.ts
+│   │   │   ├── useAppVersion.ts
+│   │   │   ├── useCgu.ts
+│   │   │   ├── useCguAdmin.ts
+│   │   │   ├── useChangelog.ts
 │   │   │   ├── useChat.ts
+│   │   │   ├── useCollectionImports.ts
 │   │   │   ├── useCollections.ts
 │   │   │   ├── useCollectionsBrowser.ts
 │   │   │   ├── useCurrentUser.ts
+│   │   │   ├── useDocumentDraft.ts
+│   │   │   ├── useDraftSession.ts
 │   │   │   ├── useEmbeddingModels.ts
+│   │   │   ├── useEntityMentions.ts
+│   │   │   ├── useFiling.ts
+│   │   │   ├── useIndexingEstimate.ts
+│   │   │   ├── useLivingDocuments.ts
 │   │   │   ├── useModels.ts
+│   │   │   ├── useOnboarding.ts
+│   │   │   ├── usePageHighlights.ts
 │   │   │   ├── usePagination.ts
+│   │   │   ├── usePrompts.ts
+│   │   │   ├── useQaSuggestions.ts
 │   │   │   ├── useQuality.ts
+│   │   │   ├── useReports.ts
+│   │   │   ├── useReportsAdmin.ts
+│   │   │   ├── useTaskLogs.ts
 │   │   │   ├── useTasks.ts
-│   │   │   └── useTheme.ts
+│   │   │   ├── useTheme.ts
+│   │   │   ├── useUsage.ts
+│   │   │   ├── useVoiceInput.ts
+│   │   │   └── useVoiceOutput.ts
 │   │   ├── data
 │   │   │   └── qualityMetrics.ts
 │   │   ├── main.ts
 │   │   ├── router
 │   │   │   └── index.ts
-│   │   └── types
-│   │       ├── chat.ts
-│   │       ├── collection.ts
-│   │       ├── model.ts
-│   │       └── user.ts
+│   │   ├── types
+│   │   │   ├── chat.ts
+│   │   │   ├── collection.ts
+│   │   │   ├── model.ts
+│   │   │   ├── speech-recognition.d.ts
+│   │   │   ├── usage.ts
+│   │   │   └── user.ts
+│   │   └── utils
+│   │       ├── collectionPath.ts
+│   │       ├── collectionProfiles.test.ts
+│   │       ├── collectionProfiles.ts
+│   │       ├── highlightPassage.test.ts
+│   │       ├── highlightPassage.ts
+│   │       ├── longDocuments.test.ts
+│   │       ├── longDocuments.ts
+│   │       ├── plainText.ts
+│   │       ├── questionAnswers.test.ts
+│   │       ├── questionAnswers.ts
+│   │       ├── refreshSchedule.ts
+│   │       ├── settingsDraft.test.ts
+│   │       ├── settingsDraft.ts
+│   │       ├── settingsSummary.test.ts
+│   │       └── settingsSummary.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
@@ -306,11 +653,11 @@
 │   ├── README.md.gotmpl
 │   ├── charts
 │   │   ├── cluster-0.8.1.tgz
-│   │   ├── meilisearch-0.39.0.tgz
 │   │   ├── postgres-0.19.6.tgz
+│   │   ├── qdrant-1.20.0.tgz
 │   │   ├── redis-0.27.9.tgz
 │   │   ├── rustfs-0.10.0.tgz
-│   │   └── searxng-1.1.4.tgz
+│   │   └── searxng-0.1.11.tgz
 │   ├── templates
 │   │   ├── NOTES.txt
 │   │   ├── _helpers.tpl
@@ -357,6 +704,27 @@
 │   │   │   ├── servicemonitor.yaml
 │   │   │   └── statefulset.yaml
 │   │   ├── cronjobs.yaml
+│   │   ├── document_enrichment
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── document_process
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -402,10 +770,52 @@
 │   │   │   └── statefulset.yaml
 │   │   ├── gateway.yaml
 │   │   ├── httproute.yaml
+│   │   ├── index_rebuild
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── ingress.yaml
 │   │   ├── jobs.yaml
 │   │   ├── pullsecret.yaml
 │   │   ├── validation.yaml
+│   │   ├── worker_document_edit
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   └── worker_evaluation
 │   │       ├── clusterrole.yaml
 │   │       ├── clusterrolebinding.yaml
@@ -430,9 +840,15 @@
 │   ├── test-values-daemonset.yaml
 │   ├── test-values-statefulset.yaml
 │   ├── test-values.yaml
+│   ├── values
+│   │   └── common-values.yaml
 │   ├── values-searxng.example.yaml
 │   ├── values.schema.json
 │   └── values.yaml
+├── tests-tabular
+│   ├── QUESTIONS.md
+│   ├── database.csv
+│   └── run-tests.sh
 └── worker
     ├── agent_execution
     │   ├── Dockerfile
@@ -440,6 +856,7 @@
     │   ├── app
     │   │   ├── __init__.py
     │   │   ├── agent_service.py
+    │   │   ├── ask_user.py
     │   │   ├── backend_client.py
     │   │   ├── celery_app.py
     │   │   ├── config.py
@@ -449,9 +866,14 @@
     │   │   │   ├── nodes
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── analyze_query.py
+    │   │   │   │   ├── answer_help.py
+    │   │   │   │   ├── answer_identity.py
     │   │   │   │   ├── build_answer_context.py
     │   │   │   │   ├── build_research_plan.py
+    │   │   │   │   ├── create_document.py
     │   │   │   │   ├── decompose_query.py
+    │   │   │   │   ├── delegate_edit.py
+    │   │   │   │   ├── detect_edit.py
     │   │   │   │   ├── evaluate_coverage.py
     │   │   │   │   ├── generate_answer.py
     │   │   │   │   ├── load_accessible_vdbs.py
@@ -472,17 +894,63 @@
     │   │   │   │   ├── evidence.py
     │   │   │   │   ├── llm.py
     │   │   │   │   ├── planning.py
+    │   │   │   │   ├── prompts.py
+    │   │   │   │   ├── tabular_query.py
     │   │   │   │   ├── time_tool.py
     │   │   │   │   └── vdb_router.py
     │   │   │   └── state.py
     │   │   ├── searxng_client.py
-    │   │   └── tasks.py
+    │   │   ├── task_logging.py
+    │   │   ├── task_revocation.py
+    │   │   ├── tasks.py
+    │   │   └── usage_context.py
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── __init__.py
     │   │   ├── conftest.py
     │   │   ├── test_agent_service.py
-    │   │   └── test_graph.py
+    │   │   ├── test_answer_help.py
+    │   │   ├── test_ask_user.py
+    │   │   ├── test_create_document.py
+    │   │   ├── test_edit_delegation.py
+    │   │   ├── test_graph.py
+    │   │   ├── test_prompts.py
+    │   │   ├── test_tabular_query.py
+    │   │   └── test_vdb_router.py
+    │   └── uv.lock
+    ├── document_edit
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── agent.py
+    │   │   ├── backend_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contract.py
+    │   │   ├── edit_types.py
+    │   │   ├── editing.py
+    │   │   ├── image_size.py
+    │   │   ├── markdown_editor.py
+    │   │   ├── odt_editor.py
+    │   │   ├── operations.py
+    │   │   ├── preview.py
+    │   │   ├── storage.py
+    │   │   ├── task_logging.py
+    │   │   ├── task_revocation.py
+    │   │   ├── tasks.py
+    │   │   └── usage_context.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── .env.testing
+    │   │   ├── __init__.py
+    │   │   ├── odt_fixture.py
+    │   │   ├── test_agent.py
+    │   │   ├── test_images_and_preview.py
+    │   │   ├── test_markdown_editor.py
+    │   │   ├── test_odt_editor.py
+    │   │   ├── test_outline.py
+    │   │   └── test_tasks.py
     │   └── uv.lock
     ├── document_process
     │   ├── Dockerfile
@@ -493,16 +961,76 @@
     │   │   ├── celery_app.py
     │   │   ├── chunking.py
     │   │   ├── config.py
+    │   │   ├── entity_mentions.py
     │   │   ├── parsing.py
+    │   │   ├── reuse.py
+    │   │   ├── sampling.py
     │   │   ├── scraping.py
     │   │   ├── storage.py
+    │   │   ├── tabular
+    │   │   │   ├── __init__.py
+    │   │   │   ├── detect.py
+    │   │   │   ├── loader.py
+    │   │   │   ├── stats
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── classify.py
+    │   │   │   │   ├── fetchers.py
+    │   │   │   │   ├── models.py
+    │   │   │   │   ├── profile.py
+    │   │   │   │   └── types.py
+    │   │   │   └── summarize.py
     │   │   ├── task_logging.py
-    │   │   ├── tasks.py
-    │   │   └── windows.py
+    │   │   ├── task_revocation.py
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   ├── _shared.py
+    │   │   │   ├── _tabular_steps.py
+    │   │   │   ├── chunk.py
+    │   │   │   ├── collection.py
+    │   │   │   ├── extract.py
+    │   │   │   ├── import_queue.py
+    │   │   │   ├── import_zip.py
+    │   │   │   ├── process.py
+    │   │   │   ├── qa.py
+    │   │   │   ├── rebuild.py
+    │   │   │   ├── refresh.py
+    │   │   │   ├── summarize.py
+    │   │   │   ├── tabular.py
+    │   │   │   └── task_logs.py
+    │   │   ├── text_boxes.py
+    │   │   ├── usage_context.py
+    │   │   ├── utils.py
+    │   │   ├── windows.py
+    │   │   └── zip_import.py
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── __init__.py
-    │   │   └── test_tasks.py
+    │   │   ├── test_backend_client_sampling.py
+    │   │   ├── test_chunk_spans.py
+    │   │   ├── test_entity_mentions.py
+    │   │   ├── test_index_rebuild.py
+    │   │   ├── test_limits.py
+    │   │   ├── test_llm_call_cases.py
+    │   │   ├── test_llm_chunking.py
+    │   │   ├── test_loader.py
+    │   │   ├── test_parse_ranges.py
+    │   │   ├── test_qa_source.py
+    │   │   ├── test_queues.py
+    │   │   ├── test_replay.py
+    │   │   ├── test_reuse.py
+    │   │   ├── test_reuse_sampling.py
+    │   │   ├── test_sampled_steps.py
+    │   │   ├── test_sampling.py
+    │   │   ├── test_stats.py
+    │   │   ├── test_tabular_steps.py
+    │   │   ├── test_task_logging.py
+    │   │   ├── test_task_revocation.py
+    │   │   ├── test_tasks.py
+    │   │   ├── test_text_boxes.py
+    │   │   ├── test_url_refresh.py
+    │   │   ├── test_usage_context.py
+    │   │   ├── test_window_priority.py
+    │   │   └── test_zip_import.py
     │   └── uv.lock
     └── evaluation
         ├── Dockerfile
@@ -514,7 +1042,9 @@
         │   ├── config.py
         │   ├── metrics.py
         │   ├── task_logging.py
-        │   └── tasks.py
+        │   ├── task_revocation.py
+        │   ├── tasks.py
+        │   └── usage_context.py
         ├── pyproject.toml
         ├── tests
         │   ├── __init__.py
@@ -522,4 +1052,4 @@
         │   ├── test_metrics.py
         │   └── test_tasks.py
         └── uv.lock
-60 directories, 464 files
+94 directories, 960 files
