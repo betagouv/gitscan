@@ -96,7 +96,8 @@
 │       ├── home.spec.ts
 │       ├── moulinette
 │       │   ├── eviter_reduire.spec.ts
-│       │   └── form.spec.ts
+│       │   ├── form.spec.ts
+│       │   └── hedge_input_cancel.spec.ts
 │       └── petitions
 │           ├── instructor.spec.ts
 │           └── procedure_modal.spec.ts
@@ -387,10 +388,15 @@
 │   │   ├── tasks.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── data
+│   │   │   │   ├── corrupt.gpkg
+│   │   │   │   ├── lines.zip
+│   │   │   │   ├── no_shapefile.zip
+│   │   │   │   └── zones.gpkg
 │   │   │   ├── factories.py
-│   │   │   ├── test_extract_map.py
 │   │   │   ├── test_management_commands.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_open_map_file.py
 │   │   │   ├── test_utils.py
 │   │   │   └── test_zone_manager.py
 │   │   ├── urls.py
@@ -473,6 +479,7 @@
 │   │   │   ├── conftest.py
 │   │   │   ├── factories.py
 │   │   │   ├── test_calvados_quality_condition.py
+│   │   │   ├── test_forms.py
 │   │   │   ├── test_import_taxref.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_regulations.py
@@ -936,6 +943,7 @@
 │   │   │   ├── factories.py
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_commands.py
+│   │   │   ├── test_demarche_numerique_client.py
 │   │   │   ├── test_forms.py
 │   │   │   ├── test_middleware.py
 │   │   │   ├── test_models.py
@@ -1241,6 +1249,7 @@
 │   │   │       │   ├── checkbox.html
 │   │   │       │   ├── checkbox_multiple.html
 │   │   │       │   ├── field.html
+│   │   │       │   ├── honeypot.html
 │   │   │       │   ├── input_file.html
 │   │   │       │   ├── label.html
 │   │   │       │   ├── radio.html
@@ -1463,6 +1472,9 @@
 │   │   │   │   ├── 403.html
 │   │   │   │   ├── 403_token_expired.html
 │   │   │   │   ├── _alternatives_table.html
+│   │   │   │   ├── _dn_contexte.html
+│   │   │   │   ├── _dn_erc.html
+│   │   │   │   ├── _dn_justification.html
 │   │   │   │   ├── _dn_logo.html
 │   │   │   │   ├── _dossier_followers.html
 │   │   │   │   ├── _dossier_list_filters.html
@@ -1490,6 +1502,7 @@
 │   │   │   │   ├── _summary_dossier.html
 │   │   │   │   ├── alignement_arbres
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── hru
 │   │   │   │   │   │   └── alignement_arbres_calvados_before_ru_plantation_condition_details.html
 │   │   │   │   │   ├── instruction_guidelines.html
@@ -1503,15 +1516,18 @@
 │   │   │   │   │   └── tacit_agreement.txt
 │   │   │   │   ├── code_rural_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   └── instruction_guidelines.html
 │   │   │   │   ├── conditionnalite_pac
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── consultation.html
 │   │   │   │   ├── declaration_receipt.txt
 │   │   │   │   ├── ep
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── hru
 │   │   │   │   │   │   ├── ep_aisne_plantation_condition_details.html
 │   │   │   │   │   │   └── ep_normandie_plantation_condition_details.html
@@ -1536,6 +1552,7 @@
 │   │   │   │   ├── invalid_invitation_token.html
 │   │   │   │   ├── loi_sur_leau_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── mattermost_demarche_numerique_api_error.txt
@@ -1556,32 +1573,39 @@
 │   │   │   │   ├── moulinette_result.html
 │   │   │   │   ├── natura2000_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── project_summary.html
 │   │   │   │   ├── protection_captages
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   └── instruction_guidelines.html
 │   │   │   │   ├── regime_unique_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   ├── key_elements.html
 │   │   │   │   │   └── ru
 │   │   │   │   │       └── regime_unique_haie_plantation_condition_details.html
 │   │   │   │   ├── reserves_naturelles
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── sites_classes_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── sites_inscrits_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── sites_proteges_haie
 │   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── dn_fields.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── stage_objectives
@@ -1594,6 +1618,7 @@
 │   │   │   │   │   └── to_be_processed.html
 │   │   │   │   └── urbanisme_haie
 │   │   │   │       ├── consultation.html
+│   │   │   │       ├── dn_fields.html
 │   │   │   │       └── instruction_guidelines.html
 │   │   │   ├── registration
 │   │   │   │   ├── base.html
@@ -1610,6 +1635,8 @@
 │   │   │   └── robots.txt
 │   │   ├── hedges
 │   │   │   ├── _hedge_data_dialog.html
+│   │   │   ├── _hedge_data_dialog_readonly.html
+│   │   │   ├── _hedge_data_dialog_readonly_property.html
 │   │   │   ├── _hedge_summary_table.html
 │   │   │   ├── _hedges_properties.html
 │   │   │   ├── _plantation_conditions.html
@@ -2011,6 +2038,11 @@
 │   │   ├── apps.py
 │   │   ├── backends.py
 │   │   ├── forms.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── delete_unactivated_accounts.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_user_is_confirmed_by_admin.py
@@ -2033,9 +2065,12 @@
 │   │   │   ├── factories.py
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_backends.py
+│   │   │   ├── test_commands.py
+│   │   │   ├── test_forms.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_tasks.py
-│   │   │   └── test_views.py
+│   │   │   ├── test_views.py
+│   │   │   └── utils.py
 │   │   ├── urls.py
 │   │   └── views.py
 │   └── utils
@@ -2118,4 +2153,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-274 directories, 1865 files
+277 directories, 1897 files

@@ -1,27 +1,42 @@
-## Changelog : envergo (30 derniers jours, au 06/10/2026)
+## Changelog : envergo (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'expérience de simulation (V2) et une modernisation profonde de la gestion des Démarches Numériques (DN). Les capacités de gestion des données de biodiversité ont été enrichies, notamment par une meilleure catégorisation des espèces, tandis que l'interface utilisateur a été affinée pour améliorer la clarté des informations et la navigation.
+Ce mois a été marqué par une restructuration majeure du module des Démarches Numériques (DN) afin d'en améliorer la fiabilité et la gestion des données. L'expérience utilisateur a été affinée grâce à une mise à jour importante des libellés, à l'amélioration de l'interface de gestion des haies et des espèces protégées, et à l'ajout de nouveaux outils de notification (récépissés automatiques). Enfin, la sécurité a été renforcée par l'implémentation d'un système de détection de bots lors des inscriptions.
 
 ### Évolutions fonctionnelles
-- **Nouvelle expérience de simulation (V2) :** Déploiement de nouveaux parcours de simulation, incluant de nouvelles pages d'affichage et de gestion des alternatives ([#1236](https://github.com/MTES-MCT/envergo/issues/1236), [#1254](https://github.com/MTES-MCT/envergo/issues/1254), [#1255](https://github.com/MTES-MCT/envergo/issues/1255)).
-- **Gestion des Démarches Numériques (DN) :** Amélioration du suivi avec l'envoi automatique de récépissés lors de la soumission ou du redémarrage d'une instruction ([#1292](https://github.com/MTES-MCT/envergo/issues/1292)).
-- **Biodiversité et Espèces :** Possibilité de multi-catégoriser les espèces (Natura 2000, sites protégés, etc.) et amélioration de la présentation des tableaux d'espèces.
-- **Interface et Ergonomie :**
-    - Ajout d'un bloc d'alerte d'urgence sur la page d'accueil ([#1322](https://github.com/MTES-MCT/envergo/issues/1322)).
-    - Mise à jour globale des libellés (Urbanisme, Haies, etc.) pour plus de clarté et de précision.
-    - Amélioration de la recherche de projets et de la gestion des contacts.
-    - Correction de bugs d'affichage (écrans blancs sur anciens navigateurs, problèmes de recherche).
-- **Cartographie :** Ajout de nouvelles cartes dans les paramètres départementaux et correction de problèmes d'affichage des cartes de haies ([#1315](https://github.com/MTES-MCT/envergo/issues/1315)).
+- **Démarches Numériques (DN) :**
+    - Amélioration de l'affichage des champs et des images liés aux dossiers DN sur les pages d'instruction. [#1341](https://github.com/MTES-MCT/envergo/pull/1341)
+    - Automatisation de l'envoi des récépissés de DN lors de la soumission d'un dossier ou du redémarrage d'une instruction. [#1292](https://github.com/MTES-MCT/envergo/pull/1292)
+    - Correction de bugs critiques provoquant des erreurs 500 lors de l'enregistrement des configurations DN. [#1314](https://github.com/MTES-MCT/envergo/pull/1314)
+- **Gestion de l'environnement et des espèces :**
+    - Introduction de la multicatégorisation pour les Espèces Protégées (EP).
+    - Mise à jour de l'évaluateur EP avec l'intégration de nouvelles données (zones sensibles, bonus, haies).
+    - Intégration de nouvelles réglementations et zones de gestion (Natura 2000, zones SI, SPR, etc.).
+    - Amélioration de l'interface d'édition des haies via l'utilisation de Vue.js pour une meilleure réactivité.
+- **Interface et Expérience Utilisateur (UX) :**
+    - Refonte de nombreux libellés pour plus de clarté (notamment sur les notions d'urgence, d'urbanisme et de pièces d'eau). [#1349](https://github.com/MTES-MCT/envergo/pull/1349)
+    - Ajout d'un bloc d'alerte "urgence" sur la page d'accueil. [#1322](https://github.com/MTES-MCT/envergo/pull/1322)
+    - Amélioration de la lisibilité des informations via l'utilisation de balises d'abréviation (`<abbr>`).
+    - Optimisation de la recherche de projets par référence dans l'interface d'administration.
+- **Communications :**
+    - Amélioration des modèles d'emails (mentions d'invitation, signatures, liens d'aide pour la rédaction manuelle).
 
 ### Évolutions techniques
-- **Architecture :** Refactorisation majeure de la logique "Démarche Numérique" dans un module dédié pour une meilleure maintenabilité ([#1317](https://github.com/MTES-MCT/envergo/issues/1317)).
-- **Stockage et Infrastructure :**
-    - Mise en place d'un nouveau système de stockage via S3 pour la gestion sécurisée des fichiers privés ([#1261](https://github.com/MTES-MCT/envergo/issues/1261)).
-    - Optimisation de la configuration Nginx pour le proxy de fichiers.
-- **Performances :** Optimisation des calculs de densité et des requêtes de base de données pour les zones HRU/RU ([#1267](https://github.com/MTES-MCT/envergo/issues/1267), [#1238](https://github.com/MTES-MCT/envergo/issues/1238)).
-- **Base de données :** Migrations importantes pour supporter le nouveau modèle d'objets DN et la catégorisation complexe des espèces.
+- **Architecture et Refactoring :**
+    - Migration complète du code lié aux Démarches Numériques vers un module dédié pour une meilleure maintenance. [#1317](https://github.com/MTES-MCT/envergo/pull/1317)
+    - Refactorisation de l'architecture des pages et nettoyage important du code mort. [#1282](https://github.com/MTES-MCT/envergo/pull/1282)
+    - Optimisation des performances par la mise en cache du parsing des dossiers.
+- **Sécurité et Infrastructure :**
+    - Implémentation d'un mécanisme de détection de bots lors de la création de compte. [#1313](https://github.com/MTES-MCT/envergo/pull/1313)
+    - Stabilisation de la CI/CD par l'utilisation d'une version LTS plus ancienne d'Ubuntu. [#1346](https://github.com/MTES-MCT/envergo/pull/1346)
+    - Optimisation de la gestion des fichiers volumineux par un déplacement systématique sur disque.
+- **Qualité et Tests :**
+    - Enrichissement et simplification de la suite de tests (E2E et unitaires).
+    - Correction de divers bugs de gestion de fichiers et de fuites de ressources.
 
 ### Autres changements
-- **Documentation :** Mise à jour du README (mention de l'anonymisation et de la stack technique) et de la documentation de collaboration.
-- **Qualité du code :** Nettoyage des commentaires, corrections de linting et amélioration de la suite de tests automatisés.
+- **Documentation :**
+    - Mise à jour de la documentation technique sur les démarches numériques et les processus de collaboration.
+    - Ajout des détails de la stack technique dans le fichier README.
+- **Nettoyage :**
+    - Diverses corrections de style, de commentaires et de syntaxe.
