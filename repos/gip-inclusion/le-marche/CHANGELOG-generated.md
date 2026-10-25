@@ -1,10 +1,11 @@
-## Changelog : le-marche (30 derniers jours, au 25 septembre 2026)
+## Changelog : le-marche (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Les évolutions récentes se sont concentrées sur l'amélioration de l'accès aux outils de pilotage et l'optimisation technique des processus de synchronisation de données.
+Ce mois-ci, les évolutions se sont concentrées sur la simplification de l'infrastructure technique par le retrait de composants de synchronisation obsolètes et sur l'amélioration de l'accès aux outils de statistiques.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage du tableau de bord Metabase via son lien public.
+- **Statistiques** : amélioration de la visibilité des données via l'affichage du tableau de bord Metabase par un lien public.
 
 ### Évolutions techniques
-- Optimisation de la synchronisation complète Nexus par la réduction de la taille des lots de données traités (chunk size).
+- **Simplification de l'infrastructure** : suppression des processus de synchronisation (statique et dynamique) ainsi que de la base de données de statistiques liés à Nexus.
+- **Environnement de test** : ajout d'un conteneur Mailhog pour faciliter la gestion et le test des envois d'emails sur l'environnement de staging.

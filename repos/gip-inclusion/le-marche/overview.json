@@ -1,41 +1,36 @@
 {
   "url": "https://github.com/gip-inclusion/le-marche",
   "name": "le-marche",
-  "description": "Un service numérique permettant de mettre en relation des acheteurs et des prestataires sociaux inclusifs pour des produits ou services professionnels.",
+  "description": "Un service numérique permettant de mettre en relation des acheteurs et des prestataires sociaux inclusifs proposant des produits ou services professionnels.",
   "language": "Python",
   "features": [
-    "Gestion métier générale",
     "Recherche & Filtres",
     "Authentification & Accès",
     "Statistiques & Rapports",
-    "Formulaires & Démarches",
     "Gestion des utilisateurs & Permissions",
-    "API & Intégrations",
-    "Gestion des médias & Assets",
-    "Tableaux & Affichage"
+    "Formulaires & Démarches",
+    "Notifications & Alertes",
+    "Administration & Backoffice",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Django REST Framework",
     "Wagtail",
+    "Django REST Framework",
     "PostgreSQL",
     "Redis",
     "Huey",
     "Boto3",
-    "Selenium",
-    "Pytest"
+    "Minio"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
-    "Authentification (composant)",
     "CMS (Strapi, Wagtail…)",
-    "Tests",
-    "Webhooks & Événements",
+    "Authentification (composant)",
     "ORM & Accès aux données"
   ],
   "auth": {
@@ -43,16 +38,18 @@
       "email-password",
       "jwt",
       "session"
-    ],
-    "providers": []
+    ]
   },
-  "tests": "Pytest et Selenium",
+  "tests": [
+    "PyTest",
+    "Selenium"
+  ],
   "workflows": [
     "Feature branch workflow",
-    "Semantic versioning"
+    "release-please-action"
   ],
-  "lastActivity": "2026-09-24T00:00:00Z",
-  "status": "maintained",
+  "lastActivity": "2026-04-23T00:00:00Z",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
@@ -60,7 +57,7 @@
     "Bases de données SQL",
     "Django & FastAPI",
     "Docker & Conteneurs",
-    "Accessibilité",
-    "Subventions & Finances publiques"
+    "CI/CD & GitHub Actions",
+    "Écosystème beta.gouv / État"
   ]
 }
