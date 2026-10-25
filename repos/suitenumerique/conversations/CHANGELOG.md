@@ -6,9 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
+## [0.0.26] - 2026-10-22
 
 - ✨(back) add opt-in prometheus metrics on `/metrics`
 - ✨(back) measure model requests, chat streams and outgoing calls
@@ -18,6 +16,10 @@ and this project adheres to
 
 ### Changed
 
+- 🔒️(front) upgrade dompurify to 3.4.17 to fix security issues
+- 🔒️(back) upgrade djangorestframework to 3.18.3 to fix security issues
+- 🔒️(back) upgrade brotli to fix CVE-2026-111497
+- 🔒️(back) upgrade certifi and pillow to fix CVEs
 - 🔧(docker) replace maildev with mailcatcher like other La Suite projects
 - ⬆️(dependencies) upgrade back-end and front-end dependencies
 - ⬆️(back) upgrade pydantic-ai to 2.52.0 and switch to httpx2
@@ -533,7 +535,9 @@ and this project adheres to
 - 💄(chat) add code highlighting for LLM responses #67
 - 🔧(evals) add run_evals management command
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.25...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.26...main
+
+[0.0.26]: https://github.com/suitenumerique/conversations/compare/v0.0.25...v0.0.26
 
 [0.0.25]: https://github.com/suitenumerique/conversations/compare/v0.0.24...v0.0.25
 
