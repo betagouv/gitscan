@@ -16,6 +16,7 @@
 │       ├── database.yml
 │       ├── database_healthcheck.yml
 │       ├── manage-issues-with-kanban.yml
+│       ├── publish-api-contract.yml
 │       ├── push_to_nexus.yml
 │       └── trivy.yml
 ├── .gitignore
@@ -38,6 +39,8 @@
 │   ├── 0009-navigating-in-trips.md
 │   ├── 0010-migration-eslint-vers-oxlint.md
 │   ├── 0011-enregistrement-automatique-des-formulaires.md
+│   ├── 0012-remplacement-de-smallchat-par-tchap.md
+│   ├── 0013-package-de-contrat-de-l-api-publique.md
 │   ├── adrs.iml
 │   └── images
 │       └── pno_types_architecture.png
@@ -53,6 +56,38 @@
 │   │       ├── maven-wrapper.jar
 │   │       └── maven-wrapper.properties
 │   ├── HELP.md
+│   ├── api-contract
+│   │   ├── README.md
+│   │   ├── build.gradle.kts
+│   │   └── src
+│   │       ├── main
+│   │       │   └── kotlin
+│   │       │       └── fr
+│   │       │           └── gouv
+│   │       │               └── cnsp
+│   │       │                   └── monitorfish
+│   │       │                       └── infrastructure
+│   │       │                           └── api
+│   │       │                               └── contract
+│   │       │                                   ├── Enums.kt
+│   │       │                                   ├── MissionActionControlDataOutputs.kt
+│   │       │                                   ├── MissionActionDataOutput.kt
+│   │       │                                   ├── MissionActionSnapshotDataOutputs.kt
+│   │       │                                   ├── PatchableMissionActionDataInput.kt
+│   │       │                                   ├── PortDataOutput.kt
+│   │       │                                   ├── PublicMissionActionDataOutput.kt
+│   │       │                                   ├── ThreatHierarchyDataOutput.kt
+│   │       │                                   └── VesselIdentityDataOutput.kt
+│   │       └── test
+│   │           └── kotlin
+│   │               └── fr
+│   │                   └── gouv
+│   │                       └── cnsp
+│   │                           └── monitorfish
+│   │                               └── infrastructure
+│   │                                   └── api
+│   │                                       └── contract
+│   │                                           └── ContractDeserializationUTests.kt
 │   ├── build.gradle.kts
 │   ├── docs
 │   │   ├── PROD.md
@@ -726,7 +761,6 @@
 │   │   │   │                   │   │   │   ├── ControlUnitDataOutput.kt
 │   │   │   │                   │   │   │   ├── ControlledVesselDataOutput.kt
 │   │   │   │                   │   │   │   ├── ControlsSummaryDataOutput.kt
-│   │   │   │                   │   │   │   ├── DiscardedSpeciesControlDataOutput.kt
 │   │   │   │                   │   │   │   ├── DisplayedReportingDataOutput.kt
 │   │   │   │                   │   │   │   ├── DynamicVesselGroupDataOutput.kt
 │   │   │   │                   │   │   │   ├── DynamicVesselGroupWithVesselsDataOutput.kt
@@ -737,7 +771,6 @@
 │   │   │   │                   │   │   │   ├── FixedVesselGroupWithVesselsDataOutput.kt
 │   │   │   │                   │   │   │   ├── FleetSegmentDataOutput.kt
 │   │   │   │                   │   │   │   ├── ForeignFMCDataOutput.kt
-│   │   │   │                   │   │   │   ├── GearControlDataOutput.kt
 │   │   │   │                   │   │   │   ├── GearDataOutput.kt
 │   │   │   │                   │   │   │   ├── GearLastPositionDataOutput.kt
 │   │   │   │                   │   │   │   ├── HealthDataOutput.kt
@@ -756,12 +789,14 @@
 │   │   │   │                   │   │   │   ├── ManualPriorNotificationDraftDataOutput.kt
 │   │   │   │                   │   │   │   ├── ManualPriorNotificationFishingCatchDataOutput.kt
 │   │   │   │                   │   │   │   ├── ManualPriorNotificationFormDataOutput.kt
-│   │   │   │                   │   │   │   ├── MissionActionDataOutput.kt
+│   │   │   │                   │   │   │   ├── MissionActionControlDataOutputMappers.kt
+│   │   │   │                   │   │   │   ├── MissionActionDataOutputMappers.kt
+│   │   │   │                   │   │   │   ├── MissionActionSnapshotDataOutputMappers.kt
 │   │   │   │                   │   │   │   ├── MissionWithActionsDataOutput.kt
 │   │   │   │                   │   │   │   ├── ObservationDataOutput.kt
 │   │   │   │                   │   │   │   ├── PaginatedListDataOutput.kt
 │   │   │   │                   │   │   │   ├── PendingAlertDataOutput.kt
-│   │   │   │                   │   │   │   ├── PortDataOutput.kt
+│   │   │   │                   │   │   │   ├── PortDataOutputMappers.kt
 │   │   │   │                   │   │   │   ├── PositionAlertSpecificationDataOutput.kt
 │   │   │   │                   │   │   │   ├── PositionDataOutput.kt
 │   │   │   │                   │   │   │   ├── PriorNotificationDataOutput.kt
@@ -790,18 +825,18 @@
 │   │   │   │                   │   │   │   ├── SpeciesDataOutput.kt
 │   │   │   │                   │   │   │   ├── SpeciesGroupDataOutput.kt
 │   │   │   │                   │   │   │   ├── SpeciesLastPositionDataOutput.kt
-│   │   │   │                   │   │   │   ├── ThreatHierarchyDataOutput.kt
 │   │   │   │                   │   │   │   ├── TreeOptionDataOutput.kt
 │   │   │   │                   │   │   │   ├── UserLayersDataOutput.kt
 │   │   │   │                   │   │   │   ├── VesselBeaconMalfunctionResumeDataOutput.kt
 │   │   │   │                   │   │   │   ├── VesselContactToUpdateDataOutput.kt
-│   │   │   │                   │   │   │   ├── VesselIdentityDataOutput.kt
+│   │   │   │                   │   │   │   ├── VesselIdentityDataOutputMappers.kt
 │   │   │   │                   │   │   │   ├── VesselProfileDataOutput.kt
 │   │   │   │                   │   │   │   ├── VesselReportingsDataOutput.kt
 │   │   │   │                   │   │   │   ├── VoyageDataOutput.kt
 │   │   │   │                   │   │   │   ├── interfaces
 │   │   │   │                   │   │   │   │   └── BaseLogbookMessageDataOutput.kt
 │   │   │   │                   │   │   │   └── utils
+│   │   │   │                   │   │   │       ├── ContractEnumMapper.kt
 │   │   │   │                   │   │   │       └── InfractionHierarchyBuilder.kt
 │   │   │   │                   │   │   ├── public_api
 │   │   │   │                   │   │   │   ├── HealthcheckController.kt
@@ -819,10 +854,10 @@
 │   │   │   │                   │   │   │   ├── VersionController.kt
 │   │   │   │                   │   │   │   ├── input
 │   │   │   │                   │   │   │   │   ├── AddUserDataInput.kt
-│   │   │   │                   │   │   │   │   ├── PatchableMissionActionDataInput.kt
+│   │   │   │                   │   │   │   │   ├── PatchableMissionActionDataInputMappers.kt
 │   │   │   │                   │   │   │   │   └── UpdateMissionActionSpeciesOnboardDataInput.kt
 │   │   │   │                   │   │   │   └── outputs
-│   │   │   │                   │   │   │       └── PublicMissionActionDataOutput.kt
+│   │   │   │                   │   │   │       └── PublicMissionActionDataOutputMappers.kt
 │   │   │   │                   │   │   └── security
 │   │   │   │                   │   │       ├── ApiKeyCheckFilter.kt
 │   │   │   │                   │   │       ├── BffFilterConfig.kt
@@ -1746,10 +1781,11 @@
 │   │       │                   │   │   │   ├── FavoriteVesselsVesselIdentityDataOutputUTests.kt
 │   │       │                   │   │   │   ├── InfractionSuspicionDataOutputUTests.kt
 │   │       │                   │   │   │   ├── InfractionThreatCharacterizationDataOutputUTests.kt
-│   │       │                   │   │   │   ├── MissionActionDataOutputUTests.kt
+│   │       │                   │   │   │   ├── MissionActionDataOutputMappersUTests.kt
 │   │       │                   │   │   │   ├── RiskFactorDataOutputUTests.kt
 │   │       │                   │   │   │   ├── Utils.kt
 │   │       │                   │   │   │   └── utils
+│   │       │                   │   │   │       ├── ContractEnumMapperUTests.kt
 │   │       │                   │   │   │       └── InfractionHierarchyBuilderUTests.kt
 │   │       │                   │   │   ├── public_api
 │   │       │                   │   │   │   ├── HealthcheckControllerITests.kt
@@ -1865,6 +1901,7 @@
 │   ├── .gitignore
 │   ├── .madgerc
 │   ├── .oxlintrc.json
+│   ├── .oxlintrc.typed.json
 │   ├── .prettierignore
 │   ├── .prettierrc
 │   ├── README.md
@@ -1877,6 +1914,8 @@
 │   │   │   └── fileMock.js
 │   │   ├── cypress.config.ts
 │   │   ├── cypressSpecIsolation.ts
+│   │   ├── eslint
+│   │   │   └── useTypescript6.mjs
 │   │   ├── husky
 │   │   │   ├── pre-commit
 │   │   │   └── pre-push
@@ -1886,8 +1925,10 @@
 │   │   ├── jest.noopImportTransformer.js
 │   │   ├── jest.setup.js
 │   │   ├── jest.svgImportTransformer.js
-│   │   └── multi-windows
-│   │       └── jest.config.js
+│   │   ├── multi-windows
+│   │   │   └── jest.config.js
+│   │   └── oxlint
+│   │       └── typescriptSortKeysPlugin.mjs
 │   ├── cypress
 │   │   ├── e2e
 │   │   │   ├── authorization
@@ -2024,6 +2065,7 @@
 │   │   │   ├── types.ts
 │   │   │   ├── utils
 │   │   │   │   ├── assertAll.ts
+│   │   │   │   ├── assertIsClippedByOverflow.ts
 │   │   │   │   ├── customDayjs.ts
 │   │   │   │   ├── getLocalizedDayjs.ts
 │   │   │   │   ├── getUtcDateInMultipleFormats.ts
@@ -2098,10 +2140,11 @@
 │   │       ├── commands.ts
 │   │       ├── e2e.ts
 │   │       └── test_flaky_test.sh
+│   ├── eslint-naming.config.mjs
 │   ├── eslint-suppressions.json
-│   ├── eslint-typed.config.mjs
 │   ├── frontend.iml
 │   ├── index.html
+│   ├── oxlint-typed-baseline.json
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── public
@@ -2671,7 +2714,8 @@
 │   │   ├── generate_perf_data.js
 │   │   ├── generate_test_data_seeds.js
 │   │   ├── generate_wiremock_stubs.js
-│   │   └── oxlint_fix_loop.sh
+│   │   ├── oxlint_fix_loop.sh
+│   │   └── oxlint_typed_baseline.mjs
 │   ├── src
 │   │   ├── App.tsx
 │   │   ├── api
@@ -3645,6 +3689,7 @@
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   │   └── utils.test.ts.snap
+│   │   │   │   │   │   │   ├── csvMap.test.ts
 │   │   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   │   ├── cells
 │   │   │   │   │   │   │   ├── ActionButtonsCell.tsx
@@ -3652,6 +3697,7 @@
 │   │   │   │   │   │   │   └── TypesCell.tsx
 │   │   │   │   │   │   ├── columns.tsx
 │   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── csvMap.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── styles.ts
 │   │   │   │   │   │   ├── types.ts
@@ -4293,6 +4339,8 @@
 │   │   │   │   │   │   ├── previewVessels.ts
 │   │   │   │   │   │   ├── undoPreviewVessels.ts
 │   │   │   │   │   │   └── updateCustomZoneAndFilterVessels.ts
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── showVessel.test.ts
 │   │   │   │   │   ├── displayBannerWarningFromAPIFeedback.ts
 │   │   │   │   │   ├── displayVesselEstimatedPositions.ts
 │   │   │   │   │   ├── displayVesselSidebarAndPositions.ts
@@ -6230,4 +6278,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-846 directories, 5701 files
+869 directories, 5726 files
