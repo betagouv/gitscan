@@ -1,46 +1,33 @@
-## Changelog : anssi-portail (30 derniers jours, au 22 octobre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Cette période a été marquée par un enrichissement majeur de la "Boîte à outils" avec l'ajout de nombreux modèles de documents et de nouveaux contacts. L'expérience de simulation "Réflexes cyber" a été considérablement améliorée grâce à l'ajout de sons et d'animations, tandis que le "Parcours de sécurisation" est désormais mieux intégré et visible sur l'ensemble du portail. Enfin, un nouveau système de blog a été déployé pour faciliter la diffusion de contenus.
+Ce mois a été marqué par une intégration massive des parcours de sécurisation à travers tout le portail afin de mieux guider les utilisateurs selon leur niveau de maturité. La boîte à outils a été considérablement enrichie avec de nouveaux modèles de documents et un système de retours utilisateurs plus robuste. En parallèle, un important travail de restructuration technique a été mené pour améliorer la maintenabilité de l'API et la gestion des fichiers.
 
 ### Évolutions fonctionnelles
-
-**Boîte à outils**
-- Ajout de nouveaux modèles personnalisés : revue des droits d'accès, revue de comptes utilisateurs, liste d'activités et modification de mots de passe.
-- Possibilité de télécharger les modèles de documents (format XLSX).
-- Intégration de nouveaux contacts : nationaux, régionaux et sectoriels.
-- Mise en place d'un système de retours utilisateurs directement depuis l'interface des outils.
-
-**Réflexes cyber (Simulation)**
-- Amélioration de l'immersion avec l'ajout d'ambiances sonores et d'animations (transitions entre événements, pulsations des métriques, apparition des rôles).
-- Optimisation de l'interface : meilleure gestion des scores, des instructions sur mobile et ajout d'illustrations pour les événements.
-
-**Parcours de sécurisation**
-- Visibilité accrue : le parcours est désormais accessible via le menu, le pied de page, les résultats des tests de maturité et les simulations.
-- Amélioration visuelle avec l'ajout d'animations sur les cartes de parcours.
-
-**Blog et Contenu**
-- Déploiement d'un nouveau système de blog permettant la lecture d'articles via leur titre (slug) et l'affichage de résumés.
-- Ajout d'un système d'avis utilisateurs sur les articles pour recueillir les impressions des lecteurs.
-
-**Tests de maturité et Mini-tests**
-- Déploiement de nouveaux modules de tests (composants "Exposition" et "Vrai/Faux").
-- Amélioration de la présentation des résultats et de l'interface utilisateur.
+- **Boîte à outils** : 
+    - Ajout de nouveaux modèles de documents (revue des droits d'accès, revue de comptes utilisateurs, modification de mots de passe, listes d'activités).
+    - Amélioration du système de retours utilisateurs (possibilité de laisser un avis, limitation de la fréquence des retours, obligation d'authentification pour certains retours).
+    - Intégration de nouveaux outils et liens (jeux en ligne, jeux de cartes).
+- **Parcours de sécurisation** : Visibilité accrue des parcours sur l'ensemble du portail (menu de navigation, page d'accueil, résultats des tests de maturité et des réflexes cyber).
+- **Contacts** : Mise à jour et enrichissement des annuaires de contacts (données nationales, régionales et sectorielles).
+- **Expérience utilisateur & Contenu** : 
+    - Amélioration de l'interface (corrections sur les popovers, les modales et la navigation vers les landing pages).
+    - Mise à jour des statistiques (nombre de diagnostics réalisés et de parcours démarrés).
+    - Optimisation du blog (gestion des avis, intégration au sitemap).
 
 ### Évolutions techniques
-
-**Architecture et API**
-- Réorganisation et simplification des routes API pour les outils, les annuaires et les mini-tests.
-- Refactorisation de la logique de manipulation des fichiers Excel (XLSX) et de la gestion du temps (adaptateur horloge).
-- Migration vers Express 5.3 et mise à jour de l'infrastructure (GitHub Runner).
-- Mise en place du rendu côté serveur (SSR) pour certaines pages et du système de cache pour les articles du blog.
-
-**Qualité et Maintenance**
-- Refactorisation importante pour regrouper les fichiers par domaine (annuaire de crise, liste d'activités, modification de mots de passe, etc.).
-- Amélioration de la gestion des erreurs avec un composant 404 réutilisable.
-- Mise à jour des règles de linting et automatisation du tri des imports.
+- **Refactoring** : 
+    - Réorganisation profonde des routes API et de la structure des dossiers (outils, contacts, annuaires, mini-tests).
+    - Isolation de la logique métier, notamment pour la manipulation de fichiers XLSX, la gestion des cookies, du rate limiting et des redirections.
+    - Mutualisation de la validation des retours et de la gestion des utilisateurs.
+- **Architecture & Performance** : 
+    - Introduction d'un pattern stratégie pour certains composants.
+    - Mise en place du rendu côté serveur (SSR) pour les pages de conseils et mise en cache des articles du blog.
+    - Importation dynamique des boîtes à outils personnalisées.
+- **Infrastructure & Toolchain** : 
+    - Mise à jour des runners GitHub et des outils de test (Playwright).
+    - Mise à jour de dépendances critiques (Node.js types, lab-anssi-lib).
 
 ### Autres changements
-- Mise à jour des métadonnées SEO (titres et descriptions pour les réseaux sociaux).
-- Nettoyage du code (suppression de commentaires inutiles et de dépendances obsolètes).
-- Amélioration de l'accessibilité (prise en compte du mode "mouvement réduit").
+- **SEO** : Optimisation des métadonnées, des descriptions et des titres pour le référencement et le partage sur les réseaux sociaux.
+- **Qualité du code** : Nettoyage du linting (TypeScript-ESLint), suppression de commentaires et de fichiers obsolètes, et normalisation des fins de ligne.
