@@ -1,27 +1,30 @@
 ## Changelog : mon-service-securise (30 derniers jours, au 20 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le service a franchi des étapes clés avec l'introduction de la gestion par groupes (services et entités), le lancement d'une API publique documentée et une synchronisation automatisée des données avec le CRM pour améliorer le suivi des activités.
+Ce mois-ci, le service a franchi une étape majeure avec l'introduction de la gestion par groupes, permettant aux utilisateurs d'organiser leurs services et leurs entités de manière plus structurée. Nous avons également renforcé la visibilité de l'activité via une synchronisation automatique avec nos outils de gestion (CRM) et introduit un nouveau rôle de "superviseur" pour affiner la gestion des accès et des périmètres de sécurité.
 
 ### Évolutions fonctionnelles
-- **Gestion par groupes** : possibilité de créer, renommer, supprimer et organiser des services et des entités au sein de groupes pour une meilleure structuration.
-- **Gestion des clés d'API** : nouvelle interface permettant aux utilisateurs de créer et de révoquer leurs propres clés d'API.
-- **Nouveau rôle de "superviseur"** : introduction de permissions spécifiques permettant aux superviseurs de gérer et de visualiser les services de leur périmètre.
+- **Gestion par groupes** : Introduction de la possibilité de créer, renommer, supprimer et organiser des groupes de services et d'entités pour une meilleure gestion des périmètres.
+- **Nouveau rôle de Superviseur** : Mise en place d'un rôle de superviseur permettant une gestion étendue des services et une visibilité accrue dans les tableaux de bord.
 - **Améliorations de l'interface utilisateur** :
-    - Navigation optimisée via l'utilisation d'accordéons et d'onglets.
-    - Ergonomie améliorée avec des barres d'actions fixes (sticky), des indicateurs de chargement (loaders) et des notifications de succès (toasts).
-    - Amélioration de la recherche et de l'affichage des statistiques.
+    - Navigation optimisée grâce à l'utilisation d'onglets et d'accordéons pour les listes de services et d'entités.
+    - Amélioration de l'ergonomie avec des barres d'actions fixes (sticky), des indicateurs de chargement (loaders) et des notifications de succès (toasts).
+    - Meilleure gestion de la recherche au sein des groupes.
+- **Conformité** : Mise à jour des Conditions Générales d'Utilisation (CGU).
 
 ### Évolutions techniques
-- **Intégration CRM** : automatisation de la remontée d'informations vers le CRM (nouveaux utilisateurs, nombre de services, nombre d'homologations et imports de services) et création d'outils de rattrapage de données en ligne de commande.
-- **API Publique** : déploiement de l'API, mise en place de la documentation OpenAPI, intégration du traçage des appels et sécurisation via Helmet.
-- **Optimisations de performance** : parallélisation des requêtes de statistiques et optimisation des lectures en base de données pour réduire la charge.
-- **Qualité et CI/CD** :
-    - Optimisation des pipelines de tests (exécution en parallèle, mise en cache de Chromium).
-    - Réorganisation structurelle du code (middlewares, routes, adaptateurs et mappers) pour une meilleure maintenabilité.
-    - Amélioration de la gestion des erreurs et du logging via Sentry.
-    - Mise à jour des processus de migration de données (notamment pour les hashs).
+- **Intégration CRM** : Automatisation de la remontée de données vers le CRM (nombre de services, nombre d'homologations, nouveaux utilisateurs et imports de services) et mise en place d'outils de synchronisation des données historiques (rattrapage en mode batch).
+- **Optimisation des performances** :
+    - Optimisation des requêtes de lecture pour les services et les statistiques.
+    - Exécution des requêtes de statistiques en parallèle pour réduire les temps de réponse.
+    - Limitation du débit (rate limiting) sur l'API recherche-entreprises pour garantir la stabilité.
+- **Observabilité et Sécurité** :
+    - Amélioration du suivi des erreurs avec Sentry (extraction de la configuration, ajout d'un "scrubber" pour la protection des données sensibles et intégration de notifications via Mattermost).
+    - Renforcement de la protection des autorisations des superviseurs.
+- **Architecture** :
+    - Refactoring du client HTTP et extraction de composants UI réutilisables.
+    - Gestion des nouvelles fonctionnalités via des "feature flags" pour un déploiement sécurisé.
 
 ### Autres changements
-- **Documentation** : mise à jour des Conditions Générales d'Utilisation (CGU) et de la documentation de l'API.
-- **Configuration** : mise en place de "feature flags" pour permettre le déploiement progressif des nouvelles fonctionnalités (notamment pour les groupes).
+- **Documentation** : Mise à jour de la documentation de l'API (inclusion de l'URL de base et de la spécification OpenAPI).
+- **Maintenance** : Nettoyage du code (suppression de duplications, renommage de composants pour plus de clarté) et mise à jour de l'environnement de build (pnpm).

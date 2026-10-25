@@ -1,16 +1,14 @@
 {
   "url": "https://github.com/betagouv/mon-service-securise",
   "name": "mon-service-securise",
-  "description": "Ce service numérique aide les collectivités territoriales et les entités publiques à sécuriser et à homologuer leurs services publics numériques, tels que les sites web, les applications mobiles et les API.",
+  "description": "Ce service aide les collectivités territoriales et les entités publiques à sécuriser et à homologuer leurs services numériques, tels que les sites web, les applications mobiles et les API.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "API & Intégrations",
     "Sécurité & Conformité",
-    "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité",
-    "Formulaires & Démarches"
+    "Statistiques & Rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,9 +18,8 @@
     "Knex",
     "Zod",
     "OpenID Connect",
-    "Helmet",
-    "Sentry",
-    "Pug"
+    "Pug",
+    "Helmet"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,16 +27,15 @@
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "HTML / CSS / Templates visuels",
     "Authentification (composant)",
-    "Tests"
+    "Templates & Moteurs de rendu",
+    "Angular / Svelte / Autres SPA"
   ],
   "auth": {
     "methods": [
+      "oauth2",
       "jwt",
-      "session",
-      "api-key"
+      "session"
     ]
   },
   "tests": [
@@ -57,8 +53,8 @@
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "Sécurité & Auth",
     "TypeScript",
+    "Sécurité & Auth",
     "Docker & Conteneurs",
     "Design System & UI",
     "CI/CD & GitHub Actions"
