@@ -67,6 +67,7 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_auto_20251014_1459.py
+│   │   │   ├── 0003_analyseia_etat_v2_analyseia_message_v2_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -79,22 +80,27 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
-│   │   │   ├── test_export_xlsx.py
+│   │   │   ├── test_export_xlsx_v1.py
+│   │   │   ├── test_export_xlsx_v2.py
+│   │   │   ├── test_models.py
 │   │   │   ├── test_synthese.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
 │   │   ├── views.py
 │   │   └── xlsx
-│   │       ├── esrs
-│   │       │   ├── template_synthese_E.xlsx
-│   │       │   ├── template_synthese_ESG.xlsx
-│   │       │   ├── template_synthese_G.xlsx
-│   │       │   └── template_synthese_S.xlsx
-│   │       └── theme
-│   │           ├── template_synthese_E.xlsx
-│   │           ├── template_synthese_ESG.xlsx
-│   │           ├── template_synthese_G.xlsx
-│   │           └── template_synthese_S.xlsx
+│   │       ├── v1
+│   │       │   ├── esrs
+│   │       │   │   ├── template_synthese_E.xlsx
+│   │       │   │   ├── template_synthese_ESG.xlsx
+│   │       │   │   ├── template_synthese_G.xlsx
+│   │       │   │   └── template_synthese_S.xlsx
+│   │       │   └── theme
+│   │       │       ├── template_synthese_E.xlsx
+│   │       │       ├── template_synthese_ESG.xlsx
+│   │       │       ├── template_synthese_G.xlsx
+│   │       │       └── template_synthese_S.xlsx
+│   │       └── v2
+│   │           └── template_infos_VSME.xlsx
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── analyse_ia.py
@@ -339,6 +345,7 @@
 │   │   │   ├── 0033_entreprise_tranche_consommation_energie_finale.py
 │   │   │   ├── 0034_vsme_annee_cloture.py
 │   │   │   ├── 0035_vsme_choix_module.py
+│   │   │   ├── 0036_analyseia_etat_v2_analyseia_message_v2_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── tests.py
@@ -363,7 +370,6 @@
 │   │   │   │   └── simulation_form.html
 │   │   │   └── public
 │   │   │       ├── contact.html
-│   │   │       ├── erreur_terminale.html
 │   │   │       ├── resultats_simulation.html
 │   │   │       ├── simulation.html
 │   │   │       └── stats.html
@@ -685,6 +691,9 @@
 │   │   │   ├── Sanction.png
 │   │   │   ├── Social.png
 │   │   │   ├── analyseia.png
+│   │   │   ├── communaute
+│   │   │   │   ├── bpifrance.png
+│   │   │   │   └── les-entreprises-sengagent.jpg
 │   │   │   ├── communautes.png
 │   │   │   ├── conditions.png
 │   │   │   ├── connaitre.png
@@ -731,11 +740,7 @@
 │   │   │   ├── portail-1920.png
 │   │   │   ├── simulation.png
 │   │   │   ├── social-2x3.png
-│   │   │   ├── spinner.svg
-│   │   │   └── stats
-│   │   │       ├── stats-1.png
-│   │   │       ├── stats-2.png
-│   │   │       └── stats-3.png
+│   │   │   └── spinner.svg
 │   │   ├── js
 │   │   │   ├── htmx.min.js
 │   │   │   ├── idiomorph-ext.min.js
@@ -751,6 +756,7 @@
 │   │       ├── progression-cercle.scss
 │   │       └── styles.scss
 │   ├── templates
+│   │   ├── 400.html
 │   │   ├── 403.html
 │   │   ├── 404.html
 │   │   ├── 500.html
@@ -826,6 +832,7 @@
 │   │   ├── export_entreprises_departement.py
 │   │   ├── forms.py
 │   │   ├── htmx.py
+│   │   ├── http.py
 │   │   ├── middlewares.py
 │   │   ├── mock_response.py
 │   │   ├── models.py
@@ -884,6 +891,7 @@
 │       │   ├── fragments
 │       │   │   └── indicateur.html
 │       │   ├── snippets
+│       │   │   ├── analyse_ia.html
 │       │   │   ├── entete.html
 │       │   │   ├── menu.html
 │       │   │   └── tuile_exigence_publication.html
@@ -893,6 +901,7 @@
 │       │       └── exigence_de_publication.html
 │       ├── templatetags
 │       │   ├── __init__.py
+│       │   ├── analyses_ia.py
 │       │   ├── geolocalisation.py
 │       │   └── progression_vsme.py
 │       ├── tests
@@ -923,4 +932,4 @@
 ├── servers.conf.erb
 ├── start.sh
 └── uv.lock
-135 directories, 790 files
+137 directories, 797 files
