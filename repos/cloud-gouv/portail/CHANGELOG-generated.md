@@ -1,7 +1,10 @@
-## Changelog : portail (30 derniers jours, au 30 septembre 2026)
+## Changelog : portail (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Une amélioration a été apportée au moteur de filtrage pour garantir que les règles de sécurité sont appliquées de manière cohérente, en uniformisant le traitement des noms de serveurs lors des vérifications d'accès.
+Les récentes mises à jour se concentrent sur la fiabilisation du système de contrôle d'accès et la maintenance de la qualité du code source.
 
 ### Évolutions techniques
-- Normalisation des noms d'hôtes avant l'évaluation des listes de contrôle d'accès (ACL) pour renforcer la précision et la fiabilité de l'application des politiques de sécurité.
+- Normalisation des noms d'hôtes avant l'évaluation des listes de contrôle d'accès (ACL) pour garantir une application plus rigoureuse et cohérente des règles de sécurité.
+
+### Autres changements
+- Correction du formatage du code source [#206](https://github.com/cloud-gouv/portail/issues/206)
