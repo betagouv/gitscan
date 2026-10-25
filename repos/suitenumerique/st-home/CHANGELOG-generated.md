@@ -1,11 +1,11 @@
-## Changelog : st-home (30 derniers jours, au 15 octobre 2026)
+## Changelog : st-home (30 derniers jours, au 24 octobre 2026)
 
 ### Résumé
-Le projet a franchi une étape importante dans l'amélioration de sa navigation avec l'ajout d'une nouvelle page et de raccourcis d'actions. Parallèlement, la stabilité du système de gestion de contenu a été renforcée pour éviter des erreurs lors de la rédaction.
+Ce mois-ci, le projet a franchi une étape importante avec l'introduction d'une nouvelle section dédiée aux actions, enrichissant ainsi les fonctionnalités disponibles pour les utilisateurs. L'interface a également été affinée pour offrir une meilleure lisibilité et une navigation plus intuitive.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités de navigation** : Ajout d'une page dédiée aux "Actions" et intégration de nouveaux accès rapides dans l'en-tête du site.
-- **Améliorations de l'interface** : Corrections de divers textes et ajustements de l'alignement pour une meilleure lisibilité.
+- **Nouvelles fonctionnalités** : Ajout d'une page "Actions" et intégration de nouveaux éléments d'action dans l'en-tête (header).
+- **Améliorations de l'interface** : Corrections de textes et ajustements de l'alignement des éléments pour une meilleure présentation visuelle.
 
 ### Évolutions techniques
-- **Fiabilisation du CMS** : Correction du système de lecture du contenu (frontmatter) pour éviter des plantages lors de l'utilisation de paragraphes stylisés ou de lignes de service vides [#76](https://github.com/suitenumerique/st-home/pull/76).
+- **Sécurité et Framework** : Résolution d'une erreur de politique de sécurité du contenu (CSP) survenue lors de la mise à jour de Next.js.
