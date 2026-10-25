@@ -6,12 +6,12 @@
 │   ├── actions
 │   │   └── setup
 │   │       └── action.yml
+│   ├── dependabot.yml
 │   └── workflows
-│       ├── code-quality.yml
-│       └── tests.yml
+│       ├── ci.yml
+│       └── dependency-audit.yml
 ├── .gitignore
 ├── .kanelrc.cjs
-├── .npmrc
 ├── .oxfmtrc.json
 ├── .oxlintrc.json
 ├── AGENTS.md
@@ -23,6 +23,7 @@
 │   ├── admin
 │   │   ├── package.json
 │   │   ├── src
+│   │   │   ├── admin.css
 │   │   │   ├── app.css
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
@@ -32,6 +33,7 @@
 │   │   │   ├── hooks.server.ts
 │   │   │   ├── instrumentation.server.ts
 │   │   │   ├── lib
+│   │   │   │   ├── access.svelte.ts
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── admin.ts
 │   │   │   │   │   ├── adminActivites.ts
@@ -53,7 +55,12 @@
 │   │   │   │   ├── components
 │   │   │   │   │   ├── ActiviteIcon.svelte
 │   │   │   │   │   ├── CollapsibleNotice.svelte
+│   │   │   │   │   ├── ListPagination.svelte
+│   │   │   │   │   ├── ListTable.svelte
+│   │   │   │   │   ├── ListToolbar.svelte
 │   │   │   │   │   ├── Modal.svelte
+│   │   │   │   │   ├── PageHelp.svelte
+│   │   │   │   │   ├── Pagination.svelte
 │   │   │   │   │   ├── RichTextEditor
 │   │   │   │   │   │   ├── MediaButton.svelte
 │   │   │   │   │   │   ├── Toolbar.svelte
@@ -63,7 +70,8 @@
 │   │   │   │   │   │   ├── mediaTypes.ts
 │   │   │   │   │   │   ├── toolbarButtons.ts
 │   │   │   │   │   │   └── video.ts
-│   │   │   │   │   └── RichTextEditor.svelte
+│   │   │   │   │   ├── RichTextEditor.svelte
+│   │   │   │   │   └── pagination.ts
 │   │   │   │   ├── dossierActeurs.ts
 │   │   │   │   ├── dossierLocation.test.ts
 │   │   │   │   ├── dossierLocation.ts
@@ -72,6 +80,8 @@
 │   │   │   │   ├── projectMapValidation.test.ts
 │   │   │   │   ├── projectMapValidation.ts
 │   │   │   │   ├── server
+│   │   │   │   │   ├── administration.ts
+│   │   │   │   │   ├── dashboard.ts
 │   │   │   │   │   ├── dossierValidation
 │   │   │   │   │   │   ├── activiteContext.ts
 │   │   │   │   │   │   ├── columnAcceptedValues.ts
@@ -89,6 +99,8 @@
 │   │   │   │   │   │   └── scientificRules.test.ts
 │   │   │   │   │   ├── dossierValidation.ts
 │   │   │   │   │   ├── env.ts
+│   │   │   │   │   ├── permissions.test.ts
+│   │   │   │   │   ├── permissions.ts
 │   │   │   │   │   ├── proconnect.ts
 │   │   │   │   │   ├── redirect.ts
 │   │   │   │   │   ├── requestValidation.ts
@@ -98,7 +110,8 @@
 │   │   │   │   │   ├── simulation.test.ts
 │   │   │   │   │   ├── simulation.ts
 │   │   │   │   │   ├── speciesUpload.ts
-│   │   │   │   │   └── uploadedFichier.ts
+│   │   │   │   │   ├── uploadedFichier.ts
+│   │   │   │   │   └── writeAccess.ts
 │   │   │   │   ├── speciesFile.test.ts
 │   │   │   │   ├── speciesFile.ts
 │   │   │   │   └── upload
@@ -111,9 +124,11 @@
 │   │   │   │   ├── +layout.svelte
 │   │   │   │   ├── +page.server.ts
 │   │   │   │   ├── +page.svelte
+│   │   │   │   ├── DashboardAttention.svelte
 │   │   │   │   ├── ErrorPage.svelte
 │   │   │   │   ├── Layout
 │   │   │   │   │   ├── Header.svelte
+│   │   │   │   │   ├── HeaderDownloadMenu.svelte
 │   │   │   │   │   ├── Sidebar.svelte
 │   │   │   │   │   ├── UserCard.svelte
 │   │   │   │   │   └── nav.ts
@@ -170,6 +185,7 @@
 │   │   │   │   │   │   │   └── simuler-synchronisation
 │   │   │   │   │   │   │       ├── +server.ts
 │   │   │   │   │   │   │       └── server.test.ts
+│   │   │   │   │   │   ├── arrival.test.ts
 │   │   │   │   │   │   ├── dossierCreationUpload.ts
 │   │   │   │   │   │   └── minimal
 │   │   │   │   │   │       └── +server.ts
@@ -196,6 +212,8 @@
 │   │   │   │   │   │   ├── +server.ts
 │   │   │   │   │   │   └── filtres
 │   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── users
+│   │   │   │   │   │   └── +server.ts
 │   │   │   │   │   └── utilisateurs-aarri
 │   │   │   │   │       └── +server.ts
 │   │   │   │   ├── auth
@@ -215,15 +233,16 @@
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── DeleteEntryModal.svelte
 │   │   │   │   │   ├── EntryCard.svelte
+│   │   │   │   │   ├── EntryFields.svelte
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   ├── EntryEditor.svelte
-│   │   │   │   │   │   ├── EntryFields.svelte
 │   │   │   │   │   │   ├── PublishBlockedModal.svelte
-│   │   │   │   │   │   ├── SaveStatus.svelte
-│   │   │   │   │   │   ├── autosave.svelte.ts
-│   │   │   │   │   │   └── entryModel.svelte.ts
-│   │   │   │   │   └── format.ts
+│   │   │   │   │   │   └── autosave.svelte.ts
+│   │   │   │   │   ├── entryModel.svelte.ts
+│   │   │   │   │   ├── format.ts
+│   │   │   │   │   └── nouveau
+│   │   │   │   │       └── +page.svelte
 │   │   │   │   ├── changelog-media
 │   │   │   │   │   └── [entry]
 │   │   │   │   │       └── [file]
@@ -232,6 +251,7 @@
 │   │   │   │   │   └── [...path]
 │   │   │   │   │       └── +server.ts
 │   │   │   │   ├── dossiers
+│   │   │   │   │   ├── +page.server.ts
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── CreateDossierModal.svelte
 │   │   │   │   │   ├── CreateDossierPorteurFields.svelte
@@ -241,6 +261,7 @@
 │   │   │   │   │   ├── DossiersSortPanel.svelte
 │   │   │   │   │   ├── ListDossiers.svelte
 │   │   │   │   │   ├── PhaseProgress.svelte
+│   │   │   │   │   ├── UnmatchedDossiers.svelte
 │   │   │   │   │   ├── [dossierId]
 │   │   │   │   │   │   ├── +page.server.ts
 │   │   │   │   │   │   ├── +page.svelte
@@ -254,7 +275,6 @@
 │   │   │   │   │   │   ├── DossierDerogationFields.svelte
 │   │   │   │   │   │   ├── DossierDescriptionFields.svelte
 │   │   │   │   │   │   ├── DossierDetailHeader.svelte
-│   │   │   │   │   │   ├── DossierGroupeField.svelte
 │   │   │   │   │   │   ├── DossierIdentityFields.svelte
 │   │   │   │   │   │   ├── DossierIntroductionFields.svelte
 │   │   │   │   │   │   ├── DossierLegalDemandeurFields.svelte
@@ -304,6 +324,7 @@
 │   │   │   │   │   │   └── dossierAdminFormModel.ts
 │   │   │   │   │   ├── createDossierPorteur.test.ts
 │   │   │   │   │   ├── createDossierPorteur.ts
+│   │   │   │   │   ├── fileAccess.ts
 │   │   │   │   │   └── nouveau
 │   │   │   │   │       ├── +page.svelte
 │   │   │   │   │       ├── AddressAutocomplete.svelte
@@ -379,19 +400,67 @@
 │   │   │   │   ├── evenements
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── EvenementsFilterPanel.svelte
+│   │   │   │   │   ├── EvenementsSortPanel.svelte
+│   │   │   │   │   ├── EventDetailsModal.svelte
 │   │   │   │   │   ├── ListEvenements.svelte
 │   │   │   │   │   └── TableEvenements.svelte
-│   │   │   │   ├── mails
+│   │   │   │   ├── groupes-instructeurs
 │   │   │   │   │   ├── +page.server.ts
 │   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── page.test.ts
-│   │   │   │   └── tech
+│   │   │   │   │   ├── GroupEditor
+│   │   │   │   │   │   ├── GroupAssignmentFields.svelte
+│   │   │   │   │   │   ├── GroupIdentityFields.svelte
+│   │   │   │   │   │   ├── GroupMemberPicker.svelte
+│   │   │   │   │   │   └── styles.css
+│   │   │   │   │   ├── GroupEditor.svelte
+│   │   │   │   │   └── GroupsTable.svelte
+│   │   │   │   ├── mails
+│   │   │   │   │   ├── +error.svelte
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── MailControls.svelte
+│   │   │   │   │   ├── MailDetails
+│   │   │   │   │   │   ├── dialog.ts
+│   │   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   │   └── styles.css
+│   │   │   │   │   ├── MailDetails.svelte
+│   │   │   │   │   ├── MailPreview.svelte
+│   │   │   │   │   ├── MailTable.svelte
+│   │   │   │   │   ├── MailTimeline.svelte
+│   │   │   │   │   ├── NotificationDateField.svelte
+│   │   │   │   │   ├── controls.css
+│   │   │   │   │   ├── controls.svelte.test.ts
+│   │   │   │   │   ├── labels.ts
+│   │   │   │   │   ├── mails.css
+│   │   │   │   │   ├── monitoring.css
+│   │   │   │   │   ├── page.test.ts
+│   │   │   │   │   └── query.ts
+│   │   │   │   ├── tech
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── SyncDemarcheNumeriqueSection
+│   │   │   │   │   │   ├── SyncLogPanel.svelte
+│   │   │   │   │   │   ├── SyncStatusSummary.svelte
+│   │   │   │   │   │   └── dates.ts
+│   │   │   │   │   └── SyncDemarcheNumeriqueSection.svelte
+│   │   │   │   └── utilisateurs
+│   │   │   │       ├── +page.server.ts
 │   │   │   │       ├── +page.svelte
-│   │   │   │       ├── SyncDemarcheNumeriqueSection
-│   │   │   │       │   ├── SyncLogPanel.svelte
-│   │   │   │       │   ├── SyncStatusSummary.svelte
-│   │   │   │       │   └── dates.ts
-│   │   │   │       └── SyncDemarcheNumeriqueSection.svelte
+│   │   │   │       ├── UserEditor
+│   │   │   │       │   ├── UserAccountFields.svelte
+│   │   │   │       │   ├── UserPermissionFields.svelte
+│   │   │   │       │   └── styles.css
+│   │   │   │       ├── UserEditor.svelte
+│   │   │   │       ├── UserGroupPicker.svelte
+│   │   │   │       ├── UsersControls.svelte
+│   │   │   │       ├── UsersHelp.svelte
+│   │   │   │       ├── UsersTable
+│   │   │   │       │   ├── UserRow.svelte
+│   │   │   │       │   └── styles.css
+│   │   │   │       ├── UsersTable.svelte
+│   │   │   │       ├── list.test.ts
+│   │   │   │       ├── list.ts
+│   │   │   │       ├── model.ts
+│   │   │   │       └── users-controls.css
 │   │   │   └── smoke.test.ts
 │   │   ├── static
 │   │   │   └── favicon
@@ -407,6 +476,14 @@
 │   │   └── vite.config.ts
 │   └── instructeur
 │       ├── package.json
+│       ├── preview
+│       │   ├── environment.test.ts
+│       │   ├── environment.ts
+│       │   ├── environmentFixture.ts
+│       │   ├── notificationPage.ts
+│       │   ├── notificationPlugin.test.ts
+│       │   ├── notificationPlugin.ts
+│       │   └── noveltyEmails.ts
 │       ├── src
 │       │   ├── app.css
 │       │   ├── app.d.ts
@@ -530,18 +607,13 @@
 │       │   │   │   ├── dossier.ts
 │       │   │   │   ├── echeance.test.ts
 │       │   │   │   ├── echeance.ts
-│       │   │   │   ├── getCurrentPhaseStart.ts
-│       │   │   │   ├── lunr-languages.d.ts
 │       │   │   │   ├── notification
 │       │   │   │   │   ├── CachedDetailFixture.svelte
 │       │   │   │   │   ├── snapshot.svelte.test.ts
 │       │   │   │   │   └── snapshot.ts
 │       │   │   │   ├── notification.svelte.test.ts
 │       │   │   │   ├── notification.ts
-│       │   │   │   ├── searchInDossier.ts
-│       │   │   │   ├── suiviDossier.ts
-│       │   │   │   ├── textFilters.test.ts
-│       │   │   │   └── textFilters.ts
+│       │   │   │   └── suiviDossier.ts
 │       │   │   ├── especes
 │       │   │   │   ├── activitesMethodesMoyensDePoursuite.ts
 │       │   │   │   ├── classificationIcon.test.ts
@@ -551,12 +623,18 @@
 │       │   │   │   ├── groupImpactsByTypeImpact.test.ts
 │       │   │   │   ├── groupImpactsByTypeImpact.ts
 │       │   │   │   └── typeImpactIcon.test.ts
+│       │   │   ├── requireDossierAccess.ts
 │       │   │   ├── server
 │       │   │   │   ├── auth.ts
+│       │   │   │   ├── env.ts
 │       │   │   │   ├── fichier.test.ts
 │       │   │   │   ├── fichier.ts
 │       │   │   │   ├── fichierAccess.ts
+│       │   │   │   ├── proconnect.ts
+│       │   │   │   ├── redirect.ts
 │       │   │   │   ├── requestValidation.ts
+│       │   │   │   ├── session.test.ts
+│       │   │   │   ├── session.ts
 │       │   │   │   └── uploadedFichier.ts
 │       │   │   ├── shared
 │       │   │   │   ├── aarri.ts
@@ -609,22 +687,7 @@
 │       │       ├── LoginViaEmail
 │       │       │   ├── LoginViaEmail.svelte
 │       │       │   └── serveur.ts
-│       │       ├── SuiviInstruction
-│       │       │   ├── DelayIndicator.svelte
-│       │       │   ├── FilterAmongOptions.svelte
-│       │       │   ├── PhaseDelayIndicator.svelte
-│       │       │   ├── SearchBar.svelte
-│       │       │   ├── SuiviInstruction.svelte
-│       │       │   ├── SuiviInstructionFilters.svelte
-│       │       │   ├── SuiviInstructionTable.svelte
-│       │       │   ├── ThSorts.svelte
-│       │       │   ├── analytics.ts
-│       │       │   ├── defaults.ts
-│       │       │   ├── pagination.ts
-│       │       │   ├── sortDossiers.ts
-│       │       │   ├── sorts.ts
-│       │       │   ├── state.svelte.ts
-│       │       │   └── state.test.ts
+│       │       ├── ProConnectLogin.svelte
 │       │       ├── accessibilite
 │       │       │   ├── +page.svelte
 │       │       │   ├── +page.ts
@@ -649,6 +712,8 @@
 │       │       │   │       └── +server.ts
 │       │       │   ├── referentiel-type-impact-methode-moyen-de-poursuite
 │       │       │   │   └── +server.ts
+│       │       │   ├── session
+│       │       │   │   └── +server.ts
 │       │       │   ├── stats-publiques
 │       │       │   │   └── +server.ts
 │       │       │   ├── taxref
@@ -667,6 +732,21 @@
 │       │       │           └── +server.ts
 │       │       ├── audit.test.ts
 │       │       ├── audit.testHelpers.ts
+│       │       ├── auth
+│       │       │   ├── acces-refuse
+│       │       │   │   ├── +page.server.ts
+│       │       │   │   └── +page.svelte
+│       │       │   ├── callback
+│       │       │   │   ├── +server.ts
+│       │       │   │   └── server.test.ts
+│       │       │   ├── login
+│       │       │   │   ├── +page.server.ts
+│       │       │   │   └── +page.svelte
+│       │       │   ├── logout
+│       │       │   │   └── +server.ts
+│       │       │   ├── proconnect
+│       │       │   │   └── +server.ts
+│       │       │   └── redirects.test.ts
 │       │       ├── avis-expert
 │       │       │   ├── +server.ts
 │       │       │   ├── [avisExpertId]
@@ -919,6 +999,7 @@
 │       │       │       ├── TagResultatControle.svelte
 │       │       │       ├── cnpn-email
 │       │       │       │   ├── +server.ts
+│       │       │       │   ├── attempt.ts
 │       │       │       │   └── request.ts
 │       │       │       ├── commentaires
 │       │       │       │   └── +server.ts
@@ -975,6 +1056,30 @@
 │       │       │   └── [[version]]
 │       │       │       ├── +page.svelte
 │       │       │       └── +page.ts
+│       │       ├── parametres
+│       │       │   ├── +layout.server.ts
+│       │       │   ├── +layout.svelte
+│       │       │   ├── +page.svelte
+│       │       │   ├── DisplaySettings.svelte
+│       │       │   ├── GroupMemberCombobox.svelte
+│       │       │   ├── GroupMemberSearch.svelte
+│       │       │   ├── GroupMembers.svelte
+│       │       │   ├── GroupMembershipSettings.svelte
+│       │       │   ├── NotificationSettings.svelte
+│       │       │   ├── RemoveGroupMemberDialog.svelte
+│       │       │   ├── Settings.svelte.test.ts
+│       │       │   ├── groupes
+│       │       │   │   ├── +page.svelte
+│       │       │   │   ├── +server.ts
+│       │       │   │   └── [groupeId]
+│       │       │   │       └── membres
+│       │       │   │           └── +server.ts
+│       │       │   ├── layout.test.ts
+│       │       │   ├── membershipRequest.ts
+│       │       │   └── notifications
+│       │       │       ├── +page.svelte
+│       │       │       ├── +server.ts
+│       │       │       └── preferences.test.ts
 │       │       ├── piece-jointe
 │       │       │   └── +server.ts
 │       │       ├── piece-jointe-petitionnaire
@@ -1046,9 +1151,6 @@
 │       │       │   │   ├── PrescriptionStats.svelte
 │       │       │   │   └── PrescriptionStats.svelte.test.ts
 │       │       │   └── StatsContent.svelte
-│       │       ├── tableau-de-suivi
-│       │       │   ├── +page.svelte
-│       │       │   └── +page.ts
 │       │       ├── taxref
 │       │       │   ├── +page.svelte
 │       │       │   ├── TaxrefList.svelte
@@ -1121,12 +1223,24 @@
 │       │   │   │   └── zac.svg
 │       │   │   ├── especes-impactees.svg
 │       │   │   └── file-copy-2-line.svg
+│       │   ├── images
+│       │   │   └── pitchou-logo-email.png
 │       │   └── style
 │       │       └── custom-icons.css
 │       ├── tests
 │       │   ├── README.md
 │       │   ├── e2e
+│       │   │   ├── access-navigation.spec.ts
+│       │   │   ├── admin-autosave.spec.ts
+│       │   │   ├── admin-dashboard.spec.ts
+│       │   │   ├── admin-event-details.spec.ts
+│       │   │   ├── admin-help.spec.ts
+│       │   │   ├── admin-layout.spec.ts
+│       │   │   ├── admin-list-controls.spec.ts
+│       │   │   ├── admin-pages.spec.ts
+│       │   │   ├── admin-users.spec.ts
 │       │   │   ├── assign-dossier-followers.spec.ts
+│       │   │   ├── changelog-creation.spec.ts
 │       │   │   ├── dossier-cartographie.spec.ts
 │       │   │   ├── dossier-commentaires.spec.ts
 │       │   │   ├── dossier-echeance.spec.ts
@@ -1137,6 +1251,9 @@
 │       │   │   ├── dossier-piece-jointe-entete.spec.ts
 │       │   │   ├── dossiers-localisation.spec.ts
 │       │   │   ├── failed-login.spec.ts
+│       │   │   ├── group-member-search.spec.ts
+│       │   │   ├── group-membership.spec.ts
+│       │   │   ├── local-administration.spec.ts
 │       │   │   ├── login-and-see-dossier.spec.ts
 │       │   │   ├── logout.spec.ts
 │       │   │   ├── mes-dossiers-search.spec.ts
@@ -1147,7 +1264,10 @@
 │       │   │   ├── reload-dossier.spec.ts
 │       │   │   ├── saisie-especes.spec.ts
 │       │   │   ├── secret-disappears-from-url.spec.ts
-│       │   │   └── tuile-dossier.spec.ts
+│       │   │   ├── settings.spec.ts
+│       │   │   ├── shared-session.spec.ts
+│       │   │   ├── tuile-dossier.spec.ts
+│       │   │   └── user-groups.spec.ts
 │       │   ├── factories
 │       │   │   ├── _random.ts
 │       │   │   ├── adminDossier.ts
@@ -1168,9 +1288,17 @@
 │       │   │   │   └── index.html
 │       │   │   └── playwright.ts
 │       │   ├── helpers
+│       │   │   ├── admin-writes.ts
+│       │   │   ├── administration.ts
+│       │   │   ├── auth.ts
+│       │   │   ├── browserAuth.ts
+│       │   │   ├── cross-group-dossier.ts
+│       │   │   ├── databaseLocks.ts
+│       │   │   ├── dossier-writes.ts
 │       │   │   ├── fileStorage.ts
 │       │   │   ├── reactive.svelte.ts
-│       │   │   └── select.ts
+│       │   │   ├── select.ts
+│       │   │   └── spreadsheet.ts
 │       │   ├── integration
 │       │   │   ├── action-metrique-http.test.ts
 │       │   │   ├── activite-alluvionnaires.test.ts
@@ -1182,7 +1310,12 @@
 │       │   │   ├── admin-dossier-physical-relations.test.ts
 │       │   │   ├── admin-dossier-relations-guard.test.ts
 │       │   │   ├── admin-dossier-relations.test.ts
+│       │   │   ├── admin-queued-write-revocation.test.ts
+│       │   │   ├── admin-route-permissions-http.test.ts
+│       │   │   ├── admin-simulation-revocation.test.ts
 │       │   │   ├── admin-species-simulation.test.ts
+│       │   │   ├── admin-user-revocation.test.ts
+│       │   │   ├── admin-write-revocation.test.ts
 │       │   │   ├── api-especes-protegees.test.ts
 │       │   │   ├── audit-rollback-http.test.ts
 │       │   │   ├── bdc-statuts-uicn.test.ts
@@ -1194,22 +1327,16 @@
 │       │   │   ├── controle-notification-http.test.ts
 │       │   │   ├── decision-fichier-cleanup.test.ts
 │       │   │   ├── declaration-accessibilite.test.ts
+│       │   │   ├── department-ownership.test.ts
 │       │   │   ├── dossier-acteur-lifecycle.test.ts
 │       │   │   ├── dossier-acteur-read.test.ts
 │       │   │   ├── dossier-acteur-save.test.ts
 │       │   │   ├── dossier-cnpn-email
 │       │   │   │   ├── persistence.test.ts
+│       │   │   │   ├── revocation.test.ts
 │       │   │   │   ├── setup.ts
 │       │   │   │   └── webhooks.test.ts
-│       │   │   ├── dossier-cnpn-email.test.ts
-│       │   │   ├── dossier-cross-group-lecture-http.test.ts
-│       │   │   ├── dossier-especes-impactees.test.ts
-│       │   │   ├── dossier-followers-http.test.ts
-│       │   │   ├── dossier-followers-http.ts
-│       │   │   ├── dossier-global-access-http.test.ts
-│       │   │   ├── dossier-http.test.ts
-│       │   │   ├── dossier-lecture-seule-http.test.ts
-│       │   │   ├── dossier-next-action-default.test.ts
+│       │   │   ├── dossier-*.ts  (12 files)
 │       │   │   ├── dossiers-export-selection.test.ts
 │       │   │   ├── dossiers-export.test.ts
 │       │   │   ├── espece-protegee.test.ts
@@ -1217,27 +1344,40 @@
 │       │   │   ├── fichier-acces-http.test.ts
 │       │   │   ├── fichier-transaction-cleanup.test.ts
 │       │   │   ├── geomce.test.ts
-│       │   │   ├── groupe_instructeurs.ts
+│       │   │   ├── granular-admin-permissions.test.ts
+│       │   │   ├── group-*.ts  (5 files)
 │       │   │   ├── historique-controles-http.test.ts
 │       │   │   ├── historique-documents-http.test.ts
 │       │   │   ├── impact-espece.test.ts
+│       │   │   ├── imported-phase-history.test.ts
+│       │   │   ├── legacy-follows-migration.test.ts
 │       │   │   ├── load-fichier-content.test.ts
+│       │   │   ├── local-administration.test.ts
+│       │   │   ├── local-users-migration.test.ts
 │       │   │   ├── notification-legacy-files.test.ts
+│       │   │   ├── notification-settings.test.ts
 │       │   │   ├── notification-snapshot.test.ts
 │       │   │   ├── notifications-http.test.ts
+│       │   │   ├── permission-configuration-migration.test.ts
+│       │   │   ├── phase-ordering.test.ts
 │       │   │   ├── piece-jointe-delete-http.test.ts
 │       │   │   ├── porteur-de-projet-read.test.ts
 │       │   │   ├── porteur-de-projet-save.test.ts
 │       │   │   ├── porteur-de-projet.test.ts
+│       │   │   ├── preferences-revocation.test.ts
 │       │   │   ├── prescription-http.test.ts
 │       │   │   ├── referentiel-type-impact.test.ts
+│       │   │   ├── seed-dossier-routing.test.ts
+│       │   │   ├── species-file-preparation.test.ts
 │       │   │   ├── species-impact-notifications.test.ts
+│       │   │   ├── staging-admin-seed.test.ts
 │       │   │   ├── stats-publiques.test.ts
 │       │   │   ├── stocker-nouveau-fichier.test.ts
 │       │   │   ├── supprimer-fichiers.test.ts
 │       │   │   ├── sync-fichiers-transfer.test.ts
 │       │   │   ├── sync-historique.test.ts
 │       │   │   ├── sync-native-dossier.test.ts
+│       │   │   ├── sync-write-locks.test.ts
 │       │   │   ├── telechargement-fichier-s3.test.ts
 │       │   │   ├── telechargement-fichier.test.ts
 │       │   │   ├── upload-avis-fichier-http.test.ts
@@ -1251,12 +1391,33 @@
 │       │   │   ├── aide-pitchou.md
 │       │   │   ├── dossier.md
 │       │   │   ├── login.md
-│       │   │   ├── saisie-especes.md
-│       │   │   └── tableau-suivi.md
+│       │   │   └── saisie-especes.md
+│       │   ├── notification-emails
+│       │   │   ├── arrival.test.ts
+│       │   │   ├── arrivalFixtures.ts
+│       │   │   ├── arrivalPersistence.test.ts
+│       │   │   ├── audit.test.ts
+│       │   │   ├── auditCancellation.test.ts
+│       │   │   ├── delivery.test.ts
+│       │   │   ├── emailMonitoring.test.ts
+│       │   │   ├── fixtures.ts
+│       │   │   ├── flows.test.ts
+│       │   │   ├── legacyMigrationFixtures.ts
+│       │   │   ├── localGroupes.test.ts
+│       │   │   ├── migrations.test.ts
+│       │   │   ├── monitoring.test.ts
+│       │   │   ├── preview.test.ts
+│       │   │   ├── queue.test.ts
+│       │   │   ├── retrySafety.test.ts
+│       │   │   ├── scheduling.test.ts
+│       │   │   ├── seeds.test.ts
+│       │   │   └── staging.test.ts
 │       │   ├── playwright.config.ts
 │       │   ├── setup
 │       │   │   ├── db.ts
 │       │   │   ├── e2e-global.ts
+│       │   │   ├── email-each.ts
+│       │   │   ├── email-global.ts
 │       │   │   ├── init-test-s3.ts
 │       │   │   ├── integration-each.ts
 │       │   │   ├── integration-global.ts
@@ -1323,6 +1484,7 @@
 │   │   ├── phases_pitchou.png
 │   │   ├── premiers-pas.md
 │   │   └── saisine-cnpn.md
+│   ├── local-users-and-groups.md
 │   ├── projet-pitchou
 │   │   ├── ajouter-une-espece-manquante.md
 │   │   ├── evenements-suivis.md
@@ -1952,6 +2114,8 @@
 │   │   ├── 0003-structure-dossier-acteur-in-database.en.md
 │   │   ├── 0003-structure-dossier-acteur-in-database.md
 │   │   └── README.md
+│   ├── ci.md
+│   ├── email-notifications.md
 │   └── test-email-capture.md
 ├── flake.lock
 ├── flake.nix
@@ -2010,6 +2174,7 @@
 │   │   │   │   └── parseFichierEspecesImpactees.ts
 │   │   │   ├── index.ts
 │   │   │   ├── odfjs.d.ts
+│   │   │   ├── phases.test.ts
 │   │   │   ├── phases.ts
 │   │   │   ├── porteurDeProjet.ts
 │   │   │   ├── preremplissageDemarcheNumerique.ts
@@ -2144,8 +2309,21 @@
 │   │   │   ├── 20261009120000_drop-personne-contact-columns.ts
 │   │   │   ├── 20261011120000_create-dossier-acteur.ts
 │   │   │   ├── 20261012120000_fix-perturbation-label-typo.ts
+│   │   │   ├── 20261014120000_email-notification-preferences.ts
+│   │   │   ├── 20261014121000_email-notification-outbox.ts
 │   │   │   ├── 20261020120000_drop-dossier-deposant.ts
-│   │   │   └── 20261021120000_fill-dossier-acteur-from-identite-dossier.ts
+│   │   │   ├── 20261021120000_fill-dossier-acteur-from-identite-dossier.ts
+│   │   │   ├── 20261021120000_group-arrival-emails.ts
+│   │   │   ├── 20261022140000_notification-observability.ts
+│   │   │   ├── 20261022160000_staging-email-protection.ts
+│   │   │   ├── 20261023100000_local-users-and-groupes.ts
+│   │   │   ├── 20261023100100_notification-users.ts
+│   │   │   ├── 20261023100200_notification-groupes.ts
+│   │   │   ├── 20261023101000_department-ownership.ts
+│   │   │   ├── 20261023102000_retire-instructor-capabilities.ts
+│   │   │   ├── 20261023103000_map-imported-group-departments.ts
+│   │   │   ├── 20261023104000_granular-admin-permissions.ts
+│   │   │   └── 20261023105000_remember-permission-configuration.ts
 │   │   ├── package.json
 │   │   ├── referentielTypeImpactMethodeMoyenDePoursuite.test.ts
 │   │   ├── scripts
@@ -2176,6 +2354,7 @@
 │   │   │   │       ├── especes-impactees.ts
 │   │   │   │       ├── expert-avis.ts
 │   │   │   │       ├── followers.ts
+│   │   │   │       ├── notifications.ts
 │   │   │   │       ├── phase-events.ts
 │   │   │   │       ├── porteur.ts
 │   │   │   │       ├── prescriptions-controles.ts
@@ -2197,6 +2376,7 @@
 │   │   │       │   ├── records.ts
 │   │   │       │   └── types.ts
 │   │   │       ├── dossiers.ts
+│   │   │       ├── groupes.ts
 │   │   │       ├── pieces-jointes-petitionnaire.ts
 │   │   │       ├── placeholder-pdf.ts
 │   │   │       └── users.ts
@@ -2206,10 +2386,11 @@
 │   │   ├── scripts
 │   │   │   └── setup-bucket.ts
 │   │   ├── src
-│   │   │   ├── admin.test.ts
-│   │   │   ├── admin.ts
-│   │   │   ├── auth.test.ts
-│   │   │   ├── auth.ts
+│   │   │   ├── administration
+│   │   │   │   ├── audit.ts
+│   │   │   │   ├── groups.ts
+│   │   │   │   └── users.ts
+│   │   │   ├── administration.ts
 │   │   │   ├── bdcStatut.ts
 │   │   │   ├── bucketSetup.test.ts
 │   │   │   ├── bucketSetup.ts
@@ -2237,6 +2418,8 @@
 │   │   │   │   ├── avis_expert_update.test.ts
 │   │   │   │   ├── capabilities.ts
 │   │   │   │   ├── capability_geomce.ts
+│   │   │   │   ├── changedValues.test.ts
+│   │   │   │   ├── changedValues.ts
 │   │   │   │   ├── changelog
 │   │   │   │   │   ├── sanitize.test.ts
 │   │   │   │   │   ├── sanitize.ts
@@ -2263,7 +2446,6 @@
 │   │   │   │   │   │   └── decisions.ts
 │   │   │   │   │   ├── fullFormat.ts
 │   │   │   │   │   ├── fullQueries.ts
-│   │   │   │   │   ├── groupe.ts
 │   │   │   │   │   ├── messages.ts
 │   │   │   │   │   ├── porteur.test.ts
 │   │   │   │   │   ├── porteur.ts
@@ -2307,6 +2489,14 @@
 │   │   │   │   │   ├── candidates.ts
 │   │   │   │   │   └── edges.ts
 │   │   │   │   ├── edge_dossier__fichier_pieces_jointes_petitionnaire.ts
+│   │   │   │   ├── email_monitoring
+│   │   │   │   │   ├── detail.ts
+│   │   │   │   │   ├── filters.ts
+│   │   │   │   │   ├── preview.test.ts
+│   │   │   │   │   ├── preview.ts
+│   │   │   │   │   └── query.ts
+│   │   │   │   ├── email_monitoring.ts
+│   │   │   │   ├── email_notification_preferences.ts
 │   │   │   │   ├── especes_impactees.fixture.ts
 │   │   │   │   ├── especes_impactees.test.ts
 │   │   │   │   ├── especes_impactees.ts
@@ -2321,11 +2511,6 @@
 │   │   │   │   ├── geomce.test.ts
 │   │   │   │   ├── geomce.ts
 │   │   │   │   ├── geomce_dossiers.ts
-│   │   │   │   ├── groupe_instructeurs
-│   │   │   │   │   ├── caps.ts
-│   │   │   │   │   ├── groups.ts
-│   │   │   │   │   └── members.ts
-│   │   │   │   ├── groupe_instructeurs.ts
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── identite_dossier.ts
 │   │   │   │   ├── impact_espece
@@ -2333,6 +2518,7 @@
 │   │   │   │   │   ├── changes.ts
 │   │   │   │   │   ├── dumpImpactEspeceFromFichier.test.ts
 │   │   │   │   │   ├── dumpImpactEspeceFromFichier.ts
+│   │   │   │   │   ├── prepareImpactEspeceFile.ts
 │   │   │   │   │   ├── read.ts
 │   │   │   │   │   └── rows.ts
 │   │   │   │   ├── notification
@@ -2344,11 +2530,15 @@
 │   │   │   │   │   └── synchronization.test.ts
 │   │   │   │   ├── notification.test.ts
 │   │   │   │   ├── notification.ts
+│   │   │   │   ├── notification_monitoring
+│   │   │   │   │   └── filters.ts
+│   │   │   │   ├── notification_monitoring.ts
 │   │   │   │   ├── other_attachment.ts
 │   │   │   │   ├── personne.test.ts
 │   │   │   │   ├── personne.ts
 │   │   │   │   ├── personne_physique.ts
 │   │   │   │   ├── pgErrors.ts
+│   │   │   │   ├── phaseHistory.ts
 │   │   │   │   ├── piece_jointe.ts
 │   │   │   │   ├── porteur_de_projet.ts
 │   │   │   │   ├── prescription.test.ts
@@ -2364,7 +2554,6 @@
 │   │   │   │   ├── encryptDecryptDossiersAdditionalData.test.ts
 │   │   │   │   ├── encryptDecryptDossiersAdditionalData.ts
 │   │   │   │   ├── getAllDeletedDossiers.ts
-│   │   │   │   ├── getGroupesInstructeurs.ts
 │   │   │   │   ├── getRecentlyUpdatedDossiers.ts
 │   │   │   │   ├── graphQLqueries
 │   │   │   │   │   ├── champFragments.ts
@@ -2375,12 +2564,23 @@
 │   │   │   │   │   └── mutations.ts
 │   │   │   │   ├── graphQLqueries.ts
 │   │   │   │   └── queryGraphQL.ts
+│   │   │   ├── dossierNotificationEmails
+│   │   │   │   ├── failures.test.ts
+│   │   │   │   ├── failures.ts
+│   │   │   │   ├── layout.ts
+│   │   │   │   ├── message.test.ts
+│   │   │   │   ├── message.ts
+│   │   │   │   ├── queue.ts
+│   │   │   │   └── suppression.ts
+│   │   │   ├── dossierNotificationEmails.ts
 │   │   │   ├── dossiersDownloadTracking.test.ts
 │   │   │   ├── emailEnvironment.test.ts
 │   │   │   ├── emails
 │   │   │   │   ├── capture.test.ts
 │   │   │   │   ├── capture.ts
-│   │   │   │   └── delivery.ts
+│   │   │   │   ├── delivery.ts
+│   │   │   │   ├── recipients.test.ts
+│   │   │   │   └── recipients.ts
 │   │   │   ├── emails.test.ts
 │   │   │   ├── emails.ts
 │   │   │   ├── especeProtegee.ts
@@ -2390,15 +2590,24 @@
 │   │   │   ├── evenements_metriques.test.ts
 │   │   │   ├── evenements_metriques.ts
 │   │   │   ├── evenements_metriques_details.ts
+│   │   │   ├── groupMembership
+│   │   │   │   ├── access.ts
+│   │   │   │   ├── accounts.ts
+│   │   │   │   └── search.ts
+│   │   │   ├── groupMembership.ts
 │   │   │   ├── index.ts
 │   │   │   ├── objectStorage.test.ts
 │   │   │   ├── objectStorage.ts
+│   │   │   ├── permissions.test.ts
+│   │   │   ├── proconnect.ts
 │   │   │   ├── referentielTypeImpactMethodeMoyenDePoursuite.ts
 │   │   │   ├── session.test.ts
 │   │   │   ├── session.ts
+│   │   │   ├── sessionCookie.test.ts
 │   │   │   ├── taxref.ts
 │   │   │   ├── upload.test.ts
-│   │   │   └── upload.ts
+│   │   │   ├── upload.ts
+│   │   │   └── users.ts
 │   │   └── tsconfig.json
 │   ├── server-utils
 │   │   ├── package.json
@@ -2412,6 +2621,7 @@
 │   │   ├── src
 │   │   │   ├── API_Pitchou.ts
 │   │   │   ├── GeoAPI.ts
+│   │   │   ├── adminEmails.ts
 │   │   │   ├── apiPitchou
 │   │   │   │   ├── aarri.ts
 │   │   │   │   ├── cnpnEmail.ts
@@ -2427,10 +2637,13 @@
 │   │   │   │       ├── Activite.ts
 │   │   │   │       ├── ActiviteGroupe.ts
 │   │   │   │       ├── ActiviteLabel.ts
+│   │   │   │       ├── AdministrationEvent.ts
+│   │   │   │       ├── AuthIdentity.ts
+│   │   │   │       ├── AuthPermission.ts
+│   │   │   │       ├── AuthPermissionBundle.ts
+│   │   │   │       ├── AuthPermissionExclusion.ts
+│   │   │   │       ├── AuthUser.ts
 │   │   │   │       ├── AvisExpert.ts
-│   │   │   │       ├── CapAnnotationWrite.ts
-│   │   │   │       ├── CapDossier.ts
-│   │   │   │       ├── CapEvenementMetrique.ts
 │   │   │   │       ├── CapabilityGeomce.ts
 │   │   │   │       ├── Changelog.ts
 │   │   │   │       ├── Commentaire.ts
@@ -2441,11 +2654,14 @@
 │   │   │   │       ├── DossierActeur.ts
 │   │   │   │       ├── DossierCnpnEmailSentEvent.ts
 │   │   │   │       ├── DossierSearch.ts
-│   │   │   │       ├── EdgeCapDossierGroupeInstructeurs.ts
 │   │   │   │       ├── EdgeDossierFichierPiecesJointesPetitionnaire.ts
 │   │   │   │       ├── EdgeGroupeInstructeursDossier.ts
-│   │   │   │       ├── EdgePersonneCapAnnotationWrite.ts
 │   │   │   │       ├── EdgePersonneFollowsDossier.ts
+│   │   │   │       ├── EmailNotificationGroupeArrival.ts
+│   │   │   │       ├── EmailNotificationHistory.ts
+│   │   │   │       ├── EmailNotificationOutbox.ts
+│   │   │   │       ├── EmailNotificationPreferences.ts
+│   │   │   │       ├── EmailNotificationSettingsHistory.ts
 │   │   │   │       ├── Entreprise.ts
 │   │   │   │       ├── EspeceBdcStatut.ts
 │   │   │   │       ├── EspeceProtegee.ts
@@ -2455,6 +2671,7 @@
 │   │   │   │       ├── EvenementMetrique.ts
 │   │   │   │       ├── EvenementPhaseDossier.ts
 │   │   │   │       ├── File.ts
+│   │   │   │       ├── GroupeDepartement.ts
 │   │   │   │       ├── GroupeInstructeurs.ts
 │   │   │   │       ├── IdentiteDossier.ts
 │   │   │   │       ├── ImpactEspece.ts
@@ -2474,9 +2691,28 @@
 │   │   │   │       ├── Prescription.ts
 │   │   │   │       ├── Session.ts
 │   │   │   │       ├── TypeDossier.ts
+│   │   │   │       ├── UserGroupe.ts
+│   │   │   │       ├── audit_pitchou_notification.ts
+│   │   │   │       ├── audit_pitchou_notification_settings.ts
+│   │   │   │       ├── cancel_pitchou_arrival_emails.ts
+│   │   │   │       ├── cancel_pitchou_email_notifications.ts
+│   │   │   │       ├── clean_pitchou_followers.ts
 │   │   │   │       ├── delete_orphan_porteur_de_projet.ts
+│   │   │   │       ├── initialize_email_notification_preferences.ts
+│   │   │   │       ├── lock_pitchou_access.ts
+│   │   │   │       ├── next_pitchou_email_delivery.ts
 │   │   │   │       ├── notify_pitchou_arrival.ts
-│   │   │   │       └── notify_pitchou_follow.ts
+│   │   │   │       ├── notify_pitchou_follow.ts
+│   │   │   │       ├── pitchou_can_instruct.ts
+│   │   │   │       ├── pitchou_notification_cancellation.ts
+│   │   │   │       ├── pitchou_notification_environment.ts
+│   │   │   │       ├── prepare_pitchou_notification_audit.ts
+│   │   │   │       ├── queue_pitchou_email_notification.ts
+│   │   │   │       ├── queue_pitchou_groupe_arrival_email.ts
+│   │   │   │       ├── refresh_pitchou_ownership.ts
+│   │   │   │       ├── remember_pitchou_permission_configuration.ts
+│   │   │   │       ├── route_pitchou_dossier.ts
+│   │   │   │       └── route_pitchou_groupes.ts
 │   │   │   ├── demarche-numerique
 │   │   │   │   ├── Demarche128114.ts
 │   │   │   │   ├── Demarche88444.ts
@@ -2487,14 +2723,16 @@
 │   │   │   ├── dossierActeur.ts
 │   │   │   ├── dossierExport.ts
 │   │   │   ├── dossierSource.ts
+│   │   │   ├── emailNotifications.ts
 │   │   │   ├── especes.d.ts
 │   │   │   ├── especesFichierOds.d.ts
 │   │   │   ├── especesImpact.d.ts
 │   │   │   ├── evenement.d.ts
 │   │   │   ├── geomce.ts
+│   │   │   ├── groupMembership.ts
 │   │   │   ├── index.ts
-│   │   │   ├── interfaceUtilisateur.ts
 │   │   │   ├── notification.ts
+│   │   │   ├── permissions.ts
 │   │   │   ├── pitchouState.ts
 │   │   │   ├── porteurDeProjet.ts
 │   │   │   └── tools.d.ts
@@ -2513,6 +2751,7 @@
 │   │   │   ├── Header.svelte
 │   │   │   ├── Loader.svelte
 │   │   │   ├── MultiSelectFilter.svelte
+│   │   │   ├── ProConnectButton.svelte
 │   │   │   ├── Select
 │   │   │   │   ├── SelectListbox.svelte
 │   │   │   │   ├── SelectOptionMarker.svelte
@@ -2617,6 +2856,7 @@
 │       ├── aarri
 │       │   └── delete-evenements.ts
 │       ├── delete-expired-sessions.ts
+│       ├── deployment.test.ts
 │       ├── import-bdc
 │       │   ├── text.test.ts
 │       │   └── text.ts
@@ -2625,6 +2865,7 @@
 │       ├── import-taxref.ts
 │       ├── package.json
 │       ├── refresh-reference-especes.ts
+│       ├── send-dossier-notification-emails.ts
 │       ├── sync-demarche-numerique.ts
 │       ├── synchronization-ds
 │       │   ├── downloadFichierDS.ts
@@ -2660,6 +2901,7 @@
 │       │   │   ├── preparation.ts
 │       │   │   └── relations.ts
 │       │   ├── synchronizeDemarcheNumerique.ts
+│       │   ├── synchronizeDossierFiles.test.ts
 │       │   ├── synchronizeDossierFiles.ts
 │       │   └── synchronizeDossierRelations.ts
 │       └── tsconfig.json
@@ -2669,7 +2911,7 @@
 ├── scripts
 │   ├── aarri
 │   │   └── donnees-pour-personne.ts
-│   ├── afficher-liens-de-connexion.ts
+│   ├── annotate-ci.sh
 │   ├── check-file-length.ts
 │   ├── genere-types-schema-DS.ts
 │   ├── geomce.ts
@@ -2678,4 +2920,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-325 directories, 2396 files
+350 directories, 2628 files

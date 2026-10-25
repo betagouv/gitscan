@@ -110,17 +110,21 @@ docker run --rm -p 4000:4000 -v "$PWD/docs":/srv/jekyll -e PAGES_REPO_NWO="dev" 
 Le site sera accessible à l'adresse :
 [http://localhost:4000/](http://localhost:4000/)
 
-### Tests automatisés avec Playwright
+### Tests et CI
 
-1. Installer le navigateur de test et les dépendances système: `pnpm exec playwright install --with-deps firefox`
-2. Lancer Pitchou en mode dev: `pnpm run dev`
-3. Lancer les tests `pnpm exec playwright test tests/e2e`
+Voir [la documentation CI et déploiements](documentation/ci.md) pour lancer les mêmes
+contrôles que GitHub avec `just ci`, préparer les services jetables et installer Firefox
+et Chromium. Elle décrit aussi les contrôles requis et les responsabilités de Scalingo.
 
 ## En prod
 
-`pnpm start:production`
+Le `Procfile` lance `bash scripts/start.sh`. `PITCHOU_APP` sélectionne instructeur ou admin.
 
 L'application est déployée sur Scalingo
+
+Le buildpack installe la version de pnpm déclarée dans `package.json`. Les commandes de démarrage
+et les tâches planifiées utilisent directement `pnpm` pour éviter un téléchargement par Corepack
+au démarrage des conteneurs.
 
 Nous utilisons [l'outil ligne de commande de Scalingo](https://doc.scalingo.com/platform/cli/start)
 
@@ -141,7 +145,7 @@ just aws-bucket-setup http://localhost:5173 http://localhost:5174
 Sur Scalingo, avec l'app instructeur (exemple pour staging) :
 
 ```sh
-scalingo --region osc-secnum-fr1 --app pitchou-staging run 'corepack pnpm --filter @pitchou/server exec node scripts/setup-bucket.ts https://staging.pitchou.incubateur.net https://staging.admin.pitchou.incubateur.net'
+scalingo --region osc-secnum-fr1 --app pitchou-staging run 'pnpm --filter @pitchou/server exec node scripts/setup-bucket.ts https://staging.pitchou.incubateur.net https://staging.admin.pitchou.incubateur.net'
 ```
 
 La commande agit sur le bucket `$S3_BUCKET` de l'environnement où elle tourne. Si l'app joint le
@@ -237,11 +241,13 @@ Sinon, on peut suivre la [procédure de la documentation Scalingo](https://doc.s
 
 ### Migration base de données
 
-`knex migrate:latest` (fait automatiquement à chaque déploiement, voir package.json `scripts.prestart:prod-server`)
+`scripts/start.sh` applique les migrations avant le démarrage instructeur. Admin partage
+la base et ne lance pas de migration. Voir les risques de démarrage et de rollback dans
+[la documentation CI](documentation/ci.md#déploiements-scalingo).
 
 Pour aller en arrière et en avant d'un cran dans la liste des migrations :
-`pnpm run migrate:down`
-`pnpm run migrate:up`
+`just db-migrate-down`
+`just db-migrate-up`
 
 ### Fabriquer la liste des espèces protégées
 
@@ -286,22 +292,20 @@ Parfois, notamment après des changements dans le modèle de données, il est n�
 Pour le faire, on peut utiliser un [_one-off container_}(https://doc.scalingo.com/platform/app/tasks) :
 
 ```sh
-scalingo --region osc-secnum-fr1 --app pitchou run --size 2XL 'corepack pnpm --filter @pitchou/worker exec tsx sync-demarche-numerique.ts --IdSchemaDS derogation-especes-protegees --lastModified 2024-01-01'
+scalingo --region osc-secnum-fr1 --app pitchou run --size 2XL 'pnpm --filter @pitchou/worker exec tsx sync-demarche-numerique.ts --IdSchemaDS derogation-especes-protegees --lastModified 2024-01-01'
 ```
 
-### Lister les liens de connexion en local
+### Se connecter en local
 
-Utile pour tester rapidement en local après un restore de backup en tant qu'une personne en particulier
+Les deux applications utilisent ProConnect. Ouvrez `/auth/login` sur l'application instructeur ou admin pour vous connecter.
 
-`node outils/afficher-liens-de-connexion.js --emails adresse1@e.mail,adresse2@e.mail`
+Avant de lancer les seeds, renseignez `SEED_EMAIL` avec l'adresse de votre identité de test ProConnect. Les seeds accordent à ce compte les droits d'administration et les groupes de développement.
 
-Pour les lien de connexion en production :
+Sur staging, configurez `PITCHOU_ADMIN_EMAILS` sur l'application instructeur avec les adresses ProConnect de l'équipe, séparées par des virgules. Après chaque remise à zéro, les seeds leur accordent les droits d'administration et les ajoutent au groupe « Administrateur ». `SEED_EMAIL` est facultatif pour cet accès ; il désigne le compte de démonstration utilisé pour les données d'exemple et vaut `dev@localhost.local` par défaut.
 
-`node outils/afficher-liens-de-connexion.js --emails adresse1@e.mail,adresse2@e.mail --prod`
+Après restauration d'une sauvegarde, utilisez votre propre identité ProConnect. Un administrateur peut ajuster vos permissions et vos groupes dans `/utilisateurs`.
 
-Pour donner l'origine de manière libre :
-
-`node outils/afficher-liens-de-connexion.js --emails adresse1@e.mail,adresse2@e.mail --origin 'http://example.net'`
+Les anciens liens secrets ne permettent plus de se connecter. La [documentation des comptes locaux](docs/local-users-and-groups.md) décrit la configuration ProConnect et les URL de retour à enregistrer.
 
 ### GeoMCE
 
