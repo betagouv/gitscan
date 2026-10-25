@@ -7,6 +7,8 @@
 ├── .nvmrc
 ├── .prettierrc
 ├── README.md
+├── analytics
+│   └── Matomo.tsx
 ├── app
 │   ├── accessibilite
 │   │   └── page.tsx
@@ -16,16 +18,9 @@
 │   ├── api
 │   │   └── newsletter
 │   │       └── route.ts
-│   ├── articles
-│   │   ├── [slug]
-│   │   │   └── page.tsx
-│   │   └── page.tsx
-│   ├── besoin-de-soutien
-│   │   └── page.tsx
-│   ├── cgu
-│   │   └── page.tsx
-│   ├── comprendre
-│   │   └── page.tsx
+│   ├── dispositif
+│   │   └── [slug]
+│   │       └── page.tsx
 │   ├── donnees-personnelles
 │   │   └── page.tsx
 │   ├── favicon.ico
@@ -36,13 +31,38 @@
 │   ├── layout.tsx
 │   ├── mentions-legales
 │   │   └── page.tsx
+│   ├── not-found.tsx
 │   ├── orienteur
 │   │   └── page.tsx
 │   ├── page.module.css
 │   ├── page.tsx
+│   ├── plan-du-site
+│   │   └── page.tsx
+│   ├── qui-sommes-nous
+│   │   └── page.tsx
+│   ├── robots.ts
+│   ├── s-informer
+│   │   ├── [slug]
+│   │   │   └── page.tsx
+│   │   └── page.tsx
 │   └── trouver-du-soutien
 │       └── page.tsx
 ├── components
+│   ├── about-us
+│   │   ├── Experts
+│   │   │   ├── Experts.module.scss
+│   │   │   └── index.tsx
+│   │   ├── WhatsOnThisSite
+│   │   │   ├── WhatsOnThisSite.module.scss
+│   │   │   └── index.tsx
+│   │   ├── WhoAreWe
+│   │   │   ├── WhoAreWe.module.scss
+│   │   │   └── index.tsx
+│   │   ├── WhyThisSite
+│   │   │   ├── WhyThisSite.module.scss
+│   │   │   └── index.tsx
+│   │   ├── index.module.scss
+│   │   └── index.tsx
 │   ├── aider-un-proche
 │   │   ├── Help.module.scss
 │   │   ├── Help.tsx
@@ -57,23 +77,27 @@
 │   │   ├── HelpYourself.module.scss
 │   │   ├── HelpYourself.tsx
 │   │   └── data
-│   │       ├── lienSteps.ts
+│   │       ├── lienSteps.tsx
 │   │       └── signs.ts
 │   ├── articles
-│   │   ├── Article.module.scss
-│   │   ├── Article.tsx
-│   │   ├── ArticleHeroImage.module.scss
-│   │   ├── ArticleHeroImage.tsx
-│   │   ├── ArticleInfo.module.scss
-│   │   ├── ArticleInfo.tsx
-│   │   ├── ReadingTime.module.scss
-│   │   └── ReadingTime.tsx
-│   ├── besoin-de-parler
-│   │   ├── NeedToTalkBanner.module.scss
-│   │   └── NeedToTalkBanner.tsx
+│   │   ├── Articles.module.scss
+│   │   ├── Articles.tsx
+│   │   ├── ArticlesSearch.module.scss
+│   │   ├── ArticlesSearch.tsx
+│   │   └── article
+│   │       ├── Article.module.scss
+│   │       ├── Article.tsx
+│   │       ├── ArticleHeroImage.module.scss
+│   │       ├── ArticleHeroImage.tsx
+│   │       ├── ArticleInfo.module.scss
+│   │       ├── ArticleInfo.tsx
+│   │       ├── ReadingTime.module.scss
+│   │       └── ReadingTime.tsx
 │   ├── common
 │   │   ├── ArticleCard.module.scss
 │   │   ├── ArticleCard.tsx
+│   │   ├── ArticlesList.module.scss
+│   │   ├── ArticlesList.tsx
 │   │   ├── Badges.module.scss
 │   │   ├── Badges.tsx
 │   │   ├── CustomCard.module.scss
@@ -83,22 +107,44 @@
 │   │   ├── InfoFields.tsx
 │   │   ├── InputAddress.module.scss
 │   │   ├── InputAddress.tsx
-│   │   ├── RequiredField.module.scss
-│   │   ├── RequiredField.tsx
+│   │   ├── NeedToTalkBanner.module.scss
+│   │   ├── NeedToTalkBanner.tsx
+│   │   ├── NightLineCard.module.scss
+│   │   ├── NightLineCard.tsx
 │   │   └── Tiles.tsx
+│   ├── dispositif
+│   │   ├── Dispositif.module.scss
+│   │   ├── Dispositif.tsx
+│   │   ├── DispositifHero.module.scss
+│   │   ├── DispositifHero.tsx
+│   │   ├── DispositifHowTo.module.scss
+│   │   ├── DispositifHowTo.tsx
+│   │   ├── DispositifVideo.tsx
+│   │   ├── DispositifWhatIsIt.module.scss
+│   │   ├── DispositifWhatIsIt.tsx
+│   │   └── audience
+│   │       ├── DispositifAudience.module.scss
+│   │       └── DispositifAudience.tsx
 │   ├── home
-│   │   ├── HomeHero.module.scss
-│   │   ├── HomeHero.tsx
-│   │   ├── HomeStudentsStat.module.scss
-│   │   ├── HomeStudentsStat.tsx
 │   │   ├── Homepage.tsx
 │   │   ├── feelings
 │   │   │   ├── HomeFeelings.module.scss
-│   │   │   ├── HomeFeelings.tsx
-│   │   │   └── feelings.config.ts
-│   │   └── orienteur
-│   │       ├── LaunchOrienteurCard.module.scss
-│   │       └── LaunchOrienteurCard.tsx
+│   │   │   └── HomeFeelings.tsx
+│   │   ├── hero
+│   │   │   ├── HomeHero.module.scss
+│   │   │   └── HomeHero.tsx
+│   │   ├── orienteur
+│   │   │   ├── LaunchOrienteurCard.module.scss
+│   │   │   └── LaunchOrienteurCard.tsx
+│   │   ├── stats
+│   │   │   ├── HomeStudentsStat.module.scss
+│   │   │   └── HomeStudentsStat.tsx
+│   │   └── videos
+│   │       ├── HomeVideos.module.scss
+│   │       └── HomeVideos.tsx
+│   ├── illustrations
+│   │   ├── illustrations.module.scss
+│   │   └── index.tsx
 │   ├── je-ressens
 │   │   ├── Feeling.module.scss
 │   │   ├── Feeling.tsx
@@ -112,7 +158,9 @@
 │   │   │   ├── FeelingTips.module.scss
 │   │   │   ├── FeelingTips.tsx
 │   │   │   ├── TipCard.module.scss
-│   │   │   └── TipCard.tsx
+│   │   │   ├── TipCard.tsx
+│   │   │   ├── WhatIfCard.module.scss
+│   │   │   └── WhatIfCard.tsx
 │   │   └── video
 │   │       ├── FeelingVideo.module.scss
 │   │       ├── FeelingVideo.tsx
@@ -124,6 +172,8 @@
 │   │   ├── Footer.tsx
 │   │   ├── Header.tsx
 │   │   └── Newsletter.tsx
+│   ├── link
+│   │   └── ExternalLink.tsx
 │   ├── modals
 │   │   ├── ModalBapu.tsx
 │   │   ├── ModalSse.tsx
@@ -148,35 +198,86 @@
 │   │   │   └── resultCards.tsx
 │   │   └── findHelpResults.module.scss
 │   ├── typography
+│   │   ├── Disclaimer.module.scss
+│   │   ├── Disclaimer.tsx
 │   │   ├── Subtitle.module.scss
 │   │   ├── Subtitle.tsx
 │   │   ├── Title.module.scss
 │   │   └── Title.tsx
+│   ├── video
+│   │   ├── VideoCard.module.scss
+│   │   ├── VideoCard.tsx
+│   │   ├── VideoModalContent.module.scss
+│   │   ├── VideoModalContent.tsx
+│   │   ├── VideoPlayer.module.scss
+│   │   ├── VideoPlayer.tsx
+│   │   ├── VideoTestimonialModalProvider.tsx
+│   │   └── types.ts
 │   └── wrapper
+│       ├── FullBleedSection.module.scss
 │       └── FullBleedSection.tsx
 ├── data
 │   ├── articles
 │   │   ├── le-blues-du-dimanche-soir.md
 │   │   └── stress-avant-un-examen.md
 │   ├── bapu.json
-│   └── sse.json
+│   ├── sse.json
+│   └── videos
+│       ├── transcriptions
+│       │   ├── dispositifs
+│       │   │   ├── 3040.ts
+│       │   │   ├── 3114.ts
+│       │   │   ├── BAPU.ts
+│       │   │   ├── SPE.ts
+│       │   │   ├── SSE.ts
+│       │   │   └── nightline.ts
+│       │   ├── feelings
+│       │   │   ├── anxiety.ts
+│       │   │   ├── drugs.ts
+│       │   │   ├── eating-disorder.ts
+│       │   │   ├── fatigue.ts
+│       │   │   ├── feeling-management.ts
+│       │   │   ├── solitude.ts
+│       │   │   └── suicidal-thought.ts
+│       │   └── index.ts
+│       └── videos.ts
 ├── dsfr-bootstrap
 │   ├── defaultColorScheme.ts
 │   ├── index.tsx
 │   └── server-only-index.tsx
 ├── eslint.config.mjs
 ├── hooks
-│   └── useQueryState.ts
+│   ├── useCarouselScroll.ts
+│   ├── useQueryState.ts
+│   └── useVideoModalDismissed.ts
 ├── lib
 │   ├── articles
 │   │   ├── data.ts
 │   │   ├── index.ts
 │   │   └── types.ts
 │   ├── bapu.ts
-│   ├── feelings
+│   ├── dispositifs
+│   │   ├── 3040.tsx
+│   │   ├── 3114.tsx
+│   │   ├── bapu.tsx
 │   │   ├── data.tsx
-│   │   ├── index.ts
+│   │   ├── index.tsx
+│   │   ├── nightline.tsx
+│   │   ├── sante-psy-etudiant.tsx
+│   │   ├── sse.tsx
 │   │   └── types.ts
+│   ├── feelings
+│   │   ├── anxiety.tsx
+│   │   ├── data.tsx
+│   │   ├── drugs.tsx
+│   │   ├── eating-disorder.tsx
+│   │   ├── fatigue.tsx
+│   │   ├── feeling-management.tsx
+│   │   ├── index.tsx
+│   │   ├── solitude.tsx
+│   │   ├── suicidal-thought.tsx
+│   │   └── types.ts
+│   ├── sitemap.ts
 │   └── sse.ts
 ├── next.config.ts
 ├── package.json
@@ -184,60 +285,159 @@
 ├── pnpm-workspace.yaml
 ├── public
 │   ├── articles
-│   │   ├── le-blues-du-dimanche-soir
-│   │   │   └── hero.jpg
-│   │   └── stress-avant-un-examen
-│   │       └── hero.jpg
+│   │   ├── comment-mieux-vivre-avec-nos-angoisses.jpg
+│   │   ├── comprendre-les-addictions.jpg
+│   │   ├── deviens-benevole-avec-je-veux-aider.jpg
+│   │   ├── hyperconnectes-mais-seuls.jpg
+│   │   ├── la-solitude-des-jeunes.jpg
+│   │   ├── le-blues-du-dimanche-soir.jpg
+│   │   ├── le-sommeil-et-ses-troubles.jpg
+│   │   ├── les-troubles-addictifs.jpg
+│   │   ├── logos
+│   │   │   ├── 3114.jpg
+│   │   │   ├── alcool-info-service.jpg
+│   │   │   ├── ameli.jpg
+│   │   │   ├── apprendre-a-aider.jpg
+│   │   │   ├── drogues-info-service.jpg
+│   │   │   ├── ehesp.jpg
+│   │   │   ├── etudiant-gouv.jpg
+│   │   │   ├── ffab.jpg
+│   │   │   ├── fil-sante-jeunes.jpg
+│   │   │   ├── has.jpg
+│   │   │   ├── info-gouv.jpg
+│   │   │   ├── kaavan.jpg
+│   │   │   ├── nightline.jpg
+│   │   │   ├── pssm.jpg
+│   │   │   ├── psycom.jpg
+│   │   │   ├── sante-gouv.jpg
+│   │   │   ├── sante-mentale-info-service.jpg
+│   │   │   ├── sante-psy-jeunes.jpg
+│   │   │   ├── sos-suicide-phenix.jpg
+│   │   │   ├── suicide-ecoute.jpg
+│   │   │   ├── tabac-info-service.jpg
+│   │   │   └── tempete-mentale.jpg
+│   │   ├── mieux-comprendre-le-sommeil.jpg
+│   │   ├── mieux-vivre-avec-un-trouble-anxieux.jpg
+│   │   ├── quand-le-sommeil-s-en-mele.jpg
+│   │   ├── sommeil-temps-moyen-sur.jpg
+│   │   ├── stress-avant-un-examen.jpg
+│   │   ├── troubles-anxieux-et-phobies.jpg
+│   │   ├── troubles-des-conduites-alimentaires.jpg
+│   │   └── une-menace-cachee-pour.jpg
 │   ├── file.svg
 │   ├── globe.svg
 │   ├── images
 │   │   ├── illustrations
+│   │   │   ├── articles
+│   │   │   │   ├── left1.svg
+│   │   │   │   ├── left2.svg
+│   │   │   │   └── right.svg
+│   │   │   ├── dispositifs
+│   │   │   │   ├── audience
+│   │   │   │   │   ├── card-1.svg
+│   │   │   │   │   ├── card-2.svg
+│   │   │   │   │   └── card-3.svg
+│   │   │   │   ├── hero
+│   │   │   │   │   ├── people-desktop.svg
+│   │   │   │   │   └── people-mobile.svg
+│   │   │   │   └── logos
+│   │   │   │       ├── 3040-main.svg
+│   │   │   │       ├── 3040-secondary.svg
+│   │   │   │       ├── 3114-main.svg
+│   │   │   │       ├── 3114-secondary.svg
+│   │   │   │       ├── BAPU-main.svg
+│   │   │   │       ├── BAPU-secondary.svg
+│   │   │   │       ├── SPE-main.svg
+│   │   │   │       ├── SPE-secondary.svg
+│   │   │   │       ├── SSE-main.svg
+│   │   │   │       ├── SSE-secondary.svg
+│   │   │   │       ├── nightline-main.svg
+│   │   │   │       └── nightline-secondary.svg
 │   │   │   ├── feeling-video.svg
-│   │   │   ├── need-to-talk-bg.svg
-│   │   │   ├── student-mood.svg
-│   │   │   └── students-support.svg
+│   │   │   ├── feelings
+│   │   │   │   ├── tips-mozaic.svg
+│   │   │   │   ├── tips-people.svg
+│   │   │   │   ├── tips-wave.svg
+│   │   │   │   └── understand-woman-cat.svg
+│   │   │   ├── help
+│   │   │   │   ├── care.svg
+│   │   │   │   ├── left1.svg
+│   │   │   │   ├── left2.svg
+│   │   │   │   └── right.svg
+│   │   │   ├── home
+│   │   │   │   ├── girl-desktop.png
+│   │   │   │   ├── mobile.svg
+│   │   │   │   ├── mozaic.svg
+│   │   │   │   └── people-desktop.png
+│   │   │   ├── needToTalkBanner
+│   │   │   │   ├── sitting-left.svg
+│   │   │   │   ├── sitting-right.svg
+│   │   │   │   ├── standing-left.svg
+│   │   │   │   └── standing-right.svg
+│   │   │   ├── orienteur
+│   │   │   │   └── image.svg
+│   │   │   └── qui-sommes-nous
+│   │   │       ├── bottom.svg
+│   │   │       └── mozaic.svg
 │   │   ├── logos
-│   │   │   ├── 3018.png
 │   │   │   ├── 3040.png
 │   │   │   ├── 3114.png
-│   │   │   ├── 3919.png
 │   │   │   ├── SPE.png
 │   │   │   ├── nightline.png
-│   │   │   └── sme.png
+│   │   │   └── parlons-sante-mentale.svg
 │   │   ├── pictograms
-│   │   │   ├── accessibility
-│   │   │   │   └── ear-off.svg
-│   │   │   ├── buildings
-│   │   │   │   └── city-hall.svg
-│   │   │   ├── digital
-│   │   │   │   ├── avatar.svg
-│   │   │   │   ├── calendar.svg
-│   │   │   │   ├── ecosystem.svg
-│   │   │   │   ├── search.svg
-│   │   │   │   ├── self-training.svg
-│   │   │   │   └── smartphone.svg
-│   │   │   ├── health
-│   │   │   │   └── hospital.svg
-│   │   │   ├── leisure
-│   │   │   │   └── community.svg
-│   │   │   └── system
-│   │   │       ├── success.svg
-│   │   │       └── warning.svg
+│   │   │   ├── anxiety.svg
+│   │   │   ├── drugs.svg
+│   │   │   ├── eating-disorder.svg
+│   │   │   ├── fatigue.svg
+│   │   │   ├── feeling-management.svg
+│   │   │   ├── painful-event.svg
+│   │   │   ├── solitude.svg
+│   │   │   └── suicidal-thought.svg
 │   │   ├── pictures
-│   │   │   ├── psy.jpg
-│   │   │   └── woman-phone.jpg
-│   │   └── tmp
-│   │       └── tmp_video.jpg
+│   │   │   └── help.svg
+│   │   └── vignettes
+│   │       ├── 3040.jpg
+│   │       ├── 3114.jpg
+│   │       ├── BAPU.jpg
+│   │       ├── SPE.jpg
+│   │       ├── SSE.jpg
+│   │       ├── feelings
+│   │       │   ├── anxiety.jpg
+│   │       │   ├── drugs.jpg
+│   │       │   ├── eating-disorder.jpg
+│   │       │   ├── fatigue.jpg
+│   │       │   ├── feeling-management.jpg
+│   │       │   ├── solitude.jpg
+│   │       │   └── suicidal-thoughts.jpg
+│   │       └── nightline.jpg
 │   ├── next.svg
 │   ├── vercel.svg
+│   ├── videos
+│   │   └── preview
+│   │       ├── 3040.mp4
+│   │       ├── 3114.mp4
+│   │       ├── BAPU.mp4
+│   │       ├── SPE.mp4
+│   │       ├── SSE.mp4
+│   │       ├── feelings
+│   │       │   ├── anxiety.mp4
+│   │       │   ├── drugs.mp4
+│   │       │   ├── eating-disorder.mp4
+│   │       │   ├── fatigue.mp4
+│   │       │   ├── feeling-management.mp4
+│   │       │   ├── solitude.mp4
+│   │       │   └── suicidal-thoughts.mp4
+│   │       └── nightline.mp4
 │   └── window.svg
 ├── services
 │   └── address.ts
 ├── styles
+│   ├── _breakpoints.scss
 │   └── colors.scss
 ├── tsconfig.json
 └── utils
     ├── distance.ts
     ├── email.ts
     └── misc.ts
-65 directories, 177 files
+93 directories, 349 files
