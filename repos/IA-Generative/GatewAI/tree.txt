@@ -1,0 +1,330 @@
+.
+├── .claude
+│   └── commands
+│       └── release.md
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── build-pr.yml
+│       ├── ci.yml
+│       ├── cleanup-images.yml
+│       ├── deploy-dev.yml
+│       ├── docs.yml
+│       ├── helm-release.yml
+│       ├── release-gateway.yml
+│       ├── release-relay.yml
+│       └── smoke-tests.yml
+├── .gitignore
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── README_fr.md
+├── cmd
+│   └── gateway
+│       ├── backend_pools_test.go
+│       ├── gc.go
+│       ├── gc_test.go
+│       ├── main.go
+│       └── main_test.go
+├── config.yaml
+├── dashboards
+│   ├── gatewai-audit-trail.json
+│   ├── gatewai-llm.json
+│   ├── gatewai-traces.json
+│   └── gatewai.json
+├── docs
+│   └── schema
+│       ├── README.md
+│       ├── async-flow.excalidraw
+│       ├── async-flow.md
+│       ├── async-flow.png
+│       ├── overview.excalidraw
+│       ├── overview.md
+│       ├── overview.png
+│       ├── routing.excalidraw
+│       ├── routing.md
+│       └── routing.png
+├── examples
+│   └── relay-transcription
+│       ├── deployment.yaml
+│       ├── keda-scaledobject.yaml
+│       └── relay-cm.yaml
+├── go.mod
+├── go.sum
+├── helm
+│   └── gateway
+│       ├── Chart.yaml
+│       ├── README.md
+│       ├── templates
+│       │   ├── _helpers.tpl
+│       │   ├── configmap.yaml
+│       │   ├── deployment.yaml
+│       │   ├── ingress.yaml
+│       │   ├── opentelemetry-collector-cr.yaml
+│       │   ├── prometheusrule.yaml
+│       │   ├── secret.yaml
+│       │   ├── service.yaml
+│       │   └── servicemonitor.yaml
+│       └── values.yaml
+├── internal
+│   ├── auth
+│   │   ├── auth.go
+│   │   ├── auth_test.go
+│   │   ├── middleware.go
+│   │   └── middleware_test.go
+│   ├── authz
+│   │   ├── authz.go
+│   │   └── authz_test.go
+│   ├── cache
+│   │   ├── cache.go
+│   │   ├── key.go
+│   │   ├── key_test.go
+│   │   ├── noop.go
+│   │   └── redis.go
+│   ├── concurrency
+│   │   ├── semaphore.go
+│   │   └── semaphore_test.go
+│   ├── config
+│   │   ├── config.go
+│   │   └── config_test.go
+│   ├── consumer
+│   │   ├── manager.go
+│   │   ├── manager_test.go
+│   │   ├── subscriber.go
+│   │   ├── webhook.go
+│   │   ├── webhook_retry.go
+│   │   ├── webhook_retry_test.go
+│   │   └── webhook_sign_test.go
+│   ├── crypto
+│   │   ├── aes.go
+│   │   └── aes_test.go
+│   ├── guardrails
+│   │   ├── cache.go
+│   │   ├── cache_test.go
+│   │   ├── detector.go
+│   │   ├── detector_test.go
+│   │   ├── guardrails.go
+│   │   ├── guardrails_test.go
+│   │   ├── model.go
+│   │   ├── model_test.go
+│   │   ├── ner_test.go
+│   │   ├── observer.go
+│   │   ├── pipeline.go
+│   │   ├── pipeline_test.go
+│   │   ├── result_texts_test.go
+│   │   ├── saferedact_test.go
+│   │   ├── telemetry.go
+│   │   ├── telemetry_test.go
+│   │   └── toolcalls_test.go
+│   ├── handler
+│   │   ├── docs.go
+│   │   ├── docs_test.go
+│   │   ├── health.go
+│   │   ├── jobs.go
+│   │   ├── jobs_test.go
+│   │   ├── middleware.go
+│   │   ├── misc_test.go
+│   │   ├── models.go
+│   │   ├── models_test.go
+│   │   ├── quota.go
+│   │   ├── quota_test.go
+│   │   ├── realtime.go
+│   │   ├── realtime_test.go
+│   │   ├── relaycomplete.go
+│   │   ├── relaycomplete_test.go
+│   │   ├── reload.go
+│   │   ├── swagger.go
+│   │   ├── swagger_test.go
+│   │   ├── sync.go
+│   │   ├── sync_internal_test.go
+│   │   ├── sync_pool_test.go
+│   │   ├── sync_priority_test.go
+│   │   ├── sync_test.go
+│   │   ├── sync_tmpleak_test.go
+│   │   └── testdata
+│   │       └── whisper-api-openapi.json
+│   ├── health
+│   │   ├── checker.go
+│   │   └── checker_test.go
+│   ├── llmproxy
+│   │   ├── breaker.go
+│   │   ├── breaker_test.go
+│   │   ├── handler.go
+│   │   ├── handler_test.go
+│   │   ├── prober.go
+│   │   ├── prober_test.go
+│   │   ├── provider
+│   │   │   ├── anthropic.go
+│   │   │   ├── anthropic_test.go
+│   │   │   ├── ollama.go
+│   │   │   ├── openai.go
+│   │   │   ├── openai_test.go
+│   │   │   ├── passthrough.go
+│   │   │   └── provider.go
+│   │   ├── stream_guard.go
+│   │   └── stream_guard_test.go
+│   ├── metrics
+│   │   ├── consumer_tracker.go
+│   │   ├── metrics.go
+│   │   ├── queuedepth.go
+│   │   ├── queuedepth_test.go
+│   │   ├── usage_tracker.go
+│   │   └── usage_tracker_test.go
+│   ├── model
+│   │   └── job.go
+│   ├── ratelimit
+│   │   ├── ratelimit.go
+│   │   └── ratelimit_test.go
+│   ├── service
+│   │   ├── backend.go
+│   │   ├── backend_test.go
+│   │   ├── registry.go
+│   │   └── registry_test.go
+│   ├── storage
+│   │   ├── redis.go
+│   │   ├── redis_gc_test.go
+│   │   ├── redis_reaper_test.go
+│   │   ├── redis_test.go
+│   │   ├── redis_tombstone_test.go
+│   │   ├── s3.go
+│   │   ├── s3_gc_test.go
+│   │   └── s3_test.go
+│   ├── telemetry
+│   │   ├── config.go
+│   │   ├── endpoint_internal_test.go
+│   │   ├── telemetry.go
+│   │   └── telemetry_test.go
+│   └── usage
+│       ├── handler.go
+│       ├── handler_test.go
+│       ├── model.go
+│       ├── period.go
+│       ├── period_test.go
+│       ├── store.go
+│       ├── store_test.go
+│       ├── tracker.go
+│       └── tracker_test.go
+├── k8s
+│   └── deployment-transcription.yaml
+├── relay
+│   ├── Dockerfile
+│   ├── cmd
+│   │   └── relay
+│   │       ├── main.go
+│   │       └── main_test.go
+│   ├── config.yaml
+│   ├── go.mod
+│   ├── go.sum
+│   └── internal
+│       ├── adapter
+│       │   ├── adapter.go
+│       │   ├── multipart.go
+│       │   └── multipart_test.go
+│       ├── config
+│       │   ├── config.go
+│       │   └── config_test.go
+│       ├── crypto
+│       │   ├── aes.go
+│       │   └── aes_test.go
+│       ├── metrics
+│       │   └── metrics.go
+│       ├── model
+│       │   └── job.go
+│       ├── queue
+│       │   ├── queue.go
+│       │   └── queue_test.go
+│       ├── relay
+│       │   ├── relay.go
+│       │   └── relay_test.go
+│       ├── storage
+│       │   ├── errors.go
+│       │   ├── s3.go
+│       │   └── s3_test.go
+│       ├── store
+│       │   ├── redis.go
+│       │   └── redis_test.go
+│       └── telemetry
+│           ├── config.go
+│           ├── endpoint_internal_test.go
+│           ├── telemetry.go
+│           └── telemetry_test.go
+├── scripts
+│   ├── ci
+│   │   ├── fetch-and-decide.js
+│   │   ├── rc-cleanup-policy.js
+│   │   └── rc-cleanup-policy.test.js
+│   └── test-priority-sync.sh
+├── tests
+│   └── smoke
+│       └── smoke.sh
+└── website
+    ├── .nvmrc
+    ├── astro.config.mjs
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   └── schema
+    │       ├── async-flow.png
+    │       ├── overview.png
+    │       └── routing.png
+    ├── src
+    │   ├── assets
+    │   │   └── logo-gateway.png
+    │   ├── components
+    │   │   ├── FeatureGrid.astro
+    │   │   ├── Head.astro
+    │   │   ├── Hero.astro
+    │   │   ├── ModeCards.astro
+    │   │   └── SiteTitle.astro
+    │   ├── content
+    │   │   └── docs
+    │   │       ├── community
+    │   │       │   ├── gitflow.md
+    │   │       │   ├── index.md
+    │   │       │   └── releasing.md
+    │   │       ├── configure
+    │   │       │   ├── access-control.md
+    │   │       │   ├── audit-log.md
+    │   │       │   ├── authentication.md
+    │   │       │   ├── configuration.md
+    │   │       │   ├── encryption.md
+    │   │       │   ├── guardrails.md
+    │   │       │   ├── index.md
+    │   │       │   ├── llm-proxy.md
+    │   │       │   ├── priority-routing.md
+    │   │       │   ├── rate-limiting.md
+    │   │       │   └── service-registry.md
+    │   │       ├── get-started
+    │   │       │   ├── index.md
+    │   │       │   ├── overview.md
+    │   │       │   └── request-flows.md
+    │   │       ├── index.mdx
+    │   │       ├── manage
+    │   │       │   ├── runbooks.md
+    │   │       │   └── upgrade.md
+    │   │       ├── observe
+    │   │       │   ├── index.md
+    │   │       │   ├── opentelemetry.md
+    │   │       │   ├── prometheus.md
+    │   │       │   └── spans.md
+    │   │       ├── reference
+    │   │       │   ├── api.md
+    │   │       │   ├── changelog.md
+    │   │       │   ├── index.md
+    │   │       │   └── metrics.md
+    │   │       ├── relay
+    │   │       │   ├── async.md
+    │   │       │   └── index.md
+    │   │       └── set-up
+    │   │           ├── config.md
+    │   │           ├── helm.md
+    │   │           ├── index.md
+    │   │           └── queue.md
+    │   ├── content.config.ts
+    │   └── styles
+    │       └── landing.css
+    └── tsconfig.json
+72 directories, 257 files
