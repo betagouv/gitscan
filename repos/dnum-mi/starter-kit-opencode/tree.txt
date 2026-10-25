@@ -1,43 +1,204 @@
 .
 ├── .agents
 │   └── skills
-│       ├── ci-cd
-│       │   └── SKILL.md
-│       ├── conventions-cofabnum
-│       │   ├── SKILL.md
-│       │   └── scripts
-│       │       ├── check-folders.sh
-│       │       └── validate-branch.sh
-│       ├── deploiement
-│       │   └── SKILL.md
-│       ├── environnement-installation
-│       │   └── SKILL.md
-│       ├── index.json
-│       ├── monorepo
-│       │   └── SKILL.md
-│       ├── outils-dev
-│       │   ├── SKILL.md
-│       │   └── scripts
-│       │       └── check-environment.sh
-│       ├── recettes-client
-│       │   └── SKILL.md
-│       ├── recettes-serveur
-│       │   ├── SKILL.md
-│       │   └── scripts
-│       │       ├── scaffold-fastapi.sh
-│       │       ├── scaffold-fastify.sh
-│       │       └── scaffold-nestjs.sh
-│       └── stack-technique
-│           └── SKILL.md
+│       ├── dev
+│       │   ├── ci-cd
+│       │   │   └── SKILL.md
+│       │   ├── conventions-cofabnum
+│       │   │   ├── SKILL.md
+│       │   │   └── scripts
+│       │   │       ├── check-folders.sh
+│       │   │       └── validate-branch.sh
+│       │   ├── deploiement
+│       │   │   └── SKILL.md
+│       │   ├── environnement-installation
+│       │   │   └── SKILL.md
+│       │   ├── index.json
+│       │   ├── instructions.md
+│       │   ├── monorepo
+│       │   │   └── SKILL.md
+│       │   ├── outils-dev
+│       │   │   ├── SKILL.md
+│       │   │   └── scripts
+│       │   │       └── check-environment.sh
+│       │   ├── recettes-client
+│       │   │   └── SKILL.md
+│       │   ├── recettes-serveur
+│       │   │   ├── SKILL.md
+│       │   │   └── scripts
+│       │   │       ├── scaffold-fastapi.sh
+│       │   │       ├── scaffold-fastify.sh
+│       │   │       └── scaffold-nestjs.sh
+│       │   └── stack-technique
+│       │       └── SKILL.md
+│       └── dso
+│           ├── cicd-fabnum
+│           │   ├── SKILL.md
+│           │   └── references
+│           │       ├── cd.yml
+│           │       ├── ci.yml
+│           │       ├── depot-infra.md
+│           │       └── workflows.md
+│           ├── deploiement-cpin
+│           │   ├── SKILL.md
+│           │   └── references
+│           │       ├── api-debug.md
+│           │       ├── depannage.md
+│           │       └── gitlab-ci-dso.yml
+│           ├── helm-chart-cpin
+│           │   ├── SKILL.md
+│           │   ├── references
+│           │   │   ├── values-cpin.yaml
+│           │   │   └── vault-secret.yaml
+│           │   └── scripts
+│           │       └── check-cpin-rules.py
+│           ├── index.json
+│           └── instructions.md
+├── .claude-plugin
+│   └── marketplace.json
+├── .gitignore
 ├── AGENTS.md
+├── Makefile
 ├── README.md
+├── claude
+│   ├── agents
+│   │   ├── dev
+│   │   │   ├── dev-review.md
+│   │   │   └── dev-verif-plan.md
+│   │   └── dso
+│   │       ├── cpin-build.md
+│   │       ├── cpin-orchestrateur.md
+│   │       ├── cpin-plan.md
+│   │       └── cpin-review.md
+│   ├── commands
+│   │   ├── dev
+│   │   │   └── livrer.md
+│   │   └── dso
+│   │       └── deployer-cpin.md
+│   ├── permissions.json
+│   ├── permissions.mjs
+│   └── shell.mjs
 ├── docs
+│   ├── okf
+│   │   ├── cicd
+│   │   │   ├── authentification.md
+│   │   │   ├── build-et-supply-chain.md
+│   │   │   ├── catalogue-workflows.md
+│   │   │   ├── contrat-des-workflows.md
+│   │   │   ├── index.md
+│   │   │   ├── pieges.md
+│   │   │   └── release-et-charts.md
+│   │   ├── cloud-pi-native
+│   │   │   ├── contraintes-runtime.md
+│   │   │   ├── deploiement-gitops.md
+│   │   │   ├── depots-mirror-gitlab.md
+│   │   │   ├── environnements-quotas.md
+│   │   │   ├── exploitation-observabilite.md
+│   │   │   ├── index.md
+│   │   │   ├── plateforme-et-acteurs.md
+│   │   │   ├── registre-artefacts-qualite.md
+│   │   │   ├── secrets.md
+│   │   │   └── urls-instances.md
+│   │   ├── constats.md
+│   │   ├── cycle-de-vie
+│   │   │   ├── branches-versions-releases.md
+│   │   │   ├── de-commit-a-environnement.md
+│   │   │   ├── index.md
+│   │   │   ├── integration-continue.md
+│   │   │   ├── livraison-continue.md
+│   │   │   └── nettoyage-maintenance.md
+│   │   ├── decisions
+│   │   │   ├── chart-monorepo-vs-depot-dedie.md
+│   │   │   ├── dependances-chart.md
+│   │   │   ├── ghcr-vs-harbor.md
+│   │   │   ├── github-app-vs-pat.md
+│   │   │   ├── index.md
+│   │   │   ├── monorepo-vs-multi-repo.md
+│   │   │   ├── pinning-versions.md
+│   │   │   └── secrets-vault-vs-sops.md
+│   │   ├── exemples
+│   │   │   ├── index.md
+│   │   │   └── ocr-api.md
+│   │   ├── glossaire.md
+│   │   ├── helm
+│   │   │   ├── anatomie-chart.md
+│   │   │   ├── catalogue-tobi.md
+│   │   │   ├── conventions-values.md
+│   │   │   ├── index.md
+│   │   │   ├── publication-et-signature.md
+│   │   │   ├── securite-et-openshift.md
+│   │   │   └── tester-et-linter.md
+│   │   ├── index.md
+│   │   ├── principes
+│   │   │   ├── index.md
+│   │   │   ├── modele-mental.md
+│   │   │   ├── philosophie-cpin.md
+│   │   │   ├── philosophie-fabnum-cicd.md
+│   │   │   ├── philosophie-helm.md
+│   │   │   └── securite-transverse.md
+│   │   └── quickstart.md
 │   └── superpowers
 │       ├── plans
 │       │   ├── 2026-04-22-cofabnum-skills.md
-│       │   └── 2026-04-30-deploiement-skill.md
+│       │   ├── 2026-04-30-deploiement-skill.md
+│       │   └── 2026-10-09-cpin-debug-services.md
 │       └── specs
 │           ├── 2026-04-21-cofabnum-skills.md
-│           └── 2026-04-30-deploiement-skill-design.md
-└── opencode.json
-19 directories, 23 files
+│           ├── 2026-04-30-deploiement-skill-design.md
+│           └── 2026-10-09-cpin-debug-services-design.md
+├── opencode
+│   ├── agents
+│   │   ├── dev
+│   │   │   ├── dev-review.md
+│   │   │   └── dev-verif-plan.md
+│   │   └── dso
+│   │       ├── cpin-build.md
+│   │       ├── cpin-orchestrateur.md
+│   │       ├── cpin-plan.md
+│   │       └── cpin-review.md
+│   └── commands
+│       ├── dev
+│       │   └── livrer.md
+│       └── dso
+│           └── deployer-cpin.md
+├── opencode.jsonc
+├── package.json
+├── plugin
+│   └── starter-kit.js
+├── scripts
+│   ├── argocd-token
+│   │   ├── .gitignore
+│   │   ├── capture-token.mjs
+│   │   ├── package-lock.json
+│   │   └── package.json
+│   ├── claude-plugin.mjs
+│   ├── cpin-console
+│   │   ├── .gitignore
+│   │   ├── console.mjs
+│   │   ├── instance.mjs
+│   │   ├── instance.test.mjs
+│   │   ├── package.json
+│   │   ├── secrets-file.mjs
+│   │   ├── vault.mjs
+│   │   └── vault.test.mjs
+│   ├── cpin-debug
+│   │   ├── .gitignore
+│   │   ├── check-argocd.mjs
+│   │   ├── check-console.mjs
+│   │   ├── check-gitlab.mjs
+│   │   ├── check-harbor.mjs
+│   │   ├── lib.mjs
+│   │   ├── login.mjs
+│   │   ├── package-lock.json
+│   │   └── package.json
+│   ├── doctor.sh
+│   └── skills-index.mjs
+└── tests
+    ├── check-cpin-rules
+    │   ├── ok.yaml
+    │   └── test_check_cpin_rules.py
+    ├── claude
+    │   └── permissions.test.mjs
+    └── plugin
+        └── check-config.sh
+60 directories, 143 files
