@@ -53,7 +53,9 @@
 │   │   ├── source-bulle.png
 │   │   ├── source-fenetre-de-lecture.png
 │   │   └── source-page-en-onglet.png
+│   ├── indexeur.md
 │   ├── qualite.md
+│   ├── resana.md
 │   └── sources.md
 ├── mise.toml
 ├── myrag
@@ -164,6 +166,7 @@
 │   │   │   ├── qualite.py
 │   │   │   ├── recherche.py
 │   │   │   ├── sources.py
+│   │   │   ├── sources_resana.py
 │   │   │   └── sync.py
 │   │   ├── security_utils.py
 │   │   ├── services
@@ -196,7 +199,9 @@
 │   │   │   ├── connectors
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── base.py
-│   │   │   │   └── drive.py
+│   │   │   │   ├── drive.py
+│   │   │   │   └── resana.py
+│   │   │   ├── conversion.py
 │   │   │   ├── corpus.py
 │   │   │   ├── debit.py
 │   │   │   ├── demarrage.py
@@ -213,6 +218,7 @@
 │   │   │   ├── formats.py
 │   │   │   ├── generation_store.py
 │   │   │   ├── graph_builder.py
+│   │   │   ├── indexeur.py
 │   │   │   ├── job_store.py
 │   │   │   ├── job_tracker.py
 │   │   │   ├── journal.py
@@ -239,6 +245,7 @@
 │   │   │   ├── questions_store.py
 │   │   │   ├── relais.py
 │   │   │   ├── reponse.py
+│   │   │   ├── resana_perimetre.py
 │   │   │   ├── sites.py
 │   │   │   ├── sources_openrag.py
 │   │   │   ├── sync_service.py
@@ -263,7 +270,9 @@
 │   │   ├── components
 │   │   │   ├── EtatDuService.vue
 │   │   │   ├── FilAriane.vue
+│   │   │   ├── ListeDeroulanteRiche.vue
 │   │   │   ├── NavigationPrincipale.vue
+│   │   │   ├── SessionExpiree.vue
 │   │   │   ├── SitesDeclares.vue
 │   │   │   ├── WizardStepper.vue
 │   │   │   ├── agents
@@ -287,6 +296,9 @@
 │   │   │   ├── corpus
 │   │   │   │   └── Documents.vue
 │   │   │   ├── depot
+│   │   │   │   ├── DossiersResana.vue
+│   │   │   │   ├── EtatResana.vue
+│   │   │   │   ├── SensibiliteResana.vue
 │   │   │   │   └── Zone.vue
 │   │   │   ├── fiche
 │   │   │   │   ├── AvisCollegues.vue
@@ -353,6 +365,7 @@
 │   │   │   │   ├── categories.vue
 │   │   │   │   ├── create
 │   │   │   │   │   ├── index.vue
+│   │   │   │   │   ├── resana.vue
 │   │   │   │   │   ├── step-2.vue
 │   │   │   │   │   ├── step-3.vue
 │   │   │   │   │   ├── step-4.vue
@@ -424,10 +437,13 @@
 │   │   │       ├── generation.test.ts
 │   │   │       ├── groupes.test.ts
 │   │   │       ├── libelles.test.ts
+│   │   │       ├── listeRiche.test.ts
 │   │   │       ├── navigation.test.ts
 │   │   │       ├── playground.test.ts
 │   │   │       ├── qualite.test.ts
+│   │   │       ├── resana.test.ts
 │   │   │       ├── retour.test.ts
+│   │   │       ├── session.test.ts
 │   │   │       ├── sites.test.ts
 │   │   │       └── wizard.test.ts
 │   │   ├── tsconfig.json
@@ -453,11 +469,14 @@
 │   │   │   ├── generation.ts
 │   │   │   ├── groupes.ts
 │   │   │   ├── libelles.ts
+│   │   │   ├── listeRiche.ts
 │   │   │   ├── navigation.ts
 │   │   │   ├── playground.ts
 │   │   │   ├── qualite.ts
+│   │   │   ├── resana.ts
 │   │   │   ├── retour.ts
 │   │   │   ├── sanitize.ts
+│   │   │   ├── session.ts
 │   │   │   ├── sites.ts
 │   │   │   └── wizard.ts
 │   │   └── vitest.config.ts
@@ -465,6 +484,7 @@
 │   │   ├── configmap.yaml
 │   │   ├── cronjob-sync-owui.yaml
 │   │   ├── deployment-backend.yaml
+│   │   ├── deployment-conversion.yaml
 │   │   ├── deployment-frontend.yaml
 │   │   ├── ingress.yaml
 │   │   ├── namespace.yaml
@@ -472,6 +492,7 @@
 │   │   ├── secret.example.yaml
 │   │   ├── secret.yaml.template
 │   │   ├── service-backend.yaml
+│   │   ├── service-conversion.yaml
 │   │   └── service-frontend.yaml
 │   ├── mock
 │   │   └── openrag-mockoon.json
@@ -487,6 +508,7 @@
 │   ├── requirements-e2e.txt
 │   ├── scripts
 │   │   ├── banc.py
+│   │   ├── marquer_scans.py
 │   │   └── version_json.py
 │   ├── tests
 │   │   ├── __init__.py
@@ -565,7 +587,9 @@
 │   │   │   └── test_wizard_questions.py
 │   │   └── unit
 │   │       ├── __init__.py
-│   │       └── test_*.py  (96 files)
+│   │       ├── _faux_resana.py
+│   │       ├── _pdf_fictif.py
+│   │       └── test_*.py  (107 files)
 │   ├── uv.lock
 │   └── watch-ingest.sh
 ├── openwebui
@@ -576,4 +600,4 @@
 ├── setup-keycloak.sh
 ├── sync_keycloak_openrag.py
 └── version.txt
-86 directories, 587 files
+86 directories, 622 files
