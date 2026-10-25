@@ -1,6 +1,7 @@
 .
 ├── .changeset
-│   └── config.json
+│   ├── config.json
+│   └── ripe-symbols-peel.md
 ├── .dockerignore
 ├── .github
 │   └── workflows
@@ -85,6 +86,7 @@
 │   │   │   │   ├── mount-smart-scroller.tsx
 │   │   │   │   ├── mount-storage-gauge.tsx
 │   │   │   │   ├── mount-tabs.tsx
+│   │   │   │   ├── mount-toast.tsx
 │   │   │   │   ├── mount-upload.tsx
 │   │   │   │   └── pdf-helpers.ts
 │   │   │   ├── la-gaufre
@@ -114,6 +116,8 @@
 │   │   │   │   └── storage-gauge-information.spec.tsx
 │   │   │   ├── tabs
 │   │   │   │   └── tabs.spec.tsx
+│   │   │   ├── toast
+│   │   │   │   └── toast.spec.tsx
 │   │   │   └── upload
 │   │   │       └── upload.spec.tsx
 │   │   ├── package.json
@@ -222,7 +226,6 @@
 │   │   │   │   │   ├── AlertOneLine.tsx
 │   │   │   │   │   ├── Utils.tsx
 │   │   │   │   │   ├── _index.scss
-│   │   │   │   │   ├── alert.scss
 │   │   │   │   │   ├── alert.stories.tsx
 │   │   │   │   │   ├── index.spec.tsx
 │   │   │   │   │   ├── index.tsx
@@ -978,6 +981,11 @@
 │   │   │   │   │   ├── resources
 │   │   │   │   │   │   └── longLorem.json
 │   │   │   │   │   └── tokens.ts
+│   │   │   │   ├── notification
+│   │   │   │   │   ├── NotificationContent.tsx
+│   │   │   │   │   ├── _content.scss
+│   │   │   │   │   ├── content.spec.tsx
+│   │   │   │   │   └── types.ts
 │   │   │   │   ├── onboarding-modal
 │   │   │   │   │   ├── OnboardingModal.tsx
 │   │   │   │   │   ├── OnboardingStepItem.tsx
@@ -1067,6 +1075,13 @@
 │   │   │   │   │       │   └── VideoPlayer.tsx
 │   │   │   │   │       └── wopi
 │   │   │   │   │           └── WopiOpenInEditor.tsx
+│   │   │   │   ├── progress-bar
+│   │   │   │   │   ├── _index.scss
+│   │   │   │   │   ├── index.mdx
+│   │   │   │   │   ├── index.spec.tsx
+│   │   │   │   │   ├── index.stories.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── tokens.ts
 │   │   │   │   ├── provider
 │   │   │   │   │   ├── Locales.ts
 │   │   │   │   │   ├── Provider.tsx
@@ -1203,13 +1218,15 @@
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── toast
 │   │   │   │   │   ├── DocUtils.tsx
+│   │   │   │   │   ├── ToastProvider.spec.tsx
 │   │   │   │   │   ├── ToastProvider.tsx
 │   │   │   │   │   ├── index.mdx
 │   │   │   │   │   ├── index.scss
 │   │   │   │   │   ├── index.spec.tsx
 │   │   │   │   │   ├── index.stories.tsx
 │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   └── tokens.ts
+│   │   │   │   │   ├── tokens.ts
+│   │   │   │   │   └── types.ts
 │   │   │   │   ├── tooltip
 │   │   │   │   │   ├── _base.scss
 │   │   │   │   │   ├── _index.scss
@@ -1322,7 +1339,6 @@
 │   │   │   │   ├── translations.ts
 │   │   │   │   └── translations.type-check.ts
 │   │   │   └── utils
-│   │   │       ├── Queue.ts
 │   │   │       ├── VariantUtils.ts
 │   │   │       ├── _accessibility.scss
 │   │   │       ├── _index.scss
@@ -1396,4 +1412,4 @@
 ├── tsconfig.node.json
 ├── turbo.json
 └── yarn.lock
-176 directories, 1222 files
+179 directories, 1235 files
