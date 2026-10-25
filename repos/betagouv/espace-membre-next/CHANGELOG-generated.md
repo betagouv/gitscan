@@ -1,29 +1,28 @@
-## Changelog : espace-membre-next (30 derniers jours, au 19 octobre 2026)
+## Changelog : espace-membre-next (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la sécurisation des accès via l'amélioration du parcours d'authentification (ProConnect et MFA) et l'ouverture de l'écosystème grâce à une nouvelle API REST. Des corrections importantes ont également été apportées à la gestion des formations, des formulaires de demande et de la synchronisation des adresses e-mail professionnelles.
+Ce mois-ci, les évolutions se sont concentrées sur la sécurisation et la fluidification de l'authentification (ProConnect et MFA), l'amélioration de l'accueil des nouveaux membres via une nouvelle checklist, et le lancement d'une première version de l'API REST pour faciliter les intégrations.
 
 ### Évolutions fonctionnelles
 - **Authentification et sécurité** :
-    - Amélioration du parcours de connexion ProConnect, incluant la gestion du MFA par lien magique [#1569] et la possibilité de relancer une session après un refus [#1597].
-    - Meilleure gestion des adresses e-mail lors de la connexion (distinction entre e-mail personnel et principal) [#1596].
-- **Gestion des formations** :
-    - Corrections sur le module e-learning, la gestion des adresses pour le présentiel et la logique des listes d'attente pour les sessions sans limite [#1558, #1564].
-- **Services et formulaires** :
-    - Optimisation des formulaires de demandes d'OPS [#1554] et d'accès Ségur [#1553].
-    - Mise à jour de la navigation vers les services et correction des événements de calendrier [#1545, #1547].
-- **Communication** :
-    - Amélioration de la synchronisation, du statut et de la réactivation des adresses Dimail [#1588].
+    - Amélioration du parcours de connexion ProConnect incluant le MFA avec transition par lien magique [#1569](https://github.com/betagouv/espace-membre-next/issues/1569).
+    - Meilleure gestion des refus de connexion : affichage du motif de refus, possibilité de relancer la procédure et gestion des emails personnels [#1603](https://github.com/betagouv/espace-membre-next/issues/1603) [#1597](https://github.com/betagouv/espace-membre-next/issues/1597) [#1596](https://github.com/betagouv/espace-membre-next/issues/1596).
+- **Expérience utilisateur et onboarding** :
+    - Mise en place d'une checklist dédiée pour l'embarquement des nouveaux intrapreneur·es [#1580](https://github.com/betagouv/espace-membre-next/issues/1580).
+- **API** :
+    - Lancement de la version 1 de l'API REST avec support de clés d'API à portée restreinte [#1518](https://github.com/betagouv/espace-membre-next/issues/1518).
+- **Gestion des services et formations** :
+    - Amélioration de la synchronisation des adresses Dimail et de la réactivation automatique des boîtes mail [#1588](https://github.com/betagouv/espace-membre-next/issues/1588).
+    - Corrections sur le module de formation : gestion de l'e-learning, des adresses en présentiel et de la logique des listes d'attente [#1558](https://github.com/betagouv/espace-membre-next/issues/1558) [#1564](https://github.com/betagouv/espace-membre-next/issues/1564).
 
 ### Évolutions techniques
-- **API et Intégration** :
-    - Lancement de l'API v1 REST avec support de clés d'API à portée restreinte pour plus de sécurité [#1518].
-- **Infrastructure et Automatisation** :
-    - Refonte de l'architecture des tâches planifiées (cron) avec des créneaux fixes déclarés dans le code pour une meilleure stabilité [#1590].
-    - Corrections liées au déploiement et à la syntaxe des tâches cron sur Scalingo [#1595, #1555].
-- **Qualité et Tests** :
-    - Renforcement de la couverture de tests, notamment sur la connexion par e-mail [#1566] et la resynchronisation des tests unitaires imbriqués [#1594].
+- **CI/CD et Déploiement** :
+    - Automatisation de la fusion (auto-merge) des Pull Requests d'export vers beta.gouv.fr [#1602](https://github.com/betagouv/espace-membre-next/issues/1602).
+    - Correction du processus de déploiement pour l'application cron afin d'éviter le lancement des migrations en post-déploiement [#1595](https://github.com/betagouv/espace-membre-next/issues/1595).
+- **Architecture et optimisation** :
+    - Refactorisation de la gestion des tâches planifiées (cron) avec l'utilisation de créneaux fixes et de jobs déclarés directement dans le code [#1590](https://github.com/betagouv/espace-membre-next/issues/1590).
+- **Tests** :
+    - Renforcement de la suite de tests, notamment sur les processus de connexion par email et la synchronisation des spécifications de tests [#1566](https://github.com/betagouv/espace-membre-next/issues/1566) [#1594](https://github.com/betagouv/espace-membre-next/issues/1594).
 
 ### Autres changements
-- Amélioration de la documentation des alertes avec l'ajout de liens vers les référents techniques [#1544].
-- Ajout de l'onboarding pour les développeurs dans le cadre des challenges communautaires [#1565].
+- **Documentation** : Ajout de l'onboarding développeur aux défis de la communauté [#1565](https://github.com/betagouv/espace-membre-next/issues/1565).
