@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/SocialGouv/domifa",
   "name": "domifa",
-  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
+  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et permettant aux personnes sans domicile stable d'accéder à leurs droits.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Statistiques & Rapports",
     "Formulaires & Démarches",
-    "Sécurité & Conformité",
-    "Gestion métier générale",
-    "Authentification & Accès"
+    "Statistiques & Rapports",
+    "Authentification & Accès",
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Agents de l'Administration et Associations",
   "dependencies": [
     "NestJS",
     "Angular",
@@ -20,9 +20,9 @@
     "Docker",
     "Pnpm",
     "Lerna",
-    "Brevo",
     "Sentry",
-    "Matomo"
+    "Matomo",
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,28 +31,33 @@
     "Docker & Conteneurs",
     "Node.js / NestJS",
     "Angular / Svelte / Autres SPA",
-    "ORM & Accès aux données",
-    "Documentation & Schémas"
+    "Documentation & Schémas",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "mfa",
-      "session"
+      "mfa"
     ]
   },
-  "tests": "Tests unitaires (Frontend, Backend, Portail usagers) et tests d'intégration (Backend) utilisant Jest.",
-  "lastActivity": "2026-10-14T00:00:00Z",
+  "tests": [
+    "Tests unitaires",
+    "Tests d'intégration",
+    "Tests de bout en bout (E2E)"
+  ],
+  "workflows": [
+    "GitLab CI/CD"
+  ],
+  "lastActivity": "2026-10-21T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Docker & Conteneurs",
+    "Bases de données SQL",
     "Node.js, NestJS & Express",
     "Angular, Svelte & autres SPA",
-    "Bases de données SQL",
     "Emploi, Social & Logement"
   ]
 }
