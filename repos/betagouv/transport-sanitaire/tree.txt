@@ -1,0 +1,549 @@
+.
+├── .claude
+│   ├── settings.json
+│   └── skills
+│       ├── doc-architecture
+│       │   └── SKILL.md
+│       ├── implement-publicodes-version
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       └── precedents.md
+│       ├── livrer-une-version
+│       │   └── SKILL.md
+│       ├── regle-de-contribution
+│       │   └── SKILL.md
+│       ├── regle-publicodes
+│       │   └── SKILL.md
+│       └── situation-de-reference
+│           └── SKILL.md
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .gitleaks.toml
+├── AGENTS.md
+├── CLAUDE.md
+├── Procfile
+├── apps
+│   ├── data-analyzer
+│   │   ├── .env.example
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
+│   │   ├── README.md
+│   │   ├── biome.jsonc
+│   │   ├── docs
+│   │   │   ├── knowledge
+│   │   │   │   ├── adr
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── contributing
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   └── domain
+│   │   │   │       └── etl-part-plateformes.md
+│   │   │   ├── specs
+│   │   │   │   ├── 0. drafts
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 1. backlog
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 2. todo
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 3. doing
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 4. done
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   └── TEMPLATE.md
+│   │   │   └── tasks
+│   │   │       └── TEMPLATE.md
+│   │   ├── mapping.example.json
+│   │   ├── package.json
+│   │   ├── ref
+│   │   │   ├── finess-ght-manuel.csv
+│   │   │   ├── ght
+│   │   │   │   ├── ara-*.json  (15 files)
+│   │   │   │   ├── bfc-*.json  (12 files)
+│   │   │   │   ├── bre-*.json  (8 files)
+│   │   │   │   ├── cor-01.json
+│   │   │   │   ├── cor-02.json
+│   │   │   │   ├── cvl-*.json  (6 files)
+│   │   │   │   ├── ge-*.json  (11 files)
+│   │   │   │   ├── gua-01.json
+│   │   │   │   ├── gua-02.json
+│   │   │   │   ├── hf-*.json  (14 files)
+│   │   │   │   ├── idf-*.json  (15 files)
+│   │   │   │   ├── mar-01.json
+│   │   │   │   ├── na-*.json  (12 files)
+│   │   │   │   ├── nor-*.json  (11 files)
+│   │   │   │   ├── occ-*.json  (14 files)
+│   │   │   │   ├── oi-01.json
+│   │   │   │   ├── paca-*.json  (6 files)
+│   │   │   │   └── pdl-*.json  (5 files)
+│   │   │   ├── plateforme-finess-mapping.csv
+│   │   │   └── plateforme-ght-mapping.csv
+│   │   ├── spec
+│   │   │   ├── livrables.md
+│   │   │   └── points-attention-metier.md
+│   │   ├── src
+│   │   │   ├── 01-extract
+│   │   │   │   ├── adapteurs
+│   │   │   │   │   ├── adapteur-ght-fhir-datagouv.ts
+│   │   │   │   │   ├── adapteur-plateforme-finess-tsv.ts
+│   │   │   │   │   ├── adapteur-plateforme-finess-xlsx.ts
+│   │   │   │   │   ├── adapteur-plateforme-ght-xlsx.ts
+│   │   │   │   │   ├── adapteur-referentiel-remboursement-xlsx.ts
+│   │   │   │   │   ├── registry.ts
+│   │   │   │   │   └── xlsx.ts
+│   │   │   │   └── extract.ts
+│   │   │   ├── 02-staging
+│   │   │   │   └── staging.ts
+│   │   │   ├── 03-reconcile
+│   │   │   │   └── reconcile.ts
+│   │   │   ├── 04-marts
+│   │   │   │   ├── mart-article80.ts
+│   │   │   │   ├── mart-ratio.ts
+│   │   │   │   ├── mart-rollup-2024.ts
+│   │   │   │   ├── marts.ts
+│   │   │   │   └── plateformes.ts
+│   │   │   ├── 05-publish
+│   │   │   │   ├── grist.ts
+│   │   │   │   └── publish.ts
+│   │   │   ├── contrats.ts
+│   │   │   ├── csv.ts
+│   │   │   ├── fetch-ght.ts
+│   │   │   ├── finess.ts
+│   │   │   ├── mapping.ts
+│   │   │   ├── paths.ts
+│   │   │   ├── run.ts
+│   │   │   └── types.ts
+│   │   ├── tests
+│   │   │   ├── adapteur-ght-fhir-datagouv.test.ts
+│   │   │   ├── adapteur-plateforme-ght-xlsx.test.ts
+│   │   │   ├── csv.test.ts
+│   │   │   ├── finess.test.ts
+│   │   │   ├── mart-rollup-2024.test.ts
+│   │   │   └── marts.test.ts
+│   │   └── tsconfig.json
+│   ├── glossaire-notion
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
+│   │   ├── biome.jsonc
+│   │   ├── docs
+│   │   │   ├── knowledge
+│   │   │   │   ├── adr
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── contributing
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   └── domain
+│   │   │   │       └── .gitkeep
+│   │   │   ├── specs
+│   │   │   │   ├── 0. drafts
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 1. backlog
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 2. todo
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 3. doing
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── 4. done
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   └── TEMPLATE.md
+│   │   │   └── tasks
+│   │   │       └── TEMPLATE.md
+│   │   ├── icons
+│   │   │   ├── icon-128.png
+│   │   │   ├── icon-16.png
+│   │   │   ├── icon-32.png
+│   │   │   └── icon-48.png
+│   │   ├── index.html
+│   │   ├── manifest.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── config.ts
+│   │   │   ├── notion.ts
+│   │   │   ├── popup
+│   │   │   │   ├── Popup.tsx
+│   │   │   │   ├── main.tsx
+│   │   │   │   └── popup.css
+│   │   │   ├── search.ts
+│   │   │   └── storage.ts
+│   │   ├── tests
+│   │   │   ├── Popup.test.tsx
+│   │   │   ├── fixtures
+│   │   │   │   └── glossaire-recordmap.json
+│   │   │   ├── notion.test.ts
+│   │   │   ├── search.test.ts
+│   │   │   ├── setup.ts
+│   │   │   └── storage.test.ts
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   ├── tsconfig.tests.json
+│   │   └── vite.config.ts
+│   └── simulateur-eligibilite
+│       ├── .env.example
+│       ├── AGENTS.md
+│       ├── CHANGELOG.md
+│       ├── CLAUDE.md
+│       ├── README.md
+│       ├── biome.jsonc
+│       ├── config
+│       │   ├── tsconfig.app.json
+│       │   ├── tsconfig.base.json
+│       │   ├── tsconfig.node.json
+│       │   ├── tsconfig.server.json
+│       │   └── tsconfig.tests.json
+│       ├── docs
+│       │   ├── knowledge
+│       │   │   ├── adr
+│       │   │   │   ├── analytics.md
+│       │   │   │   └── identification.md
+│       │   │   ├── contributing
+│       │   │   │   └── .gitkeep
+│       │   │   └── domain
+│       │   │       ├── composer-les-elements-medicaux.md
+│       │   │       ├── enrichissement-referentiel-saisies-libres.md
+│       │   │       ├── formalisation-mosaique-choix-multiple.md
+│       │   │       ├── gardes-calculees.md
+│       │   │       ├── ordre-du-parcours.md
+│       │   │       ├── page-resultat-administratif.md
+│       │   │       ├── page-resultat-medical.md
+│       │   │       ├── precisions-medicales.md
+│       │   │       ├── socle-du-mapping-documentaire.md
+│       │   │       └── total-dap-permission.md
+│       │   ├── specs
+│       │   │   ├── 0. drafts
+│       │   │   │   ├── .gitkeep
+│       │   │   │   └── 002__cerfa__extraction-module-cerfa.refactor.md
+│       │   │   ├── 1. backlog
+│       │   │   │   └── .gitkeep
+│       │   │   ├── 2. todo
+│       │   │   │   └── .gitkeep
+│       │   │   ├── 3. doing
+│       │   │   │   └── .gitkeep
+│       │   │   ├── 4. done
+│       │   │   │   └── .gitkeep
+│       │   │   └── TEMPLATE.md
+│       │   └── tasks
+│       │       └── TEMPLATE.md
+│       ├── front
+│       │   ├── analytics
+│       │   │   ├── evenements.ts
+│       │   │   └── matomo.ts
+│       │   ├── app
+│       │   │   ├── App.tsx
+│       │   │   ├── BandeauVersion.tsx
+│       │   │   ├── EcranPleinePage.tsx
+│       │   │   ├── Main.tsx
+│       │   │   ├── dsfr-overrides.css
+│       │   │   ├── navigation.ts
+│       │   │   └── outil.ts
+│       │   ├── identification
+│       │   │   ├── Identification.tsx
+│       │   │   ├── pseudonymisation-http.ts
+│       │   │   ├── referentiel-http.ts
+│       │   │   ├── saisie-identite.ts
+│       │   │   └── session.ts
+│       │   ├── outils-produit
+│       │   │   ├── OutilsProduit.tsx
+│       │   │   ├── beta
+│       │   │   │   └── cerfa
+│       │   │   │       ├── BoutonCerfa.tsx
+│       │   │   │       ├── ReviserLeTexteMedical.tsx
+│       │   │   │       ├── cerfa-non-applicable.ts
+│       │   │   │       ├── dap
+│       │   │   │       │   ├── depuis-simulateur.ts
+│       │   │   │       │   ├── document.ts
+│       │   │   │       │   ├── gabarit
+│       │   │   │       │   │   └── cerfa-11575-08.pdf
+│       │   │   │       │   └── remplissage-dap.ts
+│       │   │   │       ├── dates.ts
+│       │   │   │       ├── document.ts
+│       │   │   │       ├── documents.ts
+│       │   │   │       ├── elements-medicaux
+│       │   │   │       │   ├── composition.ts
+│       │   │   │       │   ├── dates.ts
+│       │   │   │       │   ├── debordement-du-texte-medical.ts
+│       │   │   │       │   ├── libelles.ts
+│       │   │   │       │   └── mesure-de-la-zone.ts
+│       │   │   │       ├── mapping.ts
+│       │   │   │       ├── pmt
+│       │   │   │       │   ├── depuis-simulateur.ts
+│       │   │   │       │   ├── document.ts
+│       │   │   │       │   ├── gabarit
+│       │   │   │       │   │   └── cerfa-11574-07.pdf
+│       │   │   │       │   └── remplissage-pmt.ts
+│       │   │   │       ├── remplir-cerfa.ts
+│       │   │   │       ├── remplissage.ts
+│       │   │   │       ├── reponses.ts
+│       │   │   │       └── s3141
+│       │   │   │           ├── depuis-simulateur.ts
+│       │   │   │           ├── document.ts
+│       │   │   │           ├── gabarit
+│       │   │   │           │   └── cerfa-16184-01.pdf
+│       │   │   │           └── remplissage-s3141.ts
+│       │   │   ├── deverrouillage.ts
+│       │   │   ├── labo
+│       │   │   │   ├── BandeauLabo.tsx
+│       │   │   │   ├── Labo.tsx
+│       │   │   │   └── labo.ts
+│       │   │   └── seeds
+│       │   │       ├── GalerieSeeds.tsx
+│       │   │       ├── TableauDesSeeds.tsx
+│       │   │       ├── base-neutre.ts
+│       │   │       ├── catalogue.ts
+│       │   │       └── seed.ts
+│       │   └── simulateur
+│       │       ├── cibles-du-parcours.ts
+│       │       ├── contrat-regles-publicodes.ts
+│       │       ├── dates-de-permission.ts
+│       │       ├── entrees-calculees.ts
+│       │       ├── exception-sans-lieu.ts
+│       │       ├── heure-de-paris.ts
+│       │       ├── lecture-de-situation.ts
+│       │       ├── lieu-effectif.ts
+│       │       ├── moteur.ts
+│       │       ├── nombre-permission-dap.ts
+│       │       ├── passation.ts
+│       │       ├── precision-medicale.ts
+│       │       ├── prescripteur
+│       │       │   ├── Prescripteur.tsx
+│       │       │   └── ResultatMedical.tsx
+│       │       ├── questionnaire
+│       │       │   ├── ChampDeFormulaire.tsx
+│       │       │   ├── ChampsDePage.tsx
+│       │       │   ├── Mosaique.tsx
+│       │       │   ├── Parcours.tsx
+│       │       │   ├── TraceParcours.tsx
+│       │       │   ├── aval-invalide.ts
+│       │       │   ├── avancement-automatique.ts
+│       │       │   ├── bornes-de-saisie.ts
+│       │       │   ├── constructeur-de-formulaire.ts
+│       │       │   ├── convocation-revalidation.ts
+│       │       │   ├── etapes-de-la-partie-1.ts
+│       │       │   ├── etapes.ts
+│       │       │   ├── faits-connus.ts
+│       │       │   ├── formes-de-saisie.ts
+│       │       │   ├── invalidation-lieu.ts
+│       │       │   ├── libelle-de-reponse.ts
+│       │       │   ├── lieu-deduit.ts
+│       │       │   ├── mosaique.ts
+│       │       │   ├── pagination.ts
+│       │       │   ├── passation.ts
+│       │       │   ├── recalcul.ts
+│       │       │   ├── rejeu.ts
+│       │       │   ├── reponse-unique.ts
+│       │       │   ├── saisie-a-corriger.ts
+│       │       │   ├── suite-du-parcours.ts
+│       │       │   ├── suivi-de-parcours.ts
+│       │       │   ├── trajet-domicile.ts
+│       │       │   └── visibilite-des-options.ts
+│       │       ├── resultat
+│       │       │   ├── InformationPatient.tsx
+│       │       │   ├── TraceDebug.tsx
+│       │       │   └── Vulgarisation.tsx
+│       │       ├── secretariat
+│       │       │   ├── Secretariat.tsx
+│       │       │   ├── case-de-formulaire.ts
+│       │       │   ├── date-de-prescription.ts
+│       │       │   ├── resultat
+│       │       │   │   ├── Article80.tsx
+│       │       │   │   ├── Bloc1Resultat.tsx
+│       │       │   │   ├── Bloc2Etapes.tsx
+│       │       │   │   ├── Bloc3CasRetenu.tsx
+│       │       │   │   ├── EtapesPatient.tsx
+│       │       │   │   ├── MessageExceptionSansLieu.tsx
+│       │       │   │   ├── ResultatFinal.tsx
+│       │       │   │   ├── cases-documentaires.ts
+│       │       │   │   ├── convocation-dap.tsx
+│       │       │   │   ├── frais-a-prevoir.tsx
+│       │       │   │   ├── modalites-transport.tsx
+│       │       │   │   ├── motifs-de-la-dap.ts
+│       │       │   │   ├── orientation-caisse.tsx
+│       │       │   │   └── urgence-attestee.tsx
+│       │       │   └── rubriques
+│       │       │       ├── rubriques-de-la-dap.ts
+│       │       │       ├── rubriques-du-pmt.ts
+│       │       │       ├── rubriques-du-s3141.ts
+│       │       │       ├── rubriques-en-tete.ts
+│       │       │       ├── rubriques-mode-de-transport.ts
+│       │       │       ├── rubriques-prescripteur.ts
+│       │       │       ├── rubriques-situation-medicale.ts
+│       │       │       └── rubriques-trajet.ts
+│       │       └── validations-documentaires.ts
+│       ├── index.html
+│       ├── package.json
+│       ├── regles
+│       │   ├── VERSION
+│       │   └── regles.publicodes
+│       ├── scripts
+│       │   ├── apercu-cerfa.ts
+│       │   ├── valider-regles.ts
+│       │   └── verifier-bundle.ts
+│       ├── server
+│       │   ├── app.ts
+│       │   ├── configuration.ts
+│       │   ├── identification
+│       │   │   ├── lignes-grist.ts
+│       │   │   ├── pseudonymisation.ts
+│       │   │   ├── referentiel-grist.ts
+│       │   │   ├── referentiel-source.ts
+│       │   │   └── routes.ts
+│       │   └── server.ts
+│       ├── shared
+│       │   ├── identite-pseudonymisee.ts
+│       │   ├── identite-saisie.ts
+│       │   └── referentiel.ts
+│       ├── tests
+│       │   ├── analytics
+│       │   │   ├── evenements.test.ts
+│       │   │   └── matomo.test.ts
+│       │   ├── app
+│       │   │   ├── BandeauVersion.test.tsx
+│       │   │   └── Gate.test.tsx
+│       │   ├── architecture.test.ts
+│       │   ├── cerfa
+│       │   │   ├── Raccourci.test.tsx
+│       │   │   ├── Telechargement.test.tsx
+│       │   │   ├── analytics.test.tsx
+│       │   │   ├── depuis-simulateur-dap-mapping.test.ts
+│       │   │   ├── depuis-simulateur-dap.test.ts
+│       │   │   ├── depuis-simulateur-mapping.test.ts
+│       │   │   ├── depuis-simulateur-s3141.test.ts
+│       │   │   ├── depuis-simulateur.test.ts
+│       │   │   ├── elements-medicaux-parcours.test.ts
+│       │   │   ├── elements-medicaux-regles.test.ts
+│       │   │   ├── gabarit.ts
+│       │   │   ├── mapping.test.ts
+│       │   │   ├── remplissage-s3141.test.ts
+│       │   │   ├── remplissage.test.ts
+│       │   │   ├── revision-texte-medical.test.tsx
+│       │   │   └── texte-medical-integral.test.ts
+│       │   ├── identification
+│       │   │   ├── Identification.test.tsx
+│       │   │   ├── enrichissement.test.ts
+│       │   │   ├── grist-ecriture.smoke.test.ts
+│       │   │   ├── grist.smoke.test.ts
+│       │   │   ├── server.test.ts
+│       │   │   ├── serveur-de-test.ts
+│       │   │   └── session.test.ts
+│       │   ├── inspection-des-sources.ts
+│       │   ├── lisibilite.test.ts
+│       │   ├── outils-produit
+│       │   │   ├── Encadre.test.tsx
+│       │   │   ├── Galerie.test.tsx
+│       │   │   ├── deverrouillage.test.ts
+│       │   │   ├── labo.test.ts
+│       │   │   └── trace-debug.test.tsx
+│       │   ├── porte.ts
+│       │   ├── recette-sans-version.test.ts
+│       │   ├── regles-front.test.ts
+│       │   ├── serveur
+│       │   │   └── configuration.test.ts
+│       │   ├── setup.ts
+│       │   └── simulateur
+│       │       ├── Prescripteur.test.tsx
+│       │       ├── ResultatMedical.test.tsx
+│       │       ├── Secretariat.test.tsx
+│       │       ├── accord-prealable.test.ts
+│       │       ├── adresses-du-trajet.test.tsx
+│       │       ├── adresses-obligatoires.test.ts
+│       │       ├── article-80.test.ts
+│       │       ├── asepsie-explication.test.tsx
+│       │       ├── asepsie.test.ts
+│       │       ├── attente-accord.test.ts
+│       │       ├── aval-invalide.test.ts
+│       │       ├── bornes-de-saisie.test.tsx
+│       │       ├── campagne-*.ts  (9 files)
+│       │       ├── cases-documentaires.test.tsx
+│       │       ├── champs-poses.tsx
+│       │       ├── convocation-aerienne.test.ts
+│       │       ├── convocation-interface.test.tsx
+│       │       ├── convocation-revalidation.test.tsx
+│       │       ├── convocation.test.ts
+│       │       ├── correspondances-documentaires.test.ts
+│       │       ├── couleurs-des-resultats.test.tsx
+│       │       ├── document-du-livrable.ts
+│       │       ├── engagement-maternite.test.tsx
+│       │       ├── entrees-calculees.test.ts
+│       │       ├── etapes.test.ts
+│       │       ├── exceptions-ehpad-usld.test.tsx
+│       │       ├── faits-connus.test.tsx
+│       │       ├── familles.test.ts
+│       │       ├── financement-incomplet.test.ts
+│       │       ├── financement.test.ts
+│       │       ├── financement.ts
+│       │       ├── grille.test.ts
+│       │       ├── impression-du-resultat.test.tsx
+│       │       ├── informations-des-questions.test.ts
+│       │       ├── invalidation-lieu.test.ts
+│       │       ├── libelles-de-reponse.test.tsx
+│       │       ├── lieu-domicile.test.tsx
+│       │       ├── lieux-deduits-resultat.test.tsx
+│       │       ├── livrable.ts
+│       │       ├── matrice-nommee.test.ts
+│       │       ├── matrice.ts
+│       │       ├── migration-du-livrable.ts
+│       │       ├── modalites-transport.test.tsx
+│       │       ├── mosaiques.test.tsx
+│       │       ├── moteur.ts
+│       │       ├── motif-ald.test.tsx
+│       │       ├── motifs-dap.test.ts
+│       │       ├── motifs-de-la-dap.test.tsx
+│       │       ├── nombre-iteratif-pmt.test.ts
+│       │       ├── nombre-permission-dap.test.tsx
+│       │       ├── orientation-bariatrique.test.tsx
+│       │       ├── orientation-caisse-sans-adresse.test.tsx
+│       │       ├── orientation-caisse.test.tsx
+│       │       ├── pages-completes.test.ts
+│       │       ├── parcours.ts
+│       │       ├── partie-2-non-requise.test.ts
+│       │       ├── passation.test.ts
+│       │       ├── permission.test.ts
+│       │       ├── permissions-qualifiees-tot.test.tsx
+│       │       ├── precedent-depuis-un-resultat.test.tsx
+│       │       ├── precisions-medicales.test.tsx
+│       │       ├── radiotherapie-transfert.test.ts
+│       │       ├── regression.test.ts
+│       │       ├── reponses-de-page.ts
+│       │       ├── retour-arriere-sur-q1.test.tsx
+│       │       ├── retour-penitentiaire.test.ts
+│       │       ├── saisies-calendaires.test.tsx
+│       │       ├── scenarios.test.ts
+│       │       ├── situations.ts
+│       │       ├── trajet-du-livrable.ts
+│       │       ├── transferts-qualifies-tot.test.tsx
+│       │       ├── transitions-du-livrable.ts
+│       │       ├── urgence-attestee.test.tsx
+│       │       ├── verrou-de-la-decision-medicale.test.tsx
+│       │       └── visibilite-des-options.test.tsx
+│       ├── tsconfig.json
+│       └── vite.config.ts
+├── biome.base.jsonc
+├── biome.jsonc
+├── docs
+│   ├── knowledge
+│   │   ├── adr
+│   │   │   └── .gitkeep
+│   │   ├── contributing
+│   │   │   ├── regles-de-code.md
+│   │   │   └── regles-git.md
+│   │   └── domain
+│   │       └── .gitkeep
+│   ├── specs
+│   │   ├── 0. drafts
+│   │   │   └── .gitkeep
+│   │   ├── 1. backlog
+│   │   │   └── .gitkeep
+│   │   ├── 2. todo
+│   │   │   └── .gitkeep
+│   │   ├── 3. doing
+│   │   │   └── .gitkeep
+│   │   ├── 4. done
+│   │   │   └── .gitkeep
+│   │   └── TEMPLATE.md
+│   └── tasks
+│       └── TEMPLATE.md
+├── knip.jsonc
+├── mise.toml
+├── package.json
+├── pnpm-lock.yaml
+└── pnpm-workspace.yaml
+117 directories, 556 files
