@@ -1,9 +1,11 @@
-## Changelog : monitor-ui (30 derniers jours, au 03/09/2026)
+## Changelog : monitor-ui (30 derniers jours, au 20/10/2026)
 
 ### Résumé
-Les dernières mises à jour ont principalement porté sur l'amélioration de l'accessibilité visuelle et l'ajustement de l'apparence de certains composants de l'interface utilisateur.
+Les récentes évolutions se concentrent sur l'ajustement des composants d'interface utilisateur, notamment pour améliorer la flexibilité de l'aperçu des fichiers et la cohérence des boutons de navigation.
 
 ### Évolutions fonctionnelles
-- **Accessibilité :** Amélioration du contraste de la couleur `slate-gray` pour garantir une meilleure lisibilité sur les fonds colorés. ([4371ed7](https://github.com/MTES-MCT/monitor-ui/commit/4371ed7360286014fcd920731b967168d04c5961))
-- **Composants UI :** Mise à jour du composant `LinkButton`. ([05609d7](https://github.com/MTES-MCT/monitor-ui/commit/05609d7f306774a83ddc0ffb2c5b3ce2fb3b7288))
-- **Typographie :** Ajustement de la taille de police sur certains composants. ([bf4b1d8](https://github.com/MTES-MCT/monitor-ui/commit/bf4b1d8))
+- **LinkButton** : Introduction d'une nouvelle taille de bouton. Note : l'utilisation d'une icône est désormais obligatoire pour la variante "Large" ([af7df50](https://github.com/MTES-MCT/monitor-ui/commit/af7df50)).
+- **FilePreview** : La propriété de suppression (`onDelete`) est désormais optionnelle lorsque le composant est utilisé en mode lecture seule ([a71d93e](https://github.com/MTES-MCT/monitor-ui/commit/a71d93e)).
+
+### Évolutions techniques
+- Mise à jour du pipeline de déploiement automatique (CI/CD) pour les versions 24.60.2 et 24.61.0.
