@@ -3,6 +3,182 @@
 Generated from Conventional Commits at each release. Older majors are archived
 under [docs/changelog/](https://github.com/SocialGouv/iterion/tree/main/docs/changelog).
 
+## [3.286.3](https://github.com/SocialGouv/iterion/compare/v3.286.2...v3.286.3) (2026-10-24)
+
+### Bug Fixes
+
+* bind consumed reviews to their producer ([#2589](https://github.com/SocialGouv/iterion/issues/2589)) ([efc89e9](https://github.com/SocialGouv/iterion/commit/efc89e9ea328cac07d71dcfef4b7eb699ede798b)), references [#2592](https://github.com/SocialGouv/iterion/issues/2592)
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 7 local (announced 6, ceiling 20) Adversarial-Model: kimi-code
+
+    </details>
+* **delegate,secretguard,bots:** undeclared ITERION literals pass tools byte-identical, and a placeholder-shaped review never gates ([c9fc1c9](https://github.com/SocialGouv/iterion/commit/c9fc1c9e27d40ea05fb7757d58babee3066b293b))
+
+    <details><summary>why</summary>
+
+    ResolveSecretRef built a placeholder from any name it received: an unknown or normalized alias could resolve against a declared secret, and RedactOnly values leaked into that table. Resolution now consults the exact declared-name table; unknown names refuse. The witnesses run the real rewrite chain and pin the invariant - an undeclared ITERION literal survives a tool command byte for byte, and reintroducing a per-occurrence shape match reddens them.
+
+    </details>
+
+## [3.286.2](https://github.com/SocialGouv/iterion/compare/v3.286.1...v3.286.2) (2026-10-24)
+
+### Bug Fixes
+
+* preserve the deepsec export schema ([#2592](https://github.com/SocialGouv/iterion/issues/2592)) ([bd9f649](https://github.com/SocialGouv/iterion/commit/bd9f649a03ee6d39e18c0cc7c83857a400e54a03))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 7 local (announced 6, ceiling 20) Adversarial-Model: kimi-code
+
+    </details>
+
+## [3.286.1](https://github.com/SocialGouv/iterion/compare/v3.286.0...v3.286.1) (2026-10-24)
+
+### Bug Fixes
+
+* **proc,runview,runtime:** the fixed install-path tier is injectable, and the sandbox resolver delegates to it ([e40def0](https://github.com/SocialGouv/iterion/commit/e40def0715d8a3c1841c504c984c1f4ddd1a158b))
+
+    <details><summary>why</summary>
+
+    TestLaunchDetached_NamesTheDroppedOverrides isolated PATH, but the production resolver reads the fixed install paths before PATH: on a host with ~/.local/bin/iterion the witness spawned the operator's real binary (proctest forgave the settling child) instead of refusing. The fixed tier moves behind proc.SetInstallPathCandidates — a test seam the witness holds empty — with ITERION_BIN and HOME pinned beside it. The duplicated locateHostIterionBinary in pkg/runtime now delegates to…
+
+    </details>
+
+## [3.286.0](https://github.com/SocialGouv/iterion/compare/v3.285.1...v3.286.0) (2026-10-23)
+
+### Features
+
+* **instrument:** the metrics family — a /metrics surface, wired and scraped ([9174dd9](https://github.com/SocialGouv/iterion/commit/9174dd9f739bd8ea3ae9a62742e36cf042e0906c))
+
+    <details><summary>why</summary>
+
+    The family skill states the definition of done (a /metrics endpoint on the production surface, HTTP request count and latency by route template and status CLASS, process metrics, scrape wiring where the repo carries manifests, an env toggle with the DSN's strict opt-in semantics) with the cardinality budget that keeps the surface answerable. The three stack skills fold the recipes in: prometheus_client + the FastAPI instrumentator (instrument(app), latency with status), prom-client with real…
+
+    </details>
+* **server,chart:** the maintenance fence, the contract probes, and the values schema ([c94fac3](https://github.com/SocialGouv/iterion/commit/c94fac33f7635748460fb13b20e51270ee149e6b))
+
+    <details><summary>why</summary>
+
+    Expose compiled queue/store contracts offline. Gate new admissions through the platform maintenance record while preserving existing-run resumes. Surface the dated refusal in the API and Studio, and validate/render-diff Helm values.
+
+    </details>
+
+### Bug Fixes
+
+* **auth,server,studio,desktop:** the identity tree is read, never trusted, and credentials derive only at the chokepoint ([#2715](https://github.com/SocialGouv/iterion/issues/2715)) ([60a5add](https://github.com/SocialGouv/iterion/commit/60a5add78dae9a48174c221f487f8c967f833acb)), closes [#1668](https://github.com/SocialGouv/iterion/issues/1668)
+
+    <details><summary>why</summary>
+
+    The org tree is read from the store, never rebuilt from per-document token decodes: /api/auth/me is the sole builder of the identity view, and every consumer reads that one tree (#2624's class).
+
+    </details>
+* **bots:** the shipped bots declare what they use, and the renovacy ledger exit carries its guard ([f6a821d](https://github.com/SocialGouv/iterion/commit/f6a821d7c5e76f44744d7a23508737093d01aab4))
+
+    <details><summary>why</summary>
+
+    tool_search — the schema loader the author's own eight comment lines argue for ("Allowed, it can report tool availability honestly") — and nothing else: the bounded evidence surface the e2e contract pins for reflect stays bounded. The todo_write/task allow rules with no written argument are REMOVED, not declared... with one exception the contract itself forced: copilot's shared allow block keeps TodoWrite verbatim (the Copi permission contract pins it — the policy bounds what may RUN regardless…
+
+    </details>
+* **bots:** the shipped bots declare what they use, and the renovacy ledger exit carries its guard ([357ba53](https://github.com/SocialGouv/iterion/commit/357ba53691218d29efe95c18f3dfc0eee7057c55))
+
+    <details><summary>why</summary>
+
+    #1653: the inert allow rules die by declaration, per the author's written argument — copilot's three reviewers gain tool_search (the schema loader that lets a reviewer report tool availability honestly: the eight comment lines the author wrote), nexie gains skill (its skills come back through the loading path), and the todo_write/task rules with no written argument are REMOVED instead of declared — the bounded evidence surface the e2e contract pins for reflect stays bounded, and the Copi…
+
+    </details>
+* **ci,build:** pkg/server joins the mongo-conformance job, and gen:check stops mutating ([365083f](https://github.com/SocialGouv/iterion/commit/365083f7af2b9efc764c3fd1ea0d4381ce82be9f))
+
+    <details><summary>why</summary>
+
+    The train's round-4 gate validated both edits on this tree; they were left unstaged by the amend ordering and follow now:
+
+    </details>
+* expose repo bot preview and updates ([db51c1e](https://github.com/SocialGouv/iterion/commit/db51c1edf3fc5f2e8bde32262b0f75faa6f7e07c))
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 3 local (announced 6, ceiling 20) Adversarial-Model: kimi-code
+
+    </details>
+* **release:** the cut re-pins its own corpus edits in the release commit ([dcbc495](https://github.com/SocialGouv/iterion/commit/dcbc495f91492bf52d4463b9c5d5a9784c4406d6)), closes [#2607](https://github.com/SocialGouv/iterion/issues/2607)
+
+    <details><summary>why</summary>
+
+    internal/mdcode's committed-reading golden pins every tracked .md, .yaml and .yml; the release cut edits CHANGELOG.md and the chart and is pushed straight to main, so every cut left main red on the corpus witness until a hand regen merged (v3.273.0 through v3.276.0: four times in 30 hours).
+
+    </details>
+* **repomap:** the docs walk reads the index, and a deleted page no longer aborts it ([a9229e7](https://github.com/SocialGouv/iterion/commit/a9229e703c1f44c67cf52acb416b34566f813ab8))
+
+    <details><summary>why</summary>
+
+    task gen / gen:check: one aggregate generates what the repo commits (maps, OpenAPI, the dispatcher catalogue — deliberately NOT the reading golden, whose rewrite is review-only at the cut), the other asserts freshness, and check runs the checker before anything can regenerate over it.
+
+    </details>
+* **server,trigger,cloudsched:** the admission before the cancellation, and the atomic consumption receipt ([0ed3c18](https://github.com/SocialGouv/iterion/commit/0ed3c185c2cdf2fb9c17f499dd9bb3e4038e0b81))
+
+    <details><summary>why</summary>
+
+    The rva round 3 caught the last three holes in the hold semantics:
+
+    </details>
+* **server,trigger:** the fence defers instead of abandoning ([87abda9](https://github.com/SocialGouv/iterion/commit/87abda97c2ffb23cc97e4da48585c56b0a4398da))
+
+    <details><summary>why</summary>
+
+    The rva on the fence implementation caught the design flaw the tests missed: the maintenance refusal flowed into the retry consumers, so a pause during maintenance DESTROYED pending work — the trigger effects worker consumed one attempt per refusal (five refusals retired the effect for good), the board dispatch ended blocked, and the deferred webhook was deleted after exhaustion despite its 202. The gate held; the work did not survive the pause it was gated for.
+
+    </details>
+* **trigger,cloudsched,server:** the schedule exclusion spans the overlap read and the run persistence ([710af81](https://github.com/SocialGouv/iterion/commit/710af811553fe788cc628c0a0167fb10855cba23))
+
+    <details><summary>why</summary>
+
+    The cloudsched ticker excludes replicas per schedule (a renewable lease) from the overlap check through launch persistence: the publisher commits the run under a same-transaction ownership check on the lease, so an expired worker cannot persist behind its successor's overlap read. The local scheduler takes a file lock across journal reload, overlap, launch and outcome persistence, and no longer replays cached journal state.
+
+    </details>
+* **trigger,cloudsched:** the disarm batch respects the overlap policy, and the replacement credit waits for the transfer ([e05cd10](https://github.com/SocialGouv/iterion/commit/e05cd103e35b1ad601502fbf8d8fe2566afefbf9))
+
+    <details><summary>why</summary>
+
+    The rva round 4 caught the last two edges of the hold semantics: the disarm batch replayed every held intent straight past the overlap gate (a stack of held slots could all launch at disarm, defeating overlap:skip and keepalive), and the webhook replacement credited the predecessor's slot BEFORE the cancellation — a failed cancellation left two active runs against a ceiling of one.
+
+    </details>
+
+## [3.285.1](https://github.com/SocialGouv/iterion/compare/v3.285.0...v3.285.1) (2026-10-23)
+
+### Bug Fixes
+
+* **dsl,server,studio:** the DSL reader refuses early and every bot-source write carries what a whole read issued ([#2712](https://github.com/SocialGouv/iterion/issues/2712)) ([b49fbed](https://github.com/SocialGouv/iterion/commit/b49fbeddccebaeec7dacfd3246c2c3132304033a)), closes [#1690](https://github.com/SocialGouv/iterion/issues/1690), references [#2678](https://github.com/SocialGouv/iterion/issues/2678)
+
+    <details><summary>why</summary>
+
+    The reader of a bot no longer loads what it could not read whole. The budget bounds one bot's files together at 2^20 records — every word, value, punctuation mark, prompt line and line end is one, a comment two (commentRecords) — moved with ITERION_DSL_READ_BUDGET (classified infra in platformcfg), 0 removing the bound; the lexer spends it as it reads, so a bot past it is refused before the work it asks for, and the files of one bot share it (NewUnitBudget), so splitting a bot into fragments…
+
+    </details>
+
+## [3.285.0](https://github.com/SocialGouv/iterion/compare/v3.284.1...v3.285.0) (2026-10-23)
+
+### Features
+
+* **secrets,runner,cloudpublisher:** the runner serves a run-held gateway credential and refuses ambient credentials on a stamped run ([#2709](https://github.com/SocialGouv/iterion/issues/2709)) ([abc3f71](https://github.com/SocialGouv/iterion/commit/abc3f71cf6280c527c7ba743ab8163b238704262)), references [#2005](https://github.com/SocialGouv/iterion/issues/2005) [#2652](https://github.com/SocialGouv/iterion/issues/2652)
+
+    <details><summary>why</summary>
+
+    PR-B'1 of #2005 (ADR-131) — the consumer half of the carriage, "consumer first, inert at v25": every change is a no-op on the bundles sealed today, and the queue schema is untouched (the bump to 27 ships with the producer, PR-C').
+
+    </details>
+
+### Bug Fixes
+
+* **model:** the claw recovery pass retries once at a lowered reasoning effort ([#2716](https://github.com/SocialGouv/iterion/issues/2716)) ([7c25d46](https://github.com/SocialGouv/iterion/commit/7c25d466d0ca8ada16f7fd021f9b29050833e092)), references [SocialGouv/iterion#2710](https://github.com/SocialGouv/iterion/issues/2710)
+
+    <details><summary>why</summary>
+
+    A long tool loop's structured recovery on a gateway model can come back empty at a high reasoning effort — four identical deaths on the vao pool (SocialGouv/iterion#2710), ~$5 of diff reading lost per death, the whole review restarting from scratch on every node recovery. The recovery pass now runs ONCE MORE at the lowered effort (the existing effortAfterCut lever, which refuses an already-lowered recovery) before the node fails: one billed call against a full restart. The first recovery's…
+
+    </details>
+
 ## [3.284.1](https://github.com/SocialGouv/iterion/compare/v3.284.0...v3.284.1) (2026-10-22)
 
 ### Bug Fixes

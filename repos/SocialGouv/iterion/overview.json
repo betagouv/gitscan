@@ -1,17 +1,16 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Iterion est une plateforme de contrôle pour l'orchestration de workflows d'agents IA. Elle permet de définir des cycles de travail complexes via un DSL déclaratif, tout en assurant l'auditabilité, la gestion des budgets et l'isolation des exécutions.",
+  "description": "Iterion est un plan de contrôle pour les agents d'IA, permettant de construire, exécuter et orchestrer des workflows agentiques complexes. Il utilise un langage DSL déclaratif pour définir des chaînes d'agents, des juges et des processus humains de manière auditable.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
     "Collaboration & Workflow",
     "Interface utilisateur & Design",
     "Sécurité & Conformité",
-    "Administration & Backoffice",
-    "Suivi & Traçabilité",
     "Monitoring & Logs",
-    "Gestion des utilisateurs & Permissions"
+    "Administration & Backoffice",
+    "Données & Schémas"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -19,50 +18,55 @@
     "TypeScript",
     "MongoDB",
     "NATS JetStream",
-    "S3",
-    "Docker",
-    "Kubernetes",
     "Prometheus",
     "Grafana",
-    "Helm"
+    "Docker",
+    "Kubernetes",
+    "Helm",
+    "SeaweedFS"
   ],
   "components": [
     "API REST & GraphQL",
+    "MongoDB & NoSQL",
     "TypeScript / JavaScript",
+    "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "MongoDB & NoSQL",
-    "Intelligence Artificielle / ML",
     "CI/CD & Déploiement",
-    "Documentation & Schémas"
+    "Intelligence Artificielle / ML",
+    "Monitoring & Observabilité",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
       "sso",
-      "api-key",
-      "jwt"
+      "api-key"
     ],
     "providers": [
       "GitHub",
-      "GitLab"
+      "GitLab",
+      "OpenAI"
     ]
   },
-  "tests": "Tests avec partitionnement déterministe",
+  "tests": "Pipelines de tests automatisés avec partitionnement de shards",
   "workflows": [
-    "CI/CD pipelines"
+    "GitHub Actions",
+    "Helm deployment"
   ],
-  "lastActivity": "2026-10-22T00:00:00Z",
+  "lastActivity": "2026-10-24T00:00:00Z",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
-    "TypeScript",
+    "Git & DevOps",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Git & DevOps",
+    "TypeScript",
+    "Python",
     "CI/CD & GitHub Actions",
-    "Standards & Schémas"
+    "Monitoring & Observabilité"
   ]
 }

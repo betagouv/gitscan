@@ -1,45 +1,27 @@
-## Changelog : iterion (30 derniers jours, au 23 octobre 2026)
+## Changelog : iterion (30 derniers jours, au 25 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance de l'infrastructure "Souveraine" et de l'intelligence du routage. Iterion renforce son contrôle sur l'orchestration d'agents avec l'introduction de politiques de routage adaptatif (Adaptive Routing) et une isolation accrue des ressources via des pools de runners dédiés. L'expérience utilisateur a également été nettement améliorée, notamment grâce à une refonte de l'accessibilité du Studio et une meilleure visibilité sur les livrables des workflows.
+Ce mois a été marqué par une consolidation majeure de la plateforme, avec un accent particulier sur la sécurité des environnements d'exécution et l'accessibilité de l'interface. Iterion renforce sa capacité à orchestrer des agents de manière isolée et contrôlée grâce à un sandboxing plus strict et une gestion fine des budgets de consommation (tokens). L'expérience utilisateur est également améliorée avec une interface Studio plus accessible et de nouveaux outils de surveillance de production pour garantir la stabilité des workflows.
 
 ### Évolutions fonctionnelles
-
-**Interface Studio & Expérience Utilisateur**
-- **Visibilité des livrables :** Les résultats des runs (rendus Markdown) sont désormais consultables directement dans le résumé du run et via le tiroir "Artifacts" [#2700].
-- **Accessibilité (WCAG) :** Améliorations majeures pour l'accessibilité, incluant la visibilité du focus clavier, le nommage correct des contrôles de formulaire et une meilleure gestion des contrastes [#2622, #2638, #2556].
-- **Navigation :** Introduction d'une nouvelle structure de navigation pour les bots (spine à 6 verbes) pour faciliter l'exploration du catalogue [#1520].
-
-**Intelligence & Routage LLM**
-- **Routage Adaptatif :** Mise en place de politiques de routage complexes permettant des règles spécifiques par organisation, équipe ou run, incluant des listes d'autorisation de fournisseurs (allowlists) [#2217, #2210, #2159].
-- **Nouveaux Modèles :** Support natif des derniers modèles (Opus 5.5, GPT-6) et intégration de Kimi comme fournisseur de premier rang [#1835, #1744].
-- **Gestion des passerelles :** Les passerelles compatibles OpenAI peuvent désormais être gérées comme des enregistrements de credentials sécurisés [#2671].
-
-**Automatisation & Audit**
-- **Audit RGAA :** Ajout d'une commande permettant de générer automatiquement des rapports d'audit d'accessibilité RGAA [#2593].
-- **Gestion des budgets :** Possibilité de réserver de la capacité pour des charges de travail spécifiques [#1099] et mise en pause automatique des exécutions en cas de dépassement de plafond [#2263].
-- **GitOps :** Amélioration des outils "GitOps-warden" pour la gestion des merges et des verdicts, avec support du français [#2389, #2235].
+- **Interface Studio & Accessibilité** : Amélioration significative de l'accessibilité (normes WCAG) incluant la gestion du focus clavier, les rôles d'icônes et les régions de texte en direct [#2638, #2622, #2556, #2527]. Ajout de nouveaux écrans d'administration pour la gestion des rôles, de la sandbox et des identifiants de plateforme [#1443, #1461].
+- **Nouveaux outils d'agents (Bots)** : 
+    - Introduction de **GitOps-warden** pour automatiser et sécuriser les processus de fusion (merge gates) [#2480, #2389].
+    - Déploiement de **Argus (prod-watch)** pour une surveillance proactive de la production via Grafana et Loki [#2138, #1869].
+    - Amélioration de l'audit d'accessibilité via le bot **Acci** [#2387].
+- **Rédaction de workflows (DSL)** : Amélioration de la clarté des erreurs lors de la rédaction de fichiers YAML, avec des messages d'erreur plus explicites indiquant la cause exacte des échecs de validation [#2405, #2604].
 
 ### Évolutions techniques
-
-**Infrastructure Souveraine & Sécurité**
-- **Isolation des Runners :** Déploiement de "Sovereign Runner Pools", permettant d'isoler chaque pool dans son propre déploiement de runner avec une identité propre [#2273, #2182].
-- **Sécurité des Secrets :** Renforcement de la liaison entre les bundles de run, les tenants, les pools et les identifiants de clés pour garantir une isolation stricte [#2225].
-- **Stockage :** Intégration de SeaweedFS comme magasin d'objets pour l'environnement de développement [#1943].
-
-**Observabilité & Monitoring**
-- **Système Prod-watch (Argus) :** Déploiement d'un monitoring déterministe sans recours aux LLM, avec des canaux de surveillance dédiés pour Sentry, Loki et Grafana [#1869, #1702, #2057, #2138].
-
-**Core & DSL**
-- **Refonte du DSL :** Amélioration massive de l'outil d'auteur (YAML twin) pour la validation, le formatage et la conversion des documents de configuration [#1720, #1664].
-- **Optimisation du Runtime :** Correction de la gestion des unités de consommation (usage park) et de la synchronisation des réplicas lors des opérations de nettoyage (sweeps) [#2708, #2686].
+- **Sécurité et Isolation** : 
+    - Renforcement du sandboxing pour empêcher les agents d'accéder aux variables d'environnement ou aux fichiers sensibles de l'hôte [#2310, #2321, #2063].
+    - Sécurisation des secrets et des credentials par tenant et par pool, limitant l'accès aux ressources strictement nécessaires [#2671, #2236].
+- **Gestion des ressources et Budgets** : Mise en place de mécanismes de contrôle des coûts permettant de définir des plafonds de consommation de tokens et de mettre en pause automatiquement les exécutions en cas de dépassement [#2263, #2028].
+- **Infrastructure et Observabilité** : 
+    - Exposition de nouvelles métriques via un endpoint `/metrics` pour une intégration native avec Prometheus [#9174dd9].
+    - Intégration de **SeaweedFS** comme système de stockage d'objets pour la stack de développement [#1943].
+    - Optimisation de la CI/CD avec l'ajout de tests de bout en bout (E2E) via Playwright et un meilleur partitionnement des tests par shards [#9c0d139c, #2213].
+- **Routage et Cloud** : Introduction de politiques de routage adaptatives au niveau de l'organisation et de l'équipe pour la sélection des modèles LLM [#2217, #2126]. Mise en place de "Sovereign Runner Pools" pour une isolation physique des ressources de calcul [#2273].
 
 ### Autres changements
-
-**Documentation**
-- **Diagrammes techniques :** Ajout de diagrammes ERD (modèle de données) interactifs et zoomables en SVG pour une meilleure compréhension de la base de données [#2582, #2545].
-- **Cartographie :** Mise à jour de la documentation des agents et de la structure des domaines [#2106, #2561].
-
-**CI/CD & Tests**
-- **Fiabilité des tests :** Optimisation des pipelines de tests par un partitionnement déterministe des shards et réduction des tests non déterministes (deflaking) [#2203, #2144, #2156].
-- **Maintenance :** Automatisation de la mise à jour quotidienne du dépôt Homebrew (tap) [#2308].
+- **Documentation** : Refonte de la documentation technique incluant de nouveaux diagrammes de flux de fonctionnalités et un schéma complet du modèle de données (ERD) en format SVG zoomable [#2582, #2561, #2545].
+- **Nettoyage** : Suppression de plusieurs composants et fonctions obsolètes (legacy) pour simplifier le code source.
