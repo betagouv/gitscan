@@ -1,20 +1,22 @@
-## Changelog : formulaire-qf (30 derniers jours, au 15 octobre 2026)
+## Changelog : formulaire-qf (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur la fiabilisation des processus de test, l'amélioration de la confidentialité des données usagers et l'optimisation de l'environnement de développement pour les contributeurs.
+Ce mois a été marqué par une importante mise à jour de l'infrastructure technique, notamment le passage à Ruby 4.0. Des améliorations significatives ont été apportées à la fiabilité des déploiements et des tests automatiques, tout en renforçant la protection des données des usagers.
 
 ### Évolutions fonctionnelles
-- **Protection des données et confidentialité** : Amélioration de la sécurité des données en supprimant l'envoi des identités d'usagers et des détails de requêtes/réponses vers l'outil de suivi d'erreurs Sentry ([#393](https://github.com/etalab/formulaire-qf/pull/393)).
+- **Protection de la vie privée** : les détails personnels des utilisateurs et les réponses d'API ne sont plus transmis à l'outil de suivi d'erreurs Sentry lors des erreurs API.
+- **Fiabilité des données** : la version du quotient familial est désormais gérée sous forme de chaîne de caractères pour garantir la cohérence des données.
 
 ### Évolutions techniques
-- **CI/CD** : Correction du pipeline d'intégration continue pour garantir l'exécution systématique des tests à chaque nouveau commit sur une pull request ([#397](https://github.com/etalab/formulaire-qf/pull/397)).
-- **Compatibilité et correctifs** : 
-    - Résolution de problèmes de déploiement liés à la compatibilité entre JSON 3 et Sprockets ([#398](https://github.com/etalab/formulaire-qf/pull/398)).
-    - Correction d'une clé de version en double dans le format JSON 3 ([#391](https://github.com/etalab/formulaire-qf/pull/391)).
-    - Typage de la version du quotient familial en chaîne de caractères pour assurer la cohérence des données.
-- **Maintenance et base de données** : Préparation de la montée de version de GoodJob par l'application des migrations en attente ([#392](https://github.com/etalab/formulaire-qf/pull/392)).
-- **Expérience développeur** : Mise en place de scripts pour faciliter l'utilisation de *worktrees* avec des bases de données et des ports isolés ([#394](https://github.com/etalab/formulaire-qf/pull/394)).
+- **Mise à jour majeure de l'environnement** : montée de version vers Ruby 4.0.9 [#414](https://github.com/etalab/formulaire-qf/issues/414).
+- **Amélioration de la CI/CD** : correction du cycle de tests pour qu'ils s'exécutent systématiquement à chaque nouveau commit sur une pull request [#397](https://github.com/etalab/formulaire-qf/issues/397).
+- **Optimisation du déploiement** : résolution de problèmes de déploiement via la mise à jour de Sprockets pour assurer la compatibilité avec JSON 3 [#398](https://github.com/etalab/formulaire-qf/issues/398).
+- **Refactoring et nettoyage** :
+    - Suppression de la dépendance Spring [#413](https://github.com/etalab/formulaire-qf/issues/413).
+    - Mise à jour et nettoyage des migrations pour GoodJob [#392](https://github.com/etalab/formulaire-qf/issues/392).
+    - Centralisation des paramètres Logstasher dans un fichier de configuration dédié [#396](https://github.com/etalab/formulaire-qf/issues/396).
+- **Amélioration du workflow de développement** : ajout de scripts pour faciliter l'utilisation de `git worktree` avec des bases de données et des ports isolés [#394](https://github.com/etalab/formulaire-qf/issues/394).
 
 ### Autres changements
-- **Documentation** : Ajout du fichier `CLAUDE.md` répertoriant les commandes et les conventions de travail du dépôt.
-- **Configuration** : Centralisation des paramètres de Logstasher dans un fichier de configuration dédié `logstasher.yml` ([#396](https://github.com/etalab/formulaire-qf/pull/396)).
+- **Documentation** : création du fichier `CLAUDE.md` récapitulant les commandes et les conventions du dépôt.
+- **Correction technique** : résolution d'un problème de clé de version en double dans le format JSON 3 [#391](https://github.com/etalab/formulaire-qf/issues/391).
