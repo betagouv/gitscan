@@ -221,7 +221,8 @@
 │   │   │   │       ├── cluster_acteurs_suggestions
 │   │   │   │       │   ├── context.py
 │   │   │   │       │   ├── prepare.py
-│   │   │   │       │   └── to_db.py
+│   │   │   │       │   ├── to_db.py
+│   │   │   │       │   └── to_db_groupes.py
 │   │   │   │       └── misc
 │   │   │   │           ├── cluster_exclude_intra_source.py
 │   │   │   │           ├── df_metadata_get.py
@@ -288,6 +289,7 @@
 │   │   │           ├── enrich_dbt_model_read.py
 │   │   │           ├── enrich_dbt_model_row_to_suggest_data.py
 │   │   │           ├── enrich_dbt_model_suggest.py
+│   │   │           ├── enrich_dbt_model_to_suggestion_groupes.py
 │   │   │           ├── enrich_dbt_model_to_suggestions.py
 │   │   │           ├── enrich_lien_succession_suggest.py
 │   │   │           ├── enrich_siret_siren_suggest.py
@@ -441,7 +443,8 @@
 │   │   │   │           ├── test_cluster_acteurs_read_parents.py
 │   │   │   │           ├── test_cluster_acteurs_suggestions_contexte_generate.py
 │   │   │   │           ├── test_cluster_acteurs_suggestions_prepare.py
-│   │   │   │           └── test_cluster_acteurs_suggestions_to_db_and_apply.py
+│   │   │   │           ├── test_cluster_acteurs_suggestions_to_db_and_apply.py
+│   │   │   │           └── test_cluster_acteurs_suggestions_to_db_groupes.py
 │   │   │   ├── conftest.py
 │   │   │   ├── crawl
 │   │   │   │   ├── fixtures.py
@@ -460,6 +463,7 @@
 │   │   │   │   └── tasks
 │   │   │   │       ├── test_db_read_acteur_cp.py
 │   │   │   │       ├── test_enrich_dbt_model_row_to_data.py
+│   │   │   │       ├── test_enrich_dbt_model_to_suggestion_groupes.py
 │   │   │   │       ├── test_enrich_lien_succession_suggest.py
 │   │   │   │       ├── test_enrich_suggestions_cities.py
 │   │   │   │       ├── test_enrich_suggestions_closed.py
@@ -869,7 +873,8 @@
 │   │   ├── apis
 │   │   │   ├── README.md
 │   │   │   ├── qfdmo.md
-│   │   │   └── stats.md
+│   │   │   ├── stats.md
+│   │   │   └── suggestions.md
 │   │   ├── architecture
 │   │   │   ├── README.md
 │   │   │   ├── data-flow.md
@@ -920,6 +925,7 @@
 │   │       ├── internationalization.md
 │   │       ├── javascript.md
 │   │       ├── look-and-feel.md
+│   │       ├── revue-suggestions.md
 │   │       └── templates.md
 │   ├── toctree.py
 │   └── uv.lock
@@ -937,10 +943,6 @@
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
 │   │   │   ├── database_sample
-│   │   │   │   ├── .terraform.lock.hcl
-│   │   │   │   ├── terraform.tfvars.example
-│   │   │   │   └── terragrunt.hcl
-│   │   │   ├── metabase_containers
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
@@ -1061,7 +1063,8 @@
 │       ├── create_remote_webapp_in_warehouse.sql
 │       ├── create_schema.sql
 │       ├── create_webapp_sample_db.sql
-│       └── drop_all_tables.sql
+│       ├── drop_all_tables.sql
+│       └── grant_metabase_default_privileges.sql
 ├── servers.conf.erb
 ├── uv.lock
 └── webapp
@@ -1132,7 +1135,8 @@
     │   │       ├── __init__.py
     │   │       ├── fix_cluster_point_suggestions.py
     │   │       ├── fix_recursion_suggestions.py
-    │   │       └── resolve_su_ps_codes.py
+    │   │       ├── resolve_su_ps_codes.py
+    │   │       └── seed_revue_suggestions.py
     │   ├── migrations
     │   │   ├── 0001_bancache.py
     │   │   ├── 0002_tables_suggestion.py
@@ -1158,6 +1162,7 @@
     │   │   ├── 0022_suggestionunitaire_data_su_revision_acteur_if_modele_revision_acteur_and_more.py
     │   │   ├── 0023_alter_suggestioncohorte_type_action.py
     │   │   ├── 0024_alter_suggestioncohorte_type_action.py
+    │   │   ├── 0025_revue_suggestions_decision.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -1180,10 +1185,34 @@
     │   │   ├── suggestion.py
     │   │   ├── suggestions
     │   │   │   ├── abstract.py
+    │   │   │   ├── cluster.py
+    │   │   │   ├── constants.py
+    │   │   │   ├── enrich_acteur.py
     │   │   │   ├── enrich_multi.py
     │   │   │   ├── source.py
     │   │   │   └── utils.py
     │   │   └── utils.py
+    │   ├── revue
+    │   │   ├── __init__.py
+    │   │   ├── annuaire.py
+    │   │   ├── api.py
+    │   │   ├── auth.py
+    │   │   ├── choix.py
+    │   │   ├── cohortes.py
+    │   │   ├── detail.py
+    │   │   ├── errors.py
+    │   │   ├── exports.py
+    │   │   ├── filters.py
+    │   │   ├── lignes.py
+    │   │   ├── masse.py
+    │   │   ├── pagination.py
+    │   │   ├── policies.py
+    │   │   ├── revue.py
+    │   │   ├── schemas.py
+    │   │   ├── services.py
+    │   │   ├── taches.py
+    │   │   ├── urls.py
+    │   │   └── views.py
     │   ├── tasks.py
     │   ├── urls.py
     │   └── views.py
@@ -1258,6 +1287,12 @@
     │   │   └── test_routes.py
     │   ├── qfdmd
     │   │   └── test_sync_from_legacy.py
+    │   ├── revue
+    │   │   ├── test_revue_annuaire.py
+    │   │   ├── test_revue_cohortes_api.py
+    │   │   ├── test_revue_masse.py
+    │   │   ├── test_revue_review_api.py
+    │   │   └── test_revue_socle.py
     │   └── stats
     │       └── test_stats_api.py
     ├── jest.config.ts
@@ -1497,6 +1532,108 @@
     │   │   ├── configurator.py
     │   │   └── formulaire.py
     │   └── widgets.py
+    ├── revue-front
+    │   ├── .gitignore
+    │   ├── .parcelrc
+    │   ├── .postcssrc
+    │   ├── eslint.config.js
+    │   ├── jest.config.ts
+    │   ├── jest.setup.ts
+    │   ├── package.json
+    │   ├── src
+    │   │   ├── App.tsx
+    │   │   ├── Routes.tsx
+    │   │   ├── __mocks__
+    │   │   │   ├── dataUrl.ts
+    │   │   │   ├── maplibre.ts
+    │   │   │   ├── style.ts
+    │   │   │   └── wa.tsx
+    │   │   ├── api
+    │   │   │   ├── client.test.ts
+    │   │   │   ├── client.ts
+    │   │   │   ├── masse.ts
+    │   │   │   ├── mutations.test.ts
+    │   │   │   ├── mutations.ts
+    │   │   │   ├── openapi.json
+    │   │   │   ├── queries.ts
+    │   │   │   ├── schema.d.ts
+    │   │   │   └── types.ts
+    │   │   ├── bootstrap.test.ts
+    │   │   ├── bootstrap.ts
+    │   │   ├── components
+    │   │   │   ├── common
+    │   │   │   │   ├── ErrorToaster.tsx
+    │   │   │   │   ├── JsonValue.test.tsx
+    │   │   │   │   ├── JsonValue.tsx
+    │   │   │   │   ├── LogsButton.test.tsx
+    │   │   │   │   ├── LogsButton.tsx
+    │   │   │   │   ├── LogsDrawer.test.tsx
+    │   │   │   │   ├── LogsDrawer.tsx
+    │   │   │   │   ├── Pager.tsx
+    │   │   │   │   ├── Pill.test.tsx
+    │   │   │   │   ├── Pill.tsx
+    │   │   │   │   ├── Segmented.tsx
+    │   │   │   │   ├── ShortcutsHelp.tsx
+    │   │   │   │   ├── StackBar.tsx
+    │   │   │   │   ├── Value.test.tsx
+    │   │   │   │   └── Value.tsx
+    │   │   │   └── filters
+    │   │   │       ├── FilterBuilder.test.tsx
+    │   │   │       └── FilterBuilder.tsx
+    │   │   ├── context.tsx
+    │   │   ├── domain
+    │   │   │   ├── externalLinks.test.ts
+    │   │   │   ├── externalLinks.ts
+    │   │   │   ├── filterModel.test.ts
+    │   │   │   ├── filterModel.ts
+    │   │   │   ├── format.ts
+    │   │   │   ├── naf.test.ts
+    │   │   │   ├── naf.ts
+    │   │   │   ├── scroll.test.ts
+    │   │   │   ├── scroll.ts
+    │   │   │   └── statuts.ts
+    │   │   ├── icons.ts
+    │   │   ├── main.tsx
+    │   │   ├── parcel.d.ts
+    │   │   ├── router.test.tsx
+    │   │   ├── router.tsx
+    │   │   ├── safeHref.test.ts
+    │   │   ├── safeHref.ts
+    │   │   ├── screens
+    │   │   │   ├── cohorte
+    │   │   │   │   ├── CohorteHeader.tsx
+    │   │   │   │   ├── CohorteScreen.test.tsx
+    │   │   │   │   ├── CohorteScreen.tsx
+    │   │   │   │   ├── GroupesView.tsx
+    │   │   │   │   ├── LignesView.test.tsx
+    │   │   │   │   ├── LignesView.tsx
+    │   │   │   │   ├── MassBar.test.tsx
+    │   │   │   │   ├── MassBar.tsx
+    │   │   │   │   ├── Taches.test.tsx
+    │   │   │   │   ├── Taches.tsx
+    │   │   │   │   ├── TuplesBar.tsx
+    │   │   │   │   ├── cells
+    │   │   │   │   │   ├── LigneCells.test.tsx
+    │   │   │   │   │   └── LigneCells.tsx
+    │   │   │   │   ├── fixtures.ts
+    │   │   │   │   └── searchState.ts
+    │   │   │   ├── cohortes
+    │   │   │   │   ├── CohortesScreen.test.tsx
+    │   │   │   │   └── CohortesScreen.tsx
+    │   │   │   └── groupe-modal
+    │   │   │       ├── AnnuaireTab.tsx
+    │   │   │       ├── GroupeModal.test.tsx
+    │   │   │       ├── GroupeModal.tsx
+    │   │   │       ├── LocalisationMap.test.tsx
+    │   │   │       └── LocalisationMap.tsx
+    │   │   ├── state
+    │   │   │   ├── selection.test.ts
+    │   │   │   └── selection.ts
+    │   │   ├── styles
+    │   │   │   └── revue.css
+    │   │   ├── test-utils.tsx
+    │   │   └── wa.ts
+    │   └── tsconfig.json
     ├── search
     │   ├── __init__.py
     │   ├── apps.py
@@ -1660,25 +1797,29 @@
     │   │   └── revision_acteur
     │   │       └── change_form.html
     │   ├── data
-    │   │   └── _partials
-    │   │       ├── ajout_suggestion_details.html
-    │   │       ├── cells
-    │   │       │   ├── _links.html
-    │   │       │   ├── action.html
-    │   │       │   ├── display.html
-    │   │       │   ├── editable.html
-    │   │       │   └── html.html
-    │   │       ├── contexte_details.html
-    │   │       ├── display_diff_value.html
-    │   │       ├── extra_links.html
-    │   │       ├── modification_suggestion_details.html
-    │   │       ├── suggestion_details.html
-    │   │       ├── suggestion_details_changes.html
-    │   │       ├── suggestion_groupe.html
-    │   │       ├── suggestion_groupe_details.html
-    │   │       ├── suggestion_groupe_refresh_stream.html
-    │   │       ├── suppression_suggestion_details.html
-    │   │       └── value_details.html
+    │   │   ├── _partials
+    │   │   │   ├── ajout_suggestion_details.html
+    │   │   │   ├── cells
+    │   │   │   │   ├── _links.html
+    │   │   │   │   ├── action.html
+    │   │   │   │   ├── display.html
+    │   │   │   │   ├── editable.html
+    │   │   │   │   └── html.html
+    │   │   │   ├── comparison_table.html
+    │   │   │   ├── contexte_details.html
+    │   │   │   ├── display_diff_value.html
+    │   │   │   ├── extra_links.html
+    │   │   │   ├── modification_suggestion_details.html
+    │   │   │   ├── suggestion_details.html
+    │   │   │   ├── suggestion_details_changes.html
+    │   │   │   ├── suggestion_groupe.html
+    │   │   │   ├── suggestion_groupe_cluster_footer.html
+    │   │   │   ├── suggestion_groupe_cluster_header.html
+    │   │   │   ├── suggestion_groupe_details.html
+    │   │   │   ├── suggestion_groupe_refresh_stream.html
+    │   │   │   ├── suppression_suggestion_details.html
+    │   │   │   └── value_details.html
+    │   │   └── revue.html
     │   ├── django
     │   │   └── forms
     │   │       ├── label.html
@@ -2031,6 +2172,8 @@
         │   ├── test_url_utils.py
         │   └── test_utils.py
         ├── data
+        │   ├── management
+        │   │   └── test_seed_revue_suggestions.py
         │   ├── models
         │   │   ├── apply_models
         │   │   │   ├── __init__.py
@@ -2046,7 +2189,11 @@
         │   │   │   └── test_acteur_update_revision.py
         │   │   ├── suggestion_factory.py
         │   │   ├── test_change.py
-        │   │   └── test_suggestion.py
+        │   │   ├── test_suggestion.py
+        │   │   ├── test_suggestion_cluster.py
+        │   │   └── test_suggestion_enrich_acteur.py
+        │   ├── revue
+        │   │   └── test_filters.py
         │   ├── test_admin_actions.py
         │   ├── test_suggestion_models.py
         │   └── test_suggestion_views.py
@@ -2107,4 +2254,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-387 directories, 1722 files
+405 directories, 1851 files
