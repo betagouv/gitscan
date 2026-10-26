@@ -1,24 +1,23 @@
-## Changelog : st-ansible (30 derniers jours, au 14 octobre 2026)
+## Changelog : st-ansible (30 derniers jours, au 22 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes importantes avec l'ajout de nouveaux services de communication (Conversations) et de gestion de fichiers (Transfers et File-scanner). La sécurité du traitement des emails a été renforcée et l'outil de ligne de commande (CLI) a été optimisé pour rendre les mises à jour et la gestion du système plus robustes et fluides.
+Cette période a été marquée par l'intégration de nouveaux services de gestion de fichiers et de transferts, ainsi que par l'introduction du rôle "conversations". Les capacités de messagerie ont été modernisées et la robustesse de l'infrastructure a été renforcée par l'ajout de nouveaux mécanismes de contrôle de santé des services.
 
 ### Évolutions fonctionnelles
-- **Nouveaux services** : Introduction des modules **Conversations**, **Transfers** et **File-scanner**, incluant l'intégration automatique de l'antivirus pour le scan de fichiers.
+- **Nouveaux services** : Ajout des applications `file-scanner` et `transfers`, incluant leur intégration complète avec les services d'antivirus.
+- **Communication** : Introduction du nouveau rôle `conversations` et mise à jour de l'outil CLI pour supporter son déploiement.
+- **Messagerie** : 
+    - Modernisation du composant de messagerie avec l'ajout de `pymta` (remplaçant `mta-in`).
+    - Possibilité d'utiliser `exav` comme moteur d'antivirus au sein de l'application MPA.
 
 ### Évolutions techniques
-- **Messagerie et Sécurité** :
-    - Amélioration du filtrage des messages via Rspamd (support d'Exav en remplacement de ClamAV et configuration du classificateur Bayes pour l'apprentissage automatique).
-    - Transition vers le composant `pymta` et dépréciation de `mta-in`.
-- **Outil CLI (st-cli)** :
-    - Amélioration du processus de mise à jour avec l'ajout de la commande `rebootstrap` et une meilleure gestion des groupes d'hôtes hérités.
-    - Refonte de la qualité du code (suppression du code mort, doublons et application des règles Ruff).
-    - Découplage des tests de réparation du proxy SOCKS des drapeaux de mise à jour.
-- **Infrastructure et Réseau** :
-    - **Gestion des accès** : Mise en place de listes blanches d'adresses IP (allowlist) pour l'administration Django sur les services Docs, Drive et Meet.
-    - **Architecture réseau** : Migration de l'accès "edge" de l'application Drive vers Caddy et intégration de Caddy devant l'image Keycloak pour les messages.
-    - **Conteneurisation** : Optimisation de Podman avec l'installation de `podman-compose` et amélioration des tests de santé (healthchecks) des workers.
+- **CLI & Déploiement** : 
+    - Amélioration de la gestion des groupes d'hôtes hérités (legacy) et automatisation de la réparation du proxy SOCKS lors des montées de version.
+    - Découplage des tests de réparation du proxy SOCKS pour une meilleure isolation.
+- **Infrastructure & Réseau** : 
+    - Support de Caddy en tant que façade (front-end) pour l'image `messages-keycloak`.
+    - Optimisation du filtrage des messages via le déploiement de la configuration du classificateur Bayes pour Rspamd.
+- **Observabilité** : Mise en place de tests de santé (healthchecks) pour les workers `file-scanner` (via Dramatiq) et pour les conteneurs Podman (exécution sans shell).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation pour inclure les nouveaux rôles (Conversations), les procédures de bootstrap et les configurations de sécurité.
-- **CI/CD** : Maintenance des workflows GitHub Actions (mise à jour des digests).
+- **Documentation** : Mise à jour de la documentation pour accompagner l'arrivée du rôle `conversations`.
