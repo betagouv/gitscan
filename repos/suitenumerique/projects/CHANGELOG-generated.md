@@ -1,12 +1,12 @@
-## Changelog : projects (30 derniers jours, au 16 septembre 2026)
+## Changelog : projects (30 derniers jours, au 19 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur le renforcement de la sécurité de la plateforme, notamment par la correction de vulnérabilités liées aux fichiers joints et l'amélioration des contrôles d'accès lors de la duplication de tableaux.
+Les récentes mises à jour se concentrent sur l'amélioration de la gestion des commentaires et de la visibilité des activités pour les utilisateurs en lecture seule. Parallèlement, des mesures de sécurité importantes ont été appliquées à l'infrastructure de production pour corriger des vulnérabilités.
+
+### Évolutions fonctionnelles
+- **Gestion des commentaires** : les propriétaires de tableau peuvent désormais supprimer n'importe quel commentaire sur leur tableau [#112](https://github.com/suitenumerique/projects/issues/112).
+- **Visibilité des activités** : les utilisateurs disposant d'un droit de consultation (sans droit d'écriture) peuvent désormais voir les commentaires et l'historique des activités sur les cartes [#111](https://github.com/suitenumerique/projects/issues/111).
 
 ### Évolutions techniques
-- Sécurisation de la gestion des pièces jointes pour prévenir les attaques XSS via les extensions de fichiers [#96](https://github.com/suitenumerique/projects/issues/96)
-- Renforcement des contrôles d'autorisation lors de la duplication de tableaux [#95](https://github.com/suitenumerique/projects/issues/95)
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité connues [#100](https://github.com/suitenumerique/projects/issues/100)
-
-### Autres changements
-- Correction d'une erreur typographique dans la documentation [#65](https://github.com/suitenumerique/projects/issues/65)
+- **Sécurité** : correction de vulnérabilités (CVE) dans l'image de production via la mise à jour de Node.js, l'application de correctifs Alpine et la mise à jour des dépendances serveur.
+- **Infrastructure** : extension de la période de vérification de santé (*healthcheck*) de Keycloak à 300s pour fiabiliser le démarrage du service [#110](https://github.com/suitenumerique/projects/issues/110).
