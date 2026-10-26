@@ -55,6 +55,7 @@
 │       └── postgresql.defaults
 ├── scripts
 │   ├── filter_proconnect_allowlist.py
+│   ├── proconnect_hacked_sites.tsv
 │   └── validate_proconnect_allowlist.py
 └── src
     ├── backend
@@ -148,6 +149,7 @@
     │   │   │   ├── 0019_external_management_api_key.py
     │   │   │   ├── 0020_service_hidden.py
     │   │   │   ├── 0021_organization_proconnect_domains.py
+    │   │   │   ├── 0022_remove_service_out_of_sync.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -183,6 +185,7 @@
     │   │   │           ├── service
     │   │   │           │   └── change_form.html
     │   │   │           ├── servicesubscription
+    │   │   │           │   ├── bulk_operator_subscribe.html
     │   │   │           │   ├── bulk_subscribe.html
     │   │   │           │   ├── bulk_subscribe_results.html
     │   │   │           │   ├── change_form.html
@@ -240,11 +243,14 @@
     │   │   │   │   ├── test_operator_service_config.py
     │   │   │   │   ├── test_organization.py
     │   │   │   │   └── test_users.py
+    │   │   │   ├── test_admin_bulk_operator_subscribe.py
     │   │   │   ├── test_create_demo_operator.py
     │   │   │   ├── test_dns.py
+    │   │   │   ├── test_domainnames.py
     │   │   │   ├── test_domains_candidates.py
     │   │   │   ├── test_dpnt_import.py
     │   │   │   ├── test_metrics_scraping.py
+    │   │   │   ├── test_migration_remove_out_of_sync.py
     │   │   │   ├── test_proconnect_allowlist.py
     │   │   │   ├── test_proconnect_push.py
     │   │   │   ├── test_settings.py
@@ -266,12 +272,17 @@
     │   ├── pyproject.toml
     │   ├── strip-python.sh
     │   └── uv.lock
+    ├── caddy
+    │   ├── Caddyfile
+    │   ├── build.sh
+    │   ├── go.mod
+    │   ├── go.sum
+    │   ├── main.go
+    │   └── modules.txt
     ├── frontend
     │   ├── .dockerignore
     │   ├── .gitignore
     │   ├── Dockerfile
-    │   ├── caddy
-    │   │   └── Caddyfile
     │   ├── cunningham.ts
     │   ├── eslint.config.mjs
     │   ├── next.config.ts
@@ -351,6 +362,7 @@
     │   │   │           │   ├── ServiceAttribute.tsx
     │   │   │           │   ├── ServiceBlock.tsx
     │   │   │           │   ├── ServiceBlockDispatcher.tsx
+    │   │   │           │   ├── ServiceHelpLink.tsx
     │   │   │           │   ├── domainName.ts
     │   │   │           │   ├── entitlements
     │   │   │           │   │   ├── ServiceBlockEntitlements.tsx
@@ -402,4 +414,4 @@
     │   └── tsconfig.json
     └── keycloak
         └── realm.json
-80 directories, 324 files
+80 directories, 336 files

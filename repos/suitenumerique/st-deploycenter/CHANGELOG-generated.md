@@ -1,23 +1,24 @@
-## Changelog : st-deploycenter (30 derniers jours, au 02 octobre 2026)
+## Changelog : st-deploycenter (30 derniers jours, au 24 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur le renforcement des capacités d'administration et de pilotage. L'ajout d'un tableau de bord de métriques et de nouvelles permissions permet une gestion plus fine des opérateurs, tandis que des améliorations d'interface et de gestion des droits fluidifient l'expérience utilisateur.
+Les récentes évolutions se concentrent sur l'amélioration de l'intégration avec ProConnect, offrant une meilleure visibilité sur l'état de synchronisation et les données des organisations (SIRET, fiches). Le projet a également renforcé la gestion des services via la possibilité de transférer des abonnements et a stabilisé les processus critiques liés à l'activation des domaines et à la gestion DNS.
 
 ### Évolutions fonctionnelles
-- **Pilotage et administration** :
-    - Ajout d'un tableau de bord de métriques pour le suivi des opérateurs.
-    - Introduction de la permission `can_admin_operators` pour une gestion accrue des rôles.
-    - Amélioration de la résolution des droits (entitlements) pour l'annuaire des collectivités.
-- **Expérience utilisateur et API** :
-    - Affichage des codes postaux dans les listes déroulantes des communes pour faciliter la saisie.
-    - Extension de l'utilisation des clés d'API externes sur plusieurs points de terminaison (endpoints) opérateurs.
-    - Correction de la gestion des emails pour les administrateurs d'organisation (la correspondance est désormais insensible à la casse).
+- **Gestion des services** : 
+    - Ajout de la fonctionnalité de transfert d'un abonnement d'un opérateur à un autre.
+    - Correction des contrôles lors de la désactivation des services.
+- **Amélioration de l'interface ProConnect** :
+    - Ajout d'un statut "out-of-sync" pour les IDP ProConnect [#65](https://github.com/suitenumerique/st-deploycenter/issues/65).
+    - Intégration des métadonnées (Fiche et SIRET) sur l'ensemble des lignes de données.
+- **Sécurité et permissions** :
+    - Introduction de la nouvelle permission `can_admin_operators`.
+    - Extension de l'utilisation des clés d'API externes sur davantage de points de terminaison (endpoints) opérateurs.
 
 ### Évolutions techniques
-- **Infrastructure et services** :
-    - Intégration du service BAL.
-    - Optimisation des scripts de liste blanche (allowlist) pour Proconnect.
-- **Maintenance et corrections** :
-    - Mise à jour du kit d'interface utilisateur (UI Kit).
-    - Correction d'un problème de cache lors de la vérification DNS.
-    - Régénération du fichier de verrouillage (lockfile) pour assurer la stabilité des déploiements.
+- **Optimisation de ProConnect** :
+    - Migration vers une API d'activation "domaine par domaine" pour plus de précision.
+    - Mise en conformité avec le nouveau format YAML de prévalidation.
+    - Amélioration de la résilience : gestion des timeouts d'activation, optimisation de la mémoire pour les tâches cron et mécanismes de rafraîchissement du cache DNS pour les appels API.
+- **Gestion des domaines et DNS** :
+    - Corrections sur le mapping des domaines et la vérification du cache DNS.
+    - Amélioration des scripts de gestion des domaines.
