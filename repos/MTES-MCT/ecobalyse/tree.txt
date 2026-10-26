@@ -21,7 +21,6 @@
 │       ├── codeql-analysis.yml
 │       ├── create_release_archive.yml
 │       ├── e2e.yml
-│       ├── export_json.yml
 │       ├── ingredient_hierarchy.yml
 │       ├── node.js.yml
 │       ├── score_history.yml
@@ -88,14 +87,10 @@
 │           │   │       ├── 2026-06-03_store_component_as_json_21f0598992ca.py
 │           │   │       ├── 2026-06-24_resync_db_migrations_06e520393a50.py
 │           │   │       ├── 2026-06-30_elec_mj_to_kwh_e93537b074f9.py
-│           │   │       └── 2026-09-17_add_beta_test_user_fbae656f0ee6.py
+│           │   │       ├── 2026-09-17_add_beta_test_user_fbae656f0ee6.py
+│           │   │       └── 2026-09-24_remove_admin_564842ed777c.py
 │           │   └── models
 │           │       ├── __init__.py
-│           │       ├── component.py
-│           │       ├── journal_entry.py
-│           │       ├── process.py
-│           │       ├── process_category.py
-│           │       ├── process_process_category.py
 │           │       ├── role.py
 │           │       ├── token.py
 │           │       ├── user.py
@@ -113,35 +108,11 @@
 │           │   │   ├── services.py
 │           │   │   ├── tasks.py
 │           │   │   └── urls.py
-│           │   ├── components
-│           │   │   ├── controllers
-│           │   │   │   ├── __init__.py
-│           │   │   │   └── component.py
-│           │   │   ├── deps.py
-│           │   │   ├── schemas.py
-│           │   │   ├── services.py
-│           │   │   └── urls.py
 │           │   ├── contrib
 │           │   │   ├── __init__.py
 │           │   │   ├── controllers
 │           │   │   │   ├── __init__.py
 │           │   │   │   └── contrib.py
-│           │   │   ├── schemas.py
-│           │   │   ├── services.py
-│           │   │   └── urls.py
-│           │   ├── journal_entries
-│           │   │   ├── controllers
-│           │   │   │   ├── __init__.py
-│           │   │   │   └── journal_entry.py
-│           │   │   ├── deps.py
-│           │   │   ├── schemas.py
-│           │   │   ├── services.py
-│           │   │   └── urls.py
-│           │   ├── processes
-│           │   │   ├── controllers
-│           │   │   │   ├── __init__.py
-│           │   │   │   └── process.py
-│           │   │   ├── deps.py
 │           │   │   ├── schemas.py
 │           │   │   ├── services.py
 │           │   │   └── urls.py
@@ -176,6 +147,7 @@
 │   ├── json_formatter.py
 │   ├── load-fixtures.sh
 │   ├── playwright-webserver.sh
+│   ├── repeat-e2e.sh
 │   ├── reset-docker-db.sh
 │   ├── run-transcrypt.sh
 │   ├── scalingo_api.py
@@ -750,7 +722,7 @@
 │   │   │   ├── banana-pulp-raw.json
 │   │   │   ├── barley-flour-fr-energy-wfldb.json
 │   │   │   ├── barley-flour.json
-│   │   │   ├── battery-*.json  (7 files)
+│   │   │   ├── battery-*.json  (6 files)
 │   │   │   ├── beaufort-cheese-v1.json
 │   │   │   ├── beaufort-cheese-v2.json
 │   │   │   ├── beef-*.json  (10 files)
@@ -888,6 +860,8 @@
 │   │   │   ├── petit-suisse-10pct-fat-v2.json
 │   │   │   ├── petit-suisse-4pct-fat-v1.json
 │   │   │   ├── petit-suisse-4pct-fat-v2.json
+│   │   │   ├── petrol-directco2.json
+│   │   │   ├── petrol-upstream.json
 │   │   │   ├── pineapple-pulp-raw-organic.json
 │   │   │   ├── pineapple-pulp-raw-v1.json
 │   │   │   ├── pineapple-pulp-raw-v2.json
@@ -953,6 +927,7 @@
 │   │   │   ├── aluminum-extrusion.json
 │   │   │   ├── aluminum-rolling-0-2-mm.json
 │   │   │   ├── aluminum-rolling-0-26-mm.json
+│   │   │   ├── assembling.json
 │   │   │   ├── assembly-plant-based-milk-high.json
 │   │   │   ├── assembly-plant-based-milk-low.json
 │   │   │   ├── battery-assembling.json
@@ -1006,7 +981,7 @@
 │   │   │   ├── steel-wire-drawing.json
 │   │   │   ├── textile-end-of-life-process-mix.json
 │   │   │   ├── use-*.json  (8 files)
-│   │   │   ├── vehicle-*.json  (7 files)
+│   │   │   ├── vehicle-*.json  (6 files)
 │   │   │   ├── washing-synthetic-fiber.json
 │   │   │   ├── weaving-40-nm-and-250-gm2.json
 │   │   │   ├── weaving.json
@@ -1289,8 +1264,10 @@
 │   │   ├── test_infer_metadata.py
 │   │   ├── test_json_consistency.py
 │   │   ├── test_json_format_encoder.py
+│   │   ├── test_linked_units.py
 │   │   ├── test_process_relationships.py
 │   │   ├── test_raw_to_transformed_ratios.py
+│   │   ├── test_rename_table.py
 │   │   └── test_taxonomy.py
 │   └── textile
 │       ├── README.md
@@ -1526,10 +1503,6 @@
 │   │   └── Zone.elm
 │   ├── Main.elm
 │   ├── Page
-│   │   ├── Admin
-│   │   │   ├── Account.elm
-│   │   │   ├── Process.elm
-│   │   │   └── Section.elm
 │   │   ├── Api.elm
 │   │   ├── Auth.elm
 │   │   ├── Editorial.elm
@@ -1563,7 +1536,6 @@
 │   │   ├── Common.elm
 │   │   ├── Contrib.elm
 │   │   ├── Db.elm
-│   │   ├── Process.elm
 │   │   └── Version.elm
 │   ├── Route.elm
 │   ├── Server
@@ -1574,7 +1546,6 @@
 │   │   ├── Db.elm
 │   │   └── Json.elm-template
 │   └── Views
-│       ├── Admin.elm
 │       ├── Alert.elm
 │       ├── AutocompleteSelector.elm
 │       ├── BaseElement.elm
@@ -1586,6 +1557,7 @@
 │       ├── Component
 │       │   ├── AmountInput.elm
 │       │   ├── CompositionModal.elm
+│       │   ├── Context.elm
 │       │   ├── DownArrow.elm
 │       │   ├── ItemRow.elm
 │       │   ├── MassInput.elm
@@ -1599,6 +1571,7 @@
 │       ├── CountrySelect.elm
 │       ├── Events.elm
 │       ├── Example.elm
+│       ├── FloatInput.elm
 │       ├── Format.elm
 │       ├── Icon.elm
 │       ├── Impact.elm
@@ -1609,15 +1582,13 @@
 │       ├── Notice.elm
 │       ├── Page.elm
 │       ├── RangeSlider.elm
-│       ├── Scope.elm
 │       ├── Score.elm
 │       ├── Sidebar.elm
 │       ├── Spinner.elm
 │       ├── Table.elm
 │       ├── Textile
 │       │   └── Stage.elm
-│       ├── Transport.elm
-│       └── WebData.elm
+│       └── Transport.elm
 ├── styles.scss
 ├── tests
 │   ├── .gitignore
@@ -1657,6 +1628,7 @@
 │   │   └── ServerTest.elm
 │   ├── TestUtils.elm
 │   ├── Views
+│   │   ├── FloatInputTest.elm
 │   │   ├── FormatTest.elm
 │   │   └── MarkdownTest.elm
 │   ├── backend
@@ -1666,12 +1638,8 @@
 │   │   └── integration
 │   │       ├── conftest.py
 │   │       ├── test_access.py
-│   │       ├── test_components.py
 │   │       ├── test_contrib.py
-│   │       ├── test_health.py
-│   │       ├── test_journal_entries.py
-│   │       ├── test_load_processes_fixtures.py
-│   │       └── test_processes.py
+│   │       └── test_health.py
 │   ├── conftest.py
 │   ├── e2e-food.json
 │   ├── e2e-textile.json
@@ -1686,4 +1654,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-133 directories, 1922 files
+126 directories, 1895 files

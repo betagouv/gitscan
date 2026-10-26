@@ -1,23 +1,29 @@
-## Changelog : ecobalyse (30 derniers jours, au 1er octobre 2026)
+## Changelog : ecobalyse (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Ce mois-ci, ecobalyse a considérablement enrichi sa base de données avec l'ajout de nouveaux objets (moteurs électriques, piles) et de composants alimentaires. L'expérience utilisateur est améliorée par un nouvel éditeur de production, tandis que le système devient plus intelligent grâce à l'automatisation de la classification des matériaux.
+Ce mois-ci, les évolutions se sont concentrées sur l'enrichissement des données (nouveaux objets et secteurs), l'amélioration de l'expérience utilisateur (nouvel éditeur et recherche plus rapide) et le renforcement de la sécurité et de la stabilité technique du système.
 
 ### Évolutions fonctionnelles
-- Nouvel éditeur modale pour la gestion des éléments de production [#2849](https://github.com/MTES-MCT/ecobalyse/pull/2849)
-- Enrichissement de la base de données : moteurs électriques [#2846](https://github.com/MTES-MCT/ecobalyse/pull/2846), piles alcalines [#2828](https://github.com/MTES-MCT/ecobalyse/pull/2828), ingrédients Koch [#2836](https://github.com/MTES-MCT/ecobalyse/pull/2836), assemblages de laits végétaux [#2800](https://github.com/MTES-MCT/ecobalyse/pull/2800) et définition des catégories de consommation pour Veli [#2798](https://github.com/MTES-MCT/ecobalyse/pull/2798)
-- Amélioration des rapports de hiérarchie des ingrédients [#2787](https://github.com/MTES-MCT/ecobalyse/pull/2787)
-- Corrections de l'interface : gestion des noms d'éléments personnalisés [#2855](https://github.com/MTES-MCT/ecobalyse/pull/2855) et application des origines par défaut pour les composants [#2857](https://github.com/MTES-MCT/ecobalyse/pull/2857)
+**Nouvelles fonctionnalités**
+- Nouvel éditeur modal pour les éléments d'articles de production ([#2849](https://github.com/MTES-MCT/ecobalyse/issues/2849))
+- Possibilité d'édition en masse des articles de production ([#2902](https://github.com/MTES-MCT/ecobalyse/issues/2902))
+- Enrichissement de la base de données : ajout de moteurs électriques ([#2846](https://github.com/MTES-MCT/ecobalyse/issues/2846)), d'ingrédients/composants Koch ([#2836](https://github.com/MTES-MCT/ecobalyse/issues/2836)) et d'exemples pour tous les secteurs ([#2897](https://github.com/MTES-MCT/ecobalyse/issues/2897))
+- Préparation des secteurs d'objets pour les outils produits ([#2906](https://github.com/MTES-MCT/ecobalyse/issues/2906))
+
+**Améliorations et corrections**
+- Amélioration des performances de recherche dans l'explorateur ([#2915](https://github.com/MTES-MCT/ecobalyse/issues/2915))
+- Amélioration de l'ergonomie (UX) des champs numériques et de la gestion des noms d'articles ([#2910](https://github.com/MTES-MCT/ecobalyse/issues/2910), [#2855](https://github.com/MTES-MCT/ecobalyse/issues/2855))
+- Corrections de données (textile, caractérisations, transport laitier) ([#2892](https://github.com/MTES-MCT/ecobalyse/issues/2892), [#2786](https://github.com/MTES-MCT/ecobalyse/issues/2786), [#2856](https://github.com/MTES-MCT/ecobalyse/issues/2856))
 
 ### Évolutions techniques
-- Introduction d'une nouvelle API [#2792](https://github.com/MTES-MCT/ecobalyse/pull/2792)
-- Automatisation de l'inférence des types de matériaux via la taxonomie, supprimant la saisie manuelle [#2779](https://github.com/MTES-MCT/ecobalyse/pull/2779)
-- Optimisation des performances via l'utilisation d'insertions par lots (batch) en base de données [#2790](https://github.com/MTES-MCT/ecobalyse/pull/2790)
-- Ajout d'un flag "betauser" pour le déploiement contrôlé de fonctionnalités expérimentales [#2832](https://github.com/MTES-MCT/ecobalyse/pull/2832)
-- Correction des tests de bout en bout (E2E) [#2858](https://github.com/MTES-MCT/ecobalyse/pull/2858)
-- Correction de l'exposition des détails d'étapes désactivées dans l'API textile [#2812](https://github.com/MTES-MCT/ecobalyse/pull/2812)
+**Sécurité et Core**
+- Sécurité : correction de vulnérabilités ([#2917](https://github.com/MTES-MCT/ecobalyse/issues/2917)) et suppression du cache de jetons ([#2807](https://github.com/MTES-MCT/ecobalyse/issues/2807))
+- API & Core : amélioration du format de réponse du simulateur ([#2867](https://github.com/MTES-MCT/ecobalyse/issues/2867)), gestion des portées (scopes) multiples pour les composants ([#2916](https://github.com/MTES-MCT/ecobalyse/issues/2916)) et application des origines par défaut ([#2857](https://github.com/MTES-MCT/ecobalyse/issues/2857))
+
+**Infrastructure et Maintenance**
+- Infrastructure & Tests : stabilisation des tests de bout en bout (E2E) ([#2876](https://github.com/MTES-MCT/ecobalyse/issues/2876), [#2858](https://github.com/MTES-MCT/ecobalyse/issues/2858)) et correction du déploiement de `score_history` ([#2912](https://github.com/MTES-MCT/ecobalyse/issues/2912))
+- Maintenance : suppression du module admin ([#2870]), simplification de la configuration (clé `TRANSCRYPT_KEY` désormais optionnelle) ([#2872](https://github.com/MTES-MCT/ecobalyse/issues/2872)) et optimisation des processus LCI ([#2894](https://github.com/MTES-MCT/ecobalyse/issues/2894))
 
 ### Autres changements
-- Documentation : ajout de guides sur les compléments [#2833](https://github.com/MTES-MCT/ecobalyse/pull/2833) et la création de nouveaux périmètres (scopes) [#2839](https://github.com/MTES-MCT/ecobalyse/pull/2839)
-- Maintenance des données : mises à jour sur le transport des produits laitiers [#2856](https://github.com/MTES-MCT/ecobalyse/pull/2856), les processus de recyclage des batteries [#2825](https://github.com/MTES-MCT/ecobalyse/pull/2825) et les propriétés de l'eau [#2799](https://github.com/MTES-MCT/ecobalyse/pull/2799)
-- Nettoyage des fichiers de métadonnées obsolètes [#2831](https://github.com/MTES-MCT/ecobalyse/pull/2831)
+- Documentation des événements plausibles ([#2889](https://github.com/MTES-MCT/ecobalyse/issues/2889))
+- Documentation sur l'ajout de nouveaux scopes ([#2839](https://github.com/MTES-MCT/ecobalyse/issues/2839)) et sur les compléments ([#2833](https://github.com/MTES-MCT/ecobalyse/issues/2833))
