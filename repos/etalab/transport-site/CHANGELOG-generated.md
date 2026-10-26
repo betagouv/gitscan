@@ -1,18 +1,22 @@
 ## Changelog : transport-site (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une mise à jour majeure de l'infrastructure technique (Elixir et Phoenix) et un renforcement de la fiabilité des données NeTEx grâce à une couverture de tests accrue. L'interface de gestion (Backoffice) a également bénéficié d'améliorations ergonomiques pour faciliter la recherche et l'utilisation des jeux de données.
+Ce mois-ci, le projet a bénéficié d'une mise à jour majeure de ses technologies de base et d'un renforcement de la fiabilité du traitement des données de transport. L'interface d'administration a été modernisée pour plus de robustesse, tandis que l'expérience utilisateur a été affinée sur les pages de détails des jeux de données.
 
 ### Évolutions fonctionnelles
-- **Améliorations du Backoffice** : recherche de datasets plus intuitive [#5633], ajout d'un menu contextuel pour les actions sur les datasets [#5631] et correction du rendu du bouton de validation et du menu contextuel [#5636].
-- **Optimisation de l'interface** : amélioration de la mise en page des ressources dans les détails des datasets [#5625] et repositionnement du message invitant au partage des réutilisations [#5638].
+- Amélioration de la mise en page des ressources dans les pages de détails des jeux de données [#5625](https://github.com/etalab/transport-site/issues/5625).
+- Ajustement de l'interface pour repositionner le message incitant au partage des réutilisations [#5638](https://github.com/etalab/transport-site/issues/5638).
 
 ### Évolutions techniques
-- **Mises à jour majeures** : passage à Elixir v1.20.x [#5612] et convergence vers Phoenix 1.8 (incluant la mise à jour de `phoenix_html` et l'adoption de nouveaux composants de pagination) [#5651, #5646, #5644].
-- **Fiabilisation des données NeTEx** : augmentation significative de la couverture de tests (cartes de ressources [#5662], niveaux de sévérité [#5658], rapports de validation [#5650]) et refactorisation du parsing de fichiers Parquet [#5659].
-- **Refactorisation du Backoffice** : migration des anciens helpers HTML vers des composants HEEx [#5653] et optimisation de la construction des formulaires [#5656].
-- **Qualité logicielle et architecture** : adoption d'une nouvelle stratégie pour les clients HTTP (ADR) [#5648], correction d'alertes Dialyzer [#5652], remplacement de tuples imbriqués par des structures dédiées [#5655] et suppression d'un client d'API obsolète [#5643].
-- **Données et performance** : optimisation des imports journaliers par la réutilisation de données en base [#5639] et ajustement du nommage des fichiers GeoJSON convertis [#5645].
+- **Modernisation du framework** : Migration vers Phoenix 1.8 (incluant la mise à jour de `phoenix_html` et l'intégration de nouveaux composants de pagination) [#5651](https://github.com/etalab/transport-site/issues/5651), [#5646](https://github.com/etalab/transport-site/issues/5646), [#5644](https://github.com/etalab/transport-site/issues/5644) et passage à Elixir v1.20.x [#5612](https://github.com/etalab/transport-site/issues/5612).
+- **Fiabilisation du traitement NeTEx** : Centralisation du parsing des fichiers Parquet [#5659](https://github.com/etalab/transport-site/issues/5659) et renforcement significatif de la couverture de tests (cartes de ressources, niveaux de sévérité et rapports de validation) [#5662](https://github.com/etalab/transport-site/issues/5662), [#5658](https://github.com/etalab/transport-site/issues/5658), [#5650](https://github.com/etalab/transport-site/issues/5650).
+- **Refonte du Backoffice** : Modernisation de l'interface d'administration via l'utilisation de composants HEEx et une meilleure gestion des formulaires [#5653](https://github.com/etalab/transport-site/issues/5653), [#5656](https://github.com/etalab/transport-site/issues/5656).
+- **Qualité logicielle et architecture** :
+    - Correction de bugs et d'alertes de typage via Dialyzer [#5652](https://github.com/etalab/transport-site/issues/5652).
+    - Refactoring des structures de données pour utiliser des `structs` plutôt que des tuples imbriqués [#5655](https://github.com/etalab/transport-site/issues/5655).
+    - Clarification de l'usage des clients HTTP via une nouvelle ADR [#5648](https://github.com/etalab/transport-site/issues/5648).
+    - Remplacement de la bibliothèque Earmark par MDEx [#5634](https://github.com/etalab/transport-site/issues/5634).
+- **Gestion des données** : Optimisation de l'import quotidien des réutilisations depuis la base de données [#5639](https://github.com/etalab/transport-site/issues/5639) et ajustement du nommage des fichiers GeoJSON convertis [#5645](https://github.com/etalab/transport-site/issues/5645).
 
 ### Autres changements
-- Remplacement de la bibliothèque Earmark par MDEx pour le rendu Markdown [#5634].
+- Nettoyage du code avec la suppression d'un client d'API obsolète [#5643](https://github.com/etalab/transport-site/issues/5643).
