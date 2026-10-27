@@ -1,14 +1,10 @@
-## Changelog : react-dsfr-chart (30 derniers jours, au 22 septembre 2026)
+## Changelog : react-dsfr-chart (30 derniers jours, au 15 octobre 2026)
 
 ### Résumé
-La bibliothèque s'enrichit de nouveaux types de visualisations (graphiques en barres, en lignes et diagrammes circulaires) et offre une plus grande flexibilité de personnalisation des couleurs et des dimensions. Parallèlement, les processus de publication et la sécurité du projet ont été renforcés pour garantir des déploiements plus fiables.
+Les récentes mises à jour ont permis de corriger un défaut visuel sur les graphiques en camembert et de préparer une nouvelle version de pré-production (release candidate).
 
 ### Évolutions fonctionnelles
-- Ajout de nouveaux types de graphiques : barres, lignes et diagrammes circulaires (très légers, ~3,4 ko) [#15](https://github.com/betagouv/react-dsfr-chart/pull/15)
-- Personnalisation accrue des couleurs par série ou par part via la propriété `colors` [#18](https://github.com/betagouv/react-dsfr-chart/pull/18)
-- Meilleure gestion des dimensions avec la possibilité de définir une hauteur fixe ou par catégorie pour les graphiques en barres [#22](https://github.com/betagouv/react-dsfr-chart/pull/22)
+- Correction de l'affichage des graphiques en camembert : lorsqu'un graphique ne contient qu'une seule part, il s'affiche désormais correctement sous forme de trait au lieu de remplir tout le disque ([#40](https://github.com/betagouv/react-dsfr-chart/pull/40)).
 
-### Évolutions techniques
-- Optimisation du cycle de publication des versions candidates (RC) via un nouveau script [#19](https://github.com/betagouv/react-dsfr-chart/pull/19) et l'imposition d'une Pull Request pour ces publications [#21](https://github.com/betagouv/react-dsfr-chart/pull/21)
-- Renforcement de la sécurité du dépôt et du processus de publication sur npm [#5](https://github.com/betagouv/react-dsfr-chart/pull/5)
-- Possibilité d'installer le paquet directement depuis les archives de release GitHub avant sa publication officielle sur npm [#16](https://github.com/betagouv/react-dsfr-chart/pull/16)
+### Autres changements
+- Préparation de la version 0.1.2-rc.3 ([#41](https://github.com/betagouv/react-dsfr-chart/pull/41)).
