@@ -1,3 +1,62 @@
+2026-10-26T09:32:50+01:00 - 957635c - Antoine LAURENT : chore(deps): bump brotli from 1.2.0 to 1.2.1
+2026-10-21T17:22:42+02:00 - 1314f33 - Victor Perron : fix(deps): distrust emsign root ca (certifi 2026.10.19, uv 0.13.4)
+2026-10-20T15:05:41+02:00 - f63f3ae - Victor Perron : fix(api): pick the token format from the scopes claim instead of falling back to legacy (offenskill V09)
+2026-10-20T15:05:41+02:00 - af7e8a8 - Victor Perron : fix(pipeline): stop extracting and testing the unused dora presentation_resume and zone_diffusion fields
+2026-10-20T15:05:41+02:00 - 84597d6 - Victor Perron : fix(api): match widget allowed hosts on dns label boundaries (offenskill V08)
+2026-10-20T15:02:00+02:00 - 5dac777 - dependabot[bot] : chore(deps): bump the docker-compose group in /deployment with 2 updates
+2026-10-20T14:59:55+02:00 - fcefea8 - dependabot[bot] : chore(deps): bump apache/airflow
+2026-10-20T14:54:01+02:00 - 9f09ebb - dependabot[bot] : chore(deps): bump the github-actions group with 6 updates
+2026-10-16T10:18:40+02:00 - eeb1172 - Victor Perron : fix(api): keep the widget token out of the feedback link and sentry events (offenskill V05)
+2026-10-16T10:18:40+02:00 - ccdf84d - Victor Perron : fix(api): enforce the validator upload and uncompressed sizes server-side and upgrade python-multipart (offenskill V04)
+2026-10-16T10:18:40+02:00 - 7f227a9 - Victor Perron : chore(deployment): rename autometa to pilotage-inclusion in bucket policy
+2026-10-16T10:18:40+02:00 - 78803b0 - Victor Perron : fix(deployment): scope the marts readers listing to data/marts and airflow writes to raw and marts (offenskill V07)
+2026-10-16T10:18:40+02:00 - 5020dc9 - Victor Perron : fix(mlflow): upgrade to 3.17.1 for the missing run update check on log-inputs (offenskill V06)
+2026-10-15T15:31:07+02:00 - 916781c - Victor Perron : fix(pipeline): validate the analytics archive before extracting it (offenskill V03)
+2026-10-14T21:39:13+02:00 - fc24c8e - Victor Perron : fix: freeze requirements for a few non-pinned dependencies + add dependabot
+2026-10-14T21:39:13+02:00 - c1626e2 - Victor Perron : fix(pipeline): drop the monenfant ingestion and the playwright server it required (offenskill V01)
+2026-10-14T21:39:13+02:00 - 630537e - Victor Perron : chore(pipeline): freeze monenfant intermediate data now that its ingestion is gone (offenskill V01)
+2026-10-14T12:40:16+02:00 - c192540 - Victor Perron : feat(deployment): allow autometa to read marts
+2026-10-09T19:04:54+02:00 - 29a0a1d - Victor Perron : feat(insertion): display remote services in semantic search
+2026-10-08T09:52:49+02:00 - e85ae09 - Victor Perron : fix(deployment): bump traefik
+2026-10-06T14:12:10+02:00 - bdb037d - Victor Perron : fix(api): allow exporting stats again
+2026-10-05T17:12:19+02:00 - 6fdd8ef - Victor Perron : fix(pipeline): adapt DORA ingestion to newer structure descriptions
+2026-09-23T20:43:30+02:00 - e862e93 - Victor Perron : fix(pipeline): update mes-aides to 2026
+2026-09-23T20:42:33+02:00 - d733b36 - Victor Perron : fix(pipeline): lessen a few dora constraints
+2026-09-23T20:41:28+02:00 - c271ebb - Victor Perron : fix(pipeline): stop importing "test réseau alpha"
+2026-09-23T20:41:28+02:00 - 7b05261 - Victor Perron : fix(pipeline): remove last edge cases in personal emails detection
+2026-09-23T20:41:28+02:00 - 063e289 - Victor Perron : fix(pipeline): make reseau alpha not raise unless 10 pages return status 500
+2026-09-22T17:37:34+02:00 - 3f3e3a8 - Victor Perron : fix(pipeline): make DORA ingestion use new DI fields
+2026-09-22T17:35:59+02:00 - 91b4d83 - Victor Perron : fix(pipeline): also stop publishing any emails containing a name
+2026-09-22T17:35:59+02:00 - 2cb93bb - Victor Perron : fix(pipeline): allow even fewer mobile phone numbers for publication
+2026-09-18T14:08:13+02:00 - 875ad50 - Victor Perron : fix(deployment): a little extra enforcement
+2026-09-18T08:07:37+02:00 - dbaaeb1 - Victor Perron : fix(geocode): fix an issue in replace street abv when no row is valid
+2026-09-18T00:32:45+02:00 - c35bdfc - Victor Perron : fix(pipeline): let geocodages be batched
+2026-09-17T19:27:36+02:00 - a656a7e - Victor Perron : fix(deployment): let staging also connect to its own dwh
+2026-09-17T18:09:25+02:00 - 7a395ef - Victor Perron : feat(pipeline): enforce broader GDPR rules
+2026-09-17T17:33:57+02:00 - 8dabb9a - Victor Perron : feat(api): allow tokens to be short-lived
+2026-09-14T13:18:56+02:00 - 7b531cf - Victor Perron : feat(pipeline): propagate new DORA API fields to the _extra field
+2026-09-09T15:33:03+02:00 - 2be3ce0 - Victor Perron : fix(datawarehouse): oops the database & username swap
+2026-09-08T10:33:17+02:00 - db1ef75 - Victor Perron : fix(deployment): let oauth2 proxy allow status routes
+2026-09-07T16:46:53+02:00 - b4c56df - Victor Perron : feat(pipeline): harden deployment settings
+2026-09-07T16:46:53+02:00 - 8106f10 - Victor Perron : feat(pipeline): reenable notify RGPD DAG
+2026-09-07T16:46:53+02:00 - 5be5dd7 - Victor Perron : fix(pipeline): reseau-alpha is resilient to error 500
+2026-08-26T12:01:20+02:00 - 134a9f3 - Victor Perron : chore(pipeline): add forgotten PG NaN test
+2026-08-24T10:45:42+02:00 - d931d6f - Victor Perron : chore(deployment): bump traefik
+2026-08-24T10:43:44+02:00 - 351388d - Victor Perron : fix(pipeline): adapt pg loader to newer pandas version
+2026-08-20T17:40:40+02:00 - 0804c97 - Victor Perron : chore(pipeline): reset mlflow dependency as skinny
+2026-08-20T17:07:22+02:00 - 68e95bf - Victor Perron : fix(pipeline): revoke at_least_one test on mednum
+2026-08-20T16:13:30+02:00 - d7b16a2 - Victor Perron : fix(pipeline): fix dbt deps not being executed
+2026-08-19T17:01:34+02:00 - 3a43657 - Victor Perron : chore(deps): update dependencies
+2026-08-19T17:01:34+02:00 - 1dd4cd2 - Victor Perron : chore(pipeline): fix linting
+2026-08-19T16:50:54+02:00 - b8af471 - Victor Perron : chore(pipeline): remove unnecessary dora profils model
+2026-08-19T16:19:02+02:00 - 7a77975 - Victor Perron : fix(pipeline): adapt to newer 'activites' field in reseau alpha
+2026-08-19T16:11:41+02:00 - df67596 - Victor Perron : fix(pipeline): Make the SIRET existence check less strict
+2026-08-10T15:55:52+02:00 - 7c78592 - Louis : fix: score_recherche_expr was always None and not taken into account
+2026-08-10T15:55:52+02:00 - 5ddd38d - Louis : fix: typo
+2026-08-04T16:50:07+02:00 - 5064f16 - Victor Perron : fix(api): data load had a regression following polars update
+2026-08-03T13:26:51+02:00 - 684388b - Victor Perron : feat(api): use multi word thematique aliases in full text search
+2026-08-03T13:23:01+02:00 - 7276aba - Victor Perron : chore(api): clarify full-text search without alias handling
+2026-07-31T18:35:39+02:00 - 658380a - Victor Perron : api: add thematique search aliases table and loader
 2026-07-30T17:13:41+02:00 - 83b5086 - Victor Perron : api: add deduplicate param to semantic search
 2026-07-29T12:03:20+02:00 - ab1d5c3 - Victor Perron : api: reweight thematiques vs nom structures
 2026-07-29T12:03:20+02:00 - 4f6f90b - Victor Perron : search: make it resilient against mistypes

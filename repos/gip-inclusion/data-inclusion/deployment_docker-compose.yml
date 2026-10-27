@@ -47,7 +47,6 @@ x-airflow-common:
     AIRFLOW_VAR_GRIST_API_TOKEN: ${AIRFLOW_VAR_GRIST_API_TOKEN}
     AIRFLOW_VAR_MEDIATION_NUMERIQUE_API_TOKEN: ${AIRFLOW_VAR_MEDIATION_NUMERIQUE_API_TOKEN}
     AIRFLOW_VAR_SOLIGUIDE_API_TOKEN: ${AIRFLOW_VAR_SOLIGUIDE_API_TOKEN}
-    AIRFLOW_VAR_TWOCAPTCHA_API_KEY: ${AIRFLOW_VAR_TWOCAPTCHA_API_KEY}
     AIRFLOW_VAR_MA_BOUSSOLE_AIDANTS_API_KEY: ${AIRFLOW_VAR_MA_BOUSSOLE_AIDANTS_API_KEY}
 
   volumes:
@@ -62,7 +61,7 @@ x-airflow-common:
 
 services:
   airflow-db:
-    image: postgres:18
+    image: postgres:18@sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336
     restart: always
     healthcheck:
       test: pg_isready
@@ -97,8 +96,6 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
-    ports:
-      - 8080:8080
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.airflow.rule=Host(`${AIRFLOW_HOSTNAME}`)"
@@ -129,16 +126,6 @@ services:
       retries: 5
       start_period: 30s
 
-  playwright:
-    # the version should match the tasks requirements
-    image: mcr.microsoft.com/playwright:v1.55.0-noble
-    command: npx -y playwright@1.55.0 run-server --port 3000 --host 0.0.0.0
-    user: pwuser
-    init: true
-    ipc: host
-    depends_on:
-      - airflow-scheduler
-
   datawarehouse:
     image: ghcr.io/gip-inclusion/data-inclusion-datawarehouse:${STACK_VERSION}
     shm_size: '128mb'
@@ -148,7 +135,7 @@ services:
       interval: 5s
       retries: 5
     ports:
-      - 5432:5432
+      - 127.0.0.1:5432:5432
     environment:
       - PGUSER=${DATAWAREHOUSE_DI_USERNAME}
       - POSTGRES_DB=${DATAWAREHOUSE_DI_DATABASE}
@@ -159,7 +146,7 @@ services:
       - datawarehouse-data:/var/lib/postgresql
 
   reverse-proxy:
-    image: traefik:v3.6
+    image: traefik:v3.7.15@sha256:0f6150202bc1fed72a7bd2107460eaa510e5b8a905f3fdb5b84f2c8619c33368
     restart: always
     ports:
       - 80:80
@@ -178,7 +165,7 @@ services:
       - letsencrypt-data:/letsencrypt
 
   mlflow-db:
-    image: postgres:18
+    image: postgres:18@sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336
     restart: no
     healthcheck:
       test: pg_isready
@@ -193,16 +180,13 @@ services:
       - mlflow-data:/var/lib/postgresql
 
   mlflow:
-    image: ghcr.io/mlflow/mlflow:v3.12.0-full
+    image: ghcr.io/gip-inclusion/data-inclusion-mlflow:${STACK_VERSION}
     depends_on:
       mlflow-db:
         condition: service_healthy
     entrypoint: /bin/bash -c
     command:
       - |
-        # install extra depencencies for auth
-        pip install mlflow[auth]
-
         # create config for basic auth
         mkdir -p /etc/mlflow/server/auth
         cat > /etc/mlflow/server/auth/config.ini <<-EOF
