@@ -1,31 +1,24 @@
-## Changelog : ui-kit (30 derniers jours, au 23 octobre 2026)
+## Changelog : ui-kit (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Ce mois-ci, le design system s'enrichit de nouveaux composants (barre de progression, notifications) et de mises à jour visuelles pour les alertes. Les efforts se sont également concentrés sur l'accessibilité des onglets, la fiabilité des tests automatisés et une expérience utilisateur plus fluide lors de la gestion des accès aux dossiers.
+Ce mois-ci, le design system s'enrichit de nouveaux composants, notamment une barre de progression et des onglets plus accessibles. Nous avons également amélioré la gestion du partage de fichiers et affiné l'apparence de certains éléments visuels pour garantir une interface plus cohérente et robuste.
 
 ### Évolutions fonctionnelles
-- **Nouveaux composants et refontes** :
-  - Ajout du composant `ProgressBar`.
-  - Refonte complète du composant `Toast` (basée sur `react-toastify`).
-  - Mise à jour du design du composant `Alert` avec l'application des nouveaux tokens.
-- **Améliorations des composants existants** :
-  - `Tabs` : Ajout de variantes accessibles et de la gestion de sélection contrôlée.
-  - `Modal` : Correction de problèmes de mise en page.
-- **Expérience utilisateur (UX)** :
-  - Amélioration de la gestion des accès aux dossiers (affichage immédiat de l'accès refusé sans chargement de contenu inutile).
-  - Simplification de la gestion d'état du modal de partage.
-  - Optimisation de la synchronisation du défilement lors de la saisie de texte dans les modes de prévisualisation.
+- **Nouveaux composants** : Ajout du composant `ProgressBar` et amélioration du composant `Tabs` (nouvelles variantes accessibles et gestion de la sélection contrôlée).
+- **Partage de fichiers** : Introduction de l'expiration des liens de partage et simplification de l'interface de gestion des accès aux dossiers dans le `ShareModal`.
+- **Interface utilisateur** : 
+    - Mise à jour visuelle du composant `Alert` pour s'aligner sur les nouveaux tokens de design.
+    - Amélioration de la gestion des accès refusés dans le mode prévisualisation.
+    - Correction de problèmes de mise en page sur le composant `Modal`.
 
 ### Évolutions techniques
-- **Tests et fiabilité** :
-  - Stabilisation des tests de tri pour le composant `SimpleDataGrid`.
-  - Amélioration des tests de bout en bout (E2E) pour mieux gérer les sauts de page et les contenus de tailles variables.
-  - Intégration des matchers `jest-dom` dans l'environnement de test Vitest.
-- **Architecture et Refactoring** :
-  - Restructuration du composant `Alert` via l'extraction de `NotificationContent`.
-- **CI/CD** :
-  - Standardisation de la configuration de la CI en utilisant les presets par défaut de la Suite numérique.
+- **Refonte de composants** : Reconstruction du composant `Toast` basée sur `react-toastify` et refactorisation de l' `Alert` pour une meilleure modularité (extraction de `NotificationContent`).
+- **Fiabilité des tests** : 
+    - Stabilisation des tests de tri pour le `SimpleDataGrid`.
+    - Amélioration de la robustesse des tests E2E (synchronisation des défilements de page).
+    - Intégration des matchers `jest-dom` dans l'environnement de test Vitest.
+- **Internationalisation** : Optimisation du système de traduction pour permettre le remplacement de variables dans les traductions personnalisées.
 
 ### Autres changements
-- Publication de la version `ui-components` 1.3.0.
-- Nettoyage du fichier CHANGELOG.
+- **Documentation** : Ajout d'exemples d'utilisation et de précisions sur l'expiration des liens pour le `ShareModal`.
+- **Maintenance** : Publication de la version `ui-components` 1.3.0 et nettoyage du fichier CHANGELOG.
