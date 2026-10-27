@@ -1,21 +1,22 @@
 {
   "url": "https://github.com/suitenumerique/people",
   "name": "people",
-  "description": "Application de gestion des utilisateurs, des équipes et de la distribution des permissions pour l'écosystème La Suite. Elle permet également la gestion des domaines de messagerie et des organisations.",
+  "description": "Application de gestion des utilisateurs et des équipes, permettant la distribution de permissions au sein de l'écosystème La Suite.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Gestion des équipes & Partenaires",
-    "Gestion des profils & Comptes",
     "Authentification & Accès",
-    "Gestion métier générale"
+    "Gestion des profils & Comptes",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Django",
     "Django Rest Framework",
+    "Celery",
     "PostgreSQL",
     "Redis",
-    "Celery",
     "Keycloak",
     "Next.js",
     "Docker"
@@ -24,7 +25,6 @@
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
@@ -32,16 +32,14 @@
   ],
   "auth": {
     "methods": [
+      "email-password",
       "jwt",
       "session"
-    ],
-    "providers": [
-      "Keycloak"
     ]
   },
   "tests": [
-    "pytest",
-    "e2e tests"
+    "Pytest",
+    "E2E tests"
   ],
   "workflows": [
     "GitHub Actions"
@@ -53,10 +51,11 @@
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
+    "Django & FastAPI",
     "TypeScript",
     "React & Next.js",
-    "Bases de données SQL",
     "Docker & Conteneurs",
+    "Bases de données SQL",
     "CI/CD & GitHub Actions",
     "Sécurité & Auth"
   ]
