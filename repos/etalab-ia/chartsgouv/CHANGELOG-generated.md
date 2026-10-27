@@ -1,19 +1,10 @@
-## Changelog : chartsgouv (30 derniers jours, au 30/09/2026)
+## Changelog : chartsgouv (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Le projet a franchi une étape majeure avec le passage à la version 2.0.0. Cette mise à jour simplifie la gestion du dépôt et assure une meilleure compatibilité avec les dernières versions du Design Système de l'État (DSFR) et d'Apache Superset.
+Les récentes évolutions se sont concentrées sur l'amélioration de la fiabilité des déploiements et la précision des traductions, afin de garantir une expérience utilisateur plus cohérente et un processus de mise à jour plus robuste.
 
 ### Évolutions fonctionnelles
-- **Mise à jour du thème** : Actualisation de la configuration pour s'aligner sur la version 6.1 du DSFR.
-- **Installation** : Mise à jour des valeurs Helm pour garantir la compatibilité avec les dernières versions de Superset.
+- Mise à jour des traductions (version 6.1) et amélioration de la gestion des traductions de Superset ([#118](https://github.com/etalab-ia/chartsgouv/pull/118)).
 
 ### Évolutions techniques
-- **Simplification de la gestion du projet** : Refonte de la stratégie de dépôt et du processus de publication ([#99](https://github.com/etalab-ia/chartsgouv/issues/99)).
-- **Optimisation de la CI/CD** :
-    - Amélioration de l'intégration du DSFR ([#105](https://github.com/etalab-ia/chartsgouv/issues/105)).
-    - Mise à jour du workflow de construction d'images ([#103](https://github.com/etalab-ia/chartsgouv/issues/103)).
-    - Renforcement des contrôles de qualité (linting) sur Docker ([#102](https://github.com/etalab-ia/chartsgouv/issues/102)), Helm ([#101](https://github.com/etalab-ia/chartsgouv/issues/101)) et les scripts Shell ([#100](https://github.com/etalab-ia/chartsgouv/issues/100)).
-
-### Autres changements
-- **Maintenance** : Configuration de Dependabot pour automatiser les mises à jour de dépendances.
-- **Nettoyage** : Suppression de l'écosystème `uv` et application de règles de linting sur la documentation.
+- Optimisation de la chaîne d'intégration continue (CI) : nouvelle stratégie de nommage des images incluant la version de Superset et suppression du cache ([#118](https://github.com/etalab-ia/chartsgouv/pull/118)).
