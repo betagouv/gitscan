@@ -1,34 +1,29 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 23 octobre 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec l'ajout de nouveaux parcours pédagogiques via la section "Se former et s'entraîner". L'identité visuelle a été ajustée et une vaste opération de nettoyage technique a été menée pour moderniser le code et améliorer la stabilité de l'environnement de développement.
+Ce mois-ci, la plateforme a franchi une étape importante avec le déploiement de la nouvelle section dédiée à la formation et à l'entraînement. Parallèlement, l'interface a été affinée pour améliorer la clarté du contenu et l'expérience utilisateur, tout en simplifiant l'identité visuelle du projet.
 
 ### Évolutions fonctionnelles
-- **Nouveaux contenus** : Implémentation de la page "Se former et s'entraîner en ligne" et de sa route dédiée.
-- **Nouveaux services** : Mise à disposition d'API pour les parcours de sélection "Je me mesure" et "Je m'entraîne".
-- **Améliorations de l'interface** :
-    - Optimisation de l'affichage du mode sombre.
-    - Corrections de textes (wording) sur la page d'accueil et les sections de présentation.
+- **Nouvelle section de formation** : Implémentation complète de la page "Se former et s'entraîner en ligne" (route `/se-former`).
+- **Améliorations de l'interface (UI/UX)** :
+    - Optimisation de l'application du mode sombre.
     - Correction de l'affichage du bloc "Comment ça marche ?".
-    - Mise en place d'une image générique pour pallier l'absence d'illustrations.
-- **Identité visuelle** : Retrait du logo et de la tagline "Innovation ANSSI" de l'en-tête.
+    - Utilisation d'images génériques pour pallier l'absence d'illustrations.
+- **Identité et contenu** :
+    - Mise à jour de l'identité visuelle avec le retrait du logo et de la tagline ANSSI.
+    - Harmonisation du wording (textes) sur la page d'accueil et les sections de présentation pour plus de clarté.
 
 ### Évolutions techniques
-- **Refactoring et nettoyage** : Suppression massive de surcharges de types inutiles sur de nombreuses bibliothèques (Axios, Svelte, Lodash, etc.) pour alléger le projet.
-- **Modernisation du socle** : 
-    - Migration de la configuration Vitest vers le format ESM.
-    - Utilisation de standards plus récents pour les configurations Vite (`import.meta.dirname`).
-- **Outillage de développement** :
-    - Introduction de Nix pour la gestion de l'environnement de travail (shell Nix).
+- **Développement d'API** : Mise à disposition de nouvelles API pour les parcours "Je me mesure" et "Je m'entraîne".
+- **Refactoring et optimisation** :
+    - Nettoyage massif du code via la suppression de nombreuses surcharges de types inutiles (Axios, Svelte, Lodash, etc.).
+    - Migration de la configuration Vitest backend vers le format ESM.
+- **Expérience développeur (DevEx)** :
+    - Introduction d'un shell Nix pour l'environnement de développement.
     - Automatisation du tri des imports.
-    - Centralisation des instructions pour les agents d'IA.
-- **Infrastructure et CI/CD** :
-    - Mise à jour de l'environnement de CI vers Ubuntu 26.04.
-    - Mise à jour de plusieurs workflows GitHub Actions.
-- **Maintenance et sécurité** :
-    - Mise à jour de dépendances critiques (Svelte, Knex, Axios, Zod, etc.).
-    - Nettoyage des logs de debug liés à l'authentification.
+- **IA et Infrastructure** :
+    - Centralisation des instructions pour les agents d'intelligence artificielle.
+    - Mise à jour de l'UI Kit vers la version 1.64.0.
 
 ### Autres changements
-- **Documentation** : Réorganisation complète du guide de développement pour une meilleure lisibilité.
-- **Configuration** : Optimisation du planning des mises à jour automatiques (Renovate).
+- **Documentation** : Réorganisation complète du guide de développement pour en faciliter la consultation.

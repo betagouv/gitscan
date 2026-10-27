@@ -1,24 +1,25 @@
 {
   "url": "https://github.com/betagouv/anssi-demain-specialiste-cyber",
   "name": "anssi-demain-specialiste-cyber",
-  "description": "Plateforme de formation et d'entraînement à la cybersécurité proposant des contenus pédagogiques et des défis pour tester ses compétences.",
+  "description": "Plateforme de formation et d'entraînement à la cybersécurité proposant des parcours pédagogiques et des outils d'auto-évaluation pour les futurs spécialistes.",
   "language": "TypeScript",
   "features": [
     "Contenu éditorial",
     "Simulation & Calcul",
     "Interface utilisateur & Design",
     "Sécurité & Conformité",
-    "Authentification & Accès"
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Express",
     "Svelte",
+    "Express",
     "PostgreSQL",
     "Knex",
     "Axios",
     "Zod",
-    "AWS SDK",
+    "AWS S3",
+    "Sentry",
     "OpenID Connect"
   ],
   "components": [
@@ -27,14 +28,15 @@
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
+    "CI/CD & Déploiement",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "session",
-      "oauth2"
+      "oauth2",
+      "sso"
     ]
   },
   "tests": [
@@ -44,16 +46,17 @@
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-23T09:00:29+02:00",
+  "lastActivity": "2026-10-26T08:34:55+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
+    "JavaScript",
     "Docker & Conteneurs",
-    "Sécurité & Auth",
+    "CI/CD & GitHub Actions",
     "Design System & UI",
-    "CI/CD & GitHub Actions"
+    "Sécurité & Auth"
   ]
 }
