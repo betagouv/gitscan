@@ -1,37 +1,22 @@
-## Changelog : drive-migrator (30 derniers jours, au 13 octobre 2026)
+## Changelog : drive-migrator (30 derniers jours, au 26/10/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la fiabilité des migrations et la visibilité pour l'utilisateur. L'introduction de rapports d'intégrité détaillés permet désormais de vérifier précisément l'état des fichiers migrés, tandis que la gestion des erreurs a été assouplie pour éviter qu'un fichier problématique ne bloque l'ensemble d'un processus.
+Ce mois-ci, les développements se sont concentrés sur la fiabilité des migrations et la visibilité des données. Un nouveau système de tentatives automatiques a été introduit pour limiter les échecs dus aux erreurs réseau, tandis que la gestion des fichiers refusés par les destinations a été simplifiée grâce à l'archivage automatique et à l'envoi de rapports détaillés. Enfin, de nouveaux outils de suivi permettent désormais de vérifier précisément l'intégrité des fichiers migrés.
 
 ### Évolutions fonctionnelles
-- **Suivi de l'intégrité des données** : mise en place de rapports d'intégrité par fichier et affichage des statistiques de migration (écarts, succès, échecs) directement sur les cartes des espaces de travail et dans l'interface d'administration.
-- **Amélioration de la gestion des erreurs** : 
-    - Les e-mails de notification incluent désormais un fichier CSV listant les fichiers ayant échoué à la migration.
-    - La migration d'un espace de travail ne s'interrompt plus si certains fichiers sont rejetés par le Drive ; ces fichiers sont désormais persistés pour suivi.
-    - Réinitialisation automatique des erreurs de l'exécution précédente lors du lancement d'une nouvelle exportation.
-- **Optimisation de Resana** : 
-    - Meilleure gestion des espaces de travail (verrouillage via `ResanaLockClient`, filtrage par UUID).
-    - Restriction de l'accès aux espaces de travail Resana au rôle "Animateur" [#110](https://github.com/suitenumerique/drive-migrator/issues/110) [#160](https://github.com/suitenumerique/drive-migrator/issues/160).
-    - Exclusion par défaut des espaces de travail personnels Resana [#163](https://github.com/suitenumerique/drive-migrator/issues/163).
-- **Expérience utilisateur et interface** :
-    - Mise à jour des logos (ProConnect, en-tête des mails [#221](https://github.com/suitenumerique/drive-migrator/issues/221)).
-    - Rendre le menu d'aide (URL de documentation et e-mail de contact) configurable via le backend.
-    - Correction du problème de noms de fichiers accentués lors de l'exportation en ZIP.
+- **Suivi de l'intégrité** : Ajout de rapports d'intégrité détaillés par fichier, affichage des compteurs d'intégrité sur les cartes d'espaces de travail et intégration des rapports de migration dans l'interface d'administration.
+- **Gestion des fichiers refusés** : Les fichiers refusés par une destination sont désormais archivés et un lien de téléchargement (ou un fichier CSV) est automatiquement inclus dans les e-mails de notification.
+- **Expérience utilisateur** : Amélioration du guidage pour les utilisateurs sans compte Drive, ajout du logo ProConnect et affichage d'informations sur la disponibilité du transfert d'accès.
+- **Administration** : Ajout d'informations sur les espaces de travail dans la liste des tâches de l'interface admin.
 
 ### Évolutions techniques
-- **Modernisation de l'outillage** : adoption de `uv` pour la gestion du projet et l'exécution des workers Celery.
-- **Observabilité et Analytics** : intégration poussée de PostHog pour le suivi des connexions utilisateurs, des synchronisations de workspaces et du cycle de vie des migrations.
-- **Sécurité et Robustesse** :
-    - Mise à jour de Django et PyJWT.
-    - Utilisation d'images Docker de base Alpine pour plus de légèreté et de sécurité.
-    - Renforcement de la sécurité des partages Drive (restriction aux adresses e-mail exactes).
-    - Sécurisation des liens d'exécution dans l'administration (échappement des données utilisateur).
-- **Fiabilité des transferts** :
-    - Ajout de mécanismes de relance (retry) pour les appels API Drive en cas d'erreurs temporaires (5xx).
-    - Passage à l'API "resource server" pour le Drive.
-    - Déclaration explicite de la taille des fichiers lors de la création d'items sur le Drive.
-- **Infrastructure** : optimisation des images Docker (Nginx, MinIO via Chainguard/Quay.io) et isolation des répertoires de travail pour les tâches d'exportation.
+- **Résilience et fiabilité** : Implémentation d'une session de tentatives partagée (`RetryingSession`) pour gérer automatiquement les erreurs d'API transitoires (timeouts, erreurs 5xx) sur les services Osmose, Resana et Drive.
+- **Améliorations des intégrations** :
+    - **Resana** : Utilisation des UUID GED pour une identification plus robuste et mise en place d'un système de verrouillage des espaces de travail (`ResanaLockClient`).
+    - **Drive** : Migration vers l'API "resource server", déclaration de la taille des fichiers lors de la création et gestion plus souple des fichiers refusés pour éviter l'échec complet d'une migration.
+- **Infrastructure et DevOps** : Adoption de l'outil `uv` pour la gestion du projet et des dépendances, passage à des images Docker Alpine et mises à jour des environnements Node et Nginx.
+- **Sécurité** : Mise à jour de dépendances critiques (Django, PyJWT, Pillow, Certifi) et sécurisation des données utilisateurs dans les liens de l'administration.
+- **Observabilité** : Enrichissement des logs (niveaux INFO, durée de vie des tokens, logs de téléchargement Drive) et ajout de métriques analytiques (PostHog) pour la taille des espaces de travail et les types de fichiers.
 
 ### Autres changements
-- **Documentation** : ajout de la documentation concernant les états de vérification d'intégrité et les paramètres PostHog.
-- **Qualité logicielle** : amélioration des processus de linting et ajout de tests unitaires sur les redirections d'échec.
+- Documentation des différents états de vérification de l'intégrité des migrations.

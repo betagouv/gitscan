@@ -1,10 +1,10 @@
 [build-system]
-requires = ["uv_build>=0.10.7,<0.13.0"]
+requires = ["uv_build>=0.13.4,<0.14"]
 build-backend = "uv_build"
 
 [project]
 name = "migrator"
-version = "0.8.10"
+version = "0.11.0"
 authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -22,7 +22,7 @@ license = "MIT"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "Brotli==1.2.0",
+    "Brotli==1.2.1",
     "pyjwt==2.15.1",
     "WeasyPrint>=60.2",
     "boto3==1.35.64",
@@ -39,7 +39,7 @@ dependencies = [
     "django-storages[s3]==1.14.2",
     "django-timezone-field>=5.1",
     "django==5.2.17",
-    "djangorestframework==3.17.2",
+    "djangorestframework==3.18.2",
     "dockerflow==2022.8.0",
     "drf_spectacular==0.26.5",
     "factory_boy==3.3.0",
@@ -89,6 +89,12 @@ dev = [
 
 [tool.uv]
 package = false
+constraint-dependencies = [
+    # Pin pillow above the versions vulnerable to the image decoder and
+    # encoder advisories fixed in 13.0.0. Pulled transitively via
+    # WeasyPrint, which has no upper bound on pillow.
+    "pillow>=13.0.0",
+]
 
 [tool.uv.build-backend]
 module-root = ""

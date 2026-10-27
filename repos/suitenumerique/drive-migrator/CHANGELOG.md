@@ -8,6 +8,53 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- Show the linked workspace and migration user in the Celery task result
+  admin list view
+
+#### Dependencies
+
+- Upgrade `django-rest-framework` to `3.18.2`
+
+## [v0.11.0] - 2026-10-23
+
+### Added
+
+- Configure per destination whether users must create their account #270
+
+### Fixed
+
+- Retry transient API errors (timeouts, connection errors, 5xx) in the Osmose,
+  Resana and Drive API clients #264
+- Ask users without a Drive account to log in to Drive before migrating #266
+
+## [v0.10.1] - 2026-10-22
+
+### Added
+
+- Log the Resana and Drive tokens lifetime before each migration and on refresh
+- Send the application INFO logs to the console from the web process too,
+  level set by `LOGGING_LEVEL_LOGGERS_APP` (libraries:
+  `LOGGING_LEVEL_LOGGERS_ROOT`); Celery workers keep their `-l` level for
+  tasks and libraries
+
+### Changed
+
+- Indicate that access transfer is not yet available in migration dialog
+
+## [v0.10.0] - 2026-10-19
+
+### Added
+
+- Zip the files a destination refused and link it in the e-mail #257
+
+### Fixed
+
+- Skip files blocked in front of Drive instead of failing the run
+
+## [v0.9.0] - 2026-10-14
+
 ### Added
 
 - Attach a CSV of files that failed to migrate to the notification e-mail #256
@@ -120,5 +167,9 @@ and this project adheres to
 
 - delete unused var in Makefile
 
-[unreleased]: https://github.com/suitenumerique/drive-migrator/compare/v0.8.10...HEAD
+[unreleased]: https://github.com/suitenumerique/drive-migrator/compare/v0.11.0...main
+[v0.11.0]: https://github.com/suitenumerique/drive-migrator/releases/v0.11.0
+[v0.10.1]: https://github.com/suitenumerique/drive-migrator/releases/v0.10.1
+[v0.10.0]: https://github.com/suitenumerique/drive-migrator/releases/v0.10.0
+[v0.9.0]: https://github.com/suitenumerique/drive-migrator/releases/v0.9.0
 [v0.8.10]: https://github.com/suitenumerique/drive-migrator/releases/v0.8.10
