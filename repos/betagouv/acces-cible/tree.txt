@@ -37,7 +37,8 @@
 │   │   ├── builds
 │   │   │   └── .keep
 │   │   ├── images
-│   │   │   └── .keep
+│   │   │   ├── .keep
+│   │   │   └── home-hero-illustration.png
 │   │   └── stylesheets
 │   │       └── application.scss
 │   ├── components
@@ -50,10 +51,12 @@
 │   │       └── tooltip_component.rb
 │   ├── controllers
 │   │   ├── application_controller.rb
+│   │   ├── audit_batches_controller.rb
+│   │   ├── audit_csv_exports_controller.rb
 │   │   ├── audits_controller.rb
 │   │   ├── concerns
-│   │   │   ├── authentication.rb
-│   │   │   └── sites_filtering.rb
+│   │   │   ├── audits_filtering.rb
+│   │   │   └── authentication.rb
 │   │   ├── errors_controller.rb
 │   │   ├── pages_controller.rb
 │   │   ├── sessions_controller.rb
@@ -61,7 +64,7 @@
 │   │   ├── tags_controller.rb
 │   │   └── users_controller.rb
 │   ├── export
-│   │   └── site_csv_export.rb
+│   │   └── audit_csv_export.rb
 │   ├── helpers
 │   │   ├── application_helper.rb
 │   │   ├── audits_helper.rb
@@ -81,6 +84,8 @@
 │   │       ├── frame_controller.js
 │   │       ├── index.js
 │   │       ├── modal_controller.js
+│   │       ├── repeatable_fields_controller.js
+│   │       ├── scroll_shadow_controller.js
 │   │       └── table_controller.js
 │   ├── jobs
 │   │   ├── application_job.rb
@@ -102,6 +107,7 @@
 │   │   ├── application_record.rb
 │   │   ├── audit.rb
 │   │   ├── audit_batch.rb
+│   │   ├── audit_columns.rb
 │   │   ├── axe_rule.rb
 │   │   ├── browser.rb
 │   │   ├── check.rb
@@ -129,7 +135,6 @@
 │   │   ├── session.rb
 │   │   ├── site.rb
 │   │   ├── site_tag.rb
-│   │   ├── site_upload.rb
 │   │   ├── tag.rb
 │   │   ├── team.rb
 │   │   └── user.rb
@@ -142,15 +147,40 @@
 │   │   ├── email_validator.rb
 │   │   └── url_validator.rb
 │   └── views
+│       ├── audit_batches
+│       │   ├── _audit_status.html.erb
+│       │   ├── _hidden_fields.html.erb
+│       │   ├── _pagination.html.erb
+│       │   ├── _status.html.erb
+│       │   ├── _step_actions.html.erb
+│       │   ├── _tags_form.html.erb
+│       │   ├── new.html.erb
+│       │   ├── show.html.erb
+│       │   └── steps
+│       │       ├── _checks.html.erb
+│       │       ├── _method.html.erb
+│       │       ├── _method_option.html.erb
+│       │       ├── _summary.html.erb
+│       │       ├── _urls.html.erb
+│       │       └── urls
+│       │           ├── _csv_import.html.erb
+│       │           ├── _manual.html.erb
+│       │           └── _url_field.html.erb
 │       ├── audits
+│       │   ├── _audit.html.erb
 │       │   ├── _automated_tests.html.erb
 │       │   ├── _declaration_not_found.html.erb
 │       │   ├── _declaration_quality.html.erb
 │       │   ├── _declared_level.html.erb
 │       │   ├── _legal_obligations.html.erb
 │       │   ├── _obligations.html.erb
+│       │   ├── _redirect_callout.html.erb
 │       │   ├── _summary.html.erb
 │       │   ├── _unreachable.html.erb
+│       │   ├── index.html.erb
+│       │   ├── modals
+│       │   │   ├── _columns.html.erb
+│       │   │   └── _headings.html.erb
 │       │   └── show.html.erb
 │       ├── errors
 │       │   ├── internal_server_error.html.erb
@@ -161,8 +191,8 @@
 │       │   ├── mailer.text.erb
 │       │   └── modal.html.erb
 │       ├── pages
+│       │   ├── _feature.html.erb
 │       │   ├── accessibilite.html.md
-│       │   ├── accueil.html.md
 │       │   ├── checks
 │       │   │   ├── accessibility_mention.html.md
 │       │   │   ├── accessibility_page_heading.html.md
@@ -178,6 +208,13 @@
 │       │   ├── display_mode.html.erb
 │       │   ├── donnees_personnelles.html.erb
 │       │   ├── help.html.erb
+│       │   ├── home
+│       │   │   ├── _hero.html.erb
+│       │   │   ├── _how_it_works.html.erb
+│       │   │   ├── _public_cta.html.erb
+│       │   │   ├── _result_example.html.erb
+│       │   │   └── _what_we_do.html.erb
+│       │   ├── home.html.erb
 │       │   ├── mentions_legales.html.md
 │       │   └── plan.html.erb
 │       ├── pwa
@@ -194,12 +231,8 @@
 │       │   ├── _pagination.html.erb
 │       │   └── _skiplinks.html.erb
 │       ├── sites
-│       │   ├── _form.html.erb
-│       │   ├── _site.html.erb
 │       │   ├── _tags_form.html.erb
 │       │   ├── edit.html.erb
-│       │   ├── index.html.erb
-│       │   ├── new.html.erb
 │       │   └── show.html.erb
 │       ├── tags
 │       │   ├── index.html.erb
@@ -251,6 +284,7 @@
 │   │   ├── omniauth.rb
 │   │   ├── pagy.rb
 │   │   ├── rack_attack.rb
+│   │   ├── search_engine_indexing.rb
 │   │   ├── sentry.rb
 │   │   ├── statesman.rb
 │   │   └── turbo_streams.rb
@@ -324,16 +358,19 @@
 │   │   ├── 20260730152622_add_conform_and_found_to_checks.rb
 │   │   ├── 20260730152831_add_legal_obligation_score_and_declaration_quality_score_to_audits.rb
 │   │   ├── 20260805165316_create_audit_batches.rb
-│   │   └── 20260805170423_add_audit_batch_to_audits.rb
+│   │   ├── 20260805170423_add_audit_batch_to_audits.rb
+│   │   ├── 20260923162820_add_run_axe_on_homepage_to_audit_batches.rb
+│   │   └── 20260930143215_remove_html_from_audits.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker-compose.yml
 ├── features
-│   ├── ajout_d_un_site.feature
+│   ├── ajout_manuel_d_un_lot_de_sites.feature
+│   ├── ajout_par_csv_d_un_lot_de_sites.feature
 │   ├── export_csv.feature
 │   ├── page_d_accueil.feature
-│   ├── page_des_sites.feature
+│   ├── page_des_audits.feature
 │   ├── page_des_tags.feature
 │   ├── page_du_site.feature
 │   ├── step_definitions
@@ -365,6 +402,7 @@
 │   ├── 400.html
 │   ├── 406-unsupported-browser.html
 │   ├── 422.html
+│   ├── exemple.csv
 │   ├── favicon.ico
 │   ├── icon.png
 │   ├── icon.svg
@@ -378,7 +416,7 @@
 │   │       ├── table_spec.rb
 │   │       └── tooltip_component_spec.rb
 │   ├── export
-│   │   └── site_csv_export_spec.rb
+│   │   └── audit_csv_export_spec.rb
 │   ├── factories
 │   │   ├── audit_batches.rb
 │   │   ├── audits.rb
@@ -437,12 +475,12 @@
 │   │   ├── page_spec.rb
 │   │   ├── session_spec.rb
 │   │   ├── site_spec.rb
-│   │   ├── site_upload_spec.rb
 │   │   ├── tag_spec.rb
 │   │   ├── team_spec.rb
 │   │   └── user_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── audit_batches_controller_spec.rb
 │   │   ├── audits_controller_spec.rb
 │   │   ├── authentication_spec.rb
 │   │   ├── jdma_widget_spec.rb
@@ -478,4 +516,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-78 directories, 402 files
+83 directories, 435 files
