@@ -1,24 +1,23 @@
-## Changelog : menshen (30 derniers jours, au 02/10/2026)
+## Changelog : menshen (30 derniers jours, au 25 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur le renforcement de la sécurité (chiffrement des secrets et nouveaux algorithmes de hachage), l'amélioration de la robustesse de l'API lors de l'introspection de jetons et une simplification de la bibliothèque client pour une meilleure expérience développeur.
+Cette période est marquée par le passage à la version 0.4.0. Les évolutions majeures concernent la restructuration du format des portées (scopes) de jetons pour une gestion plus granulaire des permissions, ainsi qu'un renforcement significatif de l'environnement de test et de la robustesse de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'introspection** : support des champs email vides et des jetons d'accès opaques dans les réponses d'introspection.
-- **Gestion des secrets clients** : support des caractères spéciaux (séquences de pourcentage) et ajout d'une option de configuration (`use_special_chars`) pour contrôler la complexité de génération des secrets.
-- **Environnement de test** : ajout d'une variante "proconnect" dans le playground pour faciliter les démonstrations.
+- **Gestion des permissions** : Évolution du modèle de définition des portées (scopes) de jetons vers un format standardisé `service:resource:action`.
 
 ### Évolutions techniques
-- **Sécurité renforcée** : 
-    - Adoption d'Argon2 comme algorithme de hachage de mot de passe par défaut.
-    - Mise en place du chiffrement pour les secrets clients des fournisseurs de services (SP).
-    - Restauration de la liste des hacheurs de mots de passe.
-- **Optimisation des performances** : réduction des appels inutiles à la base de données lors de la gestion des identifiants des fournisseurs de services.
-- **Refactorisation du client** : simplification et clarification des noms de classes (ex: `MenshenClient` devient `TokenExchangeClient`, `MenshenConfiguration` devient `Configuration`).
-- **Infrastructure et Build** : 
-    - Migration vers le système de build `uv`.
-    - Correction du workflow de publication des paquets sur PyPI.
+- **Tests et environnement de démonstration (Playground)** :
+    - Mise en place de tests de bout en bout (E2E) pour Keycloak et l'environnement de playground.
+    - Intégration du client Menshen et ajout de nouvelles configurations (audience mapper, variante ProConnect).
+- **Infrastructure et CI/CD** :
+    - Optimisation des workflows GitHub Actions (mise à jour de `setup-uv` et adoption des presets CI de la suite numérique).
+    - Amélioration de la sécurité en supprimant le certificat racine emSign des dépendances.
+- **Backend et Client** :
+    - Amélioration de la gestion des logs via l'intégration de la configuration `lasuite`.
+    - Ajout d'un délai d'attente (timeout) par défaut pour les requêtes POST dans le client.
+    - Mise à jour de la dépendance `django-lasuite`.
+    - Nettoyage de l'interface d'administration (suppression de propriétés inconnues).
 
 ### Autres changements
-- **Documentation** : ajout de la documentation concernant les actions disponibles via les services `lasuite`.
-- **Maintenance** : nettoyage de l'interface d'administration (suppression de propriétés inconnues) et correction des données de test (fixtures) du playground.
+- **Qualité du code** : Configuration et résolution des avertissements du linter, et correction de fautes de frappe dans les messages de log.

@@ -30,6 +30,7 @@
 │   ├── compose
 │   ├── local-env
 │   ├── manage
+│   ├── playwright
 │   ├── pytest
 │   └── uv
 ├── compose.yml
@@ -139,6 +140,15 @@
     │   │   ├── test_client.py
     │   │   └── test_schemas.py
     │   └── uv.lock
+    ├── e2e
+    │   ├── .python-version
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   └── test_keycloak.py
+    │   └── uv.lock
     ├── helm
     │   ├── env.d
     │   │   └── dev
@@ -213,6 +223,7 @@
             │       ├── api
             │       │   ├── __init__.py
             │       │   ├── authentication.py
+            │       │   ├── permissions.py
             │       │   ├── serializers.py
             │       │   ├── views.py
             │       │   └── viewsets.py
@@ -226,7 +237,11 @@
             │       ├── templates
             │       │   └── core
             │       │       └── main.html
-            │       ├── tests.py
+            │       ├── tests
+            │       │   ├── __init__.py
+            │       │   ├── conftest.py
+            │       │   ├── constants.py
+            │       │   └── test_api.py
             │       ├── urls.py
             │       └── views.py
             ├── manage.py
@@ -243,4 +258,4 @@
             ├── templates
             │   └── base.html
             └── uv.lock
-63 directories, 182 files
+66 directories, 194 files

@@ -8,15 +8,19 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 
 ## [Unreleased]
 
+## [v0.4.0] - 2026-10-25
+
 ### Added
 
 - Allow to configure client secret generation complexity using the
   `TOKEN_EXCHANGE_CLIENT_SECRET_USE_SPECIAL_CHARS` configuration switch
+- Allow `django-lasuite` logging configuration
 
 ### Changed
 
 #### Dependencies
 
+- Upgrade `django-lasuite` to `0.1.0`
 - Upgrade `django-ninja` to `1.7.1`
 
 ### Fixed
@@ -26,6 +30,15 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
   [Django-Ninja #1780](https://github.com/vitalik/django-ninja/pull/1780))
 - Support subject opaque access token introspection
 - Support missing or empty `email` field in token introspection response
+
+### Security
+
+- Upgrade `uv` to `0.13.4` and `certifi` to `2026.10.19` to remove the
+  compromised emSign root CA certificate following the eMudhra security
+  incident (see
+  [GHSA-hq85-5cpj-mr62](https://github.com/advisories/GHSA-hq85-5cpj-mr62)
+  and
+  [GHSA-6q48-6c7w-9gw2](https://github.com/advisories/GHSA-6q48-6c7w-9gw2))
 
 ## [v0.3.0] - 2026-09-17
 
@@ -68,7 +81,8 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 
 - Implement base Token Exchange (RFC 8693) endpoints
 
-[unreleased]: https://github.com/suitenumerique/menshen/compare/v0.3.0...HEAD
+[unreleased]: https://github.com/suitenumerique/menshen/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/suitenumerique/menshen/releases/v0.4.0
 [v0.3.0]: https://github.com/suitenumerique/menshen/releases/v0.3.0
 [v0.2.0]: https://github.com/suitenumerique/menshen/releases/v0.2.0
 [v0.1.0]: https://github.com/suitenumerique/menshen/releases/v0.1.0

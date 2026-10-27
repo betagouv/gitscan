@@ -1,60 +1,63 @@
 {
   "url": "https://github.com/suitenumerique/menshen",
   "name": "menshen",
-  "description": "Serveur d'autorisation OAuth 2.0 spécialisé dans l'échange de jetons (Token Exchange). Il permet de sécuriser les interactions entre services en échangeant des jetons d'accès.",
+  "description": "Serveur d'autorisation OAuth 2.0 conçu pour l'échange de jetons (Token Exchange). Il permet de faciliter le partage sécurisé de ressources entre différents services.",
   "language": "Python",
   "features": [
-    "Authentification & Accès"
+    "Authentification & Accès",
+    "API & Intégrations",
+    "Administration & Backoffice",
+    "Sécurité & Conformité"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Django",
-    "Django Ninja",
+    "Django-Ninja",
     "PostgreSQL",
     "Redis",
     "Keycloak",
-    "uvicorn",
-    "sentry-sdk"
+    "uv",
+    "Playwright"
   ],
   "components": [
     "API REST & GraphQL",
-    "Django",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs"
+    "Python (scripts & backend)",
+    "Docker & Conteneurs",
+    "Authentification (composant)",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "pytest",
-  "workflows": [
-    "_docker-publish.yml",
-    "backend.yml",
-    "client.yml",
-    "docker-hub.yml",
-    "helm.yml",
-    "python-packages.yml",
-    "release-helm-chart.yml",
-    "security.yml"
+  "tests": [
+    "Playwright",
+    "Django tests"
   ],
-  "lastActivity": "2026-10-02T19:57:15+02:00",
-  "status": "experimental",
+  "workflows": [
+    "backend",
+    "security",
+    "helm-chart-publication",
+    "docker-images-publication"
+  ],
+  "lastActivity": "2026-10-25T09:16:02+01:00",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 6,
-    "forks": 1,
-    "contributors": 1,
-    "openIssues": 11
-  },
   "tags": [
+    "Python",
     "Sécurité & Auth",
-    "Django & FastAPI",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Standards & Schémas",
+    "Django & FastAPI",
+    "SSO & Identité fédérée"
   ]
 }
