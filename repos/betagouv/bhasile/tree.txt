@@ -17,13 +17,6 @@
 ├── Procfile
 ├── README.md
 ├── build.css
-├── content
-│   └── ressources
-│       ├── 01-modeles.md
-│       ├── 02-ressources.md
-│       ├── 03-faq.md
-│       ├── README.md
-│       └── _suggestions.md
 ├── copy-assets.ts
 ├── cron.json
 ├── docs
@@ -36,9 +29,8 @@
 │   ├── departements.md
 │   ├── dependabot.md
 │   ├── ofii_referential.md
+│   ├── permissions.md
 │   ├── scripts.md
-│   ├── specs
-│   │   └── transformations.md
 │   ├── structure-typology.md
 │   ├── tests.md
 │   └── transfo_huda_cada.md
@@ -46,7 +38,7 @@
 ├── next.config.ts
 ├── package.json
 ├── patches
-│   └── @codegouvfr+react-dsfr+1.34.0.patch
+│   └── @codegouvfr+react-dsfr+1.36.0.patch
 ├── postcss.config.mjs
 ├── prisma
 │   ├── client.ts
@@ -295,6 +287,28 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260818094411_exports_tracking
 │   │   │   └── migration.sql
+│   │   ├── 20260917091212_rename_and_add_huda_transformation_types
+│   │   │   └── migration.sql
+│   │   ├── 20260921133508_exports_pdf_tracking
+│   │   │   └── migration.sql
+│   │   ├── 20260921144840_faq
+│   │   │   └── migration.sql
+│   │   ├── 20260921154054_add_ofii_names_for_operateurs
+│   │   │   └── migration.sql
+│   │   ├── 20260923085946_add_adresse_commune_localisation
+│   │   │   └── migration.sql
+│   │   ├── 20261001140420_remove_mean_note
+│   │   │   └── migration.sql
+│   │   ├── 20261008091847_add_grants
+│   │   │   └── migration.sql
+│   │   ├── 20261008151114_clean_old_grants
+│   │   │   └── migration.sql
+│   │   ├── 20261013122437_finance_targets_per_year
+│   │   │   └── migration.sql
+│   │   ├── 20261015081033_better_user_grants
+│   │   │   └── migration.sql
+│   │   ├── 20261015121833_remove_filiales
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -307,8 +321,10 @@
 │   │   ├── dna.prisma
 │   │   ├── evaluation.prisma
 │   │   ├── evenement-indesirable-grave.prisma
+│   │   ├── faq.prisma
 │   │   ├── file-upload.prisma
 │   │   ├── form.prisma
+│   │   ├── grant.prisma
 │   │   ├── indicateur-financier.prisma
 │   │   ├── location.prisma
 │   │   ├── note.prisma
@@ -328,6 +344,7 @@
 │   │   ├── adresse.seed.ts
 │   │   ├── antenne.seed.ts
 │   │   ├── budget.seed.ts
+│   │   ├── cible-financiere.seed.ts
 │   │   ├── contact.seed.ts
 │   │   ├── controle.seed.ts
 │   │   ├── cpom.seed.ts
@@ -336,6 +353,7 @@
 │   │   ├── document-financier.ts
 │   │   ├── evaluation.seed.ts
 │   │   ├── evenement-indesirable-grave.seed.ts
+│   │   ├── faq.seed.ts
 │   │   ├── file-upload.seed.ts
 │   │   ├── finess.seed.ts
 │   │   ├── form.seed.ts
@@ -359,9 +377,9 @@
 │   ├── adresses-mixte.xlsx
 │   ├── autosave-picto.svg
 │   ├── book-shelf-line.svg
+│   ├── incomplete.svg
 │   ├── logo.svg
-│   ├── matrice-impact-bhasile.png
-│   ├── ofii.webp
+│   ├── ofii.avif
 │   ├── ovoid.svg
 │   ├── stats.svg
 │   ├── structure-marker.svg
@@ -401,9 +419,15 @@
 │   │   ├── 20260719-backfill-structure-version-places-autorisees.ts
 │   │   ├── 20260729-backfill-adresse-scalaires.ts
 │   │   ├── 20260731-nullify-socle-effective-date.ts
-│   │   └── 20260810-nullify-evaluation-zero-notes.ts
+│   │   ├── 20260810-nullify-evaluation-zero-notes.ts
+│   │   ├── 20260921-fill-operateur-ofii-names.ts
+│   │   ├── 20260923-locate-adresses.ts
+│   │   ├── 20260929-migrate-roles-to-grants.ts
+│   │   ├── 20261006-end-cpom-structures-at-fermeture.ts
+│   │   └── 20261021-migrate-individual-email-patterns.ts
 │   ├── postdeploy.sh
 │   ├── recurring-scripts
+│   │   ├── brevo-push-users.ts
 │   │   ├── clean-old-user-actions.ts
 │   │   ├── create-actualisation-campaigns.ts
 │   │   ├── eig-fetch.ts
@@ -418,10 +442,12 @@
 │   │   └── transfo-huda-cada-fetch.ts
 │   ├── run-one-off.sh
 │   ├── utils
+│   │   ├── brevo.util.ts
 │   │   ├── csv-loader.ts
 │   │   ├── demarche-numerique.util.ts
 │   │   ├── departement-name.ts
 │   │   ├── ensure-operateurs-exist.ts
+│   │   ├── grant.util.ts
 │   │   ├── ofii-fill-activity.ts
 │   │   ├── ofii-fill-referential.ts
 │   │   ├── ofii-xlsx.ts
@@ -546,6 +572,7 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── ressources
+│   │   │   │   │   ├── README.md
 │   │   │   │   │   ├── _components
 │   │   │   │   │   │   ├── DownloadLink.tsx
 │   │   │   │   │   │   ├── FaqTabPanel.tsx
@@ -553,12 +580,17 @@
 │   │   │   │   │   │   ├── ResourceBlock.tsx
 │   │   │   │   │   │   ├── ResourcesBlockList.tsx
 │   │   │   │   │   │   ├── ResourcesContent.tsx
-│   │   │   │   │   │   └── ResourcesSearch.tsx
+│   │   │   │   │   │   ├── ResourcesSearch.tsx
+│   │   │   │   │   │   └── RessourcesSkeleton.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── statistiques
 │   │   │   │   │   ├── _components
 │   │   │   │   │   │   ├── AnnualDataNote.tsx
+│   │   │   │   │   │   ├── ClosedStructuresDisclaimer.tsx
 │   │   │   │   │   │   ├── FiltersNotice.tsx
+│   │   │   │   │   │   ├── IncompleteDataIndicator.tsx
+│   │   │   │   │   │   ├── PartialDataNotice.tsx
+│   │   │   │   │   │   ├── StatistiquesCallouts.tsx
 │   │   │   │   │   │   ├── StatistiquesCartographie.tsx
 │   │   │   │   │   │   ├── StatistiquesContent.tsx
 │   │   │   │   │   │   ├── StatistiquesHeader.tsx
@@ -591,6 +623,7 @@
 │   │   │   │   │   │   ├── finances
 │   │   │   │   │   │   │   ├── BalanceChart.tsx
 │   │   │   │   │   │   │   ├── FinanceCards.tsx
+│   │   │   │   │   │   │   ├── FinanceChartLabel.tsx
 │   │   │   │   │   │   │   ├── FinanceTypeSelector.tsx
 │   │   │   │   │   │   │   ├── FinancesBlock.tsx
 │   │   │   │   │   │   │   ├── FinancesStatsTable.tsx
@@ -615,6 +648,7 @@
 │   │   │   │   │   ├── getStatistiques.ts
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── structures
+│   │   │   │       ├── PlacesMapNotice.tsx
 │   │   │   │       ├── StructuresContent.tsx
 │   │   │   │       ├── StructuresCount.tsx
 │   │   │   │       ├── StructuresMapContent.tsx
@@ -743,6 +777,7 @@
 │   │   │   │       │   │       └── page.tsx
 │   │   │   │       │   └── page.tsx
 │   │   │   │       ├── _components
+│   │   │   │       │   ├── MapModeTabs.tsx
 │   │   │   │       │   ├── StatutTabs.tsx
 │   │   │   │       │   ├── StructureItem.tsx
 │   │   │   │       │   ├── StructuresMap.tsx
@@ -800,6 +835,8 @@
 │   │   │           └── type
 │   │   │               └── page.tsx
 │   │   ├── (not-authenticated)
+│   │   │   ├── acces-en-attente
+│   │   │   │   └── page.tsx
 │   │   │   ├── accessibilite
 │   │   │   │   └── page.tsx
 │   │   │   ├── cgu
@@ -815,21 +852,6 @@
 │   │   │   └── usage
 │   │   │       └── page.tsx
 │   │   ├── (password-protected)
-│   │   │   ├── ajout-adresses
-│   │   │   │   ├── [id]
-│   │   │   │   │   ├── 01-adresses
-│   │   │   │   │   │   ├── _components
-│   │   │   │   │   │   │   ├── AdressesRecovery.tsx
-│   │   │   │   │   │   │   └── AdressesRecoveryModal.tsx
-│   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   └── 02-confirmation
-│   │   │   │   │       └── page.tsx
-│   │   │   │   ├── layout.tsx
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── selection
-│   │   │   │       ├── _components
-│   │   │   │       │   └── ValidationButton.tsx
-│   │   │   │       └── page.tsx
 │   │   │   ├── ajout-structure
 │   │   │   │   ├── [id]
 │   │   │   │   │   ├── 01-identification
@@ -891,8 +913,9 @@
 │   │   │   │       └── route.ts
 │   │   │   ├── adresses
 │   │   │   │   ├── adresse.repository.ts
-│   │   │   │   ├── adresse.service.ts
-│   │   │   │   └── adresse.util.ts
+│   │   │   │   ├── adresse.util.ts
+│   │   │   │   ├── ban.client.ts
+│   │   │   │   └── ban.service.ts
 │   │   │   ├── anomalies
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
@@ -956,6 +979,9 @@
 │   │   │   │   └── email-pattern.repository.ts
 │   │   │   ├── evaluations
 │   │   │   │   └── evaluation.repository.ts
+│   │   │   ├── faq
+│   │   │   │   ├── faq.repository.ts
+│   │   │   │   └── faq.service.ts
 │   │   │   ├── files
 │   │   │   │   ├── [key]
 │   │   │   │   │   └── route.ts
@@ -987,8 +1013,6 @@
 │   │   │   │   ├── operateur.util.ts
 │   │   │   │   └── suggestions
 │   │   │   │       └── route.ts
-│   │   │   ├── roles
-│   │   │   │   └── role.repository.ts
 │   │   │   ├── statistiques
 │   │   │   │   ├── README.md
 │   │   │   │   ├── activite
@@ -1001,6 +1025,7 @@
 │   │   │   │   │   ├── cartographie.service.ts
 │   │   │   │   │   ├── cartographie.util.ts
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── completude.util.ts
 │   │   │   │   ├── controle-qualite
 │   │   │   │   │   ├── README.md
 │   │   │   │   │   ├── controle-qualite-eig.util.ts
@@ -1008,6 +1033,7 @@
 │   │   │   │   │   └── controle-qualite.util.ts
 │   │   │   │   ├── finance
 │   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── finance-theorique.util.ts
 │   │   │   │   │   └── finance.util.ts
 │   │   │   │   ├── places
 │   │   │   │   │   ├── README.md
@@ -1036,8 +1062,6 @@
 │   │   │   ├── structures
 │   │   │   │   ├── [id]
 │   │   │   │   │   ├── actualisation
-│   │   │   │   │   │   └── route.ts
-│   │   │   │   │   ├── adresses
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── actualisation.util.ts
@@ -1068,6 +1092,12 @@
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── statistiques-cartographie
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── statistiques-pdf-export
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── statistiques-spreadsheet-export
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── structure-pdf-export
+│   │   │   │   │   └── route.ts
 │   │   │   │   ├── structure-spreadsheet-export
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── structures-cartographie
@@ -1078,8 +1108,10 @@
 │   │   │   │   ├── user-action.service.ts
 │   │   │   │   └── user-action.util.ts
 │   │   │   └── users
+│   │   │       ├── user.db.type.ts
 │   │   │       ├── user.repository.ts
-│   │   │       └── user.service.ts
+│   │   │       ├── user.service.ts
+│   │   │       └── user.util.ts
 │   │   ├── components
 │   │   │   ├── AccordionTitle.tsx
 │   │   │   ├── ChartLegend.tsx
@@ -1128,11 +1160,13 @@
 │   │   │   │   ├── NumberDisplay.tsx
 │   │   │   │   ├── Pagination.tsx
 │   │   │   │   ├── PieChart.tsx
+│   │   │   │   ├── PlacesWithPercentage.tsx
 │   │   │   │   ├── Section.tsx
 │   │   │   │   ├── SeeFileButton.tsx
 │   │   │   │   ├── SegmentedControl.tsx
 │   │   │   │   ├── SimplePagination.tsx
 │   │   │   │   ├── StackedBarChart.tsx
+│   │   │   │   ├── StackedBarChartTooltip.tsx
 │   │   │   │   ├── StackedBarLineChart.tsx
 │   │   │   │   ├── Table.tsx
 │   │   │   │   └── TimePeriodSelector.tsx
@@ -1237,6 +1271,7 @@
 │   │   │   │   │   │   ├── BudgetTableTitleLine.tsx
 │   │   │   │   │   │   ├── CpomTable.tsx
 │   │   │   │   │   │   ├── CpomTables.tsx
+│   │   │   │   │   │   ├── CpomYearBadge.tsx
 │   │   │   │   │   │   ├── IndicateurFinancierTableLine.tsx
 │   │   │   │   │   │   ├── IndicateurFinancierTableLines.tsx
 │   │   │   │   │   │   ├── StructureCpomTable.tsx
@@ -1300,12 +1335,16 @@
 │   │   │   │   ├── OrderButton.tsx
 │   │   │   │   └── entitiesConstants.ts
 │   │   │   ├── map
+│   │   │   │   ├── CommunePopupContent.tsx
+│   │   │   │   ├── CommunesLayer.tsx
 │   │   │   │   ├── Map.tsx
 │   │   │   │   ├── MapContext.tsx
-│   │   │   │   ├── StructureMarker.tsx
 │   │   │   │   ├── StructureMarkerContent.tsx
+│   │   │   │   ├── StructuresLayer.tsx
+│   │   │   │   ├── communesStyle.ts
+│   │   │   │   ├── mapPopup.ts
+│   │   │   │   ├── mapSource.ts
 │   │   │   │   ├── structuresInteractions.ts
-│   │   │   │   ├── structuresPopup.ts
 │   │   │   │   └── structuresStyle.ts
 │   │   │   ├── structure-selection
 │   │   │   │   ├── StructureSearch.tsx
@@ -1374,7 +1413,6 @@
 │   │   │   ├── useSpreadsheetParse.ts
 │   │   │   ├── useStatistiquesPdfExport.ts
 │   │   │   ├── useStoredQueryParams.ts
-│   │   │   ├── useStructureAdresseExistence.ts
 │   │   │   ├── useStructureSelections.ts
 │   │   │   ├── useStructureStats.ts
 │   │   │   ├── useStructures.ts
@@ -1387,12 +1425,12 @@
 │   │   ├── layout.tsx
 │   │   ├── not-found.tsx
 │   │   └── utils
-│   │       ├── acteAdministratif.util.ts
-│   │       ├── actualisationForm.util.ts
+│   │       ├── acte-administratif.util.ts
+│   │       ├── actualisation-form.util.ts
 │   │       ├── adresse.util.ts
 │   │       ├── anomalie.util.ts
-│   │       ├── apiError.util.ts
-│   │       ├── apiErrorResponse.util.ts
+│   │       ├── api-error-response.util.ts
+│   │       ├── api-error.util.ts
 │   │       ├── bhasile.util.ts
 │   │       ├── budget.util.ts
 │   │       ├── chart.util.ts
@@ -1403,17 +1441,17 @@
 │   │       ├── cpom.util.ts
 │   │       ├── date.util.ts
 │   │       ├── decimal.util.ts
-│   │       ├── defaultValues.util.ts
-│   │       ├── documentFinancier.util.ts
-│   │       ├── domainError.util.ts
+│   │       ├── default-values.util.ts
+│   │       ├── document-financier.util.ts
+│   │       ├── domain-error.util.ts
 │   │       ├── eig.util.ts
-│   │       ├── errorMail.util.ts
+│   │       ├── error-mail.util.ts
 │   │       ├── evaluation.util.ts
 │   │       ├── file-upload.util.ts
-│   │       ├── finalisationForm.util.ts
-│   │       ├── formStep.util.ts
-│   │       ├── getErrorMessages.util.ts
-│   │       ├── indicateurFinancier.util.ts
+│   │       ├── finalisation-form.util.ts
+│   │       ├── form-step.util.ts
+│   │       ├── get-error-messages.util.ts
+│   │       ├── indicateur-financier.util.ts
 │   │       ├── list.util.ts
 │   │       ├── math.util.ts
 │   │       ├── now.util.ts
@@ -1423,7 +1461,7 @@
 │   │       ├── phone.util.ts
 │   │       ├── rappel.util.ts
 │   │       ├── ressources.util.ts
-│   │       ├── searchParams.util.ts
+│   │       ├── search-params.util.ts
 │   │       ├── spreadsheet-download
 │   │       │   ├── spreadsheet-download.util.ts
 │   │       │   ├── statistiques-spreadsheet-download.util.ts
@@ -1431,9 +1469,9 @@
 │   │       ├── statistiques-format.util.ts
 │   │       ├── statistiques-period.util.ts
 │   │       ├── string.util.ts
+│   │       ├── structure-millesime.util.ts
+│   │       ├── structure-typology.util.ts
 │   │       ├── structure.util.ts
-│   │       ├── structureMillesime.util.ts
-│   │       ├── structureTypology.util.ts
 │   │       ├── transformation.util.ts
 │   │       ├── tutorials.util.ts
 │   │       ├── zodConfig.ts
@@ -1459,6 +1497,8 @@
 │   │   ├── StructureContext.tsx
 │   │   ├── TransformationContext.tsx
 │   │   └── createEntityContext.tsx
+│   ├── hooks
+│   │   └── useFilterSelection.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── lib
@@ -1479,9 +1519,16 @@
 │   │   │       ├── index.ts
 │   │   │       └── places.rule.ts
 │   │   ├── casl
-│   │   │   └── abilities.ts
+│   │   │   ├── cpom.ability.ts
+│   │   │   ├── file.ability.ts
+│   │   │   ├── index.ts
+│   │   │   ├── operateur.ability.ts
+│   │   │   ├── rules.ts
+│   │   │   └── structure.ability.ts
 │   │   ├── minio.ts
 │   │   ├── next-auth
+│   │   │   ├── auth-error.ts
+│   │   │   ├── auth-failure.ts
 │   │   │   ├── auth-util.ts
 │   │   │   └── auth.ts
 │   │   └── prisma.ts
@@ -1505,6 +1552,7 @@
 │   │   │   ├── documentFinancier.schema.ts
 │   │   │   ├── evaluation.schema.ts
 │   │   │   ├── evenement-indesirable-grave.schema.ts
+│   │   │   ├── faq.schema.ts
 │   │   │   ├── file.schema.ts
 │   │   │   ├── finess.schema.ts
 │   │   │   ├── form.schema.ts
@@ -1590,7 +1638,10 @@
 │   │   ├── transformation.type.ts
 │   │   └── utils.type.ts
 │   ├── utils
-│   │   └── region.util.ts
+│   │   ├── dashboardOrigin.util.ts
+│   │   ├── region.util.ts
+│   │   ├── statistiques.util.ts
+│   │   └── structure-type.util.ts
 │   └── utils-server
 │       ├── ressources.server.util.ts
 │       ├── serialization.server.util.ts
@@ -1617,9 +1668,15 @@
 │   │   │               │       └── StructureRefLinks.test.tsx
 │   │   │               └── _type-places
 │   │   │                   └── getTypePlaceHistoryHeadings.test.tsx
+│   │   ├── cpoms
+│   │   │   └── [id]
+│   │   │       └── modification
+│   │   │           └── composition
+│   │   │               └── page.test.tsx
 │   │   ├── dashboard
 │   │   │   └── AnomaliesGroups.test.tsx
 │   │   └── structures
+│   │       ├── MapModeTabs.test.tsx
 │   │       ├── StructuresTable.test.tsx
 │   │       ├── VisualizationTabs.test.tsx
 │   │       ├── [id]
@@ -1697,6 +1754,10 @@
 │   │   │   ├── activite.util.test.ts
 │   │   │   └── stats
 │   │   │       └── route.test.ts
+│   │   ├── adresses
+│   │   │   ├── adresse.util.test.ts
+│   │   │   ├── ban.client.test.ts
+│   │   │   └── ban.service.test.ts
 │   │   ├── anomalies
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
@@ -1742,6 +1803,7 @@
 │   │   │   ├── cartographie
 │   │   │   │   ├── cartographie.service.test.ts
 │   │   │   │   └── cartographie.util.test.ts
+│   │   │   ├── completude.util.test.ts
 │   │   │   ├── controle-qualite.util.test.ts
 │   │   │   ├── finance.util.test.ts
 │   │   │   ├── places.util.test.ts
@@ -1756,8 +1818,6 @@
 │   │   │   └── structure-version.util.test.ts
 │   │   ├── structures
 │   │   │   ├── [id]
-│   │   │   │   ├── adresses
-│   │   │   │   │   └── route.test.ts
 │   │   │   │   └── route.test.ts
 │   │   │   ├── route.test.ts
 │   │   │   ├── stats
@@ -1766,22 +1826,29 @@
 │   │   │   ├── structure.repository.test.ts
 │   │   │   ├── structure.util.test.ts
 │   │   │   └── upcoming-transformations.util.test.ts
-│   │   └── transformations
-│   │       ├── [id]
-│   │       │   ├── route.test.ts
-│   │       │   └── selection
-│   │       │       └── route.test.ts
-│   │       ├── route.test.ts
-│   │       ├── transformation.repository.test.ts
-│   │       └── transformation.util.test.ts
+│   │   ├── transformations
+│   │   │   ├── [id]
+│   │   │   │   ├── route.test.ts
+│   │   │   │   └── selection
+│   │   │   │       └── route.test.ts
+│   │   │   ├── route.test.ts
+│   │   │   ├── transformation.repository.test.ts
+│   │   │   └── transformation.util.test.ts
+│   │   └── users
+│   │       └── user.util.test.ts
 │   ├── app
 │   │   └── components
+│   │       ├── common
+│   │       │   └── PlacesWithPercentage.test.tsx
+│   │       ├── filters
+│   │       │   └── FiltersDepartement.test.tsx
 │   │       ├── forms
 │   │       │   └── finance
 │   │       │       └── documents
 │   │       │           └── documentsStructures.test.ts
 │   │       └── header-filters
 │   │           ├── FilterDropdown.test.tsx
+│   │           ├── FilterOperateur.test.tsx
 │   │           └── FilterTypeStructure.test.tsx
 │   ├── components
 │   │   ├── ErrorToast.test.tsx
@@ -1805,7 +1872,11 @@
 │   │   │   ├── TransformationAdresseAdministrative.test.tsx
 │   │   │   ├── TransformationAntennesSection.test.tsx
 │   │   │   ├── TransformationDnaAndFiness.test.tsx
-│   │   │   └── TransformationFormController.test.tsx
+│   │   │   ├── TransformationFormController.test.tsx
+│   │   │   └── transformation-types
+│   │   │       └── HudaTransformationForm.test.tsx
+│   │   ├── map
+│   │   │   └── CommunePopupContent.test.tsx
 │   │   └── transformation-markers
 │   │       └── getTransformationMarkers.test.ts
 │   ├── config
@@ -1958,12 +2029,14 @@
 │   │   ├── useFieldValidator.test.ts
 │   │   ├── useFileUpload.test.ts
 │   │   ├── useFilterNavigation.test.tsx
+│   │   ├── useFilterSelection.test.ts
 │   │   ├── useListNavigation.test.tsx
 │   │   ├── useLocalStorage.test.ts
 │   │   ├── usePdfExport.test.tsx
 │   │   ├── useSaveMutation.test.ts
 │   │   ├── useSearchParamsNavigation.test.tsx
 │   │   ├── useSpreadsheetParse.test.ts
+│   │   ├── useStructureSelections.test.ts
 │   │   ├── useStructures.test.ts
 │   │   ├── useTransformationFormHandling.test.ts
 │   │   ├── useTransformationNavigateWithSave.test.ts
@@ -1976,6 +2049,7 @@
 │   │   │   ├── anomalie.reporting.test.ts
 │   │   │   └── rules
 │   │   │       ├── calendar.rule.test.ts
+│   │   │       ├── characteristics.rule.test.ts
 │   │   │       ├── finance.rule.test.ts
 │   │   │       └── places.rule.test.ts
 │   │   └── casl
@@ -1994,6 +2068,8 @@
 │   ├── scripts
 │   │   ├── parse-date.test.ts
 │   │   └── utils
+│   │       ├── brevo.util.test.ts
+│   │       ├── ofii-fill-referential.test.ts
 │   │       └── transfo-huda-cada.resolve.repository.test.ts
 │   ├── test-utils
 │   │   ├── anomalie.ts
@@ -2010,6 +2086,7 @@
 │   │   │   ├── finalisation-form.factory.ts
 │   │   │   ├── finess.factory.ts
 │   │   │   ├── operateur.factory.ts
+│   │   │   ├── session-user.factory.ts
 │   │   │   ├── structure-typologie.factory.ts
 │   │   │   ├── structure-typologies.factory.ts
 │   │   │   └── transformation.factory.ts
@@ -2021,22 +2098,23 @@
 │   │   ├── structure.factory.ts
 │   │   └── transformationForm.tsx
 │   ├── utils
-│   │   ├── acteAdministratif.util.test.ts
-│   │   ├── actualisationForm.util.test.ts
+│   │   ├── acte-administratif.util.test.ts
+│   │   ├── actualisation-form.util.test.ts
 │   │   ├── adresse.util.test.ts
 │   │   ├── budget.util.test.ts
 │   │   ├── classname.util.test.ts
 │   │   ├── common.util.test.ts
 │   │   ├── cpom.util.test.ts
+│   │   ├── dashboardOrigin.util.test.ts
 │   │   ├── date.util.test.ts
 │   │   ├── decimal.util.test.ts
-│   │   ├── defaultValues.util.test.ts
+│   │   ├── default-values.util.test.ts
 │   │   ├── eig.util.test.ts
 │   │   ├── evaluation.util.test.ts
-│   │   ├── formStep.util.test.ts
-│   │   ├── getErrorMessages.util.test.ts
+│   │   ├── form-step.util.test.ts
+│   │   ├── get-error-messages.util.test.ts
 │   │   ├── getInitialAntennes.test.ts
-│   │   ├── indicateurFinancier.util.test.ts
+│   │   ├── indicateur-financier.util.test.ts
 │   │   ├── list.util.test.ts
 │   │   ├── math.util.test.ts
 │   │   ├── number.util.test.ts
@@ -2045,16 +2123,18 @@
 │   │   ├── rappel.util.test.ts
 │   │   ├── region.util.test.ts
 │   │   ├── ressources.util.test.ts
-│   │   ├── searchParams.util.test.ts
+│   │   ├── search-params.util.test.ts
 │   │   ├── spreadsheet-download
 │   │   │   ├── spreadsheet-download.util.test.ts
 │   │   │   ├── statistiques-spreadsheet-download.util.test.ts
 │   │   │   └── structure-spreadsheet-download.util.test.ts
 │   │   ├── statistiques-period.util.test.ts
 │   │   ├── string.util.test.ts
+│   │   ├── structure-type.util.test.ts
 │   │   ├── structure.util.test.ts
 │   │   ├── transfo-huda-cada.util.test.ts
 │   │   ├── transformation.util.test.ts
+│   │   ├── zodCustomFields.test.ts
 │   │   └── zone.util.test.ts
 │   ├── utils-server
 │   │   ├── ressources.server.util.test.ts
@@ -2064,4 +2144,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-524 directories, 1542 files
+538 directories, 1608 files
