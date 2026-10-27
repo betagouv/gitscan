@@ -1,40 +1,19 @@
-## Changelog : dora (30 derniers jours, au 22 octobre 2026)
+## Changelog : dora (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'une refonte importante de ses interfaces, notamment avec une nouvelle organisation de la page d'accueil et des tableaux de bord pour faciliter la navigation. Les outils de gestion des structures et des services ont été simplifiés et enrichis, tandis que la sécurité des accès et la fiabilité de la gestion des données ont été renforcées.
+Ce mois-ci, la plateforme a connu des évolutions majeures centrées sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la page d'accueil et des tableaux de bord. Le système de recherche a été optimisé en passant d'une solution externe à une recherche interne plus intégrée. Parallèlement, des mesures de sécurité importantes ont été déployées pour renforcer la protection des données et des accès.
 
 ### Évolutions fonctionnelles
-- **Interface et expérience utilisateur**
-    - Refonte de la page d'accueil avec des onglets par public cible [#1449] et création d'une nouvelle page d'accueil dédiée aux gestionnaires de territoires [#1339].
-    - Refonte du tableau de bord des gestionnaires de territoires [#1349].
-    - Simplification des formulaires d'édition des services [#1331] et des structures [#1383].
-    - Amélioration de l'affichage des fiches structures (fusion des descriptions et suppression de colonnes superflues) [#1384, #1385].
-    - Mise à jour du bandeau d'avertissement pour supporter le format Markdown [#1404].
-    - Suppression du menu « Mon portail » dans Nexus [#1416].
-- **Recherche et données**
-    - Remplacement de la recherche Google par une recherche par mots-clés interne à Dora [#1464].
-    - Amélioration de l'export des orientations pour inclure les données liées aux emplois [#1361].
-    - Exposition du champ description des structures via l'API [#1421].
-- **Corrections et fonctionnalités métier**
-    - Possibilité de rattacher des structures à un réseau porteur [#1382].
-    - Sécurisation du téléchargement des exports via des liens envoyés par e-mail [#1405].
-    - Support des fichiers `.doc` et `.xls` lors des téléchargements [#1415].
-    - Correction de la création d'utilisateurs sans nom (via ProConnect ou import CSV) [#1471].
-    - Sécurisation des orientations (interdiction de création pour les utilisateurs non connectés) [#1453].
-    - Diverses corrections sur la synchronisation des services, la gestion des pièces jointes et l'affichage des formulaires [#1452, #1370, #1455, #1392].
+- **Refonte de l'interface** : Nouvelle page d'accueil avec onglets par public ([#1449](https://github.com/gip-inclusion/dora/issues/1449)), nouveau tableau de bord pour les gestionnaires de territoires ([#1349](https://github.com/gip-inclusion/dora/issues/1349)) et simplification du formulaire d'édition des services ([#1331](https://github.com/gip-inclusion/dora/issues/1331)).
+- **Recherche** : Remplacement de la recherche Google par une recherche par mots-clés native ([#1464](https://github.com/gip-inclusion/dora/issues/1464)) et meilleure continuité du contexte de localisation entre les différents modes de recherche ([#1476](https://github.com/gip-inclusion/dora/issues/1476)).
+- **Gestion des structures et services** : Simplification des fiches et formulaires de structures ([#1383](https://github.com/gip-inclusion/dora/issues/1383), [#1384](https://github.com/gip-inclusion/dora/issues/1384)), rattachement des structures à des réseaux ([#1382](https://github.com/gip-inclusion/dora/issues/1382)) et support des fichiers `.doc` et `.xls` ([#1415](https://github.com/gip-inclusion/dora/issues/1415)).
+- **Orientations et notifications** : Sécurisation des téléchargements d'exports via des liens envoyés par e-mail ([#1405](https://github.com/gip-inclusion/dora/issues/1405)), redirection des demandes d'orientation vers la plateforme de l'inclusion ([#1463](https://github.com/gip-inclusion/dora/issues/1463)) et ajout d'un bandeau informatif sur la page d'authentification ([#1431](https://github.com/gip-inclusion/dora/issues/1431)).
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD**
-    - Migration du stockage S3 local de MinIO vers SeaweedFS [#1376].
-    - Migration des applications de test (review apps) vers le projet `dora-staging` sur Scalingo [#1430].
-    - Optimisations de la CI/CD (alignement des noms d'apps, suppression des tâches cron sur les review apps, ciblage de la prod par défaut dans les scripts de livraison) [#1434, #1414, #1419].
-- **Architecture et API**
-    - Suppression des endpoints obsolètes de l'API Emplois et des pages d'administration des services [#1cd9cee, #1377].
-    - Amélioration de la sécurité du rate limiting via la stabilisation de l'IP client utilisée [#1440].
-    - Correction de l'authentification ProConnect pour la création de tokens DRF [#1363].
-    - Migration vers le SDK Sentry v11 [#1397].
+- **Sécurité** : Renforcement de la protection des endpoints (suppression d'accès non authentifiés pour le diagnostic et la suppression de fichiers [#1477](https://github.com/gip-inclusion/dora/issues/1477), [#1478](https://github.com/gip-inclusion/dora/issues/1478), [#1480](https://github.com/gip-inclusion/dora/issues/1480)), amélioration du rate limiting ([#1440](https://github.com/gip-inclusion/dora/issues/1440)) et fiabilisation de l'authentification ProConnect ([#1479](https://github.com/gip-inclusion/dora/issues/1479), [#1363](https://github.com/gip-inclusion/dora/issues/1363)).
+- **Infrastructure et CI/CD** : Migration des environnements de test (review apps) vers le projet Scalingo dédié ([#1430](https://github.com/gip-inclusion/dora/issues/1430)), mise à jour du SDK Sentry ([#1397](https://github.com/gip-inclusion/dora/issues/1397)) et optimisation des processus de déploiement et de gestion des tâches cron ([#1414](https://github.com/gip-inclusion/dora/issues/1414), [#1419](https://github.com/gip-inclusion/dora/issues/1419)).
+- **Données et stockage** : Optimisation du cheminement des documents dans le stockage S3 ([#1481](https://github.com/gip-inclusion/dora/issues/1481)) et nettoyage des références de documents orphelins ([#1483](https://github.com/gip-inclusion/dora/issues/1483), [#1452](https://github.com/gip-inclusion/dora/issues/1452)).
 
 ### Autres changements
-- Nettoyage des statuts de modération pour les structures et les services [#1380, #1378].
-- Suppression de la fonctionnalité de synchronisation immédiate [#1425].
-- Nettoyage de la commande de remplissage de la base de statistiques Nexus [#1389].
+- **Nettoyage** : Suppression des processus de modération obsolètes pour les services et structures ([#1378](https://github.com/gip-inclusion/dora/issues/1378), [#1380](https://github.com/gip-inclusion/dora/issues/1380)) et retrait d'éléments de menu inutilisés ([#1416](https://github.com/gip-inclusion/dora/issues/1416)).
+- **Configuration** : Mise à jour de la politique de sécurité du contenu (CSP) pour l'intégration de Matomo ([#1409](https://github.com/gip-inclusion/dora/issues/1409)).

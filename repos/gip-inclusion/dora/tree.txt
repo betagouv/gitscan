@@ -475,7 +475,6 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── dedupe_service_forms.py
 │   │   │   │       ├── fix_missing_geom.py
 │   │   │   │       ├── import_services.py
 │   │   │   │       ├── label_services.py
@@ -529,7 +528,6 @@
 │   │   │   │   ├── test_admin_import_view.py
 │   │   │   │   ├── test_bookmarks.py
 │   │   │   │   ├── test_categories_subcategories.py
-│   │   │   │   ├── test_dedupe_service_forms.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_filtter_di_results.py
 │   │   │   │   ├── test_import_services.py
@@ -992,8 +990,7 @@
 │   │   │   │   ├── orientations.ts
 │   │   │   │   ├── saved-search.ts
 │   │   │   │   ├── services.ts
-│   │   │   │   ├── structures.ts
-│   │   │   │   └── upload.ts
+│   │   │   │   └── structures.ts
 │   │   │   ├── sentry.ts
 │   │   │   ├── server
 │   │   │   │   └── client-ip.ts
@@ -1026,6 +1023,7 @@
 │   │   │   │   ├── orientation-templates.ts
 │   │   │   │   ├── orientation.ts
 │   │   │   │   ├── partners.ts
+│   │   │   │   ├── plateforme-orientation.ts
 │   │   │   │   ├── preferences.ts
 │   │   │   │   ├── random.ts
 │   │   │   │   ├── search-area.ts
@@ -1050,8 +1048,6 @@
 │   │   │   │   ├── .well-known
 │   │   │   │   │   └── security.txt
 │   │   │   │   │       └── +server.ts
-│   │   │   │   ├── heap-snapshot
-│   │   │   │   │   └── +server.ts
 │   │   │   │   ├── ping
 │   │   │   │   │   └── +server.ts
 │   │   │   │   ├── robots.txt
@@ -1425,8 +1421,10 @@
 │   │   └── tests
 │   │       ├── markdownToHTML.test.ts
 │   │       ├── routes
-│   │       │   └── api
-│   │       │       └── proxy.test.ts
+│   │       │   ├── api
+│   │       │   │   └── proxy.test.ts
+│   │       │   ├── nexusAutoLoginLoad.test.ts
+│   │       │   └── orienterLoad.test.ts
 │   │       └── utils
 │   │           ├── date
 │   │           │   └── computeRelativeDateLabel.test.ts
@@ -1442,11 +1440,14 @@
 │   │           │   ├── parse.test.ts
 │   │           │   └── serialize.test.ts
 │   │           ├── orientation
+│   │           │   ├── getPlateformeOrientationUrl.test.ts
 │   │           │   └── orientationContainsTestWords.test.ts
 │   │           ├── random
 │   │           │   └── getRandomIntBetween.test.ts
-│   │           └── search-area
-│   │               └── search.test.js
+│   │           ├── search-area
+│   │           │   └── search.test.js
+│   │           └── service-search
+│   │               └── last-search-location.test.ts
 │   ├── static
 │   │   ├── emails
 │   │   │   ├── illu-maj.png
@@ -1472,4 +1473,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-273 directories, 1201 files
+273 directories, 1202 files
