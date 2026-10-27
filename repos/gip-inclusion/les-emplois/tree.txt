@@ -862,8 +862,7 @@
 │   │   │       ├── fill_job_seeker_profile_asp_uid_changes.py
 │   │   │       ├── geolocate_jobseeker_addresses.py
 │   │   │       ├── move_job_applications.py
-│   │   │       ├── redact_zendesk_attachments.py
-│   │   │       └── resend_employee_record_update_notifications.py
+│   │   │       └── redact_zendesk_attachments.py
 │   │   └── sample_user_geoloc.csv
 │   ├── search
 │   │   ├── __init__.py
@@ -929,7 +928,7 @@
 │   │   │   ├── job_seeker_signup.png
 │   │   │   ├── job_seeker_situation.png
 │   │   │   ├── job_seeker_start.png
-│   │   │   ├── login.svg
+│   │   │   ├── login.png
 │   │   │   ├── logo-france-travail.svg
 │   │   │   ├── logo_metatags.png
 │   │   │   ├── no_email.svg
@@ -959,6 +958,7 @@
 │   │   │   ├── modal_control.js
 │   │   │   ├── notifications_center.js
 │   │   │   ├── nps_popup.js
+│   │   │   ├── orientation_select_job_seeker_select2.js
 │   │   │   ├── overview_survey_control_popup.js
 │   │   │   ├── overview_survey_test_popup.js
 │   │   │   ├── plateforme_accueil_embed.js
@@ -1250,6 +1250,7 @@
 │   │   │   ├── includes
 │   │   │   │   ├── approvals_filters
 │   │   │   │   │   └── status.html
+│   │   │   │   ├── contract_reasons_disabled_alert.html
 │   │   │   │   ├── contract_status_filter.html
 │   │   │   │   ├── declaration_contact_details.html
 │   │   │   │   ├── declaration_prescriber_email.html
@@ -1361,11 +1362,12 @@
 │   │   │       ├── employer_evaluation_campaigns_card.html
 │   │   │       ├── employer_job_applications_card.html
 │   │   │       ├── employer_prescription_card.html
+│   │   │       ├── institution_evaluation_campains_card.html
+│   │   │       ├── institution_organization_card.html
+│   │   │       ├── institution_territory.html
 │   │   │       ├── job_seeker_approval_card.html
 │   │   │       ├── job_seeker_eligibility_card.html
 │   │   │       ├── job_seeker_job_applications_card.html
-│   │   │       ├── labor_inspector_evaluation_campains_card.html
-│   │   │       ├── labor_inspector_organization_card.html
 │   │   │       ├── mon_recap_card.html
 │   │   │       ├── prescriber_job_applications_card.html
 │   │   │       ├── prescriber_job_seekers_card.html
@@ -1621,6 +1623,7 @@
 │   │   ├── institutions
 │   │   │   ├── deactivate_member.html
 │   │   │   ├── members.html
+│   │   │   ├── organizations_list.html
 │   │   │   └── update_admins.html
 │   │   ├── invitations_views
 │   │   │   ├── create.html
@@ -2671,7 +2674,6 @@
     │   ├── __init__.py
     │   ├── test_move_job_applications.py
     │   ├── test_redact_zendesk_attachments.py
-    │   ├── test_resend_employee_record_update_notifications.py
     │   └── test_users_geolocation.py
     ├── search
     │   ├── __init__.py
@@ -2694,7 +2696,8 @@
     │   ├── test_management_commands.py
     │   └── test_models.py
     ├── tasks
-    │   └── test_fallback_to_postgres.py
+    │   ├── test_fallback_to_postgres.py
+    │   └── test_redis_reconnect.py
     ├── test_consistency.py
     ├── test_sentry.py
     ├── users
@@ -3050,4 +3053,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-495 directories, 2557 files
+495 directories, 2560 files
