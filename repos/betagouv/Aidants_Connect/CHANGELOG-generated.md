@@ -1,18 +1,20 @@
-## Changelog : Aidants_Connect (30 derniers jours, au 25 août 2026)
+## Changelog : Aidants_Connect (30 derniers jours, au 27 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'amélioration majeure de l'accessibilité numérique de la plateforme et l'optimisation de l'interface pour les référents d'organisation, notamment via l'ajout de nouveaux indicateurs visuels et de raccourcis de navigation.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'accompagnement des utilisateurs via une transition des guides PDF vers une documentation en ligne, le renforcement de l'accessibilité du site et l'optimisation des outils de gestion interne ainsi que des communications par e-mail.
 
 ### Évolutions fonctionnelles
-- **Optimisation de l'accueil des référents** : Ajout de tuiles d'accès rapide et de badges "à finaliser" pour mieux guider les utilisateurs dans leurs tâches [#1794].
-- **Accompagnement à la configuration** : Mise en place de badges incitant les référents à configurer les thématiques administratives de leur organisation [#1790].
-- **Gestion des rôles** : Introduction du label "co-référent".
+- **Gestion des mandats** : Les formateurs P2P disposent désormais de la possibilité de créer des mandats [#1828](https://github.com/betagouv/Aidants_Connect/issues/1828).
+- **Expérience utilisateur et ressources** : 
+    - Remplacement des anciens guides PDF par des liens directs vers la documentation en ligne pour une information plus à jour [#1825](https://github.com/betagouv/Aidants_Connect/issues/1825).
+    - Mise à jour de la FAQ pour faciliter la connexion et la création de mandats.
+- **Gestion des référents** : Modification de l'affichage de la liste des co-référents pour ne plus y inclure les demandes de co-référents [#1852](https://github.com/betagouv/Aidants_Connect/issues/1852).
+- **Accessibilité** : Amélioration des contrastes sur la page des statistiques pour garantir une meilleure lisibilité [#1854](https://github.com/betagouv/Aidants_Connect/issues/1854) et corrections générales [#1823](https://github.com/betagouv/Aidants_Connect/issues/1823).
 
 ### Évolutions techniques
-- **Accessibilité (A11y)** : Travail de fond sur la structure sémantique et l'accessibilité de l'ensemble de l'application (en-tête, pied de page, menus de navigation, formulaires de création de mandat et pages de ressources) via l'utilisation de balises HTML5 et d'attributs ARIA [#1797, #1809].
-- **Modèle de données** : Évolution du modèle `Organisation` avec l'ajout du champ `demarches_configured_at` pour le suivi de la configuration.
-- **Tests** : Renforcement de la fiabilité de la suite de tests, incluant des tests d'accessibilité, des tests d'API et de modèles, ainsi que la correction de plusieurs régressions de tests [#1808].
-- **Interface et Style** : Refactorisation du CSS et du SCSS du formulaire de création de mandat pour améliorer la mise en page, l'alignement et la maintenabilité du code.
+- **Outils d'administration** : Mise en place de cockpits de gestion pour la BDT [#1827](https://github.com/betagouv/Aidants_Connect/issues/1827) et le CDD.
+- **Système de notification** : Optimisation de la logique d'envoi des notifications pour gérer les cas sans cible d'aidant spécifique [#1829](https://github.com/betagouv/Aidants_Connect/issues/1829).
 
 ### Autres changements
-- **Nettoyage** : Suppression de migrations en double et de tests redondants pour alléger le dépôt.
+- **Communication** : Refonte complète des modèles d'e-mails (formats MJML et texte) pour l'ensemble des parcours utilisateurs (bienvenue, création de compte, validation de formation, refus, etc.).
+- **Conformité** : Mise à jour de la déclaration d'accessibilité suite aux derniers audits [#1843](https://github.com/betagouv/Aidants_Connect/issues/1843).

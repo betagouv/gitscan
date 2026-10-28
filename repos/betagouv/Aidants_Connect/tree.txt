@@ -42,6 +42,7 @@
 │   ├── admin
 │   │   ├── __init__.py
 │   │   ├── admin_ac.py
+│   │   ├── admin_cdd.py
 │   │   ├── admin_of.py
 │   │   ├── filter.py
 │   │   ├── forms.py
@@ -170,6 +171,7 @@
 │   │   │   ├── _formation-information.html
 │   │   │   └── formation-registration.html
 │   │   ├── forms
+│   │   │   ├── aidantc-dsfr-checkbox-snippet-no-asterisk.html
 │   │   │   ├── aidantc-dsfr-input-snippet-no-asterisk.html
 │   │   │   ├── base-habilitation-request-formset.html
 │   │   │   ├── errors
@@ -187,6 +189,7 @@
 │   │   │   ├── _footer.html
 │   │   │   ├── _header.html
 │   │   │   ├── _js-unavailable-alert.html
+│   │   │   ├── _main-modal.html
 │   │   │   ├── _messages.html
 │   │   │   ├── _partenaires.html
 │   │   │   ├── _skip-links-no-footer.html
@@ -226,6 +229,7 @@
 │   │   │   ├── __init__.py
 │   │   │   └── test_personnel_form.py
 │   │   ├── test_models.py
+│   │   ├── test_search_engine_indexing.py
 │   │   ├── test_sms_api.py
 │   │   ├── test_templatetags.py
 │   │   ├── testcases.py
@@ -680,6 +684,10 @@
 │   │   ├── 0094_organisation_doublon_siret_and_more.py
 │   │   ├── 0095_alter_organisation_city_and_more.py
 │   │   ├── 0096_organisation_demarches_configured_at.py
+│   │   ├── 0097_aidant_is_cdd_user.py
+│   │   ├── 0097_aidantstatistiques_number_active_mandats_and_more.py
+│   │   ├── 0098_merge_20260922_1625.py
+│   │   ├── 0099_alter_notification_aidant.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -728,15 +736,8 @@
 │   │   ├── guides_aidants_connect
 │   │   │   ├── AC_Affiche2024_Habilitee.pdf
 │   │   │   ├── AC_Depliant4P_2024.pdf
-│   │   │   ├── AC_Guide_CreerUnMandat.pdf
-│   │   │   ├── AC_Guide_CreerUnMandat__old.pdf
-│   │   │   ├── AC_Guide_CreerunMandat.pdf
 │   │   │   ├── AC_Guide_LierUneCarte.pdf
 │   │   │   ├── AC_Guide_LierUneCarte__old.pdf
-│   │   │   ├── AC_Guide_RealiserLaDemarche.pdf
-│   │   │   ├── AC_Guide_RealiserLaDemarche_old.pdf
-│   │   │   ├── AC_Guide_Sauthentifier.pdf
-│   │   │   ├── AC_Guide_Sauthentifier_old.pdf
 │   │   │   ├── AC_QuelFournisseurFC_V15072024.pdf
 │   │   │   ├── Aidants Connect _ Aidants-Connect_c_est-quoi _ Impression noir et blanc.pdf
 │   │   │   ├── Aidants Connect _ Aidants-Connect_c_est-quoi.pdf
@@ -856,7 +857,10 @@
 │   │   │   ├── securisation.svg
 │   │   │   ├── self_training.svg
 │   │   │   ├── testimonies.png
-│   │   │   └── translation-logo.svg
+│   │   │   ├── translation-logo.svg
+│   │   │   ├── youtube-vignette-fonctionnement.jpg
+│   │   │   ├── youtube-vignette-franceconnect.jpg
+│   │   │   └── youtube-vignette-juridique.jpg
 │   │   ├── insee_files
 │   │   │   ├── communes_2022.json
 │   │   │   ├── departement_2022.csv
@@ -1078,9 +1082,13 @@
 │   │   │   ├── manager_first_login_with_code.html
 │   │   │   └── wait.html
 │   │   ├── public_website
+│   │   │   ├── _dsfr_bar_line_chart.html
+│   │   │   ├── _ressource_comprendre.html
 │   │   │   ├── _ressource_demarrer.html
 │   │   │   ├── _ressource_externe.html
 │   │   │   ├── _ressource_video.html
+│   │   │   ├── _stat_info_tooltip.html
+│   │   │   ├── _stats_section_header.html
 │   │   │   ├── accessibilite.html
 │   │   │   ├── asking_mobile.html
 │   │   │   ├── budget.html
@@ -1241,4 +1249,4 @@
 ├── package.json
 ├── pyproject.toml
 └── setup.cfg
-167 directories, 1076 files
+167 directories, 1084 files
