@@ -1,32 +1,38 @@
-## Changelog : autometa (30 derniers jours, au 30/09/2026)
+## Changelog : autometa (30 derniers jours, au 27 octobre 2026)
 
 ### Résumé
-Autometa a considérablement élargi ses capacités d'analyse et de connexion. Ce mois-ci, l'outil intègre de nouvelles sources de données (Datadog, Mon Récap), renforce ses capacités statistiques grâce à l'ajout de modèles bayésiens, et améliore l'expérience utilisateur avec un système de notifications plus complet et une interface de gestion des sources de données simplifiée.
+Ce mois a été marqué par une extension significative des capacités d'analyse de l'outil. L'ajout de nouvelles sources de données (Airtable et la base "Mon Récap") et l'introduction de tableaux de bord multi-sources permettent une vision plus transverse des indicateurs. L'expérience de recherche a été profondément améliorée grâce à l'intégration de la recherche sémantique, rendant l'exploration des données plus intuitive. Enfin, la robustesse du système a été renforcée, notamment sur la gestion des connexions et la stabilité des tâches automatisées.
 
 ### Évolutions fonctionnelles
-- **Nouvelles sources de données** : Intégration de Datadog [#211](https://github.com/gip-inclusion/autometa/issues/211) et [#223](https://github.com/gip-inclusion/autometa/issues/223), de l'application Mon Récap [#239](https://github.com/gip-inclusion/autometa/issues/239), et support de la source raw_rdvi [#229](https://github.com/gip-inclusion/autometa/issues/229).
-- **Capacités d'analyse statistique** : Ajout d'un arsenal de statistiques fréquentistes et bayésiennes (via `statsmodels`, `bambi` et `pymc-marketing`) pour permettre des analyses de marché et des modélisations plus complexes [#222](https://github.com/gip-inclusion/autometa/issues/222) [#212](https://github.com/gip-inclusion/autometa/issues/212).
-- **Amélioration de l'expérience utilisateur (UX/UI)** :
-    - Création d'une page dédiée à la gestion des sources de données [#201](https://github.com/gip-inclusion/autometa/issues/201).
-    - Affichage des filtres sur les vues de tableaux de bord (TDB) publiés [#210](https://github.com/gip-inclusion/autometa/issues/210).
-    - Système de notifications enrichi (alertes de fin de traitement, échecs, et changements d'état) avec indicateurs visuels (favicon) et sonores.
-    - Possibilité de modifier les tableaux de bord d'autres utilisateurs, avec un système de confirmation et d'avertissement [#241](https://github.com/gip-inclusion/autometa/issues/241).
-    - Meilleure clarté sur les erreurs rencontrées par les tâches automatisées (crons) [#214](https://github.com/gip-inclusion/autometa/issues/214).
-- **Gestion de contenu** : Possibilité de modifier la base de connaissance Zendesk directement depuis l'interface Autometa [#220](https://github.com/gip-inclusion/autometa/issues/220).
+- **Nouvelles sources de données** : Intégration d'Airtable en lecture seule [#249] et de la base applicative "Mon Récap" comme nouvelle source de données [#239, #250].
+- **Amélioration de la recherche et du filtrage** : 
+    - Mise en place de la recherche sémantique (via embeddings) avec un repli automatique sur la recherche par mots exacts.
+    - Refonte de l'interface de recherche : regroupement des résultats, menu de filtres épuré et ajout de facettes de recherche (ex: filtre "Créé par").
+- **Gestion des tableaux de bord** :
+    - Support des tableaux de bord multi-sources et introduction de "variantes" pour gérer différentes configurations de données.
+    - Possibilité de modifier les tableaux de bord d'autres utilisateurs (avec système de confirmation) [#241].
+- **Gestion Zendesk** : Nouvelles capacités de lecture et d'édition des macros avec un système de révision des changements.
+- **Interface utilisateur** : 
+    - Épinglage du guide de données dans la navigation pour un accès rapide [#234].
+    - Affichage direct des résultats de requêtes SQL [#235].
+- **Automatisation** : Mise en place de lots (batches) matinaux avec récapitulatifs envoyés sur Slack [#257].
 
 ### Évolutions techniques
-- **Résilience et Intelligence Artificielle** : 
-    - Mise en place d'un basculement automatique vers d'autres moteurs d'IA en cas d'épuisement des quotas Claude [#218](https://github.com/gip-inclusion/autometa/issues/218).
-    - Réduction des risques d'hallucination sur les sources de données [#227](https://github.com/gip-inclusion/autometa/issues/227).
-- **Performance et Stabilité** :
-    - Accélération du chargement des pages de tableaux de bord et des tâches cron [#207](https://github.com/gip-inclusion/autometa/issues/207).
-    - Sécurisation des appels vers les services externes pour éviter le blocage des workers web en cas d'indisponibilité [#215](https://github.com/gip-inclusion/autometa/issues/215).
-    - Migration du stockage de MinIO vers RustFS [#242](https://github.com/gip-inclusion/autometa/issues/242).
-- **Infrastructure et Automatisation** :
-    - Mise en place d'un processus nocturne pour la mise à jour automatique des embeddings des conversations [#184](https://github.com/gip-inclusion/autometa/issues/184).
-    - Optimisations du pipeline CI/CD, de la gestion des images Docker et des déploiements [#226](https://github.com/gip-inclusion/autometa/issues/226) [#216](https://github.com/gip-inclusion/autometa/issues/216) [#204](https://github.com/gip-inclusion/autometa/issues/204).
-- **Qualité logicielle** : Amélioration de l'indépendance des tests de configuration Ollama [#233](https://github.com/gip-inclusion/autometa/issues/233) et optimisation du linting [#221](https://github.com/gip-inclusion/autometa/issues/221).
+- **Fiabilité et Résilience** :
+    - Refonte majeure de la gestion des timeouts Redis pour éviter le gel des consommateurs en cas de défaillance du serveur.
+    - Amélioration de la résilience du système de tâches (runner) pour permettre le démarrage même en cas d'indisponibilité temporaire de Redis.
+- **Infrastructure et Stockage** :
+    - Remplacement de Minio par RustFS [#242].
+    - Optimisation de l'image Scalingo (réduction de la taille) [#266].
+    - Corrections liées à la sécurité CSP et à l'adressage virtuel S3 [#256].
+- **API et Intégrations** :
+    - Ajout de Datadog à l'API des tableaux de bord [#223].
+    - Mise à jour de la configuration Matomo [#247, #244].
+    - Ajustement de la méthode de connexion pour Metabase (RDVI) [#243].
+- **Tests et Qualité** :
+    - Accélération des tests unitaires grâce à la parallélisation avec `pytest-xdist`.
+    - Amélioration des hooks de pré-push pour garantir l'herméticité des tests.
 
 ### Autres changements
-- Mise à jour de l'URL Matomo pour le site "Les emplois de l'inclusion" [#231](https://github.com/gip-inclusion/autometa/issues/231).
-- Correction de la synchronisation des webinaires (Grist) en cas d'absence d'ID d'événement [#240](https://github.com/gip-inclusion/autometa/issues/240).
+- **Documentation** : Mise à jour des guides concernant les tableaux de bord multi-sources et les nouvelles compétences (skills) disponibles.
+- **Nettoyage** : Suppression du scrapping RPE [#237] et retrait de la connexion automatique à Sentry [#264].
