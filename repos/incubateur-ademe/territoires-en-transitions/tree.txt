@@ -319,9 +319,7 @@
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── importer-ia
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │   └── nouveau
-│   │   │   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   └── tableau-de-bord
 │   │   │   │   │   │   │   │       ├── _components
@@ -335,6 +333,7 @@
 │   │   │   │   │   │   │   ├── priorisation
 │   │   │   │   │   │   │   │   ├── actions-preselectionnees
 │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── referentiel
 │   │   │   │   │   │   │   │   └── [referentielId]
@@ -484,6 +483,8 @@
 │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   ├── (commun)
 │   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   ├── referents-pcaet
+│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── users
 │   │   │   │   │   │   │       ├── _components
 │   │   │   │   │   │   │       │   ├── ConfirmerChangementNiveau.stories.tsx
@@ -590,7 +591,6 @@
 │   │   │   ├── global.css
 │   │   │   ├── layout.tsx
 │   │   │   ├── not-found.tsx
-│   │   │   ├── public-env.script.tsx
 │   │   │   ├── root-providers.tsx
 │   │   │   ├── third-party-providers.tsx
 │   │   │   └── version
@@ -635,8 +635,6 @@
 │   │   │   │   ├── Marianne-Regular_Italic.woff2
 │   │   │   │   ├── Marianne-Thin.woff2
 │   │   │   │   └── Marianne-Thin_Italic.woff2
-│   │   │   ├── modele-import-pa.ods
-│   │   │   ├── modele-import-pa.xlsx
 │   │   │   ├── repFrancaiseLogo.png
 │   │   │   ├── robots.txt
 │   │   │   └── territoires_en_transitions.png
@@ -707,6 +705,7 @@
 │   │   │   │   │       │   ├── chart
 │   │   │   │   │       │   │   ├── DownloadIndicateurChart.tsx
 │   │   │   │   │       │   │   ├── IndicateurChart.tsx
+│   │   │   │   │       │   │   ├── indicateur-chart.png-export.tsx
 │   │   │   │   │       │   │   ├── layer-parameters.ts
 │   │   │   │   │       │   │   ├── make-segment-series.ts
 │   │   │   │   │       │   │   └── prepare-reference-objectifs-dataset.ts
@@ -735,9 +734,9 @@
 │   │   │   │   │       │   │   ├── Header
 │   │   │   │   │       │   │   │   ├── CheminIndicateur.tsx
 │   │   │   │   │       │   │   │   ├── DeleteModal.tsx
-│   │   │   │   │       │   │   │   ├── EditModal.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurHeader.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurInfos.tsx
+│   │   │   │   │       │   │   │   ├── IndicateurPilotes.tsx
 │   │   │   │   │       │   │   │   └── IndicateurToolbar.tsx
 │   │   │   │   │       │   │   ├── IndicateurDetail.tsx
 │   │   │   │   │       │   │   ├── IndicateurLayout.tsx
@@ -1075,6 +1074,8 @@
 │   │   │   │   │   │   │   ├── to-matrix-points.spec.ts
 │   │   │   │   │   │   │   ├── to-matrix-points.ts
 │   │   │   │   │   │   │   ├── to-pertinences-list-input.ts
+│   │   │   │   │   │   │   ├── to-priorisation-access.spec.ts
+│   │   │   │   │   │   │   ├── to-priorisation-access.ts
 │   │   │   │   │   │   │   ├── to-shares-of-100.spec.ts
 │   │   │   │   │   │   │   ├── to-shares-of-100.ts
 │   │   │   │   │   │   │   ├── upsert-pertinence.spec.ts
@@ -1106,7 +1107,7 @@
 │   │   │   │   │   │   │   └── use-send-action-suggestion.ts
 │   │   │   │   │   │   ├── leviers-view.ts
 │   │   │   │   │   │   ├── leviers-without-potentiel.list.tsx
-│   │   │   │   │   │   ├── priorisation-empty.card.tsx
+│   │   │   │   │   │   ├── priorisation-blocked.card.tsx
 │   │   │   │   │   │   ├── priorisation-leviers.view.tsx
 │   │   │   │   │   │   ├── priorisation.summary.tsx
 │   │   │   │   │   │   ├── select-levier.ts
@@ -1190,9 +1191,9 @@
 │   │   │   │   │   ├── assert-can-mutate.ts
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── avis-deposes.list.tsx
+│   │   │   │   │   │   ├── contacts.button.tsx
 │   │   │   │   │   │   ├── contacts.modal.tsx
 │   │   │   │   │   │   ├── contacts.table.tsx
-│   │   │   │   │   │   ├── demarche-menu.button.tsx
 │   │   │   │   │   │   ├── header
 │   │   │   │   │   │   │   ├── date-lancement-field.tsx
 │   │   │   │   │   │   │   ├── date-modification-item.tsx
@@ -1201,7 +1202,6 @@
 │   │   │   │   │   │   │   ├── obligation-field.tsx
 │   │   │   │   │   │   │   ├── pilotes-field.tsx
 │   │   │   │   │   │   │   ├── scot-aec-field.tsx
-│   │   │   │   │   │   │   ├── separator.tsx
 │   │   │   │   │   │   │   └── statut-badges.tsx
 │   │   │   │   │   │   ├── plans-contenu.tsx
 │   │   │   │   │   │   └── rappel-plan.section.tsx
@@ -1221,6 +1221,7 @@
 │   │   │   │   │   │   ├── use-documents.ts
 │   │   │   │   │   │   ├── use-download-demarche-document.ts
 │   │   │   │   │   │   ├── use-get-programme-actions-fichier.ts
+│   │   │   │   │   │   ├── use-list-contacts.ts
 │   │   │   │   │   │   ├── use-list-demarches-pcaet.ts
 │   │   │   │   │   │   ├── use-list-public-demarches-pcaet.ts
 │   │   │   │   │   │   ├── use-plans.ts
@@ -1302,6 +1303,17 @@
 │   │   │   │   │   │   ├── list-public-demarches-pcaet.page.tsx
 │   │   │   │   │   │   └── use-filter-demarches-pcaet.ts
 │   │   │   │   │   ├── plan-actions.page.tsx
+│   │   │   │   │   ├── referents
+│   │   │   │   │   │   ├── add-contact-libre.form.tsx
+│   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-add-referent.ts
+│   │   │   │   │   │   │   ├── use-list-referents-organismes.ts
+│   │   │   │   │   │   │   ├── use-list-referents-regions.ts
+│   │   │   │   │   │   │   ├── use-referents-access.ts
+│   │   │   │   │   │   │   └── use-remove-referent.ts
+│   │   │   │   │   │   ├── organisme-referents.card.tsx
+│   │   │   │   │   │   ├── referents-pcaet.page.tsx
+│   │   │   │   │   │   └── remove-referent.modal.tsx
 │   │   │   │   │   ├── use-is-banner-visible.ts
 │   │   │   │   │   └── use-is-enabled.ts
 │   │   │   │   ├── steps.spec.ts
@@ -1670,8 +1682,6 @@
 │   │   │   │   │   │   │   │   │   ├── acces
 │   │   │   │   │   │   │   │   │   │   ├── access-rights-management.modal.tsx
 │   │   │   │   │   │   │   │   │   │   └── fiche-restreint-editor.form-section.tsx
-│   │   │   │   │   │   │   │   │   ├── activity-log
-│   │   │   │   │   │   │   │   │   │   └── activity-log.modal.tsx
 │   │   │   │   │   │   │   │   │   └── pdf-export
 │   │   │   │   │   │   │   │   │       ├── ExportModal
 │   │   │   │   │   │   │   │   │       │   ├── export-fa-modal.tsx
@@ -1720,7 +1730,6 @@
 │   │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   │   └── link.tsx
 │   │   │   │   │   │   │   └── create-plan.button.tsx
-│   │   │   │   │   │   ├── create-plan-options.view.tsx
 │   │   │   │   │   │   ├── create-plan.modal.tsx
 │   │   │   │   │   │   └── create-plan.view.tsx
 │   │   │   │   │   ├── import-plan
@@ -1742,8 +1751,8 @@
 │   │   │   │   │   │   │   └── use-resume-ai-import.ts
 │   │   │   │   │   │   ├── import-plan-support.links.ts
 │   │   │   │   │   │   ├── previous-ai-import.alert.tsx
-│   │   │   │   │   │   ├── request-plan-import-steps.tsx
 │   │   │   │   │   │   ├── request-plan-import-view.tsx
+│   │   │   │   │   │   ├── request-plan-import.info.tsx
 │   │   │   │   │   │   ├── resume-ai-import.button.tsx
 │   │   │   │   │   │   └── use-is-ai-plan-import-enabled.ts
 │   │   │   │   │   ├── list-all-plans
@@ -1758,7 +1767,6 @@
 │   │   │   │   │   ├── plan-types-to-options.spec.ts
 │   │   │   │   │   ├── plan-types-to-options.ts
 │   │   │   │   │   ├── secteurs-counts
-│   │   │   │   │   │   ├── count-plan-secteurs-a-renseigner.ts
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-list-plan-fiches-secteurs-a-verifier.ts
 │   │   │   │   │   │   │   └── use-list-plan-secteurs-counts.ts
@@ -2257,7 +2265,6 @@
 │   │   │   │   │   │   └── useMembres.ts
 │   │   │   │   │   ├── useTableauDeBordReferentielData.ts
 │   │   │   │   │   └── utils.ts
-│   │   │   │   ├── use-referentiel-te-enabled.ts
 │   │   │   │   ├── use-snapshot.tsx
 │   │   │   │   └── utils.ts
 │   │   │   ├── shared
@@ -2546,7 +2553,8 @@
 │   │   │   │   │   ├── metadata-item-personne.tsx
 │   │   │   │   │   ├── metadata-item.spec.tsx
 │   │   │   │   │   ├── metadata-item.tsx
-│   │   │   │   │   └── metadata-line.tsx
+│   │   │   │   │   ├── metadata-line.tsx
+│   │   │   │   │   └── metadata-separator.tsx
 │   │   │   │   ├── pictogrammes
 │   │   │   │   │   ├── ActionPicto.tsx
 │   │   │   │   │   ├── PictoAction.tsx
@@ -2562,6 +2570,7 @@
 │   │   │   │       │   ├── Kbd.css
 │   │   │   │       │   └── index.tsx
 │   │   │   │       ├── SpinnerLoader.tsx
+│   │   │   │       ├── activity-log.modal.tsx
 │   │   │   │       ├── floating-ui
 │   │   │   │       │   ├── DropdownFloater.tsx
 │   │   │   │       │   ├── ToastFloater.spec.tsx
@@ -2682,6 +2691,7 @@
 │   │   │       │   ├── use-get-banner-info.ts
 │   │   │       │   └── use-upsert-banner-info.ts
 │   │   │       ├── convert-file-to-base64.ts
+│   │   │       ├── download-element-as-image.ts
 │   │   │       ├── error
 │   │   │       │   ├── error.card.tsx
 │   │   │       │   └── error.page.tsx
@@ -3468,6 +3478,11 @@
 │   │   │   │   │   │   ├── list-avis-recus.output.ts
 │   │   │   │   │   │   ├── list-avis-recus.router.ts
 │   │   │   │   │   │   └── list-avis-recus.service.ts
+│   │   │   │   │   ├── list-contacts
+│   │   │   │   │   │   ├── list-contacts.errors.ts
+│   │   │   │   │   │   ├── list-contacts.input.ts
+│   │   │   │   │   │   ├── list-contacts.router.ts
+│   │   │   │   │   │   └── list-contacts.service.ts
 │   │   │   │   │   ├── list-demarches-pcaet
 │   │   │   │   │   │   ├── list-demarches-pcaet.errors.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.input.ts
@@ -3526,6 +3541,30 @@
 │   │   │   │   │   │   ├── publier-demarche.router.e2e-spec.ts
 │   │   │   │   │   │   ├── publier-demarche.router.ts
 │   │   │   │   │   │   └── publier-demarche.service.ts
+│   │   │   │   │   ├── referents
+│   │   │   │   │   │   ├── add-referent
+│   │   │   │   │   │   │   ├── add-referent.input.ts
+│   │   │   │   │   │   │   ├── add-referent.router.ts
+│   │   │   │   │   │   │   └── add-referent.service.ts
+│   │   │   │   │   │   ├── get-referents-access
+│   │   │   │   │   │   │   ├── get-referents-access.input.ts
+│   │   │   │   │   │   │   └── get-referents-access.router.ts
+│   │   │   │   │   │   ├── list-referents-organismes
+│   │   │   │   │   │   │   ├── list-referents-organismes.input.ts
+│   │   │   │   │   │   │   ├── list-referents-organismes.router.ts
+│   │   │   │   │   │   │   └── list-referents-organismes.service.ts
+│   │   │   │   │   │   ├── list-referents-regions
+│   │   │   │   │   │   │   ├── list-referents-regions.router.ts
+│   │   │   │   │   │   │   └── list-referents-regions.service.ts
+│   │   │   │   │   │   ├── referents-pcaet-permissions.service.ts
+│   │   │   │   │   │   ├── referents-pcaet.errors.ts
+│   │   │   │   │   │   ├── referents-pcaet.repository.ts
+│   │   │   │   │   │   ├── referents-pcaet.router.e2e-spec.ts
+│   │   │   │   │   │   ├── referents-pcaet.router.ts
+│   │   │   │   │   │   └── remove-referent
+│   │   │   │   │   │       ├── remove-referent.input.ts
+│   │   │   │   │   │       ├── remove-referent.router.ts
+│   │   │   │   │   │       └── remove-referent.service.ts
 │   │   │   │   │   ├── remove-vulnerabilite-thematique
 │   │   │   │   │   │   ├── remove-vulnerabilite-thematique.errors.ts
 │   │   │   │   │   │   ├── remove-vulnerabilite-thematique.input.ts
@@ -3567,7 +3606,8 @@
 │   │   │   │   │   │   │   ├── demarche-pcaet.dto.ts
 │   │   │   │   │   │   │   ├── pcaet-avis.dto.ts
 │   │   │   │   │   │   │   ├── pcaet-avis.table.ts
-│   │   │   │   │   │   │   └── pcaet-demande-avis.table.ts
+│   │   │   │   │   │   │   ├── pcaet-demande-avis.table.ts
+│   │   │   │   │   │   │   └── pcaet-referent.table.ts
 │   │   │   │   │   │   ├── pcaet-avis.repository.ts
 │   │   │   │   │   │   ├── pcaet-instructeurs.repository.ts
 │   │   │   │   │   │   ├── perimetre-instructeur.columns.ts
@@ -3765,6 +3805,7 @@
 │   │   │   │   │   ├── trajectoire-leviers.config.ts
 │   │   │   │   │   ├── trajectoire-leviers.controller.e2e-spec.ts
 │   │   │   │   │   ├── trajectoire-leviers.controller.ts
+│   │   │   │   │   ├── trajectoire-leviers.errors.ts
 │   │   │   │   │   ├── trajectoire-leviers.router.e2e-spec.ts
 │   │   │   │   │   ├── trajectoire-leviers.router.ts
 │   │   │   │   │   ├── trajectoire-leviers.service.spec.ts
@@ -4259,6 +4300,7 @@
 │   │   │   │   │   │   ├── fiche-action-pdf-export.service.ts
 │   │   │   │   │   │   ├── fiche-export-payload.service.e2e-spec.ts
 │   │   │   │   │   │   ├── fiche-export-payload.service.ts
+│   │   │   │   │   │   ├── pdf-renderer.service.spec.ts
 │   │   │   │   │   │   └── pdf-renderer.service.ts
 │   │   │   │   │   ├── fiche-action-permissions.service.ts
 │   │   │   │   │   ├── fiche-action.repository.ts
@@ -4579,7 +4621,6 @@
 │   │   │   │   │   ├── add-preuve.service.spec.ts
 │   │   │   │   │   └── add-preuve.service.ts
 │   │   │   │   ├── compute-score
-│   │   │   │   │   ├── action-statut-history.service.ts
 │   │   │   │   │   ├── action-statuts-by-action-id.dto.ts
 │   │   │   │   │   ├── score-analysis.dto.ts
 │   │   │   │   │   ├── score-from-origines.rules.spec.ts
@@ -5269,7 +5310,8 @@
 │   │   │       │   ├── configuration.model.ts
 │   │   │       │   ├── configuration.module.ts
 │   │   │       │   ├── configuration.service.ts
-│   │   │       │   └── configuration.ts
+│   │   │       │   ├── configuration.ts
+│   │   │       │   └── parse-pem-certificate.ts
 │   │   │       ├── context
 │   │   │       │   ├── application-context.dto.ts
 │   │   │       │   ├── application-scope-context.dto.ts
@@ -5279,6 +5321,8 @@
 │   │   │       │   ├── csv.service.spec.ts
 │   │   │       │   └── csv.service.ts
 │   │   │       ├── database
+│   │   │       │   ├── build-database-ssl.spec.ts
+│   │   │       │   ├── build-database-ssl.ts
 │   │   │       │   ├── conflict.utils.ts
 │   │   │       │   ├── database-service.interface.ts
 │   │   │       │   ├── database.module.ts
@@ -5386,7 +5430,6 @@
 │   │   │       │   └── log.dto.ts
 │   │   │       ├── map-with-concurrency.spec.ts
 │   │   │       ├── map-with-concurrency.ts
-│   │   │       ├── mattermost-notification.service.ts
 │   │   │       ├── nest
 │   │   │       │   ├── all-exceptions.filter.ts
 │   │   │       │   ├── controller-error-handler.ts
@@ -5695,7 +5738,8 @@
 │   │   │   ├── strapiImage
 │   │   │   │   └── strapi-image.tsx
 │   │   │   └── video
-│   │   │       └── EmbededVideo.tsx
+│   │   │       ├── EmbededVideo.tsx
+│   │   │       └── get-demo-video-url.ts
 │   │   ├── eslint.config.mjs
 │   │   ├── next-env.d.ts
 │   │   ├── next.config.mjs
@@ -6408,6 +6452,7 @@
 │   │   │   │   ├── pcaet_documents_plans_annexes.sql
 │   │   │   │   ├── pcaet_ees_absorbe_etude_impact.sql
 │   │   │   │   ├── pcaet_plan_actions_inclusion_declaree.sql
+│   │   │   │   ├── pcaet_plan_actions_tableurs.sql
 │   │   │   │   ├── pcaet_plan_chaleur_froid_commune_membre.sql
 │   │   │   │   ├── pcaet_programme_actions.sql
 │   │   │   │   ├── pcaet_saisine_hors_plateforme.sql
@@ -6429,6 +6474,7 @@
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
 │   │   │   │   ├── pcaet_instruction_validation_supprimee.sql
+│   │   │   │   ├── pcaet_referent.sql
 │   │   │   │   └── pcaet_saisine_perimetre.sql
 │   │   │   ├── drop_pg_jsonschema.sql
 │   │   │   ├── drop_pg_net.sql
@@ -6618,7 +6664,7 @@
 │   │   │   │   ├── analyse_volets_job_report.sql
 │   │   │   │   ├── analysis_run.sql
 │   │   │   │   ├── annexe.sql
-│   │   │   │   ├── axe_*.sql  (5 files)
+│   │   │   │   ├── axe_*.sql  (6 files)
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── classification_leviers_job.sql
@@ -7028,6 +7074,7 @@
 │   │   │   │   ├── pcaet_documents_plans_annexes.sql
 │   │   │   │   ├── pcaet_ees_absorbe_etude_impact.sql
 │   │   │   │   ├── pcaet_plan_actions_inclusion_declaree.sql
+│   │   │   │   ├── pcaet_plan_actions_tableurs.sql
 │   │   │   │   ├── pcaet_plan_chaleur_froid_commune_membre.sql
 │   │   │   │   ├── pcaet_programme_actions.sql
 │   │   │   │   ├── pcaet_saisine_hors_plateforme.sql
@@ -7049,6 +7096,7 @@
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
 │   │   │   │   ├── pcaet_instruction_validation_supprimee.sql
+│   │   │   │   ├── pcaet_referent.sql
 │   │   │   │   └── pcaet_saisine_perimetre.sql
 │   │   │   ├── drop_pg_jsonschema.sql
 │   │   │   ├── drop_pg_net.sql
@@ -7238,7 +7286,7 @@
 │   │   │   │   ├── analyse_volets_job_report.sql
 │   │   │   │   ├── analysis_run.sql
 │   │   │   │   ├── annexe.sql
-│   │   │   │   ├── axe_*.sql  (5 files)
+│   │   │   │   ├── axe_*.sql  (6 files)
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── classification_leviers_job.sql
@@ -7648,6 +7696,7 @@
 │   │       │   ├── pcaet_documents_plans_annexes.sql
 │   │       │   ├── pcaet_ees_absorbe_etude_impact.sql
 │   │       │   ├── pcaet_plan_actions_inclusion_declaree.sql
+│   │       │   ├── pcaet_plan_actions_tableurs.sql
 │   │       │   ├── pcaet_plan_chaleur_froid_commune_membre.sql
 │   │       │   ├── pcaet_programme_actions.sql
 │   │       │   ├── pcaet_saisine_hors_plateforme.sql
@@ -7669,6 +7718,7 @@
 │   │       │   ├── pcaet_instructeurs_region_ddt.sql
 │   │       │   ├── pcaet_instruction_validation.sql
 │   │       │   ├── pcaet_instruction_validation_supprimee.sql
+│   │       │   ├── pcaet_referent.sql
 │   │       │   └── pcaet_saisine_perimetre.sql
 │   │       ├── drop_pg_jsonschema.sql
 │   │       ├── drop_pg_net.sql
@@ -7858,7 +7908,7 @@
 │   │       │   ├── analyse_volets_job_report.sql
 │   │       │   ├── analysis_run.sql
 │   │       │   ├── annexe.sql
-│   │       │   ├── axe_*.sql  (5 files)
+│   │       │   ├── axe_*.sql  (6 files)
 │   │       │   ├── budget.sql
 │   │       │   ├── budget@v4.50.0.sql
 │   │       │   ├── classification_leviers_job.sql
@@ -8317,7 +8367,9 @@
 │   │   │       ├── demarche-pcaet.pom.ts
 │   │   │       ├── instruction-contexte.spec.ts
 │   │   │       ├── instruction-liste.spec.ts
-│   │   │       └── instruction.pom.ts
+│   │   │       ├── instruction.pom.ts
+│   │   │       ├── referents-pcaet.spec.ts
+│   │   │       └── tableaux-ecran-etroit.spec.ts
 │   │   ├── indicateurs
 │   │   │   ├── export-indicateurs
 │   │   │   │   ├── export-indicateurs.pom.ts
@@ -8351,12 +8403,14 @@
 │   │   │   │       ├── breadcrumbs-navigation.spec.ts
 │   │   │   │       ├── contributeur.spec.ts
 │   │   │   │       ├── financeurs-draft.spec.ts
+│   │   │   │       ├── header-volet-ouvert.spec.ts
 │   │   │   │       ├── lecteur-readonly-description.spec.ts
 │   │   │   │       ├── mesures-liees.pom.ts
 │   │   │   │       ├── mesures-liees.spec.ts
 │   │   │   │       ├── mutualiser-action.spec.ts
 │   │   │   │       ├── notes-saisie.spec.ts
-│   │   │   │       └── sous-actions.pom.ts
+│   │   │   │       ├── sous-actions.pom.ts
+│   │   │   │       └── volet-lateral.spec.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
 │   │   │       │   ├── create-plan.pom.ts
@@ -8485,6 +8539,7 @@
 │   │   │   ├── environmentVariables.ts
 │   │   │   ├── index.ts
 │   │   │   ├── json.types.ts
+│   │   │   ├── public-env.script.tsx
 │   │   │   ├── public-env.ts
 │   │   │   ├── users
 │   │   │   │   ├── index.server.ts
@@ -8604,6 +8659,9 @@
 │   │   │   │   ├── pertinence-leviers
 │   │   │   │   │   ├── can-categories-have-own-pertinence.spec.ts
 │   │   │   │   │   ├── can-categories-have-own-pertinence.ts
+│   │   │   │   │   ├── can-read-priorisation.ts
+│   │   │   │   │   ├── is-priorisation-available.spec.ts
+│   │   │   │   │   ├── is-priorisation-available.ts
 │   │   │   │   │   ├── pertinence-leviers.schema.ts
 │   │   │   │   │   ├── pertinence.enum.ts
 │   │   │   │   │   ├── to-pertinences-by-levier.spec.ts
@@ -8623,6 +8681,7 @@
 │   │   │   │   ├── demarche.schema.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── pcaet
+│   │   │   │       ├── collectivite-pcaet-obligation.enum.schema.ts
 │   │   │   │       ├── contexte-instruction.schema.ts
 │   │   │   │       ├── demarche-pcaet-modifiable.rules.spec.ts
 │   │   │   │       ├── demarche-pcaet-modifiable.rules.ts
@@ -8655,6 +8714,9 @@
 │   │   │   │       ├── pcaet-instructeur.rules.ts
 │   │   │   │       ├── pcaet-instruction-partie.enum.schema.ts
 │   │   │   │       ├── pcaet-perimetre-saisine.enum.schema.ts
+│   │   │   │       ├── pcaet-referent.rules.spec.ts
+│   │   │   │       ├── pcaet-referent.rules.ts
+│   │   │   │       ├── pcaet-referent.schema.ts
 │   │   │   │       ├── pcaet-scot-aec.rules.ts
 │   │   │   │       ├── pcaet-statut-instruction.rules.spec.ts
 │   │   │   │       ├── pcaet-statut-instruction.rules.ts
@@ -8978,7 +9040,8 @@
 │   │   │   ├── __tests__
 │   │   │   │   ├── __fixtures__
 │   │   │   │   │   ├── fiche-81152.fixture.ts
-│   │   │   │   │   └── golden-baseline-fiche-81152.pdf
+│   │   │   │   │   ├── golden-baseline-fiche-81152.pdf
+│   │   │   │   │   └── note-bloquante.fixture.ts
 │   │   │   │   ├── compile-check.spec.ts
 │   │   │   │   ├── pdf-visual-compare.ts
 │   │   │   │   └── render-pdf-node.spec.tsx
@@ -9710,4 +9773,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1495 directories, 8621 files
+1503 directories, 8679 files
