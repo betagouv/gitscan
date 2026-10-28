@@ -26,7 +26,10 @@
 │   ├── dependabot.yml
 │   ├── scripts
 │   │   ├── board-sync.mjs
-│   │   └── check-swagger-drift.mjs
+│   │   ├── check-swagger-drift.mjs
+│   │   ├── install-playwright-browsers.sh
+│   │   ├── resolve-release-ref.mjs
+│   │   └── resolve-release-ref.test.mjs
 │   └── workflows
 │       ├── build.yml
 │       ├── commitlint.yml
@@ -478,6 +481,7 @@
 │   │   │   ├── actor.module.ts
 │   │   │   ├── actor.service.ts
 │   │   │   ├── dto
+│   │   │   │   ├── actor.dto.spec.ts
 │   │   │   │   └── actor.dto.ts
 │   │   │   └── map
 │   │   │       └── actor.map.ts
@@ -1080,10 +1084,13 @@
 │   │   ├── actor-email-case.e2e-spec.ts
 │   │   ├── actor-type-delete.e2e-spec.ts
 │   │   ├── actor-type-perms-matrix.e2e-spec.ts
+│   │   ├── actor-type-update.e2e-spec.ts
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
+│   │   ├── application-data-source-search.e2e-spec.ts
 │   │   ├── application-delete.e2e-spec.ts
 │   │   ├── application-export.e2e-spec.ts
+│   │   ├── application-initial-status.e2e-spec.ts
 │   │   ├── application-product-export.e2e-spec.ts
 │   │   ├── application-technology-filter.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
@@ -1268,6 +1275,8 @@
 │   │   ├── actions-crud.spec.ts
 │   │   ├── administration-referentiels.spec.ts
 │   │   ├── beta-features.spec.ts
+│   │   ├── catalogue-data-source.spec.ts
+│   │   ├── catalogue-filter-pagination.spec.ts
 │   │   ├── catalogue-filtres.spec.ts
 │   │   ├── catalogue.spec.ts
 │   │   ├── conformites.spec.ts
@@ -1540,6 +1549,7 @@
 │   │   │   │   ├── NotificationBell.vue
 │   │   │   │   └── NotificationListItem.vue
 │   │   │   ├── organization
+│   │   │   │   ├── OgaLink.spec.ts
 │   │   │   │   └── OgaLink.vue
 │   │   │   ├── search
 │   │   │   │   ├── ActorFilter.vue
@@ -1551,6 +1561,7 @@
 │   │   │   │   ├── HostingFilter.vue
 │   │   │   │   ├── PriorityRestartFilter.vue
 │   │   │   │   ├── QualityFilter.vue
+│   │   │   │   ├── RelationFilter.spec.ts
 │   │   │   │   ├── RelationFilter.vue
 │   │   │   │   ├── SavedFiltersPanel.spec.ts
 │   │   │   │   ├── SavedFiltersPanel.technology.spec.ts
@@ -1558,6 +1569,7 @@
 │   │   │   │   ├── SearchHeader.vue
 │   │   │   │   ├── SidebarFilter.spec.ts
 │   │   │   │   ├── SidebarFilter.vue
+│   │   │   │   ├── StatusFilter.spec.ts
 │   │   │   │   ├── StatusFilter.vue
 │   │   │   │   ├── TechnologyFilter.spec.ts
 │   │   │   │   └── TechnologyFilter.vue
@@ -1927,4 +1939,4 @@
 │       ├── sync-issue.mjs
 │       └── sync-issue.test.mjs
 └── release-please-config.json
-408 directories, 1521 files
+408 directories, 1533 files
