@@ -6,6 +6,7 @@
 │   └── workflows
 │       └── scalingo-review-app.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .pre-commit-config.yaml
 ├── .psqlrc
 ├── .python-version
@@ -49,6 +50,7 @@
 │   │   ├── oauth_token.py
 │   │   ├── push_subscription.py
 │   │   ├── team.py
+│   │   ├── technical_incident.py
 │   │   ├── third_party_company.py
 │   │   ├── third_party_employment.py
 │   │   ├── user.py
@@ -76,6 +78,7 @@
 │   │   ├── regulatory_alert.py
 │   │   ├── regulatory_alerts_summary.py
 │   │   ├── team.py
+│   │   ├── technical_incident.py
 │   │   ├── user.py
 │   │   ├── user_agreement.py
 │   │   └── work_day.py
@@ -114,6 +117,7 @@
 │   │   ├── regulatory_alerts_summary.py
 │   │   ├── scenario_testing.py
 │   │   ├── team.py
+│   │   ├── technical_incident.py
 │   │   ├── third_party_employment.py
 │   │   ├── totp.py
 │   │   ├── user.py
@@ -147,6 +151,7 @@
 │   │   ├── graphql.py
 │   │   ├── impersonate_listener.py
 │   │   ├── insee_tranche_effectifs.py
+│   │   ├── junit_report.py
 │   │   ├── livestorm.py
 │   │   ├── log_sql_queries_file.py
 │   │   ├── logging.py
@@ -187,6 +192,7 @@
 │   │   │   │   ├── headers.py
 │   │   │   │   ├── legend.py
 │   │   │   │   ├── tab_activities.py
+│   │   │   │   ├── tab_control.py
 │   │   │   │   └── tab_details.py
 │   │   │   ├── controllers
 │   │   │   │   ├── __init__.py
@@ -224,7 +230,8 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── send_email_to_last_company_suspended_admins.py
 │   │   │   │   └── send_expiry_warning_email.py
-│   │   │   └── send_anonymization_warnings.py
+│   │   │   ├── send_anonymization_warnings.py
+│   │   │   └── third_party_sync.py
 │   │   ├── notification_campaign.py
 │   │   └── software_compliance_report.py
 │   ├── models
@@ -296,6 +303,7 @@
 │   │   ├── support_action_log.py
 │   │   ├── team.py
 │   │   ├── team_association_tables.py
+│   │   ├── technical_incident.py
 │   │   ├── totp_credential.py
 │   │   ├── user.py
 │   │   ├── user_agreement.py
@@ -429,6 +437,7 @@
 │       │   ├── __init__.py
 │       │   ├── test_certificate_admin_changes.py
 │       │   ├── test_certificate_api.py
+│       │   ├── test_certificate_badge.py
 │       │   ├── test_certificate_be_compliant.py
 │       │   ├── test_certificate_company_api.py
 │       │   ├── test_certificate_criteria.py
@@ -436,6 +445,7 @@
 │       │   └── test_certificate_real_time.py
 │       ├── controls
 │       │   ├── __init__.py
+│       │   ├── test_business_lookup_transport_type.py
 │       │   ├── test_business_type_in_control.py
 │       │   ├── test_check_idp_allowed.py
 │       │   ├── test_control_frozen_data.py
@@ -466,7 +476,7 @@
 │       │   ├── test_utils.py
 │       │   ├── test_weekly_rules.py
 │       │   └── test_work_day_break.py
-│       └── test_*.py  (63 files)
+│       └── test_*.py  (74 files)
 ├── config.py
 ├── cron.json
 ├── data
@@ -540,6 +550,7 @@
 │       ├── 349352e8308d_remove_certification_communication_.py
 │       ├── 373e565a327a_trv_max_work_time_based_on_amplitude.py
 │       ├── 376542d9939a_email_activation.py
+│       ├── 39f51c6db221_merge_sent_to_driver_and_anon_control_.py
 │       ├── 3b122f77fff0_non_zero_activity_durations.py
 │       ├── 3edf5de0351f_add_signing_keys.py
 │       ├── 41e74d769002_keep_all_refresh_tokens.py
@@ -574,6 +585,8 @@
 │       ├── 65ce09d89bca_fix_activity_update_time_constraint.py
 │       ├── 660b542c1ed2_add_way_heard_of_mobilic_column.py
 │       ├── 68ed4db9ae15_company_settings_other_task.py
+│       ├── 68f7e34e43f8_anon_controller_control_user_id_.py
+│       ├── 6bea1eb11e5e_add_file_content_to_export.py
 │       ├── 6bfdb39b721f_remove_primary_secondary_distinction_on_.py
 │       ├── 6d33809b0e9b_add_kilometer_reading.py
 │       ├── 6e70207979a9_link_comment_to_mission.py
@@ -626,6 +639,7 @@
 │       ├── a482261c5eb9_add_team_id_in_employment_table.py
 │       ├── a4be56f6b1a8_non_nullable_mailing_lists.py
 │       ├── a7c1f2b9d4e6_refactor_anon_company_certification.py
+│       ├── a7f2c9e4b831_merge_heads.py
 │       ├── a89502b9c0f3_mandatory_user_email.py
 │       ├── aa1096a64d0f_create_business_table.py
 │       ├── aa3c6ff8cdb7_add_surveys_table.py
@@ -640,6 +654,7 @@
 │       ├── b00eb3b480ac_fix_control_bulletin_column.py
 │       ├── b05231a3afda_add_expenditure_setting.py
 │       ├── b1c2d3e4f567_add_software_compliance_snapshot.py
+│       ├── b1e7c9a2f4d3_add_technical_incident_table.py
 │       ├── b29f8f5e455b_create_controller_tables.py
 │       ├── b448927b940a_team_enrollment_model.py
 │       ├── b5afcd504879_add_third_party_client_employment_table.py
@@ -658,6 +673,7 @@
 │       ├── c1e0cfacea5a_add_exports_table.py
 │       ├── c2d3e4f56789_add_suspended_at_to_oauth2_client.py
 │       ├── c3408857bc31_optimize_employments_query_performance.py
+│       ├── c3d8e1f4a2b7_seed_historical_technical_incidents.py
 │       ├── c452a761d31a_add_phone_number_to_company.py
 │       ├── c5192b34d875_activation_email_token.py
 │       ├── c737e645f457_dismissable_employment.py
@@ -681,7 +697,9 @@
 │       ├── e0834912bc9c_remove_email_type_constraint.py
 │       ├── e1f2a3b4c5d6_merge_anon_certification_and_regulation_index.py
 │       ├── e5d78113a5ac_add_moving_transport_type.py
+│       ├── e6015df7d17e_add_sent_to_driver_column.py
 │       ├── e688d06e7d2d_add_company_settings.py
+│       ├── e7a3c9d1b2f4_add_regulatory_alert_user_submitter_day_index.py
 │       ├── e7e59e36d8f6_expenditures_vehicle_number_and_mission.py
 │       ├── e920e737ca5a_add_activity_range_constraints.py
 │       ├── e94bdf997f02_merge_push_notifications_and_master_.py
@@ -715,4 +733,4 @@
 │       └── ff7bf9a10e57_add_comments_table.py
 ├── pyproject.toml
 └── scalingo.json
-49 directories, 730 files
+49 directories, 759 files

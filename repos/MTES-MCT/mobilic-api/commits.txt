@@ -1,121 +1,381 @@
+2026-10-27T11:59:12+01:00 - 83cf77af - Gaspard "Sarp" Lonchampt : Merge pull request #861 from MTES-MCT/fix/security_pillow_virtualenv_snyk
+2026-10-27T11:42:52+01:00 - db3b6f09 - Gaspard Lonchampt : chore(deps): bump pillow and virtualenv for Snyk advisories
+2026-10-27T11:42:51+01:00 - 81a02714 - Gaspard Lonchampt : test(regulations): freeze the clock on DST-sensitive tests
+2026-10-26T14:54:03+01:00 - 068c4f79 - Gaspard "Sarp" Lonchampt : Merge pull request #856 from MTES-MCT/fix/vehicle_reject_empty_registration
+2026-10-26T14:45:35+01:00 - d84a0139 - Gaspard Lonchampt : refactor(tests): consolidate vehicle registration tests
+2026-10-26T14:09:07+01:00 - 727bb709 - Gaspard Lonchampt : test(vehicles): cover military storage and legacy-format matching
+2026-10-26T13:53:00+01:00 - 8cb15f87 - Gaspard Lonchampt : fix(vehicles): reject empty registration number at creation
+2026-10-26T13:52:59+01:00 - a68047b0 - Gaspard Lonchampt : test(vehicles): reject registration numbers made only of separators
+2026-10-26T11:54:48+01:00 - 1e6719ae - Gaspard "Sarp" Lonchampt : Merge pull request #855 from MTES-MCT/fix/vehicle_registration_normalization
+2026-10-26T10:18:43+01:00 - 7ad2060f - Gaspard Lonchampt : fix(vehicles): match registration numbers by equality, not SQL LIKE
+2026-10-26T10:18:42+01:00 - 60e2b4f3 - Gaspard Lonchampt : fix(vehicles): store registration numbers in canonical form
+2026-10-22T17:11:10+02:00 - 0c57719e - Gaspard Lonchampt : test(vehicles): cover registration number canonicalization on write
+2026-10-21T11:28:22+02:00 - 632a744f - Gaspard "Sarp" Lonchampt : Merge pull request #798 from MTES-MCT/fix/critical_auth_findings
+2026-10-21T11:11:32+02:00 - 05f1061d - Gaspard "Sarp" Lonchampt : Merge pull request #814 from MTES-MCT/perf/admin_activity_company_lookups
+2026-10-21T11:11:26+02:00 - f636ca58 - Gaspard "Sarp" Lonchampt : Merge pull request #806 from MTES-MCT/chore/deps_vuln_pass
+2026-10-21T11:11:22+02:00 - 148002bb - Gaspard "Sarp" Lonchampt : Merge pull request #805 from MTES-MCT/fix/sync_employment_mail_outside_transaction
+2026-10-21T11:11:17+02:00 - 94018e79 - Gaspard "Sarp" Lonchampt : Merge pull request #812 from MTES-MCT/chore/gitleaks_secret_scanning
+2026-10-21T11:11:04+02:00 - 5f9a0ebc - Gaspard Lonchampt : fix(auth): close the critical audit findings
+2026-10-21T11:11:04+02:00 - 4cfdbe82 - Gaspard Lonchampt : test(security): add regression tests for the September 2026 audit findings
+2026-10-21T10:58:59+02:00 - 1f27adb0 - Gaspard Lonchampt : chore(ci): add gitleaks secret-scanning pre-commit hook
+2026-10-21T10:58:20+02:00 - f32ba91d - Gaspard Lonchampt : fix(employment): send third-party sync emails via a retriable Celery task
+2026-10-21T10:58:20+02:00 - babec902 - Gaspard Lonchampt : test(totp): assert Fernet rejects tampered ciphertext
+2026-10-21T10:58:20+02:00 - acb2e45a - Gaspard Lonchampt : test(employment): third-party sync must not send mail in the request thread
+2026-10-21T10:58:20+02:00 - 985df073 - Gaspard Lonchampt : test(certificate): guard badge image generation against the Pillow bump
+2026-10-21T10:58:20+02:00 - 65db0425 - Gaspard Lonchampt : chore(deps): bump vulnerable Python deps for security advisories
+2026-10-21T10:56:13+02:00 - e5b94b16 - Gaspard Lonchampt : perf(admin): speed up company activity lookups in the manager activity tab
+2026-10-21T10:52:54+02:00 - bc79a4d1 - Gaspard Lonchampt : test(admin): cover work-day window correctness and regulation chunking
+2026-10-20T21:25:27+02:00 - 4e934ff8 - Gaspard "Sarp" Lonchampt : Merge pull request #853 from MTES-MCT/fix/export_db_test_assert_specific_exception
+2026-10-20T21:18:23+02:00 - 8923bb25 - Gaspard "Sarp" Lonchampt : Merge pull request #852 from MTES-MCT/fix/anon_controller_control_null_bulletin_time
+2026-10-20T21:14:02+02:00 - 7ed09138 - Gaspard Lonchampt : test(exports): assert specific ValueError on failed export worker
+2026-10-20T21:06:10+02:00 - cfa8f6d3 - Gaspard Lonchampt : test(anonymization): cover controller control with null bulletin time
+2026-10-20T21:06:10+02:00 - 662187fd - Gaspard Lonchampt : fix(anonymization): handle null control_bulletin_creation_time
+2026-10-20T15:34:30+02:00 - a2f4220a - Gaspard "Sarp" Lonchampt : Merge pull request #850 from MTES-MCT/fix/exports_db_hardening
+2026-10-20T15:33:50+02:00 - e8388a0e - Gaspard "Sarp" Lonchampt : Merge pull request #851 from MTES-MCT/fix/export_activities_cells_vcenter
+2026-10-20T15:04:01+02:00 - aedea95d - Gaspard Lonchampt : fix(export): center activities sheet cells vertically
+2026-10-20T14:59:51+02:00 - 19e79693 - Gaspard Lonchampt : fix(exports): harden db storage against empty/oversize files and stuck jobs
+2026-10-20T14:57:06+02:00 - a967c732 - Gaspard Lonchampt : test(exports): guard empty/oversize db content and alert stuck WIP
+2026-10-20T12:08:25+02:00 - e1212bad - Gaspard "Sarp" Lonchampt : Merge pull request #849 from MTES-MCT/fix/export_download_api_prefix
+2026-10-20T11:55:57+02:00 - 3af5bdac - Gaspard Lonchampt : fix(exports): prefix in-db export download link with /api
+2026-10-20T11:54:34+02:00 - b19890d1 - Gaspard Lonchampt : test(exports): assert in-db download link is prefixed with /api
+2026-10-20T11:02:18+02:00 - 08268fec - Gaspard "Sarp" Lonchampt : Merge pull request #848 from MTES-MCT/fix/exports_store_in_db
+2026-10-19T17:51:07+02:00 - 84b7f0f3 - Gaspard Lonchampt : feat(exports): store excel exports in database as S3 fallback
+2026-10-19T17:51:06+02:00 - 909885b4 - Gaspard Lonchampt : test(exports): add tests for in-database export storage
+2026-10-19T16:03:29+02:00 - d4756286 - Doniaab : Merge pull request #845 from MTES-MCT/fix/interfacage-alert-workflow
+2026-10-19T12:09:31+02:00 - e4c66ee8 - donia benharara : fix(software-compliance): re-evaluate recently active clients, not only yesterday's batch
+2026-10-15T18:52:38+02:00 - 5b7b39df - Doniaab : Merge pull request #844 from MTES-MCT/fix/incidents-types-seed
+2026-10-15T16:09:20+02:00 - 9a750527 - donia benharara : fix(incidents): update incidents types in seeds
+2026-10-13T10:30:25+02:00 - c699aff0 - Redwane Zafari : Merge pull request #840 from MTES-MCT/fix/cancelled-missions-count
+2026-10-12T19:16:19+02:00 - efb0898f - donia benharara : fix(ci): fix migrations conflicts and cache system for cancelled missions
+2026-10-12T11:42:25+02:00 - 42014697 - Doniaab : Merge pull request #796 from MTES-MCT/feat/control-bug-register
+2026-10-12T11:13:50+02:00 - e3c5fb2a - Doniaab : Merge pull request #828 from MTES-MCT/feat/filter-activities
+2026-10-12T10:57:28+02:00 - df5d584b - Redwane Zafari : Merge pull request #827 from MTES-MCT/feat/export-control-format
+2026-10-07T18:39:46+02:00 - a2f506da - Redwane Zafari : Merge pull request #836 from MTES-MCT/hotfix/workdays-pagination-cursor
+2026-10-07T18:31:32+02:00 - 11868dbb - Redwane : fix(admin): advance work days pagination cursor past fully-filtered pages
+2026-10-07T02:34:43+02:00 - 4ea28ca8 - Redwane Zafari : Merge pull request #835 from MTES-MCT/prod
+2026-10-07T02:20:07+02:00 - 21891b50 - Redwane Zafari : Merge pull request #834 from MTES-MCT/revert/auto_validation_batch_size_400
+2026-10-07T02:17:04+02:00 - 7416c25c - Redwane : fix(auto-validation): revert batch size back to 400 after backlog catch-up
+2026-10-06T21:29:09+02:00 - 41212d5e - Redwane Zafari : Merge pull request #832 from MTES-MCT/hotfix/auto_validation_batch_size_2000
+2026-10-06T21:25:57+02:00 - 30e650db - Redwane : fix(auto-validation): temporarily raise batch size to 2000 for backlog catch-up
+2026-10-06T20:51:29+02:00 - 845d1b08 - Redwane Zafari : Merge pull request #831 from MTES-MCT/fix/auto_validation_oom
+2026-10-06T20:44:11+02:00 - 8bb05372 - Redwane : fix(auto-validation): apply batch limit at the SQL query level to prevent OOM
+2026-10-06T18:59:16+02:00 - 9136ac92 - Redwane Zafari : Merge pull request #829 from MTES-MCT/master
+2026-10-01T14:57:37+02:00 - ff189bbf - Gaspard "Sarp" Lonchampt : Merge pull request #801 from MTES-MCT/perf/mission_history_opt_in
+2026-10-01T14:15:14+02:00 - d91aee54 - Redwane : fix(migrations): merge divergent alembic heads
+2026-10-01T13:43:37+02:00 - dd91226b - Redwane Zafari : Merge pull request #773 from MTES-MCT/feat/employee-receives-bdc-with-or-without-lic
+2026-09-30T19:12:45+02:00 - cc9b7592 - Redwane Zafari : Merge pull request #808 from MTES-MCT/fix/booking-link-post-registration-email
+2026-09-30T19:09:27+02:00 - 254e1fc2 - Redwane Zafari : Merge pull request #772 from MTES-MCT/fix/controller-export-time
+2026-09-30T19:09:07+02:00 - 9b770ffe - Redwane Zafari : Merge pull request #802 from MTES-MCT/feat/activities-pagination
+2026-09-30T18:55:35+02:00 - a13eff9c - Redwane : refactor(api): extract work day stats pagination trimming to reduce cognitive complexity
+2026-09-30T16:05:58+02:00 - 31a2ad4d - donia benharara : fix(migration): update head ids on migration
+2026-09-30T16:03:34+02:00 - 3a418692 - donia benharara : Merge branch 'feat/control-bug-register' of github.com:MTES-MCT/mobilic-api into feat/control-bug-register
+2026-09-30T16:02:59+02:00 - 834f9c5a - donia benharara : fix(conflicts): fix conflicts
+2026-09-30T15:29:37+02:00 - 45acf14a - Doniaab : Merge branch 'master' into feat/control-bug-register
+2026-09-30T15:15:49+02:00 - d8b44913 - donia benharara : feat(missions): add period to fetch deleted missions
+2026-09-30T14:52:17+02:00 - 347c9cf7 - Redwane Zafari : Merge pull request #761 from MTES-MCT/perf/admin-reduce-company-details-fetches
+2026-09-30T11:02:42+02:00 - ac9e65fb - Redwane Zafari : Merge branch 'master' into perf/admin-reduce-company-details-fetches
+2026-09-25T09:42:56+02:00 - 9cc9ca39 - MrJimmyChevallier : feat(export): add control format with infraction columns and control tab
+2026-09-24T15:29:18+02:00 - 33008fb8 - Gaspard "Sarp" Lonchampt : Merge pull request #826 from MTES-MCT/prod
+2026-09-24T14:58:17+02:00 - 1ffe0980 - Gaspard "Sarp" Lonchampt : Merge pull request #825 from MTES-MCT/fix/exports_dedicated_worker_queue
+2026-09-24T14:19:51+02:00 - e02ccbb3 - Gaspard Lonchampt : test(export): assert async_export_excel routed to dedicated queue
+2026-09-24T14:19:51+02:00 - 81b62f50 - Gaspard Lonchampt : fix(export): route heavy exports to a dedicated Celery queue and worker
+2026-09-24T13:28:28+02:00 - ced793cb - Gaspard "Sarp" Lonchampt : Merge pull request #824 from MTES-MCT/prod
+2026-09-24T12:40:29+02:00 - d254c567 - Gaspard "Sarp" Lonchampt : Merge pull request #823 from MTES-MCT/hotfix/export_create_wip_row_at_request
+2026-09-24T12:28:53+02:00 - a83f6da6 - Gaspard Lonchampt : fix(exports): make the export task replay-safe and time-bounded
+2026-09-24T11:57:09+02:00 - 520b1eed - Gaspard Lonchampt : fix(exports): create WIP export row at request time
+2026-09-24T11:57:09+02:00 - 23f07883 - Gaspard Lonchampt : test(exports): expect WIP export row created at request time
+2026-09-24T01:48:10+02:00 - 89b2fbbb - Gaspard "Sarp" Lonchampt : Merge pull request #821 from MTES-MCT/prod
+2026-09-24T01:36:46+02:00 - b2380ff1 - Gaspard "Sarp" Lonchampt : Merge pull request #820 from MTES-MCT/hotfix/user_email_policy_without_actor
+2026-09-24T01:28:21+02:00 - c4e16927 - Gaspard Lonchampt : test(auth): cover user email resolution for API-key clients
+2026-09-24T01:28:21+02:00 - 4251d998 - Gaspard Lonchampt : fix(auth): keep user email readable by API-key clients within their companies
+2026-09-24T00:15:49+02:00 - d05bbb85 - Gaspard "Sarp" Lonchampt : Merge pull request #819 from MTES-MCT/master
+2026-09-24T00:03:06+02:00 - 07d18e73 - Gaspard "Sarp" Lonchampt : Merge pull request #818 from MTES-MCT/chore/upgrade_celery_5_6
+2026-09-23T23:55:30+02:00 - d1207c13 - Gaspard "Sarp" Lonchampt : Merge pull request #817 from MTES-MCT/fix/business_lookup_ambiguous_transport_type
+2026-09-23T23:53:39+02:00 - 23cc4513 - Gaspard Lonchampt : perf(worker): bound in-memory ETA tasks with worker_eta_task_limit
+2026-09-23T23:38:48+02:00 - 8e950f30 - Gaspard Lonchampt : fix(business): share business lookup and reject ambiguous transport type
+2026-09-23T23:38:47+02:00 - 0ad1789f - Gaspard Lonchampt : test(business): cover ambiguous and unknown business lookup by transport type
+2026-09-23T23:38:46+02:00 - b3db2b1e - Gaspard Lonchampt : refactor(tests): drop duplicated business seed helpers
+2026-09-23T23:17:46+02:00 - f9145daa - Gaspard Lonchampt : chore(deps): upgrade celery to 5.6 and redis-py to 6.4
+2026-09-23T21:30:17+02:00 - ae0e973e - Gaspard "Sarp" Lonchampt : Merge pull request #803 from MTES-MCT/fix/anonymization_controller_null_user_id
+2026-09-23T20:30:11+02:00 - ae1afbc8 - Gaspard Lonchampt : refactor(tests): split anonymization privacy_hardening tests by topic
+2026-09-23T20:30:11+02:00 - 0680e3df - Gaspard Lonchampt : fix(anonymization): allow null user_id on anon_controller_control
+2026-09-23T20:16:21+02:00 - 3a0458ef - Gaspard "Sarp" Lonchampt : Merge pull request #815 from MTES-MCT/master
+2026-09-23T19:23:11+02:00 - 9cd8db44 - Gaspard "Sarp" Lonchampt : Merge pull request #816 from MTES-MCT/prod
+2026-09-23T19:04:53+02:00 - cdc991be - Gaspard "Sarp" Lonchampt : Merge pull request #810 from MTES-MCT/fix/history-non-dict-activity-context
+2026-09-23T15:33:10+02:00 - 81e24ea4 - Gaspard "Sarp" Lonchampt : Merge pull request #813 from MTES-MCT/fix/pending_invite_email_field_authorization
+2026-09-23T15:23:26+02:00 - cbdeb398 - Gaspard Lonchampt : fix(auth): stop pending invites exposing invitee account email
+2026-09-23T15:10:02+02:00 - 27267b9f - Gaspard Lonchampt : test(auth): cover pending-invite email exposure on admin query
+2026-09-22T19:17:52+02:00 - e264d9a9 - Gaspard "Sarp" Lonchampt : Merge pull request #795 from MTES-MCT/fix/user_pii_field_authorization
+2026-09-22T19:03:09+02:00 - d3ca7965 - Gaspard Lonchampt : fix(auth): restrict user PII fields to match front-end access
+2026-09-22T19:03:08+02:00 - 70fc56e7 - Gaspard Lonchampt : test(auth): field-level authorization on user PII
+2026-09-22T16:44:03+02:00 - 86c81154 - donia benharara : fix(control): remove test guard
+2026-09-22T16:36:49+02:00 - c4382b87 - Gaspard "Sarp" Lonchampt : Merge pull request #789 from MTES-MCT/chore/parallelize_ci_tests
+2026-09-22T16:36:36+02:00 - 561b1493 - Gaspard "Sarp" Lonchampt : Merge pull request #804 from MTES-MCT/perf/worker_recycle_child
+2026-09-22T16:13:24+02:00 - 5d84c091 - donia benharara : fix(control): remove cron to end incident, incident description is private
+2026-09-22T11:13:09+02:00 - ce5aa149 - MrJimmyChevallier : Merge pull request #811 from MTES-MCT/fix/weekly-thresholds-per-employee
+2026-09-21T22:48:48+02:00 - 2ad41a06 - MrJimmyChevallier : fix(admin): resolve weekly thresholds per employee business type
+2026-09-21T17:19:38+02:00 - dbf36b63 - Redwane : fix(history): guard activity context lookups against non-dict values
+2026-09-21T10:55:47+02:00 - d4c8eba9 - Redwane : fix: update calendar link in post-registration email
+2026-09-18T13:27:57+02:00 - e24821de - Gaspard Lonchampt : perf(worker): recycle celery child to bound worker memory
+2026-09-17T19:02:25+02:00 - 603feec0 - Redwane : feat(migrations): refresh regulation check variables for moving transport type
 2026-09-17T19:02:25+02:00 - 603feec - Redwane : feat(migrations): refresh regulation check variables for moving transport type
+2026-09-17T15:13:24+02:00 - 52cda90d - MrJimmyChevallier : Merge pull request #785 from MTES-MCT/feat/weekly-rest-totals-and-thresholds
 2026-09-17T15:13:24+02:00 - 52cda90 - MrJimmyChevallier : Merge pull request #785 from MTES-MCT/feat/weekly-rest-totals-and-thresholds
+2026-09-17T15:12:35+02:00 - 902c44eb - MrJimmyChevallier : Merge branch 'master' into feat/weekly-rest-totals-and-thresholds
 2026-09-17T15:12:35+02:00 - 902c44e - MrJimmyChevallier : Merge branch 'master' into feat/weekly-rest-totals-and-thresholds
+2026-09-17T14:59:18+02:00 - f2c02b69 - Redwane : fix(work-days): stop pagination cursor from crossing the requested start date
+2026-09-17T12:58:48+02:00 - e39ee93a - Gaspard Lonchampt : perf(work-days): make mission.history computation opt-in
+2026-09-17T12:58:34+02:00 - e7aa54be - Gaspard Lonchampt : test(work-days): cover opt-in computation of mission.history
+2026-09-17T11:17:42+02:00 - 9861038c - Redwane Zafari : Merge pull request #799 from MTES-MCT/fix/respect-des-seuils-day-link
 2026-09-17T11:17:42+02:00 - 9861038 - Redwane Zafari : Merge pull request #799 from MTES-MCT/fix/respect-des-seuils-day-link
+2026-09-16T19:42:16+02:00 - ed7cff35 - Redwane Zafari : Merge pull request #800 from MTES-MCT/feat/activity-add-moving-type
 2026-09-16T19:42:16+02:00 - ed7cff3 - Redwane Zafari : Merge pull request #800 from MTES-MCT/feat/activity-add-moving-type
+2026-09-16T19:38:39+02:00 - f16e36ef - Redwane : fix(employment): disambiguate business lookup by transport type
 2026-09-16T19:38:39+02:00 - f16e36e - Redwane : fix(employment): disambiguate business lookup by transport type
+2026-09-16T19:12:03+02:00 - 366ae3ec - Redwane : fix(regulatory-alerts): scope alerts to companies with matching activity
 2026-09-16T19:12:03+02:00 - 366ae3e - Redwane : fix(regulatory-alerts): scope alerts to companies with matching activity
+2026-09-16T11:18:58+02:00 - 8ca1ce01 - donia benharara : feat(control): update forced end time visibility and edit incident as admin
+2026-09-16T09:58:33+02:00 - e698c34c - donia benharara : feat(control): add incident in db with history
+2026-09-15T12:02:46+02:00 - 0f97d566 - Redwane : refactor(control-bulletin): address SonarCloud findings on location parsing
+2026-09-15T11:57:26+02:00 - 5096c472 - Redwane : refactor(control-bulletin): split _extract_postal_code to reduce cognitive complexity
+2026-09-15T11:31:47+02:00 - 90cb1937 - Redwane : fix(migrations): rebase moving-transport-type migration onto push-notif head
 2026-09-15T11:31:47+02:00 - 90cb193 - Redwane : fix(migrations): rebase moving-transport-type migration onto push-notif head
+2026-09-14T18:25:03+02:00 - 1f57f880 - Redwane Zafari : Merge pull request #782 from MTES-MCT/feat/activity-add-moving-type
 2026-09-14T18:25:03+02:00 - 1f57f88 - Redwane Zafari : Merge pull request #782 from MTES-MCT/feat/activity-add-moving-type
+2026-09-14T18:08:56+02:00 - d9ce72c8 - Redwane Zafari : Merge pull request #787 from MTES-MCT/fix/inactive-user-detection-manager-dashboard
 2026-09-14T18:08:56+02:00 - d9ce72c - Redwane Zafari : Merge pull request #787 from MTES-MCT/fix/inactive-user-detection-manager-dashboard
+2026-09-14T17:59:34+02:00 - 16fd1337 - Redwane : fix(admin): count and flag employees who never used Mobilic as inactive
 2026-09-14T17:59:34+02:00 - 16fd133 - Redwane : fix(admin): count and flag employees who never used Mobilic as inactive
+2026-09-14T17:57:47+02:00 - d73c9912 - Redwane : style(tests): apply black formatting to test_employment.py
 2026-09-14T17:57:47+02:00 - d73c991 - Redwane : style(tests): apply black formatting to test_employment.py
+2026-09-11T17:44:47+02:00 - fde1d9ad - Gaspard "Sarp" Lonchampt : Merge pull request #794 from MTES-MCT/prod
 2026-09-11T17:44:47+02:00 - fde1d9a - Gaspard "Sarp" Lonchampt : Merge pull request #794 from MTES-MCT/prod
+2026-09-11T16:59:07+02:00 - dee245e4 - Gaspard "Sarp" Lonchampt : Merge pull request #793 from MTES-MCT/fix/worker_oom_break_alert
 2026-09-11T16:59:07+02:00 - dee245e - Gaspard "Sarp" Lonchampt : Merge pull request #793 from MTES-MCT/fix/worker_oom_break_alert
+2026-09-11T15:50:34+02:00 - 92bb6911 - Gaspard Lonchampt : fix(break-alert): dedupe task scheduling to stop worker OOM
 2026-09-11T15:50:34+02:00 - 92bb691 - Gaspard Lonchampt : fix(break-alert): dedupe task scheduling to stop worker OOM
+2026-09-09T20:39:26+02:00 - 5b03f47d - Redwane Zafari : Merge pull request #792 from MTES-MCT/master
 2026-09-09T20:39:26+02:00 - 5b03f47 - Redwane Zafari : Merge pull request #792 from MTES-MCT/master
+2026-09-09T12:42:50+02:00 - 8d86d6ef - Redwane : fix(migrations): rebase moving-transport-type migration onto current head
 2026-09-09T12:42:50+02:00 - 8d86d6e - Redwane : fix(migrations): rebase moving-transport-type migration onto current head
+2026-09-09T12:16:39+02:00 - b9123026 - Redwane : fix(company): require transport_type when updating business_type
 2026-09-09T12:16:39+02:00 - b912302 - Redwane : fix(company): require transport_type when updating business_type
+2026-09-09T11:55:47+02:00 - 9bc1de89 - Redwane : refactor(company): reduce cognitive complexity of sign_up_company
 2026-09-09T11:55:47+02:00 - 9bc1de8 - Redwane : refactor(company): reduce cognitive complexity of sign_up_company
+2026-09-08T13:31:44+02:00 - ff9436b2 - MrJimmyChevallier : Merge pull request #791 from MTES-MCT/fix/break-alert-backdated-ongoing
 2026-09-08T13:31:44+02:00 - ff9436b - MrJimmyChevallier : Merge pull request #791 from MTES-MCT/fix/break-alert-backdated-ongoing
+2026-09-08T13:14:09+02:00 - 55488787 - MrJimmyChevallier : fix(break-alert): trigger alert for backdated ongoing activities
 2026-09-08T13:14:09+02:00 - 5548878 - MrJimmyChevallier : fix(break-alert): trigger alert for backdated ongoing activities
+2026-09-07T18:50:03+02:00 - 178d77cd - Gaspard "Sarp" Lonchampt : Merge pull request #790 from MTES-MCT/prod
 2026-09-07T18:50:03+02:00 - 178d77c - Gaspard "Sarp" Lonchampt : Merge pull request #790 from MTES-MCT/prod
+2026-09-07T18:41:42+02:00 - 9e851b58 - Gaspard Lonchampt : chore(ci): remove deprecated Scalingo SSH deploy job
+2026-09-07T18:22:41+02:00 - 560b261e - Gaspard Lonchampt : chore(ci): split test suite across 4 parallel containers
+2026-09-07T17:40:23+02:00 - 8e26169b - Gaspard "Sarp" Lonchampt : Merge pull request #788 from MTES-MCT/hotfix/graphql_query_field_limit
 2026-09-07T17:40:23+02:00 - 8e26169 - Gaspard "Sarp" Lonchampt : Merge pull request #788 from MTES-MCT/hotfix/graphql_query_field_limit
+2026-09-07T17:02:09+02:00 - 5d9d8d93 - Gaspard Lonchampt : fix(security): stop BOLA PII leak via adminedCompanies(companyIds)
 2026-09-07T17:02:09+02:00 - 5d9d8d9 - Gaspard Lonchampt : fix(security): stop BOLA PII leak via adminedCompanies(companyIds)
+2026-09-07T17:00:16+02:00 - 0f0e48ba - donia benharara : fix(tchap): enable override of tchap homeserver
 2026-09-07T17:00:16+02:00 - 0f0e48b - donia benharara : fix(tchap): enable override of tchap homeserver
+2026-09-07T16:11:06+02:00 - 098b55d2 - Gaspard Lonchampt : fix(graphql): guard against query-based DoS (field count and depth)
 2026-09-07T16:11:06+02:00 - 098b55d - Gaspard Lonchampt : fix(graphql): guard against query-based DoS (field count and depth)
+2026-09-03T13:55:13+02:00 - 5377e3d6 - MrJimmyChevallier : Merge pull request #762 from MTES-MCT/feat/push-notifications
 2026-09-03T13:55:13+02:00 - 5377e3d - MrJimmyChevallier : Merge pull request #762 from MTES-MCT/feat/push-notifications
+2026-09-03T12:21:58+02:00 - 72663b83 - MrJimmyChevallier : fix(migrations): merge push notifications and master heads (c2d3e4f56789)
 2026-09-03T12:21:58+02:00 - 72663b8 - MrJimmyChevallier : fix(migrations): merge push notifications and master heads (c2d3e4f56789)
+2026-09-03T12:00:51+02:00 - 4e0d4400 - MrJimmyChevallier : fix(migrations): fix merge migration to include both heads
 2026-09-03T12:00:51+02:00 - 4e0d440 - MrJimmyChevallier : fix(migrations): fix merge migration to include both heads
+2026-09-03T11:33:57+02:00 - 5e4251c8 - MrJimmyChevallier : fix(migrations): merge push notifications and master migration heads
 2026-09-03T11:33:57+02:00 - 5e4251c - MrJimmyChevallier : fix(migrations): merge push notifications and master migration heads
+2026-09-03T11:18:19+02:00 - 2a5aebdd - MrJimmyChevallier : Merge branch 'master' into feat/push-notifications
 2026-09-03T11:18:19+02:00 - 2a5aebd - MrJimmyChevallier : Merge branch 'master' into feat/push-notifications
+2026-09-03T10:02:28+02:00 - 2f595eec - Doniaab : Merge pull request #763 from MTES-MCT/feat/ensure-workflow-or-suspend
 2026-09-03T10:02:28+02:00 - 2f595ee - Doniaab : Merge pull request #763 from MTES-MCT/feat/ensure-workflow-or-suspend
+2026-09-02T14:30:44+02:00 - 2ddc4740 - donia benharara : fix(editeur tiers): fix conflicts
 2026-09-02T14:30:44+02:00 - 2ddc474 - donia benharara : fix(editeur tiers): fix conflicts
+2026-09-02T10:20:47+02:00 - cae8ae9a - MrJimmyChevallier : Merge pull request #776 from MTES-MCT/fix/activity-label-history-text
 2026-09-02T10:20:47+02:00 - cae8ae9 - MrJimmyChevallier : Merge pull request #776 from MTES-MCT/fix/activity-label-history-text
+2026-09-02T09:06:29+02:00 - 6cb2d973 - MrJimmyChevallier : Merge branch 'master' into fix/activity-label-history-text
 2026-09-02T09:06:29+02:00 - 6cb2d97 - MrJimmyChevallier : Merge branch 'master' into fix/activity-label-history-text
+2026-09-01T21:01:24+02:00 - d4ac018e - Gaspard "Sarp" Lonchampt : Merge pull request #786 from MTES-MCT/master
 2026-09-01T21:01:24+02:00 - d4ac018 - Gaspard "Sarp" Lonchampt : Merge pull request #786 from MTES-MCT/master
+2026-09-01T16:45:19+02:00 - ff36de1a - MrJimmyChevallier : feat(api): expose weekly regulatory thresholds on CompanyOutput
 2026-09-01T16:45:19+02:00 - ff36de1 - MrJimmyChevallier : feat(api): expose weekly regulatory thresholds on CompanyOutput
+2026-09-01T16:15:37+02:00 - 9afed24d - Redwane Zafari : Merge pull request #774 from MTES-MCT/fix/missions-deleted-page-info-null
 2026-09-01T16:15:37+02:00 - 9afed24 - Redwane Zafari : Merge pull request #774 from MTES-MCT/fix/missions-deleted-page-info-null
+2026-09-01T16:14:02+02:00 - 3d355ab9 - Redwane Zafari : Merge branch 'master' into fix/missions-deleted-page-info-null
 2026-09-01T16:14:02+02:00 - 3d355ab - Redwane Zafari : Merge branch 'master' into fix/missions-deleted-page-info-null
+2026-09-01T16:11:41+02:00 - cc1a8445 - Redwane : fix(email): add spacing before "Cordialement" in account activation email
 2026-09-01T16:11:41+02:00 - cc1a844 - Redwane : fix(email): add spacing before "Cordialement" in account activation email
+2026-09-01T15:42:10+02:00 - f89711dc - Redwane : fix(cron): merge load_company_stats and purge_support_action_logs jobs
 2026-09-01T15:42:10+02:00 - f89711d - Redwane : fix(cron): merge load_company_stats and purge_support_action_logs jobs
+2026-09-01T15:24:45+02:00 - 1eaa076f - Gaspard "Sarp" Lonchampt : Merge pull request #784 from MTES-MCT/prod
 2026-09-01T15:24:45+02:00 - 1eaa076 - Gaspard "Sarp" Lonchampt : Merge pull request #784 from MTES-MCT/prod
+2026-09-01T14:53:07+02:00 - fe99d91c - Redwane : chore: trigger CI re-run after removing 'actions' from CodeQL default setup
+2026-09-01T14:50:58+02:00 - 95d857e6 - Redwane : chore: trigger CI re-run
+2026-09-01T14:22:06+02:00 - 902e9a7e - Gaspard "Sarp" Lonchampt : Merge pull request #783 from MTES-MCT/fix/mailjet_template_variable_ssti
 2026-09-01T14:22:06+02:00 - 902e9a7 - Gaspard "Sarp" Lonchampt : Merge pull request #783 from MTES-MCT/fix/mailjet_template_variable_ssti
+2026-09-01T14:06:44+02:00 - 5663f270 - Gaspard Lonchampt : fix(mail): strip template delimiters from Mailjet variables
 2026-09-01T14:06:44+02:00 - 5663f27 - Gaspard Lonchampt : fix(mail): strip template delimiters from Mailjet variables
+2026-09-01T12:22:47+02:00 - dc8c1554 - Redwane : refactor(control-bulletin): extract helper functions from get_location_info_from_bulletin to reduce cognitive complexity
+2026-09-01T12:12:57+02:00 - 59c278ac - Redwane : fix(overseas-territories): add Pacific timezone support for 98xxx postal codes (Polynésie française, Nouvelle-Calédonie, Wallis-et-Futuna)
+2026-09-01T11:35:47+02:00 - 3bae2513 - Redwane : refactor(greco): rename departement_code to department_code for naming consistency
+2026-09-01T11:32:01+02:00 - 182e3a7e - Redwane : fix(control-bulletin): use startswith instead of slice comparison for DROM-COM postal code check
+2026-09-01T11:19:20+02:00 - ee2f1d4b - Redwane : fix: update expired static fallback webinar date in Livestorm helper
+2026-08-31T18:48:47+02:00 - 1a583ba0 - Redwane Zafari : Merge branch 'master' into feat/activity-add-moving-type
 2026-08-31T18:48:47+02:00 - 1a583ba - Redwane Zafari : Merge branch 'master' into feat/activity-add-moving-type
+2026-08-31T18:22:57+02:00 - 46a53608 - donia benharara : fix(editeur tiers): fix tests
 2026-08-31T18:22:57+02:00 - 46a5360 - donia benharara : fix(editeur tiers): fix tests
+2026-08-31T18:13:27+02:00 - de6650fd - Redwane Zafari : Merge pull request #769 from MTES-MCT/feat/employee-account-creation-email-merge
 2026-08-31T18:13:27+02:00 - de6650f - Redwane Zafari : Merge pull request #769 from MTES-MCT/feat/employee-account-creation-email-merge
+2026-08-31T17:50:26+02:00 - ffa85b47 - donia benharara : fix(editeur tiers): fix migration down revision
 2026-08-31T17:50:26+02:00 - ffa85b4 - donia benharara : fix(editeur tiers): fix migration down revision
+2026-08-31T17:24:13+02:00 - 719e5fa3 - donia benharara : feat(editeur tiers): fix merge conflicts
 2026-08-31T17:24:13+02:00 - 719e5fa - donia benharara : feat(editeur tiers): fix merge conflicts
+2026-08-31T17:14:15+02:00 - 5c2c7e4d - donia benharara : feat(editeur tiers): alerts state and software users for calculations
 2026-08-31T17:14:15+02:00 - 5c2c7e4 - donia benharara : feat(editeur tiers): alerts state and software users for calculations
+2026-08-28T12:27:25+02:00 - d24aa461 - MrJimmyChevallier : fix: address review feedback on break alert, campaign robustness and push optimization
 2026-08-28T12:27:25+02:00 - d24aa46 - MrJimmyChevallier : fix: address review feedback on break alert, campaign robustness and push optimization
+2026-08-27T13:47:27+02:00 - ff0e7752 - MrJimmyChevallier : fix(history): unify allow_other_task default to true, add label tests
 2026-08-27T13:47:27+02:00 - ff0e775 - MrJimmyChevallier : fix(history): unify allow_other_task default to true, add label tests
+2026-08-27T11:27:01+02:00 - f469ddaa - Redwane : fix: update expired static fallback webinar date in Livestorm helper
+2026-08-26T23:51:19+02:00 - 61859f03 - Gaspard "Sarp" Lonchampt : Merge pull request #778 from MTES-MCT/master
 2026-08-26T23:51:19+02:00 - 61859f0 - Gaspard "Sarp" Lonchampt : Merge pull request #778 from MTES-MCT/master
+2026-08-26T22:20:05+02:00 - 98fdc88c - Gaspard "Sarp" Lonchampt : Merge pull request #767 from MTES-MCT/fix/anonymization_detach_employments
 2026-08-26T22:20:05+02:00 - 98fdc88 - Gaspard "Sarp" Lonchampt : Merge pull request #767 from MTES-MCT/fix/anonymization_detach_employments
+2026-08-26T21:54:22+02:00 - 6fb4e23a - Gaspard Lonchampt : fix(anonymization): detach employments of anonymized users
 2026-08-26T21:54:22+02:00 - 6fb4e23 - Gaspard Lonchampt : fix(anonymization): detach employments of anonymized users
+2026-08-26T21:54:19+02:00 - 025b6aa9 - Gaspard "Sarp" Lonchampt : Merge pull request #760 from MTES-MCT/feat/anonymization_privacy_hardening
 2026-08-26T21:54:19+02:00 - 025b6aa - Gaspard "Sarp" Lonchampt : Merge pull request #760 from MTES-MCT/feat/anonymization_privacy_hardening
+2026-08-26T19:35:23+02:00 - c070ae84 - Gaspard Lonchampt : feat(anonymization): privacy hardening step 2 (WP29 alignment)
 2026-08-26T19:35:23+02:00 - c070ae8 - Gaspard Lonchampt : feat(anonymization): privacy hardening step 2 (WP29 alignment)
+2026-08-26T19:35:19+02:00 - c1e25028 - Gaspard "Sarp" Lonchampt : Merge pull request #746 from MTES-MCT/fix/anonymization_coverage_gaps
 2026-08-26T19:35:19+02:00 - c1e2502 - Gaspard "Sarp" Lonchampt : Merge pull request #746 from MTES-MCT/fix/anonymization_coverage_gaps
+2026-08-26T19:12:43+02:00 - 64c7bf5a - Gaspard Lonchampt : fix(anonymization): close pipeline coverage gaps
 2026-08-26T19:12:43+02:00 - 64c7bf5 - Gaspard Lonchampt : fix(anonymization): close pipeline coverage gaps
+2026-08-26T18:57:08+02:00 - c5eb00c5 - Gaspard "Sarp" Lonchampt : Merge pull request #764 from MTES-MCT/perf/dashboard_pending_validations_cache
 2026-08-26T18:57:08+02:00 - c5eb00c - Gaspard "Sarp" Lonchampt : Merge pull request #764 from MTES-MCT/perf/dashboard_pending_validations_cache
+2026-08-26T18:53:31+02:00 - 8e37a646 - Gaspard "Sarp" Lonchampt : Merge pull request #745 from MTES-MCT/perf/anonymization_batch_job
 2026-08-26T18:53:31+02:00 - 8e37a64 - Gaspard "Sarp" Lonchampt : Merge pull request #745 from MTES-MCT/perf/anonymization_batch_job
+2026-08-26T18:00:33+02:00 - 6a5e882e - Redwane : perf(company): skip unattached-employment query when user_ids is set
+2026-08-26T16:07:10+02:00 - d35fe144 - Gaspard Lonchampt : perf(anonymization): set-based batch job with committed batches
 2026-08-26T16:07:10+02:00 - d35fe14 - Gaspard Lonchampt : perf(anonymization): set-based batch job with committed batches
+2026-08-26T15:52:29+02:00 - 7ae4d627 - Gaspard Lonchampt : fix(dashboard): invalidate pending validations cache on mission end
 2026-08-26T15:52:29+02:00 - 7ae4d62 - Gaspard Lonchampt : fix(dashboard): invalidate pending validations cache on mission end
+2026-08-26T15:52:28+02:00 - bb1210dc - Gaspard Lonchampt : refactor(redis): extract redis client to app/helpers/redis
 2026-08-26T15:52:28+02:00 - bb1210d - Gaspard Lonchampt : refactor(redis): extract redis client to app/helpers/redis
+2026-08-26T15:52:28+02:00 - abf1ada1 - Gaspard Lonchampt : perf(dashboard): cache _count_pending_validations in redis (5min TTL)
 2026-08-26T15:52:28+02:00 - abf1ada - Gaspard Lonchampt : perf(dashboard): cache _count_pending_validations in redis (5min TTL)
+2026-08-26T14:59:09+02:00 - b965b78e - Gaspard "Sarp" Lonchampt : Merge pull request #755 from MTES-MCT/fix/brevo_sanitize_map_key_symmetry
 2026-08-26T14:59:09+02:00 - b965b78 - Gaspard "Sarp" Lonchampt : Merge pull request #755 from MTES-MCT/fix/brevo_sanitize_map_key_symmetry
+2026-08-26T14:58:38+02:00 - 4a85b53b - Gaspard "Sarp" Lonchampt : Merge pull request #765 from MTES-MCT/fix/siren_api_pagination
 2026-08-26T14:58:38+02:00 - 4a85b53 - Gaspard "Sarp" Lonchampt : Merge pull request #765 from MTES-MCT/fix/siren_api_pagination
+2026-08-26T14:58:00+02:00 - 402225e0 - Gaspard "Sarp" Lonchampt : Merge pull request #754 from MTES-MCT/fix/missions_deleted_page_info
 2026-08-26T14:58:00+02:00 - 402225e - Gaspard "Sarp" Lonchampt : Merge pull request #754 from MTES-MCT/fix/missions_deleted_page_info
+2026-08-26T14:57:40+02:00 - a3211f08 - Gaspard "Sarp" Lonchampt : Merge pull request #771 from MTES-MCT/fix/hide_anonymized_employments
 2026-08-26T14:57:40+02:00 - a3211f0 - Gaspard "Sarp" Lonchampt : Merge pull request #771 from MTES-MCT/fix/hide_anonymized_employments
+2026-08-26T14:57:18+02:00 - 818fd0e0 - Gaspard "Sarp" Lonchampt : Merge pull request #757 from MTES-MCT/fix/refresh_token_rotation
 2026-08-26T14:57:18+02:00 - 818fd0e - Gaspard "Sarp" Lonchampt : Merge pull request #757 from MTES-MCT/fix/refresh_token_rotation
+2026-08-25T19:44:28+02:00 - faad2ff3 - Redwane Zafari : Merge pull request #777 from MTES-MCT/master
 2026-08-25T19:44:28+02:00 - faad2ff - Redwane Zafari : Merge pull request #777 from MTES-MCT/master
+2026-08-25T19:27:21+02:00 - ff3ba5cc - Redwane : fix: update expired static fallback webinar date in Livestorm helper
 2026-08-25T19:27:21+02:00 - ff3ba5c - Redwane : fix: update expired static fallback webinar date in Livestorm helper
+2026-08-25T18:41:23+02:00 - ce732e27 - Redwane Zafari : Merge branch 'prod' into master
 2026-08-25T18:41:23+02:00 - ce732e2 - Redwane Zafari : Merge branch 'prod' into master
+2026-08-24T15:26:32+02:00 - ce3ffced - Redwane : fix(email): rephrase Android/iPhone tuto labels in account activation email
 2026-08-24T15:26:32+02:00 - ce3ffce - Redwane : fix(email): rephrase Android/iPhone tuto labels in account activation email
+2026-08-24T13:14:27+02:00 - 9478ace5 - MrJimmyChevallier : fix(history): use allow_other_task for activity labels in exports
 2026-08-24T13:14:27+02:00 - 9478ace - MrJimmyChevallier : fix(history): use allow_other_task for activity labels in exports
+2026-08-21T14:28:23+02:00 - 94ff9885 - MrJimmyChevallier : Merge pull request #775 from MTES-MCT/feat/split-activity
 2026-08-21T14:28:23+02:00 - 94ff988 - MrJimmyChevallier : Merge pull request #775 from MTES-MCT/feat/split-activity
+2026-08-21T12:03:35+02:00 - d4650fc8 - Redwane : fix(control-bulletin): update control_bulletin_email fot drivers
+2026-08-21T11:33:10+02:00 - b2568521 - MrJimmyChevallier : fix(history): replace deprecated utcfromtimestamp with timezone-aware conversion
 2026-08-21T11:33:10+02:00 - b256852 - MrJimmyChevallier : fix(history): replace deprecated utcfromtimestamp with timezone-aware conversion
+2026-08-21T11:13:50+02:00 - 5ed4b882 - MrJimmyChevallier : fix(split): display split as start time shift in PDF and XLS exports
 2026-08-21T11:13:50+02:00 - 5ed4b88 - MrJimmyChevallier : fix(split): display split as start time shift in PDF and XLS exports
+2026-08-20T16:25:42+02:00 - a0ea72ec - Redwane : fix(graphql): populate pageInfo in missionsDeleted resolver
 2026-08-20T16:25:42+02:00 - a0ea72e - Redwane : fix(graphql): populate pageInfo in missionsDeleted resolver
+2026-08-20T13:46:52+02:00 - 96be0ddc - Redwane : feat(control): allow sending the control bulletin to the driver
+2026-08-18T14:50:29+02:00 - 4ac16752 - Redwane : feat(control-header): derive control timezone from control's department when no user is linked
+2026-08-17T14:20:05+02:00 - 5d98f48e - MrJimmyChevallier : Merge pull request #770 from MTES-MCT/fix/scalingo_review_apps_boot
 2026-08-17T14:20:05+02:00 - 5d98f48 - MrJimmyChevallier : Merge pull request #770 from MTES-MCT/fix/scalingo_review_apps_boot
+2026-08-13T13:06:11+02:00 - 8f65c440 - Gaspard Lonchampt : fix(company): hide anonymized users from employments list
 2026-08-13T13:06:11+02:00 - 8f65c44 - Gaspard Lonchampt : fix(company): hide anonymized users from employments list
+2026-08-12T15:46:22+02:00 - 96ac8934 - Gaspard Lonchampt : fix(auth): atomic refresh token rotation with reuse grace period
 2026-08-12T15:46:22+02:00 - 96ac893 - Gaspard Lonchampt : fix(auth): atomic refresh token rotation with reuse grace period
+2026-08-12T14:56:30+02:00 - cb7a4f18 - Redwane Zafari : Merge pull request #753 from MTES-MCT/fix/mission-status-when-break
 2026-08-12T14:56:30+02:00 - cb7a4f1 - Redwane Zafari : Merge pull request #753 from MTES-MCT/fix/mission-status-when-break
+2026-08-12T14:54:23+02:00 - 2e1a9694 - Gaspard Lonchampt : fix(brevo): sanitize deal name in identifier map to match lookup
 2026-08-12T14:54:23+02:00 - 2e1a969 - Gaspard Lonchampt : fix(brevo): sanitize deal name in identifier map to match lookup
+2026-08-12T14:54:20+02:00 - 20e7f874 - Redwane Zafari : Merge pull request #752 from MTES-MCT/fix/brevo-duplication-deal
 2026-08-12T14:54:20+02:00 - 20e7f87 - Redwane Zafari : Merge pull request #752 from MTES-MCT/fix/brevo-duplication-deal
+2026-08-12T14:38:27+02:00 - a1b02420 - Redwane : test: add unit tests for BrevoApiClient.sanitize_company_name
 2026-08-12T14:38:27+02:00 - a1b0242 - Redwane : test: add unit tests for BrevoApiClient.sanitize_company_name
+2026-08-12T13:09:20+02:00 - b4befffe - Redwane : fix: handle typographic apostrophes in company names
 2026-08-12T13:09:20+02:00 - b4befff - Redwane : fix: handle typographic apostrophes in company names
+2026-08-12T12:51:23+02:00 - b20de153 - Gaspard Lonchampt : fix(ci): set explicit GITHUB_TOKEN permissions on review app workflow
 2026-08-12T12:51:23+02:00 - b20de15 - Gaspard Lonchampt : fix(ci): set explicit GITHUB_TOKEN permissions on review app workflow
+2026-08-12T12:51:23+02:00 - 3ff47500 - Gaspard Lonchampt : fix(review-app): make review apps actually boot and work end-to-end
 2026-08-12T12:51:23+02:00 - 3ff4750 - Gaspard Lonchampt : fix(review-app): make review apps actually boot and work end-to-end
+2026-08-11T15:47:06+02:00 - 4fff2b3f - Redwane : feat(email): merge worker onboarding email into account activation email
 2026-08-11T15:47:06+02:00 - 4fff2b3 - Redwane : feat(email): merge worker onboarding email into account activation email
+2026-08-11T15:28:19+02:00 - 217dc5bb - Redwane : feat(email): add Android/iOS install tuto GIFs for account activation email
 2026-08-11T15:28:19+02:00 - 217dc5b - Redwane : feat(email): add Android/iOS install tuto GIFs for account activation email
+2026-08-11T15:21:11+02:00 - 98a12df4 - MrJimmyChevallier : fix(config): add ReviewConfig for review app deployments
 2026-08-11T15:21:11+02:00 - 98a12df - MrJimmyChevallier : fix(config): add ReviewConfig for review app deployments
+2026-08-11T12:22:02+02:00 - 5cb422dd - Gaspard Lonchampt : fix(siren): paginate SIRENE API results with cursor
 2026-08-11T12:22:02+02:00 - 5cb422d - Gaspard Lonchampt : fix(siren): paginate SIRENE API results with cursor
+2026-08-11T11:29:39+02:00 - c46537da - MrJimmyChevallier : fix(ci): handle missing install file in Scalingo CLI setup
 2026-08-11T11:29:39+02:00 - c46537d - MrJimmyChevallier : fix(ci): handle missing install file in Scalingo CLI setup
+2026-08-11T11:02:36+02:00 - 9281b0e7 - MrJimmyChevallier : fix: sonarqube issues and merge migration heads
 2026-08-11T11:02:36+02:00 - 9281b0e - MrJimmyChevallier : fix: sonarqube issues and merge migration heads
+2026-08-11T10:33:24+02:00 - 7305b2ce - MrJimmyChevallier : chore: merge alembic migration heads
 2026-08-11T10:33:24+02:00 - 7305b2c - MrJimmyChevallier : chore: merge alembic migration heads
+2026-08-11T09:58:17+02:00 - 101c6cb3 - donia benharara : feat(interfacage): ensure workflow usage  or suspend
 2026-08-11T09:58:17+02:00 - 101c6cb - donia benharara : feat(interfacage): ensure workflow usage  or suspend
+2026-08-10T19:54:18+02:00 - 4cd51453 - MrJimmyChevallier : fix: use logging.exception in error handlers
 2026-08-10T19:54:18+02:00 - 4cd5145 - MrJimmyChevallier : fix: use logging.exception in error handlers
+2026-08-10T19:47:59+02:00 - 485275fa - MrJimmyChevallier : Merge branch 'feat/push-notifications' of https://github.com/MTES-MCT/mobilic-api into feat/push-notifications
 2026-08-10T19:47:59+02:00 - 485275f - MrJimmyChevallier : Merge branch 'feat/push-notifications' of https://github.com/MTES-MCT/mobilic-api into feat/push-notifications
+2026-08-10T19:47:54+02:00 - 1940b3a3 - MrJimmyChevallier : chore: update Pipfile.lock with pywebpush dependency
 2026-08-10T19:47:54+02:00 - 1940b3a - MrJimmyChevallier : chore: update Pipfile.lock with pywebpush dependency
+2026-08-10T19:27:22+02:00 - 6c85292e - MrJimmyChevallier : Merge branch 'master' into feat/push-notifications
 2026-08-10T19:27:22+02:00 - 6c85292 - MrJimmyChevallier : Merge branch 'master' into feat/push-notifications
+2026-08-10T18:55:51+02:00 - 8f9b9c7d - MrJimmyChevallier : feat(notifications): campaign system with click tracking and banner config
 2026-08-10T18:55:51+02:00 - 8f9b9c7 - MrJimmyChevallier : feat(notifications): campaign system with click tracking and banner config
+2026-08-10T10:43:58+02:00 - 43474202 - MrJimmyChevallier : Merge pull request #751 from MTES-MCT/feat/split-activity-modification-tag
 2026-08-10T10:43:58+02:00 - 4347420 - MrJimmyChevallier : Merge pull request #751 from MTES-MCT/feat/split-activity-modification-tag
+2026-08-07T16:22:41+02:00 - 13a0d30a - Redwane : perf(company): allow filtering employments by user id
+2026-08-06T00:09:08+02:00 - c35d505d - Gaspard "Sarp" Lonchampt : Merge pull request #758 from MTES-MCT/feat/mep-05082026
 2026-08-06T00:09:08+02:00 - c35d505 - Gaspard "Sarp" Lonchampt : Merge pull request #758 from MTES-MCT/feat/mep-05082026
+2026-08-05T17:07:10+02:00 - f476b203 - Gaspard Lonchampt : fix(ci): set explicit GITHUB_TOKEN permissions on review app workflow
 2026-08-05T17:07:10+02:00 - f476b20 - Gaspard Lonchampt : fix(ci): set explicit GITHUB_TOKEN permissions on review app workflow
+2026-08-05T16:22:17+02:00 - a27ec56e - Gaspard Lonchampt : fix(company): require company admin for adminRegulationComputationsByUserAndByDay
 2026-08-05T16:22:17+02:00 - a27ec56 - Gaspard Lonchampt : fix(company): require company admin for adminRegulationComputationsByUserAndByDay
+2026-08-05T16:22:17+02:00 - 7ec00d0b - Gaspard Lonchampt : perf(db): add regulation_computation user-leading index
 2026-08-05T16:22:17+02:00 - 7ec00d0 - Gaspard Lonchampt : perf(db): add regulation_computation user-leading index
+2026-08-05T16:22:17+02:00 - 407d6609 - Gaspard Lonchampt : perf(db): drop redundant and unused indexes
 2026-08-05T16:22:17+02:00 - 407d660 - Gaspard Lonchampt : perf(db): drop redundant and unused indexes
+2026-08-05T16:22:17+02:00 - 3996c2a7 - Gaspard Lonchampt : feat(ci): add Scalingo review app manifest and workflow
 2026-08-05T16:22:17+02:00 - 3996c2a - Gaspard Lonchampt : feat(ci): add Scalingo review app manifest and workflow
+2026-08-05T14:55:25+02:00 - 68294701 - MrJimmyChevallier : refactor(history): extract _is_split helper to deduplicate splitFrom checks
 2026-08-05T14:55:25+02:00 - 6829470 - MrJimmyChevallier : refactor(history): extract _is_split helper to deduplicate splitFrom checks
+2026-08-04T19:02:24+02:00 - 6fcdac66 - MrJimmyChevallier : feat(user): add bizdev role and push opt-in banner reset mutation
 2026-08-04T19:02:24+02:00 - 6fcdac6 - MrJimmyChevallier : feat(user): add bizdev role and push opt-in banner reset mutation
+2026-08-04T14:47:13+02:00 - 1ab0f0fb - Redwane : refactor(back): simplify ended user ids resolution in MissionOutput
 2026-08-04T14:47:13+02:00 - 1ab0f0f - Redwane : refactor(back): simplify ended user ids resolution in MissionOutput
+2026-08-04T09:47:11+02:00 - d5a57516 - Gaspard Lonchampt : fix(api): return valid pageInfo for company missionsDeleted
 2026-08-04T09:47:11+02:00 - d5a5751 - Gaspard Lonchampt : fix(api): return valid pageInfo for company missionsDeleted
+2026-08-03T15:29:19+02:00 - c51c8769 - MrJimmyChevallier : feat(api): add web push notifications and break alert system
 2026-08-03T15:29:19+02:00 - c51c876 - MrJimmyChevallier : feat(api): add web push notifications and break alert system
+2026-08-03T13:04:37+02:00 - 5f76f75e - Gaspard "Sarp" Lonchampt : Merge pull request #741 from MTES-MCT/fix/authz_admin_regulation_computations
 2026-08-03T13:04:37+02:00 - 5f76f75 - Gaspard "Sarp" Lonchampt : Merge pull request #741 from MTES-MCT/fix/authz_admin_regulation_computations
+2026-08-03T13:04:07+02:00 - 9e6abff4 - Gaspard "Sarp" Lonchampt : Merge pull request #740 from MTES-MCT/perf/optimize_index
 2026-08-03T13:04:07+02:00 - 9e6abff - Gaspard "Sarp" Lonchampt : Merge pull request #740 from MTES-MCT/perf/optimize_index
+2026-08-03T13:03:48+02:00 - 9344a087 - Gaspard "Sarp" Lonchampt : Merge pull request #737 from MTES-MCT/feat/scalingo_review_apps
 2026-08-03T13:03:48+02:00 - 9344a08 - Gaspard "Sarp" Lonchampt : Merge pull request #737 from MTES-MCT/feat/scalingo_review_apps
+2026-08-02T15:36:44+02:00 - 294fab64 - Redwane Zafari : Merge pull request #747 from MTES-MCT/fix/controller-export-time
 2026-08-02T15:36:44+02:00 - 294fab6 - Redwane Zafari : Merge pull request #747 from MTES-MCT/fix/controller-export-time
+2026-08-02T14:08:39+02:00 - bc5f0f5d - Redwane : feat(admin): keep mission status as ongoing until worker ends mission
 2026-08-02T14:08:39+02:00 - bc5f0f5 - Redwane : feat(admin): keep mission status as ongoing until worker ends mission
 2026-07-29T16:47:20+02:00 - 7c89d91 - Redwane : fix: fix migration issue with opened postrgres transaction. The transaction is no closed with db.session.remove()
 2026-07-29T16:09:46+02:00 - ff136d2 - MrJimmyChevallier : chore(db): merge detachment, dispute and impersonation migration branches
