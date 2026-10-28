@@ -141,21 +141,29 @@
 │   │   ├── src
 │   │   │   ├── _common
 │   │   │   │   ├── decorators
+│   │   │   │   │   ├── IsDateTimeWithinDecorator.ts
 │   │   │   │   │   ├── IsValidPasswordDecorator.ts
 │   │   │   │   │   ├── IsValidPhoneDecorator.ts
 │   │   │   │   │   ├── MatchFieldDecorator.ts
 │   │   │   │   │   ├── ValidateIfElseNullDecorator.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parse-pipes
+│   │   │   │   │   │   ├── ParseEtapeDemande.pipe.ts
 │   │   │   │   │   │   ├── ParseRegion.pipe.ts
+│   │   │   │   │   │   ├── ParseStrictInt.pipe.ts
 │   │   │   │   │   │   ├── ParseString.pipe.ts
+│   │   │   │   │   │   ├── ParseUsagerRef.pipe.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── parse-token.pipe.ts
 │   │   │   │   │   ├── tests
 │   │   │   │   │   │   ├── IsValidPasswordDecorator.spec.ts
-│   │   │   │   │   │   └── parse-token-pipe.spec.ts
+│   │   │   │   │   │   ├── parse-etape-demande-pipe.spec.ts
+│   │   │   │   │   │   ├── parse-strict-int-pipe.spec.ts
+│   │   │   │   │   │   ├── parse-token-pipe.spec.ts
+│   │   │   │   │   │   └── parse-usager-ref-pipe.spec.ts
 │   │   │   │   │   └── transformers
 │   │   │   │   │       ├── LowerCaseDecorator.ts
+│   │   │   │   │       ├── StrictIntDecorator.ts
 │   │   │   │   │       ├── StripTagsDecorator.ts
 │   │   │   │   │       ├── TrimDecorator.ts
 │   │   │   │   │       ├── TrimOrNullDecorator.ts
@@ -255,6 +263,7 @@
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
 │   │   │   │   ├── 1792413265843-analyse-familles-cohortes.ts
+│   │   │   │   ├── 1792661823057-add-support-session-reason.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -735,6 +744,7 @@
 │   │   │   │   │   │       └── portail-admin-login.controller.ts
 │   │   │   │   │   ├── decorators
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── isSuperAdminEmailDecorator.ts
 │   │   │   │   │   │   └── isValidGeographicDecorator.ts
 │   │   │   │   │   ├── dto
 │   │   │   │   │   │   ├── MetabaseStats.dto.ts
@@ -924,8 +934,10 @@
 │   │   │   │   │       └── structures-merge.types.ts
 │   │   │   │   ├── support-session
 │   │   │   │   │   ├── support-session-expiry-cleaner.service.ts
+│   │   │   │   │   ├── support-session-history.controller.ts
 │   │   │   │   │   ├── support-session.controller.spec.ts
 │   │   │   │   │   ├── support-session.controller.ts
+│   │   │   │   │   ├── support-session.dto.ts
 │   │   │   │   │   ├── support-session.module.ts
 │   │   │   │   │   └── support-session.service.ts
 │   │   │   │   └── users
@@ -1104,6 +1116,7 @@
 │   │   │   │   │   │   ├── create-note.dto.spec.ts
 │   │   │   │   │   │   └── entretien.dto.spec.ts
 │   │   │   │   │   ├── transfert.dto.ts
+│   │   │   │   │   ├── update-manage.dto.ts
 │   │   │   │   │   └── usager-doc
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       ├── patch-usager-doc.dto.ts
@@ -1128,6 +1141,7 @@
 │   │   │   │   │   └── usagersCreator.service.ts
 │   │   │   │   ├── usagers.module.ts
 │   │   │   │   └── utils
+│   │   │   │       ├── applyUsagerNameSearch.ts
 │   │   │   │       ├── cerfa
 │   │   │   │       │   ├── CerfaTypeDom.enum.ts
 │   │   │   │       │   ├── generate-cerfa-data.ts
@@ -1163,7 +1177,10 @@
 │   │   │   │       │   │   └── validateCustomDoc.spec.ts
 │   │   │   │       │   └── validateCustomDoc.ts
 │   │   │   │       ├── dataCleanerForStats.service.ts
+│   │   │   │       ├── filterUsagerHistorique.ts
 │   │   │   │       ├── index.ts
+│   │   │   │       ├── tests
+│   │   │   │       │   └── applyUsagerNameSearch.spec.ts
 │   │   │   │       ├── validate-search-field.ts
 │   │   │   │       └── xlsx-structure-usagers-renderer
 │   │   │   │           ├── StructureUsagerExport.type.ts
@@ -1520,11 +1537,14 @@
 │   │   │   ├── support-mode
 │   │   │   │   ├── constants
 │   │   │   │   │   ├── SUPPORT_ATTACHMENT_DURATION_MS.const.ts
+│   │   │   │   │   ├── SUPPORT_SESSION_LABELS.const.ts
+│   │   │   │   │   ├── SUPPORT_SESSION_REASON_LENGTH.const.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── interfaces
 │   │   │   │   │   ├── ActivateSupportSessionResponse.interface.ts
 │   │   │   │   │   ├── SupportSession.interface.ts
+│   │   │   │   │   ├── SupportSessionHistoryItem.interface.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── types
 │   │   │   │       ├── SupportSessionRevokedReason.type.ts
@@ -1690,6 +1710,7 @@
 │   │   │       │       └── index.ts
 │   │   │       ├── user-supervisor
 │   │   │       │   ├── constants
+│   │   │       │   │   ├── SUPER_ADMIN_EMAIL_DOMAINS.const.ts
 │   │   │       │   │   ├── USER_SUPERVISOR_ROLES_LABELS.const.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── index.ts
@@ -3296,6 +3317,15 @@
 │   │   │   │   │   │   │   └── structure.service.ts
 │   │   │   │   │   │   ├── structure-routing.module.ts
 │   │   │   │   │   │   └── structure.module.ts
+│   │   │   │   │   ├── support-sessions
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── support-sessions-list
+│   │   │   │   │   │   │       ├── support-sessions-list.component.html
+│   │   │   │   │   │   │       └── support-sessions-list.component.ts
+│   │   │   │   │   │   ├── services
+│   │   │   │   │   │   │   └── support-sessions.service.ts
+│   │   │   │   │   │   ├── support-sessions-routing.module.ts
+│   │   │   │   │   │   └── support-sessions.module.ts
 │   │   │   │   │   └── suspicious-activity
 │   │   │   │   │       ├── components
 │   │   │   │   │       │   ├── suspicious-activity-filters
@@ -3885,4 +3915,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-901 directories, 2986 files
+906 directories, 3011 files

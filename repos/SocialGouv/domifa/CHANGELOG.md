@@ -1,3 +1,97 @@
+## [2.289.1](https://github.com/SocialGouv/domifa/compare/v2.289.0...v2.289.1) (2026-10-27)
+
+
+### Bug Fixes
+
+* **deps:** bump vulnerable dependencies ([46d3b22](https://github.com/SocialGouv/domifa/commit/46d3b2255aee3498e5b279f0698a932a6c56c346))
+
+# [2.289.0](https://github.com/SocialGouv/domifa/compare/v2.288.6...v2.289.0) (2026-10-27)
+
+
+### Features
+
+* **backend:** allow super-admin-domifa creation for allowed email domains ([6fd25b3](https://github.com/SocialGouv/domifa/commit/6fd25b3593354715e388632934ae10a9418964c1))
+
+## [2.288.6](https://github.com/SocialGouv/domifa/compare/v2.288.5...v2.288.6) (2026-10-27)
+
+
+### Bug Fixes
+
+* **backend:** accept only plain integers in route params and DTOs ([972b413](https://github.com/SocialGouv/domifa/commit/972b4132ccb98da2fe9bcca278a978fc6d1a6b4e))
+* **backend:** parse user and structure ids as plain integers in DTOs and form data ([889b9b8](https://github.com/SocialGouv/domifa/commit/889b9b8956e11ce7632929d76efd5239291cc87d))
+* **backend:** send structureId to Metabase as a string ([ae353b6](https://github.com/SocialGouv/domifa/commit/ae353b6adae67c9d1a73c2528cb5748c1a43e1af))
+* **frontend:** drop the unused parseInt of userId in the reset password form ([edee84a](https://github.com/SocialGouv/domifa/commit/edee84ae0b8109244114929a7045a0d9ee704748))
+* **portail-admins:** drop the unused parseInt of userId in the reset password form ([3673200](https://github.com/SocialGouv/domifa/commit/36732009c646ad665017288411d1e32b127a956c))
+* **portail-stats:** drop the unused parseInt of userId in the reset password form ([43d612b](https://github.com/SocialGouv/domifa/commit/43d612b5973c0ed7d5037d8bab6a22955fcd5993))
+
+## [2.288.5](https://github.com/SocialGouv/domifa/compare/v2.288.4...v2.288.5) (2026-10-27)
+
+
+### Bug Fixes
+
+* **backend:** harden usagers endpoints ([d199230](https://github.com/SocialGouv/domifa/commit/d1992300d97115c5ea45e566d528840460ffc638))
+* **backend:** keep the ref in the search index when a decision has no customRef ([dac832a](https://github.com/SocialGouv/domifa/commit/dac832ab6308f7586f94e739d26ab273e747b0f1))
+* **backend:** only accept a full date-time with time zone as lastSync ([2825eec](https://github.com/SocialGouv/domifa/commit/2825eec30248878e2ea3f5c0fa23e05d2c07d5a5))
+* **backend:** reject a lastSync older than one day or in the future ([eccf0ad](https://github.com/SocialGouv/domifa/commit/eccf0ad92983a7b5e6ac01b51f6641747ead4f79))
+* **backend:** return the usager read from the database after a patch ([204b243](https://github.com/SocialGouv/domifa/commit/204b2430b0c20a3ae4316ebdc6c5ee2dc1bb2391))
+* **backend:** stop the usagers list from losing or hiding dossiers ([d25aec7](https://github.com/SocialGouv/domifa/commit/d25aec7785dbbb8411bb046b2690e40d4ff66bde))
+* **backend:** update then find in setDecision, test update-manage from lastSync ([e81f871](https://github.com/SocialGouv/domifa/commit/e81f871f34229f94b93b42fc47f62238afe745fe))
+* **frontend:** call stop-courrier in POST, hide contact edit to facteur and agent on the sms page ([17c3b08](https://github.com/SocialGouv/domifa/commit/17c3b088a660f13f982d44f4c2d7caf7bacec606))
+* **frontend:** keep the usagers list in sync with the server ([aeab6a7](https://github.com/SocialGouv/domifa/commit/aeab6a76859c54069cbec830536472d93758697d))
+* **frontend:** reload the usagers list when lastSync is rejected ([6a21da2](https://github.com/SocialGouv/domifa/commit/6a21da261eb137b03c758fa19346cae3ed87a7ba))
+* **frontend:** sync the usagers list from lastSync, refresh on tab return ([f21e772](https://github.com/SocialGouv/domifa/commit/f21e7729f01b99b2f5d42aa2476ea73393b0c4c2))
+
+## [2.288.4](https://github.com/SocialGouv/domifa/compare/v2.288.3...v2.288.4) (2026-10-26)
+
+
+### Bug Fixes
+
+* **frontend:** update news popup ([09b9872](https://github.com/SocialGouv/domifa/commit/09b98721f819bd542a59dafa8da8c6c2302d4039))
+
+## [2.288.3](https://github.com/SocialGouv/domifa/compare/v2.288.2...v2.288.3) (2026-10-26)
+
+
+### Bug Fixes
+
+* **frontend:** make SMS and portail settings forms read-only in support mode ([5e46677](https://github.com/SocialGouv/domifa/commit/5e46677935a32a04bffee0fe29729028de09cc16))
+
+## [2.288.2](https://github.com/SocialGouv/domifa/compare/v2.288.1...v2.288.2) (2026-10-26)
+
+
+### Bug Fixes
+
+* **frontend:** disable usager export buttons in support mode ([ca5848a](https://github.com/SocialGouv/domifa/commit/ca5848a886ba917cea0bd2b3a65c0473fabd6d90))
+
+## [2.288.1](https://github.com/SocialGouv/domifa/compare/v2.288.0...v2.288.1) (2026-10-26)
+
+
+### Bug Fixes
+
+* **back, front:** fix support mode and adding support sessions tabs ([fc9135f](https://github.com/SocialGouv/domifa/commit/fc9135fcd1a94c788fa0a6ddbb6245ccd4bcf1e8))
+
+# [2.288.0](https://github.com/SocialGouv/domifa/compare/v2.287.1...v2.288.0) (2026-10-26)
+
+
+### Features
+
+* **admin:** add login portal dropdown on admin login page ([a0f5c3c](https://github.com/SocialGouv/domifa/commit/a0f5c3c0124733b9f0926ca531452d9435efe00b))
+* **portail-stats,portail-usagers:** add login portal dropdown on login pages ([c9d550a](https://github.com/SocialGouv/domifa/commit/c9d550a135941cd7c54cc3ea855faa627847e96c))
+
+## [2.287.1](https://github.com/SocialGouv/domifa/compare/v2.287.0...v2.287.1) (2026-10-26)
+
+
+### Bug Fixes
+
+* **ci:** pin node to 24.22.1 for october 2026 security releases ([f3a1b86](https://github.com/SocialGouv/domifa/commit/f3a1b867b4e35aed9a43610dde889af12e92b72b))
+
+# [2.287.0](https://github.com/SocialGouv/domifa/compare/v2.286.0...v2.287.0) (2026-10-26)
+
+
+### Features
+
+* **backend, frontend:** contact email update ([ecd171d](https://github.com/SocialGouv/domifa/commit/ecd171d0c9d8205fc0791f04e8088d6116f53639))
+* **front:** update contact email secrets ([2542af6](https://github.com/SocialGouv/domifa/commit/2542af615391a44ce88d3f8dc63319a942d5f67a))
+
 # [2.286.0](https://github.com/SocialGouv/domifa/compare/v2.285.0...v2.286.0) (2026-10-21)
 
 
