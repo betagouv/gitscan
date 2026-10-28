@@ -1,39 +1,24 @@
-## Changelog : karfur (30 derniers jours, au 07/10/2026)
+## Changelog : karfur (30 derniers jours, au 27 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par un développement majeur autour de l'« Espace FR », une nouvelle section dédiée à l'apprentissage du français. Parallèlement, un effort massif a été consenti pour améliorer l'accessibilité numérique du site (conformité RGAA) et renforcer la sécurité de la plateforme. L'expérience de recherche et de navigation a également été fluidifiée pour faciliter l'accès aux informations.
+Ce mois a été marqué par le lancement de l'Espace FR dédié aux cours de français et par un effort massif de mise en conformité avec les normes d'accessibilité (RGAA). La plateforme est devenue plus robuste grâce à une série de mises à jour de sécurité et à l'amélioration des performances de recherche et de navigation.
 
 ### Évolutions fonctionnelles
-- **Lancement de l'Espace FR (Apprentissage du français) :**
-    - Mise en place d'une interface complète de recherche de cours avec filtres par localisation, niveau, catégorie et public. [#3927](https://github.com/refugies-info/karfur/pull/3927)
-    - Ajout d'un carrousel de cours sur la page d'accueil pour une meilleure visibilité. [#3959](https://github.com/refugies-info/karfur/pull/3959)
-    - Optimisation de l'expérience mobile : filtres en plein écran, barre d'outils avec filtres actifs et gestion améliorée des résultats.
-    - Nouvelles fonctionnalités de partage : partage de listes de cours via SMS et création d'une vue optimisée pour l'impression et l'export PDF. [#3943](https://github.com/refugies-info/karfur/pull/3943)
-    - Affichage de nouveaux indicateurs : badges de niveau de français, mention "En ligne" pour les cours à distance et étiquettes pour les sessions imminentes.
-- **Accessibilité (Conformité RGAA) :**
-    - Amélioration globale de la lisibilité et du contraste des couleurs (boutons, textes, fonds de cartes) pour respecter les normes RGAA 3.2 et 3.3.
-    - Optimisation de la navigation pour les lecteurs d'écran : structuration des listes, ajout d'attributs d'autocomplétion dans les formulaires et gestion des étiquettes d'erreur.
-    - Amélioration de la gestion du focus et des annonces de suggestions lors de la saisie.
-- **Recherche et Navigation :**
-    - La barre de recherche est désormais fixe (sticky) lors du défilement pour un accès permanent. [#3913](https://github.com/refugies-info/karfur/pull/3913)
-    - Amélioration de la précision des filtres de localisation (par département et par ville).
-- **Interface Utilisateur :**
-    - Mise à jour des logos et des sources d'information pour les partenaires (RCO, CARIF).
-    - Correction de nombreux problèmes d'alignement et de design sur mobile et desktop pour correspondre aux maquettes Figma.
+- **Lancement de l'Espace FR** : Intégration complète des cours de français dans la navigation (header, footer, sitemap), ajout d'un carrousel sur la page d'accueil et mise en place d'une recherche par localisation (département/ville) [#3957](https://github.com/refugies-info/karfur/pull/3957).
+- **Accessibilité (RGAA)** : Amélioration significative de l'expérience utilisateur pour les personnes utilisant des outils d'assistance (corrections des contrastes de couleurs, gestion du zoom à 200%, et optimisation de l'affichage sur petits écrans pour éviter les débordements).
+- **Recherche et navigation** : Amélioration de la fluidité des résultats de recherche et de la gestion des états vides ou d'erreur.
+- **Expérience mobile** : Correction de plusieurs bugs liés à l'enregistrement des données, aux notifications doubles et au partage par SMS.
+- **Internationalisation** : Mise à jour des traductions pour les nouveaux contenus et harmonisation des termes de recherche dans les différentes langues.
 
 ### Évolutions techniques
-- **Sécurité :**
-    - Renforcement de la sécurité contre les injections HTML en restreignant les balises autorisées par `dompurify`. [#3963](https://github.com/refugies-info/karfur/pull/3963)
-    - Correction de plusieurs vulnérabilités critiques sur des dépendances clés (`next`, `image-size`, `js-yaml`, `sharp`).
-- **Infrastructure et CI/CD :**
-    - Ajout d'un webhook Slack pour notifier automatiquement l'équipe lors de la publication d'une nouvelle version.
-    - Optimisation des processus de déploiement pour réduire les temps d'attente.
-    - Migration de la configuration `pnpm` vers `pnpm-workspace.yaml`.
-- **Base de données et Backend :**
-    - Migration de la base de données pour inclure et mapper l'identifiant d'origine (`origin_id`) des dispositifs. [#3936](https://github.com/refugies-info/karfur/pull/3936)
-    - Optimisation des performances via un audit des conversions de types dans les requêtes MongoDB. [#3961](https://github.com/refugies-info/karfur/pull/3961)
+- **Administration des widgets** : Mise en place d'une nouvelle API et d'un modèle de configuration pour permettre une gestion simplifiée des widgets via le backoffice [#4027](https://github.com/refugies-info/karfur/pull/4027).
+- **Performances** : Optimisation de la recherche et de la pagination via l'implémentation de SWR pour un chargement plus rapide et une meilleure gestion du cache [#4019](https://github.com/refugies-info/karfur/pull/4019).
+- **Sécurité** : Campagnes de nettoyage intensives pour corriger des vulnérabilités critiques (Storybook, Handlebars, etc.) et intégration de l'outil de scan OSV-Scanner dans le pipeline CI.
+- **CI/CD et Infrastructure** :
+    - Automatisation du versioning lors des déploiements en production.
+    - Mise à jour de l'environnement Node.js (v24.22.1) [#4031](https://github.com/refugies-info/karfur/pull/4031).
+    - Ajout de notifications Slack pour informer automatiquement des nouvelles versions publiées.
+- **Refactoring** : Nettoyage du code client avec la suppression des fonctionnalités de widgets obsolètes et des pages d'intégration inutilisées [#4028](https://github.com/refugies-info/karfur/pull/4028).
 
 ### Autres changements
-- **Internationalisation (i18n) :** Mise à jour massive des traductions pour les 7 langues non-françaises, incluant la nouvelle section Espace FR.
-- **Documentation :** Rédaction d'un nouveau guide de conventions de code (nommage, i18n, composants) pour harmoniser les futurs développements. [#1437](https://github.com/refugies-info/karfur/pull/3923)
-- **Nettoyage :** Suppression de nombreux commentaires inutiles et de code obsolète dans l'ensemble du dépôt.
+- **Documentation** : Ajout de précisions dans le README concernant l'importance du système de versioning pour le projet.

@@ -1,7 +1,6 @@
 .
 ├── .agent
 │   └── workflows
-│       ├── bump-app-version.md
 │       └── setup-worktree.md
 ├── .biomeignore
 ├── .config
@@ -31,7 +30,7 @@
 │       ├── chromatic.yaml
 │       ├── migrate_production.yaml
 │       ├── migrate_staging.yaml
-│       ├── release-please.yml
+│       ├── osv-scanner.yml
 │       └── release_pipeline.yaml
 ├── .gitignore
 ├── .gitleaks.toml
@@ -47,7 +46,6 @@
 │           └── SKILL.md
 ├── .npmrc
 ├── .prototools
-├── .release-please-manifest.json
 ├── .skills
 │   └── investigating-server-errors
 │       ├── SKILL.md
@@ -373,8 +371,11 @@
 │   │   │   │   ├── agir.test.tsx
 │   │   │   │   ├── api
 │   │   │   │   │   └── webhook
-│   │   │   │   │       └── dispositif
-│   │   │   │   │           └── webhook.test.ts
+│   │   │   │   │       ├── dispositif
+│   │   │   │   │       │   ├── all.test.ts
+│   │   │   │   │       │   └── webhook.test.ts
+│   │   │   │   │       └── widgetConfig
+│   │   │   │   │           └── widgetConfig.test.ts
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   ├── auth.test.tsx.snap
@@ -497,9 +498,6 @@
 │   │   │   │   │   ├── welcome-step-2.svg
 │   │   │   │   │   ├── welcome-step-5.png
 │   │   │   │   │   └── yes-icon.svg
-│   │   │   │   ├── embed
-│   │   │   │   │   ├── logo-diair.png
-│   │   │   │   │   └── logo-ri-inline.png
 │   │   │   │   ├── empty-image.svg
 │   │   │   │   ├── figma
 │   │   │   │   │   ├── InfoCard
@@ -913,21 +911,6 @@
 │   │   │   │   │       │   │   ├── ThemeFormModal.tsx
 │   │   │   │   │       │   │   ├── index.ts
 │   │   │   │   │       │   │   └── lib.ts
-│   │   │   │   │       │   ├── Widgets
-│   │   │   │   │       │   │   ├── EditWidgetModal
-│   │   │   │   │       │   │   │   ├── EditWidgetModal.module.scss
-│   │   │   │   │       │   │   │   └── EditWidgetModal.tsx
-│   │   │   │   │       │   │   ├── Widgets.module.scss
-│   │   │   │   │       │   │   ├── Widgets.tsx
-│   │   │   │   │       │   │   ├── components
-│   │   │   │   │       │   │   │   ├── LanguageInput.tsx
-│   │   │   │   │       │   │   │   ├── LocationInput.tsx
-│   │   │   │   │       │   │   │   ├── ThemesInput.tsx
-│   │   │   │   │       │   │   │   ├── TypeContenuInput.tsx
-│   │   │   │   │       │   │   │   ├── WidgetLine.module.scss
-│   │   │   │   │       │   │   │   └── WidgetLine.tsx
-│   │   │   │   │       │   │   ├── functions.ts
-│   │   │   │   │       │   │   └── index.ts
 │   │   │   │   │       │   ├── index.ts
 │   │   │   │   │       │   └── sharedComponents
 │   │   │   │   │       │       ├── DetailsModal.module.scss
@@ -1697,11 +1680,6 @@
 │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── embed
-│   │   │   │   │   │   └── EmbedHeader
-│   │   │   │   │   │       ├── EmbedHeader.module.scss
-│   │   │   │   │   │       ├── EmbedHeader.tsx
-│   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── homepage
 │   │   │   │   │   │   └── Sections
 │   │   │   │   │   │       ├── FreeResources
@@ -1813,6 +1791,7 @@
 │   │   │   │   │   │   │   ├── SearchResults.module.scss
 │   │   │   │   │   │   │   ├── SearchResults.tsx
 │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SearchResultsContext.tsx
 │   │   │   │   │   │   ├── SecondaryFilter
 │   │   │   │   │   │   │   └── SecondaryFilter.desktop.module.scss
 │   │   │   │   │   │   └── ThemeMenu
@@ -2025,6 +2004,9 @@
 │   │   │   │   │   │   ├── NewThemeBadge.module.scss
 │   │   │   │   │   │   ├── NewThemeBadge.tsx
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── NoResultsPlaceholder
+│   │   │   │   │   │   ├── NoResultsPlaceholder.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── Progress
 │   │   │   │   │   │   ├── Progress.tsx
 │   │   │   │   │   │   └── index.ts
@@ -2186,10 +2168,12 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── learnFrench
 │   │   │   │   │   ├── useActiveFilters.ts
+│   │   │   │   │   ├── useAutoSwitchToOnDemandTab.test.ts
 │   │   │   │   │   ├── useAutoSwitchToOnDemandTab.ts
-│   │   │   │   │   ├── useCourseSearch.ts
 │   │   │   │   │   ├── useFrenchCourseFilters.ts
 │   │   │   │   │   └── useIsDesktopLayout.ts
+│   │   │   │   ├── recherche
+│   │   │   │   │   └── useSearchData.ts
 │   │   │   │   ├── useAnonymousUserId.ts
 │   │   │   │   ├── useAuth
 │   │   │   │   │   ├── index.ts
@@ -2208,7 +2192,10 @@
 │   │   │   │   ├── useLanguages.ts
 │   │   │   │   ├── useLocale.ts
 │   │   │   │   ├── useLogin.ts
+│   │   │   │   ├── useMediaQuery.ts
 │   │   │   │   ├── useOutsideClick.ts
+│   │   │   │   ├── usePaginatedResults.test.tsx
+│   │   │   │   ├── usePaginatedResults.ts
 │   │   │   │   ├── useParamsFromHistory
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── useParamsFromHistory.ts
@@ -2314,8 +2301,6 @@
 │   │   │   │   │   │   └── queryParam.ts
 │   │   │   │   │   ├── filterContents.ts
 │   │   │   │   │   ├── functions.ts
-│   │   │   │   │   ├── generateLightResults.ts
-│   │   │   │   │   ├── getAlgoliaSearchableAttributes.ts
 │   │   │   │   │   ├── getThemesFromNeeds.ts
 │   │   │   │   │   ├── queryContents.ts
 │   │   │   │   │   ├── resultsDisplayRules.ts
@@ -2324,6 +2309,7 @@
 │   │   │   │   ├── sanitizeUrl.ts
 │   │   │   │   ├── search-helpers.ts
 │   │   │   │   ├── search.ts
+│   │   │   │   ├── searchPagination.test.ts
 │   │   │   │   ├── sitemap
 │   │   │   │   │   ├── extractIndexFromUrl.ts
 │   │   │   │   │   └── getAllUrls.ts
@@ -2337,7 +2323,10 @@
 │   │   │   │   ├── validatePassword.ts
 │   │   │   │   ├── webhookSchemas.ts
 │   │   │   │   ├── webhookUtils.test.ts
-│   │   │   │   └── webhookUtils.ts
+│   │   │   │   ├── webhookUtils.ts
+│   │   │   │   ├── widgetConfigFilters.test.ts
+│   │   │   │   ├── widgetConfigFilters.ts
+│   │   │   │   └── widgetConfigWebhookSchema.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── middleware.ts
 │   │   │   ├── pages
@@ -2355,12 +2344,20 @@
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── webhook
 │   │   │   │   │       ├── dispositif
+│   │   │   │   │       │   ├── all.ts
 │   │   │   │   │       │   ├── archive.ts
 │   │   │   │   │       │   ├── create.ts
+│   │   │   │   │       │   ├── search.ts
 │   │   │   │   │       │   ├── translation.ts
 │   │   │   │   │       │   └── update.ts
 │   │   │   │   │       ├── needs.ts
-│   │   │   │   │       └── themes.ts
+│   │   │   │   │       ├── themes.ts
+│   │   │   │   │       └── widget-config
+│   │   │   │   │           ├── [id].ts
+│   │   │   │   │           ├── create.ts
+│   │   │   │   │           ├── index.ts
+│   │   │   │   │           ├── preview-count.ts
+│   │   │   │   │           └── update.ts
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── code-connexion.tsx
 │   │   │   │   │   ├── code-securite.tsx
@@ -2396,7 +2393,6 @@
 │   │   │   │   │   ├── preview.tsx
 │   │   │   │   │   └── test-preview.tsx
 │   │   │   │   ├── download-app.tsx
-│   │   │   │   ├── embed.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── mentions-legales.tsx
 │   │   │   │   ├── mission-et-impact.tsx
@@ -2515,6 +2511,9 @@
 │   │   │   │   │   ├── dispositifsWithTranslationsStatus.reducer.ts
 │   │   │   │   │   ├── dispositifsWithTranslationsStatus.saga.ts
 │   │   │   │   │   └── dispositifsWithTranslationsStatus.selectors.ts
+│   │   │   │   ├── FrenchCourseSearch
+│   │   │   │   │   ├── frenchCourseSearch.service.test.ts
+│   │   │   │   │   └── frenchCourseSearch.service.ts
 │   │   │   │   ├── Langue
 │   │   │   │   │   ├── langue.actionTypes.ts
 │   │   │   │   │   ├── langue.actions.ts
@@ -2537,15 +2536,11 @@
 │   │   │   │   │   ├── needs.saga.ts
 │   │   │   │   │   └── needs.selectors.ts
 │   │   │   │   ├── SearchCounts
-│   │   │   │   │   ├── searchCounts.reducer.ts
-│   │   │   │   │   ├── searchCounts.saga.ts
-│   │   │   │   │   ├── searchCounts.selector.ts
 │   │   │   │   │   └── searchCounts.service.ts
 │   │   │   │   ├── SearchResults
 │   │   │   │   │   ├── searchResults.actionTypes.ts
 │   │   │   │   │   ├── searchResults.actions.ts
 │   │   │   │   │   ├── searchResults.reducer.ts
-│   │   │   │   │   ├── searchResults.saga.ts
 │   │   │   │   │   ├── searchResults.selector.ts
 │   │   │   │   │   └── searchResults.service.ts
 │   │   │   │   ├── SelectedDispositif
@@ -2609,14 +2604,6 @@
 │   │   │   │   │   ├── userStructure.reducer.ts
 │   │   │   │   │   ├── userStructure.saga.ts
 │   │   │   │   │   └── userStructure.selectors.ts
-│   │   │   │   ├── Widgets
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── widgets.saga.test.ts
-│   │   │   │   │   ├── widgets.actionTypes.ts
-│   │   │   │   │   ├── widgets.actions.ts
-│   │   │   │   │   ├── widgets.reducer.ts
-│   │   │   │   │   ├── widgets.saga.ts
-│   │   │   │   │   └── widgets.selectors.ts
 │   │   │   │   ├── configureStore.ts
 │   │   │   │   ├── rootReducer.ts
 │   │   │   │   └── sagas.ts
@@ -3132,6 +3119,7 @@
 │   │   │   │   │   ├── LanguageChoiceScreen.tsx
 │   │   │   │   │   ├── OnboardingSteps.tsx
 │   │   │   │   │   └── __tests__
+│   │   │   │   │       ├── ActivateNotificationsScreen.test.tsx
 │   │   │   │   │       ├── FilterAge.test.tsx
 │   │   │   │   │       ├── FilterCity.test.tsx
 │   │   │   │   │       ├── FilterFrenchLevel.test.tsx
@@ -3242,6 +3230,7 @@
 │   │   │   │       │   └── themes.selectors.ts
 │   │   │   │       ├── User
 │   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   ├── functions.test.ts
 │   │   │   │       │   │   ├── user.reducer.test.ts
 │   │   │   │       │   │   ├── user.saga.test.ts
 │   │   │   │       │   │   └── user.selectors.test.ts
@@ -3497,8 +3486,7 @@
 │   │   │   │   │   └── lib.ts
 │   │   │   │   ├── traductionController.ts
 │   │   │   │   ├── ttsController.ts
-│   │   │   │   ├── userController.ts
-│   │   │   │   └── widgetController.ts
+│   │   │   │   └── userController.ts
 │   │   │   ├── errors.test.ts
 │   │   │   ├── errors.ts
 │   │   │   ├── instrument.ts
@@ -3618,6 +3606,8 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── search.service.test.ts
 │   │   │   │   │   └── search.service.ts
+│   │   │   │   ├── sms
+│   │   │   │   │   └── smsThrottle.ts
 │   │   │   │   ├── snapshots
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── snapshots.service.state.test.ts
@@ -3634,23 +3624,22 @@
 │   │   │   │   │   ├── traductions.business.ts
 │   │   │   │   │   ├── traductions.repository.ts
 │   │   │   │   │   └── traductions.service.ts
-│   │   │   │   ├── users
-│   │   │   │   │   ├── LoginError.ts
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   ├── user.service.test.ts
-│   │   │   │   │   │   └── user.structures.test.ts
-│   │   │   │   │   ├── auth.ts
-│   │   │   │   │   ├── emailThrottle.ts
-│   │   │   │   │   ├── login2FA.ts
-│   │   │   │   │   ├── users.repository.ts
-│   │   │   │   │   └── users.service.ts
-│   │   │   │   └── widgets
-│   │   │   │       └── widgets.repository.ts
+│   │   │   │   └── users
+│   │   │   │       ├── LoginError.ts
+│   │   │   │       ├── __tests__
+│   │   │   │       │   ├── user.service.test.ts
+│   │   │   │       │   └── user.structures.test.ts
+│   │   │   │       ├── auth.ts
+│   │   │   │       ├── emailThrottle.ts
+│   │   │   │       ├── login2FA.ts
+│   │   │   │       ├── users.repository.ts
+│   │   │   │       └── users.service.ts
 │   │   │   ├── scripts
 │   │   │   │   └── print-env.js
 │   │   │   ├── server.ts
 │   │   │   ├── services
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── sms.test.ts
 │   │   │   │   └── sms.ts
 │   │   │   ├── types
 │   │   │   │   └── interface.d.ts
@@ -3809,6 +3798,7 @@
 │   │   │       │   ├── updateDispositifTagsOrNeeds
 │   │   │       │   │   ├── index.ts
 │   │   │       │   │   ├── log.ts
+│   │   │       │   │   ├── updateDispositifTagsOrNeeds.test.ts
 │   │   │       │   │   └── updateDispositifTagsOrNeeds.ts
 │   │   │       │   └── updateNbVuesOrFavoritesOnContent
 │   │   │       │       ├── index.ts
@@ -3989,89 +3979,76 @@
 │   │   │       │       ├── getTts.ts
 │   │   │       │       ├── index.ts
 │   │   │       │       └── voices.ts
-│   │   │       ├── users
-│   │   │       │   ├── addUserFavorite
-│   │   │       │   │   ├── addUserFavorite.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── changePassword
-│   │   │       │   │   ├── changePassword.test.ts
-│   │   │       │   │   ├── changePassword.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── checkCode
-│   │   │       │   │   ├── checkCode.test.ts
-│   │   │       │   │   ├── checkCode.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── checkResetToken
-│   │   │       │   │   ├── checkResetToken.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── checkUserExists
-│   │   │       │   │   ├── checkUserExists.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── deleteMyAccount
-│   │   │       │   │   ├── deleteMyAccount.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── deleteUser
-│   │   │       │   │   ├── deleteUser.test.ts
-│   │   │       │   │   ├── deleteUser.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── deleteUserFavorites
-│   │   │       │   │   ├── deleteUserFavorites.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── exportUsers
-│   │   │       │   │   ├── exportUsers.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── getActiveUsers
-│   │   │       │   │   ├── getActiveUsers.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── getAllUsers
-│   │   │       │   │   ├── getAllUsers.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── getFiguresOnUsers
-│   │   │       │   │   ├── getFiguresOnUsers.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── getUserFavoritesInLocale
-│   │   │       │   │   ├── getUserFavoritesInLocale.ts
-│   │   │       │   │   └── index.ts
-│   │   │       │   ├── index.ts
-│   │   │       │   ├── login
-│   │   │       │   │   ├── index.ts
-│   │   │       │   │   ├── login.test.ts
-│   │   │       │   │   └── login.ts
-│   │   │       │   ├── register
-│   │   │       │   │   ├── index.ts
-│   │   │       │   │   ├── register.test.ts
-│   │   │       │   │   └── register.ts
-│   │   │       │   ├── resetPassword
-│   │   │       │   │   ├── index.ts
-│   │   │       │   │   ├── resetPassword.test.ts
-│   │   │       │   │   └── resetPassword.ts
-│   │   │       │   ├── sendCode
-│   │   │       │   │   ├── index.ts
-│   │   │       │   │   ├── sendCode.test.ts
-│   │   │       │   │   └── sendCode.ts
-│   │   │       │   ├── setNewPassword
-│   │   │       │   │   ├── index.ts
-│   │   │       │   │   └── setNewPassword.ts
-│   │   │       │   ├── setSelectedLanguages
-│   │   │       │   │   ├── index.ts
-│   │   │       │   │   └── setSelectedLanguages.ts
-│   │   │       │   └── updateUser
-│   │   │       │       ├── index.ts
-│   │   │       │       ├── log.ts
-│   │   │       │       └── updateUser.ts
-│   │   │       └── widget
-│   │   │           ├── deleteWidget
-│   │   │           │   ├── deleteWidget.ts
+│   │   │       └── users
+│   │   │           ├── addUserFavorite
+│   │   │           │   ├── addUserFavorite.ts
 │   │   │           │   └── index.ts
-│   │   │           ├── getWidgets
-│   │   │           │   ├── getWidgets.ts
+│   │   │           ├── changePassword
+│   │   │           │   ├── changePassword.test.ts
+│   │   │           │   ├── changePassword.ts
 │   │   │           │   └── index.ts
-│   │   │           ├── patchWidget
+│   │   │           ├── checkCode
+│   │   │           │   ├── checkCode.test.ts
+│   │   │           │   ├── checkCode.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── checkResetToken
+│   │   │           │   ├── checkResetToken.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── checkUserExists
+│   │   │           │   ├── checkUserExists.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── deleteMyAccount
+│   │   │           │   ├── deleteMyAccount.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── deleteUser
+│   │   │           │   ├── deleteUser.test.ts
+│   │   │           │   ├── deleteUser.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── deleteUserFavorites
+│   │   │           │   ├── deleteUserFavorites.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── exportUsers
+│   │   │           │   ├── exportUsers.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── getActiveUsers
+│   │   │           │   ├── getActiveUsers.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── getAllUsers
+│   │   │           │   ├── getAllUsers.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── getFiguresOnUsers
+│   │   │           │   ├── getFiguresOnUsers.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── getUserFavoritesInLocale
+│   │   │           │   ├── getUserFavoritesInLocale.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── index.ts
+│   │   │           ├── login
 │   │   │           │   ├── index.ts
-│   │   │           │   └── patchWidget.ts
-│   │   │           └── postWidgets
+│   │   │           │   ├── login.test.ts
+│   │   │           │   └── login.ts
+│   │   │           ├── register
+│   │   │           │   ├── index.ts
+│   │   │           │   ├── register.test.ts
+│   │   │           │   └── register.ts
+│   │   │           ├── resetPassword
+│   │   │           │   ├── index.ts
+│   │   │           │   ├── resetPassword.test.ts
+│   │   │           │   └── resetPassword.ts
+│   │   │           ├── sendCode
+│   │   │           │   ├── index.ts
+│   │   │           │   ├── sendCode.test.ts
+│   │   │           │   └── sendCode.ts
+│   │   │           ├── setNewPassword
+│   │   │           │   ├── index.ts
+│   │   │           │   └── setNewPassword.ts
+│   │   │           ├── setSelectedLanguages
+│   │   │           │   ├── index.ts
+│   │   │           │   └── setSelectedLanguages.ts
+│   │   │           └── updateUser
 │   │   │               ├── index.ts
-│   │   │               └── postWidgets.ts
+│   │   │               ├── log.ts
+│   │   │               └── updateUser.ts
 │   │   ├── tsconfig.json
 │   │   └── tsoa.json
 │   └── storybook
@@ -4208,8 +4185,11 @@
 │   ├── 1790330000000_AddShortToNeeds.ts
 │   ├── 1790844823961_AddShortTranslationsToNeeds.ts
 │   ├── 1791202735000_FixSnapshotsValidator.ts
+│   ├── 1791901800000_FixSchemaCompliance.ts
+│   ├── 1792590634000_CreateWidgetConfigsCollection.ts
 │   ├── cli.ts
 │   └── origin-id-mapping.csv
+├── osv-scanner.toml
 ├── package.json
 ├── packages
 │   ├── api-types
@@ -4238,7 +4218,7 @@
 │   │   │       ├── translations.ts
 │   │   │       ├── tts.ts
 │   │   │       ├── user.ts
-│   │   │       └── widget.ts
+│   │   │       └── widgetConfig.ts
 │   │   └── tsconfig.json
 │   ├── markdown-utils
 │   │   ├── CHANGELOG.md
@@ -4281,7 +4261,7 @@
 │   │   │       ├── Theme.ts
 │   │   │       ├── Traductions.ts
 │   │   │       ├── User.ts
-│   │   │       ├── Widget.ts
+│   │   │       ├── WidgetConfig.ts
 │   │   │       └── generics.ts
 │   │   └── tsconfig.json
 │   ├── sentry
@@ -4376,14 +4356,18 @@
 │       │       └── lottie.d.ts
 │       └── tsconfig.json
 ├── patches
-│   └── @codegouvfr__react-dsfr@1.20.2.patch
+│   ├── @codegouvfr__react-dsfr@1.20.2.patch
+│   └── metro@0.83.3.patch
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── postcss.config.mjs
-├── release-please-config.json
 ├── scripts
 │   ├── anonymize.ts
+│   ├── create-release-pr.sh
 │   ├── generate-newsletter-token.js
+│   ├── next-release-version.sh
+│   ├── release-affected-apps.sh
+│   ├── release-notes.sh
 │   ├── rollback-gcp-secrets.sh
 │   └── update-gcp-secrets.sh
 ├── specs
@@ -4424,4 +4408,4 @@
 │       └── tasks.md
 ├── tailwind.config.ts
 └── turbo.json
-991 directories, 3435 files
+983 directories, 3427 files
