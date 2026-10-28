@@ -47,6 +47,7 @@
 │   ├── collectif.md
 │   ├── drive-find-architecture.md
 │   ├── entraide.md
+│   ├── fichiers.md
 │   ├── generation.md
 │   ├── images
 │   │   ├── accueil.png
@@ -166,6 +167,7 @@
 │   │   │   ├── qualite.py
 │   │   │   ├── recherche.py
 │   │   │   ├── sources.py
+│   │   │   ├── sources_fichiers.py
 │   │   │   ├── sources_resana.py
 │   │   │   └── sync.py
 │   │   ├── security_utils.py
@@ -200,6 +202,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── base.py
 │   │   │   │   ├── drive.py
+│   │   │   │   ├── fichiers.py
 │   │   │   │   └── resana.py
 │   │   │   ├── conversion.py
 │   │   │   ├── corpus.py
@@ -215,6 +218,7 @@
 │   │   │   ├── feedback_store.py
 │   │   │   ├── fenetre_par_minute.py
 │   │   │   ├── fiche_socle.py
+│   │   │   ├── fichiers_instances.py
 │   │   │   ├── formats.py
 │   │   │   ├── generation_store.py
 │   │   │   ├── graph_builder.py
@@ -233,6 +237,7 @@
 │   │   │   ├── mesure_store.py
 │   │   │   ├── migration_assistants.py
 │   │   │   ├── migration_questions.py
+│   │   │   ├── migration_sites_resana.py
 │   │   │   ├── morceau.py
 │   │   │   ├── nettoyage_preview.py
 │   │   │   ├── nommage.py
@@ -245,10 +250,15 @@
 │   │   │   ├── questions_store.py
 │   │   │   ├── relais.py
 │   │   │   ├── reponse.py
+│   │   │   ├── resana_ecarts.py
 │   │   │   ├── resana_perimetre.py
+│   │   │   ├── sensibilite.py
 │   │   │   ├── sites.py
+│   │   │   ├── sources_importees.py
 │   │   │   ├── sources_openrag.py
+│   │   │   ├── sources_url.py
 │   │   │   ├── sync_service.py
+│   │   │   ├── synchro_profil.py
 │   │   │   └── tchap.py
 │   │   ├── static
 │   │   │   └── graph_view.html
@@ -268,6 +278,7 @@
 │   │   ├── assets
 │   │   │   └── main.css
 │   │   ├── components
+│   │   │   ├── ChoixGroupes.vue
 │   │   │   ├── EtatDuService.vue
 │   │   │   ├── FilAriane.vue
 │   │   │   ├── ListeDeroulanteRiche.vue
@@ -328,7 +339,9 @@
 │   │   │   │   ├── Synthese.vue
 │   │   │   │   └── Volet.vue
 │   │   │   └── wizard
-│   │   │       └── Etape.vue
+│   │   │       ├── Etape.vue
+│   │   │       ├── QuestionSuggeree.vue
+│   │   │       └── ValidationReponse.vue
 │   │   ├── composables
 │   │   │   ├── useAdminAuth.ts
 │   │   │   ├── useApi.ts
@@ -339,12 +352,15 @@
 │   │   │   ├── useCategories.ts
 │   │   │   ├── useChat.ts
 │   │   │   ├── useCollectif.ts
+│   │   │   ├── useConnexionResana.ts
 │   │   │   ├── useEntraide.ts
 │   │   │   ├── useEtatService.ts
+│   │   │   ├── useFrappe.ts
 │   │   │   ├── useGeneration.ts
 │   │   │   ├── useMesAgents.ts
 │   │   │   ├── usePiegeFocus.ts
 │   │   │   ├── useQualite.ts
+│   │   │   ├── useTelechargement.ts
 │   │   │   ├── useTitreCollection.ts
 │   │   │   └── useTitresSources.ts
 │   │   ├── error.vue
@@ -364,6 +380,7 @@
 │   │   │   │   ├── catalog.vue
 │   │   │   │   ├── categories.vue
 │   │   │   │   ├── create
+│   │   │   │   │   ├── fichiers.vue
 │   │   │   │   │   ├── index.vue
 │   │   │   │   │   ├── resana.vue
 │   │   │   │   │   ├── step-2.vue
@@ -388,6 +405,7 @@
 │   │   │   │   └── [id]
 │   │   │   │       ├── config.vue
 │   │   │   │       ├── graph.vue
+│   │   │   │       ├── guide-de-demarrage.vue
 │   │   │   │       ├── index.vue
 │   │   │   │       ├── playground.vue
 │   │   │   │       ├── prompt.vue
@@ -433,6 +451,7 @@
 │   │   │       ├── etatService.test.ts
 │   │   │       ├── extrait.test.ts
 │   │   │       ├── fiche.test.ts
+│   │   │       ├── fichiers.test.ts
 │   │   │       ├── filAriane.test.ts
 │   │   │       ├── generation.test.ts
 │   │   │       ├── groupes.test.ts
@@ -465,6 +484,7 @@
 │   │   │   ├── etatService.ts
 │   │   │   ├── extrait.ts
 │   │   │   ├── fiche.ts
+│   │   │   ├── fichiers.ts
 │   │   │   ├── filAriane.ts
 │   │   │   ├── generation.ts
 │   │   │   ├── groupes.ts
@@ -519,6 +539,30 @@
 │   │   │   ├── _sso.py
 │   │   │   ├── conftest.py
 │   │   │   ├── fixtures
+│   │   │   │   ├── formats
+│   │   │   │   │   ├── _generer.py
+│   │   │   │   │   ├── format-scan.pdf
+│   │   │   │   │   ├── format.csv
+│   │   │   │   │   ├── format.doc
+│   │   │   │   │   ├── format.docx
+│   │   │   │   │   ├── format.eml
+│   │   │   │   │   ├── format.gif
+│   │   │   │   │   ├── format.html
+│   │   │   │   │   ├── format.jpg
+│   │   │   │   │   ├── format.json
+│   │   │   │   │   ├── format.md
+│   │   │   │   │   ├── format.odp
+│   │   │   │   │   ├── format.ods
+│   │   │   │   │   ├── format.odt
+│   │   │   │   │   ├── format.pdf
+│   │   │   │   │   ├── format.png
+│   │   │   │   │   ├── format.ppt.gz
+│   │   │   │   │   ├── format.pptx
+│   │   │   │   │   ├── format.rtf
+│   │   │   │   │   ├── format.txt
+│   │   │   │   │   ├── format.xls
+│   │   │   │   │   ├── format.xlsx
+│   │   │   │   │   └── format.zip
 │   │   │   │   └── note-de-controle.md
 │   │   │   ├── test_01_acces.py
 │   │   │   ├── test_02_accueil_catalogue.py
@@ -534,7 +578,9 @@
 │   │   │   ├── test_12_navigation.py
 │   │   │   ├── test_13_assistants.py
 │   │   │   ├── test_14_accueil.py
-│   │   │   └── test_15_entraide.py
+│   │   │   ├── test_15_entraide.py
+│   │   │   ├── test_16_sources_fichiers.py
+│   │   │   └── test_17_formats.py
 │   │   ├── entraide
 │   │   │   ├── __init__.py
 │   │   │   ├── test_entraide.py
@@ -587,9 +633,10 @@
 │   │   │   └── test_wizard_questions.py
 │   │   └── unit
 │   │       ├── __init__.py
+│   │       ├── _faux_drive.py
 │   │       ├── _faux_resana.py
 │   │       ├── _pdf_fictif.py
-│   │       └── test_*.py  (107 files)
+│   │       └── test_*.py  (115 files)
 │   ├── uv.lock
 │   └── watch-ingest.sh
 ├── openwebui
@@ -600,4 +647,4 @@
 ├── setup-keycloak.sh
 ├── sync_keycloak_openrag.py
 └── version.txt
-86 directories, 622 files
+87 directories, 676 files
