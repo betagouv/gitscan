@@ -1,35 +1,35 @@
-## Changelog : drive (30 derniers jours, au 23/10/2026)
+## Changelog : drive (30 derniers jours, au 27/10/2026)
 
 ### Résumé
-Ce mois-ci, LaSuite Drive a franchi une étape importante en optimisant ses performances pour les grands volumes de données et en enrichissant ses outils d'administration. Les capacités de surveillance (monitoring) et de sécurité ont également été considérablement renforcées pour garantir une plateforme plus robuste, pilotable et sécurisée pour les administrateurs et les utilisateurs.
+Ce mois a été marqué par une montée en puissance significative de la plateforme, notamment grâce à une optimisation massive des performances pour supporter de grands volumes de données. L'expérience d'administration a été considérablement enrichie avec de nouveaux outils de gestion des utilisateurs et des quotas, tandis que la gestion des permissions de dossiers et la sécurité (notamment via le protocole WOPI) ont été renforcées pour garantir une navigation plus fluide et sécurisée.
 
 ### Évolutions fonctionnelles
-- **Améliorations de l'administration** :
-    - Nouveaux outils de gestion des utilisateurs : fusion de comptes, transfert de fichiers entre utilisateurs et filtrage par adresse email.
-    - Visibilité accrue sur le stockage : affichage des quotas de stockage, identification des fichiers les plus volumineux et gestion des limites par utilisateur directement dans l'interface d'administration.
-    - Suivi de l'activité : affichage de la date de dernière connexion des utilisateurs.
-- **Gestion des fichiers et quotas** :
-    - Possibilité d'exclure certains éléments (et leurs descendants) du calcul du quota de stockage.
-    - Amélioration de la fiabilité des uploads grâce à une réservation systématique de l'espace disque avant le transfert.
-- **Contrôle du SDK** : Ajout d'une option de configuration permettant d'activer ou de désactiver l'affichage des pages liées au SDK.
+- **Gestion des accès et dossiers :**
+  - Amélioration de l'expérience sur les dossiers restreints : aperçu possible sans chargement de contenu, correction du fil d'Ariane et gestion plus intuitive des confirmations de suppression.
+  - Amélioration de la fluidité du partage de dossiers lors de changements de restrictions d'accès.
+- **Administration renforcée :**
+  - Nouveaux outils de gestion des utilisateurs : possibilité de fusionner des comptes, de transférer des éléments d'un utilisateur à un autre et de filtrer les utilisateurs par email.
+  - Meilleure visibilité administrative : affichage des dernières connexions, de la version actuelle et des quotas de stockage par utilisateur.
+  - Gestion fine des quotas : possibilité de définir des exclusions de quota pour des éléments spécifiques et de leurs descendants.
+- **Expérience utilisateur :**
+  - Optimisation du processus d'upload avec réservation de la taille déclarée et limitation de débit (rate limiting) pour protéger le système.
+  - Amélioration de la gestion de la corbeille pour les utilisateurs.
 
 ### Évolutions techniques
-- **Performances** :
-    - Optimisations massives des requêtes SQL pour l'affichage des listes d'éléments, des favoris, des récents et de la corbeille, permettant une navigation fluide même sur des bases de données volumineuses.
-    - Optimisation du calcul des accès hérités et des liens d'ancêtres dans les listes d'éléments.
-- **Observabilité et Analytics** :
-    - Mise en place de métriques Prometheus complètes (performances de la base de données, files Celery et métriques métier).
-    - Intégration du suivi d'événements via Posthog (création par template, export de dossiers, suppression d'éléments, édition de documents, etc.).
-- **Sécurité** :
-    - Renforcement de la vérification des preuves de requêtes WOPI.
-    - Mise en place de limitations de débit (*rate limiting*) sur les points de terminaison de création d'éléments.
-    - Application de plusieurs correctifs de sécurité critiques sur les dépendances backend et frontend.
-- **Infrastructure et DevOps** :
-    - Migration du stockage objet local vers RustFS (remplaçant MinIO).
-    - Optimisation des processus de build Docker pour le frontend.
-    - Amélioration des déploiements Helm (ajout de moniteurs de métriques et gestion de l'ingress).
-    - Automatisation des tâches de gestion via Celery Beat.
+- **Performances et scalabilité :**
+  - Optimisation majeure des requêtes de navigation et de recherche : utilisation d'index de chemin (path index) et de sous-requêtes pour éviter les scans de tables complets, permettant une réactivité accrue sur de très gros jeux de données.
+  - Optimisation de la récupération des métadonnées et des ancêtres des éléments.
+- **Observabilité et monitoring :**
+  - Intégration de métriques Prometheus pour le suivi de l'infrastructure (base de données, files Celery) et des indicateurs métier.
+  - Mise en place d'un suivi analytique via Posthog pour les actions clés (création via template, export de dossier, suppression, édition de documents).
+- **Sécurité :**
+  - Application de correctifs de sécurité critiques sur plusieurs dépendances (Django, PyJWT, Pillow, Certifi, etc.).
+  - Renforcement de la sécurité WOPI : vérification accrue des preuves de requêtes et isolation des téléchargements de fichiers (sandboxing).
+- **Infrastructure et CI/CD :**
+  - Amélioration des pipelines de tests E2E avec l'utilisation d'images Playwright officielles.
+  - Optimisation des builds Docker pour le frontend et ajustements des sondes de disponibilité (readiness probes) dans Helm.
+  - Automatisation de l'exécution des commandes de gestion via Celery Beat.
 
 ### Autres changements
-- **Documentation** : Documentation des métriques Prometheus et mise à jour des exemples de serveurs de ressources.
-- **Nettoyage** : Suppression de composants d'authentification inutilisés et nettoyage de valeurs codées en dur.
+- **Documentation :** Mise à jour de la documentation concernant les métriques Prometheus et les scénarios de test de taille de fichiers.
+- **Maintenance :** Nettoyage de code (suppression d'options Pylint obsolètes et de backends d'authentification inutilisés) et gestion des versions (releases v0.24.0 à v0.25.3).

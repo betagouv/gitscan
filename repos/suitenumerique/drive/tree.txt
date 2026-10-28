@@ -165,6 +165,7 @@
     │   │   ├── admin.py
     │   │   ├── api
     │   │   │   ├── __init__.py
+    │   │   │   ├── deletion_serializers.py
     │   │   │   ├── fields.py
     │   │   │   ├── filters.py
     │   │   │   ├── permissions.py
@@ -318,6 +319,7 @@
     │   │   │   │   ├── test_api_items_convert.py
     │   │   │   │   ├── test_api_items_create.py
     │   │   │   │   ├── test_api_items_delete.py
+    │   │   │   │   ├── test_api_items_deletion_info.py
     │   │   │   │   ├── test_api_items_download.py
     │   │   │   │   ├── test_api_items_duplicate.py
     │   │   │   │   ├── test_api_items_export.py
@@ -439,6 +441,7 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── e2e_fixture_filters.py
+    │   │   │       ├── e2e_fixture_restrictions.py
     │   │   │       ├── e2e_fixture_search.py
     │   │   │       └── e2e_fixture_upload_quota.py
     │   │   ├── serializers.py
@@ -605,6 +608,7 @@
     │   │   │   │   │   │       ├── mime-video.svg
     │   │   │   │   │   │       └── suspicious_file.svg
     │   │   │   │   │   ├── folder
+    │   │   │   │   │   │   ├── folder-restricted.svg
     │   │   │   │   │   │   ├── folder-tiny-perso.svg
     │   │   │   │   │   │   ├── folder-tiny-public.svg
     │   │   │   │   │   │   ├── folder-tiny-shared.svg
@@ -708,7 +712,8 @@
     │   │   │   │   │   │   │   │   ├── AppExplorerSelectionBarGate.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerFilters.scss
     │   │   │   │   │   │   │   │   ├── ExplorerSearchButton.tsx
-    │   │   │   │   │   │   │   │   └── ExplorerSelectionBar.tsx
+    │   │   │   │   │   │   │   │   ├── ExplorerSelectionBar.tsx
+    │   │   │   │   │   │   │   │   └── useAppRestrictionUpdated.ts
     │   │   │   │   │   │   │   ├── embedded-explorer
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorer.scss
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorer.tsx
@@ -751,6 +756,7 @@
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFolderModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerRenameItemModal.tsx
     │   │   │   │   │   │   │   │   ├── HardDeleteConfirmationModal.tsx
+    │   │   │   │   │   │   │   │   ├── RestrictedDescendantsDeleteModal.tsx
     │   │   │   │   │   │   │   │   ├── move
     │   │   │   │   │   │   │   │   │   ├── AddFolderButton.tsx
     │   │   │   │   │   │   │   │   │   ├── ExplorerMoveFolderModal.scss
@@ -817,6 +823,7 @@
     │   │   │   │   │   │       │   ├── dropTraversal.test.ts
     │   │   │   │   │   │       │   ├── formatSize.test.ts
     │   │   │   │   │   │       │   ├── formatSizeTo.test.ts
+    │   │   │   │   │   │       │   ├── itemToPreviewFile.test.ts
     │   │   │   │   │   │       │   └── ordering.test.ts
     │   │   │   │   │   │       ├── dateFilters.ts
     │   │   │   │   │   │       ├── dropTraversal.ts
@@ -1034,6 +1041,10 @@
     │   │   │   │   │   ├── entitlement-disclaimers.spec.ts
     │   │   │   │   │   ├── file-preview-smoke.spec.ts
     │   │   │   │   │   ├── filters.spec.ts
+    │   │   │   │   │   ├── folder-restrictions-deletion.spec.ts
+    │   │   │   │   │   ├── folder-restrictions-movement.spec.ts
+    │   │   │   │   │   ├── folder-restrictions-navigation.spec.ts
+    │   │   │   │   │   ├── folder-restrictions-sharing.spec.ts
     │   │   │   │   │   ├── help-menu.spec.ts
     │   │   │   │   │   ├── item
     │   │   │   │   │   │   └── right-content-info.spec.ts
@@ -1062,6 +1073,7 @@
     │   │   │   │   │   │   ├── custom-columns-utils.ts
     │   │   │   │   │   │   ├── move-utils.ts
     │   │   │   │   │   │   ├── posthog-utils.ts
+    │   │   │   │   │   │   ├── restriction-utils.ts
     │   │   │   │   │   │   ├── share-utils.ts
     │   │   │   │   │   │   ├── starred-utils.ts
     │   │   │   │   │   │   ├── types-utils.ts
@@ -1174,4 +1186,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-261 directories, 915 files
+261 directories, 927 files
