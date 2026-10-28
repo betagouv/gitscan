@@ -983,23 +983,13 @@
 │   │   ├── .gitignore
 │   │   ├── fonts
 │   │   │   ├── Marianne-Bold.ttf
-│   │   │   ├── Marianne-Bold.woff
-│   │   │   ├── Marianne-Bold.woff2
-│   │   │   ├── Marianne-Bold_Italic.woff
-│   │   │   ├── Marianne-Bold_Italic.woff2
-│   │   │   ├── Marianne-Light.woff
-│   │   │   ├── Marianne-Light.woff2
-│   │   │   ├── Marianne-Light_Italic.woff
-│   │   │   ├── Marianne-Light_Italic.woff2
-│   │   │   ├── Marianne-Medium.woff
-│   │   │   ├── Marianne-Medium.woff2
-│   │   │   ├── Marianne-Medium_Italic.woff
-│   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   ├── Marianne-*.woff  (8 files)
+│   │   │   ├── Marianne-*.woff2  (8 files)
 │   │   │   ├── Marianne-Regular.ttf
-│   │   │   ├── Marianne-Regular.woff
-│   │   │   ├── Marianne-Regular.woff2
-│   │   │   ├── Marianne-Regular_Italic.woff
-│   │   │   └── Marianne-Regular_Italic.woff2
+│   │   │   ├── Roboto-*.ttf  (18 files)
+│   │   │   ├── Roboto-*.woff  (18 files)
+│   │   │   ├── Roboto-*.woff2  (18 files)
+│   │   │   └── Roboto_*.ttf  (36 files)
 │   │   ├── icones
 │   │   │   ├── bulle-discussion.avif
 │   │   │   ├── cadenas.avif
@@ -1200,6 +1190,10 @@
 │   │   │   ├── mini-tests
 │   │   │   │   ├── animation
 │   │   │   │   │   └── scene-hero-mini-test.avif
+│   │   │   │   ├── hameconnage
+│   │   │   │   │   ├── alerte.svg
+│   │   │   │   │   ├── courriel-carte.svg
+│   │   │   │   │   └── courriel-verifie.svg
 │   │   │   │   ├── reflexe-cyber
 │   │   │   │   │   ├── evenement-1.avif
 │   │   │   │   │   ├── evenement-2.avif
@@ -1329,6 +1323,7 @@
 │   │   └── ajout-document.html
 │   ├── guides.html
 │   ├── inscription.html
+│   ├── integrer-webc.html
 │   ├── kit-relais.html
 │   ├── lib-svelte
 │   │   ├── .gitignore
@@ -1485,13 +1480,16 @@
 │   │   │   ├── global.d.ts
 │   │   │   ├── identification
 │   │   │   │   └── ZoneIdentification.svelte
+│   │   │   ├── integration-webc
+│   │   │   │   ├── IntegrerWebC.svelte
+│   │   │   │   └── SectionWebCAccordeon.svelte
 │   │   │   ├── interlocuteurs
 │   │   │   │   ├── CarrouselDesInterlocuteurs.svelte
 │   │   │   │   ├── EquipeBizDev.svelte
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (57 files)
+│   │   │   ├── main-*.ts  (60 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1510,6 +1508,18 @@
 │   │   │   │   │   ├── FormulaireExposition.svelte
 │   │   │   │   │   ├── RadarExpositionAnime.svelte
 │   │   │   │   │   └── expositionCyberattaques.ts
+│   │   │   │   ├── hameconnage
+│   │   │   │   │   ├── BoiteMail.svelte
+│   │   │   │   │   ├── BoutonDeVoteHameconnage.svelte
+│   │   │   │   │   ├── IllustrationHerosHameconnage.svelte
+│   │   │   │   │   ├── LandingHameconnage.svelte
+│   │   │   │   │   ├── Mail.svelte
+│   │   │   │   │   ├── PanneauActionsMail.svelte
+│   │   │   │   │   ├── PanneauLateral.svelte
+│   │   │   │   │   ├── SceneHerosHameconnage.svelte
+│   │   │   │   │   ├── TestHameconnage.svelte
+│   │   │   │   │   ├── hameconnage.store.ts
+│   │   │   │   │   └── hameconnage.ts
 │   │   │   │   ├── reflexe-cyber
 │   │   │   │   │   ├── IllustrationHerosReflexeCyber.svelte
 │   │   │   │   │   ├── LandingReflexeCyber.svelte
@@ -1944,6 +1954,8 @@
 │   ├── maintenance.html
 │   ├── mentions-legales.html
 │   ├── mesure.html
+│   ├── mini-test-hameconnage-test.html
+│   ├── mini-test-hameconnage.html
 │   ├── mini-test-reflexe-cyber-parcours.html
 │   ├── mini-test-reflexe-cyber.html
 │   ├── mini-test-vrai-faux-quiz.html
@@ -2024,8 +2036,6 @@
 │   │   └── route-sans-validation.ts
 │   └── tsconfig.json
 ├── renovate.json
-├── scripts
-│   └── get-node-version.sh
 ├── shell.nix
 └── webc-externes
     ├── mini-test-exposition
@@ -2085,4 +2095,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-337 directories, 1868 files
+339 directories, 1979 files

@@ -1,33 +1,40 @@
-## Changelog : anssi-portail (30 derniers jours, au 23 octobre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 27 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une intégration massive des parcours de sécurisation à travers tout le portail afin de mieux guider les utilisateurs selon leur niveau de maturité. La boîte à outils a été considérablement enrichie avec de nouveaux modèles de documents et un système de retours utilisateurs plus robuste. En parallèle, un important travail de restructuration technique a été mené pour améliorer la maintenabilité de l'API et la gestion des fichiers.
+Ce mois a été marqué par un enrichissement significatif des outils d'accompagnement, notamment avec le déploiement d'un simulateur de hameçonnage et de nouveaux modèles de documents dans la boîte à outils. Le portail améliore également sa visibilité et son engagement grâce à l'intégration d'un nouveau blog et d'un parcours de sécurisation plus présent dans l'interface. Parallèlement, une importante phase de restructuration technique a permis de rendre le code plus modulaire et robuste.
 
 ### Évolutions fonctionnelles
-- **Boîte à outils** : 
-    - Ajout de nouveaux modèles de documents (revue des droits d'accès, revue de comptes utilisateurs, modification de mots de passe, listes d'activités).
-    - Amélioration du système de retours utilisateurs (possibilité de laisser un avis, limitation de la fréquence des retours, obligation d'authentification pour certains retours).
-    - Intégration de nouveaux outils et liens (jeux en ligne, jeux de cartes).
-- **Parcours de sécurisation** : Visibilité accrue des parcours sur l'ensemble du portail (menu de navigation, page d'accueil, résultats des tests de maturité et des réflexes cyber).
-- **Contacts** : Mise à jour et enrichissement des annuaires de contacts (données nationales, régionales et sectorielles).
-- **Expérience utilisateur & Contenu** : 
-    - Amélioration de l'interface (corrections sur les popovers, les modales et la navigation vers les landing pages).
-    - Mise à jour des statistiques (nombre de diagnostics réalisés et de parcours démarrés).
-    - Optimisation du blog (gestion des avis, intégration au sitemap).
+- **Nouveaux outils de sensibilisation :**
+  - Mise en place d'un test de hameçonnage complet incluant une boîte mail simulée, des illustrations animées et des fonctionnalités de vote (adaptées desktop et mobile).
+  - Intégration de nouveaux modèles dans la boîte à outils (revue des droits d'accès, revue de comptes utilisateurs, modification de mots de passe et listes d'activités).
+- **Parcours de sécurisation :**
+  - Meilleure visibilité du parcours de sécurisation via son intégration dans le menu, le pied de page, le héros de la page d'accueil et les résultats des tests (maturité, réflexes cyber).
+- **Contenu et Blog :**
+  - Lancement d'une section blog permettant la consultation d'articles, la lecture de résumés et la soumission de retours utilisateurs.
+- **Annuaire et Contacts :**
+  - Enrichissement des données de contact (nationaux, régionaux et sectoriels) et amélioration de la recherche et de l'affichage des cartes de contacts.
+- **Expérience utilisateur (UX) :**
+  - Optimisation de l'affichage sur tablettes et mobiles pour les tests et les outils.
+  - Amélioration de la navigation et correction de divers éléments d'interface (filtres, accordéons, popovers).
+  - Mise en place d'un système de retours utilisateurs sur les outils pour améliorer la qualité des services.
 
 ### Évolutions techniques
-- **Refactoring** : 
-    - Réorganisation profonde des routes API et de la structure des dossiers (outils, contacts, annuaires, mini-tests).
-    - Isolation de la logique métier, notamment pour la manipulation de fichiers XLSX, la gestion des cookies, du rate limiting et des redirections.
-    - Mutualisation de la validation des retours et de la gestion des utilisateurs.
-- **Architecture & Performance** : 
-    - Introduction d'un pattern stratégie pour certains composants.
-    - Mise en place du rendu côté serveur (SSR) pour les pages de conseils et mise en cache des articles du blog.
-    - Importation dynamique des boîtes à outils personnalisées.
-- **Infrastructure & Toolchain** : 
-    - Mise à jour des runners GitHub et des outils de test (Playwright).
-    - Mise à jour de dépendances critiques (Node.js types, lab-anssi-lib).
+- **Architecture et Refactoring :**
+  - Modularisation importante du code : découpage des tests en composants, isolation de la logique de manipulation de fichiers Excel (XLSX) et réorganisation des routes API (outils, annuaires, mini-tests).
+  - Refonte de la gestion des utilisateurs et des dossiers pour une meilleure maintenabilité.
+  - Implémentation d'un pattern "stratégie" pour certains services.
+- **Design System et UI :**
+  - Centralisation de la définition de l'UI-KIT et mise à jour vers la version 1.64.0.
+  - Intégration native des composants Svelte du DSFR (alertes, notices).
+- **Infrastructure et CI/CD :**
+  - Migration de la stack vers Node.js 26.
+  - Mise à jour de l'environnement Ruby et des runners GitHub Actions.
+  - Utilisation de `.nvmrc` comme référence pour la version de Node.js.
+- **Qualité et Tests :**
+  - Renforcement du typage TypeScript et nettoyage des règles de linting.
+  - Amélioration de la structure des tests et remplacement de certains outils de simulation par Vitest.
 
 ### Autres changements
-- **SEO** : Optimisation des métadonnées, des descriptions et des titres pour le référencement et le partage sur les réseaux sociaux.
-- **Qualité du code** : Nettoyage du linting (TypeScript-ESLint), suppression de commentaires et de fichiers obsolètes, et normalisation des fins de ligne.
+- **SEO et Référencement :** Mise à jour des titres, descriptions et métadonnées pour les réseaux sociaux et le sitemap.
+- **Nettoyage :** Suppression de nombreuses dépendances et configurations obsolètes (overrides, anciens services Crisp, contacts Jekyll).
+- **Documentation :** Mise à jour des contenus textuels et harmonisation de la terminologie.
