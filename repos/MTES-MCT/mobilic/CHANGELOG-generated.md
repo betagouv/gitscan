@@ -1,33 +1,35 @@
-## Changelog : mobilic (30 derniers jours, au 15 octobre 2026)
+## Changelog : mobilic (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration des outils de gestion et de contrôle. De nouvelles fonctionnalités de filtrage, de pagination et d'exportation de données ont été ajoutées pour faciliter le travail des administrateurs. L'interface utilisateur a également été affinée pour être plus claire et plus intuitive, tout en renforçant la stabilité technique et la performance de la plateforme.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la gestion des véhicules et la stabilisation de l'interface d'administration. L'expérience utilisateur a été affinée grâce à une meilleure gestion des tris, des formats d'immatriculation plus flexibles et une interface plus fluide lors du changement de société. Des améliorations de sécurité et de performance ont également été apportées pour garantir la fiabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités de gestion et de contrôle**
-    - Ajout de la possibilité d'exporter les contrôles avec des colonnes d'infractions et un onglet dédié [#977](https://github.com/MTES-MCT/mobilic/pull/977).
-    - Mise en place d'un registre de bugs pour les contrôles [#957](https://github.com/MTES-MCT/mobilic/pull/957).
-    - Possibilité pour les salariés de recevoir des bulletins de contrôle (BDC) avec ou sans licence [#982](https://github.com/MTES-MCT/mobilic/pull/982).
-    - Introduction d'un badge pour signaler les modifications de pauses [#952](https://github.com/MTES-MCT/mobilic/pull/952).
-- **Améliorations de l'interface et de l'expérience utilisateur**
-    - Amélioration du filtrage des activités par statut [#970](https://github.com/MTES-MCT/mobilic/pull/970) et ajout de la pagination pour les activités [#935](https://github.com/MTES-MCT/mobilic/pull/935).
-    - Refonte visuelle de la bannière d'alerte pour les salariés [#964](https://github.com/MTES-MCT/mobilic/pull/964).
-    - Optimisation de l'affichage des listes (incidents, filtres de statut) pour une meilleure lisibilité [#996](https://github.com/MTES-MCT/mobilic/pull/996), [#991](https://github.com/MTES-MCT/mobilic/pull/991).
-    - Nettoyage de l'interface : masquage des badges de validation lorsqu'ils sont vides ou en cours de chargement [#983](https://github.com/MTES-MCT/mobilic/pull/983), [#979](https://github.com/MTES-MCT/mobilic/pull/979).
-    - Clarification de certains libellés dans les formulaires pour une meilleure compréhension.
-    - Corrections sur l'application PWA (ancres de navigation, mise en page des notifications).
-- **Corrections diverses**
-    - Correction du formulaire de contrôle pour inclure correctement le type de transport.
+- **Gestion des véhicules** : 
+    - Amélioration de la saisie et de l'affichage des plaques d'immatriculation (support des formats à 6-8 chiffres, des plaques militaires numériques et formatage cohérent). [#1002](https://github.com/MTES-MCT/mobilic/pull/1002), [#980](https://github.com/MTES-MCT/mobilic/pull/980)
+    - Optimisation du tri des listes de véhicules par numéro d'immatriculation canonique.
+- **Interface d'administration** : 
+    - Amélioration de la fluidité lors du changement de société (affichage de squelettes de chargement, rafraîchissement automatique des filtres d'équipe et des données). [#1005](https://github.com/MTES-MCT/mobilic/pull/1005)
+    - Correction de la pagination des jours de travail pour éviter les erreurs de chargement.
+- **Contrôles et Incidents** : 
+    - Amélioration de l'interface utilisateur pour la liste des incidents. [#997](https://github.com/MTES-MCT/mobilic/pull/997), [#996](https://github.com/MTES-MCT/mobilic/pull/996)
+    - Ajout d'un registre de bugs de contrôle. [#957](https://github.com/MTES-MCT/mobilic/pull/957)
+    - Mise en place d'un nouveau format d'exportation pour les contrôles. [#977](https://github.com/MTES-MCT/mobilic/pull/977)
+    - Ajout du type de transport dans les formulaires de bulletin de contrôle.
+- **Navigation et Interface** : 
+    - Mise en place de la pagination pour la liste des activités. [#935](https://github.com/MTES-MCT/mobilic/pull/935)
+    - Amélioration des filtres de statut et des filtres d'activités. [#991](https://github.com/MTES-MCT/mobilic/pull/991), [#970](https://github.com/MTES-MCT/mobilic/pull/970)
+    - Optimisation de l'affichage des badges de notification (masqués lorsqu'ils sont vides ou en cours de chargement). [#983](https://github.com/MTES-MCT/mobilic/pull/983), [#979](https://github.com/MTES-MCT/mobilic/pull/979)
+    - Clarification des formulaires : renommage de "Activités RSE" en "Activités tachygraphe". [#984](https://github.com/MTES-MCT/mobilic/pull/984)
 
 ### Évolutions techniques
-- **Performance et stabilité**
-    - Optimisation des appels API pour réduire la charge lors de la consultation des détails d'une entreprise [#917](https://github.com/MTES-MCT/mobilic/pull/917).
-    - Amélioration de la résilience du système de suivi (polling) lors des exports [#972](https://github.com/MTES-MCT/mobilic/pull/972).
-    - Correction de problèmes de pagination et de gestion des données dans l'interface d'administration [#988](https://github.com/MTES-MCT/mobilic/pull/988).
-    - Amélioration de la gestion des erreurs de rafraîchissement de jeton (refresh-token) au niveau de l'API.
-- **Infrastructure et Observabilité**
-    - Mise à jour de la configuration CI/CD (passage à CircleCI version 2.1) et suppression des anciens processus de déploiement Scalingo [#975](https://github.com/MTES-MCT/mobilic/pull/975), [#976](https://github.com/MTES-MCT/mobilic/pull/976).
-    - Ajout de mesures de performance (temps de chargement du tableau de bord) via Sentry pour améliorer l'observabilité.
+- **Sécurité** : Mise à jour de Node.js pour corriger une vulnérabilité critique (CVE-2026-111497).
+- **CI/CD** : 
+    - Ajout d'une étape de build systématique avant le déploiement. [#968](https://github.com/MTES-MCT/mobilic/pull/968)
+    - Intégration d'un scan de secrets (Gitleaks) dans le processus de pré-commit pour renforcer la sécurité du code. [#966](https://github.com/MTES-MCT/mobilic/pull/966)
+- **Performance** : Réduction du nombre d'appels API lors de la consultation des détails d'une société dans l'administration. [#917](https://github.com/MTES-MCT/mobilic/pull/917)
+- **Refactoring** : 
+    - Simplification de la logique de tri des véhicules pour assurer une cohérence entre les tableaux et les sélecteurs. [#1004](https://github.com/MTES-MCT/mobilic/pull/1004)
+    - Optimisation du routage pour la gestion des badges.
 
 ### Autres changements
-- Nettoyage du code et résolution des avertissements de qualité (SonarCloud et Lint).
+- Nettoyage du code et correction de diverses alertes de qualité (SonarCloud et linting).
