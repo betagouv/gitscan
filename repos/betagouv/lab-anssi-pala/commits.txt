@@ -1,21 +1,43 @@
+2026-10-28T13:02:00+01:00 - d16570a - Bertrand Bougon : Ajoute une tâche planifiée qui se lance tous les 3 jours pour effectuer un scan complet
+2026-10-28T13:02:00+01:00 - 8558463 - Bertrand Bougon : [CORRECTION] n’affiche pas les hashs de commits si aucune modification de la cible lors du scan
+2026-10-28T12:18:41+01:00 - f38de75 - Bertrand Bougon : [CORRECTION] Ne mets pas à jour les submodules git si le répertoire racine n’est pas un repo git
+2026-10-28T11:31:55+01:00 - 6fd52e9 - Bertrand Bougon : [CORRECTION] Ne mets pas à jour un submodule git si non nécessaire
+2026-10-28T10:27:24+01:00 - b886fa6 - Bertrand Bougon : Ajoute un script de build pour CC
+2026-10-28T10:08:54+01:00 - 33cda04 - Bertrand Bougon : [CORRECTION] Corrige de déploiement
+2026-10-28T09:32:57+01:00 - c8006a7 - Bertrand Bougon : [CORRECTION] Corrige le build sur la production
+2026-10-28T09:16:38+01:00 - f5569cf - Bertrand Bougon : Sers une landing page
+2026-10-28T09:16:38+01:00 - af1337a - Bertrand Bougon : Ajoute les parties de présentation de PALA
+2026-10-28T09:16:38+01:00 - 9724bd6 - Bertrand Bougon : Mets en place un serveur HTTP
+2026-10-28T09:16:38+01:00 - 81f3b83 - Bertrand Bougon : Prépare à servir le front
+2026-10-28T09:16:38+01:00 - 65ddc4e - Bertrand Bougon : Ajoute les scripts de build et démarrage
+2026-10-27T17:12:31+01:00 - 3d373ea - Bertrand Bougon : [DOC] Lie la documentation interne dans le README racine
+2026-10-27T17:11:59+01:00 - f735102 - Pierre Leroy : [SOIN] Rend testable les abonnés à la notification du scan
+2026-10-27T17:11:59+01:00 - b43e17a - Bertrand Bougon : Affiche les informations Git lors de la génération de la config
+2026-10-27T17:11:59+01:00 - 6ae46ee - Pierre Leroy : Branche l’entrepot de scan pour récupérer les informations git et les afficher
+2026-10-27T17:11:59+01:00 - 68ce35c - Bertrand Bougon : [SOIN] Réunis les usages Git dans une seule interface
+2026-10-27T17:11:59+01:00 - 38a1636 - Pierre Leroy : [SOIN] Extrait une fabrique de messagerie
+2026-10-27T17:11:59+01:00 - 2c092ec - Bertrand Bougon : [REMANIEMENT] Fais émerger un type Modifications dans Git
+2026-10-27T17:11:59+01:00 - 2831380 - Bertrand Bougon : Affiche les informations de commit sur un scan non effectué
+2026-10-27T17:11:59+01:00 - 25e1e4d - Bertrand Bougon : Persiste les informations Git lors de la génération de configuration dans un entrepôt de scan
+2026-10-27T10:46:54+01:00 - f42cdf3 - Bertrand Bougon : Mets en place Renovate
 2026-10-21T08:42:06+02:00 - 435b687 - Pierre Leroy : Ajoute la durée et le nombre de fichiers nombre de fichier analysé  au message mattermost
-2026-10-20T16:34:24+02:00 - 52b8d35 - Pierre Leroy : [SOIN] Regroupe les informations de commits dans `InformationsDeCommits` ... `premierCommit`, `dernierCommit` et `nombreDeJours` forment un seul champ optionnel `informationsDeCommits`, en paramètre de `execute` et dans l'événement `SCAN_TERMINÉ`
-2026-10-20T16:34:24+02:00 - 916d93b - Pierre Leroy : Ajoute la durée d'exécution du scan à la fin de scan ... relevée par la CLI dans `scan-manifest.json` (`startedAt` et `completedAt`), non renseignée quand le manifeste est absent ou illisible
 2026-10-20T16:34:24+02:00 - fd0183e - Pierre Leroy : Ajoute le nombre de fichiers du périmètre à la fin de scan ... dérivé du `config.yaml` déjà lu par `LanceScan`, non renseigné quand le périmètre n'est pas contraignant
 2026-10-20T16:34:24+02:00 - a19acc0 - Pierre Leroy : Ajoute le nombre de jours de la fenêtre à la fin de scan ... paramètre optionnel de `execute`, publié dans l'événement `SCAN_TERMINÉ`
+2026-10-20T16:34:24+02:00 - 916d93b - Pierre Leroy : Ajoute la durée d'exécution du scan à la fin de scan ... relevée par la CLI dans `scan-manifest.json` (`startedAt` et `completedAt`), non renseignée quand le manifeste est absent ou illisible
 2026-10-20T16:34:24+02:00 - 6afec29 - Pierre Leroy : Ajoute le hash du dernier commit à la fin de scan ... paramètre optionnel de `execute`, publié dans l'événement `SCAN_TERMINÉ`
+2026-10-20T16:34:24+02:00 - 52b8d35 - Pierre Leroy : [SOIN] Regroupe les informations de commits dans `InformationsDeCommits` ... `premierCommit`, `dernierCommit` et `nombreDeJours` forment un seul champ optionnel `informationsDeCommits`, en paramètre de `execute` et dans l'événement `SCAN_TERMINÉ`
 2026-10-20T16:34:24+02:00 - 1bccdc3 - Pierre Leroy : Ajoute le hash du premier commit à la fin de scan ... paramètre optionnel de `execute`, publié dans l'événement `SCAN_TERMINÉ`
 2026-10-20T13:21:43+02:00 - 0bc4da5 - Bertrand Bougon : [CORRECTION] Filtre seulement les fichiers modifiés existants
 2026-10-20T11:55:42+02:00 - e527918 - Bertrand Bougon : Enchaîne le scan complet sur plusieurs cibles ... prépare l'environnement une fois puis scanne chaque cible l'une après l'autre ; poursuit malgré l'échec d'une cible (code de sortie = nombre d'échecs). La CLI prend --cible (répétable) ou --cibles <json>, en remplacement de --project/--url
 2026-10-20T11:55:42+02:00 - a9b827b - Bertrand Bougon : Ajoute le domaine des cibles au scan complet ... dérive le nom depuis l'URL du dépôt et valide la liste (en ligne ou fichier JSON ; noms uniques)
-2026-10-19T19:01:31+02:00 - 44834ec - Bertrand Bougon : Passe prettier sur la documentation
 2026-10-19T19:01:31+02:00 - de47f41 - Bertrand Bougon : [CORRECTION] Corrige l’exécution de la CI
+2026-10-19T19:01:31+02:00 - 44834ec - Bertrand Bougon : Passe prettier sur la documentation
 2026-10-19T18:07:34+02:00 - 319fe94 - Bertrand Bougon : [CORRECTION] Ne publie pas sur Mattermost si l’URL n’est pas fournie
 2026-10-19T17:04:02+02:00 - 5d1a02b - Bertrand Bougon : Ajoute un ADR sur la gestion de l’app CLever Cloud
 2026-10-19T16:52:29+02:00 - 3fad17f - Bertrand Bougon : Ajoute un ADR sur comment expliciter les erreurs rencontrées lors d’un scan
 2026-10-19T16:40:47+02:00 - 9e8e289 - Bertrand Bougon : Ne lance pas de scan Codex si aucun fichier modifié spécifié dans la config
-2026-10-19T15:39:09+02:00 - 98d7f5c - Bertrand Bougon : Fournis des fonctions d’aide pour générer les dépendances des différents outils
 2026-10-19T15:39:09+02:00 - cc5a5f4 - Bertrand Bougon : Lance un scan de bout en bout
+2026-10-19T15:39:09+02:00 - 98d7f5c - Bertrand Bougon : Fournis des fonctions d’aide pour générer les dépendances des différents outils
 2026-10-19T14:21:44+02:00 - 69e91e6 - Bertrand Bougon : [CORRECTION] Débraye la vérification du .env lorsque l’on est en production
 2026-10-19T14:20:29+02:00 - 9cae8d4 - Bertrand Bougon : Applique prettier
 2026-10-19T11:38:21+02:00 - a8cb858 - Bertrand Bougon : Ajoute une étape pour déployer PALA sur la démo
@@ -23,27 +45,27 @@
 2026-10-19T09:22:41+02:00 - 402217e - Bertrand Bougon : [CI] Ajoute le déploiement sur l’environnement de démo
 2026-10-16T18:20:26+02:00 - bf7d782 - Bertrand Bougon : Mets à jour le README
 2026-10-16T17:07:02+02:00 - 9fb308a - Bertrand Bougon : Réessaie le proxy avant un scan pour tolérer un démarrage à froid
-2026-10-16T16:10:28+02:00 - 5fdee84 - Bertrand Bougon : [SOIN] Retire les commentaires de provenance vers les scripts bash ... les en-têtes ne renvoient plus aux .sh supprimés (run-scan, run-shannon, bootstrap…) ; le contenu utile des commentaires est conservé
 2026-10-16T16:10:28+02:00 - fc6c833 - Bertrand Bougon : Supprime l'outillage bash non maintenu
-2026-10-16T16:10:28+02:00 - 40f5350 - Bertrand Bougon : [SOIN] Retire les fixtures codex-security.env devenues inertes ... scan, validate, lanceScan et valideFinding ne fabriquent plus de faux codex-security.env (LITELLM_MASTER_KEY) : plus aucun check ne lit ce fichier depuis le découplage
-2026-10-16T16:10:28+02:00 - e02992a - Bertrand Bougon : [SOIN] Retire la constante CHEMIN_FICHIER_ENV_CODEX orpheline ... plus aucun code ne référence codex-security.env
-2026-10-16T16:10:28+02:00 - a6ef92b - Bertrand Bougon : génère-env ne produit plus codex-security.env ... plus aucun composant ne lit ce fichier ; génère-env ne génère que outils/shannon/shannon.env (et valide toujours le .env racine)
-2026-10-16T16:10:28+02:00 - 211329b - Bertrand Bougon : Rend le fichier d'environnement d'un outil optionnel ... `PreparationOutil.fichierEnvironnement` devient facultatif ; codex-security n'en a plus (tout vient du .env racine) et disparaît du récap du bootstrap ; Shannon conserve le sien
-2026-10-16T16:10:28+02:00 - a24ffb7 - Bertrand Bougon : N'exige plus codex-security.env avant un scan ou une validation ... scan et validate lisent le proxy dans le .env racine ; le check d'existence de codex-security.env (relique du flux fichier) est retiré de prepareExecutionCodex
-2026-10-16T16:10:28+02:00 - 4248c76 - Bertrand Bougon : Passe les identifiants fournisseur au conteneur depuis le process ... le conteneur proxy hérite FOURNISSEUR_BASE_URL et FOURNISSEUR_API_KEY du process (du .env racine) via `-e <nom>`, au lieu de `--env-file codex-security.env` ; valeurs hors de l'argv, et le conteneur ne dépend plus de ce fichier
-2026-10-16T16:10:28+02:00 - 23947a3 - Bertrand Bougon : [CORRECTION] Aligne le port publié et le port d'écoute du proxy local ... conteneur et publication docker utilisent le même port (celui de LITELLM_BASE_URL, défaut 4000) ; sans cet alignement, une URL avec un port ≠ 4000 publiait vers un port où LiteLLM n'écoutait pas
-2026-10-16T16:10:28+02:00 - c32be9a - Bertrand Bougon : [SOIN] Découple proxy() de codex-security.env ... `pourCodexSecurity().proxy()` ne prend plus de `systemeDeFichier` (tout vient du .env racine) ; `DemarreProxy` perd sa dépendance au système de fichier devenue inutile
 2026-10-16T16:10:28+02:00 - e9002c0 - Bertrand Bougon : [SOIN] Supprime portLiteLLM, désormais sans consommateur ... l'adresse du proxy vient de LITELLM_BASE_URL ; `proxy()` ne lit plus PORT_LITE_LLM dans codex-security.env (paramètre systemeDeFichier conservé, découplage complet en phase 2.1)
+2026-10-16T16:10:28+02:00 - e02992a - Bertrand Bougon : [SOIN] Retire la constante CHEMIN_FICHIER_ENV_CODEX orpheline ... plus aucun code ne référence codex-security.env
+2026-10-16T16:10:28+02:00 - c32be9a - Bertrand Bougon : [SOIN] Découple proxy() de codex-security.env ... `pourCodexSecurity().proxy()` ne prend plus de `systemeDeFichier` (tout vient du .env racine) ; `DemarreProxy` perd sa dépendance au système de fichier devenue inutile
+2026-10-16T16:10:28+02:00 - a6ef92b - Bertrand Bougon : génère-env ne produit plus codex-security.env ... plus aucun composant ne lit ce fichier ; génère-env ne génère que outils/shannon/shannon.env (et valide toujours le .env racine)
+2026-10-16T16:10:28+02:00 - a24ffb7 - Bertrand Bougon : N'exige plus codex-security.env avant un scan ou une validation ... scan et validate lisent le proxy dans le .env racine ; le check d'existence de codex-security.env (relique du flux fichier) est retiré de prepareExecutionCodex
+2026-10-16T16:10:28+02:00 - 5fdee84 - Bertrand Bougon : [SOIN] Retire les commentaires de provenance vers les scripts bash ... les en-têtes ne renvoient plus aux .sh supprimés (run-scan, run-shannon, bootstrap…) ; le contenu utile des commentaires est conservé
+2026-10-16T16:10:28+02:00 - 4248c76 - Bertrand Bougon : Passe les identifiants fournisseur au conteneur depuis le process ... le conteneur proxy hérite FOURNISSEUR_BASE_URL et FOURNISSEUR_API_KEY du process (du .env racine) via `-e <nom>`, au lieu de `--env-file codex-security.env` ; valeurs hors de l'argv, et le conteneur ne dépend plus de ce fichier
+2026-10-16T16:10:28+02:00 - 40f5350 - Bertrand Bougon : [SOIN] Retire les fixtures codex-security.env devenues inertes ... scan, validate, lanceScan et valideFinding ne fabriquent plus de faux codex-security.env (LITELLM_MASTER_KEY) : plus aucun check ne lit ce fichier depuis le découplage
+2026-10-16T16:10:28+02:00 - 23947a3 - Bertrand Bougon : [CORRECTION] Aligne le port publié et le port d'écoute du proxy local ... conteneur et publication docker utilisent le même port (celui de LITELLM_BASE_URL, défaut 4000) ; sans cet alignement, une URL avec un port ≠ 4000 publiait vers un port où LiteLLM n'écoutait pas
+2026-10-16T16:10:28+02:00 - 211329b - Bertrand Bougon : Rend le fichier d'environnement d'un outil optionnel ... `PreparationOutil.fichierEnvironnement` devient facultatif ; codex-security n'en a plus (tout vient du .env racine) et disparaît du récap du bootstrap ; Shannon conserve le sien
 2026-10-16T16:10:28+02:00 - 0ae2520 - Bertrand Bougon : Dérive l'adresse du proxy local de LITELLM_BASE_URL ... démarre-proxy publie le conteneur et sonde sa disponibilité à l'URL de `urlLiteLLMConfiguree()` ; `ConfigurationProxy` porte `url` au lieu de `port`, l'adaptateur docker en extrait hôte et port
-2026-10-16T14:54:13+02:00 - ad0ed00 - Bertrand Bougon : Aligne le template et le README sur le .env racine source de vérité ... codex-security.env ne porte plus que FOURNISSEUR_* + LITELLM_API_KEY/CODEX_API_KEY (recopiés) ; retrait de LITELLM_MASTER_KEY et de LITELLM_BASE_URL du template ; README : URL et clé du proxy obligatoires dans le .env racine
-2026-10-16T14:54:13+02:00 - 71af106 - Bertrand Bougon : Exige LITELLM_BASE_URL et LITELLM_API_KEY dans le .env racine ... le .env racine étant désormais la source de vérité du proxy, `verifiePresenceFichierRacine` échoue tôt si l'URL ou la clé du proxy manquent
-2026-10-16T14:54:13+02:00 - 0359132 - Bertrand Bougon : Lis l'URL du proxy depuis le .env racine, sans la stocker ailleurs ... génère-config et le health check du scan/validate utilisent `urlLiteLLMConfiguree()` (LITELLM_BASE_URL du .env racine) ; retrait de `urlLiteLLM` de `EnvironnementProxy`, du fallback 127.0.0.1 et de l'écriture de l'URL dans codex-security.env
 2026-10-16T14:54:13+02:00 - eb589c0 - Bertrand Bougon : Lis la clé LITELLM_API_KEY du .env racine au lieu de la générer ... la clé est créée côté proxy (app LiteLLM distante ou conteneur local) et fournie dans le .env racine ; `proxy().jeton` la lit depuis l'environnement, génère-env la recopie telle quelle. Supprime `GenerateurDeJeton` (port, adaptateur, double) devenu inutile
 2026-10-16T14:54:13+02:00 - e8feda9 - Bertrand Bougon : Documente le proxy LiteLLM distant via `LITELLM_BASE_URL` ... template codex-security.env, README codex-security (cas PaaS/Clever) et aide de la commande scan : proxy local par défaut, ou app hébergée via `LITELLM_BASE_URL`
 2026-10-16T14:54:13+02:00 - bb2e9c1 - Bertrand Bougon : Persiste LITELLM_BASE_URL dans codex-security.env quand il est configuré ... génère-env recopie l'URL du proxy du `.env` racine vers codex-security.env (relue par `proxy()`) ; absente, le proxy local par défaut s'applique
-2026-10-16T14:54:13+02:00 - 385ec8c - Bertrand Bougon : Vérifie la présence du proxy sur son URL plutôt que 127.0.0.1 ... le health check préalable au scan et à la validation interroge `urlLiteLLM` (proxy local ou distant) ; le message d'erreur renvoie vers démarre-proxy ou `LITELLM_BASE_URL`
+2026-10-16T14:54:13+02:00 - ad0ed00 - Bertrand Bougon : Aligne le template et le README sur le .env racine source de vérité ... codex-security.env ne porte plus que FOURNISSEUR_* + LITELLM_API_KEY/CODEX_API_KEY (recopiés) ; retrait de LITELLM_MASTER_KEY et de LITELLM_BASE_URL du template ; README : URL et clé du proxy obligatoires dans le .env racine
 2026-10-16T14:54:13+02:00 - 9217ec9 - Bertrand Bougon : Pointe la config de scan vers l'URL du proxy plutôt que son port ... `ConfigurationCible` prend `urlProxy` (base_url = `<url>/v1`) alimentée par `proxy.urlLiteLLM`, pour viser le proxy local comme l'app distante sur PaaS
+2026-10-16T14:54:13+02:00 - 71af106 - Bertrand Bougon : Exige LITELLM_BASE_URL et LITELLM_API_KEY dans le .env racine ... le .env racine étant désormais la source de vérité du proxy, `verifiePresenceFichierRacine` échoue tôt si l'URL ou la clé du proxy manquent
 2026-10-16T14:54:13+02:00 - 3baca67 - Bertrand Bougon : Expose l'URL du proxy LiteLLM, configurable via `LITELLM_BASE_URL` ... `EnvironnementProxy.urlLiteLLM` vaut http://127.0.0.1:<port> en local, ou l'app distante quand `LITELLM_BASE_URL` est défini (slash final normalisé), en vue du déploiement du proxy sur un PaaS
+2026-10-16T14:54:13+02:00 - 385ec8c - Bertrand Bougon : Vérifie la présence du proxy sur son URL plutôt que 127.0.0.1 ... le health check préalable au scan et à la validation interroge `urlLiteLLM` (proxy local ou distant) ; le message d'erreur renvoie vers démarre-proxy ou `LITELLM_BASE_URL`
+2026-10-16T14:54:13+02:00 - 0359132 - Bertrand Bougon : Lis l'URL du proxy depuis le .env racine, sans la stocker ailleurs ... génère-config et le health check du scan/validate utilisent `urlLiteLLMConfiguree()` (LITELLM_BASE_URL du .env racine) ; retrait de `urlLiteLLM` de `EnvironnementProxy`, du fallback 127.0.0.1 et de l'écriture de l'URL dans codex-security.env
 2026-10-15T15:38:51+02:00 - b13c74e - Bertrand Bougon : Renomme chemins en fichiersModifies
 2026-10-15T15:38:51+02:00 - 56a2553 - Bertrand Bougon : Annonce la mise à jour de la copie de travail en première étape ... génère-config affiche « Mise à jour de la copie de travail : <copie> » avant le diff, pour tracer le pull dans les logs d'automatisation
 2026-10-15T15:38:50+02:00 - dd3fec1 - Bertrand Bougon : Met à jour la copie de travail de la cible avant de générer la config ... génère-config fait d'abord un `git pull --ff-only` du dépôt cible, pour que la fenêtre glissante voie les derniers commits ; port `DepotGit.metAJour` + adaptateur ligne de commande
@@ -60,11 +82,11 @@
 2026-10-15T15:38:39+02:00 - 4a04313 - Bertrand Bougon : Affiche les constats dans la messagerie Mattermost
 2026-10-15T15:38:38+02:00 - a0b1d7b - Bertrand Bougon : Ajoute les constats retournés par le scan
 2026-10-15T15:38:37+02:00 - ec808ea - Bertrand Bougon : Poste sur la messagerie un message sur le résultat du scan
-2026-10-15T08:54:23+02:00 - 43b3394 - Bertrand Bougon : Publie un événement à chaque fin de scan Codex Security ... `LanceScan` publie `SCAN_TERMINÉ` (cible, résultat, coût) sur le bus, en réussite comme en échec
-2026-10-15T08:54:23+02:00 - 1b8375d - Bertrand Bougon : Extrais le coût d'un scan dans l'objet-valeur `Cout` ... `calculeCout` centralise le calcul ; `EstimationDuCout` s'appuie dessus sans changer son affichage
-2026-10-15T08:54:23+02:00 - 91eb1d4 - Bertrand Bougon : Ajoute un bus d'événements en mémoire ... port `BusEvenements` et son adaptateur `BusEvenementsPALA`, sur lequel on publie et on s'abonne par nom d'événement
 2026-10-15T08:54:23+02:00 - a4ddd78 - Bertrand Bougon : [SOIN] Retire les commentaires devenus superflus de `Tarifs`
+2026-10-15T08:54:23+02:00 - 91eb1d4 - Bertrand Bougon : Ajoute un bus d'événements en mémoire ... port `BusEvenements` et son adaptateur `BusEvenementsPALA`, sur lequel on publie et on s'abonne par nom d'événement
+2026-10-15T08:54:23+02:00 - 43b3394 - Bertrand Bougon : Publie un événement à chaque fin de scan Codex Security ... `LanceScan` publie `SCAN_TERMINÉ` (cible, résultat, coût) sur le bus, en réussite comme en échec
 2026-10-15T08:54:23+02:00 - 3575a22 - Bertrand Bougon : [SOIN] Corrige le nom du dossier de tests `adapteurs` en `adaptateurs`
+2026-10-15T08:54:23+02:00 - 1b8375d - Bertrand Bougon : Extrais le coût d'un scan dans l'objet-valeur `Cout` ... `calculeCout` centralise le calcul ; `EstimationDuCout` s'appuie dessus sans changer son affichage
 2026-10-14T09:06:05+02:00 - 7c1ca88 - Bertrand Bougon : Fournis la clé d’API du fournisseur dans la déclaration du modèle pour Shannon
 2026-10-13T17:33:19+02:00 - 3bf73eb - Bertrand Bougon : [REMANIEMENT] Répercute le renommage du `check-tool-calls` en `vérifie-appels-outils-llm` de la CLI Node sur la CLI bash
 2026-10-13T17:33:17+02:00 - b251661 - Bertrand Bougon : [REMANIEMENT] Renomme le script check-tool-calls en vérifie-appels-outils-llm

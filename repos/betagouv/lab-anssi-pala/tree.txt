@@ -6,17 +6,21 @@
 │   │   │   └── action.yml
 │   │   └── preparer-environnement
 │   │       └── action.yml
+│   ├── renovate.json
 │   └── workflows
 │       ├── ci.yaml
 │       └── deploiement.yml
 ├── .gitignore
 ├── .gitmodules
+├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc
 ├── LICENSE
 ├── README.md
 ├── cible
 │   └── .gitkeep
+├── clevercloud
+│   └── cron.json
 ├── documentation
 │   ├── ADRs
 │   │   ├── 0001-expliciter-origine-erreur-message-scan.md
@@ -43,7 +47,6 @@
 │       │   ├── codex-security
 │       │   │   ├── adaptateurs
 │       │   │   │   ├── ConteneurProxyDocker.ts
-│       │   │   │   ├── DepotGitEnLigneDeCommande.ts
 │       │   │   │   ├── ScannerCodexSecurityNpm.ts
 │       │   │   │   └── ValidationCodexSdk.ts
 │       │   │   ├── application
@@ -74,7 +77,6 @@
 │       │   │   │   └── scanTermine.ts
 │       │   │   └── ports
 │       │   │       ├── ConteneurProxy.ts
-│       │   │       ├── DepotGit.ts
 │       │   │       ├── EnvironnementCodex.ts
 │       │   │       ├── ScannerCodexSecurity.ts
 │       │   │       └── ValidationCodex.ts
@@ -125,6 +127,10 @@
 │       │   │   │       └── processus.ts
 │       │   │   ├── environnement.ts
 │       │   │   ├── ligne-de-commande.ts
+│       │   │   ├── partage
+│       │   │   │   └── scan.ts
+│       │   │   ├── persistance
+│       │   │   │   └── entrepots.ts
 │       │   │   └── ports
 │       │   │       ├── Attente.ts
 │       │   │       ├── BusEvenements.ts
@@ -202,11 +208,10 @@
 │           │   ├── AttenteInstantanee.ts
 │           │   ├── ConsoleEnMemoire.ts
 │           │   ├── ConteneurProxySimule.ts
-│           │   ├── DepotGitEnMemoire.ts
 │           │   ├── DepotShannonSimule.ts
 │           │   ├── EstimationDuCoutSimulee.ts
 │           │   ├── EtapesScanCompletSimulee.ts
-│           │   ├── GitSimule.ts
+│           │   ├── GitMemoire.ts
 │           │   ├── HorlogeFigee.ts
 │           │   ├── PreparationOutilSimulee.ts
 │           │   ├── ReseauSimule.ts
@@ -230,6 +235,8 @@
 │           │   │       ├── busEvenementsPALA.spec.ts
 │           │   │       └── consoleNode.spec.ts
 │           │   └── environnement.spec.ts
+│           ├── ports
+│           │   └── notificationScan.spec.ts
 │           ├── scan-complet
 │           │   ├── application
 │           │   │   └── lanceScanComplet.spec.ts
@@ -286,8 +293,56 @@
 │       └── source
 ├── package.json
 ├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── scripts
-│   └── estimer-cout.py
+│   ├── clever-cloud
+│   │   └── post-build-clever.sh
+│   ├── estimer-cout.py
+│   └── taches
+│       └── scanLesRepoDuLab.sh
+├── serveur
+│   ├── back
+│   │   └── src
+│   │       ├── adaptateurs
+│   │       │   └── adaptateurProtection.ts
+│   │       ├── http
+│   │       │   └── middleware.ts
+│   │       ├── index.ts
+│   │       └── serveur.ts
+│   └── front
+│       ├── README.md
+│       ├── assets
+│       │   └── fonts
+│       │       ├── Marianne-Bold.ttf
+│       │       ├── Marianne-Bold.woff
+│       │       ├── Marianne-Bold.woff2
+│       │       ├── Marianne-Bold_Italic.woff
+│       │       ├── Marianne-Bold_Italic.woff2
+│       │       ├── Marianne-Light.woff
+│       │       ├── Marianne-Light.woff2
+│       │       ├── Marianne-Light_Italic.woff
+│       │       ├── Marianne-Light_Italic.woff2
+│       │       ├── Marianne-Medium.woff
+│       │       ├── Marianne-Medium.woff2
+│       │       ├── Marianne-Medium_Italic.woff
+│       │       ├── Marianne-Medium_Italic.woff2
+│       │       ├── Marianne-Regular.ttf
+│       │       ├── Marianne-Regular.woff
+│       │       ├── Marianne-Regular.woff2
+│       │       ├── Marianne-Regular_Italic.woff
+│       │       └── Marianne-Regular_Italic.woff2
+│       ├── index.html
+│       ├── package.json
+│       ├── pnpm-lock.yaml
+│       ├── pnpm-workspace.yaml
+│       ├── src
+│       │   ├── App.svelte
+│       │   ├── app.css
+│       │   ├── main.ts
+│       │   └── marianne.css
+│       ├── svelte.config.js
+│       ├── tsconfig.json
+│       └── vite.config.ts
 ├── tsconfig.json
 └── vitest.config.ts
-87 directories, 205 files
+102 directories, 245 files

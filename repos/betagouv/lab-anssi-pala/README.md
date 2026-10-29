@@ -19,11 +19,11 @@ Les deux s'enchaînent : **Codex Security d'abord** (analyse statique, large et 
 Chaque outil est branché sur un modèle via une API compatible **Chat Completions**. Pour Codex
 Security, qui ne parle que l'API _Responses_, un **proxy LiteLLM local** fait la traduction et
 garde la clé du fournisseur hors de l'environnement de l'agent (voir
-`outils/codex-security/README.md`).
+[documentation Codex](outils/codex-security/README.md) de PALA).
 
 ## Démarrage
 
-Prérequis : Node.js ≥ 24, Python ≥ 3.10, Docker. Les modèles sont fournis par un fournisseur
+Prérequis : Node.js 24.22.1 (version épinglée dans `.nvmrc`), Python ≥ 3.10, Docker. Les modèles sont fournis par un fournisseur
 compatible OpenAI (Albert ou Scaleway).
 
 Il existe une CLI déclinée en bash et en Node. Les commandes fournies utilisent la CLI Node
@@ -54,8 +54,10 @@ pnpm run bootstrap --project <nom> --url <url git>
 pnpm run génère-env
 ```
 
-La configuration du fournisseur se fait par les variables `FOURNISSEUR_*` du `.env` racine
-(voir `documentation/albert-api.md` et `documentation/scaleway-ai-api.md`).
+La configuration du fournisseur se fait par les variables `FOURNISSEUR_*` du `.env` racine :
+
+- [Albert](documentation/albert-api.md)
+- [Scaleway](documentation/scaleway-ai-api.md)
 
 #### Génération de la configuration
 
@@ -91,14 +93,23 @@ pnpm run génère-config --cible <nom>
    configurations par intention (analyse, authentifié, création de compte, focus, SAST) sont dans
    `outils/shannon/configs/`.
 
-Détails par outil : `outils/codex-security/README.md`, `outils/shannon/README.md`.
-Méthode d'ensemble : `documentation/demarche.md`.
+Détails par outil :
+
+- [Codex Security](outils/codex-security/README.md),
+- [Shannon](outils/shannon/README.md).
+- [Méthode d'ensemble](documentation/demarche.md).
+
+#### Effectuer un scan complet
+
+⚠️ Renseigner le `.env` racine est indispensable pour lancer un scan complet.
+
+La commande `pnpm run scan-complet --project <nom> --url <url-git>` permet de lancer toutes les étapes précédentes en une seule fois.
 
 ## Structure
 
 ```
 outils/<outil>/        source/ (sous-module amont), configs, README (voir documentation/ajouter-un-outil.md)
-outillage/javascript/  outillage TypeScript (Node 24, vitest, architecture hexagonale)
+outillage/javascript/  outillage TypeScript (Node 24.22.1, vitest, architecture hexagonale)
 documentation/         démarche, notes API fournisseurs, versions
 cible/                 copies locales des cibles (jamais versionnées)
 ```

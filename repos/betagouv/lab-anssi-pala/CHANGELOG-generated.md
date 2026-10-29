@@ -1,32 +1,29 @@
-## Changelog : lab-anssi-pala (30 derniers jours, au 21 octobre 2026)
+## Changelog : lab-anssi-pala (30 derniers jours, au 28 octobre 2026)
 
 ### Résumé
-Le projet a franchi une étape majeure en passant d'une collection de scripts disparates à une suite d'outils d'audit industrialisée et robuste. La transition vers une interface de ligne de commande (CLI) basée sur TypeScript permet désormais de piloter des scans complexes sur plusieurs cibles de manière séquentielle, avec un contrôle précis du périmètre (via l'historique Git) et une gestion rigoureuse des coûts liés aux modèles d'IA.
+Le projet a franchi une étape majeure en passant d'une suite de scripts disparates à une interface de ligne de commande (CLI) robuste et structurée en TypeScript. Cette évolution permet une automatisation accrue des audits de sécurité, une meilleure maîtrise des coûts liés aux modèles d'IA et un reporting plus détaillé via Mattermost.
 
 ### Évolutions fonctionnelles
-- **Industrialisation des scans** : Possibilité d'enchaîner l'analyse de plusieurs cibles lors d'une seule exécution.
-- **Contrôle du périmètre** : Définition dynamique de la zone d'analyse basée sur les fichiers modifiés dans une fenêtre de temps ajustable (option `--jours`).
-- **Maîtrise des coûts** : 
-    - Estimation du coût des scans (Codex et Shannon) en fin d'exécution.
-    - Mise en place de plafonds de budget configurables pour le proxy LiteLLM.
-- **Nouvelle interface CLI** : Introduction de commandes structurées (`pnpm scan`, `pnpm validate`, `pnpm shannon`, `pnpm bootstrap`, `pnpm estimer-cout`, etc.).
-- **Reporting amélioré** : 
-    - Envoi automatique des résultats et des constats de sécurité vers Mattermost.
-    - Sorties console colorées pour une meilleure lisibilité des étapes de scan et de validation.
-- **Outils de diagnostic** : Ajout de la commande `check-tool-calls` pour vérifier la compatibilité des modèles avec l'appel d'outils.
+- **Automatisation des audits** : Mise en place d'une tâche planifiée pour effectuer un scan complet tous les 3 jours.
+- **Reporting enrichi** : Les notifications Mattermost incluent désormais des métriques clés (durée d'exécution, nombre de fichiers analysés, fenêtre de jours et informations sur les derniers commits).
+- **Scans ciblés et intelligents** : 
+    - Possibilité de limiter le périmètre d'analyse aux seuls fichiers modifiés via un historique Git paramétrable (option `--jours`).
+    - Support du scan multi-cibles pour traiter plusieurs projets successivement.
+- **Maîtrise des coûts** : Intégration d'une estimation du coût des analyses (basée sur les tokens consommés) affichée en fin de scan.
+- **Nouvelles commandes CLI** : Introduction de commandes structurées pour le bootstrap, l'estimation des coûts, le scan, la validation et la gestion du proxy.
 
 ### Évolutions techniques
-- **Migration technologique** : Refonte majeure du socle de l'outillage vers TypeScript (Node 24) pour remplacer progressivement les scripts Bash et Python.
-- **Architecture événementielle** : Implémentation d'un bus d'événements interne pour la communication entre les composants (ex: événement `SCAN_TERMINÉ`).
-- **Gestion des configurations** : Automatisation de la génération de fichiers de configuration YAML spécifiques à chaque cible.
-- **Optimisation du Proxy LLM** : 
-    - Amélioration de la gestion du proxy LiteLLM (support des déploiements distants/PaaS via `LITELLM_BASE_URL`).
-    - Découplage de la gestion des variables d'environnement pour une meilleure sécurité et flexibilité.
-- **CI/CD et Déploiement** : 
-    - Mise en place de la chaîne de CI.
-    - Ajout du support Docker et d'une étape de déploiement vers un environnement de démonstration (Clever Cloud).
-- **Refactoring structurel** : Réorganisation complète de l'arborescence (regroupement des outils dans `outillage/`, création de `passerelles/` pour l'échange de données comme le format SARIF).
+- **Migration TypeScript** : Refonte massive de l'outillage vers TypeScript (Node 24) pour améliorer la fiabilité et la maintenabilité.
+- **Gestion des environnements** : Centralisation de la configuration dans un fichier `.env` unique, servant de source de vérité et supprimant la dépendance aux fichiers d'environnement spécifiques par outil.
+- **Architecture et communication** : 
+    - Implémentation d'un bus d'événements interne pour la gestion des fins de scan.
+    - Adoption de principes d'architecture hexagonale pour découpler les adaptateurs (Git, Docker, API).
+- **Optimisation du Proxy LLM** : Amélioration de la gestion du proxy LiteLLM, supportant désormais des déploiements locaux ou distants (PaaS) et l'intégration de modèles comme DeepSeek (via Scaleway).
+- **Infrastructure et CI/CD** : 
+    - Initialisation de la CI/CD.
+    - Mise en place de scripts de build et de déploiement Docker pour Clever Cloud.
+- **Refactoring de la CLI** : Harmonisation des commandes (renommage en français pour plus de cohérence) et amélioration de l'expérience utilisateur (sorties console colorées, aide détaillée).
 
 ### Autres changements
-- **Documentation** : Mise à jour massive du README, ajout de documents de décision d'architecture (ADR) et documentation de la nouvelle approche TypeScript.
-- **Nettoyage** : Suppression des scripts Bash obsolètes, des fichiers d'environnement inutilisés et harmonisation des noms de variables (standardisation vers `FOURNISSEUR_*`).
+- **Documentation** : Mise à jour complète du README, ajout de documents de décision d'architecture (ADR) et documentation de l'outillage TypeScript.
+- **Nettoyage** : Suppression des scripts Bash et des variables d'environnement obsolètes, et réorganisation de la structure des répertoires (`outillage/`, `passerelles/`, etc.).

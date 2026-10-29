@@ -4,11 +4,17 @@
   "description": "Outillage TypeScript du laboratoire d'audit (en parallèle des scripts bash/Python)",
   "type": "module",
   "engines": {
-    "node": ">=24"
+    "node": ">=24.22.1"
   },
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
+    "dev:back": "node --require dotenv/config --watch --import tsx serveur/back/src/index.ts",
+    "dev:front": "pnpm --dir serveur/front dev",
+    "build": "pnpm build:back && pnpm build:front",
+    "build:back": "tsc --noEmit",
+    "build:front": "pnpm --dir serveur/front install && pnpm --dir serveur/front build",
+    "start": "node --require dotenv/config serveur/back/src/index.ts",
     "estimer-cout": "node outillage/javascript/src/composition/estimer-cout.ts",
     "bootstrap": "node outillage/javascript/src/composition/bootstrap.ts",
     "format:corrige": "prettier --write .",
@@ -23,15 +29,25 @@
     "shannon-smoke": "node --require dotenv/config outillage/javascript/src/composition/shannon-smoke.ts",
     "vérifie-appels-outils-llm": "node --require dotenv/config outillage/javascript/src/composition/verifie-appels-outils-llm.ts"
   },
+  "runtimeDependencies": {
+    "@lab-anssi/ui-kit": "1.64.0"
+  },
   "dependencies": {
     "commander": "^15.0.0",
     "date-fns": "^4.4.0",
     "dotenv": "^18.0.4",
+    "express": "^5.3.0",
+    "express-ip-filter": "^2.0.0",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
     "yaml": "^2.9.1"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/lusca": "^1.7.5",
     "@types/node": "24.19.0",
     "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
     "typescript": "7.0.2",
     "vitest": "5.0.2"
   }
