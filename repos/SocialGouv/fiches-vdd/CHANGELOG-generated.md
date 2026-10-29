@@ -1,7 +1,7 @@
-## Changelog : fiches-vdd (30 derniers jours, au 18 octobre 2026)
+## Changelog : fiches-vdd (30 derniers jours, au 28/10/2026)
 
 ### Résumé
-Le projet a maintenu son rythme de mise à jour automatisée, assurant la fraîcheur quotidienne des données "Vos droits et démarches" mises à disposition des particuliers et des professionnels.
+Le projet a maintenu son cycle de mise à jour quotidienne des données "Vos droits et démarches". Ces actualisations automatiques garantissent la fraîcheur et la précision des informations contenues dans les fichiers JSON mis à disposition des développeurs.
 
 ### Évolutions fonctionnelles
-- Actualisation quotidienne des fiches de données (format JSON) pour garantir l'exactitude des informations sur les droits et les démarches.
+- Mise à jour quotidienne des contenus des fiches (données JSON) pour refléter les dernières informations relatives aux droits et démarches.
