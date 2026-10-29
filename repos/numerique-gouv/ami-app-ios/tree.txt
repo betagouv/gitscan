@@ -50,16 +50,22 @@
 │       │   └── DependencyContainer.swift
 │       ├── Core
 │       │   ├── AppLog.swift
-│       │   └── Links
-│       │       ├── Data
-│       │       │   └── SpecialLinkHandler.swift
-│       │       ├── Domain
-│       │       │   ├── SpecialLinkError.swift
-│       │       │   ├── SpecialLinkProtocol.swift
-│       │       │   └── SpecialLinkType.swift
-│       │       └── Presentation
-│       │           ├── SpeciaLinkType+Alert.swift
-│       │           └── SpecialLinkError+Alert.swift
+│       │   ├── Domain
+│       │   │   ├── Navigation
+│       │   │   │   └── AppRoute.swift
+│       │   │   └── Services
+│       │   │       └── ServiceProvider.swift
+│       │   └── Features
+│       │       └── SpecialLinks
+│       │           ├── Data
+│       │           │   └── SpecialLinkHandler.swift
+│       │           ├── Domain
+│       │           │   ├── SpecialLinkError.swift
+│       │           │   ├── SpecialLinkProtocol.swift
+│       │           │   └── SpecialLinkType.swift
+│       │           └── Presentation
+│       │               ├── SpeciaLinkType+Alert.swift
+│       │               └── SpecialLinkError+Alert.swift
 │       ├── Data
 │       │   ├── Persistence
 │       │   │   ├── KeychainErrorMapping.swift
@@ -77,10 +83,37 @@
 │       │       └── Repositories
 │       │           └── LocalStorage
 │       │               └── LocalStorageRepositoryProtocol.swift
+│       ├── Features
+│       │   └── PromotedUrls
+│       │       ├── DI
+│       │       │   └── PromotedUrlsFeature.swift
+│       │       ├── Data
+│       │       │   ├── DI
+│       │       │   │   └── AliasedUrlsDataModule.swift
+│       │       │   ├── DataSources
+│       │       │   │   ├── AliasedUrlsDataSource.swift
+│       │       │   │   └── ClosureAliasedUrlsDataSource.swift
+│       │       │   ├── Errors
+│       │       │   │   └── AliasedUrlsError.swift
+│       │       │   ├── Models
+│       │       │   │   └── AliasedUrlDTO.swift
+│       │       │   └── Repositories
+│       │       │       └── CachingAliasedUrlsRepository.swift
+│       │       ├── Domain
+│       │       │   ├── Entities
+│       │       │   │   ├── AliasedUrl.swift
+│       │       │   │   └── PromotedAliases.swift
+│       │       │   ├── Repositories
+│       │       │   │   └── AliasedUrlsRepository.swift
+│       │       │   └── UseCases
+│       │       │       ├── GetAliasedUrlsUseCase.swift
+│       │       │       └── HandlePromotedNavigationUseCase.swift
+│       │       ├── Presentation
+│       │       │   └── AliasedUrlsViewModel.swift
+│       │       └── README.md
 │       ├── Presentation
 │       │   ├── Home
 │       │   │   ├── HomeView-NativeInfosScript.swift
-│       │   │   ├── HomeView-SpecialPages.swift
 │       │   │   ├── HomeView-UserScripts.swift
 │       │   │   ├── HomeView-ViewModel.swift
 │       │   │   ├── HomeView.swift
@@ -109,11 +142,6 @@
 │           ├── AppBundle.swift
 │           ├── Color.swift
 │           └── Config.swift
-├── AMITests
-│   └── AMITests.swift
-├── AMIUITests
-│   ├── AMIUITests.swift
-│   └── AMIUITestsLaunchTests.swift
 ├── README.md
 ├── Tools
 │   └── SwiftGen
@@ -155,10 +183,15 @@
     │       └── Info.plist
     └── unitTests
         ├── Sources
-        │   └── Data
-        │       └── Persistence
-        │           ├── KeychainStorageTests.swift
-        │           └── UserDefaultsStorageTests.swift
+        │   ├── Data
+        │   │   └── Persistence
+        │   │       ├── KeychainStorageTests.swift
+        │   │       └── UserDefaultsStorageTests.swift
+        │   └── Features
+        │       └── PromotedUrls
+        │           ├── CachingAliasedUrlsRepositoryTests.swift
+        │           ├── DomainTests.swift
+        │           └── PromotedUrlsFeatureTests.swift
         └── SupportingFiles
             └── Info.plist
-65 directories, 98 files
+83 directories, 113 files
