@@ -72,12 +72,15 @@
 ├── .mcp.json
 ├── .nvmrc
 ├── .prettierignore
+├── AGENTS.md
 ├── CLAUDE.md
 ├── Dockerfile
 ├── README.md
 ├── apps
 │   ├── api
 │   │   ├── .env.example
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── eslint.config.mjs
 │   │   ├── nest-cli.json
 │   │   ├── package.json
@@ -86,6 +89,8 @@
 │   │   │   │   ├── 20260917141651_create_auth_tables
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20261008150000_bind_session_and_account_to_front
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261009090000_add_session_idle_expiry
 │   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
@@ -98,6 +103,7 @@
 │   │   │   ├── auth
 │   │   │   │   ├── auth-flow-error.ts
 │   │   │   │   ├── auth-flow-exception.filter.ts
+│   │   │   │   ├── auth.controller.test.ts
 │   │   │   │   ├── auth.controller.ts
 │   │   │   │   ├── auth.module.ts
 │   │   │   │   ├── csrf.guard.test.ts
@@ -116,10 +122,14 @@
 │   │   │   │   └── session
 │   │   │   │       ├── cookie-cipher.test.ts
 │   │   │   │       ├── cookie-cipher.ts
+│   │   │   │       ├── session-policy.ts
+│   │   │   │       ├── session.guard.test.ts
 │   │   │   │       ├── session.guard.ts
+│   │   │   │       ├── session.prisma-repository.ts
+│   │   │   │       ├── session.repository.fake.ts
+│   │   │   │       ├── session.repository.ts
 │   │   │   │       ├── session.service.test.ts
 │   │   │   │       ├── session.service.ts
-│   │   │   │       ├── session.store.ts
 │   │   │   │       ├── session.types.test.ts
 │   │   │   │       └── session.types.ts
 │   │   │   ├── config
@@ -133,6 +143,8 @@
 │   │   └── tsconfig.json
 │   ├── back-office
 │   │   ├── .env.example
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
 │   │   ├── package.json
@@ -143,8 +155,6 @@
 │   │   │   │   └── clients.ts
 │   │   │   ├── main.tsx
 │   │   │   ├── navigation
-│   │   │   │   ├── error-screens.tsx
-│   │   │   │   ├── root-layout.tsx
 │   │   │   │   ├── router.ts
 │   │   │   │   └── routes.tsx
 │   │   │   └── vite-env.d.ts
@@ -154,18 +164,30 @@
 │   │   └── vite.config.ts
 │   ├── front-office
 │   │   ├── .env.example
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── App.tsx
+│   │   │   ├── assets
+│   │   │   │   ├── illustration-jumelles.svg
+│   │   │   │   └── logo-transitions-pro.svg
+│   │   │   ├── components
+│   │   │   │   └── topbar.tsx
+│   │   │   ├── dossier
+│   │   │   │   ├── components
+│   │   │   │   │   └── dossier-header.tsx
+│   │   │   │   └── domain
+│   │   │   │       ├── progress.test.ts
+│   │   │   │       ├── progress.ts
+│   │   │   │       └── statut-dossier.ts
 │   │   │   ├── index.css
 │   │   │   ├── lib
 │   │   │   │   └── clients.ts
 │   │   │   ├── main.tsx
 │   │   │   ├── navigation
-│   │   │   │   ├── error-screens.tsx
-│   │   │   │   ├── root-layout.tsx
 │   │   │   │   ├── router.ts
 │   │   │   │   └── routes.tsx
 │   │   │   └── vite-env.d.ts
@@ -174,6 +196,8 @@
 │   │   ├── tsconfig.node.json
 │   │   └── vite.config.ts
 │   ├── keycloak-theme
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
@@ -203,12 +227,19 @@
 │   │   │   │   ├── Template.tsx
 │   │   │   │   ├── components
 │   │   │   │   │   ├── alert.tsx
+│   │   │   │   │   ├── altcha
+│   │   │   │   │   │   ├── altcha-field.tsx
+│   │   │   │   │   │   ├── altcha-widget.tsx
+│   │   │   │   │   │   ├── checkbox.ts
+│   │   │   │   │   │   └── widget-state.ts
 │   │   │   │   │   ├── form.tsx
 │   │   │   │   │   ├── franceconnect.tsx
 │   │   │   │   │   ├── password-rules.test.ts
 │   │   │   │   │   ├── password-rules.ts
 │   │   │   │   │   ├── prose.tsx
 │   │   │   │   │   └── user-profile-fields.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   └── use-altcha-widget.ts
 │   │   │   │   ├── i18n.ts
 │   │   │   │   └── pages
 │   │   │   │       ├── Error.tsx
@@ -247,6 +278,7 @@
 │   │   │   │   ├── Geist-Regular.ttf
 │   │   │   │   └── Geist-SemiBold.ttf
 │   │   │   ├── globe.svg
+│   │   │   ├── illustration-fin-simulation.svg
 │   │   │   ├── ministere-travail-logo.svg
 │   │   │   ├── next.svg
 │   │   │   ├── transitions-pro-logo.svg
@@ -266,19 +298,20 @@
 │   │   │   │   │   ├── FieldRenderer.tsx
 │   │   │   │   │   ├── FlowShell.tsx
 │   │   │   │   │   ├── HomeCta.tsx
-│   │   │   │   │   ├── Navbar.tsx
 │   │   │   │   │   ├── OutcomeScreen.tsx
 │   │   │   │   │   ├── QuestionCta.tsx
 │   │   │   │   │   ├── QuestionFields.tsx
 │   │   │   │   │   ├── QuestionHeader.tsx
+│   │   │   │   │   ├── QuestionProgress.tsx
 │   │   │   │   │   ├── QuestionScreen.tsx
+│   │   │   │   │   ├── TextParts.tsx
+│   │   │   │   │   ├── Topbar.tsx
 │   │   │   │   │   └── fields
 │   │   │   │   │       ├── CheckboxField.tsx
 │   │   │   │   │       ├── FieldError.tsx
 │   │   │   │   │       ├── FieldHeader.tsx
 │   │   │   │   │       ├── MonthYearField.tsx
 │   │   │   │   │       ├── NumberField.tsx
-│   │   │   │   │       ├── OptionRow.tsx
 │   │   │   │   │       ├── RadioField.tsx
 │   │   │   │   │       ├── RegionField.tsx
 │   │   │   │   │       ├── ToggleField.tsx
@@ -294,7 +327,9 @@
 │   │   │   │   │   └── validation.ts
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useFlow.ts
-│   │   │   │   │   └── useFlowNavigation.ts
+│   │   │   │   │   ├── useFlowNavigation.ts
+│   │   │   │   │   ├── useQuestionIssues.ts
+│   │   │   │   │   └── useRegionSearch.ts
 │   │   │   │   └── state
 │   │   │   │       ├── flow-reducer.ts
 │   │   │   │       └── flow-store.ts
@@ -305,15 +340,20 @@
 │   │   │       │   ├── DownloadPdfButton.tsx
 │   │   │       │   ├── EmptyResults.tsx
 │   │   │       │   ├── ResultCard.tsx
+│   │   │       │   ├── ResultsList.tsx
 │   │   │       │   └── ResultsScreen.tsx
 │   │   │       ├── domain
 │   │   │       │   ├── catalogue.ts
 │   │   │       │   ├── conseil-regional.ts
+│   │   │       │   ├── phrase-recapitulative.ts
 │   │   │       │   ├── profil.ts
 │   │   │       │   ├── recap.ts
 │   │   │       │   ├── selection.ts
 │   │   │       │   ├── transitions-pro.ts
 │   │   │       │   └── types.ts
+│   │   │       ├── hooks
+│   │   │       │   ├── usePdfDownload.tsx
+│   │   │       │   └── useVisibleResultats.ts
 │   │   │       └── pdf
 │   │   │           ├── ResultsPdfDocument.tsx
 │   │   │           ├── fonts.ts
@@ -376,6 +416,7 @@
 ├── deploy
 │   ├── .env.example
 │   ├── api-start.sh
+│   ├── keycloak-altcha.sh
 │   ├── keycloak-init.sh
 │   ├── keycloak-start.sh
 │   ├── nginx-auth-proxy.inc
@@ -388,6 +429,7 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── authentification.md
+│   ├── cartographie.md
 │   ├── conventions
 │   │   ├── accessibilite.md
 │   │   ├── architecture-api.md
@@ -417,14 +459,51 @@
 │   └── nginx
 │       └── previews.conf
 ├── keycloak
+│   ├── extensions
+│   │   └── altcha
+│   │       ├── README.md
+│   │       ├── pom.xml
+│   │       └── src
+│   │           ├── main
+│   │           │   ├── java
+│   │           │   │   └── fr
+│   │           │   │       └── gouv
+│   │           │   │           └── beta
+│   │           │   │               └── etape
+│   │           │   │                   └── keycloak
+│   │           │   │                       └── altcha
+│   │           │   │                           ├── AltchaChallenges.java
+│   │           │   │                           ├── AltchaGuard.java
+│   │           │   │                           ├── AltchaOutcome.java
+│   │           │   │                           ├── AltchaRegistrationFormAction.java
+│   │           │   │                           ├── AltchaResetCredentialChooseUser.java
+│   │           │   │                           ├── AltchaSecrets.java
+│   │           │   │                           └── AltchaSettings.java
+│   │           │   └── resources
+│   │           │       └── META-INF
+│   │           │           └── services
+│   │           │               ├── org.keycloak.authentication.AuthenticatorFactory
+│   │           │               └── org.keycloak.authentication.FormActionFactory
+│   │           └── test
+│   │               └── java
+│   │                   └── fr
+│   │                       └── gouv
+│   │                           └── beta
+│   │                               └── etape
+│   │                                   └── keycloak
+│   │                                       └── altcha
+│   │                                           ├── AltchaChallengesTest.java
+│   │                                           ├── AltchaSecretsTest.java
+│   │                                           └── AltchaSettingsTest.java
 │   └── realms
 │       ├── README.md
 │       ├── etape-back-office-realm.json
 │       └── etape-realm.json
-├── package-lock.json
 ├── package.json
 ├── packages
 │   ├── api-client
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── eslint.config.mjs
 │   │   ├── package.json
 │   │   ├── src
@@ -448,17 +527,24 @@
 │   │   │   ├── query-client.ts
 │   │   │   ├── session-clients.test.ts
 │   │   │   ├── session-clients.ts
+│   │   │   ├── session-messages.test.ts
+│   │   │   ├── session-messages.ts
 │   │   │   ├── session-query.ts
+│   │   │   ├── session-timeline.test.ts
+│   │   │   ├── session-timeline.ts
 │   │   │   ├── session.test.ts
 │   │   │   ├── session.ts
 │   │   │   ├── startup-access.test.ts
 │   │   │   ├── startup-access.ts
 │   │   │   ├── testing
 │   │   │   │   ├── memory-storage.ts
+│   │   │   │   ├── session-fixture.ts
 │   │   │   │   └── start-test-server.ts
 │   │   │   └── use-session-expired.ts
 │   │   └── tsconfig.json
 │   ├── api-contract
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── eslint.config.mjs
 │   │   ├── package.json
 │   │   ├── src
@@ -470,16 +556,39 @@
 │   │   │   └── route-definition.ts
 │   │   └── tsconfig.json
 │   ├── eslint-config
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── README.md
 │   │   ├── base.js
 │   │   ├── next.js
 │   │   ├── package.json
 │   │   └── react-internal.js
 │   ├── prettier-config
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── README.md
 │   │   ├── index.js
 │   │   └── package.json
+│   ├── session
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
+│   │   ├── eslint.config.mjs
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── announcer.test.tsx
+│   │   │   ├── announcer.ts
+│   │   │   ├── error-screens.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── session-app.tsx
+│   │   │   ├── session-dialogs.ts
+│   │   │   ├── session-root-route.tsx
+│   │   │   ├── use-session-activity.test.tsx
+│   │   │   └── use-session-activity.ts
+│   │   ├── tsconfig.json
+│   │   └── vitest.config.ts
 │   └── ui
+│       ├── AGENTS.md
+│       ├── CLAUDE.md
 │       ├── components.json
 │       ├── eslint.config.mjs
 │       ├── package.json
@@ -488,35 +597,53 @@
 │       │   │   ├── accordion.tsx
 │       │   │   ├── action-notice.test.tsx
 │       │   │   ├── action-notice.tsx
+│       │   │   ├── alert-dialog.test.tsx
 │       │   │   ├── alert-dialog.tsx
+│       │   │   ├── alert.test.tsx
+│       │   │   ├── alert.tsx
 │       │   │   ├── back-to-top.tsx
 │       │   │   ├── badge.tsx
 │       │   │   ├── button.tsx
 │       │   │   ├── callout.tsx
 │       │   │   ├── card.tsx
 │       │   │   ├── checkbox.tsx
+│       │   │   ├── choice-card.test.tsx
+│       │   │   ├── choice-card.tsx
+│       │   │   ├── combobox.test.tsx
+│       │   │   ├── combobox.tsx
 │       │   │   ├── container.tsx
 │       │   │   ├── dialog.tsx
 │       │   │   ├── dropdown-menu.tsx
 │       │   │   ├── form.tsx
+│       │   │   ├── input-group.test.tsx
+│       │   │   ├── input-group.tsx
+│       │   │   ├── input-otp.test.tsx
+│       │   │   ├── input-otp.tsx
 │       │   │   ├── input.tsx
+│       │   │   ├── inset-panel.tsx
 │       │   │   ├── label.tsx
 │       │   │   ├── notice-screen.test.tsx
 │       │   │   ├── notice-screen.tsx
 │       │   │   ├── pending-screen.test.tsx
 │       │   │   ├── pending-screen.tsx
+│       │   │   ├── progress.test.tsx
+│       │   │   ├── progress.tsx
 │       │   │   ├── prose.tsx
 │       │   │   ├── radio-group.tsx
 │       │   │   ├── section.tsx
 │       │   │   ├── select.tsx
 │       │   │   ├── separator.tsx
-│       │   │   ├── session-expired-dialog.test.tsx
-│       │   │   ├── session-expired-dialog.tsx
+│       │   │   ├── session-dialog.test.tsx
+│       │   │   ├── session-dialog.tsx
 │       │   │   ├── skip-links.tsx
 │       │   │   ├── sonner.tsx
+│       │   │   ├── status-region.test.tsx
+│       │   │   ├── status-region.tsx
 │       │   │   ├── tabs.tsx
 │       │   │   ├── textarea.tsx
-│       │   │   └── theme-provider.tsx
+│       │   │   ├── theme-provider.tsx
+│       │   │   ├── tooltip.test.tsx
+│       │   │   └── tooltip.tsx
 │       │   ├── lib
 │       │   │   ├── focus.ts
 │       │   │   └── utils.ts
@@ -525,8 +652,13 @@
 │       ├── tsconfig.json
 │       └── vitest.config.ts
 ├── paths.mjs
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── scripts
-│   └── assemble-static.mjs
+│   ├── assemble-static.mjs
+│   ├── check-workspace-map.mjs
+│   ├── dev-stack-checks.mjs
+│   └── dev-stack.mjs
 ├── skills-lock.json
 └── turbo.json
-107 directories, 480 files
+140 directories, 579 files

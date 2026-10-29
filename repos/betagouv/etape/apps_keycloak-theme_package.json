@@ -6,24 +6,25 @@
   "prettier": "@etape/prettier-config",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:bundle && keycloakify build",
+    "build": "pnpm run build:bundle && keycloakify build",
     "build:bundle": "keycloakify sync-extensions && tsc --noEmit && vite build",
     "lint": "eslint",
     "test": "vitest run",
     "storybook": "keycloakify start-keycloak"
   },
   "dependencies": {
-    "@etape/ui": "*",
+    "@etape/ui": "workspace:*",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@fontsource-variable/geist": "^5.3.0",
-    "keycloakify": "^11.16.1",
-    "lucide-react": "^1.54.0",
-    "react": "^19",
-    "react-dom": "^19"
+    "altcha": "^3.3.0",
+    "keycloakify": "^11.16.4",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@etape/eslint-config": "*",
-    "@etape/prettier-config": "*",
+    "@etape/eslint-config": "workspace:*",
+    "@etape/prettier-config": "workspace:*",
     "@tailwindcss/vite": "^4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -31,7 +32,7 @@
     "eslint": "^9",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vite": "^8.3.4",
-    "vitest": "^5.0.3"
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
   }
 }
