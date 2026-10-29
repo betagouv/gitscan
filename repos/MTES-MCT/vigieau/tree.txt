@@ -5,9 +5,11 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── ci.yml
+│       ├── production-incidents.yml
 │       └── production-smoke.yml
 ├── .gitignore
 ├── .npmrc
+├── .nvmrc
 ├── .vscode
 │   └── settings.json
 ├── README.md
@@ -53,6 +55,9 @@
 │   │   │   │   ├── interceptor
 │   │   │   │   │   ├── logger.interceptor.spec.ts
 │   │   │   │   │   └── logger.interceptor.ts
+│   │   │   │   ├── middleware
+│   │   │   │   │   ├── http-failure-logging.middleware.spec.ts
+│   │   │   │   │   └── http-failure-logging.middleware.ts
 │   │   │   │   ├── utils.spec.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── cron
@@ -66,9 +71,14 @@
 │   │   │   │   ├── data.module.ts
 │   │   │   │   ├── data.service.spec.ts
 │   │   │   │   ├── data.service.ts
+│   │   │   │   ├── department-surface-statistics.spec.ts
 │   │   │   │   ├── dto
 │   │   │   │   │   └── data.dto.ts
 │   │   │   │   ├── historic-config-schema-repair.postgres.spec.ts
+│   │   │   │   ├── previous-sparse-fallback.spec.ts
+│   │   │   │   ├── provisional-commune-statistics.postgres.spec.ts
+│   │   │   │   ├── provisional-department-statistics.spec.ts
+│   │   │   │   ├── provisional-department-statistics.ts
 │   │   │   │   ├── statistic-cache-artifact.postgres.spec.ts
 │   │   │   │   ├── statistic-cache-artifact.service.spec.ts
 │   │   │   │   ├── statistic-cache-artifact.service.ts
@@ -105,6 +115,11 @@
 │   │   │   │   └── statcache.module.ts
 │   │   │   ├── statcache.ts
 │   │   │   ├── statistics
+│   │   │   │   ├── matomo-statistics-run.postgres.spec.ts
+│   │   │   │   ├── matomo-statistics-run.service.spec.ts
+│   │   │   │   ├── matomo-statistics-run.service.ts
+│   │   │   │   ├── matomo-statistics.client.spec.ts
+│   │   │   │   ├── matomo-statistics.client.ts
 │   │   │   │   ├── statistics.controller.spec.ts
 │   │   │   │   ├── statistics.controller.ts
 │   │   │   │   ├── statistics.module.ts
@@ -132,6 +147,8 @@
 │   │   │       │   ├── arrete.dto.ts
 │   │   │       │   ├── usage.dto.ts
 │   │   │       │   └── zone.dto.ts
+│   │   │       ├── equivalent-zone-restrictions.spec.ts
+│   │   │       ├── equivalent-zone-restrictions.ts
 │   │   │       ├── type
 │   │   │       │   └── niveau_gravite.type.ts
 │   │   │       ├── zones.controller.spec.ts
@@ -143,7 +160,9 @@
 │   │   │   ├── app.e2e-spec.ts
 │   │   │   └── jest-e2e.json
 │   │   ├── tsconfig.build.json
-│   │   └── tsconfig.json
+│   │   ├── tsconfig.json
+│   │   └── vendor
+│   │       └── vigieau-deepmerge-4.3.1-vigieau.1.tgz
 │   ├── backend-admin
 │   │   ├── .buildpacks
 │   │   ├── .eslintrc.js
@@ -340,6 +359,10 @@
 │   │   │   │   ├── historic-backfill.controller.ts
 │   │   │   │   ├── historic-backfill.module.ts
 │   │   │   │   └── historic-backfill.types.ts
+│   │   │   ├── history_recovery
+│   │   │   │   ├── history-recovery-scheduler.service.spec.ts
+│   │   │   │   ├── history-recovery-scheduler.service.ts
+│   │   │   │   └── history-recovery.module.ts
 │   │   │   ├── instrument.ts
 │   │   │   ├── logger
 │   │   │   │   ├── logger.module.ts
@@ -405,11 +428,17 @@
 │   │   │   ├── schema-bootstrap.spec.ts
 │   │   │   ├── schema-bootstrap.ts
 │   │   │   ├── scripts
+│   │   │   │   ├── attest-history-by-source-equivalence.postgres.spec.ts
+│   │   │   │   ├── attest-history-by-source-equivalence.spec.ts
+│   │   │   │   ├── attest-history-by-source-equivalence.ts
+│   │   │   │   ├── automatic-history-equivalence.spec.ts
+│   │   │   │   ├── automatic-history-equivalence.ts
 │   │   │   │   ├── benchmark-historic-backfill.spec.ts
 │   │   │   │   ├── benchmark-historic-backfill.ts
 │   │   │   │   ├── build-certified-history-source.postgres.spec.ts
 │   │   │   │   ├── build-certified-history-source.spec.ts
 │   │   │   │   ├── build-certified-history-source.ts
+│   │   │   │   ├── certified-history-parameter-anchor.ts
 │   │   │   │   ├── certified-history-repair-audit.migration.spec.ts
 │   │   │   │   ├── certified-history-repair-audit.postgres.spec.ts
 │   │   │   │   ├── complete-certified-history-restoration.postgres.spec.ts
@@ -420,6 +449,10 @@
 │   │   │   │   ├── datagouv-historic-export-operator.ts
 │   │   │   │   ├── historic-backfill-operator.spec.ts
 │   │   │   │   ├── historic-backfill-operator.ts
+│   │   │   │   ├── history-parameter-status-consumers.spec.ts
+│   │   │   │   ├── history-parameter-status-equivalence.spec.ts
+│   │   │   │   ├── history-parameter-status-equivalence.ts
+│   │   │   │   ├── history-source-equivalence.ts
 │   │   │   │   ├── publish-datagouv-communes.spec.ts
 │   │   │   │   ├── publish-datagouv-communes.ts
 │   │   │   │   ├── publish-datagouv-historique-communes.spec.ts
@@ -499,6 +532,8 @@
 │   │   │   │   ├── computeHistoric.ts
 │   │   │   │   ├── computeMap.ts
 │   │   │   │   ├── config.ts
+│   │   │   │   ├── finish-current-zone-compute.spec.ts
+│   │   │   │   ├── finish-current-zone-compute.ts
 │   │   │   │   ├── run-current-zone-compute.spec.ts
 │   │   │   │   ├── run-current-zone-compute.ts
 │   │   │   │   ├── zone-compute-lock.spec.ts
@@ -571,7 +606,9 @@
 │   │   │   ├── app.e2e-spec.ts
 │   │   │   └── jest-e2e.json
 │   │   ├── tsconfig.build.json
-│   │   └── tsconfig.json
+│   │   ├── tsconfig.json
+│   │   └── vendor
+│   │       └── vigieau-deepmerge-4.3.1-vigieau.1.tgz
 │   ├── frontend
 │   │   ├── .buildpacks
 │   │   ├── .eslintrc.cjs
@@ -627,7 +664,9 @@
 │   │   │   │   │   ├── DepartementChart.vue
 │   │   │   │   │   ├── DepartementTable.vue
 │   │   │   │   │   ├── Filter.vue
-│   │   │   │   │   └── StatisticDataStatus.vue
+│   │   │   │   │   ├── StatisticDataStatus.vue
+│   │   │   │   │   ├── StatisticHistoryGaps.vue
+│   │   │   │   │   └── StatisticProvisionalData.vue
 │   │   │   │   ├── gestes
 │   │   │   │   │   ├── Callout.vue
 │   │   │   │   │   └── Card.vue
@@ -726,6 +765,7 @@
 │   │   │   │   └── stats
 │   │   │   │       └── index.vue
 │   │   │   ├── plugins
+│   │   │   │   ├── maplibre.client.ts
 │   │   │   │   ├── matomo.client.ts
 │   │   │   │   ├── sentry.client.ts
 │   │   │   │   └── vue-dsfr.ts
@@ -756,6 +796,8 @@
 │   │   │   │   └── zonePublication.ts
 │   │   │   └── utils
 │   │   │       ├── address-combobox.ts
+│   │   │       ├── audience-statistics.ts
+│   │   │       ├── csv-download.ts
 │   │   │       ├── date-sort.ts
 │   │   │       ├── department-availability.ts
 │   │   │       ├── fetch-response.ts
@@ -763,6 +805,8 @@
 │   │   │       ├── form-validation.ts
 │   │   │       ├── historic-map-manifest.ts
 │   │   │       ├── index.ts
+│   │   │       ├── latest-worker-task.ts
+│   │   │       ├── light-theme.ts
 │   │   │       ├── map-locale.ts
 │   │   │       ├── map-popup-content.ts
 │   │   │       ├── modal-scroll-lock.ts
@@ -774,6 +818,10 @@
 │   │   │       ├── retryable-initializer.ts
 │   │   │       ├── retryable-task.ts
 │   │   │       ├── statistic-data-status.ts
+│   │   │       ├── statistic-history-gaps.ts
+│   │   │       ├── statistic-provisional.ts
+│   │   │       ├── statistic-series-status.ts
+│   │   │       ├── statistic-series.ts
 │   │   │       ├── tab-navigation.ts
 │   │   │       ├── table-pagination.ts
 │   │   │       ├── tally-popup.ts
@@ -783,8 +831,10 @@
 │   │   ├── cypress
 │   │   │   ├── e2e
 │   │   │   │   ├── accueil.cy.js
+│   │   │   │   ├── audience-statistics.cy.js
 │   │   │   │   ├── breadcrumb.cy.js
 │   │   │   │   ├── carte.cy.js
+│   │   │   │   ├── equivalent-zone-overlaps.cy.js
 │   │   │   │   ├── gestes.cy.js
 │   │   │   │   ├── rgaa-address-combobox.cy.js
 │   │   │   │   ├── rgaa-documents-institutional.cy.js
@@ -801,7 +851,11 @@
 │   │   │   │   ├── rgaa-situation-selectors.cy.js
 │   │   │   │   ├── rgaa-tally-feedback.cy.js
 │   │   │   │   ├── situationEntreprise.cy.js
-│   │   │   │   └── situationParticulier.cy.js
+│   │   │   │   ├── situationParticulier.cy.js
+│   │   │   │   ├── statistic-commune-provisional.cy.js
+│   │   │   │   ├── statistic-department-notices.cy.js
+│   │   │   │   ├── statistic-history-gaps.cy.js
+│   │   │   │   └── statistic-reliability.cy.js
 │   │   │   ├── fixtures
 │   │   │   │   └── example.json
 │   │   │   └── support
@@ -822,6 +876,8 @@
 │   │   ├── test
 │   │   │   ├── a11y-colors.test.mjs
 │   │   │   ├── address-combobox.test.mjs
+│   │   │   ├── api-imperative-requests.test.mjs
+│   │   │   ├── audience-statistics.test.mjs
 │   │   │   ├── degraded-data-contract.test.mjs
 │   │   │   ├── department-table-availability.test.mjs
 │   │   │   ├── document-pages-accessibility.test.mjs
@@ -845,11 +901,18 @@
 │   │   │   ├── retryable-initializer.test.mjs
 │   │   │   ├── retryable-task.test.mjs
 │   │   │   ├── situation-selectors-accessibility.test.mjs
+│   │   │   ├── statistic-history-gaps.test.mjs
+│   │   │   ├── statistic-provisional.test.mjs
+│   │   │   ├── statistic-reliability.test.mjs
+│   │   │   ├── statistic-series-status.test.mjs
 │   │   │   ├── tab-navigation.test.mjs
 │   │   │   ├── tally-popup.test.mjs
 │   │   │   ├── zone-publication.test.mjs
 │   │   │   └── zone-source-transition.test.mjs
 │   │   ├── tsconfig.json
+│   │   ├── vendor
+│   │   │   ├── vigieau-deepmerge-4.3.1-vigieau.1.tgz
+│   │   │   └── vigieau-listhen-1.10.1-vigieau.1.tgz
 │   │   └── vue-shim.d.ts
 │   └── frontend-admin
 │       ├── .buildpacks
@@ -964,6 +1027,7 @@
 │       │   │   ├── useApiErrorHandler.ts
 │       │   │   ├── useClickOutside.ts
 │       │   │   ├── useCustomFetch.ts
+│       │   │   ├── useRetryableLoad.ts
 │       │   │   └── useUtils.ts
 │       │   ├── dto
 │       │   │   ├── alert.dto.ts
@@ -1022,6 +1086,7 @@
 │       │   ├── plugins
 │       │   │   ├── chart.ts
 │       │   │   ├── load-context.ts
+│       │   │   ├── maplibre.client.ts
 │       │   │   ├── sentry.client.ts
 │       │   │   └── vue-dsfr.ts
 │       │   ├── public
@@ -1039,6 +1104,9 @@
 │       │   │   ├── context.ts
 │       │   │   └── refData.ts
 │       │   └── utils
+│       │       ├── client-error-context.ts
+│       │       ├── geometry-bounds.ts
+│       │       ├── restriction-usage-conflicts.ts
 │       │       └── restriction-usage.ts
 │       ├── cypress
 │       │   ├── e2e
@@ -1047,9 +1115,13 @@
 │       │   │   │   ├── create.cy.js
 │       │   │   │   ├── edit.cy.js
 │       │   │   │   └── list.cy.js
+│       │   │   ├── arreteRestriction
+│       │   │   │   └── publication-errors.cy.js
 │       │   │   ├── auth
 │       │   │   │   ├── login.cy.js
 │       │   │   │   └── logout.cy.js
+│       │   │   ├── forms
+│       │   │   │   └── load-errors.cy.js
 │       │   │   └── user
 │       │   │       ├── api.cy.js
 │       │   │       └── list.cy.js
@@ -1068,17 +1140,30 @@
 │       ├── package.json
 │       ├── purgecss.config.js
 │       ├── test
-│       │   └── restriction-usage.test.mjs
-│       └── tsconfig.json
+│       │   ├── client-error-context.test.mjs
+│       │   ├── custom-fetch.test.mjs
+│       │   ├── geometry-bounds.test.mjs
+│       │   ├── restriction-usage-conflicts.test.mjs
+│       │   ├── restriction-usage-selection.test.mjs
+│       │   ├── restriction-usage.test.mjs
+│       │   ├── retryable-load.test.mjs
+│       │   └── utils-debounce.test.mjs
+│       ├── tsconfig.json
+│       └── vendor
+│           ├── vigieau-deepmerge-4.3.1-vigieau.1.tgz
+│           └── vigieau-listhen-1.10.1-vigieau.1.tgz
 ├── compose.yaml
 ├── docker
 │   └── minio
 │       └── cors.json
 ├── docs
-│   ├── accessibilite
-│   │   └── RGAA_REMEDIATION_CODEX.md
+│   ├── certified-history-recovery-20260907.md
 │   ├── current-statistics-rollout.md
 │   ├── historic-commune-backfill.md
+│   ├── history-recovery-20260910.md
+│   ├── incidents
+│   │   └── scalingo-5xx-20261024.md
+│   ├── production-monitoring.md
 │   └── zone-publication-rollout.md
 ├── global_shared
 │   ├── entities
@@ -1138,38 +1223,43 @@
 │   └── zone_publication_materialization.ts
 ├── package-lock.json
 ├── package.json
-└── scripts
-    ├── collect-production-health.mjs
-    ├── inspect-zip-dates.mjs
-    ├── lint-changed.mjs
-    ├── smoke-admin-zone-publication.mjs
-    ├── smoke-admin.mjs
-    ├── smoke-admin.test.mjs
-    ├── smoke-browser-startup.mjs
-    ├── smoke-browser-startup.test.mjs
-    ├── smoke-browser-tarbes.mjs
-    ├── smoke-browser-tarbes.test.mjs
-    ├── smoke-browser.mjs
-    ├── smoke-certified-history-policy.mjs
-    ├── smoke-certified-history-policy.test.mjs
-    ├── smoke-datagouv.mjs
-    ├── smoke-public-zone-publication.mjs
-    ├── smoke-public.mjs
-    ├── smoke-public.test.mjs
-    ├── smoke-sandre-policy.mjs
-    ├── smoke-sandre-policy.test.mjs
-    ├── smoke-sandre.mjs
-    ├── smoke-statistics-policy.mjs
-    ├── smoke-statistics.mjs
-    ├── smoke-statistics.test.mjs
-    ├── validate-procfiles.mjs
-    ├── validate-procfiles.test.mjs
-    ├── verify-admin-migrations.mjs
-    ├── verify-pwa-build.mjs
-    ├── wait-external-publications-policy.mjs
-    ├── wait-external-publications-policy.test.mjs
-    ├── wait-external-publications.mjs
-    ├── wait-zone-publication-policy.mjs
-    ├── wait-zone-publication-policy.test.mjs
-    └── wait-zone-publication.mjs
-203 directories, 971 files
+├── scripts
+│   ├── build-deepmerge-security-fork.mjs
+│   ├── build-listhen-security-fork.mjs
+│   ├── collect-production-health.mjs
+│   ├── deepmerge-security.test.mjs
+│   ├── http-security-dependencies.test.mjs
+│   ├── inspect-zip-dates.mjs
+│   ├── lint-changed.mjs
+│   ├── listhen-security.test.mjs
+│   ├── npm-install-policy.test.mjs
+│   ├── observe-scaling-5xx.mjs
+│   ├── observe-scaling-5xx.test.mjs
+│   ├── production-incidents-github.mjs
+│   ├── production-incidents-policy.mjs
+│   ├── production-incidents.mjs
+│   ├── production-incidents.test.mjs
+│   ├── repair-arrete-end-date-schema.cjs
+│   ├── security-dependencies.test.mjs
+│   ├── sentry-private-sourcemaps.mjs
+│   ├── sentry-private-sourcemaps.test.mjs
+│   ├── smoke-*.mjs  (22 files)
+│   ├── validate-procfiles.mjs
+│   ├── validate-procfiles.test.mjs
+│   ├── verify-*.mjs  (5 files)
+│   ├── wait-*.mjs  (6 files)
+│   └── webgl2-support.test.mjs
+└── vendor
+    ├── deepmerge
+    │   ├── LICENSE
+    │   ├── README.md
+    │   ├── define-property.js
+    │   └── upstream
+    │       └── deepmerge-4.3.1.tgz
+    └── listhen
+        ├── LICENSE
+        ├── README.md
+        ├── certificate.cjs
+        └── upstream
+            └── listhen-1.10.1.tgz
+216 directories, 1078 files
