@@ -4,17 +4,16 @@
   "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Recherche & Filtres",
     "Authentification & Accès",
-    "Statistiques & Rapports",
+    "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité",
+    "Statistiques & Rapports",
     "Tableaux & Affichage",
     "Gestion métier générale"
   ],
-  "audience": "Professionnels, Agents de l'Administration, Associations",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
@@ -22,10 +21,10 @@
     "Redis",
     "MinIO",
     "RustFS",
-    "Gunicorn",
-    "uv",
+    "GDAL",
+    "psycopg",
     "pytest",
-    "GDAL"
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
@@ -34,16 +33,15 @@
     "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
+    "Intégrations services externes",
     "Scripts & Utilitaires",
-    "ORM & Accès aux données",
-    "CI/CD & Déploiement"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "session",
+      "sso",
       "mfa",
-      "sso"
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -51,8 +49,7 @@
   },
   "tests": "pytest",
   "workflows": [
-    "CI/CD (sharding)",
-    "pre-commit"
+    "CI/CD avec partitionnement des tests (sharding)"
   ],
   "lastActivity": "2026-10-26T00:00:00Z",
   "status": "active",
@@ -63,8 +60,8 @@
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Emploi, Social & Logement",
     "CI/CD & GitHub Actions",
-    "Accessibilité"
+    "Design System & UI",
+    "Emploi, Social & Logement"
   ]
 }
