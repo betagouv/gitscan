@@ -1,0 +1,181 @@
+.
+├── .gitignore
+├── .python-version
+├── Procfile
+├── README.md
+├── conftest.py
+├── fico
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── components
+│   │   ├── __init__.py
+│   │   ├── carto.js
+│   │   ├── carto.typ
+│   │   ├── common.js
+│   │   ├── common.typ
+│   │   ├── component.js
+│   │   ├── fiche.js
+│   │   ├── fico.css
+│   │   ├── financements
+│   │   │   ├── __init__.py
+│   │   │   ├── annuel
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── annuel.js
+│   │   │   │   ├── annuel.typ
+│   │   │   │   └── tests
+│   │   │   │       ├── input
+│   │   │   │       │   ├── commune.csv
+│   │   │   │       │   ├── financement.csv
+│   │   │   │       │   └── projet.csv
+│   │   │   │       ├── output
+│   │   │   │       │   ├── annuel.json
+│   │   │   │       │   ├── empty.json
+│   │   │   │       │   └── since.json
+│   │   │   │       └── test_annuel.py
+│   │   │   ├── carte
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── carte.js
+│   │   │   │   ├── carte.typ
+│   │   │   │   └── tests
+│   │   │   │       ├── input
+│   │   │   │       │   ├── commune.csv
+│   │   │   │       │   ├── contour.csv
+│   │   │   │       │   ├── epci_contour.csv
+│   │   │   │       │   ├── financement.csv
+│   │   │   │       │   ├── groupement.csv
+│   │   │   │       │   └── projet.csv
+│   │   │   │       ├── output
+│   │   │   │       │   ├── commune_departement.json
+│   │   │   │       │   ├── commune_interco.json
+│   │   │   │       │   └── epci_departement.json
+│   │   │   │       └── test_carte.py
+│   │   │   ├── financeurs
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── financeurs.js
+│   │   │   │   ├── financeurs.typ
+│   │   │   │   └── tests
+│   │   │   │       ├── input
+│   │   │   │       │   ├── commune.csv
+│   │   │   │       │   ├── financement.csv
+│   │   │   │       │   └── projet.csv
+│   │   │   │       ├── output
+│   │   │   │       │   ├── empty.json
+│   │   │   │       │   ├── financeurs.json
+│   │   │   │       │   └── since.json
+│   │   │   │       └── test_financeurs.py
+│   │   │   ├── historique
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── historique.js
+│   │   │   │   ├── historique.typ
+│   │   │   │   └── tests
+│   │   │   │       ├── input
+│   │   │   │       │   ├── commune.csv
+│   │   │   │       │   ├── financement.csv
+│   │   │   │       │   └── projet.csv
+│   │   │   │       ├── output
+│   │   │   │       │   ├── empty.json
+│   │   │   │       │   ├── historique.json
+│   │   │   │       │   └── since.json
+│   │   │   │       └── test_historique.py
+│   │   │   ├── par_habitant
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── par_habitant.js
+│   │   │   │   ├── par_habitant.typ
+│   │   │   │   └── tests
+│   │   │   │       ├── input
+│   │   │   │       │   ├── commune.csv
+│   │   │   │       │   ├── financement.csv
+│   │   │   │       │   ├── groupement.csv
+│   │   │   │       │   └── projet.csv
+│   │   │   │       ├── output
+│   │   │   │       │   ├── commune.json
+│   │   │   │       │   ├── epci.json
+│   │   │   │       │   ├── fonds_vert.json
+│   │   │   │       │   └── since.json
+│   │   │   │       └── test_par_habitant.py
+│   │   │   └── synthese
+│   │   │       ├── __init__.py
+│   │   │       ├── synthese.js
+│   │   │       ├── synthese.typ
+│   │   │       └── tests
+│   │   │           ├── input
+│   │   │           │   ├── commune.csv
+│   │   │           │   ├── financement.csv
+│   │   │           │   └── projet.csv
+│   │   │           ├── output
+│   │   │           │   ├── detr.json
+│   │   │           │   ├── dsil.json
+│   │   │           │   ├── since.json
+│   │   │           │   ├── synthese.json
+│   │   │           │   └── synthese.svg
+│   │   │           └── test_synthese.py
+│   │   ├── formats.py
+│   │   ├── identite
+│   │   │   ├── __init__.py
+│   │   │   ├── identite.js
+│   │   │   ├── identite.typ
+│   │   │   └── tests
+│   │   │       ├── input
+│   │   │       │   ├── commune.csv
+│   │   │       │   ├── executif.csv
+│   │   │       │   └── groupement.csv
+│   │   │       ├── output
+│   │   │       │   ├── commune.json
+│   │   │       │   ├── commune_sparse.json
+│   │   │       │   ├── epci.json
+│   │   │       │   └── syndicat.json
+│   │   │       └── test_identite.py
+│   │   ├── programmes
+│   │   │   ├── __init__.py
+│   │   │   ├── programmes.js
+│   │   │   ├── programmes.typ
+│   │   │   └── tests
+│   │   │       ├── input
+│   │   │       │   ├── commune.csv
+│   │   │       │   ├── groupement.csv
+│   │   │       │   └── programme.csv
+│   │   │       ├── output
+│   │   │       │   ├── commune.json
+│   │   │       │   └── empty.json
+│   │   │       └── test_programmes.py
+│   │   ├── registry.py
+│   │   └── table.py
+│   ├── context.py
+│   ├── fiche.py
+│   ├── main.py
+│   ├── render
+│   │   ├── __init__.py
+│   │   ├── home.html
+│   │   ├── html.py
+│   │   ├── logo.svg
+│   │   ├── table.py
+│   │   └── typst.py
+│   └── sources
+│       ├── __init__.py
+│       ├── api_collectivites.py
+│       ├── banatic.py
+│       ├── collectivites.py
+│       ├── contours.py
+│       ├── database.py
+│       ├── geoapi.py
+│       ├── programmes.py
+│       ├── registry.py
+│       └── rne.py
+├── fonts
+│   ├── Marianne-Bold.otf
+│   ├── Marianne-BoldItalic.otf
+│   ├── Marianne-ExtraBold.otf
+│   ├── Marianne-ExtraBoldItalic.otf
+│   ├── Marianne-Light.otf
+│   ├── Marianne-LightItalic.otf
+│   ├── Marianne-Medium.otf
+│   ├── Marianne-MediumItalic.otf
+│   ├── Marianne-Regular.otf
+│   ├── Marianne-RegularItalic.otf
+│   ├── Marianne-Thin.otf
+│   └── Marianne-ThinItalic.otf
+├── justfile
+├── pyproject.toml
+├── remote.just
+└── uv.lock
+39 directories, 141 files
