@@ -32,6 +32,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── database.py
 │   │   │   ├── documents.py
+│   │   │   ├── energy.py
 │   │   │   ├── keycloak.py
 │   │   │   ├── llm.py
 │   │   │   ├── logging.py
@@ -66,6 +67,7 @@
 │   │   │   ├── app_settings.py
 │   │   │   ├── base.py
 │   │   │   ├── cgu.py
+│   │   │   ├── chart.py
 │   │   │   ├── chunk.py
 │   │   │   ├── collection.py
 │   │   │   ├── collection_import.py
@@ -78,8 +80,10 @@
 │   │   │   ├── document_revision.py
 │   │   │   ├── document_stage.py
 │   │   │   ├── document_tabular_profile.py
+│   │   │   ├── document_tabular_sheet.py
 │   │   │   ├── entity.py
 │   │   │   ├── evaluation.py
+│   │   │   ├── execution_metric.py
 │   │   │   ├── feedback.py
 │   │   │   ├── import_document.py
 │   │   │   ├── index_rebuild.py
@@ -96,6 +100,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── app_settings_repository.py
 │   │   │   ├── cgu_repository.py
+│   │   │   ├── chart_repository.py
 │   │   │   ├── chunk_repository.py
 │   │   │   ├── collection_hierarchy_repository.py
 │   │   │   ├── collection_import_repository.py
@@ -110,6 +115,7 @@
 │   │   │   ├── document_stage_repository.py
 │   │   │   ├── entity_repository.py
 │   │   │   ├── evaluation_repository.py
+│   │   │   ├── execution_metric_repository.py
 │   │   │   ├── feedback_repository.py
 │   │   │   ├── index_rebuild_repository.py
 │   │   │   ├── prompt_repository.py
@@ -220,6 +226,7 @@
 │   │       ├── result_reuse.py
 │   │       ├── run_service.py
 │   │       ├── search_service.py
+│   │       ├── table_views.py
 │   │       ├── task_service.py
 │   │       ├── usage_service.py
 │   │       └── vector_store.py
@@ -288,7 +295,12 @@
 │   │       ├── 20261101_0900_b2d5f8a1c3e7_qa_source_position.py
 │   │       ├── 20261102_0900_c3e6a9b2d4f8_entity_mentions.py
 │   │       ├── 20261103_0900_d4f7b0c3e5a9_assistant_questions.py
-│   │       └── 20261104_0900_e5a8c1d4f6b0_summary_pages.py
+│   │       ├── 20261104_0900_e5a8c1d4f6b0_summary_pages.py
+│   │       ├── 20261105_0900_f6b9d2e5a7c1_execution_metrics.py
+│   │       ├── 20261106_0900_a7c0d3e6f8b2_page_regions.py
+│   │       ├── 20261107_0900_b8d1e4f7a9c3_document_tables.py
+│   │       ├── 20261108_0900_c9e2f5a8b0d4_tabular_sheets.py
+│   │       └── 20261109_0900_d0f3a6b9c1e5_charts.py
 │   ├── pyproject.toml
 │   ├── tests
 │   │   ├── .env.testing
@@ -312,52 +324,7 @@
 │   │   │   └── test_temporary_collection.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
-│   │   │   ├── test_admin_cgu.py
-│   │   │   ├── test_admin_prompts.py
-│   │   │   ├── test_admin_reports.py
-│   │   │   ├── test_admin_settings.py
-│   │   │   ├── test_auth.py
-│   │   │   ├── test_cgu.py
-│   │   │   ├── test_collection_imports.py
-│   │   │   ├── test_collection_sharing.py
-│   │   │   ├── test_collections.py
-│   │   │   ├── test_conversations.py
-│   │   │   ├── test_creation_proposals.py
-│   │   │   ├── test_description_rollup.py
-│   │   │   ├── test_document_drafts.py
-│   │   │   ├── test_document_hash.py
-│   │   │   ├── test_documents.py
-│   │   │   ├── test_edit_delegation.py
-│   │   │   ├── test_entity_mentions.py
-│   │   │   ├── test_filing.py
-│   │   │   ├── test_golden_qa.py
-│   │   │   ├── test_health.py
-│   │   │   ├── test_index_rebuilds.py
-│   │   │   ├── test_inherited_access.py
-│   │   │   ├── test_internal_conversations.py
-│   │   │   ├── test_internal_documents.py
-│   │   │   ├── test_internal_evaluation.py
-│   │   │   ├── test_internal_llm.py
-│   │   │   ├── test_internal_pipeline.py
-│   │   │   ├── test_internal_prompts.py
-│   │   │   ├── test_internal_runs.py
-│   │   │   ├── test_internal_tasks.py
-│   │   │   ├── test_living_documents.py
-│   │   │   ├── test_models.py
-│   │   │   ├── test_page_text_boxes.py
-│   │   │   ├── test_pinned_sub_collections.py
-│   │   │   ├── test_pipeline_replay.py
-│   │   │   ├── test_qa_suggestions.py
-│   │   │   ├── test_reports.py
-│   │   │   ├── test_result_reuse.py
-│   │   │   ├── test_run_questions.py
-│   │   │   ├── test_runs.py
-│   │   │   ├── test_sampling_settings.py
-│   │   │   ├── test_sub_collections.py
-│   │   │   ├── test_tasks.py
-│   │   │   ├── test_url_refresh.py
-│   │   │   ├── test_usage.py
-│   │   │   └── test_window_pruning.py
+│   │   │   └── test_*.py  (50 files)
 │   │   └── services
 │   │       ├── __init__.py
 │   │       ├── test_collection_hierarchy_service.py
@@ -471,6 +438,13 @@
 │       │       ├── report-05-admin-expanded.png
 │       │       ├── report-07-admin-resolved.png
 │       │       └── report-08-user-sees-response.png
+│       ├── usage
+│       │   ├── README.md
+│       │   └── screenshots
+│       │       ├── usage-execution.png
+│       │       ├── usage-impact-multiple-charges.png
+│       │       ├── usage-impact.png
+│       │       └── usage-tokens.png
 │       └── user-menu
 │           ├── README.md
 │           └── screenshots
@@ -571,6 +545,7 @@
 │   │   │   ├── SourceDocumentModal.vue
 │   │   │   ├── SourcePreview.vue
 │   │   │   ├── SourcesPanel.vue
+│   │   │   ├── TabularProfileTab.vue
 │   │   │   ├── TaskLogViewer.vue
 │   │   │   ├── TaskRow.vue
 │   │   │   ├── TaskTableRow.vue
@@ -578,9 +553,12 @@
 │   │   │   ├── UrlRefreshSettings.vue
 │   │   │   ├── UsageView.vue
 │   │   │   └── usage
+│   │   │       ├── EnergyBatteries.vue
+│   │   │       ├── ExecutionPanel.vue
 │   │   │       ├── UsageCharts.vue
 │   │   │       ├── UsagePeriodSelector.vue
-│   │   │       └── WaterBottles.vue
+│   │   │       ├── WaterBottles.vue
+│   │   │       └── stepLabels.ts
 │   │   ├── composables
 │   │   │   ├── useAdminSettings.ts
 │   │   │   ├── useAppVersion.ts
@@ -624,12 +602,20 @@
 │   │   │   ├── collection.ts
 │   │   │   ├── model.ts
 │   │   │   ├── speech-recognition.d.ts
+│   │   │   ├── tabular.ts
 │   │   │   ├── usage.ts
 │   │   │   └── user.ts
 │   │   └── utils
+│   │       ├── answerHtml.ts
+│   │       ├── answerSources.test.ts
+│   │       ├── answerSources.ts
+│   │       ├── chartImages.test.ts
+│   │       ├── chartImages.ts
 │   │       ├── collectionPath.ts
 │   │       ├── collectionProfiles.test.ts
 │   │       ├── collectionProfiles.ts
+│   │       ├── execution.test.ts
+│   │       ├── execution.ts
 │   │       ├── highlightPassage.test.ts
 │   │       ├── highlightPassage.ts
 │   │       ├── longDocuments.test.ts
@@ -641,7 +627,9 @@
 │   │       ├── settingsDraft.test.ts
 │   │       ├── settingsDraft.ts
 │   │       ├── settingsSummary.test.ts
-│   │       └── settingsSummary.ts
+│   │       ├── settingsSummary.ts
+│   │       ├── tabular.test.ts
+│   │       └── tabular.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
@@ -793,7 +781,91 @@
 │   │   │   └── statefulset.yaml
 │   │   ├── ingress.yaml
 │   │   ├── jobs.yaml
+│   │   ├── ocr
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── ocr_layout
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── ocr_table
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── pullsecret.yaml
+│   │   ├── tabular
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── validation.yaml
 │   │   ├── worker_document_edit
 │   │   │   ├── clusterrole.yaml
@@ -860,6 +932,7 @@
     │   │   ├── backend_client.py
     │   │   ├── celery_app.py
     │   │   ├── config.py
+    │   │   ├── execution_metrics.py
     │   │   ├── graph
     │   │   │   ├── __init__.py
     │   │   │   ├── graph.py
@@ -870,6 +943,7 @@
     │   │   │   │   ├── answer_identity.py
     │   │   │   │   ├── build_answer_context.py
     │   │   │   │   ├── build_research_plan.py
+    │   │   │   │   ├── clarify_coverage.py
     │   │   │   │   ├── create_document.py
     │   │   │   │   ├── decompose_query.py
     │   │   │   │   ├── delegate_edit.py
@@ -879,9 +953,10 @@
     │   │   │   │   ├── load_accessible_vdbs.py
     │   │   │   │   ├── load_context.py
     │   │   │   │   ├── merge_evidence.py
-    │   │   │   │   ├── replan_research.py
     │   │   │   │   ├── request_clarification.py
     │   │   │   │   ├── research_task.py
+    │   │   │   │   ├── rewrite_citations.py
+    │   │   │   │   ├── route_collections.py
     │   │   │   │   ├── targeted_research.py
     │   │   │   │   └── validate_grounding.py
     │   │   │   ├── routing
@@ -889,17 +964,22 @@
     │   │   │   │   └── conditions.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── citations.py
     │   │   │   │   ├── document_resolver.py
     │   │   │   │   ├── events.py
     │   │   │   │   ├── evidence.py
     │   │   │   │   ├── llm.py
+    │   │   │   │   ├── node_metrics.py
     │   │   │   │   ├── planning.py
     │   │   │   │   ├── prompts.py
+    │   │   │   │   ├── tabular_catalog.py
     │   │   │   │   ├── tabular_query.py
+    │   │   │   │   ├── tabular_worker.py
     │   │   │   │   ├── time_tool.py
     │   │   │   │   └── vdb_router.py
     │   │   │   └── state.py
     │   │   ├── searxng_client.py
+    │   │   ├── tabular_contracts.py
     │   │   ├── task_logging.py
     │   │   ├── task_revocation.py
     │   │   ├── tasks.py
@@ -909,13 +989,18 @@
     │   │   ├── __init__.py
     │   │   ├── conftest.py
     │   │   ├── test_agent_service.py
+    │   │   ├── test_answer_citations.py
     │   │   ├── test_answer_help.py
     │   │   ├── test_ask_user.py
     │   │   ├── test_create_document.py
     │   │   ├── test_edit_delegation.py
+    │   │   ├── test_execution_metrics.py
     │   │   ├── test_graph.py
     │   │   ├── test_prompts.py
+    │   │   ├── test_route_collections.py
+    │   │   ├── test_tabular_contracts_sync.py
     │   │   ├── test_tabular_query.py
+    │   │   ├── test_validate_grounding.py
     │   │   └── test_vdb_router.py
     │   └── uv.lock
     ├── document_edit
@@ -930,6 +1015,7 @@
     │   │   ├── contract.py
     │   │   ├── edit_types.py
     │   │   ├── editing.py
+    │   │   ├── execution_metrics.py
     │   │   ├── image_size.py
     │   │   ├── markdown_editor.py
     │   │   ├── odt_editor.py
@@ -946,6 +1032,7 @@
     │   │   ├── __init__.py
     │   │   ├── odt_fixture.py
     │   │   ├── test_agent.py
+    │   │   ├── test_execution_metrics.py
     │   │   ├── test_images_and_preview.py
     │   │   ├── test_markdown_editor.py
     │   │   ├── test_odt_editor.py
@@ -962,6 +1049,17 @@
     │   │   ├── chunking.py
     │   │   ├── config.py
     │   │   ├── entity_mentions.py
+    │   │   ├── execution_metrics.py
+    │   │   ├── ocr
+    │   │   │   ├── __init__.py
+    │   │   │   ├── assemble.py
+    │   │   │   ├── contracts.py
+    │   │   │   ├── crop.py
+    │   │   │   ├── pages.py
+    │   │   │   ├── regions.py
+    │   │   │   ├── routing.py
+    │   │   │   ├── scanned.py
+    │   │   │   └── tables.py
     │   │   ├── parsing.py
     │   │   ├── reuse.py
     │   │   ├── sampling.py
@@ -970,13 +1068,19 @@
     │   │   ├── tabular
     │   │   │   ├── __init__.py
     │   │   │   ├── detect.py
-    │   │   │   ├── loader.py
+    │   │   │   ├── sheets
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── analyzer.py
+    │   │   │   │   ├── compat.py
+    │   │   │   │   ├── limits.py
+    │   │   │   │   ├── pages.py
+    │   │   │   │   ├── profile.py
+    │   │   │   │   ├── readers.py
+    │   │   │   │   └── tables.py
     │   │   │   ├── stats
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── classify.py
-    │   │   │   │   ├── fetchers.py
     │   │   │   │   ├── models.py
-    │   │   │   │   ├── profile.py
     │   │   │   │   └── types.py
     │   │   │   └── summarize.py
     │   │   ├── task_logging.py
@@ -1008,11 +1112,20 @@
     │   │   ├── test_backend_client_sampling.py
     │   │   ├── test_chunk_spans.py
     │   │   ├── test_entity_mentions.py
+    │   │   ├── test_execution_metrics.py
     │   │   ├── test_index_rebuild.py
     │   │   ├── test_limits.py
     │   │   ├── test_llm_call_cases.py
     │   │   ├── test_llm_chunking.py
-    │   │   ├── test_loader.py
+    │   │   ├── test_ocr_assemble.py
+    │   │   ├── test_ocr_contracts.py
+    │   │   ├── test_ocr_contracts_sync.py
+    │   │   ├── test_ocr_engine_deployed.py
+    │   │   ├── test_ocr_pages.py
+    │   │   ├── test_ocr_regions.py
+    │   │   ├── test_ocr_scanned.py
+    │   │   ├── test_ocr_tables.py
+    │   │   ├── test_ocr_wiring.py
     │   │   ├── test_parse_ranges.py
     │   │   ├── test_qa_source.py
     │   │   ├── test_queues.py
@@ -1021,8 +1134,14 @@
     │   │   ├── test_reuse_sampling.py
     │   │   ├── test_sampled_steps.py
     │   │   ├── test_sampling.py
+    │   │   ├── test_sheets_analysis.py
+    │   │   ├── test_sheets_formats.py
+    │   │   ├── test_sheets_profile.py
+    │   │   ├── test_sheets_tables.py
     │   │   ├── test_stats.py
+    │   │   ├── test_tabular_detect.py
     │   │   ├── test_tabular_steps.py
+    │   │   ├── test_tabular_task.py
     │   │   ├── test_task_logging.py
     │   │   ├── test_task_revocation.py
     │   │   ├── test_tasks.py
@@ -1032,24 +1151,100 @@
     │   │   ├── test_window_priority.py
     │   │   └── test_zip_import.py
     │   └── uv.lock
-    └── evaluation
+    ├── evaluation
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── backend_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── execution_metrics.py
+    │   │   ├── metrics.py
+    │   │   ├── task_logging.py
+    │   │   ├── task_revocation.py
+    │   │   ├── tasks.py
+    │   │   └── usage_context.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── test_discussion.py
+    │   │   ├── test_execution_metrics.py
+    │   │   ├── test_metrics.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    ├── layout
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── layout.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_contracts_sync.py
+    │   │   └── test_layout.py
+    │   └── uv.lock
+    ├── ocr
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── reader.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_contracts_sync.py
+    │   │   └── test_reader.py
+    │   └── uv.lock
+    ├── table
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── storage.py
+    │   │   ├── tables.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_contracts_sync.py
+    │   │   └── test_tables.py
+    │   └── uv.lock
+    └── tabular
+        ├── .dockerignore
         ├── Dockerfile
         ├── README.md
         ├── app
         │   ├── __init__.py
-        │   ├── backend_client.py
         │   ├── celery_app.py
+        │   ├── chart.py
+        │   ├── chart_task.py
         │   ├── config.py
-        │   ├── metrics.py
-        │   ├── task_logging.py
-        │   ├── task_revocation.py
-        │   ├── tasks.py
-        │   └── usage_context.py
+        │   ├── contracts.py
+        │   ├── engine.py
+        │   ├── limits.py
+        │   ├── storage.py
+        │   └── tasks.py
         ├── pyproject.toml
         ├── tests
         │   ├── __init__.py
-        │   ├── test_discussion.py
-        │   ├── test_metrics.py
+        │   ├── test_chart_render.py
+        │   ├── test_chart_task.py
+        │   ├── test_engine.py
         │   └── test_tasks.py
         └── uv.lock
-94 directories, 960 files
+114 directories, 1184 files

@@ -1,5 +1,152 @@
 # Changelog
 
+## [0.35.0](https://github.com/IA-Generative/Muffin/compare/v0.34.0...v0.35.0) (2026-10-28)
+
+
+### Features
+
+* **agent:** passages cités vérifiés par l'id et contrôle d'ancrage des citations ([#402](https://github.com/IA-Generative/Muffin/issues/402)) ([7b19371](https://github.com/IA-Generative/Muffin/commit/7b19371e98b971676c66a07cbb379b34036a23f1))
+
+
+### Bug Fixes
+
+* **agent:** rattacher les réponses à leurs sources, ou dire qu'elles n'en ont pas ([#402](https://github.com/IA-Generative/Muffin/issues/402)) ([3192026](https://github.com/IA-Generative/Muffin/commit/31920261b14336d0afd18aae8d35e4a0209df73e))
+
+## [0.35.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.34.0...v0.35.0-rc) (2026-10-28)
+
+
+### Features
+
+* **agent:** passages cités vérifiés par l'id et contrôle d'ancrage des citations ([#402](https://github.com/IA-Generative/Muffin/issues/402)) ([86cbec0](https://github.com/IA-Generative/Muffin/commit/86cbec08ab381d050128ec3458f2826e242803a3))
+
+
+### Bug Fixes
+
+* **agent:** rattacher les réponses à leurs sources, ou dire qu'elles n'en ont pas ([#402](https://github.com/IA-Generative/Muffin/issues/402)) ([06840bf](https://github.com/IA-Generative/Muffin/commit/06840bf8f1a9cf96cb23acb2a0db6da3b750c34a))
+
+## [0.34.0](https://github.com/IA-Generative/Muffin/compare/v0.33.1...v0.34.0) (2026-10-28)
+
+
+### Features
+
+* **agent:** interroger les données tabulaires en SQL avec correction d'erreur ([#433](https://github.com/IA-Generative/Muffin/issues/433)) ([def1efd](https://github.com/IA-Generative/Muffin/commit/def1efd6b0bfcf1265752af272b02b5e6a92b88f))
+* **tabular:** garder toutes les feuilles d'un fichier en base et supprimer leurs Parquet ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([92d9c5f](https://github.com/IA-Generative/Muffin/commit/92d9c5feebcdf76e239d51227984ea714953e1b6))
+* **tabular:** graphiques dans les réponses - create_chart, rendu, stockage, affichage ([#434](https://github.com/IA-Generative/Muffin/issues/434)) ([a423524](https://github.com/IA-Generative/Muffin/commit/a423524b9a587fd7423253b8c5d70f18cea03c05))
+* **tabular:** lire les tableurs en flux, toutes les feuilles, un Parquet par feuille ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([8b274ce](https://github.com/IA-Generative/Muffin/commit/8b274cec083c4376003b16fd89017fafbdd079ea))
+* **tabular:** onglet Données du document et documentation des bornes ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([28ebb32](https://github.com/IA-Generative/Muffin/commit/28ebb326d860bdbd6809976f0c00e4c45c7a64a3))
+* **tabular:** profil par feuille et copie Parquet typée à l'ingestion, sans S3 dans DuckDB ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([7deb09a](https://github.com/IA-Generative/Muffin/commit/7deb09afd15a559b904710db30fe39f3984a5927))
+* **tabular:** worker de requêtes SQL verrouillé sur les Parquet des feuilles ([#432](https://github.com/IA-Generative/Muffin/issues/432)) ([3bc4448](https://github.com/IA-Generative/Muffin/commit/3bc4448d3a61eb8ce3715b3a4f223291ff621868))
+
+## [0.34.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.33.0...v0.34.0-rc) (2026-10-28)
+
+
+### Features
+
+* **agent:** interroger les données tabulaires en SQL avec correction d'erreur ([#433](https://github.com/IA-Generative/Muffin/issues/433)) ([99cbf00](https://github.com/IA-Generative/Muffin/commit/99cbf00558377469208de3fa2193f3fa563f0144))
+* **tabular:** garder toutes les feuilles d'un fichier en base et supprimer leurs Parquet ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([af396d2](https://github.com/IA-Generative/Muffin/commit/af396d264f823f6f165885991ec2abf80e95a395))
+* **tabular:** graphiques dans les réponses - create_chart, rendu, stockage, affichage ([#434](https://github.com/IA-Generative/Muffin/issues/434)) ([66ab2fb](https://github.com/IA-Generative/Muffin/commit/66ab2fbde950fedc2c91a930502e708ee97c40a1))
+* **tabular:** lire les tableurs en flux, toutes les feuilles, un Parquet par feuille ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([3f6f8cc](https://github.com/IA-Generative/Muffin/commit/3f6f8ccf1d0bea2f3d7bc7c8ac4fe0f90c7fee9e))
+* **tabular:** onglet Données du document et documentation des bornes ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([68d8aab](https://github.com/IA-Generative/Muffin/commit/68d8aab833d29bc518bf599f9b292fcfc7cf1e50))
+* **tabular:** profil par feuille et copie Parquet typée à l'ingestion, sans S3 dans DuckDB ([#431](https://github.com/IA-Generative/Muffin/issues/431)) ([02f0251](https://github.com/IA-Generative/Muffin/commit/02f0251cf5fde5cec3183ddce0aea7617558756f))
+* **tabular:** worker de requêtes SQL verrouillé sur les Parquet des feuilles ([#432](https://github.com/IA-Generative/Muffin/issues/432)) ([f048564](https://github.com/IA-Generative/Muffin/commit/f048564957f972cb391e4b082310cf3bcff4dcfc))
+
+
+### Bug Fixes
+
+* **agent:** borner ce que le SQL des requêtes tabulaires peut atteindre ([062bda7](https://github.com/IA-Generative/Muffin/commit/062bda7e12e79123a5255d754cc831c6acb48ca3))
+
+## [0.33.1](https://github.com/IA-Generative/Muffin/compare/v0.33.0...v0.33.1) (2026-10-28)
+
+
+### Bug Fixes
+
+* **agent:** borner ce que le SQL des requêtes tabulaires peut atteindre ([062bda7](https://github.com/IA-Generative/Muffin/commit/062bda7e12e79123a5255d754cc831c6acb48ca3))
+
+## [0.33.0](https://github.com/IA-Generative/Muffin/compare/v0.32.0...v0.33.0) (2026-10-28)
+
+
+### Features
+
+* **chart:** déployer les pods ocr-layout et ocr ([#406](https://github.com/IA-Generative/Muffin/issues/406), [#407](https://github.com/IA-Generative/Muffin/issues/407)) ([9c274c5](https://github.com/IA-Generative/Muffin/commit/9c274c5e6ccad56a58594fe835fbe919d8892d99))
+* **documents:** garder en base le layout des pages scannées, le lire par l'API ([#409](https://github.com/IA-Generative/Muffin/issues/409)) ([b5e4e45](https://github.com/IA-Generative/Muffin/commit/b5e4e45faa198af09f6f95c3b5a13f74e9bfaeb5))
+* **documents:** garder en base les tableaux lus sur les pages scannées ([#410](https://github.com/IA-Generative/Muffin/issues/410)) ([3ee4137](https://github.com/IA-Generative/Muffin/commit/3ee4137fda5c56068eb547fbfbaf6c7405c8bbcf))
+* **ocr:** envoyer le layout des pages lues par les pods avec la page ([#409](https://github.com/IA-Generative/Muffin/issues/409)) ([4b7d4b2](https://github.com/IA-Generative/Muffin/commit/4b7d4b2a727e8d5231a8b5ea295cf12be1f875ed))
+* **ocr:** lire les pages scannées avec les pods layout et ocr, repli Tesseract ([#408](https://github.com/IA-Generative/Muffin/issues/408)) ([ab4351d](https://github.com/IA-Generative/Muffin/commit/ab4351df3e4d6f522cb3c21adcd46c5fe337376e))
+* **ocr:** lire les pages scannées avec les pods par défaut (chart, compose) ([8d5c277](https://github.com/IA-Generative/Muffin/commit/8d5c2774eb1a72ad0ae153074f5bdc6c72a8729e))
+* **ocr:** lire les tableaux des pages scannées comme des tableaux, marqueur dans le texte ([#410](https://github.com/IA-Generative/Muffin/issues/410)) ([c825458](https://github.com/IA-Generative/Muffin/commit/c825458734ca1182285b0907cff764797afddbb0))
+* **ocr:** niveau des titres dans le contrat des régions ([#408](https://github.com/IA-Generative/Muffin/issues/408)) ([fb9a384](https://github.com/IA-Generative/Muffin/commit/fb9a384d5db0dc7815af5050517ca2bb82b9ac17))
+* **ocr:** pod layout - régions et ordre de lecture avec PP-DocLayoutV3 ([#406](https://github.com/IA-Generative/Muffin/issues/406)) ([a045c37](https://github.com/IA-Generative/Muffin/commit/a045c3719f8ed78315a43e5b871327ff237e0877))
+* **ocr:** pod ocr - texte des régions avec PP-OCRv5 mobile en ONNX ([#407](https://github.com/IA-Generative/Muffin/issues/407)) ([da2dc02](https://github.com/IA-Generative/Muffin/commit/da2dc02d063de8a1849fd14af21991c08dde8c77))
+* **ocr:** pod table - structure des tableaux avec SLANet_plus, texte des cellules ([#410](https://github.com/IA-Generative/Muffin/issues/410)) ([8382368](https://github.com/IA-Generative/Muffin/commit/838236827c73fd7a5c9ace4a297c8a26538ca665))
+* **ocr:** socle de l'extraction par layout - contrats, queues, réglages ([#405](https://github.com/IA-Generative/Muffin/issues/405)) ([143c6d8](https://github.com/IA-Generative/Muffin/commit/143c6d8affdff50d5c0ca48f311d2ec5216bde65))
+
+## [0.33.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.33.0-rc...v0.33.0-rc.1) (2026-10-28)
+
+
+### Features
+
+* **documents:** garder en base les tableaux lus sur les pages scannées ([#410](https://github.com/IA-Generative/Muffin/issues/410)) ([7f47e7a](https://github.com/IA-Generative/Muffin/commit/7f47e7ae4e870e90b32f95551f76a89ea657123c))
+* **ocr:** lire les tableaux des pages scannées comme des tableaux, marqueur dans le texte ([#410](https://github.com/IA-Generative/Muffin/issues/410)) ([81226dd](https://github.com/IA-Generative/Muffin/commit/81226dd905c29783f2536615004d2e909868b210))
+* **ocr:** pod table - structure des tableaux avec SLANet_plus, texte des cellules ([#410](https://github.com/IA-Generative/Muffin/issues/410)) ([f0f0f92](https://github.com/IA-Generative/Muffin/commit/f0f0f92fc758d083b90456639f7cad7a2496b854))
+
+## [0.33.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.32.0...v0.33.0-rc) (2026-10-28)
+
+
+### Features
+
+* **chart:** déployer les pods ocr-layout et ocr ([#406](https://github.com/IA-Generative/Muffin/issues/406), [#407](https://github.com/IA-Generative/Muffin/issues/407)) ([c4acec7](https://github.com/IA-Generative/Muffin/commit/c4acec7ea6d5026c31c7020133765c5075cfd298))
+* **documents:** garder en base le layout des pages scannées, le lire par l'API ([#409](https://github.com/IA-Generative/Muffin/issues/409)) ([ad8a15d](https://github.com/IA-Generative/Muffin/commit/ad8a15db283a06ec4e102701ef854af65a7db634))
+* **ocr:** envoyer le layout des pages lues par les pods avec la page ([#409](https://github.com/IA-Generative/Muffin/issues/409)) ([8d80f17](https://github.com/IA-Generative/Muffin/commit/8d80f17e73fa0e372800c1687fd2c24019a6a0bb))
+* **ocr:** lire les pages scannées avec les pods layout et ocr, repli Tesseract ([#408](https://github.com/IA-Generative/Muffin/issues/408)) ([a7c395b](https://github.com/IA-Generative/Muffin/commit/a7c395b8c5c639956a5c7c8c178dc7ebc1ff7265))
+* **ocr:** lire les pages scannées avec les pods par défaut (chart, compose) ([784cbeb](https://github.com/IA-Generative/Muffin/commit/784cbeb483489bbdeba0d68162b402d44e5866ac))
+* **ocr:** niveau des titres dans le contrat des régions ([#408](https://github.com/IA-Generative/Muffin/issues/408)) ([c60dd2b](https://github.com/IA-Generative/Muffin/commit/c60dd2b338fc37a179437f25fce8234e74183f24))
+* **ocr:** pod layout - régions et ordre de lecture avec PP-DocLayoutV3 ([#406](https://github.com/IA-Generative/Muffin/issues/406)) ([0de9510](https://github.com/IA-Generative/Muffin/commit/0de95108bdf4ea51955e8519fe16792c66330c5a))
+* **ocr:** pod ocr - texte des régions avec PP-OCRv5 mobile en ONNX ([#407](https://github.com/IA-Generative/Muffin/issues/407)) ([6ecc357](https://github.com/IA-Generative/Muffin/commit/6ecc357cf1078d1cca9e7c8d41cd97ff2ff28990))
+* **ocr:** socle de l'extraction par layout - contrats, queues, réglages ([#405](https://github.com/IA-Generative/Muffin/issues/405)) ([61cd06d](https://github.com/IA-Generative/Muffin/commit/61cd06da55004584486ca25d881d33224c33c27a))
+
+## [0.32.0](https://github.com/IA-Generative/Muffin/compare/v0.31.1...v0.32.0) (2026-10-27)
+
+
+### Features
+
+* **agent:** ask which collection to search when none stands out ([b7b71af](https://github.com/IA-Generative/Muffin/commit/b7b71af5b226d192a5c51f1e4cab4ee119c8fa7c))
+* **agent:** stream the answer to the chat while it is being written ([1ded1e0](https://github.com/IA-Generative/Muffin/commit/1ded1e0faa255fef770b0949867c8f7b232fba31))
+* **frontend:** picture the estimated energy as the time of a LED bulb and as AA batteries ([8b5c38b](https://github.com/IA-Generative/Muffin/commit/8b5c38b74d1ad0cfacf594f9a342711954ac29f8))
+* **frontend:** show the time, CPU, memory and estimated energy of the tasks in the usage page ([cb16625](https://github.com/IA-Generative/Muffin/commit/cb16625cd1d8f8d0eee582cf9c144cc60a79d50c))
+* **frontend:** usage page with water and energy side by side, tabs, and a charging phone battery ([ccad415](https://github.com/IA-Generative/Muffin/commit/ccad4156bdc55bd9299fa76629938d4557c10a3b))
+* **usage:** record the time, CPU and memory of the worker tasks and the agent's steps ([84f3c37](https://github.com/IA-Generative/Muffin/commit/84f3c373351ecb706f14eb6df8f7f926ad7a95f9))
+* **workers:** report the time, CPU and memory of each task, and of each step of the agent ([41fab90](https://github.com/IA-Generative/Muffin/commit/41fab90f2a15bb938b372cb942427f603d7d9a60))
+
+
+### Bug Fixes
+
+* **agent:** ask the user what they meant instead of replanning when the results are not enough ([cd6adbc](https://github.com/IA-Generative/Muffin/commit/cd6adbca73310a91362996e85c86af5831d9c995))
+
+## [0.32.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.31.1...v0.32.0-rc) (2026-10-27)
+
+
+### Features
+
+* **agent:** ask which collection to search when none stands out ([66b1bda](https://github.com/IA-Generative/Muffin/commit/66b1bdaa8aa7d746f7d4c790e20233e97480b1d4))
+* **agent:** stream the answer to the chat while it is being written ([c9d58eb](https://github.com/IA-Generative/Muffin/commit/c9d58ebe3a3289118956f107d2ecc8c92a7c9583))
+* **frontend:** picture the estimated energy as the time of a LED bulb and as AA batteries ([9a471f6](https://github.com/IA-Generative/Muffin/commit/9a471f6996e39c2b17064b1d07c701f9fae84362))
+* **frontend:** show the time, CPU, memory and estimated energy of the tasks in the usage page ([acdcf8e](https://github.com/IA-Generative/Muffin/commit/acdcf8ec8b194b8d3be815810e22439a7c0a38c2))
+* **frontend:** usage page with water and energy side by side, tabs, and a charging phone battery ([f499ff6](https://github.com/IA-Generative/Muffin/commit/f499ff620d4780d7705fa98221f496f881ef2e3b))
+* **usage:** record the time, CPU and memory of the worker tasks and the agent's steps ([d262715](https://github.com/IA-Generative/Muffin/commit/d2627152826a0abfbcd64476849cdc726ed38c05))
+* **workers:** report the time, CPU and memory of each task, and of each step of the agent ([fb7d985](https://github.com/IA-Generative/Muffin/commit/fb7d985f0ec26ab7942d5a1fae0a3aa52734acfa))
+
+
+### Bug Fixes
+
+* **agent:** ask the user what they meant instead of replanning when the results are not enough ([85c157e](https://github.com/IA-Generative/Muffin/commit/85c157e3b4356e9e22fe187fd33b8d02cc2febc1))
+
+## [0.31.1](https://github.com/IA-Generative/Muffin/compare/v0.31.0...v0.31.1) (2026-10-26)
+
+
+### Bug Fixes
+
+* **helm:** allow KEDA to reach Redis ([8626258](https://github.com/IA-Generative/Muffin/commit/8626258ccb7ec9030735c234e3bcb8d06107c50e))
+
 ## [0.31.0](https://github.com/IA-Generative/Muffin/compare/v0.30.0...v0.31.0) (2026-10-23)
 
 

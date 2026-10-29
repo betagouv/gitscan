@@ -1,23 +1,32 @@
 [project]
 name = "muffin-worker-document-process"
-version = "0.31.0"
+version = "0.35.0"
 description = "Celery worker that ingests documents (scraped URLs or uploaded files) into a collection"
 requires-python = ">=3.12"
 dependencies = [
     "celery[redis]>=5.6.0",
     "httpx>=0.28.1",
+    "pydantic>=2.0",
     "pydantic-settings>=2.15.0",
     "loguru>=0.7.3",
     "boto3>=1.43.98",
     "liteparse>=2.14.4",
     "scrapling[rag]>=0.3.9",
     "duckdb>=1.1.0",
+    # The spreadsheets (app/tabular/sheets/): read as a stream, and written back as typed Parquet.
+    "openpyxl>=3.1.5",
+    "xlrd>=2.0.2",
+    "pyarrow>=26.0.0",
+    # Crops a region out of the image of a page (app/ocr/crop.py).
+    "pillow>=11.0.0",
 ]
 
 [dependency-groups]
 test = [
     "pytest>=9.1.1",
     "pytest-dotenv>=0.5.2",
+    "pyyaml>=6.0",
+    "xlwt>=1.3.0",
     "ruff>=0.15.0",
 ]
 dev = [{ include-group = "test" }]
