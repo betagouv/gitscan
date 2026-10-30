@@ -1,24 +1,24 @@
 ## Changelog : GatewAI (30 derniers jours, au 23 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par l'introduction de fonctionnalités majeures de streaming en temps réel via WebSocket et par une refonte importante du système de limitation de débit (rate-limiting). Le projet a également franchi une étape clé avec sa migration complète vers l'organisation IA-Generative et une optimisation de la gestion des ressources pour garantir une meilleure stabilité et sécurité.
+Ce mois a été marqué par des avancées majeures, notamment l'introduction du support pour le streaming en temps réel via WebSocket et une gestion plus intelligente des quotas de consommation. Le projet a également entamé sa transition officielle vers l'organisation IA-Generative et a bénéficié d'optimisations de performance pour le transfert de fichiers volumineux.
 
 ### Évolutions fonctionnelles
-- **Streaming en temps réel** : Introduction du support WebSocket pour le streaming, incluant le contrôle d'accès lors du handshake, la limitation de la concurrence des sessions et la mesure de la consommation audio [#192](https://github.com/IA-Generative/GatewAI/pull/192).
-- **Amélioration du Rate Limiting** : 
-    - Introduction de `budget_group` pour mutualiser les budgets de tokens entre plusieurs alias de modèles.
+- **Streaming Temps Réel (WebSocket) :** Introduction d'un proxy de streaming WebSocket incluant le contrôle d'accès lors du handshake, la limitation de la concurrence des sessions, le comptage de la consommation audio (audio-seconds metering) et des garde-fous sur les transcriptions. [#192](https://github.com/IA-Generative/GatewAI/pull/192)
+- **Gestion avancée des quotas (Rate Limiting) :**
+    - Mise en place de `budget_group` permettant de mutualiser le budget de tokens entre plusieurs alias de modèles partageant un même backend.
     - Support des headers de limitation de débit compatibles avec l'API OpenAI.
-    - Possibilité de réinitialiser les quotas de manière granulaire pour un modèle spécifique [#194](https://github.com/IA-Generative/GatewAI/pull/194).
-- **Configuration** : Ajout du support des propriétés `envFrom` et `volumes` pour faciliter le déploiement.
+    - Amélioration de la gestion administrative permettant la réinitialisation des quotas pour un modèle spécifique. [#194](https://github.com/IA-Generative/GatewAI/pull/194)
 
 ### Évolutions techniques
-- **Optimisation de la gestion des flux** : Refonte de l'upload des fichiers multipart pour utiliser le streaming vers le backend au lieu du buffering, évitant ainsi les fuites de stockage éphémère et les pics de consommation mémoire.
-- **Mise à jour de l'infrastructure** : Migration de la stack de base vers Go 1.27 et l'image Debian 13 (distroless) pour renforcer la sécurité et la pérennité du runtime.
-- **Correction de la télémétrie** : Résolution du problème de routage des endpoints pour l'exportateur OTLP, assurant le bon acheminement des traces et métriques [#204](https://github.com/IA-Generative/GatewAI/pull/204).
+- **Optimisation des transferts de données :** Refactorisation du mode synchrone pour utiliser le streaming des uploads multipart au lieu du buffering, ce qui évite les fuites de stockage éphémère et améliore l'efficacité du système.
+- **Infrastructure & Kubernetes :** Ajout de la prise en charge des propriétés `envFrom` et `volumes` dans les charts Helm pour une configuration plus flexible.
+- **Observabilité :** Correction du chemin de l'exportateur OTLP pour garantir le bon acheminement des traces et métriques vers les collecteurs. [#204](https://github.com/IA-Generative/GatewAI/pull/204)
+- **Mise à jour de la stack :** Migration vers Go 1.27 et passage à des images de base Debian 13 (distroless) pour renforcer la sécurité et la stabilité.
 
 ### Autres changements
-- **Migration organisationnelle** : Transfert complet de l'ensemble des références (images Docker, documentation, licence) de l'organisation `Qatr-io` vers `IA-Generative`.
-- **Documentation** : 
-    - Mise à jour majeure pour inclure les guides de mise à niveau et la documentation des nouveaux headers de rate-limiting.
+- **Migration d'organisation :** Transfert complet des références, de la licence et des images de l'organisation `Qatr-io` vers `IA-Generative`.
+- **Documentation :** 
+    - Mise à jour majeure de la précision documentaire (guide de mise à niveau des pools de backends, documentation des headers de rate-limiting).
     - Traduction des cartes de fonctionnalités de la page d'accueil en anglais.
-- **Nettoyage** : Suppression des fichiers de documentation obsolètes et correction des liens vers les runbooks d'alerte.
+- **Docker :** Ajout de labels OCI pour lier explicitement les packages GHCR au dépôt source.
