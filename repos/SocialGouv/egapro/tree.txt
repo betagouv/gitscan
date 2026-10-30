@@ -319,6 +319,10 @@
 │   │   │   ├── 0054_swift_network.sql
 │   │   │   ├── 0055_truncate_stored_ratios.sql
 │   │   │   ├── 0056_chilly_pepper_potts.sql
+│   │   │   ├── 0057_slim_magneto.sql
+│   │   │   ├── 0058_ensure-global-setting-row.sql
+│   │   │   ├── 0059_cse-opinion-draft-updated-at.sql
+│   │   │   ├── 0060_collaborative-representation-lock.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -362,6 +366,10 @@
 │   │   │       ├── 0054_snapshot.json
 │   │   │       ├── 0055_snapshot.json
 │   │   │       ├── 0056_snapshot.json
+│   │   │       ├── 0057_snapshot.json
+│   │   │       ├── 0058_snapshot.json
+│   │   │       ├── 0059_snapshot.json
+│   │   │       ├── 0060_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -426,6 +434,7 @@
 │   │   │   │   ├── env.adminRequirePublicAgent.test.ts
 │   │   │   │   ├── env.test.ts
 │   │   │   │   ├── instrumentation-client.test.ts
+│   │   │   │   ├── instrumentation.test.ts
 │   │   │   │   ├── middleware.csp.test.ts
 │   │   │   │   ├── middleware.test.ts
 │   │   │   │   ├── middlewareRequest.ts
@@ -508,6 +517,10 @@
 │   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── healthz
 │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── joint-evaluation-pdf
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── prefill-pdf
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── route.test.ts
@@ -528,6 +541,9 @@
 │   │   │   │   │   │   └── referents-egalite-professionnelle
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   └── route.test.ts
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── representation-declaration-lock
+│   │   │   │   │   │   └── release
 │   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── representation-pdf
 │   │   │   │   │   │   ├── __tests__
@@ -644,11 +660,18 @@
 │   │   │   │   ├── mentions-legales
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── mon-espace
+│   │   │   │   │   ├── avis-cse
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── evaluation-conjointe
+│   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── historique
 │   │   │   │   │   │   └── [siren]
 │   │   │   │   │   │       └── [year]
 │   │   │   │   │   │           └── page.tsx
-│   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── representation
+│   │   │   │   │       └── [year]
+│   │   │   │   │           └── page.tsx
 │   │   │   │   ├── not-found.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── plan-du-site
@@ -696,6 +719,7 @@
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── declaration-cancellation.e2e.ts
 │   │   │   │   ├── declaration-header-alignment.e2e.ts
+│   │   │   │   ├── declaration-lock.e2e.ts
 │   │   │   │   ├── declaration-reflow.e2e.ts
 │   │   │   │   ├── declaration-representation.e2e.ts
 │   │   │   │   ├── declaration.e2e.ts
@@ -719,6 +743,7 @@
 │   │   │   │   │   ├── campaign-year.ts
 │   │   │   │   │   ├── compliance-flows.ts
 │   │   │   │   │   ├── db-campaign.ts
+│   │   │   │   │   ├── db-lock.ts
 │   │   │   │   │   ├── db.ts
 │   │   │   │   │   ├── declaration-flows.ts
 │   │   │   │   │   ├── declaration-history.ts
@@ -743,6 +768,7 @@
 │   │   │   │   ├── recapitulatif.e2e.ts
 │   │   │   │   ├── second-declaration-info-styling.e2e.ts
 │   │   │   │   ├── stepper-spacing.e2e.ts
+│   │   │   │   ├── submitted-views.e2e.ts
 │   │   │   │   └── suit-export-declarations.e2e.ts
 │   │   │   ├── env.js
 │   │   │   ├── instrumentation-client.ts
@@ -1009,6 +1035,7 @@
 │   │   │   │   │   ├── Step1Opinions.module.scss
 │   │   │   │   │   ├── Step1Opinions.tsx
 │   │   │   │   │   ├── Step2Upload.tsx
+│   │   │   │   │   ├── SubmittedOpinionsPage.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── AccuracyOpinionCard.test.tsx
 │   │   │   │   │   │   ├── ConfirmationPage.test.tsx
@@ -1019,8 +1046,10 @@
 │   │   │   │   │   │   ├── Step1Opinions.test.tsx
 │   │   │   │   │   │   ├── Step2Upload.test.tsx
 │   │   │   │   │   │   ├── SubmitConfirmationModal.test.tsx
+│   │   │   │   │   │   ├── SubmittedOpinionsPage.test.tsx
 │   │   │   │   │   │   ├── confirmationHelpers.test.ts
 │   │   │   │   │   │   ├── contentTypeColumns.test.ts
+│   │   │   │   │   │   ├── impersonationEntry.test.ts
 │   │   │   │   │   │   ├── mapOpinionsFromDb.test.ts
 │   │   │   │   │   │   ├── opinionsFormValues.test.ts
 │   │   │   │   │   │   └── schemas.test.ts
@@ -1042,6 +1071,7 @@
 │   │   │   │   │   ├── confirmationHelpers.ts
 │   │   │   │   │   ├── contentTypeColumns.ts
 │   │   │   │   │   ├── funnelConfig.ts
+│   │   │   │   │   ├── impersonationEntry.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── mapOpinionsFromDb.ts
 │   │   │   │   │   ├── opinionsFormValues.ts
@@ -1129,6 +1159,7 @@
 │   │   │   │   │   │   │   ├── gapBadge.test.ts
 │   │   │   │   │   │   │   ├── gipMdsMapping.test.ts
 │   │   │   │   │   │   │   ├── gipMdsMappingCsv.test.ts
+│   │   │   │   │   │   │   ├── impersonationEntry.test.ts
 │   │   │   │   │   │   │   ├── indicatorRowMapping.test.ts
 │   │   │   │   │   │   │   ├── submissionErrorMessage.test.ts
 │   │   │   │   │   │   │   └── useRefreshAfterSubmissionError.test.ts
@@ -1136,6 +1167,7 @@
 │   │   │   │   │   │   ├── common.module.scss
 │   │   │   │   │   │   ├── computeIndicatorPercentages.ts
 │   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── declarationSuccessFlash.ts
 │   │   │   │   │   │   ├── devFillData.ts
 │   │   │   │   │   │   ├── draft
 │   │   │   │   │   │   │   ├── DraftLoadingState.tsx
@@ -1164,6 +1196,7 @@
 │   │   │   │   │   │   ├── gapBadge.ts
 │   │   │   │   │   │   ├── gipMdsMapping.ts
 │   │   │   │   │   │   ├── gipToStepData.ts
+│   │   │   │   │   │   ├── impersonationEntry.ts
 │   │   │   │   │   │   ├── indicatorRowMapping.ts
 │   │   │   │   │   │   ├── lock
 │   │   │   │   │   │   │   ├── DeclarationLockAlert.tsx
@@ -1229,10 +1262,9 @@
 │   │   │   │   │   │   │   ├── CompliancePathReadOnlyAlert.tsx
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.module.scss
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
-│   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   ├── CompliancePathOptions.test.tsx
-│   │   │   │   │   │   │   │   └── DeclarationSuccessBanner.test.tsx
-│   │   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │   │       ├── CompliancePathOptions.test.tsx
+│   │   │   │   │   │   │       └── DeclarationSuccessBanner.test.tsx
 │   │   │   │   │   │   ├── formalNotice
 │   │   │   │   │   │   │   ├── FormalNoticeForm.tsx
 │   │   │   │   │   │   │   ├── FormalNoticePage.tsx
@@ -1270,8 +1302,10 @@
 │   │   │   │   │   │   │   ├── funnelConfig.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── step1
+│   │   │   │   │   │   │   ├── WorkforceTableHeaders.tsx
 │   │   │   │   │   │   │   ├── WorkforceTableRow.tsx
-│   │   │   │   │   │   │   └── workforceRows.ts
+│   │   │   │   │   │   │   ├── workforceRows.ts
+│   │   │   │   │   │   │   └── workforceValidationErrors.ts
 │   │   │   │   │   │   ├── step3
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── step4
@@ -1325,6 +1359,8 @@
 │   │   │   │   │   ├── Confirmation.module.scss
 │   │   │   │   │   ├── Confirmation.tsx
 │   │   │   │   │   ├── DeclarationLayout.tsx
+│   │   │   │   │   ├── RepresentationConsultation.module.scss
+│   │   │   │   │   ├── RepresentationConsultation.tsx
 │   │   │   │   │   ├── RepresentationPlayground.tsx
 │   │   │   │   │   ├── StepPageClient.module.scss
 │   │   │   │   │   ├── StepPageClient.tsx
@@ -1334,6 +1370,8 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── Confirmation.test.tsx
 │   │   │   │   │   │   ├── DeclarationLayout.test.tsx
+│   │   │   │   │   │   ├── RepresentationConsultation.test.tsx
+│   │   │   │   │   │   ├── RepresentationConsultationRoute.test.tsx
 │   │   │   │   │   │   ├── RepresentationFunnelLayout.test.tsx
 │   │   │   │   │   │   ├── RepresentationRoutes.test.tsx
 │   │   │   │   │   │   ├── StepPageClient.stepValidator.test.tsx
@@ -1343,6 +1381,7 @@
 │   │   │   │   │   │   ├── SubmitModal.test.tsx
 │   │   │   │   │   │   ├── fixtures.ts
 │   │   │   │   │   │   ├── modalQueries.ts
+│   │   │   │   │   │   ├── representationLockHarness.tsx
 │   │   │   │   │   │   ├── schemas.draft.test.ts
 │   │   │   │   │   │   ├── schemas.executives.test.ts
 │   │   │   │   │   │   ├── schemas.members.test.ts
@@ -1357,12 +1396,16 @@
 │   │   │   │   │   │   ├── ComplianceBadge.tsx
 │   │   │   │   │   │   ├── GapReminderCallout.module.scss
 │   │   │   │   │   │   ├── GapReminderCallout.tsx
+│   │   │   │   │   │   ├── InfoList.module.scss
+│   │   │   │   │   │   ├── InfoList.tsx
 │   │   │   │   │   │   ├── PercentagePairFields.module.scss
 │   │   │   │   │   │   ├── PercentagePairFields.tsx
+│   │   │   │   │   │   ├── PublicationSummary.tsx
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── ComplianceBadge.test.tsx
 │   │   │   │   │   │   │   ├── GapReminderCallout.test.tsx
 │   │   │   │   │   │   │   ├── PercentagePairFields.test.tsx
+│   │   │   │   │   │   │   ├── PublicationSummary.test.tsx
 │   │   │   │   │   │   │   ├── reviewSummary.test.ts
 │   │   │   │   │   │   │   └── submittedDraft.test.ts
 │   │   │   │   │   │   ├── draft
@@ -1371,6 +1414,12 @@
 │   │   │   │   │   │   │   │   ├── DraftContext.test.tsx
 │   │   │   │   │   │   │   │   └── useRepresentationDraft.test.tsx
 │   │   │   │   │   │   │   └── useRepresentationDraft.ts
+│   │   │   │   │   │   ├── lock
+│   │   │   │   │   │   │   ├── RepresentationLockContext.tsx
+│   │   │   │   │   │   │   ├── RepresentationLockNotice.tsx
+│   │   │   │   │   │   │   ├── RepresentationLockProvider.tsx
+│   │   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │   │       └── RepresentationLockProvider.test.tsx
 │   │   │   │   │   │   ├── reviewSummary.ts
 │   │   │   │   │   │   └── submittedDraft.ts
 │   │   │   │   │   ├── steps
@@ -1409,36 +1458,45 @@
 │   │   │   │   ├── declarationPdf
 │   │   │   │   │   ├── DeclarationPdfDocument.tsx
 │   │   │   │   │   ├── DownloadDeclarationPdfButton.tsx
+│   │   │   │   │   ├── JointEvaluationPdfDocument.tsx
 │   │   │   │   │   ├── PrefillPdfDocument.tsx
 │   │   │   │   │   ├── RepresentationPdfDocument.tsx
 │   │   │   │   │   ├── TransmittedPdfDocument.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── DeclarationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── DownloadDeclarationPdfButton.test.tsx
+│   │   │   │   │   │   ├── JointEvaluationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── PrefillPdfDocument.test.tsx
 │   │   │   │   │   │   ├── PrefillPdfPagination.test.tsx
 │   │   │   │   │   │   ├── RepresentationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── TransmittedPdfDocument.test.tsx
+│   │   │   │   │   │   ├── buildJointEvaluationRecapData.integration.test.ts
+│   │   │   │   │   │   ├── buildJointEvaluationRecapData.test.ts
 │   │   │   │   │   │   ├── buildPdfData.test.ts
 │   │   │   │   │   │   ├── buildPrefillPdfData.test.ts
 │   │   │   │   │   │   ├── buildRepresentationPdfData.integration.test.ts
 │   │   │   │   │   │   ├── buildRepresentationPdfData.test.ts
 │   │   │   │   │   │   ├── buildTransmittedPdfData.test.ts
+│   │   │   │   │   │   ├── formatCsePresence.test.ts
 │   │   │   │   │   │   ├── formatNaf.test.ts
 │   │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   │   ├── pdfTextStream.ts
 │   │   │   │   │   │   │   ├── prefillFixtures.ts
 │   │   │   │   │   │   │   └── registerPdfFonts.ts
+│   │   │   │   │   │   ├── jointEvaluationPdfFilename.test.ts
 │   │   │   │   │   │   ├── pdfAccentRendering.test.tsx
 │   │   │   │   │   │   ├── pdfCategoryPagination.test.tsx
 │   │   │   │   │   │   ├── pdfFontsRegistration.test.ts
 │   │   │   │   │   │   └── pdfHyphenation.test.tsx
+│   │   │   │   │   ├── buildJointEvaluationRecapData.ts
 │   │   │   │   │   ├── buildPdfData.ts
 │   │   │   │   │   ├── buildPrefillPdfData.ts
 │   │   │   │   │   ├── buildRepresentationPdfData.ts
 │   │   │   │   │   ├── buildTransmittedPdfData.ts
+│   │   │   │   │   ├── formatCsePresence.ts
 │   │   │   │   │   ├── formatNaf.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── jointEvaluationPdfFilename.ts
 │   │   │   │   │   ├── pdfFonts.ts
 │   │   │   │   │   ├── pdfStyles.ts
 │   │   │   │   │   ├── prefillPdfStyles.ts
@@ -1457,6 +1515,7 @@
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── CategorySection.test.tsx
 │   │   │   │   │   │   │   ├── GapCell.test.tsx
+│   │   │   │   │   │   │   ├── InfoSection.test.tsx
 │   │   │   │   │   │   │   ├── PayGapTable.test.tsx
 │   │   │   │   │   │   │   ├── QuartileSection.test.tsx
 │   │   │   │   │   │   │   ├── VariablePaySection.test.tsx
@@ -1646,6 +1705,14 @@
 │   │   │   │   │   │   ├── HomeSearch.test.tsx
 │   │   │   │   │   │   └── HomeSearchForm.test.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── joint-evaluation-view
+│   │   │   │   │   ├── JointEvaluationView.module.scss
+│   │   │   │   │   ├── JointEvaluationView.tsx
+│   │   │   │   │   ├── JointEvaluationViewPage.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── JointEvaluationView.test.tsx
+│   │   │   │   │   │   └── JointEvaluationViewPage.test.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── layout
 │   │   │   │   │   ├── Breadcrumb.tsx
 │   │   │   │   │   ├── Footer
@@ -1689,6 +1756,7 @@
 │   │   │   │   │   ├── dsfrFixes.scss
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── shared
+│   │   │   │   │       ├── CampaignYearInitScript.tsx
 │   │   │   │   │       ├── ConsultationNavLink.tsx
 │   │   │   │   │       ├── DsfrPictogram.tsx
 │   │   │   │   │       ├── NavLink.tsx
@@ -1696,6 +1764,7 @@
 │   │   │   │   │       ├── RouteScrollReset.tsx
 │   │   │   │   │       ├── SkipLinks.tsx
 │   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   ├── CampaignYearInitScript.test.tsx
 │   │   │   │   │       │   ├── NavLink.test.tsx
 │   │   │   │   │       │   ├── NewTabNotice.test.tsx
 │   │   │   │   │       │   ├── RouteScrollReset.test.tsx
@@ -2054,7 +2123,10 @@
 │   │   │   │   │   │   │   ├── publicReferents.test.ts
 │   │   │   │   │   │   │   ├── representationDeclaration.declareNotSubject.test.ts
 │   │   │   │   │   │   │   ├── representationDeclaration.get.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.getDeclarant.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.getWorkforceHistory.test.ts
 │   │   │   │   │   │   │   ├── representationDeclaration.integration.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.lock.test.ts
 │   │   │   │   │   │   │   ├── representationDeclaration.saveDraft.test.ts
 │   │   │   │   │   │   │   ├── representationDeclaration.submit.test.ts
 │   │   │   │   │   │   │   ├── representationDeclarationHarness.ts
@@ -2235,6 +2307,7 @@
 │   │   │   │       ├── publicApiRateLimit.ts
 │   │   │   │       ├── publicDeclarationsService.ts
 │   │   │   │       ├── publicExportCache.ts
+│   │   │   │       ├── representationDeclarationLockService.ts
 │   │   │   │       ├── s3.ts
 │   │   │   │       ├── suit.ts
 │   │   │   │       ├── suitClient.ts
@@ -2429,4 +2502,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-381 directories, 2050 files
+393 directories, 2111 files
