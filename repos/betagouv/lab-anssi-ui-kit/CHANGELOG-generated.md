@@ -1,27 +1,33 @@
-## Changelog : lab-anssi-ui-kit (30 derniers jours, au 1er octobre 2026)
+## Changelog : lab-anssi-ui-kit (30 derniers jours, au 29 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par un effort important pour rendre les composants plus flexibles grâce à l'ajout de zones de contenu personnalisables (slots) et la possibilité de rendre de nombreuses propriétés optionnelles. Parallèlement, une refonte majeure de la qualité du code a été opérée pour renforcer la robustesse, le typage et la fiabilité de la bibliothèque.
+Ce mois-ci a été marqué par une étape majeure avec le passage à la version 2.0.0. Les évolutions se concentrent sur une plus grande flexibilité des composants (via l'ajout de "slots" permettant d'insérer du contenu personnalisé), une intégration Svelte nettement plus robuste et un renforcement massif de la fiabilité grâce à une couverture de tests étendue sur l'ensemble de la bibliothèque.
 
 ### Évolutions fonctionnelles
-- **Flexibilité accrue des composants :** Ajout massif de "slots" (zones de contenu personnalisables) et rendu de nombreuses propriétés optionnelles (titres, descriptions, labels) sur une large gamme de composants (LAB et DSFR), permettant une utilisation beaucoup plus souple.
-- **Nouveautés :** Introduction du composant `DsfrShare`.
-- **Améliorations de l'expérience utilisateur :**
-    - Correction de la gestion du focus dans les modales (boutons imbriqués).
-    - Correction de l'affichage mobile du `LabAnssiBandeauPage`.
-    - Optimisation des espacements (padding) et de la réactivité des composants (notamment l'état `disabled`).
-    - Amélioration de la cohérence visuelle des icônes et correction d'un bug de recherche dans le `DsfrDropdown`.
+- **Nouveaux composants et fonctionnalités :**
+    - Ajout du composant `Combobox` au sein du DSFR.
+    - Améliorations du `DsfrCombobox` : ajout du filtrage par légende de groupe, gestion optimisée du bouton "Tout sélectionner", ajout d'une largeur minimale personnalisable et correction des animations.
+    - Évolutions du `FiltresCatalogue` : ajout d'une variation "liens" et amélioration des styles.
+- **Flexibilité accrue des composants :**
+    - Introduction massive de "slots" (emplacements de contenu personnalisables) et de propriétés optionnelles sur de nombreux composants DSFR et Lab (ex: `DsfrAlert`, `DsfrCallout`, `DsfrTag`, `DsfrLink`, `DsfrBadge`, `DsfrAccordion`, `BandeauPage`, `BriqueHero`, etc.), permettant une personnalisation plus fine sans modifier le code source.
+    - Ajout de la propriété `has-no-icon` pour le composant `DsfrBadge`.
 
 ### Évolutions techniques
-- **Qualité et Typage :** 
-    - Renforcement de la robustesse via un typage plus strict (remplacement des `any` par des types explicites) et correction des erreurs de compilation `svelte-check`.
-    - Intégration de l'analyse statique (ESLint) et de `lint-staged` directement dans la chaîne de CI.
-- **Fiabilité de la distribution :** 
-    - Correction de la génération des fichiers de distribution dans le dossier `dist/`.
-    - Résolution des problèmes de désynchronisation entre le `package.json` et le lockfile.
-- **Optimisation CI/CD :** Simplification et optimisation des workflows de test pour Storybook.
-- **Sécurité :** Correction d'une violation de politique de sécurité de contenu (CSP) sur la navigation du header.
+- **Versionning :** Passage à la version majeure 2.0.0.
+- **Intégration Svelte :**
+    - Restauration de la distribution des composants Svelte dans le dossier `dist/`.
+    - Ajout de callbacks Svelte pour les événements WebComponents manquants.
+    - Correction de nombreux problèmes d'accès au DOM (notamment via `$host()` et `querySelector`) et de dispatch d'événements spécifiques au mode Svelte.
+- **Qualité et Fiabilité :**
+    - Déploiement massif de tests automatisés couvrant la quasi-totalité des composants DSFR et Lab pour garantir la stabilité des affichages et des interactions.
+- **Architecture :**
+    - Optimisation de l'enregistrement des Web Components pour le rendre idempotent (évite les erreurs de double enregistrement des composants Lab ANSSI et DSFR).
+    - Unification de l'extraction des métadonnées des Web Components.
+- **CI/CD :** Simplification des workflows de test pour Storybook.
 
 ### Autres changements
-- **Versions :** Montée en version du projet de la v1.61.0 à la v1.61.3.
-- **Documentation :** Correction des chemins d'images dans les stories Storybook.
+- **Documentation :**
+    - Mise à jour des guides concernant les imports CSS pour l'utilisation avec Svelte.
+    - Ajout de documentation sur l'amélioration des composants pour le SEO et le SSR (Server-Side Rendering).
+    - Mise à jour de la documentation suite à la nouvelle stratégie de distribution des composants.
+- **Storybook :** Amélioration de l'interface de développement avec un indicateur visuel pour identifier les composants utilisant des "slots".

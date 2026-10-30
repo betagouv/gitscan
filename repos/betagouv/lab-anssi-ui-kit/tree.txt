@@ -32,6 +32,7 @@
 ├── LICENSE
 ├── README.md
 ├── docs
+│   ├── slots-seo-ssr.md
 │   └── thematisation.md
 ├── eslint.config.js
 ├── figma.config.json
@@ -50,6 +51,7 @@
 ├── pnpm-workspace.yaml
 ├── renovate.json
 ├── scripts
+│   ├── build-dsfr-icons.mjs
 │   ├── generate-ui-manifest.mjs
 │   └── s3put_avec_le_bon_mime_type.sh
 ├── src
@@ -1001,6 +1003,7 @@
 │   │   │   ├── DsfrCard.svelte
 │   │   │   ├── DsfrCheckbox.svelte
 │   │   │   ├── DsfrCheckboxesGroup.svelte
+│   │   │   ├── DsfrCombobox.svelte
 │   │   │   ├── DsfrConnect.svelte
 │   │   │   ├── DsfrContainer.svelte
 │   │   │   ├── DsfrContent.svelte
@@ -1053,6 +1056,7 @@
 │   │   │   └── index.ts
 │   │   └── utilitaires
 │   │       ├── createFormValidation.svelte.ts
+│   │       ├── enregistrement-web-component.ts
 │   │       ├── icons-stylesheet.ts
 │   │       └── index.ts
 │   ├── responsive.scss
@@ -1147,6 +1151,7 @@
 │   │   ├── Card.stories.svelte
 │   │   ├── Checkbox.stories.svelte
 │   │   ├── CheckboxesGroup.stories.svelte
+│   │   ├── Combobox.stories.svelte
 │   │   ├── Connect.stories.svelte
 │   │   ├── Container.stories.svelte
 │   │   ├── Content.stories.svelte
@@ -1211,15 +1216,20 @@
 │       └── webComponentSource.ts
 ├── svelte.config.js
 ├── tests
+│   ├── browser
+│   │   ├── ComposantAvecEnregistrementIdempotent.svelte
+│   │   ├── SecondComposantAvecEnregistrementIdempotent.svelte
+│   │   └── enregistrement-webcomponents.spec.ts
 │   └── outils
 │       ├── extraction-props-composant.spec.ts
 │       ├── injection-nonce.spec.ts
 │       ├── postcss-extract-data-uri-svg.spec.ts
-│       └── postcss-replace-icon-paths.spec.ts
+│       ├── postcss-replace-icon-paths.spec.ts
+│       └── tree-shaking-composants.spec.ts
 ├── tsconfig.check.json
 ├── tsconfig.json
 ├── vite.config.ts
 ├── vite.webcomponents.config.ts
 ├── vitest-setup-client.ts
 └── vitest.shims.d.ts
-69 directories, 1367 files
+70 directories, 1376 files
