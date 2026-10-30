@@ -1,17 +1,16 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une plateforme de gestion et de programmation de prélèvements et de plans d'échantillonnage. Elle permet de configurer des matrices, de gérer des prescriptions et d'assurer le suivi des activités de terrain.",
+  "description": "Maestro est une plateforme de gestion de la programmation et des prélèvements, permettant le paramétrage de plans d'intervention, la gestion de matrices et le suivi des prescriptions.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
-    "Calendrier & Planification",
-    "Recherche & Filtres",
-    "Sécurité & Conformité",
-    "Tableaux & Affichage",
     "Données & Schémas",
+    "Formulaires & Démarches",
+    "Recherche & Filtres",
+    "Notifications & Alertes",
     "Administration & Backoffice",
-    "Gestion des utilisateurs & Permissions"
+    "Tableaux & Affichage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,8 +20,7 @@
     "Dex",
     "Vitest",
     "Zod",
-    "Lodash-es",
-    "Date-fns"
+    "Playwright"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,8 +28,6 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Tests",
-    "Design System (DSFR & UI libs)",
     "Scripts & Utilitaires"
   ],
   "auth": {
@@ -43,11 +39,14 @@
       "Dex"
     ]
   },
-  "tests": "Vitest",
-  "workflows": [
-    "semantic-release"
+  "tests": [
+    "Vitest",
+    "Playwright"
   ],
-  "lastActivity": "2026-10-27T16:46:53+01:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-10-29T08:55:12+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -56,6 +55,7 @@
     "TypeScript",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "Design System & UI"
+    "CI/CD & GitHub Actions",
+    "Git & DevOps"
   ]
 }

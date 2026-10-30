@@ -1,39 +1,40 @@
-## Changelog : maestro (30 derniers jours, au 27 octobre 2026)
+## Changelog : maestro (30 derniers jours, au 29 octobre 2026)
 
 ### Résumé
-Ce mois-ci, Maestro a franchi une étape importante dans la granularité de son paramétrage, notamment grâce à l'introduction de la gestion par sous-plans et une flexibilité accrue pour les matrices et les substances. La programmation devient plus précise avec une gestion possible au niveau départemental. Enfin, l'expérience utilisateur a été affinée par des corrections sur mobile, une recherche plus intuitive et une optimisation des notifications.
+Ce mois-ci, le développement s'est concentré sur un enrichissement majeur des capacités de configuration (paramétrage) et de planification (programmation). Les utilisateurs disposent désormais de fonctionnalités plus fines pour gérer les plans, les sous-plans, les matrices et les modalités d'échantillonnage. Des améliorations ont également été apportées à l'expérience utilisateur, notamment sur mobile et pour la recherche, ainsi qu'à la gestion des notifications.
 
 ### Évolutions fonctionnelles
-- **Gestion et paramétrage :**
-  - Introduction de la notion de sous-plans pour une organisation plus fine ([#1681](https://github.com/betagouv/maestro/issues/1681), [#1512](https://github.com/betagouv/maestro/issues/1512)).
-  - Amélioration de la gestion des matrices (sélection, paramétrage et gestion au niveau du plan) ([#1582](https://github.com/betagouv/maestro/issues/1582), [#1590](https://github.com/betagouv/maestro/issues/1590), [#1706](https://github.com/betagouv/maestro/issues/1706)).
-  - Possibilité de paramétrer les substances au sein des sous-plans ([#1629](https://github.com/betagouv/maestro/issues/1629)) et de gérer les modalités d'échantillonnage ([#1641](https://github.com/betagouv/maestro/issues/1641)).
-  - Flexibilité accrue pour les administrateurs : modification des titres de plans, des codes NAT et des contextes d'intervention ([#1723](https://github.com/betagouv/maestro/issues/1723), [#1715](https://github.com/betagouv/maestro/issues/1715), [#1754](https://github.com/betagouv/maestro/issues/1754)).
-  - Ajout de listes à choix multiples pour les descripteurs ([#1755](https://github.com/betagouv/maestro/issues/1755)).
-- **Programmation :**
-  - Gestion de la programmation au niveau départemental ([#1751](https://github.com/betagouv/maestro/issues/1751)).
-  - Nouveau mode de programmation disponible ([#1670](https://github.com/betagouv/maestro/issues/1670)) et bouton pour initier une nouvelle saison ([#1716](https://github.com/betagouv/maestro/issues/1716)).
-  - Ouverture des droits d'import de la programmation aux coordinateurs régionaux et départementaux ([#1578](https://github.com/betagouv/maestro/issues/1578)).
-- **Prélèvements et prescriptions :**
-  - Possibilité de prélever plusieurs matrices simultanément ([#1603](https://github.com/betagouv/maestro/issues/1603)).
-  - Génération automatique des prescriptions lors de la création d'un sous-plan ([#1713](https://github.com/betagouv/maestro/issues/1713)).
-  - Correction de la sélection d'ateliers ([#1680](https://github.com/betagouv/maestro/issues/1680)) et des filtres par sous-plan ([#1695](https://github.com/betagouv/maestro/issues/1695)).
-- **Expérience utilisateur et notifications :**
-  - Amélioration de la recherche textuelle (prise en compte des accents [#1724](https://github.com/betagouv/maestro/issues/1724)).
-  - Optimisation de l'affichage mobile pour les tableaux ([#1709](https://github.com/betagouv/maestro/issues/1709)).
-  - Ajustements des notifications Tchap (affichage HTML des releases [#1753](https://github.com/betagouv/maestro/issues/1753) et réduction du bruit pour les interprétations [#1752](https://github.com/betagouv/maestro/issues/1752)).
+
+**Paramétrage et Gestion métier**
+- Extension des capacités de configuration : ajout de la gestion des sous-plans [#1681], des matrices [#1582], des substances [#1629] et des modalités d'échantillonnage [#1641].
+- Amélioration de la flexibilité : possibilité de renommer des domaines [#1665], de modifier les titres de plans [#1583] et de spécifier des contextes d'intervention (SIGAL) [#1754].
+- Sécurisation des données : blocage de la modification de certains champs après le lancement d'un plan [#1710] et révision des droits de création/suppression [#1725].
+- Gestion des règles métier : remplacement de certaines colonnes par des règles métier automatisées [#1669].
+
+**Programmation et Prélèvements**
+- Programmation : gestion au niveau départemental [#1751], bouton d'initiation de nouvelle saison [#1716] et ouverture des droits d'import aux coordinateurs régionaux et départementaux [#1578].
+- Prélèvements : possibilité de prélever plusieurs matrices simultanément [#1603], sélection d'ateliers [#1680] et correction des filtres par sous-plan [#1695].
+- Prescriptions : génération automatique des prescriptions lors de la création d'un sous-plan [#1713].
+
+**Interface et Expérience utilisateur**
+- Recherche : amélioration de la recherche textuelle qui ignore désormais les accents [#1724].
+- Affichage : optimisation de la largeur des tableaux sur mobile [#1709] et gestion de l'affichage des boutons pendant la sauvegarde [#1734].
+- Notifications : ajustement des alertes Tchap (affichage HTML des releases et suppression des notifications pour les interprétations) [#1752, #1753] et ciblage des alertes support lors de l'ajout de préleveurs [#1742].
 
 ### Évolutions techniques
-- **Architecture et données :**
-  - Migration de la gestion des matrices vers la base de données ([#1706](https://github.com/betagouv/maestro/issues/1706)).
-  - Refonte de la structure des substances (passage de "Any" à un modèle Mono/Multi) ([#1608](https://github.com/betagouv/maestro/issues/1608)).
-  - Refactorisation de la gestion des PPV via la séparation en sous-plans ([#1512](https://github.com/betagouv/maestro/issues/1512)).
-  - Remplacement de la bibliothèque d'internationalisation par une solution interne ([#1661](https://github.com/betagouv/maestro/issues/1661)).
-- **Infrastructure et CI/CD :**
-  - Optimisation des pipelines de tests en limitant le nombre de jobs déclenchés ([#1750](https://github.com/betagouv/maestro/issues/1750), [#1741](https://github.com/betagouv/maestro/issues/1741)).
-  - Utilisation d'images Docker pour l'installation de Playwright dans la CI ([#1743](https://github.com/betagouv/maestro/issues/1743)).
-  - Mise à jour de l'infrastructure PostgreSQL ([#1632](https://github.com/betagouv/maestro/issues/1632)).
+
+**Architecture et Base de données**
+- Migration des matrices vers la base de données [#1706].
+- Refactorisation des schémas de données pour les substances [#1608] et les prescriptions [#1577].
+- Mise à jour de l'infrastructure PostgreSQL [#1632].
+- Mise en place de l'anonymisation des données pour Metabase [#1628].
+
+**CI/CD et DevOps**
+- Optimisation des pipelines de tests : limitation du déclenchement des jobs [#1750, #1741] et utilisation d'images Docker pour l'installation de Playwright [#1743].
+
+**Refactoring et Code**
+- Remplacement de la bibliothèque d'internationalisation (i18n) par une solution interne [#1661].
 
 ### Autres changements
-- **Nettoyage du code :** Suppression de plusieurs dépendances inutilisées telles que `uuid` ([#1633](https://github.com/betagouv/maestro/issues/1633)), `dotenv` ([#1627](https://github.com/betagouv/maestro/issues/1627)) et `compose-middleware` ([#1626](https://github.com/betagouv/maestro/issues/1626)).
-- **Confidentialité :** Amélioration de l'anonymisation des données pour l'outil Metabase ([#1628](https://github.com/betagouv/maestro/issues/1628)).
+- Nettoyage du projet : suppression de plusieurs dépendances inutilisées (`uuid` [#1633], `dotenv` [#1627], `compose-middleware` [#1626]).
+- Mise à jour des outils de développement (Storybook, Knip).
