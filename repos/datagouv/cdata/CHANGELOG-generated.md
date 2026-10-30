@@ -1,52 +1,30 @@
-## Changelog : cdata (30 derniers jours, au 25 septembre 2026)
+## Changelog : cdata (30 derniers jours, au 29 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience de recherche et d'exploration des données, notamment grâce à l'ajout de filtres temporels et une meilleure accessibilité. L'interface d'administration a été enrichie pour offrir une meilleure visibilité sur les discussions et les graphiques, tandis que des optimisations techniques ont renforcé la stabilité du rendu et la performance du cache.
+Ce mois-ci, le projet a franchi une étape majeure avec l'introduction d'un nouveau système de création de pages basé sur des "blocs" (images, cartes, grilles), offrant une plus grande flexibilité de mise en page. L'expérience utilisateur a été enrichie par de nouvelles fonctionnalités de notification, une meilleure gestion des publications et des améliorations notables de l'explorateur de données. En parallèle, les processus de déploiement et de tests ont été considérablement optimisés pour gagner en rapidité et en fiabilité.
 
 ### Évolutions fonctionnelles
-
-**Exploration & Recherche**
-- Ajout d'un filtre de date (calendrier) dans l'explorateur tabulaire [#1227](https://github.com/datagouv/cdata/issues/1227).
-- Amélioration du filtrage pour gérer correctement les valeurs manquantes dans les cellules vides [#1241](https://github.com/datagouv/cdata/issues/1241).
-- Exclusion des pages de thématiques de l'index de recherche pour éviter les résultats non pertinents [#1239](https://github.com/datagouv/cdata/issues/1239).
-- Ajout d'une prévisualisation des mises à jour de tableaux de bord [#1218](https://github.com/datagouv/cdata/issues/1218).
-
-**Gestion des Ressources**
-- Possibilité de définir une URL externe pour les ressources [#1222](https://github.com/datagouv/cdata/issues/1222), [#1215](https://github.com/datagouv/cdata/issues/1215).
-- Ajout d'explications sur la notion d'URL stable dans les métadonnées des ressources [#1230](https://github.com/datagouv/cdata/issues/1230).
-- Extension de l'attribution des points de contact aux jeux de données et services de données publiés directement [#1189](https://github.com/datagouv/cdata/issues/1189).
-- Suggestion de l'hébergement des fichiers OpenAPI sur `fichiers.numerique.gouv.fr` [#1226](https://github.com/datagouv/cdata/issues/1226).
-
-**Interface & Accessibilité**
-- Amélioration de l'accessibilité (a11y) pour l'explorateur de données [#1216](https://github.com/datagouv/cdata/issues/1216).
-- Correction de l'affichage du bouton de recherche dans la barre de recherche (DSFR) [#1236](https://github.com/datagouv/cdata/issues/1236).
-- Correction de l'attribution sur les cartes [#1224](https://github.com/datagouv/cdata/issues/1224) et de l'affichage du domaine météo [#1246](https://github.com/datagouv/cdata/issues/1246).
-- Correction de doublons d'informations (élections sénatoriales) [#1233](https://github.com/datagouv/cdata/issues/1233).
-- Gestion plus propre des erreurs 404 sur les pages de listes inexistantes [#1199](https://github.com/datagouv/cdata/issues/1199).
-- Correction de la gestion des doublons lors de l'acceptation d'adhésions [#1209](https://github.com/datagouv/cdata/issues/1209).
-
-**Administration**
-- Affichage des cartes de graphiques dans l'interface d'administration [#1210](https://github.com/datagouv/cdata/issues/1210).
-- Affichage du dernier commentaire et du titre dans le tableau d'administration des discussions [#1225](https://github.com/datagouv/cdata/issues/1225).
-- Correction de crashs sur les pages admin lors de la gestion de demandes de transfert anciennes [#1248](https://github.com/datagouv/cdata/issues/1248).
-- Possibilité de désactiver le lien vers l'organisation sur les cartes [#1242](https://github.com/datagouv/cdata/issues/1242).
+- **Nouveau système de mise en page (Blocs) :** Introduction d'une approche modulaire pour construire des pages via des blocs de colonnes, d'images, de cartes ou de grilles [#1308](https://github.com/datagouv/cdata/issues/1308), [#1303](https://github.com/datagouv/cdata/issues/1303), [#1292](https://github.com/datagouv/cdata/issues/1292).
+- **Gestion du contenu et des publications :** 
+    - Amélioration de l'édition des articles (choix de l'URL/slug, menus latéraux de navigation, gestion des images de couverture) [#1285](https://github.com/datagouv/cdata/issues/1285), [#1274](https://github.com/datagouv/cdata/issues/1274), [#1282](https://github.com/datagouv/cdata/issues/1282).
+    - Ajout d'une page de paramètres de notification et d'un menu de suivi pour les discussions [#1265](https://github.com/datagouv/cdata/issues/1265).
+    - Possibilité pour les administrateurs de forcer l'analyse d'une ressource depuis l'interface d'édition [#1289](https://github.com/datagouv/cdata/issues/1289).
+- **Exploration et données :** 
+    - Amélioration de l'explorateur de données (persistance des filtres et tris dans l'URL, interface plus fluide) [#1254](https://github.com/datagouv/cdata/issues/1254), [#1251](https://github.com/datagouv/cdata/issues/1251), [#1290](https://github.com/datagouv/cdata/issues/1290).
+    - Support des identifiants DOI pour les jeux de données [#1238](https://github.com/datagouv/cdata/issues/1238).
+    - Synchronisation et amélioration de la gestion des données GEOPF [#1178](https://github.com/datagouv/cdata/issues/1178), [#1269](https://github.com/datagouv/cdata/issues/1269).
+- **Interface et expérience utilisateur :** 
+    - Ajout de bannières pour les organisations [#1268](https://github.com/datagouv/cdata/issues/1268) et amélioration de l'interface pour les éditeurs partiels [#1250](https://github.com/datagouv/cdata/issues/1250), [#1257](https://github.com/datagouv/cdata/issues/1257).
+    - Corrections diverses : traductions françaises de l'interface [#1259](https://github.com/datagouv/cdata/issues/1259), gestion des pages d'erreur (404/410) [#1260](https://github.com/datagouv/cdata/issues/1260), et redirection après connexion [#1261](https://github.com/datagouv/cdata/issues/1261).
 
 ### Évolutions techniques
-
-**Performance & Cache**
-- Mise en place d'un cache `stale-while-revalidate` d'une heure pour les pages afin de réduire la charge sur GitHub [#1200](https://github.com/datagouv/cdata/issues/1200).
-
-**Stabilité & Rendu**
-- Correction des erreurs d'hydratation liées aux fuseaux horaires via l'utilisation systématique du composant `FormattedDate` [#1198](https://github.com/datagouv/cdata/issues/1198).
-- Correction de problèmes de rendu côté serveur (SSR) pour les cartes de survol des lignes de ressources [#1208](https://github.com/datagouv/cdata/issues/1208).
-- Correction de crashs sur les profils tabulaires utilisant le format Parquet [#1211](https://github.com/datagouv/cdata/issues/1211).
-- Amélioration de la détection de l'encodage des données structurées [#1237](https://github.com/datagouv/cdata/issues/1237).
-- Correction de la gestion du défilement (scroll) pour assurer la compatibilité avec Nuxt [#1207](https://github.com/datagouv/cdata/issues/1207).
-
-**CI/CD & Sécurité**
-- Ajout d'un tag Docker `latest` sur la branche main [#1221](https://github.com/datagouv/cdata/issues/1221).
-- Optimisation du processus de publication de `datagouv-components` pour éviter les conflits lors de runs simultanés [#1206](https://github.com/datagouv/cdata/issues/1206).
-- Correction de la gestion des vulnérabilités auditées [#1217](https://github.com/datagouv/cdata/issues/1217).
+- **Optimisation de la CI/CD et des tests :** 
+    - Accélération significative des tests de bout en bout (E2E) grâce au découpage en plusieurs flux (sharding) et correction de tests instables [#1253](https://github.com/datagouv/cdata/issues/1253), [#1296](https://github.com/datagouv/cdata/issues/1296).
+    - Amélioration de la fiabilité de la CI (gestion des erreurs de passerelle API, injection d'IDs de débogage Sentry) [#1299](https://github.com/datagouv/cdata/issues/1299), [#1213](https://github.com/datagouv/cdata/issues/1213).
+- **Architecture et Performance :** 
+    - Mise à jour vers Nuxt 4.5 [#1193](https://github.com/datagouv/cdata/issues/1193).
+    - Optimisation de la gestion du cache des blocs de site et des redirections serveur [#1295](https://github.com/datagouv/cdata/issues/1295), [#1300](https://github.com/datagouv/cdata/issues/1300).
+- **Environnement de développement :** Résolution d'un problème de consommation mémoire du serveur de développement [#1305](https://github.com/datagouv/cdata/issues/1305).
 
 ### Autres changements
-- Mise à jour de `datagouv-components` en version 1.4.0 [#1243](https://github.com/datagouv/cdata/issues/1243).
+- **Maintenance du code :** Mise en place de `CODEOWNERS` [#1309](https://github.com/datagouv/cdata/issues/1309), nettoyage ESLint [#1293](https://github.com/datagouv/cdata/issues/1293) et filtrage des erreurs Sentry non pertinentes [#1276](https://github.com/datagouv/cdata/issues/1276).
