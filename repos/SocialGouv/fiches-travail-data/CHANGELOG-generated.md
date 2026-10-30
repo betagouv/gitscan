@@ -1,7 +1,7 @@
-## Changelog : fiches-travail-data (30 derniers jours, au 20/10/2026)
+## Changelog : fiches-travail-data (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-L'activité de ce mois a été marquée par un cycle de mises à jour automatiques régulières. Le projet a assuré la fraîcheur des données en synchronisant de manière fréquente les informations relatives aux fiches de travail et d'emploi extraites du site travail-emploi.gouv.fr.
+Le projet a maintenu un rythme de mise à jour régulier et automatisé pour garantir la fraîcheur des données. L'activité principale a consisté en l'actualisation continue des informations extraites du site travail-emploi.gouv.fr.
 
 ### Évolutions fonctionnelles
-- **Actualisation des données** : Mise à jour régulière et automatisée des fichiers JSON contenant les données de fiches de travail et d'emploi pour garantir la disponibilité des dernières informations officielles.
+- **Mise à jour des données :** Actualisation régulière des jeux de données (fiches de travail et d'emploi) pour refléter les dernières informations disponibles sur la source officielle.
