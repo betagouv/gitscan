@@ -4,7 +4,7 @@
   "description": "Référencement de l'accessibilité des ERP (Établissements Recevant du Public) en France.",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "engines": {
-    "node": "24.13.0",
+    "node": "24.22.1",
     "pnpm": "11.22.0"
   },
   "packageManager": "pnpm@11.22.0",
@@ -14,8 +14,8 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf static/dist/",
-    "start": "parcel --hmr-port 34471 --dist-dir static/dist --public-url /static/dist static/index.js static/styles.js static/js/panoramax.js",
-    "build:prod": "parcel build static/index.js static/styles.js --dist-dir static/dist --public-url /static/dist static/js/panoramax.js"
+    "start": "parcel --hmr-port 34471 --dist-dir static/dist --public-url /static/dist static/index.js static/styles.js static/js/panoramax.js static/swagger.js",
+    "build:prod": "parcel build static/index.js static/styles.js --dist-dir static/dist --public-url /static/dist static/js/panoramax.js static/swagger.js"
   },
   "repository": {
     "type": "git",
@@ -28,25 +28,27 @@
   },
   "homepage": "https://github.com/MTES-MCT/acceslibre#readme",
   "dependencies": {
-    "@gouvfr/dsfr": "1.14.4",
+    "@gouvfr/dsfr": "1.15.4",
     "@panoramax/web-viewer": "4.4.0",
     "@parcel/transformer-sass": "2.16.1",
-    "@sentry/browser": "10.53.1",
+    "@sentry/browser": "11.8.0",
     "@sentry/tracing": "7.120.4",
     "@trevoreyre/autocomplete-js": "3.0.3",
-    "dompurify": "3.4.14",
+    "buffer": "6.0.3",
+    "dompurify": "3.4.17",
     "leaflet": "1.9.4",
     "leaflet-center-cross": "0.0.8",
     "leaflet-gesture-handling": "1.2.2",
     "leaflet.locatecontrol": "0.88.0",
     "leaflet.markercluster": "1.5.3",
     "parcel": "2.16.1",
-    "pnpm": "^11.22.0",
+    "pnpm": "^12.14.0",
     "process": "0.11.10",
-    "remixicon": "4.9.1"
+    "remixicon": "4.9.1",
+    "swagger-ui-dist": "5.33.1"
   },
   "devDependencies": {
-    "eslint": "10.8.1",
-    "prettier": "3.9.6"
+    "eslint": "10.12.0",
+    "prettier": "3.9.10"
   }
 }

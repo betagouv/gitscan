@@ -41,13 +41,14 @@
 │   ├── apps.py
 │   ├── authentication.py
 │   ├── filters.py
+│   ├── frontend_urls.py
+│   ├── frontend_views.py
 │   ├── migrations
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── permissions.py
 │   ├── renderers.py
 │   ├── serializers.py
-│   ├── throttling.py
 │   ├── urls.py
 │   └── views.py
 ├── bin
@@ -56,7 +57,8 @@
 │   ├── post_compile
 │   ├── post_deploy
 │   ├── restore_db.sh
-│   └── restore_db_file.sh
+│   ├── restore_db_file.sh
+│   └── restore_scalingo_backup.sh
 ├── compte
 │   ├── __init__.py
 │   ├── admin.py
@@ -80,6 +82,7 @@
 │   │   ├── 0008_nb_erp_administrator.py
 │   │   ├── 0009_userapikey.py
 │   │   ├── 0010_auto_20260715_1512.py
+│   │   ├── 0011_userapikey_description.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -119,7 +122,7 @@
 │   │   ├── url.py
 │   │   └── wsgi.py
 │   ├── mailer.py
-│   ├── mattermost.py
+│   ├── middleware.py
 │   ├── paginator.py
 │   ├── sentry.py
 │   ├── settings.py
@@ -130,6 +133,7 @@
 │   ├── sitemaps.py
 │   ├── storage.py
 │   ├── urls.py
+│   ├── utils.py
 │   ├── views.py
 │   ├── worker.py
 │   └── wsgi.py
@@ -140,6 +144,7 @@
 │       ├── generic_test_ok.csv
 │       ├── generic_test_outscraper_id.csv
 │       ├── generic_test_outscraper_id_2.csv
+│       ├── generic_test_tally.csv
 │       ├── import_th.csv
 │       └── typeform_mairie_test_ok.csv
 ├── docker-compose.yml
@@ -147,23 +152,6 @@
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
-│   ├── contribution
-│   │   ├── __init__.py
-│   │   ├── access_accomodation_owner.py
-│   │   ├── access_doors.py
-│   │   ├── access_for_specific_category.py
-│   │   ├── access_misc.py
-│   │   ├── access_not_accessible_entrance.py
-│   │   ├── access_outside.py
-│   │   ├── access_parking.py
-│   │   ├── access_steps.py
-│   │   ├── access_utils.py
-│   │   ├── conditions.py
-│   │   ├── dataclasses.py
-│   │   ├── exceptions.py
-│   │   ├── forms.py
-│   │   ├── urls.py
-│   │   └── views.py
 │   ├── dataclasses.py
 │   ├── duplicates.py
 │   ├── exceptions.py
@@ -207,7 +195,6 @@
 │   │   │   ├── cancel_user_modifications.py
 │   │   │   ├── clean_S3_export_bucket.py
 │   │   │   ├── convert_tally_to_schema.py
-│   │   │   ├── create_user.py
 │   │   │   ├── data_grandlyon_acquisition.py
 │   │   │   ├── database_audit.py
 │   │   │   ├── delete_users_erps.py
@@ -233,6 +220,7 @@
 │   │   │   ├── import_laposte.py
 │   │   │   ├── import_population.py
 │   │   │   ├── import_th.py
+│   │   │   ├── matching_ednat.py
 │   │   │   ├── migrate_communes.py
 │   │   │   ├── notify_daily_draft.py
 │   │   │   ├── notify_weekly_unpublished_erps.py
@@ -244,6 +232,7 @@
 │   │   │   ├── remove_duplicates.py
 │   │   │   ├── scrapfly_acquisition.py
 │   │   │   ├── start_scheduler.py
+│   │   │   ├── test_recette_api.py
 │   │   │   ├── update_geometry.py
 │   │   │   ├── update_municipalities.py
 │   │   │   └── validate_and_import_file.py
@@ -303,8 +292,10 @@
 │   │   ├── 0189_merge_20260521_1520.py
 │   │   ├── 0190_rpa.py
 │   │   ├── 0191_remove_accessibilite_erp_accessibilite_sanitaires_presence_consistency_and_more.py
+│   │   ├── 0192_accueil_tribunes_presence.py
 │   │   └── __init__.py
 │   ├── models.py
+│   ├── profanity.py
 │   ├── provider
 │   │   ├── __init__.py
 │   │   ├── acceslibre.py
@@ -348,18 +339,14 @@
 │   │   └── LC_MESSAGES
 │   │       ├── django.mo
 │   │       ├── django.po
-│   │       ├── django.po.original
 │   │       ├── djangojs.mo
-│   │       ├── djangojs.po
-│   │       └── djangojs.po.original
+│   │       └── djangojs.po
 │   └── fr
 │       └── LC_MESSAGES
 │           ├── django.mo
 │           ├── django.po
-│           ├── django.po.original
 │           ├── djangojs.mo
-│           ├── djangojs.po
-│           └── djangojs.po.original
+│           └── djangojs.po
 ├── makegraphs.sh
 ├── manage.py
 ├── package.json
@@ -561,6 +548,7 @@
 │   │   │   ├── perrine.png
 │   │   │   ├── quentin.png
 │   │   │   ├── sophie.png
+│   │   │   ├── vanessa.png
 │   │   │   └── yacine.webp
 │   │   ├── fauteuil.svg
 │   │   ├── favicon.ico
@@ -618,7 +606,6 @@
 │   │   │   ├── selected.png
 │   │   │   └── shadow.png
 │   │   ├── maskable_icon.png
-│   │   ├── merci.jpg
 │   │   ├── merci.png
 │   │   ├── partenaires
 │   │   │   ├── accesmetrie.jpg
@@ -679,8 +666,9 @@
 │   │   ├── path.png
 │   │   ├── people.png
 │   │   ├── red-warning-sign.png
-│   │   ├── sad.png
+│   │   ├── soignant-widget.png
 │   │   ├── surdite.svg
+│   │   ├── symbole-sante-widget.png
 │   │   ├── undraw_page_not_found.svg
 │   │   ├── undraw_server_down.svg
 │   │   ├── wc.png
@@ -691,6 +679,7 @@
 │   │   ├── constants
 │   │   │   └── localStorageKeys.js
 │   │   ├── dom.js
+│   │   ├── fontawesomeConfig.js
 │   │   ├── geo.js
 │   │   ├── mapUtils.js
 │   │   ├── panoramax.js
@@ -718,8 +707,6 @@
 │   │   │   ├── MapExpander.js
 │   │   │   ├── NewActivity.js
 │   │   │   ├── NotificationAlert.js
-│   │   │   ├── PickAnswerAndSubmit.js
-│   │   │   ├── ProgressBar.js
 │   │   │   ├── RpaConfirmModal.js
 │   │   │   ├── SearchMobile.js
 │   │   │   ├── SearchWhere.js
@@ -757,12 +744,11 @@
 │   │   ├── _utilities.scss
 │   │   ├── _variables.scss
 │   │   ├── _widget.scss
-│   │   ├── contribution.scss
-│   │   ├── half-circle-progress-bar.scss
 │   │   ├── loader.scss
 │   │   ├── style-dsfr.scss
 │   │   └── style.scss
-│   └── styles.js
+│   ├── styles.js
+│   └── swagger.js
 ├── stats
 │   ├── __init__.py
 │   ├── admin.py
@@ -771,6 +757,7 @@
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
+│   │       ├── backfill_widget_domains.py
 │   │       └── refresh_stats.py
 │   ├── matomo.py
 │   ├── middleware.py
@@ -787,6 +774,7 @@
 │   │   ├── 0024_accueil_ascenceur_etage_pmr.py
 │   │   ├── 0025_widget_event_index.py
 │   │   ├── 0026_alter_challenge_accroche_alter_challenge_objectif_and_more.py
+│   │   ├── 0027_widgetdomainmonth.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── queries.py
@@ -872,16 +860,9 @@
 │   │   ├── 9-completion.html
 │   │   ├── base.html
 │   │   ├── base_access_form.html
-│   │   ├── contribution-additional-success.html
-│   │   ├── contribution-base-success.html
-│   │   ├── contribution-step.html
 │   │   ├── delete.html
 │   │   ├── documentation.html
 │   │   ├── forms
-│   │   │   ├── dsfr-checkbox.html
-│   │   │   ├── dsfr-int-or-unique.html
-│   │   │   ├── dsfr-radio.html
-│   │   │   ├── dsfr-textarea.html
 │   │   │   └── search.html
 │   │   └── includes
 │   │       ├── contrib-cta.html
@@ -1027,10 +1008,12 @@
 │   │   └── test_annuaire.py
 │   ├── api
 │   │   ├── __init__.py
+│   │   ├── test_frontend_views.py
 │   │   ├── test_permissions.py
 │   │   └── tests.py
 │   ├── compte
 │   │   ├── __init__.py
+│   │   ├── test_activation_redirect.py
 │   │   ├── test_change_email.py
 │   │   ├── test_change_username.py
 │   │   ├── test_commands.py
@@ -1038,6 +1021,7 @@
 │   │   └── test_remove_account.py
 │   ├── contact
 │   │   ├── __init__.py
+│   │   ├── conftest.py
 │   │   └── test_contact.py
 │   ├── core
 │   │   ├── __init__.py
@@ -1048,9 +1032,6 @@
 │   │   └── test_url.py
 │   ├── erp
 │   │   ├── __init__.py
-│   │   ├── contribution
-│   │   │   ├── __init__.py
-│   │   │   └── test_contribution_form.py
 │   │   ├── forms
 │   │   │   ├── __init__.py
 │   │   │   └── test_BaseErpForm.py
@@ -1091,7 +1072,9 @@
 │   │   ├── test_managers.py
 │   │   ├── test_models.py
 │   │   ├── test_notifications.py
+│   │   ├── test_profanity.py
 │   │   ├── test_remove_duplicates.py
+│   │   ├── test_rpa_access.py
 │   │   ├── test_schema.py
 │   │   ├── test_search.py
 │   │   ├── test_serializers.py
@@ -1113,4 +1096,4 @@
 │   │   └── test_models.py
 │   └── utils.py
 └── uv.lock
-111 directories, 1010 files
+109 directories, 995 files

@@ -1,20 +1,18 @@
-## Changelog : acceslibre (30 derniers jours, au 28 août 2026)
+## Changelog : acceslibre (30 derniers jours, au 28 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a enrichi ses capacités de signalement avec l'intégration des équipements sportifs et a affiné la clarté de ses formulaires pour une meilleure expérience utilisateur. En coulisses, des optimisations importantes ont été réalisées sur la gestion des données, l'automatisation des exports et la sécurité de l'API.
+Ce mois-ci, la plateforme a franchi une étape importante dans sa capacité d'analyse grâce à l'ajout de nouveaux outils de visualisation de données (widgets santé et domaines). L'expérience utilisateur a été affinée par des ajustements visuels et des corrections de bugs, tandis que l'infrastructure a été profondément modernisée pour gagner en performance et en stabilité.
 
 ### Évolutions fonctionnelles
-- **Nouveaux équipements** : Intégration de la gestion des équipements sportifs dans les détails des modèles et les formulaires de retour utilisateur [#2739](https://github.com/MTES-MCT/acceslibre/issues/2739), [#2773](https://github.com/MTES-MCT/acceslibre/issues/2773), [#2785](https://github.com/MTES-MCT/acceslibre/issues/2785).
-- **Amélioration de la clarté** : Correction de la formulation de certaines questions et de fautes de frappe (notamment sur les cabines de douche) pour faciliter la saisie [#2787](https://github.com/MTES-MCT/acceslibre/issues/2787), [#2788](https://github.com/MTES-MCT/acceslibre/issues/2788).
-- **Accessibilité** : Corrections apportées aux informations relatives à l'accessibilité [#2786](https://github.com/MTES-MCT/acceslibre/issues/2786).
-- **Interface utilisateur** : Correction de l'affichage du modal de signalement et de la page de confirmation de fin de démarche [#2754](https://github.com/MTES-MCT/acceslibre/issues/2754).
+- **Nouveaux outils de visualisation** : Ajout d'un widget dédié au secteur de la santé ([#2923](https://github.com/MTES-MCT/acceslibre/issues/2923)) et d'un tableau de bord permettant d'agréger les données par domaine ([#2882](https://github.com/MTES-MCT/acceslibre/issues/2882)).
+- **Améliorations de l'interface (UI)** : Mise à jour des couleurs de la page d'accueil et de la page "challenge" ([#2881](https://github.com/MTES-MCT/acceslibre/issues/2881)), et correction de l'affichage de la modale RPA ainsi que de la génération de PDF ([#2867](https://github.com/MTES-MCT/acceslibre/issues/2867)).
+- **Corrections de données et de logique** : Correction du comptage des villes avec des arrondissements ([#2868](https://github.com/MTES-MCT/acceslibre/issues/2868)), mise en place d'un décompte des sources externes ([#2866](https://github.com/MTES-MCT/acceslibre/issues/2866)) et résolution de problèmes de calcul sur le "jour 0" des challenges ([#2879](https://github.com/MTES-MCT/acceslibre/issues/2879)).
 
 ### Évolutions techniques
-- **Gestion des données** : Mise en place de l'exportation des jeux de données vers S3 avec une politique de rétention automatique (30 jours puis mensuelle) [#2764](https://github.com/MTES-MCT/acceslibre/issues/2764).
-- **API & Sécurité** : Possibilité d'associer un utilisateur à une clé API pour un meilleur suivi [#2729](https://github.com/MTES-MCT/acceslibre/issues/2729) et introduction d'un mécanisme de désactivation (kill switch) des fonctionnalités entreprises [#2794](https://github.com/MTES-MCT/acceslibre/issues/2794).
-- **Intégrité des données** : Mise à jour automatique de la date de vérification lors de l'édition d'un établissement (ERP) [#2772](https://github.com/MTES-MCT/acceslibre/issues/2772).
-- **Importation** : Optimisation de l'importation des données en mode enrichissement uniquement [#2763](https://github.com/MTES-MCT/acceslibre/issues/2763).
+- **Optimisation des performances** : Suppression des requêtes "N+1" pour optimiser les temps de réponse de la base de données ([#2884](https://github.com/MTES-MCT/acceslibre/issues/2884)).
+- **Infrastructure et DevOps** : Modernisation de l'environnement Docker, ajout d'un script de restauration ([#2885](https://github.com/MTES-MCT/acceslibre/issues/2885)) et amélioration de la gestion des dumps de données ([#2913](https://github.com/MTES-MCT/acceslibre/issues/2913)).
+- **API et Backend** : Amélioration de la gestion et du suivi des clés API ([#2909](https://github.com/MTES-MCT/acceslibre/issues/2909)), enrichissement du schéma de réponse de l'API ([#2925](https://github.com/MTES-MCT/acceslibre/issues/2925)) et corrections de sécurité sur la documentation Swagger ([#2915](https://github.com/MTES-MCT/acceslibre/issues/2915)).
+- **Mises à jour système et compatibilité** : Passage à Python 3.14.8 ([#2911](https://github.com/MTES-MCT/acceslibre/issues/2911)), gestion de la rétrocompatibilité pour les questions parentes des tribunes ([#2936](https://github.com/MTES-MCT/acceslibre/issues/2936)) et correction de faux positifs lors du traitement de mots avec tirets ([#2937](https://github.com/MTES-MCT/acceslibre/issues/2937)).
 
 ### Autres changements
-- **Refactoring** : Remplacement de la bibliothèque `bleach` par `nh3` pour le nettoyage du contenu [#2744](https://github.com/MTES-MCT/acceslibre/issues/2744).
-- **Nettoyage** : Suppression d'anciens correctifs et de retours anticipés dans le code.
+- Suppression de l'ancienne version de la contribution (contrib v2) ([#2886](https://github.com/MTES-MCT/acceslibre/issues/2886)).
