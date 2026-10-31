@@ -1,27 +1,33 @@
-## Changelog : iterion (30 derniers jours, au 25 octobre 2026)
+## Changelog : iterion (30 derniers jours, au 31 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par une consolidation majeure de la plateforme, avec un accent particulier sur la sécurité des environnements d'exécution et l'accessibilité de l'interface. Iterion renforce sa capacité à orchestrer des agents de manière isolée et contrôlée grâce à un sandboxing plus strict et une gestion fine des budgets de consommation (tokens). L'expérience utilisateur est également améliorée avec une interface Studio plus accessible et de nouveaux outils de surveillance de production pour garantir la stabilité des workflows.
+Ce mois a été marqué par un effort massif de sécurisation des environnements d'exécution (sandboxes) et de gestion des secrets. L'expérience utilisateur a été enrichie par l'introduction de commandes "slash" pour l'outil CLI `claw`, une meilleure observabilité via le mode `prod-watch`, et une mise en conformité accrue de l'interface Studio avec les standards d'accessibilité (RGAA/WCAG).
 
 ### Évolutions fonctionnelles
-- **Interface Studio & Accessibilité** : Amélioration significative de l'accessibilité (normes WCAG) incluant la gestion du focus clavier, les rôles d'icônes et les régions de texte en direct [#2638, #2622, #2556, #2527]. Ajout de nouveaux écrans d'administration pour la gestion des rôles, de la sandbox et des identifiants de plateforme [#1443, #1461].
-- **Nouveaux outils d'agents (Bots)** : 
-    - Introduction de **GitOps-warden** pour automatiser et sécuriser les processus de fusion (merge gates) [#2480, #2389].
-    - Déploiement de **Argus (prod-watch)** pour une surveillance proactive de la production via Grafana et Loki [#2138, #1869].
-    - Amélioration de l'audit d'accessibilité via le bot **Acci** [#2387].
-- **Rédaction de workflows (DSL)** : Amélioration de la clarté des erreurs lors de la rédaction de fichiers YAML, avec des messages d'erreur plus explicites indiquant la cause exacte des échecs de validation [#2405, #2604].
+- **Outils IA & CLI (`claw`)** : Introduction des "slash commands", permettant d'invoquer des commandes de workspace directement via le modèle d'IA [#1716](https://github.com/SocialGouv/iterion/issues/1716).
+- **Interface Studio** :
+    - Ajout d'écrans d'administration pour la gestion des rôles de bots, des sandboxes et des identifiants de plateforme [#1443](https://github.com/SocialGouv/iterion/issues/1443).
+    - Nouvel éditeur pour la gestion des overrides de credentials dans les webhooks.
+    - Améliorations significatives de l'accessibilité (focus visuels, labels de formulaires, gestion des zones de drop) pour respecter les normes RGAA/WCAG [#2556](https://github.com/SocialGouv/iterion/issues/2556).
+- **Observabilité & Monitoring** :
+    - Lancement de `prod-watch` : système de rapports et d'alertes (digest Mattermost, intégration Grafana/Loki) pour le suivi des sessions [#1701](https://github.com/SocialGouv/iterion/issues/1701).
+    - Exposition d'une surface de métriques `/metrics` pour le monitoring système [#2295](https://github.com/SocialGouv/iterion/issues/2295).
+- **Routage LLM** : Mise en place d'une politique de routage adaptative permettant de définir des règles au niveau de l'organisation ou de l'équipe [#2217](https://github.com/SocialGouv/iterion/issues/2217).
+- **Gestion des connexions** : Support du remplacement de tokens PAT et gestion des connexions par tenant via l'API.
 
 ### Évolutions techniques
-- **Sécurité et Isolation** : 
-    - Renforcement du sandboxing pour empêcher les agents d'accéder aux variables d'environnement ou aux fichiers sensibles de l'hôte [#2310, #2321, #2063].
-    - Sécurisation des secrets et des credentials par tenant et par pool, limitant l'accès aux ressources strictement nécessaires [#2671, #2236].
-- **Gestion des ressources et Budgets** : Mise en place de mécanismes de contrôle des coûts permettant de définir des plafonds de consommation de tokens et de mettre en pause automatiquement les exécutions en cas de dépassement [#2263, #2028].
-- **Infrastructure et Observabilité** : 
-    - Exposition de nouvelles métriques via un endpoint `/metrics` pour une intégration native avec Prometheus [#9174dd9].
-    - Intégration de **SeaweedFS** comme système de stockage d'objets pour la stack de développement [#1943].
-    - Optimisation de la CI/CD avec l'ajout de tests de bout en bout (E2E) via Playwright et un meilleur partitionnement des tests par shards [#9c0d139c, #2213].
-- **Routage et Cloud** : Introduction de politiques de routage adaptatives au niveau de l'organisation et de l'équipe pour la sélection des modèles LLM [#2217, #2126]. Mise en place de "Sovereign Runner Pools" pour une isolation physique des ressources de calcul [#2273].
+- **Sécurité & Isolation (Sandbox/Runtime)** :
+    - Renforcement de l'isolation des sandboxes : filtrage strict des variables d'environnement, protection contre les fuites de secrets et contrôle des règles réseau.
+    - Implémentation du "Secret Guard" pour assurer que les secrets ne sont accessibles qu'aux composants autorisés et avec une traçabilité complète.
+    - Sécurisation des processus d'exécution via un système de "Authoring Lock" pour protéger l'intégrité des fichiers modifiés par les agents.
+- **Infrastructure & CI/CD** :
+    - Intégration de SeaweedFS comme magasin d'objets pour le stack de développement [#1943](https://github.com/SocialGouv/iterion/issues/1943).
+    - Optimisation des pipelines CI avec l'ajout de tests E2E Playwright et une meilleure gestion du parallélisme des tests.
+    - Amélioration de la résilience de la file d'attente (NATS) et de la gestion des brokers.
+- **Architecture** :
+    - Refactorisation de la gestion du YAML pour une lecture plus robuste et standardisée.
+    - Mise en place d'une gestion fine des quotas par dépôt (repo quota) pour limiter l'usage des ressources.
 
 ### Autres changements
-- **Documentation** : Refonte de la documentation technique incluant de nouveaux diagrammes de flux de fonctionnalités et un schéma complet du modèle de données (ERD) en format SVG zoomable [#2582, #2561, #2545].
-- **Nettoyage** : Suppression de plusieurs composants et fonctions obsolètes (legacy) pour simplifier le code source.
+- **Documentation** : Mise à jour majeure incluant de nouveaux diagrammes de flux, un schéma de base de données (ERD) zoomable et une documentation enrichie des décisions d'architecture (ADR) [#2579](https://github.com/SocialGouv/iterion/issues/2579).
+- **Nettoyage** : Suppression de code obsolète et optimisation des processus de génération d'artefacts.

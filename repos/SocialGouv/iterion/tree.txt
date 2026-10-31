@@ -14,11 +14,13 @@
 │       ├── _finalize.yml
 │       ├── a11y-advisory.yml
 │       ├── arc-canary.yml
+│       ├── arc-kind-probe.yml
 │       ├── brew-update.yml
 │       ├── ci-runner-image.yml
 │       ├── desktop-release.yml
 │       ├── docs.yml
 │       ├── image.yml
+│       ├── merge-queue-churn.yml
 │       ├── merge-queue-gate.yml
 │       ├── release-images.yml
 │       ├── release.yml
@@ -131,6 +133,7 @@
 │   ├── assessment_shared_skills_test.go
 │   ├── assessment_survey_write_test.go
 │   ├── assessment_tools_test.go
+│   ├── best_effort_session_claims_test.go
 │   ├── bmady
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -188,6 +191,7 @@
 │   ├── catalog_units_test.go
 │   ├── catalog_universality_test.go
 │   ├── catalog_untrusted_input_boundary_test.go
+│   ├── chat_run_link_test.go
 │   ├── clean_tree_clause_test.go
 │   ├── commit_scaffold_test.go
 │   ├── copilot
@@ -205,6 +209,7 @@
 │   ├── copilot_debug_budget_test.go
 │   ├── copilot_demo_authoring_test.go
 │   ├── copilot_host_event_test.go
+│   ├── copilot_posture_delivery_test.go
 │   ├── copilot_reviewer_fallback_test.go
 │   ├── copilot_workspace_handoff_test.go
 │   ├── declared_suites_readers_test.go
@@ -222,6 +227,7 @@
 │   │       ├── dependency-pr-guard.md
 │   │       ├── package-managers.md
 │   │       └── verify-build.md
+│   ├── dep_update_guard_arming_pin_test.go
 │   ├── dep_update_guard_automerge_test.go
 │   ├── dep_update_guard_delivery_probe_test.go
 │   ├── dep_update_guard_gate_test.go
@@ -257,6 +263,7 @@
 │   │       └── forge-mr-create.md
 │   ├── docs_refresh_hints_test.go
 │   ├── docs_refresh_scope_test.go
+│   ├── durable_memory_promises_test.go
 │   ├── e2e-coverage
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -267,6 +274,7 @@
 │   │       ├── feature-inventory.md
 │   │       ├── verify-build.md
 │   │       └── verify-tests.md
+│   ├── e2e_coverage_matrix_committed_test.go
 │   ├── e2e_coverage_matrix_gate_test.go
 │   ├── embed.go
 │   ├── embed_test.go
@@ -317,6 +325,8 @@
 │   │       ├── feed-config.md
 │   │       ├── notify-webhooks.md
 │   │       └── synthesis-scoring.md
+│   ├── forge_delivery_class_test.go
+│   ├── forge_quickactions_test.go
 │   ├── forge_run_link_test.go
 │   ├── gate_fail_log_carries_the_review_test.go
 │   ├── gitignore_claude_runtime_test.go
@@ -411,6 +421,7 @@
 │   │       ├── modernize-lots.md
 │   │       ├── plan-contract.md
 │   │       └── upgrade-archetypes.md
+│   ├── modernize_child_test.go
 │   ├── modernize_contract_landing_index_test.go
 │   ├── modernize_contract_landing_test.go
 │   ├── modernize_deploy_credential_reaches_gate_test.go
@@ -425,8 +436,11 @@
 │   ├── modernize_round4_test.go
 │   ├── modernize_tools_test.go
 │   ├── new_test_detector_test.go
+│   ├── parallel_isolation_test.go
+│   ├── parallel_modernize_test.go
 │   ├── plan_phase_split_test.go
 │   ├── plan_phase_test.go
+│   ├── plan_revise_mission_context_test.go
 │   ├── porcelain_scaffold_test.go
 │   ├── prod-watch
 │   │   ├── README.md
@@ -510,9 +524,11 @@
 │   │   │   └── ultra11y-engine.md
 │   │   └── ultra11y.pin
 │   ├── rgaa_audit_bot_nodes_test.go
+│   ├── rgaa_audit_claw_scratch_read_test.go
 │   ├── rgaa_audit_engine_contract_test.go
 │   ├── rgaa_audit_engine_pin_test.go
 │   ├── rgaa_audit_page_grid_test.go
+│   ├── rgaa_audit_sandbox_browser_test.go
 │   ├── sec-audit-deps
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -535,9 +551,6 @@
 │   │   ├── devbox.lock
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
-│   │   ├── sandbox
-│   │   │   └── sec
-│   │   │       └── Dockerfile
 │   │   └── skills
 │   │       ├── HARNESS-ATTRIBUTION.md
 │   │       ├── crypto-handling.md
@@ -578,6 +591,8 @@
 │   ├── sec_audit_revi4_test.go
 │   ├── sec_audit_scanner_honesty_test.go
 │   ├── sec_audit_shell_safe_test.go
+│   ├── sec_image_deepsec_hatch_test.go
+│   ├── sec_image_deepsec_pin_test.go
 │   ├── secured-renovacy
 │   │   ├── .gitignore
 │   │   ├── NOTES.md
@@ -682,6 +697,7 @@
 │   │   │           ├── probes.json
 │   │   │           ├── screen.png
 │   │   │           └── styles.json
+│   │   ├── shared_skills.txt
 │   │   └── untrusted_input_boundary_members.txt
 │   ├── testmain_parallel_test.go
 │   ├── testmain_test.go
@@ -724,6 +740,7 @@
 │   │       ├── roadmap-synthesis.md
 │   │       ├── session-continuity.md
 │   │       └── whats-next.md
+│   ├── whats_next_empty_seed_test.go
 │   ├── whole-improve-loop
 │   │   ├── README.md
 │   │   ├── devbox.json
@@ -767,12 +784,17 @@
 │   └── iterion
 │       ├── Chart.yaml
 │       ├── README.md
+│       ├── deps_test.go
 │       ├── examples
 │       │   └── networkpolicy-egress.yaml
+│       ├── render_test.go
 │       ├── templates
 │       │   ├── NOTES.txt
 │       │   ├── _helpers.tpl
+│       │   ├── backup-cronjob.yaml
 │       │   ├── configmap.yaml
+│       │   ├── dev-mongodb.yaml
+│       │   ├── dev-seaweedfs.yaml
 │       │   ├── networkpolicy.yaml
 │       │   ├── poddisruptionbudget.yaml
 │       │   ├── prometheus-podmonitor.yaml
@@ -793,6 +815,10 @@
 │       │   ├── serviceaccount.yaml
 │       │   └── tests
 │       │       └── test-connection.yaml
+│       ├── testdata
+│       │   ├── values-backup.yaml
+│       │   ├── values-datastores.yaml
+│       │   └── values-pools.yaml
 │       ├── values-dev.yaml
 │       ├── values-prod.yaml
 │       ├── values.schema.json
@@ -802,6 +828,7 @@
 │   └── arc-runner
 │       ├── Dockerfile
 │       ├── README.md
+│       ├── baked-actions.txt
 │       ├── smoke
 │       │   ├── cgo.go
 │       │   ├── cgo_test.go
@@ -818,7 +845,7 @@
 │   │   ├── botvars_overlay_wiring_test.go
 │   │   ├── bundle.go
 │   │   ├── claude_hook_drain.go
-│   │   ├── claw_*.go  (12 files)
+│   │   ├── claw_*.go  (13 files)
 │   │   ├── clean.go
 │   │   ├── cloud_wireup.go
 │   │   ├── connections.go
@@ -828,8 +855,7 @@
 │   │   ├── devcontainer_deny_class_test.go
 │   │   ├── diagram.go
 │   │   ├── dispatch.go
-│   │   ├── dotenv_empty_pin_test.go
-│   │   ├── dotenv_plugin_trust_test.go
+│   │   ├── dotenv_*.go  (11 files)
 │   │   ├── dsl.go
 │   │   ├── fix.go
 │   │   ├── fmt.go
@@ -847,6 +873,7 @@
 │   │   ├── memory_test.go
 │   │   ├── migrate.go
 │   │   ├── migrate_to_cloud_test.go
+│   │   ├── minted_secret_carriage_wiring_test.go
 │   │   ├── models.go
 │   │   ├── nats_config.go
 │   │   ├── nats_config_test.go
@@ -855,8 +882,9 @@
 │   │   ├── permission_hook_test.go
 │   │   ├── plugin.go
 │   │   ├── reliability.go
+│   │   ├── reliability_test.go
 │   │   ├── remote.go
-│   │   ├── remote_*.go  (30 files)
+│   │   ├── remote_*.go  (33 files)
 │   │   ├── report.go
 │   │   ├── resume.go
 │   │   ├── rewind.go
@@ -872,6 +900,7 @@
 │   │   ├── server.go
 │   │   ├── server_brand_env_test.go
 │   │   ├── server_rotated_kinds_test.go
+│   │   ├── server_schema_ensurers_test.go
 │   │   ├── skill.go
 │   │   ├── studio.go
 │   │   ├── supervise.go
@@ -887,7 +916,7 @@
 │   │   ├── bindings.go
 │   │   ├── build -> ../../build
 │   │   ├── cloud.go
-│   │   ├── cloud_*.go  (21 files)
+│   │   ├── cloud_*.go  (22 files)
 │   │   ├── config.go
 │   │   ├── config_test.go
 │   │   ├── connections.go
@@ -897,6 +926,7 @@
 │   │   ├── daemon_spawn_windows.go
 │   │   ├── doc.go
 │   │   ├── env_file.go
+│   │   ├── env_file_round8_test.go
 │   │   ├── env_file_test.go
 │   │   ├── events.go
 │   │   ├── external_cli.go
@@ -933,9 +963,16 @@
 │   ├── iterion-live-status
 │   │   ├── main.go
 │   │   └── main_test.go
-│   └── release-floors
+│   ├── release-floors
+│   │   └── main.go
+│   ├── render-gate
+│   │   ├── main.go
+│   │   └── main_test.go
+│   └── skill-share
 │       └── main.go
 ├── connectors
+│   ├── embed.go
+│   ├── embed_test.go
 │   └── forgejo
 │       ├── connector.yaml
 │       ├── identity.lock.yaml
@@ -951,7 +988,8 @@
 │       │   ├── settings.yaml
 │       │   └── user.yaml
 │       ├── overlay.yaml
-│       └── schemas.yaml
+│       ├── schemas.yaml
+│       └── triggers.yaml
 ├── contrib
 │   ├── mattermost-clarify
 │   │   ├── README.md
@@ -986,6 +1024,7 @@
 ├── docker-compose.cloud.yml
 ├── docs
 │   ├── .vitepress
+│   │   ├── changelog-prose.mjs
 │   │   ├── config.ts
 │   │   ├── github-slug.mjs
 │   │   ├── public-links.mjs
@@ -1128,10 +1167,24 @@
 │   │   ├── 129-per-integration-typed-routing-overrides.md
 │   │   ├── 130-env-expansion-opt-out-for-tool-bodies.md
 │   │   ├── 131-tenant-gateway-credential.md
+│   │   ├── 132-a-run-reads-no-environment.md
 │   │   ├── 134-identity-tree-read-separately-credentials-derive-at-the-chokepoint.md
 │   │   ├── 135-a-clients-sign-out-is-a-machine-not-a-flag.md
 │   │   ├── 136-a-bot-source-write-carries-what-a-whole-read-issued.md
 │   │   ├── 137-local-gate-hermetic-by-default.md
+│   │   ├── 138-forge-provisioning-immutable-identities.md
+│   │   ├── 139-language-stays-go-sidecars-for-the-rest.md
+│   │   ├── 140-discovery-claims-what-the-bundle-package-claims.md
+│   │   ├── 141-board-issues-join-the-by-id-class.md
+│   │   ├── 142-dependency-internalization-doctrine.md
+│   │   ├── 143-sandbox-read-back-contract.md
+│   │   ├── 144-shared-skills-are-bundle-dependencies.md
+│   │   ├── 145-shared-fragments-are-bundle-dependencies.md
+│   │   ├── 146-secret-boundary-v2-grants-and-sinks.md
+│   │   ├── 147-operator-bound-bot-context-is-a-pinned-source.md
+│   │   ├── 148-run-visibility-org-sharing-axis.md
+│   │   ├── 149-the-run-logger-redacts-what-it-keeps.md
+│   │   ├── 150-attachments-reach-cloud-runs.md
 │   │   └── README.md
 │   ├── agents
 │   │   ├── README.md
@@ -1169,12 +1222,14 @@
 │   │   │   ├── dsl-quick-reference.md
 │   │   │   ├── events-leases-and-schedules.md
 │   │   │   ├── extensions-and-bot-sources.md
+│   │   │   ├── http-failures.md
 │   │   │   ├── run-provenance.md
 │   │   │   ├── tenancy-credentials-spend.md
 │   │   │   ├── workspace-and-review-scope.md
 │   │   │   └── worktree-finalization.md
 │   │   ├── ops
 │   │   │   ├── README.md
+│   │   │   ├── dependency-surface.md
 │   │   │   ├── runbooks.md
 │   │   │   └── security-selfaudit.md
 │   │   ├── orientation
@@ -1199,6 +1254,7 @@
 │   ├── asymptote-bench.md
 │   ├── async-interaction.md
 │   ├── attachments.md
+│   ├── authoring-lock.md
 │   ├── auto-maintenance.md
 │   ├── backend-capability-registry.md
 │   ├── backends.md
@@ -1479,6 +1535,7 @@
 │   ├── sandbox.md
 │   ├── scheduling.md
 │   ├── scripts
+│   │   ├── changelog-prose.test.mjs
 │   │   ├── check-anchor-slugs.mjs
 │   │   ├── check-links.mjs
 │   │   ├── check-links.test.mjs
@@ -1566,6 +1623,7 @@
 │   ├── copilot_loop_test.go
 │   ├── dispatcher_test.go
 │   ├── docs_refresh_test.go
+│   ├── dotenv_engine_child_test.go
 │   ├── e2e_coverage_bot_test.go
 │   ├── e2e_test.go
 │   ├── engine_test.go
@@ -1655,7 +1713,7 @@
 │   │           └── worker_test.go
 │   ├── handoff_publish_test.go
 │   ├── issue_triage_trigger_test.go
-│   ├── live_*.go  (45 files)
+│   ├── live_*.go  (46 files)
 │   ├── main_parallel_test.go
 │   ├── main_test.go
 │   ├── malware_fixture_test.go
@@ -1664,7 +1722,7 @@
 │   ├── plan_review_test.go
 │   ├── port_test.go
 │   ├── privacy_test.go
-│   ├── prod_*.go  (29 files)
+│   ├── prod_*.go  (30 files)
 │   ├── product_docs_test.go
 │   ├── review_pr_convergence_test.go
 │   ├── review_pr_tiers_test.go
@@ -1713,6 +1771,7 @@
 │   │   ├── feat_permission_deny.bot
 │   │   ├── feat_permission_deny_grok.bot
 │   │   ├── feat_permission_deny_kimi.bot
+│   │   ├── feat_sandbox_image_env.bot
 │   │   ├── feat_sandbox_net.bot
 │   │   ├── feat_sched.bot
 │   │   ├── feat_verified_action.bot
@@ -1838,8 +1897,14 @@
 │   │   ├── doc.go
 │   │   └── preflight_test.go
 │   ├── ciguard
+│   │   ├── arc_canary_test.go
+│   │   ├── arc_kind_probe_test.go
+│   │   ├── baked_actions_test.go
 │   │   ├── brew_tap_test.go
 │   │   ├── doc.go
+│   │   ├── queue_churn_test.go
+│   │   ├── queue_stats_test.go
+│   │   ├── queue_timeout_test.go
 │   │   ├── release_test.go
 │   │   ├── routing_test.go
 │   │   ├── runner_image_test.go
@@ -1853,6 +1918,9 @@
 │   ├── corpusreading
 │   │   ├── corpusreading.go
 │   │   └── corpusreading_test.go
+│   ├── credheader
+│   │   ├── credheader.go
+│   │   └── credheader_test.go
 │   ├── docsguard
 │   │   ├── adr_numbers_test.go
 │   │   ├── diagrams.go
@@ -1867,9 +1935,22 @@
 │   │           ├── changelog-head.tsv
 │   │           ├── docs-backends.tsv
 │   │           └── docs-dsl.tsv
+│   ├── dotenv
+│   │   ├── dotenv.go
+│   │   └── dotenv_test.go
 │   ├── envtrust
+│   │   ├── credential.go
+│   │   ├── endpoint.go
 │   │   ├── envtrust.go
-│   │   └── envtrust_test.go
+│   │   ├── envtrust_test.go
+│   │   ├── execution.go
+│   │   ├── execution_round8_test.go
+│   │   ├── execution_test.go
+│   │   ├── operator.go
+│   │   ├── operator_test.go
+│   │   ├── routing.go
+│   │   ├── routing_completeness_test.go
+│   │   └── routing_test.go
 │   ├── floorsalign
 │   │   ├── floorsalign.go
 │   │   ├── floorsalign_test.go
@@ -1897,13 +1978,53 @@
 │   │   └── repo.go
 │   ├── hometest
 │   │   ├── hometest.go
-│   │   └── hometest_test.go
+│   │   ├── hometest_test.go
+│   │   └── realhome_test.go
 │   ├── httpx
 │   │   ├── httpx.go
 │   │   ├── httpx_strict_test.go
 │   │   └── vary_test.go
+│   ├── isolationenv
+│   │   ├── isolationenv.go
+│   │   └── one_reader_test.go
 │   ├── layerguard
-│   │   └── layering_test.go
+│   │   ├── layering_test.go
+│   │   └── testdata
+│   │       ├── crossbuild
+│   │       │   ├── go.mod
+│   │       │   ├── internal
+│   │       │   │   └── x
+│   │       │   │       ├── x_linux.go
+│   │       │   │       └── x_other.go
+│   │       │   └── pkg
+│   │       │       ├── cli
+│   │       │       │   └── cli.go
+│   │       │       ├── dsl
+│   │       │       │   └── ir
+│   │       │       │       ├── ir.go
+│   │       │       │       ├── paired.go
+│   │       │       │       └── tagged.go
+│   │       │       ├── server
+│   │       │       │   └── server.go
+│   │       │       └── store
+│   │       │           ├── lock_windows.go
+│   │       │           └── store.go
+│   │       └── neverbuilt
+│   │           ├── go.mod
+│   │           ├── internal
+│   │           │   └── b
+│   │           │       └── b.go
+│   │           └── pkg
+│   │               └── a
+│   │                   ├── .hidden
+│   │                   │   └── hidden.go
+│   │                   ├── .scratch.go
+│   │                   ├── _old
+│   │                   │   └── old.go
+│   │                   ├── _scratch.go
+│   │                   ├── a.go
+│   │                   ├── gen.go
+│   │                   └── genlinux.go
 │   ├── mdcode
 │   │   ├── blockphase_test.go
 │   │   ├── committedfiles_test.go
@@ -1919,20 +2040,39 @@
 │   │   ├── leakguard_linux.go
 │   │   ├── leakguard_linux_test.go
 │   │   └── leakguard_other.go
+│   ├── rendergate
+│   │   ├── rendergate.go
+│   │   └── rendergate_test.go
 │   ├── retryprobetest
 │   │   ├── property.go
 │   │   ├── store.go
 │   │   └── wall_test.go
 │   ├── safepath
+│   │   ├── bindsource.go
+│   │   ├── bindsource_test.go
 │   │   ├── safepath.go
 │   │   └── safepath_test.go
+│   ├── skillshare
+│   │   ├── families.go
+│   │   ├── skillshare.go
+│   │   └── skillshare_test.go
 │   ├── subbottest
 │   │   └── fixture.go
+│   ├── tenantguard
+│   │   └── tenant_filter_test.go
 │   ├── testfs
 │   │   └── remove.go
-│   └── treeskip
-│       ├── agreement_test.go
-│       └── treeskip.go
+│   ├── testparallel
+│   │   ├── campaign.go
+│   │   ├── campaign_test.go
+│   │   ├── testparallel.go
+│   │   └── testparallel_test.go
+│   ├── treeskip
+│   │   ├── agreement_test.go
+│   │   └── treeskip.go
+│   └── yamlx
+│       ├── yamlx.go
+│       └── yamlx_test.go
 ├── marketplace.json
 ├── openapi.json
 ├── package.json
@@ -1998,6 +2138,7 @@
 │   │   ├── credential_derivation_test.go
 │   │   ├── credential_standing_test.go
 │   │   ├── derive.go
+│   │   ├── desktop_login_test.go
 │   │   ├── desktopsso
 │   │   │   ├── store.go
 │   │   │   ├── store_mongo.go
@@ -2007,6 +2148,7 @@
 │   │   ├── invitation_accept_post_claim_test.go
 │   │   ├── jwt.go
 │   │   ├── jwt_test.go
+│   │   ├── mint_context.go
 │   │   ├── oidc
 │   │   │   ├── connector.go
 │   │   │   ├── generic.go
@@ -2018,6 +2160,7 @@
 │   │   │   ├── jwks_test.go
 │   │   │   ├── pkce.go
 │   │   │   └── state_mongo.go
+│   │   ├── oidc_autolink_read_failure_test.go
 │   │   ├── oidc_link_test.go
 │   │   ├── oidc_new_user_grant_test.go
 │   │   ├── oidc_service.go
@@ -2025,6 +2168,7 @@
 │   │   ├── oidc_service_orgsso_test.go
 │   │   ├── org_admin_switch_test.go
 │   │   ├── org_grant_read_test.go
+│   │   ├── org_provision_unit_test.go
 │   │   ├── org_service_test.go
 │   │   ├── orgsso
 │   │   │   ├── domain.go
@@ -2063,6 +2207,12 @@
 │   │       ├── store_mongo.go
 │   │       ├── store_mongo_test.go
 │   │       └── store_test.go
+│   ├── authoringlock
+│   │   ├── authoringlock.go
+│   │   ├── authoringlock_test.go
+│   │   ├── platform_other.go
+│   │   ├── platform_unix.go
+│   │   └── platform_windows.go
 │   ├── backend
 │   │   ├── ambient
 │   │   │   ├── ambient.go
@@ -2075,6 +2225,7 @@
 │   │   ├── backendcaps
 │   │   │   ├── backendcaps.go
 │   │   │   ├── backendcaps_test.go
+│   │   │   ├── imagepresence_test.go
 │   │   │   ├── live_seed.json
 │   │   │   ├── registry.json
 │   │   │   └── testdata
@@ -2082,12 +2233,14 @@
 │   │   │       └── registry.golden.json
 │   │   ├── compatgw
 │   │   │   ├── catalog.go
+│   │   │   ├── catalog_planted_sources_test.go
 │   │   │   ├── catalog_test.go
 │   │   │   ├── client.go
 │   │   │   ├── client_sandbox_proxy_linux_test.go
 │   │   │   ├── client_sandbox_proxy_test.go
 │   │   │   ├── compatgw_test.go
 │   │   │   ├── env.go
+│   │   │   ├── env_planted_key_test.go
 │   │   │   ├── reasoning.go
 │   │   │   └── reasoning_test.go
 │   │   ├── cost
@@ -2106,18 +2259,21 @@
 │   │   │   ├── async_capability_test.go
 │   │   │   ├── classify.go
 │   │   │   ├── classify_test.go
-│   │   │   ├── claude_*.go  (62 files)
+│   │   │   ├── claude_*.go  (66 files)
 │   │   │   ├── claudesdk
 │   │   │   │   ├── agent.go
 │   │   │   │   ├── buildargs_test.go
 │   │   │   │   ├── channel.go
 │   │   │   │   ├── channel_test.go
 │   │   │   │   ├── claude.go
+│   │   │   │   ├── close_belt_test.go
 │   │   │   │   ├── content.go
 │   │   │   │   ├── doc.go
 │   │   │   │   ├── error.go
 │   │   │   │   ├── hook.go
 │   │   │   │   ├── hook_fields_test.go
+│   │   │   │   ├── hookchannel.go
+│   │   │   │   ├── hookchannel_transport_test.go
 │   │   │   │   ├── inspect.go
 │   │   │   │   ├── mcp.go
 │   │   │   │   ├── message.go
@@ -2136,6 +2292,7 @@
 │   │   │   │   ├── stream_cancel_test.go
 │   │   │   │   ├── strict_output_schema.go
 │   │   │   │   └── strict_output_schema_test.go
+│   │   │   ├── claudesdk_hook_channel_clilive_test.go
 │   │   │   ├── cliagent.go
 │   │   │   ├── cliagent_ambient.go
 │   │   │   ├── cliagent_sandbox_kill_test.go
@@ -2148,6 +2305,7 @@
 │   │   │   ├── delegate.go
 │   │   │   ├── delegate_test.go
 │   │   │   ├── devcontainer_deny_class_test.go
+│   │   │   ├── drain_bound_sites_test.go
 │   │   │   ├── envelope.go
 │   │   │   ├── envelope_clamp.go
 │   │   │   ├── envelope_clamp_test.go
@@ -2164,7 +2322,7 @@
 │   │   │   ├── kimi_ambient_clilive_test.go
 │   │   │   ├── kimi_ambient_test.go
 │   │   │   ├── main_test.go
-│   │   │   ├── mcp_*.go  (5 files)
+│   │   │   ├── mcp_*.go  (7 files)
 │   │   │   ├── multiplexer.go
 │   │   │   ├── multiplexer_test.go
 │   │   │   ├── network_errors.go
@@ -2180,7 +2338,7 @@
 │   │   │   ├── parse.go
 │   │   │   ├── parse_test.go
 │   │   │   ├── pi.go
-│   │   │   ├── pi_*.go  (13 files)
+│   │   │   ├── pi_*.go  (15 files)
 │   │   │   ├── piext
 │   │   │   │   ├── asset
 │   │   │   │   │   └── iterion-pi.js
@@ -2202,6 +2360,7 @@
 │   │   │   ├── presets_test.go
 │   │   │   ├── readonly_lever_docs_test.go
 │   │   │   ├── registry.go
+│   │   │   ├── sandbox_credential.go
 │   │   │   ├── sandbox_state_mirror.go
 │   │   │   ├── sandbox_state_mirror_test.go
 │   │   │   ├── secrets_prompt_test.go
@@ -2211,6 +2370,7 @@
 │   │   │   ├── session_root_test.go
 │   │   │   ├── skills_test.go
 │   │   │   ├── statedir_guards.go
+│   │   │   ├── stream_liveness_belt_test.go
 │   │   │   ├── testdata
 │   │   │   │   └── mock-mcp-stdio.mjs
 │   │   │   ├── tool_alias_invariant_test.go
@@ -2236,10 +2396,13 @@
 │   │   │   ├── browser_test.go
 │   │   │   ├── cache.go
 │   │   │   ├── cache_test.go
+│   │   │   ├── child_env.go
+│   │   │   ├── child_env_test.go
 │   │   │   ├── claw_adapter.go
 │   │   │   ├── config.go
 │   │   │   ├── config_order_test.go
 │   │   │   ├── config_test.go
+│   │   │   ├── config_workspace_test.go
 │   │   │   ├── empty_nocache_test.go
 │   │   │   ├── fingerprint.go
 │   │   │   ├── fingerprint_test.go
@@ -2261,6 +2424,8 @@
 │   │   │   ├── stdio_diagnostic.go
 │   │   │   └── stdio_diagnostic_test.go
 │   │   ├── model
+│   │   │   ├── allowlist_refusal.go
+│   │   │   ├── allowlist_refusal_test.go
 │   │   │   ├── ambiguous_redaction_test.go
 │   │   │   ├── anthropic_forfait_ctx_test.go
 │   │   │   ├── api_errors.go
@@ -2269,15 +2434,17 @@
 │   │   │   ├── async_backend_test.go
 │   │   │   ├── backendcaps_conformance_test.go
 │   │   │   ├── background_work_hooks_test.go
+│   │   │   ├── board_token_revoke_test.go
 │   │   │   ├── braced_env_reads_pin_test.go
 │   │   │   ├── cache_marshal_test.go
 │   │   │   ├── capabilities.go
+│   │   │   ├── capabilities_flags_test.go
 │   │   │   ├── capabilities_generation_test.go
 │   │   │   ├── capabilities_public.go
 │   │   │   ├── capabilities_public_test.go
 │   │   │   ├── chain_dispatch_test.go
 │   │   │   ├── chain_skip_test.go
-│   │   │   ├── claw_*.go  (42 files)
+│   │   │   ├── claw_*.go  (54 files)
 │   │   │   ├── codex_client_version_test.go
 │   │   │   ├── cooldown_auth_test.go
 │   │   │   ├── cursors.go
@@ -2291,7 +2458,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (64 files)
+│   │   │   ├── executor_*.go  (66 files)
 │   │   │   ├── expand_braced_env_linear_test.go
 │   │   │   ├── fallback_prereq_test.go
 │   │   │   ├── forfait_first_walk_test.go
@@ -2305,7 +2472,9 @@
 │   │   │   ├── handoff.go
 │   │   │   ├── handoff_test.go
 │   │   │   ├── hooks.go
-│   │   │   ├── hooks_*.go  (5 files)
+│   │   │   ├── hooks_*.go  (7 files)
+│   │   │   ├── human_route.go
+│   │   │   ├── human_route_test.go
 │   │   │   ├── human_whole_input_test.go
 │   │   │   ├── inbox_test.go
 │   │   │   ├── interaction_prompt_input_test.go
@@ -2314,23 +2483,26 @@
 │   │   │   ├── lifecycle_hooks_test.go
 │   │   │   ├── literal_template_test.go
 │   │   │   ├── llm_tool.go
+│   │   │   ├── memory_global_gate_test.go
 │   │   │   ├── memory_tools.go
 │   │   │   ├── memory_tools_test.go
-│   │   │   ├── model_override.go
-│   │   │   ├── model_override_test.go
-│   │   │   ├── model_route_identity_test.go
+│   │   │   ├── model_*.go  (6 files)
 │   │   │   ├── modelspecs_merge.go
 │   │   │   ├── modelspecs_merge_test.go
 │   │   │   ├── network_retry_test.go
+│   │   │   ├── node_deadline.go
+│   │   │   ├── node_deadline_test.go
 │   │   │   ├── openai_forfait_ctx_test.go
 │   │   │   ├── openai_stream_usage_test.go
 │   │   │   ├── override_fold.go
 │   │   │   ├── override_fold_test.go
+│   │   │   ├── parallel_campaign_test.go
 │   │   │   ├── permission_gate_test.go
 │   │   │   ├── permission_node_rules_test.go
 │   │   │   ├── permission_recovery_rung_test.go
 │   │   │   ├── persist_fallback_test.go
 │   │   │   ├── plan_capture_test.go
+│   │   │   ├── planted_endpoint_class_test.go
 │   │   │   ├── preview_url.go
 │   │   │   ├── preview_url_test.go
 │   │   │   ├── privacy_redaction_test.go
@@ -2339,10 +2511,10 @@
 │   │   │   ├── provider_allowlist_test.go
 │   │   │   ├── provider_hint.go
 │   │   │   ├── provider_hint_test.go
+│   │   │   ├── recovery_route.go
+│   │   │   ├── recovery_route_test.go
 │   │   │   ├── registry.go
-│   │   │   ├── registry_identity_test.go
-│   │   │   ├── registry_moonshot_test.go
-│   │   │   ├── registry_xai_test.go
+│   │   │   ├── registry_*.go  (5 files)
 │   │   │   ├── resolve_backend_test.go
 │   │   │   ├── resolve_chain_pool_pins_test.go
 │   │   │   ├── resolve_chain_test.go
@@ -2363,6 +2535,8 @@
 │   │   │   ├── schema_reask_test.go
 │   │   │   ├── schema_test.go
 │   │   │   ├── script_scratch_test.go
+│   │   │   ├── secret_redactor_parity_test.go
+│   │   │   ├── secret_sinks_test.go
 │   │   │   ├── secretguard.go
 │   │   │   ├── secretguard_ambient_test.go
 │   │   │   ├── secretguard_binding_hosts_test.go
@@ -2382,11 +2556,22 @@
 │   │   │   ├── structured_recovery.go
 │   │   │   ├── structured_recovery_test.go
 │   │   │   ├── subagent.go
+│   │   │   ├── subagent_parent_loop_test.go
 │   │   │   ├── subagent_permission_test.go
 │   │   │   ├── system_reminder.go
 │   │   │   ├── system_reminder_test.go
 │   │   │   ├── template_*.go  (5 files)
-│   │   │   ├── tool_*.go  (5 files)
+│   │   │   ├── testdata
+│   │   │   │   └── vendor_capabilities.golden
+│   │   │   ├── testparallel_test.go
+│   │   │   ├── tool_aliases_test.go
+│   │   │   ├── tool_attachment.go
+│   │   │   ├── tool_attachment_deliverable_link_test.go
+│   │   │   ├── tool_attachment_required_test.go
+│   │   │   ├── tool_attachment_test.go
+│   │   │   ├── tool_body_env_class_test.go
+│   │   │   ├── tool_error_redaction_test.go
+│   │   │   ├── tool_node_core_callers_test.go
 │   │   │   ├── trusted_metering_test.go
 │   │   │   ├── turn_backend_label_test.go
 │   │   │   ├── turn_terminated_background_test.go
@@ -2398,12 +2583,14 @@
 │   │   │   ├── value_shape.go
 │   │   │   ├── wire_model_test.go
 │   │   │   ├── wire_reach.go
-│   │   │   └── wire_reach_test.go
+│   │   │   ├── wire_reach_test.go
+│   │   │   └── workflow_auto_test.go
 │   │   ├── modelroute
 │   │   │   ├── modelroute.go
 │   │   │   └── modelroute_test.go
 │   │   ├── modelspecs
 │   │   │   ├── consensus_test.go
+│   │   │   ├── env_trust_test.go
 │   │   │   ├── modelspecs.go
 │   │   │   ├── modelspecs_test.go
 │   │   │   ├── snapshot
@@ -2417,8 +2604,10 @@
 │   │   │   ├── marker_test.go
 │   │   │   ├── messages.go
 │   │   │   ├── messages_test.go
+│   │   │   ├── path_rules_test.go
 │   │   │   ├── permission.go
 │   │   │   ├── permission_test.go
+│   │   │   ├── rule_removes_tool_test.go
 │   │   │   └── tool_alias_holes_test.go
 │   │   ├── permissionhook
 │   │   │   ├── hook.go
@@ -2438,9 +2627,15 @@
 │   │   │   ├── host_test.go
 │   │   │   ├── leaves.go
 │   │   │   ├── leaves_test.go
+│   │   │   ├── model_boundary_test.go
 │   │   │   ├── redact_only_test.go
+│   │   │   ├── register.go
+│   │   │   ├── register_rotation_test.go
+│   │   │   ├── register_test.go
 │   │   │   ├── secretguard.go
-│   │   │   └── secretguard_test.go
+│   │   │   ├── secretguard_test.go
+│   │   │   ├── sinks_review_test.go
+│   │   │   └── sinks_test.go
 │   │   ├── sessionpack
 │   │   │   ├── archive.go
 │   │   │   ├── archive_test.go
@@ -2461,15 +2656,23 @@
 │   │   │   ├── claw_board_tools_test.go
 │   │   │   ├── claw_builtins.go
 │   │   │   ├── claw_builtins_test.go
+│   │   │   ├── claw_command.go
+│   │   │   ├── claw_command_test.go
+│   │   │   ├── claw_read_path_handback_test.go
+│   │   │   ├── claw_read_scope.go
+│   │   │   ├── claw_read_scope_test.go
 │   │   │   ├── claw_refused_builtins_test.go
 │   │   │   ├── claw_run_tools.go
 │   │   │   ├── claw_run_tools_test.go
 │   │   │   ├── claw_smoke_test.go
 │   │   │   ├── claw_subagent_prompt_test.go
 │   │   │   ├── claw_subagent_refusal_test.go
+│   │   │   ├── claw_tool_search.go
+│   │   │   ├── claw_tool_search_test.go
 │   │   │   ├── claw_watch_tools.go
 │   │   │   ├── claw_watch_tools_test.go
 │   │   │   ├── claw_worker_family_test.go
+│   │   │   ├── claw_workspace_clone_credentials_test.go
 │   │   │   ├── claw_workspace_glob.go
 │   │   │   ├── claw_workspace_grep.go
 │   │   │   ├── claw_workspace_grep_test.go
@@ -2517,7 +2720,10 @@
 │   │   │   ├── canonical_rows_test.go
 │   │   │   ├── capabilities.go
 │   │   │   ├── capabilities_test.go
+│   │   │   ├── codex.go
+│   │   │   ├── codex_test.go
 │   │   │   ├── declared.go
+│   │   │   ├── durable_write_test.go
 │   │   │   ├── refused.go
 │   │   │   ├── refused_test.go
 │   │   │   ├── toolcatalog.go
@@ -2539,6 +2745,7 @@
 │   │   │   ├── classify_test.go
 │   │   │   ├── profile.go
 │   │   │   ├── profile_test.go
+│   │   │   ├── reconcile_test.go
 │   │   │   └── report.go
 │   │   ├── metrics.go
 │   │   ├── otlp.go
@@ -2555,6 +2762,10 @@
 │   ├── botdeps
 │   │   ├── sync.go
 │   │   ├── sync_catalog_error_test.go
+│   │   ├── sync_catalog_owner_test.go
+│   │   ├── sync_fragments_test.go
+│   │   ├── sync_skills_test.go
+│   │   ├── sync_unrecorded_test.go
 │   │   ├── update.go
 │   │   └── update_test.go
 │   ├── botimport
@@ -2577,22 +2788,34 @@
 │   │   └── validate.go
 │   ├── botinstall
 │   │   ├── author_document_test.go
+│   │   ├── fragment_transport_test.go
+│   │   ├── fragments.go
+│   │   ├── fragments_test.go
 │   │   ├── inspect.go
 │   │   ├── inspect_test.go
 │   │   ├── install.go
 │   │   ├── install_name_test.go
 │   │   ├── install_remove_test.go
 │   │   ├── install_test.go
-│   │   └── origin.go
+│   │   ├── install_unrecorded_test.go
+│   │   ├── origin.go
+│   │   ├── replace_tree.go
+│   │   ├── replace_tree_test.go
+│   │   ├── shared_deps.go
+│   │   ├── skills.go
+│   │   └── skills_test.go
 │   ├── botlock
 │   │   ├── lock.go
 │   │   └── lock_test.go
 │   ├── botregistry
 │   │   ├── catalog.go
+│   │   ├── catalog_authoring_lock_test.go
+│   │   ├── catalog_local_state_test.go
 │   │   ├── catalog_owner_test.go
 │   │   ├── catalog_test.go
 │   │   ├── description_hash_test.go
 │   │   ├── description_test.go
+│   │   ├── discovery_claim_test.go
 │   │   ├── frontmatter_bound_test.go
 │   │   ├── overlay_closed_test.go
 │   │   ├── overrides.go
@@ -2657,6 +2880,7 @@
 │   │   ├── floor_test.go
 │   │   ├── gallery.go
 │   │   ├── gallery_test.go
+│   │   ├── goal_loop_exec_test.go
 │   │   ├── per_ticket_exec_test.go
 │   │   ├── profile_two_test.go
 │   │   ├── prompt_slots_test.go
@@ -2682,6 +2906,10 @@
 │   │   │   │   │   ├── devbox.lock
 │   │   │   │   │   └── main.bot.tmpl
 │   │   │   │   ├── contract
+│   │   │   │   │   └── main.bot.tmpl
+│   │   │   │   ├── goal-loop
+│   │   │   │   │   ├── devbox.json
+│   │   │   │   │   ├── devbox.lock
 │   │   │   │   │   └── main.bot.tmpl
 │   │   │   │   ├── library
 │   │   │   │   │   ├── lib
@@ -2740,6 +2968,7 @@
 │   │   ├── author_document_test.go
 │   │   ├── author_document_transport_test.go
 │   │   ├── bundle.go
+│   │   ├── bundle_dirclaim_test.go
 │   │   ├── bundle_test.go
 │   │   ├── chat.go
 │   │   ├── chat_test.go
@@ -2756,14 +2985,18 @@
 │   │   ├── floor_release.go
 │   │   ├── floor_release_test.go
 │   │   ├── forge_test.go
+│   │   ├── fragment_sharing.go
+│   │   ├── fragment_sharing_test.go
 │   │   ├── frontmatter.go
 │   │   ├── frontmatter_hash_test.go
 │   │   ├── frontmatter_head_test.go
 │   │   ├── import_floor_test.go
 │   │   ├── invocations_test.go
 │   │   ├── loader.go
+│   │   ├── local_state.go
+│   │   ├── local_state_test.go
 │   │   ├── manifest.go
-│   │   ├── manifest_*.go  (8 files)
+│   │   ├── manifest_*.go  (12 files)
 │   │   ├── migrate.go
 │   │   ├── open_cache_root_test.go
 │   │   ├── open_dir_with_main_test.go
@@ -2781,7 +3014,10 @@
 │   │   ├── root_entry_floor_test.go
 │   │   ├── shared_fragment_test.go
 │   │   ├── short_floor_test.go
+│   │   ├── skill_sharing.go
+│   │   ├── skill_sharing_test.go
 │   │   ├── snapshot.go
+│   │   ├── snapshot_entry_test.go
 │   │   ├── snapshot_test.go
 │   │   ├── syntax_with_main_test.go
 │   │   ├── tar.go
@@ -2796,17 +3032,21 @@
 │   ├── bundlelint
 │   │   ├── contracts.go
 │   │   ├── contracts_test.go
+│   │   ├── durable_memory_test.go
 │   │   ├── empty_tools_floor_test.go
 │   │   ├── engine_requirement_test.go
+│   │   ├── gate_agreement_test.go
 │   │   ├── host_event_mode_test.go
 │   │   ├── import_floor_test.go
 │   │   ├── lint.go
 │   │   ├── lint_test.go
+│   │   ├── manifest_key_floor_test.go
 │   │   ├── profile_floor_more_test.go
 │   │   ├── profile_floor_test.go
 │   │   ├── short_test.go
 │   │   ├── taxonomy_test.go
-│   │   └── tool_aliases_test.go
+│   │   ├── tool_aliases_test.go
+│   │   └── whengate_route_test.go
 │   ├── cli
 │   │   ├── ambiguous_code_test.go
 │   │   ├── author_document_test.go
@@ -2829,11 +3069,9 @@
 │   │   ├── cli_test.go
 │   │   ├── connections.go
 │   │   ├── connections_test.go
+│   │   ├── connections_tier_test.go
 │   │   ├── connectors.go
-│   │   ├── connectors_identity.go
-│   │   ├── connectors_identity_test.go
-│   │   ├── connectors_redact_test.go
-│   │   ├── connectors_test.go
+│   │   ├── connectors_*.go  (6 files)
 │   │   ├── diagram.go
 │   │   ├── diagram_author_test.go
 │   │   ├── diagram_bundle_test.go
@@ -2859,8 +3097,10 @@
 │   │   ├── inspect_redaction_test.go
 │   │   ├── interactions.go
 │   │   ├── issue.go
+│   │   ├── issue_card_grant_test.go
 │   │   ├── issue_import_project_test.go
 │   │   ├── issue_import_refusal_test.go
+│   │   ├── issue_run_outcome_test.go
 │   │   ├── kvflags.go
 │   │   ├── localconnectors.go
 │   │   ├── localsecrets.go
@@ -2876,15 +3116,16 @@
 │   │   ├── plugin.go
 │   │   ├── printer_inert_test.go
 │   │   ├── read_secret_value_test.go
+│   │   ├── record_run_outcome.go
 │   │   ├── reliability.go
 │   │   ├── reliability_test.go
 │   │   ├── remote.go
-│   │   ├── remote_*.go  (31 files)
+│   │   ├── remote_*.go  (32 files)
 │   │   ├── report.go
 │   │   ├── report_finish_stamps_test.go
 │   │   ├── report_test.go
 │   │   ├── resume.go
-│   │   ├── resume_*.go  (8 files)
+│   │   ├── resume_*.go  (9 files)
 │   │   ├── run.go
 │   │   ├── run_*.go  (10 files)
 │   │   ├── runs_prune.go
@@ -2902,6 +3143,8 @@
 │   │   ├── storeanchor_test.go
 │   │   ├── studio.go
 │   │   ├── studio_bind_test.go
+│   │   ├── studio_connectors.go
+│   │   ├── studio_connectors_test.go
 │   │   ├── studio_test.go
 │   │   ├── subbot_*.go  (5 files)
 │   │   ├── supervise.go
@@ -2926,10 +3169,13 @@
 │   │   ├── validate_broken_bundle_test.go
 │   │   ├── validate_bundle_promotion_test.go
 │   │   ├── validate_bundle_test.go
+│   │   ├── validate_connectors.go
+│   │   ├── validate_connectors_test.go
 │   │   ├── validate_contract_floor_test.go
 │   │   ├── validate_contract_subbot_test.go
 │   │   ├── validate_contract_test.go
 │   │   ├── validate_diagnostics_test.go
+│   │   ├── validate_durable_memory_test.go
 │   │   ├── validate_exec_test.go
 │   │   ├── validate_include_test.go
 │   │   ├── validate_manifest_not_read_test.go
@@ -2945,7 +3191,9 @@
 │   │   ├── workspace_studio.go
 │   │   ├── workspace_studio_test.go
 │   │   ├── write_atomic.go
-│   │   └── write_atomic_test.go
+│   │   ├── write_atomic_test.go
+│   │   ├── write_bot_file.go
+│   │   └── write_bot_file_test.go
 │   ├── clock
 │   │   ├── clock.go
 │   │   └── clock_test.go
@@ -2954,6 +3202,7 @@
 │   │   │   ├── metrics.go
 │   │   │   └── metrics_test.go
 │   │   ├── orgsweep
+│   │   │   ├── purge_completeness_test.go
 │   │   │   ├── sweep.go
 │   │   │   ├── sweep_regex_test.go
 │   │   │   └── sweep_test.go
@@ -2964,6 +3213,7 @@
 │   │   ├── cloudsched_test.go
 │   │   ├── exclusion.go
 │   │   ├── exclusion_test.go
+│   │   ├── intent_selection_test.go
 │   │   ├── intents.go
 │   │   ├── maintenance_round2_test.go
 │   │   ├── maintenance_round4_test.go
@@ -2978,6 +3228,7 @@
 │   │   ├── config.go
 │   │   ├── config_test.go
 │   │   ├── env.go
+│   │   ├── envtrust_belt_test.go
 │   │   ├── logger.go
 │   │   ├── scrub.go
 │   │   ├── scrub_linux.go
@@ -2996,7 +3247,10 @@
 │   │   ├── types.go
 │   │   └── validate.go
 │   ├── connection
+│   │   ├── agent.go
+│   │   ├── agent_test.go
 │   │   ├── catalog.go
+│   │   ├── catalog_baked_test.go
 │   │   ├── catalog_test.go
 │   │   ├── cleartext_test.go
 │   │   ├── connection.go
@@ -3005,21 +3259,34 @@
 │   │   ├── file_store.go
 │   │   ├── local.go
 │   │   ├── local_test.go
+│   │   ├── mongo_store.go
 │   │   ├── resolve.go
 │   │   ├── resolve_test.go
 │   │   ├── store.go
-│   │   └── store_conformance_test.go
+│   │   ├── store_conformance_test.go
+│   │   ├── tier_test.go
+│   │   ├── trigger.go
+│   │   ├── trigger_test.go
+│   │   ├── trust.go
+│   │   └── trust_test.go
 │   ├── connector
 │   │   ├── exec
 │   │   │   ├── exec.go
 │   │   │   ├── exec_test.go
 │   │   │   ├── guard.go
 │   │   │   ├── guard_test.go
+│   │   │   ├── redact_body_test.go
+│   │   │   ├── redact_forms_test.go
 │   │   │   ├── request.go
 │   │   │   ├── response.go
 │   │   │   ├── response_contract_test.go
-│   │   │   └── walk_bounds_test.go
+│   │   │   ├── walk_bounds_test.go
+│   │   │   └── walk_redaction_test.go
+│   │   ├── facade
+│   │   │   ├── facade.go
+│   │   │   └── facade_test.go
 │   │   ├── gen
+│   │   │   ├── decode_node_test.go
 │   │   │   ├── gen.go
 │   │   │   ├── gen_test.go
 │   │   │   ├── naming.go
@@ -3034,16 +3301,20 @@
 │   │   │   └── lock_test.go
 │   │   ├── overlay
 │   │   │   ├── overlay.go
+│   │   │   ├── overlay_fs_test.go
 │   │   │   └── overlay_test.go
 │   │   └── spec
 │   │       ├── io.go
+│   │       ├── io_fs_test.go
 │   │       ├── io_responses_test.go
 │   │       ├── operation.go
 │   │       ├── package.go
 │   │       ├── response_contract.go
 │   │       ├── response_contract_test.go
 │   │       ├── spec.go
-│   │       └── spec_test.go
+│   │       ├── spec_test.go
+│   │       ├── triggers.go
+│   │       └── triggers_test.go
 │   ├── credpool
 │   │   ├── apikey_test.go
 │   │   ├── broker.go
@@ -3075,6 +3346,8 @@
 │   │   ├── author_document_test.go
 │   │   ├── boardmongo
 │   │   │   ├── admin.go
+│   │   │   ├── card_grant_conformance_test.go
+│   │   │   ├── card_grant_unit_test.go
 │   │   │   ├── conformance_test.go
 │   │   │   ├── consume_receipt_test.go
 │   │   │   ├── coordinator.go
@@ -3087,6 +3360,7 @@
 │   │   │   ├── renew_after_release_conformance_test.go
 │   │   │   ├── replace_scope_unit_test.go
 │   │   │   ├── replace_test.go
+│   │   │   ├── run_outcome_conformance_test.go
 │   │   │   ├── scoped_replace_test.go
 │   │   │   ├── store.go
 │   │   │   ├── store_labels_adjust.go
@@ -3117,13 +3391,14 @@
 │   │   ├── dispatch_setup_race_test.go
 │   │   ├── dispatcher.go
 │   │   ├── dispatcher_test.go
-│   │   ├── engine_*.go  (8 files)
+│   │   ├── engine_*.go  (9 files)
 │   │   ├── external.go
 │   │   ├── external_project_test.go
 │   │   ├── heartbeat_store.go
 │   │   ├── heartbeat_store_test.go
 │   │   ├── heartbeat_test.go
 │   │   ├── hooks.go
+│   │   ├── hooks_drain_bound_test.go
 │   │   ├── hooks_lifecycle_test.go
 │   │   ├── hooks_test.go
 │   │   ├── http.go
@@ -3150,14 +3425,19 @@
 │   │   │   ├── board.go
 │   │   │   ├── board_test.go
 │   │   │   ├── boardops
+│   │   │   │   ├── card_grant_test.go
 │   │   │   │   ├── labels_adjust_test.go
 │   │   │   │   ├── ops.go
 │   │   │   │   ├── ops_close_terminal_test.go
+│   │   │   │   ├── ops_launch_args_test.go
 │   │   │   │   └── ops_test.go
 │   │   │   ├── boardread_external_test.go
 │   │   │   ├── boardread_test.go
 │   │   │   ├── boardstore.go
 │   │   │   ├── bot_args_test.go
+│   │   │   ├── card_grant.go
+│   │   │   ├── card_grant_test.go
+│   │   │   ├── card_launch_args.go
 │   │   │   ├── claim_for_launch_lease_test.go
 │   │   │   ├── claim_launch_test.go
 │   │   │   ├── comment_dispatch_test.go
@@ -3167,30 +3447,16 @@
 │   │   │   ├── field_management_test.go
 │   │   │   ├── giveup_launch_test.go
 │   │   │   ├── http.go
-│   │   │   ├── http_bot_args_test.go
-│   │   │   ├── http_test.go
+│   │   │   ├── http_*.go  (5 files)
 │   │   │   ├── index_write_sweep_test.go
 │   │   │   ├── issue.go
 │   │   │   ├── labels_adjust.go
 │   │   │   ├── reconcile.go
-│   │   │   ├── reconcile_errors_test.go
-│   │   │   ├── reconcile_reattack_test.go
-│   │   │   ├── reconcile_round3_test.go
-│   │   │   ├── reconcile_round4_test.go
-│   │   │   ├── reconcile_test.go
+│   │   │   ├── reconcile_*.go  (5 files)
 │   │   │   ├── state_guard.go
 │   │   │   ├── state_management_test.go
 │   │   │   ├── store.go
-│   │   │   ├── store_board.go
-│   │   │   ├── store_board_test.go
-│   │   │   ├── store_events.go
-│   │   │   ├── store_fields.go
-│   │   │   ├── store_index.go
-│   │   │   ├── store_issues.go
-│   │   │   ├── store_labels.go
-│   │   │   ├── store_lifecycle.go
-│   │   │   ├── store_reaper.go
-│   │   │   ├── store_test.go
+│   │   │   ├── store_*.go  (10 files)
 │   │   │   ├── subscribe.go
 │   │   │   ├── subscribe_test.go
 │   │   │   ├── ticket_contract.go
@@ -3332,10 +3598,13 @@
 │   │   │   ├── json_integer_test.go
 │   │   │   ├── keep_comments.go
 │   │   │   ├── literal_readback_test.go
+│   │   │   ├── markers.go
+│   │   │   ├── markers_test.go
 │   │   │   ├── positions_breaks_test.go
 │   │   │   ├── positions_test.go
 │   │   │   ├── promptref_breaks_test.go
 │   │   │   ├── promptref_clip_test.go
+│   │   │   ├── property_positions_test.go
 │   │   │   ├── read_budget_test.go
 │   │   │   ├── refused_bodies_test.go
 │   │   │   ├── remap.go
@@ -3367,6 +3636,7 @@
 │   │   │   └── docfences_test.go
 │   │   ├── expr
 │   │   │   ├── arity_test.go
+│   │   │   ├── budget_test.go
 │   │   │   ├── combinators_test.go
 │   │   │   ├── expr.go
 │   │   │   ├── expr_test.go
@@ -3374,6 +3644,7 @@
 │   │   │   ├── overflow_test.go
 │   │   │   └── snapshot.go
 │   │   ├── fix
+│   │   │   ├── excerpt_test.go
 │   │   │   ├── fix.go
 │   │   │   └── fix_test.go
 │   │   ├── internal
@@ -3394,14 +3665,16 @@
 │   │   │   ├── budget_ceiling_test.go
 │   │   │   ├── budget_override.go
 │   │   │   ├── budget_override_test.go
+│   │   │   ├── codex_tools_fireset_test.go
 │   │   │   ├── compile.go
-│   │   │   ├── compile_*.go  (16 files)
+│   │   │   ├── compile_*.go  (19 files)
 │   │   │   ├── compress_test.go
 │   │   │   ├── compute_builtin_arity_test.go
 │   │   │   ├── compute_when_test.go
 │   │   │   ├── contracts.go
 │   │   │   ├── cursor_resolve_test.go
 │   │   │   ├── cursors_test.go
+│   │   │   ├── deliverables_test.go
 │   │   │   ├── diag_*.go  (7 files)
 │   │   │   ├── diagnostics_codes.go
 │   │   │   ├── docs_snippets_contract_test.go
@@ -3424,6 +3697,7 @@
 │   │   │   ├── expand_linear_test.go
 │   │   │   ├── expanded_edge_positions_test.go
 │   │   │   ├── expansion_echo_test.go
+│   │   │   ├── expr_budget_test.go
 │   │   │   ├── expr_literal_test.go
 │   │   │   ├── fallback_apply.go
 │   │   │   ├── fallback_apply_policy_test.go
@@ -3450,6 +3724,10 @@
 │   │   │   ├── loop_cap.go
 │   │   │   ├── loop_cap_expression_test.go
 │   │   │   ├── loop_exit_warning_test.go
+│   │   │   ├── loop_guard_test.go
+│   │   │   ├── memory.go
+│   │   │   ├── memory_global_write_test.go
+│   │   │   ├── memory_test.go
 │   │   │   ├── memory_validate_test.go
 │   │   │   ├── memory_visibility_test.go
 │   │   │   ├── mermaid.go
@@ -3466,6 +3744,7 @@
 │   │   │   ├── prompt_*.go  (7 files)
 │   │   │   ├── quoted_ref_severity_test.go
 │   │   │   ├── r2_probe_nonstring_test.go
+│   │   │   ├── recipe_kind.go
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
 │   │   │   ├── repo_devbox_test.go
@@ -3475,6 +3754,7 @@
 │   │   │   ├── sandbox.go
 │   │   │   ├── sandbox_network_compile_test.go
 │   │   │   ├── sandbox_test.go
+│   │   │   ├── secret_sinks_test.go
 │   │   │   ├── secrets_test.go
 │   │   │   ├── subbot_author_test.go
 │   │   │   ├── subbot_test.go
@@ -3487,7 +3767,7 @@
 │   │   │   ├── uses_llm.go
 │   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (59 files)
+│   │   │   ├── validate_*.go  (63 files)
 │   │   │   ├── value_diag_positions_test.go
 │   │   │   ├── var_value.go
 │   │   │   ├── verified_action_test.go
@@ -3533,6 +3813,8 @@
 │   │   │   ├── list_element_test.go
 │   │   │   ├── list_line_end_test.go
 │   │   │   ├── lists_more_test.go
+│   │   │   ├── loop_cap_budget_test.go
+│   │   │   ├── open_blocks_test.go
 │   │   │   ├── parser.go
 │   │   │   ├── parser_*.go  (33 files)
 │   │   │   ├── parsertest
@@ -3546,6 +3828,7 @@
 │   │   │   ├── prompt_body.go
 │   │   │   ├── prompt_body_profile_test.go
 │   │   │   ├── prompt_body_test.go
+│   │   │   ├── property_spans_test.go
 │   │   │   ├── race_disabled_test.go
 │   │   │   ├── race_enabled_test.go
 │   │   │   ├── read_budget_test.go
@@ -3553,12 +3836,18 @@
 │   │   │   ├── report.go
 │   │   │   ├── report_flood_test.go
 │   │   │   ├── report_test.go
+│   │   │   ├── secret_sinks_test.go
 │   │   │   ├── token.go
 │   │   │   ├── utf8_test.go
 │   │   │   ├── var_constraints_test.go
 │   │   │   ├── writable_json.go
 │   │   │   ├── writable_json_test.go
 │   │   │   └── yaml_list_test.go
+│   │   ├── readbudget
+│   │   │   └── readbudget.go
+│   │   ├── secretsink
+│   │   │   ├── secretsink.go
+│   │   │   └── secretsink_test.go
 │   │   ├── spec
 │   │   │   ├── author_reference.go
 │   │   │   ├── author_reference_test.go
@@ -3569,6 +3858,7 @@
 │   │   │   ├── conformance_profile_since_test.go
 │   │   │   ├── conformance_profile_test.go
 │   │   │   ├── conformance_prompt_ref_test.go
+│   │   │   ├── conformance_spans_test.go
 │   │   │   ├── conformance_structure_test.go
 │   │   │   ├── conformance_test.go
 │   │   │   ├── contracts.go
@@ -3696,6 +3986,7 @@
 │   │   │       └── unittest.go
 │   │   ├── unparse
 │   │   │   ├── auto_memory_test.go
+│   │   │   ├── bench_author_test.go
 │   │   │   ├── block_scalar_test.go
 │   │   │   ├── capabilities_test.go
 │   │   │   ├── collection_literal_test.go
@@ -3708,6 +3999,7 @@
 │   │   │   ├── contracts_test.go
 │   │   │   ├── cursors_test.go
 │   │   │   ├── declared_tools_test.go
+│   │   │   ├── deliverables_test.go
 │   │   │   ├── description_test.go
 │   │   │   ├── directive_window_test.go
 │   │   │   ├── env_expansion_test.go
@@ -3755,6 +4047,8 @@
 │   │   ├── export_test.go
 │   │   ├── hook.go
 │   │   ├── http.go
+│   │   ├── http_error.go
+│   │   ├── http_error_test.go
 │   │   ├── http_test.go
 │   │   ├── node_error_test.go
 │   │   ├── scrub.go
@@ -3786,6 +4080,7 @@
 │   │   ├── connection_sealer.go
 │   │   ├── connection_store.go
 │   │   ├── connection_store_cas_test.go
+│   │   ├── connection_store_expiring_test.go
 │   │   ├── declared.go
 │   │   ├── event_map.go
 │   │   ├── event_map_test.go
@@ -3887,6 +4182,9 @@
 │   │   │   └── status_assert_test.go
 │   │   ├── hook_refusal_message_test.go
 │   │   ├── hook_refused.go
+│   │   ├── http_write.go
+│   │   ├── http_write_test.go
+│   │   ├── http_write_timeout_test.go
 │   │   ├── installation_label.go
 │   │   ├── installation_label_test.go
 │   │   ├── issue_refs.go
@@ -3903,21 +4201,16 @@
 │   │   ├── permission_error_test.go
 │   │   ├── preview.go
 │   │   ├── preview_test.go
-│   │   ├── project_bot.go
-│   │   ├── project_bot_rotate.go
-│   │   ├── project_bot_rotate_test.go
-│   │   ├── project_bot_test.go
-│   │   ├── provision_approval_store.go
+│   │   ├── project_*.go  (8 files)
+│   │   ├── provider_redirect_test.go
+│   │   ├── provision_*.go  (10 files)
 │   │   ├── quickactions.go
 │   │   ├── quickactions_test.go
 │   │   ├── rate_limit_test.go
 │   │   ├── refresh.go
 │   │   ├── refresh_slug_test.go
 │   │   ├── refresh_test.go
-│   │   ├── repo_creator.go
-│   │   ├── repo_integration_store.go
-│   │   ├── repo_integration_store_test.go
-│   │   ├── repo_url.go
+│   │   ├── repo_*.go  (5 files)
 │   │   ├── reviews.go
 │   │   ├── reviews_test.go
 │   │   ├── rv_*.go  (5 files)
@@ -3942,11 +4235,14 @@
 │   │   ├── diffloc_test.go
 │   │   ├── git.go
 │   │   ├── git_test.go
+│   │   ├── gitenv_belt_test.go
 │   │   ├── hooks_test.go
 │   │   ├── log.go
 │   │   ├── no_auto_maintenance_test.go
 │   │   ├── numstat.go
 │   │   ├── numstat_test.go
+│   │   ├── pinned.go
+│   │   ├── pinned_test.go
 │   │   ├── provenance.go
 │   │   ├── range.go
 │   │   ├── range_test.go
@@ -3959,6 +4255,8 @@
 │   │   ├── test_callers_test.go
 │   │   └── worktree_file.go
 │   ├── identity
+│   │   ├── bulk_decode.go
+│   │   ├── bulk_decode_test.go
 │   │   ├── bulkget_test.go
 │   │   ├── config_editor_test.go
 │   │   ├── lint_test.go
@@ -4003,7 +4301,10 @@
 │   │   │   ├── proc.go
 │   │   │   ├── proc_unix.go
 │   │   │   ├── proc_unix_test.go
-│   │   │   └── proc_windows.go
+│   │   │   ├── proc_windows.go
+│   │   │   ├── waitdelay.go
+│   │   │   ├── waitdelay_reach_test.go
+│   │   │   └── waitdelay_test.go
 │   │   ├── shellquote
 │   │   │   ├── shellquote.go
 │   │   │   └── shellquote_test.go
@@ -4012,6 +4313,7 @@
 │   │   │   ├── memory_test.go
 │   │   │   ├── mongo.go
 │   │   │   ├── mongo_test.go
+│   │   │   ├── snapshot.go
 │   │   │   ├── ticket.go
 │   │   │   ├── ticket_mongo.go
 │   │   │   └── ticket_test.go
@@ -4029,8 +4331,13 @@
 │   │   ├── markdown_test.go
 │   │   ├── quota.go
 │   │   ├── scope.go
-│   │   └── scope_test.go
+│   │   ├── scope_test.go
+│   │   ├── write_authority.go
+│   │   ├── write_authority_class_test.go
+│   │   └── write_authority_test.go
 │   ├── lease
+│   │   ├── handover_test.go
+│   │   ├── health.go
 │   │   ├── lease.go
 │   │   ├── lease_test.go
 │   │   ├── memory.go
@@ -4042,6 +4349,7 @@
 │   │   ├── ledger.go
 │   │   ├── ledger_test.go
 │   │   ├── status.go
+│   │   ├── target_reachability_test.go
 │   │   ├── taskenum.go
 │   │   ├── taskenum_test.go
 │   │   ├── track.go
@@ -4052,6 +4360,7 @@
 │   │   ├── env.go
 │   │   ├── env_test.go
 │   │   ├── policy.go
+│   │   ├── policy_composed_pair_test.go
 │   │   ├── policy_test.go
 │   │   ├── projections_test.go
 │   │   ├── stages.go
@@ -4062,7 +4371,8 @@
 │   │   ├── hook_test.go
 │   │   ├── json.go
 │   │   ├── log.go
-│   │   └── log_test.go
+│   │   ├── log_test.go
+│   │   └── redactor_test.go
 │   ├── mail
 │   │   ├── log.go
 │   │   ├── mail.go
@@ -4079,9 +4389,13 @@
 │   │   ├── sort_test.go
 │   │   ├── types.go
 │   │   └── visibility_test.go
+│   ├── memlimit
+│   │   ├── memlimit.go
+│   │   └── memlimit_test.go
 │   ├── memory
 │   │   ├── export_test.go
 │   │   ├── fsstore.go
+│   │   ├── global_gate_test.go
 │   │   ├── index.go
 │   │   ├── index_test.go
 │   │   ├── memory.go
@@ -4107,11 +4421,15 @@
 │   │   ├── completion.go
 │   │   ├── completion_test.go
 │   │   ├── deliver_pin_test.go
+│   │   ├── deliver_proxy_test.go
+│   │   ├── env.go
+│   │   ├── final_answer_order_test.go
 │   │   ├── sign.go
 │   │   └── sign_test.go
 │   ├── operatormcp
 │   │   ├── author_document_test.go
 │   │   ├── author_document_validate_test.go
+│   │   ├── local_validate_connectors_test.go
 │   │   ├── operatormcp.go
 │   │   ├── operatormcp_test.go
 │   │   ├── spawn.go
@@ -4146,6 +4464,7 @@
 │   │   ├── maintenance.go
 │   │   ├── maintenance_test.go
 │   │   ├── platformcfg.go
+│   │   ├── platformcfg_engine_injected_test.go
 │   │   ├── platformcfg_infra_test.go
 │   │   ├── platformcfg_routing_test.go
 │   │   ├── platformcfg_test.go
@@ -4206,6 +4525,7 @@
 │   │   ├── publish_race_test.go
 │   │   └── resolve.go
 │   ├── projectenv
+│   │   ├── expansion_reference_crosscheck_test.go
 │   │   ├── projectenv.go
 │   │   └── projectenv_test.go
 │   ├── queue
@@ -4215,6 +4535,8 @@
 │   │   ├── nats
 │   │   │   ├── command_identity.go
 │   │   │   ├── command_identity_test.go
+│   │   │   ├── connect_wait.go
+│   │   │   ├── connect_wait_test.go
 │   │   │   ├── dlq.go
 │   │   │   ├── errors.go
 │   │   │   ├── errors_test.go
@@ -4233,6 +4555,7 @@
 │   │   ├── types.go
 │   │   └── types_test.go
 │   ├── reliability
+│   │   ├── divergence_ledger_test.go
 │   │   ├── rollout.go
 │   │   └── rollout_test.go
 │   ├── repograph
@@ -4262,6 +4585,7 @@
 │   │   ├── policy.go
 │   │   └── policy_test.go
 │   ├── reviewtopology
+│   │   ├── frozen_pin_test.go
 │   │   ├── plan_review_test.go
 │   │   ├── resolve.go
 │   │   └── resolve_test.go
@@ -4298,6 +4622,7 @@
 │   │   ├── git_identity_test.go
 │   │   ├── gitproxy.go
 │   │   ├── gitproxy_test.go
+│   │   ├── gitws_drain_bound_test.go
 │   │   ├── gitws_no_auto_maintenance_test.go
 │   │   ├── health.go
 │   │   ├── health_test.go
@@ -4308,7 +4633,7 @@
 │   │   ├── lease_hold_test.go
 │   │   ├── lock_delivery_test.go
 │   │   ├── loop.go
-│   │   ├── loop_*.go  (20 files)
+│   │   ├── loop_*.go  (22 files)
 │   │   ├── main_test.go
 │   │   ├── metrics_test.go
 │   │   ├── mirror_cwd_guard_test.go
@@ -4325,6 +4650,7 @@
 │   │   ├── restore_bank_test.go
 │   │   ├── resume_guard_test.go
 │   │   ├── rollout_test.go
+│   │   ├── rotation_secretguard_test.go
 │   │   ├── route_model_e2e_test.go
 │   │   ├── route_model_test.go
 │   │   ├── route_spend_label_test.go
@@ -4335,6 +4661,7 @@
 │   │   ├── sandbox_registry_test.go
 │   │   ├── schema_rollout_integration_test.go
 │   │   ├── scratch_consent_test.go
+│   │   ├── secretguard_handle.go
 │   │   ├── secrets_mount_test.go
 │   │   ├── steer.go
 │   │   ├── steer_test.go
@@ -4347,6 +4674,7 @@
 │   │   ├── superseded_window_test.go
 │   │   ├── testdata
 │   │   │   └── walk-node-death.bot
+│   │   ├── trust_wire_test.go
 │   │   ├── typed_fail_test.go
 │   │   ├── unloadable_ir_test.go
 │   │   ├── usage_cap.go
@@ -4398,8 +4726,8 @@
 │   │   ├── ask_secret_test.go
 │   │   ├── async_answers.go
 │   │   ├── async_ask_secret_test.go
-│   │   ├── attachment_path.go
-│   │   ├── attachment_path_test.go
+│   │   ├── attachment_*.go  (5 files)
+│   │   ├── attachments_*.go  (5 files)
 │   │   ├── attempt.go
 │   │   ├── await_answers_node.go
 │   │   ├── await_answers_park_test.go
@@ -4431,6 +4759,7 @@
 │   │   ├── convergence_freshness_test.go
 │   │   ├── convergence_order_test.go
 │   │   ├── copy_outputs_test.go
+│   │   ├── cut_classification_test.go
 │   │   ├── declared_empty_tools_test.go
 │   │   ├── devbox_host.go
 │   │   ├── devbox_host_lock_test.go
@@ -4439,7 +4768,7 @@
 │   │   ├── edges.go
 │   │   ├── else_edge_test.go
 │   │   ├── engine.go
-│   │   ├── engine_*.go  (16 files)
+│   │   ├── engine_*.go  (17 files)
 │   │   ├── errors.go
 │   │   ├── event_content_test.go
 │   │   ├── events.go
@@ -4448,8 +4777,10 @@
 │   │   ├── expr_eval.go
 │   │   ├── fail_message_input_scope_test.go
 │   │   ├── failed_node_spend_test.go
+│   │   ├── failure_record.go
+│   │   ├── failure_record_test.go
 │   │   ├── fallbacks_plantime_test.go
-│   │   ├── fan_*.go  (9 files)
+│   │   ├── fan_*.go  (10 files)
 │   │   ├── fixer_delivery_preflight_test.go
 │   │   ├── foreach_test.go
 │   │   ├── fork_inputs_judgment_test.go
@@ -4488,6 +4819,7 @@
 │   │   ├── override_test.go
 │   │   ├── owned_*.go  (5 files)
 │   │   ├── parallel_checkpoint.go
+│   │   ├── parallel_checkpoint_coalesce_test.go
 │   │   ├── parallel_test.go
 │   │   ├── pause.go
 │   │   ├── pause_drain_scope_test.go
@@ -4507,6 +4839,8 @@
 │   │   ├── recorded_sources_test.go
 │   │   ├── recovery
 │   │   │   ├── capability_test.go
+│   │   │   ├── cut_guarantee_matrix_test.go
+│   │   │   ├── node_timeout_classification_test.go
 │   │   │   ├── recovery.go
 │   │   │   ├── recovery_test.go
 │   │   │   ├── sandbox_unknown_end_test.go
@@ -4530,9 +4864,11 @@
 │   │   ├── runner_home_scope_test.go
 │   │   ├── runner_pool_doc_test.go
 │   │   ├── sandbox.go
-│   │   ├── sandbox_*.go  (29 files)
+│   │   ├── sandbox_*.go  (53 files)
 │   │   ├── schema_reask_test.go
-│   │   ├── scratch_*.go  (6 files)
+│   │   ├── scratch_*.go  (8 files)
+│   │   ├── secret_grants.go
+│   │   ├── secret_grants_test.go
 │   │   ├── secured_renovacy_ledger_exit_test.go
 │   │   ├── session_ledger_test.go
 │   │   ├── session_test.go
@@ -4592,9 +4928,12 @@
 │   │   ├── worktree_pool_test.go
 │   │   ├── worktree_refusal.go
 │   │   ├── worktree_refusal_test.go
+│   │   ├── worktree_registration_test.go
 │   │   ├── worktree_subbot_child_test.go
 │   │   └── worktree_test.go
 │   ├── runview
+│   │   ├── admin_list.go
+│   │   ├── admin_list_test.go
 │   │   ├── alert_human_wait_test.go
 │   │   ├── author_document_test.go
 │   │   ├── bank_state_test.go
@@ -4605,18 +4944,17 @@
 │   │   ├── bundle_prompts_fifo_test.go
 │   │   ├── bundle_prompts_stray_test.go
 │   │   ├── bundle_prompts_test.go
+│   │   ├── claw_subagent_wiring_test.go
 │   │   ├── compile.go
-│   │   ├── compile_copy_test.go
-│   │   ├── compile_promotion_test.go
-│   │   ├── compile_rootcut_test.go
-│   │   ├── compile_sibling_promotion_test.go
+│   │   ├── compile_*.go  (5 files)
 │   │   ├── conflict_agent.go
 │   │   ├── conflict_agent_wire_test.go
 │   │   ├── conflict_test.go
+│   │   ├── connector_admission_test.go
 │   │   ├── credential_error.go
 │   │   ├── credential_preview.go
 │   │   ├── detached.go
-│   │   ├── detached_*.go  (6 files)
+│   │   ├── detached_*.go  (7 files)
 │   │   ├── diagnostic.go
 │   │   ├── diagnostic_test.go
 │   │   ├── engine_options_bundle_test.go
@@ -4634,12 +4972,9 @@
 │   │   ├── file_log_source.go
 │   │   ├── file_log_source_test.go
 │   │   ├── fork.go
-│   │   ├── fork_*.go  (7 files)
+│   │   ├── fork_*.go  (8 files)
 │   │   ├── guard_vars_test.go
-│   │   ├── launch_runid_test.go
-│   │   ├── launch_secrets_test.go
-│   │   ├── launch_var_constraints.go
-│   │   ├── launch_var_constraints_test.go
+│   │   ├── launch_*.go  (8 files)
 │   │   ├── legacy_digest_test.go
 │   │   ├── localconnectors.go
 │   │   ├── localconnectors_test.go
@@ -4653,10 +4988,7 @@
 │   │   ├── merge_remote_temp_test.go
 │   │   ├── merge_remote_test.go
 │   │   ├── mirror_cwd_guard_test.go
-│   │   ├── model_override_validation.go
-│   │   ├── model_override_validation_test.go
-│   │   ├── model_overrides_fold.go
-│   │   ├── model_overrides_fold_test.go
+│   │   ├── model_*.go  (6 files)
 │   │   ├── node_changes.go
 │   │   ├── node_changes_test.go
 │   │   ├── periodic_reconcile_test.go
@@ -4665,6 +4997,8 @@
 │   │   ├── pipeline_scheduler.go
 │   │   ├── pool_guard.go
 │   │   ├── pool_guard_test.go
+│   │   ├── promote_handoff.go
+│   │   ├── promote_handoff_test.go
 │   │   ├── queue_error.go
 │   │   ├── queued_test.go
 │   │   ├── reattach_test.go
@@ -4672,7 +5006,7 @@
 │   │   ├── reconcile_no_authority_test.go
 │   │   ├── reconcile_shutdown_test.go
 │   │   ├── refusal_remedy_test.go
-│   │   ├── resume_*.go  (7 files)
+│   │   ├── resume_*.go  (8 files)
 │   │   ├── rewind.go
 │   │   ├── rewind_*.go  (9 files)
 │   │   ├── run_persisted.go
@@ -4692,6 +5026,7 @@
 │   │   │   ├── replay.go
 │   │   │   ├── tail.go
 │   │   │   └── tail_test.go
+│   │   ├── sandbox_image_warning_test.go
 │   │   ├── service.go
 │   │   ├── service_*.go  (40 files)
 │   │   ├── settled_floor_test.go
@@ -4701,6 +5036,7 @@
 │   │   ├── snapshot_cred_test.go
 │   │   ├── snapshot_mongo_decode_test.go
 │   │   ├── snapshot_test.go
+│   │   ├── source_kind_class_test.go
 │   │   ├── source_kind_test.go
 │   │   ├── steer.go
 │   │   ├── subbot.go
@@ -4722,6 +5058,8 @@
 │   │   ├── mongo_test.go
 │   │   └── store.go
 │   ├── sandbox
+│   │   ├── bindsourcecheck.go
+│   │   ├── bindsourcecheck_test.go
 │   │   ├── completion.go
 │   │   ├── completion_linux_test.go
 │   │   ├── completion_test.go
@@ -4730,14 +5068,19 @@
 │   │   │   ├── devcontainer_test.go
 │   │   │   ├── expand.go
 │   │   │   ├── expand_test.go
-│   │   │   └── spec.go
+│   │   │   ├── image_env_disposition_test.go
+│   │   │   ├── spec.go
+│   │   │   └── spec_dotenv_guard_test.go
 │   │   ├── docker
 │   │   │   ├── build.go
 │   │   │   ├── build_test.go
 │   │   │   ├── driver.go
+│   │   │   ├── driver_bindsource_test.go
 │   │   │   ├── driver_nixvol_test.go
 │   │   │   ├── driver_test.go
 │   │   │   ├── hostnetwork_test.go
+│   │   │   ├── image_env.go
+│   │   │   ├── image_env_test.go
 │   │   │   ├── integration_test.go
 │   │   │   ├── orphans.go
 │   │   │   ├── orphans_test.go
@@ -4748,6 +5091,7 @@
 │   │   │   ├── runtime.go
 │   │   │   └── validate.go
 │   │   ├── errors.go
+│   │   ├── exec_drain_bound_test.go
 │   │   ├── exec_helpers.go
 │   │   ├── execwrite.go
 │   │   ├── execwrite_internal_test.go
@@ -4788,6 +5132,8 @@
 │   │   │   ├── runtime.go
 │   │   │   ├── runtime_wait_test.go
 │   │   │   ├── secrets_ca_test.go
+│   │   │   ├── seed_fence_test.go
+│   │   │   ├── seed_test.go
 │   │   │   ├── stderr_capture_test.go
 │   │   │   ├── strings.go
 │   │   │   ├── validate.go
@@ -4835,6 +5181,7 @@
 │   │   ├── gate.go
 │   │   ├── gate_test.go
 │   │   ├── guard.go
+│   │   ├── guard_drain_bound_test.go
 │   │   ├── guard_test.go
 │   │   ├── live_runs.go
 │   │   ├── live_runs_test.go
@@ -4846,6 +5193,7 @@
 │   │   └── tick_record_test.go
 │   ├── secrets
 │   │   ├── bindings.go
+│   │   ├── bindings_conformance_test.go
 │   │   ├── bindings_test.go
 │   │   ├── byok.go
 │   │   ├── byok_*.go  (8 files)
@@ -4853,6 +5201,7 @@
 │   │   ├── credential_shape.go
 │   │   ├── credential_shape_test.go
 │   │   ├── credentials.go
+│   │   ├── credentials_allow_private_test.go
 │   │   ├── credentials_pinned_test.go
 │   │   ├── credentials_test.go
 │   │   ├── files.go
@@ -4872,6 +5221,7 @@
 │   │   ├── required_test.go
 │   │   ├── resolve_local.go
 │   │   ├── run_secrets.go
+│   │   ├── run_secrets_tenant_scope_test.go
 │   │   ├── run_secrets_test.go
 │   │   ├── sealer.go
 │   │   ├── sealer_test.go
@@ -4881,11 +5231,12 @@
 │   ├── secure
 │   │   └── httpdial
 │   │       ├── httpdial.go
-│   │       └── httpdial_test.go
+│   │       ├── httpdial_test.go
+│   │       └── proxy_test.go
 │   ├── server
-│   │   ├── admin_*.go  (18 files)
+│   │   ├── admin_*.go  (20 files)
 │   │   ├── agent_binding_cookie_test.go
-│   │   ├── assistant_*.go  (47 files)
+│   │   ├── assistant_*.go  (49 files)
 │   │   ├── audit_helper.go
 │   │   ├── audit_routes_test.go
 │   │   ├── auth_*.go  (20 files)
@@ -4894,6 +5245,7 @@
 │   │   ├── author_trust.go
 │   │   ├── author_trust_test.go
 │   │   ├── authoring_digest_test.go
+│   │   ├── authoring_lock_bridge_test.go
 │   │   ├── backends_routes.go
 │   │   ├── backends_routes_test.go
 │   │   ├── background.go
@@ -4902,18 +5254,24 @@
 │   │   ├── background_join_test.go
 │   │   ├── board_*.go  (23 files)
 │   │   ├── boarddispatch.go
-│   │   ├── boarddispatch_*.go  (8 files)
-│   │   ├── bot_*.go  (18 files)
+│   │   ├── boarddispatch_*.go  (9 files)
+│   │   ├── bot_*.go  (24 files)
 │   │   ├── bots_*.go  (10 files)
 │   │   ├── brand_routes.go
 │   │   ├── brand_routes_test.go
 │   │   ├── byok_*.go  (5 files)
+│   │   ├── card_grant_test.go
+│   │   ├── card_lane_launch_shape_test.go
+│   │   ├── card_var_layers.go
+│   │   ├── cli_route_reachability_test.go
 │   │   ├── cloudpublisher
 │   │   │   ├── account_forfait_test.go
+│   │   │   ├── apikey_ceiling_reserve_test.go
 │   │   │   ├── apikey_skip_test.go
 │   │   │   ├── app_committer_test.go
 │   │   │   ├── audience.go
 │   │   │   ├── audience_test.go
+│   │   │   ├── bot_source_tier_wire_test.go
 │   │   │   ├── budget_floor_test.go
 │   │   │   ├── bundle_*.go  (6 files)
 │   │   │   ├── contributions.go
@@ -4934,6 +5292,7 @@
 │   │   │   ├── forfait_window_fallback_test.go
 │   │   │   ├── gosafe_test.go
 │   │   │   ├── ir_offload_test.go
+│   │   │   ├── launch_attachments_test.go
 │   │   │   ├── llm_fallback_policy_test.go
 │   │   │   ├── oauth_fallback_test.go
 │   │   │   ├── oauth_record_ref_test.go
@@ -4951,24 +5310,33 @@
 │   │   │   ├── provider_allowlist_test.go
 │   │   │   ├── provider_coverage_test.go
 │   │   │   ├── publisher.go
-│   │   │   ├── publisher_*.go  (27 files)
+│   │   │   ├── publisher_*.go  (28 files)
 │   │   │   ├── refused_pinned_key_test.go
 │   │   │   ├── repo_audience_test.go
 │   │   │   ├── require_llm_credential_test.go
+│   │   │   ├── resume_frozen_pin_test.go
 │   │   │   ├── resume_trust_test.go
 │   │   │   ├── revi_integration_acceptance_test.go
 │   │   │   ├── routing_parity_integration_test.go
 │   │   │   ├── runner_pool_test.go
+│   │   │   ├── schedule_fence_mongo_test.go
 │   │   │   ├── schedule_fence_test.go
 │   │   │   ├── shared_tier_policy.go
+│   │   │   ├── skipped_creds.go
+│   │   │   ├── skipped_creds_test.go
 │   │   │   ├── skipped_reopens_test.go
 │   │   │   ├── stamp_narrowing_test.go
 │   │   │   ├── steer.go
 │   │   │   ├── testmain_test.go
+│   │   │   ├── unfunded_refusal.go
+│   │   │   ├── unfunded_refusal_test.go
 │   │   │   ├── untrusted_workspace_secrets_test.go
 │   │   │   └── wants_failopen_test.go
 │   │   ├── cloudsched_forge_test.go
 │   │   ├── config_*.go  (8 files)
+│   │   ├── connection_patch_conflict_test.go
+│   │   ├── connection_routes.go
+│   │   ├── connection_routes_test.go
 │   │   ├── cookie_protocol.go
 │   │   ├── cors_vary_test.go
 │   │   ├── cost_preview.go
@@ -4983,22 +5351,29 @@
 │   │   ├── credpool_sweeper.go
 │   │   ├── derivation_gate.go
 │   │   ├── desktop_sso.go
+│   │   ├── desktop_sso_cross_provider_test.go
 │   │   ├── desktop_sso_test.go
 │   │   ├── disable_auth_switch_test.go
 │   │   ├── dlq_admin_routes_test.go
+│   │   ├── docs_rest_reference_test.go
 │   │   ├── effort.go
 │   │   ├── effort_claude5_test.go
 │   │   ├── effort_test.go
 │   │   ├── embedded_recipe.go
-│   │   ├── engine_*.go  (6 files)
+│   │   ├── engine_*.go  (7 files)
 │   │   ├── env_duration_warning_test.go
+│   │   ├── env_operator.go
+│   │   ├── envtrust_belt_test.go
+│   │   ├── error_chokepoint_test.go
+│   │   ├── error_recorder_test.go
 │   │   ├── examples_unit_test.go
+│   │   ├── failed_read_answers_its_failure_test.go
 │   │   ├── filesystem.go
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
 │   │   ├── floor_short_test.go
-│   │   ├── forge_*.go  (102 files)
+│   │   ├── forge_*.go  (109 files)
 │   │   ├── gateway_key_inert_test.go
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
@@ -5010,28 +5385,30 @@
 │   │   ├── hook_base_parity_test.go
 │   │   ├── hub.go
 │   │   ├── hub_origin_test.go
+│   │   ├── id_route_enumeration_test.go
 │   │   ├── identity_kind_test.go
 │   │   ├── invitation_role_cap_test.go
 │   │   ├── invitations_e2e_test.go
 │   │   ├── invocation_dispatch.go
 │   │   ├── invocation_dispatch_provenance_test.go
 │   │   ├── invocation_dispatch_test.go
+│   │   ├── issue_scope_test.go
 │   │   ├── iterion_home_readers_test.go
 │   │   ├── launch_*.go  (8 files)
+│   │   ├── lease_handover_test.go
 │   │   ├── leases.go
 │   │   ├── leases_class_test.go
 │   │   ├── limits.go
 │   │   ├── limits_test.go
 │   │   ├── local_*.go  (5 files)
+│   │   ├── machine_lane_pin_visibility_test.go
 │   │   ├── main_test.go
 │   │   ├── maintenance.go
 │   │   ├── maintenance_*.go  (6 files)
 │   │   ├── marketplace_*.go  (6 files)
-│   │   ├── mcp_board_handler.go
-│   │   ├── mcp_board_handler_test.go
-│   │   ├── mcp_runs_handler.go
-│   │   ├── mcp_runs_handler_test.go
+│   │   ├── mcp_*.go  (6 files)
 │   │   ├── member_rank_target_test.go
+│   │   ├── memory_global_audit_test.go
 │   │   ├── memory_routes.go
 │   │   ├── memory_routes_test.go
 │   │   ├── middleware.go
@@ -5048,20 +5425,17 @@
 │   │   ├── openapi_schema.go
 │   │   ├── openapi_spec.go
 │   │   ├── openapi_test.go
+│   │   ├── openapi_trigger_outcome_test.go
 │   │   ├── opencode_backend_test.go
 │   │   ├── org_*.go  (7 files)
 │   │   ├── orgs_routes.go
 │   │   ├── origin_gate_observability_test.go
 │   │   ├── origin_gate_sweep_test.go
-│   │   ├── outcome_router.go
-│   │   ├── outcome_router_test.go
+│   │   ├── outcome_*.go  (5 files)
 │   │   ├── overlay_doors_test.go
 │   │   ├── password_proof_test.go
 │   │   ├── password_routes.go
-│   │   ├── pat_bearer_e2e_test.go
-│   │   ├── pat_identity_failure_test.go
-│   │   ├── pat_routes.go
-│   │   ├── pat_routes_test.go
+│   │   ├── pat_*.go  (5 files)
 │   │   ├── pipeline_*.go  (25 files)
 │   │   ├── platform_admin_fixture_test.go
 │   │   ├── platform_settings.go
@@ -5088,9 +5462,7 @@
 │   │   ├── r9_fix_verifier_test.go
 │   │   ├── race_disabled_test.go
 │   │   ├── race_enabled_test.go
-│   │   ├── read_budget_counts_test.go
-│   │   ├── read_budget_whole_test.go
-│   │   ├── read_refusal_test.go
+│   │   ├── read_*.go  (5 files)
 │   │   ├── reattack_unit_test.go
 │   │   ├── recovery_passive_test.go
 │   │   ├── resume_source.go
@@ -5107,12 +5479,11 @@
 │   │   ├── runner_pool_reconciler.go
 │   │   ├── runner_pool_reconciler_test.go
 │   │   ├── runs.go
-│   │   ├── runs_*.go  (82 files)
+│   │   ├── runs_*.go  (84 files)
 │   │   ├── runview_fixture_test.go
 │   │   ├── safe_origin_test.go
-│   │   ├── schedule_outcome.go
-│   │   ├── schedule_outcome_test.go
 │   │   ├── schedules_*.go  (6 files)
+│   │   ├── scope_header_test.go
 │   │   ├── scoped_record_org_admin_test.go
 │   │   ├── server.go
 │   │   ├── server_*.go  (24 files)
@@ -5135,14 +5506,14 @@
 │   │   ├── studio_legacy_redirect_test.go
 │   │   ├── superadmin_claim_test.go
 │   │   ├── superseded_test.go
-│   │   ├── team_*.go  (7 files)
+│   │   ├── team_*.go  (10 files)
 │   │   ├── tenant_ctx.go
 │   │   ├── tenant_scope.go
 │   │   ├── tenant_scope_test.go
 │   │   ├── timefmt.go
 │   │   ├── tracing.go
 │   │   ├── tracing_test.go
-│   │   ├── trigger_*.go  (9 files)
+│   │   ├── trigger_*.go  (12 files)
 │   │   ├── triggers_emit_gate_test.go
 │   │   ├── triggers_routes.go
 │   │   ├── triggers_routes_test.go
@@ -5155,23 +5526,26 @@
 │   │   ├── watch_coordinator_fanout_test.go
 │   │   ├── watch_coordinator_test.go
 │   │   ├── watcher.go
-│   │   ├── webhooks_*.go  (52 files)
+│   │   ├── webhook_epoch_test.go
+│   │   ├── webhooks_*.go  (54 files)
 │   │   ├── workspace.go
 │   │   ├── workspace_handoff.go
 │   │   ├── workspace_handoff_test.go
 │   │   ├── workspace_test.go
-│   │   └── ws_*.go  (6 files)
+│   │   └── ws_*.go  (7 files)
 │   ├── sessionboard
 │   │   ├── bot.go
 │   │   ├── coordinator.go
 │   │   ├── coordinator_test.go
 │   │   ├── env.go
+│   │   ├── gateway_pin_test.go
 │   │   ├── sessionboard_test.go
 │   │   ├── spec.go
 │   │   ├── store.go
 │   │   ├── store_env_test.go
 │   │   └── wire_model_test.go
 │   ├── skilllib
+│   │   ├── dir_pages_test.go
 │   │   ├── frontmatter.go
 │   │   ├── frontmatter_test.go
 │   │   ├── store.go
@@ -5201,7 +5575,8 @@
 │   │   │   ├── s3_test.go
 │   │   │   ├── scratch_bank.go
 │   │   │   ├── scratch_bank_notfound_test.go
-│   │   │   └── scratch_bank_test.go
+│   │   │   ├── scratch_bank_test.go
+│   │   │   └── upload_plaintext_test.go
 │   │   ├── capabilities.go
 │   │   ├── capability.go
 │   │   ├── capability_test.go
@@ -5255,6 +5630,7 @@
 │   │   │   ├── irblobs_mediation_test.go
 │   │   │   ├── irblobs_test.go
 │   │   │   ├── memory.go
+│   │   │   ├── memory_global_meter_test.go
 │   │   │   ├── memory_hardening_test.go
 │   │   │   ├── notes.go
 │   │   │   ├── notes_test.go
@@ -5265,9 +5641,11 @@
 │   │   │   ├── plans.go
 │   │   │   ├── plans_test.go
 │   │   │   ├── preserve_unknown.go
+│   │   │   ├── reliability_baseline_cli_test.go
 │   │   │   ├── retry_circuit.go
 │   │   │   ├── retry_circuit_test.go
 │   │   │   ├── route_decisions.go
+│   │   │   ├── run_seq_delete_test.go
 │   │   │   ├── run_version.go
 │   │   │   ├── run_version_test.go
 │   │   │   ├── runfiles.go
@@ -5278,6 +5656,8 @@
 │   │   │   ├── runs_*.go  (6 files)
 │   │   │   ├── schema_ttl_test.go
 │   │   │   ├── scratch_bank.go
+│   │   │   ├── staging.go
+│   │   │   ├── staging_test.go
 │   │   │   ├── store.go
 │   │   │   ├── store_indexes_conflict_test.go
 │   │   │   ├── tags.go
@@ -5313,6 +5693,8 @@
 │   │   ├── runname_test.go
 │   │   ├── spend.go
 │   │   ├── spend_test.go
+│   │   ├── staging.go
+│   │   ├── staging_test.go
 │   │   ├── store.go
 │   │   ├── store_*.go  (14 files)
 │   │   ├── storedir.go
@@ -5385,6 +5767,7 @@
 │   │   └── treenoise_test.go
 │   ├── trigger
 │   │   ├── board_integration_test.go
+│   │   ├── board_promote_launch_context_test.go
 │   │   ├── board_source.go
 │   │   ├── board_source_test.go
 │   │   ├── consume_labels_test.go
@@ -5407,9 +5790,12 @@
 │   │   ├── maintenance_round5_test.go
 │   │   ├── memstore.go
 │   │   ├── mongostore.go
+│   │   ├── mongostore_test.go
+│   │   ├── pin_carriage_test.go
 │   │   ├── plan_routing_test.go
 │   │   ├── provenance_bson_roundtrip_test.go
 │   │   ├── provenance_wiring_test.go
+│   │   ├── run_outcome_store_test.go
 │   │   ├── runoutcome.go
 │   │   ├── runoutcome_node_test.go
 │   │   ├── runoutcome_test.go
@@ -5460,9 +5846,11 @@
 │   ├── webhooks
 │   │   ├── command.go
 │   │   ├── config_slice_durability_test.go
+│   │   ├── config_version_test.go
 │   │   ├── delivery_attempts_test.go
 │   │   ├── delivery_claim_test.go
 │   │   ├── delivery_retry_test.go
+│   │   ├── delivery_run_outcome_test.go
 │   │   ├── generic
 │   │   │   ├── generic.go
 │   │   │   └── generic_test.go
@@ -5488,6 +5876,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── issues.go
 │   │   │   ├── issues_test.go
+│   │   │   ├── mergegroup.go
 │   │   │   ├── note.go
 │   │   │   ├── note_test.go
 │   │   │   ├── parser.go
@@ -5557,8 +5946,12 @@
 │   ├── bump-claw.sh
 │   ├── changelog-gen.mjs
 │   ├── changelog-writer.mjs
+│   ├── chart-check-deps.sh
 │   ├── chart-render-diff.sh
 │   ├── ci
+│   │   ├── arc-canary-verdict.sh
+│   │   ├── arc-kind-probe.sh
+│   │   ├── baked-actions-manifest.sh
 │   │   ├── tap-entry-check.sh
 │   │   ├── tap_values_only.py
 │   │   ├── test-shards-weights.tsv
@@ -5566,14 +5959,16 @@
 │   │   │   ├── main.go
 │   │   │   ├── main_test.go
 │   │   │   └── scan.go
-│   │   └── testshards
-│   │       ├── main.go
-│   │       └── main_test.go
+│   │   ├── testshards
+│   │   │   ├── main.go
+│   │   │   └── main_test.go
+│   │   └── verify-baked-actions.sh
 │   ├── compat
 │   │   └── tool-aliases
 │   │       ├── README.md
 │   │       ├── publisher_test.go.txt
 │   │       └── runner_test.go.txt
+│   ├── deps-closure.sh
 │   ├── desktop
 │   │   ├── Dockerfile.appimage
 │   │   ├── build-appimage-in-docker.sh
@@ -5590,6 +5985,7 @@
 │   │   └── connect-repo-checklist.md
 │   ├── diagnostics
 │   │   ├── inotify-shared-uid.yaml
+│   │   ├── queue-rebuild-cause.awk
 │   │   └── queue-stats.sh
 │   ├── docslinks
 │   │   └── main.go
@@ -5598,6 +5994,7 @@
 │   ├── iterion_workspacectl.py
 │   ├── merge-guard.sh
 │   ├── modelsnapshot
+│   │   ├── changelog_test.go
 │   │   └── main.go
 │   ├── sandbox-e2e
 │   │   └── manifest.yaml
@@ -5734,25 +6131,38 @@
 │   │   ├── __tests__
 │   │   │   ├── a11y
 │   │   │   │   ├── _adminNestLinks.ts
+│   │   │   │   ├── _clickableRows.ts
 │   │   │   │   ├── _cssTokens.ts
+│   │   │   │   ├── _genericNames.ts
+│   │   │   │   ├── _interactive.ts
 │   │   │   │   ├── _jsx.ts
 │   │   │   │   ├── _jsxTree.ts
 │   │   │   │   ├── _scanner.ts
 │   │   │   │   ├── _tokens.ts
 │   │   │   │   ├── adminNestLinks.test.ts
+│   │   │   │   ├── axeHelpers.test.tsx
 │   │   │   │   ├── axeHelpers.ts
 │   │   │   │   ├── broken-classes.test.ts
 │   │   │   │   ├── chokepoints.test.tsx
+│   │   │   │   ├── clickable-rows.test.ts
 │   │   │   │   ├── contrast.test.ts
 │   │   │   │   ├── css-tokens.test.ts
 │   │   │   │   ├── focus-ring.test.ts
+│   │   │   │   ├── generic-names.test.ts
+│   │   │   │   ├── interactive-scanner.test.ts
 │   │   │   │   ├── jsx-content.test.ts
 │   │   │   │   ├── jsx-scanner.test.ts
+│   │   │   │   ├── motion.test.tsx
+│   │   │   │   ├── naming.test.ts
+│   │   │   │   ├── outline.test.tsx
 │   │   │   │   ├── primitives.test.tsx
+│   │   │   │   ├── route-titles.test.ts
+│   │   │   │   ├── shortcuts.test.ts
 │   │   │   │   ├── source-discipline.test.ts
 │   │   │   │   ├── stacking.test.ts
 │   │   │   │   ├── tokens-mirror.test.ts
 │   │   │   │   └── views.test.tsx
+│   │   │   ├── cliAuthTeamPin.test.tsx
 │   │   │   ├── configShareArm.test.tsx
 │   │   │   ├── desktopBridge.test.ts
 │   │   │   ├── identityUnavailable.test.tsx
@@ -5773,9 +6183,11 @@
 │   │   │   ├── signOutUnconfirmedGoneActions.test.tsx
 │   │   │   ├── signOutUnconfirmedWarningScope.test.tsx
 │   │   │   ├── signOutWindow.test.tsx
-│   │   │   └── ssoPasswordChangeRequired.test.tsx
+│   │   │   ├── ssoPasswordChangeRequired.test.tsx
+│   │   │   └── ssoProviderUnavailable.test.tsx
 │   │   ├── api
 │   │   │   ├── __tests__
+│   │   │   │   ├── explicitTeamHeader.test.ts
 │   │   │   │   ├── forgeRepoBots.wire.test.ts
 │   │   │   │   ├── refreshAcrossTabs.test.ts
 │   │   │   │   ├── secrets.helpers.test.ts
@@ -5787,6 +6199,7 @@
 │   │   │   ├── adminBots.ts
 │   │   │   ├── adminCredUsage.test.ts
 │   │   │   ├── adminCredUsage.ts
+│   │   │   ├── adminRuns.ts
 │   │   │   ├── adminSettings.test.ts
 │   │   │   ├── adminSettings.ts
 │   │   │   ├── adminUsageReadings.test.ts
@@ -5812,11 +6225,13 @@
 │   │   │   ├── configEditor.ts
 │   │   │   ├── configShare.ts
 │   │   │   ├── configShareAdmin.ts
+│   │   │   ├── connections.ts
 │   │   │   ├── credentialPreview.ts
 │   │   │   ├── credpool.ts
 │   │   │   ├── digestRoundTrip.test.ts
 │   │   │   ├── dispatcher.ts
 │   │   │   ├── dlq.ts
+│   │   │   ├── forgeConnections.launchVars.test.ts
 │   │   │   ├── forgeConnections.ts
 │   │   │   ├── limits.ts
 │   │   │   ├── marketplace.ts
@@ -5882,11 +6297,13 @@
 │   │   │   │   ├── identityGeneration.test.tsx
 │   │   │   │   ├── identitySendOrder.test.tsx
 │   │   │   │   ├── identitySwap.test.tsx
+│   │   │   │   ├── partialIdentity.test.tsx
 │   │   │   │   ├── sessionWithoutTree.test.tsx
 │   │   │   │   ├── signOutAcrossTabs.test.tsx
 │   │   │   │   ├── staleTreeBackoff.test.tsx
 │   │   │   │   ├── staleTreeReread.test.tsx
-│   │   │   │   └── switchDuringSignOut.test.tsx
+│   │   │   │   ├── switchDuringSignOut.test.tsx
+│   │   │   │   └── twoTabsKeepTheirOwnTeam.test.tsx
 │   │   │   ├── backoffLoop.ts
 │   │   │   ├── returnTo.test.ts
 │   │   │   └── returnTo.ts
@@ -5932,6 +6349,7 @@
 │   │   │   │   ├── BotSwitcher.tsx
 │   │   │   │   ├── ChatDock.test.tsx
 │   │   │   │   ├── ChatDock.tsx
+│   │   │   │   ├── ChatDockFloating.test.tsx
 │   │   │   │   ├── ChatDockShell.test.tsx
 │   │   │   │   ├── ChatDockShell.tsx
 │   │   │   │   ├── ContextChip.test.tsx
@@ -5947,6 +6365,7 @@
 │   │   │   │   ├── VeilleBanner.test.tsx
 │   │   │   │   ├── VeilleBanner.tsx
 │   │   │   │   ├── WorkplaceLink.test.tsx
+│   │   │   │   ├── chatDock.a11y.test.tsx
 │   │   │   │   ├── draftBotOffer.tsx
 │   │   │   │   └── readRefusalCopi.test.tsx
 │   │   │   ├── Diagnostics
@@ -6008,21 +6427,29 @@
 │   │   │   ├── Panels
 │   │   │   │   ├── BotMetadataForm.installed.test.tsx
 │   │   │   │   ├── BotMetadataForm.tsx
+│   │   │   │   ├── CommentsEditor.test.tsx
 │   │   │   │   ├── CommentsEditor.tsx
+│   │   │   │   ├── MCPServersEditor.test.tsx
 │   │   │   │   ├── MCPServersEditor.tsx
 │   │   │   │   ├── PromptBodyEditor.tsx
+│   │   │   │   ├── PromptEditor.test.tsx
 │   │   │   │   ├── PromptEditor.tsx
 │   │   │   │   ├── PromptEditorModal.tsx
+│   │   │   │   ├── SchemaEditor.test.tsx
 │   │   │   │   ├── SchemaEditor.tsx
+│   │   │   │   ├── VarsEditor.test.tsx
 │   │   │   │   ├── VarsEditor.tsx
+│   │   │   │   ├── WorkflowSettingsForm.a11y.test.tsx
 │   │   │   │   ├── WorkflowSettingsForm.permission.test.tsx
 │   │   │   │   ├── WorkflowSettingsForm.tsx
 │   │   │   │   └── forms
 │   │   │   │       ├── AgentForm.permission.test.tsx
 │   │   │   │       ├── AgentForm.tsx
 │   │   │   │       ├── CompactionFields.tsx
+│   │   │   │       ├── ComputeForm.test.tsx
 │   │   │   │       ├── ComputeForm.tsx
 │   │   │   │       ├── CursorsFields.tsx
+│   │   │   │       ├── EdgeForm.test.tsx
 │   │   │   │       ├── EdgeForm.tsx
 │   │   │   │       ├── FallbacksFields.test.tsx
 │   │   │   │       ├── FallbacksFields.tsx
@@ -6081,6 +6508,7 @@
 │   │   │   │   ├── RunCanvasIR.tsx
 │   │   │   │   ├── RunCanvasToolbar.tsx
 │   │   │   │   ├── RunHeader.tsx
+│   │   │   │   ├── RunHeader.viewer.test.tsx
 │   │   │   │   ├── RunListView.tsx
 │   │   │   │   ├── RunLogPanel.tsx
 │   │   │   │   ├── RunMetrics.tsx
@@ -6113,6 +6541,7 @@
 │   │   │   │   │   ├── ConversationEmptyState.test.tsx
 │   │   │   │   │   ├── ConversationEmptyState.tsx
 │   │   │   │   │   ├── GateAttachments.tsx
+│   │   │   │   │   ├── GateInboundFile.test.tsx
 │   │   │   │   │   ├── GateInboundFile.tsx
 │   │   │   │   │   ├── GateInboundPayload.test.tsx
 │   │   │   │   │   ├── GateInboundPayload.tsx
@@ -6129,6 +6558,7 @@
 │   │   │   │   │   ├── RunConversationView.tsx
 │   │   │   │   │   ├── SessionClosedCard.test.tsx
 │   │   │   │   │   ├── SessionClosedCard.tsx
+│   │   │   │   │   ├── conversation.a11y.test.tsx
 │   │   │   │   │   └── gateInboundFold.tsx
 │   │   │   │   ├── detail
 │   │   │   │   │   ├── ArtifactTab.tsx
@@ -6147,6 +6577,7 @@
 │   │   │   │   │   ├── NodeKindIcon.tsx
 │   │   │   │   │   ├── PauseTab.tsx
 │   │   │   │   │   ├── ToolCalls.tsx
+│   │   │   │   │   ├── detail.a11y.test.tsx
 │   │   │   │   │   ├── nodeDetailFormat.ts
 │   │   │   │   │   ├── useExecutionCostMeta.ts
 │   │   │   │   │   └── useExecutionEvents.ts
@@ -6255,7 +6686,8 @@
 │   │   │   │   │   ├── SourceTicketRow.tsx
 │   │   │   │   │   ├── WSDisconnectBanner.tsx
 │   │   │   │   │   ├── cancelTooltip.ts
-│   │   │   │   │   └── deploymentTraceability.ts
+│   │   │   │   │   ├── deploymentTraceability.ts
+│   │   │   │   │   └── runHeader.a11y.test.tsx
 │   │   │   │   ├── runList
 │   │   │   │   │   ├── BotAvatar.tsx
 │   │   │   │   │   ├── FilterMenu.tsx
@@ -6263,10 +6695,12 @@
 │   │   │   │   │   ├── RunListCard.tsx
 │   │   │   │   │   ├── RunListFilters.tsx
 │   │   │   │   │   ├── RunListRow.tsx
+│   │   │   │   │   ├── RunRowGroup.test.tsx
 │   │   │   │   │   ├── RunRowGroup.tsx
 │   │   │   │   │   ├── RunSelectionToolbar.tsx
 │   │   │   │   │   ├── SortGroupControls.tsx
 │   │   │   │   │   ├── SourceBadge.tsx
+│   │   │   │   │   ├── runList.a11y.test.tsx
 │   │   │   │   │   ├── runListFormat.test.ts
 │   │   │   │   │   ├── runListFormat.ts
 │   │   │   │   │   ├── useRunListActions.ts
@@ -6304,6 +6738,7 @@
 │   │   │   │   ├── sessionboard
 │   │   │   │   │   ├── SessionBoardTab.tsx
 │   │   │   │   │   └── widgets.tsx
+│   │   │   │   ├── todoChecklist.a11y.test.tsx
 │   │   │   │   ├── todoChecklist.tsx
 │   │   │   │   ├── todoStatus.ts
 │   │   │   │   ├── toolFormatters.test.ts
@@ -6322,8 +6757,10 @@
 │   │   │   │   ├── RunButton.test.tsx
 │   │   │   │   ├── RunButton.tsx
 │   │   │   │   ├── RunButton.unitParse.test.tsx
+│   │   │   │   ├── Toolbar.test.tsx
 │   │   │   │   ├── Toolbar.tsx
 │   │   │   │   ├── ToolbarGroup.tsx
+│   │   │   │   ├── toolbar.a11y.test.tsx
 │   │   │   │   ├── useDocumentFileOps.answers.test.tsx
 │   │   │   │   ├── useDocumentFileOps.digestRefresh.test.tsx
 │   │   │   │   ├── useDocumentFileOps.discard.test.tsx
@@ -6362,6 +6799,7 @@
 │   │   │   │   ├── backendEmoji.ts
 │   │   │   │   └── providerDetect.ts
 │   │   │   ├── models
+│   │   │   │   ├── ModelPicker.test.tsx
 │   │   │   │   └── ModelPicker.tsx
 │   │   │   ├── shared
 │   │   │   │   ├── AddExistingMemberPanel.test.tsx
@@ -6392,13 +6830,18 @@
 │   │   │   │   ├── ErrorBoundary.tsx
 │   │   │   │   ├── ErrorNotice.tsx
 │   │   │   │   ├── FeatureUnavailable.tsx
+│   │   │   │   ├── FileDropZone.test.tsx
+│   │   │   │   ├── FileDropZone.tsx
 │   │   │   │   ├── GateFileInput.test.tsx
 │   │   │   │   ├── GateFileInput.tsx
 │   │   │   │   ├── GlobalCommandPalette.tsx
+│   │   │   │   ├── HiddenFileInput.tsx
 │   │   │   │   ├── InnerTabBar.tsx
 │   │   │   │   ├── InviteLinkPanel.tsx
 │   │   │   │   ├── KeychainLocked.tsx
 │   │   │   │   ├── LabelFilterPopover.tsx
+│   │   │   │   ├── LastRunOutcome.dom.test.tsx
+│   │   │   │   ├── LastRunOutcome.tsx
 │   │   │   │   ├── MainSpinner.tsx
 │   │   │   │   ├── NavLinks.tsx
 │   │   │   │   ├── OrgSwitcher.test.tsx
@@ -6437,9 +6880,13 @@
 │   │   │       ├── Card.tsx
 │   │   │       ├── Checkbox.tsx
 │   │   │       ├── Chip.tsx
+│   │   │       ├── ClampText.test.tsx
+│   │   │       ├── ClampText.tsx
 │   │   │       ├── Combobox.test.tsx
 │   │   │       ├── Combobox.tsx
+│   │   │       ├── ContextUsageBar.test.tsx
 │   │   │       ├── ContextUsageBar.tsx
+│   │   │       ├── CopyButton.test.tsx
 │   │   │       ├── CopyButton.tsx
 │   │   │       ├── DesktopOnlyNotice.tsx
 │   │   │       ├── Dialog.tsx
@@ -6453,6 +6900,7 @@
 │   │   │       ├── ExpandableValue.tsx
 │   │   │       ├── FieldLabel.tsx
 │   │   │       ├── HeaderBanner.tsx
+│   │   │       ├── HelpHint.test.tsx
 │   │   │       ├── HelpHint.tsx
 │   │   │       ├── Icon.tsx
 │   │   │       ├── IconButton.tsx
@@ -6477,6 +6925,7 @@
 │   │   │       ├── Spinner.tsx
 │   │   │       ├── Stat.tsx
 │   │   │       ├── StatusBadge.tsx
+│   │   │       ├── StatusMessage.tsx
 │   │   │       ├── Table.tsx
 │   │   │       ├── Tabs.tsx
 │   │   │       ├── TagInput.test.tsx
@@ -6518,6 +6967,7 @@
 │   │   │   ├── useCanManageTeam.ts
 │   │   │   ├── useCanvasConnections.ts
 │   │   │   ├── useCanvasKeyboard.ts
+│   │   │   ├── useCanvasLayout.duplicateGroups.test.tsx
 │   │   │   ├── useCanvasLayout.ts
 │   │   │   ├── useCanvasSearch.ts
 │   │   │   ├── useCaretPosition.ts
@@ -6528,6 +6978,7 @@
 │   │   │   ├── useCopyTimer.ts
 │   │   │   ├── useDebounce.ts
 │   │   │   ├── useDesktop.ts
+│   │   │   ├── useDocumentTitle.test.tsx
 │   │   │   ├── useDocumentTitle.ts
 │   │   │   ├── useDraftBot.ts
 │   │   │   ├── useDropEditorTab.ts
@@ -6561,10 +7012,12 @@
 │   │   │   ├── useResolvedModel.ts
 │   │   │   ├── useRunAttempt.ts
 │   │   │   ├── useRunBudgetCaps.ts
+│   │   │   ├── useRunCanAct.ts
 │   │   │   ├── useRunCheckpointBudget.ts
 │   │   │   ├── useRunChildren.ts
 │   │   │   ├── useRunCommits.ts
 │   │   │   ├── useRunFiles.ts
+│   │   │   ├── useRunKeyboard.test.tsx
 │   │   │   ├── useRunKeyboard.ts
 │   │   │   ├── useRunMetrics.ts
 │   │   │   ├── useRunReport.test.ts
@@ -6629,6 +7082,8 @@
 │   │   │   │   ├── missionGrant.ts
 │   │   │   │   ├── pageContext.test.tsx
 │   │   │   │   ├── pageContext.tsx
+│   │   │   │   ├── proposalTarget.test.ts
+│   │   │   │   ├── proposalTarget.ts
 │   │   │   │   ├── replyNavigation.ts
 │   │   │   │   ├── routeReference.test.ts
 │   │   │   │   ├── routeReference.ts
@@ -6749,6 +7204,7 @@
 │   │   │   ├── roleAuthority.ts
 │   │   │   ├── roles.test.ts
 │   │   │   ├── roles.ts
+│   │   │   ├── routeTitles.ts
 │   │   │   ├── runAttempt.test.ts
 │   │   │   ├── runAttempt.ts
 │   │   │   ├── runAttemptView.test.tsx
@@ -6769,6 +7225,7 @@
 │   │   │   ├── scope.ts
 │   │   │   ├── sharedBundle.test.ts
 │   │   │   ├── sharedBundle.ts
+│   │   │   ├── shortcuts.ts
 │   │   │   ├── snapshotReducer.test.ts
 │   │   │   ├── snapshotReducer.ts
 │   │   │   ├── subRuns.test.ts
@@ -6867,6 +7324,7 @@
 │   │   │   │   ├── BotArgsForm.test.tsx
 │   │   │   │   ├── BotArgsForm.tsx
 │   │   │   │   ├── BotPicker.tsx
+│   │   │   │   ├── Column.test.tsx
 │   │   │   │   ├── Column.tsx
 │   │   │   │   ├── ColumnDialogs.tsx
 │   │   │   │   ├── FieldDialog.test.tsx
@@ -6954,6 +7412,7 @@
 │   │   │   │   ├── __fixtures__
 │   │   │   │   │   └── overlay-refused-bots.json
 │   │   │   │   ├── botPaths.ts
+│   │   │   │   ├── bots.a11y.test.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── CliAuthPage.tsx
 │   │   │   ├── CloudHome
@@ -7046,8 +7505,10 @@
 │   │   │   │   ├── CloudConnectModal.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── RepoDetail
+│   │   │   │   ├── LaunchVarsRefusalBanner.tsx
 │   │   │   │   ├── RepoRoutingSection.tsx
 │   │   │   │   ├── index.tsx
+│   │   │   │   ├── launchVarsRefusal.test.tsx
 │   │   │   │   ├── mergeGateCard.test.tsx
 │   │   │   │   ├── model.test.ts
 │   │   │   │   ├── model.ts
@@ -7056,6 +7517,7 @@
 │   │   │   │   └── repoRouting.test.tsx
 │   │   │   ├── RestrictedShell.tsx
 │   │   │   ├── RunsAnalytics
+│   │   │   │   ├── CostChart.test.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── Secrets.tsx
 │   │   │   ├── SettingsDialog
@@ -7069,6 +7531,9 @@
 │   │   │   │   ├── StorageTab.tsx
 │   │   │   │   ├── UpdatesTab.tsx
 │   │   │   │   └── index.tsx
+│   │   │   ├── Sitemap
+│   │   │   │   ├── Sitemap.test.tsx
+│   │   │   │   └── index.tsx
 │   │   │   ├── Skills.tsx
 │   │   │   ├── Triggers
 │   │   │   │   ├── NewTriggerDialog.tsx
@@ -7077,6 +7542,7 @@
 │   │   │   │   ├── ScheduleOutcome.tsx
 │   │   │   │   ├── SchedulesTab.tsx
 │   │   │   │   ├── TriggerFamiliesExplainer.tsx
+│   │   │   │   ├── TriggerList.dom.test.tsx
 │   │   │   │   ├── TriggerList.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── scheduleModel.test.ts
@@ -7114,6 +7580,7 @@
 │   │   │   │   ├── PlatformForgeAppsPage.test.tsx
 │   │   │   │   ├── PlatformForgeAppsPage.tsx
 │   │   │   │   ├── PlatformLlmCredsPage.tsx
+│   │   │   │   ├── RunsAdminPage.tsx
 │   │   │   │   ├── UsersAdminPage.tsx
 │   │   │   │   ├── adminRoutes.test.ts
 │   │   │   │   ├── adminRoutes.ts
@@ -7128,10 +7595,12 @@
 │   │   │   │   │   ├── OrgStatusSection.tsx
 │   │   │   │   │   ├── OrgTeamsSection.tsx
 │   │   │   │   │   ├── OrgUsageStats.tsx
+│   │   │   │   │   ├── OrgsTable.test.tsx
 │   │   │   │   │   ├── OrgsTable.tsx
 │   │   │   │   │   ├── orgFields.tsx
 │   │   │   │   │   ├── orgStatusMeta.ts
 │   │   │   │   │   └── useOrgsAdmin.ts
+│   │   │   │   ├── runsAdminPage.test.tsx
 │   │   │   │   ├── settings
 │   │   │   │   │   ├── BotRolesPage.tsx
 │   │   │   │   │   ├── BotVarsPage.test.tsx
@@ -7180,6 +7649,7 @@
 │   │   │   │   ├── ConnectRepoWizard.banner.test.tsx
 │   │   │   │   ├── ConnectRepoWizard.doneStep.test.tsx
 │   │   │   │   ├── ConnectRepoWizard.tsx
+│   │   │   │   ├── ConnectionsTab.tsx
 │   │   │   │   ├── IntegrationsPage.tsx
 │   │   │   │   ├── ModelProvidersTab.tsx
 │   │   │   │   ├── ProjectBoardTab.tsx
@@ -7242,6 +7712,7 @@
 │   │   │           │   ├── OAuthAppsSection.platform.test.tsx
 │   │   │           │   ├── RegisterOAuthAppForm.webhookBase.test.tsx
 │   │   │           │   ├── WebhookBaseRow.test.tsx
+│   │   │           │   ├── WebhooksTab.keyOverrides.test.tsx
 │   │   │           │   └── WebhooksTab.tokenOnce.test.tsx
 │   │   │           ├── integrations
 │   │   │           │   ├── ConnectForm.tsx
@@ -7264,245 +7735,250 @@
 │   │   │               ├── DeliveriesDrawer.tsx
 │   │   │               ├── DeliveryStatusBadge.tsx
 │   │   │               ├── Field.tsx
-│   │   │               └── TokenOncePanel.tsx
+│   │   │               ├── KeyOverridesDialog.tsx
+│   │   │               ├── TokenOncePanel.tsx
+│   │   │               ├── deliveryRunOutcome.test.ts
+│   │   │               └── deliveryRunOutcome.ts
 │   │   ├── vite-env.d.ts
 │   │   └── workspace
 │   │       └── WorkspaceShell.tsx
 │   ├── tsconfig.json
 │   └── vite.config.ts
 ├── third_party
-│   └── codex-agent-sdk-go
-│       ├── .claude
-│       │   └── rules
-│       │       ├── architecture.md
-│       │       ├── boundaries.md
-│       │       ├── build-and-test.md
-│       │       ├── coding-conventions.md
-│       │       └── project-overview.md
-│       ├── .github
-│       │   ├── dependabot.yml
-│       │   ├── typos.toml
-│       │   └── workflows
-│       │       ├── check-typos.yml
-│       │       ├── go-setup
-│       │       │   └── action.yml
-│       │       ├── go-test.yml
-│       │       └── golangci-lint.yml
-│       ├── .gitignore
-│       ├── .golangci.yml
-│       ├── CLAUDE.md
-│       ├── FORK.md
+│   ├── codex-agent-sdk-go
+│   │   ├── .claude
+│   │   │   └── rules
+│   │   │       ├── architecture.md
+│   │   │       ├── boundaries.md
+│   │   │       ├── build-and-test.md
+│   │   │       ├── coding-conventions.md
+│   │   │       └── project-overview.md
+│   │   ├── .github
+│   │   │   ├── dependabot.yml
+│   │   │   ├── typos.toml
+│   │   │   └── workflows
+│   │   │       ├── check-typos.yml
+│   │   │       ├── go-setup
+│   │   │       │   └── action.yml
+│   │   │       ├── go-test.yml
+│   │   │       └── golangci-lint.yml
+│   │   ├── .gitignore
+│   │   ├── .golangci.yml
+│   │   ├── CLAUDE.md
+│   │   ├── FORK.md
+│   │   ├── LICENSE
+│   │   ├── Makefile
+│   │   ├── README.md
+│   │   ├── client.go
+│   │   ├── client_impl.go
+│   │   ├── client_test.go
+│   │   ├── contrib
+│   │   │   └── prometheus
+│   │   │       └── prometheus.go
+│   │   ├── doc.go
+│   │   ├── errors.go
+│   │   ├── errors_test.go
+│   │   ├── examples
+│   │   │   ├── README.md
+│   │   │   ├── cancellation
+│   │   │   │   └── main.go
+│   │   │   ├── client_multi_turn
+│   │   │   │   ├── README.md
+│   │   │   │   └── main.go
+│   │   │   ├── developer_instructions
+│   │   │   │   └── main.go
+│   │   │   ├── error_handling
+│   │   │   │   └── main.go
+│   │   │   ├── extended_thinking
+│   │   │   │   └── main.go
+│   │   │   ├── include_partial_messages
+│   │   │   │   └── main.go
+│   │   │   ├── max_budget_usd
+│   │   │   │   └── main.go
+│   │   │   ├── mcp_calculator
+│   │   │   │   └── main.go
+│   │   │   ├── mcp_status
+│   │   │   │   └── main.go
+│   │   │   ├── mcp_stdio_args
+│   │   │   │   └── main.go
+│   │   │   ├── memory_tool
+│   │   │   │   └── main.go
+│   │   │   ├── multimodal_input
+│   │   │   │   └── main.go
+│   │   │   ├── parallel_queries
+│   │   │   │   └── main.go
+│   │   │   ├── personality
+│   │   │   │   └── main.go
+│   │   │   ├── pipeline
+│   │   │   │   └── main.go
+│   │   │   ├── plugins
+│   │   │   │   └── demo-plugin
+│   │   │   │       ├── .claude-plugin
+│   │   │   │       │   └── plugin.json
+│   │   │   │       └── commands
+│   │   │   │           └── greet.md
+│   │   │   ├── prometheus_metrics
+│   │   │   │   └── main.go
+│   │   │   ├── query_stream
+│   │   │   │   └── main.go
+│   │   │   ├── quick_start
+│   │   │   │   └── main.go
+│   │   │   ├── sdk_tools
+│   │   │   │   └── main.go
+│   │   │   ├── service_tier
+│   │   │   │   └── main.go
+│   │   │   ├── stderr_callback
+│   │   │   │   └── main.go
+│   │   │   ├── structured_output
+│   │   │   │   └── main.go
+│   │   │   ├── system_prompt
+│   │   │   │   └── main.go
+│   │   │   ├── tool_permission_callback
+│   │   │   │   ├── README.md
+│   │   │   │   └── main.go
+│   │   │   └── tools_option
+│   │   │       └── main.go
+│   │   ├── go.mod
+│   │   ├── go.sum
+│   │   ├── hooks.go
+│   │   ├── input.go
+│   │   ├── input_test.go
+│   │   ├── integration
+│   │   │   ├── agents_settings_test.go
+│   │   │   ├── budget_stderr_test.go
+│   │   │   ├── dynamic_control_test.go
+│   │   │   ├── integration_test.go
+│   │   │   ├── lifecycle_test.go
+│   │   │   ├── mcp_tools_test.go
+│   │   │   ├── plan_user_input_test.go
+│   │   │   ├── streaming_test.go
+│   │   │   └── structured_output_test.go
+│   │   ├── internal
+│   │   │   ├── cli
+│   │   │   │   ├── cli_test.go
+│   │   │   │   ├── command.go
+│   │   │   │   ├── discovery.go
+│   │   │   │   └── doc.go
+│   │   │   ├── client
+│   │   │   │   ├── client.go
+│   │   │   │   ├── client_test.go
+│   │   │   │   └── doc.go
+│   │   │   ├── config
+│   │   │   │   ├── capability.go
+│   │   │   │   ├── capability_test.go
+│   │   │   │   ├── options.go
+│   │   │   │   ├── preset.go
+│   │   │   │   ├── tool_permissions.go
+│   │   │   │   ├── tool_permissions_test.go
+│   │   │   │   └── transport.go
+│   │   │   ├── elicitation
+│   │   │   │   └── elicitation.go
+│   │   │   ├── errors
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── errors.go
+│   │   │   │   └── errors_test.go
+│   │   │   ├── hook
+│   │   │   │   ├── hook.go
+│   │   │   │   └── hook_test.go
+│   │   │   ├── mcp
+│   │   │   │   ├── config.go
+│   │   │   │   ├── config_test.go
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── sdk_server.go
+│   │   │   │   ├── sdk_server_test.go
+│   │   │   │   ├── status.go
+│   │   │   │   └── status_test.go
+│   │   │   ├── message
+│   │   │   │   ├── codex_event.go
+│   │   │   │   ├── content.go
+│   │   │   │   ├── message.go
+│   │   │   │   ├── parse.go
+│   │   │   │   ├── parse_integration_test.go
+│   │   │   │   ├── parse_test.go
+│   │   │   │   └── raw_json.go
+│   │   │   ├── model
+│   │   │   │   ├── model.go
+│   │   │   │   └── model_test.go
+│   │   │   ├── observability
+│   │   │   │   ├── attrs.go
+│   │   │   │   ├── classes.go
+│   │   │   │   ├── metrics.go
+│   │   │   │   ├── observability.go
+│   │   │   │   ├── observability_test.go
+│   │   │   │   └── prometheus.go
+│   │   │   ├── permission
+│   │   │   │   ├── permission.go
+│   │   │   │   └── permission_test.go
+│   │   │   ├── protocol
+│   │   │   │   ├── cancel_test.go
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── fatal_error_drain_test.go
+│   │   │   │   ├── protocol.go
+│   │   │   │   ├── protocol_test.go
+│   │   │   │   ├── request.go
+│   │   │   │   ├── session.go
+│   │   │   │   ├── session_integration_test.go
+│   │   │   │   └── session_test.go
+│   │   │   ├── sandbox
+│   │   │   │   ├── sandbox.go
+│   │   │   │   └── sandbox_test.go
+│   │   │   ├── schema
+│   │   │   │   ├── enforce.go
+│   │   │   │   └── enforce_test.go
+│   │   │   ├── subprocess
+│   │   │   │   ├── appserver.go
+│   │   │   │   ├── appserver_adapter.go
+│   │   │   │   ├── appserver_adapter_integration_test.go
+│   │   │   │   ├── appserver_adapter_test.go
+│   │   │   │   ├── appserver_bigline_test.go
+│   │   │   │   ├── buffering_test.go
+│   │   │   │   ├── cli.go
+│   │   │   │   ├── cli_test.go
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── jsonrpc.go
+│   │   │   │   ├── process_group_test.go
+│   │   │   │   ├── process_group_unix.go
+│   │   │   │   └── process_group_windows.go
+│   │   │   ├── userinput
+│   │   │   │   └── userinput.go
+│   │   │   └── version
+│   │   │       └── version.go
+│   │   ├── logger.go
+│   │   ├── mcp.go
+│   │   ├── models.go
+│   │   ├── observability_test.go
+│   │   ├── options.go
+│   │   ├── options.md
+│   │   ├── otel.go
+│   │   ├── otel_test.go
+│   │   ├── query.go
+│   │   ├── query_integration_test.go
+│   │   ├── query_test.go
+│   │   ├── scripts
+│   │   │   └── test_examples.sh
+│   │   ├── sdk_mcp_server.go
+│   │   ├── sdk_mcp_tool.go
+│   │   ├── sdk_mcp_tool_test.go
+│   │   ├── stream.go
+│   │   ├── stream_test.go
+│   │   ├── transport.go
+│   │   ├── types.go
+│   │   ├── types_test.go
+│   │   ├── version.go
+│   │   ├── with_client.go
+│   │   └── with_client_test.go
+│   └── tiktoken-go-tokenizer
 │       ├── LICENSE
-│       ├── Makefile
 │       ├── README.md
-│       ├── client.go
-│       ├── client_impl.go
-│       ├── client_test.go
-│       ├── contrib
-│       │   └── prometheus
-│       │       └── prometheus.go
-│       ├── doc.go
-│       ├── errors.go
-│       ├── errors_test.go
-│       ├── examples
-│       │   ├── README.md
-│       │   ├── cancellation
-│       │   │   └── main.go
-│       │   ├── client_multi_turn
-│       │   │   ├── README.md
-│       │   │   └── main.go
-│       │   ├── developer_instructions
-│       │   │   └── main.go
-│       │   ├── error_handling
-│       │   │   └── main.go
-│       │   ├── extended_thinking
-│       │   │   └── main.go
-│       │   ├── include_partial_messages
-│       │   │   └── main.go
-│       │   ├── max_budget_usd
-│       │   │   └── main.go
-│       │   ├── mcp_calculator
-│       │   │   └── main.go
-│       │   ├── mcp_status
-│       │   │   └── main.go
-│       │   ├── mcp_stdio_args
-│       │   │   └── main.go
-│       │   ├── memory_tool
-│       │   │   └── main.go
-│       │   ├── multimodal_input
-│       │   │   └── main.go
-│       │   ├── parallel_queries
-│       │   │   └── main.go
-│       │   ├── personality
-│       │   │   └── main.go
-│       │   ├── pipeline
-│       │   │   └── main.go
-│       │   ├── plugins
-│       │   │   └── demo-plugin
-│       │   │       ├── .claude-plugin
-│       │   │       │   └── plugin.json
-│       │   │       └── commands
-│       │   │           └── greet.md
-│       │   ├── prometheus_metrics
-│       │   │   └── main.go
-│       │   ├── query_stream
-│       │   │   └── main.go
-│       │   ├── quick_start
-│       │   │   └── main.go
-│       │   ├── sdk_tools
-│       │   │   └── main.go
-│       │   ├── service_tier
-│       │   │   └── main.go
-│       │   ├── sessions
-│       │   │   └── main.go
-│       │   ├── stderr_callback
-│       │   │   └── main.go
-│       │   ├── structured_output
-│       │   │   └── main.go
-│       │   ├── system_prompt
-│       │   │   └── main.go
-│       │   ├── tool_permission_callback
-│       │   │   ├── README.md
-│       │   │   └── main.go
-│       │   └── tools_option
-│       │       └── main.go
+│       ├── codec
+│       │   ├── codec.go
+│       │   ├── o200k_base.go
+│       │   ├── o200k_base_vocab.go
+│       │   ├── regexp.gen.go
+│       │   ├── regexp.go
+│       │   └── vocab.go
 │       ├── go.mod
-│       ├── go.sum
-│       ├── hooks.go
-│       ├── input.go
-│       ├── input_test.go
-│       ├── integration
-│       │   ├── agents_settings_test.go
-│       │   ├── budget_stderr_test.go
-│       │   ├── dynamic_control_test.go
-│       │   ├── integration_test.go
-│       │   ├── lifecycle_test.go
-│       │   ├── mcp_tools_test.go
-│       │   ├── plan_user_input_test.go
-│       │   ├── session_persistence_test.go
-│       │   ├── streaming_test.go
-│       │   └── structured_output_test.go
-│       ├── internal
-│       │   ├── cli
-│       │   │   ├── cli_test.go
-│       │   │   ├── command.go
-│       │   │   ├── discovery.go
-│       │   │   └── doc.go
-│       │   ├── client
-│       │   │   ├── client.go
-│       │   │   ├── client_test.go
-│       │   │   └── doc.go
-│       │   ├── config
-│       │   │   ├── capability.go
-│       │   │   ├── capability_test.go
-│       │   │   ├── options.go
-│       │   │   ├── preset.go
-│       │   │   ├── tool_permissions.go
-│       │   │   ├── tool_permissions_test.go
-│       │   │   └── transport.go
-│       │   ├── elicitation
-│       │   │   └── elicitation.go
-│       │   ├── errors
-│       │   │   ├── doc.go
-│       │   │   ├── errors.go
-│       │   │   └── errors_test.go
-│       │   ├── hook
-│       │   │   ├── hook.go
-│       │   │   └── hook_test.go
-│       │   ├── mcp
-│       │   │   ├── config.go
-│       │   │   ├── config_test.go
-│       │   │   ├── doc.go
-│       │   │   ├── sdk_server.go
-│       │   │   ├── sdk_server_test.go
-│       │   │   ├── status.go
-│       │   │   └── status_test.go
-│       │   ├── message
-│       │   │   ├── codex_event.go
-│       │   │   ├── content.go
-│       │   │   ├── message.go
-│       │   │   ├── parse.go
-│       │   │   ├── parse_integration_test.go
-│       │   │   ├── parse_test.go
-│       │   │   └── raw_json.go
-│       │   ├── model
-│       │   │   ├── model.go
-│       │   │   └── model_test.go
-│       │   ├── observability
-│       │   │   ├── attrs.go
-│       │   │   ├── classes.go
-│       │   │   ├── metrics.go
-│       │   │   ├── observability.go
-│       │   │   ├── observability_test.go
-│       │   │   └── prometheus.go
-│       │   ├── permission
-│       │   │   ├── permission.go
-│       │   │   └── permission_test.go
-│       │   ├── protocol
-│       │   │   ├── cancel_test.go
-│       │   │   ├── doc.go
-│       │   │   ├── fatal_error_drain_test.go
-│       │   │   ├── protocol.go
-│       │   │   ├── protocol_test.go
-│       │   │   ├── request.go
-│       │   │   ├── session.go
-│       │   │   ├── session_integration_test.go
-│       │   │   └── session_test.go
-│       │   ├── sandbox
-│       │   │   ├── sandbox.go
-│       │   │   └── sandbox_test.go
-│       │   ├── schema
-│       │   │   ├── enforce.go
-│       │   │   └── enforce_test.go
-│       │   ├── session
-│       │   │   ├── session.go
-│       │   │   └── session_test.go
-│       │   ├── subprocess
-│       │   │   ├── appserver.go
-│       │   │   ├── appserver_adapter.go
-│       │   │   ├── appserver_adapter_integration_test.go
-│       │   │   ├── appserver_adapter_test.go
-│       │   │   ├── appserver_bigline_test.go
-│       │   │   ├── buffering_test.go
-│       │   │   ├── cli.go
-│       │   │   ├── cli_test.go
-│       │   │   ├── doc.go
-│       │   │   ├── jsonrpc.go
-│       │   │   ├── process_group_test.go
-│       │   │   ├── process_group_unix.go
-│       │   │   └── process_group_windows.go
-│       │   ├── userinput
-│       │   │   └── userinput.go
-│       │   └── version
-│       │       └── version.go
-│       ├── logger.go
-│       ├── mcp.go
-│       ├── models.go
-│       ├── observability_test.go
-│       ├── options.go
-│       ├── options.md
-│       ├── otel.go
-│       ├── otel_test.go
-│       ├── query.go
-│       ├── query_integration_test.go
-│       ├── query_test.go
-│       ├── scripts
-│       │   └── test_examples.sh
-│       ├── sdk_mcp_server.go
-│       ├── sdk_mcp_tool.go
-│       ├── sdk_mcp_tool_test.go
-│       ├── session_stat.go
-│       ├── session_stat_test.go
-│       ├── sessions.go
-│       ├── sessions_test.go
-│       ├── stream.go
-│       ├── stream_test.go
-│       ├── transport.go
-│       ├── types.go
-│       ├── types_test.go
-│       ├── version.go
-│       ├── with_client.go
-│       └── with_client_test.go
+│       └── tokenizer.go
 └── vendor
     ├── cloud.google.com
     │   └── go
@@ -9323,22 +9799,6 @@
     │   │       │   └── resolve.go
     │   │       └── util
     │   │           └── module.go
-    │   ├── dustin
-    │   │   └── go-humanize
-    │   │       ├── .travis.yml
-    │   │       ├── LICENSE
-    │   │       ├── README.markdown
-    │   │       ├── big.go
-    │   │       ├── bigbytes.go
-    │   │       ├── bytes.go
-    │   │       ├── comma.go
-    │   │       ├── commaf.go
-    │   │       ├── ftoa.go
-    │   │       ├── humanize.go
-    │   │       ├── number.go
-    │   │       ├── ordinals.go
-    │   │       ├── si.go
-    │   │       └── times.go
     │   ├── ethpandaops
     │   │   ├── agent-sdk-observability
     │   │   │   ├── LICENSE
@@ -9418,8 +9878,6 @@
     │   │       │   │   └── sandbox.go
     │   │       │   ├── schema
     │   │       │   │   └── enforce.go
-    │   │       │   ├── session
-    │   │       │   │   └── session.go
     │   │       │   ├── subprocess
     │   │       │   │   ├── appserver.go
     │   │       │   │   ├── appserver_adapter.go
@@ -9441,8 +9899,6 @@
     │   │       ├── query.go
     │   │       ├── sdk_mcp_server.go
     │   │       ├── sdk_mcp_tool.go
-    │   │       ├── session_stat.go
-    │   │       ├── sessions.go
     │   │       ├── stream.go
     │   │       ├── transport.go
     │   │       ├── types.go
@@ -9585,21 +10041,6 @@
     │   │       ├── tracing.go
     │   │       ├── transport.go
     │   │       └── util.go
-    │   ├── glebarez
-    │   │   └── go-sqlite
-    │   │       ├── AUTHORS
-    │   │       ├── CONTRIBUTORS
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── SQLITE-LICENSE
-    │   │       ├── embed.db
-    │   │       ├── embed2.db
-    │   │       ├── mutex.go
-    │   │       ├── norlimit.go
-    │   │       ├── rlimit.go
-    │   │       ├── rulimit.go
-    │   │       ├── sqlite.go
-    │   │       └── sqlite_go18.go
     │   ├── go-logr
     │   │   ├── logr
     │   │   │   ├── .golangci.yaml
@@ -10363,15 +10804,6 @@
     │   │       ├── MAINTAINERS.md
     │   │       ├── README.md
     │   │       └── nuid.go
-    │   ├── ncruces
-    │   │   └── go-strftime
-    │   │       ├── .gitignore
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── parser.go
-    │   │       ├── pkg.go
-    │   │       ├── specifiers.go
-    │   │       └── strftime.go
     │   ├── pkg
     │   │   ├── browser
     │   │   │   ├── LICENSE
@@ -10718,14 +11150,6 @@
     │   │           ├── universal.go
     │   │           ├── vectorset_commands.go
     │   │           └── version.go
-    │   ├── remyoudompheng
-    │   │   └── bigfft
-    │   │       ├── LICENSE
-    │   │       ├── README
-    │   │       ├── arith_decl.go
-    │   │       ├── fermat.go
-    │   │       ├── fft.go
-    │   │       └── scan.go
     │   ├── rivo
     │   │   └── uniseg
     │   │       ├── LICENSE.txt
@@ -10951,16 +11375,9 @@
     │   │       ├── LICENSE
     │   │       ├── README.md
     │   │       ├── codec
-    │   │       │   ├── cl100k_base.go
-    │   │       │   ├── cl100k_base_vocab.go
     │   │       │   ├── codec.go
     │   │       │   ├── o200k_base.go
     │   │       │   ├── o200k_base_vocab.go
-    │   │       │   ├── p50k_base.go
-    │   │       │   ├── p50k_base_vocab.go
-    │   │       │   ├── p50k_edit.go
-    │   │       │   ├── r50k_base.go
-    │   │       │   ├── r50k_base_vocab.go
     │   │       │   ├── regexp.gen.go
     │   │       │   ├── regexp.go
     │   │       │   └── vocab.go
@@ -13422,1233 +13839,6 @@
     │       ├── yaml.go
     │       ├── yamlh.go
     │       └── yamlprivateh.go
-    ├── modernc.org
-    │   ├── libc
-    │   │   ├── .gitignore
-    │   │   ├── AUTHORS
-    │   │   ├── CONTRIBUTING.md
-    │   │   ├── CONTRIBUTORS
-    │   │   ├── LICENSE
-    │   │   ├── LICENSE-3RD-PARTY.md
-    │   │   ├── Makefile
-    │   │   ├── README.md
-    │   │   ├── abi0_linux_amd64.go
-    │   │   ├── abi0_linux_amd64.s
-    │   │   ├── aliases.go
-    │   │   ├── asm_386.s
-    │   │   ├── atomic.go
-    │   │   ├── atomic32.go
-    │   │   ├── atomic64.go
-    │   │   ├── build_all_targets.sh
-    │   │   ├── builder.json
-    │   │   ├── builtin.go
-    │   │   ├── builtin32.go
-    │   │   ├── builtin64.go
-    │   │   ├── builtin_all.go
-    │   │   ├── capi_*.go  (24 files)
-    │   │   ├── ccgo.go
-    │   │   ├── ccgo_*.go  (8 files)
-    │   │   ├── dmesg.go
-    │   │   ├── errno
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── errno_darwin_amd64.go
-    │   │   │   ├── errno_darwin_arm64.go
-    │   │   │   ├── errno_freebsd_386.go
-    │   │   │   ├── errno_freebsd_amd64.go
-    │   │   │   ├── errno_freebsd_arm.go
-    │   │   │   ├── errno_freebsd_arm64.go
-    │   │   │   ├── errno_illumos_amd64.go
-    │   │   │   ├── errno_linux_386.go
-    │   │   │   ├── errno_linux_amd64.go
-    │   │   │   ├── errno_linux_arm.go
-    │   │   │   ├── errno_linux_arm64.go
-    │   │   │   ├── errno_linux_loong64.go
-    │   │   │   ├── errno_linux_mips64le.go
-    │   │   │   ├── errno_linux_ppc64le.go
-    │   │   │   ├── errno_linux_riscv64.go
-    │   │   │   ├── errno_linux_s390x.go
-    │   │   │   ├── errno_netbsd_amd64.go
-    │   │   │   ├── errno_netbsd_arm.go
-    │   │   │   ├── errno_openbsd_386.go
-    │   │   │   ├── errno_openbsd_amd64.go
-    │   │   │   ├── errno_openbsd_arm64.go
-    │   │   │   ├── errno_windows_386.go
-    │   │   │   ├── errno_windows_amd64.go
-    │   │   │   └── errno_windows_arm64.go
-    │   │   ├── etc.go
-    │   │   ├── etc_musl.go
-    │   │   ├── fcntl
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── fcntl_darwin_amd64.go
-    │   │   │   ├── fcntl_darwin_arm64.go
-    │   │   │   ├── fcntl_freebsd_386.go
-    │   │   │   ├── fcntl_freebsd_amd64.go
-    │   │   │   ├── fcntl_freebsd_arm.go
-    │   │   │   ├── fcntl_freebsd_arm64.go
-    │   │   │   ├── fcntl_illumos_amd64.go
-    │   │   │   ├── fcntl_linux_386.go
-    │   │   │   ├── fcntl_linux_amd64.go
-    │   │   │   ├── fcntl_linux_arm.go
-    │   │   │   ├── fcntl_linux_arm64.go
-    │   │   │   ├── fcntl_linux_loong64.go
-    │   │   │   ├── fcntl_linux_mips64le.go
-    │   │   │   ├── fcntl_linux_ppc64le.go
-    │   │   │   ├── fcntl_linux_riscv64.go
-    │   │   │   ├── fcntl_linux_s390x.go
-    │   │   │   ├── fcntl_netbsd_amd64.go
-    │   │   │   ├── fcntl_netbsd_arm.go
-    │   │   │   ├── fcntl_openbsd_386.go
-    │   │   │   ├── fcntl_openbsd_amd64.go
-    │   │   │   ├── fcntl_openbsd_arm64.go
-    │   │   │   ├── fcntl_windows_386.go
-    │   │   │   ├── fcntl_windows_amd64.go
-    │   │   │   └── fcntl_windows_arm64.go
-    │   │   ├── fsync.go
-    │   │   ├── fts
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── fts_darwin_amd64.go
-    │   │   │   ├── fts_darwin_arm64.go
-    │   │   │   ├── fts_freebsd_386.go
-    │   │   │   ├── fts_freebsd_amd64.go
-    │   │   │   ├── fts_freebsd_arm.go
-    │   │   │   ├── fts_freebsd_arm64.go
-    │   │   │   ├── fts_illumos_amd64.go
-    │   │   │   ├── fts_linux_386.go
-    │   │   │   ├── fts_linux_amd64.go
-    │   │   │   ├── fts_linux_arm.go
-    │   │   │   ├── fts_linux_arm64.go
-    │   │   │   ├── fts_linux_loong64.go
-    │   │   │   ├── fts_linux_mips64le.go
-    │   │   │   ├── fts_linux_ppc64le.go
-    │   │   │   ├── fts_linux_riscv64.go
-    │   │   │   ├── fts_linux_s390x.go
-    │   │   │   ├── fts_netbsd_amd64.go
-    │   │   │   ├── fts_netbsd_arm.go
-    │   │   │   ├── fts_openbsd_386.go
-    │   │   │   ├── fts_openbsd_amd64.go
-    │   │   │   └── fts_openbsd_arm64.go
-    │   │   ├── grp
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── grp_darwin_amd64.go
-    │   │   │   ├── grp_darwin_arm64.go
-    │   │   │   ├── grp_freebsd_386.go
-    │   │   │   ├── grp_freebsd_amd64.go
-    │   │   │   ├── grp_freebsd_arm.go
-    │   │   │   ├── grp_freebsd_arm64.go
-    │   │   │   ├── grp_illumos_amd64.go
-    │   │   │   ├── grp_linux_386.go
-    │   │   │   ├── grp_linux_amd64.go
-    │   │   │   ├── grp_linux_arm.go
-    │   │   │   ├── grp_linux_arm64.go
-    │   │   │   ├── grp_linux_loong64.go
-    │   │   │   ├── grp_linux_mips64le.go
-    │   │   │   ├── grp_linux_ppc64le.go
-    │   │   │   ├── grp_linux_riscv64.go
-    │   │   │   ├── grp_linux_s390x.go
-    │   │   │   ├── grp_netbsd_amd64.go
-    │   │   │   ├── grp_netbsd_arm.go
-    │   │   │   ├── grp_openbsd_386.go
-    │   │   │   ├── grp_openbsd_amd64.go
-    │   │   │   └── grp_openbsd_arm64.go
-    │   │   ├── honnef.co
-    │   │   │   └── go
-    │   │   │       └── netdb
-    │   │   │           ├── README.md
-    │   │   │           └── netdb.go
-    │   │   ├── int128.go
-    │   │   ├── ioutil_darwin.go
-    │   │   ├── ioutil_freebsd.go
-    │   │   ├── ioutil_illumos.go
-    │   │   ├── ioutil_linux.go
-    │   │   ├── ioutil_netbsd.go
-    │   │   ├── ioutil_openbsd.go
-    │   │   ├── langinfo
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── langinfo_darwin_amd64.go
-    │   │   │   ├── langinfo_darwin_arm64.go
-    │   │   │   ├── langinfo_freebsd_386.go
-    │   │   │   ├── langinfo_freebsd_amd64.go
-    │   │   │   ├── langinfo_freebsd_arm.go
-    │   │   │   ├── langinfo_freebsd_arm64.go
-    │   │   │   ├── langinfo_illumos_amd64.go
-    │   │   │   ├── langinfo_linux_386.go
-    │   │   │   ├── langinfo_linux_amd64.go
-    │   │   │   ├── langinfo_linux_arm.go
-    │   │   │   ├── langinfo_linux_arm64.go
-    │   │   │   ├── langinfo_linux_loong64.go
-    │   │   │   ├── langinfo_linux_mips64le.go
-    │   │   │   ├── langinfo_linux_ppc64le.go
-    │   │   │   ├── langinfo_linux_riscv64.go
-    │   │   │   ├── langinfo_linux_s390x.go
-    │   │   │   ├── langinfo_netbsd_amd64.go
-    │   │   │   ├── langinfo_netbsd_arm.go
-    │   │   │   ├── langinfo_openbsd_386.go
-    │   │   │   ├── langinfo_openbsd_amd64.go
-    │   │   │   └── langinfo_openbsd_arm64.go
-    │   │   ├── libc.go
-    │   │   ├── libc32.go
-    │   │   ├── libc64.go
-    │   │   ├── libc_386.go
-    │   │   ├── libc_all.go
-    │   │   ├── libc_amd64.go
-    │   │   ├── libc_arm.go
-    │   │   ├── libc_arm64.go
-    │   │   ├── libc_darwin.go
-    │   │   ├── libc_darwin_amd64.go
-    │   │   ├── libc_darwin_arm64.go
-    │   │   ├── libc_freebsd.go
-    │   │   ├── libc_freebsd_386.go
-    │   │   ├── libc_freebsd_amd64.go
-    │   │   ├── libc_freebsd_arm.go
-    │   │   ├── libc_freebsd_arm64.go
-    │   │   ├── libc_illumos.go
-    │   │   ├── libc_illumos_amd64.go
-    │   │   ├── libc_linux.go
-    │   │   ├── libc_linux_amd64.go
-    │   │   ├── libc_linux_mips64le.go
-    │   │   ├── libc_mips64le.go
-    │   │   ├── libc_musl.go
-    │   │   ├── libc_musl_linux_386.go
-    │   │   ├── libc_musl_linux_amd64.go
-    │   │   ├── libc_musl_linux_arm.go
-    │   │   ├── libc_musl_linux_arm64.go
-    │   │   ├── libc_musl_linux_loong64.go
-    │   │   ├── libc_musl_linux_ppc64le.go
-    │   │   ├── libc_musl_linux_riscv64.go
-    │   │   ├── libc_musl_linux_s390x.go
-    │   │   ├── libc_netbsd.go
-    │   │   ├── libc_netbsd_amd64.go
-    │   │   ├── libc_netbsd_arm.go
-    │   │   ├── libc_openbsd.go
-    │   │   ├── libc_openbsd_386.go
-    │   │   ├── libc_openbsd_amd64.go
-    │   │   ├── libc_openbsd_arm64.go
-    │   │   ├── libc_unix.go
-    │   │   ├── libc_unix1.go
-    │   │   ├── libc_unix2.go
-    │   │   ├── libc_unix3.go
-    │   │   ├── libc_windows.go
-    │   │   ├── libc_windows_386.go
-    │   │   ├── libc_windows_386.s
-    │   │   ├── libc_windows_amd64.go
-    │   │   ├── libc_windows_arm64.go
-    │   │   ├── libc_windows_arm64.s
-    │   │   ├── limits
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── limits_darwin_amd64.go
-    │   │   │   ├── limits_darwin_arm64.go
-    │   │   │   ├── limits_freebsd_386.go
-    │   │   │   ├── limits_freebsd_amd64.go
-    │   │   │   ├── limits_freebsd_arm.go
-    │   │   │   ├── limits_freebsd_arm64.go
-    │   │   │   ├── limits_illumos_amd64.go
-    │   │   │   ├── limits_linux_386.go
-    │   │   │   ├── limits_linux_amd64.go
-    │   │   │   ├── limits_linux_arm.go
-    │   │   │   ├── limits_linux_arm64.go
-    │   │   │   ├── limits_linux_loong64.go
-    │   │   │   ├── limits_linux_mips64le.go
-    │   │   │   ├── limits_linux_ppc64le.go
-    │   │   │   ├── limits_linux_riscv64.go
-    │   │   │   ├── limits_linux_s390x.go
-    │   │   │   ├── limits_netbsd_amd64.go
-    │   │   │   ├── limits_netbsd_arm.go
-    │   │   │   ├── limits_openbsd_386.go
-    │   │   │   ├── limits_openbsd_amd64.go
-    │   │   │   ├── limits_openbsd_arm64.go
-    │   │   │   ├── limits_windows_386.go
-    │   │   │   ├── limits_windows_amd64.go
-    │   │   │   └── limits_windows_arm64.go
-    │   │   ├── mem.go
-    │   │   ├── mem_brk.go
-    │   │   ├── mem_brk_musl.go
-    │   │   ├── mem_expvar.go
-    │   │   ├── mem_musl.go
-    │   │   ├── memgrind.go
-    │   │   ├── memgrind_musl.go
-    │   │   ├── musl_darwin_amd64.go
-    │   │   ├── musl_darwin_arm64.go
-    │   │   ├── musl_freebsd_386.go
-    │   │   ├── musl_freebsd_amd64.go
-    │   │   ├── musl_freebsd_arm.go
-    │   │   ├── musl_freebsd_arm64.go
-    │   │   ├── musl_illumos_amd64.go
-    │   │   ├── musl_linux_mips64le.go
-    │   │   ├── musl_netbsd_amd64.go
-    │   │   ├── musl_netbsd_arm.go
-    │   │   ├── musl_openbsd_386.go
-    │   │   ├── musl_openbsd_amd64.go
-    │   │   ├── musl_openbsd_arm64.go
-    │   │   ├── musl_windows_386.go
-    │   │   ├── musl_windows_amd64.go
-    │   │   ├── musl_windows_arm64.go
-    │   │   ├── netdb
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── netdb_darwin_amd64.go
-    │   │   │   ├── netdb_darwin_arm64.go
-    │   │   │   ├── netdb_freebsd_386.go
-    │   │   │   ├── netdb_freebsd_amd64.go
-    │   │   │   ├── netdb_freebsd_arm.go
-    │   │   │   ├── netdb_freebsd_arm64.go
-    │   │   │   ├── netdb_illumos_amd64.go
-    │   │   │   ├── netdb_linux_386.go
-    │   │   │   ├── netdb_linux_amd64.go
-    │   │   │   ├── netdb_linux_arm.go
-    │   │   │   ├── netdb_linux_arm64.go
-    │   │   │   ├── netdb_linux_loong64.go
-    │   │   │   ├── netdb_linux_mips64le.go
-    │   │   │   ├── netdb_linux_ppc64le.go
-    │   │   │   ├── netdb_linux_riscv64.go
-    │   │   │   ├── netdb_linux_s390x.go
-    │   │   │   ├── netdb_netbsd_amd64.go
-    │   │   │   ├── netdb_netbsd_arm.go
-    │   │   │   ├── netdb_openbsd_386.go
-    │   │   │   ├── netdb_openbsd_amd64.go
-    │   │   │   └── netdb_openbsd_arm64.go
-    │   │   ├── netinet
-    │   │   │   └── in
-    │   │   │       ├── capi_darwin_amd64.go
-    │   │   │       ├── capi_darwin_arm64.go
-    │   │   │       ├── capi_freebsd_386.go
-    │   │   │       ├── capi_freebsd_amd64.go
-    │   │   │       ├── capi_freebsd_arm.go
-    │   │   │       ├── capi_freebsd_arm64.go
-    │   │   │       ├── capi_illumos_amd64.go
-    │   │   │       ├── capi_linux_386.go
-    │   │   │       ├── capi_linux_amd64.go
-    │   │   │       ├── capi_linux_arm.go
-    │   │   │       ├── capi_linux_arm64.go
-    │   │   │       ├── capi_linux_loong64.go
-    │   │   │       ├── capi_linux_mips64le.go
-    │   │   │       ├── capi_linux_ppc64le.go
-    │   │   │       ├── capi_linux_riscv64.go
-    │   │   │       ├── capi_linux_s390x.go
-    │   │   │       ├── capi_netbsd_amd64.go
-    │   │   │       ├── capi_netbsd_arm.go
-    │   │   │       ├── capi_openbsd_386.go
-    │   │   │       ├── capi_openbsd_amd64.go
-    │   │   │       ├── capi_openbsd_arm64.go
-    │   │   │       ├── in_darwin_amd64.go
-    │   │   │       ├── in_darwin_arm64.go
-    │   │   │       ├── in_freebsd_386.go
-    │   │   │       ├── in_freebsd_amd64.go
-    │   │   │       ├── in_freebsd_arm.go
-    │   │   │       ├── in_freebsd_arm64.go
-    │   │   │       ├── in_illumos_amd64.go
-    │   │   │       ├── in_linux_386.go
-    │   │   │       ├── in_linux_amd64.go
-    │   │   │       ├── in_linux_arm.go
-    │   │   │       ├── in_linux_arm64.go
-    │   │   │       ├── in_linux_loong64.go
-    │   │   │       ├── in_linux_mips64le.go
-    │   │   │       ├── in_linux_ppc64le.go
-    │   │   │       ├── in_linux_riscv64.go
-    │   │   │       ├── in_linux_s390x.go
-    │   │   │       ├── in_netbsd_amd64.go
-    │   │   │       ├── in_netbsd_arm.go
-    │   │   │       ├── in_openbsd_386.go
-    │   │   │       ├── in_openbsd_amd64.go
-    │   │   │       └── in_openbsd_arm64.go
-    │   │   ├── nodmesg.go
-    │   │   ├── nofsync.go
-    │   │   ├── poll
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── poll_darwin_amd64.go
-    │   │   │   ├── poll_darwin_arm64.go
-    │   │   │   ├── poll_freebsd_386.go
-    │   │   │   ├── poll_freebsd_amd64.go
-    │   │   │   ├── poll_freebsd_arm.go
-    │   │   │   ├── poll_freebsd_arm64.go
-    │   │   │   ├── poll_illumos_amd64.go
-    │   │   │   ├── poll_linux_386.go
-    │   │   │   ├── poll_linux_amd64.go
-    │   │   │   ├── poll_linux_arm.go
-    │   │   │   ├── poll_linux_arm64.go
-    │   │   │   ├── poll_linux_loong64.go
-    │   │   │   ├── poll_linux_mips64le.go
-    │   │   │   ├── poll_linux_ppc64le.go
-    │   │   │   ├── poll_linux_riscv64.go
-    │   │   │   ├── poll_linux_s390x.go
-    │   │   │   ├── poll_netbsd_amd64.go
-    │   │   │   ├── poll_netbsd_arm.go
-    │   │   │   ├── poll_openbsd_386.go
-    │   │   │   ├── poll_openbsd_amd64.go
-    │   │   │   └── poll_openbsd_arm64.go
-    │   │   ├── printf.go
-    │   │   ├── probes.go
-    │   │   ├── pthread
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── pthread_darwin_amd64.go
-    │   │   │   ├── pthread_darwin_arm64.go
-    │   │   │   ├── pthread_freebsd_386.go
-    │   │   │   ├── pthread_freebsd_amd64.go
-    │   │   │   ├── pthread_freebsd_arm.go
-    │   │   │   ├── pthread_freebsd_arm64.go
-    │   │   │   ├── pthread_illumos_amd64.go
-    │   │   │   ├── pthread_linux_386.go
-    │   │   │   ├── pthread_linux_amd64.go
-    │   │   │   ├── pthread_linux_arm.go
-    │   │   │   ├── pthread_linux_arm64.go
-    │   │   │   ├── pthread_linux_loong64.go
-    │   │   │   ├── pthread_linux_mips64le.go
-    │   │   │   ├── pthread_linux_ppc64le.go
-    │   │   │   ├── pthread_linux_riscv64.go
-    │   │   │   ├── pthread_linux_s390x.go
-    │   │   │   ├── pthread_netbsd_amd64.go
-    │   │   │   ├── pthread_netbsd_arm.go
-    │   │   │   ├── pthread_openbsd_386.go
-    │   │   │   ├── pthread_openbsd_amd64.go
-    │   │   │   ├── pthread_openbsd_arm64.go
-    │   │   │   ├── pthread_windows_386.go
-    │   │   │   ├── pthread_windows_amd64.go
-    │   │   │   └── pthread_windows_arm64.go
-    │   │   ├── pthread.go
-    │   │   ├── pthread_all.go
-    │   │   ├── pthread_musl.go
-    │   │   ├── pwd
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── pwd_darwin_amd64.go
-    │   │   │   ├── pwd_darwin_arm64.go
-    │   │   │   ├── pwd_freebsd_386.go
-    │   │   │   ├── pwd_freebsd_amd64.go
-    │   │   │   ├── pwd_freebsd_arm.go
-    │   │   │   ├── pwd_freebsd_arm64.go
-    │   │   │   ├── pwd_illumos_amd64.go
-    │   │   │   ├── pwd_linux_386.go
-    │   │   │   ├── pwd_linux_amd64.go
-    │   │   │   ├── pwd_linux_arm.go
-    │   │   │   ├── pwd_linux_arm64.go
-    │   │   │   ├── pwd_linux_loong64.go
-    │   │   │   ├── pwd_linux_mips64le.go
-    │   │   │   ├── pwd_linux_ppc64le.go
-    │   │   │   ├── pwd_linux_riscv64.go
-    │   │   │   ├── pwd_linux_s390x.go
-    │   │   │   ├── pwd_netbsd_amd64.go
-    │   │   │   ├── pwd_netbsd_arm.go
-    │   │   │   ├── pwd_openbsd_386.go
-    │   │   │   ├── pwd_openbsd_amd64.go
-    │   │   │   └── pwd_openbsd_arm64.go
-    │   │   ├── rtl.go
-    │   │   ├── scanf.go
-    │   │   ├── signal
-    │   │   │   ├── capi_*.go  (24 files)
-    │   │   │   ├── more_*.go  (21 files)
-    │   │   │   └── signal_*.go  (24 files)
-    │   │   ├── stdatomic.go
-    │   │   ├── stdio
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── stdio_darwin_amd64.go
-    │   │   │   ├── stdio_darwin_arm64.go
-    │   │   │   ├── stdio_freebsd_386.go
-    │   │   │   ├── stdio_freebsd_amd64.go
-    │   │   │   ├── stdio_freebsd_arm.go
-    │   │   │   ├── stdio_freebsd_arm64.go
-    │   │   │   ├── stdio_illumos_amd64.go
-    │   │   │   ├── stdio_linux_386.go
-    │   │   │   ├── stdio_linux_amd64.go
-    │   │   │   ├── stdio_linux_arm.go
-    │   │   │   ├── stdio_linux_arm64.go
-    │   │   │   ├── stdio_linux_loong64.go
-    │   │   │   ├── stdio_linux_mips64le.go
-    │   │   │   ├── stdio_linux_ppc64le.go
-    │   │   │   ├── stdio_linux_riscv64.go
-    │   │   │   ├── stdio_linux_s390x.go
-    │   │   │   ├── stdio_netbsd_amd64.go
-    │   │   │   ├── stdio_netbsd_arm.go
-    │   │   │   ├── stdio_openbsd_386.go
-    │   │   │   ├── stdio_openbsd_amd64.go
-    │   │   │   ├── stdio_openbsd_arm64.go
-    │   │   │   ├── stdio_windows_386.go
-    │   │   │   ├── stdio_windows_amd64.go
-    │   │   │   └── stdio_windows_arm64.go
-    │   │   ├── stdlib
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── stdlib_darwin_amd64.go
-    │   │   │   ├── stdlib_darwin_arm64.go
-    │   │   │   ├── stdlib_freebsd_386.go
-    │   │   │   ├── stdlib_freebsd_amd64.go
-    │   │   │   ├── stdlib_freebsd_arm.go
-    │   │   │   ├── stdlib_freebsd_arm64.go
-    │   │   │   ├── stdlib_illumos_amd64.go
-    │   │   │   ├── stdlib_linux_386.go
-    │   │   │   ├── stdlib_linux_amd64.go
-    │   │   │   ├── stdlib_linux_arm.go
-    │   │   │   ├── stdlib_linux_arm64.go
-    │   │   │   ├── stdlib_linux_loong64.go
-    │   │   │   ├── stdlib_linux_mips64le.go
-    │   │   │   ├── stdlib_linux_ppc64le.go
-    │   │   │   ├── stdlib_linux_riscv64.go
-    │   │   │   ├── stdlib_linux_s390x.go
-    │   │   │   ├── stdlib_netbsd_amd64.go
-    │   │   │   ├── stdlib_netbsd_arm.go
-    │   │   │   ├── stdlib_openbsd_386.go
-    │   │   │   ├── stdlib_openbsd_amd64.go
-    │   │   │   ├── stdlib_openbsd_arm64.go
-    │   │   │   ├── stdlib_windows_386.go
-    │   │   │   ├── stdlib_windows_amd64.go
-    │   │   │   └── stdlib_windows_arm64.go
-    │   │   ├── straceoff.go
-    │   │   ├── straceon.go
-    │   │   ├── surface.new
-    │   │   ├── surface.old
-    │   │   ├── sync.go
-    │   │   ├── sys
-    │   │   │   ├── socket
-    │   │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   │   ├── capi_freebsd_386.go
-    │   │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   │   ├── capi_linux_386.go
-    │   │   │   │   ├── capi_linux_amd64.go
-    │   │   │   │   ├── capi_linux_arm.go
-    │   │   │   │   ├── capi_linux_arm64.go
-    │   │   │   │   ├── capi_linux_loong64.go
-    │   │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   │   ├── capi_linux_s390x.go
-    │   │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   │   ├── capi_openbsd_386.go
-    │   │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   │   ├── socket_darwin_amd64.go
-    │   │   │   │   ├── socket_darwin_arm64.go
-    │   │   │   │   ├── socket_freebsd_386.go
-    │   │   │   │   ├── socket_freebsd_amd64.go
-    │   │   │   │   ├── socket_freebsd_arm.go
-    │   │   │   │   ├── socket_freebsd_arm64.go
-    │   │   │   │   ├── socket_illumos_amd64.go
-    │   │   │   │   ├── socket_linux_386.go
-    │   │   │   │   ├── socket_linux_amd64.go
-    │   │   │   │   ├── socket_linux_arm.go
-    │   │   │   │   ├── socket_linux_arm64.go
-    │   │   │   │   ├── socket_linux_loong64.go
-    │   │   │   │   ├── socket_linux_mips64le.go
-    │   │   │   │   ├── socket_linux_ppc64le.go
-    │   │   │   │   ├── socket_linux_riscv64.go
-    │   │   │   │   ├── socket_linux_s390x.go
-    │   │   │   │   ├── socket_netbsd_amd64.go
-    │   │   │   │   ├── socket_netbsd_arm.go
-    │   │   │   │   ├── socket_openbsd_386.go
-    │   │   │   │   ├── socket_openbsd_amd64.go
-    │   │   │   │   └── socket_openbsd_arm64.go
-    │   │   │   ├── stat
-    │   │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   │   ├── capi_freebsd_386.go
-    │   │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   │   ├── capi_linux_386.go
-    │   │   │   │   ├── capi_linux_amd64.go
-    │   │   │   │   ├── capi_linux_arm.go
-    │   │   │   │   ├── capi_linux_arm64.go
-    │   │   │   │   ├── capi_linux_loong64.go
-    │   │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   │   ├── capi_linux_s390x.go
-    │   │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   │   ├── capi_openbsd_386.go
-    │   │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   │   ├── capi_windows_386.go
-    │   │   │   │   ├── capi_windows_amd64.go
-    │   │   │   │   ├── capi_windows_arm64.go
-    │   │   │   │   ├── stat_darwin_amd64.go
-    │   │   │   │   ├── stat_darwin_arm64.go
-    │   │   │   │   ├── stat_freebsd_386.go
-    │   │   │   │   ├── stat_freebsd_amd64.go
-    │   │   │   │   ├── stat_freebsd_arm.go
-    │   │   │   │   ├── stat_freebsd_arm64.go
-    │   │   │   │   ├── stat_illumos_amd64.go
-    │   │   │   │   ├── stat_linux_386.go
-    │   │   │   │   ├── stat_linux_amd64.go
-    │   │   │   │   ├── stat_linux_arm.go
-    │   │   │   │   ├── stat_linux_arm64.go
-    │   │   │   │   ├── stat_linux_loong64.go
-    │   │   │   │   ├── stat_linux_mips64le.go
-    │   │   │   │   ├── stat_linux_ppc64le.go
-    │   │   │   │   ├── stat_linux_riscv64.go
-    │   │   │   │   ├── stat_linux_s390x.go
-    │   │   │   │   ├── stat_netbsd_amd64.go
-    │   │   │   │   ├── stat_netbsd_arm.go
-    │   │   │   │   ├── stat_openbsd_386.go
-    │   │   │   │   ├── stat_openbsd_amd64.go
-    │   │   │   │   ├── stat_openbsd_arm64.go
-    │   │   │   │   ├── stat_windows_386.go
-    │   │   │   │   ├── stat_windows_amd64.go
-    │   │   │   │   └── stat_windows_arm64.go
-    │   │   │   └── types
-    │   │   │       ├── capi_darwin_amd64.go
-    │   │   │       ├── capi_darwin_arm64.go
-    │   │   │       ├── capi_freebsd_386.go
-    │   │   │       ├── capi_freebsd_amd64.go
-    │   │   │       ├── capi_freebsd_arm.go
-    │   │   │       ├── capi_freebsd_arm64.go
-    │   │   │       ├── capi_illumos_amd64.go
-    │   │   │       ├── capi_linux_386.go
-    │   │   │       ├── capi_linux_amd64.go
-    │   │   │       ├── capi_linux_arm.go
-    │   │   │       ├── capi_linux_arm64.go
-    │   │   │       ├── capi_linux_loong64.go
-    │   │   │       ├── capi_linux_mips64le.go
-    │   │   │       ├── capi_linux_ppc64le.go
-    │   │   │       ├── capi_linux_riscv64.go
-    │   │   │       ├── capi_linux_s390x.go
-    │   │   │       ├── capi_netbsd_amd64.go
-    │   │   │       ├── capi_netbsd_arm.go
-    │   │   │       ├── capi_openbsd_386.go
-    │   │   │       ├── capi_openbsd_amd64.go
-    │   │   │       ├── capi_openbsd_arm64.go
-    │   │   │       ├── capi_windows_386.go
-    │   │   │       ├── capi_windows_amd64.go
-    │   │   │       ├── capi_windows_arm64.go
-    │   │   │       ├── types_darwin_amd64.go
-    │   │   │       ├── types_darwin_arm64.go
-    │   │   │       ├── types_freebsd_386.go
-    │   │   │       ├── types_freebsd_amd64.go
-    │   │   │       ├── types_freebsd_arm.go
-    │   │   │       ├── types_freebsd_arm64.go
-    │   │   │       ├── types_illumos_amd64.go
-    │   │   │       ├── types_linux_386.go
-    │   │   │       ├── types_linux_amd64.go
-    │   │   │       ├── types_linux_arm.go
-    │   │   │       ├── types_linux_arm64.go
-    │   │   │       ├── types_linux_loong64.go
-    │   │   │       ├── types_linux_mips64le.go
-    │   │   │       ├── types_linux_ppc64le.go
-    │   │   │       ├── types_linux_riscv64.go
-    │   │   │       ├── types_linux_s390x.go
-    │   │   │       ├── types_netbsd_amd64.go
-    │   │   │       ├── types_netbsd_arm.go
-    │   │   │       ├── types_openbsd_386.go
-    │   │   │       ├── types_openbsd_amd64.go
-    │   │   │       ├── types_openbsd_arm64.go
-    │   │   │       ├── types_windows_386.go
-    │   │   │       ├── types_windows_amd64.go
-    │   │   │       └── types_windows_arm64.go
-    │   │   ├── syscall_musl.go
-    │   │   ├── termios
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── termios_darwin_amd64.go
-    │   │   │   ├── termios_darwin_arm64.go
-    │   │   │   ├── termios_freebsd_386.go
-    │   │   │   ├── termios_freebsd_amd64.go
-    │   │   │   ├── termios_freebsd_arm.go
-    │   │   │   ├── termios_freebsd_arm64.go
-    │   │   │   ├── termios_illumos_amd64.go
-    │   │   │   ├── termios_linux_386.go
-    │   │   │   ├── termios_linux_amd64.go
-    │   │   │   ├── termios_linux_arm.go
-    │   │   │   ├── termios_linux_arm64.go
-    │   │   │   ├── termios_linux_loong64.go
-    │   │   │   ├── termios_linux_mips64le.go
-    │   │   │   ├── termios_linux_ppc64le.go
-    │   │   │   ├── termios_linux_riscv64.go
-    │   │   │   ├── termios_linux_s390x.go
-    │   │   │   ├── termios_netbsd_amd64.go
-    │   │   │   ├── termios_netbsd_arm.go
-    │   │   │   ├── termios_openbsd_386.go
-    │   │   │   ├── termios_openbsd_amd64.go
-    │   │   │   └── termios_openbsd_arm64.go
-    │   │   ├── time
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── time_darwin_amd64.go
-    │   │   │   ├── time_darwin_arm64.go
-    │   │   │   ├── time_freebsd_386.go
-    │   │   │   ├── time_freebsd_amd64.go
-    │   │   │   ├── time_freebsd_arm.go
-    │   │   │   ├── time_freebsd_arm64.go
-    │   │   │   ├── time_illumos_amd64.go
-    │   │   │   ├── time_linux_386.go
-    │   │   │   ├── time_linux_amd64.go
-    │   │   │   ├── time_linux_arm.go
-    │   │   │   ├── time_linux_arm64.go
-    │   │   │   ├── time_linux_loong64.go
-    │   │   │   ├── time_linux_mips64le.go
-    │   │   │   ├── time_linux_ppc64le.go
-    │   │   │   ├── time_linux_riscv64.go
-    │   │   │   ├── time_linux_s390x.go
-    │   │   │   ├── time_netbsd_amd64.go
-    │   │   │   ├── time_netbsd_arm.go
-    │   │   │   ├── time_openbsd_386.go
-    │   │   │   ├── time_openbsd_amd64.go
-    │   │   │   ├── time_openbsd_arm64.go
-    │   │   │   ├── time_windows_386.go
-    │   │   │   ├── time_windows_amd64.go
-    │   │   │   └── time_windows_arm64.go
-    │   │   ├── tls_linux_amd64.go
-    │   │   ├── tls_linux_amd64.s
-    │   │   ├── unistd
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── unistd_darwin_amd64.go
-    │   │   │   ├── unistd_darwin_arm64.go
-    │   │   │   ├── unistd_freebsd_386.go
-    │   │   │   ├── unistd_freebsd_amd64.go
-    │   │   │   ├── unistd_freebsd_arm.go
-    │   │   │   ├── unistd_freebsd_arm64.go
-    │   │   │   ├── unistd_illumos_amd64.go
-    │   │   │   ├── unistd_linux_386.go
-    │   │   │   ├── unistd_linux_amd64.go
-    │   │   │   ├── unistd_linux_arm.go
-    │   │   │   ├── unistd_linux_arm64.go
-    │   │   │   ├── unistd_linux_loong64.go
-    │   │   │   ├── unistd_linux_mips64le.go
-    │   │   │   ├── unistd_linux_ppc64le.go
-    │   │   │   ├── unistd_linux_riscv64.go
-    │   │   │   ├── unistd_linux_s390x.go
-    │   │   │   ├── unistd_netbsd_amd64.go
-    │   │   │   ├── unistd_netbsd_arm.go
-    │   │   │   ├── unistd_openbsd_386.go
-    │   │   │   ├── unistd_openbsd_amd64.go
-    │   │   │   ├── unistd_openbsd_arm64.go
-    │   │   │   ├── unistd_windows_386.go
-    │   │   │   ├── unistd_windows_amd64.go
-    │   │   │   └── unistd_windows_arm64.go
-    │   │   ├── utime
-    │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   ├── capi_linux_386.go
-    │   │   │   ├── capi_linux_amd64.go
-    │   │   │   ├── capi_linux_arm.go
-    │   │   │   ├── capi_linux_arm64.go
-    │   │   │   ├── capi_linux_loong64.go
-    │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   ├── capi_linux_s390x.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── capi_windows_386.go
-    │   │   │   ├── capi_windows_amd64.go
-    │   │   │   ├── capi_windows_arm64.go
-    │   │   │   ├── utime_darwin_amd64.go
-    │   │   │   ├── utime_darwin_arm64.go
-    │   │   │   ├── utime_freebsd_386.go
-    │   │   │   ├── utime_freebsd_amd64.go
-    │   │   │   ├── utime_freebsd_arm.go
-    │   │   │   ├── utime_freebsd_arm64.go
-    │   │   │   ├── utime_illumos_amd64.go
-    │   │   │   ├── utime_linux_386.go
-    │   │   │   ├── utime_linux_amd64.go
-    │   │   │   ├── utime_linux_arm.go
-    │   │   │   ├── utime_linux_arm64.go
-    │   │   │   ├── utime_linux_loong64.go
-    │   │   │   ├── utime_linux_mips64le.go
-    │   │   │   ├── utime_linux_ppc64le.go
-    │   │   │   ├── utime_linux_riscv64.go
-    │   │   │   ├── utime_linux_s390x.go
-    │   │   │   ├── utime_netbsd_amd64.go
-    │   │   │   ├── utime_netbsd_arm.go
-    │   │   │   ├── utime_openbsd_386.go
-    │   │   │   ├── utime_openbsd_amd64.go
-    │   │   │   ├── utime_openbsd_arm64.go
-    │   │   │   ├── utime_windows_386.go
-    │   │   │   ├── utime_windows_amd64.go
-    │   │   │   └── utime_windows_arm64.go
-    │   │   ├── uuid
-    │   │   │   ├── capi_freebsd_386.go
-    │   │   │   ├── capi_freebsd_amd64.go
-    │   │   │   ├── capi_freebsd_arm.go
-    │   │   │   ├── capi_freebsd_arm64.go
-    │   │   │   ├── capi_netbsd_amd64.go
-    │   │   │   ├── capi_netbsd_arm.go
-    │   │   │   ├── capi_openbsd_386.go
-    │   │   │   ├── capi_openbsd_amd64.go
-    │   │   │   ├── capi_openbsd_arm64.go
-    │   │   │   ├── uuid
-    │   │   │   │   ├── capi_darwin_amd64.go
-    │   │   │   │   ├── capi_darwin_arm64.go
-    │   │   │   │   ├── capi_illumos_amd64.go
-    │   │   │   │   ├── capi_linux_386.go
-    │   │   │   │   ├── capi_linux_amd64.go
-    │   │   │   │   ├── capi_linux_arm.go
-    │   │   │   │   ├── capi_linux_arm64.go
-    │   │   │   │   ├── capi_linux_loong64.go
-    │   │   │   │   ├── capi_linux_mips64le.go
-    │   │   │   │   ├── capi_linux_ppc64le.go
-    │   │   │   │   ├── capi_linux_riscv64.go
-    │   │   │   │   ├── capi_linux_s390x.go
-    │   │   │   │   ├── uuid_darwin_amd64.go
-    │   │   │   │   ├── uuid_darwin_arm64.go
-    │   │   │   │   ├── uuid_illumos_amd64.go
-    │   │   │   │   ├── uuid_linux_386.go
-    │   │   │   │   ├── uuid_linux_amd64.go
-    │   │   │   │   ├── uuid_linux_arm.go
-    │   │   │   │   ├── uuid_linux_arm64.go
-    │   │   │   │   ├── uuid_linux_loong64.go
-    │   │   │   │   ├── uuid_linux_mips64le.go
-    │   │   │   │   ├── uuid_linux_ppc64le.go
-    │   │   │   │   ├── uuid_linux_riscv64.go
-    │   │   │   │   └── uuid_linux_s390x.go
-    │   │   │   ├── uuid_freebsd_386.go
-    │   │   │   ├── uuid_freebsd_amd64.go
-    │   │   │   ├── uuid_freebsd_arm.go
-    │   │   │   ├── uuid_freebsd_arm64.go
-    │   │   │   ├── uuid_netbsd_amd64.go
-    │   │   │   ├── uuid_netbsd_arm.go
-    │   │   │   ├── uuid_openbsd_386.go
-    │   │   │   ├── uuid_openbsd_amd64.go
-    │   │   │   └── uuid_openbsd_arm64.go
-    │   │   ├── watch.go
-    │   │   └── wctype
-    │   │       ├── capi_darwin_amd64.go
-    │   │       ├── capi_darwin_arm64.go
-    │   │       ├── capi_freebsd_386.go
-    │   │       ├── capi_freebsd_amd64.go
-    │   │       ├── capi_freebsd_arm.go
-    │   │       ├── capi_freebsd_arm64.go
-    │   │       ├── capi_illumos_amd64.go
-    │   │       ├── capi_linux_386.go
-    │   │       ├── capi_linux_amd64.go
-    │   │       ├── capi_linux_arm.go
-    │   │       ├── capi_linux_arm64.go
-    │   │       ├── capi_linux_loong64.go
-    │   │       ├── capi_linux_mips64le.go
-    │   │       ├── capi_linux_ppc64le.go
-    │   │       ├── capi_linux_riscv64.go
-    │   │       ├── capi_linux_s390x.go
-    │   │       ├── capi_netbsd_amd64.go
-    │   │       ├── capi_netbsd_arm.go
-    │   │       ├── capi_openbsd_386.go
-    │   │       ├── capi_openbsd_amd64.go
-    │   │       ├── capi_openbsd_arm64.go
-    │   │       ├── capi_windows_386.go
-    │   │       ├── capi_windows_amd64.go
-    │   │       ├── capi_windows_arm64.go
-    │   │       ├── wctype_darwin_amd64.go
-    │   │       ├── wctype_darwin_arm64.go
-    │   │       ├── wctype_freebsd_386.go
-    │   │       ├── wctype_freebsd_amd64.go
-    │   │       ├── wctype_freebsd_arm.go
-    │   │       ├── wctype_freebsd_arm64.go
-    │   │       ├── wctype_illumos_amd64.go
-    │   │       ├── wctype_linux_386.go
-    │   │       ├── wctype_linux_amd64.go
-    │   │       ├── wctype_linux_arm.go
-    │   │       ├── wctype_linux_arm64.go
-    │   │       ├── wctype_linux_loong64.go
-    │   │       ├── wctype_linux_mips64le.go
-    │   │       ├── wctype_linux_ppc64le.go
-    │   │       ├── wctype_linux_riscv64.go
-    │   │       ├── wctype_linux_s390x.go
-    │   │       ├── wctype_netbsd_amd64.go
-    │   │       ├── wctype_netbsd_arm.go
-    │   │       ├── wctype_openbsd_386.go
-    │   │       ├── wctype_openbsd_amd64.go
-    │   │       ├── wctype_openbsd_arm64.go
-    │   │       ├── wctype_windows_386.go
-    │   │       ├── wctype_windows_amd64.go
-    │   │       └── wctype_windows_arm64.go
-    │   ├── mathutil
-    │   │   ├── AUTHORS
-    │   │   ├── CONTRIBUTORS
-    │   │   ├── LICENSE
-    │   │   ├── Makefile
-    │   │   ├── README
-    │   │   ├── binarylog.go
-    │   │   ├── bits.go
-    │   │   ├── builder.json
-    │   │   ├── envelope.go
-    │   │   ├── int.go
-    │   │   ├── mathutil.go
-    │   │   ├── nist-sts-2-1-1-report
-    │   │   ├── permute.go
-    │   │   ├── poly.go
-    │   │   ├── primes.go
-    │   │   ├── rat.go
-    │   │   ├── rnd.go
-    │   │   ├── sqr.go
-    │   │   ├── sqr_std.go
-    │   │   ├── tables.go
-    │   │   └── test_deps.go
-    │   ├── memory
-    │   │   ├── AUTHORS
-    │   │   ├── CONTRIBUTORS
-    │   │   ├── LICENSE
-    │   │   ├── LICENSE-GO
-    │   │   ├── LICENSE-LOGO
-    │   │   ├── LICENSE-MMAP-GO
-    │   │   ├── Makefile
-    │   │   ├── README.md
-    │   │   ├── builder.json
-    │   │   ├── counters.go
-    │   │   ├── logo.png
-    │   │   ├── memory.go
-    │   │   ├── memory32.go
-    │   │   ├── memory64.go
-    │   │   ├── mmap_unix.go
-    │   │   ├── mmap_windows.go
-    │   │   ├── nocounters.go
-    │   │   ├── trace_disabled.go
-    │   │   └── trace_enabled.go
-    │   └── sqlite
-    │       ├── AUTHORS
-    │       ├── CONTRIBUTORS
-    │       ├── LICENSE
-    │       └── lib
-    │           ├── defs.go
-    │           ├── hooks.go
-    │           ├── hooks_linux_arm64.go
-    │           ├── mutex.go
-    │           ├── sqlite_darwin_amd64.go
-    │           ├── sqlite_darwin_arm64.go
-    │           ├── sqlite_freebsd_386.go
-    │           ├── sqlite_freebsd_amd64.go
-    │           ├── sqlite_freebsd_arm.go
-    │           ├── sqlite_freebsd_arm64.go
-    │           ├── sqlite_linux_386.go
-    │           ├── sqlite_linux_amd64.go
-    │           ├── sqlite_linux_arm.go
-    │           ├── sqlite_linux_arm64.go
-    │           ├── sqlite_linux_loong64.go
-    │           ├── sqlite_linux_ppc64le.go
-    │           ├── sqlite_linux_riscv64.go
-    │           ├── sqlite_linux_s390x.go
-    │           ├── sqlite_netbsd_amd64.go
-    │           ├── sqlite_openbsd_amd64.go
-    │           ├── sqlite_openbsd_arm64.go
-    │           ├── sqlite_windows.go
-    │           └── sqlite_windows_386.go
     ├── modules.txt
     └── software.sslmate.com
         └── src
@@ -14667,4 +13857,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1865 directories, 14803 files
+1855 directories, 14114 files
