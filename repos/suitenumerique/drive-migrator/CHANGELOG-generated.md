@@ -1,22 +1,33 @@
-## Changelog : drive-migrator (30 derniers jours, au 26/10/2026)
+## Changelog : drive-migrator (30 derniers jours, au 29 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur la fiabilité des migrations et la visibilité des données. Un nouveau système de tentatives automatiques a été introduit pour limiter les échecs dus aux erreurs réseau, tandis que la gestion des fichiers refusés par les destinations a été simplifiée grâce à l'archivage automatique et à l'envoi de rapports détaillés. Enfin, de nouveaux outils de suivi permettent désormais de vérifier précisément l'intégrité des fichiers migrés.
+Ce mois-ci, les efforts se sont concentrés sur la fiabilité des migrations et la transparence vis-à-vis de l'utilisateur. L'outil est désormais plus résilient face aux erreurs réseau temporaires et offre une bien meilleure visibilité sur le succès ou l'échec des transferts, notamment grâce à de nouveaux rapports d'intégrité et une gestion améliorée des fichiers refusés par les destinations.
 
 ### Évolutions fonctionnelles
-- **Suivi de l'intégrité** : Ajout de rapports d'intégrité détaillés par fichier, affichage des compteurs d'intégrité sur les cartes d'espaces de travail et intégration des rapports de migration dans l'interface d'administration.
-- **Gestion des fichiers refusés** : Les fichiers refusés par une destination sont désormais archivés et un lien de téléchargement (ou un fichier CSV) est automatiquement inclus dans les e-mails de notification.
-- **Expérience utilisateur** : Amélioration du guidage pour les utilisateurs sans compte Drive, ajout du logo ProConnect et affichage d'informations sur la disponibilité du transfert d'accès.
-- **Administration** : Ajout d'informations sur les espaces de travail dans la liste des tâches de l'interface admin.
+- **Gestion des échecs et fichiers refusés** : 
+    - Archivage automatique des fichiers rejetés par une destination.
+    - Envoi d'un récapitulatif (fichier CSV) des fichiers ayant échoué directement par e-mail.
+    - Ajout d'un point de terminaison (endpoint) pour télécharger les fichiers refusés.
+- **Visibilité et rapports d'intégrité** : 
+    - Mise en place de rapports d'intégrité détaillés par fichier pour vérifier la conformité après migration.
+    - Affichage des statistiques d'intégrité et des écarts directement sur les cartes des espaces de travail et dans l'interface d'administration.
+- **Amélioration de l'expérience utilisateur** : 
+    - Messages d'aide plus explicites concernant la nécessité de se reconnecter ou de posséder un compte Drive.
+    - Affichage des informations de l'espace de travail dans la liste des tâches administratives.
+    - Mise à jour visuelle (logo ProConnect sur la page de connexion).
 
 ### Évolutions techniques
-- **Résilience et fiabilité** : Implémentation d'une session de tentatives partagée (`RetryingSession`) pour gérer automatiquement les erreurs d'API transitoires (timeouts, erreurs 5xx) sur les services Osmose, Resana et Drive.
-- **Améliorations des intégrations** :
-    - **Resana** : Utilisation des UUID GED pour une identification plus robuste et mise en place d'un système de verrouillage des espaces de travail (`ResanaLockClient`).
-    - **Drive** : Migration vers l'API "resource server", déclaration de la taille des fichiers lors de la création et gestion plus souple des fichiers refusés pour éviter l'échec complet d'une migration.
-- **Infrastructure et DevOps** : Adoption de l'outil `uv` pour la gestion du projet et des dépendances, passage à des images Docker Alpine et mises à jour des environnements Node et Nginx.
-- **Sécurité** : Mise à jour de dépendances critiques (Django, PyJWT, Pillow, Certifi) et sécurisation des données utilisateurs dans les liens de l'administration.
-- **Observabilité** : Enrichissement des logs (niveaux INFO, durée de vie des tokens, logs de téléchargement Drive) et ajout de métriques analytiques (PostHog) pour la taille des espaces de travail et les types de fichiers.
+- **Fiabilité et résilience** : 
+    - Implémentation d'un mécanisme de tentatives automatiques (`RetryingSession`) pour les appels API vers Resana, Osmose et Drive afin de mieux gérer les erreurs transitoires (timeouts, erreurs 5xx).
+    - Optimisation de la gestion des sessions partagées pour les appels API.
+- **Modernisation de l'infrastructure et de l'outillage** : 
+    - Migration complète vers l'outil `uv` pour la gestion du projet et des dépendances.
+    - Optimisation des images Docker (utilisation de bases Alpine et images MinIO via Chainguard).
+    - Passage de Gunicorn en mode "threaded workers" pour améliorer la gestion des téléchargements longs.
+- **Sécurité et maintenance** : 
+    - Mises à jour de sécurité critiques sur Django, PyJWT, Pillow et Certifi.
+    - Amélioration de l'observabilité via des logs plus détaillés (durée de vie des tokens, logs INFO vers la console).
+    - Intégration de l'envoi de métadonnées (taille des espaces, types de fichiers) vers PostHog.
 
 ### Autres changements
 - Documentation des différents états de vérification de l'intégrité des migrations.
