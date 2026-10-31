@@ -1,40 +1,34 @@
-## Changelog : anssi-portail (30 derniers jours, au 27 octobre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-Ce mois a été marqué par un enrichissement significatif des outils d'accompagnement, notamment avec le déploiement d'un simulateur de hameçonnage et de nouveaux modèles de documents dans la boîte à outils. Le portail améliore également sa visibilité et son engagement grâce à l'intégration d'un nouveau blog et d'un parcours de sécurisation plus présent dans l'interface. Parallèlement, une importante phase de restructuration technique a permis de rendre le code plus modulaire et robuste.
+Ce mois a été marqué par une montée en puissance majeure des outils interactifs. Le simulateur de hameçonnage est désormais pleinement opérationnel avec de nombreux scénarios réalistes et un système de correction immédiate. La boîte à outils s'est considérablement enrichie de nouveaux modèles de documents et d'un système de collecte d'avis utilisateurs, tandis que les parcours de sécurisation sont désormais intégrés de manière fluide à travers tout le portail pour mieux guider les utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Nouveaux outils de sensibilisation :**
-  - Mise en place d'un test de hameçonnage complet incluant une boîte mail simulée, des illustrations animées et des fonctionnalités de vote (adaptées desktop et mobile).
-  - Intégration de nouveaux modèles dans la boîte à outils (revue des droits d'accès, revue de comptes utilisateurs, modification de mots de passe et listes d'activités).
-- **Parcours de sécurisation :**
-  - Meilleure visibilité du parcours de sécurisation via son intégration dans le menu, le pied de page, le héros de la page d'accueil et les résultats des tests (maturité, réflexes cyber).
-- **Contenu et Blog :**
-  - Lancement d'une section blog permettant la consultation d'articles, la lecture de résumés et la soumission de retours utilisateurs.
-- **Annuaire et Contacts :**
-  - Enrichissement des données de contact (nationaux, régionaux et sectoriels) et amélioration de la recherche et de l'affichage des cartes de contacts.
-- **Expérience utilisateur (UX) :**
-  - Optimisation de l'affichage sur tablettes et mobiles pour les tests et les outils.
-  - Amélioration de la navigation et correction de divers éléments d'interface (filtres, accordéons, popovers).
-  - Mise en place d'un système de retours utilisateurs sur les outils pour améliorer la qualité des services.
+- **Simulateur de hameçonnage** : 
+    - Ajout de nombreux scénarios d'emails (ANSSI, Banque Postale, Orange, La Poste, CPF, Inpi, ProConnect) incluant leurs réponses types.
+    - Amélioration de l'expérience utilisateur avec un retour visuel immédiat (bonne/mauvaise réponse), la distinction des messages lus et une interface entièrement adaptée aux mobiles et tablettes.
+- **Boîte à outils** : 
+    - Ajout de nouveaux modèles de documents (revue des droits d'accès, revue de comptes utilisateurs, modification de mots de passe, liste d'activités, annuaire de crise).
+    - Mise en place d'un système de retours utilisateurs permettant de noter les outils et de soumettre des commentaires directement depuis l'interface.
+- **Parcours de sécurisation** : Intégration visuelle et fonctionnelle des parcours dans les zones clés du site (page d'accueil, résultats de tests, scores de maturité et pied de page) pour un accompagnement personnalisé.
+- **Blog & Contacts** : 
+    - Déploiement de la section blog avec gestion des articles et des retours utilisateurs.
+    - Enrichissement de l'annuaire de contacts avec l'ajout de données nationales, régionales et sectorielles.
 
 ### Évolutions techniques
-- **Architecture et Refactoring :**
-  - Modularisation importante du code : découpage des tests en composants, isolation de la logique de manipulation de fichiers Excel (XLSX) et réorganisation des routes API (outils, annuaires, mini-tests).
-  - Refonte de la gestion des utilisateurs et des dossiers pour une meilleure maintenabilité.
-  - Implémentation d'un pattern "stratégie" pour certains services.
-- **Design System et UI :**
-  - Centralisation de la définition de l'UI-KIT et mise à jour vers la version 1.64.0.
-  - Intégration native des composants Svelte du DSFR (alertes, notices).
-- **Infrastructure et CI/CD :**
-  - Migration de la stack vers Node.js 26.
-  - Mise à jour de l'environnement Ruby et des runners GitHub Actions.
-  - Utilisation de `.nvmrc` comme référence pour la version de Node.js.
-- **Qualité et Tests :**
-  - Renforcement du typage TypeScript et nettoyage des règles de linting.
-  - Amélioration de la structure des tests et remplacement de certains outils de simulation par Vitest.
+- **Architecture & API** : 
+    - Réorganisation complète des routes API (outils, annuaires, authentification, mini-tests) pour une meilleure structure.
+    - Centralisation de la gestion des états (emails, outils) via un store pour plus de cohérence.
+- **Infrastructure & Toolchain** : 
+    - Migration de la stack vers Node.js 26.
+    - Mise à jour de l'environnement Ruby et optimisation de la configuration Svelte (hot reload, chargement des chunks).
+- **Frontend** : 
+    - Refactorisation du simulateur de hameçonnage en composants réutilisables.
+    - Adoption accrue des composants du Design System (DSFR) pour les alertes et les notifications.
+- **Performance & Robustesse** : 
+    - Implémentation du cache pour les articles du blog.
+    - Amélioration de la gestion des erreurs avec un composant 404 réutilisable.
 
 ### Autres changements
-- **SEO et Référencement :** Mise à jour des titres, descriptions et métadonnées pour les réseaux sociaux et le sitemap.
-- **Nettoyage :** Suppression de nombreuses dépendances et configurations obsolètes (overrides, anciens services Crisp, contacts Jekyll).
-- **Documentation :** Mise à jour des contenus textuels et harmonisation de la terminologie.
+- **SEO & Visibilité** : Optimisation des métadonnées (titres, descriptions, réseaux sociaux) et intégration des articles du blog dans le sitemap.
+- **Maintenance** : Nettoyage des dépendances obsolètes, suppression des commentaires inutiles et harmonisation du nommage des fichiers et variables.
