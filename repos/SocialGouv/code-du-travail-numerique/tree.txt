@@ -351,6 +351,7 @@
 │   │   │   │   │       ├── indemnite-rupture-conventionnelle.png
 │   │   │   │   │       ├── infographies-download.svg
 │   │   │   │   │       ├── legifrance.svg
+│   │   │   │   │       ├── logo-carre.png
 │   │   │   │   │       ├── logo-marianne.png
 │   │   │   │   │       ├── logo-rf.svg
 │   │   │   │   │       ├── logo.svg
@@ -624,14 +625,20 @@
 │   │   │       │   ├── NewsContainer.tsx
 │   │   │       │   ├── NewsList.tsx
 │   │   │       │   ├── __tests__
+│   │   │       │   │   ├── NewsImage.test.tsx
 │   │   │       │   │   ├── NewsItem.test.tsx
+│   │   │       │   │   ├── NewsList.test.tsx
 │   │   │       │   │   ├── __snapshots__
 │   │   │       │   │   │   └── rss.test.ts.snap
+│   │   │       │   │   ├── dates.test.ts
+│   │   │       │   │   ├── format.test.ts
 │   │   │       │   │   ├── rss.test.ts
 │   │   │       │   │   ├── rssRoute.test.ts
 │   │   │       │   │   └── rssRouteNoCache.test.ts
 │   │   │       │   ├── component
+│   │   │       │   │   ├── NewsImage.tsx
 │   │   │       │   │   └── NewsItem.tsx
+│   │   │       │   ├── dates.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── queries.ts
 │   │   │       │   ├── rss.ts
@@ -708,6 +715,7 @@
 │   │   │       │   │   ├── Html.test.tsx
 │   │   │       │   │   ├── PublishedDate.test.tsx
 │   │   │       │   │   ├── ReferenceList.test.tsx
+│   │   │       │   │   ├── References.test.tsx
 │   │   │       │   │   ├── RelatedItems.test.tsx
 │   │   │       │   │   ├── Share.test.tsx
 │   │   │       │   │   ├── ThemeTags.test.tsx
@@ -737,6 +745,7 @@
 │   │   │       │   └── abTests.ts
 │   │   │       ├── contributions
 │   │   │       │   ├── AgreementSearchFormBlock.tsx
+│   │   │       │   ├── AnswerScopeDisclaimer.tsx
 │   │   │       │   ├── ContentSP.tsx
 │   │   │       │   ├── ContributionAgreement.tsx
 │   │   │       │   ├── ContributionAgreementContent.tsx
@@ -750,6 +759,7 @@
 │   │   │       │   ├── __tests__
 │   │   │       │   │   ├── ContributionAgreement.test.tsx
 │   │   │       │   │   ├── ContributionAgreementDeclinations.test.tsx
+│   │   │       │   │   ├── answerScopePilot.test.tsx
 │   │   │       │   │   ├── cc-funnel.tracking.test.tsx
 │   │   │       │   │   ├── contribution-enterprise-prefill.test.tsx
 │   │   │       │   │   ├── contribution-generic.tracking.test.tsx
@@ -758,6 +768,7 @@
 │   │   │       │   │   ├── queries.es.test.ts
 │   │   │       │   │   ├── ui.ts
 │   │   │       │   │   └── useContentViewTracking.test.ts
+│   │   │       │   ├── answerScopePilot.ts
 │   │   │       │   ├── contributionUtils.ts
 │   │   │       │   ├── explore-themes
 │   │   │       │   │   ├── ExploreThemes.tsx
@@ -922,9 +933,12 @@
 │   │   │       │   └── utils.ts
 │   │   │       ├── fiche-service-public
 │   │   │       │   ├── FicheServicePublicContainer.tsx
+│   │   │       │   ├── RecommendedLinks.tsx
 │   │   │       │   ├── __tests__
+│   │   │       │   │   ├── RecommendedLinks.test.tsx
 │   │   │       │   │   ├── ficheServicePublic.test.tsx
-│   │   │       │   │   └── querie.es.test.ts
+│   │   │       │   │   ├── querie.es.test.ts
+│   │   │       │   │   └── recommended-links.test.ts
 │   │   │       │   ├── builder
 │   │   │       │   │   ├── __tests__
 │   │   │       │   │   │   ├── FicheServicePublic.test.tsx
@@ -1009,7 +1023,10 @@
 │   │   │       │   │   │   └── injectContributionPromos.test.ts
 │   │   │       │   │   ├── config.ts
 │   │   │       │   │   └── injectContributionPromos.ts
-│   │   │       │   └── queries.ts
+│   │   │       │   ├── queries.ts
+│   │   │       │   ├── recommended-links.ts
+│   │   │       │   ├── tracking.ts
+│   │   │       │   └── types.ts
 │   │   │       ├── glossaire
 │   │   │       │   ├── AlphabeticList.tsx
 │   │   │       │   ├── GlossaryList.tsx
@@ -2269,8 +2286,10 @@
 │   │   │       │       │   │   └── builders.test.ts.snap
 │   │   │       │       │   ├── builders.test.ts
 │   │   │       │       │   ├── components.test.tsx
+│   │   │       │       │   ├── faqAnswer.test.ts
 │   │   │       │       │   └── safeJsonStringify.test.ts
 │   │   │       │       ├── builders.ts
+│   │   │       │       ├── faqAnswer.ts
 │   │   │       │       ├── index.ts
 │   │   │       │       └── safeJsonStringify.ts
 │   │   │       ├── stats
@@ -4066,4 +4085,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-985 directories, 3083 files
+985 directories, 3102 files

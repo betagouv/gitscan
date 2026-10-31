@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.250.1](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.250.0...v4.250.1) (2026-10-30)
+
+### Bug Fixes
+
+* **ci:** réinitialise le working tree entre deux tentatives de publish npm ([#7579](https://github.com/SocialGouv/code-du-travail-numerique/issues/7579)) ([8011053](https://github.com/SocialGouv/code-du-travail-numerique/commit/8011053d49a7eb06774130e6f1eea5ad7702a90b))
+
+
+# [4.250.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.249.0...v4.250.0) (2026-10-29)
+
+### Bug Fixes
+
+* **sentry:** initialise le SDK serveur et applique réellement la config de build ([#7578](https://github.com/SocialGouv/code-du-travail-numerique/issues/7578)) ([fa19684](https://github.com/SocialGouv/code-du-travail-numerique/commit/fa196840a961829df7c80d48c383132247919120))
+
+### Features
+
+* **contribution:** ajout d'une introduction pour les conventions collectives ([#7567](https://github.com/SocialGouv/code-du-travail-numerique/issues/7567)) ([a1bd19f](https://github.com/SocialGouv/code-du-travail-numerique/commit/a1bd19fc23bc624e2f69e72702fd642fea546ac2))
+
+
+# [4.249.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.248.0...v4.249.0) (2026-10-26)
+
+
+### Bug Fixes
+
+* **security:** bump Node.js to 24.22.1 (October 2026 security releases) ([#7571](https://github.com/SocialGouv/code-du-travail-numerique/issues/7571)) ([748c974](https://github.com/SocialGouv/code-du-travail-numerique/commit/748c974ffde33fd8710fc77d2c776b1536132aa3))
+
+
+### Features
+
+* **actualites:** heure de publication dans le JSON-LD, l'Open Graph et le flux RSS ([#7569](https://github.com/SocialGouv/code-du-travail-numerique/issues/7569)) ([9787ad0](https://github.com/SocialGouv/code-du-travail-numerique/commit/9787ad0544a5ab005ea613f80ee56ef1cd4c1ed7))
+* **actualites:** image, « Pour aller plus loin », « Références » et SEO de l'image ([#7553](https://github.com/SocialGouv/code-du-travail-numerique/issues/7553)) ([9cd170e](https://github.com/SocialGouv/code-du-travail-numerique/commit/9cd170edea2cbdabfac0cb1681a6b2ae26aa7e04))
+* **fiche-service-public:** liens recommandés vers nos contenus et events Matomo ([#7544](https://github.com/SocialGouv/code-du-travail-numerique/issues/7544)) ([0478e79](https://github.com/SocialGouv/code-du-travail-numerique/commit/0478e791c062e690a02c5045a762293efb47e32d))
+* **seo:** dates ISO du JSON-LD Legislation, Open Graph article des contenus et logo PNG ([#7548](https://github.com/SocialGouv/code-du-travail-numerique/issues/7548)) ([#7572](https://github.com/SocialGouv/code-du-travail-numerique/issues/7572)) ([5c474be](https://github.com/SocialGouv/code-du-travail-numerique/commit/5c474be8d5b00753004b3967520a4dbe679889e6))
+
+
+
+
+
+# [4.248.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.247.0...v4.248.0) (2026-10-19)
+
+
+### Bug Fixes
+
+* **actualités:** correction d'une type sur l'affichage de la date sur l'accueil ([e8c389c](https://github.com/SocialGouv/code-du-travail-numerique/commit/e8c389cf76661f843091c931b91d7355bc295299))
+
+
+### Features
+
+* **contribution:** test d'amélioration du SEO sur les contributions ([#7511](https://github.com/SocialGouv/code-du-travail-numerique/issues/7511)) ([1a5deee](https://github.com/SocialGouv/code-du-travail-numerique/commit/1a5deee8353918b39a04974431da460d335db81d))
+
+
+
+
+
 # [4.247.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.246.0...v4.247.0) (2026-10-06)
 
 
