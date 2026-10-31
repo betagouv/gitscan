@@ -1,78 +1,21 @@
 .
 ├── .ai
-│   ├── agents
-│   │   ├── .gitkeep
-│   │   ├── core
-│   │   │   ├── deep-search.md
-│   │   │   ├── explore-codebase.md
-│   │   │   ├── fast-coder.md
-│   │   │   ├── prompt-engineering.md
-│   │   │   └── websearch.md
-│   │   └── fruggr
-│   │       └── fruggr-fast-coder.md
-│   ├── avatars
-│   │   ├── README.md
-│   │   ├── developer.md
-│   │   ├── product-owner.md
-│   │   └── ux-designer.md
-│   ├── cli
-│   ├── commands
-│   │   ├── .gitkeep
-│   │   ├── code-quality
-│   │   │   ├── code-analyse.md
-│   │   │   ├── code-ci.md
-│   │   │   ├── code-clean.md
-│   │   │   ├── code-explain.md
-│   │   │   └── code-optimize.md
-│   │   ├── core
-│   │   │   ├── agent-create.md
-│   │   │   ├── avatar-create.md
-│   │   │   ├── command-create.md
-│   │   │   ├── context-cleanup.md
-│   │   │   ├── deep-search.md
-│   │   │   ├── feature-create.md
-│   │   │   └── migrate.md
-│   │   ├── fruggr
-│   │   │   └── fix-recommendation.md
-│   │   ├── git
-│   │   │   └── code-commit.md
-│   │   ├── github
-│   │   │   ├── code-issue-process.md
-│   │   │   ├── code-pr-create.md
-│   │   │   └── code-pr-process-comments.md
-│   │   └── image-manipulation
-│   │       └── image2md.md
-│   ├── config.jsonc
-│   ├── context
-│   │   ├── api-patterns.md
-│   │   ├── architecture.md
-│   │   ├── commands.md
-│   │   ├── conventions.md
-│   │   ├── database.md
-│   │   ├── deployment.md
-│   │   ├── domain.md
-│   │   ├── git-workflow.md
-│   │   ├── maps.md
-│   │   ├── nextjs-patterns.md
-│   │   ├── security.md
-│   │   ├── stack.md
-│   │   ├── state-management.md
-│   │   ├── styling.md
-│   │   └── testing.md
-│   ├── mcps
-│   │   ├── .env.example
-│   │   ├── README.md
-│   │   └── config.jsonc
-│   ├── media
-│   │   ├── finish.mp3
-│   │   └── need-human.mp3
-│   └── scripts
-│       ├── claude
-│       │   ├── statusline-ccusage.sh
-│       │   └── statusline.readme.md
-│       ├── log.sh
-│       ├── validate-command.mjs
-│       └── validate-command.readme.md
+│   └── context
+│       ├── api-patterns.md
+│       ├── architecture.md
+│       ├── commands.md
+│       ├── conventions.md
+│       ├── database.md
+│       ├── deployment.md
+│       ├── domain.md
+│       ├── git-workflow.md
+│       ├── maps.md
+│       ├── nextjs-patterns.md
+│       ├── security.md
+│       ├── stack.md
+│       ├── state-management.md
+│       ├── styling.md
+│       └── testing.md
 ├── .buildpacks
 ├── .editorconfig
 ├── .env
@@ -80,6 +23,7 @@
 ├── .env.test
 ├── .gitguardian.yaml
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
@@ -124,6 +68,8 @@
 ├── pnpm-workspace.yaml
 ├── postcss.config.mjs
 ├── public
+│   ├── .well-known
+│   │   └── security.txt
 │   ├── 2021_janvier_aides_financières_Vp.pdf
 │   ├── AMORCE.pdf
 │   ├── APC.pdf
@@ -461,6 +407,10 @@
 │   ├── google784494fb923a441d.html
 │   ├── guide_raccordement_des_coproprietes.pdf
 │   ├── icons
+│   │   ├── ccrt-timeline-dot.svg
+│   │   ├── ccrt-timeline-email-dot.svg
+│   │   ├── ccrt-timeline-email-line.svg
+│   │   ├── ccrt-timeline-line.svg
 │   │   ├── check.svg
 │   │   ├── classed-network.svg
 │   │   ├── cold-network.svg
@@ -468,70 +418,14 @@
 │   │   ├── enrr.svgr
 │   │   ├── github-brands.svg
 │   │   ├── grid-line.svg
-│   │   ├── icon-feuille.png
-│   │   ├── icon-graph.png
-│   │   ├── icon-immeuble.png
-│   │   ├── icon-linkedin.png
-│   │   ├── icon-money.png
-│   │   ├── icon-star.png
-│   │   ├── icon-thermometre.png
-│   │   ├── icon-thumbs-down.png
-│   │   ├── icon-thumbs-up.png
-│   │   ├── icon-warning.png
-│   │   ├── icon-wheel.png
+│   │   ├── icon-*.png  (11 files)
 │   │   ├── outils.svgr
-│   │   ├── picto-arrow.svg
-│   │   ├── picto-carto.svg
-│   │   ├── picto-check.svg
-│   │   ├── picto-compte-pro.svg
-│   │   ├── picto-confort.svg
-│   │   ├── picto-connection.svg
-│   │   ├── picto-copro.svg
-│   │   ├── picto-ecology.svg
-│   │   ├── picto-economic.svg
-│   │   ├── picto-fioul-noir.svg
-│   │   ├── picto-fioul.svg
-│   │   ├── picto-gaz-bleu.svg
-│   │   ├── picto-gaz.svg
-│   │   ├── picto-info.svg
-│   │   ├── picto-invoice.svg
-│   │   ├── picto-network.svg
-│   │   ├── picto-planet.svg
-│   │   ├── picto-relation.svg
-│   │   ├── picto-reseaux-vert.svg
-│   │   ├── picto-resource.svg
-│   │   ├── picto-serenity.svg
-│   │   ├── picto-thumb.svg
-│   │   ├── picto-traces.svg
-│   │   ├── picto-warning.svg
-│   │   ├── picto-white-arrow.svg
+│   │   ├── picto-*.svg  (25 files)
 │   │   ├── picto_warning_white.svg
 │   │   ├── potentiel.svgr
 │   │   ├── reseaux.svgr
-│   │   ├── system
-│   │   │   └── checkbox-circle-line.svg
-│   │   └── tools
-│   │       ├── compagnie.svg
-│   │       ├── compass.svg
-│   │       ├── france.svg
-│   │       ├── human-cooperation.svg
-│   │       ├── information.svg
-│   │       ├── innovation.svg
-│   │       ├── map.svg
-│   │       ├── money.svg
-│   │       ├── pictures.svg
-│   │       ├── search.svg
-│   │       ├── system.svg
-│   │       └── v2
-│   │           ├── carte.svg
-│   │           ├── chauffage_ecologique.svg
-│   │           ├── comparateur.svg
-│   │           ├── decret_tertiaire.svg
-│   │           ├── liste_reseaux.svg
-│   │           ├── obligations.svg
-│   │           ├── raccordement.svg
-│   │           ├── reseau_avenir.svg
-│   │           └── test_en_masse.svg
+│   │   └── system
+│   │       └── checkbox-circle-line.svg
 │   ├── img
 │   │   ├── FCU-Affiche.pdf
 │   │   ├── FCU_*.jpg  (18 files)
@@ -540,6 +434,7 @@
 │   │   ├── LINKED.jpg
 │   │   ├── PUB-PANNEAU.pdf
 │   │   ├── ambassadeurs.png
+│   │   ├── bandeau_accueil.webp
 │   │   ├── banner_campagnes2024.webp
 │   │   ├── banner_chauffage_gaz.png
 │   │   ├── banner_*.jpg  (11 files)
@@ -599,9 +494,6 @@
 │   │   ├── iframe-carte.png
 │   │   ├── iframe.png
 │   │   ├── illustration_*.webp  (5 files)
-│   │   ├── illustrations
-│   │   │   ├── benefices-chauffage.svg
-│   │   │   └── benefices-comparateur.svg
 │   │   ├── infographies.png
 │   │   ├── inscription-bravo.svg
 │   │   ├── landing-exploitant-picto1.svg
@@ -610,18 +502,8 @@
 │   │   ├── landing_chaleur_renouvelable.webp
 │   │   ├── logo_rf.png
 │   │   ├── pac_air_eau.webp
-│   │   ├── photo_cet.webp
-│   │   ├── photo_pac_air_air.webp
-│   │   ├── photo_pac_air_eau.webp
-│   │   ├── photo_pac_air_extrait.webp
-│   │   ├── photo_pac_solaire.webp
-│   │   ├── picto_chauffage_ecologique.svg
-│   │   ├── picto_emissions.svg
-│   │   ├── picto_facture.svg
-│   │   ├── picto_independance.svg
-│   │   ├── picto_logement_immeuble_chauffage_collectif.svg
-│   │   ├── picto_logement_immeuble_chauffage_individuel.svg
-│   │   ├── picto_logement_maison_individuelle.svg
+│   │   ├── photo_*.webp  (5 files)
+│   │   ├── picto_*.svg  (7 files)
 │   │   ├── preview
 │   │   │   ├── fcu-preview-20211210.min.jpg
 │   │   │   ├── fcu-preview-20211213.min.jpg
@@ -635,8 +517,6 @@
 │   │   ├── pro_picto_2.svg
 │   │   ├── pro_picto_3.svg
 │   │   ├── quelle-pac-pour-quel-immeuble.webp
-│   │   ├── qui-sommes-nous
-│   │   │   └── repartition-financements-france-chaleur-urbaine.webp
 │   │   ├── rcu-comparatif-coproprietaire.svg
 │   │   ├── rcu-comparatif-tertiaire.svg
 │   │   ├── rcu-illustation.svg
@@ -727,15 +607,13 @@
 │       └── 202506_webinaire_presentation.pdf
 ├── scalingo.json
 ├── scripts
-│   ├── airtable
-│   │   ├── ajout-infos-communes-sans-reseau.ts
-│   │   ├── bases.ts
-│   │   ├── create-modifications-reseau.ts
-│   │   └── dump-schema.ts
+│   ├── backup
+│   │   ├── .env.example
+│   │   ├── README.md
+│   │   ├── backup-prod.sh
+│   │   └── decrypt-backup.sh
 │   ├── batenr
 │   │   └── import-batenr-data.sh
-│   ├── bootstrap
-│   │   └── tables.ts
 │   ├── clean-gitbook-actus.sh
 │   ├── cli.ts
 │   ├── copyLocalTableToRemote.sh
@@ -758,7 +636,6 @@
 │   ├── sort-sql-schema.mjs
 │   └── stats
 │       └── refresh.ts
-├── sentry.client.config.ts
 ├── sentry.edge.config.ts
 ├── sentry.server.config.ts
 ├── src
@@ -769,6 +646,7 @@
 │   ├── client-config.ts
 │   ├── components
 │   │   ├── Admin
+│   │   │   ├── AdminPageMenuLabel.tsx
 │   │   │   ├── JobStatusBadge.tsx
 │   │   │   ├── TableAddressAutocomplete.tsx
 │   │   │   ├── TableFieldInput.tsx
@@ -806,13 +684,12 @@
 │   │   │   └── useSimulatorEngine.tsx
 │   │   ├── ConsentBanner
 │   │   │   ├── GoogleTagsScript.tsx
-│   │   │   ├── HotjarScript.tsx
-│   │   │   ├── LinkedInScript.tsx
 │   │   │   ├── index.tsx
 │   │   │   └── usePostHog.tsx
 │   │   ├── ContributionForm
 │   │   │   ├── ContributionForm.tsx
 │   │   │   ├── ContributionNetworkSncuField.tsx
+│   │   │   ├── buildContributionRequest.ts
 │   │   │   └── schema.ts
 │   │   ├── Coproprietaire
 │   │   │   ├── Advantages.styles.ts
@@ -887,10 +764,10 @@
 │   │   │   ├── NetworkName.tsx
 │   │   │   └── NetworksList.tsx
 │   │   ├── Newsletter
-│   │   │   ├── Newsletter.styles.ts
-│   │   │   └── Newsletter.tsx
+│   │   │   ├── NewsletterFollow.tsx
+│   │   │   ├── NewsletterLink.tsx
+│   │   │   └── constants.ts
 │   │   ├── Partners
-│   │   │   ├── Partners.style.ts
 │   │   │   └── Partners.tsx
 │   │   ├── Press
 │   │   │   ├── July23.tsx
@@ -971,7 +848,6 @@
 │   │   │   └── theme.ts
 │   │   ├── TrackedVideo
 │   │   │   └── TrackedVideo.tsx
-│   │   ├── Us.tsx
 │   │   ├── WrappedBlock
 │   │   │   ├── ImgBlock.tsx
 │   │   │   ├── TextBlock.tsx
@@ -986,7 +862,6 @@
 │   │   │   ├── LoginForm.tsx
 │   │   │   ├── NewPasswordForm.tsx
 │   │   │   ├── ProfileForm.tsx
-│   │   │   ├── ProfileNewsletterForm.tsx
 │   │   │   ├── RegisterForm.tsx
 │   │   │   └── ResetPasswordForm.tsx
 │   │   ├── dashboard
@@ -1083,8 +958,10 @@
 │   │           ├── TableSimple.tsx
 │   │           ├── useTableState.tsx
 │   │           ├── useTableUrlState.tsx
-│   │           └── useTableVirtualization.ts
+│   │           ├── useTableVirtualization.ts
+│   │           └── useViewportBoundedHeight.ts
 │   ├── config
+│   │   ├── sentry.ts
 │   │   ├── withSecurityHeaders.ts
 │   │   └── withSentry.ts
 │   ├── data
@@ -1266,9 +1143,20 @@
 │   │   ├── ademe-connect
 │   │   │   ├── AGENTS.md
 │   │   │   ├── commands.ts
+│   │   │   ├── constants.spec.ts
 │   │   │   ├── constants.ts
 │   │   │   └── server
+│   │   │       ├── client.spec.ts
 │   │   │       └── client.ts
+│   │   ├── admin
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── AdminDashboardIndicators.tsx
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── service.ts
+│   │   │       ├── trpc-routes.integration.spec.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── analytics
 │   │   │   ├── .env.example
 │   │   │   ├── AGENTS.md
@@ -1283,6 +1171,7 @@
 │   │   │   │   └── hooks
 │   │   │   │       └── useUserInfo.tsx
 │   │   │   ├── commands
+│   │   │   │   ├── db-bootstrap.ts
 │   │   │   │   └── image-format.ts
 │   │   │   ├── commands.ts
 │   │   │   ├── constants.ts
@@ -1292,6 +1181,8 @@
 │   │   │   ├── client
 │   │   │   │   └── hooks.ts
 │   │   │   └── server
+│   │   │       ├── login-rate-limit.spec.ts
+│   │   │       ├── login-rate-limit.ts
 │   │   │       ├── service.ts
 │   │   │       ├── session.ts
 │   │   │       ├── trpc-routes.integration.spec.ts
@@ -1322,30 +1213,82 @@
 │   │   │       ├── service.ts
 │   │   │       └── trpc-routes.ts
 │   │   ├── chaleur-renouvelable
+│   │   │   ├── AGENTS.md
 │   │   │   ├── bat-enr.ts
 │   │   │   ├── client
 │   │   │   │   ├── BatEnrBatimentSelection.tsx
 │   │   │   │   ├── BatEnrBatimentSelector.tsx
 │   │   │   │   ├── BatEnrBatimentsMap.tsx
+│   │   │   │   ├── CcrtBuildingForm.spec.tsx
+│   │   │   │   ├── CcrtBuildingForm.tsx
+│   │   │   │   ├── CcrtBuildingIdentification.tsx
+│   │   │   │   ├── CcrtDemandAccess.tsx
+│   │   │   │   ├── CcrtDemandDetails.tsx
+│   │   │   │   ├── CcrtDemandEmailDialog.spec.tsx
+│   │   │   │   ├── CcrtDemandEmailDialog.tsx
+│   │   │   │   ├── CcrtDemandEmailForm.tsx
+│   │   │   │   ├── CcrtDemandFollowUp.tsx
+│   │   │   │   ├── CcrtDemandHistory.spec.tsx
+│   │   │   │   ├── CcrtDemandHistory.tsx
+│   │   │   │   ├── CcrtDemandMobileCard.tsx
+│   │   │   │   ├── CcrtDemandMobileDetails.tsx
+│   │   │   │   ├── CcrtDemandRow.tsx
+│   │   │   │   ├── CcrtDemandTabs.tsx
+│   │   │   │   ├── CcrtDemandToolbar.tsx
+│   │   │   │   ├── CcrtDemandValidation.tsx
+│   │   │   │   ├── CcrtDemandsMobile.tsx
+│   │   │   │   ├── CcrtDemandsTable.tsx
+│   │   │   │   ├── CcrtDemandsWorkspace.spec.tsx
+│   │   │   │   ├── CcrtDemandsWorkspace.tsx
+│   │   │   │   ├── CcrtDetailsSection.tsx
+│   │   │   │   ├── CcrtEmailSignature.tsx
+│   │   │   │   ├── CcrtFollowUpForm.spec.tsx
+│   │   │   │   ├── CcrtFollowUpForm.tsx
+│   │   │   │   ├── CcrtHeatingEnergyTag.tsx
+│   │   │   │   ├── CcrtProjectFields.tsx
+│   │   │   │   ├── CcrtSimulationFields.tsx
 │   │   │   │   ├── ChoixChauffageForm.tsx
 │   │   │   │   ├── ChoixChauffageResults.tsx
+│   │   │   │   ├── DemandFCRForm.spec.tsx
 │   │   │   │   ├── DemandFCRForm.tsx
 │   │   │   │   ├── DemandesChaleurRenouvelableAdminPage.tsx
+│   │   │   │   ├── DemandesChaleurRenouvelableCcrtPage.tsx
+│   │   │   │   ├── DpeField.tsx
 │   │   │   │   ├── FranceRenovAdvisorCallout.tsx
+│   │   │   │   ├── InputWithSuffix.tsx
+│   │   │   │   ├── MethodologyContent.tsx
 │   │   │   │   ├── OutdoorSpaceCheckboxes.spec.ts
 │   │   │   │   ├── OutdoorSpaceCheckboxes.tsx
+│   │   │   │   ├── ParamsForm.spec.tsx
 │   │   │   │   ├── ParamsForm.tsx
+│   │   │   │   ├── ProjectStatusSelect.spec.tsx
+│   │   │   │   ├── ProjectStatusSelect.tsx
+│   │   │   │   ├── SettingsTopFields.spec.tsx
 │   │   │   │   ├── SettingsTopFields.tsx
+│   │   │   │   ├── SimulationNumberField.tsx
+│   │   │   │   ├── building-address.spec.ts
+│   │   │   │   ├── building-address.ts
+│   │   │   │   ├── ccrt-demand-cache.ts
+│   │   │   │   ├── ccrt-demand-export.ts
+│   │   │   │   ├── ccrt-workspace.spec.ts
+│   │   │   │   ├── ccrt-workspace.ts
 │   │   │   │   ├── heating-mode-rules.ts
 │   │   │   │   ├── heating-modes
 │   │   │   │   │   ├── catalog.tsx
 │   │   │   │   │   └── selectors.ts
+│   │   │   │   ├── heatingModeCosts.spec.ts
 │   │   │   │   ├── heatingModeCosts.ts
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useAddressEligibility.spec.ts
 │   │   │   │   │   ├── useAddressEligibility.ts
+│   │   │   │   │   ├── useCcrtBuildingAutosave.ts
+│   │   │   │   │   ├── useCcrtDemandActions.spec.tsx
+│   │   │   │   │   ├── useCcrtDemandActions.ts
+│   │   │   │   │   ├── useCcrtWorkspaceTracking.spec.tsx
+│   │   │   │   │   ├── useCcrtWorkspaceTracking.ts
 │   │   │   │   │   ├── useChoixChauffageQueryParams.spec.ts
 │   │   │   │   │   ├── useChoixChauffageQueryParams.ts
+│   │   │   │   │   ├── useChoixChauffageResults.spec.tsx
 │   │   │   │   │   ├── useChoixChauffageResults.ts
 │   │   │   │   │   └── useRemoveHashOnScroll.ts
 │   │   │   │   ├── modesChauffageData.spec.ts
@@ -1357,6 +1300,7 @@
 │   │   │   │   │       ├── CoolingPossibleTag.tsx
 │   │   │   │   │       ├── DpeProgression.tsx
 │   │   │   │   │       ├── DpeTag.tsx
+│   │   │   │   │       ├── GainVsGazBadge.spec.ts
 │   │   │   │   │       ├── GainVsGazBadge.tsx
 │   │   │   │   │       ├── HeatNetworkContactSteps.tsx
 │   │   │   │   │       ├── IncompatibleSolutionsSection.tsx
@@ -1373,18 +1317,47 @@
 │   │   │   │   ├── simulation-situation.spec.ts
 │   │   │   │   └── simulation-situation.ts
 │   │   │   ├── constants.ts
+│   │   │   ├── docs
+│   │   │   │   └── Table conditionnelle.csv
+│   │   │   ├── heat-network-eligibility.spec.ts
+│   │   │   ├── heat-network-eligibility.ts
 │   │   │   ├── server
 │   │   │   │   ├── altimetry.spec.ts
 │   │   │   │   ├── altimetry.ts
+│   │   │   │   ├── ccrt-access.spec.ts
+│   │   │   │   ├── ccrt-access.ts
+│   │   │   │   ├── ccrt-building.ts
+│   │   │   │   ├── ccrt-demand-query.ts
+│   │   │   │   ├── ccrt-demand-update.ts
+│   │   │   │   ├── ccrt-emails.ts
+│   │   │   │   ├── ccrt-follow-up.ts
+│   │   │   │   ├── ccrt-heat-network.ts
+│   │   │   │   ├── ccrt-notes.ts
+│   │   │   │   ├── ccrt-notifications.integration.spec.ts
+│   │   │   │   ├── ccrt-notifications.ts
+│   │   │   │   ├── ccrt-territory.integration.spec.ts
+│   │   │   │   ├── ccrt-tracking.ts
+│   │   │   │   ├── ccrt-workspace.integration.spec.ts
 │   │   │   │   ├── france-renov-spaces.spec.ts
 │   │   │   │   ├── france-renov-spaces.ts
 │   │   │   │   ├── network-eligibility-coordinates.spec.ts
 │   │   │   │   ├── network-eligibility-coordinates.ts
+│   │   │   │   ├── rnic.ts
 │   │   │   │   ├── service.ts
 │   │   │   │   ├── trpc-routes.integration.spec.ts
 │   │   │   │   └── trpc-routes.ts
 │   │   │   ├── simulation-prefill.spec.ts
-│   │   │   └── simulation-prefill.ts
+│   │   │   ├── simulation-prefill.ts
+│   │   │   └── types.ts
+│   │   ├── communes-sans-reseau
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── useSubmitDemandeCommuneSansReseau.ts
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── service.spec.ts
+│   │   │       ├── service.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── config
 │   │   │   ├── AGENTS.md
 │   │   │   └── server
@@ -1400,6 +1373,7 @@
 │   │   │   │   └── useTrackPageView.ts
 │   │   │   ├── constants.ts
 │   │   │   └── server
+│   │   │       ├── request-context.ts
 │   │   │       ├── service.ts
 │   │   │       ├── trpc-routes.integration.spec.ts
 │   │   │       └── trpc-routes.ts
@@ -1416,7 +1390,9 @@
 │   │   │       │   ├── arrete-dpe.spec.ts
 │   │   │       │   ├── arrete-dpe.ts
 │   │   │       │   ├── consommations-gaz.ts
+│   │   │       │   ├── donnees-reseaux-bibliotheque-fedene.integration.spec.ts
 │   │   │       │   ├── donnees-reseaux-bibliotheque-fedene.ts
+│   │   │       │   ├── donnees-reseaux-sdes.integration.spec.ts
 │   │   │       │   ├── donnees-reseaux-sdes.ts
 │   │   │       │   ├── etudes-en-cours.ts
 │   │   │       │   ├── quartiers-prioritaires-politique-ville.ts
@@ -1451,6 +1427,7 @@
 │   │   │   │   ├── Status.tsx
 │   │   │   │   └── public-forms
 │   │   │   │       ├── DemandSubmittedPanel.e2e.spec.ts
+│   │   │   │       ├── DemandSubmittedPanel.spec.tsx
 │   │   │   │       └── DemandSubmittedPanel.tsx
 │   │   │   ├── constants.spec.ts
 │   │   │   ├── constants.ts
@@ -1504,6 +1481,7 @@
 │   │   │   │   │   ├── EmailsInventory.tsx
 │   │   │   │   │   ├── EventsInventory.tsx
 │   │   │   │   │   ├── FcrDemandStatuses.tsx
+│   │   │   │   │   ├── NetworkFieldsInventory.tsx
 │   │   │   │   │   ├── event-groups.ts
 │   │   │   │   │   └── table-classes.ts
 │   │   │   │   ├── search.ts
@@ -1520,10 +1498,12 @@
 │   │   │   │   ├── gestion-reseaux.mdx
 │   │   │   │   ├── glossaire.mdx
 │   │   │   │   ├── inscription-comptes.mdx
+│   │   │   │   ├── modifications-reseau.mdx
 │   │   │   │   ├── perimetre-doc.mdx
 │   │   │   │   ├── reaffectation-demandes.mdx
 │   │   │   │   ├── references.mdx
 │   │   │   │   ├── relances-notifications.mdx
+│   │   │   │   ├── retention-donnees.mdx
 │   │   │   │   ├── role-admin.mdx
 │   │   │   │   ├── role-collectivite.mdx
 │   │   │   │   ├── role-demandeur.mdx
@@ -1538,7 +1518,12 @@
 │   │   ├── email
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
+│   │   │   │   ├── EmailBlockedBadge.tsx
+│   │   │   │   ├── EmailDeliverabilityPanel.tsx
+│   │   │   │   ├── EmailEventsList.tsx
+│   │   │   │   ├── EmailUnblockButton.tsx
 │   │   │   │   └── admin
+│   │   │   │       ├── EmailDeliverabilityPage.tsx
 │   │   │   │       └── EmailsPage.tsx
 │   │   │   ├── constants.ts
 │   │   │   ├── email.config.tsx
@@ -1547,25 +1532,40 @@
 │   │   │   │   └── components.tsx
 │   │   │   ├── scenarios.ts
 │   │   │   ├── server
+│   │   │   │   ├── brevo-client.spec.ts
+│   │   │   │   ├── brevo-client.ts
+│   │   │   │   ├── deliverability-service.spec.ts
+│   │   │   │   ├── deliverability-service.ts
+│   │   │   │   ├── trpc-routes.integration.spec.ts
 │   │   │   │   └── trpc-routes.ts
 │   │   │   └── templates
 │   │   │       ├── auth
+│   │   │       │   ├── ccrt
+│   │   │       │   │   └── ouverture-espace.tsx
 │   │   │       │   ├── gestionnaire
 │   │   │       │   │   └── ouverture-espace.tsx
 │   │   │       │   └── utilisateur
 │   │   │       │       ├── confirmation-inscription.tsx
 │   │   │       │       └── reinitialisation-mot-de-passe.tsx
-│   │   │       └── demands
-│   │   │           ├── demandeur
-│   │   │           │   ├── confirmation-demande.tsx
-│   │   │           │   ├── enquete-satisfaction.tsx
-│   │   │           │   ├── message-gestionnaire.tsx
-│   │   │           │   └── raccordement-non-realisable.tsx
-│   │   │           ├── equipe-fcu
-│   │   │           │   └── nouvelle-demande-chaleur-renouvelable.tsx
-│   │   │           └── gestionnaire
-│   │   │               ├── nouvelles-demandes-a-traiter.tsx
-│   │   │               └── rappel-demandes-en-attente.tsx
+│   │   │       ├── demands
+│   │   │       │   ├── ccrt
+│   │   │       │   │   ├── nouvelle-demande-chaleur-renouvelable.tsx
+│   │   │       │   │   ├── nouvelles-demandes-a-traiter-weekly.tsx
+│   │   │       │   │   └── rappel-demandes-en-attente.tsx
+│   │   │       │   ├── chaleur-renouvelable.ts
+│   │   │       │   ├── demandeur
+│   │   │       │   │   ├── confirmation-demande-chaleur-renouvelable.tsx
+│   │   │       │   │   ├── confirmation-demande.tsx
+│   │   │       │   │   ├── enquete-satisfaction.tsx
+│   │   │       │   │   ├── message-gestionnaire.tsx
+│   │   │       │   │   └── raccordement-non-realisable.tsx
+│   │   │       │   └── gestionnaire
+│   │   │       │       ├── nouvelles-demandes-a-traiter.tsx
+│   │   │       │       └── rappel-demandes-en-attente.tsx
+│   │   │       └── reseaux
+│   │   │           └── demandeur
+│   │   │               ├── accuse-reception.tsx
+│   │   │               └── demande-acceptee.tsx
 │   │   ├── events
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
@@ -1579,9 +1579,35 @@
 │   │   │   │   └── useEventsFilters.ts
 │   │   │   ├── constants.ts
 │   │   │   └── server
+│   │   │       ├── impersonation.integration.spec.ts
 │   │   │       ├── service.ts
 │   │   │       ├── trpc-routes.integration.spec.ts
 │   │   │       └── trpc-routes.ts
+│   │   ├── fedene-survey
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── FedeneSurveyPage.tsx
+│   │   │   ├── constants.ts
+│   │   │   ├── server
+│   │   │   │   ├── service.ts
+│   │   │   │   ├── trpc-routes.integration.spec.ts
+│   │   │   │   └── trpc-routes.ts
+│   │   │   ├── text-diff.spec.ts
+│   │   │   └── text-diff.ts
+│   │   ├── files
+│   │   │   ├── AGENTS.md
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── file-type.spec.ts
+│   │   │       ├── file-type.ts
+│   │   │       ├── http.ts
+│   │   │       ├── jobs.ts
+│   │   │       ├── scanner.spec.ts
+│   │   │       ├── scanner.ts
+│   │   │       ├── service.integration.spec.ts
+│   │   │       ├── service.ts
+│   │   │       ├── zip-inspection.spec.ts
+│   │   │       └── zip-inspection.ts
 │   │   ├── form
 │   │   │   ├── AGENTS.md
 │   │   │   ├── AddressField.tsx
@@ -1689,6 +1715,7 @@
 │   │   │   │   │   ├── MapInstanceSync.tsx
 │   │   │   │   │   ├── MapInteractions.tsx
 │   │   │   │   │   ├── MapMarker.tsx
+│   │   │   │   │   ├── MapPointPicker.tsx
 │   │   │   │   │   ├── MapViewUrlSync.tsx
 │   │   │   │   │   ├── ReseauxFiltersUrlSync.tsx
 │   │   │   │   │   ├── atoms.ts
@@ -1812,8 +1839,32 @@
 │   │   │   └── server
 │   │   │       ├── api.ts
 │   │   │       └── registry.ts
+│   │   ├── network-change-requests
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── AdminNetworkChangeRequestsPage.tsx
+│   │   │   │   ├── DetailLayout.tsx
+│   │   │   │   ├── InternalCommentField.tsx
+│   │   │   │   ├── LinkNetworkField.tsx
+│   │   │   │   ├── NetworkChangeRequestDetail.tsx
+│   │   │   │   ├── PendingNetworkChangeRequestsBadge.tsx
+│   │   │   │   ├── RenameFileDialog.tsx
+│   │   │   │   ├── RequestChangesTable.tsx
+│   │   │   │   ├── RequestGeometryMap.tsx
+│   │   │   │   └── buildChangeRows.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── document-change-keys.ts
+│   │   │   └── server
+│   │   │       ├── geometry-conversion.ts
+│   │   │       ├── jobs.integration.spec.ts
+│   │   │       ├── jobs.ts
+│   │   │       ├── service.ts
+│   │   │       ├── trpc-routes.integration.spec.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── notification
 │   │   │   ├── AGENTS.md
+│   │   │   ├── client-error.spec.ts
+│   │   │   ├── client-error.ts
 │   │   │   └── index.tsx
 │   │   ├── opendata
 │   │   │   ├── OPENDATA.md
@@ -1832,6 +1883,7 @@
 │   │   │   ├── client
 │   │   │   │   ├── OrganizationCredentials.tsx
 │   │   │   │   ├── OrganizationForm.tsx
+│   │   │   │   ├── OrganizationNetworkList.tsx
 │   │   │   │   ├── OrganizationNetworks.tsx
 │   │   │   │   └── admin
 │   │   │   │       ├── AdminOrganizationsPage.tsx
@@ -1842,6 +1894,7 @@
 │   │   │   ├── server
 │   │   │   │   ├── credentials.ts
 │   │   │   │   ├── service.ts
+│   │   │   │   ├── trpc-routes.integration.spec.ts
 │   │   │   │   └── trpc-routes.ts
 │   │   │   └── types.ts
 │   │   ├── pac
@@ -1866,6 +1919,7 @@
 │   │   │       ├── legacy
 │   │   │       │   ├── engie-demands.ts
 │   │   │       │   ├── engie-users-sync.ts
+│   │   │       │   ├── engie-users.spec.ts
 │   │   │       │   └── engie-users.ts
 │   │   │       ├── openapi.spec.ts
 │   │   │       ├── openapi.ts
@@ -1903,7 +1957,7 @@
 │   │   │   │   ├── TestsAdressesPage.tsx
 │   │   │   │   └── UpsertEligibilityTestForm.tsx
 │   │   │   ├── commands.ts
-│   │   │   ├── constants.tsx
+│   │   │   ├── constants.ts
 │   │   │   ├── server
 │   │   │   │   ├── jobs.ts
 │   │   │   │   ├── service.spec.ts
@@ -1915,12 +1969,45 @@
 │   │   │       ├── csvColumnDetection.spec.ts
 │   │   │       ├── csvColumnDetection.ts
 │   │   │       └── xlsx.ts
+│   │   ├── public-pages
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── EligibilityContactModal.tsx
+│   │   │   │   ├── HomeHero.tsx
+│   │   │   │   ├── HomeHeroForm.spec.tsx
+│   │   │   │   ├── HomeHeroForm.tsx
+│   │   │   │   ├── PublicPageContext.tsx
+│   │   │   │   ├── PublicPageSections.tsx
+│   │   │   │   ├── ToolsTabsSection.tsx
+│   │   │   │   ├── home-form.spec.ts
+│   │   │   │   ├── home-form.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useEligibilityTest.ts
+│   │   │   │   │   ├── useHomeFormInitialValues.ts
+│   │   │   │   │   └── useRestoreGeoAddress.ts
+│   │   │   │   ├── resources.ts
+│   │   │   │   ├── sections
+│   │   │   │   │   ├── BenefitsSection.tsx
+│   │   │   │   │   ├── FaqSection.tsx
+│   │   │   │   │   ├── ResourcesCarouselSection.tsx
+│   │   │   │   │   ├── SolutionsIllustrationSection.tsx
+│   │   │   │   │   ├── StepsTimelineSection.tsx
+│   │   │   │   │   └── TestimonialsSection.tsx
+│   │   │   │   └── ui
+│   │   │   │       ├── CardFrame.tsx
+│   │   │   │       ├── CardImage.tsx
+│   │   │   │       ├── CompareSolutionsButton.tsx
+│   │   │   │       └── SectionIntro.tsx
+│   │   │   └── constants.ts
 │   │   ├── publicodes
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
 │   │   │   │   ├── ExplainedValue.tsx
 │   │   │   │   ├── ExplanationNodeView.tsx
+│   │   │   │   ├── FlatExplanationView.tsx
 │   │   │   │   ├── RuleExplanationDialog.tsx
+│   │   │   │   ├── RuleNote.tsx
+│   │   │   │   ├── RuleSourceLinks.tsx
 │   │   │   │   ├── dev
 │   │   │   │   │   └── ExplanationDemo.tsx
 │   │   │   │   └── explanation-navigation.ts
@@ -1934,7 +2021,11 @@
 │   │   │   │       ├── AdminReseauxPage.tsx
 │   │   │   │       ├── DeleteNetworkDialog.tsx
 │   │   │   │       ├── EditNetworkDialog.tsx
+│   │   │   │       ├── MergeNetworkImpacts.tsx
+│   │   │   │       ├── MergeNetworksDialog.tsx
+│   │   │   │       ├── NetworkDocumentsEditor.tsx
 │   │   │   │       ├── NetworkLinksField.tsx
+│   │   │   │       ├── NetworkRawDataDialog.tsx
 │   │   │   │       ├── NotesCell.tsx
 │   │   │   │       ├── ParentReseauField.tsx
 │   │   │   │       └── RemindersCell.tsx
@@ -1943,28 +2034,56 @@
 │   │   │   ├── commands.ts
 │   │   │   ├── constants.spec.ts
 │   │   │   ├── constants.ts
+│   │   │   ├── field-sources.spec.ts
+│   │   │   ├── field-sources.ts
 │   │   │   ├── server
-│   │   │   │   ├── download-network.ts
+│   │   │   │   ├── documents.integration.spec.ts
+│   │   │   │   ├── documents.ts
 │   │   │   │   ├── geometry-apply.ts
 │   │   │   │   ├── geometry-diff.ts
 │   │   │   │   ├── geometry-identify.ts
 │   │   │   │   ├── geometry-operations.ts
-│   │   │   │   ├── geometry-updates.ts
 │   │   │   │   ├── linked-fields-sync.integration.spec.ts
 │   │   │   │   ├── linked-fields-sync.ts
+│   │   │   │   ├── merge.integration.spec.ts
+│   │   │   │   ├── merge.ts
 │   │   │   │   ├── reminders.ts
 │   │   │   │   ├── service.integration.spec.ts
 │   │   │   │   ├── service.ts
-│   │   │   │   ├── sync-pg-to-airtable.ts
 │   │   │   │   ├── trpc-routes.eligibilityStatus.integration.spec.ts
 │   │   │   │   └── trpc-routes.ts
 │   │   │   └── types.ts
+│   │   ├── retention
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── AdminRetentionPage.tsx
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── service.ts
+│   │   │       ├── trpc-routes.integration.spec.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── security
 │   │   │   ├── AGENTS.md
 │   │   │   └── server
+│   │   │       ├── pwned-passwords.spec.ts
+│   │   │       ├── pwned-passwords.ts
 │   │   │       ├── rate-limit
 │   │   │       │   └── next-pages.ts
 │   │   │       └── rate-limit.ts
+│   │   ├── simulation-tracking
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── SimulationsConversionPage.tsx
+│   │   │   │   ├── SimulationsFunnelHelpDialog.tsx
+│   │   │   │   ├── SimulationsSankey.tsx
+│   │   │   │   ├── simulation-funnel.spec.ts
+│   │   │   │   ├── simulation-funnel.ts
+│   │   │   │   └── useSimulationTracking.ts
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── service.ts
+│   │   │       ├── trpc-routes.integration.spec.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── simulator
 │   │   │   ├── client
 │   │   │   │   ├── SimulateurCoutRaccordement.tsx
@@ -2011,16 +2130,22 @@
 │   │   └── users
 │   │       ├── AGENTS.md
 │   │       ├── client
-│   │       │   └── admin
-│   │       │       ├── BulkTagDialog.tsx
-│   │       │       ├── TagChip.tsx
-│   │       │       ├── TagColorPicker.tsx
-│   │       │       ├── TagsCombobox.tsx
-│   │       │       ├── TagsEditor.tsx
-│   │       │       └── UserTagBadge.tsx
+│   │       │   ├── admin
+│   │       │   │   ├── BulkTagDialog.tsx
+│   │       │   │   ├── TagChip.tsx
+│   │       │   │   ├── TagColorPicker.tsx
+│   │       │   │   ├── TagsCombobox.tsx
+│   │       │   │   ├── TagsEditor.tsx
+│   │       │   │   └── UserTagBadge.tsx
+│   │       │   └── preferences
+│   │       │       ├── EmailSignatureForm.tsx
+│   │       │       ├── NewsletterForm.tsx
+│   │       │       ├── NotificationPreferencesFields.tsx
+│   │       │       └── NotificationPreferencesForm.tsx
 │   │       ├── constants.ts
 │   │       ├── role-colors.ts
 │   │       └── server
+│   │           ├── service.spec.ts
 │   │           ├── service.ts
 │   │           ├── tags-service.ts
 │   │           ├── trpc-routes.integration.spec.ts
@@ -2035,7 +2160,8 @@
 │   │   │   └── index.tsx
 │   │   ├── admin
 │   │   │   ├── conversion
-│   │   │   │   └── abus.tsx
+│   │   │   │   ├── abus.tsx
+│   │   │   │   └── chaleur-renouvelable.tsx
 │   │   │   ├── conversion.tsx
 │   │   │   ├── data-diagnostic.tsx
 │   │   │   ├── demandes-chaleur-renouvelable.tsx
@@ -2044,15 +2170,19 @@
 │   │   │   ├── doc
 │   │   │   │   ├── [slug].tsx
 │   │   │   │   └── index.tsx
+│   │   │   ├── email-delivery.tsx
 │   │   │   ├── emails.tsx
+│   │   │   ├── enquete-fedene.tsx
 │   │   │   ├── events.tsx
 │   │   │   ├── iframes.tsx
 │   │   │   ├── impostures.tsx
 │   │   │   ├── jobs.tsx
+│   │   │   ├── modifications-reseau.tsx
 │   │   │   ├── organizations.tsx
 │   │   │   ├── reseaux
 │   │   │   │   └── stats.tsx
 │   │   │   ├── reseaux.tsx
+│   │   │   ├── retention.tsx
 │   │   │   ├── tests-adresses.tsx
 │   │   │   └── users.tsx
 │   │   ├── api
@@ -2067,20 +2197,18 @@
 │   │   │   │   ├── users
 │   │   │   │   │   └── [[...slug]].ts
 │   │   │   │   └── users-stats.ts
-│   │   │   ├── airtable
-│   │   │   │   └── records
-│   │   │   │       └── index.ts
 │   │   │   ├── auth
 │   │   │   │   ├── [...nextauth].ts
 │   │   │   │   └── register.ts
-│   │   │   ├── contribution.ts
+│   │   │   ├── files
+│   │   │   │   ├── [fileId].ts
+│   │   │   │   └── upload.ts
 │   │   │   ├── location-infos.ts
 │   │   │   ├── map
 │   │   │   │   ├── [type]
 │   │   │   │   │   └── [...tileCoordinates].ts
 │   │   │   │   └── network-limits.ts
 │   │   │   ├── metrics.ts
-│   │   │   ├── modification-reseau.ts
 │   │   │   ├── networks
 │   │   │   │   ├── [networkId]
 │   │   │   │   │   └── files
@@ -2106,9 +2234,8 @@
 │   │   │   ├── trpc
 │   │   │   │   └── [trpc].ts
 │   │   │   ├── user
-│   │   │   │   ├── email-templates
-│   │   │   │   │   └── [[...slug]].ts
-│   │   │   │   └── preferences.ts
+│   │   │   │   └── email-templates
+│   │   │   │       └── [[...slug]].ts
 │   │   │   ├── v1
 │   │   │   │   ├── demands
 │   │   │   │   │   └── [key].ts
@@ -2176,6 +2303,7 @@
 │   │   ├── pro
 │   │   │   ├── aide.tsx
 │   │   │   ├── comparateur-couts-performances.tsx
+│   │   │   ├── demandes-chaleur-renouvelable.tsx
 │   │   │   ├── demandes.tsx
 │   │   │   ├── mes-demandes.tsx
 │   │   │   ├── mon-compte.tsx
@@ -2198,6 +2326,8 @@
 │   │   │   ├── outils.tsx
 │   │   │   └── supports.tsx
 │   │   ├── satisfaction.tsx
+│   │   ├── server-sitemap.xml
+│   │   │   └── index.tsx
 │   │   ├── stats.tsx
 │   │   ├── tertiaire.tsx
 │   │   ├── villes
@@ -2206,13 +2336,15 @@
 │   ├── server
 │   │   ├── api
 │   │   │   └── crud.ts
+│   │   ├── authentication.spec.ts
 │   │   ├── authentication.ts
 │   │   ├── config.ts
 │   │   ├── cron
 │   │   │   ├── aggregateMonthlyStats.ts
 │   │   │   └── cron.ts
 │   │   ├── db
-│   │   │   ├── airtable.ts
+│   │   │   ├── anonymize.integration.spec.ts
+│   │   │   ├── anonymize.ts
 │   │   │   ├── kysely
 │   │   │   │   ├── base-model.ts
 │   │   │   │   ├── database.ts
@@ -2259,6 +2391,28 @@
 │   │   │       ├── 20260902100000_normalize_zero_network_prices.ts
 │   │   │       ├── 20260903150000_add_project_state_to_demands_chaleur_renouvelable.ts
 │   │   │       ├── 20260915160000_drop_tests_adresses_tiles.ts
+│   │   │       ├── 20260915174849_add_department_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20260916120000_create_email_blocked_contacts.ts
+│   │   │       ├── 20260922120000_link_chaleur_renouvelable_to_origin_demand.ts
+│   │   │       ├── 20260922120000_lowercase_users_email.ts
+│   │   │       ├── 20260925120000_add_annual_heating_consumption_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20260928120000_add_validation_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20260930120000_add_rnic_info_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20260930130000_create_files_and_network_change_requests.ts
+│   │   │       ├── 20260930150000_create_network_files.ts
+│   │   │       ├── 20260930160000_create_network_change_request_geometries.ts
+│   │   │       ├── 20261001100000_network_fields_fedene_fcu.ts
+│   │   │       ├── 20261001120000_add_rnic_numero_immatriculation_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20261005100000_add_alternative_solutions_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20261007120000_ccrt_workspace.ts
+│   │   │       ├── 20261008130000_ccrt_average_residents_decimal.ts
+│   │   │       ├── 20261012100000_add_closed_status_to_network_change_requests.ts
+│   │   │       ├── 20261013100000_drop_demands_airtable_id.ts
+│   │   │       ├── 20261016100000_users_preferences.ts
+│   │   │       ├── 20261020100000_drop_network_legacy_files.ts
+│   │   │       ├── 20261027100000_ccrt_demand_notified_at.ts
+│   │   │       ├── 20261029120000_simulations_chaleur_renouvelable.ts
+│   │   │       ├── 20261030100000_add_internal_comment_to_network_change_requests.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── db-errors.ts
@@ -2276,11 +2430,8 @@
 │   │       ├── export.ts
 │   │       ├── matomo.ts
 │   │       ├── matomo_types.ts
-│   │       ├── pdp.ts
-│   │       ├── upload.spec.ts
-│   │       └── upload.ts
+│   │       └── pdp.ts
 │   ├── services
-│   │   ├── airtable.ts
 │   │   ├── api
 │   │   │   └── cors.ts
 │   │   └── eligibility.ts
@@ -2299,6 +2450,9 @@
 │   │   ├── fixtures.ts
 │   │   ├── helpers.ts
 │   │   ├── home.test.tsx
+│   │   ├── integration-global-setup.ts
+│   │   ├── integration-setup.ts
+│   │   ├── pro-dashboard.test.ts
 │   │   ├── setup-mocks.ts
 │   │   └── trpc-helpers.ts
 │   ├── types
@@ -2312,18 +2466,15 @@
 │   │   ├── StoredAddress.d.ts
 │   │   ├── Summary
 │   │   │   ├── Demand.d.ts
-│   │   │   ├── Energy.d.ts
-│   │   │   └── Network.d.ts
+│   │   │   └── Energy.d.ts
 │   │   ├── TypeLegendLogo.ts
 │   │   ├── User.d.ts
 │   │   ├── enum
-│   │   │   ├── Airtable.ts
 │   │   │   ├── DemandSatus.ts
 │   │   │   ├── ExportFormat.ts
 │   │   │   ├── MatomoStats.ts
 │   │   │   └── UserRole.ts
 │   │   ├── globale.d.ts
-│   │   ├── react-hookz.d.ts
 │   │   └── svgr.d.ts
 │   └── utils
 │       ├── array.spec.ts
@@ -2349,6 +2500,8 @@
 │       ├── export.ts
 │       ├── form-utils.ts
 │       ├── format.ts
+│       ├── html.spec.ts
+│       ├── html.ts
 │       ├── imposture.ts
 │       ├── interval.spec.ts
 │       ├── interval.ts
@@ -2358,6 +2511,9 @@
 │       ├── objects.ts
 │       ├── ogr2ogr.ts
 │       ├── random.ts
+│       ├── spreadsheet.spec.ts
+│       ├── spreadsheet.ts
+│       ├── strings.spec.ts
 │       ├── strings.tsx
 │       ├── system.ts
 │       ├── time.ts
@@ -2372,4 +2528,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-321 directories, 2381 files
+332 directories, 2570 files

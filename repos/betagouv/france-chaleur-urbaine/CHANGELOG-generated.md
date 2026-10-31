@@ -1,21 +1,20 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 16/09/2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 30/10/2026)
 
 ### Résumé
-Ce mois-ci, le service a été enrichi de nouvelles fonctionnalités de simulation (gestion des espaces extérieurs, précision accrue de l'altitude, nouveaux indicateurs de pertinence) et d'une meilleure communication automatisée avec les utilisateurs (emails de relance et de refus). L'interface utilisateur et la fiabilité des données (DPE, réseaux) ont également été renforcées.
+Ce mois a été marqué par une transformation majeure de l'outil, notamment avec la refonte complète de l'espace dédié aux gestionnaires territoriaux (CCRT) et le déploiement d'une nouvelle page d'accueil plus intuitive. Parallèlement, le projet a franchi une étape technique cruciale en migrant l'ensemble de ses données depuis Airtable vers une infrastructure interne plus robuste et en renforçant la synchronisation avec ADEME Connect.
 
 ### Évolutions fonctionnelles
-- **Simulateur** : intégration de nouveaux critères (espaces extérieurs, éligibilité aux réseaux de froid, sobriété énergétique) et amélioration de l'ergonomie (badges de notification pour les paramètres à compléter, nouveau design du bloc de paramètres, réorganisation des prérequis).
-- **Simulateur** : précision accrue des résultats grâce à l'utilisation de l'altitude précise des bâtiments (via l'API IGN) et affichage de la pertinence des solutions par un système d'étoiles.
-- **Cartographie et réseaux** : ajout d'infobulles sur la liste des réseaux, affichage du nom des gestionnaires de réseaux et rétablissement de l'affichage des propriétés au clic sur la carte.
-- **Gestion des demandes** : automatisation de l'envoi d'emails lorsque les demandes de chaleur renouvelable ne sont pas réalisables et simplification des messages de relance.
-- **Statistiques** : filtrage des demandes non validées pour garantir la cohérence des données affichées.
-- **Comparateur** : correction des labels pour une meilleure clarté.
+- **Espace Gestionnaires (CCRT) :** Refonte complète de l'interface pour faciliter le suivi des demandes, la gestion des permissions territoriales, la personnalisation des notifications et le tri des dossiers [#1346](https://github.com/betagouv/france-chaleur-urbaine/pull/1346).
+- **Expérience utilisateur :** Nouvelle page d'accueil plus compacte et simplifiée [#1343](https://github.com/betagouv/france-chaleur-urbaine/pull/1343) et amélioration de la clarté des explications sur les choix de solutions via Publicodes [#1349](https://github.com/betagouv/france-chaleur-urbaine/pull/1349).
+- **Outils d'administration :** Ajout de la possibilité d'exporter les demandes en format Excel et amélioration des indicateurs de suivi sur le tableau de bord de gestion [#1319](https://github.com/betagouv/france-chaleur-urbaine/pull/1319).
+- **Précision des simulations :** Mise à jour des méthodes de calcul du nombre de logements en utilisant la base BDNB pour une meilleure fiabilité des résultats.
 
 ### Évolutions techniques
-- **Données et API** : optimisation de la récupération des données ECFR via un système de cache plus stable pour réduire la dépendance aux API externes [#1287](https://github.com/betagouv/france-chaleur-urbaine/pull/1287) et mise à jour des données DPE 2026.
-- **Analytics** : déploiement du suivi Posthog pour le module PAC et synchronisation avec le plan de tracking [#1302](https://github.com/betagouv/france-chaleur-urbaine/pull/1302).
-- **Maintenance et architecture** : suppression de la permission nationale [#1289](https://github.com/betagouv/france-chaleur-urbaine/pull/1289), nettoyage des couches de tests et des commandes de migration "oneshot".
-- **Correctifs** : ajustement des règles de calcul Publicodes (gestion des maximums/minimums) [#1297](https://github.com/betagouv/france-chaleur-urbaine/pull/1297).
+- **Migration de données :** Suppression complète de la dépendance à Airtable au profit d'une gestion interne des réseaux, des fichiers et des demandes, augmentant la stabilité du système [#1327](https://github.com/betagouv/france-chaleur-urbaine/pull/1327).
+- **Intégrations :** Optimisation de la synchronisation des rôles et des données avec ADEME Connect [#1324](https://github.com/betagouv/france-chaleur-urbaine/pull/1324).
+- **Observabilité et Sécurité :** Amélioration du suivi analytique (PostHog) [#1345](https://github.com/betagouv/france-chaleur-urbaine/pull/1345), séparation des environnements d'erreurs (Sentry) et renforcement de la politique de sécurité du contenu (CSP).
+- **Performance des tests :** Parallélisation des tests d'intégration pour réduire les temps de validation.
 
 ### Autres changements
-- Mise à jour de la documentation.
+- **Documentation :** Mise à jour de la documentation technique concernant Publicodes, la génération des types Kysely et les composants internes.
+- **Nettoyage :** Suppression des commandes CLI obsolètes et des reliquats de l'ancienne architecture liée à Airtable.

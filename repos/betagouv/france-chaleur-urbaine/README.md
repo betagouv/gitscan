@@ -44,6 +44,11 @@ pnpm db:migrate
 pnpm db:bootstrap
 ```
 
+- Pseudonymiser aussitôt les données personnelles de la copie locale (identités, contacts, commentaires, emails, IP, jetons). Les comptes non admin deviennent `<role>-<id>@fcu.local` ; les admins, les comptes `@fcu.local` et tous les mots de passe sont conservés (on se connecte localement avec ses identifiants de production). La commande refuse toute base distante.
+```sh
+pnpm cli db:anonymize
+```
+
 - Si jamais l'étape de bootstrap est trop lente, essayer de récupérer un dump depuis le dashboard Scalingo et l'importer en local (~ 20-30 minutes)
 ```sh
 tar -xzvf 20240XXXXXXXXXX_france_chal_3098.tar.gz
@@ -64,13 +69,6 @@ pnpm clock:start
   - Le site internet : http://localhost:3000/
   - L'interface mailpit pour les emails : http://localhost:8025/
   - La base de données PostgreSQL : localhost:5432
-
-### Airtable
-
-Une partie des données est stockées dans [Airtable](https://airtable.com/), l'email/mot de passe est partagé, à récupérer auprès d'un membre de l'équipe.
-
-1. Copier la base de données `FCU Prod` vers `FCU Dev <ton prenom>` (Cocher uniquement `Duplicate records`)
-2. Récupérer les API Keys et les modifier dans le fichier `.env.local`
 
 ### Kysely
 
