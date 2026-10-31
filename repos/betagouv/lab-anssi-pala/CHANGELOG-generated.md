@@ -1,29 +1,27 @@
-## Changelog : lab-anssi-pala (30 derniers jours, au 28 octobre 2026)
+## Changelog : lab-anssi-pala (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-Le projet a franchi une étape majeure en passant d'une suite de scripts disparates à une interface de ligne de commande (CLI) robuste et structurée en TypeScript. Cette évolution permet une automatisation accrue des audits de sécurité, une meilleure maîtrise des coûts liés aux modèles d'IA et un reporting plus détaillé via Mattermost.
+Le projet a franchi une étape majeure en passant d'un prototype à un outil industrialisable. Les évolutions récentes permettent désormais d'automatiser les audits de sécurité de manière régulière, de gérer plusieurs cibles successivement et de conserver un historique des rapports dans une base de données. L'expérience utilisateur est enrichie par des notifications automatiques et une meilleure visibilité sur les coûts de consommation des modèles d'IA.
 
 ### Évolutions fonctionnelles
-- **Automatisation des audits** : Mise en place d'une tâche planifiée pour effectuer un scan complet tous les 3 jours.
-- **Reporting enrichi** : Les notifications Mattermost incluent désormais des métriques clés (durée d'exécution, nombre de fichiers analysés, fenêtre de jours et informations sur les derniers commits).
-- **Scans ciblés et intelligents** : 
-    - Possibilité de limiter le périmètre d'analyse aux seuls fichiers modifiés via un historique Git paramétrable (option `--jours`).
-    - Support du scan multi-cibles pour traiter plusieurs projets successivement.
-- **Maîtrise des coûts** : Intégration d'une estimation du coût des analyses (basée sur les tokens consommés) affichée en fin de scan.
-- **Nouvelles commandes CLI** : Introduction de commandes structurées pour le bootstrap, l'estimation des coûts, le scan, la validation et la gestion du proxy.
+- **Automatisation des scans** : Mise en place de tâches planifiées pour exécuter des scans complets automatiquement (tous les 3 jours).
+- **Gestion multi-cibles** : Possibilité d'enchaîner des scans sur plusieurs projets ou domaines de manière séquentielle.
+- **Périmètre intelligent** : Le périmètre de scan est désormais délimité par les modifications Git (diff) sur une fenêtre de temps paramétrable (via l'option `--jours`).
+- **Reporting et notifications** : 
+    - Publication automatique des résultats et des constats de sécurité sur Mattermost.
+    - Persistance des rapports de scan dans une base de données pour consultation ultérieure.
+- **Suivi des coûts** : Affichage d'une estimation du coût du scan (basée sur les tokens consommés) à la fin de chaque exécution.
+- **Interface de présentation** : Ajout d'une page d'accueil (landing page) pour présenter les capacités de PALA.
 
 ### Évolutions techniques
-- **Migration TypeScript** : Refonte massive de l'outillage vers TypeScript (Node 24) pour améliorer la fiabilité et la maintenabilité.
-- **Gestion des environnements** : Centralisation de la configuration dans un fichier `.env` unique, servant de source de vérité et supprimant la dépendance aux fichiers d'environnement spécifiques par outil.
-- **Architecture et communication** : 
-    - Implémentation d'un bus d'événements interne pour la gestion des fins de scan.
-    - Adoption de principes d'architecture hexagonale pour découpler les adaptateurs (Git, Docker, API).
-- **Optimisation du Proxy LLM** : Amélioration de la gestion du proxy LiteLLM, supportant désormais des déploiements locaux ou distants (PaaS) et l'intégration de modèles comme DeepSeek (via Scaleway).
-- **Infrastructure et CI/CD** : 
-    - Initialisation de la CI/CD.
-    - Mise en place de scripts de build et de déploiement Docker pour Clever Cloud.
-- **Refactoring de la CLI** : Harmonisation des commandes (renommage en français pour plus de cohérence) et amélioration de l'expérience utilisateur (sorties console colorées, aide détaillée).
+- **Persistance des données** : Implémentation de PostgreSQL pour le stockage des scans et des rapports, incluant la gestion des migrations de base de données.
+- **Nouvelle architecture monorepo** : Migration vers une structure de travail avec `pnpm workspaces`, séparant distinctement le backend, le frontend et l'outillage.
+- **Conteneurisation** : Dockerisation complète de l'application et de sa base de données pour faciliter le développement local et le déploiement.
+- **Portage TypeScript** : Migration de l'outillage vers Node.js/TypeScript pour une exécution native et une meilleure robustesse.
+- **Optimisation du Proxy LLM** : Refonte de la gestion du proxy LiteLLM, incluant la possibilité d'utiliser un proxy distant et l'ajout de plafonds de budget configurables.
+- **Amélioration de la CI/CD** : Intégration de tests automatisés (Vitest), de vérifications de qualité de code (ESLint) et de processus de déploiement vers Clever Cloud.
 
 ### Autres changements
-- **Documentation** : Mise à jour complète du README, ajout de documents de décision d'architecture (ADR) et documentation de l'outillage TypeScript.
-- **Nettoyage** : Suppression des scripts Bash et des variables d'environnement obsolètes, et réorganisation de la structure des répertoires (`outillage/`, `passerelles/`, etc.).
+- **Documentation** : Mise à jour approfondie du README et ajout de documents d'architecture (ADR) pour documenter les choix techniques.
+- **Expérience CLI** : Amélioration de l'interface en ligne de commande avec des sorties colorées et une aide plus explicite.
+- **Nettoyage** : Suppression des scripts obsolètes et réorganisation des dossiers pour une meilleure maintenabilité.

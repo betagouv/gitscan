@@ -1,54 +1,81 @@
 {
-  "name": "pala-outillage",
+  "name": "pala",
   "private": true,
-  "description": "Outillage TypeScript du laboratoire d'audit (en parallèle des scripts bash/Python)",
+  "description": "PALA — Pen test Agentique Lab ANSSI",
   "type": "module",
   "engines": {
     "node": ">=24.22.1"
   },
+  "packageManager": "pnpm@10.34.6",
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "dev:back": "node --require dotenv/config --watch --import tsx serveur/back/src/index.ts",
-    "dev:front": "pnpm --dir serveur/front dev",
+    "dev:front": "pnpm --filter pala-front dev",
     "build": "pnpm build:back && pnpm build:front",
     "build:back": "tsc --noEmit",
-    "build:front": "pnpm --dir serveur/front install && pnpm --dir serveur/front build",
+    "build:front": "pnpm --filter pala-front build",
     "start": "node --require dotenv/config serveur/back/src/index.ts",
-    "estimer-cout": "node outillage/javascript/src/composition/estimer-cout.ts",
-    "bootstrap": "node outillage/javascript/src/composition/bootstrap.ts",
     "format:corrige": "prettier --write .",
     "format:verifie": "prettier --check .",
-    "génère-env": "node --require dotenv/config outillage/javascript/src/composition/genere-env.ts",
-    "génère-config": "node --require dotenv/config outillage/javascript/src/composition/genere-config.ts",
-    "démarre-proxy": "node --require dotenv/config outillage/javascript/src/composition/demarre-proxy.ts",
-    "scan-complet": "node --require dotenv/config outillage/javascript/src/composition/scan-complet.ts",
-    "scan": "node --require dotenv/config outillage/javascript/src/composition/scan.ts",
-    "validate": "node outillage/javascript/src/composition/validate.ts",
-    "shannon": "node --require dotenv/config outillage/javascript/src/composition/shannon.ts",
-    "shannon-smoke": "node --require dotenv/config outillage/javascript/src/composition/shannon-smoke.ts",
-    "vérifie-appels-outils-llm": "node --require dotenv/config outillage/javascript/src/composition/verifie-appels-outils-llm.ts"
+    "lint": "eslint . && pnpm -r lint",
+    "lint:fix": "eslint . --fix && pnpm -r lint:fix",
+    "migration-bdd": "tsx node_modules/knex/bin/cli.js migrate:latest --knexfile noyau-partage/src/knex/configurationKnex.ts",
+    "pala:estimer-cout": "node outillage/src/composition/estimer-cout.ts",
+    "pala:bootstrap": "node outillage/src/composition/bootstrap.ts",
+    "pala:génère-env": "node --require dotenv/config outillage/src/composition/genere-env.ts",
+    "pala:génère-config": "node --require dotenv/config outillage/src/composition/genere-config.ts",
+    "codex:démarre-proxy": "node --require dotenv/config outillage/src/composition/demarre-proxy.ts",
+    "codex:scan-complet": "node --require dotenv/config outillage/src/composition/scan-complet.ts",
+    "codex:scan": "node --require dotenv/config outillage/src/composition/scan.ts",
+    "codex:validate": "node outillage/src/composition/validate.ts",
+    "shannon:pen-test": "node --require dotenv/config outillage/src/composition/shannon.ts",
+    "shannon:smoke-test": "node --require dotenv/config outillage/src/composition/shannon-smoke.ts",
+    "shannon:vérifie-appels-outils-llm": "node --require dotenv/config outillage/src/composition/verifie-appels-outils-llm.ts"
   },
   "runtimeDependencies": {
     "@lab-anssi/ui-kit": "1.64.0"
   },
   "dependencies": {
-    "commander": "^15.0.0",
-    "date-fns": "^4.4.0",
     "dotenv": "^18.0.4",
-    "express": "^5.3.0",
-    "express-ip-filter": "^2.0.0",
-    "express-rate-limit": "^8.7.1",
-    "helmet": "^8.3.0",
-    "yaml": "^2.9.1"
+    "pg": "^8.23.1",
+    "knex": "^3.3.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6",
-    "@types/lusca": "^1.7.5",
+    "@eslint/js": "^10.0.1",
     "@types/node": "24.19.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "knex-pglite": "^0.14.0",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.9",
     "tsx": "^4.23.15",
-    "typescript": "7.0.2",
+    "typescript": "^7.0.2",
     "vitest": "5.0.2"
+  },
+  "lint-staged": {
+    "serveur/back/**/*.ts": [
+      "eslint --config serveur/back/eslint.config.js --fix",
+      "prettier --write"
+    ],
+    "outillage/**/*.ts": [
+      "eslint --config outillage/eslint.config.js --fix",
+      "prettier --write"
+    ],
+    "serveur/front/**/*.{ts,svelte}": [
+      "eslint --config serveur/front/eslint.config.js --fix",
+      "prettier --write"
+    ],
+    "noyau-partage/**/*.ts": [
+      "eslint --config noyau-partage/eslint.config.js --fix",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --config eslint.config.js --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md,yaml,yml,css,html}": "prettier --write"
   }
 }
