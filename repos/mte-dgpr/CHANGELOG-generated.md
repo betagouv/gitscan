@@ -1,14 +1,14 @@
-# Synthèse d'activité : mte-dgpr (du 19/06 au 02/10)
+# Synthèse d'activité : mte-dgpr (du 26/09 au 02/10/2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur l'amélioration de l'intelligence artificielle et la précision de l'extraction de données documentaires. [ocapi](/repos/mte-dgpr/ocapi) a considérablement étendu ses capacités en intégrant de nouveaux modèles de langage (LLM), offrant ainsi une plus grande flexibilité et une meilleure fiabilité dans le traitement des opérations automatisées.
+L'activité récente de l'organisation s'est concentrée sur le renforcement de l'intelligence artificielle et la précision du traitement documentaire. Le projet [ocapi](/repos/mte-dgpr/ocapi) a considérablement amélioré ses capacités en intégrant de nouveaux modèles de langage (LLM), permettant une gestion plus robuste des opérations et une meilleure fiabilité des données traitées.
 
-Parallèlement, [arretify](/repos/mte-dgpr/arretify) progresse dans sa capacité à interpréter la structure complexe des arrêtés, notamment grâce à une détection accrue des tableaux et des annexes, garantissant une conversion plus fidèle vers le format HTML pour les utilisateurs finaux.
+En parallèle, [arretify](/repos/mte-dgpr/arretify) a progressé dans sa capacité à structurer les documents juridiques. Grâce à une détection améliorée des tableaux et des annexes, la conversion des arrêtés en format numérique gagne en précision, offrant un résultat plus fidèle à la structure originale des textes.
 
 ## Autres changements notables
-- Optimisation de l'infrastructure d'IA dans [ocapi](/repos/mte-dgpr/ocapi) via l'intégration de l'API Albert, l'ajout de clés de suivi des coûts et l'ajustement des délais d'attente (timeouts) pour les appels API.
-- Amélioration de la robustesse technique de [arretify](/repos/mte-dgpr/arretify) avec des corrections de types, une optimisation de la chaîne d'intégration continue (CI) et un refactoring pour une meilleure cohérence du code.
+- Optimisation de la gestion des ressources dans [ocapi](/repos/mte-dgpr/ocapi), avec l'ajout de mécanismes de suivi des coûts d'API et l'ajustement des délais d'attente (timeouts).
+- Amélioration de la fiabilité technique de [arretify](/repos/mte-dgpr/arretify) via une optimisation de la chaîne d'intégration continue (CI) et des refactorisations pour assurer une meilleure cohérence du code.
 
 ## Dépôts les plus actifs
-- [ocapi](/repos/mte-dgpr/ocapi) : Renforcement des capacités d'intelligence artificielle et optimisation de la gestion des modèles de langage.
-- [arretify](/repos/mte-dgpr/arretify) : Amélioration de la détection structurelle des arrêtés (tableaux, prescriptions annexées) pour une conversion HTML plus précise.
+- [ocapi](/repos/mte-dgpr/ocapi) : Extension du support des modèles d'IA et optimisation de la gestion de l'historique des opérations.
+- [arretify](/repos/mte-dgpr/arretify) : Amélioration de la détection des éléments structuraux (tableaux, prescriptions annexées) dans les arrêtés.

@@ -1,26 +1,28 @@
-# Synthèse d'activité : SocialGouv (du 15/09 au 22/10)
+# Synthèse d'activité : SocialGouv (du 01/10 au 31/10/2026)
 
 ## Résumé de l'activité
-L'activité récente est marquée par une intégration poussée de l'intelligence artificielle, notamment pour l'analyse de code ([repo-falcon](/repos/SocialGouv/repo-falcon)), la protection des données ([doublure](/repos/SocialGouv/doublure)) et l'amélioration de l'accessibilité ([dsfr-mcp](/repos/SocialGouv/dsfr-mcp)). Les outils de services publics se modernisent avec l'ajout de nouveaux simulateurs ([code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique)) et une recherche juridique plus précise ([srdt](/repos/SocialGouv/srdt)).
+L'activité de SocialGouv est marquée par une accélération majeure sur l'intégration de l'intelligence artificielle et le renforcement de la sécurité des données. Des avancées significatives ont été réalisées sur les outils d'assistance et d'analyse de code avec [iterion](/repos/SocialGouv/iterion), [claw-code-go](/repos/SocialGouv/claw-code-go) et [doublure](/repos/SocialGouv/doublure), offrant de nouvelles capacités de routage LLM, de génération de composants accessibles et de pseudonymisation automatique.
 
-Parallèlement, l'organisation gère la transition de plusieurs services vers leur fermeture ([recosante](/repos/SocialGouv/recosante), [nos1000jours-landing](/repos/SocialGouv/nos1000jours-landing)) tout en consolidant ses infrastructures de déploiement et de gestion de données ([mesure-impact](/repos/SocialGouv/mesure-impact), [iterion](/repos/SocialGouv/iterion)).
+Parallèlement, l'organisation poursuit la modernisation de ses infrastructures (notamment via la migration vers SeaweedFS pour [infra-apps](/repos/SocialGouv/infra-apps)) et la gestion de la fin de vie de certains services comme [recosante](/repos/SocialGouv/recosante) ou [nos1000jours-landing](/repos/SocialGouv/nos1000jours-landing). L'accent est également mis sur la fiabilité des données juridiques et administratives à travers des cycles de mise à jour automatisés.
 
 ## Sécurité
-- **Protection des données et confidentialité** : Mise en place de protections automatisées des données sensibles (PII) lors des échanges avec les IA ([doublure](/repos/SocialGouv/doublure)) et prévention de l'exfiltration de données vers des fournisseurs d'IA ([smart-allow](/repos/SocialGouv/smart-allow)).
-- **Renforcement de l'authentification** : Migration vers une authentification basée sur OIDC ([buildkit-operator](/repos/SocialGouv/buildkit-operator), [da-manager](/repos/SocialGouv/da-manager), [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example)) et amélioration de la gestion de l'expiration des mots de passe ([domifa](/repos/SocialGouv/domifa)).
-- **Durcissement applicatif** : Renforcement de la sécurité contre les injections et le path traversal ([helmdex](/repos/SocialGouv/helmdex)), et mise en conformité avec des politiques de sécurité renforcées (CSP, CSRF, 2FA) ([egapro](/repos/SocialGouv/egapro)).
-- **Corrections de vulnérabilités** : Résolution de failles de sécurité identifiées ([archifiltre-mails](/repos/SocialGouv/archifiltre-mails), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget)).
+- Renforcement de la protection des données sensibles via la pseudonymisation automatique (PII) et l'implémentation d'un coffre-fort chiffré en AES-256-GCM dans [doublure](/repos/SocialGouv/doublure).
+- Amélioration de la sécurité applicative avec la mise en place de politiques de sécurité de contenu (CSP), du rate limiting et de la sécurisation des sessions dans [egapro](/repos/SocialGouv/egapro).
+- Durcissement des politiques d'accès, de l'audit des comptes et de la gestion des mots de passe dans [domifa](/repos/SocialGouv/domifa).
+- Migration vers une authentification basée exclusivement sur OIDC pour sécuriser les accès dans [buildkit-operator](/repos/SocialGouv/buildkit-operator) et [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example).
+- Protection contre l'exfiltration de données vers des fournisseurs d'IA externes dans [smart-allow](/repos/SocialGouv/smart-allow).
+- Correction de vulnérabilités de sécurité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails) et durcissement contre les injections dans [helmdex](/repos/SocialGouv/helmdex).
 
 ## Autres changements notables
-- **Migrations technologiques majeures** : Passage à Nuxt v4 ([vao](/repos/SocialGouv/vao)), adoption massive du gestionnaire de paquets `pnpm` ([jardinmental](/repos/SocialGouv/jardinmental), [matomo-next](/repos/SocialGouv/matomo-next), [revu](/repos/SocialGouv/revu)), et migration de composants critiques vers le langage Go ([smart-allow](/repos/SocialGouv/smart-allow), [helmdex](/repos/SocialGouv/helmdex)).
-- **Évolutions d'infrastructure et de données** : Migration du stockage d'objets vers SeaweedFS ([infra-apps](/repos/SocialGouv/infra-apps)), optimisation des moteurs de recherche vectorielle ([questions-ecrites](/repos/SocialGouv/questions-ecrites)) et mise à jour des bases de données ([egapro](/repos/SocialGouv/egapro)).
-- **Avancées en Intelligence Artificielle** : Introduction du routage adaptatif pour les politiques LLM ([iterion](/repos/SocialGouv/iterion)) et extension du support des nouveaux modèles d'IA ([claw-code-go](/repos/SocialGouv/claw-code-go)).
+- **Modernisation de l'infrastructure de stockage** : Migration massive du stockage d'objets de MinIO vers SeaweedFS pour [infra-apps](/repos/SocialGouv/infra-apps) et [iterion](/repos/SocialGouv/iterion).
+- **Évolutions majeures de l'IA** : Extension du support des nouveaux modèles (GPT-6, Opus 5.5) dans [claw-code-go](/repos/SocialGouv/claw-code-go) et optimisation de la recherche vectorielle (HNSW) dans [questions-ecrites](/repos/SocialGouv/questions-ecrites).
+- **Migrations technologiques** : Passage massif à la gestion de paquets `pnpm` pour stabiliser les dépendances ([revu](/repos/SocialGouv/revu), [matomo-next](/repos/SocialGouv/matomo-next), [jardinmental](/repos/SocialGouv/jardinmental)) et migration vers Nuxt v4 dans [vao](/repos/SocialGouv/vao).
+- **Lancement de nouveaux outils** : Mise en service du réconciliateur de sources de données Metabase dans [metabase-datasource-sync](/repos/SocialGouv/metabase-datasource-sync).
 
 ## Dépôts les plus actifs
-- [vao](/repos/SocialGouv/vao) : Évolutions sur la gestion de l'hébergement et migration vers Nuxt v4.
-- [iterion](/repos/SocialGouv/iterion) : Avancées sur le routage IA, l'isolation des ressources et le monitoring.
-- [claw-code-go](/repos/SocialGouv/claw-code-go) : Support étendu des nouveaux modèles d'IA et fiabilisation des commandes.
-- [domifa](/repos/SocialGouv/domifa) : Refonte de l'interface utilisateur et renforcement de la sécurité.
-- [egapro](/repos/SocialGouv/egapro) : Améliorations majeures de l'accessibilité (RGAA) et de la sécurité.
-- [questions-ecrites](/repos/SocialGouv/questions-ecrites) : Optimisation des performances de recherche vectorielle.
-- [infra-apps](/repos/SocialGouv/infra-apps) : Stabilisation de l'infrastructure et nouveaux outils de revue de code.
+- [vao](/repos/SocialGouv/vao) : Déploiement de nouveaux parcours d'hébergement et migration technique majeure vers Nuxt v4.
+- [iterion](/repos/SocialGouv/iterion) : Introduction de commandes slash, de nouveaux écrans d'administration et renforcement de la sécurité des sandboxes.
+- [claw-code-go](/repos/SocialGouv/claw-code-go) : Élargissement du support des modèles d'IA et amélioration de la fiabilité de l'exécution des commandes.
+- [domifa](/repos/SocialGouv/domifa) : Modernisation de l'interface utilisateur et déploiement d'un mode support pour l'assistance administrative.
+- [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Améliorations de la sécurité (OIDC) et de la gestion du cycle de vie des builds pour éviter les interruptions.
+- [questions-ecrites](/repos/SocialGouv/questions-ecrites) : Optimisation des performances de recherche vectorielle et simplification de l'architecture avec pgvector.

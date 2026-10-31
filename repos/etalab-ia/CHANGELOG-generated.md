@@ -1,23 +1,24 @@
-# Synthèse d'activité : etalab-ia (du DD/MM au DD/MM)
+# Synthèse d'activité : etalab-ia (du 25/10 au 31/10)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une montée en puissance des capacités de RAG (Retrieval-Augmented Generation) et de l'orchestration d'agents. Les efforts se sont concentrés sur l'amélioration de l'évaluation des modèles (transcription, OCR), l'automatisation des pipelines de données pour alimenter les services d'IA, et la maturation des frameworks d'agents. Les outils comme [lettabot](/repos/etalab-ia/lettabot) et [letta](/repos/etalab-ia/letta) gagnent en polyvalence grâce à un support étendu de nouveaux modèles et une meilleure gestion de la mémoire et de la configuration.
+L'activité récente de l'organisation est marquée par une montée en puissance de l'écosystème RAG (Retrieval-Augmented Generation) et des capacités d'agents autonomes. La plateforme [ragtime](/repos/etalab-ia/ragtime) (issue de la refonte de rag-facile) a franchi un cap majeur avec l'ajout de l'authentification, de la persistance des conversations et de l'évaluation de la qualité des réponses. Parallèlement, les capacités d'agents de [letta](/repos/etalab-ia/letta) et [letta-code](/repos/etalab-ia/letta-code) s'enrichissent avec le support de nouveaux modèles (Anthropic, Gemini, Kimi) et de nouveaux outils de planification.
 
-Parallèlement, l'organisation renforce son alignement avec les standards de l'État français. Cela se traduit par une intégration accrue des guides de sécurité de l'ANSSI dans [skills](/repos/etalab-ia/skills) et une mise en conformité avec les dernières versions du Design Système de l'État (DSFR) pour [chartsgouv](/repos/etalab-ia/chartsgouv).
+L'automatisation des données pour le secteur public est également une priorité, avec la mise en place de pipelines d'ingestion automatisés via [mediatech](/repos/etalab-ia/mediatech) et [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api), garantissant une meilleure fraîcheur des informations. Enfin, l'accessibilité et l'intégration des outils sont renforcées par les évolutions du [chat-widget](/repos/etalab-ia/chat-widget) et de [albert-code](/repos/etalab-ia/albert-code).
 
 ## Sécurité
 - Renforcement de l'isolation des environnements et de la gestion sécurisée des identifiants dans [just-code](/repos/etalab-ia/just-code).
-- Intégration des recommandations de sécurité de l'ANSSI et de la DINUM pour accompagner les agents publics dans l'usage de l'IA via [skills](/repos/etalab-ia/skills).
-- Mise en place de vérifications de vulnérabilités des dépendances et de hooks de sécurité (gitleaks) dans [parcours-rag](/repos/etalab-ia/parcours-rag) et [eval-transcript](/repos/etalab-ia/eval-transcript).
+- Intégration des recommandations de sécurité de l'ANSSI et de la DINUM pour accompagner l'usage de l'IA dans [skills](/repos/etalab-ia/skills).
+- Mise en place de protections contre les abus (abuse caps) et durcissement de la sécurité de l'iframe pour le [chat-widget](/repos/etalab-ia/chat-widget).
+- Intégration de scans de sécurité automatisés (Gitleaks, CVE Lite) dans les pipelines de [eval-transcript](/repos/etalab-ia/eval-transcript) et [chat-widget](/repos/etalab-ia/chat-widget).
 
 ## Autres changements notables
-- **Évolutions architecturales** : Migration vers une "Clean Architecture" pour [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et refonte modulaire de [ragtime](/repos/etalab-ia/ragtime) (anciennement [rag-facile](/repos/etalab-ia/rag-facile)).
-- **Infrastructure et déploiement** : Migration vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et optimisation des images Docker pour [marker-serve](/repos/etalab-ia/marker-serve).
-- **Mises à jour majeures** : Passage à la version 2.0.0 de [chartsgouv](/repos/etalab-ia/chartsgouv) avec alignement sur le DSFR 6.1.
+- Refonte architecturale majeure vers une "Clean Architecture" pour [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et migration vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api).
+- Renommage du projet [rag-facile](/repos/etalab-ia/rag-facile) en [ragtime](/repos/etalab-ia/ragtime).
+- Unification des API et de la documentation entre [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) et [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
 
 ## Dépôts les plus actifs
-- [lettabot](/repos/etalab-ia/lettabot) : Extension massive des plateformes supportées (Slack, Discord, Telegram, WhatsApp) et refonte du système de configuration.
-- [ragtime](/repos/etalab-ia/ragtime) : Ajout de l'authentification, de la gestion de collections et d'une interface CLI.
-- [letta](/repos/etalab-ia/letta) : Support de nouveaux modèles (Anthropic, Gemini) et optimisation de la gestion de la mémoire.
-- [just-code](/repos/etalab-ia/just-code) : Diversification des runtimes (Windows, macOS) et renforcement de l'isolation par défaut.
-- [evalap](/repos/etalab-ia/evalap) : Amélioration de l'export des résultats vers Hugging Face Hub et de l'interface d'exploration locale.
+- [ragtime](/repos/etalab-ia/ragtime) : Refonte complète incluant l'authentification, la gestion de collections et l'intégration du thème DSFR.
+- [lettabot](/repos/etalab-ia/lettabot) : Expansion multi-plateforme (Slack, Discord, Telegram) et nouveau système de configuration via YAML.
+- [letta](/repos/etalab-ia/letta) : Évolution des capacités d'agents (mode listener, appels d'outils parallèles) et support étendu des modèles.
+- [chat-widget](/repos/etalab-ia/chat-widget) : Sortie de la version 0.2.0 avec de nouvelles méthodes d'intégration via Web Components.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Amélioration de la gestion des clés, du rate limiting et de l'observabilité avec Langfuse.

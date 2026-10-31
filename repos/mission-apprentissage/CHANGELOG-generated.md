@@ -1,24 +1,25 @@
-# Synthèse d'activité : mission-apprentissage (du 01/07 au 07/07/2026)
+# Synthèse d'activité : mission-apprentissage (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une forte progression de l'expérience utilisateur et de l'accessibilité, notamment avec la mise en conformité RGAA et l'amélioration des outils de recherche dans [labonnealternance](/repos/mission-apprentissage/labonnealternance). Les fonctionnalités de gestion sont également enrichies, avec l'ajout de la classification de contacts dans [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab) et un meilleur suivi des listes de diffusion dans [bal](/repos/mission-apprentissage/bal).
+L'activité de la période est marquée par une montée en puissance des services utilisateurs et une consolidation majeure de l'infrastructure. Les efforts se sont concentrés sur l'amélioration de l'expérience et de l'accessibilité de [labonnealternance](/repos/mission-apprentissage/labonnealternance), ainsi que sur la création de nouveaux outils d'automatisation pour optimiser les flux de travail des développeurs ([mna-skills](/repos/mission-apprentissage/mna-skills), [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp)). 
 
-Sur le plan opérationnel, l'organisation renforce son efficacité grâce à une automatisation accrue des processus de développement. Le déploiement de nouveaux outils de gestion de workflow dans [mna-skills](/repos/mission-apprentissage/mna-skills) et [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp) permet une gestion plus fluide des projets, tandis que l'introduction d'un mode "Sandbox" dans [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) sécurise les phases de test.
+L'écosystème devient plus robuste et sécurisé grâce à une modernisation des stacks techniques et à une meilleure gestion des secrets et des réseaux. Ces évolutions permettent d'offrir des services plus fiables, une meilleure gestion des données et une capacité d'automatisation accrue pour l'organisation.
 
 ## Sécurité
-- **Gestion des secrets et accès** : Adoption généralisée du pilote SOPS pour sécuriser les secrets dans [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) et [mongodb](/repos/mission-apprentissage/mongodb), accompagnée de nouveaux outils de rotation de clés.
-- **Protection des données et authentification** : Renforcement de la sécurité des jetons et de la protection des données dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
-- **Maintenance corrective** : Correction de vulnérabilités critiques (CVE) dans [bal](/repos/mission-apprentissage/bal).
-- **Sécurisation de l'infrastructure** : Mise en place de runners GitHub auto-hébergés et sécurisés via l'importation de clés OpenPGP dans [infra](/repos/mission-apprentissage/infra).
+- **Gestion des secrets** : Adoption de SOPS pour renforcer le chiffrement et le contrôle d'accès aux secrets ([mongodb](/repos/mission-apprentissage/mongodb), [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab)).
+- **Protection des accès** : Mise en œuvre de la rotation des clés et sécurisation des jetons (JWT et claims d'environnement) ([mongodb](/repos/mission-apprentissage/mongodb), [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [labonnealternance](/repos/mission-apprentissage/labonnealternance)).
+- **Isolation réseau** : Déploiement d'une infrastructure sur réseau privé pour isoler les services de production ([infra](/repos/mission-apprentissage/infra)).
+- **Maintenance corrective** : Résolution d'une vulnérabilité critique (CVE) sur Vitest ([bal](/repos/mission-apprentissage/bal)).
 
 ## Autres changements notables
-- **Modernisation de l'infrastructure** : Déploiement d'un réseau privé pour isoler la production dans [infra](/repos/mission-apprentissage/infra) et mise à niveau majeure de l'instance MongoDB dans [mongodb](/repos/mission-apprentissage/mongodb).
-- **Évolutions des stacks techniques** : Migrations importantes vers de nouvelles versions de Node.js ([api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas)), TypeScript/Next.js ([bal](/repos/mission-apprentissage/bal)) et Mongoose 9 ([catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage)).
-- **Optimisation des performances** : Refonte du moteur de recherche dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) et optimisation de l'indexation Elasticsearch dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
+- **Intelligence Artificielle & Data** : Intégration d'un nouveau modèle de classification des offres ([labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab)) et lancement d'un prototype de modération automatique par IA ([labonnealternance](/repos/mission-apprentissage/labonnealternance)).
+- **Automatisation des workflows** : Développement de "skills" pour automatiser la gestion des issues et des audits de sécurité ([mna-skills](/repos/mission-apprentissage/mna-skills)) et amélioration de la gestion dynamique des sprints GitHub ([lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp)).
+- **Modernisation des stacks techniques** : Montées de version majeures des frameworks et langages (Node.js, TypeScript, Next.js) ([api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [bal](/repos/mission-apprentissage/bal)) et migration vers Mongoose 9 ([catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage)).
+- **Infrastructure & DevOps** : Mise en place de runners GitHub auto-hébergés ([infra](/repos/mission-apprentissage/infra)), mise à niveau de MongoDB ([mongodb](/repos/mission-apprentissage/mongodb)) et unification des environnements de développement ([flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas)).
 
 ## Dépôts les plus actifs
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Évolutions majeures sur l'accessibilité, la recherche et l'introduction de l'IA.
-- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement intensif de compétences d'automatisation pour la gestion des issues et des pull requests.
-- [infra](/repos/mission-apprentissage/infra) : Travaux importants sur l'isolation réseau et l'automatisation CI/CD.
-- [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) : Améliorations de l'administration, de la stabilité et mise en place du mode Sandbox.
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Optimisation des modèles de classification et de la chaîne de déploiement.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Évolutions majeures de l'interface, de la recherche et mise en conformité RGAA.
+- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement intensif de nouveaux outils d'automatisation pour les processus GitHub.
+- [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) : Lancement du mode Sandbox et modernisation de l'infrastructure.
+- [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp) : Optimisation de la gestion des projets et des sprints via l'API.
+- [infra](/repos/mission-apprentissage/infra) : Sécurisation du réseau et automatisation de la CI/CD.

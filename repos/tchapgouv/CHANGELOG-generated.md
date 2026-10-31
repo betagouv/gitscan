@@ -1,31 +1,24 @@
-# Synthèse d'activité : tchapgouv (du 01/07 au 20/10)
+# Synthèse d'activité : tchapgouv (du 20/03 au 16/10)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et le renforcement de la robustesse de l'infrastructure. Les applications mobiles ([tchap-x-android](/repos/tchapgouv/tchap-x-android), [tchap-x-ios](/repos/tchapgouv/tchap-x-ios)) et web ([tchap-web-v4](/repos/tchapgouv/tchap-web-v4)) bénéficient de nouvelles fonctionnalités de confort, telles que le mode sombre, une meilleure gestion des notifications et une interface utilisateur plus épurée.
+L'activité récente de l'organisation a été marquée par une amélioration significative de l'expérience utilisateur sur l'ensemble des plateformes. Les utilisateurs bénéficient de nouveaux confort visuels comme le mode sombre sur Android [tchap-x-android](/repos/tchapgouv/tchap-x-android), une interface plus épurée sur iOS [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) et une navigation enrichie sur le web [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
 
-Parallèlement, des efforts majeurs ont été déployés sur les composants serveurs ([synapse](/repos/tchapgouv/synapse), [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service)) pour optimiser les performances, fluidifier les processus d'authentification et garantir une gestion plus fine des comptes utilisateurs.
+Parallèlement, un effort important a été porté sur la robustesse et la sécurité de l'infrastructure. Les optimisations de performance, notamment via l'intégration de Rust dans le serveur [synapse](/repos/tchapgouv/synapse), et le renforcement des mécanismes de protection (limitation de débit, gestion des certificats et détection d'utilisateurs externes) garantissent une plateforme plus stable et sécurisée pour les utilisateurs finaux.
 
 ## Sécurité
-- **Corrections critiques** : Résolution de vulnérabilités majeures liées à la traversée de chemin et à l'usurpation d'identité dans [synapse](/repos/tchapgouv/synapse).
-- **Authentification et accès** : 
-    - Renforcement de la détection des utilisateurs externes et amélioration de la clarté des messages d'erreur lors de la connexion dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) et [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).
-    - Amélioration de la gestion des comptes (réactivation, récupération) dans [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) et [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap).
-    - Mise à jour et renforcement des certificats de sécurité pour les applications mobiles ([tchap-x-android](/repos/tchapgouv/tchap-x-android), [tchap-ios](/repos/tchapgouv/tchap-ios), [tchap-android](/repos/tchapgouv/tchap-android)).
-- **Protection des échanges** : Renforcement de la gestion HTTP et de la validation des en-têtes dans [simple-border-gateway](/repos/tchapgouv/simple-border-gateway).
-- **Gestion des secrets** : Déplacement des identifiants sensibles vers des fichiers de secrets pour sécuriser les tests E2E dans [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright).
+- **Corrections critiques** : Résolution de vulnérabilités liées à la traversée de chemin et à l'usurpation d'identité dans [synapse](/repos/tchapgouv/synapse).
+- **Renforcement de l'authentification** : Amélioration de la détection des emails externes, de la gestion du SSO et de la clarté des messages d'erreur dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) et [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).
+- **Sécurisation des accès mobiles** : Renforcement de la vérification d'identité, mise à jour des certificats (Harica, Android 13) et gestion optimisée des comptes expirés dans [tchap-x-android](/repos/tchapgouv/tchap-x-android), [tchap-android](/repos/tchapgouv/tchap-android) et [tchap-x-ios](/repos/tchapgouv/tchap-x-ios).
+- **Protection des données et des processus** : Déplacement des identifiants sensibles vers des fichiers de secrets [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright), durcissement de la gestion HTTP dans [simple-border-gateway](/repos/tchapgouv/simple-border-gateway) et sécurisation des jetons de déploiement dans [tauri-plugins-workspace](/repos/tchapgouv/tauri-plugins-workspace) et [element-call](/repos/tchapgouv/element-call).
 
 ## Autres changements notables
-- **Optimisation des performances** : 
-    - Intégration de Rust pour la sérialisation et l'accès aux données afin d'améliorer les performances de [synapse](/repos/tchapgouv/synapse).
-    - Optimisation du routage des requêtes via l'utilisation de `matchit` dans [simple-border-gateway](/repos/tchapgouv/simple-border-gateway).
-- **Infrastructure et CI/CD** : 
-    - Modernisation des processus de build et de déploiement pour plusieurs dépôts ([matrix-admin-bot](/repos/tchapgouv/matrix-admin-bot), [tchap-web-v4](/repos/tchapgouv/tchap-web-v4), [tauri-plugins-workspace](/repos/tchapgouv/tauri-plugins-workspace)).
-    - Amélioration de la gestion de la rétention des messages dans les salons publics via [synapse-room-access-rules](/repos/tchapgouv/synapse-room-access-rules).
+- **Optimisations de performance** : Intégration de Rust pour la sérialisation des données dans [synapse](/repos/tchapgouv/synapse) et optimisation du routage via `matchit` dans [simple-border-gateway](/repos/tchapgouv/simple-border-gateway).
+- **Gestion des ressources et de la rétention** : Mise en place d'un système de limitation de débit (leaky bucket) dans [matrix-media-repo](/repos/tchapgouv/matrix-media-repo) et amélioration de l'outil de gestion de la rétention des messages dans [synapse-room-access-rules](/repos/tchapgouv/synapse-room-access-rules).
+- **Évolutions techniques majeures** : Mise à jour importante des bases de code pour les applications mobiles [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) et [tchap-x-android](/repos/tchapgouv/tchap-x-android), et refonte du framework de commande pour le bot administrateur [matrix-admin-bot](/repos/tchapgouv/matrix-admin-bot).
 
 ## Dépôts les plus actifs
-- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Évolutions majeures de l'interface (mode sombre), de la sécurité et de la compatibilité Android.
-- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Nettoyage de l'interface utilisateur et mise à jour majeure de la base de code.
-- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Améliorations de l'authentification, de l'UX et de la qualité des tests.
-- [synapse](/repos/tchapgouv/synapse) : Corrections de sécurité critiques et optimisations de performance importantes.
-- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Mise à jour des versions et amélioration de la gestion des comptes.
-- [simple-border-gateway](/repos/tchapgouv/simple-border-gateway) : Optimisations de routage et renforcement de la sécurité HTTP.
+- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Épuration de l'interface utilisateur et mise à jour majeure de la base de code.
+- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Activation du mode sombre, amélioration de la gestion des notifications et renforcement de la sécurité.
+- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Amélioration de la fluidité de l'authentification et enrichissement de l'interface.
+- [synapse](/repos/tchapgouv/synapse) : Optimisations de performance majeures et corrections de sécurité critiques.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de la gestion des comptes et de l'expérience de connexion.

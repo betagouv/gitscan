@@ -1,22 +1,23 @@
 # Synthèse d'activité : betagouv-experimentations (du 13/05 au 26/05)
 
 ## Résumé de l'activité
-L'organisation connaît une phase intense de création de prototypes, avec l'initialisation de nombreux nouveaux projets ([test-jb4](/repos/betagouv-experimentations/test-jb4), [test-jb2](/repos/betagouv-experimentations/test-jb2), [test-benoit](/repos/betagouv-experimentations/test-benoit), [simulation-doctorat](/repos/betagouv-experimentations/simulation-doctorat)) utilisant des stacks modernes et le Design System Français. Ces initiatives visent à accélérer la mise à disposition de services web pour l'administration.
+L'activité de l'organisation est marquée par une forte dynamique de lancement de nouveaux prototypes et la consolidation d'une infrastructure de déploiement automatisée. L'accent est mis sur la création rapide de services web pour l'administration en utilisant des technologies modernes (Next.js, PostgreSQL) et le Design System Français (DSFR). 
 
-En parallèle, des outils de gestion et d'infrastructure progressent significativement, notamment avec le déploiement d'un outil de suivi de contacts ([crm-asn](/repos/betagouv-experimentations/crm-asn)) et l'amélioration des capacités de déploiement et de monitoring ([template-proto](/repos/betagouv-experimentations/template-proto), [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy)).
+Des avancées fonctionnelles notables ont été réalisées, notamment avec le développement d'un outil de suivi de contacts pour l'équipe ASN ([crm-asn](/repos/betagouv-experimentations/crm-asn)) et d'une application de gestion de tâches ([repo-test](/repos/betagouv-experimentations/repo-test)). Parallèlement, l'organisation renforce ses capacités d'automatisation et d'intégration de l'IA pour accélérer le cycle de développement ([template-proto](/repos/betagouv-experimentations/template-proto)).
 
 ## Sécurité
-- Correction d'une vulnérabilité d'injection SQL de haute sévérité via la mise à jour de l'ORM ([test-jb3](/repos/betagouv-experimentations/test-jb3)).
-- Renforcement de la protection des applications par l'ajout d'en-têtes de sécurité ([crm-asn](/repos/betagouv-experimentations/crm-asn)).
-- Amélioration de l'authentification via l'appartenance à une organisation GitHub ([coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy)).
+- Correction d'une vulnérabilité critique d'injection SQL via la mise à jour des outils d'ORM dans [test-jb3](/repos/betagouv-experimentations/test-jb3).
+- Renforcement de la protection des applications par l'ajout d'en-têtes de sécurité dans [crm-asn](/repos/betagouv-experimentations/crm-asn).
+- Amélioration de la gestion des accès via l'implémentation d'une authentification basée sur l'appartenance à une organisation GitHub dans [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy).
 
 ## Autres changements notables
-- **Automatisation de l'infrastructure** : intégration de l'auto-provisionnement Coolify, automatisation des migrations de base de données au démarrage et ajout de tests de fumée ([template-proto](/repos/betagouv-experimentations/template-proto)).
-- **Optimisation de l'IA** : intégration et optimisation de l'usage des compétences de Claude pour le développement et le cadrage des projets ([template-proto](/repos/betagouv-experimentations/template-proto), [repo-test](/repos/betagouv-experimentations/repo-test)).
-- **Gestion des logs** : développement de fonctionnalités avancées pour la récupération, l'analyse et le nettoyage des logs via un proxy dédié ([coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy)).
+- **Automatisation de l'infrastructure et de l'IA** : Intégration de l'auto-provisionnement Coolify, automatisation des migrations de bases de données et optimisation de l'usage des capacités d'IA dans [template-proto](/repos/betagouv-experimentations/template-proto).
+- **Outils de monitoring** : Développement d'un proxy dédié à la récupération, l'analyse et la gestion des logs d'exécution pour l'écosystème Coolify dans [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy).
+- **Standardisation des nouveaux projets** : Initialisation de nombreux prototypes sur une stack technique commune (Next.js, TypeScript, Drizzle ORM, DSFR) et déploiement via des workflows CI/CD automatisés ([test-jb4](/repos/betagouv-experimentations/test-jb4), [test-jb2](/repos/betagouv-experimentations/test-jb2), [test-benoit](/repos/betagouv-experimentations/test-benoit), [simulation-doctorat](/repos/betagouv-experimentations/simulation-doctorat), [eval-metier-rag](/repos/betagouv-experimentations/eval-metier-rag)).
 
 ## Dépôts les plus actifs
-- [crm-asn](/repos/betagouv-experimentations/crm-asn) : Développement d'une application de suivi des contacts et des interactions pour l'équipe ASN.
-- [template-proto](/repos/betagouv-experimentations/template-proto) : Évolution des capacités d'automatisation du déploiement et d'intégration de l'IA.
-- [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) : Création d'un proxy pour la gestion, l'authentification et l'analyse des logs.
-- [repo-test](/repos/betagouv-experimentations/repo-test) : Implémentation d'une application de gestion de tâches complète avec persistance de données.
+- [crm-asn](/repos/betagouv-experimentations/crm-asn) : Développement d'une application de suivi des contacts et gestion de l'infrastructure.
+- [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) : Création d'un outil de proxy pour la gestion et l'analyse des logs.
+- [template-proto](/repos/betagouv-experimentations/template-proto) : Optimisation des processus d'automatisation et d'intégration de l'IA.
+- [repo-test](/repos/betagouv-experimentations/repo-test) : Mise en place d'une application CRUD complète avec persistance de données.
+- [test-jb3](/repos/betagouv-experimentations/test-jb3) : Maintenance de sécurité et améliorations de l'interface utilisateur.

@@ -1,13 +1,13 @@
 # Synthèse d'activité : mesadsfr (du 05/05 au 12/05)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur l'enrichissement des fonctionnalités métier et la mise en conformité légale. L'introduction d'un parcours dédié aux inspecteurs et de nouveaux outils pour les administrateurs (export de données, module de newsletter) renforce l'utilité opérationnelle de la plateforme [mesads](/repos/mesadsfr/mesads). Par ailleurs, l'ajout d'une page de déclaration d'accessibilité permet de répondre aux obligations réglementaires, tandis que la mise à jour des données communales garantit la précision des informations pour l'année 2026.
+L'activité récente de [mesads](/repos/mesadsfr/mesads) s'est concentrée sur l'enrichissement des fonctionnalités pour les différents profils d'utilisateurs et la mise en conformité légale. L'introduction d'un parcours dédié aux inspecteurs, d'un module de newsletter et l'amélioration des outils statistiques renforcent les capacités opérationnelles de la plateforme. Par ailleurs, l'ajout d'une page de déclaration d'accessibilité et la mise à jour des données des communes pour 2026 assurent une meilleure fiabilité et une conformité accrue pour les utilisateurs finaux.
 
 ## Sécurité
-- Correction d'une vulnérabilité sur l'endpoint d'autocomplétion des communes [mesads](/repos/mesadsfr/mesads).
+- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).
 
 ## Autres changements notables
-- Amélioration de la qualité du code et de la robustesse via l'application de règles de linting (Ruff) et la correction de tests [mesads](/repos/mesadsfr/mesads).
+- Amélioration de la qualité du code et de la robustesse via l'application de règles de linting (Ruff) dans [mesads](/repos/mesadsfr/mesads).
 
 ## Dépôts les plus actifs
-- [mesads](/repos/mesadsfr/mesads) : Développement de nouvelles fonctionnalités métier, gestion de la conformité et maintenance technique.
+- [mesads](/repos/mesadsfr/mesads) : Développement de nouveaux parcours utilisateurs, mise en conformité d'accessibilité et renforcement de la sécurité.

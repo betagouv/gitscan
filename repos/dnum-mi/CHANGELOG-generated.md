@@ -1,27 +1,34 @@
-# Synthèse d'activité : dnum-mi (du 01/06 au 31/10)
+# Synthèse d'activité : dnum-mi (du 05/10 au 12/10)
 
 ## Résumé de l'activité
-L'activité de l'organisation a été marquée par une montée en maturité significative de plusieurs produits clés. Le passage à la version 1.0.0 de [test-app](/repos/dnum-mi/test-app) et l'implémentation d'un système complet de gestion et de validation des conditions générales d'utilisation dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) témoignent d'une volonté de stabiliser les services et de renforcer la conformité.
+L'activité de l'organisation a été marquée par des étapes de maturité importantes pour plusieurs projets clés. [test-app](/repos/dnum-mi/test-app) a franchi un cap majeur avec le passage en version 1.0.0, tandis que [referentiel-applications](/repos/dnum-mi/referentiel-applications) a considérablement enrichi ses capacités fonctionnelles, notamment via de nouveaux outils d'exportation et d'administration.
 
-Parallèlement, l'accent mis sur l'accessibilité numérique, notamment via les évolutions de [referentiel-applications](/repos/dnum-mi/referentiel-applications) et le développement de [a11y-toolkit](/repos/dnum-mi/a11y-toolkit), renforce l'engagement de l'organisation envers l'inclusion. Enfin, la fiabilité des données a été consolidée par la mise à jour des schémas GraphQL dans [ds-api-client](/repos/dnum-mi/ds-api-client) et l'actualisation des sources de données pour [dashlord-extended](/repos/dnum-mi/dashlord-extended).
+Parallèlement, l'expérience utilisateur et la fiabilité des outils ont été renforcées : [vue-dsfr](/repos/dnum-mi/vue-dsfr) a optimisé la gestion des icônes pour les environnements modernes, [a11y-toolkit](/repos/dnum-mi/a11y-toolkit) est passé en phase fonctionnelle avec l'ajout de modes de consultation d'accessibilité, et [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) a intégré des capacités d'assistance par intelligence artificielle.
 
 ## Sécurité
-- Renforcement de la sécurité des accès via la migration vers les GitHub Apps et l'application du principe de moindre privilège dans [test-helm](/repos/dnum-mi/test-helm), [test-app](/repos/dnum-mi/test-app) et [fabnum-cicd](/repos/dnum-mi/fabnum-cicd).
-- Durcissement de la sécurité des données avec la validation des claims JWT et le masquage des jetons API dans les logs pour [referentiel-applications](/repos/dnum-mi/referentiel-applications).
-- Sécurisation des processus de déploiement grâce à l'utilisation de "trusted publishers" dans [ds-api-client](/repos/dnum-mi/ds-api-client).
+- **Gestion des accès et authentification** : Migration vers l'utilisation de GitHub Apps pour renforcer la sécurité des workflows de déploiement dans [test-helm](/repos/dnum-mi/test-helm) et [test-app](/repos/dnum-mi/test-app).
+- **Protection des données et des secrets** : 
+    - Centralisation et sécurisation des secrets via une API Vault dans [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode).
+    - Durcissement des accès dans [referentiel-applications](/repos/dnum-mi/referentiel-applications) via la validation JWT, le masquage de jetons et la limitation de l'impersonation.
+- **Sécurisation des déploiements** : Utilisation de "trusted publishers" pour sécuriser les publications dans [ds-api-client](/repos/dnum-mi/ds-api-client).
 
 ## Autres changements notables
-- **Modernisation des infrastructures de build et de déploiement** : Adoption de standards OCI pour les images Docker dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd), mise à jour des environnements de build (pnpm, Node 24) dans [vue-dsfr](/repos/dnum-mi/vue-dsfr) et optimisation des pipelines CI/CD dans [test-app](/repos/dnum-mi/test-app) et [a11y-toolkit](/repos/dnum-mi/a11y-toolkit).
-- **Évolutions des données et des API** : Mise à jour majeure des schémas GraphQL pour [ds-api-client](/repos/dnum-mi/ds-api-client) et actualisation massive des URLs de services publics pour [dashlord-extended](/repos/dnum-mi/dashlord-extended).
+- **Optimisation CI/CD et Infrastructure** :
+    - Amélioration de la robustesse des pipelines et de la gestion des releases (support GitHub App, gestion de la concurrence) dans [test-app](/repos/dnum-mi/test-app), [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) et [ds-api-client](/repos/dnum-mi/ds-api-client).
+    - Modernisation des environnements de build et de déploiement (passage à pnpm, Node 24, standards OCI pour Docker) dans [vue-dsfr](/repos/dnum-mi/vue-dsfr) et [fabnum-cicd](/repos/dnum-mi/fabnum-cicd).
+    - Refonte de l'infrastructure conteneur et des processus de démarrage dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).
+- **Évolutions des données et API** :
+    - Mise à jour majeure des schémas GraphQL et ajout d'un module de gestion locale dans [ds-api-client](/repos/dnum-mi/ds-api-client).
+    - Actualisation massive des sources de données gouvernementales dans [dashlord-extended](/repos/dnum-mi/dashlord-extended).
 
 ## Dépôts les plus actifs
+- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Ajout de fonctionnalités d'exportation (Excel, PowerPoint), de recherche et d'un panneau d'administration.
+- [test-app](/repos/dnum-mi/test-app) : Passage en version 1.0.0 et optimisation de l'automatisation et de la sécurité.
 - [vue-dsfr](/repos/dnum-mi/vue-dsfr) : Amélioration de la gestion des icônes (mode hors-ligne, SSR) et stabilisation de l'infrastructure de build.
-- [test-app](/repos/dnum-mi/test-app) : Passage en version 1.0.0 et optimisation de l'automatisation CI/CD.
-- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Évolutions majeures sur l'accessibilité, l'export de données et la gestion des droits.
-- [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) : Synchronisation avec l'amont et amélioration des standards de construction Docker.
-- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation du parcours d'acceptation des CGU et mise à jour de l'infrastructure Docker.
-- [ds-api-client](/repos/dnum-mi/ds-api-client) : Mise à jour des schémas GraphQL et fiabilisation des tests.
-- [a11y-toolkit](/repos/dnum-mi/a11y-toolkit) : Structuration du projet et ajout de nouveaux outils d'accessibilité.
-- [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) : Enrichissement de la documentation pour l'intégration d'agents d'IA.
-- [dashlord-extended](/repos/dnum-mi/dashlord-extended) : Maintenance et actualisation des sources de données.
-- [test-helm](/repos/dnum-mi/test-helm) : Sécurisation des workflows de déploiement.
+- [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) : Intégration d'agents IA (Claude Code) et amélioration des outils de diagnostic système.
+- [ds-api-client](/repos/dnum-mi/ds-api-client) : Mise à jour des schémas GraphQL et amélioration de la CI/CD.
+- [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) : Synchronisation avec l'amont et renforcement des standards de construction Docker/OCI.
+- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation du flux d'acceptation des CGU et mise à jour de l'infrastructure Docker.
+- [a11y-toolkit](/repos/dnum-mi/a11y-toolkit) : Mise en place de la chaîne CI/CD et ajout de nouveaux outils de consultation d'accessibilité.
+- [test-helm](/repos/dnum-mi/test-helm) : Sécurisation des processus d'automatisation et de déploiement.
+- [dashlord-extended](/repos/dnum-mi/dashlord-extended) : Maintenance et actualisation des URLs des sources de données.

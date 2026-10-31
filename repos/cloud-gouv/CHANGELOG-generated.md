@@ -1,24 +1,22 @@
-# Synthèse d'activité : cloud-gouv (du 07/10 au 21/10)
+# Synthèse d'activité : cloud-gouv (du 22/10 au 29/10)
 
 ## Résumé de l'activité
-L'organisation a connu une phase d'expansion importante avec l'initialisation de plusieurs nouveaux projets visant à faciliter le déploiement d'outils de gestion sur Kubernetes, notamment [openproject](/repos/cloud-gouv/openproject), [k8s-glpi](/repos/cloud-gouv/k8s-glpi) et [k8s-freescout](/repos/cloud-gouv/k8s-freescout). Cette dynamique renforce la capacité de l'organisation à proposer des solutions de gestion de parc et de services prêtes pour le cloud.
+L'activité de l'organisation a été marquée par une forte dynamique d'expansion de l'écosystème Kubernetes. Plusieurs nouveaux projets ont été initialisés pour faciliter le déploiement de services clés comme [openproject](/repos/cloud-gouv/openproject), [k8s-glpi](/repos/cloud-gouv/k8s-glpi) et [k8s-freescout](/repos/cloud-gouv/k8s-freescout), offrant ainsi des bases prêtes à l'emploi pour les utilisateurs.
 
-En parallèle, l'écosystème d'infrastructure et de déploiement s'est enrichi avec l'ajout de nouveaux composants dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts) et la création d'une image Docker optimisée pour OpenTofu dans [dockerfiles](/repos/cloud-gouv/dockerfiles). Ces évolutions permettent une meilleure automatisation et une gestion plus fine des environnements de production.
+Parallèlement, l'organisation a renforcé ses capacités de déploiement et de gestion d'infrastructure. L'enrichissement du catalogue de déploiements via [common-helm-charts](/repos/cloud-gouv/common-helm-charts) et l'introduction de nouvelles images spécialisées dans [dockerfiles](/repos/cloud-gouv/dockerfiles) permettent une automatisation plus poussée et une meilleure traçabilité des composants logiciels utilisés par les clients finaux.
 
 ## Sécurité
-- Correction de vulnérabilités via la mise à jour de Go et OpenTelemetry dans [openbao](/repos/cloud-gouv/openbao).
-- Renforcement de la précision des règles de filtrage d'accès par la normalisation des noms d'hôtes dans [portail](/repos/cloud-gouv/portail).
-- Amélioration de la fiabilité du déverrouillage automatique (KMS) et de la gestion du cache PKI dans [openbao](/repos/cloud-gouv/openbao).
-- Optimisation de la sécurité des connexions IPsec via une meilleure gestion des noms de domaine dans [securix](/repos/cloud-gouv/securix).
+- Renforcement de la sécurité des workflows de développement via l'application de permissions restreintes par défaut sur GitHub Actions dans [securix](/repos/cloud-gouv/securix).
+- Amélioration de la robustesse de la gestion des secrets avec des correctifs critiques sur l'auto-déverrouillage KMS et la gestion des identités dans [openbao](/repos/cloud-gouv/openbao).
+- Sécurisation des accès par une meilleure précision des règles d'accès (ACL) grâce à la normalisation des noms d'hôtes dans [portail](/repos/cloud-gouv/portail).
 
 ## Autres changements notables
-- Amélioration de la robustesse de [securix](/repos/cloud-gouv/securix), notamment sur la fiabilité des mises à jour automatiques et l'optimisation des performances CPU.
-- Évolutions techniques majeures de [nixpkgs](/repos/cloud-gouv/nixpkgs) pour assurer la compatibilité avec GCC 15 et le support de nouvelles architectures.
-- Mise à jour de la compatibilité des charts Helm pour l'opérateur Cluster API et les ressources OpenStack dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
-- Introduction de la génération de SBOM (Software Bill of Materials) dans les nouvelles images OpenTofu de [dockerfiles](/repos/cloud-gouv/dockerfiles).
+- Évolution majeure de la gestion des paquets avec une migration structurelle et une compatibilité accrue avec les nouveaux compilateurs dans [nixpkgs](/repos/cloud-gouv/nixpkgs).
+- Mise en conformité des outils de déploiement avec les dernières versions de l'opérateur Cluster API et des ressources OpenStack dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+- Amélioration de la traçabilité logicielle avec l'intégration de la génération de SBOM (Software Bill of Materials) dans les nouvelles images OpenTofu de [dockerfiles](/repos/cloud-gouv/dockerfiles).
 
 ## Dépôts les plus actifs
-- [securix](/repos/cloud-gouv/securix) : Améliorations de l'interface utilisateur, de la fiabilité système et des outils de gestion de clés.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Extension du catalogue de déploiements et optimisation du monitoring.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs critiques et mises à jour de sécurité.
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Maintenance de la compatibilité des API pour les déploiements Kubernetes et OpenStack.
+- [securix](/repos/cloud-gouv/securix) : Amélioration de l'expérience de navigation web et de la stabilité des outils de sécurité.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections importantes sur la gestion des secrets et la robustesse de l'infrastructure.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Extension du catalogue de composants et amélioration des capacités de monitoring.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Mise à jour majeure des versions d'API pour assurer la compatibilité infrastructurelle.
