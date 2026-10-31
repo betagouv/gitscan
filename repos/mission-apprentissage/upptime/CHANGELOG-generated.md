@@ -1,7 +1,8 @@
-## Changelog : upptime (30 derniers jours, au 28 octobre 2026)
+## Changelog : upptime (30 derniers jours, au 31 octobre 2026)
 
 ### Résumé
-L'activité du dépôt est actuellement dominée par le fonctionnement automatisé du système de monitoring. Les changements récents concernent principalement la maintenance de l'instance et la mise à jour régulière des indicateurs de disponibilité des services surveillés.
+L'activité récente du dépôt est exclusivement opérationnelle. Le système a assuré sa mission de monitoring continu sans qu'aucune modification du code source ou de l'architecture ne soit apportée par les développeurs durant cette période.
 
-### Évolutions techniques
-- Mise à jour de la dépendance principale `@upptime` (passage de la version v1.45.0 à la v1.46.5).
+### Autres changements
+- Mise à jour automatique des graphiques de performance et des résumés de statut.
+- Actualisation régulière du fichier README pour refléter l'état de santé des services surveillés en temps réel.
