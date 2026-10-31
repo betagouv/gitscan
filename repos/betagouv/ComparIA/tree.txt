@@ -7,9 +7,11 @@
 │   └── workflows
 │       ├── build-deploy-dev.yml
 │       ├── deploy-prd.yml
-│       ├── models-update.yml
-│       └── promote-deploy-stg.yml
+│       ├── promote-deploy-stg.yml
+│       ├── security.yml
+│       └── test.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .gitmodules
 ├── .pylintrc
 ├── .python-version
@@ -21,17 +23,35 @@
 ├── LICENSE
 ├── Makefile
 ├── README.md
+├── SECURITY.md
 ├── alembic.ini
 ├── backend
 │   ├── __init__.py
+│   ├── activity
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── services.py
+│   ├── admin
+│   │   ├── __init__.py
+│   │   ├── activity.py
+│   │   ├── llms
+│   │   │   ├── __init__.py
+│   │   │   └── router.py
+│   │   ├── logos.py
+│   │   ├── publishing.py
+│   │   ├── router.py
+│   │   ├── services.py
+│   │   ├── suggestions.py
+│   │   └── vote_tags.py
 │   ├── arena
 │   │   ├── __init__.py
 │   │   ├── cache.py
 │   │   ├── captcha.py
+│   │   ├── checks.py
 │   │   ├── conversation.py
 │   │   ├── litellm.py
 │   │   ├── models.py
-│   │   ├── moderation.py
+│   │   ├── normalize.py
 │   │   ├── reveal.py
 │   │   ├── router.py
 │   │   ├── services.py
@@ -40,23 +60,67 @@
 │   │   ├── spam_patterns.json
 │   │   ├── streaming.py
 │   │   └── web_search.py
+│   ├── auth
+│   │   ├── __init__.py
+│   │   ├── dependencies.py
+│   │   ├── email.py
+│   │   ├── export.py
+│   │   ├── inactivity.py
+│   │   ├── middleware.py
+│   │   ├── oidc.py
+│   │   ├── router.py
+│   │   ├── services.py
+│   │   └── totp.py
 │   ├── config.py
 │   ├── errors.py
 │   ├── llms
 │   │   ├── __init__.py
+│   │   ├── currency.py
 │   │   ├── data.py
 │   │   ├── models.py
 │   │   ├── router.py
 │   │   └── utils.py
 │   ├── logger.py
 │   ├── main.py
+│   ├── ranking
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── router.py
+│   │   └── services.py
 │   ├── sentry.py
-│   └── utils
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── informational_legal.py
+│   │   ├── legal.py
+│   │   └── router.py
+│   ├── statistics
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── projection.py
+│   │   ├── router.py
+│   │   └── services.py
+│   ├── suggestions
+│   │   ├── __init__.py
+│   │   ├── router.py
+│   │   └── services.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── countries.py
+│   │   ├── locale.py
+│   │   └── user.py
+│   └── vote_tags
 │       ├── __init__.py
-│       ├── countries.py
-│       └── user.py
+│       ├── router.py
+│       └── services.py
 ├── comparia-cli
-├── controller.py
+├── data
+│   ├── archs.json
+│   ├── generated
+│   │   └── schema-archs.json
+│   └── legacy
+│       ├── generated-models.json
+│       ├── licenses.json
+│       └── models.json
 ├── devops
 │   ├── docker
 │   │   ├── .env.dev
@@ -68,6 +132,34 @@
 │   │   ├── docker-bake.yml
 │   │   ├── list-harbor-tags.sh
 │   │   └── restore-backup.sh
+│   ├── helm
+│   │   └── comparia
+│   │       ├── .helmignore
+│   │       ├── Chart.yaml
+│   │       ├── README.md
+│   │       ├── ci
+│   │       │   └── values-lint.yaml
+│   │       ├── templates
+│   │       │   ├── _helpers.tpl
+│   │       │   ├── backend-deployment.yaml
+│   │       │   ├── backend-service.yaml
+│   │       │   ├── cronjob-analyze.yaml
+│   │       │   ├── cronjob-publish.yaml
+│   │       │   ├── cronjob-purge-inactive.yaml
+│   │       │   ├── cronjob-purge-retention.yaml
+│   │       │   ├── cronjob-ranking.yaml
+│   │       │   ├── frontend-deployment.yaml
+│   │       │   ├── frontend-service.yaml
+│   │       │   ├── ingress.yaml
+│   │       │   ├── migration-job.yaml
+│   │       │   └── secret.yaml
+│   │       ├── tests
+│   │       │   ├── cronjobs_test.yaml
+│   │       │   ├── ingress_test.yaml
+│   │       │   ├── migration_test.yaml
+│   │       │   ├── secrets_test.yaml
+│   │       │   └── workloads_test.yaml
+│   │       └── values.yaml
 │   ├── instances
 │   │   ├── da
 │   │   │   ├── .env.da.example
@@ -75,6 +167,9 @@
 │   │   ├── fr
 │   │   │   ├── .env.fr.example
 │   │   │   └── app.compose.fr.yml
+│   │   ├── keycloak
+│   │   │   ├── keycloak.compose.yml
+│   │   │   └── setup-keycloak.sh
 │   │   ├── postgres
 │   │   │   ├── generate-init-db.sh
 │   │   │   ├── init.sh
@@ -94,13 +189,15 @@
 │   └── standalone_docker_install
 │       ├── .env.example
 │       ├── Caddyfile
-│       ├── DOCKER_INSTALL.md
 │       └── docker-compose.yml
 ├── docs
-│   └── assets
-│       └── logo-comparia-symbole.svg
+│   ├── admin.md
+│   ├── assets
+│   │   └── logo-comparia-symbole.svg
+│   └── self-hosting.md
 ├── frontend
 │   ├── .dockerignore
+│   ├── .dsfr.yml
 │   ├── .env.example
 │   ├── .gitignore
 │   ├── .npmrc
@@ -111,11 +208,11 @@
 │   │   ├── project_id
 │   │   └── settings.json
 │   ├── e2e
+│   │   ├── a11y.test.ts
 │   │   ├── demo.test.ts
 │   │   └── modeles.test.ts
 │   ├── eslint.config.js
 │   ├── locales
-│   │   ├── maintenance.py
 │   │   └── messages
 │   │       ├── bar.json
 │   │       ├── da.json
@@ -125,11 +222,10 @@
 │   │       ├── fr.json
 │   │       ├── it.json
 │   │       ├── lt.json
-│   │       ├── nb_NO.json
+│   │       ├── nb-NO.json
 │   │       ├── nn.json
 │   │       ├── oc.json
 │   │       └── sv.json
-│   ├── package-lock.json
 │   ├── package.json
 │   ├── playwright.config.ts
 │   ├── src
@@ -137,256 +233,417 @@
 │   │   ├── app.html
 │   │   ├── css
 │   │   │   ├── app.css
-│   │   │   └── icons.css
+│   │   │   ├── icons.css
+│   │   │   ├── icons.spec.ts
+│   │   │   └── placeholders.spec.ts
 │   │   ├── demo.spec.ts
 │   │   ├── error.html
 │   │   ├── hooks.client.ts
+│   │   ├── hooks.server.test.ts
 │   │   ├── hooks.server.ts
 │   │   ├── lib
+│   │   │   ├── apiErrors.test.ts
+│   │   │   ├── apiErrors.ts
+│   │   │   ├── auth.svelte.ts
+│   │   │   ├── authContext.svelte.ts
 │   │   │   ├── captcha.svelte.ts
 │   │   │   ├── chatService.svelte.ts
+│   │   │   ├── chatService.test.ts
 │   │   │   ├── components
-│   │   │   │   ├── AILogo.svelte
+│   │   │   │   ├── ConfirmDeleteUserModal.svelte
+│   │   │   │   ├── ConfirmResetTotpModal.svelte
+│   │   │   │   ├── ConversationActivityChart.svelte
 │   │   │   │   ├── Copy.svelte
-│   │   │   │   ├── FAQContent.svelte
-│   │   │   │   ├── Footer.svelte
-│   │   │   │   ├── HowItWorks.svelte
+│   │   │   │   ├── Dropdown.svelte
 │   │   │   │   ├── IconButton.svelte
+│   │   │   │   ├── InfoCard.svelte
+│   │   │   │   ├── InformationalPageContent.svelte
+│   │   │   │   ├── InviteUserModal.svelte
+│   │   │   │   ├── LegalDocument.svelte
+│   │   │   │   ├── LegalDocument.svelte.test.ts
+│   │   │   │   ├── LegalNoticeFallback.svelte
+│   │   │   │   ├── MatomoOptOut.svelte
+│   │   │   │   ├── MatomoOptOut.svelte.test.ts
 │   │   │   │   ├── ModelCard.svelte
 │   │   │   │   ├── ModelInfoModal.svelte
-│   │   │   │   ├── Newsletter.svelte
+│   │   │   │   ├── ModelInfoModal.theme.test.ts
+│   │   │   │   ├── OpennessScore.svelte
+│   │   │   │   ├── OpennessScore.svelte.test.ts
 │   │   │   │   ├── Pending.svelte
+│   │   │   │   ├── PrivacyPolicyFallback.svelte
 │   │   │   │   ├── RadioGroupCard.svelte
-│   │   │   │   ├── SEOHead.svelte
+│   │   │   │   ├── SSOSignIn.svelte
+│   │   │   │   ├── SSOSignIn.svelte.test.ts
 │   │   │   │   ├── Selector.svelte
 │   │   │   │   ├── SideSwitcher.svelte
+│   │   │   │   ├── SignInModal.svelte
 │   │   │   │   ├── TextPrompt.svelte
+│   │   │   │   ├── TextPrompt.svelte.test.ts
 │   │   │   │   ├── ThemeSelector.svelte
+│   │   │   │   ├── ThemeSelector.svelte.test.ts
 │   │   │   │   ├── Toaster.svelte
+│   │   │   │   ├── TotpCodeInput.svelte
+│   │   │   │   ├── TotpSetupModal.svelte
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── InformationalLegalPagesAdmin.svelte
+│   │   │   │   │   ├── InformationalLegalPagesAdmin.svelte.test.ts
+│   │   │   │   │   ├── LegalDocumentAdmin.svelte
+│   │   │   │   │   ├── LegalDocumentAdmin.svelte.test.ts
+│   │   │   │   │   └── LegalPresentationPreview.svelte
 │   │   │   │   ├── dsfr
 │   │   │   │   │   ├── Accordion.svelte
 │   │   │   │   │   ├── AccordionGroup.svelte
 │   │   │   │   │   ├── Alert.svelte
 │   │   │   │   │   ├── Badge.svelte
+│   │   │   │   │   ├── Badge.theme.test.ts
 │   │   │   │   │   ├── Button.svelte
 │   │   │   │   │   ├── Checkbox.svelte
+│   │   │   │   │   ├── Checkbox.svelte.test.ts
 │   │   │   │   │   ├── CheckboxGroup.svelte
 │   │   │   │   │   ├── Icon.svelte
+│   │   │   │   │   ├── Input.svelte
 │   │   │   │   │   ├── Link.svelte
 │   │   │   │   │   ├── Modal.svelte
 │   │   │   │   │   ├── Pagination.svelte
 │   │   │   │   │   ├── Search.svelte
 │   │   │   │   │   ├── Segmented.svelte
 │   │   │   │   │   ├── Select.svelte
+│   │   │   │   │   ├── Select.svelte.test.ts
+│   │   │   │   │   ├── TabNav.svelte
+│   │   │   │   │   ├── Table.a11y.svelte.test.ts
+│   │   │   │   │   ├── Table.harness.svelte
 │   │   │   │   │   ├── Table.svelte
 │   │   │   │   │   ├── Tabs.svelte
+│   │   │   │   │   ├── Tabs.svelte.test.ts
+│   │   │   │   │   ├── Textarea.svelte
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toggle.svelte
 │   │   │   │   │   ├── Tooltip.svelte
+│   │   │   │   │   ├── a11y.svelte.test.ts
 │   │   │   │   │   └── index.ts
-│   │   │   │   ├── header
-│   │   │   │   │   ├── Header.svelte
+│   │   │   │   ├── form
+│   │   │   │   │   ├── AnyFormItem.svelte
+│   │   │   │   │   ├── ColorInput.svelte
+│   │   │   │   │   ├── ColorInput.svelte.spec.ts
+│   │   │   │   │   ├── Form.svelte
+│   │   │   │   │   ├── Form.svelte.test.ts
+│   │   │   │   │   ├── FormCheckbox.svelte
+│   │   │   │   │   ├── FormCheckboxGroup.svelte
+│   │   │   │   │   ├── FormField.svelte
+│   │   │   │   │   ├── FormFieldset.svelte
+│   │   │   │   │   ├── FormFieldsetItem.svelte
+│   │   │   │   │   ├── FormFieldsetList.svelte
+│   │   │   │   │   ├── FormFieldsetList.svelte.test.ts
+│   │   │   │   │   ├── FormInput.svelte
+│   │   │   │   │   ├── FormSecretInput.svelte
+│   │   │   │   │   ├── FormSelect.svelte
+│   │   │   │   │   ├── FormToggle.svelte
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── layout
+│   │   │   │   │   ├── AILogo.svelte
+│   │   │   │   │   ├── History.svelte
+│   │   │   │   │   ├── History.theme.test.ts
 │   │   │   │   │   ├── LanguageSelector.svelte
-│   │   │   │   │   ├── Menubar.svelte
+│   │   │   │   │   ├── LegalMenu.svelte
+│   │   │   │   │   ├── LegalMenu.svelte.test.ts
+│   │   │   │   │   ├── NavBar.svelte
+│   │   │   │   │   ├── PageLayout.svelte
+│   │   │   │   │   ├── SEOHead.svelte
+│   │   │   │   │   ├── SignInForm.svelte
+│   │   │   │   │   ├── SignInForm.svelte.test.ts
 │   │   │   │   │   ├── VoteGauge.svelte
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── markdown
 │   │   │   │       ├── MarkdownCode.svelte
+│   │   │   │       ├── MarkdownCode.svelte.test.ts
+│   │   │   │       ├── MarkdownInline.svelte
+│   │   │   │       ├── MarkdownInline.svelte.test.ts
+│   │   │   │       ├── headings.test.ts
+│   │   │   │       ├── headings.ts
 │   │   │   │       ├── html-tags.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── inline.test.ts
+│   │   │   │       ├── inline.ts
 │   │   │   │       ├── prism.css
+│   │   │   │       ├── utils.test.ts
 │   │   │   │       └── utils.ts
+│   │   │   ├── consent.spec.ts
+│   │   │   ├── consent.ts
+│   │   │   ├── consumptionSummary.spec.ts
+│   │   │   ├── consumptionSummary.ts
+│   │   │   ├── costComparison.spec.ts
+│   │   │   ├── costComparison.ts
+│   │   │   ├── currency.spec.ts
+│   │   │   ├── currency.ts
+│   │   │   ├── dsfr.ts
+│   │   │   ├── energyEquivalences.spec.ts
+│   │   │   ├── energyEquivalences.ts
+│   │   │   ├── fastapi-client.test.ts
 │   │   │   ├── fastapi-client.ts
 │   │   │   ├── generated
-│   │   │   │   ├── models.ts
-│   │   │   │   ├── news.json
-│   │   │   │   └── suggestions.ts
+│   │   │   │   ├── admin.ts
+│   │   │   │   ├── backend.ts
+│   │   │   │   ├── constants.ts
+│   │   │   │   └── models.ts
 │   │   │   ├── global.svelte.ts
 │   │   │   ├── helpers
 │   │   │   │   ├── attachments.ts
 │   │   │   │   ├── useLocalStorage.svelte.ts
 │   │   │   │   └── useToast.svelte.ts
 │   │   │   ├── index.ts
+│   │   │   ├── informational-page-route.server.ts
+│   │   │   ├── informational-pages.server.ts
+│   │   │   ├── informational-pages.test.ts
+│   │   │   ├── informational-pages.ts
+│   │   │   ├── logTicks.spec.ts
+│   │   │   ├── logTicks.ts
 │   │   │   ├── logger.server.ts
 │   │   │   ├── metrics.ts
+│   │   │   ├── models.test.ts
 │   │   │   ├── models.ts
+│   │   │   ├── pareto.spec.ts
+│   │   │   ├── pareto.ts
+│   │   │   ├── regions.test.ts
+│   │   │   ├── regions.ts
+│   │   │   ├── routing.ts
+│   │   │   ├── signInMethods.test.ts
+│   │   │   ├── signInMethods.ts
 │   │   │   ├── stores
-│   │   │   │   └── cohortStore.svelte.ts
+│   │   │   │   ├── cohortStore.svelte.ts
+│   │   │   │   └── form.svelte.ts
 │   │   │   ├── styleControl.svelte.ts
-│   │   │   └── utils
-│   │   │       ├── commons.ts
-│   │   │       └── data.ts
-│   │   └── routes
-│   │       ├── (pages)
-│   │       │   ├── (general)
-│   │       │   │   ├── accessibilite
-│   │       │   │   │   └── +page.svelte
-│   │       │   │   ├── donnees-personnelles
-│   │       │   │   │   └── +page.svelte
-│   │       │   │   ├── ecoconception
-│   │       │   │   │   └── +page.svelte
-│   │       │   │   ├── mentions-legales
-│   │       │   │   │   └── +page.svelte
-│   │       │   │   └── modalites
-│   │       │   │       └── +page.svelte
-│   │       │   ├── +layout.svelte
-│   │       │   ├── +page.svelte
-│   │       │   ├── datasets
-│   │       │   │   └── +page.svelte
-│   │       │   ├── duel
-│   │       │   │   └── +page.svelte
-│   │       │   ├── modeles
-│   │       │   │   └── +page.svelte
-│   │       │   ├── news
-│   │       │   │   ├── +page.svelte
-│   │       │   │   └── bnf
-│   │       │   │       └── +page.svelte
-│   │       │   ├── product
-│   │       │   │   ├── +page.server.ts
-│   │       │   │   └── [tab]
-│   │       │   │       ├── +page.server.ts
-│   │       │   │       ├── +page.svelte
-│   │       │   │       └── components
-│   │       │   │           ├── Community.svelte
-│   │       │   │           ├── Comparator.svelte
-│   │       │   │           ├── FAQ.svelte
-│   │       │   │           ├── History.svelte
-│   │       │   │           ├── Partners.svelte
-│   │       │   │           ├── Problem.svelte
-│   │       │   │           └── index.ts
-│   │       │   └── ranking
-│   │       │       ├── +page.svelte
-│   │       │       └── components
-│   │       │           ├── Energy.svelte
-│   │       │           ├── EnergyGraph.svelte
-│   │       │           ├── Methodology.svelte
-│   │       │           ├── Preferences.svelte
-│   │       │           ├── PreferencesTable.svelte
-│   │       │           ├── RankingTable.svelte
-│   │       │           ├── WinHistogram.svelte
-│   │       │           └── index.ts
-│   │       ├── +error.svelte
-│   │       ├── +layout.svelte
-│   │       ├── +layout.ts
-│   │       ├── arene
-│   │       │   ├── +page.svelte
-│   │       │   └── components
-│   │       │       ├── ErrorDisplay.svelte
-│   │       │       ├── GroupedMessages.svelte
-│   │       │       ├── GuidedPromptSuggestions.svelte
-│   │       │       ├── MessageBot.svelte
-│   │       │       ├── MessageUser.svelte
-│   │       │       ├── MiniCard.svelte
-│   │       │       ├── ModelSelector.svelte
-│   │       │       ├── RevealArea.svelte
-│   │       │       ├── RevealCard.svelte
-│   │       │       ├── TOSModal.svelte
-│   │       │       ├── ViewChat.svelte
-│   │       │       ├── ViewPrompt.svelte
-│   │       │       ├── VoteAnnotate.svelte
-│   │       │       ├── VoteModal.svelte
-│   │       │       ├── VoteSelect.svelte
-│   │       │       └── index.ts
-│   │       ├── maintenance
-│   │       │   └── +page.svelte
-│   │       └── metrics
-│   │           └── +server.ts
+│   │   │   ├── suggestions.spec.ts
+│   │   │   ├── suggestions.ts
+│   │   │   ├── testing
+│   │   │   │   └── a11y.ts
+│   │   │   ├── theme.spec.ts
+│   │   │   ├── theme.ts
+│   │   │   ├── usageProfiles.spec.ts
+│   │   │   ├── usageProfiles.ts
+│   │   │   ├── utils
+│   │   │   │   ├── commons.ts
+│   │   │   │   ├── data.ts
+│   │   │   │   ├── form.test.ts
+│   │   │   │   └── form.ts
+│   │   │   └── voteTags.ts
+│   │   ├── matomo.test.ts
+│   │   ├── routes
+│   │   │   ├── (admin)
+│   │   │   │   ├── +error.svelte
+│   │   │   │   ├── +layout.svelte
+│   │   │   │   ├── +layout.ts
+│   │   │   │   └── admin
+│   │   │   │       ├── +page.server.ts
+│   │   │   │       ├── activite
+│   │   │   │       │   ├── +layout.svelte
+│   │   │   │       │   ├── +layout.ts
+│   │   │   │       │   ├── +page.ts
+│   │   │   │       │   ├── apercu
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   └── +page.ts
+│   │   │   │       │   ├── components
+│   │   │   │       │   │   ├── BarList.svelte
+│   │   │   │       │   │   ├── ConversationModal.svelte
+│   │   │   │       │   │   ├── ConversationSummary.svelte
+│   │   │   │       │   │   ├── ConversationTranscript.svelte
+│   │   │   │       │   │   ├── FilterBar.svelte
+│   │   │   │       │   │   ├── Funnel.svelte
+│   │   │   │       │   │   ├── JourneyTrack.svelte
+│   │   │   │       │   │   ├── StackedBar.svelte
+│   │   │   │       │   │   ├── StoppedVerdict.svelte
+│   │   │   │       │   │   ├── TagChips.svelte
+│   │   │   │       │   │   ├── VerdictMark.svelte
+│   │   │   │       │   │   └── index.ts
+│   │   │   │       │   ├── conversations
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   ├── +page.ts
+│   │   │   │       │   │   └── [id]
+│   │   │   │       │   │       ├── +page.svelte
+│   │   │   │       │   │       └── +page.ts
+│   │   │   │       │   ├── filters.test.ts
+│   │   │   │       │   └── filters.ts
+│   │   │   │       ├── authentification
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   └── page.svelte.test.ts
+│   │   │   │       ├── conditions-participation
+│   │   │   │       │   └── +page.svelte
+│   │   │   │       ├── customization
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   └── page.svelte.test.ts
+│   │   │   │       ├── legal
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   ├── conditions
+│   │   │   │       │   │   └── +page.svelte
+│   │   │   │       │   ├── confidentialite
+│   │   │   │       │   │   └── +page.svelte
+│   │   │   │       │   └── pages-information
+│   │   │   │       │       └── +page.svelte
+│   │   │   │       ├── llms
+│   │   │   │       │   ├── +layout.svelte
+│   │   │   │       │   ├── +layout.ts
+│   │   │   │       │   ├── +page.server.ts
+│   │   │   │       │   ├── endpoints
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   └── [id]
+│   │   │   │       │   │       ├── +page.svelte
+│   │   │   │       │   │       └── +page.ts
+│   │   │   │       │   ├── labs
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   └── [id]
+│   │   │   │       │   │       ├── +page.svelte
+│   │   │   │       │   │       └── +page.ts
+│   │   │   │       │   ├── licenses
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   └── [id]
+│   │   │   │       │   │       ├── +page.svelte
+│   │   │   │       │   │       └── +page.ts
+│   │   │   │       │   └── llms
+│   │   │   │       │       ├── +page.svelte
+│   │   │   │       │       └── [id]
+│   │   │   │       │           ├── +page.svelte
+│   │   │   │       │           └── +page.ts
+│   │   │   │       ├── locales
+│   │   │   │       │   └── +page.svelte
+│   │   │   │       ├── prompt-checks
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   ├── +page.ts
+│   │   │   │       │   ├── ActivityLineChart.svelte
+│   │   │   │       │   ├── CriterionHistogram.svelte
+│   │   │   │       │   ├── CriterionRow.svelte
+│   │   │   │       │   ├── criteria.ts
+│   │   │   │       │   ├── page.svelte.test.ts
+│   │   │   │       │   └── types.ts
+│   │   │   │       ├── publication
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   └── +page.ts
+│   │   │   │       ├── suggestions
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   ├── +page.ts
+│   │   │   │       │   ├── CategoryIconPicker.svelte
+│   │   │   │       │   ├── CategoryIconPicker.svelte.test.ts
+│   │   │   │       │   ├── page.svelte.test.ts
+│   │   │   │       │   └── types.ts
+│   │   │   │       ├── utilisateurs
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   ├── +page.ts
+│   │   │   │       │   ├── [id]
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   └── +page.ts
+│   │   │   │       │   ├── page.svelte.test.ts
+│   │   │   │       │   └── page.test.ts
+│   │   │   │       └── vote-tags
+│   │   │   │           ├── +page.server.ts
+│   │   │   │           ├── +page.svelte
+│   │   │   │           └── +page.ts
+│   │   │   ├── (arena)
+│   │   │   │   ├── +layout.server.ts
+│   │   │   │   ├── +layout.svelte
+│   │   │   │   ├── +layout.ts
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── accessibility
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── arenaPageState.test.ts
+│   │   │   │   ├── arenaPageState.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── ErrorDisplay.svelte
+│   │   │   │   │   ├── GroupedMessages.svelte
+│   │   │   │   │   ├── GuidedPromptSuggestions.svelte
+│   │   │   │   │   ├── GuidedPromptSuggestions.svelte.test.ts
+│   │   │   │   │   ├── MessageBot.svelte
+│   │   │   │   │   ├── MessageUser.svelte
+│   │   │   │   │   ├── MiniCard.svelte
+│   │   │   │   │   ├── ModelSelector.svelte
+│   │   │   │   │   ├── ModelSelector.svelte.test.ts
+│   │   │   │   │   ├── PromptWarningModal.svelte
+│   │   │   │   │   ├── PromptWarningModal.svelte.test.ts
+│   │   │   │   │   ├── RevealArea.svelte
+│   │   │   │   │   ├── RevealCard.layout.test.ts
+│   │   │   │   │   ├── RevealCard.svelte
+│   │   │   │   │   ├── TOSModal.svelte
+│   │   │   │   │   ├── TOSModal.svelte.test.ts
+│   │   │   │   │   ├── ViewChat.svelte
+│   │   │   │   │   ├── ViewPrompt.svelte
+│   │   │   │   │   ├── ViewPrompt.svelte.test.ts
+│   │   │   │   │   ├── VoteAnnotate.svelte
+│   │   │   │   │   ├── VoteModal.svelte
+│   │   │   │   │   ├── VoteSelect.svelte
+│   │   │   │   │   ├── VoteSelect.svelte.test.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── eco-design
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   └── +page.svelte
+│   │   │   │   ├── legal
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   └── +page.svelte
+│   │   │   │   ├── models
+│   │   │   │   │   └── +page.svelte
+│   │   │   │   ├── privacy
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── page.server.test.ts
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── ranking
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── DownloadDataButton.svelte
+│   │   │   │   │   │   ├── DownloadDataButton.svelte.test.ts
+│   │   │   │   │   │   ├── Energy.svelte
+│   │   │   │   │   │   ├── EnergyGraph.svelte
+│   │   │   │   │   │   ├── EnergyGraph.svelte.test.ts
+│   │   │   │   │   │   ├── GraphDot.svelte
+│   │   │   │   │   │   ├── Methodology.svelte
+│   │   │   │   │   │   ├── PersonalTable.svelte
+│   │   │   │   │   │   ├── PersonalTable.svelte.test.ts
+│   │   │   │   │   │   ├── Preferences.svelte
+│   │   │   │   │   │   ├── PreferencesTable.svelte
+│   │   │   │   │   │   ├── Price.svelte
+│   │   │   │   │   │   ├── PriceGraph.svelte
+│   │   │   │   │   │   ├── PriceGraph.svelte.test.ts
+│   │   │   │   │   │   ├── RankingTable.svelte
+│   │   │   │   │   │   ├── WinHistogram.svelte
+│   │   │   │   │   │   ├── charts.a11y.svelte.test.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── statistics
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   └── terms
+│   │   │   │       ├── +page.server.ts
+│   │   │   │       ├── +page.svelte
+│   │   │   │       └── page.server.test.ts
+│   │   │   ├── +error.svelte
+│   │   │   ├── +layout.svelte
+│   │   │   ├── +layout.ts
+│   │   │   ├── invite
+│   │   │   │   └── [token]
+│   │   │   │       ├── +page.svelte
+│   │   │   │       └── page.svelte.test.ts
+│   │   │   ├── login
+│   │   │   │   ├── +page.svelte
+│   │   │   │   └── page.svelte.test.ts
+│   │   │   ├── maintenance
+│   │   │   │   └── +page.svelte
+│   │   │   └── metrics
+│   │   │       └── +server.ts
+│   │   ├── vite
+│   │   │   ├── localeMessages.d.ts
+│   │   │   ├── paraglideLocaleSplit.test.ts
+│   │   │   └── paraglideLocaleSplit.ts
+│   │   └── vitest.d.ts
 │   ├── static
-│   │   ├── artworks
-│   │   │   ├── conclusion.svg
-│   │   │   ├── ecosystem.svg
-│   │   │   └── innovation.svg
-│   │   ├── bundle.tracing.replay.min.js
-│   │   ├── bundle.tracing.replay.min.js.map
-│   │   ├── datasets
-│   │   │   ├── bunka-ai-logo.jpg
-│   │   │   ├── bunka-analyse.png
-│   │   │   ├── bunka-visualisation.png
-│   │   │   ├── conversations-en.png
-│   │   │   ├── conversations-fr.png
-│   │   │   ├── reactions-en.png
-│   │   │   ├── reactions-fr.png
-│   │   │   ├── votes-en.png
-│   │   │   └── votes-fr.png
-│   │   ├── dsfr
-│   │   │   └── artwork
-│   │   │       ├── background
-│   │   │       │   └── ovoid.svg
-│   │   │       ├── dark.svg
-│   │   │       ├── light.svg
-│   │   │       ├── pictograms
-│   │   │       │   ├── buildings
-│   │   │       │   │   ├── city-hall.svg
-│   │   │       │   │   ├── factory.svg
-│   │   │       │   │   ├── house.svg
-│   │   │       │   │   ├── nuclear-plant.svg
-│   │   │       │   │   └── school.svg
-│   │   │       │   ├── digital
-│   │   │       │   │   ├── application.svg
-│   │   │       │   │   ├── avatar.svg
-│   │   │       │   │   ├── calendar.svg
-│   │   │       │   │   ├── coding.svg
-│   │   │       │   │   ├── data-visualization.svg
-│   │   │       │   │   ├── in-progress.svg
-│   │   │       │   │   ├── internet.svg
-│   │   │       │   │   ├── mail-send.svg
-│   │   │       │   │   └── search.svg
-│   │   │       │   ├── document
-│   │   │       │   │   ├── contract.svg
-│   │   │       │   │   ├── document-add.svg
-│   │   │       │   │   ├── document-download.svg
-│   │   │       │   │   ├── document-signature.svg
-│   │   │       │   │   ├── document.svg
-│   │   │       │   │   ├── driving-licence.svg
-│   │   │       │   │   ├── national-identity-card.svg
-│   │   │       │   │   ├── passport.svg
-│   │   │       │   │   ├── tax-stamp.svg
-│   │   │       │   │   └── vehicle-registration.svg
-│   │   │       │   ├── environment
-│   │   │       │   │   ├── environment.svg
-│   │   │       │   │   ├── food.svg
-│   │   │       │   │   ├── grocery.svg
-│   │   │       │   │   ├── human-cooperation.svg
-│   │   │       │   │   ├── leaf.svg
-│   │   │       │   │   ├── moon.svg
-│   │   │       │   │   ├── mountain.svg
-│   │   │       │   │   ├── sun.svg
-│   │   │       │   │   └── tree.svg
-│   │   │       │   ├── health
-│   │   │       │   │   ├── health.svg
-│   │   │       │   │   ├── hospital.svg
-│   │   │       │   │   ├── vaccine.svg
-│   │   │       │   │   └── virus.svg
-│   │   │       │   ├── institutions
-│   │   │       │   │   ├── firefighter.svg
-│   │   │       │   │   ├── gendarmerie.svg
-│   │   │       │   │   ├── justice.svg
-│   │   │       │   │   ├── money.svg
-│   │   │       │   │   └── police.svg
-│   │   │       │   ├── leisure
-│   │   │       │   │   ├── book.svg
-│   │   │       │   │   ├── community.svg
-│   │   │       │   │   ├── culture.svg
-│   │   │       │   │   ├── digital-art.svg
-│   │   │       │   │   └── paint.svg
-│   │   │       │   ├── map
-│   │   │       │   │   ├── airport.svg
-│   │   │       │   │   ├── location-france.svg
-│   │   │       │   │   ├── luggage.svg
-│   │   │       │   │   └── map.svg
-│   │   │       │   └── system
-│   │   │       │       ├── connection-lost.svg
-│   │   │       │       ├── error.svg
-│   │   │       │       ├── information.svg
-│   │   │       │       ├── notification.svg
-│   │   │       │       ├── padlock.svg
-│   │   │       │       ├── success.svg
-│   │   │       │       ├── system.svg
-│   │   │       │       ├── technical-error.svg
-│   │   │       │       └── warning.svg
-│   │   │       └── system.svg
-│   │   ├── duel
-│   │   │   ├── extension.png
-│   │   │   └── workshop.jpg
+│   │   ├── .well-known
+│   │   │   └── security.txt
 │   │   ├── favicon
 │   │   │   ├── apple-touch-icon.png
 │   │   │   ├── favicon.ico
@@ -395,170 +652,35 @@
 │   │   │   ├── manifest.webmanifest
 │   │   │   ├── web-app-manifest-192x192.png
 │   │   │   └── web-app-manifest-512x512.png
-│   │   ├── flags
-│   │   │   ├── da.png
-│   │   │   ├── en.png
-│   │   │   ├── en.svg
-│   │   │   ├── fr.png
-│   │   │   ├── fr.svg
-│   │   │   ├── lt.png
-│   │   │   ├── lt.svg
-│   │   │   ├── sv.png
-│   │   │   └── sv.svg
 │   │   ├── general
 │   │   │   └── rgesn_2025_comparIA.ods
 │   │   ├── home
-│   │   │   ├── arrow-h-mobile.svg
-│   │   │   ├── arrow-h.svg
-│   │   │   ├── comparer-da.png
-│   │   │   ├── comparer-dark-da.png
-│   │   │   ├── comparer-dark-en.png
-│   │   │   ├── comparer-dark-fr.png
-│   │   │   ├── comparer-dark-sv.png
-│   │   │   ├── comparer-dark.jpg
-│   │   │   ├── comparer-en.png
-│   │   │   ├── comparer-fr.png
-│   │   │   ├── comparer-sv.png
-│   │   │   ├── comparia-stars.png
 │   │   │   ├── datasets.svg
 │   │   │   ├── finetune.svg
-│   │   │   ├── mesurer-da.png
-│   │   │   ├── mesurer-dark-da.png
-│   │   │   ├── mesurer-dark-en.png
-│   │   │   ├── mesurer-dark-fr.png
-│   │   │   ├── mesurer-dark-sv.png
-│   │   │   ├── mesurer-dark.jpg
-│   │   │   ├── mesurer-en.png
-│   │   │   ├── mesurer-fr.png
-│   │   │   ├── mesurer-sv.png
-│   │   │   ├── prefs.svg
-│   │   │   ├── tester-dark.jpg
-│   │   │   └── tester.png
+│   │   │   └── prefs.svg
 │   │   ├── iasummit-small.png
 │   │   ├── iasummit.png
 │   │   ├── icons
+│   │   │   ├── edit-line.svg
+│   │   │   ├── flashlight-line.svg
+│   │   │   ├── links-fill.svg
+│   │   │   ├── money-euro-circle-line.svg
+│   │   │   ├── pencil-line.svg
 │   │   │   ├── shuffle.svg
 │   │   │   ├── sort-asc.svg
-│   │   │   └── sort-desc.svg
+│   │   │   ├── sort-desc.svg
+│   │   │   └── trophy-line.svg
 │   │   ├── images
 │   │   │   ├── ranking-graph.png
 │   │   │   └── ranking-table.png
-│   │   ├── news
-│   │   │   ├── analyse-bunka.png
-│   │   │   ├── arXiv-comparia.png
-│   │   │   ├── article-ZDNet.png
-│   │   │   ├── article-franceinfo.png
-│   │   │   ├── article-numerama.png
-│   │   │   ├── article-usine-digitale.png
-│   │   │   ├── atelier-unesco.png
-│   │   │   ├── blog-moderateur.png
-│   │   │   ├── bnf
-│   │   │   │   ├── anastasia-stasenko.jpg
-│   │   │   │   ├── andrei-mogoutov.jpg
-│   │   │   │   ├── benjamin-piwowarski.jpg
-│   │   │   │   ├── cover.jpg
-│   │   │   │   ├── cover.png
-│   │   │   │   ├── david-mas.jpg
-│   │   │   │   ├── francoise-tort.jpg
-│   │   │   │   ├── jean-cattan.jpg
-│   │   │   │   ├── louis-magnes.jpg
-│   │   │   │   ├── loup-cellard.jpg
-│   │   │   │   ├── lucie-termignon.jpg
-│   │   │   │   ├── margaux-levisalles.jpg
-│   │   │   │   ├── marie-bancal.jpg
-│   │   │   │   ├── mathilde-bras.jpg
-│   │   │   │   ├── placeholder.png
-│   │   │   │   ├── romain-delassus.jpg
-│   │   │   │   ├── samuel-rince.jpg
-│   │   │   │   ├── sasha-luccioni.jpg
-│   │   │   │   └── victor-laymand.jpg
-│   │   │   ├── bnf.png
-│   │   │   ├── duel.jpg
-│   │   │   ├── infolettre3.png
-│   │   │   ├── infolettre4.png
-│   │   │   ├── jt-france2.jpeg
-│   │   │   ├── minumechos_podcast_comparIA.jfif
-│   │   │   ├── nec-pitch.jpg
-│   │   │   ├── orbicom.jpg
-│   │   │   ├── parlezmoidia.png
-│   │   │   ├── ranking.png
-│   │   │   └── webinaire-mediation.png
 │   │   ├── orgs
 │   │   │   ├── ai
 │   │   │   │   ├── ai2.svg
-│   │   │   │   ├── ai21.webp
-│   │   │   │   ├── anthropic.png
-│   │   │   │   ├── cohere.png
-│   │   │   │   ├── deepseek.png
 │   │   │   │   ├── euroLLM.webp
-│   │   │   │   ├── google.png
-│   │   │   │   ├── huggingface.svg
-│   │   │   │   ├── liquid.svg
-│   │   │   │   ├── meta.svg
-│   │   │   │   ├── microsoft.png
-│   │   │   │   ├── minimax.png
-│   │   │   │   ├── mistral.png
-│   │   │   │   ├── moonshot-ai.webp
-│   │   │   │   ├── nous.webp
-│   │   │   │   ├── nvidia.svg
-│   │   │   │   ├── openai.svg
 │   │   │   │   ├── ordbogen.ai-color.svg
-│   │   │   │   ├── qwen.png
-│   │   │   │   ├── swissai.webp
-│   │   │   │   ├── xai.svg
-│   │   │   │   ├── yi.svg
-│   │   │   │   └── zhipu.svg
-│   │   │   ├── ateliernumerique.png
-│   │   │   ├── betagouv.svg
-│   │   │   ├── bnf.svg
-│   │   │   ├── cafe-ia.png
-│   │   │   ├── caire.png
-│   │   │   ├── cnnum.png
-│   │   │   ├── cnrs.svg
+│   │   │   │   └── swissai.webp
 │   │   │   ├── comparia.png
-│   │   │   ├── comparia.svg
-│   │   │   ├── countries
-│   │   │   │   ├── da-dark.png
-│   │   │   │   ├── da-light.png
-│   │   │   │   ├── lt.png
-│   │   │   │   └── sv.png
-│   │   │   ├── datactivist.png
-│   │   │   ├── datactivist.svg
-│   │   │   ├── dinum.png
-│   │   │   ├── dpg.png
-│   │   │   ├── educnat.png
-│   │   │   ├── etalab.svg
-│   │   │   ├── fresque-de-lia.png
-│   │   │   ├── genai.png
-│   │   │   ├── google-full.png
-│   │   │   ├── huggingface-full.svg
-│   │   │   ├── impactco2.png
-│   │   │   ├── inria.png
-│   │   │   ├── latitudes.png
-│   │   │   ├── make-org.svg
-│   │   │   ├── marianne.png
-│   │   │   ├── medialab.svg
-│   │   │   ├── microsoft-full.svg
-│   │   │   ├── minicult.svg
-│   │   │   ├── ovh.png
-│   │   │   ├── peren.svg
-│   │   │   ├── pix.svg
-│   │   │   ├── pleias.png
-│   │   │   └── scaleway.svg
-│   │   ├── product
-│   │   │   ├── chatbot-screenshot-da.png
-│   │   │   ├── chatbot-screenshot-en.png
-│   │   │   ├── chatbot-screenshot-fr.png
-│   │   │   ├── chatbot-screenshot-sv.png
-│   │   │   ├── community
-│   │   │   │   ├── aurelien-barot.png
-│   │   │   │   ├── elie-gavoty.png
-│   │   │   │   ├── hadrien-pelissier.png
-│   │   │   │   ├── lucie-termignon.png
-│   │   │   │   ├── mathilde-bras.png
-│   │   │   │   ├── nicolas-chesnais.png
-│   │   │   │   └── simonas-zilinskas.png
-│   │   │   └── comparia-europe.png
+│   │   │   └── comparia.svg
 │   │   ├── ranking
 │   │   │   └── preferences.png
 │   │   └── share-example.png
@@ -569,18 +691,131 @@
 │   ├── vitest-setup-client.ts
 │   └── yarn.lock
 ├── google_creds.json.example
+├── internal
+│   ├── __init__.py
+│   ├── archs.py
+│   ├── cli.py
+│   ├── i18n.py
+│   ├── i18n_schemas.py
+│   └── typescript
+│       ├── admin_types.py
+│       ├── backend_types.py
+│       └── generate_frontend_types.py
 ├── pyproject.toml
 ├── sonar-project.properties
-├── templates
-│   └── models_errors.html
 ├── tests
+│   ├── __init__.py
+│   ├── admin
+│   │   ├── test_activity.py
+│   │   ├── test_logos.py
+│   │   ├── test_publishing.py
+│   │   ├── test_ranking_settings.py
+│   │   └── test_user_sessions.py
 │   ├── arena
-│   │   └── test_moderation.py
+│   │   ├── test_auth_ratelimit.py
+│   │   ├── test_captcha_replay.py
+│   │   ├── test_checks.py
+│   │   ├── test_client_ip.py
+│   │   ├── test_conversation_cap.py
+│   │   ├── test_custom_mode_selection.py
+│   │   ├── test_error_codes.py
+│   │   ├── test_locked_model_route.py
+│   │   ├── test_logs_privacy.py
+│   │   ├── test_participation_gate.py
+│   │   ├── test_ratelimit.py
+│   │   ├── test_repeated_prompt.py
+│   │   ├── test_retry.py
+│   │   ├── test_reveal.py
+│   │   ├── test_run_checks.py
+│   │   ├── test_sentry_scrubbing.py
+│   │   ├── test_spam_detection.py
+│   │   ├── test_spend_budget.py
+│   │   ├── test_stream_event_loop.py
+│   │   ├── test_turn_cap.py
+│   │   ├── test_unvoted_captcha.py
+│   │   ├── test_visitor_id.py
+│   │   └── test_web_search_results.py
+│   ├── auth
+│   │   ├── fake_oidc_provider.py
+│   │   ├── test_account.py
+│   │   ├── test_anonymous_session.py
+│   │   ├── test_consent.py
+│   │   ├── test_deleted_account.py
+│   │   ├── test_email.py
+│   │   ├── test_email_identity.py
+│   │   ├── test_legacy_terms_backfill.py
+│   │   ├── test_logo_endpoints.py
+│   │   ├── test_logo_headers.py
+│   │   ├── test_metrics_token.py
+│   │   ├── test_oidc.py
+│   │   ├── test_oidc_callback.py
+│   │   ├── test_oidc_connection_test.py
+│   │   ├── test_oidc_initiation.py
+│   │   ├── test_oidc_settings.py
+│   │   ├── test_purge_inactive.py
+│   │   ├── test_totp.py
+│   │   └── test_totp_postgres.py
+│   ├── conftest.py
+│   ├── database
+│   │   ├── test_analysis_model.py
+│   │   ├── test_app_settings_branding.py
+│   │   ├── test_app_settings_locales.py
+│   │   ├── test_archive_blacklisted_grok.py
+│   │   ├── test_clear_visitor_ids.py
+│   │   ├── test_comparison_public.py
+│   │   ├── test_comparison_reveal_data.py
+│   │   ├── test_encrypt_secrets_migration.py
+│   │   ├── test_encrypted_columns.py
+│   │   ├── test_like_escape.py
+│   │   ├── test_lint_summary.py
+│   │   ├── test_llm_analyze.py
+│   │   ├── test_llm_form_schema.py
+│   │   ├── test_partner_cohorts_db.py
+│   │   ├── test_prompt_check.py
+│   │   ├── test_prompt_check_insights.py
+│   │   ├── test_prompt_check_migration.py
+│   │   ├── test_prompt_checks_api.py
+│   │   ├── test_publish_destination.py
+│   │   ├── test_purge_retention_cli.py
+│   │   ├── test_retention_db.py
+│   │   └── test_turn_vote.py
 │   ├── dataset
 │   │   ├── test_comparison_to_turns.py
-│   │   └── test_streaming_export.py
-│   └── ranking
-│       └── test_style_control.py
+│   │   ├── test_models_metadata.py
+│   │   ├── test_publish.py
+│   │   ├── test_publish_job.py
+│   │   ├── test_publish_preparation.py
+│   │   ├── test_schedule.py
+│   │   ├── test_streaming_export.py
+│   │   └── test_terms_attribution.py
+│   ├── llms
+│   │   ├── test_currency.py
+│   │   ├── test_custom_selectable.py
+│   │   ├── test_endpoint_api_key.py
+│   │   ├── test_lab_logos.py
+│   │   └── test_replacement_model.py
+│   ├── ranking
+│   │   ├── test_fetch_votes_db.py
+│   │   ├── test_min_votes.py
+│   │   ├── test_personal.py
+│   │   ├── test_personal_endpoint.py
+│   │   ├── test_rank_bounds.py
+│   │   └── test_style_control.py
+│   ├── settings
+│   │   ├── test_informational_legal.py
+│   │   └── test_legal.py
+│   ├── statistics
+│   │   ├── test_projection.py
+│   │   └── test_services.py
+│   ├── suggestions
+│   │   ├── test_router.py
+│   │   └── test_services_db.py
+│   ├── test_docs.py
+│   ├── test_logger_redaction.py
+│   └── vote_tags
+│       ├── test_check_vote_tags.py
+│       ├── test_tag_emoji.py
+│       └── test_tag_key.py
 ├── utils
 │   ├── __init__.py
 │   ├── database
@@ -590,8 +825,8 @@
 │   │   │   ├── archive_blacklisted_grok.py
 │   │   │   ├── archive_corrupted.py
 │   │   │   ├── archive_spam.py
-│   │   │   ├── archive_unknown_llms.py
 │   │   │   ├── backfill_pii_spam.py
+│   │   │   ├── clear_visitor_ids.py
 │   │   │   ├── llm_analyze.py
 │   │   │   ├── migrate_comparisons.py
 │   │   │   ├── migrate_llm_messages.py
@@ -602,39 +837,114 @@
 │   │   │   ├── migrate_user_messages.py
 │   │   │   ├── migrate_utils.py
 │   │   │   ├── migrate_votes.py
-│   │   │   └── rename_llm.py
+│   │   │   ├── purge_inactive.py
+│   │   │   ├── purge_retention.py
+│   │   │   ├── reencrypt_secrets.py
+│   │   │   ├── reset_totp.py
+│   │   │   ├── seed.py
+│   │   │   └── seed_activity.py
 │   │   ├── alembic
 │   │   │   ├── env.py
 │   │   │   ├── script.py.mako
 │   │   │   └── versions
 │   │   │       ├── 09abb45aa086_initial_schema.py
 │   │   │       ├── 137fbd6418e6_remove_unique_constraint_on_system_msg_.py
+│   │   │       ├── 269a5fc3959c_make_llmlab_logo_optional.py
+│   │   │       ├── 2b82412c4f91_add_llm_custom_selectable.py
+│   │   │       ├── 4e31217520dd_add_llmdata_llmendpoint_llmlab_.py
+│   │   │       ├── 58abc2a23978_add_user_inactivity_warned_at.py
+│   │   │       ├── 5c8bd69940b5_merge_totp_publish_request_and_oidc_.py
+│   │   │       ├── 5e37278477e6_add_prompt_check_conversation_caps.py
+│   │   │       ├── 6793ef0ce18c_add_oidc_config_to_app_settings.py
 │   │   │       ├── 67e629fed515_merge_drop_session_hash_and_remove_.py
+│   │   │       ├── 7e2a4c9d1b6f_add_admin_activity_indexes.py
+│   │   │       ├── 7e2b9d4c1a68_lowercase_user_emails.py
 │   │   │       ├── 83c86b798214_simplify_system_msg_.py
 │   │   │       ├── 88e025e5dbfa_drop_comparison_session_hash.py
 │   │   │       ├── 89de92001a7e_merge_voted_at_and_web_search_results_.py
+│   │   │       ├── a3d6f1c9e842_add_oidc_connection_test.py
+│   │   │       ├── a3e1f621c626_index_turn_comparison_id.py
 │   │   │       ├── a3f7c1e9b2d4_add_turn_voted_at.py
+│   │   │       ├── a6c2e9f4b1d8_add_informational_legal_pages.py
+│   │   │       ├── a8c3f1e6d2b9_keep_refused_prompts.py
+│   │   │       ├── a9c4e2f7b1d3_add_auth_totp.py
+│   │   │       ├── b2d4a7e9c1f3_add_auth_tables.py
+│   │   │       ├── b3d1c7a4e9f2_add_vote_tags.py
+│   │   │       ├── b3d7a1c9e5f2_add_publish_request_and_last_run_to_destinations.py
+│   │   │       ├── b4e5d9c86405_add_app_settings.py
 │   │   │       ├── b7c4d1e8f9a2_add_turn_guardrail.py
-│   │   │       └── d9b83b7f2988_add_usermessage_web_search_results.py
+│   │   │       ├── b7e3c9a1d5f2_archive_suggestion_categories.py
+│   │   │       ├── c1a6e8f2d4b7_add_llm_lab_custom_logo.py
+│   │   │       ├── c24f368ecff0_add_promptcheckresult_table.py
+│   │   │       ├── c3e7a9b2d4f6_encrypt_stored_secrets.py
+│   │   │       ├── c4e8a2f1b9d3_add_ranking_thresholds.py
+│   │   │       ├── c523a8830386_add_comparison_revealed_and_revealed_at.py
+│   │   │       ├── c6a1f3e8d2b7_add_platform_name_and_logo.py
+│   │   │       ├── c6d5610142dc_link_comparison_llm_id_a_b_to_llmdata_id.py
+│   │   │       ├── c9a2f5b7d3e1_add_publish_destinations.py
+│   │   │       ├── d078b1411db3_add_auth_invite_token.py
+│   │   │       ├── d1f4a2e7c9b5_add_user_role.py
+│   │   │       ├── d2b7f4a9c6e1_date_only_llms_and_exchange_rates.py
+│   │   │       ├── d4f9a1c7e2b8_add_auditable_consent_records.py
+│   │   │       ├── d7b3e6a1c852_add_analysis_model_settings.py
+│   │   │       ├── d7e2a9c4b1f8_move_prompt_checks_to_a_decision_model.py
+│   │   │       ├── d9b83b7f2988_add_usermessage_web_search_results.py
+│   │   │       ├── e2c4b9a7f631_add_publish_schedule_and_runs.py
+│   │   │       ├── e3a7c5f19b04_add_enabled_locales.py
+│   │   │       ├── e4a8c2d9f1b7_add_versioned_legal_documents.py
+│   │   │       ├── e4f5a6b7c8d9_add_customizable_suggestions.py
+│   │   │       ├── e8f7a6b5c4d3_add_app_settings_branding.py
+│   │   │       ├── f1a2b3c4d5e6_add_prompt_checks.py
+│   │   │       ├── f3b8c1d2e4a5_add_statistics_query_indexes.py
+│   │   │       ├── f4a8c2d9e1b7_move_publish_frequency_to_destinations.py
+│   │   │       ├── f7f638e57c03_add_comparison_anonymous_user_hash.py
+│   │   │       └── f8c2b6a41d70_add_default_locale.py
 │   │   ├── cli.py
+│   │   ├── encrypted.py
 │   │   ├── lint.py
 │   │   ├── models
 │   │   │   ├── __init__.py
+│   │   │   ├── app_settings.py
+│   │   │   ├── auth.py
 │   │   │   ├── comparison.py
+│   │   │   ├── exchange_rate.py
+│   │   │   ├── llms
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── constants.py
+│   │   │   │   ├── endpoint.py
+│   │   │   │   ├── lab.py
+│   │   │   │   ├── license.py
+│   │   │   │   └── llm.py
 │   │   │   ├── messages
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── llm.py
 │   │   │   │   └── user.py
+│   │   │   ├── prompt_check.py
+│   │   │   ├── publish.py
+│   │   │   ├── suggestion.py
 │   │   │   ├── turn.py
-│   │   │   └── utils.py
+│   │   │   ├── utils.py
+│   │   │   └── vote_tag.py
+│   │   ├── prompt_checks.py
+│   │   ├── retention.py
+│   │   ├── secrets.py
 │   │   ├── session.py
+│   │   ├── settings.py
 │   │   └── utils.py
 │   ├── dataset
 │   │   ├── compute.py
 │   │   ├── export.py
+│   │   ├── job.py
 │   │   ├── models.py
-│   │   └── run.py
-│   ├── leaderboard_cookbook.ipynb
+│   │   ├── publish.py
+│   │   ├── run.py
+│   │   ├── runs.py
+│   │   └── schedule.py
+│   ├── llms
+│   │   ├── actions.py
+│   │   ├── cli.py
+│   │   ├── data.py
+│   │   └── services.py
 │   ├── local_dataset
 │   │   ├── README.md
 │   │   ├── init_duckdb.sql
@@ -645,44 +955,23 @@
 │   ├── maintenance
 │   │   ├── actions.py
 │   │   └── cli.py
-│   ├── models
-│   │   ├── README.md
-│   │   ├── __init__.py
-│   │   ├── archs.json
-│   │   ├── archs.py
-│   │   ├── build_models.py
-│   │   ├── generated-models.json
-│   │   ├── licenses.json
-│   │   ├── licenses.py
-│   │   ├── llms.py
-│   │   ├── maintenance.py
-│   │   ├── models.json
-│   │   ├── organisations.py
-│   │   └── schemas
-│   │       ├── README.md
-│   │       ├── build_doc.py
-│   │       ├── schema-archs.json
-│   │       ├── schema-licenses.json
-│   │       └── schema-organisations.json
-│   ├── news
-│   │   ├── build_news.py
-│   │   └── fr.json
 │   ├── ranking
 │   │   ├── __init__.py
 │   │   ├── bradley_terry.py
 │   │   ├── compute.py
 │   │   ├── monitor.py
+│   │   ├── personal.py
 │   │   ├── queries.py
 │   │   ├── run.py
 │   │   └── style_control.py
+│   ├── secrets.py
 │   ├── storage
 │   │   └── redis.py
 │   ├── suggestions
-│   │   ├── build_suggestions.py
 │   │   ├── da.json
 │   │   ├── fr.json
 │   │   └── sv.json
 │   ├── utils.py
 │   └── validation.py
 └── uv.lock
-111 directories, 576 files
+147 directories, 829 files
