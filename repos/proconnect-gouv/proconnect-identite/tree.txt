@@ -2,7 +2,7 @@
 ├── .changeset
 │   ├── README.md
 │   ├── config.json
-│   └── sync-grist.md
+│   └── identite-drop-find-by-verified-email-domain.md
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -57,7 +57,6 @@
 │       ├── fetch-organization-info.js
 │       ├── form-validation.js
 │       ├── go-back.js
-│       ├── matomo.js
 │       ├── modules
 │       │   ├── debounce.js
 │       │   ├── disable-on-submit.js
@@ -103,6 +102,10 @@
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
 │   │   ├── disconnect_franceconnect_account
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── generate_recovery_words
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
@@ -223,6 +226,10 @@
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
 │   │   ├── signin_with_magic_link
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── signin_with_one_organization_per_sp
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
@@ -385,7 +392,11 @@
 │   ├── 1780924063334_allow-editing-default-to-false-in-moderation.ts
 │   ├── 1781180683383_add-user-id-created-at-index-to-users-oidc-clients.ts
 │   ├── 1788769258662_add-official-contact-email-verification-table.ts
-│   └── 1788769258663_add-denomination-usuelle-etablissement-principal.ts
+│   ├── 1788769258663_add-denomination-usuelle-etablissement-principal.ts
+│   ├── 1789636400247_create-recovery-codes-table.ts
+│   ├── 1793174800208_add-interaction-cid-and-outcome-to-users-oidc-clients.ts
+│   ├── 1793275986382_create-activity-logs-table.ts
+│   └── 1793291976677_add-cause-activity-id-to-activity-logs.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -420,8 +431,8 @@
 │   │   │   │   ├── most-used-free-email-domains.ts
 │   │   │   │   └── other-gouv-domains.ts
 │   │   │   ├── security
-│   │   │   │   ├── generate-diceware-password.test.ts
-│   │   │   │   ├── generate-diceware-password.ts
+│   │   │   │   ├── generate-diceware-phrase.test.ts
+│   │   │   │   ├── generate-diceware-phrase.ts
 │   │   │   │   ├── generate-pin-token.test.ts
 │   │   │   │   ├── generate-pin-token.ts
 │   │   │   │   ├── generate-token.test.ts
@@ -447,6 +458,8 @@
 │   │   │   │   ├── is-siret-valid.ts
 │   │   │   │   ├── is-visible-string.test.ts
 │   │   │   │   ├── is-visible-string.ts
+│   │   │   │   ├── normalize-diceware-words.test.ts
+│   │   │   │   ├── normalize-diceware-words.ts
 │   │   │   │   ├── owasp-password-strength-tester.ts
 │   │   │   │   ├── validate-password.test.ts
 │   │   │   │   └── validate-password.ts
@@ -749,22 +762,16 @@
 │   │   │   │   ├── franceconnect
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── openid-client.ts
-│   │   │   │   ├── organization
-│   │   │   │   │   ├── adapters
-│   │   │   │   │   │   ├── api_entreprise.test.ts
-│   │   │   │   │   │   ├── api_entreprise.test.ts.snapshot
-│   │   │   │   │   │   ├── api_entreprise.ts
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── rne.ts
-│   │   │   │   │   ├── get-organization-info.test.ts
-│   │   │   │   │   ├── get-organization-info.test.ts.snapshot
-│   │   │   │   │   ├── get-organization-info.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── mark-domain-as-verified.test.ts
-│   │   │   │   │   └── mark-domain-as-verified.ts
-│   │   │   │   └── user
-│   │   │   │       ├── assign-user-verification-type-to-domain.test.ts
-│   │   │   │       ├── assign-user-verification-type-to-domain.ts
+│   │   │   │   └── organization
+│   │   │   │       ├── adapters
+│   │   │   │       │   ├── api_entreprise.test.ts
+│   │   │   │       │   ├── api_entreprise.test.ts.snapshot
+│   │   │   │       │   ├── api_entreprise.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   └── rne.ts
+│   │   │   │       ├── get-organization-info.test.ts
+│   │   │   │       ├── get-organization-info.test.ts.snapshot
+│   │   │   │       ├── get-organization-info.ts
 │   │   │   │       └── index.ts
 │   │   │   ├── repositories
 │   │   │   │   ├── authenticator
@@ -786,22 +793,14 @@
 │   │   │   │   ├── email-domain
 │   │   │   │   │   ├── add-domain.test.ts
 │   │   │   │   │   ├── add-domain.ts
-│   │   │   │   │   ├── delete-email-domains-by-verification-types.test.ts
-│   │   │   │   │   ├── delete-email-domains-by-verification-types.ts
 │   │   │   │   │   ├── find-email-domains-by-organization-id.test.ts
 │   │   │   │   │   ├── find-email-domains-by-organization-id.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── franceconnect_userinfo
-│   │   │   │   │   ├── delete-franceconnect-userinfo.test.ts
-│   │   │   │   │   ├── delete-franceconnect-userinfo.ts
 │   │   │   │   │   ├── find-franceconnect-userinfo.test.ts
 │   │   │   │   │   ├── find-franceconnect-userinfo.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── upsert-franceconnect-userinfo.test.ts
-│   │   │   │   │   └── upsert-franceconnect-userinfo.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── moderation
-│   │   │   │   │   ├── create-moderation.test.ts
-│   │   │   │   │   ├── create-moderation.ts
 │   │   │   │   │   ├── delete-moderation.test.ts
 │   │   │   │   │   ├── delete-moderation.ts
 │   │   │   │   │   ├── find-moderation-by-id.test.ts
@@ -824,36 +823,34 @@
 │   │   │   │   │   ├── upsert-official-contact-email-verification.test.ts
 │   │   │   │   │   └── upsert-official-contact-email-verification.ts
 │   │   │   │   ├── oidc-client
-│   │   │   │   │   ├── add-connection.test.ts
-│   │   │   │   │   ├── add-connection.ts
 │   │   │   │   │   ├── find-by-client-id.test.ts
 │   │   │   │   │   ├── find-by-client-id.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── upsert-authorization-request.test.ts
+│   │   │   │   │   └── upsert-authorization-request.ts
 │   │   │   │   ├── organization
 │   │   │   │   │   ├── find-by-siret.test.ts
 │   │   │   │   │   ├── find-by-siret.ts
 │   │   │   │   │   ├── find-by-user-id.test.ts
 │   │   │   │   │   ├── find-by-user-id.test.ts.snapshot
 │   │   │   │   │   ├── find-by-user-id.ts
-│   │   │   │   │   ├── find-by-verified-email-domain.test.ts
-│   │   │   │   │   ├── find-by-verified-email-domain.ts
 │   │   │   │   │   ├── find-organization-by-id.test.ts
 │   │   │   │   │   ├── find-organization-by-id.ts
 │   │   │   │   │   ├── find-pending-by-user-id.test.ts
 │   │   │   │   │   ├── find-pending-by-user-id.ts
-│   │   │   │   │   ├── find-users-by-organization.test.ts
-│   │   │   │   │   ├── find-users-by-organization.test.ts.snapshot
-│   │   │   │   │   ├── find-users-by-organization.ts
 │   │   │   │   │   ├── get-organization-by-id.test.ts
 │   │   │   │   │   ├── get-organization-by-id.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── upsert.ts
 │   │   │   │   │   └── upset.test.ts
+│   │   │   │   ├── recovery-words
+│   │   │   │   │   ├── create.ts
+│   │   │   │   │   ├── delete-all-by-user-id.ts
+│   │   │   │   │   ├── find-by-user-id.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── user
 │   │   │   │   │   ├── create.test.ts
 │   │   │   │   │   ├── create.ts
-│   │   │   │   │   ├── delete.test.ts
-│   │   │   │   │   ├── delete.ts
 │   │   │   │   │   ├── find-by-email.test.ts
 │   │   │   │   │   ├── find-by-email.ts
 │   │   │   │   │   ├── find-by-id.test.ts
@@ -868,22 +865,17 @@
 │   │   │   │   │   ├── update.test.ts
 │   │   │   │   │   └── update.ts
 │   │   │   │   └── user_organisation
-│   │   │   │       ├── create-user-organization.test.ts
-│   │   │   │       ├── create-user-organization.test.ts.snapshot
-│   │   │   │       ├── create-user-organization.ts
-│   │   │   │       ├── delete-user-organization.test.ts
-│   │   │   │       ├── delete-user-organization.ts
 │   │   │   │       ├── find-user-organization.test.ts
 │   │   │   │       ├── find-user-organization.ts
 │   │   │   │       ├── get-user-organization.test.ts
 │   │   │   │       ├── get-user-organization.ts
-│   │   │   │       ├── index.ts
-│   │   │   │       ├── update-user-organization.test.ts
-│   │   │   │       └── update-user-organization.ts
+│   │   │   │       └── index.ts
 │   │   │   ├── services
 │   │   │   │   ├── organization
 │   │   │   │   │   ├── compute-service-public-info.test.ts
 │   │   │   │   │   ├── compute-service-public-info.ts
+│   │   │   │   │   ├── get-member-ids-promoted-by-domain.test.ts
+│   │   │   │   │   ├── get-member-ids-promoted-by-domain.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── is-domain-allowed-for-organization.ts
 │   │   │   │   │   ├── is-entreprise-unipersonnelle.test.ts
@@ -897,8 +889,8 @@
 │   │   │   │       └── index.ts
 │   │   │   └── types
 │   │   │       ├── authenticator.ts
+│   │   │       ├── authorization-request.ts
 │   │   │       ├── claims.ts
-│   │   │       ├── connection.ts
 │   │   │       ├── contexts.ts
 │   │   │       ├── email-domain.ts
 │   │   │       ├── franceconnect.ts
@@ -909,6 +901,7 @@
 │   │   │       ├── oidc-client.ts
 │   │   │       ├── organization-info.ts
 │   │   │       ├── organization.ts
+│   │   │       ├── recovery-words.ts
 │   │   │       ├── user-organization-link.ts
 │   │   │       └── user.ts
 │   │   ├── testing
@@ -982,6 +975,61 @@
 │   │   │       ├── companies.ts
 │   │   │       ├── errors.ts
 │   │   │       └── index.ts
+│   │   ├── tsconfig.json
+│   │   └── tsconfig.lib.json
+│   ├── runtime
+│   │   ├── CHANGELOG.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── activity
+│   │   │   │   ├── activity-context-schemas.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── database
+│   │   │   │   └── index.ts
+│   │   │   ├── domains
+│   │   │   │   ├── activities.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── mark-domain-as-verified.test.ts
+│   │   │   │   └── mark-domain-as-verified.ts
+│   │   │   ├── franceconnect
+│   │   │   │   ├── activities.ts
+│   │   │   │   ├── connect-franceconnect.test.ts
+│   │   │   │   ├── connect-franceconnect.ts
+│   │   │   │   ├── disconnect-franceconnect.test.ts
+│   │   │   │   ├── disconnect-franceconnect.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── journal
+│   │   │   │   ├── index.ts
+│   │   │   │   └── insert-activity.ts
+│   │   │   ├── memberships
+│   │   │   │   ├── activities.ts
+│   │   │   │   ├── add-membership.test.ts
+│   │   │   │   ├── add-membership.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── remove-membership.test.ts
+│   │   │   │   ├── remove-membership.ts
+│   │   │   │   ├── update-membership.test.ts
+│   │   │   │   └── update-membership.ts
+│   │   │   ├── moderations
+│   │   │   │   ├── activities.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── open-moderation.test.ts
+│   │   │   │   └── open-moderation.ts
+│   │   │   ├── runtime
+│   │   │   │   ├── create-identite-runtime.test.ts
+│   │   │   │   ├── create-identite-runtime.ts
+│   │   │   │   └── index.ts
+│   │   │   └── users
+│   │   │       ├── activities.ts
+│   │   │       ├── delete-user.test.ts
+│   │   │       ├── delete-user.ts
+│   │   │       ├── index.ts
+│   │   │       ├── reset-mfa.test.ts
+│   │   │       └── reset-mfa.ts
+│   │   ├── testing
+│   │   │   └── index.ts
 │   │   ├── tsconfig.json
 │   │   └── tsconfig.lib.json
 │   └── testing
@@ -1102,11 +1150,14 @@
 │   ├── letter.svg
 │   ├── light.svg
 │   ├── mail-proconnect.png
+│   ├── matomo
+│   │   └── container_yr4sXd50.js
 │   ├── passkey.svg
 │   ├── phone-lock.svg
 │   └── proconnect-logo.svg
 ├── scripts
 │   ├── create-anonymized-copy-of-database.sh
+│   ├── cypress-all-tests-run.ts
 │   ├── cypress-single-test-run.ts
 │   ├── cypress-single-test-setup.ts
 │   ├── delete_all.sql
@@ -1117,6 +1168,7 @@
 │   ├── import-domains.ts
 │   ├── run-sql-script.ts
 │   ├── testing.ts
+│   ├── update-matomo-container.ts
 │   └── update-organizations-info.ts
 ├── src
 │   ├── config
@@ -1180,12 +1232,16 @@
 │   │   ├── organization
 │   │   │   ├── join.ts
 │   │   │   ├── main.ts
-│   │   │   └── official-contact-email-verification.ts
+│   │   │   ├── official-contact-email-verification.ts
+│   │   │   ├── organization-suggestions.test.ts
+│   │   │   └── organization-suggestions.ts
+│   │   ├── recovery-words.ts
 │   │   ├── session
 │   │   │   ├── authenticated.ts
 │   │   │   ├── certification.ts
 │   │   │   ├── franceconnect.ts
 │   │   │   ├── interaction.ts
+│   │   │   ├── session-data.ts
 │   │   │   ├── temporary-totp-key.ts
 │   │   │   └── unauthenticated.ts
 │   │   ├── totp.ts
@@ -1199,13 +1255,17 @@
 │   │   │   ├── index.ts
 │   │   │   ├── internals.ts
 │   │   │   ├── meta.ts
-│   │   │   └── process.ts
+│   │   │   └── processPendingCertificationDirigeantGuard.ts
 │   │   └── rate-limiter.ts
 │   ├── repositories
 │   │   ├── oidc-provider-adapter-for-clients.ts
+│   │   ├── organization
+│   │   │   ├── find-by-siret.ts
+│   │   │   ├── find-organizations-by-verified-email-domain.ts
+│   │   │   ├── index.ts
+│   │   │   └── organization-columns.ts
 │   │   └── redis
-│   │       ├── oidc-provider-adapter.ts
-│   │       └── selected-organization.ts
+│   │       └── oidc-provider-adapter.ts
 │   ├── routers
 │   │   ├── api.ts
 │   │   ├── interaction.ts
@@ -1225,9 +1285,12 @@
 │   │   ├── hash-to-postgres-params.ts
 │   │   ├── is-expired.ts
 │   │   ├── json-parse-with-date.ts
+│   │   ├── log.test.ts
+│   │   ├── log.trace.test.ts
 │   │   ├── log.ts
-│   │   ├── normalize-official-contact-email-verification-token.ts
 │   │   ├── oidc-account-adapter.ts
+│   │   ├── oidc-authorized-organization.test.ts
+│   │   ├── oidc-authorized-organization.ts
 │   │   ├── oidc-policy.ts
 │   │   ├── oidc-provider-adapter.ts
 │   │   ├── organization.ts
@@ -1304,49 +1367,51 @@
 │       │   ├── submit-button.ejs
 │       │   └── test-env-warning.ejs
 │       ├── personal-information.ejs
+│       ├── recovery-words.ejs
 │       ├── too-many-requests-error.ejs
 │       ├── totp-configuration.ejs
-│       └── user
-│           ├── 2fa-sign-in.ejs
-│           ├── 2fa-successfully-configured.ejs
-│           ├── access-restricted-to-private-sector-email.ejs
-│           ├── access-restricted-to-public-sector-email.ejs
-│           ├── change-password.ejs
-│           ├── domain-not-allowed-for-organization.ejs
-│           ├── domain-refused-for-organization.ejs
-│           ├── double-authentication-choice.ejs
-│           ├── franceconnect.ejs
-│           ├── inclusionconnect-welcome.ejs
-│           ├── is-totp-app-installed.ejs
-│           ├── join-organization-confirm.ejs
-│           ├── join-organization.ejs
-│           ├── magic-link-sent.ejs
-│           ├── mfa-decision-helper
-│           │   ├── can-install-software
-│           │   │   ├── external-help-needed.ejs
-│           │   │   ├── index.ejs
-│           │   │   ├── smartphone-app.ejs
-│           │   │   ├── smartphone.ejs
-│           │   │   └── software.ejs
-│           │   ├── index.ejs
-│           │   ├── passkey.ejs
-│           │   └── totp-recommendation.ejs
-│           ├── moderation-rejected.ejs
-│           ├── official-contact-ask-which-email.ejs
-│           ├── official-contact-email-verification.ejs
-│           ├── organization-suggestions.ejs
-│           ├── personal-information.ejs
-│           ├── reset-password.ejs
-│           ├── select-organization.ejs
-│           ├── sign-in-with-magic-link.ejs
-│           ├── sign-in.ejs
-│           ├── sign-up.ejs
-│           ├── start-sign-in.ejs
-│           ├── totp-configuration.ejs
-│           ├── unable-to-auto-join-organization.ejs
-│           ├── verify-email.ejs
-│           ├── welcome-dirigeant.ejs
-│           └── welcome.ejs
+│       ├── user
+│       │   ├── 2fa-sign-in.ejs
+│       │   ├── 2fa-successfully-configured.ejs
+│       │   ├── access-restricted-to-private-sector-email.ejs
+│       │   ├── access-restricted-to-public-sector-email.ejs
+│       │   ├── change-password.ejs
+│       │   ├── domain-not-allowed-for-organization.ejs
+│       │   ├── domain-refused-for-organization.ejs
+│       │   ├── double-authentication-choice.ejs
+│       │   ├── franceconnect.ejs
+│       │   ├── inclusionconnect-welcome.ejs
+│       │   ├── is-totp-app-installed.ejs
+│       │   ├── join-organization-confirm.ejs
+│       │   ├── join-organization.ejs
+│       │   ├── magic-link-sent.ejs
+│       │   ├── mfa-decision-helper
+│       │   │   ├── can-install-software
+│       │   │   │   ├── external-help-needed.ejs
+│       │   │   │   ├── index.ejs
+│       │   │   │   ├── smartphone-app.ejs
+│       │   │   │   ├── smartphone.ejs
+│       │   │   │   └── software.ejs
+│       │   │   ├── index.ejs
+│       │   │   ├── passkey.ejs
+│       │   │   └── totp-recommendation.ejs
+│       │   ├── moderation-rejected.ejs
+│       │   ├── official-contact-ask-which-email.ejs
+│       │   ├── official-contact-email-verification.ejs
+│       │   ├── organization-suggestions.ejs
+│       │   ├── personal-information.ejs
+│       │   ├── reset-password.ejs
+│       │   ├── select-organization.ejs
+│       │   ├── sign-in-with-magic-link.ejs
+│       │   ├── sign-in.ejs
+│       │   ├── sign-up.ejs
+│       │   ├── start-sign-in.ejs
+│       │   ├── totp-configuration.ejs
+│       │   ├── unable-to-auto-join-organization.ejs
+│       │   ├── verify-email.ejs
+│       │   ├── welcome-dirigeant.ejs
+│       │   └── welcome.ejs
+│       └── verify-recovery-words.ejs
 ├── test
 │   ├── acr-checks.test.ts
 │   ├── api-annuaire-education-nationale-data
@@ -1366,9 +1431,10 @@
 │   ├── hash-to-postgres-params.test.ts
 │   ├── is-expired.test.ts
 │   ├── json-parse-with-date.test.ts
-│   ├── normalize-official-contact-email-verification-token.test.ts
 │   ├── organization.test.ts
 │   └── symmetric-encryption.test.ts
+├── testing
+│   └── index.ts
 ├── tsconfig.json
 └── vite.config.mjs
-235 directories, 1221 files
+252 directories, 1270 files

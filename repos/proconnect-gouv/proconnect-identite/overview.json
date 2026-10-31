@@ -7,8 +7,8 @@
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
-    "API & Intégrations",
-    "Suivi & Traçabilité"
+    "Notifications & Alertes",
+    "Gestion des profils & Comptes"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -16,9 +16,12 @@
     "oidc-provider",
     "PostgreSQL",
     "Redis",
+    "Drizzle ORM",
+    "EJS",
     "Nodemailer",
+    "WebAuthn",
     "Zod",
-    "SimpleWebAuthn"
+    "Axios"
   ],
   "components": [
     "API REST & GraphQL",
@@ -26,31 +29,41 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
+    "Node.js / NestJS",
     "Templates & Moteurs de rendu",
-    "Node.js / NestJS"
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
       "jwt",
-      "mfa",
-      "session"
+      "session",
+      "passkey",
+      "mfa"
+    ],
+    "providers": [
+      "FranceConnect"
     ]
   },
-  "tests": "Cypress pour les tests de bout en bout (E2E) et tests unitaires avec Node.js",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Cypress (E2E)",
+    "Node unit tests"
   ],
-  "lastActivity": "2026-10-16T17:01:08+02:00",
+  "workflows": [
+    "Docker build",
+    "Release workflow"
+  ],
+  "lastActivity": "2026-10-30T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
+    "Sécurité & Auth",
     "SSO & Identité fédérée",
     "TypeScript",
     "Docker & Conteneurs",
-    "Sécurité & Auth",
-    "Node.js, NestJS & Express",
-    "Bases de données SQL"
+    "Écosystème beta.gouv / État",
+    "Node.js, NestJS & Express"
   ]
 }

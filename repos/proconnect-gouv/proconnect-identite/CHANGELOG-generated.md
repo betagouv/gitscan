@@ -1,32 +1,20 @@
-## Changelog : proconnect-identite (30 derniers jours, au 16 octobre 2026)
+## Changelog : proconnect-identite (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur le renforcement de la sécurité des comptes (authentification forte, notifications de sécurité) et l'optimisation des performances du système. Plusieurs améliorations ont été apportées à la gestion des domaines de messagerie et à la stabilité des processus d'authentification pour offrir une expérience plus fluide et sécurisée.
+Ce mois-ci, les efforts se sont concentrés sur la robustesse de l'expérience utilisateur en remplaçant de nombreuses erreurs bloquantes par des redirections fluides. La sécurité a été renforcée par l'ajout de codes de récupération et un meilleur contrôle du MFA, tandis que l'observabilité technique a été considérablement améliorée pour permettre un diagnostic plus précis des incidents grâce à des journaux d'audit et de traçage détaillés.
 
 ### Évolutions fonctionnelles
-- **Sécurité et authentification** :
-  - Possibilité de forcer l'authentification à deux facteurs (2FA) par organisation [0ca2613].
-  - Vérification du MFA avant de débuter un processus d'enrôlement [#2230](https://github.com/proconnect-gouv/proconnect-identite/issues/2230).
-  - Rétablissement de l'interface conditionnelle WebAuthn [4d645bf].
-- **Notifications** :
-  - Envoi d'un email de confirmation lors de la réinitialisation d'un mot de passe [#2134](https://github.com/proconnect-gouv/proconnect-identite/issues/2134).
-  - Envoi d'un email de confirmation lorsqu'un utilisateur quitte une organisation [#2135](https://github.com/proconnect-gouv/proconnect-identite/issues/2135).
-- **Corrections et améliorations** :
-  - Amélioration de la détection et de la gestion des domaines de messagerie gratuits.
-  - Résolution de bugs liés à la validation des emails et à l'affichage des erreurs de correspondance (pays de naissance, informations FranceConnect) [#2162](https://github.com/proconnect-gouv/proconnect-identite/issues/2162), [#2208](https://github.com/proconnect-gouv/proconnect-identite/issues/2208).
+- **Gestion des comptes et accès** : ajout de capacités de gestion des membres (ajout, modification, suppression), de suppression de compte et de réinitialisation du MFA via le runtime ([#2384](https://github.com/proconnect-gouv/proconnect-identite/issues/2384), [#2387](https://github.com/proconnect-gouv/proconnect-identite/issues/2387), [#2389](https://github.com/proconnect-gouv/proconnect-identite/issues/2389), [#2391](https://github.com/proconnect-gouv/proconnect-identite/issues/2391), [#2392](https://github.com/proconnect-gouv/proconnect-identite/issues/2392)).
+- **Sécurité** : création de codes de récupération pour les sections et pages ([#2172](https://github.com/proconnect-gouv/proconnect-identite/issues/2172)) et envoi de confirmations par email lors de réinitialisations de mot de passe ou de départs d'organisation ([#2134](https://github.com/proconnect-gouv/proconnect-identite/issues/2134), [#2135](https://github.com/proconnect-gouv/proconnect-identite/issues/2135)).
+- **Expérience utilisateur** : amélioration de la fluidité de navigation via des redirections automatiques pour éviter les pages d'erreur lors de processus FranceConnect, de changements de mot de passe ou de navigation sur les pages d'organisation ([#2314](https://github.com/proconnect-gouv/proconnect-identite/issues/2314), [#2316](https://github.com/proconnect-gouv/proconnect-identite/issues/2316), [#2319](https://github.com/proconnect-gouv/proconnect-identite/issues/2319), [#2320](https://github.com/proconnect-gouv/proconnect-identite/issues/2320), [#2324](https://github.com/proconnect-gouv/proconnect-identite/issues/2324), [#2327](https://github.com/proconnect-gouv/proconnect-identite/issues/2327), [#2339](https://github.com/proconnect-gouv/proconnect-identite/issues/2339)).
+- **Information** : ajout d'un avertissement concernant la maintenance de sécurité de l'hébergeur ([#2281](https://github.com/proconnect-gouv/proconnect-identite/issues/2281)).
 
 ### Évolutions techniques
-- **Sécurité et performance** :
-  - Mise à jour de la politique de limitation de débit (rate limiting) par adresse IP [#2210](https://github.com/proconnect-gouv/proconnect-identite/issues/2210), [#2197](https://github.com/proconnect-gouv/proconnect-identite/issues/2197).
-  - Optimisation des appels API en supprimant les appels inutiles vers le RNE lors de l'adhésion à une organisation [7b16383] et en supprimant l'endpoint SIRENE obsolète [#2207](https://github.com/proconnect-gouv/proconnect-identite/issues/2207).
-- **Refactoring** :
-  - Restructuration et optimisation de la logique des gardes de navigation pour une meilleure maintenance [#2250](https://github.com/proconnect-gouv/proconnect-identite/issues/2250), [#2236](https://github.com/proconnect-gouv/proconnect-identite/issues/2236), [#2241](https://github.com/proconnect-gouv/proconnect-identite/issues/2241).
-  - Refonte de la gestion des salutations [#2175](https://github.com/proconnect-gouv/proconnect-identite/issues/2175).
-- **Infrastructure et DevOps** :
-  - Adoption du versionnage CalVer via `release-it` [8f5388f].
-  - Amélioration du suivi des erreurs avec l'ajout de la version de l'application dans les tags Sentry [#2262](https://github.com/proconnect-gouv/proconnect-identite/issues/2262).
-  - Mise à jour du schéma de la base de données [0ac21e3].
+- **Observabilité et Audit** : mise en place de logs structurés (JSON, OpenTelemetry), ajout de `trace_id` sur chaque ligne de log et enregistrement systématique des interactions de connexion, des demandes d'autorisation et des vérifications de domaine pour un meilleur suivi ([#2344](https://github.com/proconnect-gouv/proconnect-identite/issues/2344), [#2345](https://github.com/proconnect-gouv/proconnect-identite/issues/2345), [#2353](https://github.com/proconnect-gouv/proconnect-identite/issues/2353), [#2358](https://github.com/proconnect-gouv/proconnect-identite/issues/2358), [#2359](https://github.com/proconnect-gouv/proconnect-identite/issues/2359), [#2360](https://github.com/proconnect-gouv/proconnect-identite/issues/2360), [#2369](https://github.com/proconnect-gouv/proconnect-identite/issues/2369), [#2370](https://github.com/proconnect-gouv/proconnect-identite/issues/2370)).
+- **Sécurité et Infrastructure** : auto-hébergement du gestionnaire de tags Matomo ([#2267](https://github.com/proconnect-gouv/proconnect-identite/issues/2267)), renforcement de la politique de limitation de débit ([#2210](https://github.com/proconnect-gouv/proconnect-identite/issues/2210)), sécurisation des données envoyées à Sentry ([#2356](https://github.com/proconnect-gouv/proconnect-identite/issues/2356)) et restriction des permissions des tokens GitHub dans les workflows ([#2312](https://github.com/proconnect-gouv/proconnect-identite/issues/2312)).
+- **Architecture et Base de données** : migration des suggestions d'organisation vers Drizzle ([#2396](https://github.com/proconnect-gouv/proconnect-identite/issues/2396)), optimisation des transactions pour la vérification des domaines ([#2365](https://github.com/proconnect-gouv/proconnect-identite/issues/2365)) et liaison de l'organisation sélectionnée à la session utilisateur ([#2289](https://github.com/proconnect-gouv/proconnect-identite/issues/2289)).
+- **CI/CD** : optimisation des temps de build Docker grâce à une meilleure gestion du cache npm ([#2349](https://github.com/proconnect-gouv/proconnect-identite/issues/2349), [#2350](https://github.com/proconnect-gouv/proconnect-identite/issues/2350)).
 
 ### Autres changements
-- **Données** : Synchronisation de la liste des administrations via Grist [#2264](https://github.com/proconnect-gouv/proconnect-identite/issues/2264).
-- **Nettoyage** : Suppression de mots offensants de la liste de mots utilisée pour le diceware [#2266](https://github.com/proconnect-gouv/proconnect-identite/issues/2266) et retrait de code mort dans les fonctions de récupération d'utilisateurs [#2154](https://github.com/proconnect-gouv/proconnect-identite/issues/2154).
+- **Nettoyage** : suppression des anciens gestionnaires de vérification de domaine inutilisés ([#2372](https://github.com/proconnect-gouv/proconnect-identite/issues/2372)).
+- **Données** : synchronisation de la liste des administrations via Grist ([#2364](https://github.com/proconnect-gouv/proconnect-identite/issues/2364)).

@@ -1,0 +1,53 @@
+{
+  "name": "@proconnect-gouv/proconnect.identite.runtime",
+  "version": "0.4.0",
+  "homepage": "https://github.com/proconnect-gouv/proconnect-identite/tree/main/packages/runtime#readme",
+  "bugs": "https://github.com/proconnect-gouv/proconnect-identite/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proconnect-gouv/proconnect-identite.git",
+    "directory": "packages/runtime"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "imports": {
+    "#src/*": {
+      "types": "./dist/*/index.d.ts",
+      "default": "./dist/*/index.js"
+    },
+    "#testing": "./testing/index.ts"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.lib.json",
+    "check": "npm run build -- --noEmit",
+    "dev": "npm run build -- --watch --preserveWatchOutput",
+    "dev:test": "tsx --watch --test src/**/*.test.ts",
+    "test": "tsc --noEmit && tsx --test --test-reporter=spec"
+  },
+  "dependencies": {
+    "@proconnect-gouv/proconnect.identite": "^14.0.0",
+    "@proconnect-gouv/proconnect.identite.database": "^1.12.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.3.12",
+    "@proconnect-gouv/proconnect.devtools.typescript": "1.0.0",
+    "@types/node": "^22.18.6",
+    "drizzle-orm": "^0.45.4",
+    "tsx": "^4.20.3"
+  },
+  "peerDependencies": {
+    "drizzle-orm": "^0.45.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
