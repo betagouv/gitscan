@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Outil de modération backoffice pour MonComptePro, permettant la gestion des utilisateurs, des organisations et des processus de modération.",
+  "description": "Outil de modération backoffice pour la plateforme MonComptePro. Il permet la gestion des organisations, des utilisateurs et la modération des domaines et des demandes d'autorisation.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
-    "Sécurité & Conformité",
-    "Gestion métier générale"
+    "Gestion des utilisateurs & Permissions",
+    "Gestion des établissements & Structures",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -15,38 +15,45 @@
     "Preact",
     "HTMX",
     "Hono",
+    "PostgreSQL",
+    "Drizzle ORM",
     "Zod",
-    "Tailwind CSS",
     "@gouvfr/dsfr"
   ],
   "components": [
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Tests",
-    "Scripts & Utilitaires"
+    "CI/CD & Déploiement",
+    "Design System (DSFR & UI libs)",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "sso"
+      "jwt",
+      "session"
     ]
   },
   "tests": [
-    "Buncept (feature tests)",
-    "Cypress (E2E)"
+    "Buncept (CodeceptJS-style)",
+    "Cypress",
+    "@testing-library/preact"
   ],
   "workflows": [
     "release.yml"
   ],
-  "lastActivity": "2026-10-23T00:00:00Z",
+  "lastActivity": "2026-10-30T00:00:00Z",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
+    "JavaScript",
     "Docker & Conteneurs",
-    "Design System & UI",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Bases de données SQL",
+    "Design System & UI"
   ]
 }

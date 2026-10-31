@@ -282,8 +282,6 @@
 │   │   │   │   ├── testing
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── types.ts
-│   │   │   ├── sdk
-│   │   │   │   └── index.ts
 │   │   │   └── types
 │   │   │       └── index.ts
 │   │   └── tsconfig.json
@@ -313,6 +311,13 @@
 │       │   │   ├── root.ts
 │       │   │   └── sentry.client.ts
 │       │   ├── lib
+│       │   │   ├── activities
+│       │   │   │   ├── actor_labels.ts
+│       │   │   │   ├── contexts.ts
+│       │   │   │   ├── identite_runtime.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── parse_activity_row.test.ts
+│       │   │   │   └── parse_activity_row.ts
 │       │   │   ├── create-island
 │       │   │   │   ├── factory.test.tsx
 │       │   │   │   ├── factory.tsx
@@ -328,7 +333,7 @@
 │       │   │   │   ├── build_moderation_update.ts
 │       │   │   │   ├── comment_message.ts
 │       │   │   │   ├── entities
-│       │   │   │   │   └── Moderation.ts
+│       │   │   │   │   └── moderation.ts
 │       │   │   │   ├── event
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── index.ts
@@ -339,59 +344,61 @@
 │       │   │   │   │   └── validate.form.ts
 │       │   │   │   ├── types.ts
 │       │   │   │   └── usecase
-│       │   │   │       ├── GetCripsFromSessionId.ts
-│       │   │   │       ├── GetModerationHeader.ts
-│       │   │   │       ├── IsUserExternalMember.ts
-│       │   │   │       ├── ValidateSimilarModerations.test.ts
-│       │   │   │       ├── ValidateSimilarModerations.ts
+│       │   │   │       ├── get_crips_from_session_id.ts
+│       │   │   │       ├── get_moderation_header.ts
 │       │   │   │       ├── index.ts
+│       │   │   │       ├── is_user_external_member.ts
 │       │   │   │       ├── send_crisp_notification.test.ts
-│       │   │   │       └── send_crisp_notification.ts
+│       │   │   │       ├── send_crisp_notification.ts
+│       │   │   │       ├── validate_similar_moderations.test.ts
+│       │   │   │       └── validate_similar_moderations.ts
 │       │   │   ├── organizations
+│       │   │   │   ├── activities.ts
 │       │   │   │   ├── event.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── parse_sirets.test.ts
 │       │   │   │   ├── parse_sirets.ts
 │       │   │   │   └── usecase
-│       │   │   │       ├── AddVerifiedDomain.ts
-│       │   │   │       ├── GetBanaticUrl.test.ts
-│       │   │   │       ├── GetBanaticUrl.ts
-│       │   │   │       ├── GetFicheOrganizationById.ts
-│       │   │   │       ├── GetOrganizationInfo.ts
-│       │   │   │       ├── RemoveDomainEmailById.test.ts
-│       │   │   │       ├── RemoveDomainEmailById.ts
-│       │   │   │       └── index.ts
+│       │   │   │       ├── change_email_domain_verification.test.ts
+│       │   │   │       ├── change_email_domain_verification.ts
+│       │   │   │       ├── get_banatic_url.test.ts
+│       │   │   │       ├── get_banatic_url.ts
+│       │   │   │       ├── get_fiche_organization_by_id.ts
+│       │   │   │       ├── get_organization_info.ts
+│       │   │   │       ├── index.ts
+│       │   │   │       ├── remove_domain_email_by_id.test.ts
+│       │   │   │       └── remove_domain_email_by_id.ts
 │       │   │   ├── response-templates
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── render_template.test.ts
 │       │   │   │   └── render_template.ts
 │       │   │   └── users
 │       │   │       ├── entities
-│       │   │       │   └── User.ts
+│       │   │       │   └── user.ts
 │       │   │       ├── index.ts
 │       │   │       ├── templates
 │       │   │       │   └── index.ts
 │       │   │       └── usecase
-│       │   │           ├── CountUserMemberships.test.ts
-│       │   │           ├── CountUserMemberships.ts
-│       │   │           ├── DeleteUser.test.ts
-│       │   │           ├── DeleteUser.ts
-│       │   │           ├── GetUserInfo.ts
-│       │   │           ├── RemoveMemberFromOrganization.test.ts
-│       │   │           ├── RemoveMemberFromOrganization.ts
-│       │   │           ├── ResetMFA.test.ts
-│       │   │           ├── ResetMFA.ts
-│       │   │           ├── ResetPassword.test.ts
-│       │   │           ├── ResetPassword.ts
-│       │   │           ├── RevokeIdentity.test.ts
-│       │   │           ├── RevokeIdentity.ts
-│       │   │           ├── SuggestSameUserEmails.test.ts
-│       │   │           ├── SuggestSameUserEmails.ts
-│       │   │           └── index.ts
+│       │   │           ├── count_user_memberships.test.ts
+│       │   │           ├── count_user_memberships.ts
+│       │   │           ├── delete_user.test.ts
+│       │   │           ├── delete_user.ts
+│       │   │           ├── get_user_info.ts
+│       │   │           ├── index.ts
+│       │   │           ├── remove_member_from_organization.test.ts
+│       │   │           ├── remove_member_from_organization.ts
+│       │   │           ├── reset_mfa.test.ts
+│       │   │           ├── reset_mfa.ts
+│       │   │           ├── reset_password.test.ts
+│       │   │           ├── reset_password.ts
+│       │   │           ├── revoke_identity.test.ts
+│       │   │           ├── revoke_identity.ts
+│       │   │           ├── suggest_same_user_emails.test.ts
+│       │   │           └── suggest_same_user_emails.ts
 │       │   ├── middleware
 │       │   │   ├── auth
-│       │   │   │   ├── AgentConnectUserInfo.ts
 │       │   │   │   ├── NotAuthorized.tsx
+│       │   │   │   ├── agent_connect_user_info.ts
 │       │   │   │   ├── authorized.test.ts
 │       │   │   │   ├── authorized.tsx
 │       │   │   │   ├── index.ts
@@ -435,57 +442,53 @@
 │       │   │   ├── sentry
 │       │   │   │   └── index.ts
 │       │   │   └── session
-│       │   │       ├── SessionContext.ts
 │       │   │       ├── hyyypersession.ts
-│       │   │       └── index.ts
+│       │   │       ├── index.ts
+│       │   │       └── session_context.ts
 │       │   ├── queries
 │       │   │   ├── moderations
-│       │   │   │   ├── GetModeration.test.ts
-│       │   │   │   ├── GetModerationById.test.ts
-│       │   │   │   ├── GetModerationById.ts
-│       │   │   │   ├── GetModerationWithDetails.test.ts
-│       │   │   │   ├── GetModerationWithDetails.ts
-│       │   │   │   ├── GetModerationWithUser.ts
-│       │   │   │   ├── RemoveUserFromOrganization.test.ts
-│       │   │   │   ├── RemoveUserFromOrganization.ts
-│       │   │   │   ├── UpdateModerationById.test.ts
-│       │   │   │   ├── UpdateModerationById.ts
-│       │   │   │   └── index.ts
+│       │   │   │   ├── get_moderation_by_id.test.ts
+│       │   │   │   ├── get_moderation_by_id.ts
+│       │   │   │   ├── get_moderation_with_details.test.ts
+│       │   │   │   ├── get_moderation_with_details.ts
+│       │   │   │   ├── get_moderation_with_user.test.ts
+│       │   │   │   ├── get_moderation_with_user.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── remove_user_from_organization.test.ts
+│       │   │   │   ├── remove_user_from_organization.ts
+│       │   │   │   ├── update_moderation_by_id.test.ts
+│       │   │   │   └── update_moderation_by_id.ts
 │       │   │   ├── organizations
-│       │   │   │   ├── AddVerifiedDomain.test.ts
-│       │   │   │   ├── AddVerifiedDomain.ts
-│       │   │   │   ├── CountOrganizationMembers.test.ts
-│       │   │   │   ├── CountOrganizationMembers.ts
-│       │   │   │   ├── DeleteDomainById.test.ts
-│       │   │   │   ├── DeleteDomainById.ts
-│       │   │   │   ├── GetDomainCount.test.ts
-│       │   │   │   ├── GetDomainCount.ts
-│       │   │   │   ├── GetDomains.ts
-│       │   │   │   ├── GetOrganizationById.test.ts
-│       │   │   │   ├── GetOrganizationById.ts
-│       │   │   │   ├── GetOrganizationDomains.ts
-│       │   │   │   ├── GetOrganizationMember.test.ts
-│       │   │   │   ├── GetOrganizationMember.ts
-│       │   │   │   ├── GetOrganizationMembersCount.ts
-│       │   │   │   ├── GetOrganizationsList.ts
+│       │   │   │   ├── count_organization_members.test.ts
+│       │   │   │   ├── count_organization_members.ts
+│       │   │   │   ├── delete_domain_by_id.test.ts
+│       │   │   │   ├── delete_domain_by_id.ts
+│       │   │   │   ├── get_domain_count.test.ts
+│       │   │   │   ├── get_domain_count.ts
+│       │   │   │   ├── get_domains.ts
+│       │   │   │   ├── get_organization_by_id.test.ts
+│       │   │   │   ├── get_organization_by_id.ts
+│       │   │   │   ├── get_organization_domains.ts
+│       │   │   │   ├── get_organization_member.test.ts
+│       │   │   │   ├── get_organization_member.ts
+│       │   │   │   ├── get_organization_members_count.ts
+│       │   │   │   ├── get_organizations_list.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── update_domain_by_id.test.ts
 │       │   │   │   └── update_domain_by_id.ts
 │       │   │   └── users
-│       │   │       ├── CountGmailMembers.test.ts
-│       │   │       ├── CountGmailMembers.ts
-│       │   │       ├── FindUsersByName.ts
-│       │   │       ├── GetAuthenticatorByUserId.ts
-│       │   │       ├── GetEmailsByOrganizationId.ts
-│       │   │       ├── GetMember.test.ts
-│       │   │       ├── GetMember.ts
-│       │   │       ├── GetUserById.test.ts
-│       │   │       ├── GetUserById.ts
-│       │   │       ├── GetUsersList.test.ts
-│       │   │       ├── GetUsersList.ts
-│       │   │       ├── UpdateUserByIdInOrganization.test.ts
-│       │   │       ├── UpdateUserByIdInOrganization.ts
-│       │   │       ├── get_authenticators_by_user_id.test.ts
+│       │   │       ├── count_gmail_members.test.ts
+│       │   │       ├── count_gmail_members.ts
+│       │   │       ├── find_users_by_name.ts
+│       │   │       ├── get_authenticator_by_user_id.test.ts
+│       │   │       ├── get_authenticator_by_user_id.ts
+│       │   │       ├── get_emails_by_organization_id.ts
+│       │   │       ├── get_member.test.ts
+│       │   │       ├── get_member.ts
+│       │   │       ├── get_user_by_id.test.ts
+│       │   │       ├── get_user_by_id.ts
+│       │   │       ├── get_users_list.test.ts
+│       │   │       ├── get_users_list.ts
 │       │   │       └── index.ts
 │       │   ├── router
 │       │   │   └── index.ts
@@ -503,6 +506,14 @@
 │       │   │   │   ├── live-reload.client.ts
 │       │   │   │   ├── reload.tsx
 │       │   │   │   └── tailwind.page.tsx
+│       │   │   ├── activity
+│       │   │   │   ├── __features__
+│       │   │   │   │   └── filter_by_category.feature.test.ts
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── get_activities.query.ts
+│       │   │   │   ├── index.test.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── admin
 │       │   │   │   └── index.ts
 │       │   │   ├── assets
@@ -527,7 +538,6 @@
 │       │   │   ├── moderations
 │       │   │   │   ├── :id
 │       │   │   │   │   ├── ModerationExchanges.tsx
-│       │   │   │   │   ├── SuggestOrganizationDomains.ts
 │       │   │   │   │   ├── build_template_data.ts
 │       │   │   │   │   ├── duplicate_warning
 │       │   │   │   │   │   ├── DuplicateWarning.tsx
@@ -558,6 +568,7 @@
 │       │   │   │   │   ├── reprocess
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── suggest_organization_domains.ts
 │       │   │   │   │   └── validate
 │       │   │   │   │       ├── index.test.ts
 │       │   │   │   │       └── index.ts
@@ -600,6 +611,10 @@
 │       │   │   │   │   │   ├── Table.tsx
 │       │   │   │   │   │   ├── context.ts
 │       │   │   │   │   │   ├── get_organization_domains.query.ts
+│       │   │   │   │   │   ├── history
+│       │   │   │   │   │   │   ├── get_domain_history.query.ts
+│       │   │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   │   └── index.tsx
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   ├── get_organization_by_id.query.ts
@@ -618,6 +633,7 @@
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── __features__
 │       │   │   │   │   ├── dinum.feature.test.ts
+│       │   │   │   │   ├── domain_history.feature.test.ts
 │       │   │   │   │   ├── domains_copy_button_after_refresh.feature.test.ts
 │       │   │   │   │   ├── member_actions.feature.test.ts
 │       │   │   │   │   ├── table_pagination.feature.test.ts
@@ -633,8 +649,11 @@
 │       │   │   │   ├── get_organizations_list.query.ts
 │       │   │   │   ├── index.tsx
 │       │   │   │   ├── leaders
+│       │   │   │   │   ├── error.tsx
 │       │   │   │   │   ├── index.test.ts
-│       │   │   │   │   └── index.tsx
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── leaders_document_control.tsx
+│       │   │   │   │   └── load_leader_document.ts
 │       │   │   │   ├── new
 │       │   │   │   │   ├── index.test.ts
 │       │   │   │   │   ├── index.tsx
@@ -660,6 +679,12 @@
 │       │   │   │   └── page.tsx
 │       │   │   ├── users
 │       │   │   │   ├── :id
+│       │   │   │   │   ├── activities
+│       │   │   │   │   │   ├── Table.tsx
+│       │   │   │   │   │   ├── count_activities_by_user_id.query.ts
+│       │   │   │   │   │   ├── get_activities_by_user_id.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   ├── get_authenticators_by_user_id.query.ts
 │       │   │   │   │   ├── get_franceconnect_by_user_id.query.ts
 │       │   │   │   │   ├── get_user_by_id.query.ts
@@ -675,6 +700,8 @@
 │       │   │   │   │   ├── not-found.tsx
 │       │   │   │   │   ├── oidc_clients
 │       │   │   │   │   │   ├── Table.tsx
+│       │   │   │   │   │   ├── authorization_request_status.mapper.test.ts
+│       │   │   │   │   │   ├── authorization_request_status.mapper.ts
 │       │   │   │   │   │   ├── context.ts
 │       │   │   │   │   │   ├── count_oidc_clients_by_user_id.query.ts
 │       │   │   │   │   │   ├── get_oidc_clients_by_user_id.query.test.ts
@@ -690,6 +717,7 @@
 │       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── __features__
+│       │   │   │   │   ├── activity_log.feature.test.ts
 │       │   │   │   │   ├── jean_bon.feature.test.ts
 │       │   │   │   │   ├── raphael_alpha.feature.test.ts
 │       │   │   │   │   ├── raphael_beta.feature.test.ts
@@ -720,6 +748,9 @@
 │       │   │   └── index.ts
 │       │   ├── ui
 │       │   │   ├── accordion
+│       │   │   │   └── index.ts
+│       │   │   ├── activities
+│       │   │   │   ├── ActivityRow.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── badge
 │       │   │   │   └── index.ts
@@ -920,4 +951,4 @@
 │       │       └── urls.ts
 │       └── tsconfig.json
 └── tsconfig.json
-208 directories, 714 files
+213 directories, 740 files
