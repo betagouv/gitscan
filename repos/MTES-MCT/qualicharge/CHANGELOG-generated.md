@@ -1,13 +1,13 @@
 ## Changelog : qualicharge (30 derniers jours, au 24 octobre 2026)
 
 ### Résumé
-Ce mois-ci, qualicharge a amélioré l'accessibilité de ses données grâce à l'exportation des tarifs vers le service OpenData. Le projet a également bénéficié de corrections visant à fiabiliser les calculs d'indicateurs et de mesures de sécurité pour renforcer la robustesse et la fiabilité de la plateforme.
+Ce mois-ci, le projet a franchi une étape importante dans l'ouverture des données avec l'automatisation de l'export des tarifs vers les services OpenData. Nous avons également renforcé la fiabilité des indicateurs de performance et consolidé la sécurité de l'ensemble de l'application.
 
 ### Évolutions fonctionnelles
-- Exportation des tarifs vers le service OpenData via l'outil data7.
+- **Ouverture des données** : Mise en place de l'exportation automatique des tarifs vers le service OpenData via l'outil Data7.
 
 ### Évolutions techniques
-- **Fiabilité des données** : Correction du calcul des indicateurs (e2, e3 et e6) dans Prefect pour gérer correctement les statuts manquants.
-- **Sécurité** : Résolution de vulnérabilités et mise à jour de dépendances transitives à risque.
-- **Infrastructure & CI/CD** : Correction de l'initialisation de la base de données pour les workflows Prefect dans l'environnement GitHub Actions.
-- **Versionning** : Passage de l'API à la version 0.35.1.
+- **Fiabilité des données** : Correction de la logique de calcul des indicateurs (e2, e3 et e6) pour assurer une prise en compte correcte des statuts manquants.
+- **Sécurité** : Résolution de plusieurs vulnérabilités et mise à jour des dépendances transitatives non sécurisées.
+- **Infrastructure & CI/CD** : Correction du processus d'initialisation (seeding) de la base de données au sein des workflows Prefect.
+- **Maintenance** : Passage de la version de l'API à 0.35.1.
