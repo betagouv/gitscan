@@ -1,12 +1,13 @@
-## Changelog : tchap-e2e-playwright (30 derniers jours, au 10 juillet 2026)
+## Changelog : tchap-e2e-playwright (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-Cette version apporte des améliorations sur la gestion de la rétention des pièces dans les salons publics, ainsi qu'une refactorisation et optimisation du code. Des tests ont également été adaptés pour tenir compte des nouvelles règles d'accès et du nouveau flux d'authentification externe. Enfin, les identifiants sensibles ont été déplacés vers un fichier de secrets pour une meilleure sécurité.
+Les récentes mises à jour visent à renforcer la fiabilité des tests de bout en bout en couvrant de nouveaux scénarios d'authentification et de gestion de comptes. Le projet assure également la compatibilité avec la version 4.23.0-rc.1 de Tchap et optimise la rapidité d'exécution de la suite de tests.
 
 ### Évolutions fonctionnelles
-- Ajout de tests pour la rétention des pièces dans les salons publics. [#56](https://github.com/tchapgouv/tchap-e2e-playwright/issues/56)
-- Adaptation des tests existants pour prendre en compte les nouvelles règles d'accès et le nouveau flux d'authentification externe.
+- Extension de la couverture de tests pour inclure les cas de discordance d'e-mail via le protocole OIDC.
+- Ajout de tests concernant l'envoi d'e-mails pour les comptes désactivés ne possédant pas d'adresse e-mail [#64](https://github.com/tchapgouv/tchap-e2e-playwright/pull/64).
+- Correction des tests relatifs aux salons privés sécurisés.
+- Mise à jour de la suite de tests "web minimal" pour assurer la compatibilité avec la version tchap-4.23.0-rc.1 [#66](https://github.com/tchapgouv/tchap-e2e-playwright/pull/66).
 
 ### Évolutions techniques
-- Refactorisation et optimisation du code pour améliorer la performance et la maintenabilité. [#54](https://github.com/tchapgouv/tchap-e2e-playwright/issues/54)
-- Déplacement des identifiants sensibles vers un fichier de secrets pour renforcer la sécurité. [#53](https://github.com/tchapgouv/tchap-e2e-playwright/issues/53)
+- Optimisation de la performance en réduisant les délais d'attente (timeouts) par test.
