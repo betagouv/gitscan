@@ -65,6 +65,13 @@
 │   ├── nest-cli.json
 │   ├── package.json
 │   ├── patches
+│   │   ├── deepmerge
+│   │   │   ├── .prettierrc.json
+│   │   │   ├── README.md
+│   │   │   ├── index.cjs
+│   │   │   ├── index.d.ts
+│   │   │   ├── license.txt
+│   │   │   └── package.json
 │   │   └── pptxgenjs@4.0.1.patch
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
@@ -436,6 +443,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20261021150000_add_beta_features_permission
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20261029120000_add_ecoindex_target_revision
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261030140000_scope_technology_search
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── qa-correlation-fixtures.ts
 │   │   ├── schema
@@ -607,6 +618,7 @@
 │   │   │       ├── email.utils.spec.ts
 │   │   │       ├── email.utils.ts
 │   │   │       ├── enum.utils.ts
+│   │   │       ├── excel-list.util.ts
 │   │   │       ├── excel.utils.ts
 │   │   │       ├── organization-scope.utils.spec.ts
 │   │   │       ├── organization-scope.utils.ts
@@ -657,6 +669,7 @@
 │   │   │   │   ├── oidc.config.ts
 │   │   │   │   ├── technology.config.spec.ts
 │   │   │   │   └── technology.config.ts
+│   │   │   ├── deepmerge-security.spec.ts
 │   │   │   ├── domain
 │   │   │   │   └── configs.entity.ts
 │   │   │   └── dto
@@ -688,6 +701,7 @@
 │   │   │   ├── cron
 │   │   │   │   ├── application-validation-cron.service.spec.ts
 │   │   │   │   ├── application-validation-cron.service.ts
+│   │   │   │   ├── email-cron.service.spec.ts
 │   │   │   │   └── email-cron.service.ts
 │   │   │   ├── dto
 │   │   │   │   └── email-log.dto.ts
@@ -730,6 +744,8 @@
 │   │   │   ├── grist-api-key.ts
 │   │   │   ├── grist-columns.spec.ts
 │   │   │   ├── grist-columns.ts
+│   │   │   ├── grist-sync-lock.service.spec.ts
+│   │   │   ├── grist-sync-lock.service.ts
 │   │   │   ├── grist.client.ts
 │   │   │   ├── grist.controller.spec.ts
 │   │   │   ├── grist.controller.ts
@@ -759,6 +775,7 @@
 │   │   │   └── site.controller.ts
 │   │   ├── import
 │   │   │   ├── PERMISSIONS.md
+│   │   │   ├── application-excel-roundtrip.spec.ts
 │   │   │   ├── dto
 │   │   │   │   └── import-report.dto.ts
 │   │   │   ├── excel-import.service.spec.ts
@@ -942,6 +959,8 @@
 │   │   ├── saved-filter
 │   │   │   ├── dto
 │   │   │   │   ├── create-saved-filter.dto.ts
+│   │   │   │   ├── rename-saved-filter.dto.spec.ts
+│   │   │   │   ├── rename-saved-filter.dto.ts
 │   │   │   │   └── saved-filter.dto.ts
 │   │   │   ├── saved-filter.controller.ts
 │   │   │   ├── saved-filter.module.ts
@@ -1022,6 +1041,7 @@
 │   │   │       ├── endoflife-network.spec.ts
 │   │   │       ├── endoflife.utils.spec.ts
 │   │   │       ├── endoflife.utils.ts
+│   │   │       ├── eol-refresh-where.ts
 │   │   │       ├── eol-status.spec.ts
 │   │   │       └── eol-status.ts
 │   │   ├── token
@@ -1156,6 +1176,7 @@
 │   │   ├── reports.e2e-spec.ts
 │   │   ├── rgaa-compliances.e2e-spec.ts
 │   │   ├── rights-cleanup.e2e-spec.ts
+│   │   ├── saved-filter-rename.e2e-spec.ts
 │   │   ├── scoped-admin-perimeter.e2e-spec.ts
 │   │   ├── scoped-permission.service.spec.ts
 │   │   ├── setup.ts
@@ -1165,7 +1186,9 @@
 │   │   ├── technologies-contract.e2e-spec.ts
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── technology-access.e2e-spec.ts
+│   │   ├── technology-eol-race.e2e-spec.ts
 │   │   ├── technology-export.e2e-spec.ts
+│   │   ├── technology-search-permissions.e2e-spec.ts
 │   │   ├── technology-search.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   ├── token-impersonation.e2e-spec.ts
@@ -1185,19 +1208,6 @@
 │   ├── tsconfig.json
 │   └── wait-for-it.sh
 ├── commitlint.config.mjs
-├── doc
-│   └── adr
-│       ├── 0001-record-architecture-decisions.md
-│       ├── 0002-dataviz-superset.md
-│       ├── 0003-monorepo-nestjs-vue.md
-│       ├── 0004-migrations-prisma-sql-manuel.md
-│       ├── 0005-authentification-oidc.md
-│       ├── 0006-dsfr-primevue-client-openapi.md
-│       ├── 0007-permissions-trois-couches-secrets.md
-│       ├── 0008-niveau-authentification-carte-agent-2fa.md
-│       ├── 0009-structure-modules-backend.md
-│       ├── 0010-rate-limiting-krakend.md
-│       └── README.md
 ├── docker-compose.ci.yml
 ├── docker-compose.grist.yml
 ├── docker-compose.matomo.yml
@@ -1218,6 +1228,17 @@
 │   ├── 12-exploitation-deploiement.md
 │   ├── 13-integration-iap.md
 │   ├── README.md
+│   ├── adr
+│   │   ├── 0001-record-architecture-decisions.md
+│   │   ├── 0002-dataviz-superset.md
+│   │   ├── 0003-monorepo-nestjs-vue.md
+│   │   ├── 0004-migrations-prisma-sql-manuel.md
+│   │   ├── 0005-authentification-oidc.md
+│   │   ├── 0006-dsfr-primevue-client-openapi.md
+│   │   ├── 0007-permissions-trois-couches-secrets.md
+│   │   ├── 0008-niveau-authentification-carte-agent-2fa.md
+│   │   ├── 0009-structure-modules-backend.md
+│   │   └── README.md
 │   ├── application-form.md
 │   ├── assets
 │   │   ├── database-erd-full.svg
@@ -1324,7 +1345,14 @@
 │   ├── openapi-ts.config.ts
 │   ├── package.json
 │   ├── patches
-│   │   └── @gouvminint__vue-dsfr@8.15.0.patch
+│   │   ├── @gouvminint__vue-dsfr@8.15.0.patch
+│   │   └── deepmerge
+│   │       ├── .prettierrc.json
+│   │       ├── README.md
+│   │       ├── index.cjs
+│   │       ├── index.d.ts
+│   │       ├── license.txt
+│   │       └── package.json
 │   ├── playwright.config.ts
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
@@ -1348,6 +1376,7 @@
 │   │   ├── manifest.json
 │   │   └── sw-force-reload.js
 │   ├── src
+│   │   ├── App.navigation.spec.ts
 │   │   ├── App.title.spec.ts
 │   │   ├── App.vue
 │   │   ├── api
@@ -1373,12 +1402,14 @@
 │   │   │   ├── AppUpdateNotice.spec.ts
 │   │   │   ├── AppUpdateNotice.vue
 │   │   │   ├── ApplicationCardView.vue
+│   │   │   ├── ApplicationExports.session.spec.ts
 │   │   │   ├── ApplicationMetadatasTab.vue
 │   │   │   ├── ApplicationOverview.vue
 │   │   │   ├── ApplicationProductExport.spec.ts
 │   │   │   ├── ApplicationProductExport.vue
 │   │   │   ├── ApplicationReportsTab.spec.ts
 │   │   │   ├── ApplicationReportsTab.vue
+│   │   │   ├── ApplicationSearchActions.config.spec.ts
 │   │   │   ├── ApplicationSearchActions.spec.ts
 │   │   │   ├── ApplicationSearchActions.vue
 │   │   │   ├── ApplicationTableView.vue
@@ -1527,6 +1558,7 @@
 │   │   │   │       ├── application-form.types.ts
 │   │   │   │       ├── application-form.validation.spec.ts
 │   │   │   │       ├── application-form.validation.ts
+│   │   │   │       ├── use-application-form-actions.organization.spec.ts
 │   │   │   │       ├── use-application-form-actions.spec.ts
 │   │   │   │       ├── use-application-form-actions.ts
 │   │   │   │       └── use-application-form-state.ts
@@ -1566,6 +1598,7 @@
 │   │   │   │   ├── SavedFiltersPanel.spec.ts
 │   │   │   │   ├── SavedFiltersPanel.technology.spec.ts
 │   │   │   │   ├── SavedFiltersPanel.vue
+│   │   │   │   ├── SearchHeader.access.spec.ts
 │   │   │   │   ├── SearchHeader.vue
 │   │   │   │   ├── SidebarFilter.spec.ts
 │   │   │   │   ├── SidebarFilter.vue
@@ -1642,6 +1675,7 @@
 │   │   │   ├── use-rgaa-a11y.spec.ts
 │   │   │   ├── use-rgaa-a11y.ts
 │   │   │   ├── use-sanitize-utils.ts
+│   │   │   ├── use-search-access-context.ts
 │   │   │   ├── use-server-paginated-table.spec.ts
 │   │   │   ├── use-server-paginated-table.ts
 │   │   │   ├── use-submission-focus.spec.ts
@@ -1673,10 +1707,12 @@
 │   │   │   ├── authentication.ts
 │   │   │   ├── config.spec.ts
 │   │   │   ├── config.ts
+│   │   │   ├── deepmerge-security.spec.ts
 │   │   │   ├── impersonation.ts
 │   │   │   └── keycloak-session-policy.spec.ts
 │   │   ├── stores
 │   │   │   ├── actorTypeStore.ts
+│   │   │   ├── applicationStore.excel-timeout.spec.ts
 │   │   │   ├── applicationStore.spec.ts
 │   │   │   ├── applicationStore.ts
 │   │   │   ├── correlationStore.ts
@@ -1939,4 +1975,4 @@
 │       ├── sync-issue.mjs
 │       └── sync-issue.test.mjs
 └── release-please-config.json
-408 directories, 1533 files
+411 directories, 1566 files
