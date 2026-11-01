@@ -18,13 +18,7 @@
 │   ├── changelog.yaml
 │   ├── config.yaml
 │   └── fragments
-│       ├── .gitkeep
-│       ├── conversations.yml
-│       ├── file-scanner-worker-health.yml
-│       ├── messages-bayes.yml
-│       ├── messages-exav.yml
-│       ├── renovate-pr-115.yml
-│       └── renovate-pr-116.yml
+│       └── .gitkeep
 ├── cli
 │   ├── .dockerignore
 │   ├── CLAUDE.md
@@ -226,6 +220,7 @@
 │       │   ├── templates
 │       │   │   ├── test-app-config.j2
 │       │   │   ├── test-app-env.j2
+│       │   │   ├── test-secret.j2
 │       │   │   └── test.compose.yml.j2
 │       │   └── verify.yml
 │       └── restic
@@ -487,7 +482,8 @@
     │   ├── tasks
     │   │   ├── application
     │   │   │   ├── directories.yml
-    │   │   │   └── files.yml
+    │   │   │   ├── files.yml
+    │   │   │   └── secret_files.yml
     │   │   ├── application.yml
     │   │   ├── install.yml
     │   │   ├── main.yml
@@ -563,4 +559,4 @@
             └── workers
                 ├── compose.yaml.j2
                 └── env.j2
-151 directories, 414 files
+151 directories, 410 files

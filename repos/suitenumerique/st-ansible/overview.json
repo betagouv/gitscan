@@ -1,62 +1,54 @@
 {
   "url": "https://github.com/suitenumerique/st-ansible",
   "name": "st-ansible",
-  "description": "Collection Ansible permettant le déploiement des applications de La Suite Territoriale sur des systèmes Debian en utilisant des conteneurs Podman rootless gérés par systemd. Elle est accompagnée d'un outil CLI en Python pour orchestrer les déploiements.",
+  "description": "Collection Ansible permettant le déploiement des applications de La Suite Territoriale sur des systèmes Debian en utilisant des conteneurs Podman rootless gérés par systemd.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Collaboration & Workflow",
     "Sécurité & Conformité",
-    "Infrastructure & Stockage"
+    "Infrastructure & Stockage",
+    "Monitoring & Logs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ansible",
     "Podman",
     "Python",
-    "Caddy",
-    "Keycloak",
-    "Django",
-    "React",
+    "systemd",
     "Redis",
     "PostgreSQL",
+    "Keycloak",
     "Restic"
   ],
   "components": [
     "Ansible & IaC",
     "Docker & Conteneurs",
     "Python (scripts & backend)",
-    "CI/CD & Déploiement",
-    "Authentification (composant)",
-    "Scripts & Utilitaires"
+    "Scripts & Utilitaires",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "sso",
       "jwt",
       "session"
-    ],
-    "providers": [
-      "Keycloak"
     ]
   },
-  "tests": [
-    "pytest",
-    "pytest-mock",
-    "molecule"
-  ],
+  "tests": "pytest, molecule",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-22T16:12:20+02:00",
+  "lastActivity": "2026-10-22T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
     "Git & DevOps",
     "Docker & Conteneurs",
-    "Python"
+    "Python",
+    "Déploiement & Hosting",
+    "Écosystème beta.gouv / État"
   ]
 }
