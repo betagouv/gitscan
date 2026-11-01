@@ -1,32 +1,32 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 28 octobre 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec le développement et l'intégration de la nouvelle section dédiée à la formation et à l'entraînement en ligne. Parallèlement, une modernisation profonde de l'infrastructure et des outils de développement a été réalisée pour améliorer la stabilité, la performance et la maintenabilité du projet.
+Ce mois a été marqué par une évolution majeure de la plateforme avec l'intégration de nouvelles données sur les métiers de la cybersécurité et le déploiement d'une nouvelle section dédiée à la formation et à l'entraînement. L'interface utilisateur a également été affinée pour améliorer la clarté et l'expérience de navigation.
 
 ### Évolutions fonctionnelles
-- **Nouvelle section de formation** : Implémentation de la page "Se former et s'entraîner en ligne" (nouvelle route `/se-former`) et de ses composants associés.
-- **Nouvelles capacités d'évaluation** : Mise à disposition d'API dédiées pour les parcours "Je me mesure" et "Je m'entraîne".
-- **Améliorations de l'interface utilisateur** :
-    - Optimisation de l'application du mode sombre.
-    - Corrections d'affichage sur le bloc "Comment ça marche ?".
-    - Ajustements de la rédaction (wording) pour une meilleure clarté (notamment sur la page d'accueil et la section de présentation).
-- **Évolution de l'identité visuelle** : Retrait du logo ANSSI et de la tagline dans l'en-tête du site.
+- **Nouveaux parcours de formation** : Implémentation de la page et de la route "Se former et s'entraîner en ligne".
+- **Gestion des métiers** : Intégration de nouvelles données permettant d'afficher les familles de métiers, les profils associés et les ressources correspondantes.
+- **Parcours d'évaluation** : Ajout d'API pour alimenter les sections "Je me mesure" et "Je m'entraîne".
+- **Améliorations de l'interface (UI/UX)** :
+    - Optimisation de l'affichage du mode sombre.
+    - Corrections de textes (wording) sur la page d'accueil et les sections de présentation.
+    - Mise à jour de l'identité visuelle (retrait du logo et de la tagline ANSSI).
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
+- **Infrastructure et Environnement** :
     - Migration de la stack vers Node.js 26.
-    - Mise à jour de l'environnement de CI vers Ubuntu 26.04.
-- **Tests et Qualité** :
-    - Support de Vitest 5 pour la bibliothèque `testing-library/jest-dom`.
-    - Passage de la configuration Vitest backend en mode ESM.
-- **Outillage de développement** :
-    - Introduction du shell Nix pour la gestion de l'environnement.
+    - Passage de l'environnement de CI sur Ubuntu 26.04.
+    - Introduction du shell Nix pour le développement.
+- **Refactorisation et Qualité** :
+    - Nettoyage massif du code pour supprimer de nombreuses surcharges de types inutiles dans les dépendances.
+    - Centralisation des instructions pour les agents d'IA.
+    - Amélioration de la gestion des logs pour le débogage de l'authentification.
+- **Tests et Outillage** :
+    - Mise à jour du support de testing-library avec Vitest 5.
     - Automatisation du tri des imports.
-    - Centralisation des instructions pour les agents d'intelligence artificielle.
-- **Refactoring et Optimisation** :
-    - Nettoyage massif du code via la suppression de nombreuses surcharges de types inutiles.
-    - Suppression des logs de debug d'authentification en production.
-- **Mises à jour majeures** : Montée de version de plusieurs dépendances critiques, notamment le UI Kit (v1.64.0), Svelte, Axios, Knex et Zod.
+- **Dépendances** :
+    - Mise à jour majeure de l'UI Kit (v1.64.0).
+    - Montée de version de plusieurs bibliothèques clés (Svelte, Vite, Axios, Zod, etc.).
 
 ### Autres changements
 - **Documentation** : Réorganisation complète du guide de développement pour une meilleure lisibilité.
