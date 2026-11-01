@@ -16,6 +16,8 @@
 │   ├── actions
 │   │   ├── download-verify-element-tarball
 │   │   │   └── action.yml
+│   │   ├── setup-node-pnpm
+│   │   │   └── action.yml
 │   │   └── setup-playwright
 │   │       └── action.yml
 │   ├── cfp_headers
@@ -49,8 +51,6 @@
 │       ├── shared-component-storybook-build.yml
 │       ├── shared-component-storybook-netlify.yaml
 │       ├── shared-component-storybook-publish.yaml
-│       ├── shared-component-visual-tests-netlify.yaml
-│       ├── shared-component-visual-tests.yaml
 │       ├── static_analysis.yaml
 │       ├── sync-labels.yml
 │       ├── tchap_add_issue_to_project.yaml
@@ -60,8 +60,9 @@
 │       ├── tchap_label_new_issues.yml
 │       ├── tchap_static_analysis.yaml
 │       ├── tchap_tests.yaml
+│       ├── tests-netlify.yaml
 │       ├── tests.yml
-│       ├── triage-*.yml  (6 files)
+│       ├── triage-*.yml  (7 files)
 │       ├── update-jitsi.yml
 │       └── update-topics.yaml
 ├── .gitignore
@@ -74,6 +75,7 @@
 ├── .oxfmtrc.jsonc
 ├── .prettierignore
 ├── .slugignore
+├── AGENTS.md
 ├── AUTHORS.rst
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -99,23 +101,17 @@
 │       ├── I18nWebpackPlugin.ts
 │       ├── README.md
 │       ├── __mocks__
-│       │   ├── cssMock.js
 │       │   ├── empty.js
-│       │   ├── imageMock.js
-│       │   ├── maplibre-gl.js
-│       │   ├── svg-react.js
-│       │   ├── svg.js
-│       │   ├── workerFactoryMock-jest.js
+│       │   ├── maplibre-gl.ts
+│       │   ├── react-focus-lock.tsx
 │       │   └── workerFactoryMock.js
 │       ├── babel.config.cjs
 │       ├── build_config.sample.yaml
-│       ├── components.json
 │       ├── config.dev.json
 │       ├── config.preprod.json
 │       ├── config.prod.json
 │       ├── config.prod.lab.json
 │       ├── config.sample.json
-│       ├── customisations.json
 │       ├── cypress.config.ts
 │       ├── debian
 │       │   ├── .gitignore
@@ -132,12 +128,8 @@
 │       │   │   └── config.json
 │       │   └── develop
 │       │       └── config.json
-│       ├── jest.config.ts
 │       ├── module_system
-│       │   ├── BuildConfig.ts
-│       │   ├── installer.ts
-│       │   └── scripts
-│       │       └── install.ts
+│       │   └── installer.ts
 │       ├── modules
 │       │   ├── .gitignore
 │       │   └── tchap-translations
@@ -219,12 +211,12 @@
 │       ├── patches_tchap
 │       │   ├── README.md
 │       │   ├── activate-expired-account-panel
-│       │   │   └── matrix-js-sdk+42.4.0.patch
+│       │   │   └── matrix-js-sdk+44.0.0.patch
 │       │   ├── expose-pkencryption
-│       │   │   └── matrix-js-sdk+42.4.0.patch
+│       │   │   └── matrix-js-sdk+44.0.0.patch
 │       │   ├── patches.json
 │       │   ├── prefer-sso-interactive-auth
-│       │   │   └── matrix-js-sdk+42.4.0.patch
+│       │   │   └── matrix-js-sdk+44.0.0.patch
 │       │   └── tchap-modifications.json
 │       ├── playwright
 │       │   ├── .gitignore
@@ -410,6 +402,9 @@
 │       │   │   │   │   └── recovery.spec.ts
 │       │   │   │   ├── general-room-settings-tab.spec.ts
 │       │   │   │   ├── notifications
+│       │   │   │   │   ├── mention-rules-legacy-removed.spec.ts
+│       │   │   │   │   ├── mention-rules-legacy-served.spec.ts
+│       │   │   │   │   ├── mention-rules.ts
 │       │   │   │   │   ├── notifications-settings-2-tab.spec.ts
 │       │   │   │   │   └── notifications-settings-tab.spec.ts
 │       │   │   │   ├── preferences-user-settings-tab.spec.ts
@@ -437,6 +432,7 @@
 │       │   │   │   ├── event-list-summary.spec.ts
 │       │   │   │   ├── event-tile-view.spec.ts
 │       │   │   │   ├── media-preview-settings.spec.ts
+│       │   │   │   ├── new-timeline.spec.ts
 │       │   │   │   └── timeline.spec.ts
 │       │   │   ├── toasts
 │       │   │   │   └── analytics-toast.spec.ts
@@ -448,6 +444,7 @@
 │       │   │   │   └── user-view.spec.ts
 │       │   │   ├── utils.ts
 │       │   │   ├── voip
+│       │   │   │   ├── element-call-full-call.spec.ts
 │       │   │   │   ├── element-call.spec.ts
 │       │   │   │   └── pstn.spec.ts
 │       │   │   └── widgets
@@ -620,7 +617,7 @@
 │       │   │   │       │   ├── Mentions-empty-room-list-linux.png
 │       │   │   │       │   ├── People-empty-room-list-linux.png
 │       │   │   │       │   ├── Rooms-empty-room-list-linux.png
-│       │   │   │       │   ├── Unreads-empty-room-list-linux.png
+│       │   │   │       │   ├── Unread-empty-room-list-linux.png
 │       │   │   │       │   ├── collapsed-primary-filters-linux.png
 │       │   │   │       │   ├── default-empty-room-list-linux.png
 │       │   │   │       │   ├── expanded-primary-filters-linux.png
@@ -852,6 +849,14 @@
 │       │   │   │           ├── tac-no-indicator-linux.png
 │       │   │   │           ├── tac-panel-mix-unread-linux.png
 │       │   │   │           └── tac-panel-notification-unread-linux.png
+│       │   │   ├── spotlight
+│       │   │   │   └── spotlight.spec.ts
+│       │   │   │       ├── spotlight-row-at-rest-dark-linux.png
+│       │   │   │       ├── spotlight-row-at-rest-light-high-contrast-linux.png
+│       │   │   │       ├── spotlight-row-at-rest-light-linux.png
+│       │   │   │       ├── spotlight-selected-row-with-badge-dark-linux.png
+│       │   │   │       ├── spotlight-selected-row-with-badge-light-high-contrast-linux.png
+│       │   │   │       └── spotlight-selected-row-with-badge-light-linux.png
 │       │   │   ├── threads
 │       │   │   │   └── threads.spec.ts
 │       │   │   │       ├── Initial-ThreadView-on-bubble-layout-linux.png
@@ -949,7 +954,14 @@
 │       │   │           └── widget-capabilites-prompt-linux.png
 │       │   ├── testcontainers
 │       │   │   ├── dendrite.ts
+│       │   │   ├── livekit.ts
+│       │   │   ├── lk-jwt-service.ts
 │       │   │   ├── mas.ts
+│       │   │   ├── matrix-rtc.ts
+│       │   │   ├── res
+│       │   │   │   └── matrix-rtc
+│       │   │   │       ├── tls.crt
+│       │   │   │       └── tls.key
 │       │   │   └── synapse.ts
 │       │   └── tsconfig.json
 │       ├── playwright.config.ts
@@ -1052,6 +1064,7 @@
 │       │   │   │   ├── _LeftPanel.pcss
 │       │   │   │   ├── _MainSplit.pcss
 │       │   │   │   ├── _MatrixChat.pcss
+│       │   │   │   ├── _NewTimelinePanel.pcss
 │       │   │   │   ├── _NonUrgentToastContainer.pcss
 │       │   │   │   ├── _PictureInPictureDragger.pcss
 │       │   │   │   ├── _QuickSettingsButton.pcss
@@ -1162,6 +1175,7 @@
 │       │   │       │   ├── _InviteDialog.pcss
 │       │   │       │   ├── _InviteProgressBody.pcss
 │       │   │       │   ├── _JoinRuleDropdown.pcss
+│       │   │       │   ├── _LeaveRoomDialog.pcss
 │       │   │       │   ├── _LeaveSpaceDialog.pcss
 │       │   │       │   ├── _LocationViewDialog.pcss
 │       │   │       │   ├── _LogoutDialog.pcss
@@ -1266,6 +1280,7 @@
 │       │   │       │   ├── _EmptyState.pcss
 │       │   │       │   ├── _EncryptionInfo.pcss
 │       │   │       │   ├── _ExtensionsCard.pcss
+│       │   │       │   ├── _PdfViewer.pcss
 │       │   │       │   ├── _PinnedMessagesCard.pcss
 │       │   │       │   ├── _RoomSummaryCard.pcss
 │       │   │       │   ├── _ThreadPanel.pcss
@@ -1307,7 +1322,6 @@
 │       │   │       │   ├── _PresenceLabel.pcss
 │       │   │       │   ├── _ReadReceiptGroup.pcss
 │       │   │       │   ├── _ReplyPreview.pcss
-│       │   │       │   ├── _ReplyTile.pcss
 │       │   │       │   ├── _RoomHeader.pcss
 │       │   │       │   ├── _RoomInfoLine.pcss
 │       │   │       │   ├── _RoomKnocksBar.pcss
@@ -1637,6 +1651,7 @@
 │       │   │   ├── commonmark.ts
 │       │   │   ├── css.d.ts
 │       │   │   ├── diff-dom.d.ts
+│       │   │   ├── document-viewer.ts
 │       │   │   ├── electron-to-chromium.d.ts
 │       │   │   ├── global.d.ts
 │       │   │   ├── i18n.d.ts
@@ -1646,6 +1661,7 @@
 │       │   │   ├── media_preview.ts
 │       │   │   ├── opus-recorder.d.ts
 │       │   │   ├── pcss.d.ts
+│       │   │   ├── pdf-viewer.ts
 │       │   │   ├── png.d.ts
 │       │   │   ├── polyfill.ts
 │       │   │   ├── raw.d.ts
@@ -1698,6 +1714,7 @@
 │       │   ├── Modal.test.tsx
 │       │   ├── Modal.tsx
 │       │   ├── NodeAnimator.tsx
+│       │   ├── Notifier.test.ts
 │       │   ├── Notifier.ts
 │       │   ├── PageTypes.ts
 │       │   ├── PasswordReset.ts
@@ -1766,7 +1783,8 @@
 │       │   │   ├── HtmlUtils.test.tsx.snap
 │       │   │   ├── Terms.test.ts.snap
 │       │   │   ├── TextForEvent.test.tsx.snap
-│       │   │   └── favicon.test.ts.snap
+│       │   │   ├── favicon.test.ts.snap
+│       │   │   └── theme.test.ts.snap
 │       │   ├── accessibility
 │       │   │   ├── KeyboardShortcutUtils.test.ts
 │       │   │   ├── KeyboardShortcutUtils.ts
@@ -1802,7 +1820,10 @@
 │       │   │       └── dialogs
 │       │   │           ├── QrLoginDialog.tsx
 │       │   │           ├── eventindex
+│       │   │           │   ├── ConfirmTokenizerChangeDialog.test.tsx
+│       │   │           │   ├── ConfirmTokenizerChangeDialog.tsx
 │       │   │           │   ├── DisableEventIndexDialog.tsx
+│       │   │           │   ├── ManageEventIndexDialog.test.tsx
 │       │   │           │   └── ManageEventIndexDialog.tsx
 │       │   │           └── security
 │       │   │               ├── CreateSecretStorageDialog.test.tsx
@@ -1868,6 +1889,7 @@
 │       │   │   │   ├── AutocompleteInput.tsx
 │       │   │   │   ├── ContextMenu.test.tsx
 │       │   │   │   ├── ContextMenu.tsx
+│       │   │   │   ├── DateSeparatorWrapper.tsx
 │       │   │   │   ├── EmbeddedPage.test.tsx
 │       │   │   │   ├── EmbeddedPage.tsx
 │       │   │   │   ├── ErrorMessage.tsx
@@ -1895,6 +1917,8 @@
 │       │   │   │   ├── MatrixClientContextProvider.tsx
 │       │   │   │   ├── MessagePanel.test.tsx
 │       │   │   │   ├── MessagePanel.tsx
+│       │   │   │   ├── NewTimelinePanel.test.tsx
+│       │   │   │   ├── NewTimelinePanel.tsx
 │       │   │   │   ├── NonUrgentToastContainer.tsx
 │       │   │   │   ├── NotificationPanel.tsx
 │       │   │   │   ├── OAuthStage.test.tsx
@@ -1966,7 +1990,6 @@
 │       │   │   │   │   ├── SetupEncryptionBody.tsx
 │       │   │   │   │   ├── SoftLogout.tsx
 │       │   │   │   │   ├── __snapshots__
-│       │   │   │   │   │   ├── CompleteSecurity.test.tsx.snap
 │       │   │   │   │   │   └── LoginSplashView.test.tsx.snap
 │       │   │   │   │   ├── forgot-password
 │       │   │   │   │   │   ├── CheckEmail.tsx
@@ -2099,18 +2122,37 @@
 │       │   │       │       ├── RoomAvatar.test.tsx.snap
 │       │   │       │       └── WithPresenceIndicator.test.tsx.snap
 │       │   │       ├── beacon
+│       │   │       │   ├── BeaconListItem.test.tsx
 │       │   │       │   ├── BeaconListItem.tsx
+│       │   │       │   ├── BeaconMarker.test.tsx
 │       │   │       │   ├── BeaconMarker.tsx
+│       │   │       │   ├── BeaconStatus.test.tsx
 │       │   │       │   ├── BeaconStatus.tsx
 │       │   │       │   ├── BeaconStatusTooltip.tsx
+│       │   │       │   ├── BeaconViewDialog.test.tsx
 │       │   │       │   ├── BeaconViewDialog.tsx
 │       │   │       │   ├── DialogOwnBeaconStatus.tsx
+│       │   │       │   ├── DialogSidebar.test.tsx
 │       │   │       │   ├── DialogSidebar.tsx
+│       │   │       │   ├── LeftPanelLiveShareWarning.test.tsx
 │       │   │       │   ├── LeftPanelLiveShareWarning.tsx
 │       │   │       │   ├── LiveTimeRemaining.tsx
+│       │   │       │   ├── OwnBeaconStatus.test.tsx
 │       │   │       │   ├── OwnBeaconStatus.tsx
+│       │   │       │   ├── ShareLatestLocation.test.tsx
 │       │   │       │   ├── ShareLatestLocation.tsx
+│       │   │       │   ├── StyledLiveBeaconIcon.test.tsx
 │       │   │       │   ├── StyledLiveBeaconIcon.tsx
+│       │   │       │   ├── __snapshots__
+│       │   │       │   │   ├── BeaconListItem.test.tsx.snap
+│       │   │       │   │   ├── BeaconMarker.test.tsx.snap
+│       │   │       │   │   ├── BeaconStatus.test.tsx.snap
+│       │   │       │   │   ├── BeaconViewDialog.test.tsx.snap
+│       │   │       │   │   ├── DialogSidebar.test.tsx.snap
+│       │   │       │   │   ├── LeftPanelLiveShareWarning.test.tsx.snap
+│       │   │       │   │   ├── OwnBeaconStatus.test.tsx.snap
+│       │   │       │   │   ├── ShareLatestLocation.test.tsx.snap
+│       │   │       │   │   └── StyledLiveBeaconIcon.test.tsx.snap
 │       │   │       │   ├── displayStatus.ts
 │       │   │       │   └── index.tsx
 │       │   │       ├── beta
@@ -2140,6 +2182,7 @@
 │       │   │       │       └── SpaceContextMenu.test.tsx.snap
 │       │   │       ├── dialogs
 │       │   │       │   ├── AddExistingSubspaceDialog.tsx
+│       │   │       │   ├── AddExistingToSpaceDialog.test.tsx
 │       │   │       │   ├── AddExistingToSpaceDialog.tsx
 │       │   │       │   ├── AnalyticsLearnMoreDialog.test.tsx
 │       │   │       │   ├── AnalyticsLearnMoreDialog.tsx
@@ -2181,11 +2224,13 @@
 │       │   │       │   ├── ExportDialog.tsx
 │       │   │       │   ├── FeedbackDialog.test.tsx
 │       │   │       │   ├── FeedbackDialog.tsx
+│       │   │       │   ├── ForwardDialog.test.tsx
 │       │   │       │   ├── ForwardDialog.tsx
 │       │   │       │   ├── GenericFeatureFeedbackDialog.tsx
 │       │   │       │   ├── IncomingSasDialog.test.tsx
 │       │   │       │   ├── IncomingSasDialog.tsx
 │       │   │       │   ├── InfoDialog.tsx
+│       │   │       │   ├── IntegrationsDisabledDialog.test.tsx
 │       │   │       │   ├── IntegrationsDisabledDialog.tsx
 │       │   │       │   ├── IntegrationsImpossibleDialog.tsx
 │       │   │       │   ├── InteractiveAuthDialog.test.tsx
@@ -2209,12 +2254,13 @@
 │       │   │       │   ├── MessageEditHistoryDialog.tsx
 │       │   │       │   ├── ModalWidgetDialog.test.tsx
 │       │   │       │   ├── ModalWidgetDialog.tsx
-│       │   │       │   ├── ModuleUiDialog.tsx
 │       │   │       │   ├── PollHistoryDialog.tsx
 │       │   │       │   ├── QuestionDialog.tsx
 │       │   │       │   ├── RegistrationEmailPromptDialog.tsx
+│       │   │       │   ├── RemoveSectionDialog.test.tsx
 │       │   │       │   ├── RemoveSectionDialog.tsx
 │       │   │       │   ├── ReportEventDialog.tsx
+│       │   │       │   ├── ReportRoomDialog.test.tsx
 │       │   │       │   ├── ReportRoomDialog.tsx
 │       │   │       │   ├── ResetIdentityDialog.test.tsx
 │       │   │       │   ├── ResetIdentityDialog.tsx
@@ -2252,8 +2298,10 @@
 │       │   │       │   ├── VerificationRequestDialog.tsx
 │       │   │       │   ├── WidgetCapabilitiesPromptDialog.test.tsx
 │       │   │       │   ├── WidgetCapabilitiesPromptDialog.tsx
+│       │   │       │   ├── WidgetOpenIDPermissionsDialog.test.tsx
 │       │   │       │   ├── WidgetOpenIDPermissionsDialog.tsx
 │       │   │       │   ├── __snapshots__
+│       │   │       │   │   ├── AddExistingToSpaceDialog.test.tsx.snap
 │       │   │       │   │   ├── AnalyticsLearnMoreDialog.test.tsx.snap
 │       │   │       │   │   ├── BugReportDialog.test.tsx.snap
 │       │   │       │   │   ├── ChangelogDialog.test.tsx.snap
@@ -2265,11 +2313,14 @@
 │       │   │       │   │   ├── DevtoolsDialog.test.tsx.snap
 │       │   │       │   │   ├── ExportDialog.test.tsx.snap
 │       │   │       │   │   ├── FeedbackDialog.test.tsx.snap
+│       │   │       │   │   ├── IntegrationsDisabledDialog.test.tsx.snap
 │       │   │       │   │   ├── InviteProgressBody.test.tsx.snap
 │       │   │       │   │   ├── LogoutDialog.test.tsx.snap
 │       │   │       │   │   ├── ManageRestrictedJoinRuleDialog.test.tsx.snap
 │       │   │       │   │   ├── ManualDeviceKeyVerificationDialog.test.tsx.snap
 │       │   │       │   │   ├── MessageEditHistoryDialog.test.tsx.snap
+│       │   │       │   │   ├── RemoveSectionDialog.test.tsx.snap
+│       │   │       │   │   ├── ReportRoomDialog.test.tsx.snap
 │       │   │       │   │   ├── RoomSettingsDialog.test.tsx.snap
 │       │   │       │   │   ├── ServerPickerDialog.test.tsx.snap
 │       │   │       │   │   ├── SessionRestoreErrorDialog.test.tsx.snap
@@ -2277,7 +2328,8 @@
 │       │   │       │   │   ├── UnpinAllDialog.test.tsx.snap
 │       │   │       │   │   ├── UploadConfirmDialog.test.tsx.snap
 │       │   │       │   │   ├── UserSettingsDialog.test.tsx.snap
-│       │   │       │   │   └── VerificationRequestDialog.test.tsx.snap
+│       │   │       │   │   ├── VerificationRequestDialog.test.tsx.snap
+│       │   │       │   │   └── WidgetOpenIDPermissionsDialog.test.tsx.snap
 │       │   │       │   ├── devtools
 │       │   │       │   │   ├── AccountData.tsx
 │       │   │       │   │   ├── BaseTool.tsx
@@ -2313,9 +2365,12 @@
 │       │   │       │   │   ├── AccessSecretStorageDialog.tsx
 │       │   │       │   │   ├── InitialCryptoSetupDialog.test.tsx
 │       │   │       │   │   ├── InitialCryptoSetupDialog.tsx
+│       │   │       │   │   ├── RestoreKeyBackupDialog.test.tsx
 │       │   │       │   │   ├── RestoreKeyBackupDialog.tsx
 │       │   │       │   │   ├── SetupEncryptionDialog.test.tsx
-│       │   │       │   │   └── SetupEncryptionDialog.tsx
+│       │   │       │   │   ├── SetupEncryptionDialog.tsx
+│       │   │       │   │   └── __snapshots__
+│       │   │       │   │       └── RestoreKeyBackupDialog.test.tsx.snap
 │       │   │       │   └── spotlight
 │       │   │       │       ├── Filter.ts
 │       │   │       │       ├── Option.tsx
@@ -2323,10 +2378,12 @@
 │       │   │       │       ├── PublicRoomResultDetails.tsx
 │       │   │       │       ├── RoomResultContextMenus.test.tsx
 │       │   │       │       ├── RoomResultContextMenus.tsx
+│       │   │       │       ├── SpotlightDialog.test.tsx
 │       │   │       │       ├── SpotlightDialog.tsx
 │       │   │       │       ├── TooltipOption.tsx
 │       │   │       │       └── __snapshots__
-│       │   │       │           └── PublicRoomResultDetails.test.tsx.snap
+│       │   │       │           ├── PublicRoomResultDetails.test.tsx.snap
+│       │   │       │           └── SpotlightDialog.test.tsx.snap
 │       │   │       ├── directory
 │       │   │       │   └── NetworkDropdown.tsx
 │       │   │       ├── elements
@@ -2384,6 +2441,7 @@
 │       │   │       │   ├── MiniAvatarUploader.test.tsx
 │       │   │       │   ├── MiniAvatarUploader.tsx
 │       │   │       │   ├── PersistedElement.tsx
+│       │   │       │   ├── PersistentApp.test.tsx
 │       │   │       │   ├── PersistentApp.tsx
 │       │   │       │   ├── Pill.test.tsx
 │       │   │       │   ├── Pill.tsx
@@ -2465,20 +2523,38 @@
 │       │   │       │   └── ReactionPicker.tsx
 │       │   │       ├── location
 │       │   │       │   ├── EnableLiveShare.tsx
+│       │   │       │   ├── LiveDurationDropdown.test.tsx
 │       │   │       │   ├── LiveDurationDropdown.tsx
 │       │   │       │   ├── LocationButton.tsx
+│       │   │       │   ├── LocationPicker.test.tsx
 │       │   │       │   ├── LocationPicker.tsx
+│       │   │       │   ├── LocationShareMenu.test.tsx
 │       │   │       │   ├── LocationShareMenu.tsx
+│       │   │       │   ├── LocationViewDialog.test.tsx
 │       │   │       │   ├── LocationViewDialog.tsx
+│       │   │       │   ├── Map.test.tsx
 │       │   │       │   ├── Map.tsx
+│       │   │       │   ├── MapError.test.tsx
 │       │   │       │   ├── MapError.tsx
 │       │   │       │   ├── MapFallback.tsx
+│       │   │       │   ├── Marker.test.tsx
 │       │   │       │   ├── Marker.tsx
 │       │   │       │   ├── ShareDialogButtons.tsx
 │       │   │       │   ├── ShareType.tsx
+│       │   │       │   ├── SmartMarker.test.tsx
 │       │   │       │   ├── SmartMarker.tsx
+│       │   │       │   ├── ZoomButtons.test.tsx
 │       │   │       │   ├── ZoomButtons.tsx
+│       │   │       │   ├── __snapshots__
+│       │   │       │   │   ├── LocationPicker.test.tsx.snap
+│       │   │       │   │   ├── LocationShareMenu.test.tsx.snap
+│       │   │       │   │   ├── LocationViewDialog.test.tsx.snap
+│       │   │       │   │   ├── MapError.test.tsx.snap
+│       │   │       │   │   ├── Marker.test.tsx.snap
+│       │   │       │   │   ├── SmartMarker.test.tsx.snap
+│       │   │       │   │   └── ZoomButtons.test.tsx.snap
 │       │   │       │   ├── index.tsx
+│       │   │       │   ├── shareLocation.test.ts
 │       │   │       │   └── shareLocation.ts
 │       │   │       ├── messages
 │       │   │       │   ├── CallEvent.test.tsx
@@ -2492,11 +2568,13 @@
 │       │   │       │   ├── LegacyCallEvent.tsx
 │       │   │       │   ├── MAudioBody.test.tsx
 │       │   │       │   ├── MAudioBody.tsx
+│       │   │       │   ├── MBeaconBody.test.tsx
 │       │   │       │   ├── MBeaconBody.tsx
 │       │   │       │   ├── MBodyFactory.test.tsx
 │       │   │       │   ├── MBodyFactory.tsx
 │       │   │       │   ├── MImageReplyBody.test.tsx
 │       │   │       │   ├── MImageReplyBody.tsx
+│       │   │       │   ├── MLocationBody.test.tsx
 │       │   │       │   ├── MLocationBody.tsx
 │       │   │       │   ├── MPollBody.test.tsx
 │       │   │       │   ├── MPollBody.tsx
@@ -2514,7 +2592,9 @@
 │       │   │       │   ├── TextualBodyFactory.test.tsx
 │       │   │       │   ├── TextualBodyFactory.tsx
 │       │   │       │   ├── __snapshots__
+│       │   │       │   │   ├── MBeaconBody.test.tsx.snap
 │       │   │       │   │   ├── MBodyFactory.test.tsx.snap
+│       │   │       │   │   ├── MLocationBody.test.tsx.snap
 │       │   │       │   │   ├── MPollBody.test.tsx.snap
 │       │   │       │   │   ├── RoomPredecessorTile.test.tsx.snap
 │       │   │       │   │   └── TextualBodyFactory.test.tsx.snap
@@ -2545,11 +2625,17 @@
 │       │   │       ├── right_panel
 │       │   │       │   ├── BaseCard.test.tsx
 │       │   │       │   ├── BaseCard.tsx
+│       │   │       │   ├── DocumentViewerCard.test.tsx
+│       │   │       │   ├── DocumentViewerCard.tsx
 │       │   │       │   ├── EmptyState.tsx
 │       │   │       │   ├── EncryptionInfo.tsx
 │       │   │       │   ├── EncryptionPanel.tsx
 │       │   │       │   ├── ExtensionsCard.test.tsx
 │       │   │       │   ├── ExtensionsCard.tsx
+│       │   │       │   ├── MarkdownViewer.test.tsx
+│       │   │       │   ├── MarkdownViewer.tsx
+│       │   │       │   ├── PdfViewer.test.tsx
+│       │   │       │   ├── PdfViewer.tsx
 │       │   │       │   ├── PinnedMessagesCard.test.tsx
 │       │   │       │   ├── PinnedMessagesCard.tsx
 │       │   │       │   ├── RoomSummaryCardView.test.tsx
@@ -2602,6 +2688,8 @@
 │       │   │       │   ├── E2EIcon.tsx
 │       │   │       │   ├── EditMessageComposer.test.tsx
 │       │   │       │   ├── EditMessageComposer.tsx
+│       │   │       │   ├── EditMessageComposerWrapper.test.tsx
+│       │   │       │   ├── EditMessageComposerWrapper.tsx
 │       │   │       │   ├── EmojiButton.tsx
 │       │   │       │   ├── EventTile
 │       │   │       │   │   ├── ActionBarAdapter.tsx
@@ -2625,6 +2713,8 @@
 │       │   │       │   ├── EventTile.tsx
 │       │   │       │   ├── HistoryTile.tsx
 │       │   │       │   ├── JumpToBottomButton.tsx
+│       │   │       │   ├── LegacyEventTileAdapter.test.tsx
+│       │   │       │   ├── LegacyEventTileAdapter.tsx
 │       │   │       │   ├── LiveContentSummary.tsx
 │       │   │       │   ├── MemberList
 │       │   │       │   │   ├── MemberListHeaderView.test.ts
@@ -2675,8 +2765,6 @@
 │       │   │       │   ├── ReadReceiptMarker.test.tsx
 │       │   │       │   ├── ReadReceiptMarker.tsx
 │       │   │       │   ├── ReplyPreview.tsx
-│       │   │       │   ├── ReplyTile.test.tsx
-│       │   │       │   ├── ReplyTile.tsx
 │       │   │       │   ├── RoomContextDetails.tsx
 │       │   │       │   ├── RoomHeader
 │       │   │       │   │   ├── CallGuestLinkButton.test.tsx
@@ -2812,6 +2900,7 @@
 │       │   │       │   ├── FontScalingPanel.tsx
 │       │   │       │   ├── ImageSizePanel.tsx
 │       │   │       │   ├── IntegrationManager.tsx
+│       │   │       │   ├── JoinRuleSettings.tchap.test.tsx
 │       │   │       │   ├── JoinRuleSettings.test.tsx
 │       │   │       │   ├── JoinRuleSettings.tsx
 │       │   │       │   ├── KeyboardShortcut.test.tsx
@@ -3047,8 +3136,6 @@
 │       │   │       │       ├── ThreadsActivityCentre.test.tsx
 │       │   │       │       ├── ThreadsActivityCentre.tsx
 │       │   │       │       ├── ThreadsActivityCentreButton.tsx
-│       │   │       │       ├── __snapshots__
-│       │   │       │       │   └── ThreadsActivityCentre.test.tsx.snap
 │       │   │       │       ├── index.ts
 │       │   │       │       ├── useUnreadThreadRooms.test.tsx
 │       │   │       │       └── useUnreadThreadRooms.ts
@@ -3056,13 +3143,10 @@
 │       │   │       │   └── InlineTermsAgreement.tsx
 │       │   │       ├── toasts
 │       │   │       │   ├── GenericExpiringToast.tsx
-│       │   │       │   ├── GenericToast.test.tsx
-│       │   │       │   ├── GenericToast.tsx
 │       │   │       │   ├── NonUrgentEchoFailureToast.tsx
 │       │   │       │   ├── VerificationRequestToast.test.tsx
 │       │   │       │   ├── VerificationRequestToast.tsx
 │       │   │       │   └── __snapshots__
-│       │   │       │       ├── GenericToast.test.tsx.snap
 │       │   │       │       └── VerificationRequestToast.test.tsx.snap
 │       │   │       ├── typography
 │       │   │       │   ├── Caption.test.tsx
@@ -3079,12 +3163,21 @@
 │       │   │       └── voip
 │       │   │           ├── AudioFeed.tsx
 │       │   │           ├── AudioFeedArrayForLegacyCall.tsx
+│       │   │           ├── CallAppTile.test.tsx
+│       │   │           ├── CallAppTile.tsx
 │       │   │           ├── CallDuration.tsx
 │       │   │           ├── CallView.test.tsx
 │       │   │           ├── CallView.tsx
 │       │   │           ├── DialPad.test.tsx
 │       │   │           ├── DialPad.tsx
 │       │   │           ├── DialPadModal.tsx
+│       │   │           ├── ElementCallAppTile.test.tsx
+│       │   │           ├── ElementCallAppTile.tsx
+│       │   │           ├── ElementCallComponent.css
+│       │   │           ├── ElementCallMock.test.tsx
+│       │   │           ├── ElementCallMock.tsx
+│       │   │           ├── ElementWebHostBridge.test.ts
+│       │   │           ├── ElementWebHostBridge.ts
 │       │   │           ├── LegacyCallView
 │       │   │           │   ├── LegacyCallViewButtons.test.tsx
 │       │   │           │   ├── LegacyCallViewButtons.tsx
@@ -3097,7 +3190,8 @@
 │       │   │           ├── LegacyCallViewForRoom.tsx
 │       │   │           ├── LegacyCallViewSidebar.tsx
 │       │   │           ├── VideoFeed.test.tsx
-│       │   │           └── VideoFeed.tsx
+│       │   │           ├── VideoFeed.tsx
+│       │   │           └── WrappedElementCallComponent.tsx
 │       │   ├── contexts
 │       │   │   ├── CurrentRightPanelPhaseContext.tsx
 │       │   │   ├── LocalDeviceVerificationStateContext.ts
@@ -3110,17 +3204,8 @@
 │       │   ├── createRoom.test.ts
 │       │   ├── createRoom.ts
 │       │   ├── customisations
-│       │   │   ├── Alias.ts
-│       │   │   ├── ChatExport.ts
-│       │   │   ├── ComponentVisibility.ts
-│       │   │   ├── Directory.ts
-│       │   │   ├── Lifecycle.ts
+│       │   │   ├── Media.test.ts
 │       │   │   ├── Media.ts
-│       │   │   ├── README.md -> ../../docs/customisations.md
-│       │   │   ├── RoomList.ts
-│       │   │   ├── UserIdentifier.ts
-│       │   │   ├── WidgetPermissions.ts
-│       │   │   ├── WidgetVariables.ts
 │       │   │   ├── helpers
 │       │   │   │   └── UIComponents.ts
 │       │   │   └── models
@@ -3152,6 +3237,7 @@
 │       │   │   │   ├── JoinRoomReadyPayload.ts
 │       │   │   │   ├── OnLoggedInPayload.ts
 │       │   │   │   ├── OpenAddExistingToSpaceDialogPayload.ts
+│       │   │   │   ├── OpenDocumentViewerPayload.ts
 │       │   │   │   ├── OpenForwardDialogPayload.ts
 │       │   │   │   ├── OpenInviteDialogPayload.ts
 │       │   │   │   ├── OpenReportEventDialogPayload.ts
@@ -3181,10 +3267,13 @@
 │       │   ├── editor
 │       │   │   ├── __mocks__
 │       │   │   │   └── index.ts
+│       │   │   ├── __snapshots__
+│       │   │   │   └── deserialize.test.ts.snap
 │       │   │   ├── autocomplete.ts
 │       │   │   ├── caret.test.ts
 │       │   │   ├── caret.ts
 │       │   │   ├── commands.tsx
+│       │   │   ├── deserialize.test.ts
 │       │   │   ├── deserialize.ts
 │       │   │   ├── diff.test.ts
 │       │   │   ├── diff.ts
@@ -3305,6 +3394,7 @@
 │       │   │   ├── useStateArray.ts
 │       │   │   ├── useStateCallback.ts
 │       │   │   ├── useStateToggle.ts
+│       │   │   ├── useTheme.test.ts
 │       │   │   ├── useTheme.ts
 │       │   │   ├── useThreepids.ts
 │       │   │   ├── useTimeout.ts
@@ -3380,6 +3470,7 @@
 │       │   │   ├── BaseEventIndexManager.ts
 │       │   │   ├── EventIndex.test.ts
 │       │   │   ├── EventIndex.ts
+│       │   │   ├── EventIndexPeg.test.ts
 │       │   │   └── EventIndexPeg.ts
 │       │   ├── integrations
 │       │   │   ├── IntegrationManagerInstance.ts
@@ -3417,41 +3508,50 @@
 │       │   │       ├── RoomMember.ts
 │       │   │       └── ThreePIDInvite.ts
 │       │   ├── modules
+│       │   │   ├── AccountDataApi.test.ts
 │       │   │   ├── AccountDataApi.ts
 │       │   │   ├── Api.ts
-│       │   │   ├── AppModule.ts
+│       │   │   ├── Auth.test.ts
 │       │   │   ├── Auth.ts
+│       │   │   ├── BuiltinsApi.test.tsx
 │       │   │   ├── BuiltinsApi.tsx
+│       │   │   ├── ClientApi.test.ts
 │       │   │   ├── ClientApi.ts
+│       │   │   ├── ClientCreationManagementApi.test.ts
 │       │   │   ├── ClientCreationManagementApi.ts
+│       │   │   ├── ComposerApi.test.ts
 │       │   │   ├── ComposerApi.ts
 │       │   │   ├── ConfigApi.ts
+│       │   │   ├── Dialog.test.tsx
 │       │   │   ├── Dialog.tsx
+│       │   │   ├── ExtrasApi.test.tsx
 │       │   │   ├── ExtrasApi.ts
-│       │   │   ├── ModuleComponents.tsx
-│       │   │   ├── ModuleFactory.ts
-│       │   │   ├── ModuleRunner.ts
+│       │   │   ├── Navigation.test.ts
 │       │   │   ├── Navigation.ts
 │       │   │   ├── Profile.ts
-│       │   │   ├── ProxiedModuleApi.ts
 │       │   │   ├── SettingsApi.test.ts
 │       │   │   ├── SettingsApi.ts
 │       │   │   ├── StorageHelperApi.test.ts
 │       │   │   ├── StorageHelperApi.ts
+│       │   │   ├── StoresApi.test.ts
 │       │   │   ├── StoresApi.ts
 │       │   │   ├── UrlPreviewApi.test.ts
 │       │   │   ├── UrlPreviewApi.ts
+│       │   │   ├── WidgetApi.test.ts
 │       │   │   ├── WidgetApi.ts
+│       │   │   ├── WidgetLifecycleApi.test.ts
 │       │   │   ├── WidgetLifecycleApi.ts
 │       │   │   ├── components
+│       │   │   │   ├── ModuleNotificationDecoration.test.tsx
 │       │   │   │   └── ModuleNotificationDecoration.tsx
 │       │   │   ├── customComponentApi.ts
+│       │   │   ├── customisationsApi.test.ts
 │       │   │   ├── customisationsApi.ts
 │       │   │   └── models
 │       │   │       ├── Event.test.ts
 │       │   │       ├── Event.ts
+│       │   │       ├── Room.test.ts
 │       │   │       └── Room.ts
-│       │   ├── modules.d.ts
 │       │   ├── modules.js
 │       │   ├── notifications
 │       │   │   ├── ContentRules.test.ts
@@ -3471,9 +3571,14 @@
 │       │   │   ├── submit-rageshake.test.ts
 │       │   │   └── submit-rageshake.ts
 │       │   ├── renderer
+│       │   │   ├── __snapshots__
+│       │   │   │   ├── link-tooltip.test.tsx.snap
+│       │   │   │   └── pill.test.tsx.snap
 │       │   │   ├── code-block.tsx
 │       │   │   ├── index.ts
+│       │   │   ├── link-tooltip.test.tsx
 │       │   │   ├── link-tooltip.tsx
+│       │   │   ├── pill.test.tsx
 │       │   │   ├── pill.tsx
 │       │   │   ├── spoiler.tsx
 │       │   │   └── utils.ts
@@ -3488,6 +3593,7 @@
 │       │   ├── sentry.test.ts
 │       │   ├── sentry.ts
 │       │   ├── serviceworker
+│       │   │   ├── index.test.ts
 │       │   │   └── index.ts
 │       │   ├── settings
 │       │   │   ├── SettingLevel.ts
@@ -3531,7 +3637,8 @@
 │       │   │   ├── enums
 │       │   │   │   ├── ImageSize.test.ts
 │       │   │   │   ├── ImageSize.ts
-│       │   │   │   └── Layout.ts
+│       │   │   │   ├── Layout.ts
+│       │   │   │   └── TokenizerMode.ts
 │       │   │   ├── handlers
 │       │   │   │   ├── AbstractLocalStorageSettingsHandler.ts
 │       │   │   │   ├── AccountSettingsHandler.test.ts
@@ -3784,8 +3891,7 @@
 │       │   │   │       ├── dialogs
 │       │   │   │       │   ├── ExpiredAccountDialog.tsx
 │       │   │   │       │   ├── TchapCreateRoomDialog.tsx
-│       │   │   │       │   ├── TchapRecoveryCodeSuccessDialog.tsx
-│       │   │   │       │   └── TchapRoomUpgradeWarningDialog.tsx
+│       │   │   │       │   └── TchapRecoveryCodeSuccessDialog.tsx
 │       │   │   │       ├── elements
 │       │   │   │       │   ├── BlockedIcon.tsx
 │       │   │   │       │   ├── ContentScanningStatus.tsx
@@ -3793,30 +3899,25 @@
 │       │   │   │       ├── messages
 │       │   │   │       │   ├── OriginalAudioBody.tsx
 │       │   │   │       │   ├── OriginalVideoBody.tsx
-│       │   │   │       │   ├── OriginalVoiceMessageBody.tsx
-│       │   │   │       │   └── TchapUnknownBody.tsx
+│       │   │   │       │   └── OriginalVoiceMessageBody.tsx
 │       │   │   │       ├── rooms
 │       │   │   │       │   ├── TchapExportMembersButton.tsx
 │       │   │   │       │   ├── TchapRoomLinkAccess.tsx
 │       │   │   │       │   └── TchapRoomTypeRoomHeader.tsx
 │       │   │   │       ├── settings
-│       │   │   │       │   ├── TchapJoinRuleSettings.tsx
 │       │   │   │       │   └── tabs
 │       │   │   │       │       └── user
 │       │   │   │       │           ├── TchapHelpUserSettingsTab.tsx
 │       │   │   │       │           ├── TchapMailSignature.tsx
 │       │   │   │       │           └── TchapRedListSettings.tsx
-│       │   │   │       ├── sso
-│       │   │   │       │   ├── EmailVerificationPage.tsx
-│       │   │   │       │   └── ProconnectButton.tsx
-│       │   │   │       └── verification
-│       │   │   │           └── TchapVerificationComplete.tsx
+│       │   │   │       └── sso
+│       │   │   │           ├── EmailVerificationPage.tsx
+│       │   │   │           └── ProconnectButton.tsx
 │       │   │   ├── content-scanner
 │       │   │   │   ├── ContentScanner.ts
 │       │   │   │   └── ContentScannerMediaHelper.ts
 │       │   │   ├── customisations
 │       │   │   │   ├── ContentScanningMedia.ts
-│       │   │   │   ├── TchapComponentVisibility.ts
 │       │   │   │   └── components
 │       │   │   │       └── views
 │       │   │   │           └── messages
@@ -3825,6 +3926,7 @@
 │       │   │   │               ├── ContentScanningFileBodyView.tsx
 │       │   │   │               ├── ContentScanningImageBodyView.tsx
 │       │   │   │               ├── ContentScanningImageReplyBody.tsx
+│       │   │   │               ├── ContentScanningPreviewFileBodyView.tsx
 │       │   │   │               ├── ContentScanningVideoBody.tsx
 │       │   │   │               ├── ContentScanningVideoBodyView.tsx
 │       │   │   │               └── ContentScanningVoiceMessageBody.tsx
@@ -3850,13 +3952,42 @@
 │       │   │       ├── TchapUtils.ts
 │       │   │       └── TchapVersionManagement.ts
 │       │   ├── test
-│       │   │   ├── intlDateTimeFormatMock.ts
+│       │   │   ├── css-module-class-serializer.test.ts
+│       │   │   ├── css-module-class-serializer.ts
+│       │   │   ├── mocks.ts
 │       │   │   ├── react-use-id-serializer.ts
 │       │   │   ├── scripts
 │       │   │   │   └── generate-megolm-test-vectors.py
 │       │   │   ├── setupGlobals.ts
+│       │   │   ├── setupJsdomPolyfills.ts
 │       │   │   ├── setupLanguage.ts
-│       │   │   └── setupTests.ts
+│       │   │   ├── setupTests.ts
+│       │   │   └── test-utils
+│       │   │       ├── @types
+│       │   │       │   └── common.ts
+│       │   │       ├── TestSDKContext.ts
+│       │   │       ├── audio.ts
+│       │   │       ├── auth.ts
+│       │   │       ├── beacon.ts
+│       │   │       ├── call.ts
+│       │   │       ├── client.ts
+│       │   │       ├── console.ts
+│       │   │       ├── date.ts
+│       │   │       ├── events.ts
+│       │   │       ├── index.ts
+│       │   │       ├── location.ts
+│       │   │       ├── platform.ts
+│       │   │       ├── poll.ts
+│       │   │       ├── predictableRandom.ts
+│       │   │       ├── pushRules.ts
+│       │   │       ├── qrcode.ts
+│       │   │       ├── room.ts
+│       │   │       ├── test-utils.ts
+│       │   │       ├── threads.ts
+│       │   │       ├── utilities.ts
+│       │   │       ├── vitest-matrix-react.tsx
+│       │   │       └── wrappers.tsx
+│       │   ├── theme.test.ts
 │       │   ├── theme.ts
 │       │   ├── toasts
 │       │   │   ├── AnalyticsToast.tsx
@@ -3879,7 +4010,17 @@
 │       │   │       └── UnverifiedSessionToast.test.tsx.snap
 │       │   ├── usercontent
 │       │   │   ├── index.html
-│       │   │   └── index.ts
+│       │   │   ├── index.ts
+│       │   │   └── pdf
+│       │   │       ├── index.html
+│       │   │       ├── index.pcss
+│       │   │       ├── index.ts
+│       │   │       ├── linkService.test.ts
+│       │   │       ├── linkService.ts
+│       │   │       ├── pdfUsercontent.test.ts
+│       │   │       ├── pdfUsercontent.ts
+│       │   │       ├── protocol.test.ts
+│       │   │       └── protocol.ts
 │       │   ├── utils
 │       │   │   ├── AnimationUtils.test.ts
 │       │   │   ├── AnimationUtils.ts
@@ -3942,6 +4083,7 @@
 │       │   │   ├── RoomUpgrade.ts
 │       │   │   ├── SearchInput.test.ts
 │       │   │   ├── SearchInput.ts
+│       │   │   ├── SessionLock.test.ts
 │       │   │   ├── SessionLock.ts
 │       │   │   ├── ShieldUtils.test.ts
 │       │   │   ├── ShieldUtils.ts
@@ -4029,6 +4171,8 @@
 │       │   │   │   ├── findDMRoom.test.ts
 │       │   │   │   ├── findDMRoom.ts
 │       │   │   │   └── startDm.ts
+│       │   │   ├── documentViewer.test.ts
+│       │   │   ├── documentViewer.ts
 │       │   │   ├── event
 │       │   │   │   └── getSenderName.ts
 │       │   │   ├── exportUtils
@@ -4077,6 +4221,7 @@
 │       │   │   │   ├── links.ts
 │       │   │   │   ├── locationEventGeoUri.test.ts
 │       │   │   │   ├── locationEventGeoUri.ts
+│       │   │   │   ├── map.test.ts
 │       │   │   │   ├── map.ts
 │       │   │   │   ├── parseGeoUri.test.ts
 │       │   │   │   ├── parseGeoUri.ts
@@ -4085,6 +4230,8 @@
 │       │   │   │   └── useMap.ts
 │       │   │   ├── maps.test.ts
 │       │   │   ├── maps.ts
+│       │   │   ├── markdownViewer.test.ts
+│       │   │   ├── markdownViewer.ts
 │       │   │   ├── media
 │       │   │   │   ├── mediaVisibility.ts
 │       │   │   │   ├── requestMediaPermissions.test.ts
@@ -4109,6 +4256,10 @@
 │       │   │   ├── objects.test.ts
 │       │   │   ├── objects.ts
 │       │   │   ├── pages.ts
+│       │   │   ├── pdfViewer.test.ts
+│       │   │   ├── pdfViewer.ts
+│       │   │   ├── pdfViewerState.test.ts
+│       │   │   ├── pdfViewerState.ts
 │       │   │   ├── permalinks
 │       │   │   │   ├── ElementPermalinkConstructor.ts
 │       │   │   │   ├── MatrixSchemePermalinkConstructor.test.ts
@@ -4123,9 +4274,12 @@
 │       │   │   ├── promise.test.ts
 │       │   │   ├── promise.ts
 │       │   │   ├── pushRules
+│       │   │   │   ├── monitorSyncedPushRules.test.ts
 │       │   │   │   ├── monitorSyncedPushRules.ts
 │       │   │   │   └── updatePushRuleActions.ts
 │       │   │   ├── read-receipts.ts
+│       │   │   ├── renderMarkdown.test.ts
+│       │   │   ├── renderMarkdown.ts
 │       │   │   ├── room
 │       │   │   │   ├── canInviteTo.test.ts
 │       │   │   │   ├── canInviteTo.ts
@@ -4157,7 +4311,9 @@
 │       │   │   ├── threepids.test.ts
 │       │   │   ├── threepids.ts
 │       │   │   ├── tokens
+│       │   │   │   ├── pickling.test.ts
 │       │   │   │   ├── pickling.ts
+│       │   │   │   ├── tokens.test.ts
 │       │   │   │   └── tokens.ts
 │       │   │   ├── units.ts
 │       │   │   ├── userStatus.test.ts
@@ -4201,6 +4357,7 @@
 │       │   │   │   ├── IPCManager.ts
 │       │   │   │   ├── PWAPlatform.test.ts
 │       │   │   │   ├── PWAPlatform.ts
+│       │   │   │   ├── SeshatIndexManager.test.ts
 │       │   │   │   ├── SeshatIndexManager.ts
 │       │   │   │   ├── WebPlatform.test.ts
 │       │   │   │   ├── WebPlatform.ts
@@ -4218,8 +4375,7 @@
 │       │   │   │   ├── incompatible-browser.html
 │       │   │   │   └── unable-to-load.html
 │       │   │   ├── url_utils.test.ts
-│       │   │   ├── url_utils.ts
-│       │   │   └── wrapper.test.tsx
+│       │   │   └── url_utils.ts
 │       │   ├── verification.test.ts
 │       │   ├── verification.ts
 │       │   ├── viewmodels
@@ -4244,6 +4400,9 @@
 │       │   │   │   ├── FileBodyViewModel.ts
 │       │   │   │   ├── ImageBodyViewModel.test.ts
 │       │   │   │   ├── ImageBodyViewModel.ts
+│       │   │   │   ├── MBodyTileViewModel.tsx
+│       │   │   │   ├── MediaPreviewGroupViewModel.test.ts
+│       │   │   │   ├── MediaPreviewGroupViewModel.ts
 │       │   │   │   ├── RedactedBodyViewModel.test.ts
 │       │   │   │   ├── RedactedBodyViewModel.ts
 │       │   │   │   ├── TileErrorViewModel.test.ts
@@ -4255,6 +4414,7 @@
 │       │   │   │   └── __snapshots__
 │       │   │   │       └── UrlPreviewGroupViewModel.test.ts.snap
 │       │   │   ├── room
+│       │   │   │   ├── ElementCallAppTileViewModel.tsx
 │       │   │   │   ├── EventTileActionBarViewModel.test.ts
 │       │   │   │   ├── EventTileActionBarViewModel.ts
 │       │   │   │   ├── RoomStatusBar.test.ts
@@ -4314,6 +4474,8 @@
 │       │   │   │           ├── MJitsiWidgetEventViewModel.ts
 │       │   │   │           ├── MKeyVerificationRequestViewModel.test.tsx
 │       │   │   │           ├── MKeyVerificationRequestViewModel.ts
+│       │   │   │           ├── ReplyTileViewModel.test.tsx
+│       │   │   │           ├── ReplyTileViewModel.ts
 │       │   │   │           ├── RoomAvatarEventViewModel.test.ts
 │       │   │   │           ├── RoomAvatarEventViewModel.ts
 │       │   │   │           ├── TextualEventViewModel.test.ts
@@ -4330,7 +4492,7 @@
 │       │   │   │           │   ├── MjolnirBodyViewModel.test.ts
 │       │   │   │           │   ├── MjolnirBodyViewModel.ts
 │       │   │   │           │   ├── TextualBodyViewModel.test.ts
-│       │   │   │           │   ├── TextualBodyViewModel.tsx
+│       │   │   │           │   ├── TextualBodyViewModel.ts
 │       │   │   │           │   ├── ViewSourceEventViewModel.test.ts
 │       │   │   │           │   └── ViewSourceEventViewModel.ts
 │       │   │   │           ├── call
@@ -4371,6 +4533,9 @@
 │       │   │   ├── room-list
 │       │   │   │   ├── CreateSectionDialogViewModel.test.ts
 │       │   │   │   ├── CreateSectionDialogViewModel.tsx
+│       │   │   │   ├── PreviewRoomAvatarData.ts
+│       │   │   │   ├── PreviewRoomListItemViewModel.test.ts
+│       │   │   │   ├── PreviewRoomListItemViewModel.ts
 │       │   │   │   ├── RoomListHeaderViewModel.test.ts
 │       │   │   │   ├── RoomListHeaderViewModel.ts
 │       │   │   │   ├── RoomListItemViewModel.test.ts
@@ -4388,21 +4553,23 @@
 │       │   │   │   ├── SetStatusViewModel.ts
 │       │   │   │   ├── UserStatusIconViewModel.test.ts
 │       │   │   │   └── UserStatusIconViewModel.ts
-│       │   │   └── structures
-│       │   │       ├── ResizerViewModel.test.ts
-│       │   │       ├── ResizerViewModel.ts
-│       │   │       └── auto-collapse
-│       │   │           ├── AutoCollapse.test.ts
-│       │   │           ├── AutoCollapse.ts
-│       │   │           ├── CollapseHandler.test.ts
-│       │   │           ├── CollapseHandler.ts
-│       │   │           └── behaviours
-│       │   │               ├── BaseCollapseBehaviour.ts
-│       │   │               ├── CollapseOnCallResizeBehaviour.test.ts
-│       │   │               ├── CollapseOnCallResizeBehaviour.ts
-│       │   │               ├── CollapseOnWindowResizeBehaviour.test.ts
-│       │   │               ├── CollapseOnWindowResizeBehaviour.ts
-│       │   │               └── behaviours.ts
+│       │   │   ├── structures
+│       │   │   │   ├── ResizerViewModel.test.ts
+│       │   │   │   ├── ResizerViewModel.ts
+│       │   │   │   └── auto-collapse
+│       │   │   │       ├── AutoCollapse.test.ts
+│       │   │   │       ├── AutoCollapse.ts
+│       │   │   │       ├── CollapseHandler.test.ts
+│       │   │   │       ├── CollapseHandler.ts
+│       │   │   │       └── behaviours
+│       │   │   │           ├── BaseCollapseBehaviour.ts
+│       │   │   │           ├── CollapseOnCallResizeBehaviour.test.ts
+│       │   │   │           ├── CollapseOnCallResizeBehaviour.ts
+│       │   │   │           ├── CollapseOnWindowResizeBehaviour.test.ts
+│       │   │   │           ├── CollapseOnWindowResizeBehaviour.ts
+│       │   │   │           └── behaviours.ts
+│       │   │   └── voip
+│       │   │       └── ElementCallMockViewModel.ts
 │       │   ├── widgets
 │       │   │   ├── CapabilityText.tsx
 │       │   │   ├── Jitsi.ts
@@ -4418,123 +4585,7 @@
 │       │       ├── playbackWorkerFactory.ts
 │       │       └── worker.ts
 │       ├── test
-│       │   ├── @types
-│       │   │   └── common.ts
-│       │   ├── globalSetup.ts
-│       │   ├── jest-mocks.ts
-│       │   ├── setup
-│       │   │   ├── adapter.ts
-│       │   │   ├── mocks.ts
-│       │   │   ├── setupConfig.ts
-│       │   │   ├── setupLanguage.ts
-│       │   │   └── setupManualMocks.ts
-│       │   ├── setupTests.ts
-│       │   ├── slowReporter.cjs
-│       │   ├── test-utils
-│       │   │   ├── audio.ts
-│       │   │   ├── auth.ts
-│       │   │   ├── beacon.ts
-│       │   │   ├── call.ts
-│       │   │   ├── client.ts
-│       │   │   ├── console.ts
-│       │   │   ├── date.ts
-│       │   │   ├── events.ts
-│       │   │   ├── index.ts
-│       │   │   ├── jest-matrix-react.tsx
-│       │   │   ├── location.ts
-│       │   │   ├── platform.ts
-│       │   │   ├── poll.ts
-│       │   │   ├── predictableRandom.ts
-│       │   │   ├── pushRules.ts
-│       │   │   ├── qrcode.ts
-│       │   │   ├── relations.ts
-│       │   │   ├── room.ts
-│       │   │   ├── test-utils.ts
-│       │   │   ├── threads.ts
-│       │   │   ├── utilities.ts
-│       │   │   ├── vitest-matrix-react.ts
-│       │   │   └── wrappers.tsx
 │       │   └── unit-tests
-│       │       ├── Notifier-test.ts
-│       │       ├── README.md
-│       │       ├── TestSDKContext.ts
-│       │       ├── __snapshots__
-│       │       │   └── theme-test.ts.snap
-│       │       ├── components
-│       │       │   └── views
-│       │       │       ├── beacon
-│       │       │       │   ├── BeaconListItem-test.tsx
-│       │       │       │   ├── BeaconMarker-test.tsx
-│       │       │       │   ├── BeaconStatus-test.tsx
-│       │       │       │   ├── BeaconViewDialog-test.tsx
-│       │       │       │   ├── DialogSidebar-test.tsx
-│       │       │       │   ├── LeftPanelLiveShareWarning-test.tsx
-│       │       │       │   ├── OwnBeaconStatus-test.tsx
-│       │       │       │   ├── ShareLatestLocation-test.tsx
-│       │       │       │   ├── StyledLiveBeaconIcon-test.tsx
-│       │       │       │   └── __snapshots__
-│       │       │       │       ├── BeaconListItem-test.tsx.snap
-│       │       │       │       ├── BeaconMarker-test.tsx.snap
-│       │       │       │       ├── BeaconStatus-test.tsx.snap
-│       │       │       │       ├── BeaconViewDialog-test.tsx.snap
-│       │       │       │       ├── DialogSidebar-test.tsx.snap
-│       │       │       │       ├── LeftPanelLiveShareWarning-test.tsx.snap
-│       │       │       │       ├── OwnBeaconStatus-test.tsx.snap
-│       │       │       │       ├── ShareLatestLocation-test.tsx.snap
-│       │       │       │       └── StyledLiveBeaconIcon-test.tsx.snap
-│       │       │       ├── dialogs
-│       │       │       │   ├── ForwardDialog-test.tsx
-│       │       │       │   ├── IntegrationsDisabledDialog-test.tsx
-│       │       │       │   ├── RemoveSectionDialog-test.tsx
-│       │       │       │   ├── ReportRoomDialog-test.tsx
-│       │       │       │   ├── SpotlightDialog-test.tsx
-│       │       │       │   ├── WidgetOpenIDPermissionsDialog-test.tsx
-│       │       │       │   ├── __snapshots__
-│       │       │       │   │   ├── IntegrationsDisabledDialog-test.tsx.snap
-│       │       │       │   │   ├── RemoveSectionDialog-test.tsx.snap
-│       │       │       │   │   ├── ReportRoomDialog-test.tsx.snap
-│       │       │       │   │   ├── SpotlightDialog-test.tsx.snap
-│       │       │       │   │   └── WidgetOpenIDPermissionsDialog-test.tsx.snap
-│       │       │       │   └── security
-│       │       │       │       ├── RestoreKeyBackupDialog-test.tsx
-│       │       │       │       └── __snapshots__
-│       │       │       │           └── RestoreKeyBackupDialog-test.tsx.snap
-│       │       │       ├── location
-│       │       │       │   ├── LiveDurationDropdown-test.tsx
-│       │       │       │   ├── LocationPicker-test.tsx
-│       │       │       │   ├── LocationShareMenu-test.tsx
-│       │       │       │   ├── LocationViewDialog-test.tsx
-│       │       │       │   ├── Map-test.tsx
-│       │       │       │   ├── MapError-test.tsx
-│       │       │       │   ├── Marker-test.tsx
-│       │       │       │   ├── SmartMarker-test.tsx
-│       │       │       │   ├── ZoomButtons-test.tsx
-│       │       │       │   ├── __snapshots__
-│       │       │       │   │   ├── LocationPicker-test.tsx.snap
-│       │       │       │   │   ├── LocationShareMenu-test.tsx.snap
-│       │       │       │   │   ├── LocationViewDialog-test.tsx.snap
-│       │       │       │   │   ├── MapError-test.tsx.snap
-│       │       │       │   │   ├── Marker-test.tsx.snap
-│       │       │       │   │   ├── SmartMarker-test.tsx.snap
-│       │       │       │   │   └── ZoomButtons-test.tsx.snap
-│       │       │       │   └── shareLocation-test.ts
-│       │       │       ├── messages
-│       │       │       │   ├── MBeaconBody-test.tsx
-│       │       │       │   ├── MLocationBody-test.tsx
-│       │       │       │   └── __snapshots__
-│       │       │       │       ├── MBeaconBody-test.tsx.snap
-│       │       │       │       └── MLocationBody-test.tsx.snap
-│       │       │       └── spaces
-│       │       │           ├── AddExistingToSpaceDialog-test.tsx
-│       │       │           └── __snapshots__
-│       │       │               └── AddExistingToSpaceDialog-test.tsx.snap
-│       │       ├── customisations
-│       │       │   └── Media-test.ts
-│       │       ├── editor
-│       │       │   ├── __snapshots__
-│       │       │   │   └── deserialize-test.ts.snap
-│       │       │   ├── deserialize-test.ts
-│       │       │   └── mock.ts
 │       │       ├── i18n
 │       │       │   └── languages.json
 │       │       ├── images
@@ -4545,119 +4596,82 @@
 │       │       │   ├── static-logo.gif
 │       │       │   ├── static-logo.png
 │       │       │   └── static-logo.webp
-│       │       ├── modules
-│       │       │   ├── AccountDataApi-test.ts
-│       │       │   ├── AppModule-test.ts
-│       │       │   ├── Auth-test.ts
-│       │       │   ├── BuiltinsApi-test.tsx
-│       │       │   ├── ClientApi-test.ts
-│       │       │   ├── ClientCreationManagementApi-test.ts
-│       │       │   ├── ComposerApi-test.ts
-│       │       │   ├── CustomisationsApi-test.ts
-│       │       │   ├── Dialog-test.tsx
-│       │       │   ├── ExtrasApi-test.tsx
-│       │       │   ├── MockModule.ts
-│       │       │   ├── ModuleComponents-test.tsx
-│       │       │   ├── ModuleRunner-test.ts
-│       │       │   ├── Navigation-test.ts
-│       │       │   ├── ProxiedModuleApi-test.tsx
-│       │       │   ├── StoresApi-test.ts
-│       │       │   ├── WidgetApi-test.ts
-│       │       │   ├── WidgetLifecycleApi-test.ts
-│       │       │   ├── __snapshots__
-│       │       │   │   └── ModuleComponents-test.tsx.snap
-│       │       │   ├── components
-│       │       │   │   └── ModuleNotificationDecoration-test.tsx
-│       │       │   └── models
-│       │       │       └── Room-test.ts
-│       │       ├── renderer
-│       │       │   ├── __snapshots__
-│       │       │   │   ├── link-tooltip-test.tsx.snap
-│       │       │   │   └── pill-test.tsx.snap
-│       │       │   ├── link-tooltip-test.tsx
-│       │       │   └── pill-test.tsx
-│       │       ├── tchap
-│       │       │   ├── Unread-test.ts
-│       │       │   ├── components
-│       │       │   │   ├── structures
-│       │       │   │   │   ├── UserMenu-test.tsx
-│       │       │   │   │   └── __snapshots__
-│       │       │   │   │       └── UserMenu-test.tsx.snap
-│       │       │   │   └── views
-│       │       │   │       ├── context_menus
-│       │       │   │       │   ├── RoomGeneralContextMenu-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       └── RoomGeneralContextMenu-test.tsx.snap
-│       │       │   │       ├── dialogs
-│       │       │   │       │   ├── BugReportDialog-test.tsx
-│       │       │   │       │   ├── CreateSecretStoragedialog-test.tsx
-│       │       │   │       │   ├── ExpiredAccountDialog-test.tsx
-│       │       │   │       │   ├── InviteDialog-test.tsx
-│       │       │   │       │   ├── TchapCreateRoomDialog-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       ├── BugReportDialog-test.tsx.snap
-│       │       │   │       │       ├── CreateSecretStoragedialog-test.tsx.snap
-│       │       │   │       │       └── InviteDialog-test.tsx.snap
-│       │       │   │       ├── elements
-│       │       │   │       │   ├── SearchWarning-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       └── SearchWarning-test.tsx.snap
-│       │       │   │       ├── messages
-│       │       │   │       │   ├── LegacyCallEvent-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       └── LegacyCallEvent-test.tsx.snap
-│       │       │   │       ├── right_panel
-│       │       │   │       │   ├── RoomSummaryCard-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       └── RoomSummaryCard-test.tsx.snap
-│       │       │   │       ├── rooms
-│       │       │   │       │   ├── RoomSearchAuxPanel-test.tsx
-│       │       │   │       │   ├── TchapRoomLinkAccess-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       └── TchapRoomLinkAccess-test.tsx.snap
-│       │       │   │       ├── settings
-│       │       │   │       │   ├── AccountUserSettingsTab-test.tsx
-│       │       │   │       │   ├── ChangeRecoveryKey-test.tsx
-│       │       │   │       │   ├── Notifications-test.tsx
-│       │       │   │       │   ├── PowerLevelSelector-test.tsx
-│       │       │   │       │   ├── SessionManagerTab-test.tsx
-│       │       │   │       │   ├── TchapJoinRuleSettings-test.tsx
-│       │       │   │       │   ├── TchapMailSignature-test.tsx
-│       │       │   │       │   ├── TchapRedListSettings-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       ├── AccountUserSettingsTab-test.tsx.snap
-│       │       │   │       │       ├── ChangeRecoveryKey-test.tsx.snap
-│       │       │   │       │       ├── PowerLevelSelector-test.tsx.snap
-│       │       │   │       │       ├── SessionManagerTab-test.tsx.snap
-│       │       │   │       │       └── TchapMailSignature-test.tsx.snap
-│       │       │   │       ├── spaces
-│       │       │   │       │   ├── SpacePanel-test.tsx
-│       │       │   │       │   └── __snapshots__
-│       │       │   │       │       └── SpacePanel-test.tsx.snap
-│       │       │   │       ├── sso
-│       │       │   │       │   └── EmailVerificationPage-test.tsx
-│       │       │   │       └── voip
-│       │       │   │           └── LegacyCallView-test.tsx
-│       │       │   ├── createRoom-test.ts
-│       │       │   ├── lib
-│       │       │   │   ├── ExpiredAccountHandler-test.ts
-│       │       │   │   ├── ExternalAccountHandler-test.ts
-│       │       │   │   └── createTchapRoom-test.ts
-│       │       │   ├── rageshake
-│       │       │   │   └── submit-rageshake-test.ts
-│       │       │   └── util
-│       │       │       ├── TchapRoomHook-test.ts
-│       │       │       ├── TchapRoomUtils-test.ts
-│       │       │       ├── TchapToPermalinkConstructor-test.ts
-│       │       │       ├── TchapUIFeature-test.ts
-│       │       │       └── TchapUtils-test.ts
-│       │       ├── theme-test.ts
-│       │       └── utils
-│       │           └── SessionLock-test.ts
+│       │       └── tchap
+│       │           ├── Unread-test.ts
+│       │           ├── components
+│       │           │   ├── structures
+│       │           │   │   ├── UserMenu-test.tsx
+│       │           │   │   └── __snapshots__
+│       │           │   │       └── UserMenu-test.tsx.snap
+│       │           │   └── views
+│       │           │       ├── context_menus
+│       │           │       │   ├── RoomGeneralContextMenu-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       └── RoomGeneralContextMenu-test.tsx.snap
+│       │           │       ├── dialogs
+│       │           │       │   ├── BugReportDialog-test.tsx
+│       │           │       │   ├── CreateSecretStoragedialog-test.tsx
+│       │           │       │   ├── ExpiredAccountDialog-test.tsx
+│       │           │       │   ├── InviteDialog-test.tsx
+│       │           │       │   ├── TchapCreateRoomDialog-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       ├── BugReportDialog-test.tsx.snap
+│       │           │       │       ├── CreateSecretStoragedialog-test.tsx.snap
+│       │           │       │       └── InviteDialog-test.tsx.snap
+│       │           │       ├── elements
+│       │           │       │   ├── SearchWarning-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       └── SearchWarning-test.tsx.snap
+│       │           │       ├── messages
+│       │           │       │   ├── LegacyCallEvent-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       └── LegacyCallEvent-test.tsx.snap
+│       │           │       ├── right_panel
+│       │           │       │   ├── RoomSummaryCard-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       └── RoomSummaryCard-test.tsx.snap
+│       │           │       ├── rooms
+│       │           │       │   ├── RoomSearchAuxPanel-test.tsx
+│       │           │       │   ├── TchapRoomLinkAccess-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       └── TchapRoomLinkAccess-test.tsx.snap
+│       │           │       ├── settings
+│       │           │       │   ├── AccountUserSettingsTab-test.tsx
+│       │           │       │   ├── ChangeRecoveryKey-test.tsx
+│       │           │       │   ├── Notifications-test.tsx
+│       │           │       │   ├── PowerLevelSelector-test.tsx
+│       │           │       │   ├── SessionManagerTab-test.tsx
+│       │           │       │   ├── TchapMailSignature-test.tsx
+│       │           │       │   ├── TchapRedListSettings-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       ├── AccountUserSettingsTab-test.tsx.snap
+│       │           │       │       ├── ChangeRecoveryKey-test.tsx.snap
+│       │           │       │       ├── PowerLevelSelector-test.tsx.snap
+│       │           │       │       ├── SessionManagerTab-test.tsx.snap
+│       │           │       │       └── TchapMailSignature-test.tsx.snap
+│       │           │       ├── spaces
+│       │           │       │   ├── SpacePanel-test.tsx
+│       │           │       │   └── __snapshots__
+│       │           │       │       └── SpacePanel-test.tsx.snap
+│       │           │       ├── sso
+│       │           │       │   └── EmailVerificationPage-test.tsx
+│       │           │       └── voip
+│       │           │           └── LegacyCallView-test.tsx
+│       │           ├── createRoom-test.ts
+│       │           ├── lib
+│       │           │   ├── ExpiredAccountHandler-test.ts
+│       │           │   ├── ExternalAccountHandler-test.ts
+│       │           │   └── createTchapRoom-test.ts
+│       │           ├── rageshake
+│       │           │   └── submit-rageshake-test.ts
+│       │           └── util
+│       │               ├── TchapRoomHook-test.ts
+│       │               ├── TchapRoomUtils-test.ts
+│       │               ├── TchapToPermalinkConstructor-test.ts
+│       │               ├── TchapUIFeature-test.ts
+│       │               └── TchapUtils-test.ts
 │       ├── tsconfig.browser-test.json
 │       ├── tsconfig.json
-│       ├── tsconfig.module_system.json
-│       ├── vitest.browser.config.ts
 │       ├── vitest.config.ts
 │       ├── vitest.tchap.config.ts
 │       └── webpack.config.ts
@@ -4680,9 +4694,7 @@
 │   ├── ciderEditor.md
 │   ├── config.md
 │   ├── custom-home.md
-│   ├── customisations.md
 │   ├── debugging.md
-│   ├── deprecated-modules.md
 │   ├── e2ee.md
 │   ├── feature-flags.md
 │   ├── features
@@ -4782,6 +4794,7 @@
 │   │   │   ├── Menu.test.tsx
 │   │   │   ├── Menu.tsx
 │   │   │   ├── Univention
+│   │   │   │   ├── Menu.test.tsx
 │   │   │   │   ├── Menu.tsx
 │   │   │   │   ├── SilentLogin.tsx
 │   │   │   │   └── navigation.ts
@@ -4906,8 +4919,6 @@
 │   │   │   │   ├── i18n.ts
 │   │   │   │   ├── index.test.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── legacy-customisations.ts
-│   │   │   │   ├── legacy-modules.ts
 │   │   │   │   ├── navigation.ts
 │   │   │   │   ├── profile.ts
 │   │   │   │   ├── settings.ts
@@ -4917,7 +4928,8 @@
 │   │   │   │   ├── watchable.test.ts
 │   │   │   │   ├── watchable.ts
 │   │   │   │   ├── widget-lifecycle.ts
-│   │   │   │   └── widget.ts
+│   │   │   │   ├── widget.ts
+│   │   │   │   └── x509.ts
 │   │   │   ├── index.ts
 │   │   │   ├── loader.test.ts
 │   │   │   ├── loader.ts
@@ -4980,10 +4992,10 @@
 │   │   │   ├── languageAddon.tsx
 │   │   │   ├── main.ts
 │   │   │   ├── manager.js
+│   │   │   ├── prepareVideosForSnapshot.ts
 │   │   │   ├── preview.css
 │   │   │   ├── preview.tsx
 │   │   │   ├── vitest.setup.ts
-│   │   │   ├── waitForImages.ts
 │   │   │   └── withViewDocs.ts
 │   │   ├── README.md
 │   │   ├── __vis__
@@ -5053,6 +5065,14 @@
 │   │   │           │   │       └── RichList.stories.tsx
 │   │   │           │   │           ├── default-auto.png
 │   │   │           │   │           └── empty-auto.png
+│   │   │           │   ├── toast
+│   │   │           │   │   └── GenericToast.stories.tsx
+│   │   │           │   │       ├── default-auto.png
+│   │   │           │   │       ├── destructive-auto.png
+│   │   │           │   │       ├── primary-only-auto.png
+│   │   │           │   │       ├── with-detail-auto.png
+│   │   │           │   │       ├── with-icons-auto.png
+│   │   │           │   │       └── with-link-auto.png
 │   │   │           │   └── utils
 │   │   │           │       └── LinkedText
 │   │   │           │           └── LinkedText.stories.tsx
@@ -5107,6 +5127,12 @@
 │   │   │           │           ├── keyboard-focused-1.png
 │   │   │           │           └── left-panel-expanded-auto.png
 │   │   │           ├── room
+│   │   │           │   ├── ElementCallMockView
+│   │   │           │   │   └── ElementCallMockView.stories.tsx
+│   │   │           │   │       ├── in-call-auto.png
+│   │   │           │   │       ├── lobby-auto.png
+│   │   │           │   │       ├── unknown-room-auto.png
+│   │   │           │   │       └── without-close-auto.png
 │   │   │           │   ├── HistoryVisibilityBadge
 │   │   │           │   │   └── HistoryVisibilityBadge.stories.tsx
 │   │   │           │   │       ├── invited-history-visibility-auto.png
@@ -5161,6 +5187,22 @@
 │   │   │           │   │           ├── default-auto.png
 │   │   │           │   │           └── with-open-auto.png
 │   │   │           │   ├── right-panel
+│   │   │           │   │   ├── DocumentViewerView
+│   │   │           │   │   │   └── DocumentViewerView.stories.tsx
+│   │   │           │   │   │       ├── error-state-auto.png
+│   │   │           │   │   │       ├── loading-auto.png
+│   │   │           │   │   │       ├── ready-auto.png
+│   │   │           │   │   │       └── with-toolbar-auto.png
+│   │   │           │   │   ├── MarkdownViewerView
+│   │   │           │   │   │   └── MarkdownViewerView.stories.tsx
+│   │   │           │   │   │       ├── error-state-auto.png
+│   │   │           │   │   │       ├── loading-auto.png
+│   │   │           │   │   │       └── ready-auto.png
+│   │   │           │   │   ├── PdfViewerView
+│   │   │           │   │   │   └── PdfViewerView.stories.tsx
+│   │   │           │   │   │       ├── error-state-auto.png
+│   │   │           │   │   │       ├── loading-auto.png
+│   │   │           │   │   │       └── ready-auto.png
 │   │   │           │   │   └── WidgetContextMenuView
 │   │   │           │   │       └── WidgetContextMenuView.stories.tsx
 │   │   │           │   │           ├── default-auto.png
@@ -5177,7 +5219,8 @@
 │   │   │           │       │   └── ReadMarker.stories.tsx
 │   │   │           │       │       ├── current-auto.png
 │   │   │           │       │       ├── ghost-auto.png
-│   │   │           │       │       └── hidden-current-auto.png
+│   │   │           │       │       ├── hidden-current-auto.png
+│   │   │           │       │       └── labelled-auto.png
 │   │   │           │       ├── TimelineSeparator
 │   │   │           │       │   └── TimelineSeparator.stories.tsx
 │   │   │           │       │       ├── default-auto.png
@@ -5256,6 +5299,7 @@
 │   │   │           │           │   │   ├── informational---group---default-auto.png
 │   │   │           │           │   │   ├── informational---irc---default-auto.png
 │   │   │           │           │   │   ├── left-aligned-bubble---bubble---default-auto.png
+│   │   │           │           │   │   ├── left-aligned-bubble-call-tile---bubble---default-auto.png
 │   │   │           │           │   │   ├── media---bubble---default-auto.png
 │   │   │           │           │   │   ├── media---group---default-auto.png
 │   │   │           │           │   │   ├── media---irc---default-auto.png
@@ -5277,6 +5321,7 @@
 │   │   │           │           │   │   ├── room---group---default-auto.png
 │   │   │           │           │   │   ├── room---irc---default-auto.png
 │   │   │           │           │   │   ├── search---group-auto.png
+│   │   │           │           │   │   ├── thread---bubble---selected-auto.png
 │   │   │           │           │   │   ├── thread---group-auto.png
 │   │   │           │           │   │   └── threads-list---group-auto.png
 │   │   │           │           │   ├── MJitsiWidgetEventView
@@ -5294,6 +5339,13 @@
 │   │   │           │           │   ├── PinnedMessageBadge
 │   │   │           │           │   │   └── PinnedMessageBadge.stories.tsx
 │   │   │           │           │   │       └── default-auto.png
+│   │   │           │           │   ├── ReplyTileView
+│   │   │           │           │   │   └── ReplyTileView.stories.tsx
+│   │   │           │           │   │       ├── default-auto.png
+│   │   │           │           │   │       ├── informational-auto.png
+│   │   │           │           │   │       ├── inline-auto.png
+│   │   │           │           │   │       ├── long-edited-reply-auto.png
+│   │   │           │           │   │       └── without-sender-auto.png
 │   │   │           │           │   ├── RoomAvatarEventView
 │   │   │           │           │   │   └── RoomAvatarEventView.stories.tsx
 │   │   │           │           │   │       ├── changed-auto.png
@@ -5314,28 +5366,43 @@
 │   │   │           │           │           ├── bubble-layout-auto.png
 │   │   │           │           │           ├── default-auto.png
 │   │   │           │           │           └── without-actions-auto.png
-│   │   │           │           ├── UrlPreviewGroupView
-│   │   │           │           │   ├── LinkPreview
-│   │   │           │           │   │   └── LinkPreview.stories.tsx
-│   │   │           │           │   │       ├── article-auto.png
-│   │   │           │           │   │       ├── default-auto.png
-│   │   │           │           │   │       ├── social-auto.png
-│   │   │           │           │   │       ├── social-with-image-auto.png
-│   │   │           │           │   │       ├── title-and-description-auto.png
-│   │   │           │           │   │       ├── title-auto.png
-│   │   │           │           │   │       ├── video-auto.png
-│   │   │           │           │   │       ├── with-site-icon-and-description-auto.png
-│   │   │           │           │   │       ├── with-site-icon-auto.png
-│   │   │           │           │   │       ├── with-tall-image-auto.png
-│   │   │           │           │   │       ├── with-tooltip-auto.png
-│   │   │           │           │   │       └── with-very-long-text-auto.png
-│   │   │           │           │   └── UrlPreviewGroupView.stories.tsx
-│   │   │           │           │       ├── default-auto.png
-│   │   │           │           │       ├── in-bubble-layout-auto.png
-│   │   │           │           │       ├── in-bubble-layout-narrow-auto.png
-│   │   │           │           │       ├── multiple-previews-hidden-auto.png
-│   │   │           │           │       ├── multiple-previews-visible-auto.png
-│   │   │           │           │       └── with-compact-view-auto.png
+│   │   │           │           ├── MediaPreviewGroupView
+│   │   │           │           │   ├── MediaPreviewGroupView.stories.tsx
+│   │   │           │           │   │   ├── all-types-auto.png
+│   │   │           │           │   │   ├── collapsed-auto.png
+│   │   │           │           │   │   ├── expanded-auto.png
+│   │   │           │           │   │   ├── single-audio-auto.png
+│   │   │           │           │   │   ├── single-image-auto.png
+│   │   │           │           │   │   ├── single-tall-banner-image-auto.png
+│   │   │           │           │   │   ├── single-text-auto.png
+│   │   │           │           │   │   └── single-video-auto.png
+│   │   │           │           │   └── MediaPreviewTile
+│   │   │           │           │       ├── AudioPreviewTile.stories.tsx
+│   │   │           │           │       │   ├── clickable-audio-auto.png
+│   │   │           │           │       │   ├── default-auto.png
+│   │   │           │           │       │   ├── no-buttons-auto.png
+│   │   │           │           │       │   └── with-header-url-auto.png
+│   │   │           │           │       ├── ImagePreviewTile.stories.tsx
+│   │   │           │           │       │   ├── clickable-image-auto.png
+│   │   │           │           │       │   ├── clickable-uncollapsed-image-auto.png
+│   │   │           │           │       │   ├── default-auto.png
+│   │   │           │           │       │   ├── no-buttons-auto.png
+│   │   │           │           │       │   ├── tall-banner-auto.png
+│   │   │           │           │       │   ├── uncollapsed-auto.png
+│   │   │           │           │       │   └── with-header-url-auto.png
+│   │   │           │           │       ├── TextPreviewTile.stories.tsx
+│   │   │           │           │       │   ├── clickable-icon-auto.png
+│   │   │           │           │       │   ├── default-auto.png
+│   │   │           │           │       │   ├── no-buttons-auto.png
+│   │   │           │           │       │   └── with-header-url-auto.png
+│   │   │           │           │       └── VideoPreviewTile.stories.tsx
+│   │   │           │           │           ├── clickable-uncollapsed-video-auto.png
+│   │   │           │           │           ├── clickable-video-auto.png
+│   │   │           │           │           ├── default-auto.png
+│   │   │           │           │           ├── no-buttons-auto.png
+│   │   │           │           │           ├── tall-banner-auto.png
+│   │   │           │           │           ├── uncollapsed-auto.png
+│   │   │           │           │           └── with-header-url-auto.png
 │   │   │           │           ├── actions
 │   │   │           │           │   └── ActionBarView
 │   │   │           │           │       └── ActionBarView.stories.tsx
@@ -5385,6 +5452,8 @@
 │   │   │           │           │   │       ├── invalid-auto.png
 │   │   │           │           │   │       ├── long-filename-download-auto.png
 │   │   │           │           │   │       ├── long-filename-info-auto.png
+│   │   │           │           │   │       ├── openable-info-auto.png
+│   │   │           │           │   │       ├── openable-long-filename-info-auto.png
 │   │   │           │           │   │       ├── unencrypted-download-auto.png
 │   │   │           │           │   │       └── video-info-auto.png
 │   │   │           │           │   ├── MImageBodyView
@@ -5425,11 +5494,11 @@
 │   │   │           │           │   │       ├── caption-with-preview-auto.png
 │   │   │           │           │   │       ├── default-auto.png
 │   │   │           │           │   │       ├── edited-auto.png
+│   │   │           │           │   │       ├── edited-with-wide-code-block-auto.png
 │   │   │           │           │   │       ├── emote-auto.png
 │   │   │           │           │   │       ├── highlight-link-auto.png
 │   │   │           │           │   │       ├── notice-auto.png
-│   │   │           │           │   │       ├── pending-moderation-auto.png
-│   │   │           │           │   │       └── starter-link-auto.png
+│   │   │           │           │   │       └── pending-moderation-auto.png
 │   │   │           │           │   ├── UnknownBodyView
 │   │   │           │           │   │   └── UnknownBodyView.stories.tsx
 │   │   │           │           │   │       ├── default-auto.png
@@ -5611,11 +5680,13 @@
 │   │   │               ├── CustomStatusView.stories.tsx
 │   │   │               │   └── default-auto.png
 │   │   │               ├── SetStatusView.stories.tsx
+│   │   │               │   ├── disabled-auto.png
 │   │   │               │   ├── no-status-auto.png
 │   │   │               │   ├── open-auto.png
 │   │   │               │   └── with-status-auto.png
 │   │   │               ├── StatusTextView.stories.tsx
-│   │   │               │   └── default-auto.png
+│   │   │               │   ├── default-auto.png
+│   │   │               │   └── with-long-text-auto.png
 │   │   │               └── UserStatusIconView.stories.tsx
 │   │   │                   ├── default-auto.png
 │   │   │                   └── no-status-auto.png
@@ -5765,6 +5836,15 @@
 │   │   │   │   │   ├── RovingTabIndexWrapper.ts
 │   │   │   │   │   ├── Toolbar.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── toast
+│   │   │   │   │   ├── GenericToast.module.css
+│   │   │   │   │   ├── GenericToast.stories.tsx
+│   │   │   │   │   ├── GenericToast.test.tsx
+│   │   │   │   │   ├── GenericToast.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── GenericToast.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── userStatus.test.ts
 │   │   │   │   ├── userStatus.ts
 │   │   │   │   ├── utils
 │   │   │   │   │   ├── Box
@@ -5920,6 +6000,21 @@
 │   │   │   │       └── __snapshots__
 │   │   │   │           └── SeparatorView.test.tsx.snap
 │   │   │   ├── room
+│   │   │   │   ├── ElementCallAppTile
+│   │   │   │   │   ├── ElementCallAppTileView.stories.tsx
+│   │   │   │   │   ├── ElementCallAppTileView.test.tsx
+│   │   │   │   │   ├── ElementCallAppTileView.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── ElementCallAppTileView.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── ElementCallMockView
+│   │   │   │   │   ├── ElementCallMockView.module.css
+│   │   │   │   │   ├── ElementCallMockView.stories.tsx
+│   │   │   │   │   ├── ElementCallMockView.test.tsx
+│   │   │   │   │   ├── ElementCallMockView.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── ElementCallMockView.test.tsx.snap
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── HistoryVisibilityBadge
 │   │   │   │   │   ├── HistoryVisibilityBadge.stories.tsx
 │   │   │   │   │   ├── HistoryVisibilityBadge.test.tsx
@@ -5976,6 +6071,24 @@
 │   │   │   │   │       │   └── UploadButton.test.tsx.snap
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── right-panel
+│   │   │   │   │   ├── DocumentViewerView
+│   │   │   │   │   │   ├── DocumentViewerView.module.css
+│   │   │   │   │   │   ├── DocumentViewerView.stories.tsx
+│   │   │   │   │   │   ├── DocumentViewerView.test.tsx
+│   │   │   │   │   │   ├── DocumentViewerView.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── MarkdownViewerView
+│   │   │   │   │   │   ├── MarkdownViewerView.module.css
+│   │   │   │   │   │   ├── MarkdownViewerView.stories.tsx
+│   │   │   │   │   │   ├── MarkdownViewerView.test.tsx
+│   │   │   │   │   │   ├── MarkdownViewerView.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── PdfViewerView
+│   │   │   │   │   │   ├── PdfViewerView.module.css
+│   │   │   │   │   │   ├── PdfViewerView.stories.tsx
+│   │   │   │   │   │   ├── PdfViewerView.test.tsx
+│   │   │   │   │   │   ├── PdfViewerView.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── WidgetContextMenuView
 │   │   │   │   │       ├── WidgetContextMenuView.stories.tsx
 │   │   │   │   │       ├── WidgetContextMenuView.test.tsx
@@ -6108,6 +6221,12 @@
 │   │   │   │           │   │   ├── __snapshots__
 │   │   │   │           │   │   │   └── PinnedMessageBadge.test.tsx.snap
 │   │   │   │           │   │   └── index.ts
+│   │   │   │           │   ├── ReplyTileView
+│   │   │   │           │   │   ├── ReplyTileView.module.css
+│   │   │   │           │   │   ├── ReplyTileView.stories.tsx
+│   │   │   │           │   │   ├── ReplyTileView.test.tsx
+│   │   │   │           │   │   ├── ReplyTileView.tsx
+│   │   │   │           │   │   └── index.ts
 │   │   │   │           │   ├── RoomAvatarEventView
 │   │   │   │           │   │   ├── RoomAvatarEventView.module.css
 │   │   │   │           │   │   ├── RoomAvatarEventView.stories.tsx
@@ -6145,21 +6264,29 @@
 │   │   │   │           │   │   │   └── TileErrorView.test.tsx.snap
 │   │   │   │           │   │   └── index.ts
 │   │   │   │           │   └── index.ts
-│   │   │   │           ├── UrlPreviewGroupView
-│   │   │   │           │   ├── LinkPreview
-│   │   │   │           │   │   ├── LinkPreview.module.css
-│   │   │   │           │   │   ├── LinkPreview.stories.tsx
-│   │   │   │           │   │   ├── LinkPreview.test.tsx
-│   │   │   │           │   │   ├── LinkPreview.tsx
-│   │   │   │           │   │   ├── __snapshots__
-│   │   │   │           │   │   │   └── LinkPreview.test.tsx.snap
-│   │   │   │           │   │   └── index.ts
-│   │   │   │           │   ├── UrlPreviewGroupView.module.css
-│   │   │   │           │   ├── UrlPreviewGroupView.stories.tsx
-│   │   │   │           │   ├── UrlPreviewGroupView.test.tsx
-│   │   │   │           │   ├── UrlPreviewGroupView.tsx
+│   │   │   │           ├── MediaPreviewGroupView
+│   │   │   │           │   ├── MediaPreviewComponents
+│   │   │   │           │   │   ├── MediaPreviewComponents.module.css
+│   │   │   │           │   │   ├── MediaPreviewComponents.test.tsx
+│   │   │   │           │   │   └── MediaPreviewComponents.tsx
+│   │   │   │           │   ├── MediaPreviewGroupView.module.css
+│   │   │   │           │   ├── MediaPreviewGroupView.stories.tsx
+│   │   │   │           │   ├── MediaPreviewGroupView.test.tsx
+│   │   │   │           │   ├── MediaPreviewGroupView.tsx
+│   │   │   │           │   ├── MediaPreviewTile
+│   │   │   │           │   │   ├── AudioPreviewTile.stories.tsx
+│   │   │   │           │   │   ├── ImagePreviewTile.stories.tsx
+│   │   │   │           │   │   ├── MediaPreviewTile.module.css
+│   │   │   │           │   │   ├── MediaPreviewTile.test.tsx
+│   │   │   │           │   │   ├── MediaPreviewTile.tsx
+│   │   │   │           │   │   ├── TextPreviewTile.stories.tsx
+│   │   │   │           │   │   ├── VideoPreviewTile.stories.tsx
+│   │   │   │           │   │   └── __snapshots__
+│   │   │   │           │   │       └── MediaPreviewTile.test.tsx.snap
 │   │   │   │           │   ├── __snapshots__
-│   │   │   │           │   │   └── UrlPreviewGroupView.test.tsx.snap
+│   │   │   │           │   │   └── MediaPreviewGroupView.test.tsx.snap
+│   │   │   │           │   ├── icons.test.ts
+│   │   │   │           │   ├── icons.tsx
 │   │   │   │           │   └── index.ts
 │   │   │   │           ├── actions
 │   │   │   │           │   └── ActionBarView
@@ -6538,16 +6665,20 @@
 │   │   │           └── index.tsx
 │   │   ├── static
 │   │   │   ├── README.md
+│   │   │   ├── audioDemo.ogg
 │   │   │   ├── element.png
 │   │   │   ├── image-body
 │   │   │   │   ├── install-spinner.gif
 │   │   │   │   └── install-spinner.png
+│   │   │   ├── pdf-viewer
+│   │   │   │   └── sample-page.png
 │   │   │   ├── profile-pics
 │   │   │   │   ├── profile1.png
 │   │   │   │   ├── profile2.png
 │   │   │   │   └── profile3.png
 │   │   │   ├── tallImage.png
 │   │   │   ├── videoBodyDemo.webm
+│   │   │   ├── videoPreviewDemo.webm
 │   │   │   └── wideImage.png
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
@@ -6555,31 +6686,47 @@
 │   │   ├── vite.config.ts
 │   │   ├── vitest.config.ts
 │   │   └── yarn.lock
-│   └── shared-types
-│       ├── lib
-│       │   ├── config.json.d.ts
-│       │   ├── index.d.ts
-│       │   ├── index.js
-│       │   ├── json.d.ts
-│       │   ├── matrix.d.ts
-│       │   ├── urlpreview.d.ts
-│       │   └── utils.d.ts
+│   ├── shared-types
+│   │   ├── lib
+│   │   │   ├── config.json.d.ts
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   ├── json.d.ts
+│   │   │   ├── matrix.d.ts
+│   │   │   ├── urlpreview.d.ts
+│   │   │   ├── utils.d.ts
+│   │   │   └── x509.d.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── shared-utils
+│       ├── .gitignore
+│       ├── README.md
 │       ├── package.json
-│       └── tsconfig.json
+│       ├── project.json
+│       ├── src
+│       │   ├── html
+│       │   │   ├── index.ts
+│       │   │   ├── isUrlPermitted.test.ts
+│       │   │   ├── isUrlPermitted.ts
+│       │   │   ├── sanitizeHtml.test.ts
+│       │   │   ├── sanitizeHtml.ts
+│       │   │   └── sanitizeHtmlParams.ts
+│       │   └── index.ts
+│       ├── tsconfig.json
+│       ├── vite.config.ts
+│       └── vitest.config.ts
 ├── patches
 │   ├── @arcmantle__vite-plugin-import-css-sheet.patch
-│   ├── @matrix-org__react-sdk-module-api.patch
 │   ├── @tanstack__virtual-core@3.patch
 │   ├── @vector-im__compound-web.patch
 │   ├── @vector-im__compound-web@9.9.0.patch
 │   ├── @vector-im__matrix-wysiwyg.patch
-│   ├── await-lock.patch
-│   ├── jest-fixed-jsdom.patch
-│   ├── jsdom.patch
 │   ├── knip.patch
 │   ├── linkify-html.patch
 │   ├── postcss-mixins.patch
-│   └── react-blurhash.patch
+│   ├── react-blurhash.patch
+│   ├── storybook-addon-vis@4.2.3.patch
+│   └── vitest-plugin-vis@5.1.1.patch
 ├── playwright-merge.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -6598,4 +6745,4 @@
 │   ├── normalize-version.sh
 │   └── pnpm-link.ts
 └── vitest.config.ts
-1193 directories, 5418 files
+1206 directories, 5553 files
