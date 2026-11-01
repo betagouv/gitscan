@@ -46,6 +46,7 @@
 ├── .pre-commit-config.yaml
 ├── .python-version
 ├── AGENT.md
+├── Aptfile
 ├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── Dockerfile
@@ -91,17 +92,23 @@
 │   ├── card_retrieval.py
 │   └── card_retrieval_results.json
 ├── bin
+│   ├── install_playwright_browser.sh
 │   ├── post_compile
 │   └── with_review_app_auth.sh
 ├── biome.json
 ├── browser
 │   ├── conftest.py
+│   ├── fixtures
+│   │   ├── README.md
+│   │   ├── chart.umd.js
+│   │   └── d3.min.js
 │   ├── test_guide_banner.py
 │   ├── test_notification.py
 │   ├── test_recherche_filtres.py
 │   ├── test_socle.py
 │   ├── test_variants.py
-│   └── test_variants_page.py
+│   ├── test_variants_page.py
+│   └── test_verify_dashboard.py
 ├── config
 │   ├── sources.yaml
 │   └── sources.yaml.example
@@ -201,6 +208,18 @@
 │   ├── compare.py
 │   ├── questions.py
 │   └── run_eval.py
+├── fixtures
+│   └── review
+│       ├── cron.html
+│       ├── cron.py
+│       ├── dashboards
+│       │   ├── demo-api-query
+│       │   │   └── index.html
+│       │   ├── demo-persistance
+│       │   │   └── index.html
+│       │   └── demo-sans-cron
+│       │       └── index.html
+│       └── fixtures.json
 ├── gates.toml
 ├── infra
 │   └── scaleway
@@ -276,6 +295,7 @@
 │   ├── attestation.py
 │   ├── dashboard_api.py
 │   ├── dashboard_errors.py
+│   ├── dashboard_quality.py
 │   ├── dashboards.py
 │   ├── data_inclusion.py
 │   ├── datadog.py
@@ -293,6 +313,7 @@
 │   ├── pg.py
 │   ├── pii.py
 │   ├── query.py
+│   ├── review_fixtures.py
 │   ├── script_hosts.py
 │   ├── slack.py
 │   ├── source_inventory.py
@@ -760,6 +781,51 @@
 │   │       ├── 20260827T180547686140Z-88127885.md
 │   │       ├── 20260827T180550202276Z-ff62bb8e.md
 │   │       └── 20260827T180552681131Z-6abab2f1.md
+│   ├── viz-quality-paved
+│   │   ├── PR_BODY.md
+│   │   ├── attestations
+│   │   │   ├── DOD-1.md
+│   │   │   ├── DOD-10.md
+│   │   │   ├── DOD-11.md
+│   │   │   ├── DOD-12.md
+│   │   │   ├── DOD-13.md
+│   │   │   ├── DOD-2.md
+│   │   │   ├── DOD-3.md
+│   │   │   ├── DOD-4.md
+│   │   │   ├── DOD-5.md
+│   │   │   ├── DOD-6.md
+│   │   │   ├── DOD-8.md
+│   │   │   └── DOD-9.md
+│   │   ├── definition-of-done.md
+│   │   ├── journal
+│   │   │   ├── 20260918T143753097768Z-701c685e.md
+│   │   │   ├── 20260918T144007986535Z-4b61da2c.md
+│   │   │   ├── 20260918T144008614396Z-34ad05f9.md
+│   │   │   ├── 20260918T144009237504Z-2e1979f5.md
+│   │   │   ├── 20260918T144009868510Z-07f0a8d7.md
+│   │   │   ├── 20260918T144010493770Z-613dbbfa.md
+│   │   │   ├── 20260918T144011126515Z-2ab570bd.md
+│   │   │   ├── 20260918T144011766638Z-c5955728.md
+│   │   │   ├── 20260918T144012421403Z-ed92a70e.md
+│   │   │   ├── 20260918T144013049766Z-fdd4a848.md
+│   │   │   ├── 20260918T144013690923Z-b2682ffe.md
+│   │   │   ├── 20260918T144014325511Z-09aac9f9.md
+│   │   │   ├── 20260918T144014956809Z-868ba9a3.md
+│   │   │   ├── 20260918T150644130443Z-5cdfb03a.md
+│   │   │   ├── 20260918T150648366978Z-462ae9c1.md
+│   │   │   ├── 20260918T150652894935Z-b4a3fb52.md
+│   │   │   ├── 20260918T150659175070Z-d2d7211b.md
+│   │   │   ├── 20260918T150701991190Z-6593a037.md
+│   │   │   ├── 20260918T150704076776Z-521d8798.md
+│   │   │   ├── 20260918T150707480956Z-06a94038.md
+│   │   │   ├── 20260918T150710420522Z-1a2d8321.md
+│   │   │   ├── 20260918T150712520434Z-e17c6c52.md
+│   │   │   ├── 20260918T150714600963Z-3adb3bab.md
+│   │   │   ├── 20260918T150717467435Z-4a2576f9.md
+│   │   │   ├── 20260918T150721921452Z-791a3429.md
+│   │   │   └── 20260918T150725783390Z-bb8413fd.md
+│   │   ├── lentille.md
+│   │   └── retro.md
 │   ├── zendesk-macros
 │   │   ├── attestations
 │   │   │   ├── DOD-1.md
@@ -1055,12 +1121,16 @@
 │   │   ├── SKILL.md
 │   │   └── scripts
 │   │       └── update_dashboard.py
+│   ├── verify_dashboard
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── verify_dashboard.py
 │   └── zendesk
 │       └── SKILL.md
 ├── tests
 │   ├── __init__.py
 │   ├── conftest.py
-│   └── test_*.py  (168 files)
+│   └── test_*.py  (171 files)
 ├── uv.lock
 └── web
     ├── __init__.py
@@ -1182,4 +1252,4 @@
     │   └── tag_manager.html
     ├── uploads.py
     └── warmup.py
-143 directories, 1208 files
+155 directories, 1269 files
