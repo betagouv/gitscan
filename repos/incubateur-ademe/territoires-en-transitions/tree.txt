@@ -144,6 +144,9 @@
 │   │   │   └── action.yml
 │   │   ├── get-koyeb-app-url
 │   │   │   └── action.yml
+│   │   ├── keep-alive-streamlit
+│   │   │   ├── action.yml
+│   │   │   └── keep-alive-streamlit.ts
 │   │   ├── koyeb-cli
 │   │   │   └── action.yml
 │   │   ├── node-canvas
@@ -180,6 +183,13 @@
 │   │   └── .act.vars.default
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── _ci-storybook.yml
+│       ├── _ci-test-backend-api.yml
+│       ├── _ci-test-db.yml
+│       ├── _ci-test-e2e.yml
+│       ├── _ci-validate.yml
+│       ├── _ci.yml
+│       ├── _prepare-test-db.yml
 │       ├── analyze-fiches.yml
 │       ├── backup-database.yml
 │       ├── cd-app.yml
@@ -187,19 +197,12 @@
 │       ├── cd-site.yml
 │       ├── cd-test-app-destroy.yml
 │       ├── cd-tools.yml
-│       ├── ci.yml
 │       ├── dev.yml
 │       ├── keep-alive-streamlit.yml
-│       ├── prepare-test-db.yml
+│       ├── main-ci.yml
+│       ├── pull-request-ci.yml
 │       ├── restore-database.yml
-│       ├── retry-flaky-jobs.yml
-│       ├── scripts
-│       │   └── keep-alive-streamlit.ts
-│       ├── test-backend-api.yml
-│       ├── test-db-deploy.yml
-│       ├── test-end-to-end.yml
-│       ├── test-ui-storybook.yml
-│       └── validate-affected-projects.yml
+│       └── retry-flaky-jobs.yml
 ├── .gitignore
 ├── .mcp.json
 ├── .npmrc
@@ -580,6 +583,9 @@
 │   │   │   │   ├── login
 │   │   │   │   │   ├── page.client.tsx
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── oauth
+│   │   │   │   │   └── consent
+│   │   │   │   │       └── page.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── recover
 │   │   │   │   │   ├── page.client.tsx
@@ -733,7 +739,6 @@
 │   │   │   │   │       │   │   ├── FichesLiees.tsx
 │   │   │   │   │       │   │   ├── Header
 │   │   │   │   │       │   │   │   ├── CheminIndicateur.tsx
-│   │   │   │   │       │   │   │   ├── DeleteModal.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurHeader.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurInfos.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurPilotes.tsx
@@ -1090,6 +1095,7 @@
 │   │   │   │   │   │   │   ├── keep-categories.ts
 │   │   │   │   │   │   │   ├── levier-actions-de-reference.list.spec.tsx
 │   │   │   │   │   │   │   ├── levier-actions-de-reference.list.tsx
+│   │   │   │   │   │   │   ├── levier.header.spec.tsx
 │   │   │   │   │   │   │   ├── levier.header.tsx
 │   │   │   │   │   │   │   ├── levier.panel.tsx
 │   │   │   │   │   │   │   ├── pertinence-field.tsx
@@ -1262,11 +1268,13 @@
 │   │   │   │   │   │   └── propose-import-programme.modal.tsx
 │   │   │   │   │   ├── instruction
 │   │   │   │   │   │   ├── clear-dossier-instruction-cookie.tsx
-│   │   │   │   │   │   ├── contexte-instruction.banner.tsx
 │   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-add-date-saisine.ts
 │   │   │   │   │   │   │   ├── use-contexte-instruction.ts
 │   │   │   │   │   │   │   ├── use-download-dossier-documents.ts
+│   │   │   │   │   │   │   ├── use-list-dates-saisine.ts
 │   │   │   │   │   │   │   └── use-list-dossiers-instruction.ts
+│   │   │   │   │   │   ├── date-saisine.panel.tsx
 │   │   │   │   │   │   ├── dossier
 │   │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   │   ├── use-diagnostic-instruction.ts
@@ -1295,7 +1303,8 @@
 │   │   │   │   │   │   ├── dossiers-instruction.metrics.tsx
 │   │   │   │   │   │   ├── dossiers-instruction.page.tsx
 │   │   │   │   │   │   ├── dossiers-instruction.table.tsx
-│   │   │   │   │   │   └── instruction.constants.ts
+│   │   │   │   │   │   ├── instruction.constants.ts
+│   │   │   │   │   │   └── use-contexte-instruction-visit.tsx
 │   │   │   │   │   ├── list-demarches
 │   │   │   │   │   │   ├── demarche-pcaet-actions.button.tsx
 │   │   │   │   │   │   ├── demarches-pcaet.table.tsx
@@ -1323,6 +1332,7 @@
 │   │   │   │   └── use-demarche-id.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── indicateurs
+│   │   │   │   │   ├── delete-indicateur-definition.modal.tsx
 │   │   │   │   │   ├── format-indicateur-filters-to-categories.ts
 │   │   │   │   │   ├── indicateur-definition-authorization.utils.ts
 │   │   │   │   │   ├── indicateur-filter-badges.tsx
@@ -2532,14 +2542,19 @@
 │   │   │   │   │   │   │   ├── make-main-nav.spec.tsx
 │   │   │   │   │   │   │   └── make-main-nav.ts
 │   │   │   │   │   │   ├── make-secondary-nav.tsx
+│   │   │   │   │   │   ├── use-header-nav.ts
 │   │   │   │   │   │   └── use-logout.ts
 │   │   │   │   │   ├── offline-alert.tsx
-│   │   │   │   │   └── side-panel
-│   │   │   │   │       ├── side-panel.context.spec.tsx
-│   │   │   │   │       ├── side-panel.context.tsx
-│   │   │   │   │       ├── side-panel.contract.ts
-│   │   │   │   │       ├── side-panel.spec.tsx
-│   │   │   │   │       └── side-panel.tsx
+│   │   │   │   │   ├── side-panel
+│   │   │   │   │   │   ├── side-panel.context.spec.tsx
+│   │   │   │   │   │   ├── side-panel.context.tsx
+│   │   │   │   │   │   ├── side-panel.contract.ts
+│   │   │   │   │   │   ├── side-panel.spec.tsx
+│   │   │   │   │   │   └── side-panel.tsx
+│   │   │   │   │   └── visit-mode
+│   │   │   │   │       ├── use-visit-mode.ts
+│   │   │   │   │       ├── visit-mode.frame.tsx
+│   │   │   │   │       └── visit-mode.ts
 │   │   │   │   ├── lists
 │   │   │   │   │   ├── ListWithTooltip.tsx
 │   │   │   │   │   ├── filter-badges
@@ -2600,6 +2615,8 @@
 │   │   │   │   │   │   ├── use-form-state.tsx
 │   │   │   │   │   │   ├── use-login-state.ts
 │   │   │   │   │   │   └── warning-step2-message.tsx
+│   │   │   │   │   ├── oauth-consent
+│   │   │   │   │   │   └── oauth-consent.view.tsx
 │   │   │   │   │   ├── oidc
 │   │   │   │   │   │   ├── auto-attachment
 │   │   │   │   │   │   │   ├── auto-attachment.landing.spec.ts
@@ -3306,6 +3323,12 @@
 │   │   │   │   │   ├── list-plan-links.router.ts
 │   │   │   │   │   └── list-plan-links.service.ts
 │   │   │   │   ├── pcaet
+│   │   │   │   │   ├── add-date-saisine
+│   │   │   │   │   │   ├── add-date-saisine.errors.ts
+│   │   │   │   │   │   ├── add-date-saisine.input.ts
+│   │   │   │   │   │   ├── add-date-saisine.repository.ts
+│   │   │   │   │   │   ├── add-date-saisine.router.ts
+│   │   │   │   │   │   └── add-date-saisine.service.ts
 │   │   │   │   │   ├── add-vulnerabilite-thematique
 │   │   │   │   │   │   ├── add-vulnerabilite-thematique.errors.ts
 │   │   │   │   │   │   ├── add-vulnerabilite-thematique.input.ts
@@ -3483,6 +3506,13 @@
 │   │   │   │   │   │   ├── list-contacts.input.ts
 │   │   │   │   │   │   ├── list-contacts.router.ts
 │   │   │   │   │   │   └── list-contacts.service.ts
+│   │   │   │   │   ├── list-dates-saisine
+│   │   │   │   │   │   ├── list-dates-saisine.errors.ts
+│   │   │   │   │   │   ├── list-dates-saisine.input.ts
+│   │   │   │   │   │   ├── list-dates-saisine.output.ts
+│   │   │   │   │   │   ├── list-dates-saisine.repository.ts
+│   │   │   │   │   │   ├── list-dates-saisine.router.ts
+│   │   │   │   │   │   └── list-dates-saisine.service.ts
 │   │   │   │   │   ├── list-demarches-pcaet
 │   │   │   │   │   │   ├── list-demarches-pcaet.errors.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.input.ts
@@ -3606,6 +3636,7 @@
 │   │   │   │   │   │   │   ├── demarche-pcaet.dto.ts
 │   │   │   │   │   │   │   ├── pcaet-avis.dto.ts
 │   │   │   │   │   │   │   ├── pcaet-avis.table.ts
+│   │   │   │   │   │   │   ├── pcaet-date-saisine.table.ts
 │   │   │   │   │   │   │   ├── pcaet-demande-avis.table.ts
 │   │   │   │   │   │   │   └── pcaet-referent.table.ts
 │   │   │   │   │   │   ├── pcaet-avis.repository.ts
@@ -5290,6 +5321,30 @@
 │   │   │       │   ├── prepare-archive-entries.utils.ts
 │   │   │       │   ├── triage-archive-files.utils.spec.ts
 │   │   │       │   └── triage-archive-files.utils.ts
+│   │   │       ├── assistant
+│   │   │       │   ├── README.md
+│   │   │       │   ├── ask-assistant-from-crisp.e2e-spec.ts
+│   │   │       │   ├── ask-assistant-from-crisp.input.ts
+│   │   │       │   ├── ask-assistant-from-crisp.service.ts
+│   │   │       │   ├── ask-assistant.e2e-spec.ts
+│   │   │       │   ├── ask-assistant.errors.ts
+│   │   │       │   ├── ask-assistant.input.ts
+│   │   │       │   ├── ask-assistant.router.ts
+│   │   │       │   ├── ask-assistant.service.ts
+│   │   │       │   ├── assistant.module.ts
+│   │   │       │   ├── eval
+│   │   │       │   │   ├── assistant-eval.live-spec.ts
+│   │   │       │   │   ├── assistant-eval.test-fixture.ts
+│   │   │       │   │   ├── baseline.json
+│   │   │       │   │   ├── expectations.spec.ts
+│   │   │       │   │   ├── expectations.ts
+│   │   │       │   │   ├── report.ts
+│   │   │       │   │   ├── scenario.ts
+│   │   │       │   │   ├── scenarios.e2e-spec.ts
+│   │   │       │   │   ├── scenarios.ts
+│   │   │       │   │   └── versions.ts
+│   │   │       │   ├── mcp-session.ts
+│   │   │       │   └── support-elevation.ts
 │   │   │       ├── banner
 │   │   │       │   ├── banner-info.table.ts
 │   │   │       │   ├── banner.errors.ts
@@ -5321,6 +5376,8 @@
 │   │   │       │   ├── csv.service.spec.ts
 │   │   │       │   └── csv.service.ts
 │   │   │       ├── database
+│   │   │       │   ├── analytics-database.errors.ts
+│   │   │       │   ├── analytics-database.service.ts
 │   │   │       │   ├── build-database-ssl.spec.ts
 │   │   │       │   ├── build-database-ssl.ts
 │   │   │       │   ├── conflict.utils.ts
@@ -5399,6 +5456,7 @@
 │   │   │       │   ├── is-transient-error.spec.ts
 │   │   │       │   ├── is-transient-error.ts
 │   │   │       │   ├── llm-call-recorder.ts
+│   │   │       │   ├── llm-chat.ts
 │   │   │       │   ├── llm-observer.spec.ts
 │   │   │       │   ├── llm-observer.ts
 │   │   │       │   ├── llm-tier.ts
@@ -5414,10 +5472,14 @@
 │   │   │       │   ├── prompt-template.ts
 │   │   │       │   ├── repositories
 │   │   │       │   │   ├── albert
+│   │   │       │   │   │   ├── albert-chat.spec.ts
 │   │   │       │   │   │   ├── albert.repository.spec.ts
 │   │   │       │   │   │   └── albert.repository.ts
 │   │   │       │   │   ├── describe-error.ts
+│   │   │       │   │   ├── fake
+│   │   │       │   │   │   └── fake-llm.repository.ts
 │   │   │       │   │   ├── gemini
+│   │   │       │   │   │   ├── gemini-chat.spec.ts
 │   │   │       │   │   │   ├── gemini.repository.spec.ts
 │   │   │       │   │   │   └── gemini.repository.ts
 │   │   │       │   │   ├── llm.repository.ts
@@ -5426,16 +5488,89 @@
 │   │   │       │   │       └── mistral.repository.ts
 │   │   │       │   └── token-usage.ts
 │   │   │       ├── log
+│   │   │       │   ├── custom-logger.service.spec.ts
 │   │   │       │   ├── custom-logger.service.ts
-│   │   │       │   └── log.dto.ts
+│   │   │       │   ├── log.dto.ts
+│   │   │       │   └── redact-error-chain.ts
 │   │   │       ├── map-with-concurrency.spec.ts
 │   │   │       ├── map-with-concurrency.ts
+│   │   │       ├── mcp
+│   │   │       │   ├── README.md
+│   │   │       │   ├── build-mcp-server.service.ts
+│   │   │       │   ├── eval
+│   │   │       │   │   └── questions-esquisse.md
+│   │   │       │   ├── mcp-docs.service.ts
+│   │   │       │   ├── mcp-protected-resource-metadata.controller.ts
+│   │   │       │   ├── mcp-resource-metadata.service.ts
+│   │   │       │   ├── mcp-tool.interface.ts
+│   │   │       │   ├── mcp-unauthorized.filter.ts
+│   │   │       │   ├── mcp.constants.ts
+│   │   │       │   ├── mcp.controller.e2e-spec.ts
+│   │   │       │   ├── mcp.controller.ts
+│   │   │       │   ├── mcp.module.ts
+│   │   │       │   ├── resources
+│   │   │       │   │   ├── base-analytique.doc.ts
+│   │   │       │   │   ├── esquisse-modele.doc.ts
+│   │   │       │   │   ├── posthog-hogql.doc.ts
+│   │   │       │   │   └── regles-metier.doc.ts
+│   │   │       │   └── tools
+│   │   │       │       ├── describe-table
+│   │   │       │       │   ├── describe-table.service.ts
+│   │   │       │       │   └── describe-table.tool.ts
+│   │   │       │       ├── find-user
+│   │   │       │       │   ├── find-user.repository.ts
+│   │   │       │       │   ├── find-user.service.ts
+│   │   │       │       │   └── find-user.tool.ts
+│   │   │       │       ├── get-collectivite
+│   │   │       │       │   ├── get-collectivite.service.ts
+│   │   │       │       │   └── get-collectivite.tool.ts
+│   │   │       │       ├── get-demarche-pcaet
+│   │   │       │       │   ├── get-demarche-pcaet.service.ts
+│   │   │       │       │   └── get-demarche-pcaet.tool.ts
+│   │   │       │       ├── get-referentiel-scores
+│   │   │       │       │   ├── get-referentiel-scores.service.ts
+│   │   │       │       │   └── get-referentiel-scores.tool.ts
+│   │   │       │       ├── list-plans
+│   │   │       │       │   ├── list-plans-activity.repository.ts
+│   │   │       │       │   ├── list-plans.service.ts
+│   │   │       │       │   └── list-plans.tool.ts
+│   │   │       │       ├── list-recent-events
+│   │   │       │       │   ├── list-recent-events.service.spec.ts
+│   │   │       │       │   ├── list-recent-events.service.ts
+│   │   │       │       │   └── list-recent-events.tool.ts
+│   │   │       │       ├── outils-metier.e2e-spec.ts
+│   │   │       │       ├── run-hogql-query
+│   │   │       │       │   ├── posthog-query.client.ts
+│   │   │       │       │   ├── run-hogql-query.errors.ts
+│   │   │       │       │   ├── run-hogql-query.input.ts
+│   │   │       │       │   ├── run-hogql-query.service.spec.ts
+│   │   │       │       │   ├── run-hogql-query.service.ts
+│   │   │       │       │   ├── run-hogql-query.tool.ts
+│   │   │       │       │   ├── window-hogql.rules.spec.ts
+│   │   │       │       │   └── window-hogql.rules.ts
+│   │   │       │       ├── run-named-query
+│   │   │       │       │   ├── named-queries.catalog.spec.ts
+│   │   │       │       │   ├── named-queries.catalog.ts
+│   │   │       │       │   ├── run-named-query.service.spec.ts
+│   │   │       │       │   ├── run-named-query.service.ts
+│   │   │       │       │   └── run-named-query.tool.ts
+│   │   │       │       ├── run-sql-query
+│   │   │       │       │   ├── run-sql-query.errors.ts
+│   │   │       │       │   ├── run-sql-query.input.ts
+│   │   │       │       │   ├── run-sql-query.service.ts
+│   │   │       │       │   ├── run-sql-query.tool.ts
+│   │   │       │       │   ├── validate-select-sql.rules.spec.ts
+│   │   │       │       │   └── validate-select-sql.rules.ts
+│   │   │       │       └── shared
+│   │   │       │           ├── collectivite-access.service.ts
+│   │   │       │           └── read-only-annotations.ts
 │   │   │       ├── nest
 │   │   │       │   ├── all-exceptions.filter.ts
 │   │   │       │   ├── controller-error-handler.ts
 │   │   │       │   ├── custom-zod-validation.pipe.ts
 │   │   │       │   ├── errors.utils.spec.ts
 │   │   │       │   ├── errors.utils.ts
+│   │   │       │   ├── global-prefix.ts
 │   │   │       │   ├── http-error.response.ts
 │   │   │       │   ├── http-exception.dto.ts
 │   │   │       │   └── service-second-arg.utils.ts
@@ -5516,6 +5651,7 @@
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.project.json
 │   │   ├── tsconfig.spec.json
+│   │   ├── vitest.config.live.mts
 │   │   └── vitest.config.mts
 │   ├── site
 │   │   ├── .env
@@ -6094,8 +6230,12 @@
 │       │   │   └── services
 │       │   │       ├── build-crisp-crm-note.service.spec.ts
 │       │   │       ├── build-crisp-crm-note.service.ts
+│       │   │       ├── build-crisp-tet-request.spec.ts
+│       │   │       ├── build-crisp-tet-request.ts
 │       │   │       ├── build-crisp-user-data.service.spec.ts
 │       │   │       ├── build-crisp-user-data.service.ts
+│       │   │       ├── crisp-tet.service.spec.ts
+│       │   │       ├── crisp-tet.service.ts
 │       │   │       ├── crisp.service.spec.ts
 │       │   │       └── crisp.service.ts
 │       │   ├── cron
@@ -6441,12 +6581,14 @@
 │   │   │   │   ├── pcaet_bilan_precedent_renomme.sql
 │   │   │   │   ├── pcaet_bilan_renouvellement.sql
 │   │   │   │   ├── pcaet_date_adoption.sql
+│   │   │   │   ├── pcaet_date_saisine.sql
 │   │   │   │   ├── pcaet_deliberation_arret_revisable.sql
 │   │   │   │   ├── pcaet_depot_hors_plateforme.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
 │   │   │   │   ├── pcaet_diagnostic_drop_referentiel_tables.sql
 │   │   │   │   ├── pcaet_diagnostic_indicateur_source_metadonnee.sql
 │   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
+│   │   │   │   ├── pcaet_document_global_retire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
 │   │   │   │   ├── pcaet_documents_aval.sql
 │   │   │   │   ├── pcaet_documents_plans_annexes.sql
@@ -7063,12 +7205,14 @@
 │   │   │   │   ├── pcaet_bilan_precedent_renomme.sql
 │   │   │   │   ├── pcaet_bilan_renouvellement.sql
 │   │   │   │   ├── pcaet_date_adoption.sql
+│   │   │   │   ├── pcaet_date_saisine.sql
 │   │   │   │   ├── pcaet_deliberation_arret_revisable.sql
 │   │   │   │   ├── pcaet_depot_hors_plateforme.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
 │   │   │   │   ├── pcaet_diagnostic_drop_referentiel_tables.sql
 │   │   │   │   ├── pcaet_diagnostic_indicateur_source_metadonnee.sql
 │   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
+│   │   │   │   ├── pcaet_document_global_retire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
 │   │   │   │   ├── pcaet_documents_aval.sql
 │   │   │   │   ├── pcaet_documents_plans_annexes.sql
@@ -7685,12 +7829,14 @@
 │   │       │   ├── pcaet_bilan_precedent_renomme.sql
 │   │       │   ├── pcaet_bilan_renouvellement.sql
 │   │       │   ├── pcaet_date_adoption.sql
+│   │       │   ├── pcaet_date_saisine.sql
 │   │       │   ├── pcaet_deliberation_arret_revisable.sql
 │   │       │   ├── pcaet_depot_hors_plateforme.sql
 │   │       │   ├── pcaet_diagnostic.sql
 │   │       │   ├── pcaet_diagnostic_drop_referentiel_tables.sql
 │   │       │   ├── pcaet_diagnostic_indicateur_source_metadonnee.sql
 │   │       │   ├── pcaet_diagnostic_ordre_reglementaire.sql
+│   │       │   ├── pcaet_document_global_retire.sql
 │   │       │   ├── pcaet_documents_amont.sql
 │   │       │   ├── pcaet_documents_aval.sql
 │   │       │   ├── pcaet_documents_plans_annexes.sql
@@ -8268,7 +8414,8 @@
 │   │   ├── 0017-optimisation-ci-par-scope-affecte-et-parallelisation-ciblee.md
 │   │   ├── 0018-periodicite-des-indicateurs.md
 │   │   ├── 0019-vues-personnalisees-indicateurs.md
-│   │   └── 0020-modeliser-un-cycle-de-vie.md
+│   │   ├── 0020-modeliser-un-cycle-de-vie.md
+│   │   └── 0021-serveur-mcp-dans-l-api.md
 │   ├── plans
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
 │   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
@@ -9290,6 +9437,7 @@
 │       │   │   │   ├── Header.tsx
 │       │   │   │   ├── header-desktop
 │       │   │   │   │   ├── header-desktop.main-nav-item.tsx
+│       │   │   │   │   ├── header-desktop.main-nav.tsx
 │       │   │   │   │   ├── header-desktop.secondary-nav-item.tsx
 │       │   │   │   │   └── header-desktop.tsx
 │       │   │   │   ├── header-mobile
@@ -9773,4 +9921,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1503 directories, 8679 files
+1527 directories, 8803 files
