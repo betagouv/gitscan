@@ -1,17 +1,16 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Plateforme destinée à accompagner les employeurs de la fonction publique dans la gestion de leurs recrutements. Elle intègre des outils d'ingestion de données, de gestion de candidatures et de messagerie collaborative.",
+  "description": "Plateforme destinée à accompagner les employeurs de la fonction publique dans la gestion de leurs recrutements. Elle propose des outils de gestion des candidatures, une messagerie collaborative et des services d'ingestion de données.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
+    "Gestion métier générale",
     "Collaboration & Workflow",
+    "Données & Schémas",
+    "Authentification & Accès",
     "Intelligence Artificielle & NLP",
-    "Gestion des utilisateurs & Permissions",
-    "Gestion des établissements & Structures",
-    "Tableaux & Affichage"
+    "Tableaux & Affichage",
+    "Commentaires & Discussions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,48 +20,43 @@
     "Docker",
     "Tesseract",
     "Poppler",
-    "Scaleway",
-    "S3"
+    "Scaleway Secret Manager",
+    "S3",
+    "Django",
+    "DRF"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
     "Stockage objet",
-    "Authentification (composant)",
-    "Design System (DSFR & UI libs)"
+    "Tests",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "api-key",
+      "jwt",
       "session"
-    ],
-    "providers": [
-      "ProConnect"
     ]
   },
-  "tests": [
-    "pytest-xdist",
-    "testing-library"
-  ],
+  "tests": "pytest-xdist",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-16T14:55:02Z",
+  "lastActivity": "2026-10-30T09:53:33Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "TypeScript",
-    "Docker & Conteneurs",
     "Bases de données SQL",
+    "Docker & Conteneurs",
     "Intelligence Artificielle & LLM",
     "CI/CD & GitHub Actions",
-    "Données & Open Data"
+    "Données & Open Data",
+    "Sécurité & Auth"
   ]
 }

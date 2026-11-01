@@ -1,36 +1,35 @@
-## Changelog : csplab (30 derniers jours, au 16 octobre 2026)
+## Changelog : csplab (30 derniers jours, au 30 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec l'amélioration significative de la gestion des candidatures (ajout de notes, historique d'activité et interface plus fluide) et l'introduction d'un système de messagerie collaborative pour faciliter les échanges. Le processus d'importation de données a également été enrichi pour mieux intégrer les informations provenant de Talentsoft, tandis que l'architecture technique a été modernisée pour garantir une meilleure stabilité et évolutivité du système.
+Ce mois-ci, la plateforme a franchi une étape importante dans la maturité de ses outils de recrutement et de gestion des candidatures, notamment grâce à l'introduction de fonctionnalités de collaboration (notes, étiquettes, messagerie enrichie). Parallèlement, une refonte structurelle majeure a été entreprise pour aligner le code sur les nouveaux standards de l'équipe, tout en renforçant la fiabilité et la précision de l'importation des offres de postes.
 
 ### Évolutions fonctionnelles
-- **Gestion des candidatures** : 
-    - Ajout de la possibilité de rédiger et consulter des notes sur une candidature [#1805](https://github.com/betagouv/csplab/issues/1805).
-    - Intégration de l'historique d'activité et des dernières actions directement dans le panneau de candidature [#1668](https://github.com/betagouv/csplab/issues/1668).
-    - Amélioration de l'ergonomie avec un nouveau panneau de candidature (sous forme de modale) accessible depuis la liste ou le kanban [#1569](https://github.com/betagouv/csplab/issues/1569), [#1477](https://github.com/betagouv/csplab/issues/1477).
-    - Ajout d'un garde-fou demandant un motif avant de refuser une candidature [#1506](https://github.com/betagouv/csplab/issues/1506).
-- **Messagerie collaborative** : 
-    - Mise en place complète du système de messagerie : création de conversations, envoi de messages et possibilité de joindre des fichiers [#1678](https://github.com/betagouv/csplab/issues/1678), [#1666](https://github.com/betagouv/csplab/issues/1666).
-    - Possibilité de répondre directement à une conversation depuis le panneau d'une candidature [#1664](https://github.com/betagouv/csplab/issues/1664).
-- **Interface Recruteur** : 
-    - Nouvelles capacités d'assignation de responsables de recrutement en lot [#1483](https://github.com/betagouv/csplab/issues/1483).
-    - Amélioration de la visibilité des documents et des détails des candidats pour les agents autorisés [#1475](https://github.com/betagouv/csplab/issues/1475), [#1462](https://github.com/betagouv/csplab/issues/1462).
-    - Optimisations visuelles : en-tête de page fixe (sticky), harmonisation des composants et alignement des données dans les tableaux [#1892](https://github.com/betagouv/csplab/issues/1892), [#1575](https://github.com/betagouv/csplab/issues/1575), [#1857](https://github.com/betagouv/csplab/issues/1857).
+- **Gestion des candidatures et messagerie** : 
+    - Ajout de notes (privées, modification, suppression et affichage de liste) et intégration de l'historique d'activité dans le panneau de candidature [#2116, #2100, #2098, #1805, #1668].
+    - Amélioration de la messagerie avec la possibilité de joindre des fichiers, de répondre directement dans une conversation et gestion du marquage des messages lus/non lus [#1666, #1664, #1973, #1971, #1981].
+- **Outils recruteurs** : 
+    - Mise en place d'un système complet de gestion d'étiquettes (création, modification de couleur/libellé, statistiques d'utilisation et suppression) [#2094, #2036, #2022, #2065, #2047].
+    - Amélioration de l'interface utilisateur : recherche d'organismes insensible aux accents [#2141], alignement du Kanban sur les tableaux [#2114], et nouveau sélecteur d'espace [#2016].
+    - Distinction entre notes d'équipe et notes personnelles [#2096].
 - **Ingestion de données** : 
-    - Enrichissement des données importées depuis Talentsoft (emails des candidats, contacts de l'offre, dates de vacance de poste) [#1946](https://github.com/betagouv/csplab/issues/1946), [#1936](https://github.com/betagouv/csplab/issues/1936), [#1812](https://github.com/betagouv/csplab/issues/1812).
-    - Francisation des champs et des réponses de l'API d'ingestion pour une meilleure lisibilité [#1852](https://github.com/betagouv/csplab/issues/1852), [#1847](https://github.com/betagouv/csplab/issues/1847).
+    - Enrichissement des données importées depuis Talentsoft (documents requis, contacts, dates de vacance de poste et emails) [#2092, #1936, #1990, #1946].
+    - Renforcement de la qualité des données : validation stricte des zones géographiques, des codes pays et des catégories d'offres [#2143, #2148, #2076, #2073, #2069].
 
 ### Évolutions techniques
-- **Architecture (ADR-009)** : Refonte majeure de plusieurs services clés (identité, recrutement, organismes) pour s'aligner sur le nouveau standard architectural du projet [#1877](https://github.com/betagouv/csplab/issues/1877), [#1940](https://github.com/betagouv/csplab/issues/1940), [#1916](https://github.com/betagouv/csplab/issues/1916), [#1808](https://github.com/betagouv/csplab/issues/1808).
-- **Sécurité & Identité** : 
-    - Renforcement de la protection contre les abus via la limitation du débit (rate limiting) sur les requêtes anonymes et les clés d'API [#1964](https://github.com/betagouv/csplab/issues/1964), [#1807](https://github.com/betagouv/csplab/issues/1807).
-    - Amélioration de la traçabilité avec le log des tentatives de connexion et de la création de profils [#1660](https://github.com/betagouv/csplab/issues/1660), [#1641](https://github.com/betagouv/csplab/issues/1641).
-- **Infrastructure & Stockage** : 
-    - Mise en place du stockage objet S3 pour la gestion des documents et fichiers des candidats [#1472](https://github.com/betagouv/csplab/issues/1472).
-    - Optimisation du processus d'ingestion (gestion optionnelle de Qdrant, pagination des API, fiabilisation de l'archivage) [#1955](https://github.com/betagouv/csplab/issues/1955), [#1967](https://github.com/betagouv/csplab/issues/1967).
+- **Architecture et Refactoring** : 
+    - Migration massive des services (recrutement, organismes, identité) vers les nouveaux standards architecturaux (ADR-009 et ADR-011) pour améliorer la maintenabilité [#2017, #1995, #2021, #1923, #1814, #1746, #1713, #1704].
+    - Nettoyage du code et suppression de composants obsolètes (dead code) [#1931, #1928, #1796].
+- **Sécurité et Identité** : 
+    - Renforcement de la gestion des accès et de la sécurité (limitation du débit des requêtes, gestion des sessions et filtrage des organismes supprimés) [#1970, #1966, #1807, #1964, #1762].
+    - Limitation des accès par canal d'accès et par endpoint [#1673, #1660].
+- **Infrastructure et CI/CD** : 
+    - Optimisation des pipelines de CI (réduction du nombre de jobs et annulation des exécutions obsolètes) [#2134, #2136].
+    - Mise à jour de l'infrastructure : passage à PostgreSQL 18 et utilisation du réseau privé Scaleway pour les échanges entre services [#1987, #1974].
+- **API** : 
+    - Francisation de nombreux champs et filtres de l'API d'ingestion [#1852, #1847, #2051].
+    - Amélioration des performances et de l'expérience développeur via la pagination DRF et le support du format Markdown pour les descriptions [#2067, #2008].
 
 ### Autres changements
 - **Documentation** : 
-    - Ajout de pages d'aide et de contact dans la documentation de l'API [#1920](https://github.com/betagouv/csplab/issues/1920).
-    - Mise à jour des guides de correspondance technique pour l'ingestion des données Talentsoft [#1789](https://github.com/betagouv/csplab/issues/1789).
-- **Tooling** : Modernisation de la chaîne de développement avec le remplacement de `pre-commit` par `hk` [#1654](https://github.com/betagouv/csplab/issues/1654).
+    - Amélioration de la documentation de l'API avec l'ajout de pages d'aide, de contact et de changelogs [#1932, #1920, #1727].
+    - Documentation des correspondances de champs pour l'ingestion de données [#1804, #1789, #2034].

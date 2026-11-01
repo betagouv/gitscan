@@ -23,6 +23,7 @@
 │       ├── chore.yml
 │       ├── chore_create_pr_for_changelog.yml
 │       ├── chore_create_release.yml
+│       ├── chore_pr_title.yml
 │       ├── chore_require_pr_fields.yml
 │       ├── ingestion.yml
 │       ├── lib_version_bump.yml
@@ -63,11 +64,14 @@
 │   │   ├── ADR-007-can-execute-preconditions-use-cases.md
 │   │   ├── ADR-008-coherence-errors-application-layer.md
 │   │   ├── ADR-009-idiomatic-django-switch.md
-│   │   └── ADR-010-frontend-location.md
+│   │   ├── ADR-010-frontend-location.md
+│   │   └── ADR-011-identifier-language.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
+│   ├── changelog_api.md
 │   ├── dat
 │   ├── docker_compose_override.md
+│   ├── domain_glossary.md
 │   ├── env_variables.md
 │   ├── frontend_conventions.md
 │   ├── frontend_icons.md
@@ -166,7 +170,9 @@
 │   │   │   ├── test_limit_date.py
 │   │   │   ├── test_localisation.py
 │   │   │   ├── test_offer.py
+│   │   │   ├── test_offer_criteria.py
 │   │   │   ├── test_organisme.py
+│   │   │   ├── test_required_document.py
 │   │   │   ├── test_siret.py
 │   │   │   └── test_source.py
 │   │   ├── types.py
@@ -198,6 +204,7 @@
 │   │       ├── offer_nature.py
 │   │       ├── radius.py
 │   │       ├── region.py
+│   │       ├── required_document.py
 │   │       ├── siret.py
 │   │       ├── source_type.py
 │   │       ├── type_competence.py
@@ -255,6 +262,7 @@
     │   │   ├── backup-db-to-scaleway.sh
     │   │   ├── clean_publish_organismes.py
     │   │   ├── clean_raw_organismes.py
+    │   │   ├── dila_sirets.py
     │   │   ├── import_offers.py
     │   │   ├── import_organismes.py
     │   │   ├── inject_scaleway_env.sh
@@ -285,6 +293,7 @@
     │   │   │   ├── verses.csv
     │   │   │   └── zones_geo.csv
     │   │   ├── categories_entite_geographique_exercice.csv
+    │   │   ├── dila_sirets.csv
     │   │   └── statuts_juridiques_publics.csv
     │   ├── domain
     │   │   ├── __init__.py
@@ -323,6 +332,7 @@
     │   │       ├── email.py
     │   │       ├── organisme.py
     │   │       ├── organisme_referentiel.py
+    │   │       ├── siret_candidate.py
     │   │       ├── talentsoft_credential.py
     │   │       ├── webhook_event.py
     │   │       └── webhook_type.py
@@ -361,10 +371,12 @@
     │   │   ├── gateways
     │   │   │   ├── __init__.py
     │   │   │   ├── async_http_client.py
+    │   │   │   ├── html_to_markdown.py
     │   │   │   ├── lambert93.py
     │   │   │   ├── offers_cleaner.py
     │   │   │   ├── organismes_cleaner.py
     │   │   │   ├── rate_limiter.py
+    │   │   │   ├── siret_matching.py
     │   │   │   └── transcoding.py
     │   │   ├── models
     │   │   │   ├── __init__.py
@@ -389,7 +401,8 @@
     │   │       ├── 20260617_0000_add_action_type_to_webhooks.py
     │   │       ├── 20260819_0000_add_raw_organismes.py
     │   │       ├── 20260918_0000_add_dila_siret_found_to_raw_organismes.py
-    │   │       └── 20261005_0000_convert_raw_timestamps_to_timestamptz.py
+    │   │       ├── 20261005_0000_convert_raw_timestamps_to_timestamptz.py
+    │   │       └── 20261029_0000_reset_dila_siret_found.py
     │   ├── mise.ci.toml
     │   ├── mise.toml
     │   ├── presentation
@@ -437,6 +450,7 @@
     │   │       │   └── utils.py
     │   │       ├── gateways
     │   │       │   ├── __init__.py
+    │   │       │   ├── test_html_to_markdown.py
     │   │       │   ├── test_offers_cleaner.py
     │   │       │   └── test_transcoding.py
     │   │       ├── test_async_http_client.py
@@ -447,6 +461,7 @@
     │   │       ├── test_credentials_store.py
     │   │       ├── test_data.py
     │   │       ├── test_dila_organisme_gateway.py
+    │   │       ├── test_dila_sirets_csv.py
     │   │       ├── test_finess_organisme_gateway.py
     │   │       ├── test_gipcdg_organisme_gateway.py
     │   │       ├── test_import_offers_usecase.py
@@ -465,6 +480,7 @@
     │   │       ├── test_save_raw_offer_usecase.py
     │   │       ├── test_save_webhook_usecase.py
     │   │       ├── test_sentry.py
+    │   │       ├── test_siret_matching.py
     │   │       ├── test_sources_repository.py
     │   │       ├── test_talentsoft_client_repository.py
     │   │       ├── test_value_objects.py
@@ -582,17 +598,13 @@
         │   │   ├── services
         │   │   │   ├── create_agent.py
         │   │   │   ├── create_candidat.py
-        │   │   │   └── get_utilisateur_details.py
+        │   │   │   └── get_user_info.py
         │   │   └── usecases
         │   │       ├── __init__.py
-        │   │       ├── create_organisme.py
         │   │       ├── get_organisme.py
         │   │       └── update_organisme.py
         │   ├── ingestion
         │   │   ├── __init__.py
-        │   │   ├── context_services
-        │   │   │   ├── __init__.py
-        │   │   │   └── can_view_sources.py
         │   │   ├── errors
         │   │   │   ├── __init__.py
         │   │   │   └── application_errors_ingestion.py
@@ -611,8 +623,11 @@
         │   │   ├── services
         │   │   │   ├── __init__.py
         │   │   │   ├── get_offer_by_source.py
-        │   │   │   ├── list_authorized_sources.py
+        │   │   │   ├── get_source.py
         │   │   │   ├── list_offers_by_source.py
+        │   │   │   ├── list_public_organismes.py
+        │   │   │   ├── list_sources.py
+        │   │   │   ├── metier_functional_areas.py
         │   │   │   ├── offer_references.py
         │   │   │   ├── talentsoft_organisme_detail.py
         │   │   │   └── upsert_talentsoft_organismes.py
@@ -646,40 +661,49 @@
         │       │   └── application_errors_recruteur.py
         │       ├── services
         │       │   ├── __init__.py
+        │       │   ├── add_note_tag.py
         │       │   ├── add_recrutement_agent.py
-        │       │   ├── candidature_detail.py
         │       │   ├── create_conversation.py
         │       │   ├── create_note.py
+        │       │   ├── create_organisme.py
+        │       │   ├── create_tag.py
         │       │   ├── delete_note.py
+        │       │   ├── delete_tag.py
+        │       │   ├── get_candidature.py
         │       │   ├── get_organisme_etapes.py
-        │       │   ├── get_recrutement_detail.py
+        │       │   ├── get_recrutement.py
         │       │   ├── get_recrutement_etapes.py
         │       │   ├── initialize_organisme_etapes.py
         │       │   ├── initialize_recrutement_etapes.py
+        │       │   ├── list_candidatures.py
         │       │   ├── list_conversations.py
         │       │   ├── list_documents.py
         │       │   ├── list_motifs_refus.py
         │       │   ├── list_notes.py
         │       │   ├── list_organismes.py
         │       │   ├── list_recrutement_agents.py
+        │       │   ├── list_recrutements.py
+        │       │   ├── list_tags.py
         │       │   ├── organisme_agent_query_service_interface.py
         │       │   ├── read_conversation.py
         │       │   ├── read_document.py
         │       │   ├── recrutement_query_service_interface.py
+        │       │   ├── remove_note_tag.py
+        │       │   ├── reply_as_demo_candidates.py
         │       │   ├── reply_conversation.py
         │       │   ├── revoke_recrutement_agent.py
         │       │   ├── search_agent_by_email.py
         │       │   ├── set_recrutements_responsable.py
         │       │   ├── update_note.py
+        │       │   ├── update_note_visibility.py
         │       │   ├── update_organisme_etapes.py
-        │       │   └── update_recrutement_agent.py
+        │       │   ├── update_recrutement_agent.py
+        │       │   └── update_tag.py
         │       └── usecases
         │           ├── attach_organisme_agent.py
-        │           ├── changer_etape_candidatures.py
+        │           ├── change_etape_candidatures.py
         │           ├── get_recrutement_kanban.py
-        │           ├── get_recrutement_liste.py
         │           ├── list_organisme_agents.py
-        │           ├── lister_mes_recrutements.py
         │           ├── revoke_organisme_agent.py
         │           ├── update_organisme_agent.py
         │           └── update_recrutement_etapes.py
@@ -773,8 +797,7 @@
         │   │   │   └── organisme_permission_errors.py
         │   │   ├── events
         │   │   │   ├── __init__.py
-        │   │   │   ├── agent_events.py
-        │   │   │   └── candidat_events.py
+        │   │   │   └── agent_events.py
         │   │   ├── exceptions
         │   │   │   ├── __init__.py
         │   │   │   └── candidat_errors.py
@@ -836,7 +859,8 @@
         │       │   ├── organisme_agent_errors.py
         │       │   ├── organisme_recruteur_errors.py
         │       │   ├── recrutement_agent_errors.py
-        │       │   └── recrutement_errors.py
+        │       │   ├── recrutement_errors.py
+        │       │   └── tag_errors.py
         │       ├── etapes_rules.py
         │       ├── events
         │       │   ├── __init__.py
@@ -909,6 +933,7 @@
         │   │   │   │   │   └── CspCard.vue
         │   │   │   │   ├── CspCheckbox
         │   │   │   │   │   ├── CspCheckbox.stories.ts
+        │   │   │   │   │   ├── CspCheckbox.test.ts
         │   │   │   │   │   └── CspCheckbox.vue
         │   │   │   │   ├── CspCheckboxGroup
         │   │   │   │   │   ├── CspCheckboxGroup.stories.ts
@@ -1052,13 +1077,13 @@
         │   │   │       └── CspSidebar
         │   │   │           ├── CspSidebar.stories.ts
         │   │   │           ├── CspSidebar.vue
+        │   │   │           ├── CspSidebarButton.vue
         │   │   │           ├── CspSidebarDropdown.vue
         │   │   │           ├── CspSidebarGroup.vue
         │   │   │           ├── CspSidebarItem.vue
         │   │   │           ├── CspSidebarLogo.vue
-        │   │   │           ├── CspSidebarOrganisme.test.ts
-        │   │   │           ├── CspSidebarOrganisme.vue
         │   │   │           ├── CspSidebarProvider.vue
+        │   │   │           ├── CspSidebarSwitcher.vue
         │   │   │           ├── CspSidebarTrigger.vue
         │   │   │           └── CspSidebarUser.vue
         │   │   ├── composables
@@ -1124,6 +1149,7 @@
         │   │   │   │   │   ├── CandidatureCv.vue
         │   │   │   │   │   ├── CandidatureDocuments.test.ts
         │   │   │   │   │   ├── CandidatureDocuments.vue
+        │   │   │   │   │   ├── CandidatureEditNoteForm.vue
         │   │   │   │   │   ├── CandidatureHistorique.test.ts
         │   │   │   │   │   ├── CandidatureHistorique.vue
         │   │   │   │   │   ├── CandidatureKanbanCard.test.ts
@@ -1131,6 +1157,8 @@
         │   │   │   │   │   ├── CandidatureKanbanColumn.vue
         │   │   │   │   │   ├── CandidatureNewNoteForm.test.ts
         │   │   │   │   │   ├── CandidatureNewNoteForm.vue
+        │   │   │   │   │   ├── CandidatureNoteEditor.test.ts
+        │   │   │   │   │   ├── CandidatureNoteEditor.vue
         │   │   │   │   │   ├── CandidatureNoteForm.test.ts
         │   │   │   │   │   ├── CandidatureNoteForm.vue
         │   │   │   │   │   ├── CandidatureNoteMessage.test.ts
@@ -1139,13 +1167,14 @@
         │   │   │   │   │   ├── CandidatureNotes.vue
         │   │   │   │   │   ├── CandidaturesFiltersDrawer.vue
         │   │   │   │   │   ├── CandidaturesKanbanBoard.vue
+        │   │   │   │   │   ├── CandidaturesToolbar.vue
         │   │   │   │   │   ├── CandidaturesViewSwitch.vue
         │   │   │   │   │   ├── ChangerEtapeDrawer.vue
         │   │   │   │   │   ├── ChangerEtapePopover.test.ts
         │   │   │   │   │   ├── ChangerEtapePopover.vue
+        │   │   │   │   │   ├── EtapeChangeForm.vue
         │   │   │   │   │   ├── RefusCandidatureDialog.test.ts
         │   │   │   │   │   ├── RefusCandidatureDialog.vue
-        │   │   │   │   │   ├── SelectionActionBar.vue
         │   │   │   │   │   └── cells
         │   │   │   │   │       ├── CandidatNomCell.vue
         │   │   │   │   │       └── EtapeRecrutementCell.vue
@@ -1159,6 +1188,7 @@
         │   │   │   │   │   ├── useCandidaturePanelRoutes.ts
         │   │   │   │   │   ├── useCandidaturesFilters.test.ts
         │   │   │   │   │   ├── useCandidaturesFilters.ts
+        │   │   │   │   │   ├── useCandidaturesToolbar.ts
         │   │   │   │   │   ├── useEtapeChange.ts
         │   │   │   │   │   ├── useEtapeChangeMutation.test.ts
         │   │   │   │   │   ├── useEtapeChangeMutation.ts
@@ -1190,8 +1220,8 @@
         │   │   │   │   ├── api.ts
         │   │   │   │   ├── columns.ts
         │   │   │   │   ├── components
-        │   │   │   │   │   ├── AjoutMembreEquipeDrawer.test.ts
-        │   │   │   │   │   ├── AjoutMembreEquipeDrawer.vue
+        │   │   │   │   │   ├── AddTeamMemberForm.test.ts
+        │   │   │   │   │   ├── AddTeamMemberForm.vue
         │   │   │   │   │   ├── EquipeRecrutementSection.test.ts
         │   │   │   │   │   ├── EquipeRecrutementSection.vue
         │   │   │   │   │   └── cells
@@ -1248,15 +1278,19 @@
         │   │   │   │   ├── api.ts
         │   │   │   │   ├── columns.ts
         │   │   │   │   ├── components
-        │   │   │   │   │   ├── AttachAgentDrawer.test.ts
-        │   │   │   │   │   ├── AttachAgentDrawer.vue
+        │   │   │   │   │   ├── AttachAgentForm.test.ts
+        │   │   │   │   │   ├── AttachAgentForm.vue
         │   │   │   │   │   ├── OrganismeAgentsSection.test.ts
         │   │   │   │   │   ├── OrganismeAgentsSection.vue
-        │   │   │   │   │   ├── OrganismeFormDrawer.test.ts
-        │   │   │   │   │   ├── OrganismeFormDrawer.vue
+        │   │   │   │   │   ├── OrganismeForm.test.ts
+        │   │   │   │   │   ├── OrganismeForm.vue
+        │   │   │   │   │   ├── OrganismeSwitcher.test.ts
+        │   │   │   │   │   ├── OrganismeSwitcher.vue
+        │   │   │   │   │   ├── OrganismesSection.test.ts
         │   │   │   │   │   ├── OrganismesSection.vue
         │   │   │   │   │   └── cells
         │   │   │   │   │       ├── AgentActionsCell.vue
+        │   │   │   │   │       ├── OrganismeActionsCell.test.ts
         │   │   │   │   │       ├── OrganismeActionsCell.vue
         │   │   │   │   │       └── OrganismeNomCell.vue
         │   │   │   │   ├── composables
@@ -1281,41 +1315,54 @@
         │   │   │   │       ├── GestionOrganismesView.vue
         │   │   │   │       ├── OrganismeView.test.ts
         │   │   │   │       └── OrganismeView.vue
-        │   │   │   └── recrutements
+        │   │   │   ├── recrutements
+        │   │   │   │   ├── api.ts
+        │   │   │   │   ├── columns.ts
+        │   │   │   │   ├── components
+        │   │   │   │   │   ├── AssignResponsableForm.test.ts
+        │   │   │   │   │   ├── AssignResponsableForm.vue
+        │   │   │   │   │   ├── RecrutementsActifsFiltersDrawer.vue
+        │   │   │   │   │   ├── RecrutementsArchivesFiltersDrawer.vue
+        │   │   │   │   │   ├── RecrutementsTables.stories.ts
+        │   │   │   │   │   └── cells
+        │   │   │   │   │       ├── CandidaturesCell.vue
+        │   │   │   │   │       ├── OffreActionsCell.vue
+        │   │   │   │   │       └── OffreIntituleCell.vue
+        │   │   │   │   ├── composables
+        │   │   │   │   │   ├── useAssignResponsable.test.ts
+        │   │   │   │   │   ├── useAssignResponsable.ts
+        │   │   │   │   │   ├── useRecrutementDetail.test.ts
+        │   │   │   │   │   ├── useRecrutementDetail.ts
+        │   │   │   │   │   ├── useRecrutements.test.ts
+        │   │   │   │   │   ├── useRecrutements.ts
+        │   │   │   │   │   ├── useRecrutementsFilters.test.ts
+        │   │   │   │   │   └── useRecrutementsFilters.ts
+        │   │   │   │   ├── constants
+        │   │   │   │   │   └── recrutement.ts
+        │   │   │   │   ├── format.ts
+        │   │   │   │   ├── queries.ts
+        │   │   │   │   ├── types.ts
+        │   │   │   │   ├── utils
+        │   │   │   │   │   ├── filters.test.ts
+        │   │   │   │   │   └── filters.ts
+        │   │   │   │   └── views
+        │   │   │   │       ├── ActivitesTachesView.vue
+        │   │   │   │       ├── RecrutementView.test.ts
+        │   │   │   │       ├── RecrutementView.vue
+        │   │   │   │       ├── RecrutementsView.test.ts
+        │   │   │   │       └── RecrutementsView.vue
+        │   │   │   └── tags
         │   │   │       ├── api.ts
-        │   │   │       ├── columns.ts
         │   │   │       ├── components
-        │   │   │       │   ├── AssignationResponsableDrawer.test.ts
-        │   │   │       │   ├── AssignationResponsableDrawer.vue
-        │   │   │       │   ├── RecrutementsActifsFiltersDrawer.vue
-        │   │   │       │   ├── RecrutementsArchivesFiltersDrawer.vue
-        │   │   │       │   ├── RecrutementsTables.stories.ts
-        │   │   │       │   └── cells
-        │   │   │       │       ├── CandidaturesCell.vue
-        │   │   │       │       ├── OffreActionsCell.vue
-        │   │   │       │       └── OffreIntituleCell.vue
+        │   │   │       │   ├── TagForm.vue
+        │   │   │       │   ├── TagsSection.test.ts
+        │   │   │       │   └── TagsSection.vue
         │   │   │       ├── composables
-        │   │   │       │   ├── useAssignResponsable.test.ts
-        │   │   │       │   ├── useAssignResponsable.ts
-        │   │   │       │   ├── useRecrutementDetail.test.ts
-        │   │   │       │   ├── useRecrutementDetail.ts
-        │   │   │       │   ├── useRecrutements.test.ts
-        │   │   │       │   ├── useRecrutements.ts
-        │   │   │       │   ├── useRecrutementsFilters.test.ts
-        │   │   │       │   └── useRecrutementsFilters.ts
+        │   │   │       │   └── useTags.ts
         │   │   │       ├── constants
-        │   │   │       │   └── recrutement.ts
-        │   │   │       ├── format.ts
+        │   │   │       │   └── tag.ts
         │   │   │       ├── queries.ts
-        │   │   │       ├── types.ts
-        │   │   │       ├── utils
-        │   │   │       │   ├── filters.test.ts
-        │   │   │       │   └── filters.ts
-        │   │   │       └── views
-        │   │   │           ├── ActivitesTachesView.vue
-        │   │   │           ├── RecrutementView.test.ts
-        │   │   │           ├── RecrutementView.vue
-        │   │   │           └── RecrutementsView.vue
+        │   │   │       └── types.ts
         │   │   ├── router
         │   │   │   ├── breadcrumb.ts
         │   │   │   ├── names.test.ts
@@ -1357,6 +1404,8 @@
         │   │   │   ├── dsfr-tokens-options.css
         │   │   │   ├── fonts.css
         │   │   │   ├── index.css
+        │   │   │   ├── menu.scss
+        │   │   │   ├── search.scss
         │   │   │   └── theme.css
         │   │   ├── test
         │   │   │   ├── browser.ts
@@ -1540,6 +1589,8 @@
         │   │   │   │   ├── 0012_alter_organismeagentmodel_role.py
         │   │   │   │   ├── 0012_merge_20260915_0936.py
         │   │   │   │   ├── 0013_merge_20260915_1401.py
+        │   │   │   │   ├── 0014_notemodel_est_privee.py
+        │   │   │   │   ├── 0015_unaccent_extension.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1603,6 +1654,12 @@
         │   │   │   │   ├── 0051_offer_reference_sequence.py
         │   │   │   │   ├── 0052_offer_job_vacancy_date.py
         │   │   │   │   ├── 0053_offermodel_application_email.py
+        │   │   │   │   ├── 0054_offermodel_end_publication_date.py
+        │   │   │   │   ├── 0055_metiers_offer_family_code_not_empty.py
+        │   │   │   │   ├── 0056_offer_categories.py
+        │   │   │   │   ├── 0057_realign_offer_functional_area_code.py
+        │   │   │   │   ├── 0058_offer_zone_depuis_departement.py
+        │   │   │   │   ├── 0059_delete_offers_without_category.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1611,6 +1668,13 @@
         │   │   │       ├── metier.py
         │   │   │       ├── offer.py
         │   │   │       └── offer_reference_sequence.py
+        │   │   ├── tag
+        │   │   │   ├── __init__.py
+        │   │   │   ├── apps.py
+        │   │   │   ├── migrations
+        │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   └── __init__.py
+        │   │   │   └── models.py
         │   │   ├── users
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
@@ -1714,10 +1778,14 @@
         │   │   │   └── offer_factory.py
         │   │   ├── seed_demo_cv_corpus.py
         │   │   ├── seed_demo_organisme.py
+        │   │   ├── seed_demo_specs.py
         │   │   ├── seed_documents
         │   │   │   └── cv.pdf
         │   │   ├── seed_recruteur_datas.py
-        │   │   └── seed_recruteur_volume.py
+        │   │   ├── seed_recruteur_volume.py
+        │   │   └── tag
+        │   │       ├── __init__.py
+        │   │       └── tag_django_factory.py
         │   ├── gateways
         │   │   ├── __init__.py
         │   │   ├── candidate
@@ -1808,6 +1876,7 @@
         │   ├── api
         │   │   ├── __init__.py
         │   │   ├── authentication.py
+        │   │   ├── changelog_api.py
         │   │   ├── openapi_hooks.py
         │   │   ├── serializers.py
         │   │   ├── token_views.py
@@ -1886,6 +1955,7 @@
         │   │       └── cv_flow.py
         │   ├── commons
         │   │   ├── __init__.py
+        │   │   ├── markdown.py
         │   │   ├── pagination.py
         │   │   └── serializers.py
         │   ├── context_processors.py
@@ -1916,6 +1986,7 @@
         │   │   │   └── commands
         │   │   │       ├── __init__.py
         │   │   │       ├── aggregate_api_logs.py
+        │   │   │       ├── changelog_api.py
         │   │   │       ├── clean_documents.py
         │   │   │       ├── load_corps.py
         │   │   │       ├── load_metiers.py
@@ -1951,8 +2022,15 @@
         │   │   └── views.py
         │   ├── recruteur
         │   │   ├── __init__.py
+        │   │   ├── apps.py
+        │   │   ├── management
+        │   │   │   ├── __init__.py
+        │   │   │   └── commands
+        │   │   │       ├── __init__.py
+        │   │   │       └── reply_as_demo_candidates.py
         │   │   ├── mappers.py
         │   │   ├── serializers.py
+        │   │   ├── tasks.py
         │   │   ├── urls.py
         │   │   └── views
         │   │       ├── __init__.py
@@ -1963,6 +2041,7 @@
         │   │       ├── candidature_detail.py
         │   │       ├── candidature_logs.py
         │   │       ├── documents.py
+        │   │       ├── note_tags.py
         │   │       ├── notes.py
         │   │       ├── organisme_agents.py
         │   │       ├── organisme_detail.py
@@ -1970,10 +2049,53 @@
         │   │       ├── recrutement_agents.py
         │   │       ├── recrutement_detail.py
         │   │       ├── recrutement_listes.py
-        │   │       └── recrutement_params.py
+        │   │       ├── recrutement_params.py
+        │   │       └── tags.py
         │   ├── static
         │   │   ├── api
-        │   │   │   ├── changelog_api.md
+        │   │   │   ├── changelog_api.d
+        │   │   │   │   ├── 1727-champs-description-et-fin-candidature.md
+        │   │   │   │   ├── 1727-employeur-vide.md
+        │   │   │   │   ├── 1739-renomme-champs-contrat.md
+        │   │   │   │   ├── 1748-reference-auto.md
+        │   │   │   │   ├── 1815-date-vacance-poste.md
+        │   │   │   │   ├── 1815-professional-category.md
+        │   │   │   │   ├── 1847-francise-liste-offres.md
+        │   │   │   │   ├── 1848-francise-offres-par-source.md
+        │   │   │   │   ├── 1850-francise-archiver.md
+        │   │   │   │   ├── 1852-francise-reponse-creer-modifier.md
+        │   │   │   │   ├── 1935-format-contacts.md
+        │   │   │   │   ├── 1941-source-non-autorisee-403.md
+        │   │   │   │   ├── 1944-email-candidature-obligatoire.md
+        │   │   │   │   ├── 1944-email-candidature-renvoye.md
+        │   │   │   │   ├── 1955-archivage-503.md
+        │   │   │   │   ├── 1967-plafonne-taille-page.md
+        │   │   │   │   ├── 1990-end-publication-date.md
+        │   │   │   │   ├── 1990-fin-publication.md
+        │   │   │   │   ├── 2008-descriptions-markdown.md
+        │   │   │   │   ├── 2008-rejette-html-description.md
+        │   │   │   │   ├── 2024-descriptions-html-fake-ts.md
+        │   │   │   │   ├── 2028-description-organisme-fake-ts.md
+        │   │   │   │   ├── 2043-lien-legifrance.md
+        │   │   │   │   ├── 2046-metiers-sans-code.md
+        │   │   │   │   ├── 2051-code-emploi-csp.md
+        │   │   │   │   ├── 2055-liste-organismes.md
+        │   │   │   │   ├── 2067-pagination-drf.md
+        │   │   │   │   ├── 2069-talentsoft-organisme-inconnu.md
+        │   │   │   │   ├── 2069-talentsoft-organisme-jwt.md
+        │   │   │   │   ├── 2073-code-pays-majuscules-offres.md
+        │   │   │   │   ├── 2076-region-departement-incoherents.md
+        │   │   │   │   ├── 2082-latitude-longitude-facultatives.md
+        │   │   │   │   ├── 2084-code-pays-organismes.md
+        │   │   │   │   ├── 2086-domaine-coherent-metier.md
+        │   │   │   │   ├── 2086-domaine-facultatif.md
+        │   │   │   │   ├── 2088-recherche-organismes-sans-accents.md
+        │   │   │   │   ├── 2090-documents-requis-fake-ts.md
+        │   │   │   │   ├── 2090-documents-requis-liste-fermee.md
+        │   │   │   │   ├── 2108-categories-liste.md
+        │   │   │   │   ├── 2108-plusieurs-categories.md
+        │   │   │   │   ├── 2143-rejette-offre-sans-categorie.md
+        │   │   │   │   └── 2144-conflit-siret-organismes.md
         │   │   │   ├── contact_api.md
         │   │   │   ├── guide_api.md
         │   │   │   ├── internal-schema.yaml
@@ -2110,22 +2232,25 @@
         │   │   │   │   └── test_organisme_permission_service.py
         │   │   │   ├── test_create_agent.py
         │   │   │   ├── test_create_candidat.py
-        │   │   │   ├── test_create_organisme.py
         │   │   │   ├── test_get_organisme.py
         │   │   │   └── test_update_organisme.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
-        │   │   │   ├── test_can_view_sources.py
         │   │   │   ├── test_clean_documents.py
         │   │   │   ├── test_get_offer_by_source.py
         │   │   │   ├── test_get_offers_by_source.py
+        │   │   │   ├── test_get_source.py
         │   │   │   ├── test_list_offers_by_source.py
+        │   │   │   ├── test_list_public_organismes_service.py
         │   │   │   ├── test_list_sources.py
+        │   │   │   ├── test_list_sources_service.py
         │   │   │   ├── test_load_documents.py
+        │   │   │   ├── test_metier_functional_areas.py
         │   │   │   ├── test_offer_references.py
         │   │   │   ├── test_supprimer_organismes.py
         │   │   │   ├── test_upsert_offers.py
         │   │   │   ├── test_upsert_organismes.py
+        │   │   │   ├── test_upsert_organismes_siret_conflicts.py
         │   │   │   └── test_vectorize_documents.py
         │   │   └── recruteur
         │   │       ├── __init__.py
@@ -2135,27 +2260,30 @@
         │   │       │   └── test_recrutement_agent_service.py
         │   │       ├── test_add_recrutement_agent.py
         │   │       ├── test_attach_organisme_agent.py
-        │   │       ├── test_candidature_detail.py
-        │   │       ├── test_changer_etape_candidatures.py
+        │   │       ├── test_change_etape_candidatures.py
         │   │       ├── test_create_conversation.py
-        │   │       ├── test_get_recrutement_detail.py
+        │   │       ├── test_create_organisme.py
+        │   │       ├── test_get_candidature.py
+        │   │       ├── test_get_recrutement.py
         │   │       ├── test_get_recrutement_kanban.py
-        │   │       ├── test_get_recrutement_liste.py
         │   │       ├── test_initialize_organisme_etapes.py
         │   │       ├── test_initialize_recrutement_etapes.py
+        │   │       ├── test_list_candidatures.py
         │   │       ├── test_list_conversations.py
         │   │       ├── test_list_documents.py
         │   │       ├── test_list_motifs_refus.py
         │   │       ├── test_list_organismes.py
         │   │       ├── test_list_recrutement_agents.py
-        │   │       ├── test_lister_mes_recrutements.py
+        │   │       ├── test_list_recrutements.py
         │   │       ├── test_notes_services.py
         │   │       ├── test_read_conversation.py
         │   │       ├── test_read_document.py
+        │   │       ├── test_reply_as_demo_candidates.py
         │   │       ├── test_reply_conversation.py
         │   │       ├── test_revoke_recrutement_agent.py
         │   │       ├── test_search_agent_by_email.py
         │   │       ├── test_set_recrutements_responsable.py
+        │   │       ├── test_tags_services.py
         │   │       ├── test_update_organisme_etapes.py
         │   │       ├── test_update_recrutement_agent.py
         │   │       └── test_update_recrutement_etapes.py
@@ -2241,10 +2369,8 @@
         │   │   │   └── test_conversation_models.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
-        │   │   │   ├── test_changer_etape_candidatures.py
+        │   │   │   ├── test_change_etape_candidatures.py
         │   │   │   ├── test_get_recrutement_kanban.py
-        │   │   │   ├── test_get_recrutement_liste.py
-        │   │   │   ├── test_lister_mes_recrutements.py
         │   │   │   ├── test_organisme_admin.py
         │   │   │   ├── test_organisme_agent_query_service.py
         │   │   │   ├── test_organisme_agent_repository.py
@@ -2262,6 +2388,9 @@
         │   │   │   ├── test_postgres_corps_repository.py
         │   │   │   ├── test_postgres_metiers_repository.py
         │   │   │   └── test_postgres_offers_repository.py
+        │   │   ├── tag
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_tag_models.py
         │   │   └── utils
         │   │       ├── __init__.py
         │   │       ├── test_admin.py
@@ -2270,6 +2399,7 @@
         │   │   ├── __init__.py
         │   │   ├── api
         │   │   │   ├── test_auth_isolation.py
+        │   │   │   ├── test_changelog_api.py
         │   │   │   └── test_token_login_log.py
         │   │   ├── ats
         │   │   │   ├── __init__.py
@@ -2307,7 +2437,9 @@
         │   │   │       └── test_static_pages_view.py
         │   │   ├── commons
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_markdown.py
         │   │   │   ├── test_pagination.py
+        │   │   │   ├── test_rate_limiting.py
         │   │   │   └── test_serializers.py
         │   │   ├── conftest.py
         │   │   ├── fret
@@ -2347,6 +2479,7 @@
         │   │   │       ├── test_ingestion_views.py
         │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
+        │   │   │       ├── test_list_organismes.py
         │   │   │       ├── test_list_sources.py
         │   │   │       ├── test_offer_detail.py
         │   │   │       ├── test_offer_summaries.py
@@ -2364,6 +2497,9 @@
         │   │   │   └── test_views.py
         │   │   └── recruteur
         │   │       ├── __init__.py
+        │   │       ├── tasks
+        │   │       │   ├── __init__.py
+        │   │       │   └── test_reply_as_demo_candidates_task.py
         │   │       ├── test_views_agent_search.py
         │   │       ├── test_views_agents.py
         │   │       ├── test_views_ats_base.py
@@ -2372,6 +2508,7 @@
         │   │       ├── test_views_candidature_detail.py
         │   │       ├── test_views_candidature_logs.py
         │   │       ├── test_views_documents.py
+        │   │       ├── test_views_note_tags.py
         │   │       ├── test_views_notes.py
         │   │       ├── test_views_organisme_agents.py
         │   │       ├── test_views_organisme_detail.py
@@ -2380,11 +2517,8 @@
         │   │       ├── test_views_recrutement_detail.py
         │   │       ├── test_views_recrutement_listes.py
         │   │       ├── test_views_recrutement_params.py
-        │   │       └── test_views_recrutements_responsable.py
-        │   ├── shared
-        │   │   └── presentation
-        │   │       └── api
-        │   │           └── test_rate_limiting.py
+        │   │       ├── test_views_recrutements_responsable.py
+        │   │       └── test_views_tags.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── conversation_views.py
@@ -2404,4 +2538,4 @@
         │       └── test_storages.py
         ├── uv.lock
         └── vite.config.ts
-422 directories, 1984 files
+430 directories, 2110 files
