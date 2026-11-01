@@ -1490,189 +1490,202 @@
 │   │   ├── index.ejs
 │   │   └── main.ts
 │   └── tsconfig.json
-└── quality
-    ├── .cypress-cucumber-preprocessorrc.json
+├── quality
+│   ├── .cypress-cucumber-preprocessorrc.json
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── .nvmrc
+│   ├── .prettierignore
+│   ├── README.md
+│   ├── _doc
+│   │   └── UPGRADE.md
+│   ├── cypress
+│   │   ├── fixtures
+│   │   │   └── fca-low
+│   │   │       ├── docker
+│   │   │       │   ├── api-common.json
+│   │   │       │   ├── environment.json
+│   │   │       │   ├── identity-provider-configs.json
+│   │   │       │   ├── identity-providers.json
+│   │   │       │   ├── service-provider-configs.json
+│   │   │       │   └── service-providers.json
+│   │   │       ├── integ01
+│   │   │       │   ├── api-common.json
+│   │   │       │   ├── environment.json
+│   │   │       │   ├── identity-provider-configs.json
+│   │   │       │   ├── identity-providers.json
+│   │   │       │   ├── service-provider-configs.json
+│   │   │       │   └── service-providers.json
+│   │   │       ├── k8s
+│   │   │       │   ├── environment.json
+│   │   │       │   ├── identity-providers.json
+│   │   │       │   └── service-providers.json
+│   │   │       └── scopes.json
+│   │   ├── integration
+│   │   │   ├── accessibilité
+│   │   │   │   └── accessibilité-connexion.feature
+│   │   │   ├── api
+│   │   │   │   ├── api-authorize.feature
+│   │   │   │   ├── api-discovery.feature
+│   │   │   │   ├── api-health.feature
+│   │   │   │   ├── api-oidc-callback.feature
+│   │   │   │   ├── api-redirect-to-idp.feature
+│   │   │   │   ├── api-token-introspection.feature
+│   │   │   │   └── api-token.feature
+│   │   │   ├── exploitation
+│   │   │   │   ├── blocage-utilisateur.feature
+│   │   │   │   ├── connexion-exploitation.feature
+│   │   │   │   ├── creation-modification-fi-routing.feature
+│   │   │   │   ├── creation-modification-fi.feature
+│   │   │   │   └── creation-modification-fs.feature
+│   │   │   ├── usager
+│   │   │   │   ├── 404.feature
+│   │   │   │   ├── connexion-acr-pci.feature
+│   │   │   │   ├── connexion-acr.feature
+│   │   │   │   ├── connexion-claims.feature
+│   │   │   │   ├── connexion-email-authorise.feature
+│   │   │   │   ├── connexion-email-verification.feature
+│   │   │   │   ├── connexion-fi-non-signé.feature
+│   │   │   │   ├── connexion-fi.feature
+│   │   │   │   ├── connexion-identite-personnalisee.feature
+│   │   │   │   ├── connexion-idp_hint.feature
+│   │   │   │   ├── connexion-local-storage.feature
+│   │   │   │   ├── connexion-login-hint.feature
+│   │   │   │   ├── connexion-pkce.feature
+│   │   │   │   ├── connexion-proconnect-identite.feature
+│   │   │   │   ├── connexion-prompt.feature
+│   │   │   │   ├── connexion-redirect-uri.feature
+│   │   │   │   ├── connexion-scope.feature
+│   │   │   │   ├── connexion-secteur-prive.feature
+│   │   │   │   ├── connexion-session-absente.feature
+│   │   │   │   ├── connexion-session.feature
+│   │   │   │   ├── connexion-siret-hint.feature
+│   │   │   │   ├── connexion-sso.feature
+│   │   │   │   ├── connexion-sub.feature
+│   │   │   │   ├── connexion-token.feature
+│   │   │   │   ├── connexion-usager-multi-fi.feature
+│   │   │   │   ├── connexion-usager.feature
+│   │   │   │   ├── deconnexion-usager.feature
+│   │   │   │   ├── fournisseur-données.feature
+│   │   │   │   ├── hybridge.feature
+│   │   │   │   ├── reconciliation-pci.feature
+│   │   │   │   └── xda.feature
+│   │   │   └── visuel
+│   │   │       └── validation-visuelle-fca-low.feature
+│   │   ├── plugins
+│   │   │   ├── console-log-plugin.ts
+│   │   │   ├── crypto-plugin.ts
+│   │   │   ├── index.ts
+│   │   │   ├── jwt-plugin.ts
+│   │   │   ├── log-plugin.ts
+│   │   │   └── otp-plugin.ts
+│   │   ├── snapshots
+│   │   │   └── base
+│   │   │       └── validation-visuelle-fca-low.feature
+│   │   │           ├── 1ce4009bc3_erreur_desktop.snap.png
+│   │   │           ├── 2ebf6a5851_erreur_mobile.snap.png
+│   │   │           ├── 599d606b53_selectionFI_tablet landscape.snap.png
+│   │   │           ├── 7e6412aedf_selectionFI_mobile.snap.png
+│   │   │           ├── 9b7f0f39af_erreur_tablet portrait.snap.png
+│   │   │           ├── c0e37ce4cb_selectionFI_desktop.snap.png
+│   │   │           ├── c72875dd86_erreur_tablet landscape.snap.png
+│   │   │           └── d8afd680d4_selectionFI_tablet portrait.snap.png
+│   │   └── support
+│   │       ├── api
+│   │       │   ├── dto
+│   │       │   │   ├── get-discovery.dto.ts
+│   │       │   │   └── post-token-introspection.dto.ts
+│   │       │   ├── helpers
+│   │       │   │   └── class-validator-helper.ts
+│   │       │   └── steps
+│   │       │       ├── api-discovery-steps.ts
+│   │       │       ├── api-jwt-steps.ts
+│   │       │       ├── api-request-steps.ts
+│   │       │       ├── api-response-steps.ts
+│   │       │       ├── api-sp-error-steps.ts
+│   │       │       ├── api-token-introspection-steps.ts
+│   │       │       └── api-token-userinfo-steps.ts
+│   │       ├── common
+│   │       │   ├── helpers
+│   │       │   │   ├── accessibility-helper.ts
+│   │       │   │   ├── basic-authorization-helper.ts
+│   │       │   │   ├── cookie-helper.ts
+│   │       │   │   ├── fixtures-helper.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── log-helper.ts
+│   │       │   │   ├── sp-claims-helper.ts
+│   │       │   │   ├── sp-custom-params-helper.ts
+│   │       │   │   └── user-helper.ts
+│   │       │   ├── steps
+│   │       │   │   ├── accessibility-steps.ts
+│   │       │   │   ├── browser-steps.ts
+│   │       │   │   ├── cookie-steps.ts
+│   │       │   │   ├── hooks.ts
+│   │       │   │   ├── image-snapshot-steps.ts
+│   │       │   │   ├── local-log-steps.ts
+│   │       │   │   └── viewport-steps.ts
+│   │       │   └── types
+│   │       │       ├── environment.d.ts
+│   │       │       ├── identity-provider-config.d.ts
+│   │       │       ├── identity-provider.d.ts
+│   │       │       ├── index.d.ts
+│   │       │       ├── operator-user.d.ts
+│   │       │       ├── service-provider-config.d.ts
+│   │       │       └── service-provider.d.ts
+│   │       ├── exploitation
+│   │       │   ├── helpers
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── operator-user-provider.ts
+│   │       │   │   └── operator-user.ts
+│   │       │   ├── pages
+│   │       │   │   ├── exploit-form-page.ts
+│   │       │   │   ├── exploit-idp-form-page.ts
+│   │       │   │   ├── exploit-idp-list-page.ts
+│   │       │   │   ├── exploit-sp-form-page.ts
+│   │       │   │   ├── exploit-sp-list-page.ts
+│   │       │   │   └── totp-modal-component.ts
+│   │       │   └── steps
+│   │       │       ├── exploit-common-steps.ts
+│   │       │       ├── exploit-connection-steps.ts
+│   │       │       ├── exploit-idp-form-steps.ts
+│   │       │       ├── exploit-idp-list-steps.ts
+│   │       │       ├── exploit-sp-form-steps.ts
+│   │       │       └── exploit-sp-list-steps.ts
+│   │       ├── index.ts
+│   │       └── usager
+│   │           └── steps
+│   │               ├── contact-support-steps.ts
+│   │               ├── cross-device-authentication-steps.ts
+│   │               ├── email-verification-steps.ts
+│   │               ├── identity-provider-steps.ts
+│   │               ├── idp-proconnect-identite-steps.ts
+│   │               ├── interaction-idp-selection-steps.ts
+│   │               ├── interaction-steps.ts
+│   │               ├── rie-idp-warning-steps.ts
+│   │               ├── service-provider-error-steps.ts
+│   │               ├── service-provider-steps.ts
+│   │               └── technical-error-steps.ts
+│   ├── cypress-base.config.ts
+│   ├── cypress-fca-low-visual.config.ts
+│   ├── cypress-fca-low.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── scripts
+│   │   ├── get-business-logs.ts
+│   │   ├── multiple-cucumber-html-reporter.ts
+│   │   └── parse-business-log.ts
+│   └── tsconfig.json
+└── statisticat
     ├── .gitignore
-    ├── .npmrc
-    ├── .nvmrc
-    ├── .prettierignore
+    ├── Dockerfile
     ├── README.md
-    ├── _doc
-    │   └── UPGRADE.md
-    ├── cypress
-    │   ├── fixtures
-    │   │   └── fca-low
-    │   │       ├── docker
-    │   │       │   ├── api-common.json
-    │   │       │   ├── environment.json
-    │   │       │   ├── identity-provider-configs.json
-    │   │       │   ├── identity-providers.json
-    │   │       │   ├── service-provider-configs.json
-    │   │       │   └── service-providers.json
-    │   │       ├── integ01
-    │   │       │   ├── api-common.json
-    │   │       │   ├── environment.json
-    │   │       │   ├── identity-provider-configs.json
-    │   │       │   ├── identity-providers.json
-    │   │       │   ├── service-provider-configs.json
-    │   │       │   └── service-providers.json
-    │   │       ├── k8s
-    │   │       │   ├── environment.json
-    │   │       │   ├── identity-providers.json
-    │   │       │   └── service-providers.json
-    │   │       └── scopes.json
-    │   ├── integration
-    │   │   ├── accessibilité
-    │   │   │   └── accessibilité-connexion.feature
-    │   │   ├── api
-    │   │   │   ├── api-authorize.feature
-    │   │   │   ├── api-discovery.feature
-    │   │   │   ├── api-health.feature
-    │   │   │   ├── api-oidc-callback.feature
-    │   │   │   ├── api-redirect-to-idp.feature
-    │   │   │   ├── api-token-introspection.feature
-    │   │   │   └── api-token.feature
-    │   │   ├── exploitation
-    │   │   │   ├── blocage-utilisateur.feature
-    │   │   │   ├── connexion-exploitation.feature
-    │   │   │   ├── creation-modification-fi-routing.feature
-    │   │   │   ├── creation-modification-fi.feature
-    │   │   │   └── creation-modification-fs.feature
-    │   │   ├── usager
-    │   │   │   ├── 404.feature
-    │   │   │   ├── connexion-acr-pci.feature
-    │   │   │   ├── connexion-acr.feature
-    │   │   │   ├── connexion-claims.feature
-    │   │   │   ├── connexion-email-authorise.feature
-    │   │   │   ├── connexion-email-verification.feature
-    │   │   │   ├── connexion-fi-non-signé.feature
-    │   │   │   ├── connexion-fi.feature
-    │   │   │   ├── connexion-identite-personnalisee.feature
-    │   │   │   ├── connexion-idp_hint.feature
-    │   │   │   ├── connexion-local-storage.feature
-    │   │   │   ├── connexion-login-hint.feature
-    │   │   │   ├── connexion-pkce.feature
-    │   │   │   ├── connexion-proconnect-identite.feature
-    │   │   │   ├── connexion-prompt.feature
-    │   │   │   ├── connexion-redirect-uri.feature
-    │   │   │   ├── connexion-scope.feature
-    │   │   │   ├── connexion-secteur-prive.feature
-    │   │   │   ├── connexion-session-absente.feature
-    │   │   │   ├── connexion-session.feature
-    │   │   │   ├── connexion-siret-hint.feature
-    │   │   │   ├── connexion-sso.feature
-    │   │   │   ├── connexion-sub.feature
-    │   │   │   ├── connexion-token.feature
-    │   │   │   ├── connexion-usager-multi-fi.feature
-    │   │   │   ├── connexion-usager.feature
-    │   │   │   ├── deconnexion-usager.feature
-    │   │   │   ├── fournisseur-données.feature
-    │   │   │   ├── hybridge.feature
-    │   │   │   ├── reconciliation-pci.feature
-    │   │   │   └── xda.feature
-    │   │   └── visuel
-    │   │       └── validation-visuelle-fca-low.feature
-    │   ├── plugins
-    │   │   ├── console-log-plugin.ts
-    │   │   ├── crypto-plugin.ts
-    │   │   ├── index.ts
-    │   │   ├── jwt-plugin.ts
-    │   │   ├── log-plugin.ts
-    │   │   └── otp-plugin.ts
-    │   ├── snapshots
-    │   │   └── base
-    │   │       └── validation-visuelle-fca-low.feature
-    │   │           ├── 1ce4009bc3_erreur_desktop.snap.png
-    │   │           ├── 2ebf6a5851_erreur_mobile.snap.png
-    │   │           ├── 599d606b53_selectionFI_tablet landscape.snap.png
-    │   │           ├── 7e6412aedf_selectionFI_mobile.snap.png
-    │   │           ├── 9b7f0f39af_erreur_tablet portrait.snap.png
-    │   │           ├── c0e37ce4cb_selectionFI_desktop.snap.png
-    │   │           ├── c72875dd86_erreur_tablet landscape.snap.png
-    │   │           └── d8afd680d4_selectionFI_tablet portrait.snap.png
-    │   └── support
-    │       ├── api
-    │       │   ├── dto
-    │       │   │   ├── get-discovery.dto.ts
-    │       │   │   └── post-token-introspection.dto.ts
-    │       │   ├── helpers
-    │       │   │   └── class-validator-helper.ts
-    │       │   └── steps
-    │       │       ├── api-discovery-steps.ts
-    │       │       ├── api-jwt-steps.ts
-    │       │       ├── api-request-steps.ts
-    │       │       ├── api-response-steps.ts
-    │       │       ├── api-sp-error-steps.ts
-    │       │       ├── api-token-introspection-steps.ts
-    │       │       └── api-token-userinfo-steps.ts
-    │       ├── common
-    │       │   ├── helpers
-    │       │   │   ├── accessibility-helper.ts
-    │       │   │   ├── basic-authorization-helper.ts
-    │       │   │   ├── cookie-helper.ts
-    │       │   │   ├── fixtures-helper.ts
-    │       │   │   ├── index.ts
-    │       │   │   ├── log-helper.ts
-    │       │   │   ├── sp-claims-helper.ts
-    │       │   │   ├── sp-custom-params-helper.ts
-    │       │   │   └── user-helper.ts
-    │       │   ├── steps
-    │       │   │   ├── accessibility-steps.ts
-    │       │   │   ├── browser-steps.ts
-    │       │   │   ├── cookie-steps.ts
-    │       │   │   ├── hooks.ts
-    │       │   │   ├── image-snapshot-steps.ts
-    │       │   │   ├── local-log-steps.ts
-    │       │   │   └── viewport-steps.ts
-    │       │   └── types
-    │       │       ├── environment.d.ts
-    │       │       ├── identity-provider-config.d.ts
-    │       │       ├── identity-provider.d.ts
-    │       │       ├── index.d.ts
-    │       │       ├── operator-user.d.ts
-    │       │       ├── service-provider-config.d.ts
-    │       │       └── service-provider.d.ts
-    │       ├── exploitation
-    │       │   ├── helpers
-    │       │   │   ├── index.ts
-    │       │   │   ├── operator-user-provider.ts
-    │       │   │   └── operator-user.ts
-    │       │   ├── pages
-    │       │   │   ├── exploit-form-page.ts
-    │       │   │   ├── exploit-idp-form-page.ts
-    │       │   │   ├── exploit-idp-list-page.ts
-    │       │   │   ├── exploit-sp-form-page.ts
-    │       │   │   ├── exploit-sp-list-page.ts
-    │       │   │   └── totp-modal-component.ts
-    │       │   └── steps
-    │       │       ├── exploit-common-steps.ts
-    │       │       ├── exploit-connection-steps.ts
-    │       │       ├── exploit-idp-form-steps.ts
-    │       │       ├── exploit-idp-list-steps.ts
-    │       │       ├── exploit-sp-form-steps.ts
-    │       │       └── exploit-sp-list-steps.ts
-    │       ├── index.ts
-    │       └── usager
-    │           └── steps
-    │               ├── contact-support-steps.ts
-    │               ├── cross-device-authentication-steps.ts
-    │               ├── email-verification-steps.ts
-    │               ├── identity-provider-steps.ts
-    │               ├── idp-proconnect-identite-steps.ts
-    │               ├── interaction-idp-selection-steps.ts
-    │               ├── interaction-steps.ts
-    │               ├── rie-idp-warning-steps.ts
-    │               ├── service-provider-error-steps.ts
-    │               ├── service-provider-steps.ts
-    │               └── technical-error-steps.ts
-    ├── cypress-base.config.ts
-    ├── cypress-fca-low-visual.config.ts
-    ├── cypress-fca-low.config.ts
+    ├── babel.config.cjs
     ├── package-lock.json
     ├── package.json
-    ├── scripts
-    │   ├── get-business-logs.ts
-    │   ├── multiple-cucumber-html-reporter.ts
-    │   └── parse-business-log.ts
+    ├── src
+    │   └── jobs
+    │       ├── s3-transfer-job.ts
+    │       ├── s3-transfer.spec.ts
+    │       └── s3-transfer.ts
     └── tsconfig.json
-377 directories, 1300 files
+380 directories, 1310 files

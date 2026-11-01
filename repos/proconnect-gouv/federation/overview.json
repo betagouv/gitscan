@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "Plateforme de fédération d'identité pour ProConnect, permettant l'accès sécurisé des professionnels aux services de l'État. Elle assure la gestion de l'authentification, des permissions et de l'interopérabilité via des protocoles standards comme l'OIDC.",
+  "description": "ProConnect Fédération est une infrastructure permettant de gérer l'accès sécurisé des professionnels aux services de l'État. Elle assure la fédération d'identité et l'authentification via des standards comme l'OIDC.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice",
     "Sécurité & Conformité",
+    "Administration & Backoffice",
     "API & Intégrations"
   ],
   "audience": "Professionnels",
@@ -19,11 +19,10 @@
     "PostgreSQL",
     "Redis",
     "RabbitMQ",
-    "OIDC",
     "Cypress",
     "Jest",
-    "TypeORM",
-    "Mongoose"
+    "OIDC Provider",
+    "TypeORM"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,19 +32,26 @@
     "Node.js / NestJS",
     "MongoDB & NoSQL",
     "Authentification (composant)",
-    "Tests",
-    "Microservices & Architecture"
+    "Microservices & Architecture",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "session",
-      "mfa"
+      "mfa",
+      "sso",
+      "session"
+    ],
+    "providers": [
+      "Entra ID"
     ]
   },
-  "tests": "Jest pour les tests unitaires et Cypress pour les tests de bout en bout (E2E).",
-  "lastActivity": "2026-10-22T15:48:00+02:00",
+  "tests": [
+    "Jest",
+    "Cypress"
+  ],
+  "lastActivity": "2026-10-30T19:02:07+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -54,9 +60,10 @@
     "TypeScript",
     "Node.js, NestJS & Express",
     "Docker & Conteneurs",
+    "Sécurité & Auth",
+    "SSO & Identité fédérée",
     "Bases de données SQL",
     "Bases de données NoSQL",
-    "Sécurité & Auth",
-    "SSO & Identité fédérée"
+    "Standards & Schémas"
   ]
 }
