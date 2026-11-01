@@ -1,24 +1,28 @@
-## Changelog : euphrosyne (30 derniers jours, au 20 octobre 2026)
+## Changelog : euphrosyne (30 derniers jours, au 29 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les développements ont principalement porté sur le renforcement de la sécurité de l'application (protection contre les injections XSS et sécurisation des redirections), l'optimisation du processus d'authentification via ORCID et la finalisation de la migration vers Django 6.1.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement majeur de la sécurité et de la protection des données. Les mises à jour améliorent la protection des comptes utilisateurs, la gestion des sessions et la robustesse de l'application face aux vulnérabilités web, tout en consolidant la documentation technique.
 
 ### Évolutions fonctionnelles
-- **Sécurité** : Protection contre les failles XSS (Cross-Site Scripting) sur les pages projets et les emails HTML [#2059](https://github.com/betagouv/euphrosyne/issues/2059).
-- **Sécurité** : Sécurisation des segments d'URL de répertoire et refus des redirections non autorisées [#2044](https://github.com/betagouv/euphrosyne/issues/2044).
-- **Sécurité** : Restriction des téléchargements d'images lors de l'export PDF aux origines de confiance [#2045](https://github.com/betagouv/euphrosyne/issues/2045).
-- **Sécurité** : Renforcement de la validation des signatures pour les webhooks Tally [#2042](https://github.com/betagouv/euphrosyne/issues/2042).
-- **Authentification** : Amélioration du flux d'inscription ORCID pour assurer une liaison correcte avec les invitations valides [#2034](https://github.com/betagouv/euphrosyne/issues/2034).
-- **Utilisateurs** : Restauration du statut "staff" pour les nouveaux utilisateurs invités dans un projet [#2033](https://github.com/betagouv/euphrosyne/issues/2033).
-- **Permissions** : Renforcement de l'application des permissions de projet sur l'ensemble des routes de l'API [#2035](https://github.com/betagouv/euphrosyne/issues/2035).
+- **Sécurité des comptes** :
+    - Renforcement des exigences de complexité des mots de passe lors de la création de comptes [#2068](https://github.com/betagouv/euphrosyne/issues/2068).
+    - Unification du mécanisme de verrouillage des comptes (après plusieurs tentatives infructueuses) entre l'interface web et les API [#2071](https://github.com/betagouv/euphrosyne/issues/2071).
+- **Gestion des sessions** :
+    - Mise en place de l'expiration automatique des sessions web en fonction du rôle de l'utilisateur [#2069](https://github.com/betagouv/euphrosyne/issues/2069).
 
 ### Évolutions techniques
-- **Migration** : Finalisation de la migration vers Django 6.1.
-- **Refactoring** : Suppression de l'export PDF des notebooks et de composants de rendu inutilisés pour alléger le code.
-- **Correction** : Résolution des problèmes de compatibilité de l'administration des logs d'emails avec Django 6.1 [#2053](https://github.com/betagouv/euphrosyne/issues/2053).
-- **Correction** : Sécurisation des redirections de retour dans l'administration des groupes d'objets.
-- **Correction** : Liaison des types pour le mixin de permission de participation.
+- **Sécurité et protection des données** :
+    - Correction de vulnérabilités de type XSS (Cross-Site Scripting) sur les pages de projets et dans les e-mails HTML.
+    - Sécurisation des cookies de session et CSRF [#2073](https://github.com/betagouv/euphrosyne/issues/2073).
+    - Renforcement de la validation des signatures des webhooks Tally [#2042](https://github.com/betagouv/euphrosyne/issues/2042).
+    - Amélioration de la politique de sécurité du contenu (CSP) avec reporting des violations vers Sentry.
+    - Sécurisation des segments d'URL des répertoires et restriction des origines de téléchargement lors des exports PDF.
+    - Réduction de l'exposition des données personnelles dans les journaux de diagnostic et l'outil Sentry [#2067](https://github.com/betagouv/euphrosyne/issues/2067).
+- **Maintenance et optimisation** :
+    - Nettoyage du code par la suppression de fonctionnalités et de tests obsolètes (notamment l'export PDF des notebooks et certains rendus de groupes d'objets).
+    - Mise en conformité de l'administration des logs d'e-mails avec Django 6.1.
 
 ### Autres changements
-- **Documentation** : Ajout et mise à jour du Document d'Architecture Technique (DAT), incluant la localisation des ressources Azure [#2052](https://github.com/betagouv/euphrosyne/issues/2052) et [#2054](https://github.com/betagouv/euphrosyne/issues/2054).
-- **Documentation** : Documentation du processus de génération des traductions.
+- **Documentation** :
+    - Ajout de la documentation d'architecture technique (TAD).
+    - Mise à jour de la documentation concernant l'emplacement des ressources Azure.
