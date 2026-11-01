@@ -132,6 +132,7 @@
 │   │   └── livekit
 │   │       └── server.yaml
 │   ├── features
+│   │   ├── audit-logging.md
 │   │   ├── authentication.md
 │   │   ├── calendar_integrations.md
 │   │   ├── recording.md
@@ -257,12 +258,33 @@
     │   │   │   └── user_feature_flags.py
     │   │   ├── api
     │   │   │   ├── __init__.py
+    │   │   │   ├── exceptions.py
     │   │   │   ├── feature_flag.py
     │   │   │   ├── filters.py
+    │   │   │   ├── locks.py
     │   │   │   ├── permissions.py
     │   │   │   ├── serializers.py
     │   │   │   ├── throttling.py
     │   │   │   └── viewsets.py
+    │   │   ├── audit
+    │   │   │   ├── __init__.py
+    │   │   │   ├── actions.py
+    │   │   │   ├── actor.py
+    │   │   │   ├── admin.py
+    │   │   │   ├── apps.py
+    │   │   │   ├── drf.py
+    │   │   │   ├── ecs.py
+    │   │   │   ├── emitter.py
+    │   │   │   ├── enums.py
+    │   │   │   ├── formatter.py
+    │   │   │   ├── registry.py
+    │   │   │   ├── request.py
+    │   │   │   ├── signals.py
+    │   │   │   ├── targets.py
+    │   │   │   ├── testing.py
+    │   │   │   └── utils.py
+    │   │   ├── audit_registry.py
+    │   │   ├── auditing.py
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
@@ -314,6 +336,9 @@
     │   │   │   ├── 0024_room_last_started_at.py
     │   │   │   ├── 0025_application_client_secret_sha256.py
     │   │   │   ├── 0026_alter_application_scopes.py
+    │   │   │   ├── 0027_user_email_upper_idx.py
+    │   │   │   ├── 0028_room_deleted_at.py
+    │   │   │   ├── 0029_alter_application_client_secret_sha256.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -362,7 +387,8 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── _task.py
     │   │   │   ├── connection_test.py
-    │   │   │   └── file.py
+    │   │   │   ├── file.py
+    │   │   │   └── mail.py
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
     │   │   │   └── extra_tags.py
@@ -374,7 +400,19 @@
     │   │   │   │   └── test_service_addons.py
     │   │   │   ├── analytics
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_base.py
     │   │   │   │   └── test_posthog.py
+    │   │   │   ├── audit
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_admin.py
+    │   │   │   │   ├── test_drf.py
+    │   │   │   │   ├── test_ecs.py
+    │   │   │   │   ├── test_emitter.py
+    │   │   │   │   ├── test_registry.py
+    │   │   │   │   ├── test_request.py
+    │   │   │   │   ├── test_signals.py
+    │   │   │   │   ├── test_targets.py
+    │   │   │   │   └── test_utils_prune_empty.py
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
@@ -430,9 +468,11 @@
     │   │   │   │   ├── test_api_rooms_lobby.py
     │   │   │   │   ├── test_api_rooms_lobby_trusted.py
     │   │   │   │   ├── test_api_rooms_participants_management.py
+    │   │   │   │   ├── test_api_rooms_recording_participants.py
     │   │   │   │   ├── test_api_rooms_rename_toggle.py
     │   │   │   │   ├── test_api_rooms_retrieve.py
     │   │   │   │   ├── test_api_rooms_start_recording.py
+    │   │   │   │   ├── test_api_rooms_start_recording_throttling.py
     │   │   │   │   ├── test_api_rooms_stop_recording.py
     │   │   │   │   ├── test_api_rooms_subtitle.py
     │   │   │   │   ├── test_api_rooms_update.py
@@ -444,6 +484,7 @@
     │   │   │   │   ├── test_livekit_events.py
     │   │   │   │   ├── test_lobby.py
     │   │   │   │   ├── test_presence.py
+    │   │   │   │   ├── test_provisional_user_service.py
     │   │   │   │   ├── test_room_management.py
     │   │   │   │   ├── test_sip_management.py
     │   │   │   │   ├── test_subtitle.py
@@ -452,7 +493,8 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── tasks
-    │   │   │   │   └── test_connection_test.py
+    │   │   │   │   ├── test_connection_test.py
+    │   │   │   │   └── test_mail.py
     │   │   │   ├── test_api_diagnostics.py
     │   │   │   ├── test_api_resource_accesses.py
     │   │   │   ├── test_api_user_access_token_authentication.py
@@ -462,6 +504,7 @@
     │   │   │   ├── test_application_secret_hashers.py
     │   │   │   ├── test_dockerflow.py
     │   │   │   ├── test_external_api_authentication.py
+    │   │   │   ├── test_external_api_menshen.py
     │   │   │   ├── test_external_api_rooms.py
     │   │   │   ├── test_external_api_token.py
     │   │   │   ├── test_external_api_users.py
@@ -471,6 +514,8 @@
     │   │   │   ├── test_models_resource_accesses.py
     │   │   │   ├── test_models_rooms.py
     │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_settings_database_pool.py
+    │   │   │   ├── test_settings_livekit_timeout.py
     │   │   │   ├── test_settings_release.py
     │   │   │   ├── test_settings_video_codec.py
     │   │   │   ├── test_utils.py
@@ -597,6 +642,7 @@
     │   │   ├── favicon-32x32.png
     │   │   ├── favicon.ico
     │   │   ├── icon.png
+    │   │   ├── robots.txt
     │   │   └── sounds
     │   │       ├── notifications.mp3
     │   │       └── uprise.mp3
@@ -617,6 +663,7 @@
     │   │   │       ├── article.svg
     │   │   │       ├── chevron_forward.svg
     │   │   │       ├── cloud_download.svg
+    │   │   │       ├── file_settings_line.svg
     │   │   │       ├── language.svg
     │   │   │       ├── login.svg
     │   │   │       ├── mail.svg
@@ -872,11 +919,14 @@
     │   │   │   │   │   ├── ScreenRecordingSidePanel.tsx
     │   │   │   │   │   └── TranscriptSidePanel.tsx
     │   │   │   │   ├── hooks
-    │   │   │   │   │   ├── useHasFeatureWithoutAdminRights.ts
+    │   │   │   │   │   ├── useCanRecord.ts
+    │   │   │   │   │   ├── useHasFeatureWithoutRecordingRights.ts
     │   │   │   │   │   ├── useHasRecordingAccess.ts
+    │   │   │   │   │   ├── useIsRecordingLocked.ts
     │   │   │   │   │   ├── useIsRecordingModeEnabled.ts
     │   │   │   │   │   ├── useMetadataCollectorEnabled.ts
     │   │   │   │   │   ├── useMutateRecording.ts
+    │   │   │   │   │   ├── useRecordingEncoding.ts
     │   │   │   │   │   ├── useRecordingStatuses.ts
     │   │   │   │   │   ├── useRecordingWaitingForTracks.ts
     │   │   │   │   │   └── useRoomMetadata.ts
@@ -1043,7 +1093,9 @@
     │   │   │   │       ├── isRoomValid.ts
     │   │   │   │       ├── isSubsetOf.ts
     │   │   │   │       ├── resolveAudioOutputDeviceId.ts
-    │   │   │   │       └── telephony.ts
+    │   │   │   │       ├── telephony.ts
+    │   │   │   │       ├── toggleTrack.test.ts
+    │   │   │   │       └── toggleTrack.ts
     │   │   │   ├── sdk
     │   │   │   │   ├── api
     │   │   │   │   │   └── useRoomCreationCallback.ts
@@ -1070,6 +1122,7 @@
     │   │   │   │   │       ├── AudioTab.tsx
     │   │   │   │   │       ├── GeneralTab.tsx
     │   │   │   │   │       ├── NotificationsTab.tsx
+    │   │   │   │   │       ├── RecordingTab.tsx
     │   │   │   │   │       ├── RoomsTab.tsx
     │   │   │   │   │       ├── ShortcutTab.tsx
     │   │   │   │   │       ├── TranscriptionTab.tsx
@@ -1103,8 +1156,13 @@
     │   │   │   │       ├── useAreSubtitlesAvailable.ts
     │   │   │   │       └── useSubtitles.tsx
     │   │   │   └── support
-    │   │   │       └── hooks
-    │   │   │           └── useSupport.tsx
+    │   │   │       ├── components
+    │   │   │       │   ├── SupportButton.tsx
+    │   │   │       │   └── SupportWidget.tsx
+    │   │   │       ├── hooks
+    │   │   │       │   └── useSupportWidget.ts
+    │   │   │       └── utils
+    │   │   │           └── supportWidget.ts
     │   │   ├── hooks
     │   │   │   ├── useApplyA11yFonts.ts
     │   │   │   ├── useDelayUnmount.tsx
@@ -1259,10 +1317,12 @@
     │   │   │   ├── permissions.ts
     │   │   │   ├── reactions.ts
     │   │   │   ├── recording.ts
+    │   │   │   ├── recordingEncoding.ts
     │   │   │   ├── screenReaderAnnouncer.ts
     │   │   │   ├── screenSharePreferences.ts
     │   │   │   ├── settings.ts
     │   │   │   ├── silentMic.ts
+    │   │   │   ├── support.ts
     │   │   │   ├── user.ts
     │   │   │   ├── userChoices.ts
     │   │   │   └── userPreferences.ts
@@ -1490,4 +1550,4 @@
         │       ├── test_sentry.py
         │       └── test_user_assign.py
         └── uv.lock
-275 directories, 1217 files
+279 directories, 1273 files
