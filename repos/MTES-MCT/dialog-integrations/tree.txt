@@ -8,11 +8,27 @@
 ├── README.md
 ├── api
 │   └── spec.json
+├── canonical
+│   ├── __init__.py
+│   ├── regulation_measure.py
+│   └── source.py
 ├── cli.py
+├── dialog
+│   ├── __init__.py
+│   ├── calls.py
+│   ├── client.py
+│   ├── failures.py
+│   ├── zone_flow.py
+│   └── zone_sections.py
+├── docs
+│   ├── ajouter-une-source.md
+│   ├── architecture.md
+│   ├── configuration.md
+│   ├── developpement.md
+│   ├── modele-canonique.md
+│   └── synchronisation.md
 ├── integrations
 │   ├── __init__.py
-│   ├── base_data_source_integration.py
-│   ├── base_integration.py
 │   ├── co_brest
 │   │   ├── __init__.py
 │   │   ├── integration.py
@@ -20,11 +36,54 @@
 │   │       ├── __init__.py
 │   │       ├── data_source_integration.py
 │   │       └── schema.py
+│   ├── co_issy-les-moulineaux
+│   │   ├── __init__.py
+│   │   ├── integration.py
+│   │   └── travaux_voirie
+│   │       ├── data_source_integration.py
+│   │       └── schema.py
+│   ├── co_lyon
+│   │   ├── __init__.py
+│   │   ├── chantiers_perturbants
+│   │   │   ├── __init__.py
+│   │   │   ├── data_source_integration.py
+│   │   │   ├── description.py
+│   │   │   └── schema.py
+│   │   ├── chaussees_trottoirs
+│   │   │   ├── __init__.py
+│   │   │   ├── data_source_integration.py
+│   │   │   ├── regulation_key.py
+│   │   │   └── schema.py
+│   │   ├── grand_lyon.py
+│   │   └── integration.py
 │   ├── co_nantes
 │   │   ├── __init__.py
 │   │   ├── circulation_chantier
 │   │   │   ├── data_source_integration.py
 │   │   │   └── schema.py
+│   │   └── integration.py
+│   ├── co_paris
+│   │   ├── __init__.py
+│   │   ├── eudonet
+│   │   │   ├── __init__.py
+│   │   │   ├── client.py
+│   │   │   ├── counts.py
+│   │   │   ├── data_source_integration.py
+│   │   │   ├── extraction.py
+│   │   │   ├── location_filters.py
+│   │   │   ├── locations.py
+│   │   │   ├── measures.py
+│   │   │   ├── published_elsewhere.json
+│   │   │   ├── published_elsewhere.py
+│   │   │   ├── raw_rows.py
+│   │   │   ├── refused_locations.json
+│   │   │   ├── regulations.py
+│   │   │   ├── schema.py
+│   │   │   ├── street_districts.json
+│   │   │   ├── street_names.json
+│   │   │   ├── text.py
+│   │   │   ├── vehicles.py
+│   │   │   └── vocabulary.py
 │   │   └── integration.py
 │   ├── co_rennes
 │   │   ├── __init__.py
@@ -57,21 +116,135 @@
 │           ├── __init__.py
 │           ├── data_source_integration.py
 │           └── schema.py
-├── notifications
+├── integrations.toml
+├── payloads
 │   ├── __init__.py
-│   └── notifier.py
+│   ├── measures.py
+│   └── regulations.py
 ├── pyproject.toml
+├── registry.py
+├── report
+│   ├── __init__.py
+│   ├── notifier.py
+│   ├── summary.py
+│   ├── sync_report.py
+│   └── tchap_bot.py
+├── run
+│   ├── __init__.py
+│   ├── datasets.py
+│   ├── freeze.py
+│   ├── integrate.py
+│   ├── organization.py
+│   ├── sources.py
+│   ├── state.py
+│   └── writes.py
 ├── settings.py
+├── sync
+│   ├── __init__.py
+│   ├── closure.py
+│   ├── dating.py
+│   ├── digest.py
+│   ├── outcome.py
+│   ├── plan.py
+│   ├── snapshot.py
+│   └── totals.py
 ├── tests
 │   ├── __init__.py
 │   ├── co_brest
 │   │   ├── permanent_lineaire.csv
 │   │   └── test_permanent_lineaire.py
+│   ├── co_issy-les-moulineaux
+│   │   └── test_travaux_voirie.py
+│   ├── co_lyon
+│   │   ├── chantiers_perturbants.csv
+│   │   ├── chaussees_trottoirs.csv
+│   │   ├── test_chantiers_perturbants.py
+│   │   └── test_chaussees_trottoirs.py
+│   ├── co_nantes
+│   │   ├── __init__.py
+│   │   └── test_circulation_chantier.py
+│   ├── co_paris
+│   │   ├── eudonet.json
+│   │   ├── eudonet_fixture.py
+│   │   ├── test_eudonet_client.py
+│   │   ├── test_eudonet_extraction.py
+│   │   ├── test_eudonet_integration.py
+│   │   ├── test_eudonet_locations.py
+│   │   └── test_eudonet_transform.py
+│   ├── conftest.py
+│   ├── contract
+│   │   ├── __init__.py
+│   │   └── test_sources.py
+│   ├── dp_aveyron
+│   │   ├── __init__.py
+│   │   ├── test_limitations_vitesse.py
+│   │   └── test_restrictions_gabarits.py
 │   ├── dp_sarthe
 │   │   ├── limitations_vitesse.csv
 │   │   ├── restrictions_gabarits.csv
+│   │   ├── test_chantiers_routiers.py
 │   │   ├── test_limitations_vitesse.py
 │   │   └── test_restriction_gabarits.py
-│   └── test_integration.py
+│   ├── sync
+│   │   ├── test_closure.py
+│   │   ├── test_dating.py
+│   │   ├── test_reconciliation.py
+│   │   ├── test_report.py
+│   │   ├── test_state.py
+│   │   └── test_totals.py
+│   ├── sync_fixtures.py
+│   ├── test_api.py
+│   ├── test_cli.py
+│   ├── test_integration.py
+│   ├── test_local_time.py
+│   ├── test_notifier.py
+│   ├── test_payloads.py
+│   ├── test_registry.py
+│   ├── test_settings.py
+│   ├── test_source_guards.py
+│   ├── test_summary.py
+│   ├── test_tchap_bot.py
+│   ├── test_zone_flow.py
+│   ├── test_zone_sections.py
+│   └── toolkit
+│       ├── __init__.py
+│       ├── test_connectors.py
+│       ├── test_pedestrian_area.py
+│       ├── test_perimeter.py
+│       ├── test_periods.py
+│       ├── test_rules.py
+│       ├── test_rules_location.py
+│       ├── test_rules_measure.py
+│       ├── test_rules_period.py
+│       ├── test_rules_vehicles.py
+│       ├── test_titles.py
+│       ├── test_vehicle_types.py
+│       └── test_wfs.py
+├── toolkit
+│   ├── __init__.py
+│   ├── connectors
+│   │   ├── __init__.py
+│   │   ├── arcgis.py
+│   │   ├── download.py
+│   │   ├── opendatasoft.py
+│   │   └── wfs.py
+│   ├── rules
+│   │   ├── __init__.py
+│   │   ├── apply.py
+│   │   ├── common.py
+│   │   ├── location.py
+│   │   ├── measure.py
+│   │   ├── period.py
+│   │   ├── rule.py
+│   │   └── vehicles.py
+│   └── transforms
+│       ├── __init__.py
+│       ├── local_time.py
+│       ├── pedestrian_area.py
+│       ├── perimeter.py
+│       ├── periods.py
+│       ├── time_slots.py
+│       ├── titles.py
+│       └── vehicle_types.py
 └── uv.lock
-23 directories, 53 files
+48 directories, 201 files

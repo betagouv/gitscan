@@ -1,3 +1,66 @@
+2026-10-31T18:56:35+01:00 - 21ab2d4 - ttdm : fix: co paris recette (#43)
+2026-10-29T17:02:56+01:00 - 90e915d - ttdm : refactor(rules): the common checks become the contract rules, applied last and never disabled
+2026-10-29T16:22:32+01:00 - 7086c89 - ttdm : feat(rules): the period rules apply to every source, unless one disables them with its reason
+2026-10-29T15:52:03+01:00 - dd80146 - ttdm : chore: log silent drops, remove unused DTO helpers, the legacy snapshot path and local file modes, tidy log messages
+2026-10-29T15:39:01+01:00 - 1702560 - ttdm : fix(rules): rules sharing a code apply together; every one-way street is left out, direction given or not
+2026-10-29T15:34:41+01:00 - 1026a3a - ttdm : feat(rules): leave out restrictions holding one way only, and one-way streets without their direction
+2026-10-29T15:11:01+01:00 - 070708a - ttdm : feat(rules): leave out tonnages above 44 t and gauge or heavy goods limits without a threshold, for every source
+2026-10-29T14:58:21+01:00 - 58986dd - ttdm : feat(rules): leave out the measures aimed at pedestrians or cycles, or a lane kept for them
+2026-10-29T14:22:46+01:00 - 415b5c0 - ttdm : feat(rules): Paris applies the three period rules instead of its own filters
+2026-10-29T13:37:42+01:00 - 8a6bf08 - ttdm : refactor(transforms): share title truncation, permanent period, vehicle types from limits and the pedestrian-area twin
+2026-10-29T12:36:10+01:00 - ef78bbb - ttdm : feat(rules): rules becomes validators instead of filters, common rules apply to every source, add the rule about point geometries
+2026-10-29T12:13:55+01:00 - a5e1c2e - ttdm : feat(rules): flag temporary regulations lasting more than a year
+2026-10-29T12:10:33+01:00 - e077014 - ttdm : feat(rules): leave out temporary regulations missing a start or an end date
+2026-10-29T11:45:19+01:00 - adfbca5 - ttdm : refactor(comments): drop internal rule numbers, say the rule in words
+2026-10-29T11:37:28+01:00 - 576d178 - ttdm : fix(checks): leave out the rows failing a common check, not their whole regulation
+2026-10-29T11:36:12+01:00 - fac825b - ttdm : feat(rules): leave out temporary regulations that already ended, first rule of the bank
+2026-10-29T10:52:34+01:00 - beafe98 - ttdm : feat: create the architecture of the toolkit/rules (#41)
+2026-10-29T10:52:11+01:00 - c983bc0 - dependabot[bot] : chore(deps): bump notebook in the uv group across 1 directory (#14)
+2026-10-28T21:18:17+01:00 - f682078 - ttdm : feat(connectors): read Opendatasoft exports and ArcGIS layers in one place
+2026-10-28T17:21:41+01:00 - d7ed1d3 - ttdm : refactor(comments): call the common format the canonical model, keep comments shorter
+2026-10-28T17:04:03+01:00 - 45c45af - ttdm : refactor: split the organization's run into one file per step (#40)
+2026-10-28T13:10:51+01:00 - 70748eb - ttdm : refactor: move the engine out of integrations/, one job per file, docs/ (#39)
+2026-10-28T11:05:14+01:00 - 9cd13b1 - ttdm : feat: safer nightly sync : per-source freeze, common checks, integrations.toml (#38)
+2026-10-26T21:52:37+01:00 - ec2aa3c - ttdm : feat: improve the paris integration (#37)
+2026-10-24T00:44:57+02:00 - 561d1db - ttdm : chore: remove rennes in CI
+2026-10-24T00:42:53+02:00 - a40149a - ttdm : feat: Eudonet Paris v0
+2026-10-10T16:23:26+02:00 - 21b8ebb - ttdm : feat(co_lyon): read free-text qualifiers, publish ZTL speeds, drop State roads
+2026-10-07T22:55:52+02:00 - 91aa8a8 - ttdm : fix(co_nantes): key regulations on the order number
+2026-10-01T00:35:39+02:00 - f1eca8c - ttdm : feat(notifications): show only the count of refusals in Tchap, keep their motives in the log
+2026-09-29T19:41:28+02:00 - 25016c3 - ttdm : fix: keep --identifiers runs off the rest of the prefix, bound network calls and runs in time (#36)
+2026-09-29T19:08:23+02:00 - c35be38 - ttdm : feat(notifications): tell API refusals from outages, flag unexplained moves of the DiaLog total (#35)
+2026-09-29T18:19:41+02:00 - 8d9e963 - ttdm : ci: promote dp_aveyron to production, caps manual reviews at 5
+2026-09-28T22:12:56+02:00 - b171ee2 - ttdm : fix(dp_aveyron): drop vehicle-class limits before reading the direction
+2026-09-28T21:29:44+02:00 - f625a2f - ttdm : fix(co_brest): stop publishing restrictions broader or other than the source
+2026-09-28T18:37:38+02:00 - fd794d2 - ttdm : test: fix the tests that expire on 2026-10-21, cover payload and sync gaps, drop redundant cases
+2026-09-22T18:27:46+02:00 - 4eb22ea - ttdm : feat: apply the 2026-09-21 business rules to Lyon and Aveyron
+2026-09-19T12:06:37+02:00 - a17a1dd - ttdm : refactor: reduce comments while keeping the same level of information
+2026-09-19T11:11:49+02:00 - 07921bf - ttdm : feat: create a single report instead of one per job
+2026-09-19T10:57:00+02:00 - 15e25a8 - ttdm : fix(sync): date undated permanent periods at first write time, not at each CI time
+2026-09-18T18:53:29+02:00 - 914116c - ttdm : feat(ci): markdown summary of each run on the GitHub run page
+2026-09-18T18:43:07+02:00 - c1f8b99 - ttdm : style(notifications): reformat tchap_bot.py
+2026-09-18T18:10:08+02:00 - 1f38c14 - ttdm : refactor(notifications): split the Tchap transport from the report
+2026-09-18T17:53:58+02:00 - 823a9d4 - ttdm : fix(staging-integrations): Nantes schema, Lyon perimeter, Aveyron timeouts; report per dataset
+2026-09-17T17:06:04+02:00 - 36f8dbf - ttdm : ci: Aveyron, Lyon, Rennes and Nantes on the staging
+2026-09-17T15:50:55+02:00 - 204dd17 - ttdm : feat: integrate permanant regulation of la Métropole de Lyon
+2026-09-17T15:35:46+02:00 - adb8b2e - ttdm : feat: intégration dp aveyron permanent regulation
+2026-09-17T15:21:17+02:00 - f97b924 - ttdm : feat: integration chantier perturbant de la Métropole de Lyon
+2026-09-17T15:11:15+02:00 - 67c1ac9 - ttdm : feat: check the organisation's perimeter, DiaLog's competence check replayed upstream to prefilter and avoid losing large regulations
+2026-09-17T15:09:38+02:00 - fe16f9d - ttdm : feat: group locations by measure, split oversized regulations
+2026-09-17T14:34:08+02:00 - 41aa839 - ttdm : feat: enable staging CI and differentiate it in the notifier
+2026-09-17T14:23:33+02:00 - a32c843 - ttdm : feat: daily synchronization (update / close / delete) with gh snapshot + notification improvements (#28)
+2026-09-16T17:34:43+02:00 - 9dacfe3 - ttdm : feat: zone locations, created through their computed street sections
+2026-09-16T16:50:33+02:00 - aa5d59a - ttdm : feat(payloads): daily time slots on a period
+2026-09-16T16:36:03+02:00 - 5b06cb8 - ttdm : feat(shared): WFS 2.0 reader for GeoServer-backed sources
+2026-09-16T16:32:22+02:00 - 7b27c23 - ttdm : refactor(integrations): split BaseIntegration into api, payloads and orchestration
+2026-09-16T16:12:28+02:00 - b650ea9 - ttdm : chore: update spec.json, add local directory to pyright exclusions
+2026-09-15T14:54:00+02:00 - 92bd5f9 - ttdm : fix: fix poorly detected alternate that led to road closure instead of alternate
+2026-08-26T15:41:12+02:00 - 846f48a - ttdm : feat: centralize and fix the times (#21)
+2026-08-18T17:07:20+02:00 - 4f0954c - ttdm : feat(notifications): migrate the daily report to Tchap from Mattermost (#20)
+2026-08-14T15:00:26+02:00 - 4b6ba1f - VivianeR-C : feat: intégration Issy-les-Moulineaux
+2026-08-10T11:35:22+02:00 - 92a9318 - ttdm : feat(settings): .env.dev fallback identity for local development
+2026-08-05T15:37:22+02:00 - c43e0ed - ttdm : chore(api): refresh spec.json depuis la prod
+2026-08-05T15:37:03+02:00 - 356f6f3 - ttdm : chore: ignore explorations from testing + update the gitignore
 2026-05-12T14:15:29+02:00 - 13b7c1d - Ju/smwhr : Merge branch 'main' of github.com:MTES-MCT/dialog-integrations
 2026-05-12T14:15:21+02:00 - 6fb2d9d - Ju/smwhr : objectid -> git perenne
 2026-05-06T09:58:40+02:00 - 8e3b149 - Smwhr / Julien Zamor : Disable Nantes completely
