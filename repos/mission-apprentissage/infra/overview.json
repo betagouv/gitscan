@@ -4,10 +4,10 @@
   "description": "Ce dépôt contient la configuration de base des serveurs ainsi que les images Docker personnalisées pour l'infrastructure de la mission apprentissage.",
   "language": "Shell",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Sécurité & Conformité",
     "Monitoring & Logs",
+    "Infrastructure & Stockage",
     "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Professionnels",
@@ -18,17 +18,18 @@
     "Fluentd",
     "Prometheus",
     "fail2ban",
-    "modsecurity"
+    "modsecurity",
+    "Loki",
+    "S3"
   ],
   "components": [
-    "Documentation & Schémas",
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
     "Serveurs web & Proxy",
     "Scripts & Utilitaires",
     "Ansible & IaC"
   ],
-  "tests": "Tests Docker Compose pour le reverse proxy.",
+  "tests": "Tests Docker Compose pour le reverse proxy et tests de masquage de données sensibles dans les logs Fluentd.",
   "workflows": [
     "_password-rotate.yml",
     "_reboot.yml",
@@ -45,7 +46,7 @@
     "scheduled-all-servers-password-rotate.yml",
     "scheduled-all-servers-reboot.yml"
   ],
-  "lastActivity": "2026-10-15T00:20:52+02:00",
+  "lastActivity": "2026-10-30T22:58:19+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,7 +62,6 @@
     "Git & DevOps",
     "CI/CD & GitHub Actions",
     "Monitoring & Observabilité",
-    "Sécurité & Auth",
-    "Documentation"
+    "Sécurité & Auth"
   ]
 }

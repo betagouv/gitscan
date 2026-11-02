@@ -153,6 +153,8 @@
 │   │   │       ├── wait-deployment.sh.jinja2
 │   │   │       └── workaround
 │   │   │           └── apt-daily.sh
+│   │   ├── containerd
+│   │   │   └── config.toml.jinja2
 │   │   ├── fail2ban
 │   │   │   ├── action.d
 │   │   │   │   └── slack-notify.conf
@@ -166,6 +168,8 @@
 │   │   │       └── whitelist.local
 │   │   ├── logrotate.d
 │   │   │   └── nginx
+│   │   ├── rsyslog
+│   │   │   └── rsyslog.conf
 │   │   ├── sshd
 │   │   │   └── sshd_config.jinja2
 │   │   ├── systemd
@@ -200,6 +204,13 @@
 │   │   ├── fluent.conf
 │   │   └── tests
 │   │       └── redact.sh
+│   ├── matomo
+│   │   ├── Dockerfile
+│   │   ├── PLATFORMS
+│   │   ├── bootstrap.php
+│   │   └── php
+│   │       ├── 90-matomo.ini
+│   │       └── zz-matomo.conf
 │   ├── reverse_proxy
 │   │   ├── Dockerfile
 │   │   ├── files
@@ -285,7 +296,7 @@
     │   ├── inventories
     │   │   └── env.ini
     │   ├── nftables.production.conf.jinja2
-    │   └── nftables.recette.conf.jinja2
+    │   └── nftables.staging.conf.jinja2
     ├── data
     │   ├── authorizations
     │   │   ├── .openpgp-keyid
@@ -359,4 +370,4 @@
         ├── inventories
         │   └── env.ini
         └── nftables.production.conf.jinja2
-105 directories, 256 files
+109 directories, 263 files
