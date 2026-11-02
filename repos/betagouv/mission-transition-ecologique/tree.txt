@@ -674,6 +674,7 @@
 │   │   │   │   │       ├── index.get.ts
 │   │   │   │   │       └── update_posthog_data.get.ts
 │   │   │   │   ├── plugins
+│   │   │   │   │   ├── openApiFilter.ts
 │   │   │   │   │   └── programServiceInit.ts
 │   │   │   │   ├── tsconfig.json
 │   │   │   │   └── utils
@@ -753,6 +754,8 @@
 │   │   │   │   │   │   ├── TrackColOption.ts
 │   │   │   │   │   │   ├── TrackComponent.ts
 │   │   │   │   │   │   ├── TrackSiret.ts
+│   │   │   │   │   │   ├── trackActivity.ts
+│   │   │   │   │   │   ├── trackCity.ts
 │   │   │   │   │   │   ├── trackStructure.ts
 │   │   │   │   │   │   └── usedTrack.ts
 │   │   │   │   │   ├── trackBuildingProperty.ts
@@ -895,6 +898,7 @@
 │   │   │   │       ├── api
 │   │   │   │       │   ├── recherche-entreprise
 │   │   │   │       │   │   ├── recherche-entreprise.ts
+│   │   │   │       │   │   ├── rechercheEntrepriseTest.ts
 │   │   │   │       │   │   └── type.ts
 │   │   │   │       │   └── sirene
 │   │   │   │       │       ├── sirene.ts
@@ -920,6 +924,7 @@
 │   │   │   │   ├── domain
 │   │   │   │   │   ├── opportunityAssociatedData.ts
 │   │   │   │   │   ├── opportunityFeatures.ts
+│   │   │   │   │   ├── optInRequiredError.ts
 │   │   │   │   │   ├── spi.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── index.ts
@@ -995,7 +1000,8 @@
 │   │   │   │   │               ├── brevoContact.mock.ts
 │   │   │   │   │               ├── brevoDeal.mock.ts
 │   │   │   │   │               └── brevoMail.mock.ts
-│   │   │   │   └── opportunity.fixtures.ts
+│   │   │   │   ├── opportunity.fixtures.ts
+│   │   │   │   └── opportunityBodySchema.test.ts
 │   │   │   ├── opportunityHub
 │   │   │   │   └── infrastructure
 │   │   │   │       └── api
@@ -1115,6 +1121,7 @@
 │   │   │   ├── credit-impot-innovation.yaml
 │   │   │   ├── credit-impot-recherche.yaml
 │   │   │   ├── decarb-flash-2025-2027.yaml
+│   │   │   ├── decarb-flash-artisan.yaml
 │   │   │   ├── decarb-ind-25.yaml
 │   │   │   ├── defi-eco-2050.yaml
 │   │   │   ├── demi-bac.yaml
@@ -1176,6 +1183,7 @@
 │   │   │   ├── mission-conseil-rse.yaml
 │   │   │   ├── mission-strategie-environnement.yaml
 │   │   │   ├── mobilipro.yaml
+│   │   │   ├── mon-parcours-economies-energie.yaml
 │   │   │   ├── mooc-biodiversite-entreprise.yaml
 │   │   │   ├── nature-ta-ville.yaml
 │   │   │   ├── navires-energies-propre.yaml
@@ -1195,7 +1203,7 @@
 │   │   │   ├── performa-environnement.yaml
 │   │   │   ├── plan-de-developpement-des-competences.yaml
 │   │   │   ├── plan-de-mobilite.yaml
-│   │   │   ├── pret-*.yaml  (7 files)
+│   │   │   ├── pret-*.yaml  (8 files)
 │   │   │   ├── prime-a-la-conversion.yaml
 │   │   │   ├── prit-hdf.yaml
 │   │   │   ├── programme-*.yaml  (6 files)
@@ -1372,6 +1380,7 @@
 │   │   │   ├── administration_whitelist.json
 │   │   │   ├── communes.json
 │   │   │   ├── data_gouv_export.csv
+│   │   │   ├── establishments_tests.json
 │   │   │   ├── index.ts
 │   │   │   ├── nafMapping.json
 │   │   │   ├── operator_images_download_info.json
@@ -1483,4 +1492,4 @@
 ├── scalingo.json
 ├── tsconfig.base.json
 └── vitest.workspace.ts
-275 directories, 1344 files
+275 directories, 1354 files

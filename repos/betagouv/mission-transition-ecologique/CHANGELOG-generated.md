@@ -1,14 +1,11 @@
-## Changelog : mission-transition-ecologique (30 derniers jours, au 25 juillet 2026)
+## Changelog : mission-transition-ecologique (30 derniers jours, au 26 octobre 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour se concentrent principalement sur la synchronisation des données des aides et programmes de transition écologique. Une correction a également été apportée au pipeline CI pour éviter les erreurs liées à la longueur des arguments lors des mises à jour automatiques des données.
+Les récentes mises à jour renforcent la fiabilité de l'envoi des données vers la plateforme "Place des Entreprises" et améliorent les outils de surveillance technique pour permettre une détection et une résolution plus rapides des erreurs.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période. Les modifications concernent principalement la mise à jour des données disponibles sur la plateforme.
+- Amélioration de la transmission des données vers "Place des Entreprises" : inclusion de l'identifiant de thématique des demandes [#2686](https://github.com/betagouv/mission-transition-ecologique/issues/2686) et ajustement du délai d'envoi pour garantir la stabilité des échanges [#2690](https://github.com/betagouv/mission-transition-ecologique/issues/2690).
 
 ### Évolutions techniques
-- Correction d'un problème dans le pipeline CI qui provoquait des échecs lors des mises à jour automatiques des données via les pull requests. Cette correction résout l'erreur "Argument list too long" [#2676](https://github.com/betagouv/mission-transition-ecologique/issues/2676).
-- Mises à jour automatisées des données des projets et programmes de transition écologique via les workflows CI.
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Observabilité et débogage : mise en place du suivi des échecs de transmission vers "Place des Entreprises" dans Sentry [#2687](https://github.com/betagouv/mission-transition-ecologique/issues/2687) et correction de l'envoi des source maps serveur pour faciliter l'analyse des erreurs [#2689](https://github.com/betagouv/mission-transition-ecologique/issues/2689).
+- API : exposition de la documentation OpenAPI sur l'environnement de préproduction [#2685](https://github.com/betagouv/mission-transition-ecologique/issues/2685).
