@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-espace-partenaires",
   "name": "proconnect-espace-partenaires",
-  "description": "Cette application permet aux partenaires de ProConnect, tels que les fournisseurs de services et d'identité, de créer des identifiants en environnement de préproduction et de consulter la documentation technique d'implémentation.",
+  "description": "Application destinée aux partenaires de ProConnect pour la création d'identifiants en préproduction et l'accès à la documentation technique d'implémentation.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
     "Gestion des équipes & Partenaires",
-    "Formulaires & Démarches",
-    "Gestion documentaire & Fichiers"
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -27,37 +27,40 @@
     "PostgreSQL & SQL",
     "MongoDB & NoSQL",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
-    "Authentification (composant)",
     "API REST & GraphQL",
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
+    "Authentification (composant)",
     "Tests"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "jwt",
-      "session",
-      "mfa"
+      "email-password",
+      "mfa",
+      "magic-link",
+      "sso"
     ],
     "providers": [
+      "Microsoft Entra ID",
       "Keycloak",
-      "Microsoft Entra ID"
+      "LemonLDAP"
     ]
   },
-  "tests": "Playwright pour les tests end-to-end, tests unitaires, linting avec ESLint et formatage avec Prettier.",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Playwright",
+    "ESLint",
+    "Prettier"
   ],
-  "lastActivity": "2026-10-19T09:08:48+02:00",
+  "lastActivity": "2026-10-22T16:54:36+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
     "React & Next.js",
     "TypeScript",
+    "Docker & Conteneurs",
     "Sécurité & Auth",
     "Design System & UI",
-    "Docker & Conteneurs",
     "Écosystème beta.gouv / État"
   ]
 }
