@@ -41,6 +41,7 @@
 │   ├── 0011-enregistrement-automatique-des-formulaires.md
 │   ├── 0012-remplacement-de-smallchat-par-tchap.md
 │   ├── 0013-package-de-contrat-de-l-api-publique.md
+│   ├── 0014-demarrage-du-backend-avec-jdk-25-et-un-cache-aot.md
 │   ├── adrs.iml
 │   └── images
 │       └── pno_types_architecture.png
@@ -812,6 +813,7 @@
 │   │   │   │                   │   │   │   ├── PriorityVesselGroupDataOutput.kt
 │   │   │   │                   │   │   │   ├── PriorityVesselGroupWithVesselsDataOutput.kt
 │   │   │   │                   │   │   │   ├── ProducerOrganizationMembershipDataOutput.kt
+│   │   │   │                   │   │   │   ├── PublicControlUnitDataOutput.kt
 │   │   │   │                   │   │   │   ├── ReportingAndOccurrencesDataOutput.kt
 │   │   │   │                   │   │   │   ├── ReportingDataOutput.kt
 │   │   │   │                   │   │   │   ├── ReportingValueDataOutput.kt
@@ -843,6 +845,7 @@
 │   │   │   │                   │   │   │   ├── InfractionController.kt
 │   │   │   │                   │   │   │   ├── PositionsController.kt
 │   │   │   │                   │   │   │   ├── PublicBeaconMalfunctionController.kt
+│   │   │   │                   │   │   │   ├── PublicControlUnitController.kt
 │   │   │   │                   │   │   │   ├── PublicMissionActionsController.kt
 │   │   │   │                   │   │   │   ├── PublicOperationalAlertController.kt
 │   │   │   │                   │   │   │   ├── PublicPortController.kt
@@ -1554,6 +1557,7 @@
 │   │       │               └── monitorfish
 │   │       │                   ├── UtilsUTests.kt
 │   │       │                   ├── config
+│   │       │                   │   ├── AotTrainingEnvUTests.kt
 │   │       │                   │   └── MapperConfigurationUTests.kt
 │   │       │                   ├── domain
 │   │       │                   │   ├── UtilsUTests.kt
@@ -1792,6 +1796,7 @@
 │   │       │                   │   │   │   ├── InfractionControllerITests.kt
 │   │       │                   │   │   │   ├── PositionsControllerITests.kt
 │   │       │                   │   │   │   ├── PublicBeaconMalfunctionControllerITests.kt
+│   │       │                   │   │   │   ├── PublicControlUnitControllerITests.kt
 │   │       │                   │   │   │   ├── PublicMissionActionsControllerITests.kt
 │   │       │                   │   │   │   ├── PublicPendingAlertControllerITests.kt
 │   │       │                   │   │   │   ├── PublicPortControllerITests.kt
@@ -3282,6 +3287,7 @@
 │   │   │   ├── Map
 │   │   │   │   ├── Map.types.ts
 │   │   │   │   ├── __tests__
+│   │   │   │   │   ├── jumpToMainWorldIfTooFar.test.ts
 │   │   │   │   │   ├── mocks
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── utils.test.ts
@@ -3352,11 +3358,14 @@
 │   │   │   │   │   ├── useMapLayer.ts
 │   │   │   │   │   ├── useMapMount.ts
 │   │   │   │   │   ├── useMapPointerMove.ts
-│   │   │   │   │   └── useWebGLLayerVisibility.ts
+│   │   │   │   │   ├── useWebGLLayerVisibility.ts
+│   │   │   │   │   └── useWorldCopyJump.ts
 │   │   │   │   ├── layer.slice.backoffice.ts
 │   │   │   │   ├── layer.slice.ts
 │   │   │   │   ├── layers
 │   │   │   │   │   ├── BaseLayer.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── useGetLineFeatureIdToCoordinates.ts
 │   │   │   │   │   │   └── useIsZooming.ts
@@ -3401,6 +3410,7 @@
 │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   └── dummyMissions.ts
 │   │   │   │   │   ├── getMissionCompletionStatus.test.ts
+│   │   │   │   │   ├── getMissionFeatureZone.test.ts
 │   │   │   │   │   └── getMissionStatus.test.ts
 │   │   │   │   ├── components
 │   │   │   │   │   ├── MissionForm
@@ -3969,6 +3979,8 @@
 │   │   │   │   │   │   │   ├── slice.ts
 │   │   │   │   │   │   │   └── useGetFilteredReportingsQuery.ts
 │   │   │   │   │   │   ├── TableBodyEmptyData.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── constants.test.ts
 │   │   │   │   │   │   ├── cells
 │   │   │   │   │   │   │   └── ActionButtonsCell.tsx
 │   │   │   │   │   │   ├── columns.tsx
@@ -4657,6 +4669,8 @@
 │   │   │   │   ├── getUrlOrPathWithQueryParams.test.ts
 │   │   │   │   ├── includesSome.test.ts
 │   │   │   │   ├── isArray.test.ts
+│   │   │   │   ├── isBrowserSupported.report.test.ts
+│   │   │   │   ├── isBrowserSupported.test.ts
 │   │   │   │   ├── isCypress.test.ts
 │   │   │   │   ├── isNumeric.test.ts
 │   │   │   │   ├── isObject.test.ts
@@ -4768,9 +4782,11 @@
 │   │   ├── .env.local.defaults
 │   │   ├── app
 │   │   │   ├── Dockerfile
+│   │   │   ├── aot-training.env
 │   │   │   ├── certs
 │   │   │   │   └── harica-tls-rsa-root-ca-2021.pem
-│   │   │   └── env.sh
+│   │   │   ├── env.sh
+│   │   │   └── start.sh
 │   │   ├── database
 │   │   │   ├── docker-entrypoint-initdb.d
 │   │   │   │   ├── 000_install_timescaledb.sh
@@ -5604,6 +5620,9 @@
 │   │   │       │   └── malfunction_notification_to_foreign_fmc.jinja
 │   │   │       ├── email_actions_to_units
 │   │   │       │   └── email_actions_to_units.jinja
+│   │   │       ├── natinfs_checkup
+│   │   │       │   ├── body.jinja
+│   │   │       │   └── main.jinja
 │   │   │       ├── prior_notifications
 │   │   │       │   ├── base_template.jinja
 │   │   │       │   └── email_body_template.jinja
@@ -5660,6 +5679,7 @@
 │   │   │   ├── missing_far_alerts.py
 │   │   │   ├── missing_trip_numbers.py
 │   │   │   ├── missions.py
+│   │   │   ├── natinfs_checkup.py
 │   │   │   ├── notify_beacon_malfunctions.py
 │   │   │   ├── ports.py
 │   │   │   ├── position_alert.py
@@ -5820,6 +5840,7 @@
 │   │   │   │   ├── fleet_segments_open_data.sql
 │   │   │   │   ├── geocoded_ports.sql
 │   │   │   │   ├── h3_is_anchorage.sql
+│   │   │   │   ├── infraction_threat_characterization.sql
 │   │   │   │   ├── infringement_risk_levels.sql
 │   │   │   │   ├── known_beacon_malfunctions.sql
 │   │   │   │   ├── last_positions.sql
@@ -6218,6 +6239,7 @@
 │       │   ├── test_missing_far_alerts.py
 │       │   ├── test_missing_trip_numbers.py
 │       │   ├── test_missions.py
+│       │   ├── test_natinfs_checkup.py
 │       │   ├── test_notify_beacon_malfunctions.py
 │       │   ├── test_notify_beacon_malfunctions_expected_data.csv
 │       │   ├── test_ports.py
@@ -6278,4 +6300,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-869 directories, 5726 files
+872 directories, 5745 files
