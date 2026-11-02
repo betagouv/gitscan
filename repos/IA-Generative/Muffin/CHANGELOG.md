@@ -1,5 +1,466 @@
 # Changelog
 
+## [0.46.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.45.0...v0.46.0-rc) (2026-11-02)
+
+
+### Features
+
+* **mémoire:** collections habituelles en tête du sélecteur ([#286](https://github.com/IA-Generative/Muffin/issues/286)) ([4a8ed13](https://github.com/IA-Generative/Muffin/commit/4a8ed13eea9b803e71bf8e03a7ac87434d87ae6b))
+* **mémoire:** collections habituelles, a priori du routage ([#286](https://github.com/IA-Generative/Muffin/issues/286)) ([6b77642](https://github.com/IA-Generative/Muffin/commit/6b776420b298964515f319d6b32ee5aa44b48465))
+* **voix:** enregistreur de dictée, lecture par le serveur et page d'administration ([#517](https://github.com/IA-Generative/Muffin/issues/517)) ([c78fa79](https://github.com/IA-Generative/Muffin/commit/c78fa7933b0a8ed3248ca1b84eda724354b3cba9))
+* **voix:** pod facultatif worker/tts, synthèse Kitten TTS 2 compatible OpenAI ([#517](https://github.com/IA-Generative/Muffin/issues/517)) ([e9d0246](https://github.com/IA-Generative/Muffin/commit/e9d024694e5a7c7defe68f32bcc617abc9eb9509))
+* **voix:** transcription et lecture à voix haute par un service compatible OpenAI ([#517](https://github.com/IA-Generative/Muffin/issues/517)) ([76a29fc](https://github.com/IA-Generative/Muffin/commit/76a29fc588c982662741058ec02816fb119f7266))
+
+## [0.45.0](https://github.com/IA-Generative/Muffin/compare/v0.44.0...v0.45.0) (2026-11-01)
+
+
+### Features
+
+* **mémoire:** apprendre le style des réponses depuis les 👍/👎 ([#285](https://github.com/IA-Generative/Muffin/issues/285)) ([07e360c](https://github.com/IA-Generative/Muffin/commit/07e360cdf117a66cecd21263532432ed22cd903f))
+
+## [0.45.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.44.0...v0.45.0-rc) (2026-11-01)
+
+
+### Features
+
+* **mémoire:** apprendre le style des réponses depuis les 👍/👎 ([#285](https://github.com/IA-Generative/Muffin/issues/285)) ([a923cf6](https://github.com/IA-Generative/Muffin/commit/a923cf62721b785eae48d2afd82309e91924e71c))
+
+## [0.44.0](https://github.com/IA-Generative/Muffin/compare/v0.43.0...v0.44.0) (2026-11-01)
+
+
+### Features
+
+* **garde-fous:** contrôler la saisie avant l'agent, règles, modèle ou service HTTP ([#516](https://github.com/IA-Generative/Muffin/issues/516)) ([9bd8bc1](https://github.com/IA-Generative/Muffin/commit/9bd8bc103770a5ec4a047e3229e2cb1c5724d533))
+* **garde-fous:** page d'administration et indication dans le chat ([#516](https://github.com/IA-Generative/Muffin/issues/516)) ([a2412d4](https://github.com/IA-Generative/Muffin/commit/a2412d4ca71ab6cd10028fe53df4eba69b3be745))
+* **mémoire:** mémoire utilisateur, injection dans les réponses et commandes du chat ([#282](https://github.com/IA-Generative/Muffin/issues/282), [#284](https://github.com/IA-Generative/Muffin/issues/284)) ([67fac1d](https://github.com/IA-Generative/Muffin/commit/67fac1d03d30e8042986fd277275160276ae37d0))
+* **mémoire:** page « Ma mémoire », interrupteur du chat et mention sur les réponses ([#283](https://github.com/IA-Generative/Muffin/issues/283)) ([9e5a1a7](https://github.com/IA-Generative/Muffin/commit/9e5a1a701e87f5d1a3d087c642cbc863af7a6911))
+* **routines:** activées par défaut, compteur de notifications relevé toutes les heures ([#524](https://github.com/IA-Generative/Muffin/issues/524)) ([f5ef0d4](https://github.com/IA-Generative/Muffin/commit/f5ef0d49c71f0c3680ef96ced486be3a2088e466))
+* **routines:** page Routines, cloche de notifications et réglages d'administration ([#524](https://github.com/IA-Generative/Muffin/issues/524)) ([361fae1](https://github.com/IA-Generative/Muffin/commit/361fae148caf557b5c7e7252394c0eca8862840d))
+* **routines:** routines de l'agent et centre de notifications, côté serveur ([#524](https://github.com/IA-Generative/Muffin/issues/524)) ([c194059](https://github.com/IA-Generative/Muffin/commit/c19405912239b4e0f3ffc5808d81cd9b2558ee78))
+
+## [0.44.0-rc.2](https://github.com/IA-Generative/Muffin/compare/v0.44.0-rc.1...v0.44.0-rc.2) (2026-11-01)
+
+
+### Features
+
+* **mémoire:** mémoire utilisateur, injection dans les réponses et commandes du chat ([#282](https://github.com/IA-Generative/Muffin/issues/282), [#284](https://github.com/IA-Generative/Muffin/issues/284)) ([3a13843](https://github.com/IA-Generative/Muffin/commit/3a13843fe3bcb159740210b7f0a692df13380080))
+* **mémoire:** page « Ma mémoire », interrupteur du chat et mention sur les réponses ([#283](https://github.com/IA-Generative/Muffin/issues/283)) ([1b87497](https://github.com/IA-Generative/Muffin/commit/1b874971f367c721c8aa13755de80678a3a91b73))
+
+## [0.44.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.44.0-rc...v0.44.0-rc.1) (2026-11-01)
+
+
+### Features
+
+* **garde-fous:** contrôler la saisie avant l'agent, règles, modèle ou service HTTP ([#516](https://github.com/IA-Generative/Muffin/issues/516)) ([cd1ef7d](https://github.com/IA-Generative/Muffin/commit/cd1ef7d796df6f6a3dccf82bc3ef4d281a57fab8))
+* **garde-fous:** page d'administration et indication dans le chat ([#516](https://github.com/IA-Generative/Muffin/issues/516)) ([4f06516](https://github.com/IA-Generative/Muffin/commit/4f06516dbefebc82c8657ec4a94ef8b26bcf9b87))
+
+## [0.44.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.43.0...v0.44.0-rc) (2026-11-01)
+
+
+### Features
+
+* **routines:** activées par défaut, compteur de notifications relevé toutes les heures ([#524](https://github.com/IA-Generative/Muffin/issues/524)) ([d2ac666](https://github.com/IA-Generative/Muffin/commit/d2ac666670b047c9e081f6d7078be8ffd1d3316a))
+* **routines:** page Routines, cloche de notifications et réglages d'administration ([#524](https://github.com/IA-Generative/Muffin/issues/524)) ([5e51e92](https://github.com/IA-Generative/Muffin/commit/5e51e926df2bc59b4efe939fa53590fa70f182a3))
+* **routines:** routines de l'agent et centre de notifications, côté serveur ([#524](https://github.com/IA-Generative/Muffin/issues/524)) ([88fdc0d](https://github.com/IA-Generative/Muffin/commit/88fdc0d24da88bfe28543d5b912ea8ed3b10ebf0))
+
+## [0.43.0](https://github.com/IA-Generative/Muffin/compare/v0.42.0...v0.43.0) (2026-11-01)
+
+
+### Features
+
+* **chat:** joindre des images à un message, lues par un modèle de vision ([#512](https://github.com/IA-Generative/Muffin/issues/512)) ([5991df4](https://github.com/IA-Generative/Muffin/commit/5991df49d9821b1363cfbd946112f6e169794350))
+* **frontend:** afficher les images que l'assistant a générées pendant sa réponse ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([0adf31d](https://github.com/IA-Generative/Muffin/commit/0adf31db0e9e63d71c7ca55bda19126fa8777ad5))
+* **frontend:** joindre des images à un message, par bouton, collage ou glisser-déposer ([#512](https://github.com/IA-Generative/Muffin/issues/512)) ([9e61eed](https://github.com/IA-Generative/Muffin/commit/9e61eed7c533c7605bf92b4deb9c6ab1a4280bec))
+* **frontend:** mode Image du composeur, affichage et réglages d'administration ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([c0bf762](https://github.com/IA-Generative/Muffin/commit/c0bf76242d5e931c319871b6dfbd028a9afa06ef))
+* **images:** génération d'images dans le chat via une API compatible OpenAI ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([9b896f7](https://github.com/IA-Generative/Muffin/commit/9b896f7acedd184650c79bdade644e87c66c54ae))
+* **images:** l'assistant génère une image de lui-même avec l'outil generer_image ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([e84a77d](https://github.com/IA-Generative/Muffin/commit/e84a77d30478d2e5d739bbe5b5497be07c04a01b))
+* **images:** retouche d'image par le mode Image et par l'outil retoucher_image ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([8d13f2f](https://github.com/IA-Generative/Muffin/commit/8d13f2f11d29e574d456dad69c3b045c59bf9f2a))
+* **images:** retouche depuis le mode Image et modèle de retouche en administration ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([1c04f66](https://github.com/IA-Generative/Muffin/commit/1c04f6698e2134205a4d7edb64cebcf8d91c276f))
+
+## [0.43.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.42.0...v0.43.0-rc) (2026-11-01)
+
+
+### Features
+
+* **chat:** joindre des images à un message, lues par un modèle de vision ([#512](https://github.com/IA-Generative/Muffin/issues/512)) ([177ac70](https://github.com/IA-Generative/Muffin/commit/177ac70760f268f3122fb733c606a57866bf687b))
+* **frontend:** afficher les images que l'assistant a générées pendant sa réponse ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([cb2cc39](https://github.com/IA-Generative/Muffin/commit/cb2cc395fe5e954ebccb339debb323f2940241a9))
+* **frontend:** joindre des images à un message, par bouton, collage ou glisser-déposer ([#512](https://github.com/IA-Generative/Muffin/issues/512)) ([8c64ebb](https://github.com/IA-Generative/Muffin/commit/8c64ebb28335a7636aabb3e13aebcb8124de8e77))
+* **frontend:** mode Image du composeur, affichage et réglages d'administration ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([27f6eb6](https://github.com/IA-Generative/Muffin/commit/27f6eb6d793eb6e17caa15f31e7f9e8c8451b614))
+* **images:** génération d'images dans le chat via une API compatible OpenAI ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([e8b4046](https://github.com/IA-Generative/Muffin/commit/e8b4046b5d4bc5939a53abc8bf8da7baa6295923))
+* **images:** l'assistant génère une image de lui-même avec l'outil generer_image ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([9593c44](https://github.com/IA-Generative/Muffin/commit/9593c441b410c6a7979a1afc49fb4f2e489cb5e5))
+* **images:** retouche d'image par le mode Image et par l'outil retoucher_image ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([8970c2d](https://github.com/IA-Generative/Muffin/commit/8970c2d4ea3855c914468c1327d7eb6743a75abb))
+* **images:** retouche depuis le mode Image et modèle de retouche en administration ([#518](https://github.com/IA-Generative/Muffin/issues/518)) ([82d3aa3](https://github.com/IA-Generative/Muffin/commit/82d3aa34d568b8190d06471af4f9e1a39f4e3916))
+
+## [0.42.0](https://github.com/IA-Generative/Muffin/compare/v0.41.0...v0.42.0) (2026-11-01)
+
+
+### Features
+
+* **agent:** consignes, portée et outils d'un assistant sur le même graphe ([36cd1db](https://github.com/IA-Generative/Muffin/commit/36cd1db4387e5964550b71b931bc855a76ef5d71))
+* **agent:** le planificateur peut appeler un outil, sans appel de plus ([925cf4d](https://github.com/IA-Generative/Muffin/commit/925cf4db84a4fe3a5e1ceca04c5dd506c11903c2))
+* **agent:** une requête du plan peut être confiée à un assistant consulté ([77372f5](https://github.com/IA-Generative/Muffin/commit/77372f5ec4986fc60f691ae820edebd1421308e8))
+* **assistants:** assistants partageables comme les collections ([947a0d5](https://github.com/IA-Generative/Muffin/commit/947a0d5ab353b00ad72a8487928c7dc8eaede6b4))
+* **assistants:** recherche, suggestion et consultation d'autres assistants ([38cd0cc](https://github.com/IA-Generative/Muffin/commit/38cd0ccd48cd7c94d4a87692c478e02f73f1d5fb))
+* **frontend:** chercher un outil par ce qu'il fait ([#530](https://github.com/IA-Generative/Muffin/issues/530)) ([a8441c7](https://github.com/IA-Generative/Muffin/commit/a8441c76d833613d8fb0cb419d2d53087c68a5bb))
+* **frontend:** page des assistants et sélecteur dans le chat ([#514](https://github.com/IA-Generative/Muffin/issues/514)) ([f375cf4](https://github.com/IA-Generative/Muffin/commit/f375cf475af0777371d51ef7efce0176989b0603))
+* **frontend:** page des outils, serveurs MCP et menu des outils du chat ([#343](https://github.com/IA-Generative/Muffin/issues/343)) ([91804bc](https://github.com/IA-Generative/Muffin/commit/91804bc55a5836a41c0e695b94711f77d0817b27))
+* **frontend:** recherche d'assistants et réglage de la consultation ([#531](https://github.com/IA-Generative/Muffin/issues/531)) ([079cac1](https://github.com/IA-Generative/Muffin/commit/079cac1adb1a3fb42eba757745f4b84b89bf3214))
+* **search:** index hybride des assistants et cache de l'embedding d'une question ([57e45f5](https://github.com/IA-Generative/Muffin/commit/57e45f5c123fe640b6a1aaaeda3ad44a915384a8))
+* **search:** recherche hybride des outils par leur description ([#530](https://github.com/IA-Generative/Muffin/issues/530)) ([8817dad](https://github.com/IA-Generative/Muffin/commit/8817dadb0ff7738977ba26b998af292dca881d61))
+* **tools:** l'accord de la personne pour les outils qui modifient des données ([#343](https://github.com/IA-Generative/Muffin/issues/343)) ([dc61f97](https://github.com/IA-Generative/Muffin/commit/dc61f97dcf46b21d75ded7c7655f83fd8f103747))
+* **tools:** serveurs MCP d'utilisateurs et catalogue interne d'outils ([bbe0ac3](https://github.com/IA-Generative/Muffin/commit/bbe0ac30b38592a79766f6432582defc158e23e1))
+
+
+### Bug Fixes
+
+* **frontend:** mise en page du partage et des outils d'un assistant, captures ([#514](https://github.com/IA-Generative/Muffin/issues/514)) ([4c810e5](https://github.com/IA-Generative/Muffin/commit/4c810e5049cb90c24bd26dce3de900c9b9ac62e3))
+
+## [0.42.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.42.0-rc...v0.42.0-rc.1) (2026-11-01)
+
+
+### Features
+
+* **agent:** le planificateur peut appeler un outil, sans appel de plus ([cfd302d](https://github.com/IA-Generative/Muffin/commit/cfd302d9b5a84e162c64954d5cccad261951a2c4))
+* **agent:** une requête du plan peut être confiée à un assistant consulté ([5106475](https://github.com/IA-Generative/Muffin/commit/510647554e4dffae08f3188bc65290f782732b86))
+* **assistants:** recherche, suggestion et consultation d'autres assistants ([a8e3329](https://github.com/IA-Generative/Muffin/commit/a8e332925fe66a986fe0873ad7a659590abae350))
+* **frontend:** chercher un outil par ce qu'il fait ([#530](https://github.com/IA-Generative/Muffin/issues/530)) ([b7350ee](https://github.com/IA-Generative/Muffin/commit/b7350ee05645ddb8acc3810d48e8ff5867f76a34))
+* **frontend:** page des outils, serveurs MCP et menu des outils du chat ([#343](https://github.com/IA-Generative/Muffin/issues/343)) ([757760d](https://github.com/IA-Generative/Muffin/commit/757760de3ada8be8f0eeb9733b9e146a2bc4456c))
+* **frontend:** recherche d'assistants et réglage de la consultation ([#531](https://github.com/IA-Generative/Muffin/issues/531)) ([82f7a9c](https://github.com/IA-Generative/Muffin/commit/82f7a9cf3edb4e3369f2b25aae43bc77d45cd75e))
+* **search:** index hybride des assistants et cache de l'embedding d'une question ([8dfbc2b](https://github.com/IA-Generative/Muffin/commit/8dfbc2b701450816d2c5230d0aee085b1da7478e))
+* **search:** recherche hybride des outils par leur description ([#530](https://github.com/IA-Generative/Muffin/issues/530)) ([2aa35c7](https://github.com/IA-Generative/Muffin/commit/2aa35c768fca4681a38691f370916e88bd37ea77))
+* **tools:** l'accord de la personne pour les outils qui modifient des données ([#343](https://github.com/IA-Generative/Muffin/issues/343)) ([bed56ec](https://github.com/IA-Generative/Muffin/commit/bed56ec442d9c92cc095aa989788ac1239ffe625))
+* **tools:** serveurs MCP d'utilisateurs et catalogue interne d'outils ([da3ff01](https://github.com/IA-Generative/Muffin/commit/da3ff010f187b786e4560dc5bc5636d13467afc0))
+
+## [0.42.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.41.0...v0.42.0-rc) (2026-11-01)
+
+
+### Features
+
+* **agent:** consignes, portée et outils d'un assistant sur le même graphe ([d44120b](https://github.com/IA-Generative/Muffin/commit/d44120b9d0d0e0d4ca82fed1f7ef533c4605f609))
+* **assistants:** assistants partageables comme les collections ([81d5eda](https://github.com/IA-Generative/Muffin/commit/81d5eda4aa45975f4f8285a42ee777ff04c02843))
+* **frontend:** page des assistants et sélecteur dans le chat ([#514](https://github.com/IA-Generative/Muffin/issues/514)) ([2020d12](https://github.com/IA-Generative/Muffin/commit/2020d123e6a8ca83c036715c69ecb77c7bc90aec))
+
+
+### Bug Fixes
+
+* **frontend:** mise en page du partage et des outils d'un assistant, captures ([#514](https://github.com/IA-Generative/Muffin/issues/514)) ([1e9b559](https://github.com/IA-Generative/Muffin/commit/1e9b5590593c6a2e5d423e7e3b2b06adb4fd5364))
+
+## [0.41.0](https://github.com/IA-Generative/Muffin/compare/v0.40.1...v0.41.0) (2026-11-01)
+
+
+### Features
+
+* **admin:** état des secrets et rewrap après rotation de la clé ([c38f6d3](https://github.com/IA-Generative/Muffin/commit/c38f6d3891fe457945de3f1895352ddc56e25335)), closes [#521](https://github.com/IA-Generative/Muffin/issues/521)
+* **api:** exposer une API compatible OpenAI sous /v1 (modèles, chat, flux) ([25530e6](https://github.com/IA-Generative/Muffin/commit/25530e63276749864c7bee0e4274b89825130a6c))
+* **backend:** créer, lister et révoquer ses clés d'API ([d2eea0b](https://github.com/IA-Generative/Muffin/commit/d2eea0b7c83802f944f89b95c4d37a69a309028c))
+* **backend:** publier étapes, réponse et statut d'un run dans un flux Redis ([2518291](https://github.com/IA-Generative/Muffin/commit/25182918a6303cbf55af25b449425b157e54ab1b)), closes [#510](https://github.com/IA-Generative/Muffin/issues/510)
+* **backend:** rechercher dans les conversations de l'utilisateur ([388506a](https://github.com/IA-Generative/Muffin/commit/388506a5807fc6d99cd37f33314924c7fd530f52)), closes [#509](https://github.com/IA-Generative/Muffin/issues/509)
+* **backend:** suivre un run en direct par SSE (GET /runs/{id}/stream) ([30f5758](https://github.com/IA-Generative/Muffin/commit/30f57588818bb2e84d046aa0799bb9049e2f5d93)), closes [#510](https://github.com/IA-Generative/Muffin/issues/510)
+* **collections:** réglage du reclassement des résultats par collection ([#511](https://github.com/IA-Generative/Muffin/issues/511)) ([27281c3](https://github.com/IA-Generative/Muffin/commit/27281c3900fc58506fccc16fc6bcca6467bbb201))
+* **db:** marquer les conversations créées par l'API et les purger ([ce2d611](https://github.com/IA-Generative/Muffin/commit/ce2d611ad119273982ee19dbfea2cfda207a9f8c))
+* **db:** mots des messages et configuration française sans accents pour la recherche ([1d5fcfa](https://github.com/IA-Generative/Muffin/commit/1d5fcfa132fa4db73c9f254f3af6d62c649f602f)), closes [#509](https://github.com/IA-Generative/Muffin/issues/509)
+* **db:** stocker les secrets chiffrés, liés à leur ligne, avec rewrap ([ea76a56](https://github.com/IA-Generative/Muffin/commit/ea76a56589ec67a8f59f93ef05c50be722350753)), closes [#521](https://github.com/IA-Generative/Muffin/issues/521)
+* **db:** table des clés d'API, seul le condensat est gardé ([f0a656c](https://github.com/IA-Generative/Muffin/commit/f0a656ce7b4094e0de746c9a2abf30fea2968cc7))
+* **documents:** route qui renvoie le fichier d'origine d'un document ([df64221](https://github.com/IA-Generative/Muffin/commit/df6422107b677b44e726576b09aff41e5c4b42a2))
+* **frontend:** case du reclassement dans les réglages d'une collection ([#511](https://github.com/IA-Generative/Muffin/issues/511)) ([989e091](https://github.com/IA-Generative/Muffin/commit/989e091528fbc747e6046c61ac3ac6eef7df012d))
+* **frontend:** champ de recherche des conversations et accès au message trouvé ([592ffac](https://github.com/IA-Generative/Muffin/commit/592ffac15061c51e9d185390b39f4f3573aacf6a)), closes [#509](https://github.com/IA-Generative/Muffin/issues/509)
+* **frontend:** liens du fichier d'un document et saisie d'un numéro de page ([e31dc5d](https://github.com/IA-Generative/Muffin/commit/e31dc5de8bf07d0419fa17e1cc8f137298a5b2e6))
+* **frontend:** page des clés d'API dans le menu utilisateur ([fdb3593](https://github.com/IA-Generative/Muffin/commit/fdb3593c9393ebd7e605e858a0f8ea226aaf7090))
+* **frontend:** suivre un run par le flux, repli sur l'interrogation ([f6d809e](https://github.com/IA-Generative/Muffin/commit/f6d809e5cf2fcdf6e0afebe71164e9155b35882b)), closes [#510](https://github.com/IA-Generative/Muffin/issues/510)
+* **frontend:** télécharger le fichier, l'ouvrir à la page, parcourir toutes les pages ([5ab8190](https://github.com/IA-Generative/Muffin/commit/5ab819068106079d1ade6675f76a06c9d22e5e55))
+* **mcp:** appeler le serveur MCP avec une clé d'API (portée search) ([cd05077](https://github.com/IA-Generative/Muffin/commit/cd050773475a79ea8a0ae13d7b9b4fbce19cf5e9))
+* **search:** reclasser les passages avec un service /rerank, cosinus conservé ([0b69c9c](https://github.com/IA-Generative/Muffin/commit/0b69c9c881d3db471e560004ab03405fe5650997))
+* **security:** format, checksum et hachage HMAC des clés d'API personnelles ([028168b](https://github.com/IA-Generative/Muffin/commit/028168b76c45e85da02c205ffbff85f4cc5e9f93))
+* **security:** fournisseurs de chiffrement des secrets, Vault Transit et jeu de clés local ([afa222d](https://github.com/IA-Generative/Muffin/commit/afa222de84443540cde996cd412409f5b9a04806)), closes [#521](https://github.com/IA-Generative/Muffin/issues/521)
+
+
+### Bug Fixes
+
+* **frontend:** le champ de page, le titre et le libellé du fichier restent lisibles ([86eed89](https://github.com/IA-Generative/Muffin/commit/86eed89295db05aae38f83bdb452ae7e41799731))
+
+## [0.41.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.40.1...v0.41.0-rc) (2026-11-01)
+
+
+### Features
+
+* **admin:** état des secrets et rewrap après rotation de la clé ([fe526de](https://github.com/IA-Generative/Muffin/commit/fe526def26775b3e8ddca64f768c7e6f04e3cf74)), closes [#521](https://github.com/IA-Generative/Muffin/issues/521)
+* **api:** exposer une API compatible OpenAI sous /v1 (modèles, chat, flux) ([0e729b3](https://github.com/IA-Generative/Muffin/commit/0e729b3f4ea25216e7fba6cade18c3538ad10b53))
+* **backend:** créer, lister et révoquer ses clés d'API ([5c20beb](https://github.com/IA-Generative/Muffin/commit/5c20beb68405af1dc57f693954848ee57d866920))
+* **backend:** publier étapes, réponse et statut d'un run dans un flux Redis ([8181295](https://github.com/IA-Generative/Muffin/commit/81812950db7891df4f7eb1a77b95e592cfdc1eae)), closes [#510](https://github.com/IA-Generative/Muffin/issues/510)
+* **backend:** rechercher dans les conversations de l'utilisateur ([836733c](https://github.com/IA-Generative/Muffin/commit/836733c75866eb1df5eb5c9b150441dc77330706)), closes [#509](https://github.com/IA-Generative/Muffin/issues/509)
+* **backend:** suivre un run en direct par SSE (GET /runs/{id}/stream) ([ed1765a](https://github.com/IA-Generative/Muffin/commit/ed1765ad5c50471ad4162c3d84eff896c770b7f9)), closes [#510](https://github.com/IA-Generative/Muffin/issues/510)
+* **collections:** réglage du reclassement des résultats par collection ([#511](https://github.com/IA-Generative/Muffin/issues/511)) ([20a5323](https://github.com/IA-Generative/Muffin/commit/20a5323586bc7f53a3fb742fadc65b4328afd03e))
+* **db:** marquer les conversations créées par l'API et les purger ([70df186](https://github.com/IA-Generative/Muffin/commit/70df18664c21a5b93534e5c0dfa9320418390985))
+* **db:** mots des messages et configuration française sans accents pour la recherche ([86eeb06](https://github.com/IA-Generative/Muffin/commit/86eeb06cd88a2ce5233e779bcbb9a636ead42249)), closes [#509](https://github.com/IA-Generative/Muffin/issues/509)
+* **db:** stocker les secrets chiffrés, liés à leur ligne, avec rewrap ([e9d880f](https://github.com/IA-Generative/Muffin/commit/e9d880f01364da154a191f20d13a7076e0b110c0)), closes [#521](https://github.com/IA-Generative/Muffin/issues/521)
+* **db:** table des clés d'API, seul le condensat est gardé ([d90e027](https://github.com/IA-Generative/Muffin/commit/d90e02747fa23808a226bfc3cb6ef67b78c9341f))
+* **documents:** route qui renvoie le fichier d'origine d'un document ([38b5cee](https://github.com/IA-Generative/Muffin/commit/38b5ceec759ba36e333a4e171856c10ec9379683))
+* **frontend:** case du reclassement dans les réglages d'une collection ([#511](https://github.com/IA-Generative/Muffin/issues/511)) ([96614f4](https://github.com/IA-Generative/Muffin/commit/96614f4ca79555c8794372a70c62967e4550484d))
+* **frontend:** champ de recherche des conversations et accès au message trouvé ([7e5bb87](https://github.com/IA-Generative/Muffin/commit/7e5bb87653655388f795c0e2e07bafb3d8542ff4)), closes [#509](https://github.com/IA-Generative/Muffin/issues/509)
+* **frontend:** liens du fichier d'un document et saisie d'un numéro de page ([ed28114](https://github.com/IA-Generative/Muffin/commit/ed281140ebbfbe5964596fd09e3a05941ecbb24c))
+* **frontend:** page des clés d'API dans le menu utilisateur ([f178ad1](https://github.com/IA-Generative/Muffin/commit/f178ad1bffe762c1bb375a95da1ab56fe8fcf11f))
+* **frontend:** suivre un run par le flux, repli sur l'interrogation ([c813f14](https://github.com/IA-Generative/Muffin/commit/c813f14e230602e1890e9ea79619529b585f8d64)), closes [#510](https://github.com/IA-Generative/Muffin/issues/510)
+* **frontend:** télécharger le fichier, l'ouvrir à la page, parcourir toutes les pages ([a8abeb0](https://github.com/IA-Generative/Muffin/commit/a8abeb0aee95e768bbd96da06286248b35096cdd))
+* **mcp:** appeler le serveur MCP avec une clé d'API (portée search) ([ecaebfd](https://github.com/IA-Generative/Muffin/commit/ecaebfd21046d708f8421bd4c15c37ea34596f57))
+* **search:** reclasser les passages avec un service /rerank, cosinus conservé ([593760e](https://github.com/IA-Generative/Muffin/commit/593760e2fbe289d9b6034360d25d0aacf4f405b6))
+* **security:** format, checksum et hachage HMAC des clés d'API personnelles ([02ca049](https://github.com/IA-Generative/Muffin/commit/02ca0491c2895f3ebe34f30a789d6c656c236559))
+* **security:** fournisseurs de chiffrement des secrets, Vault Transit et jeu de clés local ([9240222](https://github.com/IA-Generative/Muffin/commit/924022208fa2482211d8be10ecb76fe370080358)), closes [#521](https://github.com/IA-Generative/Muffin/issues/521)
+
+
+### Bug Fixes
+
+* **frontend:** le champ de page, le titre et le libellé du fichier restent lisibles ([f251c29](https://github.com/IA-Generative/Muffin/commit/f251c295c3268c7afaf4a9ecf4bff88abb593916))
+
+## [0.40.1](https://github.com/IA-Generative/Muffin/compare/v0.40.0...v0.40.1) (2026-10-31)
+
+
+### Bug Fixes
+
+* **agent:** attendre l'enregistrement du résultat d'un run ([280fa5f](https://github.com/IA-Generative/Muffin/commit/280fa5fd6e2f5573d271bd3eb126c8d259014772))
+
+## [0.40.0](https://github.com/IA-Generative/Muffin/compare/v0.39.0...v0.40.0) (2026-10-31)
+
+
+### Features
+
+* **agent:** agent into backend ([#499](https://github.com/IA-Generative/Muffin/issues/499)) ([28098a8](https://github.com/IA-Generative/Muffin/commit/28098a881ad7b40290accbe63ab3def5ea808173))
+
+## [0.40.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.39.0...v0.40.0-rc) (2026-10-31)
+
+
+### Features
+
+* **agent:** les runs démarrent dans le backend avec le jeton de l'utilisateur ([03c89fa](https://github.com/IA-Generative/Muffin/commit/03c89fa055ffb1d3c57acd9ad78c0df704871a2d))
+* **agent:** libellés de consommation du nouvel agent et étape propre au contrôle d'ancrage ([d8bb09a](https://github.com/IA-Generative/Muffin/commit/d8bb09afe8b2591c07e9a4866148326dacf754f6))
+* **agent:** route qui enregistre le verdict du contrôle d'ancrage après la réponse ([24fe1b9](https://github.com/IA-Generative/Muffin/commit/24fe1b9103910dd6f82d5625f3d7751a35371b23))
+* **agent:** un appel décide de tout, la recherche est du code, un appel écrit la réponse ([77fdde0](https://github.com/IA-Generative/Muffin/commit/77fdde06b9c95dbe4da9e5b4a88028712f36da61))
+* **backend:** route interne listant les documents d'une collection ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([2c572f5](https://github.com/IA-Generative/Muffin/commit/2c572f5f99dc1d94fda45659c4002d3253fa1610))
+* **description:** job qui demande la description des collections sans description ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([e27c4ff](https://github.com/IA-Generative/Muffin/commit/e27c4ff5e3ff39f577802375a903c2e965238f60))
+* **description:** le propriétaire génère la description de sa collection ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([0b32618](https://github.com/IA-Generative/Muffin/commit/0b32618c031cb26fe7228a537e873ed04646a5a6))
+* **description:** route interne des collections sans description ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([3a30102](https://github.com/IA-Generative/Muffin/commit/3a30102aa4e15d00517c2dfd98af7ec0cbd88728))
+* **frontend:** bouton de description pour le propriétaire de la collection ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([f03bc03](https://github.com/IA-Generative/Muffin/commit/f03bc0392163ef64bd62b3df7b45326519f532ee))
+* **frontend:** bouton pour générer la description d'une collection copiée ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([8a2537c](https://github.com/IA-Generative/Muffin/commit/8a2537c9b87adcc8357516950c249930bd6bdb86))
+* **frontend:** chaque étape de la recherche s'affiche en direct dans le chat ([50ab336](https://github.com/IA-Generative/Muffin/commit/50ab336091ec99855d5f07455d0f59de6d898235))
+* **frontend:** étapes du nouvel agent dans l'indicateur d'avancement ([90ba1e6](https://github.com/IA-Generative/Muffin/commit/90ba1e6bc6db8394271a120ede16f46a8907a090))
+* **owui:** décrire une collection copiée d'après un échantillon de fichiers ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([faf4598](https://github.com/IA-Generative/Muffin/commit/faf4598fe9b48aee8ad9d49a6996e0a8faaab2f0))
+* **owui:** route pour générer la description d'une collection copiée ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([f9a7ba4](https://github.com/IA-Generative/Muffin/commit/f9a7ba4b4b693bcc74e6d64cfe8ca634a82b82df))
+
+
+### Bug Fixes
+
+* **agent:** périodes relatives du time tool le 31 du mois ([db738d5](https://github.com/IA-Generative/Muffin/commit/db738d5a07db72a6e0c4b7821434c27d54909cbe))
+
+
+### Code Refactoring
+
+* **agent:** le code de l'agent passe de worker/agent_execution à backend/app/agent ([f5424d3](https://github.com/IA-Generative/Muffin/commit/f5424d31b9123c9385eb0450d2d6e83a45c5d093))
+* **agent:** le graphe de l'agent est natif async, un nœud est une coroutine ([bc78c51](https://github.com/IA-Generative/Muffin/commit/bc78c512ac0450385fac5451d68e1b37830d70cc))
+* **description:** la description d'une collection dans sa propre tâche ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([75f0404](https://github.com/IA-Generative/Muffin/commit/75f04043f73bcac260a2d5e163060b76607efc32))
+* **owui:** la synchronisation ne demande plus la description ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([07065c0](https://github.com/IA-Generative/Muffin/commit/07065c0ba896785f760a46832669dba393ab9c64))
+
+
+### Dependencies
+
+* **backend:** dépendances de LangGraph pour l'agent ([e755268](https://github.com/IA-Generative/Muffin/commit/e755268a5d47af8f37a8939f06f26f36efabe072))
+
+## [0.39.0](https://github.com/IA-Generative/Muffin/compare/v0.38.1...v0.39.0) (2026-10-30)
+
+
+### Features
+
+* **chart:** autoscaler KEDA par composant avec le bloc kedaAutoscaler ([db91605](https://github.com/IA-Generative/Muffin/commit/db916054ea663690ba6ad9f7ab3c342a86974351))
+
+
+### Bug Fixes
+
+* **chart:** déclarer le secret muffin-s3-readonly depuis Vault ([0491ee6](https://github.com/IA-Generative/Muffin/commit/0491ee62c554391312a7f64877fed267e4b90f2c))
+
+## [0.38.1](https://github.com/IA-Generative/Muffin/compare/v0.38.0...v0.38.1) (2026-10-30)
+
+
+### Bug Fixes
+
+* **owui:** garder la clé S3 d'Open WebUI et ne pas supprimer ses fichiers ([ee0a999](https://github.com/IA-Generative/Muffin/commit/ee0a999be6d00f6011b70f27b079df5b039b9caf))
+
+## [0.38.1-rc](https://github.com/IA-Generative/Muffin/compare/v0.38.0...v0.38.1-rc) (2026-10-30)
+
+
+### Bug Fixes
+
+* **owui:** garder la clé S3 d'Open WebUI et ne pas supprimer ses fichiers ([29aab04](https://github.com/IA-Generative/Muffin/commit/29aab04aa025881058f821be172c9db996183230))
+
+## [0.38.0](https://github.com/IA-Generative/Muffin/compare/v0.37.0...v0.38.0) (2026-10-30)
+
+
+### Features
+
+* **frontend:** page d'administration de la synchronisation avec Open WebUI ([#466](https://github.com/IA-Generative/Muffin/issues/466)) ([46e04c3](https://github.com/IA-Generative/Muffin/commit/46e04c39701a883ee11a5395cd96cd82b37458a2))
+* **mcp:** serveur MCP avec les outils suggest_collections et search ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([1fb149f](https://github.com/IA-Generative/Muffin/commit/1fb149ff569e7ce6a774046a915fbe2b8d337dc3))
+* **mcp:** un lien vers Muffin pour chaque source et chaque collection ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([97ada78](https://github.com/IA-Generative/Muffin/commit/97ada78464909f7dab2e145e6cae209f2b0fdfe5))
+* **owui:** outil Open WebUI qui affiche les sources de Muffin dans son panneau ([#476](https://github.com/IA-Generative/Muffin/issues/476)) ([beed066](https://github.com/IA-Generative/Muffin/commit/beed0668edc5520930227f6e53c909aea9eb10b7))
+* **search:** chercher dans tous les points d'une collection sans cascade ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([44be360](https://github.com/IA-Generative/Muffin/commit/44be3600a9f20cc8813bdbb74f6a1e0e5d76af96))
+* **search:** identifiant du document dans le payload des points Qdrant ([#468](https://github.com/IA-Generative/Muffin/issues/468)) ([e50fa1e](https://github.com/IA-Generative/Muffin/commit/e50fa1e2edd5a933a47b88142b0072c84defd6fa))
+* **sync:** contenu des collections copiées en lecture seule ([#464](https://github.com/IA-Generative/Muffin/issues/464)) ([1af7aec](https://github.com/IA-Generative/Muffin/commit/1af7aec9a3cdf01c93cc82633dea9b267e6b73c0))
+* **sync:** garder le bilan des synchronisations avec Open WebUI ([#466](https://github.com/IA-Generative/Muffin/issues/466)) ([f6ec927](https://github.com/IA-Generative/Muffin/commit/f6ec9277783d79f76886eabba683c19d85a66fd1))
+* **sync:** reprendre une collection copiée en réindexant son index ([#462](https://github.com/IA-Generative/Muffin/issues/462), [#463](https://github.com/IA-Generative/Muffin/issues/463)) ([2aae1d2](https://github.com/IA-Generative/Muffin/commit/2aae1d22a1f2d712f200b7ffa3f63ed7690159be))
+
+
+### Dependencies
+
+* **backend:** ajouter la bibliothèque MCP ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([acc979a](https://github.com/IA-Generative/Muffin/commit/acc979ad908c439c04495274c3e6411efaaecec0))
+
+## [0.38.0-rc.3](https://github.com/IA-Generative/Muffin/compare/v0.38.0-rc.2...v0.38.0-rc.3) (2026-10-30)
+
+
+### Features
+
+* **owui:** outil Open WebUI qui affiche les sources de Muffin dans son panneau ([#476](https://github.com/IA-Generative/Muffin/issues/476)) ([83ac983](https://github.com/IA-Generative/Muffin/commit/83ac98350713e923172894876e6a8c7fdc5b4323))
+
+## [0.38.0-rc.2](https://github.com/IA-Generative/Muffin/compare/v0.38.0-rc.1...v0.38.0-rc.2) (2026-10-30)
+
+
+### Features
+
+* **frontend:** page d'administration de la synchronisation avec Open WebUI ([#466](https://github.com/IA-Generative/Muffin/issues/466)) ([3145b20](https://github.com/IA-Generative/Muffin/commit/3145b20f31de0e08f69b6316468a4ecdbcb013f9))
+* **sync:** garder le bilan des synchronisations avec Open WebUI ([#466](https://github.com/IA-Generative/Muffin/issues/466)) ([6d0d73c](https://github.com/IA-Generative/Muffin/commit/6d0d73c952bf52f9a48ace5af2f4c1cc4736735f))
+
+## [0.38.0-rc.1](https://github.com/IA-Generative/Muffin/compare/v0.38.0-rc...v0.38.0-rc.1) (2026-10-30)
+
+
+### Features
+
+* **mcp:** serveur MCP avec les outils suggest_collections et search ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([c7ac957](https://github.com/IA-Generative/Muffin/commit/c7ac957679987ff44ddd997296a85b6eccf4c455))
+* **mcp:** un lien vers Muffin pour chaque source et chaque collection ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([903cb31](https://github.com/IA-Generative/Muffin/commit/903cb313a9837cb8352e98ca2af0cf7954e1e682))
+* **search:** chercher dans tous les points d'une collection sans cascade ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([60b7d2f](https://github.com/IA-Generative/Muffin/commit/60b7d2faade79d474eee6f33dd6443149f433c18))
+* **sync:** contenu des collections copiées en lecture seule ([#464](https://github.com/IA-Generative/Muffin/issues/464)) ([318d16c](https://github.com/IA-Generative/Muffin/commit/318d16c4f8652debd7ec0bfbe3573d5da5f204b6))
+* **sync:** reprendre une collection copiée en réindexant son index ([#462](https://github.com/IA-Generative/Muffin/issues/462), [#463](https://github.com/IA-Generative/Muffin/issues/463)) ([9f0b5dc](https://github.com/IA-Generative/Muffin/commit/9f0b5dc12939b14f105b0f6ed4147fa867f7243d))
+
+
+### Dependencies
+
+* **backend:** ajouter la bibliothèque MCP ([#467](https://github.com/IA-Generative/Muffin/issues/467)) ([6083392](https://github.com/IA-Generative/Muffin/commit/6083392e0cc6548afe02ef2a2fb7e3763c18c71e))
+
+## [0.38.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.37.0...v0.38.0-rc) (2026-10-30)
+
+
+### Features
+
+* **search:** identifiant du document dans le payload des points Qdrant ([#468](https://github.com/IA-Generative/Muffin/issues/468)) ([58cbde1](https://github.com/IA-Generative/Muffin/commit/58cbde1a130e40aa60a6116f194391cb0bd80b33))
+
+## [0.37.0](https://github.com/IA-Generative/Muffin/compare/v0.36.0...v0.37.0) (2026-10-30)
+
+
+### Features
+
+* **chart:** déployer le worker owui_sync et son CronJob de synchro ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([42a1847](https://github.com/IA-Generative/Muffin/commit/42a184714de92400587d5d2d0ffc2ea3fecc4d45))
+* **enrichment:** résumé des fichiers copiés et description de leur collection ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([6f400b7](https://github.com/IA-Generative/Muffin/commit/6f400b7afc275a2ef5f5b29c5fff7d8b375e1a0b))
+* **frontend:** écran des groupes, partage avec un groupe et droit d'écriture ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([5deedb3](https://github.com/IA-Generative/Muffin/commit/5deedb3fefc6557dac847c9e60059b0dbed7d193))
+* **groups:** créer et gérer des groupes dans Muffin, membres par email ou sujet ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([f8e4e01](https://github.com/IA-Generative/Muffin/commit/f8e4e01b9f4e9468435cc52161cdee1417e0504a))
+* **groups:** propriétaire d'un groupe et membres invités par email ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([be045f8](https://github.com/IA-Generative/Muffin/commit/be045f856a7b052a5e4fb1f672e5d2ad01236e9f))
+* **search:** chercher les collections copiées d'Open WebUI sur place, avec les autres ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([bf7977f](https://github.com/IA-Generative/Muffin/commit/bf7977fe1afc8d97706c825942e31ec583703a04))
+* **sharing:** partager une collection avec un groupe de Muffin ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([3396a4a](https://github.com/IA-Generative/Muffin/commit/3396a4ad383f8cfa6032033245238025d1d31f82))
+* **sharing:** un partage qui permet d'écrire, lu ou écrit au choix ([#454](https://github.com/IA-Generative/Muffin/issues/454)) ([69f3285](https://github.com/IA-Generative/Muffin/commit/69f3285e2140536eab43c9f91ba78372b826fcf6))
+* **sync:** client REST d'Open WebUI, pagination et reprises sur erreur transitoire ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([17f9aff](https://github.com/IA-Generative/Muffin/commit/17f9affe1112fa3017b70c295d82ebf596812d64))
+* **sync:** copier les droits d'écriture d'Open WebUI sur les partages ([#454](https://github.com/IA-Generative/Muffin/issues/454)) ([fb11229](https://github.com/IA-Generative/Muffin/commit/fb11229404d0f3328f44b450f47bf02093ed4c15))
+* **sync:** déclencher une synchro Open WebUI à la demande, réservé aux administrateurs ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([7756b34](https://github.com/IA-Generative/Muffin/commit/7756b34fb7d875053c9942b0cb68f54ccca2413d))
+* **sync:** exposer les collections copiées d'Open WebUI et leurs partages en interne ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([c30974a](https://github.com/IA-Generative/Muffin/commit/c30974a77a191be41ef57b53bfd2613474386cc8))
+* **sync:** exposer les fichiers copiés d'Open WebUI et leurs chunks en interne ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([b1b9f3a](https://github.com/IA-Generative/Muffin/commit/b1b9f3a686e5b26040e32449185783a2febbb122))
+* **sync:** garder la description d'une collection copiée et ne pas la réindexer ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([25e8cc6](https://github.com/IA-Generative/Muffin/commit/25e8cc6543ef320af16873350025b963c7698023))
+* **sync:** groupes effectifs d'un utilisateur et API interne des groupes copiés ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([b98061c](https://github.com/IA-Generative/Muffin/commit/b98061c46f6fca6ed9b2ef44abd96809de281e80))
+* **sync:** groupes, membres et origine des ressources copiées d'Open WebUI ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([f9bbb71](https://github.com/IA-Generative/Muffin/commit/f9bbb71424bde062edc527930501b4ccd6b18cd4))
+* **sync:** indiquer les fichiers copiés à résumer et retirer leurs résumés ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([b018a06](https://github.com/IA-Generative/Muffin/commit/b018a0601283f56fb06f17a8d3fe3d577bf36cb6))
+* **sync:** le stockage lit un objet d'un autre système et ne le supprime jamais ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([4e1b14b](https://github.com/IA-Generative/Muffin/commit/4e1b14b57bcdd0d24ab23cce8ab3ffdbc9ef083b))
+* **sync:** lister et supprimer les collections et fichiers copiés d'Open WebUI ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([36e9a3e](https://github.com/IA-Generative/Muffin/commit/36e9a3e3db9e3123331959e09830e464420f9e40))
+* **sync:** signaler un modèle ou une dimension d'embedding incohérents ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([3075dab](https://github.com/IA-Generative/Muffin/commit/3075dab7cf7d521b578a0fd5d655e826e4aa2254))
+* **sync:** squelette du worker owui_sync, sa file Celery et sa config ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([00ba78e](https://github.com/IA-Generative/Muffin/commit/00ba78e41b0c8fa2b44630dee598a4069436015c))
+* **sync:** synchro complète en phases de petites tâches, avec nettoyage final ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([2e452b6](https://github.com/IA-Generative/Muffin/commit/2e452b64d37f6a7f31e6e9bac284535324435b67))
+* **sync:** synchro périodique par un beat dédié, intervalle configurable ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([c4771a4](https://github.com/IA-Generative/Muffin/commit/c4771a4e4d1c34a34bd997bab4195d52ba733666))
+* **sync:** tâche de synchro d'un fichier Open WebUI, ses chunks lus dans son Qdrant ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([4fc23a2](https://github.com/IA-Generative/Muffin/commit/4fc23a212bd3cef64af889db3a2965b74bc7ce99))
+* **sync:** tâche de synchro d'un groupe Open WebUI et de ses membres ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([c00131e](https://github.com/IA-Generative/Muffin/commit/c00131ef695607c12438d8a6518dc878c0e9bdc6))
+* **sync:** tâche de synchro d'une knowledge base Open WebUI et de ses lecteurs ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([0ab0e23](https://github.com/IA-Generative/Muffin/commit/0ab0e23538fb4ac3fe61a21cc1c8f009b11cd675))
+
+
+### Bug Fixes
+
+* **search:** une collection d'Open WebUI incompatible ne fait plus échouer la recherche ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([451f06c](https://github.com/IA-Generative/Muffin/commit/451f06cae719d7c154670e0e2943d8d6761b7370))
+* **security:** refaire l'upgrade apk du frontend, brotli-libs CVE-2026-111497 ([5ba86e9](https://github.com/IA-Generative/Muffin/commit/5ba86e99a1c6cab3870b72d447f19a365634e877))
+
+## [0.37.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.36.0...v0.37.0-rc) (2026-10-30)
+
+
+### Features
+
+* **chart:** déployer le worker owui_sync et son CronJob de synchro ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([f331e3a](https://github.com/IA-Generative/Muffin/commit/f331e3ab62d5ca02a9928abe868c42e9b0fa00a6))
+* **enrichment:** résumé des fichiers copiés et description de leur collection ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([a88e4f1](https://github.com/IA-Generative/Muffin/commit/a88e4f17db545d9229002a5aeff7c5e3334ccc72))
+* **frontend:** écran des groupes, partage avec un groupe et droit d'écriture ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([6556fc8](https://github.com/IA-Generative/Muffin/commit/6556fc88ba168d55766a07832119f4aa2517c165))
+* **groups:** créer et gérer des groupes dans Muffin, membres par email ou sujet ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([1e2cb0b](https://github.com/IA-Generative/Muffin/commit/1e2cb0b584b14a80ed4b67a8b72afa6a87436765))
+* **groups:** propriétaire d'un groupe et membres invités par email ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([568236d](https://github.com/IA-Generative/Muffin/commit/568236dfb0b56e31622bd7e03f589cfea63f4932))
+* **search:** chercher les collections copiées d'Open WebUI sur place, avec les autres ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([8163d7a](https://github.com/IA-Generative/Muffin/commit/8163d7ab572285db3f75beae4803618e3c6de439))
+* **sharing:** partager une collection avec un groupe de Muffin ([#455](https://github.com/IA-Generative/Muffin/issues/455)) ([009a46d](https://github.com/IA-Generative/Muffin/commit/009a46d9ecd55506ccf88073114a6dc925e58b2f))
+* **sharing:** un partage qui permet d'écrire, lu ou écrit au choix ([#454](https://github.com/IA-Generative/Muffin/issues/454)) ([f5ddfb1](https://github.com/IA-Generative/Muffin/commit/f5ddfb12ef7baa336b8ce4faf56a6b9902ee789c))
+* **sync:** client REST d'Open WebUI, pagination et reprises sur erreur transitoire ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([9c0ed19](https://github.com/IA-Generative/Muffin/commit/9c0ed194a5c2dbe2fe2382897fdc88b784dfb6ca))
+* **sync:** copier les droits d'écriture d'Open WebUI sur les partages ([#454](https://github.com/IA-Generative/Muffin/issues/454)) ([8d9bd05](https://github.com/IA-Generative/Muffin/commit/8d9bd05c1c21888cf4dc40576b6c63def7f77e55))
+* **sync:** déclencher une synchro Open WebUI à la demande, réservé aux administrateurs ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([d9ddd22](https://github.com/IA-Generative/Muffin/commit/d9ddd221b2fc67922bd456ae0f8df5a8cf0c535e))
+* **sync:** exposer les collections copiées d'Open WebUI et leurs partages en interne ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([66e1762](https://github.com/IA-Generative/Muffin/commit/66e1762dbf7b2174c05d38c6341f938b1400258d))
+* **sync:** exposer les fichiers copiés d'Open WebUI et leurs chunks en interne ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([2e1cc24](https://github.com/IA-Generative/Muffin/commit/2e1cc247947d1cd5443a0a18752afc9521d2f68e))
+* **sync:** garder la description d'une collection copiée et ne pas la réindexer ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([dd2a5b8](https://github.com/IA-Generative/Muffin/commit/dd2a5b819e689f2b92d614d3f976c223e8ecb40c))
+* **sync:** groupes effectifs d'un utilisateur et API interne des groupes copiés ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([221ab91](https://github.com/IA-Generative/Muffin/commit/221ab9100cf8f252dfc09b8a3c0f331350e1c83d))
+* **sync:** groupes, membres et origine des ressources copiées d'Open WebUI ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([6a844ff](https://github.com/IA-Generative/Muffin/commit/6a844ffaf65b62e346dcb4998695b014dea9094a))
+* **sync:** indiquer les fichiers copiés à résumer et retirer leurs résumés ([#457](https://github.com/IA-Generative/Muffin/issues/457)) ([6d2023c](https://github.com/IA-Generative/Muffin/commit/6d2023c4827884b9dcbb0b3547f12abe59985c10))
+* **sync:** le stockage lit un objet d'un autre système et ne le supprime jamais ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([200de82](https://github.com/IA-Generative/Muffin/commit/200de823d2951a7bf4202fa04b12feecfe5c4c52))
+* **sync:** lister et supprimer les collections et fichiers copiés d'Open WebUI ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([841b64a](https://github.com/IA-Generative/Muffin/commit/841b64ac8835ce3323170c8f600e4fa87361cbd7))
+* **sync:** signaler un modèle ou une dimension d'embedding incohérents ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([1bdca81](https://github.com/IA-Generative/Muffin/commit/1bdca81a5843dc1ac55ab4121c11a7a5c067ae00))
+* **sync:** squelette du worker owui_sync, sa file Celery et sa config ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([e918e11](https://github.com/IA-Generative/Muffin/commit/e918e11611449ab23942b9ab8cb9acce254cc473))
+* **sync:** synchro complète en phases de petites tâches, avec nettoyage final ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([aca1fc5](https://github.com/IA-Generative/Muffin/commit/aca1fc5153c4cde338e4aa5f4f35b764130f45b3))
+* **sync:** synchro périodique par un beat dédié, intervalle configurable ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([8bf5028](https://github.com/IA-Generative/Muffin/commit/8bf5028449aad5243e22e79414c8bbec62211e9c))
+* **sync:** tâche de synchro d'un fichier Open WebUI, ses chunks lus dans son Qdrant ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([bf22356](https://github.com/IA-Generative/Muffin/commit/bf2235685594947facfe1d2b0a15857c09b8c881))
+* **sync:** tâche de synchro d'un groupe Open WebUI et de ses membres ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([822df91](https://github.com/IA-Generative/Muffin/commit/822df913cd96bf41d55c2d48388a00f83aeb00b9))
+* **sync:** tâche de synchro d'une knowledge base Open WebUI et de ses lecteurs ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([90e1397](https://github.com/IA-Generative/Muffin/commit/90e1397fe289cf054456976a48d53a995d43202e))
+
+
+### Bug Fixes
+
+* **search:** une collection d'Open WebUI incompatible ne fait plus échouer la recherche ([#453](https://github.com/IA-Generative/Muffin/issues/453)) ([a1954ab](https://github.com/IA-Generative/Muffin/commit/a1954ab3dd3c0fbec873121523e2a2fd3469c8f6))
+* **security:** refaire l'upgrade apk du frontend, brotli-libs CVE-2026-111497 ([019dc34](https://github.com/IA-Generative/Muffin/commit/019dc3499d8016daf13e5e8bceddb94ce7c26f42))
+
+## [0.36.0](https://github.com/IA-Generative/Muffin/compare/v0.35.0...v0.36.0) (2026-10-29)
+
+
+### Features
+
+* **collections:** choisir le moteur de description des images ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([f8135d3](https://github.com/IA-Generative/Muffin/commit/f8135d33888c4579f63f54dc98e98cc7dd129593))
+* **collections:** choisir qui décrit les images dans les paramètres de la collection ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([ff56771](https://github.com/IA-Generative/Muffin/commit/ff567712893c2049cb3196ba24f5a3f85c4114ca))
+* **documents:** garder la description d'une région et le modèle qui l'a écrite ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([2585c50](https://github.com/IA-Generative/Muffin/commit/2585c5094ae9588958af3759349921d11c5a3b9d))
+* **models:** lister les modèles du hub qui lisent les images ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([5aff5ed](https://github.com/IA-Generative/Muffin/commit/5aff5eddf3ae75e7d0b716bc77710f221311a6c9))
+* **ocr:** décrire les images et les tableaux des pages scannées pendant l'extraction ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([fd165de](https://github.com/IA-Generative/Muffin/commit/fd165dec3952e7b7d9fd4346e466a3cea93d7398))
+* **ocr:** le pod vision accepte un modèle du hub qui lit les images ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([811b62d](https://github.com/IA-Generative/Muffin/commit/811b62d9d0acac1c5bc728e752997a88327088aa))
+* **ocr:** pod vision - Florence-2 base décrit les régions d'une page ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([9cab5ca](https://github.com/IA-Generative/Muffin/commit/9cab5ca3253ba6216f1a73bf31679a0797c00007))
+
+
+### Bug Fixes
+
+* **frontend:** la section captions manquait à SECTION_FIELDS ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([f6d8f7d](https://github.com/IA-Generative/Muffin/commit/f6d8f7ddd565b251ae6c6eefd7ea882467759751))
+* **ocr:** pas de cd dans le RUN du Dockerfile vision, chemins absolus ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([eda8dda](https://github.com/IA-Generative/Muffin/commit/eda8dda5e1d31eb854b06274a1ae13995f31b898))
+
+## [0.36.0-rc](https://github.com/IA-Generative/Muffin/compare/v0.35.0...v0.36.0-rc) (2026-10-29)
+
+
+### Features
+
+* **collections:** choisir le moteur de description des images ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([dca108d](https://github.com/IA-Generative/Muffin/commit/dca108dc8ccd6f302332a78449b0aa5c2eabf299))
+* **collections:** choisir qui décrit les images dans les paramètres de la collection ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([f8fd489](https://github.com/IA-Generative/Muffin/commit/f8fd489ff594a2133752e938c54796df39f7f3c0))
+* **documents:** garder la description d'une région et le modèle qui l'a écrite ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([0b074a0](https://github.com/IA-Generative/Muffin/commit/0b074a07325f37dfad64acc52fcedf17300e813b))
+* **models:** lister les modèles du hub qui lisent les images ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([023ef39](https://github.com/IA-Generative/Muffin/commit/023ef39b2c17a87872d233dba69195c6b1c5b65d))
+* **ocr:** décrire les images et les tableaux des pages scannées pendant l'extraction ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([0590dd6](https://github.com/IA-Generative/Muffin/commit/0590dd63b3d2a3cd542427ab768bccc5c888376d))
+* **ocr:** le pod vision accepte un modèle du hub qui lit les images ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([5cadbe1](https://github.com/IA-Generative/Muffin/commit/5cadbe1c7dee23acb696c908a0becc3a91323193))
+* **ocr:** pod vision - Florence-2 base décrit les régions d'une page ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([1b63e16](https://github.com/IA-Generative/Muffin/commit/1b63e16965d023599af520e657d2405944abae72))
+
+
+### Bug Fixes
+
+* **frontend:** la section captions manquait à SECTION_FIELDS ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([c25c577](https://github.com/IA-Generative/Muffin/commit/c25c57742de11d56c8a035f39732a3f37bc6d65b))
+* **ocr:** pas de cd dans le RUN du Dockerfile vision, chemins absolus ([#411](https://github.com/IA-Generative/Muffin/issues/411)) ([1abf477](https://github.com/IA-Generative/Muffin/commit/1abf477b7be541299a8a5c0ca9577dfdaade333a))
+
 ## [0.35.0](https://github.com/IA-Generative/Muffin/compare/v0.34.0...v0.35.0) (2026-10-28)
 
 

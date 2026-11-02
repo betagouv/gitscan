@@ -28,27 +28,103 @@
 │   ├── alembic.ini
 │   ├── app
 │   │   ├── __init__.py
+│   │   ├── agent
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── ask_user.py
+│   │   │   ├── backend_client.py
+│   │   │   ├── cancellation.py
+│   │   │   ├── config.py
+│   │   │   ├── execution_metrics.py
+│   │   │   ├── graph
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── graph.py
+│   │   │   │   ├── nodes
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── answer_help.py
+│   │   │   │   │   ├── build_answer_context.py
+│   │   │   │   │   ├── create.py
+│   │   │   │   │   ├── edit.py
+│   │   │   │   │   ├── gate.py
+│   │   │   │   │   ├── generate_answer.py
+│   │   │   │   │   ├── ground_check.py
+│   │   │   │   │   ├── guardrails.py
+│   │   │   │   │   ├── memory_command.py
+│   │   │   │   │   ├── merge_evidence.py
+│   │   │   │   │   ├── plan.py
+│   │   │   │   │   ├── prepare.py
+│   │   │   │   │   └── research_task.py
+│   │   │   │   ├── routing
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── conditions.py
+│   │   │   │   ├── services
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── authoring.py
+│   │   │   │   │   ├── citations.py
+│   │   │   │   │   ├── document_resolver.py
+│   │   │   │   │   ├── events.py
+│   │   │   │   │   ├── evidence.py
+│   │   │   │   │   ├── llm.py
+│   │   │   │   │   ├── memory.py
+│   │   │   │   │   ├── node_metrics.py
+│   │   │   │   │   ├── prompts.py
+│   │   │   │   │   ├── scope.py
+│   │   │   │   │   ├── tabular_catalog.py
+│   │   │   │   │   ├── tabular_query.py
+│   │   │   │   │   ├── tabular_worker.py
+│   │   │   │   │   ├── time_tool.py
+│   │   │   │   │   ├── tool_guide.py
+│   │   │   │   │   └── vdb_router.py
+│   │   │   │   └── state.py
+│   │   │   ├── runner.py
+│   │   │   ├── searxng_client.py
+│   │   │   ├── service.py
+│   │   │   ├── tabular_contracts.py
+│   │   │   ├── usage_context.py
+│   │   │   └── user_token.py
 │   │   ├── config
 │   │   │   ├── __init__.py
+│   │   │   ├── api_keys.py
+│   │   │   ├── assistants.py
 │   │   │   ├── database.py
 │   │   │   ├── documents.py
 │   │   │   ├── energy.py
+│   │   │   ├── guardrails.py
+│   │   │   ├── images.py
 │   │   │   ├── keycloak.py
 │   │   │   ├── llm.py
 │   │   │   ├── logging.py
+│   │   │   ├── mcp.py
+│   │   │   ├── memory.py
+│   │   │   ├── openai_api.py
 │   │   │   ├── qdrant.py
 │   │   │   ├── redis.py
+│   │   │   ├── rerank.py
 │   │   │   ├── runs.py
 │   │   │   ├── rustfs.py
+│   │   │   ├── secrets.py
 │   │   │   ├── sharing.py
+│   │   │   ├── tools.py
+│   │   │   ├── voice.py
 │   │   │   └── worker.py
 │   │   ├── connectors.py
 │   │   ├── core
 │   │   │   ├── __init__.py
+│   │   │   ├── api_keys.py
+│   │   │   ├── audio_bytes.py
 │   │   │   ├── bm25.py
 │   │   │   ├── file_hash.py
+│   │   │   ├── habits.py
+│   │   │   ├── image_bytes.py
 │   │   │   ├── indexing_cost.py
+│   │   │   ├── memory_rules.py
 │   │   │   ├── page_ranges.py
+│   │   │   ├── routine_schedule.py
+│   │   │   ├── secret_store
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── errors.py
+│   │   │   │   ├── local.py
+│   │   │   │   └── vault.py
 │   │   │   ├── security
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── claims.py
@@ -58,13 +134,26 @@
 │   │   │   │   └── worker_auth.py
 │   │   │   ├── sharing.py
 │   │   │   ├── storage.py
-│   │   │   └── tasks.py
+│   │   │   ├── style_signals.py
+│   │   │   ├── tasks.py
+│   │   │   └── url_guard.py
 │   │   ├── db.py
+│   │   ├── guardrails
+│   │   │   ├── __init__.py
+│   │   │   ├── http.py
+│   │   │   ├── llm.py
+│   │   │   ├── presets.py
+│   │   │   ├── rules.py
+│   │   │   ├── runner.py
+│   │   │   └── types.py
 │   │   ├── logger.py
 │   │   ├── main.py
+│   │   ├── mcp_server.py
 │   │   ├── models
 │   │   │   ├── __init__.py
+│   │   │   ├── api_key.py
 │   │   │   ├── app_settings.py
+│   │   │   ├── assistant.py
 │   │   │   ├── base.py
 │   │   │   ├── cgu.py
 │   │   │   ├── chart.py
@@ -85,26 +174,41 @@
 │   │   │   ├── evaluation.py
 │   │   │   ├── execution_metric.py
 │   │   │   ├── feedback.py
+│   │   │   ├── group.py
+│   │   │   ├── guardrail.py
+│   │   │   ├── image_generation.py
 │   │   │   ├── import_document.py
 │   │   │   ├── index_rebuild.py
 │   │   │   ├── message.py
+│   │   │   ├── message_image.py
+│   │   │   ├── notification.py
+│   │   │   ├── owui_sync_run.py
 │   │   │   ├── prompt.py
 │   │   │   ├── qa.py
 │   │   │   ├── report.py
+│   │   │   ├── routine.py
 │   │   │   ├── run.py
 │   │   │   ├── source.py
+│   │   │   ├── stored_secret.py
 │   │   │   ├── task.py
 │   │   │   ├── task_log_entry.py
-│   │   │   └── token_usage.py
+│   │   │   ├── token_usage.py
+│   │   │   ├── tool.py
+│   │   │   ├── user_memory.py
+│   │   │   └── voice.py
+│   │   ├── openai_app.py
 │   │   ├── repositories
 │   │   │   ├── __init__.py
+│   │   │   ├── api_key_repository.py
 │   │   │   ├── app_settings_repository.py
+│   │   │   ├── assistant_repository.py
 │   │   │   ├── cgu_repository.py
 │   │   │   ├── chart_repository.py
 │   │   │   ├── chunk_repository.py
 │   │   │   ├── collection_hierarchy_repository.py
 │   │   │   ├── collection_import_repository.py
 │   │   │   ├── collection_repository.py
+│   │   │   ├── collection_sync_repository.py
 │   │   │   ├── conversation_repository.py
 │   │   │   ├── discussion_feedback_repository.py
 │   │   │   ├── discussion_score_repository.py
@@ -113,25 +217,33 @@
 │   │   │   ├── document_repository.py
 │   │   │   ├── document_revision_repository.py
 │   │   │   ├── document_stage_repository.py
+│   │   │   ├── document_sync_repository.py
 │   │   │   ├── entity_repository.py
 │   │   │   ├── evaluation_repository.py
 │   │   │   ├── execution_metric_repository.py
 │   │   │   ├── feedback_repository.py
+│   │   │   ├── group_repository.py
+│   │   │   ├── guardrail_repository.py
 │   │   │   ├── index_rebuild_repository.py
+│   │   │   ├── memory_repository.py
+│   │   │   ├── message_image_repository.py
+│   │   │   ├── notification_repository.py
+│   │   │   ├── owui_sync_run_repository.py
 │   │   │   ├── prompt_repository.py
 │   │   │   ├── qa_pair_repository.py
 │   │   │   ├── report_repository.py
+│   │   │   ├── routine_repository.py
 │   │   │   ├── run_repository.py
 │   │   │   ├── source_repository.py
 │   │   │   ├── task_log_repository.py
 │   │   │   ├── task_repository.py
-│   │   │   └── token_usage_repository.py
+│   │   │   ├── token_usage_repository.py
+│   │   │   └── voice_repository.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
-│   │   │   ├── admin_cgu.py
-│   │   │   ├── admin_prompts.py
-│   │   │   ├── admin_reports.py
-│   │   │   ├── admin_settings.py
+│   │   │   ├── admin_*.py  (8 files)
+│   │   │   ├── api_keys.py
+│   │   │   ├── assistants.py
 │   │   │   ├── auth.py
 │   │   │   ├── cgu.py
 │   │   │   ├── collection_imports.py
@@ -141,42 +253,48 @@
 │   │   │   ├── document_refresh.py
 │   │   │   ├── documents.py
 │   │   │   ├── filing.py
+│   │   │   ├── groups.py
 │   │   │   ├── health.py
+│   │   │   ├── image_attachments.py
+│   │   │   ├── images.py
 │   │   │   ├── index_rebuilds.py
-│   │   │   ├── internal_collections.py
-│   │   │   ├── internal_conversations.py
-│   │   │   ├── internal_document_drafts.py
-│   │   │   ├── internal_documents.py
-│   │   │   ├── internal_edit_requests.py
-│   │   │   ├── internal_evaluation.py
-│   │   │   ├── internal_llm.py
-│   │   │   ├── internal_pipeline.py
-│   │   │   ├── internal_prompts.py
-│   │   │   ├── internal_runs.py
-│   │   │   ├── internal_tasks.py
+│   │   │   ├── internal_*.py  (18 files)
 │   │   │   ├── living_documents.py
+│   │   │   ├── memory.py
 │   │   │   ├── models.py
+│   │   │   ├── notifications.py
 │   │   │   ├── qa_pairs.py
 │   │   │   ├── qa_suggestions.py
 │   │   │   ├── quality.py
 │   │   │   ├── reports.py
+│   │   │   ├── routines.py
 │   │   │   ├── runs.py
 │   │   │   ├── tasks.py
-│   │   │   └── usage.py
+│   │   │   ├── tools.py
+│   │   │   ├── usage.py
+│   │   │   └── voice.py
 │   │   ├── schemas
 │   │   │   ├── __init__.py
+│   │   │   ├── api_key.py
 │   │   │   ├── app_settings.py
+│   │   │   ├── assistant.py
 │   │   │   ├── cgu.py
 │   │   │   ├── collection.py
 │   │   │   ├── collection_import.py
+│   │   │   ├── collection_sync.py
 │   │   │   ├── conversation.py
 │   │   │   ├── discussion_feedback.py
 │   │   │   ├── discussion_score.py
 │   │   │   ├── document.py
 │   │   │   ├── document_draft.py
+│   │   │   ├── document_sync.py
 │   │   │   ├── evaluation.py
 │   │   │   ├── feedback.py
+│   │   │   ├── group.py
+│   │   │   ├── guardrail.py
 │   │   │   ├── health.py
+│   │   │   ├── image_attachment.py
+│   │   │   ├── image_generation.py
 │   │   │   ├── index_rebuild.py
 │   │   │   ├── internal_discussion_score.py
 │   │   │   ├── internal_document.py
@@ -184,38 +302,58 @@
 │   │   │   ├── internal_evaluation.py
 │   │   │   ├── internal_pipeline.py
 │   │   │   ├── internal_run.py
+│   │   │   ├── mcp.py
+│   │   │   ├── memory.py
 │   │   │   ├── models.py
+│   │   │   ├── notification.py
+│   │   │   ├── openai_api.py
+│   │   │   ├── owui_sync.py
 │   │   │   ├── pagination.py
 │   │   │   ├── prompt.py
 │   │   │   ├── qa_suggestion.py
 │   │   │   ├── quality.py
 │   │   │   ├── question.py
 │   │   │   ├── report.py
+│   │   │   ├── routine.py
 │   │   │   ├── run.py
+│   │   │   ├── secret_store.py
 │   │   │   ├── task.py
-│   │   │   └── usage.py
+│   │   │   ├── tool.py
+│   │   │   ├── usage.py
+│   │   │   └── voice.py
 │   │   └── services
 │   │       ├── __init__.py
+│   │       ├── api_key_service.py
 │   │       ├── app_settings_service.py
+│   │       ├── assistant_search_service.py
+│   │       ├── assistant_service.py
 │   │       ├── cgu_service.py
+│   │       ├── chat_model_lookup.py
 │   │       ├── collection_hierarchy_service.py
 │   │       ├── collection_import_service.py
 │   │       ├── collection_service.py
 │   │       ├── conversation_service.py
+│   │       ├── copied_collections.py
 │   │       ├── creation_proposal_service.py
 │   │       ├── description_rollup_service.py
-│   │       ├── document_derived_data.py
-│   │       ├── document_draft_service.py
-│   │       ├── document_refresh_service.py
-│   │       ├── document_service.py
-│   │       ├── document_upload_service.py
+│   │       ├── document_*.py  (5 files)
 │   │       ├── editing_rights.py
 │   │       ├── embedding_model_lookup.py
 │   │       ├── evaluation_service.py
+│   │       ├── group_service.py
+│   │       ├── guardrail_service.py
+│   │       ├── habit_service.py
+│   │       ├── image_attachment_service.py
+│   │       ├── image_generation_service.py
 │   │       ├── import_processing_queue.py
 │   │       ├── index_rebuild_service.py
 │   │       ├── index_vectors.py
 │   │       ├── living_document_service.py
+│   │       ├── mcp_search_service.py
+│   │       ├── memory_learning_service.py
+│   │       ├── memory_service.py
+│   │       ├── notification_service.py
+│   │       ├── openai_chat_service.py
 │   │       ├── page_highlights.py
 │   │       ├── prompt_service.py
 │   │       ├── qa_pair_service.py
@@ -223,13 +361,25 @@
 │   │       ├── qa_suggestion_service.py
 │   │       ├── quality_service.py
 │   │       ├── report_service.py
+│   │       ├── reranker.py
 │   │       ├── result_reuse.py
+│   │       ├── routine_runner.py
+│   │       ├── routine_service.py
 │   │       ├── run_service.py
+│   │       ├── run_stream.py
 │   │       ├── search_service.py
+│   │       ├── secret_store_service.py
 │   │       ├── table_views.py
 │   │       ├── task_service.py
+│   │       ├── tool_search_service.py
+│   │       ├── tool_service.py
+│   │       ├── tools
+│   │       │   ├── __init__.py
+│   │       │   ├── internal_catalog.py
+│   │       │   └── mcp_client.py
 │   │       ├── usage_service.py
-│   │       └── vector_store.py
+│   │       ├── vector_store.py
+│   │       └── voice_service.py
 │   ├── docs
 │   │   └── db-schema.png
 │   ├── migrations
@@ -300,11 +450,58 @@
 │   │       ├── 20261106_0900_a7c0d3e6f8b2_page_regions.py
 │   │       ├── 20261107_0900_b8d1e4f7a9c3_document_tables.py
 │   │       ├── 20261108_0900_c9e2f5a8b0d4_tabular_sheets.py
-│   │       └── 20261109_0900_d0f3a6b9c1e5_charts.py
+│   │       ├── 20261109_0900_d0f3a6b9c1e5_charts.py
+│   │       ├── 20261110_0900_e1a4b7c0d2f6_caption_engine.py
+│   │       ├── 20261111_0900_f2b5c8d1e3a7_owui_sync_groups_and_sources.py
+│   │       ├── 20261112_0900_a3c6d9e2f4b8_group_owner_and_pending_members.py
+│   │       ├── 20261113_0900_b4d7e0f3a5c9_share_permission.py
+│   │       ├── 20261114_0900_c5e8f1a4b6d0_collection_adopted_at.py
+│   │       ├── 20261115_0900_d6f9a2b5c7e1_owui_sync_runs.py
+│   │       ├── 20261116_0900_e7a0b3c6d8f2_conversation_search.py
+│   │       ├── 20261117_0900_f8b1c4d7e9a3_api_keys.py
+│   │       ├── 20261118_0900_a9c2d5e8f0b4_stored_secrets.py
+│   │       ├── 20261119_0900_b0d3e6f9a1c5_conversation_source.py
+│   │       ├── 20261120_0900_c1e4f7a0b2d6_collection_rerank.py
+│   │       ├── 20261121_0900_d2f5a8b1c3e7_assistants.py
+│   │       ├── 20261122_0900_e3a6b9c2d4f8_assistant_consultation.py
+│   │       ├── 20261123_0900_f4b7c0d3e5a9_tools.py
+│   │       ├── 20261124_0900_a5d8e1f4b6c0_chat_tool_calls.py
+│   │       ├── 20261125_0900_b6e9f2a5c7d1_image_generation.py
+│   │       ├── 20261126_0900_c7f3a9b1d2e4_routines_and_notifications.py
+│   │       ├── 20261127_0900_d8a4c6e1f203_guardrails_on_the_input.py
+│   │       ├── 20261128_0900_e9b5d7f2a314_user_memory.py
+│   │       ├── 20261129_0900_f1c6e8a3b425_learned_memory.py
+│   │       ├── 20261130_0900_a2d7f9b4c536_habits_of_use.py
+│   │       └── 20261201_0900_b3e8a1c5d647_voice.py
 │   ├── pyproject.toml
+│   ├── scripts
+│   │   └── draw_agent_graph.py
 │   ├── tests
 │   │   ├── .env.testing
 │   │   ├── __init__.py
+│   │   ├── agent
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── test_agent_service.py
+│   │   │   ├── test_answer_citations.py
+│   │   │   ├── test_answer_help.py
+│   │   │   ├── test_ask_user.py
+│   │   │   ├── test_call_tool.py
+│   │   │   ├── test_create_document.py
+│   │   │   ├── test_edit_delegation.py
+│   │   │   ├── test_execution_metrics.py
+│   │   │   ├── test_graph.py
+│   │   │   ├── test_ground_check.py
+│   │   │   ├── test_guardrails_graph.py
+│   │   │   ├── test_habits_graph.py
+│   │   │   ├── test_images.py
+│   │   │   ├── test_memory_graph.py
+│   │   │   ├── test_prompts.py
+│   │   │   ├── test_runner.py
+│   │   │   ├── test_scope.py
+│   │   │   ├── test_tabular_contracts_sync.py
+│   │   │   ├── test_tabular_query.py
+│   │   │   └── test_time_tool.py
 │   │   ├── conftest.py
 │   │   ├── core
 │   │   │   ├── __init__.py
@@ -314,25 +511,48 @@
 │   │   │   │   ├── test_factory.py
 │   │   │   │   ├── test_session.py
 │   │   │   │   └── test_worker_auth.py
+│   │   │   ├── test_api_key_settings.py
+│   │   │   ├── test_api_keys.py
+│   │   │   ├── test_audio_bytes.py
 │   │   │   ├── test_bm25.py
+│   │   │   ├── test_guardrail_checks.py
+│   │   │   ├── test_guardrail_rules.py
+│   │   │   ├── test_guardrail_runner.py
+│   │   │   ├── test_habits.py
+│   │   │   ├── test_image_bytes.py
 │   │   │   ├── test_indexing_cost.py
+│   │   │   ├── test_routine_schedule.py
+│   │   │   ├── test_secret_store_config.py
+│   │   │   ├── test_secret_store_local.py
+│   │   │   ├── test_secret_store_vault.py
+│   │   │   ├── test_storage_foreign_keys.py
+│   │   │   ├── test_style_signals.py
 │   │   │   ├── test_task_revocation.py
 │   │   │   └── test_tasks.py
 │   │   ├── models
 │   │   │   ├── __init__.py
 │   │   │   ├── test_collection_hierarchy.py
+│   │   │   ├── test_resource_source.py
 │   │   │   └── test_temporary_collection.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
-│   │   │   └── test_*.py  (50 files)
+│   │   │   └── test_*.py  (81 files)
 │   │   └── services
 │   │       ├── __init__.py
+│   │       ├── test_assistant_search.py
 │   │       ├── test_collection_hierarchy_service.py
 │   │       ├── test_collection_subtree_delete.py
 │   │       ├── test_conversation_file_upload.py
+│   │       ├── test_copied_files_are_not_deleted.py
+│   │       ├── test_mcp_search_service.py
 │   │       ├── test_page_highlights.py
 │   │       ├── test_qa_source.py
+│   │       ├── test_reranking.py
+│   │       ├── test_search_owui_collections.py
 │   │       ├── test_search_scope.py
+│   │       ├── test_secret_store_service.py
+│   │       ├── test_tool_pieces.py
+│   │       ├── test_tool_search.py
 │   │       └── test_vector_store.py
 │   └── uv.lock
 ├── ci
@@ -341,114 +561,158 @@
 ├── docker
 │   ├── keycloak
 │   │   └── realm-muffin.json
+│   ├── owui
+│   │   ├── install_muffin_tool.py
+│   │   ├── keycloak_login.py
+│   │   └── muffin_search_tool.py
 │   └── searxng
 │       └── settings.yml
 ├── docker-compose-test.yaml
+├── docker-compose.owui.yaml
 ├── docker-compose.yaml
 ├── docs
+│   ├── agent-execution-graph-proposal.md
+│   ├── agent-execution-graph-proposal.png
+│   ├── agent-execution-graph.md
+│   ├── agent-execution-graph.png
+│   ├── api-keys.md
 │   ├── assistant-questions.md
+│   ├── assistants.md
+│   ├── audit-sync-owui.md
+│   ├── audit-vs-open-webui.md
 │   ├── collection-hierarchy.md
 │   ├── collection-sharing.md
+│   ├── conversation-search.md
+│   ├── document-file.md
 │   ├── environment-variables.md
+│   ├── guardrails.md
+│   ├── image-attachments.md
+│   ├── image-generation.md
 │   ├── images
-│   │   └── landing-page.png
+│   │   ├── api-keys-created.png
+│   │   ├── assistants-chat.png
+│   │   ├── assistants-edition.png
+│   │   ├── assistants-liste.png
+│   │   ├── assistants-partage.png
+│   │   ├── assistants-recherche.png
+│   │   ├── assistants-selecteur.png
+│   │   ├── conversation-search-opened.png
+│   │   ├── conversation-search-results.png
+│   │   ├── document-file-fiche.png
+│   │   ├── document-file-source-citee.png
+│   │   ├── document-file-source-parcours.png
+│   │   ├── landing-page.png
+│   │   ├── tools-formulaire.png
+│   │   ├── tools-liste.png
+│   │   └── tools-menu-chat.png
 │   ├── indexing-llm-calls-cases.json
 │   ├── indexing-llm-calls.md
+│   ├── mcp.md
+│   ├── memory.md
+│   ├── notifications.md
+│   ├── openai-api.md
+│   ├── owui-muffin-tool.md
+│   ├── owui-test-instance.md
 │   ├── qdrant-backup.md
 │   ├── research-agent-plan.md
+│   ├── routines.md
+│   ├── run-stream.md
 │   ├── search.md
+│   ├── secrets.md
 │   ├── security-scans.md
-│   └── ui
-│       ├── admin
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── admin-index.png
-│       │       ├── prompt-carousel-overview.png
-│       │       ├── prompt-carousel-second-card.png
-│       │       └── prompt-past-version-readonly.png
-│       ├── cgu
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── admin-editor.png
-│       │       ├── gate-update.png
-│       │       └── viewer.png
-│       ├── chat
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── edit-01-proposal-card.png
-│       │       ├── edit-02-review.png
-│       │       ├── edit-03-validated.png
-│       │       ├── edit-04-no-longer-pending.png
-│       │       ├── voice-input-idle.png
-│       │       └── voice-output-button.png
-│       ├── collections
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── collections-00-list.png
-│       │       ├── collections-02-header-filled.png
-│       │       ├── collections-03-header-collapsed.png
-│       │       ├── collections-modernize-01-forced-edit.png
-│       │       ├── collections-modernize-02b-read-mode.png
-│       │       ├── collections-modernize-03-edit-mode.png
-│       │       ├── collections-sub-01-list.png
-│       │       ├── collections-sub-02-search.png
-│       │       ├── collections-sub-03-tab.png
-│       │       ├── collections-sub-04-breadcrumb.png
-│       │       ├── collections-sub-05-inherited.png
-│       │       ├── collections-sub-06-move.png
-│       │       ├── collections-sub-07-delete.png
-│       │       ├── collections-sub-08-chat-picker.png
-│       │       ├── collections-sub-09-go-further.png
-│       │       ├── collections-tabs-01-primary.png
-│       │       ├── collections-tabs-02-advanced-open.png
-│       │       ├── collections-tabs-03-chunks-active.png
-│       │       ├── collections-zip-01-documents-tab.png
-│       │       ├── collections-zip-02-filing.png
-│       │       ├── collections-zip-03-chat-chip.png
-│       │       ├── collections-zip-04-attach.png
-│       │       ├── living-01-documents-tab.png
-│       │       ├── living-02-revisions.png
-│       │       ├── living-03-revisions-locked.png
-│       │       ├── living-04-new-markdown.png
-│       │       ├── living-edit-01-request.png
-│       │       ├── living-edit-02-pending.png
-│       │       ├── living-edit-03-review.png
-│       │       ├── living-edit-04-images.png
-│       │       ├── living-edit-05-validated.png
-│       │       ├── living-edit-06-declined.png
-│       │       ├── living-edit-07-failed.png
-│       │       └── living-edit-08-markdown.png
-│       ├── filing
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── chat-suggestion-modal.png
-│       │       ├── no-match-create-collection.png
-│       │       └── review-page.png
-│       ├── onboarding
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── onboarding-01-step1.png
-│       │       ├── onboarding-03-last-step.png
-│       │       └── onboarding-05-manual-replay.png
-│       ├── reports
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── report-01-empty.png
-│       │       ├── report-02-filled.png
-│       │       ├── report-05-admin-expanded.png
-│       │       ├── report-07-admin-resolved.png
-│       │       └── report-08-user-sees-response.png
-│       ├── usage
-│       │   ├── README.md
-│       │   └── screenshots
-│       │       ├── usage-execution.png
-│       │       ├── usage-impact-multiple-charges.png
-│       │       ├── usage-impact.png
-│       │       └── usage-tokens.png
-│       └── user-menu
-│           ├── README.md
-│           └── screenshots
-│               └── release-notes-modal.png
+│   ├── tools.md
+│   ├── ui
+│   │   ├── admin
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── admin-index.png
+│   │   │       ├── prompt-carousel-overview.png
+│   │   │       ├── prompt-carousel-second-card.png
+│   │   │       └── prompt-past-version-readonly.png
+│   │   ├── cgu
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── admin-editor.png
+│   │   │       ├── gate-update.png
+│   │   │       └── viewer.png
+│   │   ├── chat
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── edit-01-proposal-card.png
+│   │   │       ├── edit-02-review.png
+│   │   │       ├── edit-03-validated.png
+│   │   │       ├── edit-04-no-longer-pending.png
+│   │   │       ├── voice-input-idle.png
+│   │   │       └── voice-output-button.png
+│   │   ├── collections
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── collections-00-list.png
+│   │   │       ├── collections-02-header-filled.png
+│   │   │       ├── collections-03-header-collapsed.png
+│   │   │       ├── collections-modernize-01-forced-edit.png
+│   │   │       ├── collections-modernize-02b-read-mode.png
+│   │   │       ├── collections-modernize-03-edit-mode.png
+│   │   │       ├── collections-sub-01-list.png
+│   │   │       ├── collections-sub-02-search.png
+│   │   │       ├── collections-sub-03-tab.png
+│   │   │       ├── collections-sub-04-breadcrumb.png
+│   │   │       ├── collections-sub-05-inherited.png
+│   │   │       ├── collections-sub-06-move.png
+│   │   │       ├── collections-sub-07-delete.png
+│   │   │       ├── collections-sub-08-chat-picker.png
+│   │   │       ├── collections-sub-09-go-further.png
+│   │   │       ├── collections-tabs-01-primary.png
+│   │   │       ├── collections-tabs-02-advanced-open.png
+│   │   │       ├── collections-tabs-03-chunks-active.png
+│   │   │       ├── collections-zip-01-documents-tab.png
+│   │   │       ├── collections-zip-02-filing.png
+│   │   │       ├── collections-zip-03-chat-chip.png
+│   │   │       ├── collections-zip-04-attach.png
+│   │   │       ├── living-01-documents-tab.png
+│   │   │       ├── living-02-revisions.png
+│   │   │       ├── living-03-revisions-locked.png
+│   │   │       ├── living-04-new-markdown.png
+│   │   │       ├── living-edit-01-request.png
+│   │   │       ├── living-edit-02-pending.png
+│   │   │       ├── living-edit-03-review.png
+│   │   │       ├── living-edit-04-images.png
+│   │   │       ├── living-edit-05-validated.png
+│   │   │       ├── living-edit-06-declined.png
+│   │   │       ├── living-edit-07-failed.png
+│   │   │       └── living-edit-08-markdown.png
+│   │   ├── filing
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── chat-suggestion-modal.png
+│   │   │       ├── no-match-create-collection.png
+│   │   │       └── review-page.png
+│   │   ├── onboarding
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── onboarding-01-step1.png
+│   │   │       ├── onboarding-03-last-step.png
+│   │   │       └── onboarding-05-manual-replay.png
+│   │   ├── reports
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── report-01-empty.png
+│   │   │       ├── report-02-filled.png
+│   │   │       ├── report-05-admin-expanded.png
+│   │   │       ├── report-07-admin-resolved.png
+│   │   │       └── report-08-user-sees-response.png
+│   │   ├── usage
+│   │   │   ├── README.md
+│   │   │   └── screenshots
+│   │   │       ├── usage-execution.png
+│   │   │       ├── usage-impact-multiple-charges.png
+│   │   │       ├── usage-impact.png
+│   │   │       └── usage-tokens.png
+│   │   └── user-menu
+│   │       ├── README.md
+│   │       └── screenshots
+│   │           └── release-notes-modal.png
+│   └── voice.md
 ├── frontend
 │   ├── .dockerignore
 │   ├── .env.production
@@ -482,19 +746,31 @@
 │   │   ├── components
 │   │   │   ├── AddUrlModal.vue
 │   │   │   ├── AdminCguView.vue
+│   │   │   ├── AdminGuardrailsView.vue
+│   │   │   ├── AdminImagesView.vue
 │   │   │   ├── AdminIndexView.vue
+│   │   │   ├── AdminOwuiSyncView.vue
 │   │   │   ├── AdminPromptsView.vue
 │   │   │   ├── AdminReportsView.vue
+│   │   │   ├── AdminRoutinesView.vue
 │   │   │   ├── AdminSettingsView.vue
 │   │   │   ├── AdminUsageView.vue
+│   │   │   ├── AdminVoiceView.vue
+│   │   │   ├── ApiKeysModal.vue
+│   │   │   ├── AssistantForm.vue
+│   │   │   ├── AssistantSelector.vue
+│   │   │   ├── AssistantSharePanel.vue
+│   │   │   ├── AssistantsView.vue
 │   │   │   ├── CguEditor.vue
 │   │   │   ├── CguGateModal.vue
 │   │   │   ├── CguViewerModal.vue
 │   │   │   ├── ChatCreateProposal.vue
 │   │   │   ├── ChatEditProposal.vue
+│   │   │   ├── ChatImages.vue
 │   │   │   ├── ChatMessage.vue
 │   │   │   ├── ChatQuestions.vue
 │   │   │   ├── ChatSidebar.vue
+│   │   │   ├── ChatToolCalls.vue
 │   │   │   ├── ChatView.vue
 │   │   │   ├── ChatWindow.vue
 │   │   │   ├── CollectionAccessSettings.vue
@@ -512,6 +788,7 @@
 │   │   │   ├── CollectionsView.vue
 │   │   │   ├── ConfirmDeleteModal.vue
 │   │   │   ├── ConversationMenu.vue
+│   │   │   ├── ConversationTools.vue
 │   │   │   ├── DiscussionFeedbackPrompt.vue
 │   │   │   ├── DiscussionScorePanel.vue
 │   │   │   ├── DocumentDetailModal.vue
@@ -522,14 +799,19 @@
 │   │   │   ├── FeedbackModal.vue
 │   │   │   ├── FileFilingModal.vue
 │   │   │   ├── FilingReviewView.vue
+│   │   │   ├── GroupMembersPanel.vue
+│   │   │   ├── GroupsView.vue
+│   │   │   ├── GuardrailForm.vue
 │   │   │   ├── HomeView.vue
 │   │   │   ├── LivingDocumentEdit.vue
 │   │   │   ├── LivingDocumentRevisions.vue
 │   │   │   ├── LongDocumentsFields.vue
+│   │   │   ├── MemoryView.vue
 │   │   │   ├── ModelSelect.vue
 │   │   │   ├── ModelSelector.vue
 │   │   │   ├── MoveCollectionModal.vue
 │   │   │   ├── NewMarkdownDocumentModal.vue
+│   │   │   ├── NotificationPanel.vue
 │   │   │   ├── OnboardingModal.vue
 │   │   │   ├── PaginationControls.vue
 │   │   │   ├── ProfilePicker.vue
@@ -539,6 +821,9 @@
 │   │   │   ├── ReleaseNotesModal.vue
 │   │   │   ├── ReportModal.vue
 │   │   │   ├── ReportsAdminSection.vue
+│   │   │   ├── RoutineForm.vue
+│   │   │   ├── RoutineHistory.vue
+│   │   │   ├── RoutinesView.vue
 │   │   │   ├── SettingsField.vue
 │   │   │   ├── SettingsModal.vue
 │   │   │   ├── SettingsSection.vue
@@ -550,6 +835,8 @@
 │   │   │   ├── TaskRow.vue
 │   │   │   ├── TaskTableRow.vue
 │   │   │   ├── TasksView.vue
+│   │   │   ├── ToolServerForm.vue
+│   │   │   ├── ToolsView.vue
 │   │   │   ├── UrlRefreshSettings.vue
 │   │   │   ├── UsageView.vue
 │   │   │   └── usage
@@ -560,8 +847,14 @@
 │   │   │       ├── WaterBottles.vue
 │   │   │       └── stepLabels.ts
 │   │   ├── composables
+│   │   │   ├── useAdminGuardrails.ts
+│   │   │   ├── useAdminImages.ts
 │   │   │   ├── useAdminSettings.ts
+│   │   │   ├── useAdminVoice.ts
+│   │   │   ├── useApiKeys.ts
 │   │   │   ├── useAppVersion.ts
+│   │   │   ├── useAssistantSearch.ts
+│   │   │   ├── useAssistants.ts
 │   │   │   ├── useCgu.ts
 │   │   │   ├── useCguAdmin.ts
 │   │   │   ├── useChangelog.ts
@@ -569,16 +862,24 @@
 │   │   │   ├── useCollectionImports.ts
 │   │   │   ├── useCollections.ts
 │   │   │   ├── useCollectionsBrowser.ts
+│   │   │   ├── useConversationSearch.ts
 │   │   │   ├── useCurrentUser.ts
+│   │   │   ├── useDictation.ts
 │   │   │   ├── useDocumentDraft.ts
 │   │   │   ├── useDraftSession.ts
 │   │   │   ├── useEmbeddingModels.ts
 │   │   │   ├── useEntityMentions.ts
 │   │   │   ├── useFiling.ts
+│   │   │   ├── useGroups.ts
+│   │   │   ├── useImageAttachments.ts
+│   │   │   ├── useImageGeneration.ts
 │   │   │   ├── useIndexingEstimate.ts
 │   │   │   ├── useLivingDocuments.ts
+│   │   │   ├── useMemory.ts
 │   │   │   ├── useModels.ts
+│   │   │   ├── useNotifications.ts
 │   │   │   ├── useOnboarding.ts
+│   │   │   ├── useOwuiSync.ts
 │   │   │   ├── usePageHighlights.ts
 │   │   │   ├── usePagination.ts
 │   │   │   ├── usePrompts.ts
@@ -586,50 +887,89 @@
 │   │   │   ├── useQuality.ts
 │   │   │   ├── useReports.ts
 │   │   │   ├── useReportsAdmin.ts
+│   │   │   ├── useRoutines.ts
 │   │   │   ├── useTaskLogs.ts
 │   │   │   ├── useTasks.ts
 │   │   │   ├── useTheme.ts
+│   │   │   ├── useToolSearch.ts
+│   │   │   ├── useTools.ts
 │   │   │   ├── useUsage.ts
+│   │   │   ├── useVisionModels.ts
 │   │   │   ├── useVoiceInput.ts
-│   │   │   └── useVoiceOutput.ts
+│   │   │   ├── useVoiceOutput.ts
+│   │   │   ├── useVoiceRecorder.ts
+│   │   │   └── useVoiceStatus.ts
 │   │   ├── data
 │   │   │   └── qualityMetrics.ts
 │   │   ├── main.ts
 │   │   ├── router
 │   │   │   └── index.ts
 │   │   ├── types
+│   │   │   ├── assistant.ts
 │   │   │   ├── chat.ts
 │   │   │   ├── collection.ts
+│   │   │   ├── group.ts
+│   │   │   ├── guardrail.ts
+│   │   │   ├── memory.ts
 │   │   │   ├── model.ts
+│   │   │   ├── owuiSync.ts
+│   │   │   ├── routine.ts
 │   │   │   ├── speech-recognition.d.ts
 │   │   │   ├── tabular.ts
+│   │   │   ├── tool.ts
 │   │   │   ├── usage.ts
 │   │   │   └── user.ts
 │   │   └── utils
 │   │       ├── answerHtml.ts
 │   │       ├── answerSources.test.ts
 │   │       ├── answerSources.ts
+│   │       ├── apiKeys.test.ts
+│   │       ├── apiKeys.ts
+│   │       ├── assistantSearch.test.ts
+│   │       ├── assistantSearch.ts
 │   │       ├── chartImages.test.ts
 │   │       ├── chartImages.ts
 │   │       ├── collectionPath.ts
 │   │       ├── collectionProfiles.test.ts
 │   │       ├── collectionProfiles.ts
+│   │       ├── conversationSearch.test.ts
+│   │       ├── conversationSearch.ts
+│   │       ├── documentFile.test.ts
+│   │       ├── documentFile.ts
 │   │       ├── execution.test.ts
 │   │       ├── execution.ts
+│   │       ├── guardrails.test.ts
+│   │       ├── guardrails.ts
+│   │       ├── habitualFirst.test.ts
+│   │       ├── habitualFirst.ts
 │   │       ├── highlightPassage.test.ts
 │   │       ├── highlightPassage.ts
+│   │       ├── imageResize.test.ts
+│   │       ├── imageResize.ts
 │   │       ├── longDocuments.test.ts
 │   │       ├── longDocuments.ts
+│   │       ├── owuiSync.test.ts
+│   │       ├── owuiSync.ts
 │   │       ├── plainText.ts
 │   │       ├── questionAnswers.test.ts
 │   │       ├── questionAnswers.ts
 │   │       ├── refreshSchedule.ts
+│   │       ├── routines.test.ts
+│   │       ├── routines.ts
+│   │       ├── runSteps.test.ts
+│   │       ├── runSteps.ts
+│   │       ├── runStream.test.ts
+│   │       ├── runStream.ts
 │   │       ├── settingsDraft.test.ts
 │   │       ├── settingsDraft.ts
 │   │       ├── settingsSummary.test.ts
 │   │       ├── settingsSummary.ts
 │   │       ├── tabular.test.ts
-│   │       └── tabular.ts
+│   │       ├── tabular.ts
+│   │       ├── toolSearch.test.ts
+│   │       ├── toolSearch.ts
+│   │       ├── voice.test.ts
+│   │       └── voice.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
@@ -649,27 +989,6 @@
 │   ├── templates
 │   │   ├── NOTES.txt
 │   │   ├── _helpers.tpl
-│   │   ├── agent_execution
-│   │   │   ├── clusterrole.yaml
-│   │   │   ├── clusterrolebinding.yaml
-│   │   │   ├── configmap.yaml
-│   │   │   ├── daemonset.yaml
-│   │   │   ├── deployment.yaml
-│   │   │   ├── grpcroute.yaml
-│   │   │   ├── hpa.yaml
-│   │   │   ├── httproute.yaml
-│   │   │   ├── ingress.yaml
-│   │   │   ├── metrics.yaml
-│   │   │   ├── networkpolicy.yaml
-│   │   │   ├── pdb.yaml
-│   │   │   ├── pullsecret.yaml
-│   │   │   ├── role.yaml
-│   │   │   ├── rolebinding.yaml
-│   │   │   ├── secret.yaml
-│   │   │   ├── service.yaml
-│   │   │   ├── serviceaccount.yaml
-│   │   │   ├── servicemonitor.yaml
-│   │   │   └── statefulset.yaml
 │   │   ├── backend
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -781,6 +1100,7 @@
 │   │   │   └── statefulset.yaml
 │   │   ├── ingress.yaml
 │   │   ├── jobs.yaml
+│   │   ├── keda.yaml
 │   │   ├── ocr
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -844,8 +1164,50 @@
 │   │   │   ├── serviceaccount.yaml
 │   │   │   ├── servicemonitor.yaml
 │   │   │   └── statefulset.yaml
+│   │   ├── ocr_vision
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── pullsecret.yaml
 │   │   ├── tabular
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── tts
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
 │   │   │   ├── configmap.yaml
@@ -888,7 +1250,28 @@
 │   │   │   ├── serviceaccount.yaml
 │   │   │   ├── servicemonitor.yaml
 │   │   │   └── statefulset.yaml
-│   │   └── worker_evaluation
+│   │   ├── worker_evaluation
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   └── worker_owui_sync
 │   │       ├── clusterrole.yaml
 │   │       ├── clusterrolebinding.yaml
 │   │       ├── configmap.yaml
@@ -922,87 +1305,6 @@
 │   ├── database.csv
 │   └── run-tests.sh
 └── worker
-    ├── agent_execution
-    │   ├── Dockerfile
-    │   ├── README.md
-    │   ├── app
-    │   │   ├── __init__.py
-    │   │   ├── agent_service.py
-    │   │   ├── ask_user.py
-    │   │   ├── backend_client.py
-    │   │   ├── celery_app.py
-    │   │   ├── config.py
-    │   │   ├── execution_metrics.py
-    │   │   ├── graph
-    │   │   │   ├── __init__.py
-    │   │   │   ├── graph.py
-    │   │   │   ├── nodes
-    │   │   │   │   ├── __init__.py
-    │   │   │   │   ├── analyze_query.py
-    │   │   │   │   ├── answer_help.py
-    │   │   │   │   ├── answer_identity.py
-    │   │   │   │   ├── build_answer_context.py
-    │   │   │   │   ├── build_research_plan.py
-    │   │   │   │   ├── clarify_coverage.py
-    │   │   │   │   ├── create_document.py
-    │   │   │   │   ├── decompose_query.py
-    │   │   │   │   ├── delegate_edit.py
-    │   │   │   │   ├── detect_edit.py
-    │   │   │   │   ├── evaluate_coverage.py
-    │   │   │   │   ├── generate_answer.py
-    │   │   │   │   ├── load_accessible_vdbs.py
-    │   │   │   │   ├── load_context.py
-    │   │   │   │   ├── merge_evidence.py
-    │   │   │   │   ├── request_clarification.py
-    │   │   │   │   ├── research_task.py
-    │   │   │   │   ├── rewrite_citations.py
-    │   │   │   │   ├── route_collections.py
-    │   │   │   │   ├── targeted_research.py
-    │   │   │   │   └── validate_grounding.py
-    │   │   │   ├── routing
-    │   │   │   │   ├── __init__.py
-    │   │   │   │   └── conditions.py
-    │   │   │   ├── services
-    │   │   │   │   ├── __init__.py
-    │   │   │   │   ├── citations.py
-    │   │   │   │   ├── document_resolver.py
-    │   │   │   │   ├── events.py
-    │   │   │   │   ├── evidence.py
-    │   │   │   │   ├── llm.py
-    │   │   │   │   ├── node_metrics.py
-    │   │   │   │   ├── planning.py
-    │   │   │   │   ├── prompts.py
-    │   │   │   │   ├── tabular_catalog.py
-    │   │   │   │   ├── tabular_query.py
-    │   │   │   │   ├── tabular_worker.py
-    │   │   │   │   ├── time_tool.py
-    │   │   │   │   └── vdb_router.py
-    │   │   │   └── state.py
-    │   │   ├── searxng_client.py
-    │   │   ├── tabular_contracts.py
-    │   │   ├── task_logging.py
-    │   │   ├── task_revocation.py
-    │   │   ├── tasks.py
-    │   │   └── usage_context.py
-    │   ├── pyproject.toml
-    │   ├── tests
-    │   │   ├── __init__.py
-    │   │   ├── conftest.py
-    │   │   ├── test_agent_service.py
-    │   │   ├── test_answer_citations.py
-    │   │   ├── test_answer_help.py
-    │   │   ├── test_ask_user.py
-    │   │   ├── test_create_document.py
-    │   │   ├── test_edit_delegation.py
-    │   │   ├── test_execution_metrics.py
-    │   │   ├── test_graph.py
-    │   │   ├── test_prompts.py
-    │   │   ├── test_route_collections.py
-    │   │   ├── test_tabular_contracts_sync.py
-    │   │   ├── test_tabular_query.py
-    │   │   ├── test_validate_grounding.py
-    │   │   └── test_vdb_router.py
-    │   └── uv.lock
     ├── document_edit
     │   ├── Dockerfile
     │   ├── README.md
@@ -1055,6 +1357,7 @@
     │   │   │   ├── assemble.py
     │   │   │   ├── contracts.py
     │   │   │   ├── crop.py
+    │   │   │   ├── describe.py
     │   │   │   ├── pages.py
     │   │   │   ├── regions.py
     │   │   │   ├── routing.py
@@ -1091,6 +1394,8 @@
     │   │   │   ├── _tabular_steps.py
     │   │   │   ├── chunk.py
     │   │   │   ├── collection.py
+    │   │   │   ├── copied.py
+    │   │   │   ├── describe.py
     │   │   │   ├── extract.py
     │   │   │   ├── import_queue.py
     │   │   │   ├── import_zip.py
@@ -1111,6 +1416,8 @@
     │   │   ├── __init__.py
     │   │   ├── test_backend_client_sampling.py
     │   │   ├── test_chunk_spans.py
+    │   │   ├── test_copied_documents.py
+    │   │   ├── test_describe_collection.py
     │   │   ├── test_entity_mentions.py
     │   │   ├── test_execution_metrics.py
     │   │   ├── test_index_rebuild.py
@@ -1120,6 +1427,7 @@
     │   │   ├── test_ocr_assemble.py
     │   │   ├── test_ocr_contracts.py
     │   │   ├── test_ocr_contracts_sync.py
+    │   │   ├── test_ocr_describe.py
     │   │   ├── test_ocr_engine_deployed.py
     │   │   ├── test_ocr_pages.py
     │   │   ├── test_ocr_regions.py
@@ -1207,6 +1515,34 @@
     │   │   ├── test_contracts_sync.py
     │   │   └── test_reader.py
     │   └── uv.lock
+    ├── owui_sync
+    │   ├── Dockerfile
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── backend_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── execution_metrics.py
+    │   │   ├── owui_client.py
+    │   │   ├── owui_vectors.py
+    │   │   ├── task_logging.py
+    │   │   ├── task_revocation.py
+    │   │   ├── tasks.py
+    │   │   └── usage_context.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── .env.testing
+    │   │   ├── __init__.py
+    │   │   ├── test_celery_app.py
+    │   │   ├── test_muffin_tool.py
+    │   │   ├── test_orchestration.py
+    │   │   ├── test_owui_client.py
+    │   │   ├── test_owui_client_live.py
+    │   │   ├── test_sync_group.py
+    │   │   ├── test_sync_knowledge.py
+    │   │   ├── test_sync_knowledge_file.py
+    │   │   └── test_vectors_inspect.py
+    │   └── uv.lock
     ├── table
     │   ├── .dockerignore
     │   ├── Dockerfile
@@ -1224,27 +1560,70 @@
     │   │   ├── test_contracts_sync.py
     │   │   └── test_tables.py
     │   └── uv.lock
-    └── tabular
+    ├── tabular
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── chart.py
+    │   │   ├── chart_task.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── engine.py
+    │   │   ├── limits.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── test_chart_render.py
+    │   │   ├── test_chart_task.py
+    │   │   ├── test_engine.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    ├── tts
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── LICENSES.md
+    │   ├── NOTICE
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── audio.py
+    │   │   ├── config.py
+    │   │   ├── engine.py
+    │   │   ├── main.py
+    │   │   └── voices.py
+    │   ├── pyproject.toml
+    │   ├── s3gen.sha256
+    │   ├── scripts
+    │   │   └── fetch_weights.py
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── conftest.py
+    │   │   ├── test_service.py
+    │   │   ├── test_speech.py
+    │   │   └── test_units.py
+    │   ├── uv.lock
+    │   └── weights.sha256
+    └── vision
         ├── .dockerignore
         ├── Dockerfile
         ├── README.md
         ├── app
         │   ├── __init__.py
         │   ├── celery_app.py
-        │   ├── chart.py
-        │   ├── chart_task.py
         │   ├── config.py
         │   ├── contracts.py
-        │   ├── engine.py
-        │   ├── limits.py
+        │   ├── florence.py
+        │   ├── hub.py
         │   ├── storage.py
         │   └── tasks.py
         ├── pyproject.toml
         ├── tests
-        │   ├── __init__.py
-        │   ├── test_chart_render.py
-        │   ├── test_chart_task.py
-        │   ├── test_engine.py
-        │   └── test_tasks.py
+        │   ├── test_contracts_sync.py
+        │   └── test_vision.py
         └── uv.lock
-114 directories, 1184 files
+130 directories, 1606 files
