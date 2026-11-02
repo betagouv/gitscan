@@ -1,33 +1,39 @@
-## Changelog : iterion (30 derniers jours, au 31 octobre 2026)
+## Changelog : iterion (30 derniers jours, au 02/11/2026)
 
 ### Résumé
-Ce mois a été marqué par un effort massif de sécurisation des environnements d'exécution (sandboxes) et de gestion des secrets. L'expérience utilisateur a été enrichie par l'introduction de commandes "slash" pour l'outil CLI `claw`, une meilleure observabilité via le mode `prod-watch`, et une mise en conformité accrue de l'interface Studio avec les standards d'accessibilité (RGAA/WCAG).
+Ce mois a été marqué par une montée en puissance de la sécurité et de la robustesse de la plateforme. Les efforts se sont concentrés sur l'isolation stricte des environnements d'exécution (sandboxing), la sécurisation de la gestion des secrets et des variables d'environnement, ainsi que sur la conformité de l'interface Studio aux normes d'accessibilité (RGAA). La plateforme gagne également en prévisibilité grâce à une gestion plus fine des budgets d'exécution et des capacités des agents IA.
 
 ### Évolutions fonctionnelles
-- **Outils IA & CLI (`claw`)** : Introduction des "slash commands", permettant d'invoquer des commandes de workspace directement via le modèle d'IA [#1716](https://github.com/SocialGouv/iterion/issues/1716).
-- **Interface Studio** :
-    - Ajout d'écrans d'administration pour la gestion des rôles de bots, des sandboxes et des identifiants de plateforme [#1443](https://github.com/SocialGouv/iterion/issues/1443).
-    - Nouvel éditeur pour la gestion des overrides de credentials dans les webhooks.
-    - Améliorations significatives de l'accessibilité (focus visuels, labels de formulaires, gestion des zones de drop) pour respecter les normes RGAA/WCAG [#2556](https://github.com/SocialGouv/iterion/issues/2556).
-- **Observabilité & Monitoring** :
-    - Lancement de `prod-watch` : système de rapports et d'alertes (digest Mattermost, intégration Grafana/Loki) pour le suivi des sessions [#1701](https://github.com/SocialGouv/iterion/issues/1701).
-    - Exposition d'une surface de métriques `/metrics` pour le monitoring système [#2295](https://github.com/SocialGouv/iterion/issues/2295).
-- **Routage LLM** : Mise en place d'une politique de routage adaptative permettant de définir des règles au niveau de l'organisation ou de l'équipe [#2217](https://github.com/SocialGouv/iterion/issues/2217).
-- **Gestion des connexions** : Support du remplacement de tokens PAT et gestion des connexions par tenant via l'API.
+- **Accessibilité (RGAA) :** Amélioration significative de l'interface Studio pour respecter les normes d'accessibilité, incluant la correction des contrastes, la gestion des rôles d'icônes, la navigation au clavier et la visibilité du focus [#2527, #2558, #2556, #2590].
+- **Interface Studio :**
+    - Ajout d'un éditeur pour les overrides de credentials des webhooks [#72c1ac4b].
+    - Amélioration de la gestion des connexions via un nouvel écran d'administration des intégrations [#4abbad80].
+    - Affichage des livrables (Markdown) directement dans le tiroir des artefacts du résumé de run [#2700].
+    - Amélioration de la navigation : le passage entre les équipes est facilité et les menus d'organisation sont plus lisibles [#2560, #9a468].
+- **Gestion des Agents et Bots :**
+    - **Capacités explicites :** Le DSL permet désormais de déclarer explicitement les capacités (capabilities) d'un nœud, évitant des erreurs d'exécution imprévues [#1801, cc4cbeb].
+    - **Mode de surveillance :** Introduction de "prod-watch" pour recevoir des digestes et des alertes de session via Mattermost [#2764, #1701].
+    - **Sous-agents :** Support de la résolution de sous-agents nommés directement depuis le workspace [#7dd35049].
+- **Connectivité :** Support du remplacement de tokens pour les connexions PAT et gestion améliorée des webhooks depuis le Studio [#318d9867, #2479].
 
 ### Évolutions techniques
-- **Sécurité & Isolation (Sandbox/Runtime)** :
-    - Renforcement de l'isolation des sandboxes : filtrage strict des variables d'environnement, protection contre les fuites de secrets et contrôle des règles réseau.
-    - Implémentation du "Secret Guard" pour assurer que les secrets ne sont accessibles qu'aux composants autorisés et avec une traçabilité complète.
-    - Sécurisation des processus d'exécution via un système de "Authoring Lock" pour protéger l'intégrité des fichiers modifiés par les agents.
-- **Infrastructure & CI/CD** :
-    - Intégration de SeaweedFS comme magasin d'objets pour le stack de développement [#1943](https://github.com/SocialGouv/iterion/issues/1943).
-    - Optimisation des pipelines CI avec l'ajout de tests E2E Playwright et une meilleure gestion du parallélisme des tests.
-    - Amélioration de la résilience de la file d'attente (NATS) et de la gestion des brokers.
-- **Architecture** :
-    - Refactorisation de la gestion du YAML pour une lecture plus robuste et standardisée.
-    - Mise en place d'une gestion fine des quotas par dépôt (repo quota) pour limiter l'usage des ressources.
+- **Sécurité et Isolation (Sandboxing) :**
+    - **Protection des environnements :** Renforcement massif de l'isolation des variables d'environnement (`.env`) pour empêcher les fuites de secrets entre le projet et l'hôte [#2310, #2321, #2339].
+    - **Gestion des secrets :** Implémentation d'une gestion des secrets par "sinks" (destinations) et sécurisation des processus de rotation des credentials [#875c5922, #56c74126].
+    - **Infrastructure Souveraine :** Mise en place de "Sovereign Runner Pools", permettant d'isoler physiquement les ressources (pods) par équipe ou par client pour garantir une séparation totale [#2273, #2236].
+- **Runtime et DSL :**
+    - **Gestion des budgets :** Amélioration de la précision du suivi des budgets, avec une proratisation automatique lors du franchissement de seuils et une gestion des signaux de travail pour les boucles [#d65f0a84, d50e711].
+    - **Optimisation du Parser :** Amélioration de la résilience du parser lors de la lecture de listes corrompues et optimisation des performances de scan [#c2c34a83, c2c34a83].
+    - **Routage adaptatif :** Implémentation d'une politique de routage (adaptive-routing) permettant de définir des règles de redirection au niveau de l'organisation ou de l'équipe [#2210, #2159].
+- **Infrastructure et Backend :**
+    - **Observabilité :** Exposition d'une surface `/metrics` pour permettre un monitoring complet via Prometheus [#9174dd9].
+    - **Fiabilité des files d'attente :** Amélioration de la gestion des erreurs et des délais d'attente sur NATS, notamment lors des redémarrages de brokers [#1ad0c1d9, 7698d727].
+    - **Stockage :** Optimisation des interactions avec MongoDB et S3 pour la gestion des pièces jointes et la persistance des runs [#ed8f8931, 0f49e66b].
 
 ### Autres changements
-- **Documentation** : Mise à jour majeure incluant de nouveaux diagrammes de flux, un schéma de base de données (ERD) zoomable et une documentation enrichie des décisions d'architecture (ADR) [#2579](https://github.com/SocialGouv/iterion/issues/2579).
-- **Nettoyage** : Suppression de code obsolète et optimisation des processus de génération d'artefacts.
+- **Documentation :**
+    - Mise à jour majeure de la documentation incluant de nouveaux diagrammes de base de données (ERD), des schémas de flux de fonctionnalités et des guides de démarrage rapide [#2582, #2561, #2577, #2878].
+    - Publication de plusieurs nouveaux ADR (Architecture Decision Records) concernant la sécurité des secrets et la gestion des dépendances de bundles [#144, #145, #146, #148].
+- **CI/CD et Tests :**
+    - Intégration de la suite de tests E2E Playwright directement dans le pipeline de CI [#9c0d139c].
+    - Optimisation des jobs de tests pour réduire la consommation de ressources et améliorer la détection de comportements instables (flakiness) [#2213, #2568].
