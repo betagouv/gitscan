@@ -131,7 +131,9 @@
 │   │   ├── Version20260724130358.php
 │   │   ├── Version20260910133740.php
 │   │   ├── Version20261005134509.php
-│   │   └── Version20261022073907.php
+│   │   ├── Version20261022073907.php
+│   │   ├── Version20261029100000.php
+│   │   └── Version20261030112632.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -163,6 +165,14 @@
 │   │   ├── Api
 │   │   │   ├── Agent
 │   │   │   │   ├── FDO
+│   │   │   │   │   ├── Dto
+│   │   │   │   │   │   ├── AdresseDto.php
+│   │   │   │   │   │   ├── AgentDto.php
+│   │   │   │   │   │   ├── CoordonneesRequerantDto.php
+│   │   │   │   │   │   ├── DeclarationFDOBrisPorteDto.php
+│   │   │   │   │   │   ├── DocumentDto.php
+│   │   │   │   │   │   ├── EtatDeclarationDto.php
+│   │   │   │   │   │   └── ProcedureJudiciaireDto.php
 │   │   │   │   │   ├── Endpoint
 │   │   │   │   │   │   ├── Agent
 │   │   │   │   │   │   │   ├── AffecterEtablissementEndpoint.php
@@ -178,22 +188,15 @@
 │   │   │   │   │   │   │   └── TeleverserPieceJointeDeclarationBrisPorteEndpoint.php
 │   │   │   │   │   │   └── Etablissement
 │   │   │   │   │   │       └── RechercherEtablissementFDOEndpoint.php
-│   │   │   │   │   ├── Input
-│   │   │   │   │   │   ├── AdresseInput.php
-│   │   │   │   │   │   ├── CoordonneesRequerantInput.php
-│   │   │   │   │   │   ├── DeclarationFDOBrisPorteInput.php
-│   │   │   │   │   │   ├── DocumentDto.php
-│   │   │   │   │   │   └── ProcedureJudiciaireInput.php
 │   │   │   │   │   ├── Output
-│   │   │   │   │   │   ├── AdresseOutput.php
 │   │   │   │   │   │   ├── AffectationAgentFDOOutput.php
-│   │   │   │   │   │   ├── AgentOutput.php
-│   │   │   │   │   │   ├── CoordonneesRequerantOutput.php
-│   │   │   │   │   │   ├── DeclarationFDOBrisPorteOutput.php
-│   │   │   │   │   │   ├── DocumentOutput.php
 │   │   │   │   │   │   ├── EtablissementFDOOutput.php
-│   │   │   │   │   │   ├── MoiOutput.php
-│   │   │   │   │   │   └── ProcedureJudiciaireOutput.php
+│   │   │   │   │   │   └── MoiOutput.php
+│   │   │   │   │   ├── Request
+│   │   │   │   │   │   └── Attribute
+│   │   │   │   │   │       ├── MapDeclarationFDO.php
+│   │   │   │   │   │       ├── MapDeclarationFDODto.php
+│   │   │   │   │   │       └── MapDeclarationFDOResolver.php
 │   │   │   │   │   ├── Transformers
 │   │   │   │   │   │   └── TimestampToDateTransformer.php
 │   │   │   │   │   └── Voter
@@ -335,7 +338,6 @@
 │   │   │   ├── ImporterDonneesFDOCommand.php
 │   │   │   ├── ImporterDonneesGeoCommand.php
 │   │   │   ├── InventaireDocumentsCommand.php
-│   │   │   ├── MijInvitationsRegenererCommand.php
 │   │   │   ├── SupprimerDossierCommand.php
 │   │   │   └── SupprimerRequerantCommand.php
 │   │   ├── Controller
@@ -396,7 +398,6 @@
 │   │   │   ├── AffectationAgentFDO.php
 │   │   │   ├── Agent.php
 │   │   │   ├── BrisPorte.php
-│   │   │   ├── BrouillonDeclarationFDOBrisPorte.php
 │   │   │   ├── Civilite.php
 │   │   │   ├── CoordonneesRequerant.php
 │   │   │   ├── DeclarationFDOBrisPorte.php
@@ -405,6 +406,7 @@
 │   │   │   ├── DocumentType.php
 │   │   │   ├── Dossier.php
 │   │   │   ├── DossierType.php
+│   │   │   ├── EtatDeclarationFDOBrisPorte.php
 │   │   │   ├── EtatDossier.php
 │   │   │   ├── EtatDossierType.php
 │   │   │   ├── FDO
@@ -470,6 +472,7 @@
 │   │   │   ├── AdministrationRepository.php
 │   │   │   ├── AdresseRepository.php
 │   │   │   ├── AgentRepository.php
+│   │   │   ├── DeclarationFDOBrisPorteRepository.php
 │   │   │   ├── DocumentRepository.php
 │   │   │   ├── DossierRepository.php
 │   │   │   ├── EtablissementFDORepository.php
@@ -511,8 +514,6 @@
 │   │   │   ├── FusionneurDocuments.php
 │   │   │   ├── GenerateurCodeInvitation.php
 │   │   │   ├── ImprimanteCourrier.php
-│   │   │   ├── Mail
-│   │   │   │   └── EnvoiInvitationDeposer.php
 │   │   │   ├── Mailer.php
 │   │   │   └── MontantAfficheur.php
 │   │   ├── Twig
@@ -592,7 +593,8 @@
 │   │   │   │       ├── dossier_a_transmettre.html.twig
 │   │   │   │       ├── dossier_arrete_a_signer.html.twig
 │   │   │   │       ├── dossier_proposition_a_signer.html.twig
-│   │   │   │       └── dossier_proposition_acceptee.html.twig
+│   │   │   │       ├── dossier_proposition_acceptee.html.twig
+│   │   │   │       └── dossier_reattribue.html.twig
 │   │   │   ├── agent_indemnisation_approuvee.twig
 │   │   │   ├── base_email.html.twig
 │   │   │   ├── inscription_a_finaliser.html.twig
@@ -806,6 +808,8 @@
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── fdo
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── BadgeEtatDeclaration.css
+│   │   │   │   │   │   ├── BadgeEtatDeclaration.tsx
 │   │   │   │   │   │   ├── ModaleAjoutPieceJointe.tsx
 │   │   │   │   │   │   ├── ModalePrévisualiserPieceJointe.tsx
 │   │   │   │   │   │   └── affectation
@@ -822,12 +826,13 @@
 │   │   │   │   │   │   ├── AffectationAgentFDO.ts
 │   │   │   │   │   │   ├── AgentFDO.ts
 │   │   │   │   │   │   ├── DeclarationFDOBrisPorte.ts
-│   │   │   │   │   │   └── EtablissementFDO.ts
+│   │   │   │   │   │   ├── EtablissementFDO.ts
+│   │   │   │   │   │   └── EtatDeclaration.ts
 │   │   │   │   │   ├── query.ts
 │   │   │   │   │   ├── routes
 │   │   │   │   │   │   ├── __root.tsx
 │   │   │   │   │   │   ├── bris-de-porte
-│   │   │   │   │   │   │   ├── $reference
+│   │   │   │   │   │   │   ├── $id
 │   │   │   │   │   │   │   │   ├── 1-bris-de-porte.tsx
 │   │   │   │   │   │   │   │   ├── 2-service-enqueteur.tsx
 │   │   │   │   │   │   │   │   ├── 3-usager.tsx
@@ -1203,4 +1208,4 @@
     ├── package.json
     └── public
         └── index.html
-263 directories, 942 files
+264 directories, 946 files
