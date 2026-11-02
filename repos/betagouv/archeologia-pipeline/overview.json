@@ -1,26 +1,23 @@
 {
   "url": "https://github.com/betagouv/archeologia-pipeline",
   "name": "archeologia-pipeline",
-  "description": "Plugin QGIS pour le traitement de données LiDAR, permettant la génération de produits raster (MNT, indices RVT) et la détection automatique d'entités archéologiques via l'intelligence artificielle.",
+  "description": "Plugin QGIS qui transforme des nuages de points LiDAR HD en produits de visualisation du relief et utilise l'intelligence artificielle pour détecter automatiquement des structures archéologiques.",
   "language": "Python",
   "features": [
     "Visualisation de données & Cartographie",
     "Intelligence Artificielle & NLP",
-    "Simulation & Calcul",
+    "Données & Schémas",
     "Statistiques & Rapports",
-    "Interface utilisateur & Design",
-    "Gestion des médias & Assets"
+    "Suivi & Traçabilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "QGIS",
     "PDAL",
     "GDAL",
-    "ONNX Runtime",
-    "SAHI",
-    "Shapely",
-    "GeoPandas",
-    "Fiona",
+    "ONNX",
+    "shapely",
+    "geopandas",
     "PyInstaller"
   ],
   "components": [
@@ -28,8 +25,6 @@
     "Pipeline de données",
     "Intelligence Artificielle / ML",
     "SIG & Géospatial",
-    "Scripts & Utilitaires",
-    "Bibliothèques & Packages",
     "Tests"
   ],
   "auth": {
@@ -37,15 +32,23 @@
       "none"
     ]
   },
-  "tests": "pytest",
+  "tests": [
+    "pytest",
+    "ruff"
+  ],
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-11-01T01:16:04+01:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Python",
     "SIG & Géospatial",
     "Intelligence Artificielle & LLM",
-    "ETL & Pipelines de données"
+    "ETL & Pipelines de données",
+    "Tests & Qualité"
   ]
 }

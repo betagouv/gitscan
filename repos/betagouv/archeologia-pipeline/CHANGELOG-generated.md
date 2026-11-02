@@ -1,29 +1,24 @@
-## Changelog : archeologia-pipeline (30 derniers jours, au 11 octobre 2026)
+## Changelog : archeologia-pipeline (30 derniers jours, au 01/11/2026)
 
 ### Résumé
-Cette période a été marquée par une amélioration majeure de l'accompagnement utilisateur et de la capacité d'analyse des résultats. L'introduction d'un manuel d'aide directement intégré à l'interface et d'un système de profilage des scores permet désormais aux utilisateurs de mieux comprendre et d'ajuster la fiabilité de la détection par intelligence artificielle. De nouveaux produits de visualisation et des rapports de traitement automatisés enrichissent également les livrables produits.
+Ce mois a été marqué par une refonte majeure de l'expérience utilisateur et une montée en puissance de la fiabilité des analyses. L'interface a été entièrement repensée pour être plus intuitive, et de nouveaux outils permettent désormais de mesurer précisément la qualité des détections archéologiques. Le plugin gère également de manière beaucoup plus robuste les données provenant de différents systèmes de coordonnées géographiques.
 
 ### Évolutions fonctionnelles
-- **Aide et documentation intégrée** : Remplacement de la notice externe par un manuel intégré à l'interface, incluant une recherche globale (Ctrl+F), une aide contextuelle, et des captures d'écran interactives.
-- **Analyse de performance (Profils)** : Création d'un nouvel outil de profilage des scores permettant de visualiser l'équilibre entre précision et rappel, de tester dynamiquement des seuils de détection et d'exporter ces métriques.
-- **Nouveaux produits de visualisation** : Ajout de nouveaux produits de traitement, notamment l'ouverture (OPNS), le relief coloré (CRIM) et l'ouverture prismatique (PRISM).
-- **Amélioration des rapports et fiches** : 
-    - Génération d'un rapport de traitement complet au format HTML dans le dossier de sortie.
-    - Distinction claire entre les fiches de "classe" et les fiches de "modèle".
-    - Ajout de métriques de fiabilité observée directement dans les fiches de classe.
-    - Amélioration de l'ergonomie des fiches avec des fonctions de survol croisé entre la carte et la liste.
-- **Gestion des données** : Intégration de la grille IGN (via WFS Géoplateforme) et possibilité de sauvegarder/recharger les configurations de chantier.
+- **Refonte complète de l'interface (UI) :** Nouveau parcours utilisateur rationalisé en étapes claires, introduction d'un lexique unifié et d'un assistant plus fluide.
+- **Évaluation de la fiabilité :** Ajout de métriques de performance (précision, rappel, score F1) directement dans les fiches de modèles et de classes pour mieux comprendre la confiance des détections.
+- **Aide intégrée :** Remplacement de la notice externe par un manuel d'aide complet et contextuel, directement consultable dans l'interface avec recherche globale.
+- **Amélioration des indices de relief :** Ajout et optimisation de nouveaux indices (VAT, PRISM, CVAT, CRIM, MSTP) avec des réglages de luminosité et de visualisation personnalisables.
+- **Système d'alertes :** Mise en place d'avertissements explicites en cas de détection impossible, de fenêtres d'analyse vides ou de problèmes de résolution.
+- **Gestion des résultats :** Amélioration de la présentation des rapports de traitement et des fiches de structures.
 
 ### Évolutions techniques
-- **Refonte de l'interface utilisateur (UI)** : 
-    - Modernisation de la vue d'exécution (étape 4) avec une frise d'état et un journal de bord amélioré.
-    - Restructuration de l'arborescence des fichiers de sortie pour séparer les livrables des fichiers techniques.
-- **Optimisation du pipeline de données** : 
-    - Amélioration de la gestion des fichiers LiDAR (écriture atomique des fichiers .laz et correction de compatibilité PDAL).
-    - Optimisation du traitement des images pour le mode "existing_rvt" via une parallélisation.
-- **Intelligence Artificielle** : Amélioration de la précision de l'inférence par un recentrage des objets détectés.
-- **Packaging et déploiement** : Correction du processus de création des archives ZIP pour exclure les fichiers non essentiels (catalogues privés, sauvegardes horodatées).
+- **Gestion des systèmes de coordonnées (CRS) :** Amélioration majeure de la compatibilité avec les données non Lambert-93 ; conversion automatique des calculs et des sorties (MNT, indices) en mètres et en systèmes projetés [#31](https://github.com/betagouv/archeologia-pipeline/pull/31).
+- **Optimisation du moteur de détection (IA) :** Support de l'accélération GPU via DirectML et optimisation de la gestion de la mémoire et des sessions ONNX pour accélérer les traitements.
+- **Performances de calcul :** Optimisation des pipelines de fusion de nuages de points (PDAL) et des calculs d'indices de relief.
+- **Fiabilité des détections :** Implémentation d'un algorithme de fusion en deux passes pour une meilleure précision des contours des structures [#23](https://github.com/betagouv/archeologia-pipeline/pull/23).
+- **Qualité logicielle :** Renforcement de la chaîne de tests (CI/CD) avec un support étendu pour Windows et de nouveaux outils de validation automatique (recettes).
 
 ### Autres changements
-- **Intégrité et sécurité** : Renforcement de la vérification de l'intégrité des fichiers via l'ajout systématique de sommes de contrôle (checksums).
-- **Maintenance** : Mise à jour de la documentation de recette et nettoyage des workflows de développement.
+- **Documentation :** Mise à jour massive de la documentation technique, du manuel d'utilisation et du README.
+- **Sécurité et maintenance :** Nettoyage du code et audits de sécurité via Talisman.
+- **Packaging :** Amélioration de la construction des binaires et du processus de génération des livrables.

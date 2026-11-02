@@ -10,6 +10,9 @@
 ├── .githooks
 │   ├── pre-push
 │   └── pre-push.cmd
+├── .github
+│   └── workflows
+│       └── tests.yml
 ├── .gitignore
 ├── .talismanrc
 ├── CLAUDE.md
@@ -26,42 +29,31 @@
 │   ├── 07-etape-5-traitement.md
 │   ├── 08-resultats.md
 │   ├── 09-depannage.md
+│   ├── 10-consulter-les-flux.md
 │   ├── 10-glossaire.md
 │   └── img
+│       ├── consulter-les-flux.png
 │       ├── etape1-selection-dalles.jpg
 │       ├── etape1-source.png
 │       ├── etape2-fiche-produit.png
 │       ├── etape2-produits.png
-│       ├── etape3-carte-avancee.png
 │       ├── etape3-detection.png
 │       ├── etape3-fiche-classe.png
+│       ├── etape3-ligne-reglages.png
+│       ├── etape4-a-corriger.png
 │       ├── etape4-verifications.png
+│       ├── etape6-resultats.png
 │       ├── installer-authentification.png
 │       ├── installer-depot.png
 │       ├── installer-proxy.png
 │       ├── installer-zip.png
+│       ├── pipeline.png
 │       ├── resultats-legende-fiabilite.jpg
 │       ├── run-fin.png
 │       └── run-journal.png
 ├── config.example.json
 ├── conftest.py
 ├── data
-│   ├── demo_catalogue
-│   │   ├── catalogue.json
-│   │   └── thumbs
-│   │       ├── COUVERTURE.png
-│   │       ├── CVAT.png
-│   │       ├── DENSITE.png
-│   │       ├── HS.png
-│   │       ├── LD.png
-│   │       ├── MNT.png
-│   │       ├── MSTP.png
-│   │       ├── M_HS.png
-│   │       ├── SLO.png
-│   │       ├── SLRM.png
-│   │       ├── SVF.png
-│   │       ├── VAT.png
-│   │       └── thumbs.json
 │   ├── entities_catalog.json
 │   ├── icon.png
 │   ├── indices_fiches.json
@@ -93,6 +85,7 @@
 ├── dev
 │   ├── build_quadrillage_from_wfs.py
 │   ├── build_quadrillage_index.py
+│   ├── capture_legende.py
 │   ├── demo_comite
 │   │   ├── README.md
 │   │   ├── build_catalogue.py
@@ -101,6 +94,9 @@
 │   │   ├── smoke_dialog.py
 │   │   └── smoke_visu.py
 │   ├── deploy.config.example.json
+│   ├── docs
+│   │   ├── crs_projete.md
+│   │   └── schema_pipeline.svg
 │   ├── fiches
 │   │   ├── README.md
 │   │   ├── ajouter_vignettes.py
@@ -116,8 +112,14 @@
 │   │   ├── page_choix_indices.py
 │   │   ├── reporter_sur_drive.py
 │   │   └── zones_corpus.py
+│   ├── harmoniser_echelle_modeles.py
+│   ├── hooks
+│   │   ├── enums_qt.py
+│   │   └── stop_tests.py
+│   ├── import_ui_deux_qgis.py
 │   ├── make_htpasswd.py
 │   ├── package_plugin.py
+│   ├── recette_auto.py
 │   ├── rendu_hors_ecran.py
 │   ├── requirements
 │   │   ├── build.lock
@@ -125,12 +127,13 @@
 │   │   ├── export.txt
 │   │   └── test.txt
 │   ├── requirements.txt
-│   └── runner_onnx
-│       ├── README.md
-│       ├── build.py
-│       ├── cv_runner_onnx.spec
-│       ├── cv_runner_onnx_cli.py
-│       └── export_to_onnx.py
+│   ├── runner_onnx
+│   │   ├── README.md
+│   │   ├── build.py
+│   │   ├── cv_runner_onnx.spec
+│   │   ├── cv_runner_onnx_cli.py
+│   │   └── export_to_onnx.py
+│   └── schema_pipeline.py
 ├── docs
 │   ├── contrats.md
 │   ├── model_contract.md
@@ -175,10 +178,12 @@
 │   │   │   ├── arborescence.py
 │   │   │   ├── bilan_fiabilite.py
 │   │   │   ├── cache_guard.py
+│   │   │   ├── carte_graphique.py
 │   │   │   ├── carte_zones.py
 │   │   │   ├── citations.py
 │   │   │   ├── class_fiche.py
 │   │   │   ├── config_store.py
+│   │   │   ├── couleurs_couches.py
 │   │   │   ├── cout_modele.py
 │   │   │   ├── cv_post_service.py
 │   │   │   ├── detection_symbology.py
@@ -187,6 +192,7 @@
 │   │   │   ├── finalize_service.py
 │   │   │   ├── grid_view.py
 │   │   │   ├── indice_fiche.py
+│   │   │   ├── indices_metres.py
 │   │   │   ├── indices_model.py
 │   │   │   ├── layer_purge.py
 │   │   │   ├── model_orchestrator.py
@@ -195,10 +201,14 @@
 │   │   │   ├── rapport_run.py
 │   │   │   ├── recolorer_annotation.py
 │   │   │   ├── reglages_defaut.py
+│   │   │   ├── resultats_connus.py
 │   │   │   ├── rvt_kernel_context.py
+│   │   │   ├── sorties_prevues.py
 │   │   │   ├── source_modes.py
 │   │   │   ├── tile_selection.py
+│   │   │   ├── validation_ui.py
 │   │   │   ├── visu_catalogue.py
+│   │   │   ├── vocabulaire.py
 │   │   │   └── vocabulaire_modele.py
 │   │   ├── structured_logger.py
 │   │   ├── text_slug.py
@@ -217,6 +227,7 @@
 │   │   ├── cv
 │   │   │   ├── __init__.py
 │   │   │   ├── alignment.py
+│   │   │   ├── appareil.py
 │   │   │   ├── class_color_registry.py
 │   │   │   ├── class_utils.py
 │   │   │   ├── clustering.py
@@ -255,8 +266,22 @@
 │   │   │   │   ├── density.py
 │   │   │   │   ├── indices.py
 │   │   │   │   ├── mnt.py
+│   │   │   │   ├── moteur_indices.py
 │   │   │   │   ├── qgis_processing.py
 │   │   │   │   ├── results.py
+│   │   │   │   ├── rvt_embarque
+│   │   │   │   │   ├── LICENSE
+│   │   │   │   │   ├── NOTICE
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── blend.py
+│   │   │   │   │   ├── blend_func.py
+│   │   │   │   │   ├── default.py
+│   │   │   │   │   ├── settings
+│   │   │   │   │   │   ├── blender_VAT.json
+│   │   │   │   │   │   ├── default_blender_combinations.json
+│   │   │   │   │   │   └── default_terrains_settings.json
+│   │   │   │   │   ├── tile.py
+│   │   │   │   │   └── vis.py
 │   │   │   │   └── rvt_naming.py
 │   │   │   ├── quadrillage_paths.py
 │   │   │   └── tile_resolver.py
@@ -296,7 +321,8 @@
 │       │   ├── step_1_source.py
 │       │   ├── step_2_indices.py
 │       │   ├── step_3_detection.py
-│       │   └── step_4_launch.py
+│       │   ├── step_4_launch.py
+│       │   └── step_6_resultats.py
 │       ├── theme
 │       │   ├── icons
 │       │   │   ├── arrow-left.svg
@@ -328,8 +354,9 @@
 │       │   ├── card.py
 │       │   ├── carte_zones.py
 │       │   ├── collapsible.py
-│       │   ├── entity_card.py
+│       │   ├── entity_row.py
 │       │   ├── indice_card.py
+│       │   ├── info_button.py
 │       │   ├── no_wheel.py
 │       │   ├── profil_scores.py
 │       │   ├── stage_button.py
@@ -359,5 +386,5 @@
     │   └── test_runners_integration.py
     └── unit
         ├── __init__.py
-        └── test_*.py  (129 files)
-46 directories, 444 files
+        └── test_*.py  (180 files)
+50 directories, 518 files
