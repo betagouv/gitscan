@@ -1,8 +1,7 @@
-## Changelog : upptime (30 derniers jours, au 31 octobre 2026)
+## Changelog : upptime (30 derniers jours, au 03/11/2026)
 
 ### Résumé
-L'activité récente du dépôt est exclusivement opérationnelle. Le système a assuré sa mission de monitoring continu sans qu'aucune modification du code source ou de l'architecture ne soit apportée par les développeurs durant cette période.
+L'activité récente du projet est exclusivement opérationnelle. Le système assure la surveillance continue des services et la mise à jour automatique des indicateurs de disponibilité sans modification du code source.
 
 ### Autres changements
-- Mise à jour automatique des graphiques de performance et des résumés de statut.
-- Actualisation régulière du fichier README pour refléter l'état de santé des services surveillés en temps réel.
+- Mise à jour automatique des indicateurs de disponibilité (graphiques, résumés de statut et documentation README).
