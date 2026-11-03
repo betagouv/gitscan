@@ -209,6 +209,7 @@
     │   │   │   ├── tool_output.py
     │   │   │   └── tool_stub_responses.py
     │   │   ├── factories.py
+    │   │   ├── fields.py
     │   │   ├── file_generation
     │   │   │   ├── __init__.py
     │   │   │   ├── builder.py
@@ -249,6 +250,7 @@
     │   │   │   ├── 0013_chatconversation_history_summary_and_more.py
     │   │   │   ├── 0014_chatconversation_chat_chatco_updated_e2bf86_idx.py
     │   │   │   ├── 0015_chatstreamchunk.py
+    │   │   │   ├── 0016_nul_safe_json_fields.py
     │   │   │   └── __init__.py
     │   │   ├── model_health.py
     │   │   ├── model_routing.py
@@ -304,6 +306,7 @@
     │   │   │   │   │   ├── test_langfuse_tracing.py
     │   │   │   │   │   ├── test_language_deps.py
     │   │   │   │   │   ├── test_message_history_v1_compatibility.py
+    │   │   │   │   │   ├── test_output_token_limit.py
     │   │   │   │   │   ├── test_parse_input_documents.py
     │   │   │   │   │   ├── test_prepare_update_conversation.py
     │   │   │   │   │   ├── test_presentation_tool.py
@@ -370,6 +373,7 @@
     │   │   │   ├── test_model_health.py
     │   │   │   ├── test_model_routing.py
     │   │   │   ├── test_models_history_summary_claim.py
+    │   │   │   ├── test_models_nul_characters.py
     │   │   │   ├── test_rate_limiting.py
     │   │   │   ├── test_settings_isolation.py
     │   │   │   ├── test_tasks.py
@@ -494,7 +498,9 @@
     │   │   ├── staan_settings.py
     │   │   ├── tests
     │   │   │   ├── __init__.py
+    │   │   │   ├── test_settings_caches.py
     │   │   │   ├── test_settings_celery_beat.py
+    │   │   │   ├── test_settings_celery_redis.py
     │   │   │   ├── test_settings_docs.py
     │   │   │   ├── test_settings_llm_configurations.py
     │   │   │   ├── test_settings_logging.py
@@ -913,6 +919,7 @@
     │   │   │   │   │   │   │   ├── SummarizationError.tsx
     │   │   │   │   │   │   │   ├── SummarizationProgress.tsx
     │   │   │   │   │   │   │   ├── ToolInvocationItem.tsx
+    │   │   │   │   │   │   │   ├── TruncatedResponseMessage.tsx
     │   │   │   │   │   │   │   ├── WelcomeLayout.tsx
     │   │   │   │   │   │   │   ├── WelcomeMessage.tsx
     │   │   │   │   │   │   │   ├── __tests__
@@ -924,6 +931,7 @@
     │   │   │   │   │   │   │   │   ├── InputChatAction.test.tsx
     │   │   │   │   │   │   │   │   ├── InputChatBanner.test.tsx
     │   │   │   │   │   │   │   │   ├── MessageBlock.test.tsx
+    │   │   │   │   │   │   │   │   ├── MessageBlockNoHighlighter.test.tsx
     │   │   │   │   │   │   │   │   ├── MessageEnergyIndicator.test.tsx
     │   │   │   │   │   │   │   │   ├── MessageItem.test.tsx
     │   │   │   │   │   │   │   │   ├── ProjectWelcomeMessage.test.tsx
@@ -1138,11 +1146,13 @@
     │   │   │   │   ├── utils
     │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   ├── date.test.ts
+    │   │   │   │   │   │   ├── polyfills.test.ts
     │   │   │   │   │   │   ├── string.test.ts
     │   │   │   │   │   │   └── url.test.tsx
     │   │   │   │   │   ├── children.ts
     │   │   │   │   │   ├── date.ts
     │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── polyfills.ts
     │   │   │   │   │   ├── storages.ts
     │   │   │   │   │   ├── string.ts
     │   │   │   │   │   ├── styleBuilder.ts
@@ -1230,6 +1240,7 @@
     │   │   │   ├── podmonitor.yaml
     │   │   │   ├── posthog_assets_svc.yaml
     │   │   │   ├── posthog_svc.yaml
+    │   │   │   ├── robots_txt_cm.yaml
     │   │   │   ├── servicemonitor.yaml
     │   │   │   └── theme_customization_file_cm.yaml
     │   │   └── values.yaml
@@ -1261,4 +1272,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-244 directories, 1019 files
+244 directories, 1030 files
