@@ -3,6 +3,7 @@
 ├── .circleci
 │   └── config.yml
 ├── .gitignore
+├── .nvmrc
 ├── .slugignore
 ├── Aptfile
 ├── Procfile
@@ -287,7 +288,9 @@
 │   │   │   │       ├── http-error.spec.ts
 │   │   │   │       ├── http-error.ts
 │   │   │   │       ├── json-for-script.spec.ts
-│   │   │   │       └── json-for-script.ts
+│   │   │   │       ├── json-for-script.ts
+│   │   │   │       ├── parse-decimal.spec.ts
+│   │   │   │       └── parse-decimal.ts
 │   │   │   ├── config
 │   │   │   │   ├── env.ts
 │   │   │   │   ├── trusted-proxies.spec.ts
@@ -551,8 +554,11 @@
 │   │   │   │   └── sitadel.service.ts
 │   │   │   ├── statistics
 │   │   │   │   ├── audience-statistics.service.ts
+│   │   │   │   ├── impact-statistics.controller.ts
+│   │   │   │   ├── impact-statistics.service.ts
 │   │   │   │   ├── statistics-exports.controller.ts
 │   │   │   │   ├── statistics-exports.service.ts
+│   │   │   │   ├── statistics-numbers.ts
 │   │   │   │   ├── statistics.controller.spec.ts
 │   │   │   │   ├── statistics.controller.ts
 │   │   │   │   ├── statistics.module.ts
@@ -595,6 +601,8 @@
 │       ├── .env.dist
 │       ├── .vscode
 │       │   └── settings.json
+│       ├── AGENTS.md
+│       ├── CLAUDE.md
 │       ├── next-env.d.ts
 │       ├── next.config.mjs
 │       ├── package.json
@@ -656,6 +664,8 @@
 │       │   │   │   │   ├── feedbacks
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── impact
+│       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── journal
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── layout.tsx
@@ -687,16 +697,14 @@
 │       │   │   │   │   │   ├── cadrage-temporel
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── choix-du-territoire
-│       │   │   │   │   │   │   ├── bassin-habitat-selection.tsx
 │       │   │   │   │   │   │   ├── checkbox-epcis.tsx
 │       │   │   │   │   │   │   ├── choix-du-territoire.module.css
 │       │   │   │   │   │   │   ├── contiguous-epcis-checkboxes.tsx
-│       │   │   │   │   │   │   ├── custom-selection.tsx
 │       │   │   │   │   │   │   ├── epci-group-name-input.tsx
 │       │   │   │   │   │   │   ├── epci-group-select.tsx
 │       │   │   │   │   │   │   ├── existing-group-selection.tsx
-│       │   │   │   │   │   │   ├── method-selection-cards.tsx
 │       │   │   │   │   │   │   ├── page.tsx
+│       │   │   │   │   │   │   ├── territory-search-selection.tsx
 │       │   │   │   │   │   │   ├── urbanisme-doc-question.tsx
 │       │   │   │   │   │   │   └── wrapper-simulation-type-page.tsx
 │       │   │   │   │   │   ├── layout.tsx
@@ -785,15 +793,12 @@
 │       │   │   │   │       └── page.tsx
 │       │   │   │   ├── (generic-pages)
 │       │   │   │   │   ├── @summary
-│       │   │   │   │   │   ├── [...all]
-│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── aller-plus-loin-methodologie
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── apprendre-a-utiliser-l-outil
 │       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   ├── default.tsx
 │       │   │   │   │   │   ├── guide
-│       │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   ├── methodologie
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── notes-de-version
 │       │   │   │   │   │   │   └── page.tsx
@@ -908,6 +913,8 @@
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── contiguous
 │       │   │   │   │   │   └── route.ts
+│       │   │   │   │   ├── contours
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── epci-groups
 │       │   │   │   │   └── route.ts
@@ -956,6 +963,8 @@
 │       │   │   │   │   ├── exports
 │       │   │   │   │   │   └── [dataset]
 │       │   │   │   │   │       └── route.ts
+│       │   │   │   │   ├── impact
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── overview
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── pilotage
@@ -1013,6 +1022,12 @@
 │       │   │   │   │   └── consumers-table.tsx
 │       │   │   │   ├── feedbacks
 │       │   │   │   │   └── feedbacks-content.tsx
+│       │   │   │   ├── impact
+│       │   │   │   │   ├── impact-summary.tsx
+│       │   │   │   │   ├── perceived-utility.tsx
+│       │   │   │   │   ├── planning-documents-usage.tsx
+│       │   │   │   │   ├── settings-usage.tsx
+│       │   │   │   │   └── territory-needs.tsx
 │       │   │   │   ├── pilotage-deployment-map-wrapper.tsx
 │       │   │   │   ├── pilotage-deployment-map.module.css
 │       │   │   │   ├── pilotage-deployment-map.tsx
@@ -1055,6 +1070,7 @@
 │       │   │   │   ├── accommodation-construction-evolution-chart.tsx
 │       │   │   │   ├── chart-download-wrapper.tsx
 │       │   │   │   ├── charts.module.css
+│       │   │   │   ├── custom-demographic-evolution-modal.tsx
 │       │   │   │   ├── customized-dot.tsx
 │       │   │   │   ├── data-visualisation
 │       │   │   │   │   ├── accommodation-evolution-charts.module.css
@@ -1076,6 +1092,7 @@
 │       │   │   │   ├── population-scenarios-chart.tsx
 │       │   │   │   ├── population-scenarios-custom-tooltip.tsx
 │       │   │   │   ├── population-scenarios-selection.tsx
+│       │   │   │   ├── scenario-projection-hint.ts
 │       │   │   │   ├── stock-evolution-chart.tsx
 │       │   │   │   ├── synthesis-cn-evolution-chart.module.css
 │       │   │   │   ├── synthesis-cn-evolution-chart.tsx
@@ -1108,6 +1125,8 @@
 │       │   │   │   └── feedback-banner.tsx
 │       │   │   ├── header.tsx
 │       │   │   ├── impersonation-banner.tsx
+│       │   │   ├── map
+│       │   │   │   └── ign-basemap-layer.tsx
 │       │   │   ├── navigation
 │       │   │   │   ├── header-navigation-client.tsx
 │       │   │   │   └── header-navigation.tsx
@@ -1124,9 +1143,6 @@
 │       │   │   │   │   ├── create-simulation-breadcrumb.tsx
 │       │   │   │   │   ├── modify-simulation-breadcrumb.tsx
 │       │   │   │   │   └── simulations-breadcrumb.tsx
-│       │   │   │   ├── creation-guide
-│       │   │   │   │   ├── bad-housing-settings-creation-guide-tag.tsx
-│       │   │   │   │   └── demographic-settings-creation-guide-tag.tsx
 │       │   │   │   ├── docurba
 │       │   │   │   │   ├── scot-info-drawer.tsx
 │       │   │   │   │   └── scot-info-table.tsx
@@ -1186,10 +1202,7 @@
 │       │   │   │   │   ├── create-vacancy-accommodation-rates-input.tsx
 │       │   │   │   │   ├── data-source-link.tsx
 │       │   │   │   │   ├── demographic-settings-header.tsx
-│       │   │   │   │   ├── demographic-settings-simulation-side-menu-step-number.tsx
-│       │   │   │   │   ├── demographic-settings-simulation-side-menu-title.tsx
-│       │   │   │   │   ├── demographic-settings-simulation-side-menu.tsx
-│       │   │   │   │   ├── demographic-settings-simulation-stepper.tsx
+│       │   │   │   │   ├── demographic-transition-modal.tsx
 │       │   │   │   │   ├── epci-tabs.tsx
 │       │   │   │   │   ├── epcis-accommodation-rates
 │       │   │   │   │   │   ├── aggregated-parc-comparison-chart.tsx
@@ -1210,14 +1223,19 @@
 │       │   │   │   │   │   ├── parc-comparison-charts.tsx
 │       │   │   │   │   │   ├── rates-toggle-switch.tsx
 │       │   │   │   │   │   └── secondary-rates-toggle-switch.tsx
+│       │   │   │   │   ├── fragile-projection-alert.tsx
+│       │   │   │   │   ├── infographie-link.tsx
 │       │   │   │   │   ├── long-term-vacancy-alert.tsx
+│       │   │   │   │   ├── long-term-vacancy-texts.tsx
 │       │   │   │   │   ├── millesime-initializer.tsx
 │       │   │   │   │   ├── millesime-reminder.tsx
 │       │   │   │   │   ├── modification
 │       │   │   │   │   │   ├── mal-logement
+│       │   │   │   │   │   │   ├── bad-housing-scenario-panel.tsx
 │       │   │   │   │   │   │   ├── bad-housing-settings-form-context-wrapper.tsx
-│       │   │   │   │   │   │   ├── bad-housing-settings-simulation-side-menu.tsx
-│       │   │   │   │   │   │   ├── bad-housing-settings-simulation-stepper.tsx
+│       │   │   │   │   │   │   ├── bad-housing-step-header.tsx
+│       │   │   │   │   │   │   ├── bad-housing-stepper.tsx
+│       │   │   │   │   │   │   ├── bad-housing-steps.ts
 │       │   │   │   │   │   │   ├── bad-quality
 │       │   │   │   │   │   │   │   ├── select-bad-quality-part.tsx
 │       │   │   │   │   │   │   │   ├── select-bad-quality-source.tsx
@@ -1244,8 +1262,6 @@
 │       │   │   │   │   │   │   │   └── select-suroccupation-source.tsx
 │       │   │   │   │   │   │   └── update-bad-housing-simulation-form.tsx
 │       │   │   │   │   │   ├── simulation-settings-form-context-wrapper.tsx
-│       │   │   │   │   │   ├── update-demographic-settings-guide-tag.tsx
-│       │   │   │   │   │   ├── update-demographic-settings-simulation-side-menu.tsx
 │       │   │   │   │   │   └── update-projection-period.tsx
 │       │   │   │   │   ├── modify-accommodation-rate-input.tsx
 │       │   │   │   │   ├── modify-all-epcis-accommodation-range.tsx
@@ -1267,28 +1283,37 @@
 │       │   │   │   │   │   ├── restructuration-disparition-footer.tsx
 │       │   │   │   │   │   └── restructuration-rates-toggle-switch.tsx
 │       │   │   │   │   ├── scenario-naming-modal.tsx
+│       │   │   │   │   ├── scenario-panel
+│       │   │   │   │   │   ├── creation-scenario-panel.tsx
+│       │   │   │   │   │   ├── modification-scenario-panel.tsx
+│       │   │   │   │   │   ├── scenario-estimation.tsx
+│       │   │   │   │   │   ├── scenario-panel.module.css
+│       │   │   │   │   │   ├── scenario-panel.tsx
+│       │   │   │   │   │   ├── scenario-section-block.tsx
+│       │   │   │   │   │   ├── scenario-sections.ts
+│       │   │   │   │   │   └── scenario-territory.tsx
+│       │   │   │   │   ├── secondary-residence-texts.tsx
 │       │   │   │   │   ├── select-millesime-modal.tsx
 │       │   │   │   │   ├── select-omphale.tsx
 │       │   │   │   │   ├── select-projection-period.tsx
 │       │   │   │   │   ├── select-territorial-issues.tsx
 │       │   │   │   │   ├── simulation-form-context-wrapper.tsx
-│       │   │   │   │   ├── simulation-side-menu.module.css
-│       │   │   │   │   ├── stepper-with-tutorial.module.css
+│       │   │   │   │   ├── step-header.module.css
+│       │   │   │   │   ├── step-header.tsx
+│       │   │   │   │   ├── study-territory-map.module.css
+│       │   │   │   │   ├── study-territory-map.tsx
 │       │   │   │   │   ├── update-simulation-form.tsx
-│       │   │   │   │   ├── wizard-aside
-│       │   │   │   │   │   ├── creation-estimation-card.tsx
-│       │   │   │   │   │   ├── estimation-card.tsx
-│       │   │   │   │   │   ├── estimation-terms.ts
-│       │   │   │   │   │   ├── modification-estimation-card.tsx
-│       │   │   │   │   │   ├── step-questions-card.tsx
-│       │   │   │   │   │   ├── step-questions.ts
-│       │   │   │   │   │   ├── wizard-aside.module.css
-│       │   │   │   │   │   ├── wizard-aside.tsx
-│       │   │   │   │   │   └── wizard-layout.module.css
+│       │   │   │   │   ├── use-wizard-step.ts
+│       │   │   │   │   ├── wizard-layout.module.css
+│       │   │   │   │   ├── wizard-layout.tsx
+│       │   │   │   │   ├── wizard-step-header.tsx
 │       │   │   │   │   ├── wizard-step-tracker.tsx
+│       │   │   │   │   ├── wizard-stepper.tsx
 │       │   │   │   │   └── wizard-steps.ts
 │       │   │   │   ├── tutorial
 │       │   │   │   │   ├── bad-housing-tutorial-button.tsx
+│       │   │   │   │   ├── choice-help-button.module.css
+│       │   │   │   │   ├── definitions.ts
 │       │   │   │   │   ├── results-tutorial-button.tsx
 │       │   │   │   │   ├── tutorial-button.tsx
 │       │   │   │   │   ├── tutorial-content.ts
@@ -1342,9 +1367,14 @@
 │       │   │       ├── RedAsterisk.module.css
 │       │   │       ├── custom-highlight.module.scss
 │       │   │       ├── custom-highlight.tsx
+│       │   │       ├── definition-tooltip.tsx
 │       │   │       ├── loading-spinner.module.css
 │       │   │       ├── loading-spinner.tsx
-│       │   │       └── red-asterisk.tsx
+│       │   │       ├── reading-key.tsx
+│       │   │       ├── red-asterisk.tsx
+│       │   │       └── stepper
+│       │   │           ├── stepper.module.css
+│       │   │           └── stepper.tsx
 │       │   ├── dsfr
 │       │   │   ├── default-color-scheme.ts
 │       │   │   ├── dsfr-head.tsx
@@ -1364,7 +1394,7 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   └── use-*.ts  (64 files)
+│       │   │   └── use-*.ts  (66 files)
 │       │   ├── lib
 │       │   │   ├── TRACKING.md
 │       │   │   ├── api
@@ -1392,6 +1422,7 @@
 │       │   │   ├── scenario.ts
 │       │   │   ├── simulation.ts
 │       │   │   ├── sitadel.ts
+│       │   │   ├── urbanisme-doc.ts
 │       │   │   └── user.ts
 │       │   ├── server-only
 │       │   │   ├── demographic-evolution
@@ -1412,10 +1443,10 @@
 │       │   │   └── simulation-page-props.ts
 │       │   └── utils
 │       │       ├── calculation-helpers.ts
-│       │       ├── carto-basemap.ts
 │       │       ├── date-helpers.ts
 │       │       ├── epci-group-name.ts
 │       │       ├── format-numbers.ts
+│       │       ├── ign-basemap.ts
 │       │       ├── omphale-label.ts
 │       │       ├── projection.ts
 │       │       ├── resources.ts
@@ -1471,6 +1502,7 @@
 │       │       └── statistics
 │       │           ├── activation-statistics.ts
 │       │           ├── audience-statistics.ts
+│       │           ├── impact-statistics.ts
 │       │           ├── simulation-changes.ts
 │       │           └── template-statistics.ts
 │       ├── tsconfig.json
@@ -1480,4 +1512,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-417 directories, 1128 files
+420 directories, 1159 files
