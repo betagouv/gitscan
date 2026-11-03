@@ -1,0 +1,238 @@
+.
+├── .dockerignore
+├── .env.example
+├── .gitattributes
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── dependabot-automerge.yml
+├── .gitignore
+├── .rspec
+├── .rubocop.yml
+├── .ruby-version
+├── CLAUDE.md
+├── DECISIONS.md
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Makefile
+├── README.md
+├── Rakefile
+├── app
+│   ├── assets
+│   │   ├── images
+│   │   │   └── .keep
+│   │   └── stylesheets
+│   │       └── application.css
+│   ├── controllers
+│   │   ├── admin
+│   │   │   ├── accounts_controller.rb
+│   │   │   ├── base_controller.rb
+│   │   │   ├── connections_controller.rb
+│   │   │   └── google_controller.rb
+│   │   ├── application_controller.rb
+│   │   ├── caldav_controller.rb
+│   │   ├── concerns
+│   │   │   └── .keep
+│   │   └── pipedrive_webhooks_controller.rb
+│   ├── helpers
+│   │   └── application_helper.rb
+│   ├── jobs
+│   │   ├── application_job.rb
+│   │   ├── check_health_job.rb
+│   │   ├── push_rdv_job.rb
+│   │   ├── rebuild_connection_job.rb
+│   │   ├── rebuild_connections_job.rb
+│   │   ├── refresh_account_job.rb
+│   │   ├── refresh_accounts_job.rb
+│   │   └── sync_activity_job.rb
+│   ├── mailers
+│   │   ├── alert_mailer.rb
+│   │   └── application_mailer.rb
+│   ├── models
+│   │   ├── account.rb
+│   │   ├── application_record.rb
+│   │   ├── busy_block.rb
+│   │   ├── busy_block_change.rb
+│   │   ├── caldav
+│   │   │   ├── busy_block_ics.rb
+│   │   │   ├── incoming_event.rb
+│   │   │   ├── multistatus.rb
+│   │   │   ├── namespaces.rb
+│   │   │   ├── properties.rb
+│   │   │   ├── rdv_ics.rb
+│   │   │   └── request_body.rb
+│   │   ├── concerns
+│   │   │   ├── .keep
+│   │   │   └── sync_collection.rb
+│   │   ├── connection.rb
+│   │   ├── rdv.rb
+│   │   └── rdv_content.rb
+│   ├── providers
+│   │   ├── google
+│   │   │   ├── authentication_error.rb
+│   │   │   ├── busy_mapping.rb
+│   │   │   ├── client.rb
+│   │   │   ├── connect.rb
+│   │   │   ├── error.rb
+│   │   │   ├── not_found_error.rb
+│   │   │   ├── oauth.rb
+│   │   │   ├── push_rdv.rb
+│   │   │   ├── rebuild_connection.rb
+│   │   │   ├── refresh_account.rb
+│   │   │   └── window.rb
+│   │   ├── pipedrive
+│   │   │   ├── apply_activity.rb
+│   │   │   ├── authentication_error.rb
+│   │   │   ├── busy_mapping.rb
+│   │   │   ├── client.rb
+│   │   │   ├── error.rb
+│   │   │   ├── find_or_create_person.rb
+│   │   │   ├── not_found_error.rb
+│   │   │   ├── onboard.rb
+│   │   │   ├── push_rdv.rb
+│   │   │   ├── rdv_activity.rb
+│   │   │   ├── rebuild_connection.rb
+│   │   │   ├── refresh_account.rb
+│   │   │   └── sync_activity.rb
+│   │   └── providers.rb
+│   ├── services
+│   │   ├── base_service.rb
+│   │   ├── connections
+│   │   │   └── create.rb
+│   │   └── rdvs
+│   │       ├── cancel.rb
+│   │       └── receive.rb
+│   └── views
+│       ├── admin
+│       │   ├── accounts
+│       │   │   ├── _status.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   └── connections
+│       │       ├── new.html.erb
+│       │       └── show.html.erb
+│       ├── alert_mailer
+│       │   └── account_failing.text.erb
+│       ├── layouts
+│       │   ├── admin.html.erb
+│       │   ├── application.html.erb
+│       │   ├── mailer.html.erb
+│       │   └── mailer.text.erb
+│       └── pwa
+│           ├── manifest.json.erb
+│           └── service-worker.js
+├── bin
+│   ├── brakeman
+│   ├── bundler-audit
+│   ├── ci
+│   ├── dev
+│   ├── docker-entrypoint
+│   ├── rails
+│   ├── rake
+│   ├── rubocop
+│   └── setup
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── bundler-audit.yml
+│   ├── ci.rb
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── initializers
+│   │   ├── assets.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── inflections.rb
+│   │   └── sentry.rb
+│   ├── locales
+│   │   └── en.yml
+│   ├── puma.rb
+│   └── routes.rb
+├── config.ru
+├── db
+│   ├── migrate
+│   │   ├── 20261019211056_create_good_jobs.rb
+│   │   ├── 20261019213000_create_accounts.rb
+│   │   ├── 20261019213100_create_connections.rb
+│   │   ├── 20261019213200_create_busy_blocks.rb
+│   │   ├── 20261019213300_create_rdvs.rb
+│   │   └── 20261019230000_add_oauth_tokens_to_accounts.rb
+│   ├── schema.rb
+│   └── seeds.rb
+├── docker-compose.yml
+├── docs
+│   ├── deploy-scaleway.md
+│   ├── google.md
+│   └── heads-up-rdvsp.md
+├── lib
+│   └── tasks
+│       ├── .keep
+│       └── bridging.rake
+├── log
+│   └── .keep
+├── public
+│   ├── 400.html
+│   ├── 404.html
+│   ├── 406-unsupported-browser.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── icon.png
+│   ├── icon.svg
+│   └── robots.txt
+├── script
+│   ├── .keep
+│   └── e2e
+│       ├── README.md
+│       ├── docker-compose.rdvsp.yml
+│       ├── rdvsp_probe_days.rb
+│       ├── rdvsp_rdv.rb
+│       └── rdvsp_setup.rb
+├── spec
+│   ├── factories
+│   │   ├── accounts.rb
+│   │   ├── busy_blocks.rb
+│   │   ├── connections.rb
+│   │   └── rdvs.rb
+│   ├── integration
+│   │   └── calendav_compatibility_spec.rb
+│   ├── jobs
+│   │   └── check_health_job_spec.rb
+│   ├── models
+│   │   ├── connection_spec.rb
+│   │   └── connection_sync_spec.rb
+│   ├── providers
+│   │   ├── google
+│   │   │   ├── busy_mapping_spec.rb
+│   │   │   └── sync_spec.rb
+│   │   └── pipedrive
+│   │       ├── busy_mapping_spec.rb
+│   │       ├── onboard_spec.rb
+│   │       ├── push_rdv_spec.rb
+│   │       ├── rdv_activity_spec.rb
+│   │       ├── rebuild_connection_spec.rb
+│   │       └── refresh_account_spec.rb
+│   ├── rails_helper.rb
+│   ├── requests
+│   │   ├── admin_spec.rb
+│   │   ├── caldav_spec.rb
+│   │   └── pipedrive_webhooks_spec.rb
+│   ├── spec_helper.rb
+│   └── support
+│       ├── google_helpers.rb
+│       ├── pipedrive_helpers.rb
+│       ├── rdvsp_emulator.rb
+│       └── test_server.rb
+├── tmp
+│   ├── .keep
+│   └── pids
+│       └── .keep
+└── vendor
+    └── .keep
+56 directories, 181 files
