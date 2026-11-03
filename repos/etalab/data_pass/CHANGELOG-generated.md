@@ -1,27 +1,33 @@
-## Changelog : data_pass (30 derniers jours, au 12 octobre 2026)
+## Changelog : data_pass (30 derniers jours, au 02 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de la fiabilité des synchronisations de données (notamment avec l'INSEE) et par le déploiement de nouveaux parcours utilisateurs, particulièrement pour le secteur de la petite enfance (EAJE). L'outil est également devenu plus transparent sur ses processus de contribution et sur ses engagements en matière d'accessibilité.
+Ce mois a été marqué par un renforcement majeur des capacités de l'API, permettant désormais une gestion complète du cycle de vie des demandes (soumission, validation, métadonnées) de manière automatisée. La sécurité a également été renforcée avec la mise à jour de l'environnement Ruby et l'exigence de la double authentification pour ProConnect. Enfin, l'expérience de développement a été améliorée grâce à de nouveaux outils de test et de visualisation des composants de l'interface.
 
 ### Évolutions fonctionnelles
-- **Parcours EAJE (Petite enfance) :** Intégration de nouvelles options de préfiltrage, ajout de nouveaux éditeurs référencés (CapCreche, Osmia Projects, optiCreche) et personnalisation de l'affichage des formulaires.
-- **Gestion des éditeurs et API :** 
-    - Référencement de nouveaux éditeurs pour l'API Particulier [#1796](https://github.com/etalab/data_pass/issues/1796).
-    - Simplification des demandes API Entreprise par la suppression du champ "responsable de traitement".
-- **Expérience utilisateur et interface :**
-    - Renommage du "contact technique" en "RSSI" dans les formulaires pour plus de clarté [#1802](https://github.com/etalab/data_pass/issues/1802).
-    - Correction de l'invisibilité de certains documents après sauvegarde [#1801](https://github.com/etalab/data_pass/issues/1801).
-    - Amélioration de la gestion des erreurs sur les modèles de messages [#1800](https://github.com/etalab/data_pass/issues/1800).
-    - Information des demandeurs sur la durée de disponibilité des services [#1798](https://github.com/etalab/data_pass/issues/1798).
-- **Données :** Activation des bilans BDF et des liasses fiscales sur l'ADE aides publiques.
+- **Capacités de l'API** :
+    - Possibilité de soumettre et de valider des demandes directement via l'API ([#1827](https://github.com/etalab/data_pass/issues/1827)).
+    - Gestion des métadonnées par les fournisseurs de données (FD) sur une demande ([#1842](https://github.com/etalab/data_pass/issues/1842)).
+    - Mise en place d'une interface d'administration pour gérer les droits d'accès API par fournisseur ([#1811](https://github.com/etalab/data_pass/issues/1811)).
+- **Gestion des notifications** : Les fournisseurs de données peuvent désormais désactiver certaines notifications par contrat ou via l'API ([#1841](https://github.com/etalab/data_pass/issues/1841)).
+- **Interface utilisateur et formulaires** :
+    - Renommage du "Contact technique" en "RSSI" dans le formulaire CISIRH ([#1802](https://github.com/etalab/data_pass/issues/1802)).
+    - Ajout d'un formulaire pour demander le rôle d'administrateur Resana ([#1812](https://github.com/etalab/data_pass/issues/1812)).
+    - Publication du plan d'action d'accessibilité.
 
 ### Évolutions techniques
-- **Fiabilisation de l'intégration INSEE :** Refonte majeure de la synchronisation pour augmenter la résilience : mise en place d'un circuit breaker (coupe-circuit), utilisation d'une file d'attente dédiée, gestion optimisée des limites de débit (250 appels/min) et meilleure gestion des erreurs en cas d'indisponibilité du service [#1771](https://github.com/etalab/data_pass/issues/1771), [#1772](https://github.com/etalab/data_pass/issues/1772), [#1773](https://github.com/etalab/data_pass/issues/1773), [#1774](https://github.com/etalab/data_pass/issues/1774).
-- **Optimisation des tests :** Refonte complète et optimisation du système de génération de données de test (*seeds*) pour améliorer la performance et la couverture des tests [#1793](https://github.com/etalab/data_pass/issues/1793).
-- **Audit et traçabilité :** Amélioration du suivi des modifications (ajout de champs ou de documents) pour mieux identifier les changements lors de la réouverture d'une demande.
-- **Sécurité :** Renforcement de la validation des étapes mémorisées en cookies et des adresses IP publiques.
-- **Correction de bugs :** Empêche l'annulation d'une étape de production sans avoir préalablement validé l'étape "bac à sable" [#1804](https://github.com/etalab/data_pass/issues/1804).
+- **Sécurité et infrastructure** :
+    - Mise à jour de Ruby vers la version 4.0.9 pour corriger des vulnérabilités (CVE) ([#1836](https://github.com/etalab/data_pass/issues/1836)).
+    - Rendre la double authentification (2FA) ProConnect obligatoire pour tous les agents ([#1809](https://github.com/etalab/data_pass/issues/1809)).
+    - Blocage de l'indexation par les moteurs de recherche des pages publiques des demandes ([#1829](https://github.com/etalab/data_pass/issues/1829)).
+- **API et Webhooks** :
+    - Amélioration de la fiabilité des webhooks lors des écritures par API, incluant désormais la source et les métadonnées ([#1843](https://github.com/etalab/data_pass/issues/1843)).
+    - Meilleure traçabilité des actions effectuées via l'API dans l'historique des demandes.
+- **Expérience développeur (DX)** :
+    - Intégration de "Lookbook" pour permettre une prévisualisation isolée des composants de l'interface ([#1832](https://github.com/etalab/data_pass/issues/1832), [#1833](https://github.com/etalab/data_pass/issues/1833), [#1814](https://github.com/etalab/data_pass/issues/1814)).
+    - Création d'un script pour faciliter la construction des branches de recette sandbox ([#1816](https://github.com/etalab/data_pass/issues/1816)).
 
 ### Autres changements
-- **Documentation :** Formalisation des règles de contribution technique pour l'équipe [#1787](https://github.com/etalab/data_pass/issues/1787).
-- **Accessibilité :** Publication du plan d'action d'accessibilité du service.
+- **Documentation** :
+    - Mise à jour de la documentation OpenAPI et des spécifications techniques de l'API.
+    - Formalisation des règles de contribution de l'équipe technique ([#1787](https://github.com/etalab/data_pass/issues/1787)).
+- **Maintenance** : Optimisation et refactorisation des jeux de données de test (seeds).

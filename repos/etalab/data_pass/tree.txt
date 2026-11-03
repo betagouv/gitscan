@@ -886,14 +886,20 @@
 │   │   │   ├── copy_button_component.rb
 │   │   │   ├── definition_block_component.html.erb
 │   │   │   ├── definition_block_component.rb
+│   │   │   ├── diff_list_component.rb
 │   │   │   ├── form_buttons_component.html.erb
-│   │   │   └── form_buttons_component.rb
+│   │   │   ├── form_buttons_component.rb
+│   │   │   ├── historical_authorization_request_event_component.html.erb
+│   │   │   ├── historical_authorization_request_event_component.rb
+│   │   │   ├── historical_authorization_request_event_icon_component.rb
+│   │   │   ├── instructor_menu_component.html.erb
+│   │   │   ├── instructor_menu_component.rb
+│   │   │   └── link_component.rb
 │   │   ├── authorization_header_component.html.erb
 │   │   ├── authorization_header_component.rb
 │   │   ├── dashboard
 │   │   │   ├── blank_state_component.html.erb
 │   │   │   └── blank_state_component.rb
-│   │   ├── diff_list_component.rb
 │   │   ├── dsfr
 │   │   │   ├── multi_select_component.html.erb
 │   │   │   └── multi_select_component.rb
@@ -901,13 +907,7 @@
 │   │   ├── habilitation
 │   │   │   ├── origin_header_info.rb
 │   │   │   └── user_alerts_component.rb
-│   │   ├── historical_authorization_request_event_component.html.erb
-│   │   ├── historical_authorization_request_event_component.rb
-│   │   ├── historical_authorization_request_event_icon_component.rb
 │   │   ├── icon_component.rb
-│   │   ├── instructor_menu_component.html.erb
-│   │   ├── instructor_menu_component.rb
-│   │   ├── link_component.rb
 │   │   ├── molecules
 │   │   │   ├── admin
 │   │   │   │   ├── blocks_selection_component.html.erb
@@ -988,6 +988,8 @@
 │   │           └── transcription_component.rb
 │   ├── controllers
 │   │   ├── admin
+│   │   │   ├── api_access_grant_revocations_controller.rb
+│   │   │   ├── api_access_grants_controller.rb
 │   │   │   ├── bans_controller.rb
 │   │   │   ├── data_providers_controller.rb
 │   │   │   ├── habilitation_types_controller.rb
@@ -1174,6 +1176,7 @@
 │   │   │   ├── capture_user_ban_attributes.rb
 │   │   │   ├── check_data_provider_deletable.rb
 │   │   │   ├── check_habilitation_type_deletable.rb
+│   │   │   ├── create_api_access_grant.rb
 │   │   │   ├── create_impersonation.rb
 │   │   │   ├── destroy_data_provider_record.rb
 │   │   │   ├── destroy_habilitation_type_record.rb
@@ -1187,6 +1190,8 @@
 │   │   │   ├── persist_new_data_provider.rb
 │   │   │   ├── persist_new_habilitation_type.rb
 │   │   │   ├── remove_habilitation_type_roles.rb
+│   │   │   ├── revoke_api_access_grant.rb
+│   │   │   ├── sync_api_access_scopes.rb
 │   │   │   ├── track_event.rb
 │   │   │   ├── track_impersonation_stop.rb
 │   │   │   ├── track_organization_user_verification_event.rb
@@ -1196,6 +1201,8 @@
 │   │   │   └── update_user_roles_attribute.rb
 │   │   ├── affect_default_reason_to_instruction_modification_request.rb
 │   │   ├── application_interactor.rb
+│   │   ├── assign_api_metadata_to_authorization_request.rb
+│   │   ├── assign_consents_to_authorization_request.rb
 │   │   ├── assign_create_params_for_create_authorization_request.rb
 │   │   ├── assign_default_data_to_authorization_request.rb
 │   │   ├── assign_france_connect_defaults.rb
@@ -1206,6 +1213,7 @@
 │   │   ├── change_user_current_organization.rb
 │   │   ├── check_applicant_belongs_to_organization.rb
 │   │   ├── concerns
+│   │   │   ├── api_consents.rb
 │   │   │   ├── authorization_request_permitted_keys.rb
 │   │   │   ├── documents_affector.rb
 │   │   │   ├── mon_compte_pro_payloads.rb
@@ -1248,13 +1256,20 @@
 │   │   │   ├── test_webhook.rb
 │   │   │   ├── test_webhook_if_url_changed.rb
 │   │   │   └── update_webhook_model.rb
-│   │   ├── enqueue_organization_insee_refresh.rb
+│   │   ├── ensure_applicant_is_not_banned.rb
+│   │   ├── ensure_authorization_request_can_be_created.rb
+│   │   ├── ensure_authorization_request_created_by_api.rb
+│   │   ├── ensure_authorization_request_is_approvable_from_api.rb
+│   │   ├── ensure_authorization_request_is_submittable.rb
 │   │   ├── ensure_authorization_request_is_updatable.rb
+│   │   ├── ensure_consents_given.rb
+│   │   ├── ensure_instructor_draft_can_be_claimed.rb
 │   │   ├── ensure_instructor_draft_not_claimed.rb
 │   │   ├── ensure_user_is_organization_member.rb
 │   │   ├── execute_authorization_request_bridge.rb
 │   │   ├── find_applicant.rb
 │   │   ├── find_authorization_request.rb
+│   │   ├── find_instructor_for_api_approval.rb
 │   │   ├── find_or_create_applicant_from_api.rb
 │   │   ├── find_or_create_organization_for_api.rb
 │   │   ├── find_or_create_organization_model.rb
@@ -1274,8 +1289,10 @@
 │   │   ├── mark_instructor_draft_as_claimed.rb
 │   │   ├── notifications
 │   │   │   └── unsubscribe.rb
+│   │   ├── record_notification_policy_on_event.rb
 │   │   ├── regenerate_instructor_draft_request_public_id.rb
 │   │   ├── resolve_authorization_request_form.rb
+│   │   ├── resolve_notification_policy.rb
 │   │   ├── restore_authorization_request_to_authorization.rb
 │   │   ├── restore_authorization_request_to_latest_authorization.rb
 │   │   ├── revoke_child_authorizations.rb
@@ -1289,16 +1306,20 @@
 │   │   ├── sync_instructor_draft_request_documents.rb
 │   │   ├── transition_authorization_request_to_revoked_if_needed.rb
 │   │   ├── transition_authorization_request_to_stage_of_authorization.rb
+│   │   ├── trigger_after_update_if_changed.rb
 │   │   ├── trigger_authorization_request_event.rb
 │   │   ├── update_applicant_on_authorization_request.rb
 │   │   ├── update_instructor_draft_request_with_user_and_organization.rb
 │   │   ├── update_organization_insee_payload.rb
 │   │   ├── update_organization_on_authorization_request.rb
 │   │   ├── validate_api_data_keys.rb
+│   │   ├── validate_api_metadata.rb
+│   │   ├── validate_notifications_param.rb
 │   │   └── verify_contacts_emails_asynchronously.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   ├── controllers
+│   │   │   ├── api_access_provider_filter_controller.js
 │   │   │   ├── application.js
 │   │   │   ├── auto_height_controller.js
 │   │   │   ├── blocks_toggle_controller.js
@@ -1445,6 +1466,7 @@
 │   ├── models
 │   │   ├── admin_change.rb
 │   │   ├── admin_event.rb
+│   │   ├── api_access_grant.rb
 │   │   ├── application_record.rb
 │   │   ├── authorization.rb
 │   │   ├── authorization_definition
@@ -1464,6 +1486,7 @@
 │   │   │   ├── pro_connect_identity_provider.rb
 │   │   │   ├── pro_connect_service_provider.rb
 │   │   │   ├── produits_dinum.rb
+│   │   │   ├── resana.rb
 │   │   │   └── services_cisirh.rb
 │   │   ├── authorization_request.rb
 │   │   ├── authorization_request_changelog.rb
@@ -1471,6 +1494,10 @@
 │   │   ├── authorization_request_form
 │   │   │   └── stage.rb
 │   │   ├── authorization_request_form.rb
+│   │   ├── authorization_request_metadata
+│   │   │   ├── entry.rb
+│   │   │   └── namespace.rb
+│   │   ├── authorization_request_metadata.rb
 │   │   ├── authorization_request_reopening_cancellation.rb
 │   │   ├── authorization_request_transfer.rb
 │   │   ├── bulk_authorization_request_update.rb
@@ -1507,7 +1534,9 @@
 │   │   │   │   ├── api_impot_particulier_modalities.rb
 │   │   │   │   ├── api_impot_particulier_scopes.rb
 │   │   │   │   └── extra_contacts_infos.rb
+│   │   │   ├── namespaced_metadata.rb
 │   │   │   ├── notifications_settings.rb
+│   │   │   ├── revokes_api_access_on_destroy.rb
 │   │   │   └── user_roles.rb
 │   │   ├── contact.rb
 │   │   ├── contact_definition.rb
@@ -1534,6 +1563,7 @@
 │   │   ├── malware_scan.rb
 │   │   ├── message.rb
 │   │   ├── message_template.rb
+│   │   ├── notification_policy.rb
 │   │   ├── notification_unsubscribe_token.rb
 │   │   ├── organization.rb
 │   │   ├── organizations_user.rb
@@ -1571,7 +1601,9 @@
 │   │   │   ├── create_habilitation_type.rb
 │   │   │   ├── destroy_data_provider.rb
 │   │   │   ├── destroy_habilitation_type.rb
+│   │   │   ├── grant_api_access.rb
 │   │   │   ├── mark_user_organization_as_verified.rb
+│   │   │   ├── revoke_api_access.rb
 │   │   │   ├── start_impersonation.rb
 │   │   │   ├── stop_impersonation.rb
 │   │   │   ├── transfer_authorization_request.rb
@@ -1583,6 +1615,7 @@
 │   │   ├── after_update_authorization_request.rb
 │   │   ├── application_organizer.rb
 │   │   ├── approve_authorization_request.rb
+│   │   ├── approve_authorization_request_from_api.rb
 │   │   ├── archive_authorization_request.rb
 │   │   ├── authenticate_user_through_mon_compte_pro.rb
 │   │   ├── authenticate_user_through_pro_connect.rb
@@ -1605,6 +1638,7 @@
 │   │   ├── instruction
 │   │   │   └── update_user_rights.rb
 │   │   ├── invite_applicant_to_claim_instructor_draft_request.rb
+│   │   ├── provision_applicant_from_api.rb
 │   │   ├── refuse_authorization_request.rb
 │   │   ├── reopen_authorization.rb
 │   │   ├── request_changes_on_authorization_request.rb
@@ -1615,6 +1649,7 @@
 │   │   ├── send_message_to_instructors.rb
 │   │   ├── start_next_authorization_request_stage.rb
 │   │   ├── submit_authorization_request.rb
+│   │   ├── submit_authorization_request_from_api.rb
 │   │   ├── transfer_authorization_request_to_new_applicant.rb
 │   │   ├── transfer_authorization_request_to_new_organization.rb
 │   │   ├── update_authorization_request.rb
@@ -1624,6 +1659,7 @@
 │   ├── policies
 │   │   ├── admin
 │   │   │   └── user_right_policy.rb
+│   │   ├── api_access_policy.rb
 │   │   ├── application_policy.rb
 │   │   ├── authorization_definition_policy.rb
 │   │   ├── authorization_policy.rb
@@ -1671,6 +1707,7 @@
 │   │   │       ├── authorization_serializer.rb
 │   │   │       ├── organization_serializer.rb
 │   │   │       ├── scope_serializer.rb
+│   │   │       ├── service_provider_serializer.rb
 │   │   │       ├── user_serializer.rb
 │   │   │       └── webhook_attempt_serializer.rb
 │   │   ├── application_serializer.rb
@@ -1685,8 +1722,10 @@
 │   │   ├── abstract_search_engine_builder.rb
 │   │   ├── abstract_yaml_configuration.rb
 │   │   ├── announcement_banner.rb
+│   │   ├── api_user_context.rb
 │   │   ├── authorization_definition_configurations.rb
 │   │   ├── authorization_request_changelog_presenter.rb
+│   │   ├── authorization_request_creation_rules.rb
 │   │   ├── authorization_request_form_configurations.rb
 │   │   ├── authorization_request_tabs_builder.rb
 │   │   ├── authorization_requests_search_engine_builder.rb
@@ -1726,6 +1765,11 @@
 │   │   └── siret_validator.rb
 │   └── views
 │       ├── admin
+│       │   ├── api_access_grant_revocations
+│       │   │   └── new.html.erb
+│       │   ├── api_access_grants
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
 │       │   ├── bans
 │       │   │   ├── confirm_destroy.html.erb
 │       │   │   ├── index.html.erb
@@ -1916,7 +1960,9 @@
 │       │   │   ├── dgfip
 │       │   │   │   ├── _contact.html.erb
 │       │   │   │   └── _contacts.html.erb
-│       │   │   └── produits_dinum
+│       │   │   ├── produits_dinum
+│       │   │   │   └── _legal.html.erb
+│       │   │   └── resana
 │       │   │       └── _legal.html.erb
 │       │   ├── build
 │       │   │   ├── _header.html.erb
@@ -2060,19 +2106,11 @@
 │       │   ├── _card.html.erb
 │       │   ├── _eligibility_decision_tree.html.erb
 │       │   ├── blocks
-│       │   │   ├── api_impot_particulier
-│       │   │   │   └── _contacts.html.erb
-│       │   │   ├── api_impot_particulier_sandbox
-│       │   │   │   └── _contacts.html.erb
 │       │   │   ├── api_mobilic
 │       │   │   │   └── _basic_infos.html.erb
 │       │   │   ├── api_particulier
 │       │   │   │   ├── _legal.html.erb
 │       │   │   │   └── _scopes.html.erb
-│       │   │   ├── api_sfip
-│       │   │   │   └── _contacts.html.erb
-│       │   │   ├── api_sfip_sandbox
-│       │   │   │   └── _contacts.html.erb
 │       │   │   ├── default
 │       │   │   │   ├── _basic_infos.html.erb
 │       │   │   │   ├── _cnous_data_extraction_criteria.html.erb
@@ -2088,8 +2126,13 @@
 │       │   │   │   ├── _supporting_documents.html.erb
 │       │   │   │   ├── _technical_team.html.erb
 │       │   │   │   └── _volumetrie.html.erb
+│       │   │   ├── dgfip
+│       │   │   │   ├── _contact_technique_extra.html.erb
+│       │   │   │   └── _extra_organization_contact.html.erb
 │       │   │   ├── edit.html.erb
-│       │   │   └── produits_dinum
+│       │   │   ├── produits_dinum
+│       │   │   │   └── _legal.html.erb
+│       │   │   └── resana
 │       │   │       └── _legal.html.erb
 │       │   ├── closed_organization.html.erb
 │       │   ├── eligibility_check.html.erb
@@ -2370,6 +2413,7 @@
 │           └── fail.text.erb
 ├── bin
 │   ├── brakeman
+│   ├── build-recette
 │   ├── bundle
 │   ├── check
 │   ├── cucumber
@@ -2406,6 +2450,7 @@
 │   │   ├── others.yml
 │   │   ├── pro_connect.yml
 │   │   ├── produits_dinum.yml
+│   │   ├── resana.yml
 │   │   ├── services_cisirh.yml
 │   │   └── urssaf.yml
 │   ├── authorization_request_forms
@@ -2446,6 +2491,7 @@
 │   │   ├── others.yml
 │   │   ├── pro_connect.yml
 │   │   ├── produits_dinum.yml
+│   │   ├── resana.yml
 │   │   ├── services_cisirh.yml
 │   │   └── urssaf.yml
 │   ├── boot.rb
@@ -2474,9 +2520,11 @@
 │   ├── importmap.rb
 │   ├── initializers
 │   │   ├── active_storage_attachment_extension.rb
+│   │   ├── api_scopes.rb
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
 │   │   ├── doorkeeper.rb
+│   │   ├── doorkeeper_application_extensions.rb
 │   │   ├── dynamic_authorization_types.rb
 │   │   ├── emailable.rb
 │   │   ├── filter_parameter_logging.rb
@@ -2512,6 +2560,7 @@
 │   │   ├── instruction.fr.yml
 │   │   ├── instruction_message_templates.fr.yml
 │   │   ├── mailer.fr.yml
+│   │   ├── notification_policy.fr.yml
 │   │   ├── page_titles.fr.yml
 │   │   └── pagination.fr.yml
 │   ├── openapi
@@ -2676,7 +2725,11 @@
 │   │   ├── 20260909164402_add_read_webhooks_scope_to_oauth_applications.rb
 │   │   ├── 20260918115707_create_bulk_update_for_api_entreprise_on_responsable_traitement.rb
 │   │   ├── 20260921180000_create_settings.rb
-│   │   └── 20260923120000_add_insee_consecutive_failures_to_organizations.rb
+│   │   ├── 20260923120000_add_insee_consecutive_failures_to_organizations.rb
+│   │   ├── 20261015100000_create_api_access_grants.rb
+│   │   ├── 20261020120000_add_metadata_to_authorization_requests.rb
+│   │   ├── 20261022100000_add_api_application_name_to_authorization_request_events.rb
+│   │   └── 20261026100000_add_notifications_disabled_to_authorization_request_events.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2716,10 +2769,12 @@
 │   │   ├── automated_emails.md
 │   │   ├── datagouv-habilitations-sync.md
 │   │   ├── design.md
+│   │   ├── droits_api.md
 │   │   ├── feature_flags.md
 │   │   ├── geo_data.md
 │   │   ├── habilitation_type_dynamique.md
 │   │   ├── insee_coupure_et_rattrapage.md
+│   │   ├── metadonnees_demandes.md
 │   │   ├── modal.md
 │   │   ├── modification_scopes.md
 │   │   ├── nouveau_type_d_habilitation.md
@@ -2734,6 +2789,7 @@
 │   ├── acces_espaces_en_fonction_des_roles.feature
 │   ├── accessibilite.feature
 │   ├── admin
+│   │   ├── acces_api.feature
 │   │   ├── bannissements.feature
 │   │   ├── bannissements_session.feature
 │   │   ├── data_providers.feature
@@ -2751,6 +2807,7 @@
 │   ├── brouillons_demandes_instructeurs.feature
 │   ├── changement_organisation.feature
 │   ├── connexion.feature
+│   ├── connexion_proconnect_double_authentification.feature
 │   ├── connexion_proconnect_nouvelle_organisation.feature
 │   ├── connexion_proconnect_selection_organisation.feature
 │   ├── consultation_demande.feature
@@ -2802,7 +2859,8 @@
 │   │   │   ├── api_infinoe_choix_formulaire.feature
 │   │   │   ├── api_r2p_deprecie.feature
 │   │   │   ├── api_sfip_choix_formulaire.feature
-│   │   │   └── champs_apim_dgfip.feature
+│   │   │   ├── champs_apim_dgfip.feature
+│   │   │   └── consultation_contacts_supplementaires.feature
 │   │   ├── france_connect_test_france_connect_eidas_block.feature
 │   │   ├── le_taxi_test_technical_team_block.feature
 │   │   ├── page_unique
@@ -2810,9 +2868,11 @@
 │   │   │   └── portail_hubee_demarches_dila.feature
 │   │   ├── pre_remplissage_query_params.feature
 │   │   ├── produits_dinum.feature
+│   │   ├── resana.feature
 │   │   ├── services_cisirh.feature
 │   │   └── urssaf_test_supporting_documents_block.feature
 │   ├── habilitations_avec_des_options_sur_les_scopes.feature
+│   ├── historique_soumission_par_api.feature
 │   ├── instructeurs
 │   │   ├── affichage_messages_historique.feature
 │   │   ├── annuler_une_demande_de_production.feature
@@ -2850,6 +2910,7 @@
 │   │   └── transfert_habilitation.feature
 │   ├── liste_des_habilitations.feature
 │   ├── messagerie.feature
+│   ├── metadonnees_posees_par_api.feature
 │   ├── mise_a_jour_global_habilitation.feature
 │   ├── modification_depuis_resume_habilitation.feature
 │   ├── module_processing_time.feature
@@ -2874,6 +2935,9 @@
 │   │   ├── accessibility_steps.rb
 │   │   ├── admin_change_steps.rb
 │   │   ├── admin_steps.rb
+│   │   ├── api_access_grants_steps.rb
+│   │   ├── api_metadata_steps.rb
+│   │   ├── api_submission_steps.rb
 │   │   ├── applicant_authorization_requests_steps.rb
 │   │   ├── authorization_requests_steps.rb
 │   │   ├── authorization_steps.rb
@@ -2899,6 +2963,7 @@
 │   │   ├── oauth_application_steps.rb
 │   │   ├── organizations_steps.rb
 │   │   ├── query_steps.rb
+│   │   ├── resana_steps.rb
 │   │   ├── settings.rb
 │   │   ├── stats_steps.rb
 │   │   ├── summary_authorization_requests_steps.rb
@@ -2916,6 +2981,7 @@
 │   │   ├── bullet.rb
 │   │   ├── data_providers.rb
 │   │   ├── env.rb
+│   │   ├── geo_api_navigateur.rb
 │   │   ├── insee.rb
 │   │   ├── javascript.rb
 │   │   ├── organizations.rb
@@ -3046,21 +3112,21 @@
 │   │   ├── applicant
 │   │   │   └── demande_alerts_component_spec.rb
 │   │   ├── atoms
-│   │   │   └── color_badge_component_spec.rb
+│   │   │   ├── color_badge_component_spec.rb
+│   │   │   ├── diff_list_component_spec.rb
+│   │   │   ├── historical_authorization_request_event_component_spec.rb
+│   │   │   ├── historical_authorization_request_event_icon_component_spec.rb
+│   │   │   ├── instructor_menu_component_spec.rb
+│   │   │   └── link_component_spec.rb
 │   │   ├── authorization_header_component_spec.rb
 │   │   ├── dashboard
 │   │   │   └── blank_state_component_spec.rb
-│   │   ├── diff_list_component_spec.rb
 │   │   ├── dsfr
 │   │   │   └── multi_select_component_spec.rb
 │   │   ├── habilitation
 │   │   │   ├── origin_header_info_spec.rb
 │   │   │   └── user_alerts_component_spec.rb
-│   │   ├── historical_authorization_request_event_component_spec.rb
-│   │   ├── historical_authorization_request_event_icon_component_spec.rb
 │   │   ├── icon_component_spec.rb
-│   │   ├── instructor_menu_component_spec.rb
-│   │   ├── link_component_spec.rb
 │   │   ├── molecules
 │   │   │   └── instruction
 │   │   │       ├── authorization_definition
@@ -3083,17 +3149,27 @@
 │   │   │   │   ├── config_block_component_preview.rb
 │   │   │   │   ├── copy_button_component_preview.rb
 │   │   │   │   ├── definition_block_component_preview.rb
-│   │   │   │   └── form_buttons_component_preview.rb
+│   │   │   │   ├── diff_list_component_preview.rb
+│   │   │   │   ├── form_buttons_component_preview.rb
+│   │   │   │   ├── historical_authorization_request_event_component_preview
+│   │   │   │   │   └── in_list.html.erb
+│   │   │   │   ├── historical_authorization_request_event_component_preview.rb
+│   │   │   │   ├── historical_authorization_request_event_icon_component_preview.rb
+│   │   │   │   ├── instructor_menu_component_preview
+│   │   │   │   │   └── in_navigation.html.erb
+│   │   │   │   ├── instructor_menu_component_preview.rb
+│   │   │   │   └── link_component_preview.rb
 │   │   │   ├── authorization_header_component_preview.rb
 │   │   │   ├── dashboard
 │   │   │   │   └── blank_state_component_preview.rb
+│   │   │   ├── dsfr
+│   │   │   │   └── multi_select_component_preview.rb
 │   │   │   ├── flash_alert_component_preview.rb
 │   │   │   ├── habilitation
 │   │   │   │   ├── origin_header_info_preview
 │   │   │   │   │   └── in_header.html.erb
 │   │   │   │   ├── origin_header_info_preview.rb
 │   │   │   │   └── user_alerts_component_preview.rb
-│   │   │   ├── historical_authorization_request_event_icon_component_preview.rb
 │   │   │   ├── molecules
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── blocks_selection_component_preview.rb
@@ -3118,7 +3194,10 @@
 │   │   │   │   │   │   └── show_header_component_preview.rb
 │   │   │   │   │   ├── user_rights
 │   │   │   │   │   │   ├── readonly_rights_list_component_preview.rb
-│   │   │   │   │   │   └── right_field_component_preview.rb
+│   │   │   │   │   │   ├── right_field_component_preview.rb
+│   │   │   │   │   │   ├── table_row_component_preview
+│   │   │   │   │   │   │   └── in_table.html.erb
+│   │   │   │   │   │   └── table_row_component_preview.rb
 │   │   │   │   │   └── wide_header_preview.rb
 │   │   │   │   ├── instructor_banner_notice_component_preview.rb
 │   │   │   │   ├── stat_card_component_preview.rb
@@ -3189,6 +3268,7 @@
 │   │   ├── active_storage_blob.rb
 │   │   ├── admin_changes.rb
 │   │   ├── admin_events.rb
+│   │   ├── api_access_grants.rb
 │   │   ├── authorization_documents.rb
 │   │   ├── authorization_request_changelogs.rb
 │   │   ├── authorization_request_events.rb
@@ -3281,8 +3361,11 @@
 │   │   │   ├── check_habilitation_type_deletable_spec.rb
 │   │   │   ├── destroy_data_provider_record_spec.rb
 │   │   │   ├── destroy_habilitation_type_record_spec.rb
-│   │   │   └── remove_habilitation_type_roles_spec.rb
+│   │   │   ├── remove_habilitation_type_roles_spec.rb
+│   │   │   └── sync_api_access_scopes_spec.rb
 │   │   ├── affect_default_reason_to_instruction_modification_request_spec.rb
+│   │   ├── assign_api_metadata_to_authorization_request_spec.rb
+│   │   ├── assign_consents_to_authorization_request_spec.rb
 │   │   ├── assign_france_connect_defaults_spec.rb
 │   │   ├── assign_query_params_data_to_authorization_request_spec.rb
 │   │   ├── create_authorization_request_changelog_spec.rb
@@ -3292,6 +3375,7 @@
 │   │   ├── datagouv
 │   │   │   ├── build_habilitations_rows_spec.rb
 │   │   │   └── generate_habilitations_csv_spec.rb
+│   │   ├── deliver_authorization_request_notification_spec.rb
 │   │   ├── deliver_gdpr_contacts_mails_spec.rb
 │   │   ├── deliver_linked_france_connect_notification_spec.rb
 │   │   ├── deliver_linked_france_connect_revocation_notification_spec.rb
@@ -3305,7 +3389,9 @@
 │   │   │   ├── replay_webhook_attempt_spec.rb
 │   │   │   ├── save_webhook_attempt_spec.rb
 │   │   │   └── test_webhook_spec.rb
-│   │   ├── enqueue_organization_insee_refresh_spec.rb
+│   │   ├── ensure_authorization_request_can_be_created_spec.rb
+│   │   ├── ensure_authorization_request_created_by_api_spec.rb
+│   │   ├── ensure_authorization_request_is_updatable_spec.rb
 │   │   ├── execute_authorization_request_bridge_spec.rb
 │   │   ├── find_or_create_applicant_from_api_spec.rb
 │   │   ├── find_or_create_organization_for_api_spec.rb
@@ -3325,8 +3411,10 @@
 │   │   ├── stats
 │   │   │   └── fetch_stats_data_spec.rb
 │   │   ├── sync_instructor_draft_request_documents_spec.rb
+│   │   ├── trigger_after_update_if_changed_spec.rb
 │   │   ├── update_organization_insee_payload_spec.rb
-│   │   └── validate_api_data_keys_spec.rb
+│   │   ├── validate_api_data_keys_spec.rb
+│   │   └── validate_api_metadata_spec.rb
 │   ├── jobs
 │   │   ├── backfill_malware_scan_sha256_job_spec.rb
 │   │   ├── datagouv_habilitations_sync_job_spec.rb
@@ -3376,6 +3464,7 @@
 │   ├── models
 │   │   ├── admin_change_spec.rb
 │   │   ├── admin_event_spec.rb
+│   │   ├── api_access_grant_spec.rb
 │   │   ├── authorization_definition
 │   │   │   ├── automated_emails_spec.rb
 │   │   │   └── scope_spec.rb
@@ -3392,6 +3481,7 @@
 │   │   │   ├── hubee_cert_dc_spec.rb
 │   │   │   ├── hubee_dila_spec.rb
 │   │   │   ├── produits_dinum_spec.rb
+│   │   │   ├── resana_spec.rb
 │   │   │   └── services_cisirh_spec.rb
 │   │   ├── authorization_request_changelog_spec.rb
 │   │   ├── authorization_request_event_spec.rb
@@ -3412,7 +3502,10 @@
 │   │   │   │   └── cnous_data_extraction_criteria_spec.rb
 │   │   │   ├── dgfip_extensions
 │   │   │   │   ├── adresse_ip_publique_spec.rb
-│   │   │   │   └── adresse_postale_contact_technique_spec.rb
+│   │   │   │   ├── adresse_postale_contact_technique_spec.rb
+│   │   │   │   └── extra_contacts_infos_spec.rb
+│   │   │   ├── namespaced_metadata_spec.rb
+│   │   │   ├── revokes_api_access_on_destroy_spec.rb
 │   │   │   └── user_roles_spec.rb
 │   │   ├── contact_definition_spec.rb
 │   │   ├── contact_spec.rb
@@ -3437,6 +3530,7 @@
 │   │   ├── malware_scan_spec.rb
 │   │   ├── message_spec.rb
 │   │   ├── message_template_spec.rb
+│   │   ├── notification_policy_spec.rb
 │   │   ├── notification_unsubscribe_token_spec.rb
 │   │   ├── organization_spec.rb
 │   │   ├── organizations_user_spec.rb
@@ -3470,13 +3564,16 @@
 │   │   │   ├── create_habilitation_type_spec.rb
 │   │   │   ├── destroy_data_provider_spec.rb
 │   │   │   ├── destroy_habilitation_type_spec.rb
+│   │   │   ├── grant_api_access_spec.rb
 │   │   │   ├── mark_user_organization_as_verified_spec.rb
+│   │   │   ├── revoke_api_access_spec.rb
 │   │   │   ├── start_impersonation_spec.rb
 │   │   │   ├── stop_impersonation_spec.rb
 │   │   │   ├── transfer_authorization_request_spec.rb
 │   │   │   ├── unban_user_spec.rb
 │   │   │   ├── update_habilitation_type_spec.rb
 │   │   │   └── update_user_roles_spec.rb
+│   │   ├── approve_authorization_request_from_api_spec.rb
 │   │   ├── approve_authorization_request_spec.rb
 │   │   ├── archive_authorization_request_spec.rb
 │   │   ├── authenticate_user_through_mon_compte_pro_spec.rb
@@ -3495,6 +3592,7 @@
 │   │   ├── instruction
 │   │   │   └── update_user_rights_spec.rb
 │   │   ├── invite_applicant_to_claim_instructor_draft_request_spec.rb
+│   │   ├── provision_applicant_from_api_spec.rb
 │   │   ├── refuse_authorization_request_spec.rb
 │   │   ├── reopen_authorization_spec.rb
 │   │   ├── request_changes_on_authorization_request_spec.rb
@@ -3504,6 +3602,7 @@
 │   │   ├── send_message_to_applicant_spec.rb
 │   │   ├── send_message_to_instructors_spec.rb
 │   │   ├── start_next_authorization_request_stage_spec.rb
+│   │   ├── submit_authorization_request_from_api_spec.rb
 │   │   ├── submit_authorization_request_spec.rb
 │   │   ├── transfer_authorization_request_to_new_applicant_spec.rb
 │   │   ├── transfer_authorization_request_to_new_organization_spec.rb
@@ -3512,6 +3611,8 @@
 │   ├── policies
 │   │   ├── admin
 │   │   │   └── user_right_policy_spec.rb
+│   │   ├── api_access_policy_spec.rb
+│   │   ├── authorization_definition_policy_spec.rb
 │   │   ├── authorization_request_form_policy_spec.rb
 │   │   ├── authorization_request_policy_spec.rb
 │   │   ├── data_provider_policy_spec.rb
@@ -3539,43 +3640,63 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── admin
+│   │   │   ├── api_access_grants_spec.rb
 │   │   │   └── data_providers_spec.rb
 │   │   ├── api
 │   │   │   ├── oauth_token_spec.rb
 │   │   │   ├── open_api_spec.rb
 │   │   │   └── v1
+│   │   │       ├── api_access_denied_spec.rb
 │   │   │       ├── authorization_definitions_controller_spec.rb
 │   │   │       ├── authorization_request_events_controller_spec.rb
 │   │   │       ├── authorization_request_forms_controller_spec.rb
+│   │   │       ├── authorization_request_history_spec.rb
+│   │   │       ├── authorization_request_notifications_spec.rb
+│   │   │       ├── authorization_request_submission_spec.rb
+│   │   │       ├── authorization_request_web_parity_spec.rb
 │   │   │       ├── authorization_requests_controller_spec.rb
+│   │   │       ├── authorization_requests_validate_spec.rb
 │   │   │       ├── authorization_requests_write_spec.rb
 │   │   │       ├── authorizations_controller_spec.rb
+│   │   │       ├── banned_developer_spec.rb
 │   │   │       ├── credentials_controller_spec.rb
 │   │   │       └── webhook_attempts_controller_spec.rb
+│   │   ├── applicant_finds_request_created_by_api_spec.rb
 │   │   ├── authorization_request_forms_render_spec.rb
 │   │   ├── authorization_request_forms_resume_spec.rb
 │   │   ├── authorization_requests_access_spec.rb
 │   │   ├── dashboard_spec.rb
+│   │   ├── developers
+│   │   │   └── oauth_applications_scopes_spec.rb
 │   │   ├── instruction
 │   │   │   ├── authorization_requests_spec.rb
 │   │   │   └── forms_spec.rb
 │   │   ├── instruction_access_spec.rb
 │   │   ├── local_sign_in_spec.rb
+│   │   ├── mon_compte_pro_organization_change_spec.rb
 │   │   ├── notification_unsubscriptions_spec.rb
+│   │   ├── proconnect_authorization_spec.rb
+│   │   ├── proconnect_callback_spec.rb
+│   │   ├── proconnect_sign_in_spec.rb
+│   │   ├── public
+│   │   │   └── authorization_requests_indexing_spec.rb
 │   │   └── stats_spec.rb
 │   ├── serializers
 │   │   ├── api
 │   │   │   └── v1
+│   │   │       ├── authorization_definition_serializer_spec.rb
 │   │   │       ├── authorization_request_event_serializer_spec.rb
 │   │   │       ├── authorization_request_serializer_spec.rb
 │   │   │       ├── authorization_serializer_spec.rb
-│   │   │       └── organization_serializer_spec.rb
+│   │   │       ├── organization_serializer_spec.rb
+│   │   │       └── user_serializer_spec.rb
 │   │   ├── webhook_authorization_request_serializer_spec.rb
 │   │   ├── webhook_authorization_serializer_spec.rb
 │   │   └── webhook_serializer_spec.rb
 │   ├── services
 │   │   ├── announcement_banner_spec.rb
 │   │   ├── authorization_request_changelog_presenter_spec.rb
+│   │   ├── authorization_request_creation_rules_spec.rb
 │   │   ├── authorization_request_tabs_builder_spec.rb
 │   │   ├── authorization_requests_search_engine_builder_spec.rb
 │   │   ├── authorization_tabs_builder_spec.rb
@@ -3658,4 +3779,4 @@
     ├── .keep
     └── javascript
         └── .keep
-515 directories, 3284 files
+523 directories, 3397 files
