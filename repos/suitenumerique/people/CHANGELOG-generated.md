@@ -1,25 +1,18 @@
-## Changelog : people (30 derniers jours, au 12 octobre 2026)
+## Changelog : people (30 derniers jours, au 02/11/2026)
 
 ### Résumé
-Les évolutions de ce mois se sont concentrées sur le renforcement de la sécurité des accès et de la confidentialité des données, ainsi que sur une modernisation importante de l'infrastructure de développement et des outils de qualité de code.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité des données et la modernisation de l'infrastructure de développement. Les mises à jour ont permis de mieux protéger la confidentialité des configurations de domaines et d'optimiser les processus de déploiement et de test automatique.
 
 ### Évolutions fonctionnelles
-- **Sécurité et confidentialité** :
-  - Renforcement de la validation des domaines d'e-mails pour les organisations.
-  - Restriction de la visibilité des configurations de domaine pour les utilisateurs ayant uniquement des droits de lecture.
+- **Renforcement de la confidentialité** : la configuration des domaines est désormais masquée pour les utilisateurs disposant uniquement de droits de lecture sur ces domaines.
+- **Sécurité des domaines** : l'appariement des domaines d'e-mail des organisations est désormais effectué de manière plus stricte pour garantir l'intégrité des comptes.
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
-  - Mise à jour majeure des actions GitHub (Checkout, Setup Python, Setup Node, Cache et Upload Artifact).
-- **Qualité du code et Linting** :
-  - Migration vers ESLint 9 et transformation de la configuration interne en plugin.
-  - Application de nouvelles règles de linting et refactoring de variables pour la conformité Sonar.
-- **Sécurité et Dépendances** :
-  - Mise à jour de `urllib3` et `eslint` pour corriger des vulnérabilités.
-- **Architecture et Backend** :
-  - Suppression des tables liées aux fournisseurs OAuth de la base de données.
-  - Mise à jour des configurations applicatives front-end (Desk app, i18n et E2E).
+- **Infrastructure et CI/CD** : mise à jour majeure des outils de déploiement et de test (GitHub Actions, Playwright) et adoption du preset de configuration CI par défaut de la Suite Numérique.
+- **Sécurité** : mise à jour de la bibliothèque `urllib3` pour corriger des vulnérabilités.
+- **Qualité de code et Linting** : migration vers ESLint 9, transformation de la configuration ESLint en plugin et renommage de variables pour assurer la conformité aux standards Sonar.
+- **Configuration** : mise à jour des fichiers de configuration applicative (interface, internationalisation et tests de bout en bout).
+- **Nettoyage** : finalisation du nettoyage du package `oauth-provider`.
 
 ### Autres changements
-- Mise à jour des chaînes de caractères traduites (i18n).
-- Publication de la version 1.26.1.
+- Mise à jour des chaînes de traduction (i18n).
