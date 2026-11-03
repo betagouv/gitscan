@@ -1,24 +1,25 @@
 {
   "url": "https://github.com/suitenumerique/drive-migrator",
   "name": "drive-migrator",
-  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il facilite l'interopérabilité et la portabilité des données pour les administrations publiques.",
+  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il assure l'interopérabilité et la portabilité des données pour les administrations au sein de l'écosystème OpenBuro.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Gestion des utilisateurs & Permissions",
+    "Infrastructure & Stockage",
+    "Sécurité & Conformité",
     "Suivi & Traçabilité",
-    "Notifications & Alertes",
-    "Infrastructure & Stockage"
+    "Collaboration & Workflow"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Celery",
+    "Next.js",
     "PostgreSQL",
     "Redis",
+    "Celery",
     "MinIO",
     "Keycloak",
-    "Next.js",
+    "Nginx",
     "uv"
   ],
   "components": [
@@ -28,12 +29,13 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "mfa",
+      "jwt",
       "sso"
     ],
     "providers": [
@@ -50,9 +52,10 @@
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Écosystème beta.gouv / État"
+    "ETL & Pipelines de données"
   ]
 }
