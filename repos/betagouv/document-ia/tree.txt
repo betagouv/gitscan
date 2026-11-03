@@ -1,10 +1,12 @@
 .
 ├── .cursorrules
 ├── .github
+│   ├── dependabot.yml
 │   ├── pull_request_template.md
 │   └── workflows
 │       └── document-ia-ci.yml
 ├── .gitignore
+├── .gitleaks-baseline.json
 ├── .gitleaks.toml
 ├── .pre-commit-config.yaml
 ├── .run
@@ -32,7 +34,7 @@
 │   │       └── 9f3c1a2b7d84_drop_version_from_event_store.py
 │   ├── alembic.ini
 │   ├── bin
-│   │   └── post_compile.sh
+│   │   └── post_compile
 │   ├── bruno-api
 │   │   ├── Document IA
 │   │   │   ├── albert-api
@@ -99,6 +101,7 @@
 │   │   └── WORKFLOW_V2.md
 │   ├── migration.sql
 │   ├── pyproject.toml
+│   ├── pyrightconfig.json
 │   ├── scripts
 │   │   └── generate_api_key.py
 │   ├── src
@@ -262,6 +265,7 @@
 │   ├── Procfile
 │   ├── README.md
 │   ├── pyproject.toml
+│   ├── pyrightconfig.json
 │   ├── src
 │   │   └── document_ia_auto_scaler
 │   │       ├── __init__.py
@@ -286,6 +290,8 @@
 │   ├── .env.example
 │   ├── .gitignore
 │   ├── .python-version
+│   ├── .streamlit
+│   │   └── config.toml
 │   ├── Caddyfile.template
 │   ├── METRICS.md
 │   ├── Makefile
@@ -357,6 +363,7 @@
 │   │       │   ├── list_experiments.py
 │   │       │   ├── prompt_playground.py
 │   │       │   ├── retrieve_api_execution.py
+│   │       │   ├── review_prediction_errors.py
 │   │       │   ├── run_api_workflow.py
 │   │       │   ├── run_api_workflow_v2.py
 │   │       │   └── workflow_generator.py
@@ -366,7 +373,8 @@
 │   │       │   ├── create_dataset_service.py
 │   │       │   ├── create_predictions_service.py
 │   │       │   ├── experiment_service.py
-│   │       │   └── metric_evaluation_service.py
+│   │       │   ├── metric_evaluation_service.py
+│   │       │   └── prediction_error_review_service.py
 │   │       └── utils
 │   │           ├── __init__.py
 │   │           ├── api.py
@@ -382,6 +390,7 @@
 │   │       └── metrics
 │   │           ├── __init__.py
 │   │           ├── test_classification_accuracy.py
+│   │           ├── test_compare_mrz_equality.py
 │   │           ├── test_compare_number.py
 │   │           ├── test_compare_string_date.py
 │   │           ├── test_compare_token_set_equality.py
@@ -392,6 +401,7 @@
 │   ├── .python-version
 │   ├── README.md
 │   ├── pyproject.toml
+│   ├── pyrightconfig.json
 │   ├── src
 │   │   ├── __init__.py
 │   │   └── document_ia_infra
@@ -522,6 +532,7 @@
 │   │       │   ├── openai_manager.py
 │   │       │   ├── openai_settings.py
 │   │       │   └── response_format.py
+│   │       ├── py.typed
 │   │       ├── redis
 │   │       │   ├── __init__.py
 │   │       │   ├── consumer.py
@@ -549,9 +560,10 @@
 │   │       ├── __init__.py
 │   │       ├── core
 │   │       │   ├── __init__.py
-│   │       │   └── model
-│   │       │       ├── __init__.py
-│   │       │       └── test_typed_generic_model.py
+│   │       │   ├── model
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_typed_generic_model.py
+│   │       │   └── test_loki_settings.py
 │   │       ├── data
 │   │       │   ├── __init__.py
 │   │       │   ├── api_key
@@ -586,6 +598,7 @@
 │   │       ├── redis
 │   │       │   ├── __init__.py
 │   │       │   ├── test_consumer.py
+│   │       │   ├── test_consumer_integration.py
 │   │       │   └── test_redis_manager.py
 │   │       └── service
 │   │           ├── __init__.py
@@ -603,6 +616,7 @@
 │   ├── LICENSE
 │   ├── README.md
 │   ├── pyproject.toml
+│   ├── pyrightconfig.json
 │   ├── src
 │   │   └── document_ia_schemas
 │   │       ├── __init__.py
@@ -618,6 +632,7 @@
 │   │       ├── identity.py
 │   │       ├── passeport.py
 │   │       ├── permis_conduire.py
+│   │       ├── py.typed
 │   │       ├── quittance_loyer.py
 │   │       ├── taxe_fonciere.py
 │   │       ├── utils
@@ -643,10 +658,11 @@
 │   ├── Procfile
 │   ├── README.md
 │   ├── bin
-│   │   ├── post_compile.sh
+│   │   ├── post_compile
 │   │   └── start_worker.sh
 │   ├── cron.json
 │   ├── pyproject.toml
+│   ├── pyrightconfig.json
 │   ├── src
 │   │   ├── document_ia_task_scheduler
 │   │   │   ├── __init__.py
@@ -687,6 +703,9 @@
 │   │       │   │   │   ├── mistral_ocr_response.py
 │   │       │   │   │   └── mistral_ocr_settings.py
 │   │       │   │   └── ocr_result.py
+│   │       │   ├── preprocessing
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── yoloworld_crop.py
 │   │       │   └── prompt
 │   │       │       ├── __init__.py
 │   │       │       ├── prompt_configuration.py
@@ -739,13 +758,15 @@
 │   │           │   ├── save_workflow_result
 │   │           │   │   ├── __init__.py
 │   │           │   │   └── save_workflow_result.py
-│   │           │   └── step_result
-│   │           │       ├── __init__.py
-│   │           │       ├── barcode_result.py
-│   │           │       ├── download_file_result.py
-│   │           │       ├── llm_result.py
-│   │           │       ├── ocr_result.py
-│   │           │       └── preprocess_file_result.py
+│   │           │   ├── step_result
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── barcode_result.py
+│   │           │   │   ├── download_file_result.py
+│   │           │   │   ├── llm_result.py
+│   │           │   │   ├── ocr_result.py
+│   │           │   │   └── preprocess_file_result.py
+│   │           │   └── yoloworld_crop_file
+│   │           │       └── __init__.py
 │   │           ├── step_factory_v1.py
 │   │           ├── step_factory_v2.py
 │   │           └── workflow_manager.py
@@ -780,6 +801,7 @@
 │   │   │           ├── taxe_fonciere.txt
 │   │   │           └── visale_certificate.txt
 │   │   └── unit
+│   │       ├── test_extract_content_http_ocr_step.py
 │   │       ├── test_extract_content_ocr_light_on.py
 │   │       ├── test_extract_content_ocr_step.py
 │   │       ├── test_llm_classify_document_step.py
@@ -790,14 +812,18 @@
 │   │       ├── test_replicate_analytics_job.py
 │   │       ├── test_save_workflow_result_step.py
 │   │       ├── test_step_factory_v1.py
+│   │       ├── test_step_factory_v2.py
 │   │       ├── test_workflow_manager.py
-│   │       └── test_workflow_manager_prepare_executor.py
+│   │       ├── test_workflow_manager_prepare_executor.py
+│   │       └── test_yoloworld_crop.py
 │   └── uv.lock
 ├── env.example
 ├── mockserver
 │   └── config
 │       └── expectations.json
-├── pyrightconfig.json
 └── scripts
-    └── init-s3-bucket.py
-199 directories, 603 files
+    ├── gitleaks_pre_push.sh
+    ├── init-s3-bucket.py
+    ├── pre-push
+    └── stress_test_staging.py
+202 directories, 626 files
