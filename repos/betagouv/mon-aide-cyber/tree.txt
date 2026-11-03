@@ -228,7 +228,6 @@
 │   │   │   │   ├── mesuresGouvernance.ts
 │   │   │   │   ├── mesuresReaction.ts
 │   │   │   │   ├── mesuresSecuriteAcces.ts
-│   │   │   │   ├── mesuresSecuriteInfrastructure.ts
 │   │   │   │   ├── mesuresSecuritePoste.ts
 │   │   │   │   └── mesuresSensibilisation.ts
 │   │   │   ├── referentiel
@@ -236,7 +235,6 @@
 │   │   │   │   ├── donneesGouvernance.ts
 │   │   │   │   ├── donneesReaction.ts
 │   │   │   │   ├── donneesSecuriteAcces.ts
-│   │   │   │   ├── donneesSecuriteInfrastructure.ts
 │   │   │   │   ├── donneesSecuritePoste.ts
 │   │   │   │   └── donneesSensibilisation.ts
 │   │   │   ├── regleDeGestion.ts
@@ -383,6 +381,22 @@
 │   │   │   │       │   │   ├── sauvegarde-ressources-hebergees-cloud.pug
 │   │   │   │       │   │   ├── suivi-alertes-vulnerabilites.pug
 │   │   │   │       │   │   └── veille-vulnerabilites-entites-publiques.pug
+│   │   │   │       │   ├── recyf
+│   │   │   │       │   │   ├── acces
+│   │   │   │       │   │   │   ├── acces-postes-droits-utilisateurs-restreints.pug
+│   │   │   │       │   │   │   ├── teletravail-acces-distants-mfa.pug
+│   │   │   │       │   │   │   └── teletravail-acces-distants-precisions.pug
+│   │   │   │       │   │   ├── gouvernance
+│   │   │   │       │   │   │   ├── contrat-prestataires.pug
+│   │   │   │       │   │   │   ├── infos-et-activites-a-proteger.pug
+│   │   │   │       │   │   │   ├── schema-si.pug
+│   │   │   │       │   │   │   └── suivi-alertes-securite.pug
+│   │   │   │       │   │   ├── postes
+│   │   │   │       │   │   │   ├── securite-poste-filtre-flux-recyf.pug
+│   │   │   │       │   │   │   ├── securite-poste-si-industriel-systemes-cloisonnes-recyf.pug
+│   │   │   │       │   │   │   └── windows-defender.pug
+│   │   │   │       │   │   └── reaction
+│   │   │   │       │   │       └── sauvegarde-isolee-ressources.pug
 │   │   │   │       │   └── sensibilisation
 │   │   │   │       │       ├── actions-sensibilisation.pug
 │   │   │   │       │       └── passeport-conseils-cyber-voyageurs.pug
@@ -638,6 +652,66 @@
 │   │   │   │   │   │   ├── reaction-surveillance-veille-vulnerabilites-potentielles-niveau1-pourquoi.pug
 │   │   │   │   │   │   ├── reaction-surveillance-veille-vulnerabilites-potentielles-niveau2-comment.pug
 │   │   │   │   │   │   └── reaction-surveillance-veille-vulnerabilites-potentielles-niveau2-pourquoi.pug
+│   │   │   │   │   ├── recyf
+│   │   │   │   │   │   ├── acces
+│   │   │   │   │   │   │   ├── acces-comptes-privileges-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── acces-comptes-privileges-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── acces-mesures-securite-robustesse-mdp-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── acces-mesures-securite-robustesse-mdp-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── acces-postes-droits-utilisateurs-restreints-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── acces-postes-droits-utilisateurs-restreints-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── acces-si-industriel-teletravail-acces-distants-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── acces-si-industriel-teletravail-acces-distants-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── acces-teletravail-acces-distants-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── acces-teletravail-acces-distants-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── acces-utilisateurs-administrateurs-poste-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   └── acces-utilisateurs-administrateurs-poste-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   ├── gouvernance
+│   │   │   │   │   │   │   ├── gouvernance-exigence-cyber-securite-presta-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── gouvernance-exigence-cyber-securite-presta-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── gouvernance-infos-et-processus-a-proteger-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── gouvernance-infos-et-processus-a-proteger-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── gouvernance-schema-si-a-jour-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── gouvernance-schema-si-a-jour-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── gouvernance-schema-si-industriel-a-jour-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── gouvernance-schema-si-industriel-a-jour-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── gouvernance-schema-si-industriel-a-jour-niveau2-comment.pug
+│   │   │   │   │   │   │   ├── gouvernance-schema-si-industriel-a-jour-niveau2-pourquoi.pug
+│   │   │   │   │   │   │   ├── gouvernance-suivi-alertes-securite-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   └── gouvernance-suivi-alertes-securite-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   ├── postes
+│   │   │   │   │   │   │   ├── securite-poste-antivirus-deploye-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-antivirus-deploye-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-correctifs-securite-annuaire-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-correctifs-securite-annuaire-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-filtre-flux-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-filtre-flux-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-maj-fonctionnelles-et-securite-deployees-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-maj-fonctionnelles-et-securite-deployees-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-mdp-par-defaut-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-mdp-par-defaut-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-si-industriel-antivirus-deploye-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-si-industriel-antivirus-deploye-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-si-industriel-systemes-cloisonnes-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── securite-poste-si-industriel-systemes-cloisonnes-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── securite-poste-systemes-cloisonnes-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   └── securite-poste-systemes-cloisonnes-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   ├── reaction
+│   │   │   │   │   │   │   ├── reaction-amelioration-gestion-crise-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── reaction-amelioration-gestion-crise-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── reaction-bons-reflexes-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── reaction-bons-reflexes-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── reaction-liste-personnes-a-contacter-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── reaction-liste-personnes-a-contacter-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── reaction-restauration-sauvegardes-testees-regulierement-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   ├── reaction-restauration-sauvegardes-testees-regulierement-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   │   ├── reaction-sauvegardes-donnees-realisees-recyf-niveau1-comment.pug
+│   │   │   │   │   │   │   └── reaction-sauvegardes-donnees-realisees-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │   └── sensibilisation
+│   │   │   │   │   │       ├── sensibilisation-actions-sensibilisation-menace-et-bonnes-pratiques-recyf-niveau1-comment.pug
+│   │   │   │   │   │       ├── sensibilisation-actions-sensibilisation-menace-et-bonnes-pratiques-recyf-niveau1-pourquoi.pug
+│   │   │   │   │   │       ├── sensibilisation-personnel-utilisation-charte-recyf-niveau1-comment.pug
+│   │   │   │   │   │       └── sensibilisation-personnel-utilisation-charte-recyf-niveau1-pourquoi.pug
 │   │   │   │   │   └── sensibilisation
 │   │   │   │   │       ├── sensibilisation-actions-sensibilisation-menace-et-bonnes-pratiques-niveau1-comment.pug
 │   │   │   │   │       ├── sensibilisation-actions-sensibilisation-menace-et-bonnes-pratiques-niveau1-pourquoi.pug
@@ -1559,4 +1633,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── start.sh
-352 directories, 1209 files
+363 directories, 1272 files
