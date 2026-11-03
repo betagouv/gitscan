@@ -1,37 +1,39 @@
-## Changelog : docs (30 derniers jours, au 23 octobre 2026)
+## Changelog : docs (30 derniers jours, au 02 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de la gestion administrative et de la collaboration. Les administrateurs disposent désormais d'outils plus puissants pour gérer les utilisateurs et les documents, tandis que les utilisateurs bénéficient d'un système de mentions par email et d'une interface plus intuitive (emojis, liens automatiques). La sécurité et les performances du système ont également été renforcées, notamment sur la partie recherche et gestion des accès.
+Ce mois a été marqué par l'amélioration significative de l'expérience collaborative, notamment avec l'introduction des mentions d'utilisateurs (@) et une meilleure gestion des sous-documents. Le projet a également franchi une étape dans l'automatisation grâce à l'ajout de nouvelles capacités pour les agents IA, tout en renforçant la sécurité et l'accessibilité de l'interface.
 
 ### Évolutions fonctionnelles
-- **Collaboration & Mentions** : 
-    - Mise en place d'un système de mentions avec notifications par email envoyées de manière asynchrone.
-    - Amélioration de l'éditeur : ajout d'un sélecteur d'emojis et transformation automatique des liens de documents collés en liens internes.
-- **Interface Utilisateur (UI/UX)** :
-    - Redesign des pages d'erreur (401, 403) et de l'interface de chargement des fichiers.
-    - Amélioration de la lisibilité : gestion automatique des titres longs et des textes dans les exports PDF.
-    - Optimisation de l'éditeur : limitation des niveaux de titres (H1 à H3) et suppression de certains éléments visuels superflus pour épurer l'interface.
-- **Administration** :
-    - Nouveaux outils de gestion des utilisateurs : fusion de comptes, transfert de documents et d'invitations, et filtrage des doublons par email.
-    - Meilleure visibilité : affichage de la date de dernière connexion des utilisateurs et de la version actuelle dans l'en-tête de l'administration [#2882](https://github.com/suitenumerique/docs/issues/2882).
-- **Accessibilité** :
-    - Améliorations pour les lecteurs d'écran et la navigation au clavier (boutons de menu, structure de l'arbre de documents, gestion du focus).
+- **Collaboration & Édition**
+  - Introduction du système de mention d'utilisateurs via le symbole "@" dans l'éditeur, incluant la suggestion de profils et l'affichage du contenu de mention en ligne.
+  - Ajout d'un nouveau bloc `/children` permettant de lister les sous-documents directement dans une page.
+  - Intégration d'un sélecteur d'emojis lors de l'ajout d'emojis aux documents.
+  - Amélioration de la recherche lors du déplacement de documents en affichant le document parent dans les résultats.
+- **Interface & Accessibilité**
+  - Amélioration de l'accessibilité globale : gestion du focus sur l'arbre de documents, annonce des menus pour les lecteurs d'écran et amélioration des composants de chargement (loaders).
+  - Restauration du style natif des cases à cocher pour les listes de tâches.
+  - Limitation des niveaux de titres (H1 à H3) pour garantir une structure documentaire cohérente.
+  - Mise à jour des traductions (i18n) pour plusieurs langues.
+- **Corrections**
+  - Résolution de problèmes d'affichage lors de l'export PDF (polices et mise en page).
+  - Correction de bugs liés à la duplication de sous-documents et à l'affichage de la bannière de mode hors ligne.
 
 ### Évolutions techniques
-- **Performance** :
-    - Optimisation de la recherche d'utilisateurs via l'utilisation d'index trigrammes.
-    - Réduction de la charge serveur grâce à la mise en cache des décisions d'autorisation dans YHub.
-- **Sécurité** :
-    - Renforcement des contrôles d'accès : les écritures de commentaires et de threads sont désormais strictement liées à l'accès au document.
-    - Mise à jour de dépendances critiques pour corriger des vulnérabilités (Pillow, Certifi).
-    - Sécurisation du système de mentions (validation UUID, limitation du débit/throttling).
-- **Infrastructure & Backend** :
-    - Optimisation des images Docker (passage en version "slim" et suppression de pip dans l'image backend).
-    - Introduction de nouveaux paramètres de configuration pour le mode de repli HTTP (intervalle de polling, gestion de l'awareness).
-    - Transition de l'infrastructure de stockage de Minio vers Silo.
-    - Amélioration des configurations Helm pour Kubernetes (gestion des probes).
+- **Backend & API**
+  - Création d'un endpoint dédié pour la gestion des permissions (abilities) des documents.
+  - Optimisation de la recherche d'utilisateurs via l'implémentation d'index trigrammes.
+  - Amélioration des outils d'administration : fusion d'utilisateurs, transfert de documents entre utilisateurs et gestion des doublons.
+  - Renforcement de la sécurité sur les droits de suppression des sous-documents et l'accès aux fils de discussion.
+- **Intelligence Artificielle**
+  - Développement de nouvelles "skills" (capacités) pour les agents IA, permettant notamment l'automatisation de la création d'issues et le démarrage intelligent de la stack de développement.
+- **Performance & Infrastructure**
+  - Optimisation de la performance de `yhub` via la mise en cache des décisions d'autorisation.
+  - Optimisation de l'exportation en réutilisant les titres mis en cache pour les liens inter-documents.
+  - Migration vers des images Docker plus légères et sécurisées (utilisation de `nginx-unprivileged` et images `slim`).
+  - Mise à jour des configurations Helm pour une meilleure gestion des probes de santé.
 
 ### Autres changements
-- **Internationalisation (i18n)** : Mises à jour massives des chaînes traduites et intégration du contexte Crowdin pour faciliter le travail des traducteurs.
-- **Documentation** : Corrections de typos dans le README d'installation et mise à jour des guides de déploiement Kubernetes (Keycloak et Minio).
-- **CI/CD** : Amélioration des workflows de test, incluant le linting et le type-checking du serveur de collaboration.
+- **Documentation & Nettoyage**
+  - Mise à jour de la documentation technique concernant les agents et le guide de montée de version.
+  - Refactorisation de plusieurs composants frontend et backend pour améliorer la maintenabilité.
+  - Suppression de dépendances inutilisées (`easy-thumbnails`, `Pillow`).

@@ -6,9 +6,48 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) add a dedicated document abilities endpoint #2885
+- ✨(frontend) add a /children block listing the sub-docs #2799
+- 🤖(agents) add AI skills #2746
+
+### Changed
+
+- 💄(frontend) restore native task checkboxes and dim completed tasks #2857
+- ⬆️(frontend) upgrade BlockNote to 0.56.0 #2936
+- ♻️(frontend) export PDFs with the Typst engine #2936
+- ⚡️(yhub) read the abilities from the dedicated backend endpoint #2922
+- ⚡️(frontend) reuse the cached titles of the interlinks on export #2799
+- ♻️(backend) remove the unused scope of the document throttles #2951
+
+### Fixed
+
+- 🐛(frontend) no offline banner when a third-party POST fails #2939
+- 🐛(frontend) replace an image that cannot be exported by a message #2936
+- 🐛(frontend) reload on a version mismatch only when frontend behind #2940
+
+### Removed
+
+- 🔥(backend) remove easy-thumbnails and Pillow #2909
+
+### Fixed
+
+- 🐛(frontend) duplicate the sub-docs created without reloading the page #2915
+- 🐛(frontend) show the doc tree actions of the item under the pointer
+
+## [v6.0.4] - 2026-10-26
+
 ### Changed
 
 - ⚡️(backend) search users through the trigram indexes instead of a full scan
+- 🔒️(backend) only let creators delete their sub docs without children #2873
+
+### Fixed
+
+- 🔒️(backend) require edit rights for creators to delete their sub docs #2873
+- ♻️(frontend) change base image to nginx/nginx-unprivileged #2907
+- ⬆️(backend) upgrade brotli to version 1.2.1
 
 ## [v6.0.3] - 2026-10-23
 
@@ -34,11 +73,12 @@ and this project adheres to
 - ✨(docspec) handle DocSpec 4xx/5xx import errors distinctly #2552
 - 🌐(frontend) add Crowdin translator context #2785
 - ✨(frontend) open the emoji picker when adding a document emoji #2777
+- ✨(frontend) mention users in the editor from the "@" dropdown #2806
+
 
 ### Changed
 
 - 💄(frontend) limit heading choices to levels 1–3
-
 - ♻️(frontend) replace outdated AGPL mentions of BlockNote XL packages #2775
 - 💄(frontend) update upload loader and error ui #2778
 - ⬆️(yhub) upgrade @y/hub to 0.10.1 #2853
@@ -1730,7 +1770,8 @@ and this project adheres to
 - ✨(frontend) Coming Soon page (#67)
 - 🚀 Impress, project to manage your documents easily and collaboratively.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/v6.0.3...main
+[unreleased]: https://github.com/suitenumerique/docs/compare/v6.0.4...main
+[v6.0.4]: https://github.com/suitenumerique/docs/releases/v6.0.4
 [v6.0.3]: https://github.com/suitenumerique/docs/releases/v6.0.3
 [v6.0.2]: https://github.com/suitenumerique/docs/releases/v6.0.2
 [v6.0.1]: https://github.com/suitenumerique/docs/releases/v6.0.1

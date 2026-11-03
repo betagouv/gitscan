@@ -1,4 +1,21 @@
 .
+├── .agents
+│   └── skills
+│       ├── docs-accessibility-review
+│       │   └── SKILL.md
+│       ├── docs-backend-django
+│       │   └── SKILL.md
+│       ├── docs-create-issue
+│       │   └── SKILL.md
+│       ├── docs-e2e-test
+│       │   └── SKILL.md
+│       ├── docs-frontend
+│       │   └── SKILL.md
+│       ├── docs-pr-review
+│       │   └── SKILL.md
+│       └── docs-start
+│           ├── SKILL.md
+│           └── check-stack.sh
 ├── .dockerignore
 ├── .gitattributes
 ├── .github
@@ -296,9 +313,6 @@
     │   │   │       └── admin
     │   │   │           ├── merge_users.html
     │   │   │           └── transfer_documents.html
-    │   │   ├── templatetags
-    │   │   │   ├── __init__.py
-    │   │   │   └── extra_tags.py
     │   │   ├── tests
     │   │   │   ├── __init__.py
     │   │   │   ├── authentication
@@ -321,6 +335,7 @@
     │   │   │   │   ├── test_api_document_accesses_create.py
     │   │   │   │   ├── test_api_document_accesses_me.py
     │   │   │   │   ├── test_api_document_invitations.py
+    │   │   │   │   ├── test_api_documents_abilities.py
     │   │   │   │   ├── test_api_documents_ai_proxy.py
     │   │   │   │   ├── test_api_documents_ai_transform.py
     │   │   │   │   ├── test_api_documents_ai_translate.py
@@ -564,6 +579,7 @@
     │   │   │   │   │   ├── doc-collaboration.spec.ts
     │   │   │   │   │   ├── doc-comments.spec.ts
     │   │   │   │   │   ├── doc-create.spec.ts
+    │   │   │   │   │   ├── doc-editor-children.spec.ts
     │   │   │   │   │   ├── doc-editor.spec.ts
     │   │   │   │   │   ├── doc-export.spec.ts
     │   │   │   │   │   ├── doc-grid-move.spec.ts
@@ -625,9 +641,6 @@
     │   │       │   │   ├── favicon-dsfr.ico
     │   │       │   │   ├── favicon-dsfr.png
     │   │       │   │   ├── favicon-light.png
-    │   │       │   │   ├── fonts
-    │   │       │   │   │   └── emoji
-    │   │       │   │   │       └── fallback.png
     │   │       │   │   ├── icon-docs-dsfr-v2.png
     │   │       │   │   ├── icon-docs-dsfr-v2.svg
     │   │       │   │   ├── icon-docs-dsfr-v3.png
@@ -650,9 +663,7 @@
     │   │       │   │       └── step_4_FR.webp
     │   │       │   └── favicon.ico
     │   │       ├── scripts
-    │   │       │   ├── copy-emoji.mjs
-    │   │       │   ├── postbuild.mjs
-    │   │       │   └── prebuild.mjs
+    │   │       │   └── postbuild.mjs
     │   │       ├── src
     │   │       │   ├── api
     │   │       │   │   ├── APIError.ts
@@ -1177,12 +1188,14 @@
     │   │       │   │   │   │   │   └── utils.test.ts
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   │   └── checkDocMediaStatus.test.tsx
+    │   │       │   │   │   │   │   │   ├── checkDocMediaStatus.test.tsx
+    │   │       │   │   │   │   │   │   └── useMentionUser.test.tsx
     │   │       │   │   │   │   │   ├── checkDocMediaStatus.tsx
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useCreateDocUpload.tsx
     │   │       │   │   │   │   │   ├── useDocAITransform.tsx
-    │   │       │   │   │   │   │   └── useDocAITranslate.tsx
+    │   │       │   │   │   │   │   ├── useDocAITranslate.tsx
+    │   │       │   │   │   │   │   └── useMentionUser.tsx
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   ├── IconAI.svg
     │   │       │   │   │   │   │   ├── ai-loader.svg
@@ -1216,24 +1229,50 @@
     │   │       │   │   │   │   │   ├── custom-blocks
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
     │   │       │   │   │   │   │   │   ├── CodeBlock.tsx
+    │   │       │   │   │   │   │   │   ├── DocChildrenBlock.tsx
     │   │       │   │   │   │   │   │   ├── PdfBlock.tsx
     │   │       │   │   │   │   │   │   ├── UploadLoaderBlock.tsx
     │   │       │   │   │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   │   │   ├── CalloutBlockShortcuts.test.ts
+    │   │       │   │   │   │   │   │   │   ├── DocChildrenBlock.test.tsx
     │   │       │   │   │   │   │   │   │   └── UploadLoaderBlock.test.tsx
     │   │       │   │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   │   ├── custom-inline-content
-    │   │       │   │   │   │   │   │   ├── Interlinking
-    │   │       │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.tsx
-    │   │       │   │   │   │   │   │   │   ├── LinkSelected.tsx
-    │   │       │   │   │   │   │   │   │   ├── SearchPage.tsx
+    │   │       │   │   │   │   │   │   ├── Mention
+    │   │       │   │   │   │   │   │   │   ├── Interlinking
+    │   │       │   │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── InterlinkingSearchGroup.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── LinkSelected.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   │   │   │   ├── InterlinkingLink.test.tsx
+    │   │       │   │   │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.test.tsx
+    │   │       │   │   │   │   │   │   │   │   │   ├── LinkSelected.test.tsx
+    │   │       │   │   │   │   │   │   │   │   │   └── pasteInterlink.test.ts
+    │   │       │   │   │   │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   │   │   │   └── pasteInterlink.ts
+    │   │       │   │   │   │   │   │   │   ├── MentionSearchInlineContent.tsx
+    │   │       │   │   │   │   │   │   │   ├── Search.tsx
+    │   │       │   │   │   │   │   │   │   ├── UserMention
+    │   │       │   │   │   │   │   │   │   │   ├── UserMentionInlineContent.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── UserMentionSearchGroup.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   │   │   │   ├── UserMentionInlineContent.test.tsx
+    │   │       │   │   │   │   │   │   │   │   │   ├── UserMentionSearchGroup.test.tsx
+    │   │       │   │   │   │   │   │   │   │   │   ├── getBlockIdAtPos.test.ts
+    │   │       │   │   │   │   │   │   │   │   │   ├── replaceInitialBlockId.test.ts
+    │   │       │   │   │   │   │   │   │   │   │   ├── useMentionableUsers.test.ts
+    │   │       │   │   │   │   │   │   │   │   │   └── useMentionableUsersQuery.test.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── getBlockIdAtPos.ts
+    │   │       │   │   │   │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   │   │   │   ├── replaceInitialBlockId.ts
+    │   │       │   │   │   │   │   │   │   │   ├── useMentionableUsers.ts
+    │   │       │   │   │   │   │   │   │   │   └── useSearchUserMention.ts
     │   │       │   │   │   │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.test.tsx
-    │   │       │   │   │   │   │   │   │   │   ├── LinkSelected.test.tsx
-    │   │       │   │   │   │   │   │   │   │   ├── SearchPage.test.tsx
-    │   │       │   │   │   │   │   │   │   │   └── pasteInterlink.test.ts
+    │   │       │   │   │   │   │   │   │   │   ├── Search.test.tsx
+    │   │       │   │   │   │   │   │   │   │   └── utils.test.ts
     │   │       │   │   │   │   │   │   │   ├── index.ts
-    │   │       │   │   │   │   │   │   │   └── pasteInterlink.ts
+    │   │       │   │   │   │   │   │   │   ├── types.ts
+    │   │       │   │   │   │   │   │   │   └── utils.ts
     │   │       │   │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   └── xl-multi-column
@@ -1260,12 +1299,20 @@
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── ExportMIT.test.tsx
     │   │       │   │   │   │   │   ├── ModalExport.test.tsx
-    │   │       │   │   │   │   │   ├── TablePDF.test.tsx
+    │   │       │   │   │   │   │   ├── diagramPDF.test.ts
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.test.ts
-    │   │       │   │   │   │   │   ├── imagePDF.test.tsx
+    │   │       │   │   │   │   │   ├── exporterPDF.test.ts
+    │   │       │   │   │   │   │   ├── imagePDF.test.ts
+    │   │       │   │   │   │   │   ├── imageUnavailable.test.tsx
+    │   │       │   │   │   │   │   ├── mappingPDF.test.ts
+    │   │       │   │   │   │   │   ├── mentionSearchMapping.test.tsx
+    │   │       │   │   │   │   │   ├── useExportXL.test.tsx
+    │   │       │   │   │   │   │   ├── userMentionMapping.test.tsx
     │   │       │   │   │   │   │   ├── utils.test.ts
+    │   │       │   │   │   │   │   ├── utilsDocChildren.test.ts
     │   │       │   │   │   │   │   ├── utilsFilename.test.ts
     │   │       │   │   │   │   │   ├── utilsHtmlAccessibility.test.ts
+    │   │       │   │   │   │   │   ├── utilsInterlinkTitles.test.ts
     │   │       │   │   │   │   │   ├── utilsMarkdown.test.ts
     │   │       │   │   │   │   │   ├── utilsMediaFilename.test.ts
     │   │       │   │   │   │   │   └── utilsPrint.test.ts
@@ -1273,27 +1320,24 @@
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.tsx
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   ├── assets
-    │   │       │   │   │   │   │   ├── doc-selected.png
     │   │       │   │   │   │   │   └── export-html-styles.txt
     │   │       │   │   │   │   ├── blocks-mapping
     │   │       │   │   │   │   │   ├── calloutDocx.tsx
     │   │       │   │   │   │   │   ├── calloutODT.tsx
-    │   │       │   │   │   │   │   ├── calloutPDF.tsx
-    │   │       │   │   │   │   │   ├── headingPDF.tsx
+    │   │       │   │   │   │   │   ├── calloutPDF.ts
+    │   │       │   │   │   │   │   ├── diagramPDF.ts
     │   │       │   │   │   │   │   ├── imageDocx.tsx
     │   │       │   │   │   │   │   ├── imageODT.tsx
-    │   │       │   │   │   │   │   ├── imagePDF.tsx
+    │   │       │   │   │   │   │   ├── imagePDF.ts
     │   │       │   │   │   │   │   ├── index.ts
-    │   │       │   │   │   │   │   ├── paragraphPDF.tsx
     │   │       │   │   │   │   │   ├── quoteDocx.tsx
-    │   │       │   │   │   │   │   ├── quotePDF.tsx
-    │   │       │   │   │   │   │   ├── tablePDF.tsx
     │   │       │   │   │   │   │   ├── uploadLoaderDocx.tsx
     │   │       │   │   │   │   │   ├── uploadLoaderODT.tsx
-    │   │       │   │   │   │   │   └── uploadLoaderPDF.tsx
+    │   │       │   │   │   │   │   └── uploadLoaderPDF.ts
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── ModalExport.tsx
     │   │       │   │   │   │   │   └── index.ts
+    │   │       │   │   │   │   ├── exporterPDF.ts
     │   │       │   │   │   │   ├── hooks
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   └── useExportXL.tsx
@@ -1302,12 +1346,20 @@
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── interlinkingLinkDocx.tsx
     │   │       │   │   │   │   │   ├── interlinkingLinkODT.tsx
-    │   │       │   │   │   │   │   └── interlinkingLinkPDF.tsx
+    │   │       │   │   │   │   │   ├── interlinkingLinkPDF.ts
+    │   │       │   │   │   │   │   ├── mentionSearchDocx.tsx
+    │   │       │   │   │   │   │   ├── mentionSearchODT.tsx
+    │   │       │   │   │   │   │   ├── mentionSearchPDF.ts
+    │   │       │   │   │   │   │   ├── userMentionDocx.tsx
+    │   │       │   │   │   │   │   ├── userMentionODT.tsx
+    │   │       │   │   │   │   │   └── userMentionPDF.ts
     │   │       │   │   │   │   ├── mappingDocx.tsx
     │   │       │   │   │   │   ├── mappingODT.ts
-    │   │       │   │   │   │   ├── mappingPDF.tsx
+    │   │       │   │   │   │   ├── mappingPDF.ts
     │   │       │   │   │   │   ├── types.ts
+    │   │       │   │   │   │   ├── userMentionAvatar.ts
     │   │       │   │   │   │   ├── utils.ts
+    │   │       │   │   │   │   ├── utils_doc_children.ts
     │   │       │   │   │   │   ├── utils_html.ts
     │   │       │   │   │   │   ├── utils_markdown.ts
     │   │       │   │   │   │   └── utils_print.ts
@@ -1498,6 +1550,7 @@
     │   │       │   │   │   ├── doc-tree
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── deleteAfterNumchild.test.tsx
+    │   │       │   │   │   │   │   ├── loadAfterNumchild.test.tsx
     │   │       │   │   │   │   │   └── utils.test.ts
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
@@ -1665,6 +1718,7 @@
     │   │       │   │   │   │   ├── RequestSerializer.test.tsx
     │   │       │   │   │   │   ├── SyncManager.test.tsx
     │   │       │   │   │   │   ├── service-worker-api.test.tsx
+    │   │       │   │   │   │   ├── service-worker.test.tsx
     │   │       │   │   │   │   ├── useOffline.test.tsx
     │   │       │   │   │   │   └── useSWRegister.test.tsx
     │   │       │   │   │   ├── conf.ts
@@ -1758,14 +1812,13 @@
     │   │       │   │   │   └── svgMock.tsx
     │   │       │   │   └── utils.tsx
     │   │       │   ├── types
-    │   │       │   │   ├── @ag-media
-    │   │       │   │   │   └── react-pdf-table.d.ts
     │   │       │   │   ├── components.ts
     │   │       │   │   └── next.ts
     │   │       │   └── utils
     │   │       │       ├── __tests__
     │   │       │       │   ├── string.test.ts
-    │   │       │       │   └── url.test.tsx
+    │   │       │       │   ├── url.test.tsx
+    │   │       │       │   └── version.test.ts
     │   │       │       ├── children.ts
     │   │       │       ├── index.ts
     │   │       │       ├── storages.ts
@@ -1773,7 +1826,8 @@
     │   │       │       ├── styleBuilder.ts
     │   │       │       ├── system.ts
     │   │       │       ├── url.ts
-    │   │       │       └── userAgent.ts
+    │   │       │       ├── userAgent.ts
+    │   │       │       └── version.ts
     │   │       ├── stylelint.config.js
     │   │       ├── tsconfig.json
     │   │       ├── vitest.config.ts
@@ -1817,6 +1871,7 @@
     │   │       ├── src
     │   │       │   ├── blockSpecs
     │   │       │   │   ├── Callout.ts
+    │   │       │   │   ├── DocChildren.ts
     │   │       │   │   ├── InterlinkingLinkInline.ts
     │   │       │   │   ├── Pdf.ts
     │   │       │   │   ├── UploadLoader.ts
@@ -1840,6 +1895,7 @@
     │   │       └── vitest.config.mts
     │   └── yarn.lock
     ├── helm
+    │   ├── README.md
     │   ├── env.d
     │   │   ├── dev
     │   │   │   ├── configuration
@@ -2005,4 +2061,4 @@
         ├── tsconfig.json
         ├── vitest.config.mts
         └── yarn.lock
-347 directories, 1736 files
+356 directories, 1783 files
