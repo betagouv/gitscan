@@ -309,6 +309,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20261015121833_remove_filiales
 │   │   │   └── migration.sql
+│   │   ├── 20261027094218_add_isagent
+│   │   │   └── migration.sql
+│   │   ├── 20261029114907_clean_taux_encadrement_cible
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -350,14 +354,14 @@
 │   │   ├── cpom.seed.ts
 │   │   ├── departements.seed.ts
 │   │   ├── dna.seed.ts
-│   │   ├── document-financier.ts
+│   │   ├── document-financier.seed.ts
 │   │   ├── evaluation.seed.ts
 │   │   ├── evenement-indesirable-grave.seed.ts
 │   │   ├── faq.seed.ts
 │   │   ├── file-upload.seed.ts
 │   │   ├── finess.seed.ts
 │   │   ├── form.seed.ts
-│   │   ├── indicateur-financier.ts
+│   │   ├── indicateur-financier.seed.ts
 │   │   ├── notification.seed.ts
 │   │   ├── operateur.seed.ts
 │   │   ├── rmu.seed.ts
@@ -424,7 +428,9 @@
 │   │   ├── 20260923-locate-adresses.ts
 │   │   ├── 20260929-migrate-roles-to-grants.ts
 │   │   ├── 20261006-end-cpom-structures-at-fermeture.ts
-│   │   └── 20261021-migrate-individual-email-patterns.ts
+│   │   ├── 20261021-migrate-individual-email-patterns.ts
+│   │   ├── 20261021-regional-cpoms-use-region.ts
+│   │   └── 20261027-mark-existing-agents.ts
 │   ├── postdeploy.sh
 │   ├── recurring-scripts
 │   │   ├── brevo-push-users.ts
@@ -484,7 +490,6 @@
 │   │   │   │   │   ├── Block.tsx
 │   │   │   │   │   ├── BlockSkeleton.tsx
 │   │   │   │   │   ├── BlockTitle.tsx
-│   │   │   │   │   ├── DashboardHeader.tsx
 │   │   │   │   │   ├── DashboardPagination.tsx
 │   │   │   │   │   ├── InitialisationActualisationRow.tsx
 │   │   │   │   │   ├── InitialisationsActualisationsBlock.tsx
@@ -710,7 +715,6 @@
 │   │   │   │       │   │   │   ├── AutoSaveStatus.tsx
 │   │   │   │       │   │   │   ├── FinalisationHeader.tsx
 │   │   │   │       │   │   │   ├── HeaderMainContent.tsx
-│   │   │   │       │   │   │   ├── StructureCallToActionHeader.tsx
 │   │   │   │       │   │   │   ├── StructureHeader.tsx
 │   │   │   │       │   │   │   ├── StructureHeaderActions.tsx
 │   │   │   │       │   │   │   ├── StructureHeaderModals.tsx
@@ -878,7 +882,6 @@
 │   │   │   │   │   ├── FileItem.tsx
 │   │   │   │   │   ├── Header.tsx
 │   │   │   │   │   ├── StructureName.tsx
-│   │   │   │   │   ├── UploadItem.tsx
 │   │   │   │   │   ├── Year.tsx
 │   │   │   │   │   └── forms
 │   │   │   │   │       ├── FormAdresses.tsx
@@ -933,6 +936,7 @@
 │   │   │   │   └── budget.repository.ts
 │   │   │   ├── contacts
 │   │   │   │   ├── contact.repository.ts
+│   │   │   │   ├── contact.service.ts
 │   │   │   │   └── contact.util.ts
 │   │   │   ├── controles
 │   │   │   │   ├── controle.repository.ts
@@ -989,6 +993,8 @@
 │   │   │   │   ├── file.repository.ts
 │   │   │   │   ├── file.service.ts
 │   │   │   │   └── route.ts
+│   │   │   ├── filters
+│   │   │   │   └── filters.service.ts
 │   │   │   ├── finesses
 │   │   │   │   ├── finess.repository.ts
 │   │   │   │   └── finess.util.ts
@@ -1013,6 +1019,8 @@
 │   │   │   │   ├── operateur.util.ts
 │   │   │   │   └── suggestions
 │   │   │   │       └── route.ts
+│   │   │   ├── regions
+│   │   │   │   └── region.repository.ts
 │   │   │   ├── statistiques
 │   │   │   │   ├── README.md
 │   │   │   │   ├── activite
@@ -1066,8 +1074,6 @@
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── actualisation.util.ts
 │   │   │   │   ├── route.ts
-│   │   │   │   ├── stats
-│   │   │   │   │   └── route.ts
 │   │   │   │   ├── structure.constants.ts
 │   │   │   │   ├── structure.db.type.ts
 │   │   │   │   ├── structure.repository.ts
@@ -1172,17 +1178,6 @@
 │   │   │   │   └── TimePeriodSelector.tsx
 │   │   │   ├── download
 │   │   │   │   └── DocumentDownloadDropdown.tsx
-│   │   │   ├── filters
-│   │   │   │   ├── Filters.tsx
-│   │   │   │   ├── FiltersBatis.tsx
-│   │   │   │   ├── FiltersDepartement.tsx
-│   │   │   │   ├── FiltersPanel.tsx
-│   │   │   │   ├── FiltersPlacesAutorisees.tsx
-│   │   │   │   ├── FiltersRegion.tsx
-│   │   │   │   ├── FiltersReset.tsx
-│   │   │   │   ├── FiltersTypes.tsx
-│   │   │   │   ├── FiltersTypesCheckbox.tsx
-│   │   │   │   └── LocationFiltersPanel.tsx
 │   │   │   ├── forms
 │   │   │   │   ├── AddressWithValidation.tsx
 │   │   │   │   ├── AnomalieMessage.tsx
@@ -1190,8 +1185,8 @@
 │   │   │   │   ├── AutoSave.tsx
 │   │   │   │   ├── ContractualisationHuda.tsx
 │   │   │   │   ├── DepartementsSelector.tsx
-│   │   │   │   ├── DropZone.tsx
 │   │   │   │   ├── EffectiveDateInput.tsx
+│   │   │   │   ├── FileUploadBox.tsx
 │   │   │   │   ├── FormWrapper.tsx
 │   │   │   │   ├── InputWithValidation.tsx
 │   │   │   │   ├── LeaveModificationModal.tsx
@@ -1203,6 +1198,7 @@
 │   │   │   │   ├── TransformationFakeSaver.tsx
 │   │   │   │   ├── TransformationFormController.tsx
 │   │   │   │   ├── Upload.tsx
+│   │   │   │   ├── UploadItem.tsx
 │   │   │   │   ├── UploadWithValidation.tsx
 │   │   │   │   ├── actesAdministratifs
 │   │   │   │   │   ├── ActeAdministratif.tsx
@@ -1282,16 +1278,16 @@
 │   │   │   │   │   │   ├── getIndicateurFinancierTableLines.tsx
 │   │   │   │   │   │   └── getIndicateurFinancierTablePreHeading.tsx
 │   │   │   │   │   └── documents
+│   │   │   │   │       ├── AutreDocumentFinancierRow.tsx
+│   │   │   │   │       ├── AutresDocumentsFinanciers.tsx
 │   │   │   │   │       ├── Date303.tsx
+│   │   │   │   │       ├── DocumentFinancierBox.tsx
 │   │   │   │   │       ├── DocumentsFinanciers.tsx
 │   │   │   │   │       ├── DocumentsFinanciersAccordion.tsx
-│   │   │   │   │       ├── DocumentsFinanciersCategory.tsx
 │   │   │   │   │       ├── DocumentsFinanciersCheckboxIsInCpom.tsx
 │   │   │   │   │       ├── DocumentsFinanciersCommentaire.tsx
-│   │   │   │   │       ├── DocumentsFinanciersItem.tsx
-│   │   │   │   │       ├── DocumentsFinanciersList.tsx
+│   │   │   │   │       ├── DocumentsFinanciersGrid.tsx
 │   │   │   │   │       ├── FieldSetYearlyDocumentsFinanciers.tsx
-│   │   │   │   │       ├── YearlyFileUpload.tsx
 │   │   │   │   │       └── documentsStructures.ts
 │   │   │   │   ├── hebergement
 │   │   │   │   │   ├── AdressImporter.tsx
@@ -1324,11 +1320,6 @@
 │   │   │   │       ├── TypePlaceCell.tsx
 │   │   │   │       ├── TypePlaceLine.tsx
 │   │   │   │       └── getTypePlaceEditHeadings.tsx
-│   │   │   ├── header-filters
-│   │   │   │   ├── FilterDropdown.tsx
-│   │   │   │   ├── FilterOperateur.tsx
-│   │   │   │   ├── FilterTypeStructure.tsx
-│   │   │   │   └── HeaderFilters.tsx
 │   │   │   ├── lists
 │   │   │   │   ├── ListLoader.tsx
 │   │   │   │   ├── ListTableHeadings.tsx
@@ -1414,7 +1405,6 @@
 │   │   │   ├── useStatistiquesPdfExport.ts
 │   │   │   ├── useStoredQueryParams.ts
 │   │   │   ├── useStructureSelections.ts
-│   │   │   ├── useStructureStats.ts
 │   │   │   ├── useStructures.ts
 │   │   │   ├── useStructuresSelection.ts
 │   │   │   ├── useTransformationFormHandling.ts
@@ -1477,6 +1467,17 @@
 │   │       ├── zodConfig.ts
 │   │       ├── zodCustomFields.ts
 │   │       └── zone.util.ts
+│   ├── components
+│   │   ├── CallToActionBanner.tsx
+│   │   ├── PageHeader.tsx
+│   │   └── header-filters
+│   │       ├── FilterDropdown.tsx
+│   │       ├── FilterOperateur.tsx
+│   │       ├── FilterTypeStructure.tsx
+│   │       ├── FiltersDepartement.tsx
+│   │       ├── FiltersRegion.tsx
+│   │       ├── FiltersTypesCheckbox.tsx
+│   │       └── HeaderFilters.tsx
 │   ├── config
 │   │   ├── acte-administratif.config.ts
 │   │   ├── budget.config.ts
@@ -1534,7 +1535,8 @@
 │   │   └── prisma.ts
 │   ├── proxy
 │   │   ├── auth-config.ts
-│   │   └── auth-util.ts
+│   │   ├── auth-util.ts
+│   │   └── filters.ts
 │   ├── proxy.ts
 │   ├── schemas
 │   │   ├── api
@@ -1639,6 +1641,9 @@
 │   │   └── utils.type.ts
 │   ├── utils
 │   │   ├── dashboardOrigin.util.ts
+│   │   ├── document-financier-form.util.ts
+│   │   ├── file-deletion.util.ts
+│   │   ├── filters.util.ts
 │   │   ├── region.util.ts
 │   │   ├── statistiques.util.ts
 │   │   └── structure-type.util.ts
@@ -1722,7 +1727,6 @@
 │   │       │       └── type-places
 │   │       │           └── page.test.tsx
 │   │       ├── _components
-│   │       │   ├── Filters.test.tsx
 │   │       │   ├── ListTableHeadings.test.tsx
 │   │       │   └── OrderButton.test.tsx
 │   │       └── transformation
@@ -1762,10 +1766,13 @@
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
 │   │   │   └── anomalie.repository.test.ts
+│   │   ├── contacts
+│   │   │   └── contact.service.test.ts
 │   │   ├── cpoms
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
 │   │   │   ├── cpom.repository.test.ts
+│   │   │   ├── cpom.service.test.ts
 │   │   │   ├── cpom.util.test.ts
 │   │   │   └── route.test.ts
 │   │   ├── dashboard
@@ -1788,6 +1795,8 @@
 │   │   │   │   └── route.test.ts
 │   │   │   ├── file.service.test.ts
 │   │   │   └── route.test.ts
+│   │   ├── filters
+│   │   │   └── filters.service.test.ts
 │   │   ├── notifications
 │   │   │   ├── notification.repository.test.ts
 │   │   │   └── notification.util.test.ts
@@ -1820,8 +1829,6 @@
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
 │   │   │   ├── route.test.ts
-│   │   │   ├── stats
-│   │   │   │   └── route.test.ts
 │   │   │   ├── structure-history.util.test.ts
 │   │   │   ├── structure.repository.test.ts
 │   │   │   ├── structure.util.test.ts
@@ -1840,16 +1847,11 @@
 │   │   └── components
 │   │       ├── common
 │   │       │   └── PlacesWithPercentage.test.tsx
-│   │       ├── filters
-│   │       │   └── FiltersDepartement.test.tsx
-│   │       ├── forms
-│   │       │   └── finance
-│   │       │       └── documents
-│   │       │           └── documentsStructures.test.ts
-│   │       └── header-filters
-│   │           ├── FilterDropdown.test.tsx
-│   │           ├── FilterOperateur.test.tsx
-│   │           └── FilterTypeStructure.test.tsx
+│   │       └── forms
+│   │           └── finance
+│   │               └── documents
+│   │                   ├── DocumentsFinanciersGrid.test.tsx
+│   │                   └── documentsStructures.test.ts
 │   ├── components
 │   │   ├── ErrorToast.test.tsx
 │   │   ├── Menu.test.tsx
@@ -1875,6 +1877,11 @@
 │   │   │   ├── TransformationFormController.test.tsx
 │   │   │   └── transformation-types
 │   │   │       └── HudaTransformationForm.test.tsx
+│   │   ├── header-filters
+│   │   │   ├── FilterDropdown.test.tsx
+│   │   │   ├── FilterOperateur.test.tsx
+│   │   │   ├── FilterTypeStructure.test.tsx
+│   │   │   └── FiltersDepartement.test.tsx
 │   │   ├── map
 │   │   │   └── CommunePopupContent.test.tsx
 │   │   └── transformation-markers
@@ -2055,11 +2062,13 @@
 │   │   └── casl
 │   │       └── abilities.test.ts
 │   ├── proxy
+│   │   ├── filters.test.ts
 │   │   └── proxy.test.ts
 │   ├── schemas
 │   │   └── forms
 │   │       ├── base
 │   │       │   ├── dna.schema.test.ts
+│   │       │   ├── documentFinancier.schema.test.ts
 │   │       │   ├── evaluation.schema.test.ts
 │   │       │   ├── finess.schema.test.ts
 │   │       │   └── indicateurFinancier.schema.test.ts
@@ -2111,12 +2120,14 @@
 │   │   ├── default-values.util.test.ts
 │   │   ├── eig.util.test.ts
 │   │   ├── evaluation.util.test.ts
+│   │   ├── filters.util.test.ts
 │   │   ├── form-step.util.test.ts
 │   │   ├── get-error-messages.util.test.ts
 │   │   ├── getInitialAntennes.test.ts
 │   │   ├── indicateur-financier.util.test.ts
 │   │   ├── list.util.test.ts
 │   │   ├── math.util.test.ts
+│   │   ├── now.util.test.ts
 │   │   ├── number.util.test.ts
 │   │   ├── pdf-export.util.test.ts
 │   │   ├── phone.util.test.ts
@@ -2144,4 +2155,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-538 directories, 1608 files
+541 directories, 1616 files

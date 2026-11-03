@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/betagouv/bhasile",
   "name": "bhasile",
-  "description": "Application de pilotage du parc de logements pour les demandeurs d'asile. Elle permet le suivi des structures, la gestion des statistiques et la visualisation cartographique pour les agents de l'administration.",
+  "description": "Application de pilotage du parc de logements pour les demandeurs d'asile. Elle permet la gestion des structures, la visualisation cartographique et le suivi statistique des données.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
-    "Statistiques & Rapports",
     "Visualisation de données & Cartographie",
+    "Statistiques & Rapports",
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches",
-    "Tableaux & Affichage"
+    "Tableaux & Affichage",
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,26 +21,25 @@
     "MapLibre GL",
     "MinIO",
     "NextAuth.js",
-    "Chartist",
+    "@codegouvfr/react-dsfr",
     "Zod",
-    "CASL"
+    "Chartist"
   ],
   "components": [
     "React / Next.js",
-    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
+    "PostgreSQL & SQL",
     "Design System (DSFR & UI libs)",
-    "ORM & Accès aux données",
     "Tests",
-    "Authentification (composant)",
     "Stockage objet",
-    "Scripts & Utilitaires"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "sso",
       "mfa",
-      "session"
+      "session",
+      "jwt"
     ],
     "providers": [
       "ProConnect"
@@ -53,16 +52,18 @@
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-10-26T16:53:53+01:00",
-  "status": "active",
+  "lastActivity": "2026-11-02T09:51:52+01:00",
+  "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
     "React & Next.js",
     "Bases de données SQL",
-    "Design System & UI",
     "SIG & Géospatial",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Design System & UI",
+    "Sécurité & Auth"
   ]
 }
