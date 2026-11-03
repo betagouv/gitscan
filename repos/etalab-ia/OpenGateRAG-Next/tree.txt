@@ -1,0 +1,141 @@
+.
+├── .dockerignore
+├── .env.example
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── ⚙️-feature---improvements---chore.md
+│   │   └── 🐞-bug-report.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── badges
+│   │   └── coverage.json
+│   ├── semgrep-rules.yml
+│   ├── tests
+│   │   ├── compose.yml
+│   │   ├── config.opengatellm.yml
+│   │   ├── e2e
+│   │   │   ├── assets
+│   │   │   │   ├── html.html
+│   │   │   │   ├── markdown.md
+│   │   │   │   └── pdf.pdf
+│   │   │   └── conftest.py
+│   │   ├── postgres-entrypoint.sh
+│   │   └── start_services.sh
+│   └── workflows
+│       ├── build_and_deploy.yml
+│       ├── run_tests.yml
+│       ├── semgrep.yml
+│       └── trivy-scan.yml
+├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md -> AGENTS.md
+├── LICENSE
+├── README.md
+├── compose.example.yml
+├── config.example.yml
+├── opengaterag
+│   ├── __init__.py
+│   ├── api
+│   │   ├── Dockerfile
+│   │   ├── __init__.py
+│   │   ├── alembic
+│   │   │   ├── env.py
+│   │   │   ├── script.py.mako
+│   │   │   └── versions
+│   │   │       ├── 2026_08_19_1215-3c24be6d0557_initial.py
+│   │   │       ├── 2026_08_19_1607-6d72bd35be84_remove_organization_table.py
+│   │   │       └── 2026_10_28_1659-7bda2162bbbc_drop_collection_user_foreign_key.py
+│   │   ├── alembic.ini
+│   │   ├── app.py
+│   │   ├── dependencies.py
+│   │   ├── domain
+│   │   │   ├── __init__.py
+│   │   │   ├── collection
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── _collectionquery.py
+│   │   │   │   ├── _collectionrepository.py
+│   │   │   │   ├── entities.py
+│   │   │   │   ├── errors.py
+│   │   │   │   └── views.py
+│   │   │   └── user
+│   │   │       ├── __init__.py
+│   │   │       ├── _authenticateduserquery.py
+│   │   │       ├── _userrepository.py
+│   │   │       ├── entities.py
+│   │   │       ├── errors.py
+│   │   │       └── views.py
+│   │   ├── infrastructure
+│   │   │   ├── __init__.py
+│   │   │   ├── configuration.py
+│   │   │   ├── context.py
+│   │   │   ├── fastapi
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── accesscontroller.py
+│   │   │   │   ├── endpoints
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── collections.py
+│   │   │   │   │   └── exceptions.py
+│   │   │   │   ├── routes.py
+│   │   │   │   └── schemas
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── collections.py
+│   │   │   ├── logging.py
+│   │   │   ├── opengatellm
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── _opengatellmauthenticateduserquery.py
+│   │   │   └── postgres
+│   │   │       ├── __init__.py
+│   │   │       ├── _postgrescollectionquery.py
+│   │   │       ├── _postgrescollectionrepository.py
+│   │   │       ├── _postgresuserrepository.py
+│   │   │       └── models.py
+│   │   ├── lifespan.py
+│   │   ├── main.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── integration
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── endpoints
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── conftest.py
+│   │   │   │   │   ├── test_create_collection.py
+│   │   │   │   │   ├── test_get_collections.py
+│   │   │   │   │   ├── test_get_one_collection.py
+│   │   │   │   │   └── test_update_collection.py
+│   │   │   │   └── postgres
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── test_postgrescollectionquery.py
+│   │   │   │       ├── test_postgrescollectionrepository.py
+│   │   │   │       └── test_postgresuserrepository.py
+│   │   │   └── unit
+│   │   │       ├── __init__.py
+│   │   │       ├── domain
+│   │   │       │   ├── __init__.py
+│   │   │       │   └── collection
+│   │   │       │       ├── __init__.py
+│   │   │       │       └── test_collectionentities.py
+│   │   │       └── use_case
+│   │   │           ├── __init__.py
+│   │   │           └── collections
+│   │   │               ├── __init__.py
+│   │   │               ├── test_createcollectionusecase.py
+│   │   │               ├── test_getcollectionsusecase.py
+│   │   │               ├── test_getonecollectionusecase.py
+│   │   │               └── test_updatecollectionusecase.py
+│   │   └── use_cases
+│   │       ├── __init__.py
+│   │       └── collections
+│   │           ├── __init__.py
+│   │           ├── _createcollectionusecase.py
+│   │           ├── _getcollectionsusecase.py
+│   │           ├── _getonecollectionusecase.py
+│   │           └── _updatecollectionusecase.py
+│   └── docs
+│       ├── __init__.py
+│       ├── app.py
+│       └── openapi.py
+├── pyproject.toml
+└── scripts
+    ├── gunicorn.conf.py
+    └── startup_api.sh
+34 directories, 106 files
