@@ -1,34 +1,39 @@
 {
   "url": "https://github.com/betagouv/pass-sport",
   "name": "pass-sport",
-  "description": "Plateforme permettant de vérifier l'éligibilité au Pass Sport et de trouver des clubs sportifs. Elle intègre un parcours utilisateur via FranceConnect et des outils de traitement de données pour l'administration.",
+  "description": "Plateforme de gestion du dispositif Pass Sport permettant aux bénéficiaires de vérifier leur éligibilité et de trouver des clubs, tout en offrant des outils d'administration pour le suivi des dossiers.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
-    "Aides & Éligibilité",
-    "Recherche & Filtres",
     "Formulaires & Démarches",
-    "Statistiques & Rapports"
+    "Recherche & Filtres",
+    "Administration & Backoffice",
+    "Aides & Éligibilité",
+    "Gestion des établissements & Structures"
   ],
-  "audience": "Grand public",
+  "audience": "Grand public, Associations et Agents de l'Administration",
   "dependencies": [
     "Next.js",
     "React",
     "TypeScript",
     "Python",
     "Pandas",
-    "DSFR",
+    "Drizzle ORM",
+    "Zod",
     "Sentry",
     "Matomo",
-    "Ansible",
-    "Scalingo"
+    "Crisp",
+    "Scalingo",
+    "Docker"
   ],
   "components": [
     "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
+    "Docker & Conteneurs",
     "Design System (DSFR & UI libs)",
     "CI/CD & Déploiement",
+    "Authentification (composant)",
     "API REST & GraphQL"
   ],
   "auth": {
@@ -40,20 +45,22 @@
       "FranceConnect"
     ]
   },
-  "tests": "npm run test",
+  "tests": "Jest, Vitest, Testcontainers",
   "workflows": [
     "Scalingo review apps",
-    "Ansible deployment"
+    "Scalingo staging deployment"
   ],
-  "lastActivity": "2026-10-19T12:26:22+02:00",
+  "lastActivity": "2026-11-02T17:38:32+01:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
     "Python",
+    "Docker & Conteneurs",
     "Accessibilité",
-    "Design System & UI"
+    "CI/CD & GitHub Actions"
   ]
 }

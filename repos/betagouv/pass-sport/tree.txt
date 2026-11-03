@@ -111,53 +111,76 @@
 │   │   │   ├── README.md
 │   │   │   ├── load_dashboard.sql
 │   │   │   └── run_dashboard.sh
+│   │   ├── grist-dn-pipeline
+│   │   │   ├── README.md
+│   │   │   ├── apercu.py
+│   │   │   ├── apercu_dn.sh
+│   │   │   ├── apercu_grist.sh
+│   │   │   ├── apercu_grist_dn.sh
+│   │   │   ├── dn_client.py
+│   │   │   ├── grist_client.py
+│   │   │   ├── grist_dn_pipeline.py
+│   │   │   ├── mapping.py
+│   │   │   ├── match_grist_dn.sql
+│   │   │   ├── run_grist_dn.sh
+│   │   │   ├── test_apercu.py
+│   │   │   ├── test_clients.py
+│   │   │   ├── test_grist_dn_pipeline.py
+│   │   │   ├── test_match_grist_dn.py
+│   │   │   └── test_run_grist_dn.py
 │   │   ├── linkmobility
 │   │   │   └── 1_email_campaign.ipynb
-│   │   └── partners
-│   │       ├── clean_miquelon.ipynb
-│   │       ├── cnaf
-│   │       │   ├── 10_06_2026_clean_cnaf_aeeh.ipynb
-│   │       │   ├── 10_06_2026_cnaf_aeeh_deduplication.ipynb
-│   │       │   ├── clean_cnaf_1_before_qf_batch.ipynb
-│   │       │   ├── clean_cnaf_2_after_qf_batch.ipynb
-│   │       │   ├── clean_cnaf_2a_aah_aeeh.ipynb
-│   │       │   ├── clean_cnaf_lib.py
-│   │       │   ├── reconcile_cnaf_lib.py
-│   │       │   ├── reconcile_cnaf_raw_with_codes.ipynb
-│   │       │   ├── test_clean_cnaf_lib.py
-│   │       │   └── test_reconcile_cnaf_lib.py
-│   │       ├── cnous
-│   │       │   ├── clean_cnous.ipynb
-│   │       │   ├── clean_cnous_lib.py
-│   │       │   └── test_clean_cnous_lib.py
-│   │       ├── franceconnect
-│   │       │   ├── README.md
-│   │       │   ├── check_confirmed.sql
-│   │       │   ├── check_writeback.sql
-│   │       │   ├── clean_fc_lib.py
-│   │       │   ├── clean_franceconnect.ipynb
-│   │       │   ├── export_eligible_pending.sql
-│   │       │   ├── fc_pipeline.py
-│   │       │   ├── match_beneficiaires.sql
-│   │       │   ├── run_fc_pipeline.sh
-│   │       │   ├── test_clean_fc_lib.py
-│   │       │   ├── test_fc_pipeline.py
-│   │       │   ├── test_match_beneficiaires.py
-│   │       │   ├── writeback_codes.ipynb
-│   │       │   ├── writeback_confirmed.sql
-│   │       │   └── writeback_verdict.sql
-│   │       ├── generate_codes_lib.py
-│   │       ├── generate_new_codes.ipynb
-│   │       ├── msa
-│   │       │   ├── clean_msa_1_before_qf_batch.ipynb
-│   │       │   ├── clean_msa_2_after_qf_batch.ipynb
-│   │       │   ├── clean_msa_2a_aah_aeeh.ipynb
-│   │       │   ├── clean_msa_lib.py
-│   │       │   └── test_clean_msa_lib.py
-│   │       ├── partners_lib.py
-│   │       ├── test_generate_codes_lib.py
-│   │       ├── test_partners_lib.py
-│   │       └── v_pays_territoire_2026.csv
+│   │   ├── partners
+│   │   │   ├── clean_miquelon.ipynb
+│   │   │   ├── cnaf
+│   │   │   │   ├── 10_06_2026_clean_cnaf_aeeh.ipynb
+│   │   │   │   ├── 10_06_2026_cnaf_aeeh_deduplication.ipynb
+│   │   │   │   ├── clean_cnaf_1_before_qf_batch.ipynb
+│   │   │   │   ├── clean_cnaf_2_after_qf_batch.ipynb
+│   │   │   │   ├── clean_cnaf_2a_aah_aeeh.ipynb
+│   │   │   │   ├── clean_cnaf_lib.py
+│   │   │   │   ├── reconcile_cnaf_lib.py
+│   │   │   │   ├── reconcile_cnaf_raw_with_codes.ipynb
+│   │   │   │   ├── test_clean_cnaf_lib.py
+│   │   │   │   └── test_reconcile_cnaf_lib.py
+│   │   │   ├── cnous
+│   │   │   │   ├── clean_cnous.ipynb
+│   │   │   │   ├── clean_cnous_lib.py
+│   │   │   │   └── test_clean_cnous_lib.py
+│   │   │   ├── franceconnect
+│   │   │   │   ├── README.md
+│   │   │   │   ├── check_confirmed.sql
+│   │   │   │   ├── check_writeback.sql
+│   │   │   │   ├── clean_fc_lib.py
+│   │   │   │   ├── clean_franceconnect.ipynb
+│   │   │   │   ├── export_eligible_pending.sql
+│   │   │   │   ├── fc_pipeline.py
+│   │   │   │   ├── match_beneficiaires.sql
+│   │   │   │   ├── run_fc_pipeline.sh
+│   │   │   │   ├── test_clean_fc_lib.py
+│   │   │   │   ├── test_fc_pipeline.py
+│   │   │   │   ├── test_match_beneficiaires.py
+│   │   │   │   ├── writeback_codes.ipynb
+│   │   │   │   ├── writeback_confirmed.sql
+│   │   │   │   └── writeback_verdict.sql
+│   │   │   ├── generate_codes_lib.py
+│   │   │   ├── generate_new_codes.ipynb
+│   │   │   ├── msa
+│   │   │   │   ├── clean_msa_1_before_qf_batch.ipynb
+│   │   │   │   ├── clean_msa_2_after_qf_batch.ipynb
+│   │   │   │   ├── clean_msa_2a_aah_aeeh.ipynb
+│   │   │   │   ├── clean_msa_lib.py
+│   │   │   │   └── test_clean_msa_lib.py
+│   │   │   ├── partners_lib.py
+│   │   │   ├── test_generate_codes_lib.py
+│   │   │   ├── test_partners_lib.py
+│   │   │   └── v_pays_territoire_2026.csv
+│   │   └── support-pipeline
+│   │       ├── README.md
+│   │       ├── aah_direct_pipeline.py
+│   │       ├── run_aah_direct.sh
+│   │       ├── test_aah_direct_pipeline.py
+│   │       └── test_run_aah_direct.py
 │   ├── README.md
 │   ├── pytest.ini
 │   ├── requirements.txt
@@ -503,6 +526,7 @@
 │   │   │   │   ├── communes-client.ts
 │   │   │   │   ├── communes.spec.ts
 │   │   │   │   ├── communes.ts
+│   │   │   │   ├── dashboard-access.ts
 │   │   │   │   ├── dashboard.ts
 │   │   │   │   ├── database.ts
 │   │   │   │   ├── eligibility-job.ts
@@ -515,13 +539,14 @@
 │   │   │   │   └── relance.ts
 │   │   │   ├── sitemap.ts
 │   │   │   ├── tableau-de-bord
+│   │   │   │   ├── [cle]
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── components
 │   │   │   │   │   ├── Graphiques.tsx
 │   │   │   │   │   ├── TableauDetail.tsx
 │   │   │   │   │   └── graphiques.module.scss
 │   │   │   │   ├── model.test.ts
 │   │   │   │   ├── model.ts
-│   │   │   │   ├── page.tsx
 │   │   │   │   └── style.module.scss
 │   │   │   ├── tac-dsfr.scss
 │   │   │   ├── utilities.module.scss
@@ -780,10 +805,14 @@
 │   │   ├── helpers
 │   │   │   └── builders
 │   │   │       └── confirm-response-body.ts
+│   │   ├── proxy.test.ts
 │   │   ├── services
+│   │   │   ├── dashboard-access.test.ts
 │   │   │   └── lca-job-id.test.ts
 │   │   └── utils
-│   │       └── cookie.test.ts
+│   │       ├── cookie.test.ts
+│   │       ├── dashboard-url.test.ts
+│   │       └── faq.test.ts
 │   ├── tsconfig.json
 │   ├── types
 │   │   ├── City.ts
@@ -802,6 +831,7 @@
 │       ├── club-finder.ts
 │       ├── cookie.ts
 │       ├── crisp.ts
+│       ├── dashboard-url.ts
 │       ├── date.ts
 │       ├── decryption.ts
 │       ├── dom.ts
@@ -921,6 +951,7 @@
     │       ├── rate-gate-probe.ts
     │       ├── rate-pacer.ts
     │       ├── run-qf-batch.sh
+    │       ├── send-code-direct-aah.ts
     │       ├── send-test-email.ts
     │       └── split-csv.sh
     ├── test
@@ -952,9 +983,10 @@
     │       ├── qf-params.test.ts
     │       ├── rate-gate.test.ts
     │       ├── rate-pacer.test.ts
+    │       ├── send-code-direct-aah.test.ts
     │       ├── sequence.test.ts
     │       └── verdicts.test.ts
     ├── tsconfig.build.json
     ├── tsconfig.json
     └── vitest.config.ts
-228 directories, 731 files
+231 directories, 760 files
