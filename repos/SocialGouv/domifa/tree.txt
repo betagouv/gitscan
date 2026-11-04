@@ -593,6 +593,18 @@
 │   │   │   │       └── xlRenderer.ts
 │   │   │   ├── instrument.ts
 │   │   │   ├── modules
+│   │   │   │   ├── antivirus
+│   │   │   │   │   ├── AntivirusUnavailableError.ts
+│   │   │   │   │   ├── antivirus-file.interceptor.spec.ts
+│   │   │   │   │   ├── antivirus-file.interceptor.ts
+│   │   │   │   │   ├── antivirus-storage.engine.spec.ts
+│   │   │   │   │   ├── antivirus-storage.engine.ts
+│   │   │   │   │   ├── antivirus.constants.ts
+│   │   │   │   │   ├── antivirus.module.ts
+│   │   │   │   │   ├── antivirus.service.spec.ts
+│   │   │   │   │   ├── antivirus.service.ts
+│   │   │   │   │   ├── antivirus.types.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── app-logs
 │   │   │   │   │   ├── app-log-security-counters.ts
 │   │   │   │   │   ├── app-log-security-user-resolver.ts
@@ -608,6 +620,7 @@
 │   │   │   │   │       ├── app-log-context.types.ts
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── contact-support
+│   │   │   │   │   ├── CONTACT_SUPPORT_FILE_MIME_TYPES.const.ts
 │   │   │   │   │   ├── ContactSupport.type.ts
 │   │   │   │   │   ├── contact-support.controller.spec.ts
 │   │   │   │   │   ├── contact-support.controller.ts
@@ -1003,6 +1016,7 @@
 │   │   │   │   │   ├── agenda.controller.ts
 │   │   │   │   │   ├── export-structure-usagers.controller.ts
 │   │   │   │   │   ├── import
+│   │   │   │   │   │   ├── IMPORT_FILE_MIME_TYPES.const.ts
 │   │   │   │   │   │   ├── ImportProcessTracker.type.ts
 │   │   │   │   │   │   ├── import.controller.security-tests.ts
 │   │   │   │   │   │   ├── import.controller.spec.ts
@@ -1314,6 +1328,7 @@
 │   │   │   │       ├── ImportPreviewColumn.interface.ts
 │   │   │   │       ├── ImportPreviewRow.interface.ts
 │   │   │   │       ├── ImportPreviewTable.interface.ts
+│   │   │   │       ├── ImportUsagersResponse.interface.ts
 │   │   │   │       └── index.ts
 │   │   │   ├── index.ts
 │   │   │   ├── interactions
@@ -1483,6 +1498,7 @@
 │   │   │   │       └── index.ts
 │   │   │   ├── structure-doc
 │   │   │   │   ├── constants
+│   │   │   │   │   ├── ANTIVIRUS_ERROR_LABELS.const.ts
 │   │   │   │   │   ├── CERFA_DOC_TYPES.const.ts
 │   │   │   │   │   ├── DOCUMENT_EXTENSION_LABELS.const.ts
 │   │   │   │   │   ├── STRUCTURE_CUSTOM_DOCS_AVAILABLE.const.ts
@@ -1499,6 +1515,7 @@
 │   │   │   │   │   ├── StructureDoc.interface.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── types
+│   │   │   │       ├── AntivirusErrorCode.type.ts
 │   │   │   │       ├── StructureCustomDocType.type.ts
 │   │   │   │       ├── UploadType.type.ts
 │   │   │   │       └── index.ts
@@ -1537,6 +1554,8 @@
 │   │   │   ├── support-mode
 │   │   │   │   ├── constants
 │   │   │   │   │   ├── SUPPORT_ATTACHMENT_DURATION_MS.const.ts
+│   │   │   │   │   ├── SUPPORT_MODE_ALLOWED_EMAIL_DOMAINS.const.spec.ts
+│   │   │   │   │   ├── SUPPORT_MODE_ALLOWED_EMAIL_DOMAINS.const.ts
 │   │   │   │   │   ├── SUPPORT_SESSION_LABELS.const.ts
 │   │   │   │   │   ├── SUPPORT_SESSION_REASON_LENGTH.const.ts
 │   │   │   │   │   └── index.ts
@@ -2205,6 +2224,7 @@
 │   │   │   │   │   │   │   ├── custom-toast.service.spec.ts
 │   │   │   │   │   │   │   ├── custom-toast.service.ts
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── loading.constants.ts
 │   │   │   │   │   │   │   ├── loading.service.spec.ts
 │   │   │   │   │   │   │   ├── loading.service.ts
 │   │   │   │   │   │   │   ├── safe-storage.service.ts
@@ -2876,6 +2896,7 @@
 │   │   │   │       │   └── sun.svg
 │   │   │   │       └── system
 │   │   │   │           └── system.svg
+│   │   │   ├── dsfr-config.js
 │   │   │   ├── environments
 │   │   │   │   ├── AppEnvironment.type.ts
 │   │   │   │   ├── environment.prod.ts
@@ -3915,4 +3936,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-906 directories, 3011 files
+907 directories, 3031 files

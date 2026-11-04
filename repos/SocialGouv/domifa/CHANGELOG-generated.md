@@ -1,32 +1,34 @@
-## Changelog : domifa (30 derniers jours, au 27 octobre 2026)
+## Changelog : domifa (30 derniers jours, au 03 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par l'introduction d'un mode support pour faciliter l'assistance administrative, le renforcement des politiques de sécurité des comptes (gestion des mots de passe, audit des accès) et une modernisation de l'interface utilisateur, notamment sur les pages de connexion et la navigation.
+Ce mois-ci, le projet a franchi une étape importante avec l'introduction d'un "mode support", permettant aux administrateurs d'assister les utilisateurs en consultant les interfaces en lecture seule sans risque de modification accidentelle. La sécurité a été considérablement renforcée par l'intégration systématique d'un antivirus pour le scan des fichiers importés et une gestion plus stricte des mots de passe. Enfin, l'interface utilisateur a été modernisée, notamment sur les pages de connexion et de gestion des usagers.
 
 ### Évolutions fonctionnelles
-- **Nouveau mode support** : déploiement d'un mode permettant aux administrateurs d'assister les utilisateurs avec des restrictions de sécurité (formulaires en lecture seule, désactivation de l'export des données, gestion de sessions de support) ([#4339](https://github.com/SocialGouv/domifa/pull/4339), [#4323](https://github.com/SocialGouv/domifa/pull/4323)).
-- **Sécurité et conformité** : 
-    - Renforcement de l'audit des accès.
-    - Nouvelles politiques de mots de passe : renouvellement forcé après une période d'inactivité, historique des mots de passe et expiration fixée à 60 mois.
-- **Expérience utilisateur (UX)** : 
-    - Refonte visuelle des pages de connexion (nouveaux en-têtes, logos et menus déroulants).
-    - Amélioration de la navigation, notamment dans la page d'historique ([#4318](https://github.com/SocialGouv/domifa/pull/4318)).
-    - Mise à jour de la charte graphique (couleurs des boutons et titres).
-- **Gestion des usagers** : 
-    - Amélioration de la recherche partielle des usagers ([#4341](https://github.com/SocialGouv/domifa/pull/4341)).
-    - Amélioration de la gestion des bénéficiaires de famille ([#4291](https://github.com/SocialGouv/domifa/pull/4291)).
-- **Administration** : mise à jour des informations de contact et possibilité de créer des super-administrateurs via des domaines d'e-mails autorisés.
+- **Introduction du mode support** : mise en place d'un mode de consultation permettant de visualiser les formulaires, les paramètres et les listes d'export sans possibilité de modification ou de désactivation de boutons ([#4334](https://github.com/SocialGouv/domifa/pull/4334), [#4339](https://github.com/SocialGouv/domifa/pull/4339), [#4340](https://github.com/SocialGouv/domifa/pull/4340)).
+- **Sécurité des fichiers** : les utilisateurs sont désormais informés en temps réel via le formulaire de contact en cas de détection de menace par l'antivirus.
+- **Gestion des accès et mots de passe** : 
+    - Mise en place du renouvellement obligatoire du mot de passe après une période d'inactivité.
+    - Instauration d'une expiration automatique des mots de passe tous les 60 mois.
+    - Possibilité de créer des comptes super-administrateurs via des domaines d'e-mails autorisés.
+- **Amélioration de l'interface (UI)** :
+    - Refonte visuelle de la page de connexion (en-tête, couleurs et ajout d'un menu déroulant pour choisir le portail).
+    - Optimisation de l'alignement des formulaires d'inscription ([#4328](https://github.com/SocialGouv/domifa/pull/4328)).
+    - Mise à jour de la navigation et de l'affichage dans la page d'historique ([#4318](https://github.com/SocialGouv/domifa/pull/4318)).
+- **Fiabilité des données** : amélioration de la synchronisation de la liste des usagers pour garantir que les informations affichées sont toujours à jour avec le serveur.
 
 ### Évolutions techniques
-- **Sécurité et données** : 
-    - Implémentation des UUID v7 pour les bénéficiaires.
-    - Normalisation des données (noms et prénoms) et durcissement des endpoints de l'API usagers.
-- **Infrastructure et CI/CD** : 
-    - Migration vers Node.js 24.
-    - Optimisation des pipelines GitLab CI/CD et des images de runtime.
-- **Backend** : 
-    - Correction de la gestion des types (parsing des IDs en entiers dans les DTO et paramètres de route).
-    - Fiabilisation de la synchronisation des données via le mécanisme `lastSync`.
+- **Sécurité et protection** :
+    - Intégration de ClamAV pour le scan systématique des pièces jointes (formulaire de contact) et des fichiers d'importation des usagers.
+    - Renforcement de la validation des fichiers (vérification du type réel avant scan) et limitation de la taille des uploads.
+    - Amélioration de la politique de sécurité du contenu (CSP) sur le frontend.
+- **Architecture et données** :
+    - Migration vers l'utilisation d'identifiants uniques (UUID v7) pour les bénéficiaires et les ayants droit pour une meilleure sécurité.
+    - Correction de la gestion des types de données (parsing des entiers) dans les routes et les DTOs pour éviter les erreurs de traitement.
+    - Amélioration de la recherche d'usagers et de la gestion des résultats partiels ([#4341](https://github.com/SocialGouv/domifa/pull/4341)).
+- **Infrastructure et CI/CD** :
+    - Mise à jour de l'environnement vers Node.js 24.
+    - Optimisation des pipelines GitLab CI/CD et de la gestion des images de runtime.
 
 ### Autres changements
-- Mise à jour du contenu des actualités de la plateforme.
+- Nettoyage des anciennes migrations de base de données déjà appliquées en production.
+- Mise à jour du fichier d'actualités (`news.json`).

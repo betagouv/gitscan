@@ -1,3 +1,42 @@
+## [2.290.3](https://github.com/SocialGouv/domifa/compare/v2.290.2...v2.290.3) (2026-11-03)
+
+
+### Bug Fixes
+
+* **backend:** log clean antivirus scans at info level ([e8291e4](https://github.com/SocialGouv/domifa/commit/e8291e455dcb4340ac55e2e80c905c7996321823))
+* **backend:** log the remaining antivirus outcomes ([487a6e6](https://github.com/SocialGouv/domifa/commit/487a6e6be64bc2e6291c4689b5bb6f6e435edc82))
+* **frontend:** move DSFR inline config to a bundled script for CSP ([f5b7aaa](https://github.com/SocialGouv/domifa/commit/f5b7aaa358933159e0a41d52942af2a6dc504c86))
+
+## [2.290.2](https://github.com/SocialGouv/domifa/compare/v2.290.1...v2.290.2) (2026-11-03)
+
+
+### Bug Fixes
+
+* **backend:** raise usager ref max from 100000 to 1000000 ([df70d1d](https://github.com/SocialGouv/domifa/commit/df70d1db0a1c5fac69a17c0bb86947dd21c9b1a3))
+
+## [2.290.1](https://github.com/SocialGouv/domifa/compare/v2.290.0...v2.290.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* **backend:** add domain support mode ([c26ca6a](https://github.com/SocialGouv/domifa/commit/c26ca6a8a1ecd8a2d14cf7deff2f187773b9b8c6))
+
+# [2.290.0](https://github.com/SocialGouv/domifa/compare/v2.289.1...v2.290.0) (2026-10-28)
+
+
+### Bug Fixes
+
+* **backend:** enforce multer file size limit and cap text fields ([6a320e6](https://github.com/SocialGouv/domifa/commit/6a320e6fc513b6ea316cbb70437ae3a574cdfa74))
+* **backend:** never let an unreadable upload crash the antivirus storage ([a2950bc](https://github.com/SocialGouv/domifa/commit/a2950bca6ed81035d3c7eb08a9d656a7a3ff6e1d))
+
+
+### Features
+
+* **backend:** check real file type before the antivirus scan on import ([c65b417](https://github.com/SocialGouv/domifa/commit/c65b417df0af8dc904adfe65ac468e73c39f6dcd))
+* **backend:** scan contact support attachments with clamav ([9d9be24](https://github.com/SocialGouv/domifa/commit/9d9be244c7b0b531633f14059c8b1e734eed41dd))
+* **backend:** scan usagers import files with clamav before processing ([89c47c6](https://github.com/SocialGouv/domifa/commit/89c47c69f6879f505a699f1f6a840c462c02160d))
+* **frontend:** show antivirus errors on the contact form ([4924603](https://github.com/SocialGouv/domifa/commit/49246038860502f01f73fa050ff357d4ca83d8b8))
+
 ## [2.289.1](https://github.com/SocialGouv/domifa/compare/v2.289.0...v2.289.1) (2026-10-27)
 
 
