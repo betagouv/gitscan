@@ -160,6 +160,7 @@
 │   ├── lib
 │   │   ├── admin-actions.ts
 │   │   ├── admin-actions.unit.test.ts
+│   │   ├── app-base-url.ts
 │   │   ├── audit-log.ts
 │   │   ├── audit-log.unit.test.ts
 │   │   ├── auth-client.ts
@@ -219,12 +220,18 @@
 │   │   ├── jurisdictions-table.ts
 │   │   ├── mocked-pieces.ts
 │   │   ├── mocked-pieces.unit.test.ts
+│   │   ├── piece-bulk-download.ts
+│   │   ├── piece-bulk-download.unit.test.ts
+│   │   ├── piece-comment.ts
 │   │   ├── piece-display.ts
 │   │   ├── piece-display.unit.test.ts
+│   │   ├── piece-download-rate-limit-response.ts
 │   │   ├── pieces-table.ts
 │   │   ├── prisma.ts
 │   │   ├── proconnect-user.ts
 │   │   ├── proconnect-user.unit.test.ts
+│   │   ├── sanitize-file-name.ts
+│   │   ├── sanitize-file-name.unit.test.ts
 │   │   ├── search-where.ts
 │   │   ├── security-headers.ts
 │   │   ├── security-headers.unit.test.ts
@@ -246,6 +253,7 @@
 │   │   ├── telerecours-sync-rate-limit.ts
 │   │   ├── telerecours-sync-rate-limit.unit.test.ts
 │   │   ├── telerecours-sync-rate-limiter.ts
+│   │   ├── telerecours-user-rate-limited-error.ts
 │   │   ├── telerecours.ts
 │   │   ├── test-support
 │   │   │   └── case-file-actors.fixture.ts
@@ -387,6 +395,8 @@
 │   ├── cli
 │   │   ├── classify-case-files.ts
 │   │   ├── find-comed-decisions.ts
+│   │   ├── flag-requete-favorites.ts
+│   │   ├── flag-requete-favorites.unit.test.ts
 │   │   ├── parse-args.ts
 │   │   ├── parse-args.unit.test.ts
 │   │   ├── parse-classify-args.ts
@@ -649,6 +659,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20261016141722_case_file_comment
 │   │   │   └── migration.sql
+│   │   ├── 20261022072022_attached_file_favorite
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -684,4 +696,4 @@
 ├── vitest.config.mts
 ├── vitest.integration.config.mts
 └── vitest.unit.config.mts
-115 directories, 618 files
+116 directories, 629 files

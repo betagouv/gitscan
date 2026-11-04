@@ -1,19 +1,19 @@
-## Changelog : dahlia (30 derniers jours, au 21 octobre 2026)
+## Changelog : dahlia (30 derniers jours, au 02 novembre 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'une refonte de l'interface de gestion des dossiers pour faciliter la saisie et la lecture des informations grâce à de nouveaux blocs de données et une meilleure organisation visuelle. Parallèlement, la sécurité et la fiabilité du système ont été renforcées par l'ajout de journaux d'audit, une meilleure gestion des erreurs et une optimisation des échanges avec les services externes (Télérecours).
+Cette période a été marquée par une amélioration significative de l'interface utilisateur et l'ajout de fonctionnalités clés comme la gestion des favoris et la classification automatique des dossiers. La sécurité et la stabilité du système ont également été renforcées, notamment par une meilleure gestion des accès et la mise en place de protections contre les appels excessifs aux services externes.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'interface de gestion des dossiers** : réorganisation des onglets, ajout de nouveaux blocs (informations, qualification, commentaires) et mise en évidence visuelle (en rouge) des champs nécessitant une validation ([#195](https://github.com/MTES-MCT/dahlia/pull/195), [#196](https://github.com/MTES-MCT/dahlia/pull/196), [#197](https://github.com/MTES-MCT/dahlia/pull/197), [#198](https://github.com/MTES-MCT/dahlia/pull/198), [#202](https://github.com/MTES-MCT/dahlia/pull/202)).
-- **Évolution des fonctionnalités métier** : intégration de nouvelles règles de classification ([#170](https://github.com/MTES-MCT/dahlia/pull/170), [#194](https://github.com/MTES-MCT/dahlia/pull/194), [#156](https://github.com/MTES-MCT/dahlia/pull/156)), ajout d'un bouton pour le formulaire de retour utilisateur ([#180](https://github.com/MTES-MCT/dahlia/pull/180)) et inclusion du statut dans les exports de classification ([#153](https://github.com/MTES-MCT/dahlia/pull/153)).
-- **Gestion des juridictions** : possibilité de synchroniser l'intégralité des dossiers pour le département 69 ([#159](https://github.com/MTES-MCT/dahlia/pull/159)).
-- **Accessibilité et légal** : mise à disposition des pages de mentions légales pour l'ensemble des utilisateurs ([#155](https://github.com/MTES-MCT/dahlia/pull/155), [#151](https://github.com/MTES-MCT/dahlia/pull/151)).
+- **Nouvelles fonctionnalités** : Ajout de la gestion des favoris [#213], de la récupération des dossiers liés [#209], de la classification lors du scrapping [#215], de nouveaux blocs de qualification et de commentaires [#197], ainsi que d'un accès direct au formulaire de retour utilisateur [#180].
+- **Interface et expérience utilisateur** : Refonte de l'interface générale [#225], réorganisation des onglets [#195] et de la barre latérale [#212], amélioration de l'affichage des informations du dossier [#196, #202], modification du header des pièces jointes [#211] et renommage automatique des fichiers selon les standards Télérecours [#208].
+- **Gestion métier** : Intégration du type de litige "injonction" dans les règles de gestion [#194].
 
 ### Évolutions techniques
-- **Sécurité et traçabilité** : mise en place de logs d'audit pour les refus d'accès ([#174](https://github.com/MTES-MCT/dahlia/pull/174)) et les actions administratives ([#158](https://github.com/MTES-MCT/dahlia/pull/158)), renforcement du contrôle de validité des sessions ([#171](https://github.com/MTES-MCT/dahlia/pull/171)) et masquage des erreurs techniques sensibles pour l'utilisateur final ([#157](https://github.com/MTES-MCT/dahlia/pull/157), [#173](https://github.com/MTES-MCT/dahlia/pull/173)).
-- **Optimisation et robustesse** : passage de la synchronisation des dossiers en mode asynchrone ([#152](https://github.com/MTES-MCT/dahlia/pull/152)), ajout d'un limiteur de débit (rate limiting) pour les appels à l'API Télérecours ([#187](https://github.com/MTES-MCT/dahlia/pull/187)) et automatisation de la synchronisation (cron) pour le département 93 ([#188](https://github.com/MTES-MCT/dahlia/pull/188)).
-- **Architecture et données** : modification de la structure des clés primaires pour inclure le code de juridiction ([#175](https://github.com/MTES-MCT/dahlia/pull/175)), isolation des instances de données pour certaines juridictions ([#160](https://github.com/MTES-MCT/dahlia/pull/160)) et correction de la logique de suppression des dossiers pour garantir l'étanchéité entre les juridictions ([#161](https://github.com/MTES-MCT/dahlia/pull/161)).
-- **Authentification** : amélioration du processus de déconnexion avec redirection automatique vers ProConnect ([#169](https://github.com/MTES-MCT/dahlia/pull/169)).
+- **Sécurité et conformité** : Renforcement des contrôles d'accès (administration et validité de session) [#226, #171, #186], ajout de logs d'audit pour les refus d'accès [#174], assainissement des noms de fichiers dans les exports [#229] et application de mises à jour de sécurité critiques [#230].
+- **Stabilité et infrastructure** : Implémentation de limitations de débit (rate limiting) pour les appels vers Télérecours [#227, #187], ajout d'une tâche planifiée (cron) pour le département 93 [#188] et alignement de la version Node.js avec l'environnement de production [#217].
+- **Architecture et authentification** : Évolution de la structure de la base de données (clé primaire incluant le code de juridiction) [#175] et optimisation du processus de déconnexion via ProConnect [#224, #169].
 
 ### Autres changements
-- Mise à jour de plusieurs librairies pour corriger des vulnérabilités de sécurité ([#167](https://github.com/MTES-MCT/dahlia/pull/167), [#166](https://github.com/MTES-MCT/dahlia/pull/166)).
+- Correction du script de détection des décisions [#183].
+- Dépréciation de messages de limite de débit obsolètes [#228].
+- Résolution de problèmes d'affichage d'erreurs trop verbeuses [#173].

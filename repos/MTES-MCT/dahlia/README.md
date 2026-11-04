@@ -273,20 +273,21 @@ sauf si `<JURIDICTION>_TELERECOURS_JURISDICTION` la surcharge :
 
 ### Options
 
-| Option                           | Défaut                    | Description                                                                                                                                                                                                                                                                                  |
-| -------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--jurisdiction <code>`          | `TA069`                   | Juridiction Dahlia : préfixe des variables `<code>_TELERECOURS_*` et valeur stockée en base. L'en-tête API reprend ce code, sauf si `<code>_TELERECOURS_JURISDICTION` le surcharge.                                                                                                          |
-| `--page <n>`                     | `0`                       | Page de départ (0-based) pour la liste des dossiers (Phase A). Le script continue ensuite jusqu'à la dernière page.                                                                                                                                                                          |
-| `--size <n>`                     | `30`                      | Nombre de dossiers par page lors de l'appel à `/api/case-file`.                                                                                                                                                                                                                              |
-| `--sort <champ>`                 | `STATUS_DATE,desc`        | Critère de tri transmis tel quel à l'API (paramètre `sort`) sur chaque page de la liste.                                                                                                                                                                                                     |
-| `--all`                          | `false`                   | Récupère **tous** les dossiers sans filtre de statut. Sans ce flag, seuls les dossiers « en cours » sont demandés (groupes INPROGRESS de l'API Télérecours, hors « Terminé »).                                                                                                               |
-| `--legalEntityDivisionIds <ids>` | env `…_DIVISIONS`         | Liste d'IDs de divisions à filtrer, séparés par des virgules (ex. `2488,1234`). Surcharge la variable d'env. Sert aussi à cibler les dossiers à enrichir (Phases B/C).                                                                                                                       |
-| `--anonymize`                    | `true` sauf si `ENV=prod` | Anonymise les acteurs (requérants/défendeurs) avant insertion en base. Le défaut dépend de la variable d'env `ENV` : anonymisation activée en dev/preprod, désactivée en prod.                                                                                                               |
-| `--enrich <all\|ongoing\|none>`  | `ongoing`                 | Contrôle les Phases B et C : `ongoing` enrichit les dossiers actifs (hors « Terminé ») ; `all` inclut aussi les dossiers terminés ; `none` saute les Phases B et C. N'affecte pas la réconciliation (Phase A.5).                                                                             |
-| `--force`                        | `false`                   | Phases B et C : supprime les événements, les pièces (avec leurs métadonnées Dahlia : nom, numéro, commentaire) et les liens entre dossiers présents en base mais plus renvoyés par Télérecours pour le dossier. Utile pour nettoyer les données fusionnées par une collision d'identifiants. |
-| `--classify`                     | `false`                   | Exécute la Phase D : déduit `litigationType`, `rightType` et `summary` de chaque dossier du périmètre à partir de son texte (titre, décision). Voir « Classification automatique ».                                                                                                          |
-| `--classify-overwrite`           | `false`                   | Implique `--classify`. Réécrit aussi les caractéristiques **déjà renseignées** (par défaut, seuls les champs vides sont remplis, pour ne pas écraser la saisie des utilisateurs).                                                                                                            |
-| `--help`, `-h`                   | —                         | Affiche la liste des options et quitte sans rien scraper.                                                                                                                                                                                                                                    |
+| Option                           | Défaut                    | Description                                                                                                                                                                                                                                                                                                                     |
+| -------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--jurisdiction <code>`          | `TA069`                   | Juridiction Dahlia : préfixe des variables `<code>_TELERECOURS_*` et valeur stockée en base. L'en-tête API reprend ce code, sauf si `<code>_TELERECOURS_JURISDICTION` le surcharge.                                                                                                                                             |
+| `--page <n>`                     | `0`                       | Page de départ (0-based) pour la liste des dossiers (Phase A). Le script continue ensuite jusqu'à la dernière page.                                                                                                                                                                                                             |
+| `--size <n>`                     | `30`                      | Nombre de dossiers par page lors de l'appel à `/api/case-file`.                                                                                                                                                                                                                                                                 |
+| `--sort <champ>`                 | `STATUS_DATE,desc`        | Critère de tri transmis tel quel à l'API (paramètre `sort`) sur chaque page de la liste.                                                                                                                                                                                                                                        |
+| `--all`                          | `false`                   | Récupère **tous** les dossiers sans filtre de statut. Sans ce flag, seuls les dossiers « en cours » sont demandés (groupes INPROGRESS de l'API Télérecours, hors « Terminé »).                                                                                                                                                  |
+| `--legalEntityDivisionIds <ids>` | env `…_DIVISIONS`         | Liste d'IDs de divisions à filtrer, séparés par des virgules (ex. `2488,1234`). Surcharge la variable d'env. Sert aussi à cibler les dossiers à enrichir (Phases B/C).                                                                                                                                                          |
+| `--anonymize`                    | `true` sauf si `ENV=prod` | Anonymise les acteurs (requérants/défendeurs) avant insertion en base. Le défaut dépend de la variable d'env `ENV` : anonymisation activée en dev/preprod, désactivée en prod.                                                                                                                                                  |
+| `--enrich <all\|ongoing\|none>`  | `ongoing`                 | Contrôle les Phases B et C : `ongoing` enrichit les dossiers actifs (hors « Terminé ») ; `all` inclut aussi les dossiers terminés ; `none` saute les Phases B et C. N'affecte pas la réconciliation (Phase A.5).                                                                                                                |
+| `--update-piece-name`            | `false`                   | Phase B : renseigne le nom Dahlia (`dahliaName`) des pièces dont il est vide, à partir du nom de fichier : extension `.pdf` et préfixe `P_` retirés, nombres de tête complétés à 5 chiffres, `_` remplacés par des espaces (ex. `P_20261021_34_requête.pdf` → `20261021 00034 requête`). Un nom déjà saisi n'est jamais écrasé. |
+| `--force`                        | `false`                   | Phases B et C : supprime les événements, les pièces (avec leurs métadonnées Dahlia : nom, commentaire) et les liens entre dossiers présents en base mais plus renvoyés par Télérecours pour le dossier. Utile pour nettoyer les données fusionnées par une collision d'identifiants.                                            |
+| `--classify`                     | `false`                   | Exécute la Phase D : déduit `litigationType`, `rightType` et `summary` de chaque dossier du périmètre à partir de son texte (titre, décision). Voir « Classification automatique ».                                                                                                                                             |
+| `--classify-overwrite`           | `false`                   | Implique `--classify`. Réécrit aussi les caractéristiques **déjà renseignées** (par défaut, seuls les champs vides sont remplis, pour ne pas écraser la saisie des utilisateurs).                                                                                                                                               |
+| `--help`, `-h`                   | —                         | Affiche la liste des options et quitte sans rien scraper.                                                                                                                                                                                                                                                                       |
 
 ### Déroulé du script
 
@@ -297,7 +298,11 @@ sauf si `<JURIDICTION>_TELERECOURS_JURISDICTION` la surcharge :
    le détail enrichi, **toutes** les audiences, les mesures (events) et les pièces
    jointes.
 3. **Phase C** _(sautée si `--enrich none`)_ — crée les liens entre dossiers liés
-   (`related-case-files`) pour les mêmes dossiers cibles.
+   (`related-case-files`) pour les mêmes dossiers cibles. Un dossier lié absent
+   de la base est d'abord importé depuis son détail Télérecours (avec, en
+   `--enrich all`, ses acteurs, audiences, mesures et pièces jointes). Si
+   Télérecours le refuse (compte sans droit sur le dossier, champs requis
+   manquants…), un avertissement est affiché et le lien n'est pas créé.
 4. **Phase D** _(exécutée uniquement avec `--classify`)_ — applique le moteur de
    règles de classification aux dossiers du périmètre (voir « Classification
    automatique des dossiers » plus bas).
@@ -362,6 +367,7 @@ data/
     parse-args.ts              # parseArgs / getEnv / parseDivisionIds (fonctions pures)
     classify-case-files.ts     # entrypoint du script de classification (pnpm classify:case-files)
     parse-classify-args.ts     # parseClassifyArgs (fonction pure)
+    flag-requete-favorites.ts  # rattrapage : marque en favori les pièces « Requête » (pnpm flag:requete-favorites)
   telerecours/
     client.ts                  # TelerecoursClient — méthodes typées (renvoient les DTO)
     client.interface.ts        # interface TelerecoursClient = le « seam » que les tests mockent
@@ -410,10 +416,13 @@ Trois principes guident cette organisation :
 La webapp réutilise une partie de ce code : `enrichCaseFile`
 (`data/persistence/enrich-case-file.ts`), `getTelerecoursCaseFileClient` et
 `describeError` (`data/telerecours/`) servent au rafraîchissement d'un dossier et
-au téléchargement de pièces depuis l'UI. Le rafraîchissement manuel est plafonné
-à 20 appels par utilisateur et par minute (`telerecours_sync_rate_limits`,
-`rate-limiter-flexible`) : au-delà, la route répond `429` avec `Retry-After`
-et Télérecours n'est pas appelé.
+au téléchargement de pièces depuis l'UI. Les appels Télérecours déclenchés
+depuis l'UI (rafraîchissement manuel d'un dossier et téléchargement de pièces,
+y compris les archives ZIP) partagent un budget de 20 points par utilisateur et
+par minute (`telerecours_sync_rate_limits`, `rate-limiter-flexible`, un point
+par synchronisation ou par pièce récupérée) : au-delà, la route répond `429`
+avec `Retry-After` et Télérecours n'est pas appelé. Une archive ZIP ne peut
+pas demander plus de 20 pièces distinctes en une seule requête.
 
 ### Tests
 
@@ -756,6 +765,9 @@ erDiagram
         string receiptAcknowledgmentType "nullable"
         string fileTypeLabel
         DateTime eventCreationDate
+        string dahliaName "nullable"
+        string comment "nullable"
+        boolean isFavorite
         string caseFileNumber FK
         int eventId FK
         string fileFamilyTypeCode FK

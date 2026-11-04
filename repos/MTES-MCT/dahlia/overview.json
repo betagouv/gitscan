@@ -1,37 +1,37 @@
 {
   "url": "https://github.com/MTES-MCT/dahlia",
   "name": "dahlia",
-  "description": "Application d'aide à l'organisation des défenses des dossiers DALO, DAHO et DAHU. Elle permet de récupérer les dossiers de contentieux du droit au logement via l'API Télérecours et de gérer leur suivi et leur classification.",
+  "description": "Application d'aide à l'organisation des défenses pour les dossiers DALO, DAHO et DAHU. Elle permet de récupérer et de gérer les dossiers de contentieux liés au droit au logement pour les départements.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
     "Administration & Backoffice",
+    "Recherche & Filtres",
     "Suivi & Traçabilité",
-    "Tableaux & Affichage"
+    "Gestion métier générale",
+    "Intelligence Artificielle & NLP",
+    "Statistiques & Rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Next.js",
-    "Prisma",
     "PostgreSQL",
+    "Prisma",
     "better-auth",
     "@codegouvfr/react-dsfr",
     "Vitest",
     "Husky"
   ],
   "components": [
-    "React / Next.js",
-    "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
-    "Docker & Conteneurs",
     "API REST & GraphQL",
-    "Authentification (composant)",
-    "Documentation & Schémas",
+    "React / Next.js",
+    "TypeScript / JavaScript",
+    "PostgreSQL & SQL",
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
     "Scripts & Utilitaires",
-    "ORM & Accès aux données"
+    "ORM & Accès aux données",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
@@ -44,22 +44,14 @@
     ]
   },
   "tests": "Vitest",
-  "workflows": [
-    "Husky (pre-commit)",
-    "pnpm scrape:telerecours",
-    "pnpm classify:case-files"
-  ],
-  "status": "active",
-  "license": null,
+  "status": "maintained",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
+    "Bases de données SQL",
     "Docker & Conteneurs",
-    "Sécurité & Auth",
-    "CI/CD & GitHub Actions",
-    "Standards & Schémas"
+    "Design System & UI"
   ]
 }
