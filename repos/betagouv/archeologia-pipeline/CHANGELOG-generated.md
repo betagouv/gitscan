@@ -1,24 +1,37 @@
-## Changelog : archeologia-pipeline (30 derniers jours, au 01/11/2026)
+## Changelog : archeologia-pipeline (30 derniers jours, au 02 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'expérience utilisateur et une montée en puissance de la fiabilité des analyses. L'interface a été entièrement repensée pour être plus intuitive, et de nouveaux outils permettent désormais de mesurer précisément la qualité des détections archéologiques. Le plugin gère également de manière beaucoup plus robuste les données provenant de différents systèmes de coordonnées géographiques.
+Ce mois a été marqué par une refonte majeure de l'expérience utilisateur et une amélioration significative de la fiabilité des détections. L'interface a été totalement repensée pour guider l'utilisateur pas à pas, avec l'ajout d'une aide intégrée et de fiches détaillées pour chaque modèle d'intelligence artificielle. Parallèlement, le moteur de détection a été optimisé pour être plus rapide (via l'utilisation de la carte graphique) et plus précis dans la gestion des données géographiques.
 
 ### Évolutions fonctionnelles
-- **Refonte complète de l'interface (UI) :** Nouveau parcours utilisateur rationalisé en étapes claires, introduction d'un lexique unifié et d'un assistant plus fluide.
-- **Évaluation de la fiabilité :** Ajout de métriques de performance (précision, rappel, score F1) directement dans les fiches de modèles et de classes pour mieux comprendre la confiance des détections.
-- **Aide intégrée :** Remplacement de la notice externe par un manuel d'aide complet et contextuel, directement consultable dans l'interface avec recherche globale.
-- **Amélioration des indices de relief :** Ajout et optimisation de nouveaux indices (VAT, PRISM, CVAT, CRIM, MSTP) avec des réglages de luminosité et de visualisation personnalisables.
-- **Système d'alertes :** Mise en place d'avertissements explicites en cas de détection impossible, de fenêtres d'analyse vides ou de problèmes de résolution.
-- **Gestion des résultats :** Amélioration de la présentation des rapports de traitement et des fiches de structures.
+- **Refonte de l'interface utilisateur** : 
+    - Mise en place d'un assistant par étapes (Vérifications, Traitement) avec une frise de progression cliquable.
+    - Création de fiches détaillées pour les modèles et les classes, incluant des profils de scores (précision/rappel) et des informations sur la fiabilité observée.
+    - Amélioration de la navigation avec un nouveau système de fiches et de panneaux d'information non modaux.
+- **Amélioration du reporting et des résultats** :
+    - Génération d'un nouveau rapport de traitement au format HTML.
+    - Amélioration du nommage des projets QGIS et des couches pour une meilleure traçabilité.
+    - Ajout de bilans de fiabilité en fin de traitement.
+- **Aide et accompagnement** :
+    - Intégration d'un manuel d'aide directement dans l'outil, incluant une recherche globale et des captures d'écran actualisées.
+    - Ajout d'un lexique complet pour harmoniser le vocabulaire technique (relief, structures, dalles, etc.).
+- **Gestion des erreurs et avertissements** :
+    - Nouveaux messages d'alerte concernant l'échelle des données, les systèmes de coordonnées (CRS) et les problèmes de téléchargement.
+    - Signalement explicite des cas de "détection impossible" pour certains modèles.
 
 ### Évolutions techniques
-- **Gestion des systèmes de coordonnées (CRS) :** Amélioration majeure de la compatibilité avec les données non Lambert-93 ; conversion automatique des calculs et des sorties (MNT, indices) en mètres et en systèmes projetés [#31](https://github.com/betagouv/archeologia-pipeline/pull/31).
-- **Optimisation du moteur de détection (IA) :** Support de l'accélération GPU via DirectML et optimisation de la gestion de la mémoire et des sessions ONNX pour accélérer les traitements.
-- **Performances de calcul :** Optimisation des pipelines de fusion de nuages de points (PDAL) et des calculs d'indices de relief.
-- **Fiabilité des détections :** Implémentation d'un algorithme de fusion en deux passes pour une meilleure précision des contours des structures [#23](https://github.com/betagouv/archeologia-pipeline/pull/23).
-- **Qualité logicielle :** Renforcement de la chaîne de tests (CI/CD) avec un support étendu pour Windows et de nouveaux outils de validation automatique (recettes).
+- **Optimisation de l'Intelligence Artificielle** :
+    - Accélération de la détection via l'intégration de DirectML, permettant d'utiliser la carte graphique (GPU).
+    - Recompilation et optimisation du moteur de détection (`cv_runner_onnx`) pour corriger des problèmes de gestion de mémoire, de géométries imbriquées et de précision des boîtes de détection.
+- **Fiabilisation du pipeline de données** :
+    - Amélioration de la gestion des systèmes de coordonnées : support étendu des données hors Lambert-93 et gestion robuste des projections.
+    - Passage des calculs d'indices et de rayons en mètres pour une meilleure cohérence avec les données réelles.
+    - Optimisation de la fusion des nuages de points (PDAL) pour garantir la reproductibilité des MNT.
+- **Qualité et Intégrité** :
+    - Mise en place de contrôles d'intégrité systématiques (checksums via `talisman`) sur les fichiers critiques et les binaires.
+    - Renforcement de la suite de tests (pytest) et intégration de tests de "recette" automatisés.
+    - Amélioration de la CI (GitHub Actions) pour inclure des tests sur environnement Windows.
 
 ### Autres changements
-- **Documentation :** Mise à jour massive de la documentation technique, du manuel d'utilisation et du README.
-- **Sécurité et maintenance :** Nettoyage du code et audits de sécurité via Talisman.
-- **Packaging :** Amélioration de la construction des binaires et du processus de génération des livrables.
+- **Documentation** : Mise à jour massive du manuel, du fichier README et du changelog.
+- **Nettoyage** : Suppression de fonctions obsolètes et nettoyage des fichiers de configuration et des dépendances de test.
