@@ -764,6 +764,7 @@
 │           └── show.html.erb
 ├── bin
 │   ├── bundle
+│   ├── bundler-audit
 │   ├── cucumber
 │   ├── dev
 │   ├── explore-remote-logs
@@ -780,6 +781,7 @@
 ├── config
 │   ├── application.rb
 │   ├── boot.rb
+│   ├── bundler-audit.yml
 │   ├── credentials
 │   │   ├── development.yml.enc
 │   │   ├── production.key -> ../master.key
@@ -866,6 +868,7 @@
 │   ├── accueil.feature
 │   ├── api_errors.feature
 │   ├── auth_errors.feature
+│   ├── envoyer_mes_donnees_sans_quotient_familial.feature
 │   ├── france_connexion.feature
 │   ├── static_pages.feature
 │   ├── step_definitions
@@ -890,6 +893,7 @@
 │   ├── hubee
 │   │   ├── admin_api.rb
 │   │   ├── api
+│   │   │   ├── error.rb
 │   │   │   └── response.rb
 │   │   ├── api.rb
 │   │   ├── auth.rb
@@ -946,7 +950,8 @@
 │   │   └── setup_current_data_spec.rb
 │   ├── jobs
 │   │   ├── populate_hubee_sandbox_job_spec.rb
-│   │   └── read_hubee_notifications_job_spec.rb
+│   │   ├── read_hubee_notifications_job_spec.rb
+│   │   └── setup_collectivity_job_spec.rb
 │   ├── lib
 │   │   ├── api_particulier
 │   │   │   └── quotient_familial
@@ -984,6 +989,12 @@
 │   │   ├── store_quotient_familial_spec.rb
 │   │   └── upload_quotient_familial_to_hubee_spec.rb
 │   ├── rails_helper.rb
+│   ├── requests
+│   │   ├── api
+│   │   │   └── datapass_webhooks_spec.rb
+│   │   ├── collectivities_spec.rb
+│   │   ├── errors_spec.rb
+│   │   └── shipments_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
 │   │   ├── factory_bot.rb
@@ -1024,4 +1035,4 @@
     ├── .keep
     └── javascript
         └── .keep
-123 directories, 944 files
+125 directories, 953 files
