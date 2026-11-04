@@ -1,10 +1,10 @@
 [build-system]
-requires = ["uv_build>=0.12.17,<0.13"]
+requires = ["uv_build>=0.13.5,<0.14"]
 build-backend = "uv_build"
 
 [project]
 name = "menshen-client"
-version = "0.2.0"
+version = "0.3.0"
 description = "An API client for Menshen, the OAuth 2.0 token exchange server"
 readme = "README.md"
 requires-python = ">=3.11,<4.0.0"
@@ -29,7 +29,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "requests>=2.32.3",
+    "httpx2>=2.0.0",
 ]
 
 [project.urls]
@@ -38,12 +38,11 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "httpx2-pytest==2.0.0",
     "pytest==9.1.1",
     "pytest-cov==7.1.0",
-    "pytest-responses==0.6.0",
-    "responses==0.26.2",
-    "ruff==0.16.4",
-    "ty==0.0.74",
+    "ruff==0.17.3",
+    "ty==0.0.92",
 ]
 
 [tool.uv.build-backend]

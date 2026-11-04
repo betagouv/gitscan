@@ -8,6 +8,63 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 
 ## [Unreleased]
 
+## [v0.6.0] - 2026-11-03
+
+### Added
+
+- Add `TOKEN_EXCHANGE_API_DOCS_ENABLED` and
+  `TOKEN_EXCHANGE_API_OPENAPI_ENABLED` settings to hide or disable the API
+  documentation (interactive docs and OpenAPI schema), disabled by default and
+  both enabled in development
+- Add `TOKEN_EXCHANGE_API_DOCS_URL` and `TOKEN_EXCHANGE_API_OPENAPI_URL`
+  settings to configure the API documentation urls (defaults to `/docs` and
+  `/openapi.json`)
+
+### Changed
+
+#### Dependencies
+
+- Upgrade `django-lasuite` to `1.0.0`
+- Upgrade `psycopg` to `3.3.6`
+- Upgrade `sentry-sdk` to `2.73.0`
+- Upgrade `uvicorn` to `0.54.0`
+
+### Fixed
+
+- Return a proper 403 response when the introspected subject token user is not
+  active
+- Return a proper 422 error response instead of an internal Django error page
+  when the subject token introspection response cannot be processed
+  (`SuspiciousOperation` raised by the introspection backend)
+
+## [v0.5.0] - 2026-10-29
+
+### Added
+
+- Add La Suite Find, Docs and Drive services to demo fixtures and the
+  development Keycloak realm, with Docs and Drive to Find exchange rules
+
+### Changed
+
+- Simplify the documentation by removing the `resource` token request field
+  (unsupported) and confusing optional request scope
+- Hash emitted exchanged tokens (and actor tokens) at rest with HMAC-SHA256,
+  and remove JWT signature re-verification at introspection/revocation time
+- Improve core services method signature to inject a ServiceProvider instead of
+  a simple audience string
+
+#### Dependencies
+
+- Upgrade `django` to `6.1.2`
+
+### Fixed
+
+- Exchanged JWTs remain valid until they expire, even after a signing key
+  rotation
+- Introspection response `client_id` now returns the audience id of the service
+  provider that requested the token exchange instead of the resource server
+  client id
+
 ## [v0.4.0] - 2026-10-25
 
 ### Added
@@ -81,7 +138,9 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 
 - Implement base Token Exchange (RFC 8693) endpoints
 
-[unreleased]: https://github.com/suitenumerique/menshen/compare/v0.4.0...HEAD
+[unreleased]: https://github.com/suitenumerique/menshen/compare/v0.6.0...HEAD
+[v0.6.0]: https://github.com/suitenumerique/menshen/releases/v0.6.0
+[v0.5.0]: https://github.com/suitenumerique/menshen/releases/v0.5.0
 [v0.4.0]: https://github.com/suitenumerique/menshen/releases/v0.4.0
 [v0.3.0]: https://github.com/suitenumerique/menshen/releases/v0.3.0
 [v0.2.0]: https://github.com/suitenumerique/menshen/releases/v0.2.0

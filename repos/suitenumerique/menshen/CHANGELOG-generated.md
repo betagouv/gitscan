@@ -1,23 +1,36 @@
-## Changelog : menshen (30 derniers jours, au 25 octobre 2026)
+## Changelog : menshen (30 derniers jours, au 03/11/2026)
 
 ### Résumé
-Cette période est marquée par le passage à la version 0.4.0. Les évolutions majeures concernent la restructuration du format des portées (scopes) de jetons pour une gestion plus granulaire des permissions, ainsi qu'un renforcement significatif de l'environnement de test et de la robustesse de l'infrastructure.
+Cette période a été marquée par un renforcement majeur de la sécurité (correction de nombreuses vulnérabilités et hachage des jetons) et une modernisation de la bibliothèque client Python pour supporter l'asynchrone. Le projet a également amélioré sa robustesse grâce à l'ajout de tests de bout en bout (E2E) et une meilleure gestion des erreurs de sécurité.
 
 ### Évolutions fonctionnelles
-- **Gestion des permissions** : Évolution du modèle de définition des portées (scopes) de jetons vers un format standardisé `service:resource:action`.
+- **Nouveau format de permissions** : Adoption d'un nouveau pattern pour les scopes de jetons suivant le modèle `service:resource:action`.
+- **Améliorations du client Python** :
+  - Ajout du support asynchrone avec `TokenExchangeAsyncClient`.
+  - Possibilité d'utiliser le client comme gestionnaire de contexte (context manager).
+  - Ajout d'un timeout par défaut pour les requêtes POST.
+- **Configuration de l'API** : Possibilité de configurer les URLs de la documentation API et de contrôler l'activation/désactivation du schéma OpenAPI.
+- **Logging** : Ajout de la configuration du logger `lasuite` directement dans les paramètres du projet.
 
 ### Évolutions techniques
-- **Tests et environnement de démonstration (Playground)** :
-    - Mise en place de tests de bout en bout (E2E) pour Keycloak et l'environnement de playground.
-    - Intégration du client Menshen et ajout de nouvelles configurations (audience mapper, variante ProConnect).
-- **Infrastructure et CI/CD** :
-    - Optimisation des workflows GitHub Actions (mise à jour de `setup-uv` et adoption des presets CI de la suite numérique).
-    - Amélioration de la sécurité en supprimant le certificat racine emSign des dépendances.
-- **Backend et Client** :
-    - Amélioration de la gestion des logs via l'intégration de la configuration `lasuite`.
-    - Ajout d'un délai d'attente (timeout) par défaut pour les requêtes POST dans le client.
-    - Mise à jour de la dépendance `django-lasuite`.
-    - Nettoyage de l'interface d'administration (suppression de propriétés inconnues).
+- **Sécurité** :
+  - Correction de 42 vulnérabilités (CVE) via la mise à jour des dépendances.
+  - Hachage des jetons échangés au repos avec l'algorithme HMAC-SHA256.
+  - Suppression de certificats racines non sécurisés (emSign) des dépendances.
+- **Refactorisation du client** :
+  - Migration de la bibliothèque de transport de `requests` vers `httpx`.
+  - Extraction de la logique métier indépendante du transport dans un client de base.
+  - Renommage du module `client` en `clients` pour une meilleure clarté.
+- **Backend & Architecture** :
+  - Amélioration de la gestion des utilisateurs inactifs et des tentatives d'introspection suspectes.
+  - Mise à jour de `django-lasuite` vers la version 1.0.0.
+  - Optimisation de la signature des méthodes des services de base.
+  - Correction de la migration des données de jetons hachés.
+- **Tests & CI/CD** :
+  - Ajout de tests de bout en bout (E2E) pour le playground et Keycloak.
+  - Intégration de linters et de configurations de tests plus strictes.
+  - Mise à jour des workflows GitHub Actions.
 
 ### Autres changements
-- **Qualité du code** : Configuration et résolution des avertissements du linter, et correction de fautes de frappe dans les messages de log.
+- **Documentation** : Simplification de la documentation d'intégration avec `lasuite` et mise à jour des notes sur la migration du mocking HTTP.
+- **Maintenance** : Nettoyage du code (correction de fautes de frappe et de warnings de typage).
