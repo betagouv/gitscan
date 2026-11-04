@@ -39,6 +39,7 @@
 │   │   ├── .sqlfluff
 │   │   ├── .vscode
 │   │   │   └── settings.json
+│   │   ├── CLAUDE.md
 │   │   ├── docs
 │   │   │   └── adr
 │   │   │       ├── 2026-07-20-frontiere-des-contextes-et-queries-de-liste.md
@@ -154,6 +155,36 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20261021140000_separates_admin_right_from_role
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261022100000_moves_magistrat_to_data_administration_context
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261023100000_separates_ingestion_warnings_from_errors
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261023120000_renames_ingestion_errors_to_messages
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261026100000_keeps_admin_right_within_secretariat
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261026100000_restricts_deleting_summary_author
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261026150000_adds_help_pages
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261026170000_keeps_account_creation_in_status_history
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261026180000_gives_a_duty_to_secretariat_accounts_without_one
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261027100000_marks_the_screenshots_a_text_no_longer_embeds
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261028120000_requires_a_pkce_challenge_on_openid_requests
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261030180000_flags_the_technical_accounts
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261030190000_keeps_technical_account_history
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261102100000_counts_the_password_login_attempts
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261102120000_collects_the_remarks
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261103100000_keeps_who_changed_the_remark_status
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -161,11 +192,13 @@
 │   │   │   │   ├── docs.prisma
 │   │   │   │   ├── feedback.prisma
 │   │   │   │   ├── files.prisma
+│   │   │   │   ├── help.prisma
 │   │   │   │   ├── identity.prisma
 │   │   │   │   ├── jobs.prisma
 │   │   │   │   ├── magistrat.prisma
 │   │   │   │   ├── nominations.prisma
 │   │   │   │   ├── observation.prisma
+│   │   │   │   ├── remarks.prisma
 │   │   │   │   └── reports.prisma
 │   │   │   └── sql
 │   │   │       ├── countLolfiSessionDesignations.sql
@@ -196,18 +229,17 @@
 │   │   │       ├── listNominationFilesCountRawQuery.sql
 │   │   │       ├── listNominationFilesRawQuery.sql
 │   │   │       ├── lockAgendasRawQuery.sql
+│   │   │       ├── lockOfficialReportRawQuery.sql
 │   │   │       ├── searchMagistratRawQuery.sql
 │   │   │       ├── searchMagistratTotalCountRawQuery.sql
 │   │   │       └── updateMagistratStatusesRawQuery.sql
 │   │   ├── prisma.config.ts
-│   │   ├── public-endpoints.json
 │   │   ├── scalingo
 │   │   │   ├── .buildpacks
 │   │   │   ├── Procfile
 │   │   │   └── cron.json
 │   │   ├── scripts
 │   │   │   ├── build-for-scalingo.sh
-│   │   │   ├── check-public-endpoints.mjs
 │   │   │   ├── empty-local-or-staging-except-accounts.mjs
 │   │   │   ├── init-buckets.js
 │   │   │   ├── migrate.sh
@@ -227,6 +259,7 @@
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   ├── admin-user-role.spec.ts.snap
 │   │   │   │   │   │   │   └── admin-user-title.spec.ts.snap
+│   │   │   │   │   │   ├── admin-user-role-group.ts
 │   │   │   │   │   │   ├── admin-user-role.spec.ts
 │   │   │   │   │   │   ├── admin-user-role.ts
 │   │   │   │   │   │   ├── admin-user-title.spec.ts
@@ -238,12 +271,17 @@
 │   │   │   │   │       ├── administration.controller.ts
 │   │   │   │   │       ├── administration.filter.ts
 │   │   │   │   │       ├── cli
+│   │   │   │   │       │   ├── register-user.cli.ts
 │   │   │   │   │       │   └── update-display-titles.cli.ts
 │   │   │   │   │       ├── dto
 │   │   │   │   │       │   └── administration.dto.ts
+│   │   │   │   │       ├── guards
+│   │   │   │   │       │   └── development-environment.guard.ts
 │   │   │   │   │       ├── queries
 │   │   │   │   │       │   ├── details-user.query.ts
+│   │   │   │   │       │   ├── list-title-holders.query.ts
 │   │   │   │   │       │   └── list-users.query.ts
+│   │   │   │   │       ├── registration.controller.ts
 │   │   │   │   │       └── repositories
 │   │   │   │   │           └── user.repository.ts
 │   │   │   │   ├── docs
@@ -268,6 +306,7 @@
 │   │   │   │   │   │       │   ├── details-agenda-files.query.ts
 │   │   │   │   │   │       │   ├── details-agenda-metadata.query.ts
 │   │   │   │   │   │       │   ├── details-session-agenda.query.ts
+│   │   │   │   │   │       │   ├── find-agenda-document-pdf.query.spec.ts
 │   │   │   │   │   │       │   ├── find-agenda-document-pdf.query.ts
 │   │   │   │   │   │       │   └── find-agenda-document.query.ts
 │   │   │   │   │   │       ├── repositories
@@ -316,8 +355,10 @@
 │   │   │   │   │   │   │   ├── official-reports.filter.ts
 │   │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   │   ├── details-official-report-document.query.ts
+│   │   │   │   │   │   │   │   ├── details-official-report-file-note.query.ts
 │   │   │   │   │   │   │   │   ├── details-official-report.query.ts
 │   │   │   │   │   │   │   │   ├── details-session-official-report.query.ts
+│   │   │   │   │   │   │   │   ├── find-official-report-document-pdf.query.spec.ts
 │   │   │   │   │   │   │   │   ├── find-official-report-document-pdf.query.ts
 │   │   │   │   │   │   │   │   └── find-official-report-document.query.ts
 │   │   │   │   │   │   │   ├── repositories
@@ -339,7 +380,9 @@
 │   │   │   │   │   │   │   ├── justice-presentation-plan-content.ts
 │   │   │   │   │   │   │   ├── justice-presentation-plan-settings.ts
 │   │   │   │   │   │   │   ├── justice-presentation-plan.spec.ts
-│   │   │   │   │   │   │   └── justice-presentation-plan.ts
+│   │   │   │   │   │   │   ├── justice-presentation-plan.ts
+│   │   │   │   │   │   │   ├── presentation-plan.policies.spec.ts
+│   │   │   │   │   │   │   └── presentation-plan.policies.ts
 │   │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   │   ├── presentation-plan-status.ts
 │   │   │   │   │   │   │   ├── presentation-plans.dto.ts
@@ -362,6 +405,7 @@
 │   │   │   │   │   │   │   │       └── presentation-plan.renderer.ts
 │   │   │   │   │   │   │   └── use-cases
 │   │   │   │   │   │   │       ├── invalidate-presentation-plan.use-case.ts
+│   │   │   │   │   │   │       ├── validate-presentation-plan.use-case.spec.ts
 │   │   │   │   │   │   │       └── validate-presentation-plan.use-case.ts
 │   │   │   │   │   │   ├── presentation-plans.controller.ts
 │   │   │   │   │   │   └── presentation-plans.service.ts
@@ -372,7 +416,10 @@
 │   │   │   │   │       │   ├── doc-file-name.ts
 │   │   │   │   │       │   ├── doc-invalidation.ts
 │   │   │   │   │       │   ├── doc-nomination-file-outcome.ts
-│   │   │   │   │       │   └── doc-system-update-cause.ts
+│   │   │   │   │       │   ├── doc-system-update-cause.ts
+│   │   │   │   │       │   ├── document.policies.spec.ts
+│   │   │   │   │       │   ├── document.policies.ts
+│   │   │   │   │       │   └── draft-changes-by.ts
 │   │   │   │   │       └── infrastructure
 │   │   │   │   │           ├── agenda-content.ts
 │   │   │   │   │           ├── docs.controller.ts
@@ -437,17 +484,17 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── prisma-selects.spec.ts
 │   │   │   │   │   │   └── prisma.service.ts
+│   │   │   │   │   ├── exception.spec.ts
 │   │   │   │   │   ├── exception.ts
 │   │   │   │   │   ├── favicon.ts
 │   │   │   │   │   ├── files
+│   │   │   │   │   │   ├── attachment-max-bytes.ts
 │   │   │   │   │   │   ├── content-disposition.spec.ts
 │   │   │   │   │   │   ├── content-disposition.ts
-│   │   │   │   │   │   ├── delete-unreferenced-objects.cli.spec.ts
-│   │   │   │   │   │   ├── delete-unreferenced-objects.cli.ts
 │   │   │   │   │   │   ├── delete-unused-files.cli.spec.ts
 │   │   │   │   │   │   ├── delete-unused-files.cli.ts
-│   │   │   │   │   │   ├── files-cli.module.spec.ts
-│   │   │   │   │   │   ├── files-cli.module.ts
+│   │   │   │   │   │   ├── embedded-screenshots.ts
+│   │   │   │   │   │   ├── files-per-upload.ts
 │   │   │   │   │   │   ├── files.controller.ts
 │   │   │   │   │   │   ├── files.module.ts
 │   │   │   │   │   │   ├── files.spec.ts
@@ -471,6 +518,8 @@
 │   │   │   │   │   │   ├── sanitizers
 │   │   │   │   │   │   │   ├── image.sanitizer.ts
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── mp4.sanitizer.spec.ts
+│   │   │   │   │   │   │   ├── mp4.sanitizer.ts
 │   │   │   │   │   │   │   ├── pdf.sanitizer.ts
 │   │   │   │   │   │   │   └── sanitizer.ts
 │   │   │   │   │   │   └── storable
@@ -487,6 +536,7 @@
 │   │   │   │   │   ├── health.ts
 │   │   │   │   │   ├── http.spec.ts
 │   │   │   │   │   ├── http.ts
+│   │   │   │   │   ├── observability.spec.ts
 │   │   │   │   │   ├── observability.ts
 │   │   │   │   │   ├── openapi.ts
 │   │   │   │   │   ├── pagination.ts
@@ -500,9 +550,23 @@
 │   │   │   │   │   ├── pipes
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── parse-bigint.pipe.ts
+│   │   │   │   │   ├── security-headers.ts
 │   │   │   │   │   ├── sorting.ts
 │   │   │   │   │   ├── tchap.spec.ts
 │   │   │   │   │   └── tchap.ts
+│   │   │   │   ├── help
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── help-page.spec.ts
+│   │   │   │   │   │   └── help-page.ts
+│   │   │   │   │   ├── help.module.ts
+│   │   │   │   │   ├── help.service.ts
+│   │   │   │   │   └── infrastructure
+│   │   │   │   │       ├── help-page.repository.ts
+│   │   │   │   │       ├── help.controller.ts
+│   │   │   │   │       ├── help.dto.ts
+│   │   │   │   │       ├── queries
+│   │   │   │   │       │   └── detail-help-page.query.ts
+│   │   │   │   │       └── reader-help-page.controller.ts
 │   │   │   │   ├── ingest
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── divergent-script.spec.ts
@@ -615,6 +679,7 @@
 │   │   │   │   │   │   ├── magistrat.dto.ts
 │   │   │   │   │   │   ├── member-repository.ts
 │   │   │   │   │   │   ├── member.dto.ts
+│   │   │   │   │   │   ├── member.utils.spec.ts
 │   │   │   │   │   │   ├── member.utils.ts
 │   │   │   │   │   │   ├── members.service.ts
 │   │   │   │   │   │   └── queries
@@ -659,6 +724,18 @@
 │   │   │   │   │   ├── observation.controller.ts
 │   │   │   │   │   ├── observation.module.ts
 │   │   │   │   │   └── observation.service.ts
+│   │   │   │   ├── remarks
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── remark.spec.ts
+│   │   │   │   │   │   └── remark.ts
+│   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   └── list-remarks.query.ts
+│   │   │   │   │   │   ├── remark.dto.ts
+│   │   │   │   │   │   ├── remark.repository.ts
+│   │   │   │   │   │   └── remarks.controller.ts
+│   │   │   │   │   ├── remarks.module.ts
+│   │   │   │   │   └── remarks.service.ts
 │   │   │   │   ├── report
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── report.spec.ts
@@ -689,7 +766,8 @@
 │   │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   │   ├── detail-summary.query.ts
-│   │   │   │   │   │   │   │   └── get-summary-attachment-url.query.ts
+│   │   │   │   │   │   │   │   ├── get-summary-attachment-url.query.ts
+│   │   │   │   │   │   │   │   └── list-summary-readers.query.ts
 │   │   │   │   │   │   │   ├── summary.dto.ts
 │   │   │   │   │   │   │   ├── summary.repository.ts
 │   │   │   │   │   │   │   └── summary.service.ts
@@ -787,6 +865,8 @@
 │   │   │   │   │       ├── transparence.controller.ts
 │   │   │   │   │       └── transparence.module.ts
 │   │   │   │   ├── shared
+│   │   │   │   │   ├── admin-user-role.enum.spec.ts
+│   │   │   │   │   ├── admin-user-role.enum.ts
 │   │   │   │   │   ├── formation-to-member-role.ts
 │   │   │   │   │   ├── formation-to-user-title.ts
 │   │   │   │   │   ├── formation.enum.ts
@@ -806,11 +886,17 @@
 │   │   │   │   │   ├── nomination-file-lock.enum.ts
 │   │   │   │   │   ├── nomination-file-outcome.enum.spec.ts
 │   │   │   │   │   ├── nomination-file-outcome.enum.ts
+│   │   │   │   │   ├── password.schema.spec.ts
+│   │   │   │   │   ├── password.schema.ts
 │   │   │   │   │   ├── policies
 │   │   │   │   │   │   ├── auditioned-position.policy.spec.ts
 │   │   │   │   │   │   ├── auditioned-position.policy.ts
 │   │   │   │   │   │   ├── nomination-file.policies.spec.ts
-│   │   │   │   │   │   └── nomination-file.policies.ts
+│   │   │   │   │   │   ├── nomination-file.policies.ts
+│   │   │   │   │   │   ├── session.policies.spec.ts
+│   │   │   │   │   │   ├── session.policies.ts
+│   │   │   │   │   │   ├── summary.policies.spec.ts
+│   │   │   │   │   │   └── summary.policies.ts
 │   │   │   │   │   ├── priority.enum.ts
 │   │   │   │   │   ├── proposing-authority.enum.ts
 │   │   │   │   │   ├── report-file-usage.enum.ts
@@ -827,20 +913,20 @@
 │   │   │   │       │   ├── auth-password.ts
 │   │   │   │       │   ├── auth-session.ts
 │   │   │   │       │   ├── auth-user.spec.ts
-│   │   │   │       │   └── auth-user.ts
+│   │   │   │       │   ├── auth-user.ts
+│   │   │   │       │   ├── login-attempt.spec.ts
+│   │   │   │       │   └── login-attempt.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── infrastructure
 │   │   │   │       │   ├── auth.filter.ts
 │   │   │   │       │   ├── cli
-│   │   │   │       │   │   ├── auth-cli.module.ts
-│   │   │   │       │   │   └── register-user.cli.ts
+│   │   │   │       │   │   └── auth-cli.module.ts
 │   │   │   │       │   ├── dto
 │   │   │   │       │   │   ├── auth.dto.ts
 │   │   │   │       │   │   └── openid.dto.ts
 │   │   │   │       │   ├── finders
 │   │   │   │       │   │   └── openid-authentication-request.finder.ts
-│   │   │   │       │   ├── guards
-│   │   │   │       │   │   └── development-environment.guard.ts
+│   │   │   │       │   ├── login-attempt-purge.ts
 │   │   │   │       │   ├── openid-auth.controller.ts
 │   │   │   │       │   ├── password-hasher.ts
 │   │   │   │       │   ├── queries
@@ -848,10 +934,10 @@
 │   │   │   │       │   │   ├── details-user-from-session-id.query.ts
 │   │   │   │       │   │   ├── details-user.query.ts
 │   │   │   │       │   │   ├── find-machine.query.ts
-│   │   │   │       │   │   ├── list-openid-providers.query.ts
-│   │   │   │       │   │   └── list-users.query.ts
+│   │   │   │       │   │   └── list-openid-providers.query.ts
 │   │   │   │       │   └── repositories
-│   │   │   │       │       └── auth-user.repository.ts
+│   │   │   │       │       ├── auth-user.repository.ts
+│   │   │   │       │       └── login-attempt.repository.ts
 │   │   │   │       ├── openid
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── internal
@@ -963,6 +1049,7 @@
 │   │   │   │   ├── agenda.e2e-spec.ts
 │   │   │   │   ├── auditions.e2e-spec.ts
 │   │   │   │   ├── feedback.e2e-spec.ts
+│   │   │   │   ├── help.e2e-spec.ts
 │   │   │   │   ├── lolfi.e2e-spec.ts
 │   │   │   │   ├── magistrat.e2e-spec.ts
 │   │   │   │   ├── members.e2e-spec.ts
@@ -970,7 +1057,9 @@
 │   │   │   │   ├── observation.e2e-spec.ts
 │   │   │   │   ├── official-report.e2e-spec.ts
 │   │   │   │   ├── outcome.e2e-spec.ts
+│   │   │   │   ├── remarks.e2e-spec.ts
 │   │   │   │   ├── report.e2e-spec.ts
+│   │   │   │   ├── rights.e2e-spec.ts
 │   │   │   │   ├── session.e2e-spec.ts
 │   │   │   │   ├── simple-auth.e2e-spec.ts
 │   │   │   │   └── summary.e2e-spec.ts
@@ -980,6 +1069,7 @@
 │   │   │   │   ├── e2e-tokens.ts
 │   │   │   │   ├── files.ts
 │   │   │   │   ├── observation.ts
+│   │   │   │   ├── screenshots.ts
 │   │   │   │   ├── seed.ts
 │   │   │   │   └── wait-for.ts
 │   │   │   └── vitest.d.ts
@@ -1001,6 +1091,7 @@
 │       │       └── nginx.conf.erb
 │       ├── .vscode
 │       │   └── settings.json
+│       ├── CLAUDE.md
 │       ├── docs
 │       │   ├── adr
 │       │   │   ├── 2026-06-15-organisation-des-composants-partages.md
@@ -1027,12 +1118,16 @@
 │       │   ├── features
 │       │   │   ├── administration
 │       │   │   │   ├── components
-│       │   │   │   │   └── AdminUserRole.tsx
-│       │   │   │   └── labels
-│       │   │   │       └── admin-user-enum.ts
+│       │   │   │   │   ├── AdminUserCreationModal.tsx
+│       │   │   │   │   └── GeneratedPasswordInput.tsx
+│       │   │   │   └── hooks
+│       │   │   │       ├── useTitleTakenBackWarning.test.tsx
+│       │   │   │       └── useTitleTakenBackWarning.ts
 │       │   │   ├── auth
 │       │   │   │   ├── components
 │       │   │   │   │   ├── AuthenticationFailedAlert.tsx
+│       │   │   │   │   ├── ChangePasswordForm.tsx
+│       │   │   │   │   ├── ImpersonationBanner.test.tsx
 │       │   │   │   │   ├── ImpersonationBanner.tsx
 │       │   │   │   │   ├── Login.tsx
 │       │   │   │   │   ├── LoginPasswordForm.tsx
@@ -1101,6 +1196,7 @@
 │       │   │   │   │   │   └── useBlockActive.ts
 │       │   │   │   │   ├── document-blocks.fixtures.ts
 │       │   │   │   │   ├── document-content.ts
+│       │   │   │   │   ├── document-viewer.js
 │       │   │   │   │   ├── document.fixture.ts
 │       │   │   │   │   ├── official-report
 │       │   │   │   │   │   ├── OfficialReportBreadCrumb.tsx
@@ -1167,6 +1263,13 @@
 │       │   │   │   └── utils
 │       │   │   │       ├── feedback-invitation.utils.test.ts
 │       │   │   │       └── feedback-invitation.utils.ts
+│       │   │   ├── help
+│       │   │   │   └── components
+│       │   │   │       ├── HelpPageArticle.tsx
+│       │   │   │       ├── HelpPageContent.test.tsx
+│       │   │   │       ├── HelpPageContent.tsx
+│       │   │   │       ├── HelpPageEditor.tsx
+│       │   │   │       └── HelpPageUpdate.tsx
 │       │   │   ├── jobs
 │       │   │   │   ├── components
 │       │   │   │   │   ├── JobFilesList.tsx
@@ -1178,6 +1281,7 @@
 │       │   │   │   ├── types
 │       │   │   │   │   └── job.types.ts
 │       │   │   │   └── utils
+│       │   │   │       ├── by-severity.utils.ts
 │       │   │   │       ├── format-job-duration.utils.ts
 │       │   │   │       ├── job-status.utils.ts
 │       │   │   │       └── tree.utils.ts
@@ -1359,6 +1463,18 @@
 │       │   │   │   │   └── ObservationsModalProvider.tsx
 │       │   │   │   └── utils
 │       │   │   │       └── split-lodam-observers.ts
+│       │   │   ├── remarks
+│       │   │   │   └── components
+│       │   │   │       ├── RemarkButton.test.tsx
+│       │   │   │       ├── RemarkButton.tsx
+│       │   │   │       ├── RemarkOpenAsLink.test.tsx
+│       │   │   │       ├── RemarkOpenAsLink.tsx
+│       │   │   │       ├── RemarkStatusBadge.tsx
+│       │   │   │       ├── RemarkStatusCell.test.tsx
+│       │   │   │       ├── RemarkStatusCell.tsx
+│       │   │   │       ├── RemarkStatusCommentModal.tsx
+│       │   │   │       ├── RemarkStatusCommentModalContext.ts
+│       │   │   │       └── RemarkStatusCommentModalProvider.tsx
 │       │   │   ├── reports
 │       │   │   │   ├── components
 │       │   │   │   │   ├── AttachedFilesList.tsx
@@ -1516,9 +1632,14 @@
 │       │   │       ├── LolfiCsm.tsx
 │       │   │       └── ManageSessionsLink.tsx
 │       │   ├── main.tsx
+│       │   ├── observability.test.ts
+│       │   ├── observability.ts
 │       │   ├── pages
 │       │   │   ├── accessibility
 │       │   │   │   └── AccessibilityPage.tsx
+│       │   │   ├── account
+│       │   │   │   ├── AccountPage.stories.tsx
+│       │   │   │   └── AccountPage.tsx
 │       │   │   ├── auth
 │       │   │   │   └── LoginPage.tsx
 │       │   │   ├── documents
@@ -1559,9 +1680,9 @@
 │       │   │   │   ├── FeedbackPage.stories.tsx
 │       │   │   │   └── FeedbackPage.tsx
 │       │   │   ├── help
-│       │   │   │   ├── HelpPage.tsx
-│       │   │   │   ├── HelpPageButton.tsx
-│       │   │   │   └── UserManualPage.tsx
+│       │   │   │   ├── HelpCenterPage.stories.tsx
+│       │   │   │   ├── HelpCenterPage.tsx
+│       │   │   │   └── HelpPageButton.tsx
 │       │   │   ├── magistrats
 │       │   │   │   ├── MagistratDetailsPage.stories.tsx
 │       │   │   │   ├── MagistratDetailsPage.tsx
@@ -1590,8 +1711,10 @@
 │       │   │   ├── spaces
 │       │   │   │   ├── admin
 │       │   │   │   │   ├── AdminFeedbacksPage.tsx
+│       │   │   │   │   ├── AdminHelpPage.tsx
 │       │   │   │   │   ├── AdminJobDetailsPage.tsx
 │       │   │   │   │   ├── AdminJobsPage.tsx
+│       │   │   │   │   ├── AdminRemarksPage.tsx
 │       │   │   │   │   ├── AdminUserDetailPage.stories.tsx
 │       │   │   │   │   ├── AdminUserDetailPage.tsx
 │       │   │   │   │   ├── AdminUserListPage.tsx
@@ -1619,9 +1742,11 @@
 │       │   │   ├── agenda.queries.ts
 │       │   │   ├── archived-nomination-sessions.queries.ts
 │       │   │   ├── auditions.queries.ts
+│       │   │   ├── auth.queries.test.ts
 │       │   │   ├── auth.queries.ts
 │       │   │   ├── feedback.queries.ts
 │       │   │   ├── files.queries.ts
+│       │   │   ├── help.queries.ts
 │       │   │   ├── ingest.queries.ts
 │       │   │   ├── jobs.queries.ts
 │       │   │   ├── jurisdictions.queries.ts
@@ -1631,10 +1756,13 @@
 │       │   │   ├── observations.queries.test.tsx
 │       │   │   ├── observations.queries.ts
 │       │   │   ├── query-client.ts
+│       │   │   ├── remarks.queries.ts
 │       │   │   ├── reports.queries.ts
 │       │   │   └── summary.queries.ts
 │       │   ├── react-dsfr.d.ts
 │       │   ├── router.tsx
+│       │   ├── routes.test.ts
+│       │   ├── routes.tsx
 │       │   ├── shared
 │       │   │   ├── components
 │       │   │   │   ├── GradeAndPosition.tsx
@@ -1723,10 +1851,16 @@
 │       │   │   │   │   ├── ArchivedSessionProvider.tsx
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useArchivedSession.ts
-│       │   │   │   └── confirm-modal
-│       │   │   │       ├── ConfirmModalProvider.test.tsx
-│       │   │   │       ├── ConfirmModalProvider.tsx
-│       │   │   │       ├── confirm-modal.context.ts
+│       │   │   │   ├── confirm-modal
+│       │   │   │   │   ├── ConfirmModalProvider.test.tsx
+│       │   │   │   │   ├── ConfirmModalProvider.tsx
+│       │   │   │   │   ├── confirm-modal.context.ts
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── floating-actions
+│       │   │   │       ├── FloatingAction.tsx
+│       │   │   │       ├── FloatingActionsContext.ts
+│       │   │   │       ├── FloatingActionsProvider.tsx
+│       │   │   │       ├── FloatingActionsStack.tsx
 │       │   │   │       └── index.ts
 │       │   │   ├── enums
 │       │   │   │   ├── formation.enum.ts
@@ -1736,8 +1870,10 @@
 │       │   │   │   ├── nomination-file-outcome.enum.ts
 │       │   │   │   ├── observation-follow-up.enum.ts
 │       │   │   │   ├── priorite.enum.ts
+│       │   │   │   ├── remark-status.enum.ts
 │       │   │   │   ├── report-status.enum.ts
 │       │   │   │   ├── role.enum.ts
+│       │   │   │   ├── severity.enum.ts
 │       │   │   │   ├── type-de-saisine.enum.ts
 │       │   │   │   └── user-status.enum.ts
 │       │   │   ├── hooks
@@ -1768,6 +1904,7 @@
 │       │   │   │   │   └── usePinnedBar.ts
 │       │   │   │   ├── useRequestFailure
 │       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── useRequestFailure.test.tsx
 │       │   │   │   │   └── useRequestFailure.ts
 │       │   │   │   ├── useScrollToTop
 │       │   │   │   │   ├── index.ts
@@ -1788,6 +1925,7 @@
 │       │   │   │   ├── StoryQueryClient.tsx
 │       │   │   │   ├── Welcome.mdx
 │       │   │   │   ├── document-lifecycles.fixtures.ts
+│       │   │   │   ├── help.fixtures.ts
 │       │   │   │   ├── msw.handlers.ts
 │       │   │   │   ├── seeded-nomination-files.ts
 │       │   │   │   ├── session-files.fixtures.ts
@@ -1888,6 +2026,7 @@
 │       │   │       │       ├── Pulse.css
 │       │   │       │       ├── Pulse.tsx
 │       │   │       │       └── index.ts
+│       │   │       ├── menu.test.tsx
 │       │   │       ├── menu.tsx
 │       │   │       ├── modal
 │       │   │       │   ├── Modal.stories.tsx
@@ -1915,28 +2054,38 @@
 │       │   │       │   ├── buttons
 │       │   │       │   │   ├── BoldButton.tsx
 │       │   │       │   │   ├── BulletListButton.tsx
+│       │   │       │   │   ├── CalloutButton.tsx
 │       │   │       │   │   ├── EditorButton.tsx
 │       │   │       │   │   ├── HeadingButton.tsx
 │       │   │       │   │   ├── HighlightButton.tsx
+│       │   │       │   │   ├── HorizontalRuleButton.tsx
 │       │   │       │   │   ├── ImageUploadButton.tsx
 │       │   │       │   │   ├── IndentDecreaseButton.tsx
 │       │   │       │   │   ├── IndentIncreaseButton.tsx
 │       │   │       │   │   ├── ItalicButton.tsx
+│       │   │       │   │   ├── LinkButton.tsx
 │       │   │       │   │   ├── OrderedListButton.tsx
 │       │   │       │   │   ├── RedoButton.tsx
+│       │   │       │   │   ├── TableButtons.tsx
 │       │   │       │   │   ├── TextColorButton.tsx
 │       │   │       │   │   ├── UnderlineButton.tsx
 │       │   │       │   │   └── UndoButton.tsx
 │       │   │       │   ├── extensions
 │       │   │       │   │   ├── ImageUploadPreview.tsx
+│       │   │       │   │   ├── callout-extension.test.ts
+│       │   │       │   │   ├── callout-extension.ts
 │       │   │       │   │   ├── constant.ts
 │       │   │       │   │   ├── editor-file-uploader.ts
 │       │   │       │   │   ├── file-handler-extension.ts
-│       │   │       │   │   └── useTipTapExtensions.ts
+│       │   │       │   │   ├── pasted-images.test.ts
+│       │   │       │   │   ├── pasted-images.ts
+│       │   │       │   │   ├── useTipTapExtensions.ts
+│       │   │       │   │   └── video-extension.ts
 │       │   │       │   ├── hooks
 │       │   │       │   │   ├── useIsBlurred.ts
 │       │   │       │   │   └── useMarkPriority.ts
 │       │   │       │   ├── index.ts
+│       │   │       │   ├── lower-titles.ts
 │       │   │       │   └── markPriorityFactory.ts
 │       │   │       ├── toast
 │       │   │       │   ├── Toast.stories.tsx
@@ -1955,6 +2104,7 @@
 │       │   │       │   └── index.ts
 │       │   │       └── upload
 │       │   │           ├── Upload.stories.tsx
+│       │   │           ├── Upload.test.tsx
 │       │   │           ├── Upload.tsx
 │       │   │           ├── file-types.ts
 │       │   │           └── index.ts
@@ -1984,19 +2134,25 @@
 │       │   │   ├── matomo.test.ts
 │       │   │   ├── matomo.ts
 │       │   │   ├── multipart-json.ts
+│       │   │   ├── password.utils.test.ts
+│       │   │   ├── password.utils.ts
 │       │   │   ├── position.utils.ts
 │       │   │   ├── route-path.utils.test.ts
 │       │   │   ├── route-path.utils.ts
 │       │   │   ├── session.utils.ts
 │       │   │   ├── string.utils.test.ts
 │       │   │   ├── string.utils.ts
+│       │   │   ├── tab-impersonation.test.ts
+│       │   │   ├── tab-impersonation.ts
 │       │   │   ├── time-only.util.ts
 │       │   │   ├── transparences-breadcrumb.utils.tsx
 │       │   │   ├── types.util.ts
 │       │   │   ├── user.utils.ts
+│       │   │   ├── validation-error.ts
 │       │   │   ├── with-screenshot-urls.test.ts
 │       │   │   └── with-screenshot-urls.ts
-│       │   └── vite-env.d.ts
+│       │   ├── vite-env.d.ts
+│       │   └── zod.config.ts
 │       ├── tests
 │       │   ├── e2e
 │       │   │   ├── file-affectation.spec.ts
@@ -2043,14 +2199,17 @@
 │       └── vitest.setup.ts
 ├── bin
 │   ├── api.sh
+│   ├── delete-unused-files.sh
 │   ├── deploy-staging.sh
 │   └── lolfi-freshness.sh
 ├── docs
-│   └── adr
-│       ├── 2026-06-emploi-de-l-anglais.md
-│       ├── 2026-10-09-nom-complet-d-un-magistrat.md
-│       ├── 2026-10-19-regles-metier-servies-comme-capacites.md
-│       └── 2026-10-20-compilation-avec-typescript-7.md
+│   ├── adr
+│   │   ├── 2026-06-emploi-de-l-anglais.md
+│   │   ├── 2026-10-09-nom-complet-d-un-magistrat.md
+│   │   ├── 2026-10-19-regles-metier-servies-comme-capacites.md
+│   │   ├── 2026-10-20-compilation-avec-typescript-7.md
+│   │   └── 2026-10-22-droit-d-administrateur-hors-du-role.md
+│   └── droits-par-role.md
 ├── package.json
 ├── packages
 │   ├── documents-assets
@@ -2113,4 +2272,4 @@
 │   ├── .gitkeep
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.ts
-440 directories, 1675 files
+469 directories, 1805 files

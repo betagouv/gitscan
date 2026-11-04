@@ -1,36 +1,38 @@
-## Changelog : fondation (30 derniers jours, au 21 octobre 2026)
+## Changelog : fondation (30 derniers jours, au 03/11/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'une amélioration notable de son interface utilisateur et de la gestion des documents officiels. La sécurité a été renforcée, notamment sur l'authentification et la protection des données, tandis qu'un effort important a été porté sur la fiabilité du système via l'extension massive des tests automatisés et la modernisation de l'environnement technique.
+Ce mois a été marqué par un renforcement significatif de la sécurité et de la confidentialité des données, notamment via une meilleure protection des accès et une gestion plus stricte des logs. L'expérience utilisateur a été fluidifiée par l'amélioration de la gestion des fichiers (glisser-déposer, limites de taille) et l'ajout d'outils d'aide et de support directement dans l'interface.
 
 ### Évolutions fonctionnelles
-- **Interface et expérience utilisateur** :
-    - Modernisation des tableaux avec l'intégration de DataTable et unification des écrans de secrétariat et d'administration [#726](https://github.com/betagouv/fondation/issues/726).
-    - Amélioration de la recherche de magistrats directement depuis la navigation [#719](https://github.com/betagouv/fondation/issues/719).
-    - Affichage plus clair des informations de session (badges de formation, accès aux sessions archivées) [#697](https://github.com/betagouv/fondation/issues/697), [#728](https://github.com/betagouv/fondation/issues/728).
-    - Optimisation de l'affichage des noms (Prénom et Nom marital) et des numéros de téléphone des magistrats [#691](https://github.com/betagouv/fondation/issues/691), [#682](https://github.com/betagouv/fondation/issues/682).
-- **Gestion documentaire et rapports** :
-    - Amélioration de la rédaction des rapports officiels : ajout de notes sous les propositions [#772](https://github.com/betagouv/fondation/issues/772), gestion des pluriels dans les ouvertures de rapports [#769](https://github.com/betagouv/fondation/issues/769) et support des sauts de ligne dans les blocs de documents [#671](https://github.com/betagouv/fondation/issues/671).
-    - Meilleure visibilité sur le statut des documents et des agendas à présenter [#720](https://github.com/betagouv/fondation/issues/720), [#605](https://github.com/betagouv/fondation/issues/605).
-    - Restriction des droits pour les rapporteurs (impossibilité de prendre des notes personnelles) [#714](https://github.com/betagouv/fondation/issues/714).
-- **Administration et communication** :
-    - Nouveaux pouvoirs pour les administrateurs : désactivation de comptes et déconnexion forcée des utilisateurs lors d'un changement de mot de passe [#764](https://github.com/betagouv/fondation/issues/764).
-    - Migration des alertes de la plateforme vers Tchap [#689](https://github.com/betagouv/fondation/issues/689).
-    - Mise en place de sondages de satisfaction pour les utilisateurs après chaque session [#686](https://github.com/betagouv/fondation/issues/686), [#681](https://github.com/betagouv/fondation/issues/681).
+- **Gestion des fichiers et documents** : 
+    - Introduction du glisser-déposer pour les téléchargements [#836](https://github.com/betagouv/fondation/issues/836).
+    - Mise en place de limites strictes sur le nombre de fichiers (20 max) [#831](https://github.com/betagouv/fondation/issues/831) et la taille des pièces jointes (50 Mo) [#830](https://github.com/betagouv/fondation/issues/830) pour éviter les échecs d'envoi.
+    - Amélioration de la fiabilité des documents (gestion des doublons, conservation des rapports validés) [#823](https://github.com/betagouv/fondation/issues/823) [#725](https://github.com/betagouv/fondation/issues/725).
+- **Administration et gestion des utilisateurs** :
+    - Refonte de la gestion des utilisateurs, incluant la création de comptes depuis la liste des utilisateurs [#825](https://github.com/betagouv/fondation/issues/825) [#804](https://github.com/betagouv/fondation/issues/804) et la possibilité de désactiver un compte [#764](https://github.com/betagouv/fondation/issues/764).
+    - Affichage de l'historique des modifications par auteur sur les cartes d'utilisateurs [#833](https://github.com/betagouv/fondation/issues/833).
+    - Meilleure visibilité des droits et actions selon le rôle de l'utilisateur [#774](https://github.com/betagouv/fondation/issues/774).
+- **Aide et expérience utilisateur** :
+    - Création d'un centre d'aide rédigé par les administrateurs [#808](https://github.com/betagouv/fondation/issues/808).
+    - Ajout de conseils et d'avertissements contextuels dans l'éditeur de texte [#827](https://github.com/betagouv/fondation/issues/827).
+    - Unification des interfaces de l'administration et du secrétariat via l'utilisation de DataTables [#726](https://github.com/betagouv/fondation/issues/726).
+- **Communication et feedback** :
+    - Migration des alertes vers Tchap au lieu de Mattermost [#689](https://github.com/betagouv/fondation/issues/689).
+    - Mise en place de sondages de satisfaction pour les sessions [#686](https://github.com/betagouv/fondation/issues/686).
+    - Possibilité d'envoyer des remarques depuis n'importe quelle page avec suivi administratif [#848](https://github.com/betagouv/fondation/issues/848).
 
 ### Évolutions techniques
-- **Sécurité** :
-    - Renforcement de la robustesse de l'authentification (protection contre les tentatives de devinettes et gestion des caractères spéciaux) [#732](https://github.com/betagouv/fondation/issues/732).
-    - Nettoyage (sanitization) systématique du HTML pour les rapports, résumés et commentaires afin de prévenir les injections [#762](https://github.com/betagouv/fondation/issues/762), [#759](https://github.com/betagouv/fondation/issues/759).
-    - Correction de vulnérabilités sur les dépendances `multer` et `qs` [#673](https://github.com/betagouv/fondation/issues/673).
-- **Tests et fiabilité** :
-    - Extension massive de la couverture de tests de bout en bout (E2E) couvrant les comptes, les sessions, les pièces jointes, les résumés et les rapports officiels [#755](https://github.com/betagouv/fondation/issues/755), [#754](https://github.com/betagouv/fondation/issues/754), [#753](https://github.com/betagouv/fondation/issues/753), [#752](https://github.com/betagouv/fondation/issues/752), [#751](https://github.com/betagouv/fondation/issues/751), [#750](https://github.com/betagouv/fondation/issues/750), [#737](https://github.com/betagouv/fondation/issues/737), [#736](https://github.com/betagouv/fondation/issues/736).
-- **Architecture et infrastructure** :
+- **Sécurité et confidentialité** :
+    - Renforcement de la protection contre les attaques par force brute (suspension des accès après échecs répétés) [#844](https://github.com/betagouv/fondation/issues/844).
+    - Sécurisation des logs Sentry : suppression des données sensibles (query strings, corps de requête, headers, cookies) pour garantir la confidentialité [#819](https://github.com/betagouv/fondation/issues/819) [#818](https://github.com/betagouv/fondation/issues/818) [#811](https://github.com/betagouv/fondation/issues/811).
+    - Amélioration des en-têtes de sécurité (CSP, HSTS) [#817](https://github.com/betagouv/fondation/issues/817) et correction de vulnérabilités liées à la CSP [#845](https://github.com/betagouv/fondation/issues/845).
+    - Mise à jour de Node.js pour corriger une vulnérabilité (CVE-2026-111497) [#806](https://github.com/betagouv/fondation/issues/806).
+- **Architecture et maintenance** :
     - Migration du monorepo vers TypeScript 7 [#766](https://github.com/betagouv/fondation/issues/766).
-    - Refactorisation pour réduire les cycles d'importation entre les modules et favoriser une communication via des services dédiés [#695](https://github.com/betagouv/fondation/issues/695), [#692](https://github.com/betagouv/fondation/issues/692).
-    - Optimisation de l'envoi des événements Sentry pour contourner les bloqueurs de publicité [#763](https://github.com/betagouv/fondation/issues/763).
-    - Amélioration de la gestion du stockage (nettoyage des fichiers orphelins) [#757](https://github.com/betagouv/fondation/issues/757), [#733](https://github.com/betagouv/fondation/issues/733).
+    - Passage à la spécification OpenAPI 3.1 [#786](https://github.com/betagouv/fondation/issues/786).
+    - Refactorisation de la communication entre modules via des services pour réduire les cycles d'importation [#692](https://github.com/betagouv/fondation/issues/692) [#695](https://github.com/betagouv/fondation/issues/695).
+    - Automatisation du nettoyage nocturne des fichiers orphelins sur le stockage [#843](https://github.com/betagouv/fondation/issues/843) [#757](https://github.com/betagouv/fondation/issues/757).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation sur les règles métier et les procédures d'importation des données LOLFI [#749](https://github.com/betagouv/fondation/issues/749), [#684](https://github.com/betagouv/fondation/issues/684).
-- **Outils** : Amélioration de l'environnement Storybook pour le développement de l'interface [#748](https://github.com/betagouv/fondation/issues/748).
+- Mise à jour de la documentation concernant les règles métier et les processus d'importation LOLFI [#749](https://github.com/betagouv/fondation/issues/749) [#684](https://github.com/betagouv/fondation/issues/684).
+- Améliorations de l'environnement de test et de Storybook [#748](https://github.com/betagouv/fondation/issues/748).
