@@ -39,6 +39,7 @@
 │   ├── controllers
 │   │   ├── api
 │   │   │   ├── base_controller.rb
+│   │   │   ├── errors_controller.rb
 │   │   │   ├── pings_controller.rb
 │   │   │   └── v1
 │   │   │       ├── data_packages
@@ -64,6 +65,7 @@
 │   │       │   └── states_controller.rb
 │   │       ├── deliveries_controller.rb
 │   │       ├── errors_controller.rb
+│   │       ├── memberships_controller.rb
 │   │       ├── sessions_controller.rb
 │   │       └── subscriptions_controller.rb
 │   ├── events
@@ -82,6 +84,7 @@
 │   │       ├── deliveries_helper.rb
 │   │       ├── delivery_events_helper.rb
 │   │       ├── delivery_navigation_helper.rb
+│   │       ├── memberships_helper.rb
 │   │       ├── subscriptions_helper.rb
 │   │       └── support_helper.rb
 │   ├── interactors
@@ -122,6 +125,10 @@
 │   │       │       │   ├── ensure_reply_accepted.rb
 │   │       │       │   └── write_reply.rb
 │   │       │       └── update_with_reply.rb
+│   │       ├── memberships
+│   │       │   ├── index
+│   │       │   │   └── resolve_data_streams.rb
+│   │       │   └── index.rb
 │   │       ├── sessions
 │   │       │   ├── create
 │   │       │   │   ├── check_authentication_level.rb
@@ -204,6 +211,7 @@
 │   ├── policies
 │   │   └── portail
 │   │       ├── delivery_policy.rb
+│   │       ├── membership_policy.rb
 │   │       └── subscription_policy.rb
 │   ├── queries
 │   │   └── api
@@ -261,6 +269,8 @@
 │       │   │   ├── not_found.html.erb
 │       │   │   ├── service_unavailable.html.erb
 │       │   │   └── unprocessable_entity.html.erb
+│       │   ├── memberships
+│       │   │   └── index.html.erb
 │       │   ├── sessions
 │       │   │   ├── _proconnect_button.html.erb
 │       │   │   ├── denied.html.erb
@@ -354,7 +364,8 @@
 │   │   ├── 20260806092109_create_access_decisions.rb
 │   │   ├── 20260826153010_add_insee_code_to_organization_links.rb
 │   │   ├── 20260827133749_create_doorkeeper_tables.rb
-│   │   └── 20260918140000_rename_process_accesses_to_data_stream_accesses.rb
+│   │   ├── 20260918140000_rename_process_accesses_to_data_stream_accesses.rb
+│   │   └── 20261102222131_add_last_signed_in_at_to_memberships.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   ├── seeds
@@ -370,6 +381,7 @@
 │   ├── portail
 │   │   ├── abonnements.feature
 │   │   ├── accueil.feature
+│   │   ├── agents.feature
 │   │   ├── connexion_proconnect.feature
 │   │   └── teledossiers.feature
 │   ├── step_definitions
@@ -414,6 +426,8 @@
 │   └── .keep
 ├── spec
 │   ├── controllers
+│   │   ├── api
+│   │   │   └── base_controller_spec.rb
 │   │   ├── portail
 │   │   │   ├── authentication_spec.rb
 │   │   │   ├── authorization_spec.rb
@@ -451,7 +465,8 @@
 │   │       ├── beta_notice_helper_spec.rb
 │   │       ├── deliveries_helper_spec.rb
 │   │       ├── delivery_events_helper_spec.rb
-│   │       └── delivery_navigation_helper_spec.rb
+│   │       ├── delivery_navigation_helper_spec.rb
+│   │       └── memberships_helper_spec.rb
 │   ├── interactors
 │   │   ├── api
 │   │   │   └── data_packages
@@ -490,6 +505,10 @@
 │   │       │       │   ├── ensure_reply_accepted_spec.rb
 │   │       │       │   └── write_reply_spec.rb
 │   │       │       └── update_with_reply_spec.rb
+│   │       ├── memberships
+│   │       │   ├── index
+│   │       │   │   └── resolve_data_streams_spec.rb
+│   │       │   └── index_spec.rb
 │   │       ├── sessions
 │   │       │   ├── create
 │   │       │   │   ├── check_authentication_level_spec.rb
@@ -566,6 +585,7 @@
 │   ├── policies
 │   │   └── portail
 │   │       ├── delivery_policy_spec.rb
+│   │       ├── membership_policy_spec.rb
 │   │       └── subscription_policy_spec.rb
 │   ├── queries
 │   │   └── api
@@ -573,6 +593,7 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── api
+│   │   │   ├── errors_spec.rb
 │   │   │   ├── oauth
 │   │   │   │   └── token_spec.rb
 │   │   │   ├── ping_spec.rb
@@ -595,6 +616,8 @@
 │   │       │   ├── archives_spec.rb
 │   │       │   └── states_spec.rb
 │   │       ├── deliveries_spec.rb
+│   │       ├── errors_spec.rb
+│   │       ├── memberships_spec.rb
 │   │       ├── sessions_spec.rb
 │   │       └── subscriptions_spec.rb
 │   ├── routing
@@ -609,6 +632,7 @@
 │   │   ├── portail_sign_in.rb
 │   │   ├── portail_uploads.rb
 │   │   ├── proconnect.rb
+│   │   ├── production_exceptions.rb
 │   │   ├── semantic_logger.rb
 │   │   ├── shared_examples_for_boolean_filter_scope.rb
 │   │   ├── shared_examples_for_pagination.rb
@@ -629,4 +653,4 @@
     ├── .keep
     └── javascript
         └── .keep
-170 directories, 461 files
+176 directories, 479 files

@@ -1,34 +1,22 @@
-## Changelog : hubee (30 derniers jours, au 16 octobre 2026)
+## Changelog : hubee (30 derniers jours, au 03 novembre 2026)
 
 ### Résumé
-Ce mois-ci, Hubee a considérablement enrichi ses capacités d'échange documentaire. Les utilisateurs peuvent désormais télécharger plus facilement les pièces reçues, accéder à des archives de documents et interagir avec les dossiers en envoyant des pièces jointes lors des changements d'état. L'interface a également été simplifiée et clarifiée pour offrir une navigation plus intuitive.
+Les récentes évolutions de hubee se concentrent sur l'amélioration de l'expérience utilisateur du portail (gestion des agents, abonnements et suivi des dossiers) et sur un renforcement majeur de la sécurité et de la traçabilité grâce à une gestion plus fine des journaux d'activité et des correctifs de vulnérabilités.
 
 ### Évolutions fonctionnelles
-- **Gestion documentaire améliorée** : 
-    - Possibilité de télécharger les pièces jointes reçues et d'accéder à une archive regroupant les documents d'un télédossier.
-    - Capacité d'envoyer des pièces jointes et des messages lors des changements d'état d'un dossier.
-    - Ajout de liens de téléchargement conformes aux standards DSFR.
-- **Expérience utilisateur et interface** :
-    - Adoption de la terminologie "télédossiers" pour plus de clarté.
-    - Amélioration de la visibilité des informations (noms des flux, états des dossiers, et messages d'erreur explicites).
-    - Ajout d'un bandeau d'information pour orienter les utilisateurs vers le support de la version bêta.
-    - Meilleure gestion de la liste des abonnements de la structure.
-- **Nouveaux workflows** :
-    - Possibilité d'accuser réception d'un nouveau télédossier.
-    - Possibilité de faire progresser un dossier directement depuis sa vue détaillée.
+- **Gestion des agents** : Amélioration de la visibilité avec la possibilité de lister les agents d'une organisation, d'afficher leurs champs détaillés et de suivre leur dernière date de connexion.
+- **Suivi des dossiers et flux** : Nommage plus explicite des flux dans la liste des télédossiers et ajout de la possibilité de marquer un dossier comme "lu".
+- **Communication et archivage** : Mise en place de messages adressés directement aux agents lors des changements d'état d'un dossier et création d'un système d'archivage pour les pièces jointes ajoutées.
+- **Gestion des abonnements** : Ajout de la consultation de la liste des abonnements de la structure.
+- **Interface utilisateur** : Amélioration de la navigation (menu), ajout d'un bandeau d'information sur la phase bêta et corrections typographiques.
 
 ### Évolutions techniques
-- **Observabilité et traçabilité** :
-    - Refonte du système de journalisation (logs) pour inclure l'adresse IP, les exceptions et les redirections sur une seule ligne, facilitant le diagnostic.
-    - Amélioration du suivi des erreurs via Sentry pour les environnements de revue (review apps).
-- **Performance et robustesse** :
-    - Optimisation des connexions à la base de données PostgreSQL (limitation des temps de connexion et connexion prioritaire au nœud primaire).
-    - Amélioration de la gestion des erreurs pour afficher des pages HTML sans solliciter la base de données.
-    - Mise en cache des abonnements pour améliorer la réactivité du portail.
-- **Infrastructure et sécurité** :
-    - Sécurisation des conteneurs par l'utilisation d'images Docker "distroless".
-    - Refactorisation de la gestion des flux et des habilitations pour une architecture plus propre.
+- **Sécurité** : Correction de plusieurs vulnérabilités (CVE) et renforcement de la confidentialité en masquant les données sensibles (nonces, adresses, noms de fichiers) dans les journaux d'activité.
+- **API** : Standardisation des réponses de l'API pour garantir un format JSON systématique, même en cas d'erreur ou de route inconnue, et sécurisation de la lecture des jetons d'authentification.
+- **Observabilité et Logs** : Optimisation de la journalisation pour inclure l'adresse IP des appelants et une meilleure gestion des exceptions et des redirections.
+- **Infrastructure et CI/CD** : Mise à jour de l'environnement Ruby, optimisation des images Docker (utilisation de versions *distroless*) et amélioration des *review apps* (intégration de Sentry et gestion de la file d'attente Solid Queue).
+- **Tests** : Renforcement de la couverture de tests de bout en bout, notamment sur la gestion des agents et l'archivage des pièces.
 
 ### Autres changements
-- **Documentation** : Mise à jour des explications concernant l'authentification et le fonctionnement interne de la recherche de pièces jointes.
-- **Qualité et tests** : Renforcement des tests automatisés de bout en bout, notamment sur les processus de téléchargement et de gestion des archives.
+- **Documentation** : Précisions apportées sur les processus de rattachement des agents lors de l'authentification.
+- **Développement** : Ajout de tâches de préparation de données (*seeds*) pour faciliter l'enrôlement de comptes de test.

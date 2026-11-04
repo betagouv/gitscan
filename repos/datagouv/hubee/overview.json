@@ -1,24 +1,21 @@
 {
   "url": "https://github.com/datagouv/hubee",
   "name": "hubee",
-  "description": "Plateforme d'échange sécurisé de fichiers gouvernementaux conforme aux standards SecNumCloud et RGS. Elle permet la gestion, le transfert et l'archivage de documents sensibles entre administrations.",
+  "description": "Plateforme d'échange sécurisé de fichiers gouvernementaux conforme aux standards SecNumCloud et RGS. Elle permet la gestion de télédossiers et le transfert sécurisé de documents entre administrations.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Authentification & Accès",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Suivi & Traçabilité"
+    "Suivi & Traçabilité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Ruby",
     "Rails",
     "PostgreSQL",
     "Solid Queue",
     "Active Storage",
-    "S3",
     "Pundit",
     "Doorkeeper",
     "OpenID Connect",
@@ -27,18 +24,15 @@
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs",
     "Authentification (composant)",
-    "Scripts & Utilitaires",
-    "ORM & Accès aux données",
-    "Webhooks & Événements"
+    "Tests",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "sso",
-      "session"
+      "sso"
     ],
     "providers": [
       "ProConnect"
@@ -54,18 +48,17 @@
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-10-16T17:22:43+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-11-03T17:21:46+01:00",
+  "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Ruby",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "CI/CD & GitHub Actions",
+    "Ruby on Rails",
     "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Sécurité & Auth",
     "Standards & Schémas"
   ]
 }
