@@ -1,19 +1,42 @@
-## Changelog : dora (30 derniers jours, au 26 octobre 2026)
+## Changelog : dora (30 derniers jours, au 29 octobre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a connu des évolutions majeures centrées sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la page d'accueil et des tableaux de bord. Le système de recherche a été optimisé en passant d'une solution externe à une recherche interne plus intégrée. Parallèlement, des mesures de sécurité importantes ont été déployées pour renforcer la protection des données et des accès.
+Ce mois-ci, la plateforme dora a bénéficié d'une refonte de son interface utilisateur (nouvelle page d'accueil et formulaires simplifiés) et d'une amélioration de l'expérience de recherche. Parallèlement, des mesures de sécurité importantes ont été déployées pour protéger les accès et les données, tout en fiabilisant la gestion des documents et des fichiers.
 
 ### Évolutions fonctionnelles
-- **Refonte de l'interface** : Nouvelle page d'accueil avec onglets par public ([#1449](https://github.com/gip-inclusion/dora/issues/1449)), nouveau tableau de bord pour les gestionnaires de territoires ([#1349](https://github.com/gip-inclusion/dora/issues/1349)) et simplification du formulaire d'édition des services ([#1331](https://github.com/gip-inclusion/dora/issues/1331)).
-- **Recherche** : Remplacement de la recherche Google par une recherche par mots-clés native ([#1464](https://github.com/gip-inclusion/dora/issues/1464)) et meilleure continuité du contexte de localisation entre les différents modes de recherche ([#1476](https://github.com/gip-inclusion/dora/issues/1476)).
-- **Gestion des structures et services** : Simplification des fiches et formulaires de structures ([#1383](https://github.com/gip-inclusion/dora/issues/1383), [#1384](https://github.com/gip-inclusion/dora/issues/1384)), rattachement des structures à des réseaux ([#1382](https://github.com/gip-inclusion/dora/issues/1382)) et support des fichiers `.doc` et `.xls` ([#1415](https://github.com/gip-inclusion/dora/issues/1415)).
-- **Orientations et notifications** : Sécurisation des téléchargements d'exports via des liens envoyés par e-mail ([#1405](https://github.com/gip-inclusion/dora/issues/1405)), redirection des demandes d'orientation vers la plateforme de l'inclusion ([#1463](https://github.com/gip-inclusion/dora/issues/1463)) et ajout d'un bandeau informatif sur la page d'authentification ([#1431](https://github.com/gip-inclusion/dora/issues/1431)).
+- **Interface et Navigation** : 
+    - Refonte de la page d'accueil avec l'introduction d'onglets par type de public [#1449](https://github.com/gip-inclusion/dora/issues/1449).
+    - Simplification de l'affichage des structures (suppression des colonnes de résumé et de détails horaires) [#1385](https://github.com/gip-inclusion/dora/issues/1385).
+    - Nettoyage du menu de navigation (suppression de « Mon portail ») [#1416](https://github.com/gip-inclusion/dora/issues/1416).
+- **Services et Formulaires** : 
+    - Refonte du formulaire d'édition des services pour une meilleure ergonomie [#1331](https://github.com/gip-inclusion/dora/issues/1331).
+    - Amélioration de la saisie avec la présélection automatique du formulaire Dora pour les services [#1462](https://github.com/gip-inclusion/dora/issues/1462) et une meilleure synchronisation des données lors du rendu [#1455](https://github.com/gip-inclusion/dora/issues/1455).
+- **Recherche** : 
+    - Remplacement de la recherche Google par une recherche interne par mots-clés plus performante [#1464](https://github.com/gip-inclusion/dora/issues/1464).
+    - Amélioration de la cohérence de recherche en partageant le dernier lieu sélectionné entre la recherche thématique et la recherche par mots-clés [#1476](https://github.com/gip-inclusion/dora/issues/1476).
+- **Gestion des documents et fichiers** : 
+    - Support étendu des formats de fichiers `.doc` et `.xls` lors des téléchargements [#1415](https://github.com/gip-inclusion/dora/issues/1415).
+    - Correction d'un problème entraînant la perte de documents lors des nettoyages automifères [#1483](https://github.com/gip-inclusion/dora/issues/1483), [#1489](https://github.com/gip-inclusion/dora/issues/1489).
+    - Amélioration de l'affichage des notifications lors du chargement des documents [#1482](https://github.com/gip-inclusion/dora/issues/1482).
+- **Orientations et Utilisateurs** : 
+    - Redirection des demandes d'orientation vers la plateforme de l'inclusion [#1463](https://github.com/gip-inclusion/dora/issues/1463).
+    - Sécurisation du téléchargement des exports via les liens envoyés par e-mail [#1405](https://github.com/gip-inclusion/dora/issues/1405).
+    - Amélioration de la gestion des utilisateurs (prévention des comptes sans nom [#1471](https://github.com/gip-inclusion/dora/issues/1471) et gestion des dates de suspension [#1461](https://github.com/gip-inclusion/dora/issues/1461)).
 
 ### Évolutions techniques
-- **Sécurité** : Renforcement de la protection des endpoints (suppression d'accès non authentifiés pour le diagnostic et la suppression de fichiers [#1477](https://github.com/gip-inclusion/dora/issues/1477), [#1478](https://github.com/gip-inclusion/dora/issues/1478), [#1480](https://github.com/gip-inclusion/dora/issues/1480)), amélioration du rate limiting ([#1440](https://github.com/gip-inclusion/dora/issues/1440)) et fiabilisation de l'authentification ProConnect ([#1479](https://github.com/gip-inclusion/dora/issues/1479), [#1363](https://github.com/gip-inclusion/dora/issues/1363)).
-- **Infrastructure et CI/CD** : Migration des environnements de test (review apps) vers le projet Scalingo dédié ([#1430](https://github.com/gip-inclusion/dora/issues/1430)), mise à jour du SDK Sentry ([#1397](https://github.com/gip-inclusion/dora/issues/1397)) et optimisation des processus de déploiement et de gestion des tâches cron ([#1414](https://github.com/gip-inclusion/dora/issues/1414), [#1419](https://github.com/gip-inclusion/dora/issues/1419)).
-- **Données et stockage** : Optimisation du cheminement des documents dans le stockage S3 ([#1481](https://github.com/gip-inclusion/dora/issues/1481)) et nettoyage des références de documents orphelins ([#1483](https://github.com/gip-inclusion/dora/issues/1483), [#1452](https://github.com/gip-inclusion/dora/issues/1452)).
+- **Sécurité et Accès** : 
+    - Renforcement de la protection contre les accès non autorisés en supprimant plusieurs endpoints de diagnostic et d'upload vulnérables [#1477](https://github.com/gip-inclusion/dora/issues/1477), [#1478](https://github.com/gip-inclusion/dora/issues/1478), [#1480](https://github.com/gip-inclusion/dora/issues/1480).
+    - Amélioration de la gestion du *rate limiting* pour protéger l'API et le front-end [#1440](https://github.com/gip-inclusion/dora/issues/1440), [#1501](https://github.com/gip-inclusion/dora/issues/1501).
+    - Uniformisation et limitation des demandes de liens de connexion pour renforcer l'authentification [#1479](https://github.com/gip-inclusion/dora/issues/1479).
+- **Infrastructure et CI/CD** : 
+    - Automatisation de la relecture des Pull Requests via un nouveau workflow de relecteur [#1497](https://github.com/gip-inclusion/dora/issues/1497).
+    - Optimisation des environnements de test (*review apps*) avec une migration vers le projet `dora-staging` [#1430](https://github.com/gip-inclusion/dora/issues/1430) et une meilleure gestion des noms d'applications [#1434](https://github.com/gip-inclusion/dora/issues/1434).
+    - Amélioration du processus de déploiement et de gestion des tâches cron en CI [#1414](https://github.com/gip-inclusion/dora/issues/1414), [#1419](https://github.com/gip-inclusion/dora/issues/1419).
+- **Architecture et API** : 
+    - Refactorisation des gestionnaires de services pour une meilleure maintenance du code [#1496](https://github.com/gip-inclusion/dora/issues/1496).
+    - Nettoyage de l'API avec la suppression d'endpoints obsolètes (notamment pour le module Emplois) et l'exposition de nouveaux champs (description des structures) [#1421](https://github.com/gip-inclusion/dora/issues/1421).
+    - Sécurisation du stockage S3 en ajoutant des chaînes aléatoires aux chemins des documents [#1481](https://github.com/gip-inclusion/dora/issues/1481).
 
 ### Autres changements
-- **Nettoyage** : Suppression des processus de modération obsolètes pour les services et structures ([#1378](https://github.com/gip-inclusion/dora/issues/1378), [#1380](https://github.com/gip-inclusion/dora/issues/1380)) et retrait d'éléments de menu inutilisés ([#1416](https://github.com/gip-inclusion/dora/issues/1416)).
-- **Configuration** : Mise à jour de la politique de sécurité du contenu (CSP) pour l'intégration de Matomo ([#1409](https://github.com/gip-inclusion/dora/issues/1409)).
+- Ajout d'une indication de la date de mise à jour des données dans l'interface [#1500](https://github.com/gip-inclusion/dora/issues/1500).
+- Mise à jour du fichier de politique de sécurité `security.txt` [#1493](https://github.com/gip-inclusion/dora/issues/1493).

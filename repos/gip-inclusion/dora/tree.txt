@@ -6,8 +6,11 @@
 │       ├── back-ci.yml
 │       ├── create-review-apps.yml
 │       ├── front-ci.yml
-│       └── lint-pr.yml
+│       ├── lint-pr.yml
+│       └── review.yml
 ├── .gitignore
+├── .relecteur
+│   └── config.toml
 ├── .talismanrc
 ├── LICENSE
 ├── README.md
@@ -197,6 +200,7 @@
 │   │   │   │   ├── test_file_upload_validators.py
 │   │   │   │   ├── test_mixins.py
 │   │   │   │   ├── test_throttling.py
+│   │   │   │   ├── test_uploads.py
 │   │   │   │   ├── test_utils.py
 │   │   │   │   ├── test_validators.py
 │   │   │   │   └── test_views.py
@@ -478,6 +482,7 @@
 │   │   │   │       ├── fix_missing_geom.py
 │   │   │   │       ├── import_services.py
 │   │   │   │       ├── label_services.py
+│   │   │   │       ├── remove_dead_service_forms.py
 │   │   │   │       └── send_saved_searches_notifications.py
 │   │   │   ├── migration_utils.py
 │   │   │   ├── migrations
@@ -534,6 +539,7 @@
 │   │   │   │   ├── test_label_services.py
 │   │   │   │   ├── test_logs.py
 │   │   │   │   ├── test_models.py
+│   │   │   │   ├── test_remove_dead_service_forms.py
 │   │   │   │   ├── test_search.py
 │   │   │   │   ├── test_serializers.py
 │   │   │   │   ├── test_service_descriptions.py
@@ -577,10 +583,12 @@
 │   │   │   │   ├── 0005_searchview_kinds_array.py
 │   │   │   │   ├── 0006_alter_orientationview_orientation_status.py
 │   │   │   │   ├── 0007_alter_searchview_kinds.py
+│   │   │   │   ├── 0008_increase_path_title_max_length.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_pageview_event.py
 │   │   │   │   └── test_search_event.py
 │   │   │   └── views.py
 │   │   ├── structures
@@ -1419,6 +1427,7 @@
 │   │   │           ├── store.ts
 │   │   │           └── tabs-links.svelte
 │   │   └── tests
+│   │       ├── hooks.server.test.ts
 │   │       ├── markdownToHTML.test.ts
 │   │       ├── routes
 │   │       │   ├── api
@@ -1473,4 +1482,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-273 directories, 1202 files
+274 directories, 1210 files
