@@ -1,26 +1,26 @@
 {
   "name": "simulateur-eligibilite",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.1",
   "type": "module",
   "scripts": {
     "predev:front": "react-dsfr update-icons",
     "prebuild": "react-dsfr update-icons",
+    "dev": "pnpm run \"/^dev:/\"",
     "dev:front": "vite",
     "dev:server": "node --watch --env-file-if-exists=.env server/server.ts",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "valider-regles": "node scripts/valider-regles.ts",
-    "apercu-cerfa": "node scripts/apercu-cerfa.ts",
     "start": "node server/server.ts",
     "format": "biome format --write",
     "lint": "biome check",
     "lint:fix": "biome check --write",
     "typecheck": "tsc -b",
-    "verifier": "pnpm lint && pnpm typecheck && pnpm knip && pnpm valider-regles && pnpm test && pnpm build",
-    "postbuild": "node scripts/verifier-bundle.ts",
-    "verifier-bundle": "node scripts/verifier-bundle.ts",
+    "verifier": "pnpm lint && pnpm typecheck && pnpm knip && pnpm test && pnpm build",
+    "postbuild": "node tooling/verifier-bundle.ts",
+    "verifier-bundle": "node tooling/verifier-bundle.ts",
+    "regles": "node tooling/regles-publicodes.ts",
     "knip": "knip --directory ../.. --workspace apps/simulateur-eligibilite"
   },
   "engines": {
@@ -28,14 +28,13 @@
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.32.4",
-    "@publicodes/forms": "^0.6.1",
     "express": "^5.1.0",
-    "js-yaml": "4.3.2",
+    "modern-screenshot": "^4.7.0",
     "pdf-lib": "^1.17.1",
-    "publicodes": "^1.10.1",
+    "publicodes": "1.10.1",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "zod": "^4.4.3"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
@@ -43,7 +42,6 @@
     "@testing-library/react": "catalog:",
     "@testing-library/user-event": "catalog:",
     "@types/express": "^5.0.0",
-    "@types/js-yaml": "^4.0.9",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
@@ -52,6 +50,7 @@
     "knip": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "yaml": "2.9.0"
   }
 }

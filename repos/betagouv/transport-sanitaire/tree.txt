@@ -2,7 +2,16 @@
 ├── .claude
 │   ├── settings.json
 │   └── skills
-│       ├── doc-architecture
+│       ├── ajouter-une-seed
+│       │   └── SKILL.md
+│       ├── brancher-le-modele
+│       │   └── SKILL.md
+│       ├── carte-des-chantiers
+│       │   ├── SKILL.md
+│       │   └── gabarit.svg
+│       ├── ecrire-une-decision
+│       │   └── SKILL.md
+│       ├── ecrire-une-regle
 │       │   └── SKILL.md
 │       ├── implement-publicodes-version
 │       │   ├── SKILL.md
@@ -10,21 +19,85 @@
 │       │       └── precedents.md
 │       ├── livrer-une-version
 │       │   └── SKILL.md
-│       ├── regle-de-contribution
-│       │   └── SKILL.md
-│       ├── regle-publicodes
-│       │   └── SKILL.md
-│       └── situation-de-reference
+│       └── revue-d-une-issue
 │           └── SKILL.md
+├── .env.example
+├── .githooks
+│   ├── commit-msg
+│   └── pre-commit
 ├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── chantier.md
+│   │   └── tache.md
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       └── close-issue.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── Procfile
 ├── apps
+│   ├── cli
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
+│   │   ├── README.md
+│   │   ├── bin
+│   │   │   ├── setup.sh
+│   │   │   └── tsp
+│   │   ├── biome.jsonc
+│   │   ├── docs
+│   │   │   └── knowledge
+│   │   │       └── features.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── apps
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── apps.ts
+│   │   │   │   └── features.ts
+│   │   │   ├── commands.ts
+│   │   │   ├── core
+│   │   │   │   ├── invocation.ts
+│   │   │   │   ├── markdown.ts
+│   │   │   │   ├── output.ts
+│   │   │   │   ├── run-program.ts
+│   │   │   │   └── settings.ts
+│   │   │   ├── git
+│   │   │   │   ├── branches.ts
+│   │   │   │   ├── conventional-commits.ts
+│   │   │   │   ├── git.ts
+│   │   │   │   ├── issues.ts
+│   │   │   │   ├── project.ts
+│   │   │   │   ├── pull-requests.ts
+│   │   │   │   └── worktrees.ts
+│   │   │   ├── issues
+│   │   │   │   ├── chantiers.ts
+│   │   │   │   ├── issue.ts
+│   │   │   │   ├── lieux.ts
+│   │   │   │   ├── new.ts
+│   │   │   │   ├── notion-link.ts
+│   │   │   │   ├── sync.ts
+│   │   │   │   ├── tableau.ts
+│   │   │   │   └── titles.ts
+│   │   │   ├── knowledge
+│   │   │   │   ├── docs.ts
+│   │   │   │   ├── rules.ts
+│   │   │   │   └── skills.ts
+│   │   │   ├── machine
+│   │   │   │   ├── doctor.ts
+│   │   │   │   ├── launcher-link.ts
+│   │   │   │   ├── local-files.ts
+│   │   │   │   ├── setup.ts
+│   │   │   │   └── tools.ts
+│   │   │   ├── main.ts
+│   │   │   ├── notion
+│   │   │   │   └── notion.ts
+│   │   │   └── work
+│   │   │       ├── next.ts
+│   │   │       ├── tickets.ts
+│   │   │       └── wip.ts
+│   │   ├── tools.example.json
+│   │   └── tsconfig.json
 │   ├── data-analyzer
 │   │   ├── .env.example
 │   │   ├── AGENTS.md
@@ -32,27 +105,14 @@
 │   │   ├── README.md
 │   │   ├── biome.jsonc
 │   │   ├── docs
-│   │   │   ├── knowledge
-│   │   │   │   ├── adr
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── contributing
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   └── domain
-│   │   │   │       └── etl-part-plateformes.md
-│   │   │   ├── specs
-│   │   │   │   ├── 0. drafts
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 1. backlog
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 2. todo
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 3. doing
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 4. done
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   └── TEMPLATE.md
-│   │   │   └── tasks
-│   │   │       └── TEMPLATE.md
+│   │   │   └── knowledge
+│   │   │       ├── adr
+│   │   │       │   └── .gitkeep
+│   │   │       ├── contributing
+│   │   │       │   └── .gitkeep
+│   │   │       ├── domain
+│   │   │       │   └── etl-part-plateformes.md
+│   │   │       └── features.md
 │   │   ├── mapping.example.json
 │   │   ├── package.json
 │   │   ├── ref
@@ -97,14 +157,22 @@
 │   │   │   ├── 03-reconcile
 │   │   │   │   └── reconcile.ts
 │   │   │   ├── 04-marts
+│   │   │   │   ├── dimensions.ts
 │   │   │   │   ├── mart-article80.ts
+│   │   │   │   ├── mart-plateforme.ts
 │   │   │   │   ├── mart-ratio.ts
-│   │   │   │   ├── mart-rollup-2024.ts
+│   │   │   │   ├── mart-repartition.ts
+│   │   │   │   ├── mart-rollup-annuel.ts
+│   │   │   │   ├── mart-synthese.ts
+│   │   │   │   ├── mart-taux-plateforme.ts
 │   │   │   │   ├── marts.ts
-│   │   │   │   └── plateformes.ts
+│   │   │   │   ├── perimetre.ts
+│   │   │   │   ├── plateformes.ts
+│   │   │   │   └── vehicules.ts
 │   │   │   ├── 05-publish
 │   │   │   │   ├── grist.ts
 │   │   │   │   └── publish.ts
+│   │   │   ├── cible.ts
 │   │   │   ├── contrats.ts
 │   │   │   ├── csv.ts
 │   │   │   ├── fetch-ght.ts
@@ -116,9 +184,14 @@
 │   │   ├── tests
 │   │   │   ├── adapteur-ght-fhir-datagouv.test.ts
 │   │   │   ├── adapteur-plateforme-ght-xlsx.test.ts
+│   │   │   ├── cible.test.ts
 │   │   │   ├── csv.test.ts
 │   │   │   ├── finess.test.ts
-│   │   │   ├── mart-rollup-2024.test.ts
+│   │   │   ├── mart-plateforme.test.ts
+│   │   │   ├── mart-repartition.test.ts
+│   │   │   ├── mart-rollup-annuel.test.ts
+│   │   │   ├── mart-synthese.test.ts
+│   │   │   ├── mart-taux-plateforme.test.ts
 │   │   │   └── marts.test.ts
 │   │   └── tsconfig.json
 │   ├── glossaire-notion
@@ -126,27 +199,14 @@
 │   │   ├── CLAUDE.md
 │   │   ├── biome.jsonc
 │   │   ├── docs
-│   │   │   ├── knowledge
-│   │   │   │   ├── adr
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── contributing
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   └── domain
-│   │   │   │       └── .gitkeep
-│   │   │   ├── specs
-│   │   │   │   ├── 0. drafts
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 1. backlog
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 2. todo
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 3. doing
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   ├── 4. done
-│   │   │   │   │   └── .gitkeep
-│   │   │   │   └── TEMPLATE.md
-│   │   │   └── tasks
-│   │   │       └── TEMPLATE.md
+│   │   │   └── knowledge
+│   │   │       ├── adr
+│   │   │       │   └── .gitkeep
+│   │   │       ├── contributing
+│   │   │       │   └── .gitkeep
+│   │   │       ├── domain
+│   │   │       │   └── .gitkeep
+│   │   │       └── features.md
 │   │   ├── icons
 │   │   │   ├── icon-128.png
 │   │   │   ├── icon-16.png
@@ -165,10 +225,10 @@
 │   │   │   ├── search.ts
 │   │   │   └── storage.ts
 │   │   ├── tests
-│   │   │   ├── Popup.test.tsx
 │   │   │   ├── fixtures
 │   │   │   │   └── glossaire-recordmap.json
 │   │   │   ├── notion.test.ts
+│   │   │   ├── popup.test.tsx
 │   │   │   ├── search.test.ts
 │   │   │   ├── setup.ts
 │   │   │   └── storage.test.ts
@@ -179,371 +239,782 @@
 │   │   └── vite.config.ts
 │   └── simulateur-eligibilite
 │       ├── .env.example
+│       ├── .gitattributes
 │       ├── AGENTS.md
 │       ├── CHANGELOG.md
 │       ├── CLAUDE.md
 │       ├── README.md
 │       ├── biome.jsonc
-│       ├── config
-│       │   ├── tsconfig.app.json
-│       │   ├── tsconfig.base.json
-│       │   ├── tsconfig.node.json
-│       │   ├── tsconfig.server.json
-│       │   └── tsconfig.tests.json
+│       ├── core
+│       │   ├── models
+│       │   │   ├── eligibilite
+│       │   │   │   ├── cibles
+│       │   │   │   │   ├── evaluation.ts
+│       │   │   │   │   └── noms.ts
+│       │   │   │   ├── faits
+│       │   │   │   │   ├── accompagnant.ts
+│       │   │   │   │   ├── ald-exonerante-3-ou-4.ts
+│       │   │   │   │   ├── ald-liee.ts
+│       │   │   │   │   ├── appel-centre15.ts
+│       │   │   │   │   ├── atmp-lie.ts
+│       │   │   │   │   ├── autonomie-professionnel.ts
+│       │   │   │   │   ├── avion-bateau-ligne.ts
+│       │   │   │   │   ├── bariatrique.ts
+│       │   │   │   │   ├── centre-reference-destination.ts
+│       │   │   │   │   ├── centre15-interetablissements.ts
+│       │   │   │   │   ├── communs.ts
+│       │   │   │   │   ├── conditions-soin-verifiees.ts
+│       │   │   │   │   ├── convocation.ts
+│       │   │   │   │   ├── correspondance-univoque.ts
+│       │   │   │   │   ├── critere-*.ts  (7 files)
+│       │   │   │   │   ├── dap-maternite.ts
+│       │   │   │   │   ├── distance-plus-150.ts
+│       │   │   │   │   ├── distance-plus-50.ts
+│       │   │   │   │   ├── evenement-sans-soin.ts
+│       │   │   │   │   ├── exception-*.ts  (8 files)
+│       │   │   │   │   ├── exclusion-soin-prouvee.ts
+│       │   │   │   │   ├── exclusion-transport-prouvee.ts
+│       │   │   │   │   ├── hospitalisation.ts
+│       │   │   │   │   ├── htnm-hors-maternite.ts
+│       │   │   │   │   ├── htnm-segment-verifie.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── mineur-soins-prolonges-a-verifier.ts
+│       │   │   │   │   ├── mineur-soins-prolonges-reconnus.ts
+│       │   │   │   │   ├── motif-camsp.ts
+│       │   │   │   │   ├── motif-pension.ts
+│       │   │   │   │   ├── motif-samsah.ts
+│       │   │   │   │   ├── noms.ts
+│       │   │   │   │   ├── p1-complete.ts
+│       │   │   │   │   ├── p2-complete.ts
+│       │   │   │   │   ├── partage-incompatible.ts
+│       │   │   │   │   ├── permission-charge-patient.ts
+│       │   │   │   │   ├── permission-mineur-admissible.ts
+│       │   │   │   │   ├── permission.ts
+│       │   │   │   │   ├── preconisation.ts
+│       │   │   │   │   ├── prefere-transport-commun.ts
+│       │   │   │   │   ├── prestation-non-couverte-declaree.ts
+│       │   │   │   │   ├── preuve-prescripteur-qualifiante.ts
+│       │   │   │   │   ├── preuve-prestation-absente.ts
+│       │   │   │   │   ├── regime-verifie.ts
+│       │   │   │   │   ├── serie-qualifiante.ts
+│       │   │   │   │   ├── situation-soins-qualifiante.ts
+│       │   │   │   │   ├── source-officielle-active.ts
+│       │   │   │   │   ├── trajet-etranger.ts
+│       │   │   │   │   ├── transfert-article80.ts
+│       │   │   │   │   ├── type-dialyse-non-verifiable.ts
+│       │   │   │   │   ├── urgence-attestee.ts
+│       │   │   │   │   └── urgence-repondue.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── questions
+│       │   │   │   │   ├── p1
+│       │   │   │   │   │   ├── partie-1.ts
+│       │   │   │   │   │   └── questions
+│       │   │   │   │   │       ├── q1-1.ts
+│       │   │   │   │   │       ├── q1-2.ts
+│       │   │   │   │   │       ├── q1-3.ts
+│       │   │   │   │   │       └── q1-4.ts
+│       │   │   │   │   ├── p2
+│       │   │   │   │   │   ├── conditions
+│       │   │   │   │   │   │   ├── branche.ts
+│       │   │   │   │   │   │   ├── permission.ts
+│       │   │   │   │   │   │   ├── retour-penitentiaire.ts
+│       │   │   │   │   │   │   └── sejour.ts
+│       │   │   │   │   │   ├── partie-2.ts
+│       │   │   │   │   │   └── questions
+│       │   │   │   │   │       ├── q2-1.ts
+│       │   │   │   │   │       ├── q2-10.ts
+│       │   │   │   │   │       ├── q2-12.ts
+│       │   │   │   │   │       ├── q2-13.ts
+│       │   │   │   │   │       ├── q2-14.ts
+│       │   │   │   │   │       ├── q2-2-1-a.ts
+│       │   │   │   │   │       ├── q2-2-1-cadre.ts
+│       │   │   │   │   │       ├── q2-2-1-indication.ts
+│       │   │   │   │   │       ├── q2-2-1.ts
+│       │   │   │   │   │       ├── q2-2-5.ts
+│       │   │   │   │   │       ├── q2-3-1.ts
+│       │   │   │   │   │       ├── q2-3-2.ts
+│       │   │   │   │   │       ├── q2-3-3.ts
+│       │   │   │   │   │       ├── q2-3-4.ts
+│       │   │   │   │   │       ├── q2-5.ts
+│       │   │   │   │   │       ├── q2-6.ts
+│       │   │   │   │   │       ├── q2-7.ts
+│       │   │   │   │   │       ├── q2-8-1.ts
+│       │   │   │   │   │       ├── q2-8-2.ts
+│       │   │   │   │   │       ├── q2-8-3.ts
+│       │   │   │   │   │       ├── q2-8-4.ts
+│       │   │   │   │   │       ├── q2-8-5.ts
+│       │   │   │   │   │       └── q2-8-6.ts
+│       │   │   │   │   ├── p3
+│       │   │   │   │   │   ├── conditions
+│       │   │   │   │   │   │   ├── engagement-maternite.ts
+│       │   │   │   │   │   │   ├── evenements.ts
+│       │   │   │   │   │   │   ├── lieux-du-trajet.ts
+│       │   │   │   │   │   │   ├── natures-du-lieu.ts
+│       │   │   │   │   │   │   ├── roles-des-lieux.ts
+│       │   │   │   │   │   │   ├── sens-du-trajet.ts
+│       │   │   │   │   │   │   ├── situations-des-lieux.ts
+│       │   │   │   │   │   │   └── supports-du-complement.ts
+│       │   │   │   │   │   ├── partie-3.ts
+│       │   │   │   │   │   └── questions
+│       │   │   │   │   │       ├── lieu.ts
+│       │   │   │   │   │       ├── q3-1-1.ts
+│       │   │   │   │   │       ├── q3-1-2.ts
+│       │   │   │   │   │       ├── q3-1-3.ts
+│       │   │   │   │   │       ├── q3-2.ts
+│       │   │   │   │   │       ├── q3-3.ts
+│       │   │   │   │   │       ├── q3-4.ts
+│       │   │   │   │   │       ├── q3-5.ts
+│       │   │   │   │   │       ├── q3-6-1.ts
+│       │   │   │   │   │       ├── q3-6-2.ts
+│       │   │   │   │   │       ├── q3-6-3.ts
+│       │   │   │   │   │       ├── q3-7.ts
+│       │   │   │   │   │       └── q3-8.ts
+│       │   │   │   │   ├── question.ts
+│       │   │   │   │   ├── questionnaire.ts
+│       │   │   │   │   └── reponses.ts
+│       │   │   │   ├── rules
+│       │   │   │   │   ├── VERSION
+│       │   │   │   │   ├── catalogue-resultats.json
+│       │   │   │   │   ├── regles.graphe.json
+│       │   │   │   │   ├── regles.json
+│       │   │   │   │   └── regles.publicodes
+│       │   │   │   └── seeds-catalogue.ts
+│       │   │   └── fake
+│       │   │       ├── cibles
+│       │   │       │   ├── evaluation.ts
+│       │   │       │   └── noms.ts
+│       │   │       ├── faits
+│       │   │       │   ├── accompagnements.ts
+│       │   │       │   ├── boisson.ts
+│       │   │       │   ├── citron.ts
+│       │   │       │   ├── communs.ts
+│       │   │       │   ├── index.ts
+│       │   │       │   ├── lait.ts
+│       │   │       │   ├── noms.ts
+│       │   │       │   └── preconisation.ts
+│       │   │       ├── index.ts
+│       │   │       ├── jour.ts
+│       │   │       ├── questions
+│       │   │       │   ├── p1
+│       │   │       │   │   ├── partie-1.ts
+│       │   │       │   │   └── questions
+│       │   │       │   │       ├── accompagnements.ts
+│       │   │       │   │       ├── boisson.ts
+│       │   │       │   │       └── service.ts
+│       │   │       │   ├── p2
+│       │   │       │   │   ├── partie-2.ts
+│       │   │       │   │   └── questions
+│       │   │       │   │       ├── adresse.ts
+│       │   │       │   │       ├── couvercle.ts
+│       │   │       │   │       ├── debut.ts
+│       │   │       │   │       ├── expedition.ts
+│       │   │       │   │       ├── facturation.ts
+│       │   │       │   │       ├── fin.ts
+│       │   │       │   │       ├── jour.ts
+│       │   │       │   │       ├── lieu.ts
+│       │   │       │   │       ├── nom.ts
+│       │   │       │   │       ├── quantite.ts
+│       │   │       │   │       ├── remarque.ts
+│       │   │       │   │       ├── retrait.ts
+│       │   │       │   │       └── ticket.ts
+│       │   │       │   ├── question.ts
+│       │   │       │   └── reponses.ts
+│       │   │       └── seeds-catalogue.ts
+│       │   └── socle
+│       │       ├── decision-engine
+│       │       │   ├── cible.ts
+│       │       │   ├── compile-the-decision-graph.ts
+│       │       │   ├── compute-the-cibles.ts
+│       │       │   ├── decision-graph
+│       │       │   │   ├── diagram.ts
+│       │       │   │   └── graph.ts
+│       │       │   ├── establish-the-faits.ts
+│       │       │   ├── fait
+│       │       │   │   ├── declared.ts
+│       │       │   │   ├── fait.ts
+│       │       │   │   └── regle.ts
+│       │       │   └── index.ts
+│       │       ├── index.ts
+│       │       ├── model.ts
+│       │       ├── questionnaire-engine
+│       │       │   ├── answers
+│       │       │   │   ├── given-answers.ts
+│       │       │   │   └── validated-answers.ts
+│       │       │   ├── conditions
+│       │       │   │   ├── condition.ts
+│       │       │   │   ├── given.ts
+│       │       │   │   ├── local-date-time.ts
+│       │       │   │   ├── reads-in-place.ts
+│       │       │   │   └── what-a-condition-sees.ts
+│       │       │   ├── decide-which-questions-to-ask.ts
+│       │       │   ├── does-a-question-still-matter
+│       │       │   │   ├── can-still-be-asked.ts
+│       │       │   │   ├── faits-changed-by.ts
+│       │       │   │   ├── matters.ts
+│       │       │   │   └── restricted-graph.ts
+│       │       │   ├── index.ts
+│       │       │   ├── question
+│       │       │   │   ├── address.ts
+│       │       │   │   ├── asked
+│       │       │   │   │   ├── address.ts
+│       │       │   │   │   ├── answer-problem.ts
+│       │       │   │   │   ├── choices.ts
+│       │       │   │   │   ├── common.ts
+│       │       │   │   │   ├── context.ts
+│       │       │   │   │   ├── inputs.ts
+│       │       │   │   │   └── question.ts
+│       │       │   │   ├── declared
+│       │       │   │   │   ├── choices.ts
+│       │       │   │   │   ├── factory.ts
+│       │       │   │   │   ├── inputs.ts
+│       │       │   │   │   ├── option.ts
+│       │       │   │   │   ├── page.ts
+│       │       │   │   │   ├── question.ts
+│       │       │   │   │   └── settings.ts
+│       │       │   │   ├── option.ts
+│       │       │   │   └── question.ts
+│       │       │   ├── questionnaire.ts
+│       │       │   └── validate-a-page.ts
+│       │       └── simulation
+│       │           ├── index.ts
+│       │           ├── preconisation.ts
+│       │           ├── result-scope.ts
+│       │           ├── seed.ts
+│       │           └── simulation.ts
 │       ├── docs
-│       │   ├── knowledge
-│       │   │   ├── adr
-│       │   │   │   ├── analytics.md
-│       │   │   │   └── identification.md
-│       │   │   ├── contributing
-│       │   │   │   └── .gitkeep
-│       │   │   └── domain
-│       │   │       ├── composer-les-elements-medicaux.md
-│       │   │       ├── enrichissement-referentiel-saisies-libres.md
-│       │   │       ├── formalisation-mosaique-choix-multiple.md
-│       │   │       ├── gardes-calculees.md
-│       │   │       ├── ordre-du-parcours.md
-│       │   │       ├── page-resultat-administratif.md
-│       │   │       ├── page-resultat-medical.md
-│       │   │       ├── precisions-medicales.md
-│       │   │       ├── socle-du-mapping-documentaire.md
-│       │   │       └── total-dap-permission.md
-│       │   ├── specs
-│       │   │   ├── 0. drafts
-│       │   │   │   ├── .gitkeep
-│       │   │   │   └── 002__cerfa__extraction-module-cerfa.refactor.md
-│       │   │   ├── 1. backlog
-│       │   │   │   └── .gitkeep
-│       │   │   ├── 2. todo
-│       │   │   │   └── .gitkeep
-│       │   │   ├── 3. doing
-│       │   │   │   └── .gitkeep
-│       │   │   ├── 4. done
-│       │   │   │   └── .gitkeep
-│       │   │   └── TEMPLATE.md
-│       │   └── tasks
-│       │       └── TEMPLATE.md
+│       │   └── knowledge
+│       │       ├── CONTEXT.md
+│       │       ├── adr
+│       │       │   ├── analytics.md
+│       │       │   ├── identification.md
+│       │       │   ├── journal-des-decisions-v10.md
+│       │       │   └── metier-et-ecran.md
+│       │       ├── contributing
+│       │       │   └── .gitkeep
+│       │       ├── domain
+│       │       │   ├── enrichissement-referentiel-rattachement.md
+│       │       │   └── livrable-de-l-editeur.md
+│       │       └── features.md
 │       ├── front
-│       │   ├── analytics
-│       │   │   ├── evenements.ts
-│       │   │   └── matomo.ts
-│       │   ├── app
-│       │   │   ├── App.tsx
-│       │   │   ├── BandeauVersion.tsx
-│       │   │   ├── EcranPleinePage.tsx
-│       │   │   ├── Main.tsx
-│       │   │   ├── dsfr-overrides.css
-│       │   │   ├── navigation.ts
-│       │   │   └── outil.ts
-│       │   ├── identification
-│       │   │   ├── Identification.tsx
-│       │   │   ├── pseudonymisation-http.ts
-│       │   │   ├── referentiel-http.ts
-│       │   │   ├── saisie-identite.ts
-│       │   │   └── session.ts
-│       │   ├── outils-produit
-│       │   │   ├── OutilsProduit.tsx
-│       │   │   ├── beta
-│       │   │   │   └── cerfa
-│       │   │   │       ├── BoutonCerfa.tsx
-│       │   │   │       ├── ReviserLeTexteMedical.tsx
-│       │   │   │       ├── cerfa-non-applicable.ts
-│       │   │   │       ├── dap
-│       │   │   │       │   ├── depuis-simulateur.ts
-│       │   │   │       │   ├── document.ts
-│       │   │   │       │   ├── gabarit
-│       │   │   │       │   │   └── cerfa-11575-08.pdf
-│       │   │   │       │   └── remplissage-dap.ts
-│       │   │   │       ├── dates.ts
-│       │   │   │       ├── document.ts
-│       │   │   │       ├── documents.ts
-│       │   │   │       ├── elements-medicaux
-│       │   │   │       │   ├── composition.ts
-│       │   │   │       │   ├── dates.ts
-│       │   │   │       │   ├── debordement-du-texte-medical.ts
-│       │   │   │       │   ├── libelles.ts
-│       │   │   │       │   └── mesure-de-la-zone.ts
-│       │   │   │       ├── mapping.ts
-│       │   │   │       ├── pmt
-│       │   │   │       │   ├── depuis-simulateur.ts
-│       │   │   │       │   ├── document.ts
-│       │   │   │       │   ├── gabarit
-│       │   │   │       │   │   └── cerfa-11574-07.pdf
-│       │   │   │       │   └── remplissage-pmt.ts
-│       │   │   │       ├── remplir-cerfa.ts
-│       │   │   │       ├── remplissage.ts
-│       │   │   │       ├── reponses.ts
+│       │   ├── main.tsx
+│       │   ├── models
+│       │   │   ├── eligibilite
+│       │   │   │   ├── avis.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── indicateur-ald.ts
+│       │   │   │   ├── r2
+│       │   │   │   │   ├── components
+│       │   │   │   │   │   ├── BlocDeConsigne.tsx
+│       │   │   │   │   │   ├── TexteEnrichi.tsx
+│       │   │   │   │   │   ├── autres-termes-du-lexique.ts
+│       │   │   │   │   │   ├── blocs-de-consigne.ts
+│       │   │   │   │   │   ├── cartes-et-badges.ts
+│       │   │   │   │   │   ├── ce-que-lit-un-bloc.ts
+│       │   │   │   │   │   ├── consignes-du-modus.ts
+│       │   │   │   │   │   ├── contexte-du-resultat.ts
+│       │   │   │   │   │   ├── fondement-de-l-accord-prealable.ts
+│       │   │   │   │   │   ├── forme-du-catalogue.ts
+│       │   │   │   │   │   ├── illustrations
+│       │   │   │   │   │   │   ├── ambulance.webp
+│       │   │   │   │   │   │   ├── vehicule-personnel.webp
+│       │   │   │   │   │   │   └── vsl-ou-taxi.webp
+│       │   │   │   │   │   ├── illustrations-des-modes.ts
+│       │   │   │   │   │   ├── page-de-la-fiche.tsx
+│       │   │   │   │   │   ├── precisions.ts
+│       │   │   │   │   │   ├── raison-non-eligible.ts
+│       │   │   │   │   │   ├── sans-blancs-de-trop.ts
+│       │   │   │   │   │   ├── scenarios-de-la-caisse.ts
+│       │   │   │   │   │   ├── scenarios-du-prescripteur.ts
+│       │   │   │   │   │   ├── segments-du-texte.ts
+│       │   │   │   │   │   ├── texte-de-la-permission.ts
+│       │   │   │   │   │   ├── textes-de-l-editeur.ts
+│       │   │   │   │   │   └── variante-du-resultat.ts
+│       │   │   │   │   ├── layouts
+│       │   │   │   │   │   ├── acceptee
+│       │   │   │   │   │   │   ├── FichePositive.tsx
+│       │   │   │   │   │   │   ├── issues.ts
+│       │   │   │   │   │   │   ├── page.tsx
+│       │   │   │   │   │   │   ├── precisions.ts
+│       │   │   │   │   │   │   └── texte.ts
+│       │   │   │   │   │   ├── orientee
+│       │   │   │   │   │   │   ├── PageDuPrescripteur.tsx
+│       │   │   │   │   │   │   ├── issues.ts
+│       │   │   │   │   │   │   ├── page.tsx
+│       │   │   │   │   │   │   ├── precisions.ts
+│       │   │   │   │   │   │   └── texte.ts
+│       │   │   │   │   │   └── refusee
+│       │   │   │   │   │       ├── FicheNegative.tsx
+│       │   │   │   │   │       ├── issues.ts
+│       │   │   │   │   │       ├── page.tsx
+│       │   │   │   │   │       ├── precisions.ts
+│       │   │   │   │   │       └── texte.ts
+│       │   │   │   │   └── r2.tsx
+│       │   │   │   └── r3
+│       │   │   │       ├── gabarits
+│       │   │   │       │   ├── S3138g.pdf
+│       │   │   │       │   ├── S3139h.pdf
+│       │   │   │       │   └── S3141.pdf
+│       │   │   │       ├── r3.tsx
+│       │   │   │       ├── rubriques
+│       │   │   │       │   ├── accident.ts
+│       │   │   │       │   ├── avion-ou-bateau.ts
+│       │   │   │       │   ├── centre-de-reference.ts
+│       │   │   │       │   ├── exoneration.ts
+│       │   │   │       │   ├── liens.ts
+│       │   │   │       │   ├── mode.ts
+│       │   │   │       │   ├── motifs-de-la-dap.ts
+│       │   │   │       │   ├── motifs.ts
+│       │   │   │       │   ├── nombre.ts
+│       │   │   │       │   ├── prescription.ts
+│       │   │   │       │   ├── rubrique.ts
+│       │   │   │       │   ├── texte-medical.ts
+│       │   │   │       │   ├── trajet.ts
+│       │   │   │       │   └── urgence.ts
+│       │   │   │       ├── s3138g
+│       │   │   │       │   └── s3138g.ts
+│       │   │   │       ├── s3139h
+│       │   │   │       │   └── s3139h.ts
 │       │   │   │       └── s3141
-│       │   │   │           ├── depuis-simulateur.ts
-│       │   │   │           ├── document.ts
-│       │   │   │           ├── gabarit
-│       │   │   │           │   └── cerfa-16184-01.pdf
-│       │   │   │           └── remplissage-s3141.ts
-│       │   │   ├── deverrouillage.ts
-│       │   │   ├── labo
-│       │   │   │   ├── BandeauLabo.tsx
-│       │   │   │   ├── Labo.tsx
-│       │   │   │   └── labo.ts
-│       │   │   └── seeds
-│       │   │       ├── GalerieSeeds.tsx
-│       │   │       ├── TableauDesSeeds.tsx
-│       │   │       ├── base-neutre.ts
-│       │   │       ├── catalogue.ts
-│       │   │       └── seed.ts
-│       │   └── simulateur
-│       │       ├── cibles-du-parcours.ts
-│       │       ├── contrat-regles-publicodes.ts
-│       │       ├── dates-de-permission.ts
-│       │       ├── entrees-calculees.ts
-│       │       ├── exception-sans-lieu.ts
-│       │       ├── heure-de-paris.ts
-│       │       ├── lecture-de-situation.ts
-│       │       ├── lieu-effectif.ts
-│       │       ├── moteur.ts
-│       │       ├── nombre-permission-dap.ts
-│       │       ├── passation.ts
-│       │       ├── precision-medicale.ts
-│       │       ├── prescripteur
-│       │       │   ├── Prescripteur.tsx
-│       │       │   └── ResultatMedical.tsx
+│       │   │   │           └── s3141.ts
+│       │   │   └── fake
+│       │   │       ├── adresse.ts
+│       │   │       ├── bon-de-commande.pdf
+│       │   │       ├── bon-de-commande.ts
+│       │   │       ├── illustrations
+│       │   │       │   ├── grande-tasse.svg
+│       │   │       │   ├── tasse.svg
+│       │   │       │   └── verre-glace.svg
+│       │   │       ├── index.ts
+│       │   │       ├── r2.tsx
+│       │   │       └── r3.tsx
+│       │   └── socle
+│       │       ├── analytics
+│       │       │   ├── consent-cms.js
+│       │       │   ├── consent.ts
+│       │       │   ├── events.ts
+│       │       │   ├── index.ts
+│       │       │   └── matomo.ts
+│       │       ├── app
+│       │       │   ├── App.tsx
+│       │       │   ├── Footer.tsx
+│       │       │   ├── SimulateurScreen.tsx
+│       │       │   ├── dsfr-overrides.css
+│       │       │   ├── index.ts
+│       │       │   ├── model-choice.ts
+│       │       │   ├── model-loading.ts
+│       │       │   ├── navigation.ts
+│       │       │   └── simulateur-screen.css
+│       │       ├── cerfa
+│       │       │   ├── CerfaDocument.tsx
+│       │       │   ├── CerfaPreview.tsx
+│       │       │   ├── cerfa.ts
+│       │       │   ├── generate-the-cerfa
+│       │       │   │   ├── box-appearances.ts
+│       │       │   │   ├── check-box.ts
+│       │       │   │   ├── compute-the-dto.ts
+│       │       │   │   ├── dates.ts
+│       │       │   │   ├── fill-the-form.ts
+│       │       │   │   ├── flatten-the-form.ts
+│       │       │   │   ├── generate-the-cerfa.ts
+│       │       │   │   ├── overflow.ts
+│       │       │   │   ├── text-fit.ts
+│       │       │   │   ├── text-sizes.ts
+│       │       │   │   ├── widget-page.ts
+│       │       │   │   └── writable-text.ts
+│       │       │   ├── index.ts
+│       │       │   └── pdf
+│       │       │       ├── PdfActionButton.tsx
+│       │       │       ├── download-a-pdf.ts
+│       │       │       └── print-a-pdf.ts
+│       │       ├── deployed-version.ts
+│       │       ├── developer-tools
+│       │       │   ├── DebugTrace.tsx
+│       │       │   ├── DeveloperTools.tsx
+│       │       │   ├── index.ts
+│       │       │   └── unlock.ts
+│       │       ├── index.ts
+│       │       ├── model.ts
 │       │       ├── questionnaire
-│       │       │   ├── ChampDeFormulaire.tsx
-│       │       │   ├── ChampsDePage.tsx
-│       │       │   ├── Mosaique.tsx
-│       │       │   ├── Parcours.tsx
-│       │       │   ├── TraceParcours.tsx
-│       │       │   ├── aval-invalide.ts
-│       │       │   ├── avancement-automatique.ts
-│       │       │   ├── bornes-de-saisie.ts
-│       │       │   ├── constructeur-de-formulaire.ts
-│       │       │   ├── convocation-revalidation.ts
-│       │       │   ├── etapes-de-la-partie-1.ts
-│       │       │   ├── etapes.ts
-│       │       │   ├── faits-connus.ts
-│       │       │   ├── formes-de-saisie.ts
-│       │       │   ├── invalidation-lieu.ts
-│       │       │   ├── libelle-de-reponse.ts
-│       │       │   ├── lieu-deduit.ts
-│       │       │   ├── mosaique.ts
-│       │       │   ├── pagination.ts
-│       │       │   ├── passation.ts
-│       │       │   ├── recalcul.ts
-│       │       │   ├── rejeu.ts
-│       │       │   ├── reponse-unique.ts
-│       │       │   ├── saisie-a-corriger.ts
-│       │       │   ├── suite-du-parcours.ts
-│       │       │   ├── suivi-de-parcours.ts
-│       │       │   ├── trajet-domicile.ts
-│       │       │   └── visibilite-des-options.ts
-│       │       ├── resultat
-│       │       │   ├── InformationPatient.tsx
-│       │       │   ├── TraceDebug.tsx
-│       │       │   └── Vulgarisation.tsx
-│       │       ├── secretariat
-│       │       │   ├── Secretariat.tsx
-│       │       │   ├── case-de-formulaire.ts
-│       │       │   ├── date-de-prescription.ts
-│       │       │   ├── resultat
-│       │       │   │   ├── Article80.tsx
-│       │       │   │   ├── Bloc1Resultat.tsx
-│       │       │   │   ├── Bloc2Etapes.tsx
-│       │       │   │   ├── Bloc3CasRetenu.tsx
-│       │       │   │   ├── EtapesPatient.tsx
-│       │       │   │   ├── MessageExceptionSansLieu.tsx
-│       │       │   │   ├── ResultatFinal.tsx
-│       │       │   │   ├── cases-documentaires.ts
-│       │       │   │   ├── convocation-dap.tsx
-│       │       │   │   ├── frais-a-prevoir.tsx
-│       │       │   │   ├── modalites-transport.tsx
-│       │       │   │   ├── motifs-de-la-dap.ts
-│       │       │   │   ├── orientation-caisse.tsx
-│       │       │   │   └── urgence-attestee.tsx
-│       │       │   └── rubriques
-│       │       │       ├── rubriques-de-la-dap.ts
-│       │       │       ├── rubriques-du-pmt.ts
-│       │       │       ├── rubriques-du-s3141.ts
-│       │       │       ├── rubriques-en-tete.ts
-│       │       │       ├── rubriques-mode-de-transport.ts
-│       │       │       ├── rubriques-prescripteur.ts
-│       │       │       ├── rubriques-situation-medicale.ts
-│       │       │       └── rubriques-trajet.ts
-│       │       └── validations-documentaires.ts
+│       │       │   ├── QuestionField.tsx
+│       │       │   ├── QuestionnaireForm.tsx
+│       │       │   ├── Stepper.tsx
+│       │       │   ├── advance-alone.ts
+│       │       │   ├── draft-an-answer.ts
+│       │       │   ├── index.ts
+│       │       │   ├── label-a-question.ts
+│       │       │   ├── lay-out-an-address.ts
+│       │       │   ├── questionnaire.ts
+│       │       │   ├── send-to-analytics.ts
+│       │       │   └── word-a-problem.ts
+│       │       ├── rattachement
+│       │       │   ├── RattachementForm.tsx
+│       │       │   ├── RattachementScreen.tsx
+│       │       │   ├── choix.ts
+│       │       │   ├── declarer-la-saisie.ts
+│       │       │   ├── index.ts
+│       │       │   ├── listes.ts
+│       │       │   ├── rattachement-en-session.ts
+│       │       │   ├── referentiel.ts
+│       │       │   ├── saisie-rattachement.ts
+│       │       │   └── structures.ts
+│       │       ├── seeds
+│       │       │   ├── Seeds.tsx
+│       │       │   ├── SeedsScreen.tsx
+│       │       │   ├── SeedsTable.tsx
+│       │       │   └── index.ts
+│       │       ├── simulateur
+│       │       │   ├── Simulateur.tsx
+│       │       │   ├── index.ts
+│       │       │   ├── screens
+│       │       │   │   ├── CerfaScreen.tsx
+│       │       │   │   ├── FeedbackLink.tsx
+│       │       │   │   ├── ResultatScreen.tsx
+│       │       │   │   ├── feedback-link.css
+│       │       │   │   └── resultat-screen.css
+│       │       │   ├── sheet
+│       │       │   │   ├── SheetViewer.tsx
+│       │       │   │   ├── assemble-the-pdf.ts
+│       │       │   │   ├── download-the-sheet.ts
+│       │       │   │   ├── logos
+│       │       │   │   │   ├── assurance-maladie.svg
+│       │       │   │   │   └── ministere-de-la-sante.svg
+│       │       │   │   ├── make-the-sheet-pdf.ts
+│       │       │   │   ├── measure-on-paper.ts
+│       │       │   │   ├── photograph-a-page.ts
+│       │       │   │   ├── print-the-sheet.ts
+│       │       │   │   ├── sheet-numbered-steps.css
+│       │       │   │   ├── sheet-paper.css
+│       │       │   │   ├── sheet-viewer-narrow.css
+│       │       │   │   ├── sheet-viewer-print.css
+│       │       │   │   ├── sheet-viewer.css
+│       │       │   │   └── slice-into-pages.ts
+│       │       │   └── track-the-ald-pathway.ts
+│       │       └── ui
+│       │           ├── AddressField.tsx
+│       │           ├── CheckboxField.tsx
+│       │           ├── ChoiceFieldset.tsx
+│       │           ├── Container.tsx
+│       │           ├── DateField.tsx
+│       │           ├── Disclosure.tsx
+│       │           ├── ErrorLines.tsx
+│       │           ├── IllustratedCards.tsx
+│       │           ├── LoneCheckbox.tsx
+│       │           ├── NumberField.tsx
+│       │           ├── NumberedCards.tsx
+│       │           ├── NumberedSteps.tsx
+│       │           ├── OptionHelp.tsx
+│       │           ├── Panel.tsx
+│       │           ├── RadioField.tsx
+│       │           ├── Reminder.tsx
+│       │           ├── SecondaryButton.tsx
+│       │           ├── SelectField.tsx
+│       │           ├── SheetFollowUp.tsx
+│       │           ├── TextAreaField.tsx
+│       │           ├── TextField.tsx
+│       │           ├── checkbox-card.css
+│       │           ├── disclosure.css
+│       │           ├── illustrated-cards.css
+│       │           ├── index.ts
+│       │           ├── numbered-cards.css
+│       │           ├── numbered-steps.css
+│       │           ├── panel.css
+│       │           └── sheet-follow-up.css
 │       ├── index.html
 │       ├── package.json
-│       ├── regles
-│       │   ├── VERSION
-│       │   └── regles.publicodes
-│       ├── scripts
-│       │   ├── apercu-cerfa.ts
-│       │   ├── valider-regles.ts
-│       │   └── verifier-bundle.ts
 │       ├── server
 │       │   ├── app.ts
 │       │   ├── configuration.ts
-│       │   ├── identification
+│       │   ├── rattachement
 │       │   │   ├── lignes-grist.ts
-│       │   │   ├── pseudonymisation.ts
 │       │   │   ├── referentiel-grist.ts
 │       │   │   ├── referentiel-source.ts
 │       │   │   └── routes.ts
 │       │   └── server.ts
 │       ├── shared
-│       │   ├── identite-pseudonymisee.ts
-│       │   ├── identite-saisie.ts
+│       │   ├── rattachement-saisi.ts
 │       │   └── referentiel.ts
 │       ├── tests
-│       │   ├── analytics
-│       │   │   ├── evenements.test.ts
-│       │   │   └── matomo.test.ts
-│       │   ├── app
-│       │   │   ├── BandeauVersion.test.tsx
-│       │   │   └── Gate.test.tsx
 │       │   ├── architecture.test.ts
-│       │   ├── cerfa
-│       │   │   ├── Raccourci.test.tsx
-│       │   │   ├── Telechargement.test.tsx
-│       │   │   ├── analytics.test.tsx
-│       │   │   ├── depuis-simulateur-dap-mapping.test.ts
-│       │   │   ├── depuis-simulateur-dap.test.ts
-│       │   │   ├── depuis-simulateur-mapping.test.ts
-│       │   │   ├── depuis-simulateur-s3141.test.ts
-│       │   │   ├── depuis-simulateur.test.ts
-│       │   │   ├── elements-medicaux-parcours.test.ts
-│       │   │   ├── elements-medicaux-regles.test.ts
-│       │   │   ├── gabarit.ts
-│       │   │   ├── mapping.test.ts
-│       │   │   ├── remplissage-s3141.test.ts
-│       │   │   ├── remplissage.test.ts
-│       │   │   ├── revision-texte-medical.test.tsx
-│       │   │   └── texte-medical-integral.test.ts
-│       │   ├── identification
-│       │   │   ├── Identification.test.tsx
-│       │   │   ├── enrichissement.test.ts
-│       │   │   ├── grist-ecriture.smoke.test.ts
-│       │   │   ├── grist.smoke.test.ts
-│       │   │   ├── server.test.ts
-│       │   │   ├── serveur-de-test.ts
-│       │   │   └── session.test.ts
+│       │   ├── frontieres-des-racines.test.ts
 │       │   ├── inspection-des-sources.ts
 │       │   ├── lisibilite.test.ts
-│       │   ├── outils-produit
-│       │   │   ├── Encadre.test.tsx
-│       │   │   ├── Galerie.test.tsx
-│       │   │   ├── deverrouillage.test.ts
-│       │   │   ├── labo.test.ts
-│       │   │   └── trace-debug.test.tsx
-│       │   ├── porte.ts
+│       │   ├── miroir-des-sources.test.ts
+│       │   ├── model
+│       │   │   ├── conformite.test.ts
+│       │   │   ├── eligibilite
+│       │   │   │   ├── avis-a-l-ecran.test.tsx
+│       │   │   │   ├── ce-que-lisent-les-resultats.test.ts
+│       │   │   │   ├── cibles
+│       │   │   │   │   ├── faits-de-l-oracle.ts
+│       │   │   │   │   ├── frontieres-de-l-oracle.test.ts
+│       │   │   │   │   ├── garde-de-l-urgence.test.ts
+│       │   │   │   │   ├── mineur.test.ts
+│       │   │   │   │   ├── oracle-par-reponses.test.ts
+│       │   │   │   │   ├── oracle.test.ts
+│       │   │   │   │   ├── scenarios-de-demonstration.json
+│       │   │   │   │   └── scenarios-de-demonstration.test.ts
+│       │   │   │   ├── completer-p3.ts
+│       │   │   │   ├── domaines.test.ts
+│       │   │   │   ├── faits
+│       │   │   │   │   ├── catalogue-des-faits.test.ts
+│       │   │   │   │   ├── exclusion-du-transport.test.ts
+│       │   │   │   │   └── faits-changes-par-une-question.test.ts
+│       │   │   │   ├── filtrage-par-le-graphe.test.ts
+│       │   │   │   ├── formulaire-du-modele.tsx
+│       │   │   │   ├── indicateur-ald.test.ts
+│       │   │   │   ├── modele-aux-gabarits-du-disque.ts
+│       │   │   │   ├── p1
+│       │   │   │   │   ├── ald-et-mineur.test.ts
+│       │   │   │   │   ├── cas-particuliers-a-l-ecran.test.tsx
+│       │   │   │   │   ├── coherence-des-reponses.test.ts
+│       │   │   │   │   ├── faits-de-p1.test.ts
+│       │   │   │   │   ├── lien-ald.ts
+│       │   │   │   │   └── mode-de-transport.test.ts
+│       │   │   │   ├── p2
+│       │   │   │   │   ├── blocages-de-la-permission.test.ts
+│       │   │   │   │   ├── branche.test.ts
+│       │   │   │   │   ├── cadre-du-sejour.test.ts
+│       │   │   │   │   ├── contextes-retires-par-q21.test.ts
+│       │   │   │   │   ├── contextes.test.ts
+│       │   │   │   │   ├── convocation.test.ts
+│       │   │   │   │   ├── dates-de-la-permission.test.ts
+│       │   │   │   │   ├── exceptions-article80.test.ts
+│       │   │   │   │   ├── faits-de-la-prestation.test.ts
+│       │   │   │   │   ├── faits-de-p2.test.ts
+│       │   │   │   │   ├── fin-de-p2.test.ts
+│       │   │   │   │   ├── pages-de-p2-a-l-ecran.test.tsx
+│       │   │   │   │   ├── permission.test.ts
+│       │   │   │   │   ├── prestation.test.ts
+│       │   │   │   │   ├── recette-des-contextes.test.tsx
+│       │   │   │   │   ├── reponses-de-la-branche.ts
+│       │   │   │   │   ├── reponses-de-la-convocation.ts
+│       │   │   │   │   ├── reponses-de-la-permission.ts
+│       │   │   │   │   ├── reponses-des-contextes.ts
+│       │   │   │   │   ├── reponses-du-transfert.ts
+│       │   │   │   │   ├── retour-penitentiaire.test.ts
+│       │   │   │   │   ├── trajet.test.ts
+│       │   │   │   │   └── transfert.test.ts
+│       │   │   │   ├── p3
+│       │   │   │   │   ├── evenements-et-exoneration.test.ts
+│       │   │   │   │   ├── lieux-des-contextes.test.ts
+│       │   │   │   │   ├── lieux-des-sejours.test.ts
+│       │   │   │   │   ├── lieux-du-trajet.test.ts
+│       │   │   │   │   ├── page-de-la-maternite.test.ts
+│       │   │   │   │   ├── questions-des-lieux.ts
+│       │   │   │   │   ├── soin-et-urgence.test.ts
+│       │   │   │   │   └── trajet-du-document.test.ts
+│       │   │   │   ├── parcours.test.tsx
+│       │   │   │   ├── questions-posees-par-seed.test.ts
+│       │   │   │   ├── r2
+│       │   │   │   │   ├── acceptee
+│       │   │   │   │   │   ├── cas-directs-de-la-fiche.test.ts
+│       │   │   │   │   │   ├── consignes-du-modus.test.ts
+│       │   │   │   │   │   ├── contexte-de-la-fiche.test.ts
+│       │   │   │   │   │   ├── demandes-du-test.ts
+│       │   │   │   │   │   ├── fiche-accord-prealable.test.tsx
+│       │   │   │   │   │   ├── fiche-en-ligne-reguliere.test.tsx
+│       │   │   │   │   │   ├── fiche-positive.test.tsx
+│       │   │   │   │   │   ├── fiches-du-patient.test.tsx
+│       │   │   │   │   │   ├── fiches-du-test.ts
+│       │   │   │   │   │   ├── motif-et-rappel-de-l-accord-prealable.test.ts
+│       │   │   │   │   │   ├── texte-de-l-accord-prealable.test.ts
+│       │   │   │   │   │   ├── texte-de-la-fiche-positive.test.ts
+│       │   │   │   │   │   └── texte-de-la-permission.test.ts
+│       │   │   │   │   ├── boutons-a-l-ecran.test.tsx
+│       │   │   │   │   ├── catalogue-resultats.test.ts
+│       │   │   │   │   ├── orientee
+│       │   │   │   │   │   ├── resultat-du-prescripteur.test.tsx
+│       │   │   │   │   │   ├── scenarios-du-prescripteur.test.ts
+│       │   │   │   │   │   └── texte-du-prescripteur.test.ts
+│       │   │   │   │   ├── parcours-ald-et-mineur.test.ts
+│       │   │   │   │   ├── precisions-du-resultat.test.ts
+│       │   │   │   │   ├── refusee
+│       │   │   │   │   │   ├── fiche-negative.test.tsx
+│       │   │   │   │   │   ├── raison-non-eligible.test.ts
+│       │   │   │   │   │   ├── texte-de-la-fiche-negative.test.ts
+│       │   │   │   │   │   └── variante-de-la-raison.test.ts
+│       │   │   │   │   ├── stepper-a-l-ecran.test.tsx
+│       │   │   │   │   ├── textes-des-scenarios-de-demonstration.json
+│       │   │   │   │   ├── textes-des-scenarios-de-demonstration.test.ts
+│       │   │   │   │   ├── trace-du-resultat.test.ts
+│       │   │   │   │   └── traces-du-prescripteur.ts
+│       │   │   │   ├── r3
+│       │   │   │   │   ├── boutons-du-resultat.test.ts
+│       │   │   │   │   ├── centre-de-reference-rempli.test.ts
+│       │   │   │   │   ├── consigne-du-mineur.test.ts
+│       │   │   │   │   ├── documents-du-resultat.test.ts
+│       │   │   │   │   ├── motifs-de-la-dap-remplie.test.ts
+│       │   │   │   │   ├── r3-a-l-ecran.test.tsx
+│       │   │   │   │   ├── reponses-du-cerfa.ts
+│       │   │   │   │   ├── rubriques-de-la-dap.test.ts
+│       │   │   │   │   ├── rubriques-de-la-pmt.test.ts
+│       │   │   │   │   ├── rubriques-du-cerfa.test.ts
+│       │   │   │   │   ├── s3138g-rempli.test.ts
+│       │   │   │   │   ├── s3139h-rempli.test.ts
+│       │   │   │   │   ├── s3141-rempli.test.ts
+│       │   │   │   │   └── texte-medical.test.ts
+│       │   │   │   ├── reponse-changee.test.ts
+│       │   │   │   └── rules
+│       │   │   │       └── declarations.test.ts
+│       │   │   ├── metier-sous-node.test.ts
+│       │   │   └── regles-a-jour.test.ts
+│       │   ├── modules-du-socle.test.ts
 │       │   ├── recette-sans-version.test.ts
-│       │   ├── regles-front.test.ts
-│       │   ├── serveur
-│       │   │   └── configuration.test.ts
 │       │   ├── setup.ts
-│       │   └── simulateur
-│       │       ├── Prescripteur.test.tsx
-│       │       ├── ResultatMedical.test.tsx
-│       │       ├── Secretariat.test.tsx
-│       │       ├── accord-prealable.test.ts
-│       │       ├── adresses-du-trajet.test.tsx
-│       │       ├── adresses-obligatoires.test.ts
-│       │       ├── article-80.test.ts
-│       │       ├── asepsie-explication.test.tsx
-│       │       ├── asepsie.test.ts
-│       │       ├── attente-accord.test.ts
-│       │       ├── aval-invalide.test.ts
-│       │       ├── bornes-de-saisie.test.tsx
-│       │       ├── campagne-*.ts  (9 files)
-│       │       ├── cases-documentaires.test.tsx
-│       │       ├── champs-poses.tsx
-│       │       ├── convocation-aerienne.test.ts
-│       │       ├── convocation-interface.test.tsx
-│       │       ├── convocation-revalidation.test.tsx
-│       │       ├── convocation.test.ts
-│       │       ├── correspondances-documentaires.test.ts
-│       │       ├── couleurs-des-resultats.test.tsx
-│       │       ├── document-du-livrable.ts
-│       │       ├── engagement-maternite.test.tsx
-│       │       ├── entrees-calculees.test.ts
-│       │       ├── etapes.test.ts
-│       │       ├── exceptions-ehpad-usld.test.tsx
-│       │       ├── faits-connus.test.tsx
-│       │       ├── familles.test.ts
-│       │       ├── financement-incomplet.test.ts
-│       │       ├── financement.test.ts
-│       │       ├── financement.ts
-│       │       ├── grille.test.ts
-│       │       ├── impression-du-resultat.test.tsx
-│       │       ├── informations-des-questions.test.ts
-│       │       ├── invalidation-lieu.test.ts
-│       │       ├── libelles-de-reponse.test.tsx
-│       │       ├── lieu-domicile.test.tsx
-│       │       ├── lieux-deduits-resultat.test.tsx
-│       │       ├── livrable.ts
-│       │       ├── matrice-nommee.test.ts
-│       │       ├── matrice.ts
-│       │       ├── migration-du-livrable.ts
-│       │       ├── modalites-transport.test.tsx
-│       │       ├── mosaiques.test.tsx
-│       │       ├── moteur.ts
-│       │       ├── motif-ald.test.tsx
-│       │       ├── motifs-dap.test.ts
-│       │       ├── motifs-de-la-dap.test.tsx
-│       │       ├── nombre-iteratif-pmt.test.ts
-│       │       ├── nombre-permission-dap.test.tsx
-│       │       ├── orientation-bariatrique.test.tsx
-│       │       ├── orientation-caisse-sans-adresse.test.tsx
-│       │       ├── orientation-caisse.test.tsx
-│       │       ├── pages-completes.test.ts
-│       │       ├── parcours.ts
-│       │       ├── partie-2-non-requise.test.ts
-│       │       ├── passation.test.ts
-│       │       ├── permission.test.ts
-│       │       ├── permissions-qualifiees-tot.test.tsx
-│       │       ├── precedent-depuis-un-resultat.test.tsx
-│       │       ├── precisions-medicales.test.tsx
-│       │       ├── radiotherapie-transfert.test.ts
-│       │       ├── regression.test.ts
-│       │       ├── reponses-de-page.ts
-│       │       ├── retour-arriere-sur-q1.test.tsx
-│       │       ├── retour-penitentiaire.test.ts
-│       │       ├── saisies-calendaires.test.tsx
-│       │       ├── scenarios.test.ts
-│       │       ├── situations.ts
-│       │       ├── trajet-du-livrable.ts
-│       │       ├── transferts-qualifies-tot.test.tsx
-│       │       ├── transitions-du-livrable.ts
-│       │       ├── urgence-attestee.test.tsx
-│       │       ├── verrou-de-la-decision-medicale.test.tsx
-│       │       └── visibilite-des-options.test.tsx
+│       │   ├── socle
+│       │   │   ├── analytics
+│       │   │   │   ├── choix-analytics.test.ts
+│       │   │   │   ├── consent-cms.test.ts
+│       │   │   │   ├── evenements.test.ts
+│       │   │   │   └── matomo.test.ts
+│       │   │   ├── app
+│       │   │   │   ├── choix-de-modele.test.tsx
+│       │   │   │   ├── footer.test.tsx
+│       │   │   │   ├── modele-a-la-demande.test.tsx
+│       │   │   │   └── rattachement-obligatoire.test.tsx
+│       │   │   ├── cerfa
+│       │   │   │   ├── avertissement-du-commentaire.test.tsx
+│       │   │   │   ├── fill-cerfa.test.ts
+│       │   │   │   ├── flatten-cerfa.test.ts
+│       │   │   │   ├── generate-cerfa.test.ts
+│       │   │   │   ├── pdf-aplati.ts
+│       │   │   │   └── test-form.ts
+│       │   │   ├── decision-engine
+│       │   │   │   ├── catalogue-des-faits.test.ts
+│       │   │   │   ├── cible.test.ts
+│       │   │   │   ├── constructeur-de-faits.test.ts
+│       │   │   │   ├── fait.test.ts
+│       │   │   │   ├── graphe-de-decision.test.ts
+│       │   │   │   ├── graphe-restreint.test.ts
+│       │   │   │   └── publicodes.test.ts
+│       │   │   ├── developer-tools
+│       │   │   │   ├── encadre.test.tsx
+│       │   │   │   ├── trace-debug.test.tsx
+│       │   │   │   └── unlock.test.ts
+│       │   │   ├── fixtures
+│       │   │   │   ├── modele-factice
+│       │   │   │   │   ├── Resultats.tsx
+│       │   │   │   │   ├── declarations
+│       │   │   │   │   │   ├── cibles.ts
+│       │   │   │   │   │   ├── faits.ts
+│       │   │   │   │   │   └── questions.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── preconisation.ts
+│       │   │   │   │   ├── questionnaire.ts
+│       │   │   │   │   └── seeds-catalogue.ts
+│       │   │   │   └── page-blanche.jpg
+│       │   │   ├── modele-de-test.ts
+│       │   │   ├── questionnaire
+│       │   │   │   ├── adresse-selon-les-reponses.test.tsx
+│       │   │   │   ├── adresse.test.tsx
+│       │   │   │   ├── afficher.tsx
+│       │   │   │   ├── aide-depliable.test.tsx
+│       │   │   │   ├── bornes-de-date.test.tsx
+│       │   │   │   ├── case-seule.test.tsx
+│       │   │   │   ├── dependance-sur-la-page.test.tsx
+│       │   │   │   ├── focus-a-l-entree.test.tsx
+│       │   │   │   ├── incoherence-adresse.test.tsx
+│       │   │   │   ├── incoherence-page-anterieure.test.tsx
+│       │   │   │   ├── libelle.test.tsx
+│       │   │   │   ├── libelles-en-gras.test.tsx
+│       │   │   │   ├── liste-deroulante.test.tsx
+│       │   │   │   ├── nombre-entier.test.tsx
+│       │   │   │   ├── option-description.test.tsx
+│       │   │   │   ├── option-offerte.test.tsx
+│       │   │   │   ├── option-selon-les-reponses.test.tsx
+│       │   │   │   ├── options-incompatibles.test.tsx
+│       │   │   │   ├── page-composee.test.tsx
+│       │   │   │   ├── question-facultative.test.tsx
+│       │   │   │   ├── question-sous-une-option.test.tsx
+│       │   │   │   ├── questions-validees.test.tsx
+│       │   │   │   ├── rappel-en-valeurs.test.tsx
+│       │   │   │   ├── rappel.test.tsx
+│       │   │   │   ├── reponse-bloquante.test.tsx
+│       │   │   │   ├── stepper-des-questions.test.tsx
+│       │   │   │   ├── texte-long.test.tsx
+│       │   │   │   └── validation-croisee.test.tsx
+│       │   │   ├── questionnaire-engine
+│       │   │   │   ├── chemin-d-une-reponse.test.ts
+│       │   │   │   ├── conditions-dans-une-garde.test.ts
+│       │   │   │   ├── conditions.test.ts
+│       │   │   │   ├── constructeurs-de-questions.test.ts
+│       │   │   │   ├── faits-changes-par-une-question.test.ts
+│       │   │   │   ├── lecture-des-reponses.test.ts
+│       │   │   │   ├── local-date-time.test.ts
+│       │   │   │   ├── page-commit.test.ts
+│       │   │   │   ├── question.test.ts
+│       │   │   │   └── questions-qui-comptent.test.ts
+│       │   │   ├── rattachement
+│       │   │   │   ├── rattachement-form.test.tsx
+│       │   │   │   ├── saisie-complete.test.ts
+│       │   │   │   └── session.test.ts
+│       │   │   ├── se-rattacher.ts
+│       │   │   ├── seeds
+│       │   │   │   └── seeds.test.tsx
+│       │   │   ├── server
+│       │   │   │   ├── configuration.test.ts
+│       │   │   │   ├── enrichissement.test.ts
+│       │   │   │   ├── grist-de-test.ts
+│       │   │   │   ├── grist-ecriture.smoke.test.ts
+│       │   │   │   ├── grist.smoke.test.ts
+│       │   │   │   ├── referentiel-grist.test.ts
+│       │   │   │   ├── server.test.ts
+│       │   │   │   └── serveur-de-test.ts
+│       │   │   ├── simulateur
+│       │   │   │   ├── aspect-de-l-avis.test.ts
+│       │   │   │   ├── avis.test.tsx
+│       │   │   │   ├── boutons-des-resultats.test.tsx
+│       │   │   │   ├── disposition-du-second-resultat.test.tsx
+│       │   │   │   ├── gabarit-retenu.ts
+│       │   │   │   ├── indicateur-ald.test.tsx
+│       │   │   │   ├── lock.test.tsx
+│       │   │   │   ├── nom-du-resultat.test.tsx
+│       │   │   │   ├── pagination-de-la-feuille.test.ts
+│       │   │   │   ├── pdf-de-la-feuille.test.ts
+│       │   │   │   ├── premier-resultat.test.tsx
+│       │   │   │   ├── questionnaire-navigation.test.tsx
+│       │   │   │   ├── questionnaire-tracking.test.tsx
+│       │   │   │   ├── questionnaire.tsx
+│       │   │   │   ├── telechargement-de-la-feuille.test.tsx
+│       │   │   │   ├── telechargement-du-cerfa.test.tsx
+│       │   │   │   └── telechargements.ts
+│       │   │   ├── simulation
+│       │   │   │   ├── preconisation.test.ts
+│       │   │   │   └── simulation.test.ts
+│       │   │   └── ui
+│       │   │       └── blocs-du-resultat.test.tsx
+│       │   └── taille-du-code.test.ts
+│       ├── tooling
+│       │   ├── regles-publicodes.ts
+│       │   ├── tsconfig.app.json
+│       │   ├── tsconfig.base.json
+│       │   ├── tsconfig.core.json
+│       │   ├── tsconfig.node.json
+│       │   ├── tsconfig.server.json
+│       │   ├── tsconfig.tests.json
+│       │   └── verifier-bundle.ts
 │       ├── tsconfig.json
 │       └── vite.config.ts
 ├── biome.base.jsonc
 ├── biome.jsonc
 ├── docs
-│   ├── knowledge
-│   │   ├── adr
-│   │   │   └── .gitkeep
-│   │   ├── contributing
-│   │   │   ├── regles-de-code.md
-│   │   │   └── regles-git.md
-│   │   └── domain
-│   │       └── .gitkeep
-│   ├── specs
-│   │   ├── 0. drafts
-│   │   │   └── .gitkeep
-│   │   ├── 1. backlog
-│   │   │   └── .gitkeep
-│   │   ├── 2. todo
-│   │   │   └── .gitkeep
-│   │   ├── 3. doing
-│   │   │   └── .gitkeep
-│   │   ├── 4. done
-│   │   │   └── .gitkeep
-│   │   └── TEMPLATE.md
-│   └── tasks
-│       └── TEMPLATE.md
+│   └── knowledge
+│       ├── CONTEXT.md
+│       ├── adr
+│       │   ├── .gitkeep
+│       │   └── cli.md
+│       ├── carte-des-chantiers.md
+│       ├── contributing
+│       │   ├── ecrire-une-decision.md
+│       │   ├── ecrire-une-regle.md
+│       │   ├── livraisons.md
+│       │   ├── regles-de-code.md
+│       │   └── regles-git.md
+│       └── domain
+│           └── .gitkeep
 ├── knip.jsonc
 ├── mise.toml
 ├── package.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-117 directories, 556 files
+172 directories, 977 files
