@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "La Suite Meet est une solution de visioconférence open-source et sécurisée basée sur LiveKit. Elle offre des performances de haute qualité pour des réunions de grande envergure sans installation requise.",
+  "description": "Une solution de visioconférence simple et performante basée sur LiveKit, offrant des appels vidéo et audio de haute qualité, le partage d'écran et le chat sécurisé.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
-    "Temps réel & WebSocket",
     "Collaboration & Workflow",
-    "Sécurité & Conformité",
+    "Temps réel & WebSocket",
+    "Communication & Messagerie",
     "Gestion des médias & Assets",
-    "Interface utilisateur & Design"
+    "Authentification & Accès",
+    "Interface utilisateur & Design",
+    "Accessibilité & i18n"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,9 +18,10 @@
     "Django Rest Framework",
     "React",
     "Vite.js",
+    "Celery",
     "PostgreSQL",
     "Redis",
-    "Celery",
+    "Nginx",
     "Docker",
     "Kubernetes"
   ],
@@ -32,22 +34,26 @@
     "Docker & Conteneurs",
     "Kubernetes & Helm",
     "Celery & Queue asynchrone",
-    "Authentification (composant)",
-    "Tests"
+    "Serveurs web & Proxy",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "sso",
-      "session"
+      "session",
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "Vitest",
-    "BrowserStack"
+    "BrowserStack",
+    "Vitest"
+  ],
+  "workflows": [
+    "CI/CD",
+    "Déploiement Helm"
   ],
   "lastActivity": "2026-11-01T00:00:00Z",
   "status": "active",
@@ -55,13 +61,12 @@
   "hasDocumentation": true,
   "tags": [
     "Communication & Messagerie",
+    "Docker & Conteneurs",
     "TypeScript",
     "Python",
     "React & Next.js",
-    "Docker & Conteneurs",
-    "Kubernetes & Helm",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "Accessibilité"
+    "CI/CD & GitHub Actions",
+    "Accessibilité",
+    "Écosystème beta.gouv / État"
   ]
 }

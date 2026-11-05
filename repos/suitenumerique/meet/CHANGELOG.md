@@ -8,6 +8,26 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(frontend) add jittered exponential backoff to LiveKit reconnections
+- ✨(frontend) tell participants when a recording is interrupted
+
+### Changed
+
+- ⬆️(frontend) upgrade livekit-client to 2.23.0
+- ✨(backend) expose LiveKit reconnection settings in the config
+- ✨(backend) keep recordings cut short by LiveKit egress
+- ⬆️(dev) upgrade LiveKit server to v1.13.11 and egress to v1.15.0
+- ⬆️(backend) update python dependencies
+- ⬆️(agents) update python dependencies
+- ⬆️(summary) update python dependencies
+
+### Fixed
+
+- 🐛(frontend) show a page when the connection ends unexpectedly
+- 🐛(frontend) show the transcript mic hint when every mic is muted
+
 ## [1.37.0] - 2026-11-01
 
 ### Changed

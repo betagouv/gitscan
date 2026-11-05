@@ -1,38 +1,39 @@
-## Changelog : meet (30 derniers jours, au 01/11/2026)
+## Changelog : meet (30 derniers jours, au 03/11/2026)
 
 ### Résumé
-Ce mois a été marqué par un renforcement majeur de la sécurité et de la traçabilité du système, notamment via l'introduction d'un système d'audit complet. Les utilisateurs bénéficient également d'améliorations de l'accessibilité et de nouvelles options pour la gestion des enregistrements de réunions.
+Ce mois-ci, Meet a franchi une étape importante en renforçant sa sécurité et sa traçabilité grâce à l'introduction d'un système d'audit complet. Les améliorations se sont également concentrées sur la fiabilité des appels vidéo (meilleure gestion des reconnexions) et sur l'expérience utilisateur, notamment via de nouvelles options pour les enregistrements et une meilleure accessibilité.
 
 ### Évolutions fonctionnelles
 - **Enregistrements** : 
-    - Possibilité pour les utilisateurs de choisir l'encodage de l'enregistrement.
-    - Autorisation donnée à tout utilisateur authentifié de lancer un enregistrement.
-- **Expérience utilisateur & Interface** :
-    - Remplacement du chat Crisp par le formulaire de support officiel de La Suite.
-    - Amélioration de la gestion de l'affichage : maintien du panneau d'administration lors du changement de paramètres et respect de l'état "main levée" en mode image dans l'image (PiP).
-    - Test automatique du haut-parleur lorsqu'aucun périphérique de sortie n'est sélectionné.
-    - Protection de la confidentialité : les salles de réunion sont désormais exclues des index des moteurs de recherche.
-- **Accessibilité** :
-    - Annonce vocale lors de la coupure du micro via un raccourci.
-    - Amélioration de la navigation au clavier et de la lisibilité pour la pagination des participants.
-    - Ajout de contours de focus visibles sur les éléments de menu.
+    - Possibilité pour les utilisateurs de choisir l'encodage de leurs enregistrements.
+    - Envoi automatique de notifications par email à la fin d'un enregistrement.
+    - Information des participants en cas d'interruption d'un enregistrement en cours.
+    - Autorisation pour tout utilisateur authentifié de lancer un enregistrement.
+- **Expérience utilisateur et Accessibilité** :
+    - Amélioration de la gestion des déconnexions imprévues avec l'affichage d'une page dédiée.
+    - Ajout d'annonces vocales lors de la coupure du micro via les raccourcis clavier.
+    - Amélioration de la visibilité des éléments de menu (outline de focus) et des indicateurs de micro.
+    - Ajout d'un test de haut-parleur automatique si aucun périphérique de sortie n'est sélectionné.
+- **Confidentialité et Accès** :
+    - Protection des salles de réunion contre l'indexation par les moteurs de recherche et l'IA.
+    - Support de l'authentification via les fragments d'URL et intégration facilitée via iframe (échange de jetons).
+    - Remplacement du chat Crisp par le formulaire de support La Suite.
+- **Gestion des données** : Mise en place de la suppression logique ("soft delete") des salles, avec un nettoyage automatique après une période de rétention.
 
 ### Évolutions techniques
-- **Sécurité & Audit** :
-    - Mise en place d'un système d'audit structuré permettant de tracer les actions sensibles (appels API, création d'utilisateurs, opérations sur les salles, enregistrements et transcriptions).
-    - Renforcement de l'authentification : introduction d'un endpoint d'échange de tokens pour les intégrations en iframe et signature des identifiants de participants.
-    - Sécurisation des secrets applicatifs via le hashage SHA-256 et restriction de l'édition des identifiants clients dans l'administration.
-    - Application de nombreux correctifs de sécurité (CVE) sur des composants critiques (Nginx, Node.js, Django, Brotli, Pillow, aiohttp, etc.).
-- **Backend & Performance** :
-    - Optimisation des performances via l'ajout d'un pool de connexions `psycopg` et d'un index pour la recherche d'utilisateurs par email (insensible à la casse).
-    - Amélioration de la robustesse : ajout de timeouts sur tous les appels à l'API LiveKit et gestion des erreurs de service en cas de dépassement de délai.
-    - Gestion du cycle de vie des salles : implémentation de la suppression logique (soft delete) avec purge automatique après une période de rétention.
-- **Infrastructure & CI/CD** :
-    - Support natif des images Docker pour l'architecture arm64.
-    - Mise à jour de l'infrastructure de résumé (FFmpeg 8.1.3).
-    - Intégration de Vitest pour renforcer la couverture des tests unitaires côté frontend.
-    - Mise à jour des charts Helm pour le déploiement.
+- **Sécurité et Audit** :
+    - Implémentation d'un système d'audit structuré pour tracer les actions sensibles (création d'utilisateurs, échanges de jetons, opérations sur les salles, enregistrements et résumés).
+    - Correction de nombreuses vulnérabilités de sécurité (CVE) sur plusieurs composants : Nginx, Django Rest Framework, Pillow, Brotli, Aiohttp, Libx11 et Tiff.
+    - Sécurisation des secrets d'application via hachage SHA-256 et restriction de l'édition des identifiants clients dans l'administration.
+- **Fiabilité et Performance** :
+    - Amélioration de la robustesse des appels avec une politique de reconnexion par "backoff exponentiel" et une meilleure gestion des timeouts LiveKit.
+    - Optimisation des performances via l'ajout d'un pool de connexions PostgreSQL (psycopg) et d'index pour les recherches d'utilisateurs par email.
+    - Mise à jour majeure de l'infrastructure LiveKit (serveur et egress).
+- **Infrastructure et CI/CD** :
+    - Support natif de l'architecture arm64 pour la construction des assets frontend dans Docker.
+    - Mise à jour des outils de scan de sécurité (Trivy) et des charts Helm.
+    - Optimisation des processus de build et de déploiement.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation de l'audit, du README et des guides de mise à niveau (UPGRADE.md).
-- **Développement** : Nettoyage du code (suppression des `console.log`) et intégration de `gitlint` pour la validation des messages de commit.
+- **Documentation** : Mise à jour de la documentation concernant le nouveau système d'audit et les processus de migration.
+- **Maintenance** : Nettoyage des logs de console et mise à jour de diverses dépendances de développement.
