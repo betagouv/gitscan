@@ -35,6 +35,7 @@
 │       ├── ci.yml
 │       ├── deploy.yml
 │       ├── e2e.yml
+│       ├── ml-deduplication-inference-build-and-push.yml
 │       ├── preview-cleanup.yml
 │       ├── preview-down.yml
 │       ├── preview-up.yml
@@ -294,6 +295,35 @@
 │   │   │           ├── enrich_lien_succession_suggest.py
 │   │   │           ├── enrich_siret_siren_suggest.py
 │   │   │           └── normalize_acteur_cp.py
+│   │   ├── ml_deduplication
+│   │   │   ├── config
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── constants.py
+│   │   │   │   ├── models.py
+│   │   │   │   ├── tasks.py
+│   │   │   │   └── xcoms.py
+│   │   │   ├── dags
+│   │   │   │   └── ml_deduplication_inference.py
+│   │   │   └── tasks
+│   │   │       ├── __init__.py
+│   │   │       ├── airflow_logic
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── acteurs_select_task.py
+│   │   │       │   ├── chain_tasks.py
+│   │   │       │   ├── cleanup_task.py
+│   │   │       │   ├── clusters_select_task.py
+│   │   │       │   ├── config_create_task.py
+│   │   │       │   ├── parents_choose_data_task.py
+│   │   │       │   ├── parents_choose_new_task.py
+│   │   │       │   ├── suggestions_failing_task.py
+│   │   │       │   ├── suggestions_prepare_task.py
+│   │   │       │   └── suggestions_to_db_task.py
+│   │   │       └── business_logic
+│   │   │           ├── __init__.py
+│   │   │           ├── ml_deduplication_acteurs_select.py
+│   │   │           ├── ml_deduplication_cleanup.py
+│   │   │           ├── ml_deduplication_clusters_select.py
+│   │   │           └── ml_deduplication_config_create.py
 │   │   ├── shared
 │   │   │   ├── config
 │   │   │   │   ├── __init__.py
@@ -439,6 +469,7 @@
 │   │   │   │           ├── test_cluster_acteurs_parents_choose_data.py
 │   │   │   │           ├── test_cluster_acteurs_parents_choose_new.py
 │   │   │   │           ├── test_cluster_acteurs_read_children.py
+│   │   │   │           ├── test_cluster_acteurs_read_for_clustering.py
 │   │   │   │           ├── test_cluster_acteurs_read_orphans.py
 │   │   │   │           ├── test_cluster_acteurs_read_parents.py
 │   │   │   │           ├── test_cluster_acteurs_suggestions_contexte_generate.py
@@ -469,6 +500,10 @@
 │   │   │   │       ├── test_enrich_suggestions_closed.py
 │   │   │   │       ├── test_enrich_suggestions_rgpd.py
 │   │   │   │       └── test_normalize_acteur_cp.py
+│   │   │   ├── ml_deduplication
+│   │   │   │   ├── test_ml_deduplication_acteurs_select.py
+│   │   │   │   ├── test_ml_deduplication_clusters_select.py
+│   │   │   │   └── test_ml_deduplication_config_create.py
 │   │   │   ├── shared
 │   │   │   │   ├── config
 │   │   │   │   │   └── test_shared_config_models.py
@@ -803,7 +838,15 @@
 │   │   ├── __init__.py
 │   │   ├── clustering.ipynb
 │   │   ├── clustering_from_file.ipynb
-│   │   ├── deduplication.ipynb
+│   │   ├── deduplication
+│   │   │   ├── .python-version
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── dataset_creation.ipynb
+│   │   │   ├── deduplication_old.ipynb
+│   │   │   ├── feature_engineering.ipynb
+│   │   │   ├── pyproject.toml
+│   │   │   └── training.ipynb
 │   │   └── depuplicate_from_xlsx.ipynb
 │   ├── plugins
 │   │   └── .gitkeep
@@ -811,6 +854,11 @@
 │   └── scripts
 │       ├── db_cleanup.sh
 │       └── infrastructure
+│           ├── ml_deduplication_cloud_init.tpl
+│           ├── ml_deduplication_inference_run.sh
+│           ├── ml_deduplication_instance_create.sh
+│           ├── ml_deduplication_instance_destroy.sh
+│           ├── ml_deduplication_instance_wait.sh
 │           └── purge_db_logs.sh
 ├── docker-compose.yml
 ├── docs
@@ -968,6 +1016,7 @@
 │   │   │   │   └── terragrunt.hcl
 │   │   │   ├── container_registry
 │   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
 │   │   │   ├── database
 │   │   │   │   ├── .terraform.lock.hcl
@@ -981,10 +1030,11 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
-│   │   │   └── object_storage
-│   │   │       ├── .terraform.lock.hcl
-│   │   │       ├── terraform.tfvars.example
-│   │   │       └── terragrunt.hcl
+│   │   │   ├── object_storage
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
+│   │   │   └── terraform.tfvars.example
 │   │   ├── root.hcl
 │   │   └── variables.tf
 │   └── modules
@@ -1035,6 +1085,107 @@
 │           ├── main.tf
 │           ├── outputs.tf
 │           └── variables.tf
+├── ml_deduplication
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .python-version
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── ml_deduplication
+│   │   ├── __init__.py
+│   │   ├── dataset
+│   │   │   ├── __init__.py
+│   │   │   ├── clusters.py
+│   │   │   ├── dataset_creation.py
+│   │   │   ├── features_creation.py
+│   │   │   ├── pairs.py
+│   │   │   ├── sql
+│   │   │   │   ├── cluster_entities.sql
+│   │   │   │   ├── create_nearby_clusters_tmp_tables.sql
+│   │   │   │   ├── create_singleton_entities_tmp_tables.sql
+│   │   │   │   ├── drop_nearby_clusters_tmp_tables.sql
+│   │   │   │   ├── drop_singleton_entities_tmp_tables.sql
+│   │   │   │   ├── entities_features_generation.sql
+│   │   │   │   ├── entities_from_suggestions.sql
+│   │   │   │   ├── nearby_clusters.sql
+│   │   │   │   ├── negatives_pairs_via_parent_change.sql
+│   │   │   │   ├── negatives_pairs_via_random_sampling.sql
+│   │   │   │   ├── pairs_features_generation.sql
+│   │   │   │   ├── pairs_query.sql
+│   │   │   │   ├── positives_pairs_via_random_sampling.sql
+│   │   │   │   └── singleton_entities.sql
+│   │   │   └── utils.py
+│   │   ├── evaluation
+│   │   │   ├── __init__.py
+│   │   │   ├── learning_curve.py
+│   │   │   └── metrics
+│   │   │       ├── __init__.py
+│   │   │       ├── cluster.py
+│   │   │       └── pairwise.py
+│   │   ├── inference
+│   │   │   ├── run_inference.py
+│   │   │   ├── run_inference_splink.py
+│   │   │   └── xgboost
+│   │   │       └── run_inference.py
+│   │   ├── modeling
+│   │   │   ├── dedupe
+│   │   │   │   ├── README.md
+│   │   │   │   ├── clustering.py
+│   │   │   │   ├── model.py
+│   │   │   │   └── xgb_model.py
+│   │   │   ├── splink
+│   │   │   │   ├── README.md
+│   │   │   │   ├── schemas.py
+│   │   │   │   └── splink_model.py
+│   │   │   └── xgboost
+│   │   │       ├── README.md
+│   │   │       ├── blocking.py
+│   │   │       ├── clustering.py
+│   │   │       ├── features_engineering.py
+│   │   │       ├── model.py
+│   │   │       ├── preprocessing.py
+│   │   │       ├── schema.py
+│   │   │       └── utils.py
+│   │   ├── notebooks
+│   │   │   ├── duckdb_v2_blocking_experiment.ipynb
+│   │   │   ├── splink_experiment.ipynb
+│   │   │   └── xgboost_experiment.ipynb
+│   │   └── training
+│   │       ├── __init__.py
+│   │       ├── dedupe
+│   │       │   ├── business_rules.py
+│   │       │   ├── features.py
+│   │       │   ├── model_selection.py
+│   │       │   └── training_pipeline_dedupe.py
+│   │       ├── settings.py
+│   │       ├── splink
+│   │       │   ├── splink_config.py
+│   │       │   └── training_pipeline_splink.py
+│   │       ├── utils.py
+│   │       └── xgboost
+│   │           ├── preprocessing.py
+│   │           ├── training.py
+│   │           ├── training_pipeline_xgboost.py
+│   │           └── utils.py
+│   ├── models
+│   │   └── xgboost
+│   │       ├── calibrator.pkl
+│   │       ├── hyperparameters.json
+│   │       ├── model.json
+│   │       └── training_results.json
+│   ├── pyproject.toml
+│   ├── tests
+│   │   ├── evaluation
+│   │   │   └── test_pairwise_metrics.py
+│   │   └── modeling
+│   │       ├── test_blocking.py
+│   │       ├── test_clustering.py
+│   │       ├── test_features_engineering.py
+│   │       ├── test_model.py
+│   │       ├── test_preprocessing.py
+│   │       └── test_preprocessing_entities.py
+│   └── uv.lock
 ├── package-lock.json
 ├── package.json
 ├── pyproject.toml
@@ -2254,4 +2405,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-405 directories, 1851 files
+435 directories, 1972 files

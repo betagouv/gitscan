@@ -1,19 +1,20 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 25 octobre 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 04/11/2026)
 
 ### Résumé
-Ce mois-ci a été marqué par une refonte majeure de l'interface d'administration des "Suggestions", qui adopte désormais une architecture moderne combinant Django et React. Parallèlement, l'expérience utilisateur a été enrichie par l'amélioration de la recherche d'objets et le déploiement progressif de l'Assistant V2.
+Ce mois-ci a été marqué par une avancée majeure dans la gestion des données avec l'introduction du Machine Learning pour la déduplication des acteurs. Le projet a également vu le déploiement d'un tout nouveau système de gestion des suggestions pour les administrateurs, basé sur une architecture moderne (Django + React), et la poursuite de la transition vers l'Assistant V2 pour les utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Assistant V2** : Redirection automatique des utilisateurs existants vers la nouvelle version [#3480](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3480) et correction de la gestion des synonymes [#3497](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3497).
-- **Gestion des Suggestions (Admin)** : Mise en place d'une nouvelle interface de gestion incluant des actions de masse [#3493](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3493), une validation ligne par ligne [#3492](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3492), et une gestion par cohortes et groupes [#3489](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3489), [#3490](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3490).
-- **Recherche & Navigation** : Amélioration du scoring de la recherche d'objets pour plus de pertinence [#3388](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3388) et correction de la navigation (bouton précédent) dans les formulaires [#3433](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3433).
-- **Interface utilisateur** : Ajustements visuels de l'administration (largeur des menus déroulants [#3496](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3496)) et rendu des informations de tri plus discret par défaut [#3403](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3403).
+- **Nouveau système de gestion des suggestions (Interface Admin) :** Mise en place d'une interface complète permettant la revue, la validation par ligne, les actions de masse, et la gestion de cohortes de suggestions via des onglets et des menus de sélection [#3487, #3488, #3489, #3490, #3491, #3492, #3493, #3533, #3534, #3536].
+- **Assistant V2 :** Redirection automatique des utilisateurs existants vers la nouvelle version de l'assistant [#3480] et correction du suivi des slugs de synonymes [#3497].
+- **Accessibilité et UX :** Amélioration de l'accessibilité des boutons dans les modales [#3590] et correction de la persistance de la géolocalisation dans les iframes lors de redirections vers d'autres domaines [#3498].
+- **Interface Admin :** Ajustement du design CSS pour optimiser l'affichage des menus de sélection [#3496].
 
 ### Évolutions techniques
-- **Architecture** : Implémentation du nouveau socle architectural Django + React pour le module de suggestions [#3488](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3488) et mise à jour de la structure pour gérer les suggestions de clusters [#3536](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3536).
-- **Pipeline de données (Airflow & DBT)** : Migration des processus d'enrichissement (DAGs) vers la nouvelle architecture de suggestions [#3530](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3530), correction du processus DBT pour l'enrichissement SIRET/SIREN [#3532](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3532) et amélioration de la précision des logs Airflow [#3522](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3522).
-- **Infrastructure & DevOps** : Suppression de l'infrastructure Metabase en préproduction [#3409](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3409), optimisation du nettoyage des environnements de preview [#3385](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3385) et renforcement de la sécurité via l'utilisation de variables d'environnement pour les commandes de base de données [#3448](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3448).
-- **Refactoring** : Déplacement des paramètres des workers vers le module API [#3463](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3463) et correction de la gestion du cache Nginx pour l'Assistant [#3486](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3486).
+- **Données & Machine Learning :** Implémentation d'une approche par Machine Learning pour la déduplication des acteurs [#3176] et optimisation des pipelines d'enrichissement de données via Airflow et DBT [#3530, #3532, #3562].
+- **Architecture :** Mise en place d'un nouveau socle architectural combinant Django et React pour le module de suggestions [#3488] et migration des paramètres des workers vers le module API [#3463].
+- **Infrastructure & DevOps :** Résolution de problèmes de gestion de cache dans la CI [#3569], correction de la gestion du cache Nginx pour l'assistant [#3486] et suppression de l'infrastructure Metabase en environnement de préproduction [#3409].
+- **Observabilité & Configuration :** Amélioration de la précision des logs (Airflow et erreurs de commandes bash) [#3522, #531] et paramétrage du port de la base de données via variable d'environnement pour le développement local [#3415].
+- **Base de données :** Mise à jour des droits de lecture sur l'ensemble du schéma [#3405].
 
 ### Autres changements
-- **Documentation** : Ajout de la documentation relative aux nouvelles fonctionnalités de suggestion dans l'administration [#3494](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3494).
+- **Documentation :** Ajout de la documentation relative au nouveau système de suggestions administratives [#3494].
