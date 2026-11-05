@@ -2,11 +2,15 @@
 ├── .env.example
 ├── .gitattributes
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── ci.yml
+│       ├── gitleaks.yml
 │       ├── msb-runtime-watch.yml
+│       ├── osv-scanner.yml
 │       └── release-please.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .pre-commit-config.yaml
 ├── .release-please-manifest.json
 ├── CHANGELOG.md
@@ -16,6 +20,7 @@
 │   ├── agentvm-base-prep.sh
 │   ├── assets.go
 │   ├── assets_test.go
+│   ├── browser-guest-prep.sh
 │   ├── guest-prep.sh
 │   └── opencode-config.json
 ├── cmd
@@ -25,67 +30,137 @@
 │       ├── auth_test.go
 │       ├── bindings.go
 │       ├── bindings_test.go
+│       ├── exit_screen.go
+│       ├── exit_screen_test.go
 │       ├── github.go
+│       ├── huh_ui.go
+│       ├── huh_ui_test.go
+│       ├── import.go
+│       ├── import_test.go
 │       ├── init.go
 │       ├── init_test.go
+│       ├── intro_echo_unix_test.go
+│       ├── launch_test.go
 │       ├── main.go
 │       ├── main_test.go
+│       ├── mcp.go
+│       ├── mcp_test.go
 │       ├── models.go
+│       ├── multiselect_pty_unix_test.go
+│       ├── multiselect_render_test.go
+│       ├── ports.go
+│       ├── secrets.go
+│       ├── secrets_bindings.go
+│       ├── secrets_bindings_atomicity_test.go
+│       ├── secrets_bindings_confirm_test.go
+│       ├── secrets_bindings_test.go
+│       ├── secrets_guest_readable_refusal_test.go
+│       ├── secrets_guest_readable_test.go
+│       ├── secrets_test.go
 │       ├── setup.go
+│       ├── setup_platform_test.go
 │       ├── setup_test.go
+│       ├── stats.go
+│       ├── stats_test.go
 │       ├── trust.go
+│       ├── update.go
 │       ├── version.go
 │       ├── workspace.go
+│       ├── workspace_apply.go
 │       └── workspace_test.go
 ├── docs
 │   ├── config.md
+│   ├── credentials.md
 │   ├── decisions
 │   │   ├── 2026-09-23-opencode-configuration-contract.md
 │   │   ├── 2026-09-24-microsandbox-credential-transport.md
 │   │   ├── 2026-09-24-microsandbox-guest-capabilities.md
-│   │   └── 2026-09-24-sealed-workspace.md
+│   │   ├── 2026-09-24-sealed-workspace.md
+│   │   ├── 2026-10-06-huh-wizard-ui.md
+│   │   ├── 2026-10-07-dotenv-secret-delivery.md
+│   │   ├── 2026-10-15-guest-readable-secret-delivery.md
+│   │   └── 2026-10-27-multi-platform-inference.md
+│   ├── design.md
 │   ├── development.md
-│   └── plans
-│       ├── albert-code-parity-architecture.md
-│       └── albert-code-parity.md
+│   ├── installation.md
+│   ├── plans
+│   │   ├── albert-code-parity-architecture.md
+│   │   └── albert-code-parity.md
+│   ├── plateformes.md
+│   ├── qualification-beta.md
+│   ├── quickstart.md
+│   ├── runtime-agent-vm.md
+│   ├── runtime-microsandbox.md
+│   ├── runtime-tart.md
+│   ├── stats.md
+│   ├── troubleshooting.md
+│   ├── usage.md
+│   └── workspace-security.md
 ├── go.mod
 ├── go.sum
 ├── internal
 │   └── justcode
 │       ├── agentvm.go
 │       ├── agentvm_test.go
+│       ├── agentvmimage.go
+│       ├── agentvmimage_test.go
 │       ├── agentvmtemplate.go
 │       ├── agentvmtemplate_test.go
+│       ├── albert_import.go
+│       ├── albert_import_test.go
 │       ├── approvals.go
 │       ├── bindings.go
 │       ├── bindings_test.go
+│       ├── browser_mcp_test.go
 │       ├── config.go
 │       ├── config_test.go
 │       ├── credentials.go
-│       ├── credentials_*.go  (13 files)
+│       ├── credentials_*.go  (15 files)
 │       ├── detach_unix.go
 │       ├── detach_windows.go
+│       ├── diagnostics.go
+│       ├── diagnostics_test.go
+│       ├── diagnostics_version_probe_test.go
 │       ├── diskfree_unix.go
 │       ├── diskfree_windows.go
 │       ├── dispatcher.go
 │       ├── dispatcher_test.go
 │       ├── exec.go
 │       ├── exec_test.go
+│       ├── filesystem_retry.go
+│       ├── filesystem_retry_other.go
+│       ├── filesystem_retry_test.go
+│       ├── filesystem_retry_windows.go
 │       ├── github.go
 │       ├── github_guest.go
 │       ├── github_test.go
+│       ├── gitleaks.go
+│       ├── gitleaks_test.go
 │       ├── guest.go
 │       ├── guest_test.go
 │       ├── health.go
 │       ├── health_test.go
+│       ├── hostresources.go
+│       ├── hostresources_darwin.go
+│       ├── hostresources_linux.go
+│       ├── hostresources_test.go
+│       ├── hostresources_windows.go
 │       ├── initwizard.go
 │       ├── initwizard_test.go
+│       ├── initwizard_unix_test.go
 │       ├── isolation.go
 │       ├── isolation_test.go
+│       ├── launchtiming.go
+│       ├── launchtiming_test.go
+│       ├── launchux.go
+│       ├── legacy_credential_test.go
 │       ├── legacy_docker.go
 │       ├── legacy_docker_test.go
 │       ├── legacy_import.go
 │       ├── lifecycle_test.go
+│       ├── mcp.go
+│       ├── mcp_health.go
+│       ├── mcp_test.go
 │       ├── microsandbox.go
 │       ├── microsandbox_*.go  (5 files)
 │       ├── modelcatalog.go
@@ -100,11 +175,17 @@
 │       ├── opencodeconfig_test.go
 │       ├── opencodetrust.go
 │       ├── opencodetrust_test.go
+│       ├── opencodetrust_unix_test.go
 │       ├── paths.go
+│       ├── ports.go
+│       ├── ports_test.go
 │       ├── project.go
-│       ├── project_test.go
+│       ├── project_*.go  (19 files)
 │       ├── projectconfig.go
 │       ├── projectconfig_test.go
+│       ├── projectconfig_unix_test.go
+│       ├── providers.go
+│       ├── providers_test.go
 │       ├── reconcile.go
 │       ├── reconcile_test.go
 │       ├── resolve.go
@@ -123,32 +204,243 @@
 │       ├── setupwizard.go
 │       ├── skills.go
 │       ├── skills_test.go
+│       ├── stats.go
+│       ├── stats_test.go
 │       ├── tart.go
+│       ├── tart_attach_test.go
+│       ├── tart_startup_failure_test.go
 │       ├── tart_test.go
+│       ├── testmain_test.go
 │       ├── transfer.go
+│       ├── transfer_mtime_test.go
 │       ├── transfer_test.go
+│       ├── update.go
+│       ├── update_test.go
 │       ├── workspace.go
-│       ├── workspace_sealed.go
-│       ├── workspace_sealed_test.go
-│       └── workspace_test.go
+│       └── workspace_*.go  (5 files)
 ├── release-please-config.json
+├── scripts
+│   ├── install.ps1
+│   └── install.sh
 └── tests
+    ├── installers
+    │   ├── test-posix.sh
+    │   └── test-windows.ps1
     └── integration
         ├── credentials
         │   ├── README.md
+        │   ├── evidence
+        │   │   ├── README.md
+        │   │   ├── darwin-arm64-msb-0.7.6.txt
+        │   │   ├── darwin-arm64-msb-0.7.8.txt
+        │   │   ├── darwin-arm64-run-1.txt
+        │   │   ├── darwin-arm64-run-2.txt
+        │   │   ├── linux-amd64-nosession.txt
+        │   │   ├── linux-amd64-run-1.txt
+        │   │   ├── linux-amd64-run-2.txt
+        │   │   ├── linux-arm64-nosession.txt
+        │   │   ├── linux-arm64-run-1.txt
+        │   │   ├── linux-arm64-run-2.txt
+        │   │   ├── windows-amd64-interactive-run-1.txt
+        │   │   ├── windows-amd64-interactive-run-2.txt
+        │   │   └── windows-amd64-ssh-skip.txt
         │   ├── lab
         │   │   ├── dns.py
         │   │   ├── server.py
         │   │   ├── setup.sh
+        │   │   ├── test_dns.py
         │   │   └── test_server.py
         │   ├── pin.json
         │   └── run.sh
         ├── guest-capabilities
         │   ├── README.md
+        │   ├── evidence
+        │   │   ├── README.md
+        │   │   ├── darwin-arm64-msb-0.7.6-archive-failure.txt
+        │   │   ├── darwin-arm64-msb-0.7.6-network.txt
+        │   │   ├── darwin-arm64-msb-0.7.6-non-network.txt
+        │   │   ├── darwin-arm64-msb-0.7.8-archive-failure.txt
+        │   │   ├── darwin-arm64-msb-0.7.8-network.txt
+        │   │   ├── darwin-arm64-msb-0.7.8-non-network.txt
+        │   │   └── darwin-arm64-msb-0.7.8-t1-precondition.txt
         │   ├── pin.json
         │   └── run.sh
-        └── opencode
-            ├── README.md
-            ├── pin.json
-            └── run.sh
-17 directories, 152 files
+        ├── opencode
+        │   ├── README.md
+        │   ├── configcompose
+        │   │   └── main.go
+        │   ├── pin.json
+        │   └── run.sh
+        ├── project-secrets
+        │   ├── README.md
+        │   ├── loaders.test.mjs
+        │   ├── native
+        │   │   ├── README.md
+        │   │   ├── evidence
+        │   │   │   ├── README.md
+        │   │   │   ├── darwin-arm64-run-1.txt
+        │   │   │   └── darwin-arm64-run-2.txt
+        │   │   ├── go.mod
+        │   │   ├── go.sum
+        │   │   ├── lab.py
+        │   │   ├── main.go
+        │   │   ├── main_test.go
+        │   │   ├── run.py
+        │   │   ├── runtime-download.py
+        │   │   └── test_lab.py
+        │   ├── native-phase3
+        │   │   ├── README.md
+        │   │   ├── evidence
+        │   │   │   ├── README.md
+        │   │   │   ├── darwin-arm64-run-1.txt
+        │   │   │   └── darwin-arm64-run-2.txt
+        │   │   ├── go.mod
+        │   │   ├── go.sum
+        │   │   ├── guest
+        │   │   │   ├── node-app
+        │   │   │   │   ├── app.mjs
+        │   │   │   │   ├── package-lock.json
+        │   │   │   │   └── package.json
+        │   │   │   └── python-app
+        │   │   │       ├── app.py
+        │   │   │       └── requirements.txt
+        │   │   ├── jcvendor
+        │   │   │   ├── guest_files_test.go
+        │   │   │   ├── project_secret_bindings.go
+        │   │   │   ├── project_secret_guest_files.go
+        │   │   │   └── support.go
+        │   │   ├── lab.py
+        │   │   ├── main.go
+        │   │   ├── main_test.go
+        │   │   ├── run.py
+        │   │   ├── runtime-download.py
+        │   │   ├── test_lab.py
+        │   │   └── verify_vendored.py
+        │   ├── native-phase4
+        │   │   ├── README.md
+        │   │   ├── go.mod
+        │   │   ├── go.sum
+        │   │   ├── guest
+        │   │   │   ├── reader.py
+        │   │   │   └── scanner.py
+        │   │   ├── main.go
+        │   │   ├── main_test.go
+        │   │   ├── run.py
+        │   │   └── runtime-download.py
+        │   ├── package-lock.json
+        │   ├── package.json
+        │   ├── requirements.txt
+        │   └── test_python_loaders.py
+        └── qualification
+            ├── darwin-arm64
+            │   ├── 30-mac-installer.txt
+            │   ├── 31-mac-auth-doctor.txt
+            │   ├── 31b-mac-auth-after-unlock.txt
+            │   ├── 31c-mac-setup-doctor.txt
+            │   ├── 32-mac-init-start.txt
+            │   ├── 32b-mac-start.txt
+            │   ├── 32c-mac-msb-doctor.txt
+            │   ├── 33-mac-common.txt
+            │   ├── 34-mac-secrets.txt
+            │   ├── 34b-mac-delivery.txt
+            │   ├── 34c-mac-substitution.txt
+            │   ├── 34d-mac-locked-store.txt
+            │   ├── 35-tart-doctor.txt
+            │   ├── 37-mac-tui-terminal.txt
+            │   ├── 38-lab-version.txt
+            │   ├── 39-lab-network.txt
+            │   ├── 39b-lab-network-full.txt
+            │   ├── 39c-lab-network-full.txt
+            │   ├── 39d-lab-network-full.txt
+            │   ├── 42-agentvm.txt
+            │   ├── 42f-agentvm-lifecycle.txt
+            │   ├── 43-44-import-team.txt
+            │   ├── 46c-200ctrlc.typescript
+            │   ├── 46c-40ctrlc.typescript
+            │   ├── 46c-input.log
+            │   ├── 46c-mac-terminal-interactive.txt
+            │   ├── 46c-ncancel.typescript
+            │   ├── 46c-ycontrol.typescript
+            │   ├── README.md
+            │   ├── tart-manual-run.log
+            │   ├── tart-start2.log
+            │   └── tart-start3.log
+            ├── linux-amd64
+            │   ├── 00-host-inventory.txt
+            │   ├── 01-doctor-missing-runtime.txt
+            │   ├── 02-auth-add-albert.txt
+            │   ├── 03-setup-doctor.txt
+            │   ├── 04-init.txt
+            │   ├── 05-first-start.txt
+            │   ├── 06-check.txt
+            │   ├── 07-workspace-filter.txt
+            │   ├── 08-export-sync.txt
+            │   ├── 09-lifecycle.txt
+            │   ├── 10-doctor-canary.txt
+            │   ├── 11-tui-in-guest.txt
+            │   ├── 11-tui-launch.typescript
+            │   ├── 12-import-preview.txt
+            │   ├── 12b-import-no-init.txt
+            │   ├── 13-import-apply.txt
+            │   ├── 14-team-repo.txt
+            │   ├── 15-secrets-import.txt
+            │   ├── 16-bindings.txt
+            │   ├── 16b-bindings.txt
+            │   ├── 17-delivery.txt
+            │   ├── 17b-delivery-after-storefix.txt
+            │   ├── 18-native-delivery.txt
+            │   ├── 19-negative-substitution.txt
+            │   ├── 20-lifecycle.txt
+            │   ├── 20b-cross-profile.txt
+            │   ├── 21-locked-store.txt
+            │   ├── 22b-terminal-matrix.txt
+            │   ├── 22e-terminal-interactive.txt
+            │   ├── 22f-200ctrlc.typescript
+            │   ├── 22f-40ctrlc.typescript
+            │   ├── 22f-input.log
+            │   ├── 22f-terminal-interactive-retry.txt
+            │   ├── 22f-ycontrol.typescript
+            │   ├── 23b-installer.txt
+            │   ├── 24-agent-vm-avm-start2.log
+            │   ├── 24-agent-vm-avm-start4.log
+            │   ├── 24-agent-vm-avm-start5.log
+            │   ├── 24-agent-vm-avm-start6.log
+            │   ├── 24-agent-vm-lifecycle.txt
+            │   ├── 24-agent-vm-lima-manual.log
+            │   ├── 24-agent-vm.txt
+            │   └── README.md
+            ├── linux-arm64
+            │   ├── 40-inventory.txt
+            │   ├── 41-auth.txt
+            │   ├── 42-boot-gate.txt
+            │   ├── 42b-doctor-postinstall.txt
+            │   ├── 43-setup-doctor.txt
+            │   ├── 50-54-common.txt
+            │   ├── 51b-tui.txt
+            │   ├── 51b-tui.typescript
+            │   ├── 55-58-secrets.txt
+            │   ├── 56b-delivery.txt
+            │   ├── 56c-delivery.txt
+            │   ├── 56d-substitution.txt
+            │   ├── 58b-locked-store.txt
+            │   ├── 59-terminal.txt
+            │   ├── 60-installer.txt
+            │   ├── 62-asahi-terminal-interactive.txt
+            │   ├── 62b-200retry.typescript
+            │   ├── 62b-40cols-ctrlc.typescript
+            │   ├── 62b-asahi-terminal-200-retry.txt
+            │   ├── 62b-cookedctrlc.typescript
+            │   ├── 62b-input.log
+            │   ├── 62b-ycontrol.typescript
+            │   └── README.md
+            └── windows-amd64
+                ├── README.md
+                ├── host-state.txt
+                ├── just-code-deepseek.txt
+                ├── just-code-doctor.txt
+                ├── just-code-full.txt
+                ├── microvm-boot.assertions.txt
+                ├── microvm-boot.txt
+                ├── msb-direct.txt
+                └── native-build.txt
+38 directories, 447 files

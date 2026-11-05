@@ -1,50 +1,52 @@
 {
   "url": "https://github.com/etalab-ia/just-code",
   "name": "just-code",
-  "description": "Un environnement de bac à sable de R&D conçu pour évaluer l'exécution distante d'agents de code via l'API Albert dans des microVM isolées.",
+  "description": "Un environnement OpenCode isolé dans une microVM Microsandbox, piloté par une interface TUI. Il permet l'exécution distante d'agents de code en utilisant des modèles d'IA souverains comme l'API Albert.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
+    "Interface utilisateur & Design",
     "Sécurité & Conformité",
-    "Gestion documentaire & Fichiers",
-    "Interface utilisateur & Design"
+    "Collaboration & Workflow",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Go",
+    "Albert API",
     "Microsandbox",
-    "Tart",
-    "agent-vm",
+    "Docker",
     "Lima",
-    "OpenCode CLI",
-    "Albert API"
+    "OpenCode CLI"
   ],
   "components": [
-    "Rust & Go",
-    "Node.js / NestJS",
-    "CI/CD & Déploiement",
-    "API REST & GraphQL",
-    "Docker & Conteneurs"
+    "Intelligence Artificielle / ML",
+    "Docker & Conteneurs",
+    "Scripts & Utilitaires",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "api-key",
-      "oauth2"
+      "api-key"
     ],
     "providers": [
-      "GitHub",
-      "Albert API"
+      "Albert API",
+      "GitHub"
     ]
   },
-  "tests": "Go test",
+  "tests": "gitleaks (pre-commit hooks)",
   "workflows": [
-    "ci.yml"
+    "CI/CD via GitHub Actions",
+    "release-please"
   ],
+  "lastActivity": "2026-10-30T00:00:00Z",
   "status": "experimental",
+  "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
     "Git & DevOps",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Sécurité & Auth",
+    "Déploiement & Hosting"
   ]
 }

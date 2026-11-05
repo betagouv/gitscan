@@ -1,5 +1,371 @@
 # Changelog
 
+## [0.14.1](https://github.com/etalab-ia/just-code/compare/just-code-v0.14.0...just-code-v0.14.1) (2026-10-30)
+
+
+### Bug Fixes
+
+* add provider selection to text setup ([3f82d69](https://github.com/etalab-ia/just-code/commit/3f82d694e4eba1e998c7305c726f3e9b79ada5fd))
+* **config:** omettre les limites de modèles OpenCode partielles ([62b266e](https://github.com/etalab-ia/just-code/commit/62b266e26ff10da0f6299c3e1e381627a6f60747))
+* **config:** omit partial OpenCode model limits ([cd8bff4](https://github.com/etalab-ia/just-code/commit/cd8bff4edf87b6906970e8b2f43871a5ad925bf3))
+* **setup:** allow provider selection in text mode ([d50116a](https://github.com/etalab-ia/just-code/commit/d50116a5f2fcdb528b4416b62511c40e5309ea00))
+
+## [0.14.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.13.0...just-code-v0.14.0) (2026-10-28)
+
+
+### Features
+
+* **init:** offer Ministral as OpenCode small model ([6756312](https://github.com/etalab-ia/just-code/commit/6756312fa1b602fc20187b46dd3ce63f3c9d21ba))
+* **init:** permettre Ministral comme petit modèle OpenCode ([256e423](https://github.com/etalab-ia/just-code/commit/256e4233845aae324e924e7be6c73a3ef11c663b))
+
+
+### Bug Fixes
+
+* **init:** require Albert for Ministral small model ([12e5677](https://github.com/etalab-ia/just-code/commit/12e56770a342f492a5fcb004e4083d90ce85c4b2))
+* **init:** validate curated small-model references ([0e36e8a](https://github.com/etalab-ia/just-code/commit/0e36e8ae7f965109f54c8a4d801846c2544ee006))
+* **init:** validate small model in line wizard ([ad5a205](https://github.com/etalab-ia/just-code/commit/ad5a205188193e41b6a11be09fc3f047207519ca))
+* **models:** validate small-model API references ([3c44a52](https://github.com/etalab-ia/just-code/commit/3c44a52b752fb33163f74e217b87b9c8668d9ffd))
+
+## [0.13.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.12.0...just-code-v0.13.0) (2026-10-28)
+
+
+### Features
+
+* **exit:** écran de fin de session et récupération des modifications ([e8f8f5e](https://github.com/etalab-ia/just-code/commit/e8f8f5e725df7a7e68e228d704e979bffe04d92c))
+* **exit:** écran de fin de session et récupération des modifications ([abeaaeb](https://github.com/etalab-ia/just-code/commit/abeaaeb6bfad85a1f2abf6609314f8483c37808c))
+* **init:** complete the six-skill setup flow ([#167](https://github.com/etalab-ia/just-code/issues/167)) ([c3dd76f](https://github.com/etalab-ia/just-code/commit/c3dd76f2e4c28c8f12e2dc31c51cd92564166c0f))
+* **init:** déplacer les réglages avancés dans le récapitulatif ([#170](https://github.com/etalab-ia/just-code/issues/170)) ([591c2c3](https://github.com/etalab-ia/just-code/commit/591c2c3a537ffd0066aa635b0998154dda08cfa3))
+* **init:** GitHub wizard 3.9, four verified screens ([57dbef2](https://github.com/etalab-ia/just-code/commit/57dbef2bf0a98ec3aca832d581c1e83ae4ccc686))
+* **init:** improve skills selection screen ([#167](https://github.com/etalab-ia/just-code/issues/167)) ([e083dde](https://github.com/etalab-ia/just-code/commit/e083ddec9d748f975cdad495bc19102acc4d2100))
+* **init:** introduce the project setup wizard ([4b4cf5f](https://github.com/etalab-ia/just-code/commit/4b4cf5f2708d9bb7ade6db5b143482c5fca9ea07))
+* **init:** introduire l’écran de configuration du projet ([4152c4b](https://github.com/etalab-ia/just-code/commit/4152c4bdf91256a74a02bbacc7c2482e042c0308))
+* **init:** MCP wizard 3.8 and withdrawal of context7 and playwright ([b22af47](https://github.com/etalab-ia/just-code/commit/b22af47c1439194fe055f110cde7663aad2df67f))
+* **init:** MCP wizard 3.8 and withdrawal of context7 and playwright ([#168](https://github.com/etalab-ia/just-code/issues/168) [#175](https://github.com/etalab-ia/just-code/issues/175)) ([283be38](https://github.com/etalab-ia/just-code/commit/283be38f3a6c3c1f88a905971c0bfccd8938ae48))
+* **init:** refaire le récapitulatif interactif ([1359e79](https://github.com/etalab-ia/just-code/commit/1359e795b24b820863a4659a46b165af3a0d70fa))
+* **init:** refaire le récapitulatif interactif ([#171](https://github.com/etalab-ia/just-code/issues/171)) ([d82f42c](https://github.com/etalab-ia/just-code/commit/d82f42c1622a3108158c2c2a67c042fb36095f3c))
+* **init:** réserver les réglages techniques au récapitulatif ([#170](https://github.com/etalab-ia/just-code/issues/170)) ([63fced7](https://github.com/etalab-ia/just-code/commit/63fced746fa3643e1219699e2b32dcb134f8136c))
+* **init:** rework the GitHub step into four verified screens ([#169](https://github.com/etalab-ia/just-code/issues/169)) ([d8b38b8](https://github.com/etalab-ia/just-code/commit/d8b38b811b4194cea2abefdc68250bd7c4ae15f9))
+* **init:** terminer le parcours de sélection des skills ([#167](https://github.com/etalab-ia/just-code/issues/167)) ([260bfc6](https://github.com/etalab-ia/just-code/commit/260bfc635048d063a5e8db49b3677cbb4e615b9c))
+* **launch:** résumer le premier démarrage et approuver les entrées sur place ([f127c93](https://github.com/etalab-ia/just-code/commit/f127c93926aaf2b06d5dca64c965def391baf3b5))
+* **launch:** simplifier le premier lancement et approuver sur place ([1ac11c5](https://github.com/etalab-ia/just-code/commit/1ac11c5bc3b67d2f1b5acfe539b203aa8012db6b))
+* **secrets:** fournir le détecteur de secrets au lieu de le demander à l'hôte ([db53bd8](https://github.com/etalab-ia/just-code/commit/db53bd8cefb6bdce78354764047a2dfa340a7303))
+* **secrets:** fournir le détecteur de secrets au lieu de le demander à l'hôte ([4191767](https://github.com/etalab-ia/just-code/commit/4191767a8870b6d4e8c7e7c5241d81580265f8ee))
+* **setup:** add editable recap choices and credential status ([63996e4](https://github.com/etalab-ia/just-code/commit/63996e48d81bbb8cab8298cb080d0ef6b5ddd17f))
+* **setup:** add multi-model selection ([3796545](https://github.com/etalab-ia/just-code/commit/37965450b1d09fbc1f2588afa8f9fbe3d5829fc2))
+* **setup:** clarify recap and show install progress ([44bb6d8](https://github.com/etalab-ia/just-code/commit/44bb6d8104652cb6bd1643164b8cfbc0d2b62aec))
+* **setup:** connecter plusieurs plateformes d'inférence ([3c687f9](https://github.com/etalab-ia/just-code/commit/3c687f961646595ad45f9262ccda870aae9f0802))
+* **setup:** connecter plusieurs plateformes d'inférence ([e3d95c4](https://github.com/etalab-ia/just-code/commit/e3d95c4974327642e3725ba5261417a692f862bd))
+* **setup:** explain and validate the optional GitHub token ([#164](https://github.com/etalab-ia/just-code/issues/164)) ([1594d67](https://github.com/etalab-ia/just-code/commit/1594d675da7879860de13282b5bb2aea09487d05))
+* **setup:** expliquer et valider le jeton GitHub facultatif ([#164](https://github.com/etalab-ia/just-code/issues/164)) ([41fc411](https://github.com/etalab-ia/just-code/commit/41fc4112b2d7ccd26d9427c46182b3d4240e15dc))
+* **setup:** finaliser le récapitulatif et l’installation ([#165](https://github.com/etalab-ia/just-code/issues/165)) ([125d1ca](https://github.com/etalab-ia/just-code/commit/125d1caff357628f5b76d965ba484ced0ee9613b))
+* **setup:** sélectionner plusieurs modèles Albert API ([bc785dd](https://github.com/etalab-ia/just-code/commit/bc785ddc45ceba2f4ca157a34d1025c4fe3c5ac4))
+* **setup:** statistiques d'usage avec consentement ([115e6ca](https://github.com/etalab-ia/just-code/commit/115e6cad5eca82a96efa5669bc5d0e1e1817954b))
+* **setup:** statistiques d'usage avec consentement ([cbe0ad4](https://github.com/etalab-ia/just-code/commit/cbe0ad48d2acce90e20cc15764eaedccc8cdbfc2))
+
+
+### Bug Fixes
+
+* **import:** préserver une configuration OpenRouter sans Albert ([72c9682](https://github.com/etalab-ia/just-code/commit/72c968290afe3cede4476a173b979791ad21d8ee))
+* **init:** address Codex review on MCP wizard seeding, retention, and probe ([6e84779](https://github.com/etalab-ia/just-code/commit/6e8477903e3b264a0c409d60a80bd119615d4e89))
+* **init:** annuler le récapitulatif accessible sur EOF ([cf26f9a](https://github.com/etalab-ia/just-code/commit/cf26f9ab3553355f856a7c44d26e9986ec370a6f))
+* **init:** close the review findings on the GitHub step ([97ccfa1](https://github.com/etalab-ia/just-code/commit/97ccfa1ee68e0bd648a819222157f8dde71bf7aa))
+* **init:** fiabiliser le récapitulatif avant application ([993beef](https://github.com/etalab-ia/just-code/commit/993beefffb5c86dcac27655117034967f48e5827))
+* **init:** garantir l'annulation accessible après une entrée invalide ([f3dccca](https://github.com/etalab-ia/just-code/commit/f3dcccaf3411df514a35c1115c3d3c60028de089))
+* **init:** give the TUI token stage a reader ([0e39540](https://github.com/etalab-ia/just-code/commit/0e39540e5cffd86e029f9d7e7bcd8074bc01341d))
+* **init:** isolate global credential check ([185155a](https://github.com/etalab-ia/just-code/commit/185155aee80edd67a4862c9a4a41623afc54f1f9))
+* **init:** keep retained pins and sibling choices on retry ([#167](https://github.com/etalab-ia/just-code/issues/167)) ([dbac9a5](https://github.com/etalab-ia/just-code/commit/dbac9a5d07dadd7fb3d1cf50bc492c04171274d2))
+* **init:** permettre de corriger les réglages hérités invalides ([f696306](https://github.com/etalab-ia/just-code/commit/f69630629a42ff5e54b80b64b9375e1979861fe7))
+* **init:** permettre de réparer un runtime hérité incompatible ([dd03269](https://github.com/etalab-ia/just-code/commit/dd03269efc1f639b281ac2b0c9da37193fb4009e))
+* **init:** preserve and retry skill selections ([#167](https://github.com/etalab-ia/just-code/issues/167)) ([1f61da5](https://github.com/etalab-ia/just-code/commit/1f61da516a36c4349f01743e5c11dc6df56bf484))
+* **init:** probe default Albert credential for setup ([140f624](https://github.com/etalab-ia/just-code/commit/140f624a649679accd7bb895e2616d413b80f80f))
+* **init:** render the GitHub step last and keep the step order honest ([6eb5967](https://github.com/etalab-ia/just-code/commit/6eb59673a11b40b8fda257f1e6536c12392d500e))
+* **init:** reopen the questions when the GitHub situation changes ([d16aa1a](https://github.com/etalab-ia/just-code/commit/d16aa1a14a98de30a36a3e82853f50a7088de1de))
+* **init:** scope workspace intro to runtime ([8c891bc](https://github.com/etalab-ia/just-code/commit/8c891bc0c01f6f9b3ba1ab2523725f91de202a1a))
+* **init:** state the GitHub check without an empty account name ([d51995a](https://github.com/etalab-ia/just-code/commit/d51995a328c2c7b8d6b253042d22ef3b5b1ade01))
+* **init:** state the runtime limit before asking about GitHub ([93b4673](https://github.com/etalab-ia/just-code/commit/93b4673d88f32965c1a444313d69069eb68feaa5))
+* **init:** uniformiser les chemins du récapitulatif ([375e495](https://github.com/etalab-ia/just-code/commit/375e4958fe621b9692c1864597d4c8379981616f))
+* **init:** validate options before setup offer ([d7b5886](https://github.com/etalab-ia/just-code/commit/d7b58863961a4d29ccafae6fc7c2b5b2d0ea3317))
+* **init:** verify the Pull requests permission before claiming the rights ([fc7131c](https://github.com/etalab-ia/just-code/commit/fc7131c43ae5b9c12508d0e115d99414280cadee))
+* **launch:** aligner les mesures et la disponibilité sur le runtime ([d4b1eaa](https://github.com/etalab-ia/just-code/commit/d4b1eaa4dbdd8539a8dbfeeb05df746eed565469))
+* **launch:** attendre la disponibilité avant de conserver la durée ([2dc36c2](https://github.com/etalab-ia/just-code/commit/2dc36c22776ec72ed03ebc52dfd8ec55752665b3))
+* **launch:** distinguer les installations reprises des démarrages à chaud ([a7360c1](https://github.com/etalab-ia/just-code/commit/a7360c13c882232792c2ee55c0a5407c8d61c6d1))
+* **launch:** vérifier la préparation après réconciliation en isolation complète ([afe4b14](https://github.com/etalab-ia/just-code/commit/afe4b14f776219f5c77555a4d87d3ab2f40c3d78))
+* narrow Gitleaks allowlist to public matches ([11e35a8](https://github.com/etalab-ia/just-code/commit/11e35a87f168f2e9ec8eb3571ff3cfdafa025a3f))
+* **opencode:** corriger la justification du mécanisme de désactivation ([d268dab](https://github.com/etalab-ia/just-code/commit/d268daba4a250b0beb698cbed8fe76fb03b4dd37))
+* **opencode:** désactiver la vérification de mise à jour dans tous les runtimes ([ce07ca8](https://github.com/etalab-ia/just-code/commit/ce07ca84780a3f894ff6fdadab3fd9780c2da85b))
+* **opencode:** désactiver la vérification de mise à jour dans tous les runtimes ([d35fff0](https://github.com/etalab-ia/just-code/commit/d35fff0258eeca5298d7ad0b1f0c385b91288502))
+* **secrets:** ancrer le binaire épinglé et durcir l'extraction ([61d8668](https://github.com/etalab-ia/just-code/commit/61d866888b6adc2af791df89c38052025770fe91))
+* **secrets:** rendre la vérification d'exécution portable sur Windows ([47121a9](https://github.com/etalab-ia/just-code/commit/47121a9bdbc067aec22d2f3a7d96186c4e8a0653))
+* **setup:** cancel pending token replacement on apply ([6d43fc0](https://github.com/etalab-ia/just-code/commit/6d43fc07b2dcf102ad185c7def06c7e85080a712))
+* **setup:** corriger quatre cas limites du multi-plateforme ([2e146d0](https://github.com/etalab-ia/just-code/commit/2e146d03abc59e80e9d9585db83baa874c6b0091))
+* **setup:** keep model selection in one screen ([55b553b](https://github.com/etalab-ia/just-code/commit/55b553b9794801b512c54a3b987c4a253e07172b))
+* **setup:** normalize legacy model references ([e8e8a65](https://github.com/etalab-ia/just-code/commit/e8e8a651aecad57216bfd9ce3db2f8cc51409908))
+* **setup:** preserve legacy model settings ([60ec2c0](https://github.com/etalab-ia/just-code/commit/60ec2c05953a3010213844fd4ee7f635a01591b6))
+* **setup:** preserve unknown status in legacy journals ([e4a4b3e](https://github.com/etalab-ia/just-code/commit/e4a4b3ebe0c449976950cd6fa561ee6c978760c6))
+* **setup:** préserver les alias de modèles et revalider les plateformes ([cf9caba](https://github.com/etalab-ia/just-code/commit/cf9caba910630723c985103d898c17c801055f50))
+* **setup:** qualify runtime download estimate ([c857d0e](https://github.com/etalab-ia/just-code/commit/c857d0ec28a54b447fcdefbb640078cf908243bc))
+* **setup:** repartir des plateformes enregistrées et valider l'import complet ([9b43660](https://github.com/etalab-ia/just-code/commit/9b436602198b90924010a895e312b329ef7ef3cf))
+* **setup:** resume GitHub replacement and cancel on review EOF ([a36506b](https://github.com/etalab-ia/just-code/commit/a36506b2cdfd4ac1c0d986515237c033d768fa06))
+* **setup:** retain existing provider defaults ([e84ea89](https://github.com/etalab-ia/just-code/commit/e84ea89b6e758ca8414fdc43515d857488f7d4cb))
+* **setup:** skip empty git identity form ([69e21d8](https://github.com/etalab-ia/just-code/commit/69e21d8ba48dc668c2f173b20ec7835b83a0c8b7))
+* **setup:** valider les imports et ne jamais suivre une redirection ([478031c](https://github.com/etalab-ia/just-code/commit/478031c12f3f6a4a090f273b9e69772c92388715))
+* **setup:** vérifier les clés présentes, préserver Albert et réserver les variables ([293dee7](https://github.com/etalab-ia/just-code/commit/293dee7d497741250422afee94e02597e5cb71b0))
+* **stats:** afficher le consentement effectif et préserver un « o » existant ([f815bc3](https://github.com/etalab-ia/just-code/commit/f815bc33c27db4a5b207d2cd559a6108dd389212))
+* **stats:** appliquer le consentement en attente à tous les événements ([d6b3b5e](https://github.com/etalab-ia/just-code/commit/d6b3b5ec32f11d780916a3b61b52ee5d04134351))
+* **stats:** corriger les permissions Windows et le double comptage ([16a5a59](https://github.com/etalab-ia/just-code/commit/16a5a59d6bbb840e3a970736ce7e9ba9e1d16b37))
+* **stats:** déduire les plateformes de la sélection finale ([2afef44](https://github.com/etalab-ia/just-code/commit/2afef443d359f2ae720bbefd3be8127f85791611))
+* **stats:** faire primer un refus en attente sur l'acceptation durable ([59a920c](https://github.com/etalab-ia/just-code/commit/59a920c9632158725fafd4d84f8df2f6f433578c))
+* **stats:** honorer la décision de consentement en attente pour un abandon ([868c0e7](https://github.com/etalab-ia/just-code/commit/868c0e7d9942ca0fc66e8ab8607d31a44c97d2f3))
+* **stats:** n'enregistrer un abandon qu'après le consentement ([be9b0eb](https://github.com/etalab-ia/just-code/commit/be9b0eb464cbe27f9f872843f80af73836375dcf))
+* **stats:** ne pas ignorer l'échec d'écriture du journal de consentement ([3691033](https://github.com/etalab-ia/just-code/commit/3691033924968ca3c8db37260b2b9247bbb7724f))
+* **stats:** ne retenir qu'un changement durable postérieur à la revue ([71d4606](https://github.com/etalab-ia/just-code/commit/71d460681ec24faa4d5318fe30f85c52d3db3256))
+* **stats:** préserver la file, couvrir le wizard huh et Windows ([d2c1f5c](https://github.com/etalab-ia/just-code/commit/d2c1f5c5c3d0f07744ee350b29e15c8732f72346))
+* **stats:** récupérer un verrou mort et tracer les sorties GitHub du TUI ([47f1a8d](https://github.com/etalab-ia/just-code/commit/47f1a8dd06ff5f9db78c619e265a82c862b8bdde))
+* **stats:** résoudre le consentement au moment de l'application ([ae24da7](https://github.com/etalab-ia/just-code/commit/ae24da7093161ababfb5033e5e48e5280dabc175))
+* **stats:** résoudre le consentement de la même façon partout ([2a7444d](https://github.com/etalab-ia/just-code/commit/2a7444de6e6393088e0315afc5140c3f1ac05180))
+* **stats:** respecter un refus explicite à la reprise ([2e3c53e](https://github.com/etalab-ia/just-code/commit/2e3c53eaa934a36c141d5102d493a36a81520064))
+* **stats:** restaurer la décision du journal sans supposer son ancienneté ([f62969e](https://github.com/etalab-ia/just-code/commit/f62969ef528d24005cf68ceaab7a846be9e80752))
+* **stats:** restaurer le consentement du journal et sérialiser les identifiants ([73f83d1](https://github.com/etalab-ia/just-code/commit/73f83d11dc5bc568826c7f63b0fc36c0b4edd80c))
+* **stats:** synchroniser le consentement dans les deux sens ([304c73c](https://github.com/etalab-ia/just-code/commit/304c73c62b764b7c1b53c803f522a0cd555f5cb4))
+* **stats:** synchroniser le refus du journal avant de vider la file ([4c6b3d7](https://github.com/etalab-ia/just-code/commit/4c6b3d7f45334003a8a5c9c2dffb4aca241d0ae9))
+* **tart:** forward selected model definitions to guest ([559eefb](https://github.com/etalab-ia/just-code/commit/559eefbf30751f841bafece1a24308aaf92abbce))
+* **tart:** restart backend when overlay changes ([fb87df6](https://github.com/etalab-ia/just-code/commit/fb87df6bbbe8c6af06cf270a251cd8922d721ecd))
+* **test:** parse the native kit go.mod instead of token-scanning ([17e5e3a](https://github.com/etalab-ia/just-code/commit/17e5e3afe8cbe63403acf24cf0ad31ab9fbfac83))
+* **test:** pin the native secret kit to the embedded SDK ([bb79304](https://github.com/etalab-ia/just-code/commit/bb79304fe142a3d15447517e765d5b1c82560ab3))
+* **workspace:** appliquer la source configurée et conserver la base de récupération ([4c4cbbd](https://github.com/etalab-ia/just-code/commit/4c4cbbd967607460c44cb0b5d1daea2415f25bb9))
+* **workspace:** conserver les modifications de l'hôte et détecter les réversions ([f844d2a](https://github.com/etalab-ia/just-code/commit/f844d2a212979b960c0fbabba95429ee202c3c9b))
+* **workspace:** signaler les inversions après fusion et poser le mode invité ([e811d76](https://github.com/etalab-ia/just-code/commit/e811d7616da732ff4359d7bd1ffb04d78dbb4b7f))
+
+## [0.12.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.11.0...just-code-v0.12.0) (2026-10-23)
+
+
+### Features
+
+* **install:** messages français, PATH avant setup, postes non pris en charge ([b83a99c](https://github.com/etalab-ia/just-code/commit/b83a99c908e4cf07c2a36d55a089ca1c7753b7aa))
+* **install:** messages français, PATH avant setup, postes non pris en charge ([ab503d4](https://github.com/etalab-ia/just-code/commit/ab503d407e594a9243e1af66852cf6e3b086b813))
+* **setup:** écran d'introduction avant la première question ([399cffd](https://github.com/etalab-ia/just-code/commit/399cffdbbc7edb3428f231656a2fb25abf78d720))
+* **setup:** écran d'introduction avant la première question ([88d5714](https://github.com/etalab-ia/just-code/commit/88d57144540afc6a455cbd02f802c98c877e0d69))
+* **setup:** écran de la clé Albert API, ordre clé → modèles → GitHub ([98309b1](https://github.com/etalab-ia/just-code/commit/98309b1f433110c80326526b433b0b00abf9932f))
+* **setup:** écran de la clé Albert API, ordre clé → modèles → GitHub ([1f20630](https://github.com/etalab-ia/just-code/commit/1f20630c8efd4a5c0ce10522091747ed920dd293))
+
+
+### Bug Fixes
+
+* **agent-vm:** épingler une image Lima résolvable et la vérifier avant reconstruction ([1f545a8](https://github.com/etalab-ia/just-code/commit/1f545a802cdca7ed7998d50c1b0814afe99532e0))
+* **agent-vm:** épingler une image Lima résolvable et la vérifier avant reconstruction ([87ca8eb](https://github.com/etalab-ia/just-code/commit/87ca8eb337876cdd4c6ddaeff0d6ce46fe4c74c9))
+* **agent-vm:** report an inconclusive image check, not a passed one ([9fb869e](https://github.com/etalab-ia/just-code/commit/9fb869e3447cc265c7f55d49713e05434abb3d1f))
+* **agent-vm:** stop recommending the default image when it already failed ([94826ec](https://github.com/etalab-ia/just-code/commit/94826eca5a4f9650d58f962cdd8bb3ab287bc59a))
+* **agent-vm:** témoin sans image pour ne pas imputer un refus de limactl à AGENT_VM_IMAGE ([32062aa](https://github.com/etalab-ia/just-code/commit/32062aacdcc8f524cbe4b34b3a3d7726332a1a56))
+* **agent-vm:** use limactl info as the image-independent witness ([d4101d3](https://github.com/etalab-ia/just-code/commit/d4101d31e14f07d4427fc13026c2a1460631eeef))
+* **credentials:** lire un identifiant dans le magasin qui l'a reçu ([dfbae65](https://github.com/etalab-ia/just-code/commit/dfbae65b97d7ae5dd4278c62d4c4ccb0947e6d34))
+* **credentials:** read a credential from the store that received it ([4e5f8de](https://github.com/etalab-ia/just-code/commit/4e5f8def835451bf9cf11bbc21a194e544b5a2bc))
+* **credentials:** serialize the store record and stop reporting unpinnable success ([6cb5f9c](https://github.com/etalab-ia/just-code/commit/6cb5f9c0ebfe3d5b66302ac5bc285f10d6baf4ea))
+* **diagnostics:** sonde Go, cause de résolution nommée, portée de la sonde de magasin ([364263d](https://github.com/etalab-ia/just-code/commit/364263d08e63af30f3241959a838e58db1984748))
+* **diagnostics:** sonde Go, cause de résolution nommée, portée de la sonde de magasin ([5acebe1](https://github.com/etalab-ia/just-code/commit/5acebe1cf16cd0f994cc4669aee0e057f0488704))
+* **doc,test:** compteurs exacts, garde d'introduction réellement testée ([d03b736](https://github.com/etalab-ia/just-code/commit/d03b7365568bb73eae0c1452d9969d513dc817f5))
+* **doctor:** distinguer inventaire incomplet et absence de journal ([ce93ccc](https://github.com/etalab-ia/just-code/commit/ce93ccc717de092e8c86765cef8bc45af42f5698))
+* **doctor:** l'inventaire des identifiants vient du magasin, pas du journal ([bb37138](https://github.com/etalab-ia/just-code/commit/bb371388a4552a70a215a46916f2acaf0075c564))
+* **doctor:** l'inventaire des identifiants vient du magasin, pas du journal ([bb2aef4](https://github.com/etalab-ia/just-code/commit/bb2aef425ad21ca5ba6483973e9c44a53c011dfc))
+* **install:** fichier lu par un terminal ordinaire, chemins cités ([90f2711](https://github.com/etalab-ia/just-code/commit/90f2711d66edfc7abf20dc5bd11588a116b8ad9c))
+* **install:** ne pas empiler la ligne PATH, doc alignée sur le code ([3e565d7](https://github.com/etalab-ia/just-code/commit/3e565d7be1b66a8024b1b745f77966916b3baa3d))
+* **install:** profil bash, SHELL vide, reprise et retour arrière ([a6b617c](https://github.com/etalab-ia/just-code/commit/a6b617c9ae3c58df9b6783dbd4a641f4993d6f0d))
+* **install:** reconnaître la ligne PATH exacte, pas le mot just-code ([bec51ba](https://github.com/etalab-ia/just-code/commit/bec51ba9fdb0e95e7d66f9a34639a8dd49fc3618))
+* **install:** reprise, interruption, profil non modifiable, sauvegarde ([a22b4de](https://github.com/etalab-ia/just-code/commit/a22b4deb92c8e8cdee8efaa18a8160ae6286a6a2))
+* **install:** shells non POSIX, commandes de récupération littérales ([f3942f6](https://github.com/etalab-ia/just-code/commit/f3942f6d9ce5b974d28b8592581d073a97c8e617))
+* **install:** un seul fichier par plateforme, lecture ratée = refus ([be94056](https://github.com/etalab-ia/just-code/commit/be94056e9330cbde74ae983a03debf6251d3ebe9))
+* **secrets:** accepter le type natif concret enregistré dans l'index ([d5017a7](https://github.com/etalab-ia/just-code/commit/d5017a7b756080bd60501e9cf476b72c5d84ed94))
+* **secrets:** aligner les limites des réparses d'attribution ([a7e7936](https://github.com/etalab-ia/just-code/commit/a7e7936abfeee93b5f2a2440e76f57747da54ba9))
+* **secrets:** classer le refus de backticks avant le retour chariot ([70c1861](https://github.com/etalab-ia/just-code/commit/70c18611896e13647de6cb13aa50d595ac067385))
+* **secrets:** ne pas masquer un magasin demandé ni arrêter un bac à sable sain ([a9fa42a](https://github.com/etalab-ia/just-code/commit/a9fa42a23a4139fc5b60b18aeca09cdb2fc43cc9))
+* **secrets:** ne rien enregistrer quand une approbation ne peut pas résoudre ([8efd5f5](https://github.com/etalab-ia/just-code/commit/8efd5f582c7705f35f1cba5718f2f4ae569a1399))
+* **secrets:** ne rien enregistrer quand une approbation ne peut pas résoudre ([3e27678](https://github.com/etalab-ia/just-code/commit/3e276781bf9a5736b36dc5e1e567bd68e4194921))
+* **secrets:** nommer la variable et la règle au refus d'import via go-rotini ([673af49](https://github.com/etalab-ia/just-code/commit/673af49a6e59ad7a5edc4b692a1176809aa2ba55))
+* **secrets:** nommer la variable et la règle au refus d'import via go-rotini ([e605669](https://github.com/etalab-ia/just-code/commit/e6056695a167fe772c5c44e93e5575a0737fd6b7))
+* **secrets:** nommer la variable et la règle au refus de backticks ([60997ea](https://github.com/etalab-ia/just-code/commit/60997eaa8f7575fcddd9304b1e01908e0f2db673))
+* **secrets:** propager un échec de sélection du magasin avant tout redémarrage ([d5c5f8a](https://github.com/etalab-ia/just-code/commit/d5c5f8ad146ac3a5a03ec087b9725ff45db5a111))
+* **secrets:** refuser avant d'ouvrir le magasin, et signaler une approbation existante ([cb4d3a4](https://github.com/etalab-ia/just-code/commit/cb4d3a4883d8d79c54b684fc34a9199df4e55556))
+* **secrets:** rendre effective la confirmation de bindings approve ([0f6ccdc](https://github.com/etalab-ia/just-code/commit/0f6ccdceadca4e5ad26b512d2432b675f6db6ef5))
+* **secrets:** rendre effective la confirmation de bindings approve ([f1e2b5d](https://github.com/etalab-ia/just-code/commit/f1e2b5d0f2b59ff99506dac02c815e8ac04270d8))
+* **secrets:** résoudre le magasin depuis le type enregistré à l'import ([e3f68a4](https://github.com/etalab-ia/just-code/commit/e3f68a4c59be69a65f5d41a722069bedd0f06bcf))
+* **secrets:** résoudre le magasin depuis le type enregistré à l'import ([2934733](https://github.com/etalab-ia/just-code/commit/2934733e85e763e66df77afdf352dbec2a81e67b))
+* **setup:** l'intro attend Entrée sans afficher la saisie collée ([9c95ea8](https://github.com/etalab-ia/just-code/commit/9c95ea8d12dd8c98779a4fb2c140174d5e45f0ad))
+* **setup:** l'intro ne consomme pas la saisie collée avec Entrée ([ed66859](https://github.com/etalab-ia/just-code/commit/ed6685953a40b0deff0d92418bade0da9886a041))
+* **setup:** l'intro ne peut pas promettre qu'aucune écriture n'a lieu ([ad35b89](https://github.com/etalab-ia/just-code/commit/ad35b893385f1f6c8ee6116c6abff7df860983fc))
+* **setup:** l'intro nomme aussi l'identité git comme enregistrée ([375efd4](https://github.com/etalab-ia/just-code/commit/375efd4159283faf7ad97b62953543ca55ec83ea))
+* **setup:** le choix explicite du défaut survit à une reprise sans réponse ([17c959d](https://github.com/etalab-ia/just-code/commit/17c959db54f8a2917c1be97f24eec4819b55f9c1))
+* **setup:** le modèle choisi survit à une interruption plus loin ([a46d028](https://github.com/etalab-ia/just-code/commit/a46d028d7962ada26e8d1e43ffdeac641fe623cc))
+* **setup:** ne pas stocker la clé avant d'avoir demandé ([fcacdd1](https://github.com/etalab-ia/just-code/commit/fcacdd10d273b65a08df563d1f6ef22bda9a9ceb))
+* **setup:** une faute de frappe redemande, le repli dit où va la clé ([81abe70](https://github.com/etalab-ia/just-code/commit/81abe70fcd2e27ab987dcad41785c94bed3f393e))
+* **setup:** une question non répondue annule au lieu de stocker ([87ae8d0](https://github.com/etalab-ia/just-code/commit/87ae8d017891486c7a799c50cc9db04a9d315904))
+* **setup:** une question sans réponse ne remet pas le modèle à zéro ([802c0c7](https://github.com/etalab-ia/just-code/commit/802c0c783bf297e82050e6ffb360165a8b602c4e))
+* **setup:** une réponse vide revient au modèle par défaut ([68754e7](https://github.com/etalab-ia/just-code/commit/68754e7cdc86685c0460da7c3d790f29dc7e9693))
+* **start:** inverser le classement — ne tolérer qu'une panne de magasin ([800f1d6](https://github.com/etalab-ia/just-code/commit/800f1d6e99550b4cc4b4eb909052a71ed22e3b53))
+* **start:** refuser un démarrage no-op sur une liaison hors profil actif ([681bbbb](https://github.com/etalab-ia/just-code/commit/681bbbb78015db3abecb549f2e072763a1134610))
+* **start:** refuser un démarrage no-op sur une liaison hors profil actif ([c46d8e1](https://github.com/etalab-ia/just-code/commit/c46d8e17c3540a859d725947e712356bf9522880))
+* **start:** un secret de projet approuvé sans valeur importée est structurel ([bb160f2](https://github.com/etalab-ia/just-code/commit/bb160f23dc55d34d514db9d3135ed1e8d7276763))
+* **tart:** ne pas diagnostiquer un démarrage quand on s'attache à une VM déjà lancée ([01f9ae2](https://github.com/etalab-ia/just-code/commit/01f9ae2ca12868d64469144e4a61d57b0471cedd))
+* **tart:** ne pas relire l'échec d'une exécution précédente, et préciser la portée de la sonde ([d2e2115](https://github.com/etalab-ia/just-code/commit/d2e2115810774983fe095b88e15f912f17064499))
+* **tart:** nommer le refus de Virtualization.framework au lieu d'un délai agent ([b982e41](https://github.com/etalab-ia/just-code/commit/b982e417b2f57efc146f8edb9adb20609d38dc50))
+* **tart:** nommer le refus de Virtualization.framework au lieu d'un délai agent ([a0d6df2](https://github.com/etalab-ia/just-code/commit/a0d6df2b48bc97739e40fbbf5ce437403c4bdabb))
+* **tart:** relever le journal avant le lancement, et cibler le vrai échec de trousseau ([d117f79](https://github.com/etalab-ia/just-code/commit/d117f79eb924a96c3f48af5c021665267a35ac88))
+* **tests:** attendre le marqueur de setup dans le test pty du profil non modifiable ([eba353c](https://github.com/etalab-ia/just-code/commit/eba353c16f94c3f311384629ccf2f2bd1ca6ae18))
+* **tests:** la boucle pty attend le marqueur de setup, pas la bannière ([e3c366f](https://github.com/etalab-ia/just-code/commit/e3c366f4eb9010a2434617b569cc4a31afc4aa91))
+* **tests:** vider le pty avant d'asserter sur la sortie capturée ([ae3b0b7](https://github.com/etalab-ia/just-code/commit/ae3b0b70f81092648ca55c6ad81a4a17c5d624bd))
+* **transfer:** conserver les dates sous la seconde avec un en-tête PAX ([af46206](https://github.com/etalab-ia/just-code/commit/af46206ce33234ca0f851b4599ca9eba0205264b))
+* **transfer:** préserver les dates de modification dans l'espace de travail scellé ([3e96c0d](https://github.com/etalab-ia/just-code/commit/3e96c0ddcd6b6496ac6a77b3e9248f1b4fb20e63))
+* **transfer:** préserver les dates de modification dans l'espace de travail scellé ([bd63d7f](https://github.com/etalab-ia/just-code/commit/bd63d7f2dbff2ed7f2669a65ad5455f37a41f709))
+
+## [0.11.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.10.0...just-code-v0.11.0) (2026-10-19)
+
+
+### Features
+
+* **check:** report reachability of configured preview ports ([9357fc3](https://github.com/etalab-ia/just-code/commit/9357fc37f82ecc15e1557d08f342619e670cab0d))
+
+
+### Bug Fixes
+
+* **check:** probe the port mappings applied to the running sandbox ([d61f498](https://github.com/etalab-ia/just-code/commit/d61f498b0d8916d0c8329fb36812cd65c01c7b8a))
+* **check:** report stale forwards and zone strips in emptied states ([a365020](https://github.com/etalab-ia/just-code/commit/a365020c6a85d477c19ac168afc820bccfb38b77))
+* **import:** annoncer l'approbation de confiance requise au premier lancement ([8467335](https://github.com/etalab-ia/just-code/commit/846733576e94c56adc10896b19d77ceb6c6127b3))
+* **import:** announce the trust approval the first run will require ([713c954](https://github.com/etalab-ia/just-code/commit/713c95468f1991a87a6d1c4a2f52895203db9664))
+* **import:** harden reads of untrusted project OpenCode configs ([6368a02](https://github.com/etalab-ia/just-code/commit/6368a02bcddaf176292b6748685d593c3c855da5))
+* **import:** name the project directory in the trust approval hint ([efdeb1d](https://github.com/etalab-ia/just-code/commit/efdeb1dbbc3d55e8a7ba702db9e76f99ca7f7ef0))
+* **init:** annoncer les touches de sélection des MultiSelect du wizard ([6fde5b7](https://github.com/etalab-ia/just-code/commit/6fde5b754c34554e056acf7ec03e25348bdc3128))
+* **init:** announce MultiSelect selection keys in the wizard ([96ea5c5](https://github.com/etalab-ia/just-code/commit/96ea5c5f163e6c26a71ba899853f91233a681905))
+* **init:** base local-only AGENTS.md ownership on actual zone presence ([f5d0655](https://github.com/etalab-ia/just-code/commit/f5d06556a05b1649ea3c9ebf000d9f89329c2462))
+* **init:** check AGENTS.md entry type before reading for a zone ([f8aa563](https://github.com/etalab-ia/just-code/commit/f8aa5630dd840f52207ef65404b46457ef438fb1))
+* **init:** recheck AGENTS.md at apply time for zones added after planning ([51665d2](https://github.com/etalab-ia/just-code/commit/51665d259e9f74f376bf84004c4131a19ab02fd7))
+* **init:** resolve the GitHub origin before the approval question ([3d5618a](https://github.com/etalab-ia/just-code/commit/3d5618a7db35cd4bef67a063e31e34efae2706d9))
+* **init:** résoudre l'origine GitHub avant la question d'approbation ([3467324](https://github.com/etalab-ia/just-code/commit/3467324fe25e0ca060d2ad79124c1c5f54dbea87))
+* **init:** scan AGENTS.md for zone markers in bounded memory ([56cae38](https://github.com/etalab-ia/just-code/commit/56cae38b459b278d4afa98f72284049b1072ef75))
+* probe AGENTS.md and host ports without unbounded reads or waits ([e85152c](https://github.com/etalab-ia/just-code/commit/e85152c5e9a76274d022fc17f4d739a874ea10f8))
+* scope managed guidance and port probes to the microsandbox runtime ([d238885](https://github.com/etalab-ia/just-code/commit/d23888513a1744ba1c4022c5761d78e0123bbe2e))
+* **skills:** address review on runtime parsing and AGENTS.md claim ([18c559d](https://github.com/etalab-ia/just-code/commit/18c559dbd054fd6c8e615b18d9d85c55d557e93a))
+* **skills:** keep standing managed instructions in every versioned project ([7cb93c5](https://github.com/etalab-ia/just-code/commit/7cb93c575118b4202129d5bc7336247570e6c73f))
+* **trust:** refuse symlinks in project path components ([294863b](https://github.com/etalab-ia/just-code/commit/294863b21f9caae7342b1e47f6d67dff03c93764))
+* web preview reachable through the host port forward ([1ff037e](https://github.com/etalab-ia/just-code/commit/1ff037eb2fa69d37ceff32b1046676187cb8bf70))
+
+## [0.10.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.9.0...just-code-v0.10.0) (2026-10-16)
+
+
+### Features
+
+* deliver approved secrets readable inside the guest ([a6bbfa5](https://github.com/etalab-ia/just-code/commit/a6bbfa596c91909df1f16c186727e8c33bb8dc8a))
+* livrer les secrets approuvés lisibles dans le guest (phase 4) ([08a0a15](https://github.com/etalab-ia/just-code/commit/08a0a15991245fa8d7ba58605bcc3aaeb18005b8))
+
+
+### Bug Fixes
+
+* apply guest-readable deliveries on the reconcile path, and restrict before writing ([26b934b](https://github.com/etalab-ia/just-code/commit/26b934b5debc075044c56a331bea199ffa18869b))
+* compare each file against the content wanted now, not the last write ([aa0807c](https://github.com/etalab-ia/just-code/commit/aa0807ce2a8478e762d8efb1552352d492c1e434))
+* compare managed guest files by digest instead of reading them back ([2daf132](https://github.com/etalab-ia/just-code/commit/2daf132bdf01a9cc1d6ecf10aaa417678b77501e)), closes [#190](https://github.com/etalab-ia/just-code/issues/190)
+* compare the digest as a field, not as a whole sha256sum line ([a28614d](https://github.com/etalab-ia/just-code/commit/a28614df4f4829e95bf0e24768516a9cf8f6535e))
+* compare the ownership header as bytes, not through a shell variable ([fccde22](https://github.com/etalab-ia/just-code/commit/fccde22e2759d7314354c34a64c28aeab7decd25))
+* compare the ownership header by digest over its exact bytes ([fa3e8e0](https://github.com/etalab-ia/just-code/commit/fa3e8e0f8854dde0fd1b8b11158827ed26e36e98))
+* comparer les fichiers gérés par condensat au lieu de les relire ([a37243d](https://github.com/etalab-ia/just-code/commit/a37243d1cc19d2e43959c2c3502894d4b32116cb))
+* deliver backslash-pair and trailing-backslash values raw instead of refusing them ([2a0f2d5](https://github.com/etalab-ia/just-code/commit/2a0f2d5beb381540ded5e0db463ae4c5f8baaf5a))
+* deliver representable non-ASCII and refuse what no encoding carries ([a7b4e28](https://github.com/etalab-ia/just-code/commit/a7b4e28dd488b69bd053344dcdef1841619895f6))
+* encode guest-readable values instead of writing them raw ([595a8c8](https://github.com/etalab-ia/just-code/commit/595a8c8045138ee75a942bb1b83addbefd95032b))
+* keep the content digest out of argv and stop normalising the header ([16019ab](https://github.com/etalab-ia/just-code/commit/16019ab9231a920afe33ded135b579d69b3666f3))
+* livrer les formes d'antislash que les chargeurs dotenv ne lisent pas exactement entre guillemets ([7294eed](https://github.com/etalab-ia/just-code/commit/7294eed7e95d20dd0b4695aef09dae960ce769ab))
+* make the phase 4 probe controls able to fail ([e1b1efa](https://github.com/etalab-ia/just-code/commit/e1b1efa05344a190c3938e18ee5c6b26e9dc8754))
+* refuse the backslash shapes dotenv loaders do not read exactly ([d2a5a99](https://github.com/etalab-ia/just-code/commit/d2a5a99d68730e6a1636a249d85e5a07afc3dea2))
+* state the phase 4 snapshot finding without overclaiming ([9c37d72](https://github.com/etalab-ia/just-code/commit/9c37d72b8812efdf69a0183b947eeb3510c390dd))
+* treat quotes and backticks as positional in the raw dotenv form ([d63e31e](https://github.com/etalab-ia/just-code/commit/d63e31eb7cc53c836167db4bc03f2659d198a2ea))
+
+## [0.9.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.8.1...just-code-v0.9.0) (2026-10-15)
+
+
+### Features
+
+* configure Microsandbox ports per project ([e35a002](https://github.com/etalab-ia/just-code/commit/e35a002f419db1053f1c8e83b6a81bed55e93932))
+* deliver approved project secrets through the Microsandbox proxy ([1951c7e](https://github.com/etalab-ia/just-code/commit/1951c7e6d29031e6c408b793f69ee47f902727da))
+* exposer les secrets projet approuvés via le proxy Microsandbox (phase 2) ([8d5ecf1](https://github.com/etalab-ia/just-code/commit/8d5ecf1cdc2b98d48527ecd10e1635cc8a81a4f9))
+* fichiers dotenv gérés dans le guest pour les secrets approuvés (phase 3) ([f483a80](https://github.com/etalab-ia/just-code/commit/f483a8003d7745dfe3cdea7363d5f366af51eebc))
+* import project-scoped dotenv secrets ([77a5695](https://github.com/etalab-ia/just-code/commit/77a5695a68df228444145f7c6520234022029e0a))
+* importer les secrets dotenv par projet (phase 1) ([0af624b](https://github.com/etalab-ia/just-code/commit/0af624b58b0d3eeb648bd0a398e74b741aaa5099))
+* publish approved project secrets as managed guest dotenv files ([c830b14](https://github.com/etalab-ia/just-code/commit/c830b14fe258fe9e58ce68fb231ad212ea7d30e3))
+
+
+### Bug Fixes
+
+* bind the qualification transcript to what actually ran ([f9bbcee](https://github.com/etalab-ia/just-code/commit/f9bbceefd653b234284803c80850891b290ae16b))
+* make the native runner cleanup exception-safe and document lab exposure ([0764fdc](https://github.com/etalab-ia/just-code/commit/0764fdca63b600d7f761490c071a9ce168276e9a))
+* make the project secret inventory authoritative on every apply path ([f3d31f7](https://github.com/etalab-ia/just-code/commit/f3d31f7d11fc8254723d3bce3d251f0626b68c21))
+* pin python-dotenv 1.2.2 for the loader qualification ([252e1de](https://github.com/etalab-ia/just-code/commit/252e1dea7cc1e14ea96b0c398241a4d5f164549d))
+* retry Windows credential-file contention ([52b4f6f](https://github.com/etalab-ia/just-code/commit/52b4f6f7a5a4839d001a8073db42db3261411580))
+* serialize fallback mutations and validate Windows blob sizes ([e18f46a](https://github.com/etalab-ia/just-code/commit/e18f46a0a8b42f9884ea42122618a0f91915f995))
+
+## [0.8.1](https://github.com/etalab-ia/just-code/compare/just-code-v0.8.0...just-code-v0.8.1) (2026-10-07)
+
+
+### Bug Fixes
+
+* **install:** reattach setup wizard to the terminal under curl | sh ([faa8ecd](https://github.com/etalab-ia/just-code/commit/faa8ecd1c47f857c7602823e69a0da8331fe0d61))
+* **setup:** aligner le message de fin sur le runtime par défaut ([0e8a4ca](https://github.com/etalab-ia/just-code/commit/0e8a4ca949aec179df8f92e9a1c8e7664c17f00a))
+* **setup:** clarify default guest launch message ([37658ca](https://github.com/etalab-ia/just-code/commit/37658cae04222725f2bb1bfdf0170a1b20b9c594))
+
+## [0.8.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.7.4...just-code-v0.8.0) (2026-10-07)
+
+
+### Features
+
+* **import:** importer les projets Albert Code (P19) ([1e4dbe0](https://github.com/etalab-ia/just-code/commit/1e4dbe0adf3d6615e5eb230b572c2452e45cf53e))
+* préparer les diagnostics P21 avant release ([41129dc](https://github.com/etalab-ia/just-code/commit/41129dcb07af632cfb2ea5b87e4d9abb05dce36f))
+* **setup:** add read-only P21 diagnostics report ([f0d963b](https://github.com/etalab-ia/just-code/commit/f0d963b0522b32f4205663a5044cc2bf117ca57a))
+
+
+### Bug Fixes
+
+* **doctor:** address P21 diagnostics review findings ([e7b9e47](https://github.com/etalab-ia/just-code/commit/e7b9e4715cba815d916f6752dc387b837a20859e))
+* **doctor:** validate the selected Microsandbox runtime ([44312f9](https://github.com/etalab-ia/just-code/commit/44312f9c55543f6b3c7d7e1c62b87f0c075616b8))
+* **import:** reconcile existing Albert Code imports ([2e5a787](https://github.com/etalab-ia/just-code/commit/2e5a7874967091c68052fe31b8069b08857e80ad))
+* **init:** keep skill catalogue lines under 80 columns ([55803d0](https://github.com/etalab-ia/just-code/commit/55803d045d746653d5cbe2a0eb38bdae85e1b96e))
+* **init:** rendre la liste des compétences compacte et lisible ([1e95748](https://github.com/etalab-ia/just-code/commit/1e957484d309050f425cd4e44663ea312a62de84))
+* **qualification:** address remaining doctor review comments ([5ca6f62](https://github.com/etalab-ia/just-code/commit/5ca6f62fcb734688f2c78bb670bda50fbc24d825))
+
+## [0.7.4](https://github.com/etalab-ia/just-code/compare/just-code-v0.7.3...just-code-v0.7.4) (2026-10-05)
+
+
+### Bug Fixes
+
+* **ci:** donner au dispatch manuel le contexte de dépôt à gh ([473bd81](https://github.com/etalab-ia/just-code/commit/473bd811128d24674296eecf5292f65f40b2d416))
+* **ci:** donner au dispatch manuel le contexte de dépôt à gh ([6807ba5](https://github.com/etalab-ia/just-code/commit/6807ba5196506b556cfe5532cac06e04dec2470e))
+* **project:** réessayer la lecture du lock face aux échecs transitoires ([bfd77a8](https://github.com/etalab-ia/just-code/commit/bfd77a8c5afe3e1daee1cfe27212d0645fffcef0))
+* **project:** réessayer la lecture du lock face aux échecs transitoires ([b0baac6](https://github.com/etalab-ia/just-code/commit/b0baac6e47329166e54dc4eb3ada7387a2799211))
+* **project:** remonter la dernière erreur de lecture du lock à l'expiration ([b5088fa](https://github.com/etalab-ia/just-code/commit/b5088fa18ad7ab73fae6b3b636bd33ec7b14705e))
+
+## [0.7.3](https://github.com/etalab-ia/just-code/compare/just-code-v0.7.2...just-code-v0.7.3) (2026-10-05)
+
+
+### Bug Fixes
+
+* **mcp:** empêcher l'installateur gh de terminer le script de démarrage ([#123](https://github.com/etalab-ia/just-code/issues/123)) ([c0f2d46](https://github.com/etalab-ia/just-code/commit/c0f2d4624f209e57359102611e3b51d7cbd52628))
+
+## [0.7.2](https://github.com/etalab-ia/just-code/compare/just-code-v0.7.1...just-code-v0.7.2) (2026-10-05)
+
+
+### Bug Fixes
+
+* **mcp:** corriger le nom de la variable npm dans le script de préparation ([#121](https://github.com/etalab-ia/just-code/issues/121)) ([fdd532a](https://github.com/etalab-ia/just-code/commit/fdd532a892bc5f5ac874bd13e5ffef8258015b1a))
+
+## [0.7.1](https://github.com/etalab-ia/just-code/compare/just-code-v0.7.0...just-code-v0.7.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* **mcp:** réparer les épingles apt du profil navigateur (P16) ([#118](https://github.com/etalab-ia/just-code/issues/118)) ([7e87dfe](https://github.com/etalab-ia/just-code/commit/7e87dfed3d13b334611d8dd2ffaca75fb0189600))
+
+## [0.7.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.6.0...just-code-v0.7.0) (2026-10-05)
+
+
+### Features
+
+* **mcp:** ajouter les MCP navigateur et unifier init (P16/P17) ([#116](https://github.com/etalab-ia/just-code/issues/116)) ([bfc1748](https://github.com/etalab-ia/just-code/commit/bfc17488d59dac8be2e818565326a385723e2cff))
+* **mcp:** configurer data.gouv et Context7 (P15) ([#115](https://github.com/etalab-ia/just-code/issues/115)) ([7fe8bbe](https://github.com/etalab-ia/just-code/commit/7fe8bbe488f6325be5b9cc457a3b484edea1baa9))
+* **skills:** gérer les skills projet épinglées (P14) ([#113](https://github.com/etalab-ia/just-code/issues/113)) ([26e942e](https://github.com/etalab-ia/just-code/commit/26e942efdb8437472aec427184a28eeac4c155b5))
+
 ## [0.6.0](https://github.com/etalab-ia/just-code/compare/just-code-v0.5.0...just-code-v0.6.0) (2026-10-02)
 
 

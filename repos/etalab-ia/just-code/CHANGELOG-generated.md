@@ -1,22 +1,29 @@
-## Changelog : just-code (30 derniers jours, au 02/10/2026)
+## Changelog : just-code (30 derniers jours, au 04 novembre 2026)
 
 ### Résumé
-Ce mois a marqué une étape majeure dans la maturité de just-code, passant d'un prototype basé sur Docker à un environnement multi-runtimes robuste et sécurisé. Le projet supporte désormais Windows et propose une isolation renforcée par défaut. L'expérience utilisateur a été simplifiée grâce à un nouveau processus d'initialisation et une interface en ligne de commande (TUI) plus fluide, tout en garantissant une gestion sécurisée des identifiants et des secrets.
+Ce mois-ci, just-code a franchi une étape majeure dans la maturation de son expérience utilisateur. L'assistant de configuration initiale (wizard) a été entièrement repensé pour être plus interactif et intuitif, facilitant le choix des modèles d'IA et la configuration des accès GitHub. La gestion de la sécurité a également été renforcée, notamment par l'introduction d'un système de consentement pour les statistiques et une meilleure gestion des secrets de projet.
 
 ### Évolutions fonctionnelles
-- **Gestion des projets :** Introduction de la gestion des "skills" projet épinglées [#113](https://github.com/etalab-ia/just-code/issues/113) et d'un nouveau flux d'initialisation via la commande `just-code init` [#97](https://github.com/etalab-ia/just-code/issues/97), incluant un moteur de configuration minimale [#96](https://github.com/etalab-ia/just-code/issues/96) et une assistance au lancement [#98](https://github.com/etalab-ia/just-code/issues/98).
-- **Interface utilisateur (TUI) :** Amélioration de l'expérience de reprise de session lors de l'attachement [#102](https://github.com/etalab-ia/just-code/issues/102) et correction des erreurs de lancement initial [#103](https://github.com/etalab-ia/just-code/issues/103).
-- **Authentification et Identité :** Support de liaisons d'identifiants multiples avec possibilité de révocation [#87](https://github.com/etalab-ia/just-code/issues/87) et stockage sécurisé des identifiants en dehors des projets [#86](https://github.com/etalab-ia/just-code/issues/86).
-- **Compatibilité OS :** Support officiel de Windows via le runtime Microsandbox [#16](https://github.com/etalab-ia/just-code/issues/16).
-- **Intégration GitHub :** Activation du workflow pour les invités approuvés [#105](https://github.com/etalab-ia/just-code/issues/105).
+- **Assistant de configuration (Wizard) :** Refonte complète de l'interface d'initialisation via l'outil `huh`, offrant un parcours plus fluide pour la sélection des compétences (skills) [#167], des modèles d'IA et la configuration des accès GitHub [#169].
+- **Gestion des modèles :** Introduction du modèle Ministral comme option de petit modèle OpenCode et support de la sélection multi-modèles lors de l'installation.
+- **Gestion des secrets et credentials :** 
+    - Possibilité d'importer des secrets de projet via des fichiers `.env`.
+    - Amélioration de la visibilité et de la gestion du statut des clés API (notamment Albert API).
+- **Expérience de fin de session :** Ajout d'un écran de fin de session permettant de visualiser et de récupérer les modifications de travail effectuées.
+- **Statistiques d'usage :** Mise en place d'un mécanisme de consentement explicite avant toute collecte de statistiques.
+- **Importation :** Ajout de la capacité d'importer des projets existants depuis Albert Code.
+- **Interface TUI :** Améliorations de la navigation et de l'affichage (gestion du curseur, comportement lors du redimensionnement de la fenêtre, affichage des listes de sélection).
 
 ### Évolutions techniques
-- **Sécurité et Isolation :** Activation de l'isolation complète par défaut pour Microsandbox [#94](https://github.com/etalab-ia/just-code/issues/94), mise en place d'un scan de secrets dans les workspaces [#42](https://github.com/etalab-ia/just-code/issues/42) et durcissement du contrôle des montages de fichiers [#100](https://github.com/etalab-ia/just-code/issues/100).
-- **Diversification des Runtimes :** Ajout du backend `agent-vm` (basé sur Lima) [#38](https://github.com/etalab-ia/just-code/issues/38) et du runtime macOS via Tart [#2](https://github.com/etalab-ia/just-code/issues/2).
-- **Refactoring et Performance :** Portage massif des composants (Docker, Microsandbox, Tart) en Go pour une meilleure intégration et performance, et intégration directe du SDK Microsandbox.
-- **Gestion du Cycle de Vie :** Implémentation de la réconciliation et du redémarrage non destructif des runtimes [#7](https://github.com/etalab-ia/just-code/issues/7) et mise à jour du runtime Microsandbox vers la v0.7.3 [#107](https://github.com/etalab-ia/just-code/issues/107).
-- **Moteur de Configuration :** Passage à une résolution typée avec gestion des schémas et traçabilité de la provenance des paramètres [#4](https://github.com/etalab-ia/just-code/issues/4).
+- **Infrastructure et Runtime :** 
+    - Mises à jour successives du runtime Microsandbox (jusqu'à la version 0.7.13).
+    - Amélioration de la configuration et de la détection des ports invités (guest ports).
+- **Sécurité et Intégrité :** 
+    - Renforcement de la protection des secrets via le transport natif et le proxy Microsandbox.
+    - Amélioration des mécanismes de vérification des empreintes (digests) pour garantir l'intégrité des fichiers gérés.
+- **Gestion de l'espace de travail :** Optimisation de la synchronisation de l'espace de travail et de la détection des réversions ou modifications de l'hôte.
+- **Qualification et Tests :** Travail intensif sur les pipelines de qualification pour fournir des preuves de fonctionnement robustes sur macOS, Linux (amd64/arm64) et Windows.
 
 ### Autres changements
-- **Documentation :** Refonte complète du README pour un meilleur accompagnement utilisateur et ajout de guides de démarrage rapide pour Windows.
-- **Qualité logicielle :** Intégration de `gitleaks` en tant que hook `pre-commit` pour prévenir la fuite accidentelle de secrets.
+- **Documentation :** Restructuration de la documentation en pages thématiques et enrichissement des guides concernant la sécurité et la gestion des secrets.
+- **Nettoyage :** Optimisation des processus de CI/CD et des scripts de test.
