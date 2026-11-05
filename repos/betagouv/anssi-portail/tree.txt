@@ -214,6 +214,9 @@
 │   │   │   │   ├── exposition
 │   │   │   │   │   ├── ressourceTestsExposition.schema.ts
 │   │   │   │   │   └── ressourceTestsExposition.ts
+│   │   │   │   ├── hameconnage
+│   │   │   │   │   ├── ressourceReponsesHameconnage.schema.ts
+│   │   │   │   │   └── ressourceReponsesHameconnage.ts
 │   │   │   │   ├── reflexes-cyber
 │   │   │   │   │   ├── ressourceReponsesReflexesCyber.schema.ts
 │   │   │   │   │   └── ressourceReponsesReflexesCyber.ts
@@ -262,6 +265,8 @@
 │   │   │   │   ├── ressourceConnexionOIDC.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.ts
 │   │   │   ├── outils
+│   │   │   │   ├── kitDeSensibilisationInterne
+│   │   │   │   │   └── ressourceKitDeSensibilisationInterne.ts
 │   │   │   │   ├── modeleAnnuaireDeCrise
 │   │   │   │   │   ├── modele-annuaire-de-crise.xlsx
 │   │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.ts
@@ -362,6 +367,8 @@
 │   │   │   ├── consigneRetourOutilDonneDansJournal.ts
 │   │   │   ├── consigneSimulationNis2TermineeDansJournal.ts
 │   │   │   ├── consigneTestExpositionRealiseDansJournal.ts
+│   │   │   ├── consigneTestHameconnageReponseSoumiseDansJournal.ts
+│   │   │   ├── consigneTestHameconnageTermineDansJournal.ts
 │   │   │   ├── consigneTestRealiseDansJournal.ts
 │   │   │   ├── consigneUtilisateurConnecteDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
@@ -390,6 +397,8 @@
 │   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── simulationReflexesCyberReponseSoumise.ts
 │   │   │   │   ├── simulationReflexesCyberTermine.ts
+│   │   │   │   ├── testHameconnageReponseSoumise.ts
+│   │   │   │   ├── testHameconnageTermine.ts
 │   │   │   │   ├── testRealise.ts
 │   │   │   │   └── utilisateurConnecte.ts
 │   │   │   ├── miseAJourFavorisUtilisateur.ts
@@ -628,6 +637,8 @@
 │   │   │   ├── mini-tests
 │   │   │   │   ├── exposition
 │   │   │   │   │   └── ressourceTestsExposition.spec.ts
+│   │   │   │   ├── hameconnage
+│   │   │   │   │   └── ressourceReponsesHameconnage.spec.ts
 │   │   │   │   ├── reflexes-cyber
 │   │   │   │   │   └── ressourceReponsesReflexesCyber.spec.ts
 │   │   │   │   ├── ressourceInfoMiniTests.spec.ts
@@ -652,6 +663,7 @@
 │   │   │   │   ├── ressourceConnexionOIDC.spec.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
 │   │   │   ├── outils
+│   │   │   │   ├── ressourceKitDeSensibilisationInterne.spec.ts
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
 │   │   │   │   ├── ressourceModeleListeDActivites.spec.ts
 │   │   │   │   ├── ressourceModeleModificationsMotsDePasse.spec.ts
@@ -726,6 +738,8 @@
 │   │   │   ├── consigneRetourMiniTestDonneDansJournal.spec.ts
 │   │   │   ├── consigneSimulationNis2TermineeDansJournal.spec.ts
 │   │   │   ├── consigneTestExpositionRealiseDansJournal.spec.ts
+│   │   │   ├── consigneTestHameconnageReponseSoumiseDansJournal.spec.ts
+│   │   │   ├── consigneTestHameconnageTermineDansJournal.spec.ts
 │   │   │   ├── consigneTestRealiseDansJournal.spec.ts
 │   │   │   ├── consigneUtilisateurConnecteDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
@@ -928,7 +942,7 @@
 │   │   ├── test-maturite.html
 │   │   └── vide.html
 │   ├── _plugins
-│   │   └── package_json.rb
+│   │   └── pnpm_workspace.rb
 │   ├── _ressources
 │   │   ├── avis-bulletin.md
 │   │   ├── cnil-ensemble.md
@@ -1170,6 +1184,14 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── composition-biz-dev-2.avif
 │   │   │   │       └── composition-biz-dev.avif
+│   │   │   ├── kit-de-sensibilisation
+│   │   │   │   ├── apercu-encart.svg
+│   │   │   │   ├── authentification-et-acces.avif
+│   │   │   │   ├── donnees-sensibles.avif
+│   │   │   │   ├── hameconnage.avif
+│   │   │   │   ├── mobilite-et-deplacement.avif
+│   │   │   │   ├── reagir-face-a-un-incident.avif
+│   │   │   │   └── securite-des-comptes.avif
 │   │   │   ├── la-directive-NIS2.svg
 │   │   │   ├── localisation-france.svg
 │   │   │   ├── logo-afcdp.avif
@@ -1249,6 +1271,9 @@
 │   │   │   ├── motif-titre-petales.svg
 │   │   │   ├── nis2-noir.svg
 │   │   │   ├── nis2.svg
+│   │   │   ├── outils
+│   │   │   │   └── animation
+│   │   │   │       └── kit-sensibilisation-interne.avif
 │   │   │   ├── parcours-securisation
 │   │   │   │   ├── animation
 │   │   │   │   │   ├── heros-parcours-basique.avif
@@ -1340,6 +1365,7 @@
 │   ├── guides.html
 │   ├── inscription.html
 │   ├── integrer-webc.html
+│   ├── kit-de-sensibilisation-interne.html
 │   ├── kit-relais.html
 │   ├── lib-svelte
 │   │   ├── .gitignore
@@ -1497,6 +1523,7 @@
 │   │   │   ├── identification
 │   │   │   │   └── ZoneIdentification.svelte
 │   │   │   ├── integration-webc
+│   │   │   │   ├── BlocDeCode.svelte
 │   │   │   │   ├── IntegrerWebC.svelte
 │   │   │   │   └── SectionWebCAccordeon.svelte
 │   │   │   ├── interlocuteurs
@@ -1505,7 +1532,7 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (60 files)
+│   │   │   ├── main-*.ts  (61 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1534,6 +1561,7 @@
 │   │   │   │   │   ├── PanneauLateral.svelte
 │   │   │   │   │   ├── ReponseMail.svelte
 │   │   │   │   │   ├── SceneHerosHameconnage.svelte
+│   │   │   │   │   ├── ScoreFinalHameconnage.svelte
 │   │   │   │   │   ├── TestHameconnage.svelte
 │   │   │   │   │   ├── corps-de-mail
 │   │   │   │   │   │   ├── CorpsMailAMENDESGOUV.svelte
@@ -1679,6 +1707,17 @@
 │   │   │   │   ├── NiveauxMaturite.type.ts
 │   │   │   │   ├── SelectNiveauMaturite.svelte
 │   │   │   │   └── calculeIdNiveau.ts
+│   │   │   ├── outils
+│   │   │   │   └── kit-de-sensibilisation-interne
+│   │   │   │       ├── KitDeSensibilisationInterne.svelte
+│   │   │   │       ├── ModaleApercu.svelte
+│   │   │   │       ├── Thematique.svelte
+│   │   │   │       ├── animation
+│   │   │   │       │   ├── IllustrationHerosKitSensibilisation.svelte
+│   │   │   │       │   └── SceneHerosKitSensibilisation.svelte
+│   │   │   │       ├── archiveKit.svelte.ts
+│   │   │   │       ├── manipulationZip.ts
+│   │   │   │       └── thematiques.ts
 │   │   │   ├── page-crisp
 │   │   │   │   ├── PageCrisp.svelte
 │   │   │   │   └── pageCrisp.type.ts
@@ -1792,6 +1831,9 @@
 │   │   │   │   ├── plateforme.plugin.ts
 │   │   │   │   ├── qrcode.client.ts
 │   │   │   │   ├── qrcode.serveur.ts
+│   │   │   │   ├── retourUtilisateurSurContenu.client.ts
+│   │   │   │   ├── retourUtilisateurSurContenu.d.ts
+│   │   │   │   ├── retourUtilisateurSurContenu.serveur.ts
 │   │   │   │   ├── webComponent.client.ts
 │   │   │   │   └── webComponent.serveur.ts
 │   │   │   ├── protection
@@ -1916,7 +1958,6 @@
 │   │   │   │   │   ├── SelectionOrganisation.svelte
 │   │   │   │   │   └── SelectionOrganisation.types.ts
 │   │   │   │   ├── quiScroll.attachment.ts
-│   │   │   │   ├── retourUtilisateurSurContenu.store.ts
 │   │   │   │   └── toasts
 │   │   │   │       ├── Toast.svelte
 │   │   │   │       ├── Toaster.svelte
@@ -2133,4 +2174,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-342 directories, 2014 files
+351 directories, 2047 files

@@ -1,34 +1,40 @@
-## Changelog : anssi-portail (30 derniers jours, au 30 octobre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 04 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance majeure des outils interactifs. Le simulateur de hameçonnage est désormais pleinement opérationnel avec de nombreux scénarios réalistes et un système de correction immédiate. La boîte à outils s'est considérablement enrichie de nouveaux modèles de documents et d'un système de collecte d'avis utilisateurs, tandis que les parcours de sécurisation sont désormais intégrés de manière fluide à travers tout le portail pour mieux guider les utilisateurs.
+Ce mois a été marqué par un enrichissement majeur des contenus et des outils du portail. La simulation de hameçonnage a été considérablement étendue avec de nouveaux scénarios réalistes, tandis que la boîte à outils a été modernisée avec des fonctionnalités de prévisualisation et de nouveaux modèles de documents. Parallèlement, une refonte technique importante a permis de moderniser l'infrastructure et d'harmoniser l'interface utilisateur avec le Design System de l'État.
 
 ### Évolutions fonctionnelles
-- **Simulateur de hameçonnage** : 
-    - Ajout de nombreux scénarios d'emails (ANSSI, Banque Postale, Orange, La Poste, CPF, Inpi, ProConnect) incluant leurs réponses types.
-    - Amélioration de l'expérience utilisateur avec un retour visuel immédiat (bonne/mauvaise réponse), la distinction des messages lus et une interface entièrement adaptée aux mobiles et tablettes.
-- **Boîte à outils** : 
-    - Ajout de nouveaux modèles de documents (revue des droits d'accès, revue de comptes utilisateurs, modification de mots de passe, liste d'activités, annuaire de crise).
-    - Mise en place d'un système de retours utilisateurs permettant de noter les outils et de soumettre des commentaires directement depuis l'interface.
-- **Parcours de sécurisation** : Intégration visuelle et fonctionnelle des parcours dans les zones clés du site (page d'accueil, résultats de tests, scores de maturité et pied de page) pour un accompagnement personnalisé.
-- **Blog & Contacts** : 
-    - Déploiement de la section blog avec gestion des articles et des retours utilisateurs.
-    - Enrichissement de l'annuaire de contacts avec l'ajout de données nationales, régionales et sectorielles.
+- **Simulation de hameçonnage** :
+    - Ajout de nombreux nouveaux scénarios d'emails (ANSSI, banques, services publics comme La Poste ou amendes.gouv, etc.) avec leurs réponses associées.
+    - Amélioration de l'expérience utilisateur : affichage des scores en fin de test, distinction visuelle des messages lus, et optimisation de l'interface pour mobile et tablette.
+    - Mise en place d'un système de collecte des retours utilisateurs et de suivi des résultats.
+- **Boîte à outils** :
+    - Ajout de nouveaux modèles de documents personnalisables (gestion des mots de passe, listes d'activités, revue des droits d'accès, etc.).
+    - Intégration d'une fonctionnalité de prévisualisation des documents (sous forme d'image ou de modale) avant téléchargement.
+    - Ajout d'un module de retours utilisateurs directement sur les outils.
+- **Contacts et annuaires** :
+    - Enrichissement et mise à jour des données de contacts nationaux, régionaux et sectoriels.
+- **Contenu et Web** :
+    - Création de la page "Kit Relais" avec rendu côté serveur (SSR).
+    - Mise en place d'un système d'avis et de retours sur les articles du blog.
+    - Amélioration de la présentation des webinaires et des parcours de sécurisation.
 
 ### Évolutions techniques
-- **Architecture & API** : 
-    - Réorganisation complète des routes API (outils, annuaires, authentification, mini-tests) pour une meilleure structure.
-    - Centralisation de la gestion des états (emails, outils) via un store pour plus de cohérence.
-- **Infrastructure & Toolchain** : 
+- **Infrastructure et Toolchain** :
     - Migration de la stack vers Node.js 26.
-    - Mise à jour de l'environnement Ruby et optimisation de la configuration Svelte (hot reload, chargement des chunks).
-- **Frontend** : 
-    - Refactorisation du simulateur de hameçonnage en composants réutilisables.
-    - Adoption accrue des composants du Design System (DSFR) pour les alertes et les notifications.
-- **Performance & Robustesse** : 
-    - Implémentation du cache pour les articles du blog.
-    - Amélioration de la gestion des erreurs avec un composant 404 réutilisable.
+    - Mise à jour de l'environnement Ruby et optimisation de la configuration CI/CD (utilisation de `.nvmrc`).
+- **Interface Utilisateur (UI)** :
+    - Passage à la version 2.0.0 du `@lab-anssi/ui-kit`.
+    - Intégration native des composants du Design System (DSFR) pour les alertes et les notifications.
+- **Architecture logicielle** :
+    - Refactorisation massive des routes API pour une meilleure organisation (outils, annuaires, mini-tests).
+    - Extraction et mutualisation de composants réutilisables (modales de prévisualisation, blocs de code, composants de thématiques).
+    - Centralisation de la gestion des archives et de la manipulation des fichiers (XLSX, PDF).
+- **Sécurité et Performance** :
+    - Renforcement des politiques de sécurité du contenu (CSP) et gestion des blobs.
+    - Optimisation du chargement des dépendances PDF et amélioration du rechargement à chaud (Hot Reload) pour le développement Svelte.
 
 ### Autres changements
-- **SEO & Visibilité** : Optimisation des métadonnées (titres, descriptions, réseaux sociaux) et intégration des articles du blog dans le sitemap.
-- **Maintenance** : Nettoyage des dépendances obsolètes, suppression des commentaires inutiles et harmonisation du nommage des fichiers et variables.
+- Nettoyage général du code et suppression de composants obsolètes (Jekyll).
+- Amélioration de la qualité typographique (césure des mots, gestion des accents).
+- Harmonisation du nommage des fichiers et des variables pour une meilleure maintenabilité.
