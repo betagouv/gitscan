@@ -2,29 +2,25 @@
   "url": "https://github.com/proconnect-gouv/proconnect-test-client",
   "name": "proconnect-test-client",
   "description": "Client ProConnect minimal basé sur Node.js, conçu pour effectuer des tests de bout en bout du flux d'autorisation OIDC.",
-  "language": "JavaScript",
+  "language": "TypeScript",
   "features": [
     "Authentification & Accès"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Express",
+    "hono",
     "openid-client",
-    "ejs",
+    "tsx",
+    "zod",
     "dotenv-flow",
-    "body-parser",
-    "express-session",
-    "morgan",
-    "lodash-es"
+    "@hono/node-server"
   ],
   "components": [
-    "Node.js / NestJS",
     "TypeScript / JavaScript",
-    "Tests",
-    "Docker & Conteneurs",
-    "HTML / CSS / Templates visuels",
     "Authentification (composant)",
-    "API REST & GraphQL"
+    "Docker & Conteneurs",
+    "Tests",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
@@ -34,27 +30,26 @@
       "ProConnect"
     ]
   },
-  "tests": [
-    "Cypress"
-  ],
+  "tests": "Cypress",
   "workflows": [
     "ci.yml",
     "publish.yml"
   ],
-  "lastActivity": "2026-09-30T09:45:07+02:00",
+  "lastActivity": "2026-10-26T12:06:49+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 4,
     "forks": 2,
-    "openIssues": 5
+    "openIssues": 4
   },
   "tags": [
     "SSO & Identité fédérée",
     "Tests & Qualité",
     "Node.js, NestJS & Express",
     "Sécurité & Auth",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "TypeScript"
   ]
 }
