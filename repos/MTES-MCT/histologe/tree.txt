@@ -2,7 +2,8 @@
 ├── .ai
 │   ├── ADDRESSES_HISTORY_FILTRES.md
 │   ├── AI_STARTER.md
-│   └── AJOUT_DONNEES.md
+│   ├── AJOUT_DONNEES.md
+│   └── SUIVI_DESCRIPTIONS.md
 ├── .buildpacks
 ├── .docker
 │   ├── matomo
@@ -17,7 +18,8 @@
 │   │   ├── Dockerfile
 │   │   └── default.conf
 │   ├── php-fpm
-│   │   └── Dockerfile
+│   │   ├── Dockerfile
+│   │   └── xdebug.ini
 │   ├── php-worker
 │   │   ├── Dockerfile
 │   │   └── supervisord.conf
@@ -35,6 +37,7 @@
 │   ├── pull_request_template.md
 │   └── workflows
 │       ├── main.yml
+│       ├── metabase-watch.yml
 │       └── playwright.yml
 ├── .gitignore
 ├── .npmrc
@@ -131,7 +134,9 @@
 │   │   │   │   │   ├── back_view_signalement.js
 │   │   │   │   │   ├── form_acceptation_refus.js
 │   │   │   │   │   ├── form_cloture_modal.js
+│   │   │   │   │   ├── form_consommation_energetique.js
 │   │   │   │   │   ├── form_upload_documents.js
+│   │   │   │   │   ├── form_visite.js
 │   │   │   │   │   ├── personal_note.js
 │   │   │   │   │   ├── toggle-suivi-auto.js
 │   │   │   │   │   └── zip_selection_photos.js
@@ -151,7 +156,6 @@
 │   │   │   │   ├── form_account.js
 │   │   │   │   ├── form_nde.js
 │   │   │   │   ├── form_notification.js
-│   │   │   │   ├── form_visite.js
 │   │   │   │   ├── front_demande_lien_signalement
 │   │   │   │   │   └── front_demande_lien_signalement.js
 │   │   │   │   ├── front_dossier_bailleur
@@ -464,7 +468,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (136 files)
+│   └── Version*.php  (148 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan-dead-code.neon
@@ -566,6 +570,7 @@
 │   │   │   ├── file-xls.svg
 │   │   │   ├── house.svg
 │   │   │   ├── information.svg
+│   │   │   ├── logement.svg
 │   │   │   ├── mail-send.svg
 │   │   │   ├── notification.svg
 │   │   │   ├── organisation-logement.svg
@@ -584,6 +589,7 @@
 │   ├── js
 │   │   ├── wellknown.js
 │   │   └── zone_map.js
+│   ├── maintenance-sites-faciles.html
 │   ├── robots.txt
 │   └── service-secours
 │       ├── android-chrome-192x192.png
@@ -642,6 +648,7 @@
 │   │   ├── SlugifyDocumentSignalementCommand.php
 │   │   ├── Temp
 │   │   │   ├── .gitignore
+│   │   │   ├── InitFilesExtensionCommand.php
 │   │   │   └── UpdateSignalementInvariantRialCommand.php
 │   │   ├── UpdateCommunesCommand.php
 │   │   ├── UpdateMergedCommunesCommand.php
@@ -763,6 +770,7 @@
 │   │   │   ├── ServiceSecoursRoute.yml
 │   │   │   ├── Signalement.yml
 │   │   │   ├── SignalementDraft.yml
+│   │   │   ├── SignalementProcedure.yml
 │   │   │   ├── Situation.yml
 │   │   │   ├── Suivi.yml
 │   │   │   ├── SuiviDelayed.yml
@@ -813,9 +821,11 @@
 │   │       ├── LoadJobEventData.php
 │   │       ├── LoadNotification.php
 │   │       ├── LoadPartnerData.php
+│   │       ├── LoadRegionData.php
 │   │       ├── LoadServiceSecoursRouteData.php
 │   │       ├── LoadSignalementData.php
 │   │       ├── LoadSignalementDraft.php
+│   │       ├── LoadSignalementProcedureData.php
 │   │       ├── LoadSituationData.php
 │   │       ├── LoadSuiviData.php
 │   │       ├── LoadSuiviDelayedData.php
@@ -871,22 +881,27 @@
 │   │   │   │   ├── AddressesHistorySearchQuery.php
 │   │   │   │   ├── AdresseOccupantRequest.php
 │   │   │   │   ├── CompositionLogementRequest.php
+│   │   │   │   ├── ConsommationEnergetiqueRequest.php
 │   │   │   │   ├── CoordonneesAgenceRequest.php
+│   │   │   │   ├── CoordonneesBailleurOldRequest.php
 │   │   │   │   ├── CoordonneesBailleurRequest.php
 │   │   │   │   ├── CoordonneesFoyerRequest.php
 │   │   │   │   ├── CoordonneesSyndicRequest.php
 │   │   │   │   ├── CoordonneesTiersRequest.php
 │   │   │   │   ├── GenerateFileZipSelectionRequest.php
+│   │   │   │   ├── InformationsBailleurRequest.php
 │   │   │   │   ├── InformationsLogementRequest.php
 │   │   │   │   ├── InviteTiersRequest.php
+│   │   │   │   ├── OccupationLogementRequest.php
+│   │   │   │   ├── ProcedureDemarchesOldRequest.php
 │   │   │   │   ├── ProcedureDemarchesRequest.php
 │   │   │   │   ├── QualificationNDERequest.php
 │   │   │   │   ├── RequestInterface.php
 │   │   │   │   ├── SignalementDraftArchiveRequest.php
 │   │   │   │   ├── SignalementDraftRequest.php
 │   │   │   │   ├── SignalementSearchQuery.php
-│   │   │   │   ├── SituationFoyerRequest.php
-│   │   │   │   └── VisiteRequest.php
+│   │   │   │   ├── SituationFoyerOldRequest.php
+│   │   │   │   └── SituationFoyerRequest.php
 │   │   │   └── UserSearchFilterRequest.php
 │   │   ├── ServiceSecours
 │   │   │   ├── FormServiceSecours.php
@@ -947,6 +962,7 @@
 │   │   │   ├── DocumentType.php
 │   │   │   ├── EtageType.php
 │   │   │   ├── HistoryEntryEvent.php
+│   │   │   ├── InterconnectionAuthType.php
 │   │   │   ├── InterfacageType.php
 │   │   │   ├── InterventionType.php
 │   │   │   ├── MotifCloture.php
@@ -956,6 +972,7 @@
 │   │   │   ├── NotificationType.php
 │   │   │   ├── OccupantLink.php
 │   │   │   ├── PartnerType.php
+│   │   │   ├── ProcedureCategory.php
 │   │   │   ├── ProcedureType.php
 │   │   │   ├── ProfileDeclarant.php
 │   │   │   ├── ProfileOccupant.php
@@ -963,6 +980,7 @@
 │   │   │   ├── Qualification.php
 │   │   │   ├── QualificationStatus.php
 │   │   │   ├── SISHDossierType.php
+│   │   │   ├── ServiceSecoursCategory.php
 │   │   │   ├── SignalementAddressAnomaly.php
 │   │   │   ├── SignalementDraftStatus.php
 │   │   │   ├── SignalementStatus.php
@@ -991,6 +1009,7 @@
 │   │   ├── PersonalNote.php
 │   │   ├── PersonalTag.php
 │   │   ├── PopNotification.php
+│   │   ├── Region.php
 │   │   ├── ServiceSecoursRoute.php
 │   │   ├── Signalement.php
 │   │   ├── SignalementDraft.php
@@ -1040,7 +1059,6 @@
 │   │   ├── SecurityApiExceptionListener.php
 │   │   ├── SeoPageNotFoundRedirectListener.php
 │   │   ├── SignalementUpdatedListener.php
-│   │   ├── SuiviCreatedListener.php
 │   │   ├── SuiviTransformerListener.php
 │   │   └── UserCreatedListener.php
 │   ├── EventSubscriber
@@ -1114,11 +1132,11 @@
 │   │   ├── SignalementQualificationFactory.php
 │   │   ├── SignalementSearchQueryFactory.php
 │   │   ├── SignalementServiceSecoursFactory.php
-│   │   ├── SignalementVisiteRequestFactory.php
 │   │   ├── SuiviDelayedFactory.php
 │   │   ├── TiersInvitationFactory.php
 │   │   └── UserFactory.php
 │   ├── Form
+│   │   ├── AddAndRescheduleVisiteType.php
 │   │   ├── AddSuiviType.php
 │   │   ├── AddTagType.php
 │   │   ├── AdminCancelInjonctionProcedureType.php
@@ -1128,16 +1146,19 @@
 │   │   ├── AutoAffectationRuleType.php
 │   │   ├── BailleurClotureProcedureType.php
 │   │   ├── BailleurType.php
+│   │   ├── CancelVisiteType.php
 │   │   ├── CloseAffectationType.php
 │   │   ├── CloseSignalementType.php
 │   │   ├── ClotureType.php
 │   │   ├── ClubEventType.php
 │   │   ├── CommuneType.php
+│   │   ├── ConfirmVisiteType.php
 │   │   ├── CoordonneesAgenceType.php
 │   │   ├── DataTransformer
 │   │   │   └── PolygonToWktTransformer.php
 │   │   ├── DemandeLienSignalementType.php
 │   │   ├── DocumentIAType.php
+│   │   ├── EditConclusionVisiteType.php
 │   │   ├── EditTagType.php
 │   │   ├── ImportArreteType.php
 │   │   ├── InAppCommunicationType.php
@@ -1145,6 +1166,7 @@
 │   │   ├── MessageUsagerType.php
 │   │   ├── PartnerPerimetreType.php
 │   │   ├── PartnerType.php
+│   │   ├── ProcedureEngageeType.php
 │   │   ├── RefusAffectationType.php
 │   │   ├── RefusSignalementType.php
 │   │   ├── ReponseInjonctionBailleurType.php
@@ -1229,7 +1251,6 @@
 │   │   ├── HistoryEntryManager.php
 │   │   ├── InterventionManager.php
 │   │   ├── JobEventManager.php
-│   │   ├── PartnerManager.php
 │   │   ├── PopNotificationManager.php
 │   │   ├── SignalementDraftManager.php
 │   │   ├── SignalementManager.php
@@ -1345,6 +1366,10 @@
 │   │   │   │   └── NotificationSuiviQuery.php
 │   │   │   ├── Partner
 │   │   │   │   └── PartnerLocalizationQuery.php
+│   │   │   ├── Signalement
+│   │   │   │   ├── SignalementLocalisationQuery.php
+│   │   │   │   ├── SignalementQualificationQuery.php
+│   │   │   │   └── SignalementReferenceQuery.php
 │   │   │   ├── SignalementList
 │   │   │   │   ├── ExportIterableQuery.php
 │   │   │   │   ├── MapGeoDataQuery.php
@@ -1369,6 +1394,7 @@
 │   │   │       ├── ZoneLocalizationQuery.php
 │   │   │       ├── ZonePaginatorQuery.php
 │   │   │       └── ZoneSignalementQuery.php
+│   │   ├── RegionRepository.php
 │   │   ├── ServiceSecoursRouteRepository.php
 │   │   ├── SignalementDraftRepository.php
 │   │   ├── SignalementProcedureRepository.php
@@ -1479,6 +1505,7 @@
 │   │   │   ├── TabDossier.php
 │   │   │   ├── TabDossierResult.php
 │   │   │   └── TabQueryParameters.php
+│   │   ├── DepartementRegionHelper.php
 │   │   ├── EmailAlert
 │   │   │   └── EmailAlertChecker.php
 │   │   ├── Export
@@ -1581,6 +1608,9 @@
 │   │   │   │   ├── EsaboraSCHSService.php
 │   │   │   │   ├── EsaboraSISHService.php
 │   │   │   │   ├── EsaboraServiceInterface.php
+│   │   │   │   ├── EsaboraTokenProvider.php
+│   │   │   │   ├── Exception
+│   │   │   │   │   └── EsaboraTokenException.php
 │   │   │   │   ├── Handler
 │   │   │   │   │   ├── AbstractDossierSISHHandler.php
 │   │   │   │   │   ├── DossierAdresseServiceHandler.php
@@ -1604,10 +1634,11 @@
 │   │   │   │       ├── DossierStateSCHSResponse.php
 │   │   │   │       ├── DossierStateSISHResponse.php
 │   │   │   │       ├── DossierVisiteSISHCollectionResponse.php
-│   │   │   │       └── Model
-│   │   │   │           ├── DossierArreteSISH.php
-│   │   │   │           ├── DossierEventSCHS.php
-│   │   │   │           └── DossierVisiteSISH.php
+│   │   │   │       ├── Model
+│   │   │   │       │   ├── DossierArreteSISH.php
+│   │   │   │       │   ├── DossierEventSCHS.php
+│   │   │   │       │   └── DossierVisiteSISH.php
+│   │   │   │       └── OAuth2TokenResponse.php
 │   │   │   ├── Idoss
 │   │   │   │   └── IdossService.php
 │   │   │   ├── JobEventHttpClient.php
@@ -1783,6 +1814,7 @@
 │   │   │   │   └── SituationFoyerProcessor.php
 │   │   │   ├── PhotoHelper.php
 │   │   │   ├── PostalCodeHomeChecker.php
+│   │   │   ├── ProcedureEngageeService.php
 │   │   │   ├── Qualification
 │   │   │   │   ├── QualificationStatusService.php
 │   │   │   │   └── SignalementQualificationUpdater.php
@@ -1809,11 +1841,15 @@
 │   │   │   ├── Suivi
 │   │   │   │   ├── SuiviCategoryMapper.php
 │   │   │   │   ├── SuiviDescriptionHelper.php
+│   │   │   │   ├── SuiviDescriptionVariant.php
 │   │   │   │   ├── SuiviHelper.php
 │   │   │   │   ├── SuiviMentionExtractor.php
 │   │   │   │   ├── SuiviRecipient.php
 │   │   │   │   ├── SuiviSeenMarker.php
 │   │   │   │   └── SuiviTransformerService.php
+│   │   │   ├── TabOrientation
+│   │   │   │   ├── TabOrientationItem.php
+│   │   │   │   └── TabOrientationService.php
 │   │   │   ├── VisiteNotifier.php
 │   │   │   └── ZipcodeProvider.php
 │   │   ├── SignalementAddressContentService.php
@@ -1886,7 +1922,6 @@
 │   │   ├── ExportFormat.php
 │   │   ├── FormHelper.php
 │   │   ├── HtmlCleaner.php
-│   │   ├── Json.php
 │   │   ├── Phone.php
 │   │   ├── Sanitizer.php
 │   │   ├── TrimHelper.php
@@ -1976,11 +2011,13 @@
 │   │       ├── _panel-add-suivi.html.twig
 │   │       ├── _panel-affectation.html.twig
 │   │       ├── _panel-close-affectation.html.twig
+│   │       ├── _panel-close-signalement-form.html.twig
 │   │       ├── _panel-close-signalement.html.twig
 │   │       ├── _panel-upload-files.html.twig
 │   │       ├── conclude-procedure.html.twig
 │   │       ├── desordre-precision-label.html.twig
 │   │       ├── display_alert.html.twig
+│   │       ├── procedure.html.twig
 │   │       ├── qualification.html.twig
 │   │       ├── signalement-typecomposition-etage.html.twig
 │   │       └── signalement-typecomposition-fenetres.html.twig
@@ -2152,6 +2189,20 @@
 │   │   │   │   │   └── _subscriptions-list.html.twig
 │   │   │   │   ├── bloc-suivis.html.twig
 │   │   │   │   ├── criticite-qualifications.html.twig
+│   │   │   │   ├── details
+│   │   │   │   │   ├── _commodite.html.twig
+│   │   │   │   │   ├── bailleur-agence-syndic.html.twig
+│   │   │   │   │   ├── consommation-energetique.html.twig
+│   │   │   │   │   ├── coordonnees-agence.html.twig
+│   │   │   │   │   ├── coordonnees-bailleur.html.twig
+│   │   │   │   │   ├── coordonnees-foyer.html.twig
+│   │   │   │   │   ├── coordonnees-syndic.html.twig
+│   │   │   │   │   ├── coordonnees-tiers.html.twig
+│   │   │   │   │   ├── demarches-usager.html.twig
+│   │   │   │   │   ├── description-logement.html.twig
+│   │   │   │   │   ├── informations-bailleur.html.twig
+│   │   │   │   │   ├── occupation-logement.html.twig
+│   │   │   │   │   └── situation-foyer.html.twig
 │   │   │   │   ├── header
 │   │   │   │   │   ├── _address.html.twig
 │   │   │   │   │   ├── _badges.html.twig
@@ -2175,27 +2226,37 @@
 │   │   │   │   │   ├── information-syndic.html.twig
 │   │   │   │   │   └── information-tiers.html.twig
 │   │   │   │   ├── nde.html.twig
+│   │   │   │   ├── orientation
+│   │   │   │   │   └── pre-evaluation.html.twig
 │   │   │   │   ├── panels
 │   │   │   │   │   ├── _panel-accept-affectation.html.twig
 │   │   │   │   │   ├── _panel-accept-signalement.html.twig
 │   │   │   │   │   ├── _panel-agents-subscription.html.twig
 │   │   │   │   │   ├── _panel-close-demarche-acceleree.html.twig
 │   │   │   │   │   ├── _panel-cloture.html.twig
+│   │   │   │   │   ├── _panel-delete-procedure-engagee.html.twig
 │   │   │   │   │   ├── _panel-deny-affectation.html.twig
 │   │   │   │   │   ├── _panel-deny-signalement.html.twig
 │   │   │   │   │   ├── _panel-edit-address.html.twig
 │   │   │   │   │   ├── _panel-edit-composition-logement-etage.html.twig
 │   │   │   │   │   ├── _panel-edit-composition-logement.html.twig
+│   │   │   │   │   ├── _panel-edit-consommation-energetique.html.twig
 │   │   │   │   │   ├── _panel-edit-coordonnees-agence.html.twig
+│   │   │   │   │   ├── _panel-edit-coordonnees-bailleur-old.html.twig
 │   │   │   │   │   ├── _panel-edit-coordonnees-bailleur.html.twig
 │   │   │   │   │   ├── _panel-edit-coordonnees-foyer.html.twig
 │   │   │   │   │   ├── _panel-edit-coordonnees-syndic.html.twig
 │   │   │   │   │   ├── _panel-edit-coordonnees-tiers.html.twig
 │   │   │   │   │   ├── _panel-edit-file.html.twig
+│   │   │   │   │   ├── _panel-edit-informations-bailleur.html.twig
 │   │   │   │   │   ├── _panel-edit-informations-logement.html.twig
 │   │   │   │   │   ├── _panel-edit-logement-vacant.html.twig
 │   │   │   │   │   ├── _panel-edit-nde.html.twig
+│   │   │   │   │   ├── _panel-edit-occupation-logement.html.twig
+│   │   │   │   │   ├── _panel-edit-procedure-demarches-old.html.twig
 │   │   │   │   │   ├── _panel-edit-procedure-demarches.html.twig
+│   │   │   │   │   ├── _panel-edit-procedure-engagee.html.twig
+│   │   │   │   │   ├── _panel-edit-situation-foyer-old.html.twig
 │   │   │   │   │   ├── _panel-edit-situation-foyer.html.twig
 │   │   │   │   │   ├── _panel-edit-suivi.html.twig
 │   │   │   │   │   ├── _panel-invite-tiers.html.twig
@@ -2209,10 +2270,16 @@
 │   │   │   │   ├── photos-album.html.twig
 │   │   │   │   ├── photos-documents.html.twig
 │   │   │   │   ├── suivis.html.twig
+│   │   │   │   ├── tab-documents-visites.html.twig
 │   │   │   │   ├── tabs
 │   │   │   │   │   ├── _tab-notes-personal-note.html.twig
 │   │   │   │   │   ├── _tab-notes-personal-tags.html.twig
+│   │   │   │   │   ├── _tab-orientation-conclusion-visite.html.twig
+│   │   │   │   │   ├── _tab-orientation-pre-evaluation.html.twig
+│   │   │   │   │   ├── _tab-orientation-procedure-a-engager.html.twig
+│   │   │   │   │   ├── _tab-orientation-procedure-retenue.html.twig
 │   │   │   │   │   ├── tab-activite.html.twig
+│   │   │   │   │   ├── tab-details.html.twig
 │   │   │   │   │   ├── tab-documents.html.twig
 │   │   │   │   │   ├── tab-foyer.html.twig
 │   │   │   │   │   ├── tab-notes.html.twig
@@ -2223,20 +2290,19 @@
 │   │   │   │   ├── user-declaration-desordre-list.html.twig
 │   │   │   │   ├── user-declaration-desordre-photo.html.twig
 │   │   │   │   ├── user-declaration-situations.html.twig
+│   │   │   │   ├── user-declaration.html.twig
 │   │   │   │   └── visites
+│   │   │   │       ├── _cancel-visite-form.html.twig
+│   │   │   │       ├── _confirm-visite-form.html.twig
+│   │   │   │       ├── _edit-conclusion-visite-form.html.twig
+│   │   │   │       ├── _reschedule-visite-form.html.twig
 │   │   │   │       ├── bloc-visites.html.twig
 │   │   │   │       ├── panels
 │   │   │   │       │   ├── _panel-add-visite.html.twig
-│   │   │   │       │   ├── _panel-cancel-visite.html.twig
-│   │   │   │       │   ├── _panel-confirm-visite.html.twig
-│   │   │   │       │   ├── _panel-edit-visite.html.twig
-│   │   │   │       │   ├── _panel-reschedule-visite.html.twig
-│   │   │   │       │   ├── _panel-upload-files-visite.html.twig
-│   │   │   │       │   └── visites-panels.html.twig
+│   │   │   │       │   └── _panel-manage-visite.html.twig
 │   │   │   │       ├── visite-item.html.twig
 │   │   │   │       ├── visite-status.html.twig
 │   │   │   │       ├── visites-buttons.html.twig
-│   │   │   │       ├── visites-form-confirm-fields.html.twig
 │   │   │   │       └── visites-list.html.twig
 │   │   │   └── view.html.twig
 │   │   ├── signalement-injonction
@@ -2452,7 +2518,47 @@
 │   │   └── success.html.twig
 │   ├── skiplink.html.twig
 │   └── suivi
-│       └── front_signalement_confirm_edit_email_occupant.html.twig
+│       ├── _tiers_info.html.twig
+│       ├── affectation_is_refused.html.twig
+│       ├── ask_document.html.twig
+│       ├── back_signalement_delete_procedure_engagees.html.twig
+│       ├── back_signalement_edit_procedure_engagees.html.twig
+│       ├── demande_abandon_procedure.html.twig
+│       ├── demande_poursuite_procedure.html.twig
+│       ├── injonction_bailleur_bascule_procedure_par_bailleur.html.twig
+│       ├── injonction_bailleur_bascule_procedure_par_usager.html.twig
+│       ├── injonction_bailleur_bascule_procedure_par_usager_reponse_demande_cloture.html.twig
+│       ├── injonction_bailleur_cloture_par_admin.html.twig
+│       ├── injonction_bailleur_cloture_par_usager.html.twig
+│       ├── injonction_bailleur_cloture_par_usager_reponse_demande_cloture.html.twig
+│       ├── injonction_bailleur_cloture_sans_activite.html.twig
+│       ├── injonction_bailleur_demande_cloture_par_bailleur.html.twig
+│       ├── injonction_bailleur_demande_cloture_par_bailleur_usager.html.twig
+│       ├── injonction_bailleur_expiree.html.twig
+│       ├── injonction_bailleur_rappel_reponse_bailleur.html.twig
+│       ├── injonction_bailleur_relance_usager_cloture.html.twig
+│       ├── injonction_bailleur_reminder_for_bailleur.html.twig
+│       ├── injonction_bailleur_reminder_for_usager.html.twig
+│       ├── injonction_bailleur_reponse_non.html.twig
+│       ├── injonction_bailleur_reponse_oui.html.twig
+│       ├── injonction_bailleur_reponse_oui_avec_aide.html.twig
+│       ├── injonction_bailleur_reponse_oui_demarches_commencees.html.twig
+│       ├── message_esabora_schs.html.twig
+│       ├── message_usager_post_cloture_travaux_mise_en_conformite.html.twig
+│       ├── message_usager_travaux_mise_en_conformite.html.twig
+│       ├── new_document.html.twig
+│       ├── signalement_edited.html.twig
+│       ├── signalement_edited_bo_invitation_tiers.html.twig
+│       ├── signalement_edited_fo_invitation_tiers_acceptee.html.twig
+│       ├── signalement_edited_fo_invitation_tiers_refusee.html.twig
+│       ├── signalement_edited_fo_modification_email_occupant.html.twig
+│       ├── signalement_is_closed.html.twig
+│       ├── signalement_is_closed_cloture_automatique_injonction.html.twig
+│       ├── signalement_is_injonction.html.twig
+│       ├── signalement_is_refused.html.twig
+│       ├── signalement_is_reopened.html.twig
+│       ├── signalement_status_is_synchro.html.twig
+│       └── signalement_status_is_synchro_idoss.html.twig
 ├── tests
 │   ├── ApiHelper.php
 │   ├── Fake
@@ -2599,7 +2705,6 @@
 │   │   │       └── UserExportMessageHandlerTest.php
 │   │   ├── Repository
 │   │   │   ├── AffectationRepositoryTest.php
-│   │   │   ├── ArreteRepositoryTest.php
 │   │   │   ├── AutoAffectationRuleRepositoryTest.php
 │   │   │   ├── BailleurRepositoryTest.php
 │   │   │   ├── Behaviour
@@ -2695,6 +2800,7 @@
 │   │   │   │   ├── SignalementAddressAnomalyCheckerTest.php
 │   │   │   │   ├── SignalementBuilderTest.php
 │   │   │   │   ├── Suivi
+│   │   │   │   │   ├── SuiviDescriptionHelperTest.php
 │   │   │   │   │   └── SuiviSeenMarkerTest.php
 │   │   │   │   ├── VisiteNotifierTest.php
 │   │   │   │   └── ZipCodeProviderTest.php
@@ -2757,12 +2863,11 @@
 │   │   │   │       ├── CompositionLogementRequestTest.php
 │   │   │   │       ├── CoordonneesFoyerRequestTest.php
 │   │   │   │       ├── CoordonneesTiersRequestTest.php
-│   │   │   │       ├── InformationsLogementRequestTest.php
+│   │   │   │       ├── OccupationLogementRequestTest.php
 │   │   │   │       ├── ProcedureDemarchesRequestTest.php
 │   │   │   │       ├── SignalementDraftRequestTest.php
 │   │   │   │       ├── SignalementSearchQueryTest.php
-│   │   │   │       ├── SituationFoyerRequestTest.php
-│   │   │   │       └── VisiteRequestTest.php
+│   │   │   │       └── SituationFoyerRequestTest.php
 │   │   │   ├── ServiceSecours
 │   │   │   │   └── FormServiceSecoursStep5Test.php
 │   │   │   └── SettingsTest.php
@@ -2773,11 +2878,13 @@
 │   │   │   ├── CommuneTest.php
 │   │   │   ├── Enum
 │   │   │   │   ├── InterventionTypeTest.php
-│   │   │   │   └── ProfileDeclarantTest.php
+│   │   │   │   ├── ProfileDeclarantTest.php
+│   │   │   │   └── ServiceSecoursCategoryTest.php
 │   │   │   ├── FileTest.php
 │   │   │   ├── InterventionTest.php
 │   │   │   ├── JobEventTest.php
 │   │   │   ├── PartnerTest.php
+│   │   │   ├── ServiceSecoursRouteTest.php
 │   │   │   ├── SignalementDraftTest.php
 │   │   │   ├── SignalementQualificationTest.php
 │   │   │   ├── SignalementTest.php
@@ -2803,6 +2910,8 @@
 │   │   │   ├── InterventionFactoryTest.php
 │   │   │   ├── NotificationFactoryTest.php
 │   │   │   ├── PartnerFactoryTest.php
+│   │   │   ├── Signalement
+│   │   │   │   └── TypeCompositionLogementFactoryTest.php
 │   │   │   ├── SignalementExportFactoryTest.php
 │   │   │   ├── SignalementFactoryTest.php
 │   │   │   ├── SignalementQualificationFactoryTest.php
@@ -2864,6 +2973,7 @@
 │   │   │   │   ├── EsaboraManagerTest.php
 │   │   │   │   ├── EsaboraSCHSServiceTest.php
 │   │   │   │   ├── EsaboraSISHServiceTest.php
+│   │   │   │   ├── EsaboraTokenProviderTest.php
 │   │   │   │   ├── Handler
 │   │   │   │   │   ├── DossierAdresseServiceHandlerTest.php
 │   │   │   │   │   ├── DossierPersonneServiceHandlerTest.php
@@ -2879,6 +2989,7 @@
 │   │   │   ├── FileScannerTest.php
 │   │   │   ├── Files
 │   │   │   │   ├── FileListServiceTest.php
+│   │   │   │   ├── FileReaderExifTest.php
 │   │   │   │   ├── FileVisibilityServiceTest.php
 │   │   │   │   ├── FilenameGeneratorTest.php
 │   │   │   │   ├── ImageVariantProviderTest.php
@@ -2972,7 +3083,6 @@
 │   │   │   ├── DateHelperTest.php
 │   │   │   ├── DictionaryProviderTest.php
 │   │   │   ├── HtmlCleanerTest.php
-│   │   │   ├── JsonTest.php
 │   │   │   ├── PhoneTest.php
 │   │   │   ├── TrimHelperTest.php
 │   │   │   └── UrlHelperTest.php
@@ -3061,6 +3171,8 @@
 │           │   │   └── EsaboraSISHMock.php
 │           │   ├── Idoss
 │           │   │   └── IdossMock.php
+│           │   ├── Oauth2
+│           │   │   └── Oauth2Mock.php
 │           │   ├── ProConnect
 │           │   │   └── ProConnectMock.php
 │           │   └── Rial
@@ -3124,6 +3236,8 @@
 │               │   ├── creatDossHistologe-2023-9.json
 │               │   ├── listStatutsHistologe.json
 │               │   └── uploadFileRepoHistologe.json
+│               ├── Oauth2
+│               │   └── token.json
 │               ├── ProConnect
 │               │   ├── jwks.json
 │               │   ├── openid-configuration.json
@@ -3138,4 +3252,4 @@
 │   ├── security.fr.yaml
 │   └── validators.fr.xlf
 └── webpack.config.js
-521 directories, 2771 files
+529 directories, 2889 files
