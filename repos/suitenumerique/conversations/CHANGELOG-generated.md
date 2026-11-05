@@ -1,35 +1,32 @@
-## Changelog : conversations (30 derniers jours, au 02/11/2026)
+## Changelog : conversations (30 derniers jours, au 04/11/2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur la robustesse de l'expérience utilisateur, notamment pour rendre les échanges avec l'IA plus fluides lors de rechargements de page ou d'interruptions. Un effort majeur a également été porté sur la sécurité du système (correction de vulnérabilités) et la protection de la vie privée, tout en renforçant les outils de surveillance technique pour garantir la stabilité du service.
+Ce mois-ci, les efforts se sont concentrés sur la sécurisation de la plateforme via la correction de nombreuses vulnérabilités (CVE) et le durcissement des paramètres de sécurité. L'expérience utilisateur a été fluidifiée, notamment par une meilleure gestion des interruptions de réponses et des rechargements de page, tandis que l'observabilité du système a été renforcée pour faciliter le suivi des performances des modèles d'IA.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la continuité du chat** : l'interface gère désormais mieux les interruptions de réponse et les rechargements de page, permettant de conserver le contexte et d'afficher des notifications claires sur l'état des réponses.
-- **Contrôle de l'IA** : ajout d'une limite de jetons (tokens) de sortie par message et amélioration de la gestion des contenus de type "liste" pour les appels non-streaming.
-- **Gestion documentaire** : amélioration de la conservation des fichiers originaux lors de l'ajout de documents à une conversation.
+- **Gestion des réponses et de l'IA** : ajout d'une limite de jetons (tokens) par message et amélioration de la continuité des conversations (affichage des appels d'outils et des réponses interrompues après un rechargement de page).
 - **Expérience utilisateur (UX)** : 
-    - Clarification des messages lors du traitement de fichiers de projet.
-    - Amélioration de la gestion de l'authentification pour les utilisateurs partageant une même adresse e-mail.
-    - Meilleure compatibilité avec les navigateurs plus anciens.
-    - Messages d'alerte affinés en cas de forte affluence.
+    - Amélioration de la gestion des mises à jour : incitation au rechargement de la page lors d'un nouveau déploiement pour éviter l'usage de versions obsolètes.
+    - Meilleure gestion des erreurs : affichage d'une page de rechargement au lieu d'une page blanche en cas d'erreur.
+    - Retours visuels : nouveaux messages de statut lors du traitement des fichiers et ajustements de l'interface (module d'impact carbone, alertes de trafic).
+- **Gestion documentaire** : amélioration de la conservation des fichiers originaux attachés aux conversations.
 
 ### Évolutions techniques
-- **Sécurité et Confidentialité** : 
-    - Correction de nombreuses vulnérabilités (CVE) sur les dépendances critiques (authlib, pypdf, undici, zod, djangorestframework, etc.).
-    - Renforcement de la protection des données : garantie qu'aucun prompt utilisateur n'est enregistré dans les logs ou la télémétrie.
-- **Observabilité et Monitoring** : 
-    - Mise en place de métriques Prometheus pour suivre l'utilisation des modèles, les flux de chat et les appels sortants.
-    - Intégration de nouveaux moniteurs (ServiceMonitor/PodMonitor) via Helm.
-    - Configuration ajustable du taux d'échantillonnage des traces Sentry.
-- **Stabilité et Performance** : 
-    - Ajout de timeouts pour les clients Redis et Celery.
-    - Amélioration de l'intégrité des données en nettoyant les caractères spéciaux (NUL) avant la sauvegarde des conversations.
-    - Migration des tâches périodiques vers Celery Beat.
+- **Sécurité** : 
+    - Correction massive de vulnérabilités (CVE) via la mise à jour de dépendances critiques (pypdf, authlib, undici, zod, djangorestframework, brotli, certifi, pillow, etc.).
+    - Durcissement des paramètres de sécurité Django.
+- **Observabilité et monitoring** : 
+    - Mise en place de métriques Prometheus pour mesurer les requêtes de modèles, les flux de chat et les appels sortants.
+    - Ajout de moniteurs (ServiceMonitor/PodMonitor) pour Helm et configuration du taux d'échantillonnage des traces Sentry.
 - **Infrastructure et CI/CD** : 
-    - Optimisation du cache Playwright dans les pipelines CI.
-    - Mise à jour des configurations Helm (gestion du fichier robots.txt).
-    - Amélioration de l'environnement de développement Docker (utilisation de mailcatcher et restriction des ports en localhost).
+    - Optimisation de l'environnement Docker (passage à mailcatcher, restriction des ports de développement au localhost).
+    - Amélioration de la CI avec une gestion optimisée du cache Playwright.
+    - Gestion du fichier `robots.txt` via Helm.
+- **Backend et Performance** : 
+    - Optimisation de la gestion des tâches asynchrones (timeouts Redis/Celery et gestion du stockage des documents parsés).
+    - Nettoyage des données (suppression des caractères NUL dans les conversations).
+- **Compatibilité** : amélioration du support des navigateurs plus anciens.
 
 ### Autres changements
-- **Documentation** : ajout de la politique d'utilisation de l'IA, de la politique de contribution (PR) et des procédures de déploiement.
-- **Internationalisation** : mise à jour des chaînes de traduction.
+- **Documentation** : ajout des politiques d'utilisation de l'IA, des procédures de déploiement et de la politique de contribution (Pull Requests).
+- **Internationalisation** : mises à jour régulières des chaînes de traduction.

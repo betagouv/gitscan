@@ -8,16 +8,33 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.28] - 2026-11-03
+
+### Changed
+
+- 🔧(renovate) schedule dependency updates on sunday
+
 ### Added
 
 - ✨(back) add opt-in output token limit per message
+- 🔒️(back) lock out repeated failed admin logins
+- 🔒️(back) require strong admin passwords and hash them with Argon2
+- 🔒️(back) add a Content-Security-Policy to backend responses
+- ✨(back) read secrets from files
+
+### Changed
+
+- 🔒️(back) raise HSTS to one year, make subdomains and preload opt-in
+- 🔒️(back) require https for OIDC redirects in production
 
 ### Changed
 
 - 🔒️(back) upgrade authlib, dnspython and pypdf to fix CVEs
+- ⬆️(back,front) upgrade minor and patch dependencies
 
 ### Fixed
 
+- 🐛(back) keep parsed conversation documents out of the Celery result backend
 - 🐛(back) accept list content in non-streaming Albert responses
 - 🐛(back) stop losing chat turns when a document contains NUL characters
 - 🐛(ci) key the Playwright browser cache on the Ubuntu release
@@ -569,7 +586,9 @@ and this project adheres to
 - 💄(chat) add code highlighting for LLM responses #67
 - 🔧(evals) add run_evals management command
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.27...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.28...main
+
+[0.0.28]: https://github.com/suitenumerique/conversations/compare/v0.0.27...v0.0.28
 
 [0.0.27]: https://github.com/suitenumerique/conversations/compare/v0.0.26...v0.0.27
 
