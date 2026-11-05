@@ -445,7 +445,11 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20261029120000_add_ecoindex_target_revision
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20261029120000_token_expiration_reminders
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20261030140000_scope_technology_search
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20261102120000_retire_grist_sync_capability
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── qa-correlation-fixtures.ts
@@ -1050,6 +1054,7 @@
 │   │   │   │   └── token.entity.ts
 │   │   │   ├── dto
 │   │   │   │   └── token.dto.ts
+│   │   │   ├── token-expiration-reminder.service.ts
 │   │   │   ├── token.controller.ts
 │   │   │   ├── token.module.ts
 │   │   │   ├── token.service.spec.ts
@@ -1112,6 +1117,7 @@
 │   │   ├── application-export.e2e-spec.ts
 │   │   ├── application-initial-status.e2e-spec.ts
 │   │   ├── application-product-export.e2e-spec.ts
+│   │   ├── application-search-millesime.e2e-spec.ts
 │   │   ├── application-technology-filter.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
 │   │   ├── auth-level-userinfo.e2e-spec.ts
@@ -1191,6 +1197,7 @@
 │   │   ├── technology-search-permissions.e2e-spec.ts
 │   │   ├── technology-search.e2e-spec.ts
 │   │   ├── test-database.utils.ts
+│   │   ├── token-expiration-reminder.e2e-spec.ts
 │   │   ├── token-impersonation.e2e-spec.ts
 │   │   ├── token-lifecycle.e2e-spec.ts
 │   │   ├── token-regeneration.e2e-spec.ts
@@ -1975,4 +1982,4 @@
 │       ├── sync-issue.mjs
 │       └── sync-issue.test.mjs
 └── release-please-config.json
-411 directories, 1566 files
+413 directories, 1571 files
