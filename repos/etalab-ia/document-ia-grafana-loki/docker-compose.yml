@@ -1,0 +1,28 @@
+services:
+  grafana:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - SCALINGO_POSTGRESQL_URL=postgres://postgres:postgres@db:5432/grafana
+      - GF_SECURITY_ADMIN_USER
+      - GF_SECURITY_ADMIN_PASSWORD
+      - LOKI_S3_BUCKET
+      - LOKI_S3_ENDPOINT
+      - LOKI_S3_REGION
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - LOKI_PUSH_TOKEN
+      - LOKI_PUSH_ALLOWED_IPS
+      - PORT
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15.19
+    ports:
+      - "5430:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=grafana
