@@ -66,6 +66,7 @@
 │   │   │   │   └── ressourceDeconnexionOIDC.ts
 │   │   │   ├── ressourceCreationCompte.ts
 │   │   │   ├── ressourceFamillesDeMetier.ts
+│   │   │   ├── ressourceFonctions.ts
 │   │   │   ├── ressourceJeu.ts
 │   │   │   ├── ressourceJeux.ts
 │   │   │   ├── ressourceMesJeux.ts
@@ -73,6 +74,7 @@
 │   │   │   ├── ressourceProfil.ts
 │   │   │   ├── ressourceReactionsJeu.ts
 │   │   │   ├── ressourceRessourcesCyber.ts
+│   │   │   ├── ressourceResultatsTestMetiers.ts
 │   │   │   ├── ressourceSelections.ts
 │   │   │   ├── ressourceUtilisateurs.ts
 │   │   │   ├── ressourcesApi.ts
@@ -83,11 +85,13 @@
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
 │   │   │   └── evenements
+│   │   │       ├── TestMetiersRealise.ts
 │   │   │       ├── compteCree
 │   │   │       │   ├── compteCree.ts
 │   │   │       │   ├── consigneEvenementCompteCreeDansJournal.ts
 │   │   │       │   ├── creeContactDansExpediteurEmail.ts
 │   │   │       │   └── envoieEmailDeBienvenue.ts
+│   │   │       ├── consigneEvenementTestMetiersRealiseDansJournal.ts
 │   │   │       └── jeu
 │   │   │           ├── consigneEvenementJeuCreeDansJournal.ts
 │   │   │           ├── jeuCree.ts
@@ -108,6 +112,7 @@
 │   │   │   ├── cache.ts
 │   │   │   ├── clientHttp.ts
 │   │   │   ├── entrepotFamillesDeMetierGrist.ts
+│   │   │   ├── entrepotFonctionsGrist.ts
 │   │   │   ├── entrepotGrist.ts
 │   │   │   ├── entrepotJeuxPostgres.ts
 │   │   │   ├── entrepotMetiersGrist.ts
@@ -123,6 +128,7 @@
 │   │   │   └── serviceVerificationCoherenceSecretsHachage.ts
 │   │   ├── metier
 │   │   │   ├── entrepotFamillesDeMetier.ts
+│   │   │   ├── entrepotFonctions.ts
 │   │   │   ├── entrepotJeux.ts
 │   │   │   ├── entrepotMetiers.ts
 │   │   │   ├── entrepotRessourcesCyber.ts
@@ -130,6 +136,7 @@
 │   │   │   ├── entrepotUtilisateur.ts
 │   │   │   ├── expediteurEmail.ts
 │   │   │   ├── familleDeMetier.ts
+│   │   │   ├── fonction.ts
 │   │   │   ├── jeu.ts
 │   │   │   ├── messagerieInstantanee.ts
 │   │   │   ├── metier.ts
@@ -151,6 +158,7 @@
 │   │   │   ├── cookie.ts
 │   │   │   ├── dsc.spec.ts
 │   │   │   ├── entrepotFamillesDeMetierMemoire.ts
+│   │   │   ├── entrepotFonctionsMemoire.ts
 │   │   │   ├── fauxObjets.ts
 │   │   │   ├── middleware.spec.ts
 │   │   │   ├── moteurDeRenduExpress.spec.ts
@@ -164,6 +172,7 @@
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
 │   │   │   ├── ressourceCreationCompte.spec.ts
 │   │   │   ├── ressourceFamillesDeMetier.spec.ts
+│   │   │   ├── ressourceFonctions.spec.ts
 │   │   │   ├── ressourceJeu.spec.ts
 │   │   │   ├── ressourceJeux.spec.ts
 │   │   │   ├── ressourceMesJeux.spec.ts
@@ -171,6 +180,7 @@
 │   │   │   ├── ressourceProfil.spec.ts
 │   │   │   ├── ressourceReactionsJeu.spec.ts
 │   │   │   ├── ressourceRessourcesCyber.spec.ts
+│   │   │   ├── ressourceResultatsTestMetiers.spec.ts
 │   │   │   ├── ressourceSelectionsEleves.spec.ts
 │   │   │   ├── ressourceSelectionsEnseignants.spec.ts
 │   │   │   ├── ressourceSelectionsEntrainement.spec.ts
@@ -184,9 +194,11 @@
 │   │   │   │   ├── consigneEvenementCompteCreeDansJournal.spec.ts
 │   │   │   │   ├── creeContactDansExpediteurEmail.spec.ts
 │   │   │   │   └── envoieEmailDeBienvenue.spec.ts
-│   │   │   └── jeuCree
-│   │   │       ├── consigneEvenementJeuCreeDansJournal.spec.ts
-│   │   │       └── notifieEvenementJeuCreeSurMessagerieInstantanee.spec.ts
+│   │   │   ├── jeuCree
+│   │   │   │   ├── consigneEvenementJeuCreeDansJournal.spec.ts
+│   │   │   │   └── notifieEvenementJeuCreeSurMessagerieInstantanee.spec.ts
+│   │   │   └── testMetiersRealise
+│   │   │       └── consigneEvenementTestMetiersRealiseDansJournal.spec.ts
 │   │   ├── constructeur.ts
 │   │   ├── entrepotGrist.spec.ts
 │   │   ├── infra
@@ -197,10 +209,12 @@
 │   │   │   ├── adaptateurTeleversement.spec.ts
 │   │   │   ├── cache.spec.ts
 │   │   │   ├── constructeurDeFamillesDeMetierGrist.ts
+│   │   │   ├── constructeurDeFonctionsGrist.ts
 │   │   │   ├── constructeurDeMetiersGrist.ts
 │   │   │   ├── constructeurDeSelectionsGrist.ts
 │   │   │   ├── constructeurDeTest.ts
 │   │   │   ├── entrepotFamillesDeMetierGrist.spec.ts
+│   │   │   ├── entrepotFonctionsGrist.spec.ts
 │   │   │   ├── entrepotJeuxMemoire.ts
 │   │   │   ├── entrepotMemoire.ts
 │   │   │   ├── entrepotMetiersGrist.spec.ts
@@ -650,4 +664,4 @@
 │   └── get-node-version.sh
 ├── shell.nix
 └── tsconfig.base.json
-90 directories, 562 files
+91 directories, 575 files
