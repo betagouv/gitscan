@@ -1,31 +1,31 @@
 ## Changelog : rdvsp-bridging (30 derniers jours, au 28 octobre 2026)
 
 ### Résumé
-Ce mois a marqué le passage du projet d'une phase de conception à une version fonctionnelle et sécurisée. Les principales avancées incluent l'intégration de Google Calendar, la synchronisation bidirectionnelle avec Pipedrive et la mise en place d'une infrastructure de déploiement automatisée sur Scaleway. Un effort majeur a également été porté sur le renforcement de la sécurité du système.
+Ce mois-ci, le projet est passé d'une phase de conception à une version fonctionnelle et sécurisée. Les principales avancées incluent la capacité de synchroniser les calendriers avec Google et Pipedrive, ainsi que la mise en place d'un système de déploiement automatique. Un effort majeur a été consacré à la sécurisation de l'application pour protéger les données des utilisateurs et des agents.
 
 ### Évolutions fonctionnelles
-- **Intégration Google Calendar** : Ajout de la possibilité de connecter des calendriers Google via OAuth.
-- **Synchronisation Pipedrive** : Mise en place de la synchronisation des activités Pipedrive vers les blocs d'indisponibilité et des rendez-vous vers les activités Pipedrive.
-- **Serveur CalDAV** : Implémentation d'un serveur CalDAV fournissant un calendrier par connexion, calqué sur le comportement du client RDV-SP.
-- **Administration** : Ajout de pages d'administration et de tâches de gestion pour faciliter l'onboarding des comptes et des connexions.
-- **Extraction de données** : Amélioration de la détection et de l'extraction des liens RDV-SP contenus dans les descriptions de rendez-vous.
+- **Intégration de Google Calendar** : Ajout du support pour connecter des calendriers Google via le protocole OAuth2.
+- **Synchronisation Pipedrive** : Mise en place de la synchronisation bidirectionnelle entre les activités Pipedrive et les créneaux de disponibilité/rendez-vous.
+- **Interface d'administration** : Ajout de pages d'administration et de tâches permettant de gérer les comptes et les connexions.
+- **Service CalDAV** : Capacité de servir un calendrier CalDAV par connexion, calqué sur le comportement du client RDV-SP.
 
 ### Évolutions techniques
-- **Sécurité et durcissement** :
-    - Renforcement de l'authentification : limitation du débit (rate limiting) pour l'administration et les tentatives CalDAV, et passage au hachage SHA-256 pour les mots de passe CalDAV.
-    - Sécurisation des webhooks : authentification des webhooks Pipedrive via Basic Auth et vérification des jetons avant analyse du corps de la requête.
-    - Protection de l'infrastructure : limitation de la taille des corps de requête (1 MB) et restriction des hôtes autorisés en production.
-    - Confidentialité : filtrage des données sensibles de Pipedrive dans les journaux (logs) de la plateforme.
-    - Correction de vulnérabilités : mise à jour de Ruby ([#3](https://github.com/gip-inclusion/rdvsp-bridging/pull/3)) et de la bibliothèque Crass pour corriger des failles de sécurité.
-    - Application d'un audit de sécurité complet ([#2](https://github.com/gip-inclusion/rdvsp-bridging/pull/2)).
+- **Sécurisation de l'application (Audit de sécurité)** : Suite à un audit [#2](https://github.com/gip-inclusion/rdvsp-bridging/pull/2), plusieurs mesures ont été implémentées :
+    - Limitation du débit (rate limiting) pour les tentatives d'authentification échouées sur l'administration et le CalDAV.
+    - Passage au hachage SHA-256 pour les mots de passe CalDAV.
+    - Sécurisation des webhooks Pipedrive via une authentification Basic Auth et limitation de la taille des requêtes (1 Mo).
+    - Filtrage des données sensibles (activités Pipedrive) dans les journaux de requêtes (logs).
+    - Restriction de l'hôte autorisé pour les URLs en production.
 - **Infrastructure et CI/CD** :
-    - Automatisation du déploiement sur Scaleway via GitHub Actions.
-    - Mise en place de workflows pour l'exécution automatique des tests et du linting.
-    - Possibilité de déployer la branche `main` à la demande depuis la CI.
-- **Architecture** :
-    - Implémentation du cœur du système : gestion des comptes, des connexions, des jetons de synchronisation et des rendez-vous.
+    - Automatisation du déploiement vers Scaleway via GitHub Actions.
+    - Intégration de l'exécution des tests et du linting dans le pipeline CI.
+    - Mise en place de Dependabot avec auto-merge pour les mises à jour mineures [#1](https://github.com/gip-inclusion/rdvsp-bridging/pull/1).
+- **Mises à jour critiques** :
+    - Passage à Ruby 4.0.9 pour corriger des vulnérabilités (CVE) sur Onigmo [#3](https://github.com/gip-inclusion/rdvsp-bridging/pull/3).
+    - Mise à jour de la bibliothèque `crass` pour corriger une faille de contournement de l'assainisseur CSS.
+- **Refactoring** : Extraction de la logique de contenu des rendez-vous dans une classe dédiée (`RdvContent`) pour une meilleure gestion des données partagées avec les fournisseurs.
 
 ### Autres changements
-- **Renommage** : Le projet a été officiellement renommé `rdvsp-bridging`.
-- **Documentation** : Rédaction de la documentation technique (architecture, journal de décisions, déploiement) et de la documentation utilisateur pour le fournisseur Google.
-- **Initialisation** : Configuration initiale de l'environnement avec Rails 8.1, Docker et PostgreSQL.
+- **Documentation** : Mise à jour de la documentation concernant l'architecture, le journal de décisions (decision log), le déploiement Scaleway et l'utilisation du fournisseur Google.
+- **Tests** : Ajout de scripts de tests de bout en bout (E2E) contre un client RDV-SP réel.
+- **Identité** : Renommage officiel du projet en `rdvsp-bridging`.
