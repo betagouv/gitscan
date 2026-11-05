@@ -1,0 +1,866 @@
+.
+├── .cursorrules
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       └── document-ia-ci.yml
+├── .gitignore
+├── .gitleaks-baseline.json
+├── .gitleaks.toml
+├── .pre-commit-config.yaml
+├── .run
+│   ├── API.run.xml
+│   └── Worker.run.xml
+├── LICENSE
+├── README.md
+├── TODO.md
+├── docker-compose.yml
+├── document-ia-api
+│   ├── .buildpacks
+│   ├── .python-version
+│   ├── Aptfile
+│   ├── Procfile
+│   ├── README.md
+│   ├── alembic
+│   │   ├── README.md
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 19d1c6ddd15d_create_organization_api_key_and_webhook_.py
+│   │       ├── 4f4ecb83db27_create_document_ia_organization_and_.py
+│   │       ├── 5876b08c4f42_create_event_store_table.py
+│   │       ├── 659b01a59fc4_add_anonymization_field_on_event_store.py
+│   │       └── 9f3c1a2b7d84_drop_version_from_event_store.py
+│   ├── alembic.ini
+│   ├── bin
+│   │   └── post_compile
+│   ├── bruno-api
+│   │   ├── Document IA
+│   │   │   ├── albert-api
+│   │   │   │   ├── OCR
+│   │   │   │   │   ├── Get Models.bru
+│   │   │   │   │   ├── Mistral OCR.bru
+│   │   │   │   │   ├── OCR - LLM.bru
+│   │   │   │   │   └── folder.bru
+│   │   │   │   └── folder.bru
+│   │   │   ├── bruno.json
+│   │   │   ├── environments
+│   │   │   │   ├── Albert.bru
+│   │   │   │   ├── Local.bru
+│   │   │   │   ├── Production.bru
+│   │   │   │   ├── Sandbox.bru
+│   │   │   │   └── Staging.bru
+│   │   │   ├── v1
+│   │   │   │   ├── Admin
+│   │   │   │   │   ├── api-keys
+│   │   │   │   │   │   ├── create api key for organization.bru
+│   │   │   │   │   │   ├── delete an api key.bru
+│   │   │   │   │   │   ├── folder.bru
+│   │   │   │   │   │   └── update api key status for organization.bru
+│   │   │   │   │   ├── folder.bru
+│   │   │   │   │   ├── organizations
+│   │   │   │   │   │   ├── create new organization.bru
+│   │   │   │   │   │   ├── delete an organization.bru
+│   │   │   │   │   │   ├── folder.bru
+│   │   │   │   │   │   ├── get organization details.bru
+│   │   │   │   │   │   └── list all organizations.bru
+│   │   │   │   │   └── webhooks
+│   │   │   │   │       ├── create webhook.bru
+│   │   │   │   │       ├── delete a webhook.bru
+│   │   │   │   │       ├── folder.bru
+│   │   │   │   │       └── list organization webhooks.bru
+│   │   │   │   ├── folder.bru
+│   │   │   │   ├── secure
+│   │   │   │   │   ├── Execute Workflow Sync.bru
+│   │   │   │   │   ├── Execute Workflow.bru
+│   │   │   │   │   ├── Get execution details.bru
+│   │   │   │   │   └── folder.bru
+│   │   │   │   └── unsecure
+│   │   │   │       ├── Get all extraction schemas.bru
+│   │   │   │       ├── Health.bru
+│   │   │   │       └── folder.bru
+│   │   │   └── v2
+│   │   │       ├── folder.bru
+│   │   │       └── secure
+│   │   │           ├── folder.bru
+│   │   │           └── workflows
+│   │   │               ├── Execute workflow Sync.bru
+│   │   │               ├── Execute workflow.bru
+│   │   │               ├── Get All Workflows.bru
+│   │   │               └── folder.bru
+│   │   └── README.md
+│   ├── docs
+│   │   ├── API_SUMMARY.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── AUTHENTICATION.md
+│   │   ├── ERROR_HANDLING.md
+│   │   ├── RATE_LIMITING.md
+│   │   ├── ROUTES.md
+│   │   ├── WORKFLOW_V1_DEPRECATED.md
+│   │   └── WORKFLOW_V2.md
+│   ├── migration.sql
+│   ├── pyproject.toml
+│   ├── pyrightconfig.json
+│   ├── scripts
+│   │   └── generate_api_key.py
+│   ├── src
+│   │   ├── document_ia_api
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── config.py
+│   │   │   │   ├── contracts
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── api_error.py
+│   │   │   │   │   ├── api_key
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── api_key.py
+│   │   │   │   │   ├── common.py
+│   │   │   │   │   ├── error
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── errors.py
+│   │   │   │   │   ├── execution
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── failed.py
+│   │   │   │   │   │   ├── response.py
+│   │   │   │   │   │   ├── result.py
+│   │   │   │   │   │   ├── started.py
+│   │   │   │   │   │   ├── success.py
+│   │   │   │   │   │   └── types.py
+│   │   │   │   │   ├── extraction_schema.py
+│   │   │   │   │   ├── organization
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── organization.py
+│   │   │   │   │   ├── webhook
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── webhook.py
+│   │   │   │   │   ├── workflow.py
+│   │   │   │   │   └── workflow_v2.py
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── auth_exception.py
+│   │   │   │   │   ├── entity_not_found_exception.py
+│   │   │   │   │   ├── handler
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── exception_handlers.py
+│   │   │   │   │   ├── rate_limit_exception.py
+│   │   │   │   │   └── service_unavailable_exception.py
+│   │   │   │   ├── mapper
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── workflow_v2_mapper.py
+│   │   │   │   ├── middleware
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── aggregator_middleware.py
+│   │   │   │   │   ├── execution_admission.py
+│   │   │   │   │   ├── rate_limiting_middleware.py
+│   │   │   │   │   └── request_id_middleware.py
+│   │   │   │   ├── routes
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── main.py
+│   │   │   │   │   ├── v1
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── admin
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   ├── api_key.py
+│   │   │   │   │   │   │   ├── organization.py
+│   │   │   │   │   │   │   └── webhook.py
+│   │   │   │   │   │   ├── executions.py
+│   │   │   │   │   │   ├── extraction_schemas.py
+│   │   │   │   │   │   ├── health_check.py
+│   │   │   │   │   │   └── workflow.py
+│   │   │   │   │   └── v2
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       └── workflow.py
+│   │   │   │   └── routes.py
+│   │   │   ├── application
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── services
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── api_key
+│   │   │   │       │   ├── __init__.py
+│   │   │   │       │   ├── api_key_helper.py
+│   │   │   │       │   ├── api_key_service.py
+│   │   │   │       │   └── mapper.py
+│   │   │   │       ├── execution_acceptance.py
+│   │   │   │       ├── execution_service.py
+│   │   │   │       ├── organization
+│   │   │   │       │   ├── __init__.py
+│   │   │   │       │   ├── mapper.py
+│   │   │   │       │   └── organization_service.py
+│   │   │   │       ├── webhook
+│   │   │   │       │   ├── __init__.py
+│   │   │   │       │   ├── mapper.py
+│   │   │   │       │   └── webhook_service.py
+│   │   │   │       ├── workflow_service.py
+│   │   │   │       └── workflow_v2_service.py
+│   │   │   ├── core
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── config.py
+│   │   │   │   ├── file_validator.py
+│   │   │   │   └── logging_setup.py
+│   │   │   ├── infra
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── config.py
+│   │   │   │   ├── database
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── database_connectivity_status.py
+│   │   │   │   │   └── migration_service.py
+│   │   │   │   ├── database_service.py
+│   │   │   │   ├── redis
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── redis_connectivity_status.py
+│   │   │   │   │   ├── simple_stream_consumer.py
+│   │   │   │   │   └── webhook_error_policy.py
+│   │   │   │   ├── redis_service.py
+│   │   │   │   ├── s3
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── s3_connectivity_status.py
+│   │   │   │   ├── s3_service.py
+│   │   │   │   ├── schemas.py
+│   │   │   │   └── webhook_notification_service.py
+│   │   │   ├── main.py
+│   │   │   └── schemas
+│   │   │       ├── __init__.py
+│   │   │       ├── file_not_valid_information.py
+│   │   │       ├── rate_limiting.py
+│   │   │       └── workflow.py
+│   │   └── static
+│   │       └── redoc.standalone.js
+│   ├── tests
+│   │   ├── .gitkeep
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── document_ia_api
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_api_keys.py
+│   │   │   │   ├── test_auth.py
+│   │   │   │   ├── test_executions.py
+│   │   │   │   ├── test_extraction_schemas.py
+│   │   │   │   ├── test_health_check.py
+│   │   │   │   ├── test_organizations.py
+│   │   │   │   ├── test_webhooks.py
+│   │   │   │   ├── test_workflow_execution.py
+│   │   │   │   ├── test_workflow_scheduling_failure.py
+│   │   │   │   ├── test_workflow_scheduling_recovery.py
+│   │   │   │   └── test_workflows_v2.py
+│   │   │   ├── application
+│   │   │   │   └── services
+│   │   │   │       └── test_api_keys_service.py
+│   │   │   ├── conftest.py
+│   │   │   ├── integration
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_event_store_integration.py
+│   │   │   │   ├── test_s3_service.py
+│   │   │   │   ├── test_webhook_consumer.py
+│   │   │   │   └── test_webhook_consumer_recovery.py
+│   │   │   ├── test_rate_limiting.py
+│   │   │   └── unit
+│   │   │       ├── __init__.py
+│   │   │       ├── test_aggregator_middleware.py
+│   │   │       ├── test_event_decoder_projection.py
+│   │   │       ├── test_execution_acceptance.py
+│   │   │       ├── test_execution_admission.py
+│   │   │       ├── test_execution_service.py
+│   │   │       ├── test_file_validator.py
+│   │   │       ├── test_migration_service.py
+│   │   │       ├── test_redis_lag_check.py
+│   │   │       ├── test_webhook_error_policy.py
+│   │   │       ├── test_webhook_notification_service.py
+│   │   │       └── test_workflow_v2_service.py
+│   │   └── fixtures
+│   │       └── execution_payloads_before_decoder.json
+│   └── uv.lock
+├── document-ia-auto-scaler
+│   ├── .python-version
+│   ├── Procfile
+│   ├── README.md
+│   ├── pyproject.toml
+│   ├── pyrightconfig.json
+│   ├── src
+│   │   └── document_ia_auto_scaler
+│   │       ├── __init__.py
+│   │       ├── config
+│   │       │   ├── __init__.py
+│   │       │   ├── logging.py
+│   │       │   └── settings.py
+│   │       ├── main.py
+│   │       ├── scaler.py
+│   │       └── service
+│   │           ├── __init__.py
+│   │           ├── app_health.py
+│   │           └── scalingo.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── unit
+│   │       ├── __init__.py
+│   │       └── test_scaler.py
+│   └── uv.lock
+├── document-ia-evals
+│   ├── .buildpacks
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .python-version
+│   ├── .streamlit
+│   │   └── config.toml
+│   ├── Caddyfile.template
+│   ├── METRICS.md
+│   ├── Makefile
+│   ├── Procfile
+│   ├── README.md
+│   ├── TODO.md
+│   ├── alembic
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 001_initial_schema.py
+│   │       └── 002_add_model_version_stats.py
+│   ├── alembic.ini
+│   ├── data
+│   │   └── .gitkeep
+│   ├── docker-compose.yml
+│   ├── notebooks
+│   │   └── create-dataset-avis-imposition.ipynb
+│   ├── pyproject.toml
+│   ├── pyrightconfig.json
+│   ├── scripts
+│   │   └── setup_db.sh
+│   ├── src
+│   │   └── document_ia_evals
+│   │       ├── __init__.py
+│   │       ├── app.py
+│   │       ├── assets
+│   │       │   ├── logo.svg
+│   │       │   └── snippets
+│   │       │       ├── example.java
+│   │       │       ├── example.sh
+│   │       │       └── example.ts
+│   │       ├── components
+│   │       │   ├── __init__.py
+│   │       │   ├── document_type_selector.py
+│   │       │   ├── project_selector.py
+│   │       │   ├── workflow_configurator.py
+│   │       │   └── workflow_selector.py
+│   │       ├── database
+│   │       │   ├── __init__.py
+│   │       │   ├── connection.py
+│   │       │   └── models.py
+│   │       ├── metrics
+│   │       │   ├── __init__.py
+│   │       │   ├── classification
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── metric.py
+│   │       │   │   ├── models.py
+│   │       │   │   └── renderer.py
+│   │       │   ├── compare_functions.py
+│   │       │   ├── json_schema_extra
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── metric.py
+│   │       │   │   ├── models.py
+│   │       │   │   └── renderer.py
+│   │       │   └── utils
+│   │       │       ├── __init__.py
+│   │       │       └── pydantic_helpers.py
+│   │       ├── pages
+│   │       │   ├── administration.py
+│   │       │   ├── create_dataset.py
+│   │       │   ├── create_dataset_v2.py
+│   │       │   ├── create_predictions.py
+│   │       │   ├── create_predictions_v2.py
+│   │       │   ├── evaluate_metrics.py
+│   │       │   ├── evaluate_metrics_v2.py
+│   │       │   ├── export_dataset.py
+│   │       │   ├── home.py
+│   │       │   ├── list_experiments.py
+│   │       │   ├── prompt_playground.py
+│   │       │   ├── retrieve_api_execution.py
+│   │       │   ├── review_prediction_errors.py
+│   │       │   ├── run_api_workflow.py
+│   │       │   ├── run_api_workflow_v2.py
+│   │       │   └── workflow_generator.py
+│   │       ├── services
+│   │       │   ├── __init__.py
+│   │       │   ├── administration_service.py
+│   │       │   ├── create_dataset_service.py
+│   │       │   ├── create_predictions_service.py
+│   │       │   ├── experiment_service.py
+│   │       │   ├── metric_evaluation_service.py
+│   │       │   └── prediction_error_review_service.py
+│   │       └── utils
+│   │           ├── __init__.py
+│   │           ├── api.py
+│   │           ├── config.py
+│   │           ├── experiment_renderer.py
+│   │           ├── label_studio.py
+│   │           └── s3.py
+│   ├── start_evals.sh
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── document_ia_evals
+│   │       ├── __init__.py
+│   │       └── metrics
+│   │           ├── __init__.py
+│   │           ├── test_classification_accuracy.py
+│   │           ├── test_compare_mrz_equality.py
+│   │           ├── test_compare_number.py
+│   │           ├── test_compare_string_date.py
+│   │           ├── test_compare_token_set_equality.py
+│   │           ├── test_levenshtein_distance.py
+│   │           └── test_pydantic_helpers.py
+│   └── uv.lock
+├── document-ia-infra
+│   ├── .python-version
+│   ├── README.md
+│   ├── docs
+│   │   └── REDIS_CONSUMER.md
+│   ├── pyproject.toml
+│   ├── pyrightconfig.json
+│   ├── src
+│   │   ├── __init__.py
+│   │   └── document_ia_infra
+│   │       ├── __init__.py
+│   │       ├── core
+│   │       │   ├── BaseDocumentIaSettings.py
+│   │       │   ├── __init__.py
+│   │       │   ├── file
+│   │       │   │   ├── file_settings.py
+│   │       │   │   └── file_util.py
+│   │       │   ├── loki_settings.py
+│   │       │   ├── model
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── file_info.py
+│   │       │   │   ├── typed_generic_model.py
+│   │       │   │   └── types
+│   │       │   │       └── secret.py
+│   │       │   └── util
+│   │       │       ├── __init__.py
+│   │       │       └── resolve_root_folder.py
+│   │       ├── data
+│   │       │   ├── __init__.py
+│   │       │   ├── api_key
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── dto
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── api_key_dto.py
+│   │       │   │   ├── entity
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── api_key.py
+│   │       │   │   ├── enum
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── api_key_status.py
+│   │       │   │   ├── mapper
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── api_key_mapper.py
+│   │       │   │   └── repository
+│   │       │   │       ├── __init__.py
+│   │       │   │       └── api_key.py
+│   │       │   ├── data_settings.py
+│   │       │   ├── database.py
+│   │       │   ├── document
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── schema
+│   │       │   │       ├── __init__.py
+│   │       │   │       ├── document_classification.py
+│   │       │   │       └── document_extraction.py
+│   │       │   ├── event
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── dto
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── anonymization_enum.py
+│   │       │   │   │   ├── event_dto.py
+│   │       │   │   │   └── event_type_enum.py
+│   │       │   │   ├── entity
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── event_entity.py
+│   │       │   │   ├── repository
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── event.py
+│   │       │   │   └── schema
+│   │       │   │       ├── __init__.py
+│   │       │   │       ├── barcode.py
+│   │       │   │       ├── event.py
+│   │       │   │       ├── mappers
+│   │       │   │       │   ├── __init__.py
+│   │       │   │       │   └── event_mapper.py
+│   │       │   │       └── workflow
+│   │       │   │           ├── __init__.py
+│   │       │   │           ├── workflow_execution_completed_event.py
+│   │       │   │           ├── workflow_execution_failed_event.py
+│   │       │   │           ├── workflow_execution_started_event.py
+│   │       │   │           └── workflow_execution_step_completed_event.py
+│   │       │   ├── mapper_helper.py
+│   │       │   ├── organization
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── dto
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── organization_dto.py
+│   │       │   │   ├── entity
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── organization.py
+│   │       │   │   ├── enum
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── platform_role.py
+│   │       │   │   ├── mapper
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── organization_mapper.py
+│   │       │   │   └── repository
+│   │       │   │       ├── __init__.py
+│   │       │   │       └── organization_repository.py
+│   │       │   ├── webhook
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── dto
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── webhook_dto.py
+│   │       │   │   ├── entity
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── webhook.py
+│   │       │   │   ├── mapper
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── webhook_mapper.py
+│   │       │   │   └── repository
+│   │       │   │       ├── __init__.py
+│   │       │   │       └── webhook_repository.py
+│   │       │   └── workflow
+│   │       │       ├── __init__.py
+│   │       │       ├── data
+│   │       │       │   ├── workflows.json
+│   │       │       │   └── workflows.yaml
+│   │       │       ├── dto
+│   │       │       │   ├── __init__.py
+│   │       │       │   ├── enums.py
+│   │       │       │   ├── workflow_dto.py
+│   │       │       │   └── workflow_v2_dto.py
+│   │       │       └── repository
+│   │       │           ├── __init__.py
+│   │       │           ├── workflow.py
+│   │       │           └── workflow_v2_repository.py
+│   │       ├── exception
+│   │       │   ├── __init__.py
+│   │       │   ├── entity_not_found_exception.py
+│   │       │   ├── openai_authentification_error.py
+│   │       │   ├── retryable_exception.py
+│   │       │   └── s3_authentification_exception.py
+│   │       ├── openai
+│   │       │   ├── __init__.py
+│   │       │   ├── openai_manager.py
+│   │       │   ├── openai_settings.py
+│   │       │   └── response_format.py
+│   │       ├── py.typed
+│   │       ├── redis
+│   │       │   ├── __init__.py
+│   │       │   ├── admission.py
+│   │       │   ├── asyncio_consumer.py
+│   │       │   ├── base_consumer.py
+│   │       │   ├── consumer.py
+│   │       │   ├── delivery_metrics.py
+│   │       │   ├── failure_classification.py
+│   │       │   ├── handler_execution.py
+│   │       │   ├── maintenance.py
+│   │       │   ├── model
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── webhook_message.py
+│   │       │   │   └── workflow_execution_message.py
+│   │       │   ├── publisher.py
+│   │       │   ├── redis_manager.py
+│   │       │   ├── redis_settings.py
+│   │       │   ├── serializable_message.py
+│   │       │   ├── stream_delivery.py
+│   │       │   ├── thread_consumer.py
+│   │       │   └── worker_error_policy.py
+│   │       ├── s3
+│   │       │   ├── __init__.py
+│   │       │   ├── s3_manager.py
+│   │       │   ├── s3_metadata_util.py
+│   │       │   └── s3_settings.py
+│   │       └── service
+│   │           ├── __init__.py
+│   │           ├── event_store_service.py
+│   │           └── webhook_encryption_service.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── document_ia_infra
+│   │   │   ├── __init__.py
+│   │   │   ├── core
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── model
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_typed_generic_model.py
+│   │   │   │   └── test_loki_settings.py
+│   │   │   ├── data
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── api_key
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── repository
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── test_api_key_repository.py
+│   │   │   │   │   └── test_api_key_mapper.py
+│   │   │   │   ├── event
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_event_mapper.py
+│   │   │   │   │   └── test_event_repository.py
+│   │   │   │   ├── organization
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── repository
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── test_organization_repository.py
+│   │   │   │   │   └── test_organization_mapper.py
+│   │   │   │   ├── webhook
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── repository
+│   │   │   │   │       └── test_webhook_repository.py
+│   │   │   │   └── workflow
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── dto
+│   │   │   │       │   └── test_workflow_v2_dto.py
+│   │   │   │       └── repository
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── test_workflow_repository.py
+│   │   │   │           └── test_workflow_v2_repository.py
+│   │   │   ├── openai
+│   │   │   │   ├── test_openai_manager_lifecycle.py
+│   │   │   │   └── test_response_format.py
+│   │   │   ├── redis
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_admission.py
+│   │   │   │   ├── test_consumer.py
+│   │   │   │   ├── test_consumer_integration.py
+│   │   │   │   ├── test_consumer_recovery.py
+│   │   │   │   ├── test_publisher_acceptance.py
+│   │   │   │   ├── test_redis_manager.py
+│   │   │   │   └── test_retention.py
+│   │   │   └── service
+│   │   │       ├── __init__.py
+│   │   │       ├── test_event_store_service.py
+│   │   │       └── test_webhook_encryption_service.py
+│   │   └── fixtures
+│   │       └── persisted_events.json
+│   └── uv.lock
+├── document-ia-schemas
+│   ├── .github
+│   │   └── workflows
+│   │       ├── pr-checks.yml
+│   │       └── release.yml
+│   ├── .gitignore
+│   ├── .python-version
+│   ├── CONTRIBUTING.md
+│   ├── LICENSE
+│   ├── README.md
+│   ├── pyproject.toml
+│   ├── pyrightconfig.json
+│   ├── src
+│   │   └── document_ia_schemas
+│   │       ├── __init__.py
+│   │       ├── attestation_contrat_energie.py
+│   │       ├── attestation_hebergement.py
+│   │       ├── avis_imposition.py
+│   │       ├── base_document_type_schema.py
+│   │       ├── bulletin_salaire.py
+│   │       ├── carte_grise.py
+│   │       ├── cni.py
+│   │       ├── facture_energie.py
+│   │       ├── field_metrics.py
+│   │       ├── identity.py
+│   │       ├── passeport.py
+│   │       ├── permis_conduire.py
+│   │       ├── py.typed
+│   │       ├── quittance_loyer.py
+│   │       ├── taxe_fonciere.py
+│   │       ├── utils
+│   │       │   ├── __init__.py
+│   │       │   └── pydantic_utils.py
+│   │       └── visale_certificate.py
+│   ├── tests
+│   │   ├── test_avis_imposition_description.py
+│   │   ├── test_avis_imposition_json_schema.py
+│   │   ├── test_base_document_type_schema.py
+│   │   ├── test_bulletin_salaire_postprocessing.py
+│   │   ├── test_fuzzy_date.py
+│   │   ├── test_supported_document_type.py
+│   │   └── utils
+│   │       ├── __init__.py
+│   │       ├── test_build_response_format.py
+│   │       └── test_extract_fileds_info.py
+│   └── uv.lock
+├── document-ia-worker
+│   ├── .buildpacks
+│   ├── .python-version
+│   ├── Aptfile
+│   ├── Procfile
+│   ├── README.md
+│   ├── bin
+│   │   ├── post_compile
+│   │   └── start_worker.sh
+│   ├── cron.json
+│   ├── pyproject.toml
+│   ├── pyrightconfig.json
+│   ├── src
+│   │   ├── document_ia_task_scheduler
+│   │   │   ├── __init__.py
+│   │   │   ├── config
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── logging.py
+│   │   │   ├── core
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── aggregator_log.py
+│   │   │   │   └── base_scheduled_job.py
+│   │   │   └── task
+│   │   │       ├── __init__.py
+│   │   │       ├── remove_ppi
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── job.py
+│   │   │       │   ├── main.py
+│   │   │       │   └── remove_ppi_settings.py
+│   │   │       └── replicate_analytics
+│   │   │           ├── __init__.py
+│   │   │           ├── job.py
+│   │   │           ├── main.py
+│   │   │           └── replicate_analytics_settings.py
+│   │   └── document_ia_worker
+│   │       ├── __init__.py
+│   │       ├── config
+│   │       │   ├── __init__.py
+│   │       │   └── logging.py
+│   │       ├── core
+│   │       │   ├── __init__.py
+│   │       │   ├── aggregator_log.py
+│   │       │   ├── barcode_settings.py
+│   │       │   ├── ocr
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── base_http_ocr_service.py
+│   │       │   │   ├── mistral
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── mistral_http_ocr_service.py
+│   │       │   │   │   ├── mistral_ocr_response.py
+│   │       │   │   │   └── mistral_ocr_settings.py
+│   │       │   │   └── ocr_result.py
+│   │       │   ├── preprocessing
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── yoloworld_crop.py
+│   │       │   └── prompt
+│   │       │       ├── __init__.py
+│   │       │       ├── prompt_configuration.py
+│   │       │       ├── prompt_service.py
+│   │       │       └── prompts
+│   │       │           ├── classification_agent_system_prompt.md.j2
+│   │       │           └── extraction_agent_system_prompt.md.j2
+│   │       ├── exception
+│   │       │   ├── __init__.py
+│   │       │   ├── http_ocr_miss_configuration_exception.py
+│   │       │   ├── no_event_attached_to_execution_exception.py
+│   │       │   ├── unsupported_document_type.py
+│   │       │   ├── workflow_not_found_exception.py
+│   │       │   ├── workflow_step_exception.py
+│   │       │   └── wrong_event_type_for_execution_exception.py
+│   │       ├── main.py
+│   │       └── workflow
+│   │           ├── __init__.py
+│   │           ├── main_workflow_context.py
+│   │           ├── message_handler.py
+│   │           ├── step
+│   │           │   ├── __init__.py
+│   │           │   ├── base_file_manipulation_step.py
+│   │           │   ├── base_step.py
+│   │           │   ├── download_file
+│   │           │   │   ├── __init__.py
+│   │           │   │   └── download_file.py
+│   │           │   ├── extract_barcode_data
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── base_extract_barcode.py
+│   │           │   │   ├── base_extract_barcode_2ddoc.py
+│   │           │   │   ├── extract_barcode_2ddoc_data.py
+│   │           │   │   ├── extract_barcode_data.py
+│   │           │   │   └── extract_barcode_raw_data.py
+│   │           │   ├── extract_content_ocr
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── extract_content_http_ocr.py
+│   │           │   │   ├── extract_content_ocr.py
+│   │           │   │   └── extract_content_ocr_light_on.py
+│   │           │   ├── llm_classify_document
+│   │           │   │   ├── __init__.py
+│   │           │   │   └── llm_classify_document.py
+│   │           │   ├── llm_extract_document
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── llm_extract_document.py
+│   │           │   │   └── settings.py
+│   │           │   ├── preprocess_file
+│   │           │   │   ├── __init__.py
+│   │           │   │   └── preprocess_file.py
+│   │           │   ├── save_workflow_result
+│   │           │   │   ├── __init__.py
+│   │           │   │   └── save_workflow_result.py
+│   │           │   ├── step_result
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── barcode_result.py
+│   │           │   │   ├── download_file_result.py
+│   │           │   │   ├── llm_result.py
+│   │           │   │   ├── ocr_result.py
+│   │           │   │   └── preprocess_file_result.py
+│   │           │   └── yoloworld_crop_file
+│   │           │       └── __init__.py
+│   │           ├── step_factory_v1.py
+│   │           ├── step_factory_v2.py
+│   │           └── workflow_manager.py
+│   ├── tests
+│   │   ├── conftest.py
+│   │   ├── fixtures
+│   │   │   ├── ocr_result_cni.json
+│   │   │   ├── regenerate_extraction_prompt_fixtures.py
+│   │   │   └── test_download_file.pdf
+│   │   ├── integration
+│   │   │   ├── test_download_file_step_integration.py
+│   │   │   ├── test_llm_classification_integration.py
+│   │   │   ├── test_llm_extract_openai_integration.py
+│   │   │   ├── test_workflow_classification_e2e.py
+│   │   │   ├── test_workflow_edge_cases_e2e.py
+│   │   │   └── test_workflow_extraction_e2e.py
+│   │   ├── snapshots
+│   │   │   └── prompts
+│   │   │       ├── classification
+│   │   │       │   └── generic.txt
+│   │   │       └── extraction
+│   │   │           ├── attestation_contrat_energie.txt
+│   │   │           ├── attestation_hebergement.txt
+│   │   │           ├── avis_imposition.txt
+│   │   │           ├── bulletin_salaire.txt
+│   │   │           ├── carte_grise.txt
+│   │   │           ├── cni.txt
+│   │   │           ├── facture_energie.txt
+│   │   │           ├── passeport.txt
+│   │   │           ├── permis_conduire.txt
+│   │   │           ├── quittance_loyer.txt
+│   │   │           ├── taxe_fonciere.txt
+│   │   │           └── visale_certificate.txt
+│   │   └── unit
+│   │       ├── test_extract_content_http_ocr_step.py
+│   │       ├── test_extract_content_ocr_light_on.py
+│   │       ├── test_extract_content_ocr_step.py
+│   │       ├── test_http_ocr_diagnostics.py
+│   │       ├── test_llm_classify_document_step.py
+│   │       ├── test_llm_extract.py
+│   │       ├── test_mistral_ocr_service.py
+│   │       ├── test_preprocess_file_step.py
+│   │       ├── test_prompt_service.py
+│   │       ├── test_replicate_analytics_job.py
+│   │       ├── test_save_workflow_result_step.py
+│   │       ├── test_step_factory_v1.py
+│   │       ├── test_step_factory_v2.py
+│   │       ├── test_webhook_publication_failure.py
+│   │       ├── test_worker_main_shutdown.py
+│   │       ├── test_workflow_manager.py
+│   │       ├── test_workflow_manager_prepare_executor.py
+│   │       └── test_yoloworld_crop.py
+│   └── uv.lock
+├── env.example
+├── mockserver
+│   └── config
+│       └── expectations.json
+└── scripts
+    ├── gitleaks_pre_push.sh
+    ├── init-s3-bucket.py
+    ├── pre-push
+    └── stress_test_staging.py
+205 directories, 660 files

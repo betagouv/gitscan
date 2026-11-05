@@ -1,0 +1,46 @@
+2026-11-04T16:50:14+01:00 - b30675a - nicolasSagon : hotfix(api): alembic error while looking for alembic.ini (#230)
+2026-11-04T14:34:00+01:00 - 5b6b193 - Luis Arias : fix(extraction): signaler les dates impossibles sans perdre la candidate (#170)
+2026-11-04T14:30:19+01:00 - e67e87f - Luis Arias : fix(redis): protéger la rétention et borner la reprise après incident (#150)
+2026-11-04T14:27:28+01:00 - 1c43e46 - Luis Arias : fix(admission): borner les exécutions et fiabiliser les réponses de saturation (#149)
+2026-11-04T14:25:37+01:00 - 83c0987 - Luis Arias : fix(workflows): ne pas accepter une exécution sans programmation récupérable (#147)
+2026-11-04T14:24:09+01:00 - 8ae559f - Luis Arias : refactor(events): clarify event representations (#146)
+2026-11-04T14:22:08+01:00 - 840ba3d - Luis Arias : fix(events): vérifier les invariants des événements persistés (#140)
+2026-11-04T14:21:04+01:00 - 1fb22f1 - Luis Arias : refactor(events): unifier le décodage des événements persistés (#139)
+2026-11-04T14:17:16+01:00 - 8973904 - Luis Arias : refactor(redis): separate delivery, execution and error policies (#137)
+2026-11-04T14:13:17+01:00 - 99dfe43 - Luis Arias : fix(worker): bound shutdown and preserve pending messages (#136)
+2026-11-04T14:07:26+01:00 - 53369a3 - Luis Arias : fix(worker): use the latest workflow event for retries (#135)
+2026-11-04T14:04:47+01:00 - 012c81c - Luis Arias : fix(redis): make consumer requeue and DLQ retention atomic via Lua (#132) (#133)
+2026-11-04T14:01:11+01:00 - daccc52 - nicolasSagon : refacto(redis): unify redis consumer (#227)
+2026-11-03T11:18:23+01:00 - 2556eef - Luis Arias : fix(redis): récupérer les webhooks abandonnés après un arrêt d'instance (#131)
+2026-11-03T11:17:12+01:00 - b3f99b0 - Luis Arias : fix(redis): uniformiser les tentatives et la récupération du worker (#130)
+2026-11-03T11:14:44+01:00 - 9cdfd80 - Luis Arias : fix(ocr): journaliser les erreurs sans données sensibles et vérifier le statut 401 (#144)
+2026-11-02T15:10:42+01:00 - 9cd7218 - Luis Arias : [Durcissement] Sécuriser la CI, la protection de branche et les dépendances (#129)
+2026-11-02T14:33:28+01:00 - ce29744 - Luis Arias : fix(redis): conditionner l’ACK au succès ou à la DLQ (#128)
+2026-10-01T12:00:34+02:00 - f4f6ce5 - Olivier DULCY : Merge pull request #106 from betagouv/prediction_error_review_page
+2026-10-01T11:50:53+02:00 - 1855628 - Olivier DULCY : Merge pull request #107 from betagouv/revamp_prompt_playground
+2026-10-01T11:50:15+02:00 - 1a7758b - Olivier DULCY : Merge pull request #108 from betagouv/yoloworld_crop_missing_conf_threshold
+2026-09-30T19:04:13+02:00 - 8b26cf7 - Olivier Dulcy : Expose `iou` parameter
+2026-09-30T18:02:18+02:00 - 8486a30 - Olivier Dulcy : YoloWorld: missing confidence_threshold in `model.predict(...)`
+2026-09-30T16:39:45+02:00 - 6e34f71 - Olivier Dulcy : Update prompt playground
+2026-09-30T16:23:55+02:00 - fd9e1cc - Olivier Dulcy : Add prediction error review page
+2026-09-24T16:22:06+02:00 - d343991 - Olivier DULCY : Merge pull request #105 from betagouv/compare_mrz
+2026-09-24T16:04:13+02:00 - 1445547 - Olivier Dulcy : Add `Metric.MRZ_EQUALITY` function
+2026-09-21T16:09:12+02:00 - 6fd3f92 - Olivier DULCY : Merge pull request #104 from betagouv/preprocess_params
+2026-09-21T15:32:15+02:00 - bceff66 - Olivier Dulcy : Expose `PdfPreprocessingParams`
+2026-09-21T15:32:15+02:00 - 6773839 - Olivier Dulcy : Use another docker image for Minio
+2026-09-14T09:21:39+02:00 - 749e36b - SAGON NICOLAS : Merge branch 'release/V1.0.11' into develop
+2026-09-14T09:21:17+02:00 - 6fb77ff - nicolasSagon : chore: bump to v1.0.11
+2026-09-09T16:14:45+02:00 - fe7f7bc - nicolasSagon : Hotfix : oom crashed on scalingo (#103)
+2026-09-07T15:44:28+02:00 - 4ab5b5e - nicolasSagon : feat: update 2ddoc parser lib to handle pnds documents (#102)
+2026-09-07T14:07:39+02:00 - 4c08705 - nicolasSagon : update uv lock of auto scaller
+2026-09-02T16:18:20+02:00 - c828835 - Romaric Haldenwang : Merge branch 'release/V1.0.10' into develop
+2026-09-02T16:17:10+02:00 - dff47a4 - Romaric Haldenwang : chore: bump to version 1.0.10
+2026-09-02T12:25:43+02:00 - a4079d2 - Romaric : infra(log): add auth (bearer token) to the Loki ingestion endpoint (#101)
+2026-08-26T09:20:36+02:00 - 146eb0f - nicolasSagon : hotfix(api): postcompile script was not working
+2026-08-26T09:14:19+02:00 - 03b8917 - SAGON NICOLAS : Merge branch 'release/V1.0.9'
+2026-08-26T09:14:11+02:00 - 58a4fa7 - nicolasSagon : chore: bump to version 1.0.9
+2026-08-24T09:38:19+02:00 - e5d70dd - nicolasSagon : hotfix(worker): postcompile script has been moved (#99)
+2026-08-20T16:43:42+02:00 - a14a759 - Olivier DULCY : Preprocessing YoloWorld (#97)
+2026-08-14T17:08:18+02:00 - 6ca1aef - Olivier DULCY : Merge pull request #98 from betagouv/api_disable_reload
+2026-08-13T13:00:11+02:00 - e33ef97 - Olivier Dulcy : Remove unused variable
+2026-08-13T12:59:49+02:00 - b179ad8 - Olivier Dulcy : Pass `--reload` as CLI argument
