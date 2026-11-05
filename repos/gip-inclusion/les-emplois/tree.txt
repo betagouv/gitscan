@@ -67,6 +67,7 @@
 │   ├── coding-style.md
 │   ├── developing.md
 │   ├── environment.md
+│   ├── inbound-parsing.md
 │   └── javascript.md
 ├── exports
 │   └── readme.md
@@ -332,6 +333,7 @@
 │   │   ├── organizations
 │   │   │   ├── admin.py
 │   │   │   ├── models.py
+│   │   │   ├── transfer.py
 │   │   │   └── views.py
 │   │   └── resume
 │   │       └── __init__.py
@@ -353,7 +355,6 @@
 │   ├── companies
 │   │   ├── __init__.py
 │   │   ├── admin.py
-│   │   ├── admin_forms.py
 │   │   ├── apps.py
 │   │   ├── constants.py
 │   │   ├── enums.py
@@ -378,7 +379,6 @@
 │   │   │       ├── import_ea_eatt.py
 │   │   │       ├── import_geiq.py
 │   │   │       ├── import_siae.py
-│   │   │       ├── move_company_data.py
 │   │   │       ├── sync_ft_offers.py
 │   │   │       ├── update_companies_coords.py
 │   │   │       └── update_companies_job_app_score.py
@@ -401,8 +401,7 @@
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
-│   │   ├── perms.py
-│   │   └── transfer.py
+│   │   └── perms.py
 │   ├── directory
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -643,6 +642,7 @@
 │   │   │   ├── 0023_mobilizationemail.py
 │   │   │   ├── 0024_add_mobilizationevent_hashed_session_key.py
 │   │   │   ├── 0025_remove_mobilizationevent_session_key_and_more.py
+│   │   │   ├── 0026_remove_mobilizationevent_session_key_in_db.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -738,9 +738,11 @@
 │   │   │   ├── job_seeker_assignments.py
 │   │   │   ├── job_seekers.py
 │   │   │   ├── memberships.py
+│   │   │   ├── mobilization_emails.py
 │   │   │   ├── mobilization_events.py
 │   │   │   ├── organizations.py
 │   │   │   ├── orientations.py
+│   │   │   ├── pro_support_reports.py
 │   │   │   ├── prolongation_requests.py
 │   │   │   ├── prolongations.py
 │   │   │   ├── rome_codes.py
@@ -848,13 +850,13 @@
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
-│   │   │       ├── merge_organizations.py
 │   │   │       └── sync_ft_organizations.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_prescriberorganization_prevent_not_required_authorization_unless_other.py
 │   │   │   ├── 0003_prescriberorganization_prescriber_organization_siret_regex.py
 │   │   │   ├── 0004_remove_prescriberorganization_is_gps_authorized.py
+│   │   │   ├── 0005_prescriberorganization_is_searchable.py
 │   │   │   └── __init__.py
 │   │   └── models.py
 │   ├── rdv_insertion
@@ -1065,16 +1067,19 @@
 │   │   │   │   └── send_approvals_to_pe_stats.html
 │   │   │   ├── base_site.html
 │   │   │   ├── companies
-│   │   │   │   ├── change_company_form.html
-│   │   │   │   └── transfer_company.html
+│   │   │   │   └── change_company_form.html
 │   │   │   ├── emails
 │   │   │   │   └── mailjet_status.html
-│   │   │   ├── employee_records
-│   │   │   │   └── employeerecord_change_form.html
+│   │   │   ├── employee_record
+│   │   │   │   ├── change_list_with_stats.html
+│   │   │   │   ├── employeerecord_change_form.html
+│   │   │   │   └── stats.html
 │   │   │   ├── insertion
 │   │   │   │   └── change_orientation_form.html
 │   │   │   ├── job_applications
 │   │   │   │   └── jobapplication_change_form.html
+│   │   │   ├── organizations
+│   │   │   │   └── transfer_org.html
 │   │   │   ├── prescribers
 │   │   │   │   └── change_form.html
 │   │   │   └── users
@@ -1753,7 +1758,9 @@
 │   │   ├── otp_views
 │   │   │   ├── enrollment_step_0_intro.html
 │   │   │   ├── enrollment_step_1_choose_device_type.html
-│   │   │   ├── enrollment_step_2_and_3_confirm_device.html
+│   │   │   ├── enrollment_step_2_download_app.html
+│   │   │   ├── enrollment_step_2_download_app_for_phones.html
+│   │   │   ├── enrollment_step_3_and_4_confirm_device.html
 │   │   │   ├── login_with_backup_code.html
 │   │   │   ├── otp_devices.html
 │   │   │   └── verify_otp.html
@@ -2503,6 +2510,7 @@
     ├── data
     │   ├── empty.pdf
     │   ├── empty.xlsx
+    │   ├── geiq_export.xls
     │   └── github.json
     ├── directory
     │   └── __init__.py
@@ -3097,4 +3105,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-500 directories, 2599 files
+501 directories, 2606 files

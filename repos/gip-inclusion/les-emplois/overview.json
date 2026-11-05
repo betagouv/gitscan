@@ -4,14 +4,16 @@
   "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
   "language": "Python",
   "features": [
+    "Recherche & Filtres",
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
     "Formulaires & Démarches",
-    "Notifications & Alertes",
     "Statistiques & Rapports",
     "Tableaux & Affichage",
-    "Gestion métier générale"
+    "Gestion métier générale",
+    "Collaboration & Workflow",
+    "Notifications & Alertes",
+    "Administration & Backoffice"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -22,9 +24,9 @@
     "MinIO",
     "RustFS",
     "GDAL",
-    "psycopg",
+    "uv",
     "pytest",
-    "uv"
+    "psycopg"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,35 +35,32 @@
     "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Intégrations services externes",
     "Scripts & Utilitaires",
-    "ORM & Accès aux données"
+    "ORM & Accès aux données",
+    "Tests",
+    "SIG & Géospatial"
   ],
   "auth": {
     "methods": [
-      "sso",
       "mfa",
-      "session"
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": "pytest",
-  "workflows": [
-    "CI/CD avec partitionnement des tests (sharding)"
-  ],
-  "lastActivity": "2026-10-26T00:00:00Z",
+  "lastActivity": "2026-11-02T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
+    "Emploi, Social & Logement",
+    "Accessibilité",
     "CI/CD & GitHub Actions",
-    "Design System & UI",
-    "Emploi, Social & Logement"
+    "SIG & Géospatial"
   ]
 }

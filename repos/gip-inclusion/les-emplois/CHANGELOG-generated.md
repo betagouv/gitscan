@@ -1,36 +1,38 @@
-## Changelog : les-emplois (30 derniers jours, au 28 octobre 2026)
+## Changelog : les-emplois (30 derniers jours, au 04/11/2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'expérience d'orientation (redesign pour data·inclusion) et une amélioration significative du suivi des usagers, notamment pour identifier les fins de parcours. Le système de gestion des dossiers employés a été profondément stabilisé et sécurisé, tandis que les performances de l'interface d'administration et la rapidité des tests ont été optimisées.
+Ce mois-ci, le projet a franchi des étapes importantes tant sur l'expérience utilisateur que sur sa robustesse technique. Les professionnels bénéficient de nouveaux outils de pilotage (rapports de support, statistiques GEIQ) et les usagers d'un parcours d'orientation plus fluide et enrichi (ajout de la nationalité, badge QPV, demandes d'accompagnement en fin de parcours). Côté infrastructure, le passage à Python 3.14 et l'adoption de RustFS renforcent la modernité et la performance du service.
 
 ### Évolutions fonctionnelles
-- **Orientation et parcours usagers** : 
-    - Redesign complet du tunnel d'orientation et des pages de détails des services/structures.
-    - Harmonisation terminologique : passage généralisé du terme "bénéficiaire" à "usager".
-    - Ajout de nouveaux champs dans les formulaires (nationalité, âge) et d'un onglet "orientations" sur le profil de l'usager.
-    - Intégration de badges visuels (QPV, fin de contrat, absence de poste ouvert).
-- **Accompagnement et support** :
-    - Mise en place d'un système de détection et de suivi des usagers en fin de contrat (filtres dédiés, propositions de demandes de support).
-    - Création d'un nouveau module de "rapport de support professionnel" pour les employeurs IAE.
-- **Recherche et interface** :
-    - Ajout de formulaires de recherche directement sur la page d'accueil.
-    - Amélioration de l'interface de connexion (nouveaux visuels, bandeau d'information DORA).
-    - Optimisation de l'affichage des contrats et des informations de recherche usager.
+- **Parcours Usager & Orientation** : 
+    - Ajout du champ "Nationalité" et du badge "QPV" sur les profils usagers.
+    - Amélioration du tunnel d'orientation avec un formulaire de création simplifié et un affichage plus complet des informations sur les bénéficiaires.
+    - Mise en place d'un système de demande de support professionnel lorsqu'un contrat arrive à échéance.
+- **Outils de Pilotage & Administration** :
+    - Création de nouveaux tableaux de bord pour le suivi des dossiers salariés et l'évaluation des campagnes GEIQ.
+    - Amélioration des exports Metabase (ajout des codes INSEE, rapports de support pro et suivi des emails de mobilisation).
+    - Meilleure gestion des organisations et des contrats ASP dans l'interface d'administration.
+- **Interface Utilisateur (UI)** :
+    - Harmonisation visuelle globale (tailles des badges, couleurs des boutons, styles des sections d'informations).
+    - Refonte de l'écran de connexion (nouvelle illustration et design).
+    - Ajout de bannières d'information contextuelles (campagnes DORA, informations NIR).
 
 ### Évolutions techniques
-- **Gestion des dossiers employés (Employee Record)** : 
-    - Refonte complète du workflow (nouveaux états, transitions et gestion des erreurs de synchronisation avec ASP).
-    - Sécurisation du processus d'upload (vérification des fichiers, verrouillage des objets).
-- **Infrastructure et Performance** :
-    - Migration du stockage de fichiers de MinIO vers RustFS.
-    - Passage à Python 3.14.
-    - Optimisation de l'administration Django (nouveaux paginateurs et mixins pour accélérer le chargement des grandes tables).
-    - Amélioration de la CI/CD via le partitionnement des tests (sharding) et la mise en cache des bibliothèques spatiales.
-- **Sécurité et Traçabilité** :
-    - Accélération de l'enrôlement à la double authentification (MFA) pour les professionnels.
-    - Renforcement de l'audit trail (suivi du navigateur, de l'IP et des callbacks d'authentification).
-    - Amélioration de la fiabilité de la gestion des tâches de fond (reconnexion automatique à Redis).
+- **Infrastructure & Performance** :
+    - Migration majeure vers Python 3.14.
+    - Remplacement de MinIO par RustFS pour le stockage.
+    - Optimisation des performances de l'administration (pagination et chargement des pages sur les grandes tables) et compression des ressources images.
+- **Gestion des Données & Imports** :
+    - Refonte du processus de synchronisation des communes (mise en cache, détection précoce des incohérences CSV, gestion des contraintes de lieu de naissance).
+    - Amélioration de la robustesse des imports (gestion des fichiers Excel via `python-calamine`, rejet des fichiers corrompus).
+    - Optimisation du traitement des emails entrants via l'intégration de webhooks authentifiés (Brevo).
+- **Sécurité & Authentification** :
+    - Amélioration du parcours d'enrôlement à la double authentification (2FA).
+    - Renforcement de la validation des adresses email (vérification des serveurs MX) et blocage de la création de comptes en doublon.
+- **Qualité Logicielle** :
+    - Refonte du workflow de gestion des dossiers salariés (`EmployeeRecord`) pour une meilleure gestion des états et des transitions.
+    - Optimisation de la suite de tests (exécution parallélisée en 4 segments pour réduire le temps de CI).
 
 ### Autres changements
-- **Nettoyage** : Suppression de code mort (Nexus), de fichiers statiques inutilisés et optimisation du CSS.
-- **Documentation** : Mise à jour de la documentation technique, notamment sur l'audit trail.
+- Mise à jour de la documentation technique concernant le parsing des données entrantes.
+- Nettoyage du code (suppression de fichiers statiques, de commandes de gestion et de styles CSS inutilisés).
