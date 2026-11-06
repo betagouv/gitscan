@@ -1,15 +1,21 @@
-## Changelog : dockerfiles (30 derniers jours, au 21 octobre 2026)
+## Changelog : dockerfiles (30 derniers jours, au 02/11/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'introduction d'une nouvelle image dédiée aux déploiements OpenTofu. Parallèlement, les processus d'automatisation ont été renforcés pour garantir une meilleure stabilité et un contrôle accru sur la production des images.
+Le projet s'enrichit de nouveaux outils pour renforcer la sécurité et la qualité des configurations (linting, analyse de vulnérabilités, validation de schémas YAML). Les processus de construction automatisés ont également été optimisés pour garantir que seuls les changements validés et fusionnés déclenchent de nouveaux déploiements.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle image Docker spécifiquement conçue pour les déploiements OpenTofu.
+- **Nouveaux conteneurs disponibles** :
+    - Ajout d'un conteneur `tflint` pour le linting Terraform dans GitLab CI.
+    - Ajout d'une image `grype` pour l'analyse de vulnérabilités.
+    - Ajout d'un conteneur de validation de schémas YAML.
+- **Amélioration des outils d'infrastructure** :
+    - Enrichissement de l'image de déploiement OpenTofu avec l'intégration de `git` et `syft` pour une gestion simplifiée des SBOM (Software Bill of Materials).
+    - Ajout de `jq` et du client `swift` pour faciliter l'upload des SBOM.
 
 ### Évolutions techniques
-- **Amélioration de l'image OpenTofu** :
-  - Intégration de `git` pour faciliter les opérations liées aux dépôts.
-  - Ajout de l'outil `syft` pour permettre la génération de SBOM (Software Bill of Materials) directement lors de l'utilisation de l'image.
-- **Optimisation de la CI/CD** :
-  - Restriction des déclenchements de pipelines pour ne construire des images qu'après la fusion de Pull Requests validées dans la branche principale.
-  - Mise en place de déclenchements automatiques lors de la création de nouveaux tags.
+- **Optimisation des pipelines CI/CD** :
+    - Restriction des déclenchements de build : les pipelines ne s'exécutent désormais que sur les PR validées et fusionnées dans la branche principale.
+    - Automatisation du déploiement OpenTofu lors du processus de taggage.
+    - Ajustement des environnements d'exécution (passage sur `ubuntu-latest`).
+- **Maintenance** :
+    - Intégration de la pull request [#53](https://github.com/cloud-gouv/dockerfiles/pull/53).
