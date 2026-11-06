@@ -1,3 +1,191 @@
+2026-11-05T21:33:24+01:00 - 58a473b - Étienne Charignon : ♻️ Refacto : fusionne Tag et TagDsfrComponent en un seul TagComponent
+2026-11-05T21:33:24+01:00 - 4c8c0db - Étienne Charignon : ✨ Supprime les tags en arrière-plan, sans recharger la page, comme le prévoit le DSFR
+2026-11-05T21:24:28+01:00 - ac12392 - Étienne Charignon : 💄 Indique sous la forme d'une alerte-info que la rédaction a été passée
+2026-11-05T14:07:56+01:00 - fc2eddf - Marion Velard : ✨ Affiche la relance prévue au rechargement d'une réponse Pas encore
+2026-11-05T14:07:56+01:00 - f5be740 - Marion Velard : ✨ Demande quand refaire le point après « Pas encore » et enregistre une date proposée
+2026-11-05T14:07:56+01:00 - dba4b17 - Marion Velard : ✨ Ajoute deux scopes au modèle MiseEnAction : repondues_pas_encore et reportees
+2026-11-05T14:07:56+01:00 - c74a0e3 - Marion Velard : ✨ Distingue une réponse Pas encore d'une mise en action jamais répondue
+2026-11-05T14:07:56+01:00 - c5248ca - Marion Velard : ✨ Sait si la date de revue d'une réponse Pas encore est à choisir ou si elle est reportée
+2026-11-05T14:07:56+01:00 - c470d1a - Marion Velard : ✨ Enregistre la date de revue selon le choix du pro (7 jours, 14 jours, 1 mois ou date précise), à partir de demain
+2026-11-05T14:07:56+01:00 - c44491b - Marion Velard : ✨ Ajoute l'action qui renseigne la date de revue et son choix d'une réponse Pas encore
+2026-11-05T14:07:56+01:00 - c14a0fd - Marion Velard : 💬 Remplace « Je ne sais pas » par « Pas encore », entre Oui et Non, sur la fiche évaluation
+2026-11-05T14:07:56+01:00 - a44c855 - Marion Velard : 📝 Documente l'état « Pas encore » de la mise en action
+2026-11-05T14:07:56+01:00 - 90f0e08 - Marion Velard : ✨ Retire du tableau de bord les mises en action reportées jusqu'à leur date de revue
+2026-11-05T14:07:56+01:00 - 88d443f - Marion Velard : ✨ Repose la question de mise en action à la date de revue, en rappelant la réponse « Pas encore »
+2026-11-05T14:07:56+01:00 - 7bcb527 - Marion Velard : ✨ Calcule le statut de suivi « reporté » jusqu'à la date de revue
+2026-11-05T14:07:56+01:00 - 76bff9b - Marion Velard : ♻️ Renomme les méthodes de StatutSuivi pour plus de clarté
+2026-11-05T14:07:56+01:00 - 74a086f - Marion Velard : ♻️ Ajoute des methode repondu_oui?, repondu_non? et repondu_pas_encore? à MiseEnAction
+2026-11-05T14:07:56+01:00 - 64fb110 - Marion Velard : ♻️ Définit dans MiseEnAction si la réponse est qualifiée
+2026-11-05T14:07:56+01:00 - 58f6f7f - Marion Velard : ♻️ Refacto : renomme « je ne sais pas » en « Pas encore » dans le code de la mise en action
+2026-11-05T14:07:56+01:00 - 4de6ab1 - Marion Velard : 💄 Ajoute le titre « Suivi du bénéficiaire » et son lien dans le menu de la fiche évaluation
+2026-11-05T14:07:56+01:00 - 2efb5a9 - Marion Velard : ✨ Permet de choisir une date précise de revue et retrouve le choix en revenant sur « Pas encore »
+2026-11-05T14:07:56+01:00 - 2748f91 - Marion Velard : ♻️ Déplace l'enregistrement de la mise en action dans son modèle
+2026-11-04T22:35:18+01:00 - e184c3f - dependabot[bot] : Bump fast-uri from 3.1.8 to 3.1.9
+2026-11-04T18:43:39+01:00 - 3cbbec9 - Étienne Charignon : 🐛 Affiche les actualités du tableau de bord aux comptes administratifs
+2026-11-04T18:43:39+01:00 - 31164be - Étienne Charignon : 🌱 Ajoute un compte administratif et rattache Structure exemple à Ma super structure administrative
+2026-11-04T18:23:29+01:00 - c98da72 - Étienne Charignon : 🐛 Evite le risque de double soumission à la création de structure
+2026-11-04T14:30:56+01:00 - f72b543 - Étienne Charignon : 💄 Corrige la mise en forme le la sidebare des actualitées
+2026-11-04T14:30:56+01:00 - ebbe8b4 - Étienne Charignon : 🗃️ Classe l'actualité sur les comptes personnels conseillers dans la catégorie Newsletter
+2026-11-04T14:30:56+01:00 - dec2bee - Étienne Charignon : ♻️ Réécrit le composant Tag sur les tags DSFR
+2026-11-04T14:30:56+01:00 - d1bcf66 - Étienne Charignon : ♻️ Remplace les tags de simple libellé par des badges DSFR
+2026-11-04T14:30:56+01:00 - a2acab8 - Étienne Charignon : ♻️ Enregistre l'usage des structures sous forme de nom technique (eva, evapro)
+2026-11-04T14:30:56+01:00 - 79f42e3 - Étienne Charignon : ✨ Ajoute un filtre par usage dans l'index des structures locales pour les superadmins et CMR
+2026-11-04T14:30:56+01:00 - 65edfa7 - Étienne Charignon : ✨ Affiche l'usage dans l'index et les exports CSV et XLS des structures locales
+2026-11-04T14:30:56+01:00 - 58122e1 - Étienne Charignon : 🎨 Nomme en français les couleurs des tags (rouge, vert, gris)
+2026-11-04T14:30:56+01:00 - 4ade4f5 - Étienne Charignon : 🔥 Supprime les méthodes d'usage inutilisées
+2026-11-04T13:32:23+01:00 - dc3a37c - Marion Velard : 📝 Ajoute ACTIVE_MISE_EN_ACTION_JE_NE_SAIS_PAS dans le .env.template afin de le documenter
+2026-11-03T18:06:12+01:00 - 27deca6 - Marion Velard : 🐛 Efface l'erreur de « Précisez » après l'enregistrement et coupe les précisions sans espace
+2026-11-03T16:51:59+01:00 - f807b2c - Marion Velard : 📝 Documente les différences de mise en action entre la fiche et le tableau de bord
+2026-11-03T16:51:59+01:00 - ee389f8 - Marion Velard : 📝 Ajoute l'ADR 0002 : la carte de suivi lit les résultats enregistrés dans l'évaluation
+2026-11-03T16:51:59+01:00 - b3e9957 - Marion Velard : 💄 Aligne la réponse enregistrée de la carte de suivi sur la maquette
+2026-11-03T16:51:59+01:00 - b0ebb32 - Marion Velard : ✨ Permet de répondre « Autre » avec une précision sur la fiche évaluation
+2026-11-03T16:51:59+01:00 - ad8ff30 - Marion Velard : ✨ Permet de répondre « Autre » avec une précision depuis le tableau de bord
+2026-11-03T16:51:59+01:00 - 8bd15f1 - Marion Velard : ✨ Enregistre la réponse « Autre » et sa précision depuis la carte de suivi
+2026-11-03T16:51:59+01:00 - 7d5437c - Marion Velard : 💄 Crée le composant du champ « Précisez »
+2026-11-03T16:51:59+01:00 - 7ab17f9 - Marion Velard : 📝 Ajoute les états « Autre » à la carte de suivi dans l'UI-kit
+2026-11-03T16:51:59+01:00 - 5593fff - Marion Velard :  🗃️ Ajoute la réponse « Autre » et sa précision à la mise en action
+2026-11-03T16:51:59+01:00 - 1d9986f - Marion Velard : 🐛 Repose la question du type d'aide ou de la raison après « Ignorer »
+2026-11-03T16:51:59+01:00 - 098d52f - Marion Velard : 💄 Aligne l'espacement du message d'erreur de « Précisez » sur la maquette
+2026-11-03T16:51:59+01:00 - 07da617 - Marion Velard : ♻️ Découpe le JS de la mise en action par écran
+2026-11-02T17:04:02+01:00 - 268dcf4 - Marion Velard : 💬 Remplace l'info-bulle du tiret de suivi par « Pas de suivi déclaré »
+2026-11-02T16:54:21+01:00 - e843881 - Marion Velard : ♻️ Ajoute MiseEnAction#qualification_indeterminee? afin de supprimer la duplication et centraliser la logique
+2026-11-02T16:54:21+01:00 - d6ee83c - Marion Velard : 💄 Ajoute un composant Tag DSFR
+2026-11-02T16:54:21+01:00 - c7cfa0b - Marion Velard : 🔥 Supprime l'icone Banner question
+2026-11-02T16:54:21+01:00 - 9f2f59b - Marion Velard : 📝 Ajoute un peu plus de detail sur l'UI-kit de SuiviAccompagnementIllettrismeComponent
+2026-11-02T16:54:21+01:00 - 7c2d7eb - Marion Velard : ♻️ Supprime la methode classe_bouton du composant QuestionMiseEnActionComponent
+2026-11-02T16:54:21+01:00 - 7a0efb2 - Marion Velard : 💄 Ajoute un composant Réponse mise en action
+2026-11-02T16:54:21+01:00 - 77566cb - Marion Velard : 💄 Propose une solution de remédiation après un Non et fixe la hauteur de la carte
+2026-11-02T16:54:21+01:00 - 7707ce8 - Marion Velard : 🐛 Affiche la date de réponse sans recharger la page
+2026-11-02T16:54:21+01:00 - 59fe6a0 - Marion Velard : 🛂 Refuse une qualification incohérente avec la réponse de mise en action
+2026-11-02T16:54:21+01:00 - 427918b - Marion Velard : 💄 Ajoute un composant Question mise en action
+2026-11-02T16:54:21+01:00 - 2f1218f - Marion Velard : ✨ Enregistre le type d'aide ou la raison dès qu'on clique sur un tag
+2026-11-02T16:54:21+01:00 - 21b1c32 - Marion Velard : 💄 Ajoute le composant QuestionMiseEnActionComponent dans Suivi accompagnement
+2026-11-02T16:54:21+01:00 - 1fee6e2 - Marion Velard : 💄 Affiche le bandeau et l'en-tête de l'évaluation sur la carte de mise en action
+2026-11-02T16:54:21+01:00 - 1978f1e - Marion Velard : 💄 Ajoute un composant Resultat
+2026-11-02T16:54:21+01:00 - 08c5ade - Marion Velard : 🗃️ Corrige la complétude et le profil de littératie de 3 évaluations des données de test
+2026-10-30T09:35:09+01:00 - f8c145d - Marion Velard : ✨ Garde les évaluations « je ne sais pas » à renseigner sur le tableau de bord
+2026-10-30T09:35:09+01:00 - eb76179 - Marion Velard : ✨ Affiche le bouton et la réponse « je ne sais pas » à la mise en action
+2026-10-30T09:35:09+01:00 - aaf515b - Marion Velard : 🗃️ Permet d'enregistrer une mise en action « je ne sais pas »
+2026-10-30T09:35:09+01:00 - 918798f - Marion Velard : ✨ Gère le clic sur « je ne sais pas » à la mise en action
+2026-10-30T09:35:09+01:00 - 3e47667 - Marion Velard : ✨ Enregistre la réponse « je ne sais pas » à la mise en action
+2026-10-29T15:23:23+01:00 - 3c90079 - Marion Velard : 💄 Déplace la bannière de mise en action en bas du détail d'une évaluation
+2026-10-29T14:58:00+01:00 - 88672a7 - Marion Velard : ♻️ Utilise le composant SuiviAccompagnementIllettrisme sur le détail d'une évaluation
+2026-10-29T14:58:00+01:00 - 74c7c28 - Marion Velard : 💄 Crée un composant suivi_accompagnement illetrisme
+2026-10-29T14:58:00+01:00 - 4f5d8cb - Marion Velard : ♻️ Déplace le script de qualification de la mise en action dans evaluation_eva.js
+2026-10-29T13:57:07+01:00 - c0e0270 - Étienne Charignon : 📝 Demande d'utiliser les traductions dans les tests
+2026-10-29T13:57:07+01:00 - 5dc79a5 - Étienne Charignon : ♿️ Retire le title redondant avec le alt du logo ANLCI dans le pied de page
+2026-10-29T13:57:07+01:00 - 433ab60 - Étienne Charignon : 💄 Déplace les boutons d'export et d'attestation de la restitution Eva Pro dans le bloc Gestion
+2026-10-29T13:57:07+01:00 - 3b35d98 - Étienne Charignon : 🐛 Affiche le message d'évaluation anonyme sur les évaluations Eva Pro
+2026-10-29T13:57:07+01:00 - 0538ee4 - Étienne Charignon : 💄 Déplace le bouton d'export de la restitution Eva dans le bloc Gestion
+2026-10-29T11:59:13+01:00 - 1f88ee8 - Étienne Charignon : 🧑‍💻 Claude doctor
+2026-10-29T11:45:46+01:00 - b7be5e7 - Étienne Charignon : 💄 Garde le style DSFR des boutons désactivés au survol
+2026-10-29T11:45:46+01:00 - a0f83a4 - Étienne Charignon : 💄 Remet la bordure grise des boutons secondaires et tertiaires désactivés
+2026-10-29T11:45:46+01:00 - 979e530 - Étienne Charignon : 💄 Ajoute les boutons désactivés à l'UI kit BoutonDsfrComponent
+2026-10-29T11:45:46+01:00 - 58bb1db - Étienne Charignon : ♻️ Désactive les boutons avec l'attribut disabled seul
+2026-10-29T11:45:46+01:00 - 4ea570c - Étienne Charignon : ⚰️ Supprime le type desactive de BoutonDsfrComponent
+2026-10-29T11:45:46+01:00 - 4e7f6ca - Étienne Charignon : 🐛 Désactive réellement le bouton Valider du QCM de mise en action
+2026-10-29T11:45:46+01:00 - 3d5a50a - Étienne Charignon : 🔥 Supprime les styles propres à l'admin Eva Pro devenus inutiles
+2026-10-28T18:14:46+01:00 - be37036 - Étienne Charignon : ♻️ Regroupe les méthodes de classe privées d'Evaluation dans class << self
+2026-10-28T18:14:46+01:00 - b1a9cfc - Étienne Charignon : ✨ Affiche une explication quand la personne a passé la rédaction
+2026-10-28T15:25:22+01:00 - dfdb7d5 - Étienne Charignon : 💬 Reprend le contenu du mail de relance
+2026-10-28T15:25:22+01:00 - b2084f7 - Étienne Charignon : ♻️ Simplifie la détection des comptes sans évaluation pour la relance
+2026-10-26T17:03:47+01:00 - f7dc536 - Étienne Charignon : ✨ Permet aux admins de voir et changer l'OPCO d'une structure locale
+2026-10-26T17:03:47+01:00 - d4816f6 - Étienne Charignon : 🗃️ Ajoute l'OPCO CONSTRUCTYS (Négoce) et son diagnostic NMC dans les données de test
+2026-10-26T17:03:47+01:00 - d132150 - Étienne Charignon : 🗃️ Ajoute deux structures OPCO, financeur et non financeur, et leurs comptes dans les données de test
+2026-10-26T17:03:47+01:00 - 9c533c9 - Étienne Charignon : 🗃️ Aligne les OPCO des données de test sur la prod
+2026-10-26T17:03:47+01:00 - 8e99e24 - Étienne Charignon : 🗃️ Ajoute une structure entreprise et un compte pro par OPCO financeur dans les données de test
+2026-10-26T17:03:47+01:00 - 8cde862 - Étienne Charignon : 🌐 Traduit les booléens en Oui/Non
+2026-10-26T17:03:47+01:00 - 5442304 - Étienne Charignon : 🗃️ Met à jour les OPCO des données de test depuis la pré-prod
+2026-10-23T19:57:20+02:00 - 7004bb4 - Étienne Charignon : ⬆️ Passe nodejs en version 22.23.4
+2026-10-23T19:57:20+02:00 - 29e4d0d - Étienne Charignon : 🔥 Supprime le Dockerfile inutilisé
+2026-10-23T15:53:34+02:00 - aa5fe64 - Marion Velard : ✨ Calcule le statut de suivi d'un bénéficiaire
+2026-10-23T15:53:34+02:00 - 4a037f9 - Marion Velard : ✨ Trie la liste des bénéficiaires par statut de suivi
+2026-10-23T15:53:34+02:00 - 0ea1dbf - Marion Velard : ✨ Affiche la colonne Suivi dans la liste des bénéficiaires
+2026-10-23T15:53:34+02:00 - 08b3ba6 - Marion Velard : ✨ Ajoute le filtre Suivi à la liste des bénéficiaires
+2026-10-23T12:03:45+02:00 - 9325c22 - Marion Velard : ✨ Ajoute le filtre Suivi à la liste des évaluations
+2026-10-23T12:03:45+02:00 - 4d4c6f0 - Marion Velard : ✨ Filtre les évaluations par statut de suivi
+2026-10-23T11:34:02+02:00 - e67b41b - guillaume imary : ✨ Ajoute la variante tertiaire sans contour au composant BoutonDsfrComponent et à l'UI kit
+2026-10-23T11:34:02+02:00 - c99e5cb - guillaume imary : 💄 Place les boutons tertiaires de consultation des évaluations et des bénéficiaires en bas du bloc Gestion
+2026-10-23T11:34:02+02:00 - 5b446bc - guillaume imary : ♻️ Le bouton « Consulter X évaluations » ne compte que les évaluations visibles par le compte connecté
+2026-10-23T11:34:02+02:00 - 090c16b - guillaume imary : ✨ Ajoute le bouton « Consulter X bénéficiaires » sur la page d'une campagne
+2026-10-23T10:55:16+02:00 - f6b8ac3 - Marion Velard : ♻️ Remets la colonne campagne et reoganise le tableau
+2026-10-23T10:55:16+02:00 - f64cd54 - Marion Velard : ✨ Affiche la colonne Suivi dans la liste des évaluations
+2026-10-23T10:55:16+02:00 - a43e207 - Marion Velard : ✨ Trie la liste des évaluations par statut de suivi
+2026-10-23T10:55:16+02:00 - 96d3d92 - Marion Velard : ✨ Ajoute le composant info-bulle DSFR
+2026-10-23T10:55:16+02:00 - 8e47980 - Marion Velard : ✨ Calcule le statut de suivi d'une évaluation
+2026-10-23T10:55:16+02:00 - 63e70e9 - Marion Velard : 📝 Ajout de l'ADR 0001-statut-de-suivi-calcule
+2026-10-23T10:55:16+02:00 - 053fdbb - Marion Velard : ✨ Ajoute le composant statut de suivi
+2026-10-22T11:35:24+02:00 - ec0d2d9 - Marion Velard : 🚩Masque le bouton derrière un feature flag
+2026-10-22T11:35:24+02:00 - bd631c1 - Marion Velard : ✨ Génère le PDF depuis le bouton
+2026-10-22T11:35:24+02:00 - 61979d3 - Marion Velard : 🛂 L'attestation de passation suit les droits de l'export de la restitution
+2026-10-22T11:35:24+02:00 - 32d84c4 - Marion Velard : ✨ Affiche le bouton de telechargement d'attestation de passation sur les restitution EVA PRO
+2026-10-22T11:35:24+02:00 - 3066ddb - Marion Velard : ✨ Ajoute le texte et la mise en page de l'attestation de passation
+2026-10-22T11:35:24+02:00 - 1e1c070 - Marion Velard : ♻️ Uniformise le code de génération PDF entre la restitution et l'attestation Evapro depuis la resource EvaluationEvapro
+2026-10-19T16:03:05+02:00 - a1717ad - Étienne Charignon : ⬆️ Actualise les dependences rails
+2026-10-19T16:03:05+02:00 - 7499779 - Étienne Charignon : ⬆️ Passe le DSFR en version 1.15
+2026-10-19T16:03:05+02:00 - 31acca0 - Étienne Charignon : 🐛 Corrige la compatibilité avec json 3 et ransack 6
+2026-10-19T16:03:05+02:00 - 22d3f4e - Étienne Charignon : ⬆️ Actualise les dépendences js
+2026-10-19T16:03:05+02:00 - 1a85e05 - Étienne Charignon : 💄 Tableau de bord : coupe les url de campagne n'importe ou pour éviter les débordement dans certain cas merdique
+2026-10-15T18:17:15+02:00 - 8aad2cf - Étienne Charignon : 🗃️ Ajoute le SIRET de la structure ANLCI dans les données de test
+2026-10-15T09:54:28+02:00 - 7c5763f - Étienne Charignon : ♻️ Génère les codes bénéficiaires comme les codes campagnes
+2026-10-14T21:45:09+02:00 - fb92672 - Étienne Charignon : ♻️ Simplifie le passage du score optionnel à ProfilEvacob
+2026-10-14T21:45:09+02:00 - e8344f9 - Étienne Charignon : ✨ Attribue les sous-profils de Café de la place des blocs terminés en cas d'abandon
+2026-10-14T21:45:09+02:00 - cc7a79d - Étienne Charignon : ✨ Calcule le profil du parcours haut dès qu'un item HPfb a une réponse
+2026-10-14T21:45:09+02:00 - b138062 - Étienne Charignon : ✨ Attribue le sous-profil Production dès qu'un item APlc a une réponse
+2026-10-14T21:45:09+02:00 - a1f3d04 - Étienne Charignon : ✨ Calcule la restitution d'une partie à la réception d'un abandon
+2026-10-14T21:45:09+02:00 - 753399d - Étienne Charignon : 🐛 N'attribue pas de sous-profil aux blocs non terminés d'une partie interrompue
+2026-10-14T21:45:09+02:00 - 46fd27f - Étienne Charignon : 🗃️ Ajoute deux évaluations de test avec les réponses LOdi et ALrd sans la suite
+2026-10-14T21:45:09+02:00 - 3f8191a - Étienne Charignon : ✨ Calcule la restitution de Café de la place à chaque réponse qui termine un bloc
+2026-10-14T21:45:09+02:00 - 0bde6da - Étienne Charignon : 🗃️ Ajoute une évaluation de test abandonnée pendant HPfb
+2026-10-14T21:45:09+02:00 - 062c629 - Étienne Charignon : ✨ Affiche les trois sous-profils de littératie, en indiquant ceux non calculés
+2026-10-12T17:54:20+02:00 - 9b8e268 - Étienne Charignon : 🐛 Affiche un message dédié quand le SIRET d'embarquement est celui d'une structure administrative
+2026-10-12T17:54:20+02:00 - 01e75ab - Étienne Charignon : 🗃️ Ajoute un SIRET à la structure administrative des données de test
+2026-10-12T17:09:14+02:00 - 9798710 - Étienne Charignon : 🐛 Permet à un conseiller d'une structure sans admin de se connecter avec ProConnect
+2026-10-12T17:09:14+02:00 - 36151a8 - Étienne Charignon : ✅ Vérifie qu'on ne peut pas refuser le dernier admin d'une structure
+2026-10-12T15:24:52+02:00 - fa3bc4b - Étienne Charignon : 📝 Indique à Claude que le code est écrit en français
+2026-10-12T15:24:52+02:00 - 3f3026d - Étienne Charignon : 🐛 Corrige la faute d'orthographe de MOT_DE_PASS_COMPTES_PREPROD
+2026-10-12T15:24:52+02:00 - 11e165f - Étienne Charignon : Formatage README
+2026-10-08T18:15:49+02:00 - 6a00db3 - Étienne Charignon : ⏰ Réinitialise la base de préproduction chaque vendredi matin
+2026-10-08T17:59:52+02:00 - 1f7f7ef - Étienne Charignon : ✨ Exporte la liste des questions en XLS au format d'import
+2026-10-08T17:12:47+02:00 - f07776d - Étienne Charignon : 🐛 Corrige le nom du fichier d'export des questionnaire
+2026-10-08T16:48:18+02:00 - 45b7486 - Étienne Charignon : 📝 Ajoute CLAUDE.md et ignore les fichiers locaux de Claude
+2026-10-08T16:35:26+02:00 - bc3aa6a - Étienne Charignon : 🗃️ Initialise le score des choix des variantes de questions
+2026-10-08T16:35:26+02:00 - 3bd058c - Étienne Charignon : 🧑‍💻 Ajoute le diagnostic CONSTRUCTYS BTP dans les données des reviewapp
+2026-10-07T17:34:41+02:00 - de94ee3 - Étienne Charignon : 🗃️ Passe le score des choix en JSON et initialise l'évaluation d'impact
+2026-10-07T17:34:41+02:00 - c9101c6 - Étienne Charignon : 🗃️ Actualise les réponses possible pour Q1IC03 les secteurs d'activité
+2026-10-07T17:34:41+02:00 - 9fb020e - Étienne Charignon : 🗃️ Ajoute un score aux choix des questions QCM
+2026-10-07T17:34:41+02:00 - 7f2b2e8 - Étienne Charignon : 🗃️ Initialise le score des choix diagnostic_risques
+2026-10-07T15:16:16+02:00 - c21eda2 - Étienne Charignon : 📝 Actualise README avec la documentation de la création de l'env de dev
+2026-10-07T15:16:16+02:00 - 8b53fe3 - Étienne Charignon : 🗃️ Passe les timestamps sans précision en timestamp(6)
+2026-10-07T15:16:16+02:00 - 2cb5c7b - Étienne Charignon : 💄 corrigne la hauteur les tuilles de la création de campagne
+2026-10-07T15:16:16+02:00 - 26f8dbe - Étienne Charignon : 🗃️ Réorganise les comptes de test
+2026-10-05T16:31:10+02:00 - e57015d - Étienne Charignon : 🔒️ Réserve l'étape structure de l'inscription aux comptes qui y sont
+2026-10-05T16:31:10+02:00 - bc613bd - Étienne Charignon : 🎨 Supprime les commentaires frozen_string_literal
+2026-10-05T16:31:10+02:00 - b4f08cd - Étienne Charignon : ♻️ Remplace @structure_invitation par Compte#rattache_a_structure_invitation?
+2026-10-05T16:31:10+02:00 - a2dda86 - Étienne Charignon : 🔥 Supprime l'inscription avec structure_id
+2026-10-05T16:31:10+02:00 - 9cc8eac - Étienne Charignon : 🔒️ Limite un compte invité à la structure de son invitation
+2026-10-05T16:31:10+02:00 - 874d335 - Étienne Charignon : ♿️ Permet d'afficher le mot de passe dans le formulaire de compte
+2026-10-05T16:31:10+02:00 - 7bbf078 - Étienne Charignon : 🐛 Vérifie la connexion avant de charger le compte dans l'inscription
+2026-10-05T16:31:10+02:00 - 31ef884 - Étienne Charignon : 🔥 Supprime l'email nouvelle_structure et la route /admin/sign_up
+2026-10-01T18:58:20+02:00 - be6a5a8 - Étienne Charignon : 👷 Passe la CI en PostgreSQL 15.17, comme la production
+2026-09-30T18:23:01+02:00 - f505719 - Étienne Charignon : 🔒️ Limite le nombre de tentatives de connexion
+2026-09-30T18:23:01+02:00 - a3699b8 - Étienne Charignon : 🔒️ Filtre côté serveur les champs sensibles des comptes
+2026-09-30T18:23:01+02:00 - 90bae69 - Étienne Charignon : 🔒️ Interdit les tâches reviewapp en production
+2026-09-30T18:23:01+02:00 - 8af0f9c - Étienne Charignon : 🔥 Supprime POST /admin et les renvois vers l'ancienne inscription
+2026-09-30T18:23:01+02:00 - 6cae5e8 - Étienne Charignon : 🔥 Redirige l'ancienne inscription Devise vers le nouveau parcours
+2026-09-30T18:23:01+02:00 - 6a8ed60 - Étienne Charignon : 📝 Documente la règle des mots de passe des comptes de service
+2026-09-30T18:23:01+02:00 - 2d62510 - Étienne Charignon : 🔒️ Retire les routes Devise de gestion de son propre compte
+2026-09-30T18:23:01+02:00 - 1639bd1 - Étienne Charignon : 🧑‍💻 Corrigne l'email du compte de suport dans les données des reviewapp
+2026-09-30T15:10:05+02:00 - e51c3d4 - Étienne Charignon : 🐛 Corrige le script d'anonymisation local
+2026-09-28T18:38:10+02:00 - f35c528 - Étienne Charignon : 💄 Regroupe Accompagnement et Parcours dans un menu Référentiels
+2026-09-28T18:38:10+02:00 - d7d6d53 - Étienne Charignon : 💄 Ajoute une gouttière au contenu des pages connectées sur écran étroit
+2026-09-28T18:38:10+02:00 - d3f2fbd - Étienne Charignon : 🔥 Supprime les styles ciblant les anciennes classes des pages d'évaluation
+2026-09-28T18:38:10+02:00 - ae09345 - Étienne Charignon : 💄 Rétablit l'indentation des sous-menus dans le menu burger
+2026-09-28T18:38:10+02:00 - 989657b - Étienne Charignon : 🔥 Laisse le DSFR gérer les marges de la barre d'entête
+2026-09-28T18:38:10+02:00 - 31fa840 - Étienne Charignon : 🐛 Centre les modales du tableau de bord sans ascenseur horizontal
+2026-09-28T16:26:43+02:00 - e26dfaf - dependabot[bot] : Bump rubyzip and roo
+2026-09-28T15:16:20+02:00 - 6cdd049 - Étienne Charignon : 🐛 Détache les évaluations suivies avant de supprimer un compte démo en attente
+2026-09-28T15:16:20+02:00 - 6b247b4 - Étienne Charignon : 🐛 Supprime le bénéficiaire d'un compte démo en attente avant le compte
 2026-09-24T17:23:58+02:00 - ee92a51 - Étienne Charignon : ♻️ Mutualise les conteneurs des colonnes connexion et démonstration
 2026-09-24T17:23:58+02:00 - cc07521 - Étienne Charignon : 🔥 Nettoie les styles de l'écran de connexion
 2026-09-24T17:23:58+02:00 - 91a9dca - Étienne Charignon : 💄 Vectorise la vague de la page d'accueil

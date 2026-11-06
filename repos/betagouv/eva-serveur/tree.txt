@@ -2,6 +2,11 @@
 ├── .buildpacks
 ├── .circleci
 │   └── config.yml
+├── .claude
+│   └── skills
+│       └── scalingo-run
+│           └── SKILL.md
+├── .dsfr.yml
 ├── .env.template
 ├── .erdconfig
 ├── .gitignore
@@ -13,7 +18,7 @@
 ├── .stylelintrc.json
 ├── .tool-versions
 ├── Aptfile
-├── Dockerfile
+├── CLAUDE.md
 ├── Gemfile
 ├── Gemfile.lock
 ├── Guardfile
@@ -86,6 +91,7 @@
 │   │   │   │   │   ├── 4-plus-plus-referentiel.svg
 │   │   │   │   │   ├── 4-plus-plus.svg
 │   │   │   │   │   ├── 4-plus-referentiel.svg
+│   │   │   │   │   ├── indetermine.svg
 │   │   │   │   │   ├── profil1-referentiel.svg
 │   │   │   │   │   ├── profil1.svg
 │   │   │   │   │   ├── profil2-referentiel.svg
@@ -115,13 +121,11 @@
 │   │   │   │       ├── pre_A1.svg
 │   │   │   │       ├── pre_X1-referentiel.svg
 │   │   │   │       └── pre_X1.svg
-│   │   │   ├── banner_icone_question.svg
 │   │   │   ├── bienvenue.png
 │   │   │   ├── check-line.svg
 │   │   │   ├── check.svg
 │   │   │   ├── comparaison_tri.svg
 │   │   │   ├── crochet-aide-redaction.svg
-│   │   │   ├── croix.svg
 │   │   │   ├── deconnexion.svg
 │   │   │   ├── favicon.svg
 │   │   │   ├── fleche-droite.svg
@@ -232,22 +236,26 @@
 │   │   │   ├── code_postal_input.js
 │   │   │   ├── comparer_evaluations_positionnement.js
 │   │   │   ├── deplace_modales_dsfr.js
-│   │   │   ├── evaluation_eva.js.erb
 │   │   │   ├── export_pdf_modal.js
 │   │   │   ├── filtres_dates.js
 │   │   │   ├── form_toggle_submit.js
 │   │   │   ├── hotjar.js.erb
 │   │   │   ├── image_file_input_clear.js
 │   │   │   ├── liens_evitement.js
+│   │   │   ├── mise_en_action.js.erb
+│   │   │   ├── mise_en_action_tableau_de_bord.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
 │   │   │   ├── pdf_generation_channel.js
 │   │   │   ├── plausible.js.erb
 │   │   │   ├── recherche_structure.js
 │   │   │   ├── reset_password.js
+│   │   │   ├── selection_multiple.js
 │   │   │   ├── simple_mde.js
 │   │   │   ├── siret_input.js
 │   │   │   ├── structure_confirmation.js
+│   │   │   ├── suivi_accompagnement_illettrisme.js
+│   │   │   ├── tag_supprimable.js
 │   │   │   ├── tarteaucitron-init.js
 │   │   │   ├── telecharge_pdf.js
 │   │   │   ├── toggle_usage_structure.js
@@ -294,6 +302,7 @@
 │   │       │   │   ├── _code.scss
 │   │       │   │   ├── _dropdown.scss
 │   │       │   │   ├── _ellipse.scss
+│   │       │   │   ├── _entete_mise_en_action.scss
 │   │       │   │   ├── _eva_pro_score.scss
 │   │       │   │   ├── _filtres.scss
 │   │       │   │   ├── _flash_messages.scss
@@ -316,13 +325,19 @@
 │   │       │   │   ├── _nom_anonymisable.scss
 │   │       │   │   ├── _panel.scss
 │   │       │   │   ├── _qcm.scss
+│   │       │   │   ├── _qualification_mise_en_action.scss
+│   │       │   │   ├── _question_mise_en_action.scss
 │   │       │   │   ├── _recherche_structure.scss
 │   │       │   │   ├── _referentiel_anlci.scss
+│   │       │   │   ├── _reponse_mise_en_action.scss
+│   │       │   │   ├── _resultat.scss
 │   │       │   │   ├── _scopes.scss
 │   │       │   │   ├── _score_arrow.scss
 │   │       │   │   ├── _select2.scss
+│   │       │   │   ├── _selection_multiple.scss
 │   │       │   │   ├── _situation_illustration.scss
 │   │       │   │   ├── _sous_competence.scss
+│   │       │   │   ├── _suivi_accompagnement_illettrisme.scss
 │   │       │   │   ├── _tableau.scss
 │   │       │   │   ├── _tables.scss
 │   │       │   │   ├── _tags.scss
@@ -343,7 +358,6 @@
 │   │       │   │   ├── _content.scss
 │   │       │   │   ├── _footer.scss
 │   │       │   │   ├── _header.scss
-│   │       │   │   ├── _main_structure.scss
 │   │       │   │   └── _sidebar.scss
 │   │       │   ├── mixins
 │   │       │   │   ├── _buttons.scss
@@ -424,6 +438,7 @@
 │   │       │   │   ├── _pied_page.scss
 │   │       │   │   └── alert_incomplete.scss
 │   │       │   └── pages
+│   │       │       ├── _attestation_passation.scss
 │   │       │       └── _resittuation_evapro.scss
 │   │       ├── print.pdf.scss
 │   │       └── ui_kit.scss
@@ -461,16 +476,22 @@
 │   │   ├── carte_partage_code_component.rb
 │   │   ├── carte_v2_component.html.erb
 │   │   ├── carte_v2_component.rb
+│   │   ├── champ_date_revue_component.html.erb
+│   │   ├── champ_date_revue_component.rb
 │   │   ├── chiffre_cle_component.html.erb
 │   │   ├── chiffre_cle_component.rb
 │   │   ├── code_component.html.erb
 │   │   ├── code_component.rb
 │   │   ├── code_postal_input_component.html.erb
 │   │   ├── code_postal_input_component.rb
+│   │   ├── date_revue_mise_en_action_component.html.erb
+│   │   ├── date_revue_mise_en_action_component.rb
 │   │   ├── ellipse_component.html.erb
 │   │   ├── ellipse_component.rb
 │   │   ├── email_input_component.html.erb
 │   │   ├── email_input_component.rb
+│   │   ├── entete_mise_en_action_component.html.erb
+│   │   ├── entete_mise_en_action_component.rb
 │   │   ├── eva_pro_score_component.html.erb
 │   │   ├── eva_pro_score_component.rb
 │   │   ├── eva_pro_score_item_component.html.erb
@@ -522,6 +543,8 @@
 │   │   ├── header_component.rb
 │   │   ├── incontournables_etape_card_component.html.erb
 │   │   ├── incontournables_etape_card_component.rb
+│   │   ├── info_bulle_component.html.erb
+│   │   ├── info_bulle_component.rb
 │   │   ├── input_component.html.erb
 │   │   ├── input_component.rb
 │   │   ├── lien_component.html.erb
@@ -553,10 +576,20 @@
 │   │   │   └── pied_page_component.rb
 │   │   ├── pile_fleches_score_component.html.erb
 │   │   ├── pile_fleches_score_component.rb
+│   │   ├── precision_autre_component.html.erb
+│   │   ├── precision_autre_component.rb
 │   │   ├── qcm.html.erb
 │   │   ├── qcm.rb
+│   │   ├── qualification_mise_en_action_component.html.erb
+│   │   ├── qualification_mise_en_action_component.rb
+│   │   ├── question_mise_en_action_component.html.erb
+│   │   ├── question_mise_en_action_component.rb
 │   │   ├── referentiel_anlci_component.html.erb
 │   │   ├── referentiel_anlci_component.rb
+│   │   ├── reponse_mise_en_action_component.html.erb
+│   │   ├── reponse_mise_en_action_component.rb
+│   │   ├── resultat_component.html.erb
+│   │   ├── resultat_component.rb
 │   │   ├── siret_input_component.html.erb
 │   │   ├── siret_input_component.rb
 │   │   ├── sous_competence_component.html.erb
@@ -565,10 +598,14 @@
 │   │   ├── statistiques_structure_metabase_component.rb
 │   │   ├── statut_campagne_component.html.erb
 │   │   ├── statut_campagne_component.rb
+│   │   ├── statut_suivi_component.html.erb
+│   │   ├── statut_suivi_component.rb
+│   │   ├── suivi_accompagnement_illettrisme_component.html.erb
+│   │   ├── suivi_accompagnement_illettrisme_component.rb
 │   │   ├── tableau_component.html.erb
 │   │   ├── tableau_component.rb
-│   │   ├── tag.html.erb
-│   │   ├── tag.rb
+│   │   ├── tag_component.html.erb
+│   │   ├── tag_component.rb
 │   │   ├── texte_intro_component.html.erb
 │   │   ├── texte_intro_component.rb
 │   │   ├── toggle_component.html.erb
@@ -594,13 +631,13 @@
 │   │   ├── application_controller.rb
 │   │   ├── concerns
 │   │   │   ├── .keep
+│   │   │   ├── export_questions_xls.rb
 │   │   │   └── pdf_generation_responder.rb
 │   │   ├── demo_controller.rb
 │   │   ├── erreurs_controller.rb
 │   │   ├── eva
 │   │   │   └── devise
 │   │   │       ├── passwords_controller.rb
-│   │   │       ├── registrations_controller.rb
 │   │   │       └── sessions_controller.rb
 │   │   ├── inscription
 │   │   │   ├── informations_comptes_controller.rb
@@ -619,7 +656,9 @@
 │   ├── helpers
 │   │   ├── active_admin
 │   │   │   └── views_helper.rb
+│   │   ├── actualite_helper.rb
 │   │   ├── admin
+│   │   │   ├── beneficiaire_helper.rb
 │   │   │   ├── comparaison_helper.rb
 │   │   │   ├── dashboard_helper.rb
 │   │   │   └── evaluation_helper.rb
@@ -647,6 +686,7 @@
 │   │   ├── file_input.rb
 │   │   ├── image_file_input.rb
 │   │   ├── select_input.rb
+│   │   ├── selection_multiple_filter_input.rb
 │   │   ├── siret_input.rb
 │   │   └── toggle_input.rb
 │   ├── jobs
@@ -688,7 +728,10 @@
 │   │   │   ├── compte.rb
 │   │   │   └── structure.rb
 │   │   ├── application_record.rb
+│   │   ├── attestation_passation.rb
 │   │   ├── beneficiaire.rb
+│   │   ├── beneficiaires
+│   │   │   └── statut_suivi.rb
 │   │   ├── campagne.rb
 │   │   ├── campagne_createur.rb
 │   │   ├── campagne_duplicateur.rb
@@ -719,6 +762,7 @@
 │   │   ├── evaluation_evapro.rb
 │   │   ├── evaluations_eva
 │   │   │   ├── mise_en_action_presenter.rb
+│   │   │   ├── statut_suivi.rb
 │   │   │   └── tableau_de_bord_mises_en_action.rb
 │   │   ├── evaluations_evapro
 │   │   │   ├── bilan_consolide_calculator.rb
@@ -1046,7 +1090,6 @@
 │       │   │   ├── _referentiel_europeen.arb
 │       │   │   ├── _restitution_globale.arb
 │       │   │   ├── _show.html.arb
-│       │   │   ├── _suivi_accompagnement_illettrisme.erb
 │       │   │   ├── _telechargement_reponses.erb
 │       │   │   ├── positionnement
 │       │   │   │   └── _sous_competences.erb
@@ -1070,6 +1113,7 @@
 │       │   │   ├── _show.html.arb
 │       │   │   ├── _sidebar_evaluation.html.erb
 │       │   │   ├── _sidebar_structure.html.erb
+│       │   │   ├── attestation.pdf.erb
 │       │   │   └── show.pdf.erb
 │       │   ├── import_xls
 │       │   │   └── _form.html.erb
@@ -1166,6 +1210,7 @@
 │       │       ├── header.html.erb
 │       │       ├── incontournables_etape_card.html.erb
 │       │       ├── index.html.erb
+│       │       ├── info_bulle.html.erb
 │       │       ├── input.html.erb
 │       │       ├── lien.html.erb
 │       │       ├── menu_actions.html.erb
@@ -1177,9 +1222,12 @@
 │       │       ├── pastille.html.erb
 │       │       ├── qcm.html.erb
 │       │       ├── referentiel_anlci.html.erb
+│       │       ├── resultat.html.erb
 │       │       ├── score_arrows.html.erb
 │       │       ├── sous_competence.html.erb
 │       │       ├── statut_campagne.html.erb
+│       │       ├── statut_suivi.html.erb
+│       │       ├── suivi_accompagnement_illettrisme.html.erb
 │       │       ├── tableau.html.erb
 │       │       ├── tag.html.erb
 │       │       ├── texte_intro.html.erb
@@ -1260,14 +1308,12 @@
 │       │   ├── application.pdf.erb
 │       │   ├── connexion_v2.html.erb
 │       │   ├── erreurs.html.erb
-│       │   ├── evapro_admin.html.erb
 │       │   ├── inscription_v2.html.erb
 │       │   ├── mailer.html.erb
 │       │   ├── mailer.text.erb
 │       │   └── ui_kit.html.erb
 │       └── structure_mailer
 │           ├── invitation_structure.html.erb
-│           ├── nouvelle_structure.html.erb
 │           └── relance_creation_campagne.erb
 ├── bin
 │   ├── lint_locale_opco
@@ -1275,6 +1321,7 @@
 │   ├── postdeploy.sh
 │   ├── rails
 │   ├── rake
+│   ├── reinitialise_preprod.sh
 │   ├── reset_db_dev.sh
 │   ├── reviewappdeploy.sh
 │   ├── rspec
@@ -1337,6 +1384,8 @@
 │   │   │   ├── banniere_solutions_illettrisme.yml
 │   │   │   ├── barre_segmentee.yml
 │   │   │   ├── bilan_eva_pro.yml
+│   │   │   ├── date_revue_mise_en_action.yml
+│   │   │   ├── entete_mise_en_action.yml
 │   │   │   ├── evaluation
 │   │   │   │   ├── annexe_diagnostic_component.yml
 │   │   │   │   ├── annexe_positionnement_component.yml
@@ -1348,9 +1397,16 @@
 │   │   │   ├── footer.yml
 │   │   │   ├── header.yml
 │   │   │   ├── numero_telephone_input.yml
+│   │   │   ├── precision_autre.yml
 │   │   │   ├── qcm.yml
+│   │   │   ├── qualification_mise_en_action.yml
+│   │   │   ├── question_mise_en_action.yml
 │   │   │   ├── recheche_compte.yml
+│   │   │   ├── reponse_mise_en_action.yml
+│   │   │   ├── resultat.yml
 │   │   │   ├── sous_competences.yml
+│   │   │   ├── statut_suivi.yml
+│   │   │   ├── suivi_accompagnement_illettrisme.yml
 │   │   │   └── tag.yml
 │   │   ├── controllers
 │   │   │   └── api
@@ -1366,6 +1422,7 @@
 │   │   │   ├── actualite.yml
 │   │   │   ├── annonce_generale.yml
 │   │   │   ├── beneficiaire.yml
+│   │   │   ├── booleens.yml
 │   │   │   ├── campagne.yml
 │   │   │   ├── choix.yml
 │   │   │   ├── compte.yml
@@ -1437,6 +1494,7 @@
 │   ├── spring.rb
 │   └── storage.yml
 ├── config.ru
+├── cron.json
 ├── db
 │   ├── data
 │   │   └── questions
@@ -1755,12 +1813,27 @@
 │   │   ├── 20260617151736_add_unique_index_to_comptes_id_pro_connect.rb
 │   │   ├── 20260625131631_ajoute_type_pour_evaluation.rb
 │   │   ├── 20260625143253_initialise_type_pour_evaluation.rb
-│   │   └── 20260910143807_ajoute_donnees_sante_aux_donnees_sociodemographiques.rb
+│   │   ├── 20260910143807_ajoute_donnees_sante_aux_donnees_sociodemographiques.rb
+│   │   ├── 20261007120000_ajoute_score_aux_choix.rb
+│   │   ├── 20261007150000_initialise_score_des_choix_diagnostic_risques.rb
+│   │   ├── 20261007160000_initialise_score_des_choix_evaluation_impact.rb
+│   │   ├── 20261007170000_met_a_jour_les_secteurs_d_activite.rb
+│   │   ├── 20261008155136_initialise_score_des_choix_des_variantes.rb
+│   │   ├── 20261029100000_remplace_les_usages_par_des_noms_techniques.rb
+│   │   ├── 20261029120000_ajoute_je_ne_sais_pas_aux_mises_en_action.rb
+│   │   ├── 20261103090000_ajoute_precision_autre_aux_mises_en_action.rb
+│   │   └── 20261104100000_ajoute_choix_date_revue_aux_mises_en_action.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
+│   ├── adr
+│   │   ├── 0001-statut-de-suivi-calcule.md
+│   │   ├── 0002-carte-de-suivi-lit-les-resultats-enregistres.md
+│   │   └── 0003-pas-encore-est-un-etat-d-attente.md
 │   ├── erd.mmd
 │   ├── extraction_stat_niveau_1_et_2.md
+│   ├── mise_en_action_ecrans.md
+│   ├── mots_de_passe_de_service.md
 │   ├── procedure_deploiement.md
 │   ├── readme_component.md
 │   ├── reset_db.md
@@ -1851,6 +1924,7 @@
 │   ├── custom_exceptions_app_wrapper.rb
 │   ├── formatage_numero_telephone.rb
 │   ├── generateur_aleatoire.rb
+│   ├── generateur_code.rb
 │   ├── importeur_commentaires.rb
 │   ├── importeur_telephone.rb
 │   ├── linters
@@ -1898,21 +1972,35 @@
 │   │   ├── barre_segmentee_component_spec.rb
 │   │   ├── base_input_component_spec.rb
 │   │   ├── bouton_copier_component_spec.rb
+│   │   ├── bouton_dsfr_component_spec.rb
 │   │   ├── card_diagnostique_component_spec.rb
 │   │   ├── code_postal_input_component_spec.rb
 │   │   ├── email_input_component_spec.rb
+│   │   ├── entete_mise_en_action_component_spec.rb
 │   │   ├── evaluation
 │   │   │   ├── alert_interpreter_resultats_component_spec.rb
 │   │   │   ├── competence_transversale_component_spec.rb
 │   │   │   └── numeratie_component_spec.rb
 │   │   ├── header_component_spec.rb
 │   │   ├── incontournables_etape_card_component_spec.rb
+│   │   ├── info_bulle_component_spec.rb
 │   │   ├── lien_component_spec.rb
 │   │   ├── navigation_component_spec.rb
 │   │   ├── numero_telephone_input_component_spec.rb
 │   │   ├── password_input_component_spec.rb
+│   │   ├── pdf
+│   │   │   └── header_evapro_component_spec.rb
+│   │   ├── precision_autre_component_spec.rb
+│   │   ├── qcm_spec.rb
+│   │   ├── qualification_mise_en_action_component_spec.rb
+│   │   ├── question_mise_en_action_component_spec.rb
+│   │   ├── reponse_mise_en_action_component_spec.rb
+│   │   ├── resultat_component_spec.rb
 │   │   ├── siret_input_component_spec.rb
-│   │   └── statistiques_structure_metabase_component_spec.rb
+│   │   ├── statistiques_structure_metabase_component_spec.rb
+│   │   ├── statut_suivi_component_spec.rb
+│   │   ├── suivi_accompagnement_illettrisme_component_spec.rb
+│   │   └── tag_component_spec.rb
 │   ├── config
 │   │   └── initializers
 │   │       ├── rack_attack_spec.rb
@@ -1975,11 +2063,13 @@
 │   │   │   ├── dashboard_spec.rb
 │   │   │   ├── evaluation_eva_pdf_spec.rb
 │   │   │   ├── evaluation_eva_spec.rb
+│   │   │   ├── evaluation_evapro_attestation_spec.rb
 │   │   │   ├── evaluation_evapro_pdf_spec.rb
 │   │   │   ├── evaluation_evapro_spec.rb
 │   │   │   ├── evenement_spec.rb
 │   │   │   ├── import_xls_spec.rb
 │   │   │   ├── index_spec.rb
+│   │   │   ├── mise_en_action_spec.rb
 │   │   │   ├── opco_spec.rb
 │   │   │   ├── parcours_type_spec.rb
 │   │   │   ├── parties_spec.rb
@@ -2006,7 +2096,9 @@
 │   │   └── files
 │   │       └── test_evaluation.pdf
 │   ├── helpers
+│   │   ├── actualite_helper_spec.rb
 │   │   ├── admin
+│   │   │   ├── beneficiaire_helper_spec.rb
 │   │   │   ├── comparaison_helper_spec.rb
 │   │   │   ├── dashboard_helper_spec.rb
 │   │   │   └── evaluation_helper_spec.rb
@@ -2025,6 +2117,7 @@
 │   │   ├── email_input_spec.rb
 │   │   ├── file_input_spec.rb
 │   │   ├── image_file_input_spec.rb
+│   │   ├── selection_multiple_filter_input_spec.rb
 │   │   └── siret_input_spec.rb
 │   ├── integrations
 │   │   ├── ability_spec.rb
@@ -2061,6 +2154,7 @@
 │   │   │   └── actions_items_sidebar
 │   │   │       └── resource_extension_spec.rb
 │   │   ├── generateur_aleatoire_spec.rb
+│   │   ├── generateur_code_spec.rb
 │   │   ├── importeur_commentaires_spec.rb
 │   │   ├── importeur_telephone_spec.rb
 │   │   └── sirene
@@ -2079,7 +2173,10 @@
 │   │   ├── anonymisation
 │   │   │   ├── campagne_spec.rb
 │   │   │   └── compte_spec.rb
+│   │   ├── attestation_passation_spec.rb
 │   │   ├── beneficiaire_spec.rb
+│   │   ├── beneficiaires
+│   │   │   └── statut_suivi_spec.rb
 │   │   ├── campagne_createur_spec.rb
 │   │   ├── campagne_duplicateur_spec.rb
 │   │   ├── campagne_spec.rb
@@ -2098,6 +2195,7 @@
 │   │   ├── evaluation_spec.rb
 │   │   ├── evaluations_eva
 │   │   │   ├── mise_en_action_presenter_spec.rb
+│   │   │   ├── statut_suivi_spec.rb
 │   │   │   └── tableau_de_bord_mises_en_action_spec.rb
 │   │   ├── evaluations_evapro
 │   │   │   ├── bilan_consolide_calculator_spec.rb
@@ -2115,6 +2213,7 @@
 │   │   │   ├── onglet_xls_spec.rb
 │   │   │   ├── questionnaire
 │   │   │   │   ├── export_spec.rb
+│   │   │   │   ├── import_export_donnees_spec.rb
 │   │   │   │   └── import_spec.rb
 │   │   │   └── questions
 │   │   │       ├── export
@@ -2282,25 +2381,30 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── admin
+│   │   │   ├── comptes_spec.rb
 │   │   │   ├── evaluations_spec.rb
-│   │   │   └── pdf_generations_spec.rb
+│   │   │   ├── pdf_generations_spec.rb
+│   │   │   └── questions_export_xls_spec.rb
 │   │   ├── beneficiaire_spec.rb
 │   │   ├── beneficiaires_spec.rb
 │   │   ├── campagnes_spec.rb
 │   │   ├── eva
 │   │   │   └── devise
 │   │   │       ├── passwords_spec.rb
-│   │   │       └── registrations_spec.rb
+│   │   │       └── registrations_routes_retirees_spec.rb
 │   │   ├── evaluations
 │   │   │   ├── collections_evenements_spec.rb
 │   │   │   └── fin_evaluations_spec.rb
 │   │   ├── evaluations_eva_spec.rb
 │   │   ├── evaluations_spec.rb
 │   │   ├── evenements_spec.rb
+│   │   ├── inscription_compte_non_connecte_spec.rb
 │   │   ├── inscription_informations_compte_spec.rb
 │   │   ├── inscription_invitation_embarquement_spec.rb
 │   │   ├── inscription_invitation_invalide_spec.rb
 │   │   ├── inscription_invitation_mauvaise_structure_spec.rb
+│   │   ├── inscription_nouveau_compte_connecte_spec.rb
+│   │   ├── inscription_structure_etape_spec.rb
 │   │   └── questionnaires_spec.rb
 │   ├── services
 │   │   ├── admin
@@ -2348,6 +2452,9 @@
 │   │   ├── persiste_donnees_sante_spec.rb
 │   │   ├── recalcule_completude_positionnement_spec.rb
 │   │   ├── recalcule_metriques_spec.rb
+│   │   ├── reviewapp_initdb_spec.rb
+│   │   ├── reviewapp_seed_spec.rb
+│   │   ├── reviewapp_videdb_spec.rb
 │   │   ├── supprime_controle_campagne_spec.rb
 │   │   ├── supprime_evenements_apres_la_fin_spec.rb
 │   │   └── supprime_evenements_en_doubles_spec.rb
@@ -2363,4 +2470,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-337 directories, 2082 files
+344 directories, 2182 files

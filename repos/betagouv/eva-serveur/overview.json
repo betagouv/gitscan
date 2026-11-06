@@ -1,39 +1,36 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Serveur et espace d'administration pour l'application EVA, permettant la gestion de campagnes d'évaluation, de questionnaires et le suivi des données via une API REST.",
+  "description": "Serveur et espace d'administration pour le projet EVA, permettant la gestion des évaluations, des campagnes et des questionnaires via une API REST et une interface d'administration.",
   "language": "Ruby",
   "features": [
     "API & Intégrations",
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
+    "Gestion des utilisateurs & Permissions",
     "Données & Schémas",
-    "Formulaires & Démarches",
-    "Gestion documentaire & Fichiers",
-    "Statistiques & Rapports"
+    "Formulaires & Démarches"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Ruby on Rails",
+    "Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
     "ActiveAdmin",
     "Devise",
     "DSFR",
-    "Puppeteer"
+    "vips"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs",
+    "Authentification (composant)",
     "ORM & Accès aux données",
-    "Scripts & Utilitaires"
+    "Celery & Queue asynchrone",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "jwt",
       "session"
     ]
@@ -41,17 +38,17 @@
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium",
     "FactoryBot"
   ],
-  "lastActivity": "2026-09-24T17:23:58+02:00",
+  "lastActivity": "2026-11-05T21:33:24+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Bases de données SQL",
-    "Docker & Conteneurs",
-    "Standards & Schémas"
+    "Sécurité & Auth",
+    "Documentation",
+    "Docker & Conteneurs"
   ]
 }
