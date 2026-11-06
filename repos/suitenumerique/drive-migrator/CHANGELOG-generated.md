@@ -1,29 +1,37 @@
-## Changelog : drive-migrator (30 derniers jours, au 29 octobre 2026)
+## Changelog : drive-migrator (30 derniers jours, au 03/11/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la fiabilité des migrations et la gestion des erreurs. L'outil est désormais plus résilient face aux interruptions réseau temporaires et offre une meilleure visibilité aux utilisateurs sur les fichiers ayant échoué lors d'un transfert, notamment via des rapports détaillés envoyés par e-mail.
+Ce mois a été marqué par une amélioration significative de la fiabilité des migrations grâce à un nouveau système de tentatives automatiques en cas d'erreur réseau. L'expérience utilisateur est également plus fluide : les erreurs de connexion sont mieux expliquées, et la gestion des fichiers refusés par la destination est simplifiée grâce à un archivage automatique et un accès facilité via les emails de notification.
 
 ### Évolutions fonctionnelles
-- **Gestion des échecs de migration** : Les utilisateurs peuvent désormais télécharger un fichier CSV listant les fichiers refusés ou accéder directement à une archive de ces fichiers via les e-mails de notification [#256, #257].
-- **Amélioration de l'expérience utilisateur** : 
-    - Ajout de messages explicatifs en cas de déconnexion nécessaire.
-    - Redirection automatique vers Drive pour les utilisateurs ne possédant pas encore de compte.
-    - Information sur l'indisponibilité temporaire du transfert d'accès.
-- **Administration et suivi** : 
-    - Ajout des informations relatives à l'espace de travail dans la liste des tâches de l'interface d'administration.
-    - Meilleure visibilité sur les fichiers rejetés par les destinations directement dans les espaces de travail.
-- **Robustesse des transferts Drive** : Les fichiers refusés par Drive sont désormais ignorés au lieu de stopper l'intégralité de la migration (sauf si la totalité des fichiers est rejetée).
+- **Amélioration de l'expérience utilisateur (UX) :**
+    - Meilleure communication lors des déconnexions : les utilisateurs sont désormais informés de la raison pour laquelle ils doivent se reconnecter.
+    - Guidage des utilisateurs : redirection automatique vers Drive pour les utilisateurs ne possédant pas encore de compte.
+    - Information sur la disponibilité de certaines fonctionnalités (ex: transfert d'accès).
+- **Gestion des échecs de migration :**
+    - Les fichiers refusés par la destination sont désormais archivés et un lien est ajouté dans les emails de notification pour les récupérer facilement.
+    - Ajout d'un point de terminaison (endpoint) permettant de télécharger directement les fichiers refusés.
+    - Les fichiers bloqués par Drive sont désormais ignorés au lieu de faire échouer l'intégralité de la migration.
+- **Interface et Administration :**
+    - Ajout des informations relatives au workspace dans la liste des tâches de l'interface d'administration.
+    - Amélioration de la visibilité des workspaces verrouisés pour les utilisateurs ayant le rôle d'Animateur sur Resana.
+- **Données :**
+    - Optimisation du fichier CSV des membres Drive par la suppression des colonnes de noms [#296].
 
 ### Évolutions techniques
-- **Fiabilité et résilience** : Implémentation d'un mécanisme de tentatives automatiques (`RetryingSession`) pour gérer les erreurs API transitoires (timeouts, erreurs 5xx) sur les services Osmose, Resana et Drive [#264].
-- **Modernisation de l'outillage** : Migration complète vers `uv` pour la gestion du projet et des dépendances, améliorant la rapidité et la cohérence des environnements de développement.
-- **Infrastructure et Docker** : 
-    - Passage à des images Docker de base Alpine pour réduire la surface d'attaque et la taille des images.
-    - Mise à jour des images Nginx.
-- **Performance et Sécurité** : 
-    - Optimisation de Gunicorn avec l'utilisation de workers threadés pour éviter l'interruption des téléchargements longs [#243].
-    - Mises à jour de sécurité critiques sur les dépendances (Django, PyJWT, Pillow, Certifi).
-- **Observabilité** : 
-    - Amélioration de la journalisation (logs INFO envoyés à la console, suivi de la durée de vie des tokens).
-    - Intégration de PostHog pour le suivi analytique des tailles et types de fichiers des espaces de travail.
-- **Refactoring** : Amélioration de l'intégration avec Resana via l'ajout de mécanismes de verrouillage (locking) et de hooks d'export.
+- **Fiabilité et Résilience :**
+    - Implémentation d'une session de tentatives partagée (`RetryingSession`) pour gérer automatiquement les erreurs API transitoires (timeouts, erreurs 5xx) sur les services Osmose, Resana et Drive.
+- **Infrastructure et DevOps :**
+    - Migration complète de la gestion du projet vers l'outil `uv`.
+    - Optimisation des images Docker (utilisation de bases Alpine) et de la configuration Nginx.
+    - Amélioration des performances du serveur avec l'utilisation de workers threadés pour Gunicorn.
+- **Sécurité et Maintenance :**
+    - Mises à jour de sécurité critiques sur Django, PyJWT, certifi et Pillow.
+    - Mise à jour des environnements Node et Brotli.
+- **Observabilité et Qualité :**
+    - Renforcement de la couverture de tests unitaires, notamment pour les helpers de migration [#297].
+    - Amélioration de la journalisation (logs INFO vers la console, suivi de la durée de vie des tokens et des logs d'upload Drive).
+    - Intégration de l'envoi de métadonnées (taille de workspace, types de fichiers) vers PostHog pour l'analyse.
+
+### Autres changements
+- Nettoyage du backend par la suppression de dépendances de production inutilisées.

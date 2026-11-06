@@ -1,26 +1,27 @@
 {
   "url": "https://github.com/suitenumerique/drive-migrator",
   "name": "drive-migrator",
-  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il assure l'interopérabilité et la portabilité des données pour les administrations au sein de l'écosystème OpenBuro.",
+  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il permet de préserver la hiérarchie des dossiers et les métadonnées lors du transfert entre instances.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Infrastructure & Stockage",
     "Sécurité & Conformité",
     "Suivi & Traçabilité",
-    "Collaboration & Workflow"
+    "Administration & Backoffice",
+    "Infrastructure & Stockage",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Next.js",
+    "Celery",
     "PostgreSQL",
     "Redis",
-    "Celery",
     "MinIO",
     "Keycloak",
-    "Nginx",
-    "uv"
+    "Next.js",
+    "uv",
+    "Nginx"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,33 +30,31 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Authentification (composant)",
-    "Scripts & Utilitaires"
+    "Node.js / NestJS",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
+      "mfa",
       "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "pytest",
-  "workflows": [
-    "GitHub Actions"
-  ],
-  "lastActivity": "2026-10-29T21:08:41+01:00",
+  "tests": "Unit tests",
+  "lastActivity": "2026-11-03T15:50:49+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "Python",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "ETL & Pipelines de données"
+    "ETL & Pipelines de données",
+    "Git & DevOps"
   ]
 }
