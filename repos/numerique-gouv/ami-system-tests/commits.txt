@@ -1,70 +1,438 @@
-2026-09-02T16:47:19+02:00 - 39c52fc - Nicolas : essai de test android avec un apk buildé.
+2026-10-30T20:08:13+01:00 - e9371c0 - Nicolas Fedou : Merge pull request #82 from numerique-gouv/77-migre-vers-wdio-10
+2026-10-30T20:00:57+01:00 - ebcfcd0 - Nicolas : ci(e2e): AMI_REVIEWAPPS_APP_ID est un secret du dépôt appelant (comme la clé privée), plus une variable
+2026-10-30T20:00:57+01:00 - dd8de2f - Nicolas : refactor(ci): un seul calcul de la clé d'isolation et des noms d'artefacts (action e2e-keys)
+2026-10-30T20:00:57+01:00 - dc842e1 - Nicolas : ci: le job E2E lit la version de Node dans .nvmrc, comme la validation du dépôt
+2026-10-30T20:00:57+01:00 - d053951 - Nicolas : docs(contributing): les specs de parcours décrites (zone dynamique, longues, hors CI par défaut)
+2026-10-30T20:00:57+01:00 - ca27692 - Nicolas : test(agenda): les scénarios d'éléments de l'agenda quittent zones-agenda pour agenda.usage
+2026-10-30T20:00:57+01:00 - c4f757f - Nicolas : ci: workflow de validation du dépôt (lint, compilation, tests unitaires, script de commentaire, actionlint)
+2026-10-30T20:00:57+01:00 - c48c915 - Nicolas : ci(e2e): un seul appareil Android, pixel_8_api36 (API 30 et 31 : WebView Chrome 91 et plantage de l'app au retour FranceConnect)
+2026-10-30T20:00:57+01:00 - a7b7bbe - Nicolas : chore(ci): étapes de débogage retirées de e2e-android
+2026-10-30T20:00:57+01:00 - a6cd04d - Nicolas : ci: Dependabot met à jour chaque semaine les actions GitHub épinglées par SHA
+2026-10-30T20:00:57+01:00 - a475c28 - Nicolas : docs(tutoriel): les références du tutoriel et de CONTRIBUTING suivent le fichier empty-test.tutorial.test.ts
+2026-10-30T20:00:57+01:00 - 96eb96a - Nicolas : ci: image des runners épinglée (ubuntu-24.04) au lieu de ubuntu-latest
+2026-10-30T20:00:57+01:00 - 8c0b0cc - Nicolas : test(connexion-silencieuse): otv-connexion-silencieuse renommé, la carte « Déclaration de changement d'adresse » y est déplacée
+2026-10-30T20:00:57+01:00 - 89c021e - Nicolas : docs(ci): commentaires des workflows et actions ramenés à un mode d'emploi en français, sans historique ; renommages proposés en commentaire
+2026-10-30T20:00:57+01:00 - 820676e - Nicolas : test(demarche-detail): c'est un cas d'usage (il publie des démarches et agit), pas un parcours : demarche-detail.usage dans nonreg
+2026-10-30T20:00:57+01:00 - 7afd024 - Nicolas : ci(e2e-android): noms d'étapes en français, avec la même majuscule initiale
+2026-10-30T20:00:57+01:00 - 79dcb43 - Nicolas : chore(ci): timeout-minutes sur tous les jobs (60 min pour les tests E2E, 15 pour le rapport, 10 pour le nettoyage, 5 pour la clé d'isolation)
+2026-10-30T20:00:57+01:00 - 6c3f676 - Nicolas : test(webapp): carte « Renseignez votre adresse » ignorée en attendant le correctif de son lien
+2026-10-30T20:00:57+01:00 - 6358088 - Nicolas : chore(ci): entrée run_ios retirée de workflow-e2e-main (réservée, aucun job ne la lisait)
+2026-10-30T20:00:57+01:00 - 5b2c040 - Nicolas : ci(e2e-pr-comment): entrée script-path retirée (aucun appelant ne la passait)
+2026-10-30T20:00:57+01:00 - 5ac6c04 - Nicolas : docs(ci): pourquoi la machinerie de commentaire de PR existe, et quand la supprimer
+2026-10-30T20:00:57+01:00 - 5a1a02a - Nicolas : ci(secrets): workflow-e2e-main déclare les six secrets qu'il utilise (VULN18 : héritage des secrets trop permissif)
+2026-10-30T20:00:57+01:00 - 552d7c2 - Nicolas : ci(e2e): appareil Android ancien par défaut = pixel_6_api31 (l'app plante au retour FranceConnect sur API 30)
+2026-10-30T20:00:57+01:00 - 531c142 - Nicolas : test(cycle-de-vie): la dernière étape archive la démarche clôturée et la retrouve dans les archivées
+2026-10-30T20:00:57+01:00 - 524f1e4 - Nicolas : test(ios): le tap sur la bannière ne rouvrant pas toujours l'app, on retrouve la notification dans le centre de notifications, on la tape, puis on ouvre l'app nous-mêmes si elle ne s'ouvre pas en 5 s (logs)
+2026-10-30T20:00:57+01:00 - 472f36d - Nicolas : test(zones): aucune zone cochée, la tuile de vacances qui citait la zone B disparaît de l'agenda
+2026-10-30T20:00:57+01:00 - 3d3ba6d - Nicolas : test(parcours): « (smoke) » retiré des titres de catalogue et moments-de-vie, ce sont des parcours
+2026-10-30T20:00:57+01:00 - 1f2be65 - Nicolas : chore(ci): exemples de workflows supprimés (workflows-samples)
+2026-10-30T20:00:57+01:00 - 0f1a88f - Nicolas : fix(platform): un identifiant de page refusé par Chromedriver 91 (API 30) n'empêche plus d'atteindre la WebView
+2026-10-30T20:00:57+01:00 - 010d909 - Nicolas : docs(ci): le nom du job e2e rappelle que chaque plateforme ne tourne que si sa suite est renseignée
+2026-10-30T20:00:56+01:00 - fe4deb7 - Nicolas : refactor(pages,scripts): simple design et KISS
+2026-10-30T20:00:56+01:00 - fb55b05 - Nicolas : docs(schema-navigation): tableau des specs mis à jour (navigation, profil et déconnexion webapp supprimés, suivi renommé), flèches non recalculées
+2026-10-30T20:00:56+01:00 - f320346 - Nicolas : refactor(mobile): l'appareil se désigne par ANDROID_UDID / IOS_UDID seulement (documentation Appium : deviceName ne sert pas à le choisir), plus de démarrage d'AVD par Appium (ANDROID_AVD, ANDROID_AVD_ARGS, ANDROID_DEVICE_NAME, IOS_DEVICE_NAME supprimés), émulateur démarré avant le run
+2026-10-30T20:00:56+01:00 - ee99732 - Nicolas : feat(platform,locators): contexte courant en mémoire et choix des locators par contexte
+2026-10-30T20:00:56+01:00 - e9c60f8 - Nicolas : fix(locators): ajoute authenticate.locators.ts oublié par le commit précédent (git add -u n'ajoute pas les fichiers nouveaux)
+2026-10-30T20:00:56+01:00 - e94088f - Nicolas : test(otv): spec connexion silencieuse OTV mise en skip (passkey mise de côté, décision de l'équipe)
+2026-10-30T20:00:56+01:00 - e60d2b3 - Nicolas : feat(suivi): le message d'échec de waitForDemarche donne le lien Sentry de la trace de l'envoi de la démarche (publicationSentryUrl)
+2026-10-30T20:00:56+01:00 - e226f8a - Nicolas : feat(justfile): just start rappelle, après l'UDID, qu'il faut le préciser avec plusieurs appareils (exemples avec et sans just, ports d'un second run en parallèle)
+2026-10-30T20:00:56+01:00 - dd5697a - Nicolas : test: this.timeout posé au niveau du describe, jamais dans un it ou un hook
+2026-10-30T20:00:56+01:00 - dd10a19 - Nicolas : fix(aide-contact): l'aide de l'administration revient dans l'application après son contrôle HTTP (le beforeEach suivant ne récupérait pas depuis service-public.gouv.fr)
+2026-10-30T20:00:56+01:00 - d7930ee - Nicolas : docs(contributing): contradictions corrigées après relecture croisée avec le code et le README
+2026-10-30T20:00:56+01:00 - c76823e - Nicolas : refactor(tests): commentaires d'historique et journaux informatifs retirés
+2026-10-30T20:00:56+01:00 - b81505c - Nicolas : docs(modele): scénarios mobile mis à jour (test des démarches supprimé, adresse testée dans le test de profil)
+2026-10-30T20:00:56+01:00 - b054f88 - Nicolas : docs: documentation allégée (CLAUDE.md en divulgation progressive, CONTRIBUTING avec principes et pièges, README réduit)
+2026-10-30T20:00:56+01:00 - afac607 - Nicolas : docs(modele): scénarios webapp mis à jour (specs supprimées, renommées, fusionnées ou mises en skip le 2026-10-28)
+2026-10-30T20:00:56+01:00 - ad7045c - Nicolas : docs(wdio): dates et mesures retirées des commentaires des configs
+2026-10-30T20:00:56+01:00 - ad248b9 - Nicolas : test: rechargements remplacés par un retour sur l'Accueil puis sur l'écran (consentements, zones, agenda), NavigationPage.reload supprimée ; le Suivi garde son rechargement pour une démarche déjà listée dont le statut change
+2026-10-30T20:00:56+01:00 - a54457e - Nicolas : feat(justfile): just start [NOM] (liste ce qui est démarrable ; démarre et affiche l'UDID) et just stop [NOM] (liste les appareils virtuels démarrés ; éteint celui donné), Android et iOS
+2026-10-30T20:00:56+01:00 - 8cb93f1 - Nicolas : docs(reporting): pourquoi filtrer les lignes COMMAND/RESULT et fusionner un JUnit par worker
+2026-10-30T20:00:56+01:00 - 89d337e - Nicolas : refactor(pages): assertDisplayed sur chaque Page Object de la SPA, utilisé en interne ; test d'authentification webapp déconnecté dans son before ; CONTRIBUTING §3, §6, §7 et pièges précisés
+2026-10-30T20:00:56+01:00 - 8982d3b - Nicolas : refactor(locators): pages WebView sans fonction de dispatch, sélecteurs rangés dans les locators, doc des variantes web / android / ios
+2026-10-30T20:00:56+01:00 - 8027d8f - Nicolas : fix(consentement): les scénarios démarche vérifient seulement l'arrivée sur l'Accueil (salutation, diagnostic de page en cas d'échec) au lieu des blocs « Mon agenda » et « Mes démarches »
+2026-10-30T20:00:56+01:00 - 7735b89 - Nicolas : refactor(link-check): describeDeferred partagé par catalogue, moments de vie et listes d'étapes
+2026-10-30T20:00:56+01:00 - 6dc69f4 - Nicolas : refactor(system-notifications): la page ne dépend plus d'autres Page Objects ; le scénario enchaîne la feuille native, l'arrivée et l'accueil
+2026-10-30T20:00:56+01:00 - 65c2179 - Nicolas : refactor(helpers): simple design et KISS (erreurs brutes, commentaires d'historique retirés, doublons fusionnés)
+2026-10-30T20:00:56+01:00 - 5cf1065 - Nicolas : docs(references): mentions de tests supprimés annotées (analyse du site inchangée), nom de fichier corrigé dans spec.md
+2026-10-30T20:00:56+01:00 - 5b46181 - Nicolas : fix(consentement): le scénario piloté par les Préférences repart de l'Accueil avant d'ouvrir Préférences (la page Notifications n'a pas de barre basse)
+2026-10-30T20:00:56+01:00 - 5b1d42e - Nicolas : refactor(platform,driver,spa): simple design et KISS
+2026-10-30T20:00:56+01:00 - 53bae2a - Nicolas : fix(auth): getAppToLoggedOutState attend un écran connu après la revue app ; session FranceConnect active = avertissement, pas un échec
+2026-10-30T20:00:56+01:00 - 4a444bb - Nicolas : fix(erreurs): « toujours affiché » et « carte introuvable » sont des échecs de test (AssertionError), pas des erreurs techniques
+2026-10-30T20:00:56+01:00 - 48ab227 - Nicolas : refactor(locators): sonde de connexion et notifications système rangées dans les locators
+2026-10-30T20:00:56+01:00 - 442f0fc - Nicolas : test: assertions qui montrent la valeur réelle en cas d'échec
+2026-10-30T20:00:56+01:00 - 40e4c9f - Nicolas : refactor: le contrôle iOS de l'autorisation déplacé dans SystemNotificationsPage ; clickRole non exporté
+2026-10-30T20:00:56+01:00 - 407e84b - Nicolas : refactor(franceconnect): FranceConnectDemoSpPage ne dépend plus des pages eIDAS et identifiants ; le scénario enchaîne les pages
+2026-10-30T20:00:56+01:00 - 39ebc65 - Nicolas : feat(partner-api): publishEvent propage un en-tête sentry-trace et journalise le lien Sentry de l'appel (retrouver l'envoi d'une démarche côté backend)
+2026-10-30T20:00:56+01:00 - 2afea97 - Nicolas : docs(modele): ami-spa mis à jour (adresse testée, source de la déconnexion, onboarding des zones, passkey en pause)
+2026-10-30T20:00:56+01:00 - 26e2217 - Nicolas : docs: exceptions documentées (flows d'authentification qui s'enveloppent eux-mêmes, SystemNotificationsPage qui branche sur l'OS)
+2026-10-30T20:00:56+01:00 - 213ae29 - Nicolas : refactor(locators): pages mixtes en variantes web / android / ios choisies explicitement par le Page Object
+2026-10-30T20:00:56+01:00 - 1ee4e9d - Nicolas : docs(modele): README du modèle mis à jour (exemple de trace, chiffres signalés périmés, couverture et restaurations)
+2026-10-30T20:00:56+01:00 - 1602cde - Nicolas : feat(config): compte de test demandé à la configuration WDIO (TEST_USER, surchargeable en ligne de commande, avec_nom_dusage par défaut) ; getTestUser() remplace getUser('avec_nom_dusage') dans les scénarios
+2026-10-30T20:00:56+01:00 - 14ee097 - Nicolas : refactor(locators): derniers noms et sélecteurs en littéral sortis des Page Objects
+2026-10-30T20:00:56+01:00 - 143fdd2 - Nicolas : fix(tests): arrivée sur l'Accueil vérifiée par la salutation (demarche-detail, consentement) et attente de l'entrée du menu Plus portée à 10 s
+2026-10-30T20:00:56+01:00 - 1328f93 - Nicolas : test(profil): une autocomplétion d'adresse absente saute l'étape avec un avertissement au lieu d'échouer (fonctionnalité éventuellement désactivée côté WebView, non confirmé)
+2026-10-30T20:00:56+01:00 - 10b2e7b - Nicolas : fix(system-notifications): timeoutMsg sur les deux waitUntil qui n'en avaient pas
+2026-10-30T20:00:56+01:00 - 06aa4b4 - Nicolas : fix(profil): le nom d'usage d'origine est lu dans le champ du formulaire, pas déduit du nom affiché (sinon after() écrivait un faux nom d'usage pour un compte sans nom d'usage)
+2026-10-30T20:00:48+01:00 - 37efe15 - Nicolas : test(otv): connexion FranceConnect silencieuse vers OTV (préprod), remplace l'onboarding passkey seul ; spec renommée otv-connexion-silencieuse.usage, profil vierge et CONTRIBUTING alignés
+2026-10-30T19:55:43+01:00 - b6519b3 - Nicolas : feat(pages): ServicePublicPage et locators des pages externes de Service Public (formulaire OTV, connexion FranceConnect)
+2026-10-28T17:07:14+01:00 - fbd6d65 - Nicolas : test(zones): une zone changée à l'onboarding est enregistrée dans les préférences et l'agenda, la remettre dans les préférences rétablit l'agenda (session vierge, état d'origine rétabli en after)
+2026-10-28T17:07:14+01:00 - ad5c9c0 - Nicolas : test(zones): squelette zones-commune.parcours.test.ts supprimé (deux it.skip vides, route #/preferences/zones/city observée : « Ajouter des communes », h1 « Rechercher une commune », bouton « Retour à la page précédente »)
+2026-10-28T17:07:14+01:00 - 960ca1b - Nicolas : feat(onboarding-zones): zoneStates et setZone sur l'écran d'onboarding (choix enregistré sans validation, observé en live)
+2026-10-28T17:00:56+01:00 - cf7d717 - Nicolas : test: scénarios nommés par leur raison d'être (codes S… retirés des titres, des logs et des messages)
+2026-10-28T16:50:45+01:00 - a414ce1 - Nicolas : test: itemId horodaté marqué du scénario (E2E-zones-, E2E-sans-consentement-)
+2026-10-28T16:50:45+01:00 - 3461d0a - Nicolas : test(consentement): S6.2 replié dans S6 (avertissement asserté puis constat de D4, logs OBS S6), uncheckAllDemarchesConsents partagé, préambule de S4.1 allégé
+2026-10-28T16:50:44+01:00 - 25844fb - Nicolas : test(demarche-detail): S9.1 et S9.2 fusionnés en un seul scénario (une attente et un démarrage de moins)
+2026-10-28T16:50:05+01:00 - dc734d7 - Nicolas : test(parcours): catalogue, moments de vie et listes d'étapes sans recouvrement (HTTP_CONCURRENCY partagé dans link-check, S1.2 réduit au contenu des iframes, S2.1 déplacé dans aide-contact)
+2026-10-28T16:50:05+01:00 - c9f2c41 - Nicolas : test: getAppToStartingState gardé dans beforeEach seulement quand before le doublait
+2026-10-28T16:50:05+01:00 - c6cf790 - Nicolas : test(navigation): navigation.parcours supprimé (barre basse et menu Plus sont exercés par les Page Objects de chaque parcours)
+2026-10-28T16:48:13+01:00 - 25c1904 - Nicolas : test(profil): les tests mobiles portent seuls profil et déconnexion (webapp profil.usage et deconnexion.usage supprimés) ; adresse testée, y compris sans adresse d'origine
+2026-10-28T16:48:13+01:00 - 0bf8efa - Nicolas : test(demarches): cycle de vie testé en webapp seulement (suivi.usage renommé demarches-cycle-de-vie.usage, test mobile retiré), itemId marqué
+2026-10-28T16:21:56+01:00 - bd00708 - Nicolas : refactor(consentement): mise en place partagée (consents.process) ; S5 et S5.2 retirés de consentement.usage, repris par les scénarios démarche
+2026-10-28T16:21:56+01:00 - 308a659 - Nicolas : test(consentement): démarche sans consentement refusée et jamais reçue, en deux scénarios (consentement piloté par l'API / par les Préférences), garde et preuve content_link dans les deux, Suivi et centre de notifications
+2026-10-28T16:21:56+01:00 - 240eb79 - Nicolas : chore(webapp): demo-consentement.demo.ts supprimée (partenaire AMI dont le consentement est ignoré, constat remplacé par les scénarios démarche)
+2026-10-28T15:41:45+01:00 - 726b73e - Nicolas : refactor(notifications): iOS laisse le backend émettre le push (FCM -> APNs) comme Android ; simctl push et backendLikePushPayload supprimés
+2026-10-28T15:14:09+01:00 - db999b3 - Nicolas : docs(webapp): hack --host-resolver-rules documenté dans link-check.ts pour les mainteneurs
+2026-10-28T15:08:48+01:00 - 0e21e76 - Nicolas : refactor(env): .env.example (gabarit suivi), .env (défaut, ignoré) chargé par WDIO lui-même, .env.<cible> via just -E ou node --env-file ; dotenv.config et DOTENV_LOADED_BY_JUST supprimés
+2026-10-28T14:54:49+01:00 - e886fa6 - Nicolas : revert(webapp): plus de --host-resolver-rules ; avertissement de lenteur des cibles injoignables (parcours/) dans link-check.ts
+2026-10-28T14:51:25+01:00 - ec995a4 - Nicolas : refactor(webapp): dossier parcours/ (catalogue, détail de démarche, listes d'étapes : zones configurées par l'admin, liens externes), notifications.usage webapp retiré
+2026-10-28T14:51:25+01:00 - 9f4f4f1 - Nicolas : perf(suivi): retourJusquAPageSuivi ne tente plus browser.back() sur mobile (sans effet 5 fois sur 5 sur Android)
+2026-10-28T14:51:25+01:00 - 89c45bd - Nicolas : test(mobile): app arrêtée après chaque spec (afterSession) et mochaOpts.bail : plus de cascade après un échec, la spec suivante repart d'une app relancée
+2026-10-28T14:51:25+01:00 - 6e10479 - Nicolas : refactor(ios): plus de terminate en onComplete (afterSession a déjà terminé l'app ; évite un avertissement « found nothing to terminate »)
+2026-10-28T14:51:25+01:00 - 4ccdc1d - Nicolas : refactor(mobile): onboarding, un seul tour de sonde (une bascule WebView) ; sélecteur d'environnement et écran natif seul reconnus par waitForFirstScreen
+2026-10-28T14:51:25+01:00 - 2a1df43 - Nicolas : perf(spa): checkboxStates en un seul execute (13 cases : 39 requêtes WebDriver -> 1)
+2026-10-28T14:51:25+01:00 - 2a16a4a - Nicolas : fix(suivi): message de retourJusquAPageSuivi exact sur mobile (aucun retour arrière tenté)
+2026-10-28T14:51:25+01:00 - 12566dc - Nicolas : docs(contributing): app arrêtée après chaque spec mobile, mochaOpts.bail
+2026-10-28T14:36:11+01:00 - 708c258 - Nicolas : perf(webapp): hôtes réseau privé résolus en échec immédiat (--host-resolver-rules) ; profil Chrome supprimé après une spec en échec
+2026-10-28T11:17:35+01:00 - 5e63ed1 - Nicolas : test(mobile): demarches-retour-accueil retiré (scénario à usage unique qui ne servait qu'à éprouver le correctif de getAppToStartingState)
+2026-10-28T11:05:46+01:00 - 175c341 - Nicolas : fix(session): getAppToStartingState remplace la page hors SPA par la racine (location.replace) ; scénario demarches-retour-accueil
+2026-10-28T10:59:56+01:00 - 250a0a8 - Nicolas : fix(session): getAppToStartingState recharge la racine quand la WebView est sur une page serveur du backend hors de la SPA (cible d'un lien de démarche)
+2026-10-28T10:57:43+01:00 - 5fc65b0 - Nicolas : build(appium): drivers uiautomator2 et xcuitest en devDependencies (npm ci suffit), script appium:install et étape CI supprimés
+2026-10-28T10:49:43+01:00 - 1535927 - Nicolas : refactor(appium): appium:install en commandes simples dans package.json (uninstall ignoré puis install), scripts/appium-drivers.mjs supprimé
+2026-10-28T10:36:22+01:00 - f049cf5 - Nicolas : refactor(appium): APPIUM_HOME, just install et install-appium-drivers retirés (mode projet d'Appium, node_modules/)
+2026-10-28T10:36:07+01:00 - a2e1e5f - Nicolas : feat(appium): npm run appium:install = uninstall puis install des drivers aux versions figées (script unique, package.json/lock restaurés)
+2026-10-28T10:35:00+01:00 - 1ed5d20 - Nicolas : chore(gitignore): .env* ignorés sauf .env (gabarit suivi)
+2026-10-28T10:27:37+01:00 - 78d8f13 - Nicolas : docs(env): corrige les noms issus du renommage (.env.<cible> : .env.staging, .env.preprod ; fichier historique .env.local.staging dans la procédure)
+2026-10-28T10:27:17+01:00 - 0b70530 - Nicolas : refactor(env): fichier d'environnement par défaut .env.staging (au lieu de .env.local), .env.* ignoré par git
+2026-10-28T08:17:34+01:00 - e934780 - Nicolas : test(webapp): test du push navigateur ignoré (service de push externe non fiable, push testés sur mobile)
+2026-10-28T08:17:34+01:00 - da4770e - Nicolas : fix(onboarding): passOnboardingToHome() dans les specs d'authentification (premier écran attendu 25 s, fermeture suivie de la disparition de la page)
+2026-10-28T08:17:34+01:00 - 7c529cb - Nicolas : fix(onboarding): attendre le premier écran (accueil ou onboarding) après login-callback au lieu de sonder 500 ms puis recharger la racine
+2026-10-28T08:17:34+01:00 - 17eec66 - Nicolas : fix(session): user_data (JWT des données utilisateur) masqué dans les URL journalisées
+2026-10-28T07:51:04+01:00 - bd31e8d - Nicolas : test(ios): charge simctl push alignée sur le push backend ; cause du tap sans page Notifications documentée (ReviewAppView staging)
+2026-10-27T21:52:06+01:00 - baa2af7 - Nicolas : docs: ANDROID_AVD déconseillé pour des runs répétés (démarrage à froid peu fiable, mesuré)
+2026-10-27T21:09:55+01:00 - d190ca5 - Nicolas : refactor(just): Appium démarre l'AVD (ANDROID_AVD) et le simulateur (IOS_UDID) ; start-*, stop-*, devices, _android-udid, _ios-device, _ios-udid supprimés ; --device remplacé par des variables d'environnement
+2026-10-27T21:07:46+01:00 - 4456272 - Nicolas : feat(android): appium:avd (ANDROID_AVD, ANDROID_AVD_ARGS) : Appium démarre l'AVD ; app désinstallée en fin de série quand l'AVD est lancé par Appium
+2026-10-27T20:33:57+01:00 - 255b49f - Nicolas : feat(webview): choix de la WebView visible aussi sur Android (document.visibilityState après switchToWebView) ; choix pur testé
+2026-10-27T20:31:46+01:00 - aa88d3b - Nicolas : chore: script push-notification supprimé (curl) ; références corrigées
+2026-10-27T20:31:46+01:00 - 6cc3fc4 - Nicolas : docs: mentions de la recette inexistante setup-claude retirées (commande directe npx skills add)
+2026-10-27T20:31:29+01:00 - d50c61a - Nicolas : docs: dernière référence à la recette webview
+2026-10-27T20:31:19+01:00 - 7fc56ca - Nicolas : chore: recette webview et webview-dump.js supprimées (obsolètes : les DevTools inspectent l'écran) ; références corrigées
+2026-10-27T18:39:59+01:00 - cc49b95 - Nicolas : docs: procédure (non exécutée) de retrait de .env.local.staging de l'historique ; références aux recettes supprimées corrigées
+2026-10-27T18:39:59+01:00 - cb9bf6f - Nicolas : refactor(just): failures-text et failures-ui deviennent des scripts TypeScript (idée 10) ; failures-text affiche le transcript.md de chaque trace
+2026-10-27T18:39:59+01:00 - a00b749 - Nicolas : refactor(apps): ANDROID_APP_PATH et IOS_APP_PATH, source unique du chemin des apps ; recettes build-android/build-ios supprimées
+2026-10-27T18:39:59+01:00 - 90d1f07 - Nicolas : feat(env): just -E choisit le fichier d'environnement, wdio ne relit plus .env.local sous just
+2026-10-27T18:39:59+01:00 - 70b8b6e - Nicolas : refactor(just): exploration en appels directs wdio session (idée 8) ; _explore supprimée, JS de webview dans src/scripts/webview-dump.js
+2026-10-27T18:39:59+01:00 - 6e8903c - Nicolas : fix(capabilities): appium:app paresseux (propriété remplaçable) ; recettes sans apostrophe dans le message de --device ; [doc] des recettes de la liste
+2026-10-27T18:39:59+01:00 - 6497f22 - Nicolas : refactor(just): recettes de test fines qui transmettent --suite/--spec à wdio ; recettes *-suite supprimées
+2026-10-27T18:39:59+01:00 - 4c5c284 - Nicolas : refactor(just): relais d'une ligne retirés (idée 9) : sessions, debug-android, debug-ios, _debug ; doctor, explore-export, explore-close, debug-webapp conservés
+2026-10-27T18:39:59+01:00 - 4afa5a8 - Nicolas : refactor(just): outillage allégé (idées 11 et 12) : check, check-deps, help, clean-install, upgrade, push-notification supprimées ; setup devient install
+2026-10-27T18:39:59+01:00 - 232b67a - Nicolas : docs(claude): variables d'apps et choix du fichier d'environnement (just -E)
+2026-10-27T18:37:40+01:00 - 761fca5 - Nicolas : test(mobile): notifications.usage : scénarios A (acceptées : push natif + centre) et B (refusées : pas de push, centre), délais mesurés
+2026-10-27T18:37:40+01:00 - 44edebb - Nicolas : fix(ios): WebView visible choisie parmi plusieurs et handle de la WebView choisie (le tap sur une notification ouvre une seconde WebView cachée)
+2026-10-27T18:37:40+01:00 - 35deb60 - Nicolas : feat(notifications): accepter/refuser depuis l'écran Paramètres d'AMI (Android, iOS), push natif déclenché/attendu/cliqué, absence de push
+2026-10-27T18:02:52+01:00 - 757b4a3 - Nicolas : chore(env): .env.local* ignoré par git, .env.local.staging n'est plus suivi
+2026-10-27T17:15:33+01:00 - 6ec101b - Nicolas : docs(just): recette list-suites retirée, les recettes *-suite renvoient à wdio.base.conf.ts
+2026-10-27T17:12:25+01:00 - 465e004 - Nicolas : docs(just): les recettes *-suite disent où sont définies les suites ; recette list-suites
+2026-10-27T17:00:16+01:00 - a3deca1 - Nicolas : docs(suites): la source de vérité des suites est wdio.base.conf.ts (appel natif `--suite`), note datée dans l'ADR d'intégration continue
+2026-10-27T16:59:26+01:00 - 5878d13 - Nicolas : ci(suites): descriptions des entrées (suite définie dans wdio.base.conf.ts), archives workflows-samples sur mobile_all/webapp_all
+2026-10-27T16:53:35+01:00 - 1a22834 - Nicolas : refactor(suites): suites natives WDIO (option `suites` de wdio.base.conf.ts), test-suites.ts et list-suite supprimés
+2026-10-27T16:39:27+01:00 - 1aae520 - Nicolas : docs(suites): tableau suite → déclencheur/usage, PR/merge/tag/hors CI, note datée dans l'ADR d'intégration continue
+2026-10-27T16:38:36+01:00 - f0e84cf - Nicolas : ci(e2e): exemples et défauts des suites à jour (short pour la mise au point, usage/all pour PR/merge/tag)
+2026-10-27T16:37:50+01:00 - c710de6 - Nicolas : refactor(suites): mobile_short/smoke/all et webapp_short/smoke/usage/all (suites CI et hors CI), anciennes suites supprimées
+2026-10-27T16:27:03+01:00 - 683b186 - Nicolas : test(mobile): deconnexion-reconnexion supprimé (doublon de profil-et-suppression-a-la-deconnexion)
+2026-10-27T16:20:32+01:00 - a8e6637 - Nicolas : test(mobile): profil.usage supprimé (doublon), profil-et-suppression-a-la-deconnexion valide la modification avant la déconnexion
+2026-10-27T16:20:00+01:00 - 8e9bd1a - Nicolas : test(suites): webapp_nonreg sans catalogue.parcours (modification de l'utilisateur)
+2026-10-27T15:51:12+01:00 - 65e3d86 - Nicolas : fix(webapp): reloadPage() recharge par browser.refresh() (BiDi : Cannot find context with specified id)
+2026-10-27T15:51:12+01:00 - 4e7051c - Nicolas : docs: références aux specs renommées, schéma <périmètre>.<catégorie>.test.ts dans CONTRIBUTING.md
+2026-10-27T15:51:12+01:00 - 3d72eed - Nicolas : refactor(tests): catégorie dans le nom des specs (<périmètre>.<catégorie>.test.ts : smoke, parcours, usage)
+2026-10-27T15:17:21+01:00 - cd7b911 - Nicolas : test(android): la notification système peut mettre jusqu'à 70 s : attente portée à 150 s (Mocha 240 s)
+2026-10-27T15:17:07+01:00 - 44fe333 - Nicolas : feat(android): port Appium, systemPort, chromedriverPort et chemin APK surchargeables (ANDROID_APPIUM_PORT…) pour un émulateur isolé
+2026-10-27T14:38:07+01:00 - 152976d - Nicolas : test: getAppToStartingState n'est plus appelé dans un after
+2026-10-27T13:47:27+01:00 - 0824b02 - Nicolas : fix(franceconnect): la sonde eIDAS native ne s'exécute plus hors iOS
+2026-10-27T12:03:00+01:00 - 9dd1bcd - Nicolas : docs(ios): ADR blocage WebKit — webviewConnectRetries (effet mesuré) et waitForIdleTimeout (sans effet)
+2026-10-27T12:02:51+01:00 - ec432b3 - Nicolas : refactor(ios): retire la capability appium:webkitResponseTimeout (absente du driver) et les commentaires qui la citaient
+2026-10-27T12:02:51+01:00 - d9af7dd - Nicolas : docs(ios): ADR des expériences sur le blocage WebKit/WDA (52 runs) et renvois
+2026-10-27T11:39:10+01:00 - 2545dd2 - Nicolas : fix(ios): dismissNativeSheet renvoie un booléen — adaptation du type dans la boucle d'onboarding
+2026-10-27T11:38:48+01:00 - d8e36e0 - Nicolas : perf(ios): page d'accueil de première connexion restée blanche -> rechargement de la racine après 3 s (8 s pour une page inconnue)
+2026-10-27T11:38:48+01:00 - 7849daa - Nicolas : perf(ios): démarches — quitter le Suivi (liste lourde) avant de sortir de la WebView, sans retour arrière inutile
+2026-10-27T11:38:48+01:00 - 66b9104 - Nicolas : chore(ios): IOS_WEBVIEW_RETRIES pour comparer webviewConnectRetries (3 par défaut)
+2026-10-27T11:38:48+01:00 - 5f1469a - Nicolas : perf(ios): attente de la mire eIDAS par l'arbre natif (6 s au plus), attente de WebView 25 s -> 15 s
+2026-10-27T11:38:48+01:00 - 490b0a8 - Nicolas : fix(ios): notifications — feuille native re-présentée après le tap de la bannière, et sortie immédiate si l'app revient sans page eIDAS
+2026-10-27T11:38:48+01:00 - 14dec90 - Nicolas : perf(ios): attentes de connexion FranceConnect réduites et constat de disparition de page par l'arbre natif
+2026-10-27T11:38:35+01:00 - 92f49c5 - Nicolas : feat(ios): port Appium (IOS_APPIUM_PORT) et port WDA (IOS_WDA_PORT) surchargeables pour un second simulateur
+2026-10-27T11:31:34+01:00 - f83f776 - Nicolas : ci(e2e): la description de la composite e2e-pr-comment ne contient plus d'expression vide
+2026-10-27T11:28:26+01:00 - bd600f8 - Nicolas : test(auth): retire les hooks after qui rouvraient une session
+2026-10-27T11:13:26+01:00 - 395868a - Nicolas : feat(auth): l'authentification FranceConnect n'est refaite que si aucune session n'est ouverte ; aucun test ne termine déconnecté
+2026-10-27T11:03:02+01:00 - 6abcb10 - Nicolas : fix(ios): acceptation des notifications à l'onboarding — feuille native d'abord, route SPA vide rechargée
+2026-10-27T10:48:14+01:00 - 3ba428d - Nicolas : ci(e2e): secrets dinum-dn dans l'environnement des tests, clé d'isolation calculée une seule fois (job prepare)
+2026-10-27T10:38:14+01:00 - 4619e19 - Nicolas : docs: tableau PR/merge/tag (PR sur appareil ancien, merge sur appareil récent)
+2026-10-27T10:27:43+01:00 - a66008e - Nicolas : ci: jeton GitHub App ami-reviewapps (actions:read sur ami-app-android) pour l'APK du dernier tag, iOS réduit à un point d'extension inactif, tableau PR/merge/tag et demande administrative
+2026-10-27T10:13:33+01:00 - dc57124 - Nicolas : ci: comment_pr_number (PR commentée et clé des artefacts distinctes de pr_number, pour les tests Android lancés sur staging)
+2026-10-27T10:13:33+01:00 - d4e3e86 - Nicolas : docs: suites en listes plates, JUnit enrichi, reporting CI (check + commentaire unique), note ADR de mise à jour WDIO 10
+2026-10-27T10:13:33+01:00 - d429a81 - Nicolas : ci: workflow-e2e-main (artefact par plateforme, job report : check mikepenz + commentaire de PR unique), allure-cleanup renommé e2e-artifacts-cleanup, actions épinglées par SHA, permissions minimales, entrées via env
+2026-10-27T10:13:33+01:00 - 98c7485 - Nicolas : ci: suite mobile_nonreg, APK du dernier tag d'ami-app-android (apk_source), étiquette de rapport (plusieurs runs par PR)
+2026-10-27T10:13:32+01:00 - a5823c0 - Nicolas : feat(ci): script e2e-comment.mjs (Markdown du commentaire de PR, échappement strict, taille bornée) et action composite e2e-pr-comment (commentaire unique par marqueur)
+2026-10-27T10:13:32+01:00 - 8e1bf05 - Nicolas : feat(suites): suites en liste plate de specs (un worker par spec comme --spec a --spec b), préfixes mobile_/webapp_, mobile_ci, webapp_short, just list-suite
+2026-10-27T10:13:32+01:00 - 85dcd44 - Nicolas : docs(sentry): environnements des review apps absents du dépôt backend, filtre inchangé (non confirmé)
+2026-10-27T10:13:32+01:00 - 00715ea - Nicolas : feat(junit): propriétés par testcase (platform, ami_env, outcome, tentatives, dump_path, context_kind, sentry_url) jointes aux dumps d'échec du run
+2026-10-27T09:45:45+01:00 - 42380a7 - Nicolas : docs: WebdriverIO 10 (et non v9) dans README/CLAUDE.md ; piège des liens symboliques des pilotes Appium
+2026-10-27T09:45:42+01:00 - 23739ff - Nicolas : docs: règle specFileRetries (0 par défaut et en mesure, 1 en CI, WDIO_SPEC_FILE_RETRIES/--specFileRetries pour forcer)
+2026-10-27T09:45:15+01:00 - ce7b8c3 - Nicolas : feat(config): specFileRetries piloté par l'environnement (0 par défaut et en mesure, 1 en CI, WDIO_SPEC_FILE_RETRIES pour forcer)
+2026-10-27T08:52:38+01:00 - 935d45f - Nicolas : chore(deps): appium 3.7.0 -> 3.8.0, webdriverio/@wdio/{cli,local-runner,appium-service} 10.0.1 -> 10.0.2, eslint 10.9.1 -> 10.12.0, typescript-eslint 8.71.1 -> 8.71.2
+2026-10-27T08:52:38+01:00 - 369d9b1 - Nicolas : chore(deps): drivers Appium uiautomator2 8.7.0 -> 8.7.2, xcuitest 12.12.4 -> 12.21.0
+2026-10-27T08:04:48+01:00 - dea45be - Nicolas : docs(webdriverio-skills): helpers périmés (notifications-api, tl) remplacés par partner-api et describeCurrentPage
+2026-10-27T08:04:48+01:00 - 7688882 - Nicolas : docs: notes historiques (ADR sélection, migration WDIO 10, présentation) et modèle partner-api à jour
+2026-10-27T08:04:47+01:00 - 48b3e58 - Nicolas : docs(contributing): namespace de log api = helpers/partner-api
+2026-10-27T01:14:32+01:00 - 090c74b - Nicolas : docs(references): chemins helpers de l'analyse du site
+2026-10-27T01:14:27+01:00 - 0df386a - Nicolas : docs(helpers): chemins des helpers regroupés par périmètre (CLAUDE, README, CONTRIBUTING, skills, tutoriel)
+2026-10-27T01:13:42+01:00 - 4822e4d - Nicolas : refactor(helpers): groupe les helpers mobiles dans src/helpers/mobile/
+2026-10-27T01:13:39+01:00 - 0fa4037 - Nicolas : refactor(helpers): groupe les helpers propres à la webapp dans src/helpers/webapp/
+2026-10-27T01:13:36+01:00 - 07e9fe6 - Nicolas : refactor(helpers): groupe les aides DOM de la SPA dans src/helpers/spa/
+2026-10-27T01:13:34+01:00 - ab8e900 - Nicolas : refactor(helpers): groupe les helpers communs dans src/helpers/common/
+2026-10-27T01:13:24+01:00 - 63adfb1 - Nicolas : refactor(helpers): groupe les helpers de reporting dans src/helpers/reporting/
+2026-10-26T23:21:47+01:00 - d946c03 - Nicolas : refactor(pages): retire l'enveloppe inWebContext interne des Page Objects dont tous les appelants mobiles enveloppent
+2026-10-26T23:21:47+01:00 - d00ea8d - Nicolas : test(mobile): chaque appelant mobile pose son inWebContext (accueil, restore, logout, goToRoute)
+2026-10-26T23:21:47+01:00 - 26b4440 - Nicolas : refactor(helpers): retire l'enveloppe inWebContext interne des aides spa/webview (l'appelant mobile enveloppe)
+2026-10-26T23:16:05+01:00 - 28f2f31 - Nicolas : test(android): notifications attendent l'accueil affiché avant d'ouvrir l'inbox ou Préférences
+2026-10-26T21:21:32+01:00 - 5555554 - Nicolas : fix(ios): push simulé : tap de bannière robuste, lecture de l'autorisation, inbox quittée avant le test suivant
+2026-10-26T21:21:23+01:00 - c10a7aa - Nicolas : test(android): notification push constatée côté système (dumpsys), volet cliqué, réglage natif des notifications
+2026-10-26T21:20:39+01:00 - d66e727 - Nicolas : refactor(franceconnect): retire la gestion d'erreur des logins non ASCII (pas de restriction)
+2026-10-26T21:20:39+01:00 - 725dfa4 - Nicolas : test(webapp): S6.3 D1 prime refusée jamais reçue, D1 bis sans lien constatée dans le détail
+2026-10-26T21:20:39+01:00 - 057772e - Nicolas : test(webapp): retire le test des logins non ASCII (pas de restriction à gérer)
+2026-10-26T21:01:03+01:00 - 1302e7e - Nicolas : test(ios): notification push simulée par xcrun simctl push, bannière cliquée, app_url vérifié
+2026-10-26T21:01:02+01:00 - 49c3838 - Nicolas : feat(ios): l'onboarding des notifications est accepté (Activer puis Autoriser) au lieu d'être différé
+2026-10-26T20:43:33+01:00 - 971faf5 - Nicolas : test(webapp): authentification avec des logins non ASCII (nom_composé, prénom_composé, carac_speciaux, naissance_Algérie)
+2026-10-26T20:39:23+01:00 - ea68380 - Nicolas : fix(webapp): agenda aligné sur le front #1430 (Ouvrir les options / Masquer / Fermer, nouveaux data-testid)
+2026-10-26T20:29:45+01:00 - b399491 - Nicolas : feat(android): autorise adb_shell (mobile: shell) dans le service Appium
+2026-10-26T18:55:59+01:00 - 3318502 - Nicolas : docs(contributing): wdio.base.conf.ts est à specFileRetries 1 (et non 0)
+2026-10-26T18:55:04+01:00 - f08569a - Nicolas : docs(modèle): modèle applicatif à jour au 2026-10-26 (profil en hub, zones/commune, diff de baseline)
+2026-10-26T18:55:04+01:00 - e404bbc - Nicolas : fix(sentry): lien vers la page de la trace, filtré sur les environnements Preprod/Staging/Prod
+2026-10-26T18:55:04+01:00 - c3a22b1 - Nicolas : test(config): specFileRetries à 1, un fichier de spec en échec est rejoué une fois
+2026-10-26T18:55:04+01:00 - b84e49c - Nicolas : refactor(justfile): failures devient failures-text, trace devient failures-ui (cible, filtre, runs dans test-results/traces)
+2026-10-26T18:55:04+01:00 - 8059035 - Nicolas : docs(skills): just n'est plus obligatoire pour un agent (cache projet aligné sur CLAUDE.md)
+2026-10-26T18:55:04+01:00 - 69497a0 - Nicolas : test(webapp): squelette de la recherche d'une commune (it.skip, /preferences/zones/city)
+2026-10-26T18:55:04+01:00 - 4ff096b - Nicolas : fix(mobile): demarches et profile exécutent leurs étapes dans platform().inWebContext
+2026-10-26T18:55:04+01:00 - 0ddb2c5 - Nicolas : docs(process): synthèse de la réunion du 10-06 et campagne de stabilité du 2026-10-15
+2026-10-26T18:54:49+01:00 - 0c4ffa9 - Nicolas : feat(preprod): AMI_ENV=preprod cible la préproduction (SPA, API, build mobile, justfile)
+2026-10-26T18:50:24+01:00 - cc4475b - Nicolas : feat(partner-api): le partenaire choisit réellement les identifiants (NOTIF_PARTNER_<SLUG>_ID/_SECRET)
+2026-10-26T18:50:24+01:00 - c7ae0c5 - Nicolas : test(consentement): S5, S5.2 et S6.3 avec un partenaire à consentement activé (dinum-dn), refus 404 asserté
+2026-10-26T18:50:24+01:00 - 7054088 - Nicolas : test(notifications): inbox dans tous les cas, notification système si le push est consenti (web, Android ; iOS sauté)
+2026-10-26T18:46:23+01:00 - 2ea1602 - Nicolas : fix(tests): profile_deletion_at_logout pose le délai de 180 s au niveau du describe (inopérant dans le hook)
+2026-10-26T18:40:01+01:00 - fcbbaf7 - Nicolas : refactor(fc-hash): décommissionne la v1, seule la formule v2 reste
+2026-10-26T18:40:01+01:00 - 2381c68 - Nicolas : feat(franceconnect): erreur explicite si la saisie d'un login non ASCII échoue
+2026-10-26T18:39:46+01:00 - f38e564 - Nicolas : refactor(tests): authentication.test.ts déconnecte l'app dans before (une fois par spec)
+2026-10-26T18:39:46+01:00 - 287ef37 - Nicolas : feat(ios): build iOS par défaut = DerivedData Xcode (AMI-xcodegen-*), repli ../build, IOS_APP_PATH en surcharge
+2026-10-26T18:39:46+01:00 - 0bdd92d - Nicolas : fix(ios): getAppToStartingState ferme la feuille native « Activez les notifications » qui recouvre l'accueil
+2026-10-26T17:56:16+01:00 - b809e28 - Nicolas : refactor(consentement): consentement partenaire aux démarches distinct du réglage push global
+2026-10-26T17:55:59+01:00 - 9f73d51 - Nicolas : fix(webapp): openPlusMenu rejoue le clic tant que le dialogue n'est pas ouvert
+2026-10-26T17:55:50+01:00 - 7bfa0ed - Nicolas : feat(ios): IOS_APP_PATH surcharge le chemin de l'app iOS à installer
+2026-10-26T17:55:42+01:00 - 4fcd680 - Nicolas : fix(ios): session persistante → getAppToLoggedOutState(), dismiss() des notifications rejoué
+2026-10-26T17:55:27+01:00 - 0f07ad6 - Nicolas : refactor(tests): comptes de test FranceConnect fusionnés dans test-users.ts, fcHash calculé
+2026-10-26T17:55:01+01:00 - 559330e - Nicolas : fix(webapp): l'accordéon des archivés, déplié au chargement, n'est cliqué que s'il est replié
+2026-10-26T17:54:57+01:00 - 9959ac7 - Nicolas : fix(profil): Page Object adapté au profil en hub (/profile → /profile/identity, /profile/addresses)
+2026-10-26T17:54:41+01:00 - d158505 - Nicolas : test(webapp): S12 tolère l'hôte qualif injoignable avec `unreachableOk: 'réseau privé'`
+2026-10-26T17:54:28+01:00 - 015e4ea - Nicolas : perf(webapp): liens externes contrôlés en HTTP au lieu d'être chargés dans le navigateur
+2026-10-16T22:47:07+02:00 - 983d098 - Nicolas : fix(webapp): la config vidéo ne rejoue pas un test (specFileRetries à 0)
+2026-10-16T11:00:08+02:00 - f6f499a - Nicolas : docs(modèle): modèle de la surface de test à jour au 2026-10-15
+2026-10-16T10:59:03+02:00 - b1f32dd - Nicolas : feat(webapp): config DevTools vidéo et recettes just test-webvideo, clean-tests-data, failures complet
+2026-10-16T10:59:03+02:00 - 554ff98 - Nicolas : fix(tests): délais Mocha posés au niveau du describe
+2026-10-16T10:59:03+02:00 - 38da7e7 - Nicolas : docs(non-régression): index, environnements, backlog et décisions du 2026-10-15
+2026-10-16T10:59:03+02:00 - 0f3486c - Nicolas : feat(webapp): suites webapp_smoke et webapp_nonreg, session vierge pour la passkey, pageLoadStrategy eager
+2026-10-16T10:58:58+02:00 - 401155e - Nicolas : test(webapp): non-régression du détail de démarche, de la passkey et de la déconnexion FranceConnect
+2026-10-16T10:58:58+02:00 - 25791ac - Nicolas : test(webapp): non-régression des zones scolaires et de l'agenda (S7, S8, S10)
+2026-10-16T10:58:58+02:00 - 124290c - Nicolas : test(webapp): non-régression du catalogue, de l'aide et des listes d'étapes (S1, S2)
+2026-10-16T10:58:58+02:00 - 118bed0 - Nicolas : test(webapp): non-régression du consentement au suivi des démarches (S3 à S6)
+2026-10-16T10:58:53+02:00 - 5bf29d8 - Nicolas : feat(helpers): contrôle des liens externes, case à cocher et garde par environnement
+2026-10-15T12:04:20+02:00 - 8a6ffcb - Nicolas : fix(webapp): profil Chrome conservé d'une spec à l'autre en mode visible
+2026-10-15T12:04:20+02:00 - 727cf18 - Nicolas : fix(webapp): traces devtools coupées en mode visible (clignotement)
+2026-10-15T10:10:12+02:00 - b31a755 - Nicolas : fix(tests): la spec des notifications reste dans la WebView (blocage du service de trace sur iOS)
+2026-10-15T09:18:28+02:00 - 78aa260 - Nicolas : fix(tests): délais des specs mobiles qui font une ou deux connexions complètes
+2026-10-14T01:40:00+02:00 - 72e4fc7 - Nicolas : feat(platform): inWebContext vise une WebView par son titre
+2026-10-14T00:47:11+02:00 - 3516755 - Nicolas : refactor(platform): inWebContext réentrant d'après l'état réel du driver
+2026-10-13T20:33:51+02:00 - e483094 - Nicolas : refactor(helpers): suppression de dom-query.ts, documentation des sélecteurs natifs WDIO 10
+2026-10-13T20:21:48+02:00 - aaff412 - Nicolas : refactor(pages): login FranceConnect et sondes d'onboarding sur les sélecteurs natifs
+2026-10-13T19:36:02+02:00 - 71f5e6b - Nicolas : refactor(pages): profil, notifications, suivi, détail de démarche et aide-contact sur les sélecteurs natifs
+2026-10-13T18:54:32+02:00 - 28d3d13 - Nicolas : refactor(pages): primitives de spa.ts sur les sélecteurs natifs, pages agenda et services
+2026-10-13T18:29:23+02:00 - aa6785b - Nicolas : refactor(pages): NavigationPage et HomePage sur les sélecteurs natifs de WDIO 10
+2026-10-13T16:39:00+02:00 - 7f6890b - Nicolas : refactor(pages): Suivi et détail de démarche sans variables d'état ni re-emballage d'erreurs
+2026-10-13T16:39:00+02:00 - 0853429 - Nicolas : refactor(tests): ProfilePage.restore remplace les trois try/catch recopiés dans quatre after()
+2026-10-13T16:24:19+02:00 - 4332ec1 - Nicolas : refactor(pages): sondes par rôle à la place de driver.execute et location.hash
+2026-10-13T16:24:19+02:00 - 427d74b - Nicolas : refactor(tests): code mort supprimé, strict limité au picker, scrollIntoView du picker
+2026-10-13T16:24:19+02:00 - 3a21adc - Nicolas : refactor(platform): inWebContext réentrant, sondes hasRole et hasText
+2026-10-13T15:15:29+02:00 - c9e4f41 - Nicolas : docs(tutoriel): tutorial.test.ts autosuffisant, tutoriel réduit à la voie connectée par un test
+2026-10-13T10:04:10+02:00 - 2941d98 - Nicolas : refactor(api): module partner-api, publishEvent bas niveau et publishNotification/Demarche/DemarcheEnfant
+2026-10-13T09:20:46+02:00 - 7629ebf - Nicolas : refactor(tests): consentement explicite dans les scénarios, revokeConsent séparé
+2026-10-13T09:05:01+02:00 - fb943ec - Nicolas : fix(webapp): la spec d'authentification repart d'un profil Chrome vierge, profil conservé en headless seulement
+2026-10-13T09:05:01+02:00 - 4218b1c - Nicolas : refactor(tests): getAppToStartingState remplace goToHomeFromAnywhere, retrait du code mort
+2026-10-13T09:05:01+02:00 - 0d02f0c - Nicolas : docs(tutoriel): automatiser un scénario de test à la main, avec un squelette d'exploration
+2026-10-12T19:26:20+02:00 - f830af2 - Nicolas : fix(ios): désinstaller l'app en début de série pour que la première session installe le build courant
+2026-10-12T18:34:27+02:00 - ab2cf43 - Nicolas : feat(tests): l'app reste ouverte entre deux specs (Android, webapp), fermée en fin de série
+2026-10-12T18:34:27+02:00 - 1c19349 - Nicolas : feat(rapports): un seul rapport JUnit par run, un testsuite par fichier de spec
+2026-10-12T16:27:30+02:00 - f3bd061 - Nicolas : feat(rapports): traces DevTools par run, failure-dump réduit au contexte, just trace
+2026-10-12T11:45:50+02:00 - ffacb44 - Nicolas : refactor(just): --device remplace les variables d'environnement d'appareil, recette devices
+2026-10-09T15:30:28+02:00 - 1a73e7f - Nicolas : docs(just): la dernière ligne de commentaire de chaque recette est sa description
+2026-10-09T15:27:09+02:00 - 8073d8c - Nicolas : refactor(just): explore-<cible> et debug-<cible>, retrait de build-pdf/build-pptx, convention d'arguments
+2026-10-09T00:20:01+02:00 - fdc70e1 - Nicolas : fix(tests): zones scolaires = page /preferences/zones ; ZonesPage et test des Préférences
+2026-10-09T00:20:01+02:00 - f91fcea - Nicolas : refactor(rapports): retire Allure ; JUnit, étapes et dump systématique des échecs
+2026-10-09T00:20:01+02:00 - eb661cc - Nicolas : ci: résultats JUnit et dumps d'échec à la place d'Allure
+2026-10-09T00:20:01+02:00 - cfd8509 - Nicolas : feat(outils): wdio session remplace just inspect ; retrait de l'épinglage de Chrome
+2026-10-09T00:20:01+02:00 - b5e7de4 - Nicolas : docs(modèle): reconstruction du 2026-10-08, zones scolaires = page /preferences/zones
+2026-10-09T00:20:01+02:00 - 8c0802d - Nicolas : docs: rapports sans Allure, skill de flakiness sur JUnit et dumps d'échec
+2026-10-09T00:20:01+02:00 - 67011c6 - Nicolas : fix(tests): sélecteurs stricts de WDIO 10, onboarding iOS superposé, eslint-plugin-wdio
+2026-10-09T00:20:01+02:00 - 5fd6036 - Nicolas : build(wdio): migre vers WebdriverIO 10.0.1
+2026-10-09T00:20:01+02:00 - 4f31c26 - Nicolas : docs(migration): plan WDIO 10 et skill officiel wdio-v10-migration
+2026-10-09T00:20:01+02:00 - 41e98fe - Nicolas : docs(claude): les cibles just sont pour les humains ; la règle sur `await $()` passe dans ESLint
+2026-10-09T00:20:01+02:00 - 3cea154 - Nicolas : fix(rapports): retire les lignes brutes COMMAND/RESULT du JUnit
+2026-10-08T14:22:49+02:00 - d02af8b - Nicolas : refactor(tests): retire Testing Library, la navigation ne vérifie plus sa destination
+2026-10-08T14:22:49+02:00 - cf99502 - Nicolas : fix(tests): reset de début de test fondé sur le cookie de session, sonde native du login iOS
+2026-10-08T14:22:49+02:00 - ac6d76a - Nicolas : feat(webapp): couvre les nouveaux parcours de la webapp (accueil, agenda, services, suivi, profil…)
+2026-10-08T14:22:49+02:00 - 8c85767 - Nicolas : docs(claude): ajoute le rôle respectif des tests mobiles et de la webapp
+2026-10-08T14:22:49+02:00 - 66b14ed - Nicolas : refactor(tests): revue du code de test selon les guidelines de CONTRIBUTING.md
+2026-10-08T14:22:49+02:00 - 45e797c - Nicolas : refactor(mobile): les écarts de comportement entre appareils sont des anomalies signalées par un warn
+2026-10-08T14:22:49+02:00 - 346c8b7 - Nicolas : feat(webapp): épingle Chrome for Testing et fiabilise son installation
+2026-10-08T14:22:49+02:00 - 18343de - Nicolas : fix(mobile): adapte les tests Android/iOS à la nouvelle SPA et au nouveau parcours de connexion
+2026-10-01T16:48:24+02:00 - eac2e5a - Nicolas : docs(adr): ajoute la conclusion sur le monitoring prod et le repère Chrome/Android
+2026-10-01T16:48:24+02:00 - e437173 - Nicolas : fix(ci-android): appareil ancien API 29 -> 30 (WebView x86_64 CI reste figé sous 80 sur l'API 29)
+2026-10-01T16:48:24+02:00 - a42819c - Nicolas : essaie de capture de logs
+2026-10-01T16:48:24+02:00 - 99e39ac - Nicolas : fix(ci-android): appareil ancien API 28 -> 29, WebView nativement >= ES2020
+2026-10-01T16:48:24+02:00 - 34558f8 - Nicolas : docs(ci-android): documente l'abandon de la piste playstore, dump logcat complet
+2026-10-01T16:48:24+02:00 - 05b80f1 - Nicolas : debug(ci-android): active les logs Chromedriver détaillés pour la boucle SIGTERM
+2026-09-22T11:03:55+02:00 - 1f322e6 - Nicolas : essaie de tests google_apis sans playstore
+2026-09-21T18:18:24+02:00 - 4bc8ffd - Nicolas : essaie de tests en forçant le fournisseur de webview sur le même qu'en local.
+2026-09-21T17:59:23+02:00 - 3a15f0a - Nicolas : essaie de tests en forçant le fournisseur de webview sur le même qu'en local.
+2026-09-21T17:59:23+02:00 - 2f1ff40 - Nicolas : retire le test de modification d'adresse qui remonte vide de la caf tant que le cojur ne décide comment on remonte une adresse d'usager.
+2026-09-17T19:05:10+02:00 - 8a6431a - Nicolas : utilise du cache, c'est bien trop long
+2026-09-17T19:05:10+02:00 - 864d7ae - Nicolas : utilise une api récente en attendant.
+2026-09-17T18:24:46+02:00 - 6b78a02 - Nicolas : debug(ci-android): dump webview/chromium (dumpsys, logcat) sur l'AVD API 28
+2026-09-17T17:54:41+02:00 - 44481f8 - Nicolas : fix(ci-android): utilise google_apis_playstore pour l'AVD API 28
+2026-09-17T17:18:31+02:00 - df589e0 - Nicolas : range tous les logs flaky dans les dossiers flaky
+2026-09-17T17:18:31+02:00 - 87958b0 - Nicolas : fix(ci-android): fait passer l'install des drivers Appium par just (APPIUM_HOME cohérent)
+2026-09-17T17:18:31+02:00 - 667f7f1 - Nicolas : install les driver appium dans le meêm contexte que le lancement des tests (même var d'env)
+2026-09-17T14:48:23+02:00 - 627b783 - Nicolas : fix(ci-android): installe le driver Appium UiAutomator2 avant les tests E2E
+2026-09-17T14:48:23+02:00 - 095fb6a - Nicolas : exclut docs/articles/ des fichiers suivis
+2026-09-17T14:16:23+02:00 - f17072d - Nicolas : Revert "docs: ajoute la série d'articles sur les tests système E2E"
+2026-09-17T14:16:23+02:00 - f0b5175 - Nicolas : ajoute des scaffolds de test pour l'écart de couverture Préférences
+2026-09-17T14:16:23+02:00 - ee23adb - Nicolas : corrige le chemin d'import cassé vers onboarding.locators
+2026-09-17T14:16:23+02:00 - e5f5e45 - Nicolas : retire la référence cassée à docs/parcours_partenaires.md des scaffolds
+2026-09-17T14:16:23+02:00 - d17fa2b - Nicolas : chore(justfile): retire la cible setup-claude obsolète
+2026-09-17T14:16:23+02:00 - cf0641a - Nicolas : corrige isOnHomeRoute() pour vérifier le hash plutôt que le pathname
+2026-09-17T14:16:23+02:00 - ccdadc9 - Nicolas : chore(gitignore): exclut docs/articles/ des fichiers suivis
+2026-09-17T14:16:23+02:00 - c03bb7a - Nicolas : fix(profile): gère le cas d'une adresse originale vide (compte sans donnée Caf)
+2026-09-17T14:16:23+02:00 - bc7fe99 - Nicolas : chore: supprime une ligne vide superflue dans test-users.local.ts
+2026-09-17T14:16:23+02:00 - b591035 - Nicolas : feat(diagnostics): ajoute un indice de logs Scalingo aux échecs de Suivi
+2026-09-17T14:16:23+02:00 - aa43b20 - Nicolas : fix(ios): rafraîchit l'arbre d'accessibilité WKWebView après un redirect ou un reload
+2026-09-17T14:16:23+02:00 - a82c90f - Nicolas : rend isHomeVisible() honnête : vérifie le domaine et la salutation réelle
+2026-09-17T14:16:23+02:00 - a70c61d - Nicolas : fix(profile): attend le peuplement de la section adresse avant lecture
+2026-09-17T14:16:23+02:00 - 9a52fe0 - Nicolas : docs: ajoute la série d'articles sur les tests système E2E
+2026-09-17T14:16:23+02:00 - 9780f85 - Nicolas : exclut docs/articles/ des fichiers suivis
+2026-09-17T14:16:23+02:00 - 73f9faa - Nicolas : refactor(home): assertHomeVisible() lève une erreur au lieu de dupliquer le diagnostic chez les appelants
+2026-09-17T14:16:23+02:00 - 72ade78 - Nicolas : fix(notifications): contourne le WebSocket zombie iOS via un reload de secours
+2026-09-17T14:16:23+02:00 - 6e7cdc5 - Nicolas : fix(notifications): attend le montage réel de la page avant de rendre la main
+2026-09-17T14:16:23+02:00 - 55fe315 - Nicolas : fix(franceconnect): distingue l'erreur fournisseur FCP-LOW et fait un retour natif avant de la remonter
+2026-09-17T14:16:23+02:00 - 4b03ddc - Nicolas : Mises a jours des fc_hash
+2026-09-17T14:16:23+02:00 - 492c607 - Nicolas : feat: ajoute le skill analyzing-test-flakiness
+2026-09-17T14:16:23+02:00 - 4650fce - Nicolas : fix(franceconnect): distingue l'erreur technique FCP-LOW du formulaire credentials
+2026-09-17T14:16:23+02:00 - 4642e5f - Nicolas : correction de typos
+2026-09-17T14:16:23+02:00 - 3a41fb8 - Nicolas : ajoute des timeouts sur les appels fetch de notifications-api
+2026-09-17T14:16:23+02:00 - 35f2c25 - Nicolas : feat(passkey): gère l'écran de proposition de clé d'accès après FranceConnect
+2026-09-17T14:16:23+02:00 - 34a98d5 - Nicolas : ajoute le skill reconstructing-app-model et le cache projet WDIO
+2026-09-17T14:16:23+02:00 - 3214bc0 - Nicolas : notifications : corrige le commentaire désynchronisé et retire le reload
+2026-09-17T14:16:23+02:00 - 30ad62e - Nicolas : corrige le chemin du build iOS dans justfile et capabilities.ts
+2026-09-17T14:16:23+02:00 - 2e6ae17 - Nicolas : détecte les pages d'erreur techniques du sandbox FCP-LOW dans tapFranceConnect
+2026-09-17T14:16:23+02:00 - 2ab622e - Nicolas : fix(justfile): repli gracieux si Simulator.app est absent
+2026-09-17T14:16:23+02:00 - 2522728 - Nicolas : ajoute les types de retour explicites manquants (lint)
+2026-09-17T14:16:23+02:00 - 230a254 - Nicolas : fix(ios): découple la gestion Appium/simulateur du chemin et de la version macOS
+2026-09-17T14:16:23+02:00 - 18462cc - Nicolas : chore(deps): met à jour wdio/appium/eslint/typescript et automatise la mise à jour des drivers Appium
+2026-09-17T14:16:23+02:00 - 1765d97 - Nicolas : nettoie les locators FranceConnect/onboarding et consigne des preuves natives
+2026-09-17T14:16:23+02:00 - 153863e - Nicolas : feat(allure): ajoute les règles de classification erreur FranceConnect et notification WebSocket
+2026-09-17T14:16:23+02:00 - 114d175 - Nicolas : ajoute le modèle applicatif reconstruit (webapp + natif Android/iOS)
+2026-09-17T14:16:23+02:00 - 0b7fbea - Nicolas : docs: consigne la désynchronisation du modèle applicatif comme déclencheur de reconstructing-app-model
+2026-09-07T17:04:18+02:00 - e81a130 - Nicolas : passe la match de staging en inseneible à la casse
+2026-09-07T17:04:18+02:00 - 8a035a7 - Nicolas : corrige le chemin de téléchargement de l'APK Android dans e2e-android
+2026-09-07T16:19:58+02:00 - 4d93e01 - Nicolas : lance just dans le bon répertoire.,,
+2026-09-07T16:19:58+02:00 - 41e5a4f - Nicolas : corrige la création d'AVD pixel_8 en supprimant le cmdline-tools/latest obsolète
+2026-09-07T15:18:29+02:00 - 50f9148 - Nicolas : passe la commande allure en v3
+2026-09-07T15:18:29+02:00 - 3402d59 - Nicolas : ajoute la vérification et l'octroi du consentement partenaire côté API
+2026-09-07T15:18:29+02:00 - 12d7d75 - Nicolas : renomme authenticate() en getAppToStartingState() et lui intègre le consentement partenaire
+2026-09-07T10:18:44+02:00 - fb509a5 - Nicolas : recherche d'avdmanager
+2026-09-07T10:18:44+02:00 - db323e0 - Nicolas : limite le nombre de tours pour tenter l'authentification
+2026-09-07T10:18:44+02:00 - ba7ab49 - Nicolas : ajoute cmdline tools avec les bons devices.
 2026-09-02T16:47:19+02:00 - b599972 - Nicolas : make a target to generate result only so CI does not try to run a website and remove dead code on static website
-2026-09-02T16:47:19+02:00 - 03b9bba - Nicolas : on checkout une branche system-test de même nom que celle du repo source si elle existe, main sinon.
-2026-09-02T16:47:19+02:00 - 06986c4 - Nicolas : make justfile able to open github allure reports
 2026-09-02T16:47:19+02:00 - 516757d - Nicolas : retrait de l'attente de Scalingo, code mort depuis qu'on démarre après un déploiement en succès ou en l'absence de déploiement
 2026-09-02T16:47:19+02:00 - 4fc378f - Nicolas : ref_name ne sera utile que lorsque l'on souhaitera avoir des github action en build (staging et preprod) et en run (prod). code mort aujourd'hui
 2026-09-02T16:47:19+02:00 - 4b87849 - Nicolas : communication du nom de la branche en plus du numéro de PR
-2026-08-27T15:38:23+02:00 - 0e32b82 - Nicolas : Documente le découplage E2E/gate Scalingo par on: status dans l'ADR CI GitHub Actions
-2026-08-27T15:38:23+02:00 - 44f659a - Nicolas : Met à jour le sample notification-api.pull-request.yml pour le découplage e2e/Scalingo
-2026-08-27T15:38:23+02:00 - 562fed9 - Nicolas : Relève le timeout par défaut de wait-for-scalingo-status à 900s
-2026-08-27T15:38:23+02:00 - d8f7876 - Nicolas : Rend la restauration d'historique Allure tolérante à l'absence/l'expiration de l'artifact
-2026-08-27T15:38:23+02:00 - 8b926fe - Nicolas : Documente l'adoption d'Allure 3 dans l'ADR CI GitHub Actions
-2026-08-27T15:38:23+02:00 - 53fe4dc - Nicolas : Ajoute historique et isolation par PR au job Allure, promeut le cleanup en workflow actif
-2026-08-27T15:38:23+02:00 - cab27e9 - Nicolas : Enrichit les tests mobiles de métadonnées Allure (epic, story, tag)
+2026-09-02T16:47:19+02:00 - 39c52fc - Nicolas : essai de test android avec un apk buildé.
+2026-09-02T16:47:19+02:00 - 06986c4 - Nicolas : make justfile able to open github allure reports
+2026-09-02T16:47:19+02:00 - 03b9bba - Nicolas : on checkout une branche system-test de même nom que celle du repo source si elle existe, main sinon.
 2026-08-27T15:38:23+02:00 - fe148a8 - Nicolas : Migre l'outillage Allure vers Allure 3 (allure-action attend summary.json à la racine)
-2026-08-27T15:38:23+02:00 - d47f773 - Nicolas : l'access code est contourné en posant le cookie que le prompt aurait mis si il fonctionnait
-2026-08-27T15:38:23+02:00 - 892bb9b - Nicolas : l'access code est toujours flaky, je met des retry
-2026-08-27T15:38:23+02:00 - 545c8b7 - Nicolas : l'access code est toujours flaky, je ralenti les ré-essais
-2026-08-27T15:38:23+02:00 - 539c6ff - Nicolas : home page testait ce qu'il y a après les # en incluant le #...
-2026-08-27T15:38:23+02:00 - b18838d - Nicolas : Ne conditionne plus l'accueil au texte de bienvenue "Bonjour ..."
-2026-08-27T15:38:23+02:00 - d023c39 - Nicolas : Adapte les sélecteurs de la tuile "Suivi" : lien devenu bouton
-2026-08-27T15:38:23+02:00 - e8e6b6e - Nicolas : Désactive temporairement scrollIntoView sur le formulaire credentials FCP-LOW
-2026-08-27T15:38:23+02:00 - 72e30e7 - Nicolas : Tolère l'apostrophe typographique dans le matching de texte FR
-2026-08-27T15:38:23+02:00 - bd9bf57 - Nicolas : quelques refacto
-2026-08-27T15:38:23+02:00 - b45ee18 - Nicolas : quelques refacto
-2026-08-27T15:38:23+02:00 - a9ce3e0 - Nicolas : aligner la fenête chrome headless sur la taille de la SPA
-2026-08-27T15:38:23+02:00 - 608d99c - Nicolas : amélioration de logs.
-2026-08-27T15:38:23+02:00 - b90c261 - Nicolas : Pointe la bonne infra en webapp aussi...
 2026-08-27T15:38:23+02:00 - f6fb306 - Nicolas : target just pour règler un bug de téléchargement de chromedriver sur mac
-2026-08-27T15:38:23+02:00 - 247491c - Nicolas : retrait ou échappeemnt des \(\) et des quotes non matchées dans les echo du shell
-2026-08-27T15:38:23+02:00 - 56c3783 - Nicolas : retrait ou échappeemnt des \(\) dans les echo du shell
-2026-08-27T15:38:23+02:00 - 77afdc5 - Nicolas : config to skip scalingo on manual trigger
-2026-08-27T15:38:23+02:00 - 8a04417 - Nicolas : give debug command in logs.
 2026-08-27T15:38:23+02:00 - f17647c - Nicolas : give debug command in logs.
 2026-08-27T15:38:23+02:00 - ebbfbf3 - Nicolas : Do not fail when no deployements have been triggered
-2026-08-21T16:32:52+02:00 - 483dc97 - Nicolas : utiliser l'api github de voir le status du check de déploiement scalingo au lieu de demander à Scalingo
+2026-08-27T15:38:23+02:00 - e8e6b6e - Nicolas : Désactive temporairement scrollIntoView sur le formulaire credentials FCP-LOW
+2026-08-27T15:38:23+02:00 - d8f7876 - Nicolas : Rend la restauration d'historique Allure tolérante à l'absence/l'expiration de l'artifact
+2026-08-27T15:38:23+02:00 - d47f773 - Nicolas : l'access code est contourné en posant le cookie que le prompt aurait mis si il fonctionnait
+2026-08-27T15:38:23+02:00 - d023c39 - Nicolas : Adapte les sélecteurs de la tuile "Suivi" : lien devenu bouton
+2026-08-27T15:38:23+02:00 - cab27e9 - Nicolas : Enrichit les tests mobiles de métadonnées Allure (epic, story, tag)
+2026-08-27T15:38:23+02:00 - bd9bf57 - Nicolas : quelques refacto
+2026-08-27T15:38:23+02:00 - b90c261 - Nicolas : Pointe la bonne infra en webapp aussi...
+2026-08-27T15:38:23+02:00 - b45ee18 - Nicolas : quelques refacto
+2026-08-27T15:38:23+02:00 - b18838d - Nicolas : Ne conditionne plus l'accueil au texte de bienvenue "Bonjour ..."
+2026-08-27T15:38:23+02:00 - a9ce3e0 - Nicolas : aligner la fenête chrome headless sur la taille de la SPA
+2026-08-27T15:38:23+02:00 - 8b926fe - Nicolas : Documente l'adoption d'Allure 3 dans l'ADR CI GitHub Actions
+2026-08-27T15:38:23+02:00 - 8a04417 - Nicolas : give debug command in logs.
+2026-08-27T15:38:23+02:00 - 892bb9b - Nicolas : l'access code est toujours flaky, je met des retry
+2026-08-27T15:38:23+02:00 - 77afdc5 - Nicolas : config to skip scalingo on manual trigger
+2026-08-27T15:38:23+02:00 - 72e30e7 - Nicolas : Tolère l'apostrophe typographique dans le matching de texte FR
+2026-08-27T15:38:23+02:00 - 608d99c - Nicolas : amélioration de logs.
+2026-08-27T15:38:23+02:00 - 56c3783 - Nicolas : retrait ou échappeemnt des \(\) dans les echo du shell
+2026-08-27T15:38:23+02:00 - 562fed9 - Nicolas : Relève le timeout par défaut de wait-for-scalingo-status à 900s
+2026-08-27T15:38:23+02:00 - 545c8b7 - Nicolas : l'access code est toujours flaky, je ralenti les ré-essais
+2026-08-27T15:38:23+02:00 - 53fe4dc - Nicolas : Ajoute historique et isolation par PR au job Allure, promeut le cleanup en workflow actif
+2026-08-27T15:38:23+02:00 - 539c6ff - Nicolas : home page testait ce qu'il y a après les # en incluant le #...
+2026-08-27T15:38:23+02:00 - 44f659a - Nicolas : Met à jour le sample notification-api.pull-request.yml pour le découplage e2e/Scalingo
+2026-08-27T15:38:23+02:00 - 247491c - Nicolas : retrait ou échappeemnt des \(\) et des quotes non matchées dans les echo du shell
+2026-08-27T15:38:23+02:00 - 0e32b82 - Nicolas : Documente le découplage E2E/gate Scalingo par on: status dans l'ADR CI GitHub Actions
+2026-08-21T16:32:52+02:00 - e78abc9 - Nicolas : monte la version des actions github
 2026-08-21T16:32:52+02:00 - dbabd90 - Nicolas : eviter les faux positifs quand on vérifie qu'on est sur la page d'accueil
-2026-08-21T16:32:52+02:00 - 3b09da3 - Nicolas : re handle access code as it seem to appear late
-2026-08-21T16:32:52+02:00 - 7b50910 - Nicolas : re handle access code as it seem to appear late
-2026-08-21T16:32:52+02:00 - 3ad8859 - Nicolas : re handle access code as it seem to come again.
-2026-08-21T16:32:52+02:00 - 9b1d528 - Nicolas : make the test suite to run configurable
 2026-08-21T16:32:52+02:00 - d5fa184 - Nicolas : run tests on branch's environnement
 2026-08-21T16:32:52+02:00 - ac9c52d - Nicolas : try to report
-2026-08-21T16:32:52+02:00 - 95396f1 - Nicolas : try to report
-2026-08-21T16:32:52+02:00 - 2c2eacb - Nicolas : try to report
-2026-08-21T16:32:52+02:00 - 3ba9ba2 - Nicolas : make tests quick, now they work. and try to publish their results.
-2026-08-21T16:32:52+02:00 - 831ffea - Nicolas : wire more secrets
-2026-08-21T16:32:52+02:00 - 2f4343a - Nicolas : wire more secrets
-2026-08-21T16:32:52+02:00 - 5eea5a2 - Nicolas : wire secrets
-2026-08-21T16:32:52+02:00 - e78abc9 - Nicolas : monte la version des actions github
-2026-08-21T16:32:52+02:00 - 903383f - Nicolas : utilise les définitions de users
 2026-08-21T16:32:52+02:00 - a8f0d64 - Nicolas : utilise un nom de branche donné en paramètre
+2026-08-21T16:32:52+02:00 - 9b1d528 - Nicolas : make the test suite to run configurable
+2026-08-21T16:32:52+02:00 - 95396f1 - Nicolas : try to report
+2026-08-21T16:32:52+02:00 - 903383f - Nicolas : utilise les définitions de users
+2026-08-21T16:32:52+02:00 - 831ffea - Nicolas : wire more secrets
+2026-08-21T16:32:52+02:00 - 7b50910 - Nicolas : re handle access code as it seem to appear late
+2026-08-21T16:32:52+02:00 - 5eea5a2 - Nicolas : wire secrets
 2026-08-21T16:32:52+02:00 - 4ee7481 - Nicolas : try to run a webapp test suite
-2026-08-20T14:56:42+02:00 - e5567ad - Nicolas : make the test suite to run configurable
-2026-08-20T14:56:42+02:00 - 7f20350 - Nicolas : run tests on branch's environnement
-2026-08-20T14:56:42+02:00 - 9d7c768 - Nicolas : try to report
-2026-08-20T14:56:42+02:00 - 9dc4d33 - Nicolas : try to report
-2026-08-20T14:56:42+02:00 - 8e3bdf8 - Nicolas : try to report
-2026-08-20T14:56:42+02:00 - 7f1b245 - Nicolas : make tests quick, now they work. and try to publish their results.
-2026-08-20T14:56:42+02:00 - 8b92dd5 - Nicolas : wire more secrets
-2026-08-20T14:56:42+02:00 - 8c87249 - Nicolas : wire more secrets
-2026-08-20T14:56:42+02:00 - 940ba10 - Nicolas : Fix sélecteur FranceConnect webapp
-2026-08-20T14:56:42+02:00 - 0309d18 - Nicolas : webapp: gestion du popup de code d'accès
-2026-08-20T14:56:42+02:00 - 6931015 - Nicolas : wire secrets
+2026-08-21T16:32:52+02:00 - 483dc97 - Nicolas : utiliser l'api github de voir le status du check de déploiement scalingo au lieu de demander à Scalingo
+2026-08-21T16:32:52+02:00 - 3ba9ba2 - Nicolas : make tests quick, now they work. and try to publish their results.
+2026-08-21T16:32:52+02:00 - 3b09da3 - Nicolas : re handle access code as it seem to appear late
+2026-08-21T16:32:52+02:00 - 3ad8859 - Nicolas : re handle access code as it seem to come again.
+2026-08-21T16:32:52+02:00 - 2f4343a - Nicolas : wire more secrets
+2026-08-21T16:32:52+02:00 - 2c2eacb - Nicolas : try to report
 2026-08-20T14:56:42+02:00 - ee2219d - Nicolas : monte la version des actions github
-2026-08-20T14:56:42+02:00 - c451c05 - Nicolas : utilise les définitions de users
-2026-08-20T14:56:42+02:00 - 2cfb69f - Nicolas : utilise un nom de branche donné en paramètre
-2026-08-20T14:56:42+02:00 - cf99ace - Nicolas : try to run a webapp test suite
 2026-08-20T14:56:42+02:00 - e734c6d - Nicolas : try to run a webapp test suite
+2026-08-20T14:56:42+02:00 - e5567ad - Nicolas : make the test suite to run configurable
+2026-08-20T14:56:42+02:00 - cf99ace - Nicolas : try to run a webapp test suite
+2026-08-20T14:56:42+02:00 - c451c05 - Nicolas : utilise les définitions de users
+2026-08-20T14:56:42+02:00 - 9dc4d33 - Nicolas : try to report
+2026-08-20T14:56:42+02:00 - 9d7c768 - Nicolas : try to report
+2026-08-20T14:56:42+02:00 - 940ba10 - Nicolas : Fix sélecteur FranceConnect webapp
+2026-08-20T14:56:42+02:00 - 8e3bdf8 - Nicolas : try to report
+2026-08-20T14:56:42+02:00 - 8c87249 - Nicolas : wire more secrets
+2026-08-20T14:56:42+02:00 - 8b92dd5 - Nicolas : wire more secrets
+2026-08-20T14:56:42+02:00 - 7f20350 - Nicolas : run tests on branch's environnement
+2026-08-20T14:56:42+02:00 - 7f1b245 - Nicolas : make tests quick, now they work. and try to publish their results.
+2026-08-20T14:56:42+02:00 - 6931015 - Nicolas : wire secrets
+2026-08-20T14:56:42+02:00 - 2cfb69f - Nicolas : utilise un nom de branche donné en paramètre
+2026-08-20T14:56:42+02:00 - 0309d18 - Nicolas : webapp: gestion du popup de code d'accès
 2026-08-18T11:50:16+02:00 - 16642b5 - Nicolas : initial commit before going public

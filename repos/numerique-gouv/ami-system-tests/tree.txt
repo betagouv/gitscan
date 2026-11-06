@@ -4,6 +4,9 @@
 │   └── skills
 │       ├── analyze-website
 │       │   └── SKILL.md
+│       ├── analyzing-test-flakiness
+│       │   ├── SKILL.md
+│       │   └── analyze_flakiness.py
 │       ├── creating-test-structure
 │       │   └── SKILL.md
 │       ├── gathering-context
@@ -13,148 +16,218 @@
 │       ├── managing-project-customizations
 │       │   ├── SKILL.md
 │       │   └── custom-rules.template.md
+│       ├── reconstructing-app-model
+│       │   └── SKILL.md
 │       ├── running-webdriverio-tests
 │       │   └── SKILL.md
 │       ├── skipped-test-manager
 │       │   ├── SKILL.md
 │       │   └── skipped-tests-report.template.md
+│       ├── wdio-session
+│       │   └── SKILL.md
+│       ├── wdio-v10-migration
+│       │   └── SKILL.md
 │       └── writing-webdriverio-code
 │           └── SKILL.md
-├── .env
+├── .env.example
 ├── .github
 │   ├── actions
 │   │   ├── e2e-android
 │   │   │   └── action.yml
+│   │   ├── e2e-keys
+│   │   │   └── action.yml
+│   │   ├── e2e-pr-comment
+│   │   │   └── action.yml
 │   │   └── e2e-webapp
 │   │       └── action.yml
-│   ├── workflows
-│   │   ├── allure-cleanup.yml
-│   │   ├── workflow-e2e-ios.yml
-│   │   └── workflow-e2e-main.yml
-│   └── workflows-samples
-│       ├── android.yml
-│       ├── ios.yml
-│       ├── notification-api.pull-request.yml
-│       ├── system-tests-E2E.yml
-│       └── webapp.yml
+│   ├── dependabot.yml
+│   ├── scripts
+│   │   ├── e2e-comment.mjs
+│   │   └── e2e-comment.test.mjs
+│   └── workflows
+│       ├── e2e-artifacts-cleanup.yml
+│       ├── validation-depot.yml
+│       └── workflow-e2e-main.yml
 ├── .gitignore
 ├── .mcp.json
+├── .nvmrc
+├── .webdriverio-skills
+│   ├── custom-rules.md
+│   ├── health-recommendations.md
+│   ├── project-context.json
+│   ├── project-context.md
+│   ├── website-analysis.json
+│   └── website-analysis.md
 ├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── README.md
-├── allurerc.mjs
 ├── docs
-│   ├── adr
-│   │   ├── 2026-06-04-Outils-tests-E2E.md
-│   │   ├── 2026-07-09-Strategie-de-selection-des-elements.md
-│   │   ├── 2026-08-04-Integration-continue-Github-Actions.md
-│   │   └── outils E2E
-│   │       ├── Maestro_vs_WDIO.md
-│   │       ├── maestro
-│   │       │   ├── CONTRIBUTING.md
-│   │       │   ├── README.md
-│   │       │   └── guidelines
-│   │       │       ├── inputNonAsciiFails.md
-│   │       │       ├── port_tcp_701_closed.md
-│   │       │       └── textVisibleButNotFound.md
-│   │       └── playwright
-│   │           └── README.md
-│   └── presentation
-│       ├── .gitignore
-│       ├── assets
-│       │   ├── allure_report.png
-│       │   ├── démo 2026 06 04 test E2E avec Webdriver.mp4
-│       │   ├── maestro-launch.yaml
-│       │   ├── maestro-vanilla.yaml
-│       │   ├── wdio-page.ts
-│       │   └── wdio-test.ts
-│       ├── make-pptx.py
-│       ├── slides-equipe.typ
-│       └── slides.typ
+│   └── adr
+│       ├── 2026-06-04-Outils-tests-E2E.md
+│       ├── 2026-07-09-Strategie-de-selection-des-elements.md
+│       ├── 2026-08-04-Integration-continue-Github-Actions.md
+│       ├── 2026-09-22-Chromedriver-legacy-webview-android-ancien.md
+│       └── outils E2E
+│           ├── Maestro_vs_WDIO.md
+│           ├── maestro
+│           │   ├── CONTRIBUTING.md
+│           │   ├── README.md
+│           │   └── guidelines
+│           │       ├── inputNonAsciiFails.md
+│           │       ├── port_tcp_701_closed.md
+│           │       └── textVisibleButNotFound.md
+│           └── playwright
+│               └── README.md
 ├── eslint.config.mjs
 ├── justfile
 ├── package-lock.json
 ├── package.json
+├── references
+│   └── website-analysis
+│       └── ami-back-staging.osc-fr1.scalingo.io
+│           ├── website-analysis.json
+│           ├── website-analysis.md
+│           └── website-diff.md
 ├── src
 │   ├── driver
 │   │   └── capabilities.ts
 │   ├── helpers
-│   │   ├── access-code.ts
-│   │   ├── environment.ts
-│   │   ├── inspect.ts
-│   │   ├── notifications-api.ts
-│   │   ├── repl.ts
-│   │   ├── test-users.local.example.ts
-│   │   ├── test-users.local.ts
-│   │   ├── test-users.ts
-│   │   ├── traced.ts
-│   │   └── webview.ts
+│   │   ├── common
+│   │   │   ├── environment.ts
+│   │   │   ├── fc-hash.ts
+│   │   │   ├── first-screen.test.ts
+│   │   │   ├── first-screen.ts
+│   │   │   ├── pick-locators.test.ts
+│   │   │   ├── pick-locators.ts
+│   │   │   ├── session.ts
+│   │   │   └── test-users.ts
+│   │   ├── mobile
+│   │   │   ├── android-notifications.ts
+│   │   │   ├── device-app.ts
+│   │   │   ├── ios-notifications.ts
+│   │   │   └── native-ax.ts
+│   │   ├── partner-api
+│   │   │   ├── client.ts
+│   │   │   ├── consent.ts
+│   │   │   ├── event.ts
+│   │   │   ├── index.ts
+│   │   │   └── publish.ts
+│   │   ├── reporting
+│   │   │   ├── failure-dump.ts
+│   │   │   ├── junit-clean.ts
+│   │   │   ├── junit-join.test.ts
+│   │   │   ├── junit-join.ts
+│   │   │   ├── report.ts
+│   │   │   ├── run-dir.test.ts
+│   │   │   ├── run-dir.ts
+│   │   │   ├── sentry.ts
+│   │   │   ├── trace-redact.ts
+│   │   │   └── traced.ts
+│   │   ├── spa
+│   │   │   ├── selectors.ts
+│   │   │   ├── spa.ts
+│   │   │   ├── webview-choice.test.ts
+│   │   │   └── webview-choice.ts
+│   │   └── webapp
+│   │       ├── access-code.ts
+│   │       └── link-check.ts
 │   ├── pages
+│   │   ├── agenda.page.ts
+│   │   ├── aide-contact.page.ts
 │   │   ├── authenticate.process.ts
+│   │   ├── consents.process.ts
 │   │   ├── demarche-detail.page.ts
+│   │   ├── error.page.ts
 │   │   ├── franceconnect
 │   │   │   ├── environment-picker.page.ts
 │   │   │   ├── franceconnect-credentials.page.ts
+│   │   │   ├── franceconnect-demo-sp.page.ts
 │   │   │   ├── franceconnect-eidas.page.ts
 │   │   │   └── franceconnect-mire.page.ts
 │   │   ├── home.page.ts
 │   │   ├── locators
+│   │   │   ├── agenda.locators.ts
+│   │   │   ├── aide-contact.locators.ts
+│   │   │   ├── authenticate.locators.ts
 │   │   │   ├── demarche-detail.locators.ts
 │   │   │   ├── franceconnect
 │   │   │   │   ├── environment-picker.locators.ts
 │   │   │   │   ├── franceconnect-credentials.locators.ts
+│   │   │   │   ├── franceconnect-demo-sp.locators.ts
 │   │   │   │   ├── franceconnect-eidas.locators.ts
 │   │   │   │   └── franceconnect-mire.locators.ts
 │   │   │   ├── home.locators.ts
+│   │   │   ├── navigation.locators.ts
 │   │   │   ├── notifications.locators.ts
 │   │   │   ├── onboarding-notifications.locators.ts
-│   │   │   ├── onboarding.locators.ts
+│   │   │   ├── onboarding-passkey.locators.ts
+│   │   │   ├── onboarding-zones.locators.ts
+│   │   │   ├── preferences.locators.ts
 │   │   │   ├── profile.locators.ts
-│   │   │   └── suivi-demarches.locators.ts
+│   │   │   ├── service-public.locators.ts
+│   │   │   ├── services.locators.ts
+│   │   │   ├── steps-list.locators.ts
+│   │   │   ├── suivi-demarches.locators.ts
+│   │   │   ├── system-notifications.locators.ts
+│   │   │   ├── types.ts
+│   │   │   └── zones.locators.ts
+│   │   ├── navigation.page.ts
 │   │   ├── notifications.page.ts
 │   │   ├── onboarding-notifications.page.ts
+│   │   ├── onboarding-passkey.page.ts
+│   │   ├── onboarding-zones.page.ts
+│   │   ├── preferences.page.ts
 │   │   ├── profile.page.ts
-│   │   └── suivi-demarches.page.ts
+│   │   ├── service-public.page.ts
+│   │   ├── services.page.ts
+│   │   ├── steps-list.page.ts
+│   │   ├── suivi-demarches.page.ts
+│   │   ├── system-notifications.page.ts
+│   │   └── zones.page.ts
 │   ├── platform
 │   │   ├── appium.adapter.ts
 │   │   ├── browser.adapter.ts
 │   │   ├── index.ts
 │   │   └── types.ts
 │   ├── scripts
-│   │   ├── inspect-webview.ts
-│   │   └── push-notification.ts
+│   │   ├── failures-text.ts
+│   │   └── failures-ui.ts
 │   └── tests
 │       ├── mobile
-│       │   ├── authentication.test.ts
-│       │   ├── demarches.test.ts
-│       │   ├── login_logout_login.test.ts
-│       │   ├── notifications.test.ts
-│       │   ├── profile.test.ts
-│       │   └── profile_deletion_at_logout.test.ts
-│       ├── next
-│       │   ├── administration_partenaire
-│       │   │   ├── acces-espace-partenaire.test.ts
-│       │   │   ├── consultation-statistiques.test.ts
-│       │   │   ├── notifications-unitaires.test.ts
-│       │   │   ├── rgpd.test.ts
-│       │   │   └── roles.test.ts
-│       │   ├── demarches_integrees
-│       │   │   ├── catalogue.test.ts
-│       │   │   ├── franceconnexion-directe.test.ts
-│       │   │   ├── lancement-webview.test.ts
-│       │   │   ├── preremplissage.test.ts
-│       │   │   ├── recherche-generique.test.ts
-│       │   │   └── retour-demarche.test.ts
-│       │   └── publications_partenaires
-│       │       ├── api-notification-entrante.test.ts
-│       │       ├── diffusion-terminal.test.ts
-│       │       └── historique-suivi.test.ts
+│       │   ├── authentification.smoke.test.ts
+│       │   ├── notifications.usage.test.ts
+│       │   └── profil-et-suppression-a-la-deconnexion.usage.test.ts
+│       ├── tutorial
+│       │   ├── automatiser-un-scenario-a-la-main.md
+│       │   └── empty-test.tutorial.test.ts
 │       └── webapp
-│           └── .gitkeep
-├── test-suites.ts
+│           ├── .gitkeep
+│           ├── accueil.smoke.test.ts
+│           ├── agenda.parcours.test.ts
+│           ├── aide-contact.parcours.test.ts
+│           ├── authentification.smoke.test.ts
+│           ├── demarches-cycle-de-vie.usage.test.ts
+│           ├── erreurs.parcours.test.ts
+│           ├── nonreg
+│           │   ├── agenda.usage.test.ts
+│           │   ├── connexion-silencieuse.usage.test.ts
+│           │   ├── consentement-demarches.usage.test.ts
+│           │   ├── consentement.usage.test.ts
+│           │   ├── deconnexion-fc.usage.test.ts
+│           │   ├── demarche-detail.usage.test.ts
+│           │   ├── zones-agenda.usage.test.ts
+│           │   └── zones-onboarding.usage.test.ts
+│           ├── parcours
+│           │   ├── catalogue.parcours.test.ts
+│           │   ├── liste-etapes.parcours.test.ts
+│           │   └── moments-de-vie.parcours.test.ts
+│           ├── preferences.parcours.test.ts
+│           └── services.parcours.test.ts
 ├── tsconfig.json
 ├── wdio.android.conf.ts
 ├── wdio.base.conf.ts
 ├── wdio.ios.conf.ts
-└── wdio.webapp.conf.ts
-41 directories, 118 files
+├── wdio.webapp.conf.ts
+├── wdio.webapp.with_video.conf.ts
+└── wdio.webapp.with_video.ffmpeg.sh
+54 directories, 178 files

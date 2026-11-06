@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/numerique-gouv/ami-system-tests",
   "name": "ami-system-tests",
-  "description": "Suite de tests de bout en bout (E2E) pour l'application AMI, couvrant les plateformes mobiles (iOS et Android) et la webapp. Elle valide les parcours utilisateurs critiques tels que l'authentification FranceConnect et les notifications push.",
+  "description": "Ce dépôt contient les tests de bout en bout (E2E) pour l'application AMI, couvrant les plateformes mobiles (iOS et Android) et la webapp. Il assure la validation des fonctionnalités critiques telles que l'authentification FranceConnect, les notifications et les démarches.",
   "language": "TypeScript",
   "features": [
     "Tests & QA"
@@ -11,9 +11,8 @@
     "WebdriverIO",
     "Appium",
     "TypeScript",
-    "Testing Library",
-    "Allure",
-    "Mocha"
+    "Mocha",
+    "Allure 3"
   ],
   "components": [
     "Tests",
@@ -23,29 +22,23 @@
   ],
   "auth": {
     "methods": [
-      "none"
+      "sso"
     ],
-    "providers": []
+    "providers": [
+      "FranceConnect"
+    ]
   },
-  "tests": "WebdriverIO v9, Appium 3, Testing Library, Mocha, Allure",
+  "tests": "WebdriverIO 10, Appium 3, Mocha, Allure 3",
   "workflows": [
-    "allure-cleanup.yml",
-    "workflow-e2e-ios.yml",
-    "workflow-e2e-main.yml"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-09-02T16:47:19+02:00",
-  "status": "maintained",
-  "license": null,
+  "lastActivity": "2026-10-30T20:08:13+01:00",
+  "status": "active",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 5
-  },
   "tags": [
     "Tests & Qualité",
-    "Git & DevOps",
     "TypeScript",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Git & DevOps"
   ]
 }
