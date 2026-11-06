@@ -1,7 +1,7 @@
-## Changelog : legi-data (30 derniers jours, au 22 octobre 2026)
+## Changelog : legi-data (30 derniers jours, au 04/11/2026)
 
 ### Résumé
-Le projet a maintenu son cycle d'automatisation pour assurer la mise à jour régulière des données juridiques extraites de l'API Légifrance, garantissant ainsi la fraîcheur des informations mises à disposition.
+Le projet a maintenu son cycle d'automatisation habituel, assurant la fraîcheur des données juridiques par des extractions régulières de la base LEGI via l'API Légifrance.
 
 ### Évolutions fonctionnelles
-- Mise à jour périodique des jeux de données pour intégrer les dernières évolutions législatives.
+- Actualisation périodique des données (plusieurs mises à jour automatiques des jeux de données effectuées entre le 8 octobre et le 4 novembre 2026).
