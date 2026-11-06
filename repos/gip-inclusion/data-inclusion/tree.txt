@@ -1,7 +1,8 @@
 .
+├── .claude
+│   └── settings.json
 ├── .github
 │   ├── dependabot.yml
-│   ├── pull_request_template.md
 │   └── workflows
 │       ├── README.md
 │       ├── _build_images.yml
@@ -18,10 +19,11 @@
 ├── .vscode
 │   ├── data-inclusion.code-workspace
 │   └── extensions.json
-├── CODEOWNERS
+├── AGENTS.md
+├── ARCHI.md
 ├── CONTRIBUTING.md
-├── DEPLOYMENT.md
 ├── LICENSE
+├── Makefile
 ├── README.md
 ├── api
 │   ├── .dockerignore
@@ -29,11 +31,10 @@
 │   ├── .template.env
 │   ├── .vscode
 │   │   └── settings.json
+│   ├── AGENTS.md
 │   ├── CONTRIBUTING.md
 │   ├── Dockerfile
 │   ├── Procfile
-│   ├── README.md
-│   ├── USAGE.md
 │   ├── alembic.ini
 │   ├── cron.json
 │   ├── docker-entrypoint.sh
@@ -226,11 +227,10 @@
 ├── docker-compose.yml
 ├── docs
 │   └── img
-│       ├── data-inclusion-archi-detailed.jpg
-│       ├── data-inclusion-archi-overview.jpg
-│       ├── data-inclusion-architecture.drawio.png
-│       ├── data-inclusion-data.drawio.png
-│       └── data-inclusion.drawio
+│       ├── architecture.drawio
+│       ├── architecture.drawio.png
+│       ├── pipeline.drawio
+│       └── pipeline.drawio.png
 ├── mlflow
 │   ├── Dockerfile
 │   └── requirements.txt
@@ -243,7 +243,7 @@
     │   └── settings.json
     ├── CONTRIBUTING.md
     ├── Dockerfile
-    ├── README.md
+    ├── Makefile
     ├── RGPD.md
     ├── dags
     │   ├── .airflowignore
@@ -852,8 +852,9 @@
     │       └── requirements.txt
     ├── scripts
     │   └── update_schema_seeds.py
-    └── tests
-        ├── __init__.py
-        └── unit
-            └── __init__.py
-161 directories, 697 files
+    ├── tests
+    │   ├── __init__.py
+    │   └── unit
+    │       └── __init__.py
+    └── uv.lock
+162 directories, 697 files
