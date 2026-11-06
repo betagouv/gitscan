@@ -4,6 +4,7 @@
 ├── .env.example
 ├── .env.test
 ├── .git-blame-ignore-revs
+├── .gitattributes
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE
 │   ├── actions
@@ -19,6 +20,7 @@
 │       ├── ci-e2e.yml
 │       ├── ci-main.yml
 │       ├── ci-quality.yml
+│       ├── ci-secrets.yml
 │       ├── docs.yml
 │       ├── publiccode-yml-validation.yml
 │       ├── publiccodeyml-check.yml
@@ -37,6 +39,8 @@
 ├── LICENSE
 ├── Procfile
 ├── README.md
+├── bin
+│   └── post_compile
 ├── config
 │   ├── __init__.py
 │   ├── api.py
@@ -44,11 +48,6 @@
 │   ├── settings_test.py
 │   ├── urls.py
 │   └── wsgi.py
-├── content_manager
-│   └── locale
-│       └── fr
-│           └── LC_MESSAGES
-│               └── django.mo
 ├── cron.json.example
 ├── demo
 │   ├── README.md
@@ -66,6 +65,9 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── static
+│   │   │   └── annuaire
+│   │   │       └── annuaire.css
 │   │   └── templates
 │   │       └── annuaire
 │   │           ├── annuaire_page.html
@@ -114,6 +116,7 @@
 │   ├── README.md
 │   ├── _static
 │   │   ├── .gitkeep
+│   │   ├── scalingo-deploy-button.svg
 │   │   └── sites-conformes-schema.svg
 │   ├── _templates
 │   │   ├── breadcrumbs.html
@@ -130,12 +133,15 @@
 │   │   ├── installation-locale.md
 │   │   └── traductions.md
 │   ├── deploiement
+│   │   ├── changer-nom-de-domaine.md
 │   │   ├── docker.md
 │   │   ├── faq.md
+│   │   ├── gunicorn.md
 │   │   ├── index.md
 │   │   ├── introduction.md
 │   │   ├── migrer-hebergement.md
 │   │   ├── scalingo.md
+│   │   ├── sentry.md
 │   │   ├── serveur-linux.md
 │   │   └── variables-environnement.md
 │   ├── donnees
@@ -149,7 +155,6 @@
 │   ├── locales
 │   │   └── fr
 │   │       └── LC_MESSAGES
-│   │           ├── sphinx.mo
 │   │           └── sphinx.po
 │   ├── paquet
 │   │   ├── configuration.md
@@ -185,6 +190,7 @@
 │   ├── restore_local_medias.sh
 │   ├── restore_prod_db.sh
 │   ├── restore_prod_medias.sh
+│   ├── rollback_scalingo.sh
 │   ├── sample_conf_files
 │   │   └── nginx.conf.template
 │   └── sync_tarteaucitron.sh
@@ -200,7 +206,6 @@
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
 │   │   │           └── django.po
 │   │   ├── managers.py
 │   │   ├── migrations
@@ -269,6 +274,9 @@
 │   │   │   ├── 0062_alter_blogentrypage_body_alter_blogindexpage_body.py
 │   │   │   ├── 0063_recent_blogs_block__see_all_posts_link.py
 │   │   │   ├── 0064_recent_events_block__see_all_events_link.py
+│   │   │   ├── 0065_alter_blogentrypage_body_and_more.py
+│   │   │   ├── 0066_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   │   ├── 0067_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -285,6 +293,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
 │   │   │   ├── test_blog_index_page.py
+│   │   │   ├── test_routes.py
 │   │   │   ├── test_search.py
 │   │   │   └── test_views.py
 │   │   └── views.py
@@ -312,7 +321,6 @@
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
 │   │   │           └── django.po
 │   │   ├── management
 │   │   │   ├── __init__.py
@@ -324,6 +332,7 @@
 │   │   │       ├── import_dsfr_pictograms.py
 │   │   │       ├── import_illustration_images.py
 │   │   │       ├── import_page_templates.py
+│   │   │       ├── migrate.py
 │   │   │       ├── migrate_from_sites_faciles.py
 │   │   │       ├── migrate_pages.py
 │   │   │       ├── set_config.py
@@ -414,6 +423,10 @@
 │   │   │   ├── 0080_cmsdsfrconfig_iframe_allow_origins.py
 │   │   │   ├── 0081_recent_blogs_block__see_all_posts_link.py
 │   │   │   ├── 0082_recent_events_block__see_all_events_link.py
+│   │   │   ├── 0083_alter_catalogindexpage_body_and_more.py
+│   │   │   ├── 0084_alter_catalogindexpage_body_alter_contentpage_body.py
+│   │   │   ├── 0085_move_centered_image_alt_to_image_block.py
+│   │   │   ├── 0086_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── monkey_patches.py
@@ -431,6 +444,7 @@
 │   │   │   │   ├── undraw_female_avatar_efig.svg
 │   │   │   │   └── undraw_male_avatar_g98d.svg
 │   │   │   └── pages_data.json
+│   │   ├── search_description.py
 │   │   ├── search_view_loader.py
 │   │   ├── services
 │   │   │   ├── __init__.py
@@ -527,15 +541,24 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── test_api.py
+│   │   │   ├── test_block_values.py
 │   │   │   ├── test_blocks.py
 │   │   │   ├── test_create_demo_pages.py
 │   │   │   ├── test_force_script_name.py
 │   │   │   ├── test_iframe_middleware.py
+│   │   │   ├── test_image_alt.py
 │   │   │   ├── test_managers.py
+│   │   │   ├── test_migrate_command.py
+│   │   │   ├── test_migrate_from_sites_faciles.py
+│   │   │   ├── test_noindex_middleware.py
+│   │   │   ├── test_page_export_commands.py
+│   │   │   ├── test_public_cache_middleware.py
 │   │   │   ├── test_search.py
+│   │   │   ├── test_search_description.py
 │   │   │   ├── test_search_view_loader.py
 │   │   │   ├── test_services_accessors.py
 │   │   │   ├── test_services_import_export.py
+│   │   │   ├── test_tag_views.py
 │   │   │   ├── test_translation.py
 │   │   │   ├── test_utils.py
 │   │   │   ├── test_views.py
@@ -546,6 +569,15 @@
 │   │   ├── views.py
 │   │   ├── wagtail_hooks.py
 │   │   └── widgets.py
+│   ├── customimages
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_copy_wagtail_images.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── tests.py
 │   ├── dashboard
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -553,13 +585,16 @@
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
-│   │   │           └── django.po
+│   │   │           ├── django.po
+│   │   │           └── djangojs.po
 │   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   └── __init__.py
 │   │   ├── monkey_patches.py
 │   │   ├── notifications.py
+│   │   ├── static
+│   │   │   └── js
+│   │   │       └── admin_editor.js
 │   │   ├── templates
 │   │   │   ├── admin_icons
 │   │   │   │   └── anchor.svg
@@ -630,7 +665,6 @@
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
 │   │   │           └── django.po
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -670,6 +704,9 @@
 │   │   │   ├── 0034_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0035_recent_blogs_block__see_all_posts_link.py
 │   │   │   ├── 0036_recent_events_block__see_all_events_link.py
+│   │   │   ├── 0037_alter_evententrypage_body_and_more.py
+│   │   │   ├── 0038_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   │   ├── 0039_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── static
@@ -684,6 +721,7 @@
 │   │   │       └── events_index_page.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_filters.py
 │   │   │   ├── test_search.py
 │   │   │   └── test_views.py
 │   │   └── views.py
@@ -691,11 +729,11 @@
 │   │   ├── __init__.py
 │   │   ├── admin.py
 │   │   ├── apps.py
+│   │   ├── autocomplete.py
 │   │   ├── baseform.py
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
 │   │   │           └── django.po
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -703,8 +741,13 @@
 │   │   │   ├── 0003_formpage_honeypot.py
 │   │   │   ├── 0004_formfield_locale_formfield_translation_key_and_more.py
 │   │   │   ├── 0005_fix_empty_formfield_clean_names.py
+│   │   │   ├── 0006_formfield_autocomplete.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── static
+│   │   │   └── sites_conformes_forms
+│   │   │       └── js
+│   │   │           └── autocomplete-filter.js
 │   │   ├── templates
 │   │   │   └── sites_conformes_forms
 │   │   │       ├── form_page.html
@@ -713,14 +756,12 @@
 │   │   │   ├── __init__.py
 │   │   │   └── test_forms.py
 │   │   ├── views.py
+│   │   ├── wagtail_hooks.py
 │   │   └── widgets.py
 │   ├── locale
 │   │   └── fr
 │   │       └── LC_MESSAGES
-│   │           ├── django.mo
-│   │           ├── django.po
-│   │           ├── djangojs.mo
-│   │           └── djangojs.po
+│   │           └── django.po
 │   ├── menus
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -728,7 +769,6 @@
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
 │   │   │           └── django.po
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -765,7 +805,6 @@
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
-│   │   │           ├── django.mo
 │   │   │           └── django.po
 │   │   ├── management
 │   │   │   ├── __init__.py
@@ -779,7 +818,10 @@
 │   │   ├── models.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
-│   │   │   └── test_utils.py
+│   │   │   ├── test_backends.py
+│   │   │   ├── test_import_domain_whitelist.py
+│   │   │   ├── test_utils.py
+│   │   │   └── test_views.py
 │   │   ├── urls.py
 │   │   ├── utils.py
 │   │   ├── validators.py
@@ -812,7 +854,6 @@
 │   │   │   ├── illustration-sites-faciles-femme-ordinateur.png
 │   │   │   └── illustration-sites-faciles-homme-nuages.png
 │   │   ├── js
-│   │   │   ├── admin_editor.js
 │   │   │   ├── hero-background-block.js
 │   │   │   ├── language-selector-admin.js
 │   │   │   ├── link-block.js
@@ -912,6 +953,7 @@
 │   │           └── tarteaucitron.services.min.js
 │   ├── templates
 │   │   └── sites_conformes_core
+│   │       ├── 403.html
 │   │       ├── 404.html
 │   │       ├── 500.html
 │   │       ├── base.html
@@ -930,4 +972,4 @@
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-155 directories, 777 files
+161 directories, 813 files

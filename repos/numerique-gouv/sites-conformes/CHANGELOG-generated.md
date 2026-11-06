@@ -1,19 +1,19 @@
-## Changelog : sites-conformes (30 derniers jours, au 1er octobre 2026)
+## Changelog : sites-conformes (30 derniers jours, au 04 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience de recherche, le renforcement de la sécurité (notamment via la double authentification) et l'optimisation des performances et de la sécurité de la chaîne de déploiement.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de l'accessibilité et de l'expérience utilisateur, notamment via de nouveaux outils pour les formulaires. Le projet a également bénéficié d'une consolidation technique importante pour sécuriser le dépôt, optimiser le SEO et fiabiliser les processus de déploiement.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la recherche** : ajout de la date comme critère de filtrage pour les articles de blog et indexation du contenu "hero" pour des résultats plus pertinents.
-- **Sécurité et expérience utilisateur** : renforcement de l'authentification à deux facteurs (2FA) [#592](https://github.com/numerique-gouv/sites-conformes/pull/592) et ajout d'une notification dans le backoffice pour inciter les utilisateurs à l'activer.
-- **Navigation** : mise en avant de la FAQ dans la structure de navigation principale.
+- **Accessibilité** : Corrections suite à l'audit [#631](https://github.com/numerique-gouv/sites-conformes/issues/631), amélioration des messages de validation de formulaire [#626](https://github.com/numerique-gouv/sites-conformes/issues/626), corrections sur certains blocs [#656](https://github.com/numerique-gouv/sites-conformes/issues/656) et amélioration des filtres et du bouton iCal sur les pages d'événements [#625](https://github.com/numerique-gouv/sites-conformes/issues/625).
+- **Formulaires et Navigation** : Ajout d'un encart de confirmation et d'une réponse automatique lors de la réception de formulaires [#590](https://github.com/numerique-gouv/sites-conformes/issues/590), structuration de la navigation alphabétique des étiquettes [#649](https://github.com/numerique-gouv/sites-conformes/issues/649) et ajout d'une page d'erreur 403 [#644](https://github.com/numerique-gouv/sites-conformes/issues/644).
+- **Interface et Expérience utilisateur** : Amélioration de la gestion des images (nouveau modèle et textes d'aide) [#419](https://github.com/numerique-gouv/sites-conformes/issues/419), ajout de l'autocomplétion pour les types de champs [#623](https://github.com/numerique-gouv/sites-conformes/issues/623), correction de débordements horizontaux sur les formulaires [#650](https://github.com/numerique-gouv/sites-conformes/issues/650) et corrections de divers bugs d'interface [#589](https://github.com/numerique-gouv/sites-conformes/issues/589).
 
 ### Évolutions techniques
-- **Performance** : optimisation de la configuration Gunicorn (gestion des workers, threads et du préchargement) pour une meilleure stabilité [#596](https://github.com/numerique-gouv/sites-conformes/pull/596).
-- **Sécurité CI/CD** : renforcement des droits d'accès de la chaîne de CI [#584](https://github.com/numerique-gouv/sites-conformes/pull/584) et mise en place d'un contrôle automatique des vulnérabilités (CVE) lors des changements de dépendances.
-- **Tests** : ajustement des tests de recherche pour mieux gérer les configurations personnalisées.
+- **Déploiement et Infrastructure** : Optimisation du déploiement en un clic [#646](https://github.com/numerique-gouv/sites-conformes/issues/646), ajout d'un script de rollback [#637](https://github.com/numerique-gouv/sites-conformes/issues/637), résolution de problèmes de migration sur Scalingo [#634](https://github.com/numerique-gouv/sites-conformes/issues/634) et correction des commandes via la CLI Scalingo [#645](https://github.com/numerique-gouv/sites-conformes/issues/645).
+- **Performance et SEO** : Mise en place d'en-têtes de cache pour les visiteurs anonymes [#651](https://github.com/numerique-gouv/sites-conformes/issues/651), gestion de la désindexation globale via une variable d'environnement [#618](https://github.com/numerique-gouv/sites-conformes/issues/618), amélioration des descriptions de recherche [#610](https://github.com/numerique-gouv/sites-conformes/issues/610) et correction des URLs canoniques [#635](https://github.com/numerique-gouv/sites-conformes/issues/635).
+- **Qualité et Sécurité** : Renforcement de la protection du dépôt contre les fuites de secrets [#648](https://github.com/numerique-gouv/sites-conformes/issues/648), mise à jour des correctifs 2FA [#641](https://github.com/numerique-gouv/sites-conformes/issues/641), amélioration de la suite de tests [#647](https://github.com/numerique-gouv/sites-conformes/issues/647) et intégration de Djlint pour le linting [#657](https://github.com/numerique-gouv/sites-conformes/issues/657).
+- **Internationalisation** : Automatisation de la compilation des fichiers de traduction lors du déploiement [#652](https://github.com/numerique-gouv/sites-conformes/issues/652).
 
 ### Autres changements
-- **Gestion des dépendances** : mise en place d'une période de latence ("cooldown") pour les mises à jour des dépendances Python et NPM [#588](https://github.com/numerique-gouv/sites-conformes/pull/588).
-- **Documentation** : mise à jour de la documentation concernant la FAQ et les notifications, et retrait de guides techniques obsolètes.
-- **Nettoyage** : corrections mineures de texte et de mise en forme.
+- **Documentation** : Amélioration de la documentation concernant les changements de nom de domaine [#655](https://github.com/numerique-gouv/sites-conformes/issues/655).
+- **Maintenance** : Mises à jour des numéros de version [#643](https://github.com/numerique-gouv/sites-conformes/issues/643) et [#633](https://github.com/numerique-gouv/sites-conformes/issues/633).
