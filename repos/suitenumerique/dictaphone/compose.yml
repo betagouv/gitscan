@@ -15,49 +15,53 @@ services:
     ports:
       - "1081:1080"
 
-  minio:
+  rustfs:
     user: ${DOCKER_USER:-1000}
-    image: minio/minio
-    environment:
-      - MINIO_ROOT_USER=dictaphone
-      - MINIO_ROOT_PASSWORD=password
+    image: rustfs/rustfs:latest
+    env_file:
+      - env.d/development/rustfs
     ports:
       - '9000:9000'
       - '9001:9001'
     healthcheck:
-      test: [ "CMD", "mc", "ready", "local" ]
+      test: [ "CMD-SHELL", "curl -fsS http://localhost:9000/health/ready >/dev/null" ]
       interval: 1s
       timeout: 20s
       retries: 300
-    entrypoint: ""
-    command: minio server --console-address :9001 /data
+    command: ["/data"]
+    networks:
+      default:
+        aliases:
+          - dictaphone-media-storage.rustfs
+          - dictaphone-media-alpha.rustfs
+          - dictaphone-media-beta.rustfs
     volumes:
       - ./data/media:/data
 
   createbuckets:
-    image: minio/mc
+    image: rustfs/rc:latest
     depends_on:
-      minio:
+      rustfs:
         condition: service_healthy
         restart: true
     entrypoint: >
       sh -c "
-      /usr/bin/mc alias set dictaphone http://minio:9000 dictaphone password && \
-      /usr/bin/mc mb --ignore-existing dictaphone/dictaphone-media-storage && \
-      /usr/bin/mc mb --ignore-existing dictaphone/dictaphone-media-alpha && \
-      /usr/bin/mc mb --ignore-existing dictaphone/dictaphone-media-beta && \
-      /usr/bin/mc admin user add dictaphone dictaphone-default password-default || true; \
-      /usr/bin/mc admin user add dictaphone dictaphone-alpha password-alpha || true; \
-      /usr/bin/mc admin user add dictaphone dictaphone-beta password-beta || true; \
+      rc alias set dictaphone http://rustfs:9000 dictaphone password && \
+      rc mb --ignore-existing dictaphone/dictaphone-media-storage && \
+      rc mb --ignore-existing dictaphone/dictaphone-media-alpha && \
+      rc mb --ignore-existing dictaphone/dictaphone-media-beta && \
+      rc admin user add dictaphone dictaphone-default password-default || true; \
+      rc admin user add dictaphone dictaphone-alpha password-alpha || true; \
+      rc admin user add dictaphone dictaphone-beta password-beta || true; \
       printf '%s' '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:*\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::dictaphone-media-storage\",\"arn:aws:s3:::dictaphone-media-storage/*\"]}]}' >/tmp/default-policy.json && \
       printf '%s' '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:*\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::dictaphone-media-alpha\",\"arn:aws:s3:::dictaphone-media-alpha/*\"]}]}' >/tmp/alpha-policy.json && \
       printf '%s' '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:*\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::dictaphone-media-beta\",\"arn:aws:s3:::dictaphone-media-beta/*\"]}]}' >/tmp/beta-policy.json && \
-      /usr/bin/mc admin policy create dictaphone default-bucket-policy /tmp/default-policy.json || true; \
-      /usr/bin/mc admin policy create dictaphone alpha-bucket-policy /tmp/alpha-policy.json || true; \
-      /usr/bin/mc admin policy create dictaphone beta-bucket-policy /tmp/beta-policy.json || true; \
-      /usr/bin/mc admin policy attach dictaphone default-bucket-policy --user dictaphone-default || true; \
-      /usr/bin/mc admin policy attach dictaphone alpha-bucket-policy --user dictaphone-alpha || true; \
-      /usr/bin/mc admin policy attach dictaphone beta-bucket-policy --user dictaphone-beta || true; \
+      rc admin policy create dictaphone default-bucket-policy /tmp/default-policy.json || true; \
+      rc admin policy create dictaphone alpha-bucket-policy /tmp/alpha-policy.json || true; \
+      rc admin policy create dictaphone beta-bucket-policy /tmp/beta-policy.json || true; \
+      rc admin policy attach dictaphone default-bucket-policy --user dictaphone-default || true; \
+      rc admin policy attach dictaphone alpha-bucket-policy --user dictaphone-alpha || true; \
+      rc admin policy attach dictaphone beta-bucket-policy --user dictaphone-beta || true; \
       exit 0;"
 
   app-dev:
@@ -72,6 +76,7 @@ services:
       - PYLINTHOME=/app/.pylint.d
       - DJANGO_CONFIGURATION=Development
     env_file:
+      - env.d/development/audio-extractor
       - env.d/development/common
       - env.d/development/postgresql
     ports:
@@ -98,6 +103,7 @@ services:
     environment:
       - DJANGO_CONFIGURATION=Development
     env_file:
+      - env.d/development/audio-extractor
       - env.d/development/common
       - env.d/development/postgresql
     volumes:
@@ -107,21 +113,173 @@ services:
     depends_on:
       - app-dev
 
-  celery-audio-dev:
+  audio-extractor-dev:
+    build:
+      context: .
+      dockerfile: src/audio-extractor/Dockerfile
+      target: development
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
     user: ${DOCKER_USER:-1000}
-    image: dictaphone:backend-development
-    command: ["celery", "-A", "dictaphone.celery_app", "worker", "-l", "DEBUG", "--concurrency=1", "-Q", "dictaphone-audio"]
-    environment:
-      - DJANGO_CONFIGURATION=Development
-    env_file:
-      - env.d/development/common
-      - env.d/development/postgresql
-    volumes:
-      - ./src/backend:/app
-      - ./data/static:/data/static
-      - /app/.venv
+    image: dictaphone:audio-extractor-development
     depends_on:
-      - app-dev
+      rustfs:
+        condition: service_healthy
+      s3-gateway:
+        condition: service_healthy
+      createbuckets:
+        condition: service_completed_successfully
+    working_dir: /app
+    env_file:
+      - env.d/development/audio-extractor
+    environment:
+      PYLINTHOME: /tmp/pylint
+    volumes:
+      - ./src/audio-extractor:/app
+      - /app/.venv
+
+  audio-extractor-transcoding-dev:
+    build:
+      context: .
+      dockerfile: src/audio-extractor/Dockerfile
+      target: audio-extractor-production
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: dictaphone:audio-extractor
+    env_file:
+      - env.d/development/audio-extractor
+    environment:
+      AUDIO_EXTRACTOR_API_URL: http://app-dev:8000/api/internal/v1.0
+      AUDIO_EXTRACTOR_MODE: transcoding
+    stop_grace_period: 45s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/livez', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      app-dev:
+        condition: service_started
+      s3-gateway:
+        condition: service_healthy
+    tmpfs:
+      - /work:size=1g
+    restart: unless-stopped
+
+  audio-extractor-validation-dev:
+    build:
+      context: .
+      dockerfile: src/audio-extractor/Dockerfile
+      target: audio-extractor-production
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: dictaphone:audio-extractor
+    env_file:
+      - env.d/development/audio-extractor
+    environment:
+      AUDIO_EXTRACTOR_API_URL: http://app-dev:8000/api/internal/v1.0
+      AUDIO_EXTRACTOR_MODE: validation
+    stop_grace_period: 45s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/livez', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      app-dev:
+        condition: service_started
+      s3-gateway:
+        condition: service_healthy
+    tmpfs:
+      - /work:size=1g
+    restart: unless-stopped
+
+  audio-extractor-transcoding:
+    build:
+      context: .
+      dockerfile: src/audio-extractor/Dockerfile
+      target: audio-extractor-production
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: dictaphone:audio-extractor-production
+    env_file:
+      - env.d/development/audio-extractor
+    environment:
+      AUDIO_EXTRACTOR_API_URL: http://app:8000/api/internal/v1.0
+      AUDIO_EXTRACTOR_MODE: transcoding
+    stop_grace_period: 45s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/livez', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      app:
+        condition: service_started
+      s3-gateway:
+        condition: service_healthy
+    tmpfs:
+      - /work:size=1g
+    restart: unless-stopped
+
+  audio-extractor-validation:
+    build:
+      context: .
+      dockerfile: src/audio-extractor/Dockerfile
+      target: audio-extractor-production
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: dictaphone:audio-extractor-production
+    env_file:
+      - env.d/development/audio-extractor
+    environment:
+      AUDIO_EXTRACTOR_API_URL: http://app:8000/api/internal/v1.0
+      AUDIO_EXTRACTOR_MODE: validation
+    stop_grace_period: 45s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/livez', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      app:
+        condition: service_started
+      s3-gateway:
+        condition: service_healthy
+    tmpfs:
+      - /work:size=1g
+    restart: unless-stopped
+
+  s3-gateway:
+    build:
+      context: .
+      dockerfile: src/audio-extractor/Dockerfile
+      target: audio-extractor-production
+    image: dictaphone:audio-extractor
+    command: ["python", "-m", "audio_extractor.s3_gateway"]
+    env_file:
+      - env.d/development/audio-extractor
+    depends_on:
+      rustfs:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 45s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
 
   app:
     build:
@@ -134,12 +292,13 @@ services:
     environment:
       - DJANGO_CONFIGURATION=Demo
     env_file:
+      - env.d/development/audio-extractor
       - env.d/development/common
       - env.d/development/postgresql
     depends_on:
       - postgresql
       - redis
-      - minio
+      - rustfs
 
   celery:
     user: ${DOCKER_USER:-1000}
@@ -148,18 +307,7 @@ services:
     environment:
       - DJANGO_CONFIGURATION=Demo
     env_file:
-      - env.d/development/common
-      - env.d/development/postgresql
-    depends_on:
-      - app
-
-  celery-audio:
-    user: ${DOCKER_USER:-1000}
-    image: dictaphone:backend-production
-    command: ["celery", "-A", "dictaphone.celery_app", "worker", "-l", "INFO", "--concurrency=1", "-Q", "dictaphone-audio"]
-    environment:
-      - DJANGO_CONFIGURATION=Demo
-    env_file:
+      - env.d/development/audio-extractor
       - env.d/development/common
       - env.d/development/postgresql
     depends_on:
@@ -232,16 +380,8 @@ services:
       - --hostname-admin-url=http://localhost:8083/
       - --hostname-strict=false
       - --hostname-strict-https=false
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_DB: postgres
-      KC_DB_URL_HOST: kc_postgresql
-      KC_DB_URL_DATABASE: keycloak
-      KC_DB_PASSWORD: pass
-      KC_DB_USERNAME: dictaphone
-      KC_DB_SCHEMA: public
-      PROXY_ADDRESS_FORWARDING: 'true'
+    env_file:
+      - env.d/development/keycloak
     ports:
       - "8080:8080"
     depends_on:

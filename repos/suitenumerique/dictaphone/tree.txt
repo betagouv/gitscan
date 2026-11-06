@@ -1,18 +1,21 @@
 .
 ├── .dockerignore
 ├── .github
-│   ├── ISSUE_TEMPLATE
-│   │   ├── Bug_report.md
-│   │   ├── Feature_request.md
-│   │   └── Support_question.md
-│   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
 │       ├── crowdin-download.yml
-│       ├── dictaphone.yml
+│       ├── dictaphone-audio-extractor.yml
+│       ├── dictaphone-backend.yml
+│       ├── dictaphone-frontend.yml
+│       ├── dictaphone-mobile.yml
+│       ├── docker-audio-extractor.yml
+│       ├── docker-backend.yml
+│       ├── docker-frontend.yml
 │       ├── docker-hub.yml
-│       └── release-helm-chart.yaml
+│       ├── release-helm-chart.yml
+│       └── security.yml
 ├── .gitignore
 ├── .gitlint
+├── AGENTS.md
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
@@ -62,9 +65,13 @@
 │   └── resource-server
 │       └── compose.yml
 ├── docs
+│   ├── access-control.md
 │   ├── archi-diagram.md
 │   ├── developping_locally.md
 │   └── diagrams
+│       ├── audio-reencoding-worker-sequence.mmd
+│       ├── audio-validation-worker-sequence.mmd
+│       ├── audio-worker-lifecycle.mmd
 │       ├── data-purge-lifecycle.mmd
 │       ├── file-processing-sequence.mmd
 │       ├── file-routing-by-data-policy.mmd
@@ -77,11 +84,14 @@
 │       └── transcription-webhook-sequence.mmd
 ├── env.d
 │   ├── development
+│   │   ├── audio-extractor.dist
 │   │   ├── common.dist
 │   │   ├── common.e2e.dist
 │   │   ├── crowdin.dist
 │   │   ├── kc_postgresql.dist
-│   │   └── postgresql.dist
+│   │   ├── keycloak.dist
+│   │   ├── postgresql.dist
+│   │   └── rustfs.dist
 │   └── production.dist
 │       ├── common
 │       ├── hosts
@@ -92,8 +102,64 @@
 │   └── gitlint_emoji.py
 ├── renovate.json
 └── src
+    ├── audio-extractor
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── audio_extractor
+    │   │   ├── __init__.py
+    │   │   ├── __main__.py
+    │   │   ├── api_models.py
+    │   │   ├── attempt.py
+    │   │   ├── audio_transcode.py
+    │   │   ├── audio_validate.py
+    │   │   ├── health.py
+    │   │   ├── http_client.py
+    │   │   ├── s3_gateway
+    │   │   │   ├── __init__.py
+    │   │   │   ├── __main__.py
+    │   │   │   ├── app.py
+    │   │   │   ├── headers.py
+    │   │   │   ├── rules.py
+    │   │   │   └── settings.py
+    │   │   ├── sentry.py
+    │   │   ├── settings.py
+    │   │   ├── supervisor.py
+    │   │   ├── utils.py
+    │   │   └── worker.py
+    │   ├── pyproject.toml
+    │   ├── run-worker.sh
+    │   ├── tests
+    │   │   ├── assets
+    │   │   │   ├── audio-sample-16khz.mp3
+    │   │   │   ├── audio-sample-android-chrome.webm
+    │   │   │   ├── audio-sample-android-firefox.ogg
+    │   │   │   ├── audio-sample-android.m4a
+    │   │   │   ├── audio-sample-chromium.webm
+    │   │   │   ├── audio-sample-corrupted.m4a
+    │   │   │   ├── audio-sample-firefox.ogg
+    │   │   │   ├── audio-sample-ios-browser.webm
+    │   │   │   ├── audio-sample-ios.m4a
+    │   │   │   ├── audio-sample-mac-os-safari.webm
+    │   │   │   ├── video-sample-visio.mp4
+    │   │   │   └── video-with-no-audio.mp4
+    │   │   ├── conftest.py
+    │   │   ├── test_api_models.py
+    │   │   ├── test_audio_transcode.py
+    │   │   ├── test_audio_validate.py
+    │   │   ├── test_child_integration.py
+    │   │   ├── test_container_command.py
+    │   │   ├── test_health.py
+    │   │   ├── test_http_client.py
+    │   │   ├── test_s3_gateway.py
+    │   │   ├── test_sentry.py
+    │   │   ├── test_settings.py
+    │   │   ├── test_supervisor.py
+    │   │   ├── test_utils.py
+    │   │   └── test_worker.py
+    │   └── uv.lock
     ├── backend
     │   ├── .pylintrc
+    │   ├── ADMIN_SECURITY.md
     │   ├── MANIFEST.in
     │   ├── core
     │   │   ├── __init__.py
@@ -101,20 +167,29 @@
     │   │   ├── analytics.py
     │   │   ├── api
     │   │   │   ├── __init__.py
+    │   │   │   ├── audio_jobs.py
     │   │   │   ├── filters.py
+    │   │   │   ├── parsers.py
     │   │   │   ├── permissions.py
     │   │   │   ├── serializers.py
     │   │   │   ├── throttling.py
     │   │   │   └── viewsets.py
-    │   │   ├── audio.py
+    │   │   ├── audio_jobs.py
     │   │   ├── authentication
     │   │   │   ├── __init__.py
+    │   │   │   ├── audio_workers.py
+    │   │   │   ├── axes.py
     │   │   │   ├── backends.py
+    │   │   │   ├── proxies.py
     │   │   │   ├── schemas.py
+    │   │   │   ├── throttling.py
     │   │   │   ├── views.py
     │   │   │   └── webhooks.py
+    │   │   ├── capacity_estimator.py
     │   │   ├── configuration.py
+    │   │   ├── emails.py
     │   │   ├── enums.py
+    │   │   ├── external_sources.py
     │   │   ├── factories.py
     │   │   ├── management
     │   │   │   └── commands
@@ -122,7 +197,8 @@
     │   │   │       ├── auto_hard_delete_files.py
     │   │   │       ├── clean_pending_files.py
     │   │   │       ├── delete_original_files_data.py
-    │   │   │       └── purge_deleted_files.py
+    │   │   │       ├── purge_deleted_files.py
+    │   │   │       └── purge_transcription_usage.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_create_pg_trgm_extension.py
@@ -141,8 +217,17 @@
     │   │   │   ├── 0015_file_audio_extraction_state.py
     │   │   │   ├── 0016_remove_file_file_snapshot_complete_and_more.py
     │   │   │   ├── 0017_aifilejob_docs_creation_in_progress.py
+    │   │   │   ├── 0018_audio_jobs.py
+    │   │   │   ├── 0019_backfill_audio_jobs.py
+    │   │   │   ├── 0020_remove_file_audio_extraction_state.py
+    │   │   │   ├── 0021_aifilejob_submission_quota.py
+    │   │   │   ├── 0022_backfill_aifilejob_submissions.py
+    │   │   │   ├── 0023_transcription_usage_retention_index.py
+    │   │   │   ├── 0024_oidc_access_policy.py
+    │   │   │   ├── 0025_normalize_stored_emails.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
+    │   │   ├── payloads.py
     │   │   ├── static
     │   │   │   └── images
     │   │   │       ├── logo-suite-numerique.png
@@ -170,31 +255,28 @@
     │   │   │   │   ├── test_api_ai_jobs_retry.py
     │   │   │   │   └── test_api_files_ai_api_webhook.py
     │   │   │   ├── assets
-    │   │   │   │   ├── audio-sample-android-chrome.webm
-    │   │   │   │   ├── audio-sample-android-firefox.ogg
-    │   │   │   │   ├── audio-sample-android.m4a
-    │   │   │   │   ├── audio-sample-chromium.webm
     │   │   │   │   ├── audio-sample-corrupted.how.txt
-    │   │   │   │   ├── audio-sample-corrupted.m4a
-    │   │   │   │   ├── audio-sample-firefox.ogg
-    │   │   │   │   ├── audio-sample-ios-browser.webm
-    │   │   │   │   ├── audio-sample-ios.m4a
-    │   │   │   │   ├── audio-sample-mac-os-safari.webm
     │   │   │   │   ├── email_previews
     │   │   │   │   │   └── .gitignore
-    │   │   │   │   ├── export-throughput.csv
-    │   │   │   │   └── video-sample-visio.mp4
+    │   │   │   │   └── export-throughput.csv
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_admin_lockout.py
     │   │   │   │   ├── test_backends.py
     │   │   │   │   ├── test_mobile_app_download_page.py
-    │   │   │   │   └── test_pkce_views.py
+    │   │   │   │   ├── test_password_hashing.py
+    │   │   │   │   ├── test_password_policy.py
+    │   │   │   │   ├── test_pkce_throttling.py
+    │   │   │   │   ├── test_pkce_views.py
+    │   │   │   │   ├── test_token_revocation.py
+    │   │   │   │   └── test_webhooks.py
     │   │   │   ├── commands
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_auto_hard_delete_files.py
     │   │   │   │   ├── test_clean_pending_files.py
     │   │   │   │   ├── test_delete_original_files_data.py
-    │   │   │   │   └── test_purge_deleted_files.py
+    │   │   │   │   ├── test_purge_deleted_files.py
+    │   │   │   │   └── test_purge_transcription_usage.py
     │   │   │   ├── conftest.py
     │   │   │   ├── files
     │   │   │   │   ├── __init__.py
@@ -202,33 +284,47 @@
     │   │   │   │   ├── test_api_files_delete.py
     │   │   │   │   ├── test_api_files_get.py
     │   │   │   │   ├── test_api_files_list.py
+    │   │   │   │   ├── test_api_files_list_analytics.py
     │   │   │   │   ├── test_api_files_list_filters.py
     │   │   │   │   ├── test_api_files_list_ordering.py
     │   │   │   │   ├── test_api_files_media_auth.py
+    │   │   │   │   ├── test_api_files_throttling.py
     │   │   │   │   ├── test_api_files_update.py
     │   │   │   │   ├── test_api_files_upload_ended.py
+    │   │   │   │   ├── test_api_files_upload_limit.py
     │   │   │   │   ├── test_api_items_hard_delete.py
     │   │   │   │   └── test_api_items_restore.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_access_policy.py
     │   │   │   ├── test_admin.py
     │   │   │   ├── test_api_frontend_configuration.py
+    │   │   │   ├── test_api_throttling.py
     │   │   │   ├── test_api_users.py
-    │   │   │   ├── test_audio.py
+    │   │   │   ├── test_audio_jobs.py
+    │   │   │   ├── test_capacity_estimator.py
     │   │   │   ├── test_configuration.py
-    │   │   │   ├── test_e2e_file.py
+    │   │   │   ├── test_emails.py
+    │   │   │   ├── test_external_sources.py
     │   │   │   ├── test_floor_dt_to_bucket.py
     │   │   │   ├── test_mail_templates.py
+    │   │   │   ├── test_migrations_normalize_stored_emails.py
     │   │   │   ├── test_models_ai_jobs.py
     │   │   │   ├── test_models_file_configuration.py
     │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_payloads.py
+    │   │   │   ├── test_sensitive_telemetry.py
     │   │   │   ├── test_settings_values.py
     │   │   │   ├── test_storage.py
     │   │   │   ├── test_tasks.py
     │   │   │   ├── test_tasks_mail.py
+    │   │   │   ├── test_tasks_transcription.py
+    │   │   │   ├── test_transcription_quota.py
     │   │   │   ├── test_utils_detect_mimetype.py
-    │   │   │   └── test_utils_update_url_query_params.py
+    │   │   │   ├── test_utils_transcript_markdown.py
+    │   │   │   ├── test_utils_update_url_query_params.py
+    │   │   │   └── test_utils_upload_policy.py
     │   │   ├── urls.py
     │   │   ├── utils.py
     │   │   └── webhook_models.py
@@ -251,6 +347,7 @@
     │   ├── dictaphone
     │   │   ├── __init__.py
     │   │   ├── celery_app.py
+    │   │   ├── sentry.py
     │   │   ├── settings.py
     │   │   ├── urls.py
     │   │   ├── values.py
@@ -269,14 +366,15 @@
     │   ├── .env.development
     │   ├── .env.production
     │   ├── .gitignore
-    │   ├── .prettierrc
+    │   ├── .npmrc
+    │   ├── .oxfmtrc.json
+    │   ├── .oxlintrc.json
     │   ├── @types
     │   │   └── react-query.d.ts
     │   ├── Dockerfile
     │   ├── README.md
     │   ├── cunningham.ts
     │   ├── default.conf
-    │   ├── eslint.config.js
     │   ├── i18next-parser.config.json
     │   ├── index.html
     │   ├── package-lock.json
@@ -318,10 +416,14 @@
     │   │   ├── api
     │   │   │   ├── ApiError.ts
     │   │   │   ├── apiUrl.ts
+    │   │   │   ├── fetchApi.test.ts
     │   │   │   ├── fetchApi.ts
     │   │   │   ├── queryClient.ts
     │   │   │   ├── queryKeys.ts
-    │   │   │   └── useConfig.ts
+    │   │   │   ├── rateLimits.test.ts
+    │   │   │   ├── rateLimits.ts
+    │   │   │   ├── useConfig.ts
+    │   │   │   └── useCooldown.ts
     │   │   ├── components
     │   │   │   ├── AppInitialization.tsx
     │   │   │   ├── Card.scss
@@ -341,6 +443,8 @@
     │   │   │   │   │   ├── fetch.ts
     │   │   │   │   │   └── types.ts
     │   │   │   │   └── utils
+    │   │   │   │       ├── failurePresentation.test.ts
+    │   │   │   │       ├── failurePresentation.ts
     │   │   │   │       ├── getMainAiJobs.test.ts
     │   │   │   │       ├── getMainAiJobs.ts
     │   │   │   │       ├── transcript.test.ts
@@ -369,12 +473,19 @@
     │   │   │   │   │   ├── listFiles.ts
     │   │   │   │   │   ├── partialUpdateFile.ts
     │   │   │   │   │   ├── restoreFile.ts
-    │   │   │   │   │   └── types.ts
-    │   │   │   │   └── components
-    │   │   │   │       ├── FileUploadToast.scss
-    │   │   │   │       └── FileUploadToast.tsx
+    │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   └── uploadLimit.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── FileUploadToast.scss
+    │   │   │   │   │   ├── FileUploadToast.tsx
+    │   │   │   │   │   ├── UploadLimitAlert.tsx
+    │   │   │   │   │   └── UploadRateLimitAlert.tsx
+    │   │   │   │   ├── importUploads.test.ts
+    │   │   │   │   └── importUploads.tsx
     │   │   │   ├── recordings
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── AiJobFailureAlert.test.tsx
+    │   │   │   │   │   ├── AiJobFailureAlert.tsx
     │   │   │   │   │   ├── FileActionMenu.tsx
     │   │   │   │   │   ├── ListRecordings.scss
     │   │   │   │   │   ├── ListRecordings.tsx
@@ -398,6 +509,7 @@
     │   │   │   │   │   ├── index.ts
     │   │   │   │   │   └── types.ts
     │   │   │   │   ├── store
+    │   │   │   │   │   ├── useLocalRecordingsStore.test.ts
     │   │   │   │   │   └── useLocalRecordingsStore.ts
     │   │   │   │   └── utils
     │   │   │   │       ├── formatFileSize.ts
@@ -406,13 +518,15 @@
     │   │   │   │   └── settingsStore.ts
     │   │   │   └── ui
     │   │   │       ├── components
+    │   │   │       │   ├── RateLimitNotice.tsx
     │   │   │       │   ├── circular-progress
     │   │   │       │   │   └── CircularProgress.tsx
     │   │   │       │   ├── icon
     │   │   │       │   │   └── CheckIcon.tsx
-    │   │   │       │   └── toaster
-    │   │   │       │       ├── Toaster.tsx
-    │   │   │       │       └── index.scss
+    │   │   │       │   ├── toaster
+    │   │   │       │   │   ├── Toaster.tsx
+    │   │   │       │   │   └── index.scss
+    │   │   │       │   └── useRateLimitMessage.ts
     │   │   │       └── preview
     │   │   │           ├── audio-player
     │   │   │           │   ├── AudioPlayer.tsx
@@ -466,6 +580,8 @@
     │   │   │   ├── RecordingPage.tsx
     │   │   │   ├── RecordingsPage.scss
     │   │   │   ├── RecordingsPage.tsx
+    │   │   │   ├── RestrictedPage.scss
+    │   │   │   ├── RestrictedPage.tsx
     │   │   │   └── legal
     │   │   │       ├── AccessibilityPage.tsx
     │   │   │       ├── LegalPage.scss
@@ -490,24 +606,28 @@
     │   │   ├── generate-readme.sh
     │   │   ├── templates
     │   │   │   ├── _helpers.tpl
+    │   │   │   ├── _ingress_backend.tpl
+    │   │   │   ├── audio_extractor_deployment.yaml
     │   │   │   ├── backend_cronjob_list.yaml
     │   │   │   ├── backend_deployment.yaml
     │   │   │   ├── backend_job_createsuperuser.yaml
     │   │   │   ├── backend_job_migrate.yaml
     │   │   │   ├── backend_svc.yaml
-    │   │   │   ├── celery_audio_extractor_deployment.yaml
     │   │   │   ├── celery_backend_deployment.yaml
     │   │   │   ├── extra-objects.yaml
     │   │   │   ├── frontend_deployment.yaml
     │   │   │   ├── frontend_svc.yaml
     │   │   │   ├── ingress.yaml
     │   │   │   ├── ingress_admin.yaml
+    │   │   │   ├── ingress_internal.yaml
     │   │   │   ├── ingress_media_files.yaml
     │   │   │   ├── ingress_posthog.yaml
     │   │   │   ├── ingress_posthog_assets.yaml
+    │   │   │   ├── ingress_public.yaml
     │   │   │   ├── media_files_svc.yaml
     │   │   │   ├── posthog_assets_svc.yaml
-    │   │   │   └── posthog_svc.yaml
+    │   │   │   ├── posthog_svc.yaml
+    │   │   │   └── s3_gateway.yaml
     │   │   └── values.yaml
     │   ├── env.d
     │   │   └── dev-keycloak
@@ -522,9 +642,9 @@
     │   │       ├── external_secret_deployment.yaml
     │   │       ├── kc-postgresql-sts.yaml
     │   │       ├── keycloak-sts.yaml
-    │   │       ├── minio.yaml
     │   │       ├── postgresql-sts.yaml
-    │   │       └── redis.yaml
+    │   │       ├── redis.yaml
+    │   │       └── rustfs.yaml
     │   └── helmfile.yaml.gotmpl
     └── mobile
         ├── .bundle
@@ -691,11 +811,16 @@
         ├── src
         │   ├── api
         │   │   ├── ApiError.ts
+        │   │   ├── UploadFinalizationNotFoundError.ts
         │   │   ├── constants.ts
+        │   │   ├── fetchApi.test.ts
         │   │   ├── fetchApi.ts
         │   │   ├── queryClient.ts
         │   │   ├── queryKeys.ts
-        │   │   └── useConfig.ts
+        │   │   ├── rateLimits.test.ts
+        │   │   ├── rateLimits.ts
+        │   │   ├── useConfig.ts
+        │   │   └── useCooldown.ts
         │   ├── assets
         │   │   ├── icon.svg
         │   │   ├── icons
@@ -716,6 +841,7 @@
         │   │       ├── end.wav
         │   │       └── start.wav
         │   ├── components
+        │   │   ├── AiJobFailureAlert.tsx
         │   │   ├── AppInitialization.tsx
         │   │   ├── AppText.tsx
         │   │   ├── AudioRecorder.tsx
@@ -725,10 +851,16 @@
         │   │   ├── LoginButton.tsx
         │   │   ├── LoginWithProConnectButton.tsx
         │   │   ├── MainMenu.tsx
+        │   │   ├── RateLimitNotice.tsx
         │   │   ├── RecordingMenu.tsx
         │   │   ├── RetryTranscriptModal.tsx
+        │   │   ├── TranscriptErrorAlert.tsx
+        │   │   ├── UploadLimitAlert.tsx
         │   │   ├── UploadProgress.tsx
-        │   │   └── colors.ts
+        │   │   ├── UploadRateLimitAlert.tsx
+        │   │   ├── colors.ts
+        │   │   ├── rateLimitMessage.ts
+        │   │   └── showRetryTranscriptResult.ts
         │   ├── features
         │   │   ├── ai-jobs
         │   │   │   ├── api
@@ -737,14 +869,19 @@
         │   │   │   │   └── types.ts
         │   │   │   ├── constants.ts
         │   │   │   └── utils
+        │   │   │       ├── failurePresentation.test.ts
+        │   │   │       ├── failurePresentation.ts
         │   │   │       ├── getMainAiJobs.test.ts
         │   │   │       ├── getMainAiJobs.ts
         │   │   │       ├── transcript.test.ts
         │   │   │       ├── transcript.ts
         │   │   │       └── useFormattedProcessingDuration.ts
         │   │   ├── analytics
-        │   │   │   └── hooks
-        │   │   │       └── useAnalytics.ts
+        │   │   │   ├── hooks
+        │   │   │   │   └── useAnalytics.ts
+        │   │   │   └── utils
+        │   │   │       ├── filterException.test.ts
+        │   │   │       └── filterException.ts
         │   │   ├── auth
         │   │   │   └── api
         │   │   │       ├── ApiUser.ts
@@ -756,6 +893,7 @@
         │   │   │   └── UpdateModal.tsx
         │   │   ├── files
         │   │   │   └── api
+        │   │   │       ├── createFile.test.ts
         │   │   │       ├── createFile.ts
         │   │   │       ├── deleteFile.ts
         │   │   │       ├── getFile.ts
@@ -764,7 +902,8 @@
         │   │   │       ├── mockData.ts
         │   │   │       ├── partialUpdateFile.ts
         │   │   │       ├── restoreFile.ts
-        │   │   │       └── types.ts
+        │   │   │       ├── types.ts
+        │   │   │       └── uploadLimit.ts
         │   │   └── recordings
         │   │       ├── hooks
         │   │       │   └── useLocalRecordings.ts
@@ -799,7 +938,11 @@
         │   │   ├── importedFile.test.ts
         │   │   ├── importedFile.ts
         │   │   ├── index.ts
+        │   │   ├── storage.test.ts
         │   │   ├── storage.ts
+        │   │   ├── storage404.test.ts
+        │   │   ├── storageHydration.test.ts
+        │   │   ├── uploadRetry.ts
         │   │   ├── uploadSelection.test.ts
         │   │   ├── uploadSelection.ts
         │   │   └── userStore.ts
@@ -814,5 +957,6 @@
         │       ├── useInsets.ts
         │       └── wait.ts
         ├── tsconfig.json
+        ├── vitest.config.ts
         └── yarn.lock
-190 directories, 627 files
+195 directories, 766 files
