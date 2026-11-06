@@ -1,59 +1,60 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Outil de modération backoffice pour la plateforme MonComptePro. Il permet la gestion des organisations, des utilisateurs et la modération des domaines et des demandes d'autorisation.",
+  "description": "Outil de backoffice destiné à la modération pour le projet MonComptePro. Il permet la gestion des utilisateurs, le suivi des activités et la modération des domaines.",
   "language": "TypeScript",
   "features": [
     "Administration & Backoffice",
+    "Suivi & Traçabilité",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des établissements & Structures",
-    "Suivi & Traçabilité"
+    "Gestion métier générale",
+    "Tableaux & Affichage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Bun",
     "Preact",
     "HTMX",
     "Hono",
-    "PostgreSQL",
-    "Drizzle ORM",
     "Zod",
+    "Drizzle ORM",
+    "PostgreSQL",
+    "Bun",
     "@gouvfr/dsfr"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
+    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "CI/CD & Déploiement",
-    "Design System (DSFR & UI libs)",
-    "Tests"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "session"
+      "oauth2",
+      "jwt"
     ]
   },
   "tests": [
-    "Buncept (CodeceptJS-style)",
+    "Buncept",
     "Cypress",
-    "@testing-library/preact"
+    "Bun test"
   ],
   "workflows": [
     "release.yml"
   ],
-  "lastActivity": "2026-10-30T00:00:00Z",
-  "status": "active",
-  "license": null,
+  "lastActivity": "2026-11-02T00:00:00Z",
+  "status": "maintained",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "JavaScript",
+    "Bases de données SQL",
+    "Design System & UI",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Bases de données SQL",
-    "Design System & UI"
+    "Tests & Qualité",
+    "HTML, CSS & Web"
   ]
 }
