@@ -1,20 +1,21 @@
-## Changelog : Aidants_Connect (30 derniers jours, au 27 octobre 2026)
+## Changelog : Aidants_Connect (30 derniers jours, au 05 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'accompagnement des utilisateurs via une transition des guides PDF vers une documentation en ligne, le renforcement de l'accessibilité du site et l'optimisation des outils de gestion interne ainsi que des communications par e-mail.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la communication avec les utilisateurs et sur l'accessibilité de la plateforme. Les modèles d'emails ont été modernisés pour respecter les standards visuels de l'État (DSFR) et leurs contenus ont été enrichis. Par ailleurs, les guides d'aide ont été simplifiés en remplaçant les anciens fichiers PDF par des liens directs vers la documentation en ligne, et des correctifs de contraste ont été apportés pour faciliter la lecture.
 
 ### Évolutions fonctionnelles
-- **Gestion des mandats** : Les formateurs P2P disposent désormais de la possibilité de créer des mandats [#1828](https://github.com/betagouv/Aidants_Connect/issues/1828).
-- **Expérience utilisateur et ressources** : 
-    - Remplacement des anciens guides PDF par des liens directs vers la documentation en ligne pour une information plus à jour [#1825](https://github.com/betagouv/Aidants_Connect/issues/1825).
-    - Mise à jour de la FAQ pour faciliter la connexion et la création de mandats.
-- **Gestion des référents** : Modification de l'affichage de la liste des co-référents pour ne plus y inclure les demandes de co-référents [#1852](https://github.com/betagouv/Aidants_Connect/issues/1852).
-- **Accessibilité** : Amélioration des contrastes sur la page des statistiques pour garantir une meilleure lisibilité [#1854](https://github.com/betagouv/Aidants_Connect/issues/1854) et corrections générales [#1823](https://github.com/betagouv/Aidants_Connect/issues/1823).
+- **Modernisation de la communication par email** :
+    - Refonte visuelle des modèles d'emails pour s'aligner sur le design system DSFR ([#1855](https://github.com/betagouv/Aidants_Connect/issues/1855)).
+    - Mise à jour massive des contenus et des textes des différents modèles (bienvenue, création de compte, validation de formation, etc.) ([#1851](https://github.com/betagouv/Aidants_Connect/issues/1851), [#1849](https://github.com/betagouv/Aidants_Connect/issues/1849)).
+- **Amélioration de l'accompagnement et de l'aide** :
+    - Remplacement des guides d'utilisation en PDF par des liens vers la documentation en ligne pour une consultation plus fluide ([#1825](https://github.com/betagouv/Aidants_Connect/issues/1825)).
+    - Mise en place de nouvelles notifications de relance pour les aidants et les référents ([#1858](https://github.com/betagouv/Aidants_Connect/issues/1858)).
+- **Accessibilité et interface** :
+    - Amélioration du contraste sur la page des statistiques pour une meilleure lisibilité ([#1854](https://github.com/betagouv/Aidants_Connect/issues/1854)).
+    - Optimisation de l'affichage de la liste des co-référents pour éviter les doublons de demandes ([#1852](https://github.com/betagouv/Aidants_Connect/issues/1852)).
 
 ### Évolutions techniques
-- **Outils d'administration** : Mise en place de cockpits de gestion pour la BDT [#1827](https://github.com/betagouv/Aidants_Connect/issues/1827) et le CDD.
-- **Système de notification** : Optimisation de la logique d'envoi des notifications pour gérer les cas sans cible d'aidant spécifique [#1829](https://github.com/betagouv/Aidants_Connect/issues/1829).
+- **Stabilité** : Corrections diverses de la suite de tests pour assurer la fiabilité des déploiements.
 
 ### Autres changements
-- **Communication** : Refonte complète des modèles d'e-mails (formats MJML et texte) pour l'ensemble des parcours utilisateurs (bienvenue, création de compte, validation de formation, refus, etc.).
-- **Conformité** : Mise à jour de la déclaration d'accessibilité suite aux derniers audits [#1843](https://github.com/betagouv/Aidants_Connect/issues/1843).
+- **Conformité** : Mise à jour de la déclaration et du rapport d'accessibilité suite aux résultats d'un audit de conformité ([#1843](https://github.com/betagouv/Aidants_Connect/issues/1843)).
