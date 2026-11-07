@@ -1,38 +1,44 @@
-## Changelog : les-emplois (30 derniers jours, au 04/11/2026)
+## Changelog : les-emplois (30 derniers jours, au 06 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes importantes tant sur l'expérience utilisateur que sur sa robustesse technique. Les professionnels bénéficient de nouveaux outils de pilotage (rapports de support, statistiques GEIQ) et les usagers d'un parcours d'orientation plus fluide et enrichi (ajout de la nationalité, badge QPV, demandes d'accompagnement en fin de parcours). Côté infrastructure, le passage à Python 3.14 et l'adoption de RustFS renforcent la modernité et la performance du service.
+Ce mois-ci, le projet a franchi des étapes importantes pour améliorer l'accompagnement des usagers, notamment via une meilleure gestion des fins de parcours et l'ajout d'informations clés (nationalité, badges QPV). Les outils pour les professionnels ont été enrichis avec un nouveau système de rapports de support. Parallèlement, une montée de version majeure (Python 3.14) et des optimisations de performance sur l'interface d'administration assurent une plateforme plus robuste et rapide.
 
 ### Évolutions fonctionnelles
-- **Parcours Usager & Orientation** : 
-    - Ajout du champ "Nationalité" et du badge "QPV" sur les profils usagers.
-    - Amélioration du tunnel d'orientation avec un formulaire de création simplifié et un affichage plus complet des informations sur les bénéficiaires.
-    - Mise en place d'un système de demande de support professionnel lorsqu'un contrat arrive à échéance.
-- **Outils de Pilotage & Administration** :
-    - Création de nouveaux tableaux de bord pour le suivi des dossiers salariés et l'évaluation des campagnes GEIQ.
-    - Amélioration des exports Metabase (ajout des codes INSEE, rapports de support pro et suivi des emails de mobilisation).
-    - Meilleure gestion des organisations et des contrats ASP dans l'interface d'administration.
-- **Interface Utilisateur (UI)** :
-    - Harmonisation visuelle globale (tailles des badges, couleurs des boutons, styles des sections d'informations).
-    - Refonte de l'écran de connexion (nouvelle illustration et design).
-    - Ajout de bannières d'information contextuelles (campagnes DORA, informations NIR).
+- **Orientation et suivi des usagers** : 
+    - Ajout des champs nationalité et âge dans les profils et formulaires.
+    - Intégration de badges QPV pour une meilleure identification géographique.
+    - Amélioration du tunnel d'orientation avec des formulaires simplifiés et l'affichage d'informations complémentaires sur les bénéficiaires.
+    - Mise en place de fonctionnalités dédiées aux fins de parcours (filtres spécifiques, demandes de support automatisées et affichage des situations de fin de contrat).
+- **Outils pour les professionnels et entreprises** :
+    - Création d'un système de rapports de support professionnel avec notifications pour les prescripteurs autorisés.
+    - Amélioration de la visibilité des contrats et des informations de recherche pour les employeurs.
+    - Nouvelle vue pour lister les organisations des territoires.
+- **Interface et expérience utilisateur (UI/UX)** :
+    - Refonte visuelle de la page de connexion (nouveau design, illustrations et couleurs).
+    - Harmonisation des composants graphiques (boutons, badges, alertes) sur l'ensemble de la plateforme.
+    - Amélioration de la clarté des messages d'erreur et des instructions dans les formulaires.
+- **Pilotage et données** :
+    - Enrichissement des exports Metabase (ajout des codes INSEE, suivi des emails de mobilisation et présence de numéros de téléphone).
 
 ### Évolutions techniques
-- **Infrastructure & Performance** :
-    - Migration majeure vers Python 3.14.
-    - Remplacement de MinIO par RustFS pour le stockage.
-    - Optimisation des performances de l'administration (pagination et chargement des pages sur les grandes tables) et compression des ressources images.
-- **Gestion des Données & Imports** :
-    - Refonte du processus de synchronisation des communes (mise en cache, détection précoce des incohérences CSV, gestion des contraintes de lieu de naissance).
-    - Amélioration de la robustesse des imports (gestion des fichiers Excel via `python-calamine`, rejet des fichiers corrompus).
-    - Optimisation du traitement des emails entrants via l'intégration de webhooks authentifiés (Brevo).
-- **Sécurité & Authentification** :
-    - Amélioration du parcours d'enrôlement à la double authentification (2FA).
-    - Renforcement de la validation des adresses email (vérification des serveurs MX) et blocage de la création de comptes en doublon.
-- **Qualité Logicielle** :
-    - Refonte du workflow de gestion des dossiers salariés (`EmployeeRecord`) pour une meilleure gestion des états et des transitions.
-    - Optimisation de la suite de tests (exécution parallélisée en 4 segments pour réduire le temps de CI).
+- **Performance et Administration** :
+    - Optimisation de l'affichage des grandes tables dans l'interface d'administration (utilisation de pagination et de hiérarchies de dates optimisées).
+    - Réduction de la charge des requêtes sur les pages d'administration volumineuses.
+- **Infrastructure et Backend** :
+    - Migration du système de stockage de MinIO vers RustFS.
+    - Passage à Python 3.14.
+    - Amélioration de la résilience de la gestion des tâches (reconnexion automatique à Redis pour Huey).
+- **Gestion des données et géographie** :
+    - Optimisation du processus de synchronisation des communes (mise en cache des résultats, meilleure gestion des erreurs CSV et détection précoce des incohérences).
+    - Amélioration de la précision du géocodage.
+- **Sécurité et Fiabilité** :
+    - Renforcement de la validation des adresses email via la vérification des serveurs MX.
+    - Amélioration du processus d'enrôlement à la double authentification (2FA).
+    - Optimisation de la traçabilité (audit trail) et de la gestion des logs d'erreurs d'envoi d'emails.
+- **Qualité logicielle et CI/CD** :
+    - Accélération de la chaîne d'intégration continue (tests parallélisés et mise en cache des bibliothèques spatiales).
+    - Stabilisation de la suite de tests (correction de tests instables/flaky).
 
 ### Autres changements
-- Mise à jour de la documentation technique concernant le parsing des données entrantes.
-- Nettoyage du code (suppression de fichiers statiques, de commandes de gestion et de styles CSS inutilisés).
+- **Documentation** : Mise à jour des mentions légales (CGU et politique de confidentialité) et ajout de la documentation technique sur le parsing des emails entrants.
+- **Maintenance** : Nettoyage de code, suppression de fichiers statiques et de commandes de gestion inutilisées.

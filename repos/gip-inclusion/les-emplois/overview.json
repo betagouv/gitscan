@@ -1,21 +1,19 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi. Il facilite l'orientation via des tiers habilités ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Recherche & Filtres",
     "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "Statistiques & Rapports",
-    "Tableaux & Affichage",
-    "Gestion métier générale",
-    "Collaboration & Workflow",
     "Notifications & Alertes",
-    "Administration & Backoffice"
+    "Tableaux & Affichage",
+    "Gestion métier générale"
   ],
-  "audience": "Professionnels",
+  "audience": "Professionnels et Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
@@ -24,9 +22,9 @@
     "MinIO",
     "RustFS",
     "GDAL",
+    "Brevo",
     "uv",
-    "pytest",
-    "psycopg"
+    "pytest"
   ],
   "components": [
     "API REST & GraphQL",
@@ -35,32 +33,37 @@
     "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Scripts & Utilitaires",
-    "ORM & Accès aux données",
+    "Intégrations services externes",
     "Tests",
-    "SIG & Géospatial"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
+      "email-password",
+      "oauth2",
       "mfa",
-      "sso"
+      "session"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": "pytest",
+  "workflows": [
+    "GitHub Actions",
+    "pre-commit"
+  ],
   "lastActivity": "2026-11-02T00:00:00Z",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Emploi, Social & Logement",
-    "Accessibilité",
     "CI/CD & GitHub Actions",
-    "SIG & Géospatial"
+    "Emploi, Social & Logement",
+    "Accessibilité"
   ]
 }
