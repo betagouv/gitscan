@@ -1,27 +1,29 @@
-## Changelog : infra (30 derniers jours, au 30 octobre 2026)
+## Changelog : infra (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Ce mois-ci, l'accent a été mis sur le renforcement de la sécurité et de la fiabilité de l'infrastructure. Les principales évolutions concernent l'isolation de certains services sur des réseaux privés, l'amélioration de la gestion des clés de sécurité lors des déploiements automatisés, et une optimisation importante du système de collecte de logs pour une meilleure visibilité sur l'état des serveurs.
+Ce mois a été marqué par une étape majeure avec le déploiement du socle de la nouvelle infrastructure. Les efforts se sont concentrés sur le renforcement de la sécurité (isolation réseau, gestion des secrets) et l'optimisation des processus de déploiement automatisés (CI/CD) pour garantir une meilleure stabilité des services.
 
 ### Évolutions fonctionnelles
-- Mise à disposition d'une nouvelle image Docker pour l'outil d'analyse d'audience Matomo [#244].
+- Mise à disposition d'une nouvelle image Docker pour le déploiement de Matomo [#244](https://github.com/mission-apprentissage/infra/pull/244).
 
 ### Évolutions techniques
-- **Sécurité et Réseau** :
-    - Migration de `bal.production` vers un réseau privé pour renforcer l'isolation des services.
-    - Correction et mise à jour des règles de pare-feu (Nftables) pour les services `bal.production`, `bal.staging` et `mongodb-lba`.
-- **CI/CD et Automatisation** :
-    - Amélioration de la gestion des clés OpenPGP dans les conteneurs de déploiement (importation des clés, utilisation d'un trousseau GnuPG dédié [#246], passage en mode batch).
-    - Stabilisation des pipelines de CI, notamment sur la validation des environnements [#243].
-    - Exclusion de `bal.production` des cycles de redémarrage automatique des serveurs.
-- **Observabilité et Logs** :
-    - Mise à jour majeure de la pile de logging avec Fluentd (passage en version 1.7.0, correction du parsing syslog et de la gestion des chemins S3 [#240, #241]).
-- **Infrastructure et Conteneurs** :
-    - Support de la nouvelle pile système pour `lba-preview` [#242].
-    - Optimisation de la configuration de `containerd` et mise à jour des images Docker des runners.
-    - Correction de compatibilité avec Docker Compose (retrait de paramètres obsolètes).
+- **Architecture & Core** :
+    - Mise en place du socle de la nouvelle infrastructure [#248](https://github.com/mission-apprentissage/infra/pull/248).
+    - Intégration de la pile système pour `lba-preview` [#242](https://github.com/mission-apprentissage/infra/pull/242).
+    - Configuration spécifique pour `containerd`.
+- **Sécurité & Réseau** :
+    - Migration de `bal.production` sur un réseau privé pour une meilleure isolation.
+    - Renforcement de la gestion des secrets via la rotation des clés SOPS.
+    - Amélioration de la gestion des clés OpenPGP dans les workflows et les conteneurs runners [#246](https://github.com/mission-apprentissage/infra/pull/246).
+    - Corrections des règles de pare-feu (Nftables) pour MongoDB et les services BAL.
+- **CI/CD & Observabilité** :
+    - Optimisation des runners (passage sur Ubuntu 26.04 et gestion du trousseau GnuPG).
+    - Amélioration de la stabilité de la CI (validation des environnements et synchronisation des sous-modules) [#243](https://github.com/mission-apprentissage/infra/pull/243).
+    - Optimisation de la pile de logs avec Fluentd (gestion des chemins S3, parsing syslog et épinglage des dépendances Ruby) [#240](https://github.com/mission-apprentissage/infra/pull/240).
 
 ### Autres changements
-- Nettoyage de diverses erreurs de saisie (typos) dans les inventaires (Sentry, LBA).
-- Mise à jour de sous-modules et homogénéisation des scripts mutualisés.
-- Suppression de références obsolètes dans les fichiers de configuration externes.
+- **Maintenance & Nettoyage** :
+    - Homogénéisation des scripts mutualisés.
+    - Retrait du produit `bal` des chaînes de déploiement.
+    - Diverses corrections de typos dans les inventaires (Sentry, LBA) et les fichiers de configuration.
+    - Mise à jour de plusieurs images Docker (Fluentd, Runner) et des sous-modules.
