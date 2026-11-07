@@ -22,11 +22,21 @@ and this project adheres to
 - ⬆️(backend) update python dependencies
 - ⬆️(agents) update python dependencies
 - ⬆️(summary) update python dependencies
+- 🔒️(backend) issue room access tokens via POST rooms/{id}/join/ only
+- 🔒️(frontend) send the display name in the join request body
+- 🔥(backend) drop is_administrable from unregistered room payloads
 
 ### Fixed
 
+- 📌(summary) pin kombu to keep celery workers compatible with redis 5
 - 🐛(frontend) show a page when the connection ends unexpectedly
 - 🐛(frontend) show the transcript mic hint when every mic is muted
+- 🐛(frontend) show join errors instead of silently waiting in the lobby
+- 🐛(frontend) send users who cannot enter directly back to the lobby
+- 🔒️(backend) refuse unregistered rooms whose slug is a UUID
+- 🔒️(agents) upgrade python to 3.14.10 to fix CVE-2026-109518
+- 🔒️(docker) upgrade musl-utils to 1.2.6-r3 to fix CVE-2026-107891
+- ♿️(frontend) close the invite dialog with the Escape key #1916
 
 ## [1.37.0] - 2026-11-01
 
@@ -37,6 +47,13 @@ and this project adheres to
 - 🔒️(frontend) keep rooms out of search engine and AI indexes
 - ⬆️(backend) upgrade django-lasuite to v1.0.0
 - ⚡️(docker) build frontend assets natively for arm64 images
+
+### Fixed
+
+- 🔒️(summary) protect signed URLs in models, source logs and analytics metadata
+- 🔒️(summary) mask secret validation inputs and sanitize upstream and task errors
+- 🔒️(summary) scrub sensitive Sentry event and breadcrumb content while retaining
+  redacted frame locals and application DEBUG diagnostics
 
 ## [1.36.3] - 2026-10-23
 

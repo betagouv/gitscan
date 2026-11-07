@@ -464,6 +464,7 @@
     │   │   │   │   ├── test_api_rooms_creation_callback.py
     │   │   │   │   ├── test_api_rooms_delete.py
     │   │   │   │   ├── test_api_rooms_invite.py
+    │   │   │   │   ├── test_api_rooms_join.py
     │   │   │   │   ├── test_api_rooms_list.py
     │   │   │   │   ├── test_api_rooms_lobby.py
     │   │   │   │   ├── test_api_rooms_lobby_trusted.py
@@ -524,6 +525,7 @@
     │   │   │   ├── test_utils_build_telephony_config.py
     │   │   │   ├── test_utils_detect_mimetype.py
     │   │   │   ├── test_utils_format_telephony_phone_number.py
+    │   │   │   ├── test_utils_is_uuid.py
     │   │   │   └── utils.py
     │   │   ├── urls.py
     │   │   ├── utils.py
@@ -941,6 +943,7 @@
     │   │   │   │   │   ├── ApiRoom.ts
     │   │   │   │   │   ├── createRoom.ts
     │   │   │   │   │   ├── fetchRoom.ts
+    │   │   │   │   │   ├── joinRoom.ts
     │   │   │   │   │   ├── muteParticipant.ts
     │   │   │   │   │   ├── muteParticipants.ts
     │   │   │   │   │   ├── patchRoom.tsx
@@ -1511,6 +1514,7 @@
         │   │   ├── checks.py
         │   │   ├── config.py
         │   │   ├── docs_service.py
+        │   │   ├── exceptions.py
         │   │   ├── file_service.py
         │   │   ├── llm_service.py
         │   │   ├── locales
@@ -1521,6 +1525,7 @@
         │   │   │   ├── nl.py
         │   │   │   └── strings.py
         │   │   ├── models.py
+        │   │   ├── privacy.py
         │   │   ├── prompt.py
         │   │   ├── security.py
         │   │   ├── sentry.py
@@ -1549,10 +1554,14 @@
         │   ├── conftest.py
         │   ├── models
         │   │   ├── __init__.py
+        │   │   ├── test_secret_urls.py
         │   │   └── test_whisper_x_response.py
         │   └── unit
         │       ├── test_file_service.py
+        │       ├── test_privacy.py
         │       ├── test_sentry.py
-        │       └── test_user_assign.py
+        │       ├── test_user_assign.py
+        │       ├── test_validation_error_formatting.py
+        │       └── test_validation_errors.py
         └── uv.lock
-279 directories, 1278 files
+279 directories, 1287 files
