@@ -1,0 +1,44 @@
+[project]
+name = "mille-feuille-worker-extraction"
+version = "0.46.0"
+description = "Worker Celery : extraction des entités d'un dossier (LLM)"
+requires-python = ">=3.12"
+dependencies = [
+    "celery>=5.6.3",
+    "gliner2[local]>=2.1.0",
+    "httpx>=0.28.1",
+    "openai>=3.19.0",
+    "pydantic-settings>=2.15.0",
+    "redis>=8.1.0",
+    # Déclaré en direct : la source « CPU » ci-dessous ne s'applique qu'aux dépendances directes. Sans cette ligne,
+    # gliner2 tire torch depuis PyPI avec CUDA (~4 Go de plus : librairies NVIDIA et Triton).
+    "torch>=2.5.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.15.0",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+# torch en version CPU uniquement (pas de CUDA : ~200 Mo au lieu de plusieurs Go).
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

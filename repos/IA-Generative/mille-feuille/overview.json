@@ -1,47 +1,62 @@
 {
   "url": "https://github.com/IA-Generative/mille-feuille",
   "name": "mille-feuille",
-  "description": "Plateforme d'analyse documentaire assistée par IA permettant l'extraction d'entités, la génération de résumés et la création automatisée de documents PDF et ODT.",
+  "description": "Une solution complète de gestion documentaire assistée par intelligence artificielle. Elle permet l'analyse intelligente de documents, l'interaction via un chat contextuel et la génération automatique de documents officiels.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
-    "Tableaux & Affichage",
-    "Collaboration & Workflow",
-    "Administration & Backoffice"
+    "Recherche & Filtres",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design",
+    "Authentification & Accès"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "Celery",
+    "Python",
     "Redis",
-    "OpenAI",
+    "PostgreSQL",
+    "Qdrant",
+    "S3",
+    "Keycloak",
     "LibreOffice",
-    "AWS S3",
+    "PaddleOCR",
     "Docker",
-    "Ruff"
-  ],
-  "components": [
-    "Python (scripts & backend)",
-    "Intelligence Artificielle / ML",
-    "Docker & Conteneurs",
-    "Celery & Queue asynchrone",
-    "API REST & GraphQL",
-    "Stockage objet"
-  ],
-  "tests": "Tests LibreOffice pour le rendu de documents.",
-  "workflows": [
-    "CI/CD",
     "Helm",
     "KEDA"
   ],
-  "lastActivity": "2026-10-11T00:00:00Z",
+  "components": [
+    "Intelligence Artificielle / ML",
+    "Python (scripts & backend)",
+    "PostgreSQL & SQL",
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement",
+    "Stockage objet",
+    "Authentification (composant)",
+    "API REST & GraphQL"
+  ],
+  "auth": {
+    "methods": [
+      "jwt",
+      "sso"
+    ],
+    "providers": [
+      "Keycloak"
+    ]
+  },
+  "tests": "Tests unitaires et d'intégration",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-11-05T00:00:00Z",
   "status": "active",
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
     "Python",
-    "Docker & Conteneurs",
     "NLP & ML",
-    "ETL & Pipelines de données"
+    "Docker & Conteneurs",
+    "Bases de données SQL",
+    "CI/CD & GitHub Actions"
   ]
 }

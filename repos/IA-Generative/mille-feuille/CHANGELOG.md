@@ -1,5 +1,565 @@
 # Changelog
 
+## [0.46.0](https://github.com/IA-Generative/mille-feuille/compare/v0.45.0...v0.46.0) (2026-11-05)
+
+
+### Features
+
+* **admin:** onglet Modèles (capacités, modèles, hub, mode) branché sur le backend ([e10cff5](https://github.com/IA-Generative/mille-feuille/commit/e10cff547ca1658e0f68504ef121fa6ed30dceb6))
+* **llm:** « Auto » remplace « Modèle par défaut » dans les sélecteurs ([d1ac2d1](https://github.com/IA-Generative/mille-feuille/commit/d1ac2d18e7fb5aebd0c030734064cb31e0485b15))
+* **llm:** capacités définies par l'administrateur, hub en noms, mode en base ([bab199f](https://github.com/IA-Generative/mille-feuille/commit/bab199f32902bdee75b12109895d102f518042c7))
+* **llm:** modèles en base avec capacités et niveau, mode auto ([953e935](https://github.com/IA-Generative/mille-feuille/commit/953e935cca690aede2d74250042fbe26c798c753))
+* **llm:** type des modèles lu sur le hub par le backend ([90f17c6](https://github.com/IA-Generative/mille-feuille/commit/90f17c65b51af528a7120aba985e74083c5a43f3))
+
+
+### Bug Fixes
+
+* **dossier:** supprimer un dossier tout juste créé ([ba72500](https://github.com/IA-Generative/mille-feuille/commit/ba72500b4c48b29a9b5456c17b523dd1374ef152))
+* **tests:** des tests anyio empoisonnaient le moteur de base pour la suite ([e278ecf](https://github.com/IA-Generative/mille-feuille/commit/e278ecf962d0819138a203ec363518f6ef8a6cc5))
+
+## [0.45.0](https://github.com/IA-Generative/mille-feuille/compare/v0.44.0...v0.45.0) (2026-11-05)
+
+
+### Features
+
+* **frontend:** compact header in dashboard ([b4d1b5f](https://github.com/IA-Generative/mille-feuille/commit/b4d1b5f15a140782d1b8386273e52bbfc7d54b92))
+* **frontend:** make date and calendar fit the page as much as possible ([235efdf](https://github.com/IA-Generative/mille-feuille/commit/235efdf25c589342b7e3cba2ec320770ce9b802b))
+
+
+### Bug Fixes
+
+* **frontend:** fix dates, turn single number into minimum two numbers ([61761ed](https://github.com/IA-Generative/mille-feuille/commit/61761ed26406f809755695794fad64d8eeabc286))
+* **frontend:** replace hard-coded colors and shadows in the dashboard with DSFR tokens ([dcc9225](https://github.com/IA-Generative/mille-feuille/commit/dcc922573dc9f3f4d9bf33a1530021cc6f0be7b2))
+
+## [0.44.0](https://github.com/IA-Generative/mille-feuille/compare/v0.43.1...v0.44.0) (2026-11-05)
+
+
+### Features
+
+* **chat:** bbox par ligne sur les sources citées dans le chat ([d915a68](https://github.com/IA-Generative/mille-feuille/commit/d915a68fcafd7ec2a3ed3719846dc3da3c42b98c))
+* **dossier:** supprimer un dossier (administrateur ou créateur) ([de62d05](https://github.com/IA-Generative/mille-feuille/commit/de62d0511e1be33fe4634b6f34e7230601d55e31))
+
+## [0.43.1](https://github.com/IA-Generative/mille-feuille/compare/v0.43.0...v0.43.1) (2026-11-05)
+
+
+### Bug Fixes
+
+* **agent:** appels d'outil écrits en texte repris, conversation gardée avec l'agent ([b359807](https://github.com/IA-Generative/mille-feuille/commit/b359807728e923c2f56035b53f36300949f87945))
+
+## [0.43.0](https://github.com/IA-Generative/mille-feuille/compare/v0.42.0...v0.43.0) (2026-11-05)
+
+
+### Features
+
+* **ui:** harminazing the Profil page presentation with the rest of the app ([8d221c6](https://github.com/IA-Generative/mille-feuille/commit/8d221c67565bbe10e65db15aebaceeaea855be06))
+
+## [0.42.0](https://github.com/IA-Generative/mille-feuille/compare/v0.41.0...v0.42.0) (2026-11-03)
+
+
+### Features
+
+* **frontend:** create new footer but keeping old links ([fa4c29a](https://github.com/IA-Generative/mille-feuille/commit/fa4c29ad063971acddb5e1f48881905e92da5e97))
+* **frontend:** create new footer but keeping old links again ([5bb905d](https://github.com/IA-Generative/mille-feuille/commit/5bb905d22c92d12521bfa3cce8426e6104979051))
+
+
+### Bug Fixes
+
+* **frontend:** clean code to avoid bugs ([2176342](https://github.com/IA-Generative/mille-feuille/commit/217634234864b922be7b7f81963b23f4b8d903d5))
+* **ui:** make some buttons more visible when selected and hover ([ef9deb2](https://github.com/IA-Generative/mille-feuille/commit/ef9deb25ee27f5929f87db5451fc3b58712a5372))
+
+## [0.41.0](https://github.com/IA-Generative/mille-feuille/compare/v0.40.0...v0.41.0) (2026-11-03)
+
+
+### Features
+
+* **frontend:** adapt light/dark mode button to profil page ([16d483b](https://github.com/IA-Generative/mille-feuille/commit/16d483b7ccc4ef962c6518f19183267351423e15))
+* **frontend:** add light/dark mode button in Welcome Page ([adac05a](https://github.com/IA-Generative/mille-feuille/commit/adac05a3c7565cb092cdda34827fd2a2866efa44))
+* **frontend:** add pictos to light/dark mode button ([6797acd](https://github.com/IA-Generative/mille-feuille/commit/6797acd7521ca8b3e969b8400e7d19cd12dc3dc1))
+* **frontend:** adding Theme settings button configuration ([1ca86ae](https://github.com/IA-Generative/mille-feuille/commit/1ca86ae53c949d78cdd712b80f61efe173f48d3b))
+* **frontend:** configuring light and dark mode ([1f1564e](https://github.com/IA-Generative/mille-feuille/commit/1f1564e790cdfd1f563bafbbe514e715e93fd6ff))
+* **frontend:** create new component ThemeChoice ([f7f27da](https://github.com/IA-Generative/mille-feuille/commit/f7f27da79a58d1dbc441401fb6b1ee7e6ec88f46))
+
+## [0.40.0](https://github.com/IA-Generative/mille-feuille/compare/v0.39.0...v0.40.0) (2026-11-03)
+
+
+### Features
+
+* **frontend:** improving landing page in Template and CSS ([5c40d5b](https://github.com/IA-Generative/mille-feuille/commit/5c40d5b429601a979b8f57a497f9990f5f74a50f))
+
+## [0.39.0](https://github.com/IA-Generative/mille-feuille/compare/v0.38.0...v0.39.0) (2026-11-02)
+
+
+### Features
+
+* **chat:** bouton de détail de l'exécution à côté des pouces ([1a84482](https://github.com/IA-Generative/mille-feuille/commit/1a844821db043800d05736b0b4f1af279160a3dc))
+* **chat:** détail de l'exécution gardé avec chaque réponse de l'assistant ([cb85c01](https://github.com/IA-Generative/mille-feuille/commit/cb85c01b026c76bae646b3fe5344f06c01075661))
+
+## [0.38.0](https://github.com/IA-Generative/mille-feuille/compare/v0.37.1...v0.38.0) (2026-11-02)
+
+
+### Features
+
+* **analyse:** modifier et supprimer une analyse depuis sa page ([87935ae](https://github.com/IA-Generative/mille-feuille/commit/87935ae2560847b929dd18f1eb44216fa532d752))
+* **analyse:** modifier, restaurer et supprimer une analyse ([6cf7f19](https://github.com/IA-Generative/mille-feuille/commit/6cf7f19046412ecefb3595750769a84edd81b4ec))
+
+
+### Bug Fixes
+
+* **agent:** réponse écrite quand la limite d'appels d'outils est atteinte ([c0d80f2](https://github.com/IA-Generative/mille-feuille/commit/c0d80f2ddcf862ccfa7c41c0116e917d39741936))
+* **ui:** la page d'un dossier ne se mettait pas à jour en changeant de dossier ([c97a133](https://github.com/IA-Generative/mille-feuille/commit/c97a133cc60db24694e1af3f64badf0b6c831e4b))
+
+## [0.37.1](https://github.com/IA-Generative/mille-feuille/compare/v0.37.0...v0.37.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* **chat:** réponses vides ou en json du modèle jamais montrées ([332887d](https://github.com/IA-Generative/mille-feuille/commit/332887d0a9ce100ce11f42fdb644076cc989896c))
+
+## [0.37.0](https://github.com/IA-Generative/mille-feuille/compare/v0.36.1...v0.37.0) (2026-11-02)
+
+
+### Features
+
+* **analyse:** labels et entités paginés, descriptions repliables ([7753e77](https://github.com/IA-Generative/mille-feuille/commit/7753e77913f109c066c81d43a41203367d16524d))
+* **analyse:** onglets regroupés en 4 entrées et assistant pas à pas ([e30a894](https://github.com/IA-Generative/mille-feuille/commit/e30a894a75b5281482796ffc8b91ab8ce299dca2))
+
+
+### Bug Fixes
+
+* **ui:** flèche des liens de retour et bouton œil non affichés ([360f8bf](https://github.com/IA-Generative/mille-feuille/commit/360f8bf51b04263a0e40f53c5ec073874cfb50eb))
+
+## [0.36.1](https://github.com/IA-Generative/mille-feuille/compare/v0.36.0...v0.36.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* **analyses:** description des cartes rendue en markdown ([3b30b32](https://github.com/IA-Generative/mille-feuille/commit/3b30b32dead5fadda595a4d8de6ee578c90cfd66))
+* **ui:** liste du sélecteur de modèle rognée par les parents scrollables ([b7c2dcc](https://github.com/IA-Generative/mille-feuille/commit/b7c2dcc1b8da21f76af2c5f5be31bf6877af524e))
+
+## [0.36.0](https://github.com/IA-Generative/mille-feuille/compare/v0.35.0...v0.36.0) (2026-11-02)
+
+
+### Features
+
+* **analyse:** questions fréquentes versionnées ([6a8f86c](https://github.com/IA-Generative/mille-feuille/commit/6a8f86cd4c415432b368b784d0f8b4071028f4d6)), closes [#421](https://github.com/IA-Generative/mille-feuille/issues/421)
+* **chat:** ouvrir la conversation sur la présentation du dossier ([1d4772d](https://github.com/IA-Generative/mille-feuille/commit/1d4772d7136367809cc9ea0f044713939d7f1c7f)), closes [#423](https://github.com/IA-Generative/mille-feuille/issues/423)
+* **chat:** présentation du dossier et questions suggérées sur données simulées ([9500272](https://github.com/IA-Generative/mille-feuille/commit/95002726ce7f9bf7346631aa59f417fe86a4a2d3)), closes [#420](https://github.com/IA-Generative/mille-feuille/issues/420)
+* **chat:** retirer DossierResults, toutes les conversations sur la présentation ([678b0a5](https://github.com/IA-Generative/mille-feuille/commit/678b0a5b01db332670a7a20b1814ca71f1da45f5)), closes [#429](https://github.com/IA-Generative/mille-feuille/issues/429)
+* **dossier:** réponses prêtes aux questions fréquentes de l'analyse ([cf53dea](https://github.com/IA-Generative/mille-feuille/commit/cf53dea9628dfd2cf06e3d3553caafb46ed35b81)), closes [#422](https://github.com/IA-Generative/mille-feuille/issues/422)
+
+
+### Bug Fixes
+
+* **lint:** ligne trop longue dans la présentation du dossier ([a126176](https://github.com/IA-Generative/mille-feuille/commit/a1261761ee47b2068269313ef232292ebea6dcaf))
+
+## [0.35.0](https://github.com/IA-Generative/mille-feuille/compare/v0.34.0...v0.35.0) (2026-11-02)
+
+
+### Features
+
+* **chat:** lire les agents du dossier depuis l'API ([6a8c4be](https://github.com/IA-Generative/mille-feuille/commit/6a8c4be9738745f77af8c723eb58587687ebcc40)), closes [#415](https://github.com/IA-Generative/mille-feuille/issues/415)
+* **chat:** menu des agents de l'analyse sur données simulées ([4d8c4e9](https://github.com/IA-Generative/mille-feuille/commit/4d8c4e947923ff3adfa9dee6cbc56c99b789bff6)), closes [#415](https://github.com/IA-Generative/mille-feuille/issues/415)
+* **chat:** une mention @Nom appelle l'agent à coup sûr ([2726c9f](https://github.com/IA-Generative/mille-feuille/commit/2726c9f84d4241bda43d523d88578b28b8f55369)), closes [#415](https://github.com/IA-Generative/mille-feuille/issues/415)
+
+## [0.34.0](https://github.com/IA-Generative/mille-feuille/compare/v0.33.0...v0.34.0) (2026-11-02)
+
+
+### Features
+
+* **agent:** chaque agent lit son analyse et peut en interroger un autre ([dbcbc40](https://github.com/IA-Generative/mille-feuille/commit/dbcbc40023f9d7801f802bc4e46c234590ff2f90)), closes [#407](https://github.com/IA-Generative/mille-feuille/issues/407)
+* **chat:** choisir le bon agent par recherche hybride ([41aab32](https://github.com/IA-Generative/mille-feuille/commit/41aab32af3dc5b15cacac05410576a6f6efa2394)), closes [#408](https://github.com/IA-Generative/mille-feuille/issues/408)
+* **chat:** interroger un agent de l'analyse dans le chat du dossier ([2dee567](https://github.com/IA-Generative/mille-feuille/commit/2dee5671eab1f4dad70ab95f4dc2ea58b5b072aa)), closes [#406](https://github.com/IA-Generative/mille-feuille/issues/406)
+* **chat:** montrer quel agent répond ([732daab](https://github.com/IA-Generative/mille-feuille/commit/732daaba1ae1e93a3747a574f270386d92f9cec2)), closes [#409](https://github.com/IA-Generative/mille-feuille/issues/409)
+
+## [0.33.0](https://github.com/IA-Generative/mille-feuille/compare/v0.32.0...v0.33.0) (2026-11-02)
+
+
+### Features
+
+* **analyse:** modèle de description des images choisi par l'analyse ([11fd9d5](https://github.com/IA-Generative/mille-feuille/commit/11fd9d5f73f9733acbeb894b1a17d0595d128a74))
+* **compose:** profil ocr pour les pods d'OCR ([fde0b3e](https://github.com/IA-Generative/mille-feuille/commit/fde0b3e4364470beabdd543d7087394c3a88386a))
+* **frontend:** onglet Lecture de l'analyse pour choisir le modèle de description ([29414d5](https://github.com/IA-Generative/mille-feuille/commit/29414d5c11d2cf814d8679b5406f7496b26c73de))
+* **helm:** composants worker_ocr_* désactivés par défaut ([a8ace37](https://github.com/IA-Generative/mille-feuille/commit/a8ace37c0e4013afd54421e93ee6cb52745e8802))
+* **ocr:** pods PaddleOCR layout, ocr, table et vision ([c178259](https://github.com/IA-Generative/mille-feuille/commit/c178259c96094e88d11271ac5e451c59de3e591d))
+* **worker:** le modèle de description vient de l'analyse du dossier ([e73a903](https://github.com/IA-Generative/mille-feuille/commit/e73a90377242a270e8f51806a2689472998e9684))
+* **worker:** lecture des pages scannées par les pods d'OCR ([eb94d37](https://github.com/IA-Generative/mille-feuille/commit/eb94d3770183e1bd8ef12a0ef10d089bbc1d3a40))
+
+## [0.32.0](https://github.com/IA-Generative/mille-feuille/compare/v0.31.0...v0.32.0) (2026-11-02)
+
+
+### Features
+
+* **agent:** l'assistant tourne dans le backend, le worker agent_execution disparaît ([195d415](https://github.com/IA-Generative/mille-feuille/commit/195d415b5f30e873ec058960defb42acdbb53a93))
+* **agent:** les agents d'analyse tournent dans le backend ([dc27ed4](https://github.com/IA-Generative/mille-feuille/commit/dc27ed445693cbe3b8b642eab9316b3a3dfd91dc))
+* **agent:** outils de l'agent et propositions depuis une note dans le backend ([bd0dd9b](https://github.com/IA-Generative/mille-feuille/commit/bd0dd9b0bd07559c0e5e4c3740e92cc075c5ab61))
+* **agent:** résumés, suggestion d'analyse et champs de document dans le backend ([acd07fe](https://github.com/IA-Generative/mille-feuille/commit/acd07fe3fb54be8715d7ea59f471c7ce364c9646))
+* **backend:** les travaux de l'agent tournent dans le backend ([f10eadd](https://github.com/IA-Generative/mille-feuille/commit/f10eadd8ec0550ff3dad83e0fe915737de97bce2))
+* **chat:** le chat du dossier planifie, cherche puis répond en streaming ([0219cab](https://github.com/IA-Generative/mille-feuille/commit/0219cab228c89e79ba817e33b8ed0b4b9055c663))
+* **frontend:** la réponse du chat s'affiche à mesure qu'elle s'écrit ([780614f](https://github.com/IA-Generative/mille-feuille/commit/780614fa758041c1b17be17ef06da7b48ca2d9b7))
+* **search:** l'indexation des dossiers tourne dans le backend ([e215f3c](https://github.com/IA-Generative/mille-feuille/commit/e215f3c8b40c4015610f057f10356b0a259e6dc0))
+* **search:** recherche hybride et indexation Qdrant dans le backend ([8372247](https://github.com/IA-Generative/mille-feuille/commit/8372247de6863991cb7fa8f2a022dcbeb40f9bbc))
+
+
+### Bug Fixes
+
+* **tests:** tests de l'assistant et de l'index stables sur une base vierge ([7219c4d](https://github.com/IA-Generative/mille-feuille/commit/7219c4d952c6bf1746b1515c90f0a8515ba19fa3))
+
+
+### Code Refactoring
+
+* **internal:** retire les routes internes que seul l'ancien worker appelait ([f98bac3](https://github.com/IA-Generative/mille-feuille/commit/f98bac35dcf743fcb7f217138007474ddedb03d7))
+
+## [0.31.0](https://github.com/IA-Generative/mille-feuille/compare/v0.30.3...v0.31.0) (2026-11-02)
+
+
+### Features
+
+* **compose:** profil ollama pour un hub LLM local (SmolVLM-500M) ([203e49d](https://github.com/IA-Generative/mille-feuille/commit/203e49d0fef2649c3679e04367c50e5a6729e5cc))
+
+## [0.30.3](https://github.com/IA-Generative/mille-feuille/compare/v0.30.2...v0.30.3) (2026-10-26)
+
+
+### Bug Fixes
+
+* **helm:** allow KEDA to reach Redis ([03003d6](https://github.com/IA-Generative/mille-feuille/commit/03003d6e5f80eecd09869b910422b47bad5f2a0d))
+
+## [0.30.2](https://github.com/IA-Generative/mille-feuille/compare/v0.30.1...v0.30.2) (2026-10-23)
+
+
+### Bug Fixes
+
+* **frontend:** simplifie la création d'analyse ([3be5bd4](https://github.com/IA-Generative/mille-feuille/commit/3be5bd4b889bd87f8bb22310523059a7c67e9599))
+
+## [0.30.1](https://github.com/IA-Generative/mille-feuille/compare/v0.30.0...v0.30.1) (2026-10-23)
+
+
+### Bug Fixes
+
+* **chart:** retire le conteneur d'init de qdrant, refusé par le quota du namespace ([828d587](https://github.com/IA-Generative/mille-feuille/commit/828d5877a91e5c18923044701f7847efac7a8d2a))
+
+## [0.30.0](https://github.com/IA-Generative/mille-feuille/compare/v0.29.0...v0.30.0) (2026-10-23)
+
+
+### Features
+
+* **search:** découpage des pages en passages, classique et par modèle d'IA avec repli ([ca44f5c](https://github.com/IA-Generative/mille-feuille/commit/ca44f5cb3e8a64125870ba6b9e9b06d2a4095fc6))
+* **search:** déploiement de Qdrant dans le chart Helm et documentation ([5516219](https://github.com/IA-Generative/mille-feuille/commit/55162194896462115585f67c750eee897af1e9d0))
+* **search:** document_process dépose l'indexation du document une fois l'OCR terminé ([81fe881](https://github.com/IA-Generative/mille-feuille/commit/81fe88171584de4aea24787321392776f8a635be))
+* **search:** embeddings denses par lots et vecteur creux BM25 français ([84ae02b](https://github.com/IA-Generative/mille-feuille/commit/84ae02b23c24a290cb64420f6ccec4d77b8c4fd8))
+* **search:** indexation par page et réconciliation avec le dossier, reprenable ([976bc7b](https://github.com/IA-Generative/mille-feuille/commit/976bc7b8d548527d9f5dff8fde7847b0847957b2))
+* **search:** mesure du retrieval (lexical, sémantique, hybride) sur un jeu de questions ([f1db9db](https://github.com/IA-Generative/mille-feuille/commit/f1db9dbb5696479274cd1b3fd70d3c953e7eb234))
+* **search:** onglet Recherche de l'analyse et état de l'index d'un dossier ([f33e28f](https://github.com/IA-Generative/mille-feuille/commit/f33e28f39456b026ff7361811bec45e8fbe5f2de))
+* **search:** réglages de recherche par analyse, état et reconstruction blue/green de l'index ([d1c6113](https://github.com/IA-Generative/mille-feuille/commit/d1c6113c0a393508da3ac84c58f4df4f4c3dad2d))
+* **search:** réglages modifiables après indexation, reconstruction en lot plafonnée ([90e609f](https://github.com/IA-Generative/mille-feuille/commit/90e609fd319a766130c990a4b977f567ed5f90c9))
+* **search:** search_documents en recherche hybride Qdrant, retrait du BM25 en mémoire ([66b6c0c](https://github.com/IA-Generative/mille-feuille/commit/66b6c0c073c76bd273059261747dcba21100ab2f))
+* **search:** service Qdrant et magasin d'index par dossier (alias, hybride RRF, bascule atomique) ([1a62264](https://github.com/IA-Generative/mille-feuille/commit/1a622645a24214891113970d91de90cc25a5f22e))
+* **search:** tâches d'indexation d'un document et de reconstruction blue/green ([8e51846](https://github.com/IA-Generative/mille-feuille/commit/8e51846178b44aef8b61f45560439a1c71426ccd))
+
+
+### Bug Fixes
+
+* **release:** release-please bumpe aussi la version des uv.lock du backend et des workers ([5d51621](https://github.com/IA-Generative/mille-feuille/commit/5d5162134e62e9bc3f6ecb2b36d526c58342f12b))
+* **release:** versions des uv.lock alignées sur 0.29.0 ([b401e56](https://github.com/IA-Generative/mille-feuille/commit/b401e56f8d67baa934fbe3a8378cd46bae2f0385))
+
+
+### Performance Improvements
+
+* **search:** py-rust-stemmers à la place de snowballstemmer pour le vecteur creux ([e0b66bd](https://github.com/IA-Generative/mille-feuille/commit/e0b66bd635c5b414992abdb2b4bd8333e041916f))
+
+## [0.30.0-rc](https://github.com/IA-Generative/mille-feuille/compare/v0.29.0...v0.30.0-rc) (2026-10-23)
+
+
+### Features
+
+* **search:** découpage des pages en passages, classique et par modèle d'IA avec repli ([99afef3](https://github.com/IA-Generative/mille-feuille/commit/99afef35663dc7cce4b6893a941c5bfe8ebaff1d))
+* **search:** déploiement de Qdrant dans le chart Helm et documentation ([d7d0772](https://github.com/IA-Generative/mille-feuille/commit/d7d077267f7d8603c2ab0dd45784a1e095540d6d))
+* **search:** document_process dépose l'indexation du document une fois l'OCR terminé ([6692573](https://github.com/IA-Generative/mille-feuille/commit/669257338b3f053af70040f1f40a11d12d43f5bf))
+* **search:** embeddings denses par lots et vecteur creux BM25 français ([2933126](https://github.com/IA-Generative/mille-feuille/commit/29331269b81e9a17faee639eb450a8676d687576))
+* **search:** indexation par page et réconciliation avec le dossier, reprenable ([d0f7e53](https://github.com/IA-Generative/mille-feuille/commit/d0f7e5373bbe86307dae8839313e459b1f774637))
+* **search:** mesure du retrieval (lexical, sémantique, hybride) sur un jeu de questions ([c85b6fa](https://github.com/IA-Generative/mille-feuille/commit/c85b6faa67cbca0e290bfe48e8ea51c310f17379))
+* **search:** onglet Recherche de l'analyse et état de l'index d'un dossier ([43b5aab](https://github.com/IA-Generative/mille-feuille/commit/43b5aab07c72afb26d873905de67f9a3a32a892c))
+* **search:** réglages de recherche par analyse, état et reconstruction blue/green de l'index ([c4d984d](https://github.com/IA-Generative/mille-feuille/commit/c4d984d28e3a4421205746f59fedd50f36cd10f1))
+* **search:** réglages modifiables après indexation, reconstruction en lot plafonnée ([734fcdf](https://github.com/IA-Generative/mille-feuille/commit/734fcdfb46c2a0cf504b087eac622182a4e18779))
+* **search:** search_documents en recherche hybride Qdrant, retrait du BM25 en mémoire ([97b9f0a](https://github.com/IA-Generative/mille-feuille/commit/97b9f0af9917d818d8302ec53aab66451dc478af))
+* **search:** service Qdrant et magasin d'index par dossier (alias, hybride RRF, bascule atomique) ([db3d641](https://github.com/IA-Generative/mille-feuille/commit/db3d641d3a540139ff018b9bebf6ef691f1b5d18))
+* **search:** tâches d'indexation d'un document et de reconstruction blue/green ([db48adc](https://github.com/IA-Generative/mille-feuille/commit/db48adcc9a641f3e41f7b7fca8d256b6531442ff))
+
+
+### Bug Fixes
+
+* **release:** release-please bumpe aussi la version des uv.lock du backend et des workers ([e12cb63](https://github.com/IA-Generative/mille-feuille/commit/e12cb63415114078e635321ef246efed1b965764))
+* **release:** versions des uv.lock alignées sur 0.29.0 ([d87a930](https://github.com/IA-Generative/mille-feuille/commit/d87a930714f09002c3cc49c6c055f566380a7844))
+
+
+### Performance Improvements
+
+* **search:** py-rust-stemmers à la place de snowballstemmer pour le vecteur creux ([f44f688](https://github.com/IA-Generative/mille-feuille/commit/f44f68873bb0f31fe6039f9ba77f63c34e69be2b))
+
+## [0.29.0](https://github.com/IA-Generative/mille-feuille/compare/v0.28.0...v0.29.0) (2026-10-23)
+
+
+### Features
+
+* **chat:** cartes de sources unifiées en carrousel, numéros du texte cliquables ([c98dbb7](https://github.com/IA-Generative/mille-feuille/commit/c98dbb70569c3348d91ee87aaf2b70cd479dbbd9))
+* **chat:** numéro cité des sources, une seule suite pour le dossier et la base externe ([ac283dd](https://github.com/IA-Generative/mille-feuille/commit/ac283ddbe2b7eaca2c0d2f1bfe90fa1910281c1a))
+* **chat:** sources repliables, la dernière réponse montre les siennes ([74b51f2](https://github.com/IA-Generative/mille-feuille/commit/74b51f215d6f226bba6581d879e94e4fff25fa85))
+* **kb:** client du contrat de la base de connaissances et collections d'une source ([f227d03](https://github.com/IA-Generative/mille-feuille/commit/f227d03dababab132a5d078a01d21613e2526812))
+* **kb:** collections de la base de connaissances autorisées par analyse, versionnées ([7c32134](https://github.com/IA-Generative/mille-feuille/commit/7c321340592047d0e280e4dd7f6a91b0f58a8517))
+* **kb:** écrans des sources, des collections et des sources citées par le chat ([452c77a](https://github.com/IA-Generative/mille-feuille/commit/452c77a2894fff96744c2b703b6cdb13fe10e9f2))
+* **kb:** recherche dans la base de connaissances d'une analyse, au nom de la personne ([99c04b4](https://github.com/IA-Generative/mille-feuille/commit/99c04b44978e89207646709c5ea1e2cca6b57433))
+* **kb:** réponse normalisée du fournisseur et sources externes d'un message ([85e0f96](https://github.com/IA-Generative/mille-feuille/commit/85e0f9651cef9b5d045e2582ec7bbb2cb16f0b95))
+* **kb:** sources de connaissances avec URL, authentification et visibilité ([f8c6305](https://github.com/IA-Generative/mille-feuille/commit/f8c63057e888a58c126adb4b2cdf7750e3e1e73c))
+* **worker:** l'outil base de connaissances pour le chat et les agents, passages non fiables ([f4dcd88](https://github.com/IA-Generative/mille-feuille/commit/f4dcd8894133f01ae23eb49b05aa263e0bdee14f))
+* **worker:** sources numérotées du fournisseur, déposées avec le message du chat ([e60d0a9](https://github.com/IA-Generative/mille-feuille/commit/e60d0a988d45a45c3ab04d110f96c02fd0a3ae96))
+* **worker:** une seule suite de numéros pour les pages du dossier et les sources externes ([89f0ea0](https://github.com/IA-Generative/mille-feuille/commit/89f0ea0f644f970ed8ca8d23832623b07bcf1c1c))
+
+## [0.29.0-rc](https://github.com/IA-Generative/mille-feuille/compare/v0.28.0...v0.29.0-rc) (2026-10-23)
+
+
+### Features
+
+* **chat:** cartes de sources unifiées en carrousel, numéros du texte cliquables ([08e381a](https://github.com/IA-Generative/mille-feuille/commit/08e381a505cb2220ba8deef7e8a4e2cee70e075a))
+* **chat:** numéro cité des sources, une seule suite pour le dossier et la base externe ([cae7a9d](https://github.com/IA-Generative/mille-feuille/commit/cae7a9daf52263031e11937faf50e03d5f95fe61))
+* **chat:** sources repliables, la dernière réponse montre les siennes ([684be7b](https://github.com/IA-Generative/mille-feuille/commit/684be7b7be67297d0c465f072513424cb0260a04))
+* **kb:** client du contrat de la base de connaissances et collections d'une source ([2841aac](https://github.com/IA-Generative/mille-feuille/commit/2841aaca168ecf1f5abcf859685da124b21497b0))
+* **kb:** collections de la base de connaissances autorisées par analyse, versionnées ([cc8126d](https://github.com/IA-Generative/mille-feuille/commit/cc8126d6cad0676d4abe52e9f203ec0e77c6296e))
+* **kb:** écrans des sources, des collections et des sources citées par le chat ([a92fa8e](https://github.com/IA-Generative/mille-feuille/commit/a92fa8e3d7bcd3de4415efa3a990fed250b3e394))
+* **kb:** recherche dans la base de connaissances d'une analyse, au nom de la personne ([1e55f5c](https://github.com/IA-Generative/mille-feuille/commit/1e55f5cfb52063118d9e658751c19cd725e5eb7b))
+* **kb:** réponse normalisée du fournisseur et sources externes d'un message ([31afd57](https://github.com/IA-Generative/mille-feuille/commit/31afd57206cd61d572e2e87b1660b0548f53f2b1))
+* **kb:** sources de connaissances avec URL, authentification et visibilité ([37e115b](https://github.com/IA-Generative/mille-feuille/commit/37e115bc45986214b24562c7f491df61a391140c))
+* **worker:** l'outil base de connaissances pour le chat et les agents, passages non fiables ([e0b5f29](https://github.com/IA-Generative/mille-feuille/commit/e0b5f29880d43b73314b8a4bcb41a5b761b906ef))
+* **worker:** sources numérotées du fournisseur, déposées avec le message du chat ([5040e13](https://github.com/IA-Generative/mille-feuille/commit/5040e13368260b009121abd1af010a2c24ed157c))
+* **worker:** une seule suite de numéros pour les pages du dossier et les sources externes ([91f3226](https://github.com/IA-Generative/mille-feuille/commit/91f3226a147aea31cfb9f3215d9aa080859be8c5))
+
+## [0.28.0](https://github.com/IA-Generative/mille-feuille/compare/v0.27.0...v0.28.0) (2026-10-22)
+
+
+### Features
+
+* **chat:** carte d'autorisation des outils à onglets, refus avec texte libre ([542814e](https://github.com/IA-Generative/mille-feuille/commit/542814e58a7db29afd8b1699897257638abf5b40))
+* **chat:** carte des questions à choix de l'assistant, choix multiple et texte libre ([f1167ea](https://github.com/IA-Generative/mille-feuille/commit/f1167ea64f73b28be3a9dfa86d5538b3060bea54))
+* **chat:** réponse à une question à choix posée par l'assistant ([03c984a](https://github.com/IA-Generative/mille-feuille/commit/03c984a292feb9cf038f5dda0a3c5a012c92f2f7))
+* **tools:** demande de confirmation d'un outil du chat, décidée plus tard par la personne ([56005f5](https://github.com/IA-Generative/mille-feuille/commit/56005f5958537964350c67c11005e08452a8c069))
+* **tools:** enregistrer les outils d'un agent, internes ou de serveurs MCP ([3579971](https://github.com/IA-Generative/mille-feuille/commit/35799718ada0c7190d67a0a0acc4c4a64ca01956))
+* **tools:** masquer les écrans simulés derrière VITE_TOOLS_PREVIEW ([7012eeb](https://github.com/IA-Generative/mille-feuille/commit/7012eeb341aa7535fb14613d26551e598d843f6e))
+* **tools:** menu des outils du chat branché sur l'API, plus de données simulées ([1604767](https://github.com/IA-Generative/mille-feuille/commit/1604767eee60fcd3c4a878e8f778af2c64d9ccf9))
+* **tools:** ne proposer que les outils exécutables et exposer leurs définitions au worker ([493d872](https://github.com/IA-Generative/mille-feuille/commit/493d872dd6319e43710a1420d8fb07888c453b0d))
+* **tools:** outils d une conversation du chat : ceux de l analyse, moins ceux retirés ([5a3a638](https://github.com/IA-Generative/mille-feuille/commit/5a3a6387713ac4db01a0aba6612bb389d92be280))
+* **tools:** page Mes outils, sélecteur d'outils et maquettes du chat ([951bfd8](https://github.com/IA-Generative/mille-feuille/commit/951bfd838b89eb13c341e43ffa5e49f87df50111))
+* **tools:** proxy d'appel d'un tool MCP au nom de la personne ([f116b07](https://github.com/IA-Generative/mille-feuille/commit/f116b075a6b55aa8c1729e60a98e7f207c9ba330))
+* **tools:** registre des serveurs MCP avec échange de jeton Keycloak ([fae2c71](https://github.com/IA-Generative/mille-feuille/commit/fae2c7143ae0710df3ba6089b8cfa23eb6036a25))
+* **tools:** sélecteur d'outils d'un agent branché sur l'API, historique et restauration ([0ceb4e9](https://github.com/IA-Generative/mille-feuille/commit/0ceb4e96d7a8c4fa4c9b2016b68ea301fbaba531))
+* **tools:** tester un tool MCP avec un modèle au choix ([5881421](https://github.com/IA-Generative/mille-feuille/commit/5881421356b674c62635e284f604f12748346099))
+* **worker:** donner au chat les outils de la conversation, appelés au nom de son auteur ([8602a74](https://github.com/IA-Generative/mille-feuille/commit/8602a741ae227ec2aca6f32618a9f35fc7a7dd66))
+* **worker:** donner aux agents leurs outils choisis : calculatrice, dates et tools MCP ([e063abd](https://github.com/IA-Generative/mille-feuille/commit/e063abd6465597e1ec866d7e79b16181790c7051))
+* **worker:** l'outil ask_user pose une question à choix, la réponse relance le chat ([7cc1f74](https://github.com/IA-Generative/mille-feuille/commit/7cc1f74d972831a039d79195125f9bd5a475a5ba))
+* **worker:** le chat enregistre la demande, s'arrête, puis exécute les appels autorisés ([6226bb0](https://github.com/IA-Generative/mille-feuille/commit/6226bb0b4be5b3835c1692c53f613cc8a179c560))
+
+
+### Bug Fixes
+
+* **sdk:** accepter n'importe quel identifiant d'outil d'agent ([0f9470a](https://github.com/IA-Generative/mille-feuille/commit/0f9470ae2c502e9629a1030f0ff999a7fdec471f))
+
+## [0.28.0-rc](https://github.com/IA-Generative/mille-feuille/compare/v0.27.0...v0.28.0-rc) (2026-10-22)
+
+
+### Features
+
+* **chat:** carte d'autorisation des outils à onglets, refus avec texte libre ([7fc1796](https://github.com/IA-Generative/mille-feuille/commit/7fc1796f419351550fcac4a1bc614ddcedf64c06))
+* **chat:** carte des questions à choix de l'assistant, choix multiple et texte libre ([cc2d423](https://github.com/IA-Generative/mille-feuille/commit/cc2d423ce50256afd5f6905919f5deb6cb907cf5))
+* **chat:** réponse à une question à choix posée par l'assistant ([113ba36](https://github.com/IA-Generative/mille-feuille/commit/113ba3692fbbb5ceb7325e413c73c702264f8fb4))
+* **tools:** demande de confirmation d'un outil du chat, décidée plus tard par la personne ([8745e6e](https://github.com/IA-Generative/mille-feuille/commit/8745e6e52b6ccd2c973baf497572364d1bbc0a09))
+* **tools:** enregistrer les outils d'un agent, internes ou de serveurs MCP ([6fa4f92](https://github.com/IA-Generative/mille-feuille/commit/6fa4f9255db2a31888a3a96dfc27cc397f640f50))
+* **tools:** masquer les écrans simulés derrière VITE_TOOLS_PREVIEW ([23dd7c9](https://github.com/IA-Generative/mille-feuille/commit/23dd7c9c1054eacf006abe5d70fabea751fda429))
+* **tools:** menu des outils du chat branché sur l'API, plus de données simulées ([89023b8](https://github.com/IA-Generative/mille-feuille/commit/89023b818d14ac64653d6146425674901f08c841))
+* **tools:** ne proposer que les outils exécutables et exposer leurs définitions au worker ([389bdd8](https://github.com/IA-Generative/mille-feuille/commit/389bdd8b3f2fc8794697b79913d31a1a86925376))
+* **tools:** outils d une conversation du chat : ceux de l analyse, moins ceux retirés ([4b94429](https://github.com/IA-Generative/mille-feuille/commit/4b94429fe61f2b34fbe4423764eafc18d1462b58))
+* **tools:** page Mes outils, sélecteur d'outils et maquettes du chat ([8e17802](https://github.com/IA-Generative/mille-feuille/commit/8e178028ec6c0aea9a1dee6d6bf32da61c781334))
+* **tools:** proxy d'appel d'un tool MCP au nom de la personne ([5f82082](https://github.com/IA-Generative/mille-feuille/commit/5f82082d02ee072c87686bcf5e68898c6ad68a65))
+* **tools:** registre des serveurs MCP avec échange de jeton Keycloak ([f8cbc2a](https://github.com/IA-Generative/mille-feuille/commit/f8cbc2a2be6712831422a1ab06c8f9b731929fc7))
+* **tools:** sélecteur d'outils d'un agent branché sur l'API, historique et restauration ([46d6e5f](https://github.com/IA-Generative/mille-feuille/commit/46d6e5f16215aefec5a857eef199aace262a4b30))
+* **tools:** tester un tool MCP avec un modèle au choix ([140f894](https://github.com/IA-Generative/mille-feuille/commit/140f8943dc89410da4678a51a4a04ec213789545))
+* **worker:** donner au chat les outils de la conversation, appelés au nom de son auteur ([6046a63](https://github.com/IA-Generative/mille-feuille/commit/6046a6394034460efc68a0fffbb8a9741a67f969))
+* **worker:** donner aux agents leurs outils choisis : calculatrice, dates et tools MCP ([006c95e](https://github.com/IA-Generative/mille-feuille/commit/006c95e16bd08665084ddbf644d77d24d89f0fbe))
+* **worker:** l'outil ask_user pose une question à choix, la réponse relance le chat ([b56e086](https://github.com/IA-Generative/mille-feuille/commit/b56e0867d5af95ecb5fc8a96fffed71e7934795c))
+* **worker:** le chat enregistre la demande, s'arrête, puis exécute les appels autorisés ([549678b](https://github.com/IA-Generative/mille-feuille/commit/549678b62f05cefbded565d8bbb65f63b785a7d2))
+
+
+### Bug Fixes
+
+* **sdk:** accepter n'importe quel identifiant d'outil d'agent ([67bddcb](https://github.com/IA-Generative/mille-feuille/commit/67bddcb5852f26ad293218998da8c70d6363ca86))
+
+## [0.27.0](https://github.com/IA-Generative/mille-feuille/compare/v0.26.0...v0.27.0) (2026-10-21)
+
+
+### Features
+
+* **consommation:** attribuer les tokens d'un run éphémère à son auteur ([ac4deaf](https://github.com/IA-Generative/mille-feuille/commit/ac4deaf33eafd854349ef91e1772828826d4d309))
+* **consommation:** compter les tokens des appels au LLM, avec ma consommation et la vue admin ([3e295b2](https://github.com/IA-Generative/mille-feuille/commit/3e295b2cc4e28422602357fd4bc7364321c46969))
+
+## [0.26.0](https://github.com/IA-Generative/mille-feuille/compare/v0.25.0...v0.26.0) (2026-10-15)
+
+
+### Features
+
+* **ephemeral:** classer et extraire en une fois, avec des aides pour remplir le formulaire ([f1492b8](https://github.com/IA-Generative/mille-feuille/commit/f1492b8b717b8fc3483b7c605852240334fd19b2))
+
+
+### Bug Fixes
+
+* **ephemeral:** ouvrir une extraction en grand avec sa zone et pouvoir copier le texte ([1f9ba8d](https://github.com/IA-Generative/mille-feuille/commit/1f9ba8d8ef2a0458649ef5d892996c48c4ca8e15))
+
+## [0.25.0](https://github.com/IA-Generative/mille-feuille/compare/v0.24.1...v0.25.0) (2026-10-15)
+
+
+### Features
+
+* **document-process:** stocker le texte des pages avec sa position (lignes et mots) ([5ed110f](https://github.com/IA-Generative/mille-feuille/commit/5ed110f4c9f8131c652ed7546166224e5efb1484))
+* **dossiers:** afficher les extractions page par page avec leurs zones dans les résultats ([842a718](https://github.com/IA-Generative/mille-feuille/commit/842a71824a56ccd981c025865af0f39d94871af0))
+* **ephemeral:** afficher la classification page par page avec la capture de la page ([e016a13](https://github.com/IA-Generative/mille-feuille/commit/e016a135c1aa17efdb0292c37e1edc84051cc545))
+* **ephemeral:** localiser les entités extraites sur la page et les afficher sur sa capture ([881accf](https://github.com/IA-Generative/mille-feuille/commit/881accfb17f542d0a4eab06347d482d4b463aa3a))
+
+
+### Bug Fixes
+
+* **ephemeral:** enchaîner extraction de texte, analyses puis agents ([b5294cc](https://github.com/IA-Generative/mille-feuille/commit/b5294cc390f3777ef06156f992e5acd029bc79e3))
+
+## [0.24.1](https://github.com/IA-Generative/mille-feuille/compare/v0.24.0...v0.24.1) (2026-10-14)
+
+
+### Bug Fixes
+
+* **chart:** resources du cluster CNPG pour respecter le quota du namespace ([b23f512](https://github.com/IA-Generative/mille-feuille/commit/b23f5124083871b91d842ff236b32a074477a3aa))
+
+## [0.24.0](https://github.com/IA-Generative/mille-feuille/compare/v0.23.0...v0.24.0) (2026-10-14)
+
+
+### Features
+
+* **chart:** chemin Vault &lt;env&gt;/millefeuille/&lt;secret&gt; pour les secrets ([0cac717](https://github.com/IA-Generative/mille-feuille/commit/0cac717614031975ca7267a7671aeb80bb80c977))
+* **chart:** dev par défaut pour l'environnement des chemins Vault, et README des values ([80cccae](https://github.com/IA-Generative/mille-feuille/commit/80cccae2433c29894805d64209fabc95ef86cb22))
+
+
+### Bug Fixes
+
+* **chart:** global.projectName, écrit une seule fois pour les images et Vault ([d3386c4](https://github.com/IA-Generative/mille-feuille/commit/d3386c4852f86fc53c9a049260af0123e0224270))
+* **chart:** helper.vaultSecretPath lit global.env en table ou en liste ([33a3e8c](https://github.com/IA-Generative/mille-feuille/commit/33a3e8c1b26490d7cf5cbc8cfc3e85107cb151c3))
+
+## [0.23.0](https://github.com/IA-Generative/mille-feuille/compare/v0.22.1...v0.23.0) (2026-10-14)
+
+
+### Features
+
+* **sdk:** aligne les modèles sur le contrat d'API actuel ([d3e391a](https://github.com/IA-Generative/mille-feuille/commit/d3e391a9bae33b65f5d0e5924d83f0bfc401c3b2))
+* **sdk:** classification, extraction, liste des runs et version du backend ([004f87e](https://github.com/IA-Generative/mille-feuille/commit/004f87e43f189dfae14a113e0af942175de267e8))
+
+## [0.22.1](https://github.com/IA-Generative/mille-feuille/compare/v0.22.0...v0.22.1) (2026-10-14)
+
+
+### Bug Fixes
+
+* **ephemeral-frontend:** adresse de l'API et lien MilleFeuille lus au démarrage du conteneur ([7769862](https://github.com/IA-Generative/mille-feuille/commit/7769862055c05a13ac6c55370fe96b64623f83c1))
+
+## [0.22.0](https://github.com/IA-Generative/mille-feuille/compare/v0.21.0...v0.22.0) (2026-10-14)
+
+
+### Features
+
+* **chat:** zone d'envoi toujours visible, retour au dernier message et fichiers joints ([a143c70](https://github.com/IA-Generative/mille-feuille/commit/a143c707c544be93bc6687606a3a9a3c664a0427))
+
+
+### Bug Fixes
+
+* **chat:** zone d'envoi collante seulement quand la page tient en largeur ([fe2210d](https://github.com/IA-Generative/mille-feuille/commit/fe2210d2912b074dc6003e27ce92b4966e7a977b))
+
+## [0.21.0](https://github.com/IA-Generative/mille-feuille/compare/v0.20.0...v0.21.0) (2026-10-14)
+
+
+### Features
+
+* **dossiers:** interface d'ajout de fichiers après coup, avec leur source ([cc1f250](https://github.com/IA-Generative/mille-feuille/commit/cc1f25074a0d6651a39257263c13db0b0c71bdc2))
+* **dossiers:** sources des fichiers et ajout de fichiers à un dossier existant ([6a88142](https://github.com/IA-Generative/mille-feuille/commit/6a88142afc36e88b6cea755fe1789c82c1afccf1))
+* **workers:** donne la source du document en contexte à l'IA ([e6760ac](https://github.com/IA-Generative/mille-feuille/commit/e6760ac67385476b9065ad97163d4fb7e36f7b0d))
+
+## [0.20.0](https://github.com/IA-Generative/mille-feuille/compare/v0.19.1...v0.20.0) (2026-10-14)
+
+
+### Features
+
+* **chart:** ajoute le composant ephemeral_frontend (UneFeuille) au chart Helm ([895e714](https://github.com/IA-Generative/mille-feuille/commit/895e7147acfe0f7df9639e545868bea6b6d1c09f))
+* **ephemeral:** frontend autonome UneFeuille pour l'API éphémère ([1da9f23](https://github.com/IA-Generative/mille-feuille/commit/1da9f2301ead79e70afd3f6d171bfe76aa663322))
+* **ephemeral:** verdicts sur les prédictions et métriques par run, sans garder de données sensibles ([8c0043f](https://github.com/IA-Generative/mille-feuille/commit/8c0043fb94964dfed8a6d5c63d0d41b9032f6e1b))
+
+
+### Bug Fixes
+
+* **backend:** affiche la version du paquet dans Swagger au lieu de 0.1.0 ([8ab55fd](https://github.com/IA-Generative/mille-feuille/commit/8ab55fdc6629e5b02b84da671716dc56ad863fd4))
+
+## [0.19.1](https://github.com/IA-Generative/mille-feuille/compare/v0.19.0...v0.19.1) (2026-10-13)
+
+
+### Bug Fixes
+
+* **extraction:** torch CPU pour le worker d'extraction et pas de cache uv dans les images ([d2bfc47](https://github.com/IA-Generative/mille-feuille/commit/d2bfc47f8c1f1ce6b40feaec0043610ba78b182a))
+
+## [0.19.0](https://github.com/IA-Generative/mille-feuille/compare/v0.18.0...v0.19.0) (2026-10-13)
+
+
+### Features
+
+* **ephemeral:** clé d'API d'environnement (EPHEMERAL_API_KEY), toujours non persistante ([e4ab57a](https://github.com/IA-Generative/mille-feuille/commit/e4ab57a9d8c41e826731fe6371244b303b7d6870))
+
+## [0.19.0-rc](https://github.com/IA-Generative/mille-feuille/compare/v0.18.0...v0.19.0-rc) (2026-10-13)
+
+
+### Features
+
+* **ephemeral:** clé d'API d'environnement (EPHEMERAL_API_KEY), toujours non persistante ([043ece7](https://github.com/IA-Generative/mille-feuille/commit/043ece73672fa22e782767016cb77116b0851353))
+
+## [0.18.0](https://github.com/IA-Generative/mille-feuille/compare/v0.17.1...v0.18.0) (2026-10-13)
+
+
+### Features
+
+* **backend:** source gliner pour les entités extraites avec GLiNER2.5 ([d6220e7](https://github.com/IA-Generative/mille-feuille/commit/d6220e7ce0bf82a8586bab35774e567ebb175748))
+* **backend:** source textuelle ou visuelle sur les prédictions de classification ([8cbaaf9](https://github.com/IA-Generative/mille-feuille/commit/8cbaaf933b0237389c49f2b4ba077ec00a832d49))
+* **chart:** ajoute les workers classification et extraction au chart Helm ([e9feeb2](https://github.com/IA-Generative/mille-feuille/commit/e9feeb290427fcd221c5f7870922ab42805ce853))
+* **classification:** classification visuelle avec CLIP (CPU) en plus de la textuelle ([648208f](https://github.com/IA-Generative/mille-feuille/commit/648208f812c9d9ed307bf5ed72e2585a732eb0bd))
+* **ephemeral:** accepte la clé d'API en Authorization: Bearer en plus de X-App-Token ([bb03d68](https://github.com/IA-Generative/mille-feuille/commit/bb03d68dd8ac3b924a27d6563706fc6903177843))
+* **ephemeral:** classification et extraction d'un document en un seul appel ([edfebc7](https://github.com/IA-Generative/mille-feuille/commit/edfebc78c5f405faed8ad63b93ef8a658e6d140a))
+* **extraction:** extraction d'entités avec GLiNER2.5 (CPU) en plus du LLM ([d8707bf](https://github.com/IA-Generative/mille-feuille/commit/d8707bf9959df9cb5847e2a8d58dc9433e79f281))
+* **worker:** add calendar and duration arithmetic tools ([37b1ac9](https://github.com/IA-Generative/mille-feuille/commit/37b1ac99a36afed64d1e426785de72cf029b73d8))
+* **worker:** add catalog framework (clock, errors, bounds) ([56a8636](https://github.com/IA-Generative/mille-feuille/commit/56a8636cc6b7a9a071b8e720081883626f9688a3))
+* **worker:** add date parsing helpers in dates_basic ([eaf7c23](https://github.com/IA-Generative/mille-feuille/commit/eaf7c2300b0e64fcb8c563aca68ad6c5a95b8aea))
+* **worker:** add the 7 basic date tools in dates_basic ([4ffccd6](https://github.com/IA-Generative/mille-feuille/commit/4ffccd665dcf84fc2bdf30582b6d779389313a18))
+
+
+### Code Refactoring
+
+* **workers:** sépare la classification et l'extraction d'entités en workers dédiés ([ca3aa2c](https://github.com/IA-Generative/mille-feuille/commit/ca3aa2c3c5e8a6bec38ac0c056a9ccb00fc8931a))
+
+## [0.18.0-rc](https://github.com/IA-Generative/mille-feuille/compare/v0.17.1...v0.18.0-rc) (2026-10-13)
+
+
+### Features
+
+* **backend:** source gliner pour les entités extraites avec GLiNER2.5 ([4bbbfbd](https://github.com/IA-Generative/mille-feuille/commit/4bbbfbd7f13ba7a4cf93d5a5970f65f4ab384932))
+* **backend:** source textuelle ou visuelle sur les prédictions de classification ([f49e8e7](https://github.com/IA-Generative/mille-feuille/commit/f49e8e7008ebc0c635923db40fda3f5f95f645b1))
+* **chart:** ajoute les workers classification et extraction au chart Helm ([6bec0ae](https://github.com/IA-Generative/mille-feuille/commit/6bec0aebd2d768e5d3c8c7d7881e62d43ef0e1cc))
+* **classification:** classification visuelle avec CLIP (CPU) en plus de la textuelle ([5d04e78](https://github.com/IA-Generative/mille-feuille/commit/5d04e7815c08f14c21e65a6b392d67d6f09d837c))
+* **ephemeral:** accepte la clé d'API en Authorization: Bearer en plus de X-App-Token ([b8de551](https://github.com/IA-Generative/mille-feuille/commit/b8de55109e2f885328b4172522c416e7dea84261))
+* **ephemeral:** classification et extraction d'un document en un seul appel ([2fb0b7c](https://github.com/IA-Generative/mille-feuille/commit/2fb0b7ca572ec58dc1d105b55345774445949640))
+* **extraction:** extraction d'entités avec GLiNER2.5 (CPU) en plus du LLM ([715c93c](https://github.com/IA-Generative/mille-feuille/commit/715c93c2bc14aa3f7566b1612c5b2b15d96362a2))
+* **worker:** add calendar and duration arithmetic tools ([ca6d00d](https://github.com/IA-Generative/mille-feuille/commit/ca6d00d59b71dc316c26bccb8ff032c37550970a))
+* **worker:** add catalog framework (clock, errors, bounds) ([d493875](https://github.com/IA-Generative/mille-feuille/commit/d493875237b1d05eb2225d13d7be7d5ab994ca71))
+* **worker:** add date parsing helpers in dates_basic ([ead51f5](https://github.com/IA-Generative/mille-feuille/commit/ead51f5b2c50f439e7237279044bb41282f37e0f))
+* **worker:** add the 7 basic date tools in dates_basic ([1b62625](https://github.com/IA-Generative/mille-feuille/commit/1b62625ec9c76b9528efd48375adc1f31b33ca6a))
+
+
+### Code Refactoring
+
+* **workers:** sépare la classification et l'extraction d'entités en workers dédiés ([c09f1ee](https://github.com/IA-Generative/mille-feuille/commit/c09f1eea337f627b4d256bb1c8dedca82241aa00))
+
 ## [0.17.1](https://github.com/IA-Generative/mille-feuille/compare/v0.17.0...v0.17.1) (2026-10-11)
 
 

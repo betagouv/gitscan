@@ -1,36 +1,41 @@
-## Changelog : mille-feuille (30 derniers jours, au 11 octobre 2026)
+## Changelog : mille-feuille (30 derniers jours, au 05/11/2026)
 
 ### Résumé
-Le projet a connu une transformation majeure ce mois-ci, marquée par son passage de "dig-dig-doc" à son identité actuelle, **mille-feuille**. La plateforme est passée d'un outil d'extraction à une solution complète de gestion documentaire assistée par IA. Les utilisateurs peuvent désormais non seulement analyser des documents, mais aussi interagir avec eux via un chat intelligent, générer automatiquement des documents officiels (PDF/ODT) et suivre l'avancement de leurs dossiers via un tableau de bord complet.
+Ce mois-ci, mille-feuille a franchi une étape majeure en renforçant l'intelligence et l'autonomie de ses agents. Les utilisateurs bénéficient désormais d'un moteur de recherche beaucoup plus puissant, de la possibilité d'ajouter des sources de connaissances externes et d'une interface modernisée incluant un mode sombre/clair. Le système est devenu plus robuste grâce à une migration de plusieurs processus critiques vers le backend.
 
 ### Évolutions fonctionnelles
-- **Intelligence Artificielle & Chat :**
-    - Mise en place d'une interface de chat moderne (type ChatGPT) avec support du streaming, rendu Markdown et sélection de modèles LLM ([#8b08ebe](https://github.com/IA-Generative/mille-feuille/commit/8b08ebe)).
-    - Capacité de l'assistant à citer ses sources : les réponses incluent des liens cliquables permettant d'ouvrir directement la page et le passage surligné dans le document source ([#a842f9b](https://github.com/IA-Generative/mille-feuille/commit/a842f9b)).
-    - L'assistant peut désormais ajouter des notes internes directement dans le dossier via des outils dédiés ([#86e7802](https://github.com/IA-Generative/mille-feuille/commit/86e7802b9bbf06a76c052479cec8befe68119bb5)).
-- **Génération de documents :**
-    - Création automatisée de documents ODT et PDF à partir de modèles et de données extraites par l'IA ([#872cfee](https://github.com/IA-Generative/mille-feuille/commit/872cfee)).
-    - Interface de revue de brouillons permettant de visualiser les valeurs de champs et de prévisualiser le rendu final ([#cbb2b77](https://github.com/IA-Generative/mille-feuille/commit/cbb2b77)).
-- **Gestion des dossiers et analyses :**
-    - Nouveau tableau de bord de suivi avec gestion des échéances, des statuts et des seuils de couleur pour prioriser les tâches ([#89d6267](https://github.com/IA-Generative/mille-feuille/commit/89d6267), [#89de67](https://github.com/IA-Generative/mille-feuille/commit/89d6267)).
-    - Amélioration de l'expérience d'analyse : pagination des éléments et des notes, et possibilité de relancer une analyse ou de générer un résumé via un bouton dédié ([#057f7d6](https://github.com/IA-Generative/mille-feuille/commit/057f7d6), [#3eeb5b1](https://github.com/IA-Generative/mille-feuille/commit/3eeb5b1a867a79d2d0e8605578ed16c6b296d4b9)).
-    - Ajout d'un historique complet des événements par dossier ([#6ae067b](https://github.com/IA-Generative/mille-feuille/commit/6ae067b)).
-- **Interface Utilisateur :**
-    - Modernisation de l'interface globale respectant les standards DSFR (logo Marianne, thèmes officiels) ([#f4fec37](https://github.com/IA-Generative/mille-feuille/commit/f4fec37)).
+- **Chat & Agents** : 
+    - Amélioration de l'interaction avec les agents (possibilité de les appeler via `@Nom`, réponses en streaming, et affichage de l'agent qui répond).
+    - Introduction d'un système d'outils pour les agents (calculatrice, gestion des dates, et support du protocole MCP pour des outils externes).
+    - Nouveau système d'autorisation permettant de valider ou refuser l'utilisation d'un outil par l'assistant.
+    - Amélioration de la citation des sources dans le chat avec un affichage précis par ligne.
+- **Recherche & Connaissances** :
+    - Mise en place d'une recherche hybride (combinant recherche textuelle et sémantique) pour des résultats plus pertinents.
+    - Ajout d'une fonctionnalité de "Base de connaissances" permettant d'intégrer des sources externes via URL.
+    - Nouveaux réglages de recherche permettant de gérer l'indexation et la reconstruction des données.
+- **Analyse & Documents** :
+    - Amélioration de l'extraction de données (entités, classification visuelle via CLIP, et extraction de texte par page).
+    - Gestion des dossiers enrichie : ajout de fichiers après coup, génération de résumés automatiques et visualisation des zones d'extraction directement sur les pages.
+    - Possibilité de modifier ou de supprimer des analyses existantes.
+- **Interface Utilisateur** :
+    - Introduction du mode clair et mode sombre.
+    - Refonte visuelle du tableau de bord, de la page de profil et du pied de page.
+    - Optimisation de l'affichage des calendriers et des dates.
 
 ### Évolutions techniques
-- **Architecture & Workers :**
-    - Déploiement d'un worker spécialisé pour le rendu de documents via LibreOffice ([#90e2c64](https://github.com/IA-Generative/mille-feuille/commit/90e2c64)).
-    - Introduction du mode "Éphémère" permettant des analyses rapides et temporaires avec nettoyage automatique des données ([#2753f5f](https://github.com/IA-Generative/mille-feuille/commit/2753f5f)).
-    - Implémentation d'un serveur MCP (Model Context Protocol) pour étendre les capacités des agents ([#6e1068b](https://github.com/IA-Generative/mille-feuille/commit/6e1068b)).
-- **Infrastructure & Déploiement :**
-    - Mise en place complète de Helm charts incluant la gestion de Redis, Postgres et S3, avec autoscaling via KEDA ([#f2b0044](https://github.com/IA-Generative/mille-feuille/commit/f2b0044)).
-    - Optimisation des processus de migration de base de données lors du déploiement.
-- **Développement & SDK :**
-    - Création de SDK Python (standard et éphémère) pour faciliter l'intégration de la plateforme ([#81049c3](https://github.com/IA-Generative/mille-feuille/commit/81049c3)).
-    - Renforcement de la sécurité avec l'intégration de Keycloak pour la gestion des rôles et des accès par groupe ([#76c7689](https://github.com/IA-Generative/mille-feuille/commit/76c7689)).
+- **Architecture & Backend** :
+    - Migration des tâches lourdes (agents d'analyse, indexation de recherche, et exécution des outils) du worker vers le backend pour une meilleure stabilité.
+    - Suppression du worker `agent_execution` au profit d'une gestion centralisée.
+- **Moteur de recherche** :
+    - Intégration de Qdrant pour la gestion des index et de la recherche hybride.
+    - Implémentation d'une stratégie de reconstruction d'index "blue/green" pour permettre des mises à jour sans interruption de service.
+- **IA & Traitement de documents** :
+    - Optimisation des pods OCR avec l'intégration de PaddleOCR (layout, table, vision).
+    - Amélioration du stockage des données textuelles pour conserver la position précise (lignes/mots) des éléments extraits.
+- **Infrastructure & Déploiement** :
+    - Mise à jour majeure des charts Helm (intégration de Qdrant, gestion des secrets via Vault, et optimisation des ressources).
+    - Amélioration de la CI/CD (nettoyage des processus GitLab au profit de GitHub Actions).
 
 ### Autres changements
-- **Rebranding :** Renommage complet du projet de `dig-dig-doc` vers `mille-feuille`.
-- **Documentation :** Mise à jour massive de la documentation, incluant des exemples de dossiers types (contentieux, sécurité routière, etc.) et des guides d'utilisation des nouveaux agents ([#a21e6c7](https://github.com/IA-Generative/mille-feuille/commit/a21e6c7)).
-- **Qualité de code :** Intégration de Ruff pour le linting et de Gitleaks pour la détection de secrets dans la CI.
+- Renommage officiel du projet de `dig-dig-doc` à `mille-feuille`.
+- Mise à jour de la documentation technique (Helm, agents, et guides d'utilisation de l'API éphémère).

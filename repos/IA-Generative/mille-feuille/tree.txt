@@ -1,6 +1,7 @@
 .
 ├── .env.example
 ├── .github
+│   ├── commitlint.config.mjs
 │   ├── releases
 │   │   ├── .release-please-manifest-prerelease.json
 │   │   ├── .release-please-manifest.json
@@ -28,17 +29,81 @@
 │   ├── alembic.ini
 │   ├── app
 │   │   ├── __init__.py
+│   │   ├── agent
+│   │   │   ├── __init__.py
+│   │   │   ├── agent_call.py
+│   │   │   ├── agent_loop.py
+│   │   │   ├── agent_tool_set.py
+│   │   │   ├── analysis_agents.py
+│   │   │   ├── analysis_reader.py
+│   │   │   ├── analysis_tools.py
+│   │   │   ├── ask_user.py
+│   │   │   ├── catalog
+│   │   │   │   ├── README.md
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── functions.py
+│   │   │   │   └── tools
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── bounds.py
+│   │   │   │       ├── calculator.py
+│   │   │   │       ├── clock.py
+│   │   │   │       ├── dates_basic.py
+│   │   │   │       ├── dates_duration.py
+│   │   │   │       └── errors.py
+│   │   │   ├── chat
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── agent_reply.py
+│   │   │   │   ├── answer.py
+│   │   │   │   ├── events.py
+│   │   │   │   ├── history.py
+│   │   │   │   ├── job.py
+│   │   │   │   ├── planner.py
+│   │   │   │   ├── prompts.py
+│   │   │   │   ├── react.py
+│   │   │   │   └── research.py
+│   │   │   ├── dispatch.py
+│   │   │   ├── document_generation.py
+│   │   │   ├── documents.py
+│   │   │   ├── helper
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── job.py
+│   │   │   │   └── tools.py
+│   │   │   ├── jobs
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── agent_index.py
+│   │   │   │   ├── agents.py
+│   │   │   │   ├── document_fields.py
+│   │   │   │   ├── note_proposals.py
+│   │   │   │   ├── question_answers.py
+│   │   │   │   ├── suggestion.py
+│   │   │   │   └── summary.py
+│   │   │   ├── knowledge_tools.py
+│   │   │   ├── llm.py
+│   │   │   ├── mcp_tools.py
+│   │   │   ├── model_output.py
+│   │   │   ├── model_router.py
+│   │   │   ├── note_tools.py
+│   │   │   ├── runner.py
+│   │   │   ├── runtime.py
+│   │   │   ├── source_numbering.py
+│   │   │   ├── tools.py
+│   │   │   ├── usage.py
+│   │   │   └── wrap_up.py
 │   │   ├── celery_client.py
 │   │   ├── config
 │   │   │   ├── __init__.py
+│   │   │   ├── agent.py
 │   │   │   ├── collaboration.py
 │   │   │   ├── database.py
+│   │   │   ├── ephemeral.py
 │   │   │   ├── events.py
 │   │   │   ├── keycloak.py
 │   │   │   ├── llm.py
 │   │   │   ├── redis.py
+│   │   │   ├── search.py
 │   │   │   ├── sharing.py
-│   │   │   └── storage.py
+│   │   │   ├── storage.py
+│   │   │   └── tools.py
 │   │   ├── connectors.py
 │   │   ├── core
 │   │   │   ├── __init__.py
@@ -77,9 +142,11 @@
 │   │   │   ├── cgu.py
 │   │   │   ├── cgu_acceptance.py
 │   │   │   ├── chat_event.py
+│   │   │   ├── chat_tool_call.py
 │   │   │   ├── conversation.py
 │   │   │   ├── document_draft.py
 │   │   │   ├── document_page.py
+│   │   │   ├── document_source.py
 │   │   │   ├── document_template.py
 │   │   │   ├── dossier.py
 │   │   │   ├── dossier_access.py
@@ -87,14 +154,23 @@
 │   │   │   ├── dossier_ephemere.py
 │   │   │   ├── dossier_event.py
 │   │   │   ├── dossier_note.py
+│   │   │   ├── ephemeral_feedback.py
 │   │   │   ├── ephemeral_result.py
+│   │   │   ├── ephemeral_run_metrics.py
 │   │   │   ├── execution_log.py
 │   │   │   ├── feedback.py
 │   │   │   ├── generated_document.py
 │   │   │   ├── generation_prompt.py
+│   │   │   ├── knowledge_source.py
+│   │   │   ├── llm_model.py
+│   │   │   ├── message_external_source.py
 │   │   │   ├── notification.py
+│   │   │   ├── question_answer.py
 │   │   │   ├── report.py
+│   │   │   ├── search_index.py
 │   │   │   ├── summary.py
+│   │   │   ├── token_usage.py
+│   │   │   ├── tool.py
 │   │   │   ├── user_preference.py
 │   │   │   ├── user_task.py
 │   │   │   └── work_slot.py
@@ -106,8 +182,10 @@
 │   │   │   ├── app_token_repository.py
 │   │   │   ├── cgu_acceptance_repository.py
 │   │   │   ├── cgu_repository.py
+│   │   │   ├── chat_tool_call_repository.py
 │   │   │   ├── dashboard_repository.py
 │   │   │   ├── document_draft_repository.py
+│   │   │   ├── document_source_repository.py
 │   │   │   ├── document_template_repository.py
 │   │   │   ├── dossier_access_repository.py
 │   │   │   ├── dossier_analysis_repository.py
@@ -116,44 +194,48 @@
 │   │   │   ├── dossier_repository.py
 │   │   │   ├── ephemeral_repository.py
 │   │   │   ├── generated_document_repository.py
+│   │   │   ├── knowledge_source_repository.py
 │   │   │   ├── notification_repository.py
 │   │   │   ├── report_repository.py
+│   │   │   ├── token_usage_repository.py
+│   │   │   ├── tool_call_log_repository.py
+│   │   │   ├── tool_server_repository.py
 │   │   │   ├── tracking_repository.py
 │   │   │   ├── user_directory_repository.py
 │   │   │   ├── user_preference_repository.py
 │   │   │   └── work_slot_repository.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
-│   │   │   ├── admin_document_templates.py
-│   │   │   ├── admin_generation_prompt.py
-│   │   │   ├── admin_reports.py
-│   │   │   ├── admin_stats.py
-│   │   │   ├── admin_tasks.py
+│   │   │   ├── admin_*.py  (6 files)
 │   │   │   ├── agent_conversations.py
 │   │   │   ├── analyses.py
-│   │   │   ├── analysis_collaboration.py
-│   │   │   ├── analysis_proposals.py
+│   │   │   ├── analysis_*.py  (6 files)
 │   │   │   ├── app_tokens.py
 │   │   │   ├── assist.py
 │   │   │   ├── auth.py
 │   │   │   ├── cgu.py
+│   │   │   ├── chat_tool_calls.py
+│   │   │   ├── conversation_tools.py
 │   │   │   ├── conversations.py
 │   │   │   ├── dashboard.py
 │   │   │   ├── document_drafts.py
-│   │   │   ├── dossier_analyses.py
-│   │   │   ├── dossier_events.py
-│   │   │   ├── dossier_notes.py
+│   │   │   ├── dossier_*.py  (7 files)
 │   │   │   ├── dossiers.py
 │   │   │   ├── ephemeral.py
 │   │   │   ├── generated_documents.py
 │   │   │   ├── health.py
 │   │   │   ├── internal.py
-│   │   │   ├── internal_agent.py
+│   │   │   ├── internal_ocr.py
+│   │   │   ├── knowledge_sources.py
 │   │   │   ├── models.py
 │   │   │   ├── notifications.py
 │   │   │   ├── profile.py
 │   │   │   ├── reports.py
+│   │   │   ├── sources.py
+│   │   │   ├── tool_servers.py
+│   │   │   ├── tools.py
 │   │   │   ├── tracking.py
+│   │   │   ├── usage.py
 │   │   │   ├── user_tasks.py
 │   │   │   ├── users.py
 │   │   │   └── work_slots.py
@@ -165,41 +247,115 @@
 │   │   │   ├── analysis_proposal.py
 │   │   │   ├── app_token.py
 │   │   │   ├── cgu.py
+│   │   │   ├── chat_agent.py
+│   │   │   ├── chat_tool_call.py
 │   │   │   ├── dashboard.py
 │   │   │   ├── document_draft.py
+│   │   │   ├── document_source.py
 │   │   │   ├── document_template.py
 │   │   │   ├── dossier.py
 │   │   │   ├── dossier_analysis.py
 │   │   │   ├── dossier_event.py
 │   │   │   ├── dossier_note.py
+│   │   │   ├── dossier_presentation.py
 │   │   │   ├── ephemeral.py
+│   │   │   ├── ephemeral_metrics.py
+│   │   │   ├── external_source.py
+│   │   │   ├── frequent_questions.py
 │   │   │   ├── generated_document.py
 │   │   │   ├── health.py
+│   │   │   ├── knowledge_collection.py
+│   │   │   ├── knowledge_search.py
+│   │   │   ├── knowledge_source.py
 │   │   │   ├── llm.py
+│   │   │   ├── llm_model.py
+│   │   │   ├── message_execution.py
 │   │   │   ├── models.py
 │   │   │   ├── notification.py
+│   │   │   ├── ocr_settings.py
 │   │   │   ├── pagination.py
 │   │   │   ├── profile.py
+│   │   │   ├── question_answer.py
 │   │   │   ├── report.py
+│   │   │   ├── search_index.py
+│   │   │   ├── search_settings.py
+│   │   │   ├── tool.py
+│   │   │   ├── tool_call.py
 │   │   │   ├── tracking.py
+│   │   │   ├── usage.py
 │   │   │   ├── user_task.py
 │   │   │   └── work_slot.py
 │   │   ├── services
 │   │   │   ├── __init__.py
+│   │   │   ├── agent_dossier_files.py
 │   │   │   ├── analysis_builder.py
 │   │   │   ├── analysis_carryover.py
+│   │   │   ├── chat_conversation.py
+│   │   │   ├── chat_questions.py
+│   │   │   ├── chat_stream.py
+│   │   │   ├── chat_tool_calls.py
 │   │   │   ├── custom_fields.py
 │   │   │   ├── dashboard_stats.py
 │   │   │   ├── document_assembly.py
 │   │   │   ├── document_fields.py
 │   │   │   ├── document_template_sources.py
 │   │   │   ├── dossier_access.py
+│   │   │   ├── dossier_presentation.py
+│   │   │   ├── draft_generation_context.py
 │   │   │   ├── due_date.py
+│   │   │   ├── ephemeral_metrics.py
+│   │   │   ├── ephemeral_results.py
 │   │   │   ├── ephemeral_run_service.py
+│   │   │   ├── execution_steps.py
 │   │   │   ├── generation_prompt.py
+│   │   │   ├── internal_analyse.py
+│   │   │   ├── knowledge
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── analyse_collections.py
+│   │   │   │   ├── client.py
+│   │   │   │   ├── connection.py
+│   │   │   │   ├── contract.py
+│   │   │   │   └── search_service.py
+│   │   │   ├── llm_hub.py
+│   │   │   ├── llm_models.py
 │   │   │   ├── notification_messages.py
 │   │   │   ├── prediction_validation.py
+│   │   │   ├── search
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── agent_index.py
+│   │   │   │   ├── chunking.py
+│   │   │   │   ├── embeddings.py
+│   │   │   │   ├── index_service.py
+│   │   │   │   ├── indexer.py
+│   │   │   │   ├── indexing.py
+│   │   │   │   ├── qdrant_store.py
+│   │   │   │   ├── retrieval.py
+│   │   │   │   └── settings.py
 │   │   │   ├── slot_occurrences.py
+│   │   │   ├── source_boxes.py
+│   │   │   ├── tools
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── agent_tools.py
+│   │   │   │   ├── call_limits.py
+│   │   │   │   ├── call_result.py
+│   │   │   │   ├── call_service.py
+│   │   │   │   ├── conversation_tools.py
+│   │   │   │   ├── credentials.py
+│   │   │   │   ├── credentials_errors.py
+│   │   │   │   ├── definitions.py
+│   │   │   │   ├── dependencies.py
+│   │   │   │   ├── discovery.py
+│   │   │   │   ├── identity_tokens.py
+│   │   │   │   ├── ids.py
+│   │   │   │   ├── internal_catalog.py
+│   │   │   │   ├── mcp_caller.py
+│   │   │   │   ├── mcp_discovery.py
+│   │   │   │   ├── model_chooser.py
+│   │   │   │   ├── token_exchange.py
+│   │   │   │   ├── tool_test.py
+│   │   │   │   ├── url_guard.py
+│   │   │   │   └── visibility.py
+│   │   │   ├── usage_service.py
 │   │   │   └── user_task_service.py
 │   │   └── tasks.py
 │   ├── migrations
@@ -250,21 +406,51 @@
 │   │       ├── 20261011_0900_b7c8d9e0f1a2_creneaux_de_traitement.py
 │   │       ├── 20261012_0900_c8d9e0f1a2b3_notifications.py
 │   │       ├── 20261013_0900_d9e0f1a2b3c4_acces_aux_dossiers.py
-│   │       └── 20261014_0900_e0f1a2b3c4d5_colonnes_personnalisees.py
+│   │       ├── 20261014_0900_e0f1a2b3c4d5_colonnes_personnalisees.py
+│   │       ├── 20261015_0900_f1a2b3c4d5e6_classification_multi_label.py
+│   │       ├── 20261016_0900_a2b3c4d5e6f7_source_des_predictions.py
+│   │       ├── 20261017_0900_c4d5e6f7a8b9_source_gliner.py
+│   │       ├── 20261018_0900_d5e6f7a8b9c0_verdicts_ephemeres.py
+│   │       ├── 20261019_0900_e6f7a8b9c0d1_sources_des_fichiers.py
+│   │       ├── 20261020_0900_f7a8b9c0d1e2_page_text_boxes.py
+│   │       ├── 20261021_0900_a8b9c0d1e2f3_captures_des_resultats_ephemeres.py
+│   │       ├── 20261022_0900_b9c0d1e2f3a4_consommation_de_tokens.py
+│   │       ├── 20261022_2005_c0d1e2f3a4b5_registre_des_tools_et_serveurs_mcp.py
+│   │       ├── 20261022_2018_d1e2f3a4b5c6_audience_des_serveurs_mcp.py
+│   │       ├── 20261022_2200_e2f3a4b5c6d7_journal_des_appels_de_tools.py
+│   │       ├── 20261023_0900_f3a4b5c6d7e8_outils_retires_d_une_conversation.py
+│   │       ├── 20261023_1100_a4b5c6d7e8f9_appels_d_outils_du_chat.py
+│   │       ├── 20261024_0900_b5c6d7e8f9a0_sources_de_connaissances.py
+│   │       ├── 20261024_1000_c6d7e8f9a0b1_collections_de_connaissances_par_analyse.py
+│   │       ├── 20261025_0900_d7e8f9a0b1c2_sources_externes_des_messages.py
+│   │       ├── 20261026_0900_e8f9a0b1c2d3_numero_des_sources_citees.py
+│   │       ├── 20261027_0900_f9a0b1c2d3e4_reglages_de_recherche_et_index_des_dossiers.py
+│   │       ├── 20261029_1400_5720aea84f8a_reglages_ocr_de_l_analyse.py
+│   │       ├── 20261102_1500_460b817af7ba_questions_frequentes_de_l_analyse.py
+│   │       ├── 20261102_1700_f307221dd9e6_reponses_aux_questions_frequentes.py
+│   │       ├── 20261102_1800_ff2cad14a4b0_conversation_ouverte_sur_la_presentation.py
+│   │       ├── 20261102_1900_3b8d42bb1c0d_toutes_les_conversations_sur_la_presentation.py
+│   │       ├── 20261102_2000_8c1f4a7d2e95_createur_de_l_analyse.py
+│   │       ├── 20261102_2100_5e9a3c7b1d42_detail_de_l_execution_des_messages.py
+│   │       └── 20261105_1500_3a7d9e1c5b28_modeles_llm_et_capacites.py
 │   ├── pyproject.toml
 │   ├── scripts
 │   │   └── generate_data_model.py
 │   ├── tests
 │   │   ├── .env.testing
 │   │   ├── access_support.py
+│   │   ├── agent_support.py
 │   │   ├── conftest.py
 │   │   ├── document_helpers.py
-│   │   └── test_*.py  (49 files)
+│   │   ├── test_*.py  (120 files)
+│   │   └── tool_support.py
 │   └── uv.lock
 ├── ct.yaml
 ├── docker
-│   └── keycloak
-│       └── mille-feuille-realm.json
+│   ├── keycloak
+│   │   └── mille-feuille-realm.json
+│   └── ollama
+│       └── pull-models.sh
 ├── docker-compose.override.yaml
 ├── docker-compose.yaml
 ├── docs
@@ -272,11 +458,15 @@
 │   │   ├── acces-aux-dossiers.md
 │   │   ├── acces-de-l-agent-assistant.md
 │   │   ├── affectation-des-dossiers.md
+│   │   ├── agent-dans-le-backend.md
+│   │   ├── appel-de-tools-mcp.md
 │   │   ├── assemblage-des-documents.md
+│   │   ├── base-de-connaissances-api.yaml
 │   │   ├── brouillons-de-document.md
 │   │   ├── colonnes-personnalisees.md
 │   │   ├── creneaux-de-traitement.md
 │   │   ├── data-model.png
+│   │   ├── echange-de-jeton-mcp.md
 │   │   ├── echeance-du-dossier.md
 │   │   ├── extraction-par-document.md
 │   │   ├── generation-des-champs.md
@@ -284,14 +474,23 @@
 │   │   ├── migration-validations-prediction.md
 │   │   ├── modeles-de-document.md
 │   │   ├── notifications.md
+│   │   ├── outils-des-agents.md
+│   │   ├── recherche-dossier.md
 │   │   ├── relance-incrementale.md
 │   │   ├── relance-incrementale.png
+│   │   ├── sources-de-connaissances.md
+│   │   ├── sources-fichiers.md
 │   │   ├── statuts-de-dossier.md
 │   │   ├── tableau-de-bord.md
 │   │   └── tableau-de-suivi.md
 │   ├── e2e
 │   │   └── README.md
 │   ├── ephemeral-api.md
+│   ├── ephemeral-both-form.png
+│   ├── ephemeral-classification-extraction.md
+│   ├── ephemeral-classification-pages.png
+│   ├── ephemeral-extraction-boxes.png
+│   ├── ephemeral-extraction-modal.png
 │   ├── exemple-contentieux-administratif
 │   │   ├── 01-analyse.md
 │   │   ├── 02-classification.md
@@ -434,15 +633,28 @@
 │   │   │   ├── pagination-des-listes.png
 │   │   │   ├── presence-verrou.png
 │   │   │   └── verrou-refuse.png
+│   │   ├── chat-du-dossier
+│   │   │   ├── 01-zone-d-envoi-toujours-visible.png
+│   │   │   ├── 02-en-bas-de-la-discussion.png
+│   │   │   ├── 03-joindre-un-fichier.png
+│   │   │   └── README.md
 │   │   ├── components
 │   │   │   ├── analyses
 │   │   │   │   ├── AddAgentModal.png
 │   │   │   │   ├── AgentCard.png
 │   │   │   │   ├── EntitiesEditor.png
 │   │   │   │   └── LabelsEditor.png
-│   │   │   └── dossiers
-│   │   │       ├── CreateDossierModal.png
-│   │   │       └── ExecutionPanel.png
+│   │   │   ├── dossiers
+│   │   │   │   ├── CreateDossierModal.png
+│   │   │   │   └── ExecutionPanel.png
+│   │   │   └── presentation
+│   │   │       ├── DossierPresentation-deplie-et-question.png
+│   │   │       ├── DossierPresentation-echec.png
+│   │   │       ├── DossierPresentation-en-cours.png
+│   │   │       ├── DossierPresentation-mobile.png
+│   │   │       ├── DossierPresentation-prete.png
+│   │   │       ├── DossierPresentation-resume-en-echec.png
+│   │   │       └── DossierPresentation-sans-resume.png
 │   │   ├── documents-du-dossier
 │   │   │   ├── 01-documents-du-dossier.png
 │   │   │   ├── 02-agent-en-cours.png
@@ -489,8 +701,16 @@
 │   │   ├── pages
 │   │   │   ├── AnalyseDetailPage.png
 │   │   │   ├── AnalysesPage.png
+│   │   │   ├── DossierDetailPage
+│   │   │   │   ├── presentation-en-cours.png
+│   │   │   │   ├── presentation-prete.png
+│   │   │   │   ├── presentation-question-suggeree.png
+│   │   │   │   └── presentation-voir-le-detail.png
 │   │   │   ├── DossierDetailPage.png
-│   │   │   └── DossiersPage.png
+│   │   │   ├── DossiersPage.png
+│   │   │   └── analyse
+│   │   │       ├── AnalyseQuestionsTab-edition.png
+│   │   │       └── AnalyseQuestionsTab-historique.png
 │   │   ├── relance-de-l-analyse
 │   │   │   ├── 01-analyse-en-echec.png
 │   │   │   ├── 02-analyse-mise-a-jour.png
@@ -500,9 +720,16 @@
 │   │   │   ├── 01-cartes-de-resultats.png
 │   │   │   ├── 02-detail-classification.png
 │   │   │   ├── 03-detail-entites.png
-│   │   │   ├── 04-detail-entites-page-2.png
+│   │   │   ├── 04-detail-entites-filtre.png
 │   │   │   ├── 05-page-d-une-classification.png
-│   │   │   ├── 06-page-d-une-entite.png
+│   │   │   └── README.md
+│   │   ├── sources-des-fichiers
+│   │   │   ├── 01-fichiers-ajoutes.png
+│   │   │   ├── 02-ajouter-des-documents.png
+│   │   │   ├── 03-source-des-documents.png
+│   │   │   ├── 04-creation-avec-source.png
+│   │   │   ├── 05-sources-de-l-analyse.png
+│   │   │   ├── 06-dossier-a-ranger.png
 │   │   │   └── README.md
 │   │   ├── statuts-de-dossier
 │   │   │   ├── 01-onglet-statuts.png
@@ -529,23 +756,116 @@
 │   │   │   ├── 14-deplacer-un-creneau.png
 │   │   │   ├── 15-deplacer-vers-un-autre-jour.png
 │   │   │   └── README.md
-│   │   └── tableau-de-suivi
-│   │       ├── 01-onglet-suivi.png
-│   │       ├── 02-filtres.png
-│   │       ├── 03-affectation-en-lot.png
-│   │       ├── 04-definition-d-une-colonne.png
-│   │       ├── 05-menu-options.png
-│   │       ├── 06-choix-des-colonnes.png
-│   │       ├── 07-champs-personnalises.png
-│   │       ├── 08-historique-des-champs.png
-│   │       ├── 09-edition-en-cellule.png
-│   │       ├── 10-vue-transversale.png
-│   │       ├── 11-vue-transversale-une-analyse.png
-│   │       ├── 12-affectation-confirmee.png
-│   │       ├── 13-filtres-sur-les-colonnes.png
-│   │       └── README.md
+│   │   ├── tableau-de-suivi
+│   │   │   ├── 01-onglet-suivi.png
+│   │   │   ├── 02-filtres.png
+│   │   │   ├── 03-affectation-en-lot.png
+│   │   │   ├── 04-definition-d-une-colonne.png
+│   │   │   ├── 05-menu-options.png
+│   │   │   ├── 06-choix-des-colonnes.png
+│   │   │   ├── 07-champs-personnalises.png
+│   │   │   ├── 08-historique-des-champs.png
+│   │   │   ├── 09-edition-en-cellule.png
+│   │   │   ├── 10-vue-transversale.png
+│   │   │   ├── 11-vue-transversale-une-analyse.png
+│   │   │   ├── 12-affectation-confirmee.png
+│   │   │   ├── 13-filtres-sur-les-colonnes.png
+│   │   │   └── README.md
+│   │   └── tools
+│   │       ├── README.md
+│   │       ├── agent-outil-indisponible.png
+│   │       ├── agent-outils-enregistres.png
+│   │       ├── ajout-serveur-erreur.png
+│   │       ├── ajout-serveur.png
+│   │       ├── ajout-source-erreur.png
+│   │       ├── ajout-source.png
+│   │       ├── chat-confirmation-decidee.png
+│   │       ├── chat-confirmation-onglets.png
+│   │       ├── chat-confirmation-prete.png
+│   │       ├── chat-confirmation.png
+│   │       ├── chat-menu-mcp.png
+│   │       ├── chat-menu-outils.png
+│   │       ├── chat-menu-recherche.png
+│   │       ├── chat-outils-desactives.png
+│   │       ├── chat-outils.png
+│   │       ├── chat-question-multiple.png
+│   │       ├── chat-question-repondue.png
+│   │       ├── chat-question.png
+│   │       ├── chat-source-unique.png
+│   │       ├── chat-sources-carrousel-suite.png
+│   │       ├── chat-sources-carrousel.png
+│   │       ├── chat-sources-numero.png
+│   │       ├── chat-sources-repliees.png
+│   │       ├── collections-analyse.png
+│   │       ├── collections-modale-source.png
+│   │       ├── collections-modale.png
+│   │       ├── collections-recherche.png
+│   │       ├── import-tools.png
+│   │       ├── page-outils-recherche.png
+│   │       ├── page-outils.png
+│   │       ├── selecteur-agent.png
+│   │       ├── selecteur-modale-recherche.png
+│   │       ├── selecteur-modale.png
+│   │       ├── test-outil-agent.png
+│   │       ├── test-outil-avant.png
+│   │       ├── test-outil-effet-de-bord.png
+│   │       ├── test-outil-erreur.png
+│   │       └── test-outil-succes.png
 │   ├── mcp-helper-agent-plan.md
-│   └── secrets.md
+│   ├── ollama-local.md
+│   ├── secrets.md
+│   └── tools-mcp-plan.md
+├── ephemeral-frontend
+│   ├── .dockerignore
+│   ├── .dsfr.yml
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── docker
+│   │   ├── 40-runtime-config.sh
+│   │   └── nginx.conf
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   ├── CHANGELOG.md
+│   │   ├── config.js
+│   │   └── marianne-icone.png
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── api.ts
+│   │   ├── components
+│   │   │   ├── ApiDocs.vue
+│   │   │   ├── AppFooter.vue
+│   │   │   ├── ChangelogView.vue
+│   │   │   ├── ClassificationExplorer.vue
+│   │   │   ├── CopyButton.vue
+│   │   │   ├── DefinitionList.vue
+│   │   │   ├── EntityDialog.vue
+│   │   │   ├── EntityList.vue
+│   │   │   ├── EntitySearch.vue
+│   │   │   ├── ExtractionExplorer.vue
+│   │   │   ├── FileDropzone.vue
+│   │   │   ├── HelpTitle.vue
+│   │   │   ├── LabelList.vue
+│   │   │   ├── PageNavigator.vue
+│   │   │   ├── PageViewer.vue
+│   │   │   ├── ResultView.vue
+│   │   │   └── TaskList.vue
+│   │   ├── composables
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useClipboard.ts
+│   │   │   ├── useEphemeralRun.ts
+│   │   │   ├── usePageExplorer.ts
+│   │   │   └── usePageScreenshots.ts
+│   │   ├── config.ts
+│   │   ├── env.d.ts
+│   │   ├── main.ts
+│   │   ├── markdown.ts
+│   │   ├── types.ts
+│   │   └── utils
+│   │       └── crop.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
 ├── frontend
 │   ├── .DS_Store
 │   ├── .dockerignore
@@ -569,20 +889,26 @@
 │   │       └── 05-partage.md
 │   ├── scripts
 │   │   ├── doc-screenshots.mjs
-│   │   └── screenshot.mjs
+│   │   ├── screenshot.mjs
+│   │   └── tools-screenshots.mjs
 │   ├── src
 │   │   ├── App.vue
 │   │   ├── components
+│   │   │   ├── BackLink.vue
 │   │   │   ├── CguGate.vue
+│   │   │   ├── ChatAgentsMenu.vue
 │   │   │   ├── ChatWindow.vue
 │   │   │   ├── HelperAgentModal.vue
 │   │   │   ├── InfoModal.vue
 │   │   │   ├── MarkdownText.vue
 │   │   │   ├── ModelPicker.vue
+│   │   │   ├── PagerNav.vue
 │   │   │   ├── PaginationBar.vue
 │   │   │   ├── ReportFormModal.vue
 │   │   │   ├── SourceViewerModal.vue
 │   │   │   ├── TaskDrawer.vue
+│   │   │   ├── ThemeChoice.vue
+│   │   │   ├── ThemeSettings.vue
 │   │   │   ├── ToolSteps.vue
 │   │   │   ├── TutorialModal.vue
 │   │   │   ├── UserMenu.vue
@@ -594,24 +920,41 @@
 │   │   │   ├── admin
 │   │   │   │   ├── AdminCguTab.vue
 │   │   │   │   ├── AdminDocumentGenerationTab.vue
+│   │   │   │   ├── AdminModelsTab.vue
 │   │   │   │   ├── AdminReportsTab.vue
 │   │   │   │   ├── AdminStatsTab.vue
 │   │   │   │   ├── AdminTasksTab.vue
+│   │   │   │   ├── AdminUsageTab.vue
 │   │   │   │   ├── GenerationPromptPanel.vue
-│   │   │   │   └── documentTemplates
-│   │   │   │       ├── AssistedTextarea.vue
-│   │   │   │       ├── DocumentTemplateEditor.vue
-│   │   │   │       └── TemplateFieldRow.vue
+│   │   │   │   ├── documentTemplates
+│   │   │   │   │   ├── AssistedTextarea.vue
+│   │   │   │   │   ├── DocumentTemplateEditor.vue
+│   │   │   │   │   └── TemplateFieldRow.vue
+│   │   │   │   └── models
+│   │   │   │       ├── CapabilitiesCard.vue
+│   │   │   │       ├── CapabilityEditModal.vue
+│   │   │   │       ├── HubModelsPanel.vue
+│   │   │   │       ├── ModelCapabilityChips.vue
+│   │   │   │       ├── ModelEditModal.vue
+│   │   │   │       ├── ModelRow.vue
+│   │   │   │       ├── ModelTypeChips.vue
+│   │   │   │       └── ModelsModeCard.vue
 │   │   │   ├── analyses
 │   │   │   │   ├── AddAgentModal.vue
 │   │   │   │   ├── AgentCard.vue
 │   │   │   │   ├── AgentToolsEditor.vue
+│   │   │   │   ├── AnalyseGuideBar.vue
+│   │   │   │   ├── AnalyseIdentityModal.vue
+│   │   │   │   ├── CollapsibleText.vue
 │   │   │   │   ├── CreateAnalyseModal.vue
+│   │   │   │   ├── DeleteAnalyseModal.vue
 │   │   │   │   ├── DueSettingsEditor.vue
 │   │   │   │   ├── EntitiesEditor.vue
+│   │   │   │   ├── FrequentQuestionsEditor.vue
 │   │   │   │   ├── LabelsEditor.vue
 │   │   │   │   ├── LlmAssistButton.vue
 │   │   │   │   ├── PromptEditor.vue
+│   │   │   │   ├── SourcesEditor.vue
 │   │   │   │   └── VersionHistory.vue
 │   │   │   ├── analysis
 │   │   │   │   ├── ChatProposals.vue
@@ -640,55 +983,141 @@
 │   │   │   │   ├── FieldValueEditor.vue
 │   │   │   │   └── PdfPreview.vue
 │   │   │   ├── dossiers
+│   │   │   │   ├── AddDocumentsModal.vue
 │   │   │   │   ├── CreateDossierModal.vue
+│   │   │   │   ├── DocumentFileList.vue
 │   │   │   │   ├── DossierDocuments.vue
 │   │   │   │   ├── DossierDueBadge.vue
-│   │   │   │   ├── DossierResults.vue
 │   │   │   │   ├── DossierResultsDetail.vue
+│   │   │   │   ├── DossierSearchIndexCard.vue
 │   │   │   │   ├── DueDatePicker.vue
+│   │   │   │   ├── ExecutionDetailModal.vue
+│   │   │   │   ├── ExtractionResults.vue
 │   │   │   │   ├── FeedbackReasonsModal.vue
 │   │   │   │   ├── PageThumbnail.vue
-│   │   │   │   └── RelaunchBanner.vue
+│   │   │   │   ├── RelaunchBanner.vue
+│   │   │   │   ├── SourcePicker.vue
+│   │   │   │   └── extraction
+│   │   │   │       ├── ExtractionEntityList.vue
+│   │   │   │       ├── ExtractionExplorer.vue
+│   │   │   │       ├── ExtractionPageNav.vue
+│   │   │   │       ├── ExtractionPageViewer.vue
+│   │   │   │       └── ExtractionSearch.vue
 │   │   │   ├── history
 │   │   │   │   ├── EventFilters.vue
 │   │   │   │   └── EventTimeline.vue
+│   │   │   ├── presentation
+│   │   │   │   ├── DossierPresentation.vue
+│   │   │   │   ├── PresentationAgents.vue
+│   │   │   │   ├── PresentationDetailModal.vue
+│   │   │   │   ├── PresentationDocuments.vue
+│   │   │   │   ├── PresentationEntities.vue
+│   │   │   │   ├── PresentationFacts.vue
+│   │   │   │   ├── PresentationPending.vue
+│   │   │   │   ├── PresentationSection.vue
+│   │   │   │   ├── PresentationSummary.vue
+│   │   │   │   └── SuggestedQuestions.vue
+│   │   │   ├── search
+│   │   │   │   ├── SearchIndexOverview.vue
+│   │   │   │   └── SearchSettingsForm.vue
 │   │   │   ├── statuses
 │   │   │   │   ├── StatusReplacementModal.vue
 │   │   │   │   ├── StatusesEditor.vue
 │   │   │   │   ├── WorkflowStatusBadge.vue
 │   │   │   │   └── WorkflowStatusPicker.vue
-│   │   │   └── tracking
-│   │   │       ├── BulkAssignBar.vue
-│   │   │       ├── CellEditor.vue
-│   │   │       ├── ColumnHelp.vue
-│   │   │       ├── ColumnsModal.vue
-│   │   │       ├── CustomFieldsModal.vue
-│   │   │       ├── TrackingFilters.vue
-│   │   │       ├── TrackingTable.vue
-│   │   │       ├── TrackingView.vue
-│   │   │       └── TrackingViewsBar.vue
+│   │   │   ├── tools
+│   │   │   │   ├── AddKnowledgeSourceModal.vue
+│   │   │   │   ├── AddToolServerModal.vue
+│   │   │   │   ├── ChatToolsMenu.vue
+│   │   │   │   ├── ChatToolsMenuRow.vue
+│   │   │   │   ├── CollectionPickerModal.vue
+│   │   │   │   ├── CollectionRow.vue
+│   │   │   │   ├── CollectionSourceChoice.vue
+│   │   │   │   ├── InternalToolRow.vue
+│   │   │   │   ├── KnowledgeCollectionsField.vue
+│   │   │   │   ├── KnowledgeSourceCard.vue
+│   │   │   │   ├── KnowledgeSourceForm.vue
+│   │   │   │   ├── SourceCard.vue
+│   │   │   │   ├── SourceCarousel.vue
+│   │   │   │   ├── SourcePreview.vue
+│   │   │   │   ├── ToolAudienceField.vue
+│   │   │   │   ├── ToolAuthBadge.vue
+│   │   │   │   ├── ToolAuthChoice.vue
+│   │   │   │   ├── ToolCallArguments.vue
+│   │   │   │   ├── ToolCallCard.vue
+│   │   │   │   ├── ToolImportList.vue
+│   │   │   │   ├── ToolPicker.vue
+│   │   │   │   ├── ToolPickerGroup.vue
+│   │   │   │   ├── ToolPickerModal.vue
+│   │   │   │   ├── ToolPickerRow.vue
+│   │   │   │   ├── ToolQuestionCard.vue
+│   │   │   │   ├── ToolSearchInput.vue
+│   │   │   │   ├── ToolSelectionField.vue
+│   │   │   │   ├── ToolSelectionSummary.vue
+│   │   │   │   ├── ToolServerCard.vue
+│   │   │   │   ├── ToolServerForm.vue
+│   │   │   │   ├── ToolServiceAccountToggle.vue
+│   │   │   │   ├── ToolSourceFilter.vue
+│   │   │   │   ├── ToolTestButton.vue
+│   │   │   │   ├── ToolTestModal.vue
+│   │   │   │   ├── ToolTestPrompt.vue
+│   │   │   │   ├── ToolTestResult.vue
+│   │   │   │   ├── ToolVisibilityChoice.vue
+│   │   │   │   └── ToolsListSection.vue
+│   │   │   ├── tracking
+│   │   │   │   ├── BulkAssignBar.vue
+│   │   │   │   ├── CellEditor.vue
+│   │   │   │   ├── ColumnHelp.vue
+│   │   │   │   ├── ColumnsModal.vue
+│   │   │   │   ├── CustomFieldsModal.vue
+│   │   │   │   ├── TrackingFilters.vue
+│   │   │   │   ├── TrackingTable.vue
+│   │   │   │   ├── TrackingView.vue
+│   │   │   │   └── TrackingViewsBar.vue
+│   │   │   └── usage
+│   │   │       ├── UsageCharts.vue
+│   │   │       ├── UsagePeriodSelector.vue
+│   │   │       └── WaterBottles.vue
 │   │   ├── composables
+│   │   │   ├── mockDossierPresentation.ts
 │   │   │   ├── useAdminStats.ts
 │   │   │   ├── useAdminTasks.ts
 │   │   │   ├── useAgentConversations.ts
+│   │   │   ├── useAnalyseKnowledge.ts
+│   │   │   ├── useAnalyseOcr.ts
+│   │   │   ├── useAnalyseQuestions.ts
+│   │   │   ├── useAnalyseSearch.ts
 │   │   │   ├── useAnalyses.ts
 │   │   │   ├── useAnalysisLive.ts
 │   │   │   ├── useAuth.ts
+│   │   │   ├── useCanManageAnalyse.ts
 │   │   │   ├── useCgu.ts
+│   │   │   ├── useChatAgents.ts
 │   │   │   ├── useChatStream.ts
+│   │   │   ├── useConversationTools.ts
 │   │   │   ├── useConversations.ts
 │   │   │   ├── useDashboard.ts
 │   │   │   ├── useDocumentDrafts.ts
+│   │   │   ├── useDocumentSources.ts
 │   │   │   ├── useDocumentTemplates.ts
 │   │   │   ├── useDossierAccess.ts
 │   │   │   ├── useDossierAnalysis.ts
 │   │   │   ├── useDossierEvents.ts
+│   │   │   ├── useDossierExtractions.ts
 │   │   │   ├── useDossierNotes.ts
+│   │   │   ├── useDossierPageImage.ts
+│   │   │   ├── useDossierPresentation.ts
 │   │   │   ├── useDossierResults.ts
+│   │   │   ├── useDossierSearchIndex.ts
 │   │   │   ├── useDossiers.ts
+│   │   │   ├── useExtractionExplorer.ts
+│   │   │   ├── useExtractionScreenshots.ts
 │   │   │   ├── useHelperAgent.ts
+│   │   │   ├── useKnowledgeSources.ts
+│   │   │   ├── useListView.ts
 │   │   │   ├── useLlmAssist.ts
 │   │   │   ├── useLlmComplete.ts
+│   │   │   ├── useLlmModels.ts
 │   │   │   ├── useModels.ts
 │   │   │   ├── useMyConversations.ts
 │   │   │   ├── useNotifications.ts
@@ -696,11 +1125,15 @@
 │   │   │   ├── useProfile.ts
 │   │   │   ├── useReports.ts
 │   │   │   ├── useReportsAdmin.ts
+│   │   │   ├── useSourceCollections.ts
 │   │   │   ├── useTheme.ts
+│   │   │   ├── useToolTest.ts
+│   │   │   ├── useTools.ts
 │   │   │   ├── useTrackingApi.ts
 │   │   │   ├── useTrackingPrefs.ts
 │   │   │   ├── useTutorials.ts
 │   │   │   ├── useUrgencyFilters.ts
+│   │   │   ├── useUsage.ts
 │   │   │   └── useUserTasks.ts
 │   │   ├── env.d.ts
 │   │   ├── main.ts
@@ -715,16 +1148,24 @@
 │   │   │   ├── DossierDocumentsPage.vue
 │   │   │   ├── DossierHistoryPage.vue
 │   │   │   ├── DossiersPage.vue
+│   │   │   ├── PresentationPreviewPage.vue
 │   │   │   ├── ProfilePage.vue
+│   │   │   ├── ToolsPage.vue
 │   │   │   ├── TrackingPage.vue
+│   │   │   ├── UsagePage.vue
 │   │   │   ├── WelcomePage.vue
 │   │   │   └── analyse
 │   │   │       ├── AnalyseAgentsTab.vue
 │   │   │       ├── AnalyseClassificationTab.vue
 │   │   │       ├── AnalyseDocumentsTab.vue
 │   │   │       ├── AnalyseExtractionTab.vue
+│   │   │       ├── AnalyseOcrTab.vue
+│   │   │       ├── AnalyseQuestionsTab.vue
+│   │   │       ├── AnalyseSearchTab.vue
+│   │   │       ├── AnalyseSourcesTab.vue
 │   │   │       ├── AnalyseStatusesTab.vue
-│   │   │       └── AnalyseTrackingTab.vue
+│   │   │       ├── AnalyseTrackingTab.vue
+│   │   │       └── analyseGroups.ts
 │   │   ├── router
 │   │   │   └── index.ts
 │   │   ├── types
@@ -733,22 +1174,35 @@
 │   │   │   ├── agentConversation.ts
 │   │   │   ├── analyse.ts
 │   │   │   ├── cgu.ts
+│   │   │   ├── chatAgent.ts
+│   │   │   ├── chatSource.ts
+│   │   │   ├── chatTool.ts
 │   │   │   ├── conversation.ts
 │   │   │   ├── dashboard.ts
 │   │   │   ├── documentDraft.ts
+│   │   │   ├── documentSource.ts
 │   │   │   ├── documentTemplate.ts
 │   │   │   ├── dossier.ts
 │   │   │   ├── dossierAnalysis.ts
 │   │   │   ├── dossierEvent.ts
+│   │   │   ├── dossierExtraction.ts
 │   │   │   ├── dossierNote.ts
+│   │   │   ├── dossierPresentation.ts
+│   │   │   ├── knowledge.ts
+│   │   │   ├── llmModel.ts
+│   │   │   ├── pagination.ts
 │   │   │   ├── profile.ts
 │   │   │   ├── report.ts
 │   │   │   ├── schedule.ts
+│   │   │   ├── search.ts
+│   │   │   ├── tool.ts
 │   │   │   ├── tracking.ts
+│   │   │   ├── usage.ts
 │   │   │   └── userTask.ts
 │   │   └── utils
 │   │       ├── api.ts
 │   │       ├── assistantSuggestion.ts
+│   │       ├── chatSources.ts
 │   │       ├── csv.ts
 │   │       ├── dates.ts
 │   │       ├── documentTemplateValidation.ts
@@ -756,9 +1210,13 @@
 │   │       ├── due.ts
 │   │       ├── groupToolEvents.ts
 │   │       ├── highlightExcerpt.ts
+│   │       ├── knowledgeMapping.ts
 │   │       ├── markdown.ts
 │   │       ├── recurrence.ts
+│   │       ├── searchMapping.ts
 │   │       ├── textDiff.ts
+│   │       ├── toolMapping.ts
+│   │       ├── toolSearch.ts
 │   │       └── trackingFields.ts
 │   ├── tsconfig.json
 │   └── vite.config.ts
@@ -770,6 +1228,7 @@
 │   ├── README.md.gotmpl
 │   ├── charts
 │   │   ├── cluster-0.8.1.tgz
+│   │   ├── qdrant-1.19.2.tgz
 │   │   └── redis-0.27.9.tgz
 │   ├── templates
 │   │   ├── NOTES.txt
@@ -796,6 +1255,27 @@
 │   │   │   ├── servicemonitor.yaml
 │   │   │   └── statefulset.yaml
 │   │   ├── cronjobs.yaml
+│   │   ├── ephemeral_frontend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── extra-objects.yaml
 │   │   ├── frontend
 │   │   │   ├── clusterrole.yaml
@@ -824,27 +1304,6 @@
 │   │   ├── jobs.yaml
 │   │   ├── pullsecret.yaml
 │   │   ├── validation.yaml
-│   │   ├── worker_agent
-│   │   │   ├── clusterrole.yaml
-│   │   │   ├── clusterrolebinding.yaml
-│   │   │   ├── configmap.yaml
-│   │   │   ├── daemonset.yaml
-│   │   │   ├── deployment.yaml
-│   │   │   ├── grpcroute.yaml
-│   │   │   ├── hpa.yaml
-│   │   │   ├── httproute.yaml
-│   │   │   ├── ingress.yaml
-│   │   │   ├── metrics.yaml
-│   │   │   ├── networkpolicy.yaml
-│   │   │   ├── pdb.yaml
-│   │   │   ├── pullsecret.yaml
-│   │   │   ├── role.yaml
-│   │   │   ├── rolebinding.yaml
-│   │   │   ├── secret.yaml
-│   │   │   ├── service.yaml
-│   │   │   ├── serviceaccount.yaml
-│   │   │   ├── servicemonitor.yaml
-│   │   │   └── statefulset.yaml
 │   │   ├── worker_async_api
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -866,7 +1325,133 @@
 │   │   │   ├── serviceaccount.yaml
 │   │   │   ├── servicemonitor.yaml
 │   │   │   └── statefulset.yaml
+│   │   ├── worker_classification
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
 │   │   ├── worker_document
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_extraction
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_ocr
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_ocr_layout
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_ocr_table
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── worker_ocr_vision
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
 │   │   │   ├── configmap.yaml
@@ -912,6 +1497,7 @@
 │   ├── test-values-statefulset.yaml
 │   ├── test-values.yaml
 │   ├── values
+│   │   ├── README.md
 │   │   └── common-values.yaml
 │   ├── values.schema.json
 │   └── values.yaml
@@ -948,10 +1534,13 @@
 │       │   ├── src
 │       │   │   └── millefeuille_ephemeral
 │       │   │       ├── __init__.py
+│       │   │       ├── _oneshot.py
 │       │   │       ├── _ttl.py
 │       │   │       ├── analyses.py
+│       │   │       ├── classifications.py
 │       │   │       ├── client.py
 │       │   │       ├── exceptions.py
+│       │   │       ├── extractions.py
 │       │   │       ├── models.py
 │       │   │       ├── py.typed
 │       │   │       └── runs.py
@@ -959,7 +1548,8 @@
 │       │   │   ├── conftest.py
 │       │   │   ├── test_contract.py
 │       │   │   ├── test_ephemeral.py
-│       │   │   └── test_integration.py
+│       │   │   ├── test_integration.py
+│       │   │   └── test_oneshot.py
 │       │   └── uv.lock
 │       ├── openapi.json
 │       ├── scripts
@@ -967,55 +1557,6 @@
 │       └── testing
 │           └── contract.py
 └── worker
-    ├── agent_execution
-    │   ├── Dockerfile
-    │   ├── app
-    │   │   ├── __init__.py
-    │   │   ├── agent_graph.py
-    │   │   ├── analysis_tools.py
-    │   │   ├── api_client.py
-    │   │   ├── bm25.py
-    │   │   ├── celery_app.py
-    │   │   ├── chat_graph.py
-    │   │   ├── config.py
-    │   │   ├── document_generation.py
-    │   │   ├── extraction_planner.py
-    │   │   ├── fingerprint.py
-    │   │   ├── helper_graph.py
-    │   │   ├── helper_tools.py
-    │   │   ├── llm.py
-    │   │   ├── note_tools.py
-    │   │   ├── storage.py
-    │   │   ├── tasks
-    │   │   │   ├── __init__.py
-    │   │   │   ├── agent.py
-    │   │   │   ├── chat.py
-    │   │   │   ├── classification.py
-    │   │   │   ├── document_fields.py
-    │   │   │   ├── extraction.py
-    │   │   │   ├── helper_chat.py
-    │   │   │   ├── note_proposals.py
-    │   │   │   ├── suggestion.py
-    │   │   │   └── summary.py
-    │   │   └── tools.py
-    │   ├── pyproject.toml
-    │   ├── tests
-    │   │   ├── test_agent_task.py
-    │   │   ├── test_analysis_tools.py
-    │   │   ├── test_api_client.py
-    │   │   ├── test_bm25_tools.py
-    │   │   ├── test_celery_app.py
-    │   │   ├── test_config.py
-    │   │   ├── test_document_fields.py
-    │   │   ├── test_extraction_planner.py
-    │   │   ├── test_helper_chat_task.py
-    │   │   ├── test_helper_tools.py
-    │   │   ├── test_llm.py
-    │   │   ├── test_note_proposals.py
-    │   │   ├── test_suggestion.py
-    │   │   ├── test_summary.py
-    │   │   └── test_tasks.py
-    │   └── uv.lock
     ├── async_api
     │   ├── .env.example
     │   ├── Dockerfile
@@ -1036,13 +1577,49 @@
     │   │   ├── test_contract.py
     │   │   └── test_task.py
     │   └── uv.lock
+    ├── classification
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── api_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── clip.py
+    │   │   ├── config.py
+    │   │   ├── fingerprint.py
+    │   │   ├── llm.py
+    │   │   ├── storage.py
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   └── classification.py
+    │   │   └── usage.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── conftest.py
+    │   │   ├── test_celery_app.py
+    │   │   ├── test_config.py
+    │   │   ├── test_fingerprint.py
+    │   │   ├── test_llm.py
+    │   │   ├── test_tasks.py
+    │   │   └── test_visual.py
+    │   └── uv.lock
     ├── document_process
     │   ├── Dockerfile
+    │   ├── README.md
     │   ├── app
     │   │   ├── __init__.py
     │   │   ├── api_client.py
     │   │   ├── celery_app.py
     │   │   ├── config.py
+    │   │   ├── ocr
+    │   │   │   ├── __init__.py
+    │   │   │   ├── assemble.py
+    │   │   │   ├── contracts.py
+    │   │   │   ├── describe.py
+    │   │   │   ├── pages.py
+    │   │   │   ├── routing.py
+    │   │   │   ├── scanned.py
+    │   │   │   └── tables.py
     │   │   ├── parsing.py
     │   │   ├── storage.py
     │   │   └── tasks.py
@@ -1051,9 +1628,118 @@
     │   │   ├── test_api_client.py
     │   │   ├── test_celery_app.py
     │   │   ├── test_config.py
+    │   │   ├── test_ocr_assemble.py
+    │   │   ├── test_ocr_contracts.py
+    │   │   ├── test_ocr_contracts_sync.py
+    │   │   ├── test_ocr_describe.py
+    │   │   ├── test_ocr_pages.py
+    │   │   ├── test_ocr_scanned.py
+    │   │   ├── test_ocr_tables.py
     │   │   └── test_tasks.py
     │   └── uv.lock
-    └── document_render
+    ├── document_render
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── inspection.py
+    │   │   ├── odt_template.py
+    │   │   ├── pdf.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── conftest.py
+    │   │   ├── fixtures
+    │   │   │   └── modele-libreoffice.odt
+    │   │   ├── test_config.py
+    │   │   ├── test_inspection.py
+    │   │   ├── test_odt_template.py
+    │   │   └── test_pdf_and_tasks.py
+    │   └── uv.lock
+    ├── extraction
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── api_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── extraction_planner.py
+    │   │   ├── fingerprint.py
+    │   │   ├── gliner.py
+    │   │   ├── llm.py
+    │   │   ├── locate.py
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   └── extraction.py
+    │   │   └── usage.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── conftest.py
+    │   │   ├── test_celery_app.py
+    │   │   ├── test_config.py
+    │   │   ├── test_extraction_planner.py
+    │   │   ├── test_gliner.py
+    │   │   ├── test_llm.py
+    │   │   ├── test_locate.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    ├── layout
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── layout.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_contracts_sync.py
+    │   │   └── test_layout.py
+    │   └── uv.lock
+    ├── ocr
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── reader.py
+    │   │   ├── storage.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_contracts_sync.py
+    │   │   └── test_reader.py
+    │   └── uv.lock
+    ├── table
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── contracts.py
+    │   │   ├── storage.py
+    │   │   ├── tables.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_contracts_sync.py
+    │   │   └── test_tables.py
+    │   └── uv.lock
+    └── vision
         ├── .dockerignore
         ├── Dockerfile
         ├── README.md
@@ -1061,19 +1747,13 @@
         │   ├── __init__.py
         │   ├── celery_app.py
         │   ├── config.py
-        │   ├── inspection.py
-        │   ├── odt_template.py
-        │   ├── pdf.py
+        │   ├── contracts.py
+        │   ├── hub.py
         │   ├── storage.py
         │   └── tasks.py
         ├── pyproject.toml
         ├── tests
-        │   ├── conftest.py
-        │   ├── fixtures
-        │   │   └── modele-libreoffice.odt
-        │   ├── test_config.py
-        │   ├── test_inspection.py
-        │   ├── test_odt_template.py
-        │   └── test_pdf_and_tasks.py
+        │   ├── test_contracts_sync.py
+        │   └── test_vision.py
         └── uv.lock
-118 directories, 1008 files
+170 directories, 1723 files
