@@ -1,34 +1,36 @@
-## Changelog : domifa (30 derniers jours, au 03 novembre 2026)
+## Changelog : domifa (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'introduction d'un "mode support", permettant aux administrateurs d'assister les utilisateurs en consultant les interfaces en lecture seule sans risque de modification accidentelle. La sécurité a été considérablement renforcée par l'intégration systématique d'un antivirus pour le scan des fichiers importés et une gestion plus stricte des mots de passe. Enfin, l'interface utilisateur a été modernisée, notamment sur les pages de connexion et de gestion des usagers.
+Ce mois a été marqué par un renforcement significatif de la sécurité des données et une amélioration de l'expérience de gestion. Les principales évolutions concernent l'intégration systématique de scans antivirus sur les fichiers importés, le déploiement d'un "mode support" pour faciliter l'assistance technique sans risque de modification accidentelle, et la restauration de certaines capacités d'édition de profils pour les agents et les facteurs.
 
 ### Évolutions fonctionnelles
-- **Introduction du mode support** : mise en place d'un mode de consultation permettant de visualiser les formulaires, les paramètres et les listes d'export sans possibilité de modification ou de désactivation de boutons ([#4334](https://github.com/SocialGouv/domifa/pull/4334), [#4339](https://github.com/SocialGouv/domifa/pull/4339), [#4340](https://github.com/SocialGouv/domifa/pull/4340)).
-- **Sécurité des fichiers** : les utilisateurs sont désormais informés en temps réel via le formulaire de contact en cas de détection de menace par l'antivirus.
-- **Gestion des accès et mots de passe** : 
-    - Mise en place du renouvellement obligatoire du mot de passe après une période d'inactivité.
-    - Instauration d'une expiration automatique des mots de passe tous les 60 mois.
-    - Possibilité de créer des comptes super-administrateurs via des domaines d'e-mails autorisés.
-- **Amélioration de l'interface (UI)** :
-    - Refonte visuelle de la page de connexion (en-tête, couleurs et ajout d'un menu déroulant pour choisir le portail).
-    - Optimisation de l'alignement des formulaires d'inscription ([#4328](https://github.com/SocialGouv/domifa/pull/4328)).
-    - Mise à jour de la navigation et de l'affichage dans la page d'historique ([#4318](https://github.com/SocialGouv/domifa/pull/4318)).
-- **Fiabilité des données** : amélioration de la synchronisation de la liste des usagers pour garantir que les informations affichées sont toujours à jour avec le serveur.
+- **Gestion des usagers :**
+    - Restauration de la possibilité pour les agents et les facteurs de modifier les coordonnées (téléphone et email) des usagers.
+    - Amélioration de la précision des résultats de recherche pour les usagers ([#4341](https://github.com/SocialGouv/domifa/pull/4341)).
+    - Mise en place d'une synchronisation automatique de la liste des usagers avec le serveur lors du retour sur l'onglet.
+- **Interface et navigation :**
+    - Ajout de menus déroulants de sélection de portail sur les pages de connexion (Admin, Stats, Usagers).
+    - Amélioration de la navigation dans les pages d'historique et mise à jour des onglets.
+    - Ajout d'un avis de maintenance programmé pour le 19 novembre sur les différents portails.
+- **Formulaires :**
+    - Normalisation automatique des noms et prénoms lors de la saisie.
+    - Affichage explicite des erreurs de scan antivirus sur le formulaire de contact.
 
 ### Évolutions techniques
-- **Sécurité et protection** :
-    - Intégration de ClamAV pour le scan systématique des pièces jointes (formulaire de contact) et des fichiers d'importation des usagers.
-    - Renforcement de la validation des fichiers (vérification du type réel avant scan) et limitation de la taille des uploads.
-    - Amélioration de la politique de sécurité du contenu (CSP) sur le frontend.
-- **Architecture et données** :
-    - Migration vers l'utilisation d'identifiants uniques (UUID v7) pour les bénéficiaires et les ayants droit pour une meilleure sécurité.
-    - Correction de la gestion des types de données (parsing des entiers) dans les routes et les DTOs pour éviter les erreurs de traitement.
-    - Amélioration de la recherche d'usagers et de la gestion des résultats partiels ([#4341](https://github.com/SocialGouv/domifa/pull/4341)).
-- **Infrastructure et CI/CD** :
+- **Sécurité et Antivirus :**
+    - Intégration de ClamAV pour le scan systématique des fichiers lors de l'import d'usagers, des pièces jointes du support et des formulaires de contact.
+    - Renforcement de la validation des types de fichiers avant scan et gestion robuste des erreurs de téléchargement.
+    - Amélioration de la politique de sécurité du contenu (CSP) via le bundling des configurations DSFR.
+- **Mode Support :**
+    - Implémentation d'un mode support complet permettant de consulter l'interface en lecture seule (désactivation des formulaires, des boutons d'export et de saisie) pour sécuriser les sessions d'assistance.
+- **Architecture et Données :**
+    - Migration des identifiants des ayants droit vers le format UUID v7 pour une meilleure sécurité et performance.
+    - Durcissement des endpoints API (usagers) et optimisation du parsing des identifiants (integers).
+    - Optimisation de la logique de synchronisation (`lastSync`) pour garantir l'intégrité des données entre le client et le serveur.
+- **Infrastructure et CI/CD :**
     - Mise à jour de l'environnement vers Node.js 24.
-    - Optimisation des pipelines GitLab CI/CD et de la gestion des images de runtime.
+    - Optimisation des images de runtime et des pipelines GitLab CI/CD.
 
 ### Autres changements
-- Nettoyage des anciennes migrations de base de données déjà appliquées en production.
-- Mise à jour du fichier d'actualités (`news.json`).
+- **Écosystème :** Création d'un "marketplace" de plugins DomiFa pour le partage de compétences de sécurité.
+- **Contenu :** Mise à jour des éléments de la fenêtre contextuelle des actualités (news popup).

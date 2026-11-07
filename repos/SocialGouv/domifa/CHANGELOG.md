@@ -1,3 +1,51 @@
+## [2.291.2](https://github.com/SocialGouv/domifa/compare/v2.291.1...v2.291.2) (2026-11-06)
+
+
+### Bug Fixes
+
+* **portail-usagers:** adapt maintenance notice wording for usagers ([329a8e6](https://github.com/SocialGouv/domifa/commit/329a8e6ef24adb0ec05d13bac55c87918ce2317b))
+
+## [2.291.1](https://github.com/SocialGouv/domifa/compare/v2.291.0...v2.291.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* **frontend, portail-usagers, portail-stats:** rework the maintenance notice ([3163bf0](https://github.com/SocialGouv/domifa/commit/3163bf015753bad1acc391f9309b53015cf239a5))
+
+# [2.291.0](https://github.com/SocialGouv/domifa/compare/v2.290.6...v2.291.0) (2026-11-06)
+
+
+### Bug Fixes
+
+* **backend:** restrict structure docs upload and delete to admin ([eb9a883](https://github.com/SocialGouv/domifa/commit/eb9a8831e82e0f111a3503f52cdf26b75d2bc4f7))
+* **backend, frontend:** let agent edit usager phone and email again ([ac2b34a](https://github.com/SocialGouv/domifa/commit/ac2b34a9c70671a1e8fe5d1ff639c1323370c129))
+
+
+### Features
+
+* **frontend, portail-usagers, portail-stats:** add maintenance notice for november 19 ([528f77b](https://github.com/SocialGouv/domifa/commit/528f77b5eef8638d81e21e57abf7ca8a23db7a73))
+
+## [2.290.6](https://github.com/SocialGouv/domifa/compare/v2.290.5...v2.290.6) (2026-11-05)
+
+
+### Bug Fixes
+
+* **frontend:** clean search in support mode ([ffb7c74](https://github.com/SocialGouv/domifa/commit/ffb7c745ddf665d1f34575d454b580dc86c1021b))
+
+## [2.290.5](https://github.com/SocialGouv/domifa/compare/v2.290.4...v2.290.5) (2026-11-05)
+
+
+### Bug Fixes
+
+* **frontend:** update news popup ([87f931b](https://github.com/SocialGouv/domifa/commit/87f931bfdef99043d3d9304e5413ac5a12ca4c6d))
+
+## [2.290.4](https://github.com/SocialGouv/domifa/compare/v2.290.3...v2.290.4) (2026-11-05)
+
+
+### Bug Fixes
+
+* **backend, frontend:** let facteur edit usager phone and email again ([783b3c0](https://github.com/SocialGouv/domifa/commit/783b3c0fd605625f188cff7952044c3fc871c1bf))
+
 ## [2.290.3](https://github.com/SocialGouv/domifa/compare/v2.290.2...v2.290.3) (2026-11-03)
 
 
