@@ -1,3 +1,41 @@
+2026-11-03T11:50:35+01:00 - 27659a3 - Nicolas Buquet : Merge pull request #218 from numerique-gouv/174-handle-basic-offline-mode
+2026-10-28T16:39:37+01:00 - f8e7b02 - Nicolas Buquet : Fix init of `navigationState` the same way `userScripts` is initied.
+2026-10-27T14:49:39+01:00 - 2c8db2e - Nicolas Buquet : fix comment
+2026-10-27T14:49:27+01:00 - 5035df9 - Nicolas Buquet : Make ReviewAppView pull-ti-refresh compatible
+2026-10-27T14:49:04+01:00 - 57fdf53 - Nicolas Buquet : Make Staging ReviewApp view title use DSFR
+2026-10-27T14:48:37+01:00 - fb0ede9 - Nicolas Buquet : Separate Notification reception (Staging/non-Staging)
+2026-10-27T14:47:41+01:00 - 64519f6 - Nicolas Buquet : Conform ReviewApp entity to CustomStringConvertible to ease log
+2026-10-27T14:46:46+01:00 - e4f75ec - Nicolas Buquet : Introduce RootView abstraction to separate root view of Staging from root view of Production
+2026-10-22T21:00:31+02:00 - e43ab5d - Nicolas Buquet : Fix default web archive filename
+2026-10-22T20:58:32+02:00 - 7222a19 - Nicolas Buquet : Remove commented code and make WebViewModel WKNavigationDelegate conformance main actor isolated
+2026-10-22T20:57:35+02:00 - 1b3b00d - Nicolas Buquet : Declare and implement WebViewArchiver protocol and use it for HomeView
+2026-10-22T20:56:46+02:00 - e2b10f5 - Nicolas Buquet : Implement WebViewNavigationState for HomeView
+2026-10-22T20:54:57+02:00 - 280a6c8 - Nicolas Buquet : Rename `DefaultWebViewNavigationDelegate` to `DefaultWebViewNavigationState` and make it a non-optional init parameter of WebViewModel
+2026-10-22T12:05:16+02:00 - 12a9567 - Nicolas Buquet : Heavy source code reordering
+2026-10-22T12:04:58+02:00 - 78ef525 - Nicolas Buquet : Light comments, renaming and source code reordering
+2026-10-22T12:00:43+02:00 - 5b2819b - Nicolas Buquet : Remove dead code
+2026-10-21T18:55:59+02:00 - a7667be - Nicolas Buquet : Make base WebView.ViewModel uses WebViewNavigationHandler to navigate
+2026-10-21T18:55:54+02:00 - 6e857f9 - Nicolas Buquet : Implement WebViewNavigationHamdler for HomeView and ServiceView
+2026-10-21T18:54:14+02:00 - ad6c273 - Nicolas Buquet : Store SpecialLinkHandler into WebViewNavigationHandler
+2026-10-21T18:49:23+02:00 - 0afa2c2 - Nicolas Buquet : Implement a DefaultWebViewNavigationHandler that always navigate into the same webView without any preparation work.
+2026-10-21T18:48:24+02:00 - cc1ac4f - Nicolas Buquet : Rename WebViewNavigationPolicyDelegate and split it in 2 files
+2026-10-21T18:38:42+02:00 - 2b0cc29 - Nicolas Buquet : Rework SpecialLinkType to have the HTTP link as associated value
+2026-10-21T18:34:17+02:00 - d79dfbe - Nicolas Buquet : Make AppRoute and ServiceProvider enums adopt CustomStringConvertible protocol for logging
+2026-10-21T10:28:10+02:00 - af15fee - Nicolas Buquet : Move `WeakScriptMessageHandler` and `WebViewLocalStorageManager` in Data layer
+2026-10-21T10:27:30+02:00 - 6a2414d - Nicolas Buquet : Move `AMIWebView` and `SwiftUIWebView` in Presentation layer
+2026-10-20T20:37:48+02:00 - b29247b - Nicolas Buquet : Fix method parameter layout
+2026-10-20T20:37:47+02:00 - a6fc97e - Nicolas Buquet : Move SettingsViewModel from property to method factory
+2026-10-20T20:37:46+02:00 - 7c279f8 - Nicolas Buquet : Implement `WebViewNavigateToNewWindow` protocol in `ServiceView.ViewModel`
+2026-10-20T20:37:35+02:00 - e32a7f8 - Nicolas Buquet : implement `WebViewNavigationPolicyDelegate` for HomeView.ViewModel
+2026-10-20T20:37:34+02:00 - 02b2702 - Nicolas Buquet : Rename `WebViewUserScriptsProtocol` to `WebViewUserScripts`
+2026-10-20T20:37:33+02:00 - 06addcb - Nicolas Buquet : Move `ViewModel` and `Downloader` in WebView `Data` layer
+2026-10-20T20:37:32+02:00 - 98b5e2d - Nicolas Buquet : Move `WebViewUserScripts` protocol in WebView `Model` layer
+2026-10-20T20:37:31+02:00 - 7718537 - Nicolas Buquet : Implement default protocols in WebView `Data` layer
+2026-10-20T20:37:30+02:00 - 2f9a1e5 - Nicolas Buquet : Isolate `WebViewNavigationPolicyDelegate`, `WebViewNavigationStateDelegate`, `WebViewNavigateToNewWindow` into separate protocols in WebView `Model` layer
+2026-10-20T20:25:36+02:00 - 8c312ef - Nicolas Buquet : Remove class `WebViewNavigationDelegateSimulator`
+2026-10-20T11:41:49+02:00 - e2c9640 - Nicolas Buquet : Fix `WebViewNavigationDelegate` protocol conformance
+2026-10-20T11:41:08+02:00 - 7b40a23 - Nicolas Buquet : Rename WebViewViewModel `delegate` property to `navigationDelegate`
+2026-10-20T11:40:08+02:00 - e86e7db - Nicolas Buquet : Rename `WebViewDelegate` to `WebViewNavigationDelegate` and move it in its own file
 2026-10-13T18:11:28+02:00 - 99e1d85 - Nicolas Buquet : Merge pull request #209 from numerique-gouv/208-implement-border-navigation
 2026-10-13T17:07:06+02:00 - d5a39ae - Nicolas Buquet : Fix typo in comment
 2026-10-13T17:06:57+02:00 - d1b2dba - Nicolas Buquet : Return `invalidPayload` error rather than `pageNotReady` when payload can't be accessed or decoded (the web page is ready)

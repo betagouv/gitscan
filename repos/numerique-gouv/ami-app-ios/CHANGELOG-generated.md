@@ -1,29 +1,23 @@
-## Changelog : ami-app-ios (30 derniers jours, au 13 octobre 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 3 novembre 2026)
 
 ### Résumé
-Cette période marque le passage de l'application à la version 0.5.0. Les utilisateurs bénéficieront d'une navigation plus fluide, notamment avec un bouton "Retour" qui ramène plus naturellement à l'accueil, et d'une meilleure gestion des liens (appels téléphoniques) et des téléchargements de fichiers. L'application introduit également la possibilité de mettre en avant certains contenus via de nouveaux liens promotionnels.
+Ce mois-ci, l'application a bénéficié d'une refonte technique majeure visant à améliorer sa stabilité et sa structure interne. Pour l'utilisateur, ces évolutions se traduisent par une meilleure gestion du mode hors-ligne, l'ajout de fonctions de rafraîchissement et une nouvelle manière de mettre en avant certains contenus via des liens promus.
 
 ### Évolutions fonctionnelles
-- **Mise à jour majeure** : Passage à la version 0.5.0.
-- **Amélioration de la navigation** : Le bouton de retour permet désormais de revenir systématiquement à l'écran d'accueil [#185](https://github.com/numerique-gouv/ami-app-ios/pull/185).
-- **Gestion des liens et fichiers** : 
-    - Support étendu des types de fichiers téléchargeables.
-    - Gestion des liens de type `tel:` pour permettre de passer des appels directement depuis l'application.
-- **Contenus mis en avant** : Introduction de la fonctionnalité "Promoted URLs" pour afficher des contenus ou services spécifiques.
-- **Interface** : Mise en place d'un nouveau système d'alertes pour les interactions au sein de la WebView.
+- Ajout d'un mode hors-ligne basique pour une meilleure résilience [#218](https://github.com/numerique-gouv/ami-app-ios/pull/218).
+- Mise en place de la navigation par bordure [#209](https://github.com/numerique-gouv/ami-app-ios/pull/209).
+- Introduction de la fonctionnalité "URLs promues" pour mettre en avant des contenus spécifiques dans l'interface.
+- Ajout de la fonction "pull-to-refresh" (glisser pour rafraîchir) sur la vue de révision.
+- Amélioration de la précision des messages d'erreur lors de l'accès aux données de la page.
 
 ### Évolutions techniques
-- **Architecture** : 
-    - Introduction d'un `DependencyContainer` pour améliorer la gestion des dépendances et la composition du code.
-    - Refonte de la gestion des liens spéciaux via une nouvelle structure `SpecialLinks`.
-- **Navigation et WebView** : Optimisation du cycle de vie de la WebView dans l'écran d'accueil pour garantir un réinitialisation propre lors du retour d'un service.
-- **Sécurité et Réseau** : Ajout du header HTTP `Referer` dans les requêtes de service pour améliorer la conformité et la sécurité [#187](https://github.com/numerique-gouv/ami-app-ios/pull/187).
-- **Robustesse** : 
-    - Amélioration de la gestion des erreurs (distinction précise entre une page non prête et un payload invalide).
-    - Résolution de conflits liés à la gestion de la concurrence avec Swift 6.
-- **Tests** : Renforcement de la couverture de tests unitaires, notamment pour la nouvelle fonctionnalité de liens mis en avant.
+- Refonte architecturale profonde du composant WebView (séparation stricte des couches de données, de modèle et de présentation).
+- Modernisation du code pour la compatibilité Swift 6, notamment via l'isolation `MainActor` pour la gestion de la concurrence.
+- Amélioration de la gestion des environnements en séparant distinctement la réception des notifications et la vue racine entre les versions de Staging et de Production.
+- Optimisation de la logique de navigation grâce à l'introduction de nouveaux protocoles spécialisés (`WebViewNavigationHandler`, `WebViewNavigationPolicyDelegate`).
+- Implémentation d'un système d'archivage web (`WebViewArchiver`) pour la gestion des fichiers.
 
 ### Autres changements
-- **Configuration** : Ajout d'un flag Xcode dédié pour faciliter les tests en environnement de préproduction [#202](https://github.com/numerique-gouv/ami-app-ios/pull/202).
-- **Nettoyage** : Suppression de code obsolète (observateurs inutilisés, URLs de pages spéciales supprimées) et des tests par défaut d'Xcode.
-- **Documentation** : Ajout de la documentation technique pour la fonctionnalité de liens mis en avant.
+- Renforcement de la couverture de tests unitaires, notamment pour la nouvelle fonctionnalité d'URLs promues.
+- Nettoyage de la configuration du projet Xcode et de la structure des dossiers de tests.
+- Maintenance du code : suppression de code mort, corrections de la linter et mise à jour de la documentation technique.

@@ -34,17 +34,28 @@
 │       ├── Components
 │       │   ├── InformationBanner.swift
 │       │   └── WebView
-│       │       ├── AMIWebView.swift
-│       │       ├── SwiftUIWebView.md
-│       │       ├── SwiftUIWebView.swift
-│       │       ├── ViewModel
+│       │       ├── Data
+│       │       │   ├── DefaultWebViewNavigateToNewWindow.swift
+│       │       │   ├── DefaultWebViewNavigationHandler.swift
+│       │       │   ├── DefaultWebViewNavigationState.swift
+│       │       │   ├── WeakScriptMessageHandler.swift
 │       │       │   ├── WebView-ViewModel-Downloader.swift
-│       │       │   └── WebView-ViewModel.swift
-│       │       ├── WeakScriptMessageHandler.swift
-│       │       ├── WebViewDelegate.swift
-│       │       ├── WebViewLocalStorageManager.swift
-│       │       ├── WebViewNavigateToNewWindowProtocol.swift
-│       │       └── WebViewUserScriptsProtocol.swift
+│       │       │   ├── WebView-ViewModel.swift
+│       │       │   ├── WebViewArchiverWebArchive.swift
+│       │       │   └── WebViewLocalStorageManager.swift
+│       │       ├── Model
+│       │       │   ├── WebViewArchiver.swift
+│       │       │   ├── WebViewArchiverError.swift
+│       │       │   ├── WebViewNavigateToNewWindow.swift
+│       │       │   ├── WebViewNavigateToNewWindowDestination.swift
+│       │       │   ├── WebViewNavigationHandler.swift
+│       │       │   ├── WebViewNavigationState.swift
+│       │       │   ├── WebViewNavigationType.swift
+│       │       │   └── WebViewUserScripts.swift
+│       │       ├── Presentation
+│       │       │   ├── AMIWebView.swift
+│       │       │   └── SwiftUIWebView.swift
+│       │       └── SwiftUIWebView.md
 │       ├── Composition
 │       │   ├── AMIAppState.swift
 │       │   └── DependencyContainer.swift
@@ -117,7 +128,9 @@
 │       │   │   ├── HomeView-UserScripts.swift
 │       │   │   ├── HomeView-ViewModel.swift
 │       │   │   ├── HomeView.swift
-│       │   │   └── HomeViewCommands.swift
+│       │   │   ├── HomeViewCommands.swift
+│       │   │   ├── HomeViewNavigationHandler.swift
+│       │   │   └── HomeViewNavigationState.swift
 │       │   ├── Models
 │       │   │   ├── AlertModel.swift
 │       │   │   └── ServiceLinkViewModel.swift
@@ -127,7 +140,9 @@
 │       │   ├── Service
 │       │   │   ├── ServiceView-UserScripts.swift
 │       │   │   ├── ServiceView-ViewModel.swift
-│       │   │   └── ServiceView.swift
+│       │   │   ├── ServiceView.swift
+│       │   │   ├── ServiceViewNavigateToNewWindow.swift
+│       │   │   └── ServiceViewNavigationHandler.swift
 │       │   └── Settings
 │       │       ├── SettingsView-ViewModel.swift
 │       │       └── SettingsView.swift
@@ -164,6 +179,11 @@
     │       ├── .env.example
     │       └── GoogleService-Info.plist
     ├── production
+    │   ├── Sources
+    │   │   └── Presentation
+    │   │       └── RootView
+    │   │           ├── RootView-ViewModel.swift
+    │   │           └── RootView.swift
     │   └── SupportingFiles
     │       ├── .env.example
     │       ├── GoogleService-Info.plist
@@ -174,9 +194,12 @@
     │   │   │   └── Entities
     │   │   │       └── ReviewApp.swift
     │   │   └── Presentation
-    │   │       └── ReviewApp
-    │   │           ├── ReviewApp-ViewModel.swift
-    │   │           └── ReviewAppView.swift
+    │   │       ├── ReviewApp
+    │   │       │   ├── ReviewApp-ViewModel.swift
+    │   │       │   └── ReviewAppView.swift
+    │   │       └── RootView
+    │   │           ├── RootView-ViewModel.swift
+    │   │           └── RootView.swift
     │   └── SupportingFiles
     │       ├── .env.example
     │       ├── GoogleService-Info.plist
@@ -194,4 +217,4 @@
         │           └── PromotedUrlsFeatureTests.swift
         └── SupportingFiles
             └── Info.plist
-83 directories, 113 files
+89 directories, 130 files
