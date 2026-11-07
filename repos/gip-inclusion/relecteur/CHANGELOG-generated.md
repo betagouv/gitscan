@@ -1,29 +1,22 @@
-## Changelog : relecteur (30 derniers jours, au 28 octobre 2026)
+## Changelog : relecteur (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Le projet a franchi une étape importante dans l'automatisation et la fiabilité de la revue de code. Les utilisateurs bénéficient désormais d'une meilleure intégration dans les flux de travail (support des dépôts privés, gestion intelligente des nouveaux commits) et de rapports plus clairs, notamment en français. Le système d'évaluation de l'outil a également été considérablement renforcé pour offrir des analyses plus précises et détaillées.
+Ce mois-ci, relecteur a franchi une étape importante dans son automatisation et sa robustesse. L'outil est désormais capable de gérer de manière beaucoup plus fluide les interruptions (nouveaux commits, limites de débit de l'IA) et s'intègre plus profondément dans les workflows de développement via GitHub Actions. L'expérience utilisateur est également améliorée par une meilleure présentation des résultats et un support natif du français.
 
 ### Évolutions fonctionnelles
-- **Support des dépôts privés** : Capacité de réviser des pull requests sur des dépôts privés en utilisant des jetons d'accès sécurisés.
-- **Amélioration de l'expérience Pull Request** : Chaque revue est désormais affichée comme un "check" distinct et un résumé par revue est publié pour une meilleure lisibilité.
-- **Gestion dynamique des commits** : Lorsqu'un nouveau commit est poussé pendant une revue en cours, l'outil peut reprendre ou relancer la revue sur la nouvelle version.
-- **Personnalisation accrue** :
-    - Sélection spécifique des fichiers à réviser via le fichier `.relecteur/config.toml`.
-    - Possibilité de choisir le modèle d'IA et le "juge" via la configuration du dépôt.
-    - Rédaction des conclusions de revue en français (configurable).
-- **Système d'évaluation (evals) enrichi** :
-    - Génération de rapports incluant le temps moyen et le nombre de tokens consommés.
-    - Capacité à créer automatiquement des cas de test à partir de l'historique du dépôt.
-    - Scoring des défauts basé sur la probabilité et la confiance du modèle.
+- **Amélioration de l'expérience de revue** : Les résultats sont désormais présentés de manière plus lisible dans les Pull Requests, avec des résumés par revue et un système de repliement du code cité pour faciliter la lecture des défauts.
+- **Localisation** : Les commentaires de revue sont désormais rédigés en français par défaut (configurable dans les paramètres).
+- **Gestion intelligente des interruptions** : Le processus de revue peut désormais reprendre automatiquement en cas de nouveau push sur une PR, de timeout ou de limitation de débit (rate limit) de l'API.
+- **Personnalisation accrue** : Possibilité de sélectionner précisément les fichiers à réviser via le fichier `.relecteur/config.toml` et de configurer le modèle d'IA ainsi que le "juge" directement dans le dépôt.
+- **Compatibilité étendue** : Support de la revue des dépôts privés en utilisant des jetons d'accès sécurisés.
 
 ### Évolutions techniques
-- **Auto-revue via CI/CD** : Mise en place d'un workflow GitHub Actions permettant à l'outil de réviser ses propres Pull Requests pour garantir sa qualité.
-- **Résilience et robustesse** :
-    - Amélioration de la gestion des limites de taux (rate limits) et des erreurs réseau des fournisseurs d'IA (avec des mécanismes de pause et de reprise).
-    - Meilleure gestion des timeouts et des erreurs de service (503).
-- **Refactorisation** : Optimisation de la gestion des statuts de l'IA et des classes d'erreurs pour un code plus maintenable.
+- **Intégration CI/CD** : Mise en place d'une GitHub Action permettant d'exécuter les revues directement en CI, y compris pour tester l'outil sur ses propres Pull Requests.
+- **Métriques de performance** : Ajout de statistiques détaillées dans les rapports d'évaluation, incluant le temps moyen et la consommation de tokens par revue.
+- **Robustesse et erreurs** : Amélioration de la gestion des erreurs réseau et des erreurs de service (503) pour une meilleure distinction entre les problèmes d'infrastructure et les problèmes de permissions.
+- **Refactorisation** : Optimisation interne des classes de défaillance et des statuts du moteur pour une meilleure maintenance.
+- **Connectivité** : Support de l'API Anthropic pour les évaluations.
 
 ### Autres changements
-- **Refonte de la documentation** : Passage de la documentation en français par défaut, amélioration du guide de démarrage rapide et création de pages dédiées selon le profil de l'utilisateur (développeur, décideur, etc.).
-- **Comparatifs** : Ajout de documents comparant l'outil avec des solutions du marché (Claude Code Review, CodeRabbit, Greptile).
-- **Maintenance** : Nettoyage des artefacts de build et optimisation des processus de test.
+- **Documentation** : Refonte complète du README en français, incluant un guide de démarrage rapide plus clair et des pages dédiées selon le profil de l'utilisateur (développeur, décideur, etc.).
+- **Comparatifs** : Ajout d'une section comparative avec d'autres outils du marché (Claude Code Review, CodeRabbit, Greptile) pour aider au choix de la solution.
