@@ -3,12 +3,13 @@ x-carbure: &common-settings
   networks: [carbure]
 
 services:
-  carbure-mariadb:
+  carbure-mysql:
     image: mysql:8.0.39
-    container_name: carbure_mariadb
+    container_name: carbure_mysql
     <<: *common-settings
     environment:
       ENV: ${IMAGE_TAG}
+      MYSQL_INITDB_SKIP_TZINFO: "1"
     volumes:
       - carburedb:/var/lib/mysql
     ports:
@@ -21,6 +22,19 @@ services:
     <<: *common-settings
     volumes:
       - carbureredis:/data
+
+  carbure-s3mock:
+    image: adobe/s3mock:latest
+    container_name: carbure_s3mock
+    environment:
+      COM_ADOBE_TESTING_S3MOCK_STORE_ROOT: /containers3root
+      COM_ADOBE_TESTING_S3MOCK_STORE_INITIAL_BUCKETS: ${AWS_STORAGE_BUCKET_NAME:-carbure}
+      COM_ADOBE_TESTING_S3MOCK_STORE_RETAIN_FILES_ON_EXIT: "true"
+    networks: [carbure]
+    volumes:
+      - ./files:/containers3root
+    ports:
+      - 9090:9090
 
   carbure-frontend:
     image: carbure_frontend:local
@@ -39,24 +53,23 @@ services:
     image: carbure_test:local
     container_name: carbure_test
     profiles: [test]
-    extends:
-      carbure-django
+    extends: carbure-django
     environment:
       TEST: 1
-    command: "pipenv run test web"
+    command: "uv run python web/manage.py test --keepdb"
 
   carbure-django:
     image: carbure_app:local
     container_name: carbure_app
     depends_on:
-      - carbure-mariadb
+      - carbure-mysql
       - carbure-redis
     build:
       context: .
       dockerfile: ./web/Dockerfile
     <<: *common-settings
     environment:
-      DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@carbure-mariadb:3306/$MYSQL_DATABASE
+      DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@carbure-mysql:3306/$MYSQL_DATABASE
       REDIS_URL: redis://carbure-redis:6379
       CARBURE_HOME: /app
       PYTHONPATH: /app:/app/web

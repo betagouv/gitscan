@@ -1,3 +1,590 @@
+2026-11-02T08:41:37Z - 49c9250d7 - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-10-29T14:24:53+01:00 - 3e325c900 - Benjamin Grilleres : fix(biomethane): stop duplicating gas providers on deploy
+2026-10-29T13:49:47+01:00 - 6d2a90dd0 - Benjamin Grilleres : fix(biomethane): spell out the IAA collection type label
+2026-10-29T13:33:38Z - b1b932ca1 - benjamin-grilleres : Merge branch 'hotfix/2400-iaa-fournisseurs' into 'staging'
+2026-10-28T22:58:31+01:00 - 284ecd9a5 - Yohann : hotfix(tiruert): use biofuel and customs_category info from excel file, not from CarbureLot because B100, EMHV etc are merged into EMAG biofuel in tiruert operations
+2026-10-28T22:12:45+01:00 - 5c91719da - Yohann : hotfix(tiruert): check_teneur_target() uses the right entity and customs_category to calculate the target
+2026-10-28T22:06:32Z - dbf321c7f - Yohann Ulreich : Merge branch 'hotfix-operations-import' into 'staging'
+2026-10-28T13:36:21+01:00 - c6e8160d0 - Yohann : hotfix(tiruert): bulk_check_volumes() takes only one argument - test
+2026-10-28T13:21:58+01:00 - a818a0484 - Yohann : hotfix(tiruert): bulk_check_volumes() takes only one argument
+2026-10-28T12:50:12Z - 1ac4dfa3d - Yohann Ulreich : Merge branch 'hotfix-operations-import' into 'staging'
+2026-10-27T17:26:13Z - 69d0f2c95 - Yohann Ulreich : Merge branch 'dev' into 'staging'
+2026-10-26T14:30:20+01:00 - 4429a6ae7 - Yohann : feat(iricc): exclude saf biofuels, no operations created
+2026-10-26T14:29:40+01:00 - 0d41f2538 - Yohann : feat(iricc): update script to select all operators not only tiruert liables
+2026-10-26T14:02:34Z - f56097070 - Yohann Ulreich : Merge branch '2444-feat/api-endpoint-gaz-providers' into 'dev'
+2026-10-26T13:37:08Z - 962118ea3 - Yohann Ulreich : Merge branch '2298-feat/exclude-saf-biofuels-from-iricc' into 'dev'
+2026-10-26T13:17:42Z - 86e1c0106 - Yohann Ulreich : Merge branch '2424-feat/hide-etbe-biofuels' into 'dev'
+2026-10-26T12:05:11+01:00 - 88c7cae7a - Yohann : feat(biofuels): hide (not delete) etbe-100 and etbe-63
+2026-10-26T12:02:25+01:00 - 8a0724be3 - Yohann : test(biomethane): update tests
+2026-10-26T11:50:24+01:00 - 75dbaf4e2 - Yohann : chore(api): update api schema
+2026-10-26T11:50:23+01:00 - c08f5ff52 - Yohann : feat(biomethane): add status info and return all declarations for gas provider api. 'year' param is required
+2026-10-26T07:39:29Z - 69d596bda - benjamin-grilleres : Merge branch 'feature/2352-matrices-transitions' into 'dev'
+2026-10-22T11:25:46+02:00 - 784cdcd40 - Benjamin Grilleres : fix(biomethane): load the feedstock catalog before the biomethane import
+2026-10-22T10:53:58+02:00 - da6152c5e - Yohann : feat(biomethane): add a defaut biomethane provider entity in create_sample_data()
+2026-10-22T10:53:07+02:00 - 7cb01a004 - Yohann : feat(biomethane): specific left menu for gas provider, and adapt existing canAccessModule permission
+2026-10-22T10:48:57+02:00 - 1d17da7bb - Yohann : feat(biomethane): move 'year' select field to root component level to be used in admin and provider pages
+2026-10-22T10:46:14+02:00 - 100893b91 - Benjamin Grilleres : fix(biomethane): make sample data safe to run twice
+2026-10-22T09:49:22+02:00 - ffb22fc2c - Benjamin Grilleres : feat(traceability): give each creation one parent and a birth status
+2026-10-22T09:49:22+02:00 - 9b8e809b9 - Benjamin Grilleres : feat(traceability): match a creation parent on type and status
+2026-10-22T09:49:22+02:00 - 31ecd972a - Benjamin Grilleres : feat(traceability): allow every transition and creation until permissions exist
+2026-10-22T09:48:59+02:00 - b0e19f1e4 - Benjamin Grilleres : feat(traceability): let valorize and refuse follow the status matrix
+2026-10-22T09:47:47+02:00 - bf9fb42e7 - Benjamin Grilleres : feat(traceability): declare which status changes and creations a handler allows
+2026-10-22T09:31:21Z - 03a3b0e8d - benjamin-grilleres : Merge branch 'fix/biomethane-sample-data-rerun' into 'dev'
+2026-10-22T09:05:34Z - 0cac646c9 - Yohann Ulreich : Merge branch '2444-feat/api-endpoint-gaz-providers' into 'dev'
+2026-10-22T08:59:01+02:00 - 4d0c3b44a - Benjamin Grilleres : refactor(biomethane): move declaration reopening into the annual declaration service
+2026-10-22T08:56:51Z - d6b87d0ee - Yohann Ulreich : Merge branch '2441-fix/rules-usage-fields-2' into 'dev'
+2026-10-22T08:45:37+02:00 - fdef4e78b - Benjamin Grilleres : feat(biomethane): require collection type for IAA residue feedstocks
+2026-10-22T08:45:37+02:00 - ad26bf240 - Benjamin Grilleres : feat(biomethane): notify producers when a declaration is reopened
+2026-10-22T08:45:37+02:00 - 74ac596e8 - Benjamin Grilleres : feat(biomethane): reopen declarations through a DREAL serializer
+2026-10-22T08:45:37+02:00 - 59aebc520 - Benjamin Grilleres : feat(biomethane): add a command to reopen annual declarations
+2026-10-22T08:45:37+02:00 - 322fd8213 - Benjamin Grilleres : fix(biomethane): match palm oil code and roll back a failed reopen
+2026-10-22T08:45:17+02:00 - 4e757237d - Benjamin Grilleres : refactor(traceability): allow excel import without material conversion factors
+2026-10-22T08:41:22+02:00 - c293d69c4 - Benjamin Grilleres : refactor(traceability): drop duplicate logging on missing material factors
+2026-10-22T08:41:22+02:00 - c12eed7da - Benjamin Grilleres : test: correct tests
+2026-10-22T08:41:22+02:00 - 31f1b5187 - Benjamin Grilleres : feat(traceability): display action quantities with the material unit
+2026-10-22T08:41:22+02:00 - 2504882b6 - Benjamin Grilleres : feat(traceability): store valorized actions on a dedicated MJ material
+2026-10-22T08:41:21+02:00 - afaf142fc - Benjamin Grilleres : refactor(traceability): store the quantity unit on the material
+2026-10-22T08:41:21+02:00 - 5c0722063 - Benjamin Grilleres : feat(inputs): show unit and decimals on read-only NumberInput
+2026-10-22T08:41:21+02:00 - 57f9f1a66 - Benjamin Grilleres : fix(traceability): close review gaps on units, conversion and Excel import
+2026-10-22T08:41:21+02:00 - 2611b4627 - Benjamin Grilleres : refactor(traceability): load materials as a module fixture on deploy
+2026-10-22T08:41:21+02:00 - 0c1f8d15b - Benjamin Grilleres : feat(traceability): import the materials catalogue from CSV
+2026-10-22T08:41:21+02:00 - 03c47ab1b - Benjamin Grilleres : refactor(traceability): read lhv and density from the material
+2026-10-22T08:41:20+02:00 - 21f4c4e75 - Benjamin Grilleres : feat(traceability): let pages pick mass, volume or energy for quantities
+2026-10-22T08:40:42+02:00 - b5ac92804 - Benjamin Grilleres : feat(traceability): snapshot lhv and density on the action
+2026-10-22T08:40:41+02:00 - 718c5b4c6 - Benjamin Grilleres : feat(traceability): convert valorize quantity to MJ from material factors
+2026-10-22T08:40:41+02:00 - 4cacce21b - Benjamin Grilleres : feat(traceability): add a required unit on actions
+2026-10-22T07:14:16Z - 9966bf4b0 - benjamin-grilleres : Merge branch 'feature/2400-residus-iaa' into 'dev'
+2026-10-22T07:03:23Z - 30954fcc6 - benjamin-grilleres : Merge branch 'feature/2375-display-units-actions' into 'dev'
+2026-10-21T17:14:34+02:00 - 74ec2436e - Benjamin Grilleres : fix(deps): stop trusting the withdrawn emSign CA certificates
+2026-10-21T15:37:14Z - 3e1ecdc26 - Yohann Ulreich : Merge branch 'staging' into 'master'
+2026-10-21T15:29:51+02:00 - 493e9135f - Yohann : fix(lot): simplify display rules on delivery type field
+2026-10-21T15:16:42Z - d242cc4cf - benjamin-grilleres : Merge branch 'fix/emsign-ca-certifi' into 'staging'
+2026-10-21T14:36:35+02:00 - 67fcc93e3 - Yohann : feat(biomethane): production_unit could be null
+2026-10-21T14:36:05+02:00 - 4c92d7368 - Yohann : feat(biomethane): OpenAPI schema describes JWT +  API key or session. And tests.
+2026-10-21T13:18:02Z - 749ccd454 - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-10-21T10:58:13+02:00 - e58f91a50 - Yohann : feat(biomethane): new page for biomethane providers, to display declarations of producers they are linked to by contract
+2026-10-21T10:23:58+02:00 - fd89f0e67 - Benjamin Grilleres : fix(companies-admin): show the total user count in the admin list recap
+2026-10-21T09:25:27Z - ead9e2a80 - benjamin-grilleres : Merge branch 'hotfix/2395-utilisateurs' into 'staging'
+2026-10-20T17:52:46+02:00 - 2f38af0ae - Yohann : feat(biomethane): api endpoint for biomethane providers
+2026-10-20T14:14:29+02:00 - 466de4c78 - Yohann : fix(lot): new rules to display 'delivery type', 'usage' and 'usage precision' fields
+2026-10-20T10:29:57+02:00 - d97764693 - Benjamin Grilleres : feat(companies-admin): show a pluralized user count on the admin list
+2026-10-20T08:33:39Z - 9ddf60e1e - benjamin-grilleres : Merge branch 'hotfix/page-utilisateurs' into 'staging'
+2026-10-19T17:02:01+02:00 - e433d4d4c - Yohann : feat(biofuels): hide etbe-100 and etbe-63
+2026-10-19T15:08:36Z - 90909c555 - Yohann Ulreich : Merge branch '2424-feat/hide-etbe-biofuels' into 'dev'
+2026-10-19T12:40:47Z - ea1c016e5 - Yohann Ulreich : Merge branch 'dev' into 'staging'
+2026-10-19T12:28:53Z - c1db08d0b - Yohann Ulreich : Merge branch 'feature/2432-explicit-serializer-fields' into 'dev'
+2026-10-19T11:59:34+02:00 - 7b1c1f1c0 - Benjamin Grilleres : feat(h2): filter hydrogen lots by status
+2026-10-19T11:51:28+02:00 - 40d13623c - Benjamin Grilleres : feat(h2): share the certificates page between operator and admin
+2026-10-19T10:13:15Z - 9f5ebc4d6 - benjamin-grilleres : Merge branch 'feature/2437-admin-h2-certificates' into 'dev'
+2026-10-17T21:39:13+02:00 - a9909d446 - Benjamin Grilleres : refactor(api): replace serializer __all__ with explicit fields
+2026-10-17T18:07:31+02:00 - 9d9369dfa - Benjamin Grilleres : fix(h2): sort lots by status without emptying the table
+2026-10-17T17:28:20+02:00 - 4ef0e97d1 - Benjamin Grilleres : test(h2): assert action permissions with assertViewPermissions
+2026-10-17T17:23:35+02:00 - da68c099e - Benjamin Grilleres : feat(traceability): label status filters and show the working period
+2026-10-17T17:23:08+02:00 - 082b5b24c - Benjamin Grilleres : feat(h2): seed the industry admin and search lots by company
+2026-10-17T17:23:07+02:00 - d3ebb7cd4 - Benjamin Grilleres : feat(h2): show hydrogen lots to the industry admin in read-only
+2026-10-17T17:20:58+02:00 - 308c10b41 - Benjamin Grilleres : feat(traceability): let an industry admin read every action of its industry
+2026-10-17T16:16:53Z - b4f310bc7 - benjamin-grilleres : Merge branch 'fix/h2-lots-status-sort' into 'dev'
+2026-10-17T15:35:19+02:00 - 55197de14 - Benjamin Grilleres : feat(admin): sort the users list by entity, user, role and status
+2026-10-17T15:34:47Z - b1b2122d4 - benjamin-grilleres : Merge branch 'feature/2398-page-generique-lots' into 'dev'
+2026-10-17T13:46:47Z - 6d8253ce3 - benjamin-grilleres : Merge branch 'feature/2395-add-users-page' into 'dev'
+2026-10-15T14:49:04+02:00 - b251819d3 - Emmanuel Gaillot : [CLEANUP] Extract `EntityCertificate` to its own module
+2026-10-15T14:36:12Z - 58974b9ed - Emmanuel Gaillot : Merge branch 'cleanup/extract-entity-certificate' into 'dev'
+2026-10-15T09:11:50Z - 6e98121d0 - Falxa : feat(seed): use env variable for seed user passwords
+2026-10-14T15:41:39+02:00 - ddb716b5f - Benjamin Grilleres : refactor(admin): read pasted entity ids from the request body
+2026-10-14T15:41:39+02:00 - 3c4459e04 - Benjamin Grilleres : feat(admin): export the filtered users list
+2026-10-14T15:41:39+02:00 - 1d332879d - Benjamin Grilleres : feat(admin): load user filter options from the filters endpoint
+2026-10-14T15:41:38+02:00 - c40b8bd19 - Benjamin Grilleres : feat(admin): filter the users page by entity ids
+2026-10-14T15:41:38+02:00 - 9f8218cfb - Benjamin Grilleres : feat(admin): add a page to browse entity users
+2026-10-14T15:41:38+02:00 - 7405105c3 - Benjamin Grilleres : refactor(admin): split the users page view from its columns and filters
+2026-10-14T15:41:38+02:00 - 42f7e391a - Benjamin Grilleres : feat(admin): filter users by active status
+2026-10-14T15:41:37+02:00 - 8af307681 - Benjamin Grilleres : feat(entity): list user rights for admins
+2026-10-12T15:02:06Z - 98b48c33c - Yohann Ulreich : Merge branch 'mep/hydrogen' into 'master'
+2026-10-09T16:25:17+02:00 - 6bfe98c93 - Yohann : chore(auth): enable back csrf token in local mode
+2026-10-09T15:36:48+02:00 - c428e2687 - Yohann : Revert "fix(auth): disable CSRF through WITH_CSRF, including DRF session auth"
+2026-10-09T14:35:34Z - 6c3c9e849 - Yohann Ulreich : Merge branch 'hotfix/with-csrf' into 'dev'
+2026-10-08T12:14:33+02:00 - a33c37bab - Emmanuel Gaillot : Validate at instanciation that country code may be handled
+2026-10-08T12:09:11+02:00 - 1539b786e - Emmanuel Gaillot : Validate registration id against SIREN format
+2026-10-08T10:20:47Z - 3dd463bbd - Emmanuel Gaillot : Merge branch '2415-feat/error-on-invalid-SIREN-format' into 'dev'
+2026-10-07T15:59:43+02:00 - 2b1e4d496 - Benjamin Grilleres : feat(companies): allow registering a company as an H2 distributor
+2026-10-07T12:54:59Z - 17d0c3b47 - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-10-07T12:32:46Z - d30ace535 - benjamin-grilleres : Merge branch 'staging' into 'dev'
+2026-10-07T11:52:36+02:00 - 839418aae - Benjamin Grilleres : feat(traceability): load the materials catalogue on deploy
+2026-10-07T10:43:27+02:00 - 5a9bd68c1 - Benjamin Grilleres : fix(h2): block read-only write actions and show the consumption period
+2026-10-07T10:41:49+02:00 - 7def5326b - Emmanuel Gaillot : Add entity name to error messages when trouble getting NTR id
+2026-10-07T09:59:03Z - 8e16577ba - benjamin-grilleres : Merge branch 'feature/load-materials' into 'staging'
+2026-10-07T08:54:02Z - 477a7de1d - Emmanuel Gaillot : Merge branch '2414-feat/explicit-error-messages-on-ntr-id-fetching' into 'dev'
+2026-10-07T08:48:38Z - 1c3655297 - benjamin-grilleres : Merge branch 'hotfix/h2-missing-empty-certificates-modal' into 'staging'
+2026-10-07T07:40:19Z - 72b8f1eb3 - benjamin-grilleres : Merge branch 'hotfix/h2-missing-empty-certificates-modal' into 'staging'
+2026-10-06T15:57:47+02:00 - 39749e4de - Benjamin Grilleres : feat(h2): show an empty state when no hydrogen certificates
+2026-10-06T14:51:46+02:00 - a8b016af0 - Benjamin Grilleres : fix(openapi): keep cookieAuth on the session authentication subclass
+2026-10-06T14:49:13+02:00 - 317555ef5 - Benjamin Grilleres : feat(traceability): delete a pending or rejected init action
+2026-10-05T12:53:09Z - 4e547bca8 - benjamin-grilleres : Merge branch 'dev' into 'staging'
+2026-10-05T10:33:33+02:00 - 4d937e19b - Yohann : fix(iricc): truncate() shouldn't return '-0' but '0'
+2026-10-05T09:58:52+02:00 - 2652bf4c2 - Yohann : Revert "fix(iricc): we don't want to display '-0' but '0'"
+2026-10-05T08:48:08Z - 94c8516a6 - Yohann Ulreich : Merge branch '2384-feat/reliquats' into 'dev'
+2026-10-01T15:46:13+02:00 - 19e7c0ffc - Yohann : fix(iricc): we don't want to display '-0' but '0'
+2026-10-01T15:42:52+02:00 - 3e9b903cd - Yohann : feat(iricc): no more pagination in snapshot balance modal
+2026-10-01T15:17:11+02:00 - 4730e5a15 - Yohann : refactor(iricc): remove old code about reliquat ooperations
+2026-10-01T15:08:55+02:00 - 94c16b71c - Yohann : refactor(iricc): move an api call
+2026-10-01T15:07:15+02:00 - 717cb0869 - Yohann : feat(iricc): use existing formatUnit() function
+2026-10-01T11:41:15+02:00 - a823898e1 - Emmanuel Gaillot : [FIX] Use correct Chain of Custody value
+2026-10-01T09:49:48Z - ab57d3b96 - Emmanuel Gaillot : Merge branch 'fix/chain_of_custody_value' into 'dev'
+2026-09-30T15:59:07+02:00 - 588240d31 - Yohann : feat(iricc): fix test
+2026-09-30T15:46:46+02:00 - 8abe60ecf - Yohann : feat(iricc): adapt modal  height
+2026-09-30T15:32:44+02:00 - b5ee2feb0 - Yohann : feat(iricc): in calculate_balance use declaration_year if provided
+2026-09-30T13:16:39Z - 155f457a1 - Falxa : Merge branch '2405-feat/update-backup-scripts' into 'dev'
+2026-09-30T13:10:52Z - 2b3c5717e - benjamin-grilleres : Merge branch 'hotfix/2402-retours-tests-h2' into 'dev'
+2026-09-30T11:00:51+02:00 - 5838b03de - Julien Falxa : feat(backups): run staging restoration at a later hour
+2026-09-30T09:33:48+02:00 - 9f6236d61 - Yohann : feat(iricc): split snapshot balance in 2 files
+2026-09-29T19:03:53+02:00 - b126ff32a - Julien Falxa : feat(backups): run latest migrations after restoring staging database
+2026-09-29T17:43:35+02:00 - 4e6c26bd7 - Yohann : chore(api): update schemaa
+2026-09-29T17:43:00+02:00 - 2412ea419 - Yohann : feat(iricc): add new section on objectives page and a new modal
+2026-09-29T17:40:59+02:00 - d497ea77f - Yohann : feat(iricc): new endpoint to get snapshot balances
+2026-09-29T17:39:51+02:00 - 9633b7103 - Yohann : feat(iricc): save snapshots for balances volumes (l and mj)
+2026-09-29T17:38:51+02:00 - 91ef81e9e - Yohann : tests(iricc): save snapshots for balances volumes
+2026-09-29T17:37:38+02:00 - 62b292cd3 - Yohann : feat(iricc): save snapshots for balances volumes
+2026-09-29T17:21:40+02:00 - 26e2f3612 - Benjamin Grilleres : feat(inputs): support a custom read-only display on form fields
+2026-09-29T15:11:19+02:00 - 77923c2b6 - Benjamin Grilleres : fix(traceability): show cumulative emission values on action fields
+2026-09-29T11:41:27+02:00 - e96e5c444 - Benjamin Grilleres : feat(traceability): share GHG emission tooltips and align H2 certificate labels
+2026-09-29T09:24:53+02:00 - 94a3c44ff - Yohann : fix(iricc): fix css file import issue
+2026-09-29T09:24:53+02:00 - 8a7c51321 - Yohann : feat(iricc): move operations table in a component and add a storybook test
+2026-09-29T09:24:53+02:00 - 35f74566e - Yohann : fix(iricc): set renewable_energy_share=1 by defaut for storybook tests
+2026-09-29T09:24:52+02:00 - fd8bdd41d - Yohann : feat(etbe): add biofuels ETBE 63% and ETBE 100%
+2026-09-29T09:24:52+02:00 - f3ff9ab23 - Yohann : feat(etbe): fix story (storybook)
+2026-09-29T09:24:52+02:00 - eb928aa0e - Yohann : fix(biocarburant): remove duplicate in csv
+2026-09-29T09:24:52+02:00 - 8a375f69a - Yohann : tests(etbe): add tests to validate the propagation of renewable_energy_share, and correct display
+2026-09-29T09:24:51+02:00 - c1e87918e - Yohann : feat(etbe): display correct (full quantity) volumes and tCO2 on operations list page. No need 'formatValue()' function anymore.
+2026-09-29T09:24:51+02:00 - 2ff828f34 - Yohann : feat(etbe): inside debit recap modal, display 2 new info 'PCI' and 'Taux renouvelable'
+2026-09-29T09:24:50+02:00 - c86433e10 - Yohann : feat(etbe): take into condiseration renewable_energy_share when calculate energy from liters and liters from energy. Inside debit operation, stores the entire volume and real renewable_energy_share
+2026-09-29T09:24:50+02:00 - 832c629e5 - Yohann : feat(etbe): update ETBE renewable_energy_share value
+2026-09-29T09:24:50+02:00 - 1c584b5b6 - Yohann : feat(etbe): update operation modal in order to correctly displays quantity and energy
+2026-09-29T07:32:50Z - 9c30ed551 - Yohann Ulreich : Merge branch '2382-feat/gestion-etbe' into 'dev'
+2026-09-28T18:38:15+02:00 - 2a3e21918 - Julien Falxa : feat(backups): only run migrate command when it's available
+2026-09-28T18:16:06+02:00 - 2f9e01a78 - Julien Falxa : feat(backups): ignore redcert certificate pdfs during S3 file backup
+2026-09-28T18:10:06+02:00 - ef9cb274b - Julien Falxa : feat(backups): add usage display and fix tar command
+2026-09-28T17:39:42+02:00 - db34297f9 - Yohann : feat(iricc): fix migrations to rollback MR 1172
+2026-09-28T17:27:00+02:00 - 5d5ba10b8 - Yohann : Revert "feat(iricc): fix migrations to rollback MR 1172"
+2026-09-28T17:13:09+02:00 - e380bdfc7 - Yohann : feat(iricc): fix migrations to rollback MR 1172
+2026-09-28T16:52:42+02:00 - d60d4d02a - Yohann : Revert "Merge branch '2204-feat/report-solde-annee' into 'dev'"
+2026-09-28T16:07:48+02:00 - f43fc8ed5 - Yohann : feat(registration): add entity type in email for admin when new company to validate
+2026-09-28T15:47:05Z - 4bf91d161 - Yohann Ulreich : Merge branch 'revert-MR-1172-v2' into 'dev'
+2026-09-28T14:13:18Z - 89aa6534f - Yohann Ulreich : Merge branch '1890-feat/entity-type-in-email' into 'dev'
+2026-09-28T12:11:54+02:00 - 692afa664 - Benjamin Grilleres : fix(elec): stream the transport.data.gouv CSV download
+2026-09-28T12:11:15Z - 80b76989e - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-09-28T11:12:23Z - 106ce081e - benjamin-grilleres : Merge branch 'hotfix/tdg-file-too-large' into 'staging'
+2026-09-28T09:41:06+02:00 - fd971ccc3 - Benjamin Grilleres : feat(h2): add pagination
+2026-09-28T09:28:33+02:00 - ff0ec7e80 - Yohann : chore(deploy): during first-deploy, trigger first post-deploy, then create sample_data
+2026-09-28T07:50:32Z - 6e32b0d97 - benjamin-grilleres : Merge branch 'hotfix/add-pagination-lots-page' into 'dev'
+2026-09-28T07:31:10Z - 26908ca84 - Yohann Ulreich : Merge branch 'fix-scalingo-first-deploy' into 'dev'
+2026-09-24T14:49:30+02:00 - 233a675f3 - Benjamin Grilleres : fix(traceability): drop datetime date hierarchy on stored files
+2026-09-24T09:48:13+02:00 - bb7e3df21 - Benjamin Grilleres : (chore): correct migrations and tests
+2026-09-24T09:48:10Z - 3e3fdcf7f - benjamin-grilleres : Merge branch 'hotfix/with-csrf' into 'dev'
+2026-09-24T07:54:29Z - bf3e72083 - benjamin-grilleres : Merge branch 'feature/2264-correction-template-excel' into 'dev'
+2026-09-23T16:23:41+02:00 - a28f69e31 - Benjamin Grilleres : fix(h2): require transport fields when the lot is not consumed on site
+2026-09-23T16:23:41+02:00 - 63efa2fd2 - Benjamin Grilleres : feat(h2): require shipping fuel type for road transport
+2026-09-23T16:23:41+02:00 - 449e501d6 - Benjamin Grilleres : fix(h2): add Oui/Non dropdown and import validation for on-site consumption
+2026-09-23T13:49:12Z - f1e3e3b43 - benjamin-grilleres : Merge branch 'feature/2393-add-stations-h2-for-admin' into 'dev'
+2026-09-23T11:18:48+02:00 - 1bb281785 - Benjamin Grilleres : fix(h2): load station companies in one query
+2026-09-23T11:04:31+02:00 - c96619e14 - Yohann : fix(core): merge migrations
+2026-09-23T10:59:11+02:00 - bc0fe4f0d - Benjamin Grilleres : feat(h2): filter admin stations by company
+2026-09-23T10:53:31+02:00 - e1f31f47b - Yohann : chore(api): update schema
+2026-09-23T10:51:04+02:00 - b70476a21 - Yohann : tests(): add missing tests
+2026-09-23T10:51:04+02:00 - 6feb642c5 - Yohann : feat(maritime): udpate biocarburant admin list page
+2026-09-23T10:51:04+02:00 - 57594591f - Yohann : feat(maritime): typo in formatSector
+2026-09-23T10:51:03+02:00 - 39b27a747 - Yohann : fix(iricc): no 'pci_kg' column on FossilFuelCategory
+2026-09-23T10:51:03+02:00 - 378a6d293 - Yohann : feat(iricc): display the right objective inside teneur modal
+2026-09-23T10:51:03+02:00 - 00171e374 - Yohann : feat(iricc): new hook 'useCompatibleSectors'
+2026-09-23T10:50:57+02:00 - e39c9c929 - Yohann : chore(api): update schema
+2026-09-23T10:50:32+02:00 - bb924f46a - Yohann : feat(iricc): on operations page and detail operation, display selected objective sector
+2026-09-23T10:50:32+02:00 - 4fef08068 - Yohann : feat(iricc): remove pci_kg on FossilFuelCategory model
+2026-09-23T10:50:32+02:00 - 2692bed66 - Yohann : feat(iricc): add new select field to choose sector objective in teneur modal
+2026-09-23T10:50:32+02:00 - 1242b137e - Yohann : feat(biocarburant): add new fied 'compatible_maritime' on Biocarburant model
+2026-09-23T10:50:31+02:00 - 77ac821c7 - Yohann : feat(iricc): fix migrations
+2026-09-23T10:50:31+02:00 - 26d7b5358 - Yohann : feat(iricc): update text
+2026-09-23T10:50:31+02:00 - 133b3e09f - Yohann : fix(iricc): front calculation in modal 'Valider ma teneur'
+2026-09-23T10:50:26+02:00 - 81f61d03f - Yohann : fix(iricc): no longer use 'date_from' param and 'created_at' info in balance calculation, but use 'declaration_year'
+2026-09-23T10:49:46+02:00 - 7ca8a490d - Yohann : feat(iric): new fossil data
+2026-09-23T10:49:45+02:00 - f54f9e5e7 - Yohann : feat(iric): new sector 'maritime' and new field 'pci_kg' in FossilFuelCategory
+2026-09-23T10:40:03+02:00 - cc0d5bb8c - Benjamin Grilleres : fix(core): drop JSON check constraints on the current database only
+2026-09-23T10:39:10+02:00 - cf5ca689e - Benjamin Grilleres : feat(h2): show all stations to H2 admins
+2026-09-23T10:27:41+02:00 - a55b03a60 - Benjamin Grilleres : feat(h2): let H2 admins read all stations
+2026-09-23T09:13:43Z - 9cd1378a9 - Yohann Ulreich : Merge branch '1822-feat/iricc-filiere-maritime' into 'dev'
+2026-09-22T17:05:25+02:00 - d8b216934 - Yohann : chore(feedstocks): add translations
+2026-09-22T15:50:17+02:00 - 51094018d - Benjamin Grilleres : fix: add migration merge
+2026-09-22T15:46:41+02:00 - 6bbe83945 - Benjamin Grilleres : Merge branch 'dev' into feature/2362-store-generic-file
+2026-09-22T15:26:40Z - 8c453445a - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-09-22T15:14:54Z - 7aba81c94 - Yohann Ulreich : Merge branch 'fix-mp' into 'staging'
+2026-09-22T13:56:07Z - 27b3dc0ca - benjamin-grilleres : Merge branch 'feature/2389-add-external-admin-hrs' into 'dev'
+2026-09-22T13:54:29Z - 992c9898e - benjamin-grilleres : Merge branch 'feature/2362-store-generic-file' into 'dev'
+2026-09-22T12:05:31+02:00 - 3059d95c0 - Benjamin Grilleres : feat(core): stamp StoredFile object keys with the upload datetime
+2026-09-22T11:45:16+02:00 - ff1753fd4 - Emmanuel Gaillot : Set `CHAIN_OF_CUSTODY` field to 'Mass Balance' value
+2026-09-22T09:52:30Z - df6e413bd - Emmanuel Gaillot : Merge branch '2390-fix/chain-of-custody' into 'dev'
+2026-09-22T09:08:43+02:00 - 2fcd1fa4a - Benjamin Grilleres : feat(h2): add EXTERNAL_ADMIN right and empty admin pages
+2026-09-21T14:19:32+02:00 - 35f4c5dd5 - Yohann : fix(matierespremieres): update category for 'RESIDUS_DE_BIERE'
+2026-09-21T12:52:18Z - e258bb772 - Yohann Ulreich : Merge branch 'dev' into 'staging'
+2026-09-21T12:23:56Z - 1ba531a2d - Yohann Ulreich : Merge branch '2335-feat/add-new-feedstocks' into 'dev'
+2026-09-21T11:35:23+02:00 - 295e0c1ea - Benjamin Grilleres : fix(auth): disable CSRF through WITH_CSRF, including DRF session auth
+2026-09-21T11:08:50+02:00 - 5ae9ddd3a - Emmanuel Gaillot : Check scope format before sending request to UDB
+2026-09-21T10:35:05+02:00 - 800bf09d6 - Emmanuel Gaillot : [FIX] Actually return invalid format if certificate type not of National Scheme
+2026-09-21T09:15:43Z - 271c4b62a - Emmanuel Gaillot : Merge branch '2383-feat/scope-format-check-before-sending-request' into 'dev'
+2026-09-17T17:24:01+02:00 - 05d1aac1b - Emmanuel Gaillot : [FIX] escape XML characters in entity/site description
+2026-09-17T16:48:15+02:00 - eccdfa508 - Yohann : fix(auth): clean up 'invite' param not used by backend
+2026-09-17T16:47:32+02:00 - 579e6812f - Yohann : fix(auth): add throttle on activate and reset password endpoints
+2026-09-17T16:21:10+02:00 - 2df58a69e - Yohann : fix(auth): expire both tokens after 1 hour
+2026-09-17T16:17:49+02:00 - c2b528f27 - Yohann : fix(auth): add a specific token generation for 'change password' feature
+2026-09-17T15:57:49+02:00 - 16a607cac - Yohann : fix(auth): do not log in user after account validation, and do not take into consideration param 'invite' in backend to create a token
+2026-09-17T15:50:24+02:00 - d4ff13a64 - Yohann : fix(auth): token used for account validation can be used only once
+2026-09-17T15:35:01Z - 2aca7150c - Yohann Ulreich : Merge branch 'staging' into 'master'
+2026-09-17T15:30:59Z - 70bae09c4 - Emmanuel Gaillot : Merge branch 'fix/escape_xml_special_characters' into 'dev'
+2026-09-17T15:16:12Z - 6c5871459 - Yohann Ulreich : Merge branch 'hotfix-2378/auth-security-issues' into 'staging'
+2026-09-17T13:28:12+02:00 - 1978c1cab - Emmanuel Gaillot : Export all NS certificates
+2026-09-17T12:17:56+02:00 - 75e4eef87 - Emmanuel Gaillot : Make error message more explicit
+2026-09-17T11:51:23+02:00 - 350f18c65 - Emmanuel Gaillot : Accept 'PARTIAL' response status as success
+2026-09-17T11:37:10Z - 2824743ae - Emmanuel Gaillot : Merge branch '2370-feat/certificate-export-django-command' into 'dev'
+2026-09-16T18:51:02+02:00 - c80aafb55 - Emmanuel Gaillot : Add --dry_run option to certificates export script
+2026-09-16T18:13:34+02:00 - 505f86340 - Emmanuel Gaillot : Handle multiple certificates add/update in one single UDB query
+2026-09-16T17:18:34+02:00 - 2f7c8b58b - Emmanuel Gaillot : Handle multiple certificates for same entity
+2026-09-16T17:18:33+02:00 - 7f6cebd65 - Emmanuel Gaillot : Introduce `GetOrganisationByIDRequest`
+2026-09-16T17:18:33+02:00 - 02de41d76 - Emmanuel Gaillot : Introduce `AddOrganisationRequest`
+2026-09-16T17:18:32+02:00 - 0b08ead5d - Emmanuel Gaillot : Display more detailed error message on `AddUpdateCertificateRequest` failure
+2026-09-16T17:18:28+02:00 - 76f1119a8 - Emmanuel Gaillot : Enable certificate export from CLI
+2026-09-16T13:38:24+02:00 - bb800d10e - Yohann : fix(migrations): merge migrations on core
+2026-09-16T12:28:11Z - 9dd5473ef - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-09-16T11:43:09Z - 545eed7d3 - Yohann Ulreich : Merge branch 'fix-migrations-dev' into 'dev'
+2026-09-16T11:23:24Z - 68058bf0a - Yohann Ulreich : Merge branch 'staging' into 'dev'
+2026-09-16T10:24:07+02:00 - 9cadfc139 - Benjamin Grilleres : fix: correct conflicts migration
+2026-09-16T10:22:00+02:00 - 3860cbf0f - Benjamin Grilleres : fix: hide unexpected exception details from API clients
+2026-09-16T10:21:59+02:00 - f1687724b - Yohann : fix(entity): delete the good user right
+2026-09-16T10:21:59+02:00 - e603077bd - Benjamin Grilleres : fix(auth): split throttle scopes so login OTP and company creation no longer share a bucket
+2026-09-16T10:21:59+02:00 - 75b74ab2d - Benjamin Grilleres : fix(entity): throttle company creation to 10 requests per day
+2026-09-16T10:21:59+02:00 - 603fc0752 - Benjamin Grilleres : fix(transactions): slugify entity name in Excel import path
+2026-09-16T10:21:58+02:00 - d8cf30052 - Benjamin Grilleres : fix(elec): enforce write rights on transfer actions
+2026-09-16T10:21:58+02:00 - 9b34cb06b - Benjamin Grilleres : fix(auth): hide internal exceptions from clients
+2026-09-16T10:21:58+02:00 - 82a0f2623 - Benjamin Grilleres : test(auth): cover authentication throttling
+2026-09-16T10:21:58+02:00 - 74481c424 - Benjamin Grilleres : fix(entity): restrict rights request visibility
+2026-09-16T10:21:57+02:00 - ab57a9584 - Benjamin Grilleres : fix(biomethane): enforce DREAL scope on declaration updates
+2026-09-16T10:21:57+02:00 - a22f81e84 - Benjamin Grilleres : fix(transactions): check lot ownership before updating parent stock
+2026-09-16T10:21:56+02:00 - b125f39fb - Benjamin Grilleres : fix(entity): bind depot creation to the authorized entity
+2026-09-16T10:21:56+02:00 - 0acddda7d - Benjamin Grilleres : fix(entity): restrict rights updates to administrated entities
+2026-09-16T10:21:13+02:00 - 33ec1b5f4 - Benjamin Grilleres : fix(biomethane): prevent producers from deleting another producer's spreading
+2026-09-16T09:02:10Z - 5d75107c0 - benjamin-grilleres : Merge branch 'hotfix/security-updates' into 'staging'
+2026-09-16T08:38:16+02:00 - 40f8a4d90 - Benjamin Grilleres : feat(traceability): add admin action to refuse pending INIT actions
+2026-09-16T08:03:31+02:00 - a88dac484 - Benjamin Grilleres : feat(traceability): store the Excel import file on created actions
+2026-09-16T08:03:31+02:00 - 5d3d1bebe - Benjamin Grilleres : fix(traceability): delete uploaded Excel file when action creation fails
+2026-09-16T08:03:29+02:00 - 8fc3f4556 - Benjamin Grilleres : feat(core): add a generic StoredFile model linked to actions
+2026-09-16T07:12:46Z - 4faf6a4e5 - benjamin-grilleres : Merge branch 'feature/2374-refuse-actions-admin' into 'dev'
+2026-09-15T16:54:45+02:00 - c95a0bb6a - Yohann : feat(lot): rename one usage value
+2026-09-15T15:16:51Z - 611a1486d - Yohann Ulreich : Merge branch 'staging' into 'master'
+2026-09-15T15:00:06Z - c62780768 - Yohann Ulreich : Merge branch 'hotfix/usage-mac' into 'staging'
+2026-09-15T12:46:25+02:00 - 46613a032 - Yohann : fix(sites): limit to public info from ProductionSiteSerializer
+2026-09-15T11:24:59+02:00 - 0597eae89 - Yohann : Revert "fix(sites): new preview serializer for production sites, for public displays"
+2026-09-15T10:52:23Z - 38b93c3ff - Yohann Ulreich : Merge branch '23-71-fix/ywh-restrict-info-on-production-site-serializers' into 'staging'
+2026-09-15T10:36:00+02:00 - b07480589 - Yohann : fix(sites): new preview serializer for production sites, for public displays
+2026-09-14T16:25:50+02:00 - afab9eaf3 - Emmanuel Gaillot : Add location info to UDB seed data
+2026-09-14T14:36:38Z - 7fd725e55 - Emmanuel Gaillot : Merge branch '2361-feat/entity-address-as-main-site-infos' into 'dev'
+2026-09-11T12:56:44+02:00 - d27d24393 - Emmanuel Gaillot : Raise `ValueError` if address infos are missing
+2026-09-11T12:31:23+02:00 - 7d8aad9ae - Emmanuel Gaillot : [CLEANUP] Improve readability of tests on `CertificateSite`
+2026-09-11T10:36:49+02:00 - cfd7f5e72 - Emmanuel Gaillot : Create Certificate Site UDB Element from CarbuRe entity
+2026-09-11T10:36:49+02:00 - 364517298 - Emmanuel Gaillot : Inject entity address as main site infos
+2026-09-10T17:45:27+02:00 - 9ff309fe1 - Julien Falxa : fix: merge migrations
+2026-09-10T16:27:08+02:00 - 4134cedd9 - Julien Falxa : fix(doublecount): merge migrations
+2026-09-10T16:21:29+02:00 - 214cc7a69 - Julien Falxa : feat(feedstock): add more industrial waste types
+2026-09-10T15:44:38Z - 0a820cebe - Falxa : Merge branch '2302-feat/add-gpl-biofuels' into 'dev'
+2026-09-10T15:12:05Z - c74ba47c4 - Falxa : Merge branch '2335-feat/add-new-feedstocks' into 'dev'
+2026-09-10T15:00:55+02:00 - d1e3bdd3d - Julien Falxa : feat(feedstocks): increase max length for feedstock code
+2026-09-10T15:00:55+02:00 - cfd3915b2 - Julien Falxa : feat(biofuels): add sample data for biofuel producer with production site
+2026-09-10T15:00:55+02:00 - bf4ce96e4 - Julien Falxa : feat(make): add flush task
+2026-09-10T15:00:55+02:00 - 33a02b0cd - Julien Falxa : feat(doublecount): make double counting parser smarter so we don't have to hardcode every possible feedstock in a map
+2026-09-10T15:00:55+02:00 - 2029db214 - Julien Falxa : feat(feedstock): add more industrial waste types
+2026-09-10T15:00:54+02:00 - 66b02c534 - Julien Falxa : feat(dc): add more reliable way to ignore year subtotal rows in tables
+2026-09-10T15:00:54+02:00 - 499bb55e4 - Julien Falxa : chore(doublecount): remove old helper
+2026-09-10T14:58:29+02:00 - 17d433ea8 - Julien Falxa : fix(migrations): merge parallel migrations
+2026-09-10T13:39:04+02:00 - 4b0300f77 - Julien Falxa : chore(biofuel): remove print in load_biofuel script
+2026-09-10T13:38:41+02:00 - 3e1eabb82 - Julien Falxa : feat(iricc): correctly expose if operation biofuel is compatible with GPL
+2026-09-10T13:38:14+02:00 - 6df0b30d5 - Julien Falxa : feat(biofuel): allow GPL biofuels for mac
+2026-09-10T13:36:59+02:00 - bcb86ab25 - Julien Falxa : feat(iricc): add formatter for GPL sector
+2026-09-10T13:36:40+02:00 - 7493fa190 - Julien Falxa : fix(biofuel): fix merge issues on biofuel csv after rebasing
+2026-09-10T12:52:45Z - 3a55638ef - Falxa : Merge branch '2310-feat/update-biofuel-lhv' into 'dev'
+2026-09-10T10:11:53+02:00 - ee9d2565a - Emmanuel Gaillot : [FIX] Remove check constraints on json validity
+2026-09-10T09:03:29Z - 92045da42 - Yohann Ulreich : Merge branch '2204-feat/report-solde-annee' into 'dev'
+2026-09-10T08:18:57Z - e51848fd2 - Emmanuel Gaillot : Merge branch 'fix/remove-check-constraints-on-json-validity' into 'dev'
+2026-09-09T18:37:10+02:00 - bca23e539 - Julien Falxa : fix(iricc): regenerate migration for new GPL sector
+2026-09-09T18:27:14+02:00 - 3f49c8aa7 - Yohann : feat(iricc): simplify removing useless exclude_informative() calls
+2026-09-09T18:06:18+02:00 - da4be1ec4 - Julien Falxa : test(iricc): verify correct behavior for GPL detection
+2026-09-09T18:06:18+02:00 - d8361350a - Julien Falxa : chore(iricc): update api schema
+2026-09-09T18:06:18+02:00 - 84ecb1778 - Julien Falxa : feat(iricc): add new fuel category for GPL
+2026-09-09T18:06:18+02:00 - 4dc4c025b - Julien Falxa : feat(iricc): correclty annotate GPL fuel sector in operations and balances
+2026-09-09T18:06:18+02:00 - 2c6b536d0 - Julien Falxa : feat(biofuels): increase max biofuel description length
+2026-09-09T18:04:53+02:00 - 0fdc96150 - Julien Falxa : feat(biofuels): update biocarburants.csv and loader
+2026-09-09T18:04:08+02:00 - f57aed07e - Julien Falxa : feat(biofuels): add compatible_gpl column to biofuel table
+2026-09-09T18:04:08+02:00 - f0e1ff402 - Julien Falxa : feat(biofuels): make double counting reference optional for PG biofuels
+2026-09-09T18:04:08+02:00 - 899fc6858 - Julien Falxa : feat(biofuels): add gpl biofuel/feedstock compatibility checks
+2026-09-09T18:04:08+02:00 - 020a7b159 - Julien Falxa : feat(biofuels): add translation for new GPL fuels
+2026-09-09T18:03:33+02:00 - b4bce78be - Julien Falxa : fix(biofuels): update PCI values for some biofuels
+2026-09-09T17:49:40+02:00 - d099a1146 - Julien Falxa : feat(biofuels): update the scripts in charge of loading biofuels
+2026-09-09T17:49:22+02:00 - e9cf101d2 - Julien Falxa : fix(biofuels): use correct LHV and density values and add missing info
+2026-09-09T17:39:30+02:00 - 01b39fc67 - Julien Falxa : feat(core): increase biofuel description length
+2026-09-09T17:23:58+02:00 - a8e016e1d - Yohann : feat(iricc): new status AUTO and display year in operation title
+2026-09-09T17:23:57+02:00 - ff64d2a46 - Yohann : feat(iric): calculation and export shouldn't take into consideration new operations with type YEARLY_BALANCE
+2026-09-09T17:23:57+02:00 - cf307c2e9 - Yohann : chore(api): update api schema
+2026-09-09T17:23:57+02:00 - 3e2fad3cf - Yohann : feat(iricc): front - new operation type YEARLY_BALANCE
+2026-09-09T17:22:56+02:00 - f18edd9fb - Yohann : feat(iric): migrations needed for YEARLY_BALANCE operation type
+2026-09-09T17:22:55+02:00 - a25bee22a - Yohann : feat(iric): task to create yearly balance operations at period switching
+2026-09-09T17:22:55+02:00 - 44f5fca7d - Yohann : feat(iric): tests for this new task
+2026-09-09T16:10:08+02:00 - 1423aca4b - Julien Falxa : test(traceability): fix tests on actions expecting PENDING by default now
+2026-09-09T16:04:50+02:00 - 1bba412fb - Yohann : feat(iricc): balance calculation: exclude operations with durability_period from the next year
+2026-09-09T16:02:41+02:00 - 1031e940f - Emmanuel Gaillot : Add ET as a valid scope code
+2026-09-09T15:35:39+02:00 - 025c5f6db - Julien Falxa : chore(traceability): update api schema
+2026-09-09T15:34:59+02:00 - e0077789e - Julien Falxa : feat(traceability): add new GHG items to serializers and computations
+2026-09-09T14:59:33+02:00 - 4471b0b20 - Julien Falxa : feat(traceability): add all GHG emission/reduction RED entries to action model
+2026-09-09T14:53:55Z - 572d17add - Yohann Ulreich : Merge branch '2355-feat/calcul-soldes' into 'dev'
+2026-09-09T14:22:54Z - f31388034 - Falxa : Merge branch '2353-feat/list-h2-certificates' into 'dev'
+2026-09-09T14:09:50Z - 7890e1072 - Emmanuel Gaillot : Merge branch 'fix/valid-scopes-update' into 'dev'
+2026-09-09T13:15:30+02:00 - 01b887ae3 - Yohann : feat(iricc): devaluation: hide modale and fix wordings
+2026-09-09T13:01:19+02:00 - f3d2b437c - Yohann : feat(iricc): devaluation: hide modale and fix wordings
+2026-09-09T12:28:31Z - 01e0a9826 - Yohann Ulreich : Merge branch 'update-perte' into 'staging'
+2026-09-09T12:20:00+02:00 - 2b5c44c6c - Julien Falxa : chore: remove unused config files
+2026-09-09T12:14:47+02:00 - cf29f7978 - Julien Falxa : chore: remove vscode specific workspace files
+2026-09-09T12:12:42+02:00 - 06ffb1680 - Julien Falxa : chore(docker): remove fake prod env
+2026-09-09T11:08:00Z - 0d673b483 - Yohann Ulreich : Merge branch '1587-feat/new-operation-perte' into 'dev'
+2026-09-09T10:26:07Z - 12145f3f2 - Falxa : Merge branch 'chore/remove-unused-config-files' into 'dev'
+2026-09-08T22:19:51+02:00 - 613c96076 - Julien Falxa : feat(h2): use period filter for h2 lots and certificates
+2026-09-08T22:19:11+02:00 - dd8f882dc - Julien Falxa : chore(traceability): update api schema
+2026-09-08T22:18:57+02:00 - f133ea30b - Julien Falxa : feat(traceability): add period annotation
+2026-09-08T21:44:30+02:00 - 8c86e455e - Julien Falxa : feat(h2): group fields by columns in lot and certificate modal
+2026-09-08T21:43:30+02:00 - 6ce96b19e - Julien Falxa : feat(ui): add new variant to form component to display in modals
+2026-09-08T21:42:02+02:00 - 49380c9fe - Julien Falxa : feat(traceability): add the ability to customize the different columns in the action detail modal
+2026-09-08T20:01:00+02:00 - 9ba1cdbb1 - Julien Falxa : feat(h2): add basic h2 certificate page
+2026-09-08T20:00:41+02:00 - 3ac4c970b - Julien Falxa : feat(h2): add column that shoes date detail
+2026-09-08T19:52:20+02:00 - 792ae41f7 - Julien Falxa : feat(traceability): add sample data for h2 certificates
+2026-09-08T19:51:39+02:00 - 150f380b8 - Julien Falxa : feat(traceability): make action shipping method nullable
+2026-09-08T16:16:14+02:00 - 8f0562137 - Julien Falxa : feat(make): add build command
+2026-09-08T15:34:03+02:00 - 77d2519d6 - Benjamin Grilleres : Merge branch 'dev' into merge/dev-into-staging
+2026-09-08T13:59:44Z - 9ea18e918 - Falxa : Merge branch 'feature/2326-handler-excel-template' into 'dev'
+2026-09-08T13:50:36Z - 6a6a47373 - Falxa : Merge branch 'feature/2277-import-certificates' into 'feature/2326-handler-excel-template'
+2026-09-08T13:48:24Z - b505a2d6a - benjamin-grilleres : Merge branch 'staging' into 'dev'
+2026-09-08T13:42:48Z - ecd7c5f42 - benjamin-grilleres : Merge branch 'merge/dev-into-staging' into 'staging'
+2026-09-08T13:21:11Z - 848d20378 - benjamin-grilleres : Merge branch 'staging' into 'master'
+2026-09-08T10:31:55+02:00 - 3bd908121 - Emmanuel Gaillot : Add default success message for `BaseRequestResponse`
+2026-09-08T10:28:54+02:00 - b07466731 - Benjamin Grilleres : change request from lots h2 page
+2026-09-08T10:28:53+02:00 - 72acc98aa - Benjamin Grilleres : feat(traceability): expose total emissions and action status badge on H2 lots
+2026-09-08T10:28:21+02:00 - edc8516d2 - Benjamin Grilleres : test(h2): assert certificate lookup filters CertifHy only
+2026-09-08T10:28:21+02:00 - e4570dea5 - Benjamin Grilleres : refactor(traceability): attach industry handler via viewset middleware
+2026-09-08T10:28:21+02:00 - 765676d41 - Benjamin Grilleres : feat(traceability): annotate total emissions along the parent chain
+2026-09-08T10:28:21+02:00 - 7140d0f47 - Benjamin Grilleres : fix(traceability): skip status annotations on the CTE base queryset
+2026-09-08T10:28:21+02:00 - 692832d6b - Benjamin Grilleres : refactor(traceability): simplify GES CTE and harden admin valorize
+2026-09-08T10:28:21+02:00 - 146ca9c4a - Benjamin Grilleres : fix(traceability): guard nullable material and site in action columns
+2026-09-08T10:28:20+02:00 - bdd4c8e58 - Benjamin Grilleres : feat(traceability): valorize pending INIT actions from admin
+2026-09-08T10:24:55+02:00 - e5fdc3350 - Benjamin Grilleres : Merge remote-tracking branch 'origin/dev' into feature/2326-handler-excel-template
+2026-09-08T10:17:46+02:00 - e8a8096a8 - Benjamin Grilleres : feat(traceability): reject duplicate POS ids within Excel imports
+2026-09-08T09:28:11+02:00 - ef2445752 - Benjamin Grilleres : fix: header does not have to reduce its height
+2026-09-08T08:43:16Z - b755398d7 - Emmanuel Gaillot : Merge branch 'feat/default-udb-response-success-message' into 'dev'
+2026-09-08T07:37:15Z - 84bff0ba9 - benjamin-grilleres : Merge branch 'hotfix/bad-css-stats-page' into 'staging'
+2026-09-08T06:49:06Z - 83c86d8ea - benjamin-grilleres : Merge branch 'hotfix/add-explicit-message-error-stats' into 'staging'
+2026-09-07T16:10:48+02:00 - db4a9d76e - Benjamin Grilleres : fix(stats): show a maintenance notice when Metabase is unavailable
+2026-09-07T12:19:47+02:00 - c6423c2a9 - Benjamin Grilleres : feat(h2): persist optional measuring instruments compliance on stations
+2026-09-07T12:06:21Z - 7a3105f02 - benjamin-grilleres : Merge branch 'feature/2261-add-optional-field' into 'dev'
+2026-09-07T08:04:29Z - 8bbb79f0a - Emmanuel Gaillot : Merge branch '2343-feat/sites-injection-into-certificate-export-request' into 'dev'
+2026-09-04T15:35:27+02:00 - 9d4a90847 - Emmanuel Gaillot : Inject site infos into `AddUpdateCertificateRequest`
+2026-09-03T14:50:15+02:00 - 0bc6d5dbc - Benjamin Grilleres : feat(traceability): drop action create and update endpoints
+2026-09-03T12:00:56+02:00 - 3939e1812 - Benjamin Grilleres : feat(h2): import Etd1 and Etd2 as a single etd
+2026-09-03T11:30:38+02:00 - f72e425f7 - Benjamin Grilleres : feat(h2): align Excel import with métier template labels
+2026-09-03T10:59:10+02:00 - 504cbd33d - Benjamin Grilleres : feat(traceability): import consumption period as month/year
+2026-09-03T10:12:16+02:00 - 6977a9ebb - Benjamin Grilleres : fix(core): stamp Excel dropdown cell styles for Numbers
+2026-09-03T10:03:57+02:00 - 9c4afc822 - Benjamin Grilleres : feat(traceability): extend H2 Excel import and optional shipping fields
+2026-09-02T10:21:38Z - 68af29333 - Falxa : Merge branch '1361-feat/add-db-restore-tasks' into 'dev'
+2026-09-02T09:39:12+02:00 - 1b39141a0 - Benjamin Grilleres : docs(traceability): document industry handler overrides and Excel import
+2026-09-02T09:26:35+02:00 - aef143320 - Benjamin Grilleres : refactor(traceability): use NumberInput for decimal action fields
+2026-09-02T09:15:28+02:00 - 8f272d466 - Benjamin Grilleres : feat(traceability): add producer certificate and H2 Excel import extras
+2026-09-01T17:52:41+02:00 - 2b21eaf49 - Yohann : feat(iricc): convert all lots EMHV, EMHU, EMHA and B100 to EMAG before create operations
+2026-09-01T16:36:23+02:00 - 644e40ea8 - Julien Falxa : feat(seed): add user access to seed biomethane entity
+2026-09-01T16:04:17+02:00 - 0fa7b1c7b - Julien Falxa : refactor(backups): use the backups scalingo app to sync staging and metabase databases with prod
+2026-09-01T16:03:40+02:00 - a3aeeb720 - Julien Falxa : refactor(scalingo): do not clone dev database when creating a new review app
+2026-09-01T16:03:14+02:00 - 0bb52559f - Julien Falxa : refactor(tasks): remove huey tasks that restore database content
+2026-09-01T16:02:50+02:00 - 8d1bee6d2 - Julien Falxa : chore(scripts): remove unused bash script
+2026-09-01T15:59:51Z - 17d993fe7 - Yohann Ulreich : Merge branch '2296-feat/iricc-group-emag' into 'dev'
+2026-09-01T15:53:19+02:00 - fa157d2bc - Julien Falxa : fix(backups): fix project root path in restore script
+2026-09-01T10:13:11+02:00 - a67162a80 - Yohann : feat(lots): add 'usage' and 'usage_precision' fields in template import excel
+2026-09-01T09:17:21Z - d0c521f91 - Yohann Ulreich : Merge branch '2344-feat/carburelot-usage-field-in-excel' into 'dev'
+2026-08-31T16:50:09+02:00 - 3c11f406c - Julien Falxa : fix(iricc): merge migrations
+2026-08-31T16:44:57+02:00 - b488b6062 - Julien Falxa : feat(backups): always select the first backup archive available locally
+2026-08-31T16:44:57+02:00 - 78edd09b8 - Julien Falxa : feat(backups): add helper to show the contents of a B3 bucket
+2026-08-31T16:44:57+02:00 - 20d8bccf1 - Julien Falxa : feat(backups): when there are multiple backup files in the same folder take the last one to restore the db
+2026-08-31T16:44:57+02:00 - 18181dd06 - Julien Falxa : feat(backups): delete old backup and restore scripts
+2026-08-31T16:44:56+02:00 - f32710d17 - Julien Falxa : feat(backups): use new scripts in existing tasks and scalingo scripts
+2026-08-31T16:44:56+02:00 - d8d6eadc1 - Julien Falxa : fix(backups): update the path to the offiste backup scripts in the cron config
+2026-08-31T16:44:56+02:00 - beffa6dde - Julien Falxa : feat(backups): add buildpack config to install rclone
+2026-08-31T16:44:56+02:00 - be59c6568 - Julien Falxa : feat(backups): add config for scalingo scheduler and backups
+2026-08-31T16:44:56+02:00 - 700655fbd - Julien Falxa : chore(backups): rename vague storage folder to offsite
+2026-08-31T16:44:56+02:00 - 5404894ec - Julien Falxa : feat(backups): prevent running backup scripts if arguments are missing
+2026-08-31T16:44:56+02:00 - 4675f2751 - Julien Falxa : feat(backups): add dummy Procfile for backup scalingo app
+2026-08-31T16:44:56+02:00 - 330be3dcd - Julien Falxa : feat(backups): add backups scripts to docker images
+2026-08-31T16:44:56+02:00 - 152583f6c - Julien Falxa : feat(backups): add scripts to upload database and user file backups to s3
+2026-08-31T16:44:55+02:00 - bb1fa6856 - Julien Falxa : feat(backup): rework scripts to restore database from backups
+2026-08-31T16:44:55+02:00 - b5cffde3e - Julien Falxa : feat(backups): move the backup folder at the root of the repo
+2026-08-31T15:02:41Z - 9603cce4d - Falxa : Merge branch 'feat/add-mock-s3-server-for-dev' into 'dev'
+2026-08-31T15:02:09Z - e8bf29ef1 - Falxa : Merge branch '1361-feat/migrate-to-b3' into 'dev'
+2026-08-31T09:50:20Z - 44a840a22 - Yohann Ulreich : Merge branch '1587-feat/new-operation-perte' into 'dev'
+2026-08-31T09:47:13Z - 31d0d0a8b - Yohann Ulreich : Merge branch '1390-feat/iricc-ethanol-15' into 'dev'
+2026-08-31T08:35:19Z - ec837194b - Emmanuel Gaillot : Merge branch '2286-feat/inject-scope-into-certificate-export-request' into 'dev'
+2026-08-30T22:12:11+02:00 - d56f249c4 - Julien Falxa : feat(docker): add fake s3 server for local dev
+2026-08-27T17:00:14+02:00 - 68e1604a7 - Benjamin Grilleres : feat(traceability): style Excel import columns with comments and colors
+2026-08-27T16:16:42+02:00 - ab3243dcb - Benjamin Grilleres : feat(core): add an optional comment row to Excel import templates
+2026-08-27T15:12:43+02:00 - 59c888c77 - Benjamin Grilleres : refactor(traceability): cache Excel lookups on the serializer context
+2026-08-27T11:57:05+02:00 - fb4eb6b7b - Emmanuel Gaillot : Inject scope into `AddUpdateCertificateRequest`
+2026-08-27T11:46:05+02:00 - 26ae33b82 - Emmanuel Gaillot : Validate NS certificate scopes against ISCC categories
+2026-08-27T09:53:53Z - 02f0f4cb5 - Emmanuel Gaillot : Merge branch '2339-feat/ISCC-scope-validation' into 'dev'
+2026-08-27T09:26:47+02:00 - efaf15d92 - Benjamin Grilleres : fix(traceability): coerce Excel datetimes on the date field
+2026-08-26T15:03:33+02:00 - b3b557629 - Benjamin Grilleres : fix(traceability): use user-facing messages for Excel import validation
+2026-08-26T14:36:16+02:00 - 3be06f2f0 - Benjamin Grilleres : feat(traceability): add Excel import UI on the actions page
+2026-08-26T13:12:56+02:00 - 497f904bf - Benjamin Grilleres : Merge branch 'feature/2325-overrides-viewset' into feature/2326-handler-excel-template
+2026-08-26T13:09:59+02:00 - dd7401464 - Benjamin Grilleres : fix: remove previous seed system
+2026-08-26T12:08:43Z - 825cbcd87 - benjamin-grilleres : Merge branch 'feature/2325-overrides-viewset' into 'dev'
+2026-08-26T11:11:55+02:00 - 704b4bb9a - Benjamin Grilleres : feat(traceability): bound Excel import to industry lookups
+2026-08-26T10:03:14+02:00 - cd707486b - Benjamin Grilleres : Merge branch 'feature/2325-overrides-viewset' into feature/2326-handler-excel-template
+2026-08-26T09:44:37+02:00 - 0ae8a2225 - Benjamin Grilleres : test(traceability): build the action create payload from the factory
+2026-08-26T09:44:00+02:00 - 814fe50d6 - Benjamin Grilleres : test(traceability): slim action tests to queryset, serializer, and year filter
+2026-08-26T09:43:59+02:00 - 5629cd3e5 - Benjamin Grilleres : feat(traceability): filter actions by year and pass industry on every call
+2026-08-26T09:43:59+02:00 - 26036b055 - Benjamin Grilleres : feat(h2): nest the lots page under a year route
+2026-08-26T09:43:58+02:00 - 66bdb7d8c - Benjamin Grilleres : fix(traceability): lock action writes to the current entity and industry
+2026-08-26T09:43:58+02:00 - 04c7e021a - Benjamin Grilleres : refactor(h2): move the action handler out of traceability
+2026-08-26T09:43:57+02:00 - 7feb979ec - Benjamin Grilleres : refactor(traceability): attach the industry handler once on the request
+2026-08-26T09:43:57+02:00 - 0e990a4a0 - Benjamin Grilleres : feat(traceability): dispatch ActionViewSet through industry handlers
+2026-08-26T09:43:56+02:00 - ff7c03f23 - Julien Falxa : feat(core): add a seeding system to populate an empty local database
+2026-08-25T16:13:40+02:00 - 0a13f88b2 - Benjamin Grilleres : feat(traceability): import actions from industry-owned Excel templates
+2026-08-25T15:46:25Z - 68e8eb4df - Falxa : Merge branch 'feature/2290-setup-archi-h2' into 'dev'
+2026-08-25T11:36:06+02:00 - 4886367f4 - Emmanuel Gaillot : Validate certificate scope before import
+2026-08-25T10:03:21+02:00 - 05d6ac4c4 - Benjamin Grilleres : feat(traceability): resolve action Excel site options per industry
+2026-08-25T09:50:36Z - c5da9cb82 - Emmanuel Gaillot : Merge branch '2320-feat/validate-scope-format' into 'dev'
+2026-08-25T09:40:20+02:00 - dfdf2ea1f - Benjamin Grilleres : feat(traceability): resolve action Excel material options per industry
+2026-08-25T09:22:22+02:00 - 250a99d47 - Benjamin Grilleres : feat(traceability): add a static Excel import template for actions
+2026-08-25T09:04:21+02:00 - 739f66aec - Benjamin Grilleres : refactor(traceability): attach the industry handler once on the request
+2026-08-24T18:03:09+02:00 - 55e00dfe6 - Benjamin Grilleres : feat(traceability): dispatch ActionViewSet through industry handlers
+2026-08-24T18:03:08+02:00 - 16d315bee - Julien Falxa : feat(core): add a seeding system to populate an empty local database
+2026-08-24T17:52:03+02:00 - ba597c43b - Benjamin Grilleres : fix: correct merge migrations
+2026-08-24T17:38:47+02:00 - e8e1c4eb1 - Julien Falxa : chore(core): remove unused factory helper from core
+2026-08-24T17:38:47+02:00 - a619e9d2f - Julien Falxa : feat(core): add seed data for core and h2
+2026-08-24T17:38:47+02:00 - a314e2ce8 - Julien Falxa : feat(biomethane): make biomethane seed generation idempotent
+2026-08-24T17:38:47+02:00 - 8c7c889b8 - Julien Falxa : fix(traceability): remove default ordering on Action model
+2026-08-24T17:38:47+02:00 - 8929d0a82 - Julien Falxa : fix(traceability): avoid duplicates in years endpoint
+2026-08-24T17:38:47+02:00 - 4e8d353b9 - Julien Falxa : fix(core): allow specifying app from make seed command
+2026-08-24T17:38:46+02:00 - d86b35328 - Julien Falxa : feat(traceability): use more complex component when buildling action fields
+2026-08-24T17:38:46+02:00 - c4bad4b0d - Julien Falxa : feat(h2): add dummy action to H2 lots page
+2026-08-24T17:38:46+02:00 - b0cbc2b4a - Julien Falxa : feat(h2): rename site field to station in h2 modal
+2026-08-24T17:38:46+02:00 - a17ba9d1b - Julien Falxa : feat(traceability): adapt action form to new field schema
+2026-08-24T17:38:46+02:00 - 9c493b003 - Julien Falxa : feat(core): use create_sample_data to generate seed
+2026-08-24T17:38:46+02:00 - 8a77319cf - Julien Falxa : feat(traceability): add detail action definition to generic action modal
+2026-08-24T17:38:46+02:00 - 4f2d0038f - Julien Falxa : fix(h2): clear redundant seed feature
+2026-08-24T17:38:46+02:00 - 4be5c6ee6 - Julien Falxa : feat(traceability): add api callers to find materials and sites
+2026-08-24T17:38:46+02:00 - 2a2a168df - Julien Falxa : feat(traceability): add main action definition to generic action page
+2026-08-24T17:38:45+02:00 - fff46886e - Julien Falxa : feat(traceability): add abilty to open action details in a modal
+2026-08-24T17:38:45+02:00 - fd16894e6 - Julien Falxa : feat(traceability): add hook to define reusable form fields for action details
+2026-08-24T17:38:45+02:00 - f83b38c6a - Julien Falxa : chore(traceability): update api schema
+2026-08-24T17:38:45+02:00 - e5d8e12fb - Julien Falxa : feat(h2): show h2 action details in modal
+2026-08-24T17:38:45+02:00 - b01b486a0 - Julien Falxa : feat(traceability): add nested serializers to get more info when fetching actions
+2026-08-24T17:38:45+02:00 - 6fd1af585 - Julien Falxa : feat(h2): simplify the way action form is rendered
+2026-08-24T17:38:45+02:00 - 32e7dad77 - Julien Falxa : feat(traceability): use extended action types to display textual info instead of just ids
+2026-08-24T17:38:45+02:00 - 12e67835b - Julien Falxa : feat(traceability): add api call for fetching action details
+2026-08-24T17:38:45+02:00 - 0350ae85c - Julien Falxa : feat(traceability): add resource views for listing materials and sites
+2026-08-24T17:38:44+02:00 - fc2f82be1 - Julien Falxa : feat(traceability): add year api function and update types
+2026-08-24T17:38:44+02:00 - b81effeff - Julien Falxa : chore(traceability): clean up unused files
+2026-08-24T17:38:44+02:00 - b46fc87a7 - Julien Falxa : feat(traceability): use the new action page config on the h2 lots page
+2026-08-24T17:38:44+02:00 - 9154cc6b0 - Julien Falxa : chore(h2): space code a bit
+2026-08-24T17:38:44+02:00 - 7d537cbeb - Julien Falxa : feat(core): add a seeding system to populate an empty local database
+2026-08-24T17:38:44+02:00 - 3df4bdd0a - Julien Falxa : feat(h2): add seeds for h2 init actions
+2026-08-24T17:38:44+02:00 - 2dbe05dbc - Julien Falxa : feat(h2): add component to display a form for action details
+2026-08-24T17:38:44+02:00 - 256d3e380 - Julien Falxa : feat(traceability): adapt generic action page component to new hooks and config schema
+2026-08-24T17:38:43+02:00 - fb4bcb80b - Benjamin Grilleres : feat: add lots page frontend
+2026-08-24T17:38:43+02:00 - e8f6f51f5 - Benjamin Grilleres : feat(traceability): expose actions API with serializers and filters
+2026-08-24T17:38:43+02:00 - a78cf307a - Benjamin Grilleres : feat(traceability): add generic actions page and refactor H2 lots
+2026-08-24T17:38:43+02:00 - 966a5f752 - Julien Falxa : feat(traceability): add hook to combine fixed query with dynamic one
+2026-08-24T17:38:43+02:00 - 83143f6f6 - Julien Falxa : feat(traceability): update api schema
+2026-08-24T17:38:43+02:00 - 6a500ddba - Julien Falxa : feat(traceability): add admin page for traceability models
+2026-08-24T17:38:43+02:00 - 57c7a2f40 - Julien Falxa : feat(traceability): add dedicated year endpoint for listing years
+2026-08-24T17:38:43+02:00 - 4bb1bc307 - Julien Falxa : feat(traceability): add hooks to generate config for general filters and columns
+2026-08-24T17:38:42+02:00 - ea64b2de3 - Benjamin Grilleres : feat: terminate action model
+2026-08-24T17:38:42+02:00 - 2e8483b4c - Benjamin Grilleres : feat: setup action model
+2026-08-24T16:50:13+02:00 - 438dc5edb - Benjamin Grilleres : fix: correct migrations
+2026-08-24T15:54:29+02:00 - 948e003a8 - Benjamin Grilleres : fix: correct types error
+2026-08-24T15:37:45Z - ea32de445 - Falxa : Merge branch 'feature/2261-add-station-h2' into 'dev'
+2026-08-24T15:32:07+02:00 - f4831cd63 - Julien Falxa : feat(h2): change separation between distributed pressures in table
+2026-08-24T15:32:07+02:00 - 5b60398e4 - Julien Falxa : feat(h2): make checking honor checkbox required in create station dialog
+2026-08-24T15:32:07+02:00 - 19728cd0b - Julien Falxa : feat(h2): fully replace h2 station data when updating to prevent validation issue when deselecting all distributed pressure options
+2026-08-24T15:32:07+02:00 - 0a6c571fe - Julien Falxa : feat(h2): use total_count of stations to decide wether to show station empty state
+2026-08-24T15:32:06+02:00 - e5199c1b3 - Julien Falxa : feat(h2): add ability to delete h2 station
+2026-08-24T15:32:06+02:00 - c8326b438 - Julien Falxa : fix(h2): stations page layout for readonly users
+2026-08-24T15:32:06+02:00 - 3986690ab - Julien Falxa : test(h2): fix station permission tests
+2026-08-24T15:32:06+02:00 - 14128628e - Julien Falxa : fix(h2): avoid form state conflicts when updating SIRET value
+2026-08-24T15:32:06+02:00 - 13beb9435 - Julien Falxa : feat(h2): add readonly mode for station details dialog
+2026-08-24T15:32:06+02:00 - 1394fabb9 - Julien Falxa : feat(core): add pagination class to get total count of items without taking filters into account
+2026-08-24T15:32:05+02:00 - ee99e4e49 - Julien Falxa : chore(h2): update api schema
+2026-08-24T15:32:05+02:00 - c7c39259f - Julien Falxa : feat(h2): add filters for stations
+2026-08-24T15:32:05+02:00 - 92e808034 - Julien Falxa : fix(common): make filter multiselect typing more adaptable
+2026-08-24T15:32:05+02:00 - 87c543fa2 - Julien Falxa : feat(h2): add siret picker to h2 station form
+2026-08-24T15:32:05+02:00 - 769f80518 - Julien Falxa : feat(make): add shorthands to restart frontend and backend services
+2026-08-24T15:32:05+02:00 - 4231a7beb - Julien Falxa : feat(h2): add h2 station edit dialog
+2026-08-24T15:32:05+02:00 - 12df63f64 - Julien Falxa : feat(h2): add filters and ordering to h2 station table
+2026-08-24T15:32:04+02:00 - a80ad3616 - Julien Falxa : fix(h2): use the right styling for yes/no indicator
+2026-08-24T15:32:04+02:00 - 973eb7945 - Julien Falxa : feat(h2): show indicator for h2 station personal vehicle compatibility
+2026-08-24T15:32:04+02:00 - 69d46e53a - Julien Falxa : feat(h2): force station country to be France for now
+2026-08-24T15:32:04+02:00 - 5024c0913 - Julien Falxa : feat(h2): format station access type enum to natural language
+2026-08-24T15:32:04+02:00 - 060e946a9 - Julien Falxa : feat(h2): add validation to station form
+2026-08-24T15:32:03+02:00 - fc9e6750c - Julien Falxa : feat(h2): create reusable hook to open create station dialog
+2026-08-24T15:32:03+02:00 - ad0696f9c - Julien Falxa : feat(h2): add basic table view for h2 stations
+2026-08-24T15:32:03+02:00 - a197951d1 - Julien Falxa : feat(h2): add basic h2 station creation dialog
+2026-08-24T15:32:03+02:00 - 596f49548 - Julien Falxa : feat(h2): move empty station component to components folder and prepare modal opening
+2026-08-24T15:32:03+02:00 - 32e3278ce - Julien Falxa : feat(common): add yes/no indicator component
+2026-08-24T15:32:02+02:00 - b609d65b6 - Benjamin Grilleres : feat(h2): add H2Station CRUD API with typed pressures
+2026-08-24T15:32:02+02:00 - 9b306a4d7 - Julien Falxa : feat(ui): add new base component for toggle swithces
+2026-08-24T15:32:02+02:00 - 312d0cae6 - Benjamin Grilleres : feat(h2): add stations pages and EmptyState molecule
+2026-08-24T15:32:01+02:00 - b78d88808 - Benjamin Grilleres : feat(h2): setup h2 stations
+2026-08-24T14:46:02Z - 01f2d67da - benjamin-grilleres : Merge branch 'hotfix/correct-types' into 'dev'
+2026-08-24T10:56:18+02:00 - 29fa8e200 - Julien Falxa : Merge branch 'staging' into dev
+2026-08-24T10:38:56+02:00 - 37182111e - Julien Falxa : feat(entity): hide h2 entity type choice from company creation menu
+2026-08-24T10:19:13+02:00 - 5a3527c27 - Benjamin Grilleres : fix: correct migration
+2026-08-24T08:46:30Z - 08a72ad81 - Falxa : Merge branch 'fix/hide-h2-entity-type-from-company-creation-form' into 'master'
+2026-08-24T08:03:04Z - 95189d859 - benjamin-grilleres : Merge branch 'feature/1978-update-model-tariff-coefficient-proportions' into 'dev'
+2026-08-20T12:14:13+02:00 - 2f8dc95d8 - Emmanuel Gaillot : Remove obsolete scripts
+2026-08-20T10:25:04Z - dc16bc8bc - Emmanuel Gaillot : Merge branch '2317-cleanup/remove-NS-certificates-import-at-startup' into 'dev'
+2026-08-18T15:41:33+02:00 - 3b137020c - Julien Falxa : fix(iricc): actually fix elec operation excel export for teneur
+2026-08-18T15:23:42+02:00 - ee2326b22 - Julien Falxa : fix(scalingo): remove periodic reboot of the scalingo metabase app
+2026-08-18T14:30:28Z - 955475874 - Falxa : Merge branch 'staging' into 'master'
+2026-08-18T13:55:49Z - 501fff4fb - Falxa : Merge branch 'dev' into 'staging'
+2026-08-18T13:48:25Z - b76352e39 - Falxa : Merge branch 'fix/cleanup-missing-features' into 'dev'
+2026-08-18T12:54:59Z - ef4e7bd0e - Falxa : Merge branch 'dev' into 'staging'
+2026-08-18T10:16:43+02:00 - 786969369 - Emmanuel Gaillot : Change `scope` column type (switch from JSON to text)
+2026-08-18T09:20:20Z - 7b7152290 - Emmanuel Gaillot : Merge branch 'migration/alter-certificate-scope' into 'dev'
+2026-08-17T11:44:42+02:00 - d9585cad8 - Emmanuel Gaillot : Add missing migration
+2026-08-17T11:27:37+02:00 - 8638107b7 - Emmanuel Gaillot : Add missing migration
+2026-08-17T10:10:12Z - 85a54b5a0 - Emmanuel Gaillot : Merge branch 'migration/alter-operation-type' into 'dev'
+2026-08-17T09:41:30Z - 08635106d - Emmanuel Gaillot : Merge branch 'migration/alter-entity-type' into 'dev'
+2026-08-14T08:54:52Z - d93595d77 - Thomas Gary : Merge branch '2221-feat/biomethane-strorage-display-filling-date-annual-declaration' into 'dev'
+2026-08-12T17:06:40+02:00 - ee96141bc - Thomas Gary : feat(biomethane): switching submissionDate check to DeclarationStatusLabel
+2026-08-12T16:58:34+02:00 - 3ba56e3b6 - Thomas Gary : reformat
+2026-08-12T16:58:33+02:00 - daae0ae78 - Thomas Gary : feat(biomethane):display of submissionDate on page header
+2026-08-12T16:58:33+02:00 - 838574020 - Thomas Gary : fix backend pipelines
+2026-08-12T16:58:33+02:00 - 6f1c36ccb - Thomas Gary : pipeline fix
+2026-08-12T16:58:33+02:00 - 57dd6f0de - Thomas Gary : feat(biomethane): creation of subission_date in database
+2026-08-12T16:58:33+02:00 - 4e4932175 - Thomas Gary : fix migration issues
+2026-08-12T16:58:33+02:00 - 484fb0b13 - Benjamin Grilleres : feat: regenerate schema
+2026-08-11T14:59:36+02:00 - 3ef1b536a - Yohann : feat(iricc): front - new devaluation dialog
+2026-08-11T14:58:25+02:00 - e27a6de9f - Yohann : feat(iricc): front - move FromDepotFiltersForm to common components to use it in devaluation dialog as well
+2026-08-11T14:55:28+02:00 - 69f0bae6e - Yohann : feat(iricc): front - component for select field 'DevaluationType'
+2026-08-11T14:53:28+02:00 - 454bec762 - Yohann : feat(iricc): front - field label and success message
+2026-08-11T14:52:50+02:00 - a74541ebb - Yohann : feat(iricc): move common stepper logic of each debit modal in one unique component
+2026-08-11T14:34:17+02:00 - c64a73ece - Yohann : feat(iricc): add 'DEVALUATION' choice in debit modal
+2026-08-11T14:31:30+02:00 - e1f3658de - Yohann : feat(iricc): front - format 'DEVALUATION' operation type and new field DevaluationType'
+2026-08-11T14:26:02+02:00 - f9735e341 - Yohann : feat(iricc): use operation type DEVALUATION' and add new Operation field 'devaluation_type'
+2026-08-11T12:07:08+02:00 - 1745ad0f7 - Yohann : feat(iricc): new operation type 'REPORT'
+2026-08-11T10:14:14Z - bb3117866 - Yohann Ulreich : Merge branch '2303-feat/script-init-iricc-operations' into 'dev'
+2026-08-11T09:57:26+02:00 - 142d4579a - Yohann : feat(iricc): elec operations export, change date format
+2026-08-11T09:54:11+02:00 - dda0072bc - Yohann : feat(iricc): operations export, do not return 'expediteur' info for TENEUR
+2026-08-11T08:03:41Z - b264ce8f4 - Yohann Ulreich : Merge branch '2301-fix/exports_operations' into 'dev'
+2026-08-10T17:14:17+02:00 - a17248e67 - Yohann : feat(iricc): new command to init balances for each tiruert liable entities. Create INCORPORATION operations.
+2026-08-10T17:12:36+02:00 - 6db79e0e7 - Yohann : feat(iricc): fix tests associated to the truncate() modification
+2026-08-10T16:59:53+02:00 - ad04d4c40 - Yohann : feat(iricc): truncate lot volume at operation creation (not round))
+2026-08-10T15:28:11Z - fa1547e9c - Yohann Ulreich : Merge branch '2303-feat/script-init-iricc-operations' into 'dev'
+2026-08-10T15:17:16Z - e578fbc1d - Yohann Ulreich : Merge branch '2250-feat/RFC-usage' into 'dev'
 2026-03-04T12:56:27Z - bdaf73f3 - benjamin-grilleres : Merge branch 'staging' into 'master'
 2026-03-04T12:19:25+01:00 - cb826956 - jfalxa : fix(saf): do not filter on customs id for airports
 2026-03-04T12:17:42+01:00 - 37f745af - jfalxa : feat(elec): allow cancelling a rejected elec transfer certificate

@@ -2,12 +2,12 @@
 ├── .buildpacks
 ├── .dockerignore
 ├── .env.example
-├── .force-rebuild
 ├── .gitignore
 ├── .gitlab
 │   ├── issue_templates
 │   │   ├── Bug.md
 │   │   ├── Service_desk.md
+│   │   ├── US_template.md
 │   │   ├── add_MatièrePremière.md
 │   │   └── issue_description.md
 │   └── merge_request_templates
@@ -15,21 +15,32 @@
 │       └── new_feature.md
 ├── .gitlab-ci.yml
 ├── .pre-commit-config.yaml
+├── .python-version
 ├── .slugignore
 ├── Aptfile
-├── Back.code-workspace
-├── Front.code-workspace
 ├── LICENSE
-├── Pipfile
-├── Pipfile.lock
+├── Makefile
 ├── Procfile
 ├── README.md
 ├── api-schema.yaml
+├── backups
+│   ├── .buildpacks
+│   ├── Aptfile
+│   ├── Procfile
+│   ├── cron.json
+│   ├── database
+│   │   ├── download_scalingo_backup.sh
+│   │   ├── restore.sh
+│   │   └── restore_local_backup.sh
+│   └── offsite
+│       ├── backup_database.sh
+│       ├── backup_user_files.sh
+│       ├── rclone_s3.sh
+│       └── show_bucket.sh
 ├── bin
 │   ├── post_compile
 │   └── post_deploy.sh
 ├── cron.json
-├── docker-compose.prod.yml
 ├── docker-compose.yml
 ├── front
 │   ├── .eslintrc.json
@@ -46,7 +57,6 @@
 │   │   └── preview.tsx
 │   ├── Dockerfile
 │   ├── README.md
-│   ├── carbure-api.yaml
 │   ├── chromatic.config.json
 │   ├── i18next-parser.config.js
 │   ├── index.html
@@ -57,6 +67,7 @@
 │   │   ├── favicon.ico
 │   │   ├── locales
 │   │   │   ├── en
+│   │   │   │   ├── backend_inputs.json
 │   │   │   │   ├── biofuels.json
 │   │   │   │   ├── countries.json
 │   │   │   │   ├── errors.json
@@ -64,6 +75,7 @@
 │   │   │   │   ├── fields.json
 │   │   │   │   └── translation.json
 │   │   │   └── fr
+│   │   │       ├── backend_inputs.json
 │   │   │       ├── biofuels.json
 │   │   │       ├── countries.json
 │   │   │       ├── errors.json
@@ -108,15 +120,25 @@
 │   │   │   │       └── biofuels
 │   │   │   │           └── operation.ts
 │   │   │   ├── api
+│   │   │   │   ├── api.ts
 │   │   │   │   ├── biofuels
 │   │   │   │   │   ├── balances.ts
 │   │   │   │   │   └── operations.ts
-│   │   │   │   └── elec
-│   │   │   │       ├── balances.ts
-│   │   │   │       └── operations.ts
+│   │   │   │   ├── elec
+│   │   │   │   │   ├── balances.ts
+│   │   │   │   │   └── operations.ts
+│   │   │   │   └── mac-fossil-fuel.ts
 │   │   │   ├── components
+│   │   │   │   ├── accounting-sector-tabs.tsx
+│   │   │   │   ├── advanced-filters
+│   │   │   │   │   ├── advanced-filters.hooks.ts
+│   │   │   │   │   ├── advanced-filters.stories.tsx
+│   │   │   │   │   ├── advanced-filters.tsx
+│   │   │   │   │   ├── advanced-filters.types.ts
+│   │   │   │   │   ├── advanced-filters.utils.ts
+│   │   │   │   │   ├── available-balance.hooks.ts
+│   │   │   │   │   └── available-balance.tsx
 │   │   │   │   ├── from-depot-form
-│   │   │   │   │   ├── api.ts
 │   │   │   │   │   ├── from-depot-form.stories.tsx
 │   │   │   │   │   ├── from-depot-form.stories.utils.ts
 │   │   │   │   │   ├── from-depot-form.tsx
@@ -129,6 +151,17 @@
 │   │   │   │   │   ├── ghg-range-form.tsx
 │   │   │   │   │   ├── ghg-range-form.types.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── mac-section
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mac-dialog
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── mac-dialog.hooks.tsx
+│   │   │   │   │   │   ├── mac-dialog.module.css
+│   │   │   │   │   │   ├── mac-dialog.tsx
+│   │   │   │   │   │   ├── mac-fuel-selection-dialog.tsx
+│   │   │   │   │   │   └── mac-input.tsx
+│   │   │   │   │   └── mac-section.tsx
+│   │   │   │   ├── objectives-year-select.tsx
 │   │   │   │   ├── operation-badge
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── operation-badge.tsx
@@ -138,6 +171,8 @@
 │   │   │   │   │   └── operation-text.tsx
 │   │   │   │   ├── quantity-form
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── quantity-form-avoided-emissions-notice.tsx
+│   │   │   │   │   ├── quantity-form-energy-equivalent.tsx
 │   │   │   │   │   ├── quantity-form-summary.tsx
 │   │   │   │   │   ├── quantity-form.hooks.ts
 │   │   │   │   │   ├── quantity-form.stories.tsx
@@ -150,6 +185,7 @@
 │   │   │   │   │   └── recap-ghg-range.tsx
 │   │   │   │   ├── recap-operation
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── recap-operation.test.tsx
 │   │   │   │   │   └── recap-operation.tsx
 │   │   │   │   ├── recipient-form
 │   │   │   │   │   ├── __test__
@@ -159,29 +195,63 @@
 │   │   │   │   │   ├── recipient-form.stories.tsx
 │   │   │   │   │   ├── recipient-form.stories.utils.ts
 │   │   │   │   │   └── recipient-form.tsx
+│   │   │   │   ├── snapshot-balance-section
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── snapshot-balance-dialog.tsx
+│   │   │   │   │   ├── snapshot-balance-section.module.css
+│   │   │   │   │   └── snapshot-balance-section.tsx
 │   │   │   │   └── to-depot-form
 │   │   │   │       ├── index.ts
 │   │   │   │       └── to-depot-form.tsx
+│   │   │   ├── config.ts
 │   │   │   ├── hooks
 │   │   │   │   ├── formatters.ts
 │   │   │   │   ├── last-sector-visited.ts
 │   │   │   │   ├── normalizers.ts
+│   │   │   │   ├── use-accounting-permissions.ts
+│   │   │   │   ├── use-annual-declaration-tiruert-years.ts
+│   │   │   │   ├── use-eligible-tiruert-entities.hooks.ts
 │   │   │   │   └── useCreateOperation.hooks.ts
 │   │   │   ├── index.tsx
 │   │   │   ├── layouts
 │   │   │   │   ├── operations-balances-layout.tsx
 │   │   │   │   └── teneur-layout.tsx
+│   │   │   ├── navigation
+│   │   │   │   └── sidebar-pages.ts
 │   │   │   ├── pages
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── objectives
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── mac-section-admin.tsx
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── objectives-layout.tsx
+│   │   │   │   │   │   └── objectives.tsx
+│   │   │   │   │   └── operations
+│   │   │   │   │       ├── admin-operations-layout.tsx
+│   │   │   │   │       └── admin-operations.tsx
 │   │   │   │   ├── balances
 │   │   │   │   │   ├── balances.tsx
 │   │   │   │   │   ├── biofuels
 │   │   │   │   │   │   ├── biofuels.hooks.tsx
 │   │   │   │   │   │   ├── biofuels.tsx
 │   │   │   │   │   │   ├── debit-operation-dialog
+│   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   ├── debit-operation-stepper-dialog
+│   │   │   │   │   │   │   │   │   ├── debit-operation-stepper-dialog.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── from-depot-filters-form
+│   │   │   │   │   │   │   │       ├── from-depot-filters-form.tsx
+│   │   │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   │   │   ├── debit-operation-dialog.module.css
 │   │   │   │   │   │   │   ├── debit-operation-dialog.tsx
 │   │   │   │   │   │   │   ├── devaluation-dialog
+│   │   │   │   │   │   │   │   ├── devaluation-dialog.hooks.ts
 │   │   │   │   │   │   │   │   ├── devaluation-dialog.tsx
+│   │   │   │   │   │   │   │   ├── devaluation-dialog.types.ts
+│   │   │   │   │   │   │   │   ├── devaluation-type-form
+│   │   │   │   │   │   │   │   │   ├── devaluation-type-form.tsx
+│   │   │   │   │   │   │   │   │   ├── devaluation-type-form.types.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   ├── exportation-dialog
 │   │   │   │   │   │   │   │   ├── country-form
@@ -196,6 +266,7 @@
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   └── transfert-dialog
 │   │   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │   │       ├── recipient-filters-form.tsx
 │   │   │   │   │   │   │       ├── transfert-dialog.hooks.ts
 │   │   │   │   │   │   │       ├── transfert-dialog.stories.tsx
 │   │   │   │   │   │   │       ├── transfert-dialog.tsx
@@ -213,25 +284,36 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── operations
 │   │   │   │   │   ├── biofuels
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── operations-table
+│   │   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │   │       ├── operations-table.columns.tsx
+│   │   │   │   │   │   │       ├── operations-table.module.css
+│   │   │   │   │   │   │       ├── operations-table.stories.tsx
+│   │   │   │   │   │   │       └── operations-table.tsx
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── operations.hooks.tsx
 │   │   │   │   │   │   ├── operations.tsx
 │   │   │   │   │   │   ├── operations.utils.ts
 │   │   │   │   │   │   └── pages
-│   │   │   │   │   │       └── operation-detail
-│   │   │   │   │   │           ├── index.ts
-│   │   │   │   │   │           ├── operation-detail-actions
-│   │   │   │   │   │           │   ├── index.ts
-│   │   │   │   │   │           │   ├── operation-detail-actions.hooks.ts
-│   │   │   │   │   │           │   ├── operation-detail-actions.tsx
-│   │   │   │   │   │           │   └── operation-detail-actions.utils.ts
-│   │   │   │   │   │           ├── operation-detail-fields
-│   │   │   │   │   │           │   ├── index.ts
-│   │   │   │   │   │           │   ├── operation-detail-fields.hooks.ts
-│   │   │   │   │   │           │   ├── operation-detail-fields.utils.test.ts
-│   │   │   │   │   │           │   └── operation-detail-fields.utils.ts
-│   │   │   │   │   │           ├── operation-detail.stories.tsx
-│   │   │   │   │   │           └── operation-detail.tsx
+│   │   │   │   │   │       ├── operation-detail
+│   │   │   │   │   │       │   ├── index.ts
+│   │   │   │   │   │       │   ├── operation-detail-actions
+│   │   │   │   │   │       │   │   ├── index.ts
+│   │   │   │   │   │       │   │   ├── operation-detail-actions.hooks.ts
+│   │   │   │   │   │       │   │   ├── operation-detail-actions.tsx
+│   │   │   │   │   │       │   │   └── operation-detail-actions.utils.ts
+│   │   │   │   │   │       │   ├── operation-detail-fields
+│   │   │   │   │   │       │   │   ├── index.ts
+│   │   │   │   │   │       │   │   ├── operation-detail-fields.hooks.ts
+│   │   │   │   │   │       │   │   ├── operation-detail-fields.utils.test.ts
+│   │   │   │   │   │       │   │   └── operation-detail-fields.utils.ts
+│   │   │   │   │   │       │   ├── operation-detail.stories.tsx
+│   │   │   │   │   │       │   └── operation-detail.tsx
+│   │   │   │   │   │       └── operations-excel-import-dialog
+│   │   │   │   │   │           ├── index.tsx
+│   │   │   │   │   │           ├── operations-excel-import-dialog.hooks.tsx
+│   │   │   │   │   │           └── operations-excel-import-dialog.tsx
 │   │   │   │   │   ├── elec
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── operations.hooks.tsx
@@ -243,17 +325,14 @@
 │   │   │   │   │   │           ├── operation-detail.hooks.ts
 │   │   │   │   │   │           └── operation-detail.tsx
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── operations.module.css
+│   │   │   │   │   ├── operations-excel-import-dialog.tsx
 │   │   │   │   │   └── operations.tsx
 │   │   │   │   └── teneur
 │   │   │   │       ├── __test__
-│   │   │   │       │   └── data.ts
+│   │   │   │       │   ├── data.ts
+│   │   │   │       │   └── objectives-api-response.ts
 │   │   │   │       ├── api.ts
 │   │   │   │       ├── components
-│   │   │   │       │   ├── capped-categories-progress
-│   │   │   │       │   │   ├── capped-categories-progress.stories.tsx
-│   │   │   │       │   │   ├── capped-categories-progress.tsx
-│   │   │   │       │   │   └── index.ts
 │   │   │   │       │   ├── card-grid
 │   │   │   │       │   │   ├── card-grid.module.css
 │   │   │   │       │   │   ├── card-grid.tsx
@@ -269,26 +348,51 @@
 │   │   │   │       │   │   ├── declare-elec-teneur-dialog.types.ts
 │   │   │   │       │   │   └── index.ts
 │   │   │   │       │   ├── declare-teneur-dialog
-│   │   │   │       │   │   ├── biofuel-form
-│   │   │   │       │   │   │   ├── biofuel-form.tsx
+│   │   │   │       │   │   ├── biofuel-filters-form
+│   │   │   │       │   │   │   ├── biofuel-filters-form.hooks.ts
+│   │   │   │       │   │   │   ├── biofuel-filters-form.tsx
 │   │   │   │       │   │   │   └── index.ts
+│   │   │   │       │   │   ├── declare-teneur-dialog.hooks.test.ts
 │   │   │   │       │   │   ├── declare-teneur-dialog.hooks.ts
+│   │   │   │       │   │   ├── declare-teneur-dialog.stories.tsx
+│   │   │   │       │   │   ├── declare-teneur-dialog.stories.utils.ts
 │   │   │   │       │   │   ├── declare-teneur-dialog.tsx
 │   │   │   │       │   │   ├── declare-teneur-dialog.types.ts
-│   │   │   │       │   │   ├── declare-teneur-progress-bar.tsx
+│   │   │   │       │   │   ├── declare-teneur-progress-bar
+│   │   │   │       │   │   │   ├── declare-teneur-progress-bar.stories.tsx
+│   │   │   │       │   │   │   ├── declare-teneur-progress-bar.tsx
+│   │   │   │       │   │   │   └── index.ts
 │   │   │   │       │   │   └── index.ts
-│   │   │   │       │   ├── objective-section
+│   │   │   │       │   ├── mac-section-teneur.tsx
+│   │   │   │       │   ├── objective-sector-picker
 │   │   │   │       │   │   ├── index.ts
-│   │   │   │       │   │   ├── objective-section.module.css
-│   │   │   │       │   │   └── objective-section.tsx
-│   │   │   │       │   ├── objectivized-categories-progress
-│   │   │   │       │   │   ├── index.ts
-│   │   │   │       │   │   ├── objectivized-categories-progress.stories.tsx
-│   │   │   │       │   │   └── objectivized-categories-progress.tsx
-│   │   │   │       │   ├── overall-progress
-│   │   │   │       │   │   ├── index.ts
-│   │   │   │       │   │   ├── overall-progress.stories.tsx
-│   │   │   │       │   │   └── overall-progress.tsx
+│   │   │   │       │   │   └── objective-sector-picker.tsx
+│   │   │   │       │   ├── objectives-content
+│   │   │   │       │   │   ├── category-objective-progress-card
+│   │   │   │       │   │   │   ├── category-objective-progress-card.stories.tsx
+│   │   │   │       │   │   │   ├── category-objective-progress-card.tsx
+│   │   │   │       │   │   │   └── index.ts
+│   │   │   │       │   │   ├── constrained-categories-progress
+│   │   │   │       │   │   │   ├── constrained-categories-progress.stories.tsx
+│   │   │   │       │   │   │   ├── constrained-categories-progress.tsx
+│   │   │   │       │   │   │   └── index.ts
+│   │   │   │       │   │   ├── index.tsx
+│   │   │   │       │   │   ├── objective-progress-recap.tsx
+│   │   │   │       │   │   ├── objective-section
+│   │   │   │       │   │   │   ├── index.ts
+│   │   │   │       │   │   │   ├── objective-section.module.css
+│   │   │   │       │   │   │   └── objective-section.tsx
+│   │   │   │       │   │   ├── overall-progress
+│   │   │   │       │   │   │   ├── index.ts
+│   │   │   │       │   │   │   ├── overall-progress.stories.tsx
+│   │   │   │       │   │   │   └── overall-progress.tsx
+│   │   │   │       │   │   ├── sector-progress
+│   │   │   │       │   │   │   ├── index.ts
+│   │   │   │       │   │   │   └── sector-progress.tsx
+│   │   │   │       │   │   └── unconstrained-categories-progress
+│   │   │   │       │   │       ├── index.ts
+│   │   │   │       │   │       ├── unconstrained-categories-progress.stories.tsx
+│   │   │   │       │   │       └── unconstrained-categories-progress.tsx
 │   │   │   │       │   ├── progress-bar
 │   │   │   │       │   │   ├── index.ts
 │   │   │   │       │   │   ├── progress-bar.module.css
@@ -296,13 +400,6 @@
 │   │   │   │       │   ├── recap-data
 │   │   │   │       │   │   ├── index.ts
 │   │   │   │       │   │   └── recap-data.tsx
-│   │   │   │       │   ├── sector-progress
-│   │   │   │       │   │   ├── index.ts
-│   │   │   │       │   │   └── sector-progress.tsx
-│   │   │   │       │   ├── unconstrained-categories-progress
-│   │   │   │       │   │   ├── index.ts
-│   │   │   │       │   │   ├── unconstrained-categories-progress.stories.tsx
-│   │   │   │       │   │   └── unconstrained-categories-progress.tsx
 │   │   │   │       │   └── validate-pending-teneur-dialog
 │   │   │   │       │       ├── index.ts
 │   │   │   │       │       ├── validate-pending-teneur-dialog.hooks.tsx
@@ -311,7 +408,18 @@
 │   │   │   │       ├── teneur.tsx
 │   │   │   │       ├── types.ts
 │   │   │   │       └── utils
-│   │   │   │           └── formatters.ts
+│   │   │   │           ├── energy.test.ts
+│   │   │   │           ├── energy.ts
+│   │   │   │           ├── liters.test.ts
+│   │   │   │           ├── liters.ts
+│   │   │   │           ├── objectives.ts
+│   │   │   │           ├── parse-objectives-response.test.ts
+│   │   │   │           └── parse-objectives-response.ts
+│   │   │   ├── permissions.ts
+│   │   │   ├── providers
+│   │   │   │   ├── annual-declaration-tiruert.provider.tsx
+│   │   │   │   └── annual-declaration-tiruert.stories.utils.tsx
+│   │   │   ├── routes.tsx
 │   │   │   ├── types.ts
 │   │   │   └── utils
 │   │   │       └── formatters.ts
@@ -320,13 +428,19 @@
 │   │   │   ├── api.ts
 │   │   │   ├── components
 │   │   │   │   ├── activate.tsx
-│   │   │   │   ├── auth.module.css
 │   │   │   │   ├── login.tsx
 │   │   │   │   ├── logout.tsx
 │   │   │   │   ├── otp.tsx
+│   │   │   │   ├── password-input
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── password-input.tsx
+│   │   │   │   │   └── use-password-validation.ts
 │   │   │   │   ├── password.tsx
 │   │   │   │   └── register.tsx
-│   │   │   └── index.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── layouts
+│   │   │       ├── container.module.css
+│   │   │       └── container.tsx
 │   │   ├── biomethane
 │   │   │   ├── api.ts
 │   │   │   ├── components
@@ -335,6 +449,9 @@
 │   │   │   │   │   ├── annual-declaration-alert.stories.utils.tsx
 │   │   │   │   │   ├── annual-declaration-alert.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── annual-declaration-export-card
+│   │   │   │   │   ├── annual-declaration-export-card.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── annual-declaration-reset-dialog.tsx
 │   │   │   │   ├── annual-declaration-status-badge
 │   │   │   │   │   ├── annual-declaration-status-badge.stories.tsx
@@ -342,24 +459,39 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── closed-declaration.tsx
 │   │   │   │   ├── declaration-not-found.tsx
+│   │   │   │   ├── download-declaration-button.tsx
 │   │   │   │   ├── missing-fields
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── use-missing-fields-helpers.ts
 │   │   │   │   │   │   ├── use-missing-fields-message.tsx
 │   │   │   │   │   │   ├── use-missing-fields.ts
 │   │   │   │   │   │   ├── use-page-detection.ts
+│   │   │   │   │   │   ├── use-settings-missing-fields-message.tsx
 │   │   │   │   │   │   └── use-show-missing-fields.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── missing-fields-message.utils.tsx
+│   │   │   │   │   ├── missing-fields-settings.tsx
 │   │   │   │   │   ├── missing-fields.config.ts
 │   │   │   │   │   ├── missing-fields.constants.ts
 │   │   │   │   │   ├── missing-fields.module.css
 │   │   │   │   │   ├── missing-fields.stories.tsx
 │   │   │   │   │   ├── missing-fields.tsx
 │   │   │   │   │   └── missing-fields.utils.ts
-│   │   │   │   └── settings-not-filled.tsx
+│   │   │   │   ├── select-years.tsx
+│   │   │   │   └── settings-not-filled
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── settings-not-filled.tsx
+│   │   │   │       └── use-settings-not-filled.ts
 │   │   │   ├── config.ts
 │   │   │   ├── hooks
-│   │   │   │   └── use-annual-declaration-years.ts
+│   │   │   │   ├── use-allowed-to-edit.ts
+│   │   │   │   ├── use-annual-declaration-years.ts
+│   │   │   │   ├── use-biomethane-backend-input-label.ts
+│   │   │   │   ├── use-biomethane-contract-infos.ts
+│   │   │   │   ├── use-biomethane-permissions.hooks.test.ts
+│   │   │   │   ├── use-biomethane-permissions.ts
+│   │   │   │   ├── use-biomethane-production-unit.ts
+│   │   │   │   └── use-selectable-declaration-years.ts
 │   │   │   ├── layouts
 │   │   │   │   ├── annual-declaration-layout.tsx
 │   │   │   │   └── page-header
@@ -382,7 +514,6 @@
 │   │   │   │   │   │   └── dashboard.tsx
 │   │   │   │   │   ├── declaration-detail
 │   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   ├── annual-declaration-is-open-badge.tsx
 │   │   │   │   │   │   │   ├── declaration-detail-header.tsx
 │   │   │   │   │   │   │   ├── declaration-detail-tabs.tsx
 │   │   │   │   │   │   │   └── toggle-declaration-button
@@ -391,15 +522,19 @@
 │   │   │   │   │   │   │       └── toggle-declaration-button.tsx
 │   │   │   │   │   │   ├── declaration-detail.tsx
 │   │   │   │   │   │   ├── hooks
-│   │   │   │   │   │   │   ├── use-annual-declaration-years-admin.ts
 │   │   │   │   │   │   │   ├── use-create-declaration.ts
 │   │   │   │   │   │   │   └── use-declaration-detail-routes.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── pages
-│   │   │   │   │   │       └── contact.tsx
+│   │   │   │   │   │       ├── contact.tsx
+│   │   │   │   │   │       └── users.tsx
 │   │   │   │   │   ├── declarations.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   └── use-biomethane-producers.ts
+│   │   │   │   │   ├── supply-inputs
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── supply-inputs.hooks.tsx
+│   │   │   │   │   │   └── supply-inputs.tsx
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── contract
@@ -492,8 +627,11 @@
 │   │   │   │   │   │   │   └── installation-energy-needs.tsx
 │   │   │   │   │   │   ├── malfunction.tsx
 │   │   │   │   │   │   ├── monthy-biomethane-injection
+│   │   │   │   │   │   │   ├── declare-monthly-quantity.coherence.hooks.tsx
 │   │   │   │   │   │   │   ├── declare-monthly-quantity.hooks.tsx
+│   │   │   │   │   │   │   ├── declare-monthly-quantity.stories.tsx
 │   │   │   │   │   │   │   ├── declare-monthly-quantity.tsx
+│   │   │   │   │   │   │   ├── declare-monthly-quantity.utils.ts
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   └── monthly-biomethane-injection.tsx
 │   │   │   │   │   │   └── various-questions.tsx
@@ -505,6 +643,8 @@
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── injection
 │   │   │   │   │   ├── api.ts
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── unique-identification-number-helper.tsx
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── injection.hooks.ts
 │   │   │   │   │   ├── injection.tsx
@@ -515,8 +655,10 @@
 │   │   │   │   │   │   ├── digestate-processing.tsx
 │   │   │   │   │   │   ├── digestate-storage
 │   │   │   │   │   │   │   ├── add-digestate-storage.tsx
+│   │   │   │   │   │   │   ├── digestate-storage.hooks.tsx
 │   │   │   │   │   │   │   └── digestate-storage.tsx
 │   │   │   │   │   │   ├── general-info.tsx
+│   │   │   │   │   │   ├── icpe-number-helper.tsx
 │   │   │   │   │   │   ├── icpe.tsx
 │   │   │   │   │   │   ├── production-site.tsx
 │   │   │   │   │   │   └── sanitary-agreement.tsx
@@ -527,11 +669,34 @@
 │   │   │   │   │   │   ├── api.ts
 │   │   │   │   │   │   └── data.ts
 │   │   │   │   │   └── types.ts
+│   │   │   │   ├── provider
+│   │   │   │   │   ├── api.ts
+│   │   │   │   │   ├── declarations
+│   │   │   │   │   │   ├── declarations.hooks.tsx
+│   │   │   │   │   │   └── declarations.tsx
+│   │   │   │   │   └── types.ts
 │   │   │   │   └── supply-plan
 │   │   │   │       ├── api.ts
+│   │   │   │       ├── components
+│   │   │   │       │   ├── download-supply-plan.tsx
+│   │   │   │       │   ├── supply-plan-proportions-alerts
+│   │   │   │       │   │   ├── index.ts
+│   │   │   │       │   │   ├── primary-crop-alert
+│   │   │   │       │   │   │   ├── primary-crop-alert.hooks.tsx
+│   │   │   │       │   │   │   ├── primary-crop-alert.tsx
+│   │   │   │       │   │   │   └── primary-crop-alert.utils.ts
+│   │   │   │       │   │   ├── supply-plan-proportions-alerts.tsx
+│   │   │   │       │   │   ├── tariff-proportions-alert
+│   │   │   │       │   │   │   ├── tariff-proportions-alert.hooks.tsx
+│   │   │   │       │   │   │   ├── tariff-proportions-alert.tsx
+│   │   │   │       │   │   │   └── tariff-proportions-alert.utils.ts
+│   │   │   │       │   │   └── use-supply-plan-proportions.ts
+│   │   │   │       │   └── supply-plan-table
+│   │   │   │       │       ├── index.ts
+│   │   │   │       │       ├── supply-plan-table.hooks.tsx
+│   │   │   │       │       └── supply-plan-table.tsx
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── supply-excel-import-dialog
-│   │   │   │       │   ├── excel-import-errors.tsx
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   └── supply-excel-import-dialog.tsx
 │   │   │   │       ├── supply-input-dialog
@@ -548,6 +713,16 @@
 │   │   │   │   │   ├── annual-declaration.provider.tsx
 │   │   │   │   │   ├── annual-declaration.stories.utils.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── business-rules
+│   │   │   │   │   ├── business-rules.provider.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── rules
+│   │   │   │   │   │   ├── common.rules.ts
+│   │   │   │   │   │   ├── digestate.rules.ts
+│   │   │   │   │   │   ├── energy.rules.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── production.rules.ts
+│   │   │   │   │   └── types.ts
 │   │   │   │   ├── contract-production-unit
 │   │   │   │   │   ├── contract-production-unit.provider.tsx
 │   │   │   │   │   ├── contract-production-unit.stories.utils.ts
@@ -632,6 +807,10 @@
 │   │   │   ├── components
 │   │   │   │   ├── alert.module.css
 │   │   │   │   ├── alert.tsx
+│   │   │   │   ├── alert2
+│   │   │   │   │   ├── alert.module.css
+│   │   │   │   │   ├── alert.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── autocomplete.tsx
 │   │   │   │   ├── autocomplete2
 │   │   │   │   │   ├── autocomplete.stories.tsx
@@ -712,10 +891,15 @@
 │   │   │   │   │   ├── date
 │   │   │   │   │   │   ├── date-input.tsx
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── decimal
+│   │   │   │   │   │   ├── decimal-input.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── double-range
+│   │   │   │   │   │   ├── double-range.module.css
 │   │   │   │   │   │   ├── double-range.stories.tsx
 │   │   │   │   │   │   ├── double-range.tsx
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── use-pulse-animation.ts
 │   │   │   │   │   ├── field
 │   │   │   │   │   │   ├── field.module.css
 │   │   │   │   │   │   ├── field.tsx
@@ -755,11 +939,14 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── text-input.stories.tsx
 │   │   │   │   │   │   └── text-input.tsx
-│   │   │   │   │   └── textarea
-│   │   │   │   │       ├── index.ts
-│   │   │   │   │       ├── textarea.module.css
-│   │   │   │   │       ├── textarea.stories.tsx
-│   │   │   │   │       └── textarea.tsx
+│   │   │   │   │   ├── textarea
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── textarea.module.css
+│   │   │   │   │   │   ├── textarea.stories.tsx
+│   │   │   │   │   │   └── textarea.tsx
+│   │   │   │   │   └── toggle-switch
+│   │   │   │   │       ├── toggle-switch.stories.tsx
+│   │   │   │   │       └── toggle-switch.tsx
 │   │   │   │   ├── list.module.css
 │   │   │   │   ├── list.tsx
 │   │   │   │   ├── list2
@@ -818,22 +1005,39 @@
 │   │   │   │   ├── scaffold.tsx
 │   │   │   │   ├── select.tsx
 │   │   │   │   ├── selects2
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── filter
+│   │   │   │   │   │   ├── multiselect
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── multiselect.module.css
+│   │   │   │   │   │   │   ├── multiselect.stories.tsx
+│   │   │   │   │   │   │   └── multiselect.tsx
+│   │   │   │   │   │   └── select
+│   │   │   │   │   │       ├── filter-select.module.css
+│   │   │   │   │   │       ├── filter-select.stories.tsx
+│   │   │   │   │   │       ├── filter-select.tsx
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   ├── form
+│   │   │   │   │   │   ├── combobox
+│   │   │   │   │   │   │   ├── form-picker-trigger.tsx
+│   │   │   │   │   │   │   ├── form-picker.module.css
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── multiselect
+│   │   │   │   │   │   │   ├── form-multiselect.stories.tsx
+│   │   │   │   │   │   │   ├── form-multiselect.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── select
+│   │   │   │   │   │       ├── form-select.stories.tsx
+│   │   │   │   │   │       ├── form-select.tsx
+│   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── multiselect
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── multiselect.module.css
-│   │   │   │   │   │   ├── multiselect.stories.tsx
 │   │   │   │   │   │   └── multiselect.tsx
 │   │   │   │   │   ├── select
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── select.module.css
 │   │   │   │   │   │   ├── select.stories.tsx
 │   │   │   │   │   │   └── select.tsx
-│   │   │   │   │   └── select-dsfr
-│   │   │   │   │       ├── index.ts
-│   │   │   │   │       ├── select-dsfr.module.css
-│   │   │   │   │       ├── select-dsfr.stories.tsx
-│   │   │   │   │       └── select-dsfr.tsx
+│   │   │   │   │   └── selects2.stories.utils.ts
 │   │   │   │   ├── show-more
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── show-more.module.css
@@ -886,7 +1090,12 @@
 │   │   │   │   │   ├── title.stories.tsx
 │   │   │   │   │   └── title.tsx
 │   │   │   │   ├── tooltip.module.css
-│   │   │   │   └── tooltip.tsx
+│   │   │   │   ├── tooltip.tsx
+│   │   │   │   └── yes-no-indicator
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── yes-no-indicator.module.css
+│   │   │   │       ├── yes-no-indicator.stories.tsx
+│   │   │   │       └── yes-no-indicator.tsx
 │   │   │   ├── globals.ts
 │   │   │   ├── hooks
 │   │   │   │   ├── api
@@ -959,6 +1168,7 @@
 │   │   │   │       │   │   │   ├── useChargePoints.ts
 │   │   │   │       │   │   │   ├── useDoubleCount.ts
 │   │   │   │       │   │   │   ├── useElec.ts
+│   │   │   │       │   │   │   ├── useHydrogen.ts
 │   │   │   │       │   │   │   └── useSaf.ts
 │   │   │   │       │   │   ├── index.ts
 │   │   │   │       │   │   ├── sidebar.hooks.ts
@@ -999,8 +1209,18 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── managed-editable-card
 │   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── managed-editable-card.module.css
 │   │   │   │   │       ├── managed-editable-card.provider.tsx
 │   │   │   │   │       └── managed-editable-card.tsx
+│   │   │   │   ├── empty-state
+│   │   │   │   │   ├── empty-state.module.css
+│   │   │   │   │   ├── empty-state.stories.tsx
+│   │   │   │   │   ├── empty-state.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── excel-import-errors
+│   │   │   │   │   ├── excel-import-errors.stories.tsx
+│   │   │   │   │   ├── excel-import-errors.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── filter-multiselect2
 │   │   │   │   │   ├── filter-multiselect2.module.css
 │   │   │   │   │   ├── filter-multiselect2.stories.tsx
@@ -1011,6 +1231,9 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── language-selector.stories.tsx
 │   │   │   │   │   └── language-selector.tsx
+│   │   │   │   ├── metabase-iframe
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── metabase-iframe.tsx
 │   │   │   │   ├── recap-quantity
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── recap-quantity.module.css
@@ -1059,6 +1282,8 @@
 │   │   │   │   ├── company-info-siren-missing-dialog.tsx
 │   │   │   │   ├── foreign-company-dialog.tsx
 │   │   │   │   ├── registration-dialog.hooks.ts
+│   │   │   │   ├── registration-dialog.stories.tsx
+│   │   │   │   ├── registration-dialog.stories.utils.ts
 │   │   │   │   └── registration-dialog.tsx
 │   │   │   ├── hooks
 │   │   │   │   └── missing-company-info-modal.tsx
@@ -1071,6 +1296,10 @@
 │   │   │   │   ├── add-entity-dialog.tsx
 │   │   │   │   ├── authorize-entity-banner.tsx
 │   │   │   │   ├── certificates.tsx
+│   │   │   │   ├── entity-ids-filter
+│   │   │   │   │   ├── entity-ids-filter.module.css
+│   │   │   │   │   ├── entity-ids-filter.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── entity-summary.hooks.ts
 │   │   │   │   ├── entity-summary.module.css
 │   │   │   │   ├── entity-summary.tsx
@@ -1078,6 +1307,10 @@
 │   │   │   ├── hooks
 │   │   │   │   └── useCompanyTypesByEntity.ts
 │   │   │   ├── index.tsx
+│   │   │   ├── pages
+│   │   │   │   └── users
+│   │   │   │       ├── hooks.tsx
+│   │   │   │       └── index.tsx
 │   │   │   ├── routes
 │   │   │   │   └── entity-details.tsx
 │   │   │   └── types.ts
@@ -1188,6 +1421,9 @@
 │   │   ├── elec
 │   │   │   └── pages
 │   │   │       └── certificates
+│   │   │           ├── __test__
+│   │   │           │   ├── api.ts
+│   │   │           │   └── data.ts
 │   │   │           ├── api.ts
 │   │   │           ├── components
 │   │   │           │   ├── accept-transfer-certificate.tsx
@@ -1205,6 +1441,7 @@
 │   │   │           │   │   ├── hooks.tsx
 │   │   │           │   │   └── index.tsx
 │   │   │           │   ├── provision-details
+│   │   │           │   │   ├── index.stories.tsx
 │   │   │           │   │   └── index.tsx
 │   │   │           │   ├── transfer
 │   │   │           │   │   ├── hooks.tsx
@@ -1349,6 +1586,7 @@
 │   │   │   │       ├── components
 │   │   │   │       │   ├── qualicharge-badge.tsx
 │   │   │   │       │   ├── qualicharge-data-detail.tsx
+│   │   │   │       │   ├── transfer-volumes-dialog.tsx
 │   │   │   │       │   ├── validate-all-data-dialog.tsx
 │   │   │   │       │   └── validate-data-dialog.tsx
 │   │   │   │       ├── formatters.ts
@@ -1359,6 +1597,48 @@
 │   │   │   │       ├── qualicharge.tsx
 │   │   │   │       └── types.ts
 │   │   │   └── types.ts
+│   │   ├── h2
+│   │   │   ├── hooks
+│   │   │   │   └── use-h2-permissions.ts
+│   │   │   ├── pages
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── certificates
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   └── lots
+│   │   │   │   │       └── index.tsx
+│   │   │   │   ├── certificates
+│   │   │   │   │   ├── certificates.hooks.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── empty-certificates.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── lots
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── lots.hooks.tsx
+│   │   │   │   └── stations
+│   │   │   │       ├── api.ts
+│   │   │   │       ├── components
+│   │   │   │       │   ├── create-station-dialog
+│   │   │   │       │   │   ├── create-station-dialog.hooks.tsx
+│   │   │   │       │   │   ├── create-station-dialog.tsx
+│   │   │   │       │   │   └── index.ts
+│   │   │   │       │   ├── edit-station-dialog
+│   │   │   │       │   │   ├── edit-station-dialog.hooks.tsx
+│   │   │   │       │   │   ├── edit-station-dialog.tsx
+│   │   │   │       │   │   └── index.ts
+│   │   │   │       │   ├── empty-stations.tsx
+│   │   │   │       │   ├── station-form
+│   │   │   │       │   │   ├── index.ts
+│   │   │   │       │   │   ├── station-form.hooks.ts
+│   │   │   │       │   │   └── station-form.tsx
+│   │   │   │       │   └── station-table
+│   │   │   │       │       ├── index.ts
+│   │   │   │       │       └── station-table.tsx
+│   │   │   │       └── index.tsx
+│   │   │   ├── routes.tsx
+│   │   │   ├── types.ts
+│   │   │   └── utils
+│   │   │       ├── formatters.ts
+│   │   │       └── normalizers.ts
 │   │   ├── i18n.ts
 │   │   ├── index.tsx
 │   │   ├── lot-add
@@ -1403,6 +1683,7 @@
 │   │   │   │   │   └── volume-input.tsx
 │   │   │   │   ├── durability-fields.tsx
 │   │   │   │   ├── filters.tsx
+│   │   │   │   ├── saf_origin.tsx
 │   │   │   │   ├── ticket-source-tag.tsx
 │   │   │   │   └── ticket-tag.tsx
 │   │   │   ├── hooks
@@ -1422,8 +1703,7 @@
 │   │   │   │   ├── ticket-source-details
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── assigned-tickets.tsx
-│   │   │   │   │   │   ├── fields.tsx
-│   │   │   │   │   │   └── ticket-source-parent.tsx
+│   │   │   │   │   │   └── fields.tsx
 │   │   │   │   │   ├── index.stories.tsx
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── ticket-sources
@@ -1479,6 +1759,41 @@
 │   │   ├── stats
 │   │   │   ├── api.ts
 │   │   │   └── index.tsx
+│   │   ├── traceability
+│   │   │   ├── api.ts
+│   │   │   ├── components
+│   │   │   │   ├── action-excel-import-dialog
+│   │   │   │   │   ├── action-excel-import-dialog.hooks.ts
+│   │   │   │   │   ├── action-excel-import-dialog.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── action-form
+│   │   │   │   │   ├── action-form-fieldset.tsx
+│   │   │   │   │   ├── action-form.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── action-modal.tsx
+│   │   │   │   ├── action-status-badge
+│   │   │   │   │   ├── action-status-badge.stories.tsx
+│   │   │   │   │   ├── action-status-badge.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── actions-page.tsx
+│   │   │   │   └── delete-action-button.tsx
+│   │   │   ├── hooks
+│   │   │   │   ├── action-columns
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── quantity-column.tsx
+│   │   │   │   │   └── use-action-columns.tsx
+│   │   │   │   ├── action-fields
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── quantity-field.tsx
+│   │   │   │   │   └── use-action-fields.tsx
+│   │   │   │   ├── use-action-filters.tsx
+│   │   │   │   ├── use-combined-query.tsx
+│   │   │   │   └── use-ghg-emission-titles.ts
+│   │   │   ├── normalizers.ts
+│   │   │   ├── types.ts
+│   │   │   └── utils
+│   │   │       ├── formatters.ts
+│   │   │       └── quantities.ts
 │   │   ├── transaction-details
 │   │   │   ├── api.ts
 │   │   │   ├── components
@@ -1526,6 +1841,7 @@
 │   │       ├── components
 │   │       │   ├── category.tsx
 │   │       │   ├── filters.tsx
+│   │       │   ├── fuel-usage-select.tsx
 │   │       │   ├── lots
 │   │       │   │   ├── index.hooks.ts
 │   │       │   │   ├── index.tsx
@@ -1543,58 +1859,50 @@
 │   │       │   │   ├── stock-table.tsx
 │   │       │   │   └── stock-tag.tsx
 │   │       │   └── switches.tsx
+│   │       ├── constants
+│   │       │   └── fuel-usage.ts
 │   │       ├── index.tsx
 │   │       ├── types.ts
 │   │       └── utils
-│   │           └── deadline.ts
+│   │           ├── deadline.ts
+│   │           └── usage-fields.ts
 │   ├── tsconfig.json
 │   ├── vite-env.d.ts
 │   └── vite.config.ts
 ├── gateway
 │   └── nginx.conf
-├── my.cnf
 ├── package-lock.json
 ├── package.json
 ├── pyproject.toml
 ├── scalingo.json
 ├── scripts
-│   ├── database
-│   │   ├── __init__.py
-│   │   ├── backup_prod_db.sh
-│   │   ├── clean_private.sql
-│   │   ├── dump_db.sh
-│   │   ├── restore_db.sh
-│   │   ├── s3backblaze.py
-│   │   └── s3cleanup.py
 │   ├── emails
 │   │   ├── __init__.py
 │   │   ├── get_operators_emails.py
 │   │   └── get_users_for_mailing_list.py
-│   ├── patches
-│   │   ├── 2022-10-13_cleanup_bad_delivery_types.py
-│   │   ├── 2022-10-13_delete_broken_bso_lots.py
-│   │   ├── 2022-10-13_fix_entity_name_accent_mismatch.py
-│   │   ├── 2022-12-19_add_english_names_to_feedstock_and_biofuel.py
-│   │   ├── 2023-01-04_cleanup_lagelouze_mac.py
-│   │   ├── 2023-01-06_cleanup_fioul83_lots.py
-│   │   ├── 2023-01-23_sync_declarations_with_lot_status.py
-│   │   ├── 2023-02-02_fix_flushed_lot_parents.py
-│   │   ├── 2023-02-15_update_entites_address.py
-│   │   ├── 2023-04-03_fix_declared_deleted_lots.py
-│   │   ├── 2023-04-7_update_dc_registrations.py
-│   │   ├── 2023-07-25_generate_production_site_dc_number.py
-│   │   ├── 2023-07-26_pick_right_dc_agreements.py
-│   │   ├── 2024-01-16_update_feedstock.py
-│   │   ├── 2024-02-21_delete_lots_with_deleted_parents.py
-│   │   ├── 2024-03-28_fix_wrong_carbure_id.py
-│   │   ├── 2025-02-25_restore_deleted_dc_applications.py
-│   │   └── __init__.py
-│   └── scalingo
-│       └── restart_metabase.sh
+│   └── patches
+│       ├── 2022-10-13_cleanup_bad_delivery_types.py
+│       ├── 2022-10-13_delete_broken_bso_lots.py
+│       ├── 2022-10-13_fix_entity_name_accent_mismatch.py
+│       ├── 2022-12-19_add_english_names_to_feedstock_and_biofuel.py
+│       ├── 2023-01-04_cleanup_lagelouze_mac.py
+│       ├── 2023-01-06_cleanup_fioul83_lots.py
+│       ├── 2023-01-23_sync_declarations_with_lot_status.py
+│       ├── 2023-02-02_fix_flushed_lot_parents.py
+│       ├── 2023-02-15_update_entites_address.py
+│       ├── 2023-04-03_fix_declared_deleted_lots.py
+│       ├── 2023-04-7_update_dc_registrations.py
+│       ├── 2023-07-25_generate_production_site_dc_number.py
+│       ├── 2023-07-26_pick_right_dc_agreements.py
+│       ├── 2024-01-16_update_feedstock.py
+│       ├── 2024-02-21_delete_lots_with_deleted_parents.py
+│       ├── 2024-03-28_fix_wrong_carbure_id.py
+│       ├── 2025-02-25_restore_deleted_dc_applications.py
+│       └── __init__.py
+├── uv.lock
 └── web
     ├── .coveragerc
     ├── Dockerfile
-    ├── Dockerfile.prod
     ├── adapters
     │   ├── __init__.py
     │   └── logger.py
@@ -1672,6 +1980,7 @@
     │   │   ├── test_request_otp.py
     │   │   ├── test_request_password_reset.py
     │   │   ├── test_reset_password.py
+    │   │   ├── test_throttling.py
     │   │   └── test_user_creation.py
     │   ├── tokens.py
     │   ├── urls.py
@@ -1715,16 +2024,21 @@
     │   │   ├── contract_amendment.py
     │   │   ├── energy_monthly_report.py
     │   │   ├── mixins.py
+    │   │   ├── provider_declaration.py
     │   │   └── supply_input.py
     │   ├── fixtures
     │   │   ├── __init__.py
-    │   │   └── biomethane_producers.xlsx
+    │   │   ├── biomethane_producers.xlsx
+    │   │   └── import-feedstock-tariff-coefficients.xlsx
     │   ├── management
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
+    │   │       ├── check_declared_annual_declarations.py
     │   │       ├── create_biomethane_annual_declarations.py
     │   │       ├── import_biomethane_producers.py
+    │   │       ├── import_feedstock_tariff_coefficients.py
+    │   │       ├── reopen_biomethane_declarations.py
     │   │       └── set_biomethane_declarations_open.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
@@ -1779,6 +2093,21 @@
     │   │   ├── 0044_add_source_to_biomethanesupplyinput.py
     │   │   ├── 0044_alter_biomethanesupplyinput_collection_type.py
     │   │   ├── 0045_merge_20260302_1413.py
+    │   │   ├── 0046_move_declarationperiod_to_core.py
+    │   │   ├── 0047_biomethanedeclarationperiod.py
+    │   │   ├── 0048_alter_biomethanecontract_buyer_and_more.py
+    │   │   ├── 0049_alter_biomethanecontract_complementary_aid_organisms_and_more.py
+    │   │   ├── 0050_alter_biomethanesupplyinput_dry_matter_ratio_percent.py
+    │   │   ├── 0050_biomethane_feedstock_tariff_coefficient.py
+    │   │   ├── 0051_alter_feedstock_tariff_coefficient_pef.py
+    │   │   ├── 0052_merge_20260803_0720.py
+    │   │   ├── 0053_alter_biomethanesupplyinput_collection_type.py
+    │   │   ├── 0054_biomethaneannualdeclaration_submission_date.py
+    │   │   ├── 0054_feedstock_tariff_coefficient_collection_type.py
+    │   │   ├── 0055_alter_biomethanesupplyinput_collection_type.py
+    │   │   ├── 0056_merge_20260824_1016.py
+    │   │   ├── 0057_alter_biomethanefeedstocktariffcoefficient_collection_type_and_more.py
+    │   │   ├── 0058_merge_duplicate_biomethane_providers.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -1791,10 +2120,14 @@
     │   │   ├── biomethane_digestate_storage.py
     │   │   ├── biomethane_energy.py
     │   │   ├── biomethane_energy_monthly_report.py
+    │   │   ├── biomethane_feedstock_tariff_coefficient.py
     │   │   ├── biomethane_injection_site.py
     │   │   ├── biomethane_production_unit.py
     │   │   ├── biomethane_supply_input.py
-    │   │   └── biomethane_supply_plan.py
+    │   │   ├── biomethane_supply_plan.py
+    │   │   └── managers
+    │   │       ├── __init__.py
+    │   │       └── biomethane_annual_declaration.py
     │   ├── permissions.py
     │   ├── serializers
     │   │   ├── __init__.py
@@ -1825,20 +2158,50 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── digestate_storage.py
     │   │   │   └── production_unit.py
+    │   │   ├── provider
+    │   │   │   ├── __init__.py
+    │   │   │   └── declaration.py
     │   │   └── supply_plan
     │   │       ├── __init__.py
     │   │       ├── supply_input.py
-    │   │       └── supply_plan.py
+    │   │       ├── supply_plan.py
+    │   │       └── tariff_coefficient_proportions.py
     │   ├── services
     │   │   ├── __init__.py
-    │   │   ├── annual_declaration.py
+    │   │   ├── admin
+    │   │   │   ├── __init__.py
+    │   │   │   ├── ademe.py
+    │   │   │   └── dashboard.py
+    │   │   ├── annual_declaration
+    │   │   │   ├── __init__.py
+    │   │   │   ├── declaration.py
+    │   │   │   └── notification.py
     │   │   ├── contract.py
+    │   │   ├── declaration_export.py
     │   │   ├── digestate.py
+    │   │   ├── dreal_export
+    │   │   │   ├── __init__.py
+    │   │   │   ├── columns.py
+    │   │   │   ├── context.py
+    │   │   │   ├── export.py
+    │   │   │   └── metrics
+    │   │   │       ├── __init__.py
+    │   │   │       ├── energy.py
+    │   │   │       └── supply_plan.py
     │   │   ├── energy.py
+    │   │   ├── production_unit.py
+    │   │   ├── provider_declaration.py
     │   │   ├── rules.py
+    │   │   ├── supply_input_export
+    │   │   │   ├── __init__.py
+    │   │   │   ├── columns.py
+    │   │   │   └── export.py
     │   │   ├── supply_plan
     │   │   │   ├── __init__.py
-    │   │   │   └── supply_input.py
+    │   │   │   ├── primary_crop_proportion.py
+    │   │   │   ├── supply_input.py
+    │   │   │   ├── tariff_coefficient.py
+    │   │   │   └── volume.py
     │   │   └── supply_plan_excel_template.py
     │   ├── tests
     │   │   ├── __init__.py
@@ -1854,6 +2217,9 @@
     │   │   │   │   └── test_years.py
     │   │   │   ├── test_services.py
     │   │   │   └── test_views.py
+    │   │   ├── commands
+    │   │   │   ├── __init__.py
+    │   │   │   └── test_reopen_biomethane_declarations.py
     │   │   ├── contract
     │   │   │   ├── __init__.py
     │   │   │   ├── amendment
@@ -1883,6 +2249,10 @@
     │   │   │   ├── test_services.py
     │   │   │   ├── test_signals.py
     │   │   │   └── test_views.py
+    │   │   ├── export_declaration
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_services.py
+    │   │   │   └── test_views.py
     │   │   ├── injection_site
     │   │   │   ├── __init__.py
     │   │   │   ├── test_serializers.py
@@ -1900,12 +2270,23 @@
     │   │   │   │   ├── test_serializers.py
     │   │   │   │   └── test_views.py
     │   │   │   ├── test_serializers.py
+    │   │   │   ├── test_services.py
     │   │   │   └── test_views.py
+    │   │   ├── provider
+    │   │   │   ├── __init__.py
+    │   │   │   └── test_declaration_viewset.py
     │   │   ├── services
     │   │   │   ├── __init__.py
+    │   │   │   ├── dreal_export
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_energy_metrics.py
     │   │   │   ├── supply_plan
     │   │   │   │   ├── __init__.py
-    │   │   │   │   └── test_supply_input.py
+    │   │   │   │   ├── test_primary_crop_proportion.py
+    │   │   │   │   ├── test_supply_input.py
+    │   │   │   │   ├── test_tariff_coefficient_proportions.py
+    │   │   │   │   └── test_volume.py
+    │   │   │   ├── test_ademe.py
     │   │   │   ├── test_rules.py
     │   │   │   └── test_supply_plan_excel_template.py
     │   │   ├── supply_plan
@@ -1920,6 +2301,7 @@
     │   │   │       └── test_views.py
     │   │   ├── test_dreal_rights.py
     │   │   ├── test_permissions.py
+    │   │   ├── test_producer_isolation.py
     │   │   └── test_serializer_fields.py
     │   ├── urls.py
     │   └── views
@@ -1938,10 +2320,12 @@
     │       │   ├── __init__.py
     │       │   ├── contract.py
     │       │   └── contract_amendment.py
+    │       ├── declaration_export.py
     │       ├── digestate
     │       │   ├── __init__.py
     │       │   ├── digestate.py
     │       │   └── spreading.py
+    │       ├── dreal_export.py
     │       ├── energy
     │       │   ├── __init__.py
     │       │   ├── energy.py
@@ -1960,13 +2344,17 @@
     │       │   ├── __init__.py
     │       │   ├── digestate_storage.py
     │       │   └── production_unit.py
+    │       ├── provider
+    │       │   ├── __init__.py
+    │       │   └── provider_declaration.py
     │       └── supply_plan
     │           ├── __init__.py
     │           ├── excel_template_download.py
     │           ├── mixins
     │           │   ├── __init__.py
     │           │   ├── excel_export.py
-    │           │   └── excel_import.py
+    │           │   ├── excel_import.py
+    │           │   └── tariff_coefficient_proportions.py
     │           ├── supply_input.py
     │           └── supply_plan.py
     ├── carbure
@@ -1974,13 +2362,13 @@
     │   ├── api
     │   │   ├── __init__.py
     │   │   ├── home_stats.py
+    │   │   ├── metabase_status.py
     │   │   └── nav_stats.py
     │   ├── asgi.py
     │   ├── middlewares
     │   │   ├── __init__.py
     │   │   ├── entity.py
     │   │   ├── exception.py
-    │   │   ├── logging.py
     │   │   └── spa.py
     │   ├── scripts
     │   │   ├── __init__.py
@@ -1992,12 +2380,15 @@
     │   │   ├── send_notification_emails.py
     │   │   ├── update_2bs_certificates.py
     │   │   ├── update_carbure_ids.py
-    │   │   ├── update_iscc_certificates.py
     │   │   └── update_redcert_certificates.py
     │   ├── settings.py
     │   ├── tasks.py
     │   ├── tests
     │   │   ├── __init__.py
+    │   │   ├── api
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_metabase_status.py
+    │   │   │   └── test_nav_stats.py
     │   │   └── middlewares
     │   │       ├── __init__.py
     │   │       └── test_exception.py
@@ -2039,7 +2430,10 @@
     │   ├── excel.py
     │   ├── excel_importer.py
     │   ├── exceptions.py
-    │   ├── factories.py
+    │   ├── factories
+    │   │   ├── __init__.py
+    │   │   ├── sample_data.py
+    │   │   └── stored_file.py
     │   ├── filters.py
     │   ├── helpers.py
     │   ├── ign_distance.py
@@ -2048,7 +2442,12 @@
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
-    │   │       └── create_sample_data.py
+    │   │       ├── create_sample_data.py
+    │   │       ├── export_backend_inputs.py
+    │   │       ├── import_certifhy_certificates.py
+    │   │       ├── import_iscc_certificates.py
+    │   │       ├── migrate_entity_ownership.py
+    │   │       └── update_certificate_status.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
     │   │   ├── 0002_initial.py
@@ -2110,25 +2509,104 @@
     │   │   ├── 0056_entity_closed_at.py
     │   │   ├── 0057_merge_20251217_1109.py
     │   │   ├── 0058_carburelot_udb_transaction_id.py
+    │   │   ├── 0058_genericcertificate_last_status_update_and_more.py
     │   │   ├── 0059_alter_carburelot_pos_number.py
+    │   │   ├── 0059_alter_genericcertificate_last_status_update_and_more.py
     │   │   ├── 0060_matierepremiere_is_biofuel_feedstock_and_more.py
+    │   │   ├── 0060_merge_20260119_1532.py
+    │   │   ├── 0061_genericcertificate_suspended_dates_and_more.py
     │   │   ├── 0061_matierepremiere_classification_and_more.py
     │   │   ├── 0062_remove_entitydepot_depot_remove_entitydepot_blender_and_more.py
+    │   │   ├── 0063_merge_20260310_1640.py
+    │   │   ├── 0064_remove_genericcertificate_suspended_dates.py
+    │   │   ├── 0065_region_alter_department_code_dept_department_region.py
+    │   │   ├── 0066_remove_duplicate_userrights_and_add_unique_constraint.py
+    │   │   ├── 0067_declarationperiod.py
+    │   │   ├── 0068_alter_declarationperiod_options_and_more.py
+    │   │   ├── 0069_alter_declarationperiod_year.py
+    │   │   ├── 0070_alter_externaladminrights_right.py
+    │   │   ├── 0071_matierepremiere_is_industrial_waste.py
+    │   │   ├── 0072_change_feedstock_collation.py
+    │   │   ├── 0073_change_entities_collation.py
+    │   │   ├── 0074_alter_matierepremiere_category.py
+    │   │   ├── 0075_alter_genericcertificate_certificate_type.py
+    │   │   ├── 0076_alter_entity_entity_type.py
+    │   │   ├── 0076_carburelot_usage_carburelot_usage_precision_and_more.py
+    │   │   ├── 0077_alter_entity_entity_type.py
+    │   │   ├── 0077_alter_externaladminrights_right.py
+    │   │   ├── 0078_alter_genericcertificate_scope.py
+    │   │   ├── 0079_merge_20260824_1605.py
+    │   │   ├── 0080_merge_20260824_1747.py
+    │   │   ├── 0081_alter_biocarburant_description.py
+    │   │   ├── 0081_alter_matierepremiere_code.py
+    │   │   ├── 0081_remove_json_check_constraint_on_carbure_certificates.py
+    │   │   ├── 0081_rename_carburelot_usage_heating_to_combustible.py
+    │   │   ├── 0082_biocarburant_compatible_gpl.py
+    │   │   ├── 0082_merge_20260910_1458.py
+    │   │   ├── 0082_storedfile.py
+    │   │   ├── 0083_merge_20260910_1626.py
+    │   │   ├── 0084_merge_20260910_1745.py
+    │   │   ├── 0085_merge_0082_storedfile_0084_merge_20260910_1745.py
+    │   │   ├── 0085_merge_20260916_1334.py
+    │   │   ├── 0086_biocarburant_compatible_maritime.py
+    │   │   ├── 0086_merge_20260922_1549.py
+    │   │   ├── 0087_merge_20260923_1103.py
+    │   │   ├── 0088_alter_externaladminrights_right.py
     │   │   └── __init__.py
-    │   ├── models.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   ├── certificate.py
+    │   │   ├── declaration_period.py
+    │   │   ├── entity.py
+    │   │   ├── entity_certificate.py
+    │   │   ├── feedstock.py
+    │   │   ├── fields.py
+    │   │   ├── file.py
+    │   │   ├── geography.py
+    │   │   ├── lot.py
+    │   │   ├── notification.py
+    │   │   ├── stock.py
+    │   │   ├── user.py
+    │   │   └── virtual_fields.py
     │   ├── notifications.py
     │   ├── pagination.py
     │   ├── permissions.py
+    │   ├── serializer_fields.py
+    │   ├── serializer_validators.py
     │   ├── serializers.py
     │   ├── services
-    │   │   └── __init__.py
+    │   │   ├── __init__.py
+    │   │   ├── model_translation_fields.py
+    │   │   └── notify_site_change.py
     │   ├── tests
     │   │   ├── __init__.py
+    │   │   ├── models
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_certificate.py
+    │   │   │   ├── test_entity.py
+    │   │   │   └── test_stored_file.py
+    │   │   ├── test_admin.py
+    │   │   ├── test_check_fields_required.py
+    │   │   ├── test_entity.py
+    │   │   ├── test_excel.py
     │   │   ├── test_excel_importer.py
     │   │   ├── test_filters_action_factory.py
     │   │   ├── test_helpers.py
+    │   │   ├── test_import_certifhy_certificates.py
     │   │   ├── test_import_export_template.py
-    │   │   └── test_models.py
+    │   │   ├── test_import_iscc_certificates.py
+    │   │   ├── test_json_choices_field.py
+    │   │   ├── test_migrate_entity_ownership.py
+    │   │   ├── test_model_translation_fields.py
+    │   │   ├── test_notify_site_change.py
+    │   │   ├── test_permissions.py
+    │   │   ├── test_serializer_fields.py
+    │   │   ├── test_serializer_validators.py
+    │   │   ├── test_update_certificate_status.py
+    │   │   ├── test_utils.py
+    │   │   └── traceability
+    │   │       ├── __init__.py
+    │   │       └── test_lot.py
     │   ├── tests_utils.py
     │   ├── traceability
     │   │   ├── __init__.py
@@ -2203,7 +2681,6 @@
     │   │   ├── 0028_alter_doublecountingapplication_production_site.py
     │   │   └── __init__.py
     │   ├── models.py
-    │   ├── old_helpers.py
     │   ├── parser
     │   │   ├── __init__.py
     │   │   ├── dc_parser.py
@@ -2239,6 +2716,7 @@
     │   │   │       └── test_import_sourcing_and_production_history.py
     │   │   ├── parser
     │   │   │   ├── __init__.py
+    │   │   │   ├── test_helpers.py
     │   │   │   ├── test_parse_info.py
     │   │   │   └── test_parse_traceability.py
     │   │   ├── test_helpers.py
@@ -2295,18 +2773,42 @@
     │   ├── ebms
     │   │   ├── __init__.py
     │   │   ├── access_points.py
+    │   │   ├── certificate.py
+    │   │   ├── certificate_site.py
     │   │   ├── converters.py
     │   │   ├── error_responses.py
     │   │   ├── ntr.py
-    │   │   ├── request_responses.py
-    │   │   ├── requests.py
+    │   │   ├── request_responses
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base_request_response.py
+    │   │   │   ├── eo_get_transaction_response.py
+    │   │   │   ├── get_certificate_response.py
+    │   │   │   └── get_organisation_by_id_response.py
+    │   │   ├── requests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── add_organisation_request.py
+    │   │   │   ├── add_update_certificate_request.py
+    │   │   │   ├── base_request.py
+    │   │   │   ├── eo_get_transaction_request.py
+    │   │   │   ├── get_certificate_request.py
+    │   │   │   ├── get_organisation_by_id_request.py
+    │   │   │   └── get_sourcing_contact_by_id_request.py
     │   │   ├── response_factory.py
-    │   │   └── transaction.py
+    │   │   ├── transaction.py
+    │   │   └── udb_element.py
+    │   ├── integration_tests
+    │   │   ├── __init__.py
+    │   │   └── ebms
+    │   │       ├── __init__.py
+    │   │       └── request_responses
+    │   │           ├── __init__.py
+    │   │           └── test_eo_get_transaction_response.py
     │   ├── management
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
     │   │       ├── edelivery_listener.py
+    │   │       ├── export_national_scheme_certificates.py
     │   │       └── import_udb_transactions.py
     │   ├── soap
     │   │   ├── __init__.py
@@ -2320,15 +2822,33 @@
     │       │   ├── __init__.py
     │       │   ├── fixtures
     │       │   │   ├── __init__.py
-    │       │   │   └── udb_xml_data.py
+    │       │   │   ├── certificate_site_xml_data.py
+    │       │   │   ├── certificate_xml_data.py
+    │       │   │   ├── payloads.py
+    │       │   │   └── transaction_xml_data.py
+    │       │   ├── request_responses
+    │       │   │   ├── __init__.py
+    │       │   │   ├── test_base_request_response.py
+    │       │   │   ├── test_eo_get_transaction_response.py
+    │       │   │   └── test_get_organisation_by_id_response.py
+    │       │   ├── requests
+    │       │   │   ├── __init__.py
+    │       │   │   ├── test_add_organisation_request.py
+    │       │   │   ├── test_add_update_certificate_request.py
+    │       │   │   ├── test_base_request.py
+    │       │   │   ├── test_eo_get_transaction_request.py
+    │       │   │   ├── test_get_certificate_request.py
+    │       │   │   ├── test_get_organisation_by_id_request.py
+    │       │   │   └── test_get_sourcing_contact_by_id_request.py
     │       │   ├── test_access_point.py
+    │       │   ├── test_certificate.py
+    │       │   ├── test_certificate_site.py
     │       │   ├── test_converters.py
     │       │   ├── test_error_responses.py
     │       │   ├── test_ntr.py
-    │       │   ├── test_request_responses.py
-    │       │   ├── test_requests.py
     │       │   ├── test_response_factory.py
-    │       │   └── test_transaction.py
+    │       │   ├── test_transaction.py
+    │       │   └── test_udb_element.py
     │       └── soap
     │           ├── __init__.py
     │           ├── test_actions.py
@@ -2447,9 +2967,12 @@
     │   │       ├── __init__.py
     │   │       ├── compensate_elec_provision_certificate.py
     │   │       ├── generate_meter_readings_report.py
+    │   │       ├── populate_elec_provision_certificate_enr_ratio.py
     │   │       ├── refresh_charge_points.py
+    │   │       ├── relink_qualicharge_unknown_siren.py
     │   │       ├── remove_duplicate_cp.py
-    │   │       └── replace_charge_point_id.py
+    │   │       ├── replace_charge_point_id.py
+    │   │       └── update_meter_readings_operating_unit_from_history.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
     │   │   ├── 0002_alter_elecprovisioncertificate_quarter_and_more.py
@@ -2522,6 +3045,11 @@
     │   │   ├── 0066_eleccertificatereadjustment.py
     │   │   ├── 0067_elecprovisioncertificatequalicharge_enr_ratio.py
     │   │   ├── 0068_remove_elecprovisioncertificate_remaining_energy_amount_and_more.py
+    │   │   ├── 0068_remove_meter_reading_virtual_view.py
+    │   │   ├── 0069_merge_20260224_1551.py
+    │   │   ├── 0070_delete_elecmeterreadingvirtual.py
+    │   │   ├── 0071_elecprovisioncertificate_date_from_and_more.py
+    │   │   ├── 0072_elecprovisioncertificate_enr_ratio_and_readjustment_year_enr_ratio.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -2533,7 +3061,6 @@
     │   │   ├── elec_meter.py
     │   │   ├── elec_meter_reading.py
     │   │   ├── elec_meter_reading_application.py
-    │   │   ├── elec_meter_reading_virtual.py
     │   │   ├── elec_provision_certificate.py
     │   │   ├── elec_provision_certificate_qualicharge.py
     │   │   └── elec_transfer_certificate.py
@@ -2585,6 +3112,7 @@
     │   │   │   ├── mixins
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_bulk_create.py
+    │   │   │   │   ├── test_bulk_transfer.py
     │   │   │   │   ├── test_bulk_update.py
     │   │   │   │   └── test_filter.py
     │   │   │   ├── test_serializers.py
@@ -2593,14 +3121,17 @@
     │   │   ├── management
     │   │   │   ├── __init__.py
     │   │   │   ├── test_compensate_elec_provision_certificate.py
-    │   │   │   └── test_generate_meter_readings_report.py
+    │   │   │   ├── test_generate_meter_readings_report.py
+    │   │   │   ├── test_relink_qualicharge_unknown_siren.py
+    │   │   │   └── test_update_meter_readings_operating_unit_from_history.py
     │   │   ├── repositories
     │   │   │   ├── __init__.py
     │   │   │   └── test_meter_reading_repository.py
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── test_meter_readings_application_quarter.py
-    │   │   │   └── test_readjustment_balance.py
+    │   │   │   ├── test_readjustment_balance.py
+    │   │   │   └── test_transport_data_gouv.py
     │   │   └── utils.py
     │   ├── urls.py
     │   └── views
@@ -2615,7 +3146,9 @@
     │       │   ├── mixins
     │       │   │   ├── __init__.py
     │       │   │   ├── bulk_create.py
+    │       │   │   ├── bulk_transfer.py
     │       │   │   ├── bulk_update.py
+    │       │   │   ├── excel_export.py
     │       │   │   └── filter.py
     │       │   └── provision_certificate_qualicharge.py
     │       ├── provision_certificates
@@ -2645,6 +3178,9 @@
     │   ├── factories
     │   │   ├── __init__.py
     │   │   └── entity.py
+    │   ├── filters
+    │   │   ├── __init__.py
+    │   │   └── admin_users.py
     │   ├── migrations
     │   │   ├── 0001_add_entityscope.py
     │   │   ├── 0002_entityscopedepartment_entityscopedepot.py
@@ -2653,6 +3189,7 @@
     │   ├── permissions.py
     │   ├── serializers
     │   │   ├── __init__.py
+    │   │   ├── admin_users.py
     │   │   ├── depot.py
     │   │   ├── production_sites.py
     │   │   ├── registration.py
@@ -2693,21 +3230,26 @@
     │   │   │   └── tests_views.py
     │   │   ├── registration
     │   │   │   ├── __init__.py
-    │   │   │   ├── tests_add_company.py
-    │   │   │   └── tests_search_company.py
+    │   │   │   └── tests_add_company.py
     │   │   ├── services
     │   │   │   ├── __init__.py
-    │   │   │   └── test_enable_depot.py
+    │   │   │   ├── test_enable_depot.py
+    │   │   │   └── test_geolocation.py
     │   │   ├── tests_enable_entity.py
     │   │   ├── users
     │   │   │   ├── __init__.py
+    │   │   │   ├── mixins
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_update_rights_scope.py
+    │   │   │   ├── test_admin_users.py
     │   │   │   ├── tests_permissions.py
     │   │   │   └── tests_users.py
     │   │   └── views
     │   │       ├── __init__.py
     │   │       ├── registration
     │   │       │   ├── __init__.py
-    │   │       │   └── test_add_company.py
+    │   │       │   ├── test_add_company.py
+    │   │       │   └── test_search_company.py
     │   │       └── users
     │   │           ├── __init__.py
     │   │           └── mixins
@@ -2766,6 +3308,7 @@
     │       │   └── search_company.py
     │       └── users
     │           ├── __init__.py
+    │           ├── admin_users.py
     │           ├── mixins
     │           │   ├── __init__.py
     │           │   ├── change_role.py
@@ -2777,7 +3320,6 @@
     │           │   ├── update_right_request.py
     │           │   └── update_user_role.py
     │           └── users.py
-    ├── entrypoint.prod.sh
     ├── entrypoint.sh
     ├── feedstocks
     │   ├── __init__.py
@@ -2805,10 +3347,17 @@
     │   ├── __init__.py
     │   ├── assign_sn_certificates.py
     │   ├── assign_volumes_to_existing_lots.py
+    │   ├── biomethane
+    │   │   ├── __init__.py
+    │   │   ├── load_biomethane_ADEME.py
+    │   │   ├── load_biomethane_DREAL.py
+    │   │   ├── load_biomethane_providers.py
+    │   │   └── load_biomethane_utils.py
     │   ├── csv
     │   │   ├── DGDDI.csv
     │   │   ├── airports.csv
     │   │   ├── biocarburants.csv
+    │   │   ├── biomethane_ADEME.csv
     │   │   ├── biomethane_DREAL.csv
     │   │   ├── biomethane_providers.csv
     │   │   ├── countries.csv
@@ -2823,8 +3372,8 @@
     │   │   ├── production_sites_gps.csv
     │   │   ├── redcert_biomass.csv
     │   │   ├── redcert_scopes.csv
+    │   │   ├── regions.csv
     │   │   ├── rules.csv
-    │   │   ├── systeme_national.xlsx
     │   │   ├── test_data
     │   │   │   ├── carbure_10k.xlsx
     │   │   │   ├── carbure_duplicates.xlsx
@@ -2866,8 +3415,6 @@
     │   ├── load_DGDDI.py
     │   ├── load_airports.py
     │   ├── load_biocarburants.py
-    │   ├── load_biomethane_DREAL.py
-    │   ├── load_biomethane_providers.py
     │   ├── load_countries.py
     │   ├── load_departments.py
     │   ├── load_depots.py
@@ -2878,8 +3425,55 @@
     │   ├── load_historical_data.py
     │   ├── load_matierespremieres.py
     │   ├── load_psite_gps_coordinates.py
-    │   ├── load_sn_certificates.py
+    │   ├── load_regions.py
     │   └── load_udb_data.py
+    ├── h2
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── factories
+    │   │   ├── __init__.py
+    │   │   ├── h2_station.py
+    │   │   └── sample_data.py
+    │   ├── filters
+    │   │   ├── __init__.py
+    │   │   └── h2_station.py
+    │   ├── handlers
+    │   │   ├── __init__.py
+    │   │   ├── action.py
+    │   │   └── lookups.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   ├── 0002_alter_h2station_distribution_capacity_and_more.py
+    │   │   ├── 0003_h2station_has_compliant_measuring_instruments.py
+    │   │   └── __init__.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   └── h2_station.py
+    │   ├── permissions.py
+    │   ├── serializers
+    │   │   ├── __init__.py
+    │   │   ├── action.py
+    │   │   └── h2_station.py
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── excel.py
+    │   │   ├── handlers
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_action.py
+    │   │   │   ├── test_lifecycle.py
+    │   │   │   └── test_lookups.py
+    │   │   ├── stations
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_serializers.py
+    │   │   │   └── test_views.py
+    │   │   ├── test_action_excel.py
+    │   │   ├── test_action_excel_import.py
+    │   │   └── test_permissions.py
+    │   ├── urls.py
+    │   └── views
+    │       ├── __init__.py
+    │       └── h2_station.py
     ├── locale
     │   └── en
     │       └── LC_MESSAGES
@@ -2922,7 +3516,6 @@
     │   ├── __init__.py
     │   ├── factories
     │   │   ├── __init__.py
-    │   │   ├── generic_certificate.py
     │   │   └── production_site.py
     │   ├── tests
     │   │   ├── __init__.py
@@ -2940,7 +3533,10 @@
     │       ├── depots.py
     │       ├── entity.py
     │       ├── feedstocks.py
+    │       ├── fossil_fuels.py
+    │       ├── materials.py
     │       ├── production_sites.py
+    │       ├── site.py
     │       └── systeme_national.py
     ├── saf
     │   ├── __init__.py
@@ -3029,6 +3625,7 @@
     │   │   ├── tests_shipping_route.py
     │   │   ├── tests_snapshot.py
     │   │   ├── tests_ticket_details.py
+    │   │   ├── tests_ticket_export.py
     │   │   ├── tests_ticket_filters.py
     │   │   ├── tests_ticket_source_details.py
     │   │   ├── tests_ticket_source_filters.py
@@ -3111,8 +3708,16 @@
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
+    │   │       ├── backfill_operations_durability_period.py
+    │   │       ├── backfill_operations_for_past_periods.py
+    │   │       ├── cancel_closed_period_operations.py
+    │   │       ├── create_report_operations_for_2027_period.py
     │   │       ├── import_fossil_fuel_mac.py
-    │   │       └── import_fossil_fuel_mac_2023.py
+    │   │       ├── import_fossil_fuel_mac_2023.py
+    │   │       ├── repair_operation_categories.py
+    │   │       ├── seed_test_data.py
+    │   │       ├── set_operations_expired.py
+    │   │       └── snapshot_objectives.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
     │   │   ├── 0002_alter_operation_customs_category_and_more.py
@@ -3142,23 +3747,48 @@
     │   │   ├── 0023_alter_operation_status.py
     │   │   ├── 0024_round_operationdetail_volumes.py
     │   │   ├── 0025_operation_export_recipient_alter_operation_type.py
+    │   │   ├── 0026_tiruertdeclarationperiod.py
+    │   │   ├── 0027_operation_declaration_year.py
+    │   │   ├── 0028_objectivesnapshot.py
+    │   │   ├── 0029_alter_operation_type_add_expiration.py
+    │   │   ├── 0030_macfossilfuel_unique_mac_fossil_fuel_operator_fuel_period.py
+    │   │   ├── 0030_operation_objective_sector.py
+    │   │   ├── 0031_elecoperation_objective_sector.py
+    │   │   ├── 0032_merge_20260602_1428.py
+    │   │   ├── 0033_alter_objective_customs_category_and_more.py
+    │   │   ├── 0034_alter_operation_type.py
+    │   │   ├── 0034_operation_devaluation_type.py
+    │   │   ├── 0035_merge_20260831_1649.py
+    │   │   ├── 0036_alter_elecoperation_objective_sector_and_more.py
+    │   │   ├── 0036_alter_operation_type_add_yearly_balance.py
+    │   │   ├── 0037_alter_operationdetail_lot_nullable.py
+    │   │   ├── 0038_merge_20260910_1745.py
+    │   │   ├── 0039_alter_operation_status.py
+    │   │   ├── 0039_maritime_fossil_fuels.py
+    │   │   ├── 0040_merge_20260923_1624.py
+    │   │   ├── 0041_alter_operation_status_alter_operation_type_and_more.py
+    │   │   ├── 0042_objectivesnapshot_data_balance.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
+    │   │   ├── declaration_period.py
     │   │   ├── elec_operation.py
     │   │   ├── fossil_fuel.py
     │   │   ├── fossil_fuel_category.py
     │   │   ├── fossil_fuel_category_consideration_rate.py
     │   │   ├── mac_fossil_fuel.py
     │   │   ├── objective.py
+    │   │   ├── objective_snapshot.py
     │   │   ├── operation.py
     │   │   └── operation_detail.py
+    │   ├── permissions.py
     │   ├── serializers
     │   │   ├── __init__.py
     │   │   ├── balance.py
     │   │   ├── elec_balance.py
     │   │   ├── elec_operation.py
     │   │   ├── fields.py
+    │   │   ├── mac_fossil_fuel.py
     │   │   ├── objective.py
     │   │   ├── operation.py
     │   │   ├── operation_detail.py
@@ -3166,13 +3796,26 @@
     │   ├── services
     │   │   ├── __init__.py
     │   │   ├── balance.py
+    │   │   ├── balance_annotations.py
+    │   │   ├── balance_filters.py
+    │   │   ├── declaration_period.py
     │   │   ├── elec_balance.py
     │   │   ├── elec_operation.py
+    │   │   ├── energy.py
     │   │   ├── objective.py
+    │   │   ├── objective_snapshot.py
     │   │   ├── operation.py
+    │   │   ├── operation_excel_import.py
+    │   │   ├── operation_excel_template.py
     │   │   └── teneur.py
     │   ├── tests
     │   │   ├── __init__.py
+    │   │   ├── commands
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_cancel_closed_period_operations.py
+    │   │   │   ├── test_create_incorporation_operations_from_excel.py
+    │   │   │   ├── test_repair_operation_categories.py
+    │   │   │   └── test_set_operations_expired.py
     │   │   ├── filters
     │   │   │   ├── __init__.py
     │   │   │   ├── test_elec_operation.py
@@ -3193,9 +3836,14 @@
     │   │   │   ├── test_balance.py
     │   │   │   ├── test_elec_balance.py
     │   │   │   ├── test_elec_operation_service.py
+    │   │   │   ├── test_energy.py
     │   │   │   ├── test_objective.py
+    │   │   │   ├── test_objective_snapshot.py
     │   │   │   ├── test_operation.py
+    │   │   │   ├── test_operation_excel_import.py
+    │   │   │   ├── test_operation_excel_template.py
     │   │   │   └── test_teneur.py
+    │   │   ├── test_permissions.py
     │   │   └── views
     │   │       ├── __init__.py
     │   │       ├── elec_operation
@@ -3212,21 +3860,32 @@
     │   │       ├── mixins
     │   │       │   ├── __init__.py
     │   │       │   └── test_unit.py
-    │   │       └── operation
-    │   │           ├── __init__.py
-    │   │           ├── mixins
-    │   │           │   ├── __init__.py
-    │   │           │   ├── test_accept.py
-    │   │           │   ├── test_balance.py
-    │   │           │   ├── test_filter.py
-    │   │           │   ├── test_reject.py
-    │   │           │   └── test_simulate.py
-    │   │           ├── test_operation_pagination.py
-    │   │           ├── test_operation_viewset_integration.py
-    │   │           └── test_operation_viewset_permissions.py
+    │   │       ├── objective
+    │   │       │   ├── __init__.py
+    │   │       │   ├── test_objective_viewset_get_objectives.py
+    │   │       │   └── test_objective_viewset_permissions.py
+    │   │       ├── operation
+    │   │       │   ├── __init__.py
+    │   │       │   ├── mixins
+    │   │       │   │   ├── __init__.py
+    │   │       │   │   ├── test_accept.py
+    │   │       │   │   ├── test_balance.py
+    │   │       │   │   ├── test_filter.py
+    │   │       │   │   ├── test_reject.py
+    │   │       │   │   └── test_simulate.py
+    │   │       │   ├── test_operation_excel_import_viewset_integration.py
+    │   │       │   ├── test_operation_excel_template_viewset_integration.py
+    │   │       │   ├── test_operation_pagination.py
+    │   │       │   ├── test_operation_viewset_integration.py
+    │   │       │   └── test_operation_viewset_permissions.py
+    │   │       └── test_mac_fossil_fuel_export_permissions.py
     │   ├── urls.py
     │   └── views
     │       ├── __init__.py
+    │       ├── declaration_period
+    │       │   ├── __init__.py
+    │       │   ├── current_year.py
+    │       │   └── years.py
     │       ├── elec_operation
     │       │   ├── __init__.py
     │       │   ├── elec_operation.py
@@ -3234,11 +3893,16 @@
     │       │       ├── __init__.py
     │       │       ├── accept.py
     │       │       ├── balance.py
+    │       │       ├── excel_export.py
     │       │       ├── filter.py
     │       │       └── reject.py
     │       ├── mac_fossil_fuel
     │       │   ├── __init__.py
-    │       │   └── excel_export.py
+    │       │   ├── mac_fossil_fuel.py
+    │       │   └── mixins
+    │       │       ├── __init__.py
+    │       │       ├── excel_export.py
+    │       │       └── replace.py
     │       ├── mixins
     │       │   ├── __init__.py
     │       │   └── unit.py
@@ -3253,10 +3917,116 @@
     │           │   ├── balance.py
     │           │   ├── correct.py
     │           │   ├── excel_export.py
+    │           │   ├── excel_import.py
     │           │   ├── filter.py
+    │           │   ├── operation_detail_excel_export.py
     │           │   ├── reject.py
     │           │   └── simulate.py
     │           └── operation.py
+    ├── traceability
+    │   ├── README.md
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── docs
+    │   │   ├── excel.md
+    │   │   └── total_emissions.md
+    │   ├── exceptions.py
+    │   ├── factories
+    │   │   ├── __init__.py
+    │   │   ├── action.py
+    │   │   └── material.py
+    │   ├── filters
+    │   │   ├── __init__.py
+    │   │   └── action.py
+    │   ├── fixtures
+    │   │   ├── __init__.py
+    │   │   ├── load_materials.py
+    │   │   └── materials.csv
+    │   ├── handlers
+    │   │   ├── __init__.py
+    │   │   ├── action.py
+    │   │   ├── excel.py
+    │   │   ├── lookups.py
+    │   │   └── registry.py
+    │   ├── lifecycle
+    │   │   ├── __init__.py
+    │   │   ├── checks.py
+    │   │   └── rules.py
+    │   ├── middlewares.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   ├── 0002_alter_action_parent_alter_material_code_and_more.py
+    │   │   ├── 0003_alter_action_options.py
+    │   │   ├── 0004_alter_action_options.py
+    │   │   ├── 0005_action_certificate_alter_action_pos_id.py
+    │   │   ├── 0006_alter_action_certificate_alter_action_shipping_date_and_more.py
+    │   │   ├── 0007_alter_action_type.py
+    │   │   ├── 0008_alter_action_material_alter_action_site.py
+    │   │   ├── 0009_alter_action_shipping_method.py
+    │   │   ├── 0010_action_eccr_action_eec_action_el_action_esca.py
+    │   │   ├── 0011_action_file.py
+    │   │   ├── 0012_material_unit_lhv_density.py
+    │   │   ├── 0013_material_code_max_length.py
+    │   │   ├── 0014_backfill_valorize_material.py
+    │   │   └── __init__.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   ├── action.py
+    │   │   ├── action_status.py
+    │   │   └── material.py
+    │   ├── serializers
+    │   │   ├── __init__.py
+    │   │   ├── action.py
+    │   │   ├── certificate.py
+    │   │   ├── fields.py
+    │   │   ├── material.py
+    │   │   ├── site.py
+    │   │   └── total_emissions.py
+    │   ├── services
+    │   │   ├── __init__.py
+    │   │   ├── action_excel.py
+    │   │   ├── action_import_file.py
+    │   │   ├── delete.py
+    │   │   ├── quantities.py
+    │   │   ├── refuse.py
+    │   │   ├── total_emissions.py
+    │   │   └── valorize.py
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── excel.py
+    │   │   ├── handlers
+    │   │   │   ├── __init__.py
+    │   │   │   └── test_action_handler.py
+    │   │   ├── lifecycle
+    │   │   │   ├── __init__.py
+    │   │   │   └── test_checks.py
+    │   │   ├── services
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_action_excel.py
+    │   │   │   ├── test_quantities.py
+    │   │   │   ├── test_refuse.py
+    │   │   │   ├── test_total_emissions.py
+    │   │   │   └── test_valorize.py
+    │   │   ├── test_filters.py
+    │   │   ├── test_material.py
+    │   │   ├── test_serializers.py
+    │   │   ├── test_years.py
+    │   │   └── views
+    │   │       ├── __init__.py
+    │   │       ├── test_action.py
+    │   │       ├── test_action_delete.py
+    │   │       ├── test_action_excel_import.py
+    │   │       └── test_action_excel_template.py
+    │   ├── urls.py
+    │   └── views
+    │       ├── __init__.py
+    │       ├── action.py
+    │       └── mixins
+    │           ├── __init__.py
+    │           ├── excel_import.py
+    │           ├── excel_template.py
+    │           └── years.py
     ├── transactions
     │   ├── __init__.py
     │   ├── admin.py
@@ -3342,6 +4112,7 @@
     │   │   │   ├── template.py
     │   │   │   ├── tests
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_update_lot_ownership.py
     │   │   │   │   ├── tests_certif_mayhem.py
     │   │   │   │   ├── tests_corrections.py
     │   │   │   │   ├── tests_create_draft.py
@@ -3376,6 +4147,7 @@
     │   │   ├── certificate.py
     │   │   ├── depot.py
     │   │   ├── production_site.py
+    │   │   ├── sample_data.py
     │   │   └── site.py
     │   ├── fixtures
     │   │   ├── Recensement_des_entrepots_suspensifs_PE__METRO+DOM__v2.xlsx
@@ -3388,6 +4160,7 @@
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
+    │   │       ├── backfill_site_gps_coordinates.py
     │   │       ├── ghg_corrections_from_file.py
     │   │       ├── normalize_depot_customs_id.py
     │   │       └── trigger_anomaly_detection.py
@@ -3410,6 +4183,9 @@
     │   │   ├── 0016_split_site_into_concrete_models.py
     │   │   ├── 0017_update_site_options.py
     │   │   ├── 0018_alter_site_site_type.py
+    │   │   ├── 0019_alter_site_address_alter_site_city_and_more.py
+    │   │   ├── 0020_site_commissioning_date.py
+    │   │   ├── 0021_alter_site_site_type.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -3460,18 +4236,14 @@
     │   │   │   ├── default_values.py
     │   │   │   ├── detect_outliers.py
     │   │   │   └── load_db.py
-    │   │   └── carbure_id.py
+    │   │   ├── carbure_id.py
+    │   │   └── lots.py
     │   └── tests
     │       ├── __init__.py
+    │       ├── test_helpers.py
     │       └── test_models.py
     └── user
         ├── __init__.py
-        ├── api
-        │   ├── __init__.py
-        │   ├── request_access.py
-        │   ├── revoke_access.py
-        │   ├── tests_user.py
-        │   └── user.py
         ├── management
         │   ├── __init__.py
         │   └── commands
@@ -3503,4 +4275,4 @@
             ├── request_access.py
             ├── revoke_access.py
             └── user.py
-642 directories, 2863 files
+780 directories, 3497 files

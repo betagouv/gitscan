@@ -1,43 +1,40 @@
-## Changelog : carbure (30 derniers jours)
+## Changelog : carbure (30 derniers jours, au 02/11/2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations concernant la gestion des intrants et des matières premières pour le biométhane, avec l'ajout de nouveaux modèles, d'une nouvelle API et d'un script d'importation Excel. Des corrections et des améliorations ont également été apportées à la gestion des certificats d'électricité, à la traçabilité des SAF et à l'interface utilisateur pour les DREAL. Enfin, des optimisations et des refactorings ont été réalisés pour améliorer la performance et la maintenabilité du code.
+Ce mois a été marqué par des avancées majeures sur la gestion de la traçabilité et l'extension des fonctionnalités pour le biométhane. La plateforme offre désormais de nouveaux outils aux fournisseurs de biométhane et améliore la précision du suivi des matières (gestion des unités et des facteurs de conversion). Les outils d'administration ont également été renforcés pour permettre une gestion plus fine des utilisateurs et des droits.
 
 ### Évolutions fonctionnelles
-- Possibilité d'annuler un certificat de transfert d'électricité rejeté. [#1234](https://github.com/MTES-MCT/carbure/issues/1234)
-- Ajout d'un bouton d'aide lorsque les paramètres ne sont pas renseignés pour faciliter la configuration.
-- Envoi d'emails aux producteurs de biométhane.
-- Amélioration de l'affichage du solde des certificats d'électricité pour une meilleure clarté.
-- Ajout de la possibilité pour les DREAL d'accepter ou de refuser des utilisateurs.
-- Ajout de champs pour le type de CIVE, les détails de la culture et le type de collecte pour les intrants.
-- Simplification de la page de mise à jour du plan d'approvisionnement.
-- Ajout de la possibilité de filtrer les entreprises pour les DREAL.
-- Amélioration de la gestion des erreurs lors de l'importation Excel pour les plans d'approvisionnement.
-- Ajout de la possibilité d'importer des producteurs de biométhane via un fichier Excel.
-- Ajout d'un formulaire de satisfaction pour les utilisateurs.
-- Ajout de la gestion des entités DREAL.
-- Possibilité de visualiser le prénom des utilisateurs.
-- Amélioration de la gestion des validations logistiques SAF avec un indicateur de fonctionnalité.
+- **Biométhane** :
+  - Mise en place d'une interface dédiée aux fournisseurs de biométhane pour consulter les déclarations des producteurs liés par contrat.
+  - Introduction de la possibilité de réouvrir des déclarations annuelles, avec un système de notification automatique pour les producteurs.
+  - Amélioration de l'affichage des types de collecte (IAA) et de la sélection de l'année.
+- **Traçabilité** :
+  - Amélioration de la précision du suivi avec la gestion native des unités (masse, volume, énergie) et l'affichage des quantités avec leurs unités respectives.
+  - Renforcement de la logique de traçabilité : chaque création possède désormais un statut de "naissance" et un lien de parenté explicite.
+  - Meilleure visibilité des filtres de statut et affichage des périodes de travail.
+- **Hydrogène (H2)** :
+  - Amélioration de la visibilité pour les administrateurs industriels (consultation en lecture seule et recherche par entreprise).
+  - Ajout de filtres par statut sur les lots d'hydrogène.
+- **Administration & Utilisateurs** :
+  - Enrichissement de la gestion des utilisateurs : filtrage par entité ou par statut actif, export des listes filtrées et consultation des droits par entité.
+  - Amélioration de la visibilité des comptes (affichage du nombre total d'utilisateurs dans les récapitulatifs).
+- **Biocarburants** :
+  - Ajustement du périmètre IRICC pour exclure les biocarburants SAF.
+  - Masquage (non suppression) des types ETBE-100 et ETBE-63.
 
 ### Évolutions techniques
-- Refactor de code pour améliorer la réutilisabilité et la lisibilité.
-- Mise à jour des migrations pour la gestion des sites et des biométhanes.
-- Utilisation de nouvelles structures de données pour la gestion des matières premières et des intrants.
-- Optimisation des requêtes en base de données pour améliorer les performances.
-- Suppression de code obsolète et nettoyage du code.
-- Amélioration de la gestion des erreurs et des validations.
-- Refactor de la gestion des certificats d'électricité pour simplifier le code et améliorer la performance.
-- Mise en place de tests unitaires pour garantir la qualité du code.
-- Utilisation de variables d'environnement pour la configuration.
-- Amélioration de la gestion des migrations pour éviter les conflits.
-- Refactor de la gestion des modèles de sites pour utiliser l'héritage.
-- Ajout de commentaires pour faciliter la compréhension du code.
+- **Traçabilité & Données** :
+  - Refonte de la gestion des matériaux : intégration des facteurs de conversion (LHV/PCI), de la densité et des unités directement dans le catalogue des matériaux (import via CSV).
+  - Optimisation de l'import Excel pour permettre l'importation sans facteurs de conversion immédiats.
+  - Amélioration de la robustesse de l'importation des données biométhane (chargement préalable du catalogue des intrants).
+- **API & Architecture** :
+  - Optimisation des performances et de la sécurité de l'API via l'utilisation de champs explicites dans les sérialiseurs au lieu de `__all__` [#2432](https://github.com/MTES-MCT/carbure/issues/2432).
+  - Création de nouveaux endpoints API pour les fournisseurs de biométhane.
+  - Refactorisation du service de réouverture des déclarations pour une meilleure maintenance.
+- **Sécurité & Validation** :
+  - Renforcement de la validation des données avec un contrôle du format SIREN pour les identifiants d'enregistrement [#2415](https://github.com/MTES-MCT/carbure/issues/2415).
+  - Mise à jour de la gestion des certificats de sécurité (emSign).
 
 ### Autres changements
-- Correction de bugs mineurs dans l'interface utilisateur.
-- Mise à jour de la documentation.
-- Amélioration des messages d'erreur.
-- Correction de problèmes de performance.
-- Corrections de migrations.
-- Suppression de dépendances inutiles.
-- Mise à jour des dépendances.
+- Mise à jour du schéma de l'API.
+- Nettoyage du code et extraction du module `EntityCertificate`.
