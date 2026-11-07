@@ -1,13 +1,14 @@
 # Synthèse d'activité : mesadsfr (du 05/05 au 12/05)
 
 ## Résumé de l'activité
-L'activité récente de [mesads](/repos/mesadsfr/mesads) s'est concentrée sur l'enrichissement des fonctionnalités pour les différents profils d'utilisateurs et la mise en conformité légale. L'introduction d'un parcours dédié aux inspecteurs, d'un module de newsletter et l'amélioration des outils statistiques renforcent les capacités opérationnelles de la plateforme. Par ailleurs, l'ajout d'une page de déclaration d'accessibilité et la mise à jour des données des communes pour 2026 assurent une meilleure fiabilité et une conformité accrue pour les utilisateurs finaux.
+L'activité récente de l'organisation s'est concentrée sur l'extension des capacités opérationnelles et la mise en conformité réglementaire. Le dépôt [mesads](/repos/mesadsfr/mesads) a vu l'introduction de nouveaux parcours métiers, notamment pour les inspecteurs, ainsi que l'ajout d'un module de newsletter et d'outils d'exportation de données pour les administrateurs. Par ailleurs, l'accessibilité de la plateforme a été renforcée pour répondre aux obligations légales, tout en améliorant les outils de pilotage grâce à de nouvelles statistiques disponibles pour les utilisateurs.
 
 ## Sécurité
-- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).
+- Correction d'une vulnérabilité sur l'endpoint d'autocomplétion des communes dans [mesads](/repos/mesadsfr/mesads).
 
 ## Autres changements notables
-- Amélioration de la qualité du code et de la robustesse via l'application de règles de linting (Ruff) dans [mesads](/repos/mesadsfr/mesads).
+- Mise à jour des données de référence des communes pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads).
+- Amélioration de la qualité du code et de la maintenance via l'intégration de l'outil de linting Ruff dans [mesads](/repos/mesadsfr/mesads).
 
 ## Dépôts les plus actifs
-- [mesads](/repos/mesadsfr/mesads) : Développement de nouveaux parcours utilisateurs, mise en conformité d'accessibilité et renforcement de la sécurité.
+- [mesads](/repos/mesadsfr/mesads) : Évolutions majeures des fonctionnalités métier, mise en conformité d'accessibilité et maintenance technique.

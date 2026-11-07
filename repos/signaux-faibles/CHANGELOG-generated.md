@@ -1,16 +1,16 @@
-# Synthèse d'activité : signaux-faibles (du 01/07 au 31/08)
+# Synthèse d'activité : signaux-faibles (du 30/06 au 27/08)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la fiabilité des données. Dans [sfor](/repos/signaux-faibles/sfor), les évolutions majeures concernent une gestion plus fine des alertes et des listes d'entreprises (suivi par département, précision des alertes), ainsi qu'une interface plus fluide et des outils d'exportation améliorés.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la fiabilité des données. Dans [sfor](/repos/signaux-faibles/sfor), les utilisateurs bénéficient d'une gestion plus fine des alertes, d'un meilleur suivi des entreprises par département et de nouvelles notifications par email, rendant l'outil plus réactif et intuitif.
 
-Parallèlement, les efforts sur [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) ont permis de renforcer la précision des informations fournies, notamment via la correction des données liées aux codes NAF et aux effectifs. Enfin, la documentation a bénéficié d'une meilleure structure pour faciliter la navigation des utilisateurs.
+En parallèle, les efforts sur [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) ont permis de renforcer la précision des informations affichées, notamment via la correction des données liées aux codes NAF. Enfin, la qualité globale des livrables est soutenue par une meilleure automatisation de la documentation via [documentation](/repos/signaux-faibles/documentation).
 
 ## Autres changements notables
-- **Optimisation et robustesse** : Amélioration des performances via des tâches de dénormalisation et renforcement de la gestion des erreurs et des timeouts dans [sfor](/repos/signaux-faibles/sfor).
-- **Maintenance de données** : Correction de migrations de base de données et amélioration de la reproductibilité de la génération des fichiers de référence dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
-- **Infrastructure de développement** : Mise en place d'une chaîne d'intégration continue (CI) via GitLab pour automatiser les vérifications dans [documentation](/repos/signaux-faibles/documentation).
+- **Optimisation et robustesse** : Amélioration de la gestion des erreurs, de la journalisation et des performances (via des tâches de dénormalisation) dans [sfor](/repos/signaux-faibles/sfor).
+- **Fiabilisation des données et de l'infrastructure** : Corrections importantes des migrations de base de données et amélioration de la reproductibilité des fichiers de référence dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
+- **Automatisation de la qualité** : Mise en place d'une chaîne d'intégration continue (CI) pour le dépôt [documentation](/repos/signaux-faibles/documentation).
 
 ## Dépôts les plus actifs
-- [sfor](/repos/signaux-faibles/sfor) : Évolutions fonctionnelles centrées sur l'expérience utilisateur, la gestion des alertes et les notifications.
-- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Travaux de fiabilisation des données (codes NAF) et maintenance technique de la base de données.
+- [sfor](/repos/signaux-faibles/sfor) : Évolutions majeures de l'interface utilisateur, de la gestion des alertes et de l'export de données.
+- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Travaux de correction de données (NAF, effectifs) et de nettoyage technique des migrations.
 - [documentation](/repos/signaux-faibles/documentation) : Amélioration de la navigation et automatisation des processus de vérification.

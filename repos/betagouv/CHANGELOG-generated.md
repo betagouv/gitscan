@@ -1,28 +1,27 @@
-# Synthèse d'activité : betagouv (du 01/09 au 31/10/2026)
+# Synthèse d'activité : betagouv (du 01/04 au 15/11)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une accélération sur trois axes stratégiques : l'intégration de l'intelligence artificielle pour l'analyse de données [portail-rse](/repos/betagouv/portail-rse), le renforcement massif de la sécurité des services publics [service-national-universel](/repos/betagouv/service-national-universel) et la modernisation des plateformes citoyennes [mon-entreprise](/repos/betagouv/mon-entreprise).
+L'activité de l'organisation est marquée par des transformations structurelles majeures, notamment l'intégration de l'intelligence artificielle pour l'analyse de données dans [portail-rse](/repos/betagouv/portail-rse) et [portail-rse-externe](/repos/betagouv/portail-rse-externe). Plusieurs projets clés ont entamé des refontes architecturales profondes pour gagner en modularité, à l'image de [transport-sanitaire](/repos/betagouv/transport-sanitaire) qui sépare désormais son moteur de simulation de ses règles métier, ou de [turgot-fiches-collectivites](/repos/betagouv/turgot-fiches-collectivites) qui change d'identité pour devenir "Fico".
 
-Ces évolutions permettent d'offrir des outils plus intelligents, plus sûrs et mieux adaptés aux spécificités locales. On note également des transformations structurelles majeures, comme le rebranding et la refonte architecturale de [turgot-fiches-collectivites](/repos/betagouv/turgot-fiches-collectivites) et la publication de nouvelles versions des standards de conformité [standards](/repos/betagouv/standards).
+Parallèlement, un effort important est déployé sur l'amélioration de l'expérience utilisateur via la cartographie interactive ([pnm](/repos/betagouv/pnm), [nitrates](/repos/betagouv/nitrates), [patrinotes](/repos/betagouv/patrinotes)) et l'accessibilité numérique ([sante-mentale-etudiant](/repos/betagouv/sante-mentale-etudiant), [sites-faciles](/repos/betagouv/sites-faciles)). Ces évolutions visent à fournir des outils plus précis, plus robustes et mieux adaptés aux besoins des agents et des citoyens.
 
 ## Sécurité
-- Correction de vulnérabilités critiques (gestion des sessions) : [mon-suivi-justice](/repos/betagouv/mon-suivi-justice).
-- Durcissement des accès et protection contre les failles (IDOR, CSRF, injections, mass assignment) : [service-national-universel](/repos/betagouv/service-national-universel), [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives) et [recoco-plugins-mi-depafi](/repos/betagouv/recoco-plugins-mi-depafi).
-- Amélioration de l'authentification et de la gestion des accès : [transports-sanitaires-sites-conformes](/repos/betagouv/transports-sanitaires-sites-conformes), [rdv-service-public](/repos/betagouv/rdv-service-public) et [recoco-sync](/repos/betagouv/recoco-sync).
-- Sécurisation des données, des infrastructures et des dépendances : [mon-loglementetudiant](/repos/betagouv/mon-loglementetudiant), [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice), [seves](/repos/betagouv/seves), [zacharie](/repos/betagouv/zacharie), [seves-documentation](/repos/betagouv/seves-documentation) et [mon-profil-anssi](/repos/betagouv/mon-profil-anssi).
-- Intégration d'outils d'analyse de sécurité automatisés en CI/CD : [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal).
+L'organisation a maintenu une vigilance accrue sur la protection des données et la correction de vulnérabilités :
+- **Corrections de vulnérabilités critiques** : Résolution de failles de gestion de session dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) et de vulnérabilités dans [rdv-service-public](/repos/betagouv/rdv-service-public).
+- **Renforcement des accès et protection des données** : Mise en place de protections contre les failles IDOR et CSRF dans [service-national-universitaire](/repos/betagouv/service-national-universitaire) et [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives). Amélioration de l'authentification (2FA) dans [transports-sanitaires-sites-conformes](/repos/betagouv/transports-sanitaires-sites-conformes) et sécurisation des processus d'authentification dans [stage-direct](/repos/betagouv/stage-direct).
+- **Confidentialité et RGPD** : Efforts de masquage des données personnelles dans les logs pour [service-national-universitaire](/repos/betagouv/service-national-universitaire) et protection des données sensibles dans [zacharie](/repos/betagouv/zacharie).
+- **Sécurisation des flux et téléchargements** : Renforcement de la validation des pièces jointes et de la sécurité des téléchargements dans [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice).
+- **Audit et CI/CD** : Intégration d'outils d'analyse de sécurité automatique (Bandit, Checkov, Zizmor) dans les pipelines de [transports-sanitaires-sites-conformes](/repos/betagouv/transports-sanitaires-sites-conformes) et [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal).
 
 ## Autres changements notables
-- Intelligence Artificielle : Déploiement de moteurs d'analyse de nouvelle génération [portail-rse](/repos/betagouv/portail-rse), [portail-rse-externe](/repos/betagouv/portail-rse-externe) et outils d'aide à la création de contenu pédagogique [science-infuse](/repos/betagouv/science-infuse).
-- Infrastructures et Migrations : Passage à FrankenPHP [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice), migration vers PostgreSQL/Dokku [turgot-fiches-collectivites](/repos/betagouv/turgot-fiches-collectivites) et mise à jour majeure de la stack Rails/Ruby [rdv-service-public](/repos/betagouv/rdv-service-public).
-- Standards et Design : Publication des versions 2.0 et 2.1 des standards [standards](/repos/betagouv/standards), [standards-front](/repos/betagouv/standards-front) et intégration du DSFR v1.14 [penpot-dsfr](/repos/betagouv/penpot-dsfr).
-- Cartographie et SIG : Améliorations significatives des interfaces cartographiques [nitrates](/repos/betagouv/nitrates), [sylvasan](/repos/betagouv/sylvasan) et [patrinotes](/repos/betagouv/patrinotes).
-- Lancements et Refontes : Passage en version stable (V1) pour [slack2tchap](/repos/betagouv/slack2tchap) et refonte du système d'autorisation pour [reva](/repos/betagouv/reva).
+- **Refontes architecturales et technologiques** : Migration vers FrankenPHP pour [mon-indemnisation-justice](/repos/betagouv/mon-indemnisation-justice) et passage à PostgreSQL/Dokku pour [turgot-fiches-collectivites](/repos/betagouv/turgot-fiches-collectivites).
+- **Évolutions de la cartographie et des données SIG** : Mise à jour majeure des données réglementaires et de l'interface cartographique pour [nitrates](/repos/betagouv/nitrates), et intégration de nouvelles sources de données de logements pour [mle-back](/repos/betagouv/mle-back).
+- **Modernisation des outils de gestion** : Introduction de la gestion par groupes et de nouveaux rôles de supervision dans [mon-service-securise](/repos/betagouv/mon-service-securise).
 
 ## Dépôts les plus actifs
-- [turgot-fiches-collectivites](/repos/betagouv/turgot-fiches-collectivites) : Rebranding complet et refonte architecturale profonde.
-- [service-national-universel](/repos/betagouv/service-national-universel) : Travaux intensifs sur la sécurité et l'expérience utilisateur.
-- [nitrates](/repos/betagouv/nitrates) : Évolutions majeures de la cartographie et mise à jour réglementaire.
-- [mon-entreprise](/repos/betagouv/mon-entreprise) : Mise en conformité territoriale et refonte de l'interface.
-- [portail-rse](/repos/betagouv/portail-rse) : Intégration de l'IA de nouvelle génération et optimisation infrastructurelle.
-- [pitchou](/repos/betagouv/pitchou) : Montée de version majeure des frameworks et nouveaux outils métier.
+- [transport-sanitaire](/repos/betagouv/transport-sanitaire) : Refonte complète de l'architecture (v10) et modernisation de l'interface utilisateur.
+- [turgot-fiches-collectivites](/repos/betagouv/turgot-fiches-collectivites) : Changement d'identité (Fico), refonte technique et nouveaux formats d'export.
+- [nitrates](/repos/betagouv/nitrates) : Amélioration de l'ergonomie cartographique et mise en conformité réglementaire.
+- [portail-rse](/repos/betagouv/portail-rse) : Déploiement de la version 2 de l'analyse par intelligence artificielle.
+- [mon-service-securise](/repos/betagouv/mon-service-securise) : Évolutions fonctionnelles majeures sur la gestion des périmètres et intégration CRM.
+- [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives) : Travaux importants sur la sécurité et les nouveaux filtres d'administration.

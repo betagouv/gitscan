@@ -1,28 +1,22 @@
-# Synthèse d'activité : proconnect-gouv (du 01/09 au 20/10)
+# Synthèse d'activité : proconnect-gouv (période récente)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par un renforcement majeur de la sécurité des accès, notamment via le déploiement de l'authentification multi-facteur (MFA) dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) et l'amélioration des processus de récupération de compte dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite). Ces évolutions visent à accroître la robustesse de la plateforme et la confiance des utilisateurs.
-
-Parallèlement, l'écosystème s'enrichit de nouveaux outils pour faciliter le développement et les tests, tels que [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme) pour l'intégration visuelle, [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) pour les tests OIDC, et [mx-resolver](/repos/proconnect-gouv/mx-resolver). L'expérience utilisateur est également au cœur des efforts avec des améliorations de navigation et d'affichage dans [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) et [monitoring-pinger](/repos/proconnect-gouv/monitoring-pinger).
+L'activité récente de l'organisation est marquée par un renforcement important de la sécurité et de la fiabilité des services, notamment avec l'intégration de l'authentification multi-facteur (MFA) dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires). L'écosystème s'enrichit également de nouveaux outils de développement et d'infrastructure, tels que le thème visuel [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme), le service de résolution DNS [mx-resolver](/repos/proconnect-gouv/mx-resolver) et le buildpack [bun-buildpack](/repos/proconnect-gouv/bun-buildpack).
 
 ## Sécurité
-- Mise en œuvre de l'authentification multi-facteur (MFA) par envoi de codes OTP dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
-- Introduction de codes de récupération et de confirmations par email dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Renforcement de la limitation de débit (rate limiting) dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Application du principe de moindre privilège sur les scopes de rôles dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
+- Intégration de l'authentification multi-facteur (MFA) pour sécuriser les accès dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) et [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Renforcement de la protection des comptes via la mise en place de codes de récupération et de confirmations par email dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Amélioration de la sécurité des accès par l'application du principe de moindre privilège, la limitation de débit et la restriction des scopes dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite), [api-partenaires](/repos/proconnect-gouv/api-partenaires) et [federation](/repos/proconnect-gouv/federation).
 - Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).
 
 ## Autres changements notables
-- Déploiement de logs structurés (OpenTelemetry) et de traçage d'audit complet dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Mise à jour majeure de l'infrastructure (Node.js et PostgreSQL) pour [hyyypertool](/repos/proconnect-gouv/hyyypertool).
-- Simplification de l'architecture par la suppression de NestJS dans [federation](/repos/proconnect-gouv/federation).
-- Automatisation de la récupération et de la mise en cache de l'annuaire DILA dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- Migration vers l'ORM Drizzle et optimisation des transactions dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Amélioration des processus CI/CD et de la lisibilité des logs dans [release-action](/repos/proconnect-gouv/release-action).
+- **Observabilité et traçabilité** : Déploiement de logs structurés (OpenTelemetry, JSON) et de systèmes de journalisation avancés dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite), [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) et [hyyypertool](/repos/proconnect-gouv/hyyypertool).
+- **Modernisation et refonte technique** : Migration vers le framework Hono dans [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client), passage à Drizzle dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et migration de la suite de tests vers Buncept dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).
+- **Outils de développement** : Amélioration majeure de la gestion des releases et de la lisibilité des changelogs dans [release-action](/repos/proconnect-gouv/release-action).
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Évolutions majeures sur la gestion des comptes, la sécurité et l'observabilité.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Focus sur l'authentification MFA et l'enrichissement de la documentation technique.
-- [api-partenaires](/repos/proconnect-gouv/api-partenaires) : Amélioration de la validation des domaines et de l'intégrité des données.
-- [release-action](/repos/proconnect-gouv/release-action) : Optimisation des processus de release et de la gestion des branches.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Mise à jour d'infrastructure et amélioration de la visibilité des données.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Évolutions majeures sur la sécurité, l'observabilité et la gestion des comptes.
+- [federation](/repos/proconnect-gouv/federation) : Améliorations du workflow XDA, de l'authentification et de la gestion de données.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Focus sur le MFA et l'amélioration de la documentation technique.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Travaux importants sur la journalisation et la migration de l'infrastructure de tests.
+- [release-action](/repos/proconnect-gouv/release-action) : Refonte complète de la génération des notes de mise à jour.

@@ -1,21 +1,23 @@
-# Synthèse d'activité : agora-gouv (du 02/07 au 23/09)
+# Synthèse d'activité : agora-gouv (du 10/07 au 27/08)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la stabilisation des infrastructures. Les évolutions majeures incluent une meilleure fluidité du partage de contenu sur mobile [agora-app](/repos/agora-gouv/agora-app), une interface plus intuitive [agora-front](/repos/agora-gouv/agora-front) et des outils d'administration renforcés pour la gestion des contenus et des questions [agora-back](/repos/agora-gouv/agora-back) et [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi).
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la robustesse de l'infrastructure. Les utilisateurs bénéficieront d'une meilleure clarté des informations (notamment sur l'identité des auteurs des réponses) et de fonctionnalités de partage plus fluides sur l'application mobile [agora-app](/repos/agora-gouv/agora-app). 
 
-Ces changements visent à rendre la plateforme plus robuste, plus facile à modérer et plus conforme aux standards de design officiels, tout en optimisant la gestion technique des certificats de sécurité.
+En parallèle, les outils d'administration ont été enrichis pour permettre une modération plus précise et une gestion de contenu facilitée [agora-back](/repos/agora-gouv/agora-back) [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi).
 
 ## Sécurité
-- Sécurisation de l'accès à l'instance Metabase via un filtrage par adresse IP [agora-metabase-scalingo](/repos/agora-gouv/agora-metabase-scalingo).
-- Automatisation et amélioration de la gestion des certificats SSL (via ACME et Sectigo) pour garantir la continuité de service [agora-front](/repos/agora-gouv/agora-front), [agora-back](/repos/agora-gouv/agora-back) et [agora-app](/repos/agora-gouv/agora-app).
+- Renforcement de la sécurité réseau via le filtrage par adresse IP sur l'instance Metabase [agora-metabase-scalingo](/repos/agora-gouv/agora-metabase-scalingo).
+- Automatisation de la gestion des certificats SSL (via Sectigo et le protocole ACME) pour sécuriser les échanges sur l'application, le backend et le frontend [agora-app](/repos/agora-gouv/agora-app) [agora-back](/repos/agora-gouv/agora-back) [agora-front](/repos/agora-gouv/agora-front).
 
 ## Autres changements notables
 - Migration majeure de la plateforme de gestion de contenu vers Strapi V5 [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi).
-- Refonte technique de l'algorithme de calcul des tendances [agora-back](/repos/agora-gouv/agora-back).
-- Optimisations d'infrastructure et de performance, notamment sur la gestion de la mémoire Node.js, la configuration Nginx et le cache Redis [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) et [agora-back](/repos/agora-gouv/agora-back).
-- Alignement de l'interface de l'application mobile avec le Design System Français (DSFR) [agora-app](/repos/agora-gouv/agora-app).
+- Optimisation des performances et de la stabilité via l'ajustement des configurations Nginx et de la mémoire Node.js [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi).
+- Refonte de l'algorithme de calcul des tendances [agora-back](/repos/agora-gouv/agora-back).
+- Mise en conformité de l'interface mobile avec le Design System Français (DSFR) [agora-app](/repos/agora-gouv/agora-app).
+- Simplification de l'infrastructure de gestion des certificats SSL en migrant la configuration vers l'application Nuxt [agora-front](/repos/agora-gouv/agora-front).
 
 ## Dépôts les plus actifs
-- [agora-back](/repos/agora-gouv/agora-back) : Évolutions majeures sur les fonctionnalités d'administration, l'API et les algorithmes de tendances.
-- [agora-app](/repos/agora-gouv/agora-app) : Améliorations de l'expérience utilisateur mobile et de la conformité visuelle.
-- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Travaux de migration de version majeure et d'optimisation des performances serveur.
+- [agora-back](/repos/agora-gouv/agora-back) : Évolutions majeures sur la modération, la gestion des contenus et les algorithmes de tendances.
+- [agora-app](/repos/agora-gouv/agora-app) : Améliorations de l'expérience utilisateur mobile et mise en conformité visuelle.
+- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Migration technologique vers Strapi V5 et optimisations de performance.
+- [agora-front](/repos/agora-gouv/agora-front) : Améliorations de l'interface web et simplification de la gestion des certificats.
