@@ -1,32 +1,38 @@
 .
 ├── .github
 │   ├── actionlint.yaml
-│   └── workflows
-│       ├── attest-docker.yml
-│       ├── attest-helm.yml
-│       ├── build-docker.yml
-│       ├── cd.yml
-│       ├── check-jobs.yml
-│       ├── ci.yml
-│       ├── clean-cache.yml
-│       ├── clean-images.yml
-│       ├── dispatch-helm-chart.yml
-│       ├── lint-commits.yml
-│       ├── lint-helm-schema.yml
-│       ├── lint-helm.yml
-│       ├── lint-yaml.yml
-│       ├── release-app.yml
-│       ├── release-helm-local.yml
-│       ├── release-helm.yml
-│       ├── release-npm.yml
-│       ├── scan-gitleaks.yml
-│       ├── scan-sonarqube.yml
-│       ├── scan-trivy.yml
-│       ├── sync-cpin.yml
-│       ├── sync-prerelease-branch.yml
-│       ├── test-docker.yml
-│       ├── test-helm.yml
-│       └── update-helm-chart.yml
+│   ├── workflows
+│   │   ├── attest-docker.yml
+│   │   ├── attest-helm.yml
+│   │   ├── build-docker.yml
+│   │   ├── build-python.yml
+│   │   ├── cd.yml
+│   │   ├── check-jobs.yml
+│   │   ├── ci.yml
+│   │   ├── clean-cache.yml
+│   │   ├── clean-images.yml
+│   │   ├── dispatch-helm-chart.yml
+│   │   ├── lint-commits.yml
+│   │   ├── lint-helm-schema.yml
+│   │   ├── lint-helm.yml
+│   │   ├── lint-python.yml
+│   │   ├── lint-yaml.yml
+│   │   ├── release-app.yml
+│   │   ├── release-helm-local.yml
+│   │   ├── release-helm.yml
+│   │   ├── release-npm.yml
+│   │   ├── release-pypi.yml
+│   │   ├── scan-gitleaks.yml
+│   │   ├── scan-sonarqube.yml
+│   │   ├── scan-trivy.yml
+│   │   ├── scan-zizmor.yml
+│   │   ├── sync-cpin.yml
+│   │   ├── sync-prerelease-branch.yml
+│   │   ├── test-docker.yml
+│   │   ├── test-helm.yml
+│   │   ├── test-python.yml
+│   │   └── update-helm-chart.yml
+│   └── zizmor.yml
 ├── .release-please-manifest.json
 ├── CHANGELOG.md
 ├── README.md
@@ -37,14 +43,21 @@
 │       ├── app-token-mints.test.sh
 │       ├── attest-helm-charts.test.sh
 │       ├── build-docker-credentials.test.sh
+│       ├── build-docker-merge-buildx.test.sh
 │       ├── build-docker-oci-metadata.test.sh
+│       ├── build-docker-push-plan.test.sh
+│       ├── build-docker-short-sha.test.sh
 │       ├── check-jobs-results.test.sh
 │       ├── clean-cache-refs.test.sh
 │       ├── clean-images-guard.test.sh
+│       ├── command-inputs.test.sh
 │       ├── credential-validation.test.sh
 │       ├── dispatch-helm-chart.test.sh
+│       ├── helm-docs-go.test.sh
 │       ├── lib.sh
+│       ├── lint-commits-config.test.sh
 │       ├── permission-union.test.sh
+│       ├── python-workflows.test.sh
 │       ├── release-app-automerge.test.sh
 │       ├── release-app-manifest-sync.test.sh
 │       ├── release-app-prerelease-anchor.test.sh
@@ -52,14 +65,18 @@
 │       ├── release-app-release-assertions.test.sh
 │       ├── release-helm-channels.test.sh
 │       ├── release-helm-local-publish.test.sh
+│       ├── release-helm-oci-only.test.sh
 │       ├── release-helm-publish.test.sh
 │       ├── release-helm-signing.test.sh
 │       ├── release-npm-provenance.test.sh
 │       ├── run.sh
 │       ├── scan-report-link.test.sh
+│       ├── scan-sarif-upload.test.sh
+│       ├── scan-zizmor-args.test.sh
 │       ├── shell-declared.test.sh
 │       ├── sync-prerelease-branch-rebase.test.sh
 │       ├── sync-prerelease-branch.test.sh
+│       ├── test-helm-charts-gate.test.sh
 │       ├── test-helm-target-branch.test.sh
 │       ├── update-helm-chart-automerge.test.sh
 │       ├── update-helm-chart-injection.test.sh
@@ -78,13 +95,17 @@
 │       ├── 11-lint-helm.md
 │       ├── 12-lint-helm-schema.md
 │       ├── 14-lint-yaml.md
+│       ├── 15-lint-python.md
 │       ├── 20-test-helm.md
+│       ├── 22-test-python.md
 │       ├── 24-test-docker.md
 │       ├── 30-build-docker.md
 │       ├── 31-attest-docker.md
+│       ├── 32-build-python.md
 │       ├── 40-scan-sonarqube.md
 │       ├── 41-scan-trivy.md
 │       ├── 42-scan-gitleaks.md
+│       ├── 45-scan-zizmor.md
 │       ├── 50-release-app.md
 │       ├── 51-release-helm.md
 │       ├── 52-release-helm-local.md
@@ -93,6 +114,7 @@
 │       ├── 55-release-npm.md
 │       ├── 56-attest-helm.md
 │       ├── 57-sync-prerelease-branch.md
+│       ├── 58-release-pypi.md
 │       ├── 70-clean-cache.md
 │       ├── 71-clean-images.md
 │       ├── 72-sync-cpin.md
@@ -113,4 +135,4 @@
 │       └── signed-commit
 ├── release-please-config.json
 └── renovate.json
-14 directories, 101 files
+14 directories, 123 files

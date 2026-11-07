@@ -1,81 +1,72 @@
 {
   "url": "https://github.com/dnum-mi/fabnum-cicd",
   "name": "fabnum-cicd",
-  "description": "Ce dépôt centralise les workflows GitHub Actions réutilisables et les git hooks pour maintenir la cohérence et la qualité du code dans tous les dépôts de la Fabrique Numérique.",
-  "language": "TypeScript",
+  "description": "Ce dépôt centralise les workflows GitHub Actions réutilisables et les git hooks pour la Fabrique Numérique. Il permet d'automatiser le linting, les tests, les builds et les releases pour garantir la qualité et la cohérence du code.",
+  "language": "Python",
   "features": [
     "Tests & QA",
     "Sécurité & Conformité",
-    "Infrastructure & Stockage",
     "Collaboration & Workflow",
-    "Suivi & Traçabilité",
-    "Monitoring & Logs"
+    "Suivi & Traçabilité"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "GitHub Actions",
-    "Docker",
     "Helm",
+    "Docker",
+    "uv",
     "SonarQube",
     "Trivy",
     "Gitleaks",
-    "Cosign",
-    "NPM",
-    "ESLint",
-    "Chart-testing"
+    "Zizmor",
+    "release-please",
+    "chart-releaser",
+    "ESLint"
   ],
   "components": [
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
     "Tests",
-    "Scripts & Utilitaires"
+    "Scripts & Utilitaires",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "ESLint",
-    "yamllint",
-    "chart-testing",
-    "kind"
-  ],
+  "tests": "Utilise divers outils selon le langage : uv pour Python, eslint pour JS/TS, chart-testing pour Helm, et des tests d'installation dans des clusters Kind.",
   "workflows": [
     "lint-commits.yml",
     "lint-helm.yml",
     "lint-helm-schema.yml",
     "lint-yaml.yml",
+    "lint-python.yml",
     "test-helm.yml",
     "test-docker.yml",
+    "test-python.yml",
     "build-docker.yml",
+    "build-python.yml",
     "attest-docker.yml",
     "scan-sonarqube.yml",
     "scan-trivy.yml",
     "scan-gitleaks.yml",
+    "scan-zizmor.yml",
     "release-app.yml",
     "release-helm.yml",
-    "release-helm-local.yml",
-    "update-helm-chart.yml",
-    "dispatch-helm-chart.yml",
     "release-npm.yml",
-    "attest-helm.yml",
-    "sync-prerelease-branch.yml",
-    "clean-cache.yml",
-    "clean-images.yml",
-    "sync-cpin.yml",
-    "check-jobs.yml"
+    "release-pypi.yml"
   ],
-  "lastActivity": "2026-10-14T10:32:59+02:00",
-  "status": "maintained",
-  "license": null,
+  "lastActivity": "2026-10-28T00:00:00Z",
+  "status": "active",
   "hasDocumentation": true,
   "tags": [
     "Git & DevOps",
     "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
     "Tests & Qualité",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Python",
+    "Documentation"
   ]
 }

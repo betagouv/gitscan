@@ -1,18 +1,30 @@
-## Changelog : fabnum-cicd (30 derniers jours, au 14 octobre 2026)
+## Changelog : fabnum-cicd (30 derniers jours, au 04/11/2026)
 
 ### Résumé
-Ce mois-ci, le projet a bénéficié d'une mise à jour majeure via la synchronisation avec la version 0.40.0 de l'amont. Les capacités de construction Docker ont été enrichies de standards OCI, et la fiabilité des processus de publication ainsi que la robustesse de la chaîne CI/CD ont été renforcées.
+Ce mois-ci, le projet a connu une phase importante de restructuration et d'optimisation. Les workflows Python ont été segmentés pour plus de flexibilité, et de nouveaux outils d'audit de sécurité ont été intégrés. Les performances de la chaîne CI ont été améliorées pour réduire les temps d'attente, tout en renforçant la stabilité du processus de publication des versions.
 
 ### Évolutions fonctionnelles
-- **Amélioration du workflow `build-docker`** : ajout de labels et d'annotations OCI standards, avec la possibilité pour les utilisateurs de désactiver ce jeu de données ([92fd81b](https://github.com/dnum-mi/fabnum-cicd/commit/92fd81b5a65ca)).
+- **Nouveaux workflows réutilisables** : Ajout de workflows dédiés pour le test Python (`test-python`) et la publication sur PyPI (`release-pypi`).
+- **Audit de sécurité** : Introduction d'un workflow d'audit (`scan-zizmor`) pour vérifier la conformité et la sécurité des workflows GitHub Actions.
 
 ### Évolutions techniques
-- **Synchronisation et maintenance** : mise à jour majeure des workflows réutilisables avec la version 0.40.0 de l'amont ([96fcf6d](https://github.com/dnum-mi/fabnum-cicd/commit/96fcf6d475e236fb3e0e0b9f99b918e2b6adbb2c)) et intégration de corrections de revue ([e0665a3](https://github.com/dnum-mi/fabnum-cicd/commit/e0665a32c7936465e499e1ee39201a2a2284ea07)).
-- **Pipeline CI/CD** : centralisation de la validation de la pipeline derrière un contrôle unique obligatoire ([84859d9](https://github.com/dnum-mi/fabnum-cicd/commit/84859d9)).
-- **Gestion des releases** :
-    - Optimisation du workflow `sync-prerelease-branch` pour une meilleure gestion des conflits lors des rebase, ancrage de `release-please` et support des tokens GitHub App ([d94c3d6](https://github.com/dnum-mi/fabnum-cicd/commit/d94c3d6e298b3eefe4572956c8f6d72fdb1d8f22), [8e7c553](https://github.com/dnum-mi/fabnum-cicd/commit/8e7c5532aa85a19d65ba08711055e38a788fb0b5)).
-    - Amélioration du workflow `release-app` pour éviter la création de branches de pré-publication identiques ([8e8901b](https://github.com/dnum-mi/fabnum-cicd/commit/8e8901b1436f2f0893d9f53b986dfcf603238538)).
-- **Qualité et Tests** : extension de la couverture de tests pour les nouveaux workflows synchronisés ([7139e47](https://github.com/dnum-mi/fabnum-cicd/commit/7139e47)) et correction de l'environnement d'exécution des tests ([225bdf4](https://github.com/dnum-mi/fabnum-cicd/commit/225bdf4)).
+- **Optimisation des performances** :
+    - Exécution des suites de tests en parallèle avec annulation automatique des processus obsolètes.
+    - Accélération du scan de sécurité en ne bloquant plus l'exécution sur le traitement des fichiers SARIF par GitHub.
+    - Optimisation des tests Helm en ne créant le cluster `kind` que si un chart doit effectivement être installé.
+    - Utilisation de l'outil Go déjà présent sur les runners pour la génération de `helm-docs`.
+- **Architecture et CI/CD** :
+    - Refactorisation du workflow Python : découpage en quatre étapes distinctes (lint, test, build et release) pour une meilleure granularité.
+    - Amélioration du build Docker : les builds mono-job sont désormais poussés directement au lieu de passer par une étape de fusion.
+    - Synchronisation majeure des workflows réutilisables avec la version 0.40.0 de l'upstream.
+    - Centralisation de la validation de la pipeline derrière un check unique obligatoire.
+- **Corrections et stabilité** :
+    - Stabilisation du processus de synchronisation des branches de pré-release (gestion des ancres de commit et des conflits de fichiers de release).
+    - Correction du linting des commits pour supporter les modules ES.
+    - Amélioration de la sécurité et de la fiabilité de l'exécution des commandes appelantes dans les workflows.
+    - Correction du processus de release Helm pour respecter la configuration de création de release.
+    - Rendu des git-hooks exécutables.
 
 ### Autres changements
-- Mise à jour de la documentation en français suite à la synchronisation avec l'amont ([48e0260](https://github.com/dnum-mi/fabnum-cicd/commit/48e0260)).
+- **Documentation** : Mise à jour de la documentation française, ajout de conseils sur les stratégies de versioning (pinning) et de la documentation sur la compatibilité avec les releases immuables pour Helm.
+- **Configuration** : Durcissement des règles de linting YAML pour exiger une indentation de deux espaces.

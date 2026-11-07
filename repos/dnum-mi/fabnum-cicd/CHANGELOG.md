@@ -1,5 +1,101 @@
 # Changelog
 
+## [0.25.3](https://github.com/dnum-mi/fabnum-cicd/compare/v0.25.2...v0.25.3) (2026-10-28)
+
+
+### Bug Fixes
+
+* **sync-prerelease-branch:** keep a single anchor commit on the prerelease branch ([652c7b0](https://github.com/dnum-mi/fabnum-cicd/commit/652c7b00475ccbd202a46f7cb0276fd72a64420d))
+
+
+### Dependencies
+
+* **deps:** update astral-sh/setup-uv to v10.3.3 ([4bf884c](https://github.com/dnum-mi/fabnum-cicd/commit/4bf884c06dacbedaddab62e89fc3ee53280ade36))
+
+## [0.25.2](https://github.com/dnum-mi/fabnum-cicd/compare/v0.25.1...v0.25.2) (2026-10-28)
+
+
+### Dependencies
+
+* **deps:** update chart-releaser to v1.9.0 ([edd408a](https://github.com/dnum-mi/fabnum-cicd/commit/edd408a8921cd97f474f287912711c982e6e4acf))
+* **deps:** update helm/chart-releaser-action to v1.8.0 ([ab5ff44](https://github.com/dnum-mi/fabnum-cicd/commit/ab5ff44ac32ce2f232d593aef557a2dd4de98d69))
+* **deps:** update sonarsource/sonarqube-scan-action to v8.4.0 ([f57fb1b](https://github.com/dnum-mi/fabnum-cicd/commit/f57fb1b8d149b127cec52bd8df395cd5aead9899))
+
+## [0.25.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.25.0...v0.25.1) (2026-10-27)
+
+
+### Bug Fixes
+
+* **lint-commits:** generate the commitlint config as an ES module ([4e1d3a1](https://github.com/dnum-mi/fabnum-cicd/commit/4e1d3a16ef7dd38de91453a36527604597acfb5e))
+* **lint-commits:** load the generated commitlint config in module packages ([f323736](https://github.com/dnum-mi/fabnum-cicd/commit/f3237360cddf0d643be113ad60a2b6630b8cab19))
+
+## [0.25.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.24.1...v0.25.0) (2026-10-26)
+
+
+### Features
+
+* **build-docker:** push single-job builds directly instead of merging ([19049b2](https://github.com/dnum-mi/fabnum-cicd/commit/19049b23bf161a64655ec8f0da8853088ddfd83d))
+
+
+### Performance Improvements
+
+* **scan:** do not wait for GitHub to process an uploaded SARIF file ([fbfdc80](https://github.com/dnum-mi/fabnum-cicd/commit/fbfdc80df25803743ee2206bc38e1b60779bda2d))
+* **test-helm:** create the kind cluster only when there is a chart to install ([156876a](https://github.com/dnum-mi/fabnum-cicd/commit/156876ac4abe359e26f813e58e47619280bd5377))
+* **workflows:** build helm-docs with the Go the runner already has ([049699f](https://github.com/dnum-mi/fabnum-cicd/commit/049699fc14eafe8cf81353e5fe06e332b2deb0b8))
+
+
+### Dependencies
+
+* **deps:** update docker/login-action to v4.7.0 ([65e1f32](https://github.com/dnum-mi/fabnum-cicd/commit/65e1f32be875286d5d0803dbf1676c4deb14e783))
+
+## [0.24.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.24.0...v0.24.1) (2026-10-22)
+
+
+### Dependencies
+
+* **deps:** update actions/setup-python to v7.1.0 ([5699217](https://github.com/dnum-mi/fabnum-cicd/commit/5699217369ada08106cf4567e1a10597708eda39))
+* **deps:** update astral-sh/setup-uv to v10.3.2 ([6c44ef9](https://github.com/dnum-mi/fabnum-cicd/commit/6c44ef952c121b12bc509b318caac4da01f8824a))
+
+## [0.24.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.23.1...v0.24.0) (2026-10-21)
+
+
+### Features
+
+* **scan-zizmor:** add a reusable workflow auditing workflows with zizmor ([ba67d76](https://github.com/dnum-mi/fabnum-cicd/commit/ba67d76d15bed5d7acc6fdbffcdfb686d5de9ca1))
+* **workflows:** add test-python and release-pypi reusable workflows ([007a933](https://github.com/dnum-mi/fabnum-cicd/commit/007a9331dea32ca80f0c67b06468bc1a1ddcdda7))
+
+
+### Bug Fixes
+
+* **release-app:** accept a release commit an earlier run already tagged ([1977572](https://github.com/dnum-mi/fabnum-cicd/commit/197757288305df07434e7fdec021cddc30272195))
+* **release-helm:** create no release when CREATE_GITHUB_RELEASE is off ([89d3fb4](https://github.com/dnum-mi/fabnum-cicd/commit/89d3fb4707c159680165509b5f63e9e04225e6f1))
+* **workflows:** declare persist-credentials on every checkout ([bb2caba](https://github.com/dnum-mi/fabnum-cicd/commit/bb2caba66082aaf10dbf7ba0d29abed34e4a53d6))
+* **workflows:** run caller-supplied commands through env and eval ([3de7e04](https://github.com/dnum-mi/fabnum-cicd/commit/3de7e040ca895c0520ac60b1ecfc2e1b91f92dd6))
+
+
+### Code Refactoring
+
+* **workflows:** split the Python workflow into lint, test, build and release ([9890118](https://github.com/dnum-mi/fabnum-cicd/commit/989011827b4085dc6c043505c70598161a315cfd))
+
+
+### Dependencies
+
+* **deps:** update astral-sh/setup-uv to v10 ([99dda1c](https://github.com/dnum-mi/fabnum-cicd/commit/99dda1cf6712b23d1f53a7ceee2a0869842a0824))
+* **deps:** update github/codeql-action to v4.39.1 ([92a93f3](https://github.com/dnum-mi/fabnum-cicd/commit/92a93f36592afb5404ff2c22e3d0b1315019e652))
+* **deps:** update pypa/gh-action-pypi-publish to v1.14.3 ([1ecdb70](https://github.com/dnum-mi/fabnum-cicd/commit/1ecdb700100b1aba62b7f1b8ca46d380aa7e2985))
+
+## [0.23.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.23.0...v0.23.1) (2026-10-20)
+
+
+### Bug Fixes
+
+* **sync-prerelease-branch:** let the app token write workflows ([f3d7056](https://github.com/dnum-mi/fabnum-cicd/commit/f3d7056f00f43c4584455a0bf12ee594f0326b0f))
+
+
+### Dependencies
+
+* **deps:** update github/codeql-action to v4.39.0 ([ca0d9b7](https://github.com/dnum-mi/fabnum-cicd/commit/ca0d9b7236436cc32a66ba624f0571e5433accc6))
+
 ## [0.23.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.22.0...v0.23.0) (2026-10-13)
 
 
