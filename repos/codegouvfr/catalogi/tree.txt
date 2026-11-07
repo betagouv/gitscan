@@ -66,6 +66,7 @@
 │   │   │   │   │   │   └── getOrganisation.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── comptoirDuLibre
+│   │   │   │   │   ├── findByRepositoryUrl.ts
 │   │   │   │   │   ├── getCDLExternalData.ts
 │   │   │   │   │   ├── getCDLFormData.ts
 │   │   │   │   │   ├── getCDLSoftwareOptions.ts
@@ -147,6 +148,7 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       └── HAL.ts
+│   │   │   │   │   ├── findByRepositoryUrl.ts
 │   │   │   │   │   ├── getHalSoftware.test.ts
 │   │   │   │   │   ├── getHalSoftwareExternalData.ts
 │   │   │   │   │   ├── getHalSoftwareOptions.ts
@@ -154,6 +156,8 @@
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── resolveAdapter.ts
+│   │   │   │   ├── resolveRepository.ts
+│   │   │   │   ├── resolveRepository.unit.test.ts
 │   │   │   │   ├── ror.org
 │   │   │   │   │   ├── API
 │   │   │   │   │   │   ├── getOrganization.test.ts
@@ -171,6 +175,7 @@
 │   │   │   │   │   │   └── wikimedia.ts
 │   │   │   │   │   ├── commonsImage.test.ts
 │   │   │   │   │   ├── commonsImage.ts
+│   │   │   │   │   ├── findByRepositoryUrl.ts
 │   │   │   │   │   ├── getOrganization.ts
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   ├── getWikidataSoftware.test.ts
@@ -201,6 +206,7 @@
 │   │   │   │   ├── GetSoftwareExternalData.ts
 │   │   │   │   ├── GetSoftwareExternalDataOptions.ts
 │   │   │   │   ├── GetSoftwareFormData.ts
+│   │   │   │   ├── ResolveRepository.ts
 │   │   │   │   ├── SearchOrganization.ts
 │   │   │   │   └── SourceGateway.ts
 │   │   │   ├── types
@@ -217,6 +223,8 @@
 │   │   │   │   │   └── refreshSession.ts
 │   │   │   │   ├── createSoftware.test.ts
 │   │   │   │   ├── createSoftware.ts
+│   │   │   │   ├── discoverSourcesByRepository.ts
+│   │   │   │   ├── discoverSourcesByRepository.unit.test.ts
 │   │   │   │   ├── ensureForgeSource.test.ts
 │   │   │   │   ├── ensureForgeSource.ts
 │   │   │   │   ├── getAttributeDefinitions.ts
@@ -233,6 +241,9 @@
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── refreshExternalData.test.ts
 │   │   │   │   ├── refreshExternalData.ts
+│   │   │   │   ├── repositoryCheckCache.ts
+│   │   │   │   ├── resolveRepoUrl.ts
+│   │   │   │   ├── resolveRepoUrl.unit.test.ts
 │   │   │   │   ├── resolveSoftwareFormDataProtection.ts
 │   │   │   │   ├── sanitizeSoftwareFormDataCustomAttributes.ts
 │   │   │   │   ├── softwareErrors.ts
@@ -294,7 +305,8 @@
 │   │   │   ├── repoAnalyser.test.ts
 │   │   │   ├── repoAnalyser.ts
 │   │   │   ├── sourceConfig.ts
-│   │   │   └── test.helpers.ts
+│   │   │   ├── test.helpers.ts
+│   │   │   └── ttlCache.ts
 │   │   └── types
 │   │       └── Catalogi.ts
 │   ├── tsconfig.json
@@ -1280,6 +1292,7 @@
 │   │   │   │   │   ├── SourceProvenanceModal.tsx
 │   │   │   │   │   ├── SourceProvenanceView.tsx
 │   │   │   │   │   ├── UsefulLinks.tsx
+│   │   │   │   │   ├── compareNames.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── softwareForm
@@ -1323,7 +1336,6 @@
 │   │   │   │   ├── LoadingFallback.tsx
 │   │   │   │   ├── LogoURLButton.tsx
 │   │   │   │   ├── MarkdownPage.tsx
-│   │   │   │   ├── OperatingSystemsTable.tsx
 │   │   │   │   ├── PromptForOrganization.tsx
 │   │   │   │   ├── SearchInput.tsx
 │   │   │   │   ├── SearchMultiInput.tsx
@@ -1345,4 +1357,4 @@
 │   ├── tsconfig.json
 │   └── vite.config.ts
 └── yarn-error.log
-140 directories, 1248 files
+140 directories, 1260 files
