@@ -1,35 +1,49 @@
 .
-├── .eslintrc.json
 ├── .github
 │   └── workflows
 │       └── node.js.yml
 ├── .gitignore
 ├── .nvmrc
+├── .oxlintrc.json
 ├── LICENSE
 ├── ONBOARDING.md
 ├── Procfile
 ├── README.md
-├── app.js
+├── app.ts
 ├── calculations
-│   ├── constants.js
+│   ├── catenr
+│   │   ├── catenr.test.ts
+│   │   ├── constants.ts
+│   │   └── index.ts
+│   ├── constants.ts
 │   ├── flux
-│   │   ├── agriculturalPractices.js
-│   │   ├── flux.test.js
-│   │   ├── index.js
-│   │   ├── integration.test.js
-│   │   └── woodProducts.js
-│   ├── locations.js
-│   ├── locations.test.js
+│   │   ├── agriculturalPractices.ts
+│   │   ├── flux.test.ts
+│   │   ├── index.ts
+│   │   ├── integration.test.ts
+│   │   └── woodProducts.ts
+│   ├── locations.test.ts
+│   ├── locations.ts
+│   ├── math.ts
 │   └── stocks
-│       ├── index.js
-│       ├── stocks.test.js
-│       └── woodProducts.js
+│       ├── index.ts
+│       ├── stocks.test.ts
+│       └── woodProducts.ts
 ├── csvtojson.sh
 ├── data
-│   ├── communes.js
+│   ├── catenr
+│   │   ├── cinetiques.json
+│   │   └── duree-stock-biomasse.json
+│   ├── catenr.ts
+│   ├── communes.ts
+│   ├── csv.ts
 │   ├── dataByCommune
 │   │   ├── biomass-hors-forets.csv
 │   │   ├── carbone-haies.csv
+│   │   ├── citepa-flux-2004-2014.csv
+│   │   ├── citepa-flux-2013-2023.csv
+│   │   ├── citepa-surfaces-2021.csv
+│   │   ├── citepa-surfaces-2023.csv
 │   │   ├── clc18-change.csv
 │   │   ├── clc18.csv
 │   │   ├── communes.json
@@ -41,42 +55,47 @@
 │   │   ├── surface-foret.csv
 │   │   └── zpc.csv
 │   ├── dataByEpci
-│   │   ├── bilan-carbone-foret-par-localisation.csv
-│   │   ├── biomasse-forets-peupleraies.csv
+│   │   ├── bilan-carbone-foret-par-localisation.IGN-2022.csv
+│   │   ├── bilan-carbone-foret-par-localisation.IGN-2026.csv
 │   │   ├── epci.csv
 │   │   ├── epcis.json
 │   │   ├── france.json
 │   │   └── proportion-usage-bois-par-region.csv
-│   ├── flux.js
-│   ├── index.js
-│   ├── shared.js
-│   ├── stocks.js
-│   └── tests
-│       ├── communes.test.js
-│       ├── flux.test.js
-│       ├── forest.test.js
-│       ├── index.test.js
-│       ├── shared.test.js
-│       └── stocks.test.js
-├── doc
-│   └── adr
-│       ├── 0001-enregistrer-decisions.md
-│       ├── 0002-stack.md
-│       ├── 0003-hébergement.md
-│       ├── 0004-application-structure.md
-│       ├── 0005-framework-de-test.md
-│       ├── 0006-choisir-linter.md
-│       ├── 0007-convertir-données-en-format-json.md
-│       ├── 0008-format-donnees-flux.md
-│       ├── 0009-pratiques-agricoles.md
-│       └── 0010-configuration-newsletter.md
+│   ├── flux.comparison.test.ts
+│   ├── flux.ts
+│   ├── index.ts
+│   ├── json.d.ts
+│   ├── shared.ts
+│   ├── stocks.ts
+│   ├── tests
+│   │   ├── communes.test.ts
+│   │   ├── flux.test.ts
+│   │   ├── forest.test.ts
+│   │   ├── index.test.ts
+│   │   ├── shared.test.ts
+│   │   └── stocks.test.ts
+│   └── types.ts
+├── docs
+│   ├── adr
+│   │   ├── 0001-enregistrer-decisions.md
+│   │   ├── 0002-stack.md
+│   │   ├── 0003-hébergement.md
+│   │   ├── 0004-application-structure.md
+│   │   ├── 0005-framework-de-test.md
+│   │   ├── 0006-choisir-linter.md
+│   │   ├── 0007-convertir-données-en-format-json.md
+│   │   ├── 0008-format-donnees-flux.md
+│   │   ├── 0009-pratiques-agricoles.md
+│   │   └── 0010-configuration-newsletter.md
+│   └── specs
+│       └── 2026-03-14-ign-comparison.md
 ├── front
 │   ├── handlers
-│   │   ├── excelExport.js
-│   │   ├── newsletter.js
-│   │   ├── shared.js
-│   │   └── territory.js
-│   ├── routes.js
+│   │   ├── excelExport.ts
+│   │   ├── newsletter.ts
+│   │   ├── shared.ts
+│   │   └── territory.ts
+│   ├── routes.ts
 │   ├── static
 │   │   ├── css
 │   │   │   ├── custom.css
@@ -85,6 +104,8 @@
 │   │   │   ├── communes_17122018.csv.json
 │   │   │   └── epci.csv.json
 │   │   └── images
+│   │       ├── catenr-emprises-eolien.png
+│   │       ├── catenr-emprises-pv.png
 │   │       └── logo_ALDO.png
 │   └── views
 │       ├── 404-epci.ejs
@@ -117,11 +138,13 @@
 │       └── territoire
 │           ├── agricultural-practices.ejs
 │           ├── beges.ejs
+│           ├── catenr.ejs
 │           ├── flux-grid.ejs
 │           ├── flux.ejs
 │           ├── fluxCalculations
 │           │   ├── agricultural-practices.ejs
 │           │   ├── forest-biomass.ejs
+│           │   ├── ign-comparison.ejs
 │           │   ├── simple.ejs
 │           │   ├── wood-harvest-flux.ejs
 │           │   ├── wood-harvest-portion.ejs
@@ -158,6 +181,7 @@
 │   │       ├── image (1).png
 │   │       ├── image (10).png
 │   │       ├── image (11).png
+│   │       ├── image (12).png
 │   │       ├── image (2).png
 │   │       ├── image (3).png
 │   │       ├── image (4).png
@@ -189,6 +213,8 @@
 │   ├── introduction
 │   │   ├── definitions.md
 │   │   └── sources.md
+│   ├── outil-catenr
+│   │   └── explications-methodologiques.md
 │   ├── pratiques-agricoles
 │   │   └── pratiques-agricoles.md
 │   └── stocks
@@ -198,8 +224,21 @@
 ├── package-lock.json
 ├── package.json
 ├── scripts
-│   ├── communes-calculations.js
-│   └── epci-post-processing.js
-├── sendinblue.js
-└── server.js
-34 directories, 170 files
+│   ├── communes-calculations.ts
+│   ├── epci-post-processing.ts
+│   ├── flux1-indicateurs.ts
+│   ├── generate-epci-utils.ts
+│   ├── generate-flux1-csv.ts
+│   ├── generate-flux1-epci-csv.ts
+│   ├── generate-flux2-csv.ts
+│   ├── generate-flux2-epci-csv.ts
+│   ├── generate-flux3-csv.ts
+│   ├── generate-flux3-epci-csv.ts
+│   ├── generate-stocks-csv.ts
+│   ├── generate-stocks-epci-csv.ts
+│   └── shared.ts
+├── sendinblue.ts
+├── server.ts
+├── tsconfig.json
+└── vitest.config.ts
+38 directories, 205 files
