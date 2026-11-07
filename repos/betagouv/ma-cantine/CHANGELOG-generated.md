@@ -1,22 +1,40 @@
-## Changelog : ma-cantine (30 derniers jours, au 22 octobre 2026)
+## Changelog : ma-cantine (30 derniers jours, au 6 novembre 2026)
 
 ### Résumé
-Ce mois-ci a été marqué par une préparation intensive de la campagne de télédéclaration 2026, avec l'intégration de nouveaux indicateurs et une interface de saisie simplifiée. Parallèlement, la plateforme a considérablement renforcé sa traçabilité des données et sa sécurité pour mieux accompagner les acteurs de la restauration.
+Ce mois a été marqué par une préparation intensive pour la campagne 2026. Les évolutions majeures concernent l'enrichissement des outils de télédéclaration avec de nouveaux volets thématiques (gaspillage, plastique, menu végétarien), la mise à jour des formats d'import de données et une refonte profonde de la traçabilité des actions via un nouveau système de journaux d'événements (EventLog).
 
 ### Évolutions fonctionnelles
-- **Télédéclaration** : Optimisation de l'expérience de saisie avec l'ajout du remplissage automatique, de boutons de saisie rapide et d'une gestion dynamique des erreurs en temps réel [#7384, #7377, #7323, #7174, #7175].
-- **Télédéclaration** : Mise à jour pour la campagne 2026 incluant de nouveaux champs obligatoires (origine, circuit court, local, pêche durable, fermier) et une meilleure gestion des étapes [#7326, #7325, #7180, #7148, #7230].
-- **Télédéclaration** : Amélioration du suivi et de la synthèse (nouveaux graphiques EGalim, macarons de progression, récapitulatifs des volets et affichage des coûts repas) [#7361, #7343, #7369, #7355, #7176].
-- **Diagnostics** : Enrichissement des indicateurs de performance avec de nouveaux calculs de pourcentages par origine, circuit court et local [#7364, #7345].
-- **Utilisateurs & Sécurité** : Simplification de la gestion des comptes (suppression du champ "username") et renforcement de la protection contre les attaques XSS et la divulgation d'informations lors de la récupération de compte [#7228, #7397, #7396, #7395, #7393].
+- **Télédéclaration** : 
+    - Ajout de nouveaux volets thématiques : substitution plastique [#7537](https://github.com/betagouv/ma-cantine/issues/7537), information convives [#7531](https://github.com/betagouv/ma-cantine/issues/7531), gaspillage alimentaire [#7527](https://github.com/betagouv/ma-cantine/issues/7527) et menu végétarien [#7473](https://github.com/betagouv/ma-cantine/issues/7473).
+    - Amélioration de l'expérience de saisie : navigation optimisée par volets [#7543](https://github.com/betagouv/ma-cantine/issues/7543), fonctionnalités de remplissage automatique [#7384](https://github.com/betagouv/ma-cantine/issues/7384) et suivi de la progression du tunnel [#7323](https://github.com/betagouv/ma-cantine/issues/7323).
+    - Possibilité de modifier une télédéclaration déjà soumise [#7275](https://github.com/betagouv/ma-cantine/issues/7275).
+- **Diagnostics & Bilans** : 
+    - Mise à jour des champs pour la campagne 2026 (volets information et plastique) [#7520](https://github.com/betagouv/ma-cantine/issues/7520), [#7521](https://github.com/betagouv/ma-cantine/issues/7521).
+    - Enrichissement des indicateurs : nouveaux calculs automatiques pour les objectifs EGalim, les circuits courts et les origines des produits [#7361](https://github.com/betagouv/ma-cantine/issues/7361), [#7364](https://github.com/betagouv/ma-cantine/issues/7364).
+    - Amélioration de l'API pour une récupération plus exhaustive des données de tous les volets [#7509](https://github.com/betagouv/ma-cantine/issues/7509).
+- **Gestion des imports** : 
+    - Introduction de nouveaux formats d'import pour 2026, notamment par ID ou par SIRET [#7493](https://github.com/betagouv/ma-cantine/issues/7493), [#7467](https://github.com/betagouv/ma-cantine/issues/7467).
+    - Sécurisation des imports : restriction de l'accès aux pages d'import uniquement durant les périodes de campagne ouvertes [#7472](https://github.com/betagouv/ma-cantine/issues/7472), [#7490](https://github.com/betagouv/ma-cantine/issues/7490).
+- **Expérience utilisateur** : 
+    - Simplification du profil utilisateur par la suppression du champ "username" [#7228](https://github.com/betagouv/ma-cantine/issues/7228).
+    - Amélioration de la visibilité des informations relatives aux établissements et à leurs groupes rattachés [#7522](https://github.com/betagouv/ma-cantine/issues/7522).
 
 ### Évolutions techniques
-- **Traçabilité** : Mise en place d'un nouveau modèle de journalisation (EventLog) pour suivre précisément les imports, les appels API et les tâches asynchrones [#7311, #7321, #7322].
-- **Data & ETL** : Optimisation des pipelines de données via dbt (utilisation de la commande `COPY` pour accélérer les transferts) et nettoyage des anciens exports devenus obsolètes [#7207, #7360, #7357, #7358].
-- **Data & ETL** : Exportation des journaux d'événements vers le data warehouse pour analyse [#7354].
-- **OAuth2** : Extension du système d'applications pour permettre l'association d'un nom d'entreprise [#7248, #7251].
-- **CI/CD** : Amélioration des performances de la chaîne de tests (parallélisation des vCPU) et création d'une CI dédiée à dbt [#7240, #7162].
-- **Base de données** : Optimisation de l'historique via le regroupement (squash) des migrations de la base de données [#7402].
+- **Traçabilité & Data** : 
+    - Implémentation d'un nouveau système de journalisation (`EventLog`) pour tracer l'ensemble des événements critiques (appels API, imports, tâches asynchrones) [#7421](https://github.com/betagouv/ma-cantine/issues/7421), [#7311](https://github.com/betagouv/ma-cantine/issues/7311).
+    - Migration des données historiques vers ce nouveau système de logs [#7387](https://github.com/betagouv/ma-cantine/issues/7387), [#7334](https://github.com/betagouv/ma-cantine/issues/7334).
+    - Intégration des nouveaux logs dans le pipeline de données dbt pour l'analyse [#7383](https://github.com/betagouv/ma-cantine/issues/7383).
+- **Architecture & Refactoring** : 
+    - Refonte majeure du module de Diagnostics via l'utilisation de mixins pour segmenter la logique par volet [#7442](https://github.com/betagouv/ma-cantine/issues/7442), [#7443](https://github.com/betagouv/ma-cantine/issues/7443).
+    - Restructuration du module d'Imports dans une application dédiée avec une gestion par schémas plus robuste [#7450](https://github.com/betagouv/ma-cantine/issues/7450), [#7451](https://github.com/betagouv/ma-cantine/issues/7451).
+    - Optimisation des commandes de tâches asynchrones (export, nettoyage, dbt) [#7419](https://github.com/betagouv/ma-cantine/issues/7419), [#7417](https://github.com/betagouv/ma-cantine/issues/7417).
+- **Sécurité** : 
+    - Correction de plusieurs vulnérabilités de type XSS (Cross-Site Scripting) sur les formulaires publics, l'administration et l'affichage des cantines [#7398](https://github.com/betagouv/ma-cantine/issues/7398), [#7397](https://github.com/betagouv/ma-cantine/issues/7397), [#7396](https://github.com/betagouv/ma-cantine/issues/7396).
+    - Correction de failles liées au processus de confirmation par email et à l'authentification [#7395](https://github.com/betagouv/ma-cantine/issues/7395), [#7393](https://github.com/betagouv/ma-cantine/issues/7393).
+- **Infrastructure & CI/CD** : 
+    - Optimisation des temps d'exécution des jobs de tests (ajout de timeouts) [#7429](https://github.com/betagouv/ma-cantine/issues/7429).
+    - Nettoyage et regroupement (squash) des migrations de base de données pour alléger le projet [#7431](https://github.com/betagouv/ma-cantine/issues/7431), [#7402](https://github.com/betagouv/ma-cantine/issues/7402).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation de l'API (Swagger) et des guides d'onboarding pour les développeurs [#7302, #7247, #7259].
+- Ajout du fichier `SECURITY.md` pour définir la politique de signalement de vulnérabilités [#7413](https://github.com/betagouv/ma-cantine/issues/7413).
+- Mise à jour de la documentation de l'API concernant les nouveaux champs de diagnostics [#7302](https://github.com/betagouv/ma-cantine/issues/7302).

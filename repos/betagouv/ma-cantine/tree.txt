@@ -14,6 +14,7 @@
 │       ├── clever-cloud-review-app.yml
 │       ├── codeql-analysis.yml
 │       ├── dbt.yml
+│       ├── dependencies.yml
 │       ├── frontend.yml
 │       ├── pr-auto-reviewers-and-assignee.yml
 │       ├── release-please-pr-title-check.yml
@@ -129,7 +130,8 @@
 │   │   │   ├── IconOSAMonochrome.vue
 │   │   │   ├── ImportAdminCallout.vue
 │   │   │   ├── ImportCard.vue
-│   │   │   ├── ImportDeprecatedWarning.vue
+│   │   │   ├── ImportDeprecatedWarningDiagnostics.vue
+│   │   │   ├── ImportDeprecatedWarningPurchases.vue
 │   │   │   ├── ImportExplanation.vue
 │   │   │   ├── ImportFileUpload.vue
 │   │   │   ├── ImportFilesExample.vue
@@ -167,8 +169,9 @@
 │   │   │   ├── TunnelTeledeclarationModal.vue
 │   │   │   ├── TunnelTeledeclarationModalErrors.vue
 │   │   │   ├── TunnelTeledeclarationModalQuit.vue
-│   │   │   ├── TunnelTeledeclarationSidebar.vue
-│   │   │   ├── TunnelTeledeclarationTopNav.vue
+│   │   │   ├── TunnelTeledeclarationNavApprovisionnements.vue
+│   │   │   ├── TunnelTeledeclarationNavSidebar.vue
+│   │   │   ├── TunnelTeledeclarationNavThematiques.vue
 │   │   │   ├── TunnelTeledeclarationUPSABanner.vue
 │   │   │   ├── WasteMeasurementDetail.vue
 │   │   │   ├── WasteMeasurementSteps
@@ -200,7 +203,7 @@
 │   │   │   ├── epcis.json
 │   │   │   ├── pats.json
 │   │   │   ├── regions.json
-│   │   │   └── teledeclaration.json
+│   │   │   └── tunnelTeledeclaration.json
 │   │   ├── i18n.js
 │   │   ├── layouts
 │   │   │   ├── LayoutOneColumn.vue
@@ -212,6 +215,7 @@
 │   │   ├── router
 │   │   │   ├── authenticated-routes.js
 │   │   │   ├── canteen-routes.js
+│   │   │   ├── imports-routes.js
 │   │   │   ├── index.js
 │   │   │   ├── public-routes.js
 │   │   │   ├── tunnel-routes.js
@@ -225,7 +229,6 @@
 │   │   │   ├── canteensTable.js
 │   │   │   ├── diagnostics.js
 │   │   │   ├── diagnosticsBadge.js
-│   │   │   ├── diagnosticsFields.js
 │   │   │   ├── diagnosticsMacaron.js
 │   │   │   ├── filters.js
 │   │   │   ├── imports.js
@@ -238,6 +241,7 @@
 │   │   │   ├── sectors.js
 │   │   │   ├── statistics.js
 │   │   │   ├── strings.js
+│   │   │   ├── tunnelTeledeclaration.js
 │   │   │   └── urls.js
 │   │   ├── stores
 │   │   │   ├── campaignDates.js
@@ -276,8 +280,12 @@
 │   │       ├── GestionnaireImportAchatsSIRET.vue
 │   │       ├── GestionnaireImportAchatsSIRETOld.vue
 │   │       ├── GestionnaireImportBilansDetailles.vue
+│   │       ├── GestionnaireImportBilansDetaillesSIRET.vue
+│   │       ├── GestionnaireImportBilansDetaillesSIRETOld.vue
 │   │       ├── GestionnaireImportBilansSimples.vue
+│   │       ├── GestionnaireImportBilansSimplesOld.vue
 │   │       ├── GestionnaireImportBilansSimplesSIRET.vue
+│   │       ├── GestionnaireImportBilansSimplesSIRETOld.vue
 │   │       ├── GestionnaireImportCantinesCreer.vue
 │   │       ├── GestionnaireImportCantinesGestionnaires.vue
 │   │       ├── GestionnaireImportCantinesModifier.vue
@@ -306,6 +314,7 @@
 ├── LICENSE
 ├── Makefile
 ├── README.md
+├── SECURITY.md
 ├── api
 │   ├── __init__.py
 │   ├── apps.py
@@ -329,6 +338,7 @@
 │   │   ├── diagnostic.py
 │   │   ├── diagnostic_teledeclaration.py
 │   │   ├── diagnostic_teledeclaration_dates.py
+│   │   ├── diagnostic_v2.py
 │   │   ├── message.py
 │   │   ├── partner.py
 │   │   ├── partnertype.py
@@ -372,144 +382,6 @@
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── files
-│   │   │   ├── achats
-│   │   │   │   ├── purchases_bad.csv
-│   │   │   │   ├── purchases_bad_corrupt.csv
-│   │   │   │   ├── purchases_bad_corrupt_old.csv
-│   │   │   │   ├── purchases_bad_empty_rows.csv
-│   │   │   │   ├── purchases_bad_empty_rows_old.csv
-│   │   │   │   ├── purchases_bad_extra_columns.csv
-│   │   │   │   ├── purchases_bad_extra_columns_old.csv
-│   │   │   │   ├── purchases_bad_no_header.csv
-│   │   │   │   ├── purchases_bad_no_header_old.csv
-│   │   │   │   ├── purchases_bad_old.csv
-│   │   │   │   ├── purchases_bad_one_error.csv
-│   │   │   │   ├── purchases_bad_one_error_old.csv
-│   │   │   │   ├── purchases_bad_partial_header.csv
-│   │   │   │   ├── purchases_bad_partial_header_old.csv
-│   │   │   │   ├── purchases_bad_wrong_header.csv
-│   │   │   │   ├── purchases_bad_wrong_header_old.csv
-│   │   │   │   ├── purchases_bad_wrong_header_typo.csv
-│   │   │   │   ├── purchases_bad_wrong_header_typo_old.csv
-│   │   │   │   ├── purchases_good.csv
-│   │   │   │   ├── purchases_good.xlsx
-│   │   │   │   ├── purchases_good_decimal_comma.csv
-│   │   │   │   ├── purchases_good_decimal_comma.xlsx
-│   │   │   │   ├── purchases_good_floating_number.csv
-│   │   │   │   ├── purchases_good_floating_number_old.csv
-│   │   │   │   ├── purchases_good_id.csv
-│   │   │   │   ├── purchases_good_id_caracteristics.csv
-│   │   │   │   ├── purchases_good_id_old.csv
-│   │   │   │   ├── purchases_good_local_vs_circuit_court.csv
-│   │   │   │   ├── purchases_good_old.csv
-│   │   │   │   ├── purchases_good_old.xlsx
-│   │   │   │   ├── purchases_good_separator_comma.csv
-│   │   │   │   ├── purchases_good_separator_comma_old.csv
-│   │   │   │   ├── purchases_good_separator_semicolon.csv
-│   │   │   │   ├── purchases_good_separator_semicolon_old.csv
-│   │   │   │   ├── purchases_good_separator_tab.tsv
-│   │   │   │   ├── purchases_good_separator_tab_old.tsv
-│   │   │   │   ├── purchases_good_siret_caracteristics.csv
-│   │   │   │   ├── purchases_good_with_empty_columns.xlsx
-│   │   │   │   └── purchases_good_with_empty_columns_old.xlsx
-│   │   │   ├── canteen_managers
-│   │   │   │   ├── canteen_managers_bad_empty_rows.csv
-│   │   │   │   ├── canteen_managers_bad_extra_header.csv
-│   │   │   │   ├── canteen_managers_bad_invalid_email.csv
-│   │   │   │   ├── canteen_managers_bad_no_header.csv
-│   │   │   │   ├── canteen_managers_bad_one_error.csv
-│   │   │   │   ├── canteen_managers_bad_siret_not_found.csv
-│   │   │   │   ├── canteen_managers_bad_wrong_header.csv
-│   │   │   │   ├── canteen_managers_good.csv
-│   │   │   │   ├── canteen_managers_good.xlsx
-│   │   │   │   └── canteen_managers_good_multiple.csv
-│   │   │   ├── canteens
-│   │   │   │   ├── canteen_bad_sectors.csv
-│   │   │   │   ├── canteens_bad.csv
-│   │   │   │   ├── canteens_bad_canteen_already_exists.csv
-│   │   │   │   ├── canteens_bad_empty_rows.csv
-│   │   │   │   ├── canteens_bad_extra_header.csv
-│   │   │   │   ├── canteens_bad_line_ministry.csv
-│   │   │   │   ├── canteens_bad_nearly_good.csv
-│   │   │   │   ├── canteens_bad_nearly_good_2.csv
-│   │   │   │   ├── canteens_bad_no_header.csv
-│   │   │   │   ├── canteens_bad_one_error.csv
-│   │   │   │   ├── canteens_bad_wrong_header.csv
-│   │   │   │   ├── canteens_create_bad_groupe_teledeclared.csv
-│   │   │   │   ├── canteens_good.csv
-│   │   │   │   ├── canteens_good.xlsx
-│   │   │   │   ├── canteens_good_add_manager.csv
-│   │   │   │   ├── canteens_good_choices_slug_values.csv
-│   │   │   │   ├── canteens_good_groupe.csv
-│   │   │   │   ├── canteens_good_line_ministry.csv
-│   │   │   │   ├── canteens_good_max_sectors.csv
-│   │   │   │   ├── canteens_sectors.csv
-│   │   │   │   ├── canteens_update_bad_canteen_not_found.csv
-│   │   │   │   ├── canteens_update_bad_groupe_teledeclared.csv
-│   │   │   │   ├── canteens_update_bad_invalid_email.csv
-│   │   │   │   ├── canteens_update_bad_invalid_insee_code.csv
-│   │   │   │   ├── canteens_update_bad_invalid_siret.csv
-│   │   │   │   ├── canteens_update_bad_missing_insee_code.csv
-│   │   │   │   ├── canteens_update_bad_no_header.csv
-│   │   │   │   ├── canteens_update_bad_one_error.csv
-│   │   │   │   ├── canteens_update_bad_permission_denied.csv
-│   │   │   │   ├── canteens_update_good_insee.csv
-│   │   │   │   ├── canteens_update_good_multiple.csv
-│   │   │   │   ├── canteens_update_good_one.csv
-│   │   │   │   └── canteens_update_good_one.xlsx
-│   │   │   ├── diagnostics
-│   │   │   │   ├── diagnostics_bad_file_format.ods
-│   │   │   │   ├── diagnostics_complete_bad.csv
-│   │   │   │   ├── diagnostics_complete_bad_no_header.csv
-│   │   │   │   ├── diagnostics_complete_bad_wrong_header.csv
-│   │   │   │   ├── diagnostics_complete_cc_good.csv
-│   │   │   │   ├── diagnostics_complete_good.csv
-│   │   │   │   ├── diagnostics_complete_good_encoding_utf-8.csv
-│   │   │   │   ├── diagnostics_complete_staff_good.csv
-│   │   │   │   ├── diagnostics_simple_bad_location.csv
-│   │   │   │   ├── diagnostics_simple_bad_separator_semicolon_add_managers.csv
-│   │   │   │   ├── diagnostics_simple_bad_separator_semicolon_no_total.csv
-│   │   │   │   ├── diagnostics_simple_cc_bad_same_siret.csv
-│   │   │   │   ├── diagnostics_simple_cc_good.csv
-│   │   │   │   ├── diagnostics_simple_good_duplicate_siret.csv
-│   │   │   │   ├── diagnostics_simple_good_encoding_iso-8859-1.csv
-│   │   │   │   ├── diagnostics_simple_good_encoding_utf-16.csv
-│   │   │   │   ├── diagnostics_simple_good_id.csv
-│   │   │   │   ├── diagnostics_simple_good_locations.csv
-│   │   │   │   ├── diagnostics_simple_good_new_canteen.csv
-│   │   │   │   ├── diagnostics_simple_good_sectors.csv
-│   │   │   │   ├── diagnostics_simple_good_separator_semicolon.csv
-│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_add_managers.csv
-│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_decimal_number.csv
-│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_no_add_managers.csv
-│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_no_appro.csv
-│   │   │   │   ├── diagnostics_simple_good_separator_tab.tsv
-│   │   │   │   ├── diagnostics_simple_staff_bad.csv
-│   │   │   │   ├── diagnostics_simple_staff_good_new_canteen.csv
-│   │   │   │   ├── teledeclaration_error.csv
-│   │   │   │   └── teledeclaration_simple.csv
-│   │   │   ├── diagnostics_complete
-│   │   │   │   ├── diagnostics_complete_bad.csv
-│   │   │   │   ├── diagnostics_complete_bad_empty_rows.csv
-│   │   │   │   ├── diagnostics_complete_bad_file_format.ods
-│   │   │   │   ├── diagnostics_complete_bad_format.csv
-│   │   │   │   ├── diagnostics_complete_bad_no_header.csv
-│   │   │   │   ├── diagnostics_complete_bad_one_error.csv
-│   │   │   │   ├── diagnostics_complete_bad_wrong_header.csv
-│   │   │   │   ├── diagnostics_complete_good.xlsx
-│   │   │   │   ├── diagnostics_complete_good_different_canteens.csv
-│   │   │   │   └── diagnostics_complete_good_one_canteen_seperator_semicolon.csv
-│   │   │   ├── diagnostics_simple
-│   │   │   │   ├── diagnostics_simple_bad.csv
-│   │   │   │   ├── diagnostics_simple_bad_empty_rows.csv
-│   │   │   │   ├── diagnostics_simple_bad_file_format.ods
-│   │   │   │   ├── diagnostics_simple_bad_format.csv
-│   │   │   │   ├── diagnostics_simple_bad_no_header.csv
-│   │   │   │   ├── diagnostics_simple_bad_one_error.csv
-│   │   │   │   ├── diagnostics_simple_bad_wrong_header.csv
-│   │   │   │   ├── diagnostics_simple_good.xlsx
-│   │   │   │   ├── diagnostics_simple_good_different_canteens.csv
-│   │   │   │   └── diagnostics_simple_good_one_canteen_seperator_semicolon.csv
 │   │   │   ├── test-image-1.jpg
 │   │   │   ├── test-image-2.jpg
 │   │   │   └── test-image-3.png
@@ -524,18 +396,11 @@
 │   │   ├── test_canteen_statistics.py
 │   │   ├── test_canteen_status.py
 │   │   ├── test_canteens.py
-│   │   ├── test_canteens_create_import.py
-│   │   ├── test_canteens_managers_import.py
-│   │   ├── test_canteens_schema_import.py
-│   │   ├── test_canteens_update_import.py
 │   │   ├── test_community_events.py
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostic_teledeclaration_dates.py
 │   │   ├── test_diagnostics.py
-│   │   ├── test_diagnostics_complete_import.py
-│   │   ├── test_diagnostics_complete_schema_import.py
-│   │   ├── test_diagnostics_simple_import.py
-│   │   ├── test_diagnostics_simple_schema_import.py
+│   │   ├── test_diagnostics_v2.py
 │   │   ├── test_event_log_middleware.py
 │   │   ├── test_initial_data.py
 │   │   ├── test_inquiry.py
@@ -545,11 +410,7 @@
 │   │   ├── test_purchase_export.py
 │   │   ├── test_purchase_facture.py
 │   │   ├── test_purchases.py
-│   │   ├── test_purchases_import.py
-│   │   ├── test_purchases_import_old.py
 │   │   ├── test_purchases_old.py
-│   │   ├── test_purchases_schema_import.py
-│   │   ├── test_purchases_schema_import_old.py
 │   │   ├── test_reservation_expe.py
 │   │   ├── test_resource_actions.py
 │   │   ├── test_reviews.py
@@ -564,23 +425,20 @@
 │   │   │   └── test_canteen_serializer.py
 │   │   └── utils.py
 │   ├── urls.py
+│   ├── urls_v2.py
 │   └── views
 │       ├── __init__.py
-│       ├── base_import.py
 │       ├── blog.py
 │       ├── canteen.py
-│       ├── canteen_create_import.py
 │       ├── canteen_export.py
 │       ├── canteen_groupe.py
 │       ├── canteen_images.py
 │       ├── canteen_managers.py
-│       ├── canteen_managers_import.py
-│       ├── canteen_update_import.py
 │       ├── communityevent.py
 │       ├── diagnostic.py
-│       ├── diagnostic_import.py
 │       ├── diagnostic_teledeclaration.py
 │       ├── diagnostic_teledeclaration_dates.py
+│       ├── diagnostic_v2.py
 │       ├── initial.py
 │       ├── inquiry.py
 │       ├── message.py
@@ -588,9 +446,6 @@
 │       ├── partnertype.py
 │       ├── purchase.py
 │       ├── purchase_export.py
-│       ├── purchase_import.py
-│       ├── purchase_import_base.py
-│       ├── purchase_import_old.py
 │       ├── reservationexpe.py
 │       ├── resourceaction.py
 │       ├── review.py
@@ -771,6 +626,16 @@
 │   │   ├── 0290_diagnostic_pourcentage_famille_origine.py
 │   │   ├── 0291_remove_user_departments_and_more.py
 │   │   ├── 0292_remove_user_username.py
+│   │   ├── 0293_eventlog_category_command.py
+│   │   ├── 0294_eventlog_from_commandlog.py
+│   │   ├── 0295_importfailure_import_type_diagnostic_complete_siret.py
+│   │   ├── 0296_importfailure_import_type_diagnostic_complete_id.py
+│   │   ├── 0297_diagnostic_diversification_french_field_names.py
+│   │   ├── 0298_diagnostic_gaspillage_french_field_names.py
+│   │   ├── 0299_diagnostic_information_french_field_names.py
+│   │   ├── 0300_diagnostic_plastique_french_field_names.py
+│   │   ├── 0301_diagnostic_information_2026_fields.py
+│   │   ├── 0302_diagnostic_plastique_2026_fields.py
 │   │   ├── README.md
 │   │   ├── __init__.py
 │   │   └── archive
@@ -1076,11 +941,15 @@
 │   │   ├── diagnostic_teledeclaration_egalim_objectives.py
 │   │   ├── diagnostic_teledeclaration_field_groups.py
 │   │   ├── diagnostic_teledeclaration_fields.py
+│   │   ├── diagnostic_volet_approvisionnement.py
+│   │   ├── diagnostic_volet_diversification.py
+│   │   ├── diagnostic_volet_gaspillage.py
+│   │   ├── diagnostic_volet_information.py
+│   │   ├── diagnostic_volet_plastique.py
 │   │   ├── eventlog.py
 │   │   ├── geo.py
 │   │   ├── historyauthenticationmethod.py
 │   │   ├── importfailure.py
-│   │   ├── importtype.py
 │   │   ├── managerinvitation.py
 │   │   ├── message.py
 │   │   ├── oauth2.py
@@ -1111,9 +980,13 @@
 │   │   │   ├── achats_id_old.json
 │   │   │   ├── achats_siret.json
 │   │   │   ├── achats_siret_old.json
-│   │   │   ├── bilans_detaille.json
+│   │   │   ├── bilans_detaille_id_2026.json
+│   │   │   ├── bilans_detaille_siret.json
+│   │   │   ├── bilans_detaille_siret_2026.json
 │   │   │   ├── bilans_simple_id.json
+│   │   │   ├── bilans_simple_id_2026.json
 │   │   │   ├── bilans_simple_siret.json
+│   │   │   ├── bilans_simple_siret_2026.json
 │   │   │   ├── cantines_creer.json
 │   │   │   ├── cantines_gestionnaires.json
 │   │   │   ├── cantines_modifier.json
@@ -1140,12 +1013,14 @@
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostic_teledeclaration_dates.py
 │   │   ├── test_diagnostic_teledeclaration_egalim_objectives.py
+│   │   ├── test_diagnostic_teledeclaration_fields.py
 │   │   ├── test_eventlog.py
 │   │   ├── test_fixtures.py
 │   │   ├── test_history.py
 │   │   ├── test_manager_invitation.py
 │   │   ├── test_messages.py
 │   │   ├── test_migration_0287_eventlog_from_importfailure.py
+│   │   ├── test_migration_0294_eventlog_from_commandlog.py
 │   │   ├── test_oauth2.py
 │   │   ├── test_purchase.py
 │   │   ├── test_resource_action.py
@@ -1176,13 +1051,21 @@
 │   │   └── referentiel_secteurs.sql
 │   ├── models
 │   │   ├── intermediate
+│   │   │   ├── int_api_applications.sql
+│   │   │   ├── int_api_connexions.sql
 │   │   │   ├── int_canteens_enriched.sql
 │   │   │   ├── int_spe_canteens_inscrites.sql
 │   │   │   ├── int_spe_inscriptions.sql
 │   │   │   ├── int_spe_waste.sql
-│   │   │   └── int_spe_waste_by_canteen.sql
+│   │   │   ├── int_spe_waste_by_canteen.sql
+│   │   │   └── schema.yml
 │   │   ├── marts
+│   │   │   ├── mart_api_applications.sql
+│   │   │   ├── mart_api_bilans_crees.sql
+│   │   │   ├── mart_api_connexions.sql
+│   │   │   ├── mart_api_ecritures.sql
 │   │   │   ├── mart_cantines.sql
+│   │   │   ├── mart_imports.sql
 │   │   │   ├── mart_spe_bilan.sql
 │   │   │   ├── mart_spe_bilan_ate.sql
 │   │   │   ├── mart_spe_bilan_iso.sql
@@ -1203,6 +1086,11 @@
 │   │       ├── stg_canteens.sql
 │   │       ├── stg_canteens_all.sql
 │   │       ├── stg_diagnostics.sql
+│   │       ├── stg_event_logs.sql
+│   │       ├── stg_oauth_access_tokens.sql
+│   │       ├── stg_oauth_applications.sql
+│   │       ├── stg_oauth_applications_extra.sql
+│   │       ├── stg_oauth_refresh_tokens.sql
 │   │       ├── stg_teledeclarations.sql
 │   │       ├── stg_teledeclarations_invalides.sql
 │   │       ├── stg_users.sql
@@ -1475,6 +1363,185 @@
 │   │           ├── WasteActionsListView.vue
 │   │           └── index.vue
 │   └── vite.config.js
+├── imports
+│   ├── README.md
+│   ├── __init__.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── importschema.py
+│   │   └── importtype.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── files
+│   │   │   ├── achats
+│   │   │   │   ├── purchases_bad.csv
+│   │   │   │   ├── purchases_bad_corrupt.csv
+│   │   │   │   ├── purchases_bad_corrupt_old.csv
+│   │   │   │   ├── purchases_bad_empty_rows.csv
+│   │   │   │   ├── purchases_bad_empty_rows_old.csv
+│   │   │   │   ├── purchases_bad_extra_columns.csv
+│   │   │   │   ├── purchases_bad_extra_columns_old.csv
+│   │   │   │   ├── purchases_bad_no_header.csv
+│   │   │   │   ├── purchases_bad_no_header_old.csv
+│   │   │   │   ├── purchases_bad_old.csv
+│   │   │   │   ├── purchases_bad_one_error.csv
+│   │   │   │   ├── purchases_bad_one_error_old.csv
+│   │   │   │   ├── purchases_bad_partial_header.csv
+│   │   │   │   ├── purchases_bad_partial_header_old.csv
+│   │   │   │   ├── purchases_bad_wrong_header.csv
+│   │   │   │   ├── purchases_bad_wrong_header_old.csv
+│   │   │   │   ├── purchases_bad_wrong_header_typo.csv
+│   │   │   │   ├── purchases_bad_wrong_header_typo_old.csv
+│   │   │   │   ├── purchases_good.csv
+│   │   │   │   ├── purchases_good.xlsx
+│   │   │   │   ├── purchases_good_decimal_comma.csv
+│   │   │   │   ├── purchases_good_decimal_comma.xlsx
+│   │   │   │   ├── purchases_good_floating_number.csv
+│   │   │   │   ├── purchases_good_floating_number_old.csv
+│   │   │   │   ├── purchases_good_id.csv
+│   │   │   │   ├── purchases_good_id_caracteristics.csv
+│   │   │   │   ├── purchases_good_id_old.csv
+│   │   │   │   ├── purchases_good_local_vs_circuit_court.csv
+│   │   │   │   ├── purchases_good_old.csv
+│   │   │   │   ├── purchases_good_old.xlsx
+│   │   │   │   ├── purchases_good_separator_comma.csv
+│   │   │   │   ├── purchases_good_separator_comma_old.csv
+│   │   │   │   ├── purchases_good_separator_semicolon.csv
+│   │   │   │   ├── purchases_good_separator_semicolon_old.csv
+│   │   │   │   ├── purchases_good_separator_tab.tsv
+│   │   │   │   ├── purchases_good_separator_tab_old.tsv
+│   │   │   │   ├── purchases_good_siret_caracteristics.csv
+│   │   │   │   ├── purchases_good_with_empty_columns.xlsx
+│   │   │   │   └── purchases_good_with_empty_columns_old.xlsx
+│   │   │   ├── canteen_managers
+│   │   │   │   ├── canteen_managers_bad_empty_rows.csv
+│   │   │   │   ├── canteen_managers_bad_extra_header.csv
+│   │   │   │   ├── canteen_managers_bad_invalid_email.csv
+│   │   │   │   ├── canteen_managers_bad_no_header.csv
+│   │   │   │   ├── canteen_managers_bad_one_error.csv
+│   │   │   │   ├── canteen_managers_bad_siret_not_found.csv
+│   │   │   │   ├── canteen_managers_bad_wrong_header.csv
+│   │   │   │   ├── canteen_managers_good.csv
+│   │   │   │   ├── canteen_managers_good.xlsx
+│   │   │   │   └── canteen_managers_good_multiple.csv
+│   │   │   ├── canteens
+│   │   │   │   ├── canteen_bad_sectors.csv
+│   │   │   │   ├── canteens_bad.csv
+│   │   │   │   ├── canteens_bad_canteen_already_exists.csv
+│   │   │   │   ├── canteens_bad_empty_rows.csv
+│   │   │   │   ├── canteens_bad_extra_header.csv
+│   │   │   │   ├── canteens_bad_line_ministry.csv
+│   │   │   │   ├── canteens_bad_nearly_good.csv
+│   │   │   │   ├── canteens_bad_nearly_good_2.csv
+│   │   │   │   ├── canteens_bad_no_header.csv
+│   │   │   │   ├── canteens_bad_one_error.csv
+│   │   │   │   ├── canteens_bad_wrong_header.csv
+│   │   │   │   ├── canteens_create_bad_groupe_teledeclared.csv
+│   │   │   │   ├── canteens_good.csv
+│   │   │   │   ├── canteens_good.xlsx
+│   │   │   │   ├── canteens_good_add_manager.csv
+│   │   │   │   ├── canteens_good_choices_slug_values.csv
+│   │   │   │   ├── canteens_good_groupe.csv
+│   │   │   │   ├── canteens_good_line_ministry.csv
+│   │   │   │   ├── canteens_good_max_sectors.csv
+│   │   │   │   ├── canteens_sectors.csv
+│   │   │   │   ├── canteens_update_bad_canteen_not_found.csv
+│   │   │   │   ├── canteens_update_bad_groupe_teledeclared.csv
+│   │   │   │   ├── canteens_update_bad_invalid_email.csv
+│   │   │   │   ├── canteens_update_bad_invalid_insee_code.csv
+│   │   │   │   ├── canteens_update_bad_invalid_siret.csv
+│   │   │   │   ├── canteens_update_bad_missing_insee_code.csv
+│   │   │   │   ├── canteens_update_bad_no_header.csv
+│   │   │   │   ├── canteens_update_bad_one_error.csv
+│   │   │   │   ├── canteens_update_bad_permission_denied.csv
+│   │   │   │   ├── canteens_update_good_insee.csv
+│   │   │   │   ├── canteens_update_good_multiple.csv
+│   │   │   │   ├── canteens_update_good_one.csv
+│   │   │   │   └── canteens_update_good_one.xlsx
+│   │   │   ├── diagnostics
+│   │   │   │   ├── diagnostics_bad_file_format.ods
+│   │   │   │   ├── diagnostics_complete_bad.csv
+│   │   │   │   ├── diagnostics_complete_bad_no_header.csv
+│   │   │   │   ├── diagnostics_complete_bad_wrong_header.csv
+│   │   │   │   ├── diagnostics_complete_cc_good.csv
+│   │   │   │   ├── diagnostics_complete_good.csv
+│   │   │   │   ├── diagnostics_complete_good_encoding_utf-8.csv
+│   │   │   │   ├── diagnostics_complete_staff_good.csv
+│   │   │   │   ├── diagnostics_simple_bad_location.csv
+│   │   │   │   ├── diagnostics_simple_bad_separator_semicolon_add_managers.csv
+│   │   │   │   ├── diagnostics_simple_bad_separator_semicolon_no_total.csv
+│   │   │   │   ├── diagnostics_simple_cc_bad_same_siret.csv
+│   │   │   │   ├── diagnostics_simple_cc_good.csv
+│   │   │   │   ├── diagnostics_simple_good_duplicate_siret.csv
+│   │   │   │   ├── diagnostics_simple_good_encoding_iso-8859-1.csv
+│   │   │   │   ├── diagnostics_simple_good_encoding_utf-16.csv
+│   │   │   │   ├── diagnostics_simple_good_id.csv
+│   │   │   │   ├── diagnostics_simple_good_locations.csv
+│   │   │   │   ├── diagnostics_simple_good_new_canteen.csv
+│   │   │   │   ├── diagnostics_simple_good_sectors.csv
+│   │   │   │   ├── diagnostics_simple_good_separator_semicolon.csv
+│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_add_managers.csv
+│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_decimal_number.csv
+│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_no_add_managers.csv
+│   │   │   │   ├── diagnostics_simple_good_separator_semicolon_no_appro.csv
+│   │   │   │   ├── diagnostics_simple_good_separator_tab.tsv
+│   │   │   │   ├── diagnostics_simple_staff_bad.csv
+│   │   │   │   ├── diagnostics_simple_staff_good_new_canteen.csv
+│   │   │   │   ├── teledeclaration_error.csv
+│   │   │   │   └── teledeclaration_simple.csv
+│   │   │   ├── diagnostics_complete
+│   │   │   │   ├── diagnostics_complete_2026_good_one_canteen.csv
+│   │   │   │   ├── diagnostics_complete_2026_good_one_canteen_id.csv
+│   │   │   │   ├── diagnostics_complete_bad.csv
+│   │   │   │   ├── diagnostics_complete_bad_empty_rows.csv
+│   │   │   │   ├── diagnostics_complete_bad_file_format.ods
+│   │   │   │   ├── diagnostics_complete_bad_format.csv
+│   │   │   │   ├── diagnostics_complete_bad_no_header.csv
+│   │   │   │   ├── diagnostics_complete_bad_one_error.csv
+│   │   │   │   ├── diagnostics_complete_bad_wrong_header.csv
+│   │   │   │   ├── diagnostics_complete_good.xlsx
+│   │   │   │   ├── diagnostics_complete_good_different_canteens.csv
+│   │   │   │   ├── diagnostics_complete_good_one_canteen_2026.csv
+│   │   │   │   └── diagnostics_complete_good_one_canteen_seperator_semicolon.csv
+│   │   │   └── diagnostics_simple
+│   │   │       ├── diagnostics_simple_2026_good_one_canteen.csv
+│   │   │       ├── diagnostics_simple_bad.csv
+│   │   │       ├── diagnostics_simple_bad_empty_rows.csv
+│   │   │       ├── diagnostics_simple_bad_file_format.ods
+│   │   │       ├── diagnostics_simple_bad_format.csv
+│   │   │       ├── diagnostics_simple_bad_no_header.csv
+│   │   │       ├── diagnostics_simple_bad_one_canteen_2026.csv
+│   │   │       ├── diagnostics_simple_bad_one_error.csv
+│   │   │       ├── diagnostics_simple_bad_wrong_header.csv
+│   │   │       ├── diagnostics_simple_good.xlsx
+│   │   │       ├── diagnostics_simple_good_different_canteens.csv
+│   │   │       ├── diagnostics_simple_good_one_canteen_2026.csv
+│   │   │       └── diagnostics_simple_good_one_canteen_seperator_semicolon.csv
+│   │   ├── test_canteens_create_import.py
+│   │   ├── test_canteens_managers_import.py
+│   │   ├── test_canteens_schema_import.py
+│   │   ├── test_canteens_update_import.py
+│   │   ├── test_diagnostics_complete_import.py
+│   │   ├── test_diagnostics_complete_schema_import.py
+│   │   ├── test_diagnostics_simple_import.py
+│   │   ├── test_diagnostics_simple_schema_import.py
+│   │   ├── test_importschema.py
+│   │   ├── test_purchases_import.py
+│   │   ├── test_purchases_import_old.py
+│   │   ├── test_purchases_schema_import.py
+│   │   └── test_purchases_schema_import_old.py
+│   ├── urls.py
+│   └── views
+│       ├── __init__.py
+│       ├── base.py
+│       ├── canteen_create.py
+│       ├── canteen_managers.py
+│       ├── canteen_update.py
+│       ├── diagnostic.py
+│       ├── diagnostic_base.py
+│       ├── purchase.py
+│       ├── purchase_base.py
+│       └── purchase_old.py
 ├── local-build.sh
 ├── macantine
 │   ├── __init__.py
@@ -1487,6 +1554,7 @@
 │   │   ├── README.md
 │   │   ├── analysis.py
 │   │   ├── data_ware_house.py
+│   │   ├── datasets.py
 │   │   ├── etl.py
 │   │   ├── open_data.py
 │   │   └── utils.py
@@ -1503,6 +1571,7 @@
 │   │       ├── canteen_siret_recherche_entreprises_cache_csv.py
 │   │       ├── canteen_update_geolocation_data_using_siret.py
 │   │       ├── canteen_update_pat_data_using_city_insee_code.py
+│   │       ├── dbt_run.py
 │   │       ├── diagnostic_fill_computed_fields.py
 │   │       ├── diagnostic_fill_creation_user_and_source.py
 │   │       ├── diagnostic_fill_invalid_warning_reason_list.py
@@ -1511,6 +1580,7 @@
 │   │       ├── export_dataset.py
 │   │       ├── generate_geo_data_to_json.py
 │   │       ├── generate_import_schema.py
+│   │       ├── history_delete_old_records.py
 │   │       ├── purchase_fill_creation_user_and_source.py
 │   │       ├── teledeclaration_fix_old.py
 │   │       ├── teledeclaration_generate_1td1site.py
@@ -1518,6 +1588,8 @@
 │   │       ├── teledeclaration_submit_correction.py
 │   │       ├── teledeclaration_submit_outside_of_campaign.py
 │   │       ├── user_brevo_contacts_sync.py
+│   │       ├── user_update_brevo_contacts.py
+│   │       ├── user_update_data.py
 │   │       └── wastemeasurement_fill_creation_user_and_source.py
 │   ├── middleware
 │   │   ├── __init__.py
@@ -1545,6 +1617,7 @@
 │   │   ├── test_etl_open_data.py
 │   │   ├── test_eventlog_backfill_api.py
 │   │   ├── test_eventlog_backfill_imports.py
+│   │   ├── test_export_dataset.py
 │   │   ├── test_geolocation_bot.py
 │   │   ├── test_purchase_fill_creation_user_and_source.py
 │   │   ├── test_sentry.py
@@ -1573,6 +1646,19 @@
 ├── pyproject.toml
 ├── release-please-config.json
 ├── requirements.txt
+├── teledeclaration
+│   ├── 2021
+│   │   └── champs.json
+│   ├── 2022
+│   │   └── champs.json
+│   ├── 2023
+│   │   └── champs.json
+│   ├── 2024
+│   │   └── champs.json
+│   ├── 2025
+│   │   └── champs.json
+│   └── 2026
+│       └── champs.json
 ├── templates
 │   ├── admin
 │   │   ├── base_site.html
@@ -1747,9 +1833,9 @@
     │   │   ├── guide_2026_ma-cantine_protocole-de-pesees-dechets-alimentaires-ANNEXE-2a-Fiches-releves-saisie-Pesees-simples-7-jours_v3.xlsx
     │   │   ├── guide_2026_ma-cantine_protocole-de-pesees-dechets-alimentaires-ANNEXE-2b-Fiches-releves-saisie-Pesees-par-composante-7-jours_v3.xlsx
     │   │   ├── importer_des_bilans_detailles_exemple.csv
-    │   │   ├── importer_*.xlsx  (5 files)
+    │   │   ├── importer_*.xlsx  (9 files)
+    │   │   ├── importer_*.jpg  (16 files)
     │   │   ├── importer_des_bilans_simples_exemple.csv
-    │   │   ├── importer_*.jpg  (8 files)
     │   │   ├── importer_des_cantines_exemple_ma_cantine.csv
     │   │   ├── infographie-gaspillage-alimentaire-restau-co_011317.pdf
     │   │   ├── infographie_2024_ADEME_Gaspillage-Alimentaire-RestaurationCollective-optimise-20241006-1.pdf
@@ -1859,7 +1945,7 @@
     │   │   │   ├── diagnostic.png
     │   │   │   └── publier.png
     │   │   ├── lighthouse.png
-    │   │   ├── logo-osa-couleur.svg
+    │   │   ├── logo-osa-bleu.svg
     │   │   ├── logo_transparent.png
     │   │   ├── logo_transparent_white.png
     │   │   ├── ma-cantine-logo-light.jpg
@@ -1953,4 +2039,4 @@
     │   └── test_sitemap.py
     ├── urls.py
     └── views.py
-149 directories, 1879 files
+161 directories, 1965 files

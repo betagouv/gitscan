@@ -1,18 +1,14 @@
 {
   "url": "https://github.com/betagouv/ma-cantine",
   "name": "ma-cantine",
-  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable. Elle permet notamment le suivi des approvisionnements et la télédéclaration des données métier.",
+  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour proposer une alimentation de qualité, saine et durable. Elle permet notamment la télédéclaration des bilans et le suivi des indicateurs EGalim.",
   "language": "Python",
   "features": [
-    "Visualisation de données & Cartographie",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "Gestion métier générale",
+    "Statistiques & Rapports",
+    "Visualisation de données & Cartographie",
     "Gestion des établissements & Structures",
-    "Tableaux & Affichage"
+    "Authentification & Accès"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -20,12 +16,11 @@
     "Vue.js",
     "Celery",
     "dbt",
+    "Wagtail",
     "PostgreSQL",
     "Redis",
-    "Wagtail",
-    "Django REST Framework",
     "Sentry",
-    "Metabase"
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -35,38 +30,36 @@
     "Design System (DSFR & UI libs)",
     "Celery & Queue asynchrone",
     "Pipeline de données",
-    "Authentification (composant)",
-    "CI/CD & Déploiement"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "magic-link",
-      "mfa"
-    ],
-    "providers": []
+      "mfa",
+      "session"
+    ]
   },
   "tests": [
     "factory-boy",
     "faker",
     "freezegun",
-    "ruff",
-    "sqlfluff"
+    "ruff"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-22T00:00:00Z",
-  "status": "active",
+  "lastActivity": "2026-11-04T00:00:00Z",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
-    "Design System & UI",
+    "Django & FastAPI",
+    "Vue.js & Nuxt",
+    "Données & Open Data",
     "CI/CD & GitHub Actions",
-    "ETL & Pipelines de données"
+    "Design System & UI"
   ]
 }
