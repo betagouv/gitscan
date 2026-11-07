@@ -1,20 +1,20 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 30/10/2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 05 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une transformation majeure de l'outil, notamment avec la refonte complète de l'espace dédié aux gestionnaires territoriaux (CCRT) et le déploiement d'une nouvelle page d'accueil plus intuitive. Parallèlement, le projet a franchi une étape technique cruciale en migrant l'ensemble de ses données depuis Airtable vers une infrastructure interne plus robuste et en renforçant la synchronisation avec ADEME Connect.
+Ce mois-ci est marqué par une refonte majeure de l'expérience utilisateur, incluant une nouvelle page d'accueil et le lancement d'un espace dédié aux gestionnaires territoriaux (CCRT). Le projet a également franchi une étape technique cruciale avec la migration complète des données hors d'Airtable et le renforcement de la sécurité des comptes administrateurs.
 
 ### Évolutions fonctionnelles
-- **Espace Gestionnaires (CCRT) :** Refonte complète de l'interface pour faciliter le suivi des demandes, la gestion des permissions territoriales, la personnalisation des notifications et le tri des dossiers [#1346](https://github.com/betagouv/france-chaleur-urbaine/pull/1346).
-- **Expérience utilisateur :** Nouvelle page d'accueil plus compacte et simplifiée [#1343](https://github.com/betagouv/france-chaleur-urbaine/pull/1343) et amélioration de la clarté des explications sur les choix de solutions via Publicodes [#1349](https://github.com/betagouv/france-chaleur-urbaine/pull/1349).
-- **Outils d'administration :** Ajout de la possibilité d'exporter les demandes en format Excel et amélioration des indicateurs de suivi sur le tableau de bord de gestion [#1319](https://github.com/betagouv/france-chaleur-urbaine/pull/1319).
-- **Précision des simulations :** Mise à jour des méthodes de calcul du nombre de logements en utilisant la base BDNB pour une meilleure fiabilité des résultats.
+- **Nouvelle interface utilisateur** : Refonte complète de la page d'accueil (design plus compact, nouveaux visuels) et intégration de la méthodologie via une fenêtre modale [#1343](https://github.com/betagouv/france-chaleur-urbaine/pull/1343).
+- **Espace CCRT (Gestionnaires territoriaux)** : Création d'un espace dédié permettant un meilleur suivi des demandes, une gestion simplifiée des dossiers et des notifications personnalisées selon les préférences des utilisateurs [#1321](https://github.com/betagouv/france-chaleur-urbaine/pull/1321).
+- **Amélioration des outils de simulation** : Affinement des critères de faisabilité géothermique (basés sur les sources BRGM et BatEnR) et mise en place du suivi des simulations pour le parcours chaleur renouvelable [#1347](https://github.com/betagouv/france-chaleur-urbaine/pull/1347).
+- **Gestion administrative** : Ajout de la possibilité d'exporter les tableaux de gestion en format Excel et amélioration de la synchronisation des rôles avec ADEME Connect [#1324](https://github.com/betagouv/france-chaleur-urbaine/pull/1324).
 
 ### Évolutions techniques
-- **Migration de données :** Suppression complète de la dépendance à Airtable au profit d'une gestion interne des réseaux, des fichiers et des demandes, augmentant la stabilité du système [#1327](https://github.com/betagouv/france-chaleur-urbaine/pull/1327).
-- **Intégrations :** Optimisation de la synchronisation des rôles et des données avec ADEME Connect [#1324](https://github.com/betagouv/france-chaleur-urbaine/pull/1324).
-- **Observabilité et Sécurité :** Amélioration du suivi analytique (PostHog) [#1345](https://github.com/betagouv/france-chaleur-urbaine/pull/1345), séparation des environnements d'erreurs (Sentry) et renforcement de la politique de sécurité du contenu (CSP).
-- **Performance des tests :** Parallélisation des tests d'intégration pour réduire les temps de validation.
+- **Migration de données majeure** : Suppression définitive de la dépendance à Airtable pour la gestion des réseaux et des fichiers, désormais gérés nativement dans l'application [#1327](https://github.com/betagouv/france-chaleur-urbaine/pull/1327).
+- **Sécurité renforcée** : Mise en place de l'authentification à deux facteurs (TOTP) pour les comptes administrateurs [#1355](https://github.com/betagouv/france-chaleur-urbaine/pull/1355) et durcissement de la politique de sécurité du contenu (CSP).
+- **Observabilité et Tracking** : Amélioration du suivi analytique via PostHog (événements de navigation et de formulaires) et isolation des erreurs Sentry par environnement pour éviter la pollution des données de production [#1336](https://github.com/betagouv/france-chaleur-urbaine/pull/1336).
+- **Optimisation de la CI** : Parallélisation des tests d'intégration pour réduire les temps de validation des changements [#1326](https://github.com/betagouv/france-chaleur-urbaine/pull/1326).
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation technique concernant Publicodes, la génération des types Kysely et les composants internes.
-- **Nettoyage :** Suppression des commandes CLI obsolètes et des reliquats de l'ancienne architecture liée à Airtable.
+- **Documentation** : Mise à jour de la page méthodologie et documentation des règles de choix de solution (Publicodes) [#1356](https://github.com/betagouv/france-chaleur-urbaine/pull/1356).
+- **Nettoyage** : Suppression des commandes CLI et des dépendances obsolètes.

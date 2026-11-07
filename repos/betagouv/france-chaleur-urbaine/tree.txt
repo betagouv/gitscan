@@ -1179,10 +1179,14 @@
 │   │   ├── auth
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
+│   │   │   │   ├── MfaVerificationForm.tsx
 │   │   │   │   └── hooks.ts
 │   │   │   └── server
 │   │   │       ├── login-rate-limit.spec.ts
 │   │   │       ├── login-rate-limit.ts
+│   │   │       ├── mfa.integration.spec.ts
+│   │   │       ├── mfa.spec.ts
+│   │   │       ├── mfa.ts
 │   │   │       ├── service.ts
 │   │   │       ├── session.ts
 │   │   │       ├── trpc-routes.integration.spec.ts
@@ -1214,6 +1218,7 @@
 │   │   │       └── trpc-routes.ts
 │   │   ├── chaleur-renouvelable
 │   │   │   ├── AGENTS.md
+│   │   │   ├── bat-enr.spec.ts
 │   │   │   ├── bat-enr.ts
 │   │   │   ├── client
 │   │   │   │   ├── BatEnrBatimentSelection.tsx
@@ -1257,6 +1262,7 @@
 │   │   │   │   ├── FranceRenovAdvisorCallout.tsx
 │   │   │   │   ├── InputWithSuffix.tsx
 │   │   │   │   ├── MethodologyContent.tsx
+│   │   │   │   ├── MethodologySolutionsSection.tsx
 │   │   │   │   ├── OutdoorSpaceCheckboxes.spec.ts
 │   │   │   │   ├── OutdoorSpaceCheckboxes.tsx
 │   │   │   │   ├── ParamsForm.spec.tsx
@@ -1546,6 +1552,8 @@
 │   │   │       │   │   └── ouverture-espace.tsx
 │   │   │       │   └── utilisateur
 │   │   │       │       ├── confirmation-inscription.tsx
+│   │   │       │       ├── double-authentification-activee.tsx
+│   │   │       │       ├── double-authentification-reinitialisee.tsx
 │   │   │       │       └── reinitialisation-mot-de-passe.tsx
 │   │   │       ├── demands
 │   │   │       │   ├── ccrt
@@ -2267,6 +2275,8 @@
 │   │   ├── communique-de-presse-juin2023.tsx
 │   │   ├── communique-de-presse.tsx
 │   │   ├── comparateur-couts-performances.tsx
+│   │   ├── connexion
+│   │   │   └── verification.tsx
 │   │   ├── connexion.tsx
 │   │   ├── contact.tsx
 │   │   ├── contribution.tsx
@@ -2413,6 +2423,7 @@
 │   │   │       ├── 20261027100000_ccrt_demand_notified_at.ts
 │   │   │       ├── 20261029120000_simulations_chaleur_renouvelable.ts
 │   │   │       ├── 20261030100000_add_internal_comment_to_network_change_requests.ts
+│   │   │       ├── 20261030120000_users_totp.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── db-errors.ts
@@ -2528,4 +2539,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-332 directories, 2570 files
+333 directories, 2580 files
