@@ -1,27 +1,24 @@
-## Changelog : lab-anssi-pala (30 derniers jours, au 30 octobre 2026)
+## Changelog : lab-anssi-pala (30 derniers jours, au 05/11/2026)
 
 ### Résumé
-Le projet a franchi une étape majeure en passant d'un prototype à un outil industrialisable. Les évolutions récentes permettent désormais d'automatiser les audits de sécurité de manière régulière, de gérer plusieurs cibles successivement et de conserver un historique des rapports dans une base de données. L'expérience utilisateur est enrichie par des notifications automatiques et une meilleure visibilité sur les coûts de consommation des modèles d'IA.
+Le projet a franchi une étape majeure en passant d'un ensemble de scripts expérimentaux à une plateforme structurée et industrialisée. Il propose désormais deux outils complémentaires pilotés par IA : **Codex Security** (analyse statique de code) et **Shannon** (tests d'intrusion dynamiques). Une nouvelle interface en ligne de commande (CLI) permet d'automatiser des scans complets sur plusieurs cibles, tout en intégrant une gestion fine des coûts et une persistance des résultats.
 
 ### Évolutions fonctionnelles
-- **Automatisation des scans** : Mise en place de tâches planifiées pour exécuter des scans complets automatiquement (tous les 3 jours).
-- **Gestion multi-cibles** : Possibilité d'enchaîner des scans sur plusieurs projets ou domaines de manière séquentielle.
-- **Périmètre intelligent** : Le périmètre de scan est désormais délimité par les modifications Git (diff) sur une fenêtre de temps paramétrable (via l'option `--jours`).
-- **Reporting et notifications** : 
-    - Publication automatique des résultats et des constats de sécurité sur Mattermost.
-    - Persistance des rapports de scan dans une base de données pour consultation ultérieure.
-- **Suivi des coûts** : Affichage d'une estimation du coût du scan (basée sur les tokens consommés) à la fin de chaque exécution.
-- **Interface de présentation** : Ajout d'une page d'accueil (landing page) pour présenter les capacités de PALA.
+- **Nouveaux outils d'audit** : Introduction de Codex Security pour l'analyse statique et de Shannon pour la validation dynamique (pentest).
+- **Nouvelle interface de commande (CLI)** : Mise à disposition d'une suite de commandes TypeScript pour piloter le cycle de vie du projet (`scan`, `validate`, `bootstrap`, `estimer-cout`, etc.).
+- **Automatisation des scans** : Capacité d'enchaîner des scans sur plusieurs cibles de manière séquentielle et programmation de scans périodiques (tous les 3 jours).
+- **Maîtrise des coûts LLM** : Intégration d'un système d'estimation des coûts par scan et mise en place de plafonds budgétaires configurables pour l'utilisation des modèles d'IA.
+- **Reporting et notifications** : Publication automatique des résultats et des constats de sécurité via Mattermost.
+- **Amélioration de l'expérience utilisateur** : Sorties console enrichies (couleurs), aide contextuelle améliorée et gestion de la configuration par fichiers YAML.
 
 ### Évolutions techniques
-- **Persistance des données** : Implémentation de PostgreSQL pour le stockage des scans et des rapports, incluant la gestion des migrations de base de données.
-- **Nouvelle architecture monorepo** : Migration vers une structure de travail avec `pnpm workspaces`, séparant distinctement le backend, le frontend et l'outillage.
-- **Conteneurisation** : Dockerisation complète de l'application et de sa base de données pour faciliter le développement local et le déploiement.
-- **Portage TypeScript** : Migration de l'outillage vers Node.js/TypeScript pour une exécution native et une meilleure robustesse.
-- **Optimisation du Proxy LLM** : Refonte de la gestion du proxy LiteLLM, incluant la possibilité d'utiliser un proxy distant et l'ajout de plafonds de budget configurables.
-- **Amélioration de la CI/CD** : Intégration de tests automatisés (Vitest), de vérifications de qualité de code (ESLint) et de processus de déploiement vers Clever Cloud.
+- **Refonte de l'architecture** : Passage à une structure de monorepo utilisant les **pnpm workspaces** (séparation back, front et outillage) et adoption d'une architecture hexagonale plus robuste.
+- **Gestion des modèles d'IA** : Implémentation d'un proxy **LiteLLM** pour centraliser l'accès aux différents fournisseurs (Albert, Scaleway/DeepSeek) et normaliser les appels.
+- **Persistance des données** : Intégration de **PostgreSQL** pour stocker les rapports de scan et les métadonnées Git (historique des commits analysés).
+- **Conteneurisation et déploiement** : Dockerisation complète de l'application et de sa base de données ; mise en place de pipelines CI/CD pour le déploiement sur Clever Cloud.
+- **Fiabilisation du code** : Mise en place de tests unitaires (Vitest), de l'analyse statique (ESLint) et de hooks de pré-commit.
+- **Gestion de l'environnement** : Centralisation de la configuration via des variables d'environnement et un système de génération de fichiers `.env` sécurisé.
 
 ### Autres changements
-- **Documentation** : Mise à jour approfondie du README et ajout de documents d'architecture (ADR) pour documenter les choix techniques.
-- **Expérience CLI** : Amélioration de l'interface en ligne de commande avec des sorties colorées et une aide plus explicite.
-- **Nettoyage** : Suppression des scripts obsolètes et réorganisation des dossiers pour une meilleure maintenabilité.
+- **Documentation** : Ajout de schémas d'architecture C4, de documents de décision d'architecture (ADR) et mise à jour complète des guides de déploiement et d'utilisation.
+- **Nettoyage** : Suppression des anciens scripts Bash et Python obsolètes au profit de l'outillage TypeScript.

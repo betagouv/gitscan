@@ -36,6 +36,11 @@
 │   │   └── 0002-conserver-les-repos-cibles-et-installations-codex-au-demarrage.md
 │   ├── ajouter-un-outil.md
 │   ├── albert-api.md
+│   ├── architecture-c4.puml
+│   ├── architecture.md
+│   ├── c4-niveau-1-contexte.svg
+│   ├── c4-niveau-2-conteneurs.svg
+│   ├── c4-niveau-3-composants.svg
 │   ├── demarche.md
 │   ├── scaleway-ai-api.md
 │   └── versions.md
@@ -72,24 +77,29 @@
 │   │   │       └── Git.ts
 │   │   ├── codex-security
 │   │   │   ├── adaptateurs
-│   │   │   │   ├── ConteneurProxyDocker.ts
 │   │   │   │   ├── ScannerCodexSecurityNpm.ts
-│   │   │   │   └── ValidationCodexSdk.ts
+│   │   │   │   ├── ValidationCodexSdk.ts
+│   │   │   │   ├── adaptateurProxy.ts
+│   │   │   │   ├── conteneurProxyDockerLocal.ts
+│   │   │   │   └── conteneurProxyDockeurCC.ts
 │   │   │   ├── application
 │   │   │   │   ├── demarreProxy.ts
 │   │   │   │   ├── genereConfigCible.ts
+│   │   │   │   ├── genereConfigurationProxy.ts
 │   │   │   │   ├── lanceScan.ts
 │   │   │   │   ├── prepareCodexSecurity.ts
 │   │   │   │   ├── prepareExecutionCodex.ts
 │   │   │   │   └── valideFinding.ts
 │   │   │   ├── cli
 │   │   │   │   ├── demarre-proxy.ts
+│   │   │   │   ├── genere-config-proxy.ts
 │   │   │   │   ├── genere-config.ts
 │   │   │   │   ├── scan.ts
 │   │   │   │   └── validate.ts
 │   │   │   ├── domaine
 │   │   │   │   ├── ConfigScan.ts
 │   │   │   │   ├── ConfigurationCible.ts
+│   │   │   │   ├── ConfigurationProxyLiteLLM.ts
 │   │   │   │   ├── DossierDeSortie.ts
 │   │   │   │   ├── Perimetre.ts
 │   │   │   │   ├── cheminConfig.ts
@@ -111,6 +121,7 @@
 │   │   │   ├── demarre-proxy.ts
 │   │   │   ├── dependances.ts
 │   │   │   ├── estimer-cout.ts
+│   │   │   ├── genere-config-proxy.ts
 │   │   │   ├── genere-config.ts
 │   │   │   ├── genere-env.ts
 │   │   │   ├── notificationScan.ts
@@ -153,7 +164,8 @@
 │   │   │   │   ├── entrepots
 │   │   │   │   │   └── postgres
 │   │   │   │   │       └── entrepotDeScanPostgres.ts
-│   │   │   │   └── processus.ts
+│   │   │   │   ├── processus.ts
+│   │   │   │   └── systemeDeFichierCellar.ts
 │   │   │   ├── ligne-de-commande.ts
 │   │   │   ├── partage
 │   │   │   │   └── scan.ts
@@ -209,11 +221,13 @@
 │       │   ├── application
 │       │   │   ├── demarreProxy.spec.ts
 │       │   │   ├── genereConfigCible.spec.ts
+│       │   │   ├── genereConfigurationProxy.spec.ts
 │       │   │   ├── lanceScan.spec.ts
 │       │   │   ├── prepareCodexSecurity.spec.ts
 │       │   │   └── valideFinding.spec.ts
 │       │   ├── cli
 │       │   │   ├── demarre-proxy.spec.ts
+│       │   │   ├── genere-config-proxy.spec.ts
 │       │   │   ├── genere-config.spec.ts
 │       │   │   ├── scan.spec.ts
 │       │   │   └── validate.spec.ts
@@ -221,6 +235,7 @@
 │       │       ├── cheminConfig.spec.ts
 │       │       ├── configScan.spec.ts
 │       │       ├── configurationCible.spec.ts
+│       │       ├── configurationProxyLiteLLM.spec.ts
 │       │       ├── constat.spec.ts
 │       │       ├── dureeDuScan.spec.ts
 │       │       ├── perimetre.spec.ts
@@ -258,7 +273,6 @@
 │       │   └── adaptateurs
 │       │       └── messagerieMattermost.spec.ts
 │       ├── noyau
-│       │   ├── environnement.spec.ts
 │       │   └── infrastructutre
 │       │       ├── busEvenementsPALA.spec.ts
 │       │       ├── consoleNode.spec.ts
@@ -296,9 +310,16 @@
 │   │   │   ├── consignes-scan.md
 │   │   │   └── scaleway-deepseek-minimal.yaml
 │   │   ├── litellm
+│   │   │   ├── .dockerignore
 │   │   │   ├── Dockerfile
 │   │   │   ├── config.yaml
-│   │   │   └── json_schema_to_object.py
+│   │   │   ├── entrypoint.sh
+│   │   │   ├── json_schema_to_object.py
+│   │   │   └── telechargement-config
+│   │   │       ├── README.md
+│   │   │       ├── package-lock.json
+│   │   │       ├── package.json
+│   │   │       └── telecharge-config.mjs
 │   │   ├── package-lock.json
 │   │   ├── package.json
 │   │   ├── scripts
@@ -384,4 +405,4 @@
 │       └── vite.config.ts
 ├── tsconfig.json
 └── vitest.config.ts
-114 directories, 272 files
+115 directories, 292 files

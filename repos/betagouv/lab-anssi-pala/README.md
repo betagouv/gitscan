@@ -1,14 +1,14 @@
 # PALA — Pentest agentique, Lab ANSSI
 
-PALA est une suite d'**outils d'audit de sécurité pilotés par des agents LLM**, sur une
-cible fournie par l'utilisateur, avec des **modèles souverains** (Albert — DINUM, Scaleway).
+**PALA** est une **expérimentation du Lab ANSSI** mettant à disposition des **outils d'audit de sécurité pilotés par des agents LLM**, sur une
+cible fournie par l'utilisateur.
 
-Le but d’un tel outil est de disposer des mêmes leviers que des personnes mal intentionnées en les tournant à notre avantage :
+Le but d’un tel outil est de mettre à disposition des leviers d’aide à la sécurisation de ses applications :
 
-- utiliser des LLM de génération et d’assistance de code
-- utiliser des agents spécialisés dans la sécurité
-- effectuer une analyse alliant la découverte, la preuve et la correction
-- tout cela sur des bases de code qui évoluent quotidiennement
+- en utilisant des LLM de génération et d’assistance de code
+- en utilisant des agents spécialisés dans la sécurité
+- en effectuant une analyse alliant la découverte, la preuve et la correction
+- tout cela sur des bases de code évoluant quotidiennement
 
 **L’outil est pensé en 2 parties distinctes :**
 
@@ -42,10 +42,14 @@ Security, qui ne parle que l'API _Responses_, un **proxy LiteLLM local** fait la
 garde la clé du fournisseur hors de l'environnement de l'agent (voir
 [documentation Codex](outils/codex-security/README.md) de PALA).
 
+## Architecture
+
+Un modèle C4 détaille l’architecture [ici](documentation/architecture.md)
+
 ## Démarrage
 
 Prérequis : Node.js 24.22.1 (version épinglée dans `.nvmrc`), Python ≥ 3.10, Docker. Les modèles sont fournis par un fournisseur
-compatible OpenAI (Albert ou Scaleway).
+compatible OpenAI.
 
 L’outil dispose d’une CLI dont les commandes sont détaillées ci-dessous.
 
@@ -60,7 +64,8 @@ L’outil dispose d’une CLI dont les commandes sont détaillées ci-dessous.
     commit id: "Démarre proxy LiteLLM"
     checkout main
     merge develop
-    commit id: "Lancement d’un scan"
+    commit id: "Lancement d’un scan Codex"
+    commit id: "Lancement d’un pentest Shannon"
 ```
 
 #### Préparation / bootstrap d’une cible
@@ -75,10 +80,13 @@ pnpm run pala:bootstrap --project <nom> --url <url git>
 pnpm run pala:génère-env
 ```
 
-La configuration du fournisseur se fait par les variables `FOURNISSEUR_*` du `.env` racine :
+La configuration du fournisseur se fait par les variables `FOURNISSEUR_*` du `.env` racine (une configuration est embarquée pour Albert) :
 
-- [Albert](documentation/albert-api.md)
-- [Scaleway](documentation/scaleway-ai-api.md)
+```text
+FOURNISSEUR_NOM=albert,
+FOURNISSEUR_BASE_URL=<url Albert>,
+FOURNISSEUR_API_KEY=<clé Albert>
+```
 
 #### Génération de la configuration
 

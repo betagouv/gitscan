@@ -1,3 +1,27 @@
+2026-11-05T14:51:35+01:00 - a60e5ab - beta-gouv-renovate[bot] : [RENOVATE] Update dependency pnpm to v10.34.9
+2026-11-05T14:41:14+01:00 - f8c649d - Bertrand Bougon : Durcit l’image docker de litellm
+2026-11-05T14:41:14+01:00 - e772141 - Bertrand Bougon : Instancie un système de fichier Cellar pour le proxy
+2026-11-05T14:41:14+01:00 - deeba03 - Bertrand Bougon : Embarque un module node qui télécharge la config au démarrage du container
+2026-11-05T14:41:14+01:00 - dea1a3e - Bertrand Bougon : Fais appel à la configuration pour obtenir le chemin du fichier de configuration du proxy
+2026-11-05T14:41:14+01:00 - d3ba595 - Bertrand Bougon : Redémarre le proxy distant
+2026-11-05T14:41:14+01:00 - b700cf8 - Bertrand Bougon : Déplace l’instanciation du conteneur Proxy dans un adaptateur
+2026-11-05T14:41:14+01:00 - 59db1b5 - Bertrand Bougon : Implémente un système de fichier Cellar
+2026-11-05T14:41:14+01:00 - 35b9d53 - Bertrand Bougon : [REMANIEMENT] Modifie la signature de l’adaptateur proxy
+2026-11-05T14:41:14+01:00 - 34ccec0 - Bertrand Bougon : [SOIN] Expose un chemin pour le fichier de configuration
+2026-11-05T14:41:14+01:00 - 047b5a2 - Bertrand Bougon : [SOIN] Renomme le proxy docker en ConteneurProxyDockerLocal
+2026-11-04T19:02:26+01:00 - 2e3703d - beta-gouv-renovate[bot] : [RENOVATE] Update dependency node to v24.22.2
+2026-11-02T15:48:57+01:00 - 4592e8f - Bertrand Bougon : Ajoute l’étape de lancement de pentest Shannon dans la cinématique
+2026-11-02T15:48:57+01:00 - 243c8be - Bertrand Bougon : [DOC] Ajoute un schéma d’architecture C4
+2026-11-02T14:08:05+01:00 - ef9b3ac - Bertrand Bougon : Mets en avant qu’il s’agit d’une expérimentation du Lab
+2026-11-02T14:07:32+01:00 - f3ac54f - Bertrand Bougon : Revois l’explication du but de PALA
+2026-11-02T11:42:07+01:00 - fe484dd - Bertrand Bougon : Ajoute la configuration générée du proxy LiteLLM ... objet-valeur `ConfigurationProxyLiteLLM` (model_list d'une entrée, `litellm_settings` conservé) et chemin `config-genere.yaml`
+2026-11-02T11:42:07+01:00 - f7d4ce0 - Bertrand Bougon : Génère la config du proxy avant de démarrer le proxy ... étape globale `genereConfigProxy` insérée entre `genereEnv` et `demarreProxy` dans le scan complet
+2026-11-02T11:42:07+01:00 - edb9e5d - Bertrand Bougon : Lit le modèle et les coûts du proxy depuis l'environnement ... `environnement.modeleProxy()` : coûts par token requis, paramètres d'échantillonnage optionnels
+2026-11-02T11:42:07+01:00 - ceac784 - Bertrand Bougon : Expose la génération de config du proxy en ligne de commande ... CLI `génère-config-proxy`, composition et script pnpm `codex:génère-config-proxy`
+2026-11-02T11:42:07+01:00 - 97b99dd - Bertrand Bougon : Documente la génération de la config du proxy LiteLLM ... README de l'outil, `.env.example` (coûts et modèle) et guide de déploiement Clever
+2026-11-02T11:42:07+01:00 - 70d6b7b - Bertrand Bougon : Ajoute le cas d'usage de génération de la config du proxy ... `GenereConfigurationProxy` écrit `config-genere.yaml` depuis le .env (annule et remplace), valide les coûts
+2026-11-02T11:42:07+01:00 - 570efb1 - Bertrand Bougon : Ignore le fichier `config-genere.yaml` généré
+2026-11-02T11:42:07+01:00 - 38dc960 - Bertrand Bougon : Pointe le proxy local sur `config-genere.yaml`
 2026-10-30T18:28:54+01:00 - 92ea1eb - Bertrand Bougon : Ajoute un résumé de l’intention de PALA
 2026-10-30T18:23:45+01:00 - f48eb59 - Bertrand Bougon : Publie le rapport lorsque le scan est terminé
 2026-10-30T18:23:45+01:00 - 981f74f - Bertrand Bougon : Persiste le rapport dans l’entrepôt de scan
