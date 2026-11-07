@@ -1,20 +1,15 @@
-## Changelog : resorption-bidonvilles (30 derniers jours, au 28/10/2026)
+## Changelog : resorption-bidonvilles (30 derniers jours, au 28 octobre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur l'amélioration de la clarté de l'interface utilisateur et la gestion des erreurs. La plateforme bénéficie désormais d'une meilleure distinction entre les environnements de travail et d'une présentation plus structurée des erreurs d'indicateurs. Des ajustements visuels ont également été effectués pour épurer l'expérience utilisateur.
+Ce mois-ci, la plateforme a bénéficié d'améliorations significatives pour la gestion des erreurs de données et l'expérience utilisateur. Les utilisateurs disposent désormais d'une meilleure visibilité sur les erreurs d'indicateurs et d'un indicateur clair pour identifier l'environnement de préproduction. L'interface a également été épurée avec la suppression de certains bandeaux d'alerte et l'ajout d'une annonce pour la Journée de la Résorption.
 
 ### Évolutions fonctionnelles
-- Ajout d'une fenêtre contextuelle (popup) pour présenter les nouveautés liées à la Journée de la Résorption [#2792](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2792).
-- Mise en place d'un signalement visuel permettant d'identifier immédiatement l'environnement de préproduction [#2782](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2782).
-- Amélioration de la gestion des erreurs d'indicateurs : les messages sont désormais plus explicites et regroupés par année pour faciliter la lecture [#2781](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2781).
-- Optimisation du système de focus lors de la consultation des erreurs d'indicateurs [#2781](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2781).
-- Suppression du bandeau d'alerte "canicule" sur le tableau de bord, la liste des sites et les fiches sites.
+- Ajout d'une fenêtre contextuelle (popup) pour annoncer les nouveautés liées à la Journée de la Résorption [#2792](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2792).
+- Amélioration de la gestion des erreurs d'indicateurs : regroupement par année, ajout de préfixes pour les messages scolaires et amélioration de la gestion du focus sur les erreurs [#2781](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2781).
+- Mise en place d'un signalement visuel pour identifier l'environnement de préproduction [#2782](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2782).
+- Retrait du bandeau d'alerte "canicule" sur l'ensemble de l'interface (tableau de bord, liste des sites et fiches sites).
 
 ### Évolutions techniques
-- Refactorisation des styles pour privilégier l'utilisation de Tailwind CSS au détriment des styles "scoped".
-- Optimisation du code via l'ajout d'utilitaires de regroupement des erreurs par année [#2781](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2781).
-- Amélioration du composant `ErrorSummary` (rendu de la propriété message optionnelle et ajout de l'émission d'un événement `select`) [#2781](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2781).
-- Simplification de la gestion du favicon pour l'environnement de préproduction [#2782](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2782).
-
-### Autres changements
-- Publication des versions v2.60.2, v2.60.3 et v2.60.4.
+- Refactorisation du système de style : passage de l'utilisation de styles "scoped" vers Tailwind CSS.
+- Optimisation du composant `ErrorSummary` pour rendre la propriété de message optionnelle et permettre l'émission d'un événement `select` [#2781](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2781).
+- Simplification de la gestion des favicons en supprimant la distinction spécifique pour l'environnement de préproduction [#2782](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2782).
