@@ -185,6 +185,14 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20261103100000_keeps_who_changed_the_remark_status
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261103110000_records_recused_members
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261103120000_mentions_the_recusal_in_official_report
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261103180000_gives_members_a_recusal_title
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20261104120000_keeps_the_recused_member_changes
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -367,6 +375,8 @@
 │   │   │   │   │   │   │   │   └── renderers
 │   │   │   │   │   │   │   │       ├── __snapshots__
 │   │   │   │   │   │   │   │       │   └── official-report.html.spec.ts.snap
+│   │   │   │   │   │   │   │       ├── official-report-note.html.spec.ts
+│   │   │   │   │   │   │   │       ├── official-report-note.html.ts
 │   │   │   │   │   │   │   │       ├── official-report.html.spec.ts
 │   │   │   │   │   │   │   │       ├── official-report.html.ts
 │   │   │   │   │   │   │   │       └── official-report.renderer.ts
@@ -738,6 +748,10 @@
 │   │   │   │   │   └── remarks.service.ts
 │   │   │   │   ├── report
 │   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── member-report-state.spec.ts
+│   │   │   │   │   │   ├── member-report-state.ts
+│   │   │   │   │   │   ├── report-lock.spec.ts
+│   │   │   │   │   │   ├── report-lock.ts
 │   │   │   │   │   │   ├── report.spec.ts
 │   │   │   │   │   │   ├── report.ts
 │   │   │   │   │   │   ├── session-reports.spec.ts
@@ -777,6 +791,8 @@
 │   │   │   │   │   └── transparence
 │   │   │   │   │       ├── archived-sessions.controller.ts
 │   │   │   │   │       ├── domain
+│   │   │   │   │       │   ├── affectations-publication.spec.ts
+│   │   │   │   │       │   ├── affectations-publication.ts
 │   │   │   │   │       │   ├── audition-publication.spec.ts
 │   │   │   │   │       │   ├── audition-publication.ts
 │   │   │   │   │       │   ├── auto-affectation
@@ -792,6 +808,7 @@
 │   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.spec.ts
 │   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.ts
 │   │   │   │   │       │   ├── nomination-file-snapshot.ts
+│   │   │   │   │       │   ├── publication.ts
 │   │   │   │   │       │   ├── session-label.spec.ts
 │   │   │   │   │       │   ├── session-label.ts
 │   │   │   │   │       │   ├── session-transparence-file-status.spec.ts
@@ -802,6 +819,7 @@
 │   │   │   │   │       ├── infrastructure
 │   │   │   │   │       │   ├── dtos
 │   │   │   │   │       │   │   ├── auto-affectation.dto.ts
+│   │   │   │   │       │   │   ├── nomination-file.dto.spec.ts
 │   │   │   │   │       │   │   ├── nomination-file.dto.ts
 │   │   │   │   │       │   │   ├── session-audition.dto.ts
 │   │   │   │   │       │   │   └── transparence-session.dto.ts
@@ -816,6 +834,7 @@
 │   │   │   │   │       │   │   ├── nomination-file-jurisdictions.finder.ts
 │   │   │   │   │       │   │   ├── nomination-file-outcomes.finder.ts
 │   │   │   │   │       │   │   ├── nomination-files-progress.finder.ts
+│   │   │   │   │       │   │   ├── recused-members.finder.ts
 │   │   │   │   │       │   │   ├── reported-sessions.finder.ts
 │   │   │   │   │       │   │   ├── reporters-affectation.finder.ts
 │   │   │   │   │       │   │   ├── session-auditions.finder.ts
@@ -838,7 +857,6 @@
 │   │   │   │   │       │   │   ├── detail-nomination-file-attachment.query.ts
 │   │   │   │   │       │   │   ├── detail-nomination-file-audition-history.query.spec.ts
 │   │   │   │   │       │   │   ├── detail-nomination-file-audition-history.query.ts
-│   │   │   │   │       │   │   ├── detail-nomination-session-affectation-version.query.ts
 │   │   │   │   │       │   │   ├── detail-nomination-session-attachment.query.ts
 │   │   │   │   │       │   │   ├── detail-nomination-session.query.ts
 │   │   │   │   │       │   │   ├── detail-session-comment.query.ts
@@ -899,6 +917,9 @@
 │   │   │   │   │   │   └── summary.policies.ts
 │   │   │   │   │   ├── priority.enum.ts
 │   │   │   │   │   ├── proposing-authority.enum.ts
+│   │   │   │   │   ├── protocol-order.spec.ts
+│   │   │   │   │   ├── protocol-order.ts
+│   │   │   │   │   ├── publication-status.enum.ts
 │   │   │   │   │   ├── report-file-usage.enum.ts
 │   │   │   │   │   ├── report-state.enum.ts
 │   │   │   │   │   ├── role.enum.ts
@@ -1332,6 +1353,7 @@
 │       │   │   │   │   ├── RequiredOutcomeCommentsModal.tsx
 │       │   │   │   │   ├── SessionFilesTable.tsx
 │       │   │   │   │   ├── SgSessionFilesTable.stories.tsx
+│       │   │   │   │   ├── SgSessionFilesTable.test.tsx
 │       │   │   │   │   ├── SgSessionFilesTable.tsx
 │       │   │   │   │   └── cells
 │       │   │   │   │       ├── MemberReportStateCell.tsx
@@ -1369,6 +1391,7 @@
 │       │   │   │   │       │   │   ├── member-memo
 │       │   │   │   │       │   │   │   ├── MemberMemo.test.tsx
 │       │   │   │   │       │   │   │   └── MemberMemo.tsx
+│       │   │   │   │       │   │   ├── member-tag.ts
 │       │   │   │   │       │   │   ├── missing-evaluation
 │       │   │   │   │       │   │   │   ├── MissingEvaluation.test.tsx
 │       │   │   │   │       │   │   │   └── MissingEvaluation.tsx
@@ -1377,6 +1400,15 @@
 │       │   │   │   │       │   │   │   ├── Outcome.tsx
 │       │   │   │   │       │   │   │   ├── OutcomeSelect.test.tsx
 │       │   │   │   │       │   │   │   └── OutcomeSelect.tsx
+│       │   │   │   │       │   │   ├── recused-members
+│       │   │   │   │       │   │   │   ├── AffectedRecusedMembersNotice.tsx
+│       │   │   │   │       │   │   │   ├── MemberPropositionsList.tsx
+│       │   │   │   │       │   │   │   ├── RecusalIcon.tsx
+│       │   │   │   │       │   │   │   ├── RecusedMemberSelect.tsx
+│       │   │   │   │       │   │   │   ├── RecusedMembers.test.tsx
+│       │   │   │   │       │   │   │   ├── RecusedMembers.tsx
+│       │   │   │   │       │   │   │   ├── RecusedReportersNotice.tsx
+│       │   │   │   │       │   │   │   └── recused-reporters.ts
 │       │   │   │   │       │   │   └── sg-comment
 │       │   │   │   │       │   │       ├── SgComment.test.tsx
 │       │   │   │   │       │   │       └── SgComment.tsx
@@ -1543,6 +1575,7 @@
 │       │   │       │   │   ├── AuditionsPublication.test.tsx
 │       │   │       │   │   ├── AuditionsPublicationBadge.tsx
 │       │   │       │   │   ├── AuditionsPublishButton.tsx
+│       │   │       │   │   ├── SessionAuditionsTable.stories.tsx
 │       │   │       │   │   └── SessionAuditionsTable.tsx
 │       │   │       │   ├── documents
 │       │   │       │   │   ├── DocActionAgendaFiles.tsx
@@ -1567,6 +1600,7 @@
 │       │   │       │   │   ├── MissingEvaluationComment.tsx
 │       │   │       │   │   ├── MissingEvaluationDoneButton.test.tsx
 │       │   │       │   │   ├── MissingEvaluationDoneButton.tsx
+│       │   │       │   │   ├── MissingEvaluationsTable.stories.tsx
 │       │   │       │   │   └── MissingEvaluationsTable.tsx
 │       │   │       │   ├── nomination-file-attachments
 │       │   │       │   │   ├── AddNominationFileAttachmentModal.test.tsx
@@ -1675,6 +1709,7 @@
 │       │   │   │       ├── PresentationsTabReady.tsx
 │       │   │   │       └── PresentationsTabsPage.tsx
 │       │   │   ├── error
+│       │   │   │   ├── ErrorPage.test.tsx
 │       │   │   │   └── ErrorPage.tsx
 │       │   │   ├── feedback
 │       │   │   │   ├── FeedbackPage.stories.tsx
@@ -1722,6 +1757,7 @@
 │       │   │   │   ├── member
 │       │   │   │   │   └── MemberContentLayout.tsx
 │       │   │   │   └── secretariat-general
+│       │   │   │       ├── SecretariatGeneralPage.stories.tsx
 │       │   │   │       └── SecretariatGeneralPage.tsx
 │       │   │   ├── summary
 │       │   │   │   ├── SummaryPage.stories.tsx
@@ -1825,6 +1861,9 @@
 │       │   │   │   │   ├── PriorityBadge.tsx
 │       │   │   │   │   ├── PriorityBadgeList.stories.tsx
 │       │   │   │   │   └── index.ts
+│       │   │   │   ├── recused-reporter-banner
+│       │   │   │   │   ├── RecusedReporterBanner.tsx
+│       │   │   │   │   └── index.ts
 │       │   │   │   ├── report-state-tag
 │       │   │   │   │   ├── ReportStateTag.stories.tsx
 │       │   │   │   │   ├── ReportStateTag.tsx
@@ -1888,6 +1927,9 @@
 │       │   │   │   ├── useBeforeUnload
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useBeforeUnload.ts
+│       │   │   │   ├── useBreadcrumbRoot
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── useBreadcrumbRoot.ts
 │       │   │   │   ├── useDateAndTime
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useDateAndTime.ts
@@ -1902,6 +1944,10 @@
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── useFoldWithScroll.ts
 │       │   │   │   │   └── usePinnedBar.ts
+│       │   │   │   ├── usePouvoirDeProposition
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── usePouvoirDeProposition.test.tsx
+│       │   │   │   │   └── usePouvoirDeProposition.ts
 │       │   │   │   ├── useRequestFailure
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── useRequestFailure.test.tsx
@@ -2209,6 +2255,7 @@
 │   │   ├── 2026-10-19-regles-metier-servies-comme-capacites.md
 │   │   ├── 2026-10-20-compilation-avec-typescript-7.md
 │   │   └── 2026-10-22-droit-d-administrateur-hors-du-role.md
+│   ├── donnees-fictives.md
 │   └── droits-par-role.md
 ├── package.json
 ├── packages
@@ -2235,6 +2282,7 @@
 │       ├── .oxlintrc.json
 │       ├── fictitious-archive
 │       │   ├── fictitious-archive.ts
+│       │   ├── fictitious-transparences.ts
 │       │   ├── generate-fictitious-archive.ts
 │       │   ├── lolfi-referential.ts
 │       │   ├── magistrat-career.ts
@@ -2272,4 +2320,4 @@
 │   ├── .gitkeep
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.ts
-469 directories, 1805 files
+477 directories, 1845 files
