@@ -6,15 +6,58 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [v0.4.0] - 2026-11-05
+
+### Added
+
+- ✨(admin) filter users whose email is not normalized
+
+### Fixed
+
+- 💚(ci) scope Playwright browsers cache to the runner image
+
+### Changed
+
+- 🔥(users) remove unused get_user_by_sub_or_email
+- ♻️(users) match emails in a single normalized form
+
+## [v0.3.0] - 2026-11-02
+
+### Added
+
+- ✨(login) add "Projets" logo
+- ✨(login) brand header login by product
+- ✨(admin) add read-only identity providers admin
+- 📈(auth) allow requesting ProConnect `roles` scope and track public agent roles
+
+### Fixed
+
+- ✅(users) pin logged-in user name to fix flaky search API tests
+- ✅(auth) fix flaky `auth_time` assertion in OIDC e2e test
+- ⏪️(auth) downgrade python-social-auth to 6.x to fix a crash
+- 🐛(oidc) fix `iss` authorization response parameter
+- 🐛(oidc) forward the upstream sub when no accounts user is linked
+
+## [v0.2.1] - 2026-10-26
+
+### Fixed
+
+- 🐛(auth) fix crash on failed login to the Django admin
+- 🥅(OIDC Provider) recover from invalid token in RP-Initiated logout
+
+## [v0.2.0] - 2026-10-07
+
 ### Added
 
 - 📈(backend) track login, logout, and some OIDC events
 - 📈(backend) track django's auth events
 - 🔒(OP) Enable most of the RFC 9700 Security Best Current Practice
+- 📈(auth) track accounts creation and association
 
 ## [v0.1.0] - 2026-09-24
 
 ### Added
+
 - 💄(frontend) add userMenu on footer
 - 💄(frontend) add profile home page
 - 💄(frontend) add intermediate login page
@@ -35,11 +78,14 @@ and this project adheres to
 - 🏗️ (authentication) generate our own `sub`
 - ✨(auth) also logout from the upstream OIDC Provider when logging out
 
-
 ### Fixed
 
 - 🩹(frontend) remove unused language
 - 🩹(frontend) enable trailingSlash to fix static export routes
 
-[unreleased]: https://github.com/suitenumerique/accounts/compare/v0.1.0...main
+[unreleased]: https://github.com/suitenumerique/accounts/compare/v0.4.0...main
+[v0.4.0]: https://github.com/suitenumerique/accounts/compare/v0.3.0...v0.4.0
+[v0.3.0]: https://github.com/suitenumerique/accounts/compare/v0.2.1...v0.3.0
+[v0.2.1]: https://github.com/suitenumerique/accounts/compare/v0.2.0...v0.2.1
+[v0.2.0]: https://github.com/suitenumerique/accounts/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/suitenumerique/accounts/releases/v0.1.0

@@ -109,12 +109,14 @@
     │   │   └── wsgi.py
     │   ├── authentication
     │   │   ├── __init__.py
+    │   │   ├── admin.py
     │   │   ├── apps.py
     │   │   ├── backends.py
     │   │   ├── factories.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_uuid7_pk.py
+    │   │   │   ├── 0003_identityprovideruser_id_key.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── settings.py
@@ -126,10 +128,13 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_oidc_auth_flow.py
     │   │   │   │   └── test_oidc_logout_flow.py
+    │   │   │   ├── test_admin.py
     │   │   │   ├── test_backends.py
+    │   │   │   ├── test_models.py
     │   │   │   ├── test_strategies.py
     │   │   │   └── test_views.py
     │   │   ├── urls.py
+    │   │   ├── utils.py
     │   │   └── views.py
     │   ├── conftest.py
     │   ├── core
@@ -169,16 +174,20 @@
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_admin_users.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_migrations_normalize_emails.py
     │   │   │   ├── test_models_users.py
     │   │   │   └── utils
     │   │   │       ├── __init__.py
+    │   │   │       ├── test_emails.py
     │   │   │       ├── test_state.py
     │   │   │       └── test_urls.py
     │   │   ├── urls.py
     │   │   ├── utils
     │   │   │   ├── analytics.py
+    │   │   │   ├── emails.py
     │   │   │   ├── state.py
     │   │   │   └── urls.py
     │   │   └── validators.py
@@ -246,6 +255,7 @@
     │   │   │   ├── 0003_remove_user_metadata.py
     │   │   │   ├── 0004_uuid7_pk.py
     │   │   │   ├── 0005_accounts_sub.py
+    │   │   │   ├── 0006_normalize_emails.py
     │   │   │   └── __init__.py
     │   │   └── models.py
     │   └── uv.lock
@@ -266,14 +276,25 @@
     │   │   │   ├── public
     │   │   │   │   ├── assets
     │   │   │   │   │   ├── lasuite-logomark.svg
-    │   │   │   │   │   ├── lasuite-mark.svg
     │   │   │   │   │   ├── logout-exit-icon.svg
     │   │   │   │   │   ├── logout-illustration.svg
     │   │   │   │   │   ├── moncompte-logo.svg
     │   │   │   │   │   ├── proconnect-logo.svg
     │   │   │   │   │   └── union.svg
     │   │   │   │   ├── favicon.ico
-    │   │   │   │   └── favicon.png
+    │   │   │   │   ├── favicon.png
+    │   │   │   │   └── images
+    │   │   │   │       ├── .gitkeep
+    │   │   │   │       ├── assistant.svg
+    │   │   │   │       ├── docs.svg
+    │   │   │   │       ├── fichiers.svg
+    │   │   │   │       ├── grist.svg
+    │   │   │   │       ├── messagerie.svg
+    │   │   │   │       ├── projets.svg
+    │   │   │   │       ├── regie.svg
+    │   │   │   │       ├── tchap.svg
+    │   │   │   │       ├── transcripts.svg
+    │   │   │   │       └── visio.svg
     │   │   │   ├── src
     │   │   │   │   ├── components
     │   │   │   │   │   ├── AppFooter
@@ -308,10 +329,13 @@
     │   │   │   │   │   │   ├── Auth.tsx
     │   │   │   │   │   │   ├── conf.ts
     │   │   │   │   │   │   └── types.ts
-    │   │   │   │   │   └── config
-    │   │   │   │   │       ├── ConfigProvider.tsx
-    │   │   │   │   │       ├── types.ts
-    │   │   │   │   │       └── useApiConfig.ts
+    │   │   │   │   │   ├── config
+    │   │   │   │   │   │   ├── ConfigProvider.tsx
+    │   │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   │   └── useApiConfig.ts
+    │   │   │   │   │   └── product
+    │   │   │   │   │       ├── products.ts
+    │   │   │   │   │       └── useProduct.ts
     │   │   │   │   ├── i18n
     │   │   │   │   │   ├── config.ts
     │   │   │   │   │   ├── initI18n.ts
@@ -426,4 +450,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-114 directories, 314 files
+116 directories, 336 files
