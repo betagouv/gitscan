@@ -1,31 +1,32 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 04/11/2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec l'enrichissement des contenus sur les métiers de la cybersécurité et le lancement de la nouvelle section dédiée à la formation. L'interface a également été affinée pour offrir une expérience plus fluide, une meilleure gestion du mode sombre et une identité visuelle mise à jour.
+Cette période a été marquée par un enrichissement majeur de l'offre de découverte des métiers. La plateforme propose désormais une page dédiée aux métiers avec des parcours interactifs (exploration, témoignages de pros, suivi de parcours) et une meilleure intégration des données professionnelles. L'expérience utilisateur a également été affinée via des corrections de contenu et des améliorations visuelles.
 
 ### Évolutions fonctionnelles
-- **Enrichissement de la section "Métiers"** : intégration de nouvelles données (familles de métiers, fonctions et ressources) et mise à disposition de nouvelles fonctionnalités de recherche et de consultation.
-- **Lancement de la section "Se former"** : création de la page "Se former et s'entraîner en ligne" et mise en place de parcours de sélection ("Je me mesure" et "Je m'entraîne").
-- **Optimisation de l'interface utilisateur** : 
-    - Corrections de textes (wording) pour plus de clarté.
+- **Découverte des métiers** : Mise en ligne de la page "Les métiers" incluant des onglets interactifs ("J'explore", "J'écoute les Pros", "Je trace ma route") et des fiches détaillées par famille de métiers.
+- **Contenu professionnel** : Ajout de vignettes de professionnels et de témoignages pour enrichir l'exploration des métiers.
+- **Parcours de formation** : Implémentation de la page "Se former et s'entraîner" et ajout d'un test cyber sur la page d'accueil.
+- **Expérience utilisateur (UX/UI)** : 
     - Amélioration de l'application du mode sombre.
-    - Mise à jour de l'en-tête (retrait du logo et de la tagline ANSSI).
-    - Gestion plus propre de l'affichage des illustrations (image générique par défaut).
+    - Corrections de textes (wording) pour plus de clarté.
+    - Ajustements de l'identité visuelle (retrait de certains éléments de branding ANSSI).
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** : 
-    - Migration de la stack vers Node.js 26.
-    - Passage de l'environnement de CI sur Ubuntu 26.04.
-- **Outillage de développement** : 
-    - Ajout du support Nix pour l'environnement de développement.
+- **Architecture & API** : 
+    - Création de nouveaux endpoints pour la gestion des familles de métiers et des fonctions.
+    - Développement d'APIs dédiées aux parcours de sélection ("Je me mesure" et "Je m'entraîne").
+    - Intégration de Grist comme source de données pour les métiers, fonctions et profils.
+- **Infrastructure & CI/CD** : 
+    - Migration de la stack vers Node.js 26 et Ubuntu 26.04.
+    - Ajout du support Nix pour l'environnement de développement (shell Nix).
+    - Mise à jour de la chaîne de tests avec le support de Vitest 5.
+- **Qualité & Tooling** : 
+    - Passage en ESM pour la configuration Vitest backend.
     - Automatisation du tri des imports.
-    - Support de Vitest 5 pour les tests.
-- **Architecture et Qualité** : 
-    - Refactorisation du module "Métiers" pour une meilleure gestion des entités et des constructeurs.
     - Centralisation des instructions pour les agents d'IA.
-    - Amélioration de la clarté et de l'explicité des tests unitaires.
-    - Optimisation des logs pour le débogage de l'authentification.
+    - Amélioration de la gestion des erreurs et de la persistance des résultats de tests.
 
 ### Autres changements
-- **Documentation** : réorganisation complète du guide de développement.
-- **Style de code** : ajustement des règles de formatage pour accepter des lignes allant jusqu'à 120 caractères.
+- **Documentation** : Réorganisation complète du guide de développement.
+- **Nettoyage** : Suppression des logs de debug d'authentification et optimisation du formatage du code.
