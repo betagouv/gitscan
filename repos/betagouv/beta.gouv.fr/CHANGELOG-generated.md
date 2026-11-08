@@ -1,13 +1,13 @@
-## Changelog : beta.gouv.fr (30 derniers jours, au 30 octobre 2026)
+## Changelog : beta.gouv.fr (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Les évolutions récentes se concentrent sur l'optimisation des processus internes via l'automatisation et la mise à jour de certaines informations relatives aux startups de l'incubateur.
+Les récentes évolutions se concentrent sur la mise à jour du catalogue des projets de l'incubateur (suppressions et renommages de fiches) et sur l'optimisation des processus d'automatisation internes pour faciliter la gestion des données.
 
 ### Évolutions fonctionnelles
-- Mise à jour du nom de la startup "archeo-data", désormais "archeodonnees" ([#21708](https://github.com/betagouv/beta.gouv.fr/pull/21708)).
+- Mise à jour de la liste des startups : suppression de la fiche "OOTS" [#21727](https://github.com/betagouv/beta.gouv.fr/pull/21727) et renommage de "archeo-data" en "archeodonnees" [#21708](https://github.com/betagouv/beta.gouv.fr/pull/21708).
 
 ### Évolutions techniques
-- Automatisation de l'approbation des pull requests concernant l'export de l'espace membre ([#21716](https://github.com/betagouv/beta.gouv.fr/pull/21716)).
+- Automatisation du workflow de validation : les Pull Requests concernant les exports de l'espace membre sont désormais approuvées automatiquement [#21716](https://github.com/betagouv/beta.gouv.fr/pull/21716).
 
 ### Autres changements
-- Maintenance régulière et automatisée de la base de données via le `secretariat-bot`.
+- Maintenance régulière de la base de données via des mises à jour automatisées par le bot de secrétariat.
