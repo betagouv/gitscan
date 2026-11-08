@@ -1,8 +1,7 @@
 .
 ├── .changeset
 │   ├── README.md
-│   ├── config.json
-│   └── identite-drop-find-by-verified-email-domain.md
+│   └── config.json
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -396,7 +395,8 @@
 │   ├── 1789636400247_create-recovery-codes-table.ts
 │   ├── 1793174800208_add-interaction-cid-and-outcome-to-users-oidc-clients.ts
 │   ├── 1793275986382_create-activity-logs-table.ts
-│   └── 1793291976677_add-cause-activity-id-to-activity-logs.ts
+│   ├── 1793291976677_add-cause-activity-id-to-activity-logs.ts
+│   └── 1793389570698_drop-has-been-greeted.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -576,6 +576,7 @@
 │   │   ├── index.html
 │   │   ├── package.json
 │   │   ├── src
+│   │   │   ├── AccountRecovered.tsx
 │   │   │   ├── Add2fa.stories.tsx
 │   │   │   ├── Add2fa.test.tsx
 │   │   │   ├── Add2fa.test.tsx.snapshot
@@ -777,6 +778,8 @@
 │   │   │   │   ├── authenticator
 │   │   │   │   │   ├── create-authenticator.test.ts
 │   │   │   │   │   ├── create-authenticator.ts
+│   │   │   │   │   ├── delete-all-authenticators-by-user-id.test.ts
+│   │   │   │   │   ├── delete-all-authenticators-by-user-id.ts
 │   │   │   │   │   ├── delete-authenticator.test.ts
 │   │   │   │   │   ├── delete-authenticator.ts
 │   │   │   │   │   ├── find-authenticator.test.ts
@@ -1023,11 +1026,15 @@
 │   │   │   │   └── index.ts
 │   │   │   └── users
 │   │   │       ├── activities.ts
+│   │   │       ├── change-password.test.ts
+│   │   │       ├── change-password.ts
 │   │   │       ├── delete-user.test.ts
 │   │   │       ├── delete-user.ts
 │   │   │       ├── index.ts
 │   │   │       ├── reset-mfa.test.ts
-│   │   │       └── reset-mfa.ts
+│   │   │       ├── reset-mfa.ts
+│   │   │       ├── update-personal-informations.test.ts
+│   │   │       └── update-personal-informations.ts
 │   │   ├── testing
 │   │   │   └── index.ts
 │   │   ├── tsconfig.json
@@ -1371,10 +1378,12 @@
 │       ├── too-many-requests-error.ejs
 │       ├── totp-configuration.ejs
 │       ├── user
+│       │   ├── 2fa-sign-in-with-recovery-words.ejs
 │       │   ├── 2fa-sign-in.ejs
 │       │   ├── 2fa-successfully-configured.ejs
 │       │   ├── access-restricted-to-private-sector-email.ejs
 │       │   ├── access-restricted-to-public-sector-email.ejs
+│       │   ├── account-recovered.ejs
 │       │   ├── change-password.ejs
 │       │   ├── domain-not-allowed-for-organization.ejs
 │       │   ├── domain-refused-for-organization.ejs
@@ -1437,4 +1446,4 @@
 │   └── index.ts
 ├── tsconfig.json
 └── vite.config.mjs
-252 directories, 1270 files
+252 directories, 1279 files
