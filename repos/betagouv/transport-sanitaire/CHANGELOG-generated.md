@@ -1,23 +1,28 @@
-## Changelog : transport-sanitaire (30 derniers jours, au 04/11/2026)
+## Changelog : transport-sanitaire (30 derniers jours, au 4 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'architecture du projet (passage à la version 10) visant à séparer le moteur de simulation des règles métier. Cette évolution permet une mise à jour plus fluide des règles de transport sanitaire. Pour l'utilisateur, cela se traduit par une interface plus intuitive, une meilleure gestion des documents PDF (Cerfa et fiches patients) et l'intégration des dernières règles de remboursement.
+Ce mois-ci a été marqué par une montée en version majeure avec l'intégration du modèle de règles v10. Le simulateur est devenu plus précis et robuste, offrant une interface utilisateur plus intuitive et une génération de documents (Cerfa, fiches patients) plus complète et mieux mise en page.
 
 ### Évolutions fonctionnelles
-- **Gestion documentaire** : Amélioration de la génération et du téléchargement des documents (Cerfa et fiches patients) en PDF, incluant une fonction d'aplatissement pour garantir la compatibilité des fichiers [#86](https://github.com/betagouv/transport-sanitaire/issues/86).
-- **Interface utilisateur (UI/UX)** : 
-    - Modernisation des éléments de saisie (utilisation de cartes pour les cases à cocher).
-    - Amélioration de la lisibilité avec une gestion dynamique de la taille du texte et l'affichage des données déjà connues pour guider l'utilisateur.
-    - Ajout d'une invitation à donner un avis à la fin de la simulation [#195](https://github.com/betagouv/transport-sanitaire/issues/195).
-- **Règles métier** : Intégration des nouveaux modèles de règles (v10.1.x) et prise en compte de scénarios spécifiques (ALD, mineurs, retours pénitentiaires, etc.).
-- **Suivi** : Envoi des résultats de parcours ALD vers Matomo pour analyse [#269](https://github.com/betagouv/transport-sanitaire/issues/269).
+- **Intégration du modèle v10** : Mise à jour progressive du moteur de règles jusqu'à la version 10.1.6 [#338].
+- **Gestion documentaire** : 
+    - Génération et téléchargement des fiches patients et des formulaires Cerfa [#234, #107, #211].
+    - Amélioration de la qualité des PDF (aplatissement des fichiers, gestion automatique de la taille du texte pour éviter les débordements) [#231, #108, #232].
+- **Expérience utilisateur (UI/UX)** :
+    - Interface modernisée : présentation des choix sous forme de cartes [#210] et affichage d'aides contextuelles sous les options [#232].
+    - Aide à la saisie : rappel des données déjà renseignées pour éclairer les questions suivantes [#232] et affichage de données fixées à proximité des champs concernés [#232].
+    - Nouvelles options : possibilité d'indiquer son établissement ou sa structure [#339] et invitation à laisser un avis après le résultat [#237].
+- **Logique de simulation** : Prise en compte de parcours spécifiques (ALD, transports en avion ou bateau) [#226] et gestion intelligente du saut de questions sans effet sur le résultat [#263].
+- **Suivi** : Envoi des verdicts de parcours ALD vers Matomo pour analyse [#269].
 
 ### Évolutions techniques
-- **Architecture** : Refonte profonde pour découpler le "socle" (moteur de simulation) du "modèle" (règles métier), améliorant la maintenabilité et la modularité du code.
-- **Tests** : Augmentation significative de la couverture de tests, incluant la validation automatique des parcours de recette (N2, N4) et la conformité des documents générés.
-- **Outils CLI** : Évolution de l'interface en ligne de commande pour permettre le suivi des chantiers et des tâches directement via les issues et projets GitHub [#39](https://github.com/betagouv/transport-sanitaire/issues/39).
-- **Optimisation du build** : Compilation du graphe de décision directement lors de la phase de build [#257](https://github.com/betagouv/transport-sanitaire/issues/257).
+- **Refonte de l'architecture** : 
+    - Restructuration profonde du "socle" (moteur) pour mieux séparer la définition des questions de leur exécution [#250].
+    - Déplacement de la logique métier dans un répertoire `core/` dédié pour une meilleure organisation [#216].
+- **Moteur de décision** : Intégration de Publicodes et compilation du graphe de décision directement lors de l'étape de build [#257].
+- **Qualité et Tests** : Augmentation significative de la couverture de tests, incluant les scénarios de recette (N2, N4) et les cas d'usage de l'éditeur pour garantir la fiabilité des calculs [#314, #313, #293].
+- **Outils de développement** : Amélioration de la CLI pour permettre le suivi de l'avancement des chantiers via GitHub Projects [#105].
 
 ### Autres changements
-- **Documentation** : Mise à jour du glossaire et de la documentation technique pour refléter la nouvelle architecture et la nouvelle terminologie.
-- **Nettoyage** : Renommage massif de composants et de modules pour harmoniser le vocabulaire technique (ex: passage de "Flow" à "Questionnaire").
+- **Documentation** : Mise à jour du glossaire et des documents techniques relatifs aux capacités du socle et au nouveau modèle v10 [#238, #239].
+- **Maintenance** : Renommage officiel du dépôt en `transport-sanitaire` [#217].
