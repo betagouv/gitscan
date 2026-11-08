@@ -13,6 +13,7 @@
 ├── Aptfile
 ├── LICENSE
 ├── README.md
+├── SECURITY.md
 ├── biome
 │   ├── no-direct-api-endpoint.grit
 │   ├── no-direct-builder.grit
@@ -41,7 +42,8 @@
 │   ├── rai-flow-module-labo.puml
 │   ├── rai-flow-module-labo.svg
 │   ├── rai-flow.puml
-│   └── rai-flow.svg
+│   ├── rai-flow.svg
+│   └── referentiel-ateliers.md
 ├── frontend
 │   ├── .env.example
 │   ├── .gitignore
@@ -175,6 +177,8 @@
 │   │   │   ├── ResidueResultAlert
 │   │   │   │   └── ResidueResultAlert.tsx
 │   │   │   ├── RootNotice
+│   │   │   │   ├── RootNotice.scss
+│   │   │   │   ├── RootNotice.stories.tsx
 │   │   │   │   └── RootNotice.tsx
 │   │   │   ├── Sample
 │   │   │   │   ├── SampleDocument
@@ -237,6 +241,22 @@
 │   │   │       │   └── AppCheckboxSelect.tsx
 │   │   │       ├── AppErrorAlert
 │   │   │       │   └── AppServiceErrorAlert.tsx
+│   │   │       ├── AppHierarchicalSelection
+│   │   │       │   ├── AppHierarchicalSelection.scss
+│   │   │       │   ├── AppHierarchicalSelection.tsx
+│   │   │       │   ├── AppHierarchicalSelectionModal.tsx
+│   │   │       │   ├── AppHierarchicalSelectionRows.tsx
+│   │   │       │   ├── hierarchicalSelection.test.ts
+│   │   │       │   └── hierarchicalSelection.ts
+│   │   │       ├── AppMarkdown
+│   │   │       │   ├── AppMarkdown.scss
+│   │   │       │   └── AppMarkdown.tsx
+│   │   │       ├── AppMultiChoice
+│   │   │       │   ├── AppMultiChoice.scss
+│   │   │       │   ├── AppMultiChoice.stories.tsx
+│   │   │       │   ├── AppMultiChoice.tsx
+│   │   │       │   ├── AppMultiChoiceModal.tsx
+│   │   │       │   └── AppMultiChoiceOption.ts
 │   │   │       ├── AppMultiSelect
 │   │   │       │   ├── AppMultiSelect.stories.tsx
 │   │   │       │   └── AppMultiSelect.tsx
@@ -362,7 +382,7 @@
 │   │       │   │   ├── FieldOptionsTable.tsx
 │   │       │   │   ├── FieldsTable.stories.tsx
 │   │       │   │   ├── FieldsTable.tsx
-│   │       │   │   ├── SachaCommemoratifsUpload.tsx
+│   │       │   │   ├── SachaReferentialUpload.tsx
 │   │       │   │   ├── SpecificDataFieldsView.stories.tsx
 │   │       │   │   ├── SpecificDataFieldsView.tsx
 │   │       │   │   ├── fieldInputTypeLabels.ts
@@ -406,10 +426,6 @@
 │   │       │   │   └── LaboratoryAgreementsTable.tsx
 │   │       │   ├── LaboratoryAgreementsView.scss
 │   │       │   └── LaboratoryAgreementsView.tsx
-│   │       ├── LaboratoryAnalyticalCompetencesView
-│   │       │   ├── LaboratoryAnalyticalCompetenceForm.tsx
-│   │       │   ├── LaboratoryAnalyticalCompetences.scss
-│   │       │   └── LaboratoryAnalyticalCompetencesView.tsx
 │   │       ├── LoginCallbackView
 │   │       │   └── LoginCallbackView.tsx
 │   │       ├── LogoutCallbackView
@@ -441,12 +457,7 @@
 │   │       │   │   ├── ProgrammingPlanGlobalSettings.scss
 │   │       │   │   └── ProgrammingPlanGlobalSettings.tsx
 │   │       │   ├── ProgrammingPlanMatrixSettings
-│   │       │   │   ├── MatrixSelectionModal.scss
 │   │       │   │   ├── MatrixSelectionModal.stories.tsx
-│   │       │   │   ├── MatrixSelectionModal.tsx
-│   │       │   │   ├── MatrixSelectionRows.tsx
-│   │       │   │   ├── MatrixTag.scss
-│   │       │   │   ├── MatrixTag.tsx
 │   │       │   │   ├── ProgrammingPlanMatrixSettings.stories.tsx
 │   │       │   │   ├── ProgrammingPlanMatrixSettings.tsx
 │   │       │   │   ├── matrixSelection.test.ts
@@ -463,8 +474,6 @@
 │   │       │   ├── ProgrammingPlanSamplerFormSettings
 │   │       │   │   ├── AddFieldToProgrammingSubPlanModal.tsx
 │   │       │   │   ├── ProgrammingPlanSamplerFormSettings.tsx
-│   │       │   │   ├── ProgrammingSubPlanFieldActiveOptions.scss
-│   │       │   │   ├── ProgrammingSubPlanFieldActiveOptions.tsx
 │   │       │   │   ├── ProgrammingSubPlanFieldItem.scss
 │   │       │   │   ├── ProgrammingSubPlanFieldItem.tsx
 │   │       │   │   └── ProgrammingSubPlanFieldList.tsx
@@ -484,6 +493,9 @@
 │   │       │   │   └── ProgrammingPlanSettingsTabs.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.stories.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.tsx
+│   │       │   ├── ProgrammingPlanStageSettings
+│   │       │   │   ├── ProgrammingPlanStageSettings.stories.tsx
+│   │       │   │   └── ProgrammingPlanStageSettings.tsx
 │   │       │   ├── ProgrammingPlanView
 │   │       │   │   ├── ProgrammingPlanView.stories.tsx
 │   │       │   │   └── ProgrammingPlanView.tsx
@@ -525,6 +537,7 @@
 │   │       │   │   ├── ProgrammingPrescriptionRow.tsx
 │   │       │   │   ├── ProgrammingPrescriptionTable.scss
 │   │       │   │   ├── ProgrammingPrescriptionTable.tsx
+│   │       │   │   ├── ProgrammingPrescriptionTableParts.test.ts
 │   │       │   │   └── ProgrammingPrescriptionTableParts.tsx
 │   │       │   ├── ProgrammingView.scss
 │   │       │   ├── ProgrammingView.tsx
@@ -675,7 +688,7 @@
 │   │   ├── prescriptionController.ts
 │   │   ├── programmingPlanController.ts
 │   │   ├── programmingPlanDomainController.ts
-│   │   ├── sachaCommemoratifsController.ts
+│   │   ├── sachaController.ts
 │   │   ├── sampleController.integration.test.ts
 │   │   ├── sampleController.test.ts
 │   │   ├── sampleController.ts
@@ -866,7 +879,12 @@
 │   │   │   ├── 145-plans-without-stages-not-completed.ts
 │   │   │   ├── 146-sub-plan-prescription-on-create.ts
 │   │   │   ├── 147-sub-plan-sacha-context-sigle.ts
-│   │   │   └── 148-multiselect-specific-data-values.ts
+│   │   │   ├── 148-multiselect-specific-data-values.ts
+│   │   │   ├── 149-sacha-referentiel-prescripteur.ts
+│   │   │   ├── 150-sample-procedure-max-quantity.ts
+│   │   │   ├── 151-drop-laboratory-analytical-competences.ts
+│   │   │   ├── 152-sub-stages.ts
+│   │   │   └── 153-delegated-managed.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -939,7 +957,6 @@
 │   │   ├── laboratoryAgreementCheckRepository.ts
 │   │   ├── laboratoryAgreementRepository.test.ts
 │   │   ├── laboratoryAgreementRepository.ts
-│   │   ├── laboratoryAnalyticalCompetenceRepository.ts
 │   │   ├── laboratoryRepository.test.ts
 │   │   ├── laboratoryRepository.ts
 │   │   ├── laboratoryResidueMappingRepository.test.ts
@@ -966,6 +983,7 @@
 │   │   ├── sachaCommemoratifRepository.ts
 │   │   ├── sachaConfRepository.test.ts
 │   │   ├── sachaConfRepository.ts
+│   │   ├── sachaContextRepository.ts
 │   │   ├── sachaResidueMappingRepository.test.ts
 │   │   ├── sachaResidueMappingRepository.ts
 │   │   ├── sampleItemRepository.test.ts
@@ -1009,11 +1027,10 @@
 │   │   │   ├── prescription.router.test.ts
 │   │   │   ├── programmingPlan.router.test.ts
 │   │   │   ├── programmingPlanDomain.router.test.ts
-│   │   │   ├── sachaCommemoratifs.router.test.ts
+│   │   │   ├── sacha.router.test.ts
 │   │   │   ├── sample.router.test.ts
 │   │   │   ├── seves.router.test.ts
 │   │   │   ├── specificDataFieldConfig.router.test.ts
-│   │   │   ├── specificDataFields.router.test.ts
 │   │   │   └── user.router.test.ts
 │   │   └── unprotected.ts
 │   ├── scripts
@@ -1048,8 +1065,9 @@
 │   │   │   ├── example-rai-RestPest_DAOA.xml
 │   │   │   ├── example-rai-RestPest_DAOA_CU.xml
 │   │   │   ├── example-rai-daoa-valid.xml
-│   │   │   ├── sachaCommemoratifsService.integration.test.ts
 │   │   │   ├── sachaCommemoratifsService.ts
+│   │   │   ├── sachaContextsService.test.ts
+│   │   │   ├── sachaContextsService.ts
 │   │   │   ├── sachaDAI.test.ts
 │   │   │   ├── sachaDAI.ts
 │   │   │   ├── sachaErrors.ts
@@ -1061,6 +1079,8 @@
 │   │   │   ├── sachaReferences.test.ts
 │   │   │   ├── sachaReferences.ts
 │   │   │   ├── sachaReferential.ts
+│   │   │   ├── sachaReferentialService.integration.test.ts
+│   │   │   ├── sachaReferentialService.ts
 │   │   │   ├── sachaResidueMapping.ts
 │   │   │   ├── sachaSender.ts
 │   │   │   ├── sachaToXML.test.ts
@@ -1125,6 +1145,7 @@
 │   │   ├── prescriptionDiffusionService.ts
 │   │   ├── prescriptionImportService.test.ts
 │   │   ├── prescriptionImportService.ts
+│   │   ├── prescriptionSaveService.ts
 │   │   ├── programmingPlanDeletionService.ts
 │   │   ├── programmingPlanDuplicationService.integration.test.ts
 │   │   ├── programmingPlanDuplicationService.test.ts
@@ -1153,8 +1174,6 @@
 │   │   │   └── template.css
 │   │   ├── laboratoryAgreementsExport
 │   │   │   └── laboratoryAgreementsExport.xls
-│   │   ├── laboratoryAnalyticCompetencesExport
-│   │   │   └── laboratoryAnalyticCompetencesExport.xls
 │   │   ├── partials
 │   │   │   ├── contextSection.hbs
 │   │   │   ├── headerBrand.hbs
@@ -1212,6 +1231,7 @@
 │   │   ├── pdfGenerationError.ts
 │   │   ├── prescriptionPlanMissingError.ts
 │   │   ├── programmingPlanMissingError.ts
+│   │   ├── sachaReferentialError.ts
 │   │   ├── sampleItemMissingError.ts
 │   │   ├── sampleMissingError.ts
 │   │   ├── sendEmailError.ts
@@ -1237,7 +1257,9 @@
 │   │   │   ├── SSD2Referential.test.ts
 │   │   │   ├── SSD2Referential.ts
 │   │   │   └── SandreToSSD2.ts
+│   │   ├── Stage.test.ts
 │   │   ├── Stage.ts
+│   │   ├── alertEmails.test.ts
 │   │   ├── alertEmails.ts
 │   │   └── region.test.ts
 │   ├── routes
@@ -1257,7 +1279,7 @@
 │   │   ├── programmingPlans.routes.ts
 │   │   ├── routes.infer.ts
 │   │   ├── routes.ts
-│   │   ├── sachaCommemoratifs.route.ts
+│   │   ├── sacha.routes.ts
 │   │   ├── samples.routes.ts
 │   │   ├── specificDataFields.routes.ts
 │   │   └── users.routes.ts
@@ -1314,10 +1336,7 @@
 │   │   │   ├── FindLaboratoryOptions.ts
 │   │   │   ├── Laboratory.ts
 │   │   │   ├── LaboratoryAgreement.ts
-│   │   │   ├── LaboratoryAnalyticalCompetence.ts
-│   │   │   ├── LaboratoryAnalyticalMethod.ts
 │   │   │   ├── LaboratoryResidueMapping.ts
-│   │   │   ├── LaboratoryValidationMethod.ts
 │   │   │   └── SachaCommunicationMethod.ts
 │   │   ├── LocalPrescription
 │   │   │   ├── FindLocalPrescriptionOptions.ts
@@ -1344,7 +1363,8 @@
 │   │   │   ├── PrescriptionChange.ts
 │   │   │   ├── PrescriptionComments.ts
 │   │   │   ├── PrescriptionCounts.ts
-│   │   │   └── PrescriptionImport.ts
+│   │   │   ├── PrescriptionImport.ts
+│   │   │   └── PrescriptionSave.ts
 │   │   ├── ProgrammingPlan
 │   │   │   ├── Context.ts
 │   │   │   ├── DistributionKind.ts
@@ -1380,6 +1400,9 @@
 │   │   │   └── completedSubPlanSettings.ts
 │   │   ├── SachaCommemoratif
 │   │   │   └── SachaCommemoratif.ts
+│   │   ├── SachaContext
+│   │   │   ├── SachaContext.test.ts
+│   │   │   └── SachaContext.ts
 │   │   ├── Sample
 │   │   │   ├── ComplianceStat.ts
 │   │   │   ├── FindSampleOptions.test.ts
@@ -1458,4 +1481,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-241 directories, 1219 files
+244 directories, 1239 files
