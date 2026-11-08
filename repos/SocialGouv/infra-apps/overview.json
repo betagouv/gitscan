@@ -1,60 +1,60 @@
 {
   "url": "https://github.com/SocialGouv/infra-apps",
   "name": "infra-apps",
-  "description": "Ce dépôt contient les manifestes Kubernetes pour l'orchestration des ressources via ArgoCD. Il gère l'infrastructure de la plateforme Iterion, incluant le stockage SeaweedFS, les bases de données et les pools de runners CI/CD.",
+  "description": "Ce dépôt contient les manifestes Kubernetes pour le déploiement et l'orchestration des services de la plateforme Iterion via ArgoCD. Il gère l'infrastructure, les bases de données et les pools de calcul dédiés à l'intelligence artificielle.",
   "language": "Python",
   "features": [
     "Infrastructure & Stockage",
+    "Authentification & Accès",
     "Intelligence Artificielle & NLP",
-    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions",
     "Monitoring & Logs",
     "Collaboration & Workflow"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "ArgoCD",
     "Kubernetes",
-    "SeaweedFS",
-    "MinIO",
+    "ArgoCD",
     "MongoDB",
     "NATS",
+    "Valkey",
+    "SeaweedFS",
+    "KEDA",
     "GitLab",
-    "ClamAV",
-    "Metabase",
-    "Valkey"
+    "GitHub"
   ],
   "components": [
     "Kubernetes & Helm",
-    "Docker & Conteneurs",
     "CI/CD & Déploiement",
-    "MongoDB & NoSQL",
-    "Scripts & Utilitaires"
+    "Docker & Conteneurs",
+    "Microservices & Architecture",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "sso"
+      "sso",
+      "jwt"
     ],
     "providers": [
       "GitHub",
       "GitLab"
     ]
   },
-  "tests": "Tests E2E",
+  "tests": "Tests E2E et validation de configuration",
   "workflows": [
     "ArgoCD",
-    "GitLab CI"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-10-31T16:06:04+01:00",
+  "lastActivity": "2026-11-06T18:49:12+01:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Git & DevOps",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Intelligence Artificielle & LLM",
-    "Déploiement & Hosting"
+    "CI/CD & GitHub Actions",
+    "Déploiement & Hosting",
+    "Intelligence Artificielle & LLM"
   ]
 }

@@ -3,7 +3,8 @@
 ├── .github
 │   ├── CODEOWNERS
 │   └── workflows
-│       └── arc-runners.yml
+│       ├── arc-runners.yml
+│       └── iterion-valkeyha.yml
 ├── .gitignore
 ├── CLAUDE.md
 ├── README.md
@@ -17,7 +18,7 @@
 │   ├── clamav.yaml
 │   ├── cnpg.yaml
 │   ├── eck-operator.yaml
-│   ├── iterion.yaml
+│   ├── iterion-alias.yaml
 │   ├── kata.yaml
 │   ├── keda.yaml
 │   ├── kube-image-keeper.yaml
@@ -191,7 +192,6 @@
 │       ├── ci-egapro.git-auth.sealedsecret.yaml
 │       ├── ci-fabrique.git-auth.sealedsecret.yaml
 │       ├── ci-fce.git-auth.sealedsecret.yaml
-│       ├── ci-graal.git-auth.sealedsecret.yaml
 │       ├── ci-monsuivipsy.git-auth.sealedsecret.yaml
 │       ├── ci-nos1000jours.git-auth.sealedsecret.yaml
 │       ├── ci-recosante.git-auth.sealedsecret.yaml
@@ -220,130 +220,9 @@
 │   │   ├── github-webhook-server-secret.yaml
 │   │   └── runner-deployment.yaml
 │   └── values.yaml
-├── iterion
-│   ├── .helmignore
-│   ├── Chart.lock
-│   ├── Chart.yaml
-│   ├── charts
-│   │   ├── iterion-3.253.0.tgz
-│   │   ├── minio-5.4.0.tgz
-│   │   ├── mongodb-0.7.8.tgz
-│   │   ├── seaweedfs-4.48.0.tgz
-│   │   ├── valkey-0.10.3.tgz
-│   │   └── valkey-0.25.11.tgz
-│   ├── templates
-│   │   ├── firecrawl.yaml
-│   │   ├── iterion-auth.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-auth.sealedsecret.yaml
-│   │   ├── iterion-firecrawl.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-llm.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-llm.sealedsecret.yaml
-│   │   ├── iterion-mongodb-creds.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-mongodb-keyfile.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-searxng.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-seaweedfs-jwt.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-seaweedfs-s3.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-storage.ovh-prod.sealedsecret.yaml
-│   │   ├── iterion-valkeyfiler-auth.ovh-prod.sealedsecret.yaml
-│   │   ├── mongodb.ovh-prod.pdb.yaml
-│   │   ├── probes-ingress.ovh-prod.yaml
-│   │   ├── searxng.yaml
-│   │   ├── seaweedfs-migrate.ovh-prod.job.yaml
-│   │   ├── seaweedfs-mkbucket.ovh-prod.job.yaml
-│   │   ├── seaweedfs.ovh-prod.pdb.yaml
-│   │   └── valkeyfiler.ovh-prod.networkpolicy.yaml
-│   ├── values.ovh-dev.yaml
-│   ├── values.ovh-prod.yaml
-│   ├── values.yaml
-│   └── vendor-charts
-│       └── seaweedfs
-│           ├── .helmignore
-│           ├── Chart.yaml
-│           ├── PATCHED.md
-│           ├── README.md
-│           ├── ci
-│           │   ├── admin-values.yaml
-│           │   ├── default-values.yaml
-│           │   └── sftp-values.yaml
-│           ├── dashboards
-│           │   └── seaweedfs-grafana-dashboard.json
-│           ├── openshift-values.yaml
-│           ├── templates
-│           │   ├── admin
-│           │   │   ├── admin-ingress.yaml
-│           │   │   ├── admin-secret.yaml
-│           │   │   ├── admin-service.yaml
-│           │   │   ├── admin-servicemonitor.yaml
-│           │   │   └── admin-statefulset.yaml
-│           │   ├── all-in-one
-│           │   │   ├── all-in-one-deployment.yaml
-│           │   │   ├── all-in-one-pvc.yaml
-│           │   │   ├── all-in-one-service.yml
-│           │   │   └── all-in-one-servicemonitor.yaml
-│           │   ├── cert
-│           │   │   ├── admin-cert.yaml
-│           │   │   ├── ca-cert.yaml
-│           │   │   ├── cert-caissuer.yaml
-│           │   │   ├── cert-issuer.yaml
-│           │   │   ├── client-cert.yaml
-│           │   │   ├── filer-cert.yaml
-│           │   │   ├── master-cert.yaml
-│           │   │   ├── volume-cert.yaml
-│           │   │   └── worker-cert.yaml
-│           │   ├── cosi
-│           │   │   ├── cosi-bucket-class.yaml
-│           │   │   ├── cosi-cluster-role.yaml
-│           │   │   ├── cosi-deployment.yaml
-│           │   │   └── cosi-service-account.yaml
-│           │   ├── filer
-│           │   │   ├── filer-grpc-ingressroutetcp.yaml
-│           │   │   ├── filer-ingress.yaml
-│           │   │   ├── filer-service-client.yaml
-│           │   │   ├── filer-service.yaml
-│           │   │   ├── filer-servicemonitor.yaml
-│           │   │   └── filer-statefulset.yaml
-│           │   ├── master
-│           │   │   ├── master-configmap.yaml
-│           │   │   ├── master-ingress.yaml
-│           │   │   ├── master-service.yaml
-│           │   │   ├── master-servicemonitor.yaml
-│           │   │   └── master-statefulset.yaml
-│           │   ├── s3
-│           │   │   ├── s3-deployment.yaml
-│           │   │   ├── s3-iceberg-ingress.yaml
-│           │   │   ├── s3-ingress.yaml
-│           │   │   ├── s3-lance-ingress.yaml
-│           │   │   ├── s3-secret.yaml
-│           │   │   ├── s3-service.yaml
-│           │   │   └── s3-servicemonitor.yaml
-│           │   ├── sftp
-│           │   │   ├── sftp-ca-secret.yaml
-│           │   │   ├── sftp-deployment.yaml
-│           │   │   ├── sftp-secret.yaml
-│           │   │   ├── sftp-service.yaml
-│           │   │   ├── sftp-servicemonitor.yaml
-│           │   │   └── sftp-ssh-secret.yaml
-│           │   ├── shared
-│           │   │   ├── _compat.tpl
-│           │   │   ├── _helpers.tpl
-│           │   │   ├── cluster-role.yaml
-│           │   │   ├── networkpolicy.yaml
-│           │   │   ├── notification-configmap.yaml
-│           │   │   ├── post-install-bucket-hook.yaml
-│           │   │   ├── seaweedfs-grafana-dashboard.yaml
-│           │   │   ├── secret-seaweedfs-db.yaml
-│           │   │   └── service-account.yaml
-│           │   ├── volume
-│           │   │   ├── volume-ingress.yaml
-│           │   │   ├── volume-resize-hook.yaml
-│           │   │   ├── volume-service.yaml
-│           │   │   ├── volume-servicemonitor.yaml
-│           │   │   └── volume-statefulset.yaml
-│           │   └── worker
-│           │       ├── worker-deployment.yaml
-│           │       ├── worker-service.yaml
-│           │       └── worker-servicemonitor.yaml
-│           └── values.yaml
+├── iterion-alias
+│   ├── ingress.yaml
+│   └── service.yaml
 ├── kata
 │   ├── Chart.lock
 │   ├── Chart.yaml
@@ -911,4 +790,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-318 directories, 595 files
+300 directories, 492 files
