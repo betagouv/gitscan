@@ -1,21 +1,21 @@
-## Changelog : dockerfiles (30 derniers jours, au 02/11/2026)
+## Changelog : dockerfiles (30 derniers jours, au 02 novembre 2026)
 
 ### Résumé
-Le projet s'enrichit de nouveaux outils pour renforcer la sécurité et la qualité des configurations (linting, analyse de vulnérabilités, validation de schémas YAML). Les processus de construction automatisés ont également été optimisés pour garantir que seuls les changements validés et fusionnés déclenchent de nouveaux déploiements.
+Ce mois-ci, le projet a considérablement étendu sa bibliothèque d'outils DevOps en ajoutant de nouveaux conteneurs dédiés à la sécurité, au linting et à la validation de fichiers. Les processus d'automatisation ont également été affinés pour garantir que seuls les changements validés déclenchent des builds, renforçant ainsi la fiabilité des déploiements.
 
 ### Évolutions fonctionnelles
-- **Nouveaux conteneurs disponibles** :
-    - Ajout d'un conteneur `tflint` pour le linting Terraform dans GitLab CI.
-    - Ajout d'une image `grype` pour l'analyse de vulnérabilités.
-    - Ajout d'un conteneur de validation de schémas YAML.
-- **Amélioration des outils d'infrastructure** :
-    - Enrichissement de l'image de déploiement OpenTofu avec l'intégration de `git` et `syft` pour une gestion simplifiée des SBOM (Software Bill of Materials).
-    - Ajout de `jq` et du client `swift` pour faciliter l'upload des SBOM.
+- **Nouveaux conteneurs utilitaires :**
+    - Ajout de **TFLint** pour le linting Terraform dans les pipelines GitLab CI.
+    - Ajout de **Grype** pour l'analyse de vulnérabilités de sécurité.
+    - Ajout d'un conteneur de **validation de schémas YAML**.
+- **Amélioration des outils de déploiement :**
+    - Création d'une nouvelle image dédiée au déploiement avec **OpenTofu**.
+    - Enrichissement de l'image OpenTofu avec `git` et `syft` pour permettre une génération de SBOM (Software Bill of Materials) intégrée.
+- **Gestion des SBOM :** Amélioration de la capacité d'upload des SBOM grâce à l'intégration de `jq` et du client `swift`.
 
 ### Évolutions techniques
-- **Optimisation des pipelines CI/CD** :
-    - Restriction des déclenchements de build : les pipelines ne s'exécutent désormais que sur les PR validées et fusionnées dans la branche principale.
-    - Automatisation du déploiement OpenTofu lors du processus de taggage.
-    - Ajustement des environnements d'exécution (passage sur `ubuntu-latest`).
-- **Maintenance** :
-    - Intégration de la pull request [#53](https://github.com/cloud-gouv/dockerfiles/pull/53).
+- **Optimisation des workflows CI/CD :**
+    - Restriction du déclenchement des pipelines : les builds ne s'exécutent désormais que sur les Pull Requests validées et fusionnées dans la branche principale.
+    - Automatisation du déploiement OpenTofu lors du taggage de nouvelles versions.
+- **Maintenance de l'infrastructure de build :**
+    - Ajustements des environnements d'exécution (runners) et correction de la configuration des images de base (`ubuntu-latest`).
