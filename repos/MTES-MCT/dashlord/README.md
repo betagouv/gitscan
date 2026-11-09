@@ -1,7 +1,6 @@
-[![DashLord scans](https://github.com/MTES-MCT/dashlord/actions/workflows/scans.yml/badge.svg)](https://github.com/MTES-MCT/dashlord/actions/workflows/scans.yml)
 # DashLord
 
-Tableau de bord des bonnes pratiques techniques de la fabrique numérique du MTE : https://dashlord.mte.incubateur.net
+Tableau de bord des bonnes pratiques techniques : https://dashlord.mte.incubateur.net
 
 ## Usage
 
@@ -23,9 +22,6 @@ Exemple d'entrée pour une URL :
   repositories: # optionnel, pour récupérer les alertes de sécu de ces repos
     - free/free-ui
     - free/free-css
-  docker: # optionnel, pour scanner les images avec trivy
-    - ghcr.io/socialgouv/fabrique/frontend
-    - ghcr.io/socialgouv/fabrique/backend
   tools: # optionnel, pour desactiver certains outils
     nmap: false
   pages: # optionnel, pour lancer lighthouse sur des pages supplémentaires
@@ -34,3 +30,4 @@ Exemple d'entrée pour une URL :
 ```
 
 Pour la documentation de DashLord lui-même : https://github.com/SocialGouv/dashlord
+

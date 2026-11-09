@@ -1,14 +1,14 @@
-## Changelog : dashlord (30 derniers jours, au 16 août 2026)
+## Changelog : dashlord (30 derniers jours, au 08/11/2026)
 
 ### Résumé
-Le tableau de bord a bénéficié d'une mise à jour massive de ses données de suivi. La liste des services numériques surveillés a été considérablement enrichie, permettant une visibilité accrue sur la conformité et la sécurité d'un plus grand nombre de plateformes gouvernementales et de services de l'écosystème beta.gouv.fr.
+Ce mois a été marqué par l'initialisation du projet et la mise en place d'un processus automatisé permettant de maintenir à jour la liste des services numériques suivis par le tableau de bord.
 
 ### Évolutions fonctionnelles
-- **Extension du périmètre de monitoring** : Intégration de nombreux nouveaux services et API dans le tableau de bord, couvrant notamment :
-    - **Le logement** (ex: DossierFacile, Signal Logement, Pilotes Logement).
-    - **La mobilité** (ex: Covoiturage.beta.gouv.fr, Camino, Mobilic).
-    - **L'environnement et les ressources** (ex: Trackdéchets, VigieEau, Ecobalyse).
-    - **Divers services publics** (ex: Transport.data.gouv.fr, Envergo).
+- Actualisation régulière du catalogue de services et des points de contrôle (URLs) pour garantir la précision du suivi de l'écosystème.
+
+### Évolutions techniques
+- Initialisation du dépôt et de la structure de base du projet.
+- Mise en place des workflows GitHub Actions pour l'automatisation des tâches de maintenance et de reporting.
 
 ### Autres changements
-- **Maintenance automatisée** : Mise à jour régulière et automatisée du registre des services via `DashlordBetaGouvBot`.
+- Création de la documentation initiale (README.md).
