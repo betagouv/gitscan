@@ -1,10 +1,11 @@
 {
   "url": "https://github.com/proconnect-gouv/docteur-proconnect",
   "name": "docteur-proconnect",
-  "description": "Docteur ProConnect est un outil pour inspecter les flux d'authentification ProConnect et les données partagées avec les services partenaires.",
+  "description": "Outil permettant d'inspecter les flux d'authentification ProConnect et les données partagées avec les services partenaires.",
   "language": "TypeScript",
   "features": [
-    "Authentification & Accès"
+    "Authentification & Accès",
+    "Suivi & Traçabilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -14,21 +15,20 @@
     "express-session"
   ],
   "components": [
-    "Node.js / NestJS",
-    "Templates & Moteurs de rendu"
+    "TypeScript / JavaScript",
+    "Templates & Moteurs de rendu",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2"
     ]
   },
-  "tests": [
-    "Cypress"
-  ],
+  "tests": "bun test",
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-07-20T09:51:16+02:00",
+  "lastActivity": "2026-10-19T09:32:42+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -36,11 +36,11 @@
     "stars": 1,
     "forks": 0,
     "contributors": null,
-    "openIssues": 2
+    "openIssues": 3
   },
   "tags": [
     "Sécurité & Auth",
-    "JavaScript",
+    "TypeScript",
     "Node.js, NestJS & Express",
     "SSO & Identité fédérée"
   ]

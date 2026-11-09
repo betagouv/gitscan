@@ -1,15 +1,8 @@
-## Changelog : docteur-proconnect (30 derniers jours, au 20 juillet 2026)
+## Changelog : docteur-proconnect (30 derniers jours, au 19 octobre 2026)
 
 ### Résumé
-Cette mise à jour améliore l'interface utilisateur pour la connexion et l'authentification. Les utilisateurs peuvent désormais voir et utiliser différents boutons de connexion, notamment un nouveau bouton pour l'implémentation des fournisseurs d'identité. De plus, les scopes personnalisés de l'utilisateur sont maintenant affichés.
-
-### Évolutions fonctionnelles
-- Ajout d'un bouton de connexion "login-full-acr" pour l'implémentation des fournisseurs d'identité.  [#72](https://github.com/proconnect-gouv/docteur-proconnect/issues/72)
-- Affichage des différents boutons de connexion dans un tableau pour une meilleure lisibilité. [#69](https://github.com/proconnect-gouv/docteur-proconnect/issues/69)
-- Affichage des scopes personnalisés de l'utilisateur. [#70](https://github.com/proconnect-gouv/docteur-proconnect/issues/70)
+Les récentes interventions se sont concentrées sur l'optimisation de la chaîne de développement et la modernisation de l'environnement technique, sans impact direct sur les fonctionnalités pour les utilisateurs.
 
 ### Évolutions techniques
-- (Aucune évolution technique significative à signaler)
-
-### Autres changements
-- (Aucun autre changement à signaler)
+- Intégration de `oxlint` dans le pipeline de CI pour optimiser la qualité du code [#82](https://github.com/proconnect-gouv/docteur-proconnect/issues/82)
+- Mise à jour de TypeScript vers la version 7 [#81](https://github.com/proconnect-gouv/docteur-proconnect/issues/81)
