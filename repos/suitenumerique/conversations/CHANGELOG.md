@@ -8,6 +8,14 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Removed
+
+- 🔥(helm) remove unused console handler log level variable
+
+### Changed
+
+- ♻️(back) split the agent service into turn modules
+
 ## [0.0.28] - 2026-11-03
 
 ### Changed
