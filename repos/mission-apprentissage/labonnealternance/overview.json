@@ -1,29 +1,28 @@
 {
   "url": "https://github.com/mission-apprentissage/labonnealternance",
   "name": "labonnealternance",
-  "description": "Plateforme de recherche de formations et d'offres en apprentissage. Elle permet de mettre en relation des candidats et des structures de formation via une interface de recherche et de dépôt d'offres.",
+  "description": "Plateforme de recherche de formation et d'offres en apprentissage permettant de connecter les apprenants et les recruteurs.",
   "language": "TypeScript",
   "features": [
     "Recherche & Filtres",
+    "Formulaires & Démarches",
     "Intelligence Artificielle & NLP",
     "Interface utilisateur & Design",
-    "Accessibilité & i18n",
-    "Formulaires & Démarches",
-    "Gestion des médias & Assets",
-    "API & Intégrations",
-    "Visualisation de données & Cartographie"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Tableaux & Affichage"
   ],
   "audience": "Grand public",
   "dependencies": [
     "MongoDB",
     "Mailpit",
     "ClamAV",
-    "Vitest",
-    "Biome",
     "SOPS",
-    "Docker",
-    "Ansible",
-    "Yarn"
+    "Biome",
+    "Vitest",
+    "Semantic Release",
+    "Husky",
+    "Zod"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,29 +30,32 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "Node.js / NestJS",
+    "Tests",
     "CI/CD & Déploiement",
-    "Tests"
+    "Intelligence Artificielle / ML"
   ],
-  "tests": [
-    "Vitest",
-    "Cypress"
-  ],
+  "auth": {
+    "methods": [
+      "jwt"
+    ]
+  },
+  "tests": "Vitest, Cypress",
   "workflows": [
-    "CI/CD",
-    "Semantic release",
-    "CodeQL"
+    "semantic-release",
+    "husky",
+    "lint-staged"
   ],
-  "lastActivity": "2026-10-14T00:00:00Z",
+  "lastActivity": "2026-10-16T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
-    "React & Next.js",
     "TypeScript",
+    "React & Next.js",
     "Docker & Conteneurs",
     "Intelligence Artificielle & LLM",
-    "Accessibilité",
-    "Emploi, Social & Logement"
+    "Emploi, Social & Logement",
+    "Éducation & Formation"
   ]
 }

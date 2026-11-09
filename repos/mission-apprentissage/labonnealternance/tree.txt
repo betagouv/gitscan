@@ -88,7 +88,7 @@
 │   │   └── tasks
 │   │       ├── files_copy.yml
 │   │       └── preview_pr.yml
-│   ├── docker-compose.preview-system.yml
+│   ├── docker-compose.preview-pr.yml
 │   ├── docker-compose.preview.yml
 │   ├── docker-compose.production.yml
 │   ├── docker-compose.recette.yml
@@ -120,6 +120,7 @@
 │   │   │   └── reverse_proxy
 │   │   │       ├── extra-conf.d
 │   │   │       │   ├── alias.conf.template
+│   │   │       │   ├── denylist.conf.template
 │   │   │       │   ├── preview.conf
 │   │   │       │   ├── rate-limit.conf.template
 │   │   │       │   └── server_name.conf.template
@@ -189,6 +190,7 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── DATASOURCES.md
+│   ├── detection.md
 │   ├── developpement
 │   │   ├── developpement.md
 │   │   └── knip.md
@@ -295,6 +297,8 @@
 │   │   │       ├── array.ts
 │   │   │       ├── async-utils.ts
 │   │   │       ├── aws-utils.ts
+│   │   │       ├── bot-user-agent.test.ts
+│   │   │       ├── bot-user-agent.ts
 │   │   │       ├── departements.ts
 │   │   │       ├── dirname.ts
 │   │   │       ├── encrypt-string.ts
@@ -316,11 +320,14 @@
 │   │   │       ├── mask-personal-data.ts
 │   │   │       ├── mongodb-utils.search-indexes.test.ts
 │   │   │       ├── mongodb-utils.ts
+│   │   │       ├── private-network.test.ts
+│   │   │       ├── private-network.ts
 │   │   │       ├── region-insee-codes.ts
 │   │   │       ├── send-tracking-event.ts
 │   │   │       ├── sentry-utils.test.ts
 │   │   │       ├── sentry-utils.ts
 │   │   │       ├── session.service.ts
+│   │   │       ├── slack-utils.test.ts
 │   │   │       ├── slack-utils.ts
 │   │   │       ├── stream-utils.test.ts
 │   │   │       ├── stream-utils.ts
@@ -364,6 +371,8 @@
 │   │   │   │   ├── formulaire.controller.ts
 │   │   │   │   ├── inserjeunes.controller.test.ts
 │   │   │   │   ├── inserjeunes.controller.ts
+│   │   │   │   ├── jobs-partners-moderation.controller.test.ts
+│   │   │   │   ├── jobs-partners-moderation.controller.ts
 │   │   │   │   ├── jobs.controller.test.ts
 │   │   │   │   ├── jobs.controller.ts
 │   │   │   │   ├── login.controller.ts
@@ -385,9 +394,7 @@
 │   │   │   │   │   ├── applications.controller.v2.test.ts
 │   │   │   │   │   ├── appointment-links.controller.v2.test.ts
 │   │   │   │   │   ├── appointment.controller.v2.test.ts
-│   │   │   │   │   ├── appointment.controller.v2.ts
-│   │   │   │   │   ├── jobs.controller.v2.test.ts
-│   │   │   │   │   └── jobs.controller.v2.ts
+│   │   │   │   │   └── appointment.controller.v2.ts
 │   │   │   │   ├── v3
 │   │   │   │   │   └── jobs
 │   │   │   │   │       ├── jobs.controller.v3.test.ts
@@ -399,6 +406,7 @@
 │   │   │   ├── middlewares
 │   │   │   │   ├── auth-middleware.ts
 │   │   │   │   └── error-middleware.ts
+│   │   │   ├── server.rate-limit.test.ts
 │   │   │   ├── server.test.ts
 │   │   │   ├── server.ts
 │   │   │   └── stream-processor-server.ts
@@ -438,6 +446,14 @@
 │   │   │   ├── deca
 │   │   │   │   ├── import-deca-contrats-par-annee.test.ts
 │   │   │   │   └── import-deca-contrats-par-annee.ts
+│   │   │   ├── detection
+│   │   │   │   ├── detection-cli.ts
+│   │   │   │   ├── detection-engine.test.ts
+│   │   │   │   ├── detection-engine.ts
+│   │   │   │   ├── detection-notification.ts
+│   │   │   │   ├── detection-replay.ts
+│   │   │   │   ├── detection-rule.ts
+│   │   │   │   └── detection-rules.ts
 │   │   │   ├── diplomes-metiers
 │   │   │   │   └── update-diplomes-metiers.ts
 │   │   │   ├── domaines-metiers
@@ -482,6 +498,7 @@
 │   │   │   │   │   ├── import-apec.test.input.xml
 │   │   │   │   │   ├── import-apec.test.ts
 │   │   │   │   │   ├── import-apec.ts
+│   │   │   │   │   ├── process-apec.test.ts
 │   │   │   │   │   └── process-apec.ts
 │   │   │   │   ├── block-bad-rome-jobs-partners.ts
 │   │   │   │   ├── block-jobs-partners-from-cfa-list.test.ts
@@ -503,7 +520,12 @@
 │   │   │   │   │   ├── import-clever-connect.test.ts
 │   │   │   │   │   ├── import-clever-connect.ts
 │   │   │   │   │   └── process-clever-connect.ts
+│   │   │   │   ├── close-jobs-partners-on-application-threshold.test.ts
 │   │   │   │   ├── close-jobs-partners-on-application-threshold.ts
+│   │   │   │   ├── daytime-refresh-cycle.test.ts
+│   │   │   │   ├── daytime-refresh-cycle.ts
+│   │   │   │   ├── daytime-refresh-partners.test.ts
+│   │   │   │   ├── daytime-refresh-partners.ts
 │   │   │   │   ├── decathlon
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── import-decathlon.test.ts.snap
@@ -556,12 +578,14 @@
 │   │   │   │   │   ├── etudiant.mapper.test.ts
 │   │   │   │   │   ├── etudiant.mapper.ts
 │   │   │   │   │   └── process-etudiant.ts
+│   │   │   │   ├── expire-jobs-partners.test.ts
 │   │   │   │   ├── expire-jobs-partners.ts
 │   │   │   │   ├── fill-computed-jobs-partners.test.ts
 │   │   │   │   ├── fill-computed-jobs-partners.ts
 │   │   │   │   ├── fill-computed-recruteurs-lba.ts
 │   │   │   │   ├── fill-entreprise-engagement-computed-jobs-partners.ts
 │   │   │   │   ├── fill-entreprise-engagement-jobs-partners.ts
+│   │   │   │   ├── fill-fields-for-partners-factory.test.ts
 │   │   │   │   ├── fill-fields-for-partners-factory.ts
 │   │   │   │   ├── fill-lba-url.ts
 │   │   │   │   ├── fill-location-infos-for-partners.test.ts
@@ -572,11 +596,16 @@
 │   │   │   │   ├── fill-rome-for-partners.ts
 │   │   │   │   ├── fill-siret-infos-for-partners.test.ts
 │   │   │   │   ├── fill-siret-infos-for-partners.ts
+│   │   │   │   ├── flux-cadence-digest.test.ts
+│   │   │   │   ├── flux-cadence-digest.ts
+│   │   │   │   ├── flux-sources.test.ts
+│   │   │   │   ├── flux-sources.ts
 │   │   │   │   ├── format-text-fields-jobs-partners.test.ts
 │   │   │   │   ├── format-text-fields-jobs-partners.ts
 │   │   │   │   ├── france-travail
 │   │   │   │   │   ├── france-travail-mapper.test.ts
 │   │   │   │   │   ├── france-travail-mapper.ts
+│   │   │   │   │   ├── import-jobs-france-travail.test.ts
 │   │   │   │   │   ├── import-jobs-france-travail.ts
 │   │   │   │   │   └── process-france-travail.ts
 │   │   │   │   ├── france-travail-CEGID
@@ -614,18 +643,21 @@
 │   │   │   │   ├── hellowork-merge
 │   │   │   │   │   ├── deduplicate-hellowork.ts
 │   │   │   │   │   └── process-hellowork.ts
+│   │   │   │   ├── import-flux-if-changed.test.ts
+│   │   │   │   ├── import-flux-if-changed.ts
 │   │   │   │   ├── import-from-computed-to-jobs-partners.test.ts
 │   │   │   │   ├── import-from-computed-to-jobs-partners.ts
+│   │   │   │   ├── import-from-stream-in-csv.test.ts
 │   │   │   │   ├── import-from-stream-in-csv.ts
+│   │   │   │   ├── import-from-stream-in-json.test.ts
 │   │   │   │   ├── import-from-stream-in-json.ts
 │   │   │   │   ├── import-from-stream-in-xml.test.ts
 │   │   │   │   ├── import-from-stream-in-xml.ts
-│   │   │   │   ├── import-from-url-in-csv.ts
-│   │   │   │   ├── import-from-url-in-xml.test.ts
-│   │   │   │   ├── import-from-url-in-xml.ts
 │   │   │   │   ├── is-company-in-blocked-cfa-list.test.ts
 │   │   │   │   ├── is-company-in-blocked-cfa-list.ts
 │   │   │   │   ├── job-partners-rank-config.ts
+│   │   │   │   ├── jobs-partners-guardrails.ts
+│   │   │   │   ├── jobs-partners.importer.test.ts
 │   │   │   │   ├── jobs-partners.importer.ts
 │   │   │   │   ├── jobteaser
 │   │   │   │   │   ├── __snapshots__
@@ -681,6 +713,11 @@
 │   │   │   │   │   ├── linkedin-mapper.test.ts
 │   │   │   │   │   ├── linkedin-mapper.ts
 │   │   │   │   │   └── process-linkedin.ts
+│   │   │   │   ├── partner-locked-daytime-jobs.test.ts
+│   │   │   │   ├── partner-processing-lock.test.ts
+│   │   │   │   ├── partner-processing-lock.ts
+│   │   │   │   ├── partner-publication-report.test.ts
+│   │   │   │   ├── partner-publication-report.ts
 │   │   │   │   ├── pass
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   ├── import-pass.test.ts.snap
@@ -693,10 +730,15 @@
 │   │   │   │   ├── process-fill-rome-standalone.ts
 │   │   │   │   ├── process-job-partners-for-api.test.ts
 │   │   │   │   ├── process-job-partners-for-api.ts
+│   │   │   │   ├── process-job-partners-with-filter-lock.test.ts
 │   │   │   │   ├── process-job-partners.ts
 │   │   │   │   ├── process-missing-rome-and-import-to-job-partners.test.ts
 │   │   │   │   ├── process-missing-rome-and-import-to-job-partners.ts
+│   │   │   │   ├── process-never-validated-jobs-partners.test.ts
+│   │   │   │   ├── process-never-validated-jobs-partners.ts
 │   │   │   │   ├── rank-job-partners.ts
+│   │   │   │   ├── raw-import-commit.ts
+│   │   │   │   ├── raw-to-computed-jobs-partners.test.ts
 │   │   │   │   ├── raw-to-computed-jobs-partners.ts
 │   │   │   │   ├── recruteur-lba
 │   │   │   │   │   ├── __snapshots__
@@ -834,7 +876,12 @@
 │   │   │   ├── 20261007120000-cancel-france-travail-directemploi-jobs-5656.ts
 │   │   │   ├── 20261009120000-search-items-opco.ts
 │   │   │   ├── 20261012120000-add-rolemanagements-created-at-index.ts
-│   │   │   └── 20261014120000-add-jobs-partners-moderations-indexes.ts
+│   │   │   ├── 20261014120000-add-jobs-partners-moderations-indexes.ts
+│   │   │   ├── 20261014120000-fix-closure-reason-offer-status-history-5722.ts
+│   │   │   ├── 20261022120000-add-detection-indexes.ts
+│   │   │   ├── 20261102130000-add-jobs-partners-flux-signals-index-5669.ts
+│   │   │   ├── 20261103120000-off-platform-only-moderations-out-of-queue-5843.ts
+│   │   │   └── 20261104180000-off-platform-only-pending-moderations-5843.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -852,6 +899,8 @@
 │   │       ├── applicant.service.ts
 │   │       ├── application-cv.service.test.ts
 │   │       ├── application-cv.service.ts
+│   │       ├── application-threshold.service.test.ts
+│   │       ├── application-threshold.service.ts
 │   │       ├── application.service.test.ts
 │   │       ├── application.service.ts
 │   │       ├── appointment.service.ts
@@ -913,12 +962,15 @@
 │   │       │       └── job-opportunity.service.ts
 │   │       ├── jobs-partners-moderation-account.test.ts
 │   │       ├── jobs-partners-moderation-alerts.ts
+│   │       ├── jobs-partners-moderation-background.test.ts
 │   │       ├── jobs-partners-moderation-reasons.ts
+│   │       ├── jobs-partners-moderation-review.service.ts
 │   │       ├── jobs-partners-moderation.service.test.ts
 │   │       ├── jobs-partners-moderation.service.ts
 │   │       ├── lbaitem.shared.service.types.ts
 │   │       ├── lbajob.service.ts
 │   │       ├── login.service.ts
+│   │       ├── mail-offre-refusee.test.ts
 │   │       ├── mailer.service.ts
 │   │       ├── metiers.service.ts
 │   │       ├── mistralai
@@ -952,6 +1004,8 @@
 │   │       ├── rome.service.ts
 │   │       ├── rome.service.types.ts
 │   │       ├── search
+│   │       │   ├── promote-smart-apply.test.ts
+│   │       │   ├── promote-smart-apply.ts
 │   │       │   ├── search-items-admin-codes.test.ts
 │   │       │   ├── search-items-admin-codes.ts
 │   │       │   ├── search-items-formation-location.test.ts
@@ -962,6 +1016,7 @@
 │   │       │   ├── search-query-log.service.test.ts
 │   │       │   ├── search-query-log.service.ts
 │   │       │   ├── search-result.test.ts
+│   │       │   ├── search-sort-tiebreak.test.ts
 │   │       │   ├── search-transient-retry.test.ts
 │   │       │   ├── search-transient-retry.ts
 │   │       │   ├── search.service.test.ts
@@ -1028,6 +1083,7 @@
 │   │       ├── mail-nouvelle-offre-depot-simplifie.mjml.ejs
 │   │       ├── mail-nouvelle-offre.mjml.ejs
 │   │       ├── mail-offre-expiree-auto.mjml.ejs
+│   │       ├── mail-offre-refusee.mjml.ejs
 │   │       ├── mail-offre-seuil-candidatures.mjml.ejs
 │   │       ├── mail-rdva-optout-unsubscription-question.mjml.ejs
 │   │       ├── mail-relance-opco.mjml.ejs
@@ -1047,8 +1103,11 @@
 │   │   │       ├── backfill-offer-status-history-lba-5429.test.ts
 │   │   │       ├── clear-rome-content-custom-offers-5590.test.ts
 │   │   │       ├── drop-search-items-5526.test.ts
+│   │   │       ├── fix-closure-reason-offer-status-history-5722.test.ts
 │   │   │       ├── normalize-lba-offer-origin-5645.test.ts
 │   │   │       ├── normalize-naf-jobs-partners.test.ts
+│   │   │       ├── off-platform-only-moderations-out-of-queue-5843.test.ts
+│   │   │       ├── off-platform-only-pending-moderations-5843.test.ts
 │   │   │       ├── search-collections-par-mode-5389.test.ts
 │   │   │       ├── seo-diplomes-lot1-5539.test.ts
 │   │   │       └── seo-diplomes-lot2-5604.test.ts
@@ -1164,6 +1223,8 @@
 │   │   │   ├── credentials.model.ts
 │   │   │   ├── custom-email-etfa.model.ts
 │   │   │   ├── deca-contrats.model.ts
+│   │   │   ├── detection-alerts.model.ts
+│   │   │   ├── detection-rules.model.ts
 │   │   │   ├── diplomes-metiers.model.ts
 │   │   │   ├── domaines-metiers.model.ts
 │   │   │   ├── elligible-training.model.ts
@@ -1186,7 +1247,11 @@
 │   │   │   ├── job.model.test.ts
 │   │   │   ├── job.model.ts
 │   │   │   ├── jobs-partners-computed.model.ts
+│   │   │   ├── jobs-partners-flux-signal.model.ts
+│   │   │   ├── jobs-partners-moderation-notes.test.ts
+│   │   │   ├── jobs-partners-moderation-notes.ts
 │   │   │   ├── jobs-partners-moderation.model.ts
+│   │   │   ├── jobs-partners-processing-lock.model.ts
 │   │   │   ├── jobs-partners.model.ts
 │   │   │   ├── jobs.model.ts
 │   │   │   ├── lba-item.model.ts
@@ -1269,6 +1334,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── inserjeunes.routes.ts
 │   │   │   ├── jobs-partners-admin.routes.ts
+│   │   │   ├── jobs-partners-moderation.routes.ts
 │   │   │   ├── jobs.routes.ts
 │   │   │   ├── login.routes.ts
 │   │   │   ├── params.ts
@@ -1284,8 +1350,7 @@
 │   │   │   ├── user.routes.ts
 │   │   │   ├── v2
 │   │   │   │   ├── application.routes.v2.ts
-│   │   │   │   ├── appointments.routes.v2.ts
-│   │   │   │   └── jobs.routes.v2.ts
+│   │   │   │   └── appointments.routes.v2.ts
 │   │   │   └── v3
 │   │   │       └── jobs
 │   │   │           ├── jobs.routes.v3.model.test.ts
@@ -1300,6 +1365,8 @@
 │   │   │   ├── admin-area.test.ts
 │   │   │   ├── admin-area.ts
 │   │   │   ├── assert-unreachable.ts
+│   │   │   ├── auto-radius.test.ts
+│   │   │   ├── auto-radius.ts
 │   │   │   ├── contact-details.test.ts
 │   │   │   ├── contact-details.ts
 │   │   │   ├── detect-url-and-emails.test.ts
@@ -1424,10 +1491,12 @@
 │   │   │   │       │   ├── SearchMobileSummaryBar.tsx
 │   │   │   │       │   ├── SearchMobileTriModal.tsx
 │   │   │   │       │   ├── SearchPageClient.tsx
+│   │   │   │       │   ├── SearchResultsList.test.tsx
 │   │   │   │       │   ├── SearchResultsList.tsx
 │   │   │   │       │   ├── SearchSortSelect.tsx
 │   │   │   │       │   └── SearchTypeRechercheSelect.tsx
 │   │   │   │       ├── _hooks
+│   │   │   │       │   ├── use-auto-radius.test.ts
 │   │   │   │       │   ├── use-auto-radius.ts
 │   │   │   │       │   ├── use-detail-navigation.test.ts
 │   │   │   │       │   ├── use-detail-navigation.ts
@@ -1435,6 +1504,8 @@
 │   │   │   │       │   ├── use-lock-body-scroll.ts
 │   │   │   │       │   ├── use-search-results.test.ts
 │   │   │   │       │   ├── use-search-results.ts
+│   │   │   │       │   ├── use-search-view-notifier.test.ts
+│   │   │   │       │   ├── use-search-view-notifier.ts
 │   │   │   │       │   └── use-visual-viewport-size.ts
 │   │   │   │       ├── _utils
 │   │   │   │       │   ├── recherche.metadata.utils.test.ts
@@ -1526,6 +1597,7 @@
 │   │   │   │   ├── _components
 │   │   │   │   │   ├── CarteOffre.tsx
 │   │   │   │   │   ├── JobsCtaTracked.tsx
+│   │   │   │   │   ├── OffrePublieeDepuis.tsx
 │   │   │   │   │   ├── SectionTitle.tsx
 │   │   │   │   │   ├── diplome_data.tsx
 │   │   │   │   │   ├── hub-styles.ts
@@ -1680,6 +1752,7 @@
 │   │   │   │   ├── PopoverMenu.tsx
 │   │   │   │   ├── Table.tsx
 │   │   │   │   ├── TableWithPagination.tsx
+│   │   │   │   ├── VirtualTable.test.tsx
 │   │   │   │   ├── VirtualTable.tsx
 │   │   │   │   ├── promoRessources.tsx
 │   │   │   │   └── table-styles.ts
@@ -1712,17 +1785,33 @@
 │   │   │       │   │   ├── JobStartDateFields.tsx
 │   │   │       │   │   ├── ListeOffres.tsx
 │   │   │       │   │   ├── ModificationCompteEmail.tsx
+│   │   │       │   │   ├── NavigationOpco.tsx
 │   │   │       │   │   ├── OffreProlongationModal.tsx
 │   │   │       │   │   ├── OffresTabs.tsx
+│   │   │       │   │   ├── OffresTabsMenu.test.tsx
 │   │   │       │   │   ├── OffresTabsMenu.tsx
 │   │   │       │   │   ├── UpsertOffre.tsx
 │   │   │       │   │   ├── ameliorer-ia.utils.test.ts
-│   │   │       │   │   └── ameliorer-ia.utils.ts
+│   │   │       │   │   ├── ameliorer-ia.utils.ts
+│   │   │       │   │   └── moderation
+│   │   │       │   │       ├── AgentNote.tsx
+│   │   │       │   │       ├── ModerationBadges.test.tsx
+│   │   │       │   │       ├── ModerationBadges.tsx
+│   │   │       │   │       ├── ModerationJobDetail.test.tsx
+│   │   │       │   │       ├── ModerationJobDetail.tsx
+│   │   │       │   │       ├── ModerationPanel.test.tsx
+│   │   │       │   │       ├── ModerationPanel.tsx
+│   │   │       │   │       ├── ModerationQueue.tsx
+│   │   │       │   │       ├── RefusOffreModal.tsx
+│   │   │       │   │       ├── moderation-links.ts
+│   │   │       │   │       ├── moderation.types.test.ts
+│   │   │       │   │       └── moderation.types.ts
 │   │   │       │   ├── administration
 │   │   │       │   │   ├── _components
 │   │   │       │   │   │   ├── AdminSearchInput.tsx
 │   │   │       │   │   │   ├── EtablissementComponent.tsx
 │   │   │       │   │   │   ├── MultiSelect.tsx
+│   │   │       │   │   │   ├── PaginationButton.tsx
 │   │   │       │   │   │   └── SearchClearButton.tsx
 │   │   │       │   │   ├── _utils
 │   │   │       │   │   │   ├── admin-search-validation.test.ts
@@ -1791,6 +1880,10 @@
 │   │   │       │   │   │   ├── gestionEntreprises.tsx
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── layout.tsx
+│   │   │       │   │   ├── offres-a-moderer
+│   │   │       │   │   │   ├── [jobId]
+│   │   │       │   │   │   │   └── page.tsx
+│   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── offres-partenaires
 │   │   │       │   │   │   ├── OffresPartenairesList.tsx
 │   │   │       │   │   │   ├── OffresPartenairesMenu.tsx
@@ -1893,6 +1986,10 @@
 │   │   │       │       ├── compte
 │   │   │       │       │   └── page.tsx
 │   │   │       │       ├── layout.tsx
+│   │   │       │       ├── offres-a-moderer
+│   │   │       │       │   ├── [jobId]
+│   │   │       │       │   │   └── page.tsx
+│   │   │       │       │   └── page.tsx
 │   │   │       │       ├── page.tsx
 │   │   │       │       └── users
 │   │   │       │           └── [userId]
@@ -1915,9 +2012,7 @@
 │   │   │       │   │   └── [jobType]
 │   │   │       │   │       └── [jobId]
 │   │   │       │   │           ├── OffreActionPage.tsx
-│   │   │       │   │           ├── cancel
-│   │   │       │   │           │   └── page.tsx
-│   │   │       │   │           └── provided
+│   │   │       │   │           └── cancel
 │   │   │       │   │               └── page.tsx
 │   │   │       │   └── proposition
 │   │   │       │       └── formulaire
@@ -2598,7 +2693,6 @@
 │   │   │   │   ├── domain_error_notice.svg
 │   │   │   │   ├── download_ico.svg
 │   │   │   │   ├── employees.svg
-│   │   │   │   ├── errorAlert.svg
 │   │   │   │   ├── error_info.svg
 │   │   │   │   ├── error_stop.svg
 │   │   │   │   ├── fake_feature_btn.svg
@@ -2921,6 +3015,7 @@
 │       ├── api.utils.ts
 │       ├── class-names.ts
 │       ├── date-utils.ts
+│       ├── days-since-date.ts
 │       ├── debounce.ts
 │       ├── get-item-id.ts
 │       ├── get-session.ts
@@ -2931,6 +3026,7 @@
 │       ├── lba-item.types.ts
 │       ├── local-storage.ts
 │       ├── matomo-utils.ts
+│       ├── moderation-pages.utils.ts
 │       ├── opco-search-filter.utils.test.ts
 │       ├── opco-search-filter.utils.ts
 │       ├── plausible.ts
@@ -2938,6 +3034,7 @@
 │       ├── request-utils.ts
 │       ├── robots.utils.test.ts
 │       ├── robots.utils.ts
+│       ├── routes.metadata.utils.test.ts
 │       ├── routes.metadata.utils.ts
 │       ├── routes.utils.ts
 │       ├── sentry-filters.utils.test.ts
@@ -2949,4 +3046,4 @@
 │       └── validation-messages.ts
 ├── vitest.config.ts
 └── yarn.lock
-520 directories, 2999 files
+525 directories, 3091 files
