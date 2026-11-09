@@ -54,10 +54,13 @@
 │   ├── authorization-team.spec.ts
 │   ├── env-setup.ts
 │   ├── htmlbuilder.spec.ts
+│   ├── middleware-protected-api-gone.spec.ts
 │   ├── queries-authorization.spec.ts
 │   ├── queries-user-incubators.spec.ts
 │   ├── seed
 │   │   └── fake_data.ts
+│   ├── startup-files-authorization.spec.ts
+│   ├── startup-urls.spec.ts
 │   ├── startups.json
 │   ├── test-account.ts
 │   ├── test-api-guard.ts
@@ -223,7 +226,8 @@
 │   ├── 20260815000002_add_api_keys_table.ts
 │   ├── 20260816000001_add_api_keys_confirmed_at.ts
 │   ├── 20261015000001_add_pending_primary_email_to_users.js
-│   └── 20261016000001_add_user_id_lock_to_dinum_emails.js
+│   ├── 20261016000001_add_user_id_lock_to_dinum_emails.js
+│   └── 20261106000001_create_startup_urls_table.ts
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
@@ -434,6 +438,7 @@
 │   │   │   │       └── updateOrganization.ts
 │   │   │   ├── services
 │   │   │   │   └── ops
+│   │   │   │       ├── actions.spec.ts
 │   │   │   │       └── actions.ts
 │   │   │   ├── startups
 │   │   │   │   ├── actions.ts
@@ -611,10 +616,12 @@
 │   │   │   ├── PhasesEditor.tsx
 │   │   │   ├── SponsorBlock.tsx
 │   │   │   ├── StartupForm.tsx
+│   │   │   ├── StartupUrlsEditor.tsx
 │   │   │   ├── TechnoEditor.tsx
 │   │   │   ├── ThematiquesEditor.tsx
 │   │   │   ├── UsertypesEditor.tsx
-│   │   │   └── events-table.css
+│   │   │   ├── events-table.css
+│   │   │   └── startup-urls-table.css
 │   │   ├── StartupInfoCreatePage
 │   │   │   ├── StartupInfoCreate.tsx
 │   │   │   └── index.ts
@@ -687,6 +694,7 @@
 │   │   │   ├── memberBrevo.ts
 │   │   │   ├── memberEvents.ts
 │   │   │   ├── members.ts
+│   │   │   ├── updateMemberInfo.spec.ts
 │   │   │   └── updateMemberInfo.ts
 │   │   ├── api
 │   │   │   ├── bearer.ts
@@ -811,6 +819,7 @@
 │   │   │   │   ├── missions.ts
 │   │   │   │   ├── organizations.ts
 │   │   │   │   ├── search.ts
+│   │   │   │   ├── startupUrls.ts
 │   │   │   │   ├── startups.ts
 │   │   │   │   ├── teams.ts
 │   │   │   │   ├── userEvents.ts
@@ -833,6 +842,7 @@
 │   │   ├── pgAdpter.spec.ts
 │   │   ├── pgAdpter.ts
 │   │   ├── routes.ts
+│   │   ├── s3.spec.ts
 │   │   ├── s3.ts
 │   │   ├── searchCommune.ts
 │   │   ├── session.ts
@@ -899,6 +909,7 @@
 │   │   ├── startup.ts
 │   │   ├── startupChange.ts
 │   │   ├── startupFiles.ts
+│   │   ├── startupUrl.ts
 │   │   ├── team.ts
 │   │   ├── technos.ts
 │   │   ├── thematiques.ts
@@ -973,4 +984,4 @@
 │                   │   └── memberValidationEmail.ts
 │                   └── updateSecondaryEmail.ejs
 └── tsconfig.json
-195 directories, 780 files
+195 directories, 791 files
