@@ -1,11 +1,13 @@
 .
 ├── .editorconfig
 ├── .github
+│   ├── dependabot.yml
 │   ├── pull_request_template.md
 │   └── workflows
 │       ├── check.yml
 │       ├── pages.yml
-│       └── pr-title.yml
+│       ├── pr-title.yml
+│       └── release.yml
 ├── .gitignore
 ├── .miserc.toml
 ├── CONTRIBUTING.md
@@ -26,22 +28,31 @@
 │   │       └── __init__.py
 │   └── uv.lock
 ├── core
+│   ├── fixtures
+│   │   └── records.json
 │   ├── mise.toml
 │   ├── package.json
 │   ├── scripts
 │   │   └── generate.ts
 │   ├── src
-│   │   ├── example-record.ts
 │   │   ├── index.ts
 │   │   ├── record.test.ts
 │   │   ├── record.ts
 │   │   ├── registry.test.ts
 │   │   └── registry.ts
+│   ├── tsconfig.build.json
 │   └── tsconfig.json
 ├── data
-│   └── ministereAgriculture
-│       └── prestagri
-│           └── aideScolarite.json
+│   ├── ministereAgriculture
+│   │   └── prestagri
+│   │       ├── aideScolarite.json
+│   │       └── quotientFamilial.json
+│   ├── ministereCulture
+│   │   └── passCulture
+│   │       └── passCulture.json
+│   └── ministereInterieur
+│       └── droitVote
+│           └── droitVote.json
 ├── docs
 │   ├── architecture.md
 │   ├── decisions
@@ -50,8 +61,12 @@
 │   │   ├── ADR-0002-mise.md
 │   │   ├── ADR-0003-types-de-la-fiche.md
 │   │   ├── ADR-0004-site-statique.md
-│   │   └── ADR-0005-identites-du-site.md
-│   └── mise.md
+│   │   ├── ADR-0005-identites-du-site.md
+│   │   └── ADR-0006-pages-propres-a-une-identite.md
+│   ├── mise.md
+│   └── tests.md
+├── e2e
+│   └── accessibility.spec.ts
 ├── eslint.config.mjs
 ├── hk.pkl
 ├── mise.dev.lock
@@ -59,19 +74,29 @@
 ├── mise.lock
 ├── mise.toml
 ├── package.json
+├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── sites
 │   ├── gouv-fr
 │   │   ├── app
 │   │   │   ├── app.config.ts
-│   │   │   └── components
-│   │   │       ├── SiteLayout.vue
-│   │   │       ├── UiBreadcrumb.vue
-│   │   │       └── UiCardList.vue
+│   │   │   ├── components
+│   │   │   │   ├── BrandWaves.vue
+│   │   │   │   ├── SiteLayout.vue
+│   │   │   │   ├── UiBreadcrumb.vue
+│   │   │   │   ├── UiCardList.vue
+│   │   │   │   ├── UiPageBody.vue
+│   │   │   │   └── UiPageHeader.vue
+│   │   │   └── views
+│   │   │       └── ReferenceView.vue
 │   │   ├── mise.toml
 │   │   ├── nuxt.config.ts
 │   │   ├── package.json
+│   │   ├── routes.ts
+│   │   ├── shared
+│   │   │   └── types
+│   │   │       └── app-config.d.ts
 │   │   └── tsconfig.json
 │   └── white-label
 │       ├── app
@@ -81,7 +106,9 @@
 │       │   └── components
 │       │       ├── SiteLayout.vue
 │       │       ├── UiBreadcrumb.vue
-│       │       └── UiCardList.vue
+│       │       ├── UiCardList.vue
+│       │       ├── UiPageBody.vue
+│       │       └── UiPageHeader.vue
 │       ├── mise.toml
 │       ├── nuxt.config.ts
 │       ├── package.json
@@ -97,16 +124,35 @@
     │       └── RecordView.vue
     ├── catalogue
     │   ├── record.test.ts
-    │   ├── record.ts
-    │   └── routes.ts
+    │   └── record.ts
     ├── mise.toml
+    ├── modules
+    │   ├── fixtures
+    │   │   ├── legal-notice
+    │   │   │   ├── app
+    │   │   │   │   └── views
+    │   │   │   │       └── LegalNoticeView.vue
+    │   │   │   └── routes.ts
+    │   │   ├── no-routes
+    │   │   │   └── routes.ts
+    │   │   ├── redeclared-name
+    │   │   │   └── routes.ts
+    │   │   └── redeclared-path
+    │   │       └── routes.ts
+    │   ├── records.test.ts
+    │   ├── records.ts
+    │   ├── view-routes.test.ts
+    │   └── view-routes.ts
     ├── nuxt.config.ts
     ├── package.json
+    ├── routes.ts
     ├── server
     │   ├── api
     │   │   └── records
     │   │       ├── [identifier].get.ts
     │   │       └── index.get.ts
+    │   ├── routes
+    │   │   └── registry.json.get.ts
     │   └── utils
     │       └── registry.ts
     ├── shared
@@ -114,4 +160,4 @@
     │       ├── app-config.d.ts
     │       └── ui.ts
     └── tsconfig.json
-35 directories, 81 files
+53 directories, 109 files

@@ -1,18 +1,26 @@
-## Changelog : regles.data.gouv.fr (30 derniers jours, au 16 octobre 2026)
+## Changelog : regles.data.gouv.fr (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Le projet est passé d'une phase de configuration initiale à une version capable de présenter un catalogue de règles structuré. L'interface utilisateur s'est alignée sur les standards de l'État (DSFR) et le système de gestion des données a été renforcé pour assurer la fiabilité et l'intégrité des informations publiées.
+Ce mois a été marqué par une montée en maturité importante de l'interface et des capacités d'extension du projet. Le catalogue de règles est désormais plus riche et visuellement adaptable (thèmes DSFR ou marque blanche), tandis que les outils pour les développeurs ont été considérablement améliorés pour permettre l'extension du site et une meilleure intégration des données.
 
 ### Évolutions fonctionnelles
-- Publication d'un catalogue de règles sous forme de pages statiques pour une consultation simplifiée [#26](https://github.com/datagouv/regles.data.gouv.fr/pull/26).
-- Mise en conformité visuelle avec le Design System de l'État (DSFR) et ajout d'un mode "marque blanche" pour l'interface web [#29](https://github.com/datagouv/regles.data.gouv.fr/pull/29).
+- **Personnalisation de l'interface :** Support du rendu multi-thèmes permettant d'afficher le site soit avec l'identité DSFR, soit en "marque blanche" [#29].
+- **Amélioration de l'expérience utilisateur :** Ajout d'un en-tête stylisé [#37], de pages dédiées à l'identité de l'État [#42] et génération automatique du catalogue de règles sous forme de pages statiques [#26].
+- **Enrichissement des données :** Intégration de nouveaux enregistrements convertis depuis le format JSON-LD [#38].
+- **Extensibilité :** Possibilité pour les projets tiers d'ajouter leurs propres liens de navigation lorsqu'ils étendent le site DSFR [#50].
 
 ### Évolutions techniques
-- Amélioration du moteur (core) : construction automatique du registre à partir des fichiers de règles et gestion automatique des doublons [#25](https://github.com/datagouv/regles.data.gouv.fr/pull/25).
-- Automatisation de la génération des types de données à partir des schémas de contrat [#23](https://github.com/datagouv/regles.data.gouv.fr/pull/23).
-- Mise en place d'un schéma de validation pour les contrats [#20](https://github.com/datagouv/regles.data.gouv.fr/pull/20).
-- Optimisation de la chaîne de production (CI/CD) : déploiement de prévisualisations sur GitHub Pages [#30](https://github.com/datagouv/regles.data.gouv.fr/pull/30), automatisation des tests et du linting via `mise` [#22](https://github.com/datagouv/regles.data.gouv.fr/pull/22) et amélioration de l'intégration des nouvelles entrées [#21](https://github.com/datagouv/regles.data.gouv.fr/pull/21).
-- Initialisation de l'outillage de développement et de la structure du projet [#7](https://github.com/datagouv/regles.data.gouv.fr/pull/7).
-
-### Autres changements
-- Documentation technique : ajout de documents de décision d'architecture (ADR) concernant la validation des données [#18](https://github.com/datagouv/regles.data.gouv.fr/pull/18) et la configuration du dépôt [#16](https://github.com/datagouv/regles.data.gouv.fr/pull/16).
+- **Moteur de données (Core) :** 
+    - Automatisation de la construction du registre à partir des fichiers d'enregistrements avec détection automatique des doublons [#25].
+    - Dérivation automatique des types d'enregistrements à partir du schéma de contrat [#23].
+    - Publication du registre sous forme de fichier JSON statique pour faciliter la consommation externe [#36].
+    - Publication du "core" sous forme d'archive attachée aux releases [#48].
+- **Architecture Web :** 
+    - Création dynamique des routes à partir de fichiers de configuration dédiés [#39].
+    - Mise à disposition de la couche web pour permettre l'extension par d'autres projets Nuxt [#49].
+- **CI/CD et Qualité :** 
+    - Renforcement des workflows et mise à jour de Nuxt [#52].
+    - Mise en place de prévisualisations automatiques des sites sur GitHub Pages [#30].
+    - Ajout de tests d'accessibilité (E2E) pour garantir la conformité des sites générés [#51].
+    - Intégration de tests et de linting automatisés via `mise run check` [#22].
+- **Infrastructure :** Mise à jour de l'environnement de build (Node.js [#44]).
