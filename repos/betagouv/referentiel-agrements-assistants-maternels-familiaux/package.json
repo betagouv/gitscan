@@ -1,17 +1,66 @@
 {
-  "engines": {
-    "node": "^26.8.1"
-  },
-  "license": "Apache-2.0",
   "name": "referentiel-national-agrements",
-  "scripts": {
-    "test": "npm run lint",
-    "lint": "npm run lint:filenames",
-    "lint:filenames": "ls-lint"
-  },
-  "type": "module",
   "version": "0.0.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "database:migrate": "knex --cwd ./src/database migrate:latest",
+    "database:seed": "knex --cwd ./src/database seed:run",
+    "database:status": "knex --cwd ./src/database migrate:list",
+    "fake:database:migrate": "knex --cwd ./tests/fake/database migrate:latest",
+    "fake:database:status": "knex --cwd ./tests/fake/database migrate:list",
+    "fake:database:seed": "knex --cwd ./tests/fake/database seed:run",
+    "fake:pajemploi:start": "node tests/fake/pajemploi/serve.js",
+    "fake:rnipp:start": "node tests/fake/rnipp/serve.js",
+    "lint": "npm run lint:filenames && npm run lint:dependencies && npm run lint:format && npm run lint:files:js",
+    "lint:fix": "npm run lint:format:fix && npm run lint:files:js:fix",
+    "lint:format": "oxfmt --check",
+    "lint:format:fix": "oxfmt",
+    "lint:files:js": "eslint .",
+    "lint:files:js:fix": "eslint --fix .",
+    "lint:filenames": "ls-lint",
+    "lint:dependencies": "knip --no-progress",
+    "start": "node --import ./instrument.cjs --no-warnings=ExperimentalWarning serve.js",
+    "test": "mocha",
+    "test:end-to-end": "playwright test"
+  },
   "dependencies": {
-    "@ls-lint/ls-lint": "^2.3.1"
+    "@hapi/hapi": "^21.4.10",
+    "@hapi/inert": "^7.1.2",
+    "@hapi/vision": "^7.0.3",
+    "@sentry/node": "^11.0.0",
+    "hapi-pino": "^13.0.0",
+    "hapi-swagger": "^17.3.2",
+    "http-status-codes": "^2.3.0",
+    "joi": "^17.13.8",
+    "knex": "^3.3.0",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.8.0",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.1.0",
+    "@ls-lint/ls-lint": "^2.3.1",
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.5.0",
+    "chai": "^6.2.2",
+    "chai-exclude": "^3.0.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-chai-expect": "^4.1.0",
+    "eslint-plugin-knex-security": "^1.0.0",
+    "eslint-plugin-mocha": "^12.0.2",
+    "eslint-plugin-n": "^18.3.0",
+    "eslint-plugin-node-security": "^5.5.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "eslint-plugin-yml": "^3.8.1",
+    "knip": "^6.34.0",
+    "mocha": "^12.0.0",
+    "nock": "^15.0.1",
+    "oxfmt": "^0.75.0",
+    "sinon": "^22.1.0",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": "^26.12.1"
   }
 }

@@ -1,33 +1,54 @@
 {
   "url": "https://github.com/betagouv/referentiel-agrements-assistants-maternels-familiaux",
   "name": "referentiel-agrements-assistants-maternels-familiaux",
-  "description": "Référentiel national permettant aux services de PMI de consulter l'historique des agréments des assistants maternels et familiaux pour assurer le suivi législatif.",
+  "description": "Référentiel national permettant aux services de PMI de consulter l'historique des agréments des assistants maternels et familiaux afin d'assurer le suivi législatif et prévenir la délivrance d'agréments.",
   "language": "JavaScript",
   "features": [
+    "API & Intégrations",
     "Recherche & Filtres",
-    "Suivi & Traçabilité"
+    "Suivi & Traçabilité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@ls-lint/ls-lint"
+    "@hapi/hapi",
+    "knex",
+    "pg",
+    "joi",
+    "hapi-swagger",
+    "@sentry/node"
   ],
   "components": [
     "API REST & GraphQL",
-    "Node.js / NestJS"
+    "PostgreSQL & SQL",
+    "TypeScript / JavaScript",
+    "Documentation & Schémas",
+    "Tests",
+    "Docker & Conteneurs",
+    "Scripts & Utilitaires"
   ],
-  "tests": "npm run lint",
-  "lastActivity": "2026-09-08T11:07:31+02:00",
+  "tests": [
+    "Mocha",
+    "Playwright",
+    "Chai"
+  ],
+  "workflows": [
+    "test.yml"
+  ],
+  "lastActivity": "2026-11-06T15:23:37Z",
   "status": "maintained",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
-    "openIssues": 1
+    "openIssues": 2
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Standards & Schémas"
+    "Standards & Schémas",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions"
   ]
 }
