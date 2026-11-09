@@ -178,8 +178,10 @@
 │   │   │   ├── templates
 │   │   │   │   └── conversations
 │   │   │   │       └── messages
+│   │   │   │           ├── dn_button.html
 │   │   │   │           ├── fragments
 │   │   │   │           │   ├── confirm_delete_message.html
+│   │   │   │           │   ├── conversation_editor.html
 │   │   │   │           │   ├── conversation_topic.html
 │   │   │   │           │   ├── conversations_new_feed.html
 │   │   │   │           │   ├── created_by_reply.html
@@ -230,6 +232,9 @@
 │   │   │   │   │   │   ├── activity_action.html
 │   │   │   │   │   │   ├── banner_project_multiportal.html
 │   │   │   │   │   │   ├── banner_project_status.html
+│   │   │   │   │   │   ├── config
+│   │   │   │   │   │   │   ├── accordion_header.html
+│   │   │   │   │   │   │   └── upload_field.html
 │   │   │   │   │   │   ├── crm_home_card.html
 │   │   │   │   │   │   ├── crm_icon_button.html
 │   │   │   │   │   │   ├── empty_state.html
@@ -310,6 +315,7 @@
 │   │   │   ├── urls.py
 │   │   │   └── views.py
 │   │   ├── demarches_simplifiees
+│   │   │   ├── README.md
 │   │   │   ├── __init__.py
 │   │   │   ├── adapters
 │   │   │   │   ├── 42113.py
@@ -326,6 +332,7 @@
 │   │   │   │   ├── 0004_update_dsmapping_mappings.py
 │   │   │   │   ├── 0005_alter_dsfolder_unique_together_and_more.py
 │   │   │   │   ├── 0006_delete_dsfolder.py
+│   │   │   │   ├── 0007_alter_dsresource_name.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── services.py
@@ -363,6 +370,9 @@
 │   │   │   │   │   │   │   │   └── skiplinks.htm
 │   │   │   │   │   │   │   └── inputs
 │   │   │   │   │   │   │       ├── README.md
+│   │   │   │   │   │   │       ├── baseinput.html
+│   │   │   │   │   │   │       ├── field.html
+│   │   │   │   │   │   │       ├── field.strict.html
 │   │   │   │   │   │   │       ├── input_checkbox.html
 │   │   │   │   │   │   │       ├── input_checkbox_group.html
 │   │   │   │   │   │   │       ├── input_file.html
@@ -413,7 +423,6 @@
 │   │   │   │   │   │   ├── accordion-holder.html
 │   │   │   │   │   │   ├── accordion-item.html
 │   │   │   │   │   │   ├── basebutton.html
-│   │   │   │   │   │   ├── baseinput.html
 │   │   │   │   │   │   ├── buttongroup.html
 │   │   │   │   │   │   ├── buttonholder.html
 │   │   │   │   │   │   ├── checkboxselectmultiple.html
@@ -445,7 +454,6 @@
 │   │   │   │       │   ├── accordion-holder.html
 │   │   │   │       │   ├── accordion-item.html
 │   │   │   │       │   ├── basebutton.html
-│   │   │   │       │   ├── baseinput.html
 │   │   │   │       │   ├── buttongroup.html
 │   │   │   │       │   ├── buttonholder.html
 │   │   │   │       │   ├── checkboxselectmultiple.html
@@ -536,6 +544,7 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── clean_stale_notifications.py
+│   │   │   │       ├── cleanup_action_history.py
 │   │   │   │       ├── cleanuporgs.py
 │   │   │   │       ├── create_site.py
 │   │   │   │       ├── import_validated_addresses_brevo.py
@@ -595,6 +604,8 @@
 │   │   │   │   ├── 0047_embed_allowed_origins.py
 │   │   │   │   ├── 0048_merge_20260826_1002.py
 │   │   │   │   ├── 0049_remove_siteconfiguration_sender_email.py
+│   │   │   │   ├── 0050_siteconfiguration_legal_fields.py
+│   │   │   │   ├── 0051_advisors_login_required.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── rest.py
@@ -648,6 +659,8 @@
 │   │   │   │               └── support.jpg
 │   │   │   ├── templates
 │   │   │   │   ├── 403.html
+│   │   │   │   ├── 404.html
+│   │   │   │   ├── 500.html
 │   │   │   │   └── home
 │   │   │   │       ├── accessibility.html
 │   │   │   │       ├── advisor-access-request-confirm-email.html
@@ -660,7 +673,9 @@
 │   │   │   │       │   └── no_login_by_code_staff_subject.txt
 │   │   │   │       ├── followus.html
 │   │   │   │       ├── fragments
-│   │   │   │       │   └── content_403.html
+│   │   │   │       │   ├── content_403.html
+│   │   │   │       │   ├── content_404.html
+│   │   │   │       │   └── content_500.html
 │   │   │   │       ├── home.html
 │   │   │   │       ├── legals.html
 │   │   │   │       ├── methodology.html
@@ -833,6 +848,9 @@
 │   │   │   ├── resolvers.py
 │   │   │   ├── routers.py
 │   │   │   ├── schema.py
+│   │   │   ├── templatetags
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── plugins_extra.py
 │   │   │   ├── tests.py
 │   │   │   └── urls.py
 │   │   ├── projects
@@ -1010,7 +1028,10 @@
 │   │   │   │       │   │   ├── advisor_note.html
 │   │   │   │       │   │   ├── city_select.html
 │   │   │   │       │   │   ├── city_select_dsfr.html
-│   │   │   │       │   │   ├── departments_selector.html
+│   │   │   │       │   │   ├── departments_selector
+│   │   │   │       │   │   │   ├── departments_selector.html
+│   │   │   │       │   │   │   ├── departments_selector_dsfr.html
+│   │   │   │       │   │   │   └── list_departments.html
 │   │   │   │       │   │   ├── email_reminder
 │   │   │   │       │   │   │   ├── learn_more_reminder.html
 │   │   │   │       │   │   │   └── project_email_reminder.html
@@ -1038,6 +1059,8 @@
 │   │   │   │       │   │   ├── information_card_description.html
 │   │   │   │       │   │   ├── information_card_description_details.html
 │   │   │   │       │   │   ├── list-toolbars.html
+│   │   │   │       │   │   ├── map
+│   │   │   │       │   │   │   └── grey_scale_toggle.html
 │   │   │   │       │   │   ├── navigation
 │   │   │   │       │   │   │   ├── display_select.html
 │   │   │   │       │   │   │   ├── list_tabs.html
@@ -1279,6 +1302,7 @@
 │   │   │   ├── apps.py
 │   │   │   ├── forms.py
 │   │   │   ├── provider.py
+│   │   │   ├── tests.py
 │   │   │   ├── urls.py
 │   │   │   └── views.py
 │   │   ├── survey
@@ -1401,7 +1425,6 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── test_acra_proxy.py
 │   │   │   │   ├── test_rest.py
-│   │   │   │   ├── test_rest_task_followup.py
 │   │   │   │   └── test_tasks.py
 │   │   │   ├── urls.py
 │   │   │   ├── utils.py
@@ -1707,17 +1730,25 @@
 │   │   │   │   ├── contacts-book-line.svg
 │   │   │   │   ├── corner-down-right-line.svg
 │   │   │   │   ├── delete.svg
+│   │   │   │   ├── file-color.svg
 │   │   │   │   ├── file-copy-2-line.svg
 │   │   │   │   ├── file.svg
 │   │   │   │   ├── fingerprint.svg
 │   │   │   │   ├── group.svg
+│   │   │   │   ├── hammer-line.svg
 │   │   │   │   ├── hat-and-glasses.svg
+│   │   │   │   ├── justice-scale.svg
 │   │   │   │   ├── line-chart-off-line.svg
 │   │   │   │   ├── line-chart-on-line.svg
 │   │   │   │   ├── link.svg
 │   │   │   │   ├── list-check.svg
 │   │   │   │   ├── magic-fill.svg
+│   │   │   │   ├── mail-with-hints.svg
 │   │   │   │   ├── mail.svg
+│   │   │   │   ├── map
+│   │   │   │   │   ├── marker-focused.svg
+│   │   │   │   │   └── marker.svg
+│   │   │   │   ├── mockup-with-images.svg
 │   │   │   │   ├── notification-off-line.svg
 │   │   │   │   ├── notification-on-line.svg
 │   │   │   │   ├── people.svg
@@ -1728,6 +1759,7 @@
 │   │   │   │   ├── send-message-paper-plan.svg
 │   │   │   │   ├── settings.svg
 │   │   │   │   ├── swap-lines.svg
+│   │   │   │   ├── system.svg
 │   │   │   │   ├── tag-line.svg
 │   │   │   │   ├── target.svg
 │   │   │   │   └── tools-line.svg
@@ -1739,6 +1771,7 @@
 │   │   │   │   │   ├── layout-form.scss
 │   │   │   │   │   └── login.scss
 │   │   │   │   ├── activityStream.css
+│   │   │   │   ├── advisorConv.scss
 │   │   │   │   ├── background-override.scss
 │   │   │   │   ├── base.scss
 │   │   │   │   ├── border.css
@@ -1765,6 +1798,7 @@
 │   │   │   │   │   ├── projectList.scss
 │   │   │   │   │   ├── projectLowReach.scss
 │   │   │   │   │   ├── resourceList.scss
+│   │   │   │   │   ├── siteConfiguration.scss
 │   │   │   │   │   ├── table.scss
 │   │   │   │   │   └── user.scss
 │   │   │   │   ├── custom-bootstrap.scss
@@ -1774,6 +1808,7 @@
 │   │   │   │   ├── flags.css
 │   │   │   │   ├── formInformation.scss
 │   │   │   │   ├── geocoderBAN.css
+│   │   │   │   ├── greyScaleToggle.scss
 │   │   │   │   ├── header
 │   │   │   │   │   ├── menu-burger.scss
 │   │   │   │   │   └── user-tools.scss
@@ -1907,6 +1942,7 @@
 │   │   │       │   ├── actionsEmbed.js
 │   │   │       │   ├── advisorCreateProject.js
 │   │   │       │   ├── advisorDashboard.js
+│   │   │       │   ├── advisorSignup.js
 │   │   │       │   ├── auth.js
 │   │   │       │   ├── boardProjects.js
 │   │   │       │   ├── consent.js
@@ -1935,6 +1971,7 @@
 │   │   │       │   ├── resourceDetails.js
 │   │   │       │   ├── searchableList.js
 │   │   │       │   ├── selectSearchable.js
+│   │   │       │   ├── statistics.js
 │   │   │       │   ├── tagCloud.js
 │   │   │       │   ├── tasksEmbed.js
 │   │   │       │   ├── topicSearch.js
@@ -1942,6 +1979,7 @@
 │   │   │       │   └── user.js
 │   │   │       ├── components
 │   │   │       │   ├── AccessUpdate.js
+│   │   │       │   ├── AccordionStatus.js
 │   │   │       │   ├── ActionPusher.js
 │   │   │       │   ├── AjvValidationSchema.js
 │   │   │       │   ├── Auth.js
@@ -1960,6 +1998,7 @@
 │   │   │       │   ├── Crm.js
 │   │   │       │   ├── DepartmentsFilterWrapper.js
 │   │   │       │   ├── DepartmentsSelector.js
+│   │   │       │   ├── DismissibleNotice.js
 │   │   │       │   ├── Documents.js
 │   │   │       │   ├── DsrcFormValidator.js
 │   │   │       │   ├── Editor.js
@@ -1969,12 +2008,14 @@
 │   │   │       │   │   ├── CreateOrganizationModal.js
 │   │   │       │   │   └── SearchContactModal.js
 │   │   │       │   ├── FeatureConversations
-│   │   │       │   │   └── Conversations.js
+│   │   │       │   │   ├── Conversations.js
+│   │   │       │   │   └── TaskCardPanel.js
 │   │   │       │   ├── FieldValidator.js
 │   │   │       │   ├── FileCardExtension.js
 │   │   │       │   ├── FileUploads.js
 │   │   │       │   ├── GravatarCache.js
 │   │   │       │   ├── KanbanProjects.js
+│   │   │       │   ├── LogoUpload.js
 │   │   │       │   ├── MapDashboard.js
 │   │   │       │   ├── MapEditor.js
 │   │   │       │   ├── MapViewerInteractive.js
@@ -2051,6 +2092,7 @@
 │   │   │       ├── styles
 │   │   │       │   ├── account-layout-form.css.js
 │   │   │       │   ├── account-login.css.js
+│   │   │       │   ├── advisor-conv.css.js
 │   │   │       │   ├── background-override.css.js
 │   │   │       │   ├── banner-project-multiportal.css.js
 │   │   │       │   ├── banner-project-status.css.js
@@ -2071,6 +2113,7 @@
 │   │   │       │   ├── exploration-ia.css.js
 │   │   │       │   ├── form-information.css.js
 │   │   │       │   ├── form-resources.css.js
+│   │   │       │   ├── grey-scale-toggle.css.js
 │   │   │       │   ├── header-menu-burger.css.js
 │   │   │       │   ├── header-user-tools.css.js
 │   │   │       │   ├── home-actors.css.js
@@ -2118,6 +2161,7 @@
 │   │   │       │   ├── resources.css.js
 │   │   │       │   ├── segmented_ctrl.css.js
 │   │   │       │   ├── shared-contents-panel.css.js
+│   │   │       │   ├── site-configuration.css.js
 │   │   │       │   ├── survey-grid.css.js
 │   │   │       │   ├── survey.css.js
 │   │   │       │   ├── switchtender-list.css.js
@@ -2126,6 +2170,7 @@
 │   │   │       └── utils
 │   │   │           ├── ajv
 │   │   │           │   └── schema
+│   │   │           │       ├── ajv.schema.AdvisorSignupForm.js
 │   │   │           │       ├── ajv.schema.DsrcForm.js
 │   │   │           │       ├── ajv.schema.OnboardingEmailForm.js
 │   │   │           │       ├── ajv.schema.OnboardingProjectForm.js
@@ -2157,6 +2202,7 @@
 │   │   │           ├── map.js
 │   │   │           ├── markdown.js
 │   │   │           ├── select-a11y.js
+│   │   │           ├── sentry.js
 │   │   │           ├── statusToText.js
 │   │   │           ├── stringToColor.js
 │   │   │           ├── taskStatus.js
@@ -2178,8 +2224,7 @@
 │   │   ├── serializers.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
-│   │   │   ├── test_authentication.py
-│   │   │   └── test_permissions.py
+│   │   │   └── test_authentication.py
 │   │   └── urls.py
 │   ├── settings
 │   │   ├── __init__.py
@@ -2212,7 +2257,9 @@
 │   │   └── svg
 │   │       ├── bootstrap-icons.svg
 │   │       ├── empty-state.svg
+│   │       ├── files-missing.svg
 │   │       ├── marianne.svg
+│   │       ├── outer-space.svg
 │   │       ├── page-eaten.svg
 │   │       ├── picto-demarches_simplifiees--no-border.svg
 │   │       └── picto-demarches_simplifiees.svg
@@ -2224,6 +2271,7 @@
 │   │       │   ├── confirm_login_code.html
 │   │       │   ├── email
 │   │       │   │   ├── base_message.txt
+│   │       │   │   ├── email_confirmation_message.html
 │   │       │   │   ├── email_confirmation_signup_message.html
 │   │       │   │   ├── email_confirmation_subject.txt
 │   │       │   │   ├── login_code_message.html
@@ -2334,6 +2382,7 @@
 │   │       │   │   ├── search_organization.html
 │   │       │   │   └── searchbar_for_contacts.html
 │   │       │   ├── editor.html
+│   │       │   ├── loader.html
 │   │       │   ├── multi_select.html
 │   │       │   ├── on_leave_modal.html
 │   │       │   ├── organization_search.html
@@ -2377,4 +2426,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-375 directories, 2004 files
+380 directories, 2048 files
