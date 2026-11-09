@@ -1,20 +1,28 @@
-## Changelog : formulaire-qf (30 derniers jours, au 03 novembre 2026)
+## Changelog : formulaire-qf (30 derniers jours, au 06 novembre 2026)
 
 ### Résumé
-Les évolutions de ce mois se sont concentrées sur deux axes majeurs : le renforcement de la protection des données personnelles et la correction de plusieurs parcours utilisateurs. Des mesures importantes ont été prises pour éviter que des informations sensibles (identité, quotient familial) ne soient transmises par erreur aux outils de suivi technique, tout en stabilisant les interactions avec FranceConnect et les services de transmission DataPass.
+Ce mois a été marqué par un effort important de sécurisation des données personnelles et de stabilisation du parcours usager. Les corrections apportées visent principalement à améliorer la fiabilité des échanges avec FranceConnect et HubEE, tout en garantissant qu'aucune donnée sensible ne soit accidentellement enregistrée dans les outils de suivi technique (Sentry).
 
 ### Évolutions fonctionnelles
-- **Correction de parcours :** Résolution de bugs impactant le parcours FranceConnect ([#409](https://github.com/etalab/formulaire-qf/pull/409)) et le bouton de retour vers le site de la collectivité ([#412](https://github.com/etalab/formulaire-qf/pull/412)).
-- **Gestion des erreurs :** Amélioration de l'affichage des messages d'erreur lors des échecs de transmission (notamment avec HubEE) pour une meilleure compréhension par l'utilisateur ([#404](https://github.com/etalab/formulaire-qf/pull/404)).
-- **Alertes DataPass :** Mise en place d'alertes pour signaler les dossiers incomplets, comme l'absence de numéro de téléphone ([#405](https://github.com/etalab/formulaire-qf/pull/405)).
-- **Fiabilité des pages :** Correction de problèmes sur les pages de confirmation et de transmission ([#403](https://github.com/etalab/formulaire-qf/pull/403), [#402](https://github.com/etalab/formulaire-qf/pull/402)).
+- **Amélioration du parcours usager :**
+  - Correction de bugs lors de l'utilisation de FranceConnect pour assurer une redirection fluide ([#419](https://github.com/etalab/formulaire-qf/pull/409), [#413](https://github.com/etalab/formulaire-qf/pull/413)).
+  - Correction du bouton de retour vers le site de la collectivité ([#412](https://github.com/etalab/formulaire-qf/pull/412)).
+  - Amélioration de la gestion des erreurs de transmission : affichage de pages d'échec explicites lorsque le service HubEE ne répond pas ([#412](https://github.com/etalab/formulaire-qf/pull/404), [#408](https://github.com/etalab/formulaire-qf/pull/408)).
+- **Fiabilisation des données :**
+  - Correction de la gestion des numéros de dossier pour les collectivités ([#410](https://github.com/etalab/formulaire-qf/pull/410)).
+  - Résolution de problèmes liés aux numéros de téléphone manquants ou mal formatés ([#422](https://github.com/etalab/formulaire-qf/pull/422), [#405](https://github.com/etalab/formulaire-qf/pull/405)).
+  - Correction des références de confirmation et des pages de transmission ([#413](https://github.com/etalab/formulaire-qf/pull/403), [#411](https://github.com/etalab/formulaire-qf/pull/402)).
 
 ### Évolutions techniques
-- **Sécurité & Confidentialité :** Travail intensif de réduction des fuites de données personnelles (PII) vers l'outil de monitoring Sentry. Les identités, emails de collectivités et données de quotient familial sont désormais systématiquement exclus des logs et des traces d'erreurs ([#406](https://github.com/etalab/formulaire-qf/pull/406)).
-- **Sécurité des dépendances :** Mise à jour de plusieurs bibliothèques critiques pour corriger des vulnérabilités (loofah, rack, addressable, crass) ([#424](https://github.com/etalab/formulaire-qf/pull/424), [#420](https://github.com/etalab/formulaire-qf/pull/420), [#416](https://github.com/etalab/formulaire-qf/pull/416)).
-- **CI/CD :** Renforcement de la chaîne de tests avec l'exécution systématique sur chaque Pull Request et le blocage automatique des déploiements en cas de vulnérabilités détectées dans les dépendances ([#421](https://github.com/etalab/formulaire-qf/pull/421)).
-- **Maintenance :** Mise à jour de l'environnement Ruby (version 4.0.9) et optimisation de l'environnement de développement (suppression de Spring).
+- **Sécurité et protection des données :**
+  - **Confidentialité :** Suppression massive des données sensibles (identités, réponses API, emails de collectivités) des rapports d'erreurs Sentry pour garantir la conformité RGPD ([#406](https://github.com/etalab/formulaire-qf/pull/406), [#393](https://github.com/etalab/formulaire-qf/pull/393)).
+  - **Correctifs de sécurité :** Mise à jour de dépendances critiques pour corriger des vulnérabilités (Rack, Addressable, Loofah, Crass) ([#420](https://github.com/etalab/formulaire-qf/pull/420), [#424](https://github.com/etalab/formulaire-qf/pull/424), [#416](https://github.com/etalab/formulaire-qf/pull/416)).
+- **Maintenance et infrastructure :**
+  - **Montée de version majeure :** Passage à Ruby 4.0.9 et Rails 8.1.4.1.
+  - **Gestion des tâches :** Mise à jour de GoodJob pour la gestion des processus en arrière-plan ([#430](https://github.com/etalab/formulaire-qf/pull/430)).
+  - **Optimisation CI/CD :** Amélioration de la concurrence des tests et automatisation des tests sur chaque pull request.
+  - **Développement :** Suppression de Spring pour simplifier l'environnement de travail local.
 
 ### Autres changements
-- **Documentation :** Création et enrichissement du fichier `CLAUDE.md` pour centraliser les conventions et commandes du projet.
-- **Expérience développeur :** Ajout de nouveaux scripts pour faciliter le travail sur des branches isolées via les *worktrees*.
+- **Documentation :** Mise à jour du fichier `CLAUDE.md` pour inclure les commandes et conventions de développement du projet.
+- **Outils de développement :** Ajout de scripts pour faciliter l'utilisation des `worktrees` et la gestion des bases de données locales.

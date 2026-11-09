@@ -1,24 +1,23 @@
 {
   "url": "https://github.com/etalab/formulaire-qf",
   "name": "formulaire-qf",
-  "description": "Ce projet permet de gérer les demandes de quotient familial pour les communes via une API et une interface web. Il assure la collecte et la transmission sécurisée des données aux services publics.",
+  "description": "Application permettant la gestion des demandes de quotient familial pour les collectivités territoriales. Elle propose une API publique et s'intègre avec FranceConnect pour sécuriser le parcours usager.",
   "language": "Ruby",
   "features": [
     "Formulaires & Démarches",
     "API & Intégrations",
+    "Authentification & Accès",
     "Sécurité & Conformité",
     "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Ruby",
     "Rails",
     "PostgreSQL",
     "Puma",
-    "Hotwire",
-    "Stimulus",
-    "Turbo",
-    "Sentry",
     "GoodJob",
+    "Sentry",
     "OmniAuth",
     "Faraday"
   ],
@@ -26,10 +25,10 @@
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Tests",
     "Authentification (composant)",
-    "HTML / CSS / Templates visuels",
-    "Bibliothèques & Packages"
+    "Tests",
+    "Webhooks & Événements",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
@@ -38,26 +37,27 @@
       "session"
     ],
     "providers": [
-      "OpenID Connect"
+      "FranceConnect"
     ]
   },
   "tests": [
     "RSpec",
     "Cucumber",
     "Capybara",
-    "Selenium",
-    "Webmock"
+    "Selenium"
   ],
-  "lastActivity": "2026-11-03T20:29:20+01:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-11-06T13:19:12+01:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "JavaScript",
-    "Ruby on Rails",
-    "Tests & Qualité",
-    "SSO & Identité fédérée"
+    "Ruby",
+    "HTML, CSS & Web",
+    "CI/CD & GitHub Actions",
+    "Standards & Schémas"
   ]
 }
