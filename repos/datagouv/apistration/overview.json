@@ -1,60 +1,65 @@
 {
   "url": "https://github.com/datagouv/apistration",
   "name": "apistration",
-  "description": "Plateforme de gestion d'API et de documentation pour les services API Entreprise et API Particulier de l'État français. Elle assure l'administration, le monitoring et la fourniture de SDK officiels.",
+  "description": "Plateforme de gestion d'API et de documentation pour les services API Entreprise et API Particulier de l'État français. Elle assure l'administration, la sécurité et la fourniture de SDK officiels.",
   "language": "Ruby",
   "features": [
     "API & Intégrations",
     "Authentification & Accès",
-    "Sécurité & Conformité",
     "Administration & Backoffice",
-    "Données & Schémas"
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Suivi & Traçabilité"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Ruby",
-    "Rails",
+    "Ruby on Rails",
     "PostgreSQL",
     "Redis",
     "Node.js",
     "TypeScript",
-    "OpenAPI",
-    "Sentry"
+    "OpenAPI"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Documentation & Schémas",
-    "CI/CD & Déploiement",
-    "Ruby on Rails",
-    "Webhooks & Événements"
+    "Tests",
+    "Webhooks & Événements",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "api-key",
       "jwt",
       "mfa",
-      "sso"
+      "magic-link",
+      "oauth2",
+      "api-key"
+    ],
+    "providers": [
+      "FranceConnect"
     ]
   },
   "tests": [
     "RSpec",
-    "Vitest"
+    "Vitest",
+    "Webmock"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-13T12:04:20+02:00",
-  "status": "active",
+  "lastActivity": "2026-11-06T13:18:43+01:00",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "TypeScript",
-    "CI/CD & GitHub Actions",
+    "Git & DevOps",
     "Standards & Schémas",
-    "Documentation"
+    "Sécurité & Auth",
+    "Documentation",
+    "CI/CD & GitHub Actions"
   ]
 }

@@ -1,9 +1,11 @@
 .
 ├── .agent-vm.runtime.sh
+├── .ags
+│   └── sentry-watch.md
+├── .ags.yml
 ├── .claude
 │   ├── settings.json
 │   └── skills
-│       ├── .gitkeep
 │       ├── budget-reporting
 │       │   ├── SKILL.md
 │       │   └── references
@@ -31,6 +33,7 @@
 │       │       └── hyperping
 │       └── weekly-dependencies-bump
 │           └── SKILL.md
+├── .editorconfig
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
@@ -40,6 +43,7 @@
 │       ├── api-https-deploy-production.yaml
 │       ├── api-https-deploy-sandbox.yaml
 │       ├── api-https-deploy-staging.yaml
+│       ├── bundler-audit.yml
 │       ├── clients-node.yml
 │       ├── clients-ruby.yml
 │       ├── mocks-tests.yml
@@ -53,7 +57,9 @@
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
+├── REVIEW.md
 ├── bin
+│   ├── bump_ruby
 │   ├── deploy-sandbox
 │   ├── remove_worktree.sh
 │   ├── sentry
@@ -63,9 +69,14 @@
 │   │   ├── export
 │   │   ├── issue
 │   │   ├── issues
-│   │   └── sentry_client.rb
+│   │   ├── resolve
+│   │   ├── sentry_client.rb
+│   │   ├── test
+│   │   │   └── watch_precheck_test.rb
+│   │   └── watch-precheck
 │   ├── setup_worktree.sh
-│   └── test
+│   ├── test
+│   └── vouch-auto-mergeable
 ├── clients
 │   ├── .agents
 │   │   └── skills -> ../.claude/skills
@@ -479,7 +490,9 @@
 │   │   │   └── v2_pole_emploi.yml
 │   │   ├── template.entreprise.yml.example
 │   │   └── template.particulier.yml.example
+│   ├── pings.yml
 │   ├── provider_quotas.md
+│   ├── security_events.yml
 │   └── swagger
 │       ├── api_particulier_open_api_static
 │       │   └── v2.yaml
@@ -506,7 +519,6 @@
 │   │   └── skills -> ../.claude/skills
 │   ├── .claude
 │   │   └── skills
-│   │       ├── .gitkeep
 │   │       └── siade-sync-openapi-payloads
 │   │           └── SKILL.md
 │   ├── .gitignore
@@ -608,6 +620,7 @@
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_dgfip_tva
+│   │   │   ├── 200-alphanumeric-key.yaml
 │   │   │   ├── 200-single.yaml
 │   │   │   ├── 404.yaml
 │   │   │   ├── README.md
@@ -1559,6 +1572,7 @@
 │   │   │   ├── ine_655888578AE.yaml
 │   │   │   ├── ine_660309901AG.yaml
 │   │   │   ├── ine_675773666AD.yaml
+│   │   │   ├── ine_9740000001A_2026_la_reunion.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_sdh_statut_sportif_with_identifiant
 │   │   │   ├── 200.yaml
@@ -1730,9 +1744,8 @@
 │   ├── .agents
 │   │   └── skills -> ../.claude/skills
 │   ├── .claude
-│   │   ├── settings.local.json
+│   │   ├── settings.json
 │   │   └── skills
-│   │       ├── .gitkeep
 │   │       └── siade-probe-provider-charset
 │   │           └── SKILL.md
 │   ├── .expand
@@ -1977,6 +1990,7 @@
 │   │   │   ├── maintenance_error.rb
 │   │   │   ├── men_error.rb
 │   │   │   ├── missing_mandatory_param_error.rb
+│   │   │   ├── msa_error.rb
 │   │   │   ├── network_error.rb
 │   │   │   ├── not_found_error.rb
 │   │   │   ├── not_implemented_yet_error.rb
@@ -2031,8 +2045,6 @@
 │   │   │   │       ├── validate_http_response.rb
 │   │   │   │       ├── validate_immatriculation_presence.rb
 │   │   │   │       └── validate_one_identity_is_matching.rb
-│   │   │   ├── api_particulier
-│   │   │   │   └── build_attestation_proof.rb
 │   │   │   ├── application_interactor.rb
 │   │   │   ├── banque_de_france
 │   │   │   │   └── bilans_entreprise
@@ -2086,7 +2098,6 @@
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── make_request.rb
 │   │   │   │   ├── participation_familiale_eaje
-│   │   │   │   │   ├── build_attestation_proof.rb
 │   │   │   │   │   ├── build_resource.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── prime_activite
@@ -2186,6 +2197,7 @@
 │   │   │   │   │   ├── build_tva_number_from_siren.rb
 │   │   │   │   │   ├── fetch_refresh_date.rb
 │   │   │   │   │   ├── make_request.rb
+│   │   │   │   │   ├── select_tva_number.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── validate_request_id.rb
 │   │   │   │   ├── validate_response.rb
@@ -2443,6 +2455,8 @@
 │   │   │   │   │   ├── make_request.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   └── validate_identifiant.rb
+│   │   │   ├── security_event
+│   │   │   │   └── track.rb
 │   │   │   ├── service_user
 │   │   │   │   ├── validate_ine.rb
 │   │   │   │   ├── validate_token_id.rb
@@ -2477,6 +2491,10 @@
 │   │   │   ├── jwt_user.rb
 │   │   │   ├── mocked_data_helper.rb
 │   │   │   ├── rate_limit_headers_middleware.rb
+│   │   │   ├── security_event
+│   │   │   │   ├── log_subscriber.rb
+│   │   │   │   └── tracking.rb
+│   │   │   ├── security_event.rb
 │   │   │   ├── seeds.rb
 │   │   │   ├── string_normalizer.rb
 │   │   │   ├── swagger_data.rb
@@ -2681,6 +2699,8 @@
 │   │   │   │   └── certifications_batiment.rb
 │   │   │   ├── qualifelec
 │   │   │   │   └── certificats.rb
+│   │   │   ├── rack_attack
+│   │   │   │   └── track_blocked_request.rb
 │   │   │   ├── retriever_organizer.rb
 │   │   │   ├── rnm
 │   │   │   │   └── entreprises_artisanales.rb
@@ -2699,8 +2719,10 @@
 │   │   │   ├── application_ping_driver.rb
 │   │   │   ├── cnav_ping_driver.rb
 │   │   │   ├── dgfip_ping_driver.rb
+│   │   │   ├── documents_proxy_ping_driver.rb
 │   │   │   ├── dummy_ping_driver.rb
 │   │   │   ├── make_request_ping_driver.rb
+│   │   │   ├── retriever_document_ping_driver.rb
 │   │   │   ├── retriever_payload_ping_driver.rb
 │   │   │   └── retriever_ping_driver.rb
 │   │   ├── serializers
@@ -2839,6 +2861,7 @@
 │   │   │   │   ├── ants
 │   │   │   │   │   └── extrait_immatriculation_vehicule_serializer
 │   │   │   │   │       └── v3.rb
+│   │   │   │   ├── attestation_proof_builder.rb
 │   │   │   │   ├── cnav
 │   │   │   │   │   ├── allocation_adulte_handicape
 │   │   │   │   │   │   ├── v2.rb
@@ -2854,6 +2877,7 @@
 │   │   │   │   │   │   ├── v2.rb
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   ├── participation_familiale_eaje
+│   │   │   │   │   │   ├── attestation_proof_builder.rb
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   ├── prime_activite
 │   │   │   │   │   │   ├── v2.rb
@@ -2895,6 +2919,7 @@
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   └── student_status
 │   │   │   │   │       └── v2.rb
+│   │   │   │   ├── no_result_attestation_proof_builder.rb
 │   │   │   │   ├── pole_emploi
 │   │   │   │   │   ├── indemnites
 │   │   │   │   │   │   └── v2.rb
@@ -2930,7 +2955,6 @@
 │   │   │   ├── errors_nomenclature.rb
 │   │   │   ├── extract_provider_from_path.rb
 │   │   │   ├── generate_code_sample_from_path.rb
-│   │   │   ├── hyperping_api.rb
 │   │   │   ├── insee
 │   │   │   │   ├── accepted_password.rb
 │   │   │   │   ├── authentication_backoff.rb
@@ -2964,7 +2988,6 @@
 │   │   │   ├── requests_debugging_service.rb
 │   │   │   ├── scopes_authorization_service.rb
 │   │   │   ├── string_encryptor_service.rb
-│   │   │   ├── sync_pings_with_monitors_remote_service.rb
 │   │   │   ├── tva_intracommunautaire.rb
 │   │   │   └── user_id_dgfip_service.rb
 │   │   ├── templates
@@ -3011,6 +3034,7 @@
 │   │   ├── brakeman_ignore
 │   │   ├── bundle
 │   │   ├── decrypt_gpg_json_params_from_unknown_provider_tracking_error.sh
+│   │   ├── exhale
 │   │   ├── generate_errors_nomenclature.rb
 │   │   ├── generate_jwt_token.rb
 │   │   ├── generate_swagger.sh
@@ -3104,9 +3128,9 @@
 │   │   │   ├── rack_request_forwarded_priority.rb
 │   │   │   ├── rswag.rb
 │   │   │   ├── secret_key_base.rb
+│   │   │   ├── security_events.rb
 │   │   │   ├── sentry.rb
 │   │   │   ├── session_store.rb
-│   │   │   ├── sync_pings_with_monitors_remote_service.rb
 │   │   │   └── wrap_parameters.rb
 │   │   ├── jwt_whitelist.yml
 │   │   ├── locales
@@ -3118,7 +3142,7 @@
 │   │   ├── openapi_common_errors
 │   │   │   ├── entreprise.yml
 │   │   │   └── particulier.yml
-│   │   ├── pings.yml
+│   │   ├── pings.yml -> ../../commons/pings.yml
 │   │   ├── puma.rb
 │   │   ├── qualibat
 │   │   │   ├── insurance_names.yml
@@ -3130,10 +3154,15 @@
 │   │   │   ├── api_entreprise.rb
 │   │   │   └── api_particulier.rb
 │   │   ├── routes.rb
+│   │   ├── security_events.yml -> ../../commons/security_events.yml
 │   │   ├── spring.rb
 │   │   ├── swagger_data -> ../../commons/endpoints/_swagger_shared
 │   │   └── throttle.yml -> ../../commons/data/throttle.yml
 │   ├── config.ru
+│   ├── contract
+│   │   └── api_particulier_v2
+│   │       ├── README.md
+│   │       └── duplication.md
 │   ├── db
 │   │   ├── postgresql_setup.txt
 │   │   ├── seeds.rb
@@ -3261,6 +3290,7 @@
 │   │   │   ├── expand_file_spec.rb
 │   │   │   ├── logstasher_custom_fields_spec.rb
 │   │   │   ├── maintenance_file_integrity_spec.rb
+│   │   │   ├── mock_payloads_declared_errors_spec.rb
 │   │   │   ├── open_api_validation_spec.rb
 │   │   │   ├── requests_debugging_integrity_spec.rb
 │   │   │   └── swagger_provider_errors_spec.rb
@@ -3331,6 +3361,7 @@
 │   │   │   ├── invalid_token_error_spec.rb
 │   │   │   ├── maintenance_error_spec.rb
 │   │   │   ├── missing_mandatory_param_error_spec.rb
+│   │   │   ├── msa_error_spec.rb
 │   │   │   ├── network_error_spec.rb
 │   │   │   ├── not_found_error_spec.rb
 │   │   │   ├── not_implemented_yet_error_spec.rb
@@ -3519,13 +3550,17 @@
 │   │   │   │   ├── liasse_fiscale_declaration.json
 │   │   │   │   └── liasse_fiscale_dictionary.json
 │   │   │   ├── mock_payloads
+│   │   │   │   ├── whatever_attested_endpoint
+│   │   │   │   │   └── 404.yaml
 │   │   │   │   ├── whatever_endpoint
 │   │   │   │   │   └── 1.yaml
 │   │   │   │   ├── whatever_endpoint1
 │   │   │   │   │   ├── 1.yaml
 │   │   │   │   │   └── 2.yaml
-│   │   │   │   └── whatever_endpoint2
-│   │   │   │       ├── 1.yaml
+│   │   │   │   ├── whatever_endpoint2
+│   │   │   │   │   ├── 1.yaml
+│   │   │   │   │   └── 404.yaml
+│   │   │   │   └── whatever_unknown_declaration
 │   │   │   │       └── 404.yaml
 │   │   │   ├── payloads
 │   │   │   │   ├── ants
@@ -3820,6 +3855,7 @@
 │   │   │   │   ├── validate_code_cog_insee_pays_naissance_spec.rb
 │   │   │   │   ├── validate_date_naissance_spec.rb
 │   │   │   │   ├── validate_nom_naissance_spec.rb
+│   │   │   │   ├── validate_nom_usage_spec.rb
 │   │   │   │   ├── validate_prenoms_spec.rb
 │   │   │   │   └── validate_sexe_etat_civil_spec.rb
 │   │   │   ├── cnav
@@ -3836,7 +3872,6 @@
 │   │   │   │   │   └── build_resource_spec.rb
 │   │   │   │   ├── make_request_spec.rb
 │   │   │   │   ├── participation_familiale_eaje
-│   │   │   │   │   ├── build_attestation_proof_spec.rb
 │   │   │   │   │   ├── build_resource_spec.rb
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   ├── prime_activite
@@ -3907,6 +3942,7 @@
 │   │   │   │   │   ├── build_tva_number_from_siren_spec.rb
 │   │   │   │   │   ├── fetch_refresh_date_spec.rb
 │   │   │   │   │   ├── make_request_spec.rb
+│   │   │   │   │   ├── select_tva_number_spec.rb
 │   │   │   │   │   └── validate_response_spec.rb
 │   │   │   │   └── validate_year_spec.rb
 │   │   │   ├── documents
@@ -4175,6 +4211,8 @@
 │   │   │   │   └── activite_principale_spec.rb
 │   │   │   ├── rswag_resources_payloads_spec.rb
 │   │   │   ├── scopes_consistency_spec.rb
+│   │   │   ├── security_event
+│   │   │   │   └── catalog_spec.rb
 │   │   │   ├── seeds_spec.rb
 │   │   │   ├── string_normalizer_spec.rb
 │   │   │   ├── swagger_data_spec.rb
@@ -4366,8 +4404,10 @@
 │   │   │   ├── access_log_ping_driver_spec.rb
 │   │   │   ├── cnav_ping_driver_spec.rb
 │   │   │   ├── dgfip_ping_driver_spec.rb
+│   │   │   ├── documents_proxy_ping_driver_spec.rb
 │   │   │   ├── dummy_ping_driver_spec.rb
 │   │   │   ├── make_request_ping_driver_spec.rb
+│   │   │   ├── retriever_document_ping_driver_spec.rb
 │   │   │   ├── retriever_payload_ping_driver_spec.rb
 │   │   │   └── retriever_ping_driver_spec.rb
 │   │   ├── rails_helper.rb
@@ -4522,6 +4562,7 @@
 │   │   │   │   │   │   ├── allocation_soutien_familial_spec.rb
 │   │   │   │   │   │   ├── complementaire_sante_solidaire_spec.rb
 │   │   │   │   │   │   ├── prime_activite_spec.rb
+│   │   │   │   │   │   ├── quotient_familial_v2_names_not_strings_spec.rb
 │   │   │   │   │   │   ├── quotient_familial_v2_spec.rb
 │   │   │   │   │   │   └── revenu_solidarite_active_spec.rb
 │   │   │   │   │   ├── men
@@ -4548,6 +4589,7 @@
 │   │   │   │       │   ├── allocation_soutien_familial_with_france_connect_spec.rb
 │   │   │   │       │   ├── complementaire_sante_solidaire_with_civility_spec.rb
 │   │   │   │       │   ├── complementaire_sante_solidaire_with_france_connect_spec.rb
+│   │   │   │       │   ├── participation_familiale_eaje_attestation_proof_spec.rb
 │   │   │   │       │   ├── participation_familiale_eaje_with_civility_spec.rb
 │   │   │   │       │   ├── participation_familiale_eaje_with_france_connect_spec.rb
 │   │   │   │       │   ├── prime_activite_with_civility_spec.rb
@@ -4641,6 +4683,8 @@
 │   │   │       │   ├── complementaire_sante_solidaire
 │   │   │       │   │   ├── v2_spec.rb
 │   │   │       │   │   └── v3_spec.rb
+│   │   │       │   ├── participation_familiale_eaje
+│   │   │       │   │   └── attestation_proof_builder_spec.rb
 │   │   │       │   ├── prime_activite
 │   │   │       │   │   ├── v2_spec.rb
 │   │   │       │   │   └── v3_spec.rb
@@ -4674,6 +4718,7 @@
 │   │   │       │   │   └── v3_spec.rb
 │   │   │       │   └── student_status
 │   │   │       │       └── v2_spec.rb
+│   │   │       ├── no_result_attestation_proof_builder_spec.rb
 │   │   │       ├── pole_emploi
 │   │   │       │   ├── indemnites
 │   │   │       │   │   └── v2_spec.rb
@@ -4694,7 +4739,6 @@
 │   │   │   ├── errors_nomenclature_spec.rb
 │   │   │   ├── extract_provider_from_path_spec.rb
 │   │   │   ├── generate_code_sample_from_path_spec.rb
-│   │   │   ├── hyperping_api_spec.rb
 │   │   │   ├── insee
 │   │   │   │   ├── accepted_password_spec.rb
 │   │   │   │   ├── authentication_backoff_spec.rb
@@ -4724,7 +4768,6 @@
 │   │   │   ├── requests_debugging_service_spec.rb
 │   │   │   ├── scopes_authorization_service_spec.rb
 │   │   │   ├── string_encryptor_service_spec.rb
-│   │   │   ├── sync_pings_with_monitors_remote_service_spec.rb
 │   │   │   ├── tva_intracommunautaire_spec.rb
 │   │   │   └── user_id_dgfip_service_spec.rb
 │   │   ├── spec_helper.rb
@@ -4755,6 +4798,7 @@
 │   │   │   ├── matchers
 │   │   │   │   ├── api_schema_matcher.rb
 │   │   │   │   ├── be_delegated_to.rb
+│   │   │   │   ├── emit_security_event.rb
 │   │   │   │   ├── has_existing_key_whose_upcased_value_eq.rb
 │   │   │   │   ├── has_existing_key_whose_value_eq.rb
 │   │   │   │   ├── json_errors.rb
@@ -4843,7 +4887,6 @@
 │   │   └── skills -> ../.claude/skills
 │   ├── .claude
 │   │   └── skills
-│   │       ├── .gitkeep
 │   │       └── bump-version
 │   │           ├── SKILL.md
 │   │           └── references
@@ -4930,6 +4973,12 @@
 │   │   │   │   ├── api_particulier
 │   │   │   │   │   ├── api-qf_plafond-remuneration-enfant-majeur.png
 │   │   │   │   │   ├── blog
+│   │   │   │   │   │   ├── attestation-pdf-verifiable-page-1.png
+│   │   │   │   │   │   ├── attestation-pdf-verifiable-page-2.png
+│   │   │   │   │   │   ├── attestation-pdf-verifiable-sans-resultat.png
+│   │   │   │   │   │   ├── attestation-pdf-verifiable-verification-invalide.png
+│   │   │   │   │   │   ├── attestation-pdf-verifiable-verification-sans-resultat.png
+│   │   │   │   │   │   ├── attestation-pdf-verifiable-verification-valide.png
 │   │   │   │   │   │   ├── lieu-naissance-code-cog-backoffice-1.png
 │   │   │   │   │   │   ├── lieu-naissance-code-cog-backoffice-2.png
 │   │   │   │   │   │   ├── lieu-naissance-code-cog-backoffice-3.png
@@ -5602,8 +5651,10 @@
 │   │   │   │   │   ├── chart_download_controller.js
 │   │   │   │   │   ├── clipboard_controller.js
 │   │   │   │   │   ├── datetime_now_controller.js
+│   │   │   │   │   ├── frame_reload_controller.js
 │   │   │   │   │   ├── scopes_display_controller.js
-│   │   │   │   │   └── search_catalogue_controller.js
+│   │   │   │   │   ├── search_catalogue_controller.js
+│   │   │   │   │   └── tab_frame_controller.js
 │   │   │   │   ├── dsfr.module.js
 │   │   │   │   ├── utils
 │   │   │   │   │   ├── auto_open_accordeon.js
@@ -5688,6 +5739,7 @@
 │   │   │   │   ├── editor_members_controller.rb
 │   │   │   │   ├── editor_tokens_controller.rb
 │   │   │   │   ├── editors_controller.rb
+│   │   │   │   ├── facilitators_controller.rb
 │   │   │   │   ├── provider_dashboards_controller.rb
 │   │   │   │   ├── tokens
 │   │   │   │   │   └── bans_controller.rb
@@ -5714,6 +5766,7 @@
 │   │   │   │   ├── open_api_controller.rb
 │   │   │   │   ├── pages_controller.rb
 │   │   │   │   ├── prolong_token_wizard_controller.rb
+│   │   │   │   ├── provider_pings_controller.rb
 │   │   │   │   ├── public_token_magic_links_controller.rb
 │   │   │   │   ├── sessions_controller.rb
 │   │   │   │   ├── stats_controller.rb
@@ -5733,10 +5786,12 @@
 │   │   │   │   ├── documentation_controller.rb
 │   │   │   │   ├── endpoints_controller.rb
 │   │   │   │   ├── errors_controller.rb
+│   │   │   │   ├── facilitators_controller.rb
 │   │   │   │   ├── faq_controller.rb
 │   │   │   │   ├── open_api_controller.rb
 │   │   │   │   ├── pages_controller.rb
 │   │   │   │   ├── prolong_token_wizard_controller.rb
+│   │   │   │   ├── provider_pings_controller.rb
 │   │   │   │   ├── public_token_magic_links_controller.rb
 │   │   │   │   ├── reporters_controller.rb
 │   │   │   │   ├── sessions_controller.rb
@@ -5757,6 +5812,8 @@
 │   │   │   │   ├── global_http_errors_management.rb
 │   │   │   │   ├── prolong_token_wizard_management.rb
 │   │   │   │   ├── provider_dashboard_filtering.rb
+│   │   │   │   ├── provider_pings_actions.rb
+│   │   │   │   ├── public_stats_page.rb
 │   │   │   │   ├── public_token_magic_links_management.rb
 │   │   │   │   ├── session_lifecycle.rb
 │   │   │   │   ├── sessions_management.rb
@@ -5800,9 +5857,13 @@
 │   │   │   ├── dsfr_stepper_helper.rb
 │   │   │   ├── endpoint_helper.rb
 │   │   │   ├── external_url_helper.rb
+│   │   │   ├── facilitators_helper.rb
 │   │   │   ├── friendly_date_helper.rb
+│   │   │   ├── mailer_api_helper.rb
 │   │   │   ├── mailer_url_helper.rb
 │   │   │   ├── provider_dashboard_helper.rb
+│   │   │   ├── provider_pings_helper.rb
+│   │   │   ├── reporters_helper.rb
 │   │   │   ├── scope_helper.rb
 │   │   │   ├── tag_color_helper.rb
 │   │   │   └── user_sessions_helper.rb
@@ -5817,10 +5878,13 @@
 │   │   │   │   │   └── create_token.rb
 │   │   │   │   ├── editors
 │   │   │   │   │   ├── attach_member.rb
+│   │   │   │   │   ├── capture_creation_attributes.rb
 │   │   │   │   │   ├── capture_member_attributes.rb
+│   │   │   │   │   ├── create_model.rb
 │   │   │   │   │   ├── detach_member.rb
 │   │   │   │   │   ├── find_future_member.rb
 │   │   │   │   │   ├── find_member.rb
+│   │   │   │   │   ├── tracked_attributes.rb
 │   │   │   │   │   └── update_model.rb
 │   │   │   │   ├── tokens
 │   │   │   │   │   ├── ban_token.rb
@@ -5841,31 +5905,49 @@
 │   │   │   │   │   ├── create_hubee_organization.rb
 │   │   │   │   │   ├── create_hubee_subscription.rb
 │   │   │   │   │   └── notify_reporters.rb
-│   │   │   │   ├── archive_current_authorization_request.rb
-│   │   │   │   ├── archive_previous_authorization_request.rb
-│   │   │   │   ├── create_editor_delegation.rb
-│   │   │   │   ├── create_or_prolong_token.rb
-│   │   │   │   ├── extract_mailjet_variables.rb
-│   │   │   │   ├── find_or_create_authorization_request.rb
+│   │   │   │   ├── archive_current_authorization_request_model.rb
+│   │   │   │   ├── archive_previous_authorization_request_model.rb
+│   │   │   │   ├── create_editor_delegation_model.rb
+│   │   │   │   ├── create_or_prolong_token_model.rb
+│   │   │   │   ├── find_or_create_authorization_request_model.rb
 │   │   │   │   ├── find_or_create_organization.rb
 │   │   │   │   ├── find_or_create_user.rb
 │   │   │   │   ├── pass_scopes.rb
 │   │   │   │   ├── refuse_current_authorization_request.rb
-│   │   │   │   ├── revoke_current_token.rb
+│   │   │   │   ├── revoke_current_token_model.rb
 │   │   │   │   ├── schedule_authorization_request_emails.rb
 │   │   │   │   ├── schedule_create_formulaire_qf_resources_job.rb
-│   │   │   │   └── update_mailjet_contacts.rb
+│   │   │   │   ├── track_role_changes.rb
+│   │   │   │   ├── update_mailjet_contacts.rb
+│   │   │   │   └── verify_signature.rb
 │   │   │   ├── editor_delegation
 │   │   │   │   ├── create.rb
-│   │   │   │   └── revoke.rb
+│   │   │   │   ├── revoke.rb
+│   │   │   │   └── track_revocations.rb
+│   │   │   ├── editor_token
+│   │   │   │   ├── create_model.rb
+│   │   │   │   ├── revoke_model.rb
+│   │   │   │   ├── rotate_model.rb
+│   │   │   │   └── update_allowed_ips_model.rb
 │   │   │   ├── magic_link
-│   │   │   │   └── create_model.rb
+│   │   │   │   └── find_usable.rb
+│   │   │   ├── prolong_token_wizard
+│   │   │   │   └── finish.rb
+│   │   │   ├── security_event
+│   │   │   │   └── track.rb
 │   │   │   ├── token
 │   │   │   │   ├── create_magic_link.rb
 │   │   │   │   ├── deliver_expiration_notice_emails.rb
+│   │   │   │   ├── flag_first_use.rb
 │   │   │   │   ├── retrieve_expiring.rb
 │   │   │   │   └── send_email_with_magic_link.rb
 │   │   │   ├── user
+│   │   │   │   ├── login
+│   │   │   │   │   ├── ensure_mfa.rb
+│   │   │   │   │   ├── extract_proconnect_identity.rb
+│   │   │   │   │   ├── find_user_by_email.rb
+│   │   │   │   │   ├── validate_oauth_provider.rb
+│   │   │   │   │   └── validate_omniauth_data.rb
 │   │   │   │   └── proconnect_login.rb
 │   │   │   └── validate_email.rb
 │   │   ├── jobs
@@ -5874,10 +5956,15 @@
 │   │   │   ├── datagouv
 │   │   │   │   └── sync_fiches_job.rb
 │   │   │   ├── healthcheck_job.rb
+│   │   │   ├── hyperping_monitors_sync_job.rb
 │   │   │   ├── insee_password_rotation_job.rb
+│   │   │   ├── public_stats_warmup_job.rb
 │   │   │   ├── schedule_authorization_request_email_job.rb
 │   │   │   ├── schedule_expiration_notice_email_job.rb
+│   │   │   ├── simplifions
+│   │   │   │   └── refresh_cas_usages_job.rb
 │   │   │   ├── token_expiration_notice_job.rb
+│   │   │   ├── token_first_use_job.rb
 │   │   │   ├── update_organization_insee_payload_job.rb
 │   │   │   └── weekly_changelog_digest_job.rb
 │   │   ├── lib
@@ -5891,10 +5978,16 @@
 │   │   │   │       └── v1
 │   │   │   │           └── delegation_serializer.rb
 │   │   │   ├── editor_api_domain_constraint.rb
+│   │   │   ├── email_domain.rb
 │   │   │   ├── hub_signature.rb
 │   │   │   ├── new_tab_safe_html_converter.rb
 │   │   │   ├── personal_data_anonymizer.rb
 │   │   │   ├── robots_txt.rb
+│   │   │   ├── security_event
+│   │   │   │   ├── log_subscriber.rb
+│   │   │   │   ├── step_tracking.rb
+│   │   │   │   └── tracking.rb
+│   │   │   ├── security_event.rb
 │   │   │   └── seeds.rb
 │   │   ├── mailers
 │   │   │   ├── api_entreprise
@@ -5913,6 +6006,8 @@
 │   │   │   ├── application_mailer.rb
 │   │   │   └── concerns
 │   │   │       ├── audit_mailers_commons.rb
+│   │   │       ├── authorization_request_mailers_commons.rb
+│   │   │       ├── changelog_mailers_commons.rb
 │   │   │       └── token_mailers_commons.rb
 │   │   ├── models
 │   │   │   ├── abstract_blog_post.rb
@@ -5939,6 +6034,8 @@
 │   │   │   │   ├── documentation_page.rb
 │   │   │   │   ├── endpoint.rb
 │   │   │   │   ├── endpoint_v2.rb
+│   │   │   │   ├── facilitator_use_case.rb
+│   │   │   │   ├── facilitators_password.rb
 │   │   │   │   ├── faq_entry.rb
 │   │   │   │   ├── fiche_pratique.rb
 │   │   │   │   └── provider.rb
@@ -5974,6 +6071,7 @@
 │   │   │   │   │   └── create.rb
 │   │   │   │   ├── editors
 │   │   │   │   │   ├── add_member.rb
+│   │   │   │   │   ├── create.rb
 │   │   │   │   │   ├── remove_member.rb
 │   │   │   │   │   └── update.rb
 │   │   │   │   ├── impersonations
@@ -5988,21 +6086,60 @@
 │   │   │   ├── datapass_webhook
 │   │   │   │   ├── api_entreprise.rb
 │   │   │   │   ├── api_particulier.rb
+│   │   │   │   ├── archive_current_authorization_request.rb
+│   │   │   │   ├── archive_previous_authorization_request.rb
+│   │   │   │   ├── create_editor_delegation.rb
 │   │   │   │   ├── create_formulaire_qf_resources.rb
+│   │   │   │   ├── create_or_prolong_token.rb
+│   │   │   │   ├── find_or_create_authorization_request.rb
+│   │   │   │   ├── receive.rb
+│   │   │   │   ├── revoke_current_token.rb
 │   │   │   │   └── v2
 │   │   │   │       ├── api_entreprise.rb
 │   │   │   │       ├── api_particulier.rb
 │   │   │   │       └── api_particulier_demarche_numerique.rb
-│   │   │   └── token
-│   │   │       ├── deliver_magic_link_to_email.rb
-│   │   │       └── send_expiration_notices.rb
+│   │   │   ├── editor
+│   │   │   │   └── track_config_change.rb
+│   │   │   ├── editor_delegation
+│   │   │   │   ├── grant.rb
+│   │   │   │   ├── track_grant.rb
+│   │   │   │   ├── track_revocation.rb
+│   │   │   │   └── withdraw.rb
+│   │   │   ├── editor_token
+│   │   │   │   ├── create.rb
+│   │   │   │   ├── revoke.rb
+│   │   │   │   ├── rotate.rb
+│   │   │   │   ├── track_creation.rb
+│   │   │   │   └── update_allowed_ips.rb
+│   │   │   ├── token
+│   │   │   │   ├── access_shared_link.rb
+│   │   │   │   ├── deliver_magic_link_to_email.rb
+│   │   │   │   ├── finish_prolong_wizard.rb
+│   │   │   │   ├── record_first_use.rb
+│   │   │   │   ├── reveal.rb
+│   │   │   │   ├── reveal_editor_list.rb
+│   │   │   │   ├── send_expiration_notices.rb
+│   │   │   │   ├── track_ban.rb
+│   │   │   │   ├── track_creation.rb
+│   │   │   │   ├── track_prolongation.rb
+│   │   │   │   ├── track_revocation.rb
+│   │   │   │   └── track_scopes_change.rb
+│   │   │   └── user
+│   │   │       ├── close_session.rb
+│   │   │       ├── dev_sign_in.rb
+│   │   │       ├── proconnect_sign_in.rb
+│   │   │       ├── track_editor_membership_change.rb
+│   │   │       ├── track_provider_membership_change.rb
+│   │   │       ├── track_role_grant.rb
+│   │   │       └── track_role_revocation.rb
 │   │   ├── policies
 │   │   │   ├── application_policy.rb
 │   │   │   ├── editor_token_policy.rb
 │   │   │   └── token_policy.rb
 │   │   ├── queries
-│   │   │   └── provider
-│   │   │       └── dashboard_query.rb
+│   │   │   ├── provider
+│   │   │   │   └── dashboard_query.rb
+│   │   │   └── public_stats_query.rb
 │   │   ├── services
 │   │   │   ├── abstract_errors_nomenclature.rb
 │   │   │   ├── abstract_open_api_definition.rb
@@ -6023,16 +6160,18 @@
 │   │   │   │   ├── fiche_payload_builder.rb
 │   │   │   │   ├── sync_fiche.rb
 │   │   │   │   └── sync_runner.rb
+│   │   │   ├── hyperping_api.rb
 │   │   │   ├── insee
 │   │   │   │   ├── password_derivation.rb
 │   │   │   │   └── password_rotation.rb
 │   │   │   ├── markdown_interpolator.rb
-│   │   │   ├── metabase_embed_service.rb
 │   │   │   ├── migrate_legacy_token_service.rb
 │   │   │   ├── monitoring_service.rb
 │   │   │   ├── open_api_endpoint.rb
 │   │   │   ├── open_api_schema_to_example.rb
 │   │   │   ├── open_bureau_date.rb
+│   │   │   ├── ping_probe.rb
+│   │   │   ├── provider_pings.rb
 │   │   │   ├── siade
 │   │   │   │   └── manual_request.rb
 │   │   │   ├── siade.rb
@@ -6045,8 +6184,9 @@
 │   │   │   │   └── endpoints_store.rb
 │   │   │   ├── route_scopes_store.rb
 │   │   │   ├── simplifions
+│   │   │   │   ├── cas_usages_catalog.rb
+│   │   │   │   ├── connection.rb
 │   │   │   │   ├── grist_client.rb
-│   │   │   │   ├── remote_cache.rb
 │   │   │   │   └── sitemap.rb
 │   │   │   ├── simplifions_store.rb
 │   │   │   └── throttle_store.rb
@@ -6072,6 +6212,8 @@
 │   │       │   │   ├── index.html.erb
 │   │       │   │   ├── new.html.erb
 │   │       │   │   └── show.html.erb
+│   │       │   ├── facilitators
+│   │       │   │   └── show.html.erb
 │   │       │   ├── provider_dashboards
 │   │       │   │   └── index.html.erb
 │   │       │   ├── tokens
@@ -6083,45 +6225,9 @@
 │   │       │       ├── edit.html.erb
 │   │       │       └── index.html.erb
 │   │       ├── api_entreprise
-│   │       │   ├── authorization_request_mailer
-│   │       │   │   ├── _banner_demande_valide.html.mjml
-│   │       │   │   ├── _block_accelerer_demande.html.mjml
-│   │       │   │   ├── _block_analytics.html.mjml
-│   │       │   │   ├── _block_authorization_request.html.mjml
-│   │       │   │   ├── _block_help_demande.html.mjml
-│   │       │   │   ├── _block_mise_en_production.html.mjml
-│   │       │   │   ├── _block_newsletter.html.mjml
-│   │       │   │   ├── _block_questions.html.mjml
-│   │       │   │   ├── _block_refusal_might_be_error.html.mjml
-│   │       │   │   ├── _block_subscribed_newsletter.html.mjml
-│   │       │   │   ├── _button_login.html.mjml
-│   │       │   │   ├── _embarquement_valide_welcome.html.mjml
-│   │       │   │   ├── _greetings.html.mjml
-│   │       │   │   ├── _info_subscribe_incidents.html.mjml
-│   │       │   │   ├── _info_you_dont_understand.html.mjml
-│   │       │   │   ├── _list_scopes.html.mjml
-│   │       │   │   ├── demande_recue.html.mjml
-│   │       │   │   ├── embarquement_brouillon_en_attente.html.mjml
-│   │       │   │   ├── embarquement_demande_refusee.html.mjml
-│   │       │   │   ├── embarquement_modifications_demandees.html.mjml
-│   │       │   │   ├── embarquement_valide_to_demandeur_is_metier_not_tech.html.mjml
-│   │       │   │   ├── embarquement_valide_to_demandeur_is_tech_is_metier.html.mjml
-│   │       │   │   ├── embarquement_valide_to_demandeur_is_tech_not_metier.html.mjml
-│   │       │   │   ├── embarquement_valide_to_demandeur_seulement.html.mjml
-│   │       │   │   ├── embarquement_valide_to_editeur.html.mjml
-│   │       │   │   ├── embarquement_valide_to_metier_cc_demandeur_tech.html.mjml
-│   │       │   │   ├── embarquement_valide_to_tech_cc_demandeur_metier.html.mjml
-│   │       │   │   ├── update_demande_recue.html.mjml
-│   │       │   │   ├── update_embarquement_brouillon_en_attente.html.mjml
-│   │       │   │   ├── update_embarquement_demande_refusee.html.mjml
-│   │       │   │   ├── update_embarquement_modifications_demandees.html.mjml
-│   │       │   │   └── update_embarquement_valide_to_demandeur.html.mjml
 │   │       │   ├── cas_usages
 │   │       │   │   ├── index.html.erb
 │   │       │   │   └── show.html.erb
-│   │       │   ├── changelog_mailer
-│   │       │   │   ├── _block_unsubscribe_changelog.html.mjml
-│   │       │   │   └── weekly.html.mjml
 │   │       │   ├── documentation
 │   │       │   │   ├── _banner.html.erb
 │   │       │   │   ├── _menu.html.erb
@@ -6151,66 +6257,15 @@
 │   │       │   │   │   ├── _banner.html.erb
 │   │       │   │   │   └── _main.html.erb
 │   │       │   │   └── newsletter.html.erb
-│   │       │   ├── sessions
-│   │       │   │   └── new.html.erb
-│   │       │   ├── stats
-│   │       │   │   └── index.html.erb
-│   │       │   ├── token_mailer
-│   │       │   │   ├── _banner.html.mjml
-│   │       │   │   ├── _block_help_renewal.html.mjml
-│   │       │   │   ├── banned.mjml
-│   │       │   │   ├── expiration_notice_0J.mjml
-│   │       │   │   ├── expiration_notice_15J.mjml
-│   │       │   │   ├── expiration_notice_30J.mjml
-│   │       │   │   ├── expiration_notice_60J.mjml
-│   │       │   │   ├── expiration_notice_7J.mjml
-│   │       │   │   ├── expiration_notice_90J.mjml
-│   │       │   │   ├── magic_link.html.mjml
-│   │       │   │   └── magic_link.text.erb
-│   │       │   └── user_mailer
-│   │       │       ├── notify_datapass_for_data_reconciliation.html.mjml
-│   │       │       ├── notify_datapass_for_data_reconciliation.text.erb
-│   │       │       ├── transfer_ownership.html.mjml
-│   │       │       └── transfer_ownership.text.erb
+│   │       │   └── sessions
+│   │       │       └── new.html.erb
 │   │       ├── api_particulier
 │   │       │   ├── attestations
 │   │       │   │   ├── invalid.html.erb
 │   │       │   │   └── show.html.erb
-│   │       │   ├── authorization_request_mailer
-│   │       │   │   ├── _banner_demande_valide.html.mjml
-│   │       │   │   ├── _block_accelerer_demande.html.mjml
-│   │       │   │   ├── _block_analytics.html.mjml
-│   │       │   │   ├── _block_authorization_request.html.mjml
-│   │       │   │   ├── _block_help_demande.html.mjml
-│   │       │   │   ├── _block_mise_en_production.html.mjml
-│   │       │   │   ├── _block_newsletter.html.mjml
-│   │       │   │   ├── _block_questions.html.mjml
-│   │       │   │   ├── _block_refusal_might_be_error.html.mjml
-│   │       │   │   ├── _block_subscribed_newsletter.html.mjml
-│   │       │   │   ├── _button_login.html.mjml
-│   │       │   │   ├── _embarquement_valide_welcome.html.mjml
-│   │       │   │   ├── _greetings.html.mjml
-│   │       │   │   ├── _info_subscribe_incidents.html.mjml
-│   │       │   │   ├── _info_you_dont_understand.html.mjml
-│   │       │   │   ├── _list_scopes.html.mjml
-│   │       │   │   ├── demande_recue.html.mjml
-│   │       │   │   ├── embarquement_brouillon_en_attente.html.mjml
-│   │       │   │   ├── embarquement_demande_refusee.html.mjml
-│   │       │   │   ├── embarquement_modifications_demandees.html.mjml
-│   │       │   │   ├── embarquement_valide_to_demandeur_is_tech.html.mjml
-│   │       │   │   ├── embarquement_valide_to_demandeur_seulement.html.mjml
-│   │       │   │   ├── embarquement_valide_to_tech_cc_demandeur.html.mjml
-│   │       │   │   ├── update_demande_recue.html.mjml
-│   │       │   │   ├── update_embarquement_brouillon_en_attente.html.mjml
-│   │       │   │   ├── update_embarquement_demande_refusee.html.mjml
-│   │       │   │   ├── update_embarquement_modifications_demandees.html.mjml
-│   │       │   │   └── update_embarquement_valide_to_demandeur.html.mjml
 │   │       │   ├── cas_usages
 │   │       │   │   ├── index.html.erb
 │   │       │   │   └── show.html.erb
-│   │       │   ├── changelog_mailer
-│   │       │   │   ├── _block_unsubscribe_changelog.html.mjml
-│   │       │   │   └── weekly.html.mjml
 │   │       │   ├── documentation
 │   │       │   │   ├── _banner.html.erb
 │   │       │   │   ├── _menu.html.erb
@@ -6219,6 +6274,9 @@
 │   │       │   │   ├── _details.html.erb
 │   │       │   │   ├── _endpoint.html.erb
 │   │       │   │   ├── index.html.erb
+│   │       │   │   └── show.html.erb
+│   │       │   ├── facilitators
+│   │       │   │   ├── new.html.erb
 │   │       │   │   └── show.html.erb
 │   │       │   ├── faq
 │   │       │   │   └── index.html.erb
@@ -6242,27 +6300,8 @@
 │   │       │   ├── reporters_mailer
 │   │       │   │   ├── approve.text.erb
 │   │       │   │   └── submit.text.erb
-│   │       │   ├── sessions
-│   │       │   │   └── new.html.erb
-│   │       │   ├── stats
-│   │       │   │   └── index.html.erb
-│   │       │   ├── token_mailer
-│   │       │   │   ├── _banner.html.mjml
-│   │       │   │   ├── _block_help_renewal.html.mjml
-│   │       │   │   ├── banned.mjml
-│   │       │   │   ├── expiration_notice_0J.mjml
-│   │       │   │   ├── expiration_notice_15J.mjml
-│   │       │   │   ├── expiration_notice_30J.mjml
-│   │       │   │   ├── expiration_notice_60J.mjml
-│   │       │   │   ├── expiration_notice_7J.mjml
-│   │       │   │   ├── expiration_notice_90J.mjml
-│   │       │   │   ├── magic_link.html.mjml
-│   │       │   │   └── magic_link.text.erb
-│   │       │   └── user_mailer
-│   │       │       ├── notify_datapass_for_data_reconciliation.html.mjml
-│   │       │       ├── notify_datapass_for_data_reconciliation.text.erb
-│   │       │       ├── transfer_ownership.html.mjml
-│   │       │       └── transfer_ownership.text.erb
+│   │       │   └── sessions
+│   │       │       └── new.html.erb
 │   │       ├── editor
 │   │       │   ├── authorization_requests
 │   │       │   │   └── index.html.erb
@@ -6298,6 +6337,72 @@
 │   │       │   ├── mailer.html.mjml
 │   │       │   ├── mailer.text.erb
 │   │       │   └── provider.html.erb
+│   │       ├── mailers
+│   │       │   ├── _footer.html.mjml
+│   │       │   ├── _header.html.mjml
+│   │       │   ├── audit_mailer
+│   │       │   │   ├── notify.html.mjml
+│   │       │   │   └── notify.text.erb
+│   │       │   ├── authorization_request_mailer
+│   │       │   │   ├── _banner_demande_valide.html.mjml
+│   │       │   │   ├── _block_accelerer_demande.html.mjml
+│   │       │   │   ├── _block_accelerer_demande.text.erb
+│   │       │   │   ├── _block_analytics.html.mjml
+│   │       │   │   ├── _block_authorization_request.html.mjml
+│   │       │   │   ├── _block_help_demande.html.mjml
+│   │       │   │   ├── _block_mise_en_production.html.mjml
+│   │       │   │   ├── _block_mise_en_production.text.erb
+│   │       │   │   ├── _block_newsletter.html.mjml
+│   │       │   │   ├── _block_questions.html.mjml
+│   │       │   │   ├── _block_questions.text.erb
+│   │       │   │   ├── _block_refusal_might_be_error.html.mjml
+│   │       │   │   ├── _block_refusal_might_be_error.text.erb
+│   │       │   │   ├── _block_subscribed_newsletter.html.mjml
+│   │       │   │   ├── _button_login.html.mjml
+│   │       │   │   ├── _button_login.text.erb
+│   │       │   │   ├── _embarquement_valide_welcome.html.mjml
+│   │       │   │   ├── _greetings.html.mjml
+│   │       │   │   ├── _greetings.text.erb
+│   │       │   │   ├── _info_subscribe_incidents.html.mjml
+│   │       │   │   ├── _info_you_dont_understand.html.mjml
+│   │       │   │   ├── _list_scopes.html.mjml
+│   │       │   │   ├── _list_scopes.text.erb
+│   │       │   │   ├── _signature.text.erb
+│   │       │   │   ├── demande_recue.html.mjml
+│   │       │   │   ├── demande_recue.text.erb
+│   │       │   │   ├── embarquement_*.mjml  (11 files)
+│   │       │   │   ├── embarquement_*.erb  (11 files)
+│   │       │   │   ├── update_demande_recue.html.mjml
+│   │       │   │   ├── update_demande_recue.text.erb
+│   │       │   │   ├── update_embarquement_demande_refusee.html.mjml
+│   │       │   │   ├── update_embarquement_demande_refusee.text.erb
+│   │       │   │   ├── update_embarquement_modifications_demandees.html.mjml
+│   │       │   │   ├── update_embarquement_modifications_demandees.text.erb
+│   │       │   │   ├── update_embarquement_valide_to_demandeur.html.mjml
+│   │       │   │   └── update_embarquement_valide_to_demandeur.text.erb
+│   │       │   ├── changelog_mailer
+│   │       │   │   ├── _block_unsubscribe_changelog.html.mjml
+│   │       │   │   ├── weekly.html.mjml
+│   │       │   │   └── weekly.text.erb
+│   │       │   └── token_mailer
+│   │       │       ├── _banner.html.mjml
+│   │       │       ├── _block_help_renewal.html.mjml
+│   │       │       ├── banned.html.mjml
+│   │       │       ├── banned.text.erb
+│   │       │       ├── expiration_notice_0J.html.mjml
+│   │       │       ├── expiration_notice_0J.text.erb
+│   │       │       ├── expiration_notice_15J.html.mjml
+│   │       │       ├── expiration_notice_15J.text.erb
+│   │       │       ├── expiration_notice_30J.html.mjml
+│   │       │       ├── expiration_notice_30J.text.erb
+│   │       │       ├── expiration_notice_60J.html.mjml
+│   │       │       ├── expiration_notice_60J.text.erb
+│   │       │       ├── expiration_notice_7J.html.mjml
+│   │       │       ├── expiration_notice_7J.text.erb
+│   │       │       ├── expiration_notice_90J.html.mjml
+│   │       │       ├── expiration_notice_90J.text.erb
+│   │       │       ├── magic_link.html.mjml
+│   │       │       └── magic_link.text.erb
 │   │       ├── provider
 │   │       │   └── dashboard
 │   │       │       ├── _consumers_table.html.erb
@@ -6321,7 +6426,6 @@
 │   │           ├── _impersonate.html.erb
 │   │           ├── _loader.html.erb
 │   │           ├── _matomo.html.erb
-│   │           ├── _metabase.html.erb
 │   │           ├── _modal.html.erb
 │   │           ├── _newsletter_banner.html.erb
 │   │           ├── _test_environment_banner.html.erb
@@ -6332,25 +6436,17 @@
 │   │           │   ├── _containerized_body.html.erb
 │   │           │   ├── _footer.html.erb
 │   │           │   ├── _header.html.erb
-│   │           │   ├── header
-│   │           │   │   ├── _menu.html.erb
-│   │           │   │   ├── _search_desktop.html.erb
-│   │           │   │   └── _tools.html.erb
-│   │           │   └── mailers
-│   │           │       ├── _footer.html.mjml
-│   │           │       └── _header.html.mjml
+│   │           │   └── header
+│   │           │       ├── _menu.html.erb
+│   │           │       ├── _search_desktop.html.erb
+│   │           │       └── _tools.html.erb
 │   │           ├── api_particulier
 │   │           │   ├── _containerized_body.html.erb
 │   │           │   ├── _footer.html.erb
 │   │           │   ├── _header.html.erb
-│   │           │   ├── header
-│   │           │   │   ├── _menu.html.erb
-│   │           │   │   └── _tools.html.erb
-│   │           │   └── mailers
-│   │           │       ├── _footer.html.mjml
-│   │           │       └── _header.html.mjml
-│   │           ├── audit_mailer
-│   │           │   └── notify.mjml
+│   │           │   └── header
+│   │           │       ├── _menu.html.erb
+│   │           │       └── _tools.html.erb
 │   │           ├── authorization_requests
 │   │           │   ├── _breadcrumb.html.erb
 │   │           │   ├── _header.html.erb
@@ -6378,7 +6474,8 @@
 │   │           ├── dsfr_chart
 │   │           │   ├── _bar.html.erb
 │   │           │   ├── _kpi.html.erb
-│   │           │   └── _line.html.erb
+│   │           │   ├── _line.html.erb
+│   │           │   └── _pie.html.erb
 │   │           ├── editor
 │   │           │   └── _header.html.erb
 │   │           ├── endpoints
@@ -6412,11 +6509,22 @@
 │   │           │   └── summary.html.erb
 │   │           ├── provider
 │   │           │   └── _header.html.erb
+│   │           ├── provider_pings
+│   │           │   ├── _summary.html.erb
+│   │           │   ├── _table.html.erb
+│   │           │   ├── _unavailable.html.erb
+│   │           │   ├── index.html.erb
+│   │           │   └── statuses.html.erb
 │   │           ├── public_token_magic_links
 │   │           │   └── show.html.erb
 │   │           ├── sessions
 │   │           │   ├── _bypass_login_info.html.erb
 │   │           │   └── _new.html.erb
+│   │           ├── stats
+│   │           │   ├── _indicator.html.erb
+│   │           │   ├── _indicators.html.erb
+│   │           │   ├── index.html.erb
+│   │           │   └── section.html.erb
 │   │           ├── tokens
 │   │           │   ├── _detail.html.erb
 │   │           │   ├── _detail_short.html.erb
@@ -6424,12 +6532,15 @@
 │   │           │   ├── _reveal_token_button.html.erb
 │   │           │   ├── _scopes.html.erb
 │   │           │   ├── _show.html.erb
+│   │           │   ├── _stats_frame.html.erb
 │   │           │   ├── ask_for_prolongation.html.erb
 │   │           │   ├── cannot_show.html.erb
+│   │           │   ├── last_requests.html.erb
 │   │           │   ├── prolong.html.erb
 │   │           │   ├── renew.html.erb
 │   │           │   ├── show.html.erb
-│   │           │   └── stats.html.erb
+│   │           │   ├── stats.html.erb
+│   │           │   └── stats_period.html.erb
 │   │           ├── transfer_tokens
 │   │           │   └── new.html.erb
 │   │           └── users
@@ -6440,6 +6551,7 @@
 │   │   ├── brakeman_ignore
 │   │   ├── bundle
 │   │   ├── deploy
+│   │   ├── exhale
 │   │   ├── generate_swagger.sh
 │   │   ├── install.sh
 │   │   ├── local.sh
@@ -6455,6 +6567,7 @@
 │   │   ├── api-entreprise-v3-openapi.yml -> ../commons/swagger/openapi-entreprise.yaml
 │   │   ├── api-particulier-openapi-v3.yml -> ../commons/swagger/openapi-particulier.yaml
 │   │   ├── api-particulier-openapi.yml -> ../commons/swagger/api_particulier_open_api_static/v2.yaml
+│   │   ├── api_particulier_facilitators.yml
 │   │   ├── apientreprise_test_token
 │   │   ├── application.rb
 │   │   ├── blog_posts
@@ -6464,6 +6577,7 @@
 │   │   │   │   ├── num-tva-intra-v3.md
 │   │   │   │   └── references-sites-modification-donnees.md
 │   │   │   └── api_particulier
+│   │   │       ├── attestation-pdf-verifiable.md
 │   │   │       ├── hello-world.md
 │   │   │       ├── migration-api-particulier-v3.md
 │   │   │       └── parametre-lieu-naissance-code-cog.md
@@ -6506,6 +6620,7 @@
 │   │   │   ├── gaffe.rb
 │   │   │   ├── generators.rb
 │   │   │   ├── good_job.rb
+│   │   │   ├── hyperping_monitors_sync.rb
 │   │   │   ├── inflections.rb
 │   │   │   ├── ip_anonymizer.rb
 │   │   │   ├── logstasher.rb
@@ -6517,6 +6632,7 @@
 │   │   │   ├── permissions_policy.rb
 │   │   │   ├── rack_request_forwarded_priority.rb
 │   │   │   ├── secret_key_base.rb
+│   │   │   ├── security_events.rb
 │   │   │   ├── sentry.rb
 │   │   │   ├── sitemap_generator.rb
 │   │   │   ├── strong_migrations.rb
@@ -6524,6 +6640,7 @@
 │   │   │   └── wrap_parameters.rb
 │   │   ├── locales
 │   │   │   ├── admin_activities.fr.yml
+│   │   │   ├── admin_facilitators.fr.yml
 │   │   │   ├── api_entreprise
 │   │   │   │   ├── documentation.fr.yml
 │   │   │   │   ├── endpoint.fr.yml
@@ -6545,9 +6662,11 @@
 │   │   │   ├── models
 │   │   │   │   ├── audit_notification.fr.yml
 │   │   │   │   ├── editor.fr.yml
+│   │   │   │   ├── editor_delegation.fr.yml
 │   │   │   │   └── editor_token.fr.yml
 │   │   │   ├── pagination.fr.yml
 │   │   │   └── reporter_groups.fr.yml
+│   │   ├── pings.yml -> ../../commons/pings.yml
 │   │   ├── puma.rb
 │   │   ├── redis.yml
 │   │   ├── route_scopes.yml -> ../../commons/data/authorizations.yml
@@ -6555,7 +6674,10 @@
 │   │   │   ├── api_entreprise.rb
 │   │   │   └── api_particulier.rb
 │   │   ├── routes.rb
+│   │   ├── rubocop
+│   │   │   └── lazy_lookup_in_shared_handler.rb
 │   │   ├── schedule.yml
+│   │   ├── security_events.yml -> ../../commons/security_events.yml
 │   │   ├── seo
 │   │   │   ├── robots.txt
 │   │   │   └── robots_non_production.txt
@@ -6564,7 +6686,8 @@
 │   │   │   └── api-particulier.rb
 │   │   ├── sitemap.rb
 │   │   ├── storage.yml
-│   │   └── throttle.yml -> ../../commons/data/throttle.yml
+│   │   ├── throttle.yml -> ../../commons/data/throttle.yml
+│   │   └── webmail_domains.yml
 │   ├── config.ru
 │   ├── db
 │   │   ├── migrate
@@ -6643,7 +6766,11 @@
 │   │   │   ├── 20261012104542_add_index_good_job_executions_on_scheduled_at.rb
 │   │   │   ├── 20261012104543_add_batch_query_indexes.rb
 │   │   │   ├── 20261012104544_remove_redundant_good_jobs_indexes.rb
-│   │   │   └── 20261012104545_reorder_good_jobs_cron_index.rb
+│   │   │   ├── 20261012104545_reorder_good_jobs_cron_index.rb
+│   │   │   ├── 20261019072757_create_good_job_concurrency_claims.rb
+│   │   │   ├── 20261027120000_require_external_id_outside_draft_authorization_requests.rb
+│   │   │   ├── 20261028100000_flag_used_tokens_before_first_use_tracking.rb
+│   │   │   └── 20261105100000_give_throttle_overrides_their_own_period.rb
 │   │   ├── schema.rb
 │   │   ├── seeds.rb
 │   │   └── views
@@ -6671,11 +6798,13 @@
 │   │   │   └── fqf_healthcheck_runner.rb
 │   │   ├── assets
 │   │   │   └── .keep
+│   │   ├── raw_remote_ip.rb
 │   │   └── tasks
 │   │       ├── .keep
 │   │       ├── cache.rake
 │   │       ├── db_seed.rake
-│   │       └── import_datapass.rake
+│   │       ├── import_datapass.rake
+│   │       └── schema_dump.rake
 │   ├── log
 │   │   └── .keep
 │   ├── postgresql_setup.txt
@@ -6704,6 +6833,8 @@
 │   │   │   ├── exemple-ademe-rge-certificats-organisme-qualitenr.pdf
 │   │   │   ├── exemple-certificat-qualifelec.pdf
 │   │   │   ├── exemple-cibtp-attestations_cotisations_conges_payes_chomage_intemperies.pdf
+│   │   │   ├── exemple-cnaf-attestation-consultation-sans-resultat.pdf
+│   │   │   ├── exemple-cnaf-attestation-participation-familiale-eaje.pdf
 │   │   │   ├── exemple-cnetp-attestations_cotisations_conges_payes_chomage_intemperies.pdf
 │   │   │   ├── exemple-dgfip-attestation-fiscale.pdf
 │   │   │   ├── exemple-fntp-carte-professionnelle-travaux-publics.pdf
@@ -7360,6 +7491,7 @@
 │   │   │   │   ├── api_requests_spec.rb
 │   │   │   │   ├── audit_notifications_spec.rb
 │   │   │   │   ├── editors_spec.rb
+│   │   │   │   ├── facilitators_spec.rb
 │   │   │   │   ├── provider_dashboards_spec.rb
 │   │   │   │   ├── tokens_spec.rb
 │   │   │   │   └── users_spec.rb
@@ -7390,6 +7522,7 @@
 │   │   │   │   ├── ask_for_prolongation_token_spec.rb
 │   │   │   │   ├── authorization_request_index_spec.rb
 │   │   │   │   ├── authorization_request_show_spec.rb
+│   │   │   │   ├── authorization_request_without_token_spec.rb
 │   │   │   │   ├── blog_spec.rb
 │   │   │   │   ├── cas_usages_spec.rb
 │   │   │   │   ├── changelog_subscriptions_spec.rb
@@ -7399,6 +7532,7 @@
 │   │   │   │   ├── endpoints
 │   │   │   │   │   ├── index_spec.rb
 │   │   │   │   │   └── show_spec.rb
+│   │   │   │   ├── facilitators_spec.rb
 │   │   │   │   ├── faq_spec.rb
 │   │   │   │   ├── logout_spec.rb
 │   │   │   │   ├── pages_spec.rb
@@ -7407,6 +7541,7 @@
 │   │   │   │   ├── show_token_from_magic_link_spec.rb
 │   │   │   │   ├── show_token_spec.rb
 │   │   │   │   ├── signin_process_datapass_spec.rb
+│   │   │   │   ├── simplifions_cas_usages_spec.rb
 │   │   │   │   ├── stats_spec.rb
 │   │   │   │   └── token_pages_escaping_spec.rb
 │   │   │   ├── authorization_requests
@@ -7428,7 +7563,9 @@
 │   │   │   │   ├── csv_exports_spec.rb
 │   │   │   │   ├── habilitations_filter_spec.rb
 │   │   │   │   └── navigation_spec.rb
-│   │   │   └── test_environment_banner_spec.rb
+│   │   │   ├── provider_pings_spec.rb
+│   │   │   ├── test_environment_banner_spec.rb
+│   │   │   └── token_reveal_prefetch_spec.rb
 │   │   ├── fixtures
 │   │   │   ├── datapass_api
 │   │   │   │   ├── demande.json
@@ -7480,7 +7617,6 @@
 │   │   │   │   ├── archive_previous_authorization_request_spec.rb
 │   │   │   │   ├── create_editor_delegation_spec.rb
 │   │   │   │   ├── create_or_prolong_token_spec.rb
-│   │   │   │   ├── extract_mailjet_variables_spec.rb
 │   │   │   │   ├── find_or_create_authorization_request_spec.rb
 │   │   │   │   ├── find_or_create_user_spec.rb
 │   │   │   │   ├── refuse_current_authorization_request_spec.rb
@@ -7490,17 +7626,24 @@
 │   │   │   ├── editor_delegation
 │   │   │   │   ├── create_spec.rb
 │   │   │   │   └── revoke_spec.rb
+│   │   │   ├── security_event
+│   │   │   │   └── track_spec.rb
 │   │   │   └── user
 │   │   │       └── proconnect_login_spec.rb
 │   │   ├── jobs
+│   │   │   ├── application_job_spec.rb
 │   │   │   ├── create_formulaire_qf_resources_job_spec.rb
 │   │   │   ├── datagouv
 │   │   │   │   └── sync_fiches_job_spec.rb
 │   │   │   ├── healthcheck_job_spec.rb
+│   │   │   ├── hyperping_monitors_sync_job_spec.rb
 │   │   │   ├── insee_password_rotation_job_spec.rb
 │   │   │   ├── schedule_authorization_request_email_job_spec.rb
 │   │   │   ├── schedule_expiration_notice_email_job_spec.rb
+│   │   │   ├── simplifions
+│   │   │   │   └── refresh_cas_usages_job_spec.rb
 │   │   │   ├── token_expiration_notice_job_spec.rb
+│   │   │   ├── token_first_use_job_spec.rb
 │   │   │   ├── update_organization_insee_payload_job_spec.rb
 │   │   │   └── weekly_changelog_digest_job_spec.rb
 │   │   ├── lib
@@ -7513,6 +7656,10 @@
 │   │   │   │           └── delegation_serializer_spec.rb
 │   │   │   ├── hub_signature_spec.rb
 │   │   │   ├── personal_data_anonymizer_spec.rb
+│   │   │   ├── security_event
+│   │   │   │   ├── catalog_spec.rb
+│   │   │   │   └── log_subscriber_spec.rb
+│   │   │   ├── security_event_spec.rb
 │   │   │   ├── seeds_spec.rb
 │   │   │   └── tasks
 │   │   │       └── sitemap_spec.rb
@@ -7578,9 +7725,11 @@
 │   │   │   │   ├── editors
 │   │   │   │   │   ├── add_member_spec.rb
 │   │   │   │   │   └── remove_member_spec.rb
-│   │   │   │   └── tokens
-│   │   │   │       ├── ban_spec.rb
-│   │   │   │       └── create_spec.rb
+│   │   │   │   ├── tokens
+│   │   │   │   │   ├── ban_spec.rb
+│   │   │   │   │   └── create_spec.rb
+│   │   │   │   └── users
+│   │   │   │       └── update_spec.rb
 │   │   │   ├── application_organizer_spec.rb
 │   │   │   ├── datapass_webhook
 │   │   │   │   ├── api_entreprise_spec.rb
@@ -7590,9 +7739,18 @@
 │   │   │   │       ├── api_entreprise_spec.rb
 │   │   │   │       ├── api_particulier_demarche_numerique_spec.rb
 │   │   │   │       └── api_particulier_spec.rb
-│   │   │   └── token
-│   │   │       ├── deliver_magic_link_to_email_spec.rb
-│   │   │       └── send_expiration_notices_spec.rb
+│   │   │   ├── editor_delegation
+│   │   │   │   ├── grant_spec.rb
+│   │   │   │   └── withdraw_spec.rb
+│   │   │   ├── token
+│   │   │   │   ├── deliver_magic_link_to_email_spec.rb
+│   │   │   │   ├── finish_prolong_wizard_spec.rb
+│   │   │   │   ├── reveal_spec.rb
+│   │   │   │   └── send_expiration_notices_spec.rb
+│   │   │   └── user
+│   │   │       ├── close_session_spec.rb
+│   │   │       ├── dev_sign_in_spec.rb
+│   │   │       └── proconnect_sign_in_spec.rb
 │   │   ├── policies
 │   │   │   └── editor_token_policy_spec.rb
 │   │   ├── queries
@@ -7607,10 +7765,15 @@
 │   │   │   │       └── v1
 │   │   │   │           ├── delegations_spec.rb
 │   │   │   │           └── host_routing_spec.rb
+│   │   │   ├── logstash_line_spec.rb
 │   │   │   ├── open_api_spec.rb
 │   │   │   ├── proconnect_authorization_spec.rb
 │   │   │   ├── proconnect_callback_spec.rb
 │   │   │   └── robots_txt_spec.rb
+│   │   ├── rubocop
+│   │   │   └── cop
+│   │   │       └── custom
+│   │   │           └── lazy_lookup_in_shared_handler_spec.rb
 │   │   ├── scopes_consistency_spec.rb
 │   │   ├── services
 │   │   │   ├── abstract_open_api_definition_spec.rb
@@ -7623,31 +7786,31 @@
 │   │   │   │   ├── fiche_payload_builder_spec.rb
 │   │   │   │   ├── sync_fiche_spec.rb
 │   │   │   │   └── sync_runner_spec.rb
+│   │   │   ├── hyperping_api_spec.rb
 │   │   │   ├── insee
 │   │   │   │   ├── password_derivation_spec.rb
 │   │   │   │   └── password_rotation_spec.rb
 │   │   │   ├── markdown_interpolator_spec.rb
-│   │   │   ├── metabase_embed_service_spec.rb
 │   │   │   ├── migrate_legacy_token_service_spec.rb
 │   │   │   ├── open_api_endpoint_spec.rb
 │   │   │   ├── open_api_schema_to_example_spec.rb
 │   │   │   ├── open_bureau_date_spec.rb
+│   │   │   ├── provider_pings_spec.rb
 │   │   │   ├── siade
 │   │   │   │   └── manual_request_spec.rb
 │   │   │   └── status_page_spec.rb
 │   │   ├── spec_helper.rb
 │   │   ├── stores
-│   │   │   ├── api_entreprise
-│   │   │   │   └── endpoints_store_spec.rb
-│   │   │   ├── simplifions
-│   │   │   │   └── sitemap_spec.rb
-│   │   │   └── simplifions_store_spec.rb
+│   │   │   └── api_entreprise
+│   │   │       └── endpoints_store_spec.rb
 │   │   ├── support
 │   │   │   ├── helpers
-│   │   │   │   └── credentials_helpers.rb
+│   │   │   │   ├── credentials_helpers.rb
+│   │   │   │   └── job_retries_helpers.rb
 │   │   │   ├── hubee_api_mocks.rb
 │   │   │   ├── insee_sirene_api_mocks.rb
 │   │   │   ├── matchers
+│   │   │   │   ├── emit_security_event.rb
 │   │   │   │   └── expose_window_opener.rb
 │   │   │   ├── shared_examples
 │   │   │   │   ├── controllers
@@ -7670,7 +7833,6 @@
 │   │   │   │   │   ├── pages.rb
 │   │   │   │   │   ├── show_token_from_magic_link.rb
 │   │   │   │   │   ├── signin_process_datapass.rb
-│   │   │   │   │   ├── stats.rb
 │   │   │   │   │   └── user_profile.rb
 │   │   │   │   ├── flash_notification.rb
 │   │   │   │   ├── mailers
@@ -7687,6 +7849,7 @@
 │   │   │   │   │   └── user
 │   │   │   │   │       └── o_auth_login.rb
 │   │   │   │   └── token_magic_link.rb
+│   │   │   ├── simplifions_mocks.rb
 │   │   │   └── test_credentials_setup.rb
 │   │   ├── swagger_helper.rb
 │   │   └── validators
@@ -7704,4 +7867,4 @@
 │       └── .keep
 └── worktrees
     └── .gitkeep
-1530 directories, 6507 files
+1555 directories, 6665 files
