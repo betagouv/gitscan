@@ -1,0 +1,125 @@
+#
+# st-messages-mta-in package
+#
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
+
+[project]
+name = "st-messages-mta-in"
+version = "0.10.0"
+authors = [{ "name" = "ANCT", "email" = "suiteterritoriale@anct.gouv.fr" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Django",
+    "Framework :: Django :: 5",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+]
+description = "A stateless MTA."
+keywords = ["Python", "MTA"]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.14.9,<4.0"
+
+# Note: after changing this list you must re-run `make deps-lock-mta-in`
+dependencies = [
+    "PyJWT==2.15.1",
+    "aiosmtpd==1.4.6",
+    "httpx==0.28.1",
+    "prometheus-client==0.26.0",
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/suitenumerique/st-messages/issues/new"
+"Changelog" = "https://github.com/suitenumerique/st-messages/blob/main/CHANGELOG.md"
+"Homepage" = "https://github.com/suitenumerique/st-messages"
+"Repository" = "https://github.com/suitenumerique/st-messages"
+
+[project.optional-dependencies]
+# pymilter is a C extension that needs libmilter-dev at install time. Keep it
+# behind an extra so the pure-Python pymta image can build without libmilter.
+postfix = [
+    "pymilter==1.0.5",
+    # Only src/api/mda.py uses requests, and only the milter imports that.
+    # Kept out of the base deps so the pymta image does not ship a second HTTP
+    # client (requests + urllib3 + charset_normalizer) that it never imports,
+    # on the process that faces port 25. pymta talks to the MDA over httpx.
+    "requests==2.34.2",
+]
+dev = [
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+    "pytest-asyncio==1.4.0",
+    "fastapi==0.143.3",
+    "uvicorn==0.54.0",
+    "ruff==0.17.1",
+    "pip-audit==2.10.1",
+    "pylint==4.1.3",
+    "types-requests==2.33.0.20261006",
+]
+
+[tool.uv.build-backend]
+module-root = ""
+source-include = ["src/**"]
+source-exclude = ["tests/**"]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "venv",
+    "__pycache__",
+    "*/migrations/*",
+]
+line-length = 99
+
+
+[tool.ruff.lint]
+ignore = ["DJ001", "PLR2004"]
+select = [
+    "B", # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "C4", # flake8-comprehensions
+    "DJ", # flake8-django
+    "I", # isort
+    "PLC", # pylint-convention
+    "PLE", # pylint-error
+    "PLR", # pylint-refactoring
+    "PLW", # pylint-warning
+    "RUF100", # Ruff unused-noqa
+    "RUF200", # Ruff check pyproject.toml
+    "S", # flake8-bandit
+    "SLF", # flake8-self
+    "T20", # flake8-print
+    "F"  # pyflakes
+]
+
+[tool.ruff.lint.isort]
+section-order = ["future","standard-library","django","third-party","mta","first-party","local-folder"]
+sections = { mta=["pymta", "api"], django=["django"] }
+extra-standard-library = ["tomllib"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["S", "SLF", "C405", "PLR0913"]
+# The Postfix milter predates the pure-Python pymta module and intentionally
+# uses bare except + print for stdout-based logging in the libmilter
+# sync callback context.
+"src/delivery_milter.py" = ["BLE001", "T201"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-v",
+    "--cov-report",
+    "term-missing",
+    # Allow test files to have the same name in different directories.
+    "--import-mode=importlib",
+]
+python_files = [
+    "test_*.py",
+    "tests.py",
+]
