@@ -1,15 +1,17 @@
 {
   "url": "https://github.com/MTES-MCT/dossierfacile-backend",
   "name": "dossierfacile-backend",
-  "description": "Backend de la plateforme DossierFacile.fr, un service gouvernemental facilitant la constitution de dossiers de location. Il gère les API, le traitement documentaire par IA et l'administration des dossiers.",
+  "description": "Backend de la plateforme DossierFacile.fr, conçu par le Ministère de la Transition écologique pour faciliter la constitution de dossiers de location. Il gère les API, l'administration et le traitement automatisé des documents par intelligence artificielle.",
   "language": "Java",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Intelligence Artificielle & NLP",
     "Administration & Backoffice",
+    "Intelligence Artificielle & NLP",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Notifications & Alertes"
+    "Formulaires & Démarches",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -17,11 +19,11 @@
     "PostgreSQL",
     "RabbitMQ",
     "Keycloak",
-    "Docker",
     "Maven",
+    "Docker",
     "Liquibase",
-    "NGINX",
-    "S3"
+    "Redis",
+    "MapStruct"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,27 +31,35 @@
     "Docker & Conteneurs",
     "Authentification (composant)",
     "Microservices & Architecture",
-    "ORM & Accès aux données"
+    "ORM & Accès aux données",
+    "Webhooks & Événements",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "jwt",
+      "session"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests unitaires et d'intégration via Maven",
-  "lastActivity": "2026-08-28T10:13:07+02:00",
+  "tests": "Tests unitaires et tests de bout en bout (E2E)",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-11-05T15:33:10+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Bases de données SQL",
-    "Sécurité & Auth",
     "Docker & Conteneurs",
-    "Emploi, Social & Logement"
+    "Sécurité & Auth",
+    "Intelligence Artificielle & LLM",
+    "CI/CD & GitHub Actions",
+    "Documentation"
   ]
 }

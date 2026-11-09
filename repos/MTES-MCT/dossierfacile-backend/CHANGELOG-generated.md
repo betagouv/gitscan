@@ -1,24 +1,18 @@
-## Changelog : dossierfacile-backend (30 derniers jours, au 28/08/2026)
+## Changelog : dossierfacile-backend (30 derniers jours, au 05/11/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure avec l'introduction de l'autovalidation des dossiers, accompagnée d'un système d'adhésion (opt-in). Les capacités d'analyse automatique des documents ont été renforcées, tandis que l'expérience utilisateur a été fluidifiée par de nouvelles options de partage, une meilleure gestion des notifications et des corrections sur les processus de validation (DPE, avis d'imposition).
+Les récentes évolutions se sont concentrées sur l'amélioration des outils de gestion pour le support et le backoffice, notamment concernant la validation des revenus et le traitement des dossiers. Des corrections ont également été apportées pour garantir la cohérence des données des garants et la fiabilité de la génération des documents PDF. La version 3.6.0 a été déployée.
 
 ### Évolutions fonctionnelles
-- **Autovalidation** : Mise en place de l'autovalidation des dossiers avec un mécanisme d'adhésion volontaire [#1283](https://github.com/MTES-MCT/dossierfacile-backend/issues/1283) [#1293](https://github.com/MTES-MCT/dossierfacile-backend/issues/1293) [#1295](https://github.com/MTES-MCT/dossierfacile-backend/issues/1295).
-- **Traitement documentaire (IA)** : Amélioration de l'analyse des avis d'imposition (possibilité de télécharger un document plus récent [#1281](https://github.com/MTES-MCT/dossierfacile-backend/issues/1281)) et ajustement des règles de l'IA concernant l'année fiscale [#1306](https://github.com/MTES-MCT/dossierfacile-backend/issues/1306).
-- **Expérience utilisateur et notifications** : 
-    - Optimisation du timing des notifications pour les garants (envoi lors de la soumission uniquement) [#1296](https://github.com/MTES-MCT/dossierfacile-backend/issues/1296).
-    - Amélioration de la récupération de mot de passe pour les propriétaires [#1300](https://github.com/MTES-MCT/dossierfacile-backend/issues/1300).
-    - Ajout d'un validateur pour le format des DPE [#1299](https://github.com/MTES-MCT/dossierfacile-backend/issues/1299).
-- **Partage** : Nouvelle fonctionnalité permettant de partager un dossier complété via un lien ou par email [#1301](https://github.com/MTES-MCT/dossierfacile-backend/issues/1301).
-- **Backoffice** : Corrections sur la gestion des méthodes de locataires [#1298](https://github.com/MTES-MCT/dossierfacile-backend/issues/1298) et sur les liens de partage d'appartements [#1292](https://github.com/MTES-MCT/dossierfacile-backend/issues/1292).
+- **Gestion du support** : Possibilité pour l'équipe support de traiter des dossiers déjà complétés [#1341](https://github.com/MTES-MCT/dossierfacile-backend/issues/1341).
+- **Optimisation du Backoffice** : Amélioration de la gestion des revenus pour les locataires et les garants, incluant une meilleure validation et l'autorisation de montants nuls [#1336](https://github.com/MTES-MCT/dossierfacile-backend/issues/1336), [#1337](https://github.com/MTES-MCT/dossierfacile-backend/issues/1337).
+- **Fiabilité des données et documents** : Harmonisation des données relatives aux garants et à la résidence, et correction du processus de génération de fichiers PDF [#1334](https://github.com/MTES-MCT/dossierfacile-backend/issues/1334).
 
 ### Évolutions techniques
-- **Intelligence Artificielle** : Migration vers le workflow v2 pour le moteur de traitement documentaire (DocIA) [#1266](https://github.com/MTES-MCT/dossierfacile-backend/issues/1266).
-- **Sécurité** : Correction d'une vulnérabilité potentielle concernant les webhooks propriétaires [#1290](https://github.com/MTES-MCT/dossierfacile-backend/issues/1290).
-- **Tests et QA** : 
-    - Création d'un utilisateur dédié pour les tests de bout en bout (E2E) dans le Backoffice [#1305](https://github.com/MTES-MCT/dossierfacile-backend/issues/1305).
-    - Correction du bot de validation automatique pour la QA [#1303](https://github.com/MTES-MCT/dossierfacile-backend/issues/1303).
+- **Migration** : Migration de la fonctionnalité "demo partner" vers le backend [#1340](https://github.com/MTES-MCT/dossierfacile-backend/issues/1340).
+- **Refactoring** : Optimisation du code pour la création d'utilisateurs [#1339](https://github.com/MTES-MCT/dossierfacile-backend/issues/1339).
+- **Observabilité** : Ajustement des seuils d'alerte Elastalert pour un meilleur monitoring [#1335](https://github.com/MTES-MCT/dossierfacile-backend/issues/1335).
+- **Release** : Passage à la version 3.6.0.
 
 ### Autres changements
-- Validation des paramètres de configuration du système [#1291](https://github.com/MTES-MCT/dossierfacile-backend/issues/1291).
+- **Expérience développeur** : Ajout d'une tâche VS Code permettant de lancer simultanément les applications backend et frontend.

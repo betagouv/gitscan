@@ -14,13 +14,20 @@
 │       │   └── SKILL.md
 │       └── sql-helper
 │           └── SKILL.md
+├── .githooks
+│   └── pre-commit
 ├── .github
 │   ├── prompts
 │   │   └── new-document-rule.prompt.md
+│   ├── scripts
+│   │   └── scalingo-deploy.sh
 │   └── workflows
 │       ├── codeql-analysis.yml
+│       ├── deploy.yml
 │       └── main.yml
 ├── .gitignore
+├── .mvn
+│   └── README.md
 ├── .nginx
 │   └── nginx.conf
 ├── .rabbitmq
@@ -29,7 +36,9 @@
 │   ├── digits.traineddata
 │   └── fra.traineddata
 ├── .vscode
+│   ├── extensions.json
 │   ├── launch.json
+│   ├── settings.json
 │   └── tasks.json
 ├── AGENTS.md
 ├── Aptfile
@@ -46,14 +55,22 @@
 │       ├── bruno.json
 │       └── environments
 │           └── Local.bru
+├── config
+│   ├── checkstyle.xml
+│   └── eclipse-formatter.xml
 ├── docker-compose.dev.yml
 ├── docs
 │   ├── auto-validation.md
 │   ├── completed-optin.md
+│   ├── dfc-demo.md
+│   ├── dossier-status.md
 │   ├── export-db.sh
 │   ├── infrastructure_diagram.jpg
-│   └── sql-helper
-│       └── schema-current.sql
+│   ├── partner-completed-optin.md
+│   ├── rate-limiting.md
+│   ├── sql-helper
+│   │   └── schema-current.sql
+│   └── tenant-lottery.md
 ├── dossier-facile-logging-library
 │   ├── pom.xml
 │   └── src
@@ -185,6 +202,7 @@
 │       │   │                       ├── WebhookService.java
 │       │   │                       └── WebhookServiceImpl.java
 │       │   └── resources
+│       │       ├── application-dev.properties.example
 │       │       ├── application.properties
 │       │       ├── liquibase.properties
 │       │       └── logback-spring-delayed.xml
@@ -208,7 +226,12 @@
 │           │                   │   ├── PropertyServiceImplTest.java
 │           │                   │   └── PublicPropertyControllerTest.java
 │           │                   └── register
+│           │                       ├── KeycloakPasswordBindingTest.java
+│           │                       ├── KeycloakProvisioningTest.java
 │           │                       ├── KeycloakServiceImplTest.java
+│           │                       ├── OwnerAuthenticationRegressionTest.java
+│           │                       ├── OwnerRecoveryResponseTest.java
+│           │                       ├── PasswordRecoveryTokenRepositoryTest.java
 │           │                       └── RegisterServiceImplTest.java
 │           └── resources
 │               ├── application.properties
@@ -333,7 +356,6 @@
 │       │   │                   │   ├── ListMetadata.java
 │       │   │                   │   ├── MessageModel.java
 │       │   │                   │   ├── ResponseWrapper.java
-│       │   │                   │   ├── TenantSortType.java
 │       │   │                   │   ├── TitleRequest.java
 │       │   │                   │   ├── TypeMessage.java
 │       │   │                   │   ├── dfc
@@ -358,13 +380,11 @@
 │       │   │                   │       ├── GuarantorModel.java
 │       │   │                   │       ├── SelectedOption.java
 │       │   │                   │       └── TenantModel.java
-│       │   │                   ├── partner
-│       │   │                   │   └── controller
-│       │   │                   │       ├── ApiPartnerApartmentSharingController.java
-│       │   │                   │       ├── ApiPartnerTenantController.java
-│       │   │                   │       └── ApiPartnerUserController.java
 │       │   │                   ├── register
+│       │   │                   │   ├── AbstractDocumentFinancialSaveStep.java
+│       │   │                   │   ├── AbstractDocumentResidencySaveStep.java
 │       │   │                   │   ├── AbstractDocumentSaveStep.java
+│       │   │                   │   ├── AbstractDocumentTaxSaveStep.java
 │       │   │                   │   ├── DocumentSaveResult.java
 │       │   │                   │   ├── RegisterFactory.java
 │       │   │                   │   ├── SaveStep.java
@@ -376,6 +396,7 @@
 │       │   │                   │   │   ├── DocumentForm.java
 │       │   │                   │   │   ├── IDocumentFinancialForm.java
 │       │   │                   │   │   ├── IDocumentResidencyForm.java
+│       │   │                   │   │   ├── IDocumentTaxForm.java
 │       │   │                   │   │   ├── guarantor
 │       │   │                   │   │   │   ├── DocumentGuarantorFormAbstract.java
 │       │   │                   │   │   │   ├── legal_person
@@ -489,6 +510,7 @@
 │       │   │                   │   └── TrigramUtils.java
 │       │   │                   └── validator
 │       │   │                       ├── AbstractDocumentCategoriesValidator.java
+│       │   │                       ├── CustomTextValidation.java
 │       │   │                       ├── DocumentCategoryStepSubsetValidator.java
 │       │   │                       ├── DocumentSubcategorySubsetValidator.java
 │       │   │                       ├── FinancialDocumentCategoriesValidator.java
@@ -559,7 +581,6 @@
 │       │   │                       │   └── financial
 │       │   │                       │       └── MonthlySumValueValidator.java
 │       │   │                       ├── group
-│       │   │                       │   ├── ApiPartner.java
 │       │   │                       │   ├── DocumentIdentificationGuarantor.java
 │       │   │                       │   ├── Dossier.java
 │       │   │                       │   ├── FinancialDocumentGroup.java
@@ -614,6 +635,7 @@
 │       │   └── resources
 │       │       ├── META-INF
 │       │       │   └── additional-spring-configuration-metadata.json
+│       │       ├── application-dev.properties.example
 │       │       ├── application.properties
 │       │       ├── keystore
 │       │       │   └── dossierfacile.p12.old
@@ -674,28 +696,31 @@
 │           │                   ├── mapper
 │           │                   │   ├── TenantGraphBuilder.java
 │           │                   │   └── TenantMapperTest.java
-│           │                   ├── partner
-│           │                   │   └── controller
-│           │                   │       ├── ApiPartnerApartmentSharingControllerTest.java
-│           │                   │       ├── ApiPartnerTenantControllerTest.java
-│           │                   │       └── ApiPartnerUserControllerTest.java
 │           │                   ├── register
 │           │                   │   ├── AbstractDocumentSaveStepTest.java
 │           │                   │   ├── DocumentAddedLogTest.java
 │           │                   │   ├── DocumentTaxCustomTextTest.java
 │           │                   │   ├── guarantor
 │           │                   │   │   └── natural_person
+│           │                   │   │       ├── DocumentFinancialGuarantorNaturalPersonTest.java
+│           │                   │   │       ├── DocumentResidencyGuarantorNaturalPersonTest.java
+│           │                   │   │       ├── DocumentTaxGuarantorNaturalPersonTest.java
 │           │                   │   │       └── NameGuarantorNaturalPersonTest.java
 │           │                   │   └── tenant
+│           │                   │       ├── ApplicationProvisioningTest.java
 │           │                   │       ├── ApplicationTest.java
 │           │                   │       ├── ApplicationV2Tests.java
+│           │                   │       ├── DocumentFinancialTest.java
+│           │                   │       ├── DocumentResidencyTest.java
+│           │                   │       ├── DocumentTaxTest.java
 │           │                   │       ├── HonorDeclarationTest.java
 │           │                   │       ├── NameSaveStepTest.java
 │           │                   │       └── NamesTest.java
 │           │                   ├── repository
 │           │                   │   ├── ApartmentSharingLinkRepositoryTest.java
 │           │                   │   ├── DocumentRepositoryTest.java
-│           │                   │   └── JpaTestApplication.java
+│           │                   │   ├── JpaTestApplication.java
+│           │                   │   └── PasswordRecoveryTokenRepositoryTest.java
 │           │                   ├── security
 │           │                   │   ├── AuthenticationFacadeImplTest.java
 │           │                   │   ├── ClientAuthenticationFacadeImplTest.java
@@ -708,11 +733,13 @@
 │           │                   │   ├── DocumentServiceImplTest.java
 │           │                   │   ├── FileServiceImplTest.java
 │           │                   │   ├── GuarantorServiceImplTest.java
+│           │                   │   ├── KeycloakPasswordBindingTest.java
+│           │                   │   ├── KeycloakProvisioningTest.java
 │           │                   │   ├── LinkBruteForceProtectionServiceImplTest.java
 │           │                   │   ├── ScheduledTasksServiceImplTest.java
 │           │                   │   ├── TenantPermissionsServiceImplTest.java
 │           │                   │   ├── TenantServiceImplTest.java
-│           │                   │   ├── UserApiServiceImplTest.java
+│           │                   │   ├── TenantStatusServiceImplTest.java
 │           │                   │   └── UserServiceImplTest.java
 │           │                   ├── util
 │           │                   │   ├── FilePageCounterTest.java
@@ -787,6 +814,7 @@
 │       │   │                           ├── DocumentService.java
 │       │   │                           └── FeedbackService.java
 │       │   └── resources
+│       │       ├── application-dev.properties.example
 │       │       ├── application.properties
 │       │       └── logback-spring-delayed.xml
 │       └── test
@@ -825,10 +853,7 @@
 │       │   │               │   ├── MailConfiguration.java
 │       │   │               │   ├── MessageSourceConfig.java
 │       │   │               │   ├── TestingSecurityConfig.java
-│       │   │               │   ├── WebSecurityConfig.java
-│       │   │               │   └── filter
-│       │   │               │       ├── RateLimitingBoAdminFilesFilter.java
-│       │   │               │       └── RateLimitingBoDocumentsFilter.java
+│       │   │               │   └── WebSecurityConfig.java
 │       │   │               ├── controller
 │       │   │               │   ├── BOApartmentSharingController.java
 │       │   │               │   ├── BOController.java
@@ -873,6 +898,7 @@
 │       │   │               │   ├── DocumentDeniedReasonsNotFoundException.java
 │       │   │               │   ├── DocumentNotFoundException.java
 │       │   │               │   ├── GuarantorNotFoundException.java
+│       │   │               │   ├── MonthlySumChangedException.java
 │       │   │               │   ├── OAuth2AuthenticationProcessingException.java
 │       │   │               │   ├── ResourceNotFoundException.java
 │       │   │               │   ├── controller
@@ -958,6 +984,7 @@
 │       │   │                       └── ExistEmail.java
 │       │   └── resources
 │       │       ├── ESAPI.properties
+│       │       ├── application-dev.properties.example
 │       │       ├── application.properties
 │       │       ├── logback-spring-delayed.xml
 │       │       ├── messages.properties
@@ -1405,6 +1432,7 @@
 │       │       │   │   │   ├── document-ia-data.html
 │       │       │   │   │   ├── file-delete-modal.html
 │       │       │   │   │   ├── metadata-modal.html
+│       │       │   │   │   ├── monthly-amount.html
 │       │       │   │   │   ├── pagination-with-parameters.html
 │       │       │   │   │   ├── pagination.html
 │       │       │   │   │   ├── shared-links.html
@@ -1440,16 +1468,15 @@
 │           │       └── gouv
 │           │           └── bo
 │           │               ├── TestBOApplication.java
-│           │               ├── configuration
-│           │               │   └── filter
-│           │               │       ├── RateLimitingBoAdminFilesFilterTest.java
-│           │               │       └── RateLimitingBoDocumentsFilterTest.java
 │           │               ├── controller
 │           │               │   ├── BOApartmentSharingControllerTest.java
+│           │               │   ├── BOControllerSearchDisplayTest.java
 │           │               │   ├── BOControllerSearchTenantTest.java
 │           │               │   ├── BOE2ETestControllerTest.java
+│           │               │   ├── BOFeatureFlagsControllerTest.java
 │           │               │   ├── BOMessageControllerTest.java
 │           │               │   ├── BOTenantControllerTest.java
+│           │               │   ├── BOUserApiControllerTest.java
 │           │               │   ├── FileControllerTest.java
 │           │               │   └── TaxDisplayTest.java
 │           │               ├── dto
@@ -1464,11 +1491,14 @@
 │           │               │   ├── BrevoMailHistoryServiceTest.java
 │           │               │   ├── DocumentDeniedOptionsServiceTest.java
 │           │               │   ├── DocumentDeniedReasonsServiceTest.java
+│           │               │   ├── MessageServiceTest.java
 │           │               │   ├── QuotaServiceTest.java
 │           │               │   ├── TenantLogServiceTest.java
 │           │               │   ├── TenantServiceDissociateTenantTest.java
 │           │               │   ├── TenantServiceFindNextTenantInCoupleTest.java
 │           │               │   ├── TenantServiceRegroupTenantTest.java
+│           │               │   ├── TenantServiceReprocessTenantTest.java
+│           │               │   ├── TenantServiceSearchTest.java
 │           │               │   ├── TenantServiceSendCustomMessageTest.java
 │           │               │   ├── UserServiceTest.java
 │           │               │   └── impl
@@ -1501,6 +1531,11 @@
 │       │   │               │   ├── S3BucketConfig.java
 │       │   │               │   ├── filter
 │       │   │               │   │   └── AbstractDownloadRateLimitingFilter.java
+│       │   │               │   ├── ratelimit
+│       │   │               │   │   ├── RateLimit.java
+│       │   │               │   │   ├── RateLimitAspect.java
+│       │   │               │   │   ├── RateLimitExceededException.java
+│       │   │               │   │   └── RedisRateLimiterService.java
 │       │   │               │   └── xss
 │       │   │               │       ├── JacksonXssConfig.java
 │       │   │               │       ├── XssFilter.java
@@ -1546,6 +1581,8 @@
 │       │   │               │   ├── FileMetadata.java
 │       │   │               │   ├── Guarantor.java
 │       │   │               │   ├── LinkLog.java
+│       │   │               │   ├── LotteryDraw.java
+│       │   │               │   ├── LotteryTicket.java
 │       │   │               │   ├── Message.java
 │       │   │               │   ├── ObjectStorageProvider.java
 │       │   │               │   ├── OperatorLog.java
@@ -1609,12 +1646,15 @@
 │       │   │               │   ├── FileTestResult.java
 │       │   │               │   ├── LinkType.java
 │       │   │               │   ├── LogType.java
+│       │   │               │   ├── LotteryPublicStatus.java
+│       │   │               │   ├── LotteryTicketStatus.java
 │       │   │               │   ├── MessageStatus.java
 │       │   │               │   ├── OwnerLogType.java
 │       │   │               │   ├── ParsedStatus.java
 │       │   │               │   ├── PartnerCallBackType.java
 │       │   │               │   ├── PropertyFurniture.java
 │       │   │               │   ├── PropertyType.java
+│       │   │               │   ├── QueueEntrySource.java
 │       │   │               │   ├── Role.java
 │       │   │               │   ├── StepRegisterOwner.java
 │       │   │               │   ├── TaxFileExtractionType.java
@@ -1691,16 +1731,18 @@
 │       │   │               │   │   ├── ExtractionModel.java
 │       │   │               │   │   ├── GenericProperty.java
 │       │   │               │   │   └── ResultModel.java
-│       │   │               │   └── log
-│       │   │               │       ├── ApplicationTypeChange.java
-│       │   │               │       ├── AutoValidationDocumentDetail.java
-│       │   │               │       ├── AutoValidationLogDetails.java
-│       │   │               │       ├── DeletedOwnerModel.java
-│       │   │               │       ├── DocumentLogDetails.java
-│       │   │               │       ├── EditedStep.java
-│       │   │               │       ├── FileLogDetails.java
-│       │   │               │       ├── GuarantorNotifiedLogDetails.java
-│       │   │               │       └── UpdateMonthlySum.java
+│       │   │               │   ├── log
+│       │   │               │   │   ├── ApplicationTypeChange.java
+│       │   │               │   │   ├── AutoValidationDocumentDetail.java
+│       │   │               │   │   ├── AutoValidationLogDetails.java
+│       │   │               │   │   ├── DeletedOwnerModel.java
+│       │   │               │   │   ├── DocumentLogDetails.java
+│       │   │               │   │   ├── EditedStep.java
+│       │   │               │   │   ├── FileLogDetails.java
+│       │   │               │   │   ├── GuarantorNotifiedLogDetails.java
+│       │   │               │   │   └── UpdateMonthlySum.java
+│       │   │               │   └── lottery
+│       │   │               │       └── LotteryStatusView.java
 │       │   │               ├── repository
 │       │   │               │   ├── ApartmentSharingLinkRepository.java
 │       │   │               │   ├── ApartmentSharingRepository.java
@@ -1714,6 +1756,8 @@
 │       │   │               │   ├── FileCommonRepository.java
 │       │   │               │   ├── FileMetadataRepository.java
 │       │   │               │   ├── LinkLogRepository.java
+│       │   │               │   ├── LotteryDrawRepository.java
+│       │   │               │   ├── LotteryTicketRepository.java
 │       │   │               │   ├── OwnerCommonRepository.java
 │       │   │               │   ├── OwnerLogCommonRepository.java
 │       │   │               │   ├── ProcessingCapacityRepository.java
@@ -1738,7 +1782,6 @@
 │       │   │               │   ├── ApartmentSharingCommonServiceImpl.java
 │       │   │               │   ├── ApartmentSharingLinkService.java
 │       │   │               │   ├── CompletedDossierServiceImpl.java
-│       │   │               │   ├── CompletedEligibilityServiceImpl.java
 │       │   │               │   ├── ConfirmationTokenServiceImpl.java
 │       │   │               │   ├── DocumentHelperServiceImpl.java
 │       │   │               │   ├── EncryptionKeyServiceImpl.java
@@ -1750,8 +1793,11 @@
 │       │   │               │   ├── LinkLogServiceImpl.java
 │       │   │               │   ├── LocalMockStorage.java
 │       │   │               │   ├── LogServiceImpl.java
+│       │   │               │   ├── LotteryDrawServiceImpl.java
+│       │   │               │   ├── LotteryTicketServiceImpl.java
 │       │   │               │   ├── MailCommonServiceImpl.java
 │       │   │               │   ├── MimeTypeDetectionServiceImpl.java
+│       │   │               │   ├── OperatorReviewPolicyImpl.java
 │       │   │               │   ├── OvhFileStorageServiceImpl.java
 │       │   │               │   ├── OwnerCommonServiceImpl.java
 │       │   │               │   ├── PartnerCallBackServiceImpl.java
@@ -1770,7 +1816,6 @@
 │       │   │               │   │   ├── AdemeApiService.java
 │       │   │               │   │   ├── ApartmentSharingCommonService.java
 │       │   │               │   │   ├── CompletedDossierService.java
-│       │   │               │   │   ├── CompletedEligibilityService.java
 │       │   │               │   │   ├── ConfirmationTokenService.java
 │       │   │               │   │   ├── DocumentHelperService.java
 │       │   │               │   │   ├── EncryptionKeyService.java
@@ -1780,8 +1825,11 @@
 │       │   │               │   │   ├── KeycloakCommonService.java
 │       │   │               │   │   ├── LinkLogService.java
 │       │   │               │   │   ├── LogService.java
+│       │   │               │   │   ├── LotteryDrawService.java
+│       │   │               │   │   ├── LotteryTicketService.java
 │       │   │               │   │   ├── MailCommonService.java
 │       │   │               │   │   ├── MimeTypeDetectionService.java
+│       │   │               │   │   ├── OperatorReviewPolicy.java
 │       │   │               │   │   ├── OwnerCommonService.java
 │       │   │               │   │   ├── PartnerCallBackService.java
 │       │   │               │   │   ├── PdfSanitizerService.java
@@ -2030,7 +2078,13 @@
 │       │       │       ├── 202607150000-add-beneficiary-email-to-tenant.xml
 │       │       │       ├── 20260723160000-add-ready-for-auto-validation-to-tenant.xml
 │       │       │       ├── 20260731140000-update-ranked-tenant-exclude-auto-validation.xml
-│       │       │       └── 20260806000000-add-completed-optin.xml
+│       │       │       ├── 20260806000000-add-completed-optin.xml
+│       │       │       ├── 202608270000-add-document-ia-professional-analysis-flag.xml
+│       │       │       ├── 20260901000000-add-tenant-lottery.xml
+│       │       │       ├── 20260910000000-add-partner-completed-optin-flag.xml
+│       │       │       ├── 20260929000000-add-guarantor-email-index.xml
+│       │       │       ├── 20261005000000-add-document-ia-execution-id-index.xml
+│       │       │       └── 20261028000000-seed-dev-partner-dfc-demo.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -2039,6 +2093,9 @@
 │           │       └── dossierfacile
 │           │           └── common
 │           │               ├── config
+│           │               │   ├── ratelimit
+│           │               │   │   ├── RateLimitAspectTest.java
+│           │               │   │   └── RedisRateLimiterServiceTest.java
 │           │               │   └── xss
 │           │               │       └── XssSanitizationTest.java
 │           │               ├── converter
@@ -2049,6 +2106,8 @@
 │           │               │   ├── TenantLogTest.java
 │           │               │   ├── TenantTest.java
 │           │               │   └── UserTest.java
+│           │               ├── enums
+│           │               │   └── PartnerCallBackTypeTest.java
 │           │               ├── mapper
 │           │               │   ├── ApplicationFullMapperTest.java
 │           │               │   └── PartnerVisibleStatusTest.java
@@ -2057,21 +2116,27 @@
 │           │               │   │   └── AdemeApiResultModelTest.java
 │           │               │   └── document_ia
 │           │               │       └── GenericPropertyTest.java
+│           │               ├── repository
+│           │               │   └── TenantEmailSearchTest.java
 │           │               ├── service
 │           │               │   ├── AdemeApiServiceImplTest.java
 │           │               │   ├── ApartmentSharingLinkServiceTest.java
 │           │               │   ├── CompletedDossierServiceImplTest.java
-│           │               │   ├── CompletedEligibilityServiceImplTest.java
 │           │               │   ├── FeatureFlagServiceImplConcurrencyTest.java
 │           │               │   ├── FeatureFlagServiceImplHashTest.java
 │           │               │   ├── FeatureFlagServiceImplTest.java
 │           │               │   ├── KeycloakCommonServiceImplTest.java
 │           │               │   ├── LinkLogServiceImplTest.java
 │           │               │   ├── LogServiceImplTest.java
+│           │               │   ├── LotteryDrawServiceImplTest.java
+│           │               │   ├── LotteryTicketServiceImplTest.java
 │           │               │   ├── MimeTypeDetectionServiceTest.java
+│           │               │   ├── OperatorReviewPolicyImplTest.java
 │           │               │   ├── PartnerCallBackServiceImplTest.java
 │           │               │   ├── RequestServiceImplTest.java
-│           │               │   └── TenantAutoValidationServiceImplTest.java
+│           │               │   ├── TenantAutoValidationServiceImplTest.java
+│           │               │   ├── TenantCommonServiceImplTest.java
+│           │               │   └── TenantLogCommonServiceImplTest.java
 │           │               ├── utils
 │           │               │   ├── DateBasedFeatureToggleTest.java
 │           │               │   ├── FileExtensionValidationTest.java
@@ -2100,6 +2165,53 @@
 │           │               └── ParameterizedTestHelper.java
 │           └── resources
 │               └── unit-test-bucket-policy.json
+├── dossierfacile-dfc-demo
+│   ├── README.md
+│   ├── pom.xml
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── fr
+│       │   │       └── dossierfacile
+│       │   │           └── dfcdemo
+│       │   │               ├── DfcDemoApplication.java
+│       │   │               ├── config
+│       │   │               │   ├── DfcDemoProperties.java
+│       │   │               │   └── RestTemplateConfig.java
+│       │   │               ├── oidc
+│       │   │               │   ├── DfcApiException.java
+│       │   │               │   └── DfcConnectService.java
+│       │   │               ├── web
+│       │   │               │   ├── DemoExceptionHandler.java
+│       │   │               │   ├── DfcConnectController.java
+│       │   │               │   ├── HomeController.java
+│       │   │               │   ├── WebhookController.java
+│       │   │               │   └── WebhookDisplayController.java
+│       │   │               └── webhook
+│       │   │                   ├── WebhookLog.java
+│       │   │                   └── WebhookLogRepository.java
+│       │   └── resources
+│       │       ├── application-dev.properties.example
+│       │       ├── application.properties
+│       │       ├── schema.sql
+│       │       ├── static
+│       │       │   └── logo_bouton.png
+│       │       └── templates
+│       │           ├── connection-dfc.html
+│       │           ├── display-webhook.html
+│       │           ├── display.html
+│       │           ├── error.html
+│       │           ├── index.html
+│       │           └── logout.html
+│       └── test
+│           └── java
+│               └── fr
+│                   └── dossierfacile
+│                       └── dfcdemo
+│                           ├── oidc
+│                           │   └── DfcConnectServiceTest.java
+│                           └── web
+│                               └── WebhookControllerTest.java
 ├── dossierfacile-document-analysis
 │   ├── pom.xml
 │   └── src
@@ -2122,6 +2234,7 @@
 │       │   │                   │   ├── AvisImpositionRulesValidationService.java
 │       │   │                   │   ├── BulletinSalaireRulesValidationService.java
 │       │   │                   │   ├── CarteNationalIdentiteRulesValidationService.java
+│       │   │                   │   ├── ProfessionalRulesValidationService.java
 │       │   │                   │   ├── PropertyTaxRulesValidationService.java
 │       │   │                   │   ├── ResidencyCommonRulesValidationService.java
 │       │   │                   │   ├── VisaleCertificateRulesValidationService.java
@@ -2155,6 +2268,12 @@
 │       │   │                   │       │       ├── BeneficiaireModel.java
 │       │   │                   │       │       ├── PayslipDate.java
 │       │   │                   │       │       └── PayslipNames.java
+│       │   │                   │       ├── professional
+│       │   │                   │       │   ├── Professional2DDocIssueDateRule.java
+│       │   │                   │       │   ├── ProfessionalClassificationRuleBI.java
+│       │   │                   │       │   ├── ProfessionalNamesRule.java
+│       │   │                   │       │   └── document_ia_model
+│       │   │                   │       │       └── PNDSProfessionalActivity2DDoc.java
 │       │   │                   │       ├── property_tax
 │       │   │                   │       │   ├── PropertyTaxClassificationRuleB.java
 │       │   │                   │       │   ├── PropertyTaxLeafRule.java
@@ -2195,11 +2314,13 @@
 │                   └── dossierfacile
 │                       └── document
 │                           └── analysis
+│                               ├── DocumentIAConfigTest.java
 │                               ├── external
 │                               │   └── documentia
 │                               │       └── DocumentIAClientTest.java
 │                               ├── rule
 │                               │   ├── BulletinSalaireRulesValidationServiceTest.java
+│                               │   ├── ProfessionalRulesValidationServiceTest.java
 │                               │   └── validator
 │                               │       ├── document_ia
 │                               │       │   ├── AtLeastOneClassificationValidatorBTest.java
@@ -2225,6 +2346,10 @@
 │                               │       │   ├── PayslipClassificationValidatorBTest.java
 │                               │       │   ├── PayslipContinuityRuleTest.java
 │                               │       │   └── PayslipNamesRuleTest.java
+│                               │       ├── professional
+│                               │       │   ├── Professional2DDocIssueDateRuleTest.java
+│                               │       │   ├── ProfessionalClassificationRuleBITest.java
+│                               │       │   └── ProfessionalNamesRuleTest.java
 │                               │       ├── property_tax
 │                               │       │   ├── PropertyTaxClassificationRuleBTest.java
 │                               │       │   ├── PropertyTaxLeafRuleTest.java
@@ -2319,6 +2444,7 @@
 │       │   └── resources
 │       │       ├── META-INF
 │       │       │   └── additional-spring-configuration-metadata.json
+│       │       ├── application-dev.properties.example
 │       │       ├── application.properties
 │       │       ├── dgfip-icon.png
 │       │       ├── logback-spring-delayed.xml
@@ -2353,6 +2479,7 @@
 │           │                   ├── service
 │           │                   │   ├── ApartmentSharingPdfDossierFileGenerationServiceImplTest.java
 │           │                   │   ├── MinifyFileServiceImplTest.java
+│           │                   │   ├── PdfGeneratorServiceImplOtherResidencyTest.java
 │           │                   │   ├── PdfGeneratorServiceImplTest.java
 │           │                   │   ├── ProcessFileServiceImplTest.java
 │           │                   │   └── templates
@@ -2383,76 +2510,115 @@
 │               ├── page1.pdf
 │               └── qrcode-sample.pdf
 ├── dossierfacile-task-scheduler
+│   ├── .buildpacks
 │   ├── .gitignore
+│   ├── Aptfile
+│   ├── Procfile
 │   ├── README.md
+│   ├── cron.json
 │   ├── mvnw
 │   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── fr
-│       │   │       └── dossierfacile
-│       │   │           └── scheduler
-│       │   │               ├── TaskSchedulerApplication.java
-│       │   │               ├── configuration
-│       │   │               │   ├── GeneralConfiguration.java
-│       │   │               │   ├── KeycloakConfig.java
-│       │   │               │   └── MailConfiguration.java
-│       │   │               └── tasks
-│       │   │                   ├── AbstractTask.java
-│       │   │                   ├── TaskName.java
-│       │   │                   ├── ademe
-│       │   │                   │   └── CheckAdemeApiTask.java
-│       │   │                   ├── autovalidation
-│       │   │                   │   └── TenantAutoValidationTask.java
-│       │   │                   ├── document
-│       │   │                   │   ├── DocumentDeleteMailService.java
-│       │   │                   │   ├── DocumentModel.java
-│       │   │                   │   ├── DocumentRepository.java
-│       │   │                   │   ├── DocumentTask.java
-│       │   │                   │   └── PartnerCallbackService.java
-│       │   │                   ├── documentia
-│       │   │                   │   └── SynchroniseDocumentIATask.java
-│       │   │                   ├── garbagecollection
-│       │   │                   │   ├── GarbageCollectionDetails.java
-│       │   │                   │   ├── GarbageCollectionDetailsRepository.java
-│       │   │                   │   ├── GarbageCollectionService.java
-│       │   │                   │   ├── GarbageCollectionTask.java
-│       │   │                   │   ├── GarbageCollectionTaskOld.java
-│       │   │                   │   ├── GarbageSequenceEntity.java
-│       │   │                   │   ├── GarbageSequenceName.java
-│       │   │                   │   ├── GarbageSequenceRepository.java
-│       │   │                   │   └── StoredObject.java
-│       │   │                   ├── ownerwarning
-│       │   │                   │   ├── OwnerRepository.java
-│       │   │                   │   ├── OwnerWarningService.java
-│       │   │                   │   └── OwnerWarningTask.java
-│       │   │                   ├── storagesynchronization
-│       │   │                   │   ├── DeleteFilesTask.java
-│       │   │                   │   └── DeleteTemporaryFilesTask.java
-│       │   │                   └── tenantwarning
-│       │   │                       ├── TenantArchivingService.java
-│       │   │                       ├── TenantDeletionTask.java
-│       │   │                       ├── TenantRepository.java
-│       │   │                       ├── TenantWarningService.java
-│       │   │                       ├── TenantWarningTask.java
-│       │   │                       └── WarningMailSender.java
-│       │   └── resources
-│       │       ├── application.properties
-│       │       └── logback-spring-delayed.xml
-│       └── test
-│           ├── java
-│           │   └── fr
-│           │       └── dossierfacile
-│           │           └── scheduler
-│           │               └── tasks
-│           │                   ├── documentia
-│           │                   │   └── SynchroniseDocumentIATaskTest.java
-│           │                   └── tenantwarning
-│           │                       └── TenantRepositoryTest.java
-│           └── resources
-│               ├── application.properties
-│               └── data-two-tenant-same-apart.sql
+│   ├── src
+│   │   ├── main
+│   │   │   ├── java
+│   │   │   │   └── fr
+│   │   │   │       └── dossierfacile
+│   │   │   │           └── scheduler
+│   │   │   │               ├── AnalyticsReplicationApplication.java
+│   │   │   │               ├── TaskSchedulerApplication.java
+│   │   │   │               ├── cli
+│   │   │   │               │   └── AnalyticsReplicationRunner.java
+│   │   │   │               ├── configuration
+│   │   │   │               │   ├── GeneralConfiguration.java
+│   │   │   │               │   ├── KeycloakConfig.java
+│   │   │   │               │   └── MailConfiguration.java
+│   │   │   │               └── tasks
+│   │   │   │                   ├── AbstractTask.java
+│   │   │   │                   ├── TaskName.java
+│   │   │   │                   ├── ademe
+│   │   │   │                   │   └── CheckAdemeApiTask.java
+│   │   │   │                   ├── analytics
+│   │   │   │                   │   ├── AnalyticsProperties.java
+│   │   │   │                   │   ├── AnalyticsReplicationService.java
+│   │   │   │                   │   ├── AnalyticsTableMapping.java
+│   │   │   │                   │   └── DbtTriggerService.java
+│   │   │   │                   ├── autovalidation
+│   │   │   │                   │   └── TenantAutoValidationTask.java
+│   │   │   │                   ├── completedoptin
+│   │   │   │                   │   ├── CompletedOptinTenantRepository.java
+│   │   │   │                   │   ├── CompletedSurveyService.java
+│   │   │   │                   │   ├── CompletedSurveyTask.java
+│   │   │   │                   │   ├── ValidationReminderService.java
+│   │   │   │                   │   └── ValidationReminderTask.java
+│   │   │   │                   ├── document
+│   │   │   │                   │   ├── DocumentDeleteMailService.java
+│   │   │   │                   │   ├── DocumentModel.java
+│   │   │   │                   │   ├── DocumentRepository.java
+│   │   │   │                   │   ├── DocumentTask.java
+│   │   │   │                   │   ├── FailedPdfCleanupResult.java
+│   │   │   │                   │   ├── FailedPdfDocumentCleanupService.java
+│   │   │   │                   │   └── PartnerCallbackService.java
+│   │   │   │                   ├── documentia
+│   │   │   │                   │   └── SynchroniseDocumentIATask.java
+│   │   │   │                   ├── garbagecollection
+│   │   │   │                   │   ├── GarbageCollectionDetails.java
+│   │   │   │                   │   ├── GarbageCollectionDetailsRepository.java
+│   │   │   │                   │   ├── GarbageCollectionService.java
+│   │   │   │                   │   ├── GarbageCollectionTask.java
+│   │   │   │                   │   ├── GarbageCollectionTaskOld.java
+│   │   │   │                   │   ├── GarbageSequenceEntity.java
+│   │   │   │                   │   ├── GarbageSequenceName.java
+│   │   │   │                   │   ├── GarbageSequenceRepository.java
+│   │   │   │                   │   └── StoredObject.java
+│   │   │   │                   ├── lottery
+│   │   │   │                   │   └── LotteryDrawTask.java
+│   │   │   │                   ├── ownerwarning
+│   │   │   │                   │   ├── OwnerRepository.java
+│   │   │   │                   │   ├── OwnerWarningService.java
+│   │   │   │                   │   └── OwnerWarningTask.java
+│   │   │   │                   ├── storagesynchronization
+│   │   │   │                   │   ├── DeleteFilesTask.java
+│   │   │   │                   │   └── DeleteTemporaryFilesTask.java
+│   │   │   │                   └── tenantwarning
+│   │   │   │                       ├── TenantArchivingService.java
+│   │   │   │                       ├── TenantDeletionTask.java
+│   │   │   │                       ├── TenantRepository.java
+│   │   │   │                       ├── TenantWarningService.java
+│   │   │   │                       ├── TenantWarningTask.java
+│   │   │   │                       └── WarningMailSender.java
+│   │   │   └── resources
+│   │   │       ├── application-dev.properties.example
+│   │   │       ├── application.properties
+│   │   │       └── logback-spring-delayed.xml
+│   │   └── test
+│   │       ├── java
+│   │       │   └── fr
+│   │       │       └── dossierfacile
+│   │       │           └── scheduler
+│   │       │               ├── cli
+│   │       │               │   └── AnalyticsReplicationRunnerTest.java
+│   │       │               └── tasks
+│   │       │                   ├── analytics
+│   │       │                   │   ├── AnalyticsPropertiesTest.java
+│   │       │                   │   ├── AnalyticsReplicationServiceTest.java
+│   │       │                   │   ├── AnalyticsTableMappingTest.java
+│   │       │                   │   └── DbtTriggerServiceTest.java
+│   │       │                   ├── completedoptin
+│   │       │                   │   ├── CompletedSurveyServiceTest.java
+│   │       │                   │   ├── CompletedSurveyTaskTest.java
+│   │       │                   │   ├── ValidationReminderServiceTest.java
+│   │       │                   │   └── ValidationReminderTaskTest.java
+│   │       │                   ├── document
+│   │       │                   │   ├── DocumentTaskTest.java
+│   │       │                   │   └── FailedPdfDocumentCleanupServiceTest.java
+│   │       │                   ├── documentia
+│   │       │                   │   └── SynchroniseDocumentIATaskTest.java
+│   │       │                   └── tenantwarning
+│   │       │                       └── TenantRepositoryTest.java
+│   │       └── resources
+│   │           ├── application.properties
+│   │           └── data-two-tenant-same-apart.sql
+│   └── system.properties
 ├── elastalert
 │   ├── README.md
 │   ├── custom-alerts
@@ -2466,11 +2632,16 @@
 │   ├── example-rules
 │   │   └── example.yaml
 │   └── rules
-│       ├── cdn_suspicious.yaml
-│       ├── process-file-monitoring.yaml
+│       ├── task-check-api-ademe-errors.yaml
+│       ├── task-garbage-collection-errors.yaml
+│       ├── task-garbage-collection-v2-errors.yaml
 │       ├── task-scheduler-monitoring.yaml
 │       ├── task-storage-file-deletion.yaml
+│       ├── task-storage-files-deletion-errors.yaml
+│       ├── task-storage-files-deletion-retry-errors.yaml
+│       ├── task-synchronise-document-ia-errors.yaml
 │       ├── task-tenant-archiving.yaml
+│       ├── task-tenant-auto-validation-errors.yaml
 │       ├── task-tenant-deletion.yaml
 │       └── task-tenant-warning.yaml
 ├── france-identite-numerique-api
@@ -2489,4 +2660,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-611 directories, 1984 files
+645 directories, 2121 files
