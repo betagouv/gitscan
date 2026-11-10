@@ -111,23 +111,21 @@
 │   │   │   ├── README.md
 │   │   │   ├── load_dashboard.sql
 │   │   │   └── run_dashboard.sh
-│   │   ├── grist-dn-pipeline
+│   │   ├── dn-pipeline
 │   │   │   ├── README.md
 │   │   │   ├── apercu.py
 │   │   │   ├── apercu_dn.sh
-│   │   │   ├── apercu_grist.sh
-│   │   │   ├── apercu_grist_dn.sh
 │   │   │   ├── dn_client.py
-│   │   │   ├── grist_client.py
-│   │   │   ├── grist_dn_pipeline.py
+│   │   │   ├── dn_pipeline.py
 │   │   │   ├── mapping.py
-│   │   │   ├── match_grist_dn.sql
-│   │   │   ├── run_grist_dn.sh
+│   │   │   ├── match_dn.sql
+│   │   │   ├── run_dn.sh
 │   │   │   ├── test_apercu.py
 │   │   │   ├── test_clients.py
-│   │   │   ├── test_grist_dn_pipeline.py
-│   │   │   ├── test_match_grist_dn.py
-│   │   │   └── test_run_grist_dn.py
+│   │   │   ├── test_dn_pipeline.py
+│   │   │   ├── test_fc_finds_dn_codes.py
+│   │   │   ├── test_match_dn.py
+│   │   │   └── test_run_dn.py
 │   │   ├── linkmobility
 │   │   │   └── 1_email_campaign.ipynb
 │   │   ├── partners
@@ -144,8 +142,10 @@
 │   │   │   │   ├── test_clean_cnaf_lib.py
 │   │   │   │   └── test_reconcile_cnaf_lib.py
 │   │   │   ├── cnous
+│   │   │   │   ├── 27_10_2026_clean_cnous_boursiers.py
 │   │   │   │   ├── clean_cnous.ipynb
 │   │   │   │   ├── clean_cnous_lib.py
+│   │   │   │   ├── run_cnous_boursiers.sh
 │   │   │   │   └── test_clean_cnous_lib.py
 │   │   │   ├── franceconnect
 │   │   │   │   ├── README.md
@@ -407,6 +407,8 @@
 │   │   │   │       │   └── route.ts
 │   │   │   │       ├── collect
 │   │   │   │       │   └── route.ts
+│   │   │   │       ├── dossier
+│   │   │   │       │   └── route.ts
 │   │   │   │       ├── login
 │   │   │   │       │   └── route.ts
 │   │   │   │       ├── logout
@@ -529,6 +531,8 @@
 │   │   │   │   ├── dashboard-access.ts
 │   │   │   │   ├── dashboard.ts
 │   │   │   │   ├── database.ts
+│   │   │   │   ├── dn-dossier-rules.ts
+│   │   │   │   ├── dn-dossier.ts
 │   │   │   │   ├── eligibility-job.ts
 │   │   │   │   ├── eligibility-test.spec.ts
 │   │   │   │   ├── eligibility-test.ts
@@ -647,6 +651,8 @@
 │   │   │       │   │   │   ├── BeneficiaryRecap.test.tsx
 │   │   │       │   │   │   ├── BeneficiaryRecap.tsx
 │   │   │       │   │   │   ├── CodePdfDownloadLink.tsx
+│   │   │       │   │   │   ├── DnDossierButton.test.tsx
+│   │   │       │   │   │   ├── DnDossierButton.tsx
 │   │   │       │   │   │   ├── EnqueueRetry.tsx
 │   │   │       │   │   │   ├── RelanceButton.tsx
 │   │   │       │   │   │   └── ResultPanel.tsx
@@ -798,6 +804,8 @@
 │   │   │   │   └── verdict
 │   │   │   │       └── route.test.ts
 │   │   │   └── france-connect
+│   │   │       ├── dossier
+│   │   │       │   └── route.test.ts
 │   │   │       ├── pdf
 │   │   │       │   └── route.test.ts
 │   │   │       └── relance
@@ -808,6 +816,7 @@
 │   │   ├── proxy.test.ts
 │   │   ├── services
 │   │   │   ├── dashboard-access.test.ts
+│   │   │   ├── dn-dossier.test.ts
 │   │   │   └── lca-job-id.test.ts
 │   │   └── utils
 │   │       ├── cookie.test.ts
@@ -878,6 +887,7 @@
     │   ├── 0020_add_lca_dashboard.sql
     │   ├── 0021_lca_tableaux_de_bord_age.sql
     │   ├── 0022_lca_tableaux_de_bord_federation.sql
+    │   ├── 0023_add_fc_dn_dossiers.sql
     │   └── meta
     │       ├── 0000_snapshot.json
     │       ├── 0001_snapshot.json
@@ -902,6 +912,7 @@
     │       ├── 0020_snapshot.json
     │       ├── 0021_snapshot.json
     │       ├── 0022_snapshot.json
+    │       ├── 0023_snapshot.json
     │       └── _journal.json
     ├── drizzle.config.ts
     ├── package.json
@@ -915,6 +926,13 @@
     │   │   ├── history.ts
     │   │   ├── migrate.ts
     │   │   └── schema.ts
+    │   ├── demarche-numerique
+    │   │   ├── champs-resolver.ts
+    │   │   ├── champs.ts
+    │   │   ├── client.ts
+    │   │   ├── config.ts
+    │   │   ├── facts.ts
+    │   │   └── prefill.ts
     │   ├── eligibility
     │   │   ├── calls.ts
     │   │   ├── candidates.ts
@@ -934,6 +952,7 @@
     │   ├── jobs
     │   │   ├── fc-code-emails-rows.ts
     │   │   ├── fc-code-emails.ts
+    │   │   ├── fc-dn-dossier.ts
     │   │   ├── fc-relance.ts
     │   │   ├── france-connect.ts
     │   │   ├── lca.ts
@@ -942,18 +961,20 @@
     │   ├── log.ts
     │   ├── paris-time.ts
     │   ├── queues.ts
-    │   └── scripts
-    │       ├── aeeh-422-replay.ts
-    │       ├── enqueue-fc-code-emails.ts
-    │       ├── qf-batch-workdir -> ../../../data/2026/partners/qf-batch-workdir/
-    │       ├── qf-batch.ts
-    │       ├── rate-config.ts
-    │       ├── rate-gate-probe.ts
-    │       ├── rate-pacer.ts
-    │       ├── run-qf-batch.sh
-    │       ├── send-code-direct-aah.ts
-    │       ├── send-test-email.ts
-    │       └── split-csv.sh
+    │   ├── scripts
+    │   │   ├── aeeh-422-replay.ts
+    │   │   ├── dn-champs.ts
+    │   │   ├── enqueue-fc-code-emails.ts
+    │   │   ├── qf-batch-workdir -> ../../../data/2026/partners/qf-batch-workdir/
+    │   │   ├── qf-batch.ts
+    │   │   ├── rate-config.ts
+    │   │   ├── rate-gate-probe.ts
+    │   │   ├── rate-pacer.ts
+    │   │   ├── run-qf-batch.sh
+    │   │   ├── send-code-direct-aah.ts
+    │   │   ├── send-test-email.ts
+    │   │   └── split-csv.sh
+    │   └── sentry-scrub.ts
     ├── test
     │   ├── e2e
     │   │   ├── aeeh-fallback.e2e.test.ts
@@ -961,6 +982,7 @@
     │   │   ├── checkpoint-resume.e2e.test.ts
     │   │   ├── dedup.e2e.test.ts
     │   │   ├── fc-code-emails.e2e.test.ts
+    │   │   ├── fc-dn-dossier.e2e.test.ts
     │   │   ├── fc-relance-qf-backfill.e2e.test.ts
     │   │   ├── fc-relance.e2e.test.ts
     │   │   ├── harness.ts
@@ -978,15 +1000,21 @@
     │       ├── candidates.test.ts
     │       ├── checkpoint.test.ts
     │       ├── cnous-params.test.ts
+    │       ├── dn-champs.test.ts
+    │       ├── dn-client.test.ts
+    │       ├── dn-config.test.ts
+    │       ├── dn-facts.test.ts
+    │       ├── dn-prefill.test.ts
     │       ├── fc-code-emails-rows.test.ts
     │       ├── qf-batch.test.ts
     │       ├── qf-params.test.ts
     │       ├── rate-gate.test.ts
     │       ├── rate-pacer.test.ts
     │       ├── send-code-direct-aah.test.ts
+    │       ├── sentry-scrub.test.ts
     │       ├── sequence.test.ts
     │       └── verdicts.test.ts
     ├── tsconfig.build.json
     ├── tsconfig.json
     └── vitest.config.ts
-231 directories, 760 files
+234 directories, 785 files

@@ -1,23 +1,25 @@
-## Changelog : pass-sport (30 derniers jours, au 02 novembre 2026)
+## Changelog : pass-sport (30 derniers jours, au 9 novembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration des outils de gestion pour les équipes de support et l'administration (nouveaux processus CNAF, gestion des bénéficiaires AAH), ainsi que sur la modernisation de l'infrastructure technique et de la gestion des flux de données.
+Ce mois a été marqué par une amélioration significative de l'expérience utilisateur grâce à l'automatisation du pré-remplissage des dossiers via FranceConnect. Parallèlement, le projet a renforcé sa robustesse technique avec une refactorisation des traitements de données et une mise à jour majeure de l'infrastructure logicielle pour garantir une meilleure sécurité et performance.
 
 ### Évolutions fonctionnelles
-- **Amélioration des outils de support** : prise en compte des bénéficiaires AAH et amélioration de la gestion des imports de fichiers CSV (support des en-têtes techniques).
-- **Nouveaux processus administratifs** : intégration de nouveaux processus liés à la CNAF (AEEH et processus du 10/06/2026). [#644](https://github.com/betagouv/pass-sport/pull/644)
-- **Expérience utilisateur** : mise à jour des motifs dans le formulaire de contact [#654](https://github.com/betagouv/pass-sport/pull/654) et amélioration de la gestion des erreurs 404 lors des relances FranceConnect. [#641](https://github.com/betagouv/pass-sport/pull/641)
-- **Administration** : mise à disposition d'un tableau de bord accessible via un chemin sécurisé. [#671](https://github.com/betagouv/pass-sport/pull/671)
+- **Simplification des démarches** : Mise en place du pré-remplissage des dossiers pour les utilisateurs connectés via FranceConnect [#694](https://github.com/betagouv/pass-sport/pull/694).
+- **Amélioration de l'interface** : Ajout d'un indicateur visuel (label) pour identifier les dossiers pré-remplis et mise à jour de certains textes (wording) pour plus de clarté.
+- **Gestion des données** : Intégration de nouveaux flux de données, notamment pour les boursiers Cnous et les bénéficiaires de l'AAH.
+- **Mises à jour administratives** : Actualisation de la page des mentions légales et des motifs de contact dans le formulaire [#654](https://github.com/betagouv/pass-sport/pull/654).
 
 ### Évolutions techniques
-- **Gestion des données** : mise en place d'un nouveau pipeline de synchronisation de données avec Grist (Grist-DN). [#670](https://github.com/betagouv/pass-sport/pull/670)
-- **Déploiement progressif** : introduction de "feature flags" pour contrôler l'accès aux pages de statistiques et au tableau de bord. [#626](https://github.com/betagouv/pass-sport/pull/626)
-- **Infrastructure et DevOps** : 
-    - Mise à jour majeure de Next.js et de l'API Crisp. [#678](https://github.com/betagouv/pass-sport/pull/678)
-    - Séparation des stacks Docker locales (WAF vs non-WAF).
-    - Optimisation de la configuration Nginx et de la gestion du cache.
-- **Maintenance et sécurité** : mises à jour de Sentry et des dépendances critiques pour la sécurité du système.
+- **Traitement de données** : Refactorisation des scripts de traitement de données vers Python pour une meilleure gestion des flux (Cnous, Grist-DN).
+- **Infrastructure et Sécurité** : 
+    - Mise à jour majeure de l'environnement (Next.js, Crisp API).
+    - Renforcement de la sécurité des versions et durcissement de la sécurité globale.
+    - Sécurisation de l'accès au tableau de bord via un chemin secret et l'utilisation de "feature flags".
+- **Optimisation système** : 
+    - Amélioration de la gestion des erreurs (erreurs 404 et problèmes de cache).
+    - Optimisation de la configuration Docker (séparation des stacks WAF et non-WAF).
+- **Qualité logicielle** : Corrections diverses sur la suite de tests et amélioration des processus de "dry run" pour les données.
 
 ### Autres changements
-- **Interface** : ajustements visuels incluant le retrait de certains bandeaux d'information et de notices.
-- **Nettoyage** : suppression de tests SQL Python obsolètes et optimisation de la structure des champs de saisie des allocataires.
+- Mise à jour de la configuration de monitoring (Sentry).
+- Nettoyage de la documentation et de la configuration Ansible.
