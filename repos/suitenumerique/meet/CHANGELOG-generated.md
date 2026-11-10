@@ -1,28 +1,19 @@
-## Changelog : meet (30 derniers jours, au 07 novembre 2026)
+## Changelog : meet (30 derniers jours, au 07/11/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité et de la confidentialité des données, notamment via l'implémentation d'un système d'audit complet et une meilleure protection des informations sensibles dans les journaux système. Les utilisateurs bénéficieront également d'une plus grande stabilité lors des appels grâce à une gestion améliorée des reconnexions et d'une expérience utilisateur plus fluide et accessible.
+Ce mois-ci, l'accent a été mis sur le renforcement massif de la sécurité et de la traçabilité grâce à l'implémentation d'un nouveau système complet de journaux d'audit. Les évolutions visent également à améliorer la fiabilité des connexions et à offrir une meilleure expérience utilisateur lors de la gestion des enregistrements et de la navigation.
 
 ### Évolutions fonctionnelles
-- **Gestion des enregistrements :** Les utilisateurs peuvent désormais choisir l'encodage de leurs enregistrements. Tout utilisateur authentifié est autorisé à lancer un enregistrement, et des notifications par email sont envoyées pour confirmer la disponibilité.
-- **Stabilité et connectivité :** Introduction d'une politique de reconnexion automatique plus intelligente (exponential backoff) pour stabiliser les appels vidéo. Des messages clairs informent désormais les participants en cas d'interruption d'un enregistrement ou de perte de connexion.
-- **Accessibilité et UX :** Amélioration de l'accessibilité (navigation au clavier via la touche Échap, indicateurs de focus visibles, annonces de changement d'état du micro) et meilleure gestion des erreurs (affichage explicite des erreurs de connexion dans le lobby).
-- **Support :** Le chat Crisp est remplacé par le formulaire de support officiel de La Suite.
+- **Enregistrements** : possibilité de choisir l'encodage de l'enregistrement, réception de notifications par email à la fin d'un enregistrement, et autorisation pour tout utilisateur authentifié de lancer un enregistrement.
+- **Expérience utilisateur (UX)** : affichage d'erreurs explicites en cas d'échec de connexion ou de réunion, notifications lors de l'interruption d'un enregistrement, et maintien de l'interface d'administration lors du changement de paramètres.
+- **Accessibilité** : fermeture des dialogues d'invitation avec la touche Échap et annonce de la coupure du micro via des raccourcis.
+- **Confidentialité & Support** : les salles de réunion sont désormais exclues des moteurs de recherche et l'outil de chat Crisp est remplacé par le formulaire de support officiel de La Suite.
 
 ### Évolutions techniques
-- **Sécurité et Confidentialité :** 
-    - Mise en place d'un système d'audit structuré pour tracer les enregistrements, les transcriptions, les résumés et les actions administratives.
-    - Protection massive des données sensibles : masquage des URLs signées, des détails des tâches Celery et des erreurs de validation dans les logs, les outils d'analyse et Sentry.
-    - Durcissement de l'accès aux salles (utilisation de endpoints POST pour les jetons d'accès, restriction des slugs de salles).
-- **Infrastructure et Performance :** 
-    - Optimisation de la base de données (indexation des emails pour des recherches sans casse, ajout d'un pool de connexions psycopg).
-    - Support natif des images Docker pour l'architecture arm64.
-    - Mise à jour majeure des composants d'infrastructure (LiveKit, Docker, Helm).
-- **Backend & API :** 
-    - Introduction de l'échange de jetons pour permettre l'intégration de Meet via des iframes.
-    - Gestion du cycle de vie des salles avec suppression logique (soft delete) et purge automatique après une période de rétention.
-- **Maintenance de sécurité :** Correction de nombreuses vulnérabilités (CVE) sur l'ensemble de la stack (Python, Nginx, Node, Django, etc.).
+- **Sécurité & Audit** : mise en place d'un système de journalisation d'audit structuré (actions administratives, échanges de tokens, opérations sur les enregistrements) et protection des données sensibles (masquage des secrets dans les logs, Sentry et les erreurs d'application).
+- **Fiabilité & Performance** : amélioration de la gestion des reconnexions LiveKit (politique de backoff exponentiel), ajout de timeouts sur les appels API, et optimisation des performances via un pool de connexions PostgreSQL et un index sur les emails.
+- **Maintenance & Sécurité** : correction de nombreuses vulnérabilités (CVE) sur les composants critiques (Python, Node, Nginx, etc.) et durcissement de l'accès aux salles (utilisation de endpoints POST pour les tokens).
+- **Infrastructure & CI/CD** : optimisation des builds Docker pour l'architecture arm64, mise à jour des outils de scan de vulnérabilités (Trivy) et gestion des suppressions de salles (soft delete) avec purge automatique.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation relative au système d'audit et du changelog.
-- **CI/CD :** Optimisation des scans de sécurité (Trivy) et des processus de build.
+- Documentation du nouveau système de journalisation d'audit.

@@ -1,26 +1,26 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "Une solution de visioconférence open-source performante et sécurisée. Elle permet de réaliser des appels vidéo de haute qualité avec des fonctionnalités de transcription et d'enregistrement.",
-  "language": "Python",
+  "description": "La Suite Meet est une solution de visioconférence open-source et sécurisée basée sur LiveKit. Elle permet des réunions de haute qualité avec des fonctionnalités de transcription et d'enregistrement, sans installation requise.",
+  "language": "TypeScript",
   "features": [
+    "Authentification & Accès",
     "Collaboration & Workflow",
     "Temps réel & WebSocket",
     "Sécurité & Conformité",
-    "Gestion des médias & Assets",
-    "Interface utilisateur & Design",
-    "Authentification & Accès",
-    "Communication & Messagerie"
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "LiveKit",
-    "Django Rest Framework",
+    "Django",
     "React",
-    "Vite.js",
-    "PostgreSQL",
+    "Vite",
+    "Celery",
     "Redis",
-    "Celery"
+    "PostgreSQL",
+    "Docker",
+    "Kubernetes"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,14 +29,13 @@
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
-    "Authentification (composant)",
-    "Webhooks & Événements"
+    "Celery & Queue asynchrone",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "jwt",
       "sso",
+      "jwt",
       "session"
     ],
     "providers": [
@@ -47,16 +46,21 @@
     "BrowserStack",
     "Vitest"
   ],
-  "lastActivity": "2026-11-01T00:00:00Z",
-  "status": "active",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-11-07T00:00:00Z",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Communication & Messagerie",
-    "Docker & Conteneurs",
+    "Écosystème beta.gouv / État",
+    "React & Next.js",
     "TypeScript",
     "Python",
-    "Écosystème beta.gouv / État",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
     "Accessibilité"
   ]
 }
