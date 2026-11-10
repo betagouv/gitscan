@@ -1,27 +1,17 @@
-## Changelog : mon-entreprise (30 derniers jours, au 16 octobre 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu des évolutions majeures, notamment une refonte complète de la page d'accueil et une mise à jour approfondie des règles de calcul pour Mayotte. L'outil de comparaison a également été enrichi de nouvelles fonctionnalités de partage et d'une documentation plus accessible, tandis que le moteur de calcul a été stabilisé par un important travail de restructuration technique.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la précision des calculs pour le territoire de Mayotte et sur l'enrichissement de l'aide contextuelle disponible dans l'outil de comparaison. Parallèlement, la structure technique de la documentation a été modernisée et les processus d'automatisation (CI/CD) ont été stabilisés.
 
 ### Évolutions fonctionnelles
-- **Mise en conformité pour Mayotte** : Intégration des spécificités locales dans les simulations (calcul de la Lodeom, ajustements du SMIC, cotisations sociales et avertissements spécifiques).
-- **Amélioration du comparateur** : 
-    - Création de liens de partage intelligents qui n'enregistrent que les modifications par rapport à la situation initiale.
-    - Accès facilité à la documentation des valeurs en un seul clic.
-    - Meilleure gestion du décodage des valeurs dans l'URL.
-- **Refonte de l'accueil** : Nouvelle interface de la page d'accueil avec l'ajout de sections de navigation ("Qui sommes-nous", "Explorer les statuts", etc.) pour une meilleure découverte des services.
-- **Nouveaux simulateurs** : Ajout des simulateurs dédiés aux profils "Artisan" et "Commerçant".
+- **Améliorations pour Mayotte** : Correction du calcul de l'assiette sociale, intégration du calcul de la réduction générale dégressive unique (RGDU) et mise à jour des avertissements associés.
+- **Enrichissement de l'aide utilisateur** : Ajout de documentations explicatives pour de nouvelles questions dans le comparateur, notamment concernant la nature de l'activité.
+- **Corrections de contenu** : Mise à jour des traductions (Lodeom) et suppression d'informations obsolètes concernant les travailleurs frontaliers suisses.
 
 ### Évolutions techniques
-- **Refonte du moteur Lodeom** : Restructuration profonde du code pour améliorer la maintenabilité, incluant une meilleure organisation des domaines de calcul et une couverture de tests accrue.
-- **Optimisation du comparateur** : Amélioration de la sérialisation des données et de la synchronisation entre l'interface utilisateur et l'URL.
-- **Amélioration de la CI/CD** : Optimisation du workflow de revue de code par IA pour rendre les retours plus pertinents et éviter les échecs de pipeline inutiles.
-- **Accessibilité et Design** : 
-    - Amélioration de l'accessibilité (A11y) sur les composants de saisie.
-    - Correction de contrastes de couleurs pour respecter les normes d'accessibilité (AAA).
-    - Optimisation des composants de type "Card" et "Callout".
+- **Optimisation de la CI/CD** : Amélioration de la robustesse de la revue par IA (gestion des erreurs et des numéros de PR sur les forks) et automatisation de la fourniture des URL pour les environnements de test (Clever Cloud).
+- **Refonte de la documentation** : Réorganisation de la structure des fichiers MDX, extraction de composants pour le chargement de la documentation et amélioration de l'affichage (largeur des modales).
+- **Qualité et tests** : Renforcement de la couverture de tests sur les règles métier spécifiques à Mayotte et sur les composants d'aide à l'utilisateur.
 
 ### Autres changements
-- **Modernisation de la documentation** : Refonte du système de documentation utilisant MDX, permettant un rendu plus riche et une meilleure organisation des règles métier.
-- **Internationalisation (i18n)** : Mise à jour et correction de nombreuses traductions sur l'ensemble de la plateforme.
-- **Tests** : Renforcement significatif de la suite de tests (unitaires et intégration) sur les modules de calcul et les composants de documentation.
+- **Documentation projet** : Actualisation complète du schéma d'architecture pour la version 2026-11 et mise à jour des métadonnées du document.
