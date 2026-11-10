@@ -1,37 +1,35 @@
-## Changelog : dictaphone (30 derniers jours, au 05 novembre 2026)
+## Changelog : dictaphone (30 derniers jours, au 06/11/2026)
 
 ### Résumé
-Ce mois-ci, dictaphone a franchi une étape majeure avec l'introduction d'un nouveau service dédié à l'extraction audio, permettant un traitement plus robuste et isolé des fichiers. L'accent a été mis sur la sécurité (renforcement de l'authentification et limitation des abus) et sur l'amélioration de l'expérience mobile, notamment pour la gestion des téléchargements et des alertes de quota.
+Ce mois-ci, le projet a franchi une étape importante en renforçant considérablement sa sécurité et la fiabilité de ses services. Les utilisateurs bénéficieront d'une meilleure gestion des téléchargements sur mobile (reprise automatique, alertes de quota) et d'une interface plus claire concernant les accès restreints. Côté technique, une nouvelle architecture pour l'extraction audio a été déployée pour optimiser les transferts de fichiers, accompagnée d'un durcissement global des politiques de sécurité et de limitation de débit.
 
 ### Évolutions fonctionnelles
 - **Expérience Mobile** : 
-    - Amélioration significative de la gestion des téléchargements (reprise automatique en cas de coupure, gestion des limites de débit et alertes de quota).
-    - Corrections de l'affichage des transcriptions (numérotation des participants) et ajout d'états vides pour une interface plus claire.
-    - Possibilité de supprimer des enregistrements bloqués en attente d'envoi.
-- **Gestion des accès et sécurité** : 
-    - Mise en place d'une page d'accès restreint avec des messages d'orientation personnalisés.
-    - Intégration des politiques de sécurité OIDC pour restreindre certaines actions (création de compte, téléchargements, imports) selon le rôle de l'utilisateur.
-- **Utilisation du service** : 
-    - Amélioration de la lecture audio via l'utilisation de formats transcodés.
-    - Meilleure visibilité sur les limites de quota et les durées de traitement des tâches d'intelligence artificielle.
-    - Alignement du formatage des transcriptions entre le backend et le frontend.
+    - Amélioration de la fiabilité des téléchargements avec gestion automatique des reprises, des alertes de limite de quota et des erreurs réseau.
+    - Meilleure gestion des états (affichage d'un état vide lorsqu'il n'y a pas d'enregistrements).
+    - Correction de la numérotation des participants dans les transcriptions.
+- **Interface Utilisateur (Web & Mobile)** :
+    - Ajout d'une page d'accès restreint avec des instructions configurables pour guider les utilisateurs.
+    - Amélioration de la visibilité des limites de quota et des alertes de dépassement.
+    - Correction des liens vers les documents légaux et de l'affichage des transcriptions.
+- **Administration** :
+    - Nouvelles capacités de suivi des tâches d'extraction audio et visualisation de la durée des jobs dans l'interface d'administration.
 
 ### Évolutions techniques
-- **Nouvelle architecture** : 
-    - Création et déploiement d'un service autonome d'extraction audio (*audio-extractor*) pour isoler le traitement lourd du reste de l'application.
-    - Introduction d'une passerelle S3 (*S3 gateway*) pour optimiser les transferts de fichiers entre les différents services.
-- **Sécurité et Robustesse** : 
-    - Renforcement de la protection des données (hachage des mots de passe via Argon2id, protection des données sensibles dans la télémétrie).
-    - Mise en place de mécanismes de protection contre les abus (limitation du débit par utilisateur sur les opérations coûteuses, verrouillage des comptes et des IP en cas d'échec de connexion).
-    - Sécurisation des échanges d'authentification (validation d'état PKCE).
-- **Infrastructure et CI/CD** : 
-    - Optimisation des pipelines CI/CD avec des workflows par composant et des filtres de chemin pour accélérer les tests.
-    - Amélioration des images Docker (build natif pour le frontend, durcissement des images de conteneurs).
-    - Mise à jour des charts Helm pour supporter la nouvelle architecture et améliorer la sécurité des workloads Kubernetes.
-- **Observabilité** : 
-    - Intégration de Sentry pour le suivi des erreurs et des métadonnées de release.
-    - Amélioration de la journalisation (logs) pour le suivi des tâches d'extraction audio.
+- **Sécurité et Contrôle d'accès** :
+    - Renforcement de l'authentification via l'application des politiques d'accès OIDC pour la création de comptes et les téléchargements.
+    - Mise en place de limitations de débit (rate limiting) par utilisateur pour les opérations coûteuses (création de fichiers, tâches IA).
+    - Durcissement de la protection des données : utilisation d'Argon2id pour le hachage des mots de passe, protection des comptes administrateurs (verrouillage IP/compte) et sécurisation des payloads externes.
+    - Sécurisation des flux de déconnexion mobile (révocation des tokens de rafraîchissement).
+- **Architecture et Infrastructure** :
+    - Introduction d'un nouveau service d'extraction audio et d'une passerelle S3 pour optimiser les transferts de stockage entre les workers.
+    - Mise à jour de l'extracteur audio vers FFmpeg 9.
+    - Optimisation de la CI/CD : séparation des workflows par composant, intégration des tests mobiles et frontend, et builds Docker multi-plateformes natifs.
+    - Intégration de Sentry pour le suivi des erreurs et la télémétrie.
+- **Optimisations Backend** :
+    - Amélioration de la gestion des quotas de transcription (gestion des échecs de jobs et des suppressions de fichiers).
+    - Normalisation du traitement des emails pour assurer la cohérence des correspondances de données.
 
 ### Autres changements
-- Mise à jour de la documentation technique et des schémas d'architecture (S3 gateway, workflow audio).
-- Amélioration de l'expérience développeur (guides pour les messages de commit, configuration des outils locaux).
+- **Documentation** : Mise à jour des diagrammes d'architecture (incluant la passerelle S3) et des guides de contribution (utilisation des gitmojis).
+- **Développement** : Consolidation de la configuration des services via des fichiers d'environnement et optimisation des tests avec `pytest-xdist`.
