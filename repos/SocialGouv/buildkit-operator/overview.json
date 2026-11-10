@@ -1,13 +1,14 @@
 {
   "url": "https://github.com/SocialGouv/buildkit-operator",
   "name": "buildkit-operator",
-  "description": "Un service de build BuildKit distribué qui fournit un plan de contrôle pour gérer le cycle de vie et le cache des builds sur Kubernetes ou un hôte unique. Il optimise la vitesse des builds CI grâce à des caches dédiés et une gestion intelligente du scale-to-zero.",
+  "description": "Un service de build BuildKit distribué conçu pour optimiser les performances de cache sur Kubernetes ou un hôte unique. Il offre des fonctionnalités de scale-to-zero, de réhydratation via S3 et une isolation renforcée des builds.",
   "language": "Go",
   "features": [
     "Infrastructure & Stockage",
     "Sécurité & Conformité",
     "Monitoring & Logs",
-    "Collaboration & Workflow"
+    "Collaboration & Workflow",
+    "Tests & QA"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -18,20 +19,19 @@
     "S3",
     "Prometheus",
     "Incus",
-    "ZFS",
-    "Cosign"
+    "ZFS"
   ],
   "components": [
     "Kubernetes & Helm",
     "Docker & Conteneurs",
     "Rust & Go",
-    "CI/CD & Déploiement",
-    "Microservices & Architecture"
+    "API REST & GraphQL",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "sso"
+      "sso",
+      "jwt"
     ],
     "providers": [
       "GitHub",
@@ -39,12 +39,12 @@
       "Forgejo"
     ]
   },
-  "tests": "Unit tests via Taskfile and golangci-lint",
+  "tests": "Tests unitaires via go-task",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-10-28T00:00:00Z",
-  "status": "maintained",
+  "lastActivity": "2026-11-07T00:00:00Z",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -53,7 +53,6 @@
     "Kubernetes & Helm",
     "CI/CD & GitHub Actions",
     "Déploiement & Hosting",
-    "Sécurité & Auth",
-    "Monitoring & Observabilité"
+    "Sécurité & Auth"
   ]
 }
