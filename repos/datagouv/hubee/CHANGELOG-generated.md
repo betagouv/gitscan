@@ -1,22 +1,39 @@
-## Changelog : hubee (30 derniers jours, au 03 novembre 2026)
+## Changelog : hubee (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Les récentes évolutions de hubee se concentrent sur l'amélioration de l'expérience utilisateur du portail (gestion des agents, abonnements et suivi des dossiers) et sur un renforcement majeur de la sécurité et de la traçabilité grâce à une gestion plus fine des journaux d'activité et des correctifs de vulnérabilités.
+Ce mois a été marqué par une amélioration significative de l'expérience utilisateur sur le portail, notamment via une meilleure gestion des agents et des abonnements. L'API a gagné en robustesse avec de nouvelles fonctionnalités de gestion des membres et une gestion des erreurs plus explicite. Parallèlement, un effort important a été porté sur la sécurité, la conformité du design (DSFR) et la qualité de la journalisation des activités.
 
 ### Évolutions fonctionnelles
-- **Gestion des agents** : Amélioration de la visibilité avec la possibilité de lister les agents d'une organisation, d'afficher leurs champs détaillés et de suivre leur dernière date de connexion.
-- **Suivi des dossiers et flux** : Nommage plus explicite des flux dans la liste des télédossiers et ajout de la possibilité de marquer un dossier comme "lu".
-- **Communication et archivage** : Mise en place de messages adressés directement aux agents lors des changements d'état d'un dossier et création d'un système d'archivage pour les pièces jointes ajoutées.
-- **Gestion des abonnements** : Ajout de la consultation de la liste des abonnements de la structure.
-- **Interface utilisateur** : Amélioration de la navigation (menu), ajout d'un bandeau d'information sur la phase bêta et corrections typographiques.
+- **Gestion des agents et des organisations** : 
+    - Possibilité de lister les agents d'une organisation et de consulter leurs détails (champs de profil, date de dernière connexion).
+    - Amélioration de l'affichage : les agents sont désormais nommés par leur nom de famille en priorité et les flux sont affichés sous forme de tags.
+    - Les flux sont désormais identifiables par leur nom plutôt que par leur code technique.
+    - Ajout du numéro de téléphone mobile dans les informations de contact.
+- **Gestion des abonnements** : Ajout de la possibilité de lister et de consulter le détail des abonnements d'une structure.
+- **Évolutions de l'API** :
+    - Nouvelles capacités pour l'enregistrement, la validation et la vérification des droits des agents.
+    - Amélioration de la gestion des erreurs : l'API répond désormais systématiquement en JSON avec un code et un message explicite, même pour les routes inconnues (404).
+    - Meilleure gestion des codes de flux (vérification de l'existence et de la casse).
+- **Interface et Ergonomie** :
+    - Mise en conformité des pages d'erreur avec le design système DSFR.
+    - Ajout d'un accès direct aux télédossiers via le menu.
+- **Audit** : Ouverture de l'accès au journal des traces d'audit.
 
 ### Évolutions techniques
-- **Sécurité** : Correction de plusieurs vulnérabilités (CVE) et renforcement de la confidentialité en masquant les données sensibles (nonces, adresses, noms de fichiers) dans les journaux d'activité.
-- **API** : Standardisation des réponses de l'API pour garantir un format JSON systématique, même en cas d'erreur ou de route inconnue, et sécurisation de la lecture des jetons d'authentification.
-- **Observabilité et Logs** : Optimisation de la journalisation pour inclure l'adresse IP des appelants et une meilleure gestion des exceptions et des redirections.
-- **Infrastructure et CI/CD** : Mise à jour de l'environnement Ruby, optimisation des images Docker (utilisation de versions *distroless*) et amélioration des *review apps* (intégration de Sentry et gestion de la file d'attente Solid Queue).
-- **Tests** : Renforcement de la couverture de tests de bout en bout, notamment sur la gestion des agents et l'archivage des pièces.
+- **Sécurité et Infrastructure** :
+    - Correction de plusieurs vulnérabilités (CVE) sur les dépendances.
+    - Mise à jour de l'environnement vers Ruby 4.0.9.
+    - Sécurisation des conteneurs Docker via l'utilisation d'images "distroless" en mode non-root.
+    - Nettoyage du magasin TLS (retrait de racines compromises).
+- **Journalisation (Logs)** : Refonte majeure pour améliorer la traçabilité et la confidentialité :
+    - Inclusion de l'adresse IP de l'appelant sur chaque ligne de requête.
+    - Masquage des données sensibles (nonces et adresses ProConnect, noms de fichiers de pièces jointes).
+    - Amélioration de la lisibilité des logs (regroupement des exceptions et des redirections sur une seule ligne).
+- **Architecture API** : Mise en place du versionnement de l'API par le chemin d'URL et renforcement de la lecture des jetons d'authentification (via l'en-tête Authorization uniquement).
+- **Maintenance et Performance** :
+    - Automatisation de la purge quotidienne des traces d'audit de plus d'un an.
+    - Fiabilisation de la gestion des tâches de fond (jobs) et de leur historique.
 
 ### Autres changements
-- **Documentation** : Précisions apportées sur les processus de rattachement des agents lors de l'authentification.
-- **Développement** : Ajout de tâches de préparation de données (*seeds*) pour faciliter l'enrôlement de comptes de test.
+- **Documentation** : Mise à jour de la documentation de l'API (processus d'enregistrement, versionnement) et des événements (schémas et règles d'archivage).
+- **Configuration** : Ajout de scripts de préparation (seeds) pour faciliter l'administration locale et les tests.

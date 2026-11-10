@@ -40,6 +40,10 @@
 │   │   ├── api
 │   │   │   ├── base_controller.rb
 │   │   │   ├── errors_controller.rb
+│   │   │   ├── internal
+│   │   │   │   └── v1
+│   │   │   │       ├── agents_controller.rb
+│   │   │   │       └── base_controller.rb
 │   │   │   ├── pings_controller.rb
 │   │   │   └── v1
 │   │   │       ├── data_packages
@@ -77,6 +81,11 @@
 │   │       └── auth
 │   │           ├── decision.rb
 │   │           └── recorder.rb
+│   ├── forms
+│   │   └── api
+│   │       └── internal
+│   │           └── v1
+│   │               └── agent_form.rb
 │   ├── helpers
 │   │   ├── application_helper.rb
 │   │   └── portail
@@ -89,13 +98,24 @@
 │   │       └── support_helper.rb
 │   ├── interactors
 │   │   ├── api
-│   │   │   └── data_packages
-│   │   │       ├── transmit
-│   │   │       │   ├── create_notifications.rb
-│   │   │       │   ├── resolve_recipients.rb
-│   │   │       │   ├── transition_to_transmitted.rb
-│   │   │       │   └── validate_transmission.rb
-│   │   │       └── transmit.rb
+│   │   │   ├── data_packages
+│   │   │   │   ├── transmit
+│   │   │   │   │   ├── create_notifications.rb
+│   │   │   │   │   ├── resolve_recipients.rb
+│   │   │   │   │   ├── transition_to_transmitted.rb
+│   │   │   │   │   └── validate_transmission.rb
+│   │   │   │   └── transmit.rb
+│   │   │   └── internal
+│   │   │       └── v1
+│   │   │           └── agents
+│   │   │               ├── create
+│   │   │               │   ├── check_data_streams.rb
+│   │   │               │   ├── check_memberships.rb
+│   │   │               │   ├── check_organization.rb
+│   │   │               │   ├── ensure_no_refusal.rb
+│   │   │               │   ├── register.rb
+│   │   │               │   └── validate_payload.rb
+│   │   │               └── create.rb
 │   │   └── portail
 │   │       ├── attachments
 │   │       │   ├── show
@@ -146,7 +166,10 @@
 │   │       └── subscriptions
 │   │           ├── index
 │   │           │   └── fetch_list.rb
-│   │           └── index.rb
+│   │           ├── index.rb
+│   │           ├── show
+│   │           │   └── find_subscription.rb
+│   │           └── show.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
@@ -155,6 +178,7 @@
 │   │       └── index.js
 │   ├── jobs
 │   │   ├── api
+│   │   │   ├── purge_events_job.rb
 │   │   │   └── purge_stale_tokens_job.rb
 │   │   ├── application_job.rb
 │   │   └── portail
@@ -172,8 +196,11 @@
 │   │   ├── data_package.rb
 │   │   ├── data_stream.rb
 │   │   ├── data_stream_access.rb
+│   │   ├── data_stream_code.rb
+│   │   ├── event.rb
 │   │   ├── membership.rb
 │   │   ├── notification.rb
+│   │   ├── oauth_application_right.rb
 │   │   ├── organization.rb
 │   │   ├── organization_link.rb
 │   │   ├── portail
@@ -204,11 +231,18 @@
 │   │   │   ├── pagination.rb
 │   │   │   ├── safe_filename.rb
 │   │   │   ├── subscription
+│   │   │   │   ├── delegation.rb
+│   │   │   │   ├── delivery_email_configuration.rb
+│   │   │   │   ├── detail.rb
 │   │   │   │   └── list.rb
 │   │   │   └── subscription.rb
 │   │   ├── provider_session.rb
 │   │   └── subscription.rb
 │   ├── policies
+│   │   ├── api
+│   │   │   └── internal
+│   │   │       └── v1
+│   │   │           └── agent_policy.rb
 │   │   └── portail
 │   │       ├── delivery_policy.rb
 │   │       ├── membership_policy.rb
@@ -221,6 +255,10 @@
 │   │       └── delivery_criteria_validator.rb
 │   └── views
 │       ├── api
+│       │   ├── internal
+│       │   │   └── v1
+│       │   │       └── agents
+│       │   │           └── create.json.jbuilder
 │       │   └── v1
 │       │       ├── data_packages
 │       │       │   ├── _data_package.json.jbuilder
@@ -265,10 +303,9 @@
 │       │   ├── errors
 │       │   │   ├── attachment_content_unavailable.html.erb
 │       │   │   ├── delivery_event_limit_reached.html.erb
-│       │   │   ├── internal_server_error.html.erb
-│       │   │   ├── not_found.html.erb
 │       │   │   ├── service_unavailable.html.erb
-│       │   │   └── unprocessable_entity.html.erb
+│       │   │   ├── show.html.erb
+│       │   │   └── unsupported_browser.html.erb
 │       │   ├── memberships
 │       │   │   └── index.html.erb
 │       │   ├── sessions
@@ -283,7 +320,8 @@
 │       │   │   ├── _header.html.erb
 │       │   │   └── _skip_links.html.erb
 │       │   └── subscriptions
-│       │       └── index.html.erb
+│       │       ├── index.html.erb
+│       │       └── show.html.erb
 │       └── pwa
 │           ├── manifest.json.erb
 │           └── service-worker.js
@@ -365,7 +403,10 @@
 │   │   ├── 20260826153010_add_insee_code_to_organization_links.rb
 │   │   ├── 20260827133749_create_doorkeeper_tables.rb
 │   │   ├── 20260918140000_rename_process_accesses_to_data_stream_accesses.rb
-│   │   └── 20261102222131_add_last_signed_in_at_to_memberships.rb
+│   │   ├── 20261102222131_add_last_signed_in_at_to_memberships.rb
+│   │   ├── 20261105090000_create_events.rb
+│   │   ├── 20261105090100_add_mobile_phone_number_to_memberships.rb
+│   │   └── 20261105090200_create_oauth_application_rights.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   ├── seeds
@@ -392,6 +433,11 @@
 │       ├── env.rb
 │       └── world.rb
 ├── lib
+│   ├── api
+│   │   ├── hub_api
+│   │   │   ├── data_streams.rb
+│   │   │   └── organizations.rb
+│   │   └── hub_api.rb
 │   ├── logfmt_formatter.rb
 │   ├── phone_number.rb
 │   ├── portail
@@ -414,11 +460,6 @@
 ├── log
 │   └── .keep
 ├── public
-│   ├── 400.html
-│   ├── 404.html
-│   ├── 406-unsupported-browser.html
-│   ├── 422.html
-│   ├── 500.html
 │   ├── favicon.ico
 │   └── robots.txt
 ├── renovate.json
@@ -427,7 +468,10 @@
 ├── spec
 │   ├── controllers
 │   │   ├── api
-│   │   │   └── base_controller_spec.rb
+│   │   │   ├── base_controller_spec.rb
+│   │   │   └── internal
+│   │   │       └── v1
+│   │   │           └── base_controller_spec.rb
 │   │   ├── portail
 │   │   │   ├── authentication_spec.rb
 │   │   │   ├── authorization_spec.rb
@@ -445,12 +489,15 @@
 │   ├── factories
 │   │   ├── access_decisions.rb
 │   │   ├── agents.rb
+│   │   ├── api_internal_v1_agent_forms.rb
 │   │   ├── data_packages.rb
 │   │   ├── data_stream_accesses.rb
 │   │   ├── data_streams.rb
+│   │   ├── events.rb
 │   │   ├── memberships.rb
 │   │   ├── notifications.rb
 │   │   ├── oauth_access_tokens.rb
+│   │   ├── oauth_application_rights.rb
 │   │   ├── oauth_applications.rb
 │   │   ├── organization_links.rb
 │   │   ├── organizations.rb
@@ -460,22 +507,40 @@
 │   ├── fixtures
 │   │   └── files
 │   │       └── decision.pdf
+│   ├── forms
+│   │   └── api
+│   │       └── internal
+│   │           └── v1
+│   │               └── agent_form_spec.rb
 │   ├── helpers
 │   │   └── portail
 │   │       ├── beta_notice_helper_spec.rb
 │   │       ├── deliveries_helper_spec.rb
 │   │       ├── delivery_events_helper_spec.rb
 │   │       ├── delivery_navigation_helper_spec.rb
-│   │       └── memberships_helper_spec.rb
+│   │       ├── memberships_helper_spec.rb
+│   │       └── subscriptions_helper_spec.rb
 │   ├── interactors
 │   │   ├── api
-│   │   │   └── data_packages
-│   │   │       ├── transmit
-│   │   │       │   ├── create_notifications_spec.rb
-│   │   │       │   ├── resolve_recipients_spec.rb
-│   │   │       │   ├── transition_to_transmitted_spec.rb
-│   │   │       │   └── validate_transmission_spec.rb
-│   │   │       └── transmit_spec.rb
+│   │   │   ├── data_packages
+│   │   │   │   ├── transmit
+│   │   │   │   │   ├── create_notifications_spec.rb
+│   │   │   │   │   ├── resolve_recipients_spec.rb
+│   │   │   │   │   ├── transition_to_transmitted_spec.rb
+│   │   │   │   │   └── validate_transmission_spec.rb
+│   │   │   │   └── transmit_spec.rb
+│   │   │   └── internal
+│   │   │       └── v1
+│   │   │           └── agents
+│   │   │               ├── create
+│   │   │               │   ├── check_data_streams_spec.rb
+│   │   │               │   ├── check_memberships_spec.rb
+│   │   │               │   ├── check_organization_spec.rb
+│   │   │               │   ├── ensure_no_refusal_spec.rb
+│   │   │               │   ├── register_spec.rb
+│   │   │               │   └── validate_payload_spec.rb
+│   │   │               ├── create_concurrency_spec.rb
+│   │   │               └── create_spec.rb
 │   │   └── portail
 │   │       ├── attachments
 │   │       │   ├── show
@@ -525,14 +590,22 @@
 │   │       └── subscriptions
 │   │           ├── index
 │   │           │   └── fetch_list_spec.rb
-│   │           └── index_spec.rb
+│   │           ├── index_spec.rb
+│   │           ├── show
+│   │           │   └── find_subscription_spec.rb
+│   │           └── show_spec.rb
 │   ├── jobs
 │   │   ├── api
+│   │   │   ├── purge_events_job_spec.rb
 │   │   │   └── purge_stale_tokens_job_spec.rb
 │   │   └── portail
 │   │       ├── purge_access_decisions_job_spec.rb
 │   │       └── purge_provider_sessions_job_spec.rb
 │   ├── lib
+│   │   ├── api
+│   │   │   └── hub_api
+│   │   │       ├── data_streams_spec.rb
+│   │   │       └── organizations_spec.rb
 │   │   ├── logfmt_formatter_spec.rb
 │   │   ├── phone_number_spec.rb
 │   │   └── portail
@@ -554,8 +627,10 @@
 │   │   ├── data_package_spec.rb
 │   │   ├── data_stream_access_spec.rb
 │   │   ├── data_stream_spec.rb
+│   │   ├── event_spec.rb
 │   │   ├── membership_spec.rb
 │   │   ├── notification_spec.rb
+│   │   ├── oauth_application_right_spec.rb
 │   │   ├── organization_link_spec.rb
 │   │   ├── organization_spec.rb
 │   │   ├── portail
@@ -578,11 +653,16 @@
 │   │   │   ├── event_author_spec.rb
 │   │   │   ├── safe_filename_spec.rb
 │   │   │   ├── subscription
+│   │   │   │   ├── delivery_email_configuration_spec.rb
 │   │   │   │   └── list_spec.rb
 │   │   │   └── subscription_spec.rb
 │   │   ├── provider_session_spec.rb
 │   │   └── subscription_spec.rb
 │   ├── policies
+│   │   ├── api
+│   │   │   └── internal
+│   │   │       └── v1
+│   │   │           └── agent_policy_spec.rb
 │   │   └── portail
 │   │       ├── delivery_policy_spec.rb
 │   │       ├── membership_policy_spec.rb
@@ -594,6 +674,10 @@
 │   ├── requests
 │   │   ├── api
 │   │   │   ├── errors_spec.rb
+│   │   │   ├── internal
+│   │   │   │   └── v1
+│   │   │   │       ├── agents_sign_in_spec.rb
+│   │   │   │       └── agents_spec.rb
 │   │   │   ├── oauth
 │   │   │   │   └── token_spec.rb
 │   │   │   ├── ping_spec.rb
@@ -622,7 +706,8 @@
 │   │       └── subscriptions_spec.rb
 │   ├── routing
 │   │   └── api
-│   │       └── oauth_routes_spec.rb
+│   │       ├── oauth_routes_spec.rb
+│   │       └── versioning_spec.rb
 │   ├── seeds
 │   │   └── test_accounts_spec.rb
 │   ├── spec_helper.rb
@@ -653,4 +738,4 @@
     ├── .keep
     └── javascript
         └── .keep
-176 directories, 479 files
+213 directories, 527 files
