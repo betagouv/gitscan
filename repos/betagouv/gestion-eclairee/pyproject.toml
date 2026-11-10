@@ -10,15 +10,19 @@ dependencies = [
     "django-dsfr>=3.5.2",
     "django-environ>=0.13.0",
     "django-lasuite>=0.0.26",
+    "django-filter>=25.2",
     "django-storages[s3]>=1.14.6",
+    "djangorestframework>=3.17.1",
     "gunicorn>=26.0.0",
     "ipython>=9.14.1",
     "mozilla-django-oidc>=5.0.2",
     "openpyxl>=3.1.5",
+    "openai>=2.0.0",
     "pandas>=3.0.3",
     "psycopg[binary]>=3.3.4",
     "pydantic>=2.13.4",
     "pymupdf>=1.27.2.3",
+    "pymupdf4llm==1.27.2.3",
     "python-dotenv>=1.2.2",
     "sqlalchemy>=2.0.50",
     "tiktoken>=0.13.0",
@@ -27,6 +31,11 @@ dependencies = [
     "whitenoise>=6.12.0",
     "xmlschema>=4.3.1",
     "xmltodict>=1.0.4",
+    # mcpserver
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.2.0",
+    "uvicorn>=0.54.0",
+    "django-oauth-toolkit>=3.4",
 ]
 
 [dependency-groups]
@@ -42,6 +51,7 @@ dev = [
     "pytest-responses>=0.5.1",
     "pytest-ruff>=0.5",
     "ruff>=0.15.16",
+    "ty>=0.0.83",
 ]
 
 
@@ -78,6 +88,10 @@ pandas = ["pandas", "numpy"]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "gesec.settings"
+
+
+[tool.ty.src]
+exclude = ["**/migrations"]
 
 
 [tool.coverage.run]

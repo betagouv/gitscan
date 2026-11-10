@@ -1,3 +1,101 @@
+2026-11-08T20:18:17+01:00 - 6397499 - Thomas Recouvreux : feat(mcp): guide l'agent vers meta_budat_schema dans la description de meta_budat_query
+2026-11-08T20:18:17+01:00 - 27902b7 - Thomas Recouvreux : docs(mcp): protocole de test local de bout en bout avec un client OpenCode
+2026-11-08T16:13:56+01:00 - bc0d2a6 - Thomas Recouvreux : feat(api): expose meta_budat en lecture seule pour l'agent LLM
+2026-11-08T14:07:36+01:00 - 0190365 - Thomas Recouvreux : feat(mcp): AS OAuth2 MCP : whitelist /oauth/, logs API, redirect loopback exact
+2026-11-03T15:38:48+01:00 - fa5f4c3 - Thomas Recouvreux : feat(extract_pdf): affiche l'état de la file dans le postfix tqdm
+2026-11-02T18:58:03+01:00 - 4e1b4d9 - Thomas Recouvreux : refactor(extract_pdf): parallélise PDF4LLM natif et renomme les workers
+2026-11-02T10:30:40+01:00 - b2f48fa - Thomas Recouvreux : fix(extract_pdf): ignore les dossiers de facture suffixés sans bruit
+2026-10-29T15:50:20+01:00 - e70caf6 - Thomas Recouvreux : fix(extract_pdf): sélectionne les factures éligibles par l'état gold
+2026-10-28T17:58:50+01:00 - ff98880 - Thomas Recouvreux : perf(extract_pdf): résout le PDF par facture dans les travailleurs
+2026-10-28T14:46:57+01:00 - 5d12bd4 - Thomas Recouvreux : Merge pull request #1 from betagouv/feat/pdf-fallback-gold
+2026-10-28T14:26:01+01:00 - 9772cdc - Thomas Recouvreux : fix(extract_pdf): honore --id-cpro sur les modes new et all
+2026-10-28T13:41:25+01:00 - 784c1d8 - Thomas Recouvreux : refactor(extract_pdf): renomme le fallback PDF en extraction PDF
+2026-10-28T12:18:00+01:00 - d1f6b4e - Thomas Recouvreux : feat(scripts): ajoute les stats d'extraction PDF à la synthèse BUDAT
+2026-10-28T11:56:14+01:00 - e077858 - Thomas Recouvreux : perf(extract_pdf): borne la RAM par lots sur tout le module
+2026-10-28T10:41:18+01:00 - 431d3e2 - Thomas Recouvreux : fix(extract_pdf): applique --limit aux candidats extractibles
+2026-10-28T10:24:51+01:00 - d21b589 - Thomas Recouvreux : fix(extract_pdf): marque failed une facture dont les lignes sont rejetées
+2026-10-28T10:15:08+01:00 - 37c048c - Thomas Recouvreux : feat(extract_pdf): intègre l'extraction PDF au pipeline bronze/silver/gold
+2026-10-23T13:55:49+02:00 - 28208e9 - Alexandre : feat(extract_pdf): structuration PDF non DEMAT via PDF4LLM
+2026-10-23T12:59:23+02:00 - 34fc896 - Thomas Recouvreux : fix(cpro): recrée la page quand un download laisse un état cassé
+2026-10-22T19:11:00+02:00 - 07091dc - Thomas Recouvreux : fix(cpro): ne tue plus le run quand le navigateur se ferme
+2026-10-22T18:45:12+02:00 - c37c0b5 - Thomas Recouvreux : feat(sync): extrait les lignes manquantes d'un export BUDAT/AUGDT
+2026-10-22T18:43:54+02:00 - 76c4e62 - Thomas Recouvreux : fix(cpro): nettoie les artefacts de téléchargement Playwright
+2026-10-18T18:26:24+02:00 - 88b9eec - Thomas Recouvreux : feat(scripts): ajoute les factures restant à éclater par fournisseur
+2026-10-16T15:25:17+02:00 - 1f617af - Thomas Recouvreux : refactor(pipeline): remplace le modèle Django Facture par un schéma pydantic
+2026-10-15T18:40:46+02:00 - d5f1769 - Thomas Recouvreux : fix(mcp): force un seul worker uvicorn
+2026-10-15T15:11:22+02:00 - b334810 - Thomas Recouvreux : fix(budat): rapproche les REF_FAC préfixées d'espaces
+2026-10-15T14:32:15+02:00 - 3410289 - Thomas Recouvreux : fix(pipeline): corrige les logs de totaux d'insertion
+2026-10-15T13:55:36+02:00 - 6ec53c9 - Thomas Recouvreux : feat(sync): ajoute le montant à la liste de téléchargement par référence
+2026-10-15T12:46:27+02:00 - 59ebaec - Thomas Recouvreux : feat(sync): liste de téléchargement manquante par référence facture
+2026-10-15T12:36:56+02:00 - fd1a047 - Thomas Recouvreux : feat(scripts): génère la synthèse BUDAT en JSON
+2026-10-15T11:47:21+02:00 - a5e7975 - Thomas Recouvreux : feat(pipeline): ajoute une commande build_meta_budat
+2026-10-15T11:19:10+02:00 - 4cf70bf - Thomas Recouvreux : fix(pipeline): assure l'existence de gesec_facture_gm_pred avant la méta-table BUDAT
+2026-10-14T23:26:55+02:00 - 991e00c - Thomas Recouvreux : perf(pipeline): pagine la construction du gold facture_ligne
+2026-10-14T23:05:58+02:00 - 1befdba - Thomas Recouvreux : fix(sync): écrase les archives de facture au lieu de les dupliquer
+2026-10-14T16:05:31+02:00 - 14e9c32 - Thomas Recouvreux : perf(pipeline): traite les XML et Factur-X par lots
+2026-10-14T11:28:39+02:00 - c1e3e28 - Thomas Recouvreux : fix(build): déclare les deps de mcpserver dans le pyproject racine
+2026-10-14T11:09:05+02:00 - daf8621 - Thomas Recouvreux : fix(pipeline): retire uv du Procfile mcp
+2026-10-14T10:57:08+02:00 - 242baa0 - Thomas Recouvreux : docs(mcp): documente le lancement du serveur MCP et l'ajoute au Procfile
+2026-10-14T09:41:31+02:00 - 84782e9 - Thomas Recouvreux : feat(mcpserver): ajoute un MCP de vérification de connectivité
+2026-10-13T23:14:36+02:00 - df29c87 - Thomas Recouvreux : feat(classify_gm): affiche le total réel dans la barre de progression
+2026-10-13T15:53:14+02:00 - a7db024 - Thomas Recouvreux : feat(classify_gm): classe tout le périmètre par lots streamés
+2026-10-12T11:46:25+02:00 - 07f96f2 - Thomas Recouvreux : feat(models): intègre les prédictions GM à meta_budat
+2026-10-08T13:12:40+02:00 - fb25001 - Thomas Recouvreux : feat(classify_gm): cible les factures via un CSV d'identifiants
+2026-10-07T18:01:19+02:00 - 714a6a8 - Thomas Recouvreux : feat(classify_gm): intègre la classification GM (LLM) au gold
+2026-10-06T18:19:50+02:00 - 7ae21e3 - Thomas Recouvreux : feat(ugap): adapte l'ingestion au nouveau format d'export
+2026-10-02T15:57:20+02:00 - e824d45 - Thomas Recouvreux : feat(pipeline): matérialise la méta-table BUDAT en gold
+2026-09-28T15:00:01+02:00 - b95b7e4 - Thomas Recouvreux : Fix download
+2026-09-24T16:42:53+02:00 - fed74ae - Thomas Recouvreux : fix(ugap): couple désignation et SIREN du fournisseur in fine
+2026-09-24T13:30:06+02:00 - 7289f6b - Thomas Recouvreux : chore: ignore .agent-vm
+2026-09-24T12:36:54+02:00 - 849b91e - Thomas Recouvreux : docs: documente PROD_DB_URL et l'interdiction de secrets commités
+2026-09-24T12:31:48+02:00 - 0d06468 - Thomas Recouvreux : docs(adr): précise delivery_id optionnel et note brute
+2026-09-24T12:31:44+02:00 - 8c15f9f - Thomas Recouvreux : feat(cpro): stocke delivery, delivery_id et note en silver
+2026-09-24T02:58:38+02:00 - 894b9bd - Thomas Recouvreux : docs: corrige l'ADR 0002 et ajoute la commande UGAP au glossaire
+2026-09-24T02:58:37+02:00 - d8b67ec - Thomas Recouvreux : test(recette): suit gesec_facture_ugap_ligne par correspondance
+2026-09-24T02:58:37+02:00 - aaa37ca - Thomas Recouvreux : refactor(ugap): retire le compteur line_id du silver
+2026-09-24T02:58:37+02:00 - 94ed782 - Thomas Recouvreux : fix(ugap): dédoublonne l'export par paiement
+2026-09-24T02:58:36+02:00 - 8cb6501 - Thomas Recouvreux : fix(pipeline): rapproche l'UGAP par numéro de commande
+2026-09-24T02:51:33+02:00 - 11c0975 - Thomas Recouvreux : refactor(pipeline): supprime la création de lignes gold depuis l'export UGAP
+2026-09-24T02:51:31+02:00 - 3747999 - Thomas Recouvreux : feat(cpro): extrait l'identifiant de livraison et la référence UGAP des factures XML
+2026-09-24T02:51:11+02:00 - 95f16fb - Thomas Recouvreux : fix(cpro): lit le numéro d'article dans cbc:Name de l'ancien format UBL
+2026-09-24T00:12:43+02:00 - b08eec2 - Thomas Recouvreux : refactor(pipeline): renomme les champs ndeg en numero
+2026-09-23T01:04:18+02:00 - f7a9d68 - Thomas Recouvreux : refactor(types): paramètre les factories Django
+2026-09-23T01:04:12+02:00 - 46125ef - Thomas Recouvreux : refactor(types): resserre le typage du test ugap silver
+2026-09-23T01:04:07+02:00 - 7602fd2 - Thomas Recouvreux : refactor(types): remet la conversion Decimal inline dans checks
+2026-09-22T23:50:07+02:00 - 480b83e - Thomas Recouvreux : chore(dev): sépare correction et vérification du lint
+2026-09-22T22:21:41+02:00 - bf1e526 - Thomas Recouvreux : build(dev): ajoute ty comme vérificateur de types
+2026-09-22T22:21:35+02:00 - 4e4a057 - Thomas Recouvreux : refactor(types): annote les tests et factories
+2026-09-22T22:21:28+02:00 - 912824c - Thomas Recouvreux : refactor(types): corrige les diagnostics ty du front
+2026-09-22T22:21:19+02:00 - b796511 - Thomas Recouvreux : refactor(types): corrige les diagnostics ty du pipeline
+2026-09-22T21:54:37+02:00 - d858202 - Thomas Recouvreux : feat(pipeline): instrumente le chargement des factures
+2026-09-22T21:54:00+02:00 - 88297eb - Thomas Recouvreux : feat(pipeline): expose --workers sur launch_pipeline
+2026-09-22T21:53:53+02:00 - 05cff4e - Thomas Recouvreux : refactor(pipeline): centralise le nombre de workers par défaut
+2026-09-22T21:52:12+02:00 - 2d313bf - Thomas Recouvreux : refactor(cpro): supprime find_files_by_name
+2026-09-22T21:51:45+02:00 - 139e4ea - Thomas Recouvreux : perf(pipeline): remplace la recherche N+1 des factures par find_files
+2026-09-22T21:49:10+02:00 - 9b432c4 - Thomas Recouvreux : feat(storage): ajoute find_files() aux storages FS et S3
+2026-09-22T17:42:27+02:00 - 3430d1d - Thomas Recouvreux : refactor(pipeline): type les statuts de suivi en Literal
+2026-09-22T16:57:59+02:00 - 0310a8f - Thomas Recouvreux : fix(pipeline): garde le fichier ouvert pendant la lecture openpyxl
+2026-09-22T16:24:08+02:00 - 0f0a638 - Thomas Recouvreux : feat(ugap): ingère les exports UGAP et le fournisseur in fine
+2026-09-21T19:04:24+02:00 - ee34ce5 - Thomas Recouvreux : docs(silver): corrige le docstring du filtrage des factures CPRO
+2026-09-21T19:04:24+02:00 - 2a86abf - Thomas Recouvreux : chore(agents): référence CONTEXT.md et les ADR
+2026-09-21T19:04:20+02:00 - 669aed1 - Thomas Recouvreux : docs: ajoute le glossaire métier et l'ADR du vocabulaire du gold
+2026-09-21T17:40:05+02:00 - d10656e - Thomas Recouvreux : chore(agents): configure le contexte de codage pour les agents
+2026-09-08T13:33:25+02:00 - dfb510a - Thomas Recouvreux : Improve error handling and logging
+2026-09-07T18:41:55+02:00 - f175ad3 - Thomas Recouvreux : Fix imports
+2026-09-07T18:37:52+02:00 - ac5214d - Thomas Recouvreux : ruff
+2026-09-07T18:33:10+02:00 - 6ddbb54 - Thomas Recouvreux : Add read_xml_file utility function to handle different encodings
+2026-09-07T16:11:13+02:00 - 3e99b5c - Thomas Recouvreux : Improve error logging in pivots_xml processing
+2026-09-07T13:17:29+02:00 - e70da13 - Thomas Recouvreux : Add chunksize parameter to to_sql call
+2026-09-07T11:43:24+02:00 - 04540fc - Thomas Recouvreux : Improve error handling in cpro_export_facture_xml processing
+2026-09-07T10:06:00+02:00 - bf51919 - Thomas Recouvreux : Add skip parameter to extract_factures
+2026-09-03T16:25:21+02:00 - 3f435bb - Thomas Recouvreux : download: Add facture_montant support
+2026-09-03T11:41:56+02:00 - ebc3e8a - Thomas Recouvreux : Improve Factur-X extraction error handling and refactor path handling
+2026-09-02T15:44:51+02:00 - 983dfcb - Thomas Recouvreux : Handle partial extraction and improve error handling
+2026-09-02T12:48:16+02:00 - 72dc2c2 - Thomas Recouvreux : Fix PivotS.xml existence check and regex group extraction
+2026-09-01T14:53:20+02:00 - 919001c - Thomas Recouvreux : silver_cpro_export_factures: Remove payment state validation
+2026-08-31T17:33:33+02:00 - ad05aa9 - Thomas Recouvreux : Add option to ignore payment state
+2026-08-31T16:52:00+02:00 - 25a5fbd - Thomas Recouvreux : Add facture_num support and update augdt export
+2026-08-31T15:09:44+02:00 - 07cc079 - Thomas Recouvreux : Only pause if headed=True
 2026-07-29T10:44:08+02:00 - 93d7819 - Thomas Recouvreux : Add budat export augdt processing and refactor CSV loading
 2026-07-28T17:49:26+02:00 - 88cc18b - Thomas Recouvreux : Ruff
 2026-07-27T15:28:54+02:00 - e751e6f - Thomas Recouvreux : Set web proc to private

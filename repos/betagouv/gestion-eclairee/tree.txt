@@ -2,13 +2,29 @@
 ├── .aiignore
 ├── .buildpacks
 ├── .gitignore
+├── .opencode
+│   └── opencode.jsonc
 ├── .python-version
+├── AGENTS.md
 ├── Aptfile
+├── CONTEXT.md
 ├── Procfile
 ├── README.md
 ├── docker
 │   └── Dockerfile-scalingo
 ├── docker-compose.yml
+├── docs
+│   ├── adr
+│   │   ├── 0001-choix-de-vocabulaire-du-gold.md
+│   │   ├── 0002-fournisseur-in-fine.md
+│   │   ├── 0003-classification-gm-hors-launcher.md
+│   │   ├── 0004-triplets-gm-de-meta-budat.md
+│   │   ├── 0005-zips-facture-ecrases-au-retelechargement.md
+│   │   ├── 0006-reconstruction-meta-budat-apres-classify-gm.md
+│   │   ├── 0007-extraction-pdf.md
+│   │   ├── 0008-as-oauth-mcp.md
+│   │   └── 0009-api-meta-budat.md
+│   └── test-mcp-opencode-local.md
 ├── gesec
 │   ├── __init__.py
 │   ├── apps.py
@@ -17,7 +33,37 @@
 │   │   └── models.py
 │   ├── data
 │   │   ├── __init__.py
-│   │   ├── dj_models.py
+│   │   ├── classify_gm
+│   │   │   ├── __init__.py
+│   │   │   ├── classify.py
+│   │   │   ├── classify_hierarchy.py
+│   │   │   ├── data
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── gm_ref.csv
+│   │   │   │   ├── gm_ref_enrich.csv
+│   │   │   │   └── gm_ref_enrich_seg.csv
+│   │   │   ├── db.py
+│   │   │   ├── evaluate.py
+│   │   │   ├── gold.py
+│   │   │   ├── llm.py
+│   │   │   ├── paths.py
+│   │   │   ├── prompt.py
+│   │   │   ├── prompt_hierarchy.py
+│   │   │   ├── referential.py
+│   │   │   └── schema.sql
+│   │   ├── extract_pdf
+│   │   │   ├── __init__.py
+│   │   │   ├── extract_llm.py
+│   │   │   ├── ocr_lighton.py
+│   │   │   ├── orchestration.py
+│   │   │   ├── paths.py
+│   │   │   ├── pdf4llm_extract.py
+│   │   │   ├── pdf_utils.py
+│   │   │   ├── prompt.py
+│   │   │   ├── result_table.py
+│   │   │   ├── run.py
+│   │   │   ├── schemas.py
+│   │   │   └── selection.py
 │   │   ├── pipeline
 │   │   │   ├── __init__.py
 │   │   │   ├── db.py
@@ -32,19 +78,28 @@
 │   │   │   │   ├── cpro_export_factures.py
 │   │   │   │   ├── oda_export_row.py
 │   │   │   │   ├── schemas.py
+│   │   │   │   ├── ugap_export_factures.py
 │   │   │   │   └── utils.py
 │   │   │   ├── layer_2_silver
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── cpro_export_factur_x_ligne.py
+│   │   │   │   ├── cpro_export_facture_xml_facture.py
 │   │   │   │   ├── cpro_export_facture_xml_ligne.py
 │   │   │   │   ├── cpro_export_factures.py
+│   │   │   │   ├── extract_pdf_facture.py
+│   │   │   │   ├── extract_pdf_ligne.py
 │   │   │   │   ├── oda_export_ej_gm_mapping.py
 │   │   │   │   ├── schemas.py
-│   │   │   │   └── services.py
+│   │   │   │   ├── services.py
+│   │   │   │   └── ugap_export_factures.py
 │   │   │   ├── layer_3_gold
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── constants.py
+│   │   │   │   ├── extract_pdf.py
 │   │   │   │   ├── facture.py
 │   │   │   │   ├── facture_ligne.py
+│   │   │   │   ├── meta_budat.py
+│   │   │   │   ├── meta_budat.sql
 │   │   │   │   └── schemas.py
 │   │   │   ├── testing
 │   │   │   │   ├── __init__.py
@@ -107,10 +162,22 @@
 │   │   └── sync
 │   │       ├── __init__.py
 │   │       ├── build_download_list.py
+│   │       ├── build_missing_ej_download_list.py
+│   │       ├── build_missing_reference_download_list.py
+│   │       ├── build_missing_reference_rows.py
 │   │       ├── checks.py
+│   │       ├── clean_facture_zips_duplicates.py
 │   │       └── download_cpro.py
 │   ├── front
 │   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── auth.py
+│   │   │   ├── filters.py
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
 │   │   ├── asgi.py
 │   │   ├── auth
 │   │   │   ├── __init__.py
@@ -118,6 +185,7 @@
 │   │   │   └── views.py
 │   │   ├── context_processors.py
 │   │   ├── models.py
+│   │   ├── oauth.py
 │   │   ├── ratelimit
 │   │   │   ├── __init__.py
 │   │   │   ├── models.py
@@ -130,6 +198,9 @@
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
+│   │       ├── build_meta_budat.py
+│   │       ├── classify_gm.py
+│   │       ├── extract_pdf.py
 │   │       └── launch_pipeline.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -138,25 +209,38 @@
 │   │   ├── 0004_facture_ministere.py
 │   │   ├── 0005_facture_montant_remise_globale_ttc_and_more.py
 │   │   ├── 0006_ratelimitcount.py
+│   │   ├── 0007_alter_facture_destinataire_code_service_and_more.py
+│   │   ├── 0008_alter_facture_options.py
+│   │   ├── 0009_delete_facture.py
+│   │   ├── 0010_oauthapplication.py
+│   │   ├── 0011_metabudat_alter_user_options.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── settings.py
+│   ├── storage.py
 │   ├── templates
-│   │   └── gesec
-│   │       ├── auth
-│   │       │   └── login.html
-│   │       ├── base.html
-│   │       ├── blocks
-│   │       │   ├── footer.html
-│   │       │   └── header.html
-│   │       └── home.html
+│   │   ├── gesec
+│   │   │   ├── auth
+│   │   │   │   └── login.html
+│   │   │   ├── base.html
+│   │   │   ├── blocks
+│   │   │   │   ├── footer.html
+│   │   │   │   └── header.html
+│   │   │   └── home.html
+│   │   └── oauth2_provider
+│   │       └── authorize.html
 │   └── templatetags
 │       ├── __init__.py
 │       └── gesec.py
 ├── gunicorn_conf.py
 ├── main.py
 ├── manage.py
+├── mcpserver
+│   ├── __init__.py
+│   └── server.py
 ├── pyproject.toml
+├── scripts
+│   └── synthese_budat.py
 ├── static
 │   └── css
 │       └── main.css
@@ -168,13 +252,70 @@
 │   ├── factories
 │   │   ├── __init__.py
 │   │   └── users.py
-│   └── gesec
+│   ├── gesec
+│   │   ├── __init__.py
+│   │   ├── data
+│   │   │   ├── __init__.py
+│   │   │   ├── classify_gm
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_classify_gm.py
+│   │   │   │   └── test_prompt_hierarchy.py
+│   │   │   ├── extract_pdf
+│   │   │   │   ├── test_extract_pdf.py
+│   │   │   │   ├── test_orchestration.py
+│   │   │   │   └── test_result_table.py
+│   │   │   ├── pipeline
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── layer_1_bronze
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_cpro_export_factur_x.py
+│   │   │   │   │   ├── test_cpro_export_facture_xml.py
+│   │   │   │   │   └── test_ugap_export_factures.py
+│   │   │   │   ├── layer_2_silver
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_cpro_export_facture_xml_facture.py
+│   │   │   │   │   ├── test_cpro_export_facture_xml_ligne.py
+│   │   │   │   │   ├── test_extract_pdf_facture.py
+│   │   │   │   │   └── test_ugap_export_factures.py
+│   │   │   │   ├── layer_3_gold
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_extract_pdf.py
+│   │   │   │   │   ├── test_facture_ligne.py
+│   │   │   │   │   └── test_meta_budat.py
+│   │   │   │   ├── test_db.py
+│   │   │   │   ├── test_utils.py
+│   │   │   │   └── ugap_helpers.py
+│   │   │   ├── processors
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── cpro
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── test_pivots_xml.py
+│   │   │   └── sync
+│   │   │       ├── test_build_missing_ej_download_list.py
+│   │   │       ├── test_build_missing_reference_download_list.py
+│   │   │       ├── test_build_missing_reference_rows.py
+│   │   │       └── test_clean_facture_zips_duplicates.py
+│   │   ├── front
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_auth.py
+│   │   │   │   ├── test_healthcheck.py
+│   │   │   │   └── test_meta_budat.py
+│   │   │   ├── oauth
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── helpers.py
+│   │   │   │   ├── test_models.py
+│   │   │   │   ├── test_oauth.py
+│   │   │   │   └── test_urls_whitelist.py
+│   │   │   ├── ratelimit
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_ratelimit.py
+│   │   │   ├── test_backchannel.py
+│   │   │   └── test_views.py
+│   │   └── test_storage.py
+│   └── mcpserver
 │       ├── __init__.py
-│       └── front
-│           ├── __init__.py
-│           ├── ratelimit
-│           │   ├── __init__.py
-│           │   └── test_ratelimit.py
-│           └── test_views.py
+│       └── test_server.py
 └── uv.lock
-40 directories, 139 files
+63 directories, 257 files

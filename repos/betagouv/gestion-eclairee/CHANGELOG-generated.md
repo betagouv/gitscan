@@ -1,25 +1,28 @@
-## Changelog : gestion-eclairee (30 derniers jours, au 29 juillet 2026)
+## Changelog : gestion-eclairee (30 derniers jours, au 08 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'importation et le traitement des données financières, notamment pour les formats Factur-X et UBL Invoice. De plus, des améliorations ont été apportées à la gestion des téléchargements de fichiers et à la configuration de l'environnement.
+Ce mois-ci, le projet a franchi une étape importante dans l'automatisation de l'analyse de données. L'une des évolutions majeures est l'amélioration de la capacité à traiter les factures non dématérialisées (PDF) grâce à de nouveaux outils d'extraction. Parallèlement, l'intégration de capacités d'intelligence artificielle via le protocole MCP permet désormais de mieux guider les agents conversationnels dans l'analyse des données budgétaires. L'ensemble du pipeline de traitement de données a été optimisé pour être plus rapide et plus stable.
 
 ### Évolutions fonctionnelles
-- Ajout d'une vue pour télécharger les fichiers.
-- Amélioration de la gestion des factures Factur-X.
-- Support ajouté pour le format UBL Invoice 2.4, avec une robustesse accrue du traitement XML.
-- Correction du mapping des services [#42223bc](https://github.com/betagouv/gestion-eclairee/issues/42223bc) et [#3c56ca7](https://github.com/betagouv/gestion-eclairee/issues/3c56ca7).
-- Prise en compte des services à partir de l'annuaire CPRO.
-- Ajout du test recette [#4db59b7](https://github.com/betagouv/gestion-eclairee/issues/4db59b7).
-- Ajout du traitement budat et augdt pour l'export.
+- **Amélioration de l'extraction de documents** : Intégration de la technologie PDF4LLM pour structurer et extraire les données des factures au format PDF non dématérialisées.
+- **Meilleure visibilité sur les processus** : Ajout de statistiques détaillées sur l'extraction PDF dans la synthèse BUDAT et affichage des totaux réels dans les barres de progression de classification.
+- **Fiabilisation de la synchronisation** : Amélioration de la détection des lignes manquantes lors des exports BUDAT/AUGDT et gestion plus précise des montants par référence facture.
+- **Suivi de l'activité** : Ajout de rapports sur les factures restant à traiter par fournisseur.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des téléchargements pour utiliser le stockage Django.
-- Utilisation de Ruff pour le linting du code.
-- Configuration du processus web en mode privé.
-- Installation des librairies nécessaires pour cloakbrowser.
-- Mise à jour du mapping des services.
-- Suppression des anciennes versions des schémas XSD UBL-Invoice.
+- **Intelligence Artificielle & MCP** : 
+    - Mise en place d'un serveur MCP (Model Context Protocol) pour assister les agents LLM.
+    - Exposition de métadonnées budgétaires en lecture seule pour les agents.
+    - Implémentation du support OAuth2 pour le protocole MCP et ajout d'outils de vérification de connectivité.
+- **Optimisation du pipeline de données** :
+    - Parallélisation de l'extraction PDF et gestion de la mémoire (RAM) par lots pour éviter les saturations.
+    - Intégration de l'extraction PDF directement dans le cycle de vie des données (pipeline bronze/silver/gold).
+    - Traitement par lots (batching) pour les fichiers XML et Factur-X et pagination de la construction des données de facturation.
+    - Refactoring du modèle `Facture` vers des schémas Pydantic pour une meilleure validation des données.
+- **Stabilité et Performance** :
+    - Correction de bugs liés à la navigation automatisée (Playwright) et à la gestion des téléchargements.
+    - Optimisation des processus de classification par lots streamés.
 
 ### Autres changements
-- Forçage de la locale à "fr" pour les téléchargements [#a30e388](https://github.com/betagouv/gestion-eclairee/issues/a30e388).
-- Travaux en cours (WIP) [#6349db4](https://github.com/betagouv/gestion-eclairee/issues/6349db4).
+- **Documentation** : Ajout de guides pour le protocole de test local du serveur MCP et les procédures de lancement.
+- **Configuration** : Mise à jour des fichiers de dépendances et du Procfile pour supporter le nouveau serveur MCP.
