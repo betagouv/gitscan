@@ -1,6 +1,6 @@
 {
   "name": "sill",
-  "version": "1.55.14",
+  "version": "1.55.20",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
     "dev:db:up": "turbo dev:db:up",
     "dev:db:reset": "turbo dev:db:reset",
     "db:up": "pnpm --filter api db:up",
+    "db:seed": "pnpm --filter api db:seed",
     "build": "turbo build",
     "job:import": "turbo job:import",
     "job:update": "turbo job:update",
@@ -20,6 +21,7 @@
     "test:e2e": "pnpm --filter e2e test:e2e",
     "test:e2e:ui": "pnpm --filter e2e test:e2e:ui",
     "test:e2e:headed": "pnpm --filter e2e test:e2e:headed",
+    "pentest": "docker compose -f docker-compose.pentest.yml up --build --detach --wait && DOCKER_HOST=${DOCKER_HOST:-unix://$HOME/.docker/run/docker.sock} STRIX_LLM=${STRIX_LLM:-chatgpt/gpt-5.6-sol} strix --target . --target http://host.docker.internal:8088 --instruction-file pentest/strix-instructions.md --scan-mode quick --scope-mode full --max-budget 10",
     "format": "turbo format",
     "format:check": "turbo format:check",
     "fullcheck": "turbo typecheck format:check lint test",
@@ -36,7 +38,7 @@
   },
   "packageManager": "pnpm@10.32.1",
   "engines": {
-    "node": ">=24"
+    "node": ">=24.22.1"
   },
   "dependencies": {}
 }

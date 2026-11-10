@@ -68,6 +68,7 @@
 │   │   │   │   │   │   └── getOrganisation.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── comptoirDuLibre
+│   │   │   │   │   ├── findByRepositoryUrl.ts
 │   │   │   │   │   ├── getCDLExternalData.ts
 │   │   │   │   │   ├── getCDLFormData.ts
 │   │   │   │   │   ├── getCDLSoftwareOptions.ts
@@ -130,7 +131,9 @@
 │   │   │   │   │       │   ├── 1779436823000_add-software-protections.ts
 │   │   │   │   │       │   ├── 1779792794032_add-new-type.ts
 │   │   │   │   │       │   ├── 1781768391060_add-config-ui-table.ts
-│   │   │   │   │       │   └── 1785253130672_add-last-import-on-source.ts
+│   │   │   │   │       │   ├── 1785253130672_add-last-import-on-source.ts
+│   │   │   │   │       │   ├── 1789225898984_delete-orphan-cnll-external-data.ts
+│   │   │   │   │       │   └── 1791542370034_add-source-categories.ts
 │   │   │   │   │       └── pgDbApi.integration.test.ts
 │   │   │   │   ├── doiResolver.ts
 │   │   │   │   ├── getCnllPrestatairesSill.ts
@@ -147,6 +150,7 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       └── HAL.ts
+│   │   │   │   │   ├── findByRepositoryUrl.ts
 │   │   │   │   │   ├── getHalSoftware.test.ts
 │   │   │   │   │   ├── getHalSoftwareExternalData.ts
 │   │   │   │   │   ├── getHalSoftwareOptions.ts
@@ -154,6 +158,8 @@
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── resolveAdapter.ts
+│   │   │   │   ├── resolveRepository.ts
+│   │   │   │   ├── resolveRepository.unit.test.ts
 │   │   │   │   ├── ror.org
 │   │   │   │   │   ├── API
 │   │   │   │   │   │   ├── getOrganization.test.ts
@@ -171,6 +177,7 @@
 │   │   │   │   │   │   └── wikimedia.ts
 │   │   │   │   │   ├── commonsImage.test.ts
 │   │   │   │   │   ├── commonsImage.ts
+│   │   │   │   │   ├── findByRepositoryUrl.ts
 │   │   │   │   │   ├── getOrganization.ts
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   ├── getWikidataSoftware.test.ts
@@ -189,6 +196,7 @@
 │   │   │   ├── bootstrap.ts
 │   │   │   ├── importTool.ts
 │   │   │   ├── index.ts
+│   │   │   ├── legacyUiConfigMigration.test.ts
 │   │   │   ├── ports
 │   │   │   │   ├── CompileData.ts
 │   │   │   │   ├── ComptoirDuLibreApi.ts
@@ -200,12 +208,12 @@
 │   │   │   │   ├── GetSoftwareExternalData.ts
 │   │   │   │   ├── GetSoftwareExternalDataOptions.ts
 │   │   │   │   ├── GetSoftwareFormData.ts
+│   │   │   │   ├── ResolveRepository.ts
 │   │   │   │   ├── SearchOrganization.ts
 │   │   │   │   └── SourceGateway.ts
 │   │   │   ├── types
 │   │   │   │   ├── SoftwareTypes.ts
 │   │   │   │   └── index.ts
-│   │   │   ├── uiConfigDeploymentExamples.test.ts
 │   │   │   ├── uiConfigSchema.ts
 │   │   │   ├── usecases
 │   │   │   │   ├── auth
@@ -217,11 +225,16 @@
 │   │   │   │   │   └── refreshSession.ts
 │   │   │   │   ├── createSoftware.test.ts
 │   │   │   │   ├── createSoftware.ts
+│   │   │   │   ├── discoverSourcesByRepository.ts
+│   │   │   │   ├── discoverSourcesByRepository.unit.test.ts
+│   │   │   │   ├── ensureForgeSource.test.ts
+│   │   │   │   ├── ensureForgeSource.ts
 │   │   │   │   ├── getAttributeDefinitions.ts
 │   │   │   │   ├── getSoftwareFormAutoFillDataFromExternalAndOtherSources.ts
 │   │   │   │   ├── getUser.ts
 │   │   │   │   ├── getUser.unit.test.ts
 │   │   │   │   ├── importFromInnerIdentifiers.ts
+│   │   │   │   ├── importFromInnerIdentifiers.unit.test.ts
 │   │   │   │   ├── importFromSource.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── readWriteSillData
@@ -230,6 +243,9 @@
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── refreshExternalData.test.ts
 │   │   │   │   ├── refreshExternalData.ts
+│   │   │   │   ├── repositoryCheckCache.ts
+│   │   │   │   ├── resolveRepoUrl.ts
+│   │   │   │   ├── resolveRepoUrl.unit.test.ts
 │   │   │   │   ├── resolveSoftwareFormDataProtection.ts
 │   │   │   │   ├── sanitizeSoftwareFormDataCustomAttributes.ts
 │   │   │   │   ├── softwareErrors.ts
@@ -252,6 +268,8 @@
 │   │   │   ├── ApiTypes.ts
 │   │   │   └── index.ts
 │   │   ├── rpc
+│   │   │   ├── authRoutes.test.ts
+│   │   │   ├── authRoutes.ts
 │   │   │   ├── context.ts
 │   │   │   ├── createTestCaller.ts
 │   │   │   ├── import-from-inner-identifiers.ts
@@ -279,6 +297,7 @@
 │   │   ├── tools
 │   │   │   ├── OptionalIfCanBeUndefined.ts
 │   │   │   ├── WikidataEntity.ts
+│   │   │   ├── codemeta.ts
 │   │   │   ├── fixtures
 │   │   │   │   └── testUiConfig.ts
 │   │   │   ├── identifiersTools.ts
@@ -288,7 +307,8 @@
 │   │   │   ├── repoAnalyser.test.ts
 │   │   │   ├── repoAnalyser.ts
 │   │   │   ├── sourceConfig.ts
-│   │   │   └── test.helpers.ts
+│   │   │   ├── test.helpers.ts
+│   │   │   └── ttlCache.ts
 │   │   └── types
 │   │       └── Catalogi.ts
 │   ├── tsconfig.json
@@ -313,10 +333,9 @@
 │   │   ├── .env.sample
 │   │   ├── README.md
 │   │   ├── customization
-│   │   │   ├── translations
-│   │   │   │   ├── en.json
-│   │   │   │   └── fr.json
-│   │   │   └── ui-config.json
+│   │   │   └── translations
+│   │   │       ├── en.json
+│   │   │       └── fr.json
 │   │   ├── docker-compose.yml
 │   │   └── nginx
 │   │       └── default.conf
@@ -336,6 +355,7 @@
 │       ├── docker-compose.yml
 │       └── nginx
 │           └── default.conf
+├── docker-compose.pentest.yml
 ├── docker-compose.preprod.yml
 ├── docker-compose.prod.yml
 ├── docker-compose.resources.yml
@@ -973,6 +993,7 @@
 │   ├── issue-491-context.md
 │   ├── issue-491-plan.md
 │   ├── issue-491-worklog.md
+│   ├── pentesting-with-strix.md
 │   ├── public-api.md
 │   ├── sill.en.md
 │   └── sill.md
@@ -986,6 +1007,7 @@
 │   │   ├── admin.auth.spec.ts
 │   │   ├── auth.setup.ts
 │   │   ├── declaration.auth.spec.ts
+│   │   ├── oidc-browser-binding.spec.ts
 │   │   ├── software-catalog.spec.ts
 │   │   └── software-details.spec.ts
 │   └── tsconfig.json
@@ -1012,6 +1034,10 @@
 ├── nginx
 │   └── default.conf
 ├── package.json
+├── pentest
+│   ├── keycloak-realm.json
+│   ├── nginx.conf
+│   └── strix-instructions.md
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── renovate.json
@@ -1080,6 +1106,7 @@
 │   │   │   ├── fog.png
 │   │   │   ├── gitlanding.png
 │   │   │   ├── gravitee-community-edition.png
+│   │   │   ├── hal-logo-header.png
 │   │   │   ├── haproxy.png
 │   │   │   ├── jupyter.png
 │   │   │   ├── kubernetes.png
@@ -1267,13 +1294,18 @@
 │   │   │   │   │   ├── AlikeSoftwareTab.tsx
 │   │   │   │   │   ├── CnllServiceProviderModal.tsx
 │   │   │   │   │   ├── CustomAttributeDetails.tsx
-│   │   │   │   │   ├── HeaderDetailCard.tsx
+│   │   │   │   │   ├── DetailSection.tsx
+│   │   │   │   │   ├── ParticipationSection.tsx
 │   │   │   │   │   ├── PreviewTab.tsx
 │   │   │   │   │   ├── PublicationTab.tsx
 │   │   │   │   │   ├── ReferencedInstancesTab.tsx
+│   │   │   │   │   ├── SectionNav.tsx
 │   │   │   │   │   ├── SoftwareDetails.tsx
+│   │   │   │   │   ├── SoftwareDetailsHero.tsx
 │   │   │   │   │   ├── SourceProvenanceModal.tsx
 │   │   │   │   │   ├── SourceProvenanceView.tsx
+│   │   │   │   │   ├── UsefulLinks.tsx
+│   │   │   │   │   ├── compareNames.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── softwareForm
@@ -1317,7 +1349,6 @@
 │   │   │   │   ├── LoadingFallback.tsx
 │   │   │   │   ├── LogoURLButton.tsx
 │   │   │   │   ├── MarkdownPage.tsx
-│   │   │   │   ├── OperatingSystemsTable.tsx
 │   │   │   │   ├── PromptForOrganization.tsx
 │   │   │   │   ├── SearchInput.tsx
 │   │   │   │   ├── SearchMultiInput.tsx
@@ -1339,4 +1370,4 @@
 │   ├── tsconfig.json
 │   └── vite.config.ts
 └── yarn-error.log
-142 directories, 1240 files
+143 directories, 1270 files
