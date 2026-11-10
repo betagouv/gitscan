@@ -1,36 +1,33 @@
-## Changelog : menshen (30 derniers jours, au 03/11/2026)
+## Changelog : menshen (30 derniers jours, au 05/11/2026)
 
 ### Résumé
-Cette période a été marquée par un renforcement majeur de la sécurité (correction de nombreuses vulnérabilités et hachage des jetons) et une modernisation de la bibliothèque client Python pour supporter l'asynchrone. Le projet a également amélioré sa robustesse grâce à l'ajout de tests de bout en bout (E2E) et une meilleure gestion des erreurs de sécurité.
+Cette période a été marquée par un renforcement significatif de la sécurité, notamment via le hachage des jetons au repos et la correction de nombreuses vulnérabilités. Le client Python a été modernisé pour supporter l'asynchrone, et l'observabilité du système a été améliorée grâce à une meilleure intégration de Sentry.
 
 ### Évolutions fonctionnelles
-- **Nouveau format de permissions** : Adoption d'un nouveau pattern pour les scopes de jetons suivant le modèle `service:resource:action`.
-- **Améliorations du client Python** :
-  - Ajout du support asynchrone avec `TokenExchangeAsyncClient`.
-  - Possibilité d'utiliser le client comme gestionnaire de contexte (context manager).
-  - Ajout d'un timeout par défaut pour les requêtes POST.
-- **Configuration de l'API** : Possibilité de configurer les URLs de la documentation API et de contrôler l'activation/désactivation du schéma OpenAPI.
-- **Logging** : Ajout de la configuration du logger `lasuite` directement dans les paramètres du projet.
+- **Sécurité renforcée** : 
+    - Hachage des jetons échangés au repos avec HMAC-SHA256.
+    - Restriction de la révocation des jetons au seul service source.
+    - Meilleure gestion des utilisateurs inactifs et des tentatives d'introspection suspectes.
+- **Amélioration du client Python** :
+    - Ajout d'un client asynchrone (`TokenExchangeAsyncClient`).
+    - Support du gestionnaire de contexte (`with`) pour une meilleure gestion du cycle de vie du client.
+    - Ajout d'un timeout par défaut pour les requêtes POST.
+- **Configuration et flexibilité** :
+    - Possibilité de configurer les URLs de la documentation API (OpenAPI et interactive).
+    - Ajout de la configuration du logger `lasuite` dans les paramètres.
+- **Modèle de données** : Évolution du pattern des scopes de jetons vers le format `service:resource:action`.
+- **Environnement de test (Playground)** : Enrichissement du playground avec des tests de bout en bout (E2E) et l'intégration du client menshen.
 
 ### Évolutions techniques
-- **Sécurité** :
-  - Correction de 42 vulnérabilités (CVE) via la mise à jour des dépendances.
-  - Hachage des jetons échangés au repos avec l'algorithme HMAC-SHA256.
-  - Suppression de certificats racines non sécurisés (emSign) des dépendances.
-- **Refactorisation du client** :
-  - Migration de la bibliothèque de transport de `requests` vers `httpx`.
-  - Extraction de la logique métier indépendante du transport dans un client de base.
-  - Renommage du module `client` en `clients` pour une meilleure clarté.
-- **Backend & Architecture** :
-  - Amélioration de la gestion des utilisateurs inactifs et des tentatives d'introspection suspectes.
-  - Mise à jour de `django-lasuite` vers la version 1.0.0.
-  - Optimisation de la signature des méthodes des services de base.
-  - Correction de la migration des données de jetons hachés.
-- **Tests & CI/CD** :
-  - Ajout de tests de bout en bout (E2E) pour le playground et Keycloak.
-  - Intégration de linters et de configurations de tests plus strictes.
-  - Mise à jour des workflows GitHub Actions.
+- **Refonte du client Python** : Migration de la bibliothèque `requests` vers `httpx` et extraction de la logique commune dans un client de base pour plus de modularité.
+- **Maintenance de sécurité** : Mise à jour massive des dépendances pour corriger 42 vulnérabilités (CVE).
+- **Infrastructure et CI/CD** :
+    - Mise à jour des images Docker de base vers Python 3.14.10.
+    - Amélioration de la compatibilité ascendante de Python.
+    - Optimisation des actions GitHub et de la configuration de l'environnement de build.
+- **Observabilité** : Ajout de paramètres de configuration pour le traçage et le profilage via Sentry.
+- **Backend** : Optimisation de la signature des méthodes des services de base et correction de migrations de données liées aux jetons hachés.
 
 ### Autres changements
-- **Documentation** : Simplification de la documentation d'intégration avec `lasuite` et mise à jour des notes sur la migration du mocking HTTP.
-- **Maintenance** : Nettoyage du code (correction de fautes de frappe et de warnings de typage).
+- **Documentation** : Simplification de la documentation concernant l'intégration de `lasuite`.
+- **Nettoyage** : Correction de warnings de typage, de fautes de frappe et de la structure des modules du client.

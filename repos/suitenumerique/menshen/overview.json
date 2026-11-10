@@ -1,23 +1,25 @@
 {
   "url": "https://github.com/suitenumerique/menshen",
   "name": "menshen",
-  "description": "Serveur d'échange de jetons (Token Exchange) conforme à la RFC 8693. Il permet la gestion granulaire des permissions et l'échange de jetons entre les services de La Suite numérique.",
+  "description": "Serveur d'échange de jetons (Token Exchange) implémentant la RFC 8693. Il permet le partage sécurisé de ressources entre différents services via l'échange de jetons d'accès.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Django",
     "Django-Ninja",
+    "Keycloak",
     "PostgreSQL",
     "Redis",
-    "Keycloak",
-    "uv",
-    "Uvicorn"
+    "Uvicorn",
+    "Playwright",
+    "Sentry",
+    "httpx"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,22 +31,24 @@
   ],
   "auth": {
     "methods": [
-      "jwt",
       "oauth2",
-      "sso"
+      "jwt"
     ],
     "providers": [
       "Keycloak"
     ]
   },
   "tests": [
-    "Playwright",
-    "Django tests"
+    "Playwright (E2E)",
+    "Django tests",
+    "Linters"
   ],
   "workflows": [
-    "GitHub Actions"
+    "GitHub Actions",
+    "Docker image publication",
+    "Helm chart linting"
   ],
-  "lastActivity": "2026-11-03T14:45:22+01:00",
+  "lastActivity": "2026-11-05T19:04:28+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,6 +57,7 @@
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
     "Sécurité & Auth",
-    "Standards & Schémas"
+    "Standards & Schémas",
+    "Déploiement & Hosting"
   ]
 }
