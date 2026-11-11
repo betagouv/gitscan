@@ -3,21 +3,25 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "test": "node --import=tsx --test 'monkey/**/*.spec.ts'",
+    "test:monkey-browser": "node --import=tsx --test 'monkey/**/*.browser-spec.ts'",
     "test:headless": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint",
     "format:check": "prettier --check --cache \"./**/*.{js,ts,json}\" .",
-    "format": "prettier --write --cache \"./**/*.{js,ts,json}\" ."
+    "format": "prettier --write --cache \"./**/*.{js,ts,json}\" .",
+    "monkey": "tsx monkey/run.ts"
   },
   "dependencies": {
-    "@axe-core/playwright": "~4.13.0",
+    "@axe-core/playwright": "~4.14.0",
     "shared": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.63.0",
-    "@types/node": "~26.5.1",
-    "eslint-plugin-playwright": "~2.11.0"
+    "@playwright/test": "^1.64.1",
+    "@types/node": "~26.6.6",
+    "eslint-plugin-playwright": "~2.12.2",
+    "tsx": "~4.23.15"
   }
 }
