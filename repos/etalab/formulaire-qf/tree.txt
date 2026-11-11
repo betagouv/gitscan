@@ -674,6 +674,7 @@
 │   │   │   ├── mark_folder_complete.rb
 │   │   │   ├── prepare_attachments.rb
 │   │   │   └── upload_attachments.rb
+│   │   ├── insert_shipment.rb
 │   │   ├── prepare_quotient_familial_hubee_folder.rb
 │   │   ├── process_hubee_notification.rb
 │   │   ├── setup_current_data.rb
@@ -683,11 +684,14 @@
 │   │   ├── controllers
 │   │   │   ├── application.js
 │   │   │   ├── hello_controller.js
-│   │   │   └── index.js
+│   │   │   ├── index.js
+│   │   │   ├── reload_when_restored_controller.js
+│   │   │   └── submit_once_controller.js
 │   │   └── dsfr.module.js
 │   ├── jobs
 │   │   ├── application_job.rb
 │   │   ├── populate_hubee_sandbox_job.rb
+│   │   ├── purge_expired_sessions_job.rb
 │   │   ├── read_hubee_notifications_job.rb
 │   │   └── setup_collectivity_job.rb
 │   ├── mailers
@@ -713,6 +717,7 @@
 │   │   │   └── recipient.rb
 │   │   ├── organization.rb
 │   │   ├── pivot_identity.rb
+│   │   ├── portal_session.rb
 │   │   ├── shipment.rb
 │   │   ├── shipment_data.rb
 │   │   └── user.rb
@@ -876,7 +881,8 @@
 │   │   ├── 20261106110670_remove_redundant_good_jobs_indexes.rb
 │   │   ├── 20261106110671_reorder_good_jobs_cron_index.rb
 │   │   ├── 20261106110672_create_good_job_concurrency_claims.rb
-│   │   └── 20261106110673_add_index_good_job_executions_on_created_at.rb
+│   │   ├── 20261106110673_add_index_good_job_executions_on_created_at.rb
+│   │   └── 20261109115253_add_session_key_to_shipments.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -897,6 +903,8 @@
 │   │   └── web_steps.rb
 │   ├── support
 │   │   ├── env.rb
+│   │   ├── forgery_protection.rb
+│   │   ├── france_connect_logout_callbacks.rb
 │   │   ├── load_stubs.rb
 │   │   └── webmock.rb
 │   ├── sélectionner_une_commune.feature
@@ -969,6 +977,7 @@
 │   │   └── setup_current_data_spec.rb
 │   ├── jobs
 │   │   ├── populate_hubee_sandbox_job_spec.rb
+│   │   ├── purge_expired_sessions_job_spec.rb
 │   │   ├── read_hubee_notifications_job_spec.rb
 │   │   └── setup_collectivity_job_spec.rb
 │   ├── lib
@@ -999,6 +1008,7 @@
 │   │   │   ├── pdf_attachment_spec.rb
 │   │   │   └── recipient_spec.rb
 │   │   ├── pivot_identity_spec.rb
+│   │   ├── portal_session_spec.rb
 │   │   ├── shipment_data_spec.rb
 │   │   ├── shipment_spec.rb
 │   │   └── user_spec.rb
@@ -1054,4 +1064,4 @@
     ├── .keep
     └── javascript
         └── .keep
-125 directories, 972 files
+125 directories, 982 files
