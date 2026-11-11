@@ -1,5 +1,6 @@
 .
 ├── .buildpacks
+├── .dockerignore
 ├── .git-blame-ignore-revs
 ├── .github
 │   ├── CODEOWNERS
@@ -10,29 +11,35 @@
 │   │   │   └── action.yml
 │   │   ├── prepare-django-db
 │   │   │   └── action.yml
-│   │   ├── setup-backend
+│   │   ├── prepare-test-databases
 │   │   │   └── action.yml
 │   │   ├── setup-e2e-tools
 │   │   │   └── action.yml
-│   │   ├── setup-frontend
+│   │   ├── setup-node
 │   │   │   └── action.yml
-│   │   └── setup-playwright
+│   │   ├── setup-playwright
+│   │   │   └── action.yml
+│   │   └── setup-python
 │   │       └── action.yml
+│   ├── ci-areas.yml
 │   ├── dependabot.yml
 │   ├── pull_request_template.md
 │   ├── release-config.yml
 │   └── workflows
 │       ├── _airflow-build-and-push-docker.yml
-│       ├── _backend-test-job.yml
 │       ├── _deploy-airflow.yml
 │       ├── _deploy-on-scalingo.yml
 │       ├── _deploy-webapp.yml
 │       ├── _e2e.yml
+│       ├── _pytest-job.yml
 │       ├── _scaleway-container-deploy.yml
 │       ├── _terragrunt-apply.yml
 │       ├── _webapp-build-and-push-docker.yml
 │       ├── cd.yml
-│       ├── ci.yml
+│       ├── ci-data-platform.yml
+│       ├── ci-infrastructure.yml
+│       ├── ci-revue.yml
+│       ├── ci-webapp.yml
 │       ├── deploy.yml
 │       ├── e2e.yml
 │       ├── ml-deduplication-inference-build-and-push.yml
@@ -92,7 +99,8 @@
 │   │   │       │   ├── copy_db_data_task.py
 │   │   │       │   ├── copy_db_schema_task.py
 │   │   │       │   ├── copy_displayed_data_from_warehouse_task.py
-│   │   │       │   ├── export_opendata_csv_to_s3_task.py
+│   │   │       │   ├── export_opendata_acteurs_to_s3_task.py
+│   │   │       │   ├── export_opendata_fiches_to_s3_task.py
 │   │   │       │   ├── remove_old_s3_opendata_csv_task.py
 │   │   │       │   └── replace_acteur_table_task.py
 │   │   │       └── business_logic
@@ -102,6 +110,7 @@
 │   │   │           ├── copy_displayed_data_from_warehouse_task.py
 │   │   │           ├── copy_utils.py
 │   │   │           ├── export_opendata_csv_to_s3.py
+│   │   │           ├── export_opendata_fiches_to_s3.py
 │   │   │           ├── remove_old_s3_opendata_csv.py
 │   │   │           └── replace_acteur_table.py
 │   │   ├── airflow_local_settings.py
@@ -436,7 +445,8 @@
 │   │   │   │           ├── test_copy_db_data.py
 │   │   │   │           ├── test_copy_db_schema.py
 │   │   │   │           ├── test_copy_displayed_data_from_warehouse.py
-│   │   │   │           └── test_export_opendata_csv_to_s3.py
+│   │   │   │           ├── test_export_opendata_csv_to_s3.py
+│   │   │   │           └── test_export_opendata_fiches_to_s3.py
 │   │   │   ├── clone
 │   │   │   │   ├── tasks
 │   │   │   │   │   ├── airflow_logic
@@ -922,7 +932,8 @@
 │   │   │   ├── README.md
 │   │   │   ├── qfdmo.md
 │   │   │   ├── stats.md
-│   │   │   └── suggestions.md
+│   │   │   ├── suggestions.md
+│   │   │   └── v1.md
 │   │   ├── architecture
 │   │   │   ├── README.md
 │   │   │   ├── data-flow.md
@@ -953,6 +964,7 @@
 │   │   │   ├── README.md
 │   │   │   ├── changelog.md
 │   │   │   ├── exposure-opendata-acteur.md
+│   │   │   ├── exposure-opendata-fiches.md
 │   │   │   ├── politique-de-version-du-jeu-de-donnees-open-data-interne.md
 │   │   │   └── politique-de-version-du-jeu-de-donnees-open-data.md
 │   │   ├── security
@@ -969,6 +981,7 @@
 │   │   └── webapp
 │   │       ├── README.md
 │   │       ├── ab-testing.md
+│   │       ├── assistant.md
 │   │       ├── django.md
 │   │       ├── internationalization.md
 │   │       ├── javascript.md
@@ -1219,7 +1232,6 @@
 ├── servers.conf.erb
 ├── uv.lock
 └── webapp
-    ├── .dockerignore
     ├── .env.template
     ├── .eslintrc.js
     ├── .gitignore
@@ -1231,8 +1243,21 @@
     ├── Makefile
     ├── assistant
     │   ├── __init__.py
+    │   ├── adresses.py
+    │   ├── api.py
     │   ├── apps.py
-    │   └── urls.py
+    │   ├── consignes.py
+    │   ├── forms.py
+    │   ├── lieu.py
+    │   ├── middleware.py
+    │   ├── objets.py
+    │   ├── parcours.py
+    │   ├── solutions.py
+    │   ├── urls.py
+    │   └── views
+    │       ├── __init__.py
+    │       ├── mixins.py
+    │       └── pages.py
     ├── bin
     │   └── entrypoint.sh
     ├── core
@@ -1242,6 +1267,7 @@
     │   ├── constants.py
     │   ├── context_processors.py
     │   ├── exceptions.py
+    │   ├── http_cache.py
     │   ├── logging.py
     │   ├── management
     │   │   ├── __init__.py
@@ -1253,6 +1279,7 @@
     │   │   ├── mixin.py
     │   │   └── tools.py
     │   ├── notion.py
+    │   ├── storage.py
     │   ├── templatetags
     │   │   ├── __init__.py
     │   │   ├── acteur_tags.py
@@ -1390,6 +1417,9 @@
     │   ├── acteur.spec.ts
     │   ├── analytics.spec.ts
     │   ├── assistant.spec.ts
+    │   ├── assistant_accessibilite.spec.ts
+    │   ├── assistant_iframe.spec.ts
+    │   ├── assistant_parcours.spec.ts
     │   ├── browser_version.spec.ts
     │   ├── carte.spec.ts
     │   ├── carte_address_combobox.spec.ts
@@ -1402,7 +1432,6 @@
     │   ├── helpers.ts
     │   ├── homepage.spec.ts
     │   ├── iframe.spec.ts
-    │   ├── iframe_navigation.spec.ts
     │   ├── infotri.spec.ts
     │   ├── mode_liste.spec.ts
     │   ├── navigation.spec.ts
@@ -1428,6 +1457,7 @@
     │   │   ├── test_reemploi_solution.py
     │   │   ├── test_search_form.py
     │   │   └── test_use_carte_config.py
+    │   ├── conftest.py
     │   ├── core
     │   │   ├── test_analytics_tags.py
     │   │   ├── test_backlink_views.py
@@ -1455,18 +1485,26 @@
     │   ├── entrypoint.sh
     │   ├── nginx.conf
     │   └── test_nginx.py
+    ├── opendata
+    │   ├── __init__.py
+    │   ├── api.py
+    │   ├── apps.py
+    │   ├── fiches.py
+    │   └── lieux.py
     ├── package.json
     ├── parcel-transformers
     │   └── remove-ie-hack.ts
     ├── playwright.config.ts
     ├── previews
-    │   └── template_preview.py
+    │   ├── template_preview.py
+    │   └── widgets.py
     ├── pyproject.toml
     ├── qfdmd
     │   ├── __init__.py
     │   ├── admin.py
     │   ├── apps.py
     │   ├── blocks.py
+    │   ├── consignes_migration.py
     │   ├── fixtures
     │   │   ├── produits.json
     │   │   └── synonymes.json
@@ -1480,12 +1518,14 @@
     │   │       ├── create_assistant_permissions.py
     │   │       ├── create_wagtail_pages.py
     │   │       ├── fix_searchtag_names_from_synonymes.py
+    │   │       ├── generate_consignes.py
     │   │       ├── import_data_ademe.py
     │   │       ├── import_infos_tris.py
     │   │       ├── import_redirects_from_legacy_website.py
     │   │       ├── mark_infotri_decorative.py
     │   │       ├── migrate_legacy_produit_index_page.py
-    │   │       └── migrate_produits_legacy.py
+    │   │       ├── migrate_produits_legacy.py
+    │   │       └── seed_lieux_de_depot.py
     │   ├── middleware.py
     │   ├── migrations
     │   │   ├── 0001_initial_squashed_0036_delete_cmspage_alter_produit_id.py
@@ -1545,6 +1585,7 @@
     │   │   ├── 0091_migrate_carte_sur_mesure_to_carte.py
     │   │   ├── 0092_merge_20260910_0833.py
     │   │   ├── 0093_produit_legacy_imported_as_produit_page_and_more.py
+    │   │   ├── 0094_lieudedepot_and_consignes_block.py
     │   │   ├── __init__.py
     │   │   └── sql
     │   │       └── create_wagtail_french_config.sql
@@ -1584,6 +1625,7 @@
     │   │   └── sources.json
     │   ├── forms.py
     │   ├── geo_api.py
+    │   ├── lieux_query.py
     │   ├── management
     │   │   ├── __init__.py
     │   │   └── commands
@@ -1605,6 +1647,7 @@
     │   │       ├── import_product_from_qfdmod.py
     │   │       ├── loaddata_with_computed_fields.py
     │   │       ├── mode_liste_post_deploy.py
+    │   │       ├── populate_libelle_court.py
     │   │       ├── populate_propositionservice.py
     │   │       ├── populate_sous_cat.py
     │   │       ├── realign_acteur_and_revision_proposition_service.py
@@ -1653,6 +1696,7 @@
     │   │   ├── 0189_alter_carteconfig_slug.py
     │   │   ├── 0190_alter_carteconfig_supprimer_branding.py
     │   │   ├── 0191_rebuild_remote_server_fix_port.py
+    │   │   ├── 0192_groupe_action_libelle_court.py
     │   │   ├── __init__.py
     │   │   └── fixtures
     │   │       ├── categorieobjets.json
@@ -1813,6 +1857,21 @@
     │   │   └── qdfmo-db.png
     │   ├── to_collect
     │   │   ├── assistant
+    │   │   │   ├── carte-style.json
+    │   │   │   ├── glyphs
+    │   │   │   │   ├── Noto Sans Bold
+    │   │   │   │   │   ├── 0-255.pbf
+    │   │   │   │   │   └── 256-511.pbf
+    │   │   │   │   ├── Noto Sans Italic
+    │   │   │   │   │   ├── 0-255.pbf
+    │   │   │   │   │   └── 256-511.pbf
+    │   │   │   │   └── Noto Sans Regular
+    │   │   │   │       ├── 0-255.pbf
+    │   │   │   │       └── 256-511.pbf
+    │   │   │   ├── logos
+    │   │   │   │   ├── ademe.svg
+    │   │   │   │   ├── que-faire.svg
+    │   │   │   │   └── republique-francaise.svg
     │   │   │   └── og-image.jpg
     │   │   ├── favicon
     │   │   │   ├── apple-touch-icon.png
@@ -1835,6 +1894,7 @@
     │       ├── admin-categorie-widget.ts
     │       ├── admin-map-widget.ts
     │       ├── admin.ts
+    │       ├── assistant.ts
     │       ├── controllers
     │       │   ├── admin
     │       │   │   ├── categorie_widget_controller.ts
@@ -1846,8 +1906,14 @@
     │       │   │   └── suggestion_status_controller.ts
     │       │   ├── assistant
     │       │   │   ├── blink.ts
+    │       │   │   ├── carte_controller.ts
+    │       │   │   ├── chrono_controller.ts
+    │       │   │   ├── combobox_controller.ts
+    │       │   │   ├── geolocalisation_controller.ts
+    │       │   │   ├── prefetch_controller.ts
     │       │   │   ├── search.ts
-    │       │   │   └── state.ts
+    │       │   │   ├── state.ts
+    │       │   │   └── submit_controller.ts
     │       │   ├── carte
     │       │   │   ├── acteur_details.ts
     │       │   │   ├── address_autocomplete_controller.ts
@@ -1873,28 +1939,73 @@
     │       │   ├── helpers.ts
     │       │   ├── infotri-configurator.ts
     │       │   └── infotri.ts
+    │       ├── images
+    │       │   └── assistant
+    │       │       ├── gestes
+    │       │       │   ├── etiquette-deposer.svg
+    │       │       │   ├── etiquette-donner.svg
+    │       │       │   ├── etiquette-preter.svg
+    │       │       │   ├── etiquette-reparer.svg
+    │       │       │   ├── etiquette-vendre.svg
+    │       │       │   ├── geste-deposer.svg
+    │       │       │   ├── geste-donner-main.svg
+    │       │       │   ├── geste-donner.svg
+    │       │       │   ├── geste-preter.svg
+    │       │       │   ├── geste-reparer.svg
+    │       │       │   └── geste-vendre.svg
+    │       │       ├── pinpoints
+    │       │       │   ├── bonus-ellipse.svg
+    │       │       │   ├── bonus-pourcent.svg
+    │       │       │   ├── geste-loc-fond.svg
+    │       │       │   ├── geste-loc.svg
+    │       │       │   ├── icone-don.svg
+    │       │       │   ├── icone-loc.svg
+    │       │       │   ├── icone-reparation.svg
+    │       │       │   ├── icone-tri.svg
+    │       │       │   └── icone-vente.svg
+    │       │       └── ui
+    │       │           ├── accordeon-chevron.svg
+    │       │           ├── adresse-cercle.svg
+    │       │           ├── adresse-pin.svg
+    │       │           ├── alerte-info.svg
+    │       │           ├── badge-bonus.svg
+    │       │           ├── bouton-recherche.svg
+    │       │           ├── chargement.svg
+    │       │           ├── chevron-droite.svg
+    │       │           ├── fleche-droite.svg
+    │       │           ├── lien-externe.svg
+    │       │           ├── localisation.svg
+    │       │           └── recherche-loupe.svg
     │       ├── infotri-child.ts
     │       ├── js
+    │       │   ├── assistant
+    │       │   │   ├── application.ts
+    │       │   │   ├── persisted_map.ts
+    │       │   │   ├── pinpoint.ts
+    │       │   │   └── visible_places.ts
     │       │   ├── browser_check.ts
     │       │   ├── carte.ts
     │       │   ├── helpers.ts
     │       │   ├── iframe_functions.ts
+    │       │   ├── iframe_scroll.ts
     │       │   ├── parcel.d.ts
     │       │   ├── sentry.ts
     │       │   ├── solution_map.ts
     │       │   ├── types.ts
     │       │   └── url_utils.ts
+    │       ├── maplibre-worker.ts
     │       ├── ol.d.ts
-    │       ├── qfdmd.ts
     │       ├── qfdmo.ts
+    │       ├── quefaire.ts
     │       ├── styles
     │       │   ├── admin.css
+    │       │   ├── assistant.css
     │       │   ├── carte.css
     │       │   ├── dsfr-overrides.css
     │       │   ├── dsfr.css
     │       │   ├── maplibre-overrides.css
-    │       │   ├── qfdmd.css
-    │       │   └── qfdmo.css
+    │       │   ├── qfdmo.css
+    │       │   └── quefaire.css
     │       ├── svg
     │       │   ├── acheter.svg
     │       │   ├── bonus-reparation.svg
@@ -1913,12 +2024,19 @@
     │       │   ├── shield-check-line.svg
     │       │   ├── tools-fill.svg
     │       │   └── vendre.svg
-    │       └── tests
-    │           ├── ab_test_controller.test.ts
-    │           ├── choose_action_controller.test.ts
-    │           ├── helpers.test.ts
-    │           ├── iframe_functions.test.ts
-    │           └── map_search_controller.test.ts
+    │       ├── tests
+    │       │   ├── ab_test_controller.test.ts
+    │       │   ├── assistant_carte_controller.test.ts
+    │       │   ├── assistant_combobox_controller.test.ts
+    │       │   ├── assistant_geolocalisation_controller.test.ts
+    │       │   ├── assistant_pinpoint.test.ts
+    │       │   ├── assistant_visible_places.test.ts
+    │       │   ├── choose_action_controller.test.ts
+    │       │   ├── helpers.test.ts
+    │       │   ├── iframe_functions.test.ts
+    │       │   ├── iframe_scroll.test.ts
+    │       │   └── map_search_controller.test.ts
+    │       └── turbo.d.ts
     ├── stats
     │   ├── __init__.py
     │   ├── api.py
@@ -1936,6 +2054,7 @@
     │   │   ├── nav_sidebar.html
     │   │   ├── qfdmd
     │   │   │   ├── confirm_finalize_migration.html
+    │   │   │   ├── confirm_generate_consignes.html
     │   │   │   ├── confirm_import_synonymes.html
     │   │   │   ├── confirm_migrate_produit.html
     │   │   │   ├── confirm_revert_produit.html
@@ -1982,6 +2101,9 @@
     │   │   ├── global_css.html
     │   │   ├── global_js.html
     │   │   └── pagination.html
+    │   ├── previews
+    │   │   └── widgets
+    │   │       └── adresse_datalist.html
     │   ├── qfdmd
     │   │   └── bulk_actions
     │   │       ├── confirm_bulk_migrate.html
@@ -2007,6 +2129,8 @@
     │       ├── blocks
     │       │   ├── carte.html
     │       │   ├── carte_block.html
+    │       │   ├── consigne.html
+    │       │   ├── consignes.html
     │       │   └── liens.html
     │       ├── components
     │       │   ├── README.md
@@ -2055,6 +2179,34 @@
     │       │   │       │   ├── telephone.html
     │       │   │       │   └── type_enseigne.html
     │       │   │       └── sources_panel.html
+    │       │   ├── assistant
+    │       │   │   ├── accordeon.html
+    │       │   │   ├── accordeon.md
+    │       │   │   ├── alerte.html
+    │       │   │   ├── alerte.md
+    │       │   │   ├── badge.html
+    │       │   │   ├── badge.md
+    │       │   │   ├── bloc_geste.html
+    │       │   │   ├── bloc_geste.md
+    │       │   │   ├── bloc_gestes.html
+    │       │   │   ├── bloc_gestes.md
+    │       │   │   ├── bouton_changer_geste.html
+    │       │   │   ├── bouton_changer_geste.md
+    │       │   │   ├── carte.html
+    │       │   │   ├── carte.md
+    │       │   │   ├── carte_canvas.html
+    │       │   │   ├── etiquette_geste.html
+    │       │   │   ├── etiquette_geste.md
+    │       │   │   ├── footer.html
+    │       │   │   ├── footer.md
+    │       │   │   ├── icone_geste.html
+    │       │   │   ├── icone_geste.md
+    │       │   │   ├── panneau_recherche.html
+    │       │   │   ├── panneau_recherche.md
+    │       │   │   ├── recherche_adresse.html
+    │       │   │   ├── recherche_adresse.md
+    │       │   │   ├── recherche_objet.html
+    │       │   │   └── recherche_objet.md
     │       │   ├── button.html
     │       │   ├── button.md
     │       │   ├── carte
@@ -2256,11 +2408,17 @@
     │       │   ├── assistant.html
     │       │   ├── base.html
     │       │   ├── error.html
+    │       │   ├── quefaire.html
     │       │   └── turbo.html
     │       ├── pages
     │       │   ├── 404.html
     │       │   ├── 500.html
     │       │   ├── acteur.html
+    │       │   ├── assistant
+    │       │   │   ├── home.html
+    │       │   │   ├── lieu.html
+    │       │   │   ├── produit.html
+    │       │   │   └── solutions.html
     │       │   ├── carte.html
     │       │   ├── configurateur
     │       │   │   ├── _iframe.html
@@ -2283,7 +2441,6 @@
     │           ├── carte_mode_liste_switch.html
     │           ├── copy_controller.html
     │           ├── ess_label_display.html
-    │           ├── iframe_navigation_persistence.html
     │           ├── legend_filters_persistence.html
     │           ├── search_in_zone_button.html
     │           ├── t_10_bonus_legacy_parameter_script.html
@@ -2291,7 +2448,6 @@
     │           ├── t_12_default_filtre_objet.html
     │           ├── t_13_itineraire_button_carte_sur_mesure.html
     │           ├── t_14_carte_mal_centree.html
-    │           ├── t_15_acteur_fiche_viewport.html
     │           ├── t_16_infotri_configurator.html
     │           ├── t_17_iframe_page_viewed.html
     │           ├── t_18_iframe_page_properties.html
@@ -2299,6 +2455,7 @@
     │           ├── t_1_referrer_assistant.html
     │           ├── t_1_referrer_carte.html
     │           ├── t_20_assistant_v2_redirect.html
+    │           ├── t_21_assistant_sticky_header.html
     │           ├── t_2_carte_mode_liste_switch.html
     │           ├── t_3_ess_label_display.html
     │           ├── t_4_legend_filters_persistence.html
@@ -2309,7 +2466,19 @@
     ├── tsconfig.json
     └── unit_tests
         ├── assistant
-        │   └── test_script_redirect.py
+        │   ├── conftest.py
+        │   ├── helpers.py
+        │   ├── test_adresse.py
+        │   ├── test_api.py
+        │   ├── test_consignes.py
+        │   ├── test_geojson.py
+        │   ├── test_lieu.py
+        │   ├── test_pages.py
+        │   ├── test_recherche_parcours.py
+        │   ├── test_script_redirect.py
+        │   ├── test_seo.py
+        │   ├── test_solutions.py
+        │   └── test_synonyme_recherche.py
         ├── conftest.py
         ├── core
         │   ├── templatetags
@@ -2318,6 +2487,7 @@
         │   │   └── test_qfdmo_tags.py
         │   ├── test_accessibilite_mineurs_previews.py
         │   ├── test_accessibilite_previews.py
+        │   ├── test_api_docs.py
         │   ├── test_healthz.py
         │   ├── test_robots.py
         │   ├── test_url_utils.py
@@ -2348,10 +2518,17 @@
         │   ├── test_admin_actions.py
         │   ├── test_suggestion_models.py
         │   └── test_suggestion_views.py
+        ├── opendata
+        │   ├── test_api_v1.py
+        │   ├── test_opendata_fiches.py
+        │   └── test_opendata_lieux.py
         ├── qfdmd
         │   ├── fixtures
         │   │   └── produits_legacy.json
+        │   ├── helpers.py
         │   ├── qfdmod_factory.py
+        │   ├── test_consignes_block.py
+        │   ├── test_consignes_migration.py
         │   ├── test_conversion_immediate_page.py
         │   ├── test_genre_nombre_model.py
         │   ├── test_import_legacy_synonymes.py
@@ -2363,6 +2540,7 @@
         │   ├── test_produit.py
         │   ├── test_produit_page.py
         │   ├── test_qfdmd_utils.py
+        │   ├── test_seed_lieux_de_depot.py
         │   ├── test_signals.py
         │   └── test_synonyme.py
         ├── qfdmo
@@ -2387,9 +2565,11 @@
         │   ├── test_categorie.py
         │   ├── test_get_form_mixin.py
         │   ├── test_label_qualite.py
+        │   ├── test_lieux_query.py
         │   ├── test_map_form.py
         │   ├── test_natural_key.py
         │   ├── test_open_source_displayedacteur_ressource.py
+        │   ├── test_populate_libelle_court.py
         │   ├── test_proposition_service.py
         │   ├── test_source.py
         │   ├── test_sous_categorie.py
@@ -2405,4 +2585,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-435 directories, 1972 files
+454 directories, 2133 files

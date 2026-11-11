@@ -1,20 +1,21 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 04/11/2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 10 novembre 2026)
 
 ### Résumé
-Ce mois-ci a été marqué par une avancée majeure dans la gestion des données avec l'introduction du Machine Learning pour la déduplication des acteurs. Le projet a également vu le déploiement d'un tout nouveau système de gestion des suggestions pour les administrateurs, basé sur une architecture moderne (Django + React), et la poursuite de la transition vers l'Assistant V2 pour les utilisateurs.
+Ce mois a été marqué par une étape majeure avec le passage de l'Assistant en version 2, offrant une expérience utilisateur plus fluide, une cartographie plus rapide et un parcours de recherche amélioré. Parallèlement, le projet renforce son ouverture de données (Open Data) via une nouvelle API et modernise ses outils de gestion interne pour une meilleure qualité des données.
 
 ### Évolutions fonctionnelles
-- **Nouveau système de gestion des suggestions (Interface Admin) :** Mise en place d'une interface complète permettant la revue, la validation par ligne, les actions de masse, et la gestion de cohortes de suggestions via des onglets et des menus de sélection [#3487, #3488, #3489, #3490, #3491, #3492, #3493, #3533, #3534, #3536].
-- **Assistant V2 :** Redirection automatique des utilisateurs existants vers la nouvelle version de l'assistant [#3480] et correction du suivi des slugs de synonymes [#3497].
-- **Accessibilité et UX :** Amélioration de l'accessibilité des boutons dans les modales [#3590] et correction de la persistance de la géolocalisation dans les iframes lors de redirections vers d'autres domaines [#3498].
-- **Interface Admin :** Ajustement du design CSS pour optimiser l'affichage des menus de sélection [#3496].
+- **Lancement de l'Assistant V2** : déploiement d'une nouvelle interface incluant un parcours complet (accueil, fiches lieux, solutions et carte), une cartographie optimisée (glyphes statiques, compression des tuiles) et une meilleure gestion de la géolocalisation [#3576](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3576) [#3645](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3645).
+- **Généralisation de l'Assistant** : fin de la phase bêta et bascule automatique de toutes les intégrations par iframe vers la version 2 [#3655](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3655).
+- **Ouverture des données (Open Data)** : mise à disposition des lieux, des fiches produits et des consignes de tri via la nouvelle API v1 et sur stockage S3 [#3517](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3517) [#3444](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3444).
 
 ### Évolutions techniques
-- **Données & Machine Learning :** Implémentation d'une approche par Machine Learning pour la déduplication des acteurs [#3176] et optimisation des pipelines d'enrichissement de données via Airflow et DBT [#3530, #3532, #3562].
-- **Architecture :** Mise en place d'un nouveau socle architectural combinant Django et React pour le module de suggestions [#3488] et migration des paramètres des workers vers le module API [#3463].
-- **Infrastructure & DevOps :** Résolution de problèmes de gestion de cache dans la CI [#3569], correction de la gestion du cache Nginx pour l'assistant [#3486] et suppression de l'infrastructure Metabase en environnement de préproduction [#3409].
-- **Observabilité & Configuration :** Amélioration de la précision des logs (Airflow et erreurs de commandes bash) [#3522, #531] et paramétrage du port de la base de données via variable d'environnement pour le développement local [#3415].
-- **Base de données :** Mise à jour des droits de lecture sur l'ensemble du schéma [#3405].
+- **Modernisation de l'administration** : mise en place d'une nouvelle architecture (Django + React) pour la gestion des suggestions de données, incluant des actions de masse et une interface de revue optimisée [#3488](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3488) [#3493](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3493).
+- **Optimisation de la CI/CD** : refonte majeure des pipelines pour gagner en rapidité et en fiabilité (parallélisation des tests avec pytest-xdist, optimisation du cache Docker, exécution différenciée selon les changements de la PR) [#3593](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3593) [#3587](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3587) [#3586](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3586).
+- **Intelligence Artificielle** : introduction d'une approche par Machine Learning pour automatiser la déduplication des acteurs [#3176](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3176).
+- **Infrastructure & API** : déploiement de l'instance de l'API v1 pour les requêtes géographiques et la recherche de lieux [#3509](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3509) [#3434](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3434).
+- **Corrections de bugs** : résolution de problèmes de compatibilité avec Django 6.1 [#3664](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3664), correction de l'affichage mobile des iframes [#3635](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3635) et de la persistance de la géolocalisation lors des redirections [#3498](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3498).
 
 ### Autres changements
-- **Documentation :** Ajout de la documentation relative au nouveau système de suggestions administratives [#3494].
+- **Documentation** : ajout de la documentation pour le nouveau système de gestion des suggestions administratives [#3494](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3494).
+- **Nettoyage** : suppression des scripts d'intégration obsolètes et des notifications Mattermost [#3662](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3662) [#3558](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3558).
+- **Observabilité** : rétablissement des enregistrements de sessions et des sondages via PostHog pour le suivi utilisateur [#3579](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3579).
