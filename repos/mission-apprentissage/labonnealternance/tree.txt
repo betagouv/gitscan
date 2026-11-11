@@ -50,6 +50,7 @@
 │   │   └── LBA-3920-Logo_RCO_2012.svg
 │   ├── pr-title-checker-config.json
 │   ├── scripts
+│   │   ├── ci-start-test-services.sh
 │   │   └── slack-release-payload.cjs
 │   └── workflows
 │       ├── _build.yml
@@ -302,6 +303,8 @@
 │   │   │       ├── departements.ts
 │   │   │       ├── dirname.ts
 │   │   │       ├── encrypt-string.ts
+│   │   │       ├── error-manager.request-logger.test.ts
+│   │   │       ├── error-manager.test.ts
 │   │   │       ├── error-manager.ts
 │   │   │       ├── file-utils.ts
 │   │   │       ├── ftp-utils.test.ts
@@ -346,7 +349,9 @@
 │   │   │   │   │   ├── geo.private.controller.ts
 │   │   │   │   │   ├── metiers.private.controller.test.ts
 │   │   │   │   │   ├── metiers.private.controller.ts
-│   │   │   │   │   └── seo.private.controller.ts
+│   │   │   │   │   ├── seo.private.controller.ts
+│   │   │   │   │   ├── web-vitals.private.controller.test.ts
+│   │   │   │   │   └── web-vitals.private.controller.ts
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── eligible-trainings-for-appointment.controller.ts
 │   │   │   │   │   ├── etablissement.controller.ts
@@ -507,6 +512,7 @@
 │   │   │   │   ├── block-jobs-partners-from-expiration-date.ts
 │   │   │   │   ├── block-jobs-partners-from-flux-company-list.test.ts
 │   │   │   │   ├── block-jobs-partners-from-flux-company-list.ts
+│   │   │   │   ├── block-jobs-partners-with-naf85.test.ts
 │   │   │   │   ├── block-jobs-partners-with-naf85.ts
 │   │   │   │   ├── cancel-removed-jobs-partners.test.ts
 │   │   │   │   ├── cancel-removed-jobs-partners.ts
@@ -881,8 +887,10 @@
 │   │   │   ├── 20261022120000-add-detection-indexes.ts
 │   │   │   ├── 20261102130000-add-jobs-partners-flux-signals-index-5669.ts
 │   │   │   ├── 20261103120000-off-platform-only-moderations-out-of-queue-5843.ts
-│   │   │   └── 20261104180000-off-platform-only-pending-moderations-5843.ts
+│   │   │   ├── 20261104180000-off-platform-only-pending-moderations-5843.ts
+│   │   │   └── 20261106120000-cancel-empty-description-jobs-partners-5855.ts
 │   │   ├── security
+│   │   │   ├── access-log.service.test.ts
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
 │   │   │   ├── access-token.service.logging.test.ts
@@ -897,6 +905,7 @@
 │   │       │   └── formulaire.service.test.ts.snap
 │   │       ├── app-links.service.ts
 │   │       ├── applicant.service.ts
+│   │       ├── application-answers-email.test.ts
 │   │       ├── application-cv.service.test.ts
 │   │       ├── application-cv.service.ts
 │   │       ├── application-threshold.service.test.ts
@@ -1003,6 +1012,8 @@
 │   │       ├── role-management.service.ts
 │   │       ├── rome.service.ts
 │   │       ├── rome.service.types.ts
+│   │       ├── same-siret-accounts.service.test.ts
+│   │       ├── same-siret-accounts.service.ts
 │   │       ├── search
 │   │       │   ├── promote-smart-apply.test.ts
 │   │       │   ├── promote-smart-apply.ts
@@ -1042,7 +1053,7 @@
 │   │   │   ├── 20260129 Liste handi engages LBA.csv
 │   │   │   ├── Flux FT Alternance_Table de transcodage des villes.xlsx - Table de transcodage des villes.csv
 │   │   │   ├── code_rome_sans_domaine_solution_13.01.26.csv
-│   │   │   ├── engagementHandicap
+│   │   │   ├── engagement-handicap
 │   │   │   │   └── siret_handimatch_ft.csv
 │   │   │   ├── labonnealternance.referentielromes_classification_new_21.01.26.csv
 │   │   │   ├── romes renommées_changement de sous-domaines.csv
@@ -1095,12 +1106,14 @@
 │   │   │   └── givenSomeJobPartners.ts
 │   │   ├── integration
 │   │   │   ├── common
-│   │   │   │   └── model.test.ts
+│   │   │   │   ├── model.test.ts
+│   │   │   │   └── mongo-test-utils.test.ts
 │   │   │   └── migrations
 │   │   │       ├── add-rolemanagements-created-at-index-5411.test.ts
 │   │   │       ├── backfill-application-cv-deleted-at-5495.test.ts
 │   │   │       ├── backfill-missing-apply-url-jobs-partners.test.ts
 │   │   │       ├── backfill-offer-status-history-lba-5429.test.ts
+│   │   │       ├── cancel-empty-description-jobs-partners-5855.test.ts
 │   │   │       ├── clear-rome-content-custom-offers-5590.test.ts
 │   │   │       ├── drop-search-items-5526.test.ts
 │   │   │       ├── fix-closure-reason-offer-status-history-5722.test.ts
@@ -1145,8 +1158,11 @@
 │   ├── package.json
 │   ├── src
 │   │   ├── constants
+│   │   │   ├── applicant-questions.test.ts
+│   │   │   ├── applicant-questions.ts
 │   │   │   ├── application.ts
 │   │   │   ├── appointment.ts
+│   │   │   ├── auto-validation.ts
 │   │   │   ├── diffusible-status.ts
 │   │   │   ├── error-codes.ts
 │   │   │   ├── geiq.ts
@@ -1319,7 +1335,8 @@
 │   │   │   │   │   └── processor.admin.routes.ts
 │   │   │   │   ├── geo.routes.ts
 │   │   │   │   ├── metiers.routes.ts
-│   │   │   │   └── seo.routes.ts
+│   │   │   │   ├── seo.routes.ts
+│   │   │   │   └── web-vitals.routes.ts
 │   │   │   ├── application.routes.ts
 │   │   │   ├── appointments.routes.ts
 │   │   │   ├── common.routes.ts
@@ -1692,6 +1709,8 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── guide-recruteur
+│   │   │   │   ├── _components
+│   │   │   │   │   └── ConseillersEntreprises.tsx
 │   │   │   │   ├── cerfa-apprentissage-et-professionnalisation
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── const.ts
@@ -1759,6 +1778,9 @@
 │   │   │   └── espace-pro
 │   │   │       ├── (connected)
 │   │   │       │   ├── _components
+│   │   │       │   │   ├── AccountStatusBadge.tsx
+│   │   │       │   │   ├── AccountSummaryHeader.test.tsx
+│   │   │       │   │   ├── AccountSummaryHeader.tsx
 │   │   │       │   │   ├── AnimationContainer.tsx
 │   │   │       │   │   ├── BackEntrepriseUpsertOffre.tsx
 │   │   │       │   │   ├── CfaHome.tsx
@@ -1771,6 +1793,7 @@
 │   │   │       │   │   ├── ConnectedHeaderNavigation.tsx
 │   │   │       │   │   ├── ConnectedShellSkeleton.tsx
 │   │   │       │   │   ├── DetailEntreprise.tsx
+│   │   │       │   │   ├── DropdownCombobox.test.tsx
 │   │   │       │   │   ├── DropdownCombobox.tsx
 │   │   │       │   │   ├── EntreprisesGereesParCfa.tsx
 │   │   │       │   │   ├── EntreprisesGereesParCfaMenu.tsx
@@ -1790,20 +1813,36 @@
 │   │   │       │   │   ├── OffresTabs.tsx
 │   │   │       │   │   ├── OffresTabsMenu.test.tsx
 │   │   │       │   │   ├── OffresTabsMenu.tsx
+│   │   │       │   │   ├── SameSiretAccounts.test.tsx
+│   │   │       │   │   ├── SameSiretAccounts.tsx
 │   │   │       │   │   ├── UpsertOffre.tsx
+│   │   │       │   │   ├── account-review
+│   │   │       │   │   │   ├── AccountReview.tsx
+│   │   │       │   │   │   ├── ContactCard.tsx
+│   │   │       │   │   │   ├── DecisionPanel.tsx
+│   │   │       │   │   │   ├── review-signals.test.ts
+│   │   │       │   │   │   ├── review-signals.ts
+│   │   │       │   │   │   ├── use-next-account-to-review.test.ts
+│   │   │       │   │   │   └── use-next-account-to-review.ts
 │   │   │       │   │   ├── ameliorer-ia.utils.test.ts
 │   │   │       │   │   ├── ameliorer-ia.utils.ts
 │   │   │       │   │   └── moderation
+│   │   │       │   │       ├── AgentNote.test.tsx
 │   │   │       │   │       ├── AgentNote.tsx
 │   │   │       │   │       ├── ModerationBadges.test.tsx
 │   │   │       │   │       ├── ModerationBadges.tsx
 │   │   │       │   │       ├── ModerationJobDetail.test.tsx
 │   │   │       │   │       ├── ModerationJobDetail.tsx
+│   │   │       │   │       ├── ModerationJobNavigation.test.tsx
+│   │   │       │   │       ├── ModerationJobNavigation.tsx
 │   │   │       │   │       ├── ModerationPanel.test.tsx
 │   │   │       │   │       ├── ModerationPanel.tsx
+│   │   │       │   │       ├── ModerationQueue.test.tsx
 │   │   │       │   │       ├── ModerationQueue.tsx
 │   │   │       │   │       ├── RefusOffreModal.tsx
 │   │   │       │   │       ├── moderation-links.ts
+│   │   │       │   │       ├── moderation-queue-state.test.ts
+│   │   │       │   │       ├── moderation-queue-state.ts
 │   │   │       │   │       ├── moderation.types.test.ts
 │   │   │       │   │       └── moderation.types.ts
 │   │   │       │   ├── administration
@@ -2161,6 +2200,7 @@
 │   │   │   ├── ToastAnnouncer.tsx
 │   │   │   ├── ToastContent.tsx
 │   │   │   ├── TwoColumnFormLayout.tsx
+│   │   │   ├── WebVitalsReporter.tsx
 │   │   │   ├── WidgetAwareHeader.tsx
 │   │   │   ├── WidgetTester.tsx
 │   │   │   ├── submit-with-focus-on-error.ts
@@ -2466,6 +2506,7 @@
 │   │   │       └── Marianne-Thin_Italic.woff2
 │   │   ├── images
 │   │   │   ├── 1j1s
+│   │   │   │   ├── diffusion-partenaires.webp
 │   │   │   │   ├── enveloppe.webp
 │   │   │   │   ├── france.webp
 │   │   │   │   ├── illustration-lba.svg
@@ -2474,7 +2515,6 @@
 │   │   │   │   ├── mains.webp
 │   │   │   │   ├── mobile-candidatures.webp
 │   │   │   │   ├── mobile-offres.webp
-│   │   │   │   ├── partner.webp
 │   │   │   │   ├── personna.webp
 │   │   │   │   └── sourcing.webp
 │   │   │   ├── 5xx.svg
@@ -2590,6 +2630,7 @@
 │   │   │   │   ├── guide-recruteur
 │   │   │   │   │   ├── aides-a-l-embauche-en-alternance.svg
 │   │   │   │   │   ├── cerfa-apprentissage-et-professionnalisation.svg
+│   │   │   │   │   ├── conseillers-entreprises.svg
 │   │   │   │   │   ├── guide-apprentissage-et-handicap.svg
 │   │   │   │   │   └── je-suis-employeur-public.svg
 │   │   │   │   ├── guide.svg
@@ -2795,7 +2836,6 @@
 │   │   │   │   │   ├── logo-meteojob.svg
 │   │   │   │   │   ├── mon-master.svg
 │   │   │   │   │   └── parcoursup.svg
-│   │   │   │   ├── partenaire-1j1s.webp
 │   │   │   │   ├── partenaire-affelnet.webp
 │   │   │   │   ├── partenaire-apec.webp
 │   │   │   │   ├── partenaire-apecita.webp
@@ -2812,6 +2852,7 @@
 │   │   │   │   ├── partenaire-institut-pasteur.webp
 │   │   │   │   ├── partenaire-laposte.webp
 │   │   │   │   ├── partenaire-leboncoin.webp
+│   │   │   │   ├── partenaire-linkedin.webp
 │   │   │   │   ├── partenaire-loreal.webp
 │   │   │   │   ├── partenaire-meteojob.webp
 │   │   │   │   ├── partenaire-onisep.webp
@@ -3034,6 +3075,8 @@
 │       ├── request-utils.ts
 │       ├── robots.utils.test.ts
 │       ├── robots.utils.ts
+│       ├── route-history.utils.test.ts
+│       ├── route-history.utils.ts
 │       ├── routes.metadata.utils.test.ts
 │       ├── routes.metadata.utils.ts
 │       ├── routes.utils.ts
@@ -3043,7 +3086,11 @@
 │       ├── strutils.ts
 │       ├── tools.ts
 │       ├── use-search-params-record.ts
-│       └── validation-messages.ts
+│       ├── validation-messages.ts
+│       ├── web-vitals-reporting.test.ts
+│       ├── web-vitals-reporting.ts
+│       ├── web-vitals.utils.test.ts
+│       └── web-vitals.utils.ts
 ├── vitest.config.ts
 └── yarn.lock
-525 directories, 3091 files
+527 directories, 3136 files
