@@ -1,43 +1,45 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Plateforme permettant à l'État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE et PME.",
+  "description": "Plateforme permettant à l'État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE et PME. Elle facilite la mise en relation et le suivi des accompagnements entrepreneuriaux.",
   "language": "Ruby",
   "features": [
     "Administration & Backoffice",
     "Statistiques & Rapports",
-    "Authentification & Accès",
-    "API & Intégrations",
+    "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion documentaire & Fichiers",
+    "Tableaux & Affichage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
-    "Redis",
     "Sidekiq",
     "Devise",
     "ActiveAdmin",
+    "Redis",
+    "AWS S3",
     "Stimulus",
     "Turbo",
-    "DSFR"
+    "@gouvfr/dsfr"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "Ruby on Rails",
+    "PostgreSQL & SQL",
+    "Authentification (composant)",
     "Design System (DSFR & UI libs)",
     "Tests",
-    "Authentification (composant)",
-    "Reporting & BI",
-    "Templates & Moteurs de rendu"
+    "API REST & GraphQL"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "api-key",
-      "jwt"
+      "session",
+      "oauth2"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
@@ -50,7 +52,7 @@
   "workflows": [
     "CircleCI"
   ],
-  "lastActivity": "2026-09-15T11:27:35+02:00",
+  "lastActivity": "2026-11-10T12:05:41+01:00",
   "status": "maintained",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -59,9 +61,6 @@
     "Ruby on Rails",
     "Bases de données SQL",
     "Design System & UI",
-    "Reporting & BI",
-    "Git & DevOps",
-    "Accessibilité",
-    "Documentation"
+    "CI/CD & GitHub Actions"
   ]
 }

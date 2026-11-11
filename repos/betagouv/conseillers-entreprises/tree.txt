@@ -12,6 +12,7 @@
 │   ├── config
 │   │   └── rubocop_linter_action.yml
 │   └── workflows
+│       ├── check-external-links.yml
 │       ├── dependency-review.yml
 │       └── update-dependencies.yml
 ├── .gitignore
@@ -48,6 +49,7 @@
 │   │   ├── expert.rb
 │   │   ├── facility.rb
 │   │   ├── feedback.rb
+│   │   ├── file_import.rb
 │   │   ├── helpers
 │   │   │   ├── admin_link_to.rb
 │   │   │   ├── csv_builder.rb
@@ -81,6 +83,9 @@
 │   │   ├── images
 │   │   │   ├── Republique_Francaise_RVB.png
 │   │   │   ├── Republique_Francaise_blanc.png
+│   │   │   ├── conseillers-430w.png
+│   │   │   ├── conseillers.png
+│   │   │   ├── conseillers.webp
 │   │   │   ├── cooperations
 │   │   │   │   ├── dreets.png
 │   │   │   │   ├── entreprendre.jpg
@@ -284,6 +289,7 @@
 │   │   ├── annuaire
 │   │   │   ├── antennes_controller.rb
 │   │   │   ├── base_controller.rb
+│   │   │   ├── file_imports_controller.rb
 │   │   │   ├── institutions_controller.rb
 │   │   │   ├── search_controller.rb
 │   │   │   ├── subjects_controller.rb
@@ -299,6 +305,7 @@
 │   │   │       │   ├── landing_subjects_controller.rb
 │   │   │       │   ├── landing_themes_controller.rb
 │   │   │       │   └── landings_controller.rb
+│   │   │       ├── qualifications_controller.rb
 │   │   │       ├── solicitations_controller.rb
 │   │   │       └── subjects_controller.rb
 │   │   ├── app_roots_controller.rb
@@ -359,7 +366,9 @@
 │   │   ├── user_pages_controller.rb
 │   │   └── users
 │   │       ├── invitations_controller.rb
-│   │       └── registrations_controller.rb
+│   │       ├── omniauth_callbacks_controller.rb
+│   │       ├── registrations_controller.rb
+│   │       └── sessions_controller.rb
 │   ├── helpers
 │   │   ├── about_seo_helper.rb
 │   │   ├── active_admin_utilities_helper.rb
@@ -517,6 +526,7 @@
 │   │   ├── expert_subject.rb
 │   │   ├── facility.rb
 │   │   ├── feedback.rb
+│   │   ├── file_import.rb
 │   │   ├── institution.rb
 │   │   ├── institution_subject.rb
 │   │   ├── landing.rb
@@ -532,7 +542,8 @@
 │   │   │   ├── human_attribute_value.rb
 │   │   │   ├── human_count.rb
 │   │   │   ├── in_batches_with_progress.rb
-│   │   │   └── random.rb
+│   │   │   ├── random.rb
+│   │   │   └── with_count.rb
 │   │   ├── reminders_action.rb
 │   │   ├── reminders_register.rb
 │   │   ├── shared_satisfaction.rb
@@ -552,6 +563,7 @@
 │   │   └── user_right.rb
 │   ├── policies
 │   │   ├── activity_report_policy.rb
+│   │   ├── annuaire.rb
 │   │   ├── antenne_policy.rb
 │   │   ├── application_policy.rb
 │   │   ├── contact_policy.rb
@@ -561,7 +573,6 @@
 │   │   ├── expert_policy.rb
 │   │   ├── facility_policy.rb
 │   │   ├── feedback_policy.rb
-│   │   ├── institution_policy.rb
 │   │   ├── manager
 │   │   │   ├── needs_policy.rb
 │   │   │   └── stats_policy.rb
@@ -581,6 +592,8 @@
 │   │   │       ├── simple_subject_answer_serializer.rb
 │   │   │       ├── solicitation_logo_serializer.rb
 │   │   │       ├── solicitation_serializer.rb
+│   │   │       ├── solicitations
+│   │   │       │   └── unqualified_serializer.rb
 │   │   │       ├── subject_question_serializer.rb
 │   │   │       └── subject_serializer.rb
 │   │   └── autocomplete
@@ -596,7 +609,10 @@
 │   │   │   ├── generator_base.rb
 │   │   │   ├── notify_antenne_managers.rb
 │   │   │   └── notify_cooperation_managers.rb
+│   │   ├── annuaire
+│   │   │   └── users_data.rb
 │   │   ├── anonymization.rb
+│   │   ├── anonymized_examples.rb
 │   │   ├── antenne_hierarchy.rb
 │   │   ├── api
 │   │   │   ├── api_entreprise
@@ -699,6 +715,7 @@
 │   │   │   └── diffusable.rb
 │   │   ├── send_solicitation_generic_email.rb
 │   │   ├── sitemap_generator.rb
+│   │   ├── solicitation_examples.rb
 │   │   ├── solicitation_modification
 │   │   │   ├── base.rb
 │   │   │   ├── create.rb
@@ -830,7 +847,7 @@
 │       │       ├── _douanes.html.erb
 │       │       ├── _droit_du_travail.html.erb
 │       │       ├── _opco_entreprises_de_proximite.html.erb
-│       │       ├── index.html.haml
+│       │       ├── index.html.erb
 │       │       └── show.html.haml
 │       ├── admin
 │       │   ├── reassign_matches
@@ -839,38 +856,45 @@
 │       │       └── _badges.html.haml
 │       ├── annuaire
 │       │   ├── antennes
-│       │   │   ├── _form.html.haml
-│       │   │   ├── _import_buttons.html.haml
-│       │   │   ├── _table.html.haml
-│       │   │   ├── import.html.haml
-│       │   │   └── index.html.haml
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _import_buttons.html.erb
+│       │   │   ├── _table.html.erb
+│       │   │   └── index.html.erb
 │       │   ├── base
-│       │   │   ├── _header.html.haml
-│       │   │   ├── _import_errors.html.haml
-│       │   │   ├── _menu.html.haml
-│       │   │   └── _menu_link.html.haml
+│       │   │   ├── _header.html.erb
+│       │   │   ├── _menu.html.erb
+│       │   │   └── _menu_link.html.erb
+│       │   ├── file_imports
+│       │   │   ├── analysis.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── preview.html.erb
 │       │   ├── institutions
-│       │   │   ├── _form.html.haml
-│       │   │   ├── _table.html.haml
-│       │   │   └── index.html.haml
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _table.html.erb
+│       │   │   └── index.html.erb
 │       │   ├── search
-│       │   │   ├── _form.html.haml
-│       │   │   ├── _results.html.haml
-│       │   │   ├── _simple_form.html.haml
-│       │   │   ├── autocomplete.html.haml
-│       │   │   └── institutions_autocomplete.html.haml
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _results.html.erb
+│       │   │   ├── _simple_form.html.erb
+│       │   │   ├── autocomplete.html.erb
+│       │   │   └── institutions_autocomplete.html.erb
 │       │   ├── subjects
-│       │   │   ├── _table.html.haml
-│       │   │   └── index.html.haml
+│       │   │   ├── _table.html.erb
+│       │   │   └── index.html.erb
 │       │   └── users
-│       │       ├── _coverage.html.haml
-│       │       ├── _import_buttons.html.haml
-│       │       ├── _lazy_coverage.html.haml
-│       │       ├── _referencement_coverage_modal.html.haml
-│       │       ├── _skeleton_coverage.html.haml
-│       │       ├── _table.html.haml
-│       │       ├── import.html.haml
-│       │       └── index.html.haml
+│       │       ├── _coverage.html.erb
+│       │       ├── _import_buttons.html.erb
+│       │       ├── _lazy_coverage.html.erb
+│       │       ├── _referencement_coverage_modal.html.erb
+│       │       ├── _skeleton_coverage.html.erb
+│       │       ├── _table.html.erb
+│       │       ├── index.html.erb
+│       │       └── table
+│       │           ├── _antenne_cell.html.erb
+│       │           ├── _expert_cell.html.erb
+│       │           ├── _expert_subjects_cells.html.erb
+│       │           ├── _header.html.erb
+│       │           └── _user_cell.html.erb
 │       ├── application
 │       │   ├── _footer.html.haml
 │       │   ├── _head.html.haml
@@ -973,7 +997,7 @@
 │       │   ├── registrations
 │       │   │   └── edit.html.haml
 │       │   ├── sessions
-│       │   │   └── new.html.haml
+│       │   │   └── new.html.erb
 │       │   └── shared
 │       │       ├── _links.html.haml
 │       │       └── _user_fields.haml
@@ -999,7 +1023,7 @@
 │       │   │   └── _card.html.haml
 │       │   ├── landing_themes
 │       │   │   ├── _card.html.haml
-│       │   │   └── show.haml
+│       │   │   └── show.erb
 │       │   └── landings
 │       │       ├── _home_emphasis_item.html.erb
 │       │       ├── _index_institutions.html.haml
@@ -1010,7 +1034,7 @@
 │       │       ├── _single_page.html.haml
 │       │       ├── home.html.erb
 │       │       ├── paused.haml
-│       │       └── show.haml
+│       │       └── show.html.erb
 │       ├── layouts
 │       │   ├── annuaire.haml
 │       │   ├── application.html.haml
@@ -1162,8 +1186,9 @@
 │       │   └── sitemap.xml.builder
 │       ├── solicitations
 │       │   ├── _company_tile.html.haml
+│       │   ├── _examples.html.erb
 │       │   ├── _facility_tile.html.haml
-│       │   ├── _header.html.haml
+│       │   ├── _header.html.erb
 │       │   ├── _iframe_footer.html.haml
 │       │   ├── _institutions_opco_tile.html.haml
 │       │   ├── _institutions_tiles.html.haml
@@ -1207,7 +1232,6 @@
 │               └── password.html.haml
 ├── bin
 │   ├── brakeman
-│   ├── bundle
 │   ├── dev
 │   ├── parallel_rspec
 │   ├── rails
@@ -1225,8 +1249,10 @@
 │   ├── brakeman.ignore
 │   ├── cable.yml
 │   ├── data
+│   │   ├── anonymized_examples.yaml
 │   │   ├── demo_planning.yml
 │   │   ├── idcc_to_opco.yml
+│   │   ├── solicitation_examples.yml
 │   │   ├── subject_answers.yml
 │   │   └── temoignages_experts.yml
 │   ├── database.yml
@@ -1304,7 +1330,15 @@
 │   │   ├── 20260717131234_add_subject_can_be_automated.rb
 │   │   ├── 20260826135034_remove_intelligent_retention.rb
 │   │   ├── 20260901142450_add_landing_subject_emphasis.rb
-│   │   └── 20260903080706_add_user_last_active_at.rb
+│   │   ├── 20260903080706_add_user_last_active_at.rb
+│   │   ├── 20260907120609_add_qualified_to_solicitations.rb
+│   │   ├── 20260907122718_add_scopes_to_api_keys.rb
+│   │   ├── 20260907130113_add_unqualified_index_to_solicitations.rb
+│   │   ├── 20260922103000_rename_moins_de_10k_restant_a_financer_subject_question.rb
+│   │   ├── 20260928084735_description_not_null.rb
+│   │   ├── 20260929150000_add_proconnect_sub_to_users.rb
+│   │   ├── 20261028140000_add_excluded_from_qualification_to_subjects.rb
+│   │   └── 20261106115447_create_file_imports.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1420,8 +1454,13 @@
 │   │   ├── shared_controller_spec.rb
 │   │   ├── sitemap_controller_spec.rb
 │   │   ├── solicitations_controller_spec.rb
-│   │   └── stats
-│   │       └── team_controller_spec.rb
+│   │   ├── stats
+│   │   │   └── team_controller_spec.rb
+│   │   └── users
+│   │       ├── invitations_controller_spec.rb
+│   │       ├── omniauth_callbacks_controller_spec.rb
+│   │       ├── registrations_controller_spec.rb
+│   │       └── sessions_controller_spec.rb
 │   ├── factories
 │   │   ├── activity_report.rb
 │   │   ├── antennes.rb
@@ -1438,6 +1477,7 @@
 │   │   ├── experts_subjects.rb
 │   │   ├── facilities.rb
 │   │   ├── feedbacks.rb
+│   │   ├── file_imports.rb
 │   │   ├── institutions.rb
 │   │   ├── institutions_subjects.rb
 │   │   ├── landing_subjects.rb
@@ -1471,6 +1511,7 @@
 │   │   │   └── stats_spec.rb
 │   │   ├── new_solicitation_js_feature_spec.rb
 │   │   ├── new_solicitation_no_js_feature_spec.rb
+│   │   ├── proconnect_signin_spec.rb
 │   │   ├── reminders
 │   │   │   ├── experts_feature_spec.rb
 │   │   │   └── needs_feature_spec.rb
@@ -1478,6 +1519,7 @@
 │   │   │   └── reports_feature_spec.rb
 │   │   ├── shared_controller_feature_spec.rb
 │   │   ├── signin_spec.rb
+│   │   ├── solicitation_examples_feature_spec.rb
 │   │   ├── solicitations
 │   │   │   └── send_generic_emails_spec.rb
 │   │   └── users
@@ -1519,7 +1561,8 @@
 │   │       ├── csv_import
 │   │       │   ├── antennes-with-4-digits-insee-codes.csv
 │   │       │   ├── antennes-with-blank-rows.csv
-│   │       │   └── users-with-comma-in-emails.csv
+│   │       │   ├── users-with-comma-in-emails.csv
+│   │       │   └── users.csv
 │   │       ├── entreprise_data_gouv_full_text.json
 │   │       ├── entreprise_data_gouv_siren.json
 │   │       └── geo_api_communes_78586.json
@@ -1594,6 +1637,7 @@
 │   │   ├── expert_subject_spec.rb
 │   │   ├── facility_spec.rb
 │   │   ├── feedback_spec.rb
+│   │   ├── file_import_spec.rb
 │   │   ├── institution_spec.rb
 │   │   ├── institution_subject_spec.rb
 │   │   ├── landing_spec.rb
@@ -1603,7 +1647,8 @@
 │   │   ├── need_spec.rb
 │   │   ├── profil_picture_spec.rb
 │   │   ├── record_extensions
-│   │   │   └── human_count_spec.rb
+│   │   │   ├── human_count_spec.rb
+│   │   │   └── with_count_spec.rb
 │   │   ├── shared_satisfaction_spec.rb
 │   │   ├── solicitation_mail_template_spec.rb
 │   │   ├── solicitation_spec.rb
@@ -1640,6 +1685,9 @@
 │   │   │       ├── landing_subjects_spec.rb
 │   │   │       ├── landing_themes_spec.rb
 │   │   │       ├── landings_spec.rb
+│   │   │       ├── qualifications
+│   │   │       │   ├── qualifications_spec.rb
+│   │   │       │   └── unqualified_spec.rb
 │   │   │       ├── solicitations_spec.rb
 │   │   │       └── subjects_spec.rb
 │   │   ├── landings_spec.rb
@@ -1654,6 +1702,8 @@
 │   │   │   ├── generator_base_spec.rb
 │   │   │   ├── notify_antenne_managers_spec.rb
 │   │   │   └── notify_cooperation_managers_spec.rb
+│   │   ├── annuaire
+│   │   │   └── users_data_spec.rb
 │   │   ├── anonymization_spec.rb
 │   │   ├── antenne_hierarchy_spec.rb
 │   │   ├── api
@@ -1721,19 +1771,30 @@
 │   │   │   ├── all_spec.rb
 │   │   │   └── diffusable_spec.rb
 │   │   ├── send_solicitation_generic_email_spec.rb
+│   │   ├── solicitation_examples_spec.rb
 │   │   ├── solicitations_relaunch_service_spec.rb
 │   │   ├── stats
 │   │   │   ├── acquisitions
 │   │   │   │   ├── by_new_companies_spec.rb
 │   │   │   │   └── overall_distribution_spec.rb
-│   │   │   └── filters
-│   │   │       ├── companies_spec.rb
-│   │   │       ├── matches_spec.rb
-│   │   │       ├── needs_spec.rb
-│   │   │       └── solicitations_spec.rb
+│   │   │   ├── concerns
+│   │   │   │   └── partitioned_category_spec.rb
+│   │   │   ├── filters
+│   │   │   │   ├── companies_spec.rb
+│   │   │   │   ├── matches_spec.rb
+│   │   │   │   ├── needs_spec.rb
+│   │   │   │   └── solicitations_spec.rb
+│   │   │   ├── matches
+│   │   │   │   └── two_rates_characterization_spec.rb
+│   │   │   ├── needs
+│   │   │   │   └── two_rates_characterization_spec.rb
+│   │   │   ├── response_time_characterization_spec.rb
+│   │   │   └── solicitations
+│   │   │       └── characterization_spec.rb
 │   │   └── xlsx_export
 │   │       ├── antenne_stats_worksheet_generator
 │   │       │   ├── by_antenne_spec.rb
+│   │       │   ├── by_position_spec.rb
 │   │       │   └── by_region_spec.rb
 │   │       └── cooperation_exporter_spec.rb
 │   ├── spec_helper.rb
@@ -1791,4 +1852,4 @@
 ├── tmp
 │   └── .keep
 └── yarn.lock
-297 directories, 1505 files
+308 directories, 1555 files

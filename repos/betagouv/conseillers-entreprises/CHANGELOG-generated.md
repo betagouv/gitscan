@@ -1,20 +1,30 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 15 septembre 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 10 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements ont porté sur l'amélioration de l'interface d'administration (suivi d'activité), l'optimisation des performances (mise en cache et statistiques) et le renforcement de la gestion des données (anonymisation et pseudonymisation).
+Ce mois-ci, la plateforme a franchi des étapes clés avec l'intégration de l'authentification ProConnect et le renforcement des outils d'administration. Les capacités d'importation de données ont été modernisées pour plus de fiabilité, et l'annuaire est devenu plus fluide et précis. Enfin, des mises à jour de conformité RGPD ont été appliquées pour sécuriser la gestion des données sensibles.
 
 ### Évolutions fonctionnelles
-- **Administration** : Ajout du suivi de l'activité des utilisateurs (date de dernière connexion) dans l'interface d'administration [#4682](https://github.com/betagouv/conseillers-entreprises/pull/4682).
-- **Gestion des utilisateurs** : Amélioration de la fonction de duplication d'experts, incluant la reprise des zones territoriales et la possibilité de réattribuer des dossiers (matches) en cours [#4651](https://github.com/betagouv/conseillers-entreprises/pull/4651).
-- **Exports** : Enrichissement des exports Excel (XLSX) avec l'ajout de données sur les taux de réponse à cinq jours [#4666](https://github.com/betagouv/conseillers-entreprises/pull/4666).
-- **Interface (Landing Page)** : Refonte et personnalisation des éléments de mise en avant (emphasis items) sur la page d'accueil [#4687](https://github.com/betagouv/conseillers-entreprises/pull/4687).
+- **Authentification :** Intégration de ProConnect pour la gestion des connexions, des sessions et de la déconnexion des utilisateurs [#4734](https://github.com/betagouv/conseillers-entreprises/pull/4734).
+- **Administration :** 
+    - Amélioration de la gestion des qualifications : possibilité d'afficher, filtrer et éditer les informations de qualification directement dans l'interface d'administration [#4780](https://github.com/betagouv/conseillers-entreprises/pull/4780).
+    - Déploiement d'une nouvelle interface de gestion pour l'importation de fichiers [#4731](https://github.com/betagouv/conseillers-entreprises/pull/4731).
+- **Annuaire :** 
+    - Correction de l'affichage des résultats de recherche pour les antennes et les conseillers [#4763](https://github.com/betagouv/conseillers-entreprises/pull/4763).
+    - Amélioration de la navigation en permettant de cliquer directement sur une cellule pour accéder aux conseillers d'une antenne [#4763](https://github.com/betagouv/conseillers-entreprises/pull/4763).
+- **Conformité et Données :** 
+    - Mise à jour des mentions d'information et renforcement des accords de traitement pour les données de santé (sujets TIH) [#4762](https://github.com/betagouv/conseillers-entreprises/pull/4762).
+    - Amélioration de la gestion des sujets via l'API, permettant de filtrer précisément les éléments qualifiables [#4772](https://github.com/betagouv/conseillers-entreprises/pull/4772).
 
 ### Évolutions techniques
-- **Performance** : Optimisation des temps de réponse via l'implémentation du cache de fragments (landings, footer) et l'optimisation de requêtes SQL complexes [#4657](https://github.com/betagouv/conseillers-entreprises/pull/4657).
-- **Données & Sécurité** : Accélération du processus d'anonymisation des données avec ajout d'une barre de progression [#4655](https://github.com/betagouv/conseillers-entreprises/pull/4655) et mise en place de la pseudonymisation des données pour les environnements de développement [#4656](https://github.com/betagouv/conseillers-entreprises/pull/4656).
-- **Statistiques** : Sécurisation des calculs statistiques (protection contre les injections SQL via les wildcards) et refactorisation du moteur de statistiques d'acquisition pour plus d'efficacité [#4667](https://github.com/betagouv/conseillers-entreprises/pull/4667).
-- **Infrastructure** : Activation du stockage de fichiers (`file_store`) en production [#4675](https://github.com/betagouv/conseillers-entreprises/pull/4675).
+- **Performances :** Optimisation de l'Annuaire par la suppression de requêtes SQL redondantes (problèmes de N+1 queries) lors de la récupération des données utilisateurs [#4728](https://github.com/betagouv/conseillers-entreprises/pull/4728).
+- **Fiabilité des imports :** 
+    - Renforcement de l'importateur CSV pour prévenir les plantages liés aux en-têtes vides ou aux caractères spéciaux (BOM) [#4738](https://github.com/betagouv/conseillers-entreprises/pull/4738) [#4783](https://github.com/betagouv/conseillers-entreprises/pull/4783).
+    - Amélioration de la gestion des erreurs lors des processus d'importation pour garantir l'intégrité des données.
+- **Refactorisation :** 
+    - Conversion massive des vues de l'Annuaire du format HAML vers ERB pour uniformiser le projet [#4764](https://github.com/betagouv/conseillers-entreprises/pull/4764).
+    - Simplification des routes de l'Annuaire et des antennes [#4763](https://github.com/betagouv/conseillers-entreprises/pull/4763).
+- **API :** Régénération de la documentation Swagger pour garantir la cohérence des endpoints [#4777](https://github.com/betagouv/conseillers-entreprises/pull/4777).
 
 ### Autres changements
-- **Nettoyage** : Suppression de code mort et de fonctionnalités obsolètes (SoftDeletable, intelligent retention) [#4652](https://github.com/betagouv/conseillers-entreprises/pull/4652).
-- **Migration** : Conversion des templates HAML vers ERB pour uniformiser le projet [#4673](https://github.com/betagouv/conseillers-entreprises/pull/4673).
+- **Maintenance :** Synchronisation de la structure de la base de données (schema.rb) [#4748](https://github.com/betagouv/conseillers-entreprises/pull/4748).
+- **Nettoyage :** Corrections de formatage du code et nettoyage de fichiers de vues non utilisés [#4788](https://github.com/betagouv/conseillers-entreprises/pull/4788).
