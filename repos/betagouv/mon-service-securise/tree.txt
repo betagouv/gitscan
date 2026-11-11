@@ -42,6 +42,11 @@
 │   │   └── duplicationEnMasseDeServices.js
 │   ├── migrationHash.js
 │   └── migrationHash.spec.js
+├── chantier_pptx
+│   ├── essaiAutomizer.pptx
+│   ├── plan.md
+│   └── spike
+│       └── essaiAutomizer.mjs
 ├── clevercloud
 │   └── cron.json
 ├── docker-compose.yml
@@ -417,6 +422,7 @@
 │   │   │   │   ├── aucune_notification.svg
 │   │   │   │   ├── illustrations
 │   │   │   │   │   ├── activites.png
+│   │   │   │   │   ├── apiPublique.svg
 │   │   │   │   │   ├── besoinsSecurite.svg
 │   │   │   │   │   ├── communauteMSS.png
 │   │   │   │   │   ├── encart_homologation.png
@@ -595,6 +601,7 @@
 │   ├── dev-init-sel.js
 │   ├── dev_init_sel.sh
 │   ├── get-node-version.sh
+│   ├── migration-postgres-14-vers-18.sh
 │   ├── moteurRegles
 │   │   ├── transformeCSVGristDonneesComplementairesMesuresEnJSON.sh
 │   │   ├── transformeCSVGristEnJSON.sh
@@ -612,10 +619,16 @@
 │   │   └── transformeCorrespondanceReCyfEnTypescript.sh
 │   ├── start.sh
 │   ├── taches
+│   │   ├── gardeCron.sh
 │   │   ├── tacheEnvoiRapportHebdomadaire.sh
 │   │   ├── tacheEnvoiRapportHebdomadaire.ts
+│   │   ├── tacheEnvoiRapportMensuel.sh
+│   │   ├── tacheEnvoiRapportMensuel.ts
 │   │   ├── tacheEnvoieMailsNotificationExpiration.js
-│   │   └── tacheEnvoieMailsNotificationExpiration.sh
+│   │   ├── tacheEnvoieMailsNotificationExpiration.sh
+│   │   ├── tacheHistoriseNombreDeServicesDansCrm.sh
+│   │   ├── tacheHistoriseNombreDeServicesDansCrm.ts
+│   │   └── tachePurgeRevocationsJwt.sh
 │   ├── tests.sh
 │   └── ui-kit
 │       └── maj.sh
@@ -658,14 +671,17 @@
 │   │   ├── adaptateurPersistanceMemoireTestsAccessibiliteTS.ts
 │   │   ├── adaptateurPostgres.js
 │   │   ├── adaptateurPostgresTS.ts
+│   │   ├── adaptateurPowerpoint.automizer.ts
+│   │   ├── adaptateurPowerpoint.interface.ts
 │   │   ├── adaptateurProfilAnssi.js
 │   │   ├── adaptateurProfilAnssiVide.js
 │   │   ├── adaptateurProtection.interface.ts
 │   │   ├── adaptateurProtection.js
 │   │   ├── adaptateurRechercheEntreprise.interface.ts
 │   │   ├── adaptateurRechercheEntrepriseAPI.js
-│   │   ├── adaptateurReporting.interface.ts
-│   │   ├── adaptateurReporting.webhookMattermost.ts
+│   │   ├── adaptateurReportingTechnique.console.ts
+│   │   ├── adaptateurReportingTechnique.interface.ts
+│   │   ├── adaptateurReportingTechnique.webhookMattermost.ts
 │   │   ├── adaptateurStatistiques.interface.ts
 │   │   ├── adaptateurStatistiquesMemoire.ts
 │   │   ├── adaptateurStatistiquesPostgres.ts
@@ -795,7 +811,6 @@
 │   │   │   ├── metAJourContactsBrevoDesContributeurs.js
 │   │   │   ├── metAJourEstimationNombreServicesContactBrevo.js
 │   │   │   ├── metAJourParrainage.js
-│   │   │   ├── modifieLienEntrepriseEtContactBrevo.js
 │   │   │   ├── modifieLienServiceEtSuperviseurs.ts
 │   │   │   ├── modifieRattachementServiceAuxSuperviseursEtAdmins.ts
 │   │   │   ├── rattacheServiceEtAdmins.ts
@@ -857,7 +872,8 @@
 │   ├── cms
 │   │   └── cmsCrisp.ts
 │   ├── crm
-│   │   └── crmBrevo.js
+│   │   ├── crmBrevo.js
+│   │   └── historiseNombreDeServicesParEntiteDansCrm.ts
 │   ├── depotDonnees.interface.ts
 │   ├── depotDonnees.ts
 │   ├── depots
@@ -1042,6 +1058,8 @@
 │   │   │   └── objetPDFAnnexeRisquesV2.ts
 │   │   ├── objetsPersistance
 │   │   │   └── objetPersistanceService.js
+│   │   ├── objetsPowerpoint
+│   │   │   └── piecesDuDossier.ts
 │   │   ├── parcoursUtilisateur.ts
 │   │   ├── parrainage.js
 │   │   ├── partiesPrenantes
@@ -1098,6 +1116,7 @@
 │   │       └── regleV2.ts
 │   ├── moteurRisques
 │   │   └── v2
+│   │       ├── categoriesObjectifsVises.ts
 │   │       ├── graviteObjectifsVises.ts
 │   │       ├── graviteVecteurs.configuration.ts
 │   │       ├── graviteVecteurs.ts
@@ -1139,6 +1158,8 @@
 │   │   ├── formatteursNotifications.ts
 │   │   ├── notification.types.ts
 │   │   ├── rapportHebdomadaire.ts
+│   │   ├── rapportMensuel.ts
+│   │   ├── servicesSansMesuresAppliquees.ts
 │   │   └── sources
 │   │       ├── sourceNotificationsTransactionnelles.ts
 │   │       ├── sourceNouveautes.ts
@@ -1184,6 +1205,7 @@
 │   │   │   ├── routesConnecteApiServiceMesuresSpecifiques.ts
 │   │   │   ├── routesConnecteApiServiceModeleMesureSpecifique.ts
 │   │   │   ├── routesConnecteApiServicePdf.js
+│   │   │   ├── routesConnecteApiServicePowerpoint.ts
 │   │   │   ├── routesConnecteApiServiceRetourUtilisateur.ts
 │   │   │   ├── routesConnecteApiServiceRisquesSpecifiques.schema.ts
 │   │   │   ├── routesConnecteApiServiceRisquesSpecifiques.ts
@@ -1315,46 +1337,48 @@
 │   │   ├── tableauDeBord.pug
 │   │   └── visiteGuidee
 │   │       └── spa.pug
-│   └── vuesPdf
-│       ├── annexe.description.typ
-│       ├── annexe.mesures.typ
-│       ├── annexe.risques.typ
-│       ├── annexe.risquesV2.typ
-│       ├── annexes.typ
-│       ├── assets
-│       │   ├── badge_ancien_referentiel.svg
-│       │   ├── collaborateurs.svg
-│       │   ├── dossier_entete.svg
-│       │   ├── etoile_orange.svg
-│       │   ├── fleche_bleue.svg
-│       │   ├── icone_alerte.svg
-│       │   ├── icone_dossier.png
-│       │   ├── icone_etoile.png
-│       │   ├── logo_anssi.png
-│       │   ├── logo_mss.png
-│       │   ├── logo_republique.png
-│       │   ├── niveau1.svg
-│       │   ├── niveau2.svg
-│       │   ├── niveau3.svg
-│       │   ├── tampon_rgpd.svg
-│       │   └── tampon_rgs.svg
-│       ├── base.typ
-│       ├── commun.typ
-│       ├── dossierDecision.typ
-│       ├── fonts
-│       │   ├── Marianne-Bold.ttf
-│       │   ├── Marianne-BoldItalic.ttf
-│       │   ├── Marianne-ExtraBold.ttf
-│       │   ├── Marianne-ExtraBoldItalic.ttf
-│       │   ├── Marianne-Light.ttf
-│       │   ├── Marianne-LightItalic.ttf
-│       │   ├── Marianne-Medium.ttf
-│       │   ├── Marianne-MediumItalic.ttf
-│       │   ├── Marianne-Regular.ttf
-│       │   ├── Marianne-RegularItalic.ttf
-│       │   ├── Marianne-Thin.ttf
-│       │   └── Marianne-ThinItalic.ttf
-│       └── syntheseSecurite.typ
+│   ├── vuesPdf
+│   │   ├── annexe.description.typ
+│   │   ├── annexe.mesures.typ
+│   │   ├── annexe.risques.typ
+│   │   ├── annexe.risquesV2.typ
+│   │   ├── annexes.typ
+│   │   ├── assets
+│   │   │   ├── badge_ancien_referentiel.svg
+│   │   │   ├── collaborateurs.svg
+│   │   │   ├── dossier_entete.svg
+│   │   │   ├── etoile_orange.svg
+│   │   │   ├── fleche_bleue.svg
+│   │   │   ├── icone_alerte.svg
+│   │   │   ├── icone_dossier.png
+│   │   │   ├── icone_etoile.png
+│   │   │   ├── logo_anssi.png
+│   │   │   ├── logo_mss.png
+│   │   │   ├── logo_republique.png
+│   │   │   ├── niveau1.svg
+│   │   │   ├── niveau2.svg
+│   │   │   ├── niveau3.svg
+│   │   │   ├── tampon_rgpd.svg
+│   │   │   └── tampon_rgs.svg
+│   │   ├── base.typ
+│   │   ├── commun.typ
+│   │   ├── dossierDecision.typ
+│   │   ├── fonts
+│   │   │   ├── Marianne-Bold.ttf
+│   │   │   ├── Marianne-BoldItalic.ttf
+│   │   │   ├── Marianne-ExtraBold.ttf
+│   │   │   ├── Marianne-ExtraBoldItalic.ttf
+│   │   │   ├── Marianne-Light.ttf
+│   │   │   ├── Marianne-LightItalic.ttf
+│   │   │   ├── Marianne-Medium.ttf
+│   │   │   ├── Marianne-MediumItalic.ttf
+│   │   │   ├── Marianne-Regular.ttf
+│   │   │   ├── Marianne-RegularItalic.ttf
+│   │   │   ├── Marianne-Thin.ttf
+│   │   │   └── Marianne-ThinItalic.ttf
+│   │   └── syntheseSecurite.typ
+│   └── vuesPowerpoint
+│       └── supportCommissionHomologation.pptx
 ├── svelte
 │   ├── CLAUDE.md
 │   ├── eslint
@@ -1582,6 +1606,11 @@
 │   │   │   ├── ActionsComplementaires.svelte
 │   │   │   ├── FiltreSurV1V2.svelte
 │   │   │   ├── ListeMesures.svelte
+│   │   │   ├── applicationMesuresAServices
+│   │   │   │   ├── EncartApplicationMesuresAServices.svelte
+│   │   │   │   ├── EncartPreferenceMailMensuel.svelte
+│   │   │   │   ├── ModaleApplicationMesuresAServices.svelte
+│   │   │   │   └── TableauServicesPourApplication.svelte
 │   │   │   ├── kit
 │   │   │   │   ├── DescriptionCompleteMesure.svelte
 │   │   │   │   ├── ModaleDetailsMesure.svelte
@@ -1742,7 +1771,8 @@
 │   │   │   │   ├── BlocPreferences.svelte
 │   │   │   │   ├── PreferencesConsentements.svelte
 │   │   │   │   ├── PreferencesNotificationsParEmail.svelte
-│   │   │   │   └── PreferencesRecapitulatifHebdomadaire.svelte
+│   │   │   │   ├── PreferencesRecapitulatifHebdomadaire.svelte
+│   │   │   │   └── PreferencesRecapitulatifMensuel.svelte
 │   │   │   ├── preferences.api.ts
 │   │   │   ├── preferences.ts
 │   │   │   └── preferences.types.ts
@@ -1797,10 +1827,13 @@
 │   │   │   │   ├── MatriceRisquesV2.svelte
 │   │   │   │   └── matrice.ts
 │   │   │   ├── modale
+│   │   │   │   ├── ContenuOngletListeRisquesANSSI.svelte
 │   │   │   │   ├── ModaleAnciensRisques.svelte
 │   │   │   │   ├── ModaleCartographies.svelte
 │   │   │   │   ├── ModaleExplicationRisquesV2.svelte
+│   │   │   │   ├── ModaleRisquesANSSI.svelte
 │   │   │   │   └── TableauRisquesMesuresAssociees.svelte
+│   │   │   ├── risquesAppliques.ts
 │   │   │   ├── risquesV2.api.ts
 │   │   │   ├── risquesV2.d.ts
 │   │   │   └── tiroir
@@ -1989,7 +2022,8 @@
 │   │   │   │   ├── TiroirExportServices.svelte
 │   │   │   │   ├── TiroirGestionContributeurs.svelte
 │   │   │   │   ├── TiroirSuppression.svelte
-│   │   │   │   └── TiroirTelechargementDocumentsService.svelte
+│   │   │   │   ├── TiroirTelechargementDocumentsService.svelte
+│   │   │   │   └── documentsATelecharger.ts
 │   │   │   ├── types.d.ts
 │   │   │   └── ui.types.d.ts
 │   │   ├── ui-kit.d.ts
@@ -2021,6 +2055,8 @@
 │   │   │       └── routeur.store.spec.ts
 │   │   ├── rapportTeleversement
 │   │   │   └── tri.spec.ts
+│   │   ├── risquesV2
+│   │   │   └── risquesAppliques.spec.ts
 │   │   ├── tableauDesMesures
 │   │   │   └── stores
 │   │   │       ├── nombreDeResultats.store.spec.ts
@@ -2028,11 +2064,13 @@
 │   │   │       └── volumetrieMesures.store.spec.ts
 │   │   ├── tsconfig.json
 │   │   ├── ui
-│   │   │   └── stores
-│   │   │       ├── fileMisesAJour.store.spec.ts
-│   │   │       ├── notifications.store.spec.ts
-│   │   │       ├── nouveautesPage.store.spec.ts
-│   │   │       └── vraisemblanceRisqueV2.store.spec.ts
+│   │   │   ├── stores
+│   │   │   │   ├── fileMisesAJour.store.spec.ts
+│   │   │   │   ├── notifications.store.spec.ts
+│   │   │   │   ├── nouveautesPage.store.spec.ts
+│   │   │   │   └── vraisemblanceRisqueV2.store.spec.ts
+│   │   │   └── tiroirs
+│   │   │       └── documentsATelecharger.spec.ts
 │   │   ├── visiteGuideeSPA
 │   │   │   └── visiteGuidee.utils.spec.ts
 │   │   └── vitest.config.ts
@@ -2053,6 +2091,7 @@
 │   │   ├── adaptateurOidc.spec.ts
 │   │   ├── adaptateurPostgres.spec.js
 │   │   ├── adaptateurPostgresTS.spec.ts
+│   │   ├── adaptateurPowerpoint.automizer.spec.ts
 │   │   ├── adaptateurProfilAnssi.spec.js
 │   │   ├── adaptateurRechercheEntrepriseAPI.spec.js
 │   │   ├── adaptateurStatistiquesPostgres.spec.ts
@@ -2066,6 +2105,7 @@
 │   ├── aides
 │   │   ├── cookie.js
 │   │   ├── http.js
+│   │   ├── lecturePptx.ts
 │   │   ├── tableaux.ts
 │   │   └── verifieFichierServi.js
 │   ├── annuaire
@@ -2135,7 +2175,6 @@
 │   │   │   ├── metAJourContactsBrevoDesContributeurs.spec.js
 │   │   │   ├── metAJourEstimationNombreServicesContactBrevo.spec.js
 │   │   │   ├── metAJourParrainage.spec.js
-│   │   │   ├── modifieLienEntrepriseEtContactBrevo.spec.js
 │   │   │   ├── modifieLienServiceEtSuperviseurs.spec.ts
 │   │   │   ├── modifieRattachementServiceAuxSuperviseursEtAdmins.spec.ts
 │   │   │   ├── rattacheServiceEtAdmins.spec.ts
@@ -2182,6 +2221,7 @@
 │   │   ├── constructeurAdaptateurPersistanceMemoire.js
 │   │   ├── constructeurAdaptateurPersistanceMemoireTS.ts
 │   │   ├── constructeurAdaptateurTracking.js
+│   │   ├── constructeurAdminOrganisations.ts
 │   │   ├── constructeurAutorisation.js
 │   │   ├── constructeurBrouillonService.ts
 │   │   ├── constructeurDepotDonneesServices.js
@@ -2192,10 +2232,12 @@
 │   │   ├── constructeurMesures.js
 │   │   ├── constructeurService.js
 │   │   ├── constructeurStatistiquesMesures.js
+│   │   ├── constructeurSuperviseur.ts
 │   │   ├── constructeurTacheDeService.js
 │   │   └── constructeurUtilisateur.js
 │   ├── crm
-│   │   └── crmBrevo.spec.js
+│   │   ├── crmBrevo.spec.js
+│   │   └── historiseNombreDeServicesParEntiteDansCrm.spec.ts
 │   ├── depotDonnees.spec.js
 │   ├── depots
 │   │   ├── depotDonneesActivitesMesure.spec.ts
@@ -2336,6 +2378,8 @@
 │   │   │   └── objetPDFAnnexeRisquesV2.spec.ts
 │   │   ├── objetsPersistance
 │   │   │   └── objetPersistanceService.spec.js
+│   │   ├── objetsPowerpoint
+│   │   │   └── piecesDuDossier.spec.ts
 │   │   ├── parcoursUtilisateur.spec.ts
 │   │   ├── partiesPrenantes
 │   │   │   ├── developpementFourniture.spec.ts
@@ -2407,6 +2451,8 @@
 │   ├── notifications
 │   │   ├── centreNotifications.spec.ts
 │   │   ├── rapportHebdomadaire.spec.ts
+│   │   ├── rapportMensuel.spec.ts
+│   │   ├── servicesSansMesuresAppliquees.spec.ts
 │   │   └── sources
 │   │       ├── sourceNotificationsTransactionnelles.spec.ts
 │   │       ├── sourceNouveautes.spec.ts
@@ -2434,6 +2480,7 @@
 │   │   │   ├── routesConnecteApiServiceMesuresSpecifiques.spec.ts
 │   │   │   ├── routesConnecteApiServiceModeleMesureSpecifique.spec.ts
 │   │   │   ├── routesConnecteApiServicePdf.spec.js
+│   │   │   ├── routesConnecteApiServicePowerpoint.spec.ts
 │   │   │   ├── routesConnecteApiServiceRetourUtilisateur.spec.ts
 │   │   │   ├── routesConnecteApiServiceRisquesSpecifiques.spec.ts
 │   │   │   ├── routesConnecteApiServiceRisquesV2.spec.ts
@@ -2494,7 +2541,8 @@
 │   ├── globalSetup.ts
 │   ├── pagesAdmin.spec.ts
 │   ├── pagesSupervision.spec.ts
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── visiteGuidee.spec.ts
 ├── test_migrations
 │   ├── 20221102134033_changeProvenanceService.spec.js
 │   ├── 20221130100733_suppressionStatutMesureNonConcerne.spec.js
@@ -2507,4 +2555,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-318 directories, 2321 files
+326 directories, 2361 files

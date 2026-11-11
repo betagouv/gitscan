@@ -1,30 +1,35 @@
-## Changelog : mon-service-securise (30 derniers jours, au 20 octobre 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 10 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le service a franchi une étape majeure avec l'introduction de la gestion par groupes, permettant aux utilisateurs d'organiser leurs services et leurs entités de manière plus structurée. Nous avons également renforcé la visibilité de l'activité via une synchronisation automatique avec nos outils de gestion (CRM) et introduit un nouveau rôle de "superviseur" pour affiner la gestion des accès et des périmètres de sécurité.
+Ce mois-ci, le service a franchi des étapes majeures avec l'introduction de la génération automatique de présentations PowerPoint pour les commissions et une refonte de la gestion des risques. L'organisation des services est simplifiée grâce à la gestion par groupes d'entités, tandis que l'administration bénéficie de nouveaux outils de reporting et d'une synchronisation automatisée des données clés avec le CRM.
 
 ### Évolutions fonctionnelles
-- **Gestion par groupes** : Introduction de la possibilité de créer, renommer, supprimer et organiser des groupes de services et d'entités pour une meilleure gestion des périmètres.
-- **Nouveau rôle de Superviseur** : Mise en place d'un rôle de superviseur permettant une gestion étendue des services et une visibilité accrue dans les tableaux de bord.
-- **Améliorations de l'interface utilisateur** :
-    - Navigation optimisée grâce à l'utilisation d'onglets et d'accordéons pour les listes de services et d'entités.
-    - Amélioration de l'ergonomie avec des barres d'actions fixes (sticky), des indicateurs de chargement (loaders) et des notifications de succès (toasts).
-    - Meilleure gestion de la recherche au sein des groupes.
-- **Conformité** : Mise à jour des Conditions Générales d'Utilisation (CGU).
+- **Génération de supports de commission (PPTX) :** Création automatique de présentations PowerPoint incluant le sommaire, la composition de la commission, la liste des pièces du dossier et les avis écrits.
+- **Gestion des risques et conformité :** 
+    - Déploiement d'une nouvelle interface de gestion des risques (V2).
+    - Intégration détaillée des vecteurs et objectifs visés de l'ANSSI dans le suivi des risques.
+    - Possibilité de créer des risques spécifiques basés sur le référentiel.
+- **Organisation et administration :**
+    - Mise en place de la gestion par groupes d'entités pour mieux structurer les services.
+    - Introduction du rôle de "superviseur" avec des droits et des vues spécifiques.
+    - Nouveau système de reporting mensuel pour les administrateurs et superviseurs.
+- **Expérience utilisateur (UI/UX) :**
+    - Amélioration du système de notifications (toasts) et des modales.
+    - Mise à jour du tiroir de téléchargement et de l'affichage des actions sur les pages de service.
+    - Ajout de notifications de nouveautés pour les fonctionnalités clés (API publique, groupes de services).
 
 ### Évolutions techniques
-- **Intégration CRM** : Automatisation de la remontée de données vers le CRM (nombre de services, nombre d'homologations, nouveaux utilisateurs et imports de services) et mise en place d'outils de synchronisation des données historiques (rattrapage en mode batch).
-- **Optimisation des performances** :
-    - Optimisation des requêtes de lecture pour les services et les statistiques.
-    - Exécution des requêtes de statistiques en parallèle pour réduire les temps de réponse.
-    - Limitation du débit (rate limiting) sur l'API recherche-entreprises pour garantir la stabilité.
-- **Observabilité et Sécurité** :
-    - Amélioration du suivi des erreurs avec Sentry (extraction de la configuration, ajout d'un "scrubber" pour la protection des données sensibles et intégration de notifications via Mattermost).
-    - Renforcement de la protection des autorisations des superviseurs.
-- **Architecture** :
-    - Refactoring du client HTTP et extraction de composants UI réutilisables.
-    - Gestion des nouvelles fonctionnalités via des "feature flags" pour un déploiement sécurisé.
+- **Intégration CRM et automatisation :** 
+    - Synchronisation automatique des indicateurs clés (nombre d'utilisateurs, de services et d'homologations) vers le CRM (Twenty).
+    - Mise en place de tâches planifiées (CRON) pour le reporting et la maintenance des données.
+- **Architecture et refactoring :**
+    - Refonte des adaptateurs (PowerPoint, CRM) et des clients HTTP pour une meilleure modularité.
+    - Optimisation de la gestion des erreurs et du monitoring via Sentry.
+    - Amélioration de la gestion des permissions et des abonnés (event bus).
+- **Infrastructure et environnement :**
+    - Mise à jour des environnements vers Node.js 26 LTS et PostgreSQL 18.
+    - Passage à la version 12 de pnpm.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation de l'API (inclusion de l'URL de base et de la spécification OpenAPI).
-- **Maintenance** : Nettoyage du code (suppression de duplications, renommage de composants pour plus de clarté) et mise à jour de l'environnement de build (pnpm).
+- **Tests :** Ajout de tests d'intégration pour la visite guidée et l'affichage des risques.
+- **Nettoyage :** Refactorisation de composants UI (accordéons, tableaux d'entités) et suppression de code obsolète.
