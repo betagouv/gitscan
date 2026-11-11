@@ -1,0 +1,25 @@
+2026-11-10T03:06:06+01:00 - 125ff7f - Victor DEGLIAME : Limite les fils de calcul de Piper au CPU du conteneur : la synthèse d'une phrase passe de 2,7 s à 0,3 s sur le cluster
+2026-11-10T02:44:31+01:00 - e0cc0c6 - Victor DEGLIAME : Garantit 2 CPU au conteneur : oblik ramenait la limite à 300m et la synthèse vocale prenait 30 s
+2026-11-10T01:54:06+01:00 - 4a74b96 - Victor DEGLIAME : Construit l'image dans GitHub Actions (buildkit-operator) et la pousse sur Harbor, kontinuous ne fait plus que déployer
+2026-11-10T01:08:05+01:00 - 77b8eaf - Victor DEGLIAME : Désactive le BuildKit distant dans les options du plugin fabrique plutôt que dans les valeurs
+2026-11-10T01:05:11+01:00 - b016e9e - Victor DEGLIAME : Désactive le BuildKit distant d'Atlas : l'image est construite dans le job du cluster OVH
+2026-11-10T01:02:37+01:00 - b76bec5 - Victor DEGLIAME : Construit l'image dans le job du cluster OVH plutôt que sur le BuildKit d'Atlas, injoignable
+2026-11-10T00:59:52+01:00 - 09c2832 - Victor DEGLIAME : Clone le dépôt privé avec un jeton GitHub dédié, scellé, pour construire l'image dans le cluster
+2026-11-10T00:37:28+01:00 - d9d3061 - Victor DEGLIAME : Scelle les secrets de dev avec le certificat vérifié par la CI (kubeseal.ovh.fabrique.social.gouv.fr)
+2026-11-10T00:34:50+01:00 - d6a8342 - Victor DEGLIAME : Accorde aux workflows de déploiement les permissions demandées par le workflow partagé SocialGouv
+2026-11-10T00:33:59+01:00 - 0c2df7d - Victor DEGLIAME : Déploie dans le projet Rancher fabrique avec le namespace de CI partagé ci-fabrique
+2026-11-09T15:10:41+01:00 - bc782a9 - Victor DEGLIAME : Déploie l'environnement de développement sur la fabrique (kontinuous, cluster OVH dev) : image Docker, sonde /healthz, secrets scellés
+2026-11-06T16:26:29+01:00 - 798073d - Mathilda Legeay : Place les réglages de la voix dans l'en-tête et donne le titre de la page à l'indicateur d'étapes
+2026-11-05T10:16:39+01:00 - d4e9cf4 - Mathilda Legeay : Ajoute un menu latéral des questions de l'étape, la parole à la barre d'espace et refond « Avant de commencer »
+2026-11-05T10:16:39+01:00 - f8ef766 - Mathilda Legeay : Garde les centimes des frais au lieu d'arrondir les montants à l'euro près
+2026-11-04T17:29:02+01:00 - a0b887e - Mathilda Legeay : Revert "Ajoute la mémoire « le dire une fois » : remplissage pendant la parole, pré-remplissage confirmé, contradictions, transcription téléchargeable, stockage local et panneau de débogage"
+2026-11-04T17:28:49+01:00 - 5be9b48 - Mathilda Legeay : Revert "Remplit pendant la parole toutes les 2 secondes, comprend les commandes vocales et aère le panneau de la mémoire"
+2026-11-04T17:28:05+01:00 - 5306336 - Mathilda Legeay : Revert "Affiche un brouillon du texte libre pendant la parole et le garde lors des relances"
+2026-11-04T17:22:44+01:00 - 35c1380 - Mathilda Legeay : Revert "Déduit les réponses liées (logement, hébergeur) de ce qui a été dit et les fait confirmer en une seule fois"
+2026-11-01T19:12:37+01:00 - 0b07d5a - Victor DEGLIAME : Affiche un brouillon du texte libre pendant la parole et le garde lors des relances
+2026-11-01T17:26:45+01:00 - 9482c47 - Victor DEGLIAME : Remplit pendant la parole toutes les 2 secondes, comprend les commandes vocales et aère le panneau de la mémoire
+2026-11-01T16:35:05+01:00 - f077d69 - Victor DEGLIAME : Déduit les réponses liées (logement, hébergeur) de ce qui a été dit et les fait confirmer en une seule fois
+2026-11-01T16:08:17+01:00 - 96fd054 - Victor DEGLIAME : Ajoute la mémoire « le dire une fois » : remplissage pendant la parole, pré-remplissage confirmé, contradictions, transcription téléchargeable, stockage local et panneau de débogage
+2026-10-29T15:24:34+01:00 - fd47945 - Mathilda Legeay : Met à jour la documentation : écran « Avant de commencer », fil d'Ariane, questions de suivi, pages légales
+2026-10-28T22:23:30+01:00 - c0a63e4 - Victor DEGLIAME : Généralise le fournisseur LLM à toute API compatible OpenAI (Albert par défaut, LiteLLM prêt) et ajoute la dépendance httpx manquante
+2026-10-26T18:06:08+01:00 - 1304251 - Mathilda Legeay : Formulaire MDPH partie B à remplir avec la voix
