@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.79.2](https://github.com/SocialGouv/cdtn-admin/compare/v2.79.1...v2.79.2) (2026-11-02)
+
+### Bug Fixes
+
+- **contribution:** ne contrôler le surlignage que pour le type « Afficher la réponse » ([#1737](https://github.com/SocialGouv/cdtn-admin/issues/1737)) ([573b592](https://github.com/SocialGouv/cdtn-admin/commit/573b59263c88593a46448b838541a8a86ed330a8))
+
+## [2.79.1](https://github.com/SocialGouv/cdtn-admin/compare/v2.79.0...v2.79.1) (2026-10-30)
+
+### Bug Fixes
+
+- **news:** image facultative ([#1735](https://github.com/SocialGouv/cdtn-admin/issues/1735)) ([a978600](https://github.com/SocialGouv/cdtn-admin/commit/a97860087baae8c6096f1a2b4d6c1b798958f255))
+
+# [2.79.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.78.1...v2.79.0) (2026-10-29)
+
+### Features
+
+- **contribution:** amélioration de la création d'une contribution ([#1727](https://github.com/SocialGouv/cdtn-admin/issues/1727)) ([d45b740](https://github.com/SocialGouv/cdtn-admin/commit/d45b74004875dc3b2980f3aa04ca60eb0b829d7b))
+
+## [2.78.1](https://github.com/SocialGouv/cdtn-admin/compare/v2.78.0...v2.78.1) (2026-10-23)
+
+### Bug Fixes
+
+- **news:** date de première publication conservée, modification à chaque publication ([#1731](https://github.com/SocialGouv/cdtn-admin/issues/1731)) ([ae6e86c](https://github.com/SocialGouv/cdtn-admin/commit/ae6e86c400cb5a9494f1868fc39a6e0f69612272))
+- **security:** bump Node.js to 24.22.1 (October 2026 security releases) ([#1732](https://github.com/SocialGouv/cdtn-admin/issues/1732)) ([106d325](https://github.com/SocialGouv/cdtn-admin/commit/106d32501966d233bb331c1237f20616036bfaad))
+
+# [2.78.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.16...v2.78.0) (2026-10-23)
+
+### Features
+
+- **contributions:** date de mise à jour automatique à la publication ([#1726](https://github.com/SocialGouv/cdtn-admin/issues/1726)) ([3b0ed2f](https://github.com/SocialGouv/cdtn-admin/commit/3b0ed2ff7ae22bd7df968f56d40e1d87e27b3355))
+- **export:** liens recommandés des fiches service-public (pipeline L2) ([#1719](https://github.com/SocialGouv/cdtn-admin/issues/1719)) ([c077d63](https://github.com/SocialGouv/cdtn-admin/commit/c077d6318a2596312e7ad3544f9c5e297997cba5))
+- **news:** image, « Pour aller plus loin » et « Références » avec texte d'introduction ([#1722](https://github.com/SocialGouv/cdtn-admin/issues/1722)) ([180509d](https://github.com/SocialGouv/cdtn-admin/commit/180509d2276c807e48451ca404c750b57e75c69e))
+- **news:** lastmod à minuit Paris, dates tolérantes et heure de publication des actualités ([#1730](https://github.com/SocialGouv/cdtn-admin/issues/1730)) ([47b86f4](https://github.com/SocialGouv/cdtn-admin/commit/47b86f487b82437407780a84f4c7832028478708))
+
+## [2.77.16](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.15...v2.77.16) (2026-10-20)
+
+### Features
+
+- **analysis:** ajout des données sur les actualités ([#1728](https://github.com/SocialGouv/cdtn-admin/issues/1728)) ([dfa7c18](https://github.com/SocialGouv/cdtn-admin/commit/dfa7c1826ee58745e280f172e6644f35fb3e01b2))
+
+## [2.77.15](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.14...v2.77.15) (2026-10-20)
+
+### Features
+
+- **analysis:** clean des scripts d'aggrégation ([7eebf52](https://github.com/SocialGouv/cdtn-admin/commit/7eebf52bd3bf9460a3912df2ea539ffd9e734953))
+- **analysis:** taux de completion des pages modèles ([#1724](https://github.com/SocialGouv/cdtn-admin/issues/1724)) ([d10aeb5](https://github.com/SocialGouv/cdtn-admin/commit/d10aeb512a5f66c14ee296f7e65882d04f38e3ca))
+
+## [2.77.14](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.13...v2.77.14) (2026-10-13)
+
+### Features
+
+- **analysis:** migration du calcul du taux de completion sur les contributions ([#1720](https://github.com/SocialGouv/cdtn-admin/issues/1720)) ([4a0d889](https://github.com/SocialGouv/cdtn-admin/commit/4a0d889998d179e4794ad59b0fc007c2455cbbed))
+- **analysis:** taux de personnalisation des simulateurs ([#1716](https://github.com/SocialGouv/cdtn-admin/issues/1716)) ([35afc11](https://github.com/SocialGouv/cdtn-admin/commit/35afc11b2984855c46744854ed7ea1fc103833f5))
+
+### Performance Improvements
+
+- **ci:** préserve le cache d'install pnpm au travers des releases ([#1715](https://github.com/SocialGouv/cdtn-admin/issues/1715)) ([aa633bc](https://github.com/SocialGouv/cdtn-admin/commit/aa633bcb0ad6a250009a94ed69b760bb245658bd))
+
 ## [2.77.13](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.12...v2.77.13) (2026-09-22)
 
 ### Features

@@ -1,8 +1,16 @@
 .
 ├── .claude
 │   └── skills
-│       └── add-analysis-report
-│           └── SKILL.md
+│       ├── add-analysis-report
+│       │   └── SKILL.md
+│       └── add-metabase-analysis
+│           ├── SKILL.md
+│           ├── references
+│           │   ├── matomo-notebook-context.md
+│           │   ├── metabase-browser.md
+│           │   └── notebook-oneshot.md
+│           └── scripts
+│               └── new_notebook.py
 ├── .dockerignore
 ├── .editorconfig
 ├── .env.example
@@ -136,25 +144,97 @@
 │   │       │   ├── __init__.py
 │   │       │   ├── _runner.py
 │   │       │   ├── ingest_all.py
+│   │       │   ├── ingest_completion_modeles_courrier.py
 │   │       │   ├── ingest_nps_scores.py
-│   │       │   ├── ingest_simulateurs.py
+│   │       │   ├── ingest_parcours_actualites.py
+│   │       │   ├── ingest_parcours_contributions.py
+│   │       │   ├── ingest_parcours_fiches_sp.py
 │   │       │   ├── ingest_taux_contributions.py
-│   │       │   └── ingest_taux_personnalisation.py
+│   │       │   ├── ingest_taux_personnalisation.py
+│   │       │   ├── ingest_visites_par_type_contenu.py
+│   │       │   └── ingest_visites_totales.py
 │   │       ├── config.py
 │   │       ├── connectors
 │   │       │   ├── __init__.py
+│   │       │   ├── albert.py
+│   │       │   ├── claude.py
+│   │       │   ├── elasticsearch.py
 │   │       │   ├── matomo.py
 │   │       │   ├── matomo_reporting.py
-│   │       │   └── metabase_db.py
+│   │       │   ├── metabase_db.py
+│   │       │   └── openai.py
+│   │       ├── l2
+│   │       │   ├── README.md
+│   │       │   ├── __init__.py
+│   │       │   ├── audit
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── complementary.py
+│   │       │   │   ├── misclassification.py
+│   │       │   │   └── run.py
+│   │       │   ├── cli.py
+│   │       │   ├── config.py
+│   │       │   ├── docs
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── build.py
+│   │       │   │   └── sync.py
+│   │       │   ├── facet_index.py
+│   │       │   ├── facets
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── canonicalize.py
+│   │       │   │   ├── embed.py
+│   │       │   │   └── extract.py
+│   │       │   ├── io.py
+│   │       │   ├── legacy
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── coclick_complementary.py
+│   │       │   │   ├── coclick_preferences.py
+│   │       │   │   └── recommend_content.py
+│   │       │   ├── links
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── candidates.py
+│   │       │   │   ├── explain.py
+│   │       │   │   ├── fit_weights.py
+│   │       │   │   ├── payload.py
+│   │       │   │   ├── recommend.py
+│   │       │   │   ├── render.py
+│   │       │   │   └── scoring.py
+│   │       │   ├── paths.py
+│   │       │   ├── providers.py
+│   │       │   ├── questions
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── anonymize.py
+│   │       │   │   ├── embed.py
+│   │       │   │   └── theme.py
+│   │       │   ├── sessions
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── build.py
+│   │       │   ├── signatures
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── core.py
+│   │       │   │   └── describe.py
+│   │       │   └── tests
+│   │       │       ├── __init__.py
+│   │       │       ├── golden_links.json
+│   │       │       ├── test_anonymize.py
+│   │       │       ├── test_recommend_links_golden.py
+│   │       │       ├── test_signatures.py
+│   │       │       └── test_sync_docs.py
 │   │       ├── matomo_segments.py
 │   │       ├── py.typed
 │   │       └── reports
 │   │           ├── __init__.py
-│   │           ├── completion_simulateurs.py
+│   │           ├── _parcours.py
+│   │           ├── completion_modeles_courrier.py
 │   │           ├── nps_scores.py
+│   │           ├── parcours_actualites.py
+│   │           ├── parcours_contributions.py
+│   │           ├── parcours_fiches_sp.py
 │   │           ├── taux_contributions.py
-│   │           └── taux_personnalisation_simulateurs.py
+│   │           ├── taux_personnalisation_simulateurs.py
+│   │           ├── visites_par_type_contenu.py
+│   │           └── visites_totales.py
 │   ├── tests
+│   │   ├── test_parcours_contenus.py
 │   │   └── test_taux_contributions.py
 │   └── uv.lock
 ├── docker-compose.yml
@@ -261,10 +341,12 @@
 │       │   │   ├── __mocks__
 │       │   │   │   ├── kaliArticle.json
 │       │   │   │   └── legiArticle.json
+│       │   │   ├── contribution-variables.test.ts
 │       │   │   ├── dila-resolver.test.ts
 │       │   │   └── url-generator.test.ts
 │       │   ├── arrayUtils.ts
 │       │   ├── config.ts
+│       │   ├── contributionVariables.ts
 │       │   ├── dilaResolver.ts
 │       │   ├── gqlClient.ts
 │       │   ├── idGenerator.ts
@@ -443,6 +525,7 @@
     │   ├── CHANGELOG.md
     │   ├── Dockerfile
     │   ├── dataset
+    │   │   ├── fiches_service_public_links.json
     │   │   └── suggestions.txt
     │   ├── jest.config.js
     │   ├── nodemon.json
@@ -492,15 +575,19 @@
     │   │   │   ├── breadcrumbs.ts
     │   │   │   ├── cdtnDocuments.ts
     │   │   │   ├── common
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   └── populateLinks.test.ts
     │   │   │   │   ├── fetchCdtnAdminDocuments.ts
     │   │   │   │   ├── fetchGlossary.ts
     │   │   │   │   ├── fetchLinkedContent.ts
     │   │   │   │   ├── index.ts
+    │   │   │   │   ├── populateLinks.ts
     │   │   │   │   └── populateRelatedDocuments.ts
     │   │   │   ├── context.ts
     │   │   │   ├── contributions
     │   │   │   │   ├── __tests__
     │   │   │   │   │   ├── generateContent.test.ts
+    │   │   │   │   │   ├── generateIntroduction.test.ts
     │   │   │   │   │   ├── generateLinkedContent.test.ts
     │   │   │   │   │   ├── generateMessageBlock.test.ts
     │   │   │   │   │   ├── generateMetadata.test.ts
@@ -514,8 +601,10 @@
     │   │   │   │   ├── fetchContributionDocumentsToPublish.ts
     │   │   │   │   ├── fetchFicheSp.ts
     │   │   │   │   ├── fetchMessageBlock.ts
+    │   │   │   │   ├── fetchQuestionIntroductions.ts
     │   │   │   │   ├── generate.ts
     │   │   │   │   ├── generateContent.ts
+    │   │   │   │   ├── generateIntroduction.ts
     │   │   │   │   ├── generateLinkedContent.ts
     │   │   │   │   ├── generateMessageBlock.ts
     │   │   │   │   ├── generateMetadata.ts
@@ -546,8 +635,10 @@
     │   │   │   │   └── mergeRelatedDocumentsToEditorialContents.ts
     │   │   │   ├── ingest.ts
     │   │   │   ├── news
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   └── generate.test.ts
     │   │   │   │   ├── generate.ts
-    │   │   │   │   ├── generateLinkedContent.ts
+    │   │   │   │   ├── generateLinks.ts
     │   │   │   │   └── index.ts
     │   │   │   ├── plan-de-contenu.js
     │   │   │   ├── prequalified
@@ -693,16 +784,24 @@
     │   │   │   │   ├── answers
     │   │   │   │   │   ├── Answer.tsx
     │   │   │   │   │   ├── AnswerForm.tsx
+    │   │   │   │   │   ├── CdtReferencesBlock.tsx
     │   │   │   │   │   ├── Comment.tsx
     │   │   │   │   │   ├── Comments.tsx
     │   │   │   │   │   ├── __tests__
-    │   │   │   │   │   │   └── AnswerForm.test.tsx
+    │   │   │   │   │   │   ├── AnswerForm.test.tsx
+    │   │   │   │   │   │   ├── CdtReferencesBlock.test.tsx
+    │   │   │   │   │   │   ├── answer.mutation.test.ts
+    │   │   │   │   │   │   ├── cdtReferences.test.ts
+    │   │   │   │   │   │   └── highlightGuard.test.ts
     │   │   │   │   │   ├── answer.mutation.ts
     │   │   │   │   │   ├── answer.query.ts
     │   │   │   │   │   ├── answerGeneric.query.ts
     │   │   │   │   │   ├── answerReferences.ts
     │   │   │   │   │   ├── answerStatus.mutation.ts
+    │   │   │   │   │   ├── cdtReferences.ts
     │   │   │   │   │   ├── comments.mutation.ts
+    │   │   │   │   │   ├── genericCdtReferences.query.ts
+    │   │   │   │   │   ├── highlightGuard.ts
     │   │   │   │   │   ├── index.ts
     │   │   │   │   │   ├── references
     │   │   │   │   │   │   ├── CdtnReferenceInput.tsx
@@ -716,6 +815,7 @@
     │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   ├── kaliReferencesSearch.query.ts
     │   │   │   │   │   │   └── legiReferencesSearch.query.ts
+    │   │   │   │   │   ├── serverError.ts
     │   │   │   │   │   └── usePublishAnswer.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── publication
@@ -739,15 +839,35 @@
     │   │   │   │   │   │   ├── List.tsx
     │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   ├── common
+    │   │   │   │   │   │   ├── AgreementTypesTable.tsx
     │   │   │   │   │   │   ├── Form.tsx
-    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   ├── FormSection.tsx
+    │   │   │   │   │   │   ├── MessageField.tsx
+    │   │   │   │   │   │   ├── TemplateReset.tsx
+    │   │   │   │   │   │   ├── TemplateResetBlock.tsx
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   ├── AgreementTypesTable.test.tsx
+    │   │   │   │   │   │   │   ├── Form.test.tsx
+    │   │   │   │   │   │   │   ├── FormSection.test.tsx
+    │   │   │   │   │   │   │   ├── TemplateResetBlock.test.tsx
+    │   │   │   │   │   │   │   ├── agreementTypes.test.ts
+    │   │   │   │   │   │   │   └── messageBlock.test.ts
+    │   │   │   │   │   │   ├── agreementTypes.ts
+    │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   ├── messageBlock.ts
+    │   │   │   │   │   │   ├── templateReset.mutation.ts
+    │   │   │   │   │   │   └── templateReset.query.ts
     │   │   │   │   │   ├── creation
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   └── buildAnswers.test.ts
+    │   │   │   │   │   │   ├── buildAnswers.ts
     │   │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   │   ├── question.mutation.ts
     │   │   │   │   │   │   └── question.query.ts
     │   │   │   │   │   ├── edit
     │   │   │   │   │   │   ├── Question.mutation.ts
     │   │   │   │   │   │   ├── Question.query.ts
+    │   │   │   │   │   │   ├── QuestionMessage.mutation.ts
     │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   └── index.ts
     │   │   │   │   ├── status
@@ -823,20 +943,25 @@
     │   │   │   │   │   ├── MenuTable.tsx
     │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   ├── Challenger.test.ts
+    │   │   │   │   │   │   ├── ContributionExtensions.test.ts
     │   │   │   │   │   │   ├── Editor.test.tsx
+    │   │   │   │   │   │   ├── MenuStyle.test.tsx
     │   │   │   │   │   │   └── __snapshots__
     │   │   │   │   │   │       └── Editor.test.tsx.snap
     │   │   │   │   │   ├── component
     │   │   │   │   │   │   ├── AddInfographyDialog.tsx
     │   │   │   │   │   │   ├── BulkChallengerDialog.tsx
     │   │   │   │   │   │   ├── ChallengerDialog.tsx
+    │   │   │   │   │   │   ├── ContributionToolbar.tsx
     │   │   │   │   │   │   └── utils.ts
     │   │   │   │   │   ├── extensions
     │   │   │   │   │   │   ├── Alert.ts
     │   │   │   │   │   │   ├── Challenger.ts
     │   │   │   │   │   │   ├── GoodToKnow.ts
+    │   │   │   │   │   │   ├── Highlight.ts
     │   │   │   │   │   │   ├── Infographic.ts
     │   │   │   │   │   │   ├── Titles.ts
+    │   │   │   │   │   │   ├── Variable.ts
     │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   ├── icons
     │   │   │   │   │   │   ├── DeleteColumn.tsx
@@ -936,6 +1061,9 @@
     │   │   │       ├── Pagination.tsx
     │   │   │       ├── SimpleLink.tsx
     │   │   │       ├── SnackBar.tsx
+    │   │   │       ├── __tests__
+    │   │   │       │   └── SnackBar.test.tsx
+    │   │   │       ├── contributionColors.ts
     │   │   │       ├── dsfrIcons.tsx
     │   │   │       ├── fileBaseUrl.ts
     │   │   │       ├── icons.tsx
@@ -945,7 +1073,10 @@
     │   │   │   └── modeles.css
     │   │   ├── global.d.ts
     │   │   ├── hooks
-    │   │   │   └── index.js
+    │   │   │   ├── __tests__
+    │   │   │   │   └── useFormLock.test.ts
+    │   │   │   ├── index.js
+    │   │   │   └── useFormLock.ts
     │   │   ├── lib
     │   │   │   ├── __tests__
     │   │   │   │   ├── mutationUtils.test.ts
@@ -1026,6 +1157,7 @@
     │   │   │   │   └── type.ts
     │   │   │   ├── contribution
     │   │   │   │   ├── __tests__
+    │   │   │   │   │   ├── getTodayInParis.test.ts
     │   │   │   │   │   └── mapContributionToDocument.test.ts
     │   │   │   │   ├── api
     │   │   │   │   │   ├── index.ts
@@ -1036,6 +1168,7 @@
     │   │   │   │   │   └── repository.ts
     │   │   │   │   ├── generateSlug.ts
     │   │   │   │   ├── getReferences.ts
+    │   │   │   │   ├── getTodayInParis.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   └── mapContributionToDocument.ts
     │   │   │   ├── documents
@@ -1151,13 +1284,38 @@
     │   │   │   │   ├── mapModelToDocument.ts
     │   │   │   │   └── type.ts
     │   │   │   ├── news
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   ├── image.test.ts
+    │   │   │   │   │   ├── mapNewsToDocument.test.ts
+    │   │   │   │   │   └── publication.test.ts
     │   │   │   │   ├── api
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   ├── news.query.test.ts
+    │   │   │   │   │   │   ├── newsImageKey.test.ts
+    │   │   │   │   │   │   └── readServerImage.test.ts
     │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── news.mutation.ts
     │   │   │   │   │   ├── news.query.ts
-    │   │   │   │   │   └── newsRepository.ts
+    │   │   │   │   │   ├── newsImageKey.ts
+    │   │   │   │   │   ├── newsRepository.ts
+    │   │   │   │   │   └── readServerImage.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── Common
+    │   │   │   │   │   │   ├── ExternalLinkEditor.tsx
+    │   │   │   │   │   │   ├── ExternalLinkRow.tsx
     │   │   │   │   │   │   ├── Form.tsx
+    │   │   │   │   │   │   ├── NewsImageField.tsx
+    │   │   │   │   │   │   ├── NewsIntroField.tsx
+    │   │   │   │   │   │   ├── NewsLinks.tsx
+    │   │   │   │   │   │   ├── NewsReferences.tsx
+    │   │   │   │   │   │   ├── NewsSortableList.tsx
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   ├── Form.test.tsx
+    │   │   │   │   │   │   │   ├── NewsLinks.test.tsx
+    │   │   │   │   │   │   │   ├── NewsReferences.test.tsx
+    │   │   │   │   │   │   │   ├── NewsSortableList.test.tsx
+    │   │   │   │   │   │   │   └── formSchema.test.ts
+    │   │   │   │   │   │   ├── formSchema.ts
     │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   ├── Creation
     │   │   │   │   │   │   ├── index.tsx
@@ -1171,8 +1329,10 @@
     │   │   │   │   │   │   └── list.query.ts
     │   │   │   │   │   ├── graphql.type.ts
     │   │   │   │   │   └── index.ts
+    │   │   │   │   ├── image.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── mapNewsToDocument.ts
+    │   │   │   │   ├── publication.ts
     │   │   │   │   └── type.ts
     │   │   │   ├── prequalified
     │   │   │   │   ├── ValidationBar.tsx
@@ -1256,7 +1416,8 @@
     │   │   │   │   ├── slug.js
     │   │   │   │   ├── storage
     │   │   │   │   │   ├── [path].ts
-    │   │   │   │   │   └── index.ts
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   └── news-image.ts
     │   │   │   │   ├── users
     │   │   │   │   │   ├── activate.ts
     │   │   │   │   │   ├── create.ts
@@ -1369,7 +1530,7 @@
     │   │   │           ├── auth_user_roles.yaml
     │   │   │           ├── auth_users.yaml
     │   │   │           ├── contrib_*.yaml  (7 files)
-    │   │   │           ├── contribution_*.yaml  (12 files)
+    │   │   │           ├── contribution_*.yaml  (13 files)
     │   │   │           ├── infographic_infographic.yaml
     │   │   │           ├── infographic_infographic_cdtn_references.yaml
     │   │   │           ├── infographic_infographic_legi_references.yaml
@@ -1380,6 +1541,8 @@
     │   │   │           ├── model_models_other_references.yaml
     │   │   │           ├── news_news.yaml
     │   │   │           ├── news_news_cdtn_references.yaml
+    │   │   │           ├── news_news_links.yaml
+    │   │   │           ├── news_news_references.yaml
     │   │   │           ├── public_*.yaml  (19 files)
     │   │   │           ├── reference_value_smic_values.yaml
     │   │   │           ├── search_prequalified.yaml
@@ -2193,7 +2356,37 @@
     │           ├── 1783598367002_insert_indemnite_retraite
     │           │   ├── down.sql
     │           │   └── up.sql
-    │           └── 1789538826130_update_themes_descriptions
+    │           ├── 1789538826130_update_themes_descriptions
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1789600000000_contribution_question_introductions_and_highlight_guard
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1789700000000_contribution_generic_introduction_and_cdt_references_selection
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000004_alter_table_news_news_add_image
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000005_alter_table_news_news_add_image_dimensions
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000006_news_news_updated_at_trigger
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000007_create_table_news_news_links
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000008_create_table_news_news_references
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000009_move_news_cdtn_references_to_news_links
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1791000000010_alter_table_news_news_add_published_at
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           └── 1791100000000_highlight_guard_only_for_answer_type
     │               ├── down.sql
     │               └── up.sql
     └── ingester
@@ -2285,4 +2478,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-598 directories, 1729 files
+630 directories, 1891 files

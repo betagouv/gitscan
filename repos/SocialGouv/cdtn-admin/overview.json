@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/SocialGouv/cdtn-admin",
   "name": "cdtn-admin",
-  "description": "Outil d'administration pour le projet Code du travail numérique, permettant la gestion, l'injection et l'analyse de données juridiques et métier.",
+  "description": "Outil d'administration pour le projet Code du travail numérique, permettant la gestion des contenus, l'ingestion de données externes et le suivi statistique via Metabase.",
   "language": "TypeScript",
   "features": [
     "Administration & Backoffice",
     "Statistiques & Rapports",
-    "Simulation & Calcul",
+    "Gestion des utilisateurs & Permissions",
+    "Gestion métier générale",
     "Gestion documentaire & Fichiers",
-    "Gestion des utilisateurs & Permissions"
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,8 +17,8 @@
     "Hasura",
     "PostgreSQL",
     "Elasticsearch",
-    "Minio",
     "Metabase",
+    "Minio",
     "Tiptap",
     "Lerna",
     "pnpm"
@@ -26,11 +27,10 @@
     "React / Next.js",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "TypeScript / JavaScript",
     "Reporting & BI",
-    "Stockage objet",
-    "Node.js / NestJS"
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
@@ -40,16 +40,15 @@
   },
   "tests": [
     "e2e",
-    "unit tests"
+    "test",
+    "lint",
+    "type-check"
   ],
   "workflows": [
-    "lint",
-    "test",
-    "type-check",
-    "e2e"
+    "CI/CD via GitHub Actions"
   ],
-  "lastActivity": "2026-09-22T00:00:00Z",
-  "status": "maintained",
+  "lastActivity": "2026-11-02T00:00:00Z",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
@@ -59,6 +58,6 @@
     "Docker & Conteneurs",
     "Bases de données SQL",
     "Reporting & BI",
-    "Git & DevOps"
+    "CI/CD & GitHub Actions"
   ]
 }
