@@ -16,7 +16,11 @@
     "build": "nest build",
     "build:mail-templates": "cp -r src/mail_templates/*.hbs dist/apps/backend-admin/src/mail_templates/ && mkdir -p dist/apps/backend-admin/src/mail_templates/partials && cp -r src/mail_templates/partials/*.hbs dist/apps/backend-admin/src/mail_templates/partials/",
     "build:tippecanoe": "rm -rf tippecanoe && mkdir tippecanoe && git -C tippecanoe init && git -C tippecanoe remote add origin https://github.com/felt/tippecanoe.git && git -C tippecanoe fetch --depth 1 origin 7c80fccdc17e4f8d9f4a52d518b4845290224366 && git -C tippecanoe checkout --detach FETCH_HEAD && make -j --directory=tippecanoe/ && make install --directory=tippecanoe/ PREFIX=../tippecanoe_program && node scripts/validate-tippecanoe-install.mjs tippecanoe_program/bin && rm -rf tippecanoe/",
-    "scalingo-postbuild": "npm run build && npm run build:mail-templates && npm run build:tippecanoe",
+    "scalingo-postbuild": "npm run build:antivirus && npm run build && npm run build:mail-templates && npm run build:tippecanoe",
+    "build:antivirus": "node scripts/configure-clamav.mjs",
+    "documents:scan": "node scripts/run-document-scan.mjs",
+    "antivirus:verify": "node scripts/verify-antivirus.mjs",
+    "test:antivirus-infra": "node --test ../../scripts/clamav-buildpack.test.mjs",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -122,7 +126,9 @@
     "ts-loader": "^9.4.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "minimatch-legacy": "file:vendor/vigieau-minimatch-legacy-10.2.6-vigieau.1.tgz",
+    "minimatch-modern": "file:vendor/vigieau-minimatch-10.2.6-vigieau.1.tgz"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -173,7 +179,11 @@
       },
       "nodemailer": "$nodemailer",
       "uuid": "11.1.1"
-    }
+    },
+    "follow-redirects": "1.16.2",
+    "glob@>=9 <14.0.2": "14.0.3",
+    "minimatch@<6": "$minimatch-legacy",
+    "minimatch@>=9 <11": "$minimatch-modern"
   },
   "engines": {
     "node": "24.22.1",
