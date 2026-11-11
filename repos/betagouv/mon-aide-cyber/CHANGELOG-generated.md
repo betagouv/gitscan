@@ -1,24 +1,22 @@
-## Changelog : mon-aide-cyber (30 derniers jours, au 02/11/2026)
+## Changelog : mon-aide-cyber (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Cette période a été marquée par une refonte majeure du diagnostic RECYF. L'objectif a été d'enrichir le contenu de cybersécurité (gouvernance, accès, postes de travail) tout en simplifiant le parcours utilisateur par la suppression de questions obsolètes et l'amélioration de l'aide textuelle (info-bulles).
+Ce mois-ci, le projet a bénéficié d'une refonte majeure de son outil de diagnostic pour le rendre plus complet et pertinent, avec l'ajout de nouvelles thématiques de cybersécurité. Parallèlement, des améliorations de sécurité et de stabilité ont été apportées au système pour renforcer la fiabilité du service.
 
 ### Évolutions fonctionnelles
-- **Refonte du diagnostic RECYF** :
-    - Ajout de nouvelles questions couvrant la gouvernance (contrats prestataires, suivi des vulnérabilités, schémas des SI), la sécurité des accès (comptes à privilèges, complexité des mots de passe, télétravail, accès distants) et la sécurité des postes (antivirus, mises à jour, cloisonnement des systèmes).
-    - Renforcement de la partie "Réaction" avec des questions sur la gestion de crise et la restauration des sauvegardes.
-    - Intégration de nouveaux éléments de sensibilisation (respect de charte, actions de sensibilisation).
-    - Suppression des thématiques et questions devenues obsolètes pour gagner en pertinence.
-    - Réintégration des questions relatives au RGPD.
-- **Améliorations de l'expérience utilisateur** :
-    - Correction et harmonisation des info-bulles et des libellés pour faciliter la compréhension des questions.
-    - Correction de l'affichage des articles CRISP.
-    - Mise à jour de l'URL MSC pour pointer directement vers la nouvelle page de demande de diagnostic.
+- **Refonte du parcours de diagnostic (RECYF) :**
+  - Ajout de nouvelles questions couvrant la gouvernance, la gestion des accès (comptes à privilèges, accès distants, télétravail), les sauvegardes et la conformité RGPD.
+  - Suppression des thématiques et des questions devenues obsolètes.
+  - Réorganisation de l'ordre des questions pour améliorer la fluidité du parcours.
+- **Amélioration de l'accompagnement utilisateur :**
+  - Mise à jour des libellés et enrichissement des info-bulles d'aide pour clarifier les réponses attendues.
+  - Correction de l'affichage des articles CRISP.
+  - Correction de l'URL de redirection vers la page de demande de diagnostic.
 
 ### Évolutions techniques
-- **Maintenance de l'environnement** :
-    - Mise à jour de la version de Node.js.
-    - Mise à jour de la version de pnpm dans la chaîne de CI.
-- **Qualité et maintenance du code** :
-    - Correction du typage suite à la montée de version de la bibliothèque Knex.
-    - Optimisation du workflow de maintenance via le regroupement des Pull Requests de mise à jour des dépendances.
+- **Sécurité et robustesse :**
+  - Mise à jour de la version de Node.js.
+  - Amélioration de la gestion et du logging des erreurs (notamment pour la réinitialisation de mot de passe et la gestion des appels Metabase).
+  - Correction de typage suite à la montée de version de la bibliothèque Knex.
+- **Infrastructure et CI/CD :**
+  - Mise à jour de la version de pnpm dans la chaîne d'intégration continue.
