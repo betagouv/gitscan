@@ -148,6 +148,7 @@
 │   │   ├── 20261008152530_migreTutorielsEnProcedures.ts
 │   │   ├── 20261012090000_videLiensMesuresPorteursParProcedures.ts
 │   │   ├── 20261013082438_supprime-les-prefixes-lien-mesure.ts
+│   │   ├── 20261103143433_ajouteDonneeReactionHameconnage.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -265,8 +266,8 @@
 │   │   │   │   ├── ressourceConnexionOIDC.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.ts
 │   │   │   ├── outils
-│   │   │   │   ├── kitDeSensibilisationInterne
-│   │   │   │   │   └── ressourceKitDeSensibilisationInterne.ts
+│   │   │   │   ├── campagneDeSensibilisation
+│   │   │   │   │   └── ressourceCampagneDeSensibilisation.ts
 │   │   │   │   ├── modeleAnnuaireDeCrise
 │   │   │   │   │   ├── modele-annuaire-de-crise.xlsx
 │   │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.ts
@@ -416,8 +417,6 @@
 │   │   │   ├── adaptateurEmailBrevo.ts
 │   │   │   ├── adaptateurEmailConsole.ts
 │   │   │   ├── adaptateurEnvironnement.ts
-│   │   │   ├── adaptateurGestionErreurSentry.ts
-│   │   │   ├── adaptateurGestionErreurVide.ts
 │   │   │   ├── adaptateurHachage.ts
 │   │   │   ├── adaptateurHorloge.ts
 │   │   │   ├── adaptateurJournal.ts
@@ -479,6 +478,8 @@
 │   │   │   ├── messagerieMattermost.ts
 │   │   │   ├── nis2
 │   │   │   │   └── entrepotExigenceGrist.ts
+│   │   │   ├── rapporteurConsole.ts
+│   │   │   ├── sentry.ts
 │   │   │   ├── serviceVerificationCoherenceSecretsHachage.ts
 │   │   │   └── utilisateurBDD.ts
 │   │   ├── metier
@@ -573,6 +574,7 @@
 │   │   │   ├── outils
 │   │   │   │   └── outils.ts
 │   │   │   ├── parcours.ts
+│   │   │   ├── rapporteur.ts
 │   │   │   ├── referentielDepartements.ts
 │   │   │   ├── referentielDomainesDeSpecialite.ts
 │   │   │   ├── referentielRegions.ts
@@ -608,6 +610,7 @@
 │   │   │   │   ├── ressourceFavoris.spec.ts
 │   │   │   │   └── ressourceFavorisPartages.spec.ts
 │   │   │   ├── fournisseurChemin.spec.ts
+│   │   │   ├── gestionDErreurs.spec.ts
 │   │   │   ├── guides
 │   │   │   │   ├── constructeurGuideGrist.ts
 │   │   │   │   ├── ressourceDocumentGuide.spec.ts
@@ -663,7 +666,7 @@
 │   │   │   │   ├── ressourceConnexionOIDC.spec.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
 │   │   │   ├── outils
-│   │   │   │   ├── ressourceKitDeSensibilisationInterne.spec.ts
+│   │   │   │   ├── ressourceCampagneDeSensibilisation.spec.ts
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
 │   │   │   │   ├── ressourceModeleListeDActivites.spec.ts
 │   │   │   │   ├── ressourceModeleModificationsMotsDePasse.spec.ts
@@ -771,7 +774,9 @@
 │   │   │   ├── markdown.spec.ts
 │   │   │   ├── nis2
 │   │   │   │   └── entrepotExigenceGrist.spec.ts
-│   │   │   └── serviceVerificationCoherenceSecretsHachage.spec.ts
+│   │   │   ├── rapporteur.spec.ts
+│   │   │   ├── serviceVerificationCoherenceSecretsHachage.spec.ts
+│   │   │   └── signalementErreursRuntime.spec.ts
 │   │   ├── metier
 │   │   │   ├── ResultatTestMaturiteCreateur.ts
 │   │   │   ├── generateurCodeSessionDeGroupe.spec.ts
@@ -1034,6 +1039,14 @@
 │   │   │   ├── apercu-faq-nis2-dans-laptop.avif
 │   │   │   ├── badge-nis2.svg
 │   │   │   ├── banniere-cyberdepart-generique.png
+│   │   │   ├── campagne-de-sensibilisation
+│   │   │   │   ├── apercu-encart.svg
+│   │   │   │   ├── authentification-et-acces.avif
+│   │   │   │   ├── donnees-sensibles.avif
+│   │   │   │   ├── hameconnage.avif
+│   │   │   │   ├── mobilite-et-deplacement.avif
+│   │   │   │   ├── reagir-face-a-un-incident.avif
+│   │   │   │   └── securite-des-comptes.avif
 │   │   │   ├── coche-ronde-active.svg
 │   │   │   ├── coche-ronde-inactive.svg
 │   │   │   ├── coche-rouge-dans-cercle-bleu.svg
@@ -1184,14 +1197,6 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── composition-biz-dev-2.avif
 │   │   │   │       └── composition-biz-dev.avif
-│   │   │   ├── kit-de-sensibilisation
-│   │   │   │   ├── apercu-encart.svg
-│   │   │   │   ├── authentification-et-acces.avif
-│   │   │   │   ├── donnees-sensibles.avif
-│   │   │   │   ├── hameconnage.avif
-│   │   │   │   ├── mobilite-et-deplacement.avif
-│   │   │   │   ├── reagir-face-a-un-incident.avif
-│   │   │   │   └── securite-des-comptes.avif
 │   │   │   ├── la-directive-NIS2.svg
 │   │   │   ├── localisation-france.svg
 │   │   │   ├── logo-afcdp.avif
@@ -1273,7 +1278,7 @@
 │   │   │   ├── nis2.svg
 │   │   │   ├── outils
 │   │   │   │   └── animation
-│   │   │   │       └── kit-sensibilisation-interne.avif
+│   │   │   │       └── campagne-de-sensibilisation.avif
 │   │   │   ├── parcours-securisation
 │   │   │   │   ├── animation
 │   │   │   │   │   ├── heros-parcours-basique.avif
@@ -1283,10 +1288,19 @@
 │   │   │   │   ├── mesure-*.avif  (58 files)
 │   │   │   │   ├── module-*.svg  (6 files)
 │   │   │   │   ├── outils
+│   │   │   │   │   ├── campagne-de-sensibilisation-logo.svg
 │   │   │   │   │   ├── icone-telechargement-ics.svg
 │   │   │   │   │   ├── icone-telechargement-xlsx.svg
+│   │   │   │   │   ├── jeu-carte-reflexes-cyber-logo.svg
 │   │   │   │   │   ├── jeu-carte-reflexes-cyber.svg
-│   │   │   │   │   └── jeu-reflexes-cyber-en-ligne.svg
+│   │   │   │   │   ├── jeu-reflexes-cyber-en-ligne-logo.svg
+│   │   │   │   │   ├── jeu-reflexes-cyber-en-ligne.svg
+│   │   │   │   │   ├── mini-test-exposition-logo.svg
+│   │   │   │   │   ├── mini-test-hameconnage-logo.svg
+│   │   │   │   │   ├── mini-test-maturite-logo.svg
+│   │   │   │   │   ├── mini-test-reflexes-cyber-logo.svg
+│   │   │   │   │   ├── mini-test-vrai-faux-logo.svg
+│   │   │   │   │   └── points-outil.avif
 │   │   │   │   └── visuel-cyberdepart.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
@@ -1343,6 +1357,7 @@
 │   │       ├── site.scss
 │   │       └── test-maturite.scss
 │   ├── associations.html
+│   ├── campagne-de-sensibilisation.html
 │   ├── catalogue.html
 │   ├── cgu.html
 │   ├── collectivites.html
@@ -1355,6 +1370,7 @@
 │   ├── cyberdepart
 │   │   └── diagnostic-gratuit.html
 │   ├── entreprises.html
+│   ├── eslint.config.mjs
 │   ├── exposition.html
 │   ├── favicon.ico
 │   ├── favoris-partages.html
@@ -1365,7 +1381,6 @@
 │   ├── guides.html
 │   ├── inscription.html
 │   ├── integrer-webc.html
-│   ├── kit-de-sensibilisation-interne.html
 │   ├── kit-relais.html
 │   ├── lib-svelte
 │   │   ├── .gitignore
@@ -1396,6 +1411,7 @@
 │   │   │   │           ├── EtrePret.svelte
 │   │   │   │           ├── IllustrationProtegerOrganisation.svelte
 │   │   │   │           └── RisquePrioritaire.svelte
+│   │   │   ├── app-env.ts
 │   │   │   ├── avis-utilisateur
 │   │   │   │   ├── AvisUtilisateur.svelte
 │   │   │   │   └── ControleAvisUtilisateur.ts
@@ -1537,6 +1553,7 @@
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
 │   │   │   │   ├── CarteTest.svelte
+│   │   │   │   ├── HameconnageAnime.svelte
 │   │   │   │   ├── IllustrationHeroMiniTest.svelte
 │   │   │   │   ├── LaptopAnime.svelte
 │   │   │   │   ├── MiniTests.svelte
@@ -1708,14 +1725,14 @@
 │   │   │   │   ├── SelectNiveauMaturite.svelte
 │   │   │   │   └── calculeIdNiveau.ts
 │   │   │   ├── outils
-│   │   │   │   └── kit-de-sensibilisation-interne
-│   │   │   │       ├── KitDeSensibilisationInterne.svelte
+│   │   │   │   └── campagne-de-sensibilisation
+│   │   │   │       ├── CampagneDeSensibilisation.svelte
 │   │   │   │       ├── ModaleApercu.svelte
 │   │   │   │       ├── Thematique.svelte
 │   │   │   │       ├── animation
-│   │   │   │       │   ├── IllustrationHerosKitSensibilisation.svelte
-│   │   │   │       │   └── SceneHerosKitSensibilisation.svelte
-│   │   │   │       ├── archiveKit.svelte.ts
+│   │   │   │       │   ├── IllustrationHerosCampagneSensibilisation.svelte
+│   │   │   │       │   └── SceneHerosCampagneSensibilisation.svelte
+│   │   │   │       ├── archiveCampagne.svelte.ts
 │   │   │   │       ├── manipulationZip.ts
 │   │   │   │       └── thematiques.ts
 │   │   │   ├── page-crisp
@@ -1794,9 +1811,16 @@
 │   │   │   │   │           ├── BoiteAOutilsRECENSEMENT1.svelte
 │   │   │   │   │           ├── BoiteAOutilsRECENSEMENT2.svelte
 │   │   │   │   │           ├── BoiteAOutilsRECENSEMENT3.svelte
+│   │   │   │   │           ├── BoiteAOutilsRH2.svelte
 │   │   │   │   │           └── outils
+│   │   │   │   │               ├── OutilCampagneDeSensibilisation.svelte
 │   │   │   │   │               ├── OutilJeuCarteReflexesCyber.svelte
 │   │   │   │   │               ├── OutilJeuReflexesCyberEnLigne.svelte
+│   │   │   │   │               ├── OutilMiniTestExposition.svelte
+│   │   │   │   │               ├── OutilMiniTestHameconnage.svelte
+│   │   │   │   │               ├── OutilMiniTestMaturite.svelte
+│   │   │   │   │               ├── OutilMiniTestReflexesCyber.svelte
+│   │   │   │   │               ├── OutilMiniTestVraiFaux.svelte
 │   │   │   │   │               ├── OutilModeleAnnuaireDeCrise.svelte
 │   │   │   │   │               ├── OutilModeleDActivites.svelte
 │   │   │   │   │               ├── OutilModeleModificationMotsDePasse.svelte
@@ -1805,6 +1829,7 @@
 │   │   │   │   │               ├── OutilRappelMiseAJourActivites.svelte
 │   │   │   │   │               ├── OutilRappelMiseAJourAnnuaire.svelte
 │   │   │   │   │               └── patrons
+│   │   │   │   │                   ├── IllustrationOutil.svelte
 │   │   │   │   │                   ├── OutilLien.svelte
 │   │   │   │   │                   └── OutilTelechargement.svelte
 │   │   │   │   ├── modales
@@ -2111,9 +2136,20 @@
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
+│   │   ├── espaces-insecables-ponctuation-francaise
+│   │   │   ├── commun.ts
+│   │   │   ├── html.ts
+│   │   │   ├── markdown.ts
+│   │   │   └── svelte.ts
+│   │   ├── espaces-insecables-ponctuation-francaise.ts
 │   │   ├── index.ts
 │   │   └── route-sans-validation.ts
-│   └── tsconfig.json
+│   ├── test
+│   │   ├── espaces-insecables-html.spec.ts
+│   │   ├── espaces-insecables-markdown.spec.ts
+│   │   └── espaces-insecables-ponctuation-francaise.spec.ts
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── renovate.json
 ├── shell.nix
 └── webc-externes
@@ -2126,6 +2162,25 @@
     │   │   └── mini-test-exposition.php
     │   ├── src
     │   │   ├── MiniTestExposition.svelte
+    │   │   ├── index.ts
+    │   │   ├── styles.scss
+    │   │   └── vite.d.ts
+    │   ├── tests
+    │   │   ├── page-test-demo-composant.html
+    │   │   ├── page-test-local-composant.html
+    │   │   └── page-test-prod-composant.html
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   └── vite.config.ts
+    ├── mini-test-hameconnage
+    │   ├── package.json
+    │   ├── plugin
+    │   │   └── remplaceVersionsDansPhp.ts
+    │   ├── public
+    │   │   ├── README.md
+    │   │   └── mini-test-hameconnage.php
+    │   ├── src
+    │   │   ├── MiniTestHameconnage.svelte
     │   │   ├── index.ts
     │   │   ├── styles.scss
     │   │   └── vite.d.ts
@@ -2174,4 +2229,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-351 directories, 2047 files
+358 directories, 2095 files
