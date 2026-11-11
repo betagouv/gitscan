@@ -1,27 +1,25 @@
 {
   "url": "https://github.com/suitenumerique/drive-migrator",
   "name": "drive-migrator",
-  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il permet de préserver la hiérarchie des dossiers et les métadonnées lors du transfert entre instances.",
+  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il vise à assurer l'interopérabilité et la portabilité des données au sein de l'écosystème LaSuite et OpenBuro.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Sécurité & Conformité",
-    "Suivi & Traçabilité",
-    "Administration & Backoffice",
-    "Infrastructure & Stockage",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Celery",
-    "PostgreSQL",
     "Redis",
-    "MinIO",
-    "Keycloak",
+    "PostgreSQL",
     "Next.js",
+    "Keycloak",
+    "MinIO",
     "uv",
-    "Nginx"
+    "Gunicorn"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,31 +28,33 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Node.js / NestJS",
-    "Stockage objet"
+    "Stockage objet",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "mfa",
       "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Unit tests",
-  "lastActivity": "2026-11-03T15:50:49+01:00",
+  "tests": "Pytest",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-11-10T15:28:08+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Python",
+    "TypeScript",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "ETL & Pipelines de données",
-    "Git & DevOps"
+    "Bases de données SQL",
+    "Écosystème beta.gouv / État",
+    "Données & Open Data"
   ]
 }

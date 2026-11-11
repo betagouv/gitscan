@@ -54,6 +54,7 @@
 │                       └── main.py
 ├── docker-compose.yml
 ├── docs
+│   ├── backend-settings.md
 │   ├── drive-migrator-schema.png
 │   ├── migration-integrity-check.md
 │   └── tsclient.md
@@ -287,7 +288,8 @@
     │   │   │   │   │   ├── test_resana_backend_lock.py
     │   │   │   │   │   ├── test_resana_lock_client.py
     │   │   │   │   │   ├── test_resana_members_client.py
-    │   │   │   │   │   └── test_token_manager.py
+    │   │   │   │   │   ├── test_token_manager.py
+    │   │   │   │   │   └── test_token_manager_refresh_ahead.py
     │   │   │   │   └── test_filesystem.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
@@ -334,6 +336,26 @@
     │   │   ├── __init__.py
     │   │   ├── bootstraps.py
     │   │   ├── celery_app.py
+    │   │   ├── configurations
+    │   │   │   ├── __init__.py
+    │   │   │   ├── applications.py
+    │   │   │   ├── cache.py
+    │   │   │   ├── celery.py
+    │   │   │   ├── cors.py
+    │   │   │   ├── database.py
+    │   │   │   ├── drive.py
+    │   │   │   ├── email.py
+    │   │   │   ├── general.py
+    │   │   │   ├── i18n.py
+    │   │   │   ├── logging.py
+    │   │   │   ├── migration.py
+    │   │   │   ├── observability.py
+    │   │   │   ├── oidc.py
+    │   │   │   ├── osmose.py
+    │   │   │   ├── paths.py
+    │   │   │   ├── resana.py
+    │   │   │   ├── rest_framework.py
+    │   │   │   └── storage.py
     │   │   ├── settings.py
     │   │   ├── urls.py
     │   │   └── wsgi.py
@@ -591,4 +613,4 @@
         │   └── openapi-typescript-codegen
         │       └── generate_api_client_local.sh
         └── yarn.lock
-133 directories, 460 files
+134 directories, 481 files
