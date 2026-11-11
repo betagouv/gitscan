@@ -188,6 +188,7 @@
     │   │   │       ├── dns_check.py
     │   │   │       ├── dns_provision.py
     │   │   │       ├── drop_all_tables.py
+    │   │   │       ├── export_spam_messages.py
     │   │   │       ├── generate_vapid_private_key.py
     │   │   │       ├── identity.py
     │   │   │       ├── print_sessions.py
@@ -264,6 +265,7 @@
     │   │   │   ├── 0034_channel_lookup_hash.py
     │   │   │   ├── 0035_address_normalization.py
     │   │   │   ├── 0036_siteconfiguration.py
+    │   │   │   ├── 0037_trashbin_spam_threads_and_sweep_indexes.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -285,6 +287,7 @@
     │   │   │   │   └── tasks.py
     │   │   │   ├── exporter
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── spam.py
     │   │   │   │   └── tasks.py
     │   │   │   ├── identity
     │   │   │   │   ├── __init__.py
@@ -305,6 +308,7 @@
     │   │   │   │   ├── apns.py
     │   │   │   │   ├── common.py
     │   │   │   │   ├── fcm.py
+    │   │   │   │   ├── preview.py
     │   │   │   │   ├── tasks.py
     │   │   │   │   └── webpush.py
     │   │   │   ├── s3_seekable.py
@@ -318,10 +322,12 @@
     │   │   │   │   ├── search.py
     │   │   │   │   └── tasks.py
     │   │   │   ├── ssrf.py
+    │   │   │   ├── storage.py
     │   │   │   ├── thread_events.py
     │   │   │   ├── throttle.py
     │   │   │   ├── tiered_storage.py
-    │   │   │   └── tiered_storage_tasks.py
+    │   │   │   ├── tiered_storage_tasks.py
+    │   │   │   └── trashbin.py
     │   │   ├── signals.py
     │   │   ├── tasks.py
     │   │   ├── templates
@@ -353,7 +359,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (67 files)
+    │   │   │   │   └── test_*.py  (70 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
@@ -364,6 +370,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backfill_postmark.py
     │   │   │   │   ├── test_backfill_thread_snippets.py
+    │   │   │   │   ├── test_export_spam_messages.py
     │   │   │   │   ├── test_re_store_blobs.py
     │   │   │   │   ├── test_send_mail_compose_error.py
     │   │   │   │   └── test_verify_blobs.py
@@ -376,6 +383,7 @@
     │   │   │   ├── entitlements
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
+    │   │   │   │   ├── test_mailbox_backends.py
     │   │   │   │   └── test_oidc_sync.py
     │   │   │   ├── exporter
     │   │   │   │   ├── __init__.py
@@ -423,11 +431,13 @@
     │   │   │   │   ├── test_mailbox.py
     │   │   │   │   ├── test_maildomain.py
     │   │   │   │   ├── test_maildomainaccess.py
+    │   │   │   │   ├── test_message_flag_timestamps.py
     │   │   │   │   ├── test_message_get_parsed_data.py
     │   │   │   │   ├── test_message_template.py
     │   │   │   │   ├── test_site_configuration.py
     │   │   │   │   ├── test_thread_event.py
     │   │   │   │   ├── test_thread_snippet.py
+    │   │   │   │   ├── test_thread_spam.py
     │   │   │   │   ├── test_user_abilities.py
     │   │   │   │   ├── test_user_event.py
     │   │   │   │   └── test_users.py
@@ -451,14 +461,17 @@
     │   │   │   │   ├── test_identity_keycloak.py
     │   │   │   │   ├── test_s3_seekable.py
     │   │   │   │   ├── test_ssrf.py
+    │   │   │   │   ├── test_storage_cache.py
     │   │   │   │   ├── test_thread_events.py
     │   │   │   │   ├── test_throttle.py
-    │   │   │   │   └── test_tiered_storage.py
+    │   │   │   │   ├── test_tiered_storage.py
+    │   │   │   │   └── test_trashbin.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── tasks
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_cleanup_trashbin.py
     │   │   │   │   ├── test_task_importer.py
     │   │   │   │   ├── test_task_send_message.py
     │   │   │   │   └── test_tiered_storage_tasks.py
@@ -466,7 +479,9 @@
     │   │   │   ├── test_admin_site_configuration.py
     │   │   │   ├── test_checks.py
     │   │   │   ├── test_migration_address_normalization.py
+    │   │   │   ├── test_migration_trashbin_spam.py
     │   │   │   ├── test_push.py
+    │   │   │   ├── test_push_preview.py
     │   │   │   ├── test_pylint_address_ops.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_signals.py
@@ -519,13 +534,16 @@
     │   │   │   ├── link-preview.spec.ts
     │   │   │   ├── login.spec.ts
     │   │   │   ├── mailbox-settings.spec.ts
+    │   │   │   ├── mailbox-storage.spec.ts
     │   │   │   ├── message-import.spec.ts
     │   │   │   ├── message-inline-image.spec.ts
     │   │   │   ├── message-send.spec.ts
     │   │   │   ├── outbox.spec.ts
     │   │   │   ├── signatures.spec.ts
     │   │   │   ├── thread-event.spec.ts
-    │   │   │   └── thread-starred-read.spec.ts
+    │   │   │   ├── thread-message-header.spec.ts
+    │   │   │   ├── thread-starred-read.spec.ts
+    │   │   │   └── trash-purge.spec.ts
     │   │   ├── __theme__
     │   │   │   ├── account.spec.ts
     │   │   │   └── login.spec.ts
@@ -564,7 +582,11 @@
     │   │   │       │   │   └── local
     │   │   │       │   │       └── suitenumerique
     │   │   │       │   │           └── messages
-    │   │   │       │   │               └── MainActivity.java
+    │   │   │       │   │               ├── MainActivity.java
+    │   │   │       │   │               ├── PushPreviewCrypto.java
+    │   │   │       │   │               ├── PushPreviewKeyring.java
+    │   │   │       │   │               ├── PushPreviewKeysPlugin.java
+    │   │   │       │   │               └── PushPreviewMessagingService.java
     │   │   │       │   └── res
     │   │   │       │       ├── drawable
     │   │   │       │       │   ├── ic_launcher_background.xml
@@ -625,10 +647,14 @@
     │   │   │       │           └── file_paths.xml
     │   │   │       └── test
     │   │   │           └── java
-    │   │   │               └── com
-    │   │   │                   └── getcapacitor
-    │   │   │                       └── myapp
-    │   │   │                           └── ExampleUnitTest.java
+    │   │   │               ├── com
+    │   │   │               │   └── getcapacitor
+    │   │   │               │       └── myapp
+    │   │   │               │           └── ExampleUnitTest.java
+    │   │   │               └── local
+    │   │   │                   └── suitenumerique
+    │   │   │                       └── messages
+    │   │   │                           └── PushPreviewCryptoTest.java
     │   │   ├── build.gradle
     │   │   ├── capacitor.settings.gradle
     │   │   ├── gradle
@@ -679,12 +705,16 @@
     │   │   │   │   │   ├── LaunchScreen.storyboard
     │   │   │   │   │   └── Main.storyboard
     │   │   │   │   ├── Info.plist
+    │   │   │   │   ├── KeyboardAccessoryPlugin.swift
     │   │   │   │   ├── MainViewController.swift
+    │   │   │   │   ├── PrivacyInfo.xcprivacy
+    │   │   │   │   ├── PushPreviewKeysPlugin.swift
     │   │   │   │   ├── SceneDelegate.swift
     │   │   │   │   ├── WebAuthSessionPlugin.swift
     │   │   │   │   ├── en.lproj
     │   │   │   │   │   └── Localizable.strings
     │   │   │   │   └── fr.lproj
+    │   │   │   │       ├── InfoPlist.strings
     │   │   │   │       └── Localizable.strings
     │   │   │   ├── App.xcodeproj
     │   │   │   │   ├── project.pbxproj
@@ -696,13 +726,20 @@
     │   │   │   │   └── xcshareddata
     │   │   │   │       └── xcschemes
     │   │   │   │           └── App.xcscheme
-    │   │   │   └── CapApp-SPM
-    │   │   │       ├── .gitignore
-    │   │   │       ├── Package.swift
-    │   │   │       ├── README.md
-    │   │   │       └── Sources
-    │   │   │           └── CapApp-SPM
-    │   │   │               └── CapApp-SPM.swift
+    │   │   │   ├── CapApp-SPM
+    │   │   │   │   ├── .gitignore
+    │   │   │   │   ├── Package.swift
+    │   │   │   │   ├── README.md
+    │   │   │   │   └── Sources
+    │   │   │   │       └── CapApp-SPM
+    │   │   │   │           └── CapApp-SPM.swift
+    │   │   │   ├── NotificationService
+    │   │   │   │   ├── Info.plist
+    │   │   │   │   ├── NotificationService.entitlements
+    │   │   │   │   └── NotificationService.swift
+    │   │   │   └── PushPreview
+    │   │   │       ├── PushPreviewCrypto.swift
+    │   │   │       └── PushPreviewKeyring.swift
     │   │   └── debug.xcconfig
     │   ├── orval.config.ts
     │   ├── package-lock.json
@@ -945,9 +982,11 @@
     │   │   │   │   │   │   ├── labels_add_threads_create_body.ts
     │   │   │   │   │   │   ├── labels_list_params.ts
     │   │   │   │   │   │   ├── labels_remove_threads_create_body.ts
+    │   │   │   │   │   │   ├── largest_thread.ts
+    │   │   │   │   │   │   ├── largest_thread_abilities.ts
     │   │   │   │   │   │   ├── mail_*.ts  (6 files)
     │   │   │   │   │   │   ├── mailbox.ts
-    │   │   │   │   │   │   ├── mailbox_*.ts  (25 files)
+    │   │   │   │   │   │   ├── mailbox_*.ts  (32 files)
     │   │   │   │   │   │   ├── mailboxes_*.ts  (18 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
@@ -973,16 +1012,16 @@
     │   │   │   │   │   │   ├── reset_password_not_found.ts
     │   │   │   │   │   │   ├── reset_password_response.ts
     │   │   │   │   │   │   ├── response_enum.ts
-    │   │   │   │   │   │   ├── scope_enum.ts
     │   │   │   │   │   │   ├── scope_level_enum.ts
     │   │   │   │   │   │   ├── send_*.ts  (5 files)
     │   │   │   │   │   │   ├── source_enum.ts
     │   │   │   │   │   │   ├── status_enum.ts
+    │   │   │   │   │   │   ├── storage_entitlement.ts
     │   │   │   │   │   │   ├── task_status_response.ts
     │   │   │   │   │   │   ├── task_status_response_result.ts
     │   │   │   │   │   │   ├── third_party_drive_retrieve_params.ts
     │   │   │   │   │   │   ├── thread.ts
-    │   │   │   │   │   │   ├── thread_*.ts  (22 files)
+    │   │   │   │   │   │   ├── thread_*.ts  (23 files)
     │   │   │   │   │   │   ├── threads_*.ts  (15 files)
     │   │   │   │   │   │   ├── tree_label.ts
     │   │   │   │   │   │   ├── user_*.ts  (6 files)
@@ -1044,6 +1083,8 @@
     │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   ├── use-placeholder-variables.test.ts
     │   │   │   │   │   └── use-placeholder-variables.ts
+    │   │   │   │   ├── keep-caret-above-toolbar.test.ts
+    │   │   │   │   ├── keep-caret-above-toolbar.ts
     │   │   │   │   ├── markdown-exporter.test.ts
     │   │   │   │   ├── markdown-exporter.ts
     │   │   │   │   ├── message-template-block
@@ -1292,7 +1333,10 @@
     │   │   │   │       │   │   ├── message-templates-tab
     │   │   │   │       │   │   │   └── index.tsx
     │   │   │   │       │   │   ├── resource-section-header.tsx
-    │   │   │   │       │   │   └── signatures-tab
+    │   │   │   │       │   │   ├── signatures-tab
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   └── storage-tab
+    │   │   │   │       │   │       ├── index.test.tsx
     │   │   │   │       │   │       └── index.tsx
     │   │   │   │       │   ├── signatures-view
     │   │   │   │       │   │   ├── compose-signature-action.tsx
@@ -1348,6 +1392,7 @@
     │   │   │   │       │   │   │   └── thread-item-swipe.tsx
     │   │   │   │       │   │   ├── thread-panel-filter.test.tsx
     │   │   │   │       │   │   ├── thread-panel-filter.tsx
+    │   │   │   │       │   │   ├── thread-panel-header.test.tsx
     │   │   │   │       │   │   └── thread-panel-header.tsx
     │   │   │   │       │   ├── hooks
     │   │   │   │       │   │   ├── listbox-navigation.test.ts
@@ -1358,99 +1403,104 @@
     │   │   │   │       │   │   └── use-thread-panel-filters.ts
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── thread-selection-placeholder.tsx
-    │   │   │   │       └── thread-view
+    │   │   │   │       ├── thread-view
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   ├── components
+    │   │   │   │       │   │   ├── assignees-widget
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── index.tsx
+    │   │   │   │       │   │   │   └── quick-assign-popover
+    │   │   │   │       │   │   │       ├── _index.scss
+    │   │   │   │       │   │   │       ├── index.test.tsx
+    │   │   │   │       │   │   │       └── index.tsx
+    │   │   │   │       │   │   ├── attachment-preview-modal
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── index.tsx
+    │   │   │   │       │   │   │   ├── sidebar-drive-action.tsx
+    │   │   │   │       │   │   │   ├── sidebar.tsx
+    │   │   │   │       │   │   │   ├── without-print-action.test.tsx
+    │   │   │   │       │   │   │   └── without-print-action.ts
+    │   │   │   │       │   │   ├── calendar-invite
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── calendar-helper.tsx
+    │   │   │   │       │   │   │   ├── calendar-select.tsx
+    │   │   │   │       │   │   │   ├── event-display.test.ts
+    │   │   │   │       │   │   │   ├── event-display.ts
+    │   │   │   │       │   │   │   ├── ics-samples-check.test.ts
+    │   │   │   │       │   │   │   ├── index.test.ts
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── compose-draft-placeholder
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── message-reply-form
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── draft-actions-menu.tsx
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── share-modal-extensions
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── access-users-list.tsx
+    │   │   │   │       │   │   │   ├── assigned-users-section.tsx
+    │   │   │   │       │   │   │   └── index.ts
+    │   │   │   │       │   │   ├── thread-accesses-widget
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── thread-action-bar
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── thread-attachment-list
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── attachment-item.tsx
+    │   │   │   │       │   │   │   ├── drive-preview-link.tsx
+    │   │   │   │       │   │   │   ├── drive-upload-button.tsx
+    │   │   │   │       │   │   │   ├── drive-upload-store.ts
+    │   │   │   │       │   │   │   ├── index.test.tsx
+    │   │   │   │       │   │   │   ├── index.tsx
+    │   │   │   │       │   │   │   └── use-drive-upload.ts
+    │   │   │   │       │   │   ├── thread-event
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── assignment-message.test.ts
+    │   │   │   │       │   │   │   ├── assignment-message.ts
+    │   │   │   │       │   │   │   ├── group-system-events.test.ts
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── thread-event-input
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── index.tsx
+    │   │   │   │       │   │   │   └── use-im-input-visibility.ts
+    │   │   │   │       │   │   ├── thread-message
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   ├── index.tsx
+    │   │   │   │       │   │   │   ├── is-host-trusted.test.ts
+    │   │   │   │       │   │   │   ├── is-host-trusted.ts
+    │   │   │   │       │   │   │   ├── renderers
+    │   │   │   │       │   │   │   │   ├── image.tsx
+    │   │   │   │       │   │   │   │   ├── index.ts
+    │   │   │   │       │   │   │   │   ├── linkify.test.ts
+    │   │   │   │       │   │   │   │   ├── linkify.ts
+    │   │   │   │       │   │   │   │   ├── text_html.security.test.ts
+    │   │   │   │       │   │   │   │   ├── text_html.ts
+    │   │   │   │       │   │   │   │   ├── text_plain.ts
+    │   │   │   │       │   │   │   │   ├── utils.test.ts
+    │   │   │   │       │   │   │   │   └── utils.ts
+    │   │   │   │       │   │   │   ├── thread-message-actions.tsx
+    │   │   │   │       │   │   │   ├── thread-message-body.tsx
+    │   │   │   │       │   │   │   ├── thread-message-footer.tsx
+    │   │   │   │       │   │   │   ├── thread-message-header.tsx
+    │   │   │   │       │   │   │   ├── thread-message-recipients.tsx
+    │   │   │   │       │   │   │   ├── types.ts
+    │   │   │   │       │   │   │   └── use-link-confirmation.tsx
+    │   │   │   │       │   │   ├── thread-summary
+    │   │   │   │       │   │   │   ├── _index.scss
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   ├── thread-view-empty
+    │   │   │   │       │   │   │   └── index.tsx
+    │   │   │   │       │   │   └── thread-view-labels-list
+    │   │   │   │       │   │       └── index.tsx
+    │   │   │   │       │   ├── index.tsx
+    │   │   │   │       │   └── provider.tsx
+    │   │   │   │       └── trashbin-banner
     │   │   │   │           ├── _index.scss
-    │   │   │   │           ├── components
-    │   │   │   │           │   ├── assignees-widget
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── index.tsx
-    │   │   │   │           │   │   └── quick-assign-popover
-    │   │   │   │           │   │       ├── _index.scss
-    │   │   │   │           │   │       ├── index.test.tsx
-    │   │   │   │           │   │       └── index.tsx
-    │   │   │   │           │   ├── attachment-preview-modal
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── index.tsx
-    │   │   │   │           │   │   ├── sidebar-drive-action.tsx
-    │   │   │   │           │   │   ├── sidebar.tsx
-    │   │   │   │           │   │   ├── without-print-action.test.tsx
-    │   │   │   │           │   │   └── without-print-action.ts
-    │   │   │   │           │   ├── calendar-invite
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── calendar-helper.tsx
-    │   │   │   │           │   │   ├── calendar-select.tsx
-    │   │   │   │           │   │   ├── event-display.test.ts
-    │   │   │   │           │   │   ├── event-display.ts
-    │   │   │   │           │   │   ├── ics-samples-check.test.ts
-    │   │   │   │           │   │   ├── index.test.ts
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── compose-draft-placeholder
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── message-reply-form
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── draft-actions-menu.tsx
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── share-modal-extensions
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── access-users-list.tsx
-    │   │   │   │           │   │   ├── assigned-users-section.tsx
-    │   │   │   │           │   │   └── index.ts
-    │   │   │   │           │   ├── thread-accesses-widget
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── thread-action-bar
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── thread-attachment-list
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── attachment-item.tsx
-    │   │   │   │           │   │   ├── drive-preview-link.tsx
-    │   │   │   │           │   │   ├── drive-upload-button.tsx
-    │   │   │   │           │   │   ├── drive-upload-store.ts
-    │   │   │   │           │   │   ├── index.tsx
-    │   │   │   │           │   │   └── use-drive-upload.ts
-    │   │   │   │           │   ├── thread-event
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── assignment-message.test.ts
-    │   │   │   │           │   │   ├── assignment-message.ts
-    │   │   │   │           │   │   ├── group-system-events.test.ts
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── thread-event-input
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── index.tsx
-    │   │   │   │           │   │   └── use-im-input-visibility.ts
-    │   │   │   │           │   ├── thread-message
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   ├── index.tsx
-    │   │   │   │           │   │   ├── is-host-trusted.test.ts
-    │   │   │   │           │   │   ├── is-host-trusted.ts
-    │   │   │   │           │   │   ├── renderers
-    │   │   │   │           │   │   │   ├── image.tsx
-    │   │   │   │           │   │   │   ├── index.ts
-    │   │   │   │           │   │   │   ├── linkify.test.ts
-    │   │   │   │           │   │   │   ├── linkify.ts
-    │   │   │   │           │   │   │   ├── text_html.security.test.ts
-    │   │   │   │           │   │   │   ├── text_html.ts
-    │   │   │   │           │   │   │   ├── text_plain.ts
-    │   │   │   │           │   │   │   ├── utils.test.ts
-    │   │   │   │           │   │   │   └── utils.ts
-    │   │   │   │           │   │   ├── thread-message-actions.tsx
-    │   │   │   │           │   │   ├── thread-message-body.tsx
-    │   │   │   │           │   │   ├── thread-message-footer.tsx
-    │   │   │   │           │   │   ├── thread-message-header.tsx
-    │   │   │   │           │   │   ├── thread-message-recipients.tsx
-    │   │   │   │           │   │   ├── types.ts
-    │   │   │   │           │   │   └── use-link-confirmation.tsx
-    │   │   │   │           │   ├── thread-summary
-    │   │   │   │           │   │   ├── _index.scss
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── thread-view-empty
-    │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   └── thread-view-labels-list
-    │   │   │   │           │       └── index.tsx
-    │   │   │   │           ├── index.tsx
-    │   │   │   │           └── provider.tsx
+    │   │   │   │           ├── index.test.tsx
+    │   │   │   │           └── index.tsx
     │   │   │   ├── message
     │   │   │   │   ├── use-add-label.tsx
     │   │   │   │   ├── use-archive.tsx
@@ -1462,6 +1512,9 @@
     │   │   │   │   ├── use-delete-label.tsx
     │   │   │   │   ├── use-delete-thread-access.tsx
     │   │   │   │   ├── use-delete.tsx
+    │   │   │   │   ├── use-empty-trash.test.tsx
+    │   │   │   │   ├── use-empty-trash.tsx
+    │   │   │   │   ├── use-flag.test.tsx
     │   │   │   │   ├── use-flag.tsx
     │   │   │   │   ├── use-leave-thread.tsx
     │   │   │   │   ├── use-mention-read.tsx
@@ -1472,6 +1525,8 @@
     │   │   │   │   ├── use-split-thread.tsx
     │   │   │   │   ├── use-starred.tsx
     │   │   │   │   ├── use-thread-assignment.ts
+    │   │   │   │   ├── use-thread-remove-actions.test.tsx
+    │   │   │   │   ├── use-thread-remove-actions.ts
     │   │   │   │   ├── use-thread-row-actions.ts
     │   │   │   │   ├── use-thread-unread.ts
     │   │   │   │   └── use-trash.tsx
@@ -1491,6 +1546,7 @@
     │   │   │   │   ├── fetch.test.ts
     │   │   │   │   ├── fetch.ts
     │   │   │   │   ├── haptics.ts
+    │   │   │   │   ├── keyboard.test.ts
     │   │   │   │   ├── keyboard.ts
     │   │   │   │   ├── media-url.test.ts
     │   │   │   │   ├── media-url.ts
@@ -1504,9 +1560,11 @@
     │   │   │   │   ├── pull-to-refresh-indicator
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── push-preview-invariants.test.ts
     │   │   │   │   ├── push.test.ts
     │   │   │   │   ├── push.ts
     │   │   │   │   ├── sso-invariants.test.ts
+    │   │   │   │   ├── store-privacy-invariants.test.ts
     │   │   │   │   ├── use-native-download.tsx
     │   │   │   │   ├── use-ota-update-toast.tsx
     │   │   │   │   └── use-pull-to-refresh.ts
@@ -1550,6 +1608,14 @@
     │   │   │   ├── push
     │   │   │   │   ├── shared.test.ts
     │   │   │   │   └── shared.ts
+    │   │   │   ├── quota
+    │   │   │   │   ├── api
+    │   │   │   │   │   └── use-mailbox-entitlements.ts
+    │   │   │   │   └── components
+    │   │   │   │       └── quota-widget
+    │   │   │   │           ├── _index.scss
+    │   │   │   │           ├── index.test.tsx
+    │   │   │   │           └── index.tsx
     │   │   │   ├── sentry
     │   │   │   │   └── index.ts
     │   │   │   ├── signatures
@@ -1596,6 +1662,9 @@
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── feedback-widget
+    │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── header-banner
+    │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── icon
     │   │   │   │       │   ├── _index.scss
@@ -1646,8 +1715,10 @@
     │   │   │   │       ├── toaster
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── tooltip
+    │   │   │   │       │   └── index.tsx
     │   │   │   │       └── transient-tooltip
-    │   │   │   │           ├── _index.scss
+    │   │   │   │           ├── index.test.tsx
     │   │   │   │           └── index.tsx
     │   │   │   └── utils
     │   │   │       ├── attachment-helper
@@ -1664,6 +1735,9 @@
     │   │   │       ├── date-helper.ts
     │   │   │       ├── errors
     │   │   │       │   └── index.ts
+    │   │   │       ├── event-helper
+    │   │   │       │   ├── index.test.ts
+    │   │   │       │   └── index.ts
     │   │   │       ├── i18n-helper
     │   │   │       │   ├── index.test.ts
     │   │   │       │   └── index.ts
@@ -1671,6 +1745,9 @@
     │   │   │       ├── mail-helper.tsx
     │   │   │       ├── mailbox-helper
     │   │   │       │   ├── index.test.tsx
+    │   │   │       │   └── index.ts
+    │   │   │       ├── quota-helper
+    │   │   │       │   ├── index.test.ts
     │   │   │       │   └── index.ts
     │   │   │       ├── search-helper
     │   │   │       │   ├── index.test.ts
@@ -1682,6 +1759,9 @@
     │   │   │       ├── text-helper
     │   │   │       │   ├── index.test.tsx
     │   │   │       │   └── index.tsx
+    │   │   │       ├── toast-batch-helper
+    │   │   │       │   ├── index.test.ts
+    │   │   │       │   └── index.ts
     │   │   │       ├── unquote-message
     │   │   │       │   ├── constants.ts
     │   │   │       │   ├── handlers.ts
@@ -1697,6 +1777,7 @@
     │   │   │   ├── import-status.ts
     │   │   │   ├── use-ability.ts
     │   │   │   ├── use-current-folder-name.ts
+    │   │   │   ├── use-current-view.ts
     │   │   │   ├── use-debounce-callback.ts
     │   │   │   ├── use-document-title.ts
     │   │   │   ├── use-drag-gesture.test.ts
@@ -1718,6 +1799,7 @@
     │   │   │   ├── use-swipe-actions.test.tsx
     │   │   │   ├── use-swipe-actions.ts
     │   │   │   ├── use-task-status.ts
+    │   │   │   ├── use-threads-stats.ts
     │   │   │   ├── use-url-search-params.ts
     │   │   │   └── use-visibility-observer.ts
     │   │   ├── main.tsx
@@ -1752,6 +1834,7 @@
     │   │   │   ├── utils
     │   │   │   │   ├── _controls.scss
     │   │   │   │   ├── _index.scss
+    │   │   │   │   ├── _touch.scss
     │   │   │   │   └── breakpoints.scss
     │   │   │   └── views
     │   │   │       ├── _index.scss
@@ -1896,10 +1979,12 @@
     │       │   ├── main.tsx
     │       │   └── shared
     │       │       ├── Footer.tsx
+    │       │       ├── Gaufre.tsx
     │       │       ├── Header.tsx
     │       │       ├── brand.ts
     │       │       ├── dsfr.ts
-    │       │       └── layout.css
+    │       │       ├── layout.css
+    │       │       └── settings.ts
     │       ├── tsconfig.json
     │       └── vite.config.ts
     ├── mpa
@@ -1975,4 +2060,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-403 directories, 1793 files
+419 directories, 1873 files

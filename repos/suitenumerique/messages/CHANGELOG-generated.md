@@ -1,39 +1,32 @@
-## Changelog : messages (30 derniers jours, au 23 octobre 2026)
+## Changelog : messages (30 derniers jours, au 11 novembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment via l'ajout de bannières d'information (réponses automatiques, messages de service) et une optimisation de l'interface mobile. La sécurité a été renforcée par un durcissement des accès et une mise à jour des certificats de confiance, tandis que l'infrastructure a bénéficié de montées de version critiques (Python, Keycloak).
+Ce mois a été marqué par une amélioration significative de l'expérience mobile (iOS et Android) et une fiabilisation des processus d'importation de données (PST, IMAP, Google Drive). L'interface utilisateur a également été enrichie de nouveaux indicateurs visuels, notamment pour le suivi du stockage et la communication de messages de service.
 
 ### Évolutions fonctionnelles
-- **Interface et expérience utilisateur**
-    - Ajout de bannières visuelles pour signaler l'activation d'une réponse automatique ou l'affichage d'un message de service.
-    - Introduction d'une confirmation avant la suppression de brouillons [#817](https://github.com/suitenumerique/messages/issues/817).
-    - Amélioration de la gestion des messages MBOX (mots-clés et support de format).
-    - Corrections diverses de l'interface : badges de messages non lus sur le favicon, menus déroulants [#808](https://github.com/suitenumerique/messages/issues/808), et popovers de recherche ou de suggestion d'utilisateurs.
-    - Correction des traductions en néerlandais.
-    - Masquage de la clé API dans le modal d'intégration pour plus de sécurité.
-- **Expérience Mobile**
-    - Optimisation de l'affichage en mode paysage pour la composition de messages.
-    - Résolution de problèmes de focus du clavier et de l'éditeur sur les appareils tactiles.
-    - Corrections de plusieurs problèmes de style visuel.
+- **Expérience Mobile :**
+    - Amélioration de l'ergonomie : gestion optimisée du clavier sur iOS et Android, navigation par simple pression sur les dossiers/labels et barre d'outils de composition mieux positionnée.
+    - Sécurité et notifications : ajout de l'aperçu chiffré des notifications sur mobile et correction de l'affichage du badge de messages non lus.
+- **Gestion des données et imports :**
+    - Optimisation de l'importation de contacts et messages depuis Outlook (PST) et IMAP (notamment pour les sous-dossiers Orange).
+    - Amélioration de l'intégration Google Drive (détection de doublons par titre et déclaration de la taille des fichiers).
+- **Interface et UX :**
+    - Ajout de jauges de stockage pour les boîtes de réception et gestion de la purge des corbeilles/spams.
+    - Introduction de bannières informatives pour les messages de service et l'état des réponses automatiques.
+    - Pagination de la vue des métriques d'utilisation [#832].
+    - Corrections diverses sur la fenêtre de composition, l'envoi des pièces jointes et l'affichage des fils de discussion.
 
 ### Évolutions techniques
-- **Sécurité et Infrastructure**
-    - Renforcement du contrôle des accès (scoping) et des requêtes sortantes.
-    - Suspension des clés API personnelles lors de certaines opérations de cascade [#804](https://github.com/suitenumerique/messages/issues/804).
-    - Utilisation de `SecretFileValue` pour sécuriser les paramètres sensibles.
-    - Mise à jour des composants critiques : Python 3.14.8 [#821](https://github.com/suitenumerique/messages/issues/821), Keycloak 26.8.1 [#813](https://github.com/suitenumerique/messages/issues/813) et Caddy 2.11.7.
-    - Rafraîchissement des images de base et des certificats CA [#829](https://github.com/suitenumerique/messages/issues/829), incluant le retrait du certificat racine emSign ECC compromis.
-- **Backend et Performance**
-    - Mise en place de la pagination pour la vue des métriques d'utilisation [#832](https://github.com/suitenumerique/messages/issues/832).
-    - Déplacement des tâches d'exportation vers le worker d'importation [#805](https://github.com/suitenumerique/messages/issues/805).
-    - Correction de la recherche de threads en l'absence de configuration OpenSearch.
-- **Frontend et Mobile**
-    - Mise à jour de Capacitor vers la version 8.5 avec adoption du cycle de vie UIScene.
-    - Mise à jour du kit d'interface utilisateur (ui-kit) vers la version 1.3.0.
-    - Optimisation du frontend pour éviter les doubles initialisations de la bibliothèque Lagaufre [#823](https://github.com/suitenumerique/messages/issues/823).
-    - Amélioration de la compatibilité des images Docker avec Podman [#820](https://github.com/suitenumerique/messages/issues/820).
-- **Tests**
-    - Ajout de tests de bout en bout (E2E) pour le thème Keycloak `lst-dsfr`.
+- **Sécurité et Infrastructure :**
+    - Renforcement de la sécurité des notifications push via un chiffrement des données pour l'appareil.
+    - Mise à jour de l'environnement : passage à Python 3.14 [#821] et rafraîchissement des images Docker et des certificats CA [#829].
+    - Sécurisation de la gestion des paramètres sensibles via l'utilisation de `SecretFileValue`.
+- **Backend et Messagerie :**
+    - Améliorations du protocole SMTP : journalisation des sessions [#844] et support de parties locales d'adresses plus longues (#853).
+    - Ajout d'une commande d'exportation du corpus de spams vers un stockage objet.
+- **Frontend et Tests :**
+    - Refactoring du code frontend (utilisation de symboles privés JavaScript, gestion des tooltips via des portails).
+    - Amélioration de la stabilité des tests de bout en bout (E2E) sur la CI.
 
 ### Autres changements
-- Ajout d'un Dockerfile et d'un modèle de menace pour l'enrôlement du scanner OSS.
+- Mise à jour de la documentation technique, notamment le README [#839] et les instructions relatives aux paramètres d'intégration Google Drive.
