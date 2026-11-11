@@ -1,32 +1,35 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 06/11/2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 2026-11-10)
 
 ### Résumé
-Cette période a été marquée par un enrichissement majeur de l'offre de découverte des métiers. La plateforme propose désormais une page dédiée aux métiers avec des parcours interactifs (exploration, témoignages de pros, suivi de parcours) et une meilleure intégration des données professionnelles. L'expérience utilisateur a également été affinée via des corrections de contenu et des améliorations visuelles.
+La plateforme s'enrichit de nouveaux contenus et parcours pour mieux guider les utilisateurs dans la découverte des métiers de la cybersécurité. L'ajout de la page "Les métiers" avec ses onglets interactifs, l'intégration de témoignages de professionnels et la mise en place d'un test cyber permettent une exploration plus immersive et personnalisée.
 
 ### Évolutions fonctionnelles
-- **Découverte des métiers** : Mise en ligne de la page "Les métiers" incluant des onglets interactifs ("J'explore", "J'écoute les Pros", "Je trace ma route") et des fiches détaillées par famille de métiers.
-- **Contenu professionnel** : Ajout de vignettes de professionnels et de témoignages pour enrichir l'exploration des métiers.
-- **Parcours de formation** : Implémentation de la page "Se former et s'entraîner" et ajout d'un test cyber sur la page d'accueil.
-- **Expérience utilisateur (UX/UI)** : 
+- **Nouvelle expérience "Les métiers"** : déploiement d'une page dédiée incluant des onglets interactifs pour explorer les parcours ("Je me repère", "J'explore", "J'écoute les Pros", "Je trace ma route").
+- **Parcours de formation** : création de la section "Se former et s'entraîner en ligne".
+- **Interactivité et tests** : ajout d'un test cyber avec possibilité d'enregistrer ses résultats.
+- **Amélioration de la navigation métier** : 
+    - Affichage et tri des familles de métiers par numéro.
+    - Mise à jour visuelle (couleurs) des familles de métiers.
+    - Intégration de vignettes présentant des témoignages de professionnels.
+- **Ajustements de l'interface (UI)** : 
     - Amélioration de l'application du mode sombre.
-    - Corrections de textes (wording) pour plus de clarté.
-    - Ajustements de l'identité visuelle (retrait de certains éléments de branding ANSSI).
+    - Simplification de l'en-tête (retrait du logo et de la tagline ANSSI).
+    - Corrections de textes (wording) pour une meilleure clarté.
 
 ### Évolutions techniques
-- **Architecture & API** : 
-    - Création de nouveaux endpoints pour la gestion des familles de métiers et des fonctions.
-    - Développement d'APIs dédiées aux parcours de sélection ("Je me mesure" et "Je m'entraîne").
-    - Intégration de Grist comme source de données pour les métiers, fonctions et profils.
-- **Infrastructure & CI/CD** : 
-    - Migration de la stack vers Node.js 26 et Ubuntu 26.04.
-    - Ajout du support Nix pour l'environnement de développement (shell Nix).
-    - Mise à jour de la chaîne de tests avec le support de Vitest 5.
-- **Qualité & Tooling** : 
-    - Passage en ESM pour la configuration Vitest backend.
+- **Infrastructure et environnement** : 
+    - Migration de la stack vers Node.js 26.
+    - Mise à jour de l'environnement de CI vers Ubuntu 26.04.
+    - Introduction du shell Nix pour le projet.
+- **Développement de l'API** : 
+    - Création de nouveaux endpoints pour les familles de métiers, les fonctions et les sélections de formation ("Je me mesure", "Je m'entraîne").
+    - Refonte de l'exposition des données : masquage des identifiants techniques internes et utilisation d'identifiants métiers pour plus de sécurité.
+    - Synchronisation des données (familles, fonctions, profils, ressources) via Grist.
+- **Qualité et Toolchain** : 
+    - Support de Vitest 5 pour les tests.
     - Automatisation du tri des imports.
-    - Centralisation des instructions pour les agents d'IA.
-    - Amélioration de la gestion des erreurs et de la persistance des résultats de tests.
+    - Optimisation de la gestion des types et refactoring du constructeur de métier.
+    - Ajustement des règles de linting (acceptation de lignes jusqu'à 120 caractères).
 
 ### Autres changements
-- **Documentation** : Réorganisation complète du guide de développement.
-- **Nettoyage** : Suppression des logs de debug d'authentification et optimisation du formatage du code.
+- Réorganisation du guide de développement pour une meilleure accessibilité.
