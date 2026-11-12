@@ -1,21 +1,16 @@
-## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 05/10/2026)
+## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 03/11/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de la précision de l'analyse documentaire et l'enrichissement de l'interface utilisateur. Le système est désormais capable de traiter plus finement les documents (notamment via l'OCR et l'extraction de sommaires) et offre de nouveaux outils pour explorer les données textuelles utilisées par l'intelligence artificielle.
+Les évolutions récentes permettent désormais de lancer les évaluations du modèle directement depuis l'interface utilisateur, offrant plus de flexibilité. Le projet a également bénéficié de renforcements de sécurité et d'une stabilisation des environnements de développement et de déploiement.
 
 ### Évolutions fonctionnelles
-- **Importation de documents** : Ajout de la possibilité d'importer des fichiers PDF via une URL distante directement depuis le tableau de bord.
-- **Exploration des données** : Mise en place d'une interface permettant de visualiser les segments de texte (chunks) extraits d'un document ainsi que leur source.
+- Possibilité de déclencher les évaluations du modèle C4 directement depuis l'interface utilisateur (au lieu de passer par les processus automatisés de GitHub).
 
 ### Évolutions techniques
-- **Amélioration du traitement documentaire et OCR** :
-    - Extraction du sommaire hiérarchique des documents.
-    - Optimisation du nettoyage des sommaires issus de l'OCR (gestion des pointillés et des continuations).
-    - Amélioration de la précision de l'extraction (traitement des légendes et conservation des sections après une figure).
-    - Normalisation des noms de documents.
-- **Optimisation du moteur RAG (Retrieval-Augmented Generation)** :
-    - Contextualisation des segments (chunks) pour améliorer la pertinence des recherches.
-    - Tri des segments par identifiant pour une meilleure organisation des données.
+- CI/CD : Migration du mécanisme de lancement des évaluations de GitHub Actions vers l'interface applicative.
+- CI/CD : Stabilisation de la chaîne d'intégration continue via la mise à jour des versions de Python et Node.js.
+- CI/CD : Optimisation de la gestion des Pull Requests liées aux mises à jour de dépendances.
+- Sécurité : Mise à jour de la bibliothèque Pillow (v13.0.0) pour corriger des vulnérabilités.
 
 ### Autres changements
-- **Tests** : Amélioration de la couverture et de la documentation des tests relatifs au contexte documentaire.
+- Documentation : Ajout d'un modèle C4 pour MQC-Data.
