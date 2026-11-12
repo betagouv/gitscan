@@ -1,33 +1,28 @@
-## Changelog : lab-anssi-ui-kit (30 derniers jours, au 29 octobre 2026)
+## Changelog : lab-anssi-ui-kit (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Ce mois-ci a été marqué par une étape majeure avec le passage à la version 2.0.0. Les évolutions se concentrent sur une plus grande flexibilité des composants (via l'ajout de "slots" permettant d'insérer du contenu personnalisé), une intégration Svelte nettement plus robuste et un renforcement massif de la fiabilité grâce à une couverture de tests étendue sur l'ensemble de la bibliothèque.
+Ce mois a été marqué par une étape majeure avec le passage à la version 2.0.0 du kit. Les utilisateurs bénéficient de nouveaux composants essentiels, notamment pour l'import de fichiers et la sélection complexe, ainsi que d'améliorations sur les filtres de catalogue. En coulisses, une refonte technique importante a été réalisée pour stabiliser l'utilisation des composants et moderniser l'environnement de développement et de publication.
 
 ### Évolutions fonctionnelles
-- **Nouveaux composants et fonctionnalités :**
-    - Ajout du composant `Combobox` au sein du DSFR.
-    - Améliorations du `DsfrCombobox` : ajout du filtrage par légende de groupe, gestion optimisée du bouton "Tout sélectionner", ajout d'une largeur minimale personnalisable et correction des animations.
-    - Évolutions du `FiltresCatalogue` : ajout d'une variation "liens" et amélioration des styles.
-- **Flexibilité accrue des composants :**
-    - Introduction massive de "slots" (emplacements de contenu personnalisables) et de propriétés optionnelles sur de nombreux composants DSFR et Lab (ex: `DsfrAlert`, `DsfrCallout`, `DsfrTag`, `DsfrLink`, `DsfrBadge`, `DsfrAccordion`, `BandeauPage`, `BriqueHero`, etc.), permettant une personnalisation plus fine sans modifier le code source.
-    - Ajout de la propriété `has-no-icon` pour le composant `DsfrBadge`.
+- **Nouveaux composants** :
+    - Ajout du composant `DsfrUpload` pour la gestion des téléchargements.
+    - Ajout du composant `Combobox` pour des sélections enrichies.
+- **Améliorations des composants existants** :
+    - `DsfrCombobox` : ajout d'une largeur minimale personnalisable, amélioration du filtrage par légende de groupe et optimisation de la logique du bouton "Tout sélectionner".
+    - `FiltresCatalogue` : ajout d'une nouvelle variation de liens et affinement des styles.
+- **Corrections d'expérience utilisateur** :
+    - `DsfrCombobox` : simplification de la logique d'ouverture/fermeture et suppression d'animations de collapse.
+    - `DsfrTabs` : correction du fonctionnement de la propriété `activeTabIndex`.
+    - `DsfrTagsGroup` et `DsfrRadiosGroup` : corrections de la gestion des clés et des valeurs par défaut.
 
 ### Évolutions techniques
-- **Versionning :** Passage à la version majeure 2.0.0.
-- **Intégration Svelte :**
-    - Restauration de la distribution des composants Svelte dans le dossier `dist/`.
-    - Ajout de callbacks Svelte pour les événements WebComponents manquants.
-    - Correction de nombreux problèmes d'accès au DOM (notamment via `$host()` et `querySelector`) et de dispatch d'événements spécifiques au mode Svelte.
-- **Qualité et Fiabilité :**
-    - Déploiement massif de tests automatisés couvrant la quasi-totalité des composants DSFR et Lab pour garantir la stabilité des affichages et des interactions.
-- **Architecture :**
-    - Optimisation de l'enregistrement des Web Components pour le rendre idempotent (évite les erreurs de double enregistrement des composants Lab ANSSI et DSFR).
-    - Unification de l'extraction des métadonnées des Web Components.
-- **CI/CD :** Simplification des workflows de test pour Storybook.
-
-### Autres changements
-- **Documentation :**
-    - Mise à jour des guides concernant les imports CSS pour l'utilisation avec Svelte.
-    - Ajout de documentation sur l'amélioration des composants pour le SEO et le SSR (Server-Side Rendering).
-    - Mise à jour de la documentation suite à la nouvelle stratégie de distribution des composants.
-- **Storybook :** Amélioration de l'interface de développement avec un indicateur visuel pour identifier les composants utilisant des "slots".
+- **Architecture et stabilité** :
+    - Refonte de l'enregistrement des Web Components pour le rendre idempotent, évitant ainsi les doubles enregistrements des composants Lab ANSSI et DSFR.
+    - Unification de l'extraction des métadonnées pour les Web Components.
+    - Correction des cibles d'imports DSFR pour les composants `Card`, `User` et `Dropdown`.
+- **Infrastructure et CI/CD** :
+    - Modernisation de la chaîne de production avec le passage à Node.js v26 et pnpm v12.
+    - Renforcement de la qualité logicielle via l'ajout de vérifications automatiques des types Svelte et TypeScript dans la CI.
+    - Centralisation de la configuration de publication dans `publishConfig`.
+- **Tests** :
+    - Ajout de tests pour vérifier l'enregistrement idempotent et le bon fonctionnement du *tree-shaking*.
