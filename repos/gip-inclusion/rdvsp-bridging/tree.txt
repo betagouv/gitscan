@@ -30,7 +30,9 @@
 │   │   │   ├── accounts_controller.rb
 │   │   │   ├── base_controller.rb
 │   │   │   ├── connections_controller.rb
-│   │   │   └── google_controller.rb
+│   │   │   ├── google_controller.rb
+│   │   │   ├── ignored_rdvs_controller.rb
+│   │   │   └── rdvs_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── caldav_controller.rb
 │   │   ├── concerns
@@ -103,6 +105,7 @@
 │   │   │   └── create.rb
 │   │   └── rdvs
 │   │       ├── cancel.rb
+│   │       ├── ignore.rb
 │   │       └── receive.rb
 │   └── views
 │       ├── admin
@@ -111,11 +114,14 @@
 │       │   │   ├── index.html.erb
 │       │   │   ├── new.html.erb
 │       │   │   └── show.html.erb
-│       │   └── connections
-│       │       ├── new.html.erb
-│       │       └── show.html.erb
+│       │   ├── connections
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   └── ignored_rdvs
+│       │       └── new.html.erb
 │       ├── alert_mailer
-│       │   └── account_failing.text.erb
+│       │   ├── account_failing.text.erb
+│       │   └── connections_silent.text.erb
 │       ├── layouts
 │       │   ├── admin.html.erb
 │       │   ├── application.html.erb
@@ -133,7 +139,8 @@
 │   ├── rails
 │   ├── rake
 │   ├── rubocop
-│   └── setup
+│   ├── setup
+│   └── smoke-test
 ├── config
 │   ├── application.rb
 │   ├── boot.rb
@@ -150,9 +157,11 @@
 │   │   ├── content_security_policy.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
-│   │   └── sentry.rb
+│   │   ├── sentry.rb
+│   │   └── strong_migrations.rb
 │   ├── locales
-│   │   └── en.yml
+│   │   ├── en.yml
+│   │   └── fr.yml
 │   ├── puma.rb
 │   └── routes.rb
 ├── config.ru
@@ -163,14 +172,19 @@
 │   │   ├── 20261019213100_create_connections.rb
 │   │   ├── 20261019213200_create_busy_blocks.rb
 │   │   ├── 20261019213300_create_rdvs.rb
-│   │   └── 20261019230000_add_oauth_tokens_to_accounts.rb
+│   │   ├── 20261019230000_add_oauth_tokens_to_accounts.rb
+│   │   ├── 20261110155242_add_rdvsp_id_to_rdvs.rb
+│   │   ├── 20261110155418_add_start_up_window_to_connections.rb
+│   │   ├── 20261110155709_add_baseline_max_rdvsp_id_to_connections.rb
+│   │   └── 20261110182138_add_silence_alerted_at_to_connections.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker-compose.yml
 ├── docs
 │   ├── deploy-scaleway.md
 │   ├── google.md
-│   └── heads-up-rdvsp.md
+│   ├── heads-up-rdvsp.md
+│   └── preexisting-rdvs.md
 ├── lib
 │   └── tasks
 │       ├── .keep
@@ -204,7 +218,11 @@
 │   │   └── calendav_compatibility_spec.rb
 │   ├── jobs
 │   │   └── check_health_job_spec.rb
+│   ├── mailers
+│   │   └── alert_mailer_spec.rb
 │   ├── models
+│   │   ├── caldav
+│   │   │   └── incoming_event_spec.rb
 │   │   ├── connection_spec.rb
 │   │   └── connection_sync_spec.rb
 │   ├── providers
@@ -220,9 +238,16 @@
 │   │       └── refresh_account_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── admin_rdvs_spec.rb
 │   │   ├── admin_spec.rb
 │   │   ├── caldav_spec.rb
-│   │   └── pipedrive_webhooks_spec.rb
+│   │   ├── pipedrive_webhooks_spec.rb
+│   │   └── proxy_headers_spec.rb
+│   ├── services
+│   │   └── rdvs
+│   │       ├── cancel_spec.rb
+│   │       ├── ignore_spec.rb
+│   │       └── receive_spec.rb
 │   ├── spec_helper.rb
 │   └── support
 │       ├── google_helpers.rb
@@ -235,4 +260,4 @@
 │       └── .keep
 └── vendor
     └── .keep
-56 directories, 181 files
+61 directories, 201 files

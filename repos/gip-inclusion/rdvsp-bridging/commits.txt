@@ -1,3 +1,35 @@
+2026-11-12T03:26:21Z - 63360ae - dependabot[bot] : Bump rspec-rails from 8.0.4 to 8.1.0 in the all-dependencies group (#15)
+2026-11-10T21:21:24+01:00 - ed6d283 - Louis-Jean Teitelbaum : Merge pull request #14 from gip-inclusion/health-checks
+2026-11-10T21:19:50+01:00 - bea15b8 - Louis-Jean Teitelbaum : Record the smoke test's URLs and the migrations' lock timeout
+2026-11-10T21:19:50+01:00 - 18b4525 - Louis-Jean Teitelbaum : Smoke-test the container's Scaleway URL too, which agents connected before the custom domain keep using
+2026-11-10T21:17:35+01:00 - e25dd47 - Louis-Jean Teitelbaum : Give migrations a 10-second lock timeout, retried 3 times, since they run while the app serves traffic
+2026-11-10T21:17:35+01:00 - b2e31db - Louis-Jean Teitelbaum : Record RDV-SP's import schedule, the alert calibrated on it, and the Sentry setup
+2026-11-10T21:17:25+01:00 - 368d8d1 - Louis-Jean Teitelbaum : Alert only when RDV-SP missed two of its scheduled imports, since it imports nothing at night
+2026-11-10T21:17:24+01:00 - 76c74e9 - Louis-Jean Teitelbaum : Stop alerting about failing accounts that have no active connection left
+2026-11-10T21:17:24+01:00 - 51f2a7a - Louis-Jean Teitelbaum : Record the post-outage alerting and smoke test, and what production still lacks
+2026-11-10T21:17:08+01:00 - c2d23f4 - Louis-Jean Teitelbaum : Smoke-test the bridge from outside after each deploy, through the platform's proxies
+2026-11-10T21:17:08+01:00 - 2afef24 - Louis-Jean Teitelbaum : Alert us when RDV-SP hasn't polled a connection for half an hour
+2026-11-10T21:16:55+01:00 - 40d4524 - Louis-Jean Teitelbaum : Merge pull request #13 from gip-inclusion/pont-rdv-domain
+2026-11-10T20:25:22+01:00 - f4bdf08 - Louis-Jean Teitelbaum : Replace the Pipedrive webhooks on all the bridge's hosts at onboarding
+2026-11-10T20:25:22+01:00 - 33a7464 - Louis-Jean Teitelbaum : Move the bridge to pont-rdv.inclusion.gouv.fr in the docs and decision log
+2026-11-10T20:25:21+01:00 - d684fde - Louis-Jean Teitelbaum : Accept the hosts in BRIDGE_ALLOWED_HOSTS next to BRIDGE_BASE_URL's in production
+2026-11-10T18:25:59Z - 50e685d - dependabot[bot] : Bump the all-dependencies group across 1 directory with 6 updates (#12)
+2026-11-10T18:22:09+01:00 - 15d13cc - Louis-Jean Teitelbaum : Merge pull request #11 from gip-inclusion/trust-scaleway-proxies
+2026-11-10T18:13:08+01:00 - 08b8b0d - Louis-Jean Teitelbaum : Record why Scaleway's load balancers are trusted proxies
+2026-11-10T18:13:07+01:00 - c941542 - Louis-Jean Teitelbaum : Trust Scaleway's load balancers so Rails 8.1.4.1 stops rejecting their forwarding headers as spoofing
+2026-11-10T17:45:08+01:00 - 51739d2 - Louis-Jean Teitelbaum : Merge pull request #10 from gip-inclusion/ignore-preexisting-rdvs
+2026-11-10T17:41:18+01:00 - 4cd3f86 - Louis-Jean Teitelbaum : Merge pull request #9 from gip-inclusion/security-updates
+2026-11-10T17:03:31+01:00 - dfc5626 - Louis-Jean Teitelbaum : Let the admin ignore after the fact the RDVs received before a cut-off, with a preview
+2026-11-10T17:03:31+01:00 - 62fcfb4 - Louis-Jean Teitelbaum : Record the decisions on pre-existing RDVs, Pipedrive's deleted activities and French translations
+2026-11-10T17:03:31+01:00 - 3e1323e - Louis-Jean Teitelbaum : Remove the provider activity an ignored RDV still has instead of pushing it
+2026-11-10T17:03:31+01:00 - 10f7de4 - Louis-Jean Teitelbaum : Show a connection's RDVs in the admin and let an ignored one be released
+2026-11-10T17:03:31+01:00 - 07c0bd0 - Louis-Jean Teitelbaum : Also ignore never-seen RDVs at or below the highest RDV-SP id ignored on the connection
+2026-11-10T17:03:30+01:00 - acb886b - Louis-Jean Teitelbaum : Add Rails' French translations and fail on missing ones in development and test
+2026-11-10T17:03:30+01:00 - a458c3c - Louis-Jean Teitelbaum : Record RDV-SP's id for each RDV received
+2026-11-10T17:03:30+01:00 - 891a2d8 - Louis-Jean Teitelbaum : Update Rails to 8.1.4.1, rack, nokogiri, loofah, rails-html-sanitizer and addressable for their security advisories
+2026-11-10T17:03:30+01:00 - 7cbe6f7 - Louis-Jean Teitelbaum : Treat Pipedrive's 403 on update and 400 on delete of a deleted activity as a deleted activity
+2026-11-10T17:03:30+01:00 - 6471560 - Louis-Jean Teitelbaum : Ignore the RDVs first received in the quiet minute after RDV-SP's connection test
+2026-11-10T17:03:30+01:00 - 09523d6 - Louis-Jean Teitelbaum : Design ignoring the RDVs that existed before the connection
 2026-10-28T03:27:33Z - b94dacf - dependabot[bot] : Bump rubocop from 1.92.0 to 1.92.1 in the all-dependencies group (#4)
 2026-10-25T08:13:53+01:00 - 6f4b655 - Louis-Jean Teitelbaum : Merge pull request #3 from gip-inclusion/ruby-4.0.9
 2026-10-25T08:12:34+01:00 - 505f63f - Louis-Jean Teitelbaum : Bump crass to 1.0.8 for the CSS sanitizer bypass advisory

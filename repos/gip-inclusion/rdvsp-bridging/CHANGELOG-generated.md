@@ -1,31 +1,34 @@
-## Changelog : rdvsp-bridging (30 derniers jours, au 28 octobre 2026)
+## Changelog : rdvsp-bridging (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet est passé d'une phase de conception à une version fonctionnelle et sécurisée. Les principales avancées incluent la capacité de synchroniser les calendriers avec Google et Pipedrive, ainsi que la mise en place d'un système de déploiement automatique. Un effort majeur a été consacré à la sécurisation de l'application pour protéger les données des utilisateurs et des agents.
+Ce mois-ci a marqué une étape majeure dans la maturité du projet avec l'ajout de la synchronisation Google Calendar et une refonte de la gestion des rendez-vous pour éviter les doublons lors de l'activation de nouveaux services. La plateforme est devenue nettement plus robuste et sécurisée grâce à l'implémentation de nouveaux mécanismes de surveillance, de protections contre les attaques et d'une automatisation complète des déploiements.
 
 ### Évolutions fonctionnelles
-- **Intégration de Google Calendar** : Ajout du support pour connecter des calendriers Google via le protocole OAuth2.
-- **Synchronisation Pipedrive** : Mise en place de la synchronisation bidirectionnelle entre les activités Pipedrive et les créneaux de disponibilité/rendez-vous.
-- **Interface d'administration** : Ajout de pages d'administration et de tâches permettant de gérer les comptes et les connexions.
-- **Service CalDAV** : Capacité de servir un calendrier CalDAV par connexion, calqué sur le comportement du client RDV-SP.
+- **Intégration Google Calendar** : Ajout de la possibilité de connecter des calendriers Google via OAuth ([#09](https://github.com/gip-inclusion/rdvsp-bridging/pull/9)).
+- **Gestion intelligente des rendez-vous** : 
+    - Possibilité pour l'administrateur d'ignorer les rendez-vous déjà existants avant une connexion pour éviter de polluer les outils tiers ([#10](https://github.com/gip-inclusion/rdvsp-bridging/pull/10)).
+    - Amélioration de l'interface d'administration permettant de visualiser les rendez-vous d'une connexion et de libérer les éléments ignorés.
+- **Synchronisation Pipedrive** : 
+    - Meilleure gestion des activités supprimées dans Pipedrive.
+    - Sécurisation de l'authentification des webhooks Pipedrive via Basic Auth.
+- **Extraction de données** : Amélioration de la détection et de l'extraction des liens RDV-SP contenus dans les descriptions de rendez-vous.
 
 ### Évolutions techniques
-- **Sécurisation de l'application (Audit de sécurité)** : Suite à un audit [#2](https://github.com/gip-inclusion/rdvsp-bridging/pull/2), plusieurs mesures ont été implémentées :
-    - Limitation du débit (rate limiting) pour les tentatives d'authentification échouées sur l'administration et le CalDAV.
-    - Passage au hachage SHA-256 pour les mots de passe CalDAV.
-    - Sécurisation des webhooks Pipedrive via une authentification Basic Auth et limitation de la taille des requêtes (1 Mo).
-    - Filtrage des données sensibles (activités Pipedrive) dans les journaux de requêtes (logs).
-    - Restriction de l'hôte autorisé pour les URLs en production.
-- **Infrastructure et CI/CD** :
-    - Automatisation du déploiement vers Scaleway via GitHub Actions.
-    - Intégration de l'exécution des tests et du linting dans le pipeline CI.
-    - Mise en place de Dependabot avec auto-merge pour les mises à jour mineures [#1](https://github.com/gip-inclusion/rdvsp-bridging/pull/1).
-- **Mises à jour critiques** :
-    - Passage à Ruby 4.0.9 pour corriger des vulnérabilités (CVE) sur Onigmo [#3](https://github.com/gip-inclusion/rdvsp-bridging/pull/3).
-    - Mise à jour de la bibliothèque `crass` pour corriger une faille de contournement de l'assainisseur CSS.
-- **Refactoring** : Extraction de la logique de contenu des rendez-vous dans une classe dédiée (`RdvContent`) pour une meilleure gestion des données partagées avec les fournisseurs.
+- **Sécurité renforcée** :
+    - Mise à jour critique de Ruby, Rails et de diverses dépendances pour corriger des vulnérabilités ([#03](https://github.com/gip-inclusion/rdvsp-bridging/pull/3), [#09](https://github.com/gip-inclusion/rdvsp-bridging/pull/9), [#02](https://github.com/gip-inclusion/rdvsp-bridging/pull/2)).
+    - Migration du hachage des mots de passe CalDAV vers SHA-256.
+    - Mise en place de limites de débit (rate limiting) sur l'administration et l'authentification CalDAV pour prévenir les attaques par force brute.
+- **Fiabilité et Observabilité** :
+    - Mise en place de tests de santé automatisés (*smoke tests*) après chaque déploiement ([#14](https://github.com/gip-inclusion/rdvsp-bridging/pull/14)).
+    - Nouveau système d'alerting pour surveiller les échecs d'importation RDV-SP et l'état de connexion des comptes.
+    - Optimisation des migrations de base de données avec des timeouts pour éviter les blocages en production.
+- **Infrastructure et Déploiement** :
+    - Migration du service vers le domaine `pont-rdv.inclusion.gouv.fr` ([#13](https://github.com/gip-inclusion/rdvsp-bridging/pull/13)).
+    - Automatisation complète du cycle de déploiement sur Scaleway via GitHub Actions ([#01](https://github.com/gip-inclusion/rdvsp-bridging/pull/1)).
+    - Configuration de la confiance des proxys Scaleway pour assurer la remontée correcte des adresses IP ([#11](https://github.com/gip-inclusion/rdvsp-bridging/pull/11)).
+- **Cœur du système** : Implémentation du serveur CalDAV, de la gestion des jetons de synchronisation (*sync tokens*) et de la synchronisation bidirectionnelle des disponibilités.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation concernant l'architecture, le journal de décisions (decision log), le déploiement Scaleway et l'utilisation du fournisseur Google.
-- **Tests** : Ajout de scripts de tests de bout en bout (E2E) contre un client RDV-SP réel.
-- **Identité** : Renommage officiel du projet en `rdvsp-bridging`.
+- Renommage officiel du projet en `rdvsp-bridging`.
+- Ajout des traductions françaises pour le framework Rails.
+- Mise à jour de la documentation technique et du journal de décisions (decision log).
