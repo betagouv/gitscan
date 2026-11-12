@@ -98,6 +98,7 @@
 │   │   │   ├── DiagnosticSummary.vue
 │   │   │   ├── DiagnosticSummaryAccordions.vue
 │   │   │   ├── DiagnosticSummaryAppro.vue
+│   │   │   ├── DiagnosticSummaryThematiques.vue
 │   │   │   ├── DiagnosticSummaryTile.vue
 │   │   │   ├── DsfrBooleanRadio.vue
 │   │   │   ├── EdibleChart.vue
@@ -121,12 +122,12 @@
 │   │   │   ├── GraphPie.vue
 │   │   │   ├── IconAward.vue
 │   │   │   ├── IconLink.vue
-│   │   │   ├── IconMacaronAppro.vue
+│   │   │   ├── IconMacaronApprovisionnement.vue
 │   │   │   ├── IconMacaronBase.vue
 │   │   │   ├── IconMacaronDiversification.vue
-│   │   │   ├── IconMacaronInfo.vue
-│   │   │   ├── IconMacaronPlastic.vue
-│   │   │   ├── IconMacaronWaste.vue
+│   │   │   ├── IconMacaronGaspillage.vue
+│   │   │   ├── IconMacaronInformation.vue
+│   │   │   ├── IconMacaronPlastique.vue
 │   │   │   ├── IconOSAMonochrome.vue
 │   │   │   ├── ImportAdminCallout.vue
 │   │   │   ├── ImportCard.vue
@@ -159,6 +160,7 @@
 │   │   │   ├── PurchaseForm.vue
 │   │   │   ├── PurchaseFormSuccessModal.vue
 │   │   │   ├── PurchaseInvoice.vue
+│   │   │   ├── PurchasesAlertPetitesStructures.vue
 │   │   │   ├── SourceChart.vue
 │   │   │   ├── TunnelTeledeclarationAccordionItem.vue
 │   │   │   ├── TunnelTeledeclarationAccordionsGroup.vue
@@ -385,6 +387,7 @@
 │   │   │   ├── test-image-1.jpg
 │   │   │   ├── test-image-2.jpg
 │   │   │   └── test-image-3.png
+│   │   ├── test_api_docs.py
 │   │   ├── test_blog_posts.py
 │   │   ├── test_canteen_action.py
 │   │   ├── test_canteen_export.py
@@ -636,6 +639,7 @@
 │   │   ├── 0300_diagnostic_plastique_french_field_names.py
 │   │   ├── 0301_diagnostic_information_2026_fields.py
 │   │   ├── 0302_diagnostic_plastique_2026_fields.py
+│   │   ├── 0303_canteen_is_petite_structure.py
 │   │   ├── README.md
 │   │   ├── __init__.py
 │   │   └── archive
@@ -933,10 +937,12 @@
 │   │   ├── blogpost.py
 │   │   ├── blogtag.py
 │   │   ├── canteen.py
+│   │   ├── canteen_petite_structure.py
 │   │   ├── communityevent.py
 │   │   ├── creation_source.py
 │   │   ├── definitionlocal.py
 │   │   ├── diagnostic.py
+│   │   ├── diagnostic_teledeclaration_badges.py
 │   │   ├── diagnostic_teledeclaration_dates.py
 │   │   ├── diagnostic_teledeclaration_egalim_objectives.py
 │   │   ├── diagnostic_teledeclaration_field_groups.py
@@ -1009,8 +1015,11 @@
 │   │   ├── __init__.py
 │   │   ├── test_canteen.py
 │   │   ├── test_canteen_action.py
+│   │   ├── test_canteen_petite_structure.py
 │   │   ├── test_diagnostic.py
+│   │   ├── test_diagnostic_admin.py
 │   │   ├── test_diagnostic_teledeclaration.py
+│   │   ├── test_diagnostic_teledeclaration_badges.py
 │   │   ├── test_diagnostic_teledeclaration_dates.py
 │   │   ├── test_diagnostic_teledeclaration_egalim_objectives.py
 │   │   ├── test_diagnostic_teledeclaration_fields.py
@@ -1047,15 +1056,18 @@
 │   │   ├── groupe_spe.sql
 │   │   ├── libelle_ministere.sql
 │   │   ├── libelles_categories.sql
+│   │   ├── libelles_gestion_production.sql
 │   │   ├── libelles_secteurs.sql
 │   │   └── referentiel_secteurs.sql
 │   ├── models
 │   │   ├── intermediate
 │   │   │   ├── int_api_applications.sql
 │   │   │   ├── int_api_connexions.sql
+│   │   │   ├── int_campagne_statut.sql
 │   │   │   ├── int_canteens_enriched.sql
 │   │   │   ├── int_spe_canteens_inscrites.sql
 │   │   │   ├── int_spe_inscriptions.sql
+│   │   │   ├── int_spe_perimetre.sql
 │   │   │   ├── int_spe_waste.sql
 │   │   │   ├── int_spe_waste_by_canteen.sql
 │   │   │   └── schema.yml
@@ -1069,6 +1081,7 @@
 │   │   │   ├── mart_spe_bilan.sql
 │   │   │   ├── mart_spe_bilan_ate.sql
 │   │   │   ├── mart_spe_bilan_iso.sql
+│   │   │   ├── mart_spe_pilotage.sql
 │   │   │   ├── mart_teledeclarations.sql
 │   │   │   ├── mart_waste.sql
 │   │   │   └── schema.yml
@@ -1091,6 +1104,9 @@
 │   │       ├── stg_oauth_applications.sql
 │   │       ├── stg_oauth_applications_extra.sql
 │   │       ├── stg_oauth_refresh_tokens.sql
+│   │       ├── stg_spe_campagnes.sql
+│   │       ├── stg_spe_corrections_perimetre.sql
+│   │       ├── stg_spe_tutelles.sql
 │   │       ├── stg_teledeclarations.sql
 │   │       ├── stg_teledeclarations_invalides.sql
 │   │       ├── stg_users.sql
@@ -1567,6 +1583,7 @@
 │   │       ├── canteen_fill_creation_user_and_source.py
 │   │       ├── canteen_fill_declaration_donnees_year_field.py
 │   │       ├── canteen_fill_is_filled_field.py
+│   │       ├── canteen_fill_is_petite_structure_field.py
 │   │       ├── canteen_migrate_central_to_groupe.py
 │   │       ├── canteen_siret_recherche_entreprises_cache_csv.py
 │   │       ├── canteen_update_geolocation_data_using_siret.py
@@ -1605,6 +1622,7 @@
 │   │   ├── test_brevo_user_data.py
 │   │   ├── test_canteen_fill_creation_user_and_source.py
 │   │   ├── test_canteen_fill_declaration_donnees_year_field.py
+│   │   ├── test_canteen_fill_is_petite_structure_field.py
 │   │   ├── test_canteen_migrate_central_to_groupe.py
 │   │   ├── test_canteen_update_geolocation_data_using_siret.py
 │   │   ├── test_canteen_update_pat_data_using_city_insee_code.py
@@ -2039,4 +2057,4 @@
     │   └── test_sitemap.py
     ├── urls.py
     └── views.py
-161 directories, 1965 files
+161 directories, 1983 files
