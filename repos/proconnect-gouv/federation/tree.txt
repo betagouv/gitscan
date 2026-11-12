@@ -1,6 +1,8 @@
 .
 ├── .github
 │   ├── dependabot.yml
+│   ├── docker-compose
+│   │   └── Dockerfile
 │   ├── labeler.yml
 │   └── workflows
 │       ├── auto-assign.yml
@@ -355,7 +357,9 @@
 │   │   └── utils
 │   │       ├── instance.enum.ts
 │   │       ├── regex
-│   │       │   └── valid-email-regex.ts
+│   │       │   ├── valid-email-regex.ts
+│   │       │   ├── valid-input-string-regex.spec.ts
+│   │       │   └── valid-input-string-regex.ts
 │   │       ├── secret-manager.service.spec.ts
 │   │       ├── secret-manager.service.ts
 │   │       ├── secret.adapter.spec.ts
@@ -372,8 +376,6 @@
 │   │           ├── index.ts
 │   │           ├── is-optional-extended.validator.ts
 │   │           ├── is-optionnal-array-extended.validator.ts
-│   │           ├── is-safe-string.validator.ts
-│   │           ├── is-valid-input-string.ts
 │   │           └── validate-with.validator.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
@@ -441,6 +443,7 @@
 │   │       │   └── config.ts
 │   │       ├── src
 │   │       │   ├── app.module.ts
+│   │       │   ├── authorize-malformed-service-provider.e2e.spec.ts
 │   │       │   ├── config
 │   │       │   │   ├── api-entreprise.ts
 │   │       │   │   ├── app.ts
@@ -564,9 +567,10 @@
 │   │       │   │   │   ├── end-session-confirm.js
 │   │       │   │   │   ├── form-validation.js
 │   │       │   │   │   ├── go-back.js
-│   │       │   │   │   ├── matomo.js
 │   │       │   │   │   ├── multifi-preselection.js
 │   │       │   │   │   └── unshow-notice.js
+│   │       │   │   ├── matomo
+│   │       │   │   │   └── container_663J4cs0.js
 │   │       │   │   └── robots.txt
 │   │       │   ├── services
 │   │       │   │   ├── core-fca-controller.service.spec.ts
@@ -1309,31 +1313,18 @@
 │   │   ├── pem
 │   │   │   └── ec-secp256r1.pem
 │   │   ├── pemToJwk.js
-│   │   └── seed
-│   │       ├── data
-│   │       │   ├── account-fca.ts
-│   │       │   ├── identity-providers.ts
-│   │       │   ├── resource-servers.ts
-│   │       │   └── service-providers.ts
-│   │       └── main.ts
+│   │   ├── seed
+│   │   │   ├── data
+│   │   │   │   ├── account-fca.ts
+│   │   │   │   ├── identity-providers.ts
+│   │   │   │   ├── resource-servers.ts
+│   │   │   │   └── service-providers.ts
+│   │   │   └── main.ts
+│   │   └── update-matomo-container.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
 │   └── tsconfig.spec.json
 ├── compose.yaml
-├── csmr-rie
-│   ├── .gitignore
-│   ├── .npmrc
-│   ├── Dockerfile
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── src
-│   │   ├── http.test.ts
-│   │   ├── http.ts
-│   │   ├── logger.ts
-│   │   ├── main.ts
-│   │   ├── rpc.test.ts
-│   │   └── rpc.ts
-│   └── tsconfig.json
 ├── docker
 │   ├── .dockerignore
 │   ├── .env
@@ -1448,6 +1439,20 @@
 │           └── requests
 │               ├── app-req.conf
 │               └── app.csr
+├── hybridge
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── Dockerfile
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── http.test.ts
+│   │   ├── http.ts
+│   │   ├── logger.ts
+│   │   ├── main.ts
+│   │   ├── rpc.test.ts
+│   │   └── rpc.ts
+│   └── tsconfig.json
 ├── mock-data-provider
 │   ├── .gitignore
 │   ├── .npmrc
@@ -1688,4 +1693,4 @@
     │       ├── s3-transfer.spec.ts
     │       └── s3-transfer.ts
     └── tsconfig.json
-380 directories, 1310 files
+382 directories, 1313 files

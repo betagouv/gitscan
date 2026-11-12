@@ -1,20 +1,35 @@
-## Changelog : federation (30 derniers jours, au 30/10/2026)
+## Changelog : federation (30 derniers jours, au 10 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes importantes avec le lancement de l'outil de statistiques "Statisticat" et l'amélioration du flux de gestion des demandes XDA. Les capacités d'authentification ont été renforcées (support multi-appareils, mapping Entra ID) et l'infrastructure a été modernisée pour gagner en stabilité et en sécurité.
+Ce mois-ci, le projet a franchi des étapes importantes avec le lancement du module de statistiques "Statisticat", l'amélioration de l'expérience d'authentification (demandes multi-appareils et support Entra ID) et une montée de version majeure de l'infrastructure vers Node.js 26. La sécurité et la clarté des messages d'erreur ont également été renforcées.
 
 ### Évolutions fonctionnelles
-- Lancement de **Statisticat**, un nouvel outil permettant la gestion des données statistiques via l'import de fichiers CSV [#1752](https://github.com/proconnect-gouv/federation/pull/1752).
-- Amélioration du workflow **XDA** : ajout de la configuration pour les Service Providers [#1691](https://github.com/proconnect-gouv/federation/pull/1691) et gestion complète des approbations et rejets de demandes [#1727](https://github.com/proconnect-gouv/federation/pull/1727).
-- Optimisation de l'interface utilisateur : affichage de l'ID client sur la page de mise à jour des Service Providers [#8f3a89a](https://github.com/proconnect-gouv/federation/commit/8f3a89a) et ajout d'emojis pour faciliter la revue des demandes.
-- Évolutions de l'authentification : implémentation des requêtes d'authentification sur plusieurs appareils [#1717](https://github.com/proconnect-gouv/federation/pull/1717) et ajout du mapping de contexte d'authentification Entra ID pour le MFA eidas1 [#7cb2a57](https://github.com/proconnect-gouv/federation/commit/7cb2a57).
-- Correction de la gestion des accès RIE en cas de désaccord (mismatch) [#1690](https://github.com/proconnect-gouv/federation/pull/1690).
+- Lancement du module de statistiques "Statisticat" [#1752](https://github.com/proconnect-gouv/federation/issues/1752)
+- Mise en place des demandes d'authentification multi-appareils [#1717](https://github.com/proconnect-gouv/federation/issues/1717)
+- Amélioration du mapping MFA pour Entra ID (eidas1-mfa) [#1746](https://github.com/proconnect-gouv/federation/issues/1746)
+- Gestion enrichie des demandes XDA (approbation/rejet et interface visuelle) [#1727](https://github.com/proconnect-gouv/federation/issues/1727)
+- Affichage de l'ID client sur la page de mise à jour des fournisseurs de services [#1790](https://github.com/proconnect-gouv/federation/issues/1790)
+- Clarification des messages d'erreur lors de l'exclusion d'un fournisseur de services [#1848](https://github.com/proconnect-gouv/federation/issues/1848)
+- Autorisation des URLs de rappel en `localhost` et `http` pour faciliter les tests de développement [#1753](https://github.com/proconnect-gouv/federation/issues/1753)
 
 ### Évolutions techniques
-- Infrastructure & Environnement : passage à **Node.js 24.22.1** [#188ec72](https://github.com/proconnect-gouv/federation/commit/188ec72), fixation de la version de **Docker Compose à v5.5.1** [#9393f3f](https://github.com/proconnect-gouv/federation/commit/9393f3f) et gestion de l'activation de Matomo via variable d'environnement [#458d23e](https://github.com/proconnect-gouv/federation/commit/458d23e).
-- Refactoring & Optimisation : suppression de NestJS du composant `csmr-rie` [#1689](https://github.com/proconnect-gouv/federation/pull/1689), transition vers des imports natifs `package.json` [#1716](https://github.com/proconnect-gouv/federation/pull/1716), ajout de timeouts sur les appels proxy HTTP [#1715](https://github.com/proconnect-gouv/federation/pull/1715) et optimisation du transfert CSV pour Statisticat via l'utilisation de deux proxys distincts [#4e0e96a](https://github.com/proconnect-gouv/federation/commit/4e0e96a).
-- Sécurité : nettoyage des Identity Providers (suppression des champs inutilisés `trustedIdentity`, `redirect_uris`, etc.) [#1758](https://github.com/proconnect-gouv/federation/pull/1758), [#1757](https://github.com/proconnect-gouv/federation/pull/1757), [#1756](https://github.com/proconnect-gouv/federation/pull/1756), retrait du scope `roles` pour les Service Providers [#1687](https://github.com/proconnect-gouv/federation/pull/1687) et autorisation des URLs de callback en `localhost` ou `http` [#1753](https://github.com/proconnect-gouv/federation/pull/1753).
-- Qualité : montée de version de Cypress et du préprocesseur Cucumber [#ea950e7](https://github.com/proconnect-gouv/federation/pull/ea950e7).
+- **Infrastructure & DevOps** :
+    - Migration de l'environnement vers Node.js 26 LTS [#1853](https://github.com/proconnect-gouv/federation/issues/1853)
+    - Auto-hébergement du gestionnaire de tags Matomo [#1792](https://github.com/proconnect-gouv/federation/issues/1792)
+    - Mise à jour des packages internes ProConnect [#1854](https://github.com/proconnect-gouv/federation/issues/1854)
+- **Sécurité** :
+    - Renforcement de la validation des noms de fournisseurs (SP/IdP) via une regex sécurisée [#1830](https://github.com/proconnect-gouv/federation/issues/1830)
+    - Liaison de la session cœur à l'interaction OIDC lors de la vérification [#1828](https://github.com/proconnect-gouv/federation/issues/1828)
+    - Suppression des scopes "roles" inutilisés pour les fournisseurs de services [#1687](https://github.com/proconnect-gouv/federation/issues/1687)
+- **Architecture & Qualité** :
+    - Renommage du composant `csmr-rie` en `hybridge` [#1755](https://github.com/proconnect-gouv/federation/issues/1755)
+    - Amélioration de la traçabilité avec l'ajout du claim "roles" dans les logs [#1859](https://github.com/proconnect-gouv/federation/issues/1859)
+    - Optimisation du transfert de données CSV pour le module de statistiques
+    - Mise à jour de la suite de tests (Cypress et Cucumber) [#1459](https://github.com/proconnect-gouv/federation/issues/1459)
 
 ### Autres changements
-- Documentation : mise à jour des directives de contribution et ajout de modèles de description pour les Pull Requests [#1750](https://github.com/proconnect-gouv/federation/pull/1750).
+- **Documentation** :
+    - Correction de coquilles dans la documentation cryptographique [#1858](https://github.com/proconnect-gouv/federation/issues/1858)
+    - Mise à jour des guides de contribution et des modèles de Pull Request [#1750](https://github.com/proconnect-gouv/federation/issues/1750)
+- **Nettoyage** :
+    - Suppression de propriétés inutilisées dans la configuration des fournisseurs d'identité (URLs de redirection, etc.) [#1756](https://github.com/proconnect-gouv/federation/issues/1756)
