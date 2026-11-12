@@ -1,41 +1,39 @@
-## Changelog : seves (30 derniers jours, au 08/10/2026)
+## Changelog : seves (30 derniers jours, au 11 novembre 2026)
 
 ### Résumé
-Cette période a été marquée par un développement intensif du module Santé Animale (SA), avec l'introduction de nouvelles fonctionnalités de synthèse, de meilleurs outils de recherche et une gestion plus complète du cycle de vie des événements. L'expérience utilisateur a été fluidifiée par une interface plus intuitive (notamment via l'utilisation de sélecteurs enrichis) et l'ajout d'une page d'accueil publique pour la plateforme.
+Cette période a été marquée par une amélioration significative de l'ergonomie des formulaires de saisie et de la gestion des événements. Les utilisateurs bénéficient désormais de fonctionnalités de traitement par lot, d'une meilleure validation des données pour garantir la cohérence des dossiers, et d'une interface plus intuitive pour le suivi des événements sanitaires.
 
 ### Évolutions fonctionnelles
-
-**Santé Animale (SA)**
-- **Nouvelles fonctionnalités de gestion** : Ajout d'un bloc "Enquête épidémiologique", possibilité de clôturer un événement et ajout d'une fonction de synthèse pour les événements SA.
-- **Amélioration de la saisie** : Optimisation des formulaires de création (meilleure gestion des espèces concernées, des localisations et des contacts) et ajout de la possibilité de créer un événement depuis n'importe quelle page SA.
-- **Recherche et visualisation** : Ajout de filtres de recherche avancés dans la liste des événements SA et mise à jour de l'affichage des listes pour plus de clarté.
-- **Export et documents** : Possibilité d'exporter les événements SA au format Word (.docx).
-
-**Interface et Expérience Utilisateur (UI/UX)**
-- **Navigation** : Mise en ligne d'une page d'accueil publique pour SEVES.
-- **Saisie simplifiée** : Généralisation de l'utilisation de composants "TreeSelect" pour faciliter la sélection de maladies ou d'espèces dans les formulaires et les modales.
-- **Aide et guidage** : Ajout de modales d'aide, de liens vers la documentation et de textes d'explication pour accompagner l'utilisateur dans les formulaires complexes.
-- **Adaptabilité** : Amélioration de l'affichage sur petits écrans et ajustement des composants visuels (modales, colonnes de formulaires).
-
-**Autres modules**
-- **TIAC / Alimentation** : Renommage de "SSA" en "Alim" pour plus de cohérence et corrections sur la gestion des menus et des notifications.
-- **Référentiels** : Mise à jour des listes d'organismes (ajout de nouveaux insectes) et des laboratoires de référence.
+- **Gestion des événements et des données :**
+    - Possibilité de clôturer le suivi de plusieurs événements simultanément.
+    - Autorisation de la modification des événements animaux.
+    - Amélioration de la gestion des analyses : prise en compte des cas où la maladie détectée diffère de celle de l'événement initial.
+    - Sécurisation des données : impossibilité de supprimer des éléments (repas, aliments) déjà utilisés dans une conclusion.
+- **Optimisation de la saisie et des formulaires :**
+    - Renforcement des contrôles de cohérence (ordre chronologique des dates, dates de résultats obligatoires si confirmées, contraintes de format pour les cas de TIAC).
+    - Automatisation et aide à la saisie (pré-sélection des dangers selon la source, gestion automatique du pays lors du choix d'une commune, masquage contextuel de champs pour les animaux sauvages).
+    - Amélioration des sélecteurs (recherche dans les listes de laboratoires, regroupement des espèces les plus fréquentes, fermeture automatique des menus déroulants).
+- **Interface utilisateur (UI/UX) :**
+    - Refonte visuelle de la page de détails des événements animaux et amélioration de la mise en page des tableaux.
+    - Clarification des actions critiques (boutons de suppression mis en évidence en rouge avec icône de corbeille).
+    - Amélioration de la lisibilité (mise en évidence des messages non lus, noms raccourcis dans les listes).
+    - Amélioration de la cartographie (centrage automatique lors de la sélection d'une ville).
+- **Communication et notifications :**
+    - Possibilité de configurer des notices HTML personnalisées par domaine.
+    - Amélioration des bannières d'alerte incluant le nom de la maladie détectée.
+    - Correction du formatage lors du copier-coller de texte dans les messages.
 
 ### Évolutions techniques
-
-**Sécurité et Infrastructure**
-- **Protection** : Mise en place d'un Web Application Firewall (WAF).
-- **Configuration réseau** : Ajustement de la configuration Caddy pour la gestion des plages privées et mise à jour des politiques CSP pour permettre les téléchargements via Metabase.
-
-**Performance et Qualité du code**
-- **Optimisation** : Amélioration des performances de la page de création d'événements SA.
-- **Maintenance du code** : Nettoyage important du code via l'outil Ruff et refactorisation de la gestion des sous-documents.
-- **Gestion des dépendances** : Mise à jour de plusieurs composants internes et de l'environnement Go.
-
-**Tests et CI/CD**
-- **Fiabilité des tests** : Correction de tests "instables" (flaky tests) concernant l'historique TIAC et la synthèse SA.
-- **Amélioration de la suite de tests** : Optimisation des usines de données (factories) pour les tests SA et amélioration des tests ADIS.
+- **Performance et CI/CD :**
+    - Accélération des suites de tests (optimisation des méthodes de nettoyage de base de données).
+    - Optimisation des workflows GitHub Actions via la mise en cache des paquets.
+- **Sécurité et Infrastructure :**
+    - Optimisation des règles du WAF pour réduire les faux positifs et exclure certains jetons de sécurité (OIDC, PostHog).
+    - Renforcement de la sécurité lors de la création de fiches de zone.
+    - Nettoyage du code par la suppression des vues matérialisées.
+- **Base de données :**
+    - Ajout de contraintes d'intégrité pour les mesures de gestion.
+    - Résolution de conflits lors de la fusion des migrations.
 
 ### Autres changements
-- **Documentation** : Mise à jour des textes d'aide et des notices informatives.
-- **Base de données** : Correction de migrations sur la branche principale.
+- Ajout d'un fichier `Security.md` pour documenter les politiques de sécurité.

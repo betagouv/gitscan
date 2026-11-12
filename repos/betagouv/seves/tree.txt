@@ -19,6 +19,7 @@
 ├── LICENSE
 ├── Procfile
 ├── README.md
+├── SECURITY.md
 ├── account
 │   ├── __init__.py
 │   ├── apps.py
@@ -160,6 +161,8 @@
 │   │   ├── 0065_create_sa_group.py
 │   │   ├── 0066_remove_contact_contact_agent_email_only_and_more.py
 │   │   ├── 0067_alter_document_document_type.py
+│   │   ├── 0068_agent_removed_from_agricoll.py
+│   │   ├── 0069_message_read.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
@@ -258,6 +261,7 @@
 │   │   │   ├── _modale_erreur_bloquante.html
 │   │   │   ├── _modale_suppression_contact.html
 │   │   │   ├── _modale_suppression_document.html
+│   │   │   ├── _notice.html
 │   │   │   ├── _notifier_ac_modale.html
 │   │   │   ├── _ouvrir_evenement_modal.html
 │   │   │   ├── _pagination.html
@@ -304,6 +308,7 @@
 │   │   └── stimulus.py
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── fast_flush.py
 │   │   ├── generic_tests
 │   │   │   ├── actions.py
 │   │   │   ├── authorization.py
@@ -407,6 +412,16 @@
 │   │   ├── 0035_alter_evenementanimal_code_insee_and_more.py
 │   │   ├── 0036_evenementanimal_departement.py
 │   │   ├── 0037_alter_maladie_description_type.py
+│   │   ├── 0038_evenementanimal_evenement_source.py
+│   │   ├── 0039_maladie_description_type_saisie_facultative.py
+│   │   ├── 0040_alter_espececoncernee_options.py
+│   │   ├── 0041_typage_natural_sort_collation.py
+│   │   ├── 0042_evenementanimal_dates_arretes_order.py
+│   │   ├── 0043_analyse_date_resultat_required_unless_en_attente.py
+│   │   ├── 0044_veterinaire_especes_concernees.py
+│   │   ├── 0045_evenementanimal_no_mesures_gestion_when_sauvage.py
+│   │   ├── 0046_maladie_laboratoires_frequents.py
+│   │   ├── 0047_populate_maladie_laboratoires_frequents.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -438,6 +453,8 @@
 │   │       ├── informations.mjs
 │   │       ├── localisation_from_detenteur.mjs
 │   │       ├── maladie_description_message.mjs
+│   │       ├── mass_actions.css
+│   │       ├── mass_actions_controller.js
 │   │       ├── situation_unite.mjs
 │   │       ├── typage.mjs
 │   │       └── veterinaire.mjs
@@ -449,8 +466,10 @@
 │   │       ├── _evenement_animal_actions_navigation.html
 │   │       ├── _evenement_animal_advanced_filters.html
 │   │       ├── _evenement_animal_badges.html
+│   │       ├── _evenement_animal_detected_maladie_alerts.html
 │   │       ├── _evenement_animal_infos.html
 │   │       ├── _evenement_veterinaires.html
+│   │       ├── _mass_actions_fin_suivi.html
 │   │       ├── _veterinaire_modal.html
 │   │       ├── base.html
 │   │       ├── evenement_animal_details.html
@@ -480,7 +499,10 @@
 │   │   ├── test_evenement_animal_fin_de_suivi.py
 │   │   ├── test_evenement_animal_list.py
 │   │   ├── test_evenement_animal_list_order.py
+│   │   ├── test_evenement_animal_maladie_detectee.py
+│   │   ├── test_evenement_animal_mass_actions.py
 │   │   ├── test_evenement_animal_typage.py
+│   │   ├── test_evenement_animal_update.py
 │   │   ├── test_evenement_animal_veterinaire.py
 │   │   ├── test_models.py
 │   │   ├── test_set_evenement_animal_commune_from_coordinates.py
@@ -520,7 +542,6 @@
 │   ├── maestro.py
 │   ├── management
 │   │   └── commands
-│   │       ├── refresh_ssa_materialized_views.py
 │   │       └── send_document_emails_batch.py
 │   ├── managers.py
 │   ├── migrations
@@ -594,6 +615,7 @@
 │   │   ├── 0068_alter_evenementproduit_actions_engagees_and_more.py
 │   │   ├── 0069_auto_20260723_1713.py
 │   │   ├── 0070_ssa_materialized_views_structure_contact.py
+│   │   ├── 0071_auto_20261030_0758.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -619,6 +641,7 @@
 │   │       ├── evenement_produit_list.js
 │   │       ├── free_links.mjs
 │   │       ├── investigation_cas_humain_detail.js
+│   │       ├── investigation_cas_humain_form.mjs
 │   │       ├── stats.css
 │   │       └── stats.mjs
 │   ├── tasks.py
@@ -853,6 +876,9 @@
 │   │   ├── 0133_alter_evenement_numero_europhyt.py
 │   │   ├── 0134_alter_lieu_code_insee_etablissement.py
 │   │   ├── 0135_on_papilio_demodocus.py
+│   │   ├── 0136_auto_20261009_0843.py
+│   │   ├── 0137_remove_organismes_nuisibles.py
+│   │   ├── 0138_auto_20261109_1516.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -994,8 +1020,7 @@
     ├── management
     │   ├── __init__.py
     │   └── commands
-    │       ├── __init__.py
-    │       └── refresh_tiac_materialized_views.py
+    │       └── __init__.py
     ├── managers.py
     ├── migrations
     │   ├── 0001_initial.py
@@ -1054,6 +1079,7 @@
     │   ├── 0054_alter_investigationtiac_etat.py
     │   ├── 0055_alter_investigationtiac_conclusion_aliment_and_more.py
     │   ├── 0056_tiac_materialized_views.py
+    │   ├── 0057_auto_20261030_0759.py
     │   └── __init__.py
     ├── mixins.py
     ├── model_mixins.py
@@ -1159,4 +1185,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-93 directories, 1068 files
+93 directories, 1094 files

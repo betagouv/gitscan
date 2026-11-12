@@ -1,45 +1,42 @@
 {
   "url": "https://github.com/betagouv/seves",
   "name": "seves",
-  "description": "Plateforme de gestion mutualisée des événements sanitaires. Elle permet le suivi, la saisie et la visualisation des données liées à la santé animale et à la sécurité sanitaire.",
+  "description": "Plateforme de gestion mutualisée des événements sanitaires (santé animale, alimentation, etc.). Elle permet le suivi, la recherche et la synthèse des données épidémiologiques.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
+    "Gestion métier générale",
+    "Recherche & Filtres",
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Formulaires & Démarches",
-    "Gestion métier générale"
+    "Gestion documentaire & Fichiers",
+    "Notifications & Alertes",
+    "Formulaires & Démarches"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Redis",
     "Celery",
+    "Redis",
     "AlpineJS",
     "Stimulus",
-    "Metabase",
-    "Sentry",
     "Playwright",
-    "Pytest"
+    "Sentry",
+    "Minio"
   ],
   "components": [
     "Python (scripts & backend)",
     "Django",
     "PostgreSQL & SQL",
+    "Celery & Queue asynchrone",
     "HTML / CSS / Templates visuels",
     "TypeScript / JavaScript",
-    "Celery & Queue asynchrone",
-    "SIG & Géospatial",
-    "Tests",
-    "Docker & Conteneurs"
+    "SIG & Géospatial"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session",
-      "jwt"
+      "session"
     ]
   },
   "tests": [
@@ -47,10 +44,11 @@
     "Playwright (E2E)"
   ],
   "workflows": [
-    "CI/CD automatique vers recette et production"
+    "CI/CD via GitHub Actions",
+    "Déploiement automatique sur Scalingo"
   ],
-  "lastActivity": "2026-10-08T20:42:11+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-11-11T10:57:59+01:00",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
@@ -60,7 +58,6 @@
     "Bases de données SQL",
     "SIG & Géospatial",
     "CI/CD & GitHub Actions",
-    "Docker & Conteneurs",
-    "Santé & Épidémiologie"
+    "Tests & Qualité"
   ]
 }
