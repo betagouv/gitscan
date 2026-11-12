@@ -1,31 +1,32 @@
-## Changelog : Docurba (30 derniers jours, au 15 octobre 2026)
+## Changelog : Docurba (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Ce mois-ci, Docurba a franchi une étape importante dans la traçabilité et la fiabilité des données. Les utilisateurs bénéficient d'une meilleure visibilité sur l'origine des modifications (qui a créé ou modifié quoi) et d'un contrôle plus strict lors de la création de procédures. La plateforme est également plus robuste grâce à une gestion optimisée des comptes utilisateurs et une amélioration des processus d'archivage.
+Ce mois-ci, Docurba a bénéficié d'une refonte majeure de l'interface de gestion des autorités territoriales et d'une amélioration significative de la gestion des procédures (noms, types et filtrage). L'expérience utilisateur est fluidifiée par de nouveaux indicateurs visuels et une gestion plus robuste des données, tandis que la sécurité et la structure de l'API ont été renforcées.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la traçabilité** : Affichage systématique de l'auteur des dernières modifications et de l'auteur de la création des sections dans les trames.
-- **Gestion des procédures** : 
-    - Automatisation du calcul des noms de procédures pour plus de cohérence.
-    - Ajout de nouveaux champs (complément de nom) et affichage des dates d'approbation des procédures parentes.
-    - Mise en place de règles de validation pour empêcher la création de procédures sans commune ou dans des contextes EPCI non conformes.
-- **Administration et utilisateurs** :
-    - Amélioration du filtrage par type de procédure dans l'interface d'administration.
-    - Activation de la vérification des comptes utilisateurs par email.
-    - Meilleure gestion du partage de projets avec une interface de suppression et d'affichage améliorée.
-    - Intégration de Pipedrive pour automatiser la vérification des profils utilisateurs.
+- **Gestion des autorités territoriales** : Refonte complète des pages de détails et des sous-pages ; mise en place d'une vue par défaut basée sur le profil utilisateur et intégration de GeoRisques comme page de données par défaut.
+- **Amélioration de la gestion des procédures** : 
+    - Affichage des commentaires de dépôt et des détails du nom des procédures directement dans les tableaux.
+    - Ajout de nouveaux filtres, notamment pour le PLUi.
+    - Intégration d'indicateurs visuels liés à la loi Huwart (affichage dans les en-têtes et indicateurs de date).
+- **Expérience utilisateur (UX)** : 
+    - Automatisation du calcul des noms de procédures dans les formulaires avec une meilleure gestion des erreurs.
+    - Optimisation des modes d'édition par défaut (mode édition pour le cadre PAC) et masquage des sections vides dans les aperçus.
+    - Amélioration de la gestion des droits pour les administrateurs PAC.
 
 ### Évolutions techniques
-- **Optimisation de l'API** : Nettoyage important des points de terminaison (endpoints) inutilisés et refactorisation des énumérations (enums) pour une structure de code plus propre.
-- **Gestion des données et fiabilité** :
-    - Transition d'un système de suppression vers un système d'archivage pour les événements.
-    - Mise en place de mécanismes de tentatives automatiques (retries) pour gérer les échecs temporaires.
-    - Correction de tests instables et mise à jour des migrations de base de données.
-- **Infrastructure et CI/CD** :
-    - Optimisation des "Review Apps" pour une meilleure gestion des ressources.
-    - Mise en place de sauvegardes pour l'outil de BI Metabase.
-    - Augmentation des limites de débit (rate limiting) pour améliorer la stabilité du service.
+- **Backend (Django)** :
+    - Refonte de la logique métier des procédures : centralisation du calcul des noms (`computed_name`), gestion optimisée des types de documents et des règles pour les procédures sectorielles.
+    - Optimisation des performances via la mise en cache du périmètre des procédures.
+    - Enrichissement de l'API interne pour exposer de nouvelles données (noms calculés, dates d'approbation) et améliorer le filtrage.
+    - Migration et nettoyage des énumérations (`enums`) pour une meilleure structure du code.
+- **Frontend (Nuxt)** :
+    - Migration des appels API vers un plugin dédié pour une meilleure gestion de l'authentification et de l'URL de base.
+    - Amélioration de la gestion des données territoriales (distinction entre codes INSEE et SIREN, restauration des champs région).
+    - Sécurisation des requêtes Supabase (gestion de la casse pour les emails).
+- **Infrastructure & CI/CD** :
+    - Amélioration du cycle de vie des "Review Apps" (création et suppression).
 
 ### Autres changements
-- **Nettoyage** : Suppression de code mort, de snapshots orphelins et de variables d'environnement inutilisées.
-- **Documentation** : Mise à jour des snapshots de l'API d'export.
+- Documentation de scripts internes.
+- Nettoyage du code (suppression de commandes de gestion obsolètes, suppression de snapshots orphelins et mise en conformité Ruff).

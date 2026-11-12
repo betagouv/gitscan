@@ -57,8 +57,7 @@
 │   │   │   │       ├── event_type_add_scope_pplh_ppilh.py
 │   │   │   │       ├── import_dgaln_zan_objects.py
 │   │   │   │       ├── link_events_with_event_types.py
-│   │   │   │       ├── populate_procedure_name_complement.py
-│   │   │   │       └── update_doc_type_from_name.py
+│   │   │   │       └── reset_secondary_procedure_status.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
@@ -121,6 +120,9 @@
 │   │   │   │   ├── 0059_fill_procedure_is_pdu_and_more.py
 │   │   │   │   ├── 0060_alter_procedure_is_principale_alter_procedure_type_and_more.py
 │   │   │   │   ├── 0061_alter_procedure_shareable.py
+│   │   │   │   ├── 0062_procedure_base_doc_type.py
+│   │   │   │   ├── 0063_fill_procedure_base_type.py
+│   │   │   │   ├── 0064_alter_procedure_doc_type.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
@@ -257,8 +259,7 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── test_event_type_add_scope_pplh_ppilh.py
 │   │   │   │       ├── test_link_events_with_event_types.py
-│   │   │   │       ├── test_populate_procedure_name_complement.py
-│   │   │   │       └── test_update_doc_type_from_name.py
+│   │   │   │       └── test_reset_secondary_procedure_status.py
 │   │   │   ├── test_admin.py
 │   │   │   └── test_models.py
 │   │   ├── history
@@ -299,6 +300,15 @@
 │   │           ├── __init__.py
 │   │           └── test_security.py
 │   └── uv.lock
+├── doc
+│   └── management_commands
+│       ├── populate_procedure_name_complement
+│       │   ├── populate_procedure_name_complement.py
+│       │   └── test_populate_procedure_name_complement.py
+│       ├── update_doc_type
+│       │   └── update_doc_type.py
+│       └── update_procedure_pluih_and_more
+│           └── update_procedure_is_pluih_and_more.py
 ├── docker
 │   └── test_db
 │       ├── prod_schema_before_django_migrations.sql
@@ -424,6 +434,27 @@
 │   ├── components
 │   │   ├── Auth
 │   │   │   └── ResetPasswordDialog.vue
+│   │   ├── DU
+│   │   │   ├── Actionable.vue
+│   │   │   ├── Breadcrumb.vue
+│   │   │   ├── Button.vue
+│   │   │   ├── Card.vue
+│   │   │   ├── Collapsible.vue
+│   │   │   ├── CollapsibleCard.vue
+│   │   │   ├── Dialog.vue
+│   │   │   ├── DottedList.vue
+│   │   │   ├── Group.vue
+│   │   │   ├── Heading.vue
+│   │   │   ├── Link.vue
+│   │   │   ├── LinksList.vue
+│   │   │   ├── List.vue
+│   │   │   ├── Sidemenu.vue
+│   │   │   ├── Table.vue
+│   │   │   ├── TableCell.vue
+│   │   │   ├── TableRow.vue
+│   │   │   ├── Tabs.vue
+│   │   │   ├── Tag.vue
+│   │   │   └── Text.vue
 │   │   ├── Dashboard
 │   │   │   ├── DUInsertDialog.vue
 │   │   │   ├── DUItem.vue
@@ -468,6 +499,11 @@
 │   │   │   ├── SearchForm.vue
 │   │   │   ├── SlidingTabs.vue
 │   │   │   └── WordSlider.vue
+│   │   ├── Layout
+│   │   │   ├── Header.vue
+│   │   │   ├── Main.vue
+│   │   │   ├── Pagination.vue
+│   │   │   └── ScrollTop.vue
 │   │   ├── Layouts
 │   │   │   ├── AppBar.vue
 │   │   │   ├── EnvBanner.vue
@@ -498,9 +534,18 @@
 │   │   │   │   ├── FileAttachmentsChips.vue
 │   │   │   │   └── FileAttachmentsDialog.vue
 │   │   │   └── TrameGhostSectionsDialog.vue
+│   │   ├── Page
+│   │   │   └── Departements
+│   │   │       └── Collectivites
+│   │   │           ├── Procedure.vue
+│   │   │           ├── ProceduresTable.vue
+│   │   │           ├── SecondaryProcedure.vue
+│   │   │           └── Towns.vue
 │   │   ├── Prescription
 │   │   │   ├── ItemListRead.vue
 │   │   │   └── YouWantCard.vue
+│   │   ├── Procedure
+│   │   │   └── Status.vue
 │   │   ├── Procedures
 │   │   │   ├── InsertForm.vue
 │   │   │   ├── InsertTabs.vue
@@ -773,17 +818,19 @@
 │   │   ├── accessibilite.vue
 │   │   ├── bureau-etude-urbanisme.vue
 │   │   ├── collectivites
-│   │   │   ├── _collectiviteId
+│   │   │   ├── _code_collectivite
 │   │   │   │   ├── donnees
 │   │   │   │   │   ├── data.vue
-│   │   │   │   │   ├── geobretagne.vue
 │   │   │   │   │   ├── geoide.vue
 │   │   │   │   │   ├── georisques.vue
 │   │   │   │   │   ├── gpu.vue
 │   │   │   │   │   └── inpn.vue
 │   │   │   │   ├── donnees.vue
-│   │   │   │   ├── glossaire.vue
 │   │   │   │   ├── index.vue
+│   │   │   │   └── informations.vue
+│   │   │   ├── _code_collectivite.vue
+│   │   │   ├── _collectiviteId
+│   │   │   │   ├── glossaire.vue
 │   │   │   │   ├── pac.vue
 │   │   │   │   ├── prescriptions
 │   │   │   │   │   ├── add.vue
@@ -853,6 +900,7 @@
 │   │   ├── composition.js
 │   │   ├── daturba.js
 │   │   ├── dayjs.js
+│   │   ├── department.js
 │   │   ├── django-api.js
 │   │   ├── enquete.js
 │   │   ├── environement.js
@@ -864,15 +912,18 @@
 │   │   ├── matomo.js
 │   │   ├── mdParser.js
 │   │   ├── notifications.js
+│   │   ├── nuxt-api.js
 │   │   ├── pac.js
 │   │   ├── pdfMake.js
 │   │   ├── print.js
 │   │   ├── procedure.js
+│   │   ├── region.js
 │   │   ├── rules.js
 │   │   ├── sharing.js
 │   │   ├── supabase.js
 │   │   ├── supabaseAdmin.js
 │   │   ├── tally.js
+│   │   ├── territorial-authority.js
 │   │   ├── tiptap-resizable.js
 │   │   ├── urbanisator.js
 │   │   ├── user.js
@@ -900,6 +951,7 @@
 │   │   ├── modules
 │   │   │   ├── Data
 │   │   │   │   └── pipedriveFields.json
+│   │   │   ├── auth.js
 │   │   │   ├── django-api.js
 │   │   │   ├── geo.js
 │   │   │   ├── github
@@ -1112,4 +1164,4 @@
 └── supabase
     ├── .gitignore
     └── config.toml
-220 directories, 936 files
+232 directories, 976 files
