@@ -49,17 +49,59 @@
 ├── noyau-partage
 │   ├── eslint.config.js
 │   ├── package.json
-│   └── src
-│       ├── entrepots
-│       │   ├── entrepots.ts
-│       │   └── postgres
-│       │       └── entrepotPosgres.ts
-│       └── knex
-│           ├── configurationKnex.ts
-│           ├── knexfile.ts
-│           └── migrations
-│               ├── 20261029165004_cree-table-scan.ts
-│               └── 20261030164833_ajoute-colonne-rapport-au-scan.ts
+│   ├── src
+│   │   ├── chiffrement
+│   │   │   ├── adaptateurs
+│   │   │   │   ├── chiffrementAesGcmWeb.ts
+│   │   │   │   ├── derivationDeCleHkdf.ts
+│   │   │   │   ├── encapsulationHpke.ts
+│   │   │   │   ├── octets.ts
+│   │   │   │   ├── paireDeClesX25519Hpke.ts
+│   │   │   │   ├── protectionDeCleAesGcm.ts
+│   │   │   │   └── suiteDeChiffrementHpke.ts
+│   │   │   ├── application
+│   │   │   │   ├── ChiffreDocument.ts
+│   │   │   │   ├── DechiffreDocument.ts
+│   │   │   │   ├── DeverrouilleClePrivee.ts
+│   │   │   │   └── EnroleUtilisateur.ts
+│   │   │   ├── domaine
+│   │   │   │   ├── documentChiffre.ts
+│   │   │   │   ├── documentPartage.ts
+│   │   │   │   ├── identiteCryptographique.ts
+│   │   │   │   └── profilEncapsulationChiffrementUtilisateur.ts
+│   │   │   └── ports
+│   │   │       ├── ChiffrementSymetrique.ts
+│   │   │       ├── DerivationDeCle.ts
+│   │   │       ├── EncapsulationCleDeChiffrement.ts
+│   │   │       ├── PaireDeClesAsymetriques.ts
+│   │   │       ├── ProtectionDeCle.ts
+│   │   │       └── SecretPrf.ts
+│   │   ├── entrepots
+│   │   │   ├── entrepots.ts
+│   │   │   └── postgres
+│   │   │       └── entrepotPosgres.ts
+│   │   └── knex
+│   │       ├── configurationKnex.ts
+│   │       ├── knexfile.ts
+│   │       └── migrations
+│   │           ├── 20261029165004_cree-table-scan.ts
+│   │           └── 20261030164833_ajoute-colonne-rapport-au-scan.ts
+│   └── test
+│       └── chiffrement
+│           ├── adaptateurs
+│           │   ├── chiffrementAesGcmWeb.spec.ts
+│           │   ├── derivationDeCleHkdf.spec.ts
+│           │   ├── encapsulationHpke.spec.ts
+│           │   ├── paireDeClesx25519Hpke.spec.ts
+│           │   └── protectionDeCleAesGcm.spec.ts
+│           ├── application
+│           │   ├── ChiffreDocument.spec.ts
+│           │   ├── DechiffreDocument.spec.ts
+│           │   ├── DeverrouilleClePrivee.spec.ts
+│           │   └── EnroleUtilisateur.spec.ts
+│           ├── doubles
+│           │   └── SecretPrfSimule.ts
+│           └── scenarioEnveloppePoc.spec.ts
 ├── outillage
 │   ├── eslint.config.js
 │   ├── package.json
@@ -360,16 +402,37 @@
 │   ├── back
 │   │   ├── eslint.config.js
 │   │   ├── package.json
-│   │   └── src
-│   │       ├── adaptateurs
-│   │       │   ├── adaptateurEnvironnement.ts
-│   │       │   └── adaptateurProtection.ts
+│   │   ├── src
+│   │   │   ├── adaptateurs
+│   │   │   │   ├── adaptateurEnvironnement.ts
+│   │   │   │   ├── adaptateurProtection.ts
+│   │   │   │   ├── adaptateurWebAuthn.ts
+│   │   │   │   └── entrepotUtilisateursEnMemoire.ts
+│   │   │   ├── enrolement
+│   │   │   │   ├── appareil.ts
+│   │   │   │   ├── contexteEnrolement.ts
+│   │   │   │   ├── enveloppe.ts
+│   │   │   │   ├── etapesEnrolement.ts
+│   │   │   │   └── localisateurServicesEnrolement.ts
+│   │   │   ├── http
+│   │   │   │   ├── middleware.ts
+│   │   │   │   └── routeEnrolement.ts
+│   │   │   ├── index.ts
+│   │   │   ├── infra
+│   │   │   │   └── environnement.ts
+│   │   │   ├── serveur.ts
+│   │   │   └── utilisateurs
+│   │   │       ├── entrepotUtilisateurs.ts
+│   │   │       └── utilisateur.ts
+│   │   └── test
+│   │       ├── enrolement
+│   │       │   ├── etapesEnrolement.spec.ts
+│   │       │   └── localisateurServicesEnrolement.spec.ts
 │   │       ├── http
-│   │       │   └── middleware.ts
-│   │       ├── index.ts
-│   │       ├── infra
-│   │       │   └── environnement.ts
-│   │       └── serveur.ts
+│   │       │   └── routeEnrolement.spec.ts
+│   │       ├── serveur.spec.ts
+│   │       ├── servicesDeTest.ts
+│   │       └── testeurPALA.ts
 │   └── front
 │       ├── README.md
 │       ├── assets
@@ -405,4 +468,4 @@
 │       └── vite.config.ts
 ├── tsconfig.json
 └── vitest.config.ts
-115 directories, 292 files
+130 directories, 340 files

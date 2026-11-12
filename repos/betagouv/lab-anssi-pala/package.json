@@ -11,7 +11,8 @@
     "prepare": "git config core.hooksPath .githooks || true",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "dev:back": "node --require dotenv/config --watch --import tsx serveur/back/src/index.ts",
+    "dev": "./node_modules/.bin/concurrently -n 'SERVEUR,FRONT SVELTE' -c 'blue.bold,magenta.underline' 'npm run dev:back' 'npm run dev:front'",
+    "dev:back": "node --watch --require dotenv/config --import tsx serveur/back/src/index.ts",
     "dev:front": "pnpm --filter pala-front dev",
     "build": "pnpm build:back && pnpm build:front",
     "build:back": "tsc --noEmit",
@@ -40,21 +41,27 @@
   },
   "dependencies": {
     "dotenv": "^18.0.4",
-    "pg": "^8.23.1",
-    "knex": "^3.3.0"
+    "knex": "^3.3.0",
+    "pg": "^8.23.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "24.19.0",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
+    "@types/node": "24.19.2",
+    "concurrently": "^10.0.6",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
     "globals": "^17.13.0",
     "knex-pglite": "^0.14.0",
     "lint-staged": "^17.6.0",
     "prettier": "^3.9.9",
+    "prettier-plugin-svelte": "^4.1.1",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
-    "vitest": "5.0.2"
+    "vitest": "5.1.0"
   },
   "lint-staged": {
     "serveur/back/**/*.ts": [

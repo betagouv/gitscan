@@ -1,3 +1,29 @@
+2026-11-11T17:36:25+01:00 - 676aae7 - Bertrand Bougon : Redémarre le proxy qu'il soit distant ou local
+2026-11-10T19:26:39+01:00 - ff3bdbf - Bertrand Bougon : Expose les routes d'enrôlement et la session serveur
+2026-11-10T19:26:39+01:00 - 97bc1e4 - Bertrand Bougon : Ajoute les étapes d'enrôlement (enregistrement et authentification)
+2026-11-10T19:26:39+01:00 - 5e1e38d - Bertrand Bougon : Ajoute l'adaptateur WebAuthn et la configuration d'enrôlement
+2026-11-10T19:26:39+01:00 - 4233ac7 - Bertrand Bougon : Ajoute le domaine d'enrôlement et l'entrepôt d'utilisateurs en mémoire
+2026-11-10T19:26:39+01:00 - 30a90db - Bertrand Bougon : Ajoute les dépendances `@simplewebauthn` et `express-session` pour l'enrôlement
+2026-11-10T19:26:39+01:00 - 06e5005 - Bertrand Bougon : [SOIN] Active le formatage prettier des fichiers Svelte
+2026-11-10T08:31:16+01:00 - df2227b - beta-gouv-renovate[bot] : [RENOVATE] Update actions/setup-node action to v7
+2026-11-10T08:31:00+01:00 - a240a5f - beta-gouv-renovate[bot] : [RENOVATE] Update actions/checkout action to v7
+2026-11-09T18:55:20+01:00 - f32d276 - Bertrand Bougon : Ajoute le déchiffrement d'un document par un destinataire ... ouvre l'enveloppe HPKE pour récupérer la DEK puis déchiffre le contenu AES-GCM
+2026-11-09T18:55:20+01:00 - f2d4d2f - Bertrand Bougon : [SOIN] Prépare le module de chiffrement partagé ... ajoute `@hpke/core` à `noyau-partage` et inclut `noyau-partage` dans les tests Vitest et le typecheck
+2026-11-09T18:55:20+01:00 - e39241c - Bertrand Bougon : Ajoute le chiffrement d'un document pour plusieurs destinataires ... chiffre le contenu avec une DEK unique puis encapsule la DEK dans une enveloppe HPKE par destinataire
+2026-11-09T18:55:20+01:00 - be2f45f - Bertrand Bougon : Ajoute la brique d'encapsulation HPKE ... scelle et ouvre une enveloppe (DEK) vers une clé publique X25519 selon le profil RFC 9180
+2026-11-09T18:55:20+01:00 - b2e7ccd - Bertrand Bougon : Ajoute la brique de dérivation de clé HKDF-SHA256 ... dérive une KEK AES-GCM depuis le secret PRF, liée à un contexte et un sel
+2026-11-09T18:55:20+01:00 - 9a3f21f - Bertrand Bougon : Ajoute la brique de chiffrement symétrique AES-256-GCM ... chiffre/déchiffre un contenu avec AAD et gère le cycle de vie de la DEK (génération, export, import)
+2026-11-09T18:55:20+01:00 - 6af987a - Bertrand Bougon : Ajoute la brique de protection de la clé privée ... chiffre et révèle les octets de la clé privée X25519 avec la KEK (AES-GCM)
+2026-11-09T18:55:20+01:00 - 4a9e60a - Bertrand Bougon : Ajoute le déverrouillage de la clé privée ... restaure en mémoire la clé privée X25519 d'une identité à partir du secret PRF
+2026-11-09T18:55:20+01:00 - 3bfffe6 - Bertrand Bougon : Ajoute l'enrôlement d'un utilisateur ... dérive la KEK depuis le secret PRF, génère la paire X25519 et protège la clé privée pour produire une identité cryptographique
+2026-11-09T18:55:20+01:00 - 1460ce8 - Bertrand Bougon : Ajoute la brique de paire de clés X25519 ... génère et sérialise une paire X25519 via le KEM HPKE (`DhkemX25519HkdfSha256`), avec la fabrique de suite partagée
+2026-11-09T18:55:20+01:00 - 09857eb - Bertrand Bougon : Ajoute le scénario POC de chiffrement par enveloppe bout-en-bout ... enrôle Alice et Bob, chiffre un document pour les deux et vérifie qu'Alice le déchiffre (secret PRF simulé)
+2026-11-09T18:52:11+01:00 - 77b3262 - beta-gouv-renovate[bot] : [RENOVATE] Update dependency vitest to v5.1.0
+2026-11-09T18:48:12+01:00 - b487314 - Bertrand Bougon : [CORRECTION] Corrige le build du front qui échoue au déploiement
+2026-11-09T18:47:52+01:00 - aed31d1 - beta-gouv-renovate[bot] : [RENOVATE] Update actions/cache action to v6
+2026-11-09T18:47:36+01:00 - d9e2857 - beta-gouv-renovate[bot] : [RENOVATE] Update npm - mises à jour patch
+2026-11-09T17:54:11+01:00 - 131347b - Bertrand Bougon : [SOIN] Active le HMR pour le développement en local
+2026-11-09T08:07:09+01:00 - 291a6a3 - beta-gouv-renovate[bot] : [RENOVATE] Update npm - mises à jour mineures
 2026-11-05T14:51:35+01:00 - a60e5ab - beta-gouv-renovate[bot] : [RENOVATE] Update dependency pnpm to v10.34.9
 2026-11-05T14:41:14+01:00 - f8c649d - Bertrand Bougon : Durcit l’image docker de litellm
 2026-11-05T14:41:14+01:00 - e772141 - Bertrand Bougon : Instancie un système de fichier Cellar pour le proxy
