@@ -22,9 +22,10 @@
 │   ├── assets_test.go
 │   ├── browser-guest-prep.sh
 │   ├── guest-prep.sh
-│   └── opencode-config.json
+│   ├── opencode-config.json
+│   └── pi-guest-prep.sh
 ├── cmd
-│   └── just-code
+│   └── codebox
 │       ├── auth.go
 │       ├── auth_password.go
 │       ├── auth_test.go
@@ -58,6 +59,7 @@
 │       ├── secrets_guest_readable_test.go
 │       ├── secrets_test.go
 │       ├── setup.go
+│       ├── setup_env_test.go
 │       ├── setup_platform_test.go
 │       ├── setup_test.go
 │       ├── stats.go
@@ -79,7 +81,8 @@
 │   │   ├── 2026-10-06-huh-wizard-ui.md
 │   │   ├── 2026-10-07-dotenv-secret-delivery.md
 │   │   ├── 2026-10-15-guest-readable-secret-delivery.md
-│   │   └── 2026-10-27-multi-platform-inference.md
+│   │   ├── 2026-10-27-multi-platform-inference.md
+│   │   └── 2026-11-09-pi-harness.md
 │   ├── design.md
 │   ├── development.md
 │   ├── installation.md
@@ -99,7 +102,7 @@
 ├── go.mod
 ├── go.sum
 ├── internal
-│   └── justcode
+│   └── codebox
 │       ├── agentvm.go
 │       ├── agentvm_test.go
 │       ├── agentvmimage.go
@@ -137,7 +140,10 @@
 │       ├── gitleaks.go
 │       ├── gitleaks_test.go
 │       ├── guest.go
+│       ├── guest_pi.go
 │       ├── guest_test.go
+│       ├── harness.go
+│       ├── harness_test.go
 │       ├── health.go
 │       ├── health_test.go
 │       ├── hostresources.go
@@ -177,6 +183,9 @@
 │       ├── opencodetrust_test.go
 │       ├── opencodetrust_unix_test.go
 │       ├── paths.go
+│       ├── piconfig.go
+│       ├── piconfig_test.go
+│       ├── piwiring_test.go
 │       ├── ports.go
 │       ├── ports_test.go
 │       ├── project.go
@@ -205,6 +214,7 @@
 │       ├── skills.go
 │       ├── skills_test.go
 │       ├── stats.go
+│       ├── stats_grist_test.go
 │       ├── stats_test.go
 │       ├── tart.go
 │       ├── tart_attach_test.go
@@ -293,7 +303,10 @@
         │   │   ├── evidence
         │   │   │   ├── README.md
         │   │   │   ├── darwin-arm64-run-1.txt
-        │   │   │   └── darwin-arm64-run-2.txt
+        │   │   │   ├── darwin-arm64-run-2.txt
+        │   │   │   ├── darwin-arm64-run-3.txt
+        │   │   │   ├── darwin-arm64-run-4.txt
+        │   │   │   └── darwin-arm64-run-negative-control.txt
         │   │   ├── go.mod
         │   │   ├── go.sum
         │   │   ├── guest
@@ -443,4 +456,4 @@
                 ├── microvm-boot.txt
                 ├── msb-direct.txt
                 └── native-build.txt
-38 directories, 447 files
+38 directories, 460 files
