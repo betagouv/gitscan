@@ -40,6 +40,7 @@
 │   │   ├── evaluation_eva.rb
 │   │   ├── evaluation_evapro.rb
 │   │   ├── evenements.rb
+│   │   ├── flash.rb
 │   │   ├── footer.rb
 │   │   ├── header.rb
 │   │   ├── import_xls.rb
@@ -245,6 +246,7 @@
 │   │   │   ├── mise_en_action.js.erb
 │   │   │   ├── mise_en_action_tableau_de_bord.js
 │   │   │   ├── modal_fusion.js
+│   │   │   ├── modal_suivi_groupe.js
 │   │   │   ├── modal_verification.js
 │   │   │   ├── pdf_generation_channel.js
 │   │   │   ├── plausible.js.erb
@@ -731,6 +733,7 @@
 │   │   ├── attestation_passation.rb
 │   │   ├── beneficiaire.rb
 │   │   ├── beneficiaires
+│   │   │   ├── enregistre_suivi_groupe.rb
 │   │   │   └── statut_suivi.rb
 │   │   ├── campagne.rb
 │   │   ├── campagne_createur.rb
@@ -1006,6 +1009,10 @@
 │       │   │   ├── _liste_evaluations_diagnostic.html.erb
 │       │   │   ├── _liste_evaluations_positionnement.html.erb
 │       │   │   ├── _modal_fusion.html.erb
+│       │   │   ├── _modal_suivi_groupe.html.erb
+│       │   │   ├── _modal_suivi_groupe_etape_qualification.html.erb
+│       │   │   ├── _modal_suivi_groupe_etape_question.html.erb
+│       │   │   ├── _modal_suivi_groupe_etape_recap.html.erb
 │       │   │   ├── _nom_beneficiaire.html.erb
 │       │   │   ├── _show.html.arb
 │       │   │   └── index.json.jbuilder
@@ -2134,6 +2141,8 @@
 │   │   │   └── standardisateur_spec.rb
 │   │   ├── situation_configuration_spec.rb
 │   │   └── structure_spec.rb
+│   ├── javascript
+│   │   └── modal_suivi_groupe.test.js
 │   ├── jobs
 │   │   ├── anonymisation_beneficiaires_job_spec.rb
 │   │   ├── nettoyage_comptes_structure_demo_job_spec.rb
@@ -2176,6 +2185,7 @@
 │   │   ├── attestation_passation_spec.rb
 │   │   ├── beneficiaire_spec.rb
 │   │   ├── beneficiaires
+│   │   │   ├── enregistre_suivi_groupe_spec.rb
 │   │   │   └── statut_suivi_spec.rb
 │   │   ├── campagne_createur_spec.rb
 │   │   ├── campagne_duplicateur_spec.rb
@@ -2470,4 +2480,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-344 directories, 2182 files
+345 directories, 2191 files

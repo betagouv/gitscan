@@ -1,39 +1,45 @@
-## Changelog : eva-serveur (30 derniers jours, au 05 novembre 2026)
+## Changelog : eva-serveur (30 derniers jours, au 10 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de la gestion des réponses et du suivi des bénéficiaires. L'introduction de l'option "Pas encore" permet désormais de planifier des relances automatiques, tandis que le nouveau système de "Statut de suivi" offre une meilleure visibilité sur l'accompagnement des utilisateurs. L'interface a également été enrichie de nouveaux outils de pilotage pour les administrateurs et de fonctionnalités d'exportation de documents (attestations).
+Cette période a été marquée par l'amélioration significative du suivi des bénéficiaires, notamment avec l'introduction d'un statut « Pas encore » permettant de planifier des relances personnalisées. L'outil de gestion des évaluations (EVAPRO) a également été enrichi avec la génération d'attestations de passation et une meilleure visibilité des indicateurs de risque et de littératie.
 
 ### Évolutions fonctionnelles
-- **Gestion des réponses et relances** :
-    - Remplacement de l'option "Je ne sais pas" par "Pas encore", permettant de programmer une date de revue (7 jours, 14 jours, 1 mois ou date précise).
-    - Amélioration de l'option "Autre" qui permet désormais d'ajouter une précision textuelle depuis la fiche d'évaluation, le tableau de bord ou la carte de suivi.
-- **Suivi et pilotage** :
-    - Mise en place d'un système de "Statut de suivi" permettant de trier et filtrer les listes de bénéficiaires et d'évaluations.
-    - Ajout de boutons de consultation rapide ("Consulter X bénéficiaires/évaluations") sur les pages de campagne.
-    - Affichage des actualités et des newsletters directement sur les tableaux de bord des comptes administratifs.
-- **Documents et exports** :
-    - Ajout de la génération et du téléchargement d'attestations de passation en format PDF.
-    - Amélioration des exports (CSV/XLS) incluant désormais l'usage des structures.
-- **Parcours et profils** :
-    - Automatisation du calcul des profils de littératie et des restitutions en fonction des réponses et des abandons de parcours.
-    - Affichage des sous-profils de littératie, même lorsqu'ils ne sont pas encore calculés.
+- **Gestion du suivi et des relances** :
+    - Introduction du statut « Pas encore » pour les mises en action, permettant de reporter une question à une date précise (7 jours, 14 jours, 1 mois ou date personnalisée).
+    - Les actions reportées sont automatiquement masquées du tableau de bord jusqu'à leur date de revue.
+    - Ajout de filtres, de tris et de colonnes dédiés au statut de suivi pour les listes de bénéficiaires et d'évaluations.
+- **Amélioration des réponses** :
+    - Possibilité de répondre « Autre » en apportant une précision textuelle (disponible sur la fiche, le tableau de bord et la carte de suivi).
+    - Distinction claire entre une réponse « Pas encore » et une mise en action jamais répondue.
+- **Évolutions EVAPRO** :
+    - Affichage du taux de risque dans l'index dès qu'il est connu.
+    - Génération et téléchargement d'attestations de passation au format PDF.
+    - Calcul automatisé et affichage des sous-profils de littératie (ex: Production, Café de la place) en fonction des réponses ou des abandons.
+- **Interface et navigation** :
+    - Ajout de boutons de consultation rapide (« Consulter X bénéficiaires/évaluations ») sur les pages de campagne.
+    - Amélioration de la visibilité des actualités et newsletters sur le tableau de bord.
+    - Mise à jour de l'interface pour mieux respecter les maquettes et les standards DSFR (boutons, tags, info-bulles).
 
 ### Évolutions techniques
-- **Interface et composants (UI)** :
-    - Mise à jour vers la version 1.15 du DSFR.
-    - Création et refonte de nombreux composants réutilisables : Tags, Info-bulles, Boutons (variantes tertiaires et états désactivés), et composants spécifiques aux questions de mise en action.
-    - Optimisation de l'expérience utilisateur : suppression de tags en arrière-plan sans rechargement de page.
-- **Architecture et code** :
-    - Refactoring important de la logique métier, notamment pour les modèles `MiseEnAction` et `StatutSuivi`.
-    - Découpage du code JavaScript par écran pour une meilleure maintenabilité.
-    - Consolidation des composants de tags en un composant unique.
-- **Infrastructure et environnement** :
-    - Mise à jour de Node.js (v22.23.4) et des dépendances Rails/JS.
-    - Automatisation de la réinitialisation de la base de données de préproduction chaque vendredi.
-- **Données** :
-    - Enrichissement des données de test (intégration de nouveaux OPCO, SIRETs et scores QCM).
-    - Passage des timestamps en précision `timestamp(6)`.
+- **Infrastructure et dépendances** :
+    - Montée de version de Node.js (v22.23.4), de Rails et du framework de design DSFR (v1.15).
+    - Mise à jour des dépendances JavaScript et correction de la compatibilité avec JSON 3 et Ransack 6.
+- **Tests et CI/CD** :
+    - Optimisation du temps de démarrage des tests Jest en limitant les dossiers parcourus.
+    - Intégration de l'exécution des tests Jest dans la CI et dans les tâches de validation.
+- **Architecture et Refactoring** :
+    - Unification et réécriture des composants d'interface (Tags, Boutons) pour une meilleure conformité au DSFR.
+    - Refactorisation de la logique de « Mise en action » (déplacement de la logique dans le modèle, découpage du JavaScript par écran).
+    - Standardisation du code de génération de PDF entre les restitutions et les attestations.
+    - Centralisation de la logique de qualification et de détection des comptes sans évaluation.
+- **Stabilité** :
+    - Correction d'un risque de double soumission lors de la création de structures.
 
 ### Autres changements
-- **Documentation** : Rédaction de nouvelles ADR (Architecture Decision Records) concernant le statut de suivi et la carte de suivi, et mise à jour de la documentation de développement (README, .env.template).
-- **Nettoyage** : Suppression de fichiers Docker et de méthodes/styles obsolètes.
+- **Documentation** :
+    - Ajout de plusieurs documents d'architecture (ADR 0001 et ADR 0002) concernant le statut de suivi et la carte de suivi.
+    - Documentation des nouveaux états de mise en action et mise à jour du fichier `.env.template`.
+- **Données de test** :
+    - Mise à jour massive des données de test (OPCO, structures, comptes, évaluations) pour garantir la cohérence avec les environnements de production et de pré-production.
+- **Nettoyage** :
+    - Suppression de fichiers Docker inutilisés, de méthodes obsolètes et de styles CSS devenus superflus.
