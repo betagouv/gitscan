@@ -1,99 +1,61 @@
 .
-├── .claude
-│   ├── agents
-│   │   ├── architect
-│   │   │   └── AGENT.md
-│   │   ├── architect-rework
-│   │   │   └── AGENT.md
-│   │   ├── bug-analyst
-│   │   │   └── AGENT.md
-│   │   ├── code-dev
-│   │   │   └── AGENT.md
-│   │   ├── design-validator
-│   │   │   └── AGENT.md
-│   │   ├── doc-writer
-│   │   │   └── AGENT.md
-│   │   ├── e2e-dev
-│   │   │   └── AGENT.md
-│   │   ├── functional-validator
-│   │   │   └── AGENT.md
-│   │   ├── product-owner
-│   │   │   └── AGENT.md
-│   │   ├── review-fixer
-│   │   │   └── AGENT.md
-│   │   ├── rgaa-auditor
-│   │   │   └── AGENT.md
-│   │   ├── security-auditor
-│   │   │   └── AGENT.md
-│   │   ├── structural-auditor
-│   │   │   └── AGENT.md
-│   │   └── validator
-│   │       └── AGENT.md
-│   ├── hooks
-│   │   ├── auto-lint.sh
-│   │   ├── block-bad-patterns.sh
-│   │   ├── check-pr-reviews.sh
-│   │   └── check-ultra11y-plugin.sh
-│   ├── pipeline
-│   │   ├── README.md
-│   │   ├── board.md
-│   │   ├── complexity-estimation.md
-│   │   ├── orchestration.md
-│   │   └── ticket-spec-format.md
-│   ├── rules
-│   │   ├── audit-logging.md
-│   │   ├── automation.md
-│   │   ├── bug-fix-workflow.md
-│   │   ├── code-quality.md
-│   │   ├── database-drizzle.md
-│   │   ├── demarche-state-machine.md
-│   │   ├── e2e.md
-│   │   ├── figma-workflow.md
-│   │   ├── git-artefact-hygiene.md
-│   │   ├── react-components.md
-│   │   ├── rgaa.md
-│   │   ├── styling-dsfr.md
-│   │   ├── testing.md
-│   │   ├── trpc-api.md
-│   │   └── visual-quality-validation.md
-│   ├── settings.json
+├── .agents
 │   └── skills
-│       ├── analyse
-│       │   └── SKILL.md
-│       ├── doc
-│       │   └── SKILL.md
+│       ├── analyze
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       ├── architect.md
+│       │       ├── board.md
+│       │       ├── bug-analysis.md
+│       │       ├── complexity-estimation.md
+│       │       ├── product-owner.md
+│       │       ├── rework.md
+│       │       └── ticket-spec-format.md
 │       ├── implement
-│       │   └── SKILL.md
-│       ├── open
-│       │   └── SKILL.md
-│       ├── plan-sprint
-│       │   └── SKILL.md
-│       ├── report
-│       │   └── SKILL.md
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       ├── bug-fix.md
+│       │       ├── conventions
+│       │       │   ├── audit-logging.md
+│       │       │   ├── code-quality.md
+│       │       │   ├── database-drizzle.md
+│       │       │   ├── demarche-state-machine.md
+│       │       │   ├── figma.md
+│       │       │   ├── react-components.md
+│       │       │   ├── styling-dsfr.md
+│       │       │   ├── testing.md
+│       │       │   └── trpc-api.md
+│       │       ├── e2e.md
+│       │       ├── epic.md
+│       │       └── workflow.md
 │       ├── review
-│       │   └── SKILL.md
-│       └── velocity
-│           └── SKILL.md
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       ├── a11y.md
+│       │       ├── design-fidelity.md
+│       │       ├── functional.md
+│       │       ├── pr-comments.md
+│       │       ├── security.md
+│       │       ├── structural.md
+│       │       └── subagents.md
+│       ├── review-a11y -> ../../packages/app/node_modules/ultra11y/skills/review-a11y
+│       └── ultra11y -> ../../packages/app/node_modules/ultra11y/skills/ultra11y
+├── .claude
+│   ├── settings.json
+│   └── skills -> ../.agents/skills
 ├── .codex
 │   ├── config.toml
-│   └── skills
-│       ├── analyse
-│       │   └── SKILL.md
-│       ├── doc
-│       │   └── SKILL.md
-│       ├── implement
-│       │   └── SKILL.md
-│       ├── open
-│       │   └── SKILL.md
-│       ├── report
-│       │   └── SKILL.md
-│       └── review
-│           └── SKILL.md
+│   └── rules
+│       └── egapro.rules
 ├── .dockerignore
 ├── .github
 │   ├── CODEOWNERS
+│   ├── actions
+│   │   └── a11y-stack
+│   │       └── action.yml
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── a11y-lite.yaml
 │       ├── a11y.yaml
 │       ├── ci.yaml
 │       ├── claude-question.yml
@@ -126,7 +88,6 @@
 │   │   │   │   ├── gip-mds-import.sealed-secret.yaml
 │   │   │   │   ├── gip-mds.configmap.yaml
 │   │   │   │   ├── mail.configmap.yaml
-│   │   │   │   ├── mailpit-basic-auth.sealed-secret.yaml
 │   │   │   │   ├── mailpit.yaml
 │   │   │   │   ├── next-auth.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
@@ -182,7 +143,8 @@
 │   │       │   └── valkey.configmap.yaml
 │   │       └── values.yaml
 │   ├── patches
-│   │   └── 00-degit-http-version.js
+│   │   ├── 00-degit-http-version.js
+│   │   └── 01-degit-watchdog.js
 │   ├── templates
 │   │   ├── apisix-suit.configmap.yaml
 │   │   ├── apisix-suit.ingress.yaml
@@ -200,9 +162,9 @@
 ├── .mcp.json
 ├── .nvmrc
 ├── .releaserc.cjs
+├── AGENTS.md
 ├── CHANGELOG.md
 ├── CLAUDE.md
-├── CODEX.md
 ├── LICENSE
 ├── README.md
 ├── docker-compose.yml
@@ -214,6 +176,7 @@
 │   ├── SUIT-API.md
 │   ├── accessibilite-ultra11y.md
 │   ├── architecture.md
+│   ├── audit-logging-inventaire.md
 │   ├── cahier-de-tests.md
 │   ├── consultation-publique.md
 │   ├── features.md
@@ -239,6 +202,8 @@
 │   ├── release.md
 │   ├── reprise-donnees-v1.md
 │   └── strategie-tracking.md
+├── lefthook.yml
+├── opencode.json
 ├── package.json
 ├── packages
 │   ├── app
@@ -250,8 +215,8 @@
 │   │   │   └── verdicts
 │   │   │       └── rgaa.json
 │   │   ├── .ultra11yrc.json
+│   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md
-│   │   ├── CODEX.md
 │   │   ├── Dockerfile
 │   │   ├── biome.jsonc
 │   │   ├── cache-handler.cjs
@@ -323,6 +288,8 @@
 │   │   │   ├── 0058_ensure-global-setting-row.sql
 │   │   │   ├── 0059_cse-opinion-draft-updated-at.sql
 │   │   │   ├── 0060_collaborative-representation-lock.sql
+│   │   │   ├── 0061_gap-justification.sql
+│   │   │   ├── 0062_friendly_night_nurse.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -370,6 +337,8 @@
 │   │   │       ├── 0058_snapshot.json
 │   │   │       ├── 0059_snapshot.json
 │   │   │       ├── 0060_snapshot.json
+│   │   │       ├── 0061_snapshot.json
+│   │   │       ├── 0062_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -385,13 +354,17 @@
 │   │   │       │   └── pdf
 │   │   │       │       ├── document-icon.png
 │   │   │       │       ├── document-pictogram.png
-│   │   │       │       └── ministere-travail.png
+│   │   │       │       ├── ministere-travail.png
+│   │   │       │       ├── opinion-check.png
+│   │   │       │       └── opinion-dash.png
 │   │   │       └── images
 │   │   │           ├── aide
 │   │   │           │   ├── indicateurs-remuneration.png
 │   │   │           │   └── indicateurs-representation.png
 │   │   │           ├── home
 │   │   │           │   ├── help-illustration.svg
+│   │   │           │   ├── remuneration-illustration.svg
+│   │   │           │   ├── representation-illustration.svg
 │   │   │           │   └── search-illustration.svg
 │   │   │           ├── je-donne-mon-avis.svg
 │   │   │           ├── login-illustration.svg
@@ -406,6 +379,7 @@
 │   │   │   ├── backfill-company-region-department.ts
 │   │   │   ├── check-cahier.ts
 │   │   │   ├── check-journal.ts
+│   │   │   ├── check-pdf-ua.ts
 │   │   │   ├── check-postgres-upgrade.ts
 │   │   │   ├── check-suit-connection.ts
 │   │   │   ├── cleanup-error-diagnostic.ts
@@ -422,12 +396,14 @@
 │   │   │   ├── import-v1-representation-mapping.ts
 │   │   │   ├── import-v1-representation.ts
 │   │   │   ├── migrate.ts
+│   │   │   ├── observatorySeedShared.ts
 │   │   │   ├── post-process-schema-wiki.ts
 │   │   │   ├── postgres-upgrade-report.ts
 │   │   │   ├── report-grille.ts
 │   │   │   ├── seed-demo-observatory.ts
 │   │   │   ├── seed-demo-stats.ts
 │   │   │   ├── seed-dev.ts
+│   │   │   ├── seed-rgaa-observatory-history.ts
 │   │   │   └── visual-fidelity-probe.ts
 │   │   ├── src
 │   │   │   ├── __tests__
@@ -448,7 +424,8 @@
 │   │   │   │   │   │   └── playwrightReportFixture.ts
 │   │   │   │   │   ├── migrationV1References.test.ts
 │   │   │   │   │   ├── reportGrille.test.ts
-│   │   │   │   │   └── reportGrilleCli.test.ts
+│   │   │   │   │   ├── reportGrilleCli.test.ts
+│   │   │   │   │   └── seedRgaaObservatoryHistory.integration.test.ts
 │   │   │   │   └── sentry.config.test.ts
 │   │   │   ├── app
 │   │   │   │   ├── acces-backoffice
@@ -466,6 +443,8 @@
 │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   ├── parametres
 │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── plan
+│   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── stats
 │   │   │   │   │       └── page.tsx
 │   │   │   │   ├── aide
@@ -482,6 +461,10 @@
 │   │   │   │   │   │       ├── callback
 │   │   │   │   │   │       │   └── route.ts
 │   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── cse-opinion-pdf
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── declaration-lock
 │   │   │   │   │   │   └── release
 │   │   │   │   │   │       ├── __tests__
@@ -550,10 +533,6 @@
 │   │   │   │   │   │   │   └── route.test.ts
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── test-sentry
-│   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   └── route.test.ts
-│   │   │   │   │   │   └── route.ts
-│   │   │   │   │   ├── transmitted-pdf
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── route.test.ts
 │   │   │   │   │   │   └── route.ts
@@ -631,6 +610,8 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── donnees-personnelles
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── en-construction
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── error.tsx
 │   │   │   │   ├── faq
 │   │   │   │   │   └── page.tsx
@@ -701,6 +682,7 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── ownership.test.ts
 │   │   │   │   │   ├── anonymous.a11y.ts
+│   │   │   │   │   ├── backoffice.a11y.ts
 │   │   │   │   │   ├── dynamic.a11y.ts
 │   │   │   │   │   ├── funnels.a11y.ts
 │   │   │   │   │   ├── integration.a11y.ts
@@ -738,8 +720,10 @@
 │   │   │   │   │   └── scenarios.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── a11y-selection.test.ts
 │   │   │   │   │   │   ├── db-campaign.resetCampaignYear.integration.test.ts
 │   │   │   │   │   │   └── routes.test.ts
+│   │   │   │   │   ├── a11y-selection.ts
 │   │   │   │   │   ├── campaign-year.ts
 │   │   │   │   │   ├── compliance-flows.ts
 │   │   │   │   │   ├── db-campaign.ts
@@ -752,12 +736,14 @@
 │   │   │   │   │   ├── indicator-g.ts
 │   │   │   │   │   ├── login.ts
 │   │   │   │   │   ├── mailpit.ts
+│   │   │   │   │   ├── next-steps.ts
 │   │   │   │   │   ├── notifications-worker.ts
 │   │   │   │   │   ├── process-panel.ts
 │   │   │   │   │   ├── receipts.ts
 │   │   │   │   │   ├── routes.ts
 │   │   │   │   │   ├── suit-export.ts
 │   │   │   │   │   └── testUser.ts
+│   │   │   │   ├── home.e2e.ts
 │   │   │   │   ├── legal-pages.e2e.ts
 │   │   │   │   ├── login.e2e.ts
 │   │   │   │   ├── logout.e2e.ts
@@ -786,6 +772,7 @@
 │   │   │   │   │   │   ├── AdminNavigation.test.tsx
 │   │   │   │   │   │   ├── AdminPage.test.tsx
 │   │   │   │   │   │   ├── AdminShell.test.tsx
+│   │   │   │   │   │   ├── AdminSitemapRoute.test.tsx
 │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── access
 │   │   │   │   │   │   ├── AdminAccessDeniedPage.tsx
@@ -837,10 +824,13 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── referents
 │   │   │   │   │   │   ├── AdminReferentsPage.tsx
+│   │   │   │   │   │   ├── ConfirmStepActions.tsx
 │   │   │   │   │   │   ├── DeleteConfirmationModal.tsx
+│   │   │   │   │   │   ├── ImportReferentsConfirmStep.tsx
 │   │   │   │   │   │   ├── ImportReferentsModal.tsx
 │   │   │   │   │   │   ├── ReferentFormFields.tsx
 │   │   │   │   │   │   ├── ReferentFormModal.tsx
+│   │   │   │   │   │   ├── ReferentReviewStep.tsx
 │   │   │   │   │   │   ├── ReferentTable.tsx
 │   │   │   │   │   │   ├── SearchForm.tsx
 │   │   │   │   │   │   ├── __tests__
@@ -848,14 +838,20 @@
 │   │   │   │   │   │   │   ├── DeleteConfirmationModal.test.tsx
 │   │   │   │   │   │   │   ├── ImportReferentsModal.test.tsx
 │   │   │   │   │   │   │   ├── ReferentFormFields.test.tsx
+│   │   │   │   │   │   │   ├── ReferentFormModal.test.tsx
 │   │   │   │   │   │   │   ├── ReferentTable.test.tsx
 │   │   │   │   │   │   │   ├── SearchForm.test.tsx
 │   │   │   │   │   │   │   ├── constants.test.ts
+│   │   │   │   │   │   │   ├── locationLabels.test.ts
+│   │   │   │   │   │   │   ├── referentChanges.test.ts
 │   │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── referentChanges.ts
 │   │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   │   ├── shared
-│   │   │   │   │   │   │   └── constants.ts
+│   │   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   │   ├── fieldLabels.ts
+│   │   │   │   │   │   │   └── locationLabels.ts
 │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── settings
@@ -886,6 +882,15 @@
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── adminMfaGuard.test.ts
 │   │   │   │   │   │   └── adminMfaGuard.ts
+│   │   │   │   │   ├── sitemap
+│   │   │   │   │   │   ├── AdminSitemapLink.tsx
+│   │   │   │   │   │   ├── AdminSitemapPage.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── AdminSitemapLink.test.tsx
+│   │   │   │   │   │   │   ├── AdminSitemapPage.test.tsx
+│   │   │   │   │   │   │   └── adminSections.test.ts
+│   │   │   │   │   │   ├── adminSections.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── stats
 │   │   │   │   │       ├── AdminKpiTile.tsx
 │   │   │   │   │       ├── CampaignProgressionChart.module.scss
@@ -896,6 +901,7 @@
 │   │   │   │   │       ├── CompletionFunnelChart.tsx
 │   │   │   │   │       ├── CompletionFunnelTable.tsx
 │   │   │   │   │       ├── CseStatusConfirmationsTile.tsx
+│   │   │   │   │       ├── PhaseStatsTable.tsx
 │   │   │   │   │       ├── StagnationDaysFilter.tsx
 │   │   │   │   │       ├── StatsBarChart.module.scss
 │   │   │   │   │       ├── StatsBarChart.tsx
@@ -904,6 +910,7 @@
 │   │   │   │   │       ├── StatsDashboard.tsx
 │   │   │   │   │       ├── StepDropoffChart.module.scss
 │   │   │   │   │       ├── StepDropoffChart.tsx
+│   │   │   │   │       ├── StepDropoffLegend.tsx
 │   │   │   │   │       ├── StepDropoffTable.tsx
 │   │   │   │   │       ├── StepDurationsChart.module.scss
 │   │   │   │   │       ├── StepDurationsChart.tsx
@@ -924,16 +931,23 @@
 │   │   │   │   │       │   ├── StatsDashboard.campaign.test.tsx
 │   │   │   │   │       │   ├── StatsDashboard.test.tsx
 │   │   │   │   │       │   ├── StatsPage.test.tsx
+│   │   │   │   │       │   ├── StepDropoffChart.alertMark.test.tsx
 │   │   │   │   │       │   ├── StepDropoffChart.test.tsx
 │   │   │   │   │       │   ├── StepDropoffTable.test.tsx
 │   │   │   │   │       │   ├── StepDurationsChart.test.tsx
 │   │   │   │   │       │   ├── StepDurationsTable.test.tsx
 │   │   │   │   │       │   ├── UsersPerCompanyTile.test.tsx
 │   │   │   │   │       │   ├── YearsFilter.test.tsx
+│   │   │   │   │       │   ├── chartsKeyboardLayer.test.tsx
+│   │   │   │   │       │   ├── chartsPresentationAttributes.test.tsx
 │   │   │   │   │       │   ├── helpers
+│   │   │   │   │       │   │   ├── renderedCharts.tsx
 │   │   │   │   │       │   │   └── statsDashboardMocks.ts
+│   │   │   │   │       │   ├── renderLegendLabel.test.tsx
 │   │   │   │   │       │   └── useDebouncedValue.test.ts
+│   │   │   │   │       ├── constants.ts
 │   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── renderLegendLabel.tsx
 │   │   │   │   │       ├── schemas.ts
 │   │   │   │   │       ├── types.ts
 │   │   │   │   │       └── useDebouncedValue.ts
@@ -951,7 +965,8 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── AideCallout.test.tsx
 │   │   │   │   │   │   ├── AidePage.test.tsx
-│   │   │   │   │   │   └── ContactPage.test.tsx
+│   │   │   │   │   │   ├── ContactPage.test.tsx
+│   │   │   │   │   │   └── CopyEmailButton.test.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── analytics
 │   │   │   │   │   ├── FunnelCompleteTracker.tsx
@@ -992,6 +1007,7 @@
 │   │   │   │   │   ├── CompanyHeader.test.tsx
 │   │   │   │   │   ├── CompanyHeader.tsx
 │   │   │   │   │   ├── ConsultationSearchPage.module.scss
+│   │   │   │   │   ├── ConsultationSearchPage.test.tsx
 │   │   │   │   │   ├── ConsultationSearchPage.tsx
 │   │   │   │   │   ├── DownloadDataModal.module.scss
 │   │   │   │   │   ├── DownloadDataModal.tsx
@@ -1035,13 +1051,13 @@
 │   │   │   │   │   ├── Step1Opinions.module.scss
 │   │   │   │   │   ├── Step1Opinions.tsx
 │   │   │   │   │   ├── Step2Upload.tsx
+│   │   │   │   │   ├── SubmittedOpinionsPage.module.scss
 │   │   │   │   │   ├── SubmittedOpinionsPage.tsx
 │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   ├── AccuracyOpinionCard.test.tsx
 │   │   │   │   │   │   ├── ConfirmationPage.test.tsx
 │   │   │   │   │   │   ├── CseOpinionLayout.test.tsx
 │   │   │   │   │   │   ├── CseOpinionRootLayout.test.tsx
-│   │   │   │   │   │   ├── GapConsultationCard.test.tsx
+│   │   │   │   │   │   ├── OpinionCard.test.tsx
 │   │   │   │   │   │   ├── OpinionSummaryBox.test.tsx
 │   │   │   │   │   │   ├── Step1Opinions.test.tsx
 │   │   │   │   │   │   ├── Step2Upload.test.tsx
@@ -1051,22 +1067,28 @@
 │   │   │   │   │   │   ├── contentTypeColumns.test.ts
 │   │   │   │   │   │   ├── impersonationEntry.test.ts
 │   │   │   │   │   │   ├── mapOpinionsFromDb.test.ts
+│   │   │   │   │   │   ├── opinionFieldErrors.test.ts
 │   │   │   │   │   │   ├── opinionsFormValues.test.ts
-│   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   ├── schemas.test.ts
+│   │   │   │   │   │   ├── submissionBanner.test.ts
+│   │   │   │   │   │   └── submittedOpinionLabels.test.ts
 │   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── AccuracyOpinionCard.tsx
 │   │   │   │   │   │   ├── ContentTypeMatrix.module.scss
 │   │   │   │   │   │   ├── ContentTypeMatrix.tsx
 │   │   │   │   │   │   ├── CseStepIndicator.tsx
-│   │   │   │   │   │   ├── GapConsultationCard.tsx
+│   │   │   │   │   │   ├── FreshTransmissionBanner.tsx
 │   │   │   │   │   │   ├── OpinionCard.module.scss
+│   │   │   │   │   │   ├── OpinionCard.tsx
 │   │   │   │   │   │   ├── OpinionSummaryBox.module.scss
 │   │   │   │   │   │   ├── OpinionSummaryBox.tsx
+│   │   │   │   │   │   ├── SubmissionAlerts.tsx
 │   │   │   │   │   │   ├── SubmissionBanner.module.scss
 │   │   │   │   │   │   ├── SubmissionBanner.tsx
 │   │   │   │   │   │   ├── SubmitConfirmationModal.tsx
 │   │   │   │   │   │   └── __tests__
 │   │   │   │   │   │       ├── ContentTypeMatrix.test.tsx
+│   │   │   │   │   │       ├── FreshTransmissionBanner.test.tsx
+│   │   │   │   │   │       ├── SubmissionAlerts.test.tsx
 │   │   │   │   │   │       └── SubmissionBanner.test.tsx
 │   │   │   │   │   ├── confirmationHelpers.ts
 │   │   │   │   │   ├── contentTypeColumns.ts
@@ -1074,10 +1096,14 @@
 │   │   │   │   │   ├── impersonationEntry.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── mapOpinionsFromDb.ts
+│   │   │   │   │   ├── opinionFieldErrors.ts
 │   │   │   │   │   ├── opinionsFormValues.ts
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── shared
-│   │   │   │   │   │   └── formActions.module.scss
+│   │   │   │   │   │   ├── formActions.module.scss
+│   │   │   │   │   │   └── stepLayout.module.scss
+│   │   │   │   │   ├── submissionBanner.ts
+│   │   │   │   │   ├── submittedOpinionLabels.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── declaration
 │   │   │   │   │   ├── __tests__
@@ -1107,12 +1133,14 @@
 │   │   │   │   │   │   │   ├── CategoryRecapTable.test.tsx
 │   │   │   │   │   │   │   ├── RecapitulatifPage.correction.test.tsx
 │   │   │   │   │   │   │   ├── RecapitulatifPage.test.tsx
+│   │   │   │   │   │   │   ├── RecapitulatifRoute.test.tsx
 │   │   │   │   │   │   │   └── fixtures.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── CompanyBanner.module.scss
 │   │   │   │   │   │   ├── CompanyBanner.tsx
+│   │   │   │   │   │   ├── CseOpinionCtaGroup.tsx
 │   │   │   │   │   │   ├── DataTable.tsx
 │   │   │   │   │   │   ├── DefinitionAccordion.tsx
 │   │   │   │   │   │   ├── DevFillButton.tsx
@@ -1120,10 +1148,9 @@
 │   │   │   │   │   │   ├── FormActions.module.scss
 │   │   │   │   │   │   ├── FormActions.tsx
 │   │   │   │   │   │   ├── FormErrors.tsx
-│   │   │   │   │   │   ├── GapInterpretationCallout.tsx
 │   │   │   │   │   │   ├── GapValueBadge.module.scss
 │   │   │   │   │   │   ├── GapValueBadge.tsx
-│   │   │   │   │   │   ├── InterpretationCallout.module.scss
+│   │   │   │   │   │   ├── HelpLink.tsx
 │   │   │   │   │   │   ├── NextStepsBox.module.scss
 │   │   │   │   │   │   ├── NextStepsBox.tsx
 │   │   │   │   │   │   ├── OrdinalLongDate.tsx
@@ -1138,6 +1165,8 @@
 │   │   │   │   │   │   ├── StepIndicator.tsx
 │   │   │   │   │   │   ├── StepTitleRow.tsx
 │   │   │   │   │   │   ├── SubmitDeclarationModal.tsx
+│   │   │   │   │   │   ├── TableTitle.tsx
+│   │   │   │   │   │   ├── UpdateCseButton.tsx
 │   │   │   │   │   │   ├── UpdateCseModal.module.scss
 │   │   │   │   │   │   ├── UpdateCseModal.tsx
 │   │   │   │   │   │   ├── __tests__
@@ -1146,7 +1175,6 @@
 │   │   │   │   │   │   │   ├── DevFillButton.test.tsx
 │   │   │   │   │   │   │   ├── FormActions.test.tsx
 │   │   │   │   │   │   │   ├── FormErrors.test.tsx
-│   │   │   │   │   │   │   ├── GapInterpretationCallout.test.tsx
 │   │   │   │   │   │   │   ├── NextStepsBox.test.tsx
 │   │   │   │   │   │   │   ├── OrdinalLongDate.test.tsx
 │   │   │   │   │   │   │   ├── PayGapTable.test.tsx
@@ -1154,6 +1182,7 @@
 │   │   │   │   │   │   │   ├── PrefillSource.test.tsx
 │   │   │   │   │   │   │   ├── StepIndicator.test.tsx
 │   │   │   │   │   │   │   ├── UpdateCseModal.test.tsx
+│   │   │   │   │   │   │   ├── declarationSuccessFlash.test.ts
 │   │   │   │   │   │   │   ├── devFillData.test.ts
 │   │   │   │   │   │   │   ├── funnelSteps.test.ts
 │   │   │   │   │   │   │   ├── gapBadge.test.ts
@@ -1161,6 +1190,7 @@
 │   │   │   │   │   │   │   ├── gipMdsMappingCsv.test.ts
 │   │   │   │   │   │   │   ├── impersonationEntry.test.ts
 │   │   │   │   │   │   │   ├── indicatorRowMapping.test.ts
+│   │   │   │   │   │   │   ├── readingNotes.test.ts
 │   │   │   │   │   │   │   ├── submissionErrorMessage.test.ts
 │   │   │   │   │   │   │   └── useRefreshAfterSubmissionError.test.ts
 │   │   │   │   │   │   ├── coherenceErrorLabel.ts
@@ -1188,7 +1218,8 @@
 │   │   │   │   │   │   │   ├── FieldErrorAlert.tsx
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── FieldErrorAlert.test.tsx
-│   │   │   │   │   │   │   │   └── payGapErrors.test.ts
+│   │   │   │   │   │   │   │   ├── payGapErrors.test.ts
+│   │   │   │   │   │   │   │   └── types.test.ts
 │   │   │   │   │   │   │   ├── payGapErrors.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── funnelConfig.ts
@@ -1203,17 +1234,27 @@
 │   │   │   │   │   │   │   ├── DeclarationLockAlertGate.tsx
 │   │   │   │   │   │   │   ├── DeclarationModificationClosedAlert.tsx
 │   │   │   │   │   │   │   ├── LockContext.tsx
+│   │   │   │   │   │   │   ├── LockEditSessionBoundary.tsx
+│   │   │   │   │   │   │   ├── LockRetakeStatus.tsx
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── DeclarationLockAlert.test.tsx
+│   │   │   │   │   │   │   │   ├── DeclarationLockAlertGate.test.tsx
 │   │   │   │   │   │   │   │   ├── DeclarationModificationClosedAlert.test.tsx
 │   │   │   │   │   │   │   │   ├── LockContext.test.tsx
+│   │   │   │   │   │   │   │   ├── LockRetakeStatus.test.tsx
 │   │   │   │   │   │   │   │   ├── lockHolderIdentity.test.ts
-│   │   │   │   │   │   │   │   └── useDeclarationLock.test.tsx
+│   │   │   │   │   │   │   │   ├── lockRetakeView.test.ts
+│   │   │   │   │   │   │   │   ├── useDeclarationLock.retake.test.tsx
+│   │   │   │   │   │   │   │   ├── useDeclarationLock.test.tsx
+│   │   │   │   │   │   │   │   └── useDeclarationLockHarness.tsx
 │   │   │   │   │   │   │   ├── lockHolderIdentity.ts
+│   │   │   │   │   │   │   ├── lockRetakeView.ts
 │   │   │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   │   │   ├── types.ts
-│   │   │   │   │   │   │   └── useDeclarationLock.ts
+│   │   │   │   │   │   │   ├── useDeclarationLock.ts
+│   │   │   │   │   │   │   └── useLockAvailability.ts
 │   │   │   │   │   │   ├── numericInputClassName.ts
+│   │   │   │   │   │   ├── readingNotes.ts
 │   │   │   │   │   │   ├── submissionErrorMessage.ts
 │   │   │   │   │   │   └── useRefreshAfterSubmissionError.ts
 │   │   │   │   │   ├── steps
@@ -1235,12 +1276,12 @@
 │   │   │   │   │   │   ├── Step6Review.tsx
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── ComplianceConfirmation.test.tsx
+│   │   │   │   │   │   │   ├── CompliancePathChoice.pathScreen.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathChoice.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathPage.redirect.test.tsx
 │   │   │   │   │   │   │   ├── CompliancePathPage.test.ts
 │   │   │   │   │   │   │   ├── CompliancePathReadOnlyAlert.test.tsx
 │   │   │   │   │   │   │   ├── DraftLoadingGate.test.tsx
-│   │   │   │   │   │   │   ├── QuartileInterpretationCallout.test.tsx
 │   │   │   │   │   │   │   ├── Step1DevFill.test.tsx
 │   │   │   │   │   │   │   ├── Step1Workforce.test.tsx
 │   │   │   │   │   │   │   ├── Step2DevFill.test.tsx
@@ -1254,7 +1295,9 @@
 │   │   │   │   │   │   │   ├── Step4QuartileDistributionGip.test.tsx
 │   │   │   │   │   │   │   ├── Step5DevFill.test.tsx
 │   │   │   │   │   │   │   ├── Step5EmployeeCategories.test.tsx
-│   │   │   │   │   │   │   └── Step6Review.test.tsx
+│   │   │   │   │   │   │   ├── Step6Review.test.tsx
+│   │   │   │   │   │   │   ├── compliancePathChoiceMocks.ts
+│   │   │   │   │   │   │   └── compliancePathChoiceTestUtils.tsx
 │   │   │   │   │   │   ├── compliancePath
 │   │   │   │   │   │   │   ├── CompliancePathOption.module.scss
 │   │   │   │   │   │   │   ├── CompliancePathOption.tsx
@@ -1262,9 +1305,10 @@
 │   │   │   │   │   │   │   ├── CompliancePathReadOnlyAlert.tsx
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.module.scss
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
-│   │   │   │   │   │   │   └── __tests__
-│   │   │   │   │   │   │       ├── CompliancePathOptions.test.tsx
-│   │   │   │   │   │   │       └── DeclarationSuccessBanner.test.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── CompliancePathOptions.test.tsx
+│   │   │   │   │   │   │   │   └── DeclarationSuccessBanner.test.tsx
+│   │   │   │   │   │   │   └── useCompliancePathScreen.ts
 │   │   │   │   │   │   ├── formalNotice
 │   │   │   │   │   │   │   ├── FormalNoticeForm.tsx
 │   │   │   │   │   │   │   ├── FormalNoticePage.tsx
@@ -1286,6 +1330,7 @@
 │   │   │   │   │   │   ├── secondDeclaration
 │   │   │   │   │   │   │   ├── ReferencePeriodPicker.module.scss
 │   │   │   │   │   │   │   ├── ReferencePeriodPicker.tsx
+│   │   │   │   │   │   │   ├── SecondDeclarationNextSteps.tsx
 │   │   │   │   │   │   │   ├── SecondDeclarationStep1Info.module.scss
 │   │   │   │   │   │   │   ├── SecondDeclarationStep1Info.tsx
 │   │   │   │   │   │   │   ├── SecondDeclarationStep2Form.tsx
@@ -1310,7 +1355,6 @@
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── step4
 │   │   │   │   │   │   │   ├── CoherenceNote.tsx
-│   │   │   │   │   │   │   ├── QuartileInterpretationCallout.tsx
 │   │   │   │   │   │   │   ├── QuartileTable.tsx
 │   │   │   │   │   │   │   ├── QuartileTableRow.tsx
 │   │   │   │   │   │   │   ├── __tests__
@@ -1347,16 +1391,18 @@
 │   │   │   │   │   │       ├── GapColumn.tsx
 │   │   │   │   │   │       ├── GapSideBySide.tsx
 │   │   │   │   │   │       ├── IndicatorSections.tsx
+│   │   │   │   │   │       ├── NextStepsSection.module.scss
+│   │   │   │   │   │       ├── NextStepsSection.tsx
 │   │   │   │   │   │       ├── QuartileColumn.tsx
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   ├── GapBadge.test.tsx
 │   │   │   │   │   │       │   ├── IndicatorSections.test.tsx
+│   │   │   │   │   │       │   ├── NextStepsSection.test.tsx
 │   │   │   │   │   │       │   └── QuartileColumn.test.tsx
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       └── parseStep5Categories.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── declaration-representation
-│   │   │   │   │   ├── Confirmation.module.scss
 │   │   │   │   │   ├── Confirmation.tsx
 │   │   │   │   │   ├── DeclarationLayout.tsx
 │   │   │   │   │   ├── RepresentationConsultation.module.scss
@@ -1382,6 +1428,7 @@
 │   │   │   │   │   │   ├── fixtures.ts
 │   │   │   │   │   │   ├── modalQueries.ts
 │   │   │   │   │   │   ├── representationLockHarness.tsx
+│   │   │   │   │   │   ├── resumeStep.test.ts
 │   │   │   │   │   │   ├── schemas.draft.test.ts
 │   │   │   │   │   │   ├── schemas.executives.test.ts
 │   │   │   │   │   │   ├── schemas.members.test.ts
@@ -1391,6 +1438,7 @@
 │   │   │   │   │   │   ├── schemas.submit.test.ts
 │   │   │   │   │   │   └── steps.test.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── resumeStep.ts
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── ComplianceBadge.tsx
@@ -1419,6 +1467,7 @@
 │   │   │   │   │   │   │   ├── RepresentationLockNotice.tsx
 │   │   │   │   │   │   │   ├── RepresentationLockProvider.tsx
 │   │   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │   │       ├── RepresentationLockNotice.test.tsx
 │   │   │   │   │   │   │       └── RepresentationLockProvider.test.tsx
 │   │   │   │   │   │   ├── reviewSummary.ts
 │   │   │   │   │   │   └── submittedDraft.ts
@@ -1456,30 +1505,34 @@
 │   │   │   │   │   ├── eventDisplay.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── declarationPdf
+│   │   │   │   │   ├── CseOpinionPdfDocument.tsx
 │   │   │   │   │   ├── DeclarationPdfDocument.tsx
 │   │   │   │   │   ├── DownloadDeclarationPdfButton.tsx
 │   │   │   │   │   ├── JointEvaluationPdfDocument.tsx
 │   │   │   │   │   ├── PrefillPdfDocument.tsx
 │   │   │   │   │   ├── RepresentationPdfDocument.tsx
-│   │   │   │   │   ├── TransmittedPdfDocument.tsx
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── CseOpinionPdfDocument.test.tsx
+│   │   │   │   │   │   ├── CseOpinionPdfPagination.test.tsx
 │   │   │   │   │   │   ├── DeclarationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── DownloadDeclarationPdfButton.test.tsx
 │   │   │   │   │   │   ├── JointEvaluationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── PrefillPdfDocument.test.tsx
 │   │   │   │   │   │   ├── PrefillPdfPagination.test.tsx
 │   │   │   │   │   │   ├── RepresentationPdfDocument.test.tsx
-│   │   │   │   │   │   ├── TransmittedPdfDocument.test.tsx
+│   │   │   │   │   │   ├── buildCseOpinionRecapData.integration.test.ts
+│   │   │   │   │   │   ├── buildCseOpinionRecapData.test.ts
 │   │   │   │   │   │   ├── buildJointEvaluationRecapData.integration.test.ts
 │   │   │   │   │   │   ├── buildJointEvaluationRecapData.test.ts
 │   │   │   │   │   │   ├── buildPdfData.test.ts
 │   │   │   │   │   │   ├── buildPrefillPdfData.test.ts
 │   │   │   │   │   │   ├── buildRepresentationPdfData.integration.test.ts
 │   │   │   │   │   │   ├── buildRepresentationPdfData.test.ts
-│   │   │   │   │   │   ├── buildTransmittedPdfData.test.ts
 │   │   │   │   │   │   ├── formatCsePresence.test.ts
 │   │   │   │   │   │   ├── formatNaf.test.ts
 │   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   ├── pdfDocumentFixtures.tsx
+│   │   │   │   │   │   │   ├── pdfInspection.ts
 │   │   │   │   │   │   │   ├── pdfTextStream.ts
 │   │   │   │   │   │   │   ├── prefillFixtures.ts
 │   │   │   │   │   │   │   └── registerPdfFonts.ts
@@ -1487,20 +1540,23 @@
 │   │   │   │   │   │   ├── pdfAccentRendering.test.tsx
 │   │   │   │   │   │   ├── pdfCategoryPagination.test.tsx
 │   │   │   │   │   │   ├── pdfFontsRegistration.test.ts
-│   │   │   │   │   │   └── pdfHyphenation.test.tsx
+│   │   │   │   │   │   ├── pdfHyphenation.test.tsx
+│   │   │   │   │   │   ├── representationPdfFilename.test.ts
+│   │   │   │   │   │   └── taggedPdfDocuments.test.tsx
+│   │   │   │   │   ├── buildCseOpinionRecapData.ts
 │   │   │   │   │   ├── buildJointEvaluationRecapData.ts
 │   │   │   │   │   ├── buildPdfData.ts
 │   │   │   │   │   ├── buildPrefillPdfData.ts
 │   │   │   │   │   ├── buildRepresentationPdfData.ts
-│   │   │   │   │   ├── buildTransmittedPdfData.ts
 │   │   │   │   │   ├── formatCsePresence.ts
 │   │   │   │   │   ├── formatNaf.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── jointEvaluationPdfFilename.ts
 │   │   │   │   │   ├── pdfFonts.ts
-│   │   │   │   │   ├── pdfStyles.ts
 │   │   │   │   │   ├── prefillPdfStyles.ts
 │   │   │   │   │   ├── recapPdfStyles.ts
+│   │   │   │   │   ├── representationPdfFilename.ts
+│   │   │   │   │   ├── representationPdfStyles.ts
 │   │   │   │   │   ├── sections
 │   │   │   │   │   │   ├── CategorySection.tsx
 │   │   │   │   │   │   ├── EgaproBanner.tsx
@@ -1525,6 +1581,17 @@
 │   │   │   │   │   │   ├── headings.tsx
 │   │   │   │   │   │   ├── tableParts.tsx
 │   │   │   │   │   │   └── tableWidths.ts
+│   │   │   │   │   ├── tagging
+│   │   │   │   │   │   ├── TaggedLayoutRenderer.ts
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── layoutNode.test.ts
+│   │   │   │   │   │   │   └── renderTaggedPdf.test.tsx
+│   │   │   │   │   │   ├── layoutNode.ts
+│   │   │   │   │   │   ├── pdfDocumentMetadata.ts
+│   │   │   │   │   │   ├── pdfLanguage.ts
+│   │   │   │   │   │   ├── pdfStructure.ts
+│   │   │   │   │   │   ├── reactPdfPdfkit.d.ts
+│   │   │   │   │   │   └── renderTaggedPdf.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── domain
 │   │   │   │   │   ├── __tests__
@@ -1548,14 +1615,17 @@
 │   │   │   │   │   │   ├── declarationSteps.test.ts
 │   │   │   │   │   │   ├── declarationTrajectory.test.ts
 │   │   │   │   │   │   ├── demarcheDecisionTable.test.ts
+│   │   │   │   │   │   ├── demarcheLifecycle.test.ts
 │   │   │   │   │   │   ├── demarcheRevisionAndStatus.test.ts
 │   │   │   │   │   │   ├── employeeCategoryRemuneration.test.ts
 │   │   │   │   │   │   ├── format.test.ts
 │   │   │   │   │   │   ├── formatLongDate.test.ts
 │   │   │   │   │   │   ├── gap.test.ts
 │   │   │   │   │   │   ├── gapHighFlags.test.ts
+│   │   │   │   │   │   ├── gapJustification.test.ts
 │   │   │   │   │   │   ├── gipWorkforce.test.ts
 │   │   │   │   │   │   ├── indicatorG.test.ts
+│   │   │   │   │   │   ├── nextStepsBlocks.test.ts
 │   │   │   │   │   │   ├── number.test.ts
 │   │   │   │   │   │   ├── percentage.test.ts
 │   │   │   │   │   │   ├── publicData.test.ts
@@ -1565,8 +1635,10 @@
 │   │   │   │   │   │   ├── representation.test.ts
 │   │   │   │   │   │   ├── siren.test.ts
 │   │   │   │   │   │   ├── submissionRate.test.ts
+│   │   │   │   │   │   ├── userMfa.test.ts
 │   │   │   │   │   │   ├── variablePay.test.ts
-│   │   │   │   │   │   └── workforce.test.ts
+│   │   │   │   │   │   ├── workforce.test.ts
+│   │   │   │   │   │   └── workforceObligations.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── adminMfa.ts
@@ -1589,12 +1661,15 @@
 │   │   │   │   │   │   ├── declarationStatus.ts
 │   │   │   │   │   │   ├── declarationSteps.ts
 │   │   │   │   │   │   ├── declarationTrajectory.ts
+│   │   │   │   │   │   ├── demarcheLifecycle.ts
 │   │   │   │   │   │   ├── employeeCategoryRemuneration.ts
 │   │   │   │   │   │   ├── format.ts
 │   │   │   │   │   │   ├── gap.ts
+│   │   │   │   │   │   ├── gapJustification.ts
 │   │   │   │   │   │   ├── gipWorkforce.ts
 │   │   │   │   │   │   ├── indicatorG.ts
 │   │   │   │   │   │   ├── naf.ts
+│   │   │   │   │   │   ├── nextStepsBlocks.ts
 │   │   │   │   │   │   ├── number.ts
 │   │   │   │   │   │   ├── percentage.ts
 │   │   │   │   │   │   ├── publicData.ts
@@ -1604,8 +1679,10 @@
 │   │   │   │   │   │   ├── representation.ts
 │   │   │   │   │   │   ├── siren.ts
 │   │   │   │   │   │   ├── submissionRate.ts
+│   │   │   │   │   │   ├── userMfa.ts
 │   │   │   │   │   │   ├── variablePay.ts
-│   │   │   │   │   │   └── workforce.ts
+│   │   │   │   │   │   ├── workforce.ts
+│   │   │   │   │   │   └── workforceObligations.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── error
 │   │   │   │   │   ├── ErrorArtwork.tsx
@@ -1614,13 +1691,15 @@
 │   │   │   │   │   ├── MaintenancePage.tsx
 │   │   │   │   │   ├── NotFoundPage.tsx
 │   │   │   │   │   ├── TooManyRequestsPage.tsx
+│   │   │   │   │   ├── UnderConstructionPage.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── ErrorArtwork.test.tsx
 │   │   │   │   │   │   ├── ErrorLayout.test.tsx
 │   │   │   │   │   │   ├── ErrorPage.test.tsx
 │   │   │   │   │   │   ├── MaintenancePage.test.tsx
 │   │   │   │   │   │   ├── NotFoundPage.test.tsx
-│   │   │   │   │   │   └── TooManyRequestsPage.test.tsx
+│   │   │   │   │   │   ├── TooManyRequestsPage.test.tsx
+│   │   │   │   │   │   └── UnderConstructionPage.test.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── export
 │   │   │   │   │   ├── SwaggerUI.tsx
@@ -1690,20 +1769,23 @@
 │   │   │   │   │   ├── HomeHero.module.scss
 │   │   │   │   │   ├── HomeHero.tsx
 │   │   │   │   │   ├── HomeNotice.tsx
-│   │   │   │   │   ├── HomePage.module.scss
+│   │   │   │   │   ├── HomeObligations.module.scss
+│   │   │   │   │   ├── HomeObligations.tsx
 │   │   │   │   │   ├── HomePage.tsx
-│   │   │   │   │   ├── HomePlaceholder.module.scss
-│   │   │   │   │   ├── HomePlaceholder.tsx
 │   │   │   │   │   ├── HomeSearch.module.scss
 │   │   │   │   │   ├── HomeSearch.tsx
+│   │   │   │   │   ├── HomeSearchForm.module.scss
 │   │   │   │   │   ├── HomeSearchForm.tsx
+│   │   │   │   │   ├── HomeWhyDeclare.module.scss
+│   │   │   │   │   ├── HomeWhyDeclare.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── HomeHero.test.tsx
 │   │   │   │   │   │   ├── HomeNotice.test.tsx
+│   │   │   │   │   │   ├── HomeObligations.test.tsx
 │   │   │   │   │   │   ├── HomePage.test.tsx
-│   │   │   │   │   │   ├── HomePlaceholder.test.tsx
 │   │   │   │   │   │   ├── HomeSearch.test.tsx
-│   │   │   │   │   │   └── HomeSearchForm.test.tsx
+│   │   │   │   │   │   ├── HomeSearchForm.test.tsx
+│   │   │   │   │   │   └── HomeWhyDeclare.test.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── joint-evaluation-view
 │   │   │   │   │   ├── JointEvaluationView.module.scss
@@ -1783,6 +1865,7 @@
 │   │   │   │   │   ├── MatomoOptOut.tsx
 │   │   │   │   │   ├── PrivacyPolicyPage
 │   │   │   │   │   │   ├── PrivacyCookies.tsx
+│   │   │   │   │   │   ├── PrivacyHostingGuarantees.tsx
 │   │   │   │   │   │   ├── PrivacyOverview.tsx
 │   │   │   │   │   │   ├── PrivacyRightsAndData.tsx
 │   │   │   │   │   │   └── index.tsx
@@ -1794,7 +1877,11 @@
 │   │   │   │   │   │   └── versions
 │   │   │   │   │   │       └── TermsOfUse20261012.tsx
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── AccessibilityPage.test.tsx
+│   │   │   │   │   │   ├── CookiesPage.test.tsx
 │   │   │   │   │   │   ├── MatomoOptOut.test.tsx
+│   │   │   │   │   │   ├── PrivacyPolicyPage.test.tsx
+│   │   │   │   │   │   ├── SitemapPage.test.tsx
 │   │   │   │   │   │   ├── TermsOfUsePage.test.tsx
 │   │   │   │   │   │   ├── TermsOfUseVersionHistory.test.tsx
 │   │   │   │   │   │   ├── robots.test.ts
@@ -1821,8 +1908,10 @@
 │   │   │   │   │   │   ├── LoginPage.test.tsx
 │   │   │   │   │   │   ├── LoginRoutePage.test.tsx
 │   │   │   │   │   │   ├── ProConnectButton.test.tsx
+│   │   │   │   │   │   ├── proConnectSignIn.test.ts
 │   │   │   │   │   │   └── sanitizeCallbackUrl.test.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── proConnectSignIn.ts
 │   │   │   │   │   ├── sanitizeCallbackUrl.ts
 │   │   │   │   │   └── schemas.ts
 │   │   │   │   ├── mail
@@ -1870,9 +1959,11 @@
 │   │   │   │   │   │   ├── CompanyDeclarationsPage.test.tsx
 │   │   │   │   │   │   ├── CompanyEditModal.test.tsx
 │   │   │   │   │   │   ├── CompanyInfoBanner.test.tsx
+│   │   │   │   │   │   ├── CompanyInfoBanner.titleColor.test.tsx
 │   │   │   │   │   │   ├── DeclarationLink.test.tsx
 │   │   │   │   │   │   ├── DeclarationProcessPanel.test.tsx
 │   │   │   │   │   │   ├── DeclarationStepLabel.test.ts
+│   │   │   │   │   │   ├── DeclarationsSection.deadlineCell.test.tsx
 │   │   │   │   │   │   ├── DeclarationsSection.test.tsx
 │   │   │   │   │   │   ├── DocumentsPanel.test.tsx
 │   │   │   │   │   │   ├── MissingInfoModal.refresh.test.tsx
@@ -1912,12 +2003,16 @@
 │   │   │   │   ├── profile
 │   │   │   │   │   ├── ProfileModal.module.scss
 │   │   │   │   │   ├── ProfileModal.tsx
+│   │   │   │   │   ├── ProfileModalActions.tsx
+│   │   │   │   │   ├── ProfileReviewStep.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── ProfileModal.test.tsx
 │   │   │   │   │   │   ├── phone.test.ts
+│   │   │   │   │   │   ├── profileChanges.test.ts
 │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── phone.ts
+│   │   │   │   │   ├── profileChanges.ts
 │   │   │   │   │   └── schemas.ts
 │   │   │   │   ├── public-api
 │   │   │   │   │   ├── __tests__
@@ -1990,6 +2085,7 @@
 │   │   │   │   │       └── stepDomain.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── CampaignRateTileStates.tsx
+│   │   │   │   │   ├── ChangesTable.tsx
 │   │   │   │   │   ├── CompanySizeFilter.tsx
 │   │   │   │   │   ├── DataDetailsAccordion.tsx
 │   │   │   │   │   ├── DemarcheConfirmation.module.scss
@@ -2011,13 +2107,17 @@
 │   │   │   │   │   ├── KpiBadge.tsx
 │   │   │   │   │   ├── MultiSelectField.module.scss
 │   │   │   │   │   ├── MultiSelectField.tsx
+│   │   │   │   │   ├── Pagination.module.scss
 │   │   │   │   │   ├── Pagination.tsx
 │   │   │   │   │   ├── PhoneField.tsx
+│   │   │   │   │   ├── ResultsPublicationNotice.tsx
+│   │   │   │   │   ├── SelectedFilesTable.tsx
 │   │   │   │   │   ├── SubmitModal.tsx
 │   │   │   │   │   ├── TooltipButton.module.scss
 │   │   │   │   │   ├── TooltipButton.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── CampaignRateTileStates.test.tsx
+│   │   │   │   │   │   ├── ChangesTable.test.tsx
 │   │   │   │   │   │   ├── CompanySizeFilter.test.tsx
 │   │   │   │   │   │   ├── DemarcheConfirmation.test.tsx
 │   │   │   │   │   │   ├── DownloadCard.test.tsx
@@ -2030,6 +2130,8 @@
 │   │   │   │   │   │   ├── KpiBadge.test.tsx
 │   │   │   │   │   │   ├── MultiSelectField.test.tsx
 │   │   │   │   │   │   ├── Pagination.test.tsx
+│   │   │   │   │   │   ├── ResultsPublicationNotice.test.tsx
+│   │   │   │   │   │   ├── composeDescribedBy.test.ts
 │   │   │   │   │   │   ├── demarcheDocuments.test.ts
 │   │   │   │   │   │   ├── documentSubtitle.test.ts
 │   │   │   │   │   │   ├── fileNameValidation.test.ts
@@ -2041,6 +2143,7 @@
 │   │   │   │   │   │   ├── useFileUploadForm.test.tsx
 │   │   │   │   │   │   ├── useSortableTable.test.tsx
 │   │   │   │   │   │   └── useZodForm.test.ts
+│   │   │   │   │   ├── composeDescribedBy.ts
 │   │   │   │   │   ├── demarcheDocuments.ts
 │   │   │   │   │   ├── documentSubtitle.ts
 │   │   │   │   │   ├── fileNameValidation.ts
@@ -2082,6 +2185,7 @@
 │   │   │   │   │   │   │   ├── adminDeclarations.getRecap.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.listYears.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.releaseLock.test.ts
+│   │   │   │   │   │   │   ├── adminDeclarations.search.integration.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.search.test.ts
 │   │   │   │   │   │   │   ├── adminReferents.test.ts
 │   │   │   │   │   │   │   ├── adminSettings.integration.test.ts
@@ -2102,6 +2206,7 @@
 │   │   │   │   │   │   │   ├── declaration.compliancePreconditions.integration.test.ts
 │   │   │   │   │   │   │   ├── declaration.employeeCategories.test.ts
 │   │   │   │   │   │   │   ├── declaration.firstDeclarationRace.integration.test.ts
+│   │   │   │   │   │   │   ├── declaration.gapJustification.integration.test.ts
 │   │   │   │   │   │   │   ├── declaration.impersonation.test.ts
 │   │   │   │   │   │   │   ├── declaration.saveCompliancePath.integration.test.ts
 │   │   │   │   │   │   │   ├── declaration.step4Loader.test.ts
@@ -2156,6 +2261,7 @@
 │   │   │   │   ├── audit
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── activityLog.test.ts
+│   │   │   │   │   │   ├── auditCleanupRetention.test.ts
 │   │   │   │   │   │   ├── auditCleanupScript.integration.test.ts
 │   │   │   │   │   │   ├── auditedReferentsRoute.integration.test.ts
 │   │   │   │   │   │   ├── cachedAuth.test.ts
@@ -2193,7 +2299,8 @@
 │   │   │   │   │   │   ├── proconnect-logout.test.ts
 │   │   │   │   │   │   ├── redirectTarget.test.ts
 │   │   │   │   │   │   ├── requestProvenance.test.ts
-│   │   │   │   │   │   └── sessionSiren.test.ts
+│   │   │   │   │   │   ├── sessionSiren.test.ts
+│   │   │   │   │   │   └── userMfaSignIn.test.ts
 │   │   │   │   │   ├── bearerToken.ts
 │   │   │   │   │   ├── companyAccess.ts
 │   │   │   │   │   ├── companyLink.ts
@@ -2271,6 +2378,7 @@
 │   │   │   │   └── services
 │   │   │   │       ├── __tests__
 │   │   │   │       │   ├── clamav.test.ts
+│   │   │   │       │   ├── cseRequiredContentTypes.integration.test.ts
 │   │   │   │       │   ├── cseRequiredContentTypes.prune.test.ts
 │   │   │   │       │   ├── cseRequirementSync.test.ts
 │   │   │   │       │   ├── declarationLockService.integration.test.ts
@@ -2286,6 +2394,7 @@
 │   │   │   │       │   ├── publicDeclarationsService.integration.test.ts
 │   │   │   │       │   ├── publicDeclarationsService.test.ts
 │   │   │   │       │   ├── publicExportCache.test.ts
+│   │   │   │       │   ├── representationDeclarationLockService.integration.test.ts
 │   │   │   │       │   ├── s3.test.ts
 │   │   │   │       │   ├── suit.test.ts
 │   │   │   │       │   ├── suitClient.test.ts
@@ -2430,11 +2539,17 @@
 │       │       └── transporter.ts
 │       ├── tsconfig.json
 │       └── vitest.config.ts
+├── patches
+│   └── recharts@3.10.1.patch
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scripts
 │   ├── a11y
-│   │   └── check-ultra11y-version.sh
+│   │   ├── check-ultra11y-version.sh
+│   │   └── check-ultra11y-version.test.sh
+│   ├── ai
+│   │   ├── sync-agent-config.mjs
+│   │   └── sync-agent-config.test.mjs
 │   ├── matomo-local
 │   │   ├── .secrets
 │   │   │   └── .gitkeep
@@ -2461,40 +2576,22 @@
 │   │       │   └── target.sql
 │   │       └── integration.sh
 │   ├── orchestration
-│   │   ├── agent_drilldown.sh
-│   │   ├── agent_status.sh
-│   │   ├── backfill_ticket_dates.sh
-│   │   ├── cache_gh.sh
 │   │   ├── check_review_replies.sh
-│   │   ├── cleanup_terminal_worktrees.sh
-│   │   ├── compute_cost.sh
 │   │   ├── create_linked_branch.sh
-│   │   ├── dispatch_plan.sh
-│   │   ├── e2e_port_pool.sh
-│   │   ├── e2e_port_pool.test.sh
 │   │   ├── ensure_epic_branch.sh
-│   │   ├── epic_loop.sh
-│   │   ├── epic_state.sh
 │   │   ├── force_pr_issue_link.sh
 │   │   ├── grille_scope.sh
-│   │   ├── log_event.sh
 │   │   ├── merge_validated_ticket.sh
 │   │   ├── open_epic_final_pr.sh
-│   │   ├── open_worktree.sh
-│   │   ├── plan_sprint.sh
-│   │   ├── process_tick_result.sh
 │   │   ├── rebase_epic_branch.sh
-│   │   ├── refresh_pr_link.sh
-│   │   ├── render_dashboard.sh
-│   │   ├── run_architect_rework.sh
-│   │   ├── run_doc_writer.sh
-│   │   ├── run_e2e_dev.sh
-│   │   ├── run_e2e_dev.test.sh
 │   │   ├── set_ticket_date.sh
 │   │   ├── set_ticket_size.sh
 │   │   ├── set_ticket_status.sh
-│   │   ├── sprint_velocity.sh
 │   │   └── wait_for_bot_reviews.sh
+│   ├── quality
+│   │   ├── check-patterns.sh
+│   │   ├── install-hooks.sh
+│   │   └── verify.sh
 │   ├── release
 │   │   ├── collect_release_issues.sh
 │   │   ├── publish_release_summary.sh
@@ -2502,4 +2599,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-393 directories, 2111 files
+381 directories, 2220 files

@@ -1,40 +1,35 @@
 {
   "url": "https://github.com/SocialGouv/egapro",
   "name": "egapro",
-  "description": "Plateforme gouvernementale de déclaration de l'index de l'égalité professionnelle femmes-hommes. Elle permet aux entreprises de mesurer et déclarer leurs écarts de rémunération et de gérer les avis du CSE conformément à la directive européenne.",
+  "description": "Plateforme gouvernementale permettant aux entreprises de déclarer leur index de l'égalité professionnelle femmes-hommes en application de la directive européenne.",
   "language": "TypeScript",
   "features": [
-    "Formulaires & Démarches",
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion documentaire & Fichiers",
-    "Tableaux & Affichage",
+    "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Administration & Backoffice"
+    "Tableaux & Affichage",
+    "Accessibilité & i18n"
   ],
-  "audience": "Professionnels et Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Next.js",
     "TypeScript",
     "PostgreSQL",
     "Drizzle ORM",
     "pnpm",
-    "DSFR",
     "Playwright",
-    "Vitest",
-    "Matomo",
-    "Minio",
-    "Valkey",
-    "APISIX"
+    "DSFR",
+    "ProConnect"
   ],
   "components": [
     "React / Next.js",
-    "TypeScript / JavaScript",
     "PostgreSQL & SQL",
+    "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Authentification (composant)",
     "CI/CD & Déploiement",
     "Tests",
     "ORM & Accès aux données"
@@ -49,14 +44,19 @@
     ]
   },
   "tests": [
-    "Vitest",
     "Playwright",
-    "Lighthouse"
+    "Lighthouse",
+    "ultra11y"
   ],
   "workflows": [
-    "GitHub Actions"
+    "ci.yaml",
+    "a11y.yaml",
+    "e2e.yaml",
+    "production.yaml",
+    "review-auto.yaml",
+    "lighthouse.yaml"
   ],
-  "lastActivity": "2026-10-20T00:00:00Z",
+  "lastActivity": "2025-10-08T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -65,10 +65,9 @@
     "React & Next.js",
     "TypeScript",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Design System & UI",
     "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
-    "Accessibilité"
+    "Accessibilité",
+    "Legal & Conformité"
   ]
 }
