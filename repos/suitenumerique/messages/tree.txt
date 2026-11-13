@@ -41,6 +41,7 @@
 │   ├── smoke-test-front
 │   ├── smoke-test-keycloak
 │   ├── test-keycloak
+│   ├── test-mta-in-py-e2e
 │   ├── update_app_cacert.sh
 │   └── update_openapi_schema
 ├── compose.yaml
@@ -359,7 +360,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (70 files)
+    │   │   │   │   └── test_*.py  (72 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
@@ -414,6 +415,7 @@
     │   │   │   │   ├── test_inbound_retry_backoff.py
     │   │   │   │   ├── test_inbound_spoofed_sender.py
     │   │   │   │   ├── test_inline_images.py
+    │   │   │   │   ├── test_mta_in_py_e2e.py
     │   │   │   │   ├── test_outbound.py
     │   │   │   │   ├── test_outbound_e2e.py
     │   │   │   │   ├── test_outbound_recipient_race.py
@@ -1884,6 +1886,7 @@
     │   │   ├── test_filenames_fuzz.py
     │   │   ├── test_helpers.py
     │   │   ├── test_helpers_fuzz.py
+    │   │   ├── test_hostile_input.py
     │   │   ├── test_message_fuzz.py
     │   │   ├── test_options.py
     │   │   ├── test_parser.py
@@ -2004,6 +2007,8 @@
     │   ├── .dockerignore
     │   ├── Dockerfile
     │   ├── Dockerfile.pymta
+    │   ├── LICENSE.aiosmtpd
+    │   ├── NOTICE
     │   ├── README.md
     │   ├── entrypoint.pymta.sh
     │   ├── entrypoint.sh
@@ -2021,33 +2026,52 @@
     │   │   └── pymta
     │   │       ├── __init__.py
     │   │       ├── address.py
+    │   │       ├── command.py
     │   │       ├── controller.py
     │   │       ├── handler.py
     │   │       ├── limits.py
     │   │       ├── logfmt.py
     │   │       ├── mda_async.py
     │   │       ├── metrics.py
+    │   │       ├── proxy_protocol.py
     │   │       ├── runtime.py
     │   │       ├── server.py
+    │   │       ├── session_log.py
     │   │       ├── settings.py
-    │   │       └── smtp_protocol.py
+    │   │       ├── smtp_protocol.py
+    │   │       └── wire.py
     │   ├── tests
     │   │   ├── conftest.py
+    │   │   ├── fuzzing.py
+    │   │   ├── harness.py
     │   │   ├── test_address.py
+    │   │   ├── test_address_fuzz.py
     │   │   ├── test_attachments.py
+    │   │   ├── test_command.py
+    │   │   ├── test_command_syntax.py
+    │   │   ├── test_connection.py
+    │   │   ├── test_corners.py
     │   │   ├── test_crisis_toggles.py
+    │   │   ├── test_data_phase.py
     │   │   ├── test_email_delivery.py
     │   │   ├── test_handler.py
-    │   │   ├── test_hardened_smtp.py
+    │   │   ├── test_hostile_peers.py
+    │   │   ├── test_known_defects.py
     │   │   ├── test_limits.py
+    │   │   ├── test_limits_fuzz.py
     │   │   ├── test_logfmt.py
     │   │   ├── test_mda_async.py
     │   │   ├── test_metrics.py
+    │   │   ├── test_protocol_fuzz.py
+    │   │   ├── test_proxy_header.py
+    │   │   ├── test_reclaim.py
     │   │   ├── test_security.py
     │   │   ├── test_server_config.py
     │   │   ├── test_settings.py
     │   │   ├── test_smtp_protocol.py
-    │   │   └── test_wire_fidelity.py
+    │   │   ├── test_wire.py
+    │   │   ├── test_wire_fidelity.py
+    │   │   └── test_wire_fuzz.py
     │   └── uv.lock
     └── socks-proxy
         ├── Dockerfile
@@ -2060,4 +2084,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-419 directories, 1873 files
+419 directories, 1899 files

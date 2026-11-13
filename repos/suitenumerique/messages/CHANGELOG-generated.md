@@ -1,32 +1,32 @@
-## Changelog : messages (30 derniers jours, au 11 novembre 2026)
+## Changelog : messages (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience mobile (iOS et Android) et une fiabilisation des processus d'importation de données (PST, IMAP, Google Drive). L'interface utilisateur a également été enrichie de nouveaux indicateurs visuels, notamment pour le suivi du stockage et la communication de messages de service.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de l'expérience mobile (iOS et Android), la gestion du stockage et le renforcement de la sécurité. Les utilisateurs bénéficient désormais de nouvelles jauges de stockage et de fonctionnalités de purge, tandis que l'importation de données historiques (PST et IMAP) a été considérablement fiabilisée. L'application mobile est également en phase de préparation pour sa soumission sur l'App Store.
 
 ### Évolutions fonctionnelles
-- **Expérience Mobile :**
-    - Amélioration de l'ergonomie : gestion optimisée du clavier sur iOS et Android, navigation par simple pression sur les dossiers/labels et barre d'outils de composition mieux positionnée.
-    - Sécurité et notifications : ajout de l'aperçu chiffré des notifications sur mobile et correction de l'affichage du badge de messages non lus.
-- **Gestion des données et imports :**
-    - Optimisation de l'importation de contacts et messages depuis Outlook (PST) et IMAP (notamment pour les sous-dossiers Orange).
-    - Amélioration de l'intégration Google Drive (détection de doublons par titre et déclaration de la taille des fichiers).
-- **Interface et UX :**
-    - Ajout de jauges de stockage pour les boîtes de réception et gestion de la purge des corbeilles/spams.
-    - Introduction de bannières informatives pour les messages de service et l'état des réponses automatiques.
-    - Pagination de la vue des métriques d'utilisation [#832].
-    - Corrections diverses sur la fenêtre de composition, l'envoi des pièces jointes et l'affichage des fils de discussion.
+- **Gestion du stockage :** Ajout d'une jauge de stockage et d'une logique de purge automatique pour la corbeille et les spams. Les boîtes mail sans quota sont désormais évaluées par rapport au quota de leur domaine.
+- **Expérience Mobile :** 
+    - Amélioration de l'interface sur iOS et Android (gestion du clavier, barre d'outils de composition, réponse au tap unique sur les dossiers).
+    - Déchiffrement des aperçus de notifications sur mobile pour une meilleure confidentialité.
+    - Préparation technique de l'application iOS pour la revue de l'App Store.
+- **Notifications :** Amélioration de la sécurité avec l'envoi de notifications push chiffrées et l'affichage des aperçus via les web push.
+- **Importation de données :** Amélioration de la fiabilité de l'importation des fichiers PST (Outlook) et des comptes IMAP (notamment Orange) pour une meilleure gestion des contacts, des dates et des structures de dossiers.
+- **Interface Utilisateur (Web) :** 
+    - Ajout de bannières pour signaler l'activation d'une réponse automatique ou un message de service.
+    - Pagination de la vue des métriques d'utilisation [#832](https://github.com/suitenumerique/messages/issues/832).
+    - Corrections diverses sur la fenêtre de composition et l'affichage des menus déroulants [#850](https://github.com/suitenumerique/messages/issues/850).
+- **Authentification (Keycloak) :** Intégration du thème `lst-dsfr` avec l'apparence ProConnect et ajout de nouvelles options de déploiement.
 
 ### Évolutions techniques
-- **Sécurité et Infrastructure :**
-    - Renforcement de la sécurité des notifications push via un chiffrement des données pour l'appareil.
-    - Mise à jour de l'environnement : passage à Python 3.14 [#821] et rafraîchissement des images Docker et des certificats CA [#829].
-    - Sécurisation de la gestion des paramètres sensibles via l'utilisation de `SecretFileValue`.
-- **Backend et Messagerie :**
-    - Améliorations du protocole SMTP : journalisation des sessions [#844] et support de parties locales d'adresses plus longues (#853).
-    - Ajout d'une commande d'exportation du corpus de spams vers un stockage objet.
-- **Frontend et Tests :**
-    - Refactoring du code frontend (utilisation de symboles privés JavaScript, gestion des tooltips via des portails).
-    - Amélioration de la stabilité des tests de bout en bout (E2E) sur la CI.
+- **Sécurité et Infrastructure :** 
+    - Mise à jour de Caddy [#859](https://github.com/suitenumerique/messages/issues/859) et rafraîchissement des images de base Docker et des certificats CA [#829](https://github.com/suitenumerique/messages/issues/829).
+    - Utilisation de valeurs sécurisées pour les paramètres sensibles.
+    - Amélioration de la santé du système (healthcheck) via l'utilisation de l'IP du conteneur [#822](https://github.com/suitenumerique/messages/issues/822).
+- **Backend & SMTP :** Refactorisation majeure du composant `pymta` pour renforcer la sécurité et la robustesse du code [#857](https://github.com/suitenumerique/messages/issues/857).
+- **CI/CD & Tests :** 
+    - Optimisation des pipelines de build Docker et de la publication des images (prévention des conflits de push concurrents).
+    - Amélioration de la stabilité des tests E2E (Playwright).
+- **Refactoring Frontend :** Modernisation du code TypeScript (utilisation des symboles privés JS) et optimisation du rendu des éléments d'interface (tooltips via portails).
 
 ### Autres changements
-- Mise à jour de la documentation technique, notamment le README [#839] et les instructions relatives aux paramètres d'intégration Google Drive.
+- **Documentation :** Mise à jour du README [#839](https://github.com/suitenumerique/messages/issues/839) et documentation des paramètres requis pour l'intégration Google Drive.

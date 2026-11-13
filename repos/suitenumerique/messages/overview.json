@@ -1,19 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Une plateforme de messagerie collaborative tout-en-un pour La Suite territoriale, permettant aux équipes de gérer des boîtes de réception partagées ou personnelles.",
+  "description": "Une boîte de réception collaborative tout-en-un pour La Suite territoriale. Cette plateforme de communication permet aux équipes de collaborer sur des boîtes mail partagées ou personnelles.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
+    "Collaboration & Workflow",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Collaboration & Workflow",
     "Intelligence Artificielle & NLP",
-    "Gestion des médias & Assets"
+    "Gestion des médias & Assets",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,12 +18,11 @@
     "Vite",
     "TanStack Router",
     "BlockNote.js",
-    "Postfix",
     "Keycloak",
-    "Celery",
-    "Redis",
     "PostgreSQL",
+    "Redis",
     "OpenSearch",
+    "Celery",
     "Capacitor"
   ],
   "components": [
@@ -37,26 +33,26 @@
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
     "Authentification (composant)",
-    "Webhooks & Événements",
-    "Microservices & Architecture"
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso",
-      "passkey"
+      "jwt",
+      "session",
+      "mfa"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Playwright (E2E), tests unitaires",
+  "tests": "Playwright (E2E)",
   "workflows": [
-    "Scalingo deployment",
-    "CI/CD"
+    "Docker build",
+    "CI image push"
   ],
-  "lastActivity": "2026-11-11T02:35:25+01:00",
-  "status": "active",
+  "lastActivity": "2026-11-12T23:53:27+01:00",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -65,8 +61,10 @@
     "Python",
     "TypeScript",
     "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Intelligence Artificielle & LLM"
+    "Intelligence Artificielle & LLM",
+    "Accessibilité"
   ]
 }
