@@ -21,6 +21,9 @@
 │   │   ├── carte-par-d-faut.md
 │   │   ├── creation_user_tdb
 │   │   └── feedback.md
+│   ├── actions
+│   │   └── notify-slack
+│   │       └── action.yml
 │   ├── pull_request_template.md
 │   └── workflows
 │       ├── _deploy.yml
@@ -50,11 +53,11 @@
 │   │   └── tasks
 │   │       └── files_copy.yml
 │   ├── docker-compose.production.yml
-│   ├── docker-compose.recette.yml
+│   ├── docker-compose.staging.yml
 │   ├── env.global.yml
 │   ├── env.local.yml
 │   ├── env.production.yml
-│   ├── env.recette.yml
+│   ├── env.staging.yml
 │   ├── files
 │   │   ├── configs
 │   │   │   ├── clamav
@@ -150,7 +153,8 @@
 │   │   │   │   ├── deca.ts
 │   │   │   │   ├── lba.test.ts
 │   │   │   │   ├── lba.ts
-│   │   │   │   └── opcoEp.ts
+│   │   │   │   ├── opcoEp.ts
+│   │   │   │   └── providerRequest.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── services
 │   │   │   │   ├── brevo
@@ -172,6 +176,7 @@
 │   │   │       ├── asyncUtils.test.ts
 │   │   │       ├── asyncUtils.ts
 │   │   │       ├── awsUtils.ts
+│   │   │       ├── circuitBreaker.ts
 │   │   │       ├── cryptoUtils.ts
 │   │   │       ├── esmUtils.ts
 │   │   │       ├── getStaticFilePath.ts
@@ -215,7 +220,10 @@
 │   │   │   ├── 20250919224512-csv-encoding.ts
 │   │   │   ├── 20251002113947-date-signature-contrat-null.ts
 │   │   │   ├── 20251022000543-remove-liste-diffusion-v1.ts
-│   │   │   └── 20260820130000-mailing-list-generation-timestamps.ts
+│   │   │   ├── 20260820130000-mailing-list-generation-timestamps.ts
+│   │   │   ├── 20260824090000-mailing-list-output-refinements.ts
+│   │   │   ├── 20260902120000-anonymized-deca-date-signature-contrat-null.ts
+│   │   │   └── 20260903100000-remove-lba-columns-uai-lieu-formation.ts
 │   │   ├── modules
 │   │   │   ├── actions
 │   │   │   │   ├── auth.actions.ts
@@ -226,7 +234,8 @@
 │   │   │   │   ├── persons.actions.ts
 │   │   │   │   ├── sessions.actions.ts
 │   │   │   │   ├── users.actions.ts
-│   │   │   │   └── validation.action.ts
+│   │   │   │   ├── validation.action.ts
+│   │   │   │   └── validationProviders.ts
 │   │   │   ├── jobs
 │   │   │   │   ├── anonymisation
 │   │   │   │   │   ├── anonymisation.deca.ts
@@ -252,6 +261,9 @@
 │   │   │   │   │   ├── hydrate-siretlist.ts
 │   │   │   │   │   └── verifyCompanyEmails.ts
 │   │   │   │   ├── mailing-list
+│   │   │   │   │   ├── bouncer-columns.test.ts
+│   │   │   │   │   ├── bouncer-columns.ts
+│   │   │   │   │   ├── bouncer-refresh.ts
 │   │   │   │   │   ├── exporter
 │   │   │   │   │   │   └── mailing-list-exporter.ts
 │   │   │   │   │   ├── generator
@@ -315,9 +327,16 @@
 │   │       │   ├── header.ejs
 │   │       │   └── signature.ejs
 │   │       ├── mailing_list_failure.mjml.ejs
+│   │       ├── mailing_list_refresh_available.mjml.ejs
 │   │       ├── mailing_list_success.mjml.ejs
 │   │       └── reset_password.mjml.ejs
 │   ├── tests
+│   │   ├── common
+│   │   │   ├── services
+│   │   │   │   └── mailer
+│   │   │   │       └── mailBouncer.test.ts
+│   │   │   └── utils
+│   │   │       └── circuitBreaker.test.ts
 │   │   ├── data
 │   │   │   ├── DECA_Extraction MIA-Fake.csv
 │   │   │   ├── akto.ts
@@ -325,21 +344,29 @@
 │   │   ├── globalSetup.ts
 │   │   ├── integration
 │   │   │   └── server.test.ts
+│   │   ├── migrations
+│   │   │   └── mailing-list-output-refinements.test.ts
 │   │   ├── modules
 │   │   │   └── jobs
 │   │   │       ├── bouncer
 │   │   │       │   └── retry-bouncer-errors.test.ts
 │   │   │       ├── db
 │   │   │       │   └── schemaValidation.test.ts
+│   │   │       ├── lba
+│   │   │       │   └── hydrate-datagouv.test.ts
 │   │   │       └── mailing-list
+│   │   │           ├── bouncer-refresh.test.ts
+│   │   │           ├── mailing-list-exporter.test.ts
 │   │   │           ├── mailing-list-generator.test.ts
 │   │   │           └── mailing-list.processor.test.ts
 │   │   ├── routes
 │   │   │   ├── auth.route.test.ts
 │   │   │   ├── organisations.route.test.ts
-│   │   │   └── users.route.test.ts
+│   │   │   ├── users.route.test.ts
+│   │   │   └── validation.sentry.test.ts
 │   │   ├── setup.ts
 │   │   └── utils
+│   │       ├── mailing-list.test.utils.ts
 │   │       ├── mocks
 │   │       │   ├── akto.mock.ts
 │   │       │   └── opcoEp.mock.ts
@@ -581,6 +608,11 @@
 │   │   │   ├── components
 │   │   │   │   └── PolitiqueConfidentialite.tsx
 │   │   │   └── page.tsx
+│   │   ├── proxy
+│   │   │   └── api
+│   │   │       └── event
+│   │   │           ├── route.test.ts
+│   │   │           └── route.ts
 │   │   ├── sentry
 │   │   │   └── page.tsx
 │   │   ├── support
@@ -602,6 +634,7 @@
 │   │       └── validation
 │   │           └── page.tsx
 │   ├── components
+│   │   ├── Redirect.tsx
 │   │   ├── SearchBar.tsx
 │   │   ├── connexion
 │   │   │   ├── ConnexionComponent.tsx
@@ -687,4 +720,4 @@
 │       ├── date.utils.ts
 │       └── query.utils.ts
 └── vitest.config.ts
-186 directories, 503 files
+197 directories, 525 files

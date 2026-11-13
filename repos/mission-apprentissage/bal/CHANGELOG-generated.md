@@ -1,12 +1,16 @@
-## Changelog : bal (30 derniers jours, au 22 août 2026)
+## Changelog : bal (30 derniers jours, au 11 novembre 2026)
 
 ### Résumé
-Ce mois-ci, BAL a amélioré l'expérience de gestion des listes de diffusion en offrant un meilleur suivi de l'avancement et des notifications automatiques par email. Le projet a également bénéficié d'une modernisation majeure de ses outils de développement et d'un renforcement de sa sécurité.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité du système et la modernisation de l'infrastructure, notamment avec la transition vers un nouvel environnement de staging. Une amélioration concernant la gestion des mots de passe a également été déployée.
 
 ### Évolutions fonctionnelles
-- **Gestion des listes de diffusion** : ajout d'un indicateur d'avancement sur la page de gestion [#535](https://github.com/mission-apprentissage/bal/pull/535) et mise en place de notifications par email à la fin du traitement des listes [#533](https://github.com/mission-apprentissage/bal/pull/533).
+- Amélioration de la gestion des mots de passe [#568](https://github.com/mission-apprentissage/bal/pull/568)
 
 ### Évolutions techniques
-- **Modernisation de la stack technique** : montée de version vers TypeScript 7 et Next.js 16.3, et migration de l'outillage de linting/formatage vers Biome [#4962](https://github.com/mission-apprentissage/bal/pull/4962).
-- **Sécurité et maintenance** : correction d'une vulnérabilité critique (CVE) sur Vitest [#530](https://github.com/mission-apprentissage/bal/pull/530) et mise à jour de l'image Docker Metabase [#531](https://github.com/mission-apprentissage/bal/pull/531).
-- **CI/CD et déploiement** : correction du processus de publication de l'image UI de production lors des releases [#537](https://github.com/mission-apprentissage/bal/pull/537).
+- **Sécurité** :
+    - Mise à jour de Node.js (versions 26.12.1 et 26.13.1) pour intégrer les correctifs de sécurité d'octobre et novembre [#565](https://github.com/mission-apprentissage/bal/pull/565), [#569](https://github.com/mission-apprentissage/bal/pull/569).
+    - Application des correctifs de sécurité pour Next.js [#562](https://github.com/mission-apprentissage/bal/pull/562).
+    - Renforcement de la sécurité par la suppression des secrets GitHub [#561](https://github.com/mission-apprentissage/bal/pull/561).
+- **Infrastructure** :
+    - Migration de l'environnement de recette vers un environnement de staging [#563](https://github.com/mission-apprentissage/bal/pull/563), [#564](https://github.com/mission-apprentissage/bal/pull/564).
+    - Optimisation de la configuration Docker, incluant la suppression de la génération automatique du fichier `docker-compose.yml` [#567](https://github.com/mission-apprentissage/bal/pull/567) et la mise à jour de l'image Metabase [#566](https://github.com/mission-apprentissage/bal/pull/566).
