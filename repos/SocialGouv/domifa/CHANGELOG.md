@@ -1,3 +1,50 @@
+# [2.294.0](https://github.com/SocialGouv/domifa/compare/v2.293.1...v2.294.0) (2026-11-13)
+
+
+### Features
+
+* **backend:** let the DGCS manage DREETS and DDETS accounts of every region ([6e9964c](https://github.com/SocialGouv/domifa/commit/6e9964c769262729f240bb1bc03c2a7e24027bb2))
+
+## [2.293.1](https://github.com/SocialGouv/domifa/compare/v2.293.0...v2.293.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* **frontend:** make contact form reset button explicit for RGAA 11.9 (MON-11.9) ([06bed2a](https://github.com/SocialGouv/domifa/commit/06bed2a7b72c6f512adde6d2200bf13a2dbd742b))
+
+# [2.293.0](https://github.com/SocialGouv/domifa/compare/v2.292.0...v2.293.0) (2026-11-12)
+
+
+### Bug Fixes
+
+* **frontend:** accessibility review ([5b6c853](https://github.com/SocialGouv/domifa/commit/5b6c85301c092460347de3838ff6e741c72f0bff))
+* **frontend:** accessibility review fixes ([253577b](https://github.com/SocialGouv/domifa/commit/253577be3a4757980bdcdc764aedf4f27d99b5d3))
+* **portail-usagers:** explicit back link label on history page ([564e017](https://github.com/SocialGouv/domifa/commit/564e017a23ca938556977777b90bfda2133c0fcd))
+
+
+### Features
+
+* **front:** review accessibility ([951c113](https://github.com/SocialGouv/domifa/commit/951c113c1e0a478941381e02da035d7857d67bb9))
+
+# [2.292.0](https://github.com/SocialGouv/domifa/compare/v2.291.2...v2.292.0) (2026-11-10)
+
+
+### Bug Fixes
+
+* **portail-stats:** adapt the deletion motif label to DREETS accounts ([979f1c9](https://github.com/SocialGouv/domifa/commit/979f1c947d4e2f73d81c13dab80399c641657b52))
+* **portail-stats:** use an explicit compare function when sorting territories ([5bdd677](https://github.com/SocialGouv/domifa/commit/5bdd677b7fdce7467fbde0500a33187b42bec2b4))
+
+
+### Features
+
+* **back:** adding constante for domains ([614cbcd](https://github.com/SocialGouv/domifa/commit/614cbcd25c8bc791ca4f18ce49f1f4e7234d11d3))
+* **back, stat:** manage ddets by drets ([bbd318c](https://github.com/SocialGouv/domifa/commit/bbd318c761d3e572be0a4d8aee8d532bbc0244e5))
+* **backend:** add drets accounts management ([e20460c](https://github.com/SocialGouv/domifa/commit/e20460cc5b0076bb08bdab4a999664bab3122661))
+* **backend:** let DREETS delete regional accounts and accept any .gouv.fr local part ([e813418](https://github.com/SocialGouv/domifa/commit/e8134185b4650c8ff1d3ec4aff8c36b88bcaa663))
+* **backend:** open guyane.gouv.fr and DRIHL developpement-durable.gouv.fr domains ([2018517](https://github.com/SocialGouv/domifa/commit/2018517a1c8e88b572340941c4c969d9a20a9776))
+* **portail-stats:** align page titles and sitemap with the new menu labels ([f04e257](https://github.com/SocialGouv/domifa/commit/f04e257192db23447b05da99f981d63ac350ba0d))
+* **portail-stats:** ask for the department before the email in DDETS invitation form ([0d83627](https://github.com/SocialGouv/domifa/commit/0d83627aab4e0771416e91e7505b5cff578f2dca))
+
 ## [2.291.2](https://github.com/SocialGouv/domifa/compare/v2.291.1...v2.291.2) (2026-11-06)
 
 

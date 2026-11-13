@@ -1,29 +1,30 @@
 {
   "url": "https://github.com/SocialGouv/domifa",
   "name": "domifa",
-  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
+  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et permettant aux personnes sans domicile stable d'accéder à leurs droits.",
   "language": "TypeScript",
   "features": [
-    "Gestion métier générale",
+    "Gestion des utilisateurs & Permissions",
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Gestion métier générale"
   ],
-  "audience": "Agents de l'Administration, Associations et Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "NestJS",
     "Angular",
     "PostgreSQL",
-    "Docker",
     "TypeORM",
+    "Docker",
+    "Pnpm",
+    "Lerna",
     "ClamAV",
-    "Brevo",
     "Sentry",
     "Matomo",
-    "Lerna",
-    "Pnpm"
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,24 +33,32 @@
     "Docker & Conteneurs",
     "Node.js / NestJS",
     "Angular / Svelte / Autres SPA",
+    "Documentation & Schémas",
     "CI/CD & Déploiement",
-    "ORM & Accès aux données"
+    "Tests"
   ],
-  "tests": "Tests unitaires pour le frontend, le backend et le portail usagers, ainsi que des tests d'intégration pour le backend.",
+  "auth": {
+    "methods": [
+      "email-password",
+      "session"
+    ]
+  },
+  "tests": "Tests unitaires (Frontend, Backend) et tests d'intégration (Backend)",
   "workflows": [
     "GitLab CI/CD"
   ],
-  "lastActivity": "2026-11-06T00:00:00Z",
+  "lastActivity": "2026-11-13T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Docker & Conteneurs",
+    "Angular, Svelte & autres SPA",
+    "Node.js, NestJS & Express",
     "Bases de données SQL",
-    "Git & DevOps",
+    "Docker & Conteneurs",
     "Emploi, Social & Logement",
-    "Sécurité & Auth"
+    "Accessibilité"
   ]
 }

@@ -1,36 +1,32 @@
-## Changelog : domifa (30 derniers jours, au 06/11/2026)
+## Changelog : domifa (30 derniers jours, au 13 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un renforcement significatif de la sécurité des données et une amélioration de l'expérience de gestion. Les principales évolutions concernent l'intégration systématique de scans antivirus sur les fichiers importés, le déploiement d'un "mode support" pour faciliter l'assistance technique sans risque de modification accidentelle, et la restauration de certaines capacités d'édition de profils pour les agents et les facteurs.
+Ce mois-ci, Domifa a franchi des étapes clés pour renforcer la gestion administrative et l'accessibilité. Les capacités de gestion des comptes pour les DREETS et DDETS ont été étendues, et une mise en conformité majeure avec les normes d'accessibilité (RGAA) a été réalisée. L'introduction d'un nouveau "mode support" permet désormais aux administrateurs d'assister les utilisateurs plus efficacement, tandis que la sécurité a été considérablement renforcée par l'intégration systématique d'un antivirus sur tous les fichiers importés.
 
 ### Évolutions fonctionnelles
-- **Gestion des usagers :**
-    - Restauration de la possibilité pour les agents et les facteurs de modifier les coordonnées (téléphone et email) des usagers.
-    - Amélioration de la précision des résultats de recherche pour les usagers ([#4341](https://github.com/SocialGouv/domifa/pull/4341)).
-    - Mise en place d'une synchronisation automatique de la liste des usagers avec le serveur lors du retour sur l'onglet.
-- **Interface et navigation :**
-    - Ajout de menus déroulants de sélection de portail sur les pages de connexion (Admin, Stats, Usagers).
-    - Amélioration de la navigation dans les pages d'historique et mise à jour des onglets.
-    - Ajout d'un avis de maintenance programmé pour le 19 novembre sur les différents portails.
-- **Formulaires :**
-    - Normalisation automatique des noms et prénoms lors de la saisie.
-    - Affichage explicite des erreurs de scan antivirus sur le formulaire de contact.
+- **Gestion administrative et comptes**
+  - Extension des droits de la DGCS pour la gestion des comptes DREETS et DDETS de chaque région [#4346](https://github.com/SocialGouv/domifa/pull/4346).
+  - Ouverture de l'enregistrement aux domaines `.gouv.fr` spécifiques (Guyane, DRIHL).
+  - Amélioration de la gestion des droits : les agents et facteurs peuvent à nouveau modifier les coordonnées (téléphone, email) des usagers.
+  - Optimisation du formulaire d'invitation DDETS (demande du département avant l'email).
+- **Accessibilité (RGAA)**
+  - Mise en conformité globale suite aux audits d'accessibilité : correction des labels de liens, des boutons de réinitialisation de formulaire et amélioration de la navigation.
+- **Expérience utilisateur (UX)**
+  - **Mode Support :** Introduction d'un mode dédié permettant d'assister les usagers en rendant les formulaires sensibles (SMS, paramètres) en lecture seule pour éviter les erreurs de manipulation [#4323](https://github.com/SocialGouv/domifa/pull/4323).
+  - **Navigation :** Ajout d'un menu déroulant de sélection de portail sur les pages de connexion pour faciliter l'accès aux différents services.
+  - **Information :** Mise en place d'un système d'avis de maintenance pour informer les utilisateurs des interruptions de service prévues.
 
 ### Évolutions techniques
-- **Sécurité et Antivirus :**
-    - Intégration de ClamAV pour le scan systématique des fichiers lors de l'import d'usagers, des pièces jointes du support et des formulaires de contact.
-    - Renforcement de la validation des types de fichiers avant scan et gestion robuste des erreurs de téléchargement.
-    - Amélioration de la politique de sécurité du contenu (CSP) via le bundling des configurations DSFR.
-- **Mode Support :**
-    - Implémentation d'un mode support complet permettant de consulter l'interface en lecture seule (désactivation des formulaires, des boutons d'export et de saisie) pour sécuriser les sessions d'assistance.
-- **Architecture et Données :**
-    - Migration des identifiants des ayants droit vers le format UUID v7 pour une meilleure sécurité et performance.
-    - Durcissement des endpoints API (usagers) et optimisation du parsing des identifiants (integers).
-    - Optimisation de la logique de synchronisation (`lastSync`) pour garantir l'intégrité des données entre le client et le serveur.
-- **Infrastructure et CI/CD :**
-    - Mise à jour de l'environnement vers Node.js 24.
-    - Optimisation des images de runtime et des pipelines GitLab CI/CD.
+- **Sécurité et protection des données**
+  - **Antivirus :** Intégration systématique de ClamAV pour scanner tous les fichiers importés (fichiers usagers, pièces jointes du support de contact) avant traitement.
+  - **Durcissement (Hardening) :** Renforcement de la sécurité des points de terminaison (endpoints) usagers et de la validation des données (limitation de la taille des fichiers et des champs texte).
+  - **CSP :** Optimisation de la politique de sécurité du contenu (CSP) via le déplacement de la configuration DSFR dans un script groupé.
+- **Infrastructure et Backend**
+  - **Migration Node.js :** Passage à Node.js 24 sur l'ensemble des packages et de la chaîne CI/CD.
+  - **Gestion des identifiants :** Migration vers l'utilisation d'UUID v7 pour les bénéficiaires afin d'améliorer la sécurité et la performance.
+  - **Optimisation CI/CD :** Amélioration des images de runtime GitLab et des processus de rendu des bundles frontend.
+  - **Données :** Normalisation des noms/prénoms et amélioration de la gestion des migrations de données.
 
 ### Autres changements
-- **Écosystème :** Création d'un "marketplace" de plugins DomiFa pour le partage de compétences de sécurité.
-- **Contenu :** Mise à jour des éléments de la fenêtre contextuelle des actualités (news popup).
+- **Documentation :** Mise à jour des déclarations d'accessibilité suite aux derniers audits.
+- **Outils de développement :** Création d'un "marketplace" de plugins Domifa pour faciliter le partage de compétences liées à la sécurité.

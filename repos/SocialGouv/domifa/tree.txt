@@ -756,9 +756,11 @@
 │   │   │   │   │   │   │   ├── metabase-embed.helper.ts
 │   │   │   │   │   │   │   ├── national-stats.controller.spec.ts
 │   │   │   │   │   │   │   └── national-stats.controller.ts
-│   │   │   │   │   │   └── portail-admin-login
-│   │   │   │   │   │       ├── portail-admin-login.controller.spec.ts
-│   │   │   │   │   │       └── portail-admin-login.controller.ts
+│   │   │   │   │   │   ├── portail-admin-login
+│   │   │   │   │   │   │   ├── portail-admin-login.controller.spec.ts
+│   │   │   │   │   │   │   └── portail-admin-login.controller.ts
+│   │   │   │   │   │   └── region-users
+│   │   │   │   │   │       └── region-users.controller.ts
 │   │   │   │   │   ├── decorators
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── isSuperAdminEmailDecorator.ts
@@ -769,6 +771,7 @@
 │   │   │   │   │   │   ├── elevate-user-role.dto.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── patch-user-supervisor.dto.ts
+│   │   │   │   │   │   ├── register-region-user.dto.ts
 │   │   │   │   │   │   ├── register-user-structure-admin.dto.ts
 │   │   │   │   │   │   ├── register-user-supervisor.dto.ts
 │   │   │   │   │   │   ├── sessions-stats.dto.ts
@@ -792,6 +795,9 @@
 │   │   │   │   │   │   ├── check-territories.spec.ts
 │   │   │   │   │   │   ├── check-territories.ts
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── region-users
+│   │   │   │   │   │   │   ├── region-users.service.spec.ts
+│   │   │   │   │   │   │   └── region-users.service.ts
 │   │   │   │   │   │   ├── structure-decision
 │   │   │   │   │   │   │   ├── structure-decision.service.spec.ts
 │   │   │   │   │   │   │   └── structure-decision.service.ts
@@ -857,6 +863,8 @@
 │   │   │   │   │   │   ├── security-alert-email.service.ts
 │   │   │   │   │   │   └── security-monitoring.service.ts
 │   │   │   │   │   ├── templates
+│   │   │   │   │   │   ├── region-user-created-email.template.spec.ts
+│   │   │   │   │   │   ├── region-user-created-email.template.ts
 │   │   │   │   │   │   └── security-alert-email.template.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── index.ts
@@ -1737,9 +1745,25 @@
 │   │   │       │       └── index.ts
 │   │   │       ├── user-supervisor
 │   │   │       │   ├── constants
+│   │   │       │   │   ├── DDETS_EMAIL_DOMAINS.const.spec.ts
+│   │   │       │   │   ├── DDETS_EMAIL_DOMAINS.const.ts
+│   │   │       │   │   ├── DREETS_EMAIL_DOMAINS.const.spec.ts
+│   │   │       │   │   ├── DREETS_EMAIL_DOMAINS.const.ts
+│   │   │       │   │   ├── REGION_MANAGED_ROLES.const.ts
 │   │   │       │   │   ├── SUPER_ADMIN_EMAIL_DOMAINS.const.ts
 │   │   │       │   │   ├── USER_SUPERVISOR_ROLES_LABELS.const.ts
 │   │   │       │   │   └── index.ts
+│   │   │       │   ├── functions
+│   │   │       │   │   ├── getManagedRegionCodes.spec.ts
+│   │   │       │   │   ├── getManagedRegionCodes.ts
+│   │   │       │   │   ├── getRegionDepartmentCodes.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── isDdetsEmailForDepartment.spec.ts
+│   │   │       │   │   ├── isDdetsEmailForDepartment.ts
+│   │   │       │   │   ├── isDreetsEmailForRegion.spec.ts
+│   │   │       │   │   ├── isDreetsEmailForRegion.ts
+│   │   │       │   │   ├── isNominativeGouvEmail.spec.ts
+│   │   │       │   │   └── isNominativeGouvEmail.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── interfaces
 │   │   │       │   │   ├── UserSupervisor.interface.ts
@@ -1749,6 +1773,7 @@
 │   │   │       │       ├── PortailAdminAuthApiResponse.type.ts
 │   │   │       │       ├── PortailAdminAuthPayload.type.ts
 │   │   │       │       ├── PortailAdminUser.type.ts
+│   │   │       │       ├── RegionManagedUser.type.ts
 │   │   │       │       ├── UserSupervisorRole.type.ts
 │   │   │       │       └── index.ts
 │   │   │       └── user-usager
@@ -3569,6 +3594,22 @@
 │   │   │   │       │   │   └── otp.interceptor.ts
 │   │   │   │       │   └── services
 │   │   │   │       │       └── otp-prompt.service.ts
+│   │   │   │       ├── region-users
+│   │   │   │       │   ├── components
+│   │   │   │       │   │   ├── delete-department-user
+│   │   │   │       │   │   │   ├── delete-department-user.component.html
+│   │   │   │       │   │   │   └── delete-department-user.component.ts
+│   │   │   │       │   │   ├── region-users-list
+│   │   │   │       │   │   │   ├── region-users-list.component.html
+│   │   │   │       │   │   │   ├── region-users-list.component.scss
+│   │   │   │       │   │   │   └── region-users-list.component.ts
+│   │   │   │       │   │   └── register-region-user
+│   │   │   │       │   │       ├── register-region-user.component.html
+│   │   │   │       │   │       └── register-region-user.component.ts
+│   │   │   │       │   ├── region-users-routing.module.ts
+│   │   │   │       │   ├── region-users.module.ts
+│   │   │   │       │   └── services
+│   │   │   │       │       └── region-users.service.ts
 │   │   │   │       ├── shared
 │   │   │   │       │   ├── components
 │   │   │   │       │   │   ├── button
@@ -3944,4 +3985,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-910 directories, 3036 files
+919 directories, 3068 files
