@@ -1,39 +1,33 @@
-## Changelog : potentiel (30 derniers jours, au 29/09/2026)
+## Changelog : potentiel (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par l'intégration de plusieurs cycles de versions (3.87, 3.88 et 3.89), apportant des améliorations significatives à l'expérience utilisateur et de nouvelles capacités métier. Les évolutions majeures incluent l'ajout de statistiques publiques, la visualisation cartographique des sites de production et un renforcement de l'accessibilité. Le projet a également bénéficié de mises à jour de sécurité et d'une optimisation de l'infrastructure de stockage et d'authentification.
+Le projet a connu une phase d'activité intense marquée par l'intégration de plusieurs versions majeures (de la 3.92 à la 3.97). Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur (design responsive, nouveaux tableaux de bord), le renforcement de la sécurité (généralisation de ProConnect et de la 2FA) et une montée en version importante de l'infrastructure technique (PostgreSQL 18, Node 26, TypeScript 7).
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** :
-    - Ajout de statistiques publiques et amélioration de leur affichage ([#4575](https://github.com/MTES-MCT/potentiel/issues/4575)).
-    - Intégration d'une carte des sites de production sur la page projet ([#4634](https://github.com/MTES-MCT/potentiel/issues/4634)).
-    - Création de nouvelles tâches pour les attestations de constitution ([#4631](https://github.com/MTES-MCT/potentiel/issues/4631)).
-    - Possibilité d'importer et de modifier de nouveaux fournisseurs "Sol" ([#4564](https://github.com/MTES-MCT/potentiel/issues/4564)).
-    - Disponibilité de l'attestation d'actionnariat dans les documents du projet ([#4540](https://github.com/MTES-MCT/potentiel/issues/4540)).
-- **Expérience utilisateur et interface** :
-    - Amélioration du tri dans la liste des projets ([#4623](https://github.com/MTES-MCT/potentiel/issues/4623)).
-    - Optimisation des modèles d'emails (invitations et variables complexes) ([#4608](https://github.com/MTES-MCT/potentiel/issues/4608), [#4632](https://github.com/MTES-MCT/potentiel/issues/4632)).
-    - Mise à jour de la signalétique (badges de statut, renommage d'onglets, correction de typos) ([#4601](https://github.com/MTES-MCT/potentiel/issues/4601), [#4617](https://github.com/MTES-MCT/potentiel/issues/4617), [#4636](https://github.com/MTES-MCT/potentiel/issues/4636)).
-    - Amélioration de la clarté des messages (avis de rejet, erreurs de doublons) ([#4629](https://github.com/MTES-MCT/potentiel/issues/4629), [#4548](https://github.com/MTES-MCT/potentiel/issues/4548)).
-- **Accessibilité** :
-    - Optimisation de la navigation pour les lecteurs d'écran, notamment pour les liens "ouvrir dans un nouvel onglet" ([#4624](https://github.com/MTES-MCT/potentiel/issues/4624), [#4596](https://github.com/MTES-MCT/potentiel/issues/4596), [#4578](https://github.com/MTES-MCT/potentiel/issues/4578)).
-- **Gestion des droits et corrections** :
-    - Affinement des permissions sur l'historique ([#4607](https://github.com/MTES-MCT/potentiel/issues/4607)), les formulaires de modification ([#4589](https://github.com/MTES-MCT/potentiel/issues/4589)) et l'accès aux détails de changement de puissance ([#4590](https://github.com/MTES-MCT/potentiel/issues/4590)).
-    - Corrections de bugs sur les fonctions de recherche ([#4625](https://github.com/MTES-MCT/potentiel/issues/4625), [#4595](https://github.com/MTES-MCT/potentiel/issues/4595)), les filtres de listes ([#4620](https://github.com/MTES-MCT/potentiel/issues/4620)) et la validation des champs requis ([#4581](https://github.com/MTES-MCT/potentiel/issues/4581)).
+- **Nouvelles fonctionnalités et améliorations :**
+    - Mise en place d'une page vitrine pour Potentiel et les appels d'offres [#4740](https://github.com/MTES-MCT/potentiel/issues/4740).
+    - Amélioration du tableau de bord avec l'ajout d'une section "nouveautés" et l'affichage du nombre de demandes [#4691](https://github.com/MTES-MCT/potentiel/issues/4691), [#4698](https://github.com/MTES-MCT/potentiel/issues/4698).
+    - Évolutions de l'API EDF OA [#4706](https://github.com/MTES-MCT/potentiel/issues/4706) et intégration de données de raccordement sur la page Candidature [#4697](https://github.com/MTES-MCT/potentiel/issues/4697).
+    - Meilleure visibilité des autorités instructrices dans les listes et les détails des dossiers [#4791](https://github.com/MTES-MCT/potentiel/issues/4791), [#4762](https://github.com/MTES-MCT/potentiel/issues/4762).
+    - Affichage de la carte et ajout de sections de détails (CDC) pour les dossiers éliminés [#4708](https://github.com/MTES-MCT/potentiel/issues/4708), [#4707](https://github.com/MTES-MCT/potentiel/issues/4707).
+- **Gestion des processus et sécurité :**
+    - Généralisation de l'authentification ProConnect pour tous les partenaires, incluant l'obligation de la double authentification (2FA) [#4705](https://github.com/MTES-MCT/potentiel/issues/4705), [#4744](https://github.com/MTES-MCT/potentiel/issues/4744).
+    - Affinement des règles métier concernant les recours, les attestations de désignation et les mainlevées [#4774](https://github.com/MTES-MCT/potentiel/issues/4774), [#4716](https://github.com/MTES-MCT/potentiel/issues/4716), [#4719](https://github.com/MTES-MCT/potentiel/issues/4719).
+    - Gestion des délais pour la prolongation des phases d'essai [#4699](https://github.com/MTES-MCT/potentiel/issues/4699).
+- **Expérience utilisateur et corrections :**
+    - Optimisation de l'interface pour les mobiles et tablettes (responsive) [#4785](https://github.com/MTES-MCT/potentiel/issues/4785), [#4761](https://github.com/MTES-MCT/potentiel/issues/4761).
+    - Corrections sur l'affichage des listes (utilisateurs, GRD), des tâches et des événements en doublon [#4748](https://github.com/MTES-MCT/potentiel/issues/4748), [#4694](https://github.com/MTES-MCT/potentiel/issues/4694), [#4742](https://github.com/MTES-MCT/potentiel/issues/4742).
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
-    - Mise à jour de l'environnement de déploiement (passage à Node 24 pour la CI/CD) ([#4637](https://github.com/MTES-MCT/potentiel/issues/4637)).
-    - Évolutions sur le stockage et l'authentification (utilisation de nouveaux dépôts MinIO et mise à jour de Keycloak) ([#4638](https://github.com/MTES-MCT/potentiel/issues/4638), [#4591](https://github.com/MTES-MCT/potentiel/issues/4591), [#4609](https://github.com/MTES-MCT/potentiel/issues/4609), [#4551](https://github.com/MTES-MCT/potentiel/issues/4551)).
-- **Sécurité** :
-    - Implémentation de tags d'authentification pour le chiffrement de l'ID projet ([#4588](https://github.com/MTES-MCT/potentiel/issues/4588)).
-    - Mise à jour des correctifs de sécurité des packages ([#4568](https://github.com/MTES-MCT/potentiel/issues/4568)).
-- **Architecture et Performance** :
-    - Refactoring des templates de pages vers un système de sections ([#4557](https://github.com/MTES-MCT/potentiel/issues/4557)).
-    - Optimisation de la gestion des connexions et des projections PostgreSQL ([#4613](https://github.com/MTES-MCT/potentiel/issues/4613), [#4618](https://github.com/MTES-MCT/potentiel/issues/4618), [#4583](https://github.com/MTES-MCT/potentiel/issues/4583)).
-    - Intégration des releases 3.87, 3.88 et 3.89.
+- **Infrastructure et Environnement :**
+    - Migration de la base de données vers PostgreSQL 18 [#4760](https://github.com/MTES-MCT/potentiel/issues/4760).
+    - Mise à jour majeure des runtimes : passage à Node 26 [#4787](https://github.com/MTES-MCT/potentiel/issues/4787) et TypeScript 7 [#4789](https://github.com/MTES-MCT/potentiel/issues/4789).
+- **CI/CD et Sécurité :**
+    - Renforcement de la sécurité de la CI et mises à jour de sécurité Next.js [#4764](https://github.com/MTES-MCT/potentiel/issues/4764), [#4727](https://github.com/MTES-MCT/potentiel/issues/4727).
+    - Amélioration de la gestion des logs et de la surveillance (Sentry) [#4730](https://github.com/MTES-MCT/potentiel/issues/4730), [#4710](https://github.com/MTES-MCT/potentiel/issues/4710).
+- **Outils :**
+    - Amélioration de la CLI (gestion des stages, logging, suppression de subscriber) [#4776](https://github.com/MTES-MCT/potentiel/issues/4776), [#4778](https://github.com/MTES-MCT/potentiel/issues/4778).
 
 ### Autres changements
-- **Tests et Documentation** :
-    - Ajout de nouveaux fichiers de tests pour les API ([#4604](https://github.com/MTES-MCT/potentiel/issues/4604), [#4599](https://github.com/MTES-MCT/potentiel/issues/4599)).
-    - Mise à jour du Storybook ([#4537](https://github.com/MTES-MCT/potentiel/issues/4537)).
+- Documentation de l'authentification [#4717](https://github.com/MTES-MCT/potentiel/issues/4717).
+- Nettoyage du code (renommage de variables, suppression de typologies obsolètes et de feature flags) [#4777](https://github.com/MTES-MCT/potentiel/issues/4777), [#4763](https://github.com/MTES-MCT/potentiel/issues/4763), [#4734](https://github.com/MTES-MCT/potentiel/issues/4734).
