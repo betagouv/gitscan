@@ -1,29 +1,24 @@
-## Changelog : stt-form-filler (30 derniers jours, au 10 novembre 2026)
+## Changelog : stt-form-filler (30 derniers jours, au 10/11/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes importantes en termes de performance et de fiabilité. L'outil de remplissage vocal du formulaire MDPH bénéficie d'une interface utilisateur plus intuitive et de réglages plus précis. Parallèlement, une refonte majeure de l'infrastructure technique permet désormais une synthèse vocale beaucoup plus rapide et un déploiement automatisé et sécurisé.
+L'outil permet désormais de remplir la partie B du formulaire MDPH grâce à une interface vocale. Cette période a été marquée par une optimisation majeure de la réactivité de la synthèse vocale et une refonte complète de l'infrastructure de déploiement pour garantir une meilleure stabilité et performance sur les serveurs.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'interface utilisateur (UI/UX) :**
-    - Refonte de l'écran d'accueil « Avant de commencer ».
-    - Ajout d'un menu latéral permettant de visualiser et naviguer entre les questions d'une même étape.
-    - Intégration des réglages de la voix directement dans l'en-tête de la page.
-    - Amélioration de l'indicateur d'étapes pour une meilleure visibilité du progrès.
-- **Ergonomie et accessibilité :**
-    - Ajout du support de la barre d'espace pour déclencher la parole.
-- **Corrections :**
-    - Correction de la gestion des montants financiers pour conserver la précision des centimes (au lieu d'un arrondi à l'euro).
+- **Remplissage vocal** : Mise en place de la fonctionnalité principale permettant de compléter le formulaire MDPH (partie B) par la voix.
+- **Améliorations de l'interface (UI)** :
+    - Ajout d'un menu latéral pour naviguer entre les questions de l'étape en cours.
+    - Intégration des réglages de la voix directement dans l'en-tête.
+    - Refonte de l'écran d'introduction (« Avant de commencer ») et amélioration de l'indicateur d'étapes.
+- **Ergonomie (UX)** : Possibilité de déclencher la parole via la barre d'espace.
+- **Correction de calcul** : Les montants financiers conservent désormais leurs centimes au lieu d'être arrondis à l'euro près.
 
 ### Évolutions techniques
-- **Optimisation des performances :**
-    - Accélération massive de la synthèse vocale (Piper) : le temps de génération d'une phrase est passé de 2,7 s à 0,3 s grâce à une gestion optimisée des ressources CPU.
-    - Garantie d'une allocation de ressources CPU minimale pour éviter les ralentissements lors de la synthèse.
-- **Infrastructure et CI/CD :**
-    - Refonte complète du pipeline de déploiement : la construction des images Docker est désormais automatisée via GitHub Actions directement dans le cluster OVH.
-    - Sécurisation du processus de déploiement via l'utilisation de secrets scellés (kubeseal) et de jetons dédiés pour les dépôts privés.
-    - Mise en place d'un environnement de développement robuste sur la "fabrique" avec des sondes de santé (/healthz).
-- **Architecture logicielle :**
-    - Généralisation du support des modèles de langage (LLM) : l'application peut désormais utiliser n'importe quelle API compatible avec le standard OpenAI.
+- **Optimisation de la performance** : Réduction drastique du temps de synthèse vocale (Piper), passant de 2,7s à 0,3s par phrase, grâce à une gestion optimisée des ressources CPU du conteneur.
+- **Refonte de la CI/CD et du déploiement** :
+    - Automatisation de la construction des images Docker au sein du cluster OVH/GitHub Actions et poussée vers Harbor.
+    - Sécurisation des déploiements via le scellement des secrets (kubeseal) et l'utilisation de jetons dédiés pour les dépôts privés.
+    - Mise en place d'un environnement de développement complet sur la "fabrique" (Rancher, cluster OVH).
+- **Architecture IA** : Généralisation du fournisseur de LLM pour supporter n'importe quelle API compatible avec le standard OpenAI (Albert est utilisé par défaut).
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation incluant le fil d'Ariane, les pages légales et le détail des questions de suivi.
+- **Documentation** : Mise à jour de la documentation utilisateur incluant le nouveau parcours (fil d'Ariane, questions de suivi, pages légales).
