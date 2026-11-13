@@ -1,3 +1,31 @@
+## [1.134.1](https://github.com/SocialGouv/jardinmental/compare/v1.134.0...v1.134.1) (2026-11-05)
+
+
+### Bug Fixes
+
+* **api:** use real app build numbers to gate the renaming announcement ([b4a24fb](https://github.com/SocialGouv/jardinmental/commit/b4a24fbf399f32290de2ac3e536c3c9978abcb02))
+
+# [1.134.0](https://github.com/SocialGouv/jardinmental/compare/v1.133.0...v1.134.0) (2026-11-05)
+
+
+### Features
+
+* **api:** only show renaming announcement to legacy Jardin Mental builds ([9a5fa47](https://github.com/SocialGouv/jardinmental/commit/9a5fa47557ce9879d5e85de3f7373a3b2387761f))
+
+# [1.133.0](https://github.com/SocialGouv/jardinmental/compare/v1.132.0...v1.133.0) (2026-11-03)
+
+
+### Features
+
+* **api:** add store download link to renaming announcement ([3cb10e2](https://github.com/SocialGouv/jardinmental/commit/3cb10e26959aada2a8340592a52abdfec648771c))
+
+# [1.132.0](https://github.com/SocialGouv/jardinmental/compare/v1.131.0...v1.132.0) (2026-10-21)
+
+
+### Features
+
+* **api:** add in-app announcement for app renaming on /version endpoint ([cc408d5](https://github.com/SocialGouv/jardinmental/commit/cc408d5614f6b4d80e34634e2db0050e95345d74))
+
 # [1.131.0](https://github.com/SocialGouv/jardinmental/compare/v1.130.0...v1.131.0) (2026-02-23)
 
 

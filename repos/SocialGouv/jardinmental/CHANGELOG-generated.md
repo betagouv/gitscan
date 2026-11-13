@@ -1,27 +1,12 @@
-## Changelog : jardinmental (30 derniers jours)
+## Changelog : jardinmental (30 derniers jours, au 05/11/2026)
 
 ### Résumé
-Ce mois-ci, l'application Jardin Mental a bénéficié d'améliorations de la documentation, de corrections de bugs concernant l'affichage et le fonctionnement de certains écrans (sondages, outils de cohérence cardiaque), et d'une migration vers l'outil de gestion de paquets pnpm pour optimiser le processus de construction et de déploiement. Des ajustements ont également été apportés à l'interface utilisateur pour une meilleure expérience.
+Les récentes mises à jour se concentrent sur l'accompagnement des utilisateurs durant la phase de changement de nom de l'application. Un système d'annonce a été déployé pour informer les personnes utilisant encore l'ancienne version et les guider vers la mise à jour via un lien direct vers les boutiques d'applications.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage du panneau inférieur pour l'outil de cohérence cardiaque, permettant de le fermer par un geste de glissement.
-- Correction d'un bug empêchant l'ouverture correcte du sondage en cas de données manquantes.
-- Correction d'un problème d'affichage du label flottant dans les champs de saisie, qui était masqué par la bordure.
-- Modification du titre de retour de l'écran "Outil".
-- Ajout d'informations spécifiques pour le CHU Anger dans l'écran "ComityScreen".
-- Correction de l'affichage du texte dans le contexte des notes.
+- Mise en place d'une annonce intégrée informant les utilisateurs du changement de nom de l'application.
+- Ajout d'un lien de téléchargement vers les stores (App Store / Play Store) dans l'annonce pour faciliter la transition vers la nouvelle version.
 
 ### Évolutions techniques
-- Migration du build et des workflows CI/CD vers l'utilisation de pnpm, remplaçant `npx`.
-- Ajout de la configuration Babel et Jest pour les tests.
-- Ajout d'un fichier `.npmrc`.
-- Mise à jour de la configuration de Jest.
-- Ajout d'un script pour générer les fichiers Prisma après la construction.
-
-### Autres changements
-- Mise à jour de la documentation README avec des informations sur l'ajout de données de ressources, les instructions pour se connecter à l'API Docker avec k9s, et des précisions sur le processus de build.
-- Modification de l'adresse email utilisée pour les notifications.
-- Augmentation des numéros de version pour iOS et Android.
-- Ajout d'informations sur les propriétés des outils dans la documentation.
-- Correction de références à des fichiers inexistants dans le README.
-- Suppression d'un lien inutile dans le README.
+- Optimisation de la diffusion de l'annonce : celle-ci est désormais réservée exclusivement aux utilisateurs des anciennes versions de l'application.
+- Amélioration de la précision de la détection des versions en utilisant les numéros de build réels de l'application.
