@@ -1,24 +1,34 @@
-## Changelog : device-management (30 derniers jours, au 28 septembre 2026)
+## Changelog : device-management (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en maturité de la gestion des versions et de la communication avec les extensions. Le système permet désormais de définir une version de référence pour chaque plugin et d'envoyer des messages ciblés (annonces, sondages) aux utilisateurs. L'intégration avec LibreOffice a été grandement simplifiée, et de nouveaux outils de suivi de l'utilisation du parc (en version bêta) ont été introduits pour améliorer la supervision.
+Ce mois a été marqué par un renforcement significatif des capacités d'intelligence artificielle, notamment avec l'intégration du relais de "reranking" pour les extensions. Le projet a également bénéficié d'une refonte majeure de son système de déploiement pour garantir plus de stabilité, ainsi que de nouvelles options de configuration permettant de distribuer des liens et de gérer plus finement la sécurité des accès aux API locales.
 
 ### Évolutions fonctionnelles
-- **Gestion des versions par plugin** : Introduction d'une "version générale" pour chaque extension. L'administrateur peut désormais choisir quelle version est distribuée par défaut à l'ensemble des utilisateurs via l'interface d'administration [#40](https://github.com/IA-Generative/device-management/pull/40).
-- **Intégration native LibreOffice** : Mise en place d'un flux de catalogue dédié permettant à LibreOffice de détecter et de gérer les mises à jour de manière native [#4](https://github.com/IA-Generative/device-management/pull/4).
-- **Système de communications** : Déploiement d'un module permettant d'envoyer des annonces, alertes ou sondages aux extensions. Ces messages peuvent être ciblés par cohorte ou par version, et les clients peuvent désormais en accuser réception [#39](https://github.com/IA-Generative/device-management/pull/39).
-- **Suivi du parc (Bêta)** : Ajout de fonctionnalités d'exportation des données d'usage (agrégats et deltas) pour permettre une analyse plus fine de l'utilisation des extensions.
-- **Administration** : Amélioration de la fiche plugin permettant de renseigner directement l'identifiant spécifique à LibreOffice et ajout d'une section de débogage pour l'export manuel des données de suivi.
+- **Intelligence Artificielle :** Ajout du relais de services de "reranking" (POST `/llm/v1/rerank`) pour permettre aux extensions d'utiliser ces capacités ([#56](https://github.com/IA-Generative/device-management/issues/56), [#57](https://github.com/IA-Generative/device-management/issues/57)).
+- **Gestion des outils :** Mise en place d'un relais d'outils vers les services MirAI (REST et MCP) incluant la transmission de l'identité de l'utilisateur ([#123](https://github.com/IA-Generative/device-management/issues/123)).
+- **Configuration et UX :** 
+    - Distribution de liens vers des portails de recherche ou des communautés bêta via la configuration ([#84](https://github.com/IA-Generative/device-management/issues/84)).
+    - Gestion des origines d'API locales autorisées pour les extensions ([#60](https://github.com/IA-Generative/device-management/issues/60)).
+- **Corrections :**
+    - Résolution d'un problème de redirection (302) vers la page de connexion ([#126](https://github.com/IA-Generative/device-management/issues/126)).
+    - Correction du processus d'exportation de données pour s'assurer qu'il s'exécute via un worker et avec les secrets appropriés ([#109](https://github.com/IA-Generative/device-management/issues/109)).
+    - Correction d'erreurs sur les endpoints `/config` et `/catalog` lors de requêtes sans poste actif.
 
 ### Évolutions techniques
-- **Auto-documentation de l'image** : L'image Docker porte désormais son propre journal de bord. L'historique des versions est intégré et consultable via l'endpoint `/__version__`.
-- **Sécurité et intégrité des fichiers** :
-    - Correction d'un problème de cache : les binaires sont désormais systématiquement vérifiés via leur checksum avant d'être servis [#5](https://github.com/IA-Generative/device-management/pull/5).
-    - Renforcement de la sécurité des sessions d'administration (retrait des tokens sensibles des cookies).
-    - Sécurisation de la génération des flux XML (échappement des attributs) pour prévenir les vulnérabilités.
-- **Optimisation du catalogue** : Refactorisation du moteur de versioning pour utiliser un parseur unique et optimisation des requêtes de disponibilité des versions via PostgreSQL.
-- **Déploiement** : Automatisation de la déclaration de la version dans les images déployées pour éviter les décalages entre le code et l'image.
+- **Déploiement et Helm :** 
+    - Refonte complète du Helm Chart pour inclure le service `relay-assistant` et les modèles d'embeddings/rerank.
+    - Optimisation de l'ordre de synchronisation avec Argo CD (prérequis $\rightarrow$ migrations $\rightarrow$ pods).
+    - Ajustement des stratégies de mise à jour (Recreate) pour les composants API, Admin et Worker.
+- **Configuration système :** Introduction de la possibilité de surcharger les clés du fichier `config.json` directement via les valeurs du chart Helm (`DM_CONFIG_OVERRIDES`) ([#129](https://github.com/IA-Generative/device-management/issues/129)).
+- **Infrastructure et Observabilité :** 
+    - Mise à jour de la stack d'observabilité (Grafana 11.6 et Tempo 2.10) dans les manifestes Kubernetes ([#120](https://github.com/IA-Generative/device-management/issues/120)).
+    - Amélioration de la configuration du proxy Nginx (tunnel et profondeur de vérification SSL).
+    - Validation de la compatibilité avec PostgreSQL 18 via la CI ([#110](https://github.com/IA-Generative/device-management/issues/110)).
+- **CI/CD :** 
+    - Déploiement d'un nouveau pipeline de CI/CD (`fabnum-cicd` v0.25.3).
+    - Migration de l'environnement de CI vers Node 24.
+    - Durcissement des règles de fusion : la branche `main` n'accepte désormais que des Pull Requests provenant de `develop`.
 
 ### Autres changements
-- **Documentation** : Mise à jour majeure de la documentation destinée aux développeurs d'extensions (contrats de communication, sémantique des flux LibreOffice et gestion des versions).
-- **Tests** : Renforcement significatif de la couverture de tests, notamment sur les flux de mise à jour, la gestion des versions et les nouveaux contrats d'export de données.
+- **Automatisation :** Mise en place de `release-please` pour automatiser la gestion des versions et la génération du changelog en français.
+- **Qualité de code :** Standardisation de la longueur des en-têtes de commit à 120 caractères ([#92](https://github.com/IA-Generative/device-management/issues/92)).

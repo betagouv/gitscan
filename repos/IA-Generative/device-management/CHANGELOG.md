@@ -6,6 +6,54 @@ il ne porte ni détail d'infrastructure ni détail technique fin (ceux-là viven
 documentation). Historique reconstitué le 2026-09-28 depuis les commits, puis reformulé ; les versions
 suivantes seront tenues par release-please. Titres au format `## [X.Y.Z] - date`.
 
+## [0.10.2](https://github.com/IA-Generative/device-management/compare/v0.10.1...v0.10.2) (2026-11-11)
+
+
+### Corrections
+
+* **parc:** l'export ne tourne que dans le worker, « Exporter maintenant » délègue, jamais d'envoi sans secret ([#109](https://github.com/IA-Generative/device-management/issues/109)) ([f797c1f](https://github.com/IA-Generative/device-management/commit/f797c1f279dd4c64cd907350fc13209cc3a33c29))
+
+## [0.10.1](https://github.com/IA-Generative/device-management/compare/v0.10.0...v0.10.1) (2026-11-08)
+
+
+### Corrections
+
+* **ops:** relais nginx « non déployé » et sonde de la chaîne du relais par le proxy de sortie ([#97](https://github.com/IA-Generative/device-management/issues/97)) ([9a70bc5](https://github.com/IA-Generative/device-management/commit/9a70bc5fb85aef5a6e0d4d4791dd895aec42efdf))
+
+## [0.10.0](https://github.com/IA-Generative/device-management/compare/v0.9.23...v0.10.0) (2026-11-08)
+
+
+### Nouveautés
+
+* **config:** liens distribués aux applications (clé `links`) — portail de recherche et communauté bêta ([#84](https://github.com/IA-Generative/device-management/issues/84)) ([8ed937b](https://github.com/IA-Generative/device-management/commit/8ed937b2b75062a29f22ecd6af82221a947eb1ae))
+
+## [0.9.23](https://github.com/IA-Generative/device-management/compare/v0.9.22...v0.9.23) (2026-11-04)
+
+
+### Corrections
+
+* **db:** /config et /catalog ne tombent plus en erreur après quelques requêtes sans poste ([d7cd918](https://github.com/IA-Generative/device-management/commit/d7cd91802b55cc75186871d264720d8003a03511))
+* **helm:** ordre de synchronisation Argo CD — prérequis, puis migration, puis pods ([8f305e7](https://github.com/IA-Generative/device-management/commit/8f305e7f9f26eb39996b72fd07a4bdf638537421))
+* **helm:** stratégie Recreate sans le bloc rollingUpdate des valeurs par défaut (api, admin, worker) ([268dd89](https://github.com/IA-Generative/device-management/commit/268dd89b4482f2abf2114a486a995acdec70e46c))
+* **migrations:** la mise à jour du schéma fonctionne de nouveau sur une base neuve ([8da9b97](https://github.com/IA-Generative/device-management/commit/8da9b97751e69418c6e237100e74d04c6710a645))
+
+## [0.9.22] - 2026-11-01
+
+### Nouveautés
+
+* Le service peut indiquer aux extensions quels sites web ont le droit de dialoguer avec elles sur le
+  poste, par exemple le portail de recherche. Tant qu'il n'indique rien, l'extension garde son propre
+  réglage.
+
+## [0.9.21] - 2026-11-01
+
+### Nouveautés
+
+* Le service sait désormais **reclasser les résultats d'une recherche** par pertinence : la recherche
+  dans les documents du poste remonte d'abord les passages qui répondent le mieux à la question.
+  Une extension n'y a accès qu'une fois connectée.
+* Le service annonce sa **version** et le **journal de ses changements** (ce document), consultables par tous.
+
 ## [0.9.20] - 2026-09-26
 
 La 0.9.19 a été publiée depuis une branche de release ; ses changements sont repris ici.

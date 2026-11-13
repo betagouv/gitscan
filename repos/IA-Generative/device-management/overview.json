@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/IA-Generative/device-management",
   "name": "device-management",
-  "description": "Serveur central pour la distribution, la configuration et la supervision d'extensions bureautiques. Il permet un déploiement progressif, une gestion par cohorte et un accès sécurisé aux services d'IA via un relais dédié.",
+  "description": "Serveur central pour la distribution, la configuration et la supervision d'extensions bureautiques. Il permet un déploiement progressif, une gestion dynamique des configurations et un accès sécurisé aux services d'IA.",
   "language": "Python",
   "features": [
-    "Administration & Backoffice",
-    "Collaboration & Workflow",
     "Gestion des utilisateurs & Permissions",
+    "Administration & Backoffice",
+    "Authentification & Accès",
     "Intelligence Artificielle & NLP",
-    "Sécurité & Conformité",
     "Suivi & Traçabilité",
-    "Interface utilisateur & Design"
+    "Notifications & Alertes",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,9 +19,9 @@
     "Keycloak",
     "Docker",
     "Kubernetes",
-    "S3",
     "Jinja2",
-    "HTMX"
+    "HTMX",
+    "S3"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,32 +30,36 @@
     "Docker & Conteneurs",
     "Kubernetes & Helm",
     "Authentification (composant)",
-    "Intelligence Artificielle / ML",
-    "Templates & Moteurs de rendu"
+    "Intégrations services externes",
+    "Templates & Moteurs de rendu",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "sso",
+      "oauth2",
       "jwt",
-      "session",
-      "oauth2"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
   "tests": "Pytest",
+  "workflows": [
+    "Docker Compose",
+    "Kubernetes deployment",
+    "CI/CD via scripts"
+  ],
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Python",
-    "Bases de données SQL",
     "Docker & Conteneurs",
     "Intelligence Artificielle & LLM",
-    "Design System & UI",
     "Sécurité & Auth",
+    "Bases de données SQL",
     "Kubernetes & Helm",
-    "CI/CD & GitHub Actions"
+    "Documentation"
   ]
 }

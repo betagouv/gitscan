@@ -4,8 +4,14 @@
 ├── .gitattributes
 ├── .github
 │   └── workflows
-│       └── ci.yml
+│       ├── cd-develop.yml
+│       ├── cd.yml
+│       ├── ci-cpin.yml
+│       ├── ci.yml
+│       └── pr-source.yml
 ├── .gitignore
+├── .release-please-manifest.json
+├── .yamllint
 ├── CHANGELOG.md
 ├── FIX-telemetry-endpoint-double-bootstrap.md
 ├── LICENSE
@@ -17,10 +23,11 @@
 │   └── versions
 │       ├── 001_initial_schema.py
 │       ├── 002_extension_update_metadata.py
-│       ├── 003_experiment_versions.py
 │       ├── 003_runtime_config.py
 │       ├── 004_llm_quota.py
-│       └── 005_general_version.py
+│       ├── 005_general_version.py
+│       ├── 006_experiment_versions.py
+│       └── 007_parc_export_worker.py
 ├── alembic.ini
 ├── app
 │   ├── __init__.py
@@ -106,10 +113,23 @@
 │   │   ├── crypto.py
 │   │   ├── db.py
 │   │   ├── health.py
+│   │   ├── links.py
 │   │   ├── parc_export.py
 │   │   ├── parc_mapping.py
+│   │   ├── relay_assistant.py
+│   │   ├── relay_probe.py
 │   │   └── versions.py
 │   ├── settings.py
+│   ├── tools
+│   │   ├── __init__.py
+│   │   ├── audit.py
+│   │   ├── errors.py
+│   │   ├── http_client.py
+│   │   ├── registry.py
+│   │   ├── router.py
+│   │   ├── schema.py
+│   │   ├── throttle.py
+│   │   └── upstream.py
 │   ├── version.py
 │   └── worker_main.py
 ├── config
@@ -140,25 +160,39 @@
 │   │   │   ├── templates
 │   │   │   │   ├── NOTES.txt
 │   │   │   │   ├── _helpers.tpl
+│   │   │   │   ├── configmap-relay-assistant.yaml
 │   │   │   │   ├── configmap.yaml
 │   │   │   │   ├── deployment-admin.yaml
 │   │   │   │   ├── deployment-api.yaml
+│   │   │   │   ├── deployment-llm-proxy.yaml
+│   │   │   │   ├── deployment-relay-assistant.yaml
 │   │   │   │   ├── deployment-telemetry-relay.yaml
 │   │   │   │   ├── deployment-worker.yaml
 │   │   │   │   ├── hpa-api.yaml
+│   │   │   │   ├── hpa-llm-proxy.yaml
 │   │   │   │   ├── hpa-worker.yaml
+│   │   │   │   ├── ingress-relay-assistant.yaml
 │   │   │   │   ├── ingress.yaml
 │   │   │   │   ├── job-migrate.yaml
+│   │   │   │   ├── pdb-api.yaml
+│   │   │   │   ├── pdb-llm-proxy.yaml
+│   │   │   │   ├── pdb-telemetry-relay.yaml
+│   │   │   │   ├── pdb-worker.yaml
+│   │   │   │   ├── postgres-cnpg.yaml
 │   │   │   │   ├── postgres-internal.yaml
 │   │   │   │   ├── pvc-admin.yaml
 │   │   │   │   ├── secret.yaml
 │   │   │   │   ├── service-admin.yaml
 │   │   │   │   ├── service-api.yaml
+│   │   │   │   ├── service-llm-proxy.yaml
+│   │   │   │   ├── service-relay-assistant.yaml
 │   │   │   │   ├── service-telemetry-relay.yaml
-│   │   │   │   └── serviceaccount.yaml
+│   │   │   │   ├── serviceaccount.yaml
+│   │   │   │   └── vault-static-secret.yaml
 │   │   │   ├── values.schema.json
 │   │   │   └── values.yaml
 │   │   └── examples
+│   │       ├── values-cnpg-example.yaml
 │   │       └── values-prod-example.yaml
 │   ├── k8s
 │   │   ├── NORMALIZATION-secrets.md
@@ -250,8 +284,10 @@
 │   │   ├── debug-campaign-not-serving.md
 │   │   ├── developer-readme.md
 │   │   ├── feature-flags.md
+│   │   ├── liens-distribues.md
 │   │   ├── llm-proxy.md
 │   │   ├── mode-operatoire-campagnes.md
+│   │   ├── relais-outils.md
 │   │   └── test-cahier.md
 │   └── plugin-developer
 │       ├── README.md
@@ -266,6 +302,8 @@
 │   ├── keycloak-bootstrap-client-example.json
 │   └── pkce-test.sh
 ├── pyproject.toml
+├── release-please-config.json
+├── renovate.json
 ├── reports
 │   └── postgres-queue-rollout-report.md
 ├── requirements-dev.txt
@@ -315,52 +353,5 @@
     │   ├── test_int_general_version.py
     │   └── test_int_nonreg.py
     ├── llm_utils.py
-    ├── test_admin_playwright.py
-    ├── test_admin_ui.py
-    ├── test_audit_plugin.py
-    ├── test_binaries_storage.py
-    ├── test_bootstrap_urls.py
-    ├── test_campaign_plugin_scoping.py
-    ├── test_communications.py
-    ├── test_dashboard_telemetry.py
-    ├── test_dashboard_version.py
-    ├── test_e2e_deployment.py
-    ├── test_enriched_config.py
-    ├── test_enroll.py
-    ├── test_experiment_campaigns_pg.py
-    ├── test_experiment_versions.py
-    ├── test_extract_version.py
-    ├── test_feature_flags_v2.py
-    ├── test_general_version.py
-    ├── test_general_version_pg.py
-    ├── test_libreoffice_update_feed.py
-    ├── test_libreoffice_update_feed_pg.py
-    ├── test_llm_config_override.py
-    ├── test_llm_pipeline.py
-    ├── test_llm_proxy.py
-    ├── test_llm_quota_pg.py
-    ├── test_llm_runtime_mode.py
-    ├── test_llm_traffic.py
-    ├── test_logfilters.py
-    ├── test_observability.py
-    ├── test_observability_request_id.py
-    ├── test_ops_metrics.py
-    ├── test_parc_export.py
-    ├── test_pathsafe.py
-    ├── test_plugin_installations_fk.py
-    ├── test_post_deploy.py
-    ├── test_public_base_url_prefix.py
-    ├── test_queue_load.py
-    ├── test_queue_resilience_distributed.py
-    ├── test_queue_security.py
-    ├── test_queue_validation.py
-    ├── test_readiness_gate.py
-    ├── test_relay.py
-    ├── test_resilience.py
-    ├── test_root_admin_redirects.py
-    ├── test_runtime_config.py
-    ├── test_security_suggest.py
-    ├── test_telemetry.py
-    ├── test_version_route.py
-    └── test_worker_heartbeat.py
-49 directories, 316 files
+    └── test_*.py  (55 files)
+50 directories, 360 files
