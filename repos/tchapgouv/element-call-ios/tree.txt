@@ -1,0 +1,405 @@
+.
+├── .editorconfig
+├── .gitattributes
+├── .github
+│   ├── CODEOWNERS
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── release.yml
+│   └── workflows
+│       ├── record-snapshots.yml
+│       ├── release.yml
+│       └── tests.yml
+├── .gitignore
+├── .swiftformat
+├── .swiftlint.yml
+├── .swiftpm
+│   └── xcode
+│       └── xcshareddata
+│           └── IDETemplateMacros.plist
+├── AGENTS.md
+├── CHANGES.md
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── Example
+│   ├── ElementCallExample
+│   │   ├── ElementCallExampleApp.swift
+│   │   ├── ElementCallExampleCatalogue.swift
+│   │   ├── ElementCallExampleFixture.swift
+│   │   ├── ElementCallExampleHost.swift
+│   │   ├── ElementCallExampleRinging.swift
+│   │   ├── ElementCallExampleScenario.swift
+│   │   └── TestPatternVideo.swift
+│   ├── ElementCallExampleUITests
+│   │   ├── AudioOutputUITests.swift
+│   │   ├── ChromeVisibilityUITests.swift
+│   │   ├── MinimizedCallUITests.swift
+│   │   ├── OverflowMenuUITests.swift
+│   │   ├── RaisedHandUITests.swift
+│   │   ├── ScrollPerformanceUITests.swift
+│   │   ├── SmallCallUITests.swift
+│   │   ├── StageScrollUITests.swift
+│   │   └── TileFullscreenUITests.swift
+│   └── project.yml
+├── LICENSE
+├── LICENSE-COMMERCIAL
+├── Package.resolved
+├── Package.swift
+├── README.md
+├── RELEASING.md
+├── SECURITY.md
+├── Sources
+│   ├── ElementCall
+│   │   └── ElementCall.swift
+│   ├── ElementCallHost
+│   │   ├── ElementCallController.swift
+│   │   ├── ElementCallPictureInPictureController.swift
+│   │   ├── ElementCallPictureInPicturePlaceholder.swift
+│   │   ├── ElementCallStack.swift
+│   │   └── Ports
+│   │       ├── ElementCallFakes.swift
+│   │       ├── ElementCallOptions.swift
+│   │       ├── ElementCallRoomContext.swift
+│   │       ├── ElementCallStyle.swift
+│   │       ├── ElementCallSystemProviding.swift
+│   │       └── ElementCallTokenStyle.swift
+│   ├── ElementCallKit
+│   │   ├── API
+│   │   │   ├── ElementCallMatrixTransport.swift
+│   │   │   ├── ElementCallVersion.swift
+│   │   │   └── MatrixRTCModels.swift
+│   │   ├── Harness
+│   │   │   ├── MatrixRTCManualClock.swift
+│   │   │   ├── MatrixRTCScenario.swift
+│   │   │   ├── MatrixRTCScriptedCall.swift
+│   │   │   └── MatrixRTCScriptedSession.swift
+│   │   ├── Media
+│   │   │   ├── AudioFormat.swift
+│   │   │   ├── AudioPlaybackRenderer.swift
+│   │   │   ├── AudioPlaybackSink.swift
+│   │   │   ├── CallAudioEngine.swift
+│   │   │   ├── CallAudioOutput.swift
+│   │   │   ├── CallAudioSessionConfigurator.swift
+│   │   │   ├── CallSoundEffectRenderer.swift
+│   │   │   ├── CameraCaptureFormat.swift
+│   │   │   ├── CameraCapturer.swift
+│   │   │   ├── I420MetalRenderer.swift
+│   │   │   ├── I420Repacker.swift
+│   │   │   ├── InputStreamFormat.swift
+│   │   │   ├── MatrixRTCTestPattern.swift
+│   │   │   ├── MatrixRTCVideoFrame.swift
+│   │   │   ├── MicrophoneCapturer.swift
+│   │   │   ├── MicrophoneTap.swift
+│   │   │   ├── NV12Packer.swift
+│   │   │   ├── PCMRingBuffer.swift
+│   │   │   ├── SampleBufferVideoView.swift
+│   │   │   ├── ScreenShareCapturer.swift
+│   │   │   ├── VideoFrameMeter.swift
+│   │   │   ├── VideoFrameSlot.swift
+│   │   │   ├── VideoPresentation.swift
+│   │   │   └── VideoTileView.swift
+│   │   ├── Session
+│   │   │   ├── CallAudio.swift
+│   │   │   ├── JoinLeaveSoundPolicy.swift
+│   │   │   ├── Mappers.swift
+│   │   │   ├── MatrixRTCBackend.swift
+│   │   │   ├── MatrixRTCCall.swift
+│   │   │   ├── MatrixRTCClient.swift
+│   │   │   ├── MatrixRTCLog.swift
+│   │   │   ├── MatrixRTCLogging.swift
+│   │   │   ├── MatrixRTCMediaSession.swift
+│   │   │   ├── RaisedHandSoundPolicy.swift
+│   │   │   ├── RingingSoundPolicy.swift
+│   │   │   └── Stopwatch.swift
+│   │   └── Sounds
+│   │       ├── README.md
+│   │       ├── call_declined.mp3
+│   │       ├── call_timeout.mp3
+│   │       ├── join_call.mp3
+│   │       ├── left_call.mp3
+│   │       ├── raise_hand.mp3
+│   │       └── ringtone.mp3
+│   ├── ElementCallMatrix
+│   │   ├── ElementCallSDKRoom.swift
+│   │   ├── ElementCallSDKTransport.swift
+│   │   ├── ElementCallTransportErrors.swift
+│   │   └── Widget
+│   │       ├── MatrixRTCRoomBridgeProtocol.swift
+│   │       ├── ToDeviceRelay.swift
+│   │       ├── WidgetDriverChannel.swift
+│   │       ├── WidgetDriverFactory.swift
+│   │       └── WidgetMatrixBridge.swift
+│   └── ElementCallUI
+│       ├── ElementCallAccessibilityIdentifiers.swift
+│       ├── ElementCallChromeVisibility.swift
+│       ├── ElementCallScreenModels.swift
+│       ├── ElementCallScreenViewModel.swift
+│       ├── ElementCallSmallCallLayout.swift
+│       ├── ElementCallSpotlight.swift
+│       ├── ElementCallStageDump.swift
+│       ├── ElementCallStageLayout.swift
+│       ├── ElementCallStyleEnvironment.swift
+│       ├── Previews
+│       │   ├── ElementCallPreviewFixtures.swift
+│       │   ├── ElementCallScreenPreviewFactory.swift
+│       │   ├── Snapshotting.swift
+│       │   └── TestablePreview.swift
+│       └── View
+│           ├── ElementCallControlsView.swift
+│           ├── ElementCallFullscreenChrome.swift
+│           ├── ElementCallGlass.swift
+│           ├── ElementCallHarnessScreen.swift
+│           ├── ElementCallMinimizedBar.swift
+│           ├── ElementCallOwnTileDragGesture.swift
+│           ├── ElementCallRingingAvatar.swift
+│           ├── ElementCallScreen.swift
+│           ├── ElementCallSoundWaves.swift
+│           ├── ElementCallSpotlightPanGesture.swift
+│           ├── ElementCallStage.swift
+│           ├── ElementCallTileView.swift
+│           ├── ElementCallView.swift
+│           └── PictureInPictureSourceView.swift
+├── Tests
+│   └── ElementCallTests
+│       ├── AccessibilityIdentifierTests.swift
+│       ├── AudioPlaybackRendererTests.swift
+│       ├── AudioSessionOwnershipTests.swift
+│       ├── BorderGradientTests.swift
+│       ├── CallAudioRouteTests.swift
+│       ├── CallSoundEffectRendererTests.swift
+│       ├── CallStatusTests.swift
+│       ├── CameraCaptureFormatTests.swift
+│       ├── DetailWindowTests.swift
+│       ├── DeveloperModeTests.swift
+│       ├── ElementCallChromeVisibilityTests.swift
+│       ├── ElementCallSmallCallLayoutTests.swift
+│       ├── ElementCallSpotlightTests.swift
+│       ├── ElementCallStageLayoutTests.swift
+│       ├── ElementCallTileCompositionTests.swift
+│       ├── GeneratedPreviewTests.swift
+│       ├── HarnessLocalMediaTests.swift
+│       ├── I420RepackerTests.swift
+│       ├── InputStreamFormatTests.swift
+│       ├── JoinLeaveSoundPolicyTests.swift
+│       ├── JoinedMembershipTests.swift
+│       ├── LogPositionTests.swift
+│       ├── MatrixRTCBackendTests.swift
+│       ├── MatrixRTCTestPatternTests.swift
+│       ├── MicrophoneTapTests.swift
+│       ├── MinimizeRoutingTests.swift
+│       ├── NV12PackerTests.swift
+│       ├── PCMRingBufferTests.swift
+│       ├── PictureInPictureCandidateTests.swift
+│       ├── PreJoinControlsTests.swift
+│       ├── PreviewTests.swift
+│       ├── ProximityMonitoringTests.swift
+│       ├── RaisedHandSoundPolicyTests.swift
+│       ├── RaisedHandTests.swift
+│       ├── ReceiveStatsPollingTests.swift
+│       ├── RingingSoundPolicyTests.swift
+│       ├── RosterPlaybackTests.swift
+│       ├── ScenarioParserTests.swift
+│       ├── Scenarios
+│       │   ├── 001_small_calls.txt
+│       │   ├── 002_listen_mode.txt
+│       │   ├── 003_two_shares.txt
+│       │   ├── 004_scroll_and_rank.txt
+│       │   ├── 005_rotation_and_fullscreen.txt
+│       │   ├── 006_two_hundred.txt
+│       │   └── 007_small_call_arrival.txt
+│       ├── ScriptedSessionTests.swift
+│       ├── StageDumpScenarioTests.swift
+│       ├── Support
+│       │   ├── DeferredFulfillment.swift
+│       │   ├── FakeMediaSession.swift
+│       │   ├── FakeRtcCall.swift
+│       │   ├── RenderCallback.swift
+│       │   └── SnapshotEnvironment.swift
+│       ├── ToDeviceRelayTests.swift
+│       ├── UmbrellaProductTests.swift
+│       ├── VideoFrameSlotTests.swift
+│       ├── VideoPresentationTests.swift
+│       ├── ViewStatePublicationTests.swift
+│       ├── WidgetMatrixBridgeTests.swift
+│       └── __Snapshots__
+│           ├── .gitkeep
+│           ├── PreviewTests
+│           │   ├── elementCallControlsView.Hand-coming-down-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Hand-coming-down-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Hand-coming-down-iPhone-landscape-en-GB.png
+│           │   ├── elementCallControlsView.Hand-going-up-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Hand-going-up-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Hand-going-up-iPhone-landscape-en-GB.png
+│           │   ├── elementCallControlsView.Hand-raised-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Hand-raised-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Hand-raised-iPhone-landscape-en-GB.png
+│           │   ├── elementCallControlsView.Headset-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Headset-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Headset-iPhone-landscape-en-GB.png
+│           │   ├── elementCallControlsView.Muted-and-sharing-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Muted-and-sharing-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Muted-and-sharing-iPhone-landscape-en-GB.png
+│           │   ├── elementCallControlsView.Resting-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Resting-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Resting-iPhone-landscape-en-GB.png
+│           │   ├── elementCallControlsView.Vertical-rail-iPad-en-GB.png
+│           │   ├── elementCallControlsView.Vertical-rail-iPhone-en-GB.png
+│           │   ├── elementCallControlsView.Vertical-rail-iPhone-landscape-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Hand-raised-iPad-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Hand-raised-iPhone-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Hand-raised-iPhone-landscape-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Muted-remote-iPad-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Muted-remote-iPhone-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Muted-remote-iPhone-landscape-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Our-own-camera-iPad-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Our-own-camera-iPhone-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Our-own-camera-iPhone-landscape-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Screen-share-iPad-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Screen-share-iPhone-en-GB.png
+│           │   ├── elementCallFullscreenChrome.Screen-share-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.A-member-on-two-tiles-iPad-en-GB.png
+│           │   ├── elementCallStage.A-member-on-two-tiles-iPhone-en-GB.png
+│           │   ├── elementCallStage.A-member-on-two-tiles-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Alone-iPad-en-GB.png
+│           │   ├── elementCallStage.Alone-iPhone-en-GB.png
+│           │   ├── elementCallStage.Alone-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Five-people-iPad-en-GB.png
+│           │   ├── elementCallStage.Five-people-iPhone-en-GB.png
+│           │   ├── elementCallStage.Five-people-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Four-people-iPad-en-GB.png
+│           │   ├── elementCallStage.Four-people-iPhone-en-GB.png
+│           │   ├── elementCallStage.Four-people-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Full-screen-iPad-en-GB.png
+│           │   ├── elementCallStage.Full-screen-iPhone-en-GB.png
+│           │   ├── elementCallStage.Full-screen-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Grid-without-a-spotlight-iPad-en-GB.png
+│           │   ├── elementCallStage.Grid-without-a-spotlight-iPhone-en-GB.png
+│           │   ├── elementCallStage.Grid-without-a-spotlight-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Listen-mode-iPad-en-GB.png
+│           │   ├── elementCallStage.Listen-mode-iPhone-en-GB.png
+│           │   ├── elementCallStage.Listen-mode-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Three-people-iPad-en-GB.png
+│           │   ├── elementCallStage.Three-people-iPhone-en-GB.png
+│           │   ├── elementCallStage.Three-people-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Two-heroes-iPad-en-GB.png
+│           │   ├── elementCallStage.Two-heroes-iPhone-en-GB.png
+│           │   ├── elementCallStage.Two-heroes-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Two-people-iPad-en-GB.png
+│           │   ├── elementCallStage.Two-people-iPhone-en-GB.png
+│           │   ├── elementCallStage.Two-people-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Two-people-our-camera-on-iPad-en-GB.png
+│           │   ├── elementCallStage.Two-people-our-camera-on-iPhone-en-GB.png
+│           │   ├── elementCallStage.Two-people-our-camera-on-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Two-people-our-tile-top-left-iPad-en-GB.png
+│           │   ├── elementCallStage.Two-people-our-tile-top-left-iPhone-en-GB.png
+│           │   ├── elementCallStage.Two-people-our-tile-top-left-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Two-people-right-to-left-iPad-en-GB.png
+│           │   ├── elementCallStage.Two-people-right-to-left-iPhone-en-GB.png
+│           │   ├── elementCallStage.Two-people-right-to-left-iPhone-landscape-en-GB.png
+│           │   ├── elementCallStage.Two-people-the-other-speaking-iPad-en-GB.png
+│           │   ├── elementCallStage.Two-people-the-other-speaking-iPhone-en-GB.png
+│           │   ├── elementCallStage.Two-people-the-other-speaking-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Full-screen-iPad-en-GB.png
+│           │   ├── elementCallTileView.Full-screen-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Full-screen-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Hand-raised-iPad-en-GB.png
+│           │   ├── elementCallTileView.Hand-raised-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Hand-raised-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Muted-iPad-en-GB.png
+│           │   ├── elementCallTileView.Muted-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Muted-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Screen-share-in-a-cell-iPad-en-GB.png
+│           │   ├── elementCallTileView.Screen-share-in-a-cell-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Screen-share-in-a-cell-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Screen-share-spotlight-iPad-en-GB.png
+│           │   ├── elementCallTileView.Screen-share-spotlight-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Screen-share-spotlight-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Speaking-iPad-en-GB.png
+│           │   ├── elementCallTileView.Speaking-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Speaking-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Speaking-with-hand-raised-iPad-en-GB.png
+│           │   ├── elementCallTileView.Speaking-with-hand-raised-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Speaking-with-hand-raised-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.Spotlight-with-hand-raised-iPad-en-GB.png
+│           │   ├── elementCallTileView.Spotlight-with-hand-raised-iPhone-en-GB.png
+│           │   ├── elementCallTileView.Spotlight-with-hand-raised-iPhone-landscape-en-GB.png
+│           │   ├── elementCallTileView.With-stats-iPad-en-GB.png
+│           │   ├── elementCallTileView.With-stats-iPhone-en-GB.png
+│           │   ├── elementCallTileView.With-stats-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Alone-in-the-call-iPad-en-GB.png
+│           │   ├── elementCallView.Alone-in-the-call-iPhone-en-GB.png
+│           │   ├── elementCallView.Alone-in-the-call-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Chrome-hidden-iPad-en-GB.png
+│           │   ├── elementCallView.Chrome-hidden-iPhone-en-GB.png
+│           │   ├── elementCallView.Chrome-hidden-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Chrome-shown-iPad-en-GB.png
+│           │   ├── elementCallView.Chrome-shown-iPhone-en-GB.png
+│           │   ├── elementCallView.Chrome-shown-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Connected-group-iPad-en-GB.png
+│           │   ├── elementCallView.Connected-group-iPhone-en-GB.png
+│           │   ├── elementCallView.Connected-group-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Failed-iPad-en-GB.png
+│           │   ├── elementCallView.Failed-iPhone-en-GB.png
+│           │   ├── elementCallView.Failed-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Four-people-chrome-hidden-iPad-en-GB.png
+│           │   ├── elementCallView.Four-people-chrome-hidden-iPhone-en-GB.png
+│           │   ├── elementCallView.Four-people-chrome-hidden-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Four-people-chrome-shown-iPad-en-GB.png
+│           │   ├── elementCallView.Four-people-chrome-shown-iPhone-en-GB.png
+│           │   ├── elementCallView.Four-people-chrome-shown-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Full-screen-iPad-en-GB.png
+│           │   ├── elementCallView.Full-screen-iPhone-en-GB.png
+│           │   ├── elementCallView.Full-screen-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Full-screen-with-chrome-iPad-en-GB.png
+│           │   ├── elementCallView.Full-screen-with-chrome-iPhone-en-GB.png
+│           │   ├── elementCallView.Full-screen-with-chrome-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Joining-iPad-en-GB.png
+│           │   ├── elementCallView.Joining-iPhone-en-GB.png
+│           │   ├── elementCallView.Joining-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Listen-mode-iPad-en-GB.png
+│           │   ├── elementCallView.Listen-mode-iPhone-en-GB.png
+│           │   ├── elementCallView.Listen-mode-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Muted-and-sharing-iPad-en-GB.png
+│           │   ├── elementCallView.Muted-and-sharing-iPhone-en-GB.png
+│           │   ├── elementCallView.Muted-and-sharing-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Ringing-a-voice-call-iPad-en-GB.png
+│           │   ├── elementCallView.Ringing-a-voice-call-iPhone-en-GB.png
+│           │   ├── elementCallView.Ringing-a-voice-call-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Ringing-iPad-en-GB.png
+│           │   ├── elementCallView.Ringing-iPhone-en-GB.png
+│           │   ├── elementCallView.Ringing-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Ringing-our-media-connecting-iPad-en-GB.png
+│           │   ├── elementCallView.Ringing-our-media-connecting-iPhone-en-GB.png
+│           │   ├── elementCallView.Ringing-our-media-connecting-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Two-heroes-iPad-en-GB.png
+│           │   ├── elementCallView.Two-heroes-iPhone-en-GB.png
+│           │   ├── elementCallView.Two-heroes-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Two-people-chrome-hidden-iPad-en-GB.png
+│           │   ├── elementCallView.Two-people-chrome-hidden-iPhone-en-GB.png
+│           │   ├── elementCallView.Two-people-chrome-hidden-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Two-people-chrome-shown-iPad-en-GB.png
+│           │   ├── elementCallView.Two-people-chrome-shown-iPhone-en-GB.png
+│           │   ├── elementCallView.Two-people-chrome-shown-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Two-people-iPad-en-GB.png
+│           │   ├── elementCallView.Two-people-iPhone-en-GB.png
+│           │   ├── elementCallView.Two-people-iPhone-landscape-en-GB.png
+│           │   ├── elementCallView.Two-people-speaking-iPad-en-GB.png
+│           │   ├── elementCallView.Two-people-speaking-iPhone-en-GB.png
+│           │   └── elementCallView.Two-people-speaking-iPhone-landscape-en-GB.png
+│           └── StageDumpScenarioTests
+│               ├── scenarioDumpsMatch-url.001_small_calls.txt
+│               ├── scenarioDumpsMatch-url.002_listen_mode.txt
+│               ├── scenarioDumpsMatch-url.003_two_shares.txt
+│               ├── scenarioDumpsMatch-url.004_scroll_and_rank.txt
+│               ├── scenarioDumpsMatch-url.005_rotation_and_fullscreen.txt
+│               ├── scenarioDumpsMatch-url.006_two_hundred.txt
+│               └── scenarioDumpsMatch-url.007_small_call_arrival.txt
+├── Tools
+│   └── Sourcery
+│       ├── PreviewTests.stencil
+│       └── PreviewTestsConfig.yml
+├── codecov.yml
+├── hero.gif
+├── renovate.json
+└── scripts
+    └── release.sh
+34 directories, 370 files
