@@ -1,3 +1,173 @@
+2026-11-12T16:02:37+01:00 - bb753f0 - Alexandre Garbe : feat(api): updating a certification authority certification parcours bindings now update the certification visibility (it should not be visible if no certification authority is bound to at least one of its parcours)
+2026-11-12T16:02:37+01:00 - 325fead - Alexandre Garbe : feat(api): searchCertificationsForCandidate no longer filter certifications with parcours and no certification authority bound to them. It's now done by the certification visibility status
+2026-11-12T16:02:37+01:00 - 078fb47 - Alexandre Garbe : feat(api): certifications with parcours but no certification authority positioned on any of those parcours are no longer visible
+2026-11-12T14:08:31+01:00 - 160eb37 - dependabot[bot] : chore(deps): bump fast-xml-parser and @aws-sdk/xml-builder
+2026-11-10T16:53:21+01:00 - 792beb4 - Florian Bonniec : feat(candidate): improved AutocompleteAddress component
+2026-11-10T16:53:18+01:00 - 5929562 - Florian Bonniec : feat(api): added script to extract data for candidate email
+2026-11-10T15:56:28+01:00 - 00fb64d - Pierre A : refacto(collective):use separate pages for dashboard depending on persona
+2026-11-10T15:56:00+01:00 - 54192f1 - Pierre A : refacto(api):differentiate VOIR_STATISTIQUES permission for commanditaires and sous-comptes
+2026-11-09T17:15:58+01:00 - c20ae4a - Pierre A : feat(collective):query and show metabase dashboard URL for sousComptes
+2026-11-09T17:15:16+01:00 - 68ae938 - Pierre A : feat(api):add permission and resolvers for sousComtpesVaeCo to access dashboards
+2026-11-09T17:14:36+01:00 - 47c559d - Pierre A : chore(api):remove jury results exports
+2026-11-09T15:42:21+01:00 - 8747c02 - Alexandre Garbe : fix(admin): certification authority "dossier de validation" page showed wrong date for incomplete and complete status
+2026-11-09T15:42:21+01:00 - 242f474 - Alexandre Garbe : feat(admin): added "Demande d'amenagement" info into certification authority "dossier de validation" page
+2026-11-09T15:08:21+01:00 - d7ab9cc - Florian Bonniec : feat:(api): updated getCertificationAuthorities feature to filter gc positioned on parcours if certification has parcours
+2026-11-09T14:56:32+01:00 - d20b1d1 - Florian Bonniec : fix(admin,candidate): fixed default values for files in forms with zod validation
+2026-11-09T11:18:55+01:00 - cc878f2 - Pierre A : fix(admin):fix jury result options for autonomous candidate
+2026-11-09T10:39:09+01:00 - f8a689c - Pierre A : fix(candidate):harmonize layout of all DV alerts and accordions
+2026-11-09T10:27:56+01:00 - 014146b - Pierre A : feat(candidate):relocate past DV accordion and DV decision alert box
+2026-11-06T15:06:23+01:00 - 7976488 - Florian Bonniec : feat(candidate): improved responsiveness for mobile in TypologyAndCollectiveAgreementForm component
+2026-11-06T15:03:15+01:00 - 4ff519c - Florian Bonniec : feat(candidate): improved responsiveness for mobile in ContactInformationForm component
+2026-11-06T14:46:17+01:00 - 69a43b9 - Florian Bonniec : feat(candidate): improved responsiveness for mobile in FormButtons, Panel, NonVaeCollectiveDashboard and CivilInformationForm components
+2026-11-06T11:28:00+01:00 - 41502ea - Alexandre Garbe : feat(admin): updated the "dossier de validation" problem signaling page description
+2026-11-06T11:05:37+01:00 - b7e8aee - Alexandre Garbe : fix(admin): HistoryDossierDeValidationView accordion was not displaying its bottom hr
+2026-11-06T11:05:37+01:00 - 22478c9 - Alexandre Garbe : fix(admin): dossier de validation is now shown even if the readyForJuryEstimatedAt date is empty in the certification authority "dossier de validation" page
+2026-11-06T11:05:36+01:00 - cdc6463 - Alexandre Garbe : feat(admin): replaced the problem button by a tile in the certification authority "dossier de validation" page
+2026-11-06T11:05:36+01:00 - 349b2ba - Alexandre Garbe : feat(admin): added an errorSmall pictogram
+2026-11-06T09:58:17+01:00 - f251340 - dependabot[bot] : chore(deps): bump dompurify in /packages/reva-admin-react
+2026-11-06T09:52:18+01:00 - 77e547a - dependabot[bot] : chore(deps): bump next in /packages/reva-admin-react
+2026-11-05T18:58:13+01:00 - 1f0d735 - Alexandre Garbe : chore(infra): removed test docker-compose
+2026-11-05T17:58:17+01:00 - 297dd20 - Alexandre Garbe : feat(admin): reworked certification authority dossier de validation view
+2026-11-05T16:39:29+01:00 - 95b898a - Florian Bonniec : chore:(admin): updated @graphql-codegen dependencies
+2026-11-05T16:26:10+01:00 - e472894 - Alexandre Garbe : feat(global): upped postgres container memory
+2026-11-05T16:26:10+01:00 - c15319b - Alexandre Garbe : feat(api): added candidacy_on_candidacy_financing_method table to anonymize-reva-db-full script
+2026-11-05T16:26:10+01:00 - c05df31 - Alexandre Garbe : feat(api): added funding_request_unifvae.other_training to the  anonymize-reva-db-full script
+2026-11-05T16:26:10+01:00 - a558dcf - Alexandre Garbe : fix(admin): certification prerequisite field was not accepting special characters
+2026-11-05T16:26:10+01:00 - 9e19bce - Alexandre Garbe : feat(api): updated anonymize-reva-db-full script to include certificate_skills anonymization
+2026-11-05T16:26:10+01:00 - 8104faa - Alexandre Garbe : feat(api): added invoice_number and content field to of the payment_request and payment_request_unifvae tables to the  anonymize-reva-db-full script
+2026-11-05T16:26:10+01:00 - 6957574 - Alexandre Garbe : feat(api): updated anonymize-reva-db-full script to only overrite non null or empty values
+2026-11-05T16:26:09+01:00 - 2525852 - Alexandre Garbe : feat(api): added amenagement_specifique table to anonymize-reva-db-full script
+2026-11-05T16:14:54+01:00 - c9a745e - dependabot[bot] : chore(deps): bump ip-address from 10.7.2 to 10.7.6 in /packages/reva-api
+2026-11-05T16:14:35+01:00 - fdbc95c - dependabot[bot] : chore(deps): bump fastify from 5.12.5 to 5.12.6 in /packages/reva-api
+2026-11-05T15:45:03+01:00 - 9aac28b - Florian Bonniec : feat: filtered etablissement by empty parcours in certification etablissement tab
+2026-11-05T15:41:37+01:00 - 207d946 - dependabot[bot] : chore(deps): bump next from 16.3.8 to 16.4.1 in /packages/reva-candidate
+2026-11-05T15:40:21+01:00 - 0282da4 - dependabot[bot] : chore(deps): bump msgpack from 1.2.1 to 1.2.3 in /infra/clamav-rest
+2026-11-05T15:37:50+01:00 - 0af2e00 - dependabot[bot] : chore(deps): bump dnspython from 2.8.0 to 2.9.0 in /infra/clamav-rest
+2026-11-05T15:20:35+01:00 - 5cbeab9 - Florian Bonniec : fix(admin): fixed UserAccountForm component
+2026-11-05T14:42:29+01:00 - 8a45ead - Florian Bonniec : Revert "fix(admin): fixed isDirty props in FormButtons component"
+2026-11-05T14:31:27+01:00 - 81f4d04 - Florian Bonniec : chore(admin): use 3 shard instead of 2 for tests
+2026-11-05T14:23:11+01:00 - 25df3dc - Florian Bonniec : fix(api): prevent graphql crash if url of file is null
+2026-11-05T13:42:19+01:00 - bed1436 - Florian Bonniec : fix(candidate): added hintText props to AutocompleteAddress
+2026-11-05T13:14:52+01:00 - fd02363 - Florian Bonniec : fix(admin): fixed isDirty props in FormButtons component
+2026-11-05T11:57:18+01:00 - ff04c29 - Florian Bonniec : fix(admin): fixed deep copy in InterventionAreaForm hooks
+2026-11-05T11:57:11+01:00 - 6dfda9e - Florian Bonniec : fix(admin): fixed flaky tests
+2026-11-05T10:58:16+01:00 - 41bd3ca - Florian Bonniec : chore:(admin): updated zod dependency
+2026-11-04T15:48:46+01:00 - cb4d71f - Pierre A : chore(collective):update VAEco AAP dashboard link
+2026-11-04T15:13:29+01:00 - 2043b7f - Florian Bonniec : chore(infra): added anonymization script for metabase
+2026-11-04T13:09:24+01:00 - 6667659 - Pierre A : feat(api):enforce file limit for sworn statement file
+2026-11-04T12:40:57+01:00 - 3d36cb2 - Pierre A : feat(admin,candidate):enforce max uploaded file size
+2026-11-03T17:16:06+01:00 - bf1712b - Florian Bonniec : chore(admin): improved package.json test:ci script
+2026-11-03T15:49:49+01:00 - 90cba71 - Pierre A : fix(admin,candidate):update form hint for supported file formats for sworn statement
+2026-11-03T15:45:35+01:00 - ebcffe3 - Alexandre Garbe : feat(admin): updated certification authority dv page -> show a warning when the readyForJuryEstimatedAt is filled but the dv is not submitted
+2026-11-03T15:45:35+01:00 - b9e774b - Alexandre Garbe : feat(admin): updated certification authority dv page -> show a warning when the readyForJuryEstimatedAt is empty and the dv is not submitted
+2026-11-03T15:45:35+01:00 - 6ae6287 - Alexandre Garbe : feat(admin): updated certification authority dv page -> moved the back button
+2026-11-03T15:07:19+01:00 - 2be13c3 - dependabot[bot] : chore(deps): bump follow-redirects in /packages/reva-api
+2026-11-03T14:57:38+01:00 - e36de9e - Florian Bonniec : chore:(interop): updated @graphql-codegen dependencies
+2026-11-03T14:48:57+01:00 - 051c6d4 - Florian Bonniec : chore:(website): updated eslint config
+2026-11-03T14:46:09+01:00 - 0792436 - Florian Bonniec : chore:(vae-collective): updated @graphql-codegen dependencies
+2026-11-03T14:30:37+01:00 - a7453c1 - Florian Bonniec : chore(candidate): fixed linting errors
+2026-11-03T14:14:20+01:00 - b88ec5c - Alexandre Garbe : test(admin): added non regression tests for certification authority dossier de validation v2
+2026-11-03T14:14:20+01:00 - 99ff202 - Alexandre Garbe : feat(admin): added a dossier-de-validation-v2 route for the certification authority and switched to it when the NEW_DV_PAGE flag is set
+2026-11-03T14:09:35+01:00 - f518db5 - Florian Bonniec : chore:(candidate): updadted updated @graphql-codegen dependencies
+2026-11-03T13:03:52+01:00 - d420c4c - dependabot[bot] : chore(deps-dev): bump postcss-selector-parser
+2026-11-03T12:07:44+01:00 - eed0b02 - Florian Bonniec : chore(admin): updated cypress dependency
+2026-11-03T11:31:38+01:00 - 6668965 - Florian Bonniec : chore(website): updated react-hook-form and @hookform/resolvers dependencies
+2026-11-03T11:31:04+01:00 - 58d54fb - Florian Bonniec : chore(candidate): removed useless console.log
+2026-11-03T11:20:54+01:00 - 7141c3f - Florian Bonniec : chore(candidate): updated zod, react-hook-form and @hookform/resolvers dependencies
+2026-11-02T17:46:46+01:00 - 06b4304 - Florian Bonniec : Revert "chore(candidate): updated zod dependency"
+2026-11-02T17:24:45+01:00 - 85eb6c1 - Florian Bonniec : chore(api): updated zod dependency
+2026-11-02T17:21:30+01:00 - 6b79435 - Florian Bonniec : chore(candidate): updated zod dependency
+2026-11-02T17:05:30+01:00 - e28ee87 - Florian Bonniec : chore(website): updated zod dependency
+2026-11-02T17:05:20+01:00 - 6a0c2dc - Florian Bonniec : chore(website): updated @graphql-codegen dependencies
+2026-11-02T16:32:35+01:00 - dd7082d - Pierre A : tests(candidate):add tests for new dv submission flow
+2026-11-02T15:37:07+01:00 - ef18add - Alexandre Garbe : fix(vae-collective): moved organism details to the detail section of the candidacy card
+2026-11-02T15:29:17+01:00 - c080056 - Alexandre Garbe : fix(vae-collective): in candidacy card, moved the dateToDisplay info to the endDetail field of the card
+2026-11-02T15:28:41+01:00 - fc58adf - Alexandre Garbe : chore(vae-collective): removed custom shadow from candidacy card (replaced with built in one)
+2026-11-02T14:56:07+01:00 - 945624f - Alexandre Garbe : feat(admin): reordered aap admin and local account tabs in header
+2026-11-02T14:49:04+01:00 - 1dcf05e - Alexandre Garbe : feat(admin): reordered certification registry manager, admin and local account tabs in header
+2026-11-02T13:27:08+01:00 - 2970898 - Florian Bonniec : chore(api): updated @graphql-tools and @graphql-codegen dependencies
+2026-10-30T16:57:12+01:00 - 6e1acad - dependabot[bot] : chore(deps): bump undici from 7.30.0 to 7.30.1 in /packages/reva-api
+2026-10-30T16:06:57+01:00 - 70f256d - dependabot[bot] : chore(deps-dev): bump @graphql-tools/executor-legacy-ws
+2026-10-30T15:23:16+01:00 - 6124f8c - dependabot[bot] : chore(deps): bump graphql-scalars in /packages/reva-api
+2026-10-30T14:44:03+01:00 - 07622fe - Alexandre Garbe : feat(infra): added working metabase-oauth2-proxy buildpack config
+2026-10-30T14:41:06+01:00 - 5ff5383 - dependabot[bot] : chore(deps-dev): bump postcss-selector-parser
+2026-10-30T14:13:28+01:00 - 9cf3c4a - dependabot[bot] : chore(deps-dev): bump @graphql-tools/executor-legacy-ws
+2026-10-30T14:04:51+01:00 - 7544a8a - dependabot[bot] : chore(deps): bump next in /packages/reva-vae-collective
+2026-10-30T13:39:39+01:00 - 5fe6a33 - dependabot[bot] : chore(deps-dev): bump @graphql-tools/executor-legacy-ws
+2026-10-30T13:04:02+01:00 - 4419e74 - dependabot[bot] : chore(deps-dev): bump postcss-selector-parser in /packages/reva-website
+2026-10-30T12:44:58+01:00 - 1f77386 - dependabot[bot] : chore(deps): bump fast-uri from 3.1.8 to 3.1.9 in /packages/reva-api
+2026-10-30T12:13:18+01:00 - 1b7d373 - dependabot[bot] : chore(deps): bump fast-uri in /packages/reva-interop
+2026-10-30T12:05:43+01:00 - 73ce5de - dependabot[bot] : chore(deps): bump brotli from 1.2.0 to 1.2.1 in /infra/clamav-rest
+2026-10-30T11:57:20+01:00 - b144e39 - dependabot[bot] : chore(deps): bump next from 16.3.8 to 16.4.1 in /packages/reva-website
+2026-10-30T11:49:14+01:00 - ad85177 - dependabot[bot] : chore(deps): bump fastify in /packages/reva-interop
+2026-10-30T11:44:25+01:00 - f43683f - Florian Bonniec : feat(candidate): improved OrganismFilters and AutocompleteAddress components + design in set-organism page
+2026-10-30T11:10:59+01:00 - 888a0d0 - Florian Bonniec : feat(candidate): improved EmptyState component and wording for empty state in set-organism page
+2026-10-30T09:53:04+01:00 - 86c88b4 - Alexandre Garbe : Revert "feat(metabase): added metabase-oauth2-proxy"
+2026-10-29T16:43:01+01:00 - f23d027 - Alexandre Garbe : feat(api): anonymised session info of the jury table in the anonymize-reva-db-full script
+2026-10-29T16:43:01+01:00 - bf22fed - Alexandre Garbe : feat(metabase): added metabase-oauth2-proxy
+2026-10-29T16:43:01+01:00 - 72073bf - Alexandre Garbe : feat(api): anonymised certification_additional_info table in the anonymize-reva-db-full script
+2026-10-29T16:43:00+01:00 - 9ec6165 - Alexandre Garbe : feat(api): anonymised dematerialized_feasibility_file complement_experience_parcours_vise field in the  anonymize-reva-db-full script
+2026-10-29T16:43:00+01:00 - 442d3e2 - Alexandre Garbe : feat(api): added acompagnement table to the anonymize-reva-db-full script
+2026-10-29T16:43:00+01:00 - 3bbb039 - Alexandre Garbe : feat(api): anonymised appointment title in the  anonymize-reva-db-full script
+2026-10-29T16:43:00+01:00 - 0d1c49a - Alexandre Garbe : feat(api): added file_upload_spooler table truncation to the anonymize-reva-db-full script
+2026-10-28T17:51:01+01:00 - b38952b - Pierre A : fix(candidate):show correct badge for admissible feasibility
+2026-10-28T16:41:13+01:00 - 53207ed - Florian Bonniec : feat(candidate): added AutocompleteAddress component to OrganismDistanceFilter component
+2026-10-28T13:29:42+01:00 - f9f2196 - Florian Bonniec : feat(api): added missing complement experience bloc in generateFeasibilityFileByCandidacyId feature
+2026-10-28T13:29:35+01:00 - 45d760e - Florian Bonniec : feat(admin): added missing complement experience bloc in DffSummary component
+2026-10-28T12:52:06+01:00 - 2868424 - Florian Bonniec : feat(candidate): added missing complement experience bloc in DffSummary component
+2026-10-27T16:17:54+01:00 - 226777f - Pierre A : feat(admin):add new non-compliance motive for organism check
+2026-10-27T14:46:39+01:00 - 3331b21 - Pierre A : chore(candidate):remove console log
+2026-10-27T14:44:44+01:00 - 82e6f33 - Pierre A : chore(api):remove unused export
+2026-10-27T14:43:35+01:00 - 1e61da1 - Pierre A : feat(candidate):rework DV submission flow and allow candidate to submit an amenagementSpecifique request
+2026-10-27T14:42:39+01:00 - 66f7e27 - Pierre A : feat(api):allow a request for amenagementSpecifique to be submitted with a DV
+2026-10-26T16:17:34+01:00 - 072abbf - Alexandre Garbe : fix(admin): removed checked int from financementPrisEnChargeParTransitionsPro toggle switch in training form
+2026-10-26T16:14:54+01:00 - ee641e8 - Alexandre Garbe : feat(api): dropped certification_authority_id column from the account table
+2026-10-26T16:14:54+01:00 - b0bcc4c - Alexandre Garbe : chore(api): updated createCertificationAuthorityHelper to return a unique account instead of an array
+2026-10-26T16:14:53+01:00 - 8457c57 - Alexandre Garbe : feat(api): added a createCertificationAuthorityOnAccountHelper test helper
+2026-10-26T16:14:53+01:00 - 58c3e0f - Alexandre Garbe : feat(api): replaced account.certification_authority_id by certification_authority_on_account in api
+2026-10-26T16:14:53+01:00 - 37e81e8 - Alexandre Garbe : feat(api): added an helper for getting a certification authority id for a given account id
+2026-10-26T14:11:28+01:00 - 2e989da - Alexandre Garbe : feat(api): added back certification_authority_on_account table
+2026-10-23T16:04:24+02:00 - f8fea29 - Alexandre Garbe : fix(api): reverted account.certification_authority_id to certification_authority_on_account migration
+2026-10-23T08:56:37+02:00 - bf064e0 - Alexandre Garbe : feat(api): added an index on certification_authority_id to the certification_authority_on_account table
+2026-10-23T08:53:48+02:00 - 34e0f7a - Alexandre Garbe : feat(api): dropped account certification_authority_id column (replaced by certificationAuthorityOnAccount table)
+2026-10-22T15:41:29+02:00 - e9eaee5 - Alexandre Garbe : feat(admin): added hr to finance related fields in the candidacy training form
+2026-10-22T15:31:56+02:00 - acd667c - Alexandre Garbe : feat(admin): added financement pris en charge by transitions pro field to training page
+2026-10-22T11:36:22+02:00 - b8d80f3 - Alexandre Garbe : feat(api): added financementPrisEnChargeParTransitionsPro to graphql Candidacy and training_submitTrainingForm mutation
+2026-10-22T10:53:35+02:00 - 8ad2b0c - Alexandre Garbe : feat(api): added financement_pris_en_charge_par_transitions_pro column to candidacy table
+2026-10-22T10:30:51+02:00 - facccca - Alexandre Garbe : fix(api): renamed role_specific_to_sous_compte_and_cohorte_vae_collective table cohorteVaeCollectiveId column to cohorte_vae_collective_id
+2026-10-21T16:53:58+02:00 - 6f76612 - Alexandre Garbe : feat(api): replaced account.certification_authority_id by certification_authority_on_account
+2026-10-21T16:53:57+02:00 - e9167f7 - Alexandre Garbe : feat(api): added a getCertificationAuthorityIdForAccount helper
+2026-10-21T16:53:57+02:00 - acb5f4a - Alexandre Garbe : feat(api): copy account.certification_authority_id content into new certification_authority_on_account table
+2026-10-21T16:53:57+02:00 - 9c1ad4b - Alexandre Garbe : feat(api): update certification_authority_on_account table make account_id unique
+2026-10-21T16:53:57+02:00 - 86ab333 - Alexandre Garbe : feat(api): added certification_authority_on_account table
+2026-10-21T16:53:57+02:00 - 0ee2955 - Alexandre Garbe : feat(api): added a createCertificationAuthorityOnAccountHelper test helper
+2026-10-21T16:41:16+02:00 - d17a58a - dependabot[bot] : chore(deps): bump werkzeug from 3.1.8 to 3.1.9 in /infra/clamav-rest
+2026-10-21T15:44:50+02:00 - 2cd04f8 - Pierre A : chore(strapi):update to latest version
+2026-10-21T14:41:38+02:00 - fb13cbf - Alexandre Garbe : feat(api): candidacy.candidate_id is no longer nullable
+2026-10-21T11:59:31+02:00 - d0faf8e - Alexandre Garbe : feat(candidate): add expiration date tile on certification page
+2026-10-21T11:39:10+02:00 - 38fdb16 - Alexandre Garbe : feat(candidate): merge diploma type into the level tile on certification page
+2026-10-21T11:39:03+02:00 - 93d4ae0 - Alexandre Garbe : feat(candidate): put the RNCP code in a tag on certification page
+2026-10-21T11:38:55+02:00 - 9835f2a - Alexandre Garbe : feat(candidate): remove autonomy label on certification page
+2026-10-21T10:55:06+02:00 - 90a0942 - Alexandre Garbe : chore(strapi+admin+candidate+website): updated sharp from ^0.35.3 to ^0.35.4 to solve some codeql warnings
+2026-10-21T10:46:05+02:00 - 55caad2 - dependabot[bot] : chore(deps): bump js-yaml from 4.3.1 to 4.3.2 in /packages/reva-interop
+2026-10-21T10:38:19+02:00 - 481ddfd - dependabot[bot] : chore(deps): bump brace-expansion in /infra/strapi
+2026-10-21T10:33:43+02:00 - d810699 - dependabot[bot] : chore(deps): bump nanoid from 3.3.16 to 3.3.20 in /packages/reva-website
+2026-10-21T10:29:00+02:00 - 3377463 - dependabot[bot] : chore(deps): bump urllib3 from 2.7.0 to 2.8.0 in /infra/clamav-rest
+2026-10-21T10:28:26+02:00 - 302b93f - dependabot[bot] : chore(deps): bump source-map-js from 1.2.1 to 1.2.2 in /infra/strapi
+2026-10-21T10:05:13+02:00 - cac17b5 - dependabot[bot] : chore(deps-dev): bump shell-quote from 1.10.0 to 1.12.0
+2026-10-21T10:02:20+02:00 - a4957e8 - dependabot[bot] : chore(deps): bump proxy-addr from 2.0.7 to 2.0.8 in /infra/strapi
+2026-10-21T09:57:54+02:00 - 5c81736 - dependabot[bot] : chore(deps): bump certifi in /infra/clamav-rest
+2026-10-21T09:55:47+02:00 - 80e0221 - dependabot[bot] : chore(deps-dev): bump shell-quote in /packages/reva-api
+2026-10-21T09:55:34+02:00 - 1608e14 - dependabot[bot] : chore(deps): bump source-map-js in /packages/reva-admin-react
+2026-10-21T09:53:48+02:00 - 3d78794 - dependabot[bot] : chore(deps-dev): bump shell-quote in /packages/reva-candidate
+2026-10-21T09:49:57+02:00 - 5f64816 - dependabot[bot] : chore(deps): bump follow-redirects in /packages/reva-api
+2026-10-21T09:49:41+02:00 - 3c557bc - dependabot[bot] : chore(deps-dev): bump follow-redirects in /packages/reva-admin-react
+2026-10-21T09:45:26+02:00 - e286d6b - dependabot[bot] : chore(deps): bump follow-redirects in /infra/strapi
+2026-10-21T09:40:53+02:00 - 6f5cde7 - dependabot[bot] : chore(deps): bump source-map-js in /packages/reva-candidate
+2026-10-21T09:38:18+02:00 - 8fbba38 - dependabot[bot] : chore(deps-dev): bump shell-quote in /packages/reva-admin-react
+2026-10-20T14:55:55+02:00 - 2eeff32 - Alexandre Garbe : feat§api+admin+vae-collective): increased email otp lifetime from 10 to 30 minutes
+2026-10-20T10:54:51+02:00 - 8a1bb29 - Alexandre Garbe : test(vae-collective): added tests on the cohorte access rights breadcrumb
+2026-10-20T10:51:04+02:00 - 3d0e5d2 - Alexandre Garbe : fix(vae-collective): wrong label in cohorte access rights breadcrumb label
 2026-10-16T16:14:04+02:00 - e43f670 - fbonniec : Merge pull request #1149 from betagouv/dependabot/npm_and_yarn/packages/reva-candidate/next-16.3.8
 2026-10-16T15:45:23+02:00 - c113f3d - fbonniec : Merge pull request #1148 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/shell-quote-1.12.0
 2026-10-16T15:38:07+02:00 - c743835 - fbonniec : Merge pull request #1147 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/fastify/busboy-3.2.3

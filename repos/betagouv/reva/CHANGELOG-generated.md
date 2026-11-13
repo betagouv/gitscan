@@ -1,34 +1,38 @@
-## Changelog : reva (30 derniers jours, au 16 octobre 2026)
+## Changelog : reva (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Ce mois-ci, l'écosystème REVA a franchi des étapes importantes avec la refonte du parcours de dépôt de dossier pour les candidats et l'enrichissement des fonctionnalités pour les structures collectives, notamment via une meilleure gestion des sous-comptes. La gestion administrative des certifications a été simplifiée et la structure technique a été renforcée pour améliorer la sécurité et la gestion des droits d'accès.
+Ce mois-ci a été marqué par une refonte majeure du parcours de soumission du Dossier de Validation (DV) pour les candidats, offrant une expérience plus fluide et dédiée. L'interface d'administration a également été modernisée pour mieux accompagner les organismes de certification, tandis que des mesures importantes ont été prises pour renforcer l'anonymisation des données et la sécurité des échanges.
 
 ### Évolutions fonctionnelles
-- **Parcours Candidat** : 
-    - Mise en place d'un nouveau parcours de dépôt de dossier (DV) sur une page dédiée, incluant une gestion dynamique des dates et des blocs de ressources.
-    - Amélioration de l'affichage des informations de faisabilité (badges et tuiles) et de l'historique des décisions.
-    - Possibilité de choisir une certification spécifique lors d'une démarche de VAE collective multi-certifications.
-- **VAE Collective** : 
-    - Ajout d'une page de suivi des candidatures et d'un espace de gestion des paramètres pour les sous-comptes.
-    - Amélioration de l'interface de gestion des sous-comptes (affichage de tags AAP, formulaires de création plus robustes et gestion des erreurs améliorée).
-    - Meilleure visibilité des permissions sur les cartes de cohortes et les éléments de gestion.
-- **Administration** : 
-    - Création d'un tableau de bord dédié aux comptes locaux d'autorités de certification.
-    - Simplification de la gestion des certifications grâce à l'ajout de fenêtres modales pour l'ajout et la suppression de certifications.
-    - Amélioration de l'ergonomie des liens relatifs aux autorités de certification sur l'ensemble des interfaces.
+
+**Pour les candidats**
+- **Refonte du Dossier de Validation (DV) :** Nouveau parcours de soumission avec des pages dédiées, un meilleur affichage des alertes et des blocs de ressources pour faciliter la saisie.
+- **Amélioration de l'ergonomie mobile :** Optimisation de l'affichage et de la réactivité de l'ensemble des formulaires (coordonnées, typologie, accord collectif, etc.) sur smartphone.
+- **Enrichissement des informations de certification :** Affichage plus clair des codes RNCP, des dates d'expiration et des niveaux de diplôme sur les pages de certification.
+- **Optimisation de la saisie :** Amélioration du composant d'autocomplétion pour les adresses et des filtres de recherche d'organismes.
+- **Nouveauté :** Possibilité de soumettre une demande d'aménagement spécifique directement lors du processus de soumission du dossier de validation.
+
+**Pour les organismes et l'administration**
+- **Modernisation de la gestion des dossiers :** Refonte complète de la vue "Dossier de Validation" pour les autorités de certification, incluant de nouveaux indicateurs visuels et des alertes de suivi (ex: avertissement si une date d'examen est prévue mais le dossier n'est pas soumis).
+- **Gestion des certifications :** Ajout de nouveaux outils de gestion (fenêtres modales) pour ajouter ou supprimer des certifications de manière plus efficace.
+- **Suivi financier :** Intégration de nouveaux champs de saisie pour le suivi des financements, notamment pour les prises en charge via Transitions Pro.
+- **Tableaux de bord :** Amélioration de l'accès et de l'affichage des tableaux de bord Metabase pour les sous-comptes dans le cadre de la VAE collective.
 
 ### Évolutions techniques
-- **Sécurité & Autorisation** : 
-    - Refonte majeure du système de gestion des droits via la migration vers des politiques centralisées (`withPolicies`).
-    - Introduction de nouveaux rôles et permissions spécifiques pour la gestion des sous-comptes (ex: rôle `SOUS_COMPTE_VAE_COLLECTIVE`).
-- **Architecture & Données** : 
-    - Introduction d'un nouvel objet métier `accompagnement` pour dissocier la notion de candidature de son mode d'accompagnement (autonome ou accompagné).
-    - Ajout de la traçabilité de la dernière connexion (`lastLoginAt`) dans la table des comptes.
-    - Mise en place de "feature flags" pour permettre un déploiement progressif des nouvelles pages de dépôt de dossier.
-- **Fiabilité de l'API** : 
-    - Amélioration de la robustesse lors de la création d'autorités de certification grâce à l'implémentation de mécanismes de rollback en cas d'échec.
-    - Optimisation des requêtes GraphQL et de la gestion des permissions par cohorte.
+
+**Architecture et API**
+- **Refonte de la gestion des autorités :** Restructuration profonde de la base de données pour lier les comptes aux autorités de certification via une nouvelle table dédiée, améliorant la robustesse du système.
+- **Logique de visibilité :** Optimisation des algorithmes de recherche pour que la visibilité des certifications soit directement liée à l'existence de parcours actifs et liés à une autorité.
+- **Sécurité des fichiers :** Renforcement des contrôles lors de l'upload (limitation stricte de la taille et des formats de fichiers autorisés).
+- **Gestion des accès :** Augmentation de la durée de validité des codes OTP par email (passant de 10 à 30 minutes) pour améliorer l'expérience utilisateur.
+
+**Sécurité et Données**
+- **Anonymisation renforcée :** Extension majeure du script d'anonymisation de la base de données pour couvrir un spectre plus large de données sensibles (financements, compétences, rendez-vous, informations de paiement, etc.).
+- **Sécurisation Metabase :** Mise en place d'un proxy OAuth2 pour sécuriser l'accès aux outils de statistiques.
+
+**Infrastructure**
+- **Optimisation des ressources :** Augmentation de la mémoire allouée au conteneur PostgreSQL pour améliorer les performances.
 
 ### Autres changements
-- **Infrastructure** : Modification de la configuration Traefik (désactivation de la réinitialisation de mot de passe Metabase).
-- **Maintenance** : Nettoyage de code (suppression d'imports inutilisés) et renommage de contraintes de base de données pour une meilleure clarté.
+- Nettoyage du code et suppression de composants et d'exports inutilisés.
+- Suppression de la fonctionnalité d'export des résultats de jury.

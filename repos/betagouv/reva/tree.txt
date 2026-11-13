@@ -368,6 +368,9 @@
 │   │           └── login
 │   │               ├── template.ftl
 │   │               └── theme.properties
+│   ├── metabase-oauth2-proxy
+│   │   ├── .buildpacks
+│   │   └── Procfile
 │   ├── metabase-scalingo
 │   │   ├── .buildpacks
 │   │   ├── Procfile
@@ -1555,6 +1558,18 @@
     │   │   │   │   │   │   │   │   │   ├── dossierDeValidationProblemPageLogic.ts
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   │   │   ├── dossier-de-validation-v2
+    │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   ├── AmenagementSpecifiqueBlock.tsx
+    │   │   │   │   │   │   │   │   │   ├── DossierDeValidationCard.tsx
+    │   │   │   │   │   │   │   │   │   ├── HistoryDossierDeValidationView.tsx
+    │   │   │   │   │   │   │   │   │   └── RequestCorrectionTile.tsx
+    │   │   │   │   │   │   │   │   ├── dossierDeValidationPageLogic.ts
+    │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   ├── problem
+    │   │   │   │   │   │   │   │   │   ├── dossierDeValidationProblemPageLogic.ts
+    │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   └── types.ts
     │   │   │   │   │   │   │   ├── feasibility
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── FeasibilityBanner.tsx
@@ -2157,6 +2172,10 @@
     │   │   │   │   ├── annuaire
     │   │   │   │   │   └── annuaire.spec.ts
     │   │   │   │   └── candidacy
+    │   │   │   │       ├── dossier-de-validation-v2
+    │   │   │   │       │   ├── dossier-de-validation-v2.spec.ts
+    │   │   │   │       │   └── problem
+    │   │   │   │       │       └── dossier-de-validation-v2-problem.spec.ts
     │   │   │   │       ├── dropout
     │   │   │   │       │   └── dropout.spec.ts
     │   │   │   │       ├── feasibility
@@ -2615,6 +2634,7 @@
     │   │   │       ├── getCertificationAuthoritiesToTransferCandidacy.ts
     │   │   │       ├── getCertificationAuthority.ts
     │   │   │       ├── getCertificationAuthorityByCandidacyId.ts
+    │   │   │       ├── getCertificationAuthorityIdForAccount.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByAccountId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.test.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.ts
@@ -2686,6 +2706,7 @@
     │   │   │   │   ├── getActiveDossierDeValidationByCandidacyId.ts
     │   │   │   │   ├── getActiveDossierDeValidationCountByCategory.ts
     │   │   │   │   ├── getActiveDossiersDeValidation.ts
+    │   │   │   │   ├── getAmenagementSpecifiqueByDossierDeValidationId.ts
     │   │   │   │   ├── getDossierDeValidationById.ts
     │   │   │   │   ├── getDossierDeValidationFilesNamesAndUrls.ts
     │   │   │   │   ├── getDossierDeValidationHistory.ts
@@ -2696,7 +2717,8 @@
     │   │   │   │   ├── markDossierDeValidationAsComplete.ts
     │   │   │   │   ├── markDossierDeValidationAsIncomplete.ts
     │   │   │   │   ├── sendDossierDeValidation.test.ts
-    │   │   │   │   └── sendDossierDeValidation.ts
+    │   │   │   │   ├── sendDossierDeValidation.ts
+    │   │   │   │   └── submitAmenagementSpecifique.ts
     │   │   │   ├── security
     │   │   │   │   └── canManageDossierDeValidation.ts
     │   │   │   ├── types
@@ -3095,6 +3117,7 @@
     │   │   │   ├── rncp
     │   │   │   │   └── referential.ts
     │   │   │   └── utils
+    │   │   │       ├── certificationVisibilityWhereClause.ts
     │   │   │       └── rncp.helpers.ts
     │   │   ├── shared
     │   │   │   ├── auth
@@ -3212,10 +3235,12 @@
     │   │       │   ├── getCommanditaireVaeCollectiveForAccountId.test.ts
     │   │       │   ├── getCommanditaireVaeCollectiveForAccountId.ts
     │   │       │   ├── getCommanditaireVaeCollectives.ts
+    │   │       │   ├── getMetabaseDashboardIframeUrlSousCompteVaeCollective.ts
     │   │       │   ├── getMetabaseDashboardIframeUrlVaeCollective.ts
     │   │       │   ├── getPermissionsForRole.ts
     │   │       │   ├── getRolesSpecificToSousCompteAndCohorteVaeCollective.ts
     │   │       │   ├── getSousCompteVaeCollectiveById.ts
+    │   │       │   ├── getSousCompteVaeCollectiveForConnectedUser.ts
     │   │       │   ├── getSousComptesByCommanditaireVaeCollectiveId.ts
     │   │       │   ├── getUserPermissions.test.ts
     │   │       │   ├── getUserPermissions.ts
@@ -4790,6 +4815,42 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20261012130526_add_new_dv_page_feature
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261019113108_add_amenagement_specifique_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261019114451_link_amenagement_specifique_to_dv
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261021122404_update_candidacy_table_make_candidate_id_column_not_null
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261021125931_add_certification_authority_on_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261021132541_backfill_certification_authority_on_account
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261021140558_update_certification_authority_on_account_table_make_account_id_unique
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261022082751_rename_role_specific_to_sous_compte_and_cohorte_vae_collective_table_cohorte_vae_collective_id_column_to_cohorte_vae_collective_id
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261022085319_update_candidacy_table_add_financement_pris_en_charge_par_transitions_pro_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261023065303_update_account_table_remove_certification_authority_id_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261023065541_add_index_on_certification_authority_id_on_certification_authority_on_account
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261023124921_add_back_certification_authority_id_to_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261023125107_copy_back_certification_id_in_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261023125458_drop_certification_authority_on_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261026130735_add_certification_authority_on_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261026130910_fill_certification_authority_on_account_from_account
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261026133947_update_account_table_drop_certification_authority_id_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261109154102_allow_souscompte_vaeco_dashboard_access
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20261110140331_rename_vaeco_voir_statisques_permissions
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4829,10 +4890,16 @@
     │   │   ├── anonymization
     │   │   │   ├── anonymize-keycloak-db.sql
     │   │   │   ├── anonymize-reva-db-full.sql
-    │   │   │   └── anonymize-reva-db.sql
+    │   │   │   ├── anonymize-reva-db.sql
+    │   │   │   └── metabase
+    │   │   │       ├── README.md
+    │   │   │       ├── anonymise.sql
+    │   │   │       └── docker-compose.yml
     │   │   ├── csvToJSON.ts
     │   │   ├── document.pdf
     │   │   ├── dossier_validation.pdf
+    │   │   ├── downloadFileByChunks.ts
+    │   │   ├── exportCandidateRgpd.ts
     │   │   ├── fillCertificationAuthorityLocalAccountOnCandidacyTable.ts
     │   │   ├── generateLLToEarthFromZipCodeToAAP.ts
     │   │   ├── getFormacodesBasedOnCertifications.ts
@@ -4873,6 +4940,7 @@
     │   │   │   │   ├── create-candidate-helper.ts
     │   │   │   │   ├── create-certification-authority-helper.ts
     │   │   │   │   ├── create-certification-authority-local-account-helper.ts
+    │   │   │   │   ├── create-certification-authority-on-account-helper.ts
     │   │   │   │   ├── create-certification-authority-structure-helper.ts
     │   │   │   │   ├── create-certification-helper.ts
     │   │   │   │   ├── create-convention-collective-helper.ts
@@ -5344,11 +5412,9 @@
     │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   ├── DateAndSubmissionTiles.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── ResourcesSection.tsx
-    │   │   │   │   │   │   │   │   │   │   │   └── tabs
-    │   │   │   │   │   │   │   │   │   │   │       ├── read-only-dossier-de-validation-tab
-    │   │   │   │   │   │   │   │   │   │   │       │   └── ReadOnlyDossierDeValidationTab.tsx
-    │   │   │   │   │   │   │   │   │   │   │       └── read-only-ready-for-jury-estimated-date-tab
-    │   │   │   │   │   │   │   │   │   │   │           └── ReadOnlyReadyForJuryEstimatedDateTab.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── read-only-dossier-de-validation-screen
+    │   │   │   │   │   │   │   │   │   │   │       ├── ReadOnlyDossierDeValidationScreen.tsx
+    │   │   │   │   │   │   │   │   │   │   │       └── ReadOnlyDvResourcesSection.tsx
     │   │   │   │   │   │   │   │   │   │   ├── date-previsionnelle
     │   │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   │   └── DatePrevisionnelleResourcesSection.tsx
@@ -5356,8 +5422,13 @@
     │   │   │   │   │   │   │   │   │   │   ├── depot-dv
     │   │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   │   ├── DepotDvForm.tsx
+    │   │   │   │   │   │   │   │   │   │   │   │   ├── DepotDvIntroScreen.tsx
     │   │   │   │   │   │   │   │   │   │   │   │   ├── DepotDvResourcesSection.tsx
     │   │   │   │   │   │   │   │   │   │   │   │   └── PreviousDossierAccordion.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── demande-amenagement
+    │   │   │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   │   │   └── AmenagementResourcesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── depotDossierDeValidation.hook.ts
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── dossierDeValidation.hook.ts
@@ -5720,6 +5791,7 @@
     │   │       │   ├── dossier-de-faisabilite
     │   │       │   │   └── dossier-de-faisabilite.spec.ts
     │   │       │   ├── dossier-de-validation
+    │   │       │   │   ├── dossier-de-validation-v2.spec.ts
     │   │       │   │   └── dossier-de-validation.spec.ts
     │   │       │   ├── end-accompagnement.spec.ts
     │   │       │   ├── jury-results
@@ -6042,6 +6114,10 @@
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   ├── dashboard
+    │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   ├── dashboard-commanditaire
+    │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   ├── dashboard-souscompte
     │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   └── parametres
     │   │   │   │   │   │       ├── actions.ts
@@ -6600,4 +6676,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2207 directories, 4395 files
+2234 directories, 4444 files

@@ -18,7 +18,7 @@
     "graphql:watch": "graphql-codegen --config codegen.ts --watch",
     "cypress:open": "cross-env TZ=Europe/Paris cypress open",
     "cypress:ci": "cross-env TZ=Europe/Paris cypress run",
-    "test:ci": "start-server-and-test 'PORT=3003 node .next/standalone/packages/reva-admin-react/server.js' http://localhost:3003/admin2/ cypress:ci",
+    "test:ci": "npx --yes start-server-and-test@2.1.3 'PORT=3003 node .next/standalone/packages/reva-admin-react/server.js' http://localhost:3003/admin2/ cypress:ci",
     "test": "playwright test --project=chromium",
     "test:ui": "playwright test --ui"
   },
@@ -28,7 +28,7 @@
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
-    "@hookform/resolvers": "^4.1.3",
+    "@hookform/resolvers": "^7.0.1",
     "@strapi/blocks-react-renderer": "^1.0.2",
     "@tanstack/react-query": "^5.80.6",
     "@types/crypto-js": "^4.2.2",
@@ -44,21 +44,21 @@
     "keycloak-js": "^24.0.5",
     "lodash": "^4.17.21",
     "msw": "^2.11.6",
-    "next": "^16.3.8",
+    "next": "^16.4.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-hook-form": "^7.57.0",
+    "react-hook-form": "^7.91.0",
     "react-hot-toast": "^2.5.2",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.4",
     "urql": "^4.2.2",
     "uuid": "^14.0.0",
-    "zod": "^3.25.51",
+    "zod": "^4.6.7",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/compat": "^1.3.1",
-    "@graphql-codegen/cli": "^6.2.1",
-    "@graphql-codegen/client-preset": "^5.2.4",
+    "@graphql-codegen/cli": "^7.4.6",
+    "@graphql-codegen/client-preset": "^6.2.3",
     "@parcel/watcher": "^2.5.1",
     "@playwright/test": "^1.56.1",
     "@types/lodash": "^4.17.17",
@@ -67,7 +67,7 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10",
     "cross-env": "^10.1.0",
-    "cypress": "^14.4.1",
+    "cypress": "^16.2.1",
     "dotenv": "^16.6.1",
     "eslint": "^9",
     "eslint-config-next": "^16.2.6",
@@ -80,7 +80,6 @@
     "postcss-url": "^10.1.3",
     "prettier": "^3.5.3",
     "sass": "^1.89.1",
-    "start-server-and-test": "^2.0.12",
     "tailwindcss": "^3.4.17",
     "typescript": "5.8.3"
   },
@@ -88,7 +87,7 @@
     "postcss-url": {
       "minimatch": "3.1.5"
     },
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.4",
     "brace-expansion@1": "^1.1.18"
   }
 }
