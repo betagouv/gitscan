@@ -65,7 +65,6 @@
 ├── .gitignore
 ├── .mcp.json
 ├── .npmrc
-├── .nvmrc
 ├── .playwright
 │   └── cli.config.json
 ├── .prettierignore
@@ -149,6 +148,7 @@
 │   │   ├── 20261012090000_videLiensMesuresPorteursParProcedures.ts
 │   │   ├── 20261013082438_supprime-les-prefixes-lien-mesure.ts
 │   │   ├── 20261103143433_ajouteDonneeReactionHameconnage.ts
+│   │   ├── 20261109163003_renommeFavorisMalletteCyber.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -274,20 +274,22 @@
 │   │   │   │   │   └── serviceModeleAnnuaireDeCrise.ts
 │   │   │   │   ├── modeleListeDActivites
 │   │   │   │   │   ├── modele-liste-d-activites.xlsx
-│   │   │   │   │   ├── ressourceModeleListeDActivites.ts
 │   │   │   │   │   └── serviceModeleListeDActivites.ts
 │   │   │   │   ├── modeleModificationMotsDePasse
 │   │   │   │   │   ├── modele-modifications-mots-de-passe.xlsx
-│   │   │   │   │   ├── ressourceModeleModificationsMotsDePasse.ts
 │   │   │   │   │   └── serviceModeleModificationMotsDePasse.ts
+│   │   │   │   ├── modeleRaci
+│   │   │   │   │   ├── modele-raci.xlsx
+│   │   │   │   │   └── serviceModeleRaci.ts
 │   │   │   │   ├── modeleRevueComptesUtilisateurs
 │   │   │   │   │   ├── modele-revue-comptes-utilisateurs.xlsx
-│   │   │   │   │   ├── ressourceModeleRevueComptesUtilisateurs.ts
 │   │   │   │   │   └── serviceModeleRevueComptesUtilisateurs.ts
 │   │   │   │   ├── modeleRevueDroitsDAcces
 │   │   │   │   │   ├── modele-revue-droits-d-acces.xlsx
-│   │   │   │   │   ├── ressourceModeleRevueDroitsDAcces.ts
 │   │   │   │   │   └── serviceModeleRevueDroitsDAcces.ts
+│   │   │   │   ├── modeleXslxGenerique
+│   │   │   │   │   ├── ressourceModeleXslx.ts
+│   │   │   │   │   └── serviceModeleXslx.ts
 │   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.ts
 │   │   │   │   ├── ressourceRappelMiseÀJourListeDActivites.ts
 │   │   │   │   ├── ressourceRetoursSurOutil.ts
@@ -300,6 +302,8 @@
 │   │   │   ├── ressourceAnnuaireRegions.ts
 │   │   │   ├── ressourceAnnuaireSecteursActivite.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
+│   │   │   ├── ressourceAvisParcours.schema.ts
+│   │   │   ├── ressourceAvisParcours.ts
 │   │   │   ├── ressourceAvisUtilisateur.schema.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
 │   │   │   ├── ressourceContacts.ts
@@ -345,6 +349,7 @@
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
 │   │   │   ├── consigneAvisMesureDonneDansJournal.ts
+│   │   │   ├── consigneAvisParcoursDonneDansJournal.ts
 │   │   │   ├── consigneAvisUtilisateurDonneDansJournal.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.ts
 │   │   │   ├── consigneCompteCreeDansJournal.ts
@@ -377,6 +382,7 @@
 │   │   │   ├── evenements
 │   │   │   │   ├── TestExpositionRealise.ts
 │   │   │   │   ├── avisMesureDonne.ts
+│   │   │   │   ├── avisParcoursDonne.ts
 │   │   │   │   ├── avisUtilisateurDonne.ts
 │   │   │   │   ├── badgeCyberdepartDebloque.ts
 │   │   │   │   ├── compteCree.ts
@@ -488,6 +494,7 @@
 │   │   │   ├── adaptateurEmail.ts
 │   │   │   ├── adaptateurStatistiqueMiniTests.ts
 │   │   │   ├── adaptateurStatistiqueParcours.ts
+│   │   │   ├── avisParcours.ts
 │   │   │   ├── besoinCyber.ts
 │   │   │   ├── blog
 │   │   │   │   ├── article.ts
@@ -586,7 +593,6 @@
 │   │   │   ├── sessionDeGroupe.ts
 │   │   │   ├── statistiques.ts
 │   │   │   ├── suivi.ts
-│   │   │   ├── telephone.ts
 │   │   │   ├── utilisateur.ts
 │   │   │   └── valideSiret.ts
 │   │   ├── presentation
@@ -651,6 +657,7 @@
 │   │   │   │       ├── constructeurDeQuestionVraieFausse.ts
 │   │   │   │       ├── ressourceReponsesVraiFaux.spec.ts
 │   │   │   │       └── ressourceVraiFaux.spec.ts
+│   │   │   ├── modeMaintenance.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
 │   │   │   ├── msc.spec.ts
@@ -670,6 +677,7 @@
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
 │   │   │   │   ├── ressourceModeleListeDActivites.spec.ts
 │   │   │   │   ├── ressourceModeleModificationsMotsDePasse.spec.ts
+│   │   │   │   ├── ressourceModeleRaci.spec.ts
 │   │   │   │   ├── ressourceModeleRevueComptesUtilisateurs.spec.ts
 │   │   │   │   ├── ressourceModeleRevueDroitsDAcces.spec.ts
 │   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.spec.ts
@@ -678,6 +686,7 @@
 │   │   │   │   ├── serviceModeleAnnuaireDeCrise.spec.ts
 │   │   │   │   ├── serviceModeleListeDActivites.spec.ts
 │   │   │   │   ├── serviceModeleModificationMotsDePasse.spec.ts
+│   │   │   │   ├── serviceModeleRaci.spec.ts
 │   │   │   │   ├── serviceModeleRevueComptesUtilisateurs.spec.ts
 │   │   │   │   └── serviceModeleRevueDroitsDAcces.spec.ts
 │   │   │   ├── ressourceAbonnementInfolettre.spec.ts
@@ -686,6 +695,7 @@
 │   │   │   ├── ressourceAnnuaireRegions.spec.ts
 │   │   │   ├── ressourceAnnuaireSecteursActivite.spec.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.spec.ts
+│   │   │   ├── ressourceAvisParcours.spec.ts
 │   │   │   ├── ressourceAvisUtilisateur.spec.ts
 │   │   │   ├── ressourceContacts.spec.ts
 │   │   │   ├── ressourceDocumentRessource.spec.ts
@@ -719,6 +729,7 @@
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
 │   │   │   ├── consigneAvisMesureDansJournal.spec.ts
+│   │   │   ├── consigneAvisParcoursDonneDansJournal.spec.ts
 │   │   │   ├── consigneAvisUtilisateurDonneDansJournal.spec.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.spec.ts
 │   │   │   ├── consigneCompteCreeDansJournal.spec.ts
@@ -779,6 +790,7 @@
 │   │   │   └── signalementErreursRuntime.spec.ts
 │   │   ├── metier
 │   │   │   ├── ResultatTestMaturiteCreateur.ts
+│   │   │   ├── avisParcours.spec.ts
 │   │   │   ├── generateurCodeSessionDeGroupe.spec.ts
 │   │   │   ├── guide.spec.ts
 │   │   │   ├── mini-tests
@@ -805,7 +817,6 @@
 │   │   │   ├── resultatTestMaturite.spec.ts
 │   │   │   ├── serviceSanteGuides.spec.ts
 │   │   │   ├── sessionDeGroupe.spec.ts
-│   │   │   ├── telephone.spec.ts
 │   │   │   ├── utilisateur.spec.ts
 │   │   │   └── valideSiret.spec.ts
 │   │   ├── mockCmsCrisp.ts
@@ -960,7 +971,7 @@
 │   │   ├── ebios.md
 │   │   ├── label-expert-cyber.md
 │   │   ├── livret-cyber-enjeux.md
-│   │   ├── malette-cyber.md
+│   │   ├── mallette-cyber.md
 │   │   ├── nl-industrie.md
 │   │   ├── panorama.md
 │   │   ├── prestas-ebios.md
@@ -1141,8 +1152,8 @@
 │   │   │   │   │   ├── mac-accompagnement.avif
 │   │   │   │   │   ├── mac-diag.avif
 │   │   │   │   │   └── mac.avif
-│   │   │   │   ├── malette-cyber
-│   │   │   │   │   └── malette-cyber.avif
+│   │   │   │   ├── mallette-cyber
+│   │   │   │   │   └── mallette-cyber.avif
 │   │   │   │   ├── mooc-ebios-rm
 │   │   │   │   │   └── mooc-ebios-rm.avif
 │   │   │   │   ├── mss
@@ -1742,9 +1753,6 @@
 │   │   │   │   ├── ActionParcoursAvecItems.svelte
 │   │   │   │   └── itemDuParcours.ts
 │   │   │   ├── parcours-securisation
-│   │   │   │   ├── BadgeCyberdepart.svelte
-│   │   │   │   ├── BasculeParcoursComplet.svelte
-│   │   │   │   ├── BoutonPartageBadgeCyberdepart.svelte
 │   │   │   │   ├── CarteMesure.svelte
 │   │   │   │   ├── EncartPromotionParcoursBasique.svelte
 │   │   │   │   ├── EncartPromotionParcoursComplet.svelte
@@ -1755,10 +1763,9 @@
 │   │   │   │   ├── LandingParcoursSecurisationComplet.svelte
 │   │   │   │   ├── LienRetourAuxModules.svelte
 │   │   │   │   ├── MesuresDeModule.svelte
-│   │   │   │   ├── Module.svelte
-│   │   │   │   ├── ModuleCyberdepart.svelte
-│   │   │   │   ├── PriseEnCompteMesure.svelte
+│   │   │   │   ├── ModaleRetourUtilisateurSurParcours.svelte
 │   │   │   │   ├── Progression.svelte
+│   │   │   │   ├── RetourUtilisateurSurParcours.svelte
 │   │   │   │   ├── TagProgrammeGratuit.svelte
 │   │   │   │   ├── animation
 │   │   │   │   │   ├── HerosParcoursBasique.svelte
@@ -1793,50 +1800,63 @@
 │   │   │   │   │       ├── MesureMCO_MCS5.svelte
 │   │   │   │   │       ├── MesureRECENSEMENT1.svelte
 │   │   │   │   │       └── MesureRH2.svelte
-│   │   │   │   ├── mesure.ts
+│   │   │   │   ├── evenementsDuParcours.ts
+│   │   │   │   ├── evenementsViaModaleParcoursComplet.svelte
 │   │   │   │   ├── mesures
 │   │   │   │   │   ├── CartesLiensProcédures.svelte
 │   │   │   │   │   ├── Mesure.svelte
-│   │   │   │   │   └── boite-a-outils
-│   │   │   │   │       ├── BoiteAOutils.svelte
-│   │   │   │   │       ├── EtapeProcedure.svelte
-│   │   │   │   │       ├── EtapesProcedure.svelte
-│   │   │   │   │       ├── Procedure.svelte
-│   │   │   │   │       └── personnalisee
-│   │   │   │   │           ├── BoiteAOutilsAUTH1.svelte
-│   │   │   │   │           ├── BoiteAOutilsCOMPTE4.svelte
-│   │   │   │   │           ├── BoiteAOutilsCRISE8.svelte
-│   │   │   │   │           ├── BoiteAOutilsDROITS2.svelte
-│   │   │   │   │           ├── BoiteAOutilsEXO1.svelte
-│   │   │   │   │           ├── BoiteAOutilsRECENSEMENT1.svelte
-│   │   │   │   │           ├── BoiteAOutilsRECENSEMENT2.svelte
-│   │   │   │   │           ├── BoiteAOutilsRECENSEMENT3.svelte
-│   │   │   │   │           ├── BoiteAOutilsRH2.svelte
-│   │   │   │   │           └── outils
-│   │   │   │   │               ├── OutilCampagneDeSensibilisation.svelte
-│   │   │   │   │               ├── OutilJeuCarteReflexesCyber.svelte
-│   │   │   │   │               ├── OutilJeuReflexesCyberEnLigne.svelte
-│   │   │   │   │               ├── OutilMiniTestExposition.svelte
-│   │   │   │   │               ├── OutilMiniTestHameconnage.svelte
-│   │   │   │   │               ├── OutilMiniTestMaturite.svelte
-│   │   │   │   │               ├── OutilMiniTestReflexesCyber.svelte
-│   │   │   │   │               ├── OutilMiniTestVraiFaux.svelte
-│   │   │   │   │               ├── OutilModeleAnnuaireDeCrise.svelte
-│   │   │   │   │               ├── OutilModeleDActivites.svelte
-│   │   │   │   │               ├── OutilModeleModificationMotsDePasse.svelte
-│   │   │   │   │               ├── OutilModeleRevueComptesUtilisateurs.svelte
-│   │   │   │   │               ├── OutilModeleRevueDroitsDAcces.svelte
-│   │   │   │   │               ├── OutilRappelMiseAJourActivites.svelte
-│   │   │   │   │               ├── OutilRappelMiseAJourAnnuaire.svelte
-│   │   │   │   │               └── patrons
-│   │   │   │   │                   ├── IllustrationOutil.svelte
-│   │   │   │   │                   ├── OutilLien.svelte
-│   │   │   │   │                   └── OutilTelechargement.svelte
-│   │   │   │   ├── modales
+│   │   │   │   │   ├── PriseEnCompteMesure.svelte
+│   │   │   │   │   ├── boite-a-outils
+│   │   │   │   │   │   ├── BoiteAOutils.svelte
+│   │   │   │   │   │   ├── EtapeProcedure.svelte
+│   │   │   │   │   │   ├── EtapesProcedure.svelte
+│   │   │   │   │   │   ├── Procedure.svelte
+│   │   │   │   │   │   └── personnalisee
+│   │   │   │   │   │       ├── BoiteAOutilsAUTH1.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsCOMPTE4.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsCRISE8.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsDROITS2.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsEXO1.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsRECENSEMENT1.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsRECENSEMENT2.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsRECENSEMENT3.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsRH2.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsROLE3.svelte
+│   │   │   │   │   │       └── outils
+│   │   │   │   │   │           ├── OutilCampagneDeSensibilisation.svelte
+│   │   │   │   │   │           ├── OutilJeuCarteReflexesCyber.svelte
+│   │   │   │   │   │           ├── OutilJeuReflexesCyberEnLigne.svelte
+│   │   │   │   │   │           ├── OutilMiniTestExposition.svelte
+│   │   │   │   │   │           ├── OutilMiniTestHameconnage.svelte
+│   │   │   │   │   │           ├── OutilMiniTestMaturite.svelte
+│   │   │   │   │   │           ├── OutilMiniTestReflexesCyber.svelte
+│   │   │   │   │   │           ├── OutilMiniTestVraiFaux.svelte
+│   │   │   │   │   │           ├── OutilModeleAnnuaireDeCrise.svelte
+│   │   │   │   │   │           ├── OutilModeleDActivites.svelte
+│   │   │   │   │   │           ├── OutilModeleModificationMotsDePasse.svelte
+│   │   │   │   │   │           ├── OutilModeleRaci.svelte
+│   │   │   │   │   │           ├── OutilModeleRevueComptesUtilisateurs.svelte
+│   │   │   │   │   │           ├── OutilModeleRevueDroitsDAcces.svelte
+│   │   │   │   │   │           ├── OutilRappelMiseAJourActivites.svelte
+│   │   │   │   │   │           ├── OutilRappelMiseAJourAnnuaire.svelte
+│   │   │   │   │   │           └── patrons
+│   │   │   │   │   │               ├── IllustrationOutil.svelte
+│   │   │   │   │   │               ├── OutilLien.svelte
+│   │   │   │   │   │               └── OutilTelechargement.svelte
+│   │   │   │   │   └── mesure.ts
+│   │   │   │   ├── module
+│   │   │   │   │   ├── ModaleModuleTermine.svelte
+│   │   │   │   │   ├── ModaleParcoursTermine.svelte
+│   │   │   │   │   └── Module.svelte
+│   │   │   │   ├── module-cyberdepart
+│   │   │   │   │   ├── BadgeCyberdepart.svelte
+│   │   │   │   │   ├── BasculeParcoursComplet.svelte
+│   │   │   │   │   ├── BoutonPartageBadgeCyberdepart.svelte
 │   │   │   │   │   ├── ModaleBadgeCyberdepartDebloque.svelte
 │   │   │   │   │   ├── ModaleModuleCyberdepartTermine.svelte
-│   │   │   │   │   ├── ModaleModuleTermine.svelte
-│   │   │   │   │   └── ModaleParcoursTermine.svelte
+│   │   │   │   │   ├── ModuleCyberdepart.svelte
+│   │   │   │   │   ├── evenementsViaModaleParcoursComplet.svelte
+│   │   │   │   │   └── evenementsViaModaleParcoursCyberdepart.svelte
 │   │   │   │   ├── moduleReponseApi.ts
 │   │   │   │   └── parcours-complet
 │   │   │   │       ├── ParcoursComplet.svelte
@@ -2040,6 +2060,8 @@
 │   │   │   │       └── questionnaireAvecUndo.store.spec.ts
 │   │   │   ├── niveaux-maturite
 │   │   │   │   └── calculeIdNiveau.spec.ts
+│   │   │   ├── parcours-securisation
+│   │   │   │   └── evenementsDuParcours.spec.ts
 │   │   │   ├── test-maturite
 │   │   │   │   ├── repartitions.spec.ts
 │   │   │   │   └── stores
@@ -2229,4 +2251,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-358 directories, 2095 files
+362 directories, 2113 files

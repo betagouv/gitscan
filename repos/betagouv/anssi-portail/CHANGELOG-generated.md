@@ -1,41 +1,41 @@
-## Changelog : anssi-portail (30 derniers jours, au 10 novembre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance des outils de sensibilisation et de l'accompagnement. Le portail a vu le déploiement de nouveaux tests de simulation de hameçonnage plus complets et une refonte majeure de la "Boîte à outils", qui propose désormais des modèles de documents personnalisables et un système de retour utilisateur. L'annuaire des contacts a également été enrichi pour offrir une meilleure précision géographique et sectorielle.
+Ce mois a été marqué par un enrichissement majeur de la boîte à outils avec l'ajout de nouveaux modèles de documents et une refonte profonde de l'expérience de simulation de hameçonnage. L'accent a également été mis sur la collecte des retours utilisateurs pour améliorer les parcours de sensibilisation et sur une montée de version importante de l'infrastructure technique.
 
 ### Évolutions fonctionnelles
 - **Simulation de hameçonnage** :
-    - Déploiement de nouveaux scénarios de tests en production.
-    - Amélioration de l'expérience utilisateur sur mobile et tablette.
-    - Ajout de fonctionnalités de suivi : affichage des scores, distinction visuelle des messages lus/non-lus et possibilité de laisser un avis après le test.
-    - Mise à disposition de composants web externes pour faciliter l'intégration des tests sur d'autres sites.
+    - Déploiement de nouveaux mini-tests avec des visuels améliorés (cartes animées) et une meilleure adaptation aux mobiles.
+    - Mise en place d'un système de score et de collecte des réponses utilisateurs.
+    - Création d'un composant Web (WebComponent) permettant d'intégrer facilement les tests de hameçonnage sur des sites externes.
+    - Enrichissement du contenu des emails de simulation (Orange, ANSSI, etc.) et amélioration de l'affichage des résultats.
 - **Boîte à outils** :
-    - Ajout de nouveaux modèles de documents et procédures (Recensement, Revue des droits d'accès, Modification de mots de passe, etc.).
-    - Mise en place d'un système de prévisualisation des documents (via modale) avant téléchargement.
-    - Évolution terminologique : les "tutoriels" sont désormais appelés "procédures".
-    - Intégration d'un module de collecte des retours utilisateurs pour chaque outil.
-- **Contacts et annuaires** :
-    - Mise à jour et enrichissement des données de contact (niveaux national, régional et sectoriel).
+    - Ajout de nouveaux modèles de documents : matrice RACI, revue des droits d'accès, revue des comptes utilisateurs, et listes d'activités.
+    - Amélioration de la génération de documents : ajout d'une fonction de prévisualisation des fichiers XLSX, gestion de l'insertion de logos sur les PDF et amélioration du téléchargement.
+    - Intégration d'un module de retours utilisateurs directement dans les outils pour recueillir l'avis des professionnels.
+- **Parcours de sécurisation** :
+    - Mise en place de modales de demande d'avis à des étapes clés (complétion du parcours, obtention du badge Cyberdépart).
+- **Annuaires et contacts** :
+    - Mise à jour et enrichissement des contacts nationaux, régionaux et sectoriels.
     - Amélioration de l'affichage des cartes de contacts.
-- **Contenu et navigation** :
-    - Création d'une nouvelle page dédiée au "Kit Relais".
-    - Amélioration des parcours de sécurisation et des redirections vers les pages de diagnostic.
 
 ### Évolutions techniques
-- **Infrastructure et Environnement** :
+- **Infrastructure et Toolchain** :
     - Migration de la stack vers Node.js 26 et PostgreSQL 18.
-    - Amélioration de la gestion des environnements métier et simplification des tests.
+    - Mise à jour de l'environnement de développement (Nix, pnpm) et de la configuration CleverCloud.
 - **Architecture et Backend** :
-    - Refonte complète du système de signalement des erreurs (séparation du traitement HTTP et du contrat de signalement).
-    - Réorganisation massive des routes de l'API (outils, mini-tests, annuaires) pour une meilleure maintenabilité.
-    - Optimisation de la gestion des middlewares et de la configuration de sécurité (CSP).
-- **Interface et Design (UI/UX)** :
-    - Mise à jour majeure du kit d'interface (`@lab-anssi/ui-kit` passage en v2.x).
-    - Généralisation de l'utilisation des composants du Design System (DSFR) pour les alertes, les notifications et les uploads.
-    - Optimisation du rendu côté serveur (SSR) et alignement avec le rendu client (HMR) pour Svelte.
-- **Qualité et Toolchain** :
-    - Amélioration de la robustesse des tests et de la gestion des dépendances.
+    - Implémentation d'un contrat de signalement d'erreurs centralisé pour améliorer la robustesse du système.
+    - Réorganisation des routes API (outils, contacts, annuaires et mini-tests) pour une meilleure maintenance.
+    - Refactorisation de la logique de manipulation des fichiers Excel (XLSX) et de la gestion des archives.
+- **Frontend et UI** :
+    - Migration vers la version 2 du kit UI (@lab-anssi/ui-kit).
+    - Adoption de nouveaux composants DSFR (Alert, Notice, Upload) pour harmoniser l'interface.
+    - Optimisation du rendu serveur (SSR) avec Svelte et amélioration du mode de développement (Hot Reload).
 
 ### Autres changements
-- **Qualité du code (Linting)** : Mise en place de nouvelles règles de normalisation typographique (gestion des espaces insécables) sur l'ensemble des fichiers (Markdown, Svelte, HTML, Jekyll).
-- **Nettoyage** : Réorganisation de la structure des dossiers, suppression des commentaires inutiles et renommage de fichiers pour plus de clarté.
+- **Qualité et Typographie** :
+    - Normalisation des espaces typographiques (espaces insécables) dans les fichiers Markdown, HTML et les composants Svelte.
+    - Correction de nombreuses coquilles, accents et formulations dans les textes du site.
+- **Nettoyage** :
+    - Suppression de classes et de modules en doublon ou inutilisés.
+    - Optimisation de l'organisation des dossiers du projet.
