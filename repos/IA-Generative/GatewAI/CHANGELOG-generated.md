@@ -1,26 +1,34 @@
-## Changelog : GatewAI (30 derniers jours, au 09 novembre 2026)
+## Changelog : GatewAI (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Ce mois a été marqué par une extension significative des capacités de la plateforme, notamment avec l'introduction du support pour le streaming en temps réel via WebSocket. Les performances ont été considérablement optimisées, tant pour le suivi de la consommation que pour la gestion des transferts de fichiers, tout en renforçant la sécurité et la gestion des quotas pour les utilisateurs.
+Ce mois a été marqué par des avancées majeures, notamment l'introduction du support du streaming en temps réel via WebSocket et l'amélioration significative des mécanismes de limitation de débit (rate limiting) pour une meilleure compatibilité avec les standards OpenAI. Le projet a également bénéficié d'optimisations de performance importantes sur le suivi de l'utilisation et a finalisé sa transition vers l'organisation IA-Generative.
 
 ### Évolutions fonctionnelles
-- **Support du temps réel** : Introduction d'un proxy de streaming WebSocket incluant le contrôle d'accès lors du handshake, la limitation de la concurrence des sessions et le comptage de la consommation audio.
-- **Gestion avancée du débit (Rate-limiting)** : 
-    - Ajout de la fonctionnalité `budget_group` permettant de mutualiser les quotas de tokens par modèle.
-    - Prise en charge des headers de limitation de débit compatibles avec l'API OpenAI.
-    - Amélioration de la précision du calcul du TTL (Time To Live) pour les limites de débit.
-- **Gestion des quotas** : Amélioration de la possibilité de réinitialiser les quotas par modèle via l'administration.
+- **Support du temps réel (WebSocket) :**
+    - Introduction d'un proxy de streaming WebSocket avec contrôle d'accès lors du handshake.
+    - Mise en place de limites de concurrence par session et de la mesure de consommation (audio-seconds metering).
+    - Ajout de garde-fous (guardrails) sur le texte des transcriptions.
+- **Limitation de débit (Rate Limiting) :**
+    - Introduction de la fonctionnalité `budget_group` permettant de mutualiser le budget de tokens par modèle.
+    - Support des en-têtes de limitation de débit compatibles avec OpenAI.
+    - Amélioration de la gestion des quotas avec la possibilité de réinitialiser les quotas par modèle.
+- **Configuration Kubernetes :**
+    - Ajout de la prise en charge des propriétés `envFrom` et `volumes` pour faciliter le déploiement.
 
 ### Évolutions techniques
-- **Optimisation des performances de reporting** : Refonte du pipeline de reporting d'usage (`GetConsumerUsage`) utilisant des lectures Redis "pipelined". Cela réduit le nombre d'allers-retours réseau de plusieurs milliers à seulement quelques dizaines par requête [#223].
-- **Optimisation du streaming de données** : Refactorisation des uploads multipart pour streamer les données directement vers le backend au lieu de les mettre en mémoire tampon, évitant ainsi les fuites de stockage éphémère et l'utilisation excessive de ressources.
-- **Mise à jour de l'infrastructure** : Migration vers Go 1.27 et utilisation d'images de base Debian 13 (distroless) pour améliorer la sécurité et la légèreté des conteneurs.
-- **Correction de la télémétrie** : Résolution d'un problème de configuration de l'exportateur OTLP qui ne ciblait pas les bons chemins d'accès, rétablissant l'envoi correct des traces et métriques.
+- **Optimisation des performances :**
+    - Refonte du pipeline de reporting de l'utilisation : passage de centaines de requêtes Redis sérielles à seulement deux requêtes via du pipelining, réduisant drastiquement la charge sur Redis [#223](https://github.com/IA-Generative/GatewAI/pull/223).
+    - Optimisation des uploads synchrones : passage d'un mode bufferisé à un mode streaming pour éviter les fuites de stockage éphémère et une meilleure gestion des slots de modèles.
+- **Infrastructure et Sécurité :**
+    - Migration de la chaîne de build vers Go 1.27 et utilisation d'images de base Debian 13 (distroless) pour renforcer la sécurité.
+    - Correction du chemin d'exportation OTLP pour assurer le bon fonctionnement de la télémétrie.
+- **Helm :**
+    - Correction d'alertes obsolètes et mise à jour de la documentation des métriques.
 
 ### Autres changements
-- **Migration de l'organisation** : Transfert complet du projet de `Qatr-io` vers `IA-Generative` (références de code, images Docker, documentation et licence).
-- **Documentation** : 
+- **Identité et Branding :** Migration complète des références de l'organisation `Qatr-io` vers `IA-Generative` (licence, copyright et URLs).
+- **Documentation :**
+    - Mise à jour majeure de la documentation pour garantir l'exactitude des informations (architecture, endpoints, métriques).
     - Traduction des cartes de fonctionnalités de la page d'accueil en anglais.
-    - Ajout de la documentation concernant les headers de rate-limiting et les pools de backends.
-    - Mise à jour globale pour corriger les liens morts et les informations obsolètes.
-- **Maintenance** : Ajout de labels de source OCI sur les images Docker pour lier les packages GHCR au dépôt.
+    - Documentation des nouveaux en-têtes de rate-limiting et des pools de backends.
+- **Divers :** Ajout de labels OCI sur les images Docker pour lier les packages GHCR au dépôt.
