@@ -32,7 +32,10 @@
 ├── app
 │   ├── assets
 │   │   ├── images
-│   │   │   └── .keep
+│   │   │   ├── .keep
+│   │   │   └── courriels
+│   │   │       ├── marianne-clair.png
+│   │   │       └── marianne-sombre.png
 │   │   └── stylesheets
 │   │       ├── application.css
 │   │       └── proconnect_button.css
@@ -112,6 +115,7 @@
 │   │   │               │   ├── check_data_streams.rb
 │   │   │               │   ├── check_memberships.rb
 │   │   │               │   ├── check_organization.rb
+│   │   │               │   ├── enqueue_invitation.rb
 │   │   │               │   ├── ensure_no_refusal.rb
 │   │   │               │   ├── register.rb
 │   │   │               │   └── validate_payload.rb
@@ -178,6 +182,7 @@
 │   │       └── index.js
 │   ├── jobs
 │   │   ├── api
+│   │   │   ├── invite_agent_job.rb
 │   │   │   ├── purge_events_job.rb
 │   │   │   └── purge_stale_tokens_job.rb
 │   │   ├── application_job.rb
@@ -185,10 +190,14 @@
 │   │       ├── purge_access_decisions_job.rb
 │   │       └── purge_provider_sessions_job.rb
 │   ├── mailers
+│   │   ├── api
+│   │   │   └── agent_mailer.rb
 │   │   └── application_mailer.rb
 │   ├── models
 │   │   ├── access_decision.rb
 │   │   ├── agent.rb
+│   │   ├── api
+│   │   │   └── organization.rb
 │   │   ├── application_record.rb
 │   │   ├── concerns
 │   │   │   └── .keep
@@ -208,6 +217,7 @@
 │   │   │   │   ├── authentication_levels.rb
 │   │   │   │   ├── data_stream_perimeter.rb
 │   │   │   │   ├── organization_perimeter.rb
+│   │   │   │   ├── portal_perimeter.rb
 │   │   │   │   ├── second_factor.rb
 │   │   │   │   ├── sensitive_data_streams.rb
 │   │   │   │   ├── state_perimeter.rb
@@ -255,6 +265,9 @@
 │   │       └── delivery_criteria_validator.rb
 │   └── views
 │       ├── api
+│       │   ├── agent_mailer
+│       │   │   ├── invitation.html.erb
+│       │   │   └── invitation.text.erb
 │       │   ├── internal
 │       │   │   └── v1
 │       │   │       └── agents
@@ -279,6 +292,7 @@
 │       │           ├── index.json.jbuilder
 │       │           └── show.json.jbuilder
 │       ├── layouts
+│       │   ├── _mailer_bloc_marque.html.erb
 │       │   ├── application.html.erb
 │       │   ├── mailer.html.erb
 │       │   ├── mailer.text.erb
@@ -355,6 +369,7 @@
 │   │   └── test.rb
 │   ├── importmap.rb
 │   ├── initializers
+│   │   ├── action_mailer.rb
 │   │   ├── active_record_encryption.rb
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
@@ -536,6 +551,7 @@
 │   │   │               │   ├── check_data_streams_spec.rb
 │   │   │               │   ├── check_memberships_spec.rb
 │   │   │               │   ├── check_organization_spec.rb
+│   │   │               │   ├── enqueue_invitation_spec.rb
 │   │   │               │   ├── ensure_no_refusal_spec.rb
 │   │   │               │   ├── register_spec.rb
 │   │   │               │   └── validate_payload_spec.rb
@@ -596,6 +612,7 @@
 │   │           └── show_spec.rb
 │   ├── jobs
 │   │   ├── api
+│   │   │   ├── invite_agent_job_spec.rb
 │   │   │   ├── purge_events_job_spec.rb
 │   │   │   └── purge_stale_tokens_job_spec.rb
 │   │   └── portail
@@ -621,6 +638,9 @@
 │   │           └── token_verifier_spec.rb
 │   ├── locales
 │   │   └── portail_fr_spec.rb
+│   ├── mailers
+│   │   └── api
+│   │       └── agent_mailer_spec.rb
 │   ├── models
 │   │   ├── access_decision_spec.rb
 │   │   ├── agent_spec.rb
@@ -638,6 +658,7 @@
 │   │   │   │   ├── authentication_levels_spec.rb
 │   │   │   │   ├── data_stream_perimeter_spec.rb
 │   │   │   │   ├── organization_perimeter_spec.rb
+│   │   │   │   ├── portal_perimeter_spec.rb
 │   │   │   │   ├── second_factor_spec.rb
 │   │   │   │   ├── sensitive_data_streams_spec.rb
 │   │   │   │   ├── state_perimeter_spec.rb
@@ -701,6 +722,7 @@
 │   │       │   └── states_spec.rb
 │   │       ├── deliveries_spec.rb
 │   │       ├── errors_spec.rb
+│   │       ├── help_link_spec.rb
 │   │       ├── memberships_spec.rb
 │   │       ├── sessions_spec.rb
 │   │       └── subscriptions_spec.rb
@@ -738,4 +760,4 @@
     ├── .keep
     └── javascript
         └── .keep
-213 directories, 527 files
+219 directories, 543 files
