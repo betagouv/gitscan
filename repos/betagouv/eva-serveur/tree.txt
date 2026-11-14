@@ -3,6 +3,7 @@
 ├── .circleci
 │   └── config.yml
 ├── .claude
+│   ├── settings.json
 │   └── skills
 │       └── scalingo-run
 │           └── SKILL.md
@@ -17,8 +18,8 @@
 ├── .slugignore
 ├── .stylelintrc.json
 ├── .tool-versions
+├── AGENTS.md
 ├── Aptfile
-├── CLAUDE.md
 ├── Gemfile
 ├── Gemfile.lock
 ├── Guardfile
@@ -204,6 +205,7 @@
 │   │   │   ├── oeil.svg
 │   │   │   ├── organisation_methode.svg
 │   │   │   ├── panneaux.svg
+│   │   │   ├── picto_succes.svg
 │   │   │   ├── plus.svg
 │   │   │   ├── point_interrogation.svg
 │   │   │   ├── punaise-illettrisme_potentiel.svg
@@ -241,10 +243,11 @@
 │   │   │   ├── filtres_dates.js
 │   │   │   ├── form_toggle_submit.js
 │   │   │   ├── hotjar.js.erb
+│   │   │   ├── i18n
+│   │   │   │   └── filtered.js.erb
 │   │   │   ├── image_file_input_clear.js
 │   │   │   ├── liens_evitement.js
 │   │   │   ├── mise_en_action.js.erb
-│   │   │   ├── mise_en_action_tableau_de_bord.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_suivi_groupe.js
 │   │   │   ├── modal_verification.js
@@ -472,8 +475,6 @@
 │   │   ├── card_diagnostique_component.rb
 │   │   ├── carte_component.html.erb
 │   │   ├── carte_component.rb
-│   │   ├── carte_mise_en_action.html.erb
-│   │   ├── carte_mise_en_action.rb
 │   │   ├── carte_partage_code_component.html.erb
 │   │   ├── carte_partage_code_component.rb
 │   │   ├── carte_v2_component.html.erb
@@ -580,8 +581,6 @@
 │   │   ├── pile_fleches_score_component.rb
 │   │   ├── precision_autre_component.html.erb
 │   │   ├── precision_autre_component.rb
-│   │   ├── qcm.html.erb
-│   │   ├── qcm.rb
 │   │   ├── qualification_mise_en_action_component.html.erb
 │   │   ├── qualification_mise_en_action_component.rb
 │   │   ├── question_mise_en_action_component.html.erb
@@ -818,6 +817,8 @@
 │   │   ├── mise_en_action
 │   │   │   └── questionnaire.rb
 │   │   ├── mise_en_action.rb
+│   │   ├── mises_en_action
+│   │   │   └── en_cours.rb
 │   │   ├── opco.rb
 │   │   ├── opco_parcours_type.rb
 │   │   ├── parcours_type.rb
@@ -1063,9 +1064,9 @@
 │       │   │   │   ├── _derniere_evaluation_complete.html.erb
 │       │   │   │   └── _message_incitation_premier_questionnaire.html.erb
 │       │   │   └── mise_en_action
-│       │   │       ├── _avec_evaluations.html.erb
-│       │   │       ├── _bloc_evaluations_sans_mise_en_action.arb
-│       │   │       └── _sans_evaluations.arb
+│       │   │       ├── _reponse_enregistree.html.erb
+│       │   │       ├── _suivi_beneficiaires.html.erb
+│       │   │       └── _tout_a_jour.html.erb
 │       │   ├── evaluations
 │       │   │   ├── _informations_complementaires.arb
 │       │   │   ├── _lien.html.erb
@@ -1206,7 +1207,6 @@
 │       │       ├── boutons_dsfr.html.erb
 │       │       ├── card.html.erb
 │       │       ├── carte.html.erb
-│       │       ├── carte_mise_en_action.html.erb
 │       │       ├── carte_partage_code.html.erb
 │       │       ├── carte_v2.html.erb
 │       │       ├── chiffre_cle.html.erb
@@ -1264,11 +1264,9 @@
 │       │   ├── _input_choix_parcours.html.erb
 │       │   ├── _input_option_personnalisation.html.erb
 │       │   ├── _input_type_programme.html.erb
-│       │   ├── _modification_mise_en_action.html.erb
 │       │   ├── _panel_introduction.html.arb
 │       │   ├── _recherche_compte.html.erb
 │       │   ├── _recherche_comptes_structure.html.erb
-│       │   ├── _reponse_mise_en_action.erb
 │       │   └── prise_en_main
 │       │       ├── _carte_base.html.arb
 │       │       ├── _etape_confirmation_email.html.arb
@@ -1829,7 +1827,9 @@
 │   │   ├── 20261029100000_remplace_les_usages_par_des_noms_techniques.rb
 │   │   ├── 20261029120000_ajoute_je_ne_sais_pas_aux_mises_en_action.rb
 │   │   ├── 20261103090000_ajoute_precision_autre_aux_mises_en_action.rb
-│   │   └── 20261104100000_ajoute_choix_date_revue_aux_mises_en_action.rb
+│   │   ├── 20261104100000_ajoute_choix_date_revue_aux_mises_en_action.rb
+│   │   ├── 20261110180000_porte_les_mises_en_action_sur_le_beneficiaire.rb
+│   │   └── 20261110180001_migre_les_mises_en_action_vers_le_beneficiaire.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -1998,7 +1998,6 @@
 │   │   ├── pdf
 │   │   │   └── header_evapro_component_spec.rb
 │   │   ├── precision_autre_component_spec.rb
-│   │   ├── qcm_spec.rb
 │   │   ├── qualification_mise_en_action_component_spec.rb
 │   │   ├── question_mise_en_action_component_spec.rb
 │   │   ├── reponse_mise_en_action_component_spec.rb
@@ -2480,4 +2479,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-345 directories, 2191 files
+347 directories, 2188 files
