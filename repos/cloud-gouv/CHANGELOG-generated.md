@@ -1,26 +1,23 @@
-# Synthèse d'activité : cloud-gouv (du 23/10 au 29/10/2026)
+# Synthèse d'activité : cloud-gouv (du 23/10 au 30/10)
 
 ## Résumé de l'activité
-L'activité de l'organisation est marquée par une forte dynamique d'expansion de l'écosystème de services cloud-native, avec l'initialisation de nouveaux projets ([openproject](/repos/cloud-gouv/openproject), [k8s-glpi](/repos/cloud-gouv/k8s-glpi), [k8s-freescout](/repos/cloud-gouv/k8s-freescout)) et l'enrichissement du catalogue de déploiements ([common-helm-charts](/repos/cloud-gouv/common-helm-charts)).
+L'activité récente de l'organisation est marquée par un renforcement significatif de la chaîne de déploiement et de l'automatisation DevOps. L'extension de la bibliothèque de conteneurs dans [dockerfiles](/repos/cloud-gouv/dockerfiles) et l'enrichissement du catalogue de déploiements via [common-helm-charts](/repos/cloud-gouv/common-helm-charts) permettent une mise en œuvre plus rapide, standardisée et sécurisée des services.
 
-Parallèlement, un effort majeur est porté sur la fiabilisation et la sécurisation de l'infrastructure. Cela se traduit par le renforcement de la chaîne de production et de l'observabilité dans [dockerfiles](/repos/cloud-gouv/dockerfiles) et [securix](/repos/cloud-gouv/securix), ainsi que par des corrections de sécurité critiques et une amélioration de la gestion des accès dans [openbao](/repos/cloud-gouv/openbao) et [portail](/repos/cloud-gouv/portail).
+Parallèlement, l'organisation amorce le déploiement de plusieurs nouveaux services clés sur Kubernetes, notamment [openproject](/repos/cloud-gouv/openproject), [k8s-glpi](/repos/cloud-gouv/k8s-glpi) et [k8s-freescout](/repos/cloud-gouv/k8s-freescout). Ces évolutions visent à offrir une infrastructure plus robuste et automatisée, facilitant l'adoption de nouveaux outils de gestion et de collaboration par les utilisateurs finaux.
 
 ## Sécurité
-- Correction d'une vulnérabilité de sécurité (CVE-2025-68121) via la mise à jour de Go dans [openbao](/repos/cloud-gouv/openbao).
-- Résolution de problèmes critiques liés à l'auto-déverrouillage KMS dans [openbao](/repos/cloud-gouv/openbao).
-- Renforcement des permissions des GitHub Actions pour limiter les risques d'exploitation dans [securix](/repos/cloud-gouv/securix).
-- Amélioration de la précision des règles d'accès (ACL) par la normalisation des noms d'hôtes dans [portail](/repos/cloud-gouv/portail).
-- Intégration de nouveaux outils d'analyse de vulnérabilités (grype) et de validation de schémas dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
+- Correction de vulnérabilités (Go et OpenTelemetry) dans [openbao](/repos/cloud-gouv/openbao).
+- Renforcement de la sécurité des workflows CI/CD via l'application de permissions restreintes par défaut dans [securix](/repos/cloud-gouv/securix).
+- Amélioration de la gestion des clés de sécurité (Yubikey) dans [securix](/repos/cloud-gouv/securix).
+- Intégration de l'outil d'analyse de vulnérabilités Grype dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
 
 ## Autres changements notables
-- Optimisation de la chaîne CI/CD et de la gestion des SBOM (Software Bill of Materials) avec l'ajout de nouveaux conteneurs de linting et d'analyse dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
-- Mise à jour majeure de la compatibilité avec l'opérateur Cluster API et les ressources OpenStack dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
-- Extension du catalogue de services avec l'ajout de nouveaux composants et l'amélioration du monitoring dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
-- Amélioration de l'expérience de navigation web et introduction d'un système de télémétrie communautaire dans [securix](/repos/cloud-gouv/securix).
+- **Expansion de l'outillage DevOps** : Amélioration de la gestion des déploiements avec OpenTofu et automatisation de la génération de SBOM (Software Bill of Materials) dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
+- **Mise à jour des infrastructures Kubernetes** : Adaptation des charts Helm pour assurer la compatibilité avec les nouveaux opérateurs et les environnements OpenStack dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+- **Amélioration de la gouvernance et de la documentation** : Mise en place de la gestion des responsables de maintenance (`CODEOWNERS`) dans [portail](/repos/cloud-gouv/portail) et initialisation de la documentation pour plusieurs nouveaux projets comme [itsm-ng](/repos/cloud-gouv/itsm-ng) et [securix-infra-reference-implementation](/repos/cloud-gouv/securix-infra-reference-implementation).
 
 ## Dépôts les plus actifs
-- [securix](/repos/cloud-gouv/securix) : Évolutions sur la navigation web, la connectivité réseau et la télémétrie.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections critiques sur le déverrouillage KMS, la gestion des baux et la sécurité.
-- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Renforcement de la sécurité et de la qualité des pipelines de construction.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Extension du catalogue de services et amélioration du monitoring.
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Mise à jour de la compatibilité pour les déploiements Kubernetes et OpenStack.
+- [securix](/repos/cloud-gouv/securix) : Amélioration de l'expérience de navigation web, de la sécurité des outils et de la stabilité système.
+- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Extension majeure de la bibliothèque de conteneurs utilitaires et optimisation des pipelines CI/CD.
+- [openbao](/repos/cloud-gouv/openbao) : Résolution de problèmes critiques liés au déverrouillage KMS et corrections de sécurité.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Enrichissement du catalogue de déploiements et amélioration du monitoring.

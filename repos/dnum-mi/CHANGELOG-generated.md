@@ -1,26 +1,24 @@
-# Synthèse d'activité : dnum-mi (août 2026)
+# Synthèse d'activité : dnum-mi (du 05/08 au 20/08/2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une montée en maturité de plusieurs projets clés. [test-app](/repos/dnum-mi/test-app) a franchi une étape majeure avec son passage en version 1.0.0, tandis que [referentiel-applications](/repos/dnum-mi/referentiel-applications) renforce son offre avec de nouvelles fonctionnalités d'export et un effort important sur l'accessibilité (RGAA). 
+L'activité de cette période est marquée par une montée en maturité significative de plusieurs produits, avec notamment le passage en version 1.0.0 de [test-app](/repos/dnum-mi/test-app) et le lancement de fonctionnalités bêta dans [referentiel-applications](/repos/dnum-mi/referentiel-applications). Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment via la gestion des conditions générales d'utilisation dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) et l'optimisation de l'accessibilité dans [a11y-toolkit](/repos/dnum-mi/a11y-toolkit).
 
-Parallèlement, l'organisation consolide ses fondations techniques par une sécurisation accrue des accès et une optimisation profonde des chaînes de déploiement et d'automatisation. Ces évolutions visent à garantir une plus grande fiabilité des outils mis à disposition des utilisateurs et des contributeurs.
+Parallèlement, l'organisation a renforcé la fiabilité de ses services grâce à une modernisation profonde des infrastructures de déploiement et une sécurisation accrue des processus d'automatisation (CI/CD) sur l'ensemble des dépôts.
 
 ## Sécurité
-- Migration vers l'authentification par GitHub App pour une gestion des accès plus sécurisée et conforme au principe de moindre privilège ([test-helm](/repos/dnum-mi/test-helm), [test-app](/repos/dnum-mi/test-app)).
-- Renforcement de la gestion des secrets via l'intégration d'une API Vault et le masquage systématique des jetons en console ([starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode), [referentiel-applications](/repos/dnum-mi/referentiel-applications)).
-- Introduction de nouveaux outils d'audit de sécurité pour les workflows ([fabnum-cicd](/repos/dnum-mi/fabnum-cicd)).
-- Correction de plusieurs vulnérabilités sur les dépendances et les images Docker ([referentiel-applications](/repos/dnum-mi/referentiel-applications)).
+- **Gestion des accès et authentification** : Migration vers l'utilisation des GitHub Apps pour renforcer la sécurité des workflows dans [test-helm](/repos/dnum-mi/test-helm) et [test-app](/repos/dnum-mi/test-app).
+- **Protection des données et des secrets** : Centralisation des secrets via une API Vault dans [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) et renforcement de la validation des jetons (JWT) et du masquage des jetons API dans [referentiel-applications](/repos/dnum-mi/referentiel-applications).
+- **Audit et conformité** : Intégration de nouveaux outils d'audit de sécurité pour les workflows GitHub Actions dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) et correction de vulnérabilités sur les images Docker dans [referentiel-applications](/repos/dnum-mi/referentiel-applications).
 
 ## Autres changements notables
-- Restructuration profonde et optimisation des performances des workflows CI/CD ([fabnum-cicd](/repos/dnum-mi/fabnum-cicd)).
-- Implémentation d'un système complet de gestion, d'acceptation et de validation des conditions générales d'utilisation ([bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique)).
-- Amélioration de la gestion des icônes pour supporter le mode hors-ligne et le rendu côté serveur ([vue-dsfr](/repos/dnum-mi/vue-dsfr)).
-- Passage d'une phase de création à une version fonctionnelle et structurée avec l'ajout de nouveaux outils d'accessibilité ([a11y-toolkit](/repos/dnum-mi/a11y-toolkit)).
-- Actualisation massive des sources de données pour garantir la fiabilité des informations affichées ([dashlord-extended](/repos/dnum-mi/dashlord-extended)).
+- **Optimisation de la CI/CD** : Restructuration majeure des workflows pour gagner en performance (exécution en parallèle, segmentation des tâches) dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) et [test-app](/repos/dnum-mi/test-app).
+- **Évolutions d'infrastructure** : Modernisation des environnements de build (passage à pnpm et Node 24) pour [vue-dsfr](/repos/dnum-mi/vue-dsfr) et mise à jour des images Docker pour [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).
+- **Amélioration produit** : Optimisation de la gestion des icônes pour le mode hors-ligne et le rendu côté serveur dans [vue-dsfr](/repos/dnum-mi/vue-dsfr).
 
 ## Dépôts les plus actifs
-- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Évolutions majeures sur l'accessibilité, les notifications et les capacités d'export.
-- [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) : Optimisation et refonte des processus d'automatisation et de test.
-- [test-app](/repos/dnum-mi/test-app) : Passage en version 1.0.0 et renforcement de l'infrastructure de déploiement.
-- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Mise en place du parcours utilisateur pour les CGU et mises à jour d'infrastructure.
-- [vue-dsfr](/repos/dnum-mi/vue-dsfr) : Amélioration de la gestion des icônes et stabilisation de l'environnement de build.
+- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Évolutions majeures sur la synchronisation de données, l'accessibilité (RGAA) et les outils de notification.
+- [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) : Refonte profonde de l'architecture des workflows et optimisation des performances de la chaîne de CI.
+- [test-app](/repos/dnum-mi/test-app) : Passage à la version 1.0.0 et renforcement de l'automatisation du déploiement.
+- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation complète du flux d'acceptation des conditions générales d'utilisation.
+- [vue-dsfr](/repos/dnum-mi/vue-dsfr) : Amélioration de la gestion des icônes et stabilisation de l'infrastructure de build.
+- [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) : Amélioration de la fiabilité de l'orchestration et intégration d'outils d'assistance IA.

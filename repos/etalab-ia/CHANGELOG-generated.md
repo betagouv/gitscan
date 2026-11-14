@@ -1,27 +1,26 @@
-# Synthèse d'activité : etalab-ia (du DD/MM au DD/MM)
+# Synthèse d'activité : etalab-ia (du 01/11 au 07/11)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une montée en maturité significative des outils de RAG (Retrieval-Augmented Generation) et des agents conversationnels. Les efforts se sont concentrés sur la structuration de la gestion des données via des systèmes de "collections" plus robustes et l'amélioration de l'expérience utilisateur grâce à des assistants de configuration interactifs. 
+L'activité récente de l'organisation est marquée par une montée en puissance des capacités de RAG (Retrieval-Augmented Generation) et une maturation des frameworks d'agents IA. Les projets [ragtime](/repos/etalab-ia/ragtime) et [OpenGateRAG-Next](/repos/etalab-ia/OpenGateRAG-Next) ont franchi des étapes clés avec des refontes architecturales visant une meilleure gestion des collections de données et une plus grande modularité. En parallèle, l'écosystème d'agents s'enrichit avec [letta](/repos/etalab-ia/letta) et [codebox](/repos/etalab-ia/codebox), offrant un support élargi pour les nouveaux modèles (Anthropic, Gemini, Kimi) et des outils de gestion de la mémoire et des secrets plus robustes.
 
-L'écosystème renforce également sa capacité d'évaluation et de production, avec le développement d'outils de benchmarking pour les transcriptions et l'optimisation des pipelines de données pour l'API Albert. Ces évolutions permettent de passer de prototypes à des solutions plus stables, prêtes pour des usages institutionnels et une intégration simplifiée dans des environnements variés.
+Enfin, l'organisation renforce ses capacités d'évaluation et de conformité, notamment via le lancement de [eval-ocr-htr](/repos/etalab-ia/eval-ocr-htr) et l'intégration des guides de sécurité de l'ANSSI dans [skills](/repos/etalab-ia/skills) et [chat-widget](/repos/etalab-ia/chat-widget), garantissant ainsi un usage plus sécurisé de l'IA pour les agents publics.
 
 ## Sécurité
-- Intégration des guides de sécurité de l'ANSSI et de la DINUM pour accompagner l'usage de l'IA dans le secteur public [skills](/repos/etalab-ia/skills).
-- Renforcement de la protection des données sensibles via la sécurisation des logs OCR [document-ia](/repos/etalab-ia/document-ia) et la gestion rigoureuse des secrets de projet [just-code](/repos/etalab-ia/just-code).
-- Durcissement de la sécurité des intégrations (iframe) et mise en place de limites d'utilisation pour prévenir les abus [chat-widget](/repos/etalab-ia/chat-widget).
-- Ajout de mécanismes de consentement explicite pour la collecte de statistiques [just-code](/repos/etalab-ia/just-code) et de contrôles automatisés (gitleaks) dans les pipelines [eval-transcript](/repos/etalab-ia/eval-transcript).
-- Amélioration de l'authentification pour l'accès aux environnements de développement [albert-code](/repos/etalab-ia/albert-code).
+- Renforcement de la gestion et de l'injection sécurisée des secrets dans [codebox](/repos/etalab-ia/codebox).
+- Sécurisation des logs OCR pour prévenir les fuites de données sensibles dans [document-ia](/repos/etalab-ia/document-ia).
+- Durcissement de la sécurité des iframes et de l'isolation du widget dans [chat-widget](/repos/etalab-ia/chat-widget).
+- Amélioration de la gestion des clés API (révocation, filtrage) et du rate limiting dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Ajout d'un hook de détection de secrets (gitleaks) dans [eval-transcript](/repos/etalab-ia/eval-transcript).
 
 ## Autres changements notables
-- **Refonte architecturale et migration de données** : Passage à une gestion de collections via PostgreSQL pour remplacer Elasticsearch [OpenGateRAG-Next](/repos/etalab-ia/OpenGateRAG-Next) et refonte majeure de l'architecture interne pour plus de modularité [ragtime](/repos/etalab-ia/ragtime).
-- **Évolution des standards de développement** : Adoption de la "Clean Architecture" et intégration de l'observabilité (Langfuse) pour le suivi de l'usage et de la latence [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
-- **Optimisation de l'infrastructure** : Migration vers une architecture serverless pour l'API Albert [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et optimisation des images Docker pour les déploiements [marker-serve](/repos/etalab-ia/marker-serve).
-- **Gestion des versions** : Introduction de la sauvegarde de version et du rollback pour les templates [letta](/repos/etalab-ia/letta).
+- Rebranding majeur de plusieurs projets, notamment `just-code` vers [codebox](/repos/etalab-ia/codebox) et `rag-facile` vers [ragtime](/repos/etalab-ia/ragtime).
+- Migrations architecturales stratégiques : passage de l'architecture Elasticsearch vers PostgreSQL pour [OpenGateRAG-Next](/repos/etalab-ia/OpenGateRAG-Next) et adoption de la "Clean Architecture" pour [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Migration de la base de données vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api).
+- Refonte du système de configuration pour passer de fichiers `.env` à des fichiers YAML dans [lettabot](/repos/etalab-ia/lettabot) et [letta](/repos/etalab-ia/letta).
 
 ## Dépôts les plus actifs
-- [ragtime](/repos/etalab-ia/ragtime) : Refonte complète, renommage (ex-rag-facile) et ajout de l'authentification via Supabase.
-- [lettabot](/repos/etalab-ia/lettabot) : Extension multi-plateforme (Slack, Discord, Telegram) et refonte du système de configuration.
-- [letta](/repos/etalab-ia/letta) : Support de nouveaux modèles (Anthropic, Gemini) et enrichissement des fonctionnalités API.
-- [chat-widget](/repos/etalab-ia/chat-widget) : Sortie de la version 0.2.0 avec de nouvelles méthodes d'intégration (Web Components).
-- [just-code](/repos/etalab-ia/just-code) : Refonte de l'assistant de configuration (wizard) et renforcement de la sécurité.
-- [OpenGateRAG-Next](/repos/etalab-ia/OpenGateRAG-Next) : Restructuration profonde autour de la gestion des collections de données.
+- [codebox](/repos/etalab-ia/codebox) : Rebranding complet et introduction d'un assistant de configuration interactif (wizard).
+- [letta](/repos/etalab-ia/letta) : Expansion massive du support de modèles et nouvelles capacités d'agents (mode listener, gestion memfs).
+- [ragtime](/repos/etalab-ia/ragtime) : Refonte de l'architecture et intégration de l'authentification via Supabase.
+- [chat-widget](/repos/etalab-ia/chat-widget) : Sortie de la version 0.2.0 avec support des Web Components et synchronisation des guides ANSSI.
+- [OpenGateRAG-Next](/repos/etalab-ia/OpenGateRAG-Next) : Restructuration profonde centrée sur la gestion des collections via une nouvelle API.
