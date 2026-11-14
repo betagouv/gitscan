@@ -1,19 +1,37 @@
-## Changelog : rdv-service-public (30 derniers jours, au 28 octobre 2026)
+## Changelog : rdv-service-public (30 derniers jours, au 13 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le service a franchi des étapes importantes de modernisation technique, notamment avec le passage à Rails 8.1 et Ruby 3.4. L'expérience utilisateur a été enrichie par un nouveau parcours d'invitation et une meilleure gestion de la visioconférence. Les outils d'administration ont également été renforcés pour offrir une gestion plus fluide des organisations et des agents.
+Ce mois-ci, le service a bénéficié d'améliorations majeures concernant la gestion des visioconférences et la synchronisation des agendas (CalDAV). La sécurité a été renforcée par plusieurs mises à jour critiques du cœur du système, tandis que l'expérience d'administration et le site vitrine ont été enrichis pour offrir une meilleure visibilité sur les fonctionnalités.
 
 ### Évolutions fonctionnelles
-- **Visioconférence** : Amélioration du parcours de visio avec la création automatique de salles à la connexion de l'agent [#6819](https://github.com/betagouv/rdv-service-public/issues/6819), un contrôle de l'affichage du lien pour l'usager (uniquement le jour J) [#6878](https://github.com/betagouv/rdv-service-public/issues/6878) et une gestion plus stricte des motifs de rendez-vous nécessitant une connexion ProConnect [#6829](https://github.com/betagouv/rdv-service-public/issues/6829).
-- **Expérience utilisateur et Accessibilité** : Mise en place d'un nouveau processus d'invitation en 3 étapes [#6817](https://github.com/betagouv/rdv-service-public/issues/6817), migration vers un composant d'autocomplétion d'adresse plus accessible pour les usagers et les agents [#6837](https://github.com/betagouv/rdv-service-public/issues/6837), et optimisation de l'affichage des formulaires sur petits écrans [#6786](https://github.com/betagouv/rdv-service-public/issues/6786).
-- **Gestion des organisations et agents** : Import automatique des espaces d'État dans le CRM [#6869](https://github.com/betagouv/rdv-service-public/issues/6869), amélioration de la visibilité des organisations pour les administrateurs [#6836](https://github.com/betagouv/rdv-service-public/issues/6836) et ajout de la date de dernière connexion des agents dans l'interface superadmin [#6825](https://github.com/betagouv/rdv-service-public/issues/6825).
-- **Corrections diverses** : Correction des indicatifs téléphoniques pour les DROM [#6801](https://github.com/betagouv/rdv-service-public/issues/6801) et ajustement des règles de conflit pour les plages d'ouverture [#6751](https://github.com/betagouv/rdv-service-public/issues/6751).
+- **Visioconférences (Visio) :** 
+    - Optimisation de l'affichage des liens de réunion : le lien est désormais visible pour l'usager uniquement le jour du rendez-vous [#6878] et le bouton de génération est masqué pour les rendez-vous passés [#6898].
+    - Sécurisation des redirections via l'utilisation d'identifiants signés [#6913].
+    - Simplification du parcours pour les agents : suppression des bannières de connexion inutiles et élargissement des droits de création de salons visio [#6877, #6861].
+- **Synchronisation d'agendas (CalDAV) :** 
+    - Amélioration de la lisibilité : affichage des événements "toute la journée" sur une ligne dédiée [#6910] et inclusion de la liste des participants avec leurs emails dans la synchronisation [#6917].
+    - Meilleur suivi opérationnel : affichage du statut en cas d'échec de la synchronisation [#6885] et correction du setup pour Zimbra [#6903].
+- **Expérience utilisateur & Parcours :** 
+    - Mise en place d'un nouveau processus d'invitation à prendre rendez-vous en 3 étapes [#6817].
+    - Amélioration de l'accessibilité via une nouvelle gestion de l'autocomplétion des adresses [#6837].
+    - Meilleure communication sur la compatibilité des navigateurs avec des messages plus clairs [#6931].
+- **Administration & Site Vitrine :** 
+    - Enrichissement du site vitrine avec de nouvelles pages (Nouveautés, Fonctionnalités, Webinaire) [#6785, #6848, #6867].
+    - Amélioration des outils d'administration pour la gestion des organisations et des agents [#6838, #6836].
 
 ### Évolutions techniques
-- **Montées de version majeures** : Passage à Rails 8.1 [#6872](https://github.com/betagouv/rdv-service-public/issues/6872), Ruby 3.4.11 [#6777](https://github.com/betagouv/rdv-service-public/issues/6777) et GoodJob v4 [#6845](https://github.com/betagouv/rdv-service-public/issues/6845).
-- **Sécurité** : Mise à jour de Node.js pour corriger une vulnérabilité [#6865](https://github.com/betagouv/rdv-service-public/issues/6865), implémentation du *rate limiting* sur les connexions agents par mot de passe [#6811](https://github.com/betagouv/rdv-service-public/issues/6811) et correction de la CVE-2026-93748 [#6800](https://github.com/betagouv/rdv-service-public/issues/6800).
-- **Optimisations et Infrastructure** : Optimisation de la synchronisation CalDAV (réduction du polling la nuit) [#6780](https://github.com/betagouv/rdv-service-public/issues/6780), ajout du *live reload* en développement via Hotwire [#6853](https://github.com/betagouv/rdv-service-public/issues/6853) et mise à jour de l'API des intégrations pour les invitations [#6873](https://github.com/betagouv/rdv-service-public/issues/6873).
+- **Sécurité :** 
+    - Mises à jour critiques de Rails [#6924] et Node.js [#6936].
+    - Correction de plusieurs vulnérabilités (CVE) impactant le système [#6919, #6905, #6865].
+- **Performance & Fiabilité :** 
+    - Optimisation du chargement des plages horaires dans le calculateur [#6934].
+    - Réduction de la consommation mémoire des applications de revue [#6929].
+    - Amélioration de la gestion des tâches de fond : gestion des tentatives (retries) pour Outlook [#6925] et Notion [#6851], et priorisation de l'envoi des codes de connexion par email [#6911].
+- **Infrastructure & Core :** 
+    - Montée de version majeure vers Ruby 3.4 [#6896] et Rails 8.1 [#6872].
+    - Intégration de Sentry pour le suivi des services Menshen (Exchange et Visio) [#6904].
+    - Extraction de la configuration Outlook dans une table dédiée pour plus de flexibilité [#6932].
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique concernant les webhooks [#6818](https://github.com/betagouv/rdv-service-public/issues/6818) et l'utilisation de Metabase [#6774](https://github.com/betagouv/rdv-service-public/issues/6774).
-- **Nettoyage** : Suppression de code obsolète (service secrétariat [#6839](https://github.com/betagouv/rdv-service-public/issues/6839), gestion des mairies [#6842](https://github.com/betagouv/rdv-service-public/issues/6842)) et nettoyage des contextes de recherche inutilisés [#6769](https://github.com/betagouv/rdv-service-public/issues/6769).
+- Amélioration du confort de développement avec l'ajout du live reload via Hotwire [#6853].
+- Nettoyage du code (suppression de code mort) et mises à jour des outils de qualité (Rubocop) [#6842, #6880, #6856].

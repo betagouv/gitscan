@@ -84,6 +84,9 @@
 │   │       │   ├── ecosystem.svg
 │   │       │   ├── gendarmerie.svg
 │   │       │   ├── homepage_hero.svg
+│   │       │   ├── invitations.svg
+│   │       │   ├── logo-franceconnect.svg
+│   │       │   ├── logo-proconnect.svg
 │   │       │   ├── ministere-armee.png
 │   │       │   ├── partenaire-62.jpg
 │   │       │   ├── partenaire-asp.png
@@ -92,8 +95,13 @@
 │   │       │   ├── partenaire-ministere-justice.svg
 │   │       │   ├── partenaire-msa.png
 │   │       │   ├── partenaire-wavignies.jpg
+│   │       │   ├── prise-rdv-en-ligne.webp
 │   │       │   ├── self-training.svg
+│   │       │   ├── sms-confirmation.webp
 │   │       │   ├── stats-hero.png
+│   │       │   ├── synchronisation-agendas.svg
+│   │       │   ├── usagers.webp
+│   │       │   ├── visio.webp
 │   │       │   └── webinaire-hero.svg
 │   │       ├── sign_in_with_microsoft.svg
 │   │       ├── static_pages
@@ -281,6 +289,7 @@
 │   │   │       ├── rdvs_controller.rb
 │   │   │       └── webhook_endpoints_controller.rb
 │   │   ├── application_controller.rb
+│   │   ├── blog_posts_controller.rb
 │   │   ├── concerns
 │   │   │   ├── admin
 │   │   │   │   ├── authenticated_controller_concern.rb
@@ -360,6 +369,7 @@
 │   │   │   ├── sessions_controller.rb
 │   │   │   ├── user_name_initials_verification_controller.rb
 │   │   │   └── users_controller.rb
+│   │   ├── visios_controller.rb
 │   │   └── welcome_controller.rb
 │   ├── dashboards
 │   │   ├── agent_dashboard.rb
@@ -538,6 +548,7 @@
 │   │   │   │   ├── _autocomplete.scss
 │   │   │   │   ├── _backgrounds.scss
 │   │   │   │   ├── _backgrounds_dsfr.scss
+│   │   │   │   ├── _blog_post_content.scss
 │   │   │   │   ├── _bubble.scss
 │   │   │   │   ├── _button_group_before_card.scss
 │   │   │   │   ├── _calendar.scss
@@ -551,6 +562,7 @@
 │   │   │   │   ├── _logo_partenaire.scss
 │   │   │   │   ├── _motifs.scss
 │   │   │   │   ├── _nav.scss
+│   │   │   │   ├── _page_fonctionnalites.scss
 │   │   │   │   ├── _planning_agents_select.scss
 │   │   │   │   ├── _proche_selection.scss
 │   │   │   │   ├── _rdv_solidarites_instance_name.scss
@@ -558,6 +570,7 @@
 │   │   │   │   ├── _recurrence.scss
 │   │   │   │   ├── _select2.scss
 │   │   │   │   ├── _settings.scss
+│   │   │   │   ├── _smartphone_frame.scss
 │   │   │   │   ├── _stats.scss
 │   │   │   │   ├── _tables.scss
 │   │   │   │   ├── _types.scss
@@ -681,6 +694,7 @@
 │   │   ├── concerns
 │   │   │   └── ics_multipart_attached.rb
 │   │   ├── custom_devise_mailer.rb
+│   │   ├── high_priority_mailer_delivery_job.rb
 │   │   ├── prescripteur_mailer.rb
 │   │   └── users
 │   │       ├── email_change_mailer.rb
@@ -767,6 +781,7 @@
 │   │   ├── organisation.rb
 │   │   ├── outlook
 │   │   │   └── api_client.rb
+│   │   ├── outlook_config.rb
 │   │   ├── participation.rb
 │   │   ├── plage_ouverture.rb
 │   │   ├── prescripteur.rb
@@ -1300,6 +1315,9 @@
 │       │   │       ├── _post.html.slim
 │       │   │       └── index.html.slim
 │       │   ├── caldav_sync
+│       │   │   ├── _config_summary.html.slim
+│       │   │   ├── _explanations.html.slim
+│       │   │   ├── _setup_config.html.slim
 │       │   │   ├── calendar_selection.html.slim
 │       │   │   └── show.html.slim
 │       │   ├── calendar_sync
@@ -1370,6 +1388,10 @@
 │       │       └── aiguillage_usager.html.slim
 │       ├── application
 │       │   └── _model_errors.html.slim
+│       ├── blog_posts
+│       │   ├── _blog_post.html.slim
+│       │   ├── index.html.slim
+│       │   └── show.html.slim
 │       ├── common
 │       │   ├── _copy_to_clipboard_button.html.slim
 │       │   ├── _favicon.html.erb
@@ -1602,6 +1624,7 @@
 │       │   ├── accessibilite.html.slim
 │       │   ├── cgu.html.slim
 │       │   ├── cgu_agent.html.slim
+│       │   ├── fonctionnalites.html.slim
 │       │   ├── homepage_anct.html.slim
 │       │   ├── homepage_etat.html.slim
 │       │   ├── mds.html.slim
@@ -1684,9 +1707,10 @@
 │       │   └── users
 │       │       ├── _form_fields.html.slim
 │       │       └── edit.html.slim
+│       ├── visios
+│       │   └── show.html.slim
 │       └── welcome
 │           └── super_admin.html.slim
-├── babel.config.js
 ├── bin
 │   ├── brakeman
 │   ├── rails
@@ -2193,7 +2217,9 @@
 │   │   ├── 20261015134861_remove_redundant_good_jobs_indexes.rb
 │   │   ├── 20261015134862_reorder_good_jobs_cron_index.rb
 │   │   ├── 20261015134863_create_good_job_concurrency_claims.rb
-│   │   └── 20261023154605_archive_visio_motifs_without_pro_connected_agents.rb
+│   │   ├── 20261023154605_archive_visio_motifs_without_pro_connected_agents.rb
+│   │   ├── 20261028180000_recreate_blog_posts_table.rb
+│   │   └── 20261111100000_create_outlook_configs.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2288,7 +2314,6 @@
 │   └── .keep
 ├── mise.toml
 ├── package.json
-├── postcss.config.js
 ├── public
 │   ├── .well-known
 │   │   └── security.txt
@@ -2438,6 +2463,7 @@
 │   │   ├── operator.rb
 │   │   ├── operator_manager.rb
 │   │   ├── organisation.rb
+│   │   ├── outlook_config.rb
 │   │   ├── participation.rb
 │   │   ├── plage_ouverture.rb
 │   │   ├── prescripteur.rb
@@ -2563,6 +2589,7 @@
 │   │   │   │   ├── agent_can_delete_relative_spec.rb
 │   │   │   │   └── agent_can_update_relative_spec.rb
 │   │   │   ├── sectorisation
+│   │   │   │   ├── masquee_sur_rdvsp_spec.rb
 │   │   │   │   ├── motifs_spec.rb
 │   │   │   │   └── sectorisation_setup_spec.rb
 │   │   │   ├── self_onboarded_agent_closes_his_organisation_spec.rb
@@ -2581,6 +2608,7 @@
 │   │   ├── allocation_for_search_context_spec.rb
 │   │   ├── anybody
 │   │   │   ├── anybody_can_contact_us_spec.rb
+│   │   │   ├── anybody_can_read_blog_posts_spec.rb
 │   │   │   ├── anybody_can_read_the_api_docs_spec.rb
 │   │   │   ├── anybody_can_see_legal_pages_spec.rb
 │   │   │   └── anybody_can_see_stats_spec.rb
@@ -2775,6 +2803,7 @@
 │   │   │   ├── anonymize_old_receipts_spec.rb
 │   │   │   ├── destroy_expired_agent_trusted_devices_job_spec.rb
 │   │   │   ├── destroy_expired_export_file_blobs_spec.rb
+│   │   │   ├── destroy_external_calendar_sync_execution_job_spec.rb
 │   │   │   ├── destroy_inactive_agents_spec.rb
 │   │   │   ├── destroy_old_absences_job_spec.rb
 │   │   │   ├── destroy_old_oauth_objects_spec.rb
@@ -2783,6 +2812,7 @@
 │   │   │   ├── destroy_old_versions_spec.rb
 │   │   │   ├── file_attente_job_spec.rb
 │   │   │   ├── ign_health_check_job_spec.rb
+│   │   │   ├── import_caldav_absences_spec.rb
 │   │   │   ├── notify_sms_factor_low_credits_spec.rb
 │   │   │   ├── refresh_agents_sensitive_account_job_spec.rb
 │   │   │   ├── refresh_blog_posts_from_docs_job_spec.rb
@@ -2830,6 +2860,7 @@
 │   │   ├── concerns
 │   │   │   └── ics_multipart_attached_spec.rb
 │   │   ├── custom_devise_mailer_domain_spec.rb
+│   │   ├── high_priority_mailer_delivery_job_spec.rb
 │   │   ├── prescripteur_mailer_spec.rb
 │   │   ├── previews
 │   │   │   ├── agents
@@ -2978,6 +3009,9 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── admin
+│   │   │   ├── api
+│   │   │   │   └── agenda
+│   │   │   │       └── external_calendar_events_spec.rb
 │   │   │   ├── configure_user_in_waiting_room_spec.rb
 │   │   │   ├── creneaux
 │   │   │   │   └── agent_searches_spec.rb
@@ -3081,12 +3115,13 @@
 │   │   │   ├── oauth_applications_spec.rb
 │   │   │   ├── organisations_spec.rb
 │   │   │   └── sessions_spec.rb
-│   │   └── users
-│   │       ├── creneaux_short_link_spec.rb
-│   │       ├── participations_spec.rb
-│   │       ├── rdv_invitations_spec.rb
-│   │       ├── rdvs_visio_spec.rb
-│   │       └── redirect_to_rdv_insertion_spec.rb
+│   │   ├── users
+│   │   │   ├── creneaux_short_link_spec.rb
+│   │   │   ├── participations_spec.rb
+│   │   │   ├── rdv_invitations_spec.rb
+│   │   │   ├── rdvs_visio_spec.rb
+│   │   │   └── redirect_to_rdv_insertion_spec.rb
+│   │   └── visios_spec.rb
 │   ├── services
 │   │   ├── admin_creates_agent_spec.rb
 │   │   ├── admin_updates_agent_spec.rb
@@ -3159,6 +3194,8 @@
 │   │   │   ├── geo_search_cases_spec.rb
 │   │   │   └── geo_search_spec.rb
 │   │   ├── verified_service_public_domain_names_spec.rb
+│   │   ├── visio_numerique
+│   │   │   └── create_room_spec.rb
 │   │   ├── web_invitation_search_context_spec.rb
 │   │   ├── web_search_context_spec.rb
 │   │   └── zammad_customer_spec.rb
@@ -3227,4 +3264,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-489 directories, 2744 files
+494 directories, 2776 files
