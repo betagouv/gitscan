@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.0.2 (2026-10-20)
+
+- style: align lint with Ruff 0.17 defaults
+
+
+## 1.0.1 (2026-10-20)
+
+- chore(deps): upgrade dependencies
+- ci: align Docker image tags with api-tabular
+- ci: build in CI and push on new container registry ([#127](https://github.com/datagouv/datagouv-mcp/pull/127))
+
+
+## 1.0.0 (2026-09-04)
+
+- feat: harden SSRF on external APIs ([#126](https://github.com/datagouv/datagouv-mcp/pull/126)) (as reported by Syed Anas Mohiuddin)
+- fix(deps): upgrade cryptography to 50.0.1 for CVE-2026-69247
+
+
 ## 0.2.30 (2026-07-17)
 
 - chore: upgrade dependencies

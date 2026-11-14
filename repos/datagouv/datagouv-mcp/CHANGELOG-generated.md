@@ -1,18 +1,15 @@
-## Changelog : datagouv-mcp (30 derniers jours, au 17 juillet 2026)
+## Changelog : datagouv-mcp (30 derniers jours, au 13 novembre 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations de stabilité et de performance, notamment en remplaçant la librairie HTTPX par niquests. Des corrections ont été apportées au suivi des statistiques Matomo et à la configuration de l'outil Autohand Code MCP. La documentation a également été enrichie.
-
-### Évolutions fonctionnelles
-- Ajout de la configuration pour Autohand Code MCP. [#124](https://github.com/datagouv/datagouv-mcp/pull/124)
-- Correction du suivi des statistiques Matomo pour le healthcheck. [#122](https://github.com/datagouv/datagouv-mcp/pull/122)
-- Correction d'un lien dans le template de création d'issues GitHub.
-- Suppression des requêtes Matomo inutiles sur `/mcp`, ne conservant que les événements des outils. [#120](https://github.com/datagouv/datagouv-mcp/pull/120)
+Les récentes évolutions se sont concentrées sur l'amélioration de la documentation pour faciliter l'utilisation du serveur avec les modèles d'IA (Claude, Mistral) et sur l'optimisation des processus de déploiement et de suivi technique.
 
 ### Évolutions techniques
-- Remplacement de la librairie HTTPX par niquests pour améliorer les performances et la stabilité. [#119](https://github.com/datagouv/datagouv-mcp/pull/119)
-- Amélioration de la gestion des probes de santé pour éviter les fuites de descripteurs de fichiers. [#121](https://github.com/datagouv/datagouv-mcp/pull/121)
-- Mise à jour des dépendances.
+- Amélioration du suivi analytique (Matomo) par l'extraction et l'envoi de l'User-Agent du client [#134](https://github.com/datagouv/datagouv-mcp/pull/134).
+- Optimisation du processus de build pour exclure les dépendances de développement [#139](https://github.com/datagouv/datagouv-mcp/pull/139).
+- Alignement des tags d'images Docker avec le projet `api-tabular`.
+- Correction des tests suite à la mise à jour d'un identifiant de jeu de données de test [#131](https://github.com/datagouv/datagouv-mcp/pull/131).
+- Mise à jour du linting pour s'aligner sur les standards Ruff 0.17.
 
 ### Autres changements
-- Publication des versions 0.2.30, 0.2.29, 0.2.28, 0.2.27.
+- Mise à jour de la documentation pour inclure l'Assistant et des liens vers la documentation française [#133](https://github.com/datagouv/datagouv-mcp/pull/133).
+- Amélioration du README avec des instructions spécifiques pour l'utilisation avec Claude et Mistral [#130](https://github.com/datagouv/datagouv-mcp/pull/130).
