@@ -1,0 +1,474 @@
+.
+├── .claude-plugin
+│   ├── marketplace.json
+│   └── plugin.json
+├── .github
+│   └── workflows
+│       ├── check.yml
+│       └── sync.yml
+├── .gitignore
+├── CHANGELOG.md
+├── LICENSE.md
+├── README.md
+├── evals
+│   ├── README.md
+│   ├── cas.json
+│   ├── navigateur.mjs
+│   ├── package-lock.json
+│   ├── package.json
+│   └── run.mjs
+├── ressources
+│   ├── SKILL.template.md
+│   ├── audit.template.md
+│   └── demarrage.template.md
+├── scripts
+│   ├── check-links.mjs
+│   ├── markdown-anchors.mjs
+│   └── sync.mjs
+└── skills
+    └── dsfr-skill
+        ├── SKILL.md
+        ├── VERSION.md
+        ├── audit.md
+        ├── composants
+        │   ├── accordion
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── alert
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── badge
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── breadcrumb
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── button
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── callout
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── card
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── grilles-de-cartes-horizontales-4.html
+        │   │   │   ├── grilles-de-cartes-horizontales-lg-6.html
+        │   │   │   ├── grilles-de-cartes-horizontales-sm-5.html
+        │   │   │   ├── grilles-de-cartes-verticales-1.html
+        │   │   │   ├── grilles-de-cartes-verticales-lg-3.html
+        │   │   │   └── grilles-de-cartes-verticales-sm-2.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── checkbox
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── combobox
+        │   │   ├── design.md
+        │   │   └── index.md
+        │   ├── composition
+        │   │   ├── design.md
+        │   │   └── index.md
+        │   ├── connect
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── consent
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   └── panneau-de-gestion-des-cookies-1.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── content
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── media-image-avec-une-transcription-2.html
+        │   │   │   └── media-image-en-svg-porteur-d-information-1.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── display
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── snippet-modale-de-parametres-d-affichage-1.html
+        │   │   │   └── snippet-modale-de-parametres-d-affichage-2.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── download
+        │   │   └── index.md
+        │   ├── dropdown
+        │   │   ├── design.md
+        │   │   └── index.md
+        │   ├── follow
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── reseaux-sociaux-et-lettre-d-info-avec-formulaire-1.html
+        │   │   │   └── reseaux-sociaux-et-lettre-d-info-avec-formulaire-e-2.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── footer
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── pied-de-page-avec-logo-partenaire-primaire-uniquem-3.html
+        │   │   │   ├── pied-de-page-avec-logos-partenaires-2.html
+        │   │   │   ├── pied-de-page-avec-logos-partenaires-secondaires-un-4.html
+        │   │   │   ├── pied-de-page-avec-navigation-1.html
+        │   │   │   └── pied-de-page-complet-5.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── form
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── header
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── header-avec-bandeau-beta-7.html
+        │   │   │   ├── header-avec-logo-operateur-horizontal-nom-de-servi-6.html
+        │   │   │   ├── header-avec-logo-operateur-vertical-recherche-5.html
+        │   │   │   ├── header-avec-navigation-complete-1.html
+        │   │   │   ├── header-avec-selecteur-de-langues-2.html
+        │   │   │   ├── header-avec-selecteur-de-langues-et-parametre-d-af-4.html
+        │   │   │   ├── header-avec-selecteur-de-langues-et-raccourcis-3.html
+        │   │   │   ├── header-deprecie-9.html
+        │   │   │   └── header-logo-operateur-bandeau-beta-8.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── highlight
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── input
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── link
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── logo
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── modal
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── modale-avec-zone-d-action-ancre-en-haut-en-mobile-3.html
+        │   │   │   ├── modale-avec-zone-d-action-et-boutons-2.html
+        │   │   │   ├── modale-avec-zone-d-action-tableau-et-tooltip-4.html
+        │   │   │   └── modale-formulaire-1.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── navigation
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   └── navigation-principale-1.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── notice
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── pagination
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── password
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── quote
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── radio
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── range
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── search
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── segmented
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── select
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── share
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── sidemenu
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── navigation-laterale-a-droite-4.html
+        │   │   │   ├── navigation-laterale-de-base-1.html
+        │   │   │   ├── navigation-laterale-de-base-desactivee-7.html
+        │   │   │   ├── navigation-laterale-de-base-ouverte-5.html
+        │   │   │   ├── navigation-laterale-de-base-ouverte-desactivee-6.html
+        │   │   │   ├── navigation-laterale-sticky-2.html
+        │   │   │   └── navigation-laterale-sticky-et-sur-toute-la-hauteur-3.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── skiplink
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── stepper
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── summary
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   └── sommaire-1.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── tab
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   └── onglets-dans-onglets-1.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── table
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── exemple-des-classes-utilitaires-d-alignement-1.html
+        │   │   │   ├── tableau-a-double-entree-4.html
+        │   │   │   ├── tableau-avec-filtre-et-navigation-comportant-diffe-7.html
+        │   │   │   ├── tableau-avec-lignes-selectionnables-2.html
+        │   │   │   ├── tableau-avec-premiere-colonne-fixee-a-partir-du-br-3.html
+        │   │   │   ├── tableau-avec-recherche-6.html
+        │   │   │   └── tableau-complexe-comportant-des-cellules-fusionnee-5.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── tabnav
+        │   │   ├── design.md
+        │   │   └── index.md
+        │   ├── tag
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── tile
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── grilles-de-tuiles-horizontales-3.html
+        │   │   │   ├── grilles-de-tuiles-horizontales-sm-4.html
+        │   │   │   ├── grilles-de-tuiles-verticales-1.html
+        │   │   │   └── grilles-de-tuiles-verticales-sm-2.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── toggle
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples
+        │   │   │   ├── groupe-de-toggles-simple-avec-bouton-etat-separate-1.html
+        │   │   │   └── groupe-de-toggles-simple-avec-bouton-etat-separate-2.html
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── tooltip
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── transcription
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── translate
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── upload
+        │   │   ├── accessibilite.md
+        │   │   ├── code.md
+        │   │   ├── design.md
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   └── user
+        │       ├── design.md
+        │       └── index.md
+        ├── demarrage.md
+        ├── fondamentaux
+        │   ├── base
+        │   │   └── index.md
+        │   ├── color
+        │   │   ├── index.md
+        │   │   └── usage.md
+        │   ├── display
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── elevation
+        │   │   └── index.md
+        │   ├── favicon
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── grid
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── icon
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── media
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   ├── pictogram
+        │   │   └── index.md
+        │   ├── spacing
+        │   │   ├── exemples.md
+        │   │   └── index.md
+        │   └── typography
+        │       ├── exemples.md
+        │       └── index.md
+        ├── modeles
+        │   ├── blocs
+        │   │   ├── address
+        │   │   │   └── exemples.md
+        │   │   ├── civility
+        │   │   │   ├── exemples.md
+        │   │   │   └── index.md
+        │   │   ├── company
+        │   │   │   ├── exemples
+        │   │   │   │   └── demande-d-une-adresse-de-siege-social-1.html
+        │   │   │   ├── exemples.md
+        │   │   │   └── index.md
+        │   │   ├── date
+        │   │   │   ├── exemples.md
+        │   │   │   └── index.md
+        │   │   ├── email
+        │   │   │   ├── exemples.md
+        │   │   │   └── index.md
+        │   │   ├── forms
+        │   │   │   └── index.md
+        │   │   ├── name
+        │   │   │   ├── exemples.md
+        │   │   │   └── index.md
+        │   │   ├── nationality
+        │   │   │   └── exemples.md
+        │   │   └── tel
+        │   │       ├── exemples.md
+        │   │       └── index.md
+        │   └── pages
+        │       ├── login
+        │       │   ├── exemples
+        │       │   │   ├── 1-default-titre-editorialise-1.html
+        │       │   │   └── 2-error-titre-editorialise-2.html
+        │       │   ├── exemples.md
+        │       │   └── index.md
+        │       ├── register
+        │       │   ├── exemples
+        │       │   │   ├── 1-single-titre-editorialise-1.html
+        │       │   │   ├── 2a-login-titre-editorialise-2.html
+        │       │   │   ├── 2b-identity-titre-editorialise-3.html
+        │       │   │   └── 2c-address-titre-editorialise-4.html
+        │       │   ├── exemples.md
+        │       │   └── index.md
+        │       └── response
+        │           ├── exemples.md
+        │           └── index.md
+        ├── reference
+        │   ├── classes.txt
+        │   ├── icones.md
+        │   └── pictogrammes.md
+        └── scripts
+            └── verifier.mjs
+108 directories, 365 files
