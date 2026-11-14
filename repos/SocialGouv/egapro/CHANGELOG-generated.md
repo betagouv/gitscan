@@ -1,45 +1,45 @@
 ## Changelog : egapro (30 derniers jours, au 11 novembre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a connu une avancée majeure sur l'accessibilité (RGAA) et l'expérience utilisateur, notamment pour les parcours de déclaration de rémunération et les avis du CSE. Les outils d'administration ont été enrichis pour offrir plus de contrôle sur les campagnes, tandis que la sécurité a été renforcée par l'introduction de nouvelles méthodes d'authentification. En parallèle, les fondations techniques ont été préparées pour supporter les futures évolutions de la base de données.
+Ce mois a été marqué par un effort massif de mise en conformité de l'accessibilité numérique et par l'amélioration de la fiabilité des parcours de déclaration (rémunération, représentation et avis CSE). Les utilisateurs bénéficient désormais de documents PDF récapitulatifs plus complets et d'une navigation plus fluide, tandis que les administrateurs disposent de nouveaux leviers de pilotage pour les campagnes.
 
 ### Évolutions fonctionnelles
 
-**Déclarations et parcours utilisateurs**
-- Amélioration complète du parcours des avis CSE : nouveaux designs de pages de visualisation, récapitulatifs PDF et workflow de transmission optimisé [#4963](https://github.com/SocialGouv/egapro/issues/4963), [#4983](https://github.com/SocialGouv/egapro/issues/4983), [#5097](https://github.com/SocialGouv/egapro/issues/5097).
-- Optimisation de la déclaration de rémunération : affichage du sens des écarts, nouvelles infobulles de lecture et récapitulatifs adaptés à la taille de l'entreprise [#4792](https://github.com/SocialGouv/egapro/issues/4792), [#4967](https://github.com/SocialGouv/egapro/issues/4967), [#5078](https://github.com/SocialGouv/egapro/issues/5078).
-- Amélioration de la déclaration de représentation avec de nouveaux modèles de PDF et de pages de confirmation [#4916](https://github.com/SocialGouv/egapro/issues/4916), [#5081](https://github.com/SocialGouv/egapro/issues/5081).
-- Meilleure gestion des verrous de déclaration avec information sur les délais de reprise possibles [#5085](https://github.com/SocialGouv/egapro/issues/5085).
-- Mise à jour de l'Observatoire avec l'ajout de l'historique des SIREN pour les audits RGAA [#5079](https://github.com/SocialGouv/egapro/issues/5079).
+* **Déclarations et parcours utilisateurs**
+    - Amélioration de la génération et du design des documents PDF récapitulatifs (déclarations de représentation, avis CSE et données préremplies) [#5081](https://github.com/SocialGouv/egapro/issues/5081), [#5097](https://github.com/SocialGouv/egapro/issues/5097), [#4830](https://github.com/SocialGouv/egapro/issues/4830).
+    - Optimisation des étapes de déclaration (rémunération, représentation, avis CSE) avec des libellés clarifiés et une meilleure gestion de la navigation [#5153](https://github.com/SocialGouv/egapro/issues/5153), [#5139](https://github.com/SocialGouv/egapro/issues/5139), [#4983](https://github.com/SocialGouv/egapro/issues/4983).
+    - Ajout d'informations sur les délais de verrouillage avant de pouvoir reprendre une déclaration [#5085](https://github.com/SocialGouv/egapro/issues/5085).
+    - Affichage systématique du sens des écarts de rémunération sur l'ensemble des vues [#4842](https://github.com/SocialGouv/egapro/issues/4842).
+    - Amélioration de la gestion des effectifs pour éviter les erreurs de saisie lors de la première étape [#4906](https://github.com/SocialGouv/egapro/issues/4906).
 
-**Espace Utilisateur (Mon Espace)**
-- Amélioration de la visibilité des documents et des échéances des démarches [#5135](https://github.com/SocialGouv/egapro/issues/5135), [#5133](https://github.com/SocialGouv/egapro/issues/5133).
-- Possibilité de déposer un rapport d'évaluation conjointe directement dans l'espace utilisateur en cas de mise en demeure [#4825](https://github.com/SocialGouv/egapro/issues/4825).
+* **Espace utilisateur ("Mon espace")**
+    - Amélioration de la visibilité des déclarations et des avis transmis dans le tableau de bord [#4900](https://github.com/SocialGouv/egapro/issues/4900), [#4950](https://github.com/SocialGouv/egapro/issues/4950).
+    - Mise à jour de l'interface du profil et du panneau latéral pour une meilleure cohérence visuelle [#4903](https://github.com/SocialGouv/egapro/issues/4903), [#4976](https://github.com/SocialGouv/egapro/issues/4976).
 
-**Administration et Pilotage**
-- Nouveaux outils de pilotage : paramétrage des dates limites de choix de parcours et statistiques de campagne affinées [#5151](https://github.com/SocialGouv/egapro/issues/5151), [#4812](https://github.com/SocialGouv/egapro/issues/4812).
-- Export CSV des référents amélioré (libellés et colonnes réordonnées) [#5108](https://github.com/SocialGouv/egapro/issues/5108).
+* **Administration et Observatoire**
+    - Nouveaux outils de pilotage pour les administrateurs : paramétrage des dates limites de parcours et suivi précis du statut des démarches [#5151](https://github.com/SocialGouv/egapro/issues/5151), [#5090](https://github.com/SocialGouv/egapro/issues/5090).
+    - Amélioration de l'export des référents en format CSV [#5108](https://github.com/SocialGouv/egapro/issues/5108).
+    - Ajout de l'historique des SIREN dans l'Observatoire pour faciliter l'audit RGAA [#5079](https://github.com/SocialGouv/egapro/issues/5079).
 
-**Accessibilité et Design**
-- Chantier massif d'accessibilité : mise en conformité RGAA sur l'ensemble des formulaires, tableaux, graphiques et documents PDF (norme PDF/UA-1) [#5017](https://github.com/SocialGouv/egapro/issues/5017), [#5018](https://github.com/SocialGouv/egapro/issues/5018), [#5023](https://github.com/SocialGouv/egapro/issues/5023).
-- Refonte visuelle de la page d'accueil (hero, cartes, FAQ) et corrections de design sur l'ensemble de l'interface [#5103](https://github.com/SocialGouv/egapro/issues/5103), [#5092](https://github.com/SocialGouv/egapro/issues/5092).
-- Harmonisation des libellés (wording) sur l'ensemble de la plateforme pour une meilleure clarté [#5152](https://github.com/SocialGouv/egapro/issues/5152), [#5136](https://github.com/SocialGouv/egapro/issues/5136).
-
-**Sécurité et Légal**
-- Renforcement de l'authentification : support de l'eidas2 pour l'administration et renforcement du MFA pour les déclarants [#5132](https://github.com/SocialGouv/egapro/issues/5132), [#4816](https://github.com/SocialGouv/egapro/issues/4816).
-- Mise à jour des CGU et de la politique de confidentialité [#4828](https://github.com/SocialGouv/egapro/issues/4828).
+* **Accessibilité (A11y)**
+    - Mise en conformité majeure de l'interface : amélioration de la navigation au clavier, de la structure des tableaux et graphiques, de la gestion des erreurs et de la compatibilité avec les lecteurs d'écran [#5001](https://github.com/SocialGouv/egapro/issues/5001) à [#5084](https://github.com/SocialGouv/egapro/issues/5084).
 
 ### Évolutions techniques
 
-**Infrastructure et Base de données**
-- Préparation de la migration vers PostgreSQL 17 pour les environnements de développement et la V2 [#4871](https://github.com/SocialGouv/egapro/issues/4871), [#4870](https://github.com/SocialGouv/egapro/issues/4870).
-- Optimisations de l'infrastructure (gestion des CronJobs, conteneurs et environnements de test) [#4827](https://github.com/SocialGouv/egapro/issues/4827), [#5106](https://github.com/SocialGouv/egapro/issues/5106), [#5006](https://github.com/SocialGouv/egapro/issues/5006).
+* **Sécurité et Authentification**
+    - Renforcement de la sécurité : mise en place du MFA pour les déclarants et support des protocoles eidas2/eidas3 pour l'administration [#5132](https://github.com/SocialGouv/egapro/issues/5132), [#4816](https://github.com/SocialGouv/egapro/issues/4816).
+    - Mise à jour de Node.js pour répondre aux derniers correctifs de sécurité [#4939](https://github.com/SocialGouv/egapro/issues/4939).
+    - Anonymisation des données personnelles transmises à l'outil de monitoring Sentry [#4902](https://github.com/SocialGouv/egapro/issues/4902).
 
-**Sécurité et Observabilité**
-- Amélioration de la traçabilité des audits (gestion des impersonations, traçage des pannes antivirus) [#4886](https://github.com/SocialGouv/egapro/issues/4886), [#4826](https://github.com/SocialGouv/egapro/issues/4826).
-- Sécurisation des données : anonymisation des données personnelles envoyées à Sentry [#4902](https://github.com/SocialGouv/egapro/issues/4902).
+* **Infrastructure et Base de données**
+    - Migration des environnements de développement vers PostgreSQL 17 [#4871](https://github.com/SocialGouv/egapro/issues/4871).
+    - Optimisation de la gestion des journaux d'audit (durées de conservation et purge des accès administrateurs) [#5148](https://github.com/SocialGouv/egapro/issues/5148), [#4886](https://github.com/SocialGouv/egapro/issues/4886).
 
-**Qualité et CI/CD**
-- Renforcement de la chaîne de tests : couverture E2E des verrous de déclaration et amélioration des tests ProConnect [#4911](https://github.com/SocialGouv/egapro/issues/4911), [#4869](https://github.com/SocialGouv/egapro/issues/4869).
-- Intégration de contrôles d'accessibilité automatisés (ultra11y) dans les pipelines de CI [#5084](https://github.com/SocialGouv/egapro/issues/5084), [#4855](https://github.com/SocialGouv/egapro/issues/4855).
-- Optimisation des outils de développement, incluant une configuration commune pour les outils d'IA [#5096](https://github.com/SocialGouv/egapro/issues/5096).
+* **Qualité et CI/CD**
+    - Amélioration de la couverture des tests de bout en bout (E2E), notamment sur les mécanismes de verrouillage des déclarations [#4911](https://github.com/SocialGouv/egapro/issues/4911).
+    - Optimisation des workflows de CI pour inclure des tests d'accessibilité et de performance (Lighthouse) plus rigoureux [#5084](https://github.com/SocialGouv/egapro/issues/5084), [#4867](https://github.com/SocialGouv/egapro/issues/4867).
+
+### Autres changements
+
+* Mise à jour de la politique de confidentialité et versionnement des CGU [#4828](https://github.com/SocialGouv/egapro/issues/4828).
+* Configuration d'outils d'assistance par IA pour optimiser le développement [#5096](https://github.com/SocialGouv/egapro/issues/5096).
