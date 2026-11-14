@@ -1,7 +1,8 @@
 .
 ├── .changeset
 │   ├── README.md
-│   └── config.json
+│   ├── config.json
+│   └── database-users-timestamps-as-dates.md
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -27,7 +28,9 @@
 ├── .gitignore
 ├── .prettierignore
 ├── .release-it-changeset
-│   └── .gitkeep
+│   ├── .gitkeep
+│   ├── 1793979538-service-sign-out-recorded.md
+│   └── 1794219930-quit-organization-email-line-break.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── Dockerfile
@@ -160,6 +163,10 @@
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
+│   │   ├── logout
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
 │   │   ├── mfa_decision_helper_account
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
@@ -181,6 +188,14 @@
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
 │   │   ├── reauthenticate_on_admin_page
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── recovery_words_incentive
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── recovery_words_incentive_disabled
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
@@ -253,6 +268,10 @@
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
 │   │   ├── signin_with_webauthn
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── signin_with_webauthn_enrollment
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
@@ -396,7 +415,8 @@
 │   ├── 1793174800208_add-interaction-cid-and-outcome-to-users-oidc-clients.ts
 │   ├── 1793275986382_create-activity-logs-table.ts
 │   ├── 1793291976677_add-cause-activity-id-to-activity-logs.ts
-│   └── 1793389570698_drop-has-been-greeted.ts
+│   ├── 1793389570698_drop-has-been-greeted.ts
+│   └── 1793987333000_add-sid-to-users-oidc-clients.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -625,6 +645,10 @@
 │   │   │   ├── QuitOrganization.test.tsx
 │   │   │   ├── QuitOrganization.test.tsx.snapshot
 │   │   │   ├── QuitOrganization.tsx
+│   │   │   ├── RecoveryWordsGenerated.stories.tsx
+│   │   │   ├── RecoveryWordsGenerated.test.tsx
+│   │   │   ├── RecoveryWordsGenerated.test.tsx.snapshot
+│   │   │   ├── RecoveryWordsGenerated.tsx
 │   │   │   ├── ResetPassword.stories.tsx
 │   │   │   ├── ResetPassword.test.tsx
 │   │   │   ├── ResetPassword.test.tsx.snapshot
@@ -877,8 +901,8 @@
 │   │   │   │   ├── organization
 │   │   │   │   │   ├── compute-service-public-info.test.ts
 │   │   │   │   │   ├── compute-service-public-info.ts
-│   │   │   │   │   ├── get-member-ids-promoted-by-domain.test.ts
-│   │   │   │   │   ├── get-member-ids-promoted-by-domain.ts
+│   │   │   │   │   ├── get-membership-changes-by-domain-verification.test.ts
+│   │   │   │   │   ├── get-membership-changes-by-domain-verification.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── is-domain-allowed-for-organization.ts
 │   │   │   │   │   ├── is-entreprise-unipersonnelle.test.ts
@@ -988,13 +1012,17 @@
 │   │   │   │   ├── activity-context-schemas.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── types.ts
+│   │   │   ├── certification
+│   │   │   │   ├── activities.test.ts
+│   │   │   │   ├── activities.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── database
 │   │   │   │   └── index.ts
 │   │   │   ├── domains
 │   │   │   │   ├── activities.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── mark-domain-as-verified.test.ts
-│   │   │   │   └── mark-domain-as-verified.ts
+│   │   │   │   ├── change-email-domain-verification.test.ts
+│   │   │   │   ├── change-email-domain-verification.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── franceconnect
 │   │   │   │   ├── activities.ts
 │   │   │   │   ├── connect-franceconnect.test.ts
@@ -1262,7 +1290,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── internals.ts
 │   │   │   ├── meta.ts
-│   │   │   └── processPendingCertificationDirigeantGuard.ts
+│   │   │   └── process.ts
 │   │   └── rate-limiter.ts
 │   ├── repositories
 │   │   ├── oidc-provider-adapter-for-clients.ts
@@ -1348,6 +1376,8 @@
 │       │   ├── index-layout.ejs
 │       │   ├── is-totp-app-installed-layout.ejs
 │       │   ├── passkey-layout.ejs
+│       │   ├── recovery-words-incentive-layout.ejs
+│       │   ├── recovery-words-setup-layout.ejs
 │       │   ├── smartphone-app-layout.ejs
 │       │   ├── smartphone-layout.ejs
 │       │   ├── software-layout.ejs
@@ -1374,7 +1404,8 @@
 │       │   ├── submit-button.ejs
 │       │   └── test-env-warning.ejs
 │       ├── personal-information.ejs
-│       ├── recovery-words.ejs
+│       ├── recovery-words-incentive.ejs
+│       ├── recovery-words-setup.ejs
 │       ├── too-many-requests-error.ejs
 │       ├── totp-configuration.ejs
 │       ├── user
@@ -1409,6 +1440,8 @@
 │       │   ├── official-contact-email-verification.ejs
 │       │   ├── organization-suggestions.ejs
 │       │   ├── personal-information.ejs
+│       │   ├── recovery-words-incentive.ejs
+│       │   ├── recovery-words-setup.ejs
 │       │   ├── reset-password.ejs
 │       │   ├── select-organization.ejs
 │       │   ├── sign-in-with-magic-link.ejs
@@ -1446,4 +1479,4 @@
 │   └── index.ts
 ├── tsconfig.json
 └── vite.config.mjs
-252 directories, 1279 files
+257 directories, 1307 files
