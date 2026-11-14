@@ -1,0 +1,25 @@
+2026-11-03T13:35:57+01:00 - 5bc4002 - victorjourne : Merge pull request #19 from IA-Generative/refactor/plugin-agent-skills
+2026-11-03T13:28:41+01:00 - d947b17 - victorjourne : refactor: plugin Claude Code renommé agent-skills, marketplace eric-skills (fin de « mishell »)
+2026-10-30T11:00:20+01:00 - 7abc420 - victorjourne : Merge pull request #14 from IA-Generative/refactor/skills-groupes-plugins
+2026-10-23T14:50:21+02:00 - 3620500 - victorjourne : feat(plugin): nommer le plugin Claude Code mishell-skills (skills nommées /mishell-skills:<nom>)
+2026-10-22T22:15:08+02:00 - 7300f11 - etiquet : Aucune consigne injectée en session : retire le hook SessionStart et les instructions.md de groupe
+2026-10-22T22:15:08+02:00 - 348e21f - etiquet : package.json à la racine : point d'entrée du plugin OpenCode installé par URL git+https (repris de #15)
+2026-10-22T22:15:08+02:00 - 411e528 - etiquet : Catalogues index.json générés par scripts/skills-index.mjs (repris de #15) et vérifiés en CI
+2026-10-22T21:59:51+02:00 - e165a8a - etiquet : CI Windows : chemins de l'arborescence groupée ; l'amorçage vérifie le clone, pas des chemins de main
+2026-10-22T21:58:29+02:00 - 827001c - etiquet : Garde les préfixes de famille (audit-*, repo-*) dans les noms, avec le rangement par groupe
+2026-10-22T21:57:16+02:00 - 626c0fa - etiquet : install.ps1 : parcourir skills/<groupe>/<skill> (sans cela, Windows n'installait aucune skill et nettoyait les anciennes jonctions)
+2026-10-22T21:57:02+02:00 - 09fdb17 - etiquet : Merge remote-tracking branch 'origin/main' into refactor/skills-groupes-plugins
+2026-10-22T21:46:44+02:00 - 3ff8681 - etiquet : Installation simple sur macOS, Windows et Linux : une ligne gh api, install.ps1 natif, CI sur les trois systèmes (#16)
+2026-10-21T17:34:34+02:00 - 4fc7bca - victorjourne : fix(plugin): déclarer chaque dossier de groupe dans skills (structure à 2 niveaux non scannée par défaut)
+2026-10-21T17:19:06+02:00 - e758a23 - victorjourne : docs: marketplace add n'installe rien, préciser l'install et la vérification (skills@mishell)
+2026-10-21T17:05:19+02:00 - 06acaa7 - victorjourne : fix(plugin): renommer la marketplace agent-skills en mishell (nom réservé par Anthropic)
+2026-10-21T14:59:24+02:00 - b8df500 - victorjourne : docs: renommage de skill = maj index.json + instructions.md ; portée install.sh vs plugins
+2026-10-21T14:00:50+02:00 - f0a0c20 - victorjourne : refactor(skills): ranger les skills par groupe et exposer via plugins OpenCode/Claude
+2026-10-19T13:17:38+02:00 - d926d6b - etiquet : install.sh : cibles kimi et deepcode ; README : Kimi Code CLI, Deep Code et modèles tiers (DeepSeek, GLM) derrière un agent hôte (#13)
+2026-10-19T06:37:34+02:00 - 8ff027f - etiquet : Ajoute la skill /repo-perimetre : le diff tient-il dans l'intention de la PR, et par le chemin le plus simple ? (#12)
+2026-10-19T06:24:19+02:00 - 641d365 - etiquet : Reprend six apports d'ECC : audit-rag, repo-impact, hook destructive-guard, et enrichit 4 skills (#11)
+2026-09-28T04:00:31+03:00 - 383bf3b - etiquet : Ajoute la skill /repo-version-json : l'image porte sa version, servie sur /__version__ (ADR-0004) (#10)
+2026-09-24T07:57:20+02:00 - 4cfa90b - etiquet : Enrichit audit-pentest-prep (disponibilité, observabilité, endpoints LLM auxiliaires) et audit-redteam (issue « bloqué en silence ») (#9)
+2026-09-24T06:45:10+02:00 - 1752e7b - etiquet : Rend le dépôt générique multi-agents (agent-skills) et unifie l'installation (#8)
+2026-09-24T05:55:27+02:00 - 40802fe - etiquet : Rend les skills utilisables par les agents autres que Claude Code (#7)
+2026-09-21T22:39:43+02:00 - b25e5e3 - etiquet : Ajoute la skill /repo-cicd-cpin : CI/CD Cloud Pi Native adossée à dnum-mi/fabnum-cicd (#6)
