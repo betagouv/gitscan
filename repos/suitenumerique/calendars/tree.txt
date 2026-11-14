@@ -33,14 +33,15 @@
 │   ├── manage
 │   ├── postgres_e2e
 │   ├── pytest
+│   ├── release.py
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
 │   ├── scalingo_run_web
 │   ├── scalingo_run_worker
+│   ├── smoke-test-front
 │   ├── update_app_cacert.sh
 │   └── update_openapi_schema
 ├── compose.yaml
-├── cron.json
 ├── docker
 │   ├── auth
 │   │   └── realm.json
@@ -52,9 +53,13 @@
 ├── docs
 │   ├── RECURRENCE_TESTS.md
 │   ├── architecture.md
+│   ├── assets
+│   │   ├── banner-calendars.png
+│   │   └── calendars-UI.png
 │   ├── channels.md
 │   ├── entitlements.md
 │   ├── freebusy.md
+│   ├── hidden-calendars.md
 │   ├── invitations.md
 │   ├── mailboxes.md
 │   ├── organizations.md
@@ -106,6 +111,7 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
     │   │   │   ├── exceptions.py
+    │   │   │   ├── silent_login.py
     │   │   │   └── views.py
     │   │   ├── entitlements
     │   │   │   ├── __init__.py
@@ -142,6 +148,15 @@
     │   │   │   ├── setup_service.py
     │   │   │   └── translation_service.py
     │   │   ├── signals.py
+    │   │   ├── static
+    │   │   │   └── images
+    │   │   │       ├── icon-check-green.png
+    │   │   │       ├── icon-check-white.png
+    │   │   │       ├── icon-close-blue.png
+    │   │   │       ├── icon-close-red.png
+    │   │   │       ├── icon-link-blue.png
+    │   │   │       ├── icon-question-blue.png
+    │   │   │       └── logo-calendriers.png
     │   │   ├── task_utils.py
     │   │   ├── tasks.py
     │   │   ├── templates
@@ -151,6 +166,7 @@
     │   │   │   │           ├── change_form.html
     │   │   │   │           └── regenerated_tokens.html
     │   │   │   ├── emails
+    │   │   │   │   ├── _event_details.html
     │   │   │   │   ├── _invitation_layout.html
     │   │   │   │   ├── _rsvp_buttons.html
     │   │   │   │   ├── calendar_invitation.html
@@ -181,6 +197,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── test_api_config.py
+    │   │   │   ├── test_api_setup.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_audit_tracking.py
     │   │   │   ├── test_caldav_proxy.py
@@ -194,6 +211,7 @@
     │   │   │   ├── test_createsuperuser.py
     │   │   │   ├── test_cross_org_e2e.py
     │   │   │   ├── test_entitlements.py
+    │   │   │   ├── test_heartbeat.py
     │   │   │   ├── test_ical_export.py
     │   │   │   ├── test_ical_export_e2e.py
     │   │   │   ├── test_import_events.py
@@ -202,7 +220,9 @@
     │   │   │   ├── test_permissions_security.py
     │   │   │   ├── test_resources.py
     │   │   │   ├── test_rsvp.py
+    │   │   │   ├── test_rsvp_caldav.py
     │   │   │   ├── test_settings.py
+    │   │   │   ├── test_setup_mailbox_calendar_delete.py
     │   │   │   ├── test_setup_service.py
     │   │   │   ├── test_signals.py
     │   │   │   ├── test_tasks.py
@@ -258,6 +278,7 @@
     │       ├── CustomCalDAVPlugin.php
     │       ├── CustomCalendarHome.php
     │       ├── FreeBusyOrgScopePlugin.php
+    │       ├── HiddenCalendarPlugin.php
     │       ├── HttpCallbackIMipPlugin.php
     │       ├── InternalApiPlugin.php
     │       ├── MailboxPlugin.php
@@ -282,6 +303,7 @@
     ├── frontend
     │   ├── .dockerignore
     │   ├── .gitignore
+    │   ├── .npmrc
     │   ├── .oxfmtrc.json
     │   ├── .oxlintrc.json
     │   ├── Caddyfile
@@ -290,9 +312,8 @@
     │   ├── README.md
     │   ├── cunningham.ts
     │   ├── index.html
+    │   ├── package-lock.json
     │   ├── package.json
-    │   ├── pnpm-lock.yaml
-    │   ├── pnpm-workspace.yaml
     │   ├── public
     │   │   ├── 401-background.png
     │   │   ├── 403-background.png
@@ -308,6 +329,8 @@
     │   │   ├── logo-suite-numerique.png
     │   │   ├── logo_alpha.svg
     │   │   └── mime-video.svg
+    │   ├── scripts
+    │   │   └── check-node-modules.mjs
     │   ├── src
     │   │   ├── assets
     │   │   │   ├── feedback
@@ -332,6 +355,9 @@
     │   │   │   │   └── AnalyticsProvider.tsx
     │   │   │   ├── api
     │   │   │   │   ├── APIError.ts
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   ├── APIError.test.ts
+    │   │   │   │   │   └── fetchApi.test.ts
     │   │   │   │   ├── fetchApi.ts
     │   │   │   │   ├── types.ts
     │   │   │   │   └── utils.ts
@@ -339,14 +365,19 @@
     │   │   │   │   └── AppContext.tsx
     │   │   │   ├── auth
     │   │   │   │   ├── Auth.tsx
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   └── silentLogin.test.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── LoginButton.tsx
     │   │   │   │   │   └── LogoutButton.tsx
+    │   │   │   │   ├── silentLogin.ts
     │   │   │   │   └── types.ts
     │   │   │   ├── calendar
     │   │   │   │   ├── api.ts
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── CalendarGroupIcon.tsx
     │   │   │   │   │   ├── calendar-list
+    │   │   │   │   │   │   ├── CalendarHiddenToast.tsx
     │   │   │   │   │   │   ├── CalendarItemMenu.tsx
     │   │   │   │   │   │   ├── CalendarList.scss
     │   │   │   │   │   │   ├── CalendarList.tsx
@@ -355,10 +386,25 @@
     │   │   │   │   │   │   ├── CalendarShareModal.tsx
     │   │   │   │   │   │   ├── DeleteConfirmModal.tsx
     │   │   │   │   │   │   ├── ImportEventsModal.tsx
+    │   │   │   │   │   │   ├── MailboxCalendarDeleteModal.tsx
     │   │   │   │   │   │   ├── SubscriptionUrlModal.tsx
-    │   │   │   │   │   │   ├── constants.ts
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   ├── delete-menu-entry.test.ts
+    │   │   │   │   │   │   │   └── utils.test.ts
     │   │   │   │   │   │   ├── hooks
-    │   │   │   │   │   │   │   └── useCalendarListState.ts
+    │   │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   │   ├── render-hook.ts
+    │   │   │   │   │   │   │   │   ├── useCalendarAction.test.ts
+    │   │   │   │   │   │   │   │   ├── useCalendarDelete.test.ts
+    │   │   │   │   │   │   │   │   ├── useCalendarHiding.test.ts
+    │   │   │   │   │   │   │   │   ├── useCalendarModal.test.ts
+    │   │   │   │   │   │   │   │   └── useMailboxCalendarDelete.test.ts
+    │   │   │   │   │   │   │   ├── useCalendarAction.ts
+    │   │   │   │   │   │   │   ├── useCalendarDelete.ts
+    │   │   │   │   │   │   │   ├── useCalendarHiding.ts
+    │   │   │   │   │   │   │   ├── useCalendarListState.ts
+    │   │   │   │   │   │   │   ├── useCalendarModal.ts
+    │   │   │   │   │   │   │   └── useMailboxCalendarDelete.ts
     │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   ├── types.ts
     │   │   │   │   │   │   └── utils.ts
@@ -368,10 +414,13 @@
     │   │   │   │   │   │   ├── LeftPanel.tsx
     │   │   │   │   │   │   ├── MiniCalendar.scss
     │   │   │   │   │   │   ├── MiniCalendar.tsx
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   └── LeftPanel.test.tsx
     │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   └── scheduler
     │   │   │   │   │       ├── AttendeesInput.scss
     │   │   │   │   │       ├── AttendeesInput.tsx
+    │   │   │   │   │       ├── CalendarOption.tsx
     │   │   │   │   │       ├── CalendarSelect.tsx
     │   │   │   │   │       ├── DeleteEventModal.tsx
     │   │   │   │   │       ├── EventModal.scss
@@ -387,9 +436,12 @@
     │   │   │   │   │       ├── SchedulerToolbar.tsx
     │   │   │   │   │       ├── __tests__
     │   │   │   │   │       │   ├── RecurrenceEditor.helpers.test.ts
+    │   │   │   │   │       │   ├── RecurrenceEditor.summary.test.ts
     │   │   │   │   │       │   ├── attendees-utils.test.ts
-    │   │   │   │   │       │   └── organizer-for-calendar.test.ts
+    │   │   │   │   │       │   ├── organizer-for-calendar.test.ts
+    │   │   │   │   │       │   └── rsvp.test.ts
     │   │   │   │   │       ├── attendees-utils.ts
+    │   │   │   │   │       ├── ec-subgrid-fallback.scss
     │   │   │   │   │       ├── event-modal-sections
     │   │   │   │   │       │   ├── AttachmentsSection.tsx
     │   │   │   │   │       │   ├── AttendeesSection.tsx
@@ -432,12 +484,22 @@
     │   │   │   │   │       ├── scheduler-theme.scss
     │   │   │   │   │       ├── types.ts
     │   │   │   │   │       └── utils
+    │   │   │   │   │           ├── __tests__
+    │   │   │   │   │           │   ├── dateFormatters.test.ts
+    │   │   │   │   │           │   ├── eventContent.test.ts
+    │   │   │   │   │           │   └── lastView.test.ts
     │   │   │   │   │           ├── dateFormatters.ts
     │   │   │   │   │           ├── eventContent.ts
-    │   │   │   │   │           └── eventDisplayRules.ts
+    │   │   │   │   │           ├── eventDisplayRules.ts
+    │   │   │   │   │           ├── lastView.ts
+    │   │   │   │   │           └── rsvp.ts
+    │   │   │   │   ├── constants.ts
     │   │   │   │   ├── contexts
     │   │   │   │   │   ├── CalendarContext.tsx
-    │   │   │   │   │   └── index.ts
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   └── set-calendar-hidden.test.ts
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   └── set-calendar-hidden.ts
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useCalendarLocale.ts
     │   │   │   │   │   └── useCalendars.ts
@@ -446,31 +508,49 @@
     │   │   │   │   │       ├── CalDavService.ts
     │   │   │   │   │       ├── EventCalendarAdapter.ts
     │   │   │   │   │       ├── __tests__
+    │   │   │   │   │       │   ├── CalDavService.calendarOwnership.test.ts
     │   │   │   │   │       │   ├── CalDavService.connect.test.ts
+    │   │   │   │   │       │   ├── CalDavService.createOverrideInstance.test.ts
+    │   │   │   │   │       │   ├── CalDavService.deleteCalendar.test.ts
     │   │   │   │   │       │   ├── CalDavService.deleteEvent.test.ts
+    │   │   │   │   │       │   ├── CalDavService.fetchEvent.test.ts
+    │   │   │   │   │       │   ├── CalDavService.fetchOccurrenceDates.test.ts
     │   │   │   │   │       │   ├── CalDavService.moveEvent.test.ts
+    │   │   │   │   │       │   ├── CalDavService.readOnly.test.ts
+    │   │   │   │   │       │   ├── CalDavService.respondToInvitation.test.ts
+    │   │   │   │   │       │   ├── CalDavService.setCalendarHidden.test.ts
     │   │   │   │   │       │   ├── CalDavService.updateEvent.partstat.test.ts
+    │   │   │   │   │       │   ├── EventCalendarAdapter.recurrenceId.test.ts
+    │   │   │   │   │       │   ├── EventCalendarAdapter.timezoneFallback.test.ts
     │   │   │   │   │       │   ├── caldav-helpers.test.ts
     │   │   │   │   │       │   ├── freebusy-builder.test.ts
+    │   │   │   │   │       │   ├── rsvp.test.ts
     │   │   │   │   │       │   └── sanitizeIcsUrl.test.ts
     │   │   │   │   │       ├── caldav-helpers.ts
     │   │   │   │   │       ├── constants.ts
     │   │   │   │   │       ├── helpers
     │   │   │   │   │       │   ├── freebusy-builder.ts
-    │   │   │   │   │       │   └── ical-timezones.ts
+    │   │   │   │   │       │   ├── ical-timezones.ts
+    │   │   │   │   │       │   ├── rsvp.ts
+    │   │   │   │   │       │   └── timezone.ts
     │   │   │   │   │       └── types
     │   │   │   │   │           ├── caldav-service.ts
     │   │   │   │   │           └── event-calendar.ts
     │   │   │   │   ├── types.ts
     │   │   │   │   └── utils
     │   │   │   │       ├── DavClient.ts
-    │   │   │   │       └── __tests__
-    │   │   │   │           └── DavClient.test.ts
+    │   │   │   │       ├── __tests__
+    │   │   │   │       │   ├── DavClient.test.ts
+    │   │   │   │       │   ├── calendar-order.test.ts
+    │   │   │   │       │   └── calendar-ownership.test.ts
+    │   │   │   │       ├── calendar-order.ts
+    │   │   │   │       └── calendar-ownership.ts
     │   │   │   ├── config
     │   │   │   │   ├── ConfigProvider.tsx
     │   │   │   │   └── useApiConfig.ts
     │   │   │   ├── errors
-    │   │   │   │   └── AppError.ts
+    │   │   │   │   ├── AppErrorScreen.tsx
+    │   │   │   │   └── NotFoundScreen.tsx
     │   │   │   ├── feedback
     │   │   │   │   ├── Feedback.scss
     │   │   │   │   ├── Feedback.tsx
@@ -478,6 +558,9 @@
     │   │   │   ├── home
     │   │   │   │   └── HomePage.tsx
     │   │   │   ├── i18n
+    │   │   │   │   ├── __tests__
+    │   │   │   │   │   ├── translations.test.ts
+    │   │   │   │   │   └── utils.test.ts
     │   │   │   │   ├── conf.ts
     │   │   │   │   ├── initI18n.ts
     │   │   │   │   ├── translations.json
@@ -500,10 +583,11 @@
     │   │   │   ├── layouts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── global
-    │   │   │   │   │   │   ├── GlobalLayout.scss
     │   │   │   │   │   │   └── GlobalLayout.tsx
     │   │   │   │   │   ├── header
     │   │   │   │   │   │   ├── Header.tsx
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   └── LanguagePickerUserMenu.test.tsx
     │   │   │   │   │   │   └── index.scss
     │   │   │   │   │   ├── left-panel
     │   │   │   │   │   │   ├── LeftPanelMobile.scss
@@ -538,7 +622,16 @@
     │   │   │   │   ├── components
     │   │   │   │   │   ├── AvailabilityRow.tsx
     │   │   │   │   │   ├── WorkingHoursSettings.scss
-    │   │   │   │   │   └── WorkingHoursSettings.tsx
+    │   │   │   │   │   ├── WorkingHoursSettings.tsx
+    │   │   │   │   │   └── calendars
+    │   │   │   │   │       ├── CalendarHiddenToggle.tsx
+    │   │   │   │   │       ├── CalendarSettings.scss
+    │   │   │   │   │       ├── CalendarSettings.tsx
+    │   │   │   │   │       ├── CalendarSettingsActions.tsx
+    │   │   │   │   │       ├── CalendarSettingsHeader.tsx
+    │   │   │   │   │       ├── CalendarSettingsMenu.tsx
+    │   │   │   │   │       ├── CalendarSettingsRow.tsx
+    │   │   │   │   │       └── CalendarSettingsSection.tsx
     │   │   │   │   └── types.ts
     │   │   │   ├── ui
     │   │   │   │   ├── components
@@ -575,6 +668,7 @@
     │   │   │   ├── useIsMobile.ts
     │   │   │   └── useThemeCustomization.tsx
     │   │   ├── main.tsx
+    │   │   ├── polyfills.ts
     │   │   ├── routes
     │   │   │   ├── 401.tsx
     │   │   │   ├── 403.tsx
@@ -584,7 +678,9 @@
     │   │   │   ├── index.tsx
     │   │   │   ├── integrations.tsx
     │   │   │   ├── no-access.tsx
-    │   │   │   └── resources.tsx
+    │   │   │   ├── resources.tsx
+    │   │   │   └── settings
+    │   │   │       └── calendars.tsx
     │   │   ├── styles
     │   │   │   ├── cunningham-tokens-sass.scss
     │   │   │   ├── cunningham-tokens.css
@@ -606,4 +702,4 @@
     │   └── vitest.config.ts
     └── proxy
         └── Caddyfile
-129 directories, 479 files
+144 directories, 560 files
