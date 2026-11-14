@@ -10,6 +10,7 @@ and this project adheres to
 
 ### Added
 
+- 🌐(i18n) add Portuguese language support
 - ✨(frontend) add jittered exponential backoff to LiveKit reconnections
 - ✨(frontend) tell participants when a recording is interrupted
 
@@ -25,6 +26,9 @@ and this project adheres to
 - 🔒️(backend) issue room access tokens via POST rooms/{id}/join/ only
 - 🔒️(frontend) send the display name in the join request body
 - 🔥(backend) drop is_administrable from unregistered room payloads
+- 🍱(frontend) add Portuguese glyphs to Marianne subsetted fonts
+- 🚸(frontend) bring new speakers to the top of the carousel
+- 🚸(frontend) bring raised hands into view in the carousel
 
 ### Fixed
 
@@ -37,6 +41,11 @@ and this project adheres to
 - 🔒️(agents) upgrade python to 3.14.10 to fix CVE-2026-109518
 - 🔒️(docker) upgrade musl-utils to 1.2.6-r3 to fix CVE-2026-107891
 - ♿️(frontend) close the invite dialog with the Escape key #1916
+- 🔒️(docker) move frontend to nginx/nginx-unprivileged image
+- 🐛(frontend) accept meeting links with query params in join dialog
+- 🐛(backend) allow muting when everyone_can_mute is stored as null #1942
+- 🐛(frontend) apply the sans font token on every page
+- 🐛(frontend) promote the active speaker in the carousel layout
 
 ## [1.37.0] - 2026-11-01
 

@@ -1,34 +1,32 @@
-## Changelog : meet (30 derniers jours, au 07 novembre 2026)
+## Changelog : meet (30 derniers jours, au 14 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure en matière de sécurité et de confidentialité. Une refonte complète du système de journalisation d'audit a été déployée, accompagnée de mesures strictes pour protéger les données sensibles dans les logs et les outils de diagnostic. Parallèlement, l'expérience utilisateur a été fluidifiée grâce à une meilleure gestion des erreurs de connexion et des améliorations notables en matière d'accessibilité.
+Ce mois-ci, les développements se sont concentrés sur trois axes majeurs : le renforcement massif de la sécurité et de la confidentialité des données, l'amélioration de l'accessibilité pour tous les utilisateurs, et l'extension du support linguistique avec l'ajout du portugais. L'expérience de réunion est également devenue plus robuste grâce à une meilleure gestion des erreurs de connexion et des interruptions.
 
 ### Évolutions fonctionnelles
-- **Expérience utilisateur et fiabilité** :
-    - Amélioration de la clarté lors des erreurs de connexion (affichage explicite au lieu d'une attente silencieuse dans le lobby).
-    - Mise en place d'une politique de reconnexion automatique plus intelligente (exponential backoff) pour stabiliser les sessions.
-    - Affichage d'une page dédiée en cas de déconnexion inattendue.
-    - Notification des participants lorsqu'un enregistrement est interrompu.
-- **Accessibilité** :
-    - Possibilité de fermer la boîte de dialogue d'invitation avec la touche `Échap`.
-    - Annonces sonores/visuelles lors de la coupure du micro via des raccourcis.
-- **Gestion des réunions et confidentialité** :
-    - Introduction de la suppression logique (*soft delete*) des salles et de leur purge automatique après une période de rétention.
-    - Protection de la vie privée : les salles de réunion sont désormais masquées des moteurs de recherche et des indexeurs d'IA.
-- **Support** : Remplacement du chat Crisp par le formulaire de support officiel de La Suite.
+- **Accessibilité (♿️) :** Amélioration globale de l'interface pour les lecteurs d'écran, optimisation des contrastes de couleurs, ajout de la navigation au clavier (touche Échap) et meilleure signalisation des changements d'état (micro, paramètres).
+- **Internationalisation (🌐) :** Ajout complet du support de la langue portugaise (interface et polices de caractères).
+- **Expérience utilisateur (UX) :** 
+    - Optimisation du carrousel des participants (mise en avant des nouveaux intervenants et des mains levées).
+    - Amélioration de la gestion des erreurs (affichage des erreurs de connexion au lieu d'une attente infinie, page dédiée en cas de déconnexion inattendue).
+    - Notifications en cas d'interruption d'un enregistrement.
+    - Remplacement du chat Crisp par le formulaire de support La Suite.
+- **Nouvelles capacités :** Autorisation pour tout utilisateur authentifié de lancer un enregistrement.
 
 ### Évolutions techniques
-- **Sécurité et Confidentialité (Renforcement majeur)** :
-    - Implémentation d'un système de journalisation d'audit structuré pour tracer les actions sur les enregistrements, les transcriptions, les résumés et les opérations API.
-    - Anonymisation massive des données sensibles : masquage des URLs signées, des erreurs de validation et des données sensibles dans les logs sources, les événements Sentry et les outils d'analyse.
-    - Sécurisation des endpoints (limitation du débit sur l'enregistrement, authentification renforcée via échange de tokens).
-    - Correction de nombreuses vulnérabilités (CVE) sur les composants critiques (Python, Nginx, Django, musl-utils, etc.).
-- **Infrastructure et Backend** :
-    - Mise à jour majeure de l'infrastructure LiveKit (serveur et egress).
-    - Optimisation des performances via l'ajout d'un pool de connexions pour la base de données et d'index pour la recherche d'utilisateurs par email.
-    - Amélioration de la robustesse du backend avec une gestion systématique des timeouts sur les appels API LiveKit.
-    - Optimisation Docker : build natif des assets frontend pour les images arm64.
+- **Sécurité et Confidentialité (🔒️) :** 
+    - Mise en place d'un système d'audit complet et structuré (logs pour les enregistrements, les résumés, les opérations API et les actions via l'administration Django).
+    - Durcissement de la protection des données sensibles (redaction des URLs signées dans les logs, protection des champs de modèles et nettoyage des erreurs de validation).
+    - Sécurisation de l'accès aux salles et des échanges de jetons.
+- **Infrastructure et DevOps (⚡️/🔒️) :** 
+    - Optimisation des images Docker (support natif pour arm64, passage à une image Nginx non-privilégiée).
+    - Mise à jour de l'infrastructure LiveKit (serveur et egress).
+    - Correction de nombreuses vulnérabilités (CVE) sur les dépendances critiques (Python, Node, Nginx, Brotli, Pillow, etc.).
+- **Fiabilité et Performance :** 
+    - Amélioration de la gestion des timeouts et des erreurs lors des appels à l'API LiveKit.
+    - Implémentation d'une politique de reconnexion exponentielle pour plus de stabilité.
+    - Ajout d'un pool de connexions psycopg optionnel pour le backend.
 
 ### Autres changements
-- **Documentation** : Ajout de la documentation concernant les nouvelles fonctionnalités de journalisation d'audit et les améliorations de confidentialité.
-- **Développement** : Intégration de `gitlint` comme hook de commit pour améliorer la qualité du code.
+- **Documentation (📝) :** Documentation du nouveau système d'audit et incitation à soutenir le projet sur GitHub.
+- **Releases :** Publication des versions 1.37.0, 1.36.3, 1.36.2 et 1.35.1.
