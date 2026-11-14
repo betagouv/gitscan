@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/gip-inclusion/le-marche",
   "name": "le-marche",
-  "description": "Un service numérique permettant de trouver des prestataires sociaux inclusifs proposant des produits ou services professionnels. Il facilite la mise en relation entre acheteurs et structures d'insertion.",
+  "description": "Plateforme numérique permettant de mettre en relation des acheteurs et des prestataires sociaux inclusifs (SIAE). Elle facilite la recherche de produits et services professionnels issus de l'économie sociale et solidaire.",
   "language": "Python",
   "features": [
     "API & Intégrations",
@@ -9,55 +9,58 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Visualisation de données & Cartographie",
-    "Gestion métier générale"
+    "Administration & Backoffice",
+    "Tableaux & Affichage",
+    "Gestion métier générale",
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Wagtail",
     "Django REST Framework",
+    "Wagtail",
     "PostgreSQL",
     "Redis",
     "Huey",
     "Boto3",
-    "Brevo",
-    "Selenium"
+    "Psycopg",
+    "Django-allauth"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Django",
+    "CMS (Strapi, Wagtail…)",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu",
-    "ORM & Accès aux données",
-    "Design System (DSFR & UI libs)"
+    "Scripts & Utilitaires",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "email-password",
+      "jwt",
       "session"
     ]
   },
   "tests": [
-    "PyTest",
+    "Pytest",
     "Selenium"
   ],
-  "lastActivity": "2026-10-23T00:00:00Z",
-  "status": "maintained",
+  "workflows": [
+    "Feature branch workflow",
+    "Semantic versioning"
+  ],
+  "lastActivity": "2026-11-12T00:00:00Z",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
     "Django & FastAPI",
+    "Bases de données SQL",
     "Docker & Conteneurs",
-    "Accessibilité",
-    "HTML, CSS & Web"
+    "Données & Open Data",
+    "Design System & UI"
   ]
 }
