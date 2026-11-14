@@ -1,40 +1,36 @@
 ## Changelog : carbure (30 derniers jours, au 02/11/2026)
 
 ### Résumé
-Ce mois a été marqué par des avancées majeures sur la gestion de la traçabilité et l'extension des fonctionnalités pour le biométhane. La plateforme offre désormais de nouveaux outils aux fournisseurs de biométhane et améliore la précision du suivi des matières (gestion des unités et des facteurs de conversion). Les outils d'administration ont également été renforcés pour permettre une gestion plus fine des utilisateurs et des droits.
+Ce mois a été marqué par une refonte majeure du moteur de traçabilité, améliorant la précision des calculs grâce à une meilleure gestion des unités et des propriétés des matériaux. Le module biométhane a été considérablement enrichi avec un nouvel espace dédié aux fournisseurs de gaz et une gestion optimisée des réouvertures de déclarations. Enfin, l'expérience de gestion de l'hydrogène et de l'administration des utilisateurs a été simplifiée et affinée.
 
 ### Évolutions fonctionnelles
-- **Biométhane** :
-  - Mise en place d'une interface dédiée aux fournisseurs de biométhane pour consulter les déclarations des producteurs liés par contrat.
-  - Introduction de la possibilité de réouvrir des déclarations annuelles, avec un système de notification automatique pour les producteurs.
-  - Amélioration de l'affichage des types de collecte (IAA) et de la sélection de l'année.
-- **Traçabilité** :
-  - Amélioration de la précision du suivi avec la gestion native des unités (masse, volume, énergie) et l'affichage des quantités avec leurs unités respectives.
-  - Renforcement de la logique de traçabilité : chaque création possède désormais un statut de "naissance" et un lien de parenté explicite.
-  - Meilleure visibilité des filtres de statut et affichage des périodes de travail.
-- **Hydrogène (H2)** :
-  - Amélioration de la visibilité pour les administrateurs industriels (consultation en lecture seule et recherche par entreprise).
-  - Ajout de filtres par statut sur les lots d'hydrogène.
-- **Administration & Utilisateurs** :
-  - Enrichissement de la gestion des utilisateurs : filtrage par entité ou par statut actif, export des listes filtrées et consultation des droits par entité.
-  - Amélioration de la visibilité des comptes (affichage du nombre total d'utilisateurs dans les récapitulatifs).
-- **Biocarburants** :
-  - Ajustement du périmètre IRICC pour exclure les biocarburants SAF.
-  - Masquage (non suppression) des types ETBE-100 et ETBE-63.
+- **Biométhane** : 
+    - Création d'un espace dédié pour les fournisseurs de gaz permettant de consulter les déclarations liées à leurs contrats.
+    - Mise en place d'un processus de réouverture des déclarations annuelles avec notification automatique des producteurs.
+    - Amélioration de la saisie des données (gestion des résidus IAA, affichage des labels et des unités).
+- **Traçabilité** : 
+    - Amélioration de la précision des mesures en permettant le choix entre masse, volume ou énergie, et en intégrant les propriétés physiques (PCI, densité) directement dans les actions.
+    - Meilleure visibilité sur les périodes de travail et les filtres de statut.
+- **Hydrogène** : 
+    - Ajout de filtres par statut pour les lots d'hydrogène.
+    - Partage de la vue des certificats entre les opérateurs et les administrateurs.
+    - Amélioration de la recherche de lots par entreprise pour les administrateurs du secteur.
+- **Administration & Gestion** : 
+    - Optimisation de la gestion des utilisateurs et des entreprises (nouveaux tris, affichage des compteurs d'utilisateurs).
+    - Affinement des règles d'affichage des types de livraison et d'usage pour les lots.
+- **Bioéthanol** : Masquage (non suppression) des produits ETBE-100 et ETBE-63.
 
 ### Évolutions techniques
-- **Traçabilité & Données** :
-  - Refonte de la gestion des matériaux : intégration des facteurs de conversion (LHV/PCI), de la densité et des unités directement dans le catalogue des matériaux (import via CSV).
-  - Optimisation de l'import Excel pour permettre l'importation sans facteurs de conversion immédiats.
-  - Amélioration de la robustesse de l'importation des données biométhane (chargement préalable du catalogue des intrants).
-- **API & Architecture** :
-  - Optimisation des performances et de la sécurité de l'API via l'utilisation de champs explicites dans les sérialiseurs au lieu de `__all__` [#2432](https://github.com/MTES-MCT/carbure/issues/2432).
-  - Création de nouveaux endpoints API pour les fournisseurs de biométhane.
-  - Refactorisation du service de réouverture des déclarations pour une meilleure maintenance.
-- **Sécurité & Validation** :
-  - Renforcement de la validation des données avec un contrôle du format SIREN pour les identifiants d'enregistrement [#2415](https://github.com/MTES-MCT/carbure/issues/2415).
-  - Mise à jour de la gestion des certificats de sécurité (emSign).
+- **Moteur de traçabilité** : Refonte de l'architecture pour supporter une hiérarchie parent/enfant plus robuste et une gestion des transitions basée sur une matrice de statuts.
+- **Gestion des données** : 
+    - Automatisation de l'importation du catalogue de matériaux via des fichiers CSV.
+    - Optimisation des imports Excel pour une meilleure gestion des facteurs de conversion des matériaux.
+- **API & Sécurité** : 
+    - Optimisation des performances de l'API via une sérialisation explicite des champs.
+    - Correction de la gestion des certificats de sécurité (emSign).
+    - Mise à jour des schémas OpenAPI pour le module biométhane.
 
 ### Autres changements
-- Mise à jour du schéma de l'API.
-- Nettoyage du code et extraction du module `EntityCertificate`.
+- **Nettoyage** : Extraction du module `EntityCertificate` pour une meilleure modularité.
+- **Tests** : Amélioration de la couverture de tests sur les modules biométhane et hydrogène.
+- **Configuration** : Utilisation de variables d'environnement pour la gestion des mots de passe lors des phases de seed.
