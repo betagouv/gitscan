@@ -1,56 +1,61 @@
 {
   "url": "https://github.com/gip-inclusion/inclusion-connect",
   "name": "inclusion-connect",
-  "description": "Service de Single Sign-On (SSO) permettant l'authentification unique via email et mot de passe pour accéder à plusieurs applications. Il est principalement utilisé pour des environnements de recette ou de démonstration.",
+  "description": "Service de Single Sign-On (SSO) permettant l'authentification unique pour plusieurs applications via un identifiant et un mot de passe. Il est principalement utilisé pour des environnements de recette ou de démonstration.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
+    "Administration & Backoffice",
     "Statistiques & Rapports"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Gunicorn",
     "Django OAuth Toolkit",
+    "Django REST Framework",
+    "Gunicorn",
     "Sentry",
     "Datadog",
-    "Pytest"
+    "Elasticsearch"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
     "Authentification (composant)",
-    "Django",
-    "CI/CD & Déploiement"
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "jwt",
-      "session",
       "mfa"
     ]
   },
-  "tests": "pytest",
+  "tests": [
+    "pytest",
+    "pytest-django",
+    "coverage"
+  ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-11-10T01:05:05Z",
+  "lastActivity": "2026-11-13T01:05:14Z",
   "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Sécurité & Auth",
+    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
+    "Sécurité & Auth",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Écosystème beta.gouv / État"
+    "Django & FastAPI",
+    "CI/CD & GitHub Actions"
   ]
 }
