@@ -1,14 +1,15 @@
 ## Changelog : proconnect-espace-partenaires (30 derniers jours, au 12 novembre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur l'amélioration de la clarté de la documentation technique pour faciliter l'intégration des partenaires et sur l'ajustement des configurations de sécurité liées à l'authentification.
+L'activité de ce mois s'est concentrée sur la fiabilisation de la documentation technique et l'ajustement des configurations de sécurité liées à l'authentification. L'interface utilisateur et les fonctionnalités métier restent inchangées.
 
 ### Évolutions techniques
-- Sécurisation et révision de la configuration de l'authentification LemonLDAP [#493](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/493) [#495](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/495).
+- Optimisation de la configuration et renforcement de la sécurité du client LemonLDAP [#493](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/493), [#495](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/495).
 
 ### Autres changements
-- **Documentation technique :**
-    - Clarification des concepts d'identification, notamment le mapping pour Entra ID [#492](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/492) et la distinction entre les identifiants `sub` et `uid` [#499](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/499).
-    - Restructuration de la documentation des prérequis FI et intégration des informations relatives à la MFA [#489](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/489).
-    - Amélioration de la lisibilité globale et suppression d'acronymes non définis [#488](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/488) [#494](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/494).
-    - Ajout de directives spécifiques pour les agents de codage IA via le fichier `AGENTS.md` [#498](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/498).
+- Documentation technique :
+    - Clarification des concepts et des terminologies (différence entre `sub` et `uid`, suppression d'acronymes non définis) [#488](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/488), [#499](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/499).
+    - Mise à jour des prérequis et intégration des informations relatives à la MFA [#489](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/489).
+    - Ajout de précisions sur le mapping Entra ID [#492](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/492).
+    - Création du fichier `AGENTS.md` pour optimiser l'utilisation du dépôt par les agents de codage IA [#498](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/498).
+    - Améliorations générales de la clarté et de la structure des contenus [#494](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/494).
