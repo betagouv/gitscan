@@ -25,6 +25,13 @@
 │   │   │   └── .keep
 │   │   └── stylesheets
 │   │       └── application.css
+│   ├── clients
+│   │   └── rdvsp
+│   │       ├── authentication_error.rb
+│   │       ├── client.rb
+│   │       ├── error.rb
+│   │       ├── oauth.rb
+│   │       └── unprocessable_error.rb
 │   ├── controllers
 │   │   ├── admin
 │   │   │   ├── accounts_controller.rb
@@ -32,17 +39,25 @@
 │   │   │   ├── connections_controller.rb
 │   │   │   ├── google_controller.rb
 │   │   │   ├── ignored_rdvs_controller.rb
-│   │   │   └── rdvs_controller.rb
+│   │   │   ├── rdv_activity_types_controller.rb
+│   │   │   ├── rdvs_controller.rb
+│   │   │   ├── rdvsp_authorizations_controller.rb
+│   │   │   ├── rdvsp_organisations_controller.rb
+│   │   │   └── usager_imports_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── caldav_controller.rb
 │   │   ├── concerns
-│   │   │   └── .keep
-│   │   └── pipedrive_webhooks_controller.rb
+│   │   │   ├── .keep
+│   │   │   └── public_messages.rb
+│   │   ├── pipedrive_app_controller.rb
+│   │   ├── pipedrive_webhooks_controller.rb
+│   │   └── rdvsp_authorizations_controller.rb
 │   ├── helpers
 │   │   └── application_helper.rb
 │   ├── jobs
 │   │   ├── application_job.rb
 │   │   ├── check_health_job.rb
+│   │   ├── import_usagers_job.rb
 │   │   ├── push_rdv_job.rb
 │   │   ├── rebuild_connection_job.rb
 │   │   ├── rebuild_connections_job.rb
@@ -69,8 +84,11 @@
 │   │   │   ├── .keep
 │   │   │   └── sync_collection.rb
 │   │   ├── connection.rb
+│   │   ├── imported_usager.rb
 │   │   ├── rdv.rb
-│   │   └── rdv_content.rb
+│   │   ├── rdv_content.rb
+│   │   ├── rdvsp_authorization.rb
+│   │   └── usager_import.rb
 │   ├── providers
 │   │   ├── google
 │   │   │   ├── authentication_error.rb
@@ -85,8 +103,10 @@
 │   │   │   ├── refresh_account.rb
 │   │   │   └── window.rb
 │   │   ├── pipedrive
+│   │   │   ├── app.rb
 │   │   │   ├── apply_activity.rb
 │   │   │   ├── authentication_error.rb
+│   │   │   ├── beneficiaries.rb
 │   │   │   ├── busy_mapping.rb
 │   │   │   ├── client.rb
 │   │   │   ├── error.rb
@@ -103,13 +123,22 @@
 │   │   ├── base_service.rb
 │   │   ├── connections
 │   │   │   └── create.rb
-│   │   └── rdvs
-│   │       ├── cancel.rb
-│   │       ├── ignore.rb
-│   │       └── receive.rb
+│   │   ├── rdv_plans
+│   │   │   └── start.rb
+│   │   ├── rdvs
+│   │   │   ├── cancel.rb
+│   │   │   ├── ignore.rb
+│   │   │   └── receive.rb
+│   │   └── usager_imports
+│   │       ├── plan.rb
+│   │       ├── rdv_person.rb
+│   │       ├── run.rb
+│   │       ├── transfer.rb
+│   │       └── usager_index.rb
 │   └── views
 │       ├── admin
 │       │   ├── accounts
+│       │   │   ├── _rdvsp.html.erb
 │       │   │   ├── _status.html.erb
 │       │   │   ├── index.html.erb
 │       │   │   ├── new.html.erb
@@ -117,7 +146,13 @@
 │       │   ├── connections
 │       │   │   ├── new.html.erb
 │       │   │   └── show.html.erb
-│       │   └── ignored_rdvs
+│       │   ├── ignored_rdvs
+│       │   │   └── new.html.erb
+│       │   ├── rdv_activity_types
+│       │   │   └── edit.html.erb
+│       │   ├── rdvsp_organisations
+│       │   │   └── edit.html.erb
+│       │   └── usager_imports
 │       │       └── new.html.erb
 │       ├── alert_mailer
 │       │   ├── account_failing.text.erb
@@ -126,10 +161,15 @@
 │       │   ├── admin.html.erb
 │       │   ├── application.html.erb
 │       │   ├── mailer.html.erb
-│       │   └── mailer.text.erb
-│       └── pwa
-│           ├── manifest.json.erb
-│           └── service-worker.js
+│       │   ├── mailer.text.erb
+│       │   └── public.html.erb
+│       ├── pwa
+│       │   ├── manifest.json.erb
+│       │   └── service-worker.js
+│       ├── rdvsp_authorizations
+│       │   └── show.html.erb
+│       └── shared
+│           └── message.html.erb
 ├── bin
 │   ├── brakeman
 │   ├── bundler-audit
@@ -176,7 +216,11 @@
 │   │   ├── 20261110155242_add_rdvsp_id_to_rdvs.rb
 │   │   ├── 20261110155418_add_start_up_window_to_connections.rb
 │   │   ├── 20261110155709_add_baseline_max_rdvsp_id_to_connections.rb
-│   │   └── 20261110182138_add_silence_alerted_at_to_connections.rb
+│   │   ├── 20261110182138_add_silence_alerted_at_to_connections.rb
+│   │   ├── 20261112100000_create_rdvsp_authorizations.rb
+│   │   ├── 20261112100100_create_usager_imports.rb
+│   │   ├── 20261112100200_create_imported_usagers.rb
+│   │   └── 20261113180000_add_rdvsp_organisation_id_to_accounts.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker-compose.yml
@@ -184,7 +228,9 @@
 │   ├── deploy-scaleway.md
 │   ├── google.md
 │   ├── heads-up-rdvsp.md
-│   └── preexisting-rdvs.md
+│   ├── pipedrive-rdv-plan-button.md
+│   ├── preexisting-rdvs.md
+│   └── rdvsp-usager-import.md
 ├── lib
 │   └── tasks
 │       ├── .keep
@@ -209,27 +255,40 @@
 │       ├── rdvsp_rdv.rb
 │       └── rdvsp_setup.rb
 ├── spec
+│   ├── clients
+│   │   └── rdvsp
+│   │       ├── client_spec.rb
+│   │       └── oauth_spec.rb
 │   ├── factories
 │   │   ├── accounts.rb
 │   │   ├── busy_blocks.rb
 │   │   ├── connections.rb
-│   │   └── rdvs.rb
+│   │   ├── rdvs.rb
+│   │   └── rdvsp.rb
 │   ├── integration
 │   │   └── calendav_compatibility_spec.rb
 │   ├── jobs
-│   │   └── check_health_job_spec.rb
+│   │   ├── check_health_job_spec.rb
+│   │   └── import_usagers_job_spec.rb
+│   ├── lib
+│   │   └── active_support
+│   │       └── inflector_pluralize_spec.rb
 │   ├── mailers
 │   │   └── alert_mailer_spec.rb
 │   ├── models
+│   │   ├── account_spec.rb
 │   │   ├── caldav
 │   │   │   └── incoming_event_spec.rb
 │   │   ├── connection_spec.rb
-│   │   └── connection_sync_spec.rb
+│   │   ├── connection_sync_spec.rb
+│   │   └── rdvsp_authorization_spec.rb
 │   ├── providers
 │   │   ├── google
 │   │   │   ├── busy_mapping_spec.rb
 │   │   │   └── sync_spec.rb
 │   │   └── pipedrive
+│   │       ├── app_spec.rb
+│   │       ├── beneficiaries_spec.rb
 │   │       ├── busy_mapping_spec.rb
 │   │       ├── onboard_spec.rb
 │   │       ├── push_rdv_spec.rb
@@ -238,21 +297,35 @@
 │   │       └── refresh_account_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── admin_rdv_activity_types_spec.rb
 │   │   ├── admin_rdvs_spec.rb
+│   │   ├── admin_rdvsp_organisations_spec.rb
 │   │   ├── admin_spec.rb
+│   │   ├── admin_usager_imports_spec.rb
 │   │   ├── caldav_spec.rb
+│   │   ├── pipedrive_app_spec.rb
 │   │   ├── pipedrive_webhooks_spec.rb
-│   │   └── proxy_headers_spec.rb
+│   │   ├── proxy_headers_spec.rb
+│   │   └── rdvsp_authorizations_spec.rb
 │   ├── services
-│   │   └── rdvs
-│   │       ├── cancel_spec.rb
-│   │       ├── ignore_spec.rb
-│   │       └── receive_spec.rb
+│   │   ├── rdv_plans
+│   │   │   └── start_spec.rb
+│   │   ├── rdvs
+│   │   │   ├── cancel_spec.rb
+│   │   │   ├── ignore_spec.rb
+│   │   │   └── receive_spec.rb
+│   │   └── usager_imports
+│   │       ├── plan_spec.rb
+│   │       ├── rdv_person_spec.rb
+│   │       ├── run_spec.rb
+│   │       ├── transfer_spec.rb
+│   │       └── usager_index_spec.rb
 │   ├── spec_helper.rb
 │   └── support
 │       ├── google_helpers.rb
 │       ├── pipedrive_helpers.rb
 │       ├── rdvsp_emulator.rb
+│       ├── rdvsp_helpers.rb
 │       └── test_server.rb
 ├── tmp
 │   ├── .keep
@@ -260,4 +333,4 @@
 │       └── .keep
 └── vendor
     └── .keep
-61 directories, 201 files
+76 directories, 259 files
