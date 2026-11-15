@@ -84,6 +84,7 @@
 │   ├── installation.md
 │   ├── interoperabilities.md
 │   ├── llm-configuration.md
+│   ├── logging.md
 │   ├── metrics.md
 │   ├── minio-to-rustfs.md
 │   ├── model-fallback.md
@@ -160,6 +161,7 @@
     │   │   ├── ai_sdk_types.py
     │   │   ├── apps.py
     │   │   ├── assistant_health.py
+    │   │   ├── calculator.py
     │   │   ├── clients
     │   │   │   ├── __init__.py
     │   │   │   ├── async_to_sync.py
@@ -262,6 +264,7 @@
     │   │   ├── rate_limiting.py
     │   │   ├── serializers.py
     │   │   ├── stream_chunks.py
+    │   │   ├── tabular.py
     │   │   ├── tasks.py
     │   │   ├── tests
     │   │   │   ├── __init__.py
@@ -361,6 +364,8 @@
     │   │   │   ├── test_ai_agent_service_co2.py
     │   │   │   ├── test_ai_sdk_upconvert.py
     │   │   │   ├── test_assistant_health.py
+    │   │   │   ├── test_calculate_tool.py
+    │   │   │   ├── test_calculator.py
     │   │   │   ├── test_docs_client.py
     │   │   │   ├── test_document_context_builder.py
     │   │   │   ├── test_keepalive_beat.py
@@ -374,6 +379,8 @@
     │   │   │   ├── test_models_nul_characters.py
     │   │   │   ├── test_rate_limiting.py
     │   │   │   ├── test_settings_isolation.py
+    │   │   │   ├── test_tabular.py
+    │   │   │   ├── test_tabular_tools.py
     │   │   │   ├── test_tasks.py
     │   │   │   ├── test_tasks_periodic.py
     │   │   │   ├── tools
@@ -414,12 +421,14 @@
     │   │   │       │   │   ├── test_conversation_model_routing.py
     │   │   │       │   │   ├── test_conversation_search_with_document_id.py
     │   │   │       │   │   ├── test_conversation_search_with_document_id_retry.py
+    │   │   │       │   │   ├── test_conversation_turn_logs.py
     │   │   │       │   │   ├── test_conversation_with_document_upload.py
     │   │   │       │   │   ├── test_conversation_with_document_url.py
     │   │   │       │   │   ├── test_conversation_with_history.py
     │   │   │       │   │   ├── test_conversation_with_image_url.py
     │   │   │       │   │   ├── test_conversation_with_project.py
     │   │   │       │   │   ├── test_conversation_with_project_files.py
+    │   │   │       │   │   ├── test_conversation_with_spreadsheet.py
     │   │   │       │   │   ├── test_conversations_with_co2_impact.py
     │   │   │       │   │   ├── test_edit_in_docs.py
     │   │   │       │   │   ├── test_score_message.py
@@ -448,6 +457,7 @@
     │   │   ├── tokens.py
     │   │   ├── tools
     │   │   │   ├── __init__.py
+    │   │   │   ├── calculate.py
     │   │   │   ├── descriptions.py
     │   │   │   ├── document_generic_search_rag.py
     │   │   │   ├── document_search_rag.py
@@ -456,6 +466,7 @@
     │   │   │   ├── fake_current_weather.py
     │   │   │   ├── generate_presentation.py
     │   │   │   ├── self_documentation.py
+    │   │   │   ├── tabular.py
     │   │   │   ├── utils.py
     │   │   │   ├── web_search_brave.py
     │   │   │   └── web_search_staan.py
@@ -516,7 +527,8 @@
     │   │   │   ├── test_settings_logging.py
     │   │   │   ├── test_settings_oidc_refresh_token_key.py
     │   │   │   ├── test_settings_prometheus.py
-    │   │   │   └── test_settings_staan.py
+    │   │   │   ├── test_settings_staan.py
+    │   │   │   └── test_structured_logging.py
     │   │   ├── urls.py
     │   │   └── wsgi.py
     │   ├── core
@@ -532,6 +544,7 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── axes.py
     │   │   │   ├── backends.py
+    │   │   │   ├── drf.py
     │   │   │   └── views.py
     │   │   ├── brevo.py
     │   │   ├── enums.py
@@ -551,6 +564,7 @@
     │   │   │   └── utils.py
     │   │   ├── filters.py
     │   │   ├── instrumentation.py
+    │   │   ├── log_fields.py
     │   │   ├── management
     │   │   │   ├── __init__.py
     │   │   │   └── commands
@@ -600,6 +614,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_generate_temporary_url.py
     │   │   │   │   ├── test_malware_detection.py
+    │   │   │   │   ├── test_mime_types.py
     │   │   │   │   └── test_utils.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
@@ -608,14 +623,19 @@
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_api_users_analytics.py
     │   │   │   ├── test_brevo.py
+    │   │   │   ├── test_celery_log_ids.py
     │   │   │   ├── test_content_security_policy.py
     │   │   │   ├── test_enums.py
     │   │   │   ├── test_instrumentation.py
+    │   │   │   ├── test_log_fields.py
     │   │   │   ├── test_maintenance.py
     │   │   │   ├── test_middleware_async.py
     │   │   │   ├── test_models_access_bypass_email.py
     │   │   │   ├── test_models_users.py
     │   │   │   ├── test_prometheus_metrics.py
+    │   │   │   ├── test_request_log_ids.py
+    │   │   │   ├── test_request_log_paths.py
+    │   │   │   ├── test_sentry_logging.py
     │   │   │   └── test_settings.py
     │   │   └── urls.py
     │   ├── demo
@@ -933,6 +953,8 @@
     │   │   │   │   │   │   │   ├── SuggestionCarousel.tsx
     │   │   │   │   │   │   │   ├── SummarizationError.tsx
     │   │   │   │   │   │   │   ├── SummarizationProgress.tsx
+    │   │   │   │   │   │   │   ├── TableChart.tsx
+    │   │   │   │   │   │   │   ├── TableChartCanvas.tsx
     │   │   │   │   │   │   │   ├── ToolInvocationItem.tsx
     │   │   │   │   │   │   │   ├── TruncatedResponseMessage.tsx
     │   │   │   │   │   │   │   ├── WelcomeLayout.tsx
@@ -982,12 +1004,14 @@
     │   │   │   │   │   │   └── utils
     │   │   │   │   │   │       ├── __tests__
     │   │   │   │   │   │       │   ├── getMessageCo2Impact.test.ts
-    │   │   │   │   │   │       │   └── impactCo2.test.ts
+    │   │   │   │   │   │       │   ├── impactCo2.test.ts
+    │   │   │   │   │   │       │   └── tableChart.test.ts
     │   │   │   │   │   │       ├── getMessageCo2Impact.ts
     │   │   │   │   │   │       ├── getMessageText.ts
     │   │   │   │   │   │       ├── impactCo2.ts
     │   │   │   │   │   │       ├── isMessageInterrupted.ts
-    │   │   │   │   │   │       └── shiki.ts
+    │   │   │   │   │   │       ├── shiki.ts
+    │   │   │   │   │   │       └── tableChart.ts
     │   │   │   │   │   ├── feedback
     │   │   │   │   │   │   └── Feedback.tsx
     │   │   │   │   │   ├── footer
@@ -1287,4 +1311,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-246 directories, 1043 files
+246 directories, 1067 files

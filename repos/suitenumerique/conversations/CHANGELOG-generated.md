@@ -1,28 +1,37 @@
-## Changelog : conversations (30 derniers jours, au 05/11/2026)
+## Changelog : conversations (30 derniers jours, au 14 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur la fiabilité de l'expérience de chat, notamment pour mieux gérer les interruptions de réponse et les rechargements de page. Un effort majeur a été porté sur la sécurité du système via la correction de nombreuses vulnérabilités et le renforcement des paramètres de l'application. Enfin, de nouveaux outils de surveillance ont été intégrés pour permettre un meilleur suivi technique des performances et de l'utilisation de l'intelligence artificielle.
+Ce mois-ci, le projet a considérablement enrichi ses capacités d'analyse de données en permettant l'utilisation de calculatrices précises et la génération de graphiques à partir de fichiers tableurs (CSV, XLSX). L'expérience de discussion a été fluidifiée, notamment pour mieux gérer les réponses longues ou les interruptions de l'utilisateur. Parallèlement, un effort majeur a été porté sur la sécurité du système et la mise en place d'outils de surveillance pour garantir la stabilité du service.
 
 ### Évolutions fonctionnelles
-- **Expérience de chat** : Amélioration de la gestion des interruptions (affichage de notices claires) et de la continuité des réponses lors du rechargement de la page.
-- **Contrôle des ressources** : Ajout d'une limite de jetons (tokens) de sortie par message.
-- **Interface utilisateur** : Amélioration de la clarté des messages lors du traitement des fichiers et ajustements visuels sur le module d'impact carbone.
-- **Gestion documentaire** : Les fichiers originaux sont désormais mieux préservés lorsqu'ils sont attachés à une conversation.
-- **Compatibilité** : Amélioration du support des navigateurs web plus anciens.
+- **Analyse de données et calculs** :
+    - Ajout d'un outil de calcul pour garantir des résultats arithmétiques exacts.
+    - Capacité d'analyser des pièces jointes CSV et XLSX via un outil de requête structurée.
+    - Génération automatique de graphiques à partir des résultats de requêtes sur tableurs.
+    - Ajout d'un indicateur visuel ("calcul en cours") lors de l'utilisation de la calculatrice.
+- **Expérience utilisateur (UX)** :
+    - Amélioration de la gestion des réponses : affichage clair des interruptions, meilleure gestion des rechargements de page et maintien de l'historique lors des interruptions.
+    - Optimisation de l'interface : masquage des actions de réponse pendant la génération et correction de l'alignement de certains menus.
+    - Amélioration de la compatibilité avec les navigateurs plus anciens.
+    - Conservation du fichier original lors de l'ajout de documents à une conversation.
 
 ### Évolutions techniques
-- **Sécurité** : Mise à jour massive des dépendances pour corriger plusieurs vulnérabilités (CVE) et durcissement des paramètres de sécurité Django.
-- **Architecture** : Refactorisation du service "agent" pour mieux séparer la préparation des prompts, la persistance des données et le comptage des jetons.
-- **Observabilité** : Implémentation de métriques Prometheus pour mesurer les requêtes de modèles, les flux de chat et les appels sortants, avec intégration de monitoring (ServiceMonitor/PodMonitor).
-- **Stabilité et Performance** : 
-    - Ajout de timeouts pour les clients Redis et Celery.
-    - Optimisation du stockage des documents et du backend de résultats Celery.
-    - Amélioration de la gestion des caractères spéciaux (NUL) dans les conversations.
-- **Infrastructure et CI/CD** : 
-    - Optimisation du cache Playwright dans la CI.
-    - Mise à jour de l'environnement Docker (passage à Mailcatcher).
+- **Sécurité** :
+    - Campagne massive de mise à jour des dépendances pour corriger plusieurs vulnérabilités (CVE) critiques.
+    - Renforcement des paramètres de sécurité de Django.
+    - Configuration de la gestion des rôles OIDC.
+- **Observabilité et Monitoring** :
+    - Mise en place de métriques Prometheus pour suivre les requêtes de modèles, les flux de chat et les appels sortants.
+    - Implémentation de logs structurés au format JSON pour la production.
+    - Configuration de la télémétrie Sentry et des outils de monitoring Helm (ServiceMonitor/PodMonitor).
+- **Architecture et Performance** :
+    - Refactoring important du service "agent" pour séparer la gestion des tours de parole, de la persistance et du calcul de jetons (tokens).
+    - Ajout de limites de jetons de sortie par message pour contrôler la consommation.
+    - Ajout de timeouts pour les clients Redis et Celery afin d'améliorer la résilience.
+- **Infrastructure et CI/CD** :
+    - Optimisation du cache Playwright dans les pipelines de tests.
+    - Mise à jour de l'infrastructure Helm et remplacement de Maildev par Mailcatcher.
 
 ### Autres changements
-- **Documentation** : Ajout d'une politique d'utilisation de l'IA et d'une politique de contribution (Pull Requests).
 - **Internationalisation** : Mise à jour de plusieurs chaînes de caractères traduites.
-- **Configuration** : Possibilité de servir un fichier `robots.txt` personnalisé depuis le frontend.
+- **Configuration** : Ajout de la gestion d'un fichier `robots.txt` personnalisé.

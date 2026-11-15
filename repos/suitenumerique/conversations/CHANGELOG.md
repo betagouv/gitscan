@@ -8,13 +8,30 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(front) draw spreadsheet query charts
+- ✨(back) chart spreadsheet query results on request
+- ✨(back) add a calculator tool for exact arithmetic
+- 💬(front) show a calculating label while the calculator runs
+- ✨(back) make the OIDC roles claim name configurable
+- ✨(back) analyze csv and xlsx attachments with a structured query tool
+
 ### Removed
 
 - 🔥(helm) remove unused console handler log level variable
 
 ### Changed
 
+- ⬆️(back) upgrade python dependencies and fix CVEs
 - ♻️(back) split the agent service into turn modules
+- 🔊(back) log structured JSON lines in production
+
+### Fixed
+
+- 💄(front) align the DataGouv item in the input menu
+- 🔒️(back) keep emails, urls and document names out of the logs
+- 🐛(back) store csv uploads detected as plain text as csv
 
 ## [0.0.28] - 2026-11-03
 
