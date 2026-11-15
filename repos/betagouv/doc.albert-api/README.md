@@ -1,4 +1,8 @@
-# Introduction
+---
+icon: stars
+---
+
+# Qu'est-ce qu'Albert API ?
 
 Albert API permet aux applications et agents d’appeler des modèles de **génération de texte**, d’**embeddings**, de **classification** (rerank), de **reconnaissance vocale**, d’**OCR** et des services de **recherche** sur des corpus indexés, via des routes et des schémas calqués sur l’**API OpenAI** là où c’est pertinent.
 
@@ -13,15 +17,13 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 
 ## Prochaines étapes
 
-1. [Authentification](prise-en-main/authentication.md) — en-tête Bearer et obtention d’un jeton.
+1. [Authentification](/broken/pages/kAnuH9jbzC0DENsy17Pl) — en-tête Bearer et obtention d’un jeton.
 2. [Démarrage rapide](prise-en-main/quickstart.md) — premier appel `POST /v1/chat/completions`.
 3. [Guides](guides/chat-completions.md) — paramètres avancés, streaming, outils et RAG.
 
 ## Obtenir un accès
 
-Si vous êtes agent de la fonction publique d’État, l’accès à Albert API est ouvert via une demande en ligne : vous recevrez un mail avec vos identifiants et la documentation dans les 24 heures.
-
-[Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
+Si vous êtes agent de la fonction publique d’État, l’accès à Albert API se fait automatiquement via ProConnect. Si vous rencontrez des problèmes de connexion, veuillez consulter notre [FAQ](https://guides.ia.numerique.gouv.fr/albert-api/ressources/faq#pourquoi-mon-compte-nest-pas-autorise)
 
 ## Tarifs & quotas (vision par modèle)
 
@@ -37,13 +39,27 @@ La page “Tarifs et limites” liste, pour des familles de modèles, des quotas
 
 Albert API bénéficie d’un environnement cloud souverain (certification **SecNumCloud** via Outscale) et a des engagements de traitement des données :
 
-* Albert API ne conserve aucune trace des conversations envoyées aux modèles.
+* Albert API ne conserve aucune trace des conversations envoyées aux modèles (voir [la page dédiée](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md))
 * Albert API n’envoie aucune de vos données sur Internet.
 
 [Sécurité & hébergement](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-s%C3%A9curis%C3%A9e/)
+
+## Compatibilité OpenAI
+
+Albert API est **compatible OpenAI** sur les endpoints courants : en conservant votre code basé sur le SDK ou sur des appels HTTP OpenAI, vous changez en principe uniquement la **base URL** (ici `https://albert.api.etalab.gouv.fr/v1`) et la **clé** (jeton Albert).
+
+Pour aller plus loin : [Chat completions](guides/chat-completions.md), [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
 
 ## Statut en production
 
 Pour suivre le statut opérationnel de l’API (quand publié), voir :
 
 [Statut en production](https://ia.numerique.gouv.fr/outils-ia/albert-api/statuts-de-lapi/)
+
+## Données de santé
+
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
+
+En conséquence, **Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS**.
+
+Toutefois, en tant qu'utilisateur d'Albert API, vous pouvez être dans l'obligation d'être hébergé chez un hébergeur certifié HDS et/ou de certifier votre produit, notamment si vous conservez des données de santé à caractère personnel pour le compte de tiers.
