@@ -1,14 +1,13 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "API de notifications pour l'Application Mobile Interministérielle (AMI). Elle permet de gérer la création et la liste des notifications, ainsi que le stockage des URLs de push pour les clients web et mobiles.",
+  "description": "API de notifications pour l'Application Mobile Interministérielle (AMI). Elle permet de gérer les notifications push et de stocker les points de terminaison des clients web et mobiles.",
   "language": "Python",
   "features": [
     "Notifications & Alertes",
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
     "API & Intégrations",
-    "Suivi & Traçabilité"
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,22 +19,23 @@
     "FranceConnect",
     "uv",
     "Ruff",
-    "Sentry"
+    "asyncpg"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
     "Webhooks & Événements",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Docker & Conteneurs",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
       "sso",
-      "oauth2",
-      "jwt"
+      "jwt",
+      "passkey",
+      "oauth2"
     ],
     "providers": [
       "FranceConnect"
@@ -43,22 +43,17 @@
   },
   "tests": [
     "pytest",
-    "pytest-django",
-    "pytest-asyncio"
+    "pytest-django"
   ],
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
-  "lastActivity": "2026-10-09T17:56:19+02:00",
+  "lastActivity": "2026-11-13T18:06:38+01:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Communication & Messagerie",
     "Écosystème beta.gouv / État",
     "Python",
-    "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Django & FastAPI"
+    "Bases de données SQL",
+    "Communication & Messagerie",
+    "Sécurité & Auth",
+    "JavaScript"
   ]
 }

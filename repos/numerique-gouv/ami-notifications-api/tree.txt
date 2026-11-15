@@ -167,11 +167,32 @@
 │   │   │   ├── __init__.py
 │   │   │   └── amidsfr_tags.py
 │   │   └── widgets.py
+│   ├── annuaire_sp
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── init_annuaire.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_mairie.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_all.py
+│   │       └── test_command.py
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── apps.py
 │   │   ├── migrations
 │   │   │   └── __init__.py
+│   │   ├── static
+│   │   │   ├── rapidoc-min.js
+│   │   │   └── rapidoc-min.js.map
 │   │   ├── templates
 │   │   │   └── rapidoc.html
 │   │   └── urls.py
@@ -266,7 +287,9 @@
 │   │   │   ├── test_logout.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_passkey_authentication.py
+│   │   │   ├── test_passkey_authentication_check.py
 │   │   │   ├── test_passkey_registration.py
+│   │   │   ├── test_passkey_status.py
 │   │   │   ├── test_token.py
 │   │   │   └── test_userinfo.py
 │   │   ├── utils.py
@@ -369,15 +392,20 @@
 │   │   │   ├── 0005_partner.py
 │   │   │   ├── 0006_partner.py
 │   │   │   ├── 0007_displayed_on_front.py
+│   │   │   ├── 0008_partner_authentication_identifier.py
+│   │   │   ├── 0009_partner_fill_authentication_identifier.py
+│   │   │   ├── 0010_partner_trusted_base_uris.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── schemas.py
 │   │   ├── serializers.py
-│   │   └── tests
-│   │       ├── __init__.py
-│   │       ├── test_api_views.py
-│   │       ├── test_authentication.py
-│   │       └── test_models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_api_views.py
+│   │   │   ├── test_authentication.py
+│   │   │   ├── test_models.py
+│   │   │   └── test_utils.py
+│   │   └── utils.py
 │   ├── replication
 │   │   ├── app.py
 │   │   ├── management
@@ -459,6 +487,7 @@
 │   │   │   ├── 0009_device_id.py
 │   │   │   ├── 0010_add_registration_user_id_index.py
 │   │   │   ├── 0011_registration_deleted_at.py
+│   │   │   ├── 0012_personal_data_consent.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -469,6 +498,7 @@
 │   │   │   ├── test_create_hashes.py
 │   │   │   ├── test_get_fc_userinfo.py
 │   │   │   ├── test_migrations.py
+│   │   │   ├── test_personal_data_consent.py
 │   │   │   ├── test_registration.py
 │   │   │   ├── test_results.csv
 │   │   │   └── test_utils.py
@@ -536,12 +566,9 @@
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc
 │   │   ├── README.md
-│   │   ├── e2e
-│   │   │   └── demo.test.ts
 │   │   ├── eslint.config.js
 │   │   ├── package-lock.json
 │   │   ├── package.json
-│   │   ├── playwright.config.ts
 │   │   ├── src
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
@@ -561,6 +588,8 @@
 │   │   │   │   ├── ami-navigation.ts
 │   │   │   │   ├── api-agenda.test.ts
 │   │   │   │   ├── api-agenda.ts
+│   │   │   │   ├── api-annuaire-sp.test.ts
+│   │   │   │   ├── api-annuaire-sp.ts
 │   │   │   │   ├── api-checklist.test.ts
 │   │   │   │   ├── api-checklist.ts
 │   │   │   │   ├── api-consents.test.ts
@@ -571,6 +600,8 @@
 │   │   │   │   ├── api-followup.ts
 │   │   │   │   ├── api-partners.test.ts
 │   │   │   │   ├── api-partners.ts
+│   │   │   │   ├── api-personal-data-consent.test.ts
+│   │   │   │   ├── api-personal-data-consent.ts
 │   │   │   │   ├── api-services.test.ts
 │   │   │   │   ├── api-services.ts
 │   │   │   │   ├── assets
@@ -606,6 +637,7 @@
 │   │   │   │   │   ├── BackButton.svelte.test.ts
 │   │   │   │   │   ├── Banner.svelte
 │   │   │   │   │   ├── Banner.svelte.test.ts
+│   │   │   │   │   ├── BlocSituation.svelte
 │   │   │   │   │   ├── Card.svelte
 │   │   │   │   │   ├── Icon.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte
@@ -615,6 +647,7 @@
 │   │   │   │   │   ├── NotificationIcon.svelte
 │   │   │   │   │   ├── NotificationIcon.svelte.test.ts
 │   │   │   │   │   ├── PageWrapper.svelte
+│   │   │   │   │   ├── ServicesItem.svelte
 │   │   │   │   │   ├── SideMenu.svelte
 │   │   │   │   │   ├── SideMenu.svelte.test.ts
 │   │   │   │   │   ├── Toast.svelte
@@ -639,11 +672,14 @@
 │   │   │   │   │   └── modal
 │   │   │   │   │       ├── AgendaItemModal.svelte
 │   │   │   │   │       ├── AgendaItemModal.svelte.test.ts
+│   │   │   │   │       ├── AutoPromoItemModal.svelte
 │   │   │   │   │       ├── BottomModal.svelte
 │   │   │   │   │       ├── CenteredModal.svelte
 │   │   │   │   │       ├── FollowupItemModal.svelte
 │   │   │   │   │       ├── FollowupItemModal.svelte.test.ts
 │   │   │   │   │       ├── LightModal.svelte
+│   │   │   │   │       ├── PersonalDataConsentModal.svelte
+│   │   │   │   │       ├── PersonalDataConsentModal.svelte.test.ts
 │   │   │   │   │       └── ServicesItemModal.svelte
 │   │   │   │   ├── consents.test.ts
 │   │   │   │   ├── consents.ts
@@ -670,6 +706,10 @@
 │   │   │   │   ├── notifications.ts
 │   │   │   │   ├── partners.test.ts
 │   │   │   │   ├── partners.ts
+│   │   │   │   ├── passkey.test.ts
+│   │   │   │   ├── passkey.ts
+│   │   │   │   ├── personal-data-consent.test.ts
+│   │   │   │   ├── personal-data-consent.ts
 │   │   │   │   ├── prettyDate.test.ts
 │   │   │   │   ├── prettyDate.ts
 │   │   │   │   ├── procedure.test.ts
@@ -705,7 +745,12 @@
 │   │   │   │   ├── +page.ts
 │   │   │   │   ├── agenda
 │   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   ├── page.svelte.test.ts
+│   │   │   │   │   └── themes
+│   │   │   │   │       ├── +page.svelte
+│   │   │   │   │       └── page.svelte.test.ts
+│   │   │   │   ├── back
+│   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── checklist
 │   │   │   │   │   └── [checklist_id]
 │   │   │   │   │       ├── +page.svelte
@@ -719,15 +764,6 @@
 │   │   │   │   │       │       └── page.svelte.test.ts
 │   │   │   │   │       └── page.svelte.test.ts
 │   │   │   │   ├── contact
-│   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── page.svelte.test.ts
-│   │   │   │   ├── edit-address
-│   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── page.svelte.test.ts
-│   │   │   │   ├── edit-email
-│   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── page.svelte.test.ts
-│   │   │   │   ├── edit-preferred-username
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── followup
@@ -800,6 +836,9 @@
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   │   ├── pages.svelte.test.ts
+│   │   │   │   │   ├── personal-data-consent
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   │   └── zones
 │   │   │   │   │       ├── +page.svelte
 │   │   │   │   │       └── city
@@ -812,6 +851,21 @@
 │   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── profile
 │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── addresses
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── edit-address
+│   │   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   │   ├── edit-email
+│   │   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   ├── identity
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── edit-preferred-username
+│   │   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── relogin
 │   │   │   │   │   ├── +page.svelte
@@ -884,6 +938,7 @@
 │   │   │   │   ├── file-copy-line.svg
 │   │   │   │   ├── house.svg
 │   │   │   │   ├── notification.svg
+│   │   │   │   ├── system.svg
 │   │   │   │   ├── technical-error.svg
 │   │   │   │   └── tracking.svg
 │   │   │   └── service-worker.js
@@ -905,4 +960,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-172 directories, 735 files
+182 directories, 780 files

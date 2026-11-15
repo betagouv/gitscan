@@ -1,32 +1,31 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 09/10/2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 13 novembre 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'une amélioration majeure de ses fonctionnalités de suivi (followup) et de checklists, rendant l'expérience plus fluide et informative pour les agents. La sécurité et la fiabilité du système ont également été renforcées grâce à une meilleure surveillance des erreurs et à un durcissement des politiques de protection des données.
+Ce mois-ci, l'API a franchi des étapes importantes en matière de conformité et de fonctionnalités. L'accent a été mis sur la gestion du consentement aux données personnelles, l'intégration de l'annuaire des communes et une amélioration globale de l'interface utilisateur ainsi que de la sécurité des connexions.
 
 ### Évolutions fonctionnelles
-- **Checklists :** Amélioration complète de la gestion des checklists, incluant l'ajout de nouveaux contenus (F2485, F39617), la gestion des liens et une interface d'administration dédiée pour les gérer [#1381, #1464, #1511].
-- **Suivi (Followup) :** Enrichissement du module de suivi avec la gestion des dates clés (milestones), l'affichage des messages dans les éléments parents et une meilleure intégration des éléments personnels dans l'agenda [#268, #1144, #1279].
-- **Gestion des consentements :** Refonte de l'interface de gestion des consentements pour simplifier l'expérience utilisateur (bouton "Tout sélectionner", affichage clair des partenaires et gestion des avertissements en cas de retrait) [#1273, #1497, #1539].
-- **Notifications :** Amélioration de l'interface utilisateur, ajout d'icônes personnalisées et redirection automatique vers les pages concernées lors de la réception d'une notification [#1299, #1302].
-- **Expérience Utilisateur (UX) :** 
-    - Création d'un nouveau centre d'aide [#1080].
-    - Refonte de la page de contact et amélioration de l'accessibilité (RGAA) [#800, #1431, #1440].
-    - Amélioration de la gestion des erreurs avec des pages plus explicites [#595].
-- **Navigation :** Optimisation de la navigation via des alias d'URLs pour une meilleure cohérence entre l'application mobile et le web [#1027].
+- **Gestion du consentement** : Mise en place d'un système complet pour gérer le consentement aux données personnelles (nouveau modèle, nouveaux points de terminaison et intégration de l'interface dans le profil, les préférences et l'édition d'adresse) [#1214](https://github.com/numerique-gouv/ami-notifications-api/issues/1214).
+- **Annuaire des communes** : Intégration de la gestion des mairies dans le profil utilisateur et l'annuaire [#1078](https://github.com/numerique-gouv/ami-notifications-api/issues/1078).
+- **Améliorations de l'interface (UI/UX)** :
+    - Affichage des titres au lieu du corps de texte pour les éléments de suivi [#1661](https://github.com/numerique-gouv/ami-notifications-api/issues/1661).
+    - Ajout de titres pour les notices et masquage d'informations inutiles pour respecter les standards RGAA [#1664](https://github.com/numerique-gouv/ami-notifications-api/issues/1664), [#1665](https://github.com/numerique-gouv/ami-notifications-api/issues/1665).
+    - Corrections de liens de navigation (auto-promo, JCC) et de styles visuels [#1673](https://github.com/numerique-gouv/ami-notifications-api/issues/1673), [#1281](https://github.com/numerique-gouv/ami-notifications-api/issues/1281).
+    - Possibilité d'ajouter des liens externes aux sous-éléments [#1611](https://github.com/numerique-gouv/ami-notifications-api/issues/1611).
+    - Clarification des messages d'erreur lors de l'authentification [#1594](https://github.com/numerique-gouv/ami-notifications-api/issues/1594).
 
 ### Évolutions techniques
-- **Sécurité :** 
-    - Renforcement de la protection contre les attaques via l'implémentation de politiques CSP [#1583].
-    - Durcissement de la gestion des cookies (politique SameSite) et limitation des payloads API au format JSON [#1507, #1544, #1505].
-    - Mise en place d'une liste blanche d'adresses IP pour sécuriser les appels des partenaires [#1255].
-- **Observabilité et Monitoring :** 
-    - Amélioration significative du suivi des erreurs et de la télémétrie (intégration Sentry enrichie, ajout de logs de débogage pour l'authentification et traçage des événements frontend) [#985, #1407, #1429].
-- **Infrastructure et Performance :** 
-    - Automatisation de la gestion des certificats SSL avec Let's Encrypt [#1494].
-    - Optimisation des performances de la base de données par l'ajout d'index sur les tables utilisateurs et notifications [#1414].
-- **Architecture :** 
-    - Amélioration du processus de déconnexion (notamment pour FranceConnect) [#1380, #1542].
-    - Correction de problèmes de gestion de l'asynchronisme dans le middleware JWT [#1558].
+- **Sécurité et Authentification** :
+    - Renforcement de la sécurité des redirections après connexion et validation des URIs autorisés [#1617](https://github.com/numerique-gouv/ami-notifications-api/issues/1617).
+    - Sécurisation du flux d'authentification par passkey pour empêcher le retour arrière du navigateur [#1593](https://github.com/numerique-gouv/ami-notifications-api/issues/1593).
+- **Infrastructure et Backend** :
+    - Mise à jour de l'environnement vers Python 3.14 [#1642](https://github.com/numerique-gouv/ami-notifications-api/issues/1642).
+    - Optimisation de la synchronisation des données des mairies via un processus quotidien (cron) [#1614](https://github.com/numerique-gouv/ami-notifications-api/issues/1614).
+    - Amélioration de la logique de statut des éléments de suivi [#1663](https://github.com/numerique-gouv/ami-notifications-api/issues/1663).
+    - Modification de la gestion des utilisateurs : archivage des inscriptions au lieu de leur suppression [#1602](https://github.com/numerique-gouv/ami-notifications-api/issues/1602).
+- **Refactoring et Architecture** :
+    - Refonte majeure des composants de fenêtres modales (modals) pour améliorer la structure et la maintenance du front-end [#1430](https://github.com/numerique-gouv/ami-notifications-api/issues/1430).
+    - Modularisation de certains blocs d'interface (ex: bloc situation) [#1656](https://github.com/numerique-gouv/ami-notifications-api/issues/1656).
+    - Optimisation de la navigation interne pour éviter les boucles de redirection [#1452](https://github.com/numerique-gouv/ami-notifications-api/issues/1452).
 
 ### Autres changements
-- **Maintenance :** Nettoyage du code (suppression de code mort et de paramètres inutilisés) et ajout de commandes de nettoyage pour la base de données [#1333, #1279, #1417, #1332].
+- **Maintenance** : Mise à jour de l'outil de pré-commit [#1679](https://github.com/numerique-gouv/ami-notifications-api/issues/1679) et nettoyage de la suite de tests CI (suppression des tests E2E d'exemple) [#1639](https://github.com/numerique-gouv/ami-notifications-api/issues/1639).

@@ -3,12 +3,12 @@ name = "ami-notifications-api"
 version = "0.1.0"
 description = "AMI notifications API"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
-    "asyncpg>=0.30.0",
+    "asyncpg>=0.32.0",
     "certbot>=5.8.0",
     "channels-postgres>=1.1.4",
-    "django>=6.0.7",
+    "django>=6.1.2",
     "django-compressor>=4.6.0",
     "django-cors-headers>=4.9.0",
     "django-database-url>=1.0.3",
@@ -18,7 +18,7 @@ dependencies = [
     "django-sass-processor>=1.4.2",
     "django-stubs[compatible-mypy]>=5.2.9",
     "django-tasks-db>=0.12.0",
-    "djangorestframework>=3.16.1",
+    "djangorestframework>=3.18.3",
     "djangorestframework-dataclasses>=1.4.0",
     "drf-spectacular>=0.29.0",
     "firebase-admin>=7.1.0",
@@ -30,6 +30,7 @@ dependencies = [
     "nh3>=0.3.7",
     "psycopg[binary]>=3.3.3",
     "pygithub>=2.9.1",
+    "pydantic>=2.14.1",
     "python-dotenv>=1.2.2",
     "sentry-sdk>=2.29.1",
     "types-requests>=2.32.0.20250328",
@@ -48,7 +49,7 @@ dev = [
     "django-webtest>=1.9.14",
     "freezegun>=1.5.5",
     "ipdb>=0.13.13",
-    "pre-commit>=4.2.0",
+    "pre-commit>=4.7.0",
     "pre-commit-uv>=4.1.4",
     "pyopenssl>=25.3.0",
     "pyquery>=2.0.1",
@@ -57,13 +58,13 @@ dev = [
     "pytest-asyncio>=0.26.0",
     "pytest-django>=4.12.0",
     "pytest-httpx>=0.35.0",
-    "ruff>=0.11.2",
+    "ruff>=0.14.14",
     "werkzeug>=3.1.6",
 ]
 
 [tool.pyright]
 # Python version and environment
-pythonVersion = "3.13"
+pythonVersion = "3.14"
 include = ["app", "tests"]
 exclude = [".venv", "node_modules", "public/mobile-app"]
 
