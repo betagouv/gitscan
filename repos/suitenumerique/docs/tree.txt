@@ -408,6 +408,7 @@
     │   │   │   ├── test_api_utils_conditional_refresh_oidc_token.py
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_nest_tree.py
+    │   │   │   ├── test_celery_probes.py
     │   │   │   ├── test_instrumentation.py
     │   │   │   ├── test_integration_yhub_migration.py
     │   │   │   ├── test_malware_detection.py
@@ -469,6 +470,7 @@
     │   │   ├── __init__.py
     │   │   ├── asgi.py
     │   │   ├── celery_app.py
+    │   │   ├── celery_probes.py
     │   │   ├── configuration
     │   │   │   └── theme
     │   │   │       └── default.json
@@ -561,6 +563,7 @@
     │   │   │   │   ├── app-impress
     │   │   │   │   │   ├── 401.spec.ts
     │   │   │   │   │   ├── 404.spec.ts
+    │   │   │   │   │   ├── 500.spec.ts
     │   │   │   │   │   ├── assets
     │   │   │   │   │   │   ├── base-content-test-pdf.txt
     │   │   │   │   │   │   ├── doc-export-PDF-browser-regressions.pdf
@@ -685,8 +688,7 @@
     │   │       │   │       ├── error-401.svg
     │   │       │   │       ├── error-403.svg
     │   │       │   │       ├── error-404.svg
-    │   │       │   │       ├── error-coffee.png
-    │   │       │   │       ├── error-planetes.png
+    │   │       │   │       ├── error-500.svg
     │   │       │   │       ├── icon-401.png
     │   │       │   │       ├── icon-404.svg
     │   │       │   │       ├── icon-docs.svg
@@ -872,6 +874,7 @@
     │   │       │   │           ├── hand-tap.svg
     │   │       │   │           ├── hands-clap.svg
     │   │       │   │           ├── hangout_video.svg
+    │   │       │   │           ├── hashtag.svg
     │   │       │   │           ├── hd.svg
     │   │       │   │           ├── headset.svg
     │   │       │   │           ├── help.svg
@@ -979,6 +982,7 @@
     │   │       │   │           ├── rate_review.svg
     │   │       │   │           ├── rectangle-rotate.svg
     │   │       │   │           ├── replay_10.svg
+    │   │       │   │           ├── retry.svg
     │   │       │   │           ├── right-panel.svg
     │   │       │   │           ├── right_panel_close.svg
     │   │       │   │           ├── right_panel_open.svg
@@ -1177,13 +1181,18 @@
     │   │       │   │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   │   ├── DocsThreadStore.test.ts
     │   │       │   │   │   │   │   │   ├── DocsThreadStoreAuth.test.ts
+    │   │       │   │   │   │   │   │   ├── getMentionedUserIds.test.ts
     │   │       │   │   │   │   │   │   └── normalizeEmoji.test.ts
+    │   │       │   │   │   │   │   ├── getMentionedUserIds.ts
     │   │       │   │   │   │   │   └── normalizeEmoji.ts
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── CommentSideBar.tsx
     │   │       │   │   │   │   │   └── CommentToolbarButton.tsx
     │   │       │   │   │   │   ├── hooks
-    │   │       │   │   │   │   │   └── useComments.ts
+    │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   └── useOpenCommentAnchor.test.ts
+    │   │       │   │   │   │   │   ├── useComments.ts
+    │   │       │   │   │   │   │   └── useOpenCommentAnchor.ts
     │   │       │   │   │   │   ├── index.ts
     │   │       │   │   │   │   ├── stores
     │   │       │   │   │   │   │   ├── useCommentSidebarStore.ts
@@ -1234,6 +1243,9 @@
     │   │       │   │   │   │   │   │   ├── DocsSideMenu.tsx
     │   │       │   │   │   │   │   │   ├── LinkToBlockItem.tsx
     │   │       │   │   │   │   │   │   └── SideMenuSeparator.tsx
+    │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   └── commentEditorSchema.test.ts
+    │   │       │   │   │   │   │   ├── commentEditorSchema.ts
     │   │       │   │   │   │   │   ├── custom-blocks
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
     │   │       │   │   │   │   │   │   ├── CodeBlock.tsx
@@ -1255,10 +1267,13 @@
     │   │       │   │   │   │   │   │   │   │   │   ├── InterlinkingLink.test.tsx
     │   │       │   │   │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.test.tsx
     │   │       │   │   │   │   │   │   │   │   │   ├── LinkSelected.test.tsx
+    │   │       │   │   │   │   │   │   │   │   │   ├── getBlockAnchorLabel.test.ts
     │   │       │   │   │   │   │   │   │   │   │   └── pasteInterlink.test.ts
+    │   │       │   │   │   │   │   │   │   │   ├── getBlockAnchorLabel.ts
     │   │       │   │   │   │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   │   │   │   └── pasteInterlink.ts
     │   │       │   │   │   │   │   │   │   ├── MentionSearchInlineContent.tsx
+    │   │       │   │   │   │   │   │   │   ├── MentionTriggerExtension.ts
     │   │       │   │   │   │   │   │   │   ├── Search.tsx
     │   │       │   │   │   │   │   │   │   ├── UserMention
     │   │       │   │   │   │   │   │   │   │   ├── UserMentionInlineContent.tsx
@@ -1273,9 +1288,12 @@
     │   │       │   │   │   │   │   │   │   │   ├── getBlockIdAtPos.ts
     │   │       │   │   │   │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   │   │   │   ├── replaceInitialBlockId.ts
+    │   │       │   │   │   │   │   │   │   │   ├── useMentionNotifyError.ts
     │   │       │   │   │   │   │   │   │   │   ├── useMentionableUsers.ts
     │   │       │   │   │   │   │   │   │   │   └── useSearchUserMention.ts
     │   │       │   │   │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   │   │   ├── MentionSearchInlineContent.test.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── MentionTriggerExtension.test.ts
     │   │       │   │   │   │   │   │   │   │   ├── Search.test.tsx
     │   │       │   │   │   │   │   │   │   │   └── utils.test.ts
     │   │       │   │   │   │   │   │   │   ├── index.ts
@@ -1288,6 +1306,7 @@
     │   │       │   │   │   │   ├── conf.ts
     │   │       │   │   │   │   ├── hook
     │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   ├── useScrollToBlockAnchor.test.tsx
     │   │       │   │   │   │   │   │   └── useUploadFile.test.tsx
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useCollaboration.tsx
@@ -2047,6 +2066,7 @@
         │   ├── backend.spec.ts
         │   ├── config.spec.ts
         │   ├── dependencies.spec.ts
+        │   ├── init-db.spec.ts
         │   ├── metrics.spec.ts
         │   ├── migration.spec.ts
         │   ├── permissions.spec.ts
@@ -2061,6 +2081,7 @@
         │   ├── backend.ts
         │   ├── config.ts
         │   ├── env.ts
+        │   ├── init-db.ts
         │   ├── metrics.ts
         │   ├── migration.ts
         │   ├── permissions.ts
@@ -2071,4 +2092,4 @@
         ├── tsconfig.json
         ├── vitest.config.mts
         └── yarn.lock
-358 directories, 1791 files
+360 directories, 1810 files
