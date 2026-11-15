@@ -1,32 +1,39 @@
-## Changelog : codebox (30 derniers jours, au 12 novembre 2026)
+## Changelog : codebox (30 derniers jours, au 14 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une étape majeure : le projet change de nom, passant de `just-code` à `codebox`. Parallèlement, l'expérience utilisateur a été profondément remaniée avec un nouvel assistant de configuration (wizard) plus intuitif, une interface traduite en français et une gestion beaucoup plus robuste de la récupération des données et des secrets.
+Ce mois a marqué un tournant majeur pour le projet avec le renommage officiel de `just-code` en `codebox`. L'expérience utilisateur a été profondément remaniée grâce à un nouvel assistant de configuration (wizard) plus intuitif et une interface en ligne de commande plus stable. Le système est désormais plus robuste, notamment grâce à de nouvelles capacités de récupération de données en cas d'interruption et une meilleure gestion des modèles d'IA.
 
 ### Évolutions fonctionnelles
-- **Rebranding majeur :** Changement de nom global du projet (`just-code` devient `codebox`) impactant le CLI, les modules et les chemins d'installation.
-- **Nouvel assistant de configuration (Wizard) :** Refonte complète du processus d'initialisation avec un flux en plusieurs étapes (sélection des modèles, configuration de l'identité Git, intégration du jeton GitHub et récapitulatif interactif).
-- **Amélioration de l'interface (TUI) :** 
-    - Traduction française de nombreux messages de confirmation et d'introduction.
-    - Optimisation de l'affichage (gestion du curseur lors du redimensionnement, meilleure visibilité des options de sélection).
-- **Nouveaux harnais d'agents :** Support du harnais "Pi" comme seconde option pour les agents ([#176](https://github.com/etalab-ia/codebox/issues/176)).
-- **Gestion de la sortie :** Ajout d'un écran de fin de session permettant de récupérer les modifications avant de quitter.
-- **Statistiques d'usage :** Introduction d'un système de collecte de statistiques avec gestion explicite du consentement de l'utilisateur.
+- **Changement de nom :** Renommage global de `just-code` vers `codebox` (incluant le CLI, les chemins et les modules). **Attention : ce changement est une rupture de compatibilité.**
+- **Assistant de configuration (Wizard) :** 
+    - Introduction d'un nouvel assistant interactif pour la première installation et la configuration des modèles.
+    - Ajout d'un écran de récapitulatif permettant de valider ou modifier les choix avant l'application.
+    - Intégration d'étapes dédiées pour la configuration de l'accès GitHub et de la clé API Albert.
+- **Gestion des modèles :** 
+    - Support de la sélection de plusieurs modèles.
+    - Ajout du modèle Ministral comme option de petit modèle via OpenCode.
+- **Interface utilisateur (TUI) :** 
+    - Amélioration de la stabilité de l'interface terminal (gestion du curseur et du redimensionnement des listes).
+    - Polissage des textes et des messages de confirmation en français.
+- **Fin de session :** Nouvel écran de fin de session permettant de récupérer les modifications en cours.
+- **Harnais d'agent :** Support de "Pi" comme second harnais d'agent ([#176](https://github.com/etalab-ia/codebox/issues/176)).
+- **Statistiques :** Mise en place de la collecte de statistiques d'usage soumise au consentement de l'utilisateur.
 
 ### Évolutions techniques
-- **Mécanismes de récupération (Recovery) :** 
-    - Implémentation d'un chemin de récupération pour les instances Microsandbox arrêtées ou mises à jour.
-    - Amélioration de la résilience du workspace pour préserver le travail commité lors des rafraîchissements ou des erreurs.
-- **Gestion des secrets et de la sécurité :**
-    - Nouveau système de livraison des secrets approuvés directement dans le bac à sable (guest) via des fichiers `.env` ou le proxy Microsandbox.
-    - Durcissement de la vérification des empreintes (digests) et des fichiers de configuration.
-    - Intégration de détecteurs de secrets pour sécuriser l'environnement.
-- **Gestion du Workspace et Git :** Amélioration de la détection des branches, de la synchronisation avec l'hôte et de la gestion des modifications lors de la reprise de session.
-- **Infrastructure et Runtime :** 
-    - Migration vers OpenCode v2.
-    - Mises à jour régulières du runtime Microsandbox (v0.7.14).
-    - Optimisation de la CI/CD (résolveurs DNS explicites pour les conteneurs Ubuntu).
+- **Récupération et Workspace :** 
+    - Implémentation d'un mécanisme de récupération transactionnelle pour le workspace.
+    - Amélioration de la gestion des conflits entre les modifications de l'hôte et celles de l'agent lors d'une reprise après interruption.
+- **Microsandbox :** 
+    - Mise à jour du runtime Microsandbox (v0.7.14).
+    - Ajout d'un chemin de récupération spécifique pour les instances Microsandbox arrêtées lors d'une mise à jour.
+- **Sécurité et Secrets :** 
+    - Amélioration de la détection des secrets (le détecteur est désormais fourni directement au lieu d'être sollicité auprès de l'hôte).
+    - Renforcement des mécanismes de validation des fichiers et des configurations du projet pour prévenir l'exécution de code non approuvé.
+- **Architecture et Infrastructure :** 
+    - Restructuration du dépôt en monorepo avec le déplacement du CLI dans `apps/codebox`.
+    - Introduction de Moon v2 et de nouveaux scaffolds pour la gestion du projet.
+    - Migration vers OpenCode v2.2.5.
 
 ### Autres changements
-- **Documentation :** Mise à jour massive de la documentation technique, notamment sur les protocoles de qualification, la gestion des secrets et l'utilisation des VM (Lima).
-- **Tests :** Extension importante de la couverture de tests de qualification pour inclure macOS (arm64), Linux et Windows.
+- **Documentation :** Mise à jour massive de la documentation, notamment sur les protocoles de qualification (macOS, Linux, Windows) et la gestion des secrets.
+- **Localisation :** Travail important de traduction et d'harmonisation des messages système en français.

@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab-ia/codebox",
   "name": "codebox",
-  "description": "Bac à sable de R&D pour évaluer l'exécution distante d'agents de code dans une microVM isolée. Il permet de tester l'interaction entre des interfaces TUI et des modèles d'IA via l'API Albert.",
+  "description": "Bac à sable de R&D pour évaluer l'exécution distante d'agents de code dans un environnement isolé via des microVMs. Il permet de tester l'interaction entre des modèles d'IA et des environnements de développement sécurisés.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
@@ -12,29 +12,27 @@
   "audience": "Développeurs",
   "dependencies": [
     "Albert API",
-    "Mistral AI",
-    "OpenAI",
     "Microsandbox",
     "OpenCode",
-    "Go"
+    "Mistral AI",
+    "OpenAI"
   ],
   "components": [
     "Intelligence Artificielle / ML",
     "Rust & Go",
+    "CI/CD & Déploiement",
     "Scripts & Utilitaires",
-    "CI/CD & Déploiement"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "api-key"
     ],
     "providers": [
-      "Albert API",
-      "Mistral AI",
-      "OpenAI"
+      "GitHub"
     ]
   },
-  "tests": "Go testing (microsandbox_test.go), pre-commit hooks (gitleaks)",
+  "tests": "Tests de qualification pour macOS (arm64), Linux et Windows.",
   "workflows": [
     "ci.yml"
   ],
@@ -45,7 +43,7 @@
   "tags": [
     "Intelligence Artificielle & LLM",
     "Git & DevOps",
-    "CI/CD & GitHub Actions",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Docker & Conteneurs"
   ]
 }
