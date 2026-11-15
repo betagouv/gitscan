@@ -12,6 +12,7 @@ dependencies = [
     "django-storages[s3]>=1.14",
     "whitenoise>=6.8",
     "python-dotenv>=1.0",
+    "sentry-sdk[django]>=2.35",
     "django-debug-toolbar>=6.1",
     "wagtail-notion-form",
     "sites-conformes-footer-partners",
@@ -19,18 +20,30 @@ dependencies = [
     "sites-conformes-posthog",
     "sites-conformes-rgaa",
     "sites-conformes-faq",
+    "wagtail-in-a-tree>=0.1.0",
+    "pfat-api",
 ]
 
 [tool.uv.sources]
-# numerique-gouv/sites-conformes#606 (swappable ContentPage), pinned to its head
-# commit. Source archive rather than a git source: the CMS image has no git.
-sites-conformes = { url = "https://github.com/numerique-gouv/sites-conformes/archive/625bd28ebbca2e5fba73a81b32bee90c92e8d8d3.tar.gz" }
+# numerique-gouv/sites-conformes#630 (swappable BlogEntryPage, on top of the
+# categories stack #598→#629 and #606), pinned to its head commit. Source archive
+# rather than a git source: the CMS image has no git.
+sites-conformes = { url = "https://github.com/numerique-gouv/sites-conformes/archive/c1d2446e0b14b511906ecaff36a40d47c45da9a4.tar.gz" }
 wagtail-notion-form = { path = "../../packages/wagtail-notion-form", editable = true }
 sites-conformes-footer-partners = { path = "../../packages/sites-conformes-footer-partners", editable = true }
 sites-conformes-header-logo = { path = "../../packages/sites-conformes-header-logo", editable = true }
 sites-conformes-posthog = { path = "../../packages/sites-conformes-posthog", editable = true }
 sites-conformes-rgaa = { path = "../../packages/sites-conformes-rgaa", editable = true }
 sites-conformes-faq = { path = "../../packages/sites-conformes-faq", editable = true }
+pfat-api = { path = "../../packages/pfat-api", editable = true }
+
+[tool.uv]
+# sites-conformes caps wagtail<8 only because wagtail-2fa 1.8.0 imports the removed
+# UserListingButton (labd/wagtail-2fa#288). Harmless here: neither wagtail_2fa nor
+# sites_conformes.dashboard (its only importer) is in INSTALLED_APPS, so it never loads.
+# Drop this once sites-conformes lifts the cap. Adding either app before then needs a
+# wagtail-2fa release with that fix.
+override-dependencies = ["wagtail>=8.1,<8.2"]
 
 [project.optional-dependencies]
 dev = [
@@ -39,6 +52,7 @@ dev = [
     "ruff>=0.7",
     "mypy>=1.13",
     "pre-commit>=4.0",
+    "pytest-cov>=6",
 ]
 
 [build-system]
@@ -48,14 +62,31 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["cms"]
 
-[tool.ruff]
-line-length = 100
-target-version = "py312"
-extend-exclude = ["**/migrations/*.py"]
-
-[tool.ruff.lint]
-select = ["E", "F", "I", "B", "UP", "N"]
-
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "cms.settings.production"
-testpaths = ["tests"]
+# The sites-conformes-rgaa tests run here too, so one run (and one coverage
+# report) covers the CMS and its local packages.
+testpaths = ["tests", "../../packages/sites-conformes-rgaa/sites_conformes_rgaa/tests"]
+addopts = "--cov --cov-report=term-missing:skip-covered"
+
+[tool.coverage.run]
+branch = true
+# Import names of the CMS and of the local packages in packages/.
+source_pkgs = [
+    "cms",
+    "pfat_api",
+    "sites_conformes_faq",
+    "sites_conformes_footer_partners",
+    "sites_conformes_header_logo",
+    "sites_conformes_posthog",
+    "sites_conformes_rgaa",
+    "wagtail_notion_form",
+]
+omit = ["*/migrations/*", "*/tests/*", "*/settings/*"]
+# Save the data when stopped with SIGTERM: Playwright stops the CMS this way
+# at the end of the e2e run (E2E_COVERAGE=1, see e2e/playwright.config.ts).
+sigterm = true
+
+[tool.coverage.report]
+# Measured at 81% when added. Raise it as tests are added; never lower it.
+fail_under = 80

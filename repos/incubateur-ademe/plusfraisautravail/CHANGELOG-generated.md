@@ -1,27 +1,18 @@
-## Changelog : plusfraisautravail (30 derniers jours, au 29/09/2026)
+## Changelog : plusfraisautravail (30 derniers jours, au 14 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'enrichissement du système de gestion de contenu (CMS) pour permettre la création de nouveaux formats de pages (FAQ, questions/réponses) et une meilleure gestion des contenus. Parallèlement, l'infrastructure a été renforcée pour améliorer la performance, la sécurité et la fiabilité des services, notamment pour le formulaire de contact et la recherche climatique.
+Ce mois-ci, le projet a franchi une étape importante de consolidation technique et de renforcement de la fiabilité. Les changements majeurs concernent une simplification de l'architecture par la centralisation des API, une amélioration massive de la suite de tests automatisés pour garantir la stabilité, et l'optimisation des outils de gestion de contenu pour les éditeurs.
 
 ### Évolutions fonctionnelles
-- **Nouveaux formats de contenus :** Ajout de pages FAQ [#26] et de blocs de questions/réponses avec aperçu DSFR [#24] dans le CMS.
-- **Navigation et recherche :** 
-    - Rétablissement des filtres par tags pour la section solutions [#31].
-    - Correction de la recherche Climadiag pour éviter les erreurs de l'API (nécessite désormais un minimum de 3 caractères).
-- **Améliorations de l'expérience :** 
-    - Correction du formulaire de contact pour résoudre les erreurs d'envoi d'e-mails.
-    - Traduction du pied de page en français.
+- **Amélioration des performances** : optimisation de la navigation grâce à la mise en cache des pages publiques et au chargement des images à la taille d'affichage optimale [#75](https://github.com/incubateur-ademe/plusfraisautravail/issues/75), [#77](https://github.com/incubateur-ademe/plusfraisautravail/issues/77).
+- **Optimisation de l'administration (CMS)** : remplacement des tags par un système de catégories, possibilité de modifier le type d'une page directement et meilleure visibilité sur l'utilisation des questions dans les contenus [#34](https://github.com/incubateur-ademe/plusfraisautravail/issues/34), [#46](https://github.com/incubateur-ademe/plusfraisautravail/issues/46), [#49](https://github.com/incubateur-ademe/plusfraisautravail/issues/49).
+- **Nouvelles fonctionnalités de contenu** : affichage de la date de mise à jour sur les pages et ajout de filtres par catégories sur les "Sites Conformes" [#30](https://github.com/incubateur-ademe/plusfraisautravail/issues/30), [#47](https://github.com/incubateur-ademe/plusfraisautravail/issues/47).
 
 ### Évolutions techniques
-- **Optimisation du CMS (Wagtail) :** 
-    - Amélioration de la structure hiérarchique avec l'ajout de `wagtail-treebeard` [#29].
-    - Optimisation de la gestion des médias (support du format WebP et mise en cache longue durée).
-    - Optimisation des déploiements en évitant les migrations de modèles de pages inutiles [#28].
-- **Infrastructure et Performance :** 
-    - Augmentation des ressources allouées aux conteneurs (CPU et RAM).
-    - Sécurisation de la base de données via un réseau privé et mise en place de redirections (301) vers le domaine canonique.
-    - Optimisation de la diffusion via un proxy de production.
-- **Outils et CI/CD :** 
-    - Intégration de l'outil d'analyse PostHog via un proxy interne.
-    - Amélioration de la fiabilité des tests CI en utilisant PostgreSQL au lieu de SQLite.
-    - Synchronisation du formulaire de contact avec Notion via l'intégration d'un token dédié.
+- **Refonte de l'architecture** : consolidation des API (Alertes et Climadiag) au sein du CMS et simplification de la gestion du proxy pour une infrastructure plus légère [#50](https://github.com/incubateur-ademe/plusfraisautravail/issues/50), [#51](https://github.com/incubateur-ademe/plusfraisautravail/issues/51), [#54](https://github.com/incubateur-ademe/plusfraisautravail/issues/54), [#55](https://github.com/incubateur-ademe/plusfraisautravail/issues/55).
+- **Fiabilisation des tests (E2E)** : déploiement d'une suite de tests de bout en bout massive avec Playwright, incluant des tests sur Storybook, la couverture de code et l'utilisation de dumps de production anonymisés pour garantir un environnement de test réaliste [#60](https://github.com/incubateur-ademe/plusfraisautravail/issues/60), [#65](https://github.com/incubateur-ademe/plusfraisautravail/issues/65), [#69](https://github.com/incubateur-ademe/plusfraisautravail/issues/69), [#71](https://github.com/incubateur-ademe/plusfraisautravail/issues/71), [#72](https://github.com/incubateur-ademe/plusfraisautravail/issues/72), [#73](https://github.com/incubateur-ademe/plusfraisautravail/issues/73), [#80](https://github.com/incubateur-ademe/plusfraisautravail/issues/80), [#81](https://github.com/incubateur-ademe/plusfraisautravail/issues/81), [#82](https://github.com/incubateur-ademe/plusfraisautravail/issues/82).
+- **Infrastructure et monitoring** : sécurisation des accès à la base de données et au stockage (réseau privé), intégration de Scaleway pour l'envoi d'emails transactionnels et mise en place de Sentry pour le suivi des erreurs et des performances [#52](https://github.com/incubateur-ademe/plusfraisautravail/issues/52), [#58](https://github.com/incubateur-ademe/plusfraisautravail/issues/58), [#74](https://github.com/incubateur-ademe/plusfraisautravail/issues/74), [#76](https://github.com/incubateur-ademe/plusfraisautravail/issues/76).
+- **Optimisation CI/CD** : réorganisation des pipelines de déploiement par produit [#70](https://github.com/incubateur-ademe/plusfraisautravail/issues/70).
+
+### Autres changements
+- **Qualité et conformité** : centralisation des configurations de linting, intégration de règles d'éco-conception [#59](https://github.com/incubateur-ademe/plusfraisautravail/issues/59), [#61](https://github.com/incubateur-ademe/plusfraisautravail/issues/61), publication officielle du code sous licence AGPL-3.0 [#64](https://github.com/incubateur-ademe/plusfraisautravail/issues/64) et nettoyage du code de migration obsolète [#48](https://github.com/incubateur-ademe/plusfraisautravail/issues/48).

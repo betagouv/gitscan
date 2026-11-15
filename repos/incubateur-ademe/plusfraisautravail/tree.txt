@@ -1,57 +1,32 @@
 .
 ├── .dockerignore
 ├── .github
+│   ├── ci-areas.yml
+│   ├── scripts
+│   │   ├── run-report.sh
+│   │   └── scw-container.sh
 │   └── workflows
-│       ├── ci.yml
-│       ├── deploy-alert-widget.yml
-│       ├── deploy-api.yml
-│       ├── deploy-autodiag.yml
-│       ├── deploy-climadiag.yml
-│       ├── deploy-cms.yml
-│       ├── terraform-apply.yml
-│       ├── terraform-destroy.yml
-│       └── terraform-plan.yml
+│       ├── _scope.yml
+│       ├── cd.yml
+│       ├── cms.yml
+│       ├── e2e-dump.yml
+│       ├── e2e.yml
+│       ├── frontend.yml
+│       ├── infrastructure-destroy.yml
+│       ├── infrastructure.yml
+│       └── review.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── DEPLOY.md
 ├── Justfile
+├── LICENSE
 ├── README.md
 ├── TODO.md
-├── api
-│   ├── .dockerignore
-│   ├── .env.example
-│   ├── Dockerfile
-│   ├── README.md
-│   ├── pyproject.toml
-│   ├── src
-│   │   └── pfat_api
-│   │       ├── __init__.py
-│   │       ├── cache.py
-│   │       ├── config.py
-│   │       ├── departments.py
-│   │       ├── main.py
-│   │       ├── routes
-│   │       │   ├── __init__.py
-│   │       │   ├── alerts.py
-│   │       │   ├── climadiag.py
-│   │       │   └── health.py
-│   │       ├── schemas.py
-│   │       └── sources
-│   │           ├── __init__.py
-│   │           ├── climadiag.py
-│   │           ├── meteofrance.py
-│   │           └── rte.py
-│   ├── tests
-│   │   ├── __init__.py
-│   │   ├── conftest.py
-│   │   ├── test_alerts.py
-│   │   ├── test_climadiag.py
-│   │   ├── test_health.py
-│   │   ├── test_meteofrance.py
-│   │   └── test_rte.py
-│   └── uv.lock
 ├── apps
 │   ├── alert-widget
+│   │   ├── .storybook
+│   │   │   ├── main.ts
+│   │   │   └── preview.ts
 │   │   ├── README.md
 │   │   ├── index.html
 │   │   ├── package.json
@@ -59,6 +34,7 @@
 │   │   │   └── generate-france-geo.mjs
 │   │   ├── src
 │   │   │   ├── AlertWidget.css
+│   │   │   ├── AlertWidget.stories.tsx
 │   │   │   ├── AlertWidget.tsx
 │   │   │   ├── components
 │   │   │   │   ├── VigilanceMap.css
@@ -71,6 +47,7 @@
 │   │   │   ├── mount-map.tsx
 │   │   │   ├── pages
 │   │   │   │   ├── HomePage.tsx
+│   │   │   │   ├── MapPage.stories.tsx
 │   │   │   │   └── MapPage.tsx
 │   │   │   └── vite-env.d.ts
 │   │   ├── test-embed
@@ -83,6 +60,9 @@
 │   │   └── vite.config.ts
 │   ├── autodiag
 │   │   ├── .gitignore
+│   │   ├── .storybook
+│   │   │   ├── main.ts
+│   │   │   └── preview.tsx
 │   │   ├── README.md
 │   │   ├── contenu.yaml
 │   │   ├── data
@@ -91,12 +71,8 @@
 │   │   │   ├── desimpermeabilisation.publicodes
 │   │   │   ├── eaux-pluviales.publicodes
 │   │   │   └── ilots-de-rafraichissement.publicodes
-│   │   ├── e2e
-│   │   │   └── autodiag.spec.ts
-│   │   ├── eslint.config.js
 │   │   ├── index.html
 │   │   ├── package.json
-│   │   ├── playwright.config.ts
 │   │   ├── public
 │   │   │   └── vite.svg
 │   │   ├── src
@@ -107,7 +83,8 @@
 │   │   │   │   ├── ProgressHeader.tsx
 │   │   │   │   ├── QuestionCard.tsx
 │   │   │   │   ├── RadarChartComponent.tsx
-│   │   │   │   └── RecommendationCard.tsx
+│   │   │   │   ├── RecommendationCard.tsx
+│   │   │   │   └── components.stories.tsx
 │   │   │   ├── context
 │   │   │   │   ├── FormContext.tsx
 │   │   │   │   └── WagtailContext.tsx
@@ -128,18 +105,20 @@
 │   │   ├── test-embed
 │   │   │   ├── index.html
 │   │   │   └── with-dsfr.html
-│   │   ├── test-results
-│   │   │   └── .last-run.json
 │   │   ├── tsconfig.app.json
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
 │   │   └── vite.config.ts
 │   ├── climadiag
+│   │   ├── .storybook
+│   │   │   ├── main.ts
+│   │   │   └── preview.ts
 │   │   ├── README.md
 │   │   ├── index.html
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── App.tsx
+│   │   │   ├── ClimadiagWidget.stories.tsx
 │   │   │   ├── ClimadiagWidget.tsx
 │   │   │   ├── CommuneCombobox.tsx
 │   │   │   ├── climadiag
@@ -166,55 +145,146 @@
 │       ├── cms
 │       │   ├── __init__.py
 │       │   ├── asgi.py
-│       │   ├── media_tools
-│       │   │   ├── __init__.py
-│       │   │   └── management
-│       │   │       ├── __init__.py
-│       │   │       └── commands
-│       │   │           ├── __init__.py
-│       │   │           └── set_s3_cache_control.py
 │       │   ├── pages
 │       │   │   ├── __init__.py
 │       │   │   ├── apps.py
-│       │   │   ├── management
-│       │   │   │   ├── __init__.py
-│       │   │   │   └── commands
-│       │   │   │       ├── __init__.py
-│       │   │   │       └── migrate_content_page_model.py
+│       │   │   ├── change_type.py
 │       │   │   ├── migrations
 │       │   │   │   ├── 0001_initial.py
+│       │   │   │   ├── 0002_blogentrypage.py
+│       │   │   │   ├── 0003_blog_categories_to_core.py
+│       │   │   │   ├── 0004_contentpage_categories_alter_blogentrypage_body_and_more.py
+│       │   │   │   ├── 0005_index_copied_images.py
+│       │   │   │   ├── 0006_contentpage_update_date.py
+│       │   │   │   ├── 0007_last_update_date_help_text.py
 │       │   │   │   └── __init__.py
 │       │   │   ├── models.py
+│       │   │   ├── templates
+│       │   │   │   └── cms_pages
+│       │   │   │       └── change_type.html
 │       │   │   └── wagtail_hooks.py
 │       │   ├── settings
 │       │   │   ├── __init__.py
 │       │   │   ├── base.py
 │       │   │   ├── dev.py
+│       │   │   ├── e2e.py
 │       │   │   └── production.py
+│       │   ├── site_version.py
 │       │   ├── templates
 │       │   │   └── sites_conformes_core
-│       │   │       └── catalog_index_page.html
+│       │   │       ├── catalog_index_page.html
+│       │   │       └── content_page.html
 │       │   ├── urls.py
 │       │   └── wsgi.py
 │       ├── entrypoint.sh
+│       ├── gunicorn.conf.py
 │       ├── manage.py
 │       ├── manage_jobs.sh
+│       ├── manage_server.py
 │       ├── pyproject.toml
 │       ├── tests
 │       │   ├── __init__.py
-│       │   ├── test_content_page_migration.py
+│       │   ├── test_change_page_type.py
+│       │   ├── test_e2e_dump_rules.py
 │       │   ├── test_error_pages.py
 │       │   ├── test_faq.py
 │       │   ├── test_faq_page.py
 │       │   ├── test_healthz.py
-│       │   └── test_media_content_type.py
+│       │   ├── test_image_search_index.py
+│       │   ├── test_last_update_date.py
+│       │   ├── test_media_content_type.py
+│       │   ├── test_migrations.py
+│       │   ├── test_pfat_api_alerts.py
+│       │   ├── test_pfat_api_climadiag.py
+│       │   ├── test_pfat_api_meteofrance.py
+│       │   ├── test_pfat_api_rte.py
+│       │   ├── test_robots.py
+│       │   ├── test_site_version.py
+│       │   └── test_translations.py
 │       └── uv.lock
+├── e2e
+│   ├── base.config.ts
+│   ├── coverage-teardown.ts
+│   ├── coverage.ts
+│   ├── fixtures.ts
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── restore.sh
+│   ├── spa
+│   │   ├── __screenshots__
+│   │   │   ├── alert-widget-alerte-canicule-carte-des-vigilances--quiet-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-carte-des-vigilances--quiet-320.png
+│   │   │   ├── alert-widget-alerte-canicule-carte-des-vigilances--quiet-768.png
+│   │   │   ├── alert-widget-alerte-canicule-carte-des-vigilances--rouge-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-carte-des-vigilances--rouge-320.png
+│   │   │   ├── alert-widget-alerte-canicule-carte-des-vigilances--rouge-768.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--api-down-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--api-down-320.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--api-down-768.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--heatwave-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--heatwave-320.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--heatwave-768.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--orange-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--orange-320.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--orange-768.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--quiet-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--quiet-320.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--quiet-768.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--rouge-1440.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--rouge-320.png
+│   │   │   ├── alert-widget-alerte-canicule-widget--rouge-768.png
+│   │   │   ├── autodiag-autodiag-composants--progress-1440.png
+│   │   │   ├── autodiag-autodiag-composants--progress-320.png
+│   │   │   ├── autodiag-autodiag-composants--progress-768.png
+│   │   │   ├── autodiag-autodiag-composants--question-1440.png
+│   │   │   ├── autodiag-autodiag-composants--question-320.png
+│   │   │   ├── autodiag-autodiag-composants--question-768.png
+│   │   │   ├── autodiag-autodiag-composants--question-answered-1440.png
+│   │   │   ├── autodiag-autodiag-composants--question-answered-320.png
+│   │   │   ├── autodiag-autodiag-composants--question-answered-768.png
+│   │   │   ├── autodiag-autodiag-composants--radar-1440.png
+│   │   │   ├── autodiag-autodiag-composants--radar-320.png
+│   │   │   ├── autodiag-autodiag-composants--radar-768.png
+│   │   │   ├── autodiag-autodiag-composants--radar-best-1440.png
+│   │   │   ├── autodiag-autodiag-composants--radar-best-320.png
+│   │   │   ├── autodiag-autodiag-composants--radar-best-768.png
+│   │   │   ├── autodiag-autodiag-composants--recommendation-1440.png
+│   │   │   ├── autodiag-autodiag-composants--recommendation-320.png
+│   │   │   ├── autodiag-autodiag-composants--recommendation-768.png
+│   │   │   ├── climadiag-climadiag-widget--commune-selected-1440.png
+│   │   │   ├── climadiag-climadiag-widget--commune-selected-320.png
+│   │   │   ├── climadiag-climadiag-widget--commune-selected-768.png
+│   │   │   ├── climadiag-climadiag-widget--empty-1440.png
+│   │   │   ├── climadiag-climadiag-widget--empty-320.png
+│   │   │   ├── climadiag-climadiag-widget--empty-768.png
+│   │   │   ├── climadiag-climadiag-widget--indicateurs-1440.png
+│   │   │   ├── climadiag-climadiag-widget--indicateurs-320.png
+│   │   │   └── climadiag-climadiag-widget--indicateurs-768.png
+│   │   ├── autodiag.spec.ts
+│   │   └── stories.spec.ts
+│   ├── spa.config.ts
+│   ├── storybook
+│   │   ├── main.ts
+│   │   └── preview.ts
+│   └── tests
+│       ├── admin.spec.ts
+│       └── site.spec.ts
+├── eslint.config.js
 ├── flake.lock
 ├── flake.nix
 ├── infra
 │   ├── README.md
+│   ├── e2e-dump
+│   │   ├── Dockerfile
+│   │   ├── check.sql
+│   │   ├── columns-to-declare.sql
+│   │   ├── dump.sh
+│   │   ├── excluded-tables.txt
+│   │   ├── rules.sql
+│   │   └── server.py
 │   ├── envs
 │   │   └── prod
+│   │       ├── .terraform.lock.hcl
 │   │       ├── backend.tf
 │   │       ├── main.tf
 │   │       ├── outputs.tf
@@ -234,19 +304,12 @@
 │   │   │   ├── main.tf
 │   │   │   ├── outputs.tf
 │   │   │   └── variables.tf
-│   │   ├── serverless-job
-│   │   │   ├── main.tf
-│   │   │   ├── outputs.tf
-│   │   │   └── variables.tf
 │   │   └── static-site
 │   │       ├── main.tf
 │   │       ├── outputs.tf
 │   │       └── variables.tf
 │   └── scalingo-proxy
 │       └── servers.conf.erb
-├── migration
-│   ├── restore_dump.sh
-│   └── s3_sync.sh
 ├── package-lock.json
 ├── package.json
 ├── packages
@@ -255,6 +318,21 @@
 │   │   ├── src
 │   │   │   └── index.ts
 │   │   └── tsconfig.json
+│   ├── pfat-api
+│   │   ├── README.md
+│   │   ├── pfat_api
+│   │   │   ├── __init__.py
+│   │   │   ├── api.py
+│   │   │   ├── cache.py
+│   │   │   ├── config.py
+│   │   │   ├── departments.py
+│   │   │   ├── schemas.py
+│   │   │   └── sources
+│   │   │       ├── __init__.py
+│   │   │       ├── climadiag.py
+│   │   │       ├── meteofrance.py
+│   │   │       └── rte.py
+│   │   └── pyproject.toml
 │   ├── sites-conformes-faq
 │   │   ├── README.md
 │   │   ├── pyproject.toml
@@ -292,6 +370,7 @@
 │   │       │   ├── 0001_initial.py
 │   │       │   ├── 0002_footerpartnerssettings_logo_height_and_more.py
 │   │       │   ├── 0003_alter_footerpartnerssettings_logo_height.py
+│   │       │   ├── 0004_alter_footerpartnerssettings_main_partner_logo_and_more.py
 │   │       │   └── __init__.py
 │   │       ├── models.py
 │   │       └── templates
@@ -311,6 +390,7 @@
 │   │       │           └── django.po
 │   │       ├── migrations
 │   │       │   ├── 0001_initial.py
+│   │       │   ├── 0002_alter_headerlogosettings_logo.py
 │   │       │   └── __init__.py
 │   │       ├── models.py
 │   │       └── templates
@@ -343,37 +423,6 @@
 │   │       └── tests
 │   │           ├── __init__.py
 │   │           └── test_emoji_wrapping.py
-│   ├── wagtail-admin-treebeard
-│   │   ├── README.md
-│   │   ├── pyproject.toml
-│   │   ├── tests
-│   │   │   ├── __init__.py
-│   │   │   ├── settings.py
-│   │   │   ├── test_tree_admin.py
-│   │   │   ├── testapp
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── models.py
-│   │   │   │   └── wagtail_hooks.py
-│   │   │   └── urls.py
-│   │   ├── uv.lock
-│   │   └── wagtail_admin_treebeard
-│   │       ├── __init__.py
-│   │       ├── forms.py
-│   │       ├── locale
-│   │       │   └── fr
-│   │       │       └── LC_MESSAGES
-│   │       │           ├── django.mo
-│   │       │           └── django.po
-│   │       ├── static
-│   │       │   └── wagtail_admin_treebeard
-│   │       │       ├── tree.css
-│   │       │       └── tree.js
-│   │       ├── templates
-│   │       │   └── wagtail_admin_treebeard
-│   │       │       ├── index.html
-│   │       │       ├── index_results.html
-│   │       │       └── node.html
-│   │       └── views.py
 │   └── wagtail-notion-form
 │       ├── README.md
 │       ├── pyproject.toml
@@ -391,9 +440,11 @@
 │           ├── models.py
 │           ├── notion.py
 │           └── signals.py
+├── renovate.json
+├── ruff.toml
 └── sources
     ├── 2026_autoévaluation des capacités d'adaptation.xlsx
     ├── diagram.png
     ├── get_vigilance.py
     └── notebooks_getVigilance.ipynb
-112 directories, 286 files
+101 directories, 348 files
