@@ -1,33 +1,26 @@
-## Changelog : karfur (30 derniers jours, au 03 novembre 2026)
+## Changelog : karfur (30 derniers jours, au 13/11/2026)
 
 ### Résumé
-Ce mois-ci, l'effort principal a porté sur la mise en conformité du projet avec les normes d'accessibilité (RGAA), garantissant une meilleure utilisation pour les personnes en situation de handicap. Parallèlement, le système de notifications a été renforcé et une nouvelle gestion administrative des widgets a été mise en place.
+Ce mois-ci, le développement a été marqué par un effort massif de mise en conformité avec les normes d'accessibilité (RGAA) et une amélioration significative des outils de gestion. Les utilisateurs bénéficieront de notifications plus précises et d'une recherche plus fluide, tandis que l'équipe dispose de nouveaux outils pour administrer les widgets et automatiser les processus de déploiement.
 
 ### Évolutions fonctionnelles
 - **Notifications** : 
-    - Possibilité d'envoyer manuellement des notifications push pour les démarches et les dispositifs ([#4050](https://github.com/refugies-info/karfur/pull/4050)).
-    - Amélioration de la fiabilité des notifications et du ciblage des utilisateurs actifs ([#4055](https://github.com/refugies-info/karfur/pull/4055)).
-- **Recherche & Apprentissage** :
-    - Optimisation de la fluidité de la recherche via l'implémentation de SWR ([#4019](https://github.com/refugies-info/karfur/pull/4019)).
-    - Amélioration de l'expérience de recherche dans la section "Apprendre le français" (gestion des erreurs et débogage de la saisie).
-- **Expérience Mobile** :
-    - Corrections de bugs lors de l'enregistrement des données et de l'affichage des modales.
-    - Nettoyage de l'interface (suppression de l'étiquette "Date dépassée" sur iOS/Android) ([#4047](https://github.com/refugies-info/karfur/pull/4047)).
+    - Mise en place de l'envoi manuel de notifications push pour les démarches et les dispositifs [#4050](https://github.com/refugies-info/karfur/pull/4050).
+    - Amélioration de la fiabilité des notifications (meilleur ciblage des utilisateurs actifs et gestion des erreurs d'envoi) [#4055](https://github.com/refugies-info/karfur/pull/4055).
+- **Gestion des widgets** : Introduction d'une nouvelle interface d'administration via API [#4027](https://github.com/refugies-info/karfur/pull/4027) et ajout de webhooks pour automatiser la gestion du contenu et des configurations.
+- **Recherche** : Amélioration de l'expérience de recherche avec une gestion plus intuitive des états vides et des erreurs.
+- **Interface mobile** : Nettoyage de l'interface mobile avec la suppression de mentions obsolètes ("Date Dépassée") [#4047](https://github.com/refugies-info/karfur/pull/4047).
 
 ### Évolutions techniques
-- **Accessibilité (RGAA)** : Mise en conformité massive incluant :
-    - Amélioration des contrastes de texte et des composants graphiques ([#4049](https://github.com/refugies-info/karfur/pull/4049)).
-    - Optimisation de l'affichage pour le zoom à 200% et les écrans de petite taille (320px).
-    - Amélioration de la navigation au clavier et de l'utilisation des lecteurs d'écran (gestion des titres, des rôles de recherche et des liens de saut).
-- **Gestion des Widgets** :
-    - Mise en place d'une API d'administration pour les widgets ([#4027](https://github.com/refugies-info/karfur/pull/4027)).
-    - Ajout d'un système de webhooks pour la configuration et le contenu des widgets.
-- **Sécurité & Infrastructure** :
-    - Plusieurs campagnes de nettoyage de vulnérabilités (security sweeps) sur les dépendances.
-    - Mise à jour de l'environnement Node.js pour les correctifs de sécurité.
-    - Automatisation du versioning lors des déploiements en production.
-    - Ajout de notifications Slack lors de la publication de nouvelles versions.
+- **Accessibilité (RGAA)** : Mise en conformité majeure sur de nombreux points critiques, notamment la gestion du zoom à 200%, les contrastes, les annonces pour les lecteurs d'écran (formulaires, erreurs, messages de remerciement), et la navigation au clavier [#4049](https://github.com/refugies-info/karfur/pull/4049), [#4048](https://github.com/refugies-info/karfur/pull/4048), [#4023](https://github.com/refugies-info/karfur/pull/4023).
+- **Optimisation de la recherche** : Refonte technique de la recherche utilisant SWR pour des résultats plus rapides et une meilleure gestion des données [#4019](https://github.com/refugies-info/karfur/pull/4019).
+- **Sécurité et Infrastructure** : 
+    - Mise à jour de l'environnement Node.js et correction de plusieurs vulnérabilités critiques (Handlebars, sanitize-html, Storybook) via des audits de sécurité réguliers [#4031](https://github.com/refugies-info/karfur/pull/4031), [#4013](https://github.com/refugies-info/karfur/pull/4013).
+    - Automatisation du versioning lors des déploiements en production [#4011](https://github.com/refugies-info/karfur/pull/4011).
+- **Refactoring et Nettoyage** : 
+    - Suppression de fonctionnalités et de pages obsolètes (widgets abandonnés, pages d'intégration mortes) pour alléger la plateforme.
+    - Refonte de la structure de données des widgets pour une meilleure gestion en base de données.
 
 ### Autres changements
-- **Nettoyage** : Suppression de fonctionnalités obsolètes (anciens widgets) et de code mort.
-- **Documentation** : Mise à jour du README concernant l'importance du versioning.
+- **Documentation** : Mise à jour du README pour clarifier l'importance du versioning.
+- **Tests** : Renforcement de la couverture de tests, notamment sur les processus de traduction et les notifications.

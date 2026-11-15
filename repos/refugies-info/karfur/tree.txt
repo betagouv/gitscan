@@ -141,7 +141,6 @@
 │   │   │   │   ├── assetlinks.json
 │   │   │   │   └── microsoft-identity-association.json
 │   │   │   ├── AMI_REFUGIE_INFO.pdf
-│   │   │   ├── Livret-Impact-Refugies.infos-2024.pdf
 │   │   │   ├── favicon.ico
 │   │   │   ├── fonts
 │   │   │   │   ├── Marianne-Bold.woff
@@ -765,7 +764,6 @@
 │   │   │   │       │   ├── icon-structure.svg
 │   │   │   │       │   ├── icon-translator.svg
 │   │   │   │       │   ├── icon-ts.svg
-│   │   │   │       │   ├── pdf-screenshot.png
 │   │   │   │       │   ├── ri-screenshot.png
 │   │   │   │       │   ├── stat-graph.svg
 │   │   │   │       │   ├── stat-podium.svg
@@ -1886,8 +1884,6 @@
 │   │   │   │   │       │   ├── SectionTeam.tsx
 │   │   │   │   │       │   ├── SectionUsers.tsx
 │   │   │   │   │       │   ├── TeamCard.tsx
-│   │   │   │   │       │   ├── __tests__
-│   │   │   │   │       │   │   └── SectionImpact.test.tsx
 │   │   │   │   │       │   └── index.ts
 │   │   │   │   │       ├── publier
 │   │   │   │   │       │   ├── CardExample
@@ -1944,6 +1940,10 @@
 │   │   │   │   │   ├── DropDown
 │   │   │   │   │   │   ├── DropDown.module.scss
 │   │   │   │   │   │   └── DropDown.tsx
+│   │   │   │   │   ├── DsfrLink
+│   │   │   │   │   │   ├── DsfrLink.test.tsx
+│   │   │   │   │   │   ├── DsfrLink.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── EVAIcon
 │   │   │   │   │   │   ├── EVAIcon.module.scss
 │   │   │   │   │   │   ├── EVAIcon.tsx
@@ -2041,6 +2041,8 @@
 │   │   │   │   │   │       │   └── index.tsx
 │   │   │   │   │   │       ├── CalloutPlugin
 │   │   │   │   │   │       │   ├── CalloutNode.ts
+│   │   │   │   │   │       │   ├── __tests__
+│   │   │   │   │   │       │   │   └── CalloutNode.test.ts
 │   │   │   │   │   │       │   └── index.ts
 │   │   │   │   │   │       ├── FloatingLinkEditorPlugin
 │   │   │   │   │   │       │   ├── FloatinLinkEditorPlugin.module.scss
@@ -2049,8 +2051,12 @@
 │   │   │   │   │   │       │   └── index.tsx
 │   │   │   │   │   │       ├── LinkPlugin
 │   │   │   │   │   │       │   └── index.tsx
-│   │   │   │   │   │       └── OnHtmlChangePlugin
-│   │   │   │   │   │           └── index.tsx
+│   │   │   │   │   │       ├── OnHtmlChangePlugin
+│   │   │   │   │   │       │   └── index.tsx
+│   │   │   │   │   │       └── TitleLevelPlugin
+│   │   │   │   │   │           ├── __tests__
+│   │   │   │   │   │           │   └── TitleLevelPlugin.test.ts
+│   │   │   │   │   │           └── index.ts
 │   │   │   │   │   ├── SearchBar
 │   │   │   │   │   │   ├── SearchBar.scss
 │   │   │   │   │   │   └── SearchBar.tsx
@@ -2236,6 +2242,7 @@
 │   │   │   │   ├── classname.test.ts
 │   │   │   │   ├── classname.ts
 │   │   │   │   ├── colors.ts
+│   │   │   │   ├── contentParsing.test.ts
 │   │   │   │   ├── contentParsing.ts
 │   │   │   │   ├── db.ts
 │   │   │   │   ├── decodeHTMLEntities.ts
@@ -2309,6 +2316,8 @@
 │   │   │   │   │   ├── resultsDisplayRules.ts
 │   │   │   │   │   ├── searchCounts.ts
 │   │   │   │   │   └── sortContents.ts
+│   │   │   │   ├── removeInvalidTranslationValues.test.ts
+│   │   │   │   ├── removeInvalidTranslationValues.ts
 │   │   │   │   ├── sanitizeContent.ts
 │   │   │   │   ├── sanitizeUrl.ts
 │   │   │   │   ├── search-helpers.ts
@@ -3625,6 +3634,7 @@
 │   │   │   │   ├── themes
 │   │   │   │   │   └── themes.repository.ts
 │   │   │   │   ├── traductions
+│   │   │   │   │   ├── traductions.business.test.ts
 │   │   │   │   │   ├── traductions.business.ts
 │   │   │   │   │   ├── traductions.repository.ts
 │   │   │   │   │   └── traductions.service.ts
@@ -4413,4 +4423,4 @@
 │       └── tasks.md
 ├── tailwind.config.ts
 └── turbo.json
-984 directories, 3431 files
+987 directories, 3438 files
