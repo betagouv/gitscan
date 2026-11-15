@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/gip-inclusion/autometa",
   "name": "autometa",
-  "description": "Assistant IA pour l'analyse des données métier de la Plateforme de l'inclusion. Il permet d'interroger les données Matomo et Metabase en langage naturel et de générer des rapports automatisés.",
+  "description": "Assistant IA conçu pour l'analyse des données métier de la PDI en combinant les APIs Matomo et Metabase. Il permet de poser des questions en langage naturel et de générer des rapports structurés automatiquement.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Statistiques & Rapports",
+    "Recherche & Filtres",
     "Données & Schémas",
-    "API & Intégrations",
-    "Recherche & Filtres"
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,11 +18,12 @@
     "PostgreSQL",
     "Redis",
     "SQLAlchemy",
+    "Alembic",
     "Pandas",
     "Playwright",
-    "Airtable",
-    "Zendesk",
-    "Datadog"
+    "Anthropic Claude",
+    "Ollama",
+    "Boto3"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,11 +32,13 @@
     "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
     "Scripts & Utilitaires",
-    "Documentation & Schémas"
+    "ORM & Accès aux données",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
       "Google"
@@ -43,14 +46,18 @@
   },
   "tests": [
     "pytest",
-    "playwright"
+    "pytest-mock",
+    "pytest-playwright",
+    "ruff",
+    "bandit",
+    "biome"
   ],
   "workflows": [
     "deploy-staging.yml",
     "deploy-prod.yml",
     "_deploy.yml"
   ],
-  "lastActivity": "2026-10-29T10:08:04Z",
+  "lastActivity": "2026-11-13T18:35:37+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,7 +68,6 @@
     "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "NLP & ML",
-    "Reporting & BI"
+    "Standards & Schémas"
   ]
 }

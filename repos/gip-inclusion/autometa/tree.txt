@@ -54,11 +54,17 @@
 ├── Makefile
 ├── Procfile
 ├── README.md
+├── agents
+│   ├── veille-boamp
+│   │   └── regles.md
+│   ├── veille-boamp.md
+│   └── veille-boamp.yaml
 ├── alembic
 │   ├── README
 │   ├── env.py
 │   ├── script.py.mako
 │   └── versions
+│       ├── 046795c5db73_agents_state_in_postgres.py
 │       ├── 050126cda9bc_dashboard_variants.py
 │       ├── 0d4871663bfd_initial_schema.py
 │       ├── 1ab3818607f7_add_dashboard_cron_columns.py
@@ -72,6 +78,7 @@
 │       ├── 87e9b1ca66b8_dashboard_publications.py
 │       ├── a1b2c3d4e5f6_text_to_datetime.py
 │       ├── a1c4e77b21d9_tag_vocabulary_facets.py
+│       ├── a6d5230ecdc3_pending_messages.py
 │       ├── b12cbac64ff9_enforce_not_null_on_default_backed_.py
 │       ├── c4d72e1f9a8b_usage_events.py
 │       ├── c7a2e9b4d1f0_cron_runs_index_started_at_desc.py
@@ -102,14 +109,24 @@
 │   │   ├── README.md
 │   │   ├── chart.umd.js
 │   │   └── d3.min.js
+│   ├── test_composer.py
 │   ├── test_guide_banner.py
+│   ├── test_mobile.py
 │   ├── test_notification.py
 │   ├── test_recherche_filtres.py
+│   ├── test_republication_conversation.py
 │   ├── test_socle.py
+│   ├── test_staging_banner.py
+│   ├── test_stream_resume.py
+│   ├── test_turn_start.py
+│   ├── test_turns.py
 │   ├── test_variants.py
 │   ├── test_variants_page.py
 │   └── test_verify_dashboard.py
 ├── config
+│   ├── agent_destinations.yaml
+│   ├── agent_models.yaml
+│   ├── agent_preparations.yaml
 │   ├── sources.yaml
 │   └── sources.yaml.example
 ├── cron
@@ -128,7 +145,7 @@
 │   ├── purge-cron-history
 │   │   ├── CRON.md
 │   │   └── cron.py
-│   ├── slack-feedback
+│   ├── run-agents
 │   │   ├── CRON.md
 │   │   └── cron.py
 │   ├── suggest-tags
@@ -251,6 +268,8 @@
 │   ├── dora
 │   │   ├── .gitkeep
 │   │   └── README.md
+│   ├── marche
+│   │   └── README.md
 │   ├── matomo
 │   │   ├── README.md
 │   │   ├── cohorts.md
@@ -290,6 +309,18 @@
 │       └── _index.md
 ├── lib
 │   ├── __init__.py
+│   ├── agent_config.py
+│   ├── agent_connectors
+│   │   ├── __init__.py
+│   │   ├── cron.py
+│   │   ├── github.py
+│   │   ├── notion.py
+│   │   ├── s3.py
+│   │   └── url.py
+│   ├── agent_delivery.py
+│   ├── agent_files.py
+│   ├── agent_subagents.py
+│   ├── agents.py
 │   ├── airtable.py
 │   ├── api_signals.py
 │   ├── attestation.py
@@ -301,6 +332,7 @@
 │   ├── datadog.py
 │   ├── facade_imports.py
 │   ├── failure_detection.py
+│   ├── github.py
 │   ├── job_inputs.py
 │   ├── jobs.py
 │   ├── knowledge_lint.py
@@ -331,6 +363,13 @@
 ├── package-lock.json
 ├── package.json
 ├── paved-road
+│   ├── agent-veille-boamp
+│   │   └── definition-of-done.md
+│   ├── agents-creation
+│   │   ├── CONCEPTION_V2.md
+│   │   └── definition-of-done.md
+│   ├── agents-ecriture
+│   │   └── definition-of-done.md
 │   ├── filtres-recherche-conversations
 │   │   ├── attestations
 │   │   │   ├── DOD-1.md
@@ -757,6 +796,58 @@
 │   │   │   └── 20261023T181333350249Z-ad735b03.md
 │   │   ├── lentille.md
 │   │   └── retro.md
+│   ├── republication-tdb-modifie
+│   │   ├── attestations
+│   │   │   ├── DOD-1.md
+│   │   │   ├── DOD-10.md
+│   │   │   ├── DOD-11.md
+│   │   │   ├── DOD-2.md
+│   │   │   ├── DOD-3.md
+│   │   │   ├── DOD-4.md
+│   │   │   ├── DOD-5.md
+│   │   │   ├── DOD-6.md
+│   │   │   ├── DOD-7.md
+│   │   │   ├── DOD-8.md
+│   │   │   └── DOD-9.md
+│   │   ├── definition-of-done.md
+│   │   ├── journal
+│   │   │   ├── 20261019T144053518664Z-92fd45f7.md
+│   │   │   ├── 20261020T074415032933Z-485bf9e5.md
+│   │   │   ├── 20261020T074420690492Z-f0589227.md
+│   │   │   ├── 20261020T074433599306Z-7eb8c4a2.md
+│   │   │   ├── 20261020T074438562166Z-70ed3299.md
+│   │   │   ├── 20261020T074440886655Z-183019dd.md
+│   │   │   ├── 20261020T075436513109Z-51aa6ccc.md
+│   │   │   ├── 20261020T075450594104Z-cdbf5a50.md
+│   │   │   ├── 20261020T075457737115Z-e27397c8.md
+│   │   │   ├── 20261020T075514487642Z-48a7e7bb.md
+│   │   │   ├── 20261020T084753713892Z-bcfd0194.md
+│   │   │   ├── 20261020T132507146472Z-d61168e7.md
+│   │   │   ├── 20261020T132511293066Z-74cad966.md
+│   │   │   ├── 20261021T071737270045Z-15d707b1.md
+│   │   │   ├── 20261021T071755547183Z-2c4ccfde.md
+│   │   │   ├── 20261021T071817911930Z-7a0a76d7.md
+│   │   │   ├── 20261021T071912309002Z-f2992d40.md
+│   │   │   ├── 20261021T071926091172Z-97b64127.md
+│   │   │   ├── 20261022T090504255309Z-02407ed3.md
+│   │   │   ├── 20261022T090607668300Z-c1b395ab.md
+│   │   │   ├── 20261022T090611515042Z-15bfe8f3.md
+│   │   │   ├── 20261022T090618315399Z-c09ca8f1.md
+│   │   │   ├── 20261022T091044345812Z-402d97c7.md
+│   │   │   ├── 20261022T091049454441Z-fd00ff4a.md
+│   │   │   ├── 20261022T091135002314Z-511ae986.md
+│   │   │   ├── 20261109T111739422346Z-a3fe5e5a.md
+│   │   │   ├── 20261109T111742756188Z-03a79870.md
+│   │   │   ├── 20261109T111746093563Z-322dcd01.md
+│   │   │   ├── 20261109T111749389064Z-413f73d4.md
+│   │   │   ├── 20261109T111752757100Z-280257f8.md
+│   │   │   ├── 20261109T111754695462Z-5ef25a2a.md
+│   │   │   ├── 20261109T111756687386Z-3efb0a43.md
+│   │   │   ├── 20261109T111758719843Z-4f398ed1.md
+│   │   │   ├── 20261109T111802156958Z-1beb9485.md
+│   │   │   ├── 20261109T111805522270Z-9d30a2f2.md
+│   │   │   └── 20261109T111807442183Z-b742154f.md
+│   │   └── revue-coherence.md
 │   ├── telecharger-rapport-markdown
 │   │   ├── attestations
 │   │   │   ├── DOD-1.md
@@ -994,22 +1085,32 @@
 │       ├── lentille.md
 │       └── retro.md
 ├── plugins
-│   └── paved-road
+│   ├── paved-road
+│   │   ├── .claude-plugin
+│   │   │   └── plugin.json
+│   │   ├── agents
+│   │   │   ├── design-coherence.md
+│   │   │   └── gap-hunter.md
+│   │   └── skills
+│   │       ├── paved-road
+│   │       │   ├── SKILL.md
+│   │       │   ├── align.md
+│   │       │   ├── build.md
+│   │       │   ├── pr.md
+│   │       │   ├── prove.md
+│   │       │   └── review.md
+│   │       └── smoke
+│   │           └── SKILL.md
+│   └── retrospect
 │       ├── .claude-plugin
 │       │   └── plugin.json
-│       ├── agents
-│       │   ├── design-coherence.md
-│       │   └── gap-hunter.md
 │       └── skills
-│           ├── paved-road
-│           │   ├── SKILL.md
-│           │   ├── align.md
-│           │   ├── build.md
-│           │   ├── pr.md
-│           │   ├── prove.md
-│           │   └── review.md
-│           └── smoke
-│               └── SKILL.md
+│           └── conversations
+│               ├── SKILL.md
+│               ├── auditeur.md
+│               ├── grille.json
+│               └── scripts
+│                   └── audit.py
 ├── postdeploy.sh
 ├── pyproject.toml
 ├── pytest.ini
@@ -1028,6 +1129,11 @@
 │   ├── review_app.py
 │   └── smoke.py
 ├── skills
+│   ├── agents
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       ├── __init__.py
+│   │       └── agents.py
 │   ├── airtable
 │   │   ├── SKILL.md
 │   │   └── scripts
@@ -1057,6 +1163,10 @@
 │   │       └── ui_tester.py
 │   ├── dora_staging
 │   │   └── SKILL.md
+│   ├── github
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── query.py
 │   ├── list_dashboards.py
 │   ├── matomo_query
 │   │   ├── SKILL.md
@@ -1071,19 +1181,7 @@
 │   ├── notion
 │   │   └── SKILL.md
 │   ├── pdf
-│   │   ├── LICENSE.txt
-│   │   ├── SKILL.md
-│   │   ├── forms.md
-│   │   ├── reference.md
-│   │   └── scripts
-│   │       ├── check_bounding_boxes.py
-│   │       ├── check_fillable_fields.py
-│   │       ├── convert_pdf_to_images.py
-│   │       ├── create_validation_image.py
-│   │       ├── extract_form_field_info.py
-│   │       ├── extract_form_structure.py
-│   │       ├── fill_fillable_fields.py
-│   │       └── fill_pdf_form_with_annotations.py
+│   │   └── SKILL.md
 │   ├── publish_dashboard
 │   │   ├── SKILL.md
 │   │   └── scripts
@@ -1130,7 +1228,7 @@
 ├── tests
 │   ├── __init__.py
 │   ├── conftest.py
-│   └── test_*.py  (171 files)
+│   └── test_*.py  (192 files)
 ├── uv.lock
 └── web
     ├── __init__.py
@@ -1138,9 +1236,11 @@
     │   ├── __init__.py
     │   ├── base.py
     │   ├── cli.py
-    │   └── cli_ollama.py
+    │   ├── cli_ollama.py
+    │   └── fake.py
     ├── alerts.py
     ├── app.py
+    ├── audit.py
     ├── backup_check.py
     ├── benchmark.py
     ├── catchup.py
@@ -1149,8 +1249,7 @@
     ├── config.py
     ├── conversation_embeddings
     │   ├── __init__.py
-    │   ├── generate_conversation_embeddings.py
-    │   └── query_embedding.py
+    │   └── generate_conversation_embeddings.py
     ├── cron.py
     ├── cron_task.py
     ├── csp.py
@@ -1169,6 +1268,7 @@
     ├── models.py
     ├── otel.py
     ├── publications.py
+    ├── redaction.py
     ├── redis_conn.py
     ├── request_context.py
     ├── requirements.txt
@@ -1194,7 +1294,6 @@
     ├── selftest.py
     ├── sentry.py
     ├── session_sync.py
-    ├── slack_feedback.py
     ├── source_checks.py
     ├── source_inventories.py
     ├── sources_registry.py
@@ -1252,4 +1351,4 @@
     │   └── tag_manager.html
     ├── uploads.py
     └── warmup.py
-155 directories, 1269 files
+173 directories, 1371 files
