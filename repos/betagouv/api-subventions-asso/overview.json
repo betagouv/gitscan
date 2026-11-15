@@ -1,43 +1,38 @@
 {
   "url": "https://github.com/betagouv/api-subventions-asso",
   "name": "api-subventions-asso",
-  "description": "Cette API et interface web centralisent les données relatives aux subventions publiques versées aux associations en France. Elle vise à améliorer la transparence et l'interopérabilité entre les services de l'État et les acteurs associatifs.",
+  "description": "API et interface web permettant de collecter, croiser et rendre publiques les données sur les subventions versées par l'État aux associations pour favoriser la transparence et l'interopérabilité.",
   "language": "TypeScript",
   "features": [
     "API & Intégrations",
+    "Recherche & Filtres",
     "Visualisation de données & Cartographie",
     "Données & Schémas",
     "Statistiques & Rapports"
   ],
   "audience": "Associations",
   "dependencies": [
-    "pnpm",
     "Node.js",
     "Svelte",
-    "TypeScript",
-    "Parquet",
-    "S3"
+    "pnpm",
+    "TypeScript"
   ],
   "components": [
     "API REST & GraphQL",
     "TypeScript / JavaScript",
     "Angular / Svelte / Autres SPA",
     "Documentation & Schémas",
-    "Pipeline de données",
+    "CI/CD & Déploiement",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "jwt"
+      "jwt",
+      "api-key"
     ]
   },
-  "tests": "pnpm --filter api --filter front test",
-  "workflows": [
-    "build:api",
-    "build:front",
-    "scalingo-postbuild"
-  ],
-  "lastActivity": "2026-09-02T00:00:00Z",
+  "tests": "pnpm test (api and front)",
+  "lastActivity": "2026-10-28T00:00:00Z",
   "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
@@ -45,8 +40,6 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Subventions & Finances publiques",
-    "ETL & Pipelines de données",
-    "JavaScript"
+    "Subventions & Finances publiques"
   ]
 }

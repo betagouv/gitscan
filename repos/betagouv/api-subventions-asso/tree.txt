@@ -131,7 +131,8 @@
 │   │   │   ├── 20260512233618-osiris-action-raw-entity.js
 │   │   │   ├── 20260605132926-add-service-instructeur-to-dn-application-flat.js
 │   │   │   ├── 20260615000000-chorus-remove-unique-id.js
-│   │   │   └── 20260708094159-rename-user-pro-connect-id-field.js
+│   │   │   ├── 20260708094159-rename-user-pro-connect-id-field.js
+│   │   │   └── 20261029092942-rename-association-search-name.js
 │   │   ├── nodemon.json
 │   │   ├── package.json
 │   │   ├── src
@@ -203,6 +204,7 @@
 │   │   │   │   │   │   │   ├── helios.mapper.ts
 │   │   │   │   │   │   │   ├── helios.parser.test.ts
 │   │   │   │   │   │   │   └── helios.parser.ts
+│   │   │   │   │   │   ├── omogen.cli.ts
 │   │   │   │   │   │   ├── osiris
 │   │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   │   ├── osiris-action.fixture.ts
@@ -296,46 +298,50 @@
 │   │   │   │   │   ├── parquet.parser.test.ts
 │   │   │   │   │   ├── parquet.parser.ts
 │   │   │   │   │   └── pipeline
-│   │   │   │   │       └── import
-│   │   │   │   │           ├── README.md
-│   │   │   │   │           ├── chorus
-│   │   │   │   │           │   ├── chorus.dto.ts
-│   │   │   │   │           │   ├── chorus.import.ts
-│   │   │   │   │           │   ├── chorus.mapper.ts
-│   │   │   │   │           │   ├── chorus.parser.ts
-│   │   │   │   │           │   └── chorus.validator.ts
-│   │   │   │   │           ├── download-and-import.pipeline.ts
-│   │   │   │   │           ├── errors
-│   │   │   │   │           │   └── no-sirene-import.error.ts
-│   │   │   │   │           ├── import-notifier.ts
-│   │   │   │   │           ├── import-pipeline.ts
-│   │   │   │   │           ├── rna
-│   │   │   │   │           │   ├── __snapshots__
-│   │   │   │   │           │   │   └── rna.mapper.test.ts.snap
-│   │   │   │   │           │   ├── rna.dto.fixture.ts
-│   │   │   │   │           │   ├── rna.dto.ts
-│   │   │   │   │           │   ├── rna.mapper.test.ts
-│   │   │   │   │           │   ├── rna.mapper.ts
-│   │   │   │   │           │   ├── rna.pipeline.test.ts
-│   │   │   │   │           │   └── rna.pipeline.ts
-│   │   │   │   │           ├── sirene-establishment
-│   │   │   │   │           │   ├── sirene-establishment.dto.ts
-│   │   │   │   │           │   ├── sirene-establishment.fixture.ts
-│   │   │   │   │           │   ├── sirene-establishment.mapper.ts
-│   │   │   │   │           │   ├── sirene-establishment.parser.test.ts
-│   │   │   │   │           │   ├── sirene-establishment.parser.ts
-│   │   │   │   │           │   ├── sirene-establishment.pipeline.test.ts
-│   │   │   │   │           │   └── sirene-establishment.pipeline.ts
-│   │   │   │   │           └── sirene-unite-legale
-│   │   │   │   │               ├── SireneUniteLegaleDto.ts
-│   │   │   │   │               ├── __fixtures__
-│   │   │   │   │               │   └── sirene-unite-legale.dto.fixture.ts
-│   │   │   │   │               ├── __snapshots__
-│   │   │   │   │               │   └── sirene-unite-legale.mapper.test.ts.snap
-│   │   │   │   │               ├── sirene-unite-legale.mapper.test.ts
-│   │   │   │   │               ├── sirene-unite-legale.mapper.ts
-│   │   │   │   │               ├── sirene-unite-legale.pipeline.test.ts
-│   │   │   │   │               └── sirene-unite-legale.pipeline.ts
+│   │   │   │   │       ├── import
+│   │   │   │   │       │   ├── README.md
+│   │   │   │   │       │   ├── chorus
+│   │   │   │   │       │   │   ├── chorus.dto.ts
+│   │   │   │   │       │   │   ├── chorus.import.ts
+│   │   │   │   │       │   │   ├── chorus.mapper.ts
+│   │   │   │   │       │   │   ├── chorus.parser.ts
+│   │   │   │   │       │   │   └── chorus.validator.ts
+│   │   │   │   │       │   ├── download-and-import.pipeline.ts
+│   │   │   │   │       │   ├── errors
+│   │   │   │   │       │   │   └── no-sirene-import.error.ts
+│   │   │   │   │       │   ├── import-notifier.ts
+│   │   │   │   │       │   ├── import-pipeline.ts
+│   │   │   │   │       │   ├── rna
+│   │   │   │   │       │   │   ├── __snapshots__
+│   │   │   │   │       │   │   │   └── rna.mapper.test.ts.snap
+│   │   │   │   │       │   │   ├── rna.dto.fixture.ts
+│   │   │   │   │       │   │   ├── rna.dto.ts
+│   │   │   │   │       │   │   ├── rna.mapper.test.ts
+│   │   │   │   │       │   │   ├── rna.mapper.ts
+│   │   │   │   │       │   │   ├── rna.pipeline.test.ts
+│   │   │   │   │       │   │   └── rna.pipeline.ts
+│   │   │   │   │       │   ├── sirene-establishment
+│   │   │   │   │       │   │   ├── sirene-establishment.dto.ts
+│   │   │   │   │       │   │   ├── sirene-establishment.fixture.ts
+│   │   │   │   │       │   │   ├── sirene-establishment.mapper.ts
+│   │   │   │   │       │   │   ├── sirene-establishment.parser.test.ts
+│   │   │   │   │       │   │   ├── sirene-establishment.parser.ts
+│   │   │   │   │       │   │   ├── sirene-establishment.pipeline.test.ts
+│   │   │   │   │       │   │   └── sirene-establishment.pipeline.ts
+│   │   │   │   │       │   └── sirene-unite-legale
+│   │   │   │   │       │       ├── SireneUniteLegaleDto.ts
+│   │   │   │   │       │       ├── __fixtures__
+│   │   │   │   │       │       │   └── sirene-unite-legale.dto.fixture.ts
+│   │   │   │   │       │       ├── __snapshots__
+│   │   │   │   │       │       │   └── sirene-unite-legale.mapper.test.ts.snap
+│   │   │   │   │       │       ├── sirene-unite-legale.mapper.test.ts
+│   │   │   │   │       │       ├── sirene-unite-legale.mapper.ts
+│   │   │   │   │       │       ├── sirene-unite-legale.pipeline.test.ts
+│   │   │   │   │       │       └── sirene-unite-legale.pipeline.ts
+│   │   │   │   │       └── upload
+│   │   │   │   │           └── chorus
+│   │   │   │   │               ├── chorus.upload.test.ts
+│   │   │   │   │               └── chorus.upload.ts
 │   │   │   │   └── outputs
 │   │   │   │       ├── api
 │   │   │   │       │   ├── api-asso
@@ -363,10 +369,16 @@
 │   │   │   │       │   │   ├── data-bretagne.port.ts
 │   │   │   │       │   │   ├── data-bretagne.validator.test.ts
 │   │   │   │       │   │   └── data-bretagne.validator.ts
-│   │   │   │       │   └── data-gouv
-│   │   │   │       │       ├── data-gouv.adapter.test.ts
-│   │   │   │       │       ├── data-gouv.adapter.ts
-│   │   │   │       │       └── data-gouv.port.ts
+│   │   │   │       │   ├── data-gouv
+│   │   │   │       │   │   ├── data-gouv.adapter.test.ts
+│   │   │   │       │   │   ├── data-gouv.adapter.ts
+│   │   │   │       │   │   └── data-gouv.port.ts
+│   │   │   │       │   └── omogen
+│   │   │   │       │       ├── omogen.adapter.test.ts
+│   │   │   │       │       ├── omogen.adapter.ts
+│   │   │   │       │       ├── omogen.dto.ts
+│   │   │   │       │       ├── omogen.fixtures.ts
+│   │   │   │       │       └── omogen.port.ts
 │   │   │   │       ├── db
 │   │   │   │       │   ├── @types
 │   │   │   │       │   │   ├── FlatDbo.ts
@@ -1220,7 +1232,9 @@
 │   │   │   │   │       ├── tag-imported-file.test.ts
 │   │   │   │   │       ├── tag-imported-file.ts
 │   │   │   │   │       ├── tag-new-file.test.ts
-│   │   │   │   │       └── tag-new-file.ts
+│   │   │   │   │       ├── tag-new-file.ts
+│   │   │   │   │       ├── upload-s3-file.test.ts
+│   │   │   │   │       └── upload-s3-file.ts
 │   │   │   │   ├── search
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   ├── BudgetLine.ts
@@ -1367,12 +1381,14 @@
 │   │   │   └── usecases
 │   │   │       ├── download-file.ts
 │   │   │       ├── remove-file.ts
-│   │   │       └── search
-│   │   │           ├── get-association-name.ts
-│   │   │           ├── sanitize-search-text.ts
-│   │   │           ├── search.test.ts
-│   │   │           ├── search.ts
-│   │   │           └── split-text-in-tokens.ts
+│   │   │       ├── search
+│   │   │       │   ├── parse-search-location.ts
+│   │   │       │   ├── sanitize-search-text.ts
+│   │   │       │   ├── search.test.ts
+│   │   │       │   ├── search.ts
+│   │   │       │   └── split-text-in-tokens.ts
+│   │   │       └── stats
+│   │   │           └── get-signup-stats.ts
 │   │   ├── tests
 │   │   │   ├── __fixtures__
 │   │   │   │   ├── allocators.fixture.ts
@@ -1403,41 +1419,98 @@
 │   │   │   ├── adapters
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   ├── 2023 subventions GISPO et TDB_test.xlsx
+│   │   │   │   │   │   ├── OsirisEntities.ts
+│   │   │   │   │   │   ├── SuiviActionsEvaluation_test.xlsx
+│   │   │   │   │   │   ├── SuiviActions_test.xls
+│   │   │   │   │   │   ├── SuiviDossiers_test.xls
 │   │   │   │   │   │   ├── chorus.xlsx
+│   │   │   │   │   │   ├── dauphin-gispro.fixture.ts
+│   │   │   │   │   │   ├── demarche-simplifiees-seed.fixture.json
+│   │   │   │   │   │   ├── demarches-simplifiees.fixture.ts
+│   │   │   │   │   │   ├── fonjep-new.xlsx
+│   │   │   │   │   │   ├── fonjep-one-code-full.xlsx
+│   │   │   │   │   │   ├── fonjep.xlsx
 │   │   │   │   │   │   ├── multiple-batch.rna-waldec.parquet
 │   │   │   │   │   │   ├── multiple-batch.sirene-establishment.parquet
+│   │   │   │   │   │   ├── new-chorus-export.xlsx
 │   │   │   │   │   │   ├── rna-waldec
 │   │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   │   ├── latest-rna-waldec.parquet
 │   │   │   │   │   │   │   └── old-rna-waldec.parquet
 │   │   │   │   │   │   ├── sirene-establishment.parquet
+│   │   │   │   │   │   ├── test.xlsx
 │   │   │   │   │   │   └── unite-legale
 │   │   │   │   │   │       ├── README.md
 │   │   │   │   │   │       ├── latest-unite-legale.parquet
 │   │   │   │   │   │       └── old-unite-legale.parquet
 │   │   │   │   │   ├── cli
 │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   ├── amounts-vs-program-region.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── chorus.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── consumer.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── data-bretagne.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── dauphin.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── demarches-simplifiees.cli.spec.ts.snap
 │   │   │   │   │   │   │   ├── establishment.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── fonjep.cli.spec.ts.snap
 │   │   │   │   │   │   │   ├── helios.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── osiris.cli.spec.ts.snap
 │   │   │   │   │   │   │   ├── rna.cli.spec.ts.snap
-│   │   │   │   │   │   │   └── sirene-stock-unite-legale.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── scdl.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── sirene-stock-unite-legale.cli.spec.ts.snap
+│   │   │   │   │   │   │   └── subventia.cli.spec.ts.snap
+│   │   │   │   │   │   ├── amounts-vs-program-region.cli.spec.ts
+│   │   │   │   │   │   ├── chorus.cli.spec.ts
+│   │   │   │   │   │   ├── consumer.cli.spec.ts
+│   │   │   │   │   │   ├── data-bretagne.cli.spec.ts
+│   │   │   │   │   │   ├── dauphin.cli.spec.ts
+│   │   │   │   │   │   ├── demarches-simplifiees.cli.spec.ts
 │   │   │   │   │   │   ├── establishment.cli.spec.ts
+│   │   │   │   │   │   ├── fonjep.cli.spec.ts
+│   │   │   │   │   │   ├── gispro.cli.spec.ts
 │   │   │   │   │   │   ├── helios.cli.spec.ts
 │   │   │   │   │   │   ├── helios.fixture.ods
+│   │   │   │   │   │   ├── osiris.cli.spec.ts
 │   │   │   │   │   │   ├── rna.cli.spec.ts
-│   │   │   │   │   │   └── sirene-stock-unite-legale.cli.spec.ts
+│   │   │   │   │   │   ├── scdl.cli.spec.ts
+│   │   │   │   │   │   ├── sirene-stock-unite-legale.cli.spec.ts
+│   │   │   │   │   │   └── subventia.cli.spec.ts
 │   │   │   │   │   ├── cron
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   ├── chorus.cron.spec.ts.snap
+│   │   │   │   │   │   │   ├── rgpd.cron.spec.ts.snap
 │   │   │   │   │   │   │   ├── rna.cron.spec.ts.snap
+│   │   │   │   │   │   │   ├── scdl-deposit.cron.spec.ts.snap
 │   │   │   │   │   │   │   └── sirene-stock.cron.spec.ts.snap
 │   │   │   │   │   │   ├── chorus.cron.spec.ts
+│   │   │   │   │   │   ├── rgpd.cron.spec.ts
 │   │   │   │   │   │   ├── rna.cron.spec.ts
+│   │   │   │   │   │   ├── scdl-deposit.cron.spec.ts
 │   │   │   │   │   │   └── sirene-stock.cron.spec.ts
 │   │   │   │   │   ├── http
+│   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   ├── fixture-errors.csv
+│   │   │   │   │   │   │   ├── fixture-errors.xlsx
+│   │   │   │   │   │   │   ├── fixture.csv
+│   │   │   │   │   │   │   └── fixture.xlsx
 │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   └── search.http.spec.ts.snap
-│   │   │   │   │   │   └── search.http.spec.ts
+│   │   │   │   │   │   │   ├── admin.http.spec.ts.snap
+│   │   │   │   │   │   │   ├── associations.http.spec.ts.snap
+│   │   │   │   │   │   │   ├── dataviz.http.spec.ts.snap
+│   │   │   │   │   │   │   ├── deposit-scdl-process.http.spec.ts.snap
+│   │   │   │   │   │   │   ├── etablissements.http.spec.ts.snap
+│   │   │   │   │   │   │   ├── providers.http.spec.ts.snap
+│   │   │   │   │   │   │   ├── search.http.spec.ts.snap
+│   │   │   │   │   │   │   └── tools.http.spec.ts.snap
+│   │   │   │   │   │   ├── admin.http.spec.ts
+│   │   │   │   │   │   ├── associations.http.spec.ts
+│   │   │   │   │   │   ├── dataviz.http.spec.ts
+│   │   │   │   │   │   ├── deposit-scdl-process.http.spec.ts
+│   │   │   │   │   │   ├── etablissements.http.spec.ts
+│   │   │   │   │   │   ├── providers.http.spec.ts
+│   │   │   │   │   │   ├── search.http.spec.ts
+│   │   │   │   │   │   └── tools.http.spec.ts
 │   │   │   │   │   └── pipelines
 │   │   │   │   │       ├── README.md
 │   │   │   │   │       ├── __snapshots__
@@ -1450,74 +1523,7 @@
 │   │   │   │               ├── demarches-simplifiees.fixtures.ts
 │   │   │   │               ├── scdl.fixtures.ts
 │   │   │   │               └── state-budget-program.fixtures.ts
-│   │   │   ├── authentication
-│   │   │   │   └── express.auth.hooks.test.ts
 │   │   │   ├── example.spec.ts
-│   │   │   ├── interfaces
-│   │   │   │   ├── cli
-│   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   ├── 2023 subventions GISPO et TDB_test.xlsx
-│   │   │   │   │   │   ├── OsirisEntities.ts
-│   │   │   │   │   │   ├── SuiviActionsEvaluation_test.xlsx
-│   │   │   │   │   │   ├── SuiviActions_test.xls
-│   │   │   │   │   │   ├── SuiviDossiers_test.xls
-│   │   │   │   │   │   ├── dauphin-gispro.fixture.ts
-│   │   │   │   │   │   ├── demarche-simplifiees-seed.fixture.json
-│   │   │   │   │   │   ├── demarches-simplifiees.fixture.ts
-│   │   │   │   │   │   ├── fonjep-new.xlsx
-│   │   │   │   │   │   ├── fonjep-one-code-full.xlsx
-│   │   │   │   │   │   ├── fonjep.xlsx
-│   │   │   │   │   │   ├── new-chorus-export.xlsx
-│   │   │   │   │   │   └── test.xlsx
-│   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── amounts-vs-program-region.cli.spec.ts.snap
-│   │   │   │   │   │   ├── chorus.cli.spec.ts.snap
-│   │   │   │   │   │   ├── consumer.cli.spec.ts.snap
-│   │   │   │   │   │   ├── data-bretagne.cli.spec.ts.snap
-│   │   │   │   │   │   ├── dauphin.cli.spec.ts.snap
-│   │   │   │   │   │   ├── demarches-simplifiees.cli.spec.ts.snap
-│   │   │   │   │   │   ├── fonjep.cli.spec.ts.snap
-│   │   │   │   │   │   ├── osiris.cli.spec.ts.snap
-│   │   │   │   │   │   ├── scdl.cli.spec.ts.snap
-│   │   │   │   │   │   └── subventia.cli.spec.ts.snap
-│   │   │   │   │   ├── amounts-vs-program-region.cli.spec.ts
-│   │   │   │   │   ├── chorus.cli.spec.ts
-│   │   │   │   │   ├── consumer.cli.spec.ts
-│   │   │   │   │   ├── data-bretagne.cli.spec.ts
-│   │   │   │   │   ├── dauphin.cli.spec.ts
-│   │   │   │   │   ├── demarches-simplifiees.cli.spec.ts
-│   │   │   │   │   ├── fonjep.cli.spec.ts
-│   │   │   │   │   ├── gispro.cli.spec.ts
-│   │   │   │   │   ├── osiris.cli.spec.ts
-│   │   │   │   │   ├── scdl.cli.spec.ts
-│   │   │   │   │   └── subventia.cli.spec.ts
-│   │   │   │   ├── cron
-│   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── rgpd.cron.spec.ts.snap
-│   │   │   │   │   │   └── scdl-deposit.cron.spec.ts.snap
-│   │   │   │   │   ├── rgpd.cron.spec.ts
-│   │   │   │   │   └── scdl-deposit.cron.spec.ts
-│   │   │   │   └── http
-│   │   │   │       ├── __snapshots__
-│   │   │   │       │   ├── admin.http.spec.ts.snap
-│   │   │   │       │   ├── associations.http.spec.ts.snap
-│   │   │   │       │   ├── dataviz.http.spec.ts.snap
-│   │   │   │       │   ├── deposit-scdl-process.http.spec.ts.snap
-│   │   │   │       │   ├── etablissements.http.spec.ts.snap
-│   │   │   │       │   ├── providers.http.spec.ts.snap
-│   │   │   │       │   └── tools.http.spec.ts.snap
-│   │   │   │       ├── admin.http.spec.ts
-│   │   │   │       ├── associations.http.spec.ts
-│   │   │   │       ├── dataviz.http.spec.ts
-│   │   │   │       ├── deposit-scdl-process.http.spec.ts
-│   │   │   │       ├── etablissements.http.spec.ts
-│   │   │   │       ├── fixtures
-│   │   │   │       │   ├── fixture-errors.csv
-│   │   │   │       │   ├── fixture-errors.xlsx
-│   │   │   │       │   ├── fixture.csv
-│   │   │   │       │   └── fixture.xlsx
-│   │   │   │       ├── providers.http.spec.ts
-│   │   │   │       └── tools.http.spec.ts
 │   │   │   └── modules
 │   │   │       ├── __snapshots__
 │   │   │       │   └── providers.spec.ts.snap
@@ -1709,9 +1715,11 @@
 │   │   │   │   ├── ScdlGrantStandardDto.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── search
+│   │   │   │   ├── AssociationSearchOptions.ts
 │   │   │   │   ├── PaginatedRechercheAssociationDto.ts
 │   │   │   │   ├── PaginatedResultDto.ts
 │   │   │   │   ├── RechercheAssociationDto.ts
+│   │   │   │   ├── SearchSort.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── shared
 │   │   │   │   ├── Adresse.ts
@@ -1736,6 +1744,7 @@
 │   │   │   │   ├── RequestsDtoResponse.ts
 │   │   │   │   ├── StatsRequestsMedianDto.ts
 │   │   │   │   ├── UserCountByStatusDtoResponse.ts
+│   │   │   │   ├── UserSignupStatsDtoResponse.ts
 │   │   │   │   └── index.ts
 │   │   │   └── user
 │   │   │       ├── CreateUserDtoResponse.ts
@@ -1757,6 +1766,8 @@
 │   │   ├── eslint.tsconfig.json
 │   │   ├── not-used.eslintrc.yaml
 │   │   ├── package.json
+│   │   ├── plugins
+│   │   │   └── dsfr-breakpoints.ts
 │   │   ├── src
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
@@ -1772,8 +1783,6 @@
 │   │   │   │   │       └── svg404.svg
 │   │   │   │   ├── components
 │   │   │   │   │   ├── ActionGroup.svelte
-│   │   │   │   │   ├── AdvancedSearchBar
-│   │   │   │   │   │   └── AdvancedSearchBar.svelte
 │   │   │   │   │   ├── AgentTypeStep
 │   │   │   │   │   │   ├── AgentTypeStep.controller.test.ts
 │   │   │   │   │   │   ├── AgentTypeStep.controller.ts
@@ -1789,6 +1798,8 @@
 │   │   │   │   │   │   ├── AssociationItem.controller.test.ts
 │   │   │   │   │   │   ├── AssociationItem.controller.ts
 │   │   │   │   │   │   └── AssociationItem.svelte
+│   │   │   │   │   ├── AssociationSearchForm
+│   │   │   │   │   │   └── AssociationSearchForm.svelte
 │   │   │   │   │   ├── AssociationTag
 │   │   │   │   │   │   ├── AssociationTag.controller.test.ts
 │   │   │   │   │   │   ├── AssociationTag.controller.ts
@@ -1800,7 +1811,7 @@
 │   │   │   │   │   ├── AutocompleteSelect
 │   │   │   │   │   │   ├── AutocompleteSelect.svelte
 │   │   │   │   │   │   ├── combobox.css
-│   │   │   │   │   │   ├── combobox.js
+│   │   │   │   │   │   ├── combobox.ts
 │   │   │   │   │   │   └── licence.md
 │   │   │   │   │   ├── DataNotFound.svelte
 │   │   │   │   │   ├── DefinePassword
@@ -1846,7 +1857,7 @@
 │   │   │   │   │   │   ├── PaymentRow
 │   │   │   │   │   │   │   └── PaymentRow.svelte
 │   │   │   │   │   │   ├── StatutLabel
-│   │   │   │   │   │   │   ├── StatusLabel.controller.js
+│   │   │   │   │   │   │   ├── StatusLabel.controller.ts
 │   │   │   │   │   │   │   └── StatusLabel.svelte
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── GrantDashboard.controller.test.ts.snap
@@ -1877,16 +1888,12 @@
 │   │   │   │   │   ├── ProgressBar.svelte
 │   │   │   │   │   ├── SearchBar
 │   │   │   │   │   │   └── SearchBar.svelte
+│   │   │   │   │   ├── SpellcheckedInput
+│   │   │   │   │   │   ├── SpellcheckedInput.controller.test.ts
+│   │   │   │   │   │   ├── SpellcheckedInput.controller.ts
+│   │   │   │   │   │   ├── SpellcheckedInput.svelte
+│   │   │   │   │   │   └── spellchecked-input.worker.ts
 │   │   │   │   │   ├── Spinner.svelte
-│   │   │   │   │   ├── Stats
-│   │   │   │   │   │   ├── MonthlyGraph
-│   │   │   │   │   │   │   ├── MonthlyGraph.controller.js
-│   │   │   │   │   │   │   ├── MonthlyGraph.controller.test.js
-│   │   │   │   │   │   │   └── MonthlyGraph.svelte
-│   │   │   │   │   │   └── MonthlyGraphTooltip
-│   │   │   │   │   │       ├── MonthlyGraphTooltip.controller.js
-│   │   │   │   │   │       ├── MonthlyGraphTooltip.controller.test.js
-│   │   │   │   │   │       └── MonthlyGraphTooltip.svelte
 │   │   │   │   │   ├── StructureFormStep
 │   │   │   │   │   │   ├── CentralSubStep
 │   │   │   │   │   │   │   ├── CentralSubStep.controller.ts
@@ -1922,7 +1929,6 @@
 │   │   │   │   ├── constants
 │   │   │   │   │   └── values.ts
 │   │   │   │   ├── core
-│   │   │   │   │   ├── SseConnector.js
 │   │   │   │   │   └── Store.ts
 │   │   │   │   ├── dsfr
 │   │   │   │   │   ├── AgentConnectButton.svelte
@@ -1960,55 +1966,55 @@
 │   │   │   │   │   ├── Tabs.svelte
 │   │   │   │   │   ├── Tooltip.svelte
 │   │   │   │   │   ├── Upload.svelte
-│   │   │   │   │   └── helper.js
+│   │   │   │   │   └── helper.ts
 │   │   │   │   ├── entities
 │   │   │   │   │   ├── DocumentEntity.ts
 │   │   │   │   │   └── ErrorAlertContent.ts
 │   │   │   │   ├── enums
 │   │   │   │   │   └── IdentifierEnum.ts
 │   │   │   │   ├── errors
-│   │   │   │   │   ├── BadRequestError.js
-│   │   │   │   │   ├── ConflictError.js
-│   │   │   │   │   ├── NotFoundError.js
-│   │   │   │   │   ├── StaticError.js
-│   │   │   │   │   ├── UnauthorizedError.js
-│   │   │   │   │   ├── errors.service.js
+│   │   │   │   │   ├── BadRequestError.ts
+│   │   │   │   │   ├── ConflictError.ts
+│   │   │   │   │   ├── HttpError.ts
+│   │   │   │   │   ├── NotFoundError.ts
+│   │   │   │   │   ├── UnauthorizedError.ts
+│   │   │   │   │   ├── errors.service.ts
 │   │   │   │   │   ├── file-errors
 │   │   │   │   │   │   ├── FileEncodingError.ts
 │   │   │   │   │   │   ├── FileFormatError.ts
 │   │   │   │   │   │   └── FileSizeError.ts
-│   │   │   │   │   └── index.js
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── array.helper.test.ts
 │   │   │   │   │   ├── array.helper.ts
-│   │   │   │   │   ├── csvHelper.js
-│   │   │   │   │   ├── csvHelper.test.js
-│   │   │   │   │   ├── dataHelper.js
+│   │   │   │   │   ├── csvHelper.test.ts
+│   │   │   │   │   ├── csvHelper.ts
+│   │   │   │   │   ├── dataHelper.ts
 │   │   │   │   │   ├── dateHelper.test.ts
 │   │   │   │   │   ├── dateHelper.ts
 │   │   │   │   │   ├── document.helper.test.ts
 │   │   │   │   │   ├── document.helper.ts
-│   │   │   │   │   ├── entrepriseHelper.js
+│   │   │   │   │   ├── entrepriseHelper.ts
 │   │   │   │   │   ├── fileHelper.test.ts
 │   │   │   │   │   ├── fileHelper.ts
 │   │   │   │   │   ├── htmlHelper.test.ts
 │   │   │   │   │   ├── htmlHelper.ts
 │   │   │   │   │   ├── identifierHelper.test.ts
 │   │   │   │   │   ├── identifierHelper.ts
-│   │   │   │   │   ├── promiseHelper.js
-│   │   │   │   │   ├── providerValueHelper.test.js
+│   │   │   │   │   ├── promiseHelper.ts
+│   │   │   │   │   ├── providerValueHelper.test.ts
 │   │   │   │   │   ├── providerValueHelper.ts
-│   │   │   │   │   ├── stringHelper.js
-│   │   │   │   │   ├── stringHelper.test.js
+│   │   │   │   │   ├── stringHelper.test.ts
+│   │   │   │   │   ├── stringHelper.ts
 │   │   │   │   │   ├── urlHelper.ts
-│   │   │   │   │   └── visibilityHelper.js
+│   │   │   │   │   └── visibilityHelper.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── resources
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── FlattenGrant.ts
 │   │   │   │   │   ├── associations
 │   │   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   │   └── Association.js
+│   │   │   │   │   │   │   └── Association.ts
 │   │   │   │   │   │   ├── association.helper.test.ts
 │   │   │   │   │   │   ├── association.helper.ts
 │   │   │   │   │   │   ├── association.mapper.test.ts
@@ -2020,10 +2026,10 @@
 │   │   │   │   │   │   └── entities
 │   │   │   │   │   │       └── AssociationEntity.ts
 │   │   │   │   │   ├── auth
-│   │   │   │   │   │   ├── auth.port.js
-│   │   │   │   │   │   ├── auth.port.test.js
-│   │   │   │   │   │   ├── auth.service.js
-│   │   │   │   │   │   ├── auth.service.test.js
+│   │   │   │   │   │   ├── auth.port.test.ts
+│   │   │   │   │   │   ├── auth.port.ts
+│   │   │   │   │   │   ├── auth.service.test.ts
+│   │   │   │   │   │   ├── auth.service.ts
 │   │   │   │   │   │   ├── authLevels.ts
 │   │   │   │   │   │   └── subscriptionForm
 │   │   │   │   │   │       ├── subscriptionForm.port.ts
@@ -2049,13 +2055,13 @@
 │   │   │   │   │   │   └── document.service.ts
 │   │   │   │   │   ├── establishments
 │   │   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   │   └── Etablissement.js
+│   │   │   │   │   │   │   └── Etablissement.ts
 │   │   │   │   │   │   ├── establishment.helper.test.ts
 │   │   │   │   │   │   ├── establishment.helper.ts
-│   │   │   │   │   │   ├── establishment.mapper.js
+│   │   │   │   │   │   ├── establishment.mapper.ts
 │   │   │   │   │   │   ├── establishment.port.test.ts
 │   │   │   │   │   │   ├── establishment.port.ts
-│   │   │   │   │   │   ├── establishment.service.test.js
+│   │   │   │   │   │   ├── establishment.service.test.ts
 │   │   │   │   │   │   ├── establishment.service.ts
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       └── establishment.types.ts
@@ -2075,24 +2081,24 @@
 │   │   │   │   │   │       ├── rna-siren.service.test.ts
 │   │   │   │   │   │       └── rna-siren.service.ts
 │   │   │   │   │   └── users
-│   │   │   │   │       ├── user.port.js
-│   │   │   │   │       ├── user.port.test.js
+│   │   │   │   │       ├── user.port.test.ts
+│   │   │   │   │       ├── user.port.ts
 │   │   │   │   │       ├── user.service.test.ts
 │   │   │   │   │       └── user.service.ts
 │   │   │   │   ├── services
-│   │   │   │   │   ├── crisp.service.test.js
+│   │   │   │   │   ├── crisp.service.test.ts
 │   │   │   │   │   ├── crisp.service.ts
 │   │   │   │   │   ├── error.service.ts
 │   │   │   │   │   ├── localStorage.service.ts
-│   │   │   │   │   ├── requests.service.js
-│   │   │   │   │   ├── requests.service.test.js
-│   │   │   │   │   ├── router.service.js
-│   │   │   │   │   ├── router.service.test.js
+│   │   │   │   │   ├── requests.service.test.ts
+│   │   │   │   │   ├── requests.service.ts
+│   │   │   │   │   ├── router.service.test.ts
+│   │   │   │   │   ├── router.service.ts
 │   │   │   │   │   ├── searchHistory.service.test.ts
 │   │   │   │   │   ├── searchHistory.service.ts
-│   │   │   │   │   ├── tracker.service.js
-│   │   │   │   │   ├── validator.service.js
-│   │   │   │   │   └── validator.service.test.js
+│   │   │   │   │   ├── tracker.service.ts
+│   │   │   │   │   ├── validator.service.test.ts
+│   │   │   │   │   └── validator.service.ts
 │   │   │   │   ├── store
 │   │   │   │   │   ├── association.store.ts
 │   │   │   │   │   ├── depositLog.store.ts
@@ -2111,7 +2117,7 @@
 │   │   │   │   │   ├── Home.controller.test.ts
 │   │   │   │   │   ├── Home.controller.ts
 │   │   │   │   │   └── error
-│   │   │   │   │       └── InterruptSearchError.js
+│   │   │   │   │       └── InterruptSearchError.ts
 │   │   │   │   ├── (noAuth)
 │   │   │   │   │   ├── +layout.ts
 │   │   │   │   │   ├── accessibilite
@@ -2136,8 +2142,8 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── +layout.ts
 │   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   ├── admin.constant.js
-│   │   │   │   │   ├── admin.service.js
+│   │   │   │   │   ├── admin.constant.ts
+│   │   │   │   │   ├── admin.service.ts
 │   │   │   │   │   ├── domains
 │   │   │   │   │   │   └── +page.svelte
 │   │   │   │   │   └── users
@@ -2151,8 +2157,6 @@
 │   │   │   │   │       └── list
 │   │   │   │   │           ├── +page.svelte
 │   │   │   │   │           └── AdminUserAccountList.controller.ts
-│   │   │   │   ├── advanced-search
-│   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── association
 │   │   │   │   │   └── [identifier]
 │   │   │   │   │       ├── +page.svelte
@@ -2170,7 +2174,7 @@
 │   │   │   │   │           │       └── Announcement.controller.test.ts.snap
 │   │   │   │   │           ├── DuplicateAlert.controller.ts
 │   │   │   │   │           ├── DuplicateAlert.svelte
-│   │   │   │   │           ├── EstablishmentCard.controller.js
+│   │   │   │   │           ├── EstablishmentCard.controller.ts
 │   │   │   │   │           ├── EstablishmentCard.svelte
 │   │   │   │   │           ├── Establishments
 │   │   │   │   │           │   ├── Establishments.controller.test.ts
@@ -2184,31 +2188,31 @@
 │   │   │   │   │   ├── activate
 │   │   │   │   │   │   └── [token]
 │   │   │   │   │   │       ├── +page.svelte
-│   │   │   │   │   │       ├── ActivateAccount.controller.js
-│   │   │   │   │   │       ├── ActivateAccount.controller.test.js
+│   │   │   │   │   │       ├── ActivateAccount.controller.test.ts
+│   │   │   │   │   │       ├── ActivateAccount.controller.ts
 │   │   │   │   │   │       └── __snapshots__
-│   │   │   │   │   │           └── ActivateAccount.controller.test.js.snap
+│   │   │   │   │   │           └── ActivateAccount.controller.test.ts.snap
 │   │   │   │   │   ├── forget-password
 │   │   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   │   ├── ForgetPwd.controller.js
-│   │   │   │   │   │   └── ForgetPwd.controller.test.js
+│   │   │   │   │   │   ├── ForgetPwd.controller.test.ts
+│   │   │   │   │   │   └── ForgetPwd.controller.ts
 │   │   │   │   │   ├── login
 │   │   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   │   ├── Login.controller.js
-│   │   │   │   │   │   └── Login.controller.test.js
+│   │   │   │   │   │   ├── Login.controller.test.ts
+│   │   │   │   │   │   └── Login.controller.ts
 │   │   │   │   │   ├── reset-password
 │   │   │   │   │   │   └── [token]
 │   │   │   │   │   │       ├── +page.svelte
-│   │   │   │   │   │       ├── ResetPwd.controller.js
-│   │   │   │   │   │       └── ResetPwd.controller.test.js
+│   │   │   │   │   │       ├── ResetPwd.controller.test.ts
+│   │   │   │   │   │       └── ResetPwd.controller.ts
 │   │   │   │   │   ├── signup
 │   │   │   │   │   │   └── +page.ts
-│   │   │   │   │   └── signup-ac
+│   │   │   │   │   └── signup-pc
 │   │   │   │   │       ├── +page.svelte
-│   │   │   │   │       ├── SignupAC.controller.js
-│   │   │   │   │       ├── SignupAC.controller.test.js
+│   │   │   │   │       ├── SignupPC.controller.test.ts
+│   │   │   │   │       ├── SignupPC.controller.ts
 │   │   │   │   │       └── __snapshots__
-│   │   │   │   │           └── SignupAC.controller.test.js.snap
+│   │   │   │   │           └── SignupPC.controller.test.ts.snap
 │   │   │   │   ├── context.d.ts
 │   │   │   │   ├── dataviz
 │   │   │   │   │   ├── +page.svelte
@@ -2294,13 +2298,13 @@
 │   │   │   │   │       └── components
 │   │   │   │   │           ├── ContactEtab
 │   │   │   │   │           │   ├── ContactEtab.svelte
-│   │   │   │   │           │   ├── ContactEtabController.js
-│   │   │   │   │           │   ├── ContactEtabController.test.js
+│   │   │   │   │           │   ├── ContactEtabController.test.ts
+│   │   │   │   │           │   ├── ContactEtabController.ts
 │   │   │   │   │           │   └── __snapshots__
-│   │   │   │   │           │       └── ContactEtabController.test.js.snap
+│   │   │   │   │           │       └── ContactEtabController.test.ts.snap
 │   │   │   │   │           ├── InfosBancairesEtab
-│   │   │   │   │           │   ├── InfosBancairesEtab.controller.js
-│   │   │   │   │           │   ├── InfosBancairesEtab.controller.test.js
+│   │   │   │   │           │   ├── InfosBancairesEtab.controller.test.ts
+│   │   │   │   │           │   ├── InfosBancairesEtab.controller.ts
 │   │   │   │   │           │   └── InfosBancairesEtab.svelte
 │   │   │   │   │           └── TabsEtab.svelte
 │   │   │   │   ├── search
@@ -2308,11 +2312,13 @@
 │   │   │   │   │       ├── +page.svelte
 │   │   │   │   │       ├── Search.controller.test.ts
 │   │   │   │   │       └── Search.controller.ts
+│   │   │   │   ├── search-form
+│   │   │   │   │   └── +page.svelte
 │   │   │   │   └── user
 │   │   │   │       └── profile
 │   │   │   │           ├── +page.svelte
-│   │   │   │           ├── Profile.controller.js
-│   │   │   │           ├── Profile.controller.test.js
+│   │   │   │           ├── Profile.controller.test.ts
+│   │   │   │           ├── Profile.controller.ts
 │   │   │   │           └── components
 │   │   │   │               ├── ConfirmDeleteUserModal.svelte
 │   │   │   │               ├── DeleteUser.svelte
@@ -2324,6 +2330,9 @@
 │   │   │   │               └── SignupModule.svelte
 │   │   │   └── setuptest.ts
 │   │   ├── static
+│   │   │   ├── dictionaries
+│   │   │   │   ├── fr.aff
+│   │   │   │   └── fr.dic
 │   │   │   ├── dsfr
 │   │   │   │   ├── apple-touch-icon.png
 │   │   │   │   ├── dsfr.nomodule.min.js
@@ -2368,4 +2377,4 @@
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-536 directories, 1834 files
+531 directories, 1848 files
