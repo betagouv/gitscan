@@ -1,76 +1,70 @@
 {
   "url": "https://github.com/SocialGouv/graal",
   "name": "graal",
-  "description": "GRAAL est un système de traitement automatisé des amendements législatifs. Il applique des traitements sur les exports Signale (JSON) : regroupement, attribution, similarité, résumés LLM, opinions — et produit un CSV enrichi.",
+  "description": "Système de traitement automatisé des amendements législatifs utilisant l'IA pour le regroupement, l'attribution, la recherche de similarité et la génération de résumés.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
+    "Intelligence Artificielle & NLP",
     "Données & Schémas",
+    "Recherche & Filtres",
+    "Statistiques & Rapports",
     "Administration & Backoffice",
-    "Interface utilisateur & Design",
-    "Intelligence Artificielle & NLP"
+    "Gestion des utilisateurs & Permissions",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "FastAPI",
     "PostgreSQL",
-    "Docker",
-    "Poetry",
+    "S3",
+    "Pandas",
+    "SQLAlchemy",
     "React",
     "TypeScript",
-    "Node.js",
-    "Python",
-    "OpenAI",
-    "Dspy-ai",
-    "Sentence-transformers"
+    "Ollama",
+    "OpenAI"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "TypeScript / JavaScript"
+    "Intelligence Artificielle / ML",
+    "Authentification (composant)",
+    "Stockage objet",
+    "Design System (DSFR & UI libs)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "session",
+      "jwt"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
     "pytest",
-    "integration tests",
-    "coverage"
+    "pytest-cov",
+    "pytest-xdist",
+    "pytest-mock",
+    "pytest-asyncio"
   ],
-  "workflows": [
-    "CI/CD"
-  ],
-  "lastActivity": "2026-06-04T00:00:00Z",
+  "lastActivity": "2026-06-09T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
+    "Intelligence Artificielle & LLM",
+    "Python",
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
+    "Docker & Conteneurs",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Intelligence Artificielle & LLM"
+    "NLP & ML",
+    "Design System & UI",
+    "HTML, CSS & Web"
   ]
 }
