@@ -2,6 +2,67 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.188.0](https://github.com/socialgouv/kontinuous/compare/v1.187.1...v1.188.0) (2026-09-03)
+
+
+### Features
+
+* **jobs:** authenticate the in-cluster degit checkouts against the forge ([63bd139](https://github.com/socialgouv/kontinuous/commit/63bd1394481458ff3b5b611d50a410bf668547f7))
+
+
+### Bug Fixes
+
+* **patches:** cert tls ([8616277](https://github.com/socialgouv/kontinuous/commit/8616277b071d59237dbd06acf612d2cbab53ef5b))
+
+## 1.187.2 (2026-03-19)
+
+
+### Bug Fixes
+
+* **patches:** cert tls ([8616277](https://github.com/socialgouv/kontinuous/commit/8616277b071d59237dbd06acf612d2cbab53ef5b))
+
+## 1.187.1 (2026-03-16)
+
+
+### Bug Fixes
+
+* **gitlab:** compat wip ([d829b19](https://github.com/socialgouv/kontinuous/commit/d829b190be447cc2d858705ba7a42a3e069d7b66))
+
+## 1.187.0 (2026-03-16)
+
+
+### Features
+
+* **gitlab:** compat wip ([2172e55](https://github.com/socialgouv/kontinuous/commit/2172e551fd3d70563ead82bfe1db72772c72297e))
+
+## 1.186.8 (2026-03-16)
+
+
+### Bug Fixes
+
+* node version compat ([ddfe6d0](https://github.com/socialgouv/kontinuous/commit/ddfe6d004f5a4877f1afa2c8333424135a907c09))
+
+## 1.186.7 (2026-03-16)
+
+## 1.186.6 (2026-03-16)
+
+## 1.186.5 (2026-03-16)
+
+## 1.186.4 (2026-03-16)
+
+## 1.186.3 (2026-03-16)
+
+## 1.186.2 (2026-03-16)
+
+## 1.186.1 (2026-03-16)
+
+## 1.186.0 (2026-03-16)
+
+
+### Features
+
+* **proxy:** support for npx ([d466177](https://github.com/socialgouv/kontinuous/commit/d4661774bc67e2e125ea29a787d3f632468e0481))
+
 ## 1.185.6 (2026-03-03)
 
 
