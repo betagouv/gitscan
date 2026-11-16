@@ -20,7 +20,8 @@ dependencies = [
     "cryptography (>=50.0.1)",
     "psycopg2-binary (>=2.9.13,<3.0.0)",
     "APScheduler (>=3.11.3,<4.0.0)",
-    "SQLAlchemy (>=2.0.51,<3.0.0)",
+    "SQLAlchemy (>=2.1.6,<3.0.0)",
+    "alembic (>=1.16,<2.0)",
 ]
 
 
@@ -40,10 +41,23 @@ ruff = "^0.17.2"
 pip-audit = "^2.10.1"
 
 [tool.poe.tasks.dev]
-shell = "python app.py"
+help = "Applique les migrations en attente puis lance le serveur de développement"
+sequence = ["migrate", { shell = "python dev.py" }]
+
+[tool.poe.tasks.migrate]
+help = "Applique les migrations de schéma en attente (Alembic) sur DATABASE_URL"
+cmd = "alembic upgrade head"
 
 [tool.poe.tasks.test]
-cmd = "pytest"
+# Les tests sur base réelle ne sont lancés que par test-db (Docker requis)
+cmd = "pytest --ignore=tests/python/db"
+
+[tool.poe.tasks.test-db]
+help = "Lance les tests sur base réelle (base <nom>_test du service docker db)"
+sequence = [
+  { cmd = "docker compose up -d --wait db" },
+  { script = "tests.python.db.runner:main" },
+]
 
 [tool.poe.tasks.test-coverage]
 help = "Lance les tests avec rapport de couverture"
@@ -57,9 +71,19 @@ shell = "python3 -c \"import secrets; print('FLASK_SECRET_KEY=' + secrets.token_
 help = "Génère une clé secrète de cryptage"
 shell = "python3 -c \"import secrets, base64; print('ENCRYPTION_KEY=' + base64.urlsafe_b64encode(secrets.token_bytes(32)).decode())\""
 
+[tool.poe.tasks.inspect]
+help = "Croise base et logs pour dépanner une instance : poe inspect --ip|--config|--demarche … [--app prod]"
+cmd = "python -m tools.inspect_cli"
+
 [tool.poe.tasks.audit]
 help = "Audit de sécurité des dépendances (pip, npm racine, npm front)"
 shell = "s=0; pip-audit || s=1; npm audit || s=1; cd front && npm audit || s=1; exit $s"
+
+[tool.alembic]
+# Migrations du schéma : voir database/migrations/README.md. L'URL de la base
+# vient de DATABASE_URL (database/migrations/env.py), pas d'alembic.ini.
+script_location = "%(here)s/database/migrations"
+prepend_sys_path = ["."]
 
 [tool.ruff]
 line-length = 88

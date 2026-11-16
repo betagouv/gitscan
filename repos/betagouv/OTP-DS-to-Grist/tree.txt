@@ -47,12 +47,22 @@
 ├── configuration
 │   ├── README.md
 │   ├── __init__.py
-│   └── config_manager.py
+│   ├── config_manager.py
+│   └── config_usage.py
 ├── database
 │   ├── README.md
 │   ├── __init__.py
 │   ├── database_manager.py
-│   └── models.py
+│   ├── migrations
+│   │   ├── README.md
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 1f2e27203e17_schema_initial.py
+│   │       └── 822e5934cbc9_ip_des_configurations.py
+│   ├── models.py
+│   └── session.py
+├── dev.py
 ├── dn
 │   ├── README.md
 │   ├── __init__.py
@@ -62,7 +72,10 @@
 ├── docker-compose.override.yml
 ├── docker-compose.yml
 ├── docs
+│   ├── README.md
+│   ├── _config.yml
 │   ├── deploy.md
+│   ├── index.html
 │   └── install.md
 ├── eslint.config.js
 ├── front
@@ -81,7 +94,7 @@
 │   │   │   ├── OtpAlert.vue
 │   │   │   ├── README.md
 │   │   │   ├── SyncProgress.vue
-│   │   │   ├── SyncResultBanner.vue
+│   │   │   ├── SyncSeriesTable.vue
 │   │   │   ├── __tests__
 │   │   │   │   ├── App.spec.js
 │   │   │   │   ├── DNFiltersSection.spec.js
@@ -91,7 +104,7 @@
 │   │   │   │   ├── OtpAlert.spec.js
 │   │   │   │   ├── README.md
 │   │   │   │   ├── SyncProgress.spec.js
-│   │   │   │   └── SyncResultBanner.spec.js
+│   │   │   │   └── SyncSeriesTable.spec.js
 │   │   │   └── icons
 │   │   │       ├── DsfrInfoIcon.vue
 │   │   │       └── README.md
@@ -100,14 +113,12 @@
 │   │   │   ├── __tests__
 │   │   │   │   ├── README.md
 │   │   │   │   ├── useAutoSync.spec.js
-│   │   │   │   ├── useDemarcheContext.spec.js
 │   │   │   │   ├── useNotification.spec.js
-│   │   │   │   ├── useSyncStatus.spec.js
+│   │   │   │   ├── useSyncHistory.spec.js
 │   │   │   │   └── useSyncTask.spec.js
 │   │   │   ├── useAutoSync.js
-│   │   │   ├── useDemarcheContext.js
 │   │   │   ├── useNotification.js
-│   │   │   ├── useSyncStatus.js
+│   │   │   ├── useSyncHistory.js
 │   │   │   └── useSyncTask.js
 │   │   ├── main.js
 │   │   └── utils
@@ -178,6 +189,7 @@
 │   ├── environment_config.py
 │   ├── error_parser.py
 │   ├── filters.py
+│   ├── live_tracking.py
 │   ├── scheduled_sync.py
 │   ├── sequencer.py
 │   ├── sync_manager.py
@@ -216,6 +228,19 @@
 │       ├── README.md
 │       ├── __init__.py
 │       ├── conftest.py
+│       ├── db
+│       │   ├── README.md
+│       │   ├── __init__.py
+│       │   ├── conftest.py
+│       │   ├── runner.py
+│       │   ├── schema_helpers.py
+│       │   ├── test_app.py
+│       │   ├── test_config_manager.py
+│       │   ├── test_database_manager.py
+│       │   ├── test_ip_blocklist_store.py
+│       │   ├── test_migrations.py
+│       │   ├── test_models.py
+│       │   └── test_runner.py
 │       ├── integration
 │       │   ├── __init__.py
 │       │   ├── conftest.py
@@ -272,6 +297,12 @@
 │               ├── test_log_progress.py
 │               ├── test_rate_limited_session.py
 │               └── test_timing.py
+├── tools
+│   ├── README.md
+│   ├── __init__.py
+│   ├── access_log.py
+│   ├── inspect_cli.py
+│   └── scalingo.py
 └── utils
     ├── README.md
     ├── __init__.py
@@ -280,6 +311,5 @@
     ├── formatter.py
     ├── log.py
     ├── rate_limited_session.py
-    ├── socketio.py
     └── timing.py
-45 directories, 239 files
+49 directories, 265 files
