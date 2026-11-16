@@ -1,32 +1,29 @@
-## Changelog : meet (30 derniers jours, au 14 novembre 2026)
+## Changelog : meet (30 derniers jours, au 16 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur trois axes majeurs : le renforcement massif de la sécurité et de la confidentialité des données, l'amélioration de l'accessibilité pour tous les utilisateurs, et l'extension du support linguistique avec l'ajout du portugais. L'expérience de réunion est également devenue plus robuste grâce à une meilleure gestion des erreurs de connexion et des interruptions.
+Ce mois a été marqué par un effort majeur sur l'accessibilité et la sécurité. L'application est désormais plus inclusive grâce à de nombreuses améliorations pour les utilisateurs de lecteurs d'écran et une meilleure gestion des contrastes. La sécurité a été considérablement renforcée par la mise en place de journaux d'audit détaillés et une protection accrue des données sensibles dans les logs. Enfin, le support de la langue portugaise a été intégré.
 
 ### Évolutions fonctionnelles
-- **Accessibilité (♿️) :** Amélioration globale de l'interface pour les lecteurs d'écran, optimisation des contrastes de couleurs, ajout de la navigation au clavier (touche Échap) et meilleure signalisation des changements d'état (micro, paramètres).
-- **Internationalisation (🌐) :** Ajout complet du support de la langue portugaise (interface et polices de caractères).
-- **Expérience utilisateur (UX) :** 
-    - Optimisation du carrousel des participants (mise en avant des nouveaux intervenants et des mains levées).
-    - Amélioration de la gestion des erreurs (affichage des erreurs de connexion au lieu d'une attente infinie, page dédiée en cas de déconnexion inattendue).
-    - Notifications en cas d'interruption d'un enregistrement.
+- **Accessibilité (♿️) :** Amélioration massive de l'expérience pour les utilisateurs de technologies d'assistance (gestion des titres, des listes, des contrastes de couleurs, des focus rings et des étiquettes de boutons).
+- **Internationalisation (🌐) :** Ajout du support complet de la langue portugaise, incluant les glyphes nécessaires pour les polices Marianne.
+- **Expérience utilisateur (UX) :**
+    - Amélioration du carrousel de participants pour mieux mettre en évidence les nouveaux intervenants et les mains levées.
+    - Meilleure visibilité des erreurs (notifications en cas de déconnexion inattendue ou d'échec de jonction à une réunion).
+    - Information des participants en cas d'interruption d'un enregistrement.
     - Remplacement du chat Crisp par le formulaire de support La Suite.
-- **Nouvelles capacités :** Autorisation pour tout utilisateur authentifié de lancer un enregistrement.
 
 ### Évolutions techniques
-- **Sécurité et Confidentialité (🔒️) :** 
-    - Mise en place d'un système d'audit complet et structuré (logs pour les enregistrements, les résumés, les opérations API et les actions via l'administration Django).
-    - Durcissement de la protection des données sensibles (redaction des URLs signées dans les logs, protection des champs de modèles et nettoyage des erreurs de validation).
-    - Sécurisation de l'accès aux salles et des échanges de jetons.
-- **Infrastructure et DevOps (⚡️/🔒️) :** 
-    - Optimisation des images Docker (support natif pour arm64, passage à une image Nginx non-privilégiée).
-    - Mise à jour de l'infrastructure LiveKit (serveur et egress).
-    - Correction de nombreuses vulnérabilités (CVE) sur les dépendances critiques (Python, Node, Nginx, Brotli, Pillow, etc.).
-- **Fiabilité et Performance :** 
-    - Amélioration de la gestion des timeouts et des erreurs lors des appels à l'API LiveKit.
-    - Implémentation d'une politique de reconnexion exponentielle pour plus de stabilité.
-    - Ajout d'un pool de connexions psycopg optionnel pour le backend.
+- **Sécurité (🔒️) :**
+    - Mise en place d'un système d'audit structuré pour tracer les actions sensibles (enregistrements, transcriptions, appels API, modifications via l'administration Django).
+    - Protection des données sensibles par l'anonymisation des logs, des erreurs de validation et des métadonnées d'analyse (URLs signées, détails des tâches Celery, logs LLM).
+    - Durcissement de l'accès aux salles (utilisation de requêtes POST pour la jonction et restriction des slugs de salles).
+    - Correction de plusieurs vulnérabilités (CVE) sur les composants critiques (Python, Nginx, Node, etc.).
+- **Stabilité et Performance :**
+    - Amélioration de la résilience des connexions grâce à une politique de reconnexion exponentielle (LiveKit).
+    - Optimisation des builds Docker pour l'architecture arm64.
+    - Introduction d'un pool de connexions optionnel pour PostgreSQL (psycopg).
+- **Infrastructure :** Mise à jour majeure des serveurs et clients LiveKit (v1.13.11 / v2.23.0).
 
 ### Autres changements
-- **Documentation (📝) :** Documentation du nouveau système d'audit et incitation à soutenir le projet sur GitHub.
-- **Releases :** Publication des versions 1.37.0, 1.36.3, 1.36.2 et 1.35.1.
+- Mise à jour de la documentation concernant le système d'audit et l'invitation à soutenir le projet.
+- Optimisation de la configuration CI/CD (gestion des alertes de sécurité Trivy).

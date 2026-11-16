@@ -1,24 +1,26 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "Une solution de visioconférence open-source et sécurisée offrant des performances de haute qualité. Elle permet de gérer des réunions de grande envergure avec partage d'écran, enregistrement et transcription directement depuis le navigateur.",
+  "description": "Une solution de visioconférence open-source et souveraine basée sur LiveKit. Elle offre des fonctionnalités de haute qualité comme le partage d'écran, l'enregistrement et la transcription pour les agents de l'État et les professionnels.",
   "language": "Python",
   "features": [
+    "Authentification & Accès",
     "Collaboration & Workflow",
     "Temps réel & WebSocket",
+    "Interface utilisateur & Design",
     "Sécurité & Conformité",
     "Gestion des médias & Assets",
-    "Authentification & Accès",
     "Communication & Messagerie"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "LiveKit",
-    "Django",
+    "Django Rest Framework",
     "React",
-    "PostgreSQL",
-    "Redis",
+    "Vite.js",
     "Celery",
+    "Redis",
+    "PostgreSQL",
     "Docker",
     "Kubernetes"
   ],
@@ -30,30 +32,35 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Authentification (composant)",
-    "Webhooks & Événements"
+    "Celery & Queue asynchrone",
+    "Webhooks & Événements",
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
+      "sso",
       "jwt",
-      "session",
-      "sso"
+      "session"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
     "BrowserStack",
     "Vitest"
   ],
-  "lastActivity": "2026-11-07T00:00:00Z",
-  "status": "maintained",
+  "lastActivity": "2026-11-14T00:00:00Z",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Communication & Messagerie",
     "Docker & Conteneurs",
     "TypeScript",
+    "React & Next.js",
     "Python",
-    "Accessibilité",
-    "Git & DevOps"
+    "Sécurité & Auth",
+    "Écosystème beta.gouv / État"
   ]
 }
