@@ -31,6 +31,8 @@
 │   │   ├── feature-request.yml
 │   │   └── task-request.yml
 │   ├── actions
+│   │   ├── install-dependencies
+│   │   │   └── action.yml
 │   │   └── notify-slack
 │   │       └── action.yml
 │   ├── copilot-instructions.md
@@ -214,6 +216,8 @@
 │   ├── nurturing-entreprises.md
 │   ├── optimization
 │   │   └── blocked-cfa-aho-corasick.md
+│   ├── partenaires
+│   │   └── liens-recherche-partenaires.md
 │   ├── relance-candidats-inactifs.md
 │   ├── relance-incitation-spontanee.md
 │   ├── securite.md
@@ -349,6 +353,8 @@
 │   │   │   │   │   ├── geo.private.controller.ts
 │   │   │   │   │   ├── metiers.private.controller.test.ts
 │   │   │   │   │   ├── metiers.private.controller.ts
+│   │   │   │   │   ├── partner-search.private.controller.test.ts
+│   │   │   │   │   ├── partner-search.private.controller.ts
 │   │   │   │   │   ├── seo.private.controller.ts
 │   │   │   │   │   ├── web-vitals.private.controller.test.ts
 │   │   │   │   │   └── web-vitals.private.controller.ts
@@ -1015,6 +1021,8 @@
 │   │       ├── same-siret-accounts.service.test.ts
 │   │       ├── same-siret-accounts.service.ts
 │   │       ├── search
+│   │       │   ├── partner-search-link.service.test.ts
+│   │       │   ├── partner-search-link.service.ts
 │   │       │   ├── promote-smart-apply.test.ts
 │   │       │   ├── promote-smart-apply.ts
 │   │       │   ├── search-items-admin-codes.test.ts
@@ -1335,6 +1343,7 @@
 │   │   │   │   │   └── processor.admin.routes.ts
 │   │   │   │   ├── geo.routes.ts
 │   │   │   │   ├── metiers.routes.ts
+│   │   │   │   ├── partner-search.routes.ts
 │   │   │   │   ├── seo.routes.ts
 │   │   │   │   └── web-vitals.routes.ts
 │   │   │   ├── application.routes.ts
@@ -1479,6 +1488,7 @@
 │   ├── .env.test
 │   ├── .gitignore
 │   ├── AGENTS.md
+│   ├── CLAUDE.md
 │   ├── app
 │   │   ├── (1jeune1solution)
 │   │   │   ├── 1jeune1solution
@@ -1496,6 +1506,7 @@
 │   │   │   │   ├── layout.tsx
 │   │   │   │   └── recherche
 │   │   │   │       ├── _components
+│   │   │   │       │   ├── EmploisModeFallback.tsx
 │   │   │   │       │   ├── RechercheResultats
 │   │   │   │       │   │   └── CardStyling.tsx
 │   │   │   │       │   ├── RechercheSeoContent.tsx
@@ -1518,6 +1529,8 @@
 │   │   │   │       │   ├── use-detail-navigation.test.ts
 │   │   │   │       │   ├── use-detail-navigation.ts
 │   │   │   │       │   ├── use-dialog-a11y.ts
+│   │   │   │       │   ├── use-emplois-fallback-count.test.ts
+│   │   │   │       │   ├── use-emplois-fallback-count.ts
 │   │   │   │       │   ├── use-lock-body-scroll.ts
 │   │   │   │       │   ├── use-search-results.test.ts
 │   │   │   │       │   ├── use-search-results.ts
@@ -1525,6 +1538,8 @@
 │   │   │   │       │   ├── use-search-view-notifier.ts
 │   │   │   │       │   └── use-visual-viewport-size.ts
 │   │   │   │       ├── _utils
+│   │   │   │       │   ├── mode-fallback.utils.test.ts
+│   │   │   │       │   ├── mode-fallback.utils.ts
 │   │   │   │       │   ├── recherche.metadata.utils.test.ts
 │   │   │   │       │   ├── recherche.metadata.utils.ts
 │   │   │   │       │   ├── recherche.metadata.utils_LEGACY.test.ts
@@ -1533,6 +1548,8 @@
 │   │   │   │       │   ├── recherche.route.utils.ts
 │   │   │   │       │   ├── search-legacy-utils.test.ts
 │   │   │   │       │   ├── search-legacy-utils.ts
+│   │   │   │       │   ├── search-results-status.test.ts
+│   │   │   │       │   ├── search-results-status.ts
 │   │   │   │       │   ├── search.params.utils.test.ts
 │   │   │   │       │   ├── search.params.utils.ts
 │   │   │   │       │   ├── search.tracking.utils.test.ts
@@ -1654,11 +1671,20 @@
 │   │   │   │   ├── _components
 │   │   │   │   │   ├── BarChartHorizontal.tsx
 │   │   │   │   │   ├── BarChartVertical.tsx
+│   │   │   │   │   ├── BarometreHero.tsx
 │   │   │   │   │   ├── Callout.tsx
-│   │   │   │   │   └── SectionTitle.tsx
+│   │   │   │   │   ├── ChartFrame.tsx
+│   │   │   │   │   ├── CompositionBars.tsx
+│   │   │   │   │   ├── RegionsMap.tsx
+│   │   │   │   │   ├── SectionTitle.tsx
+│   │   │   │   │   └── ShareBar.tsx
 │   │   │   │   ├── _data
-│   │   │   │   │   └── t1-2026.ts
-│   │   │   │   └── page.tsx
+│   │   │   │   │   ├── france-regions.ts
+│   │   │   │   │   ├── t1-2026.ts
+│   │   │   │   │   └── t3-2026.ts
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── t1-2026
+│   │   │   │       └── page.tsx
 │   │   │   ├── contact
 │   │   │   │   └── page.tsx
 │   │   │   ├── desinscription
@@ -2143,6 +2169,15 @@
 │   │   │       ├── context
 │   │   │       │   └── SimulateurContext.tsx
 │   │   │       └── page.tsx
+│   │   ├── (partenaires)
+│   │   │   ├── _utils
+│   │   │   │   ├── partner-search-link.handler.test.ts
+│   │   │   │   ├── partner-search-link.handler.ts
+│   │   │   │   ├── partner-search-link.utils.test.ts
+│   │   │   │   └── partner-search-link.utils.ts
+│   │   │   └── monmaster
+│   │   │       └── [rncp]
+│   │   │           └── route.ts
 │   │   ├── (rdva)
 │   │   │   ├── layout.tsx
 │   │   │   ├── not-found.tsx
@@ -2523,8 +2558,8 @@
 │   │   │   ├── breadcrumb_separator.svg
 │   │   │   ├── briefcase.svg
 │   │   │   ├── calculatrice_simulateur.svg
-│   │   │   ├── carte-d-etudiant-des-metiers-recto.svg
-│   │   │   ├── carte-d-etudiant-des-metiers-verso.svg
+│   │   │   ├── carte-d-etudiant-des-metiers-2026-2027-recto.svg
+│   │   │   ├── carte-d-etudiant-des-metiers-2026-2027-verso.svg
 │   │   │   ├── chevronleft.svg
 │   │   │   ├── chevronright.svg
 │   │   │   ├── close.svg
@@ -2632,7 +2667,8 @@
 │   │   │   │   │   ├── cerfa-apprentissage-et-professionnalisation.svg
 │   │   │   │   │   ├── conseillers-entreprises.svg
 │   │   │   │   │   ├── guide-apprentissage-et-handicap.svg
-│   │   │   │   │   └── je-suis-employeur-public.svg
+│   │   │   │   │   ├── je-suis-employeur-public.svg
+│   │   │   │   │   └── recruter-un-alternant.svg
 │   │   │   │   ├── guide.svg
 │   │   │   │   ├── header.svg
 │   │   │   │   ├── illu-votre-besoin.svg
@@ -3093,4 +3129,4 @@
 │       └── web-vitals.utils.ts
 ├── vitest.config.ts
 └── yarn.lock
-527 directories, 3136 files
+534 directories, 3165 files
