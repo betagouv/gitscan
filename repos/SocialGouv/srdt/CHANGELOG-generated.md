@@ -1,18 +1,15 @@
-## Changelog : srdt (30 derniers jours, au 21/10/2026)
+## Changelog : srdt (30 derniers jours, au 09/11/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de la précision et de la flexibilité de la recherche juridique. Les utilisateurs bénéficient désormais d'une meilleure gestion des jurisprudences, de liens directs vers les articles de loi et d'une navigation plus fluide, notamment grâce à la possibilité de rendre la recherche jurisprudentielle optionnelle et à la correction de certains flux d'authentification.
+Les récentes évolutions se concentrent sur l'amélioration de la précision des recherches juridiques et de la qualité des réponses fournies par l'intelligence artificielle. Parallèlement, de nouveaux outils ont été intégrés pour mesurer plus précisément la satisfaction des utilisateurs et l'impact réel de l'assistant sur leur productivité.
 
 ### Évolutions fonctionnelles
-- **Recherche et précision juridique**
-    - Amélioration de la gestion et de la qualité des jurisprudences.
-    - La recherche jurisprudentielle peut désormais être rendue optionnelle [#437](https://github.com/SocialGouv/srdt/issues/437).
-    - Ajout de liens directs vers les articles de loi [#322](https://github.com/SocialGouv/srdt/issues/322) ([#430](https://github.com/SocialGouv/srdt/issues/430)).
-    - Correction de l'ordre d'affichage des résultats de recherche pour respecter le réordonnancement (rerank).
-    - Amélioration de la prise en charge des liens vers le Code du travail sur Légifrance [#404](https://github.com/SocialGouv/srdt/issues/404) ([#420](https://github.com/SocialGouv/srdt/issues/420)).
-- **Navigation et accès**
-    - Correction du processus de déconnexion via ProConnect pour assurer un fonctionnement correct côté serveur [#438](https://github.com/SocialGouv/srdt/issues/438).
+- Amélioration de la qualité et de la pertinence des résultats de jurisprudence.
+- Optimisation des réponses de l'IA lorsqu'aucune jurisprudence n'est trouvée [#459](https://github.com/SocialGouv/srdt/issues/459).
+- Mise en place de la collecte de satisfaction (NPS) et de la mesure du temps gagné par les utilisateurs [#444](https://github.com/SocialGouv/srdt/issues/444) ([#462](https://github.com/SocialGouv/srdt/issues/462)).
 
 ### Évolutions techniques
-- Optimisation de la recherche de proximité (k-NN) au niveau de l'API pour de meilleures performances de recherche.
-- Renforcement des mécanismes d'anonymisation des données et amélioration de la qualité des journaux d'événements (logs).
+- Amélioration de la performance de la recherche de proximité (knn search).
+- Intégration d'événements Matomo pour le suivi des indicateurs d'impact [#435](https://github.com/SocialGouv/srdt/issues/435) ([#461](https://github.com/SocialGouv/srdt/issues/461)).
+- Correction de la gestion des liens de jurisprudence transmis au modèle de langage (LLM) [#448](https://github.com/SocialGouv/srdt/issues/448).
+- Mise à jour de sécurité de l'environnement Node.js [#449](https://github.com/SocialGouv/srdt/issues/449).
