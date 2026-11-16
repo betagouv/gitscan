@@ -1,8 +1,10 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 13 novembre 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 16 novembre 2026)
 
 ### Résumé
-L'activité récente du projet s'est concentrée sur la maintenance et l'actualisation régulière des contenus. Les efforts ont porté sur la mise à jour des recommandations de schémas et des informations générales du site pour garantir la pertinence des données consultables.
+Le projet a bénéficié d'une maintenance très active durant le dernier mois. L'essentiel de l'activité a porté sur l'actualisation régulière des recommandations de schémas de données et la mise à jour continue du contenu du site web pour garantir la fraîcheur des informations disponibles.
 
 ### Évolutions fonctionnelles
-- Mise à jour récurrente des recommandations de schémas de données.
-- Actualisation des contenus et des informations présentés sur le site web.
+- Actualisation régulière des recommandations de schémas de données pour assurer la pertinence des standards proposés.
+
+### Autres changements
+- Mises à jour fréquentes du contenu et de la documentation sur le site web.
