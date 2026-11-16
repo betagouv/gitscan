@@ -1,8 +1,13 @@
-## Changelog : upptime (30 derniers jours, au 13/11/2026)
+## Changelog : upptime (30 derniers jours, au 16 novembre 2026)
 
 ### Résumé
-Le projet est actuellement en phase de fonctionnement opérationnel. L'activité récente est exclusivement composée de tâches automatisées effectuées par le bot de surveillance, assurant la mise à jour continue des rapports de disponibilité et des indicateurs visuels sans modification de la logique logicielle.
+Le projet a maintenu une activité de surveillance continue. Le système a assuré la mise à jour automatique des indicateurs de disponibilité et des rapports de performance pour l'ensemble des services monitorés, garantissant la fraîcheur des données de statut.
+
+### Évolutions fonctionnelles
+- Mise à jour régulière des graphiques de performance et des résumés de disponibilité.
+- Signalement automatique d'incidents de service pour les composants suivants :
+    - SENTRY mission (interruption détectée le 12/11)
+    - API Referentiel (interruption détectée le 29/10)
 
 ### Autres changements
-- Mise à jour automatique et régulière des graphiques de performance et de disponibilité.
-- Actualisation continue des résumés de statut et du fichier README pour refléter l'état de santé des services monitorés.
+- Maintenance automatique de la documentation (README) et des résumés de statut pour assurer la cohérence des informations présentées.
