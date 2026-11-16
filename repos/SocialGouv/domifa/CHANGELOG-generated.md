@@ -1,32 +1,34 @@
-## Changelog : domifa (30 derniers jours, au 13 novembre 2026)
+## Changelog : domifa (30 derniers jours, au 13/11/2026)
 
 ### Résumé
-Ce mois-ci, Domifa a franchi des étapes clés pour renforcer la gestion administrative et l'accessibilité. Les capacités de gestion des comptes pour les DREETS et DDETS ont été étendues, et une mise en conformité majeure avec les normes d'accessibilité (RGAA) a été réalisée. L'introduction d'un nouveau "mode support" permet désormais aux administrateurs d'assister les utilisateurs plus efficacement, tandis que la sécurité a été considérablement renforcée par l'intégration systématique d'un antivirus sur tous les fichiers importés.
+Ce mois-ci, les évolutions se sont concentrées sur trois axes majeurs : le renforcement de l'accessibilité (conformité RGAA), l'extension des capacités d'administration pour les instances régionales (DREETS/DDETS) et la sécurisation accrue des échanges de fichiers via l'intégration systématique de scans antivirus.
 
 ### Évolutions fonctionnelles
-- **Gestion administrative et comptes**
-  - Extension des droits de la DGCS pour la gestion des comptes DREETS et DDETS de chaque région [#4346](https://github.com/SocialGouv/domifa/pull/4346).
-  - Ouverture de l'enregistrement aux domaines `.gouv.fr` spécifiques (Guyane, DRIHL).
-  - Amélioration de la gestion des droits : les agents et facteurs peuvent à nouveau modifier les coordonnées (téléphone, email) des usagers.
-  - Optimisation du formulaire d'invitation DDETS (demande du département avant l'email).
-- **Accessibilité (RGAA)**
-  - Mise en conformité globale suite aux audits d'accessibilité : correction des labels de liens, des boutons de réinitialisation de formulaire et amélioration de la navigation.
-- **Expérience utilisateur (UX)**
-  - **Mode Support :** Introduction d'un mode dédié permettant d'assister les usagers en rendant les formulaires sensibles (SMS, paramètres) en lecture seule pour éviter les erreurs de manipulation [#4323](https://github.com/SocialGouv/domifa/pull/4323).
-  - **Navigation :** Ajout d'un menu déroulant de sélection de portail sur les pages de connexion pour faciliter l'accès aux différents services.
-  - **Information :** Mise en place d'un système d'avis de maintenance pour informer les utilisateurs des interruptions de service prévues.
+- **Administration et gestion des comptes** :
+    - La DGCS peut désormais gérer les comptes DREETS et DDETS de chaque région ([#4346](https://github.com/SocialGouv/domifa/pull/4346)).
+    - Extension des capacités des DREETS : gestion des comptes régionaux et support de nouveaux domaines `.gouv.fr` (Guyane, DRIHL).
+    - Ajout d'un menu déroulant de sélection du portail sur les pages de connexion (Admin, Stats, Usagers).
+- **Accessibilité (RGAA)** :
+    - Travaux importants de mise en conformité : amélioration de l'explicitation des boutons de réinitialisation, des étiquettes de liens de retour et revue générale de l'interface.
+- **Expérience utilisateur (UX)** :
+    - Mise en place d'un avis de maintenance pour le 19 novembre.
+    - Restauration de la possibilité pour les agents et les facteurs de modifier les coordonnées (téléphone et email) des usagers.
+    - Amélioration de la synchronisation des listes d'usagers et de la navigation dans l'historique ([#4318](https://github.com/SocialGouv/domifa/pull/4318)).
+- **Mode Support** :
+    - Encadrement du mode support pour éviter les modifications accidentelles (formulaires en lecture seule, désactivation des boutons d'export usagers).
 
 ### Évolutions techniques
-- **Sécurité et protection des données**
-  - **Antivirus :** Intégration systématique de ClamAV pour scanner tous les fichiers importés (fichiers usagers, pièces jointes du support de contact) avant traitement.
-  - **Durcissement (Hardening) :** Renforcement de la sécurité des points de terminaison (endpoints) usagers et de la validation des données (limitation de la taille des fichiers et des champs texte).
-  - **CSP :** Optimisation de la politique de sécurité du contenu (CSP) via le déplacement de la configuration DSFR dans un script groupé.
-- **Infrastructure et Backend**
-  - **Migration Node.js :** Passage à Node.js 24 sur l'ensemble des packages et de la chaîne CI/CD.
-  - **Gestion des identifiants :** Migration vers l'utilisation d'UUID v7 pour les bénéficiaires afin d'améliorer la sécurité et la performance.
-  - **Optimisation CI/CD :** Amélioration des images de runtime GitLab et des processus de rendu des bundles frontend.
-  - **Données :** Normalisation des noms/prénoms et amélioration de la gestion des migrations de données.
+- **Sécurité et protection des données** :
+    - Renforcement de la sécurité des fichiers : intégration de scans antivirus (ClamAV) sur les imports d'usagers, les pièces jointes du formulaire de contact et les téléchargements de documents.
+    - Durcissement des endpoints usagers et contrôle strict des types de fichiers et de la taille des uploads.
+    - Optimisation de la politique de sécurité du contenu (CSP) pour la configuration DSFR.
+- **Backend et gestion des données** :
+    - Normalisation des noms et prénoms lors de la saisie.
+    - Amélioration de la robustesse du parsing des identifiants (integers) et de la synchronisation des données (`lastSync`).
+    - Augmentation de la limite de référence pour les usagers (de 100 000 à 1 000 000).
+- **Infrastructure** :
+    - Mise en place d'un service ClamAV local et mise à jour de l'environnement Node.js pour les correctifs de sécurité d'octobre 2026.
 
 ### Autres changements
-- **Documentation :** Mise à jour des déclarations d'accessibilité suite aux derniers audits.
-- **Outils de développement :** Création d'un "marketplace" de plugins Domifa pour faciliter le partage de compétences liées à la sécurité.
+- **Documentation** : Mise à jour des déclarations d'accessibilité suite aux audits RGAA.
+- **Développement** : Création d'un marketplace de plugins DomiFa et partage de plugins pour l'aide au développement (Claude Code).
