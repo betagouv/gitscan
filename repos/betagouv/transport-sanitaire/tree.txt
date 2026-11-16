@@ -274,6 +274,7 @@
 │       │   │   │   │   ├── exception-*.ts  (8 files)
 │       │   │   │   │   ├── exclusion-soin-prouvee.ts
 │       │   │   │   │   ├── exclusion-transport-prouvee.ts
+│       │   │   │   │   ├── finalite-soins-longue-distance.ts
 │       │   │   │   │   ├── hospitalisation.ts
 │       │   │   │   │   ├── htnm-hors-maternite.ts
 │       │   │   │   │   ├── htnm-segment-verifie.ts
@@ -307,6 +308,8 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── questions
 │       │   │   │   │   ├── p1
+│       │   │   │   │   │   ├── conditions
+│       │   │   │   │   │   │   └── evenements.ts
 │       │   │   │   │   │   ├── partie-1.ts
 │       │   │   │   │   │   └── questions
 │       │   │   │   │   │       ├── q1-1.ts
@@ -316,14 +319,17 @@
 │       │   │   │   │   ├── p2
 │       │   │   │   │   │   ├── conditions
 │       │   │   │   │   │   │   ├── branche.ts
+│       │   │   │   │   │   │   ├── conflit-de-lieux.ts
+│       │   │   │   │   │   │   ├── natures-du-lieu.ts
 │       │   │   │   │   │   │   ├── permission.ts
 │       │   │   │   │   │   │   ├── retour-penitentiaire.ts
-│       │   │   │   │   │   │   └── sejour.ts
+│       │   │   │   │   │   │   ├── roles-des-lieux.ts
+│       │   │   │   │   │   │   ├── sejour.ts
+│       │   │   │   │   │   │   └── situations-des-lieux.ts
 │       │   │   │   │   │   ├── partie-2.ts
 │       │   │   │   │   │   └── questions
 │       │   │   │   │   │       ├── q2-1.ts
 │       │   │   │   │   │       ├── q2-10.ts
-│       │   │   │   │   │       ├── q2-12.ts
 │       │   │   │   │   │       ├── q2-13.ts
 │       │   │   │   │   │       ├── q2-14.ts
 │       │   │   │   │   │       ├── q2-2-1-a.ts
@@ -331,6 +337,7 @@
 │       │   │   │   │   │       ├── q2-2-1-indication.ts
 │       │   │   │   │   │       ├── q2-2-1.ts
 │       │   │   │   │   │       ├── q2-2-5.ts
+│       │   │   │   │   │       ├── q2-3-1-finalite.ts
 │       │   │   │   │   │       ├── q2-3-1.ts
 │       │   │   │   │   │       ├── q2-3-2.ts
 │       │   │   │   │   │       ├── q2-3-3.ts
@@ -343,19 +350,21 @@
 │       │   │   │   │   │       ├── q2-8-3.ts
 │       │   │   │   │   │       ├── q2-8-4.ts
 │       │   │   │   │   │       ├── q2-8-5.ts
-│       │   │   │   │   │       └── q2-8-6.ts
+│       │   │   │   │   │       ├── q2-8-6.ts
+│       │   │   │   │   │       └── q2-8-duree-48h.ts
 │       │   │   │   │   ├── p3
 │       │   │   │   │   │   ├── conditions
+│       │   │   │   │   │   │   ├── categories-du-lieu.ts
+│       │   │   │   │   │   │   ├── cotes-de-q26.ts
 │       │   │   │   │   │   │   ├── engagement-maternite.ts
-│       │   │   │   │   │   │   ├── evenements.ts
 │       │   │   │   │   │   │   ├── lieux-du-trajet.ts
-│       │   │   │   │   │   │   ├── natures-du-lieu.ts
-│       │   │   │   │   │   │   ├── roles-des-lieux.ts
+│       │   │   │   │   │   │   ├── roles-dans-le-sens.ts
 │       │   │   │   │   │   │   ├── sens-du-trajet.ts
-│       │   │   │   │   │   │   ├── situations-des-lieux.ts
 │       │   │   │   │   │   │   └── supports-du-complement.ts
 │       │   │   │   │   │   ├── partie-3.ts
 │       │   │   │   │   │   └── questions
+│       │   │   │   │   │       ├── champs-du-lieu.ts
+│       │   │   │   │   │       ├── cotes-du-lieu.ts
 │       │   │   │   │   │       ├── lieu.ts
 │       │   │   │   │   │       ├── q3-1-1.ts
 │       │   │   │   │   │       ├── q3-1-2.ts
@@ -365,8 +374,6 @@
 │       │   │   │   │   │       ├── q3-4.ts
 │       │   │   │   │   │       ├── q3-5.ts
 │       │   │   │   │   │       ├── q3-6-1.ts
-│       │   │   │   │   │       ├── q3-6-2.ts
-│       │   │   │   │   │       ├── q3-6-3.ts
 │       │   │   │   │   │       ├── q3-7.ts
 │       │   │   │   │   │       └── q3-8.ts
 │       │   │   │   │   ├── question.ts
@@ -400,6 +407,7 @@
 │       │   │       │   │   └── questions
 │       │   │       │   │       ├── accompagnements.ts
 │       │   │       │   │       ├── boisson.ts
+│       │   │       │   │       ├── mignardise.ts
 │       │   │       │   │       └── service.ts
 │       │   │       │   ├── p2
 │       │   │       │   │   ├── partie-2.ts
@@ -465,6 +473,7 @@
 │       │       │   │   │   └── question.ts
 │       │       │   │   ├── declared
 │       │       │   │   │   ├── choices.ts
+│       │       │   │   │   ├── dependency.ts
 │       │       │   │   │   ├── factory.ts
 │       │       │   │   │   ├── inputs.ts
 │       │       │   │   │   ├── option.ts
@@ -476,11 +485,16 @@
 │       │       │   ├── questionnaire.ts
 │       │       │   └── validate-a-page.ts
 │       │       └── simulation
+│       │           ├── correction.ts
 │       │           ├── index.ts
+│       │           ├── page-refused.ts
+│       │           ├── place-in-part.ts
+│       │           ├── position.ts
 │       │           ├── preconisation.ts
 │       │           ├── result-scope.ts
 │       │           ├── seed.ts
-│       │           └── simulation.ts
+│       │           ├── simulation.ts
+│       │           └── stages.ts
 │       ├── docs
 │       │   └── knowledge
 │       │       ├── CONTEXT.md
@@ -496,10 +510,13 @@
 │       │       │   └── livrable-de-l-editeur.md
 │       │       └── features.md
 │       ├── front
+│       │   ├── container.ts
 │       │   ├── main.tsx
 │       │   ├── models
 │       │   │   ├── eligibilite
 │       │   │   │   ├── avis.ts
+│       │   │   │   ├── besoin.ts
+│       │   │   │   ├── codes-du-resultat.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── indicateur-ald.ts
 │       │   │   │   ├── r2
@@ -519,6 +536,7 @@
 │       │   │   │   │   │   │   ├── vehicule-personnel.webp
 │       │   │   │   │   │   │   └── vsl-ou-taxi.webp
 │       │   │   │   │   │   ├── illustrations-des-modes.ts
+│       │   │   │   │   │   ├── motif.ts
 │       │   │   │   │   │   ├── page-de-la-fiche.tsx
 │       │   │   │   │   │   ├── precisions.ts
 │       │   │   │   │   │   ├── raison-non-eligible.ts
@@ -558,6 +576,7 @@
 │       │   │   │       ├── rubriques
 │       │   │   │       │   ├── accident.ts
 │       │   │   │       │   ├── avion-ou-bateau.ts
+│       │   │   │       │   ├── beneficiaire.ts
 │       │   │   │       │   ├── centre-de-reference.ts
 │       │   │   │       │   ├── exoneration.ts
 │       │   │   │       │   ├── liens.ts
@@ -589,11 +608,51 @@
 │       │   │       └── r3.tsx
 │       │   └── socle
 │       │       ├── analytics
-│       │       │   ├── consent-cms.js
-│       │       │   ├── consent.ts
-│       │       │   ├── events.ts
+│       │       │   ├── ald-pathway.hook.ts
+│       │       │   ├── answer-a-question.usecase.ts
+│       │       │   ├── audience-event.entity.ts
+│       │       │   ├── audience.port.ts
+│       │       │   ├── button-exposure.entity.ts
+│       │       │   ├── button.hook.ts
+│       │       │   ├── cms-consent.adapter.ts
+│       │       │   ├── cms.js
+│       │       │   ├── complete-a-questionnaire.usecase.ts
+│       │       │   ├── consent.port.ts
+│       │       │   ├── correct-an-answer.usecase.ts
+│       │       │   ├── deliver-a-download.usecase.ts
+│       │       │   ├── discarding-audience.adapter.ts
+│       │       │   ├── display-a-document.usecase.ts
+│       │       │   ├── display-a-result.usecase.ts
+│       │       │   ├── document-version.entity.ts
+│       │       │   ├── document.hook.ts
+│       │       │   ├── fail-a-document.usecase.ts
+│       │       │   ├── host-page-load.adapter.ts
 │       │       │   ├── index.ts
-│       │       │   └── matomo.ts
+│       │       │   ├── journal.port.ts
+│       │       │   ├── journey.entity.ts
+│       │       │   ├── journey.hook.ts
+│       │       │   ├── leave-a-questionnaire.usecase.ts
+│       │       │   ├── matomo-audience.adapter.ts
+│       │       │   ├── open-a-page.usecase.ts
+│       │       │   ├── open-a-result-screen.usecase.ts
+│       │       │   ├── page-load.port.ts
+│       │       │   ├── page-view.entity.ts
+│       │       │   ├── pass-a-step.usecase.ts
+│       │       │   ├── press-a-button.usecase.ts
+│       │       │   ├── questionnaire-run.entity.ts
+│       │       │   ├── questionnaire.hook.ts
+│       │       │   ├── reach-an-ald-result.usecase.ts
+│       │       │   ├── result-screen.hook.ts
+│       │       │   ├── result.hook.ts
+│       │       │   ├── results.entity.ts
+│       │       │   ├── reveal-questions.usecase.ts
+│       │       │   ├── revision.entity.ts
+│       │       │   ├── select-an-intent.usecase.ts
+│       │       │   ├── server-journal.adapter.ts
+│       │       │   ├── sheet-version.entity.ts
+│       │       │   ├── start-a-questionnaire.usecase.ts
+│       │       │   ├── start-a-simulation.usecase.ts
+│       │       │   └── use-cases-in-the-tree.ts
 │       │       ├── app
 │       │       │   ├── App.tsx
 │       │       │   ├── Footer.tsx
@@ -619,8 +678,10 @@
 │       │       │   │   ├── overflow.ts
 │       │       │   │   ├── text-fit.ts
 │       │       │   │   ├── text-sizes.ts
+│       │       │   │   ├── typography.ts
 │       │       │   │   ├── widget-page.ts
-│       │       │   │   └── writable-text.ts
+│       │       │   │   ├── writable-text.ts
+│       │       │   │   └── write-a-text.ts
 │       │       │   ├── index.ts
 │       │       │   └── pdf
 │       │       │       ├── PdfActionButton.tsx
@@ -643,8 +704,11 @@
 │       │       │   ├── index.ts
 │       │       │   ├── label-a-question.ts
 │       │       │   ├── lay-out-an-address.ts
+│       │       │   ├── position-in-the-address.ts
+│       │       │   ├── question-field.css
 │       │       │   ├── questionnaire.ts
-│       │       │   ├── send-to-analytics.ts
+│       │       │   ├── revisit-an-answer.ts
+│       │       │   ├── scroll-to-the-top.ts
 │       │       │   └── word-a-problem.ts
 │       │       ├── rattachement
 │       │       │   ├── RattachementForm.tsx
@@ -662,37 +726,47 @@
 │       │       │   ├── SeedsScreen.tsx
 │       │       │   ├── SeedsTable.tsx
 │       │       │   └── index.ts
+│       │       ├── server-api
+│       │       │   ├── index.ts
+│       │       │   └── server-api.client.ts
 │       │       ├── simulateur
 │       │       │   ├── Simulateur.tsx
+│       │       │   ├── ald-pathway.ts
+│       │       │   ├── follow-the-address.ts
 │       │       │   ├── index.ts
 │       │       │   ├── screens
 │       │       │   │   ├── CerfaScreen.tsx
 │       │       │   │   ├── FeedbackLink.tsx
 │       │       │   │   ├── ResultatScreen.tsx
 │       │       │   │   ├── feedback-link.css
+│       │       │   │   ├── load-the-result.ts
 │       │       │   │   └── resultat-screen.css
-│       │       │   ├── sheet
-│       │       │   │   ├── SheetViewer.tsx
-│       │       │   │   ├── assemble-the-pdf.ts
-│       │       │   │   ├── download-the-sheet.ts
-│       │       │   │   ├── logos
-│       │       │   │   │   ├── assurance-maladie.svg
-│       │       │   │   │   └── ministere-de-la-sante.svg
-│       │       │   │   ├── make-the-sheet-pdf.ts
-│       │       │   │   ├── measure-on-paper.ts
-│       │       │   │   ├── photograph-a-page.ts
-│       │       │   │   ├── print-the-sheet.ts
-│       │       │   │   ├── sheet-numbered-steps.css
-│       │       │   │   ├── sheet-paper.css
-│       │       │   │   ├── sheet-viewer-narrow.css
-│       │       │   │   ├── sheet-viewer-print.css
-│       │       │   │   ├── sheet-viewer.css
-│       │       │   │   └── slice-into-pages.ts
-│       │       │   └── track-the-ald-pathway.ts
+│       │       │   └── sheet
+│       │       │       ├── SheetViewer.tsx
+│       │       │       ├── assemble-the-pdf.ts
+│       │       │       ├── download-the-sheet.ts
+│       │       │       ├── logos
+│       │       │       │   ├── assurance-maladie.svg
+│       │       │       │   └── ministere-de-la-sante.svg
+│       │       │       ├── make-the-sheet-pdf.ts
+│       │       │       ├── measure-on-paper.ts
+│       │       │       ├── photograph-a-page.ts
+│       │       │       ├── print-the-sheet.ts
+│       │       │       ├── sheet-numbered-steps.css
+│       │       │       ├── sheet-paper.css
+│       │       │       ├── sheet-viewer-narrow.css
+│       │       │       ├── sheet-viewer-print.css
+│       │       │       ├── sheet-viewer.css
+│       │       │       └── slice-into-pages.ts
+│       │       ├── theme
+│       │       │   ├── apply-theme.ts
+│       │       │   ├── host-theme.ts
+│       │       │   └── index.ts
 │       │       └── ui
 │       │           ├── AddressField.tsx
 │       │           ├── CheckboxField.tsx
 │       │           ├── ChoiceFieldset.tsx
+│       │           ├── ConditionalPanel.tsx
 │       │           ├── Container.tsx
 │       │           ├── DateField.tsx
 │       │           ├── Disclosure.tsx
@@ -712,6 +786,8 @@
 │       │           ├── TextAreaField.tsx
 │       │           ├── TextField.tsx
 │       │           ├── checkbox-card.css
+│       │           ├── choice-fieldset.css
+│       │           ├── conditional-panel.css
 │       │           ├── disclosure.css
 │       │           ├── illustrated-cards.css
 │       │           ├── index.ts
@@ -724,19 +800,33 @@
 │       ├── server
 │       │   ├── app.ts
 │       │   ├── configuration.ts
+│       │   ├── container.ts
+│       │   ├── grist
+│       │   │   └── grist-api.client.ts
+│       │   ├── journal
+│       │   │   ├── collect-an-event.usecase.ts
+│       │   │   ├── discarding-journal.adapter.ts
+│       │   │   ├── grist-journal.adapter.ts
+│       │   │   ├── journal-entry.entity.ts
+│       │   │   ├── journal.controller.ts
+│       │   │   ├── journal.port.ts
+│       │   │   ├── memory-journal.adapter.ts
+│       │   │   └── report-alive.usecase.ts
 │       │   ├── rattachement
-│       │   │   ├── lignes-grist.ts
 │       │   │   ├── referentiel-grist.ts
-│       │   │   ├── referentiel-source.ts
 │       │   │   └── routes.ts
 │       │   └── server.ts
 │       ├── shared
+│       │   ├── analytics
+│       │   │   ├── analytics-event.ts
+│       │   │   └── event-schema.ts
 │       │   ├── rattachement-saisi.ts
 │       │   └── referentiel.ts
 │       ├── tests
 │       │   ├── architecture.test.ts
 │       │   ├── frontieres-des-racines.test.ts
 │       │   ├── inspection-des-sources.ts
+│       │   ├── journal-en-clean-architecture.test.ts
 │       │   ├── lisibilite.test.ts
 │       │   ├── miroir-des-sources.test.ts
 │       │   ├── model
@@ -745,7 +835,9 @@
 │       │   │   │   ├── avis-a-l-ecran.test.tsx
 │       │   │   │   ├── ce-que-lisent-les-resultats.test.ts
 │       │   │   │   ├── cibles
+│       │   │   │   │   ├── exception-inconnue-decisive.test.ts
 │       │   │   │   │   ├── faits-de-l-oracle.ts
+│       │   │   │   │   ├── finalite-longue-distance.test.ts
 │       │   │   │   │   ├── frontieres-de-l-oracle.test.ts
 │       │   │   │   │   ├── garde-de-l-urgence.test.ts
 │       │   │   │   │   ├── mineur.test.ts
@@ -762,27 +854,36 @@
 │       │   │   │   ├── filtrage-par-le-graphe.test.ts
 │       │   │   │   ├── formulaire-du-modele.tsx
 │       │   │   │   ├── indicateur-ald.test.ts
+│       │   │   │   ├── journal-des-questions.test.tsx
 │       │   │   │   ├── modele-aux-gabarits-du-disque.ts
 │       │   │   │   ├── p1
+│       │   │   │   │   ├── accident-cause-par-un-tiers.test.ts
 │       │   │   │   │   ├── ald-et-mineur.test.ts
 │       │   │   │   │   ├── cas-particuliers-a-l-ecran.test.tsx
 │       │   │   │   │   ├── coherence-des-reponses.test.ts
 │       │   │   │   │   ├── faits-de-p1.test.ts
 │       │   │   │   │   ├── lien-ald.ts
-│       │   │   │   │   └── mode-de-transport.test.ts
+│       │   │   │   │   ├── mode-de-transport.test.ts
+│       │   │   │   │   ├── panneaux-de-q1-3-a-l-ecran.test.tsx
+│       │   │   │   │   └── preference-de-transport-a-l-ecran.test.tsx
 │       │   │   │   ├── p2
 │       │   │   │   │   ├── blocages-de-la-permission.test.ts
 │       │   │   │   │   ├── branche.test.ts
 │       │   │   │   │   ├── cadre-du-sejour.test.ts
-│       │   │   │   │   ├── contextes-retires-par-q21.test.ts
+│       │   │   │   │   ├── collecte-unique.test.ts
+│       │   │   │   │   ├── conflit-de-lieux.test.ts
 │       │   │   │   │   ├── contextes.test.ts
 │       │   │   │   │   ├── convocation.test.ts
 │       │   │   │   │   ├── dates-de-la-permission.test.ts
+│       │   │   │   │   ├── evenement-sans-soin.test.ts
 │       │   │   │   │   ├── exceptions-article80.test.ts
 │       │   │   │   │   ├── faits-de-la-prestation.test.ts
 │       │   │   │   │   ├── faits-de-p2.test.ts
 │       │   │   │   │   ├── fin-de-p2.test.ts
+│       │   │   │   │   ├── finalite-longue-distance.test.ts
+│       │   │   │   │   ├── maternite-et-htnm.test.ts
 │       │   │   │   │   ├── pages-de-p2-a-l-ecran.test.tsx
+│       │   │   │   │   ├── permission-adulte.test.ts
 │       │   │   │   │   ├── permission.test.ts
 │       │   │   │   │   ├── prestation.test.ts
 │       │   │   │   │   ├── recette-des-contextes.test.tsx
@@ -792,17 +893,21 @@
 │       │   │   │   │   ├── reponses-des-contextes.ts
 │       │   │   │   │   ├── reponses-du-transfert.ts
 │       │   │   │   │   ├── retour-penitentiaire.test.ts
+│       │   │   │   │   ├── sens-avant-r2.test.ts
 │       │   │   │   │   ├── trajet.test.ts
-│       │   │   │   │   └── transfert.test.ts
+│       │   │   │   │   ├── transfert.test.ts
+│       │   │   │   │   └── urgence-a-deux-places.test.ts
 │       │   │   │   ├── p3
 │       │   │   │   │   ├── evenements-et-exoneration.test.ts
 │       │   │   │   │   ├── lieux-des-contextes.test.ts
 │       │   │   │   │   ├── lieux-des-sejours.test.ts
 │       │   │   │   │   ├── lieux-du-trajet.test.ts
+│       │   │   │   │   ├── nature-d-un-autre-lieu.test.ts
 │       │   │   │   │   ├── page-de-la-maternite.test.ts
 │       │   │   │   │   ├── questions-des-lieux.ts
 │       │   │   │   │   ├── soin-et-urgence.test.ts
 │       │   │   │   │   └── trajet-du-document.test.ts
+│       │   │   │   ├── parcours-de-la-permission.test.tsx
 │       │   │   │   ├── parcours.test.tsx
 │       │   │   │   ├── questions-posees-par-seed.test.ts
 │       │   │   │   ├── r2
@@ -822,6 +927,7 @@
 │       │   │   │   │   │   └── texte-de-la-permission.test.ts
 │       │   │   │   │   ├── boutons-a-l-ecran.test.tsx
 │       │   │   │   │   ├── catalogue-resultats.test.ts
+│       │   │   │   │   ├── journal-du-resultat.test.ts
 │       │   │   │   │   ├── orientee
 │       │   │   │   │   │   ├── resultat-du-prescripteur.test.tsx
 │       │   │   │   │   │   ├── scenarios-du-prescripteur.test.ts
@@ -841,6 +947,7 @@
 │       │   │   │   ├── r3
 │       │   │   │   │   ├── boutons-du-resultat.test.ts
 │       │   │   │   │   ├── centre-de-reference-rempli.test.ts
+│       │   │   │   │   ├── commentaire-medical.test.ts
 │       │   │   │   │   ├── consigne-du-mineur.test.ts
 │       │   │   │   │   ├── documents-du-resultat.test.ts
 │       │   │   │   │   ├── motifs-de-la-dap-remplie.test.ts
@@ -855,7 +962,8 @@
 │       │   │   │   │   └── texte-medical.test.ts
 │       │   │   │   ├── reponse-changee.test.ts
 │       │   │   │   └── rules
-│       │   │   │       └── declarations.test.ts
+│       │   │   │       ├── declarations.test.ts
+│       │   │   │       └── version-des-regles.test.ts
 │       │   │   ├── metier-sous-node.test.ts
 │       │   │   └── regles-a-jour.test.ts
 │       │   ├── modules-du-socle.test.ts
@@ -863,10 +971,20 @@
 │       │   ├── setup.ts
 │       │   ├── socle
 │       │   │   ├── analytics
-│       │   │   │   ├── choix-analytics.test.ts
-│       │   │   │   ├── consent-cms.test.ts
-│       │   │   │   ├── evenements.test.ts
-│       │   │   │   └── matomo.test.ts
+│       │   │   │   ├── audience-de-test.ts
+│       │   │   │   ├── audience-event.test.ts
+│       │   │   │   ├── boutons-exposes.test.ts
+│       │   │   │   ├── chargement-de-la-page.test.ts
+│       │   │   │   ├── cms-consent.test.ts
+│       │   │   │   ├── cms.test.ts
+│       │   │   │   ├── consentement-de-test.ts
+│       │   │   │   ├── document-version.test.ts
+│       │   │   │   ├── envoi-au-journal.test.ts
+│       │   │   │   ├── journal-de-test.ts
+│       │   │   │   ├── journey.test.ts
+│       │   │   │   ├── matomo-audience.test.ts
+│       │   │   │   ├── questionnaire-run.test.ts
+│       │   │   │   └── typographie-du-document.test.ts
 │       │   │   ├── app
 │       │   │   │   ├── choix-de-modele.test.tsx
 │       │   │   │   ├── footer.test.tsx
@@ -878,7 +996,9 @@
 │       │   │   │   ├── flatten-cerfa.test.ts
 │       │   │   │   ├── generate-cerfa.test.ts
 │       │   │   │   ├── pdf-aplati.ts
-│       │   │   │   └── test-form.ts
+│       │   │   │   ├── police-du-cerfa.test.ts
+│       │   │   │   ├── test-form.ts
+│       │   │   │   └── typographie-du-cerfa.test.ts
 │       │   │   ├── decision-engine
 │       │   │   │   ├── catalogue-des-faits.test.ts
 │       │   │   │   ├── cible.test.ts
@@ -903,6 +1023,12 @@
 │       │   │   │   │   ├── questionnaire.ts
 │       │   │   │   │   └── seeds-catalogue.ts
 │       │   │   │   └── page-blanche.jpg
+│       │   │   ├── journal
+│       │   │   │   ├── collecte.test.ts
+│       │   │   │   ├── couverture.test.ts
+│       │   │   │   ├── evenements.ts
+│       │   │   │   ├── grist-journal.test.ts
+│       │   │   │   └── journal-non-configure.test.ts
 │       │   │   ├── modele-de-test.ts
 │       │   │   ├── questionnaire
 │       │   │   │   ├── adresse-selon-les-reponses.test.tsx
@@ -930,6 +1056,9 @@
 │       │   │   │   ├── rappel-en-valeurs.test.tsx
 │       │   │   │   ├── rappel.test.tsx
 │       │   │   │   ├── reponse-bloquante.test.tsx
+│       │   │   │   ├── retour-en-haut.test.ts
+│       │   │   │   ├── revoir-une-reponse.test.tsx
+│       │   │   │   ├── sous-question-fermee.test.tsx
 │       │   │   │   ├── stepper-des-questions.test.tsx
 │       │   │   │   ├── texte-long.test.tsx
 │       │   │   │   └── validation-croisee.test.tsx
@@ -943,11 +1072,13 @@
 │       │   │   │   ├── local-date-time.test.ts
 │       │   │   │   ├── page-commit.test.ts
 │       │   │   │   ├── question.test.ts
-│       │   │   │   └── questions-qui-comptent.test.ts
+│       │   │   │   ├── questions-qui-comptent.test.ts
+│       │   │   │   └── une-question-a-plusieurs-places.test.ts
 │       │   │   ├── rattachement
 │       │   │   │   ├── rattachement-form.test.tsx
 │       │   │   │   ├── saisie-complete.test.ts
-│       │   │   │   └── session.test.ts
+│       │   │   │   ├── session.test.ts
+│       │   │   │   └── structures.test.tsx
 │       │   │   ├── se-rattacher.ts
 │       │   │   ├── seeds
 │       │   │   │   └── seeds.test.tsx
@@ -961,12 +1092,18 @@
 │       │   │   │   ├── server.test.ts
 │       │   │   │   └── serveur-de-test.ts
 │       │   │   ├── simulateur
+│       │   │   │   ├── adresse-de-la-page.test.tsx
 │       │   │   │   ├── aspect-de-l-avis.test.ts
 │       │   │   │   ├── avis.test.tsx
 │       │   │   │   ├── boutons-des-resultats.test.tsx
 │       │   │   │   ├── disposition-du-second-resultat.test.tsx
 │       │   │   │   ├── gabarit-retenu.ts
 │       │   │   │   ├── indicateur-ald.test.tsx
+│       │   │   │   ├── journal-des-boutons.test.tsx
+│       │   │   │   ├── journal-des-questions.test.tsx
+│       │   │   │   ├── journal-du-document.test.tsx
+│       │   │   │   ├── journal-du-parcours.test.tsx
+│       │   │   │   ├── journal-du-resultat.test.tsx
 │       │   │   │   ├── lock.test.tsx
 │       │   │   │   ├── nom-du-resultat.test.tsx
 │       │   │   │   ├── pagination-de-la-feuille.test.ts
@@ -979,8 +1116,15 @@
 │       │   │   │   ├── telechargement-du-cerfa.test.tsx
 │       │   │   │   └── telechargements.ts
 │       │   │   ├── simulation
+│       │   │   │   ├── brouillon-restaure.test.ts
+│       │   │   │   ├── correction.test.ts
+│       │   │   │   ├── date-impossible.test.ts
+│       │   │   │   ├── page-refusee.test.ts
 │       │   │   │   ├── preconisation.test.ts
+│       │   │   │   ├── reponse-inapplicable.test.ts
 │       │   │   │   └── simulation.test.ts
+│       │   │   ├── theme
+│       │   │   │   └── theme-de-l-hote.test.ts
 │       │   │   └── ui
 │       │   │       └── blocs-du-resultat.test.tsx
 │       │   └── taille-du-code.test.ts
@@ -1017,4 +1161,4 @@
 ├── package.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-172 directories, 977 files
+180 directories, 1113 files
