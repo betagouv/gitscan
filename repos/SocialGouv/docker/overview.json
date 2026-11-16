@@ -1,14 +1,19 @@
 {
-  "url": "https://github.com/socialgouv/docker",
+  "url": "https://github.com/SocialGouv/docker",
   "name": "docker",
   "description": "Ce projet fournit un ensemble d'images Docker préconfigurées et maintenues par SocialGouv. Il simplifie le déploiement d'outils et de services courants en fournissant des images optimisées et sécurisées.",
   "language": "Shell",
-  "features": [],
+  "features": [
+    "Infrastructure & Stockage",
+    "Données & Schémas",
+    "Sécurité & Conformité"
+  ],
   "audience": "Professionnels",
   "dependencies": [
     "Docker",
     "bats",
-    "lerna"
+    "lerna",
+    "yarn"
   ],
   "components": [
     "Docker & Conteneurs",
@@ -21,7 +26,8 @@
     ]
   },
   "tests": [
-    "bats"
+    "bats",
+    "container-structure-test"
   ],
   "workflows": [
     "@release.yaml",
@@ -51,23 +57,20 @@
     "wait-for-postgres.yaml",
     "workflow.build.yaml"
   ],
-  "lastActivity": "2026-01-26T14:41:20Z",
+  "lastActivity": "2026-01-26T15:40:17+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 2,
-    "forks": 8,
-    "contributors": null,
+    "forks": 7,
     "openIssues": 14
   },
   "tags": [
     "Docker & Conteneurs",
-    "images",
-    "socialgouv",
-    "bats",
+    "Déploiement & Hosting",
     "Self-hosting & Infrastructure réseau",
     "Bases de données SQL",
-    "Déploiement & Hosting"
+    "Git & DevOps"
   ]
 }
