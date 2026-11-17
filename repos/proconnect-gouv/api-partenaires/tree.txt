@@ -5,8 +5,9 @@
 │   ├── actions
 │   │   └── dila-cache
 │   │       └── action.yml
-│   ├── dependabot.yml
+│   ├── renovate.json5
 │   └── workflows
+│       ├── apotropaic-comment.yml
 │       ├── apotropaic-cron.yml
 │       ├── ci.yml
 │       ├── config-lint.yml
@@ -19,11 +20,13 @@
 ├── LICENSE
 ├── README.md
 ├── bun.lock
+├── bunfig.toml
 ├── config
 │   └── anct
 │       ├── oidc_providers.production.yaml
 │       └── oidc_providers.sandbox.yaml
 ├── examples
+│   ├── compose.yaml
 │   ├── edit_provider_attached_email_domains
 │   │   ├── compose.yaml
 │   │   ├── initdb.d
@@ -36,43 +39,86 @@
 │       │   └── client.js
 │       └── integration.test.ts
 ├── package.json
-├── scripts
-│   ├── apotropaic.ts
-│   ├── explain_domain.ts
-│   └── lint_config.ts
 ├── src
-│   ├── apotropaic
-│   │   ├── cache_dir.ts
-│   │   ├── cog.test.ts
-│   │   ├── cog.ts
-│   │   ├── declared_by.test.ts
-│   │   ├── declared_by.ts
-│   │   ├── dila.test.ts
-│   │   ├── dila.ts
-│   │   ├── dila_ok.test.ts
-│   │   ├── dila_ok.ts
-│   │   ├── extensions.ts
-│   │   ├── names.test.ts
-│   │   ├── names.ts
-│   │   ├── not_allowed.test.ts
-│   │   ├── not_allowed.ts
-│   │   ├── source.test.ts
-│   │   └── source.ts
-│   ├── app.test.ts
-│   ├── app.ts
-│   ├── config.test.ts
-│   ├── config.ts
-│   ├── crypt.test.ts
-│   ├── crypt.ts
-│   ├── index.ts
-│   ├── oidc_clients.test.ts
-│   ├── oidc_clients.ts
-│   ├── oidc_providers.test.ts
-│   ├── oidc_providers.ts
-│   ├── oidc_providers_config.test.ts
-│   ├── oidc_providers_config.ts
-│   ├── signature_middleware.ts
-│   ├── zod_issues.test.ts
-│   └── zod_issues.ts
+│   ├── allowlist
+│   │   ├── index.test.ts
+│   │   └── index.ts
+│   ├── api
+│   │   ├── bin
+│   │   │   └── index.ts
+│   │   ├── config
+│   │   │   ├── index.ts
+│   │   │   ├── schema.test.ts
+│   │   │   └── schema.ts
+│   │   ├── crypt
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   ├── domain_reachable
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   ├── log
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   ├── oidc_providers
+│   │   │   ├── admission.test.ts
+│   │   │   ├── admission.ts
+│   │   │   ├── admit.ts
+│   │   │   ├── index.ts
+│   │   │   ├── store.test.ts
+│   │   │   └── store.ts
+│   │   └── server
+│   │       ├── app.test.ts
+│   │       ├── app.ts
+│   │       ├── index.ts
+│   │       ├── oidc_clients
+│   │       │   ├── index.test.ts
+│   │       │   └── index.ts
+│   │       ├── oidc_providers
+│   │       │   ├── attached_email_domains
+│   │       │   │   ├── index.test.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── configuration
+│   │       │   │   ├── index.test.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── http
+│   │       │   │   └── index.ts
+│   │       │   ├── index.ts
+│   │       │   └── testing
+│   │       │       └── index.ts
+│   │       ├── rate_limit_middleware.test.ts
+│   │       ├── rate_limit_middleware.ts
+│   │       └── signature_middleware.ts
+│   ├── utils
+│   │   ├── index.ts
+│   │   └── result.ts
+│   └── validation
+│       ├── bin
+│       │   ├── apotropaic.ts
+│       │   ├── apotropaic_comment.ts
+│       │   ├── drop_refused.ts
+│       │   ├── explain_domain.ts
+│       │   └── lint_config.ts
+│       ├── cache_dir.ts
+│       ├── cog.test.ts
+│       ├── cog.ts
+│       ├── declared_by.test.ts
+│       ├── declared_by.ts
+│       ├── digest.test.ts
+│       ├── digest.ts
+│       ├── dila.test.ts
+│       ├── dila.ts
+│       ├── dila_ok.test.ts
+│       ├── dila_ok.ts
+│       ├── extensions.ts
+│       ├── index.ts
+│       ├── markdown.ts
+│       ├── names.test.ts
+│       ├── names.ts
+│       ├── not_allowed.test.ts
+│       ├── not_allowed.ts
+│       ├── source.test.ts
+│       ├── source.ts
+│       ├── zod_issues.test.ts
+│       └── zod_issues.ts
 └── tsconfig.json
-15 directories, 62 files
+31 directories, 92 files
