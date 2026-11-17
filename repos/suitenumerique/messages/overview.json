@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Une boîte de réception collaborative tout-en-un pour La Suite territoriale. Cette plateforme de communication permet aux équipes de collaborer sur des boîtes mail partagées ou personnelles.",
+  "description": "Une plateforme de messagerie collaborative permettant aux équipes de gérer des boîtes mail partagées ou personnelles. Elle intègre des fonctionnalités d'IA, une recherche plein texte et une architecture robuste basée sur des standards ouverts.",
   "language": "Python",
   "features": [
     "Collaboration & Workflow",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Intelligence Artificielle & NLP",
     "Gestion des médias & Assets",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,12 +18,13 @@
     "Vite",
     "TanStack Router",
     "BlockNote.js",
-    "Keycloak",
     "PostgreSQL",
     "Redis",
     "OpenSearch",
     "Celery",
-    "Capacitor"
+    "Keycloak",
+    "Capacitor",
+    "Caddy"
   ],
   "components": [
     "API REST & GraphQL",
@@ -39,20 +40,21 @@
     "methods": [
       "oauth2",
       "jwt",
-      "session",
-      "mfa"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Playwright (E2E)",
+  "tests": [
+    "Playwright"
+  ],
   "workflows": [
     "Docker build",
-    "CI image push"
+    "CI/CD pipelines"
   ],
   "lastActivity": "2026-11-12T23:53:27+01:00",
-  "status": "maintained",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -61,10 +63,7 @@
     "Python",
     "TypeScript",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Bases de données SQL",
-    "Sécurité & Auth",
     "Intelligence Artificielle & LLM",
-    "Accessibilité"
+    "Sécurité & Auth"
   ]
 }
