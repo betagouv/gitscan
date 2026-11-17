@@ -54,8 +54,11 @@
 │                       └── main.py
 ├── docker-compose.yml
 ├── docs
+│   ├── architecture.md
 │   ├── backend-settings.md
 │   ├── drive-migrator-schema.png
+│   ├── local-setup-with-drive.md
+│   ├── local-setup-with-drive.patch
 │   ├── migration-integrity-check.md
 │   └── tsclient.md
 ├── env.d
@@ -191,6 +194,7 @@
     │   │   │   └── token_status.py
     │   │   ├── retry_utils.py
     │   │   ├── retrying_session.py
+    │   │   ├── signals.py
     │   │   ├── sources
     │   │   │   ├── __init__.py
     │   │   │   ├── filesystem.py
@@ -235,6 +239,7 @@
     │   │   │   │   ├── test_source.py
     │   │   │   │   ├── test_source_contract.py
     │   │   │   │   └── test_source_manager.py
+    │   │   │   ├── conftest.py
     │   │   │   ├── destinations
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── drive
@@ -613,4 +618,4 @@
         │   └── openapi-typescript-codegen
         │       └── generate_api_client_local.sh
         └── yarn.lock
-134 directories, 481 files
+134 directories, 486 files

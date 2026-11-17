@@ -1,24 +1,23 @@
 {
   "url": "https://github.com/suitenumerique/drive-migrator",
   "name": "drive-migrator",
-  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il vise à assurer l'interopérabilité et la portabilité des données au sein de l'écosystème LaSuite et OpenBuro.",
+  "description": "Outil de migration de fichiers et de structures de dossiers entre différentes solutions de stockage documentaire. Il vise à assurer la portabilité des données et l'interopérabilité au sein de l'écosystème OpenBuro.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Administration & Backoffice"
+    "Collaboration & Workflow",
+    "Sécurité & Conformité",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Celery",
-    "Redis",
-    "PostgreSQL",
     "Next.js",
-    "Keycloak",
+    "PostgreSQL",
+    "Redis",
+    "Celery",
     "MinIO",
-    "uv",
+    "Keycloak",
     "Gunicorn"
   ],
   "components": [
@@ -28,33 +27,32 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Stockage objet",
-    "Authentification (composant)"
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
       "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Pytest",
+  "tests": "Tests unitaires pour le backend et le frontend",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-11-10T15:28:08+01:00",
+  "lastActivity": "2026-11-16T14:15:50+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
+    "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
-    "TypeScript",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Bases de données SQL",
-    "Écosystème beta.gouv / État",
-    "Données & Open Data"
+    "ETL & Pipelines de données"
   ]
 }

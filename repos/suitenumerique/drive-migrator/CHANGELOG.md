@@ -9,6 +9,11 @@ and this project adheres to
 ## [Unreleased]
 - Split the backend settings into configuration mixins
 
+### Added
+
+- Add the architecture documentation
+- Add a guide to run the migrator with a local La Suite Drive
+
 ### Fixed
 
 - Refresh the Resana offline token before its 1 h idle timeout, so long
@@ -21,6 +26,10 @@ and this project adheres to
   it can no longer be refreshed at the end of a run #304
 - Ask to log in to Resana again as soon as its offline token is refused,
   instead of showing the user as connected #304
+
+### Changed
+
+- Log as JSON with django-structlog, with the request and workspace ids
 
 ## [v0.12.1] - 2026-11-03
 
