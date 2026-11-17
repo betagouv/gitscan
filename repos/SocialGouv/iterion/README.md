@@ -26,7 +26,6 @@ Kubernetes gave cloud workloads a declarative control plane. Iterion brings that
 - [Features](#features)
 - [Ready-to-run agent workflows](#agent-workflows)
 - [Getting Started](#getting-started)
-  - [Get started in one prompt](#get-started-in-one-prompt)
   - [Installation](#installation)
   - [Your first bot](#your-first-bot)
 - [Workflow files](#workflow-files)
@@ -94,7 +93,7 @@ More than a DAG runner: Iterion is built for long, autonomous, multi-agent work 
 - 🎛️ **Live control and recovery** — Queue operator/supervisor messages, raise budgets, grant loop iterations, retry eligible failures, and resume from persisted checkpoints
 - 🛡️ **Tool-permission gate** — Shared `off` / `ask` / `deny` policy for `claude_code`, `claw`, and `pi`, with allow/ask/deny rule lists; restrictive modes are opt-in
 - 🌳 **Worktree finalization** — `worktree: auto` runs in a fresh Git worktree and protects committed results with a named branch; CLI or studio merge policy decides when and how it lands — see [docs/merge-policy.md](docs/merge-policy.md)
-- 🛡️ **Per-run sandbox** — Opt-in Docker/Podman/Kubernetes isolation. Local containers preserve the host worktree path by default; network mode is open unless the workflow selects an allowlist/denylist proxy — see [docs/sandbox.md](docs/sandbox.md)
+- 🛡️ **Per-run sandbox** — Default-on Docker/Podman/Kubernetes isolation (`sandbox: auto`; opt out with `sandbox: none`). Local containers preserve the host worktree path by default; network mode is open unless the workflow selects an allowlist/denylist proxy — see [docs/sandbox.md](docs/sandbox.md)
 - 🧰 **Reproducible bot tools** — A bot and its target repository can each declare a pinned `devbox.json`; Iterion composes both toolchains and exposes them to non-interactive nodes
 - 🔐 **Privacy filter** — Built-in Go-native `privacy_filter` / `privacy_unfilter` tools redact and restore PII (emails, phones, IBANs, credit cards, URLs, ~25 secret patterns) — see [docs/privacy_filter.md](docs/privacy_filter.md)
 
@@ -179,27 +178,6 @@ List them anytime with `iterion bots list`; see [docs/examples.md](docs/examples
 
 ## 🚀 Getting Started
 
-<a id="get-started-in-one-prompt"></a>
-
-### Get started in one prompt
-
-Paste the block below into a fresh session of your AI coding agent: it installs the CLI and the agent skill, connects the CLI to [iterion.cloud](https://iterion.cloud), registers the MCP server, and verifies everything is ready to deploy agents on your repositories — no forge connection, no run launched.
-
-```text
-Set up Iterion (https://github.com/SocialGouv/iterion) so it can deploy AI agents on my repositories, connected to https://iterion.cloud. Work in order, and pause to ask me whenever a step needs a human decision.
-
-1. Install the CLI: `curl -fsSL https://socialgouv.github.io/iterion/install.sh | sh`, then run `iterion version`.
-2. Install the skill that teaches you the .bot DSL: `npx skills add https://github.com/SocialGouv/iterion --skill iterion-dsl`.
-3. Connect the CLI to the cloud: `iterion remote login https://iterion.cloud`. It opens a browser approval page — stop and ask me to approve it there. If I cannot open a browser, ask me for a personal access token and run `iterion remote login https://iterion.cloud --token <my-token>` instead.
-4. Register the Iterion MCP server: `claude mcp add iterion -- iterion mcp`. If you are not Claude Code, register the same stdio server in your own MCP configuration instead (command `iterion`, args `["mcp"]`).
-5. Cloud runs need an LLM credential. If my account has none yet, ask me for an Anthropic API key and store it with `iterion remote api-keys create --provider anthropic --name default --from-env ANTHROPIC_API_KEY` — the key travels through the environment only, never a command argument or a file.
-6. Verify, read-only: `iterion remote status` names the instance and my account, `iterion remote bots list` returns the bot catalog, and your `remote_status` / `remote_bots_list` MCP tools answer.
-
-Do not connect any forge or git host, do not enable a repository, and do not launch a run — that is my next step, not yours. If a step fails, stop there and tell me what to fix. Finish by reporting each step's outcome and how to undo the setup (`iterion remote logout`, `claude mcp remove iterion`).
-```
-
-The full walkthrough, plus the follow-up that deploys your first agent on a repo: [docs/getting-started.md](docs/getting-started.md).
-
 <a id="installation"></a>
 
 ### Installation
@@ -231,7 +209,7 @@ work on and pick the entry point that matches your intent:
 | **Run a bot** on this repo | `iterion bots list` → `iterion run <bot>` |
 | **Build your own bot** | `iterion bots create <slug>`, or the studio builder at `/bots/new` |
 | **Wire bots into CI / a forge** | [`docs/repo-scope.md`](docs/repo-scope.md) — connect a repo, then trigger on PRs and issues |
-| **Use a cloud instance** | `iterion remote login <url>` — see [`docs/cloud-cli.md`](docs/cloud-cli.md) |
+| **Use a cloud instance** | `iterion remote login <url>` — see [`docs/cloud-cli.md`](docs/cloud-cli.md); or let your coding agent set it up with the prompt on [iterion.cloud](https://iterion.cloud) ([walkthrough](docs/getting-started.md)) |
 | **Drive Iterion from your AI agent** | `claude mcp add iterion -- iterion mcp` — see [`docs/mcp-server.md`](docs/mcp-server.md) |
 
 #### Run a bot from the catalog
