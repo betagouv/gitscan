@@ -55,7 +55,6 @@
 │   ├── cronDemarchesSimplifiees.ts
 │   ├── cronPsychologists.ts
 │   ├── cronStudents.ts
-│   ├── cronUniversityPayments.ts
 │   └── launch.ts
 ├── db
 │   ├── appointments.ts
@@ -286,6 +285,8 @@
 │   │   │   │   └── Mail.jsx
 │   │   │   ├── Forms
 │   │   │   │   ├── ErrorMessage.jsx
+│   │   │   │   ├── TextInput.cssmodule.scss
+│   │   │   │   ├── TextInput.jsx
 │   │   │   │   └── errorMessage.cssmodule.scss
 │   │   │   ├── Header
 │   │   │   │   ├── Header.jsx
@@ -378,6 +379,7 @@
 │   │   │   │   │   ├── ConfirmNewPatient.jsx
 │   │   │   │   │   ├── InviteStudent.jsx
 │   │   │   │   │   ├── PatientAppointments.jsx
+│   │   │   │   │   ├── PatientStatus.jsx
 │   │   │   │   │   ├── Patients.jsx
 │   │   │   │   │   ├── SeePatient.jsx
 │   │   │   │   │   ├── confirmNewPatient.cssmodule.scss
@@ -638,11 +640,11 @@
 ├── scalingo-dev-seed.sh
 ├── scalingo.json
 ├── scripts
-│   ├── anonymizeDb.ts
 │   ├── cleanPatientsInstitution.ts
 │   ├── completeInstitutions.json
 │   ├── createInstitutionNames.ts
 │   ├── deactivateInactivePsy.ts
+│   ├── declareAppointments.ts
 │   ├── downloadCertificates.ts
 │   ├── generateInactiveTokens.ts
 │   ├── getCleanInstitutionsName.ts
@@ -654,6 +656,9 @@
 │   ├── insertEmailToUniversities.ts
 │   ├── insertUniversities.ts
 │   ├── institutionsName.json
+│   ├── linkPatientsToStudents.ts
+│   ├── makeStudentsEligible.ts
+│   ├── makeStudentsNotEligible.ts
 │   ├── matchPsyToUniversities.ts
 │   ├── matchSpecialPsyToUniversities.ts
 │   ├── newPatientsInstitution.json
@@ -661,7 +666,8 @@
 │   ├── patientsInstitution.json
 │   ├── psyToUni.ts
 │   ├── removePsyPersonalData.ts
-│   └── validateCertificatesStudents.ts
+│   ├── updateStudents.ts
+│   └── utils.ts
 ├── services
 │   ├── champsAndAnnotations.ts
 │   ├── demarchesSimplifiees
@@ -676,6 +682,7 @@
 │   ├── email
 │   │   ├── sendModifyEmailLink.ts
 │   │   ├── sendNotEligibleEmail.ts
+│   │   ├── sendPendingEligibilityEmail.ts
 │   │   ├── sendWelcomeEmail.ts
 │   │   └── studentAppointmentsNotification.ts
 │   ├── getAddressCoordinates.ts
@@ -684,6 +691,7 @@
 │   ├── getBadges.ts
 │   ├── getDiplomaErrors.ts
 │   ├── inesApi.ts
+│   ├── linkPatientsToStudent.ts
 │   ├── loginInformations.ts
 │   ├── s3.ts
 │   ├── sanitizer.ts
@@ -782,6 +790,7 @@
 │   ├── Coordinates.ts
 │   ├── DemarcheSimplifiee.ts
 │   ├── DossierState.ts
+│   ├── Eligibility.ts
 │   ├── Genders.ts
 │   ├── INESresponse.ts
 │   ├── LastConnection.ts
@@ -831,7 +840,6 @@
         ├── multipleAcceptedAlert.ejs
         ├── psyLogin.ejs
         ├── sendCertificate.ejs
-        ├── sendStudentCertificate.ejs
         ├── studentInvitationFromPsy.ejs
         ├── studentLogin.ejs
         ├── studentMail-1.ejs
@@ -841,7 +849,7 @@
         ├── studentMail-doctorAppointment-2.ejs
         ├── studentMail-doctorAppointment.ejs
         ├── studentNotEligible.ejs
+        ├── studentPendingEligibility.ejs
         ├── studentSignInValidation.ejs
-        ├── studentWelcome.ejs
-        └── summaryUniversity.ejs
-127 directories, 719 files
+        └── studentWelcome.ejs
+127 directories, 727 files

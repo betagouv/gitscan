@@ -8,7 +8,7 @@ Accompagnement psychologique pour les étudiants
 
 ### Prérequis
 
-- node >= 18
+- node >= 24
 - pnpm
 - docker compose (docker-compose avec tiret selon votre version)
 
@@ -197,22 +197,6 @@ ts-node scripts/matchPsyToUniversities.ts [--dry-run]
 ts-node scripts/matchSpecialPsyToUniversities.ts [--dry-run]
 ```
 
-### Anonymisation des données sensibles
-
-Ce script est utilisé sur l'environnement de staging afin de remplacer les données sensibles et visibles par de fausses informations après la récupération de données réelles (cf #les-donnees).
-
-Il ne peut pas être exécuté en production.
-
-```bash
-ts-node scripts/anonymizeDb.ts
-```
-
-## Validation de l'éligibilité d'étudiants
-
-```bash
-ts-node scripts/validateCertificatesStudents.ts 2025-2026 xxx1,xxx2
-```
-
 ### Clean des noms d'institutions
 
 Cette tache s'effectue en 3 étapes.
@@ -262,4 +246,58 @@ Pour mettre à jour toutes les données venant de DS vers PG, un cron est lancé
 
 ```bash
 node ./cron_jobs/cron.js
+```
+
+## Scripts
+
+Pour lancer un script en local qui utilise le .env
+
+```bash
+node -r dotenv/config -r ts-node/register scripts/toto.ts
+```
+
+Pour lancer un script dans le container docker (utile si le script envoie un email par exemple et que l'on souhaite tester)
+
+```bash
+docker exec sante-psy-web-1 node -r dotenv/config -r ts-node/register scripts/toto.ts
+```
+
+### Rendre des étudiants éligibles pour une année scolaire
+
+```bash
+ts-node scripts/makeStudentsEligible.ts 2025-2026 xxx1,xxx2
+```
+
+### Rendre des étudiants non éligibles pour une année scolaire
+
+```bash
+ts-node scripts/makeStudentsNotEligible.ts 2025-2026 xxx1,xxx2
+```
+
+### Télécharger les certificats d'une liste d'étudiants
+
+Les documents seront téléchargés dans ./downloaded-certificates
+
+```bash
+ts-node scripts/downloadCertificates.ts 2025-2026 xxx1,xxx2
+```
+
+### Run une commande sur scalingo
+
+```bash
+scalingo --region osc-fr1 --app sante-psy-etudiant-staging bash
+
+ts-node --transpile-only scripts/makeStudentsEligible.ts 2025-2026 xxx
+```
+
+### SUPPORT - Déclaration de séances
+
+```bash
+node -r dotenv/config -r ts-node/register scripts/declareAppointments.ts
+```
+
+### SUPPORT - Modification d'étudiants
+
+```bash
+node -r dotenv/config -r ts-node/register scripts/updateStudents.ts
 ```
