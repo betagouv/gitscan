@@ -19,7 +19,9 @@
 │   │   │   └── action.yml
 │   │   ├── setup-playwright
 │   │   │   └── action.yml
-│   │   └── setup-python
+│   │   ├── setup-python
+│   │   │   └── action.yml
+│   │   └── trivy-scan-and-push
 │   │       └── action.yml
 │   ├── ci-areas.yml
 │   ├── dependabot.yml
@@ -28,9 +30,11 @@
 │   └── workflows
 │       ├── _airflow-build-and-push-docker.yml
 │       ├── _deploy-airflow.yml
+│       ├── _deploy-nginx.yml
 │       ├── _deploy-on-scalingo.yml
 │       ├── _deploy-webapp.yml
 │       ├── _e2e.yml
+│       ├── _nginx-build-and-push-docker.yml
 │       ├── _pytest-job.yml
 │       ├── _scaleway-container-deploy.yml
 │       ├── _terragrunt-apply.yml
@@ -57,6 +61,7 @@
 ├── .secrets.baseline
 ├── .slugignore
 ├── .tool-versions
+├── .trivyignore
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
@@ -1007,6 +1012,11 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
+│   │   │   ├── env.hcl
+│   │   │   ├── nginx_containers
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
 │   │   │   └── object_storage
 │   │   │       ├── .terraform.lock.hcl
 │   │   │       ├── terraform.tfvars.example
@@ -1043,6 +1053,10 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
+│   │   │   ├── nginx_containers
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
 │   │   │   ├── object_storage
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
@@ -1056,6 +1070,7 @@
 │       │   ├── airflow-scheduler.tf
 │       │   ├── airflow-webserver.tf
 │       │   ├── namespace.tf
+│       │   ├── outputs.tf
 │       │   └── variables.tf
 │       ├── container
 │       │   ├── airflow-scheduler.tf
@@ -1077,6 +1092,11 @@
 │       ├── metabase_containers
 │       │   ├── metabase.tf
 │       │   ├── namespace.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       ├── nginx_containers
+│       │   ├── namespace.tf
+│       │   ├── nginx.tf
 │       │   ├── outputs.tf
 │       │   └── variables.tf
 │       ├── object_storage
@@ -1199,6 +1219,10 @@
 │   │       ├── test_preprocessing.py
 │   │       └── test_preprocessing_entities.py
 │   └── uv.lock
+├── nginx
+│   ├── generate-routes.sh
+│   ├── nginx.Dockerfile
+│   └── nginx.conf
 ├── package-lock.json
 ├── package.json
 ├── pyproject.toml
@@ -2585,4 +2609,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-454 directories, 2133 files
+459 directories, 2152 files
