@@ -1,25 +1,22 @@
-## Changelog : pass-sport (30 derniers jours, au 9 novembre 2026)
+## Changelog : pass-sport (30 derniers jours, au 16 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience utilisateur grâce à l'automatisation du pré-remplissage des dossiers via FranceConnect. Parallèlement, le projet a renforcé sa robustesse technique avec une refactorisation des traitements de données et une mise à jour majeure de l'infrastructure logicielle pour garantir une meilleure sécurité et performance.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur via FranceConnect, notamment grâce au pré-remplissage des informations des dossiers. La fiabilité des données a été renforcée par une meilleure gestion des boursiers (Cnous) et des communes, tandis que la sécurité et l'accès au tableau de bord ont été consolidés.
 
 ### Évolutions fonctionnelles
-- **Simplification des démarches** : Mise en place du pré-remplissage des dossiers pour les utilisateurs connectés via FranceConnect [#694](https://github.com/betagouv/pass-sport/pull/694).
-- **Amélioration de l'interface** : Ajout d'un indicateur visuel (label) pour identifier les dossiers pré-remplis et mise à jour de certains textes (wording) pour plus de clarté.
-- **Gestion des données** : Intégration de nouveaux flux de données, notamment pour les boursiers Cnous et les bénéficiaires de l'AAH.
-- **Mises à jour administratives** : Actualisation de la page des mentions légales et des motifs de contact dans le formulaire [#654](https://github.com/betagouv/pass-sport/pull/654).
+- Amélioration du parcours FranceConnect avec le pré-remplissage des informations des dossiers [#694](https://github.com/betagouv/pass-sport/pull/694) et l'ajout de labels pour identifier les dossiers pré-remplis.
+- Simplification du parcours pour les boursiers (formulaire à coche unique) et intégration de nouveaux flux de données Cnous [#695](https://github.com/betagouv/pass-sport/pull/695).
+- Fiabilisation de la gestion des communes (nouvelles et anciennes communes) [#721](https://github.com/betagouv/pass-sport/pull/721).
+- Prise en compte des bénéficiaires AAH pour les équipes de support.
+- Évolutions de l'interface utilisateur (UI) du Dossier Numérique et ajustements de la rédaction pour plus de clarté.
 
 ### Évolutions techniques
-- **Traitement de données** : Refactorisation des scripts de traitement de données vers Python pour une meilleure gestion des flux (Cnous, Grist-DN).
-- **Infrastructure et Sécurité** : 
-    - Mise à jour majeure de l'environnement (Next.js, Crisp API).
-    - Renforcement de la sécurité des versions et durcissement de la sécurité globale.
-    - Sécurisation de l'accès au tableau de bord via un chemin secret et l'utilisation de "feature flags".
-- **Optimisation système** : 
-    - Amélioration de la gestion des erreurs (erreurs 404 et problèmes de cache).
-    - Optimisation de la configuration Docker (séparation des stacks WAF et non-WAF).
-- **Qualité logicielle** : Corrections diverses sur la suite de tests et amélioration des processus de "dry run" pour les données.
+- Refonte et optimisation des pipelines de traitement des Dossiers Numériques (DN).
+- Sécurisation de l'accès au tableau de bord via un chemin secret [#671](https://github.com/betagouv/pass-sport/pull/671) et résolution de problèmes de cache et de gestion des erreurs 404.
+- Correction de l'envoi des codes communes de naissance vers l'API Particulier.
+- Amélioration du suivi des erreurs avec Sentry, en corrigeant le masquage des URLs du tableau de bord [#735](https://github.com/betagouv/pass-sport/pull/735).
+- Mises à jour de l'infrastructure technique (Node.js) et durcissement de la sécurité.
 
 ### Autres changements
-- Mise à jour de la configuration de monitoring (Sentry).
-- Nettoyage de la documentation et de la configuration Ansible.
+- Mise à jour de la page des mentions légales.
+- Ajout de variables d'environnement pour faciliter le développement local.

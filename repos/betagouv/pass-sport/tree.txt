@@ -116,12 +116,15 @@
 │   │   │   ├── apercu.py
 │   │   │   ├── apercu_dn.sh
 │   │   │   ├── dn_client.py
+│   │   │   ├── dn_doublons.py
 │   │   │   ├── dn_pipeline.py
 │   │   │   ├── mapping.py
 │   │   │   ├── match_dn.sql
 │   │   │   ├── run_dn.sh
+│   │   │   ├── run_dn_doublons.sh
 │   │   │   ├── test_apercu.py
 │   │   │   ├── test_clients.py
+│   │   │   ├── test_dn_doublons.py
 │   │   │   ├── test_dn_pipeline.py
 │   │   │   ├── test_fc_finds_dn_codes.py
 │   │   │   ├── test_match_dn.py
@@ -617,8 +620,6 @@
 │   │   │       │   │   ├── allowance-step
 │   │   │       │   │   │   ├── AllowanceStep.tsx
 │   │   │       │   │   │   └── styles.module.scss
-│   │   │       │   │   ├── boursier-alert
-│   │   │       │   │   │   └── BoursierAlert.tsx
 │   │   │       │   │   ├── city-finder
 │   │   │       │   │   │   ├── CityFinder.tsx
 │   │   │       │   │   │   └── styles.module.scss
@@ -934,10 +935,12 @@
     │   │   ├── facts.ts
     │   │   └── prefill.ts
     │   ├── eligibility
+    │   │   ├── birthplace.ts
     │   │   ├── calls.ts
     │   │   ├── candidates.ts
     │   │   ├── checkpoint.ts
     │   │   ├── client.ts
+    │   │   ├── cog-corse.ts
     │   │   ├── rate-gate.ts
     │   │   ├── real-client.ts
     │   │   ├── sequence.ts
@@ -963,8 +966,11 @@
     │   ├── queues.ts
     │   ├── scripts
     │   │   ├── aeeh-422-replay.ts
+    │   │   ├── cog-relance.ts
     │   │   ├── dn-champs.ts
+    │   │   ├── enqueue-cog-relance.ts
     │   │   ├── enqueue-fc-code-emails.ts
+    │   │   ├── generate-cog-corse.ts
     │   │   ├── qf-batch-workdir -> ../../../data/2026/partners/qf-batch-workdir/
     │   │   ├── qf-batch.ts
     │   │   ├── rate-config.ts
@@ -983,6 +989,7 @@
     │   │   ├── dedup.e2e.test.ts
     │   │   ├── fc-code-emails.e2e.test.ts
     │   │   ├── fc-dn-dossier.e2e.test.ts
+    │   │   ├── fc-relance-cog.e2e.test.ts
     │   │   ├── fc-relance-qf-backfill.e2e.test.ts
     │   │   ├── fc-relance.e2e.test.ts
     │   │   ├── harness.ts
@@ -996,6 +1003,7 @@
     │   │   ├── stale-job-requeue.e2e.test.ts
     │   │   └── validation-error.e2e.test.ts
     │   └── unit
+    │       ├── birthplace.test.ts
     │       ├── calls.test.ts
     │       ├── candidates.test.ts
     │       ├── checkpoint.test.ts
@@ -1017,4 +1025,4 @@
     ├── tsconfig.build.json
     ├── tsconfig.json
     └── vitest.config.ts
-234 directories, 785 files
+233 directories, 794 files
