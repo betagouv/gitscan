@@ -28,10 +28,17 @@
 │   ├── db.svg
 │   ├── departements.md
 │   ├── dependabot.md
+│   ├── email.md
+│   ├── messagerie.md
 │   ├── ofii_referential.md
+│   ├── perimeters_and_grants.png
 │   ├── permissions.md
+│   ├── rfc
+│   │   └── campagne-tarification
+│   │       └── rfc-01-socle-messagerie.md
 │   ├── scripts.md
 │   ├── structure-typology.md
+│   ├── tarification.md
 │   ├── tests.md
 │   └── transfo_huda_cada.md
 ├── eslint.config.mjs
@@ -309,20 +316,37 @@
 │   │   │   └── migration.sql
 │   │   ├── 20261015121833_remove_filiales
 │   │   │   └── migration.sql
+│   │   ├── 20261027082034_messagerie
+│   │   │   └── migration.sql
+│   │   ├── 20261027092842_messagerie_pieces_jointes
+│   │   │   └── migration.sql
 │   │   ├── 20261027094218_add_isagent
 │   │   │   └── migration.sql
+│   │   ├── 20261029065507_messagerie_notifications
+│   │   │   └── migration.sql
 │   │   ├── 20261029114907_clean_taux_encadrement_cible
+│   │   │   └── migration.sql
+│   │   ├── 20261030091358_tarification_modele
+│   │   │   └── migration.sql
+│   │   ├── 20261104130119_remove_old_grants
+│   │   │   └── migration.sql
+│   │   ├── 20261105144047_refacto_grants_and_perimeters
+│   │   │   └── migration.sql
+│   │   ├── 20261106120000_rename_notification_to_announcement
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
 │   │   ├── adresse.prisma
+│   │   ├── announcement.prisma
 │   │   ├── anomalie.prisma
 │   │   ├── budget.prisma
 │   │   ├── contact.prisma
 │   │   ├── controle.prisma
+│   │   ├── conversation.prisma
 │   │   ├── cpom.prisma
 │   │   ├── dna.prisma
+│   │   ├── email-notification.prisma
 │   │   ├── evaluation.prisma
 │   │   ├── evenement-indesirable-grave.prisma
 │   │   ├── faq.prisma
@@ -332,13 +356,13 @@
 │   │   ├── indicateur-financier.prisma
 │   │   ├── location.prisma
 │   │   ├── note.prisma
-│   │   ├── notification.prisma
 │   │   ├── operateur.prisma
 │   │   ├── reporting.prisma
 │   │   ├── rmu.prisma
 │   │   ├── schema.prisma
 │   │   ├── structure-version.prisma
 │   │   ├── structure.prisma
+│   │   ├── tarification.prisma
 │   │   ├── transformation.prisma
 │   │   └── user.prisma
 │   ├── seed.ts
@@ -346,11 +370,13 @@
 │   │   ├── acte-administratif.seed.ts
 │   │   ├── activite.seed.ts
 │   │   ├── adresse.seed.ts
+│   │   ├── announcement.seed.ts
 │   │   ├── antenne.seed.ts
 │   │   ├── budget.seed.ts
 │   │   ├── cible-financiere.seed.ts
 │   │   ├── contact.seed.ts
 │   │   ├── controle.seed.ts
+│   │   ├── conversation.seed.ts
 │   │   ├── cpom.seed.ts
 │   │   ├── departements.seed.ts
 │   │   ├── dna.seed.ts
@@ -362,12 +388,13 @@
 │   │   ├── finess.seed.ts
 │   │   ├── form.seed.ts
 │   │   ├── indicateur-financier.seed.ts
-│   │   ├── notification.seed.ts
 │   │   ├── operateur.seed.ts
 │   │   ├── rmu.seed.ts
 │   │   ├── role.seed.ts
 │   │   ├── structure-typologie.seed.ts
-│   │   └── structure-version.seed.ts
+│   │   ├── structure-version.seed.ts
+│   │   ├── tarification-journal.scenarios.ts
+│   │   └── tarification-journal.seed.ts
 │   └── utils
 │       ├── code-bhasile.util.ts
 │       ├── common.util.ts
@@ -430,7 +457,11 @@
 │   │   ├── 20261006-end-cpom-structures-at-fermeture.ts
 │   │   ├── 20261021-migrate-individual-email-patterns.ts
 │   │   ├── 20261021-regional-cpoms-use-region.ts
-│   │   └── 20261027-mark-existing-agents.ts
+│   │   ├── 20261027-mark-existing-agents.ts
+│   │   ├── 20261102-backfill-tarification-from-fiche.ts
+│   │   ├── 20261104-clean-grants-and-emails.ts
+│   │   ├── 20261104-reset-agents.ts
+│   │   └── 20261105-compare-fermetures-ofii.ts
 │   ├── postdeploy.sh
 │   ├── recurring-scripts
 │   │   ├── brevo-push-users.ts
@@ -440,7 +471,7 @@
 │   │   ├── empty-bucket.ts
 │   │   ├── fill-cpoms.ts
 │   │   ├── fill-monthly-reporting.ts
-│   │   ├── fill-roles.ts
+│   │   ├── notify-messages.ts
 │   │   ├── ofii-fill-referential-and-activity.ts
 │   │   ├── recompute-anomalies.ts
 │   │   ├── reporting-indicator-categories.ts
@@ -448,12 +479,12 @@
 │   │   └── transfo-huda-cada-fetch.ts
 │   ├── run-one-off.sh
 │   ├── utils
+│   │   ├── agents-reset.util.ts
 │   │   ├── brevo.util.ts
 │   │   ├── csv-loader.ts
 │   │   ├── demarche-numerique.util.ts
 │   │   ├── departement-name.ts
 │   │   ├── ensure-operateurs-exist.ts
-│   │   ├── grant.util.ts
 │   │   ├── ofii-fill-activity.ts
 │   │   ├── ofii-fill-referential.ts
 │   │   ├── ofii-xlsx.ts
@@ -481,6 +512,8 @@
 │   │   ├── (authenticated)
 │   │   │   ├── (with-menu)
 │   │   │   │   ├── _components
+│   │   │   │   │   ├── AnnouncementsBlock.tsx
+│   │   │   │   │   ├── AnnouncementsCarousel.tsx
 │   │   │   │   │   ├── AnomalieJustificationModal.tsx
 │   │   │   │   │   ├── AnomalieRow.tsx
 │   │   │   │   │   ├── AnomaliesBlock.tsx
@@ -493,8 +526,6 @@
 │   │   │   │   │   ├── DashboardPagination.tsx
 │   │   │   │   │   ├── InitialisationActualisationRow.tsx
 │   │   │   │   │   ├── InitialisationsActualisationsBlock.tsx
-│   │   │   │   │   ├── NotificationsBlock.tsx
-│   │   │   │   │   ├── NotificationsCarousel.tsx
 │   │   │   │   │   ├── RappelRow.tsx
 │   │   │   │   │   ├── RappelsBlock.tsx
 │   │   │   │   │   ├── RappelsControls.tsx
@@ -544,10 +575,6 @@
 │   │   │   │   │   │   │   └── CpomAjoutHeader.tsx
 │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   └── page.tsx
-│   │   │   │   ├── deconnexion
-│   │   │   │   │   ├── page.tsx
-│   │   │   │   │   └── proconnect
-│   │   │   │   │       └── page.tsx
 │   │   │   │   ├── error.tsx
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── not-found.tsx
@@ -662,6 +689,7 @@
 │   │   │   │       ├── [id]
 │   │   │   │       │   ├── _components
 │   │   │   │       │   │   ├── ButtonAffectations.tsx
+│   │   │   │       │   │   ├── ModificationGuard.tsx
 │   │   │   │       │   │   ├── Structure.tsx
 │   │   │   │       │   │   ├── _actes-administratifs
 │   │   │   │       │   │   │   └── ActesAdministratifsStructure.tsx
@@ -719,7 +747,8 @@
 │   │   │   │       │   │   │   ├── StructureHeaderActions.tsx
 │   │   │   │       │   │   │   ├── StructureHeaderModals.tsx
 │   │   │   │       │   │   │   ├── StructureMenu.tsx
-│   │   │   │       │   │   │   └── StructurePdfExportDocument.tsx
+│   │   │   │       │   │   │   ├── StructurePdfExportDocument.tsx
+│   │   │   │       │   │   │   └── TarificationLink.tsx
 │   │   │   │       │   │   ├── _notes
 │   │   │   │       │   │   │   └── NotesBlock.tsx
 │   │   │   │       │   │   ├── _pdf-export
@@ -757,13 +786,12 @@
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   ├── 06-notes
 │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │       │   │   └── _components
-│   │   │   │       │   │       ├── Tab.tsx
-│   │   │   │       │   │       └── Tabs.tsx
+│   │   │   │       │   │   ├── _components
+│   │   │   │       │   │   │   ├── Tab.tsx
+│   │   │   │       │   │   │   └── Tabs.tsx
+│   │   │   │       │   │   └── layout.tsx
 │   │   │   │       │   ├── layout.tsx
 │   │   │   │       │   ├── modification
-│   │   │   │       │   │   ├── _components
-│   │   │   │       │   │   │   └── ModificationGuard.tsx
 │   │   │   │       │   │   ├── actes-administratifs
 │   │   │   │       │   │   │   └── page.tsx
 │   │   │   │       │   │   ├── adresses
@@ -793,6 +821,45 @@
 │   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   └── structures
+│   │   │       ├── [id]
+│   │   │       │   └── tarification
+│   │   │       │       ├── [year]
+│   │   │       │       │   ├── _components
+│   │   │       │       │   │   ├── AttachmentChip.tsx
+│   │   │       │       │   │   ├── CampaignNotice.tsx
+│   │   │       │       │   │   ├── CampaignSelect.tsx
+│   │   │       │       │   │   ├── ContradictoireNotice.tsx
+│   │   │       │       │   │   ├── Conversation.tsx
+│   │   │       │       │   │   ├── ConversationSummary.tsx
+│   │   │       │       │   │   ├── DocumentActionBar.tsx
+│   │   │       │       │   │   ├── DocumentDeposit.tsx
+│   │   │       │       │   │   ├── DocumentPanel.tsx
+│   │   │       │       │   │   ├── DocumentVersionDetails.tsx
+│   │   │       │       │   │   ├── DocumentVersions.tsx
+│   │   │       │       │   │   ├── DocumentViewer.tsx
+│   │   │       │       │   │   ├── Echanges.tsx
+│   │   │       │       │   │   ├── EchangesDrawer.tsx
+│   │   │       │       │   │   ├── HighlightedText.tsx
+│   │   │       │       │   │   ├── L48ResponseButtons.tsx
+│   │   │       │       │   │   ├── MessageAttachment.tsx
+│   │   │       │       │   │   ├── MessageComposer.tsx
+│   │   │       │       │   │   ├── MessageItem.tsx
+│   │   │       │       │   │   ├── MessageSearchBar.tsx
+│   │   │       │       │   │   ├── MessageTag.tsx
+│   │   │       │       │   │   ├── OutOfBhasileButton.tsx
+│   │   │       │       │   │   ├── PreliminarySectionLink.tsx
+│   │   │       │       │   │   ├── ReadOnlyNotice.tsx
+│   │   │       │       │   │   ├── SidebarStep.tsx
+│   │   │       │       │   │   ├── StepParticipantsSummary.tsx
+│   │   │       │       │   │   ├── StepProgressLine.tsx
+│   │   │       │       │   │   ├── StepProgressList.tsx
+│   │   │       │       │   │   ├── TagSelect.tsx
+│   │   │       │       │   │   ├── TarificationActionModal.tsx
+│   │   │       │       │   │   ├── TarificationHeader.tsx
+│   │   │       │       │   │   ├── TarificationSidebar.tsx
+│   │   │       │       │   │   └── UnreadCountBadge.tsx
+│   │   │       │       │   └── page.tsx
+│   │   │       │       └── page.tsx
 │   │   │       └── transformation
 │   │   │           ├── [transformationId]
 │   │   │           │   ├── [transformationStructureType]
@@ -848,6 +915,10 @@
 │   │   │   ├── connexion
 │   │   │   │   ├── AccesRefuse.tsx
 │   │   │   │   └── page.tsx
+│   │   │   ├── deconnexion
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── proconnect
+│   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── mentions-legales
 │   │   │   │   └── page.tsx
@@ -919,6 +990,10 @@
 │   │   │   │   ├── adresse.util.ts
 │   │   │   │   ├── ban.client.ts
 │   │   │   │   └── ban.service.ts
+│   │   │   ├── announcements
+│   │   │   │   ├── announcement.repository.ts
+│   │   │   │   ├── announcement.service.ts
+│   │   │   │   └── announcement.util.ts
 │   │   │   ├── anomalies
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
@@ -941,6 +1016,11 @@
 │   │   │   ├── controles
 │   │   │   │   ├── controle.repository.ts
 │   │   │   │   └── controle.util.ts
+│   │   │   ├── conversations
+│   │   │   │   ├── conversation.db.type.ts
+│   │   │   │   ├── conversation.repository.ts
+│   │   │   │   ├── conversation.service.ts
+│   │   │   │   └── conversation.util.ts
 │   │   │   ├── cpoms
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
@@ -979,8 +1059,6 @@
 │   │   │   │   └── dna-structure.util.ts
 │   │   │   ├── documents-financiers
 │   │   │   │   └── documentFinancier.repository.ts
-│   │   │   ├── email-patterns
-│   │   │   │   └── email-pattern.repository.ts
 │   │   │   ├── evaluations
 │   │   │   │   └── evaluation.repository.ts
 │   │   │   ├── faq
@@ -1006,10 +1084,6 @@
 │   │   │   │   └── indicateur-financier.repository.ts
 │   │   │   ├── metabase
 │   │   │   │   └── route.ts
-│   │   │   ├── notifications
-│   │   │   │   ├── notification.repository.ts
-│   │   │   │   ├── notification.service.ts
-│   │   │   │   └── notification.util.ts
 │   │   │   ├── operateurs
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
@@ -1079,6 +1153,26 @@
 │   │   │   │   ├── structure.repository.ts
 │   │   │   │   ├── structure.service.ts
 │   │   │   │   └── structure.util.ts
+│   │   │   ├── tarifications
+│   │   │   │   ├── [structureId]
+│   │   │   │   │   └── [year]
+│   │   │   │   │       ├── documents
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       ├── events
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       └── messages
+│   │   │   │   │           ├── read
+│   │   │   │   │           │   └── route.ts
+│   │   │   │   │           └── route.ts
+│   │   │   │   ├── messages
+│   │   │   │   │   └── [messageId]
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── tarification-document.repository.ts
+│   │   │   │   ├── tarification-event.repository.ts
+│   │   │   │   ├── tarification.constants.ts
+│   │   │   │   ├── tarification.repository.ts
+│   │   │   │   ├── tarification.service.ts
+│   │   │   │   └── tarification.util.ts
 │   │   │   ├── transformations
 │   │   │   │   ├── [id]
 │   │   │   │   │   ├── route.ts
@@ -1470,14 +1564,16 @@
 │   ├── components
 │   │   ├── CallToActionBanner.tsx
 │   │   ├── PageHeader.tsx
-│   │   └── header-filters
-│   │       ├── FilterDropdown.tsx
-│   │       ├── FilterOperateur.tsx
-│   │       ├── FilterTypeStructure.tsx
-│   │       ├── FiltersDepartement.tsx
-│   │       ├── FiltersRegion.tsx
-│   │       ├── FiltersTypesCheckbox.tsx
-│   │       └── HeaderFilters.tsx
+│   │   ├── header-filters
+│   │   │   ├── FilterDropdown.tsx
+│   │   │   ├── FilterOperateur.tsx
+│   │   │   ├── FilterTypeStructure.tsx
+│   │   │   ├── FiltersDepartement.tsx
+│   │   │   ├── FiltersRegion.tsx
+│   │   │   ├── FiltersTypesCheckbox.tsx
+│   │   │   └── HeaderFilters.tsx
+│   │   └── structures
+│   │       └── StructureHeaderContent.tsx
 │   ├── config
 │   │   ├── acte-administratif.config.ts
 │   │   ├── budget.config.ts
@@ -1499,7 +1595,12 @@
 │   │   ├── TransformationContext.tsx
 │   │   └── createEntityContext.tsx
 │   ├── hooks
-│   │   └── useFilterSelection.ts
+│   │   ├── useConversationMessages.ts
+│   │   ├── useFilterSelection.ts
+│   │   ├── useMessageAttachments.ts
+│   │   ├── useMessageDraft.ts
+│   │   ├── useMessageSearch.ts
+│   │   └── useTarificationActions.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── lib
@@ -1519,20 +1620,34 @@
 │   │   │       ├── finance.rule.ts
 │   │   │       ├── index.ts
 │   │   │       └── places.rule.ts
+│   │   ├── brevo.ts
 │   │   ├── casl
 │   │   │   ├── cpom.ability.ts
 │   │   │   ├── file.ability.ts
 │   │   │   ├── index.ts
 │   │   │   ├── operateur.ability.ts
+│   │   │   ├── pages.ts
 │   │   │   ├── rules.ts
-│   │   │   └── structure.ability.ts
+│   │   │   ├── structure.ability.ts
+│   │   │   └── tarification.ability.ts
 │   │   ├── minio.ts
 │   │   ├── next-auth
 │   │   │   ├── auth-error.ts
 │   │   │   ├── auth-failure.ts
 │   │   │   ├── auth-util.ts
 │   │   │   └── auth.ts
-│   │   └── prisma.ts
+│   │   ├── prisma.ts
+│   │   └── tarification
+│   │       ├── tarification.actions.ts
+│   │       ├── tarification.anchor.ts
+│   │       ├── tarification.campaign.ts
+│   │       ├── tarification.compute.ts
+│   │       ├── tarification.definition.ts
+│   │       ├── tarification.event.ts
+│   │       ├── tarification.fiche.ts
+│   │       ├── tarification.guard.ts
+│   │       ├── tarification.section.ts
+│   │       └── tarification.visibility.ts
 │   ├── proxy
 │   │   ├── auth-config.ts
 │   │   ├── auth-util.ts
@@ -1559,6 +1674,7 @@
 │   │   │   ├── finess.schema.ts
 │   │   │   ├── form.schema.ts
 │   │   │   ├── indicateurFinancier.schema.ts
+│   │   │   ├── message.schema.ts
 │   │   │   ├── operateur.schema.ts
 │   │   │   ├── region.schema.ts
 │   │   │   ├── statistique-cartographie.schema.ts
@@ -1567,6 +1683,7 @@
 │   │   │   ├── structure-typologie.schema.ts
 │   │   │   ├── structure-version.schema.ts
 │   │   │   ├── structure.schema.ts
+│   │   │   ├── tarification.schema.ts
 │   │   │   ├── transformation.schema.ts
 │   │   │   └── user-action.schema.ts
 │   │   └── forms
@@ -1617,6 +1734,7 @@
 │   │   ├── adresse.type.ts
 │   │   ├── anomalie.type.ts
 │   │   ├── controle.type.ts
+│   │   ├── conversation.type.ts
 │   │   ├── cpom.type.ts
 │   │   ├── dashboard.type.ts
 │   │   ├── departement.type.ts
@@ -1637,13 +1755,18 @@
 │   │   ├── structure-history.type.ts
 │   │   ├── structure-list.type.ts
 │   │   ├── structure.type.ts
+│   │   ├── tarification.type.ts
 │   │   ├── transformation.type.ts
 │   │   └── utils.type.ts
 │   ├── utils
+│   │   ├── conversation.util.ts
 │   │   ├── dashboardOrigin.util.ts
 │   │   ├── document-financier-form.util.ts
 │   │   ├── file-deletion.util.ts
 │   │   ├── filters.util.ts
+│   │   ├── menu.util.ts
+│   │   ├── message-search.util.ts
+│   │   ├── path.util.ts
 │   │   ├── region.util.ts
 │   │   ├── statistiques.util.ts
 │   │   └── structure-type.util.ts
@@ -1656,7 +1779,7 @@
 │   ├── (authenticated)
 │   │   ├── (with-menu)
 │   │   │   ├── _components
-│   │   │   │   └── NotificationsCarousel.test.tsx
+│   │   │   │   └── AnnouncementsCarousel.test.tsx
 │   │   │   ├── ressources
 │   │   │   │   └── _components
 │   │   │   │       └── ResourcesContent.test.tsx
@@ -1668,6 +1791,7 @@
 │   │   │       └── [id]
 │   │   │           └── _components
 │   │   │               ├── _description
+│   │   │               │   ├── CpomViewer.test.tsx
 │   │   │               │   └── _historique
 │   │   │               │       ├── HistoryEventLabel.test.tsx
 │   │   │               │       └── StructureRefLinks.test.tsx
@@ -1687,7 +1811,8 @@
 │   │       ├── [id]
 │   │       │   ├── _components
 │   │       │   │   └── _header
-│   │       │   │       └── StructureHeader.test.tsx
+│   │       │   │       ├── StructureHeader.test.tsx
+│   │       │   │       └── StructureMenu.test.tsx
 │   │       │   ├── actualisation
 │   │       │   │   └── [year]
 │   │       │   │       ├── 01-places
@@ -1711,21 +1836,33 @@
 │   │       │   │   │   └── page.test.tsx
 │   │       │   │   └── 06-notes
 │   │       │   │       └── page.test.tsx
-│   │       │   └── modification
-│   │       │       ├── actes-administratifs
+│   │       │   ├── modification
+│   │       │   │   ├── actes-administratifs
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── adresses
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── controle-qualite
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── description
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── finances
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   ├── notes
+│   │       │   │   │   └── page.test.tsx
+│   │       │   │   └── type-places
+│   │       │   │       └── page.test.tsx
+│   │       │   └── tarification
+│   │       │       ├── [year]
+│   │       │       │   ├── CampaignNotice.test.tsx
+│   │       │       │   ├── ContradictoireNotice.test.tsx
+│   │       │       │   ├── DocumentActionBar.test.tsx
+│   │       │       │   ├── DocumentDeposit.test.tsx
+│   │       │       │   ├── DocumentPanel.test.tsx
+│   │       │       │   ├── DocumentViewer.test.tsx
+│   │       │       │   ├── Echanges.test.tsx
+│   │       │       │   ├── TarificationSidebar.test.tsx
 │   │       │       │   └── page.test.tsx
-│   │       │       ├── adresses
-│   │       │       │   └── page.test.tsx
-│   │       │       ├── controle-qualite
-│   │       │       │   └── page.test.tsx
-│   │       │       ├── description
-│   │       │       │   └── page.test.tsx
-│   │       │       ├── finances
-│   │       │       │   └── page.test.tsx
-│   │       │       ├── notes
-│   │       │       │   └── page.test.tsx
-│   │       │       └── type-places
-│   │       │           └── page.test.tsx
+│   │       │       └── page.test.tsx
 │   │       ├── _components
 │   │       │   ├── ListTableHeadings.test.tsx
 │   │       │   └── OrderButton.test.tsx
@@ -1752,6 +1889,7 @@
 │   │               └── TransformationSteps.test.tsx
 │   ├── api
 │   │   ├── actes-administratifs
+│   │   │   ├── acte-administratif.repository.test.ts
 │   │   │   └── acte-administratif.util.test.ts
 │   │   ├── activites
 │   │   │   ├── activite.repository.test.ts
@@ -1762,12 +1900,18 @@
 │   │   │   ├── adresse.util.test.ts
 │   │   │   ├── ban.client.test.ts
 │   │   │   └── ban.service.test.ts
+│   │   ├── announcements
+│   │   │   ├── announcement.repository.test.ts
+│   │   │   └── announcement.util.test.ts
 │   │   ├── anomalies
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
 │   │   │   └── anomalie.repository.test.ts
 │   │   ├── contacts
 │   │   │   └── contact.service.test.ts
+│   │   ├── conversations
+│   │   │   ├── conversation.repository.test.ts
+│   │   │   └── conversation.util.test.ts
 │   │   ├── cpoms
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
@@ -1797,9 +1941,6 @@
 │   │   │   └── route.test.ts
 │   │   ├── filters
 │   │   │   └── filters.service.test.ts
-│   │   ├── notifications
-│   │   │   ├── notification.repository.test.ts
-│   │   │   └── notification.util.test.ts
 │   │   ├── operateurs
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
@@ -1817,6 +1958,7 @@
 │   │   │   ├── finance.util.test.ts
 │   │   │   ├── places.util.test.ts
 │   │   │   ├── rmu.util.test.ts
+│   │   │   ├── route.test.ts
 │   │   │   ├── statistiques.util.test.ts
 │   │   │   ├── structures.util.test.ts
 │   │   │   └── test-helpers.ts
@@ -1833,6 +1975,25 @@
 │   │   │   ├── structure.repository.test.ts
 │   │   │   ├── structure.util.test.ts
 │   │   │   └── upcoming-transformations.util.test.ts
+│   │   ├── tarifications
+│   │   │   ├── [structureId]
+│   │   │   │   └── [year]
+│   │   │   │       ├── documents
+│   │   │   │       │   └── route.test.ts
+│   │   │   │       ├── events
+│   │   │   │       │   └── route.test.ts
+│   │   │   │       └── messages
+│   │   │   │           ├── read
+│   │   │   │           │   └── route.test.ts
+│   │   │   │           └── route.test.ts
+│   │   │   ├── messages
+│   │   │   │   └── [messageId]
+│   │   │   │       └── route.test.ts
+│   │   │   ├── tarification.fiche.repository.test.ts
+│   │   │   ├── tarification.l48-response.repository.test.ts
+│   │   │   ├── tarification.repository.test.ts
+│   │   │   ├── tarification.service.test.ts
+│   │   │   └── tarification.util.test.ts
 │   │   ├── transformations
 │   │   │   ├── [id]
 │   │   │   │   ├── route.test.ts
@@ -1842,6 +2003,7 @@
 │   │   │   ├── transformation.repository.test.ts
 │   │   │   └── transformation.util.test.ts
 │   │   └── users
+│   │       ├── user.repository.test.ts
 │   │       └── user.util.test.ts
 │   ├── app
 │   │   └── components
@@ -1849,6 +2011,8 @@
 │   │       │   └── PlacesWithPercentage.test.tsx
 │   │       └── forms
 │   │           └── finance
+│   │               ├── budget-tables
+│   │               │   └── BudgetTableCommentLine.test.tsx
 │   │               └── documents
 │   │                   ├── DocumentsFinanciersGrid.test.tsx
 │   │                   └── documentsStructures.test.ts
@@ -2045,6 +2209,7 @@
 │   │   ├── useSpreadsheetParse.test.ts
 │   │   ├── useStructureSelections.test.ts
 │   │   ├── useStructures.test.ts
+│   │   ├── useTarificationActions.test.ts
 │   │   ├── useTransformationFormHandling.test.ts
 │   │   ├── useTransformationNavigateWithSave.test.ts
 │   │   └── useTransformations.test.ts
@@ -2059,12 +2224,28 @@
 │   │   │       ├── characteristics.rule.test.ts
 │   │   │       ├── finance.rule.test.ts
 │   │   │       └── places.rule.test.ts
-│   │   └── casl
-│   │       └── abilities.test.ts
+│   │   ├── casl
+│   │   │   ├── abilities.test.ts
+│   │   │   ├── pages.test.ts
+│   │   │   └── tarification.ability.test.ts
+│   │   ├── next-auth
+│   │   │   └── auth-util.test.ts
+│   │   └── tarification
+│   │       ├── tarification.actions.test.ts
+│   │       ├── tarification.anchor.test.ts
+│   │       ├── tarification.campaign.test.ts
+│   │       ├── tarification.compute.test.ts
+│   │       ├── tarification.event.test.ts
+│   │       ├── tarification.fiche.test.ts
+│   │       ├── tarification.guard.test.ts
+│   │       ├── tarification.section.test.ts
+│   │       └── tarification.visibility.test.ts
 │   ├── proxy
 │   │   ├── filters.test.ts
 │   │   └── proxy.test.ts
 │   ├── schemas
+│   │   ├── api
+│   │   │   └── contact.schema.test.ts
 │   │   └── forms
 │   │       ├── base
 │   │       │   ├── dna.schema.test.ts
@@ -2098,13 +2279,16 @@
 │   │   │   ├── session-user.factory.ts
 │   │   │   ├── structure-typologie.factory.ts
 │   │   │   ├── structure-typologies.factory.ts
-│   │   │   └── transformation.factory.ts
+│   │   │   ├── tarification-journal.factory.ts
+│   │   │   ├── transformation.factory.ts
+│   │   │   └── user-with-grants.factory.ts
 │   │   ├── form-test-wrapper.tsx
 │   │   ├── http.mock.ts
 │   │   ├── referential-dna.ts
 │   │   ├── structure-page-test.helpers.tsx
 │   │   ├── structure-page-test.mocks.tsx
 │   │   ├── structure.factory.ts
+│   │   ├── tarification.repository.helpers.ts
 │   │   └── transformationForm.tsx
 │   ├── utils
 │   │   ├── acte-administratif.util.test.ts
@@ -2113,6 +2297,7 @@
 │   │   ├── budget.util.test.ts
 │   │   ├── classname.util.test.ts
 │   │   ├── common.util.test.ts
+│   │   ├── conversation.util.test.ts
 │   │   ├── cpom.util.test.ts
 │   │   ├── dashboardOrigin.util.test.ts
 │   │   ├── date.util.test.ts
@@ -2127,6 +2312,8 @@
 │   │   ├── indicateur-financier.util.test.ts
 │   │   ├── list.util.test.ts
 │   │   ├── math.util.test.ts
+│   │   ├── menu.util.test.ts
+│   │   ├── message-search.util.test.ts
 │   │   ├── now.util.test.ts
 │   │   ├── number.util.test.ts
 │   │   ├── pdf-export.util.test.ts
@@ -2155,4 +2342,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-541 directories, 1616 files
+580 directories, 1764 files
