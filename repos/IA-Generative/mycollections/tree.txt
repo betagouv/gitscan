@@ -43,10 +43,15 @@
 │   │   └── README.md
 │   ├── agents.md
 │   ├── assistants.md
+│   ├── campagne-recherche.md
 │   ├── clients.md
 │   ├── collectif.md
 │   ├── drive-find-architecture.md
 │   ├── entraide.md
+│   ├── essayer-les-assistants.md
+│   ├── exemples
+│   │   └── assistants
+│   │       └── sejour-des-etrangers.yaml
 │   ├── fichiers.md
 │   ├── generation.md
 │   ├── images
@@ -113,14 +118,16 @@
 │   │   │   ├── contrat.py
 │   │   │   ├── execution.py
 │   │   │   ├── fiables.py
+│   │   │   ├── fiche_yaml.py
 │   │   │   ├── fusion.py
 │   │   │   ├── interfaces.py
 │   │   │   ├── journal.py
 │   │   │   ├── perimetre.py
-│   │   │   └── plan
-│   │   │       ├── __init__.py
-│   │   │       ├── regles.py
-│   │   │       └── toutes_les_sources.py
+│   │   │   ├── plan
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── regles.py
+│   │   │   │   └── toutes_les_sources.py
+│   │   │   └── redaction.py
 │   │   ├── main.py
 │   │   ├── mcp
 │   │   │   ├── __init__.py
@@ -324,6 +331,7 @@
 │   │   │   │   ├── BankFilter.vue
 │   │   │   │   ├── ChatMessage.vue
 │   │   │   │   ├── DebugAccordion.vue
+│   │   │   │   ├── LecteurCitation.vue
 │   │   │   │   ├── SourceChip.vue
 │   │   │   │   ├── SourceViewer.vue
 │   │   │   │   └── VoteBar.vue
@@ -436,6 +444,7 @@
 │   │   │       ├── accueil.test.ts
 │   │   │       ├── agents.test.ts
 │   │   │       ├── assistants-consignes.test.ts
+│   │   │       ├── assistants-redaction.test.ts
 │   │   │       ├── assistants-sources.test.ts
 │   │   │       ├── assistants.test.ts
 │   │   │       ├── bandeau.test.ts
@@ -451,6 +460,7 @@
 │   │   │       ├── etatService.test.ts
 │   │   │       ├── extrait.test.ts
 │   │   │       ├── fiche.test.ts
+│   │   │       ├── ficheYaml.test.ts
 │   │   │       ├── fichiers.test.ts
 │   │   │       ├── filAriane.test.ts
 │   │   │       ├── generation.test.ts
@@ -484,6 +494,7 @@
 │   │   │   ├── etatService.ts
 │   │   │   ├── extrait.ts
 │   │   │   ├── fiche.ts
+│   │   │   ├── ficheYaml.ts
 │   │   │   ├── fichiers.ts
 │   │   │   ├── filAriane.ts
 │   │   │   ├── generation.ts
@@ -528,10 +539,34 @@
 │   ├── requirements-e2e.txt
 │   ├── scripts
 │   │   ├── banc.py
+│   │   ├── campagne
+│   │   │   ├── __init__.py
+│   │   │   ├── __main__.py
+│   │   │   ├── agent_mcp.py
+│   │   │   ├── cible.py
+│   │   │   ├── corpus.py
+│   │   │   ├── juges.py
+│   │   │   ├── rapport.py
+│   │   │   └── run.py
+│   │   ├── fiche.py
 │   │   ├── marquer_scans.py
 │   │   └── version_json.py
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── campagne
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── sejour-des-etrangers
+│   │   │   │   ├── questions.yaml
+│   │   │   │   ├── s0.yaml
+│   │   │   │   ├── s1.yaml
+│   │   │   │   └── s2.yaml
+│   │   │   ├── test_agent_mcp.py
+│   │   │   ├── test_cible.py
+│   │   │   ├── test_corpus.py
+│   │   │   ├── test_juges.py
+│   │   │   ├── test_rapport.py
+│   │   │   └── test_run.py
 │   │   ├── conftest.py
 │   │   ├── e2e
 │   │   │   ├── README.md
@@ -599,6 +634,8 @@
 │   │   │   ├── test_connecteur_groupes.py
 │   │   │   ├── test_execution.py
 │   │   │   ├── test_fiables.py
+│   │   │   ├── test_fiche_cli.py
+│   │   │   ├── test_fiche_yaml.py
 │   │   │   ├── test_fusion.py
 │   │   │   ├── test_journal_plan.py
 │   │   │   ├── test_mcp.py
@@ -606,6 +643,7 @@
 │   │   │   ├── test_plan_executer.py
 │   │   │   ├── test_plan_regles.py
 │   │   │   ├── test_qualite_assistant.py
+│   │   │   ├── test_redaction.py
 │   │   │   └── test_route_search_assistant.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
@@ -647,4 +685,4 @@
 ├── setup-keycloak.sh
 ├── sync_keycloak_openrag.py
 └── version.txt
-87 directories, 676 files
+92 directories, 709 files
