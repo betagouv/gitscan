@@ -1,8 +1,13 @@
-## Changelog : autometa-jobs (30 derniers jours, au 20 octobre 2026)
+## Changelog : autometa-jobs (30 derniers jours, au 17 novembre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur l'optimisation de la chaîne de maintenance automatique du projet. L'objectif est de fluidifier la gestion des dépendances et de garantir que les outils utilisés par les agents (notamment Claude CLI) sont toujours à jour de manière automatisée.
+Les récentes évolutions améliorent la flexibilité du système en permettant l'utilisation de liens sécurisés pour le traitement des données, tout en renforçant la sécurité et la légèreté de l'infrastructure.
+
+### Évolutions fonctionnelles
+- Possibilité pour les workers d'accepter des URI en `https://` (notamment des URLs présignées) pour l'accès aux données [#155](https://github.com/gip-inclusion/autometa-jobs/pull/155).
 
 ### Évolutions techniques
-- Automatisation de la fusion des mises à jour de dépendances mineures et correctives pour simplifier la maintenance [#113](https://github.com/gip-inclusion/autometa-jobs/pull/113).
-- Automatisation de la reconstruction de la couche Claude CLI pour le worker lors de la sortie de nouvelles versions [#114](https://github.com/gip-inclusion/autometa-jobs/pull/114).
+- Mise à jour de sécurité de la bibliothèque `opentelemetry-api` pour corriger une vulnérabilité (CVE-2026-126360).
+
+### Autres changements
+- Nettoyage de l'orchestrateur par la suppression de la dépendance inutile `python-dateutil`.
