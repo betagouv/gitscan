@@ -120,7 +120,38 @@ When running the project, the following services are available:
 | **Mailcatcher** | [http://localhost:9804](http://localhost:9804)          | Email testing interface  | No auth required              |
 | **PostgreSQL**  | 9812                                                    | Database server          | `user` / `pass`               |
 | **Redis**       | 9813                                                    | Cache and message broker | No auth required              |
-| **MinIO**       | 9805 and [http://localhost:9806](http://localhost:9806) | Local S3 storage         | No auth required              |
+| **RustFS**      | 9805 and [http://localhost:9806](http://localhost:9806) | Local S3 storage         | `hub` / `password`            |
+
+### Local object storage
+
+Docker Compose and CI use RustFS with the `hub-media-storage` bucket and
+versioning enabled. Bucket initialization can be run again on an existing
+bucket. The backend starts only after initialization succeeds.
+
+RustFS stores its data in `data/rustfs`. Previous MinIO data in `data/media`
+is preserved and is not loaded by RustFS. To retain existing objects, copy
+them through the S3 API before using the new storage; do not reuse MinIO's
+on-disk data directory. A simple object copy does not preserve version history.
+
+When upgrading an existing local stack, stop its old MinIO container to free
+ports 9805 and 9806, then start the backend:
+
+```shellscript
+$ docker stop hub-minio-1 # only if the previous MinIO container exists
+$ make run-backend
+```
+
+Check `env.d/development/common.local` for any custom S3 endpoint override.
+The default internal endpoint is now `http://rustfs:9000`.
+
+For rollback, restore the previous storage configuration and restart MinIO
+with the preserved `data/media` directory. Objects written to RustFS after
+the switch would need a separate S3 copy back.
+
+The Kubernetes development stack still uses MinIO through the shared
+`helm-dev-backend` chart and requires a separate migration.
+
+### Matrix development services
 
 The **dev-only Matrix stack** is started separately with `make run-matrix` and adds:
 
@@ -134,13 +165,12 @@ The **dev-only Matrix stack** is started separately with `make run-matrix` and a
 
 A self-contained, dev-only Matrix stack - Synapse, Matrix Authentication Service
 (MAS) and Element Web - lets developers work against a real local homeserver
-without depending on Tchap. MAS delegates authentication to the project Keycloak
-realm (`hub`).
+through the project Keycloak realm (`hub`).
 
 Dev-only warning: the stack ships obviously-fake committed secrets, generates
 its private signing keys locally under the git-ignored `data/matrix/`, and
-allows OIDC client registration over `http://localhost`; it must never be
-deployed.
+uses pre-registered development OIDC clients over `http://localhost`; it must
+never be deployed.
 
 It is an isolated Compose overlay (`compose.matrix.yml`). The normal stack
 (`make run`, `make run-backend`, `make stop`) never starts or stops Matrix
@@ -153,6 +183,29 @@ $ make run-matrix
 # Stop or remove only the Matrix stack:
 $ make stop-matrix
 $ make down-matrix
+```
+
+For the Hub chat frontend, start the local runtime explicitly in this order:
+
+```shellscript
+$ make run-matrix
+$ make seed-matrix # optional
+$ make run-frontend-development
+```
+
+`make run` does not start Matrix implicitly. See
+[`docs/frontend/matrix-local-runtime.md`](docs/frontend/matrix-local-runtime.md)
+for the frontend runtime and extension seams.
+
+To run the chat against Tchap preprod or prod instead, served at
+`https://hub.localhost:9814` by a dev-only HTTPS proxy, see
+[`docs/frontend/tchap-connection.md`](docs/frontend/tchap-connection.md):
+
+```shellscript
+$ make tchap-env    # once: your Tchap environment
+$ make run-tchap
+$ make tchap-trust  # once per machine: trust the local certificate authority
+$ make run          # back to dev mode on localhost:9800
 ```
 
 Then open <http://localhost:9807>, click **Sign in** then SSO, and log in with
@@ -179,9 +232,20 @@ $ make seed-matrix
 ```
 
 `seed-matrix` provisions Matrix accounts linked to existing Keycloak users
-(`hub`, `user-e2e-chromium`, `user-e2e-webkit`), creates one direct room and one
+(`hub` and the three `user-e2e-*` accounts), creates one direct room and one
 multi-user room, and posts a few text messages. It is idempotent: running it
 again finds the existing room aliases and does not duplicate the transcript.
+
+To start again with no Matrix rooms or messages while keeping the local
+Keycloak users available for login and new conversations:
+
+```shellscript
+$ make reset-matrix
+```
+
+This removes the local Synapse and MAS databases, restarts the Matrix stack,
+and provisions only the four Matrix accounts. It leaves the Hub and Keycloak
+databases untouched.
 
 ## License 📝
 
@@ -191,7 +255,7 @@ While Hub is a public-driven initiative, our license choice is an invitation for
 
 ## Contributing 🙌
 
-You can help us with translations on [Crowdin](https://crowdin.com/project/lasuite-hub).
+You can help us with translations on [Crowdin](https://crowdin.com/project/lasuite-hub). See how translations work in [docs/translations.md](docs/translations.md).
 
 If you intend to make pull requests, see [CONTRIBUTING](https://github.com/suitenumerique/hub/blob/main/CONTRIBUTING.md) for guidelines.
 

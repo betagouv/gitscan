@@ -1,5 +1,6 @@
 .
 ├── .adr-dir
+├── .codespell-words
 ├── .dockerignore
 ├── .gitattributes
 ├── .github
@@ -45,14 +46,18 @@
 │   ├── postgres_e2e
 │   ├── pylint
 │   ├── pytest
+│   ├── reset-matrix-e2ee
 │   ├── seed-matrix
 │   ├── start-kind.sh
 │   ├── state
+│   ├── tchap-environment
+│   ├── tchap-trust
 │   ├── terraform
 │   ├── update-git-submodule.sh
 │   ├── update_openapi_schema
 │   └── updatekeys.sh
 ├── compose.matrix.yml
+├── compose.tchap.yml
 ├── compose.yml
 ├── crowdin
 │   └── config.yml
@@ -76,22 +81,29 @@
 │   │           └── etc
 │   │               └── gunicorn
 │   │                   └── hub.py
-│   └── matrix
-│       ├── element
-│       │   └── config.json
-│       ├── mas
-│       │   └── config.yaml
-│       └── synapse
-│           ├── homeserver.yaml
-│           ├── localhost.log.config
-│           └── localhost.signing.key
+│   ├── matrix
+│   │   ├── element
+│   │   │   └── config.json
+│   │   ├── mas
+│   │   │   └── config.yaml
+│   │   └── synapse
+│   │       ├── homeserver.yaml
+│   │       ├── localhost.log.config
+│   │       └── localhost.signing.key
+│   └── tchap
+│       └── Caddyfile
 ├── docs
 │   ├── adr
 │   │   └── 0001-record-architecture-decisions.md
 │   ├── assets
 │   │   └── europe_opensource.png
-│   └── frontend
-│       └── chat-multi-account-architecture.md
+│   ├── frontend
+│   │   ├── matrix-e2ee-quick-guide.md
+│   │   ├── matrix-local-runtime.md
+│   │   ├── tchap-connection.md
+│   │   ├── tchap-prod-connection.md
+│   │   └── tchap-test-checklist.md
+│   └── translations.md
 ├── env.d
 │   ├── development
 │   │   ├── common
@@ -138,6 +150,8 @@
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_initial.py
+    │   │   │   ├── 0003_restrict_user_languages.py
+    │   │   │   ├── 0004_alter_user_is_active.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── static
@@ -179,9 +193,6 @@
     │   │   ├── __init__.py
     │   │   ├── apps.py
     │   │   ├── serializers.py
-    │   │   ├── tests
-    │   │   │   ├── __init__.py
-    │   │   │   └── test_api_e2e.py
     │   │   ├── urls.py
     │   │   ├── utils.py
     │   │   └── viewsets.py
@@ -224,22 +235,61 @@
     │   │   │   ├── .env.example
     │   │   │   ├── .gitignore
     │   │   │   ├── __tests__
-    │   │   │   │   └── app-hub
-    │   │   │   │       ├── chat-conversation.spec.ts
-    │   │   │   │       ├── chat-pagination.spec.ts
-    │   │   │   │       ├── chat-threads.spec.ts
-    │   │   │   │       ├── chat-tools-panel.spec.ts
-    │   │   │   │       ├── home-redirects.spec.ts
-    │   │   │   │       ├── left-panel.spec.ts
-    │   │   │   │       ├── new-chat.spec.ts
-    │   │   │   │       ├── utils-auth.ts
-    │   │   │   │       ├── utils-chat-conversation.ts
-    │   │   │   │       ├── utils-common.ts
-    │   │   │   │       ├── utils-file-preview.ts
-    │   │   │   │       ├── utils-left-panel.ts
-    │   │   │   │       ├── utils-new-chat.ts
-    │   │   │   │       ├── utils-threads.ts
-    │   │   │   │       └── utils-tools-panel.ts
+    │   │   │   │   ├── app-hub
+    │   │   │   │   │   ├── app-startup.spec.ts
+    │   │   │   │   │   ├── authentication.spec.ts
+    │   │   │   │   │   ├── utils-auth.ts
+    │   │   │   │   │   └── utils-common.ts
+    │   │   │   │   └── chat
+    │   │   │   │       ├── attachments.spec.ts
+    │   │   │   │       ├── conversation-order.spec.ts
+    │   │   │   │       ├── drafts.spec.ts
+    │   │   │   │       ├── encryption.spec.ts
+    │   │   │   │       ├── invitations.spec.ts
+    │   │   │   │       ├── leave-conversation.spec.ts
+    │   │   │   │       ├── mark-unread.spec.ts
+    │   │   │   │       ├── message-actions.spec.ts
+    │   │   │   │       ├── new-conversation.spec.ts
+    │   │   │   │       ├── notification-levels.spec.ts
+    │   │   │   │       ├── reaction-senders.spec.ts
+    │   │   │   │       ├── realtime.spec.ts
+    │   │   │   │       ├── reply-quotes.spec.ts
+    │   │   │   │       ├── search.spec.ts
+    │   │   │   │       ├── send-message.spec.ts
+    │   │   │   │       ├── session.spec.ts
+    │   │   │   │       ├── sign-in.spec.ts
+    │   │   │   │       ├── threads.spec.ts
+    │   │   │   │       ├── unread.spec.ts
+    │   │   │   │       └── utils
+    │   │   │   │           ├── crypto-device.ts
+    │   │   │   │           ├── crypto-store.ts
+    │   │   │   │           ├── env.ts
+    │   │   │   │           ├── files.ts
+    │   │   │   │           ├── fixtures.ts
+    │   │   │   │           ├── flows.ts
+    │   │   │   │           ├── hub-session.ts
+    │   │   │   │           ├── ids.ts
+    │   │   │   │           ├── matrix-admin.ts
+    │   │   │   │           ├── matrix-api.ts
+    │   │   │   │           ├── network.ts
+    │   │   │   │           ├── oidc.ts
+    │   │   │   │           ├── pages
+    │   │   │   │           │   ├── account-menu.ts
+    │   │   │   │           │   ├── attachment-preview.ts
+    │   │   │   │           │   ├── chat-header.ts
+    │   │   │   │           │   ├── chat-page.ts
+    │   │   │   │           │   ├── composer.ts
+    │   │   │   │           │   ├── connection-error.ts
+    │   │   │   │           │   ├── encryption-dialog.ts
+    │   │   │   │           │   ├── invitation.ts
+    │   │   │   │           │   ├── left-panel.ts
+    │   │   │   │           │   ├── new-chat.ts
+    │   │   │   │           │   ├── notification-menu.ts
+    │   │   │   │           │   ├── search-dialog.ts
+    │   │   │   │           │   ├── threads-panel.ts
+    │   │   │   │           │   └── timeline.ts
+    │   │   │   │           ├── text.ts
+    │   │   │   │           └── watch.ts
     │   │   │   ├── eslint.config.mjs
     │   │   │   ├── package.json
     │   │   │   ├── playwright.config.ts
@@ -249,6 +299,7 @@
     │   │   └── hub
     │   │       ├── .env
     │   │       ├── .env.development
+    │   │       ├── .env.tchap.example
     │   │       ├── .env.test
     │   │       ├── .gitignore
     │   │       ├── README.md
@@ -262,18 +313,36 @@
     │   │       │   ├── assets
     │   │       │   │   ├── 401-background.png
     │   │       │   │   ├── 403-background.png
+    │   │       │   │   ├── chat-group.svg
+    │   │       │   │   ├── chat-illustration-bubble-bottom-left.svg
+    │   │       │   │   ├── chat-illustration-bubble-bottom-right.svg
+    │   │       │   │   ├── chat-illustration-bubble-left.svg
+    │   │       │   │   ├── chat-illustration-bubble-top.svg
+    │   │       │   │   ├── chat-illustration-plus.svg
+    │   │       │   │   ├── chat-section-chevron.svg
     │   │       │   │   ├── favicon.png
+    │   │       │   │   ├── invitation-mail-status.svg
+    │   │       │   │   ├── invitation-mail.svg
+    │   │       │   │   ├── lasuite-logo-mark.svg
     │   │       │   │   ├── logo-icon.svg
     │   │       │   │   ├── logo-suite-numerique.png
-    │   │       │   │   └── logo_text.svg
-    │   │       │   ├── mocks
-    │   │       │   │   └── tracemonkey.pdf
-    │   │       │   ├── pdf.worker.mjs
+    │   │       │   │   ├── logo_text.svg
+    │   │       │   │   ├── mobile-illustration-bubble-bottom-right.svg
+    │   │       │   │   ├── mobile-illustration-logomark.svg
+    │   │       │   │   ├── notif-placeholder.wav
+    │   │       │   │   ├── tchap-logo-mark-1.svg
+    │   │       │   │   ├── tchap-logo-mark-2.svg
+    │   │       │   │   ├── tchap-logo-wordmark.svg
+    │   │       │   │   └── tchap-notification-icon.png
     │   │       │   └── robots.txt
+    │   │       ├── scripts
+    │   │       │   └── copy-pdf-assets.mjs
     │   │       ├── src
     │   │       │   ├── features
     │   │       │   │   ├── analytics
-    │   │       │   │   │   └── AnalyticsProvider.tsx
+    │   │       │   │   │   ├── AnalyticsProvider.tsx
+    │   │       │   │   │   ├── analytics.ts
+    │   │       │   │   │   └── useSecurityAnalytics.ts
     │   │       │   │   ├── api
     │   │       │   │   │   ├── APIError.ts
     │   │       │   │   │   ├── __tests__
@@ -284,6 +353,10 @@
     │   │       │   │   │   ├── Auth.tsx
     │   │       │   │   │   ├── authUrl.ts
     │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── ChatSignIn
+    │   │       │   │   │   │   │   ├── ChatSignIn.scss
+    │   │       │   │   │   │   │   ├── ChatSignIn.tsx
+    │   │       │   │   │   │   │   └── ExternalServerModal.tsx
     │   │       │   │   │   │   ├── LoginButton.tsx
     │   │       │   │   │   │   └── LogoutButton.tsx
     │   │       │   │   │   ├── hooks
@@ -291,17 +364,27 @@
     │   │       │   │   │   ├── silentLogin.ts
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── chat
+    │   │       │   │   │   ├── ActiveChatContext.tsx
+    │   │       │   │   │   ├── ChatAttachmentPreviewContext.tsx
     │   │       │   │   │   ├── ChatMessageEditContext.tsx
+    │   │       │   │   │   ├── ChatMessageJumpContext.tsx
     │   │       │   │   │   ├── ChatPanelContext.tsx
+    │   │       │   │   │   ├── EncryptionSettingsContext.tsx
     │   │       │   │   │   ├── __tests__
     │   │       │   │   │   │   ├── chatRefs.test.ts
+    │   │       │   │   │   │   ├── chatSorting.test.ts
     │   │       │   │   │   │   ├── fluentEmoji.test.ts
     │   │       │   │   │   │   └── reactions.test.ts
+    │   │       │   │   │   ├── attachments.ts
     │   │       │   │   │   ├── chatKeys.ts
     │   │       │   │   │   ├── chatMembership.ts
     │   │       │   │   │   ├── chatRefs.ts
     │   │       │   │   │   ├── chatSorting.ts
     │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── Attachments.scss
+    │   │       │   │   │   │   ├── BellOff.tsx
+    │   │       │   │   │   │   ├── BellRing.tsx
+    │   │       │   │   │   │   ├── ChatAttachmentPreview.tsx
     │   │       │   │   │   │   ├── ChatBubble.scss
     │   │       │   │   │   │   ├── ChatBubble.tsx
     │   │       │   │   │   │   ├── ChatComposer.scss
@@ -310,22 +393,47 @@
     │   │       │   │   │   │   ├── ChatConversation.tsx
     │   │       │   │   │   │   ├── ChatConversationSkeleton.scss
     │   │       │   │   │   │   ├── ChatConversationSkeleton.tsx
+    │   │       │   │   │   │   ├── ChatEmptyIllustration.tsx
+    │   │       │   │   │   │   ├── ChatEncryptionNotice.tsx
+    │   │       │   │   │   │   ├── ChatEncryptionPrompt.tsx
     │   │       │   │   │   │   ├── ChatInvitation.scss
     │   │       │   │   │   │   ├── ChatInvitation.tsx
     │   │       │   │   │   │   ├── ChatInvitationView.tsx
+    │   │       │   │   │   │   ├── ChatNotificationMenu.scss
     │   │       │   │   │   │   ├── ChatRoute.tsx
+    │   │       │   │   │   │   ├── ChatSecurity.scss
+    │   │       │   │   │   │   ├── ChatSecurity.tsx
     │   │       │   │   │   │   ├── ChatSurface.tsx
+    │   │       │   │   │   │   ├── ChatTimelineHeader.tsx
+    │   │       │   │   │   │   ├── ChatTimelineRow.tsx
+    │   │       │   │   │   │   ├── ChatUserAvatar.tsx
     │   │       │   │   │   │   ├── ChatView.scss
     │   │       │   │   │   │   ├── ChatView.tsx
     │   │       │   │   │   │   ├── ChatVirtualList.scss
     │   │       │   │   │   │   ├── ChatVirtualList.tsx
+    │   │       │   │   │   │   ├── ChatVisualAvatar.tsx
+    │   │       │   │   │   │   ├── ComposerAttachments.tsx
+    │   │       │   │   │   │   ├── ComposerMentionBackdrop.tsx
     │   │       │   │   │   │   ├── EmojiPicker.scss
     │   │       │   │   │   │   ├── EmojiPickerPanel.tsx
     │   │       │   │   │   │   ├── EmojiPickerPopover.tsx
+    │   │       │   │   │   │   ├── EncryptionSettingsContent.tsx
+    │   │       │   │   │   │   ├── EncryptionVerification.tsx
     │   │       │   │   │   │   ├── FluentEmoji.scss
     │   │       │   │   │   │   ├── FluentEmoji.tsx
+    │   │       │   │   │   │   ├── JumpToLatestButton.scss
+    │   │       │   │   │   │   ├── JumpToLatestButton.tsx
+    │   │       │   │   │   │   ├── MentionAutocomplete.scss
+    │   │       │   │   │   │   ├── MentionAutocomplete.tsx
+    │   │       │   │   │   │   ├── MessageAttachment.tsx
+    │   │       │   │   │   │   ├── MessageContent.scss
+    │   │       │   │   │   │   ├── MessageContent.tsx
+    │   │       │   │   │   │   ├── MessageDecrypting.scss
+    │   │       │   │   │   │   ├── MessageDecrypting.tsx
     │   │       │   │   │   │   ├── MessageHoverToolbar.scss
     │   │       │   │   │   │   ├── MessageHoverToolbar.tsx
+    │   │       │   │   │   │   ├── MessageQuote.scss
+    │   │       │   │   │   │   ├── MessageQuote.tsx
     │   │       │   │   │   │   ├── MessageReactions.scss
     │   │       │   │   │   │   ├── MessageReactions.tsx
     │   │       │   │   │   │   ├── NewChatPlaceholder.tsx
@@ -336,31 +444,19 @@
     │   │       │   │   │   │   ├── ThreadButton.tsx
     │   │       │   │   │   │   ├── TypingIndicator.scss
     │   │       │   │   │   │   ├── TypingIndicator.tsx
+    │   │       │   │   │   │   ├── UnreadSeparator.scss
+    │   │       │   │   │   │   ├── UnreadSeparator.tsx
     │   │       │   │   │   │   ├── UnreadThreadsBanner.scss
     │   │       │   │   │   │   ├── UnreadThreadsBanner.tsx
     │   │       │   │   │   │   ├── UserSearchListBox.tsx
-    │   │       │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   ├── ChatBubble.test.tsx
-    │   │       │   │   │   │   │   ├── ChatComposer.test.tsx
-    │   │       │   │   │   │   │   ├── ChatHeader.test.tsx
-    │   │       │   │   │   │   │   ├── ChatMembersModal.test.tsx
-    │   │       │   │   │   │   │   ├── ChatViewComposition.test.tsx
-    │   │       │   │   │   │   │   ├── FluentEmoji.test.tsx
-    │   │       │   │   │   │   │   ├── MessageHoverToolbar.test.tsx
-    │   │       │   │   │   │   │   ├── MessageReactions.test.tsx
-    │   │       │   │   │   │   │   ├── ThreadButton.test.tsx
-    │   │       │   │   │   │   │   └── UnreadThreadsBanner.test.tsx
     │   │       │   │   │   │   ├── header
     │   │       │   │   │   │   │   ├── ChatHeader.scss
     │   │       │   │   │   │   │   ├── ChatHeader.tsx
-    │   │       │   │   │   │   │   └── ChatMembersModal.tsx
+    │   │       │   │   │   │   │   ├── ChatMembersModal.tsx
+    │   │       │   │   │   │   │   └── LeaveConversationModal.tsx
     │   │       │   │   │   │   └── tools-panel
     │   │       │   │   │   │       ├── ChatToolsPanel.scss
     │   │       │   │   │   │       ├── ChatToolsPanel.tsx
-    │   │       │   │   │   │       ├── DocumentList.tsx
-    │   │       │   │   │   │       ├── DocumentListItem.tsx
-    │   │       │   │   │   │       ├── DocumentListItemActions.tsx
-    │   │       │   │   │   │       ├── DocumentSection.tsx
     │   │       │   │   │   │       ├── DocumentsTool.tsx
     │   │       │   │   │   │       ├── DraftThreadDetail.tsx
     │   │       │   │   │   │       ├── ThreadDetail.tsx
@@ -369,115 +465,195 @@
     │   │       │   │   │   │       ├── ThreadsTool.scss
     │   │       │   │   │   │       ├── ThreadsTool.tsx
     │   │       │   │   │   │       ├── ToolsPanelHeader.tsx
-    │   │       │   │   │   │       ├── __tests__
-    │   │       │   │   │   │       │   ├── DraftThreadDetail.test.tsx
-    │   │       │   │   │   │       │   ├── ThreadDetailComposition.test.tsx
-    │   │       │   │   │   │       │   └── ThreadListItem.test.tsx
-    │   │       │   │   │   │       └── documentToPreviewFile.ts
+    │   │       │   │   │   │       ├── ToolsPanelResizeHandle.tsx
+    │   │       │   │   │   │       ├── toolsPanelWidth.ts
+    │   │       │   │   │   │       └── useToolsPanelFits.ts
+    │   │       │   │   │   ├── composer
+    │   │       │   │   │   │   ├── commonmarkTypes.ts
+    │   │       │   │   │   │   ├── composerDraft.ts
+    │   │       │   │   │   │   ├── composerDraftStore.ts
+    │   │       │   │   │   │   ├── editDraftMentions.ts
+    │   │       │   │   │   │   ├── failedMessagesStore.ts
+    │   │       │   │   │   │   ├── markdown.ts
+    │   │       │   │   │   │   ├── mentionMatching.ts
+    │   │       │   │   │   │   ├── mentionTrigger.ts
+    │   │       │   │   │   │   └── serializeComposerDraft.ts
     │   │       │   │   │   ├── copyTextToClipboard.ts
     │   │       │   │   │   ├── fluentEmoji.ts
     │   │       │   │   │   ├── formatTimestamp.ts
+    │   │       │   │   │   ├── formattedContent.ts
     │   │       │   │   │   ├── hooks
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── useChat.test.tsx
     │   │       │   │   │   │   │   ├── useChatComposition.test.tsx
-    │   │       │   │   │   │   │   ├── useChatDocuments.test.tsx
     │   │       │   │   │   │   │   ├── useChatEvents.test.tsx
     │   │       │   │   │   │   │   ├── useChatFavourite.test.tsx
     │   │       │   │   │   │   │   ├── useChatMembers.test.tsx
     │   │       │   │   │   │   │   ├── useChatMessages.test.tsx
+    │   │       │   │   │   │   │   ├── useChatNotificationLevel.test.tsx
     │   │       │   │   │   │   │   ├── useChatThread.test.tsx
     │   │       │   │   │   │   │   ├── useChatThreads.test.tsx
     │   │       │   │   │   │   │   ├── useChats.test.tsx
+    │   │       │   │   │   │   │   ├── useEnsureMessageDecrypted.test.tsx
     │   │       │   │   │   │   │   └── useToggleReaction.test.tsx
     │   │       │   │   │   │   ├── chatCompositionCache.ts
+    │   │       │   │   │   │   ├── useCachedQueryData.ts
     │   │       │   │   │   │   ├── useChat.ts
+    │   │       │   │   │   │   ├── useChatAccountProfile.ts
     │   │       │   │   │   │   ├── useChatAccounts.ts
+    │   │       │   │   │   │   ├── useChatAttachmentActions.ts
+    │   │       │   │   │   │   ├── useChatAttachmentUrl.ts
+    │   │       │   │   │   │   ├── useChatAvatarUrl.ts
     │   │       │   │   │   │   ├── useChatCompositionSupport.ts
     │   │       │   │   │   │   ├── useChatConnection.ts
     │   │       │   │   │   │   ├── useChatCreationSupport.ts
-    │   │       │   │   │   │   ├── useChatDocuments.ts
     │   │       │   │   │   │   ├── useChatEvents.ts
     │   │       │   │   │   │   ├── useChatFavourite.ts
     │   │       │   │   │   │   ├── useChatForUsers.ts
     │   │       │   │   │   │   ├── useChatInvitation.ts
     │   │       │   │   │   │   ├── useChatMembers.ts
     │   │       │   │   │   │   ├── useChatMessages.ts
+    │   │       │   │   │   │   ├── useChatNotificationLevel.ts
+    │   │       │   │   │   │   ├── useChatNotificationMenuItem.tsx
+    │   │       │   │   │   │   ├── useChatQuickActions.tsx
+    │   │       │   │   │   │   ├── useChatReadState.ts
+    │   │       │   │   │   │   ├── useChatSecurity.ts
     │   │       │   │   │   │   ├── useChatThread.ts
     │   │       │   │   │   │   ├── useChatThreadActions.ts
     │   │       │   │   │   │   ├── useChatThreadCompositionSupport.ts
     │   │       │   │   │   │   ├── useChatThreads.ts
     │   │       │   │   │   │   ├── useChatTyping.ts
     │   │       │   │   │   │   ├── useChatUnread.ts
+    │   │       │   │   │   │   ├── useChatUnreadThreads.ts
     │   │       │   │   │   │   ├── useChatUserSearch.ts
+    │   │       │   │   │   │   ├── useChatVisit.ts
     │   │       │   │   │   │   ├── useChats.ts
+    │   │       │   │   │   │   ├── useClearChatMarkedUnread.ts
+    │   │       │   │   │   │   ├── useComposerDraft.ts
+    │   │       │   │   │   │   ├── useComposerFocusSignal.ts
+    │   │       │   │   │   │   ├── useConversationOpening.ts
     │   │       │   │   │   │   ├── useCreateChatForUsers.ts
     │   │       │   │   │   │   ├── useDeleteChatMessage.ts
     │   │       │   │   │   │   ├── useEditChatMessage.ts
-    │   │       │   │   │   │   ├── useMarkChatRead.ts
+    │   │       │   │   │   │   ├── useEnsureMessageDecrypted.ts
+    │   │       │   │   │   │   ├── useFailedMessages.ts
+    │   │       │   │   │   │   ├── useIgnoreStrayFileDrops.ts
+    │   │       │   │   │   │   ├── useIsChatMessageDeleted.ts
+    │   │       │   │   │   │   ├── useListEdgeReturn.ts
+    │   │       │   │   │   │   ├── useMainTimelineUnread.ts
+    │   │       │   │   │   │   ├── useMarkedUnreadGate.ts
+    │   │       │   │   │   │   ├── useMentionAutocomplete.ts
+    │   │       │   │   │   │   ├── useMentionCandidates.ts
+    │   │       │   │   │   │   ├── useNewChatConversation.ts
+    │   │       │   │   │   │   ├── usePageVisible.ts
+    │   │       │   │   │   │   ├── usePendingAttachments.ts
+    │   │       │   │   │   │   ├── useQuotedChatMessage.ts
+    │   │       │   │   │   │   ├── useReadAtLatest.ts
+    │   │       │   │   │   │   ├── useRemoveChatFromHistory.ts
+    │   │       │   │   │   │   ├── useReportMessageShown.ts
     │   │       │   │   │   │   ├── useSendChatMessage.ts
     │   │       │   │   │   │   ├── useSendChatThreadReply.ts
     │   │       │   │   │   │   ├── useStartChatThread.ts
+    │   │       │   │   │   │   ├── useTimelineBackfill.ts
     │   │       │   │   │   │   └── useToggleReaction.ts
-    │   │       │   │   │   └── reactions.ts
+    │   │       │   │   │   ├── mentionPermalinks.ts
+    │   │       │   │   │   ├── notifications
+    │   │       │   │   │   │   ├── NotificationSound.ts
+    │   │       │   │   │   │   ├── notificationPermission.ts
+    │   │       │   │   │   │   └── useChatNotifications.ts
+    │   │       │   │   │   ├── pendingReactionToggles.ts
+    │   │       │   │   │   ├── pendingThreadReplies.ts
+    │   │       │   │   │   ├── reactions.ts
+    │   │       │   │   │   ├── search
+    │   │       │   │   │   │   ├── ConversationSearchModal.scss
+    │   │       │   │   │   │   ├── ConversationSearchModal.tsx
+    │   │       │   │   │   │   ├── ConversationSearchResultRow.tsx
+    │   │       │   │   │   │   ├── coordinator.ts
+    │   │       │   │   │   │   ├── model.ts
+    │   │       │   │   │   │   ├── storage.ts
+    │   │       │   │   │   │   ├── types.ts
+    │   │       │   │   │   │   └── useConversationSearch.ts
+    │   │       │   │   │   ├── securityMessages.ts
+    │   │       │   │   │   └── sendQueue.ts
     │   │       │   │   ├── config
     │   │       │   │   │   ├── Config.ts
     │   │       │   │   │   ├── ConfigProvider.tsx
     │   │       │   │   │   ├── HubApi.ts
-    │   │       │   │   │   ├── __tests__
-    │   │       │   │   │   │   └── HubApi.test.ts
+    │   │       │   │   │   ├── appVersion.ts
     │   │       │   │   │   └── useApiConfig.ts
     │   │       │   │   ├── drivers
     │   │       │   │   │   ├── Driver.ts
     │   │       │   │   │   ├── DriverRegistry.ts
-    │   │       │   │   │   ├── __tests__
-    │   │       │   │   │   │   └── DriverRegistry.test.ts
+    │   │       │   │   │   ├── blobs.ts
     │   │       │   │   │   ├── implementations
     │   │       │   │   │   │   ├── LazyMatrixDriver.ts
+    │   │       │   │   │   │   ├── MatrixConversationSearch.ts
     │   │       │   │   │   │   ├── MatrixDriver.ts
-    │   │       │   │   │   │   ├── MockDriver.ts
     │   │       │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   ├── MatrixDriver.test.ts
-    │   │       │   │   │   │   │   ├── MockDriver.test.ts
-    │   │       │   │   │   │   │   └── driver-contract.test.ts
+    │   │       │   │   │   │   │   ├── matrixEventMapping.test.ts
+    │   │       │   │   │   │   │   ├── matrixNotificationLevels.test.ts
+    │   │       │   │   │   │   │   └── matrixRoomMapping.test.ts
+    │   │       │   │   │   │   ├── matrixComposedContent.ts
+    │   │       │   │   │   │   ├── matrixDecryptionTracker.ts
     │   │       │   │   │   │   ├── matrixEventMapping.ts
     │   │       │   │   │   │   ├── matrixIdentity.ts
-    │   │       │   │   │   │   └── matrixRoomMapping.ts
-    │   │       │   │   │   ├── mocks
-    │   │       │   │   │   │   ├── mockChatUsers.ts
-    │   │       │   │   │   │   ├── mockChats.ts
-    │   │       │   │   │   │   ├── mockDocuments.ts
-    │   │       │   │   │   │   ├── mockMessages.ts
-    │   │       │   │   │   │   └── mockThreads.ts
+    │   │       │   │   │   │   ├── matrixIncomingEvents.ts
+    │   │       │   │   │   │   ├── matrixLastActivity.ts
+    │   │       │   │   │   │   ├── matrixMedia.ts
+    │   │       │   │   │   │   ├── matrixNotificationLevels.ts
+    │   │       │   │   │   │   ├── matrixRoomMapping.ts
+    │   │       │   │   │   │   ├── matrixSearchSync.ts
+    │   │       │   │   │   │   └── matrixStorage.ts
+    │   │       │   │   │   ├── security.ts
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── errors
     │   │       │   │   │   └── AppError.ts
+    │   │       │   │   ├── language
+    │   │       │   │   │   ├── hooks
+    │   │       │   │   │   │   ├── useSynchronizedLanguage.ts
+    │   │       │   │   │   │   └── useUserLanguage.ts
+    │   │       │   │   │   └── utils
+    │   │       │   │   │       └── locale.ts
     │   │       │   │   ├── layouts
     │   │       │   │   │   ├── HubLayout.scss
     │   │       │   │   │   ├── HubLayout.tsx
     │   │       │   │   │   ├── LeftPanel
     │   │       │   │   │   │   ├── LeftPanel.scss
-    │   │       │   │   │   │   └── LeftPanel.tsx
+    │   │       │   │   │   │   ├── LeftPanel.tsx
+    │   │       │   │   │   │   ├── TchapLogo.scss
+    │   │       │   │   │   │   └── TchapLogo.tsx
     │   │       │   │   │   ├── NextPageWithLayout.ts
     │   │       │   │   │   └── components
-    │   │       │   │   │       └── AccountSelector
-    │   │       │   │   │           ├── AccountSelector.scss
-    │   │       │   │   │           └── AccountSelector.tsx
+    │   │       │   │   │       ├── AccountSelector
+    │   │       │   │   │       │   ├── AccountSelector.scss
+    │   │       │   │   │       │   └── AccountSelector.tsx
+    │   │       │   │   │       └── AppLoader
+    │   │       │   │   │           ├── AppLoader.scss
+    │   │       │   │   │           └── AppLoader.tsx
     │   │       │   │   ├── matrix
+    │   │       │   │   │   ├── MatrixSecurity.ts
     │   │       │   │   │   ├── __tests__
-    │   │       │   │   │   │   ├── auth.test.ts
     │   │       │   │   │   │   └── config.test.ts
     │   │       │   │   │   ├── config.ts
+    │   │       │   │   │   ├── indexeddb.worker.ts
     │   │       │   │   │   ├── initMatrix.ts
+    │   │       │   │   │   ├── keyBackup.ts
+    │   │       │   │   │   ├── membershipSave.ts
+    │   │       │   │   │   ├── ownedSyncStore.ts
+    │   │       │   │   │   ├── preloadRustCrypto.ts
+    │   │       │   │   │   ├── roomSecurity.ts
+    │   │       │   │   │   ├── securityErrors.ts
+    │   │       │   │   │   ├── sessionOwnership.ts
     │   │       │   │   │   ├── types.ts
     │   │       │   │   │   └── utils
     │   │       │   │   │       ├── auth.ts
-    │   │       │   │   │       └── autodiscovery.ts
+    │   │       │   │   │       └── tchapDiscovery.ts
     │   │       │   │   └── ui
     │   │       │   │       └── components
     │   │       │   │           ├── avatar
     │   │       │   │           │   ├── Avatar.scss
     │   │       │   │           │   ├── Avatar.tsx
+    │   │       │   │           │   ├── initials.ts
     │   │       │   │           │   └── palette.ts
     │   │       │   │           ├── gaufre
     │   │       │   │           │   └── Gaufre.tsx
@@ -487,7 +663,7 @@
     │   │       │   │           │   ├── index.ts
     │   │       │   │           │   └── notify.tsx
     │   │       │   │           └── user-profile
-    │   │       │   │               ├── LanguagePickerUserMenu.tsx
+    │   │       │   │               ├── UserProfile.scss
     │   │       │   │               └── UserProfile.tsx
     │   │       │   ├── hooks
     │   │       │   │   ├── useRedirectAfterLogin.tsx
@@ -513,6 +689,7 @@
     │   │       │   │   ├── cunningham-tokens.css
     │   │       │   │   ├── cunningham-tokens.ts
     │   │       │   │   ├── globals.scss
+    │   │       │   │   ├── small-screen.scss
     │   │       │   │   └── toast.scss
     │   │       │   └── utils
     │   │       │       ├── useLayout.tsx
@@ -581,4 +758,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-139 directories, 444 files
+145 directories, 615 files

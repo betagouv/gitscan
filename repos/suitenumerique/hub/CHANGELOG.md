@@ -6,21 +6,146 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [v0.1.0] - 2026-11-11
+
 ### Added
 
+- ✨(frontend) Replace the help button at the bottom of the left panel with a
+  "Give feedback" button that opens the feedback form in a new tab. #122
+- ✨(frontend) Send a first set of product events to PostHog when the
+  environment configures it: activation, writing, chat management and
+  decryption. They carry neither message content, file names nor Matrix ids,
+  and people are known by their Hub user id. #78
+- ✨(frontend) Resize the side panel from its left edge, with the mouse or
+  the keyboard, from 350px up to the width of the chat; the width is kept in
+  the browser. When the window gets too narrow for both, the panel closes and
+  opens over the chat instead, behind a darker backdrop that shuts the chat
+  until a click on it or Escape closes the panel. #97
+- ✨(frontend) Choose how much each chat notifies from its "..." and header
+  menus: All messages, Mentions & following or Mute, stored as push rules
+  shared with Tchap and Element. A chat created or joined in the Hub starts
+  at All messages; one from elsewhere keeps its global setting, shown as the
+  checked level. At All messages every thread reply notifies; at Mentions &
+  following, only mentions and replies in followed threads notify and show
+  the chat unread. A thread shows its unread replies whether the person
+  follows it or not. Muted chats are never unread unless marked so, and stay
+  at the bottom of their list. Thread replies now move a chat up; a reaction
+  or a deleted message no longer moves it up. #91
+- ✨(frontend) Open a conversation with unread messages on the first one,
+  below the unread line a third of the way down, and mark it all read as
+  soon as it shows, threads aside; it then reopens at the bottom. A button,
+  as in Element, goes back to the latest messages, with a dot when new ones
+  arrived. The unread messages banner and its count are gone. Specific to
+  the Hub, thread replies that notify show the unread dot of the
+  conversation until it is opened: they stay unread in the threads, a new
+  reply received while it is closed brings the dot back, and the visit
+  follows the person across Hub sessions.
+- ✨(frontend) Open a message's actions from a "more" button shown beside its
+  bubble on hover, as well as with a right click. Its space is kept while it
+  is hidden, so showing it never moves the message.
+- ✨(frontend) Keep a draft per conversation and per thread in the composer,
+  until it is sent: switching chats, closing a thread, reloading the page or
+  closing the browser no longer empties it. Editing a message sets the draft
+  aside and gives it back afterwards. Drafts stay in the browser, in plain
+  text, and are erased on logout and when leaving the conversation.
+- 💄(frontend) Show a message still being decrypted as an animated shield in
+  a neutral bubble, with a "Decrypting message…" tooltip, instead of a status
+  text that could be taken for the message itself.
+- 💄(frontend) Follow the design in every state of the conversation list rows:
+  a visible unread dot on the open conversation, the "more" button centered,
+  in the brand color there, and the row kept hovered while pointing at it.
+- ✨(frontend) Quote the answered message above a reply sent from Tchap, with
+  its author, or say that it was deleted or is unavailable. Clicking the quote
+  goes to that message, in its thread or in the conversation, highlights it
+  and moves the focus to it.
+- ✨(frontend) Hide the organization Tchap appends to display names, as in
+  `Jean Dupont [Agriculture]`, and show it under the name in people search,
+  the members list and direct conversations in search results.
+- ✨(frontend) Show who reacted when hovering a reaction: the names of the
+  first six people, in the order they reacted as in Element, then how many
+  others did, a click listing them all.
+- ✨(frontend) Connect the chat to Tchap preprod or prod, selected at runtime
+  with the backend setting `FRONTEND_CHAT_ENVIRONMENT`. Ask for the email on a
+  sign-in page to find the homeserver, confirm the external server, register
+  the OAuth client on its authentication service and explain sign-in
+  failures.
+- 🔧(docker) Serve the Hub at `https://hub.localhost:9814` for Tchap sign-in in
+  development, with `make run-tchap` and a local certificate authority.
+- 🔒️(docker) Publish development ports on `127.0.0.1` only.
+- 🐛(frontend) Keep direct conversation names when the homeserver leaves a
+  member out of the room state, and never show a Matrix id as a name.
+- ✨(frontend) Show conversation avatars: the room's own picture, or the other
+  person's in a direct conversation, in the list, header and search results.
+- 💄(frontend) Align conversation rows and avatars with the design: spacing,
+  full-size pictures under the ring, icon size and background sheen.
+- 💄(frontend) List direct conversations first in search results, then named
+  conversations, then conversations named after their members.
+- ✨(frontend) Ignore accents in the conversation search: "general" finds
+  "Général".
+- ⚡️(frontend) Empty the composer as soon as a message is sent and put it back
+  if sending fails. Share encryption keys while typing and skip waiting for
+  the typing notice, so encrypted messages leave faster.
+- 🐛(frontend) Keep messages still while scrolling up: measure rows before
+  they are painted and load older pages before the top is reached.
+- 🐛(frontend) Decrypt older messages before showing them, so they no longer
+  stay stuck on "Encrypted message awaiting decryption…".
+- 💄(frontend) Show a Tchap splash screen with a loading bar while the Hub
+  and the chat connection start.
+- ⚡️(frontend) Start the chat faster: load the encryption module and the
+  session checks in parallel instead of one after the other.
+- ⚡️(frontend) Open large conversations faster: take the unread count from the
+  homeserver and find the first unread message from the read marker, as Element
+  does, instead of loading history. History loaded in the background no longer
+  refreshes the conversation list, threads and unread state.
+- ⚡️(frontend) Show a conversation with its latest 30 messages, often from
+  memory, and load older ones while scrolling up. Show reactions at once and
+  check them in the background, group refreshes after decryption, and load
+  threads and typing members once the messages are shown.
+- ✨(frontend) Show people's profile pictures in message bubbles, the thread
+  list, people search and the typing indicator.
+- ✨(frontend) Show formatted messages as Element does: bold, lists, code,
+  quotes, links and mentions, from the HTML body, with an allowlist of tags.
+  Make the full URLs typed in messages clickable.
+- ✨(frontend) Mention people with @ in the composer, with suggestions from the
+  conversation members, and send markdown as formatted text, as Element does.
+- 💄(frontend) Move encryption settings into the avatar dropdown, show setup
+  actions above blocked composers and an encryption notice in the timeline.
+  Organize encryption settings into device and backup sections with contextual
+  actions and collapsible technical details.
+- ✨(frontend) Add Matrix device verification with SAS, existing key-backup
+  recovery, exclusive browser-session ownership and encrypted private rooms.
+  Preserve crypto stores on connection failures and show unavailable messages.
+- ✨(docker) Add a guarded local E2EE reset and an Element reproduction guide.
+- ✨(frontend) Attach, preview and download files in conversations.
+  Upload files picked, pasted or dropped on the conversation before sending.
+  Send files in threads and in a new conversation not created yet.
+  Show upload progress and retry failed uploads.
+  Refuse files above the account upload limit, set to 20 MB for now.
+  Show images inline and other files with their type icon.
+  Open files in the design-system preview and download them from it.
+  Encrypt attachments and image thumbnails in end-to-end encrypted rooms.
+- 💄(frontend) Show the platform-specific search shortcut on sidebar hover.
+- ✨(frontend) Search joined conversations by name and current participants.
+  Persist the search index separately and prepare small rooms progressively.
+  Add a QuickSearch modal with local results across connected accounts.
+  Open search from any page with Cmd+K or Ctrl+K.
+- ✨(frontend) Notify incoming messages, thread replies and invitations.
+  Play sound when Hub is unfocused or another conversation is displayed.
+  Show browser notifications only when Hub is unfocused.
+  Use the sidebar's Tchap symbol for notification icons.
+  Request permission on incoming activity with a user-gesture fallback.
+  Preload audio on arrival without replaying missed alerts.
 - 🏗️(frontend) Initialize the Hub frontend project
 - 🏗️(frontend) Initialize unit tests setup
 - 🏗️(frontend) Initialize end-to-end (e2e) tests setup
 - ✨(frontend) Add chat layout with LeftPanel and virtualized chat view
-- ✨(frontend) Add tool panel with document list
-- ✨(frontend) Add file preview (PDF, image, video, audio) in the tools panel
 - ✨(frontend) Add message reactions bar with reaction toggle and emoji picker
 - ✨(frontend) Add conversation threads with tools panel and unread banner
 - ✨(frontend) Add new conversation page logic
-- ✨(frontend) Add mocked chat message composition and thread replies
 - ✨(frontend) Open conversation when sending to it from the new chat search
 - ✨(docker) Add a local dev-only Matrix stack with Keycloak auth and seed
-- ✨(frontend) Add the local Matrix frontend scope with lazy MAS/OIDC client
+- ✨(docker) Add a Matrix reset command with users-only provisioning
+- ✨(frontend) Add the local Matrix frontend runtime with lazy MAS/OIDC client
   setup
 - ✨(frontend) Bridge Matrix `/sync` onto the real-time chat event stream
 - ✨(frontend) Send text messages from the Hub to Matrix conversations
@@ -30,16 +155,195 @@ and this project adheres to
 - ✨(frontend) Add Matrix thread reading, replies, and creation
 - ✨(frontend) Add Matrix reactions on conversation and thread timelines
 - ✨(frontend) Add read-only chat members and conversation favourites
+- ✨(frontend) Leave and forget conversations from the chat header
+- ✨(frontend) Add Matrix first-unread separator and anchored navigation
+- ✨(frontend) Mark a conversation as unread or read from a quick access menu
+  in the conversation list (right click or "more" button) and from the header
+  menu, shared with Tchap.
 
 ### Changed
 
+- 🌐(frontend) Follow the agreed wording: "chat" in English and "discussion"
+  in French for a conversation, "fil de réponses" for a thread, "Message
+  privé" for an unnamed direct message, and "LaSuite Tchap v2" instead of
+  "Hub". Translate the missing French strings and fix wrong plurals.
+- 💄(frontend) Open the message actions with a right click on a bubble, as a
+  menu at the pointer: quick reactions, Reply and Copy, then Edit and Delete,
+  the bubble highlighted while it is open. Offer Delete on one's own messages
+  only and show the thread button under the reactions.
+- 💄(frontend) Keep only the threads button in conversation headers and frame
+  the conversation menu as the tools are, drop the focus outline of the people
+  search and align the "Open" action of search results with the design.
+- 💄(frontend) Apply the latest message design: bubble padding and line
+  height, smaller composer text, rounder reactions, a faint veil on pictures
+  and the file name in its frame. Restyle the file drop zone.
+- 💄(frontend) Slide the tools panel in at its final width, 450px when there
+  is room and never wider than the conversation, its content passing under a
+  translucent, blurred header that shows a separator once it scrolls. Cap the
+  conversation at 900px, put 16px between authors, align its composer with
+  the panel's and let the messages scroll up to the composer.
+- 💄(frontend) Align the side panel with the design: conversation names one
+  weight lighter in the primary colour, UI kit search and group icons, rows
+  6px apart, the list passing under a translucent, blurred top and footer, a
+  separator under the actions once it scrolls and a hover state on the
+  account avatar. The list no longer moves sideways.
+- ⚡️(frontend) Load the threads panel page by page as it scrolls, as Element
+  does, instead of every thread of the conversation at once. Open a thread
+  on its latest replies, older ones loading while scrolling up, and from its
+  root alone when it is not loaded yet. A page that fails to load offers to
+  retry. Stop loading every thread when a conversation with unread threads
+  opens.
+- ⚡️(frontend) Render only the side panel conversations near the view and
+  re-render a row only when it changes. The open conversation and its
+  composer no longer re-render for every list change or new message.
+- 🌐(frontend) Say "chat" instead of "conversation", and name Tchap in the
+  sign-in errors and the welcome screen.
+- 🌐(frontend) Call the app LaSuite Tchap instead of LaSuite Hub, on the home
+  page, in the tab title, in the errors and in Tchap's session list.
+- ⚡️(frontend) Open the chat from the local sync cache, before the first
+  network sync, as Element does. Load the user, the Matrix driver and its
+  crypto in parallel, keep the sync cache in a worker, and stop clearing it
+  when a conversation was left from another client.
+- ⚡️(frontend) Open a conversation at once with the messages already in
+  memory, as Element does, then fill the screen with older ones, 50 events per
+  request. Load the full thread list only with the threads panel, and leave
+  spaces out of the conversation list.
+- ⚡️(frontend) Jump to the first unread message faster: load the messages
+  above and below it at once, show a spinner in the banner while waiting, and
+  open on the next message when the read marker is on a hidden event.
+- 🌐(i18n) Align the Crowdin workflow with Docs and document the translation
+  rules.
+- 🌐(frontend) Offer the languages configured on the backend and apply the
+  language saved on the profile at login.
+- 🌐(backend) Only offer English and French for now.
+- 💄(frontend) Refine chat attachments after QA.
+  Show the attach button as an icon, with tooltips on attach and send.
+  Keep queued files on one scrolling row and cap them at 20 per message.
+  Show smaller inline images and the file details in the preview.
+  Open the preview once the file is downloaded and close it on deletion.
+- 🔧(docker) Replace MinIO with RustFS for development and CI storage
+- 💄(frontend) Hide the unavailable thread follow control
+- ✨(frontend) Expand the message composer up to eight lines
+- ⚡(frontend) Speed up the emoji picker and align reaction artwork
+- 💄(frontend) Improve message dates and bubble readability
+- 💄(frontend) Align the sidebar branding and account controls with Tchap
+- ♻️(frontend) Streamline the new-chat conversation flow
+- ⬆️(frontend) Migrate to ui-components 1.0.0
+- ♻️(frontend) Use the local Matrix account as the sole chat runtime
+- ♻️(frontend) Show Documents as unavailable until Matrix media support lands
 - ♻️(frontend) Simplify the conversation auto-scroll onto the Virtuoso API
 - 💄(frontend) Use the brand color for the current user's message bubbles
+- 🔥(frontend) Remove the meeting entry from the side panel quick actions
 
 ### Fixed
 
+- 🐛(frontend) Keep the reply count under a message whose thread was started
+  in the session when the message is edited, and stop that count jumping
+  while a reply is being sent. #121
+- 🐛(frontend) Move chats up the list for the same events as Element and
+  Tchap: someone changing their name or avatar, joining or leaving, editing a
+  message, voting, answering or ending a call, or changing rights no longer
+  moves a chat up. Your own reactions, edits and deletions now do, as there.
+- 🐛(frontend) Stop losing what is typed while a message is being sent, in any
+  conversation: the field stays free and messages leave in order, as in
+  Element. A message that could not be sent no longer comes back in the field:
+  it stays in the conversation or thread with an error icon to send it again,
+  through a reload or a closed tab too, and can be deleted from its menu. It
+  stays on this browser as plain text, an encrypted file's key included, until
+  it is sent, deleted, its conversation left or the session logged out.
+- ✅(i18n) Keep keys containing a colon whole in the missing translations
+  test, as the extraction does.
+- 👷(ci) Run the CI again on the Ubuntu 26.04 runners.
+- 🐛(frontend) Open the thread list and a thread without loading older pages
+  on a slow device: the list's edge reports count only once it is scrolled.
+- 🐛(frontend) Stop freezing the page when a large conversation opens for the
+  first time: apply its loaded members as one change instead of one per
+  member, refresh conversations once per burst of changes, stop superseded
+  reads early and check unread state from the newest message.
+- 🐛(frontend) Stop typing lag caused by encryption: upgrade matrix-js-sdk
+  to 42.4.0, as Tchap web does. With 41.6 and the encryption module 18.9,
+  most syncs created 50 new one-time keys, which slowed every later sync and
+  could break new encrypted sessions. Sign in through its OAuth 2 API.
+- 🐛(frontend) Send the thread receipt when a thread is read before any
+  other threaded receipt in the room, so it no longer comes back unread.
+- 🐛(frontend) Count thread replies from the server summary, so a read
+  thread no longer shows one reply too many after a reload.
+- 🐛(frontend) Keep encryption settings closed after cancellation failures,
+  clean stored search data safely on logout and batch decryption refreshes.
+  Preserve acknowledged sends and suppress local message echoes.
+- 🐛(docker) Retry transient HTTP failures while waiting for local Matrix.
+- 🐛(frontend) Preserve drafts on Matrix outages and exclude failed SDK echoes
+  from delivered messages. Use the registered OIDC callback from deep links
+  and keep the development indicator clear of the account menu.
+- 🐛(frontend) Distinguish Matrix backup outages from missing backups, check
+  signed reference devices and preserve actionable encryption failure causes.
+  Reuse local security state before sending and restore full history only after
+  verification or an explicit recovery request.
+- 🌐(frontend) Use English source messages throughout the encryption flow and
+  keep French translations in the locale dictionary.
+- 🐛(docker) Recreate PostgreSQL before resetting the E2E data directory so
+  consecutive test runs can initialize the database.
+- ♻️(frontend) Replace nested ternaries with explicit branches and prevent new
+  occurrences with ESLint. Align the OIDC mock with its asynchronous API.
+- 🐛(frontend) Let clicks pass through the empty UI-kit toast container so the
+  account avatar menu opens with the mouse.
+- 🐛(frontend) Require notification permission before playing 
+  notification sounds.
+- 🐛(frontend) Keep the toolbar open beside short messages after hovering
+  the bubble, without revealing it from the surrounding empty space
+- 🐛(frontend) Reserve enough space for the thread root reaction toolbar
+- 🐛(frontend) Update root reactions while drafting the first thread reply
+- 🐛(frontend) Allow reactions on newly sent messages before Matrix sync
+  indexes them in the conversation or thread timeline
+- 🐛(frontend) Preserve group names in conversation search and lists when
+  Matrix participants are only partially loaded
+- 🐛(docker) Pull MinIO images from quay.io for development and CI
+- 🐛(frontend) Reopen conversations at the latest message after unread
+  navigation and resume forward pagination from contextual history
+- 🐛(frontend) Keep the unread button visible while navigating to unread
+  messages
+- 🐛(frontend) Show the unread button before the initial viewport check
+- 🐛(frontend) Keep the unread separator stable while reading messages
+- 🐛(frontend) Restore unread navigation in conversations without a read marker
+- 🐛(frontend) Keep the thread root message toolbar fully accessible
+- 🐛(frontend) Follow Matrix timeline and count updates for deleted thread
+  replies
+- 🐛(frontend) Focus the thread composer whenever Reply is clicked
+- 🐛(frontend) Keep the thread composer compact when opening the tools panel
+- 🐛(frontend) Restore edit and delete actions on newly sent thread replies
+- 🐛(frontend) Resolve newly sent messages before editing or deleting them
+- 🐛(frontend) Restore message content when an optimistic edit or deletion
+  fails
+- 🐛(frontend) Keep modals above chat headers and messages below them
 - 🐛(frontend) Show an error toast when a chat message fails to send
 - 🐛(frontend) Reset the composer draft when switching conversation
+- 🐛(frontend) Reuse pending direct invitations when starting a conversation
 - 🌐(frontend) Translate the current user's optimistic thread author
+- 🐛(frontend) Read a conversation never read before through its last
+  displayed message, as Element does, instead of keeping it unread.
+- 🐛(frontend) Show messages received while a conversation loads, in the
+  order sync delivers them, and every message after a sync with a gap.
+- 🐛(frontend) Decrypt a message left waiting for decryption as soon as it is
+  shown, as Element does, and show it once its key arrives.
+- 🐛(frontend) Keep a reaction shown while it is sent, count reactions other
+  clients encrypt, and keep reaction chips in place when their counts change.
+- 🐛(frontend) Wait for the invitations of a new conversation before its
+  first message, so that the people invited can decrypt it.
+- 🐛(frontend) Keep loading a conversation whose first message is sent while
+  it loads, instead of showing its loading state until a reload.
+- 🐛(frontend) Show the name of a named conversation left with one other
+  person, as Element does, instead of that person's name.
+- 🐛(frontend) Keep a thread reply shown while it is sent. As in Element, a
+  read receipt only updates unread counts from memory and a new reply only
+  updates its own thread, instead of reloading every open thread.
+- 🐛(frontend) Open a new thread on its root at once, as Element does, so its
+  first reply shows while it is sent, under a root without a reply count.
+- 🐛(frontend) Mark a thread read through its last event, reactions included,
+  and clear its counts, as Element does, so it no longer comes back unread
+  when Tchap already read it.
+- 🐛(frontend) Stop showing a read conversation unread after each reload when
+  one of its threads was read on Tchap: clear the thread counts its receipt
+  already covers once the thread has loaded.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/main
+[unreleased]: https://github.com/suitenumerique/hub/compare/v0.1.0...main
+[v0.1.0]: https://github.com/suitenumerique/hub/releases/v0.1.0

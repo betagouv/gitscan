@@ -1,28 +1,41 @@
-## Changelog : hub (30 derniers jours, au 10 juillet 2026)
+## Changelog : hub (30 derniers jours, au 11 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet Hub a connu une avancée significative dans l'intégration de la messagerie Matrix. Les utilisateurs peuvent désormais initier des conversations Matrix, envoyer et recevoir des messages en temps réel, gérer les invitations et réagir aux messages. L'interface utilisateur a été enrichie avec des indicateurs de lecture, des favoris et des threads de conversation.
+Cette période est marquée par le passage en version 0.1.0. Les développements se sont concentrés sur l'amélioration de l'expérience de messagerie (interface plus fluide, gestion des notifications et des fils de discussion), l'optimisation des performances de chargement et la mise en place d'outils d'analyse pour mieux comprendre l'utilisation de la plateforme.
 
 ### Évolutions fonctionnelles
-- Intégration de la messagerie Matrix : possibilité de démarrer de nouvelles conversations Matrix directement depuis la recherche de chat. [#2345](https://github.com/suitenumerique/hub/issues/2345)
-- Envoi et réception de messages Matrix en temps réel.
-- Gestion des invitations Matrix : acceptation et refus des invitations.
-- Ajout de réactions aux messages dans les conversations et les threads Matrix.
-- Affichage des indicateurs de lecture et des accusés de réception pour les messages Matrix.
-- Gestion des threads de conversation Matrix : lecture, réponse et création de threads.
-- Possibilité d'ajouter des conversations aux favoris.
-- Affichage des membres de la conversation.
-- Indicateurs de saisie (typing indicators) pour une meilleure expérience utilisateur.
-- Coloration des messages de l'utilisateur courant avec la couleur de la marque.
+- **Messagerie et interactions** :
+    - Support du formatage Markdown pour les messages.
+    - Possibilité de mentionner des utilisateurs directement depuis le champ de saisie.
+    - Affichage détaillé des réactions (visualisation de qui a réagi au survol).
+    - Gestion des brouillons par conversation et par fil de discussion pour éviter les pertes de saisie.
+    - Amélioration des actions sur les messages (menu contextuel via clic droit ou bouton dédié).
+    - Amélioration de la gestion des fils de discussion (citations de messages, comptage précis des réponses).
+- **Notifications et lecture** :
+    - Gestion fine des niveaux de notification par discussion (tous les messages, mentions et fils suivis, ou mode silencieux).
+    - Amélioration de la gestion des messages non lus (ouverture automatique au bon endroit, indicateurs visuels persistants).
+- **Interface utilisateur (UI/UX)** :
+    - Refonte visuelle de l'interface : bulles de message, en-têtes de discussion, panneau latéral et états vides.
+    - Ajout d'un écran de chargement (splash screen) au démarrage.
+    - Ajout d'un bouton "Donner un avis" pour faciliter le retour utilisateur.
+    - Optimisation de l'affichage sur mobile et gestion du redimensionnement du panneau latéral.
+- **Internationalisation** :
+    - Support officiel du français et de l'anglais, avec synchronisation de la langue selon le profil utilisateur.
 
 ### Évolutions techniques
-- Refonte de la couche de mapping du driver Matrix pour une meilleure modularité.
-- Lazy loading du client SDK Matrix pour optimiser les performances.
-- Configuration de l'authentification OIDC Matrix avec Keycloak.
-- Utilisation d'un stack Docker local pour le développement avec Matrix et Keycloak.
-- Optimisation du déduplication des guards du driver Matrix et du hachage des avatars.
-- Simplification de l'auto-défilement des conversations.
+- **Performance et optimisation** :
+    - Accélération du démarrage via le chargement parallèle des données utilisateur, du driver et de la cryptographie.
+    - Utilisation de Web Workers pour la gestion du cache de synchronisation.
+    - Optimisation du rendu des listes (chargement progressif des fils de discussion et rendu uniquement des conversations visibles).
+    - Réduction des freezes lors de l'ouverture de conversations volumineuses.
+- **Observabilité** :
+    - Intégration de PostHog pour le suivi des événements d'activation, de l'utilisation des fonctionnalités de chat et des échecs de déchiffrement.
+    - Exposition de métriques (ID utilisateur, version) pour l'analyse.
+- **Infrastructure et CI/CD** :
+    - Mise à jour des environnements Docker (support HTTPS pour la connexion Tchap, gestion des permissions utilisateurs).
+    - Configuration d'un environnement de test "sandbox".
+    - Amélioration de la chaîne de tests (CI) avec l'utilisation de runners Ubuntu 26.04 et d'une pile Matrix locale pour les tests de bout en bout (E2E).
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
-- Ajustement de la mise en forme du changelog pour une meilleure lisibilité.
+- **Documentation** : Mise à jour de la documentation concernant les règles de traduction et la connexion avec Tchap.
+- **Maintenance** : Nettoyage du code avec Prettier et mise à jour de diverses dépendances.
