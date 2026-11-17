@@ -1,10 +1,10 @@
-## Changelog : api-particulier-demonstrateur (30 derniers jours, au 26 octobre 2026)
+## Changelog : api-particulier-demonstrateur (30 derniers jours, au 16 novembre 2026)
 
 ### Résumé
-Les évolutions récentes se sont concentrées sur l'automatisation de la maintenance technique et l'amélioration de la qualité du code, sans apporter de nouvelles fonctionnalités pour les utilisateurs.
+Les activités récentes ont été principalement consacrées à la maintenance technique et à l'automatisation du projet. Aucune nouvelle fonctionnalité n'a été ajoutée durant cette période.
 
 ### Évolutions techniques
-- Automatisation de la maintenance : mise en place de tâches planifiées pour la mise à jour régulière des dépendances (fréquences quotidienne et hebdomadaire).
+- Automatisation de la mise à jour quotidienne des dépendances pour assurer la stabilité du projet.
 
 ### Autres changements
-- Amélioration de la qualité du code : formatage de la configuration AGS avec Prettier.
+- Amélioration de la cohérence du code via le formatage de la configuration AGS avec Prettier.
