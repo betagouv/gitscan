@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/suitenumerique/people",
   "name": "people",
-  "description": "Application de gestion des utilisateurs et des équipes, permettant de distribuer des permissions au sein de La Suite Numérique.",
+  "description": "Application de gestion des utilisateurs et des équipes, permettant la distribution des permissions au sein de La Suite. Elle centralise l'identité et les accès pour l'écosystème numérique.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Gestion des équipes & Partenaires",
     "Authentification & Accès",
-    "Gestion des profils & Comptes",
-    "Administration & Backoffice"
+    "Gestion des équipes & Partenaires",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,8 +17,6 @@
     "Redis",
     "Celery",
     "Keycloak",
-    "Docker",
-    "Nginx",
     "Playwright"
   ],
   "components": [
@@ -30,11 +28,12 @@
     "Node.js / NestJS",
     "Authentification (composant)",
     "Celery & Queue asynchrone",
-    "Tests"
+    "Django"
   ],
   "auth": {
     "methods": [
       "jwt",
+      "sso",
       "session"
     ],
     "providers": [
@@ -48,18 +47,17 @@
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-11-09T15:53:46+01:00",
+  "lastActivity": "2026-11-16T18:06:05+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "TypeScript",
-    "Docker & Conteneurs",
     "Bases de données SQL",
-    "CI/CD & GitHub Actions",
     "Sécurité & Auth",
-    "Design System & UI"
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "TypeScript"
   ]
 }
