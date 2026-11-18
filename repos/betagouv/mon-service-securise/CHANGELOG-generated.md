@@ -1,35 +1,37 @@
-## Changelog : mon-service-securise (30 derniers jours, au 10 novembre 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 17 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le service a franchi des étapes majeures avec l'introduction de la génération automatique de présentations PowerPoint pour les commissions et une refonte de la gestion des risques. L'organisation des services est simplifiée grâce à la gestion par groupes d'entités, tandis que l'administration bénéficie de nouveaux outils de reporting et d'une synchronisation automatisée des données clés avec le CRM.
+Ce mois-ci, le développement s'est concentré sur l'automatisation des processus de décision et le renforcement de la gestion des risques. La nouveauté majeure est la capacité de générer automatiquement des supports de présentation PowerPoint complets pour les commissions de sécurité. Parallèlement, l'expérience d'administration a été enrichie avec l'introduction d'un rôle de superviseur et de nouveaux outils de reporting automatique.
 
 ### Évolutions fonctionnelles
-- **Génération de supports de commission (PPTX) :** Création automatique de présentations PowerPoint incluant le sommaire, la composition de la commission, la liste des pièces du dossier et les avis écrits.
-- **Gestion des risques et conformité :** 
-    - Déploiement d'une nouvelle interface de gestion des risques (V2).
-    - Intégration détaillée des vecteurs et objectifs visés de l'ANSSI dans le suivi des risques.
-    - Possibilité de créer des risques spécifiques basés sur le référentiel.
-- **Organisation et administration :**
-    - Mise en place de la gestion par groupes d'entités pour mieux structurer les services.
-    - Introduction du rôle de "superviseur" avec des droits et des vues spécifiques.
-    - Nouveau système de reporting mensuel pour les administrateurs et superviseurs.
-- **Expérience utilisateur (UI/UX) :**
-    - Amélioration du système de notifications (toasts) et des modales.
-    - Mise à jour du tiroir de téléchargement et de l'affichage des actions sur les pages de service.
-    - Ajout de notifications de nouveautés pour les fonctionnalités clés (API publique, groupes de services).
+- **Génération de supports de commission (PowerPoint) :**
+    - Automatisation de la création de présentations incluant l'indice cyber (radar et jauges), la cartographie des risques (bruts, à date et cibles), ainsi que le détail des mesures et des pièces du dossier.
+    - Ajout de slides de synthèse : plan d'action, proposition de décision, annexes des mesures et avis des membres.
+    - Intégration de la gestion des exigences restantes et des statistiques de mesures par catégorie et criticité.
+- **Gestion des risques :**
+    - Refonte de l'interface de gestion des risques (v2) permettant de lier précisément les risques aux vecteurs et objectifs visés du référentiel ANSSI.
+    - Ajout d'une modale dédiée pour la consultation de la liste des risques ANSSI.
+- **Administration et pilotage :**
+    - Création du rôle de "Superviseur" avec une gestion spécifique des permissions et de la visibilité sur les services.
+    - Mise en place de rapports mensuels automatiques pour les administrateurs et superviseurs.
+    - Nouveaux tableaux de bord pour suivre l'application des modèles de mesures sur l'ensemble des services.
+    - Ajout de préférences de notification (alertes sur les nouveaux services, activation du rapport mensuel).
 
 ### Évolutions techniques
-- **Intégration CRM et automatisation :** 
-    - Synchronisation automatique des indicateurs clés (nombre d'utilisateurs, de services et d'homologations) vers le CRM (Twenty).
-    - Mise en place de tâches planifiées (CRON) pour le reporting et la maintenance des données.
-- **Architecture et refactoring :**
-    - Refonte des adaptateurs (PowerPoint, CRM) et des clients HTTP pour une meilleure modularité.
-    - Optimisation de la gestion des erreurs et du monitoring via Sentry.
-    - Amélioration de la gestion des permissions et des abonnés (event bus).
-- **Infrastructure et environnement :**
-    - Mise à jour des environnements vers Node.js 26 LTS et PostgreSQL 18.
-    - Passage à la version 12 de pnpm.
+- **Optimisations de performance :**
+    - Amélioration des requêtes SQL via l'utilisation de sous-requêtes `LATERAL` et l'ajout d'index sur les autorisations et les modèles de mesure.
+    - Optimisation du traitement des identifiants par l'utilisation de casts vers le type `UUID`.
+- **Architecture et Refactoring :**
+    - Modularisation de l'adaptateur PowerPoint en découpant la logique par type de slide pour une meilleure maintenance.
+    - Extraction et centralisation du contrôle d'erreurs et des outils de manipulation de documents (texte, formes, nettoyage).
+    - Amélioration de la robustesse de l'application par une gestion plus fine des erreurs techniques (notamment pour les services tiers comme ProConnect ou MSS).
+- **Infrastructure et Intégration :**
+    - Mise à jour des environnements de développement et de production (Node.js v26, PostgreSQL v18).
+    - Optimisation des images Docker en allégeant le contexte de build.
+    - Renforcement de l'intégration avec le CRM (Twenty) pour la synchronisation automatique des statistiques (nombre de services, nombre d'homologations).
+    - Amélioration de la couverture de tests avec l'extension de l'usage de `jsdom`.
 
 ### Autres changements
-- **Tests :** Ajout de tests d'intégration pour la visite guidée et l'affichage des risques.
-- **Nettoyage :** Refactorisation de composants UI (accordéons, tableaux d'entités) et suppression de code obsolète.
+- Nettoyage du code et suppression de fonctions obsolètes.
+- Harmonisation de la gestion des logs et de la verbosité selon les environnements.
+- Ajustements cosmétiques sur les composants de l'interface (utilisation des cartes du Design System DSFR).

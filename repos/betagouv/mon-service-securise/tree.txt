@@ -1,6 +1,8 @@
 .
 ├── .claude
 │   └── skills
+│       ├── bonnes-pratiques-postgresql
+│       │   └── SKILL.md
 │       ├── integrer-landing-page
 │       │   └── SKILL.md
 │       ├── migration-javascript-vers-typescript
@@ -45,6 +47,8 @@
 ├── chantier_pptx
 │   ├── essaiAutomizer.pptx
 │   ├── plan.md
+│   ├── scripts
+│   │   └── renumerote_slides.py
 │   └── spike
 │       └── essaiAutomizer.mjs
 ├── clevercloud
@@ -205,6 +209,7 @@
 │   ├── 20261005160310_creationTableAssociationServicesGroupes.js
 │   ├── 20261008100000_creationTableGroupesEntites.js
 │   ├── 20261008100100_creationTableAssociationEntitesGroupes.js
+│   ├── 20261116120000_ajouteIndexAutorisationsEtModelesMesureSpecifique.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -695,6 +700,29 @@
 │   │   ├── adaptateurTrackingSendinblue.js
 │   │   ├── adaptateurUUID.ts
 │   │   ├── adaptateurZip.js
+│   │   ├── automizer
+│   │   │   ├── formes.ts
+│   │   │   ├── nettoyageDeLArchive.ts
+│   │   │   ├── pagination.ts
+│   │   │   ├── pastillesDesStatuts.ts
+│   │   │   ├── radarIndiceCyberSvg.ts
+│   │   │   ├── slides
+│   │   │   │   ├── annexeDesMesures.ts
+│   │   │   │   ├── avisDesMembres.ts
+│   │   │   │   ├── besoinsDeSecurite.ts
+│   │   │   │   ├── cartographiesDesRisques.ts
+│   │   │   │   ├── compositionDeLaCommission.ts
+│   │   │   │   ├── contexte.ts
+│   │   │   │   ├── couverture.ts
+│   │   │   │   ├── descriptionDesRisques.ts
+│   │   │   │   ├── exigencesRestantes.ts
+│   │   │   │   ├── indiceCyber.ts
+│   │   │   │   ├── piecesDuDossier.ts
+│   │   │   │   ├── slidesOptionnelles.ts
+│   │   │   │   └── statistiquesDesMesures.ts
+│   │   │   ├── svgEnPng.ts
+│   │   │   ├── template.ts
+│   │   │   └── texte.ts
 │   │   ├── camembertsMesures.svg.ts
 │   │   ├── excel
 │   │   │   └── LecteurExcel.ts
@@ -910,9 +938,12 @@
 │   │       └── VerificationsUtilisateurPeutMuterModele.js
 │   ├── erreurs.ts
 │   ├── fabriqueReferentiel.ts
+│   ├── geometrie
+│   │   └── radar.ts
 │   ├── http
 │   │   ├── cacheStatique.ts
 │   │   ├── configurationServeur.js
+│   │   ├── controleurPageErreur.ts
 │   │   ├── encodeEntitesHTML.ts
 │   │   ├── lecteurDeFormData.js
 │   │   ├── middleware.interface.ts
@@ -927,6 +958,7 @@
 │   │   │   ├── siret.schema.ts
 │   │   │   └── suggestionAction.schema.ts
 │   │   ├── seo.ts
+│   │   ├── statutPageErreur.ts
 │   │   └── validePayloads.ts
 │   ├── mesures
 │   │   └── referentielsExternes
@@ -1059,7 +1091,16 @@
 │   │   ├── objetsPersistance
 │   │   │   └── objetPersistanceService.js
 │   │   ├── objetsPowerpoint
-│   │   │   └── piecesDuDossier.ts
+│   │   │   ├── annexeDesMesures.ts
+│   │   │   ├── avisDesMembres.ts
+│   │   │   ├── besoinsDeSecurite.ts
+│   │   │   ├── cartographiesDesRisques.ts
+│   │   │   ├── contexteDuService.ts
+│   │   │   ├── exigencesRestantes.ts
+│   │   │   ├── indiceCyber.ts
+│   │   │   ├── piecesDuDossier.ts
+│   │   │   ├── risqueCartographie.ts
+│   │   │   └── statistiquesDesMesures.ts
 │   │   ├── parcoursUtilisateur.ts
 │   │   ├── parrainage.js
 │   │   ├── partiesPrenantes
@@ -1378,6 +1419,10 @@
 │   │   │   └── Marianne-ThinItalic.ttf
 │   │   └── syntheseSecurite.typ
 │   └── vuesPowerpoint
+│       ├── illustrationsNiveaux
+│       │   ├── niveau1.png
+│       │   ├── niveau2.png
+│       │   └── niveau3.png
 │       └── supportCommissionHomologation.pptx
 ├── svelte
 │   ├── CLAUDE.md
@@ -2095,6 +2140,9 @@
 │   │   ├── adaptateurProfilAnssi.spec.js
 │   │   ├── adaptateurRechercheEntrepriseAPI.spec.js
 │   │   ├── adaptateurStatistiquesPostgres.spec.ts
+│   │   ├── automizer
+│   │   │   ├── radarIndiceCyberSvg.spec.ts
+│   │   │   └── svgEnPng.spec.ts
 │   │   ├── excel
 │   │   │   └── LecteurExcel.spec.ts
 │   │   ├── gestionErreur
@@ -2264,10 +2312,14 @@
 │   │   ├── depotDonneesTeleversementServices.spec.ts
 │   │   ├── depotDonneesUtilisateurs.spec.js
 │   │   └── depotVide.js
+│   ├── geometrie
+│   │   └── radar.spec.ts
 │   ├── http
 │   │   ├── cacheStatique.spec.ts
+│   │   ├── controleurPageErreur.spec.ts
 │   │   ├── middleware.spec.js
-│   │   └── seo.spec.ts
+│   │   ├── seo.spec.ts
+│   │   └── statutPageErreur.spec.ts
 │   ├── mocks
 │   │   ├── adaptateurChiffrement.js
 │   │   ├── adaptateurChiffrementQuiWrap.ts
@@ -2379,7 +2431,15 @@
 │   │   ├── objetsPersistance
 │   │   │   └── objetPersistanceService.spec.js
 │   │   ├── objetsPowerpoint
-│   │   │   └── piecesDuDossier.spec.ts
+│   │   │   ├── annexeDesMesures.spec.ts
+│   │   │   ├── avisDesMembres.spec.ts
+│   │   │   ├── besoinsDeSecurite.spec.ts
+│   │   │   ├── cartographiesDesRisques.spec.ts
+│   │   │   ├── contexteDuService.spec.ts
+│   │   │   ├── exigencesRestantes.spec.ts
+│   │   │   ├── indiceCyber.spec.ts
+│   │   │   ├── piecesDuDossier.spec.ts
+│   │   │   └── statistiquesDesMesures.spec.ts
 │   │   ├── parcoursUtilisateur.spec.ts
 │   │   ├── partiesPrenantes
 │   │   │   ├── developpementFourniture.spec.ts
@@ -2555,4 +2615,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-326 directories, 2361 files
+334 directories, 2413 files
