@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/IA-Generative/device-management",
   "name": "device-management",
-  "description": "Serveur central pour la distribution, la configuration et la supervision d'extensions bureautiques. Il permet un déploiement progressif, une gestion dynamique des configurations et un accès sécurisé aux services d'IA.",
+  "description": "Serveur central pour la distribution, la configuration et la supervision d'extensions bureautiques. Il permet un déploiement progressif, une gestion par cohortes et un accès sécurisé aux services d'IA via un relais dédié.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
-    "Authentification & Accès",
     "Intelligence Artificielle & NLP",
     "Suivi & Traçabilité",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Gestion métier générale"
+    "Infrastructure & Stockage",
+    "Tableaux & Affichage"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,9 +19,12 @@
     "Keycloak",
     "Docker",
     "Kubernetes",
-    "Jinja2",
+    "S3",
     "HTMX",
-    "S3"
+    "Jinja2",
+    "Pytest",
+    "Ruff",
+    "Bandit"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,26 +33,22 @@
     "Docker & Conteneurs",
     "Kubernetes & Helm",
     "Authentification (composant)",
-    "Intégrations services externes",
     "Templates & Moteurs de rendu",
+    "Intelligence Artificielle / ML",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
+      "session",
       "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Pytest",
-  "workflows": [
-    "Docker Compose",
-    "Kubernetes deployment",
-    "CI/CD via scripts"
-  ],
+  "tests": "Pytest (tests unitaires et d'intégration)",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,9 +56,9 @@
     "Python",
     "Docker & Conteneurs",
     "Intelligence Artificielle & LLM",
-    "Sécurité & Auth",
     "Bases de données SQL",
+    "Sécurité & Auth",
     "Kubernetes & Helm",
-    "Documentation"
+    "Git & DevOps"
   ]
 }

@@ -27,7 +27,13 @@
 │       ├── 004_llm_quota.py
 │       ├── 005_general_version.py
 │       ├── 006_experiment_versions.py
-│       └── 007_parc_export_worker.py
+│       ├── 007_parc_export_worker.py
+│       ├── 008_artifact_bootstrap_info.py
+│       ├── 009_artifact_signature.py
+│       ├── 010_plugin_show_candidate.py
+│       ├── 011_campaign_restart_required.py
+│       ├── 012_github_releases.py
+│       └── 013_api_keys.py
 ├── alembic.ini
 ├── app
 │   ├── __init__.py
@@ -55,6 +61,7 @@
 │   │   └── templates
 │   │       ├── _audit_rows.html
 │   │       ├── _audit_table.html
+│   │       ├── api_keys.html
 │   │       ├── artifacts.html
 │   │       ├── audit_log.html
 │   │       ├── base.html
@@ -109,15 +116,22 @@
 │   ├── s3.py
 │   ├── services
 │   │   ├── __init__.py
+│   │   ├── api_keys.py
 │   │   ├── binaries.py
 │   │   ├── crypto.py
 │   │   ├── db.py
+│   │   ├── github_releases.py
 │   │   ├── health.py
 │   │   ├── links.py
+│   │   ├── package_bootstrap.py
+│   │   ├── package_config.py
+│   │   ├── package_import.py
+│   │   ├── package_signing.py
 │   │   ├── parc_export.py
 │   │   ├── parc_mapping.py
 │   │   ├── relay_assistant.py
 │   │   ├── relay_probe.py
+│   │   ├── update_rules.py
 │   │   └── versions.py
 │   ├── settings.py
 │   ├── tools
@@ -277,10 +291,13 @@
 │   │   ├── adr-0003-modele-embedding.md
 │   │   ├── adr-0004-branches-experimentation.md
 │   │   ├── adr-0005-build-in-cluster.md
+│   │   ├── adr-0006-chaine-confiance-paquets.md
 │   │   ├── adr-dgx-deployment.md
 │   │   └── adr-product-architecture.md
 │   ├── operations
 │   │   ├── README.md
+│   │   ├── chaine-confiance-paquets.md
+│   │   ├── cles-api.md
 │   │   ├── debug-campaign-not-serving.md
 │   │   ├── developer-readme.md
 │   │   ├── feature-flags.md
@@ -309,6 +326,17 @@
 ├── requirements-dev.txt
 ├── requirements.txt
 ├── scripts
+│   ├── banc-paquets
+│   │   ├── .gitignore
+│   │   ├── LECONS.md
+│   │   ├── README.md
+│   │   ├── banc.sh
+│   │   ├── docker-compose.yml
+│   │   ├── gen.py
+│   │   ├── run.py
+│   │   ├── ui.py
+│   │   ├── verify-plugin.cjs
+│   │   └── verify.mjs
 │   ├── build-incluster.sh
 │   ├── build-k8s.sh
 │   ├── build-local.sh
@@ -322,6 +350,7 @@
 │   ├── dm4-slug-migration.sql
 │   ├── e2e-feature-flags-matrix.sh
 │   ├── e2e-parallel-versions.py
+│   ├── faux_github.py
 │   ├── k8s
 │   │   ├── create-registry-secret.sh
 │   │   ├── deploy.sh
@@ -329,6 +358,8 @@
 │   │   ├── render.sh
 │   │   ├── validate-all.sh
 │   │   └── validate.sh
+│   ├── package-signing
+│   │   └── dm-package-keys.py
 │   ├── repack-oxt.sh
 │   ├── reset-from-scratch.sh
 │   ├── setup-wireguard.sh
@@ -353,5 +384,6 @@
     │   ├── test_int_general_version.py
     │   └── test_int_nonreg.py
     ├── llm_utils.py
-    └── test_*.py  (55 files)
-50 directories, 360 files
+    ├── package_trust_helpers.py
+    └── test_*.py  (70 files)
+52 directories, 405 files
