@@ -31,6 +31,7 @@
 ├── Procfile
 ├── README.md
 ├── SECURITY.md
+├── UPGRADE.md
 ├── bin
 │   ├── Tiltfile
 │   ├── _config.sh
@@ -242,6 +243,10 @@
     │   │   │   ├── 0030_item_add_restriction_target.py
     │   │   │   ├── 0031_item_parent_path_idx.py
     │   │   │   ├── 0032_item_trashed_path_idx.py
+    │   │   │   ├── 0033_item_link_expires_at_item_link_password.py
+    │   │   │   ├── 0034_linktrace_link_unlocked_at.py
+    │   │   │   ├── 0035_normalize_stored_emails.py
+    │   │   │   ├── 0036_business_metrics_indexes.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── permissions
@@ -255,10 +260,15 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── accesses.py
     │   │   │   ├── item_exports.py
+    │   │   │   ├── mail.py
     │   │   │   ├── sdk_relay.py
     │   │   │   ├── search_indexers.py
     │   │   │   └── uploads.py
     │   │   ├── signals.py
+    │   │   ├── static
+    │   │   │   └── core
+    │   │   │       └── admin
+    │   │   │           └── storage_limits_example.csv
     │   │   ├── storage
     │   │   │   ├── __init__.py
     │   │   │   ├── cache.py
@@ -272,8 +282,14 @@
     │   │   ├── templates
     │   │   │   └── core
     │   │   │       ├── admin
+    │   │   │       │   ├── import_storage_limits.html
+    │   │   │       │   ├── item_tree.html
+    │   │   │       │   ├── item_tree_entry.html
+    │   │   │       │   ├── item_tree_node.html
     │   │   │       │   ├── merge_users.html
     │   │   │       │   ├── transfer_items.html
+    │   │   │       │   ├── user_change_list.html
+    │   │   │       │   ├── user_root_items.html
     │   │   │       │   └── user_top_files.html
     │   │   │       └── generate_document.html
     │   │   ├── templatetags
@@ -326,6 +342,7 @@
     │   │   │   │   ├── test_api_items_favorite.py
     │   │   │   │   ├── test_api_items_favorite_list.py
     │   │   │   │   ├── test_api_items_hard_delete.py
+    │   │   │   │   ├── test_api_items_leave.py
     │   │   │   │   ├── test_api_items_link_configuration.py
     │   │   │   │   ├── test_api_items_list.py
     │   │   │   │   ├── test_api_items_list_filters.py
@@ -344,6 +361,7 @@
     │   │   │   │   ├── test_api_items_throttling.py
     │   │   │   │   ├── test_api_items_trashbin.py
     │   │   │   │   ├── test_api_items_tree.py
+    │   │   │   │   ├── test_api_items_unlock.py
     │   │   │   │   ├── test_api_items_update.py
     │   │   │   │   ├── test_api_items_wopi.py
     │   │   │   │   └── test_api_upload_reservations.py
@@ -358,6 +376,8 @@
     │   │   │   │   └── test_creator_storage_compute_backend.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── swagger.json
+    │   │   │   │   ├── swagger_external_api.json
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── tasks
     │   │   │   │   ├── items
@@ -384,9 +404,12 @@
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_flat_to_nested.py
     │   │   │   ├── test_api_utils_format_template_filename.py
+    │   │   │   ├── test_api_utils_is_extension_allowed.py
     │   │   │   ├── test_api_utils_is_previewable_item.py
     │   │   │   ├── test_api_utils_sanitize_filename.py
+    │   │   │   ├── test_logging.py
     │   │   │   ├── test_malware_detection.py
+    │   │   │   ├── test_migrations_normalize_stored_emails.py
     │   │   │   ├── test_models_invitations.py
     │   │   │   ├── test_models_item_accesses.py
     │   │   │   ├── test_models_items.py
@@ -398,6 +421,7 @@
     │   │   │   ├── test_models_user_reconciliation.py
     │   │   │   ├── test_models_users.py
     │   │   │   ├── test_services_item_exports.py
+    │   │   │   ├── test_services_mail.py
     │   │   │   ├── test_services_search_indexers.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_utils_quota.py
@@ -563,7 +587,20 @@
     │   │   │   │   │   ├── anct_logo-icon.svg
     │   │   │   │   │   ├── anct_logo_alpha.svg
     │   │   │   │   │   ├── anct_logo_beta.svg
+    │   │   │   │   │   ├── dsfr_logo.svg
+    │   │   │   │   │   ├── dsfr_logo_icon.svg
+    │   │   │   │   │   ├── email
+    │   │   │   │   │   │   ├── icon-docs.png
+    │   │   │   │   │   │   ├── icon-help.png
+    │   │   │   │   │   │   ├── icon-tchap.png
+    │   │   │   │   │   │   ├── icon-users.png
+    │   │   │   │   │   │   ├── logo-gouvernement.png
+    │   │   │   │   │   │   ├── logo-lasuite-fichiers.png
+    │   │   │   │   │   │   └── logo-lasuite.png
     │   │   │   │   │   ├── favicon.png
+    │   │   │   │   │   ├── fonts
+    │   │   │   │   │   │   ├── Marianne-Bold.woff2
+    │   │   │   │   │   │   └── Marianne-Regular.woff2
     │   │   │   │   │   ├── logo-icon_alpha.svg
     │   │   │   │   │   ├── logo-icon_beta.svg
     │   │   │   │   │   ├── logo-suite-numerique.png
@@ -679,6 +716,7 @@
     │   │   │   │   │   │   │   ├── ResanaDriver.ts
     │   │   │   │   │   │   │   ├── StandardDriver.ts
     │   │   │   │   │   │   │   └── __tests__
+    │   │   │   │   │   │   │       ├── StandardDriver.leaveItem.test.ts
     │   │   │   │   │   │   │       ├── StandardDriver.uploadFile.test.ts
     │   │   │   │   │   │   │       └── StandardDriver.userReconciliation.test.ts
     │   │   │   │   │   │   ├── types.ts
@@ -751,6 +789,7 @@
     │   │   │   │   │   │   │   │   └── ItemActionDropdown.tsx
     │   │   │   │   │   │   │   ├── modals
     │   │   │   │   │   │   │   │   ├── CancelUploadConfirmationModal.tsx
+    │   │   │   │   │   │   │   │   ├── ConfirmationLeaveModal.tsx
     │   │   │   │   │   │   │   │   ├── ConvertLegacyFileModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFileModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFolderModal.tsx
@@ -802,7 +841,7 @@
     │   │   │   │   │   │   │   ├── useInfiniteChildren.ts
     │   │   │   │   │   │   │   ├── useInfiniteItems.ts
     │   │   │   │   │   │   │   ├── useItemActionMenuItems.tsx
-    │   │   │   │   │   │   │   ├── useMutations.ts
+    │   │   │   │   │   │   │   ├── useMutations.tsx
     │   │   │   │   │   │   │   ├── useMutationsAccesses.ts
     │   │   │   │   │   │   │   ├── useOptimisticPagination.ts
     │   │   │   │   │   │   │   ├── useQueries.tsx
@@ -824,9 +863,11 @@
     │   │   │   │   │   │       │   ├── formatSize.test.ts
     │   │   │   │   │   │       │   ├── formatSizeTo.test.ts
     │   │   │   │   │   │       │   ├── itemToPreviewFile.test.ts
+    │   │   │   │   │   │       │   ├── linkExpiration.test.ts
     │   │   │   │   │   │       │   └── ordering.test.ts
     │   │   │   │   │   │       ├── dateFilters.ts
     │   │   │   │   │   │       ├── dropTraversal.ts
+    │   │   │   │   │   │       ├── linkExpiration.ts
     │   │   │   │   │   │       ├── mimeTypes.ts
     │   │   │   │   │   │       ├── ordering.ts
     │   │   │   │   │   │       └── utils.ts
@@ -856,6 +897,7 @@
     │   │   │   │   │   │   └── utils.ts
     │   │   │   │   │   ├── layouts
     │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── DocumentTitle.tsx
     │   │   │   │   │   │   │   ├── explorer
     │   │   │   │   │   │   │   │   ├── ExplorerLayout.scss
     │   │   │   │   │   │   │   │   └── ExplorerLayout.tsx
@@ -869,8 +911,12 @@
     │   │   │   │   │   │   │   │   └── SdkLayout.tsx
     │   │   │   │   │   │   │   └── simple
     │   │   │   │   │   │   │       └── SimpleLayout.tsx
-    │   │   │   │   │   │   └── hooks
-    │   │   │   │   │   │       └── useSyncUserLanguage.ts
+    │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   └── useSyncUserLanguage.ts
+    │   │   │   │   │   │   └── utils
+    │   │   │   │   │   │       ├── __tests__
+    │   │   │   │   │   │       │   └── pageTitle.test.ts
+    │   │   │   │   │   │       └── pageTitle.ts
     │   │   │   │   │   ├── sdk
     │   │   │   │   │   │   ├── SdkEnabledGuard.tsx
     │   │   │   │   │   │   ├── SdkPickerFooter.tsx
@@ -882,6 +928,7 @@
     │   │   │   │   │   │   │   │   └── AnonymousCTA.tsx
     │   │   │   │   │   │   │   ├── breadcrumbs
     │   │   │   │   │   │   │   │   ├── Breadcrumbs.tsx
+    │   │   │   │   │   │   │   │   ├── RestrictedBreadcrumbIcon.tsx
     │   │   │   │   │   │   │   │   └── index.scss
     │   │   │   │   │   │   │   ├── circular-progress
     │   │   │   │   │   │   │   │   └── CircularProgress.tsx
@@ -1034,6 +1081,7 @@
     │   │   │   │   │   ├── create-fallback-to-my-files.spec.ts
     │   │   │   │   │   ├── create-file-from-template.spec.ts
     │   │   │   │   │   ├── create-folder.spec.ts
+    │   │   │   │   │   ├── create-item-selection.spec.ts
     │   │   │   │   │   ├── custom-columns.spec.ts
     │   │   │   │   │   ├── db.setup.ts
     │   │   │   │   │   ├── delete-item.spec.ts
@@ -1041,6 +1089,7 @@
     │   │   │   │   │   ├── entitlement-disclaimers.spec.ts
     │   │   │   │   │   ├── file-preview-smoke.spec.ts
     │   │   │   │   │   ├── filters.spec.ts
+    │   │   │   │   │   ├── folder-restrictions-actions.spec.ts
     │   │   │   │   │   ├── folder-restrictions-deletion.spec.ts
     │   │   │   │   │   ├── folder-restrictions-movement.spec.ts
     │   │   │   │   │   ├── folder-restrictions-navigation.spec.ts
@@ -1048,24 +1097,29 @@
     │   │   │   │   │   ├── help-menu.spec.ts
     │   │   │   │   │   ├── item
     │   │   │   │   │   │   └── right-content-info.spec.ts
+    │   │   │   │   │   ├── item-title-tooltip.spec.ts
     │   │   │   │   │   ├── language-sync.spec.ts
+    │   │   │   │   │   ├── leave-item.spec.ts
     │   │   │   │   │   ├── left-bar.spec.ts
     │   │   │   │   │   ├── login.spec.ts
     │   │   │   │   │   ├── mobile-actions.spec.ts
     │   │   │   │   │   ├── move-item.spec.ts
     │   │   │   │   │   ├── noindex.spec.ts
+    │   │   │   │   │   ├── page-title.spec.ts
     │   │   │   │   │   ├── public-folder-cta.spec.ts
     │   │   │   │   │   ├── redirect-401.spec.ts
     │   │   │   │   │   ├── release-note.spec.ts
     │   │   │   │   │   ├── sdk-enabled.spec.ts
     │   │   │   │   │   ├── search.spec.ts
     │   │   │   │   │   ├── share-import.spec.ts
+    │   │   │   │   │   ├── share-link-expiration.spec.ts
     │   │   │   │   │   ├── share.spec.ts
     │   │   │   │   │   ├── silent-login.spec.ts
     │   │   │   │   │   ├── starred.spec.ts
     │   │   │   │   │   ├── storage-gauge.spec.ts
     │   │   │   │   │   ├── trash.spec.ts
     │   │   │   │   │   ├── upload-quota.spec.ts
+    │   │   │   │   │   ├── upload-selection.spec.ts
     │   │   │   │   │   ├── upload.spec.ts
     │   │   │   │   │   ├── url-file-preview.spec.ts
     │   │   │   │   │   ├── user-reconciliation.spec.ts
@@ -1180,10 +1234,12 @@
     │   ├── mjml
     │   │   ├── invitation.mjml
     │   │   ├── partial
-    │   │   │   └── header.mjml
+    │   │   │   ├── footer.mjml
+    │   │   │   ├── header.mjml
+    │   │   │   └── top.mjml
     │   │   └── reconciliation.mjml
     │   ├── package.json
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-261 directories, 927 files
+268 directories, 976 files

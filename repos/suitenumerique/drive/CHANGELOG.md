@@ -8,10 +8,73 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [v1.0.0] - 2026-11-17
+
 ### Added
 
+- ✨(frontend) open the La Suite support form from the help menu
+- ✨(frontend) set an expiration date on item share links
+- ✨(backend) import user storage limits from a CSV file in the admin
+
+### Changed
+
+- 💄(frontend) drop the beta badge from the DSFR logo
+
+### Removed
+
+- 🔥(backend) drop drive_storage_used_bytes, use the usage metrics endpoint
+
+### Fixed
+
+- ⚡️(backend) answer the business metrics counts from indexes
+- 🐛(backend) compute the business metrics once for all the scrapes
+
+## [v0.27.0] - 2026-11-09
+
+### Added
+
+- ✨(frontend) mark restricted folders in breadcrumbs
+
+### Fixed
+
+- 🐛(frontend) offer folder actions on restricted folders from their parent
+- 🐛(frontend) fix the crash when sharing a folder renamed before being opened
+- 🐛(backend) keep the file on a WOPI rename to its current name
+- ♿️(frontend) associate file list headers with their cells
+
+## [v0.26.0] - 2026-11-04
+
+### Added
+
+- ✨(backend) configure the branding of emails with settings
+- ✨(backend) allow to leave an item #826
+- ✨(frontend) allow to leave an item #826
 - ✨(frontend) restrict and reopen folder access from the share modal
+- ✨(backend) open folder restriction to a list of users
 - 🔊(backend) log rejected WOPI requests
+- ✨(backend) browse the item tree and its accesses from the admin
+- ✨(backend) list the root items of a user in the admin
+
+### Changed
+
+- 💄(mail) adopt the new LaSuite email layout #926
+- ⬆️(ci) bump GitHub Actions to latest versions
+- ✨(backend) screen uploads with a denylist
+- ⬆️(backend) upgrade joserfc to 1.7.7
+- ♻️(backend) match emails in a single normalized form
+
+### Fixed
+
+- 🐛(mail) stop showing HTML entities in plain text emails
+- 🐛(backend) keep the case of names and titles in email subjects
+- ♿️(frontend) identify the current page in the browser title
+- 🐛(frontend) show the full item title in a tooltip when truncated
+- 🐛(backend) fix the upload mimetype allowlist
+- ♿️(frontend) fix accessible names of icon buttons
+
+### Changed
+
+- 🔊(backend) log as JSON with django-structlog
 
 ## [v0.25.3] - 2026-10-23
 
@@ -45,6 +108,8 @@ and this project adheres to
 - ✨(backend) deactivate the least recently used duplicates in the admin
 - ✨(backend) add SDK_ENABLED setting to gate the sdk relay
 - ✨(frontend) hide sdk pages when SDK_ENABLED is off
+- ✨(frontend) select the uploaded file after a single file upload
+- ✨(frontend) select the item created from the new menu
 
 ### Fixed
 
@@ -113,6 +178,8 @@ and this project adheres to
 - 📈(backend) add a Sentry performance monitoring sample rate setting
 - ♻️(backend) route permission decisions through a swappable backend
 - ✨(backend) add restricted access on folders, detached behind a restriction
+- ✨(backend) add an expiration date to item share links
+- ✨(backend) protect item share links with a password
 
 ### Changed
 
@@ -633,7 +700,10 @@ and this project adheres to
 - 🌐(front) add english translation for rename modal
 - 🐛(global) fix wrong Content-Type on specific s3 implementations
 
-[unreleased]: https://github.com/suitenumerique/drive/compare/v0.25.3...main
+[unreleased]: https://github.com/suitenumerique/drive/compare/v1.0.0...main
+[v1.0.0]: https://github.com/suitenumerique/drive/releases/v1.0.0
+[v0.27.0]: https://github.com/suitenumerique/drive/releases/v0.27.0
+[v0.26.0]: https://github.com/suitenumerique/drive/releases/v0.26.0
 [v0.25.3]: https://github.com/suitenumerique/drive/releases/v0.25.3
 [v0.25.2]: https://github.com/suitenumerique/drive/releases/v0.25.2
 [v0.25.1]: https://github.com/suitenumerique/drive/releases/v0.25.1
