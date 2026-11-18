@@ -10,6 +10,7 @@ and this project adheres to
 
 ### Added
 
+- 📝(doc) create complete documentation website for Meet
 - 🌐(i18n) add Portuguese language support
 - ✨(frontend) add jittered exponential backoff to LiveKit reconnections
 - ✨(frontend) tell participants when a recording is interrupted
@@ -29,6 +30,7 @@ and this project adheres to
 - 🍱(frontend) add Portuguese glyphs to Marianne subsetted fonts
 - 🚸(frontend) bring new speakers to the top of the carousel
 - 🚸(frontend) bring raised hands into view in the carousel
+- ⚡️(frontend) serve illustrations as WebP with a PNG fallback
 
 ### Fixed
 

@@ -1,29 +1,31 @@
 ## Changelog : meet (30 derniers jours, au 16 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un effort majeur sur l'accessibilité et la sécurité. L'application est désormais plus inclusive grâce à de nombreuses améliorations pour les utilisateurs de lecteurs d'écran et une meilleure gestion des contrastes. La sécurité a été considérablement renforcée par la mise en place de journaux d'audit détaillés et une protection accrue des données sensibles dans les logs. Enfin, le support de la langue portugaise a été intégré.
+Ce mois-ci, Meet a franchi une étape majeure dans l'amélioration de son accessibilité et de sa sécurité. L'interface est désormais plus inclusive grâce à de nombreux ajustements pour les utilisateurs en situation de handicap, et le support de la langue portugaise a été ajouté. Parallèlement, une campagne importante de renforcement de la sécurité a été menée pour protéger les données et les échanges, tout en optimisant l'infrastructure technique.
 
 ### Évolutions fonctionnelles
-- **Accessibilité (♿️) :** Amélioration massive de l'expérience pour les utilisateurs de technologies d'assistance (gestion des titres, des listes, des contrastes de couleurs, des focus rings et des étiquettes de boutons).
-- **Internationalisation (🌐) :** Ajout du support complet de la langue portugaise, incluant les glyphes nécessaires pour les polices Marianne.
+- **Accessibilité (A11y) :**
+    - Amélioration de la navigation au clavier (gestion de la touche Échap pour fermer les dialogues [#1916]).
+    - Optimisation de la lecture par synthèse vocale : ajout de titres explicites, de noms pour les boutons de transcription et d'annonces pour les changements d'état (ex: micro coupé).
+    - Amélioration de la visibilité : correction des contrastes de couleurs et ajout de l'indicateur de focus sur les cartes de test de connexion.
+- **Internationalisation :** Ajout du support complet de la langue portugaise.
 - **Expérience utilisateur (UX) :**
-    - Amélioration du carrousel de participants pour mieux mettre en évidence les nouveaux intervenants et les mains levées.
-    - Meilleure visibilité des erreurs (notifications en cas de déconnexion inattendue ou d'échec de jonction à une réunion).
-    - Information des participants en cas d'interruption d'un enregistrement.
-    - Remplacement du chat Crisp par le formulaire de support La Suite.
+    - Amélioration du carrousel de participants pour mettre en avant les nouveaux intervenants et les mains levées.
+    - Meilleure gestion des erreurs : affichage de messages explicites lors d'échecs de connexion ou d'interruptions d'enregistrement.
+    - Remplacement du chat Crisp par le formulaire de support officiel de La Suite.
+- **Confidentialité :** Protection des salles de réunion contre l'indexation par les moteurs de recherche et les outils d'IA.
 
 ### Évolutions techniques
-- **Sécurité (🔒️) :**
-    - Mise en place d'un système d'audit structuré pour tracer les actions sensibles (enregistrements, transcriptions, appels API, modifications via l'administration Django).
-    - Protection des données sensibles par l'anonymisation des logs, des erreurs de validation et des métadonnées d'analyse (URLs signées, détails des tâches Celery, logs LLM).
-    - Durcissement de l'accès aux salles (utilisation de requêtes POST pour la jonction et restriction des slugs de salles).
-    - Correction de plusieurs vulnérabilités (CVE) sur les composants critiques (Python, Nginx, Node, etc.).
-- **Stabilité et Performance :**
-    - Amélioration de la résilience des connexions grâce à une politique de reconnexion exponentielle (LiveKit).
-    - Optimisation des builds Docker pour l'architecture arm64.
-    - Introduction d'un pool de connexions optionnel pour PostgreSQL (psycopg).
-- **Infrastructure :** Mise à jour majeure des serveurs et clients LiveKit (v1.13.11 / v2.23.0).
+- **Sécurité et conformité :**
+    - Mise en place d'un système d'audit logging structuré pour tracer les actions sensibles (enregistrements, transcriptions, résumés).
+    - Renforcement de la protection des données : sanitisation des logs, gestion sécurisée des secrets et protection des URLs signées.
+    - Correction de nombreuses vulnérabilités (CVE) sur les composants critiques (Nginx, Node.js, Pillow, aiohttp, etc.).
+- **Infrastructure et Performance :**
+    - Optimisation des images Docker (utilisation de Nginx non-privilégié et support natif pour l'architecture arm64).
+    - Mise à jour de l'infrastructure LiveKit (serveur et egress) et amélioration de la politique de reconnexion automatique.
+    - Optimisation du chargement des illustrations via le format WebP.
+- **Fiabilité Backend :** Amélioration de la gestion des timeouts et des erreurs lors des appels à l'API LiveKit.
 
 ### Autres changements
-- Mise à jour de la documentation concernant le système d'audit et l'invitation à soutenir le projet.
-- Optimisation de la configuration CI/CD (gestion des alertes de sécurité Trivy).
+- **Documentation :** Création d'un nouveau site de documentation complet pour le projet.
+- **Qualité de code :** Nettoyage des scripts d'installation et mise à jour des outils de vérification (shellcheck, gitlint).
