@@ -27,6 +27,7 @@
 │   ├── developpement.md
 │   ├── modele-canonique.md
 │   └── synchronisation.md
+├── external_query.py
 ├── integrations
 │   ├── __init__.py
 │   ├── co_brest
@@ -42,6 +43,14 @@
 │   │   └── travaux_voirie
 │   │       ├── data_source_integration.py
 │   │       └── schema.py
+│   ├── co_limoges
+│   │   ├── __init__.py
+│   │   ├── integration.py
+│   │   └── limitation_tonnage
+│   │       ├── __init__.py
+│   │       ├── data_source_integration.py
+│   │       ├── schema.py
+│   │       └── street_names.py
 │   ├── co_lyon
 │   │   ├── __init__.py
 │   │   ├── chantiers_perturbants
@@ -70,9 +79,11 @@
 │   │   │   ├── counts.py
 │   │   │   ├── data_source_integration.py
 │   │   │   ├── extraction.py
+│   │   │   ├── free_text_filters.py
 │   │   │   ├── location_filters.py
 │   │   │   ├── locations.py
 │   │   │   ├── measures.py
+│   │   │   ├── neutral_text.py
 │   │   │   ├── published_elsewhere.json
 │   │   │   ├── published_elsewhere.py
 │   │   │   ├── raw_rows.py
@@ -155,6 +166,10 @@
 │   │   └── test_permanent_lineaire.py
 │   ├── co_issy-les-moulineaux
 │   │   └── test_travaux_voirie.py
+│   ├── co_limoges
+│   │   ├── __init__.py
+│   │   ├── test_limitation_tonnage.py
+│   │   └── test_street_names.py
 │   ├── co_lyon
 │   │   ├── chantiers_perturbants.csv
 │   │   ├── chaussees_trottoirs.csv
@@ -168,6 +183,7 @@
 │   │   ├── eudonet_fixture.py
 │   │   ├── test_eudonet_client.py
 │   │   ├── test_eudonet_extraction.py
+│   │   ├── test_eudonet_free_text.py
 │   │   ├── test_eudonet_integration.py
 │   │   ├── test_eudonet_locations.py
 │   │   └── test_eudonet_transform.py
@@ -195,6 +211,7 @@
 │   ├── sync_fixtures.py
 │   ├── test_api.py
 │   ├── test_cli.py
+│   ├── test_external_query.py
 │   ├── test_integration.py
 │   ├── test_local_time.py
 │   ├── test_notifier.py
@@ -209,6 +226,10 @@
 │   └── toolkit
 │       ├── __init__.py
 │       ├── test_connectors.py
+│       ├── test_copies.py
+│       ├── test_generic_regulations.py
+│       ├── test_geometry.py
+│       ├── test_overlaps.py
 │       ├── test_pedestrian_area.py
 │       ├── test_perimeter.py
 │       ├── test_periods.py
@@ -225,7 +246,6 @@
 │   ├── connectors
 │   │   ├── __init__.py
 │   │   ├── arcgis.py
-│   │   ├── download.py
 │   │   ├── opendatasoft.py
 │   │   └── wfs.py
 │   ├── rules
@@ -239,7 +259,11 @@
 │   │   └── vehicles.py
 │   └── transforms
 │       ├── __init__.py
+│       ├── copies.py
+│       ├── generic_regulations.py
+│       ├── geometry.py
 │       ├── local_time.py
+│       ├── overlaps.py
 │       ├── pedestrian_area.py
 │       ├── perimeter.py
 │       ├── periods.py
@@ -247,4 +271,4 @@
 │       ├── titles.py
 │       └── vehicle_types.py
 └── uv.lock
-48 directories, 201 files
+51 directories, 222 files
