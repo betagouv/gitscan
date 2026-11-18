@@ -1,23 +1,40 @@
-## Changelog : lab-anssi-pala (30 derniers jours, au 11 novembre 2026)
+## Changelog : lab-anssi-pala (30 derniers jours, au 13 novembre 2026)
 
 ### Résumé
-Le projet PALA a franchi une étape majeure en passant d'un prototype à un outil d'audit plus structuré et sécurisé. Les évolutions récentes se concentrent sur la protection des données via le chiffrement de bout en bout, l'amélioration de l'expérience utilisateur grâce à une nouvelle interface de commande (CLI) plus complète, et l'automatisation des processus d'audit (Codex et Shannon), incluant désormais le suivi des coûts et des notifications automatiques.
+Ce mois a été marqué par un saut qualitatif majeur en matière de sécurité et d'automatisation. PALA intègre désormais un système de chiffrement de bout en bout pour protéger les rapports de scan et propose une authentification moderne via Passkeys. L'outil est devenu plus autonome grâce à la planification automatique des audits et une meilleure gestion des infrastructures de déploiement (Docker, Clever Cloud).
 
 ### Évolutions fonctionnelles
-- **Sécurisation des données** : Implémentation du chiffrement de bout en bout (protocoles HPKE et AES-GCM) et de l'enrôlement des utilisateurs pour protéger les identités cryptographiques.
-- **Authentification** : Ajout du support WebAuthn pour les étapes d'enregistrement et d'authentification.
-- **Automatisation des audits** : Nouvelle interface en ligne de commande (CLI) permettant de lancer des scans, de valider des résultats et d'estimer les coûts de consommation LLM.
-- **Reporting et suivi** : Envoi de notifications automatiques sur Mattermost après chaque scan, incluant des métriques détaillées (durée, nombre de fichiers analysés, hash de commit).
-- **Gestion multi-cibles** : Capacité d'exécuter des scans complets de manière séquentielle sur plusieurs projets ou dépôts.
+- **Sécurité et Confidentialité**
+  - Implémentation du chiffrement de bout en bout des rapports de scan via le protocole HPKE (AES-256-GCM et X25519), garantissant que les données sensibles ne sont jamais stockées en clair.
+  - Introduction de l'authentification par Passkeys (WebAuthn) pour un enrôlement utilisateur sécurisé.
+- **Reporting et Notifications**
+  - Enrichissement des notifications Mattermost : les messages incluent désormais la durée de l'audit, le nombre de fichiers analysés, ainsi que les informations de version (hashes de commits).
+  - Ajout de liens directs vers les rapports de scan dans les notifications.
+  - Amélioration de la clarté des rapports : les sections sans constat ne sont plus affichées.
+- **Interface utilisateur**
+  - Mise en place d'une page d'accueil (landing page) présentant les objectifs et le fonctionnement de l'expérimentation PALA.
 
 ### Évolutions techniques
-- **Refonte de l'architecture** : Transition vers une architecture hexagonale organisée en *workspaces* pnpm (back, front, outillage) et introduction d'un bus d'événements interne.
-- **Modernisation du socle** : Portage massif de l'outillage vers TypeScript (Node 24) pour une meilleure robustesse et une exécution native.
-- **Infrastructure et Déploiement** : Dockerisation complète de l'application et de sa base de données PostgreSQL ; support du déploiement sur Clever Cloud.
-- **Optimisation du Proxy LLM** : Amélioration du proxy LiteLLM avec génération automatique de configuration, support de l'hébergement distant et mise en place de plafonds budgétaires.
-- **Persistance des données** : Mise en place de PostgreSQL pour le stockage des rapports de scan et gestion des migrations de base de données.
-- **Amélioration de la CI** : Intégration de tests automatisés (Vitest) et de vérifications de qualité de code (Linting) dans le pipeline de déploiement.
+- **Architecture et Données**
+  - Passage à une architecture en workspaces (pnpm) pour séparer distinctement le backend, le frontend et les outils.
+  - Mise en place de la persistance des données et des utilisateurs via PostgreSQL avec un système de migrations de base de données.
+  - Refactorisation vers un pattern "Repository" et réorganisation des adaptateurs d'infrastructure.
+- **Automatisation et Scanning**
+  - Automatisation des audits via une tâche planifiée (exécution tous les 3 jours).
+  - Capacité de réaliser des scans en série sur plusieurs cibles simultanément.
+  - Automatisation de la génération de la configuration du proxy LiteLLM pour une gestion optimisée des modèles d'IA.
+- **Infrastructure et Déploiement**
+  - Dockerisation complète de l'application pour uniformiser les environnements de développement et de production.
+  - Optimisation du déploiement sur Clever Cloud (ajout de routes de santé, gestion des variables d'environnement et scripts de build dédiés).
+  - Amélioration de la gestion du proxy LiteLLM avec l'introduction d'un système de fichiers sécurisé (Cellar).
+- **Qualité logicielle et CI/CD**
+  - Intégration de l'analyse de code (ESLint) et du formatage (Prettier) dans le cycle de développement avec des hooks de pré-commit.
+  - Mise en place de tests de base de données dans la chaîne de CI.
 
 ### Autres changements
-- **Documentation** : Ajout de schémas d'architecture C4, de fiches de décision technique (ADR) et mise à jour des guides de déploiement et d'utilisation.
-- **Qualité et maintenance** : Harmonisation des commandes de la CLI en français, application systématique du formatage Prettier/ESLint et nettoyage des scripts obsolètes.
+- **Documentation**
+  - Ajout d'un schéma d'architecture C4 pour une meilleure compréhension du système.
+  - Rédaction de nouveaux ADR (Architecture Decision Records) concernant le déploiement et la gestion des erreurs.
+  - Mise à jour globale du README et de la documentation interne.
+- **Maintenance**
+  - Nettoyage et réorganisation des scripts Node.js.

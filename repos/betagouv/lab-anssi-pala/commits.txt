@@ -1,3 +1,13 @@
+2026-11-13T16:08:21+01:00 - 2bdcd27 - Pierre Leroy : Ajoute la route de santé `/sante` ... requise par Clever Cloud pour sonder l'application ; déclarée avant la limitation de trafic, elle répond 200 sans authentification
+2026-11-13T15:49:22+01:00 - cbd94f0 - Pierre Leroy : Démarre le serveur depuis `PALA_PORT` et `PALA_HOTE` ... les deux variables remplacent `PORT` (8086 par défaut), sont documentées dans `.env.example` et validées au démarrage ; docker-compose publie le port configuré
+2026-11-13T11:59:33+01:00 - edec5f9 - Bertrand Bougon : Ajoute l’URL vers le rapport de scan
+2026-11-13T11:59:33+01:00 - ad307b7 - Bertrand Bougon : N’affiche plus le titre constats dans Mattermost si il n’y en a pas
+2026-11-12T12:04:41+01:00 - 52eadbb - Christophe Cadilhac : Passe en 24.22.3
+2026-11-12T08:23:20+01:00 - 2a2d4af - Bertrand Bougon : Implémente la persistance postgres d’un utilisateur
+2026-11-12T08:21:54+01:00 - a1c5c3f - Pierre Leroy : Ajoute le chiffrement du rapport par enveloppe HPKE ... chiffre le rapport avec une DEK AES-256-GCM encapsulée pour chaque destinataire et le sérialise en JSON
+2026-11-12T08:21:54+01:00 - 362b063 - Bertrand Bougon : Ne chiffre pas le rapport tant que l’on n’a pas encroe les destinataires
+2026-11-12T08:21:54+01:00 - 08742d1 - Pierre Leroy : Chiffre le rapport avant de le persister dans notificationScan ... `abonneNotificationScan` reçoit un `ChiffrementDuRapport` ; le rapport n'est plus jamais stocké en clair
+2026-11-12T08:16:14+01:00 - 7ed987e - Bertrand Bougon : [CORRECTION] Corrige la dockerization pour le développement en local
 2026-11-11T17:36:25+01:00 - 676aae7 - Bertrand Bougon : Redémarre le proxy qu'il soit distant ou local
 2026-11-10T19:26:39+01:00 - ff3bdbf - Bertrand Bougon : Expose les routes d'enrôlement et la session serveur
 2026-11-10T19:26:39+01:00 - 97bc1e4 - Bertrand Bougon : Ajoute les étapes d'enrôlement (enregistrement et authentification)

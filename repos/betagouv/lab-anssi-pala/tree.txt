@@ -60,10 +60,11 @@
 │   │   │   │   ├── protectionDeCleAesGcm.ts
 │   │   │   │   └── suiteDeChiffrementHpke.ts
 │   │   │   ├── application
-│   │   │   │   ├── ChiffreDocument.ts
 │   │   │   │   ├── DechiffreDocument.ts
 │   │   │   │   ├── DeverrouilleClePrivee.ts
-│   │   │   │   └── EnroleUtilisateur.ts
+│   │   │   │   ├── EnroleUtilisateur.ts
+│   │   │   │   ├── serviceDeChiffrement.ts
+│   │   │   │   └── serviceDeChiffrementParEnveloppe.ts
 │   │   │   ├── domaine
 │   │   │   │   ├── documentChiffre.ts
 │   │   │   │   ├── documentPartage.ts
@@ -85,7 +86,8 @@
 │   │       ├── knexfile.ts
 │   │       └── migrations
 │   │           ├── 20261029165004_cree-table-scan.ts
-│   │           └── 20261030164833_ajoute-colonne-rapport-au-scan.ts
+│   │           ├── 20261030164833_ajoute-colonne-rapport-au-scan.ts
+│   │           └── 20261106160317_cree-table-utilisateurs.ts
 │   └── test
 │       └── chiffrement
 │           ├── adaptateurs
@@ -95,12 +97,14 @@
 │           │   ├── paireDeClesx25519Hpke.spec.ts
 │           │   └── protectionDeCleAesGcm.spec.ts
 │           ├── application
-│           │   ├── ChiffreDocument.spec.ts
 │           │   ├── DechiffreDocument.spec.ts
 │           │   ├── DeverrouilleClePrivee.spec.ts
-│           │   └── EnroleUtilisateur.spec.ts
+│           │   ├── EnroleUtilisateur.spec.ts
+│           │   └── serviceDeChiffrementParEnveloppe.spec.ts
 │           ├── doubles
-│           │   └── SecretPrfSimule.ts
+│           │   ├── SecretPrfSimule.ts
+│           │   └── chiffrementDeTest.ts
+│           ├── outilsDeChiffrement.ts
 │           └── scenarioEnveloppePoc.spec.ts
 ├── outillage
 │   ├── eslint.config.js
@@ -117,6 +121,10 @@
 │   │   │   │   └── PreparationOutil.ts
 │   │   │   └── ports
 │   │   │       └── Git.ts
+│   │   ├── chiffrement-rapport
+│   │   │   └── adaptateurs
+│   │   │       ├── documentPartageJson.ts
+│   │   │       └── fabriqueDeChiffrement.ts
 │   │   ├── codex-security
 │   │   │   ├── adaptateurs
 │   │   │   │   ├── ScannerCodexSecurityNpm.ts
@@ -419,6 +427,9 @@
 │   │   │   │   └── routeEnrolement.ts
 │   │   │   ├── index.ts
 │   │   │   ├── infra
+│   │   │   │   ├── entrepots
+│   │   │   │   │   └── postgres
+│   │   │   │   │       └── entrepotUtilisateursPostgres.ts
 │   │   │   │   └── environnement.ts
 │   │   │   ├── serveur.ts
 │   │   │   └── utilisateurs
@@ -429,7 +440,12 @@
 │   │       │   ├── etapesEnrolement.spec.ts
 │   │       │   └── localisateurServicesEnrolement.spec.ts
 │   │       ├── http
-│   │       │   └── routeEnrolement.spec.ts
+│   │       │   ├── routeEnrolement.spec.ts
+│   │       │   └── routeSante.spec.ts
+│   │       ├── infra
+│   │       │   └── entrepots
+│   │       │       └── postgres
+│   │       │           └── entrepotUtilisateursPostgres.spec.ts
 │   │       ├── serveur.spec.ts
 │   │       ├── servicesDeTest.ts
 │   │       └── testeurPALA.ts
@@ -468,4 +484,4 @@
 │       └── vite.config.ts
 ├── tsconfig.json
 └── vitest.config.ts
-130 directories, 340 files
+137 directories, 349 files
