@@ -1,19 +1,31 @@
-## Changelog : nosgestesclimat-app (30 derniers jours, au 11 septembre 2026)
+## Changelog : nosgestesclimat-app (30 derniers jours, au 13 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements ont principalement porté sur l'amélioration de la découverte des actions climatiques pour les utilisateurs et une optimisation majeure de l'infrastructure. L'application est devenue plus performante grâce à de nouveaux mécanismes de mise en cache et de rendu, tout en bénéficiant d'outils de suivi (observabilité) plus robustes pour garantir une meilleure stabilité.
+Ce mois-ci, l'application a franchi une étape importante en offrant aux utilisateurs un meilleur contrôle sur leurs données, notamment via la possibilité de supprimer leur compte. De nouvelles fonctionnalités comme la matrice d'impact ont été ajoutées, et l'expérience mobile a été optimisée pour rendre les résultats plus lisibles et accessibles.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la découverte des actions** : Mise en place d'un catalogue d'actions public [#2003], ajout de descriptions courtes pour les actions [#2012] et expérimentation de nouveaux designs via des tests A/B sur les cartes et la mise en page des actions à fort impact [#2006, #1997].
-- **Optimisation du parcours utilisateur** : Introduction de suggestions d'actions croisées (cross-sell) [#2010], amélioration des messages d'avertissement [#2004] et correction de la navigation pour conserver les paramètres de recherche lors du passage au tutoriel [#2027].
-- **Corrections de bugs et d'interface** : Résolution de problèmes de connexion liés aux sessions [#2047], correction de textes et de coquilles (ex: "SECONDS" en "SECONDES") [#2060, #2029], et correction de comportements erronés dans les simulations (réinitialisation dans les groupes d'amis [#1999] et masquage d'actions dans le catalogue personnalisé [#2002]).
+- **Nouveauté :** Possibilité pour les utilisateurs de supprimer leur compte ([#2171](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2171)).
+- **Nouveauté :** Ajout d'une nouvelle page dédiée à la matrice d'impact ([#2167](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2167)).
+- **Amélioration de l'expérience utilisateur :** Optimisation de l'affichage du plan d'action et de l'interface mobile sur la page des résultats ([#2162](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2162)).
+- **Amélioration de l'interface :** Déplacement du texte d'aide dynamique pour la section "repas" ([#2191](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2191)).
+- **Transfert de données :** Amélioration du transfert des choix d'actions lors du changement de propriété des données lors de la connexion ([#2177](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2177)).
+- **Redirection :** Mise en place d'une redirection de l'ancienne URL d'empreinte moyenne vers un article de blog ([#2189](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2189)).
+- **Corrections de bugs :** 
+    - Résolution d'un problème de déconnexion intempestive lors du rafraîchissement de session ([#2159](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2159)).
+    - Correction d'une erreur d'affichage (hydration) sur le sélecteur de langue ([#2165](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2165)).
 
 ### Évolutions techniques
-- **Infrastructure et Proxy** : Refonte de la configuration Nginx pour améliorer la résilience (DNS, timeouts [#1966, #2074]) et optimiser la gestion des fichiers statiques et du contenu via un proxy (S3/CMS [#1950, #2081]) et une mise en cache étendue des pages publiques [#1953, #2076].
-- **Observabilité et Monitoring** : Intégration poussée de PostHog pour le suivi des erreurs et des logs via OpenTelemetry [#2051, #2067], mise en place d'un reverse proxy pour PostHog [#2063, #2048] et ajout de statistiques Matomo [#2057].
-- **Performance et Scalabilité** : Optimisation du rendu de la page d'accueil via le Partial Prerendering (PPR) [#2041], amélioration de l'efficacité des requêtes de simulation en base de données [#2049, #2036] et réduction des allers-retours serveur lors des changements de paramètres [#2035].
-- **Stabilité et Qualité logicielle** : Renforcement des tests de bout en bout (E2E) avec Playwright [#2077, #1993], augmentation de la mémoire des workers pour éviter les plantages [#2046] et sécurisation de l'intégrité des données via des contraintes de clés étrangères et de sessions [#2016, #1973].
-- **Refactoring** : Nettoyage du code avec la suppression de logiques et de tables obsolètes (SimulationState, extendedSituation) [#2031, #2032] et refactorisation du calcul des statistiques de campagne [#2028].
+- **Gestion des données et vie privée :** 
+    - Mise en place d'un processus automatisé de gestion de la rétention des données, incluant l'envoi d'avertissements aux utilisateurs inactifs avant la suppression de leurs données ([#2157](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2157), [#2183](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2183), [#2192](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2192)).
+    - Refonte complète du service de suppression d'utilisateur pour garantir l'intégrité des données (suppression des groupes d'amis et des contacts liés) ([#2161](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2161), [#2174](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2174), [#2184](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2184)).
+- **Architecture :** Support dynamique de n'importe quel modèle de simulation ([#2014](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2014)).
+- **Sécurité :** Protection des données en supprimant les paramètres d'email des URLs entrantes ([#2188](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2188)).
+- **Observabilité et Design System :** 
+    - Amélioration du logging avec l'intégration de l'ID de session PostHog ([#2187](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2187)) et retrait de Sentry ([#2186](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2186)).
+    - Refonte du composant `Button` pour une meilleure gestion des variantes et des couleurs ([#2156](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2156)).
+- **Tests et Infrastructure :** 
+    - Ajout de tests de bout en bout (E2E) pour les actions ([#2166](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2166)).
+    - Mise à jour de la version de Node.js et synchronisation de l'environnement de développement.
 
 ### Autres changements
-- Ajout d'un script pour la génération d'URLs FGP [#2058].
+- Mise à jour de la politique de confidentialité concernant l'utilisation des graphiques de statistiques publiques ([#2198](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/2198)).

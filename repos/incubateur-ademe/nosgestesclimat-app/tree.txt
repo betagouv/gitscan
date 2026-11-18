@@ -16,7 +16,6 @@
 │   │       └── action.yml
 │   ├── e2e-local.env
 │   ├── scripts
-│   │   ├── e2e-stack.sh
 │   │   ├── scalingo-ensure-review-app.sh
 │   │   ├── scalingo-monitor-deployment.sh
 │   │   ├── scalingo-trigger-deployment.sh
@@ -34,6 +33,7 @@
 ├── .gitignore
 ├── .gitmodules
 ├── .husky
+│   ├── post-checkout
 │   └── pre-commit
 ├── .nvmrc
 ├── .prettierignore
@@ -41,6 +41,7 @@
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
+├── .worktreeinclude
 ├── .zed
 │   └── settings.json
 ├── CONTRIBUTING.md
@@ -53,56 +54,81 @@
 │   │   ├── .gitignore
 │   │   ├── README.md
 │   │   ├── mock
+│   │   │   ├── contacts.ts
 │   │   │   ├── handlers.ts
 │   │   │   ├── mailbox.ts
 │   │   │   └── server.ts
 │   │   ├── package.json
 │   │   ├── playwright.config.ts
-│   │   ├── reporters
-│   │   │   └── hydration-summary.ts
+│   │   ├── playwright.preprod.config.ts
+│   │   ├── playwright.shared.ts
+│   │   ├── stack
+│   │   │   ├── build-site.ts
+│   │   │   ├── builds.ts
+│   │   │   ├── config.ts
+│   │   │   ├── databases.ts
+│   │   │   ├── global-setup.ts
+│   │   │   ├── playwright-worker-env.ts
+│   │   │   └── processes.ts
 │   │   ├── tests
 │   │   │   ├── constants.ts
 │   │   │   ├── features
+│   │   │   │   ├── actions-plan-journey.spec.ts
+│   │   │   │   ├── actions-plan-page.spec.ts
 │   │   │   │   ├── cookies.spec.ts
 │   │   │   │   ├── groups.spec.ts
 │   │   │   │   ├── locale-persistence.spec.ts
 │   │   │   │   ├── mode-scolaire.spec.ts
 │   │   │   │   ├── organisation-admin.spec.ts
+│   │   │   │   ├── personalized-action-detail.spec.ts
+│   │   │   │   ├── personalized-actions-catalogue.spec.ts
 │   │   │   │   ├── polls.spec.ts
+│   │   │   │   ├── public-actions-catalogue-with-simulation.spec.ts
+│   │   │   │   ├── public-actions-catalogue.spec.ts
 │   │   │   │   ├── resultat.spec.ts
 │   │   │   │   ├── retake-test.spec.ts
 │   │   │   │   ├── test.spec.ts
 │   │   │   │   ├── tutorial.spec.ts
 │   │   │   │   └── user-account.spec.ts
 │   │   │   ├── fixtures
-│   │   │   │   ├── cookie-banner.ts
+│   │   │   │   ├── faker-seed.ts
 │   │   │   │   ├── feature-flags.ts
-│   │   │   │   ├── groups.ts
 │   │   │   │   ├── hydration-guard.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── ngc-test.ts
-│   │   │   │   ├── options.ts
-│   │   │   │   ├── organisations.ts
-│   │   │   │   ├── polls.ts
-│   │   │   │   ├── scolaire-poll.ts
-│   │   │   │   ├── static-assets.ts
-│   │   │   │   ├── tutorial.ts
-│   │   │   │   ├── user-account.ts
-│   │   │   │   ├── user.ts
 │   │   │   │   └── visible-testid.ts
 │   │   │   ├── helpers
+│   │   │   │   ├── actions.ts
 │   │   │   │   ├── carbon-footprint.ts
 │   │   │   │   ├── clipboard.ts
 │   │   │   │   ├── hydration.ts
 │   │   │   │   ├── images.ts
-│   │   │   │   ├── save-context.ts
+│   │   │   │   ├── navigation.ts
+│   │   │   │   ├── session.ts
 │   │   │   │   ├── skip-on-safari.ts
+│   │   │   │   ├── test-data.ts
 │   │   │   │   └── user-mailbox.ts
+│   │   │   ├── local
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── database.ts
+│   │   │   │   └── fixtures.ts
 │   │   │   ├── mailbox
-│   │   │   │   ├── brevo-mailbox.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── mailisk-mailbox.ts
 │   │   │   │   ├── stub-mailbox.ts
 │   │   │   │   └── types.ts
+│   │   │   ├── page-objects
+│   │   │   │   ├── action-detail.ts
+│   │   │   │   ├── actions-catalogue.ts
+│   │   │   │   ├── actions-plan.ts
+│   │   │   │   ├── cookie-banner.ts
+│   │   │   │   ├── email-verification.ts
+│   │   │   │   ├── feature-flags.ts
+│   │   │   │   ├── group.ts
+│   │   │   │   ├── ngc-test.ts
+│   │   │   │   ├── organisation.ts
+│   │   │   │   ├── poll.ts
+│   │   │   │   ├── tutorial.ts
+│   │   │   │   └── user-space.ts
 │   │   │   ├── pages
 │   │   │   │   ├── 404.spec.ts
 │   │   │   │   ├── about.spec.ts
@@ -118,11 +144,18 @@
 │   │   │   │   ├── nouveautes.spec.ts
 │   │   │   │   ├── personas.spec.ts
 │   │   │   │   └── plan.spec.ts
-│   │   │   ├── setup
-│   │   │   │   └── global.setup.ts
+│   │   │   ├── preprod
+│   │   │   │   ├── fixtures
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── static-assets.ts
+│   │   │   │   ├── helpers.ts
+│   │   │   │   ├── organisation.spec.ts
+│   │   │   │   ├── poll-link.spec.ts
+│   │   │   │   └── simulation.spec.ts
 │   │   │   ├── state
-│   │   │   │   ├── .gitignore
-│   │   │   │   └── index.ts
+│   │   │   │   ├── base.json
+│   │   │   │   ├── completed-test.json
+│   │   │   │   └── user-account.json
 │   │   │   └── utils
 │   │   │       ├── decodeRuleName.ts
 │   │   │       ├── encodeRuleName.ts
@@ -152,28 +185,18 @@
 │   │   │   │   └── generate-doc.sh
 │   │   │   ├── index.ts
 │   │   │   └── scripts
-│   │   │       ├── add-integrations-api-scopes.ts
-│   │   │       ├── add-integrations-email-whitelist.ts
 │   │   │       ├── geolocation-sorted-ips.ts
 │   │   │       └── grant-roles.ts
 │   │   ├── scalingo.json
 │   │   ├── scripts
 │   │   │   ├── NGC-1961-20250602.ts
-│   │   │   ├── NGC-2408-20250922.ts
 │   │   │   ├── NGC-3807-20260824.ts
+│   │   │   ├── NGC-3979-20261026.ts
+│   │   │   ├── __tests__
+│   │   │   │   └── NGC-3979-20261026.test.ts
 │   │   │   └── review-app-postdeploy.sh
 │   │   ├── src
 │   │   │   ├── adapters
-│   │   │   │   ├── 2tonnes
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── fixtures
-│   │   │   │   │   │       └── server.fixture.ts
-│   │   │   │   │   └── client.ts
-│   │   │   │   ├── agir
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── fixtures
-│   │   │   │   │   │       └── server.fixture.ts
-│   │   │   │   │   └── client.ts
 │   │   │   │   ├── brevo
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── fixtures
@@ -186,9 +209,13 @@
 │   │   │   │   │   │   └── fixtures
 │   │   │   │   │   │       └── server.fixture.ts
 │   │   │   │   │   └── client.ts
-│   │   │   │   ├── matomo
+│   │   │   │   ├── posthog
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── fetch-northstar-stats.spec.ts
+│   │   │   │   │   │   └── fixtures
+│   │   │   │   │   │       └── server.fixture.ts
 │   │   │   │   │   ├── client.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   └── constant.ts
 │   │   │   │   ├── prisma
 │   │   │   │   │   ├── generated.ts
 │   │   │   │   │   ├── selection.ts
@@ -208,13 +235,11 @@
 │   │   │   │   │   └── is-safe-redirect-url.spec.ts
 │   │   │   │   ├── allowed-urls.ts
 │   │   │   │   ├── batch-find-many.ts
-│   │   │   │   ├── deep-merge.ts
 │   │   │   │   ├── errors
 │   │   │   │   │   ├── ConflictException.ts
 │   │   │   │   │   ├── EntityNotFoundException.ts
 │   │   │   │   │   ├── ForbiddenException.ts
 │   │   │   │   │   ├── ImmutableSimulationException.ts
-│   │   │   │   │   ├── InvalidVerificationCodeException.ts
 │   │   │   │   │   └── UnauthorizedException.ts
 │   │   │   │   ├── event-bus
 │   │   │   │   │   ├── __tests__
@@ -232,7 +257,6 @@
 │   │   │   │   │   └── validation-error.schema.ts
 │   │   │   │   ├── pagination.ts
 │   │   │   │   ├── publish-api-event.ts
-│   │   │   │   ├── ts-rest.ts
 │   │   │   │   ├── typeguards
 │   │   │   │   │   ├── isPromiseAllSettled.ts
 │   │   │   │   │   ├── isRetryableAxiosError.ts
@@ -241,31 +265,6 @@
 │   │   │   │   └── types
 │   │   │   │       └── user.ts
 │   │   │   ├── features
-│   │   │   │   ├── authentication
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   ├── create-verification-codes.spec.ts
-│   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   ├── login.fixture.ts
-│   │   │   │   │   │   │   └── verification-codes.fixture.ts
-│   │   │   │   │   │   ├── login.spec.ts
-│   │   │   │   │   │   └── reconcile-simulations-after-login.spec.ts
-│   │   │   │   │   ├── authentication.controller.ts
-│   │   │   │   │   ├── authentication.service.ts
-│   │   │   │   │   ├── authentication.validator.ts
-│   │   │   │   │   ├── events
-│   │   │   │   │   │   ├── AccountCreated.event.ts
-│   │   │   │   │   │   ├── Login.event.ts
-│   │   │   │   │   │   └── VerificationCodeCreated.event.ts
-│   │   │   │   │   ├── handlers
-│   │   │   │   │   │   ├── reconcile-simulations-after-login.ts
-│   │   │   │   │   │   ├── send-verification-code.ts
-│   │   │   │   │   │   ├── send-welcome-email.ts
-│   │   │   │   │   │   ├── sync-user-data-after-account-created.ts
-│   │   │   │   │   │   └── update-brevo-contact.ts
-│   │   │   │   │   ├── verification-codes.controller.ts
-│   │   │   │   │   ├── verification-codes.repository.ts
-│   │   │   │   │   ├── verification-codes.service.ts
-│   │   │   │   │   └── verification-codes.validator.ts
 │   │   │   │   ├── groups
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── create-group-participant.spec.ts
@@ -287,64 +286,6 @@
 │   │   │   │   │   ├── groups.validator.ts
 │   │   │   │   │   └── handlers
 │   │   │   │   │       └── add-or-update-brevo-contact.ts
-│   │   │   │   ├── integrations
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   ├── export-situation.spec.ts
-│   │   │   │   │   │   └── fetch-external-service.spec.ts
-│   │   │   │   │   ├── api
-│   │   │   │   │   │   ├── api.contract.ts
-│   │   │   │   │   │   ├── api.controller.ts
-│   │   │   │   │   │   ├── authentication
-│   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   │   │   └── authentication.fixtures.ts
-│   │   │   │   │   │   │   │   ├── generate-api-token.spec.ts
-│   │   │   │   │   │   │   │   ├── recover-api-token.spec.ts
-│   │   │   │   │   │   │   │   └── refresh-api-token.spec.ts
-│   │   │   │   │   │   │   ├── authentication.contract.ts
-│   │   │   │   │   │   │   ├── authentication.controller.ts
-│   │   │   │   │   │   │   └── authentication.service.ts
-│   │   │   │   │   │   ├── email-whitelist
-│   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   ├── create-email-whitelist.spec.ts
-│   │   │   │   │   │   │   │   ├── delete-email-whitelist.spec.ts
-│   │   │   │   │   │   │   │   ├── fetch-email-whitelists.spec.ts
-│   │   │   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   │   │   └── email-whitelist.fixture.ts
-│   │   │   │   │   │   │   │   └── update-email-whitelist.spec.ts
-│   │   │   │   │   │   │   ├── email-whitelist.contract.ts
-│   │   │   │   │   │   │   ├── email-whitelist.controller.ts
-│   │   │   │   │   │   │   ├── email-whitelist.repository.ts
-│   │   │   │   │   │   │   └── email-whitelist.service.ts
-│   │   │   │   │   │   ├── mapping-file
-│   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   ├── delete-mapping-file.spec.ts
-│   │   │   │   │   │   │   │   ├── fetch-mapping-file.spec.ts
-│   │   │   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   ├── invalid.png
-│   │   │   │   │   │   │   │   │   ├── invalid.yml
-│   │   │   │   │   │   │   │   │   └── valid.yml
-│   │   │   │   │   │   │   │   └── upload-mapping-file.spec.ts
-│   │   │   │   │   │   │   ├── mapping-file.contract.ts
-│   │   │   │   │   │   │   ├── mapping-file.controller.ts
-│   │   │   │   │   │   │   └── mapping-file.service.ts
-│   │   │   │   │   │   └── mapping-situation
-│   │   │   │   │   │       ├── __tests__
-│   │   │   │   │   │       │   ├── fixtures
-│   │   │   │   │   │       │   │   └── 2-tonnes
-│   │   │   │   │   │       │   │       ├── absent.yml
-│   │   │   │   │   │       │   │       ├── conversion.yml
-│   │   │   │   │   │       │   │       ├── default.yml
-│   │   │   │   │   │       │   │       └── values.yml
-│   │   │   │   │   │       │   └── map-situation.spec.ts
-│   │   │   │   │   │       ├── mapping-situation.constant.ts
-│   │   │   │   │   │       ├── mapping-situation.contract.ts
-│   │   │   │   │   │       ├── mapping-situation.controller.ts
-│   │   │   │   │   │       └── mapping-situation.service.ts
-│   │   │   │   │   ├── integrations.controller.ts
-│   │   │   │   │   ├── integrations.service.ts
-│   │   │   │   │   └── integrations.validator.ts
 │   │   │   │   ├── jobs
 │   │   │   │   │   ├── events
 │   │   │   │   │   │   └── JobCreated.event.ts
@@ -375,7 +316,6 @@
 │   │   │   │   │   │   ├── download-organisation-poll-simulations-result.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation-poll.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation-polls.spec.ts
-│   │   │   │   │   │   ├── fetch-organisation-public-poll.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation.spec.ts
 │   │   │   │   │   │   ├── fetch-organisations.spec.ts
 │   │   │   │   │   │   ├── fixtures
@@ -400,20 +340,14 @@
 │   │   │   │   │   └── organisations.validator.ts
 │   │   │   │   ├── simulations
 │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   ├── create-poll-simulation.spec.ts
-│   │   │   │   │   │   ├── create-simulation.spec.ts
 │   │   │   │   │   │   ├── delete-simulation.spec.ts
-│   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   └── simulations.fixtures.ts
-│   │   │   │   │   │   ├── update-poll-simulation.spec.ts
-│   │   │   │   │   │   └── update-simulation.spec.ts
+│   │   │   │   │   │   └── fixtures
+│   │   │   │   │   │       └── simulations.fixtures.ts
 │   │   │   │   │   ├── events
 │   │   │   │   │   │   └── SimulationUpserted.event.ts
 │   │   │   │   │   ├── handlers
-│   │   │   │   │   │   ├── program-poll-stats-computation.ts
 │   │   │   │   │   │   ├── program-simulation-computation.ts
 │   │   │   │   │   │   ├── send-simulation-upserted.ts
-│   │   │   │   │   │   ├── sync-user-data-after-simulation-upserted.ts
 │   │   │   │   │   │   └── update-brevo-contact.ts
 │   │   │   │   │   ├── simulation.constant.ts
 │   │   │   │   │   ├── simulations.controller.ts
@@ -456,9 +390,28 @@
 │   │   │   │   │   │   ├── convert-notion-rich-text-to-md.spec.ts
 │   │   │   │   │   │   └── notion-action-row-schema.spec.ts
 │   │   │   │   │   └── convert-notion-rich-text-to-md.ts
-│   │   │   │   ├── recover-matomo-stats.ts
 │   │   │   │   ├── recover-newsletter-stats.ts
 │   │   │   │   ├── refresh-event-computation.ts
+│   │   │   │   ├── seed.ts
+│   │   │   │   ├── subcategories
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── export-subcategories.test.ts
+│   │   │   │   │   ├── export-subcategories.ts
+│   │   │   │   │   ├── lib
+│   │   │   │   │   │   ├── csv.ts
+│   │   │   │   │   │   ├── model-rules.ts
+│   │   │   │   │   │   ├── model-version-history.ts
+│   │   │   │   │   │   ├── period.ts
+│   │   │   │   │   │   ├── postgres.ts
+│   │   │   │   │   │   ├── rules.ts
+│   │   │   │   │   │   └── storage.ts
+│   │   │   │   │   └── rules
+│   │   │   │   │       ├── subcategories.before-4.10.0.yaml
+│   │   │   │   │       ├── subcategories.before-4.10.1.yaml
+│   │   │   │   │       ├── subcategories.before-4.16.0.yaml
+│   │   │   │   │       ├── subcategories.before-4.9.1.yaml
+│   │   │   │   │       └── subcategories.yaml
 │   │   │   │   ├── sync-brevo-contacts.ts
 │   │   │   │   └── sync-notion-actions.ts
 │   │   │   ├── logger.ts
@@ -485,21 +438,27 @@
 │       ├── .env.template
 │       ├── .gitignore
 │       ├── .storybook
+│       │   ├── logger-server-stub.ts
 │       │   ├── main.github-pages.ts
 │       │   ├── main.ts
+│       │   ├── next-root-params-stub.ts
 │       │   ├── preview.github-pages.tsx
 │       │   ├── preview.tsx
-│       │   └── vitest.setup.ts
+│       │   ├── server-actions-stub.ts
+│       │   ├── vitest.setup.ts
+│       │   └── webpack-config.ts
 │       ├── Procfile
 │       ├── README.md
 │       ├── check-memory.mjs
+│       ├── components.json
 │       ├── config
-│       │   ├── __tests__
-│       │   │   └── app-env.test.ts
-│       │   ├── app-env.ts
 │       │   ├── redirects.js
 │       │   ├── remoteImagesPatterns.ts
 │       │   └── urls.ts
+│       ├── cron
+│       │   ├── observability.ts
+│       │   └── run-retention-sweep.ts
+│       ├── cron.json
 │       ├── i18next-parser.config.js
 │       ├── mdx-components.tsx
 │       ├── next.config.ts
@@ -652,19 +611,20 @@
 │       ├── scripts
 │       │   ├── .eslintrc.yaml
 │       │   ├── check-links-validity.mjs
+│       │   ├── db
+│       │   │   └── delete-user-data.ts
 │       │   ├── healthchecks
 │       │   │   └── iframes.js
-│       │   └── i18n
-│       │       ├── check-faq.js
-│       │       ├── check-ui.js
-│       │       ├── generate-ui.js
-│       │       ├── paths.js
-│       │       ├── translate-faq.js
-│       │       ├── translate-nouveautes.cjs
-│       │       ├── translate-pages.cjs
-│       │       └── translate-ui.js
-│       ├── sentry.edge.config.ts
-│       ├── sentry.server.config.ts
+│       │   ├── i18n
+│       │   │   ├── check-faq.js
+│       │   │   ├── check-ui.js
+│       │   │   ├── generate-ui.js
+│       │   │   ├── paths.js
+│       │   │   ├── translate-faq.js
+│       │   │   ├── translate-nouveautes.cjs
+│       │   │   ├── translate-pages.cjs
+│       │   │   └── translate-ui.js
+│       │   └── inline-source-version.mjs
 │       ├── src
 │       │   ├── __mocks__
 │       │   │   ├── @sentry
@@ -678,7 +638,9 @@
 │       │   │       └── postNewsletterFormAction.ts
 │       │   ├── adapters
 │       │   │   ├── brevoClient.ts
-│       │   │   └── cmsClient.ts
+│       │   │   ├── cmsClient.ts
+│       │   │   └── redis
+│       │   │       └── client.ts
 │       │   ├── app
 │       │   │   ├── [locale]
 │       │   │   │   ├── (client)
@@ -695,16 +657,23 @@
 │       │   │   │   │   │   │   ├── (login)
 │       │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   └── ColourBlocks.tsx
+│       │   │   │   │   │   │   │   ├── _constants
+│       │   │   │   │   │   │   │   │   └── search-params.ts
+│       │   │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   │   └── validateSearchParams.ts
 │       │   │   │   │   │   │   │   ├── connexion
+│       │   │   │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   │   │   └── getLoginProps.ts
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   ├── inscription
+│       │   │   │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   │   │   └── getSignUpProps.ts
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   └── layout.tsx
 │       │   │   │   │   │   │   └── mon-espace
 │       │   │   │   │   │   │       ├── _components
 │       │   │   │   │   │   │       │   ├── LatestResults.tsx
 │       │   │   │   │   │   │       │   ├── NoResultsView.tsx
-│       │   │   │   │   │   │       │   ├── ProfileTabs.tsx
 │       │   │   │   │   │   │       │   ├── ResultsView.tsx
 │       │   │   │   │   │   │       │   ├── WelcomeBanner.tsx
 │       │   │   │   │   │   │       │   ├── latestResults
@@ -722,8 +691,6 @@
 │       │   │   │   │   │   │       │           ├── DeleteSimulationButton.tsx
 │       │   │   │   │   │   │       │           ├── ResultListItem.tsx
 │       │   │   │   │   │   │       │           └── SeeListItemDetailLink.tsx
-│       │   │   │   │   │   │       ├── actions
-│       │   │   │   │   │   │       │   └── page.tsx
 │       │   │   │   │   │   │       ├── groupes
 │       │   │   │   │   │   │       │   ├── error.tsx
 │       │   │   │   │   │   │       │   ├── layout.tsx
@@ -732,12 +699,15 @@
 │       │   │   │   │   │   │       ├── page.tsx
 │       │   │   │   │   │   │       ├── parametres
 │       │   │   │   │   │   │       │   ├── _components
+│       │   │   │   │   │   │       │   │   ├── DeleteAccount.tsx
 │       │   │   │   │   │   │       │   │   ├── Localisation.tsx
 │       │   │   │   │   │   │       │   │   ├── NewsletterSettings.tsx
 │       │   │   │   │   │   │       │   │   ├── UserEmail.tsx
 │       │   │   │   │   │   │       │   │   └── localisation
 │       │   │   │   │   │   │       │   │       ├── RegionModelAuthors.tsx
 │       │   │   │   │   │   │       │   │       └── RegionSelector.tsx
+│       │   │   │   │   │   │       │   ├── _hooks
+│       │   │   │   │   │   │       │   │   └── useEraseUserAccount.tsx
 │       │   │   │   │   │   │       │   └── page.tsx
 │       │   │   │   │   │   │       ├── resultats
 │       │   │   │   │   │   │       │   └── [simulationId]
@@ -753,9 +723,17 @@
 │       │   │   │   │   │   │   ├── [themeSlug]
 │       │   │   │   │   │   │   │   └── [actionSlug]
 │       │   │   │   │   │   │   │       ├── _components
+│       │   │   │   │   │   │   │       │   ├── ActionCommitmentBanner.tsx
 │       │   │   │   │   │   │   │       │   ├── ActionMedia.tsx
 │       │   │   │   │   │   │   │       │   └── Section.tsx
 │       │   │   │   │   │   │   │       └── page.tsx
+│       │   │   │   │   │   │   ├── mes-suggestions
+│       │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   ├── mon-plan
+│       │   │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   │   ├── PlannedActionCard.tsx
+│       │   │   │   │   │   │   │   │   └── RemoveFromPlanButton.tsx
+│       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── amis
 │       │   │   │   │   │   │   ├── _helpers
@@ -797,6 +775,8 @@
 │       │   │   │   │   │   │       │   ├── GroupResults.tsx
 │       │   │   │   │   │   │       │   ├── UpdateSimulationUsed.tsx
 │       │   │   │   │   │   │       │   └── groupResults
+│       │   │   │   │   │   │       │       ├── GroupFootprintSelector.tsx
+│       │   │   │   │   │   │       │       ├── GroupPointsFortsFaibles.tsx
 │       │   │   │   │   │   │       │       ├── InviteBlock.tsx
 │       │   │   │   │   │   │       │       ├── OwnerAdminSection.tsx
 │       │   │   │   │   │   │       │       ├── ParticipantAdminSection.tsx
@@ -812,23 +792,31 @@
 │       │   │   │   │   │   │       ├── layout.tsx
 │       │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   ├── fin
-│       │   │   │   │   │   │   ├── _components
-│       │   │   │   │   │   │   │   ├── FinTabs.tsx
-│       │   │   │   │   │   │   │   └── PartnerRedirectionAlert.tsx
-│       │   │   │   │   │   │   ├── actions
+│       │   │   │   │   │   │   ├── (results)
+│       │   │   │   │   │   │   │   ├── eau
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   │   ├── loading.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   ├── eau
-│       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   ├── groupes
-│       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   ├── loading.tsx
-│       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   └── groupes
+│       │   │   │   │   │   │       ├── layout.tsx
+│       │   │   │   │   │   │       ├── loading.tsx
+│       │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   ├── matrice-impact
+│       │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   ├── ImpactCard.tsx
+│       │   │   │   │   │   │   │   └── impactCard
+│       │   │   │   │   │   │   │       └── ImpactCardBadge.tsx
+│       │   │   │   │   │   │   ├── _constants
+│       │   │   │   │   │   │   │   └── impactMatrixData.tsx
+│       │   │   │   │   │   │   ├── _types
+│       │   │   │   │   │   │   │   └── type.ts
+│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── organisations
 │       │   │   │   │   │   │   ├── (login)
 │       │   │   │   │   │   │   │   ├── _action
-│       │   │   │   │   │   │   │   │   └── redirectAfterLoginAction.ts
+│       │   │   │   │   │   │   │   │   └── getRedirectPathAfterLoginAction.ts
 │       │   │   │   │   │   │   │   ├── connexion
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   ├── inscription
@@ -863,6 +851,7 @@
 │       │   │   │   │   │   │   │   │       │           └── waterFootprintCard
 │       │   │   │   │   │   │   │   │       │               └── WaterWaveBackground.tsx
 │       │   │   │   │   │   │   │   │       ├── layout.tsx
+│       │   │   │   │   │   │   │   │       ├── not-found.tsx
 │       │   │   │   │   │   │   │   │       ├── page.tsx
 │       │   │   │   │   │   │   │   │       └── parametres
 │       │   │   │   │   │   │   │   │           ├── _components
@@ -873,19 +862,10 @@
 │       │   │   │   │   │   │   │   ├── creer-campagne
 │       │   │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   │   ├── CloseButton.tsx
-│       │   │   │   │   │   │   │   │   │   ├── PollModeForm.tsx
-│       │   │   │   │   │   │   │   │   │   └── PollNameForm.tsx
-│       │   │   │   │   │   │   │   │   ├── _constants
-│       │   │   │   │   │   │   │   │   │   └── sessionStorage.ts
+│       │   │   │   │   │   │   │   │   │   └── PollForm.tsx
 │       │   │   │   │   │   │   │   │   ├── _hooks
-│       │   │   │   │   │   │   │   │   │   ├── createPollDraft.ts
-│       │   │   │   │   │   │   │   │   │   ├── useCreatePollStep1.ts
-│       │   │   │   │   │   │   │   │   │   └── useCreatePollStep2.ts
-│       │   │   │   │   │   │   │   │   ├── informations
-│       │   │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   │   │   └── useCreatePoll.ts
 │       │   │   │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   │   │   ├── mode
-│       │   │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   ├── error.tsx
 │       │   │   │   │   │   │   │   ├── guard.tsx
@@ -897,6 +877,10 @@
 │       │   │   │   │   │   │   │   │   │   ├── OrganisationForm.tsx
 │       │   │   │   │   │   │   │   │   │   └── PersonalInfoFields.tsx
 │       │   │   │   │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   │   ├── resultats-detailles
+│       │   │   │   │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   │   │   │   └── page.test.ts
 │       │   │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   │   └── unauthorized.tsx
 │       │   │   │   │   │   │   ├── _components
@@ -924,7 +908,7 @@
 │       │   │   │   │   │       ├── _components
 │       │   │   │   │   │       │   ├── StatsContent.tsx
 │       │   │   │   │   │       │   └── content
-│       │   │   │   │   │       │       └── MetabaseIframe.tsx
+│       │   │   │   │   │       │       └── PosthogIframe.tsx
 │       │   │   │   │   │       └── page.tsx
 │       │   │   │   │   ├── (narrow)
 │       │   │   │   │   │   ├── accessibilite
@@ -1136,6 +1120,9 @@
 │       │   │   │   │       │   │       └── eventDynamicCounter
 │       │   │   │   │       │   │           ├── CircularProgressBar.tsx
 │       │   │   │   │       │   │           ├── ClientCircularProgressBar.tsx
+│       │   │   │   │       │   │           ├── EventLinks.tsx
+│       │   │   │   │       │   │           ├── ObjectiveStatus.tsx
+│       │   │   │   │       │   │           ├── StatusTitle.tsx
 │       │   │   │   │       │   │           └── circularProgressBar
 │       │   │   │   │       │   │               ├── useAnimateCircularProgressBar.ts
 │       │   │   │   │       │   │               └── utils.ts
@@ -1145,7 +1132,10 @@
 │       │   │   │   │       │   │   ├── ListItem.tsx
 │       │   │   │   │       │   │   ├── PodiumBlock.tsx
 │       │   │   │   │       │   │   ├── PodiumVisual.tsx
-│       │   │   │   │       │   │   └── RankBadge.tsx
+│       │   │   │   │       │   │   ├── RankBadge.tsx
+│       │   │   │   │       │   │   └── helpers
+│       │   │   │   │       │   │       ├── getActiveCategoryFilter.ts
+│       │   │   │   │       │   │       └── getNavigationLinks.ts
 │       │   │   │   │       │   ├── eventStatistics
 │       │   │   │   │       │   │   └── EventNumber.tsx
 │       │   │   │   │       │   ├── eventTestimonies
@@ -1156,7 +1146,6 @@
 │       │   │   │   │       ├── _helpers
 │       │   │   │   │       │   └── eventPageData.tsx
 │       │   │   │   │       └── page.tsx
-│       │   │   │   ├── globals.css
 │       │   │   │   ├── layout.tsx
 │       │   │   │   ├── marianne.tsx
 │       │   │   │   ├── newsletter-confirmation
@@ -1166,14 +1155,6 @@
 │       │   │   │   │   │   ├── NewsletterErrorMessage.tsx
 │       │   │   │   │   │   ├── NewsletterInvalidMessage.tsx
 │       │   │   │   │   │   └── NewsletterSuccessMessage.tsx
-│       │   │   │   │   ├── layout.tsx
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── partenaire
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── PartnerPage.test.tsx
-│       │   │   │   │   ├── _components
-│       │   │   │   │   │   ├── AdaptiveMessage.tsx
-│       │   │   │   │   │   └── RedirectLink.tsx
 │       │   │   │   │   ├── layout.tsx
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── simulateur
@@ -1192,13 +1173,17 @@
 │       │   │   │   │   │   │       └── ReuseButtons.tsx
 │       │   │   │   │   │   ├── campagne
 │       │   │   │   │   │   │   └── [pollIdOrSlug]
+│       │   │   │   │   │   │       ├── _actions
+│       │   │   │   │   │   │       │   ├── __tests__
+│       │   │   │   │   │   │       │   │   └── get-poll-participation-options.test.ts
+│       │   │   │   │   │   │       │   └── get-poll-participation-options.ts
 │       │   │   │   │   │   │       ├── layout.tsx
 │       │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   ├── email
+│       │   │   │   │   │   │   ├── _actions
+│       │   │   │   │   │   │   │   └── getEmailPageData.ts
 │       │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   └── EmailConfirmation.tsx
-│       │   │   │   │   │   │   ├── _helpers
-│       │   │   │   │   │   │   │   └── getEmailPageData.ts
 │       │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── layout.tsx
@@ -1264,6 +1249,9 @@
 │       │   │   │       └── page.tsx
 │       │   │   ├── __tests__
 │       │   │   │   └── sitemap.test.ts
+│       │   │   ├── app-crash
+│       │   │   │   ├── layout.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── global-error.tsx
 │       │   │   ├── not-found.tsx
 │       │   │   └── sitemap.ts
@@ -1272,26 +1260,45 @@
 │       │   │   ├── __tests__
 │       │   │   │   └── Link.test.tsx
 │       │   │   ├── actions
-│       │   │   │   ├── ActionCard
-│       │   │   │   │   ├── ActionCard.module.css
-│       │   │   │   │   ├── ActionCard.tsx
-│       │   │   │   │   ├── ActionCardSwitch.tsx
-│       │   │   │   │   ├── ActionCardSwitchServer.tsx
-│       │   │   │   │   ├── ImpactTag.tsx
-│       │   │   │   │   └── rankToEmoji.ts
+│       │   │   │   ├── ActionCard.tsx
+│       │   │   │   ├── ActionPlanLinks.tsx
 │       │   │   │   ├── ActionTracker.tsx
-│       │   │   │   ├── BetaBanner.tsx
+│       │   │   │   ├── ActionsBasket.tsx
 │       │   │   │   ├── HighestImpactActionsSection.tsx
-│       │   │   │   ├── HighestImpactActionsSectionDarkBackground.tsx
-│       │   │   │   ├── HighestImpactActionsSectionSwitch.tsx
-│       │   │   │   ├── HighestImpactActionsSectionWhiteBackground.tsx
 │       │   │   │   ├── HighlightedActionCard.tsx
+│       │   │   │   ├── ImpactTag.tsx
 │       │   │   │   ├── ThemeBadge.tsx
+│       │   │   │   ├── ThemeIcon.tsx
 │       │   │   │   ├── ThemeSection.tsx
 │       │   │   │   ├── __tests__
 │       │   │   │   │   └── ActionTracker.test.tsx
+│       │   │   │   ├── actionCard
+│       │   │   │   │   ├── ActionCard.module.css
+│       │   │   │   │   └── rankToEmoji.ts
+│       │   │   │   ├── actionsBasket
+│       │   │   │   │   ├── ChosenActionsList.tsx
+│       │   │   │   │   ├── DesktopSaveSelectionButtonSection.tsx
+│       │   │   │   │   ├── MobileSaveSelectionBanner.tsx
+│       │   │   │   │   ├── SavePlanLink.tsx
+│       │   │   │   │   └── chosenActionsList
+│       │   │   │   │       ├── ChosenAction.tsx
+│       │   │   │   │       └── chosen-action
+│       │   │   │   │           └── AbandonCommitmentButton.tsx
+│       │   │   │   ├── highlightedActionCard
+│       │   │   │   │   ├── CommitToActionButton.tsx
+│       │   │   │   │   ├── ImpactSection.tsx
+│       │   │   │   │   ├── commitToActionButton
+│       │   │   │   │   │   ├── useActionCommitment.tsx
+│       │   │   │   │   │   └── useTriggerShineAnimation.ts
+│       │   │   │   │   └── impactSection
+│       │   │   │   │       └── classes-by-theme.tsx
 │       │   │   │   ├── pages
 │       │   │   │   │   └── ActionsPage.tsx
+│       │   │   │   ├── theme
+│       │   │   │   │   └── constants
+│       │   │   │   │       └── classesByTheme.ts
+│       │   │   │   ├── types
+│       │   │   │   │   └── actions.ts
 │       │   │   │   └── utils
 │       │   │   │       └── shouldDisplayComputationInProgressText.ts
 │       │   │   ├── animations
@@ -1308,6 +1315,7 @@
 │       │   │   │   │   ├── useAuthCodeCreation.ts
 │       │   │   │   │   ├── useAuthEffects.ts
 │       │   │   │   │   ├── useLogin.ts
+│       │   │   │   │   ├── useLogout.ts
 │       │   │   │   │   ├── usePersistentAuthPhase.ts
 │       │   │   │   │   └── useSecondsLeft.ts
 │       │   │   │   ├── authMachine.ts
@@ -1330,7 +1338,6 @@
 │       │   │   │   ├── HorizontalBarChartItem.tsx
 │       │   │   │   ├── HorizontalBarChartItemLegacy.tsx
 │       │   │   │   ├── RavijenChart.tsx
-│       │   │   │   ├── ServicesChart.tsx
 │       │   │   │   ├── VerticalBarChart.tsx
 │       │   │   │   ├── ravijenChart
 │       │   │   │   │   ├── CategoryChart.tsx
@@ -1422,6 +1429,7 @@
 │       │   │   │   ├── DownArrow.tsx
 │       │   │   │   ├── DownloadIcon.tsx
 │       │   │   │   ├── ExternalLinkIcon.tsx
+│       │   │   │   ├── FileWithMagnifierIcon.tsx
 │       │   │   │   ├── FlagIcon.tsx
 │       │   │   │   ├── FoodIcon.tsx
 │       │   │   │   ├── HourglassIcon.tsx
@@ -1498,12 +1506,13 @@
 │       │   │   │   ├── ContentNarrow.tsx
 │       │   │   │   ├── FilAriane.tsx
 │       │   │   │   ├── Footer.tsx
-│       │   │   │   ├── HeaderServer.tsx
+│       │   │   │   ├── Header.tsx
 │       │   │   │   ├── HideInIframe.tsx
 │       │   │   │   ├── MaxWidthContent.tsx
 │       │   │   │   ├── MessageTemplate.tsx
 │       │   │   │   ├── PasserTestBanner.tsx
 │       │   │   │   ├── ThematicPagesSection.tsx
+│       │   │   │   ├── UserSpaceTabs.tsx
 │       │   │   │   ├── footer
 │       │   │   │   │   ├── CookieButton.tsx
 │       │   │   │   │   ├── FooterServer.tsx
@@ -1511,6 +1520,7 @@
 │       │   │   │   └── headerServer
 │       │   │   │       ├── LogoHeader.tsx
 │       │   │   │       ├── MySpaceButton.tsx
+│       │   │   │       ├── MySpaceButtonLink.tsx
 │       │   │   │       └── MySpaceDropdown.tsx
 │       │   │   ├── mdx
 │       │   │   │   └── MDXContent.tsx
@@ -1520,9 +1530,8 @@
 │       │   │   │   ├── CountryFlag.tsx
 │       │   │   │   ├── CountryListItem.tsx
 │       │   │   │   ├── Logo.tsx
-│       │   │   │   ├── LogoLinkServer.tsx
+│       │   │   │   ├── LogoLink.tsx
 │       │   │   │   ├── NumberValue.tsx
-│       │   │   │   ├── QuestionButton.tsx
 │       │   │   │   ├── RegionGrid.tsx
 │       │   │   │   ├── TotalFootprintNumber.tsx
 │       │   │   │   └── ValueChangeDisplay.tsx
@@ -1552,19 +1561,26 @@
 │       │   │   │       └── PRNumberHook.tsx
 │       │   │   ├── results
 │       │   │   │   ├── ActionsBlock.tsx
-│       │   │   │   ├── CategoriesAccordion.stories.tsx
 │       │   │   │   ├── CategoriesAccordion.tsx
 │       │   │   │   ├── CategoriesChart.tsx
-│       │   │   │   ├── FootprintBlock.stories.tsx
 │       │   │   │   ├── FootprintBlock.tsx
 │       │   │   │   ├── FootprintDetail.tsx
+│       │   │   │   ├── FootprintInfoPopover.tsx
 │       │   │   │   ├── FootprintsLinks.tsx
 │       │   │   │   ├── GroupThankYouBlock.tsx
 │       │   │   │   ├── SaveResultsBlock.tsx
 │       │   │   │   ├── SaveResultsForm.tsx
 │       │   │   │   ├── TendencyIndicator.tsx
 │       │   │   │   ├── carbonFootprint
-│       │   │   │   │   └── CarbonFootprintResults.tsx
+│       │   │   │   │   ├── CarbonFootprintHero.tsx
+│       │   │   │   │   ├── CarbonFootprintHeroSwitch.tsx
+│       │   │   │   │   ├── CarbonFootprintResults.tsx
+│       │   │   │   │   ├── FootprintComparisonChart.tsx
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── CarbonFootprintHeroSwitch.test.tsx
+│       │   │   │   │   │   ├── CarbonFootprintResults.test.tsx
+│       │   │   │   │   │   └── footprintComparison.test.ts
+│       │   │   │   │   └── footprintComparison.ts
 │       │   │   │   ├── categoriesAccordion
 │       │   │   │   │   ├── SubcategoriesList.tsx
 │       │   │   │   │   ├── _client
@@ -1594,7 +1610,6 @@
 │       │   │   │   │       └── pollList
 │       │   │   │   │           └── OrganisationItem.tsx
 │       │   │   │   ├── objective
-│       │   │   │   │   ├── Objective.stories.tsx
 │       │   │   │   │   ├── Objective.tsx
 │       │   │   │   │   ├── _components
 │       │   │   │   │   │   ├── CollectiveEffort.tsx
@@ -1622,7 +1637,9 @@
 │       │   │   │       ├── QRCode.test.tsx
 │       │   │   │       └── ShareSimulationButton.test.tsx
 │       │   │   ├── signIn
-│       │   │   │   └── SignInSignUpTabs.tsx
+│       │   │   │   ├── SignInSignUpTabs.tsx
+│       │   │   │   └── _helpers
+│       │   │   │       └── getTabs.tsx
 │       │   │   ├── simulation
 │       │   │   │   ├── TopBar.tsx
 │       │   │   │   └── topBar
@@ -1659,6 +1676,10 @@
 │       │   │   ├── translation
 │       │   │   │   ├── LanguageSwitchButton.tsx
 │       │   │   │   ├── LocalisationBanner.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── LanguageSwitchButton.test.tsx
+│       │   │   │   ├── languageSwitchButton
+│       │   │   │   │   └── useSwitchLanguage.ts
 │       │   │   │   └── trans
 │       │   │   │       ├── TransClient.tsx
 │       │   │   │       └── TransServer.tsx
@@ -1682,72 +1703,33 @@
 │       │   │   ├── metadata.ts
 │       │   │   ├── model
 │       │   │   │   ├── bounds.ts
+│       │   │   │   ├── categories.ts
 │       │   │   │   ├── frenchRegions.ts
 │       │   │   │   ├── metric.ts
-│       │   │   │   ├── orderedCategories.ts
 │       │   │   │   └── simulationModes.ts
 │       │   │   ├── organisations
 │       │   │   │   ├── administrator.ts
 │       │   │   │   ├── organisationTypes.ts
 │       │   │   │   └── pollDefaultAdditionalQuestion.ts
-│       │   │   ├── partners.ts
 │       │   │   ├── ravijen.ts
 │       │   │   ├── storage.ts
 │       │   │   ├── tracking
-│       │   │   │   ├── actions.ts
-│       │   │   │   ├── cookie.ts
-│       │   │   │   ├── layout.ts
-│       │   │   │   ├── misc.ts
-│       │   │   │   ├── pages
-│       │   │   │   │   ├── actions.ts
-│       │   │   │   │   ├── amisCreation.ts
-│       │   │   │   │   ├── amisDashboard.ts
-│       │   │   │   │   ├── classements.ts
-│       │   │   │   │   ├── end.ts
-│       │   │   │   │   ├── faq.ts
-│       │   │   │   │   ├── mainLanding.ts
-│       │   │   │   │   ├── mon-espace.ts
-│       │   │   │   │   ├── organisationsAccueil.ts
-│       │   │   │   │   ├── organisationsConnexion.ts
-│       │   │   │   │   ├── organisationsDashboard.ts
-│       │   │   │   │   ├── pollDashboard.ts
-│       │   │   │   │   ├── profil.ts
-│       │   │   │   │   ├── signin.ts
-│       │   │   │   │   ├── simulateur.ts
-│       │   │   │   │   └── tutoriel.ts
-│       │   │   │   ├── posthogTrackers.ts
-│       │   │   │   ├── question.ts
-│       │   │   │   ├── simulation.ts
-│       │   │   │   └── user-account.ts
+│       │   │   │   ├── gtmEvents.ts
+│       │   │   │   └── trackers.ts
 │       │   │   └── urls
 │       │   │       ├── main.ts
 │       │   │       ├── params.ts
 │       │   │       ├── paths.ts
-│       │   │       ├── share.ts
-│       │   │       └── utm.ts
-│       │   ├── contexts
-│       │   │   └── partner
-│       │   │       ├── PartnerContext.tsx
-│       │   │       ├── __tests__
-│       │   │       │   └── PartnerContext.test.tsx
-│       │   │       └── _components
-│       │   │           └── SuccessMessage.tsx
+│       │   │       └── share.ts
 │       │   ├── design-system
 │       │   │   ├── accessibility
-│       │   │   │   ├── SkipToMainContentLink.stories.tsx
 │       │   │   │   └── SkipToMainContentLink.tsx
-│       │   │   ├── alerts
-│       │   │   │   ├── Confirmation.stories.tsx
-│       │   │   │   ├── Confirmation.tsx
-│       │   │   │   ├── NotificationBubble.stories.tsx
-│       │   │   │   ├── NotificationBubble.tsx
-│       │   │   │   └── alert
-│       │   │   │       ├── Alert.stories.tsx
-│       │   │   │       └── Alert.tsx
+│       │   │   ├── alert
+│       │   │   │   ├── Alert.stories.tsx
+│       │   │   │   └── Alert.tsx
 │       │   │   ├── buttons
 │       │   │   │   ├── Button.stories.tsx
 │       │   │   │   ├── Button.tsx
-│       │   │   │   ├── ButtonAnchor.tsx
 │       │   │   │   ├── ButtonLink.stories.tsx
 │       │   │   │   ├── ButtonLink.tsx
 │       │   │   │   ├── ButtonLinkServer.tsx
@@ -1827,6 +1809,7 @@
 │       │   │   │   ├── Badge.tsx
 │       │   │   │   ├── BlockSkeleton.stories.tsx
 │       │   │   │   ├── BlockSkeleton.tsx
+│       │   │   │   ├── BottomBannerWithCTA.tsx
 │       │   │   │   ├── Breadcrumbs.stories.tsx
 │       │   │   │   ├── Breadcrumbs.tsx
 │       │   │   │   ├── BurgerMenu.stories.tsx
@@ -1837,6 +1820,7 @@
 │       │   │   │   ├── ColorLine.tsx
 │       │   │   │   ├── Container.stories.tsx
 │       │   │   │   ├── Container.tsx
+│       │   │   │   ├── CountBadge.tsx
 │       │   │   │   ├── LandingPage.tsx
 │       │   │   │   ├── Loader.stories.tsx
 │       │   │   │   ├── Loader.tsx
@@ -1844,6 +1828,8 @@
 │       │   │   │   ├── Main.tsx
 │       │   │   │   ├── Separator.stories.tsx
 │       │   │   │   ├── Separator.tsx
+│       │   │   │   ├── Subtitle.stories.tsx
+│       │   │   │   ├── Subtitle.tsx
 │       │   │   │   ├── Tabs.stories.tsx
 │       │   │   │   ├── Tabs.tsx
 │       │   │   │   ├── Title.stories.tsx
@@ -1856,16 +1842,25 @@
 │       │   │   │       ├── DynamicCounter.tsx
 │       │   │   │       ├── Hero.stories.tsx
 │       │   │   │       └── Hero.tsx
+│       │   │   ├── links
+│       │   │   │   ├── Link.tsx
+│       │   │   │   └── __tests__
+│       │   │   │       └── Link.test.tsx
 │       │   │   ├── marianne.css
 │       │   │   ├── modals
 │       │   │   │   ├── ConfirmationModal.stories.tsx
-│       │   │   │   ├── ConfirmationModal.tsx
-│       │   │   │   ├── Modal.stories.tsx
-│       │   │   │   └── Modal.tsx
+│       │   │   │   └── ConfirmationModal.tsx
 │       │   │   ├── scroll-reveal
 │       │   │   │   ├── ScrollReveal.stories.tsx
 │       │   │   │   ├── ScrollReveal.tsx
 │       │   │   │   └── useScrollReveal.ts
+│       │   │   ├── shadcn
+│       │   │   │   ├── README.md
+│       │   │   │   ├── dialog.tsx
+│       │   │   │   ├── dropdown-menu.tsx
+│       │   │   │   ├── popover.tsx
+│       │   │   │   ├── sonner.tsx
+│       │   │   │   └── tooltip.tsx
 │       │   │   ├── sharing
 │       │   │   │   ├── Share.stories.tsx
 │       │   │   │   ├── Share.tsx
@@ -1878,11 +1873,20 @@
 │       │   │       ├── Emoji.tsx
 │       │   │       ├── Markdown.stories.tsx
 │       │   │       └── Markdown.tsx
-│       │   ├── env.public.ts
-│       │   ├── env.server.ts
+│       │   ├── env
+│       │   │   ├── __tests__
+│       │   │   │   └── app-env.test.ts
+│       │   │   ├── app-env.ts
+│       │   │   ├── public-contract.ts
+│       │   │   ├── public.ts
+│       │   │   ├── server-contract.ts
+│       │   │   ├── server.ts
+│       │   │   └── shared.ts
 │       │   ├── helpers
 │       │   │   ├── accessibility
 │       │   │   │   └── onKeyDownHelper.ts
+│       │   │   ├── actions
+│       │   │   │   └── getActionHref.ts
 │       │   │   ├── blog
 │       │   │   │   ├── getDynamicPageTitleWithPagination.ts
 │       │   │   │   └── getPageNumber.ts
@@ -1893,6 +1897,7 @@
 │       │   │   │   └── formatFootprint.ts
 │       │   │   ├── getCategoriesDisplayData.tsx
 │       │   │   ├── getCategoryColorClass.ts
+│       │   │   ├── getLocale.ts
 │       │   │   ├── getLocalisedMDX.ts
 │       │   │   ├── getServerTranslation.ts
 │       │   │   ├── groups
@@ -1909,8 +1914,7 @@
 │       │   │   │   └── storageAccess.ts
 │       │   │   ├── language
 │       │   │   │   ├── getLocalePrefix.ts
-│       │   │   │   ├── getLocalizedPath.ts
-│       │   │   │   └── updateLangCookie.ts
+│       │   │   │   └── getLocalizedPath.ts
 │       │   │   ├── localisation
 │       │   │   │   └── sortSupportedRegions.ts
 │       │   │   ├── markdown
@@ -1924,21 +1928,18 @@
 │       │   │   │   └── getMetadataObject.ts
 │       │   │   ├── modelFetching
 │       │   │   │   ├── getCachedRules.ts
-│       │   │   │   ├── getPersonas.ts
-│       │   │   │   ├── getRules.ts
-│       │   │   │   ├── importPreviewFile.ts
-│       │   │   │   └── importRulesFromModel.ts
+│       │   │   │   └── getRules.ts
 │       │   │   ├── navigation
 │       │   │   │   ├── __tests__
+│       │   │   │   │   ├── appendSearchParams.test.ts
 │       │   │   │   │   └── externalLink.test.tsx
+│       │   │   │   ├── appendSearchParams.ts
 │       │   │   │   ├── externalLink.ts
 │       │   │   │   ├── groupPages.ts
 │       │   │   │   └── simulateurPages.ts
 │       │   │   ├── organisations
 │       │   │   │   ├── formatPollStatsRefreshDuration.ts
 │       │   │   │   └── unformatAdministratorName.ts
-│       │   │   ├── partners
-│       │   │   │   └── storage.ts
 │       │   │   ├── personas
 │       │   │   │   ├── fixSituationWithPartialMosaic.ts
 │       │   │   │   └── getPersonaFoldedSteps.ts
@@ -1950,6 +1951,8 @@
 │       │   │   ├── regions
 │       │   │   │   └── getIsFrenchRegion.ts
 │       │   │   ├── server
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── rateLimitSameRequest.test.ts
 │       │   │   │   ├── cookie
 │       │   │   │   │   ├── auth.cookie.ts
 │       │   │   │   │   ├── helpers.ts
@@ -1960,6 +1963,8 @@
 │       │   │   │   ├── getLinkToSimulateur.ts
 │       │   │   │   ├── getLocaleForNotFoundOrUnautorizedPage.ts
 │       │   │   │   ├── model
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── newsletter.test.ts
 │       │   │   │   │   ├── groups.ts
 │       │   │   │   │   ├── models.ts
 │       │   │   │   │   ├── newsletter.ts
@@ -1969,11 +1974,19 @@
 │       │   │   │   │   └── utils
 │       │   │   │   │       └── getGroupDisplayInfo.ts
 │       │   │   │   ├── proxy
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── auth.middleware.test.ts
+│       │   │   │   │   │   ├── identity.middleware.test.ts
+│       │   │   │   │   │   └── strip-email.middleware.test.ts
 │       │   │   │   │   ├── auth.middleware.ts
 │       │   │   │   │   ├── feature-flags.middleware.ts
+│       │   │   │   │   ├── identity.middleware.ts
 │       │   │   │   │   ├── migrate-legacy-sessions.middleware.ts
 │       │   │   │   │   ├── region.middleware.ts
+│       │   │   │   │   ├── session-header.ts
+│       │   │   │   │   ├── strip-email.middleware.ts
 │       │   │   │   │   └── types.ts
+│       │   │   │   ├── rateLimitSameRequest.ts
 │       │   │   │   └── revalidate.ts
 │       │   │   ├── shared
 │       │   │   │   └── handleApiResponse.ts
@@ -1981,17 +1994,16 @@
 │       │   │   │   └── sanitizeSimulation.ts
 │       │   │   ├── tests
 │       │   │   │   ├── mockAuthenticatedSession.ts
+│       │   │   │   ├── mockLogger.ts
+│       │   │   │   ├── mockRedisClient.ts
+│       │   │   │   ├── simulation.factory.ts
 │       │   │   │   └── wrapper.tsx
-│       │   │   ├── tracking
-│       │   │   │   ├── blog.ts
-│       │   │   │   ├── landings.ts
-│       │   │   │   └── share.ts
 │       │   │   └── user
-│       │   │       ├── reconcileOnAuth.ts
-│       │   │       └── resetLocalState.ts
+│       │   │       └── reconcileOnAuth.ts
 │       │   ├── hooks
 │       │   │   ├── __tests__
-│       │   │   │   └── useIsDisabledByBounds.test.tsx
+│       │   │   │   ├── useIsDisabledByBounds.test.tsx
+│       │   │   │   └── useIsMobileLayout.test.tsx
 │       │   │   ├── groups
 │       │   │   │   ├── __tests__
 │       │   │   │   │   ├── fixtures
@@ -2010,25 +2022,18 @@
 │       │   │   │   │   ├── useDeletePoll.ts
 │       │   │   │   │   ├── useFetchPoll.ts
 │       │   │   │   │   ├── useFetchPolls.ts
-│       │   │   │   │   ├── useFetchPublicPoll.ts
 │       │   │   │   │   └── useUpdatePoll.ts
 │       │   │   │   ├── useCreateOrganisation.ts
 │       │   │   │   ├── useFetchOrganisation.ts
-│       │   │   │   ├── useHandleRedirectFromLegacy.ts
-│       │   │   │   ├── useIsOrganisationAdmin.ts
 │       │   │   │   ├── usePollQueryParams.ts
 │       │   │   │   ├── useTimeleft.ts
 │       │   │   │   └── useUpdateOrganisation.ts
-│       │   │   ├── partners
-│       │   │   │   ├── useExportSituation.ts
-│       │   │   │   └── useVerifyPartner.ts
 │       │   │   ├── settings
 │       │   │   │   └── useUpdateUserSettings.ts
 │       │   │   ├── simulation
 │       │   │   │   ├── useGetDifference.ts
 │       │   │   │   └── useUpdatePageTitle.ts
 │       │   │   ├── tracking
-│       │   │   │   ├── MatomoServerTracker.tsx
 │       │   │   │   ├── useGetTrackedUrl.ts
 │       │   │   │   ├── useTrackPageview.ts
 │       │   │   │   ├── useTrackSimulator.ts
@@ -2040,10 +2045,10 @@
 │       │   │   ├── useIframe.ts
 │       │   │   ├── useIsClient.ts
 │       │   │   ├── useIsDisabledByBounds.ts
+│       │   │   ├── useIsMobileLayout.ts
 │       │   │   ├── useLocale.ts
 │       │   │   ├── useMagicKey.ts
 │       │   │   ├── usePRNumber.ts
-│       │   │   ├── usePersonas.ts
 │       │   │   ├── useRedirectIfInAppBrowser.ts
 │       │   │   └── useSortedCategoriesByFootprint.ts
 │       │   ├── i18nConfig.ts
@@ -2157,36 +2162,63 @@
 │       │   │   │   ├── ui-en.yaml
 │       │   │   │   └── ui-fr.yaml
 │       │   │   └── units.yaml
-│       │   ├── logger.ts
+│       │   ├── logger
+│       │   │   ├── __tests__
+│       │   │   │   ├── logger-span.test.ts
+│       │   │   │   ├── logger.browser.test.ts
+│       │   │   │   └── logger.test.ts
+│       │   │   ├── line.ts
+│       │   │   ├── logger.browser.ts
+│       │   │   ├── logger.node.ts
+│       │   │   └── logger.server.ts
 │       │   ├── middlewares
 │       │   │   ├── excludedIPs
 │       │   │   │   ├── googlebot.json
 │       │   │   │   ├── special-crawlers.json
 │       │   │   │   └── user-triggered-fetchers.json
 │       │   │   └── i18nMiddleware.ts
+│       │   ├── observability
+│       │   │   ├── __tests__
+│       │   │   │   ├── deferred-side-effect.test.ts
+│       │   │   │   ├── error-capture.test.ts
+│       │   │   │   ├── log-export.test.ts
+│       │   │   │   ├── process-store.test.ts
+│       │   │   │   ├── process.test.ts
+│       │   │   │   ├── request-identity.test.ts
+│       │   │   │   ├── span-filter.test.ts
+│       │   │   │   ├── static-request.test.ts
+│       │   │   │   └── uncaught-errors.test.ts
+│       │   │   ├── error-capture.ts
+│       │   │   ├── log-bridge.ts
+│       │   │   ├── otel.ts
+│       │   │   ├── otlp-attributes.ts
+│       │   │   ├── process-store.ts
+│       │   │   ├── process.ts
+│       │   │   ├── request-identity.ts
+│       │   │   ├── span-filter.ts
+│       │   │   ├── static-request.ts
+│       │   │   └── uncaught-errors.ts
 │       │   ├── proxy.ts
 │       │   ├── publicodes-state
 │       │   │   ├── README.md
 │       │   │   ├── constants
 │       │   │   │   └── questions.ts
 │       │   │   ├── helpers
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── getQuestionsWithForgottenAtTheEnd.test.ts
 │       │   │   │   ├── checkIfDottedNameShouldNotBeIgnored.ts
-│       │   │   │   ├── getComputedResults.ts
 │       │   │   │   ├── getIsMissing.ts
 │       │   │   │   ├── getNamespace.ts
-│       │   │   │   ├── getSomme.ts
+│       │   │   │   ├── getQuestionsWithForgottenAtTheEnd.ts
 │       │   │   │   ├── getSortedQuestionsList.ts
 │       │   │   │   ├── getSubcategories.ts
 │       │   │   │   ├── getType.ts
 │       │   │   │   ├── getValueIsOverFloorOrCeiling.ts
-│       │   │   │   ├── migrateSimulation.ts
 │       │   │   │   ├── safeEvaluateHelper.ts
 │       │   │   │   └── safeGetRuleHelper.ts
 │       │   │   ├── hooks
 │       │   │   │   ├── useCurrentSimulation
 │       │   │   │   │   └── useCurrentSimulation.ts
-│       │   │   │   ├── useDisposableEngine
-│       │   │   │   │   └── useDisposableEngine.ts
 │       │   │   │   ├── useEngine
 │       │   │   │   │   └── useEngine.ts
 │       │   │   │   ├── useFormState
@@ -2231,7 +2263,8 @@
 │       │   │   │   │   ├── hooks
 │       │   │   │   │   │   ├── useCurrent.ts
 │       │   │   │   │   │   ├── useProgression.ts
-│       │   │   │   │   │   └── useQuestions.ts
+│       │   │   │   │   │   ├── useQuestions.ts
+│       │   │   │   │   │   └── useQuestionsWithForgottenAtTheEnd.ts
 │       │   │   │   │   └── provider.tsx
 │       │   │   │   └── userProvider
 │       │   │   │       ├── __tests__
@@ -2244,16 +2277,34 @@
 │       │   ├── services
 │       │   │   ├── actions
 │       │   │   │   ├── __tests__
+│       │   │   │   │   ├── abandon-action-commitment.test.ts
+│       │   │   │   │   ├── commit-to-action.test.ts
+│       │   │   │   │   ├── get-actions-plan.test.ts
+│       │   │   │   │   ├── get-personalized-action-details.test.ts
+│       │   │   │   │   ├── get-personalized-actions-catalogue.test.ts
 │       │   │   │   │   └── themes.dto.test.ts
+│       │   │   │   ├── abandon-action-commitment.ts
+│       │   │   │   ├── cache-tags.ts
+│       │   │   │   ├── commit-to-action.ts
 │       │   │   │   ├── get-action-alternate-locales.ts
+│       │   │   │   ├── get-actions-plan.ts
 │       │   │   │   ├── get-personalized-action-details.ts
 │       │   │   │   ├── get-personalized-actions-catalogue.ts
 │       │   │   │   ├── get-public-actions-catalogue.ts
 │       │   │   │   ├── get-themes.ts
 │       │   │   │   └── themes.dto.ts
 │       │   │   ├── auth
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── create-verification-code.test.ts
+│       │   │   │   │   ├── ensure-user-session.test.ts
+│       │   │   │   │   ├── get-user-session.test.ts
+│       │   │   │   │   ├── login.test.ts
+│       │   │   │   │   └── logout.test.ts
+│       │   │   │   ├── _helpers
+│       │   │   │   │   └── revalidate-base-path-for-locales.ts
 │       │   │   │   ├── create-app-session.ts
 │       │   │   │   ├── create-verification-code.ts
+│       │   │   │   ├── ensure-user-session.ts
 │       │   │   │   ├── get-user-session.ts
 │       │   │   │   ├── login.ts
 │       │   │   │   ├── logout.ts
@@ -2293,23 +2344,23 @@
 │       │   │   │   ├── update-group-participant.ts
 │       │   │   │   └── update-group.ts
 │       │   │   ├── organisations
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── participate-to-poll.test.ts
 │       │   │   │   ├── create-organisation.ts
-│       │   │   │   ├── create-poll-simulation.ts
 │       │   │   │   ├── create-poll.ts
 │       │   │   │   ├── delete-poll.ts
 │       │   │   │   ├── download-poll-results.ts
 │       │   │   │   ├── get-organisation-poll.ts
 │       │   │   │   ├── get-organisation-polls.ts
 │       │   │   │   ├── get-organisation.ts
-│       │   │   │   ├── get-public-poll-deprecated.ts
-│       │   │   │   ├── is-organisation-admin.ts
+│       │   │   │   ├── participate-to-poll.ts
 │       │   │   │   ├── update-organisation.ts
 │       │   │   │   └── update-poll.ts
-│       │   │   ├── partners
-│       │   │   │   ├── exportSituation.ts
-│       │   │   │   └── verifyPartner.ts
 │       │   │   ├── polls
-│       │   │   │   └── get-poll.ts
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── get-poll-result.test.ts
+│       │   │   │   ├── get-poll-result.ts
+│       │   │   │   └── get-poll-summary.ts
 │       │   │   ├── simulations
 │       │   │   │   ├── __tests__
 │       │   │   │   │   ├── complete-simulation.test.ts
@@ -2326,7 +2377,6 @@
 │       │   │   │   ├── build-new-simulation-payload.ts
 │       │   │   │   ├── complete-simulation-payload.schema.ts
 │       │   │   │   ├── complete-simulation.ts
-│       │   │   │   ├── create-simulation.ts
 │       │   │   │   ├── delete-simulation.ts
 │       │   │   │   ├── ensure-simulation-model.ts
 │       │   │   │   ├── get-current-simulation.ts
@@ -2344,12 +2394,23 @@
 │       │   │   ├── tracking
 │       │   │   │   ├── GoogleTagManager.ts
 │       │   │   │   ├── Posthog.ts
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── posthogSessionProperties.test.ts
 │       │   │   │   ├── cookieStateStore.ts
 │       │   │   │   ├── iframeInformation.ts
-│       │   │   │   └── posthogServer.ts
+│       │   │   │   ├── posthogServer.ts
+│       │   │   │   └── posthogSessionProperties.ts
 │       │   │   └── users
+│       │   │       ├── __tests__
+│       │   │       │   └── erase-user-account.test.ts
+│       │   │       ├── erase-user-account.ts
 │       │   │       ├── region.ts
 │       │   │       └── update-user.ts
+│       │   ├── styles
+│       │   │   ├── globals.css
+│       │   │   └── themes
+│       │   │       ├── shadcn.css
+│       │   │       └── tailwind.css
 │       │   ├── types
 │       │   │   ├── .gitignore
 │       │   │   ├── app-env.d.ts
@@ -2372,7 +2433,6 @@
 │       │       ├── analytics
 │       │       │   ├── __tests__
 │       │       │   │   └── experimentExposure.test.ts
-│       │       │   ├── captureErrorForSentryAndPosthog.ts
 │       │       │   ├── experimentExposure.ts
 │       │       │   ├── trackEvent.ts
 │       │       │   ├── trackGTMEvent.ts
@@ -2384,6 +2444,7 @@
 │       │       ├── capitalizeString.ts
 │       │       ├── cms
 │       │       │   └── getArticleHref.ts
+│       │       ├── cn.ts
 │       │       ├── cookie.ts
 │       │       ├── debounce.ts
 │       │       ├── decodeRuleNameFromPath.ts
@@ -2393,6 +2454,7 @@
 │       │       ├── formatDataForDB.ts
 │       │       ├── getCorrectedValue.ts
 │       │       ├── getIsIframe.ts
+│       │       ├── is-locale.ts
 │       │       ├── isEmailValid.ts
 │       │       ├── nextjs
 │       │       │   ├── isServerSide.ts
@@ -2407,8 +2469,10 @@
 │       ├── tsconfig.json
 │       ├── vitest-globals.d.ts
 │       ├── vitest.config.ts
+│       ├── vitest.empty-module.ts
 │       ├── vitest.setup.ts
 │       └── worker
+│           ├── observability.ts
 │           └── worker.ts
 ├── eslint.config.js
 ├── infra
@@ -2496,6 +2560,44 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260907100000_add_matomo_stats_to_ngc_anon
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260909152757_add_action_choice
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260918111000_add_simulation_created_at_id_index
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260918113000_add_poll_participants_count
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260918120000_add_event_views_to_ngc_anon
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260923120000_tune_simulation_autovacuum
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260923121000_rewrite_event_computation_refresh
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260923122000_add_simulation_updated_at_index
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260923123000_anon_verified_user_drop_contact_columns
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260925120000_scope_verification_codes_by_usage
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260929120000_drop_verification_code_mode
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260930120000_add_verification_code_lookup_index
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261006120000_remove_integrations
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261008160000_remove_simulation_user_email_and_user_age_range
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261008170000_add_user_last_activity_at
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261015150000_add_retention_notice_timestamps
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261019130000_add_refresh_token_lineage
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261019160000_add_user_last_activity_at_index
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261021151509_add_user_deleted_at
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20261108120000_add_rule_evaluation
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
 │       │   │   ├── ngc.prisma
@@ -2505,14 +2607,13 @@
 │       │   └── seed.ts
 │       ├── prisma.config.js
 │       ├── src
-│       │   ├── exception.ts
 │       │   ├── features
 │       │   │   ├── actions
 │       │   │   │   ├── data
 │       │   │   │   │   └── themes
 │       │   │   │   │       └── index.ts
-│       │   │   │   ├── exceptions
-│       │   │   │   │   └── action-assessment.exception.ts
+│       │   │   │   ├── errors
+│       │   │   │   │   └── action-assessment.error.ts
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── action-assessment.factory.ts
 │       │   │   │   │   ├── action-translation.factory.ts
@@ -2522,28 +2623,42 @@
 │       │   │   │   │   └── theme.factory.ts
 │       │   │   │   ├── helpers
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── action-assessment.test.ts
+│       │   │   │   │   │   ├── action-plan.test.ts
 │       │   │   │   │   │   └── parse-impact-co2-script.test.ts
+│       │   │   │   │   ├── action-assessment.ts
+│       │   │   │   │   ├── action-plan.ts
 │       │   │   │   │   └── parse-impact-co2-script.ts
 │       │   │   │   ├── repositories
 │       │   │   │   │   ├── action-assessment.mapper.ts
 │       │   │   │   │   ├── action-assessments.repository.ts
+│       │   │   │   │   ├── action-choice.mapper.ts
+│       │   │   │   │   ├── action-choice.repository.ts
 │       │   │   │   │   ├── action-translation.mapper.ts
 │       │   │   │   │   ├── action.mapper.ts
 │       │   │   │   │   ├── actions.repository.ts
 │       │   │   │   │   ├── seo-metadata.mapper.ts
 │       │   │   │   │   └── themes.repository.ts
+│       │   │   │   ├── seeds
+│       │   │   │   │   └── action-assessments.seed.ts
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── abandon-action-commitment.test.ts
 │       │   │   │   │   │   ├── assess-actions.service.spec.ts
+│       │   │   │   │   │   ├── commit-to-action.service.spec.ts
 │       │   │   │   │   │   ├── get-action-alternate-locales.service.spec.ts
 │       │   │   │   │   │   ├── get-action.service.spec.ts
+│       │   │   │   │   │   ├── get-actions-plan.service.test.ts
 │       │   │   │   │   │   ├── get-personalized-action-details.service.spec.ts
-│       │   │   │   │   │   ├── get-personalized-actions-catalogue.service.spec.ts
+│       │   │   │   │   │   ├── get-personalized-actions-catalogue.service.test.ts
 │       │   │   │   │   │   ├── get-public-actions-catalogue.service.spec.ts
 │       │   │   │   │   │   └── get-themes.service.spec.ts
+│       │   │   │   │   ├── abandon-action-commitment.service.ts
 │       │   │   │   │   ├── assess-actions.service.ts
+│       │   │   │   │   ├── commit-to-action.service.ts
 │       │   │   │   │   ├── get-action-alternate-locales.service.ts
 │       │   │   │   │   ├── get-action.service.ts
+│       │   │   │   │   ├── get-actions-plan.service.ts
 │       │   │   │   │   ├── get-personalized-action-details.service.ts
 │       │   │   │   │   ├── get-personalized-actions-catalogue.service.ts
 │       │   │   │   │   ├── get-public-actions-catalogue.service.ts
@@ -2556,13 +2671,18 @@
 │       │   │   ├── auth
 │       │   │   │   ├── constants
 │       │   │   │   │   └── session.ts
-│       │   │   │   ├── exceptions
-│       │   │   │   │   ├── forbidden.exception.ts
-│       │   │   │   │   ├── session-crypto.exception.ts
-│       │   │   │   │   ├── token-consumed.exception.ts
-│       │   │   │   │   └── token-expired.exception.ts
+│       │   │   │   ├── emails
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── auth-emails.spec.ts
+│       │   │   │   │   └── auth-emails.ts
+│       │   │   │   ├── errors
+│       │   │   │   │   ├── forbidden.error.ts
+│       │   │   │   │   ├── login.error.ts
+│       │   │   │   │   ├── refresh-token.error.ts
+│       │   │   │   │   └── session-crypto.error.ts
 │       │   │   │   ├── factories
-│       │   │   │   │   └── refresh-token.factory.ts
+│       │   │   │   │   ├── refresh-token.factory.ts
+│       │   │   │   │   └── verification-code.factory.ts
 │       │   │   │   ├── helpers
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── assert-ownership.test.ts
@@ -2571,32 +2691,45 @@
 │       │   │   │   │   │   └── is-session-expired.test.ts
 │       │   │   │   │   ├── assert-ownership.ts
 │       │   │   │   │   ├── encrypt-session.ts
+│       │   │   │   │   ├── generate-refresh-token.ts
 │       │   │   │   │   ├── get-session-encryption-key.ts
 │       │   │   │   │   ├── hash-token.ts
 │       │   │   │   │   └── is-session-expired.ts
 │       │   │   │   ├── repositories
 │       │   │   │   │   ├── refresh-token.mapper.ts
-│       │   │   │   │   └── refresh-token.repository.ts
+│       │   │   │   │   ├── refresh-token.repository.ts
+│       │   │   │   │   └── verification-codes.repository.ts
+│       │   │   │   ├── schemas
+│       │   │   │   │   └── auth.schema.ts
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── claim-verification-code.service.spec.ts
 │       │   │   │   │   │   ├── cleanup-expired-tokens.service.spec.ts
 │       │   │   │   │   │   ├── create-session.service.spec.ts
+│       │   │   │   │   │   ├── create-verification-code.service.spec.ts
 │       │   │   │   │   │   ├── decrypt-session.service.spec.ts
+│       │   │   │   │   │   ├── login.service.spec.ts
 │       │   │   │   │   │   ├── migrate-legacy-sessions.service.spec.ts
-│       │   │   │   │   │   ├── revoke-all-sessions.service.spec.ts
-│       │   │   │   │   │   └── rotate-session.service.spec.ts
+│       │   │   │   │   │   ├── renew-session.service.spec.ts
+│       │   │   │   │   │   └── revoke-all-sessions.service.spec.ts
+│       │   │   │   │   ├── claim-verification-code.service.ts
 │       │   │   │   │   ├── cleanup-expired-tokens.service.ts
 │       │   │   │   │   ├── create-session.service.ts
+│       │   │   │   │   ├── create-verification-code.service.ts
 │       │   │   │   │   ├── decrypt-session.service.ts
+│       │   │   │   │   ├── login.service.ts
 │       │   │   │   │   ├── migrate-legacy-sessions.service.ts
-│       │   │   │   │   ├── revoke-all-sessions.service.ts
-│       │   │   │   │   └── rotate-session.service.ts
+│       │   │   │   │   ├── renew-session.service.ts
+│       │   │   │   │   └── revoke-all-sessions.service.ts
 │       │   │   │   └── types
 │       │   │   │       ├── refresh-token.ts
 │       │   │   │       ├── session.ts
-│       │   │   │       └── user-session.ts
+│       │   │   │       ├── user-session.ts
+│       │   │   │       └── verification-code.ts
 │       │   │   ├── emails
 │       │   │   │   ├── brevo
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── erase-contact.spec.ts
 │       │   │   │   │   ├── client.ts
 │       │   │   │   │   ├── http.ts
 │       │   │   │   │   └── types.ts
@@ -2610,10 +2743,6 @@
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── event.factory.ts
 │       │   │   │   │   └── index.ts
-│       │   │   │   ├── helpers
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── podium.spec.ts
-│       │   │   │   │   └── podium.ts
 │       │   │   │   ├── repositories
 │       │   │   │   │   ├── event.mapper.ts
 │       │   │   │   │   └── event.repository.ts
@@ -2621,11 +2750,13 @@
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── ensure-sedd-event.service.spec.ts
 │       │   │   │   │   │   └── get-event-info.service.spec.ts
+│       │   │   │   │   ├── _helpers
+│       │   │   │   │   │   └── get-event-status.ts
 │       │   │   │   │   ├── ensure-sedd-event.service.ts
 │       │   │   │   │   └── get-event-info.service.ts
 │       │   │   │   └── types
 │       │   │   │       ├── event-info.ts
-│       │   │   │       └── podium.ts
+│       │   │   │       └── status.ts
 │       │   │   ├── geo
 │       │   │   │   └── types
 │       │   │   │       └── language.ts
@@ -2638,28 +2769,79 @@
 │       │   │   │   └── types
 │       │   │   │       └── group.ts
 │       │   │   ├── logger
-│       │   │   │   └── index.ts
-│       │   │   ├── organisations
-│       │   │   │   └── factories
-│       │   │   │       └── organisation.factory.ts
-│       │   │   ├── polls
+│       │   │   │   ├── attribute-key.ts
+│       │   │   │   ├── fixture.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── with-span.ts
+│       │   │   ├── models
+│       │   │   │   ├── errors.ts
 │       │   │   │   ├── factories
-│       │   │   │   │   ├── organisation.factory.ts
-│       │   │   │   │   └── poll.factory.ts
+│       │   │   │   │   └── rule.factory.ts
+│       │   │   │   ├── helpers
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── fetch-model-file.spec.ts
+│       │   │   │   │   │   ├── get-model-file-name.spec.ts
+│       │   │   │   │   │   └── model-versions.spec.ts
+│       │   │   │   │   ├── evaluate-model-rule.ts
+│       │   │   │   │   ├── fetch-model-file.ts
+│       │   │   │   │   ├── get-model-file-name.ts
+│       │   │   │   │   ├── import-current-model.ts
+│       │   │   │   │   ├── model-rules-urls.ts
+│       │   │   │   │   ├── model-versions.ts
+│       │   │   │   │   └── public-rules.ts
 │       │   │   │   ├── repositories
-│       │   │   │   │   ├── poll.mapper.ts
-│       │   │   │   │   └── poll.repository.ts
+│       │   │   │   │   ├── rule.mapper.ts
+│       │   │   │   │   └── rules.repository.ts
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── get-poll.service.spec.ts
-│       │   │   │   │   └── get-poll.service.ts
+│       │   │   │   │   │   ├── get-model-rules.service.spec.ts
+│       │   │   │   │   │   └── resolve-public-rules.service.spec.ts
+│       │   │   │   │   ├── get-model-rules.service.ts
+│       │   │   │   │   └── resolve-public-rules.service.ts
+│       │   │   │   └── types
+│       │   │   │       ├── model-rule-evaluation.ts
+│       │   │   │       ├── model.ts
+│       │   │   │       └── rule.ts
+│       │   │   ├── organisations
+│       │   │   │   ├── factories
+│       │   │   │   │   └── organisation.factory.ts
+│       │   │   │   ├── repositories
+│       │   │   │   │   └── organisation.repository.ts
+│       │   │   │   └── services
+│       │   │   │       ├── __tests__
+│       │   │   │       │   └── is-organisation-administrator.service.spec.ts
+│       │   │   │       └── is-organisation-administrator.service.ts
+│       │   │   ├── polls
+│       │   │   │   ├── errors
+│       │   │   │   │   └── polls.error.ts
+│       │   │   │   ├── factories
+│       │   │   │   │   └── poll.factory.ts
+│       │   │   │   ├── helpers
+│       │   │   │   │   └── anonymity-policy.ts
+│       │   │   │   ├── repositories
+│       │   │   │   │   ├── poll-participation.repository.ts
+│       │   │   │   │   ├── poll.mapper.ts
+│       │   │   │   │   └── poll.repository.ts
+│       │   │   │   ├── seeds
+│       │   │   │   │   └── poll.seed.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── get-poll-participation-options.service.spec.ts
+│       │   │   │   │   │   ├── get-poll-result.service.spec.ts
+│       │   │   │   │   │   ├── get-poll-summary.service.spec.ts
+│       │   │   │   │   │   └── participate-to-poll.service.spec.ts
+│       │   │   │   │   ├── get-poll-participation-options.service.ts
+│       │   │   │   │   ├── get-poll-result.service.ts
+│       │   │   │   │   ├── get-poll-summary.service.ts
+│       │   │   │   │   └── participate-to-poll.service.ts
 │       │   │   │   ├── stats
-│       │   │   │   │   ├── exceptions
-│       │   │   │   │   │   └── poll-stats-computation.exception.ts
+│       │   │   │   │   ├── errors
+│       │   │   │   │   │   └── poll-stats-computation.error.ts
 │       │   │   │   │   ├── helpers
 │       │   │   │   │   │   ├── __tests__
 │       │   │   │   │   │   │   └── cooldown-policy.spec.ts
-│       │   │   │   │   │   └── cooldown-policy.ts
+│       │   │   │   │   │   ├── cooldown-policy.ts
+│       │   │   │   │   │   └── poll-stats-cooldown-tiers.ts
 │       │   │   │   │   ├── legacy
 │       │   │   │   │   │   ├── __tests__
 │       │   │   │   │   │   │   ├── compute-poll-stats.spec.ts
@@ -2669,32 +2851,31 @@
 │       │   │   │   │   │   └── sum-nested.ts
 │       │   │   │   │   ├── repositories
 │       │   │   │   │   │   ├── poll-stats-computations.repository.ts
+│       │   │   │   │   │   ├── poll-stats.mapper.ts
 │       │   │   │   │   │   └── poll-stats.repository.ts
-│       │   │   │   │   └── services
-│       │   │   │   │       ├── __tests__
-│       │   │   │   │       │   ├── enqueue-poll-stats-computation.spec.ts
-│       │   │   │   │       │   └── process-next-pending-poll-stats.spec.ts
-│       │   │   │   │       ├── enqueue-poll-stats-computation.ts
-│       │   │   │   │       └── process-next-pending-poll-stats.ts
+│       │   │   │   │   ├── services
+│       │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   ├── enqueue-poll-stats-computation.spec.ts
+│       │   │   │   │   │   │   └── process-next-pending-poll-stats.spec.ts
+│       │   │   │   │   │   ├── enqueue-poll-stats-computation.ts
+│       │   │   │   │   │   └── process-next-pending-poll-stats.ts
+│       │   │   │   │   └── types
+│       │   │   │   │       └── poll-stats.ts
 │       │   │   │   └── types
+│       │   │   │       ├── poll-result.ts
 │       │   │   │       └── poll.ts
 │       │   │   ├── region
 │       │   │   │   └── region.schema.ts
 │       │   │   ├── simulation-computation
 │       │   │   │   ├── errors
 │       │   │   │   │   └── simulation-computation.error.ts
-│       │   │   │   ├── exceptions
-│       │   │   │   │   └── simulation-computation.exception.ts
 │       │   │   │   ├── factories
 │       │   │   │   │   └── engine.factory.ts
 │       │   │   │   ├── model-support
 │       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   ├── is-model-supported.spec.ts
-│       │   │   │   │   │   └── resolve-version-kind.spec.ts
+│       │   │   │   │   │   └── is-model-supported.spec.ts
 │       │   │   │   │   ├── hot-key.schema.ts
-│       │   │   │   │   ├── is-model-supported.ts
-│       │   │   │   │   ├── model-versions.ts
-│       │   │   │   │   └── resolve-version-kind.ts
+│       │   │   │   │   └── is-model-supported.ts
 │       │   │   │   ├── repositories
 │       │   │   │   │   ├── simulation-computations.repository.ts
 │       │   │   │   │   ├── simulation.mapper.ts
@@ -2715,27 +2896,33 @@
 │       │   │   │   │   └── simulation-emails.ts
 │       │   │   │   ├── errors
 │       │   │   │   │   └── simulations.error.ts
-│       │   │   │   ├── exceptions
-│       │   │   │   │   └── simulations.exception.ts
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── computed-results.factory.ts
 │       │   │   │   │   └── simulation.factory.ts
 │       │   │   │   ├── helpers
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   └── migrate-simulation.test.ts
+│       │   │   │   │   ├── empty-computed-results.ts
+│       │   │   │   │   ├── get-computed-results.ts
+│       │   │   │   │   ├── get-simulation-mode.ts
+│       │   │   │   │   ├── get-somme.ts
 │       │   │   │   │   ├── migrate-simulation.ts
+│       │   │   │   │   ├── new-simulation.ts
 │       │   │   │   │   ├── simulation-guards.ts
 │       │   │   │   │   └── user-simulation-journey.ts
 │       │   │   │   ├── repository
-│       │   │   │   │   ├── __tests__
-│       │   │   │   │   │   └── model.mapper.spec.ts
-│       │   │   │   │   ├── model.mapper.ts
+│       │   │   │   │   ├── rule-evaluation.mapper.ts
+│       │   │   │   │   ├── rule-evaluations.repository.ts
 │       │   │   │   │   ├── simulation-progress.repository.ts
 │       │   │   │   │   ├── simulation.mapper.ts
 │       │   │   │   │   └── simulation.repository.ts
+│       │   │   │   ├── seeds
+│       │   │   │   │   ├── persona-computations.ts
+│       │   │   │   │   └── simulations.seed.ts
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── complete-simulation.service.spec.ts
+│       │   │   │   │   │   ├── evaluate-simulation.service.spec.ts
 │       │   │   │   │   │   ├── get-current-simulation.service.spec.ts
 │       │   │   │   │   │   ├── get-last-completed-simulation.service.spec.ts
 │       │   │   │   │   │   ├── get-latest-simulation-result.service.spec.ts
@@ -2743,9 +2930,12 @@
 │       │   │   │   │   │   ├── get-simulation-result.service.spec.ts
 │       │   │   │   │   │   ├── get-simulation.service.spec.ts
 │       │   │   │   │   │   ├── get-user-simulation-journey.service.spec.ts
+│       │   │   │   │   │   ├── import-legacy-local-simulations.service.spec.ts
 │       │   │   │   │   │   ├── list-completed-simulations.service.spec.ts
+│       │   │   │   │   │   ├── start-simulation.service.spec.ts
 │       │   │   │   │   │   └── update-simulation-situation.service.spec.ts
 │       │   │   │   │   ├── complete-simulation.service.ts
+│       │   │   │   │   ├── evaluate-simulation.service.ts
 │       │   │   │   │   ├── get-current-simulation.service.ts
 │       │   │   │   │   ├── get-last-completed-simulation.service.ts
 │       │   │   │   │   ├── get-latest-simulation-result.service.ts
@@ -2753,10 +2943,12 @@
 │       │   │   │   │   ├── get-simulation-result.service.ts
 │       │   │   │   │   ├── get-simulation.service.ts
 │       │   │   │   │   ├── get-user-simulation-journey.service.ts
+│       │   │   │   │   ├── import-legacy-local-simulations.service.ts
 │       │   │   │   │   ├── list-completed-simulations.service.ts
+│       │   │   │   │   ├── start-simulation.service.ts
 │       │   │   │   │   └── update-simulation-situation.service.ts
 │       │   │   │   ├── types
-│       │   │   │   │   ├── model.ts
+│       │   │   │   │   ├── rule-evaluation.ts
 │       │   │   │   │   ├── simulation-progress.ts
 │       │   │   │   │   └── simulation.ts
 │       │   │   │   └── validators
@@ -2767,39 +2959,75 @@
 │       │   │   │       ├── simulation.validator.ts
 │       │   │   │       └── situation.schema.ts
 │       │   │   ├── tracking
-│       │   │   │   └── schema.ts
+│       │   │   │   ├── schema.ts
+│       │   │   │   └── utm.ts
 │       │   │   └── users
+│       │   │       ├── emails
+│       │   │       │   └── retention-emails.ts
+│       │   │       ├── errors
+│       │   │       │   ├── erasure-without-final-notice.error.ts
+│       │   │       │   └── user-deleted.error.ts
 │       │   │       ├── factories
 │       │   │       │   ├── index.ts
-│       │   │       │   ├── user.factory.ts
-│       │   │       │   └── verified-user.factory.ts
+│       │   │       │   └── user.factory.ts
+│       │   │       ├── helpers
+│       │   │       │   └── retention-period.ts
 │       │   │       ├── repositories
+│       │   │       │   ├── __tests__
+│       │   │       │   │   └── create-or-update-user.spec.ts
+│       │   │       │   ├── ownership-transfer.repository.ts
+│       │   │       │   ├── retention.mapper.ts
+│       │   │       │   ├── retention.repository.ts
+│       │   │       │   ├── user.mapper.ts
 │       │   │       │   └── users.repository.ts
+│       │   │       ├── seeds
+│       │   │       │   └── users.seed.ts
 │       │   │       ├── services
 │       │   │       │   ├── __tests__
-│       │   │       │   │   └── get-user.spec.ts
-│       │   │       │   └── get-user.service.ts
+│       │   │       │   │   ├── erase-user.service.test.ts
+│       │   │       │   │   ├── get-user.spec.ts
+│       │   │       │   │   ├── reconcile-simulations-after-login.service.spec.ts
+│       │   │       │   │   ├── register-unverified-user.spec.ts
+│       │   │       │   │   ├── run-retention-sweep.spec.ts
+│       │   │       │   │   └── sync-user-data.service.spec.ts
+│       │   │       │   ├── erase-user.service.ts
+│       │   │       │   ├── get-user.service.ts
+│       │   │       │   ├── reconcile-simulations-after-login.service.ts
+│       │   │       │   ├── register-unverified-user.service.ts
+│       │   │       │   ├── run-retention-sweep.service.ts
+│       │   │       │   └── sync-user-data.service.ts
 │       │   │       └── types
-│       │   │           ├── age-range.ts
+│       │   │           ├── retention.ts
 │       │   │           └── user.ts
 │       │   ├── index.ts
 │       │   ├── lib
 │       │   │   ├── __tests__
 │       │   │   │   ├── invariant.test.ts
+│       │   │   │   ├── pii.test.ts
+│       │   │   │   ├── run-side-effect.test.ts
 │       │   │   │   └── transaction.test.ts
 │       │   │   ├── background-task-runner.ts
 │       │   │   ├── cuid.ts
+│       │   │   ├── date.ts
 │       │   │   ├── errors.ts
 │       │   │   ├── invariant.ts
 │       │   │   ├── memory.ts
+│       │   │   ├── pii.ts
 │       │   │   ├── result.ts
+│       │   │   ├── run-side-effect.ts
+│       │   │   ├── to-error.ts
 │       │   │   ├── transaction.ts
 │       │   │   └── validate-payload.ts
 │       │   ├── prisma
 │       │   │   ├── client.ts
+│       │   │   ├── pool-config.ts
 │       │   │   └── utils.ts
+│       │   ├── seeds
+│       │   │   └── seed-demo-data.service.ts
 │       │   └── test-utils
-│       │       └── db.ts
+│       │       ├── db.ts
+│       │       ├── empty-database.ts
+│       │       └── logger.ts
 │       ├── tsconfig.build.json
 │       ├── tsconfig.json
 │       ├── vitest.config.ts
@@ -2814,4 +3042,4 @@
 │       ├── generate-configs.sh
 │       └── plan.py
 └── tsconfig.json
-729 directories, 2132 files
+791 directories, 2298 files
