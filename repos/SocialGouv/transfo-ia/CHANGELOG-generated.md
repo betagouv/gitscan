@@ -1,14 +1,21 @@
-## Changelog : transfo-ia (30 derniers jours, au 06/11/2026)
+## Changelog : transfo-ia (30 derniers jours, au 17 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une forte consolidation de la stratégie IA et de ses supports de communication. L'accent a été mis sur la création de contenus décisionnels (deck CODIR), l'enrichissement de la documentation pédagogique et l'amélioration de la présentation des parcours de transformation pour les utilisateurs.
+Ce mois-ci, l'activité a été principalement concentrée sur la définition et la communication de la stratégie d'IA pour les ministères sociaux. Le projet a produit de nombreux supports stratégiques destinés à la direction (decks CODIR), des outils d'aide à la décision comme une calculatrice de budget IA, et a enrichi la documentation sur l'IA souveraine et l'acculturation des équipes.
 
 ### Évolutions fonctionnelles
-- **Nouveaux contenus stratégiques** : mise en ligne de pages dédiées au plan d'installation de l'IA, au cycle de produit augmenté par l'IA et aux exemples d'orchestration.
-- **Amélioration de l'expérience utilisateur** : refonte de l'interface (UX) de la page de stratégie IA pour une meilleure navigation et lisibilité.
-- **Actualisation des ressources** : intégration des chantiers actuels liés à LiteLLM dans la documentation stratégique.
+- **Nouveaux outils et contenus stratégiques** :
+    - Mise à disposition d'une calculatrice pour estimer le budget d'usage de l'IA par métier.
+    - Publication de scénarios sur l'IA souveraine (notamment via Mistral et Outscale).
+    - Ajout de contenus sur le cycle de vie d'un produit augmenté par l'IA et les exemples d'orchestration.
+- **Refonte de la page Stratégie IA** : Mise à jour majeure incluant les volets outillage, adoption, gestion du changement et évaluation des LLM.
+
+### Évolutions techniques
+- **Expérience Utilisateur** : Refonte de l'UX de la page de stratégie IA pour une meilleure lisibilité.
 
 ### Autres changements
-- **Enrichissement de la documentation** : ajout de nouveaux tutoriels (MCP Figma, Opencode v2) et de ressources documentaires sur LiteLLM.
-- **Finalisation des livrables** : intégration et relecture du deck stratégique destiné au CODIR.
-- **Nettoyage des supports** : retrait des mentions de prestataires externes (ESN, Ippon Technologies) dans le README, les détails du projet et les documents de mission pour recentrer la propriété du projet.
+- **Documentation et Acculturation** :
+    - Création de nouveaux tutoriels (MCP Figma, Opencode v2).
+    - Ajout de supports d'acculturation dédiés à l'IA Product.
+    - Enrichissement de la documentation technique concernant les chantiers LiteLLM.
+- **Nettoyage** : Suppression des mentions de prestataires externes (ESN, Ippon Technologies) dans le README et les pieds de page du site.
