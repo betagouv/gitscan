@@ -1,55 +1,55 @@
 {
   "url": "https://github.com/betagouv/multi-schema-postgres-etl",
   "name": "multi-schema-postgres-etl",
-  "description": "Cet outil d'ETL permet de réunir et d'anonymiser plusieurs bases de données postgres dans une même base de données sous différents schemas. Il est utilisé par RDV Service Public, RDV Insertion et Agents en Intervention.",
+  "description": "Cet outil d'ETL permet de regrouper et d'anonymiser plusieurs bases de données PostgreSQL dans une base unique sous différents schémas pour faciliter l'analyse de données via des outils de BI.",
   "language": "Ruby",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Données & Schémas",
-    "Transformation des données",
-    "Chargement des données",
-    "Gestion de schémas multiples"
+    "Sécurité & Conformité",
+    "Infrastructure & Stockage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "PostgreSQL",
     "Ruby",
-    "Bundler",
-    "Sentry"
+    "PostgreSQL",
+    "ActiveRecord",
+    "Sentry",
+    "Dotenv"
   ],
   "components": [
-    "Script ETL en Ruby",
     "PostgreSQL & SQL",
-    "Celery & Queue asynchrone",
-    "CI/CD & Déploiement"
+    "Pipeline de données",
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement",
+    "Scripts & Utilitaires",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "test_etl.rb"
-  ],
+  "tests": "Tests unitaires (test_etl.rb)",
   "workflows": [
     "build-and-push.yml",
     "ci.yml"
   ],
-  "lastActivity": "2025-11-27T08:32:47+01:00",
+  "lastActivity": "2026-11-16T23:20:30+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 1,
+    "stars": 2,
     "forks": 1,
     "contributors": 1,
-    "openIssues": 3
+    "openIssues": 2
   },
   "tags": [
-    "ETL & Pipelines de données",
+    "Données & Open Data",
     "Bases de données SQL",
-    "Ruby",
-    "Anonymisation",
-    "RDV Service Public"
+    "ETL & Pipelines de données",
+    "Git & DevOps",
+    "Docker & Conteneurs",
+    "Écosystème beta.gouv / État"
   ]
 }
