@@ -1,16 +1,17 @@
 {
   "url": "https://github.com/MTES-MCT/envergo",
   "name": "envergo",
-  "description": "Envergo est une solution destinée à améliorer la prise en compte de l'environnement dans les projets d'urbanisme. Elle permet de réaliser des simulations réglementaires et de gérer des démarches numériques liées à l'environnement.",
+  "description": "Solution visant à améliorer la prise en compte de l'environnement dans les projets d'urbanisme. Elle permet de gérer des démarches numériques et d'évaluer la conformité environnementale via des simulations.",
   "language": "Python",
   "features": [
-    "Simulation & Calcul",
+    "Gestion métier générale",
     "Formulaires & Démarches",
+    "Simulation & Calcul",
     "Visualisation de données & Cartographie",
-    "Recherche & Filtres",
     "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
-    "Données & Schémas"
+    "Sécurité & Conformité",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,26 +19,22 @@
     "PostgreSQL",
     "PostGIS",
     "GeoDjango",
-    "Docker",
-    "Playwright",
-    "Pytest",
-    "Scaleway S3",
-    "HTMX",
     "Vue.js",
     "Leaflet",
-    "DSFR"
+    "Playwright",
+    "Scaleway S3",
+    "django-ratelimit"
   ],
   "components": [
-    "Django",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "SIG & Géospatial",
+    "Django",
     "Tests",
-    "CI/CD & Déploiement",
-    "ORM & Accès aux données",
-    "HTML / CSS / Templates visuels"
+    "SIG & Géospatial",
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
@@ -47,24 +44,26 @@
   },
   "tests": [
     "pytest",
+    "pytest-django",
+    "factory_boy",
     "Playwright"
   ],
   "workflows": [
     "ci.yml",
     "s3_backup.yml"
   ],
-  "lastActivity": "2026-10-23T21:56:48+02:00",
+  "lastActivity": "2026-11-17T15:20:06+01:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
-    "SIG & Géospatial",
+    "Écosystème beta.gouv / État",
     "Python",
-    "Django & FastAPI",
-    "Docker & Conteneurs",
     "Bases de données SQL",
+    "SIG & Géospatial",
+    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Design System & UI"
+    "Design System & UI",
+    "Territoire & Collectivités"
   ]
 }
