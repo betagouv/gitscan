@@ -13,6 +13,7 @@
 │       │   └── SKILL.md
 │       └── verif
 │           └── SKILL.md
+├── .dsfr.yml
 ├── .env.example
 ├── .gitattributes
 ├── .github
@@ -20,7 +21,8 @@
 │   └── workflows
 │       ├── api-monitoring.yml
 │       ├── ci.yml
-│       └── partenaires-prefetch.yml
+│       ├── partenaires-prefetch.yml
+│       └── zones-contrainte-enr-rappel.yml
 ├── .gitignore
 ├── .node-version
 ├── .npmrc
@@ -43,6 +45,25 @@
 │   │   │   ├── app.controller.spec.ts
 │   │   │   ├── app.controller.ts
 │   │   │   ├── app.module.ts
+│   │   │   ├── attributaire
+│   │   │   │   ├── attributaire-core.module.ts
+│   │   │   │   ├── attributaire.builder.spec.ts
+│   │   │   │   ├── attributaire.builder.ts
+│   │   │   │   ├── attributaire.controller.spec.ts
+│   │   │   │   ├── attributaire.controller.ts
+│   │   │   │   ├── attributaire.module.ts
+│   │   │   │   ├── attributaire.serializer.spec.ts
+│   │   │   │   ├── attributaire.serializer.ts
+│   │   │   │   ├── attributaire.service.spec.ts
+│   │   │   │   ├── attributaire.service.ts
+│   │   │   │   ├── attributaire.utils.spec.ts
+│   │   │   │   ├── attributaire.utils.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   └── output
+│   │   │   │   │       └── table-attributaire.dto.ts
+│   │   │   │   └── repositories
+│   │   │   │       ├── attributaire.repository.ts
+│   │   │   │       └── sources-attributaire.repository.ts
 │   │   │   ├── cartofriches
 │   │   │   │   ├── cartofriches.adapter.ts
 │   │   │   │   ├── cartofriches.constants.ts
@@ -66,8 +87,10 @@
 │   │   │   │   ├── api-monitoring.service.spec.ts
 │   │   │   │   ├── api-monitoring.service.ts
 │   │   │   │   ├── api-refresh-token.guard.ts
+│   │   │   │   ├── docs-enrichissement.spec.ts
 │   │   │   │   ├── donnees-externes.controller.ts
 │   │   │   │   ├── donnees-externes.module.ts
+│   │   │   │   ├── imports.registry.spec.ts
 │   │   │   │   ├── imports.registry.ts
 │   │   │   │   ├── imports.service.spec.ts
 │   │   │   │   └── imports.service.ts
@@ -84,17 +107,18 @@
 │   │   │   │   │   │       ├── api-carto-nature.service.ts
 │   │   │   │   │   │       └── api-carto-nature.types.ts
 │   │   │   │   │   ├── bdnb
+│   │   │   │   │   │   ├── bdnb-limiteur.spec.ts
+│   │   │   │   │   │   ├── bdnb-limiteur.ts
+│   │   │   │   │   │   ├── bdnb.service.spec.ts
 │   │   │   │   │   │   ├── bdnb.service.ts
 │   │   │   │   │   │   └── bdnb.types.ts
 │   │   │   │   │   ├── cadastre
 │   │   │   │   │   │   ├── cadastre.service.ts
 │   │   │   │   │   │   └── cadastre.types.ts
-│   │   │   │   │   ├── datagouv-zonage-abc
-│   │   │   │   │   │   ├── datagouv-zonage-abc.service.ts
-│   │   │   │   │   │   └── datagouv-zonage-abc.types.ts
 │   │   │   │   │   ├── enedis
 │   │   │   │   │   │   ├── enedis.api.types.ts
 │   │   │   │   │   │   ├── enedis.constants.ts
+│   │   │   │   │   │   ├── enedis.service.spec.ts
 │   │   │   │   │   │   ├── enedis.service.ts
 │   │   │   │   │   │   └── enedis.types.ts
 │   │   │   │   │   ├── georisques
@@ -139,6 +163,10 @@
 │   │   │   │   │   │   └── zonage-sismique
 │   │   │   │   │   │       ├── zonage-sismique.service.ts
 │   │   │   │   │   │       └── zonage-sismique.types.ts
+│   │   │   │   │   ├── ign-itineraire
+│   │   │   │   │   │   ├── ign-itineraire.service.spec.ts
+│   │   │   │   │   │   ├── ign-itineraire.service.ts
+│   │   │   │   │   │   └── ign-itineraire.types.ts
 │   │   │   │   │   ├── ign-wfs
 │   │   │   │   │   │   ├── ign-wfs.service.spec.ts
 │   │   │   │   │   │   ├── ign-wfs.service.ts
@@ -150,6 +178,7 @@
 │   │   │   │   │   │   ├── api-response.types.ts
 │   │   │   │   │   │   └── distance.utils.ts
 │   │   │   │   │   └── zaer-wfs
+│   │   │   │   │       ├── zaer-wfs.service.spec.ts
 │   │   │   │   │       ├── zaer-wfs.service.ts
 │   │   │   │   │       └── zaer-wfs.types.ts
 │   │   │   │   ├── constants
@@ -157,6 +186,7 @@
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── input
 │   │   │   │   │   │   ├── enrichir-parcelle.dto.ts
+│   │   │   │   │   │   ├── enrichir-site.dto.spec.ts
 │   │   │   │   │   │   └── enrichir-site.dto.ts
 │   │   │   │   │   └── output
 │   │   │   │   │       └── enrichissement.dto.ts
@@ -164,25 +194,46 @@
 │   │   │   │   ├── enrichissement.controller.ts
 │   │   │   │   ├── enrichissement.module.ts
 │   │   │   │   ├── entities
+│   │   │   │   │   ├── site.entity.spec.ts
 │   │   │   │   │   └── site.entity.ts
 │   │   │   │   ├── repositories
 │   │   │   │   │   ├── ademe-sites-pollues.repository.ts
+│   │   │   │   │   ├── bdnb-cache.repository.spec.ts
+│   │   │   │   │   ├── bdnb-cache.repository.ts
 │   │   │   │   │   ├── bpe.repository.ts
 │   │   │   │   │   ├── enrichissement.repository.ts
+│   │   │   │   │   ├── icu.repository.ts
 │   │   │   │   │   ├── ite-fret.repository.ts
 │   │   │   │   │   ├── lovac.repository.spec.ts
 │   │   │   │   │   ├── lovac.repository.ts
+│   │   │   │   │   ├── qpv.repository.spec.ts
+│   │   │   │   │   ├── qpv.repository.ts
+│   │   │   │   │   ├── reseaux-chaleur.repository.ts
 │   │   │   │   │   ├── site.repository.ts
-│   │   │   │   │   └── transport-stops.repository.ts
+│   │   │   │   │   ├── transport-stops.repository.ts
+│   │   │   │   │   ├── zae.repository.spec.ts
+│   │   │   │   │   ├── zae.repository.ts
+│   │   │   │   │   ├── zonage-abc.repository.spec.ts
+│   │   │   │   │   ├── zonage-abc.repository.ts
+│   │   │   │   │   ├── zones-contrainte-enr.repository.spec.ts
+│   │   │   │   │   └── zones-contrainte-enr.repository.ts
 │   │   │   │   └── services
 │   │   │   │       ├── cadastre
 │   │   │   │       │   ├── cadastre-enrichissement.service.spec.ts
 │   │   │   │       │   ├── cadastre-enrichissement.service.ts
-│   │   │   │       │   └── cadastre-enrichissement.types.ts
+│   │   │   │       │   ├── cadastre-enrichissement.types.ts
+│   │   │   │       │   ├── surface-batie.service.spec.ts
+│   │   │   │       │   └── surface-batie.service.ts
+│   │   │   │       ├── climat
+│   │   │   │       │   ├── icu-enrichissement.service.spec.ts
+│   │   │   │       │   └── icu-enrichissement.service.ts
 │   │   │   │       ├── energie
 │   │   │   │       │   ├── energie-enrichissement.service.spec.ts
-│   │   │   │       │   └── energie-enrichissement.service.ts
+│   │   │   │       │   ├── energie-enrichissement.service.ts
+│   │   │   │       │   ├── reseau-chaleur-enrichissement.service.spec.ts
+│   │   │   │       │   └── reseau-chaleur-enrichissement.service.ts
 │   │   │   │       ├── enr
+│   │   │   │       │   ├── enr-enrichissement.service.spec.ts
 │   │   │   │       │   ├── enr-enrichissement.service.ts
 │   │   │   │       │   ├── enr.calculator.spec.ts
 │   │   │   │       │   └── enr.calculator.ts
@@ -197,6 +248,12 @@
 │   │   │   │       ├── pollution
 │   │   │   │       │   ├── pollution-detection.service.spec.ts
 │   │   │   │       │   └── pollution-detection.service.ts
+│   │   │   │       ├── qpv
+│   │   │   │       │   ├── qpv-enrichissement.service.spec.ts
+│   │   │   │       │   └── qpv-enrichissement.service.ts
+│   │   │   │       ├── reseau-electrique-enr
+│   │   │   │       │   ├── saturation-reseau-enr-enrichissement.service.spec.ts
+│   │   │   │       │   └── saturation-reseau-enr-enrichissement.service.ts
 │   │   │   │       ├── risques-naturels
 │   │   │   │       │   ├── risques-naturels-enrichissement.service.spec.ts
 │   │   │   │       │   ├── risques-naturels-enrichissement.service.ts
@@ -217,6 +274,10 @@
 │   │   │   │       ├── site
 │   │   │   │       │   └── site-geometry.service.ts
 │   │   │   │       ├── transport
+│   │   │   │       │   ├── acces-autoroutier.calculator.spec.ts
+│   │   │   │       │   ├── acces-autoroutier.calculator.ts
+│   │   │   │       │   ├── acces-autoroutier.service.spec.ts
+│   │   │   │       │   ├── acces-autoroutier.service.ts
 │   │   │   │       │   ├── ite-fret-enrichissement.service.spec.ts
 │   │   │   │       │   ├── ite-fret-enrichissement.service.ts
 │   │   │   │       │   ├── transport-enrichissement.calculator.ts
@@ -228,6 +289,9 @@
 │   │   │   │       │   ├── lovac.calculator.ts
 │   │   │   │       │   ├── urbanisme-enrichissement.service.spec.ts
 │   │   │   │       │   └── urbanisme-enrichissement.service.ts
+│   │   │   │       ├── zae
+│   │   │   │       │   ├── zae-enrichissement.service.spec.ts
+│   │   │   │       │   └── zae-enrichissement.service.ts
 │   │   │   │       └── zonage
 │   │   │   │           ├── index.ts
 │   │   │   │           ├── zonage-environnemental
@@ -253,19 +317,24 @@
 │   │   │   │               └── zonage-reglementaire.types.ts
 │   │   │   ├── evaluation
 │   │   │   │   ├── __test-helpers__
+│   │   │   │   │   ├── calculer-mutabilite.fixtures.ts
 │   │   │   │   │   ├── evaluation.builder.ts
 │   │   │   │   │   └── evaluation.mocks.ts
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── input
 │   │   │   │   │   │   ├── calculer-mutabilite.dto.ts
+│   │   │   │   │   │   ├── calculer-mutabilite.examples.spec.ts
 │   │   │   │   │   │   ├── calculer-mutabilite.examples.ts
 │   │   │   │   │   │   └── donnees-complementaires.dto.ts
 │   │   │   │   │   └── output
 │   │   │   │   │       ├── evaluation.dto.ts
 │   │   │   │   │       ├── metadata.dto.ts
+│   │   │   │   │       ├── metadata.enums.spec.ts
+│   │   │   │   │       ├── metadata.enums.ts
 │   │   │   │   │       └── mutabilite.dto.ts
 │   │   │   │   ├── entities
 │   │   │   │   │   ├── evaluation.entity.ts
+│   │   │   │   │   ├── site.entity.spec.ts
 │   │   │   │   │   └── site.entity.ts
 │   │   │   │   ├── evaluation.controller.spec.ts
 │   │   │   │   ├── evaluation.controller.ts
@@ -280,13 +349,24 @@
 │   │   │   │   │   │   ├── algorithme.types.ts
 │   │   │   │   │   │   ├── criteres-metadata.guard.spec.ts
 │   │   │   │   │   │   ├── distance.utils.ts
+│   │   │   │   │   │   ├── evaluation-mutabilite.doc.spec.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.spec.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.ts
+│   │   │   │   │   │   ├── matrice-scoring.doc.spec.ts
+│   │   │   │   │   │   ├── matrice-scoring.doc.ts
 │   │   │   │   │   │   └── versions
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       ├── v1.1.ts
 │   │   │   │   │   │       ├── v1.10.ts
 │   │   │   │   │   │       ├── v1.11.ts
+│   │   │   │   │   │       ├── v1.12.ts
+│   │   │   │   │   │       ├── v1.13.ts
+│   │   │   │   │   │       ├── v1.14.ts
+│   │   │   │   │   │       ├── v1.15.ts
+│   │   │   │   │   │       ├── v1.16.ts
+│   │   │   │   │   │       ├── v1.17.ts
+│   │   │   │   │   │       ├── v1.18.ts
+│   │   │   │   │   │       ├── v1.19.ts
 │   │   │   │   │   │       ├── v1.2.ts
 │   │   │   │   │   │       ├── v1.3.ts
 │   │   │   │   │   │       ├── v1.4.ts
@@ -298,9 +378,16 @@
 │   │   │   │   │   │       └── versions.spec.ts
 │   │   │   │   │   ├── calcul.service.spec.ts
 │   │   │   │   │   ├── calcul.service.ts
+│   │   │   │   │   ├── criteres-excluants.spec.ts
 │   │   │   │   │   ├── distance-unite.spec.ts
+│   │   │   │   │   ├── locaux-activite-scoring.spec.ts
 │   │   │   │   │   ├── orchestrateur.service.spec.ts
-│   │   │   │   │   └── orchestrateur.service.ts
+│   │   │   │   │   ├── orchestrateur.service.ts
+│   │   │   │   │   ├── qpv-scoring.spec.ts
+│   │   │   │   │   ├── raccordement-electrique-scoring.spec.ts
+│   │   │   │   │   ├── reseau-chaleur-scoring.spec.ts
+│   │   │   │   │   ├── saturation-reseau-enr-scoring.spec.ts
+│   │   │   │   │   └── zae-scoring.spec.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── cache-validator.spec.ts
 │   │   │   │       ├── cache-validator.ts
@@ -326,6 +413,7 @@
 │   │   │   │       └── evenement.service.ts
 │   │   │   ├── main.ts
 │   │   │   ├── metabase
+│   │   │   │   ├── metabase.controller.spec.ts
 │   │   │   │   ├── metabase.controller.ts
 │   │   │   │   ├── metabase.module.ts
 │   │   │   │   ├── metabase.service.spec.ts
@@ -335,43 +423,95 @@
 │   │   │   │   ├── dto
 │   │   │   │   │   └── input
 │   │   │   │   │       ├── ajouter-site.dto.ts
+│   │   │   │   │       ├── export-cnig.dto.ts
 │   │   │   │   │       └── renommer-site.dto.ts
+│   │   │   │   ├── export
+│   │   │   │   │   ├── cnig-export.service.spec.ts
+│   │   │   │   │   ├── cnig-export.service.ts
+│   │   │   │   │   ├── cnig-serializer.spec.ts
+│   │   │   │   │   └── cnig-serializer.ts
 │   │   │   │   ├── partenaires.controller.ts
 │   │   │   │   ├── partenaires.module.ts
 │   │   │   │   ├── partenaires.service.ts
 │   │   │   │   └── repositories
 │   │   │   │       └── partenaire.repository.ts
 │   │   │   ├── scripts
-│   │   │   │   ├── backfill-canal-partenaire.ts
+│   │   │   │   ├── attributaire
+│   │   │   │   │   ├── peupler-attributaire.core.spec.ts
+│   │   │   │   │   └── peupler-attributaire.core.ts
+│   │   │   │   ├── cadastre-successeurs
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── aura.rapport.json
+│   │   │   │   │   │   ├── cci-92.rapport.json
+│   │   │   │   │   │   ├── ccpeidf.rapport.json
+│   │   │   │   │   │   ├── ddt-vosges.rapport.json
+│   │   │   │   │   │   ├── petr-sologne.rapport.json
+│   │   │   │   │   │   └── scet.rapport.json
+│   │   │   │   │   ├── etalab-cadastre.client.ts
+│   │   │   │   │   ├── successeurs.spec.ts
+│   │   │   │   │   └── successeurs.ts
 │   │   │   │   ├── coord-to-idu
 │   │   │   │   │   ├── apicarto.client.ts
+│   │   │   │   │   ├── commune-insee.client.ts
 │   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── ccpeidf.input.json
+│   │   │   │   │   │   ├── ccpeidf.resolved.json
+│   │   │   │   │   │   ├── petr-sologne.input.json
+│   │   │   │   │   │   ├── petr-sologne.resolved.json
 │   │   │   │   │   │   ├── scet.input.json
 │   │   │   │   │   │   └── scet.resolved.json
 │   │   │   │   │   ├── lambert.spec.ts
 │   │   │   │   │   ├── lambert.ts
+│   │   │   │   │   ├── partenaires.config.ts
 │   │   │   │   │   └── resolve.ts
 │   │   │   │   ├── data
 │   │   │   │   │   ├── base-ite-3000.geojson
 │   │   │   │   │   ├── donnees-ademe-sites-pollues.geojson
-│   │   │   │   │   └── donnees-bpe-2024-filtered.csv
+│   │   │   │   │   ├── donnees-bpe-2024-filtered.csv
+│   │   │   │   │   ├── indicateurs-icu.geojson
+│   │   │   │   │   ├── qpv-2024.geojson
+│   │   │   │   │   ├── zae-fusac.geojson.gz
+│   │   │   │   │   └── zones-contrainte-enr.geojson.gz
 │   │   │   │   ├── filter-bpe.ts
+│   │   │   │   ├── generate-matrice-doc.ts
 │   │   │   │   ├── import-ademe-sites.ts
+│   │   │   │   ├── import-all
+│   │   │   │   │   ├── import-all.core.spec.ts
+│   │   │   │   │   └── import-all.core.ts
+│   │   │   │   ├── import-all.ts
 │   │   │   │   ├── import-bpe.ts
 │   │   │   │   ├── import-epci-communes.ts
+│   │   │   │   ├── import-icu.ts
 │   │   │   │   ├── import-ite-fret.ts
 │   │   │   │   ├── import-lovac.ts
+│   │   │   │   ├── import-qpv.ts
+│   │   │   │   ├── import-reseaux-chaleur.ts
 │   │   │   │   ├── import-transport-stops.ts
+│   │   │   │   ├── import-zae.ts
+│   │   │   │   ├── import-zonage-abc.ts
+│   │   │   │   ├── import-zones-contrainte-enr.ts
 │   │   │   │   ├── partenaires
 │   │   │   │   │   ├── aura.ts
 │   │   │   │   │   ├── cci92.ts
+│   │   │   │   │   ├── ccpeidf.ts
 │   │   │   │   │   ├── ddt-vosges.ts
+│   │   │   │   │   ├── petr-sologne.ts
 │   │   │   │   │   ├── registry.ts
 │   │   │   │   │   ├── scet.ts
 │   │   │   │   │   └── types.ts
+│   │   │   │   ├── peupler-attributaire.ts
 │   │   │   │   ├── prefetch-partenaires.ts
-│   │   │   │   ├── resolve-idu-scet.ts
-│   │   │   │   └── seed-partenaires.ts
+│   │   │   │   ├── preparer-zae.ts
+│   │   │   │   ├── preparer-zones-contrainte-enr.ts
+│   │   │   │   ├── reconcilier-cadastre-partenaire.ts
+│   │   │   │   ├── resolve-idu-partenaire.ts
+│   │   │   │   ├── seed-partenaires.ts
+│   │   │   │   ├── zae
+│   │   │   │   │   ├── zae.format.spec.ts
+│   │   │   │   │   └── zae.format.ts
+│   │   │   │   └── zones-contrainte-enr
+│   │   │   │       ├── zones-contrainte-enr.format.spec.ts
+│   │   │   │       └── zones-contrainte-enr.format.ts
 │   │   │   ├── shared
 │   │   │   │   ├── __test-helpers__
 │   │   │   │   │   ├── common.mocks.ts
@@ -411,6 +551,17 @@
 │   │   │   │   │   │   ├── 0027_partage_page_partenaire.sql
 │   │   │   │   │   │   ├── 0028_partenaires_et_sites.sql
 │   │   │   │   │   │   ├── 0029_famous_blur.sql
+│   │   │   │   │   │   ├── 0030_raw_zonage_abc.sql
+│   │   │   │   │   │   ├── 0031_raw_icu.sql
+│   │   │   │   │   │   ├── 0032_raw_reseaux_chaleur.sql
+│   │   │   │   │   │   ├── 0033_raw_qpv.sql
+│   │   │   │   │   │   ├── 0034_export_sites_partenaire.sql
+│   │   │   │   │   │   ├── 0035_partenaires_parcelles_renumerotees.sql
+│   │   │   │   │   │   ├── 0036_raw_zones_contrainte_enr.sql
+│   │   │   │   │   │   ├── 0037_reclasse_appels_api_directe.sql
+│   │   │   │   │   │   ├── 0038_raw_zae.sql
+│   │   │   │   │   │   ├── 0039_cache_bdnb_parcelles.sql
+│   │   │   │   │   │   ├── 0040_attributaire_sites.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -437,10 +588,23 @@
 │   │   │   │   │   │       ├── 0027_snapshot.json
 │   │   │   │   │   │       ├── 0028_snapshot.json
 │   │   │   │   │   │       ├── 0029_snapshot.json
+│   │   │   │   │   │       ├── 0030_snapshot.json
+│   │   │   │   │   │       ├── 0031_snapshot.json
+│   │   │   │   │   │       ├── 0032_snapshot.json
+│   │   │   │   │   │       ├── 0033_snapshot.json
+│   │   │   │   │   │       ├── 0034_snapshot.json
+│   │   │   │   │   │       ├── 0035_snapshot.json
+│   │   │   │   │   │       ├── 0036_snapshot.json
+│   │   │   │   │   │       ├── 0037_snapshot.json
+│   │   │   │   │   │       ├── 0038_snapshot.json
+│   │   │   │   │   │       ├── 0039_snapshot.json
+│   │   │   │   │   │       ├── 0040_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
 │   │   │   │   │       ├── api-health-snapshots.schema.ts
+│   │   │   │   │       ├── attributaire-sites.schema.ts
+│   │   │   │   │       ├── cache-bdnb-parcelles.schema.ts
 │   │   │   │   │       ├── communes.schema.ts
 │   │   │   │   │       ├── enrichissements.schema.ts
 │   │   │   │   │       ├── epci.schema.ts
@@ -450,10 +614,16 @@
 │   │   │   │   │       ├── partenaires.schema.ts
 │   │   │   │   │       ├── raw-ademe-sites-pollues.schema.ts
 │   │   │   │   │       ├── raw-bpe.schema.ts
+│   │   │   │   │       ├── raw-icu.schema.ts
 │   │   │   │   │       ├── raw-imports-log.schema.ts
 │   │   │   │   │       ├── raw-ite-fret.schema.ts
 │   │   │   │   │       ├── raw-lovac.schema.ts
+│   │   │   │   │       ├── raw-qpv.schema.ts
+│   │   │   │   │       ├── raw-reseaux-chaleur.schema.ts
 │   │   │   │   │       ├── raw-transport-stops.schema.ts
+│   │   │   │   │       ├── raw-zae.schema.ts
+│   │   │   │   │       ├── raw-zonage-abc.schema.ts
+│   │   │   │   │       ├── raw-zones-contrainte-enr.schema.ts
 │   │   │   │   │       └── sites.schema.ts
 │   │   │   │   ├── guards
 │   │   │   │   │   ├── index.ts
@@ -461,6 +631,11 @@
 │   │   │   │   │   └── integrateur-origin.guard.ts
 │   │   │   │   ├── logger
 │   │   │   │   │   └── safe-console-logger.ts
+│   │   │   │   ├── pipes
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── parse-optional-boolean.pipe.ts
+│   │   │   │   │   ├── parse-slug.pipe.spec.ts
+│   │   │   │   │   └── parse-slug.pipe.ts
 │   │   │   │   ├── services
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── origine-detection.service.spec.ts
@@ -478,8 +653,15 @@
 │   │   │   │   ├── types
 │   │   │   │   │   └── common.types.ts
 │   │   │   │   ├── utils
+│   │   │   │   │   ├── environment.utils.spec.ts
 │   │   │   │   │   ├── environment.utils.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── lots.utils.spec.ts
+│   │   │   │   │   ├── lots.utils.ts
+│   │   │   │   │   ├── origine.utils.spec.ts
+│   │   │   │   │   ├── origine.utils.ts
+│   │   │   │   │   ├── origines-autorisees.spec.ts
+│   │   │   │   │   ├── origines-autorisees.ts
 │   │   │   │   │   ├── safe-error.spec.ts
 │   │   │   │   │   ├── safe-error.ts
 │   │   │   │   │   └── version.utils.ts
@@ -526,22 +708,22 @@
 │       │   │   │   ├── usage-banner.png
 │       │   │   │   ├── usage-ellipses.png
 │       │   │   │   └── usages
-│       │   │   │       ├── usage-bureaux.png
 │       │   │   │       ├── usage-habitat.png
 │       │   │   │       ├── usage-industrie.png
+│       │   │   │       ├── usage-locaux-activite.png
 │       │   │   │       ├── usage-photovoltaique.png
 │       │   │   │       ├── usage-public.png
 │       │   │   │       ├── usage-renature.png
 │       │   │   │       └── usages-culturel.png
 │       │   │   ├── moon.svg
 │       │   │   ├── podium
-│       │   │   │   ├── bureaux.png
 │       │   │   │   ├── centrale-photovoltaique.png
 │       │   │   │   ├── equipement-culturel.png
 │       │   │   │   ├── equipement-public.png
 │       │   │   │   ├── espace-renature.png
 │       │   │   │   ├── habitats.png
-│       │   │   │   └── industrie.png
+│       │   │   │   ├── industrie.png
+│       │   │   │   └── locaux-activite.png
 │       │   │   ├── search.svg
 │       │   │   ├── sun.svg
 │       │   │   ├── system.svg
@@ -644,16 +826,22 @@
 │       │   │   ├── partenaires
 │       │   │   │   ├── README.md
 │       │   │   │   ├── core
+│       │   │   │   │   ├── calcul-obsolete.spec.ts
+│       │   │   │   │   ├── calcul-obsolete.ts
 │       │   │   │   │   ├── components
 │       │   │   │   │   │   ├── AddSiteModal.tsx
 │       │   │   │   │   │   ├── DonneesExternesLink.tsx
 │       │   │   │   │   │   ├── DonneesForm.tsx
+│       │   │   │   │   │   ├── ExportSitesModal.tsx
 │       │   │   │   │   │   ├── PartagerButton.tsx
 │       │   │   │   │   │   ├── RenameSiteModal.tsx
 │       │   │   │   │   │   ├── SiteDetail.tsx
 │       │   │   │   │   │   ├── SiteList.tsx
 │       │   │   │   │   │   └── SiteMap.tsx
 │       │   │   │   │   ├── download-json.ts
+│       │   │   │   │   ├── export
+│       │   │   │   │   │   ├── buildExportPayload.spec.ts
+│       │   │   │   │   │   └── buildExportPayload.ts
 │       │   │   │   │   ├── group.ts
 │       │   │   │   │   ├── hooks
 │       │   │   │   │   │   ├── usePartenaireSites.ts
@@ -661,6 +849,8 @@
 │       │   │   │   │   ├── pages
 │       │   │   │   │   │   ├── MultisitePage.tsx
 │       │   │   │   │   │   └── PartenairesPage.tsx
+│       │   │   │   │   ├── parcelles-introuvables.spec.ts
+│       │   │   │   │   ├── parcelles-introuvables.ts
 │       │   │   │   │   ├── partenaires.css
 │       │   │   │   │   └── types.ts
 │       │   │   │   ├── partners
@@ -670,7 +860,13 @@
 │       │   │   │   │   ├── cci92
 │       │   │   │   │   │   ├── index.ts
 │       │   │   │   │   │   └── parcelles.ts
+│       │   │   │   │   ├── ccpeidf
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── parcelles.ts
 │       │   │   │   │   ├── ddt-vosges
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── parcelles.ts
+│       │   │   │   │   ├── petr-sologne
 │       │   │   │   │   │   ├── index.ts
 │       │   │   │   │   │   └── parcelles.ts
 │       │   │   │   │   └── scet
@@ -681,11 +877,14 @@
 │       │   │   │   ├── components
 │       │   │   │   │   ├── EnrichedInfoField.tsx
 │       │   │   │   │   ├── FormSelectField.tsx
+│       │   │   │   │   ├── IlotChaleurField.tsx
 │       │   │   │   │   ├── PollutionField.tsx
 │       │   │   │   │   ├── RaccordementEauField.tsx
 │       │   │   │   │   ├── StepNavigation.tsx
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── config
+│       │   │   │   │   ├── bati.coherence.spec.ts
+│       │   │   │   │   ├── bati.coherence.ts
 │       │   │   │   │   ├── fields
 │       │   │   │   │   │   ├── environnement.fields.ts
 │       │   │   │   │   │   ├── risques.fields.ts
@@ -723,12 +922,17 @@
 │       │   │   │       │   ├── config.ts
 │       │   │   │       │   ├── constants.ts
 │       │   │   │       │   ├── index.ts
+│       │   │   │       │   ├── labels.spec.ts
 │       │   │   │       │   ├── labels.ts
 │       │   │   │       │   ├── resolver.ts
 │       │   │   │       │   └── types.ts
 │       │   │   │       ├── dynamicTags.spec.ts
+│       │   │   │       ├── iframeSummary.mapper.spec.ts
+│       │   │   │       ├── iframeSummary.mapper.ts
+│       │   │   │       ├── mutability.mapper.spec.ts
 │       │   │   │       ├── mutability.mapper.ts
 │       │   │   │       ├── podiumTags.ts
+│       │   │   │       ├── usagesLabels.utils.spec.ts
 │       │   │   │       └── usagesLabels.utils.ts
 │       │   │   ├── statistiques
 │       │   │   │   └── pages
@@ -811,23 +1015,32 @@
 │       │   │   │   │   ├── Stepper.tsx
 │       │   │   │   │   ├── ThemeModal.tsx
 │       │   │   │   │   └── index.ts
-│       │   │   │   └── recap
-│       │   │   │       ├── RecapBadges.tsx
-│       │   │   │       ├── RecapTable.css
-│       │   │   │       ├── UsageDetailTable.tsx
-│       │   │   │       ├── UsageRatioBar.tsx
-│       │   │   │       └── index.ts
+│       │   │   │   ├── recap
+│       │   │   │   │   ├── RecapBadges.tsx
+│       │   │   │   │   ├── RecapTable.css
+│       │   │   │   │   ├── UsageDetailTable.spec.ts
+│       │   │   │   │   ├── UsageDetailTable.tsx
+│       │   │   │   │   ├── UsageRatioBar.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── tag
+│       │   │   │       ├── DonneeIndisponibleTag.tsx
+│       │   │   │       ├── Tag.tsx
+│       │   │   │       ├── index.ts
+│       │   │   │       └── tag.tokens.ts
 │       │   │   ├── config
 │       │   │   │   ├── feature-flags.config.ts
 │       │   │   │   ├── map-layers.config.ts
 │       │   │   │   ├── routes.config.ts
 │       │   │   │   ├── storage-keys.config.ts
 │       │   │   │   ├── version.config.ts
+│       │   │   │   ├── zcal.config.spec.ts
 │       │   │   │   └── zcal.config.ts
 │       │   │   ├── form
 │       │   │   │   ├── FormContext.ts
 │       │   │   │   ├── FormContext.types.ts
 │       │   │   │   ├── FormProvider.tsx
+│       │   │   │   ├── tracking.utils.spec.ts
+│       │   │   │   ├── tracking.utils.ts
 │       │   │   │   └── useFormContext.ts
 │       │   │   ├── hooks
 │       │   │   │   ├── useEventTracking.ts
@@ -844,6 +1057,18 @@
 │       │   │   │   ├── iframeCommunication.ts
 │       │   │   │   ├── iframeDetection.ts
 │       │   │   │   └── useIframe.ts
+│       │   │   ├── pdf
+│       │   │   │   ├── PdfBlocMarque.tsx
+│       │   │   │   ├── PdfCadre.tsx
+│       │   │   │   ├── PdfTableau.tsx
+│       │   │   │   ├── blocMarque.traces.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── pdfPolices.ts
+│       │   │   │   ├── pdfTheme.ts
+│       │   │   │   └── polices
+│       │   │   │       ├── Marianne-Bold.ttf
+│       │   │   │       ├── Marianne-Medium.ttf
+│       │   │   │       └── Marianne-Regular.ttf
 │       │   │   ├── services
 │       │   │   │   ├── api
 │       │   │   │   │   ├── api.cartofriches.service.ts
@@ -886,6 +1111,8 @@
 │       └── vitest.config.ts
 ├── docs
 │   ├── README.md
+│   ├── SUJETS-A-TRAITER.md
+│   ├── acces-api-integrateur.md
 │   ├── adr
 │   │   ├── 0000-template.md
 │   │   ├── 0001-nestjs-drizzle-orm.md
@@ -920,11 +1147,37 @@
 │   │   ├── 0028-filtrage-serveur-wfs-voies-grande-circulation.md
 │   │   ├── 0028-tag-version-algorithme-reflete-version-utilisee.md
 │   │   ├── 0029-resolution-idu-coordonnees-onboarding-partenaire.md
-│   │   └── 0030-canal-page-partenaire-integrateur-tague.md
+│   │   ├── 0030-canal-page-partenaire-integrateur-tague.md
+│   │   ├── 0031-cycle-de-vie-embed-zcal-maitrise.md
+│   │   ├── 0032-zonage-abc-referentiel-local.md
+│   │   ├── 0033-contrat-erreur-donnees-complementaires.md
+│   │   ├── 0034-ilot-chaleur-urbain-donnee-informative.md
+│   │   ├── 0035-zone-exclusion-enr-quatrieme-valeur-zaer.md
+│   │   ├── 0036-distance-reseau-chaleur-appel-live.md
+│   │   ├── 0037-icu-couverture-commune-tolerance-bord.md
+│   │   ├── 0037-reseaux-chaleur-referentiel-local.md
+│   │   ├── 0038-wfs-zaer-en-post.md
+│   │   ├── 0039-qpv-referentiel-local-centroide.md
+│   │   ├── 0040-dsfr-115-acceptation-cgu.md
+│   │   ├── 0041-marquage-prefetch-analytics.md
+│   │   ├── 0042-export-cnig-sites-partenaires.md
+│   │   ├── 0043-normalisation-origines-whitelistees.md
+│   │   ├── 0044-reconciliation-parcelles-partenaires-cadastre.md
+│   │   ├── 0045-mutabilite-partenaire-donnees-perimees.md
+│   │   ├── 0046-zones-contrainte-enr-fichier-commite.md
+│   │   ├── 0047-distance-routiere-acces-autoroutier.md
+│   │   ├── 0048-criteres-excluants-par-usage.md
+│   │   ├── 0049-zae-fusac-referentiel-local.md
+│   │   ├── 0050-imports-referentiels-au-deploiement.md
+│   │   ├── 0051-durcissement-http-helmet-cors-bypass-dev-explicite.md
+│   │   ├── 0052-cache-bdnb-par-parcelle-et-appels-groupes.md
+│   │   ├── 0053-table-attributaire-sites-par-commune.md
+│   │   └── 0054-police-marianne-bloc-marque-exports-pdf.md
 │   ├── ajout-partenaire.md
 │   ├── analytics-tracking.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
+│   ├── export-cnig.md
 │   ├── integration
 │   │   ├── README.md
 │   │   ├── html
@@ -935,15 +1188,38 @@
 │   │       ├── package.json
 │   │       └── src
 │   │           └── App.jsx
-│   └── sources-donnees-externes.md
+│   ├── matrice-scoring.md
+│   ├── ops
+│   │   ├── README.md
+│   │   ├── db-local.md
+│   │   ├── metabase
+│   │   │   ├── README.md
+│   │   │   └── epci.geojson
+│   │   └── scalingo.md
+│   ├── security
+│   │   └── vulnerabilites-acceptees.md
+│   ├── sources-donnees-externes.md
+│   └── table-attributaire.md
 ├── eslint.config.mjs
 ├── package.json
 ├── packages
 │   └── shared-types
 │       ├── package.json
 │       ├── src
+│       │   ├── attributaire
+│       │   │   ├── index.ts
+│       │   │   └── table-attributaire.dto.ts
 │       │   ├── cartofriches
 │       │   │   ├── friches-cerema.dto.ts
+│       │   │   └── index.ts
+│       │   ├── cnig
+│       │   │   ├── export-cnig.dto.ts
+│       │   │   ├── friche-cnig.builder.spec.ts
+│       │   │   ├── friche-cnig.builder.ts
+│       │   │   ├── friche-cnig.mapping.spec.ts
+│       │   │   ├── friche-cnig.mapping.ts
+│       │   │   ├── friche-cnig.types.ts
+│       │   │   ├── friche-cnig.wkt.ts
 │       │   │   └── index.ts
 │       │   ├── documentation
 │       │   │   ├── index.ts
@@ -967,6 +1243,7 @@
 │       │   │   ├── enums
 │       │   │   │   ├── code-erreur.enum.ts
 │       │   │   │   ├── distance-ite.enum.ts
+│       │   │   │   ├── ilot-chaleur-urbain.enum.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── risque-cavites-souterraines.enum.ts
 │       │   │   │   ├── risque-inondation.enum.ts
@@ -985,6 +1262,7 @@
 │       │   │   ├── constants
 │       │   │   │   ├── fiabilite.constants.ts
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── usages.constants.ts
 │       │   │   │   └── version.constants.ts
 │       │   │   ├── dto
 │       │   │   │   ├── algorithme-version.dto.ts
@@ -1006,6 +1284,8 @@
 │       │   │   │   └── valeur-architecturale.enum.ts
 │       │   │   ├── index.ts
 │       │   │   └── utils
+│       │   │       ├── donnees-complementaires.validation.spec.ts
+│       │   │       ├── donnees-complementaires.validation.ts
 │       │   │       ├── index.ts
 │       │   │       ├── raccordement-eau.derivation.spec.ts
 │       │   │       └── raccordement-eau.derivation.ts
@@ -1019,6 +1299,10 @@
 │       │   │   │   └── index.ts
 │       │   │   └── index.ts
 │       │   ├── index.ts
+│       │   ├── integration
+│       │   │   ├── index.ts
+│       │   │   ├── integrateurs-iframe.spec.ts
+│       │   │   └── integrateurs-iframe.ts
 │       │   ├── partenaires
 │       │   │   ├── dto
 │       │   │   │   ├── partenaire-input.dto.ts
@@ -1033,6 +1317,7 @@
 │       │   │   ├── impact.labels.spec.ts
 │       │   │   ├── impact.labels.ts
 │       │   │   ├── index.ts
+│       │   │   ├── informations.metadata.ts
 │       │   │   ├── recapitulatif.builder.spec.ts
 │       │   │   ├── recapitulatif.builder.ts
 │       │   │   ├── recapitulatif.types.ts
@@ -1059,14 +1344,17 @@
 │       │   │       └── parcelle.utils.ts
 │       │   └── stats
 │       │       ├── index.ts
-│       │       └── stat.dto.ts
+│       │       ├── stat.dto.ts
+│       │       └── vue-statistiques.ts
 │       ├── tsconfig.json
 │       └── vitest.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scalingo.json
 ├── scripts
+│   ├── dev
+│   │   └── restore-db.sh
 │   ├── generate-sources-doc.cjs
 │   └── setup.sh
 └── tsconfig.json
-242 directories, 829 files
+271 directories, 1088 files

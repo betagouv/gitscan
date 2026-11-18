@@ -35,12 +35,16 @@ mutafriches/
 ├── apps/
 │   ├── api/                    # API NestJS
 │   │   ├── src/
-│   │   │   ├── enrichissement/ # Enrichissement parcelles (24 APIs)
+│   │   │   ├── enrichissement/ # Enrichissement parcelles (APIs externes + bases locales)
 │   │   │   ├── evaluation/     # Calcul mutabilité
 │   │   │   ├── evenements/     # Tracking événements
-│   │   │   ├── friches/        # DEPRECATED (routes historiques)
+│   │   │   ├── attributaire/   # Table attributaire publique par commune
+│   │   │   ├── partenaires/    # Pages partenaires multisites et export CNIG
+│   │   │   ├── cartofriches/   # Recherche des friches Cartofriches
+│   │   │   ├── donnees-externes/ # Statut des imports et monitoring des APIs externes
 │   │   │   ├── stats/          # Endpoint KPIs publics
 │   │   │   ├── metabase/       # Intégration dashboard Metabase
+│   │   │   ├── scripts/        # Imports de référentiels et scripts CLI
 │   │   │   └── shared/         # Services, guards, database, utilitaires partagés
 │   └── ui/                     # Application React
 │       ├── src/
@@ -54,6 +58,7 @@ mutafriches/
 │   ├── README.md               # Index général
 │   ├── enrichissement.md       # Module enrichissement
 │   ├── evaluation-mutabilite.md # Algorithme mutabilité
+│   ├── matrice-scoring.md      # Matrice de scoring par critère et usage
 │   └── integration/            # Guide intégration
 ```
 
@@ -69,7 +74,6 @@ mutafriches/
 
 - **Serveur unique** : NestJS sert à la fois l'API et l'UI React compilée
 - Routes API : `/api/*`, `/enrichissement`, `/evaluation/*`, `/evenements`, `/health`
-- Routes DEPRECATED : `/friches/*` (redirigent vers nouveaux endpoints)
 - UI React : Toutes les autres routes servent le SPA
 
 ## 🚀 Installation
@@ -96,6 +100,12 @@ pnpm start:dev
 
 > Le script `pnpm setup` copie le `.env.example`, installe les dépendances, démarre PostgreSQL via Docker et synchronise le schéma de base de données.
 
+> **Installer depuis la racine du monorepo.** Depuis sa version 1.15, `@gouvfr/dsfr` contrôle à
+> l'installation l'acceptation des modalités d'utilisation du DSFR, via le fichier `.dsfr.yml`
+> qu'il cherche dans le répertoire d'où la commande est lancée (cf. ADR-0040). Un
+> `cd apps/ui && pnpm install` échoue donc sur `[NO_YML]` ; utiliser `pnpm --filter ui …` depuis
+> la racine.
+
 **Accès :**
 
 - UI React : **<http://localhost:5173>**
@@ -114,7 +124,7 @@ pnpm dev:api                # API uniquement (NestJS watch mode)
 pnpm dev:ui                 # UI uniquement (Vite dev server)
 
 # Build
-pnpm build                  # Build shared-types + API pour production
+pnpm build                  # Build shared-types + API + UI pour production
 
 # Production
 pnpm start                  # Lance l'app en production (après build)
@@ -128,7 +138,28 @@ pnpm db:stop                # Arrêter PostgreSQL
 pnpm db:reset               # Reset complet (supprime les données)
 pnpm db:push                # Synchroniser le schéma
 pnpm db:studio              # Interface graphique Drizzle Studio
+pnpm db:restore             # Charger un dump dans la base locale (liste et confirmation)
+pnpm db:bpe:import          # Commerces et services (BPE INSEE, cf. section dédiée)
+pnpm db:transport-stops:import  # Arrêts de transport en commun (data.gouv)
+pnpm db:ademe-sites:import  # Sites pollués ADEME
+pnpm db:ite-fret:import     # Installations terminales embranchées fret (ITE, Cerema)
+pnpm db:epci:import         # Découpage administratif (communes et EPCI)
+pnpm db:lovac:import        # Référentiel LOVAC (logements vacants, annuel)
+pnpm db:zonage-abc:import   # Référentiel zonage ABC (tension du logement, à chaque arrêté)
+pnpm db:icu:import          # Référentiel îlots de chaleur urbain (ICU, à chaque millésime)
+pnpm db:reseaux-chaleur:import  # Tracés des réseaux de chaleur (France Chaleur Urbaine, à chaque millésime)
+pnpm db:qpv:import          # Référentiel quartiers prioritaires (QPV, à chaque arrêté)
+pnpm db:zones-contrainte-enr:import  # Zones saturées réseau EnR (Enedis, mensuel — ADR-0046)
+pnpm db:zae:import          # Zones d'activité économique (Cerema Fusac, annuel — ADR-0049)
+pnpm db:import:all          # Tous les référentiels manquants (base locale neuve : build:nest d'abord — ADR-0050)
+pnpm attributaire:peupler   # Table attributaire depuis la base (--commune=77305, --dry-run ; build:nest d'abord — ADR-0053)
 ```
+
+Le conteneur PostgreSQL ne publie son port que sur `127.0.0.1` : la base locale, qui peut contenir
+un dump de production, n'est pas joignable depuis le réseau (wifi public, coworking).
+
+Les dumps restent hors du dépôt : indiquer leur dossier dans `apps/api/.env` (`DB_BACKUP_DIR`),
+cf. [`docs/ops/db-local.md`](./docs/ops/db-local.md).
 
 ### Contact multisites (calendrier ZCal)
 
@@ -156,15 +187,27 @@ pnpm validate               # Tout vérifier (format + lint + typecheck + test)
 |-------|---------|-------------|
 | `/api` | GET | Documentation Swagger |
 | `/health` | GET | Healthcheck de l'API |
-| `/enrichissement` | POST | Enrichir une parcelle (24 APIs externes) |
+| `/enrichissement` | POST | Enrichir une parcelle (APIs externes + bases locales) |
 | `/evaluation/calculer` | POST | Calculer la mutabilité |
 | `/evaluation/:id` | GET | Récupérer une évaluation |
 | `/evaluation/metadata` | GET | Métadonnées (enums) |
+| `/evaluation/algorithme/versions` | GET | Versions de l'algorithme, de la plus ancienne à la courante |
+| `/evaluation/comparer` | POST | Comparer les résultats d'un site entre plusieurs versions de l'algorithme |
 | `/evenements` | POST | Tracker un événement |
+| `/api/partenaires` | GET | Liste des partenaires et de leurs sites |
+| `/api/partenaires/:slug` | GET | Un partenaire et ses sites |
+| `/api/partenaires/:slug/sites` | POST | Ajouter un site à un partenaire (enrichi puis enregistré) |
+| `/api/partenaires/:slug/sites/:id` | PATCH | Renommer un site partenaire |
+| `/api/partenaires/:slug/export` | POST | Export CNIG Friches de tous les sites d'un partenaire (CSV ou GeoJSON) |
+| `/api/cartofriches/recherche` | GET | Friche Cartofriches d'un identifiant cadastral |
+| `/api/cartofriches/commune` | GET | Friches Cartofriches d'une commune, avec leurs emprises |
+| `/api/attributaire/sites?codeInsee=` | GET | Table attributaire publique d'une commune : sites évalués ou partenaires, critères et mutabilité (JSON ou GeoJSON) |
 | `/api/stats` | GET | KPI public principal, format incubateur (objet `StatOutput` unique) |
 | `/api/stats/all` | GET | Tous les KPI publics (tableau de `StatOutput`, dashboard interne) |
 | `/api/metabase/embed-url` | GET | URL d'embedding dashboard Metabase |
-| `/friches/*` | * | **DEPRECATED** - Routes historiques |
+| `/api/donnees-externes/imports` | GET | Statut des imports de référentiels |
+| `/api/donnees-externes/apis` | GET | Dernier état du monitoring des APIs externes |
+| `/api/donnees-externes/apis/refresh` | POST | Relancer le monitoring des APIs externes (jeton `X-Refresh-Token`) |
 
 ## 🎨 Interface utilisateur
 
@@ -235,8 +278,9 @@ détecter une divergence de `node_modules`, tente de le purger sans TTY et plant
 Conséquence : **le runtime n'appelle jamais pnpm**.
 
 - `Procfile` → `web: node apps/api/dist/src/main` (Node direct) et
-  `postdeploy: cd apps/api && ./node_modules/.bin/drizzle-kit migrate` (shim `.bin` direct,
-  jamais préfixé par `node` — c'est un script shell). `drizzle-kit` est en **dependencies**
+  `postdeploy: cd apps/api && ./node_modules/.bin/drizzle-kit migrate && node dist/src/scripts/import-all.js`
+  (shim `.bin` direct, jamais préfixé par `node` — c'est un script shell ; `import-all` importe
+  les référentiels dont la table est vide, ADR-0050). `drizzle-kit` est en **dependencies**
   d'`apps/api` pour survivre au prune des `devDependencies`.
 - `pnpm-workspace.yaml` → `confirmModulesPurge: false` sécurise les one-shot
   `scalingo run pnpm …`, et `allowBuilds: { … : false }` évite que pnpm ≥ 11 ne bloque
@@ -263,9 +307,13 @@ Système de tracking léger pour mesurer l'engagement utilisateur :
 Documentation complète dans le dossier [`docs/`](./docs/) :
 
 - **[Index Général](./docs/README.md)** - Vue d'ensemble et navigation
-- **[Module Enrichissement](./docs/enrichissement.md)** - 9 domaines, 24 APIs, règles de gestion
-- **[Algorithme d'Évaluation](./docs/evaluation-mutabilite.md)** - Matrice 24×7, calcul mutabilité
+- **[Module Enrichissement](./docs/enrichissement.md)** - Domaines, APIs externes et bases locales, règles de gestion
+- **[Algorithme d'Évaluation](./docs/evaluation-mutabilite.md)** - Matrice 32×7, calcul mutabilité
+- **[Matrice de scoring](./docs/matrice-scoring.md)** - Score de chaque réponse par usage, critères excluants
+- **[Table attributaire](./docs/table-attributaire.md)** - Sites qualifiés par commune, route publique et peuplement
 - **[Guide d'Intégration](./docs/integration/README.md)** - Iframe + PostMessage
+- **[Vulnérabilités de dépendances](./docs/security/vulnerabilites-acceptees.md)** - Suivi `pnpm audit` et justifications d'acceptation
+- **[Ops](./docs/ops/README.md)** - Scalingo (logs, psql en lecture), restauration de dump en local
 
 ---
 
@@ -356,13 +404,13 @@ pnpm db:bpe:import
 
 ```bash
 # Staging
-scalingo -a mutafriches-staging pgsql-console
+scalingo -a mutafriches-preprod --region osc-fr1 pgsql-console
 CREATE EXTENSION IF NOT EXISTS postgis;
 SELECT PostGIS_Version();
 \q
 
 # Production
-scalingo -a mutafriches pgsql-console
+scalingo -a mutafriches --region osc-secnum-fr1 pgsql-console
 CREATE EXTENSION IF NOT EXISTS postgis;
 SELECT PostGIS_Version();
 \q
@@ -372,10 +420,10 @@ SELECT PostGIS_Version();
 
 ```bash
 # Staging
-scalingo -a mutafriches-staging run "pnpm --filter api db:bpe:import"
+scalingo -a mutafriches-preprod --region osc-fr1 run "pnpm --filter api db:bpe:import"
 
 # Production
-scalingo -a mutafriches run "pnpm --filter api db:bpe:import"
+scalingo -a mutafriches --region osc-secnum-fr1 run "pnpm --filter api db:bpe:import"
 ```
 
 ### Régénérer le fichier filtré
