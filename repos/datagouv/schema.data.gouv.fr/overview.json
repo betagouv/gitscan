@@ -1,20 +1,20 @@
 {
   "url": "https://github.com/datagouv/schema.data.gouv.fr",
   "name": "schema.data.gouv.fr",
-  "description": "Plateforme de référencement des schémas de données publiques pour la France, permettant la consultation et la mise à jour des recommandations de schémas.",
+  "description": "Plateforme de référencement des schémas de données publiques pour la France, permettant de consulter les standards et recommandations de données.",
   "language": "JavaScript",
   "features": [
     "Données & Schémas",
-    "Recherche & Filtres",
+    "Contenu éditorial",
     "Interface utilisateur & Design"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Vuepress",
-    "Vue.js",
     "@gouvfr/dsfr",
-    "Axios",
-    "Moment.js"
+    "axios",
+    "moment",
+    "pnpm"
   ],
   "components": [
     "Documentation & Schémas",
@@ -27,11 +27,14 @@
       "none"
     ]
   },
+  "tests": [
+    "eslint"
+  ],
   "workflows": [
     "CircleCI",
     "GitHub Pages"
   ],
-  "lastActivity": "2026-11-16T03:04:27Z",
+  "lastActivity": "2026-11-18T03:05:05Z",
   "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
@@ -43,7 +46,6 @@
   "tags": [
     "Données & Open Data",
     "Standards & Schémas",
-    "Documentation",
-    "HTML, CSS & Web"
+    "Documentation"
   ]
 }
