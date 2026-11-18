@@ -29,9 +29,11 @@
 │   ├── ISSUE_TEMPLATE
 │   │   ├── chantier.md
 │   │   └── tache.md
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── ci.yml
-│       └── close-issue.yml
+│       ├── close-issue.yml
+│       └── signe-de-vie.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── AGENTS.md
@@ -250,6 +252,7 @@
 │       │   │   ├── eligibilite
 │       │   │   │   ├── cibles
 │       │   │   │   │   ├── evaluation.ts
+│       │   │   │   │   ├── issue.vo.ts
 │       │   │   │   │   └── noms.ts
 │       │   │   │   ├── faits
 │       │   │   │   │   ├── accompagnant.ts
@@ -339,6 +342,7 @@
 │       │   │   │   │   │       ├── q2-2-5.ts
 │       │   │   │   │   │       ├── q2-3-1-finalite.ts
 │       │   │   │   │   │       ├── q2-3-1.ts
+│       │   │   │   │   │       ├── q2-3-2-terrestre.ts
 │       │   │   │   │   │       ├── q2-3-2.ts
 │       │   │   │   │   │       ├── q2-3-3.ts
 │       │   │   │   │   │       ├── q2-3-4.ts
@@ -360,7 +364,8 @@
 │       │   │   │   │   │   │   ├── lieux-du-trajet.ts
 │       │   │   │   │   │   │   ├── roles-dans-le-sens.ts
 │       │   │   │   │   │   │   ├── sens-du-trajet.ts
-│       │   │   │   │   │   │   └── supports-du-complement.ts
+│       │   │   │   │   │   │   ├── supports-du-complement.ts
+│       │   │   │   │   │   │   └── urgence-hors-centre15.ts
 │       │   │   │   │   │   ├── partie-3.ts
 │       │   │   │   │   │   └── questions
 │       │   │   │   │   │       ├── champs-du-lieu.ts
@@ -430,84 +435,151 @@
 │       │   │       └── seeds-catalogue.ts
 │       │   └── socle
 │       │       ├── decision-engine
-│       │       │   ├── cible.ts
-│       │       │   ├── compile-the-decision-graph.ts
-│       │       │   ├── compute-the-cibles.ts
+│       │       │   ├── cible.vo.ts
+│       │       │   ├── decision-engine.port.ts
 │       │       │   ├── decision-graph
-│       │       │   │   ├── diagram.ts
-│       │       │   │   └── graph.ts
-│       │       │   ├── establish-the-faits.ts
+│       │       │   │   ├── decision-diagram.service.ts
+│       │       │   │   └── decision-graph.vo.ts
 │       │       │   ├── fait
-│       │       │   │   ├── declared.ts
-│       │       │   │   ├── fait.ts
-│       │       │   │   └── regle.ts
-│       │       │   └── index.ts
-│       │       ├── index.ts
-│       │       ├── model.ts
-│       │       ├── questionnaire-engine
-│       │       │   ├── answers
-│       │       │   │   ├── given-answers.ts
-│       │       │   │   └── validated-answers.ts
-│       │       │   ├── conditions
-│       │       │   │   ├── condition.ts
-│       │       │   │   ├── given.ts
-│       │       │   │   ├── local-date-time.ts
-│       │       │   │   ├── reads-in-place.ts
-│       │       │   │   └── what-a-condition-sees.ts
-│       │       │   ├── decide-which-questions-to-ask.ts
-│       │       │   ├── does-a-question-still-matter
-│       │       │   │   ├── can-still-be-asked.ts
-│       │       │   │   ├── faits-changed-by.ts
-│       │       │   │   ├── matters.ts
-│       │       │   │   └── restricted-graph.ts
+│       │       │   │   ├── fait-context.vo.ts
+│       │       │   │   ├── fait-declare.vo.ts
+│       │       │   │   ├── fait.vo.ts
+│       │       │   │   └── regle-de-fait.vo.ts
+│       │       │   ├── fait-catalogue.service.ts
 │       │       │   ├── index.ts
+│       │       │   ├── publicodes-decision-engine.adapter.ts
+│       │       │   └── publicodes-graph-compiler.adapter.ts
+│       │       ├── index.ts
+│       │       ├── model.types.ts
+│       │       ├── questionnaire-engine
+│       │       │   ├── answered-questionnaire.vo.ts
+│       │       │   ├── answers
+│       │       │   │   ├── given-answers.vo.ts
+│       │       │   │   └── validated-answers.vo.ts
+│       │       │   ├── conditions
+│       │       │   │   ├── given-readings.vo.ts
+│       │       │   │   ├── guard-place.vo.ts
+│       │       │   │   ├── guard-reading.service.ts
+│       │       │   │   ├── local-date-time.vo.ts
+│       │       │   │   ├── question-positions.vo.ts
+│       │       │   │   ├── reading.factory.ts
+│       │       │   │   ├── reading.vo.ts
+│       │       │   │   └── reads.vo.ts
+│       │       │   ├── does-a-question-still-matter
+│       │       │   │   ├── askability.service.ts
+│       │       │   │   ├── relevance-graph.vo.ts
+│       │       │   │   └── relevance.service.ts
+│       │       │   ├── index.ts
+│       │       │   ├── page-commit.service.ts
 │       │       │   ├── question
-│       │       │   │   ├── address.ts
+│       │       │   │   ├── address.vo.ts
 │       │       │   │   ├── asked
-│       │       │   │   │   ├── address.ts
-│       │       │   │   │   ├── answer-problem.ts
-│       │       │   │   │   ├── choices.ts
-│       │       │   │   │   ├── common.ts
-│       │       │   │   │   ├── context.ts
-│       │       │   │   │   ├── inputs.ts
-│       │       │   │   │   └── question.ts
+│       │       │   │   │   ├── address.vo.ts
+│       │       │   │   │   ├── answer-problem.vo.ts
+│       │       │   │   │   ├── choices.vo.ts
+│       │       │   │   │   ├── common.vo.ts
+│       │       │   │   │   ├── context.vo.ts
+│       │       │   │   │   ├── inputs.vo.ts
+│       │       │   │   │   └── question.vo.ts
 │       │       │   │   ├── declared
-│       │       │   │   │   ├── choices.ts
-│       │       │   │   │   ├── dependency.ts
-│       │       │   │   │   ├── factory.ts
-│       │       │   │   │   ├── inputs.ts
-│       │       │   │   │   ├── option.ts
-│       │       │   │   │   ├── page.ts
-│       │       │   │   │   ├── question.ts
-│       │       │   │   │   └── settings.ts
-│       │       │   │   ├── option.ts
-│       │       │   │   └── question.ts
-│       │       │   ├── questionnaire.ts
-│       │       │   └── validate-a-page.ts
+│       │       │   │   │   ├── choices.vo.ts
+│       │       │   │   │   ├── inconsistencies.vo.ts
+│       │       │   │   │   ├── inputs.vo.ts
+│       │       │   │   │   ├── page.vo.ts
+│       │       │   │   │   ├── possible-answer.vo.ts
+│       │       │   │   │   ├── question.factory.ts
+│       │       │   │   │   ├── question.vo.ts
+│       │       │   │   │   └── settings.types.ts
+│       │       │   │   ├── dependency.vo.ts
+│       │       │   │   ├── possible-answer.types.ts
+│       │       │   │   ├── question-id.vo.ts
+│       │       │   │   └── question.types.ts
+│       │       │   ├── question-walk.service.ts
+│       │       │   ├── questionnaire-declaration.error.ts
+│       │       │   ├── questionnaire.vo.ts
+│       │       │   └── walk-progress.vo.ts
 │       │       └── simulation
-│       │           ├── correction.ts
+│       │           ├── answer-correction.vo.ts
+│       │           ├── establish-a-preconisation.usecase.ts
+│       │           ├── evaluate-a-seed.usecase.ts
 │       │           ├── index.ts
-│       │           ├── page-refused.ts
-│       │           ├── place-in-part.ts
-│       │           ├── position.ts
-│       │           ├── preconisation.ts
-│       │           ├── result-scope.ts
-│       │           ├── seed.ts
-│       │           ├── simulation.ts
-│       │           └── stages.ts
+│       │           ├── journey-position.vo.ts
+│       │           ├── page-opening.vo.ts
+│       │           ├── page-place-in-part.vo.ts
+│       │           ├── page-refusal.error.ts
+│       │           ├── preconisation.service.ts
+│       │           ├── preconisation.vo.ts
+│       │           ├── questionnaire-reading.service.ts
+│       │           ├── result-context.vo.ts
+│       │           ├── simulation-stage.vo.ts
+│       │           ├── simulation.entity.ts
+│       │           ├── stage-pages.vo.ts
+│       │           └── text-edits.vo.ts
 │       ├── docs
 │       │   └── knowledge
 │       │       ├── CONTEXT.md
 │       │       ├── adr
-│       │       │   ├── analytics.md
-│       │       │   ├── identification.md
-│       │       │   ├── journal-des-decisions-v10.md
-│       │       │   └── metier-et-ecran.md
+│       │       │   ├── 0001-la-mesure-d-audience-passe-par-le-matomo-mutualise-de-beta-gouv.md
+│       │       │   ├── 0002-la-mesure-se-decoupe-par-service-dans-une-propriete-d-evenement.md
+│       │       │   ├── 0003-la-mesure-d-audience-se-fait-sans-bandeau-de-consentement.md
+│       │       │   ├── 0004-le-rattachement-est-un-ecran-de-l-app-pas-une-app-dediee.md
+│       │       │   ├── 0005-le-simulateur-s-integre-au-cms-par-une-iframe.md
+│       │       │   ├── 0006-le-rattachement-est-declaratif-et-sans-identite.md
+│       │       │   ├── 0007-le-rattachement-reste-en-memoire-identifiants-en-clair.md
+│       │       │   ├── 0008-le-referentiel-vit-dans-grist-et-le-backend-le-lit.md
+│       │       │   ├── 0009-le-moteur-publicodes-ignore-le-rattachement.md
+│       │       │   ├── 0010-les-noms-d-evenement-sont-figes-et-jamais-composes.md
+│       │       │   ├── 0011-le-cms-tient-l-opt-out-et-le-transmet-a-l-iframe.md
+│       │       │   ├── 0012-le-metier-ne-depend-pas-de-l-ecran-et-vit-dans-core.md
+│       │       │   ├── 0013-les-regles-sont-livrees-en-json-versionne.md
+│       │       │   ├── 0014-le-moteur-dit-la-nature-d-un-probleme-l-ecran-ecrit-la-phrase.md
+│       │       │   ├── 0015-un-modele-a-deux-contrats-son-metier-et-son-ecran.md
+│       │       │   ├── 0016-un-modele-a-deux-dossiers-du-meme-nom.md
+│       │       │   ├── 0017-un-test-charge-le-metier-sous-node.md
+│       │       │   ├── 0018-le-moteur-lit-le-questionnaire-en-objets.md
+│       │       │   ├── 0019-la-question-posee-ne-porte-que-des-donnees.md
+│       │       │   ├── 0020-une-question-se-declare-par-son-constructeur.md
+│       │       │   ├── 0021-une-option-se-regle-dans-une-lambda-et-order-est-une-vue.md
+│       │       │   ├── 0022-une-condition-de-page-s-ajoute-a-ses-questions.md
+│       │       │   ├── 0023-un-fait-se-declare-une-fois-dans-son-fichier-du-catalogue.md
+│       │       │   ├── 0024-le-fait-est-un-objet-valeur.md
+│       │       │   ├── 0025-une-garde-lit-tout-le-catalogue-la-decision-impose-la-completude.md
+│       │       │   ├── 0026-la-cible-est-un-objet-valeur.md
+│       │       │   ├── 0027-p1-lit-la-cible-qui-dit-ce-qu-elle-cherche-pas-le-mode.md
+│       │       │   ├── 0028-une-date-repondue-est-un-objet-valeur-du-socle.md
+│       │       │   ├── 0029-un-objet-par-concept-du-modele.md
+│       │       │   ├── 0030-la-trace-de-r2-porte-le-sejour-reel.md
+│       │       │   ├── 0031-le-numero-d-une-option-est-une-fonction-pas-un-objet.md
+│       │       │   ├── 0032-r2-et-r3-lisent-des-valeurs-comme-les-gardes.md
+│       │       │   ├── 0033-un-fait-est-une-valeur-nommee-faite-de-regles-sur-des-conditions.md
+│       │       │   ├── 0034-une-garde-est-une-condition-lue-selon-l-endroit.md
+│       │       │   ├── 0035-le-socle-saute-une-question-que-le-graphe-dit-sans-effet.md
+│       │       │   ├── 0036-l-arbre-des-fichiers-dit-le-chemin.md
+│       │       │   ├── 0037-une-question-a-choix-porte-ses-options.md
+│       │       │   ├── 0038-la-simulation-est-l-agregat-du-parcours.md
+│       │       │   ├── 0039-un-module-du-socle-s-ouvre-par-son-index.md
+│       │       │   ├── 0040-une-question-a-plusieurs-places-se-pose-a-la-premiere-utile.md
+│       │       │   ├── 0041-une-alerte-mene-a-la-reponse-a-revoir.md
+│       │       │   ├── 0042-le-backend-ecrit-le-journal-des-parcours.md
+│       │       │   ├── 0043-le-journal-passe-par-un-port-grist-en-premier.md
+│       │       │   ├── 0044-le-journal-recoit-les-questions-les-affichages-et-les-jalons.md
+│       │       │   ├── 0045-le-journal-recoit-le-premier-resultat-et-ses-revisions.md
+│       │       │   ├── 0046-le-journal-recoit-le-document-r3-et-ses-versions.md
+│       │       │   ├── 0047-le-journal-recoit-les-boutons-exposes-et-leurs-clics.md
+│       │       │   ├── 0048-le-journal-recoit-la-taille-des-champs-du-document-r3.md
+│       │       │   ├── 0049-le-journal-dit-comment-la-page-s-est-chargee.md
+│       │       │   ├── 0050-chaque-evenement-porte-les-versions-de-l-app.md
+│       │       │   ├── 0051-la-collecte-dit-sa-couverture-et-les-referentiels-se-tirent-du-code.md
+│       │       │   ├── 0052-le-domaine-n-importe-pas-un-adaptateur.md
+│       │       │   ├── 0053-chaque-evenement-porte-l-etablissement-et-le-service.md
+│       │       │   └── journal-des-decisions-v10.md
 │       │       ├── contributing
 │       │       │   └── .gitkeep
 │       │       ├── domain
 │       │       │   ├── enrichissement-referentiel-rattachement.md
-│       │       │   └── livrable-de-l-editeur.md
+│       │       │   ├── livrable-de-l-editeur.md
+│       │       │   ├── mesure-d-audience.md
+│       │       │   └── rattachement.md
 │       │       └── features.md
 │       ├── front
 │       │   ├── container.ts
@@ -517,6 +589,7 @@
 │       │   │   │   ├── avis.ts
 │       │   │   │   ├── besoin.ts
 │       │   │   │   ├── codes-du-resultat.ts
+│       │   │   │   ├── composition-du-transport.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── indicateur-ald.ts
 │       │   │   │   ├── r2
@@ -550,19 +623,16 @@
 │       │   │   │   │   ├── layouts
 │       │   │   │   │   │   ├── acceptee
 │       │   │   │   │   │   │   ├── FichePositive.tsx
-│       │   │   │   │   │   │   ├── issues.ts
 │       │   │   │   │   │   │   ├── page.tsx
 │       │   │   │   │   │   │   ├── precisions.ts
 │       │   │   │   │   │   │   └── texte.ts
 │       │   │   │   │   │   ├── orientee
 │       │   │   │   │   │   │   ├── PageDuPrescripteur.tsx
-│       │   │   │   │   │   │   ├── issues.ts
 │       │   │   │   │   │   │   ├── page.tsx
 │       │   │   │   │   │   │   ├── precisions.ts
 │       │   │   │   │   │   │   └── texte.ts
 │       │   │   │   │   │   └── refusee
 │       │   │   │   │   │       ├── FicheNegative.tsx
-│       │   │   │   │   │       ├── issues.ts
 │       │   │   │   │   │       ├── page.tsx
 │       │   │   │   │   │       ├── precisions.ts
 │       │   │   │   │   │       └── texte.ts
@@ -613,7 +683,9 @@
 │       │       │   ├── audience-event.entity.ts
 │       │       │   ├── audience.port.ts
 │       │       │   ├── button-exposure.entity.ts
+│       │       │   ├── button-place.vo.ts
 │       │       │   ├── button.hook.ts
+│       │       │   ├── close-a-simulation.usecase.ts
 │       │       │   ├── cms-consent.adapter.ts
 │       │       │   ├── cms.js
 │       │       │   ├── complete-a-questionnaire.usecase.ts
@@ -623,21 +695,24 @@
 │       │       │   ├── discarding-audience.adapter.ts
 │       │       │   ├── display-a-document.usecase.ts
 │       │       │   ├── display-a-result.usecase.ts
+│       │       │   ├── document-revision.entity.ts
 │       │       │   ├── document-version.entity.ts
 │       │       │   ├── document.hook.ts
+│       │       │   ├── event-sequence.entity.ts
+│       │       │   ├── exposed-buttons.entity.ts
 │       │       │   ├── fail-a-document.usecase.ts
-│       │       │   ├── host-page-load.adapter.ts
 │       │       │   ├── index.ts
 │       │       │   ├── journal.port.ts
 │       │       │   ├── journey.entity.ts
 │       │       │   ├── journey.hook.ts
+│       │       │   ├── launch-a-document.usecase.ts
 │       │       │   ├── leave-a-questionnaire.usecase.ts
 │       │       │   ├── matomo-audience.adapter.ts
 │       │       │   ├── open-a-page.usecase.ts
 │       │       │   ├── open-a-result-screen.usecase.ts
-│       │       │   ├── page-load.port.ts
 │       │       │   ├── page-view.entity.ts
 │       │       │   ├── pass-a-step.usecase.ts
+│       │       │   ├── phase-boundaries.entity.ts
 │       │       │   ├── press-a-button.usecase.ts
 │       │       │   ├── questionnaire-run.entity.ts
 │       │       │   ├── questionnaire.hook.ts
@@ -652,7 +727,8 @@
 │       │       │   ├── sheet-version.entity.ts
 │       │       │   ├── start-a-questionnaire.usecase.ts
 │       │       │   ├── start-a-simulation.usecase.ts
-│       │       │   └── use-cases-in-the-tree.ts
+│       │       │   ├── use-cases-in-the-tree.ts
+│       │       │   └── withdraw-a-document.usecase.ts
 │       │       ├── app
 │       │       │   ├── App.tsx
 │       │       │   ├── Footer.tsx
@@ -666,6 +742,8 @@
 │       │       ├── cerfa
 │       │       │   ├── CerfaDocument.tsx
 │       │       │   ├── CerfaPreview.tsx
+│       │       │   ├── StrictTextEditor.tsx
+│       │       │   ├── StrictTexts.tsx
 │       │       │   ├── cerfa.ts
 │       │       │   ├── generate-the-cerfa
 │       │       │   │   ├── box-appearances.ts
@@ -675,7 +753,10 @@
 │       │       │   │   ├── fill-the-form.ts
 │       │       │   │   ├── flatten-the-form.ts
 │       │       │   │   ├── generate-the-cerfa.ts
+│       │       │   │   ├── measure-strict-texts.ts
 │       │       │   │   ├── overflow.ts
+│       │       │   │   ├── strict-entries.ts
+│       │       │   │   ├── strict-text.ts
 │       │       │   │   ├── text-fit.ts
 │       │       │   │   ├── text-sizes.ts
 │       │       │   │   ├── typography.ts
@@ -683,10 +764,14 @@
 │       │       │   │   ├── writable-text.ts
 │       │       │   │   └── write-a-text.ts
 │       │       │   ├── index.ts
-│       │       │   └── pdf
-│       │       │       ├── PdfActionButton.tsx
-│       │       │       ├── download-a-pdf.ts
-│       │       │       └── print-a-pdf.ts
+│       │       │   ├── pdf
+│       │       │   │   ├── PdfActionButton.tsx
+│       │       │   │   ├── download-a-pdf.ts
+│       │       │   │   └── print-a-pdf.ts
+│       │       │   ├── strict-verdict.ts
+│       │       │   ├── use-downloadable-pdf.ts
+│       │       │   ├── use-measure.ts
+│       │       │   └── use-text-counters.ts
 │       │       ├── deployed-version.ts
 │       │       ├── developer-tools
 │       │       │   ├── DebugTrace.tsx
@@ -700,6 +785,7 @@
 │       │       │   ├── QuestionnaireForm.tsx
 │       │       │   ├── Stepper.tsx
 │       │       │   ├── advance-alone.ts
+│       │       │   ├── count-a-text.ts
 │       │       │   ├── draft-an-answer.ts
 │       │       │   ├── index.ts
 │       │       │   ├── label-a-question.ts
@@ -714,11 +800,11 @@
 │       │       │   ├── RattachementForm.tsx
 │       │       │   ├── RattachementScreen.tsx
 │       │       │   ├── choix.ts
-│       │       │   ├── declarer-la-saisie.ts
 │       │       │   ├── index.ts
 │       │       │   ├── listes.ts
 │       │       │   ├── rattachement-en-session.ts
 │       │       │   ├── referentiel.ts
+│       │       │   ├── register-the-rattachement.usecase.ts
 │       │       │   ├── saisie-rattachement.ts
 │       │       │   └── structures.ts
 │       │       ├── seeds
@@ -776,8 +862,8 @@
 │       │           ├── NumberField.tsx
 │       │           ├── NumberedCards.tsx
 │       │           ├── NumberedSteps.tsx
-│       │           ├── OptionHelp.tsx
 │       │           ├── Panel.tsx
+│       │           ├── PossibleAnswerHelp.tsx
 │       │           ├── RadioField.tsx
 │       │           ├── Reminder.tsx
 │       │           ├── SecondaryButton.tsx
@@ -796,7 +882,15 @@
 │       │           ├── panel.css
 │       │           └── sheet-follow-up.css
 │       ├── index.html
+│       ├── navigateur
+│       │   ├── eligibilite.e2e.ts
+│       │   ├── page-du-cms.e2e.ts
+│       │   ├── page-hote.ts
+│       │   ├── rattachement.e2e.ts
+│       │   ├── simulateur-embarque.ts
+│       │   └── simulateur.ts
 │       ├── package.json
+│       ├── playwright.config.ts
 │       ├── server
 │       │   ├── app.ts
 │       │   ├── configuration.ts
@@ -804,14 +898,18 @@
 │       │   ├── grist
 │       │   │   └── grist-api.client.ts
 │       │   ├── journal
+│       │   │   ├── cached-referentiel.adapter.ts
+│       │   │   ├── check-alive.usecase.ts
 │       │   │   ├── collect-an-event.usecase.ts
 │       │   │   ├── discarding-journal.adapter.ts
 │       │   │   ├── grist-journal.adapter.ts
 │       │   │   ├── journal-entry.entity.ts
 │       │   │   ├── journal.controller.ts
 │       │   │   ├── journal.port.ts
+│       │   │   ├── known-rattachements.port.ts
 │       │   │   ├── memory-journal.adapter.ts
 │       │   │   └── report-alive.usecase.ts
+│       │   ├── protect-the-api.ts
 │       │   ├── rattachement
 │       │   │   ├── referentiel-grist.ts
 │       │   │   └── routes.ts
@@ -819,14 +917,17 @@
 │       ├── shared
 │       │   ├── analytics
 │       │   │   ├── analytics-event.ts
-│       │   │   └── event-schema.ts
+│       │   │   ├── contract-rule.vo.ts
+│       │   │   ├── event-schema.ts
+│       │   │   └── typographic-fields.ts
+│       │   ├── rattachement-du-referentiel.vo.ts
 │       │   ├── rattachement-saisi.ts
 │       │   └── referentiel.ts
 │       ├── tests
 │       │   ├── architecture.test.ts
+│       │   ├── clean-architecture.test.ts
 │       │   ├── frontieres-des-racines.test.ts
 │       │   ├── inspection-des-sources.ts
-│       │   ├── journal-en-clean-architecture.test.ts
 │       │   ├── lisibilite.test.ts
 │       │   ├── miroir-des-sources.test.ts
 │       │   ├── model
@@ -840,17 +941,18 @@
 │       │   │   │   │   ├── finalite-longue-distance.test.ts
 │       │   │   │   │   ├── frontieres-de-l-oracle.test.ts
 │       │   │   │   │   ├── garde-de-l-urgence.test.ts
+│       │   │   │   │   ├── issue.test.ts
 │       │   │   │   │   ├── mineur.test.ts
 │       │   │   │   │   ├── oracle-par-reponses.test.ts
 │       │   │   │   │   ├── oracle.test.ts
 │       │   │   │   │   ├── scenarios-de-demonstration.json
 │       │   │   │   │   └── scenarios-de-demonstration.test.ts
 │       │   │   │   ├── completer-p3.ts
+│       │   │   │   ├── dependances-declarees.test.ts
 │       │   │   │   ├── domaines.test.ts
 │       │   │   │   ├── faits
 │       │   │   │   │   ├── catalogue-des-faits.test.ts
-│       │   │   │   │   ├── exclusion-du-transport.test.ts
-│       │   │   │   │   └── faits-changes-par-une-question.test.ts
+│       │   │   │   │   └── exclusion-du-transport.test.ts
 │       │   │   │   ├── filtrage-par-le-graphe.test.ts
 │       │   │   │   ├── formulaire-du-modele.tsx
 │       │   │   │   ├── indicateur-ald.test.ts
@@ -883,6 +985,7 @@
 │       │   │   │   │   ├── finalite-longue-distance.test.ts
 │       │   │   │   │   ├── maternite-et-htnm.test.ts
 │       │   │   │   │   ├── pages-de-p2-a-l-ecran.test.tsx
+│       │   │   │   │   ├── partie-terrestre.test.ts
 │       │   │   │   │   ├── permission-adulte.test.ts
 │       │   │   │   │   ├── permission.test.ts
 │       │   │   │   │   ├── prestation.test.ts
@@ -898,6 +1001,7 @@
 │       │   │   │   │   ├── transfert.test.ts
 │       │   │   │   │   └── urgence-a-deux-places.test.ts
 │       │   │   │   ├── p3
+│       │   │   │   │   ├── compteur-de-l-urgence.test.tsx
 │       │   │   │   │   ├── evenements-et-exoneration.test.ts
 │       │   │   │   │   ├── lieux-des-contextes.test.ts
 │       │   │   │   │   ├── lieux-des-sejours.test.ts
@@ -946,11 +1050,12 @@
 │       │   │   │   │   └── traces-du-prescripteur.ts
 │       │   │   │   ├── r3
 │       │   │   │   │   ├── boutons-du-resultat.test.ts
+│       │   │   │   │   ├── cellule-medicale.test.ts
 │       │   │   │   │   ├── centre-de-reference-rempli.test.ts
-│       │   │   │   │   ├── commentaire-medical.test.ts
 │       │   │   │   │   ├── consigne-du-mineur.test.ts
 │       │   │   │   │   ├── documents-du-resultat.test.ts
 │       │   │   │   │   ├── motifs-de-la-dap-remplie.test.ts
+│       │   │   │   │   ├── precision-de-l-urgence.test.ts
 │       │   │   │   │   ├── r3-a-l-ecran.test.tsx
 │       │   │   │   │   ├── reponses-du-cerfa.ts
 │       │   │   │   │   ├── rubriques-de-la-dap.test.ts
@@ -959,6 +1064,7 @@
 │       │   │   │   │   ├── s3138g-rempli.test.ts
 │       │   │   │   │   ├── s3139h-rempli.test.ts
 │       │   │   │   │   ├── s3141-rempli.test.ts
+│       │   │   │   │   ├── taille-des-champs.test.ts
 │       │   │   │   │   └── texte-medical.test.ts
 │       │   │   │   ├── reponse-changee.test.ts
 │       │   │   │   └── rules
@@ -968,22 +1074,28 @@
 │       │   │   └── regles-a-jour.test.ts
 │       │   ├── modules-du-socle.test.ts
 │       │   ├── recette-sans-version.test.ts
+│       │   ├── roles-par-suffixe.test.ts
 │       │   ├── setup.ts
 │       │   ├── socle
 │       │   │   ├── analytics
 │       │   │   │   ├── audience-de-test.ts
 │       │   │   │   ├── audience-event.test.ts
+│       │   │   │   ├── boutons-du-document.test.ts
 │       │   │   │   ├── boutons-exposes.test.ts
-│       │   │   │   ├── chargement-de-la-page.test.ts
 │       │   │   │   ├── cms-consent.test.ts
 │       │   │   │   ├── cms.test.ts
+│       │   │   │   ├── codes-du-premier-resultat.test.ts
 │       │   │   │   ├── consentement-de-test.ts
 │       │   │   │   ├── document-version.test.ts
+│       │   │   │   ├── enveloppe-du-parcours.test.ts
 │       │   │   │   ├── envoi-au-journal.test.ts
 │       │   │   │   ├── journal-de-test.ts
 │       │   │   │   ├── journey.test.ts
 │       │   │   │   ├── matomo-audience.test.ts
+│       │   │   │   ├── parcours-des-boutons.ts
 │       │   │   │   ├── questionnaire-run.test.ts
+│       │   │   │   ├── rattachement-du-parcours.test.ts
+│       │   │   │   ├── revision-du-document.test.ts
 │       │   │   │   └── typographie-du-document.test.ts
 │       │   │   ├── app
 │       │   │   │   ├── choix-de-modele.test.tsx
@@ -991,13 +1103,14 @@
 │       │   │   │   ├── modele-a-la-demande.test.tsx
 │       │   │   │   └── rattachement-obligatoire.test.tsx
 │       │   │   ├── cerfa
-│       │   │   │   ├── avertissement-du-commentaire.test.tsx
 │       │   │   │   ├── fill-cerfa.test.ts
 │       │   │   │   ├── flatten-cerfa.test.ts
 │       │   │   │   ├── generate-cerfa.test.ts
 │       │   │   │   ├── pdf-aplati.ts
 │       │   │   │   ├── police-du-cerfa.test.ts
 │       │   │   │   ├── test-form.ts
+│       │   │   │   ├── texte-strict-a-reecrire.test.tsx
+│       │   │   │   ├── texte-strict-sur-une-ligne.test.tsx
 │       │   │   │   └── typographie-du-cerfa.test.ts
 │       │   │   ├── decision-engine
 │       │   │   │   ├── catalogue-des-faits.test.ts
@@ -1024,11 +1137,16 @@
 │       │   │   │   │   └── seeds-catalogue.ts
 │       │   │   │   └── page-blanche.jpg
 │       │   │   ├── journal
+│       │   │   │   ├── collecte-de-la-taille-des-champs.test.ts
+│       │   │   │   ├── collecte-des-boutons.test.ts
+│       │   │   │   ├── collecte-du-rattachement.test.ts
 │       │   │   │   ├── collecte.test.ts
 │       │   │   │   ├── couverture.test.ts
 │       │   │   │   ├── evenements.ts
 │       │   │   │   ├── grist-journal.test.ts
-│       │   │   │   └── journal-non-configure.test.ts
+│       │   │   │   ├── journal-non-configure.test.ts
+│       │   │   │   ├── referentiel-en-cache.test.ts
+│       │   │   │   └── regles-du-contrat.test.ts
 │       │   │   ├── modele-de-test.ts
 │       │   │   ├── questionnaire
 │       │   │   │   ├── adresse-selon-les-reponses.test.tsx
@@ -1038,6 +1156,7 @@
 │       │   │   │   ├── bornes-de-date.test.tsx
 │       │   │   │   ├── case-seule.test.tsx
 │       │   │   │   ├── dependance-sur-la-page.test.tsx
+│       │   │   │   ├── description-d-une-reponse-possible.test.tsx
 │       │   │   │   ├── focus-a-l-entree.test.tsx
 │       │   │   │   ├── incoherence-adresse.test.tsx
 │       │   │   │   ├── incoherence-page-anterieure.test.tsx
@@ -1045,17 +1164,16 @@
 │       │   │   │   ├── libelles-en-gras.test.tsx
 │       │   │   │   ├── liste-deroulante.test.tsx
 │       │   │   │   ├── nombre-entier.test.tsx
-│       │   │   │   ├── option-description.test.tsx
-│       │   │   │   ├── option-offerte.test.tsx
-│       │   │   │   ├── option-selon-les-reponses.test.tsx
-│       │   │   │   ├── options-incompatibles.test.tsx
 │       │   │   │   ├── page-composee.test.tsx
 │       │   │   │   ├── question-facultative.test.tsx
-│       │   │   │   ├── question-sous-une-option.test.tsx
+│       │   │   │   ├── question-sous-une-reponse-possible.test.tsx
 │       │   │   │   ├── questions-validees.test.tsx
 │       │   │   │   ├── rappel-en-valeurs.test.tsx
 │       │   │   │   ├── rappel.test.tsx
 │       │   │   │   ├── reponse-bloquante.test.tsx
+│       │   │   │   ├── reponse-possible-offerte.test.tsx
+│       │   │   │   ├── reponse-possible-selon-les-reponses.test.tsx
+│       │   │   │   ├── reponses-possibles-incompatibles.test.tsx
 │       │   │   │   ├── retour-en-haut.test.ts
 │       │   │   │   ├── revoir-une-reponse.test.tsx
 │       │   │   │   ├── sous-question-fermee.test.tsx
@@ -1063,18 +1181,22 @@
 │       │   │   │   ├── texte-long.test.tsx
 │       │   │   │   └── validation-croisee.test.tsx
 │       │   │   ├── questionnaire-engine
+│       │   │   │   ├── adresse.test.ts
 │       │   │   │   ├── chemin-d-une-reponse.test.ts
 │       │   │   │   ├── conditions-dans-une-garde.test.ts
 │       │   │   │   ├── conditions.test.ts
 │       │   │   │   ├── constructeurs-de-questions.test.ts
-│       │   │   │   ├── faits-changes-par-une-question.test.ts
 │       │   │   │   ├── lecture-des-reponses.test.ts
 │       │   │   │   ├── local-date-time.test.ts
 │       │   │   │   ├── page-commit.test.ts
+│       │   │   │   ├── question-id.test.ts
 │       │   │   │   ├── question.test.ts
+│       │   │   │   ├── questions-qui-comptent-par-les-faits.test.ts
 │       │   │   │   ├── questions-qui-comptent.test.ts
+│       │   │   │   ├── reads.test.ts
 │       │   │   │   └── une-question-a-plusieurs-places.test.ts
 │       │   │   ├── rattachement
+│       │   │   │   ├── enregistrement-au-serveur.test.ts
 │       │   │   │   ├── rattachement-form.test.tsx
 │       │   │   │   ├── saisie-complete.test.ts
 │       │   │   │   ├── session.test.ts
@@ -1085,8 +1207,10 @@
 │       │   │   ├── server
 │       │   │   │   ├── configuration.test.ts
 │       │   │   │   ├── enrichissement.test.ts
+│       │   │   │   ├── garde-de-l-api.test.ts
 │       │   │   │   ├── grist-de-test.ts
 │       │   │   │   ├── grist-ecriture.smoke.test.ts
+│       │   │   │   ├── grist-lent.test.ts
 │       │   │   │   ├── grist.smoke.test.ts
 │       │   │   │   ├── referentiel-grist.test.ts
 │       │   │   │   ├── server.test.ts
@@ -1096,9 +1220,11 @@
 │       │   │   │   ├── aspect-de-l-avis.test.ts
 │       │   │   │   ├── avis.test.tsx
 │       │   │   │   ├── boutons-des-resultats.test.tsx
+│       │   │   │   ├── boutons-envoyes.ts
 │       │   │   │   ├── disposition-du-second-resultat.test.tsx
 │       │   │   │   ├── gabarit-retenu.ts
 │       │   │   │   ├── indicateur-ald.test.tsx
+│       │   │   │   ├── journal-des-boutons-du-document.test.tsx
 │       │   │   │   ├── journal-des-boutons.test.tsx
 │       │   │   │   ├── journal-des-questions.test.tsx
 │       │   │   │   ├── journal-du-document.test.tsx
@@ -1122,7 +1248,8 @@
 │       │   │   │   ├── page-refusee.test.ts
 │       │   │   │   ├── preconisation.test.ts
 │       │   │   │   ├── reponse-inapplicable.test.ts
-│       │   │   │   └── simulation.test.ts
+│       │   │   │   ├── simulation.test.ts
+│       │   │   │   └── textes-reecrits.test.ts
 │       │   │   ├── theme
 │       │   │   │   └── theme-de-l-hote.test.ts
 │       │   │   └── ui
@@ -1133,6 +1260,7 @@
 │       │   ├── tsconfig.app.json
 │       │   ├── tsconfig.base.json
 │       │   ├── tsconfig.core.json
+│       │   ├── tsconfig.navigateur.json
 │       │   ├── tsconfig.node.json
 │       │   ├── tsconfig.server.json
 │       │   ├── tsconfig.tests.json
@@ -1146,7 +1274,14 @@
 │       ├── CONTEXT.md
 │       ├── adr
 │       │   ├── .gitkeep
-│       │   └── cli.md
+│       │   ├── 0001-tsp-est-un-lanceur-shell-adosse-a-mise.md
+│       │   ├── 0002-une-action-de-tsp-est-un-script-du-package-json.md
+│       │   ├── 0003-la-ci-et-la-production-n-appellent-pas-tsp.md
+│       │   ├── 0004-l-issue-fait-foi-notion-la-suit.md
+│       │   ├── 0005-la-cli-n-a-pas-de-tests.md
+│       │   ├── 0006-les-commandes-de-lecture-ne-possedent-rien.md
+│       │   ├── 0007-un-chantier-est-une-issue-son-etat-se-deduit.md
+│       │   └── 0008-le-tableau-des-chantiers-est-une-projection.md
 │       ├── carte-des-chantiers.md
 │       ├── contributing
 │       │   ├── ecrire-une-decision.md
@@ -1161,4 +1296,4 @@
 ├── package.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-180 directories, 1113 files
+181 directories, 1247 files

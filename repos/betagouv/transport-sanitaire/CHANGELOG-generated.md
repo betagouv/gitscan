@@ -1,28 +1,29 @@
-## Changelog : transport-sanitaire (30 derniers jours, au 13 novembre 2026)
+## Changelog : transport-sanitaire (30 derniers jours, au 17 novembre 2026)
 
 ### Résumé
-Cette période est marquée par le passage majeur à la version 1.0.0 du simulateur. Les évolutions se sont concentrées sur la fiabilisation de l'expérience utilisateur (meilleure gestion des formulaires et génération de documents PDF) et sur un effort massif de traçabilité pour permettre un suivi précis des parcours utilisateurs.
+Le projet a franchi une étape majeure avec le passage en version 1.2.0. Les évolutions récentes se sont concentrées sur l'intégration des nouvelles règles métier (contrat v10.2.2), l'amélioration de la génération et de la mise en page des documents PDF (fiches patient), ainsi que sur un renforcement massif de la traçabilité des parcours utilisateurs pour permettre une analyse plus fine des simulations.
 
 ### Évolutions fonctionnelles
-- **Génération de documents** : possibilité de consulter l'aperçu, d'imprimer et de télécharger les fiches patients en format PDF ([#234](https://github.com/betagouv/transport-sanitaire/issues/234), [#211](https://github.com/betagouv/transport-sanitaire/issues/211)).
-- **Améliorations de l'interface** :
-    - Présentation des choix sous forme de cartes pour une meilleure lisibilité ([#210](https://github.com/betagouv/transport-sanitaire/issues/210)).
-    - Ajout de titres de sections dans le parcours et ajustement automatique de la taille du texte pour l'affichage ([#224](https://github.com/betagouv/transport-sanitaire/issues/224), [#232](https://github.com/betagouv/transport-sanitaire/issues/232)).
-    - Invitation à donner un avis après l'obtention du résultat ([#237](https://github.com/betagouv/transport-sanitaire/issues/237)).
-- **Nouvelles règles de saisie** : intégration de questions spécifiques sur l'urgence, les champs médicaux multilignes et le sens du trajet ([#362](https://github.com/betagouv/transport-sanitaire/issues/362), [#364](https://github.com/betagouv/transport-sanitaire/issues/364), [#366](https://github.com/betagouv/transport-sanitaire/issues/366)).
-- **Corrections de cohérence** :
-    - Effacement automatique des réponses devenues obsolètes lorsque l'utilisateur change de catégorie ou de question ([#449](https://github.com/betagouv/transport-sanitaire/issues/449), [#444](https://github.com/betagouv/transport-sanitaire/issues/444), [#431](https://github.com/betagouv/transport-sanitaire/issues/431), [#429](https://github.com/betagouv/transport-sanitaire/issues/429)).
-    - Détection et signalement des dates invalides ou futures ([#442](https://github.com/betagouv/transport-sanitaire/issues/442), [#439](https://github.com/betagouv/transport-sanitaire/issues/439)).
-    - Alertes en cas d'incohérence lors de la navigation ([#435](https://github.com/betagouv/transport-sanitaire/issues/435), [#437](https://github.com/betagouv/transport-sanitaire/issues/437)).
+- **Intégration du contrat v10.2.2** : Mise à jour complète des règles métier, de la validation des règles croisées et de la gestion des événements selon la dernière version du contrat [#497, #504, #506, #507].
+- **Amélioration de la génération documentaire** : Optimisation de la création des documents PDF (DAP, PMT et R3), incluant une gestion automatique de la taille du texte pour qu'il s'adapte aux cadres des formulaires et la possibilité de télécharger les fiches patient [#129, #130, #157, #158, #159, #211, #212, #214, #228, #229, #230, #231, #234].
+- **Affinement de la simulation** : 
+    - Meilleure gestion des trajets (parties terrestres) et de l'urgence [#354, #362, #365, #366, #479, #480].
+    - Détection et signalement des incohérences de saisie ou des dates invalides [#411, #435, #437, #439].
+    - Nouveaux scénarios de simulation pour tester les blocages spécifiques du parcours [#466, #478, #486].
+- **Expérience utilisateur** : 
+    - Amélioration de l'interface avec des cases à cocher présentées sous forme de cartes et un stepper de parcours plus clair [#187, #210, #219, #224].
+    - Ajout d'une invitation à donner un avis à l'utilisateur après l'affichage du résultat [#195, #237].
 
 ### Évolutions techniques
-- **Observabilité et suivi** : mise en place d'un journal de bord détaillé pour suivre les parcours utilisateurs (chargement de pages, clics sur les boutons, versions des documents affichés et taille des champs) ([#438](https://github.com/betagouv/transport-sanitaire/issues/438), [#436](https://github.com/betagouv/transport-sanitaire/issues/436), [#430](https://github.com/betagouv/transport-sanitaire/issues/430), [#426](https://github.com/betagouv/transport-sanitaire/issues/426), [#424](https://github.com/betagouv/transport-sanitaire/issues/424), [#415](https://github.com/betagouv/transport-sanitaire/issues/415), [#412](https://github.com/betagouv/transport-sanitaire/issues/412), [#409](https://github.com/betagouv/transport-sanitaire/issues/409)).
-- **Architecture et Refactoring** :
-    - Restructuration du moteur de règles pour séparer la logique métier du socle technique ([#216](https://github.com/betagouv/transport-sanitaire/issues/216), [#250](https://github.com/betagouv/transport-sanitaire/issues/250), [#249](https://github.com/betagouv/transport-sanitaire/issues/249)).
-    - Optimisation de la lecture des abstractions dans l'arbre de décision ([#337](https://github.com/betagouv/transport-sanitaire/issues/337)).
-- **Tests** : augmentation significative de la couverture de tests sur les scénarios de recette (N2, N4) et la génération de documents ([#313](https://github.com/betagouv/transport-sanitaire/issues/313), [#314](https://github.com/betagouv/transport-sanitaire/issues/314), [#293](https://github.com/betagouv/transport-sanitaire/issues/293), [#291](https://github.com/betagouv/transport-sanitaire/issues/291), [#270](https://github.com/betagouv/transport-sanitaire/issues/270), [#310](https://github.com/betagouv/transport-sanitaire/issues/310)).
-- **Mises à jour métier** : intégration successive des modèles de règles métier v10.1.4 jusqu'à la v10.1.8.
+- **Refonte architecturale (DDD)** : Transition vers une architecture orientée domaine (*Domain Driven Design*) avec l'utilisation de *Value Objects* et de *Factories* pour la gestion des questions et des faits [#463, #446, #456, #216].
+- **Observabilité et traçabilité** : Mise en place d'un système de journalisation (journal des parcours) extrêmement détaillé, permettant de suivre les clics, la taille des champs, les boutons exposés et les versions des documents pour faciliter le débogage et l'analyse de données [#382, #383, #384, #385, #386, #387, #388, #389, #412, #415, #416, #424, #426, #430, #433, #434, #436, #438, #491, #497, #506, #508, #509].
+- **Qualité et Tests** : 
+    - Introduction de tests de bout en bout dans un véritable navigateur avec Playwright [#461].
+    - Stabilisation et accélération de la suite de tests existante [#457, #458].
+- **Sécurité et CI/CD** : 
+    - Protection de l'API contre les abus [#451, #454].
+    - Déploiement de la CI sur l'environnement de staging et mise en place de règles de protection des branches [#460].
 
 ### Autres changements
-- **Documentation** : mise à jour du glossaire et documentation des processus de décision ([#238](https://github.com/betagouv/transport-sanitaire/issues/238), [#252](https://github.com/betagouv/transport-sanitaire/issues/252)).
-- **Maintenance** : renommage officiel du dépôt en `transport-sanitaire` ([#217](https://github.com/betagouv/transport-sanitaire/issues/217)).
+- **Documentation** : Rédaction de documents de décision d'architecture (ADR), mise à jour du glossaire métier et documentation des compétences du projet [#91, #151, #238, #239, #252, #264, #268, #393, #463].
+- **Maintenance** : Renommage officiel du dépôt en `transport-sanitaire` [#217].
