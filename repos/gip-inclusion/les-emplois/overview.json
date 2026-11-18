@@ -1,30 +1,28 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi. Il facilite l'orientation via des tiers habilités ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs habilités ou en autoprescription.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
+    "Formulaires & Démarches",
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Tableaux & Affichage",
+    "Suivi & Traçabilité",
     "Gestion métier générale"
   ],
-  "audience": "Professionnels et Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
     "Redis",
     "MinIO",
-    "RustFS",
+    "Huey",
     "GDAL",
-    "Brevo",
-    "uv",
-    "pytest"
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,14 +31,12 @@
     "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Intégrations services externes",
     "Tests",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2",
+      "sso",
       "mfa",
       "session"
     ],
@@ -50,20 +46,19 @@
   },
   "tests": "pytest",
   "workflows": [
-    "GitHub Actions",
-    "pre-commit"
+    "CI/CD avec tests parallélisés"
   ],
-  "lastActivity": "2026-11-02T00:00:00Z",
+  "lastActivity": "2026-11-16T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
+    "Emploi, Social & Logement",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Emploi, Social & Logement",
     "Accessibilité"
   ]
 }

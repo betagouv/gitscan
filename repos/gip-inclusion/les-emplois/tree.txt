@@ -9,6 +9,8 @@
 │   │   ├── bug_report.md
 │   │   └── feature_request.md
 │   ├── actions
+│   │   ├── clever-cli
+│   │   │   └── action.yml
 │   │   └── setup
 │   │       └── action.yml
 │   ├── dependabot.yml
@@ -204,6 +206,7 @@
 │   │   │   ├── 0008_cancelledapproval_cancelledapproval_origin_siae_siret_regex.py
 │   │   │   ├── 0009_alter_approval_origin_sender_kind_and_more.py
 │   │   │   ├── 0010_approval_update_employee_record_watched_data_updated_at.py
+│   │   │   ├── 0011_remove_approval_create_employee_record_notification.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -268,9 +271,8 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_update_pierrefite-sur-seine.py
+│   │   │   ├── 0003_migrate_ignored_communes.py
 │   │   │   └── __init__.py
-│   │   ├── mocks
-│   │   │   └── providers.py
 │   │   ├── models.py
 │   │   ├── reference
 │   │   │   ├── ref_duree_allocation_emploi_v2.csv
@@ -398,6 +400,7 @@
 │   │   │   ├── 0013_siaeconvention_convention_siret_signature_regex.py
 │   │   │   ├── 0014_prosupportreport.py
 │   │   │   ├── 0015_prosupportreport_notified_prescriber.py
+│   │   │   ├── 0016_companymembership_function.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -472,11 +475,10 @@
 │   │   │       ├── detect_missing_asp_files.py
 │   │   │       ├── employee_record.py
 │   │   │       ├── employee_records_status.py
-│   │   │       ├── migrate_employee_record_update_notifications.py
 │   │   │       ├── resend_employee_records.py
 │   │   │       ├── sanitize_employee_records.py
 │   │   │       ├── transfer_employee_records.py
-│   │   │       └── transfer_employee_records_updates.py
+│   │   │       └── transfer_employee_records_for_updates.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_employeerecord_ntt_and_more.py
@@ -826,9 +828,12 @@
 │   │   ├── data
 │   │   │   ├── mfa_required_companies.csv
 │   │   │   └── mfa_required_organizations.csv
+│   │   ├── emails.py
+│   │   ├── enums.py
 │   │   ├── management
 │   │   │   └── commands
 │   │   │       ├── __init__.py
+│   │   │       ├── close_expired_mfa_reset_requests.py
 │   │   │       └── purge_disabled_otp_devices.py
 │   │   ├── middleware.py
 │   │   ├── migrations
@@ -836,6 +841,7 @@
 │   │   │   ├── 0002_itoutotpdevice.py
 │   │   │   ├── 0003_migrate_to_itou_totp_device.py
 │   │   │   ├── 0004_remove_itoutotpdevice_unique_name_per_user_and_more.py
+│   │   │   ├── 0005_resetrequest_resetrequesttransitionlog_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals.py
@@ -857,6 +863,7 @@
 │   │   │   ├── 0003_prescriberorganization_prescriber_organization_siret_regex.py
 │   │   │   ├── 0004_remove_prescriberorganization_is_gps_authorized.py
 │   │   │   ├── 0005_prescriberorganization_is_searchable.py
+│   │   │   ├── 0006_prescribermembership_function.py
 │   │   │   └── __init__.py
 │   │   └── models.py
 │   ├── rdv_insertion
@@ -879,8 +886,7 @@
 │   │   │       ├── fill_job_seeker_profile_asp_uid_changes.py
 │   │   │       ├── geolocate_jobseeker_addresses.py
 │   │   │       ├── move_job_applications.py
-│   │   │       ├── redact_zendesk_attachments.py
-│   │   │       └── resend_employee_record_with_3446_notification.py
+│   │   │       └── redact_zendesk_attachments.py
 │   │   └── sample_user_geoloc.csv
 │   ├── search
 │   │   ├── __init__.py
@@ -1078,6 +1084,9 @@
 │   │   │   │   └── jobapplication_change_form.html
 │   │   │   ├── organizations
 │   │   │   │   └── transfer_org.html
+│   │   │   ├── otp
+│   │   │   │   └── resetrequest
+│   │   │   │       └── change_form.html
 │   │   │   ├── prescribers
 │   │   │   │   └── change_form.html
 │   │   │   └── users
@@ -1269,7 +1278,6 @@
 │   │   │   ├── includes
 │   │   │   │   ├── approvals_filters
 │   │   │   │   │   └── status.html
-│   │   │   │   ├── contract_reasons_disabled_alert.html
 │   │   │   │   ├── contract_status_filter.html
 │   │   │   │   ├── declaration_contact_details.html
 │   │   │   │   ├── declaration_prescriber_email.html
@@ -1278,6 +1286,7 @@
 │   │   │   │   ├── list_reset_filters.html
 │   │   │   │   ├── list_results.html
 │   │   │   │   ├── list_table.html
+│   │   │   │   ├── ongoing_contract_alert.html
 │   │   │   │   ├── progress_bar.html
 │   │   │   │   ├── prolongation_declaration_form.html
 │   │   │   │   └── suspended_pass_info_alert.html
@@ -1302,6 +1311,16 @@
 │   │   │   │   ├── auto_admin_attribution_email_subject.txt
 │   │   │   │   ├── member_deactivation_email_body.md
 │   │   │   │   ├── member_deactivation_email_subject.txt
+│   │   │   │   ├── mfa_reset_request_accepted_body.md
+│   │   │   │   ├── mfa_reset_request_accepted_subject.txt
+│   │   │   │   ├── mfa_reset_request_denied_body.md
+│   │   │   │   ├── mfa_reset_request_denied_subject.txt
+│   │   │   │   ├── mfa_reset_request_done_body.md
+│   │   │   │   ├── mfa_reset_request_done_subject.txt
+│   │   │   │   ├── mfa_reset_request_init_to_self_body.md
+│   │   │   │   ├── mfa_reset_request_init_to_self_subject.txt
+│   │   │   │   ├── mfa_reset_request_init_to_support_body.md
+│   │   │   │   ├── mfa_reset_request_init_to_support_subject.txt
 │   │   │   │   ├── remove_admin_email_body.md
 │   │   │   │   ├── remove_admin_email_subject.txt
 │   │   │   │   ├── request_for_invitation_body.md
@@ -1563,7 +1582,8 @@
 │   │   │   ├── pagination.html
 │   │   │   ├── pagination_for_title.html
 │   │   │   ├── tarteaucitron_matomo.html
-│   │   │   └── update_admin.html
+│   │   │   ├── update_admin.html
+│   │   │   └── zendesk_widget.html
 │   │   ├── insertion
 │   │   │   ├── email
 │   │   │   │   ├── accepted_for_beneficiary_body.md
@@ -1632,12 +1652,14 @@
 │   │   │   │   │   ├── list_orientations.html
 │   │   │   │   │   └── service_provider_actions.html
 │   │   │   │   ├── register_mobilization_event.html
+│   │   │   │   ├── rsa_rights.html
 │   │   │   │   ├── service_response_time.html
 │   │   │   │   ├── service_send_email_modal.html
 │   │   │   │   ├── structure_card_tab_description.html
 │   │   │   │   ├── structure_card_tab_services.html
 │   │   │   │   ├── structure_card_tabs.html
 │   │   │   │   └── updated_on_badge.html
+│   │   │   ├── orientation_base.html
 │   │   │   ├── orientation_select_job_seeker.html
 │   │   │   ├── orientation_wizard.html
 │   │   │   ├── orientations
@@ -1671,11 +1693,14 @@
 │   │   │   └── merge_users_confirm.html
 │   │   ├── job_seekers_views
 │   │   │   ├── advisors.html
+│   │   │   ├── appointment_details.html
+│   │   │   ├── appointments.html
 │   │   │   ├── assignment_edit.html
 │   │   │   ├── check_job_seeker_info.html
 │   │   │   ├── check_job_seeker_info_for_hire.html
 │   │   │   ├── contracts.html
 │   │   │   ├── create_job_seeker_for_orientation
+│   │   │   │   ├── search_by_email.html
 │   │   │   │   ├── step_1.html
 │   │   │   │   └── step_2.html
 │   │   │   ├── create_or_update_job_seeker
@@ -1756,6 +1781,11 @@
 │   │   │   ├── enrollment_step_3_and_4_confirm_device.html
 │   │   │   ├── login_with_backup_code.html
 │   │   │   ├── otp_devices.html
+│   │   │   ├── reset_request_created.html
+│   │   │   ├── reset_request_do_reset.html
+│   │   │   ├── reset_request_init.html
+│   │   │   ├── reset_request_self_cancel.html
+│   │   │   ├── reset_request_self_cancelled.html
 │   │   │   └── verify_otp.html
 │   │   ├── prescribers
 │   │   │   ├── card.html
@@ -2015,6 +2045,7 @@
 │   │   │   ├── 0065_user_inclusion_staff.py
 │   │   │   ├── 0066_jobseekerprofile_nationality.py
 │   │   │   ├── 0067_jobseekerprofile_creation_source.py
+│   │   │   ├── 0068_jobseekerprofile_rsa_certification.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -2039,6 +2070,7 @@
 │   │   │   ├── metabase.py
 │   │   │   ├── pe_api_enums.py
 │   │   │   ├── pole_emploi.py
+│   │   │   ├── rdv_insertion.py
 │   │   │   ├── sentry.py
 │   │   │   └── updown.py
 │   │   ├── apps.py
@@ -2543,20 +2575,19 @@
     │   │   ├── test_sanitize_employee_records.ambr
     │   │   ├── test_serializers.ambr
     │   │   ├── test_transfer_employee_records.ambr
-    │   │   └── test_transfer_employee_records_updates.ambr
+    │   │   └── test_transfer_employee_records_for_updates.ambr
     │   ├── factories.py
     │   ├── test_admin.py
     │   ├── test_archive_employee_records.py
     │   ├── test_detect_missing_asp_files.py
     │   ├── test_employee_record_command.py
-    │   ├── test_migrate_employee_record_update_notifications.py
     │   ├── test_mocks.py
     │   ├── test_models.py
     │   ├── test_notifications.py
     │   ├── test_sanitize_employee_records.py
     │   ├── test_serializers.py
     │   ├── test_transfer_employee_records.py
-    │   └── test_transfer_employee_records_updates.py
+    │   └── test_transfer_employee_records_for_updates.py
     ├── external_data
     │   ├── __init__.py
     │   └── tests.py
@@ -2674,8 +2705,6 @@
     │   └── test_terms_acceptance.py
     ├── nexus
     │   ├── __init__.py
-    │   ├── __snapshots__
-    │   │   └── tests_management_commands.ambr
     │   ├── factories.py
     │   ├── test_admin.py
     │   ├── test_create_dora_users.py
@@ -2705,7 +2734,8 @@
     │   ├── factories.py
     │   ├── test_admin.py
     │   ├── test_purge_disabled_otp_devices.py
-    │   └── test_utils.py
+    │   ├── test_utils.py
+    │   └── tests.py
     ├── prescribers
     │   ├── __init__.py
     │   ├── factories.py
@@ -2718,7 +2748,6 @@
     │   ├── __init__.py
     │   ├── test_move_job_applications.py
     │   ├── test_redact_zendesk_attachments.py
-    │   ├── test_resend_employee_record_with_3446_notification.py
     │   └── test_users_geolocation.py
     ├── search
     │   ├── __init__.py
@@ -2742,6 +2771,7 @@
     │   └── test_models.py
     ├── tasks
     │   ├── test_fallback_to_postgres.py
+    │   ├── test_huey_queue.py
     │   └── test_redis_reconnect.py
     ├── test_consistency.py
     ├── test_sentry.py
@@ -2788,6 +2818,7 @@
     │   │   ├── test_github.py
     │   │   ├── test_metabase.py
     │   │   ├── test_pole_emploi_api.py
+    │   │   ├── test_rdv_insertion.py
     │   │   ├── test_sentry_api.py
     │   │   └── test_updown.py
     │   ├── factory_boy.py
@@ -2928,7 +2959,7 @@
         │   │   ├── test_dashboard.ambr
         │   │   ├── test_dashboard_stats.ambr
         │   │   ├── test_edit_job_seeker_info.ambr
-        │   │   ├── test_edit_user_info.ambr
+        │   │   ├── test_edit_user_info_job_seeker.ambr
         │   │   └── test_edit_user_notifications.ambr
         │   ├── test_activate_sso_account.py
         │   ├── test_api_token.py
@@ -2936,7 +2967,8 @@
         │   ├── test_dashboard_stats.py
         │   ├── test_edit_job_seeker_info.py
         │   ├── test_edit_user_email.py
-        │   ├── test_edit_user_info.py
+        │   ├── test_edit_user_info_job_seeker.py
+        │   ├── test_edit_user_info_professional.py
         │   ├── test_edit_user_notifications.py
         │   └── test_switch_organization.py
         ├── eligibility_views
@@ -3101,4 +3133,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-501 directories, 2602 files
+502 directories, 2633 files
