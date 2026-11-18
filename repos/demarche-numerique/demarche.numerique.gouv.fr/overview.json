@@ -1,17 +1,15 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour la dématérialisation des démarches administratives en France. Elle permet la gestion complète des dossiers, l'instruction par les agents et le suivi des procédures.",
+  "description": "Plateforme web dédiée à la dématérialisation des démarches administratives françaises. Elle permet aux usagers de soumettre des dossiers et aux agents de l'État de les instruire et de les gérer.",
   "language": "Ruby",
   "features": [
     "Formulaires & Démarches",
-    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
-    "Suivi & Traçabilité",
-    "Accessibilité & i18n",
+    "Authentification & Accès",
     "Notifications & Alertes",
-    "Recherche & Filtres"
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,10 +19,12 @@
     "Redis",
     "Sidekiq",
     "Devise",
+    "FranceConnect",
+    "Brevo",
     "Playwright",
-    "TypeScript",
     "Vite",
-    "DSFR"
+    "Skylight",
+    "Prometheus"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,27 +32,31 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
-    "Authentification (composant)"
+    "Tests"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "session",
+      "sso",
       "mfa",
-      "sso"
+      "session"
     ],
     "providers": [
-      "ProConnect",
-      "FranceConnect"
+      "FranceConnect",
+      "ProConnect"
     ]
   },
   "tests": [
     "RSpec",
     "Playwright",
-    "Vitest"
+    "Vitest",
+    "AccessLint"
   ],
-  "lastActivity": "2026-11-06T13:47:43+01:00",
+  "workflows": [
+    "CI/CD",
+    "Vérification de signature GPG des commits"
+  ],
+  "lastActivity": "2026-11-17T20:56:25Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -61,8 +65,8 @@
     "React & Next.js",
     "TypeScript",
     "Bases de données SQL",
-    "Sécurité & Auth",
     "Design System & UI",
-    "Accessibilité"
+    "Accessibilité",
+    "CI/CD & GitHub Actions"
   ]
 }

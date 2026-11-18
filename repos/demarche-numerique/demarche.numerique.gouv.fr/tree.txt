@@ -1598,14 +1598,10 @@
 │   │   │   │       ├── dossiers_controller.rb
 │   │   │   │       ├── json_description_procedures_controller.rb
 │   │   │   │       └── stats_controller.rb
-│   │   │   ├── v1
-│   │   │   │   ├── dossiers_controller.rb
-│   │   │   │   └── procedures_controller.rb
 │   │   │   └── v2
 │   │   │       ├── base_controller.rb
 │   │   │       ├── dossiers_controller.rb
 │   │   │       └── graphql_controller.rb
-│   │   ├── api_controller.rb
 │   │   ├── api_geo_test_controller.rb
 │   │   ├── application_controller
 │   │   │   └── error_handling.rb
@@ -1632,6 +1628,7 @@
 │   │   │   ├── instructeur_concern.rb
 │   │   │   ├── instructeur_email_notification_concern.rb
 │   │   │   ├── instructeur_procedure_concern.rb
+│   │   │   ├── legacy_login_method_concern.rb
 │   │   │   ├── lockable_concern.rb
 │   │   │   ├── nav_bar_profile_concern.rb
 │   │   │   ├── pro_connect_session_concern.rb
@@ -2207,6 +2204,9 @@
 │   │   │   │   └── sentry.ts
 │   │   │   ├── utils.test.ts
 │   │   │   └── utils.ts
+│   │   ├── test
+│   │   │   ├── react.tsx
+│   │   │   └── setup.ts
 │   │   └── types.d.ts
 │   ├── jobs
 │   │   ├── admin_update_default_zones_job.rb
@@ -2398,6 +2398,7 @@
 │   │   ├── france_connect_config.rb
 │   │   ├── france_connect_plus_config.rb
 │   │   ├── json_path_util.rb
+│   │   ├── jwe_decryptor.rb
 │   │   ├── oidc_config.rb
 │   │   ├── page_around_the_frame.rb
 │   │   ├── pro_connect_config.rb
@@ -2485,6 +2486,7 @@
 │   │   ├── cache
 │   │   │   └── procedure_dossier_pagination.rb
 │   │   ├── champ_data.rb
+│   │   ├── champ_layout.rb
 │   │   ├── champ_matching_result.rb
 │   │   ├── champ_presentations
 │   │   │   ├── base_presentation.rb
@@ -2571,7 +2573,7 @@
 │   │   │   ├── blob_signed_id_concern.rb
 │   │   │   ├── blob_virus_scanner_concern.rb
 │   │   │   ├── brevo_blockable_concern.rb
-│   │   │   ├── champ_*.rb  (6 files)
+│   │   │   ├── champ_*.rb  (7 files)
 │   │   │   ├── columns_concern.rb
 │   │   │   ├── domain_migratable_concern.rb
 │   │   │   ├── dossier_*.rb  (16 files)
@@ -2584,7 +2586,7 @@
 │   │   │   ├── password_complexity_concern.rb
 │   │   │   ├── pieces_jointes_list_concern.rb
 │   │   │   ├── prefillable_from_service_public_concern.rb
-│   │   │   ├── procedure_*.rb  (10 files)
+│   │   │   ├── procedure_*.rb  (11 files)
 │   │   │   ├── revision_comparison_concern.rb
 │   │   │   ├── revision_describable_to_llm_concern.rb
 │   │   │   ├── routing_rule_statuses_concern.rb
@@ -2693,7 +2695,6 @@
 │   │   ├── logic.rb
 │   │   ├── map_filter.rb
 │   │   ├── merge_log.rb
-│   │   ├── module_api_carto.rb
 │   │   ├── mon_avis_embed.rb
 │   │   ├── null_zone.rb
 │   │   ├── outdated_procedure.rb
@@ -2744,6 +2745,7 @@
 │   │   ├── type_de_champ
 │   │   │   └── revision_diff_value.rb
 │   │   ├── type_de_champ.rb
+│   │   ├── type_de_champ_layout.rb
 │   │   ├── type_de_champ_match.rb
 │   │   ├── type_de_champ_node.rb
 │   │   ├── type_de_champ_tree.rb
@@ -2823,22 +2825,7 @@
 │   │   ├── rnf.json
 │   │   └── service-public.json
 │   ├── serializers
-│   │   ├── avis_serializer.rb
-│   │   ├── champ_serializer.rb
-│   │   ├── commentaire_serializer.rb
-│   │   ├── dossier_serializer.rb
-│   │   ├── dossiers_serializer.rb
-│   │   ├── entreprise_serializer.rb
-│   │   ├── etablissement_serializer.rb
-│   │   ├── geo_area_serializer.rb
-│   │   ├── individual_serializer.rb
-│   │   ├── logic_serializer.rb
-│   │   ├── module_api_carto_serializer.rb
-│   │   ├── procedure_serializer.rb
-│   │   ├── row_serializer.rb
-│   │   ├── service_serializer.rb
-│   │   ├── type_de_champ_serializer.rb
-│   │   └── user_serializer.rb
+│   │   └── logic_serializer.rb
 │   ├── services
 │   │   ├── administrateur_deletion_service.rb
 │   │   ├── ami
@@ -2898,6 +2885,7 @@
 │   │   │   ├── base_rows_builder.rb
 │   │   │   ├── etudiant_boursier_rows_builder.rb
 │   │   │   └── quotient_familial_rows_builder.rb
+│   │   ├── france_connect_plus_service.rb
 │   │   ├── france_connect_service.rb
 │   │   ├── geojson_service.rb
 │   │   ├── instructeurs_import_service.rb
@@ -2921,6 +2909,8 @@
 │   │   ├── procedure_archive_service.rb
 │   │   ├── procedure_export_service
 │   │   │   ├── csv_export.rb
+│   │   │   ├── repetition_max_rows.rb
+│   │   │   ├── repetition_row.rb
 │   │   │   ├── xlsx_export.rb
 │   │   │   └── xlsx_streamer.rb
 │   │   ├── procedure_export_service.rb
@@ -3124,6 +3114,9 @@
 │   │       ├── t20261014_convert_number_champs_task.rb
 │   │       ├── t20261014move_api_entreprise_jobs_to_parking_task.rb
 │   │       ├── t20261020_convert_degraded_etablissements_task.rb
+│   │       ├── t20261109purge_champ_orphan_attachments_task.rb
+│   │       ├── t20261111clear_legacy_export_order_task.rb
+│   │       ├── t20261117harmonize_procedure_tags_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -3181,9 +3174,9 @@
 │       │       ├── _flashes.html.erb
 │       │       └── _pagination.html.haml
 │       ├── administrateur_mailer
-│       │   ├── activate_before_expiration.haml
+│       │   ├── activate_before_expiration.html.erb
 │       │   ├── api_entreprise_token_expiration.html.erb
-│       │   └── notify_service_without_siret.haml
+│       │   └── notify_service_without_siret.html.erb
 │       ├── administrateurs
 │       │   ├── _main_navigation.html.haml
 │       │   ├── api_tokens
@@ -3232,10 +3225,10 @@
 │       │   ├── exports
 │       │   │   └── download.turbo_stream.haml
 │       │   ├── groupe_gestionnaire
-│       │   │   ├── administrateurs.html.haml
+│       │   │   ├── administrateurs.html.erb
 │       │   │   ├── commentaires.html.erb
-│       │   │   ├── gestionnaires.html.haml
-│       │   │   └── show.html.haml
+│       │   │   ├── gestionnaires.html.erb
+│       │   │   └── show.html.erb
 │       │   ├── groupe_instructeurs
 │       │   │   ├── _custom_routing_modal.html.erb
 │       │   │   ├── _routing_alert_sticky_header.html.haml
@@ -3316,11 +3309,11 @@
 │       │   │   ├── mapping_type_de_champ.html.erb
 │       │   │   └── prefill_and_display.html.erb
 │       │   ├── routing_rules
-│       │   │   ├── _update.turbo_stream.haml
-│       │   │   ├── add_row.turbo_stream.haml
-│       │   │   ├── change_targeted_champ.turbo_stream.haml
-│       │   │   ├── delete_row.turbo_stream.haml
-│       │   │   └── update.turbo_stream.haml
+│       │   │   ├── _update.turbo_stream.erb
+│       │   │   ├── add_row.turbo_stream.erb
+│       │   │   ├── change_targeted_champ.turbo_stream.erb
+│       │   │   ├── delete_row.turbo_stream.erb
+│       │   │   └── update.turbo_stream.erb
 │       │   ├── services
 │       │   │   ├── _form.html.erb
 │       │   │   ├── edit.html.haml
@@ -3354,9 +3347,9 @@
 │       ├── attachments
 │       │   └── destroy.turbo_stream.erb
 │       ├── avis_mailer
-│       │   ├── avis_invitation_and_confirm_email.html.haml
+│       │   ├── avis_invitation_and_confirm_email.html.erb
 │       │   ├── notify_new_avis_to_expert.html.erb
-│       │   └── notify_new_commentaire_to_expert.html.haml
+│       │   └── notify_new_commentaire_to_expert.html.erb
 │       ├── blank_mailer
 │       │   └── send_template.html.haml
 │       ├── carte
@@ -3490,45 +3483,45 @@
 │       │   └── merge_using_password.turbo_stream.haml
 │       ├── gestionnaires
 │       │   ├── groupe_gestionnaire_administrateurs
-│       │   │   ├── _add_administrateur_form.html.haml
-│       │   │   ├── create.turbo_stream.haml
-│       │   │   ├── destroy.turbo_stream.haml
-│       │   │   ├── index.html.haml
-│       │   │   └── remove.turbo_stream.haml
+│       │   │   ├── _add_administrateur_form.html.erb
+│       │   │   ├── create.turbo_stream.erb
+│       │   │   ├── destroy.turbo_stream.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── remove.turbo_stream.erb
 │       │   ├── groupe_gestionnaire_children
-│       │   │   ├── _add_child_form.html.haml
-│       │   │   ├── create.turbo_stream.haml
-│       │   │   └── index.html.haml
+│       │   │   ├── _add_child_form.html.erb
+│       │   │   ├── create.turbo_stream.erb
+│       │   │   └── index.html.erb
 │       │   ├── groupe_gestionnaire_commentaires
-│       │   │   ├── _list_commentaires.html.haml
-│       │   │   ├── destroy.turbo_stream.haml
-│       │   │   ├── index.html.haml
+│       │   │   ├── _list_commentaires.html.erb
+│       │   │   ├── destroy.turbo_stream.erb
+│       │   │   ├── index.html.erb
 │       │   │   ├── parent_groupe_gestionnaire.html.erb
 │       │   │   └── show.html.erb
 │       │   ├── groupe_gestionnaire_gestionnaires
-│       │   │   ├── _add_gestionnaire_form.html.haml
-│       │   │   ├── create.turbo_stream.haml
-│       │   │   ├── destroy.turbo_stream.haml
-│       │   │   └── index.html.haml
+│       │   │   ├── _add_gestionnaire_form.html.erb
+│       │   │   ├── create.turbo_stream.erb
+│       │   │   ├── destroy.turbo_stream.erb
+│       │   │   └── index.html.erb
 │       │   └── groupe_gestionnaires
-│       │       ├── _main_navigation.html.haml
-│       │       ├── edit.html.haml
-│       │       ├── index.html.haml
-│       │       ├── show.html.haml
-│       │       └── tree_structure.html.haml
+│       │       ├── _main_navigation.html.erb
+│       │       ├── edit.html.erb
+│       │       ├── index.html.erb
+│       │       ├── show.html.erb
+│       │       └── tree_structure.html.erb
 │       ├── groupe_gestionnaire_mailer
-│       │   ├── notify_added_administrateurs.html.haml
-│       │   ├── notify_added_gestionnaires.html.haml
-│       │   ├── notify_new_commentaire_groupe_gestionnaire.html.haml
-│       │   ├── notify_removed_administrateur.html.haml
-│       │   └── notify_removed_gestionnaire.html.haml
+│       │   ├── notify_added_administrateurs.html.erb
+│       │   ├── notify_added_gestionnaires.html.erb
+│       │   ├── notify_new_commentaire_groupe_gestionnaire.html.erb
+│       │   ├── notify_removed_administrateur.html.erb
+│       │   └── notify_removed_gestionnaire.html.erb
 │       ├── groupe_instructeur_mailer
 │       │   ├── confirm_and_notify_added_instructeur.html.erb
 │       │   ├── confirm_and_notify_added_instructeur_in_many_groupes.html.erb
 │       │   ├── notify_added_instructeur_in_many_groupes.html.erb
 │       │   ├── notify_added_instructeurs.html.erb
-│       │   ├── notify_removed_instructeur.html.haml
-│       │   └── notify_removed_instructeur_from_many_groupes.html.haml
+│       │   ├── notify_removed_instructeur.html.erb
+│       │   └── notify_removed_instructeur_from_many_groupes.html.erb
 │       ├── instructeur_mailer
 │       │   ├── last_week_overview.html.haml
 │       │   ├── send_dossier.html.haml
@@ -3551,8 +3544,8 @@
 │       │   │   └── destroy.turbo_stream.haml
 │       │   ├── contact_informations
 │       │   │   ├── _form.html.erb
-│       │   │   ├── edit.html.haml
-│       │   │   └── new.html.haml
+│       │   │   ├── edit.html.erb
+│       │   │   └── new.html.erb
 │       │   ├── dossiers
 │       │   │   ├── _annotations_error_alert.html.erb
 │       │   │   ├── _archived_block.html.haml
@@ -3604,8 +3597,8 @@
 │       │   │   ├── edit.html.haml
 │       │   │   └── new.html.haml
 │       │   ├── groupe_instructeurs
-│       │   │   ├── index.html.haml
-│       │   │   └── show.html.haml
+│       │   │   ├── index.html.erb
+│       │   │   └── show.html.erb
 │       │   ├── procedure_presentation
 │       │   │   └── customize_filters.html.erb
 │       │   └── procedures
@@ -3636,11 +3629,13 @@
 │       │       ├── stats.html.erb
 │       │       └── synthese.html.erb
 │       ├── invite_mailer
-│       │   ├── invite_guest.html.haml
-│       │   └── invite_user.html.haml
+│       │   ├── invite_guest.html.erb
+│       │   └── invite_user.html.erb
 │       ├── invites
-│       │   ├── _button.html.haml
-│       │   ├── _form.html.haml
+│       │   ├── _button.html.erb
+│       │   ├── _close_modal.turbo_stream.erb
+│       │   ├── _form.html.erb
+│       │   ├── _trigger.html.erb
 │       │   ├── create.turbo_stream.haml
 │       │   ├── destroy.turbo_stream.haml
 │       │   └── index.html.erb
@@ -3708,7 +3703,9 @@
 │       │   ├── banners
 │       │   │   └── index.html.erb
 │       │   ├── champ_matching_results
-│       │   │   └── index.html.erb
+│       │   │   ├── _values.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── show.html.erb
 │       │   ├── confirmation_urls
 │       │   │   └── new.html.erb
 │       │   ├── dossiers
@@ -3780,11 +3777,11 @@
 │       ├── recherche
 │       │   └── index.html.erb
 │       ├── recoveries
-│       │   ├── identification.html.haml
-│       │   ├── nature.html.haml
-│       │   ├── selection.html.haml
-│       │   ├── support.html.haml
-│       │   └── terminee.html.haml
+│       │   ├── identification.html.erb
+│       │   ├── nature.html.erb
+│       │   ├── selection.html.erb
+│       │   ├── support.html.erb
+│       │   └── terminee.html.erb
 │       ├── release_notes
 │       │   ├── _announce.html.haml
 │       │   ├── _page.html.haml
@@ -3805,6 +3802,7 @@
 │       │   ├── _footer_content_list.html.erb
 │       │   ├── _footer_copy.html.erb
 │       │   ├── _france_connect_login.html.erb
+│       │   ├── _france_connect_plus_login.html.erb
 │       │   ├── _notification_sticker.html.haml
 │       │   ├── _piece_justificative_template.html.erb
 │       │   ├── _procedure_description.html.erb
@@ -3985,7 +3983,7 @@
 │           ├── sessions
 │           │   ├── _login_page_banner.html.erb
 │           │   ├── link_sent.html.haml
-│           │   └── new.html.haml
+│           │   └── new.html.erb
 │           └── statistiques
 │               └── show.html.haml
 ├── bin
@@ -4000,7 +3998,8 @@
 │   ├── setup
 │   ├── spring
 │   ├── update
-│   └── vite
+│   ├── vite
+│   └── vite-plus
 ├── bors.toml
 ├── bun.lock
 ├── bunfig.toml
@@ -4029,7 +4028,6 @@
 │   │   ├── 01_application_name.rb
 │   │   ├── 02_urls.rb
 │   │   ├── action_view_record_identifier.rb
-│   │   ├── active_model_serializer.rb
 │   │   ├── active_storage.rb
 │   │   ├── administrate.rb
 │   │   ├── ancestry.rb
@@ -4347,6 +4345,9 @@
 │   │       │   └── email_template_attestation_inconsistency_alert
 │   │       │       ├── en.yml
 │   │       │       └── fr.yml
+│   │       ├── administrateur_mailer
+│   │       │   ├── en.yml
+│   │       │   └── fr.yml
 │   │       ├── administrateurs
 │   │       │   ├── api_tokens
 │   │       │   │   ├── create.en.yml
@@ -4355,6 +4356,7 @@
 │   │       │   │   ├── index.en.yml
 │   │       │   │   └── index.fr.yml
 │   │       │   ├── attestation_template_v2s
+│   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
 │   │       │   ├── email_templates
 │   │       │   │   ├── en.yml
@@ -4390,6 +4392,9 @@
 │   │       ├── api_tokens.en.yml
 │   │       ├── api_tokens.fr.yml
 │   │       ├── avis_mailer
+│   │       │   ├── avis_invitation_and_confirm_email
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
 │   │       │   ├── notify_new_avis_to_expert
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
@@ -4528,6 +4533,9 @@
 │   │       │   ├── commentaires
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
+│   │       │   ├── contact_informations
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
 │   │       │   ├── en.yml
 │   │       │   ├── fr.yml
 │   │       │   ├── groupe_instructeurs
@@ -4580,6 +4588,9 @@
 │   │       ├── recherche
 │   │       │   ├── index.en.yml
 │   │       │   └── index.fr.yml
+│   │       ├── recoveries
+│   │       │   ├── en.yml
+│   │       │   └── fr.yml
 │   │       ├── root
 │   │       │   ├── _testimonials.en.yml
 │   │       │   ├── _testimonials.fr.yml
@@ -5231,6 +5242,8 @@
 │   │   ├── 20260924150000_remove_search_terms_text_from_dossiers.rb
 │   │   ├── 20260928120000_add_default_to_procedure_revisions_type_de_champ_tree.rb
 │   │   ├── 20260928120001_validate_procedure_revisions_type_de_champ_tree_not_null.rb
+│   │   ├── 20261001090000_add_check_constraint_on_types_de_champ_procedure_id.rb
+│   │   ├── 20261001090100_validate_change_procedure_id_not_null_on_types_de_champ.rb
 │   │   ├── 20261002100000_add_archive_warning_dismissed_to_instructeurs_procedures.rb
 │   │   ├── 20261005123144_drop_tags_from_procedures.rb
 │   │   ├── 20261007120000_create_demandeur_sirets.rb
@@ -5240,7 +5253,10 @@
 │   │   ├── 20261019120000_add_token_digest_to_api_tokens.rb
 │   │   ├── 20261028153130_add_self_management_restricted_to_email_domain_to_procedures.rb
 │   │   ├── 20261102100000_add_brevo_block_to_users.rb
-│   │   └── 20261102120000_create_champ_matching_tables.rb
+│   │   ├── 20261102120000_create_champ_matching_tables.rb
+│   │   ├── 20261109100000_add_login_method_to_user_sessions.rb
+│   │   ├── 20261111120000_add_legacy_export_order_to_procedures.rb
+│   │   └── 20261113100000_add_merge_login_method_to_france_connect_informations.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── avis.rb
@@ -5330,9 +5346,9 @@
 │   │       ├── modification-de-l-identite-du-demandeur-d-un-dossier.fr.md
 │   │       ├── mon-dossier-a-ete-depose-par-un-tiers-et-je-souhaite-y-acceder.fr.md
 │   │       └── quels-sont-les-navigateurs-supportes.fr.md
+│   ├── migration-api-v1-vers-v2.md
 │   ├── object-storage-and-data-encryption.md
 │   └── recovery.md
-├── eslint.config.ts
 ├── lib
 │   ├── cops
 │   │   ├── add_concurrent_index.rb
@@ -5736,9 +5752,6 @@
 │   │   │   │       ├── dossiers_controller_spec.rb
 │   │   │   │       ├── json_description_procedures_controller_spec.rb
 │   │   │   │       └── stats_controller_spec.rb
-│   │   │   ├── v1
-│   │   │   │   ├── dossiers_controller_spec.rb
-│   │   │   │   └── procedures_controller_spec.rb
 │   │   │   └── v2
 │   │   │       ├── base_controller_spec.rb
 │   │   │       ├── dossiers_controller_spec.rb
@@ -5746,7 +5759,6 @@
 │   │   │       ├── graphql_controller_skylight_spec.rb
 │   │   │       ├── graphql_controller_stored_mutations_spec.rb
 │   │   │       └── graphql_controller_stored_queries_spec.rb
-│   │   ├── api_controller_spec.rb
 │   │   ├── application_controller
 │   │   │   └── error_handling_spec.rb
 │   │   ├── application_controller_spec.rb
@@ -6035,6 +6047,8 @@
 │   │   │   │   └── success.json
 │   │   │   ├── dossierPDF.pdf
 │   │   │   ├── file.pdf
+│   │   │   ├── france_connect_plus
+│   │   │   │   └── jwe_rsa_oaep_256_a256gcm.json
 │   │   │   ├── french-flag.gif
 │   │   │   ├── groupe-import-overwrite-two-groups.csv
 │   │   │   ├── groupe-instructeur-emails-invalides.csv
@@ -6267,6 +6281,7 @@
 │   │   ├── email_checker_spec.rb
 │   │   ├── france_connect_config_spec.rb
 │   │   ├── json_path_util_spec.rb
+│   │   ├── jwe_decryptor_spec.rb
 │   │   ├── linters
 │   │   │   └── output_safety_linter_spec.rb
 │   │   ├── oidc_config_spec.rb
@@ -6450,6 +6465,7 @@
 │   │   │   ├── procedure_clone_concern_spec.rb
 │   │   │   ├── procedure_dossier_vide_pdf_concern_spec.rb
 │   │   │   ├── procedure_email_templates_concern_spec.rb
+│   │   │   ├── procedure_export_order_concern_spec.rb
 │   │   │   ├── procedure_path_concern_spec.rb
 │   │   │   ├── procedure_publish_concern_spec.rb
 │   │   │   ├── procedure_stats_concern_spec.rb
@@ -6547,7 +6563,6 @@
 │   │   ├── procedure_user_overlap_spec.rb
 │   │   ├── rdv_connection_spec.rb
 │   │   ├── referentiel_spec.rb
-│   │   ├── repetition_row_spec.rb
 │   │   ├── routing_engine_spec.rb
 │   │   ├── service_spec.rb
 │   │   ├── siret_spec.rb
@@ -6563,6 +6578,7 @@
 │   │   ├── type_de_champ_shared_example.rb
 │   │   ├── type_de_champ_spec.rb
 │   │   ├── type_de_champ_tree_aggregate_spec.rb
+│   │   ├── type_de_champ_tree_legacy_export_order_spec.rb
 │   │   ├── type_de_champ_tree_spec.rb
 │   │   ├── types_de_champ
 │   │   │   ├── address_type_de_champ_spec.rb
@@ -6621,10 +6637,12 @@
 │   │   │   └── representations_spec.rb
 │   │   ├── administrateurs
 │   │   │   └── legacy_mail_templates_urls_spec.rb
+│   │   ├── content_security_policy_spec.rb
 │   │   ├── cookie_overflow_prevention_spec.rb
 │   │   ├── experts
 │   │   │   └── create_avis_spec.rb
 │   │   ├── france_connect_plus_keys_spec.rb
+│   │   ├── france_connect_plus_spec.rb
 │   │   ├── france_connect_redirect_uris_spec.rb
 │   │   ├── graphql_legacy_playground_spec.rb
 │   │   ├── instructeurs
@@ -6634,6 +6652,7 @@
 │   │   │   └── telecharger_pjs_spec.rb
 │   │   ├── invalid_locale_spec.rb
 │   │   ├── invites_enumeration_spec.rb
+│   │   ├── login_method_spec.rb
 │   │   ├── manager
 │   │   │   ├── engines_otp_gate_spec.rb
 │   │   │   ├── flashes_spec.rb
@@ -6650,7 +6669,8 @@
 │   │   ├── user_sessions_spec.rb
 │   │   └── users
 │   │       ├── dossier_show_turbo_redirect_spec.rb
-│   │       └── profil_passwords_spec.rb
+│   │       ├── profil_passwords_spec.rb
+│   │       └── sign_in_with_particulier_spec.rb
 │   ├── services
 │   │   ├── administrateur_deletion_service_spec.rb
 │   │   ├── ami
@@ -6695,6 +6715,7 @@
 │   │   ├── faqs_loader_service_spec.rb
 │   │   ├── france_connect_champ
 │   │   │   └── aah_rows_builder_spec.rb
+│   │   ├── france_connect_plus_service_spec.rb
 │   │   ├── france_connect_service_spec.rb
 │   │   ├── geojson_service_spec.rb
 │   │   ├── instructeur_procedures_counters_service_spec.rb
@@ -6717,6 +6738,8 @@
 │   │   ├── procedure_archive_service_spec.rb
 │   │   ├── procedure_export_service
 │   │   │   ├── csv_export_spec.rb
+│   │   │   ├── repetition_max_rows_spec.rb
+│   │   │   ├── repetition_row_spec.rb
 │   │   │   └── xlsx_streamer_spec.rb
 │   │   ├── procedure_export_service_spec.rb
 │   │   ├── procedure_export_service_tabular_spec.rb
@@ -6748,6 +6771,7 @@
 │   │   ├── controller_helpers.rb
 │   │   ├── download_helpers.rb
 │   │   ├── factory_bot.rb
+│   │   ├── france_connect_plus_helpers.rb
 │   │   ├── mailer.rb
 │   │   ├── oaken.rb
 │   │   ├── otp_helpers.rb
@@ -7007,13 +7031,11 @@
 │   │       ├── t20260914schedule_cron_jobs_task_spec.rb
 │   │       ├── t20260916nullify_blank_api_entreprise_token_task_spec.rb
 │   │       ├── t20260916strip_whitespace_from_siret_external_id_task_spec.rb
-│   │       ├── t20260918_backfill_type_de_champ_procedure_id_task_spec.rb
 │   │       ├── t20260918_split_types_de_champ_shared_between_procedures_task_spec.rb
 │   │       ├── t20260922backfill_annuaire_education_value_json_task_spec.rb
 │   │       ├── t20260924_remove_search_terms_tsvector_feature_task_spec.rb
 │   │       ├── t20260924normalize_procedure_links_task_spec.rb
 │   │       ├── t20260924normalize_service_links_task_spec.rb
-│   │       ├── t20260928_destroy_types_de_champ_without_procedure_task_spec.rb
 │   │       ├── t20260928park_sidekiq_jobs_task_spec.rb
 │   │       ├── t20261002_keep_single_parcelle_layer_on_cartes_task_spec.rb
 │   │       ├── t20261005_convert_paris2024_accreditation_champs_to_text_task_spec.rb
@@ -7028,6 +7050,9 @@
 │   │       ├── t20261014_convert_number_champs_task_spec.rb
 │   │       ├── t20261014move_api_entreprise_jobs_to_parking_task_spec.rb
 │   │       ├── t20261020_convert_degraded_etablissements_task_spec.rb
+│   │       ├── t20261109purge_champ_orphan_attachments_task_spec.rb
+│   │       ├── t20261111clear_legacy_export_order_task_spec.rb
+│   │       ├── t20261117harmonize_procedure_tags_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -7145,7 +7170,7 @@
 │           ├── registrations
 │           │   └── new.html.haml_spec.rb
 │           ├── sessions
-│           │   └── new.html.haml_spec.rb
+│           │   └── new.html.erb_spec.rb
 │           └── statistiques
 │               └── show.html.haml_spec.rb
 ├── tsconfig.json
@@ -7153,6 +7178,5 @@
 │   └── assets
 │       └── stylesheets
 │           └── leaflet.scss
-├── vite.config.ts
-└── vitest.config.ts
-1099 directories, 6401 files
+└── vite.config.ts
+1103 directories, 6423 files

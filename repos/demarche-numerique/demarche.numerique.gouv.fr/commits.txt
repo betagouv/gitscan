@@ -1,5 +1,273 @@
+2026-11-17T20:56:25Z - ae2bd9c05 - Eric Leroy-Terquem : Merge pull request #14579 from demarche-numerique/fix/export-sheet-name-apostrophe
+2026-11-17T19:41:06Z - 261488cd6 - Eric Leroy-Terquem : Merge pull request #14584 from demarche-numerique/fix/profil-password-errors-flash
+2026-11-17T19:40:51Z - 7fff3f72b - Eric Leroy-Terquem : Merge pull request #14583 from demarche-numerique/fix/profil-password-same-as-current
+2026-11-17T19:36:01Z - b58039e5a - LeSim : Merge pull request #14589 from demarche-numerique/fix/france-connect-merge-email-button
+2026-11-17T19:04:55+01:00 - da4ba4708 - simon lehericey : fix(profil): the password page says once, and only to a linked account, that the password is the local one
+2026-11-17T18:59:32+01:00 - 0d2d1559c - simon lehericey : fix(france_connect): the merge page no longer offers a confirmation by email that asks for the password anyway
+2026-11-17T17:36:46Z - 18093f473 - LeSim : Merge pull request #14560 from demarche-numerique/fix/france-connect-unlink-session
+2026-11-17T17:13:45Z - 57f8ed147 - Mathieu Magnin : Merge pull request #14576 from demarche-numerique/tech/haml-erb-instructeur-groupe-instructeurs
+2026-11-17T17:13:41Z - 02cefe26e - Mathieu Magnin : Merge pull request #14575 from demarche-numerique/tech/haml-erb-instructeur-contact-informations
+2026-11-17T17:13:39Z - b3a837cfc - Mathieu Magnin : Merge pull request #14574 from demarche-numerique/tech/haml-erb-invite-mailer
+2026-11-17T17:13:36Z - e205835a0 - Mathieu Magnin : Merge pull request #14573 from demarche-numerique/tech/haml-erb-avis-mailer
+2026-11-17T17:13:34Z - 36e186d86 - Mathieu Magnin : Merge pull request #14572 from demarche-numerique/tech/haml-erb-administrateur-mailer
+2026-11-17T17:13:31Z - 2bb98aaa0 - Mathieu Magnin : Merge pull request #14571 from demarche-numerique/tech/haml-erb-groupe-instructeur-mailer-removed
+2026-11-17T17:10:40+01:00 - a21692ed9 - Mathieu Magnin : fix(invite_mailer): use 'application' in English invitation subjects
+2026-11-17T17:09:54+01:00 - 5277e1812 - Mathieu Magnin : fix(invite_mailer): keep a single subject key per invitation email
+2026-11-17T17:01:56+01:00 - cc4459448 - Mathieu Magnin : fix(i18n): write SIRET in capitals in administrateur mailer copy
+2026-11-17T16:49:18+01:00 - d8eaa5f27 - Mathieu Magnin : test(invite_mailer): assert on rendered French text instead of missing-translation marker
+2026-11-17T16:49:18+01:00 - c01f8e289 - Mathieu Magnin : test(invite_mailer): set email_sender and use a guest invite without user
+2026-11-17T16:49:18+01:00 - 46b1a974c - Mathieu Magnin : i18n(invite_mailer): extract invite_user body strings to locales
+2026-11-17T16:49:18+01:00 - 3e62932f5 - Mathieu Magnin : fix(i18n): fix French typos in invite mailer copy
+2026-11-17T16:49:17+01:00 - ecebed1f2 - Mathieu Magnin : refactor(invite_mailer): convert invite_guest template from HAML to ERB
+2026-11-17T16:49:17+01:00 - 5b2068cd0 - Mathieu Magnin : refactor(invite_mailer): convert invite_user template from HAML to ERB
+2026-11-17T16:49:17+01:00 - 33cf462fd - Mathieu Magnin : test(invite_mailer): render invite_guest in its own describe block
+2026-11-17T16:49:17+01:00 - 2d0f45d76 - Mathieu Magnin : i18n(invite_mailer): extract invite_guest body strings to locales
+2026-11-17T16:48:49+01:00 - e070281d6 - Mathieu Magnin : test(administrateur_mailer): check translated bodies render in fr and en
+2026-11-17T16:48:49+01:00 - ca68bcf03 - Mathieu Magnin : fix(i18n): fix French typos in administrateur mailer copy
+2026-11-17T16:48:49+01:00 - 64db7ac19 - Mathieu Magnin : refactor(administrateur_mailer): translate notify_service_without_siret email
+2026-11-17T16:48:48+01:00 - 950550dba - Mathieu Magnin : refactor(administrateur_mailer): translate activate_before_expiration email
+2026-11-17T16:48:48+01:00 - 88bed06bd - Mathieu Magnin : refactor(administrateur_mailer): convert notify_service_without_siret to ERB
+2026-11-17T16:48:47+01:00 - e155c33e5 - Mathieu Magnin : refactor(administrateur_mailer): convert activate_before_expiration to ERB
+2026-11-17T16:01:08+01:00 - 3805951d4 - Eric Leroy-Terquem : fix(profil): also show password change errors in the flash alert
+2026-11-17T15:58:32+01:00 - 5a8c3bb9c - Eric Leroy-Terquem : fix(profil): reject a new password identical to the current one
+2026-11-17T15:25:39+01:00 - e12062f79 - Mathieu Magnin : refactor(instructeurs): translate groupe instructeurs show strings
+2026-11-17T15:25:39+01:00 - c7473f65f - Mathieu Magnin : refactor(instructeurs): split long render calls in groupe instructeurs views
+2026-11-17T15:25:39+01:00 - a71a94f03 - Mathieu Magnin : refactor(instructeurs): convert groupe instructeurs index from HAML to ERB
+2026-11-17T15:25:39+01:00 - 383e94484 - Mathieu Magnin : refactor(instructeurs): convert groupe instructeurs show from HAML to ERB
+2026-11-17T15:25:39+01:00 - 1cd9ba198 - Mathieu Magnin : refactor(instructeurs): translate groupe instructeurs index strings
+2026-11-17T15:25:24+01:00 - e3b45b3ee - Mathieu Magnin : refactor(instructeurs): drop unused local passed to contact_informations form
+2026-11-17T15:25:24+01:00 - 731f8456e - Mathieu Magnin : refactor(instructeurs): translate contact_informations/edit strings
+2026-11-17T15:25:23+01:00 - ad745d5ac - Mathieu Magnin : refactor(instructeurs): convert contact_informations/edit to ERB
+2026-11-17T15:25:23+01:00 - 615033956 - Mathieu Magnin : refactor(instructeurs): translate contact_informations/new strings
+2026-11-17T15:25:23+01:00 - 4f4d5364e - Mathieu Magnin : refactor(instructeurs): convert contact_informations/new to ERB
+2026-11-17T15:24:54+01:00 - ec2ab04c8 - Mathieu Magnin : refactor(avis_mailer): send the invitation in the expert's locale
+2026-11-17T15:24:54+01:00 - 45c017b78 - Mathieu Magnin : refactor(avis_mailer): translate avis_invitation_and_confirm_email copy
+2026-11-17T15:24:54+01:00 - 45734566b - Mathieu Magnin : refactor(avis_mailer): translate notify_new_commentaire_to_expert link
+2026-11-17T15:24:54+01:00 - 417bd903a - Mathieu Magnin : refactor(avis_mailer): convert notify_new_commentaire_to_expert to ERB
+2026-11-17T15:24:54+01:00 - 10dce474d - Mathieu Magnin : refactor(avis_mailer): convert avis_invitation_and_confirm_email to ERB
+2026-11-17T15:24:25+01:00 - d2a1ef2c6 - Mathieu Magnin : refactor(groupe_instructeur_mailer): convert notify_removed_instructeur to ERB
+2026-11-17T15:24:25+01:00 - a8afd3ba2 - Mathieu Magnin : refactor(groupe_instructeur_mailer): convert notify_removed_instructeur_from_many_groupes to ERB
+2026-11-17T15:24:10+01:00 - 104db1729 - simon lehericey : fix(account_dropdown): the FranceConnect mention reads the session, as the FranceConnect+ one does
+2026-11-17T15:24:08+01:00 - 6071835da - simon lehericey : fix(france_connect): unlinking an identity signs its FranceConnect sessions out, and goes on as a password session here
+2026-11-17T15:15:49+01:00 - 74e4dd903 - Eric Leroy-Terquem : fix(export): strip the apostrophes Excel forbids at both ends of a sheet name
+2026-11-17T14:34:39Z - 0f98b04b7 - Benoit Queyron : Merge pull request #14554 from demarche-numerique/harmonize-procedure-tags
+2026-11-17T14:33:15+01:00 - e1c54e88a - simon lehericey : feat(sessions): a session can go on under another login method, with the same start and deadline
+2026-11-17T14:21:47+01:00 - f573d3894 - benoitqueyron : feat(maintenance): harmonize procedure tags
+2026-11-17T14:09:21Z - 1b6d9acff - Eric Leroy-Terquem : Merge pull request #14555 from demarche-numerique/push-spyrwnyvsryl
+2026-11-17T10:32:24Z - 9da39b575 - Colin Darie : Merge pull request #14558 from demarche-numerique/t3/fix-sentry-issue-7825761037
+2026-11-17T10:20:46+01:00 - 2c2bea423 - Colin Darie : fix(commentaire): reject usager messages on a brouillon
+2026-11-17T10:20:42+01:00 - f8f619df7 - Colin Darie : test: stop creating usager messages on brouillons
+2026-11-17T10:04:04+01:00 - c4154645f - Mathieu Magnin : refactor(recoveries): convert terminee step from HAML to ERB
+2026-11-17T10:04:04+01:00 - b1c6398f5 - Mathieu Magnin : refactor(recoveries): convert support step from HAML to ERB
+2026-11-17T10:04:03+01:00 - e2b9b10da - Mathieu Magnin : refactor(recoveries): convert identification step from HAML to ERB
+2026-11-17T10:04:03+01:00 - d3ef39d65 - Mathieu Magnin : refactor(recoveries): convert selection step from HAML to ERB
+2026-11-17T10:04:03+01:00 - 6bea07d02 - Mathieu Magnin : refactor(recoveries): convert nature step from HAML to ERB
+2026-11-17T09:48:50+01:00 - 7985131f3 - Mathieu Magnin : fix(attachments): accept .md for markdown content types
+2026-11-17T09:48:49+01:00 - de338a1e5 - Mathieu Magnin : refactor(attachments): drop unused TypeDeChamp#allowed_extensions
+2026-11-17T09:47:48+01:00 - 456beeefe - Paul Chavard : test(attestation_template_v2): match the whole dossier number in the preview specs
+2026-11-17T09:45:43Z - 122652005 - Mathieu Magnin : Merge pull request #14552 from demarche-numerique/fix/markdown-attachments
+2026-11-17T09:29:36Z - ce5a13b05 - Mathieu Magnin : Merge pull request #14550 from demarche-numerique/tech/haml-erb-recoveries
+2026-11-17T09:27:15Z - 13bd32d2e - Mathieu Magnin : Merge pull request #14546 from demarche-numerique/tech/haml-erb-groupe-gestionnaire-mailer
+2026-11-17T09:27:12Z - a34cbc5a3 - Mathieu Magnin : Merge pull request #14545 from demarche-numerique/tech/haml-erb-admin-groupe-gestionnaire
+2026-11-17T09:27:10Z - 204ea9be0 - Mathieu Magnin : Merge pull request #14543 from demarche-numerique/tech/haml-erb-groupe-gestionnaires
+2026-11-17T08:57:14Z - caa606559 - Mathieu Magnin : Merge pull request #14548 from demarche-numerique/tech/haml-erb-admin-routing-rules
+2026-11-17T08:43:13Z - 9282d55a4 - Paul Chavard : Merge pull request #14512 from demarche-numerique/push-vyyqzwzpukxs
+2026-11-16T23:39:58+01:00 - 90cf2f990 - Paul Chavard : fix(export_template): a piece jointe edited in the draft is not one of a previous version
+2026-11-16T23:39:58+01:00 - 67a00588d - Paul Chavard : refactor(procedure): the tag vocabulary reads the trees, not the coordinates
+2026-11-16T23:39:58+01:00 - 10066ac55 - Paul Chavard : refactor(procedure): read the trees for pieces jointes, the laid-out types de champ for the manager template upload and the admin preview links
+2026-11-16T23:39:51+01:00 - 8dd593244 - Paul Chavard : refactor(type_de_champ_tree): walk the nodes once, with their ancestors
+2026-11-16T21:19:17Z - 18f1f63af - LeSim : Merge pull request #14544 from demarche-numerique/feat/france-connect-qualification-wording
+2026-11-16T18:23:32+01:00 - aa228c2bc - Mathieu Magnin : refactor(views): convert admin routing rules add_row turbo stream to ERB
+2026-11-16T18:23:32+01:00 - a855ab2be - Mathieu Magnin : refactor(views): convert admin routing rules change_targeted_champ turbo stream to ERB
+2026-11-16T18:23:32+01:00 - 7e00e23f3 - Mathieu Magnin : refactor(views): convert admin routing rules delete_row turbo stream to ERB
+2026-11-16T18:23:32+01:00 - 50a0481df - Mathieu Magnin : refactor(views): convert admin routing rules update turbo stream to ERB
+2026-11-16T18:23:31+01:00 - 6a4ee3799 - Mathieu Magnin : refactor(views): convert admin routing rules _update turbo stream partial to ERB
+2026-11-16T17:53:11+01:00 - e9554f273 - Mathieu Magnin : refactor(mailers): convert groupe gestionnaire notify_new_commentaire_groupe_gestionnaire email from HAML to ERB
+2026-11-16T17:53:11+01:00 - e9454160b - Mathieu Magnin : refactor(mailers): convert groupe gestionnaire notify_removed_gestionnaire email from HAML to ERB
+2026-11-16T17:53:11+01:00 - 1742c2554 - Mathieu Magnin : refactor(mailers): convert groupe gestionnaire notify_removed_administrateur email from HAML to ERB
+2026-11-16T17:53:10+01:00 - 86ea10d06 - Mathieu Magnin : refactor(mailers): convert groupe gestionnaire notify_added_gestionnaires email from HAML to ERB
+2026-11-16T17:53:10+01:00 - 3584dc1ee - Mathieu Magnin : refactor(mailers): convert groupe gestionnaire notify_added_administrateurs email from HAML to ERB
+2026-11-16T17:17:49+01:00 - 96adb3777 - simon lehericey : feat(passwords): the password pages say it is the local account's, not FranceConnect's
+2026-11-16T17:17:49+01:00 - 4c955b66b - simon lehericey : fix(pro_connect): a procedure restricted to ProConnect is open to professionals, not agents only
+2026-11-16T17:17:48+01:00 - e6053379b - simon lehericey : feat(france_connect): the wording FranceConnect requires above its buttons
+2026-11-16T17:10:59+01:00 - cad7d2273 - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaires edit from HAML to ERB
+2026-11-16T17:10:59+01:00 - 830cf3dd3 - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaires tree structure from HAML to ERB
+2026-11-16T17:10:59+01:00 - 2e136d2a2 - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaires show from HAML to ERB
+2026-11-16T17:10:58+01:00 - fd23490e3 - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaires index from HAML to ERB
+2026-11-16T17:10:58+01:00 - 1ec75271c - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaires main navigation from HAML to ERB
+2026-11-16T16:56:17+01:00 - da090f073 - Mathieu Magnin : refactor(admin): convert groupe gestionnaire gestionnaires from HAML to ERB
+2026-11-16T16:56:16+01:00 - 90fe24a91 - Mathieu Magnin : refactor(admin): convert groupe gestionnaire administrateurs from HAML to ERB
+2026-11-16T16:56:16+01:00 - 092ece789 - Mathieu Magnin : refactor(admin): convert groupe gestionnaire show from HAML to ERB
+2026-11-16T16:12:25+01:00 - 648e2b742 - Mathieu Magnin : ci: verify commit signatures in the merge queue
+2026-11-16T15:32:35Z - 3cfd98663 - Mathieu Magnin : Merge pull request #14534 from demarche-numerique/tech/verify-signatures-merge-queue
+2026-11-16T15:06:35+01:00 - 87b6536d9 - Paul Chavard : refactor(type_de_champ): repetitions read their children and parent off the layout
+2026-11-16T15:06:35+01:00 - 05c2d6a07 - Paul Chavard : refactor(type_de_champ): estimated_fill_duration takes no revision
+2026-11-16T14:50:38Z - 5beef6a62 - Paul Chavard : Merge pull request #14507 from demarche-numerique/push-pppsqkkuslst
+2026-11-16T14:04:17+01:00 - f5ea7c103 - simon lehericey : fix(france_connect): refuse user info about another identity than the id token
+2026-11-16T14:03:40+01:00 - dda31c712 - simon lehericey : feat(sessions): a france_connect_plus login method, counted as FranceConnect on submission
+2026-11-16T14:03:40+01:00 - b76bf5199 - simon lehericey : feat(france_connect_plus): sign out through FranceConnect+
+2026-11-16T14:03:40+01:00 - 9721b2904 - simon lehericey : feat(france_connect_plus): retrieve and verify its encrypted tokens
+2026-11-16T14:03:40+01:00 - 6b8fbfe28 - simon lehericey : feat(france_connect): a merge carries the login method of the callback that started it
+2026-11-16T14:03:40+01:00 - 3811a13f6 - simon lehericey : feat(france_connect_plus): sign in, account merge included
+2026-11-16T14:03:23+01:00 - 7b0cbb0fa - simon lehericey : test(webmock): open a connection on start to localhost only
+2026-11-16T14:03:22+01:00 - 403cebf77 - simon lehericey : refactor(france_connect): let a variant pick its provider and keep its id token
+2026-11-16T14:02:48+01:00 - 82543e41f - simon lehericey : feat(france_connect_plus): decrypt RSA-OAEP-256 + A256GCM tokens
+2026-11-16T13:29:47Z - e7c663c9b - LeSim : Merge pull request #14518 from demarche-numerique/feat/france-connect-plus-login-ui
+2026-11-16T13:21:37Z - e8363ec71 - simon lehericey : feat(france_connect_plus): a FranceConnect+ button on the sign in page
+2026-11-16T13:21:37Z - a79d9e039 - simon lehericey : fix(account_dropdown): the same space around the FranceConnect mention
+2026-11-16T13:21:37Z - 16250a1e8 - simon lehericey : feat(france_connect_plus): say via FranceConnect+ in the account dropdown
+2026-11-16T13:17:12Z - edefb35f0 - Mathieu Magnin : Merge pull request #14532 from demarche-numerique/tech/haml-erb-groupe-gestionnaire-commentaires
+2026-11-16T13:17:00Z - a7f197b58 - Mathieu Magnin : Merge pull request #14531 from demarche-numerique/tech/haml-erb-groupe-gestionnaire-children
+2026-11-16T13:16:08+01:00 - cc0919654 - Paul Chavard : refactor(graphql): champ descriptors are laid out types de champ, not coordinates
+2026-11-16T13:11:34Z - 3b527c148 - LeSim : Merge pull request #14475 from demarche-numerique/feat/france-connect-plus-login
+2026-11-16T12:52:27Z - 86d6b3f02 - Paul Chavard : Merge pull request #14084 from demarche-numerique/push-yynnmuwwrykv
+2026-11-16T12:43:52+01:00 - 961fcbe3e - Paul Chavard : refactor(type_de_champ): level of a type de champ from its ancestors
+2026-11-16T12:24:46+01:00 - a9c5e22e6 - Paul Chavard : feat(procedure): existing procedures keep the order of their exports
+2026-11-16T12:21:30+01:00 - 8fe37aac4 - Paul Chavard : feat(procedure): types de champ laid out from the aggregated tree
+2026-11-16T12:21:30+01:00 - 2773e8521 - Paul Chavard : feat(type_de_champ_tree): the legacy export order out of the published trees
+2026-11-16T12:21:30+01:00 - 236afe65d - Paul Chavard : refactor(procedure): read the aggregated types de champ, not the coordinates
+2026-11-16T11:50:28Z - b832a7589 - Paul Chavard : Merge pull request #14053 from demarche-numerique/push-rytsmonxtxqs
+2026-11-16T11:35:01+01:00 - af0eb28fc - Mathieu Magnin : fix(a11y): use h2 for the sections of the groupe gestionnaire messagerie
+2026-11-16T11:35:01+01:00 - 4ea2b355f - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaire commentaires index from HAML to ERB
+2026-11-16T11:35:01+01:00 - 444ece126 - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaire commentaires destroy stream from HAML to ERB
+2026-11-16T11:35:00+01:00 - dfafbc633 - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaire commentaires list partial from HAML to ERB
+2026-11-16T11:32:17Z - 9811093fc - Paul Chavard : Merge pull request #14042 from demarche-numerique/push-mxpnzkrulpwu
+2026-11-16T11:20:40+01:00 - 077e213ee - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaire children views from HAML to ERB
+2026-11-16T11:10:37Z - a753bb773 - Mathieu Magnin : Merge pull request #14530 from demarche-numerique/tech/haml-erb-groupe-gestionnaire-gestionnaires
+2026-11-16T11:10:29Z - f2e915a36 - Mathieu Magnin : Merge pull request #14529 from demarche-numerique/tech/haml-erb-groupe-gestionnaire-administrateurs
+2026-11-16T11:07:38+01:00 - 9135fe9ed - Mathieu Magnin : Convert groupe gestionnaire gestionnaires views from HAML to ERB
+2026-11-16T11:07:37+01:00 - ecf34acaa - Mathieu Magnin : refactor(gestionnaires): convert groupe gestionnaire administrateurs views to ERB
+2026-11-16T10:41:18+01:00 - 375cf31f5 - Mathieu Magnin : refactor(dossier): identity_complete? no longer treats a missing individual as complete
+2026-11-16T10:24:38Z - 75fe7406e - Mathieu Magnin : Merge pull request #14499 from demarche-numerique/fix/brouillon-identity-incomplete-redirect
+2026-11-16T10:09:59Z - bb6b188a0 - LeSim : Merge pull request #14515 from demarche-numerique/fix/france-connect-callback-errors
+2026-11-16T09:44:43+01:00 - 461f7ad59 - Mathieu Magnin : fix(dossier): keep invites and individual-less brouillons out of the identity redirect
+2026-11-16T09:44:41+01:00 - ed87b17f9 - Mathieu Magnin : fix(dossier): send a brouillon with an incomplete identity back to the identity step
+2026-11-16T09:23:24Z - 1a33be9c1 - Colin Darie : Merge pull request #14496 from demarche-numerique/a11y-invite-modal
+2026-11-16T09:07:49Z - 0c60ce463 - Colin Darie : Merge pull request #14514 from demarche-numerique/pr-fix-systemd-service
+2026-11-16T09:07:39Z - be310e042 - Colin Darie : Merge pull request #14517 from demarche-numerique/brevo-ignore-soft-bounce
+2026-11-16T08:34:32Z - 1855b6ddd - Mathieu Magnin : Merge pull request #14459 from demarche-numerique/feat/attestation-preview-dossier-picker
+2026-11-13T15:47:25Z - 84cd853c4 - Mathieu Magnin : Merge pull request #14494 from demarche-numerique/fix/groupe-instructeur-dossiers-revision
+2026-11-13T15:44:47+01:00 - 2d29e34f0 - mfo : chore(sessions): drop the message a password change can never show
+2026-11-13T15:03:43+01:00 - 3cb083dd9 - simon lehericey : ci: report verify-signatures in the merge queue
+2026-11-13T14:53:34Z - 4501eb893 - mfo : Merge pull request #14336 from demarche-numerique/extract/session-drop-dead-devise-message
+2026-11-13T14:47:46Z - ac9639166 - Benoit Queyron : Merge pull request #14516 from demarche-numerique/champ-matching-analysis
+2026-11-13T14:39:49+01:00 - a84dcdf15 - benoitqueyron : Tech: give each comparison namespace its own score threshold
+2026-11-13T14:24:44Z - f6c691591 - LeSim : Merge pull request #14335 from demarche-numerique/extract/session-renewal-warning
+2026-11-13T14:18:40Z - 452f86710 - LeSim : Merge pull request #14491 from demarche-numerique/feat/session-login-method
+2026-11-13T14:09:23Z - edb88ddc8 - LeSim : Merge pull request #14519 from demarche-numerique/fix/verify-signatures-merge-queue
+2026-11-13T12:22:01+01:00 - 6b708b895 - benoitqueyron : Tech: show the typed values only to a super admin who administers both procedures
+2026-11-13T12:21:54+01:00 - 1b11c3ebf - benoitqueyron : Tech: show the comparisons behind a champ match in the manager
+2026-11-13T11:41:32+01:00 - 7d747d296 - mfo : fix(sessions): FranceConnect and ProConnect do not hand over another account's expiry
+2026-11-13T11:38:29+01:00 - 9132f0914 - mfo : fix(sessions): a super admin signed in by application code signs in by password
+2026-11-13T11:34:20+01:00 - 85286082f - Colin Darie : fix(webhook): ignore Brevo soft bounces without reporting them
+2026-11-13T10:39:17+01:00 - 4cd121290 - simon lehericey : fix(france_connect): send a replayed callback back to sign in instead of an error page
+2026-11-13T09:50:19+01:00 - 0f75c914d - Pierre de La Morinerie : doc: document the additional services for a staging server
+2026-11-13T09:50:18+01:00 - 2025f8763 - Pierre de La Morinerie : doc: include weasyprint in the services to start at deploy-time
+2026-11-13T09:50:13+01:00 - 8ad2f5336 - Pierre de La Morinerie : doc: fix systemd key name
+2026-11-12T15:34:44+01:00 - fdf128b5b - Mathieu Magnin : fix(api): filter groupe instructeur dossiers by revision
+2026-11-12T15:34:44+01:00 - 1c7e9075d - Mathieu Magnin : test(api): cover groupe instructeur dossiers revision filters across revisions
+2026-11-12T14:38:58+01:00 - 1c09cc63b - Colin Darie : Merge pull request #14372 from demarche-numerique/pro-connect-sign-in-deployment-notice
+2026-11-12T14:38:57+01:00 - d9c0f07fa - Colin Darie : Merge pull request #14502 from demarche-numerique/harden-referentiel-url
+2026-11-12T14:38:57+01:00 - 7e16f6cca - Mathieu Magnin : Merge pull request #14501 from adullact/pr-fix-hardcoded-instance-name
+2026-11-12T14:38:56+01:00 - e4fdcfc16 - Pierre de La Morinerie : manager: fix typos in email template
+2026-11-12T14:38:50+01:00 - 0342b1023 - Pierre de La Morinerie : manager: replace hardcoded URL by APP_HOST
+2026-11-12T14:37:59+01:00 - 7ad94568d - simon lehericey : fix(sessions): let the session registry hooks raise
+2026-11-12T14:37:58+01:00 - ccc8cfdff - simon lehericey : fix(sessions): one way to replace the signed in session, keeping stay signed in for FranceConnect too
+2026-11-12T14:37:58+01:00 - 26400e9d5 - simon lehericey : refactor(france_connect): one place for the merged accounts notice and the ProConnect cookie
+2026-11-12T14:37:57+01:00 - 28e765eef - simon lehericey : feat(sessions): give a session opened before the deploy its login method from the provider's cookie
+2026-11-12T14:18:23+01:00 - 956d2b624 - Mathieu Magnin : refactor(attestation): drop the depose_at guard from the preview picker
+2026-11-12T14:18:23+01:00 - 2bb5b2211 - Mathieu Magnin : fix(attestation): say the preview picker filters its own list
+2026-11-12T14:18:23+01:00 - 10f4da04a - Mathieu Magnin : feat(attestation): group the preview picker by revision, decided dossiers first
+2026-11-12T14:18:22+01:00 - c2fac5b24 - Mathieu Magnin : fix(attestation): keep undated dossiers out of the preview picker
+2026-11-12T12:56:50+01:00 - 3943bfe60 - Mathieu Magnin : feat(attestation): let the admin pick the dossier used by the preview
+2026-11-12T11:13:07+01:00 - e1475d3cf - simon lehericey : fix(pro_connect): keep stay signed in when ProConnect replaces the session
+2026-11-12T11:13:07+01:00 - 512b361b1 - simon lehericey : fix(france_connect): sign in a merge by FranceConnect email like every other FranceConnect sign in
+2026-11-12T11:13:06+01:00 - d97378a0a - simon lehericey : feat(sessions): tell how the user signed in from the session row, not cookies
+2026-11-12T11:13:06+01:00 - cc894b3e1 - simon lehericey : feat(sessions): keep the checked session row in Current for the request
+2026-11-12T11:13:06+01:00 - 1db156f38 - simon lehericey : feat(sessions): record password, email link and ProConnect sign ins
+2026-11-12T10:59:30+01:00 - b47e05b58 - Paul Chavard : deps: bump graphql to 2.6.15, drop the unused parser cache
+2026-11-12T10:59:30+01:00 - a8b8a6eee - Paul Chavard : graphql: opt into the future complexity cost mode
+2026-11-12T10:59:30+01:00 - 49070c1ef - Paul Chavard : graphql: cap custom query strings at 20 000 lexer tokens
+2026-11-12T10:47:55+01:00 - 941e335b8 - Colin Darie : fix(referentiel): request the API URL that was validated
+2026-11-12T10:05:49Z - 67785d247 - Paul Chavard : Merge pull request #13912 from demarche-numerique/push-svzvuvrlpktp
+2026-11-12T09:59:57+01:00 - 6e1517311 - mfo : Use the UX mockup wording in the pre-filled field notice
+2026-11-12T09:59:55+01:00 - 6935ae229 - mfo : Rename the reference dataset field type in English
+2026-11-12T09:59:52+01:00 - 814061c2f - mfo : Explain in the editor where the pre-filled field gets its value
+2026-11-12T09:59:38+01:00 - 86105c7b0 - mfo : Rename the pre-filled field type and its values label in the editor
+2026-11-12T09:12:43Z - 947eba238 - mfo : Merge pull request #14467 from demarche-numerique/pre-rempli-libelles
+2026-11-12T08:58:45Z - 54b298356 - mfo : Merge pull request #14471 from demarche-numerique/csp-base-uri-self
+2026-11-12T08:56:16Z - 1d92d888a - Paul Chavard : Merge pull request #14031 from demarche-numerique/push-prtkyzklzywo
+2026-11-10T18:28:34+01:00 - c22981e34 - simon lehericey : feat(sessions): give the session rows a login method
+2026-11-10T18:28:34+01:00 - 2b8772dc2 - simon lehericey : feat(sessions): record the login method when a session opens
+2026-11-10T17:43:17+01:00 - 901e1ac71 - Paul Chavard : refactor(champ): in_repetition? instead of child?
+2026-11-10T17:42:58+01:00 - 879484b01 - Paul Chavard : feat(dossier): champs laid out as the types de champ are
+2026-11-10T17:42:34+01:00 - 51b38a094 - Paul Chavard : perf(dossier): project the same champ instance whoever asks
+2026-11-10T17:42:09+01:00 - 804ad134c - Paul Chavard : refactor(dossier): public_champ and private_champ find a champ by its public id
+2026-11-10T17:42:03+01:00 - 844166c92 - Paul Chavard : fix(dossier): a projected champ belongs to the dossier projecting it
+2026-11-10T17:41:17+01:00 - 249532d01 - Paul Chavard : refactor(export): repetition sheets list their rows off the champ data
+2026-11-10T17:40:41+01:00 - 8b8fc745d - Paul Chavard : refactor(dossier): name the champ lists as the type de champ lists are
+2026-11-10T16:26:18+01:00 - 19b9d0271 - Colin Darie : feat(pro_connect): tell professionals that every ministry can use ProConnect
+2026-11-10T16:26:13+01:00 - ed107f13a - Colin Darie : refactor(sessions): convert the sign-in template to ERB
+2026-11-10T16:03:30+01:00 - 2563236a5 - Colin Darie : fix(invites): focus the confirmation once the modal is closed
+2026-11-10T16:03:29+01:00 - 8a614906d - Colin Darie : fix(invites): make "invite another person" a button in both locales
+2026-11-10T16:03:28+01:00 - aa8f816d2 - Colin Darie : fix(invites): refresh the open modal in place after invite or revoke
+2026-11-10T16:03:27+01:00 - dd5ee9112 - Colin Darie : fix(invites): focus the email field on error and describe the error
+2026-11-10T16:03:27+01:00 - a1f2dc5a8 - Colin Darie : refactor(invites): extract the modal trigger into its own partial
+2026-11-10T16:03:26+01:00 - 1ff8481a4 - Corinne Durrmeyer : fix(invites): show the invitation error as a single paragraph
+2026-11-10T16:03:25+01:00 - dc4eb3589 - Colin Darie : refactor(haml): migrate the invites form and button partials to ERB
+2026-11-10T16:03:25+01:00 - 019307c9c - Colin Darie : test(invites): expire the session by clearing the browser cookies
+2026-11-10T14:40:29Z - 8d334bade - Eric Leroy-Terquem : Merge pull request #14450 from demarche-numerique/feat/export-repetition-inline
+2026-11-10T13:49:50Z - a26579269 - Mathieu Magnin : Merge pull request #14490 from demarche-numerique/fix/api-annotation-id-without-separator
+2026-11-10T13:49:32Z - b606a7316 - Mathieu Magnin : Merge pull request #14488 from demarche-numerique/fix/accept-language-empty-entry
+2026-11-10T13:49:08Z - 37e393fd4 - Mathieu Magnin : Merge pull request #14483 from demarche-numerique/fix/switch-domain-banner-js-escape
+2026-11-10T11:13:14Z - c708b6f56 - Colin Darie : Merge pull request #14484 from demarche-numerique/fix-sign-in-particulier-csrf
+2026-11-10T11:01:37+01:00 - 57a718c73 - Mathieu Magnin : fix(api): return not found for an annotation id without separator
+2026-11-10T11:01:37+01:00 - 3e4cb9c11 - Mathieu Magnin : refactor(api): decode the revision id through id_from_typed_id
+2026-11-10T11:01:36+01:00 - 8baa678e3 - Mathieu Magnin : fix(locale): ignore an empty Accept-Language entry
+2026-11-10T10:42:31Z - 076932c21 - Paul Chavard : Merge pull request #14020 from demarche-numerique/push-ukwlrwlyotnw
+2026-11-10T09:59:33Z - cd780fa43 - Mathieu Magnin : Merge pull request #14479 from demarche-numerique/purge-champ-orphan-attachments
+2026-11-10T09:56:01Z - 1c5dc8834 - Eric Leroy-Terquem : Merge pull request #14485 from demarche-numerique/fix/batch-avis-notify-only-new-experts
+2026-11-10T09:54:13Z - ea9f161b1 - Mathieu Magnin : Merge pull request #14478 from demarche-numerique/fix/champ-permitted-attributes
+2026-11-09T17:00:02+01:00 - 6fb4caa1b - Eric Leroy-Terquem : fix(batch_operation): notify only the experts invited by the batch avis request
+2026-11-09T16:47:06+01:00 - 3516630d1 - Colin Darie : fix(sessions): keep the sign in form after a failed password from the particulier page
+2026-11-09T16:34:01+01:00 - 4e4b46cde - Eric Leroy-Terquem : feat(export): compute the max row count of each repetition over exported dossiers, by batches of dossiers
+2026-11-09T16:33:40+01:00 - 0693e162f - Paul Chavard : refactor(revision): diff the laid out types de champ
+2026-11-09T15:26:05Z - c34b7ac1f - Paul Chavard : Merge pull request #14012 from demarche-numerique/push-olmtnyvvtxvs
+2026-11-09T15:19:24+01:00 - 9a6ed5ec8 - Mathieu Magnin : fix(switch-domain): write the redirect URL as a JS string literal
+2026-11-09T15:19:17+01:00 - bb7aa0a31 - Paul Chavard : refactor(champ): find the type de champ by stable id in the revision layout
+2026-11-09T15:19:16+01:00 - 95bcb0992 - Paul Chavard : feat(revision): list the types de champ from the tree
+2026-11-09T15:19:16+01:00 - 51ec1a419 - Paul Chavard : feat(revision): types de champ laid out from the tree
+2026-11-09T15:19:05+01:00 - 10256fcf4 - Paul Chavard : feat(revision): list the type de champ ids of a tree
+2026-11-09T12:42:54+01:00 - c6584beeb - Mathieu Magnin : chore(maintenance): purge champ attachments whose champ is gone
+2026-11-09T12:14:08+01:00 - 5af3c229b - Mathieu Magnin : fix(dossier): stop accepting a champ id in autosave params
+2026-11-09T10:51:04+01:00 - a87bc9f54 - mfo : fix(csp): only let a <base> tag point to us
+2026-11-09T10:50:56+01:00 - cc654919d - mfo : test(csp): add spec proving the CSP has no base-uri
+2026-11-09T10:45:49Z - 73d0f7880 - Mathieu Magnin : Merge pull request #14455 from demarche-numerique/tech/en-glossary-reviewer
+2026-11-09T10:45:37Z - 61783bc61 - Mathieu Magnin : Merge pull request #14468 from demarche-numerique/feat/phone-format-hint-locale
+2026-11-09T08:54:06Z - d530bdf0c - mfo : Merge pull request #14466 from demarche-numerique/csp-drop-jsdelivr-script-src
+2026-11-08T22:44:55+01:00 - a6c4c2fcb - Paul Chavard : clean(api): remove api v1
+2026-11-08T22:44:55+01:00 - 7af2025a8 - Paul Chavard : doc(api): guide de migration API v1 vers v2
+2026-11-08T22:15:48+01:00 - f96243ac3 - Paul Chavard : Test the sectioned Select through the component itself
+2026-11-08T22:15:48+01:00 - ee6bc722a - Paul Chavard : Lint with the Oxlint defaults
+2026-11-08T22:15:48+01:00 - c98f6e8f6 - Paul Chavard : Fix the findings of the type-aware lint rules
+2026-11-08T22:15:48+01:00 - 952ab98e8 - Paul Chavard : Drop the lint directives a type or an option avoids
+2026-11-08T22:15:48+01:00 - 67ded598c - Paul Chavard : Mount the tested components without StrictMode
+2026-11-08T22:15:48+01:00 - 66e6b7eae - Paul Chavard : Run the tests through the production plugins
+2026-11-08T22:15:47+01:00 - a51686611 - Paul Chavard : Adopt the Vitest 5 defaults
+2026-11-08T22:15:47+01:00 - 77a51a0df - Paul Chavard : Migrate the front-end toolchain to Vite+
+2026-11-08T22:15:47+01:00 - 5d89c97d2 - Paul Chavard : Format the front-end sources with Oxfmt
+2026-11-08T21:53:10Z - 7fc3f3667 - Paul Chavard : Merge pull request #9999 from tchak/remove-api-v1
+2026-11-08T21:42:23Z - f6cb2047a - Paul Chavard : Merge pull request #14349 from demarche-numerique/push-kxtrnotuyxts
+2026-11-08T21:34:47Z - 684583403 - Paul Chavard : Merge pull request #14170 from demarche-numerique/push-twyksrvtwtln
+2026-11-08T13:05:28+01:00 - f2bdf93f5 - Paul Chavard : feat(type_de_champ): require procedure_id
+2026-11-06T14:56:28+01:00 - 29749a311 - mfo : fix(csp): stop allowing styles from cdn.jsdelivr.net
+2026-11-06T14:56:21+01:00 - 0f1a23312 - mfo : fix(csp): stop allowing scripts from cdn.jsdelivr.net
 2026-11-06T13:47:43+01:00 - f8b3993ec - simon lehericey : feat(webhook): report an unhandled Brevo event to Sentry
 2026-11-06T13:32:46Z - 67be8c5f2 - LeSim : Merge pull request #14470 from demarche-numerique/feat/brevo-unhandled-event-sentry
+2026-11-06T11:27:06+01:00 - 109dc9aa6 - Mathieu Magnin : fix(phone_champ): translate the invalid phone error in the current locale
+2026-11-06T11:27:05+01:00 - 279f4ca71 - Mathieu Magnin : feat(phone_champ): localize the phone number example
+2026-11-06T09:49:53+01:00 - 6f1d49bf4 - Mathieu Magnin : Fix review findings on the English glossary pass
+2026-11-06T09:49:52+01:00 - df92ea7c0 - Mathieu Magnin : Align English copy on the glossary for instructeur and instruction
 2026-11-06T09:00:15Z - de77c1a8a - Mathieu Magnin : Merge pull request #14430 from demarche-numerique/feat/expert-new-avis-email
 2026-11-06T08:45:41Z - 1bf88de5e - LeSim : Merge pull request #14444 from demarche-numerique/feat/france-connect-plus
 2026-11-05T10:01:04+01:00 - c987d5bb2 - simon lehericey : refactor(ip_service): check an ip against any list of networks
@@ -62,6 +330,8 @@
 2026-11-03T11:35:12+01:00 - 431ebb8a4 - Lisa Durand : feat(api_tokens): allow admin to duplicate an existing api token
 2026-11-03T11:35:11+01:00 - b8dd73c51 - Lisa Durand : refactor(api_tokens): extract APITokenParams to preserve data across steps even when going back
 2026-11-03T11:21:31Z - 28df5b121 - LeSim : Merge pull request #14425 from demarche-numerique/fix/flaky-batch-commentaire-piece-jointe
+2026-11-03T11:13:27+01:00 - 0d4c41771 - mfo : test(sessions): a total revocation leaves the renewal job nothing to warn
+2026-11-03T11:13:17+01:00 - 4c2f94527 - mfo : fix(sessions): give the cookie a password reset reissues its own token
 2026-11-03T11:00:55+01:00 - daabe7f8c - simon lehericey : refactor(pro_connect): return the ProConnect authentication as an object
 2026-11-03T10:41:42Z - 699a23417 - Eric Leroy-Terquem : Merge pull request #13782 from demarche-numerique/feat/changement-mot-de-passe-profil
 2026-11-03T10:28:16Z - b046111ae - Colin Darie : Merge pull request #14385 from demarche-numerique/pc-migration-1-callback

@@ -1,49 +1,42 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 06/11/2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 17/11/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi des étapes importantes en matière de fiabilité et d'outils d'administration. Les évolutions majeures concernent une meilleure gestion des interruptions de services externes (comme le RNF ou l'API Entreprise) grâce à un nouveau système de "mise en attente" des tâches, ainsi qu'une intégration renforcée de Brevo pour l'envoi d'emails. Pour les agents, de nouveaux outils facilitent la gestion des dossiers (demandes de compléments, propositions de pré-remplissage) et la gestion des accès (jetons API, gestion des instructeurs).
+Cette période a été marquée par une modernisation importante de l'expérience utilisateur et de la sécurité. Les évolutions majeures incluent l'introduction de FranceConnect+, une gestion plus transparente des sessions de connexion et une refonte des outils d'administration (notamment pour la gestion des jetons API et le suivi de la santé des services externes). La plateforme est également devenue plus robuste grâce à une amélioration des processus d'exportation de données et à une gestion plus fine de l'archivage des dossiers.
 
 ### Évolutions fonctionnelles
-
-**Gestion des dossiers et instruction**
-- Mise en place de la "Demande de complément" : les instructeurs peuvent désormais demander des informations supplémentaires à l'usager avec un motif précis [#14266].
-- Amélioration du pré-remplissage : les instructeurs peuvent proposer des modifications de données directement aux usagers pour faciliter la correction des dossiers [#14313, #14287].
-- Sécurisation de l'archivage : ajout de fenêtres de confirmation (modales) pour prévenir les erreurs d'archivage de dossiers en masse [#14181, #14266].
-- Ajout de la traçabilité des décisions : intégration d'un tag indiquant la date et l'heure d'une décision [#14311].
-
-**Gestion des utilisateurs et des experts**
-- Autonomie des usagers : possibilité pour un utilisateur connecté de modifier son mot de passe depuis son profil [#13782].
-- Clarté sur la suppression des comptes : amélioration des notifications expliquant ce qu'il advient des brouillons lors de la suppression d'un compte inactif [#14393].
-- Suivi des experts : affichage du nombre d'avis donnés par un expert et notification automatique des autres experts lors de la publication d'un avis non confidentiel [#14415, #14429].
-
-**Administration et outils de gestion**
-- Optimisation des jetons API (API Tokens) : nouvelle interface permettant de dupliquer des jetons, de visualiser leur expiration et une sélection plus intuitive des procédures liées [#14425, #14405].
-- Pilotage de l'API Entreprise : création d'un tableau de bord pour les gestionnaires afin de suivre l'état de santé des services externes [#14383].
-- Gestion des instructeurs : possibilité de restreindre l'ajout d'instructeurs à un domaine d'email spécifique pour une meilleure sécurité des procédures [#14129, #14411].
-
-**Expérience utilisateur**
-- Transparence sur les services : affichage d'un état "dégradé" pour l'usager et l'instructeur lorsque les données externes (RNF) ne sont pas disponibles, évitant ainsi toute confusion [#14384, #14387].
-- Corrections d'affichage : amélioration de l'ergonomie sur mobile, notamment pour les liens de messagerie [#14443].
+- **Authentification et Sessions**
+  - Introduction de FranceConnect+ avec gestion sécurisée des tokens et déchiffrement RSA. [#14475](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14475)
+  - Amélioration de la visibilité des sessions : la méthode de connexion (mot de passe, FranceConnect, ProConnect) est désormais affichée dans le menu utilisateur.
+  - Amélioration du parcours de fusion de comptes FranceConnect pour éviter les demandes de mot de passe redondantes. [#14589](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14589)
+- **Gestion du Profil et Sécurité**
+  - Possibilité pour les utilisateurs connectés de modifier leur mot de passe. [#13782](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13782)
+  - Mise en place d'un mécanisme de limitation (throttling) des tentatives de changement de mot de passe.
+- **Administration et Pilotage**
+  - Création d'un tableau de bord de suivi pour l'API Entreprise, permettant de visualiser les pannes et les états de dégradation des services. [#14383](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14383)
+  - Refonte de l'interface de gestion des jetons API : ajout de la duplication de jetons, de badges d'expiration et d'une sélection multiple plus ergonomique. [#14425](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14425)
+  - Nouvelle fonctionnalité de comparaison de champs (champ matching) pour faciliter l'analyse entre deux procédures. [#14420](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14420)
+  - Gestion plus fine des restrictions de domaines d'email pour les instructeurs. [#14412](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14412)
+- **Gestion des Dossiers et Expertise**
+  - Nouveau système d'avertissement avant l'archivage des dossiers (individuel ou en masse) pour éviter les erreurs de manipulation. [#14459](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14459)
+  - Amélioration de l'aperçu des attestations avec un sélecteur de dossier regroupé par révision. [#14459](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14459)
+  - Affichage du nombre d'avis donnés directement à côté du lien de consultation pour les experts. [#14393](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14393)
+  - Ajout d'un tag "Date et heure de décision" pour le suivi des dossiers. [#14311](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14311)
+- **Exports et Documents**
+  - Amélioration de la fiabilité des exports Excel et CSV (gestion des apostrophes, des formules et des caractères spéciaux). [#14579](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14579)
 
 ### Évolutions techniques
-
-**Fiabilité et résilience des services**
-- Intégration de Brevo : migration vers l'API transactionnelle de Brevo pour l'envoi d'emails, incluant une gestion robuste des webhooks et un reporting des erreurs vers Sentry [#14470, #14432, #14111].
-- Mécanisme de "Parking" : pour éviter l'encombrement des files d'attente lors de pannes de services tiers (API Entreprise), les tâches sont désormais mises en attente et réessayées périodiquement plutôt que de saturer le système [#14400, #14371].
-- Résilience RNF : amélioration de la gestion des données dégradées du Référentiel National des Entreprises avec des cycles de réessai automatiques [#14384].
-
-**Performance et Architecture**
-- Mise à jour technologique : migration vers Ruby 4.0.9 [#14394].
-- Optimisation des exports : passage à `zip_kit` pour la génération des archives de dossiers, améliorant la gestion de la mémoire et la rapidité de téléchargement [#14371].
-- Sécurité des jetons : passage à un hachage SHA-256 pour l'authentification des jetons API [#14368].
-- Optimisation des recherches : amélioration des performances sur la recherche d'utilisateurs et l'assignation des dossiers via l'ajout d'index en base de données [#14273, #14286].
-- Refactorisation de l'authentification ProConnect pour une meilleure gestion des sessions et du MFA [#14385, #14314].
-
-**Maintenance de la donnée**
-- Migration des types de champs : conversion des anciens types de champs "nombre" vers les formats standards integer ou decimal [#14332, #14348].
-- Nettoyage du code : suppression des anciens types de champs "cojo" et des fonctionnalités obsolètes [#14202].
+- **Architecture et Refactoring**
+  - Migration massive des templates de la plateforme de HAML vers ERB pour une meilleure maintenance. [#14576](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14576)
+  - Migration de la chaîne d'outils front-end vers Vite+. [#14031](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14031)
+  - Suppression définitive de l'API v1 au profit de la v2. [#9999](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/9999)
+  - Optimisation de la structure GraphQL, notamment sur la gestion des descripteurs de champs.
+- **Sécurité et CI/CD**
+  - Renforcement de la sécurité des jetons API via l'utilisation de digests SHA-256. [#14368](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14368)
+  - Mise en place de la vérification des signatures GPG des commits dans la file d'attente de fusion (merge queue). [#14534](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14534)
+- **Performances**
+  - Optimisation du streaming pour le téléchargement des dossiers compressés (ZIP). [#14371](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/14371)
+  - Optimisation des processus d'exportation et de la gestion des champs répétitifs.
 
 ### Autres changements
-- Documentation : mise à jour de la documentation pour les administrateurs, incluant un lien vers les notes de version [#14292].
-- Sécurité CI/CD : mise en place d'une vérification systématique de la signature GPG des commits lors des Pull Requests [#14417].
-- Nettoyage : suppression de plusieurs drapeaux de fonctionnalités (feature flags) devenus inutiles [#14363, #14364, #14350].
+- Documentation mise à jour pour l'API et les services de staging.
+- Nettoyage de la base de code (suppression de nombreux flags de fonctionnalités obsolètes).
