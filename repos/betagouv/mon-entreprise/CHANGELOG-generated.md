@@ -1,17 +1,24 @@
-## Changelog : mon-entreprise (30 derniers jours, au 09/11/2026)
+## Changelog : mon-entreprise (30 derniers jours, au 17 novembre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la précision des calculs pour le territoire de Mayotte et sur l'enrichissement de l'aide contextuelle disponible dans l'outil de comparaison. Parallèlement, la structure technique de la documentation a été modernisée et les processus d'automatisation (CI/CD) ont été stabilisés.
+Ce mois a été marqué par une transition technologique majeure vers Next.js, visant à améliorer les performances et le rendu des simulateurs. Parallèlement, plusieurs mises à jour réglementaires ont été effectuées, notamment sur les taux de cotisations 2026 pour les salariés et les calculs d'imposition pour les dividendes et les territoires d'outre-mer.
 
 ### Évolutions fonctionnelles
-- **Améliorations pour Mayotte** : Correction du calcul de l'assiette sociale, intégration du calcul de la réduction générale dégressive unique (RGDU) et mise à jour des avertissements associés.
-- **Enrichissement de l'aide utilisateur** : Ajout de documentations explicatives pour de nouvelles questions dans le comparateur, notamment concernant la nature de l'activité.
-- **Corrections de contenu** : Mise à jour des traductions (Lodeom) et suppression d'informations obsolètes concernant les travailleurs frontaliers suisses.
+- **Simulateur Salarié** : Mise à jour des taux de cotisation des caisses CIBTP pour 2026 (incluant les taux de novembre 2026) et archivage des références antérieures.
+- **Dividendes** : Correction du calcul de l'impôt et de la description de l'imposition au barème.
+- **Lodeom** : Ajout de documentation et d'une modale explicative sur la régularisation ; correction du coefficient T pour Saint-Barthélemy et Saint-Martin.
+- **Mayotte** : Correction du calcul de l'assiette sociale.
+- **Expérience utilisateur** : Amélioration de l'affichage des nouveautés pour les visiteurs récurrents.
 
 ### Évolutions techniques
-- **Optimisation de la CI/CD** : Amélioration de la robustesse de la revue par IA (gestion des erreurs et des numéros de PR sur les forks) et automatisation de la fourniture des URL pour les environnements de test (Clever Cloud).
-- **Refonte de la documentation** : Réorganisation de la structure des fichiers MDX, extraction de composants pour le chargement de la documentation et amélioration de l'affichage (largeur des modales).
-- **Qualité et tests** : Renforcement de la couverture de tests sur les règles métier spécifiques à Mayotte et sur les composants d'aide à l'utilisateur.
+- **Migration Next.js** : Migration profonde de l'architecture vers Next.js, incluant le rendu côté serveur (SSR) pour les simulateurs et une gestion optimisée des métadonnées et des images.
+- **Intégration des simulateurs** : Les simulateurs d'embauche et de salaire (brut/net) sont désormais servis sous Next.js, notamment via des intégrations en iframe.
+- **Documentation** : Intégration de la documentation Publicodes directement via Next.js pour une meilleure cohérence.
+- **Infrastructure & CI/CD** : 
+    - Déploiement de "Review Apps" Next.js (incluant une version anglaise) pour les environnements de test.
+    - Renforcement de la sécurité via le nettoyage de la politique de sécurité du contenu (CSP).
+- **Architecture & Design System** : Refactorisation de l'adaptateur d'environnement et mise en conformité du design system avec les *Server Components*.
 
 ### Autres changements
-- **Documentation projet** : Actualisation complète du schéma d'architecture pour la version 2026-11 et mise à jour des métadonnées du document.
+- **Documentation** : Mise à jour du schéma d'architecture pour l'année 2026.
+- **Nettoyage** : Suppression de clés de traduction orphelines et retrait de dépendances obsolètes (polyfill.io).

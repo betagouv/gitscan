@@ -329,13 +329,37 @@
 │   ├── ACCESSIBILITY.md
 │   ├── README.md
 │   ├── app
+│   │   ├── (iframe)
+│   │   │   ├── iframes
+│   │   │   │   └── simulateur-embauche
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (main)
+│   │   │   ├── documentation
+│   │   │   │   ├── [...slug]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── metadonneesDeRegle.ts
+│   │   │   │   ├── modele-as
+│   │   │   │   │   ├── [...slug]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── modele-ti
+│   │   │   │   │   ├── [...slug]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── simulateurs
+│   │   │       ├── layout.tsx
+│   │   │       └── salaire-brut-net
+│   │   │           └── page.tsx
 │   │   ├── ClientProviders.tsx
 │   │   ├── Providers.tsx
 │   │   ├── fonts.ts
 │   │   ├── global-error.tsx
 │   │   ├── layout.tsx
-│   │   ├── not-found.tsx
-│   │   └── page.tsx
+│   │   └── not-found.tsx
 │   ├── build
 │   │   ├── .eslintrc.yaml
 │   │   ├── build-sitemap.ts
@@ -621,6 +645,7 @@
 │   │   │   ├── Logo.tsx
 │   │   │   ├── MoreInfosOnUs.tsx
 │   │   │   ├── Notifications.tsx
+│   │   │   ├── Page404.tsx
 │   │   │   ├── PageHeader.tsx
 │   │   │   ├── PeriodSwitch.tsx
 │   │   │   ├── PianoAnalytics
@@ -699,7 +724,6 @@
 │   │   │   │   ├── ChoicesInput.tsx
 │   │   │   │   ├── DateInput.tsx
 │   │   │   │   ├── EntrepriseInput.tsx
-│   │   │   │   ├── Explicable.tsx
 │   │   │   │   ├── MulipleChoicesInput.tsx
 │   │   │   │   ├── MultipleAnswerInput.tsx
 │   │   │   │   ├── OuiNonInput.tsx
@@ -719,6 +743,7 @@
 │   │   │   │       ├── SelectTauxRisque.tsx
 │   │   │   │       └── SelectTauxRisque.worker.ts
 │   │   │   ├── documentation
+│   │   │   │   ├── AccueilDeLaDocumentation.tsx
 │   │   │   │   ├── DocumentationBasePathProvider.test.tsx
 │   │   │   │   ├── DocumentationBasePathProvider.tsx
 │   │   │   │   ├── DocumentationDeQuestion.ts
@@ -739,10 +764,17 @@
 │   │   │   │   │   ├── Reference.tsx
 │   │   │   │   │   ├── useReferencesAAfficher.test.ts
 │   │   │   │   │   └── useReferencesAAfficher.ts
+│   │   │   │   ├── RetourALaSimulation.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   └── publicodes
+│   │   │   │       ├── BoutonDeDocumentation.test.tsx
+│   │   │   │       ├── BoutonDeDocumentation.tsx
 │   │   │   │       ├── DocumentationAccordion.tsx
+│   │   │   │       ├── DocumentationDuModele.tsx
 │   │   │   │       ├── DocumentationPageBody.tsx
+│   │   │   │       ├── LienVersLaDocumentationContext.test.tsx
+│   │   │   │       ├── LienVersLaDocumentationContext.tsx
+│   │   │   │       ├── PageDeRegle.tsx
 │   │   │   │       ├── ReferencesDeRegle.test.tsx
 │   │   │   │       ├── ReferencesDeRegle.tsx
 │   │   │   │       ├── ReferencesPublicodes.tsx
@@ -760,6 +792,7 @@
 │   │   │   │   ├── EntrepriseSearchResults.tsx
 │   │   │   │   └── SelectedEntrepriseDetails.tsx
 │   │   │   ├── layout
+│   │   │   │   ├── ChromeIframe.tsx
 │   │   │   │   ├── Footer
 │   │   │   │   │   ├── Contact.tsx
 │   │   │   │   │   ├── Footer.tsx
@@ -767,10 +800,14 @@
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── LegalNotice.tsx
 │   │   │   │   │   ├── PrivacyPolicy.tsx
-│   │   │   │   │   └── TermsOfUse.tsx
+│   │   │   │   │   ├── TermsOfUse.tsx
+│   │   │   │   │   ├── lienVersLAutreLangue.test.ts
+│   │   │   │   │   └── lienVersLAutreLangue.ts
 │   │   │   │   ├── Header.tsx
+│   │   │   │   ├── IframeFooter.tsx
 │   │   │   │   ├── Menu.tsx
 │   │   │   │   ├── NewsBanner.tsx
+│   │   │   │   ├── OuvreLesLiensDansLaPageParente.tsx
 │   │   │   │   └── PageLayout.tsx
 │   │   │   ├── search
 │   │   │   │   ├── Algolia.ts
@@ -1181,6 +1218,7 @@
 │   │   │   ├── MontantRecurrent.test.ts
 │   │   │   ├── MontantRecurrent.ts
 │   │   │   ├── OuiNon.ts
+│   │   │   ├── PageMetadata.ts
 │   │   │   ├── PublicodesSimulationConfig.ts
 │   │   │   ├── Quantite.ts
 │   │   │   ├── RaccourciPublicodes.ts
@@ -1269,7 +1307,6 @@
 │   │   │   ├── useIsEmbeddedOnBPISite.tsx
 │   │   │   ├── useIsIddle.ts
 │   │   │   ├── useMediaQuery.ts
-│   │   │   ├── useNavigationOrigin.ts
 │   │   │   ├── useNextQuestion.tsx
 │   │   │   ├── useOnClickOutside.ts
 │   │   │   ├── useOnKeyDown.ts
@@ -1298,6 +1335,7 @@
 │   │   │   ├── useSimulationPublicodes.ts
 │   │   │   ├── useSimulationPublicodesEditorialisee.ts
 │   │   │   ├── useSimulatorsMetadata.ts
+│   │   │   ├── useSitePaths.ts
 │   │   │   ├── useSiteUrl.tsx
 │   │   │   ├── useStatefulRulesEdit.ts
 │   │   │   ├── useTracking.ts
@@ -1333,7 +1371,6 @@
 │   │   │   ├── ui-fr.yaml
 │   │   │   └── units.yaml
 │   │   ├── pages
-│   │   │   ├── 404.tsx
 │   │   │   ├── Accessibilité.tsx
 │   │   │   ├── Offline.tsx
 │   │   │   ├── Plan.tsx
@@ -1379,7 +1416,6 @@
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── pour-mon-entreprise
-│   │   │   │   │   ├── AnnuaireEntreprises.tsx
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
@@ -1400,12 +1436,9 @@
 │   │   │   ├── dev
 │   │   │   │   └── IntegrationTest.tsx
 │   │   │   ├── documentation
-│   │   │   │   ├── BackToSimulation.tsx
 │   │   │   │   ├── Documentation.test.tsx
-│   │   │   │   ├── Documentation.tsx
-│   │   │   │   └── DocumentationLanding.tsx
+│   │   │   │   └── Documentation.tsx
 │   │   │   ├── iframes
-│   │   │   │   ├── IframeFooter.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── integration
 │   │   │   │   ├── API.tsx
@@ -1422,10 +1455,6 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── routage.test.tsx
 │   │   │   ├── simulateurs
-│   │   │   │   ├── NextSteps.tsx
-│   │   │   │   ├── SimulateurPageLayout.tsx
-│   │   │   │   ├── _configs
-│   │   │   │   │   └── types.ts
 │   │   │   │   ├── activité-partielle
 │   │   │   │   │   ├── ActivitéPartielle.tsx
 │   │   │   │   │   ├── ActivitéPartiellePreview.png
@@ -1468,10 +1497,6 @@
 │   │   │   │   │   ├── AvertissementAvocat.tsx
 │   │   │   │   │   ├── Avocat.tsx
 │   │   │   │   │   └── metadata.ts
-│   │   │   │   ├── cards
-│   │   │   │   │   ├── ExternalLinkCard.tsx
-│   │   │   │   │   ├── IframeIntegrationCard.tsx
-│   │   │   │   │   └── SimulatorRessourceCard.tsx
 │   │   │   │   ├── cessation-activité
 │   │   │   │   │   ├── CessationActivité.tsx
 │   │   │   │   │   ├── Goals.tsx
@@ -1671,6 +1696,7 @@
 │   │   │   │   │   ├── Goals.tsx
 │   │   │   │   │   ├── Lodeom.test.tsx
 │   │   │   │   │   ├── Lodeom.tsx
+│   │   │   │   │   ├── SeoExplanations.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── BarèmeSwitch.tsx
 │   │   │   │   │   │   ├── EffectifSwitch.tsx
@@ -1712,28 +1738,6 @@
 │   │   │   │   │   ├── AvertissementSageFemme.tsx
 │   │   │   │   │   ├── SageFemme.tsx
 │   │   │   │   │   └── metadata.ts
-│   │   │   │   ├── salarié
-│   │   │   │   │   ├── Goals.tsx
-│   │   │   │   │   ├── Salarié.tsx
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── Aides.tsx
-│   │   │   │   │   │   ├── Explications.tsx
-│   │   │   │   │   │   ├── FicheDePaie
-│   │   │   │   │   │   │   ├── Cotisations.tsx
-│   │   │   │   │   │   │   ├── FicheDePaie.tsx
-│   │   │   │   │   │   │   ├── SalaireBrut.tsx
-│   │   │   │   │   │   │   ├── SalaireNet.tsx
-│   │   │   │   │   │   │   └── TempsDeTravail.tsx
-│   │   │   │   │   │   ├── SeoExplanations.tsx
-│   │   │   │   │   │   └── TitresRestaurant.tsx
-│   │   │   │   │   ├── images
-│   │   │   │   │   │   ├── SalaireBrutNetPreviewEN.png
-│   │   │   │   │   │   ├── SalaireBrutNetPreviewFR.png
-│   │   │   │   │   │   ├── illustration-net-brut-en.png
-│   │   │   │   │   │   └── illustration-net-brut.png
-│   │   │   │   │   ├── metadata.ts
-│   │   │   │   │   ├── opengraph.ts
-│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   └── sasu
 │   │   │   │       ├── RémunérationSASUPreview.png
 │   │   │   │       ├── SASU.tsx
@@ -1807,8 +1811,45 @@
 │   │   │   └── robots.fr.txt
 │   │   ├── services
 │   │   │   ├── environnement
-│   │   │   │   └── environnement.ts
+│   │   │   │   ├── environnement.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── plausibleService.test.ts
 │   │   │   └── plausibleService.ts
+│   │   ├── simulateurs
+│   │   │   ├── AnnuaireEntreprises.tsx
+│   │   │   ├── LienDeRetour.tsx
+│   │   │   ├── NextSteps.tsx
+│   │   │   ├── SimulateurPageLayout.tsx
+│   │   │   ├── cards
+│   │   │   │   ├── ExternalLinkCard.tsx
+│   │   │   │   ├── IframeIntegrationCard.tsx
+│   │   │   │   └── SimulatorRessourceCard.tsx
+│   │   │   ├── index.ts
+│   │   │   └── salarié
+│   │   │       ├── Goals.tsx
+│   │   │       ├── Salarié.tsx
+│   │   │       ├── components
+│   │   │       │   ├── Aides.tsx
+│   │   │       │   ├── Explications.tsx
+│   │   │       │   ├── FicheDePaie
+│   │   │       │   │   ├── Cotisations.tsx
+│   │   │       │   │   ├── FicheDePaie.tsx
+│   │   │       │   │   ├── SalaireBrut.tsx
+│   │   │       │   │   ├── SalaireNet.tsx
+│   │   │       │   │   └── TempsDeTravail.tsx
+│   │   │       │   ├── MessageDirigeantSASU.test.tsx
+│   │   │       │   ├── MessageDirigeantSASU.tsx
+│   │   │       │   ├── SeoExplanations.tsx
+│   │   │       │   └── TitresRestaurant.tsx
+│   │   │       ├── images
+│   │   │       │   ├── SalaireBrutNetPreviewEN.png
+│   │   │       │   ├── SalaireBrutNetPreviewFR.png
+│   │   │       │   ├── illustration-net-brut-en.png
+│   │   │       │   └── illustration-net-brut.png
+│   │   │       ├── index.ts
+│   │   │       ├── metadata.ts
+│   │   │       ├── opengraph.ts
+│   │   │       └── simulationConfig.ts
 │   │   ├── sitePaths.ts
 │   │   ├── storage
 │   │   │   ├── darkModeStorage.test.ts
@@ -1987,4 +2028,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-338 directories, 1651 files
+350 directories, 1680 files
