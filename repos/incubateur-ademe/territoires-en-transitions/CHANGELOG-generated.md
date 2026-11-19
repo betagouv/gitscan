@@ -1,47 +1,51 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 30 octobre 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 18 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance de l'intelligence artificielle et de l'aide à la décision. La plateforme intègre désormais des capacités d'importation automatique de plans via IA, une refonte complète de l'outil d'aide à la priorisation des actions, et un suivi plus fin du cycle de vie des démarches PCAET (adoption, archivage, suivi des dates).
+Ce mois a été marqué par une évolution majeure de la plateforme avec l'intégration de la trajectoire SNBC 3 et le renforcement des outils de pilotage des plans d'actions (PCAET). Les utilisateurs bénéficient désormais de nouvelles jauges d'avancement, d'un suivi plus fin des statuts et d'un système d'importation assisté par intelligence artificielle. La gestion des relations entre les territoires (Supras et EPCI) a également été fluidifiée pour mieux accompagner les démarches de transition.
 
 ### Évolutions fonctionnelles
 
-**Intelligence Artificielle & Importation**
-- **Importation intelligente de plans :** Support étendu des formats Word et PDF avec extraction automatique des partenaires, financements, moyens humains et objectifs.
-- **Robustesse de l'import :** Mise en place de la reprise d'importation en cas d'interruption ou d'échec, et meilleure gestion des erreurs de segmentation.
-- **Suivi de l'import :** Ajout d'une barre de progression détaillée et d'une liste d'étapes pour suivre l'avancement de l'extraction IA.
+**Suivi et pilotage des plans (PCAET)**
+- Introduction de jauges d'avancement visuelles pour les fiches, les axes et les plans, permettant un suivi en temps réel de la progression.
+- Création de nouveaux blocs de pilotage : évolution des statuts sur une période donnée et avancement par axe.
+- Possibilité d'ajouter des modules personnalisés au suivi du plan, partageables avec le tableau de bord.
+- Amélioration de l'importation de plans via l'IA : le processus est désormais guidé étape par étape et propose des suggestions d'effets attendus pour chaque action.
+- Ajout de fonctionnalités d'exportation (Excel et PNG) pour les blocs de pilotage et les graphiques de suivi.
 
-**Aide à la priorisation**
-- **Nouvelle interface :** Refonte visuelle incluant une matrice "Impact × Mobilisation", un treemap interactif et un classement des leviers.
-- **Parcours utilisateur :** Ajout d'une visite guidée pour découvrir l'outil et d'un système de sauvegarde d'actions pour construire une stratégie.
-- **Analyse :** Amélioration de la précision des analyses et ajout d'un bouton d'accès direct à la méthodologie.
+**Indicateurs et trajectoire SNBC 3**
+- Intégration complète de la méthodologie et des données de la trajectoire SNBC 3.
+- Mise à disposition de nouveaux outils pour consulter et exporter les données SNBC 3 (classeurs dédiés, outils Excel).
+- Amélioration de la personnalisation des indicateurs : possibilité de créer des sous-indicateurs avec une profondeur illimitée et de choisir leur mode de calcul (addition des valeurs).
+- Optimisation de l'interface des indicateurs : édition des pilotes directement en ligne et export Excel simplifié depuis les vignettes.
 
-**Gestion des démarches (PCAET)**
-- **Cycle de vie :** Automatisation de l'archivage des anciens PCAET lors de l'adoption d'un nouveau plan et gestion des statuts (Adopté, En instruction).
-- **Suivi administratif :** Ajout des dates de saisine et d'adoption dans le tableau de suivi, avec possibilité de tri par date.
-- **Gestion documentaire :** Possibilité pour les instructeurs de télécharger l'ensemble des documents d'un dossier sous forme de fichier ZIP.
-- **Saisie des données :** Amélioration de la saisie des secteurs réglementaires, de la vulnérabilité et de la séquestration carbone.
+**Gestion des démarches et des territoires**
+- Optimisation de la gestion des "Supras" : un Supra peut désormais piloter un dépôt PCAET pour un groupe d'EPCI, avec une visibilité adaptée pour chaque membre.
+- Mise en place d'un mode "démo" pour les administrateurs, permettant de simuler un parcours complet de dépôt PCAET (du diagnostic à l'adoption).
+- Amélioration du suivi d'instruction : ajout des dates de saisine et d'adoption, et nouveaux filtres par département.
+- Déploiement de nouveaux outils de gestion pour les programmes d'audit et de labellisation (programme TETE).
 
-**Indicateurs & Référentiels**
-- **Périodicité :** Extension du support des cadences de saisie (mensuelle, trimestrielle, semestrielle).
-- **Saisie unifiée :** Regroupement de la saisie des résultats et des objectifs pour simplifier l'expérience utilisateur.
-- **Export :** Amélioration des exports Excel pour les indicateurs et les scores des référentiels (ajout des thématiques, de l'adaptation et de la labellisation).
+**Priorisation et recherche**
+- Refonte de l'outil de priorisation des leviers : interface de la matrice améliorée, ajout d'une aide visuelle pour identifier le levier prioritaire et accès direct à la documentation méthodologique.
+- Nouveau composant de recherche performant avec suggestions groupées et tolérance aux fautes de frappe.
 
 ### Évolutions techniques
 
-**IA & Protocoles**
-- **Serveur MCP (Model Context Protocol) :** Implémentation d'un serveur MCP permettant à des agents IA d'accéder à des outils métier et à une base analytique en lecture seule.
-- **Multi-modèles :** Intégration et tests de différents modèles (Albert, Gemini, Mistral AI) pour l'analyse et l'extraction de données.
+**Infrastructure et Déploiement**
+- Migration de l'infrastructure vers une gestion "as code" via Coolify et Terraform sur Scaleway (réseaux, bases de données, serveurs, stockage).
+- Amélioration de l'observabilité du système avec l'intégration de Grafana Alloy et la mise en place de tableaux de bord de monitoring.
+- Mise en place d'une infrastructure de préproduction (preprod) isolée et automatisée.
 
-**Observabilité & Monitoring**
-- **Migration de l'error tracking :** Remplacement de Sentry par PostHog pour le suivi des erreurs front-end et back-end.
-- **Traces & Logs :** Introduction d'OpenTelemetry pour la gestion des traces et des logs serveur.
+**Intelligence Artificielle et Assistance**
+- Développement d'un serveur MCP (Model Context Protocol) permettant d'offrir une assistance intelligente basée sur les données métier de la plateforme.
+- Renforcement du tracking analytique via PostHog pour suivre précisément les parcours utilisateurs, les succès/échecs des imports IA et les événements métier.
 
-**Infrastructure & Backend**
-- **Optimisation PDF :** Déplacement du rendu des PDF dans des *worker threads* pour éviter de bloquer le serveur et permettre l'interruption des tâches.
-- **Sécurité :** Renforcement de la vérification TLS pour les connexions PostgreSQL.
-- **Mises à jour majeures :** Migration vers Strapi 5, mise à jour de Node.js et de Playwright pour la CI.
-- **Performance :** Optimisation des requêtes SQL (pagination) et séparation des définitions et des états des actions pour accélérer le chargement des référentiels.
+**Architecture et Performance**
+- Refactoring massif de la gestion des indicateurs pour améliorer la maintenabilité (utilisation de contextes React et découpage en vues spécialisées).
+- Migration de la gestion d'état côté client de SWR vers React Query sur le site vitrine.
+- Optimisation des performances de recherche et de chargement des référentiels.
+- Amélioration de la robustesse du système de génération de rapports PDF (utilisation de worker threads interruptibles).
 
 ### Autres changements
-- **Documentation :** Mise à jour des documents d'architecture (ADR) concernant le cycle de vie des données.
-- **UI/UX :** Nettoyage général des composants (badges, tooltips, espacements) pour une meilleure conformité au design system.
+- Mise à jour de la vidéo de démonstration sur la page d'accueil.
+- Enrichissement de la documentation technique (ADR, plans de migration, runbooks d'infrastructure).
+- Nettoyage général du code et suppression de composants et tests obsolètes.
