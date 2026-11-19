@@ -1,3 +1,62 @@
+# [2.295.0](https://github.com/SocialGouv/domifa/compare/v2.294.7...v2.295.0) (2026-11-17)
+
+
+### Features
+
+* **portail-stats:** hide DDETS/DREETS account creation button ([ab33899](https://github.com/SocialGouv/domifa/commit/ab338995a17ba32d1910f4137815dd0cc19c2b0c))
+
+## [2.294.7](https://github.com/SocialGouv/domifa/compare/v2.294.6...v2.294.7) (2026-11-17)
+
+
+### Bug Fixes
+
+* **portail-usagers:** remove decorative emojis and hide warning emoji for RGAA 13.5 (MON-13.5) ([2244c5d](https://github.com/SocialGouv/domifa/commit/2244c5d1b325770386f44fa7dbbaecbdf6557a1b))
+
+## [2.294.6](https://github.com/SocialGouv/domifa/compare/v2.294.5...v2.294.6) (2026-11-17)
+
+
+### Bug Fixes
+
+* **backend:** send Brevo transactional emails on preprod ([0d3234a](https://github.com/SocialGouv/domifa/commit/0d3234a87868a04fc3515d9f3282c4886a9f4437))
+
+## [2.294.5](https://github.com/SocialGouv/domifa/compare/v2.294.4...v2.294.5) (2026-11-17)
+
+
+### Bug Fixes
+
+* **portail-usagers:** fix code review for RGAA 6.1 (MON-6.1) ([4baf3d6](https://github.com/SocialGouv/domifa/commit/4baf3d6600476a39957b223738c65eea426d498f))
+* **portail-usagers:** make links explicit for RGAA 6.1 (MON-6.1) ([f12bb00](https://github.com/SocialGouv/domifa/commit/f12bb0096d640936dcdb9d27f8df65278818c34e))
+* **portail-usagers:** restore footer logo tooltipMessage instead of unknown title binding (MON-6.1) ([5f000cc](https://github.com/SocialGouv/domifa/commit/5f000cc7471f3dac8c84c480a805f747fd6601f3))
+
+## [2.294.4](https://github.com/SocialGouv/domifa/compare/v2.294.3...v2.294.4) (2026-11-17)
+
+
+### Bug Fixes
+
+* **portail-usagers:** keep required fields and message types without CSS for RGAA 10.2 (MON-10.2) ([26251a2](https://github.com/SocialGouv/domifa/commit/26251a2a3c60e19e8a816363078501623186a98b))
+
+## [2.294.3](https://github.com/SocialGouv/domifa/compare/v2.294.2...v2.294.3) (2026-11-17)
+
+
+### Bug Fixes
+
+* **portail-usagers:** make password toggle labels stable and distinct for RGAA 11.2 (MON-11.2) ([c3c5daa](https://github.com/SocialGouv/domifa/commit/c3c5daa2bb9679b5c2c062c9456c2a695eebb154))
+
+## [2.294.2](https://github.com/SocialGouv/domifa/compare/v2.294.1...v2.294.2) (2026-11-17)
+
+
+### Bug Fixes
+
+* **portail-usagers:** keep focus outline visible in mobile login menu for RGAA 10.7 (MON-10.7) ([a66c531](https://github.com/SocialGouv/domifa/commit/a66c531c39a6d0e627a533cd28b662e3d6dbd5d2))
+
+## [2.294.1](https://github.com/SocialGouv/domifa/compare/v2.294.0...v2.294.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **portail-usagers:** delete icon-sm class ([27a777d](https://github.com/SocialGouv/domifa/commit/27a777ddb9b32972e33dcaa8ec6cb8e1ee71dcf5))
+* **portail-usagers:** remove presentational markup for RGAA 8.9 (MON-8.9) ([e83876c](https://github.com/SocialGouv/domifa/commit/e83876c194e38bc2c7935545885c76b174713c40))
+
 # [2.294.0](https://github.com/SocialGouv/domifa/compare/v2.293.1...v2.294.0) (2026-11-13)
 
 
