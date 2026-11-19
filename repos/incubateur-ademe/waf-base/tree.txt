@@ -1,0 +1,83 @@
+.
+├── .dockerignore
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── ci.yml
+│       ├── keepalive.yml
+│       └── release.yml
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── caddy
+│   └── Caddyfile
+├── cmd
+│   └── wafgen
+│       └── main.go
+├── coraza
+│   ├── 10-moteur.conf
+│   ├── 20-planchers.conf
+│   ├── 90-garde-fous.conf
+│   ├── SHA256SUMS
+│   └── coraza.conf-recommended
+├── crs
+│   ├── SHA256SUMS
+│   └── VERSION
+├── go.mod
+├── go.sum
+├── internal
+│   ├── coolify
+│   │   ├── coolify.go
+│   │   └── coolify_test.go
+│   ├── inventory
+│   │   ├── inventory.go
+│   │   └── inventory_test.go
+│   ├── lint
+│   │   ├── lint.go
+│   │   └── lint_test.go
+│   ├── policy
+│   │   └── policy.go
+│   ├── provision
+│   │   ├── cli.go
+│   │   ├── config.go
+│   │   ├── fake_test.go
+│   │   ├── provision.go
+│   │   └── provision_test.go
+│   ├── render
+│   │   └── render.go
+│   ├── runner
+│   │   ├── check.go
+│   │   ├── run.go
+│   │   └── run_test.go
+│   ├── seclang
+│   │   └── split.go
+│   ├── selftest
+│   │   └── selftest.go
+│   └── tenant
+│       └── tenant.go
+├── inventaire.yaml
+├── lint
+│   ├── action.yml
+│   └── waf-lint.yml.example
+├── main.go
+├── ops
+│   ├── Dockerfile
+│   └── Dockerfile.dockerignore
+├── plugins
+│   └── .gitkeep
+├── policy
+│   ├── formes.yaml
+│   ├── origines.yaml
+│   ├── regles.yaml
+│   └── waf.schema.json
+└── tests
+    ├── e2e
+    │   └── run.sh
+    └── exemple-tacct
+        ├── Dockerfile
+        ├── coraza
+        │   ├── after.conf
+        │   ├── before.conf
+        │   └── config.conf
+        └── waf.yaml
+27 directories, 55 files
