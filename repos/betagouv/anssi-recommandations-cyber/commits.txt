@@ -1,3 +1,56 @@
+2026-11-03T14:59:51+01:00 - 90f6cb1 - Bertrand Bougon : [DOC] Mets à jour le modèle C4
+2026-11-03T14:59:51+01:00 - 7d8f405 - Bertrand Bougon : [DOC] Mets à jour le README.md
+2026-10-27T16:57:58+01:00 - fa6ada0 - Pierre Leroy : Priorise les preuves du document le plus adéquat ... `fusionne_preuves` ne garde que les preuves des documents de meilleure adéquation, puis regroupe les preuves retenues par document
+2026-10-27T16:57:58+01:00 - a0fa523 - Pierre Leroy : Définit le contrat de qualification des documents ... un schéma JSON fermé donne l'adéquation de chaque document à la question, limitée à `indetermine` sans métadonnées, et un prompt décrit les quatre adéquations
+2026-10-27T16:57:58+01:00 - a0a21ae - Pierre Leroy : Qualifie les documents en parallèle de la classification ... `ReclasseurLLMEnParallele` soumet un appel de qualification en plus des lots, rattache l'adéquation à chaque évaluation, et la capacité d'un reclassement compte cet appel
+2026-10-27T16:57:58+01:00 - 321658a - Pierre Leroy : Déplace les modèles des guides MSC dans `schemas/msc.py` ... `DocumentGuideMSC` et `ReponseGuideMSC` quittent `service_albert.py` pour pouvoir être utilisés sans dépendre du service
+2026-10-27T16:57:58+01:00 - 1e39585 - Pierre Leroy : Charge les guides MSC avant le reclassement ... `ServiceAlbert` les récupère une fois, associe leur contexte aux paragraphes avant le reclassement et réutilise la même liste pour les titres de la réponse
+2026-10-27T16:57:58+01:00 - 0cd9773 - Pierre Leroy : Associe le contexte des guides MSC aux paragraphes ... `associe_contexte_msc` renseigne `Paragraphe.contexte_document_msc` (nom et description en texte) quand le fichier n'appartient qu'à un seul guide
+2026-10-27T16:36:00+01:00 - f3ffb1f - Pierre Leroy : Ajoute le reclasseur LLM en parallèle ... `ReclasseurLLMEnParallele` soumet tous les lots d'un reclassement au coordinateur et rassemble leurs évaluations, sans soumettre au-delà de la capacité
+2026-10-27T16:36:00+01:00 - cc2c67d - Pierre Leroy : Ajoute le paramètre `format_reponse` à `recupere_propositions` ... transmis à Albert comme `response_format` uniquement quand il est renseigné ; le client de test enregistre les formats demandés
+2026-10-27T16:36:00+01:00 - af6fab1 - Pierre Leroy : Permet de désactiver les reprises automatiques du client Albert ... `fabrique_client_albert` accepte `max_retries` (2 par défaut, comme le SDK OpenAI)
+2026-10-27T16:36:00+01:00 - a64955b - Pierre Leroy : Ouvre le coordinateur dans le cycle de vie du serveur ... il est créé au démarrage avec la capacité déduite de `ALBERT_RECLASSEMENT_TAILLE_LOT`, des paragraphes retenus et de Jeopardy, et fermé à l'arrêt
+2026-10-27T16:36:00+01:00 - 65739a0 - Pierre Leroy : Calcule la capacité du reclassement parallèle ... `CapaciteReclassementParallele` donne le nombre d'appels par reclassement (un par lot) et de reclassements simultanés, dont découle le nombre de threads
+2026-10-27T16:36:00+01:00 - 4a44151 - Pierre Leroy : Ajoute le coordinateur du reclassement parallèle ... il borne le nombre de reclassements simultanés, garde la place d'un reclassement jusqu'à la fin de ses appels et ferme l'exécuteur
+2026-10-27T16:36:00+01:00 - 189cc86 - Pierre Leroy : Remplace `TYPE_RECLASSEUR=llm_par_lots` par `llm_parallele` ... la fabrique construit `ReclasseurLLMEnParallele` avec le coordinateur du serveur et un client sans reprises ; les tests de configuration ne dépendent plus de l'environnement du poste
+2026-10-27T16:13:58+01:00 - ff8b62f - Pierre Leroy : [SOIN] Extrais l'interface du reclasseur dans `reclassement.py` ... déplace `Reclasseur` et `ResultatReclassement` pour pouvoir ajouter de nouveaux reclasseurs sans import circulaire
+2026-10-27T16:13:58+01:00 - fdcd39d - Pierre Leroy : [SOIN] Formate les fichiers touchés par le reclassement par lots ... fins de ligne de `client_albert.py`, ordre des imports, retours à la ligne et fin de fichier de la documentation, sans changement de comportement
+2026-10-27T16:13:58+01:00 - f936f21 - Pierre Leroy : Active le reclassement par lots avec `TYPE_RECLASSEUR=llm_par_lots` ... la taille des lots se règle avec `ALBERT_RECLASSEMENT_TAILLE_LOT` (5 par défaut) et la fabrique construit `ReclasseurLLMParLots`
+2026-10-27T16:13:58+01:00 - f644ffe - Bertrand Bougon : [SOIN] Déplace tous les reclasseurs dans le domaine question
+2026-10-27T16:13:58+01:00 - e244be4 - Pierre Leroy : Retire le détail de l'exception du journal du chat completion ... l'échec technique est journalisé avec un message fixe
+2026-10-27T16:13:58+01:00 - dad5b5c - Pierre Leroy : Sélectionne de façon déterministe les preuves admissibles ... fusionne les preuves des lots et reprend la page de l'unité probante pour chaque candidat retenu
+2026-10-27T16:13:58+01:00 - b6b7ff9 - Pierre Leroy : Conserve les unités sources des paragraphes enrichis ... `Paragraphe.unites_source` garde chaque chunk avec son contenu, sa page et ses métadonnées de bloc, et `unites_source.py` expose les unités d'un paragraphe, ou une seule unité quand l'enrichissement n'a pas tourné
+2026-10-27T16:13:58+01:00 - b05c11b - Pierre Leroy : Ajoute le paramètre `format_reponse` à `recupere_propositions` ... transmis à Albert comme `response_format` uniquement quand il est renseigné ; le client de test enregistre les formats demandés
+2026-10-27T16:13:58+01:00 - a484723 - Pierre Leroy : Définit le contrat structuré de classification des candidats ... schéma de classification par identifiant global, extraction des évaluations de la réponse du modèle et unité probante désignée pour une preuve, avec le prompt associé
+2026-10-27T16:13:58+01:00 - 9ee4708 - Bertrand Bougon : [REMANIEMENT] Extrait l’instanciation du reclasseur dans une fabrique
+2026-10-27T16:13:58+01:00 - 8dd3bd7 - Pierre Leroy : Documente le mode `llm_par_lots` du reclassement
+2026-10-27T16:13:58+01:00 - 10231cf - Pierre Leroy : Ajoute le reclasseur LLM par lots ... `ReclasseurLLMParLots` classe les candidats lot par lot, de façon séquentielle, et ne retient que des preuves vérifiables dans les unités sources
+2026-10-27T10:15:50+01:00 - bce0645 - renovate[bot] : [RENOVATE] Update dependency lint-staged to v17
+2026-10-27T10:08:28+01:00 - 3526c50 - renovate[bot] : [RENOVATE] Update dependency devalue to v6
+2026-10-27T09:58:53+01:00 - e6704e7 - renovate[bot] : [RENOVATE] Update astral-sh/setup-uv action to v10
+2026-10-27T09:51:28+01:00 - 005b0b8 - renovate[bot] : [RENOVATE] Update actions/setup-python action to v7
+2026-10-27T09:46:42+01:00 - a2ffa1a - renovate[bot] : [RENOVATE] Update actions/setup-node action to v7
+2026-10-27T09:39:16+01:00 - bceac3a - renovate[bot] : [RENOVATE] Update actions/checkout action to v7
+2026-10-27T09:33:35+01:00 - 4492c0e - renovate[bot] : [RENOVATE] Update dependency typescript-eslint to v8.72.0
+2026-10-27T09:24:07+01:00 - 9da6ee2 - Bertrand Bougon : Mets à la version de node utilisée vers 24.22.1
+2026-10-27T09:15:33+01:00 - 9a01892 - renovate[bot] : [RENOVATE] Update github/codeql-action action to v4.39.0
+2026-10-26T17:32:14+01:00 - 501ec34 - renovate[bot] : [RENOVATE] Update dependency eslint to v10.13.0
+2026-10-26T17:11:10+01:00 - 6940397 - renovate[bot] : [RENOVATE] Update zizmorcore/zizmor-action action to v0.7.1
+2026-10-26T16:58:46+01:00 - 34f5c07 - renovate[bot] : [RENOVATE] Update npm - mises à jour patch
+2026-10-26T16:50:03+01:00 - a887d2d - Bertrand Bougon : [DÉPLOIEMENT] Permet de déployer sur l’environnement de production OFF
+2026-10-26T16:50:03+01:00 - 0342b46 - Bertrand Bougon : [CORRECTION] Corrige le déploiement sur PROD OFF
+2026-10-26T09:53:57+01:00 - 805d667 - renovate[bot] : [RENOVATE] Update npm - mises à jour mineures
+2026-10-26T09:53:57+01:00 - 43797a7 - Bertrand Bougon : [SOIN] Applique prettier suite à la montée de version
+2026-10-22T10:58:13+02:00 - e2d03d8 - Pierre Leroy : [Sécurité] Désactive matomo
+2026-10-22T09:57:53+02:00 - 4fe7d22 - renovate[bot] : [RENOVATE] Update dependency pytest to v9.1.1
+2026-10-22T09:57:39+02:00 - 983f003 - renovate[bot] : [RENOVATE] Update github-actions - mises à jour mineures
+2026-10-22T09:36:27+02:00 - 4a648d0 - renovate[bot] : [RENOVATE] Update docker.io/python Docker tag to v3.14.7
+2026-10-22T09:34:31+02:00 - d2c9cfc - renovate[bot] : [RENOVATE] Update npm - mises à jour patch
+2026-10-22T09:27:25+02:00 - ba33d12 - renovate[bot] : [RENOVATE] Update dependency python-dotenv to v1.2.4
+2026-10-22T09:27:09+02:00 - 875b979 - renovate[bot] : [RENOVATE] Update dependency cryptography to v50.0.2
+2026-10-22T09:09:27+02:00 - 86121b3 - renovate[bot] : [RENOVATE] Update dependency @sveltejs/vite-plugin-svelte to v7.3.1
+2026-10-22T09:09:00+02:00 - b840727 - Bertrand Bougon : [CI] Groupe les PR renovate
+2026-10-22T08:42:55+02:00 - 82c0e2e - renovate[bot] : [RENOVATE] Update dependency vite to v8.1.6 [SECURITY]
 2026-10-05T10:31:10+02:00 - 7abfe70 - renovate[bot] : [RENOVATE] Update dependency @types/node to v25.9.8
 2026-10-05T10:12:50+02:00 - 6c5e14c - renovate[bot] : [RENOVATE] Update dependency devalue to v5.9.3 [SECURITY]
 2026-10-05T10:11:32+02:00 - 22b7d36 - renovate[bot] : [RENOVATE] Update dependency urllib3 to v2.8.0 [SECURITY]

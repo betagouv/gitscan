@@ -92,11 +92,22 @@
 │   ├── question
 │   │   ├── __init__.py
 │   │   ├── question.py
+│   │   ├── reclassement
+│   │   │   ├── __init__.py
+│   │   │   ├── contrat_reclassement_llm.py
+│   │   │   ├── reclassement.py
+│   │   │   ├── reclasseur.py
+│   │   │   ├── reclasseur_bge.py
+│   │   │   ├── reclasseur_llm.py
+│   │   │   ├── reclasseur_llm_par_lots.py
+│   │   │   ├── selection_reclassement.py
+│   │   │   └── unites_source.py
 │   │   └── reformulateur_de_question.py
 │   ├── schemas
 │   │   ├── __init__.py
 │   │   ├── albert.py
 │   │   ├── api.py
+│   │   ├── msc.py
 │   │   ├── retour_utilisatrice.py
 │   │   ├── type_utilisateur.py
 │   │   └── violations.py
@@ -104,19 +115,26 @@
 │   └── services
 │       ├── __init__.py
 │       ├── client_albert.py
+│       ├── contexte_documents.py
+│       ├── coordinateur_reclassement_parallele.py
 │       ├── exceptions.py
+│       ├── fabrique_reclasseur.py
 │       ├── fabrique_service_albert.py
-│       ├── reclasseur.py
+│       ├── fichier_prompt.py
+│       ├── reclasseur_llm_en_parallele.py
 │       ├── service_albert.py
 │       └── strategie_enrichissement_paragraphes.py
 ├── templates
 │   ├── prompt_assistant_cyber.txt
 │   ├── prompt_reclassement.txt
 │   ├── prompt_reclassement_llm.txt
+│   ├── prompt_reclassement_llm_classification.txt
+│   ├── prompt_reclassement_llm_parallele_qualification.txt
 │   └── prompt_reformulation.txt
 ├── tests
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
+│   ├── __init__.py
 │   ├── adaptateurs
 │   │   ├── test_adaptateur_chiffrement.py
 │   │   ├── test_adaptateur_sentry.py
@@ -140,18 +158,32 @@
 │   │   │   ├── conftest.py
 │   │   │   ├── test_client_albert_api.py
 │   │   │   ├── test_fabrique_client_albert.py
+│   │   │   ├── test_format_reponse_client_albert.py
 │   │   │   └── test_recupere_chunks_document.py
 │   │   ├── chiffrement
 │   │   │   └── test_chiffrement.py
 │   │   └── test_mapping_reponses_maitrisees.py
 │   ├── mocks
 │   │   ├── adaptateur_chiffrement.py
+│   │   ├── classification_de_test.py
 │   │   ├── client_albert_de_test.py
+│   │   ├── reclassement_llm_support.py
+│   │   ├── reclassement_parallele_support.py
 │   │   ├── reformulateur_de_question_de_test.py
 │   │   ├── serveur_de_test.py
-│   │   └── service_chiffrement_de_test.py
+│   │   ├── service_chiffrement_de_test.py
+│   │   └── unites_source_de_test.py
 │   ├── question
+│   │   ├── __init__.py
 │   │   ├── conftest.py
+│   │   ├── reclassement
+│   │   │   ├── __init__.py
+│   │   │   ├── test_contrat_reclassement_llm.py
+│   │   │   ├── test_reclasseur_bge.py
+│   │   │   ├── test_reclasseur_llm.py
+│   │   │   ├── test_reclasseurs.py
+│   │   │   ├── test_selection_reclassement.py
+│   │   │   └── test_unites_source.py
 │   │   ├── test_ajoute_interaction.py
 │   │   ├── test_cree_conversation.py
 │   │   ├── test_reformulateur.py
@@ -161,14 +193,14 @@
 │   │   ├── test_reponse_conversation.py
 │   │   └── test_violations.py
 │   ├── services
+│   │   ├── test_contexte_documents.py
 │   │   ├── test_fabrique_service_albert.py
 │   │   ├── test_filtre_reponses_maitrisees.py
 │   │   ├── test_par_page_precedente_et_suivante.py
-│   │   ├── test_reclasseur_bge.py
-│   │   ├── test_reclasseur_llm.py
-│   │   ├── test_reclasseurs.py
+│   │   ├── test_reclasseur_llm_en_parallele.py
 │   │   ├── test_service_albert.py
 │   │   ├── test_service_albert_chunk_api.py
+│   │   ├── test_service_albert_contexte_msc.py
 │   │   ├── test_service_albert_enrichissement.py
 │   │   └── test_service_albert_jeopardy.py
 │   ├── test_adaptateur_base_de_donnees.py
@@ -287,4 +319,4 @@
 │   ├── vitest.config.ts
 │   └── vitest.setup.ts
 └── uv.lock
-54 directories, 235 files
+56 directories, 265 files
