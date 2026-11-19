@@ -5,12 +5,12 @@
   "language": "Ruby",
   "features": [
     "Calendrier & Planification",
-    "Gestion des utilisateurs & Permissions",
-    "API & Intégrations",
-    "Statistiques & Rapports",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "API & Intégrations",
+    "Statistiques & Rapports",
+    "Authentification & Accès"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,31 +18,32 @@
     "PostgreSQL",
     "Redis",
     "Devise",
-    "Hotwire",
-    "Stimulus",
+    "OmniAuth",
+    "Doorkeeper",
     "GoodJob",
-    "Sentry",
-    "Chart.js"
+    "Stimulus",
+    "Hotwire",
+    "DSFR"
   ],
   "components": [
-    "Ruby on Rails",
-    "PostgreSQL & SQL",
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
-    "Authentification (composant)",
+    "Tests",
     "Webhooks & Événements",
-    "Templates & Moteurs de rendu",
-    "Tests"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
+      "jwt",
       "sso",
-      "jwt"
+      "mfa"
     ],
     "providers": [
-      "Microsoft Graph",
+      "Microsoft",
       "OpenID Connect"
     ]
   },
@@ -50,18 +51,25 @@
     "RSpec",
     "Capybara",
     "Playwright",
-    "FactoryBot"
+    "FactoryBot",
+    "WebMock",
+    "VCR"
   ],
-  "lastActivity": "2026-11-13T12:02:01+01:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-11-18T14:38:22+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "Ruby on Rails",
     "Bases de données SQL",
     "Sécurité & Auth",
+    "Design System & UI",
+    "CI/CD & GitHub Actions",
     "Accessibilité",
-    "Design System & UI"
+    "TypeScript",
+    "JavaScript"
   ]
 }

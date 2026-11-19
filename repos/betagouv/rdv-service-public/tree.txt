@@ -50,6 +50,8 @@
 │   │       │   ├── calendar_cross.svg
 │   │       │   └── double_arrow.svg
 │   │       ├── custom-icons
+│   │       │   ├── ri-file-copy-2-fill.svg
+│   │       │   ├── ri-file-copy-2-line.svg
 │   │       │   ├── ri-history-line.svg
 │   │       │   ├── ri-user-follow-fill.svg
 │   │       │   └── ri-user-unfollow-fill.svg
@@ -206,6 +208,7 @@
 │   │   │   │   ├── sectorisation_tests_controller.rb
 │   │   │   │   ├── sectorizations_controller.rb
 │   │   │   │   ├── sectors_controller.rb
+│   │   │   │   ├── security_settings_controller.rb
 │   │   │   │   ├── services_controller.rb
 │   │   │   │   ├── teams_controller.rb
 │   │   │   │   ├── user_fields_controller.rb
@@ -523,6 +526,7 @@
 │   │   │   ├── blog_posts_modal_controller.js
 │   │   │   ├── dependent_input_controller.js
 │   │   │   ├── destroyable_controller.js
+│   │   │   ├── dropdown_button_controller.js
 │   │   │   ├── form_controller.js
 │   │   │   ├── lagaufre.js
 │   │   │   ├── motif_form_controller.js
@@ -557,6 +561,7 @@
 │   │   │   │   ├── _copy_email_button.scss
 │   │   │   │   ├── _creneaux.scss
 │   │   │   │   ├── _dropdown.scss
+│   │   │   │   ├── _dropdown_button.scss
 │   │   │   │   ├── _forms.scss
 │   │   │   │   ├── _fullcalendar_theme.scss
 │   │   │   │   ├── _logo_partenaire.scss
@@ -581,19 +586,17 @@
 │   │   │   ├── mail.scss
 │   │   │   ├── print.scss
 │   │   │   ├── rdv_plan.scss
-│   │   │   ├── structure
-│   │   │   │   ├── _authentication.scss
-│   │   │   │   ├── _bootstrap_overrides.scss
-│   │   │   │   ├── _footer.scss
-│   │   │   │   ├── _footer_dsfr.scss
-│   │   │   │   ├── _general.scss
-│   │   │   │   ├── _header.scss
-│   │   │   │   ├── _left-menu.scss
-│   │   │   │   ├── _misc.scss
-│   │   │   │   ├── _misc_agent_config.scss
-│   │   │   │   └── _page-head.scss
-│   │   │   └── vendor
-│   │   │       └── proconnect_button_dsfr.scss
+│   │   │   └── structure
+│   │   │       ├── _authentication.scss
+│   │   │       ├── _bootstrap_overrides.scss
+│   │   │       ├── _footer.scss
+│   │   │       ├── _footer_dsfr.scss
+│   │   │       ├── _general.scss
+│   │   │       ├── _header.scss
+│   │   │       ├── _left-menu.scss
+│   │   │       ├── _misc.scss
+│   │   │       ├── _misc_agent_config.scss
+│   │   │       └── _page-head.scss
 │   │   ├── super_admin
 │   │   │   └── copy_email_button.js
 │   │   └── super_admin.js
@@ -655,11 +658,15 @@
 │   │   ├── participations_export_job.rb
 │   │   ├── participations_export_page_job.rb
 │   │   ├── rdv_upcoming_reminder_job.rb
+│   │   ├── rdvs
+│   │   │   └── create_visio_room_job.rb
 │   │   ├── rdvs_export_job.rb
 │   │   ├── rdvs_export_page_job.rb
 │   │   ├── single_file_attente_job.rb
 │   │   ├── sms_job.rb
 │   │   ├── synchronize_crm_page_job.rb
+│   │   ├── territories
+│   │   │   └── refresh_agents_sensitive_account_job.rb
 │   │   ├── transfer_email_reply_job.rb
 │   │   ├── trigger_webhook_job.rb
 │   │   └── webhook_job.rb
@@ -683,6 +690,7 @@
 │   │   │   ├── account_deletion_mailer.rb
 │   │   │   ├── export_mailer.rb
 │   │   │   ├── login_code_mailer.rb
+│   │   │   ├── outlook_sync_mailer.rb
 │   │   │   ├── plage_ouverture_mailer.rb
 │   │   │   ├── rdv_mailer.rb
 │   │   │   ├── reply_transfer_mailer.rb
@@ -1256,6 +1264,8 @@
 │       │   │   │   ├── index_map.html.slim
 │       │   │   │   ├── new.html.slim
 │       │   │   │   └── show.html.slim
+│       │   │   ├── security_settings
+│       │   │   │   └── edit.html.slim
 │       │   │   ├── services
 │       │   │   │   ├── _service_toggle.html.slim
 │       │   │   │   ├── edit.html.slim
@@ -1300,6 +1310,7 @@
 │       │   │   ├── search.json.jb
 │       │   │   └── show.html.slim
 │       │   └── versions
+│       │       ├── _accordion_layout.html.slim
 │       │       ├── _resource_versions_row.html.slim
 │       │       ├── _version.html.slim
 │       │       └── _versions.html.slim
@@ -1319,6 +1330,7 @@
 │       │   │   ├── _explanations.html.slim
 │       │   │   ├── _setup_config.html.slim
 │       │   │   ├── calendar_selection.html.slim
+│       │   │   ├── edit.html.slim
 │       │   │   └── show.html.slim
 │       │   ├── calendar_sync
 │       │   │   └── show.html.slim
@@ -1394,6 +1406,7 @@
 │       │   └── show.html.slim
 │       ├── common
 │       │   ├── _copy_to_clipboard_button.html.slim
+│       │   ├── _dropdown_button.html.slim
 │       │   ├── _favicon.html.erb
 │       │   ├── _fil_ariane.html.slim
 │       │   ├── _franceconnect_button.html.slim
@@ -1523,6 +1536,8 @@
 │       │   │   │   └── export_ready.html.slim
 │       │   │   ├── login_code_mailer
 │       │   │   │   └── login_code.html.slim
+│       │   │   ├── outlook_sync_mailer
+│       │   │   │   └── sync_disabled.html.slim
 │       │   │   ├── plage_ouverture_mailer
 │       │   │   │   ├── _plage_ouverture_overview.html.slim
 │       │   │   │   ├── plage_ouverture_created.html.slim
@@ -1533,6 +1548,7 @@
 │       │   │   │   ├── participation_created.html.slim
 │       │   │   │   ├── rdv_cancelled.html.slim
 │       │   │   │   ├── rdv_created.html.slim
+│       │   │   │   ├── rdv_destroyed.html.slim
 │       │   │   │   └── rdv_updated.html.slim
 │       │   │   ├── reply_transfer_mailer
 │       │   │   │   ├── forward_to_default_mailbox.html.slim
@@ -2219,6 +2235,7 @@
 │   │   ├── 20261015134863_create_good_job_concurrency_claims.rb
 │   │   ├── 20261023154605_archive_visio_motifs_without_pro_connected_agents.rb
 │   │   ├── 20261028180000_recreate_blog_posts_table.rb
+│   │   ├── 20261102100000_add_force_2fa_for_agents_to_territories.rb
 │   │   └── 20261111100000_create_outlook_configs.rb
 │   ├── schema.rb
 │   ├── seeds
@@ -2515,6 +2532,7 @@
 │   │   │   │   ├── crud_on_agents_spec.rb
 │   │   │   │   └── with_or_without_service_spec.rb
 │   │   │   ├── caldav
+│   │   │   │   ├── agent_can_edit_caldav_display_spec.rb
 │   │   │   │   ├── agent_can_see_caldav_sync_logs_spec.rb
 │   │   │   │   └── agent_can_setup_caldav_spec.rb
 │   │   │   ├── calendar_export_spec.rb
@@ -2530,6 +2548,7 @@
 │   │   │   ├── motifs
 │   │   │   │   ├── crud_spec.rb
 │   │   │   │   ├── duplicate_spec.rb
+│   │   │   │   ├── show_spec.rb
 │   │   │   │   └── with_or_without_service_spec.rb
 │   │   │   ├── oauth_provider_spec.rb
 │   │   │   ├── online_booking
@@ -2567,6 +2586,7 @@
 │   │   │   │   └── step4_spec.rb
 │   │   │   ├── rdvs
 │   │   │   │   ├── agent_can_create_rdv_with_creneau_search_spec.rb
+│   │   │   │   ├── agent_can_destroy_rdv_spec.rb
 │   │   │   │   ├── agent_can_download_participants_csv_spec.rb
 │   │   │   │   ├── agent_can_export_rdvs_spec.rb
 │   │   │   │   ├── agent_can_list_rdvs_spec.rb
@@ -2831,9 +2851,13 @@
 │   │   │   └── sync_event_job_spec.rb
 │   │   ├── participations_export_job_spec.rb
 │   │   ├── rdv_upcoming_reminder_job_spec.rb
+│   │   ├── rdvs
+│   │   │   └── create_visio_room_job_spec.rb
 │   │   ├── rdvs_export_job_spec.rb
 │   │   ├── sms_job_spec.rb
 │   │   ├── synchronize_crm_page_job_spec.rb
+│   │   ├── territories
+│   │   │   └── refresh_agents_sensitive_account_job_spec.rb
 │   │   ├── transfer_email_reply_job_spec.rb
 │   │   ├── trigger_webhook_job_spec.rb
 │   │   └── webhook_job_spec.rb
@@ -2854,6 +2878,7 @@
 │   │   ├── agents
 │   │   │   ├── absence_mailer_spec.rb
 │   │   │   ├── export_mailer_spec.rb
+│   │   │   ├── outlook_sync_mailer_spec.rb
 │   │   │   ├── plage_ouverture_mailer_spec.rb
 │   │   │   ├── rdv_mailer_spec.rb
 │   │   │   └── webhook_mailer_spec.rb
@@ -2868,6 +2893,7 @@
 │   │   │   │   ├── account_deletion_mailer_preview.rb
 │   │   │   │   ├── export_mailer_preview.rb
 │   │   │   │   ├── login_code_mailer_preview.rb
+│   │   │   │   ├── outlook_sync_mailer_preview.rb
 │   │   │   │   ├── plage_ouverture_mailer_preview.rb
 │   │   │   │   ├── rdv_mailer_preview.rb
 │   │   │   │   ├── reply_transfer_mailer_preview.rb
@@ -3023,6 +3049,7 @@
 │   │   │       ├── cruds_teams_configuration_spec.rb
 │   │   │       ├── sector_attributions_controller_spec.rb
 │   │   │       ├── sectors_controller_spec.rb
+│   │   │       ├── security_settings_spec.rb
 │   │   │       └── update_territory_admin_spec.rb
 │   │   ├── agents
 │   │   │   ├── agents_controller_search_spec.rb
@@ -3264,4 +3291,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-494 directories, 2776 files
+499 directories, 2798 files
