@@ -1,34 +1,30 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 12 novembre 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 18 novembre 2026)
 
 ### Résumé
-Cette période a été marquée par un enrichissement majeur de l'expérience utilisateur, notamment avec le déploiement de la nouvelle section "Les métiers" et de l'espace "Se former et s'entraîner". La plateforme propose désormais des parcours plus interactifs et des contenus dynamiques pour aider les utilisateurs à explorer les métiers de la cybersécurité. En parallèle, une refonte importante de l'infrastructure technique a été réalisée pour moderniser l'environnement de développement et de déploiement.
+La plateforme a franchi une étape majeure avec le déploiement de nouvelles sections dédiées à l'exploration des métiers et à la formation. Les utilisateurs disposent désormais de parcours interactifs pour découvrir les métiers de la cybersécurité, écouter des témoignages de professionnels et tester leurs compétences. L'infrastructure a également été modernisée pour supporter ces nouvelles fonctionnalités.
 
 ### Évolutions fonctionnelles
-- **Nouvelle section "Les métiers"** : Mise en place d'une page dédiée incluant des onglets interactifs ("Je me repère", "J'explore", "J'écoute les Pros", "Je trace ma route") et l'intégration d'un test cyber.
-- **Parcours de formation** : Création de la page "Se former et s'entraîner en ligne" avec des outils de mesure de niveau et d'entraînement.
-- **Exploration des métiers** : 
-    - Amélioration de la navigation avec des fiches détaillées par famille de métiers.
-    - Ajout de vignettes de témoignages de professionnels.
-    - Meilleure organisation des familles de métiers (tri par numéro et affichage des numéros).
-- **Améliorations de l'interface (UI/UX)** :
-    - Mise à jour de la charte graphique (couleurs des familles, gestion du mode sombre).
-    - Corrections de textes (wording) pour plus de clarté et de cohérence.
-    - Épuration de l'en-tête (retrait du logo ANSSI et de la tagline "Innovation ANSSI").
+- **Nouvelle expérience "Les métiers"** : Mise en place d'une page dédiée avec des onglets interactifs permettant de s'orienter ("Je me repère"), d'explorer les contenus, d'écouter des professionnels ("J'écoute les Pros") et de définir un parcours ("Je trace ma route").
+- **Parcours de formation** : Création de la page "Se former et s'entraîner" pour accompagner l'apprentissage.
+- **Exploration enrichie** : 
+    - Affichage de fiches détaillées pour les familles de métiers.
+    - Intégration de vignettes de professionnels pour humaniser les parcours.
+    - Amélioration de la navigation grâce au tri et à l'affichage des numéros de familles de métiers.
+- **Tests de niveau** : Intégration d'un test cyber et possibilité pour l'utilisateur d'enregistrer ses résultats.
+- **Optimisations de l'interface (UI/UX)** : 
+    - Amélioration du mode sombre.
+    - Corrections de textes (wording) pour plus de clarté.
+    - Mise à jour de l'en-tête (retrait des anciens logos et taglines).
 
 ### Évolutions techniques
-- **Modernisation de l'infrastructure** :
-    - Migration de la stack vers Node.js 26.
-    - Introduction d'un environnement de développement via Nix (shell Nix) pour une meilleure reproductibilité.
-    - Mise à jour de la chaîne CI/CD (passage sur Ubuntu 26.04 et actualisation des GitHub Actions).
-- **Refonte de l'API et de la gestion des données** :
-    - Optimisation de l'API "Métiers" : passage de l'utilisation d'identifiants techniques à des identifiants métier, et création de nouveaux endpoints pour les familles et les fonctions.
-    - Intégration de Grist pour la récupération dynamique des données (métiers, familles, fonctions).
-    - Refactorisation du code pour mutualiser les types et améliorer la structure des ressources.
-- **Qualité et tests** :
-    - Amélioration du système de suivi des tests (enregistrement des résultats et consignation dans les journaux).
-    - Mise à jour massive des dépendances de développement et de production.
-    - Automatisation du tri des imports.
+- **Migration d'infrastructure** : Passage de la stack vers Node.js 26 et optimisation de la chaîne de déploiement (Nix, pnpm, CleverCloud).
+- **Refonte de la gestion des données métiers** :
+    - Intégration de Grist comme source de données pour les métiers, les fonctions et les familles.
+    - Sécurisation de l'API en remplaçant l'exposition des identifiants techniques internes par des identifiants métiers.
+    - Création de nouveaux points d'accès (endpoints) pour les familles de métiers et les fonctions associées.
+- **Amélioration de la robustesse** : 
+    - Renforcement de la validation des résultats de tests.
+    - Optimisation du typage et de la gestion des ressources métier.
 
 ### Autres changements
-- **Documentation** : Réorganisation complète du guide de développement.
-- **Maintenance** : Nettoyage des logs de debug d'authentification et centralisation des instructions pour les agents d'IA.
+- Mise à jour de l'UI Kit vers la version 1.64.0.
