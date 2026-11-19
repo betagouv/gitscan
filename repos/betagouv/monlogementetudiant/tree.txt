@@ -17,6 +17,104 @@
 ├── CLAUDE.md
 ├── Procfile
 ├── README.md
+├── apps
+│   └── worker
+│       ├── __tests__
+│       │   ├── env-usage.test.ts
+│       │   ├── track-job-run.test.ts
+│       │   ├── wait-for-migrations.integration.test.ts
+│       │   ├── wait-for-migrations.test.ts
+│       │   └── worker-errors.test.ts
+│       ├── commands
+│       │   ├── __tests__
+│       │   │   ├── backfill-brevo-contacts.test.ts
+│       │   │   ├── backfill-cache-control.test.ts
+│       │   │   ├── demote-bailleur-admins.integration.test.ts
+│       │   │   ├── import-arpej-ibail.integration.test.ts
+│       │   │   ├── import-csv.integration.test.ts
+│       │   │   ├── import-fac-habitat.integration.test.ts
+│       │   │   ├── import-initiall.integration.test.ts
+│       │   │   ├── migrate.test.ts
+│       │   │   ├── purge-logs.integration.test.ts
+│       │   │   ├── sync-cities.integration.test.ts
+│       │   │   ├── sync-rents.integration.test.ts
+│       │   │   ├── sync-rents.test.ts
+│       │   │   ├── sync-stats.integration.test.ts
+│       │   │   ├── sync-stats.test.ts
+│       │   │   ├── sync-students.integration.test.ts
+│       │   │   └── sync-students.test.ts
+│       │   ├── backfill-alert-jobs.ts
+│       │   ├── backfill-brevo-contacts.ts
+│       │   ├── backfill-brevo-owners.ts
+│       │   ├── backfill-cache-control.ts
+│       │   ├── backfill-geocoding.ts
+│       │   ├── backup-db.ts
+│       │   ├── capture-availability-snapshot.ts
+│       │   ├── capture-monthly-metrics.ts
+│       │   ├── check-applications-inactivity.ts
+│       │   ├── compare-crous.ts
+│       │   ├── cron-selftest.ts
+│       │   ├── demote-bailleur-admins.ts
+│       │   ├── detect-alert-jobs.ts
+│       │   ├── expire-alerts.ts
+│       │   ├── healthcheck.ts
+│       │   ├── import-arpej-ibail.ts
+│       │   ├── import-backup.ts
+│       │   ├── import-crous-rents.ts
+│       │   ├── import-crous-surfaces.ts
+│       │   ├── import-crous-typologies.ts
+│       │   ├── import-crous.ts
+│       │   ├── import-csv.ts
+│       │   ├── import-fac-habitat.ts
+│       │   ├── import-initiall.ts
+│       │   ├── import-utils.ts
+│       │   ├── migrate.ts
+│       │   ├── purge-contact-requests.ts
+│       │   ├── purge-logs.ts
+│       │   ├── reset-stale-availability.ts
+│       │   ├── seed-alert-snapshot.ts
+│       │   ├── send-availability-recap.ts
+│       │   ├── send-contact-digest.ts
+│       │   ├── send-goal-reminders.ts
+│       │   ├── split-descriptions.ts
+│       │   ├── storage
+│       │   │   ├── auditStorage.ts
+│       │   │   ├── findStorageIssues.ts
+│       │   │   ├── fixStorageIssues.ts
+│       │   │   └── types.ts
+│       │   ├── sync-cities.ts
+│       │   ├── sync-rents.ts
+│       │   ├── sync-stats.ts
+│       │   ├── sync-students.ts
+│       │   ├── upload-images.ts
+│       │   └── verify-ramsese.ts
+│       ├── factory.ts
+│       ├── index.ts
+│       ├── lib
+│       │   ├── __tests__
+│       │   │   ├── backup-storage.test.ts
+│       │   │   ├── crous-helpers.test.ts
+│       │   │   ├── db-utils.test.ts
+│       │   │   ├── fixtures
+│       │   │   │   ├── crous-residences.sheetjs-expected.json
+│       │   │   │   └── crous-residences.xlsx
+│       │   │   ├── geocoder.test.ts
+│       │   │   ├── matomo.test.ts
+│       │   │   └── scalingo-backup.test.ts
+│       │   ├── backup-storage.ts
+│       │   ├── crous-helpers.ts
+│       │   ├── db-utils.ts
+│       │   ├── matomo.ts
+│       │   └── scalingo-backup.ts
+│       ├── package.json
+│       ├── sentry.ts
+│       ├── track-job-run.ts
+│       ├── types.ts
+│       ├── utils
+│       │   └── purge-archive.ts
+│       ├── wait-for-migrations.ts
+│       ├── worker-errors.ts
+│       └── worker.ts
 ├── biome.json
 ├── cache-handler.mjs
 ├── changelog
@@ -94,6 +192,7 @@
 │   ├── 2026-10-22-tri-resultats-mise-a-jour.md
 │   ├── 2026-10-23-pages-info-redirection.md
 │   ├── 2026-10-26-libelles-filtre-crous.md
+│   ├── 2026-10-26-rappel-mensuel-disponibilites.md
 │   ├── 2026-10-26-signalements-residences-tickets.md
 │   ├── 2026-10-27-mentions-legales-404.md
 │   ├── 2026-11-02-age-carte-candidature.md
@@ -119,96 +218,39 @@
 │   ├── 2026-11-03-relance-dispos-bailleurs-import-csv.md
 │   ├── 2026-11-03-simulateurs-affichage-mobile.md
 │   ├── 2026-11-03-surfaces-decimales.md
+│   ├── 2026-11-04-encart-disponibilite-fiche-residence.md
+│   ├── 2026-11-04-menu-espace-etudiant-reorganise.md
+│   ├── 2026-11-04-rappels-objectifs-echeance.md
+│   ├── 2026-11-04-ville-dans-emails-gestionnaires.md
+│   ├── 2026-11-05-suggestions-similaires-alertes.md
+│   ├── 2026-11-09-bandeau-alerte-recherche.md
+│   ├── 2026-11-09-carte-etudiante-enrichie.md
+│   ├── 2026-11-09-confirmation-dispos-non-renseignees.md
+│   ├── 2026-11-09-formulaire-gestionnaire-vide.md
+│   ├── 2026-11-09-gestionnaires-actifs.md
+│   ├── 2026-11-09-logement-attribue-et-statistiques-contacts.md
+│   ├── 2026-11-09-onglet-contacts-et-depublication.md
+│   ├── 2026-11-09-reinitialiser-simulations-stats-admin.md
+│   ├── 2026-11-09-relances-email-admin.md
+│   ├── 2026-11-10-enquete-flash-boursiers.md
+│   ├── 2026-11-10-suivi-disponibilites.md
+│   ├── 2026-11-11-aide-efficacite-relances.md
+│   ├── 2026-11-11-metriques-mensuelles-admin.md
+│   ├── 2026-11-12-api-contacts-bailleur.md
+│   ├── 2026-11-14-alertes-plus-rapides.md
+│   ├── 2026-11-14-deblocage-gestionnaires-brevo.md
+│   ├── 2026-11-14-stats-alertes.md
+│   ├── 2026-11-14-taches-planifiees-historique.md
+│   ├── 2026-11-16-loyer-par-personne-colocation.md
+│   ├── 2026-11-18-villes-mal-nommees.md
 │   └── README.md
-├── cli
-│   ├── __tests__
-│   │   └── cron-failure.test.ts
-│   ├── commands
-│   │   ├── __tests__
-│   │   │   ├── backfill-brevo-contacts.test.ts
-│   │   │   ├── backfill-cache-control.test.ts
-│   │   │   ├── demote-bailleur-admins.integration.test.ts
-│   │   │   ├── import-arpej-ibail.integration.test.ts
-│   │   │   ├── import-csv.integration.test.ts
-│   │   │   ├── import-fac-habitat.integration.test.ts
-│   │   │   ├── import-initiall.integration.test.ts
-│   │   │   ├── purge-logs.integration.test.ts
-│   │   │   ├── sync-cities.integration.test.ts
-│   │   │   ├── sync-rents.integration.test.ts
-│   │   │   ├── sync-rents.test.ts
-│   │   │   ├── sync-stats.integration.test.ts
-│   │   │   ├── sync-stats.test.ts
-│   │   │   ├── sync-students.integration.test.ts
-│   │   │   └── sync-students.test.ts
-│   │   ├── backfill-alert-jobs.ts
-│   │   ├── backfill-brevo-contacts.ts
-│   │   ├── backfill-brevo-owners.ts
-│   │   ├── backfill-cache-control.ts
-│   │   ├── backfill-geocoding.ts
-│   │   ├── backup-db.ts
-│   │   ├── check-applications-inactivity.ts
-│   │   ├── compare-crous.ts
-│   │   ├── cron-selftest.ts
-│   │   ├── demote-bailleur-admins.ts
-│   │   ├── detect-alert-jobs.ts
-│   │   ├── expire-alerts.ts
-│   │   ├── healthcheck.ts
-│   │   ├── import-arpej-ibail.ts
-│   │   ├── import-backup.ts
-│   │   ├── import-crous-rents.ts
-│   │   ├── import-crous-surfaces.ts
-│   │   ├── import-crous-typologies.ts
-│   │   ├── import-crous.ts
-│   │   ├── import-csv.ts
-│   │   ├── import-fac-habitat.ts
-│   │   ├── import-initiall.ts
-│   │   ├── import-utils.ts
-│   │   ├── migrate.ts
-│   │   ├── purge-contact-requests.ts
-│   │   ├── purge-logs.ts
-│   │   ├── reset-stale-availability.ts
-│   │   ├── seed-alert-snapshot.ts
-│   │   ├── send-alert-jobs.ts
-│   │   ├── send-contact-digest.ts
-│   │   ├── split-descriptions.ts
-│   │   ├── storage
-│   │   │   ├── auditStorage.ts
-│   │   │   ├── findStorageIssues.ts
-│   │   │   ├── fixStorageIssues.ts
-│   │   │   └── types.ts
-│   │   ├── sync-cities.ts
-│   │   ├── sync-rents.ts
-│   │   ├── sync-stats.ts
-│   │   ├── sync-students.ts
-│   │   ├── upload-images.ts
-│   │   └── verify-ramsese.ts
-│   ├── cron-failure.ts
-│   ├── factory.ts
-│   ├── index.ts
-│   ├── lib
-│   │   ├── __tests__
-│   │   │   ├── backup-storage.test.ts
-│   │   │   ├── crous-helpers.test.ts
-│   │   │   ├── fixtures
-│   │   │   │   ├── crous-residences.sheetjs-expected.json
-│   │   │   │   └── crous-residences.xlsx
-│   │   │   ├── geocoder.test.ts
-│   │   │   └── matomo.test.ts
-│   │   ├── backup-storage.ts
-│   │   ├── crous-helpers.ts
-│   │   ├── db-utils.ts
-│   │   ├── matomo.ts
-│   │   └── scalingo-backup.ts
-│   ├── sentry.ts
-│   ├── types.ts
-│   └── utils
-│       └── purge-archive.ts
-├── cron.json
 ├── docker-compose.yml
 ├── docs
-│   └── adr
-│       ├── 0001-alert-sender.md
-│       └── 0002-alert-detection.md
+│   ├── adr
+│   │   ├── 0001-alert-sender.md
+│   │   ├── 0002-alert-detection.md
+│   │   └── 0003-worker-app-dediee.md
+│   └── parcours-e2e.md
 ├── drizzle
 │   ├── 0000_initial.sql
 │   ├── 0001_cleanup.sql
@@ -298,6 +340,22 @@
 │   ├── 0085_surfaces_decimal.sql
 │   ├── 0086_owner_availability_tracked_since.sql
 │   ├── 0087_account_issuer_relax.sql
+│   ├── 0088_backfill_contact_moderation_activity.sql
+│   ├── 0089_reminder_emails.sql
+│   ├── 0090_student_goal_reminder_sent_at.sql
+│   ├── 0091_alert_job_similar_source.sql
+│   ├── 0092_unpublished_stop_contacts.sql
+│   ├── 0093_student_study_fields.sql
+│   ├── 0094_contact_contacted_at.sql
+│   ├── 0095_backfill_contacted_at.sql
+│   ├── 0096_scholarship_survey.sql
+│   ├── 0097_admin_metrics.sql
+│   ├── 0098_api_key_owner.sql
+│   ├── 0099_simulation_versions.sql
+│   ├── 0100_availability_follow_up_snapshots.sql
+│   ├── 0101_job_run.sql
+│   ├── 0102_alert_job_send_tracking.sql
+│   ├── 0103_brevo_unblock.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -387,6 +445,22 @@
 │       ├── 0085_snapshot.json
 │       ├── 0086_snapshot.json
 │       ├── 0087_snapshot.json
+│       ├── 0088_snapshot.json
+│       ├── 0089_snapshot.json
+│       ├── 0090_snapshot.json
+│       ├── 0091_snapshot.json
+│       ├── 0092_snapshot.json
+│       ├── 0093_snapshot.json
+│       ├── 0094_snapshot.json
+│       ├── 0095_snapshot.json
+│       ├── 0096_snapshot.json
+│       ├── 0097_snapshot.json
+│       ├── 0098_snapshot.json
+│       ├── 0099_snapshot.json
+│       ├── 0100_snapshot.json
+│       ├── 0101_snapshot.json
+│       ├── 0102_snapshot.json
+│       ├── 0103_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── e2e
@@ -394,13 +468,17 @@
 │   ├── bailleur-confirmer-disponibilites.spec.ts
 │   ├── bailleur-creation-residence.spec.ts
 │   ├── bailleur-disponibilites-liste.spec.ts
+│   ├── bailleur-enquete-boursiers.spec.ts
 │   ├── bailleur-publication.spec.ts
+│   ├── bandeau-alerte.spec.ts
 │   ├── connexion-etudiant.spec.ts
 │   ├── contact-residence.spec.ts
 │   ├── espace-etudiant.spec.ts
 │   ├── favoris.spec.ts
+│   ├── fiche-residence-disponibilite.spec.ts
 │   ├── fiche-residence.spec.ts
 │   ├── fixtures.ts
+│   ├── navigation-espace-etudiant.spec.ts
 │   ├── recherche-logement.spec.ts
 │   ├── seed.ts
 │   ├── simulateurs.spec.ts
@@ -487,24 +565,25 @@
 │   │   ├── accommodation-report.integration.test.ts
 │   │   ├── accommodations.integration.test.ts
 │   │   ├── account-case-merge.integration.test.ts
-│   │   ├── admin-availability-follow-up.integration.test.ts
-│   │   ├── admin-candidatures-period.integration.test.ts
-│   │   ├── admin-owner-link.integration.test.ts
-│   │   ├── admin-owner-logo-export.integration.test.ts
-│   │   ├── admin-owner-usage.integration.test.ts
-│   │   ├── admin-users.integration.test.ts
+│   │   ├── admin-*.ts  (19 files)
 │   │   ├── alert-detector.integration.test.ts
 │   │   ├── alert-expiration.integration.test.ts
+│   │   ├── alert-sending.integration.test.ts
 │   │   ├── alerts.integration.test.ts
+│   │   ├── api-contacts-query.integration.test.ts
+│   │   ├── api-contacts.integration.test.ts
 │   │   ├── api.integration.test.ts
 │   │   ├── applications-inactivity.integration.test.ts
 │   │   ├── applications-management.integration.test.ts
 │   │   ├── auth-hardening.integration.test.ts
+│   │   ├── availability-follow-up.integration.test.ts
+│   │   ├── availability-recap.integration.test.ts
 │   │   ├── bailleur-application-scope.integration.test.ts
 │   │   ├── bailleur-permissions.test.ts
 │   │   ├── bailleur-user-email-change.integration.test.ts
 │   │   ├── bailleur-users.integration.test.ts
 │   │   ├── bailleur.integration.test.ts
+│   │   ├── brevo-unblock.integration.test.ts
 │   │   ├── budget-simulation.integration.test.ts
 │   │   ├── contact-follow-up-export.integration.test.ts
 │   │   ├── contact-mode-monitoring.integration.test.ts
@@ -519,9 +598,12 @@
 │   │   ├── favorites.integration.test.ts
 │   │   ├── fixtures
 │   │   │   └── factories.ts
+│   │   ├── graphile-cleanup.integration.test.ts
 │   │   ├── helpers
+│   │   │   ├── external-fetch-stub.ts
 │   │   │   ├── geo.ts
 │   │   │   ├── geocoding-stub.ts
+│   │   │   ├── global-setup-integration.ts
 │   │   │   ├── server-only-stub.ts
 │   │   │   ├── setup-integration.ts
 │   │   │   ├── test-caller.ts
@@ -530,23 +612,45 @@
 │   │   │   ├── test-db.ts
 │   │   │   └── typologies.ts
 │   │   ├── housing-aid-simulation.integration.test.ts
+│   │   ├── job-run.integration.test.ts
+│   │   ├── jobs-enqueue.integration.test.ts
 │   │   ├── login-attempts.integration.test.ts
 │   │   ├── magic-link-expired.integration.test.ts
 │   │   ├── magic-link-otp.integration.test.ts
 │   │   ├── multi-address.integration.test.ts
 │   │   ├── owner-accounts-export.integration.test.ts
+│   │   ├── owner-contact-stats-export.integration.test.ts
+│   │   ├── owner-contact-stats.integration.test.ts
 │   │   ├── owner-incomplete-accommodations.integration.test.ts
 │   │   ├── owner-statistics-export.integration.test.ts
 │   │   ├── owner-statistics.integration.test.ts
 │   │   ├── owner-update-tracking.integration.test.ts
+│   │   ├── reminder-efficacy.integration.test.ts
+│   │   ├── reminder-emails.integration.test.ts
 │   │   ├── residence-create-update.integration.test.ts
 │   │   ├── residence-form-typologies.integration.test.ts
 │   │   ├── residence-images.integration.test.ts
 │   │   ├── residences-csv-export.integration.test.ts
 │   │   ├── resolve-city.integration.test.ts
 │   │   ├── role-isolation.integration.test.ts
+│   │   ├── run-cli-command.integration.test.ts
+│   │   ├── scholarship-survey.integration.test.ts
+│   │   ├── seed
+│   │   │   ├── accounts.ts
+│   │   │   ├── dataset.ts
+│   │   │   ├── demo
+│   │   │   │   ├── activity.ts
+│   │   │   │   ├── jobs.ts
+│   │   │   │   └── referential.ts
+│   │   │   ├── dev.ts
+│   │   │   ├── random.ts
+│   │   │   ├── run.test.ts
+│   │   │   └── run.ts
 │   │   ├── stale-availability-reset.integration.test.ts
+│   │   ├── stale-locks.integration.test.ts
+│   │   ├── student-goal-reminders.integration.test.ts
 │   │   ├── student-goals.integration.test.ts
+│   │   ├── student-profile.integration.test.ts
 │   │   ├── support-tickets.integration.test.ts
 │   │   ├── territories-get-by-slug.integration.test.ts
 │   │   ├── territories-list.integration.test.ts
@@ -596,6 +700,8 @@
 │   │   │   │       ├── disponibilites
 │   │   │   │       │   └── confirmer
 │   │   │   │       │       └── page.tsx
+│   │   │   │       ├── enquete-boursiers
+│   │   │   │       │   └── page.tsx
 │   │   │   │       ├── layout.module.css
 │   │   │   │       ├── layout.tsx
 │   │   │   │       ├── page.tsx
@@ -634,6 +740,7 @@
 │   │   │       │   └── page.tsx
 │   │   │       ├── candidatures
 │   │   │       │   ├── candidatures-list.tsx
+│   │   │       │   ├── monthly-section.tsx
 │   │   │       │   └── page.tsx
 │   │   │       ├── changelog
 │   │   │       │   ├── changelog-list.tsx
@@ -648,6 +755,9 @@
 │   │   │       ├── consommateurs
 │   │   │       │   ├── consumers-list.tsx
 │   │   │       │   └── page.tsx
+│   │   │       ├── enquete-boursiers
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── scholarship-survey-list.tsx
 │   │   │       ├── feedback
 │   │   │       │   ├── feedback-list.tsx
 │   │   │       │   └── page.tsx
@@ -663,23 +773,36 @@
 │   │   │       │   └── page.tsx
 │   │   │       ├── layout.tsx
 │   │   │       ├── page.tsx
+│   │   │       ├── relances-email
+│   │   │       │   └── page.tsx
 │   │   │       ├── residences
+│   │   │       │   └── page.tsx
+│   │   │       ├── simulations
 │   │   │       │   └── page.tsx
 │   │   │       ├── statistiques
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── statistiques.module.css
+│   │   │       ├── suivi-disponibilites
+│   │   │       │   └── page.tsx
 │   │   │       ├── tableau-de-bord
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── tableau-de-bord.module.css
 │   │   │       ├── taches-planifiees
 │   │   │       │   ├── [id]
 │   │   │       │   │   └── page.tsx
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── tache
+│   │   │       │       └── [identifier]
+│   │   │       │           └── page.tsx
+│   │   │       ├── territoires
 │   │   │       │   └── page.tsx
 │   │   │       ├── tickets
 │   │   │       │   ├── accommodation-reports-list.tsx
 │   │   │       │   ├── page.tsx
 │   │   │       │   ├── ticket-status.tsx
 │   │   │       │   └── tickets-list.tsx
+│   │   │       ├── usage-etudiants
+│   │   │       │   └── page.tsx
 │   │   │       └── utilisateurs
 │   │   │           ├── [id]
 │   │   │           │   ├── page.tsx
@@ -726,6 +849,10 @@
 │   │   │   │   ├── plan-du-site
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── politique-de-confidentialite
+│   │   │   │       └── page.tsx
+│   │   │   ├── disponibilites
+│   │   │   │   └── confirmer
+│   │   │   │       ├── actions.ts
 │   │   │   │       └── page.tsx
 │   │   │   ├── dossier-facile
 │   │   │   │   └── error
@@ -816,12 +943,18 @@
 │   │   │   │   ├── comptes-gestionnaires
 │   │   │   │   │   └── export
 │   │   │   │   │       └── route.ts
+│   │   │   │   ├── enquete-boursiers
+│   │   │   │   │   └── export
+│   │   │   │   │       └── route.ts
 │   │   │   │   ├── import
 │   │   │   │   │   └── csv
 │   │   │   │   │       ├── execute
 │   │   │   │   │       │   └── route.ts
 │   │   │   │   │       └── preview
 │   │   │   │   │           └── route.ts
+│   │   │   │   ├── metriques
+│   │   │   │   │   └── export
+│   │   │   │   │       └── route.ts
 │   │   │   │   └── residences
 │   │   │   │       ├── export
 │   │   │   │       │   └── route.ts
@@ -832,6 +965,10 @@
 │   │   │   │   └── [...all]
 │   │   │   │       └── route.ts
 │   │   │   ├── bailleur
+│   │   │   │   ├── contacts
+│   │   │   │   │   └── statistiques
+│   │   │   │   │       └── export
+│   │   │   │   │           └── route.ts
 │   │   │   │   └── statistiques
 │   │   │   │       └── export
 │   │   │   │           └── route.ts
@@ -840,6 +977,9 @@
 │   │   │   │       └── route.ts
 │   │   │   ├── df-redirect
 │   │   │   │   └── route.ts
+│   │   │   ├── disponibilites
+│   │   │   │   └── confirmer
+│   │   │   │       └── route.ts
 │   │   │   ├── dossier-facile
 │   │   │   │   └── webhook
 │   │   │   │       └── route.ts
@@ -887,6 +1027,7 @@
 │   │   ├── administration
 │   │   │   ├── activity-item.module.css
 │   │   │   ├── activity-item.tsx
+│   │   │   ├── admin-client-pagination.tsx
 │   │   │   ├── admin-data-table.module.css
 │   │   │   ├── admin-data-table.tsx
 │   │   │   ├── admin-header.tsx
@@ -903,16 +1044,35 @@
 │   │   │   ├── link-dialog.module.css
 │   │   │   ├── link-user-owner-dialog.tsx
 │   │   │   ├── link-user-to-owner-dialog.tsx
+│   │   │   ├── metrics
+│   │   │   │   ├── contact-path-tab.tsx
+│   │   │   │   ├── metric-source-badge.tsx
+│   │   │   │   ├── month-filter.tsx
+│   │   │   │   ├── month-range-filter.tsx
+│   │   │   │   ├── monthly-metrics-table.module.css
+│   │   │   │   ├── monthly-metrics-table.tsx
+│   │   │   │   └── owner-moderation-tab.tsx
 │   │   │   ├── owner-form.tsx
 │   │   │   ├── owner-logo-form.tsx
+│   │   │   ├── owner-picker.module.css
+│   │   │   ├── owner-picker.tsx
+│   │   │   ├── relances-email
+│   │   │   │   ├── blocked-contacts-tab.tsx
+│   │   │   │   ├── efficacy-help-modal.tsx
+│   │   │   │   ├── labels.ts
+│   │   │   │   └── sent-emails-tab.tsx
 │   │   │   ├── role-badge.tsx
 │   │   │   ├── shared
 │   │   │   │   ├── job-duration.tsx
 │   │   │   │   └── job-stat-cards.tsx
 │   │   │   ├── taches-planifiees
+│   │   │   │   ├── cron-job-defs.test.ts
 │   │   │   │   ├── cron-job-defs.ts
 │   │   │   │   ├── cron-job-detail.tsx
-│   │   │   │   └── cron-overview-table.tsx
+│   │   │   │   ├── cron-overview-table.tsx
+│   │   │   │   ├── job-run-daily-totals.tsx
+│   │   │   │   ├── job-run-history.tsx
+│   │   │   │   └── job-run-status-badge.tsx
 │   │   │   └── user-form.tsx
 │   │   ├── auth
 │   │   │   ├── login-required-button.tsx
@@ -941,6 +1101,7 @@
 │   │   │   │   ├── contact-detail.module.css
 │   │   │   │   ├── contact-detail.tsx
 │   │   │   │   ├── contact-mode-settings-modal.tsx
+│   │   │   │   ├── contact-stats-table.tsx
 │   │   │   │   ├── contacts-board.tsx
 │   │   │   │   ├── contacts-landing.tsx
 │   │   │   │   ├── reception-settings
@@ -978,11 +1139,17 @@
 │   │   │   │   ├── update-residence-form.module.css
 │   │   │   │   ├── update-residence-form.tsx
 │   │   │   │   └── update-residence-publication.tsx
+│   │   │   ├── email-confirm-availability.tsx
 │   │   │   ├── owner-feedback-banner.module.css
 │   │   │   ├── owner-feedback-banner.tsx
 │   │   │   ├── residence-card.tsx
 │   │   │   ├── residence-filters.tsx
 │   │   │   ├── residence-list.tsx
+│   │   │   ├── scholarship-survey
+│   │   │   │   ├── scholarship-survey-form.module.css
+│   │   │   │   ├── scholarship-survey-form.tsx
+│   │   │   │   ├── scholarship-survey-login-modal.tsx
+│   │   │   │   └── scholarship-survey-missing-modal.tsx
 │   │   │   ├── statistics
 │   │   │   │   └── export-statistics-modal.tsx
 │   │   │   ├── update-residence-list.module.css
@@ -1018,6 +1185,9 @@
 │   │   ├── favorites
 │   │   │   └── save-accommodation-favorite-button.tsx
 │   │   ├── find-student-accomodation
+│   │   │   ├── alert-banner
+│   │   │   │   ├── find-student-accommodation-alert-banner.module.css
+│   │   │   │   └── find-student-accommodation-alert-banner.tsx
 │   │   │   ├── autocomplete
 │   │   │   │   ├── find-student-accomodation-autocomplete-input.tsx
 │   │   │   │   └── find-student-accomodation-autocomplete-results.tsx
@@ -1027,7 +1197,6 @@
 │   │   │   │   └── find-student-accomodation-card.tsx
 │   │   │   ├── crous-alert
 │   │   │   │   └── find-student-accommodation-crous-alert.tsx
-│   │   │   ├── find-student-accommodation-banner.tsx
 │   │   │   ├── geolocation-button.tsx
 │   │   │   ├── header
 │   │   │   │   ├── find-student-accessible-accomodation-switch.tsx
@@ -1053,6 +1222,7 @@
 │   │   │   │   └── find-accommodation-form.tsx
 │   │   │   ├── owner-details
 │   │   │   │   ├── candidature-modal.tsx
+│   │   │   │   ├── consult-offer-button.module.css
 │   │   │   │   ├── consult-offer-button.tsx
 │   │   │   │   ├── contact-request-modal.module.css
 │   │   │   │   ├── dossier-facile-candidate-button.tsx
@@ -1061,6 +1231,7 @@
 │   │   │   │   ├── owner-details.module.css
 │   │   │   │   ├── owner-details.tsx
 │   │   │   │   └── report-error-modal.tsx
+│   │   │   ├── owner-landing-link.tsx
 │   │   │   ├── qa
 │   │   │   │   ├── find-student-accommodation-qa.module.css
 │   │   │   │   └── find-student-accommodation-qa.tsx
@@ -1199,6 +1370,7 @@
 │   │   │   ├── budget
 │   │   │   │   ├── budget-autosave.tsx
 │   │   │   │   ├── budget-summary-card.tsx
+│   │   │   │   ├── reset-budget-button.tsx
 │   │   │   │   ├── saved-budget-content.tsx
 │   │   │   │   └── saved-budget.module.css
 │   │   │   ├── dashboard
@@ -1307,14 +1479,19 @@
 │   │   ├── apartment-type.ts
 │   │   ├── applications-suspension-reason.ts
 │   │   ├── changelog.ts
+│   │   ├── contact-path-target.ts
 │   │   ├── contact-source.ts
 │   │   ├── contact-status.test.ts
 │   │   ├── contact-status.ts
 │   │   ├── dossier-facile-tenant-status.ts
 │   │   ├── login-attempt-status.ts
+│   │   ├── metric-item.ts
+│   │   ├── monthly-metric.ts
 │   │   ├── owner-contact-mode.ts
+│   │   ├── reminder-email.ts
 │   │   ├── residence-type.ts
 │   │   ├── student-goal.ts
+│   │   ├── study-year.ts
 │   │   ├── support-ticket.test.ts
 │   │   ├── support-ticket.ts
 │   │   └── target-audience.ts
@@ -1333,7 +1510,7 @@
 │   │   ├── skeleton.css
 │   │   └── text.css
 │   ├── hooks
-│   │   └── use-*.ts  (63 files)
+│   │   └── use-*.ts  (66 files)
 │   ├── i18n
 │   │   ├── locales.ts
 │   │   └── request.ts
@@ -1364,6 +1541,8 @@
 │   │   │   ├── update-residence-list.ts
 │   │   │   ├── update-residence.test.ts
 │   │   │   └── update-residence.ts
+│   │   ├── admin-metrics
+│   │   │   └── month-range.ts
 │   │   ├── alerts
 │   │   │   ├── create-alert.test.ts
 │   │   │   ├── create-alert.ts
@@ -1416,14 +1595,21 @@
 │   │   │   └── reset-password.ts
 │   │   ├── schema-translator.test.ts
 │   │   ├── schema-translator.ts
+│   │   ├── scholarship-survey
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
 │   │   ├── sign-up
 │   │   │   └── sign-up.ts
+│   │   ├── statistics
+│   │   │   └── period.ts
 │   │   ├── student
 │   │   │   └── update-profile.ts
 │   │   ├── student-goals
 │   │   │   ├── student-goal-list.test.ts
 │   │   │   └── student-goal-list.ts
 │   │   ├── student-profile
+│   │   │   ├── __tests__
+│   │   │   │   └── study-fields.test.ts
 │   │   │   ├── student-profile.test.ts
 │   │   │   └── student-profile.ts
 │   │   ├── support-tickets
@@ -1441,12 +1627,30 @@
 │   │   │   ├── public-stats.ts
 │   │   │   ├── report-email.test.ts
 │   │   │   └── report-email.ts
+│   │   ├── admin
+│   │   │   ├── availability-follow-up.test.ts
+│   │   │   └── availability-follow-up.ts
+│   │   ├── admin-metrics
+│   │   │   ├── candidatures.ts
+│   │   │   ├── capture.ts
+│   │   │   ├── contact-path.ts
+│   │   │   ├── exports.ts
+│   │   │   ├── moderation.ts
+│   │   │   ├── months.test.ts
+│   │   │   ├── months.ts
+│   │   │   ├── segment.test.ts
+│   │   │   ├── segment.ts
+│   │   │   ├── series.ts
+│   │   │   ├── students.ts
+│   │   │   └── territories.ts
 │   │   ├── api
 │   │   │   └── v1
 │   │   │       ├── app.ts
+│   │   │       ├── contacts-query.ts
 │   │   │       ├── middlewares.ts
 │   │   │       ├── routes
 │   │   │       │   ├── accommodations.ts
+│   │   │       │   ├── contacts.ts
 │   │   │       │   └── territories.ts
 │   │   │       ├── shared.ts
 │   │   │       └── usage.ts
@@ -1458,7 +1662,11 @@
 │   │   │   ├── application-notifications.ts
 │   │   │   ├── applications-open.test.ts
 │   │   │   ├── applications-open.ts
+│   │   │   ├── availability-confirm-token.test.ts
+│   │   │   ├── availability-confirm-token.ts
 │   │   │   ├── availability-confirmation.ts
+│   │   │   ├── availability-email-confirmation.ts
+│   │   │   ├── availability-recap.ts
 │   │   │   ├── contact-digest.test.ts
 │   │   │   ├── contact-digest.ts
 │   │   │   ├── create-residence.ts
@@ -1472,11 +1680,13 @@
 │   │   │   ├── inactivity-rules.ts
 │   │   │   ├── inactivity-suspension.ts
 │   │   │   ├── permissions.ts
+│   │   │   ├── publication-applications.ts
 │   │   │   ├── reception-assignment.test.ts
 │   │   │   ├── reception-assignment.ts
 │   │   │   ├── residence-images-request.ts
 │   │   │   ├── residence-images.test.ts
 │   │   │   ├── residence-images.ts
+│   │   │   ├── residence-label.ts
 │   │   │   └── stale-availability-reset.ts
 │   │   ├── budget-pdf
 │   │   │   ├── budget-pdf-data.test.ts
@@ -1493,6 +1703,9 @@
 │   │   │   ├── read-entries.test.ts
 │   │   │   └── read-entries.ts
 │   │   ├── contacts
+│   │   │   ├── __tests__
+│   │   │   │   └── attribution.test.ts
+│   │   │   ├── attribution.ts
 │   │   │   ├── claim-token.ts
 │   │   │   ├── claimed-request.ts
 │   │   │   ├── link-guest-requests.ts
@@ -1500,6 +1713,8 @@
 │   │   │   └── rate-limit.ts
 │   │   ├── db
 │   │   │   ├── index.ts
+│   │   │   ├── process-kind.test.ts
+│   │   │   ├── process-kind.ts
 │   │   │   └── schema
 │   │   │       ├── academies.ts
 │   │   │       ├── accommodation-addresses.ts
@@ -1507,13 +1722,17 @@
 │   │   │       ├── accommodation-typologies.ts
 │   │   │       ├── accommodations.ts
 │   │   │       ├── activity-log.ts
+│   │   │       ├── admin-metrics.ts
 │   │   │       ├── admin-owner-links.ts
 │   │   │       ├── alert-availability-snapshots.ts
 │   │   │       ├── alert-jobs.ts
+│   │   │       ├── api-key-owner.ts
 │   │   │       ├── api-key-usage.ts
 │   │   │       ├── api-key.ts
 │   │   │       ├── auth.ts
+│   │   │       ├── availability-snapshots.ts
 │   │   │       ├── bailleur-accommodation-scopes.ts
+│   │   │       ├── brevo-unblock.ts
 │   │   │       ├── budget-simulations.ts
 │   │   │       ├── cities.ts
 │   │   │       ├── contacts.ts
@@ -1526,22 +1745,48 @@
 │   │   │       ├── import-blocklist.ts
 │   │   │       ├── import-jobs.ts
 │   │   │       ├── index.ts
+│   │   │       ├── job-run.ts
 │   │   │       ├── login-attempts.ts
 │   │   │       ├── newsletter-subscriptions.ts
 │   │   │       ├── owner-feedback.ts
 │   │   │       ├── owners.ts
 │   │   │       ├── questions-answers.ts
 │   │   │       ├── relations.ts
+│   │   │       ├── reminder-emails.ts
+│   │   │       ├── scholarship-survey.ts
 │   │   │       ├── stats.ts
 │   │   │       ├── student-alerts.ts
 │   │   │       ├── student-goals.ts
 │   │   │       ├── support-tickets.ts
 │   │   │       └── tracking-events.ts
+│   │   ├── env.test.ts
 │   │   ├── env.ts
 │   │   ├── exports
 │   │   │   └── contact-follow-up.ts
 │   │   ├── favorites
 │   │   │   └── ensure-favorite.ts
+│   │   ├── jobs
+│   │   │   ├── cron-failure.test.ts
+│   │   │   ├── cron-failure.ts
+│   │   │   ├── enqueue.ts
+│   │   │   ├── job-defs.test.ts
+│   │   │   ├── job-defs.ts
+│   │   │   ├── job-run.ts
+│   │   │   ├── next-run.test.ts
+│   │   │   ├── next-run.ts
+│   │   │   ├── repo-root.ts
+│   │   │   ├── schedule.test.ts
+│   │   │   ├── schedule.ts
+│   │   │   ├── stale-locks.ts
+│   │   │   └── tasks
+│   │   │       ├── detect-alerts.ts
+│   │   │       ├── graphile-cleanup.ts
+│   │   │       ├── index.ts
+│   │   │       ├── report-alert-failures.ts
+│   │   │       ├── requeue-pending-alerts.ts
+│   │   │       ├── run-cli-command.ts
+│   │   │       ├── send-alert-batch.ts
+│   │   │       └── sync-brevo-blocked-managers.ts
 │   │   ├── lib
 │   │   │   ├── description-sections.test.ts
 │   │   │   ├── description-sections.ts
@@ -1560,17 +1805,31 @@
 │   │   │   └── typologies.ts
 │   │   ├── questions-answers
 │   │   │   └── get-global-questions-answers.ts
+│   │   ├── reminders
+│   │   │   ├── load-reminder-efficacy.ts
+│   │   │   ├── record-reminder-email.ts
+│   │   │   ├── reminder-efficacy.test.ts
+│   │   │   └── reminder-efficacy.ts
+│   │   ├── scholarship-survey
+│   │   │   ├── active.test.ts
+│   │   │   ├── active.ts
+│   │   │   ├── admin.ts
+│   │   │   └── service.ts
 │   │   ├── services
 │   │   │   ├── __tests__
 │   │   │   │   ├── accommodation-diff.test.ts
 │   │   │   │   └── cache-handler.test.ts
 │   │   │   ├── accommodation-diff.ts
 │   │   │   ├── activity-logger.ts
+│   │   │   ├── alert-detection-trigger.test.ts
 │   │   │   ├── alert-detection-trigger.ts
 │   │   │   ├── alert-detector.ts
 │   │   │   ├── alert-expiration.ts
 │   │   │   ├── alert-matching.ts
 │   │   │   ├── alert-sender.ts
+│   │   │   ├── brevo-reminders.test.ts
+│   │   │   ├── brevo-reminders.ts
+│   │   │   ├── brevo-unblock.ts
 │   │   │   ├── brevo.test.ts
 │   │   │   ├── brevo.ts
 │   │   │   ├── dossier-facile
@@ -1586,6 +1845,8 @@
 │   │   │   ├── ramsese.ts
 │   │   │   ├── s3.test.ts
 │   │   │   ├── s3.ts
+│   │   │   ├── scalingo.test.ts
+│   │   │   ├── scalingo.ts
 │   │   │   ├── tracking-event-logger.ts
 │   │   │   ├── tracking-session.ts
 │   │   │   ├── typology-diff.test.ts
@@ -1594,7 +1855,8 @@
 │   │   │   ├── wordpress-posts.test.ts
 │   │   │   └── wordpress-posts.ts
 │   │   ├── statistics
-│   │   │   └── accommodation-stats.ts
+│   │   │   ├── accommodation-stats.ts
+│   │   │   └── contact-stats.ts
 │   │   ├── student
 │   │   │   ├── get-alerts.ts
 │   │   │   ├── get-budget-simulation.ts
@@ -1602,6 +1864,7 @@
 │   │   │   ├── get-housing-aid-simulation.ts
 │   │   │   ├── get-notification-preferences.ts
 │   │   │   ├── get-profile.ts
+│   │   │   ├── goal-reminders.ts
 │   │   │   ├── sync-brevo-contact.test.ts
 │   │   │   └── sync-brevo-contact.ts
 │   │   ├── support
@@ -1622,10 +1885,15 @@
 │   │   │   ├── router.ts
 │   │   │   ├── routers
 │   │   │   │   ├── accommodations.ts
+│   │   │   │   ├── admin-availability.ts
 │   │   │   │   ├── admin-candidatures.ts
 │   │   │   │   ├── admin-changelog.ts
 │   │   │   │   ├── admin-connections.ts
 │   │   │   │   ├── admin-consumers.ts
+│   │   │   │   ├── admin-metrics.ts
+│   │   │   │   ├── admin-reminders.ts
+│   │   │   │   ├── admin-scholarship-survey.ts
+│   │   │   │   ├── admin-simulations.ts
 │   │   │   │   ├── admin.ts
 │   │   │   │   ├── alerts.ts
 │   │   │   │   ├── bailleur.ts
@@ -1637,6 +1905,7 @@
 │   │   │   │   ├── owner-feedback.ts
 │   │   │   │   ├── owner-statistics.ts
 │   │   │   │   ├── questions-answers.ts
+│   │   │   │   ├── scholarship-survey.ts
 │   │   │   │   ├── student-goals.ts
 │   │   │   │   ├── student.ts
 │   │   │   │   ├── support-tickets.ts
@@ -1660,15 +1929,23 @@
 │   │   ├── better-auth-client.ts
 │   │   └── better-auth.ts
 │   └── utils
+│       ├── __tests__
+│       │   ├── contacts-tab-visibility.test.ts
+│       │   └── study-summary.test.ts
 │       ├── activity-actions.ts
 │       ├── activity-fields.test.ts
 │       ├── activity-fields.ts
 │       ├── avatar.ts
 │       ├── budget-amount.ts
 │       ├── budget-colors.ts
+│       ├── budget-totals.test.ts
+│       ├── budget-totals.ts
 │       ├── calculateAvailability.test.ts
 │       ├── calculateAvailability.ts
 │       ├── canonical.ts
+│       ├── contact-stats-share.test.ts
+│       ├── contact-stats-share.ts
+│       ├── contacts-tab-visibility.ts
 │       ├── csp.test.ts
 │       ├── csp.ts
 │       ├── csv.test.ts
@@ -1682,6 +1959,8 @@
 │       ├── feature-flags.ts
 │       ├── floor-to-step.test.ts
 │       ├── floor-to-step.ts
+│       ├── format-admin.test.ts
+│       ├── format-admin.ts
 │       ├── formatDate.ts
 │       ├── french-contraction.test.ts
 │       ├── french-contraction.ts
@@ -1720,6 +1999,7 @@
 │       ├── schema.ts
 │       ├── social-housing-application-link.ts
 │       ├── student-profile.ts
+│       ├── study-summary.ts
 │       ├── time.ts
 │       ├── typology-form-defaults.test.ts
 │       ├── typology-form-defaults.ts
@@ -1732,4 +2012,4 @@
 │       └── wp-redirect.ts
 ├── tsconfig.json
 └── vitest.config.ts
-306 directories, 1490 files
+345 directories, 1752 files

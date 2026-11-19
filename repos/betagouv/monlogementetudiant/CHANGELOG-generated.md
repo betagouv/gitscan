@@ -1,41 +1,32 @@
-## Changelog : monlogementetudiant (30 derniers jours, au 4 novembre 2026)
+## Changelog : monlogementetudiant (30 derniers jours, au 18 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience de recherche et de navigation grâce à une carte plus interactive et une barre de recherche repensée. L'outil de budget étudiant est devenu plus complet avec la possibilité d'exporter un récapitulatif en PDF. Par ailleurs, la plateforme renforce sa fiabilité et sa sécurité avec l'implémentation d'un système de tickets de support et une couverture de tests automatisés beaucoup plus large.
+Ce mois a été marqué par une montée en puissance des outils d'aide à la décision et de la fiabilité du système. Les étudiants bénéficient d'une recherche plus intuitive, de nouveaux outils de simulation de budget et d'un système d'alertes plus intelligent. Les bailleurs disposent désormais de tableaux de bord statistiques enrichis pour suivre leurs contacts et leur activité. En coulisses, une refonte majeure de la gestion des tâches automatiques et un renforcement massif des tests de sécurité garantissent une plateforme plus robuste et performante.
 
 ### Évolutions fonctionnelles
-- **Recherche et Cartographie** :
-    - Refonte de la barre de recherche avec l'utilisation de tags et d'un curseur de prix stable.
-    - Amélioration de la carte : ajout du zoom, passage aux fonds de carte IGN (labels en français), et colorisation intelligente des clusters de marqueurs.
-    - Optimisation de l'affichage des résultats : prévisualisation via popups et meilleure gestion du clustering.
-    - Amélioration de la géolocalisation dans la barre de recherche.
-- **Espace Étudiant** :
-    - Nouveau système d'export du budget étudiant en format PDF, incluant un graphique de répartition des dépenses.
-    - Ajout d'un formulaire de signalement de problème pour les utilisateurs.
-    - Amélioration de l'ergonomie mobile (espacements, empilement des cartes d'aide et menus).
-    - Ajout d'objectifs personnalisés dans le plan d'action étudiant.
-- **Gestion et Administration** :
-    - Mise en place d'un système complet de tickets de support (création, suivi, notifications et gestion par les administrateurs).
-    - Nouveaux outils pour les gestionnaires : gestion des candidatures via un tableau de bord et export CSV des suivis de contact.
-    - Possibilité pour les bailleurs d'afficher leur numéro de téléphone sur la page de la résidence.
-    - Ajout de métriques sur les candidatures des résidences suspendues.
+- **Expérience Étudiant** :
+    - Refonte de l'interface de recherche : nouvelle barre de filtres avec tags et curseur de prix stable, et utilisation du Plan IGN pour une meilleure précision cartographique.
+    - Amélioration de la carte : affichage de clusters de marqueurs colorés et popups de prévisualisation.
+    - Nouveaux outils de gestion : génération de budgets au format PDF avec graphiques de répartition des dépenses et réorganisation du menu de l'espace étudiant.
+    - Système d'alertes enrichi : suggestions de logements à proximité dans les emails [#437](https://github.com/betagouv/monlogementetudiant/pull/437) et rappels automatiques lorsque les objectifs personnels dépassent leur échéance [#436](https://github.com/betagouv/monlogementetudiant/pull/436).
+- **Gestion Bailleurs & Administration** :
+    - Statistiques avancées : nouveaux tableaux de bord pour suivre la modération, les parcours de contact, l'utilisation des services et l'efficacité des emails de rappel.
+    - Qualification des demandes : collecte de nouvelles informations sur le profil étudiant (études) directement dans les formulaires de contact.
+    - Gestion des résidences : possibilité de saisir des loyers et des surfaces avec décimales, et gestion simplifiée des photos de résidence.
+    - Export de données : ajout de fonctionnalités d'export CSV pour les statistiques de contact et les enquêtes sur les bourses.
 
 ### Évolutions techniques
-- **Sécurité** :
-    - Mise à jour critique de `better-auth` pour répondre à une faille de sécurité.
-    - Renforcement de la protection des données : hachage des tokens de liens magiques, masquage des erreurs SQL en production et durcissement de la politique de sécurité du contenu (CSP).
-    - Nettoyage des sessions expirées et des tentatives de connexion obsolètes.
-- **Tests et Qualité** :
-    - Déploiement massif de tests de bout en bout (E2E) avec Playwright couvrant les parcours critiques : recherche, favoris, espace étudiant, création de résidence et gestion des disponibilités.
-    - Mise en place de rapports de couverture de tests.
-- **Performance et Infrastructure** :
-    - Optimisation du chargement des pages de résidence via le streaming des établissements à proximité.
-    - Réduction de la taille des images de déploiement Scalingo en excluant les caches de build.
-    - Amélioration de la gestion des imports de données (CSV) pour les loyers et les équipements.
-- **Refactoring** :
-    - Modernisation de la gestion des formulaires avec `react-hook-form`.
-    - Suppression de dépendances obsolètes (notamment `dayjs`) et nettoyage du code (suppression des commentaires redondants et des anciens credentials).
+- **Infrastructure & Tâches de fond** :
+    - Migration majeure du système de tâches planifiées (cron) vers `graphile-worker` pour une gestion plus robuste des files d'attente et des exécutions.
+    - Création d'un nouveau package dédié aux processus de fond (`apps/worker`) et mise en place d'un lanceur de commandes "one-off" sur Scalingo.
+    - Passage de la stack locale et de la CI à PostgreSQL 18.
+- **Qualité & Tests** :
+    - Extension massive de la couverture de tests de bout en bout (E2E) avec Playwright, couvrant l'intégralité des parcours critiques (recherche, favoris, création de résidence, espace étudiant).
+    - Optimisation des pipelines CI : réutilisation du cache des dépendances et parallélisation des tests d'intégration pour réduire les temps de build.
+- **Performance & API** :
+    - Optimisation de la synchronisation géographique : réduction du nombre d'appels API en regroupant les requêtes par département.
+    - Amélioration de la réactivité de l'interface via le streaming des établissements à proximité.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation concernant les redirections vers les pages WordPress.
-- **Configuration** : Redirection des mentions légales vers le site WordPress et mise à jour de la version de Node.js.
+- **Documentation** : mise à jour des documentations techniques concernant l'API, les nouveaux processus de déploiement et le fonctionnement des tests E2E.
+- **Maintenance** : nettoyage des images Docker pour optimiser l'espace de stockage et suppression des redirections inutiles vers WordPress.

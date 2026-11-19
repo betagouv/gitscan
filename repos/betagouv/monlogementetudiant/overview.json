@@ -1,61 +1,57 @@
 {
   "url": "https://github.com/betagouv/monlogementetudiant",
   "name": "monlogementetudiant",
-  "description": "Plateforme d'aide à la recherche de logement pour les étudiants, incluant la gestion des offres par les bailleurs et un système d'alertes de disponibilité.",
+  "description": "Plateforme d'aide à la recherche de logement pour les étudiants, permettant la consultation d'offres, la gestion des disponibilités par les bailleurs et un système d'alertes de disponibilité.",
   "language": "TypeScript",
   "features": [
     "Recherche & Filtres",
     "Notifications & Alertes",
-    "Gestion des établissements & Structures",
     "Visualisation de données & Cartographie",
-    "Administration & Backoffice",
-    "Suivi & Traçabilité",
+    "Gestion des profils & Comptes",
+    "Gestion des établissements & Structures",
+    "Authentification & Accès",
     "Formulaires & Démarches"
   ],
   "audience": "Grand public",
   "dependencies": [
     "Next.js",
     "React",
+    "React-DSFR",
+    "TanStack Query",
     "tRPC",
     "Drizzle ORM",
-    "PostGIS",
     "Leaflet",
-    "Brevo",
-    "Matomo",
-    "Scalingo",
-    "AWS S3"
+    "Zod",
+    "PostgreSQL",
+    "PostGIS"
   ],
   "components": [
     "React / Next.js",
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
+    "PostgreSQL & SQL",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Stockage objet",
+    "SIG & Géospatial",
+    "API REST & GraphQL",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "session",
+      "magic-link",
       "email-password"
     ]
   },
-  "tests": "Tests unitaires",
-  "workflows": [
-    "Cron jobs via CLI",
-    "Scalingo deployment"
-  ],
+  "tests": "Tests e2e (end-to-end) avec jeux de données déterministes",
   "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
+    "Éducation & Formation",
+    "Emploi, Social & Logement",
     "React & Next.js",
     "TypeScript",
     "Bases de données SQL",
-    "Design System & UI",
-    "Docker & Conteneurs",
-    "Emploi, Social & Logement",
-    "Éducation & Formation"
+    "SIG & Géospatial",
+    "Design System & UI"
   ]
 }

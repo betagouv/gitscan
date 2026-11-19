@@ -1,3 +1,159 @@
+2026-11-18T14:27:28Z - f84274a - Kevin GALLET : perf: sync cities from one geo api call per department
+2026-11-18T14:27:28Z - 8ba767c - Kevin GALLET : fix: align cities on their INSEE code during the cities sync
+2026-11-18T09:18:56Z - c72bbc0 - Kevin GALLET : fix: reuse the cached dependencies in every ci job instead of reinstalling them
+2026-11-18T09:18:56Z - 491049b - Kevin GALLET : chore: skip the apt and full browser install in the e2e ci job
+2026-11-18T09:18:56Z - 48e8ad5 - Kevin GALLET : chore: run integration test files in parallel on per-worker databases
+2026-11-17T16:41:58Z - 30de963 - Kevin GALLET : chore: bump next, hono, vite, fast-uri and glob to fix dependabot alerts
+2026-11-17T15:22:04+01:00 - 0e3ce36 - Kevin GALLET : refactor: drop the CONTAINER-based scalingo detection
+2026-11-17T15:19:53+01:00 - fe726d2 - Kevin GALLET : fix: refuse to run scheduled commands locally on scalingo without SCALINGO_APP
+2026-11-17T13:54:24Z - fc3789b - Kevin GALLET : feat: add scalingo one-off launcher
+2026-11-17T13:54:24Z - f3f02f2 - Kevin GALLET : feat: let cli commands close their own job_run
+2026-11-17T13:54:24Z - e5a12aa - Kevin GALLET : fix: release graphile locks left by a previous worker instance
+2026-11-17T13:54:24Z - d554be5 - Kevin GALLET : feat: run scheduled cli commands in scalingo one-off containers
+2026-11-17T13:54:24Z - 804e1d6 - Kevin GALLET : fix: detect cli runs killed outside the worker
+2026-11-17T13:54:24Z - 5b2ad06 - Kevin GALLET : docs: document one-off execution of scheduled commands
+2026-11-17T13:54:24Z - 2bf6ceb - Kevin GALLET : refactor: give each scheduled cli command its own queue again
+2026-11-17T12:19:39+01:00 - 797813a - Kevin GALLET : fix: merge pending occurrences of a delayed scheduled cli command
+2026-11-17T11:24:20+01:00 - c3b2cdc - Kevin GALLET : fix: kill scheduled cli commands after a timeout
+2026-11-17T11:21:13+01:00 - c76042a - Kevin GALLET : fix: run scheduled cli commands one at a time in the worker
+2026-11-17T10:51:46+01:00 - 4146214 - Kevin GALLET : fix: skip next build on worker apps via scalingo-postbuild
+2026-11-17T09:34:06Z - ee8a5f8 - Kevin GALLET : fix: untrack worker node_modules, report fatal worker errors, keep npm start for web
+2026-11-17T09:34:06Z - d963df3 - Kevin GALLET : chore: add graphile cleanup task, production guards and worker pool size
+2026-11-17T09:34:06Z - cf0a53c - Kevin GALLET : refactor: move cli and worker into apps/worker workspace package
+2026-11-17T09:34:06Z - beab530 - Kevin GALLET : fix: show event tasks daily totals in scheduled tasks admin
+2026-11-17T09:34:06Z - ab771bf - Kevin GALLET : fix: polish scheduled tasks admin
+2026-11-17T09:34:06Z - a9ec46f - Kevin GALLET : feat: record job executions in job_run
+2026-11-17T09:34:06Z - 9046c07 - Kevin GALLET : fix: bound Brevo unblock latency and harden sync
+2026-11-17T09:34:06Z - 8b5257c - Kevin GALLET : refactor: move env usage test into __tests__
+2026-11-17T09:34:06Z - 83b960c - Kevin GALLET : fix: mail on fatal worker errors and start web with pnpm
+2026-11-17T09:34:06Z - 80638b7 - Kevin GALLET : docs: changelog for graphile worker
+2026-11-17T09:34:06Z - 75769c2 - Kevin GALLET : fix: use DATABASE_URL_TEST for integration DATABASE_URL in CI
+2026-11-17T09:34:06Z - 72e43d9 - Kevin GALLET : feat: unblock unsubscribed managers in Brevo with history
+2026-11-17T09:34:06Z - 65fa2a3 - Kevin GALLET : docs: document dedicated worker apps
+2026-11-17T09:34:06Z - 60f1e98 - Kevin GALLET : fix: space alert send retries and harden alert tasks
+2026-11-17T09:34:06Z - 5ca4920 - Kevin GALLET : feat: add alert sending metrics to student usage
+2026-11-17T09:34:06Z - 5ba5c3d - Kevin GALLET : feat: show job_run history in scheduled tasks admin
+2026-11-17T09:34:06Z - 5381cc4 - Kevin GALLET : feat: add graphile worker and SQL job enqueue helper
+2026-11-17T09:34:06Z - 5075414 - Kevin GALLET : feat: run postdeploy migrations from the web app only
+2026-11-17T09:34:06Z - 4f08a49 - Kevin GALLET : feat: make the worker wait for drizzle migrations at boot
+2026-11-17T09:34:06Z - 46bc73d - Kevin GALLET : fix: show zero alert metrics for captured months
+2026-11-17T09:34:06Z - 461acba - Kevin GALLET : feat: require only worker env vars on the worker app
+2026-11-17T09:34:06Z - 42e6ca5 - Kevin GALLET : fix: back up the web app database from the worker app
+2026-11-17T09:34:06Z - 3d43752 - Kevin GALLET : refactor: move worker tests into __tests__
+2026-11-17T09:34:06Z - 1e61ff3 - Kevin GALLET : fix: make graphile worker boot and failures robust
+2026-11-17T09:34:06Z - 1b744dd - Kevin GALLET : fix: only unblock Brevo managers on login request
+2026-11-17T09:34:06Z - 171c472 - Kevin GALLET : feat: send student alerts through graphile tasks
+2026-11-17T09:34:06Z - 130cd67 - Kevin GALLET : feat: schedule capture-availability-snapshot in graphile worker
+2026-11-17T09:34:06Z - 1306718 - Kevin GALLET : feat: run scheduled commands with graphile worker instead of Scalingo cron
+2026-11-17T09:34:06Z - 0086d91 - Kevin GALLET : fix: harden graphile worker shutdown and scheduling
+2026-11-16T21:06:44Z - 111cbf3 - Kevin GALLET : fix: restore "par personne" rent wording for colocations on residence page
+2026-11-16T16:22:01Z - be31939 - Alexis Ebrard : feat: track availability update habits per manager with monthly snapshots
+2026-11-16T15:40:55+01:00 - 24145f2 - Kevin GALLET : fix: padding alerts - mobile
+2026-11-16T15:10:05Z - 003b684 - Alexis Ebrard : feat: seed commun et enrichi pour la base de dev et l'e2e
+2026-11-16T15:03:06Z - 777780f - Alexis Ebrard : feat: version student simulations behind a reset button and add admin stats
+2026-11-14T10:52:54+01:00 - aa984b8 - Kevin GALLET : fix: run API key middleware once per request and harden contacts dates and names
+2026-11-14T10:52:54+01:00 - 05fd82e - Kevin GALLET : docs: changelog de l'API contacts bailleur
+2026-11-12T16:18:28Z - ccb9e67 - Kevin GALLET : chore: skip retry and throttle delays under Vitest
+2026-11-12T16:18:28Z - cc1e8a2 - Kevin GALLET : chore: disable fsync on the CI test database
+2026-11-12T16:18:28Z - 826ac9e - Kevin GALLET : chore: run integration test migrations once in a global setup
+2026-11-12T16:18:28Z - 74a698b - Kevin GALLET : chore: stub external HTTP calls in integration tests
+2026-11-12T14:20:43Z - fc3c5b1 - Kevin GALLET : feat: expose contact requests in API v1
+2026-11-12T14:20:43Z - cea56e1 - Kevin GALLET : feat: link an API key to an owner
+2026-11-12T14:20:43Z - c6f45ae - Kevin GALLET : feat: add owner contact requests query for the API
+2026-11-12T14:20:43Z - 213e9df - Kevin GALLET : refactor: move owner selector styles to a CSS module
+2026-11-12T14:20:43Z - 1952bfc - Kevin GALLET : feat: link an owner to an API consumer
+2026-11-12T13:03:34Z - f3d7db5 - Kevin GALLET : fix: restaurer les backups PG 18 via un pg_restore dockerisé
+2026-11-12T13:03:34Z - a1c634a - Kevin GALLET : docs: documenter le prérequis Docker d'import-backup
+2026-11-12T13:03:34Z - 3c70c0a - Kevin GALLET : fix: qualifier unaccent dans immutable_unaccent pour rejouer les migrations sur PG 17+
+2026-11-12T13:03:34Z - 0776de6 - Kevin GALLET : chore: passer la stack locale et la CI sur PostgreSQL 18
+2026-11-12T09:59:11+01:00 - d55606b - Kevin GALLET : chore: upgrade node 24.22.3
+2026-11-12T09:13:35Z - f637cad - Kevin GALLET : feat: add territory market tension and low-contact metrics
+2026-11-12T09:13:35Z - f45c2da - Kevin GALLET : fix: return french message for missing month in metrics export
+2026-11-12T09:13:35Z - e90b7e7 - Kevin GALLET : fix: filter and sort relaxed zones table on territories page
+2026-11-12T09:13:35Z - e850f37 - Kevin GALLET : feat: add monthly candidatures series and owner landing click tracking
+2026-11-12T09:13:35Z - e0c09b4 - Kevin GALLET : feat: add student usage and contact path metrics
+2026-11-12T09:13:35Z - cf3fe7f - Kevin GALLET : fix: omit owners with no month-relevant moderation activity
+2026-11-12T09:13:35Z - bbc9bce - Kevin GALLET : feat: add application_fact and monthly_metric tables
+2026-11-12T09:13:35Z - b85ed7e - Kevin GALLET : feat: add month helpers for admin metrics
+2026-11-12T09:13:35Z - a91bae9 - Kevin GALLET : docs: document capture-monthly-metrics cron and first deploy backfill
+2026-11-12T09:13:35Z - 9f7c75f - Kevin GALLET : feat: add nightly monthly metrics capture
+2026-11-12T09:13:35Z - 966101f - Kevin GALLET : fix: align monthly capture populations and skip empty frozen counters
+2026-11-12T09:13:35Z - 8b9cb75 - Kevin GALLET : fix: freeze label column and hide empty cities in admin metrics tables
+2026-11-12T09:13:35Z - 8873bf9 - Kevin GALLET : fix: use dedicated url keys for month range and show nightly refresh mention
+2026-11-12T09:13:35Z - 73ea353 - Kevin GALLET : feat: add moderation, contact path and territories admin views
+2026-11-12T09:13:35Z - 643d24f - Kevin GALLET : fix: compute never-treated share on received contacts in moderation export
+2026-11-12T09:13:35Z - 4f27e33 - Kevin GALLET : fix: always refreeze previous month counters and scope activated owners to published residences
+2026-11-12T09:13:35Z - 4d67f25 - Kevin GALLET : feat: expose monthly admin metrics via trpc and csv export
+2026-11-12T09:13:35Z - 44371e4 - Kevin GALLET : fix: scroll monthly metrics table container to latest month
+2026-11-12T09:13:35Z - 2b4aced - Kevin GALLET : feat: add owner moderation metrics and segmentation
+2026-11-12T09:13:35Z - 25eb501 - Kevin GALLET : fix: return null total for months without monthly snapshot
+2026-11-12T09:13:35Z - 1e221bb - Kevin GALLET : feat: add monthly metrics to candidatures and student usage pages
+2026-11-11T14:29:37+01:00 - b83c920 - Kevin GALLET : fix: keep scholarship survey badge and checkbox on one line
+2026-11-11T13:19:24+01:00 - 3cf9f3a - Kevin GALLET : feat: add efficacy help modal to admin email reminders
+2026-11-11T12:19:56Z - f76bbf4 - Kevin GALLET : feat: add admin scholarship survey view
+2026-11-11T12:19:56Z - c980b3a - Kevin GALLET : feat: add admin scholarship survey queries and csv export
+2026-11-11T12:19:56Z - aea979b - Kevin GALLET : fix: autosave only changed scholarship survey rows
+2026-11-11T12:19:56Z - a0f9de5 - Kevin GALLET : feat: add scholarship survey service and router
+2026-11-11T12:19:56Z - 4aa54a1 - Kevin GALLET : docs: changelog for scholarship survey
+2026-11-11T12:19:56Z - 42c1bb9 - Kevin GALLET : feat: add scholarship survey page for owners
+2026-11-11T12:19:56Z - 3f2654c - Kevin GALLET : feat: add scholarship survey schema and end date helper
+2026-11-11T12:19:56Z - 2ca7d34 - Kevin GALLET : feat: surface scholarship survey on owner dashboard, menu and login
+2026-11-10T17:14:05+01:00 - c36aa3e - Kevin GALLET : fix: keep consult offer redirect notice on one line with top spacing
+2026-11-10T17:14:04+01:00 - d85d6b9 - Kevin GALLET : fix: left-align alert banner CTA in map view and hide banner from alert recap
+2026-11-09T17:30:55Z - fa350bb - Kevin GALLET : feat: add exportable contact statistics to bailleur contacts page
+2026-11-09T17:30:55Z - f0b4918 - Kevin GALLET : fix: keep residences with pending requests visible after unpublishing
+2026-11-09T17:30:55Z - e2bb764 - Kevin GALLET : fix: keep unpublished residences closed when opening a gestionnaire scope
+2026-11-09T17:30:55Z - e1cbbc5 - Kevin GALLET : test: fill study fields in contact request e2e
+2026-11-09T17:30:55Z - dbe99da - Kevin GALLET : feat: compute per-residence contact statistics for bailleurs
+2026-11-09T17:30:55Z - d7249e7 - Kevin GALLET : docs: changelog for housing assigned status and contact stats
+2026-11-09T17:30:55Z - d6a6455 - Kevin GALLET : feat: show study fields on bailleur contact cards
+2026-11-09T17:30:55Z - bec20b9 - Kevin GALLET : feat: add housing assigned status to contacts board
+2026-11-09T17:30:55Z - 9f3a950 - Kevin GALLET : feat: add study fields to contact request form
+2026-11-09T17:30:55Z - 7498440 - Kevin GALLET : feat: add study fields to student profile and contact requests
+2026-11-09T17:30:55Z - 62715b5 - Kevin GALLET : feat: edit study fields from student profile
+2026-11-09T17:30:55Z - 526dc04 - Kevin GALLET : feat: derive attribution outcome from contact status
+2026-11-09T17:30:55Z - 4b17877 - Kevin GALLET : fix: keep server modules out of contact stats table
+2026-11-09T17:30:55Z - 4019dbe - Kevin GALLET : fix: harmonize reception settings button labels
+2026-11-09T17:30:55Z - 3f64763 - Kevin GALLET : fix: submit work-study answer from contact request form
+2026-11-09T17:30:55Z - 3055e39 - Kevin GALLET : refactor: extract accommodation scope lookup and fix e2e formatting
+2026-11-09T17:30:55Z - 28aefb8 - Kevin GALLET : feat: stop contact reception when a residence is unpublished
+2026-11-09T17:30:55Z - 2680e29 - Kevin GALLET : feat: collect study fields on contact requests
+2026-11-09T17:30:55Z - 1e79b06 - Kevin GALLET : feat: track attribution fill rate per bailleur in admin
+2026-11-09T17:30:55Z - 16434f1 - Kevin GALLET : feat: show Contacts tab to every bailleur before activation
+2026-11-09T17:30:55Z - 0052625 - Kevin GALLET : fix: refresh contact stats and keep profile values on contact request
+2026-11-09T15:33:53+01:00 - 16a700d - dakie62 : Merge pull request #437 from betagouv/feat/suggestions-similaires-alertes
+2026-11-09T15:33:46+01:00 - d5bf544 - Alexis Ebrard : feat: suggest nearby accommodations in city alert emails and counters
+2026-11-09T15:33:43+01:00 - a165052 - dakie62 : Merge pull request #436 from betagouv/feat/rappels-objectifs-echeance
+2026-11-09T15:33:37+01:00 - 8b80686 - Alexis Ebrard : feat: email students a one-time reminder when a personal goal passes its due date
+2026-11-09T15:33:34+01:00 - faf1dcb - dakie62 : Merge pull request #435 from betagouv/feat/ville-emails-gestionnaires
+2026-11-09T15:22:57+01:00 - aa28b13 - Alexis Ebrard : feat: include the residence city in automatic emails sent to managers
+2026-11-09T14:20:09Z - 5f74f58 - Alexis Ebrard : docs: list the user journeys covered by the e2e suite
+2026-11-09T14:20:09Z - 0126124 - Alexis Ebrard : feat: redesign the residence availability card around its key action per situation
+2026-11-09T14:11:46Z - 704b69c - Alexis Ebrard : feat: reorganize the student space menu into search and installation sections
+2026-11-09T14:07:10Z - d3a02df - Kevin GALLET : feat: set unset availability to zero on one-click confirmation
+2026-11-09T12:10:54+01:00 - fde73d1 - Kevin GALLET : fix: label unmatched reminder recipients as having no linked account
+2026-11-09T10:41:44Z - f93c02e - Kevin GALLET : refactor: read Brevo events and blocked contacts URLs from env
+2026-11-09T10:41:44Z - e7a490b - Kevin GALLET : feat: compute reminder email efficacy from activity and reviews
+2026-11-09T10:41:44Z - e014638 - Kevin GALLET : feat: read reminder email events and blocked contacts from Brevo
+2026-11-09T10:41:44Z - a80c06a - Kevin GALLET : feat: record every reminder email sent with its residences and reasons
+2026-11-09T10:41:44Z - 9153a48 - Kevin GALLET : test: cover per-email sentAt and owner matching in reminder efficacy
+2026-11-09T10:41:44Z - 7bb186a - Kevin GALLET : feat: add reminder email tables and recording helper
+2026-11-09T10:41:44Z - 7927558 - Kevin GALLET : feat: return Brevo messageId and tag reminder emails
+2026-11-09T10:41:44Z - 68a94be - Kevin GALLET : feat: add admin reminders tRPC router
+2026-11-09T10:41:44Z - 53787ac - Kevin GALLET : feat: add admin email reminders page
+2026-11-09T10:41:44Z - 338d259 - Kevin GALLET : fix: harden reminder efficacy, Brevo parsing and recipient label
+2026-11-09T10:41:44Z - 3127bdd - Kevin GALLET : refactor: share admin date/delay formatters and client pagination
+2026-11-09T10:41:44Z - 2b53cb4 - Kevin GALLET : fix: stop retention window from skewing reminder efficacy of old emails
+2026-11-09T10:41:44Z - 1dfbc58 - Kevin GALLET : chore: ignore superpowers docs and workspace
+2026-11-09T08:57:30Z - 3db1ede - Kevin GALLET : feat: count active owners from residence, availability and contact moderation activity
+2026-11-09T08:51:58+01:00 - 6810f46 - Kevin GALLET : refactor: detect Crous residences from external source for consult offer hint
+2026-11-09T08:48:17+01:00 - bc80199 - Kevin GALLET : feat: show Crous website in consult offer hint
+2026-11-09T07:29:26Z - ba1153a - Kevin GALLET : test: add e2e for alert banner visibility based on localStorage dismissal
+2026-11-09T07:25:26Z - e4eb6d3 - Kevin GALLET : refactor: reset bailleur user form by mounting it only while the modal is open
+2026-11-09T07:25:26Z - 9c73e93 - Kevin GALLET : fix: reset bailleur user form on each modal opening
+2026-11-09T07:19:07Z - f0dec62 - Kevin GALLET : feat: replace search banner with an alert activation banner after the first row of results
+2026-11-09T07:19:07Z - 69c6842 - Kevin GALLET : feat: scope alert banner dismissal per territory and show it again after 30 days
+2026-11-06T15:53:35Z - 0b26bed - Kevin GALLET : feat: update availability from monthly recap
 2026-11-04T11:28:37+01:00 - 93f1f3b - Kevin GALLET : fix: upgrade better-auth to 1.7.16 for the 2026-11-03 security release
 2026-11-03T21:59:16+01:00 - b39655e - Kevin Gallet : Merge pull request #432 from betagouv/develop
 2026-11-03T17:34:32Z - ae98b51 - Kevin GALLET : feat: color map marker clusters with a DSFR blue scale that darkens with cluster size
