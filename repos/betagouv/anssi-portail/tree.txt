@@ -50,6 +50,7 @@
 ├── .envrc
 ├── .gitattributes
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── cellar-deploiement.yml
 │       ├── compare-financements.yml
@@ -275,6 +276,12 @@
 │   │   │   │   ├── modeleListeDActivites
 │   │   │   │   │   ├── modele-liste-d-activites.xlsx
 │   │   │   │   │   └── serviceModeleListeDActivites.ts
+│   │   │   │   ├── modeleListeInterconnexions
+│   │   │   │   │   ├── modele-liste-interconnexions.xlsx
+│   │   │   │   │   └── serviceModeleListeInterconnexions.ts
+│   │   │   │   ├── modeleListePrestatairesEtFournisseurs
+│   │   │   │   │   ├── modele-liste-prestataires-et-fournisseurs.xlsx
+│   │   │   │   │   └── serviceModeleListePrestatairesEtFournisseurs.ts
 │   │   │   │   ├── modeleModificationMotsDePasse
 │   │   │   │   │   ├── modele-modifications-mots-de-passe.xlsx
 │   │   │   │   │   └── serviceModeleModificationMotsDePasse.ts
@@ -291,6 +298,8 @@
 │   │   │   │   │   ├── ressourceModeleXslx.ts
 │   │   │   │   │   └── serviceModeleXslx.ts
 │   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.ts
+│   │   │   │   ├── ressourceRappelMiseAJourListeInterconnexions.ts
+│   │   │   │   ├── ressourceRappelMiseAJourListePrestatairesEtFournisseurs.ts
 │   │   │   │   ├── ressourceRappelMiseÀJourListeDActivites.ts
 │   │   │   │   ├── ressourceRetoursSurOutil.ts
 │   │   │   │   └── serviceEditionXLSX.ts
@@ -314,6 +323,7 @@
 │   │   │   ├── ressourceInformationsCreationCompte.ts
 │   │   │   ├── ressourceInfosSite.ts
 │   │   │   ├── ressourceLlmsTxt.ts
+│   │   │   ├── ressourcePageAccueil.ts
 │   │   │   ├── ressourcePageConnexion.ts
 │   │   │   ├── ressourcePageContact.ts
 │   │   │   ├── ressourcePageCrisp.ts
@@ -676,15 +686,21 @@
 │   │   │   │   ├── ressourceCampagneDeSensibilisation.spec.ts
 │   │   │   │   ├── ressourceModeleAnnuaireDeCrise.spec.ts
 │   │   │   │   ├── ressourceModeleListeDActivites.spec.ts
+│   │   │   │   ├── ressourceModeleListeInterconnexions.spec.ts
+│   │   │   │   ├── ressourceModeleListePrestatairesEtFournisseurs.spec.ts
 │   │   │   │   ├── ressourceModeleModificationsMotsDePasse.spec.ts
 │   │   │   │   ├── ressourceModeleRaci.spec.ts
 │   │   │   │   ├── ressourceModeleRevueComptesUtilisateurs.spec.ts
 │   │   │   │   ├── ressourceModeleRevueDroitsDAcces.spec.ts
 │   │   │   │   ├── ressourceRappelMiseAJourAnnuaireContacts.spec.ts
 │   │   │   │   ├── ressourceRappelMiseAJourListDActivites.spec.ts
+│   │   │   │   ├── ressourceRappelMiseAJourListeInterconnexions.spec.ts
+│   │   │   │   ├── ressourceRappelMiseAJourListePrestatairesEtFournisseurs.spec.ts
 │   │   │   │   ├── ressourceRetoursSurOutil.spec.ts
 │   │   │   │   ├── serviceModeleAnnuaireDeCrise.spec.ts
 │   │   │   │   ├── serviceModeleListeDActivites.spec.ts
+│   │   │   │   ├── serviceModeleListeInterconnexions.spec.ts
+│   │   │   │   ├── serviceModeleListePrestatairesEtFournisseurs.spec.ts
 │   │   │   │   ├── serviceModeleModificationMotsDePasse.spec.ts
 │   │   │   │   ├── serviceModeleRaci.spec.ts
 │   │   │   │   ├── serviceModeleRevueComptesUtilisateurs.spec.ts
@@ -766,6 +782,7 @@
 │   │   │   ├── adaptateurEmailBrevo.spec.ts
 │   │   │   ├── adaptateurEnvironnement.spec.ts
 │   │   │   ├── adaptateurHachage.spec.ts
+│   │   │   ├── adaptateurJournalPostgres.spec.ts
 │   │   │   ├── adaptateurRechercheEntreprise.spec.ts
 │   │   │   ├── cache.spec.ts
 │   │   │   ├── enrichissement
@@ -1083,6 +1100,7 @@
 │   │   │   ├── erreur-404.svg
 │   │   │   ├── erreur.svg
 │   │   │   ├── groupe-regardant-test-maturite.avif
+│   │   │   ├── guides-et-ressources.avif
 │   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-regardant-webinaire.avif
 │   │   │   ├── homme-remplissant-ecran-login.svg
@@ -1286,6 +1304,7 @@
 │   │   │   ├── motif-mot-souligne-vague-moutarde.svg
 │   │   │   ├── motif-titre-petales.svg
 │   │   │   ├── nis2-noir.svg
+│   │   │   ├── nis2-verticale.svg
 │   │   │   ├── nis2.svg
 │   │   │   ├── outils
 │   │   │   │   └── animation
@@ -1366,6 +1385,7 @@
 │   │       ├── responsive.scss
 │   │       ├── service.scss
 │   │       ├── site.scss
+│   │       ├── ssr.scss
 │   │       └── test-maturite.scss
 │   ├── associations.html
 │   ├── campagne-de-sensibilisation.html
@@ -1559,7 +1579,7 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (61 files)
+│   │   │   ├── main-*.ts  (62 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1810,12 +1830,15 @@
 │   │   │   │   │   │   ├── BoiteAOutils.svelte
 │   │   │   │   │   │   ├── EtapeProcedure.svelte
 │   │   │   │   │   │   ├── EtapesProcedure.svelte
+│   │   │   │   │   │   ├── NoteProcedure.svelte
 │   │   │   │   │   │   ├── Procedure.svelte
 │   │   │   │   │   │   └── personnalisee
 │   │   │   │   │   │       ├── BoiteAOutilsAUTH1.svelte
 │   │   │   │   │   │       ├── BoiteAOutilsCOMPTE4.svelte
 │   │   │   │   │   │       ├── BoiteAOutilsCRISE8.svelte
 │   │   │   │   │   │       ├── BoiteAOutilsDROITS2.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsECOSYSTEME1.svelte
+│   │   │   │   │   │       ├── BoiteAOutilsECOSYSTEME2.svelte
 │   │   │   │   │   │       ├── BoiteAOutilsEXO1.svelte
 │   │   │   │   │   │       ├── BoiteAOutilsRECENSEMENT1.svelte
 │   │   │   │   │   │       ├── BoiteAOutilsRECENSEMENT2.svelte
@@ -1833,12 +1856,16 @@
 │   │   │   │   │   │           ├── OutilMiniTestVraiFaux.svelte
 │   │   │   │   │   │           ├── OutilModeleAnnuaireDeCrise.svelte
 │   │   │   │   │   │           ├── OutilModeleDActivites.svelte
+│   │   │   │   │   │           ├── OutilModeleListeInterconnexions.svelte
+│   │   │   │   │   │           ├── OutilModeleListePrestatairesEtFournisseurs.svelte
 │   │   │   │   │   │           ├── OutilModeleModificationMotsDePasse.svelte
 │   │   │   │   │   │           ├── OutilModeleRaci.svelte
 │   │   │   │   │   │           ├── OutilModeleRevueComptesUtilisateurs.svelte
 │   │   │   │   │   │           ├── OutilModeleRevueDroitsDAcces.svelte
 │   │   │   │   │   │           ├── OutilRappelMiseAJourActivites.svelte
 │   │   │   │   │   │           ├── OutilRappelMiseAJourAnnuaire.svelte
+│   │   │   │   │   │           ├── OutilRappelMiseAJourListeInterconnexions.svelte
+│   │   │   │   │   │           ├── OutilRappelMiseAJourListePrestatairesEtFournisseurs.svelte
 │   │   │   │   │   │           └── patrons
 │   │   │   │   │   │               ├── IllustrationOutil.svelte
 │   │   │   │   │   │               ├── OutilLien.svelte
@@ -1906,6 +1933,10 @@
 │   │   │   ├── stores
 │   │   │   │   ├── favoris.store.ts
 │   │   │   │   └── profil.store.ts
+│   │   │   ├── tableau-de-bord
+│   │   │   │   ├── AutresRessources.svelte
+│   │   │   │   ├── Favoris.svelte
+│   │   │   │   └── TableauDeBord.svelte
 │   │   │   ├── test-maturite
 │   │   │   │   ├── BarometreSimplifie.svelte
 │   │   │   │   ├── BoutonsPartagePage.svelte
@@ -2114,6 +2145,7 @@
 │   ├── session-groupe.html
 │   ├── simulateur-nis2.html
 │   ├── statistiques.html
+│   ├── tableau-de-bord.html
 │   ├── test
 │   │   └── scroll.test.js
 │   ├── test-maturite.html
@@ -2252,4 +2284,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-362 directories, 2114 files
+365 directories, 2144 files
