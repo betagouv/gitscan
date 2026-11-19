@@ -1,21 +1,14 @@
 ## Changelog : dockerfiles (30 derniers jours, au 02 novembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a considérablement étendu sa bibliothèque d'outils DevOps en ajoutant de nouveaux conteneurs dédiés à la sécurité, au linting et à la validation de fichiers. Les processus d'automatisation ont également été affinés pour garantir que seuls les changements validés déclenchent des builds, renforçant ainsi la fiabilité des déploiements.
+Le projet a considérablement enrichi sa bibliothèque de conteneurs pour renforcer la qualité et la sécurité des pipelines CI/CD. L'accent a été mis sur l'ajout de nouveaux outils de vérification (linting, validation de schémas et scan de vulnérabilités) et l'amélioration des images existantes pour faciliter l'automatisation des processus DevOps.
 
 ### Évolutions fonctionnelles
-- **Nouveaux conteneurs utilitaires :**
-    - Ajout de **TFLint** pour le linting Terraform dans les pipelines GitLab CI.
-    - Ajout de **Grype** pour l'analyse de vulnérabilités de sécurité.
-    - Ajout d'un conteneur de **validation de schémas YAML**.
-- **Amélioration des outils de déploiement :**
-    - Création d'une nouvelle image dédiée au déploiement avec **OpenTofu**.
-    - Enrichissement de l'image OpenTofu avec `git` et `syft` pour permettre une génération de SBOM (Software Bill of Materials) intégrée.
-- **Gestion des SBOM :** Amélioration de la capacité d'upload des SBOM grâce à l'intégration de `jq` et du client `swift`.
+- Ajout de nouveaux conteneurs spécialisés : TFLint (linting Terraform), Grype (analyse de vulnérabilités) et un validateur de schémas YAML.
+- Amélioration de l'image OpenTofu par l'intégration de `syft` et `git` pour simplifier les opérations de scan et de gestion de versions.
+- Ajout de `jq` et du client `swift` pour permettre l'envoi automatisé des rapports SBOM (Software Bill of Materials).
 
 ### Évolutions techniques
-- **Optimisation des workflows CI/CD :**
-    - Restriction du déclenchement des pipelines : les builds ne s'exécutent désormais que sur les Pull Requests validées et fusionnées dans la branche principale.
-    - Automatisation du déploiement OpenTofu lors du taggage de nouvelles versions.
-- **Maintenance de l'infrastructure de build :**
-    - Ajustements des environnements d'exécution (runners) et correction de la configuration des images de base (`ubuntu-latest`).
+- Optimisation du workflow OpenTofu pour déclencher les exécutions lors du taggage.
+- Ajustements de l'infrastructure de build pour l'utilisation de `ubuntu-latest`.
+- Intégration de la pull request [#53](https://github.com/cloud-gouv/dockerfiles/pull/53).
