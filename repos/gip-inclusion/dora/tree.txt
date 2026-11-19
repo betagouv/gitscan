@@ -3,6 +3,7 @@
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── analytics-ci.yml
 │       ├── back-ci.yml
 │       ├── create-review-apps.yml
 │       ├── front-ci.yml
@@ -670,6 +671,7 @@
 │   │       │   ├── 0001_initial.py
 │   │       │   ├── 0002_create_dora_bot.py
 │   │       │   ├── 0003_alter_user_discovery_method.py
+│   │       │   ├── 0004_dora_bot_non_staff.py
 │   │       │   └── __init__.py
 │   │       ├── models.py
 │   │       ├── serializers.py
@@ -680,6 +682,7 @@
 │   │       │   ├── notification_user_without_structure.mjml
 │   │       │   └── notification_user_without_structure_deletion.mjml
 │   │       ├── tests
+│   │       │   ├── test_admin_login.py
 │   │       │   ├── test_emails.py
 │   │       │   ├── test_merge_users.py
 │   │       │   ├── test_models.py
@@ -860,6 +863,7 @@
 │   │   │   │   │   ├── field-group.svelte
 │   │   │   │   │   ├── fieldset.svelte
 │   │   │   │   │   ├── hamburger.svelte
+│   │   │   │   │   ├── highlighted-text.svelte
 │   │   │   │   │   ├── info.svelte
 │   │   │   │   │   ├── label.svelte
 │   │   │   │   │   ├── link-button.svelte
@@ -950,6 +954,7 @@
 │   │   │   │   │   ├── service-search-keyword.svelte
 │   │   │   │   │   ├── service-search.svelte
 │   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── contact-email-link.svelte
 │   │   │   │   │   │   ├── contact-email.svelte
 │   │   │   │   │   │   ├── contact-phone.svelte
 │   │   │   │   │   │   ├── display
@@ -1020,8 +1025,12 @@
 │   │   │   │   ├── fetch-retry.ts
 │   │   │   │   ├── file.ts
 │   │   │   │   ├── forms.ts
+│   │   │   │   ├── highlight.ts
+│   │   │   │   ├── html-to-markdown.ts
 │   │   │   │   ├── logger.ts
 │   │   │   │   ├── manager-department.ts
+│   │   │   │   ├── map-popup.ts
+│   │   │   │   ├── markdown.ts
 │   │   │   │   ├── matomo.ts
 │   │   │   │   ├── misc.ts
 │   │   │   │   ├── nexus.ts
@@ -1451,6 +1460,7 @@
 │   │           ├── file
 │   │           │   ├── getFileNameFromPath.test.ts
 │   │           │   └── toValidFileName.test.ts
+│   │           ├── highlight.test.ts
 │   │           ├── misc
 │   │           │   └── formatPhoneNumber.test.ts
 │   │           ├── opening-hours
@@ -1490,4 +1500,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-276 directories, 1216 files
+276 directories, 1226 files
