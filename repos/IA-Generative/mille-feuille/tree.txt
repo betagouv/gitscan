@@ -2,6 +2,7 @@
 ├── .env.example
 ├── .github
 │   ├── commitlint.config.mjs
+│   ├── dependabot.yml
 │   ├── releases
 │   │   ├── .release-please-manifest-prerelease.json
 │   │   ├── .release-please-manifest.json
@@ -103,6 +104,7 @@
 │   │   │   ├── search.py
 │   │   │   ├── sharing.py
 │   │   │   ├── storage.py
+│   │   │   ├── tls.py
 │   │   │   └── tools.py
 │   │   ├── connectors.py
 │   │   ├── core
@@ -432,7 +434,9 @@
 │   │       ├── 20261102_1900_3b8d42bb1c0d_toutes_les_conversations_sur_la_presentation.py
 │   │       ├── 20261102_2000_8c1f4a7d2e95_createur_de_l_analyse.py
 │   │       ├── 20261102_2100_5e9a3c7b1d42_detail_de_l_execution_des_messages.py
-│   │       └── 20261105_1500_3a7d9e1c5b28_modeles_llm_et_capacites.py
+│   │       ├── 20261105_1500_3a7d9e1c5b28_modeles_llm_et_capacites.py
+│   │       ├── 20261106_0900_7b2c4e6a8d10_nature_des_entites.py
+│   │       └── 20261106_1000_9d3e5f7a1b24_passages_des_predictions.py
 │   ├── pyproject.toml
 │   ├── scripts
 │   │   └── generate_data_model.py
@@ -442,7 +446,7 @@
 │   │   ├── agent_support.py
 │   │   ├── conftest.py
 │   │   ├── document_helpers.py
-│   │   ├── test_*.py  (120 files)
+│   │   ├── test_*.py  (121 files)
 │   │   └── tool_support.py
 │   └── uv.lock
 ├── ct.yaml
@@ -898,8 +902,10 @@
 │   │   │   ├── CguGate.vue
 │   │   │   ├── ChatAgentsMenu.vue
 │   │   │   ├── ChatWindow.vue
+│   │   │   ├── ErrorList.vue
 │   │   │   ├── HelperAgentModal.vue
 │   │   │   ├── InfoModal.vue
+│   │   │   ├── InfoTip.vue
 │   │   │   ├── MarkdownText.vue
 │   │   │   ├── ModelPicker.vue
 │   │   │   ├── PagerNav.vue
@@ -949,13 +955,18 @@
 │   │   │   │   ├── CreateAnalyseModal.vue
 │   │   │   │   ├── DeleteAnalyseModal.vue
 │   │   │   │   ├── DueSettingsEditor.vue
+│   │   │   │   ├── EditorIntro.vue
 │   │   │   │   ├── EntitiesEditor.vue
+│   │   │   │   ├── EntityLocation.vue
 │   │   │   │   ├── FrequentQuestionsEditor.vue
+│   │   │   │   ├── LabelExamples.vue
 │   │   │   │   ├── LabelsEditor.vue
 │   │   │   │   ├── LlmAssistButton.vue
 │   │   │   │   ├── PromptEditor.vue
 │   │   │   │   ├── SourcesEditor.vue
-│   │   │   │   └── VersionHistory.vue
+│   │   │   │   ├── VersionHistory.vue
+│   │   │   │   ├── ZoneCrop.vue
+│   │   │   │   └── ZoneDrawer.vue
 │   │   │   ├── analysis
 │   │   │   │   ├── ChatProposals.vue
 │   │   │   │   ├── ElementHistoryModal.vue
@@ -1067,17 +1078,18 @@
 │   │   │   ├── tracking
 │   │   │   │   ├── BulkAssignBar.vue
 │   │   │   │   ├── CellEditor.vue
-│   │   │   │   ├── ColumnHelp.vue
 │   │   │   │   ├── ColumnsModal.vue
 │   │   │   │   ├── CustomFieldsModal.vue
 │   │   │   │   ├── TrackingFilters.vue
 │   │   │   │   ├── TrackingTable.vue
 │   │   │   │   ├── TrackingView.vue
 │   │   │   │   └── TrackingViewsBar.vue
-│   │   │   └── usage
-│   │   │       ├── UsageCharts.vue
-│   │   │       ├── UsagePeriodSelector.vue
-│   │   │       └── WaterBottles.vue
+│   │   │   ├── usage
+│   │   │   │   ├── UsageCharts.vue
+│   │   │   │   ├── UsagePeriodSelector.vue
+│   │   │   │   └── WaterBottles.vue
+│   │   │   └── welcome
+│   │   │       └── WelcomeAuthAction.vue
 │   │   ├── composables
 │   │   │   ├── mockDossierPresentation.ts
 │   │   │   ├── useAdminStats.ts
@@ -1097,6 +1109,7 @@
 │   │   │   ├── useConversationTools.ts
 │   │   │   ├── useConversations.ts
 │   │   │   ├── useDashboard.ts
+│   │   │   ├── useDialogFocus.ts
 │   │   │   ├── useDocumentDrafts.ts
 │   │   │   ├── useDocumentSources.ts
 │   │   │   ├── useDocumentTemplates.ts
@@ -1110,10 +1123,12 @@
 │   │   │   ├── useDossierResults.ts
 │   │   │   ├── useDossierSearchIndex.ts
 │   │   │   ├── useDossiers.ts
+│   │   │   ├── useEntityLocations.ts
 │   │   │   ├── useExtractionExplorer.ts
 │   │   │   ├── useExtractionScreenshots.ts
 │   │   │   ├── useHelperAgent.ts
 │   │   │   ├── useKnowledgeSources.ts
+│   │   │   ├── useLabelExamples.ts
 │   │   │   ├── useListView.ts
 │   │   │   ├── useLlmAssist.ts
 │   │   │   ├── useLlmComplete.ts
@@ -1341,11 +1356,13 @@
 │   │   │   ├── pullsecret.yaml
 │   │   │   ├── role.yaml
 │   │   │   ├── rolebinding.yaml
+│   │   │   ├── scaledobject.yaml
 │   │   │   ├── secret.yaml
 │   │   │   ├── service.yaml
 │   │   │   ├── serviceaccount.yaml
 │   │   │   ├── servicemonitor.yaml
-│   │   │   └── statefulset.yaml
+│   │   │   ├── statefulset.yaml
+│   │   │   └── triggerauthentication.yaml
 │   │   ├── worker_document
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -1362,11 +1379,13 @@
 │   │   │   ├── pullsecret.yaml
 │   │   │   ├── role.yaml
 │   │   │   ├── rolebinding.yaml
+│   │   │   ├── scaledobject.yaml
 │   │   │   ├── secret.yaml
 │   │   │   ├── service.yaml
 │   │   │   ├── serviceaccount.yaml
 │   │   │   ├── servicemonitor.yaml
-│   │   │   └── statefulset.yaml
+│   │   │   ├── statefulset.yaml
+│   │   │   └── triggerauthentication.yaml
 │   │   ├── worker_extraction
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -1383,11 +1402,13 @@
 │   │   │   ├── pullsecret.yaml
 │   │   │   ├── role.yaml
 │   │   │   ├── rolebinding.yaml
+│   │   │   ├── scaledobject.yaml
 │   │   │   ├── secret.yaml
 │   │   │   ├── service.yaml
 │   │   │   ├── serviceaccount.yaml
 │   │   │   ├── servicemonitor.yaml
-│   │   │   └── statefulset.yaml
+│   │   │   ├── statefulset.yaml
+│   │   │   └── triggerauthentication.yaml
 │   │   ├── worker_ocr
 │   │   │   ├── clusterrole.yaml
 │   │   │   ├── clusterrolebinding.yaml
@@ -1488,17 +1509,25 @@
 │   │       ├── pullsecret.yaml
 │   │       ├── role.yaml
 │   │       ├── rolebinding.yaml
+│   │       ├── scaledobject.yaml
 │   │       ├── secret.yaml
 │   │       ├── service.yaml
 │   │       ├── serviceaccount.yaml
 │   │       ├── servicemonitor.yaml
-│   │       └── statefulset.yaml
+│   │       ├── statefulset.yaml
+│   │       └── triggerauthentication.yaml
 │   ├── test-values-daemonset.yaml
 │   ├── test-values-statefulset.yaml
 │   ├── test-values.yaml
 │   ├── values
 │   │   ├── README.md
-│   │   └── common-values.yaml
+│   │   ├── common-values.yaml
+│   │   ├── ghcr-values.yaml
+│   │   ├── no-ssl-verify-values.yaml
+│   │   ├── openshift-ingress-values.yaml
+│   │   ├── openshift-light-values.yaml
+│   │   ├── openshift-tls-values.yaml
+│   │   └── openshift-values.yaml
 │   ├── values.schema.json
 │   └── values.yaml
 ├── sdks
@@ -1600,6 +1629,7 @@
     │   │   ├── test_config.py
     │   │   ├── test_fingerprint.py
     │   │   ├── test_llm.py
+    │   │   ├── test_ssl_settings.py
     │   │   ├── test_tasks.py
     │   │   └── test_visual.py
     │   └── uv.lock
@@ -1635,6 +1665,7 @@
     │   │   ├── test_ocr_pages.py
     │   │   ├── test_ocr_scanned.py
     │   │   ├── test_ocr_tables.py
+    │   │   ├── test_ssl_settings.py
     │   │   └── test_tasks.py
     │   └── uv.lock
     ├── document_render
@@ -1658,7 +1689,8 @@
     │   │   ├── test_config.py
     │   │   ├── test_inspection.py
     │   │   ├── test_odt_template.py
-    │   │   └── test_pdf_and_tasks.py
+    │   │   ├── test_pdf_and_tasks.py
+    │   │   └── test_ssl_settings.py
     │   └── uv.lock
     ├── extraction
     │   ├── Dockerfile
@@ -1686,6 +1718,7 @@
     │   │   ├── test_gliner.py
     │   │   ├── test_llm.py
     │   │   ├── test_locate.py
+    │   │   ├── test_ssl_settings.py
     │   │   └── test_tasks.py
     │   └── uv.lock
     ├── layout
@@ -1703,7 +1736,8 @@
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── test_contracts_sync.py
-    │   │   └── test_layout.py
+    │   │   ├── test_layout.py
+    │   │   └── test_ssl_settings.py
     │   └── uv.lock
     ├── ocr
     │   ├── .dockerignore
@@ -1720,7 +1754,8 @@
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── test_contracts_sync.py
-    │   │   └── test_reader.py
+    │   │   ├── test_reader.py
+    │   │   └── test_ssl_settings.py
     │   └── uv.lock
     ├── table
     │   ├── .dockerignore
@@ -1737,6 +1772,7 @@
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── test_contracts_sync.py
+    │   │   ├── test_ssl_settings.py
     │   │   └── test_tables.py
     │   └── uv.lock
     └── vision
@@ -1754,6 +1790,7 @@
         ├── pyproject.toml
         ├── tests
         │   ├── test_contracts_sync.py
+        │   ├── test_ssl_settings.py
         │   └── test_vision.py
         └── uv.lock
-170 directories, 1723 files
+171 directories, 1760 files

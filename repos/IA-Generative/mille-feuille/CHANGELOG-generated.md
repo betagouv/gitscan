@@ -1,41 +1,37 @@
-## Changelog : mille-feuille (30 derniers jours, au 05/11/2026)
+## Changelog : mille-feuille (30 derniers jours, au 18 novembre 2026)
 
 ### Résumé
-Ce mois-ci, mille-feuille a franchi une étape majeure en renforçant l'intelligence et l'autonomie de ses agents. Les utilisateurs bénéficient désormais d'un moteur de recherche beaucoup plus puissant, de la possibilité d'ajouter des sources de connaissances externes et d'une interface modernisée incluant un mode sombre/clair. Le système est devenu plus robuste grâce à une migration de plusieurs processus critiques vers le backend.
+Ce mois-ci, mille-feuille a franchi une étape majeure dans l'autonomie de ses agents et la puissance de sa recherche. L'intégration de bases de connaissances externes, la capacité des agents à utiliser des outils (calculatrice, serveurs MCP) et une refonte architecturale centralisant l'intelligence dans le backend améliorent considérablement la réactivité de la plateforme. L'expérience utilisateur a également été enrichie par une interface plus accessible, un mode sombre et une meilleure visibilité sur la consommation des ressources.
 
 ### Évolutions fonctionnelles
-- **Chat & Agents** : 
-    - Amélioration de l'interaction avec les agents (possibilité de les appeler via `@Nom`, réponses en streaming, et affichage de l'agent qui répond).
-    - Introduction d'un système d'outils pour les agents (calculatrice, gestion des dates, et support du protocole MCP pour des outils externes).
-    - Nouveau système d'autorisation permettant de valider ou refuser l'utilisation d'un outil par l'assistant.
-    - Amélioration de la citation des sources dans le chat avec un affichage précis par ligne.
-- **Recherche & Connaissances** :
-    - Mise en place d'une recherche hybride (combinant recherche textuelle et sémantique) pour des résultats plus pertinents.
-    - Ajout d'une fonctionnalité de "Base de connaissances" permettant d'intégrer des sources externes via URL.
-    - Nouveaux réglages de recherche permettant de gérer l'indexation et la reconstruction des données.
-- **Analyse & Documents** :
-    - Amélioration de l'extraction de données (entités, classification visuelle via CLIP, et extraction de texte par page).
-    - Gestion des dossiers enrichie : ajout de fichiers après coup, génération de résumés automatiques et visualisation des zones d'extraction directement sur les pages.
-    - Possibilité de modifier ou de supprimer des analyses existantes.
-- **Interface Utilisateur** :
-    - Introduction du mode clair et mode sombre.
-    - Refonte visuelle du tableau de bord, de la page de profil et du pied de page.
-    - Optimisation de l'affichage des calendriers et des dates.
+- **Intelligence & Agents** : 
+    - Les agents peuvent désormais utiliser des outils variés (calculatrice, gestion des dates, serveurs MCP) et être appelés directement dans le chat via des mentions (`@Nom`).
+    - Amélioration de l'interaction : les agents peuvent désormais lire leurs analyses et interroger d'autres agents.
+    - Introduction de questions suggérées et de réponses prêtes à l'emploi pour faciliter l'exploration des dossiers.
+- **Recherche & Connaissances** : 
+    - Mise en place d'une base de connaissances permettant d'ajouter des sources externes (via URL et authentification).
+    - Nouvelle interface de recherche hybride permettant de naviguer entre les résultats lexicaux et sémantiques.
+- **Analyse de documents** : 
+    - L'extraction sémantique par LLM est désormais plus précise, incluant la localisation textuelle (spans et bounding boxes) des entités.
+    - Possibilité de modifier ou de supprimer une analyse directement depuis sa page.
+- **Interface & Administration** : 
+    - Ajout d'un onglet "Modèles" pour l'administrateur afin de gérer les capacités et les modes des LLM.
+    - Mise en place d'un suivi de la consommation de tokens pour les utilisateurs et les administrateurs.
+    - Ajout du support du mode clair/sombre et amélioration globale de l'ergonomie (bulles d'info, composants de navigation).
 
 ### Évolutions techniques
-- **Architecture & Backend** :
-    - Migration des tâches lourdes (agents d'analyse, indexation de recherche, et exécution des outils) du worker vers le backend pour une meilleure stabilité.
-    - Suppression du worker `agent_execution` au profit d'une gestion centralisée.
-- **Moteur de recherche** :
-    - Intégration de Qdrant pour la gestion des index et de la recherche hybride.
-    - Implémentation d'une stratégie de reconstruction d'index "blue/green" pour permettre des mises à jour sans interruption de service.
-- **IA & Traitement de documents** :
-    - Optimisation des pods OCR avec l'intégration de PaddleOCR (layout, table, vision).
-    - Amélioration du stockage des données textuelles pour conserver la position précise (lignes/mots) des éléments extraits.
-- **Infrastructure & Déploiement** :
-    - Mise à jour majeure des charts Helm (intégration de Qdrant, gestion des secrets via Vault, et optimisation des ressources).
-    - Amélioration de la CI/CD (nettoyage des processus GitLab au profit de GitHub Actions).
+- **Architecture** : 
+    - Refonte majeure déplaçant l'exécution des agents, l'indexation de recherche et la logique de l'assistant du worker vers le backend pour une meilleure stabilité et performance.
+    - Migration de l'indexation vers une approche "blue/green" pour permettre des reconstructions d'index sans interruption de service.
+- **Infrastructure & Déploiement** : 
+    - Optimisation du déploiement sur OpenShift (gestion des secrets TLS via Vault, profils légers et compatibilité SCC).
+    - Intégration de Qdrant directement dans le chart Helm et possibilité de rendre KEDA optionnel.
+    - Amélioration de la gestion des images via des registres paramétrables.
+- **Traitement de données (OCR & Search)** : 
+    - Migration de l'OCR vers `pp-ocrv6 tiny` au format ONNX pour plus d'efficacité.
+    - Déploiement de pods spécialisés pour le layout, les tableaux et la vision via PaddleOCR.
+    - Optimisation de la recherche hybride avec l'utilisation de vecteurs creux (BM25 français) et de l'indexation Qdrant.
 
 ### Autres changements
-- Renommage officiel du projet de `dig-dig-doc` à `mille-feuille`.
-- Mise à jour de la documentation technique (Helm, agents, et guides d'utilisation de l'API éphémère).
+- **Accessibilité** : Mise en conformité de l'interface avec les standards DSFR et amélioration du support des lecteurs d'écran pour les alertes d'erreur.
+- **Qualité & Documentation** : Mise à jour de la documentation Helm et des guides d'utilisation des outils d'agents ; amélioration de la stabilité des tests backend.

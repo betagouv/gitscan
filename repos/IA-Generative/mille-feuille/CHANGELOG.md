@@ -1,5 +1,218 @@
 # Changelog
 
+## [0.63.0](https://github.com/IA-Generative/mille-feuille/compare/v0.62.0...v0.63.0) (2026-11-18)
+
+
+### Features
+
+* **chart:** values du secret TLS des Ingress OpenShift via Vault ([d0ca523](https://github.com/IA-Generative/mille-feuille/commit/d0ca52355aa9d34d3b8521434777a32912f6600a))
+
+## [0.62.0](https://github.com/IA-Generative/mille-feuille/compare/v0.61.1...v0.62.0) (2026-11-18)
+
+
+### Features
+
+* **chart:** profil léger pour OpenShift et interrupteur ephemeral_frontend ([5b56252](https://github.com/IA-Generative/mille-feuille/commit/5b562521708e455511c8347dd065f487070d174f))
+
+
+### Bug Fixes
+
+* **chart:** déclarer le rôle postgres millefeuille avec son mot de passe ([c2062e1](https://github.com/IA-Generative/mille-feuille/commit/c2062e1e2acdf24881c67893006636a3d0af950a))
+
+## [0.61.1](https://github.com/IA-Generative/mille-feuille/compare/v0.61.0...v0.61.1) (2026-11-18)
+
+
+### Bug Fixes
+
+* **worker:** installer l'extra redis de celery pour document_process et document_render ([a78ce0d](https://github.com/IA-Generative/mille-feuille/commit/a78ce0daa96ab152e5e624389ac649856dfda417))
+
+## [0.61.0](https://github.com/IA-Generative/mille-feuille/compare/v0.60.1...v0.61.0) (2026-11-17)
+
+
+### Features
+
+* **chart:** values d'ingress pour OpenShift (hôtes fictifs) ([f2870f3](https://github.com/IA-Generative/mille-feuille/commit/f2870f304c5c7e2b4d5f4f4133e3bdd2afae296e))
+
+## [0.60.1](https://github.com/IA-Generative/mille-feuille/compare/v0.60.0...v0.60.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* **frontend:** healthcheck dans Dockerfile.dev (Trivy DS-0026) ([dbb533f](https://github.com/IA-Generative/mille-feuille/commit/dbb533f340f38cf2f491f4ee8377f54ca33a2b4c))
+
+## [0.60.0](https://github.com/IA-Generative/mille-feuille/compare/v0.59.1...v0.60.0) (2026-11-17)
+
+
+### Features
+
+* **chart:** values pour désactiver la vérification TLS (dépannage) ([54335b7](https://github.com/IA-Generative/mille-feuille/commit/54335b76b1799a45f2c3c2ccf1fb82190a80e394))
+* variables SSL_VERIFY et SSL_CA_BUNDLE explicites dans chaque service ([179fc8f](https://github.com/IA-Generative/mille-feuille/commit/179fc8ff0178640330f9e6b40365db482b9bf519))
+
+## [0.59.1](https://github.com/IA-Generative/mille-feuille/compare/v0.59.0...v0.59.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* **frontend:** base nginx 1.30 et apk upgrade pour corriger les alertes Trivy ([e56a9b4](https://github.com/IA-Generative/mille-feuille/commit/e56a9b43e5c8cfba1ce24bf9f34671716989fb43))
+
+## [0.59.0](https://github.com/IA-Generative/mille-feuille/compare/v0.58.0...v0.59.0) (2026-11-17)
+
+
+### Features
+
+* **chart:** values pour tirer les images depuis ghcr sans toucher à Redis ([506185d](https://github.com/IA-Generative/mille-feuille/commit/506185d34586489744bb49c6f0d7de80c99e0b52))
+
+
+### Bug Fixes
+
+* **deps:** certifi et filelock dans les workers classification et extraction ([d40af50](https://github.com/IA-Generative/mille-feuille/commit/d40af50f479ba9bd677131a36cec3abc4c59eb37))
+* **deps:** corriger les vulnérabilités des dépendances Python et frontend ([ec1fa6a](https://github.com/IA-Generative/mille-feuille/commit/ec1fa6aa74de87eb2592deaf906e3378722f6a5f))
+* **deps:** mako 1.4.3 et retrait de pip des images d'exécution Python ([94b2ada](https://github.com/IA-Generative/mille-feuille/commit/94b2adaacccd752e7d02454861b53f30abc8ec34))
+
+## [0.58.0](https://github.com/IA-Generative/mille-feuille/compare/v0.57.0...v0.58.0) (2026-11-17)
+
+
+### Features
+
+* **front:** add button auth component to welcome page and adding it in header ([3f07e1b](https://github.com/IA-Generative/mille-feuille/commit/3f07e1b18289d4f97c9cd3e158055bb4751a665c))
+
+## [0.57.0](https://github.com/IA-Generative/mille-feuille/compare/v0.56.0...v0.57.0) (2026-11-17)
+
+
+### Features
+
+* **chart:** projet du registre d'images paramétrable via global.imageProject ([2c0234e](https://github.com/IA-Generative/mille-feuille/commit/2c0234e30cf06dc001bbcc1735a7a125e6d004c3))
+
+## [0.56.0](https://github.com/IA-Generative/mille-feuille/compare/v0.55.0...v0.56.0) (2026-11-17)
+
+
+### Features
+
+* **chart:** compatibilité OpenShift SCC via global.openshift.enabled ([78b02f9](https://github.com/IA-Generative/mille-feuille/commit/78b02f9b284628f39b547b94ed6b9ae41f8b0130))
+
+## [0.55.0](https://github.com/IA-Generative/mille-feuille/compare/v0.54.0...v0.55.0) (2026-11-17)
+
+
+### Features
+
+* **chart:** rendre KEDA optionnel via keda.enabled ([c0c4331](https://github.com/IA-Generative/mille-feuille/commit/c0c433177c4f8bf70c45760d9e3e4e2681f69d72))
+* **front:** create EditorIntro component to describe what to do in analyses ([674ef74](https://github.com/IA-Generative/mille-feuille/commit/674ef74d85dae1641349a8bfd911641419adcf60))
+* **ui:** add descriptions in steps for analysing texte ([e97fba2](https://github.com/IA-Generative/mille-feuille/commit/e97fba2519071abbe8d9929bbd7ba7154e438673))
+
+## [0.54.0](https://github.com/IA-Generative/mille-feuille/compare/v0.53.0...v0.54.0) (2026-11-17)
+
+
+### Features
+
+* **extraction:** nature des entités et passages de texte brut des prédictions ([3faa73e](https://github.com/IA-Generative/mille-feuille/commit/3faa73e723755771c37dd4e3a59ebab15cc60e3b))
+* **front:** nature des entités et texte brut dans l'explorateur d'extraction ([adc7f73](https://github.com/IA-Generative/mille-feuille/commit/adc7f73a69f9b471414e70351f58e0b437ed12c7))
+* **worker:** extraction sémantique par LLM et passages avec span et bbox ([547327e](https://github.com/IA-Generative/mille-feuille/commit/547327eeeb0354137aebc739218e8e04bc7e6879))
+
+## [0.53.0](https://github.com/IA-Generative/mille-feuille/compare/v0.52.1...v0.53.0) (2026-11-16)
+
+
+### Features
+
+* **ui:** make more accessible and create useDialogFocus composable ([810a809](https://github.com/IA-Generative/mille-feuille/commit/810a8092f6be6e8972985a66d2993a28386f4190))
+
+
+### Bug Fixes
+
+* **front:** correct code lines ([1ebb87d](https://github.com/IA-Generative/mille-feuille/commit/1ebb87de80f0717a83017e9766d04043a4e7c107))
+
+## [0.52.1](https://github.com/IA-Generative/mille-feuille/compare/v0.52.0...v0.52.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **ui:** replace reste of colors necessery into DSFR ([414e0a2](https://github.com/IA-Generative/mille-feuille/commit/414e0a2521db0316530d4a6bf9631e497727b25e))
+* **ui:** turn colors added by hand into DSFR color ([01a2c06](https://github.com/IA-Generative/mille-feuille/commit/01a2c06866ba6226c4c60919b0d68dff2ff631e9))
+
+## [0.52.0](https://github.com/IA-Generative/mille-feuille/compare/v0.51.0...v0.52.0) (2026-11-16)
+
+
+### Features
+
+* **frontend:** make app more accessible with better info bubbles ([350e3a9](https://github.com/IA-Generative/mille-feuille/commit/350e3a9c59b297418ea7242bb924d32463c37f32))
+
+## [0.51.0](https://github.com/IA-Generative/mille-feuille/compare/v0.50.0...v0.51.0) (2026-11-12)
+
+
+### Features
+
+* **front:** refactor code and add ErrorList component ([e7ed4ef](https://github.com/IA-Generative/mille-feuille/commit/e7ed4ef8ca1d3bf06fb650e7acf612edd6e5a058))
+
+
+### Bug Fixes
+
+* **ui:** announce error alerts to screen readers ([b6db900](https://github.com/IA-Generative/mille-feuille/commit/b6db9001bb844a9ba5adfafb4eb62cb8e3be56c6))
+* **ui:** continue to edit files for DSFR error messages ([3834047](https://github.com/IA-Generative/mille-feuille/commit/383404711b3c1bc4ac56a723a7c071c21e2faf91))
+* **ui:** correct DSFR error messages ([6a3489a](https://github.com/IA-Generative/mille-feuille/commit/6a3489a1265a10d4e960637cfb16592475f7f3d1))
+* **ui:** correct DsfrAlert in TrackingView ([5b48811](https://github.com/IA-Generative/mille-feuille/commit/5b4881115cd8b8959c3d32ffbe12a49d5fafd4f3))
+* **ui:** edit button with errors into dsfr button with dsfr errors ([d57b0d9](https://github.com/IA-Generative/mille-feuille/commit/d57b0d9831a5cf4b90a8afc530afc85f86f3dd8a))
+* **ui:** edit catch errors ([d15ab05](https://github.com/IA-Generative/mille-feuille/commit/d15ab05f4ef36793342d711515f5a1e1db69da5e))
+* **ui:** edit error  on pages ([f393131](https://github.com/IA-Generative/mille-feuille/commit/f39313175304053f4d754f466bdf62b03c512c5b))
+* **ui:** edit errors layouting in files ([adcfdfa](https://github.com/IA-Generative/mille-feuille/commit/adcfdfa8fba01e7c0e14fac949fdca66d2aba258))
+* **ui:** edit mostly catch errors ([91e92b0](https://github.com/IA-Generative/mille-feuille/commit/91e92b027109d83b1d8437309a054e631f2002f3))
+* **ui:** edit other files for error message before refactoring ([6fa9826](https://github.com/IA-Generative/mille-feuille/commit/6fa9826c5327f16578fd9ccdb598d088ca9c9f4a))
+* **ui:** modify alert message in report, acces and bulkaccess modal ([cfe1d94](https://github.com/IA-Generative/mille-feuille/commit/cfe1d94bd5de24df417048a38ae1c45ed0d9c570))
+* **ui:** modify error messages in multiple files front ([405f358](https://github.com/IA-Generative/mille-feuille/commit/405f3583b5aaa98e13762f0025e6c1ada0342cac))
+* **ui:** replace divs error messages by DsfrAlert messages ([840e273](https://github.com/IA-Generative/mille-feuille/commit/840e2735d3787e354583ddd1e49b3db170159e1b))
+* **ui:** replace error message made by hand with DSFR error messages ([96be048](https://github.com/IA-Generative/mille-feuille/commit/96be04835456626fcef9764df73b1e718001b207))
+* **ui:** small fix in AnalyseSourcesTab for error ([a7b5e19](https://github.com/IA-Generative/mille-feuille/commit/a7b5e1978f3091969ea0523621a7dc2c18a7ffd2))
+* **ui:** tidy indentation and import order in template editor ([eee8db5](https://github.com/IA-Generative/mille-feuille/commit/eee8db542b020157a2c427e3ddde0c52fec8fa67))
+* **ui:** use friendly messages in remaining error helpers ([28d912b](https://github.com/IA-Generative/mille-feuille/commit/28d912b5a201f6677df5793d124ed3d6d2a500a0))
+
+## [0.50.0](https://github.com/IA-Generative/mille-feuille/compare/v0.49.0...v0.50.0) (2026-11-10)
+
+
+### Features
+
+* **ocr:** passage de l'ocr à pp-ocrv6 tiny en onnx ([b873b3e](https://github.com/IA-Generative/mille-feuille/commit/b873b3ea41ff589334699cc96e3a77b001b2683e))
+
+## [0.49.0](https://github.com/IA-Generative/mille-feuille/compare/v0.48.0...v0.49.0) (2026-11-10)
+
+
+### Features
+
+* **classification:** maquette des documents d'exemple par label ([2222327](https://github.com/IA-Generative/mille-feuille/commit/222232703952179e6864ce9231ea37fb088a32ea))
+* **extraction:** maquette du label où chercher et des zones par entité ([80a2860](https://github.com/IA-Generative/mille-feuille/commit/80a286035875a203ee0c8e4ee48f1fc47627cb6d))
+
+## [0.48.0](https://github.com/IA-Generative/mille-feuille/compare/v0.47.2...v0.48.0) (2026-11-10)
+
+
+### Features
+
+* **ui:** precising what every number means in my consommation page ([e2a4ed0](https://github.com/IA-Generative/mille-feuille/commit/e2a4ed0a97c7a21574441909f7ddf93d3adef76d))
+
+
+### Bug Fixes
+
+* **front:** edit gitignore ([e6aa2d7](https://github.com/IA-Generative/mille-feuille/commit/e6aa2d7e097698c67eb19726e08cb6a10dbf70d9))
+* **ui:** delete comments ([38c6f1c](https://github.com/IA-Generative/mille-feuille/commit/38c6f1c7acaf4d3c6cbb16e5fbbdda6602a3d429))
+
+## [0.47.2](https://github.com/IA-Generative/mille-feuille/compare/v0.47.1...v0.47.2) (2026-11-10)
+
+
+### Bug Fixes
+
+* **chart:** kedaAutoscaler natif sur les workers Celery, comme ocr ([d1718ad](https://github.com/IA-Generative/mille-feuille/commit/d1718ad31816d20d923fe081d0324629580d1931))
+
+## [0.47.1](https://github.com/IA-Generative/mille-feuille/compare/v0.47.0...v0.47.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **ui:** make buttons visible when hover ([a694974](https://github.com/IA-Generative/mille-feuille/commit/a694974fe60494dd97417db6625ef014e9dc3193))
+
+## [0.47.0](https://github.com/IA-Generative/mille-feuille/compare/v0.46.0...v0.47.0) (2026-11-09)
+
+
+### Features
+
+* **ui:** add changes in description box for analysis ([c68688f](https://github.com/IA-Generative/mille-feuille/commit/c68688f19a5ecc6aab84cda08909ee46d3229309))
+* **ui:** edit description in one analysis so it doesn't take too much space ([11cf480](https://github.com/IA-Generative/mille-feuille/commit/11cf4805ec392b17ebf84dda9814a65ab682d53c))
+
 ## [0.46.0](https://github.com/IA-Generative/mille-feuille/compare/v0.45.0...v0.46.0) (2026-11-05)
 
 
