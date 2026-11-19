@@ -1,7 +1,7 @@
-## Changelog : plateforme-accueil (30 derniers jours, au 16 novembre 2026)
+## Changelog : plateforme-accueil (30 derniers jours, au 18 novembre 2026)
 
 ### Résumé
-Les évolutions récentes se concentrent sur l'optimisation de la visibilité du contenu dans les moteurs de recherche, en adaptant l'indexation selon que la plateforme est consultée directement ou intégrée via une iframe.
+Les évolutions récentes portent sur l'optimisation du référencement (SEO) de la plateforme, afin de mieux gérer la visibilité des pages lorsqu'elles sont intégrées sur d'autres sites via une iframe.
 
-### Évolutions fonctionnelles
-- Optimisation du référencement (SEO) : les pages sont désormais configurées pour ne pas être indexées par défaut, tout en autorisant leur indexation lorsqu'elles sont intégrées dans d'autres sites.
+### Évolutions techniques
+- SEO : Ajustement des balises d'indexation des pages pour contrôler leur apparition dans les moteurs de recherche.
