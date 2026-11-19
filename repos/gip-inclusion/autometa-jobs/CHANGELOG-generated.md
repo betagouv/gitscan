@@ -1,13 +1,11 @@
-## Changelog : autometa-jobs (30 derniers jours, au 17 novembre 2026)
+## Changelog : autometa-jobs (30 derniers jours, au 19 novembre 2026)
 
 ### Résumé
-Les récentes évolutions améliorent la flexibilité du système en permettant l'utilisation de liens sécurisés pour le traitement des données, tout en renforçant la sécurité et la légèreté de l'infrastructure.
+Les récentes mises à jour améliorent la capacité du système à traiter des données via des liens sécurisés et renforcent la sécurité ainsi que la légèreté de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Possibilité pour les workers d'accepter des URI en `https://` (notamment des URLs présignées) pour l'accès aux données [#155](https://github.com/gip-inclusion/autometa-jobs/pull/155).
+- Les workers acceptent désormais les URIs en `https://`, permettant notamment l'utilisation d'URLs présignées pour l'accès aux ressources. [#155](https://github.com/gip-inclusion/autometa-jobs/issues/155)
 
 ### Évolutions techniques
-- Mise à jour de sécurité de la bibliothèque `opentelemetry-api` pour corriger une vulnérabilité (CVE-2026-126360).
-
-### Autres changements
-- Nettoyage de l'orchestrateur par la suppression de la dépendance inutile `python-dateutil`.
+- **Sécurité** : Mise à jour de `opentelemetry-api` vers la version 1.45.2 pour corriger une vulnérabilité (CVE-2026-126360).
+- **Optimisation** : Nettoyage de l'orchestrateur par la suppression de la dépendance inutile `python-dateutil`.
