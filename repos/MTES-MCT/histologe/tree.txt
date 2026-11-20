@@ -38,7 +38,9 @@
 │   └── workflows
 │       ├── main.yml
 │       ├── metabase-watch.yml
-│       └── playwright.yml
+│       ├── php-watch.yml
+│       ├── playwright.yml
+│       └── sites-conformes-sync.yml
 ├── .gitignore
 ├── .npmrc
 ├── .php-cs-fixer.dist.php
@@ -151,7 +153,8 @@
 │   │   │   │   ├── back_user_index
 │   │   │   │   │   └── form_user.js
 │   │   │   │   ├── back_zone_view
-│   │   │   │   │   └── back_zone_index.js
+│   │   │   │   │   ├── back_zone_index.js
+│   │   │   │   │   └── back_zone_show.js
 │   │   │   │   ├── environment.js
 │   │   │   │   ├── form_account.js
 │   │   │   │   ├── form_nde.js
@@ -180,7 +183,6 @@
 │   │   │       │   ├── component_search_autocomplete.js
 │   │   │       │   ├── component_search_checkbox.js
 │   │   │       │   ├── component_select_all_checkbox.js
-│   │   │       │   ├── maplibre-worker.js
 │   │   │       │   ├── pick-localisation.js
 │   │   │       │   └── rnb-map-controller.js
 │   │   │       ├── cookie
@@ -237,10 +239,10 @@
 │   │       │   │   ├── AppNumber.vue
 │   │       │   │   ├── AppSearch.vue
 │   │       │   │   ├── AppToggleCheckboxes.vue
+│   │       │   │   ├── ChartDataTable.vue
 │   │       │   │   ├── HistoBOTabHeader.vue
 │   │       │   │   ├── HistoButton.vue
 │   │       │   │   ├── HistoCheckbox.vue
-│   │       │   │   ├── HistoFranceMap.vue
 │   │       │   │   ├── HistoInterfaceSelectOption.ts
 │   │       │   │   ├── HistoMultiSelect.vue
 │   │       │   │   ├── HistoSelect.vue
@@ -252,7 +254,9 @@
 │   │       │   │   │       ├── HistoChartBar.vue
 │   │       │   │   │       ├── HistoChartDoughnut.vue
 │   │       │   │   │       ├── HistoChartLine.vue
-│   │       │   │   │       └── HistoChartPie.vue
+│   │       │   │   │       ├── HistoChartPie.vue
+│   │       │   │   │       ├── chartKeyboardNav.ts
+│   │       │   │   │       └── chartPatterns.ts
 │   │       │   │   ├── interfaces
 │   │       │   │   │   ├── SearchInterfaceSelectOption.ts
 │   │       │   │   │   └── queryParameter.ts
@@ -260,14 +264,21 @@
 │   │       │   │       ├── commonRequests.ts
 │   │       │   │       └── variableTester.ts
 │   │       │   ├── front-stats
-│   │       │   │   ├── TheHistoAppFrontStats.vue
-│   │       │   │   ├── TheHistoFrontStatsDetailsItem.vue
-│   │       │   │   ├── TheHistoFrontStatsGlobal.vue
-│   │       │   │   ├── TheHistoFrontStatsTerritory.vue
-│   │       │   │   ├── TheHistoFrontStatsTerritoryItem.vue
-│   │       │   │   ├── TheHistoFrontStatsYearToggle.vue
-│   │       │   │   ├── requests.ts
-│   │       │   │   └── store.ts
+│   │       │   │   ├── FrontStatsApp.vue
+│   │       │   │   ├── api.ts
+│   │       │   │   ├── components
+│   │       │   │   │   ├── FrontStatsDetailsItem.vue
+│   │       │   │   │   ├── FrontStatsFranceMap.vue
+│   │       │   │   │   ├── FrontStatsGlobal.vue
+│   │       │   │   │   ├── FrontStatsTerritory.vue
+│   │       │   │   │   ├── FrontStatsTerritoryItem.vue
+│   │       │   │   │   └── FrontStatsYearToggle.vue
+│   │       │   │   ├── composables
+│   │       │   │   │   ├── useFrontStats.ts
+│   │       │   │   │   └── useFrontStatsStore.ts
+│   │       │   │   ├── services
+│   │       │   │   │   └── frontStatsResponseMapper.ts
+│   │       │   │   └── types.ts
 │   │       │   ├── signalement-form
 │   │       │   │   ├── TheSignalementAppForm.vue
 │   │       │   │   ├── address_subscreen.json
@@ -350,13 +361,22 @@
 │   │       │   │   └── utils
 │   │       │   │       └── signalementUtils.ts
 │   │       │   └── stats
-│   │       │       ├── TheHistoAppStats.vue
-│   │       │       ├── TheHistoStatsDetails.vue
-│   │       │       ├── TheHistoStatsDetailsItem.vue
-│   │       │       ├── TheHistoStatsFilters.vue
-│   │       │       ├── TheHistoStatsGlobal.vue
-│   │       │       ├── requests.ts
-│   │       │       └── store.ts
+│   │       │       ├── StatsApp.vue
+│   │       │       ├── api.ts
+│   │       │       ├── components
+│   │       │       │   ├── StatsDetails.vue
+│   │       │       │   ├── StatsDetailsItem.vue
+│   │       │       │   ├── StatsFilters.vue
+│   │       │       │   └── StatsGlobal.vue
+│   │       │       ├── composables
+│   │       │       │   ├── useStatsFilters.ts
+│   │       │       │   └── useStatsStore.ts
+│   │       │       ├── services
+│   │       │       │   └── statsResponseMapper.ts
+│   │       │       ├── types.ts
+│   │       │       └── utils
+│   │       │           ├── dates.ts
+│   │       │           └── formatters.ts
 │   │       ├── front-stats.ts
 │   │       ├── img
 │   │       │   ├── fr--warning-fill.svg
@@ -459,16 +479,19 @@
 │   │   ├── procedure-metabase-compromission.md
 │   │   ├── template-postmortem.md
 │   │   └── template-procedure.md
+│   ├── infrastructure
+│   │   └── dns.md
 │   └── postmortems
 │       ├── postmortem-2026-05-signature-key.md
 │       ├── postmortem-2026-08-archivage-brouillon.md
-│       └── postmortem-2026-09-html-formulaire-signalement.md
+│       ├── postmortem-2026-09-html-formulaire-signalement.md
+│       └── postmortem-2026-11-dns.md
 ├── eslint.vanilla.config.mjs
 ├── eslint.vue.config.mjs
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (148 files)
+│   └── Version*.php  (154 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan-dead-code.neon
@@ -586,9 +609,6 @@
 │   │   ├── technical-error.svg
 │   │   └── tres-grave-actif.svg
 │   ├── index.php
-│   ├── js
-│   │   ├── wellknown.js
-│   │   └── zone_map.js
 │   ├── maintenance-sites-faciles.html
 │   ├── robots.txt
 │   └── service-secours
@@ -648,6 +668,7 @@
 │   │   ├── SlugifyDocumentSignalementCommand.php
 │   │   ├── Temp
 │   │   │   ├── .gitignore
+│   │   │   ├── AutoAffectBailleursToSignalementsCommand.php
 │   │   │   ├── InitFilesExtensionCommand.php
 │   │   │   └── UpdateSignalementInvariantRialCommand.php
 │   │   ├── UpdateCommunesCommand.php
@@ -715,9 +736,9 @@
 │   │   │   ├── SignalementNoteController.php
 │   │   │   ├── SignalementSameAddressController.php
 │   │   │   ├── SignalementVisitesController.php
-│   │   │   ├── SignalementWithoutAddressController.php
 │   │   │   ├── SitemapController.php
 │   │   │   ├── TagController.php
+│   │   │   ├── TechnicalController.php
 │   │   │   ├── TerritoryFilesController.php
 │   │   │   ├── TerritoryManagementController.php
 │   │   │   ├── UserApiPermissionController.php
@@ -912,7 +933,6 @@
 │   │   │   ├── FormServiceSecoursStep5.php
 │   │   │   └── FormServiceSecoursStep6.php
 │   │   ├── Settings.php
-│   │   ├── SignalementAffectationClose.php
 │   │   ├── SignalementAffectationListView.php
 │   │   ├── SignalementExport.php
 │   │   ├── StatisticsFilters.php
@@ -953,6 +973,7 @@
 │   │   │   ├── Api
 │   │   │   │   └── PersonneType.php
 │   │   │   ├── AppContext.php
+│   │   │   ├── ArreteCreationSource.php
 │   │   │   ├── ArreteType.php
 │   │   │   ├── BrevoEvent.php
 │   │   │   ├── ChauffageType.php
@@ -1038,7 +1059,6 @@
 │   │   ├── InterventionEditedEvent.php
 │   │   ├── InterventionRescheduledEvent.php
 │   │   ├── InterventionUpdatedByEsaboraEvent.php
-│   │   ├── SignalementClosedEvent.php
 │   │   ├── SignalementDraftCompletedEvent.php
 │   │   ├── SignalementViewedEvent.php
 │   │   ├── SuiviCreatedEvent.php
@@ -1076,7 +1096,6 @@
 │   │   ├── InterventionUpdatedByEsaboraSubscriber.php
 │   │   ├── LogoutSubscriber.php
 │   │   ├── MailerSubscriber.php
-│   │   ├── SignalementClosedSubscriber.php
 │   │   ├── SignalementDraftCompletedSubscriber.php
 │   │   ├── SignalementViewedSubscriber.php
 │   │   ├── SuiviCreatedSubscriber.php
@@ -1149,7 +1168,6 @@
 │   │   ├── CancelVisiteType.php
 │   │   ├── CloseAffectationType.php
 │   │   ├── CloseSignalementType.php
-│   │   ├── ClotureType.php
 │   │   ├── ClubEventType.php
 │   │   ├── CommuneType.php
 │   │   ├── ConfirmVisiteType.php
@@ -1245,6 +1263,7 @@
 │   ├── Kernel.php
 │   ├── Manager
 │   │   ├── AffectationManager.php
+│   │   ├── ArreteManager.php
 │   │   ├── DesordreCritereManager.php
 │   │   ├── FailedEmailManager.php
 │   │   ├── FileManager.php
@@ -1445,10 +1464,12 @@
 │   │       │   ├── ApiFileVoter.php
 │   │       │   ├── ApiInterventionVoter.php
 │   │       │   └── ApiSignalementPartnerVoter.php
+│   │       ├── ArreteVoter.php
 │   │       ├── FileVoter.php
 │   │       ├── InjonctionBailleurVoter.php
 │   │       ├── InterventionVoter.php
 │   │       ├── PartnerVoter.php
+│   │       ├── ServiceSecoursVoter.php
 │   │       ├── SignalementBailleurVoter.php
 │   │       ├── SignalementFoVoter.php
 │   │       ├── SignalementVoter.php
@@ -1463,6 +1484,8 @@
 │   │   └── SignalementDraftRequestSerializer.php
 │   ├── Service
 │   │   ├── ApiLogger.php
+│   │   ├── Arrete
+│   │   │   └── ArreteDescriptionGenerator.php
 │   │   ├── Behaviour
 │   │   │   └── SearchQueryTrait.php
 │   │   ├── ClubEventService.php
@@ -1488,6 +1511,7 @@
 │   │   │   │   ├── DossiersFermeCommuneTabBodyLoader.php
 │   │   │   │   ├── DossiersFermePartenaireTousTabBodyLoader.php
 │   │   │   │   ├── DossiersFormProTabBodyLoader.php
+│   │   │   │   ├── DossiersFormServiceSecoursTabBodyLoader.php
 │   │   │   │   ├── DossiersFormUsagerTabBodyLoader.php
 │   │   │   │   ├── DossiersMessagesApresFermetureTabBodyLoader.php
 │   │   │   │   ├── DossiersMessagesNouveauxTabBodyLoader.php
@@ -1643,8 +1667,6 @@
 │   │   │   │   └── IdossService.php
 │   │   │   ├── JobEventHttpClient.php
 │   │   │   └── JobEventMetaData.php
-│   │   ├── Intervention
-│   │   │   └── InterventionDescriptionGenerator.php
 │   │   ├── ListFilters
 │   │   │   ├── SearchAffectationWithoutSubscription.php
 │   │   │   ├── SearchAnnuaireAgent.php
@@ -1681,6 +1703,7 @@
 │   │   │   │   │   ├── AccountAuthCodeMailer.php
 │   │   │   │   │   ├── AccountDeleteMailer.php
 │   │   │   │   │   ├── AccountLostPasswordMailer.php
+│   │   │   │   │   ├── AccountNewLoginMailer.php
 │   │   │   │   │   ├── AccountNewTerritoryMailer.php
 │   │   │   │   │   ├── AccountReactivationMailer.php
 │   │   │   │   │   ├── AccountRemoveFromTerritoryMailer.php
@@ -1777,6 +1800,7 @@
 │   │   ├── Security
 │   │   │   ├── CguTiersChecker.php
 │   │   │   ├── FileScanner.php
+│   │   │   ├── NewLoginNotifier.php
 │   │   │   ├── PartnerAuthorizedResolver.php
 │   │   │   └── TwoFactorCondition.php
 │   │   ├── ServiceSecours
@@ -1821,7 +1845,6 @@
 │   │   │   ├── ReferenceGenerator.php
 │   │   │   ├── SearchFilter.php
 │   │   │   ├── SearchFilterOptionDataProvider.php
-│   │   │   ├── SignalementAddressAnomalyChecker.php
 │   │   │   ├── SignalementAddressUpdater.php
 │   │   │   ├── SignalementAffectationHelper.php
 │   │   │   ├── SignalementApiFactory.php
@@ -2127,6 +2150,7 @@
 │   │   │           ├── _body_dossier_no_agent.html.twig
 │   │   │           ├── _body_dossier_non_affectation.html.twig
 │   │   │           ├── _body_dossier_pro.html.twig
+│   │   │           ├── _body_dossier_service_secours.html.twig
 │   │   │           ├── _body_dossier_usager.html.twig
 │   │   │           ├── _header_dossier_nouveaux.html.twig
 │   │   │           └── tab_dossier_nouveaux.html.twig
@@ -2206,6 +2230,7 @@
 │   │   │   │   ├── header
 │   │   │   │   │   ├── _address.html.twig
 │   │   │   │   │   ├── _badges.html.twig
+│   │   │   │   │   ├── _cloture.html.twig
 │   │   │   │   │   ├── _esabora_alert.html.twig
 │   │   │   │   │   ├── _infos-creation.html.twig
 │   │   │   │   │   ├── _logement-vacant.html.twig
@@ -2232,8 +2257,8 @@
 │   │   │   │   │   ├── _panel-accept-affectation.html.twig
 │   │   │   │   │   ├── _panel-accept-signalement.html.twig
 │   │   │   │   │   ├── _panel-agents-subscription.html.twig
+│   │   │   │   │   ├── _panel-bascule-procedure.html.twig
 │   │   │   │   │   ├── _panel-close-demarche-acceleree.html.twig
-│   │   │   │   │   ├── _panel-cloture.html.twig
 │   │   │   │   │   ├── _panel-delete-procedure-engagee.html.twig
 │   │   │   │   │   ├── _panel-deny-affectation.html.twig
 │   │   │   │   │   ├── _panel-deny-signalement.html.twig
@@ -2250,6 +2275,7 @@
 │   │   │   │   │   ├── _panel-edit-file.html.twig
 │   │   │   │   │   ├── _panel-edit-informations-bailleur.html.twig
 │   │   │   │   │   ├── _panel-edit-informations-logement.html.twig
+│   │   │   │   │   ├── _panel-edit-invariant-fiscal.html.twig
 │   │   │   │   │   ├── _panel-edit-logement-vacant.html.twig
 │   │   │   │   │   ├── _panel-edit-nde.html.twig
 │   │   │   │   │   ├── _panel-edit-occupation-logement.html.twig
@@ -2265,7 +2291,9 @@
 │   │   │   │   │   ├── _panel-reinit-affectation.html.twig
 │   │   │   │   │   ├── _panel-reopen-signalement.html.twig
 │   │   │   │   │   ├── _panel-send-lien-suivi.html.twig
-│   │   │   │   │   └── _panel-transfer-subscription.html.twig
+│   │   │   │   │   ├── _panel-transfer-subscription.html.twig
+│   │   │   │   │   └── content
+│   │   │   │   │       └── invariants.html.twig
 │   │   │   │   ├── partners.html.twig
 │   │   │   │   ├── photos-album.html.twig
 │   │   │   │   ├── photos-documents.html.twig
@@ -2335,10 +2363,6 @@
 │   │   │   └── need_validation_card.html.twig
 │   │   ├── signalement_export
 │   │   │   └── index.html.twig
-│   │   ├── signalement_without_address
-│   │   │   ├── _panel-bulk-link-address-rows.html.twig
-│   │   │   ├── _title-and-table-list-results.html.twig
-│   │   │   └── index.html.twig
 │   │   ├── sitemap
 │   │   │   └── index.html.twig
 │   │   ├── staging_notice.html.twig
@@ -2402,10 +2426,7 @@
 │   │   ├── desordres-and-precisions-choices.html.twig
 │   │   └── desordres.html.twig
 │   ├── emails
-│   │   ├── account_auth_code_email.html.twig
-│   │   ├── account_new_territory_email.html.twig
-│   │   ├── account_remove_from_territory_email.html.twig
-│   │   ├── account_user_soon_archived_email.html.twig
+│   │   ├── account_*.twig  (5 files)
 │   │   ├── accounts_soon_archived_email.html.twig
 │   │   ├── accuse_injonction_email.html.twig
 │   │   ├── accuse_reception_email.html.twig
@@ -2525,40 +2546,13 @@
 │       ├── back_signalement_edit_procedure_engagees.html.twig
 │       ├── demande_abandon_procedure.html.twig
 │       ├── demande_poursuite_procedure.html.twig
-│       ├── injonction_bailleur_bascule_procedure_par_bailleur.html.twig
-│       ├── injonction_bailleur_bascule_procedure_par_usager.html.twig
-│       ├── injonction_bailleur_bascule_procedure_par_usager_reponse_demande_cloture.html.twig
-│       ├── injonction_bailleur_cloture_par_admin.html.twig
-│       ├── injonction_bailleur_cloture_par_usager.html.twig
-│       ├── injonction_bailleur_cloture_par_usager_reponse_demande_cloture.html.twig
-│       ├── injonction_bailleur_cloture_sans_activite.html.twig
-│       ├── injonction_bailleur_demande_cloture_par_bailleur.html.twig
-│       ├── injonction_bailleur_demande_cloture_par_bailleur_usager.html.twig
-│       ├── injonction_bailleur_expiree.html.twig
-│       ├── injonction_bailleur_rappel_reponse_bailleur.html.twig
-│       ├── injonction_bailleur_relance_usager_cloture.html.twig
-│       ├── injonction_bailleur_reminder_for_bailleur.html.twig
-│       ├── injonction_bailleur_reminder_for_usager.html.twig
-│       ├── injonction_bailleur_reponse_non.html.twig
-│       ├── injonction_bailleur_reponse_oui.html.twig
-│       ├── injonction_bailleur_reponse_oui_avec_aide.html.twig
-│       ├── injonction_bailleur_reponse_oui_demarches_commencees.html.twig
+│       ├── injonction_*.twig  (19 files)
+│       ├── intervention_*.twig  (8 files)
 │       ├── message_esabora_schs.html.twig
 │       ├── message_usager_post_cloture_travaux_mise_en_conformite.html.twig
 │       ├── message_usager_travaux_mise_en_conformite.html.twig
 │       ├── new_document.html.twig
-│       ├── signalement_edited.html.twig
-│       ├── signalement_edited_bo_invitation_tiers.html.twig
-│       ├── signalement_edited_fo_invitation_tiers_acceptee.html.twig
-│       ├── signalement_edited_fo_invitation_tiers_refusee.html.twig
-│       ├── signalement_edited_fo_modification_email_occupant.html.twig
-│       ├── signalement_is_closed.html.twig
-│       ├── signalement_is_closed_cloture_automatique_injonction.html.twig
-│       ├── signalement_is_injonction.html.twig
-│       ├── signalement_is_refused.html.twig
-│       ├── signalement_is_reopened.html.twig
-│       ├── signalement_status_is_synchro.html.twig
-│       └── signalement_status_is_synchro_idoss.html.twig
+│       └── signalement_*.twig  (12 files)
 ├── tests
 │   ├── ApiHelper.php
 │   ├── Fake
@@ -2632,8 +2626,10 @@
 │   │   │   │   ├── SignalementFileGenerateZipControllerTest.php
 │   │   │   │   ├── SignalementInjonctionControllerTest.php
 │   │   │   │   ├── SignalementListControllerTest.php
+│   │   │   │   ├── SignalementNoteControllerTest.php
 │   │   │   │   ├── SignalementVisitesControllerTest.php
 │   │   │   │   ├── TagControllerTest.php
+│   │   │   │   ├── TechnicalControllerTest.php
 │   │   │   │   ├── TerritoryFilesControllerTest.php
 │   │   │   │   ├── UserApiPermissionControllerTest.php
 │   │   │   │   └── UserSearchFilterControllerTest.php
@@ -2657,7 +2653,6 @@
 │   │   │   ├── SignalementEditControllerTest.php
 │   │   │   ├── SignalementFileControllerTest.php
 │   │   │   ├── SignalementInvitationControllerTest.php
-│   │   │   ├── SignalementWithoutAddressControllerTest.php
 │   │   │   ├── StatistiquesControllerTest.php
 │   │   │   ├── SuiviBailleurControllerTest.php
 │   │   │   ├── UserAccountControllerTest.php
@@ -2678,7 +2673,6 @@
 │   │   │   ├── InterventionEditedSubscriberTest.php
 │   │   │   ├── InterventionRescheduledSubscriberTest.php
 │   │   │   ├── InterventionUpdatedByEsaboraSubscriberTest.php
-│   │   │   ├── SignalementClosedSubscriberTest.php
 │   │   │   └── SignalementViewedSubscriberTest.php
 │   │   ├── Factory
 │   │   │   └── SignalementAffectationListViewFactoryTest.php
@@ -2797,7 +2791,6 @@
 │   │   │   │   │   └── QualificationStatusServiceTest.php
 │   │   │   │   ├── ReferenceGeneratorTest.php
 │   │   │   │   ├── SearchFilterOptionDataProviderTest.php
-│   │   │   │   ├── SignalementAddressAnomalyCheckerTest.php
 │   │   │   │   ├── SignalementBuilderTest.php
 │   │   │   │   ├── Suivi
 │   │   │   │   │   ├── SuiviDescriptionHelperTest.php
@@ -2919,6 +2912,8 @@
 │   │   ├── Form
 │   │   │   ├── AgentsSelectionTypeTest.php
 │   │   │   └── SearchDashboardAverifierTypeTest.php
+│   │   ├── Manager
+│   │   │   └── ArreteManagerTest.php
 │   │   ├── Messenger
 │   │   │   └── MessageHandler
 │   │   │       ├── Esabora
@@ -2941,6 +2936,8 @@
 │   │   ├── Serializer
 │   │   │   └── SignalementDraftRequestNormalizerTest.php
 │   │   ├── Service
+│   │   │   ├── Arrete
+│   │   │   │   └── ArreteDescriptionGeneratorTest.php
 │   │   │   ├── AutoAssignerTest.php
 │   │   │   ├── ClubEventServiceTest.php
 │   │   │   ├── DashboardTabPanel
@@ -2992,6 +2989,7 @@
 │   │   │   │   ├── FileReaderExifTest.php
 │   │   │   │   ├── FileVisibilityServiceTest.php
 │   │   │   │   ├── FilenameGeneratorTest.php
+│   │   │   │   ├── ImageBase64EncoderTest.php
 │   │   │   │   ├── ImageVariantProviderTest.php
 │   │   │   │   ├── SignalementFileAttacherTest.php
 │   │   │   │   ├── TmpFileWriterTest.php
@@ -3039,8 +3037,6 @@
 │   │   │   │   │   └── Normalizer
 │   │   │   │   │       └── ArreteSISHCollectionResponseNormalizerTest.php
 │   │   │   │   └── JobEventHttpClientTest.php
-│   │   │   ├── Intervention
-│   │   │   │   └── InterventionDescriptionGeneratorTest.php
 │   │   │   ├── Mailer
 │   │   │   │   ├── AbstractNotificationMailerTest.php
 │   │   │   │   ├── ContextDateTimeNormalizerTest.php
@@ -3052,6 +3048,7 @@
 │   │   │   ├── Metabase
 │   │   │   │   └── DashboardUrlGeneratorTest.php
 │   │   │   ├── Security
+│   │   │   │   ├── NewLoginNotifierTest.php
 │   │   │   │   └── TwoFactorConditionTest.php
 │   │   │   ├── Signalement
 │   │   │   │   ├── DesordreTraitement
@@ -3112,8 +3109,11 @@
 │   │   │   ├── dashboard_tabs.spec.ts
 │   │   │   ├── form_usager.spec.ts
 │   │   │   ├── form_usager_locataire.spec.ts
-│   │   │   └── login.spec.ts
+│   │   │   ├── login.spec.ts
+│   │   │   ├── statistiques.spec.ts
+│   │   │   └── statistiques_front.spec.ts
 │   │   └── utils
+│   │       ├── auth-helper.ts
 │   │       └── vue-app-helper.ts
 │   ├── files
 │   │   ├── arrete_import_test.csv
@@ -3252,4 +3252,4 @@
 │   ├── security.fr.yaml
 │   └── validators.fr.xlf
 └── webpack.config.js
-529 directories, 2889 files
+537 directories, 2927 files
