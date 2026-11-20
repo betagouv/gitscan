@@ -418,6 +418,8 @@
 │   │       │   ├── HomeView.tsx
 │   │       │   └── HomeViewContainer.stories.tsx
 │   │       ├── LaboratoryAgreementsView
+│   │       │   ├── LaboratoryAgreementsDiffusionAction.tsx
+│   │       │   ├── LaboratoryAgreementsFiltersTags.tsx
 │   │       │   ├── LaboratoryAgreementsModal
 │   │       │   │   ├── LaboratoryAgreementsModal.stories.tsx
 │   │       │   │   └── LaboratoryAgreementsModal.tsx
@@ -513,6 +515,7 @@
 │   │       │   │   └── ProgrammingCommentList.tsx
 │   │       │   ├── ProgrammingPlanTrackingTable
 │   │       │   │   ├── ProgrammingPlanTrackingActionBar
+│   │       │   │   │   ├── BulkPlanList.tsx
 │   │       │   │   │   ├── ProgrammingPlanBulkLaunchModal.tsx
 │   │       │   │   │   ├── ProgrammingPlanBulkSendAdminModal.tsx
 │   │       │   │   │   ├── ProgrammingPlanBulkSendDepartmentalModal.tsx
@@ -884,7 +887,8 @@
 │   │   │   ├── 150-sample-procedure-max-quantity.ts
 │   │   │   ├── 151-drop-laboratory-analytical-competences.ts
 │   │   │   ├── 152-sub-stages.ts
-│   │   │   └── 153-delegated-managed.ts
+│   │   │   ├── 153-delegated-managed.ts
+│   │   │   └── 154-laboratory-agreement-diffusions.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -905,6 +909,7 @@
 │   │       │   ├── 010-analysis.ts
 │   │       │   ├── 011-laboratory-agreement-checks.ts
 │   │       │   ├── 012-company-workshops.ts
+│   │       │   ├── 013-laboratory-agreement-diffusions.ts
 │   │       │   └── index.ts
 │   │       └── laboratories
 │   │           ├── laboratoriesSeed.ts
@@ -955,6 +960,7 @@
 │   │   ├── kysely.ts
 │   │   ├── kysely.type.ts
 │   │   ├── laboratoryAgreementCheckRepository.ts
+│   │   ├── laboratoryAgreementDiffusionRepository.ts
 │   │   ├── laboratoryAgreementRepository.test.ts
 │   │   ├── laboratoryAgreementRepository.ts
 │   │   ├── laboratoryRepository.test.ts
@@ -1192,7 +1198,9 @@
 │   │   ├── supportDocument
 │   │   │   ├── supportDocument.css
 │   │   │   └── supportDocument.hbs
-│   │   └── templates.ts
+│   │   ├── templates.ts
+│   │   └── usersExport
+│   │       └── usersExport.xls
 │   ├── test
 │   │   ├── db-manager.ts
 │   │   ├── departments.geojson
@@ -1335,7 +1343,9 @@
 │   │   │   ├── FindLaboratoryAgreementsOptions.ts
 │   │   │   ├── FindLaboratoryOptions.ts
 │   │   │   ├── Laboratory.ts
+│   │   │   ├── LaboratoryAgreement.test.ts
 │   │   │   ├── LaboratoryAgreement.ts
+│   │   │   ├── LaboratoryAgreementDiffusion.ts
 │   │   │   ├── LaboratoryResidueMapping.ts
 │   │   │   └── SachaCommunicationMethod.ts
 │   │   ├── LocalPrescription
@@ -1481,4 +1491,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-244 directories, 1239 files
+245 directories, 1248 files
