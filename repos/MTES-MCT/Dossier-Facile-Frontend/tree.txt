@@ -1,19 +1,22 @@
 .
-├── .babelrc.json
 ├── .dockerignore
+├── .dsfr.yml
 ├── .github
 │   ├── ISSUE_TEMPLATE
 │   │   └── accessibility-report.md
 │   ├── dependabot.yml
 │   ├── scripts
-│   │   └── scalingo-deploy.sh
+│   │   ├── read-version.sh
+│   │   ├── scalingo-deploy.sh
+│   │   ├── update-release-branch.sh
+│   │   └── validate-release-tag.sh
 │   └── workflows
 │       ├── codeql-analysis.yml
 │       ├── deploy.yml
 │       ├── e2e.yml
+│       ├── release.yml
 │       └── www.yml
 ├── .gitignore
-├── .npmrc
 ├── .nvmrc
 ├── .vscode
 │   └── extensions.json
@@ -42,9 +45,8 @@
 │   │   │   ├── FollowSocials.vue
 │   │   │   ├── FooterComponent.vue
 │   │   │   └── logo-betagouvfr.svg
-│   │   ├── GouvFr
-│   │   │   └── VGouvFrModal.vue
 │   │   ├── Header
+│   │   │   ├── CommonHeader.vue
 │   │   │   ├── HeaderComponent.vue
 │   │   │   └── LanguageSelector.vue
 │   │   ├── assets
@@ -56,6 +58,7 @@
 │   │   │   │   └── franceconnect-bouton@2x.png
 │   │   │   └── placeholder.png
 │   │   ├── components
+│   │   │   ├── A11yNavigation.vue
 │   │   │   ├── AnnouncementBanner.vue
 │   │   │   ├── ArtworkImage.vue
 │   │   │   ├── AuthImage.vue
@@ -90,14 +93,18 @@
 │   │   │   │   ├── ContactForm.vue
 │   │   │   │   ├── ErrorSummary.vue
 │   │   │   │   ├── FieldLabel.vue
-│   │   │   │   ├── RequiredFieldsInstruction.vue
-│   │   │   │   └── TextField.vue
+│   │   │   │   └── RequiredFieldsInstruction.vue
 │   │   │   └── patches
 │   │   │       └── DsfrModalPatch.vue
+│   │   ├── composables
+│   │   │   ├── debug.ts
+│   │   │   └── useSeo.ts
 │   │   ├── directives.d.ts
 │   │   ├── helper
 │   │   │   └── __tests__
 │   │   │       └── useI18n.ts
+│   │   ├── i18n
+│   │   │   └── index.ts
 │   │   ├── models
 │   │   │   ├── Address.ts
 │   │   │   ├── AdemeApiResult.ts
@@ -124,7 +131,8 @@
 │   │   │   ├── SkipLink.ts
 │   │   │   ├── TenantFileStatus.ts
 │   │   │   ├── UploadStatus.ts
-│   │   │   └── User.ts
+│   │   │   ├── User.ts
+│   │   │   └── injectionKeys.ts
 │   │   ├── plugin
 │   │   │   ├── __tests__
 │   │   │   │   └── robots.spec.ts
@@ -327,47 +335,6 @@
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── storybook
-│   ├── .gitignore
-│   ├── .storybook
-│   │   ├── main.ts
-│   │   └── preview.ts
-│   ├── eslint.config.js
-│   ├── package.json
-│   ├── src
-│   │   └── stories
-│   │       ├── Breadcrumb.stories.ts
-│   │       ├── Button.stories.ts
-│   │       ├── ContactForm.stories.ts
-│   │       ├── DiagnosticEnergySieves.stories.ts
-│   │       ├── DiagnosticExpiryWarning.stories.ts
-│   │       ├── DiagnosticResult.stories.ts
-│   │       ├── Header.stories.ts
-│   │       ├── Header.vue
-│   │       ├── Page.stories.ts
-│   │       ├── Page.vue
-│   │       ├── assets
-│   │       │   ├── accessibility.png
-│   │       │   ├── accessibility.svg
-│   │       │   ├── addon-library.png
-│   │       │   ├── assets.png
-│   │       │   ├── avif-test-image.avif
-│   │       │   ├── context.png
-│   │       │   ├── discord.svg
-│   │       │   ├── docs.png
-│   │       │   ├── figma-plugin.png
-│   │       │   ├── github.svg
-│   │       │   ├── share.png
-│   │       │   ├── styling.png
-│   │       │   ├── testing.png
-│   │       │   ├── theming.png
-│   │       │   ├── tutorials.svg
-│   │       │   └── youtube.svg
-│   │       ├── header.css
-│   │       └── page.css
-│   ├── tsconfig.json
-│   ├── tsconfig.node.json
-│   └── vite.config.ts
 ├── tenantv3
 │   ├── .buildpacks
 │   ├── .env.example
@@ -456,9 +423,7 @@
 │   │   │   ├── ProfileContainer.vue
 │   │   │   ├── RoommatesInformation.vue
 │   │   │   ├── TenantGuarantorChoice.vue
-│   │   │   ├── TenantHeader.vue
 │   │   │   ├── TenantInformationForm.vue
-│   │   │   ├── TenantMenu.vue
 │   │   │   ├── TenantSkipLinks.vue
 │   │   │   ├── TrigramAuthentication.vue
 │   │   │   ├── ValidateFile.vue
@@ -491,6 +456,7 @@
 │   │   │   │   ├── VisaleAnalysisErrorStrategy.spec.ts
 │   │   │   │   └── useAnalysisStateMachine.spec.ts
 │   │   │   ├── account
+│   │   │   │   ├── CompletedFileModal.vue
 │   │   │   │   ├── DefaultShareSection.vue
 │   │   │   │   ├── GuarantorsSection.vue
 │   │   │   │   ├── PartnersSection.vue
@@ -815,14 +781,11 @@
 │   │   │   │   ├── AnalysisProgress.vue
 │   │   │   │   ├── AnalysisReportError.vue
 │   │   │   │   ├── DocumentPreviewCard.vue
-│   │   │   │   ├── ErrorPreviewCard.vue
-│   │   │   │   ├── LoadingPreviewCard.vue
-│   │   │   │   ├── MissingDocumentPreviewCard.vue
-│   │   │   │   ├── SuccessPreviewCard.vue
 │   │   │   │   └── useDocumentPreview.ts
 │   │   │   └── vue-pdf.ts
 │   │   ├── composables
 │   │   │   ├── useApplicationAnalysis.ts
+│   │   │   ├── useCompletedFileModal.ts
 │   │   │   ├── useCompletedOptIn.ts
 │   │   │   ├── useInternalNavigation.ts
 │   │   │   ├── useResendMail.ts
@@ -834,6 +797,7 @@
 │   │   │   └── fr.json
 │   │   ├── main.ts
 │   │   ├── models
+│   │   │   ├── InjectionKeys.ts
 │   │   │   └── SkipLinkModel.ts
 │   │   ├── pdfjs.d.ts
 │   │   ├── plugin
@@ -854,11 +818,13 @@
 │   │   │   ├── ProfileService.ts
 │   │   │   ├── RegisterService.ts
 │   │   │   ├── ShareService.ts
-│   │   │   └── UtilsService.ts
+│   │   │   ├── UtilsService.ts
+│   │   │   └── focusUtils.ts
 │   │   ├── stores
 │   │   │   └── tenant-store.ts
 │   │   ├── views
 │   │   │   ├── AccountPage.vue
+│   │   │   ├── AccountSettings.vue
 │   │   │   ├── CoTenantDocument.vue
 │   │   │   ├── ConfirmAccount.vue
 │   │   │   ├── ContactPage.vue
@@ -1069,8 +1035,7 @@
     │   ├── components
     │   │   ├── BlogPostImage.vue
     │   │   ├── LogoPartnerComponent.vue
-    │   │   ├── PartnersList.vue
-    │   │   └── WwwMenu.vue
+    │   │   └── PartnersList.vue
     │   ├── i18n.ts
     │   ├── locales
     │   │   ├── en.json
@@ -1078,13 +1043,12 @@
     │   ├── main.ts
     │   ├── models
     │   │   └── PartnerModel.ts
+    │   ├── route-meta.d.ts
     │   ├── router
     │   │   └── index.ts
     │   ├── services
     │   │   ├── AnalyticsService.ts
     │   │   └── StatsService.ts
-    │   ├── stores
-    │   │   └── www-store.ts
     │   ├── views
     │   │   ├── AccessibilityView.vue
     │   │   ├── CGU.vue
@@ -1139,4 +1103,4 @@
     ├── tsconfig.vitest.json
     ├── vite.config.ts
     └── vitest.config.ts
-160 directories, 1028 files
+155 directories, 997 files

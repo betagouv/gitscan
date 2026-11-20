@@ -1,33 +1,18 @@
-## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 07/10/2026)
+## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 19 novembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'enrichissement des capacités d'analyse de documents et l'amélioration de l'expérience utilisateur, notamment via une refonte visuelle de la gestion des erreurs. Le projet gagne également en robustesse grâce à une meilleure automatisation des déploiements et une documentation de développement simplifiée pour les contributeurs.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur (ajustements des attestations et de l'interface) et sur un travail important de mise en conformité avec les normes d'accessibilité. La robustesse technique a également été renforcée par des mises à jour de sécurité et une optimisation des processus de déploiement et de tests.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités**
-  - Ajout de l'analyse de documents professionnels et de la gestion des erreurs PNDS [#2035](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2035).
-  - Possibilité de partager les dossiers en attente de traitement (TO_PROCESS) [#2046](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2046).
-  - Mise en place du quota MVP [#2038](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2038).
-- **Améliorations de l'interface et de l'expérience utilisateur**
-  - Refonte complète du design pour la gestion des erreurs PNDS [#2042](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2042).
-  - Ajout d'une fenêtre de confirmation lors de l'annulation d'une demande de validation [#2052](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2052).
-  - Amélioration des appels à l'action (callouts) et des boutons de validation [#2048](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2048), [#2053](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2053).
-  - Ajustement des textes de la bannière d'adhésion et suppression de la bannière ZIP [#2051](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2051).
-  - Amélioration de l'accessibilité via la correction des contrastes [#2041](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2041).
-- **Corrections**
-  - Correction des libellés concernant la situation déclarative fiscale [#2044](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2044) et les erreurs PNDS [#2043](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2043).
+- Ajout d'une modale de demande de vérification [#2103](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2103).
+- Amélioration des attestations auto-générées : modification de la formulation, limitation à 500 caractères et correction du formatage des nombres [#2102](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2102), [#2095](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2095).
+- Optimisations de l'interface utilisateur : correction de l'affichage du footer sur mobile, harmonisation des espacements et des polices dans les paramètres, et mise à jour des libellés de partage [#2091](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2091), [#2098](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2098).
+- Correction d'un problème lié à la messagerie [#2099](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2099).
 
 ### Évolutions techniques
-- **Déploiement et CI/CD**
-  - Automatisation du déploiement en environnement de préproduction via GitHub Actions [#2058](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2058).
-- **Refactoring et Tests**
-  - Refonte du module d'affichage de la progression de l'analyse [#2047](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2047).
-  - Amélioration de la stabilité des tests de bout en bout (E2E), notamment sur la gestion de l'attente lors de l'analyse de documents [#2037](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2037).
+- Accessibilité (a11y) : Amélioration de la sémantique et de la navigation pour l'ensemble de l'application (SPA, header, page de partage) [#2081](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2081), [#2084](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2084), [#2096](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2096), [#2064](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2064).
+- CI/CD et Infrastructure : Mise en place d'un workflow de release [#2101](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2101), mise à jour de Node 22 et des GitHub Actions [#2082](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2082), et correction de vulnérabilités via Vite [#2105](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2105).
+- Tests : Stabilisation des tests de bout en bout (E2E) via la correction de sélecteurs et l'ajustement de la gestion des notifications d'échec [#2085](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2085), [#2092](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2092).
 
 ### Autres changements
-- **Documentation**
-  - Simplification des instructions pour les agents dans le README [#2055](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2055).
-  - Ajout de scripts et de documentation pour faciliter le lancement de l'application en local [#2049](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2049).
-- **Configuration**
-  - Ajout de la configuration `extensions.json` pour l'extension Vue [#2056](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2056).
-  - Mise à jour des exemples d'environnement pour l'utilisation locale de FranceConnect [#2050](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2050).
+- Nettoyage du projet avec la suppression de Storybook [#2104](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2104).
