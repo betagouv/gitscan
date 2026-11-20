@@ -1,16 +1,16 @@
-## Changelog : sante-psy (30 derniers jours, au 16/11/2026)
+## Changelog : sante-psy (30 derniers jours, au 19 novembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience de connexion des étudiants, la correction d'envois d'emails automatiques non souhaités et le renforcement de la sécurité de l'infrastructure technique.
+Les récentes évolutions visent à améliorer l'expérience utilisateur, notamment lors de la connexion et de la consultation des séances, tout en renforçant la sécurité des données et la stabilité de l'infrastructure technique.
 
 ### Évolutions fonctionnelles
-- **Aide à la connexion** : Ajout d'un texte explicatif concernant la date de naissance pour faciliter l'identification des étudiants lors de la phase de connexion [#906](https://github.com/betagouv/sante-psy/issues/906).
-- **Correction d'envois d'emails** : Suppression des emails automatiques contenant des liens Metabase envoyés par erreur aux universités [#905](https://github.com/betagouv/sante-psy/issues/905).
+- Amélioration de l'aide à la connexion via l'ajout d'un texte explicatif concernant la saisie de la date de naissance [#906](https://github.com/betagouv/sante-psy/issues/906).
+- Correction de l'affichage et de la formulation des informations relatives aux séances [#911](https://github.com/betagouv/sante-psy/issues/911).
+- Sécurisation des communications : suppression des liens Metabase dans les e-mails automatiques envoyés aux universités [#905](https://github.com/betagouv/sante-psy/issues/905).
 
 ### Évolutions techniques
-- **Sécurité et infrastructure** : Mise à jour de l'environnement Node.js [#903](https://github.com/betagouv/sante-psy/issues/903) et montée de version des outils de gestion de paquets (pnpm) [#904](https://github.com/betagouv/sante-psy/issues/904).
-- **Gestion des dépendances** : Ajustement de la configuration des dépendances de développement (Faker).
+- Mises à jour de sécurité de l'infrastructure : montée de version de Node.js [#903](https://github.com/betagouv/sante-psy/issues/903) et de l'outil de gestion de paquets pnpm [#904](https://github.com/betagouv/sante-psy/issues/904).
 
 ### Autres changements
-- **Identité visuelle** : Mise à jour du nom du ministère sur le logo.
-- **Rédaction** : Améliorations diverses du texte (wording) sur l'interface.
+- Travail de révision de la formulation (wording) sur l'ensemble de la plateforme.
+- Ajustements de la gestion des dépendances de développement.
