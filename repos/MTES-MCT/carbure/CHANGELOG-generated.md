@@ -1,36 +1,37 @@
-## Changelog : carbure (30 derniers jours, au 02/11/2026)
+## Changelog : carbure (30 derniers jours, au 19/11/2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure du moteur de traçabilité, améliorant la précision des calculs grâce à une meilleure gestion des unités et des propriétés des matériaux. Le module biométhane a été considérablement enrichi avec un nouvel espace dédié aux fournisseurs de gaz et une gestion optimisée des réouvertures de déclarations. Enfin, l'expérience de gestion de l'hydrogène et de l'administration des utilisateurs a été simplifiée et affinée.
+Ce mois-ci, le projet a franchi des étapes importantes dans la précision et la fiabilité de la traçabilité des biocarburants. Les évolutions majeures concernent une refonte complète du processus d'invitation des utilisateurs, une amélioration significative de la gestion des unités et des matériaux (masse, volume, énergie), ainsi que l'ajout de fonctionnalités dédiées aux fournisseurs de biométhane. La sécurité des données a également été renforcée par l'automatisation de l'anonymisation lors des processus de sauvegarde.
 
 ### Évolutions fonctionnelles
-- **Biométhane** : 
-    - Création d'un espace dédié pour les fournisseurs de gaz permettant de consulter les déclarations liées à leurs contrats.
-    - Mise en place d'un processus de réouverture des déclarations annuelles avec notification automatique des producteurs.
-    - Amélioration de la saisie des données (gestion des résidus IAA, affichage des labels et des unités).
-- **Traçabilité** : 
-    - Amélioration de la précision des mesures en permettant le choix entre masse, volume ou énergie, et en intégrant les propriétés physiques (PCI, densité) directement dans les actions.
-    - Meilleure visibilité sur les périodes de travail et les filtres de statut.
-- **Hydrogène** : 
-    - Ajout de filtres par statut pour les lots d'hydrogène.
-    - Partage de la vue des certificats entre les opérateurs et les administrateurs.
-    - Amélioration de la recherche de lots par entreprise pour les administrateurs du secteur.
-- **Administration & Gestion** : 
-    - Optimisation de la gestion des utilisateurs et des entreprises (nouveaux tris, affichage des compteurs d'utilisateurs).
-    - Affinement des règles d'affichage des types de livraison et d'usage pour les lots.
-- **Bioéthanol** : Masquage (non suppression) des produits ETBE-100 et ETBE-63.
+- **Gestion de la traçabilité et des matériaux** :
+    - Amélioration de la précision des données lors des imports Excel (gestion des décimales pour les émissions).
+    - Nouvelle gestion des unités et des matériaux : possibilité de choisir entre masse, volume ou énergie, et intégration des propriétés physiques (PCI, densité) directement dans les actions.
+    - Mise en place d'une matrice de statut pour mieux contrôler les transitions et les créations de données.
+    - Importation du catalogue de matériaux via des fichiers CSV.
+- **Biométhane** :
+    - Création d'un espace dédié pour les fournisseurs de gaz permettant de visualiser les déclarations des producteurs liés par contrat.
+    - Ajout de la possibilité de rouvrir les déclarations annuelles (via commande ou interface DREAL).
+    - Amélioration de la gestion des types de collecte pour les résidus IAA.
+- **Authentification et accès** :
+    - Refonte du parcours d'invitation : création d'une page dédiée pour finaliser l'activation, meilleure gestion des liens expirés et des renvois de mails [#2431](https://github.com/MTES-MCT/carbure/issues/2431).
+    - Amélioration de l'interface d'administration avec l'affichage du nombre total d'utilisateurs.
+- **Interface utilisateur** :
+    - Meilleure visibilité des unités et des décimales dans les champs de saisie en lecture seule.
+    - Masquage (plutôt que suppression) de certains biocarburants spécifiques (ETBE) pour épurer l'interface.
 
 ### Évolutions techniques
-- **Moteur de traçabilité** : Refonte de l'architecture pour supporter une hiérarchie parent/enfant plus robuste et une gestion des transitions basée sur une matrice de statuts.
-- **Gestion des données** : 
-    - Automatisation de l'importation du catalogue de matériaux via des fichiers CSV.
-    - Optimisation des imports Excel pour une meilleure gestion des facteurs de conversion des matériaux.
-- **API & Sécurité** : 
-    - Optimisation des performances de l'API via une sérialisation explicite des champs.
-    - Correction de la gestion des certificats de sécurité (emSign).
-    - Mise à jour des schémas OpenAPI pour le module biométhane.
+- **Sécurité et protection des données** :
+    - Mise en place de l'anonymisation automatique des données personnelles (mots de passe, emails) dans les sauvegardes, les réplicas SQL et les logs d'administration [#2350](https://github.com/MTES-MCT/carbure/issues/2350).
+    - Ajout d'une confirmation utilisateur avant l'import de dumps sur la base de production [#2472](https://github.com/MTES-MCT/carbure/issues/2472).
+    - Mise à jour des configurations CSP et correction de vulnérabilités (notamment sur `soupsieve`).
+- **Performance et Infrastructure** :
+    - Optimisation des requêtes de pagination et de filtrage sur le module Qualicharge [#2495](https://github.com/MTES-MCT/carbure/issues/2495).
+    - Intégration de Trivy dans la CI pour le scan de sécurité des conteneurs.
+    - Optimisation des pipelines CI pour éviter les exécutions inutiles.
+- **Maintenance logicielle** :
+    - Mise à jour majeure du backend et du frontend pour supporter les changements de versions de Django REST Framework, Pandas et React Router v7.
 
 ### Autres changements
-- **Nettoyage** : Extraction du module `EntityCertificate` pour une meilleure modularité.
-- **Tests** : Amélioration de la couverture de tests sur les modules biométhane et hydrogène.
-- **Configuration** : Utilisation de variables d'environnement pour la gestion des mots de passe lors des phases de seed.
+- **Tests** : Amélioration de la robustesse des suites de tests, notamment sur les modules biométhane et TIRUERT, et correction de la persistance des données de test.
+- **Documentation** : Mise à jour du schéma de l'API.

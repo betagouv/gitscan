@@ -29,8 +29,12 @@
 │   ├── Procfile
 │   ├── cron.json
 │   ├── database
+│   │   ├── anonymize.sh
+│   │   ├── anonymize.sql
 │   │   ├── download_scalingo_backup.sh
+│   │   ├── mysql_url.sh
 │   │   ├── restore.sh
+│   │   ├── restore_and_anonymize.sh
 │   │   └── restore_local_backup.sh
 │   └── offsite
 │       ├── backup_database.sh
@@ -427,7 +431,14 @@
 │   │   ├── auth
 │   │   │   ├── api.ts
 │   │   │   ├── components
-│   │   │   │   ├── activate.tsx
+│   │   │   │   ├── activate
+│   │   │   │   │   ├── activate-request.tsx
+│   │   │   │   │   ├── activate.hooks.tsx
+│   │   │   │   │   ├── activate.tsx
+│   │   │   │   │   ├── activation-link.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── join.tsx
+│   │   │   │   │   └── use-token.ts
 │   │   │   │   ├── login.tsx
 │   │   │   │   ├── logout.tsx
 │   │   │   │   ├── otp.tsx
@@ -1058,6 +1069,7 @@
 │   │   │   │   │   ├── table.module.css
 │   │   │   │   │   ├── table.stories.tsx
 │   │   │   │   │   └── table.tsx
+│   │   │   │   ├── tabs-navigation.test.tsx
 │   │   │   │   ├── tabs.module.css
 │   │   │   │   ├── tabs.tsx
 │   │   │   │   ├── tabs2
@@ -1113,6 +1125,7 @@
 │   │   │   │   │   ├── query-builder-2.ts
 │   │   │   │   │   └── query-builder-2.types.ts
 │   │   │   │   ├── query-builder.ts
+│   │   │   │   ├── route-base.ts
 │   │   │   │   ├── routes.ts
 │   │   │   │   ├── scroll-to-hash.ts
 │   │   │   │   ├── scroll-to-ref.ts
@@ -1391,6 +1404,7 @@
 │   │   │   │   └── year-table.tsx
 │   │   │   ├── double-counting.hooks.tsx
 │   │   │   ├── double-counting.tsx
+│   │   │   ├── formatters.ts
 │   │   │   ├── index.ts
 │   │   │   ├── types.ts
 │   │   │   └── utils.ts
@@ -1400,6 +1414,7 @@
 │   │   │   ├── api.ts
 │   │   │   ├── components
 │   │   │   │   ├── agreements
+│   │   │   │   │   ├── agreement-details-dialog-change-status.tsx
 │   │   │   │   │   ├── agreement-details-dialog.tsx
 │   │   │   │   │   ├── agreement-list.tsx
 │   │   │   │   │   └── agreement-status.tsx
@@ -1965,6 +1980,7 @@
     │   │   ├── activate.py
     │   │   ├── change_email.py
     │   │   ├── change_password.py
+    │   │   ├── credentials.py
     │   │   ├── login.py
     │   │   ├── request_activation_link.py
     │   │   ├── reset_password.py
@@ -1991,6 +2007,7 @@
     │       └── mixins
     │           ├── __init__.py
     │           ├── activate.py
+    │           ├── activate_profile.py
     │           ├── change_email.py
     │           ├── change_password.py
     │           ├── login.py
@@ -2391,6 +2408,7 @@
     │   │   │   └── test_nav_stats.py
     │   │   └── middlewares
     │   │       ├── __init__.py
+    │   │       ├── test_csp.py
     │   │       └── test_exception.py
     │   ├── urls.py
     │   ├── views
@@ -2415,6 +2433,7 @@
     │   │   ├── 0006_alter_doublecountingregistration_production_site_and_more.py
     │   │   ├── 0007_alter_doublecountingregistration_options.py
     │   │   ├── 0008_alter_doublecountingregistration_production_site_and_more.py
+    │   │   ├── 0009_doublecountingregistration_status.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── serializers.py
@@ -2552,6 +2571,7 @@
     │   │   ├── 0086_merge_20260922_1549.py
     │   │   ├── 0087_merge_20260923_1103.py
     │   │   ├── 0088_alter_externaladminrights_right.py
+    │   │   ├── 0090_remove_obsolete_sanity_check_errors.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -3969,6 +3989,7 @@
     │   │   ├── 0012_material_unit_lhv_density.py
     │   │   ├── 0013_material_code_max_length.py
     │   │   ├── 0014_backfill_valorize_material.py
+    │   │   ├── 0015_action_emission_nine_decimals.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -4251,6 +4272,7 @@
         │       └── anonymize_inactive_users.py
         ├── migrations
         │   ├── 0001_initial.py
+        │   ├── 0002_unusable_password_for_pending_invites.py
         │   └── __init__.py
         ├── models
         │   ├── __init__.py
@@ -4275,4 +4297,4 @@
             ├── request_access.py
             ├── revoke_access.py
             └── user.py
-780 directories, 3497 files
+781 directories, 3518 files
