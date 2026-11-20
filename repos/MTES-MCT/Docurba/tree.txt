@@ -55,11 +55,12 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── collectivites_en_base.py
-│   │   │   │       ├── event_type_add_scope_pplh_ppilh.py
 │   │   │   │       ├── import_dgaln_zan_objects.py
 │   │   │   │       ├── link_events_with_event_types.py
 │   │   │   │       ├── process_denormalized_procedure_fields.py
-│   │   │   │       └── reset_secondary_procedure_status.py
+│   │   │   │       ├── reset_secondary_procedure_status.py
+│   │   │   │       ├── transfer_ownership_for_profile.py
+│   │   │   │       └── update_event_date_by_impact.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
@@ -126,6 +127,9 @@
 │   │   │   │   ├── 0063_fill_procedure_base_type.py
 │   │   │   │   ├── 0064_alter_procedure_doc_type.py
 │   │   │   │   ├── 0065_alter_procedure_doc_type.py
+│   │   │   │   ├── 0066_alter_event_date_evenement.py
+│   │   │   │   ├── 0067_alter_departement_region_alter_event_archived_by_and_more.py
+│   │   │   │   ├── 0068_alter_procedure_last_updated_by.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
@@ -154,6 +158,7 @@
 │   │   │   │   ├── 0007_event_add_event_type.py
 │   │   │   │   ├── 0008_alter_eventsnapshot_procedure.py
 │   │   │   │   ├── 0009_alter_eventsnapshot_event_type_blank.py
+│   │   │   │   ├── 0010_alter_eventsnapshot_date_evenement.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   ├── surveys
@@ -165,6 +170,8 @@
 │   │   │   │   ├── 0002_survey_rls.py
 │   │   │   │   ├── 0003_populate_proceduresurvey.py
 │   │   │   │   ├── 0004_remove_archived_procedures.py
+│   │   │   │   ├── 0005_update_rls.py
+│   │   │   │   ├── 0006_alter_proceduresurvey_survey.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   ├── templates
@@ -261,10 +268,11 @@
 │   │   │   ├── management
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── test_event_type_add_scope_pplh_ppilh.py
 │   │   │   │       ├── test_link_events_with_event_types.py
 │   │   │   │       ├── test_process_denormalized_procedure_fields.py
-│   │   │   │       └── test_reset_secondary_procedure_status.py
+│   │   │   │       ├── test_reset_secondary_procedure_status.py
+│   │   │   │       ├── test_transfer_ownership_for_profile.py
+│   │   │   │       └── test_update_event_date_by_impact.py
 │   │   │   ├── test_admin.py
 │   │   │   └── test_models.py
 │   │   ├── history
@@ -307,6 +315,9 @@
 │   └── uv.lock
 ├── doc
 │   └── management_commands
+│       ├── event_type_add_scope_pplh_ppilh
+│       │   ├── event_type_add_scope_pplh_ppilh.py
+│       │   └── test_event_type_add_scope_pplh_ppilh.py
 │       ├── populate_procedure_name_complement
 │       │   ├── populate_procedure_name_complement.py
 │       │   └── test_populate_procedure_name_complement.py
@@ -1169,4 +1180,4 @@
 └── supabase
     ├── .gitignore
     └── config.toml
-232 directories, 981 files
+233 directories, 991 files

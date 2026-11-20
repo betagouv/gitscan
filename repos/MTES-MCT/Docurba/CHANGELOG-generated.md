@@ -1,31 +1,35 @@
-## Changelog : Docurba (30 derniers jours, au 13 novembre 2026)
+## Changelog : Docurba (30 derniers jours, au 19 novembre 2026)
 
 ### Résumé
-Cette période a été marquée par une refonte majeure de l'interface dédiée aux autorités territoriales et une amélioration significative de la gestion des procédures d'urbanisme. Les utilisateurs bénéficient désormais d'une meilleure visibilité sur les données (nouveaux types de documents, commentaires de dépôt) et d'une navigation plus fluide. En parallèle, la fiabilité du système a été renforcée par l'automatisation de contrôles de cohérence des données.
+Ce mois a été marqué par une refonte importante de l'interface de gestion des autorités territoriales et une amélioration significative de la fiabilité des données. L'expérience utilisateur a été enrichie par de nouveaux outils de filtrage et de sélection, tandis que l'administration du système a été renforcée pour offrir un meilleur contrôle sur les dossiers et les utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Refonte des autorités territoriales** : Design repensé des pages de détails, redirection automatique des anciennes pages vers la nouvelle structure, et intégration de GeoRisques comme vue par défaut.
-- **Amélioration de la gestion des procédures** : 
+- **Refonte de l'interface des autorités territoriales** : Redesign complet des pages de détails et des sous-pages, avec une vue par défaut personnalisée selon le profil de l'utilisateur.
+- **Amélioration de la gestion des procédures** :
     - Affichage des commentaires de dépôt et des détails des noms de procédures dans les tableaux.
-    - Introduction de nouveaux types de documents pour mieux refléter les possibilités métier.
-    - Meilleure gestion des filtres (notamment pour le PLUI) et affichage des informations relatives à la loi Huwart.
-- **Gestion des droits et sécurité** : Ajout de droits spécifiques pour les administrateurs PAC et renforcement de l'authentification pour les procédures partageables.
-- **Optimisation de la recherche** : Amélioration des requêtes sur les collectivités via la distinction entre les codes INSEE et SIREN.
+    - Ajout de nouveaux filtres (notamment pour les PLUI) et distinction précise entre les codes INSEE et SIREN.
+    - Affichage de nouvelles informations contextuelles (EPCI à fiscalité propre, informations liées à la loi Huwart).
+- **Optimisation de l'ergonomie (Nuxt)** :
+    - Ajout de fonctions de sélection/désélection globale dans l'édition des PAC.
+    - Amélioration de l'alignement visuel et de la lisibilité des tableaux.
+    - Gestion des erreurs lors de la récupération des noms de procédures.
 
 ### Évolutions techniques
-- **Fiabilisation des données** : 
-    - Mise en place de contrôles de cohérence sur les champs dénormalisés des procédures avec notification automatique sur Slack en cas d'anomalie.
-    - Transition vers des types de documents dynamiques pour plus de flexibilité.
-- **Optimisation Backend & API** : 
-    - Migration des appels de données des collectivités vers Django pour une meilleure centralisation.
-    - Création de nouveaux endpoints API pour le calcul dynamique des noms de procédures.
-    - Amélioration des performances via la mise en cache de certains périmètres de procédures.
-- **Infrastructure et CI/CD** : 
-    - Optimisation du cycle de vie des "Review Apps" (planification de la désactivation nocturne et correction du processus de création/suppression).
-    - Mise à jour de la configuration Scalingo.
-- **Qualité du code** : 
-    - Refactorisation des appels API dans Nuxt via l'utilisation de plugins.
-    - Mise en conformité du code avec les standards de linting (Ruff).
+- **Renforcement de l'administration (Django Admin)** :
+    - Extension des droits de gestion pour le personnel (suppression d'utilisateurs, de procédures, d'événements, d'invitations et de projets).
+    - Amélioration de la recherche par email de l'utilisateur sur plusieurs objets.
+- **Fiabilisation et intégrité des données** :
+    - Mise en place de contrôles automatiques de cohérence des procédures avec notifications Slack en cas d'anomalies détectées.
+    - Amélioration de la gestion des suppressions en cascade (objets liés et profils utilisateurs).
+    - Renforcement de la sécurité des données (RLS) sur les enquêtes.
+- **Optimisation de l'architecture** :
+    - Migration des appels de données des collectivités vers l'API Django pour une meilleure centralisation.
+    - Refonte des modèles de données pour les procédures et les autorités territoriales.
+    - Amélioration des performances via l'utilisation de champs mis en cache.
+- **DevOps et CI/CD** :
+    - Optimisation du cycle de vie des "Review Apps" (automatisation de la désactivation et gestion des tokens).
+    - Ajout de nouvelles commandes Makefile pour faciliter les opérations de maintenance.
 
 ### Autres changements
-- Documentation de scripts internes et nettoyage des commandes de gestion (management commands) obsolètes.
+- **Maintenance du code** : Nettoyage et documentation des commandes de gestion (management commands) et suppression des scripts obsolètes.
+- **Qualité logicielle** : Mise en conformité du code avec les standards de linting (Ruff).
