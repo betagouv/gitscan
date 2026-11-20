@@ -1,10 +1,12 @@
 .
 ├── .editorconfig
 ├── .github
+│   ├── CODEOWNERS
 │   ├── dependabot.yml
 │   ├── pull_request_template.md
 │   ├── scripts
-│   │   └── build_matrix.py
+│   │   ├── build_matrix.py
+│   │   └── plan_signature.py
 │   └── workflows
 │       ├── _terraform-module.yml
 │       ├── dependabot-autofix.yml
@@ -28,6 +30,16 @@
 │   │               ├── providers.tf
 │   │               └── variables.tf
 │   ├── emplois-cnav
+│   │   ├── cockpit
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── main.tf
+│   │   │       ├── providers.tf
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
 │   │   ├── database
 │   │   │   └── terraform
 │   │   │       ├── .terraform.lock.hcl
@@ -73,6 +85,8 @@
 │   │   │           ├── providers.tf
 │   │   │           ├── secrets.enc.yaml
 │   │   │           ├── templates
+│   │   │           │   ├── 51unattended-upgrades-reboot
+│   │   │           │   ├── apt-daily-upgrade.timer.override.conf
 │   │   │           │   ├── strongswan-extra-ips.service
 │   │   │           │   ├── strongswan-extra-ips.sh.tpl
 │   │   │           │   ├── swanctl.overrides.conf
@@ -329,4 +343,4 @@
 └── scripts
     └── pre-commit
         └── ensure-sops-encrypted.sh
-75 directories, 256 files
+77 directories, 268 files

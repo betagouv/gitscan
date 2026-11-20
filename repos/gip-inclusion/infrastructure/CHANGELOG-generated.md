@@ -1,28 +1,29 @@
-## Changelog : infrastructure (30 derniers jours, au 13 octobre 2026)
+## Changelog : infrastructure (30 derniers jours, au 19 novembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un déploiement majeur de l'infrastructure dédiée à l'environnement "emplois-cnav", incluant la mise en place complète des réseaux, du cluster Kubernetes et des bases de données. Parallèlement, la sécurité a été renforcée par l'intégration de nouveaux outils de gestion de secrets et l'optimisation de la gestion des domaines et du DNS.
+Ce mois a été marqué par une refonte majeure de la sécurité et de la fiabilité de la chaîne de déploiement (CI/CD), ainsi que par la préparation d'environnements dédiés aux tests de sécurité (pentest). Les configurations DNS ont également été enrichies pour supporter de nouveaux services et outils de communication.
 
 ### Évolutions fonctionnelles
-- **Gestion des domaines** : Récupération du domaine `inclusion.gouv.fr` pour l'utilisation de Bitwarden.
-- **Authentification** : Configuration de la base de données pour le service Authentik dans l'environnement emplois-cnav.
+- **Gestion DNS et accès services :**
+    - Ajout de nouveaux enregistrements DNS pour les services `cal`, `RDV SP bridge app` et l'entrée `claude`.
+    - Configuration des accès DNS pour l'environnement de test (pentest) d' `emplois-cnav`.
+    - Mise à jour des enregistrements Google Search Console pour le domaine `dora`.
+    - Configuration du service de parsing entrant de Brevo dans l'environnement de démonstration.
+    - Alignement des paramètres DMARC pour le domaine `reply`.
 
 ### Évolutions techniques
-- **Déploiement de l'environnement "emplois-cnav"** : Mise en place complète de l'infrastructure comprenant :
-    - Réseau (double réseau privé).
-    - Cluster Kubernetes et registre de conteneurs.
-    - Modules de bases de données et de gestion de secrets.
-    - Instance VPN (Strongswan) et instances Windows (OGC).
-- **DNS & Messagerie** : 
-    - Configuration des enregistrements DNS pour les services Brevo (parsing entrant et authentification du sous-domaine 'reply').
-    - Mise en place de la configuration DNS pour emplois-cnav.
-- **Sécurité & IAM** :
-    - Implémentation de SOPS pour la sécurisation des entrées Terraform sensibles.
-    - Gestion des secrets pour ArgoCD et Authentik.
-    - Optimisation des permissions IAM (accès local pour les développeurs, gestion des droits sur les bases de données et application IAM pour l'API-Relay).
-- **Maintenance & CI/CD** :
-    - Mise à jour régulière de la version de Terraform utilisée dans la CI.
-    - Verrouillage et mise à jour des fournisseurs (providers) Terraform.
+- **Sécurité et CI/CD :**
+    - Refonte complète du workflow Terraform : séparation en plusieurs tâches distinctes (checks, plan, apply), utilisation d'environnements GitHub protégés et signature des plans pour garantir leur intégrité.
+    - Renforcement de la sécurité des secrets en limitant la portée des identifiants Scaleway aux étapes strictement nécessaires.
+    - Mise en place de la règle `CODEOWNERS` pour exiger systématiquement la revue des équipes DevOps.
+    - Optimisation du workflow pour ne valider les plans que lors de succès des étapes précédentes.
+- **Infrastructure et Monitoring :**
+    - Déploiement d'une base de données et de secrets pour l'API-relay dans l'environnement de pentest d' `emplois-cnav`.
+    - Intégration de la source de données des logs Cockpit pour le cluster Kubernetes d' `emplois-cnav`.
+    - Automatisation du redémarrage nocturne de la VM Strongswan pour assurer la stabilité du système après les mises à jour.
+- **Maintenance :**
+    - Mise à jour de la version de Terraform utilisée dans la CI (passage à la version 1.17.2).
 
 ### Autres changements
-- Mise à jour de la documentation technique via `terraform-docs`.
+- **Documentation :** Mise à jour de la documentation Terraform et des instructions relatives à l'emplacement des clés AGE pour SOPS.
+- **Nettoyage :** Suppression d'enregistrements de production obsolètes (`traiteurs-engages`) et de secrets inutilisés.
