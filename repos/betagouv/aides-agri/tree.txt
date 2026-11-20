@@ -46,6 +46,7 @@
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
+│   │   │       ├── agri_alarm_on_too_many_alertes.py
 │   │   │       └── agri_send_daily_alertes.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -72,8 +73,7 @@
 │   │   │       ├── _partials
 │   │   │       │   ├── create_alerte_ok.html
 │   │   │       │   ├── more_results_from_type.html
-│   │   │       │   ├── results_less.html
-│   │   │       │   └── send-results-by-mail-ok.html
+│   │   │       │   └── results_less.html
 │   │   │       ├── about.html
 │   │   │       ├── alerte_list.html
 │   │   │       ├── blocks
@@ -88,17 +88,16 @@
 │   │   │       ├── home.html
 │   │   │       ├── mail
 │   │   │       │   ├── alerte.mjml
-│   │   │       │   ├── alerte_created.mjml
-│   │   │       │   └── results.mjml
+│   │   │       │   └── alerte_created.mjml
 │   │   │       ├── modals
 │   │   │       │   ├── create_alerte.html
-│   │   │       │   ├── feedback_on_themes_sujets.html
-│   │   │       │   └── send_results_by_mail.html
+│   │   │       │   └── feedback_on_themes_sujets.html
 │   │   │       └── results.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
 │   │   │   ├── factories.py
+│   │   │   ├── test_commands.py
 │   │   │   ├── test_prepare_e2e.py
 │   │   │   ├── test_signal_handlers.py
 │   │   │   ├── test_stats.py
@@ -206,8 +205,13 @@
 │   │   │   ├── 0080_organisme_horaires_organisme_siren.py
 │   │   │   ├── 0081_specificitelocale.py
 │   │   │   ├── 0082_zonegeographique_is_metropole.py
+│   │   │   ├── 0083_aide_eligibilite_categorie_taille_entreprise.py
+│   │   │   ├── 0084_aide_organisme_diffuseur.py
 │   │   │   └── __init__.py
-│   │   ├── models.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── aide.py
+│   │   │   └── references.py
 │   │   ├── signals
 │   │   │   ├── __init__.py
 │   │   │   └── handlers.py
@@ -251,8 +255,6 @@
 │   │   │       ├── blocks
 │   │   │       │   ├── cta_signalement_aides.html
 │   │   │       │   └── parent_aide_detail__children.html
-│   │   │       ├── modals
-│   │   │       │   └── collect-user-data.html
 │   │   │       └── parent_aide_detail.html
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
@@ -309,21 +311,6 @@
 │   │   │   └── test_stats.py
 │   │   ├── urls.py
 │   │   └── views.py
-│   ├── pac
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── management
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       └── pac_load_from_csv.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_indicateurresultat_denominateur_and_more.py
-│   │   │   ├── 0003_alter_intervention_secteur.py
-│   │   │   ├── 0004_alter_intervention_type_and_more.py
-│   │   │   └── __init__.py
-│   │   └── models.py
 │   ├── product
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -426,6 +413,7 @@
 │   │   ├── __init__.py
 │   │   ├── apps
 │   │   │   ├── __init__.py
+│   │   │   ├── agri.py
 │   │   │   ├── aides.py
 │   │   │   ├── anymail.py
 │   │   │   ├── axes.py
@@ -461,7 +449,7 @@
 ├── deployment
 │   └── scalingo
 │       └── bin
-│           ├── aides_daily_tasks.sh
+│           ├── daily_tasks.sh
 │           └── start-web.sh
 ├── docker-compose.yml
 ├── documentation
@@ -582,4 +570,4 @@
     ├── favicon.ico
     ├── robots-non-prod.txt
     └── robots-prod.txt
-150 directories, 434 files
+146 directories, 426 files
